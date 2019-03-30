@@ -425,6 +425,44 @@ The timeout duration of the select call when listening on a channel.
 
 Default: `5`
 
+html
+----
+
+src
+~~~
+
+The URL pointing to `TinyMCE <https://www.tiny.cloud/>`_ editor.
+
+Default: `https://cloud.tinymce.com/stable/tinymce.min.js`
+
+plugins
+~~~~~~~
+
+The space separated list of TinyMCE plugins to load.
+It can be overridden for specific models and fields using the names:
+`plugins-<model>-<field>` or `plugins-<model>`.
+
+Default: ``
+
+css
+~~~
+
+The JSON list of CSS files to load.
+It can be overridden for specific models and fields using the names:
+`css-<model>-<field>` or `css-<model>`.
+
+Default: `[]`
+
+class
+~~~~~
+
+The class to add on the body.
+It can be overridden for specific models and fields using the names:
+`class-<model>-<field>` or `class-<model>`.
+
+Default: `''`
+
+
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
 .. _RFC-3986: http://tools.ietf.org/html/rfc3986

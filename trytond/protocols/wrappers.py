@@ -132,12 +132,13 @@ def with_pool(func):
     return wrapper
 
 
-def with_transaction(readonly=None):
+def with_transaction(readonly=None, user=0, context=None):
     from trytond.worker import run_task
 
     def decorator(func):
         @wraps(func)
         def wrapper(request, pool, *args, **kwargs):
+            nonlocal user, context
             DatabaseOperationalError = backend.get('DatabaseOperationalError')
             readonly_ = readonly  # can not modify non local
             if readonly_ is None:
@@ -145,13 +146,19 @@ def with_transaction(readonly=None):
                     readonly_ = False
                 else:
                     readonly_ = True
-            context = {'_request': request.context}
+            if context is None:
+                context = {}
+            else:
+                context = context.copy()
+            context['_request'] = request.context
+            if user == 'request':
+                user = request.user_id
             retry = config.getint('database', 'retry')
             for count in range(retry, -1, -1):
                 if count != retry:
                     time.sleep(0.02 * (retry - count))
                 with Transaction().start(
-                        pool.database_name, 0, readonly=readonly_,
+                        pool.database_name, user, readonly=readonly_,
                         context=context) as transaction:
                     try:
                         result = func(request, pool, *args, **kwargs)

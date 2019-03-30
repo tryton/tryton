@@ -48,7 +48,10 @@ class TrytondWSGI(object):
         if request.user_id:
             return wrapped(*args, **kwargs)
         else:
-            abort(http.client.UNAUTHORIZED)
+            response = Response(
+                None, http.client.UNAUTHORIZED,
+                {'WWW-Authenticate': 'Basic realm="Tryton"'})
+            abort(http.client.UNAUTHORIZED, response=response)
 
     def check_request_size(self, request, size=None):
         if request.method not in {'POST', 'PUT', 'PATCH'}:

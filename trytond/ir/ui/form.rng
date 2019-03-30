@@ -182,34 +182,35 @@
       <attribute>
         <name ns="">widget</name>
         <choice>
+          <value>binary</value>
+          <value>boolean</value>
+          <value>callto</value>
+          <value>char</value>
           <value>date</value>
           <value>datetime</value>
-          <value>time</value>
+          <value>dict</value>
+          <value>email</value>
           <value>float</value>
-          <value>numeric</value>
+          <value>html</value>
+          <value>image</value>
           <value>integer</value>
-          <value>selection</value>
-          <value>char</value>
-          <value>password</value>
-          <value>timedelta</value>
-          <value>boolean</value>
-          <value>reference</value>
-          <value>binary</value>
-          <value>text</value>
-          <value>one2many</value>
           <value>many2many</value>
           <value>many2one</value>
-          <value>email</value>
-          <value>url</value>
-          <value>callto</value>
-          <value>sip</value>
-          <value>image</value>
-          <value>progressbar</value>
-          <value>one2one</value>
-          <value>richtext</value>
-          <value>dict</value>
           <value>multiselection</value>
+          <value>numeric</value>
+          <value>one2many</value>
+          <value>one2one</value>
+          <value>password</value>
+          <value>progressbar</value>
           <value>pyson</value>
+          <value>reference</value>
+          <value>richtext</value>
+          <value>selection</value>
+          <value>sip</value>
+          <value>text</value>
+          <value>time</value>
+          <value>timedelta</value>
+          <value>url</value>
         </choice>
       </attribute>
     </optional>

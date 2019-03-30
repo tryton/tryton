@@ -7,6 +7,7 @@ from functools import partial
 
 from sql import Null
 
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model.exceptions import ValidationError
 from ..model import (
@@ -24,6 +25,10 @@ __all__ = [
     'ActionActWindow', 'ActionActWindowView', 'ActionActWindowDomain',
     'ActionWizard', 'ActionURL',
     ]
+
+if not config.get('html', 'plugins-ir.action.report-report_content_html'):
+    config.set(
+        'html', 'plugins-ir.action.report-report_content_html', 'fullpage')
 
 
 class WizardModelError(ValidationError):
@@ -419,6 +424,14 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         'get_report_content', setter='set_report_content')
     report_content_name = fields.Function(fields.Char('Content Name'),
         'on_change_with_report_content_name')
+    report_content_html = fields.Function(fields.Binary(
+            "Content HTML",
+            states={
+                'invisible': ~Eval('template_extension').in_(
+                    ['html', 'xhtml']),
+                },
+            depends=['template_extension']),
+        'get_report_content_html', setter='set_report_content_html')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     direct_print = fields.Boolean('Direct Print')
@@ -614,6 +627,15 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     @classmethod
     def set_report_content(cls, records, name, value):
         cls.write(records, {'%s_custom' % name: value})
+
+    @classmethod
+    def get_report_content_html(cls, reports, name):
+        return cls.get_report_content(reports, name[:-5])
+
+    @classmethod
+    def set_report_content_html(cls, reports, name, value):
+        value = value.encode('utf-8')
+        cls.set_report_content(reports, name[:-5], value)
 
     @fields.depends('name', 'template_extension')
     def on_change_with_report_content_name(self, name=None):

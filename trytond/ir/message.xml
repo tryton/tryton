@@ -203,5 +203,8 @@ Traceback:
         <record model="ir.message" id="msg_trigger_invalid_condition">
             <field name="text">Condition "%(condition)s" is not a valid PYSON expression for trigger "%(trigger)s".</field>
         </record>
+        <record model="ir.message" id="msg_html_editor_save_fail">
+            <field name="text">Failed to save, please retry.</field>
+        </record>
     </data>
 </tryton>

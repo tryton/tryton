@@ -23,6 +23,9 @@ from .session import *
 from . import queue
 from . import calendar_
 from . import message
+from . import routes
+
+__all__ = ['register', 'routes']
 
 
 def register():
