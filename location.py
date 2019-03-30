@@ -222,7 +222,11 @@ class Location(ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return ['OR',
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
             (cls._rec_name,) + tuple(clause[1:]),
             ('code',) + tuple(clause[1:]),
             ]
