@@ -1,0 +1,6 @@
+include INSTALL
+include README
+include COPYRIGHT
+include CHANGELOG
+include LICENSE
+include doc/*
