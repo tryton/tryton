@@ -162,7 +162,7 @@ class Payment(metaclass=PoolMeta):
                 },
             depends=[
                 'stripe_account', 'stripe_token', 'stripe_customer', 'state']),
-        'get_stripe_customer_source')
+        'get_stripe_customer_source', setter='set_stripe_customer_source')
     stripe_account = fields.Function(fields.Many2One(
             'account.payment.stripe.account', "Stripe Account"),
         'on_change_with_stripe_account')
@@ -190,9 +190,6 @@ class Payment(metaclass=PoolMeta):
                     'depends': ['state', 'stripe_capture_needed'],
                     },
                 })
-        # As there is not setter to avoid the cost of validation,
-        # the readonly attribute must be unset.
-        cls.stripe_customer_source_selection._field.readonly = False
 
     @classmethod
     def __register__(cls, module_name):
@@ -257,6 +254,10 @@ class Payment(metaclass=PoolMeta):
 
     def get_stripe_customer_source(self, name):
         return self.stripe_customer_source
+
+    @classmethod
+    def set_stripe_customer_source(cls, payments, name, value):
+        pass
 
     def get_stripe_checkout_needed(self, name):
         return (self.journal.process_method == 'stripe'
