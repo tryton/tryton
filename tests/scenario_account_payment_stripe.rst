@@ -175,8 +175,8 @@ Checkout the customer::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> stripe_customer.stripe_token = token.id
-    >>> stripe_customer.save()
+    >>> Customer.write(
+    ...     [stripe_customer.id], {'stripe_token': token.id}, config.context)
 
 Run cron::
 
