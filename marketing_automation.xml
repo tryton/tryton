@@ -295,7 +295,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Marketing Automation Unsubscribe</field>
             <field name="model"></field>
             <field name="report_name">marketing.automation.unsubscribe</field>
-            <field name="report">unsubscribe.html</field>
+            <field name="report">marketing_automation/unsubscribe.html</field>
             <field name="template_extension">html</field>
         </record>
 
