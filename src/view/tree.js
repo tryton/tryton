@@ -598,8 +598,8 @@
             return records;
         },
         select_records: function(from, to) {
-            if (!from) {
-                from = this.rows[0];
+            if (!from && to) {
+                from = this.rows[0].record;
             }
             if (from && to) {
                 var from_idx = from.get_index_path(this.screen.group);
