@@ -38,11 +38,16 @@ class RichTextBox(TextBox):
                 }[CONFIG['client.toolbar']])
         tag_widgets = self.tag_widgets[textview] = {}
 
-        for icon in ['bold', 'italic', 'underline']:
+        for icon, label in [
+                ('bold', _("Bold")),
+                ('italic', _("Italic")),
+                ('underline', _("Underline")),
+                ]:
             button = Gtk.ToggleToolButton()
             button.set_icon_widget(IconFactory.get_image(
                     'tryton-format-%s' % icon,
                     Gtk.IconSize.SMALL_TOOLBAR))
+            button.set_label(label)
             button.connect('toggled', self.toggle_props, icon, textview)
             toolbar.insert(button, -1)
             tag_widgets[icon] = button
@@ -67,12 +72,18 @@ class RichTextBox(TextBox):
         toolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         button = None
-        for name in ['left', 'center', 'right', 'justify']:
+        for name, label in [
+                ('left', _("Align Left")),
+                ('center', _("Align Center")),
+                ('right', _("Align Right")),
+                ('justify', _("Justify")),
+                ]:
             icon = 'tryton-format-align-%s' % name
             button = Gtk.RadioToolButton.new_from_widget(button)
             button.set_icon_widget(IconFactory.get_image(
                     icon, Gtk.IconSize.SMALL_TOOLBAR))
             button.set_active(icon == 'left')
+            button.set_label(label)
             button.connect(
                 'toggled', self.toggle_justification, name, textview)
             toolbar.insert(button, -1)
@@ -81,7 +92,7 @@ class RichTextBox(TextBox):
         toolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         for icon, label in [
-                ('foreground', _('Foreground')),
+                ('foreground', _("Foreground Color")),
                 # TODO ('background', _('Background')),
                 ]:
             button = Gtk.ToolButton()
