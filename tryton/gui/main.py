@@ -506,45 +506,40 @@ class Main(Gtk.Application):
         self.notebook.set_current_page(page - 1)
 
     def get_preferences(self):
-        def _set_preferences(prefs):
-            try:
-                prefs = prefs()
-            except RPCException:
-                prefs = {}
-            threads = []
-            for target in (
-                    common.IconFactory.load_icons,
-                    common.MODELACCESS.load_models,
-                    common.MODELHISTORY.load_history,
-                    common.VIEW_SEARCH.load_searches,
-                    ):
-                t = threading.Thread(target=target)
-                threads.append(t)
-                t.start()
-            for t in threads:
-                t.join()
-            if prefs and 'language_direction' in prefs:
-                translate.set_language_direction(prefs['language_direction'])
-                CONFIG['client.language_direction'] = \
-                    prefs['language_direction']
-            self.sig_win_menu(prefs=prefs)
-            for action_id in prefs.get('actions', []):
-                Action.execute(action_id, {})
-            self.set_title(prefs.get('status_bar', ''))
-            if prefs and 'language' in prefs:
-                translate.setlang(prefs['language'], prefs.get('locale'))
-                if CONFIG['client.lang'] != prefs['language']:
-                    self.favorite_unset()
-                CONFIG['client.lang'] = prefs['language']
-            # Set placeholder after language is set to get correct translation
-            self.global_search_entry.set_placeholder_text(_("Action"))
-            CONFIG.save()
+        RPCContextReload()
+        try:
+            prefs = RPCExecute('model', 'res.user', 'get_preferences', False)
+        except RPCException:
+            prefs = {}
 
-        def _get_preferences():
-            RPCExecute('model', 'res.user', 'get_preferences', False,
-                callback=_set_preferences)
-
-        RPCContextReload(_get_preferences)
+        threads = []
+        for target in (
+                common.IconFactory.load_icons,
+                common.MODELACCESS.load_models,
+                common.MODELHISTORY.load_history,
+                common.VIEW_SEARCH.load_searches,
+                ):
+            t = threading.Thread(target=target)
+            threads.append(t)
+            t.start()
+        for t in threads:
+            t.join()
+        if prefs and 'language_direction' in prefs:
+            translate.set_language_direction(prefs['language_direction'])
+            CONFIG['client.language_direction'] = \
+                prefs['language_direction']
+        self.sig_win_menu(prefs=prefs)
+        for action_id in prefs.get('actions', []):
+            Action.execute(action_id, {})
+        self.set_title(prefs.get('status_bar', ''))
+        if prefs and 'language' in prefs:
+            translate.setlang(prefs['language'], prefs.get('locale'))
+            if CONFIG['client.lang'] != prefs['language']:
+                self.favorite_unset()
+            CONFIG['client.lang'] = prefs['language']
+        # Set placeholder after language is set to get correct translation
+        self.global_search_entry.set_placeholder_text(_("Action"))
+        CONFIG.save()
 
     def preferences(self):
         from tryton.gui.window.preference import Preference
