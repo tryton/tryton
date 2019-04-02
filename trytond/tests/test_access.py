@@ -299,6 +299,7 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
         TestAccess.read([record.id], ['relate.value'])
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+        TestAccess.search([], order=[('relate.value', 'ASC')])
 
     @with_transaction(context=_context)
     def test_no_access_relate(self):
@@ -321,6 +322,8 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
         with self.assertRaises(AccessError):
             TestAccess.search(
                 [('reference.value', '=', 42, 'test.access.relate')])
+        with self.assertRaises(AccessError):
+            TestAccess.search([], order=[('relate.value', 'ASC')])
 
 
 class ModelAccessWriteTestCase(_ModelAccessTestCase):
@@ -858,6 +861,7 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
 
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+        TestAccess.search([], order=[('relate.value', 'ASC')])
 
     @with_transaction(context=_context)
     def test_no_access_search_relate(self):
@@ -880,6 +884,8 @@ class ModelFieldAccessReadTestCase(_ModelFieldAccessTestCase):
         with self.assertRaises(AccessError):
             TestAccess.search(
                 [('reference.value', '=', 42, 'test.access.relate')])
+        with self.assertRaises(AccessError):
+            TestAccess.search([], order=[('relate.value', 'ASC')])
 
 
 class ModelFieldAccessWriteTestCase(_ModelFieldAccessTestCase):

@@ -438,7 +438,7 @@ class ModelStorage(Model):
 
         ModelAccess.check(cls.__name__, 'read')
 
-        def check(domain, cls, to_check):
+        def check_domain(domain, cls, to_check):
             if is_leaf(domain):
                 local, relate = (domain[0].split('.', 1) + [None])[:2]
                 to_check[cls.__name__].add(local)
@@ -448,16 +448,29 @@ class ModelStorage(Model):
                     else:
                         target = cls._fields[local].get_target()
                     target_domain = [(relate,) + tuple(domain[1:])]
-                    check(target_domain, target, to_check)
+                    check_domain(target_domain, target, to_check)
             elif not domain:
                 return
             else:
                 i = 1 if domain[0] in ['OR', 'AND'] else 0
                 for d in domain[i:]:
-                    check(d, cls, to_check)
+                    check_domain(d, cls, to_check)
+
+        def check_order(order, cls, to_check):
+            if not order:
+                return
+            for oexpr, otype in order:
+                local, _, relate = oexpr.partition('.')
+                to_check[cls.__name__].add(local)
+                if relate:
+                    target = cls._fields[local].get_target()
+                    target_order = [(relate, otype)]
+                    check_order(target_order, target, to_check)
+
         if transaction.user and transaction.context.get('_check_access'):
             to_check = defaultdict(set)
-            check(domain, cls, to_check)
+            check_domain(domain, cls, to_check)
+            check_order(order, cls, to_check)
             for name, fields_names in to_check.items():
                 ModelAccess.check(name, 'read')
                 ModelFieldAccess.check(name, fields_names, 'read')
