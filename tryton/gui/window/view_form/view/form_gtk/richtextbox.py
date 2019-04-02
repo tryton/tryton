@@ -3,7 +3,7 @@
 from gettext import gettext as _
 from weakref import WeakKeyDictionary
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 
 from .textbox import TextBox
 from tryton.common import get_toplevel_window, IconFactory
@@ -207,6 +207,7 @@ class RichTextBox(TextBox):
 
         bolds, italics, underlines = set(), set(), set()
         families, sizes, justifications = set(), set(), set()
+        self.colors['foreground'] = 'black'
 
         iter_ = start.copy()
         while True:
@@ -232,6 +233,8 @@ class RichTextBox(TextBox):
                     size = SIZES.index(size)
                 elif tag.props.name.startswith('justification'):
                     _, justification = tag.props.name.split()
+                elif tag.props.name.startswith('foreground'):
+                    _, self.colors['foreground'] = tag.props.name.split()
             bolds.add(bold)
             italics.add(italic)
             underlines.add(underline)
@@ -324,16 +327,16 @@ class RichTextBox(TextBox):
             start = start.get_offset()
             end = end.get_offset()
 
-        dialog = Gtk.ColorSelectionDialog(_('Select a color'))
-        dialog.set_transient_for(get_toplevel_window())
-        colorsel = dialog.get_color_selection()
-        colorsel.set_has_palette(True)
-        color = self.colors.get(name)
-        if color:
-            colorsel.set_current_color(color)
+        dialog = Gtk.ColorChooserDialog(
+            title=_('Select a color'),
+            transient_for=get_toplevel_window(),
+            use_alpha=False)
+        color = Gdk.RGBA()
+        if name in self.colors:
+            color.parse(self.colors[name])
+            dialog.set_rgba(color)
         if dialog.run() == Gtk.ResponseType.OK:
-            color = colorsel.get_current_color()
-            self.colors[name] = color
+            color = dialog.get_rgba()
             if start is not None and end is not None:
                 start = text_buffer.get_iter_at_offset(start)
                 end = text_buffer.get_iter_at_offset(end)

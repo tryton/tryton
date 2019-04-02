@@ -1,3 +1,4 @@
+* Replace ColorSelectionDialog by ColorChooserDialog
 * Support HTML widget
 * Use locale format for data import and export
 * Add day view on calendar

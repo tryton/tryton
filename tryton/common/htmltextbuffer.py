@@ -313,7 +313,7 @@ _TAGS.extend([('justification %s' % align, {'justification': justification})
 
 
 def register_foreground(text_buffer, color):
-    name = 'foreground %s' % color
+    name = 'foreground %s' % color.to_string()
     tag_table = text_buffer.get_tag_table()
     tag = tag_table.lookup(name)
     if not tag:
