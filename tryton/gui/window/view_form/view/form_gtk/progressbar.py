@@ -24,7 +24,7 @@ class ProgressBar(Widget):
         orientation, inverted = self.orientations.get(
             attrs.get('orientation', 'left_to_right'))
         self.widget.set_orientation(orientation)
-        self.widget.set_prinverted(inverted)
+        self.widget.set_inverted(inverted)
 
     def display(self):
         super(ProgressBar, self).display()
