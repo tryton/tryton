@@ -414,11 +414,7 @@
                         'boolean': 2,
                         'binary': 20,
                     }[column.attributes.widget] || 10;
-                    if (column.attributes.width !== undefined){
-                        width = column.attributes.width + 'px';
-                    } else {
-                        width = width * 100 + '%';
-                    }
+                    width = width * 100 + '%';
                     column.col.css('width', width);
                     column.col.show();
                 }
