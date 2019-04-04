@@ -1251,7 +1251,7 @@
             prefix_name = prefix_name || '';
 
             Object.keys(fields).forEach(function(field) {
-                if(!fields[field].readonly) {
+                if(!fields[field].readonly || field == 'id') {
                     var name = fields[field].string || field;
                     name = prefix_name + name;
                     // Only One2Many can be nested for import
