@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond import backend
 from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.model import MultiValueMixin, ValueMixin
-from trytond import backend
+from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
 
 __all__ = ['Configuration', 'ConfigurationSequence', 'ConfigurationLang']
@@ -22,6 +23,15 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
 
     party_sequence = fields.MultiValue(party_sequence)
     party_lang = fields.MultiValue(party_lang)
+
+    @classmethod
+    def default_party_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('party', 'sequence_party')
+        except KeyError:
+            return None
 
 
 class _ConfigurationValue(ModelSQL):
