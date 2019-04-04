@@ -493,6 +493,53 @@ class ImportDataTestCase(unittest.TestCase):
                 [['test.import_data.reference.selection,test.foo']])
         transaction.rollback()
 
+    @with_transaction()
+    def test_update_id(self):
+        "Test update with ID"
+        pool = Pool()
+        Char = pool.get('test.import_data.update')
+        record = Char(name="foo")
+        record.save()
+
+        count = Char.import_data(['id', 'name'], [[str(record.id), "bar"]])
+
+        record, = Char.search([])
+        self.assertEqual(count, 1)
+        self.assertEqual(record.name, "bar")
+
+    @with_transaction()
+    def test_update_rec_name(self):
+        "Test update with rec_name"
+        pool = Pool()
+        Char = pool.get('test.import_data.update')
+        record = Char(name="foo")
+        record.save()
+
+        count = Char.import_data(['id', 'name'], [[record.rec_name, "bar"]])
+
+        record, = Char.search([])
+        self.assertEqual(count, 1)
+        self.assertEqual(record.name, "bar")
+
+    @with_transaction()
+    def test_update_one2many(self):
+        "Test update one2many"
+        pool = Pool()
+        One2many = pool.get('test.import_data.one2many')
+        Target = pool.get('test.import_data.one2many.target')
+        record = One2many(name="test", one2many=[Target(name="foo")])
+        record.save()
+        target, = record.one2many
+
+        count = One2many.import_data(
+            ['id', 'one2many/id', 'one2many/name'],
+            [[record.id, target.id, "bar"],
+                ['', '', "baz"]])
+
+        self.assertEqual(count, 1)
+        self.assertEqual(len(record.one2many), 2)
+        self.assertEqual([t.name for t in record.one2many], ["bar", "baz"])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ImportDataTestCase)

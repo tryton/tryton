@@ -305,7 +305,7 @@ Class methods:
 
 .. classmethod:: ModelStorage.import_data(fields_names, data)
 
-    Create records for all values in ``datas``.
+    Create or update records for all values in ``data``.
     The field names of values must be defined in ``fields_names``.
     It returns the number of imported records.
 

@@ -2,19 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Test for import_data"
 from trytond.model import ModelSQL, fields
-
-__all__ = [
-    'ImportDataBoolean', 'ImportDataInteger', 'ImportDataIntegerRequired',
-    'ImportDataFloat', 'ImportDataFloatRequired',
-    'ImportDataNumeric', 'ImportDataNumericRequired',
-    'ImportDataChar', 'ImportDataText',
-    'ImportDataDate', 'ImportDataDateTime', 'ImportDataSelection',
-    'ImportDataMany2OneTarget', 'ImportDataMany2One',
-    'ImportDataMany2ManyTarget', 'ImportDataMany2Many',
-    'ImportDataMany2ManyRelation', 'ImportDataOne2Many',
-    'ImportDataOne2ManyTarget', 'ImportDataReferenceSelection',
-    'ImportDataReference',
-    ]
+from trytond.pool import Pool
 
 
 class ImportDataBoolean(ModelSQL):
@@ -154,3 +142,36 @@ class ImportDataReference(ModelSQL):
             (None, ''),
             ('test.import_data.reference.selection', 'Test'),
             ])
+
+
+class ImportDataUpdate(ModelSQL):
+    "Import Data for Update"
+    __name__ = 'test.import_data.update'
+    name = fields.Char("Name")
+
+
+def register(module):
+    Pool.register(
+        ImportDataBoolean,
+        ImportDataInteger,
+        ImportDataIntegerRequired,
+        ImportDataFloat,
+        ImportDataFloatRequired,
+        ImportDataNumeric,
+        ImportDataNumericRequired,
+        ImportDataChar,
+        ImportDataText,
+        ImportDataDate,
+        ImportDataDateTime,
+        ImportDataSelection,
+        ImportDataMany2OneTarget,
+        ImportDataMany2One,
+        ImportDataMany2ManyTarget,
+        ImportDataMany2Many,
+        ImportDataMany2ManyRelation,
+        ImportDataOne2Many,
+        ImportDataOne2ManyTarget,
+        ImportDataReferenceSelection,
+        ImportDataReference,
+        ImportDataUpdate,
+        module=module, type_='model')

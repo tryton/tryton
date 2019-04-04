@@ -7,7 +7,7 @@ import csv
 
 from decimal import Decimal
 from itertools import islice, chain
-from functools import reduce, wraps
+from functools import wraps
 from operator import itemgetter
 from collections import defaultdict
 
@@ -807,7 +807,16 @@ class ModelStorage(Model):
                 return '%s,%s' % (relation, str(res_ids[0]))
             return res_ids and res_ids[0] or False
 
-        def process_lines(data, prefix, fields_def, position=0):
+        def dispatch(create, write, row, Relation=cls):
+            id_ = row.pop('id', None)
+            if id_:
+                write.append([Relation(id_)])
+                write.append(row)
+            else:
+                create.append(row)
+            return id_
+
+        def process_lines(data, prefix, fields_def, position=0, klass=cls):
             line = data[position]
             row = {}
             translate = {}
@@ -831,7 +840,12 @@ class ModelStorage(Model):
                     this_field_def = fields_def[field[-1]]
                     field_type = this_field_def['type']
                     res = None
-                    if field_type == 'boolean':
+                    if field[-1] == 'id':
+                        try:
+                            res = int(value)
+                        except ValueError:
+                            res = get_many2one(klass.__name__, value)
+                    elif field_type == 'boolean':
                         if value.lower() == 'true':
                             res = True
                         elif value.lower() == 'false':
@@ -878,15 +892,13 @@ class ModelStorage(Model):
             # Import one2many fields
             nbrmax = 1
             for field in todo:
-                newfd = pool.get(fields_def[field]['relation']
-                        ).fields_get()
-                res = process_lines(data, prefix + [field], newfd,
-                        position)
-                (newrow, max2, _) = res
+                Relation = pool.get(fields_def[field]['relation'])
+                newfd = Relation.fields_get()
+                newrow, max2, _ = process_lines(
+                    data, prefix + [field], newfd, position, klass=Relation)
                 nbrmax = max(nbrmax, max2)
-                reduce(lambda x, y: x and y, newrow)
-                row[field] = (reduce(lambda x, y: x or y, list(newrow.values())) and
-                         [('create', [newrow])]) or []
+                create, write = [], []
+                dispatch(create, write, newrow, Relation)
                 i = max2
                 while (position + i) < len(data):
                     test = True
@@ -897,13 +909,17 @@ class ModelStorage(Model):
                             break
                     if not test:
                         break
-                    (newrow, max2, _) = \
-                        process_lines(data, prefix + [field], newfd,
-                            position + i)
-                    if reduce(lambda x, y: x or y, list(newrow.values())):
-                        row[field].append(('create', [newrow]))
+                    newrow, max2, _ = process_lines(
+                        data, prefix + [field], newfd, position + i,
+                        klass=Relation)
+                    dispatch(create, write, newrow, Relation)
                     i += max2
                     nbrmax = max(nbrmax, i)
+                row[field] = []
+                if create:
+                    row[field].append(('create', create))
+                if write:
+                    row[field].append(('write',) + tuple(write))
             if prefix_len == 0:
                 for i in range(max(nbrmax, 1)):
                     data.pop(0)
@@ -916,20 +932,35 @@ class ModelStorage(Model):
         fields_names = [x.split('/') for x in fields_names]
         fields_def = cls.fields_get()
 
-        to_create, translations, languages = [], [], set()
+        to_create, to_create_translations = [], []
+        to_write, to_write_translations = [], []
+        languages = set()
         while len(data):
-            (res, _, translate) = \
+            (row, _, translate) = \
                 process_lines(data, [], fields_def)
-            to_create.append(res)
-            translations.append(translate)
+            if dispatch(to_create, to_write, row):
+                to_write_translations.append(translate)
+            else:
+                to_create_translations.append(translate)
             languages.update(translate)
-        new_records = cls.create(to_create)
-        for language in languages:
-            translated = [t.get(language, {}) for t in translations]
-            with Transaction().set_context(language=language):
-                cls.write(*chain(*filter(itemgetter(1),
-                            zip(([r] for r in new_records), translated))))
-        return len(new_records)
+
+        def translate(records, translations):
+            for language in languages:
+                translated = [t.get(language, {}) for t in translations]
+                with Transaction().set_context(language=language):
+                    cls.write(*chain(*filter(itemgetter(1),
+                                zip(([r] for r in records), translated))))
+        count = 0
+        if to_create:
+            records = cls.create(to_create)
+            translate(records, to_create_translations)
+            count += len(records)
+        if to_write:
+            cls.write(*to_write)
+            records = sum(to_write[0:None:2], [])
+            translate(records, to_write_translations)
+            count += len(records)
+        return count
 
     @classmethod
     def check_xml_record(cls, records, values):
