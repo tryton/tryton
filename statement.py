@@ -677,6 +677,7 @@ class Line(
                 ('state', '!=', '')),
             ],
         states=_states,
+        context={'with_payment': False},
         depends=['party', 'account'] + _depends)
     origin = fields.Many2One('account.statement.origin', 'Origin',
         readonly=True,
