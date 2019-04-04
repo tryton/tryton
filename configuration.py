@@ -25,7 +25,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
     party_lang = fields.MultiValue(party_lang)
 
     @classmethod
-    def default_party_sequence(cls):
+    def default_party_sequence(cls, **pattern):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         try:
