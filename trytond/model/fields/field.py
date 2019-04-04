@@ -9,7 +9,7 @@ from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
 from trytond import backend
-from trytond.pyson import PYSON, PYSONEncoder, Eval
+from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
 from trytond.const import OPERATORS
 from trytond.tools.string_ import StringPartitioned
 from trytond.transaction import Transaction
@@ -160,6 +160,21 @@ def instanciate_values(Target, value):
             ids.append(data)
             return Target(data, **kwargs)
     return tuple(instance(x) for x in (value or []))
+
+
+def instantiate_context(field, record):
+    from ..modelstorage import EvalEnvironment
+    ctx = {}
+    if field.context:
+        pyson_context = PYSONEncoder().encode(field.context)
+        ctx.update(PYSONDecoder(
+                EvalEnvironment(record, record.__class__)).decode(
+                pyson_context))
+    datetime_ = None
+    if getattr(field, 'datetime_field', None):
+        datetime_ = getattr(record, field.datetime_field, None)
+        ctx = {'_datetime': datetime_}
+    return ctx
 
 
 def on_change_result(record):

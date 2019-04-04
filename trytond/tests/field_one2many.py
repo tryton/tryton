@@ -4,6 +4,7 @@
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class One2Many(ModelSQL):
@@ -110,6 +111,25 @@ class One2ManyFilterDomainTarget(ModelSQL):
     value = fields.Integer('Value')
 
 
+class One2ManyContext(ModelSQL):
+    "One2Many Context"
+    __name__ = 'test.one2many_context'
+    targets = fields.One2Many(
+        'test.one2many_context.target', 'origin', "Targets",
+        context={'test': 'foo'})
+
+
+class One2ManyContextTarget(ModelSQL):
+    "One2Many Context Target"
+    __name__ = 'test.one2many_context.target'
+    origin = fields.Many2One('test.one2many_context', "Origin")
+    context = fields.Function(fields.Char("context"), 'get_context')
+
+    def get_context(self, name):
+        context = Transaction().context
+        return context.get('test')
+
+
 def register(module):
     Pool.register(
         One2Many,
@@ -126,4 +146,6 @@ def register(module):
         One2ManyFilterTarget,
         One2ManyFilterDomain,
         One2ManyFilterDomainTarget,
+        One2ManyContext,
+        One2ManyContextTarget,
         module=module, type_='model')

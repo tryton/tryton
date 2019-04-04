@@ -7,7 +7,7 @@ from sql.functions import Substring, Position
 
 from trytond.pyson import PYSONEncoder
 from .field import (Field, search_order_validate, context_validate,
-    with_inactive_records)
+    with_inactive_records, instantiate_context)
 from .selection import SelectionMixin
 from ...transaction import Transaction
 from ...pool import Pool
@@ -144,10 +144,12 @@ class Reference(SelectionMixin, Field):
             else:
                 target, value = value
             Target = Pool().get(target)
-            if isinstance(value, dict):
-                value = Target(**value)
-            else:
-                value = Target(value)
+            ctx = instantiate_context(self, inst)
+            with Transaction().set_context(ctx):
+                if isinstance(value, dict):
+                    value = Target(**value)
+                else:
+                    value = Target(value)
         super(Reference, self).__set__(inst, value)
 
     def sql_format(self, value):

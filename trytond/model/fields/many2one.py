@@ -7,7 +7,7 @@ from sql.operators import Or
 
 from trytond.pyson import PYSONEncoder
 from .field import (Field, search_order_validate, context_validate,
-    with_inactive_records)
+    with_inactive_records, instantiate_context)
 from ...pool import Pool
 from ...tools import reduce_ids
 from ...transaction import Transaction
@@ -100,10 +100,13 @@ class Many2One(Field):
 
     def __set__(self, inst, value):
         Target = self.get_target()
-        if isinstance(value, dict):
-            value = Target(**value)
-        elif isinstance(value, int):
-            value = Target(value)
+        if isinstance(value, (dict, int)):
+            ctx = instantiate_context(self, inst)
+            with Transaction().set_context(ctx):
+                if isinstance(value, dict):
+                    value = Target(**value)
+                elif isinstance(value, int):
+                    value = Target(value)
         assert isinstance(value, (Target, type(None)))
         super(Many2One, self).__set__(inst, value)
 

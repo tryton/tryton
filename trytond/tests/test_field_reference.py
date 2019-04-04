@@ -398,6 +398,47 @@ class FieldReferenceTestCase(unittest.TestCase):
 
         self.assertEqual(reference.reference, None)
 
+    @with_transaction()
+    def test_context_attribute(self):
+        "Test context on reference attribute"
+        pool = Pool()
+        Reference = pool.get('test.reference_context')
+        Target = pool.get('test.reference_context.target')
+
+        target, = Target.create([{}])
+        record, = Reference.create([{
+                    'target': str(target),
+                    }])
+
+        self.assertEqual(record.target.context, 'foo')
+
+    @with_transaction()
+    def test_context_read(self):
+        "Test context on reference read"
+        pool = Pool()
+        Reference = pool.get('test.reference_context')
+        Target = pool.get('test.reference_context.target')
+
+        target, = Target.create([{}])
+        record, = Reference.create([{
+                    'target': str(target),
+                    }])
+        data, = Reference.read([record.id], ['target.context'])
+
+        self.assertEqual(data['target.']['context'], 'foo')
+
+    @with_transaction()
+    def test_context_set(self):
+        "Test context on reference set"
+        pool = Pool()
+        Reference = pool.get('test.reference_context')
+        Target = pool.get('test.reference_context.target')
+
+        target, = Target.create([{}])
+        record = Reference(target=str(target))
+
+        self.assertEqual(record.target.context, 'foo')
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(FieldReferenceTestCase)

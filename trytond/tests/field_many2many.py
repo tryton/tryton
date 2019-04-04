@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Many2Many(ModelSQL):
@@ -154,6 +155,31 @@ class Many2ManyTreeRelation(ModelSQL):
     child = fields.Many2One('test.many2many_tree', 'Child')
 
 
+class Many2ManyContext(ModelSQL):
+    "Many2Many Context"
+    __name__ = 'test.many2many_context'
+    targets = fields.Many2Many(
+        'test.many2many_context.relation', 'origin', 'target', "Targets",
+        context={'test': 'foo'})
+
+
+class Many2ManyContextRelation(ModelSQL):
+    "Many2Many Context Relation"
+    __name__ = 'test.many2many_context.relation'
+    origin = fields.Many2One('test.many2many_context', "Origin")
+    target = fields.Many2One('test.many2many_context.target', "Target")
+
+
+class Many2ManyContextTarget(ModelSQL):
+    "Many2Many Context Target"
+    __name__ = 'test.many2many_context.target'
+    context = fields.Function(fields.Char("context"), 'get_context')
+
+    def get_context(self, name):
+        context = Transaction().context
+        return context.get('test')
+
+
 def register(module):
     Pool.register(
         Many2Many,
@@ -176,4 +202,7 @@ def register(module):
         Many2ManyFilterDomainRelation,
         Many2ManyTree,
         Many2ManyTreeRelation,
+        Many2ManyContext,
+        Many2ManyContextTarget,
+        Many2ManyContextRelation,
         module=module, type_='model')

@@ -455,6 +455,43 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         self.assertListEqual(one2manys, [one2many])
         self.assertListEqual(one2manys_filtered, [])
 
+    @with_transaction()
+    def test_context_attribute(self):
+        "Test context on one2many attribute"
+        pool = Pool()
+        Many2One = pool.get('test.one2many_context')
+
+        record, = Many2One.create([{
+                    'targets': [('create', [{}])],
+                    }])
+
+        self.assertEqual(record.targets[0].context, 'foo')
+
+    @with_transaction()
+    def test_context_read(self):
+        "Test context on one2many read"
+        pool = Pool()
+        Many2One = pool.get('test.one2many_context')
+
+        record, = Many2One.create([{
+                    'targets': [('create', [{}])],
+                    }])
+        data, = Many2One.read([record.id], ['targets.context'])
+
+        self.assertEqual(data['targets.'][0]['context'], 'foo')
+
+    @with_transaction()
+    def test_context_set(self):
+        "Test context on one2many set"
+        pool = Pool()
+        Many2One = pool.get('test.one2many_context')
+        Target = pool.get('test.one2many_context.target')
+
+        target, = Target.create([{}])
+        record = Many2One(targets=[target.id])
+
+        self.assertEqual(record.targets[0].context, 'foo')
+
 
 class FieldOne2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):
     "Test Field One2Many Reference"

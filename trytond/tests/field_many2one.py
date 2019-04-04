@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, ModelStorage, DeactivableMixin, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Many2OneTarget(DeactivableMixin, ModelSQL):
@@ -64,6 +65,24 @@ class Many2OneMPTT(ModelSQL):
         return 0
 
 
+class Many2OneContext(ModelSQL):
+    "Many2One Context"
+    __name__ = 'test.many2one_context'
+    target = fields.Many2One(
+        'test.many2one_context.target', "target",
+        context={'test': 'foo'})
+
+
+class Many2OneTargetContext(ModelSQL):
+    "Many2One Target Context"
+    __name__ = 'test.many2one_context.target'
+    context = fields.Function(fields.Char("context"), 'get_context')
+
+    def get_context(self, name):
+        context = Transaction().context
+        return context.get('test')
+
+
 def register(module):
     Pool.register(
         Many2OneTarget,
@@ -73,4 +92,6 @@ def register(module):
         Many2OneTargetStorage,
         Many2OneTree,
         Many2OneMPTT,
+        Many2OneContext,
+        Many2OneTargetContext,
         module=module, type_='model')

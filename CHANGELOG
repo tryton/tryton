@@ -1,3 +1,5 @@
+* Set context on record instantiated by Field.__set__
+* Set context when reading related fields
 * Check read access on field in search order (issue8189)
 * Add base64 converter to URL map
 * Add HTML widget

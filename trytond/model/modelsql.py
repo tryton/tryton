@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from itertools import islice, chain, product
+from itertools import islice, chain, product, groupby
 from collections import OrderedDict, defaultdict
 from functools import wraps
 
@@ -19,6 +19,7 @@ from trytond import backend
 from trytond.tools import reduce_ids, grouped_slice, cursor_dict
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.pyson import PYSONEncoder, PYSONDecoder
 from trytond.cache import LRUDict
 from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
@@ -690,19 +691,21 @@ class ModelSQL(ModelStorage):
         # construct a clause for the rules :
         domain = Rule.domain_get(cls.__name__, mode='read')
 
-        fields_related = {}
-        datetime_fields = []
+        fields_related = defaultdict(set)
+        extra_fields = set()
         for field_name in fields_names:
             if field_name == '_timestamp':
                 continue
             if '.' in field_name:
-                field, field_related = field_name.split('.', 1)
-                fields_related.setdefault(field, [])
-                fields_related[field].append(field_related)
-            else:
-                field = cls._fields[field_name]
+                field_name, field_related = field_name.split('.', 1)
+                fields_related[field_name].add(field_related)
+            field = cls._fields[field_name]
             if hasattr(field, 'datetime_field') and field.datetime_field:
-                datetime_fields.append(field.datetime_field)
+                extra_fields.add(field.datetime_field)
+            if field.context:
+                extra_fields.update(fields.get_eval_fields(field.context))
+        all_fields = (
+            set(fields_names) | set(fields_related.keys()) | extra_fields)
 
         result = []
         table = cls.__table__()
@@ -722,7 +725,7 @@ class ModelSQL(ModelStorage):
             history_limit = 1
 
         columns = []
-        for f in fields_names + list(fields_related.keys()) + datetime_fields:
+        for f in all_fields:
             field = cls._fields.get(f)
             if field and field.sql_type():
                 columns.append(field.sql_column(table).as_(f))
@@ -779,8 +782,7 @@ class ModelSQL(ModelStorage):
                     cachable_fields.append(fname)
 
         # all fields for which there is a get attribute
-        getter_fields = [f for f in
-            fields_names + list(fields_related.keys()) + datetime_fields
+        getter_fields = [f for f in all_fields
             if f in cls._fields and hasattr(cls._fields[f], 'get')]
 
         if getter_fields and cachable_fields:
@@ -833,15 +835,6 @@ class ModelSQL(ModelStorage):
                     for row in result:
                         row[fname] = getter_result[row['id']]
 
-        def group_by(rows, keyfunc=None):
-            result = defaultdict(list)
-            if keyfunc is None:
-                result[None] = rows
-            else:
-                for row in rows:
-                    result[keyfunc(row)].append(row)
-            return result
-
         def read_related(field, Target, rows, fields):
             name = field.name
             target_ids = []
@@ -880,7 +873,7 @@ class ModelSQL(ModelStorage):
                         row[key] = None
 
         to_del = set()
-        for fname in chain(fields_related.keys(), datetime_fields):
+        for fname in set(fields_related.keys()) | extra_fields:
             if fname not in fields_names:
                 to_del.add(fname)
             if fname not in cls._fields:
@@ -889,27 +882,32 @@ class ModelSQL(ModelStorage):
                 continue
             field = cls._fields[fname]
             datetime_field = getattr(field, 'datetime_field', None)
-            if field._type == 'reference':
-                def keyfunc(row):
+
+            def keyfunc(row):
+                ctx = {}
+                if field.context:
+                    pyson_context = PYSONEncoder().encode(field.context)
+                    ctx.update(PYSONDecoder(row).decode(pyson_context))
+                if datetime_field:
+                    ctx['_datetime'] = row.get(datetime_field)
+                if field._type == 'reference':
                     value = row[fname]
                     if not value:
-                        return (None, None)
-                    model, _ = value.split(',', 1)
-                    return (pool.get(model), row.get(datetime_field))
-            else:
-                Target = field.get_target()
+                        Target = None
+                    else:
+                        model, _ = value.split(',', 1)
+                        Target = pool.get(model)
+                else:
+                    Target = field.get_target()
+                return Target, ctx
 
-                def keyfunc(row):
-                    return (Target, row.get(datetime_field))
-            for (Target, datetime_), rows in group_by(
-                    result, keyfunc).items():
-                ctx = {}
-                if datetime_:
-                    ctx['_datetime'] = datetime_
+            for (Target, ctx), rows in groupby(
+                    sorted(result, key=keyfunc), key=keyfunc):
+                rows = list(rows)
                 with Transaction().set_context(ctx):
                     if Target:
                         targets = read_related(
-                            field, Target, rows, fields_related[fname])
+                            field, Target, rows, list(fields_related[fname]))
                         targets = {t['id']: t for t in targets}
                     else:
                         targets = {}

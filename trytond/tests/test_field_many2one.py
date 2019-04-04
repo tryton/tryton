@@ -467,6 +467,47 @@ class FieldMany2OneTestCase(unittest.TestCase):
         "Test search many2one mptt not parent of empty"
         self._test_search_not_parent_of_empty('test.many2one_mptt')
 
+    @with_transaction()
+    def test_context_attribute(self):
+        "Test context on many2one attribute"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record, = Many2One.create([{
+                    'target': target.id,
+                    }])
+
+        self.assertEqual(record.target.context, 'foo')
+
+    @with_transaction()
+    def test_context_read(self):
+        "Test context on many2one read"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record, = Many2One.create([{
+                    'target': target.id,
+                    }])
+        data, = Many2One.read([record.id], ['target.context'])
+
+        self.assertEqual(data['target.']['context'], 'foo')
+
+    @with_transaction()
+    def test_context_set(self):
+        "Test context on many2one set"
+        pool = Pool()
+        Many2One = pool.get('test.many2one_context')
+        Target = pool.get('test.many2one_context.target')
+
+        target, = Target.create([{}])
+        record = Many2One(target=target.id)
+
+        self.assertEqual(record.target.context, 'foo')
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(FieldMany2OneTestCase)

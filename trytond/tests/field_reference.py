@@ -3,6 +3,7 @@
 
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class Reference(ModelSQL):
@@ -29,9 +30,29 @@ class ReferenceRequired(ModelSQL):
             ], required=True)
 
 
+class ReferenceContext(ModelSQL):
+    "Reference Context"
+    __name__ = 'test.reference_context'
+    target = fields.Reference("Reference", selection=[
+            ('test.reference_context.target', "Target"),
+            ], context={'test': 'foo'})
+
+
+class ReferenceContextTarget(ModelSQL):
+    "Reference Context Target"
+    __name__ = 'test.reference_context.target'
+    context = fields.Function(fields.Char("context"), 'get_context')
+
+    def get_context(self, name):
+        context = Transaction().context
+        return context.get('test')
+
+
 def register(module):
     Pool.register(
         Reference,
         ReferenceTarget,
         ReferenceRequired,
+        ReferenceContext,
+        ReferenceContextTarget,
         module=module, type_='model')

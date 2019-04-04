@@ -7,7 +7,7 @@ from sql.conditionals import Coalesce
 
 from trytond.pyson import PYSONEncoder
 from .field import (Field, size_validate, instanciate_values, domain_validate,
-    search_order_validate, context_validate)
+    search_order_validate, context_validate, instantiate_context)
 from ...pool import Pool
 from ...tools import grouped_slice
 from ...transaction import Transaction
@@ -253,7 +253,10 @@ class One2Many(Field):
 
     def __set__(self, inst, value):
         Target = self.get_target()
-        super(One2Many, self).__set__(inst, instanciate_values(Target, value))
+        ctx = instantiate_context(self, inst)
+        with Transaction().set_context(ctx):
+            records = instanciate_values(Target, value)
+        super(One2Many, self).__set__(inst, records)
 
     def convert_domain(self, domain, tables, Model):
         from ..modelsql import convert_from
