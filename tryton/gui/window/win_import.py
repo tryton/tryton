@@ -67,7 +67,7 @@ class WinImport(WinCSV):
         fields_order.sort(
             key=lambda x: fields[x].get('string', ''), reverse=True)
         for field in fields_order:
-            if not fields[field].get('readonly', False):
+            if not fields[field].get('readonly', False) or field == 'id':
                 self.fields_data[prefix_field + field] = fields[field]
                 name = fields[field]['string'] or field
                 node = self.model1.insert(
