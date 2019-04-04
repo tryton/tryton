@@ -416,24 +416,26 @@ class Invoice(metaclass=PoolMeta):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Date = pool.get('ir.date')
+        context = Transaction().context
 
         today = Date.today()
 
         amounts = super(Invoice, cls).get_amount_to_pay(invoices, name)
 
-        for invoice in invoices:
-            for line in invoice.lines_to_pay:
-                if line.reconciliation:
-                    continue
-                if (name == 'amount_to_pay_today'
-                        and line.maturity_date > today):
-                    continue
-                payment_amount = Decimal(0)
-                for payment in line.payments:
-                    if payment.state != 'failed':
-                        with Transaction().set_context(date=payment.date):
-                            payment_amount += Currency.compute(
-                                payment.currency, payment.amount,
-                                invoice.currency)
-                amounts[invoice.id] -= payment_amount
+        if context.get('with_payment', True):
+            for invoice in invoices:
+                for line in invoice.lines_to_pay:
+                    if line.reconciliation:
+                        continue
+                    if (name == 'amount_to_pay_today'
+                            and line.maturity_date > today):
+                        continue
+                    payment_amount = Decimal(0)
+                    for payment in line.payments:
+                        if payment.state != 'failed':
+                            with Transaction().set_context(date=payment.date):
+                                payment_amount += Currency.compute(
+                                    payment.currency, payment.amount,
+                                    invoice.currency)
+                    amounts[invoice.id] -= payment_amount
         return amounts
