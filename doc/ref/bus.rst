@@ -73,8 +73,9 @@ Tryton provides a shortcut to send a notification with the `notify` method.
     notification popup. The meaning of `title`, `body` and `priority` is
     defined in :ref:`bus_notification_spec`.
 
-    If `user` is not set, the current :ref:`Transaction.user` is used.
-    Otherwise `user` is the user ID to notify.
+    If `user` is not set, the current
+    :attr:`~trytond.transaction.Transaction.user` is used.  Otherwise `user` is
+    the user ID to notify.
 
     If `client` is not set then every client of the user will receive the
     message. If `client` and `user` are not set, the system will send the
