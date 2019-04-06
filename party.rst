@@ -10,3 +10,6 @@ Party
 
     `Relationship </projects/modules-party-relationship/en/latest>`_
         Defines relation between parties.
+
+    `SIRET </projects/modules-party-siret/en/latest>`_
+        Adds SIRET and SIREN.

@@ -29,6 +29,9 @@ Sale
     `Payment </projects/modules-sale-payment/en/latest>`_
         Pays sales before posting the invoice.
 
+    `Price List </projects/modules-sale-price-list/en/latest>`_
+        Applies price list.
+
     `Product Customer </projects/modules-sale-product-customer/en/latest>`_
         Adds customer's name and code for product.
 

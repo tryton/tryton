@@ -11,6 +11,9 @@ Accounting
     `Asset </projects/modules-account-asset/en/latest>`_
         Depreciation of fixed assets.
 
+    `Belgian <projects/modules-account-be/en/latest>`_
+        Belgian accounting.
+
     `Credit Limit </projects/modules-account-credit-limit/en/latest>`_
         Manages credit limit of parties.
 
@@ -41,11 +44,23 @@ Accounting
     `French Chorus </projects/modules-account-fr-chorus/en/latest>`_
         Sends invoices via Chorus Pro.
 
+    `German </projects/modules-account-de-skr03>`_
+        German accounting.
+
     `Invoice </projects/modules-account-invoice/en/latest>`_
         Manages customer and supplier invoices.
 
     `Invoice Correction </projects/modules-account-invoice-correction/en/latest>`_
         Correct price on posted invoices.
+
+    `Invoice History </projects/modules-account-invoice-history/en/latest>`_
+        Historize invoice.
+
+    `Invoice Line Standalone </projects/modules-account-invoice-line-standalone/en/latest>`_
+        Supports invoice line without invoice.
+
+    `Invoice Stock </projects/modules-account-invoice-stock/en/latest>`_
+        Links invoice lines and stock moves.
 
     `Payment </projects/modules-account-payment/en/latest>`_
         Manages payments.
@@ -61,6 +76,9 @@ Accounting
 
     `Payment Stripe </projects/modules-account-payment-stripe/en/latest>`_
         Receives payment from Stripe.
+
+    `Product </projects/modules-account-product/en/latest>`_
+        Adds accounting on product and category.
 
     `Statement </projects/modules-account-statement/en/latest>`_
         Books bank statement, cash daybook etc.

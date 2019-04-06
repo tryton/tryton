@@ -8,6 +8,9 @@ Purchase
     `Purchase </projects/modules-purchase/en/latest>`_
         Fundamentals to follow purchases.
 
+    `Invoice Line Standalone </projects/modules-purchase-invoice-line-standalone/en/latest>`_
+        Generates invoice lines.
+
     `Request </projects/modules-purchase-request/en/latest>`_
         Collects the purchase requests.
 

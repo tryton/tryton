@@ -20,6 +20,9 @@ Stock
     `Location Move </projects/modules-stock-location-move/en/latest>`_
         Makes location movable.
 
+    `Location Sequence </projects/modules-stock-location-sequence/en/latest>`_
+        Orders locations.
+
     `Lot </projects/modules-stock-lot/en/latest>`_
         Track products with lot.
 
@@ -52,6 +55,9 @@ Stock
 
     `Supply </projects/modules-stock-supply/en/latest>`_
         Supplies warehouses.
+
+    `Supply Forecast </projects/modules-stock-supply-forecast/en/latest>`_
+        Uses forecast to supply warehouses.
 
     `Supply Day </projects/modules-stock-supply-day/en/latest>`_
         Compute supply date per week day.

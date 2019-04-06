@@ -13,3 +13,6 @@ Project
 
     `Plan </projects/modules-project-plan/en/latest>`_
         Plans the projects.
+
+    `Revenue </projects/modules-project-revenue/en/latest>`_
+        Follows cost and revenue of projects.

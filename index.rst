@@ -16,6 +16,14 @@ Main
     `Scripting Client </projects/client-library/en/latest>`_
         The library to access models, wizards and reports like a client.
 
+Backend
+-------
+
+.. glossary::
+
+    `GIS </projects/backend-gis/en/latest>`_
+        Adds GIS support.
+
 Modules
 -------
 
@@ -23,6 +31,9 @@ Modules
 
     :ref:`Financial Accounting <index-accounting>`
         Reports all transactions of your chart of accounts.
+
+    :ref:`Analytic Accounting <index-analytic-accounting>`
+        Analyze your accounts.
 
     :ref:`Commission <index-commission>`
         Commission sale's agents.
@@ -51,7 +62,7 @@ Modules
     :ref:`Stock <index-stock>`
         Tracks goods in your warehouses.
 
-    `Timesheet </projects/modules-timesheet/en/latest>`_
+    :ref:`Timesheet <index-timesheet>`
         Tracks time spend.
 
 
@@ -72,6 +83,9 @@ Modules
 
     `Customs </projects/modules-customs/en/latest>`_
         Defines customs duty per tariff code.
+
+    `Dashboard </projects/modules-dashboard/en/latest>`_
+        Customized dashboard.
 
     `Google Maps </projects/modules-google-maps/en/latest>`_
         Links address to Google map.

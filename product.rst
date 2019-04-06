@@ -26,6 +26,9 @@ Product
     `Measurements </projects/modules-product-measurements/en/latest>`_
         Adds measurements to products.
 
+    `Price List </projects/modules-product-price-list/en/latest>`_
+        Computes price.
+
     `Price List Dates </projects/modules-product-price-list-dates/en/latest>`_
         Sets start and end date on price lists.
 
