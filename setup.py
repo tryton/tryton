@@ -26,7 +26,7 @@ def get_require_version(name):
 
 
 config = ConfigParser()
-config.read_file(open('tryton.cfg'))
+config.read_file(open(os.path.join(os.path.dirname(__file__), 'tryton.cfg')))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
     if key in info:
@@ -59,11 +59,17 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Tryton module for electronic document UNECE codes',
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://hg.tryton.org/modules/edocument_unece',
+        },
     keywords='tryton UNECE',
     package_dir={'trytond.modules.edocument_unece': '.'},
     packages=(
