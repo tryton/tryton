@@ -3,6 +3,16 @@ Account Module
 
 The account module defines fundamentals for most of accounting needs.
 
+The module generates minimal chart of accounts for many languages. The XML
+files for each language are generated from the same original XML file thanks to
+the localize.xsl XSLT script. The script will produce on the standard output
+the desired XML file. The XSLT script can be launched with the following
+command::
+
+    xsltproc --stringparam lang <lang> localize.xsl minimal_chart.xml
+
+where ``lang`` is one of the languages.
+
 
 Fiscal Year
 ***********
