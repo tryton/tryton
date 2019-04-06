@@ -52,11 +52,17 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Adds Geographic Information System support to trytond',
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://hg.tryton.org/trytond-gis',
+        },
     keywords='tryton GIS',
     packages=find_packages(),
     classifiers=[
