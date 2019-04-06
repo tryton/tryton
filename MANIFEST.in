@@ -1,7 +1,6 @@
 include LICENSE
 include COPYRIGHT
-include README
-include INSTALL
+include README.rst
 include CHANGELOG
 include setup.nsi
 include setup-single.nsi

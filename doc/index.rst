@@ -1,18 +1,18 @@
-.. Tryton documentation master file. You can adapt this file
-   completely to your liking, but it should at least contain the root
-   `toctree` directive.
+=====================
+Tryton Desktop Client
+=====================
 
-Tryton Client
-#############
+Tryton is a Graphical User Interface to Tryton based on GTK__ and Python__.
 
-Contents:
+__ http://www.gtk.org
+__ http://www.python.org
+
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
 
-   introduction
    installation
-
    usage
-
    glossary
