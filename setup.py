@@ -48,11 +48,17 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Library to access Tryton server as a client',
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://hg.tryton.org/proteus',
+        },
     keywords='tryton library cli',
     packages=find_packages(),
     classifiers=[
