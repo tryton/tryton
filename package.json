@@ -12,7 +12,8 @@
     "url": "http://hg.tryton.org/sao"
   },
   "bugs": {
-    "url": "http://bugs.tryton.org/"
+    "url": "http://bugs.tryton.org/",
+    "email": "bugs@tryton.org"
   },
   "license": "GPL-3.0+",
   "files": [
@@ -20,7 +21,7 @@
     "CHANGELOG",
     "Gruntfile.js",
     "LICENSE",
-    "README",
+    "README.rst",
     "bower.json",
     "dist",
     "images",

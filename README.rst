@@ -17,26 +17,3 @@ where the archive was unpacked, and run:
 
 Note that the entry `root` in the section `[web]` of `trytond.conf` must be set
 to this directory.
-
-Support
--------
-
-If you encounter any problems with Tryton, please don't hesitate to ask
-questions on the Tryton forum or IRC channel:
-
-  http://www.tryton.org/forum
-
-License
--------
-
-See LICENSE
-
-Copyright
----------
-
-See COPYRIGHT
-
-
-For more information please visit the Tryton web site:
-
-  http://www.tryton.org/
