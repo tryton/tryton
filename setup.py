@@ -111,7 +111,7 @@ setup(name=name,
         'Topic :: Office/Business',
         ],
     license='GPL-3',
-    python_required='>=3.4',
+    python_requires='>=3.4',
     install_requires=requires,
     extras_require={
     },
