@@ -1,24 +1,8 @@
 .. _index:
 
-=====================
-trytond documentation
-=====================
-
-Support
-=======
-
-* Looking for specific information? Try the :ref:`genindex`, :ref:`modindex`.
-
-* Search information in the `mailing list`_.
-
-* Ask a question in the `#tryton IRC channel`_, or search the `IRC logs`_.
-
-* Report issues with trytond on `issue tracker`_.
-
-.. _mailing list: http://groups.tryton.org/
-.. _#tryton IRC channel: irc://irc.freenode.net/tryton
-.. _IRC logs: http://www.tryton.org/~irclog/
-.. _issue tracker: http://bugs.tryton.org/
+=============
+Tryton Server
+=============
 
 First steps
 ===========
