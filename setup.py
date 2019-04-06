@@ -26,7 +26,7 @@ def get_require_version(name):
 
 
 config = ConfigParser()
-config.read_file(open('tryton.cfg'))
+config.read_file(open(os.path.join(os.path.dirname(__file__), 'tryton.cfg')))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
     if key in info:
@@ -60,11 +60,17 @@ setup(name=name,
     version=version,
     description=('The package shipping module of the '
         'Tryton application platform.'),
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
     download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://hg.tryton.org/modules/stock_package_shipping',
+        },
     keywords='tryton stock package shipping',
     package_dir={'trytond.modules.stock_package_shipping': '.'},
     packages=(
