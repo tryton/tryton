@@ -1,11 +1,5 @@
-include INSTALL
-include README
-include COPYRIGHT
 include CHANGELOG
+include COPYRIGHT
 include LICENSE
-include tryton.cfg
-include *.xml
-include view/*.xml
-include locale/*.po
-include scripts/*.py
+include README.rst
 include doc/*
