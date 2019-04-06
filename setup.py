@@ -26,7 +26,7 @@ def get_require_version(name):
 
 
 config = ConfigParser()
-config.read_file(open('tryton.cfg'))
+config.read_file(open(os.path.join(os.path.dirname(__file__), 'tryton.cfg')))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
     if key in info:
@@ -36,6 +36,14 @@ major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
 name = 'trytond_purchase_requisition'
+
+download_url = 'http://downloads.tryton.org/%s.%s/' % (
+    major_version, minor_version)
+if minor_version % 2:
+    version = '%s.%s.dev0' % (major_version, minor_version)
+    download_url = (
+        'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
+            name[8:], name, version))
 
 requires = []
 for dep in info.get('depends', []):
@@ -53,10 +61,17 @@ setup(name=name,
     description=('Allows users to enter requests for product supply '
         '(requisition). This will create a "Purchase request" by line '
         'which will be treated by the purchasing department.'),
-    long_description=read('README'),
+    long_description=read('README.rst'),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org',
+    download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://hg.tryton.org/modules/purchase_requisition',
+        },
     keywords='tryton purchase requisition',
     package_dir={'trytond.modules.purchase_requisition': '.'},
     packages=(
