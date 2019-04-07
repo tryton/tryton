@@ -1,3 +1,4 @@
+* Remove support for Python 3.4
 * Add dimension and geometry type in field definition
 
 Version 5.0.0 - 2018-10-01
