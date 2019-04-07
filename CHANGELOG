@@ -1,3 +1,4 @@
+* Remove support for Python 3.4
 * Allow to update record when importing data
 * Set context on record instantiated by Field.__set__
 * Set context when reading related fields
