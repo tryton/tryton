@@ -25,12 +25,6 @@ services:
 
 matrix:
     include:
-        - IMAGE: python:3.4
-          TOXENV: py34
-          DATABASE: sqlite
-        - IMAGE: python:3.4
-          TOXENV: py34
-          DATABASE: postgresql
         - IMAGE: python:3.5
           TOXENV: py35
           DATABASE: sqlite
