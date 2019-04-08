@@ -988,8 +988,10 @@ class Model(object):
         else:
             definitions = self._fields.iteritems()
         for field, definition in definitions:
+            if field == 'id':
+                continue
             if not fields:
-                if field == 'id' or (skip and field in skip):
+                if skip and field in skip:
                     continue
                 if (self.id >= 0
                         and (field not in self._values
