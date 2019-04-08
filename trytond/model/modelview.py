@@ -603,7 +603,12 @@ class ModelView(Model):
 
             change = cls.__change_buttons[button_name]
             if change:
-                element.set('change', encoder.encode(list(change)))
+                change = list(change)
+                # Add id to change if the button is not cached
+                # Not having the id increase the efficiency of the cache
+                if cls.__rpc__[button_name].cache:
+                    change.append('id')
+                element.set('change', encoder.encode(change))
             if not is_instance_method(cls, button_name):
                 element.set('type', 'class')
             else:

@@ -435,6 +435,15 @@ class Field(object):
             'sortable': hasattr(model, 'search'),
             }
 
+        # Add id to on_change's if they are not cached
+        # Not having the id increase the efficiency of the cache
+        for method in ['on_change', 'on_change_with']:
+            changes = definition[method]
+            if changes:
+                method_name = method + '_' + self.name
+                if not model.__rpc__[method_name].cache:
+                    changes.append('id')
+
         name = '%s,%s' % (model.__name__, self.name)
         for attr, ttype in [('string', 'field'), ('help', 'help')]:
             definition[attr] = ''

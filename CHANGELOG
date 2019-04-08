@@ -1,3 +1,4 @@
+* Do not set id for on_change calls if cached
 * Add cache on RPC
 * Remove support for Python 3.4
 * Allow to update record when importing data
