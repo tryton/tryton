@@ -15,8 +15,19 @@ except ImportError:
 from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule, BaseConverter
 from werkzeug.exceptions import abort, HTTPException, InternalServerError
-from werkzeug.contrib.fixers import ProxyFix
-from werkzeug.wsgi import SharedDataMiddleware
+try:
+    from werkzeug.middleware.proxy_fix import ProxyFix
+
+    def NumProxyFix(app, num_proxies):
+        return ProxyFix(app,
+            x_for=num_proxies, x_proto=num_proxies, x_host=num_proxies,
+            x_port=num_proxies, x_prefix=num_proxies)
+except ImportError:
+    from werkzeug.contrib.fixers import ProxyFix as NumProxyFix
+try:
+    from werkzeug.middleware.shared_data import SharedDataMiddleware
+except ImportError:
+    from werkzeug.wsgi import SharedDataMiddleware
 
 import wrapt
 
@@ -195,6 +206,6 @@ if config.get('web', 'root'):
         cache_timeout=config.getint('web', 'cache_timeout'))
 num_proxies = config.getint('web', 'num_proxies')
 if num_proxies:
-    app.wsgi_app = ProxyFix(app.wsgi_app, num_proxies=num_proxies)
+    app.wsgi_app = NumProxyFix(app.wsgi_app, num_proxies)
 import trytond.protocols.dispatcher
 import trytond.bus
