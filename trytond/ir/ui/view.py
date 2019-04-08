@@ -44,6 +44,7 @@ class View(ModelSQL, ModelView):
             ('graph', 'Graph'),
             ('calendar', 'Calendar'),
             ('board', 'Board'),
+            ('list-form', "List Form"),
             ], 'View Type', select=True,
         domain=[
             If(Bool(Eval('inherit')),
@@ -100,6 +101,8 @@ class View(ModelSQL, ModelView):
         key = (cls.__name__, type_)
         rng = cls._get_rng_cache.get(key)
         if rng is None:
+            if type_ == 'list-form':
+                type_ = 'form'
             rng_name = os.path.join(os.path.dirname(__file__), type_ + '.rng')
             with open(rng_name, 'rb') as fp:
                 rng = etree.fromstring(fp.read())

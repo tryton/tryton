@@ -29,11 +29,13 @@ the name of the XML file in the `view` directory:
   </record>
 
 
-There is three types of views:
+There are different types of views:
 
     * Form
 
     * Tree
+
+    * List-Forms
 
     * Graph
 
@@ -618,6 +620,16 @@ Display a button.
       the button is clicked.
 
     * ``help``: see in common-attributes-help_
+
+List-Form view
+==============
+
+The list-form views use the same schema as the form views.
+
+List-forms display records as a list of editable forms.
+
+.. note:: The performance of the list-form does not allow to scale well for
+          large number of records
 
 Graph view
 ==========
