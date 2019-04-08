@@ -1708,6 +1708,8 @@
                     })]]
                 }], {}]
             }, this.session).then(function(new_id) {
+                this.session.cache.clear(
+                    'model.' + this.screen.model_name + '.view_toolbar_get');
                 this.predef_exports[new_id] = fields;
                 if (selection.length === 0) {
                     this.add_to_predef(new_id, name);
@@ -1728,6 +1730,8 @@
                 'method': 'model.ir.export.delete',
                 'params': [[export_id], {}]
             }, this.session).then(function() {
+                this.session.cache.clear(
+                    'model.' + this.screen.model_name + '.view_toolbar_get');
                 delete this.predef_exports[export_id];
                 selection.remove();
             }.bind(this));

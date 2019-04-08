@@ -1997,7 +1997,10 @@
                     }
                 }
             }
-            return jQuery.when.apply(jQuery, prms);
+            return jQuery.when.apply(jQuery, prms).then(function() {
+                Sao.Session.current_session.cache.clear(
+                    'model.ir.ui.view_tree_state.get');
+            });
         },
         get_tree_domain: function(parent_) {
             var domain;

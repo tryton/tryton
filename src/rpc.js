@@ -15,9 +15,22 @@
         var params = jQuery.extend([], args.params);
         params.push(jQuery.extend({}, session.context, params.pop()));
 
+        if (session.cache && session.cache.cached(args.method)) {
+            result = session.cache.get(
+                args.method,
+                JSON.stringify(Sao.rpc.prepareObject(params)));
+            if (result !== undefined) {
+                if (async) {
+                    return jQuery.when(result);
+                } else {
+                    return result;
+                }
+            }
+        }
+
         var timeoutID = Sao.common.processing.show();
 
-        var ajax_success = function(data) {
+        var ajax_success = function(data, status_, query) {
             if (data === null) {
                 Sao.common.warning.run('',
                         Sao.i18n.gettext('Unable to reach the server'));
@@ -76,8 +89,19 @@
                 }
                 dfd.reject();
             } else {
-                dfd.resolve(data.result);
                 result = data.result;
+                if (session.cache) {
+                    var cache = query.getResponseHeader('X-Tryton-Cache');
+                    if (cache) {
+                        cache = parseInt(cache, 10);
+                        session.cache.set(
+                            args.method,
+                            JSON.stringify(Sao.rpc.prepareObject(params)),
+                            cache,
+                            result);
+                    }
+                }
+                dfd.resolve(result);
             }
         };
 

@@ -12,6 +12,7 @@
         init: function(database, login) {
             this.user_id = null;
             this.session = null;
+            this.cache = new Cache();
             this.prm = jQuery.when();  // renew promise
             this.database = database;
             this.login = login;
@@ -332,6 +333,41 @@
         },
         get_password: function(message) {
             return Sao.common.ask.run(message, false);
+        },
+    });
+
+    var Cache = Sao.class_(Object, {
+        init: function() {
+            this.store = {};
+        },
+        cached: function(prefix) {
+            return prefix in this.store;
+        },
+        set: function(prefix, key, expire, value) {
+            expire = new Date(new Date().getTime() + expire * 1000);
+            Sao.setdefault(this.store, prefix, {})[key] = {
+                'expire': expire,
+                'value': value,
+            };
+        },
+        get: function(prefix, key) {
+            var now = new Date();
+            var data = Sao.setdefault(this.store, prefix, {})[key];
+            if (!data) {
+                return undefined;
+            }
+            if (data.expire < now) {
+                delete this.store[prefix][key];
+                return undefined;
+            }
+            return data.value;
+        },
+        clear: function(prefix) {
+            if (prefix) {
+                this.store[prefix] = {};
+            } else {
+                this.store = {};
+            }
         },
     });
 
