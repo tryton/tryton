@@ -16,6 +16,7 @@ module.exports = function(grunt) {
       'src/view/tree.js',
       'src/view/graph.js',
       'src/view/calendar.js',
+      'src/view/list_form.js',
       'src/action.js',
       'src/common.js',
       'src/window.js',

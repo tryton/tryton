@@ -216,7 +216,7 @@ function eval_pyson(value){
         editable: true,
         view_type: 'form',
         xml_parser: Sao.View.FormXMLViewParser,
-        init: function(screen, xml) {
+        init: function(view_id, screen, xml) {
             this.el = jQuery('<div/>', {
                 'class': 'form'
             });
@@ -224,7 +224,7 @@ function eval_pyson(value){
             this.expandables = [];
             this.containers = [];
             this.widget_id = 0;
-            Sao.View.Form._super.init.call(this, screen, xml);
+            Sao.View.Form._super.init.call(this, view_id, screen, xml);
         },
         get_fields: function() {
             return Object.keys(this.widgets);

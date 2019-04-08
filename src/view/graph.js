@@ -50,12 +50,12 @@
         editable: false,
         view_type: 'graph',
         xml_parser: Sao.View.GraphXMLViewParser,
-        init: function(screen, xml, children_field) {
+        init: function(view_id, screen, xml, children_field) {
             this.el = jQuery('<div/>', {
                 'class': 'graph'
             });
 
-            Sao.View.Graph._super.init.call(this, screen, xml);
+            Sao.View.Graph._super.init.call(this, view_id, screen, xml);
         },
         display: function() {
             return this.widgets.root.display(this.group);

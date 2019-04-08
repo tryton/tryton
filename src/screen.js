@@ -864,8 +864,8 @@
             for (field in fields) {
                 this.group.model.fields[field].views.add(view_id);
             }
-            var view_widget = Sao.View.parse(this, xml_view, view.field_childs);
-            view_widget.view_id = view_id;
+            var view_widget = Sao.View.parse(
+                this, view_id, view.type, xml_view, view.field_childs);
             this.views.push(view_widget);
 
             return view_widget;
@@ -1249,7 +1249,7 @@
             var view = this.current_view;
             view.set_value();
             this.set_cursor(false, false);
-            if (~['tree', 'form'].indexOf(view.view_type) &&
+            if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1278,7 +1278,7 @@
             var view = this.current_view;
             view.set_value();
             this.set_cursor(false, false);
-            if (~['tree', 'form'].indexOf(view.view_type) &&
+            if (~['tree', 'form', 'list-form'].indexOf(view.view_type) &&
                     this.current_record && this.current_record.group) {
                 var group = this.current_record.group;
                 var record = this.current_record;
@@ -1456,7 +1456,8 @@
         set_cursor: function(new_, reset_view) {
             if (!this.current_view) {
                 return;
-            } else if (~['tree', 'form'].indexOf(this.current_view.view_type)) {
+            } else if (~['tree', 'form', 'list-form'].indexOf(
+                    this.current_view.view_type)) {
                 this.current_view.set_cursor(new_, reset_view);
             }
         },

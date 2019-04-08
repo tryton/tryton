@@ -77,14 +77,14 @@
         editable: false,
         view_type: 'calendar',
         xml_parser: Sao.View.CalendarXMLViewParser,
-        init: function(screen, xml) {
+        init: function(view_id, screen, xml) {
             // Used to check if the events are still processing
             this.processing = true;
             this.fields = [];
             this.el = jQuery('<div/>', {
                 'class': 'calendar'
             });
-            Sao.View.Calendar._super.init.call(this, screen, xml);
+            Sao.View.Calendar._super.init.call(this, view_id, screen, xml);
             //this.el.fullCalendar('changeView', defaultview);
         },
         get_colors: function(record) {

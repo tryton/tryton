@@ -76,7 +76,7 @@
     Sao.View.Tree = Sao.class_(Sao.View, {
         view_type: 'tree',
         xml_parser: Sao.View.TreeXMLViewParser,
-        init: function(screen, xml, children_field) {
+        init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
             this.sum_widgets = {};
             this.columns = [];
@@ -87,7 +87,7 @@
             });
             this.expanded = {};
 
-            Sao.View.Tree._super.init.call(this, screen, xml);
+            Sao.View.Tree._super.init.call(this, view_id, screen, xml);
 
             // Table of records
             this.rows = [];

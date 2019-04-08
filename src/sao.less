@@ -65,6 +65,7 @@
 }
 
 .table-row-variant(selected, @state-info-bg);
+.list-group-item-variant(selected, @state-info-bg, @state-info-text);
 
 .tab-form, .tab-board {
     nav.toolbar {
@@ -186,6 +187,12 @@ img.icon {
             display: none;
         }
     }
+}
+
+.list-form {
+    overflow-y: auto;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .treeview {
@@ -417,7 +424,7 @@ img.icon {
         }
     }
     .form-one2many-content, .form-many2many-content {
-        .treeview {
+        .treeview, .list-form {
             min-height: 100px;
             max-height: 300px;
         }
