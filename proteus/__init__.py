@@ -1007,7 +1007,6 @@ class Model(object):
                 scope = scope[i]
             else:
                 res[arg] = scope
-        res['id'] = self.id
         return res
 
     def _on_change_set(self, field, value):
