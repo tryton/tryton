@@ -26,6 +26,7 @@ from tryton.common import RPCExecute, RPCException, MODELACCESS, \
     node_attributes, sur, RPCContextReload, warning
 from tryton.action import Action
 from tryton.pyson import PYSONDecoder
+from tryton.rpc import clear_cache
 
 _ = gettext.gettext
 logger = logging.getLogger(__name__)
@@ -845,6 +846,7 @@ class Screen(SignalEvent):
                             self.model_name, json_domain, view.children_field,
                             json_paths, json_selected_path,
                             process_exception=False)
+                        clear_cache('model.ir.ui.view_tree_state.get')
                     except Exception:
                         logger.warn(
                             _('Unable to set view tree state'), exc_info=True)

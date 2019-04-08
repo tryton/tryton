@@ -13,7 +13,7 @@ from gi.repository import Gdk, GObject, Gtk
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
 from tryton.gui.window.win_csv import WinCSV
-from tryton.rpc import clear_toolbar_cache
+from tryton.rpc import clear_cache
 
 _ = gettext.gettext
 
@@ -217,7 +217,7 @@ class WinExport(WinCSV):
                     context=self.context)
         except RPCException:
             return
-        clear_toolbar_cache()
+        clear_cache('model.%s.view_toolbar_get' % self.model)
         if iter_ is None:
             self.predef_model.append((new_id, fields, name))
         else:
@@ -237,7 +237,7 @@ class WinExport(WinCSV):
                 context=self.context)
         except RPCException:
             return
-        clear_toolbar_cache()
+        clear_cache('model.%s.view_toolbar_get' % self.model)
         for i in range(len(self.predef_model)):
             if self.predef_model[i][0] == export_id:
                 del self.predef_model[i]

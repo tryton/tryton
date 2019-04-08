@@ -75,7 +75,6 @@ def server_version(host, port):
 def login(parameters):
     from tryton import common
     global CONNECTION, _USER
-    global _VIEW_CACHE, _TOOLBAR_CACHE, _KEYWORD_CACHE
     host = CONFIG['login.host']
     hostname = common.get_hostname(host)
     port = common.get_port(host)
@@ -91,17 +90,13 @@ def login(parameters):
     session = ':'.join(map(str, [username] + result))
     if CONNECTION is not None:
         CONNECTION.close()
-    CONNECTION = ServerPool(hostname, port, database, session=session)
-    _VIEW_CACHE = {}
-    _TOOLBAR_CACHE = {}
-    _KEYWORD_CACHE = {}
-
+    CONNECTION = ServerPool(
+        hostname, port, database, session=session, cache=not CONFIG['dev'])
     bus.listen(CONNECTION)
 
 
 def logout():
     global CONNECTION, _USER
-    global _VIEW_CACHE, _TOOLBAR_CACHE, _KEYWORD_CACHE
     if CONNECTION is not None:
         try:
             logging.getLogger(__name__).info('common.db.logout()')
@@ -112,31 +107,12 @@ def logout():
         CONNECTION.close()
         CONNECTION = None
     _USER = None
-    _VIEW_CACHE = {}
-    _TOOLBAR_CACHE = {}
-    _KEYWORD_CACHE = {}
 
 
 def _execute(blocking, *args):
     global CONNECTION, _USER
     if CONNECTION is None:
         raise TrytonServerError('403')
-    key = False
-    model = args[1]
-    method = args[2]
-    if not CONFIG['dev']:
-        if method == 'fields_view_get':
-            key = str(args)
-            if key in _VIEW_CACHE:
-                return _VIEW_CACHE[key]
-        elif method == 'view_toolbar_get':
-            key = str(args)
-            if key in _TOOLBAR_CACHE:
-                return _TOOLBAR_CACHE[key]
-        elif model == 'ir.action.keyword' and method == 'get_keyword':
-            key = str(args)
-            if key in _KEYWORD_CACHE:
-                return _KEYWORD_CACHE[key]
     try:
         name = '.'.join(args[:3])
         args = args[3:]
@@ -145,13 +121,6 @@ def _execute(blocking, *args):
             result = getattr(conn, name)(*args)
     except (http.client.CannotSendRequest, socket.error) as exception:
         raise TrytonServerUnavailable(*exception.args)
-    if not CONFIG['dev']:
-        if key and method == 'fields_view_get':
-            _VIEW_CACHE[key] = result
-        elif key and method == 'view_toolbar_get':
-            _TOOLBAR_CACHE[key] = result
-        elif key and model == 'ir.action.keyword' and method == 'get_keyword':
-            _KEYWORD_CACHE[key] = result
     logging.getLogger(__name__).debug(repr(result))
     return result
 
@@ -164,5 +133,6 @@ def execute_nonblocking(*args):
     return _execute(False, *args)
 
 
-def clear_toolbar_cache():
-    _TOOLBAR_CACHE.clear()
+def clear_cache(prefix=None):
+    if CONNECTION:
+        CONNECTION.clear_cache(prefix)
