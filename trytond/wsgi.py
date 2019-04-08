@@ -116,6 +116,27 @@ class TrytondWSGI(object):
                     response = rv
             return response
 
+    def make_response(self, request, data):
+        for cls in self.protocols:
+            for mimetype, _ in request.accept_mimetypes:
+                if cls.content_type in mimetype:
+                    response = cls.response(data, request)
+                    break
+            else:
+                continue
+            break
+        else:
+            for cls in self.protocols:
+                if cls.content_type in request.environ.get('CONTENT_TYPE', ''):
+                    response = cls.response(data, request)
+                    break
+            else:
+                if isinstance(data, Exception):
+                    response = InternalServerError(data)
+                else:
+                    response = Response(data)
+        return response
+
     def wsgi_app(self, environ, start_response):
         for cls in self.protocols:
             if cls.content_type in environ.get('CONTENT_TYPE', ''):
@@ -135,24 +156,7 @@ class TrytondWSGI(object):
 
         data = self.dispatch_request(request)
         if not isinstance(data, (Response, HTTPException)):
-            for cls in self.protocols:
-                for mimetype, _ in request.accept_mimetypes:
-                    if cls.content_type in mimetype:
-                        response = cls.response(data, request)
-                        break
-                else:
-                    continue
-                break
-            else:
-                for cls in self.protocols:
-                    if cls.content_type in environ.get('CONTENT_TYPE', ''):
-                        response = cls.response(data, request)
-                        break
-                else:
-                    if isinstance(data, Exception):
-                        response = InternalServerError(data)
-                    else:
-                        response = Response(data)
+            response = self.make_response(request, data)
         else:
             response = data
 
@@ -167,8 +171,6 @@ class TrytondWSGI(object):
                 response.headers['Access-Control-Allow-Headers'] = headers
             response.headers['Access-Control-Max-Age'] = config.getint(
                 'web', 'cache_timeout')
-
-        # TODO custom process response
         return response(environ, start_response)
 
     def __call__(self, environ, start_response):

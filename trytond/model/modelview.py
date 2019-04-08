@@ -118,8 +118,8 @@ class ModelView(Model):
     @classmethod
     def __setup__(cls):
         super(ModelView, cls).__setup__()
-        cls.__rpc__['fields_view_get'] = RPC()
-        cls.__rpc__['view_toolbar_get'] = RPC()
+        cls.__rpc__['fields_view_get'] = RPC(cache=dict(days=1))
+        cls.__rpc__['view_toolbar_get'] = RPC(cache=dict(days=1))
         cls.__rpc__['on_change'] = RPC(instantiate=0)
         cls.__rpc__['on_change_with'] = RPC(instantiate=0)
         cls._buttons = {}

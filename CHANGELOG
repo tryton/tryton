@@ -1,3 +1,4 @@
+* Add cache on RPC
 * Remove support for Python 3.4
 * Allow to update record when importing data
 * Set context on record instantiated by Field.__set__

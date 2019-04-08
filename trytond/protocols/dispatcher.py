@@ -214,4 +214,7 @@ def _dispatch(request, pool, *args, **kwargs):
             context = {'_request': request.context}
             security.reset(pool.database_name, session, context=context)
         logger.debug('Result: %s', result)
-        return result
+        response = app.make_response(request, result)
+        if rpc.readonly and rpc.cache:
+            response.headers.extend(rpc.cache.headers())
+        return response

@@ -139,7 +139,9 @@ class ActionKeyword(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ActionKeyword, cls).__setup__()
-        cls.__rpc__.update({'get_keyword': RPC()})
+        cls.__rpc__.update({
+                'get_keyword': RPC(cache=dict(days=1)),
+                })
 
     @classmethod
     def __register__(cls, module_name):

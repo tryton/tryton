@@ -5,7 +5,7 @@
 RPC
 ===
 
-.. class:: RPC([readonly[, instantiate[, result[, check_access[, unique[, fresh_session]]]]]])
+.. class:: RPC([readonly[, instantiate[, result[, check_access[, unique[, fresh_session[, cache]]]]]]])
 
 RPC is an object to define the behavior of Remote Procedure Call.
 
@@ -35,3 +35,25 @@ Instance attributes are:
 .. attribute:: RPC.fresh_session
 
     If set, it requires a fresh session. Default is `False`.
+
+.. attribute:: RPC.cache
+
+    A :class:`RPCCache` instance to compute the cache duration for the answer.
+
+========
+RPCCache
+========
+
+.. class:: RPCCache([days[, seconds])
+
+Instance attributes are:
+
+.. attribute:: RPC.duration
+
+    A timdelta instance.
+
+Instance methods are:
+
+.. method:: RCP.headers
+
+    Returns a dictionary of the headers.

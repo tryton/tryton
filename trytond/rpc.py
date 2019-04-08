@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import copy
+import datetime as dt
 
 from trytond.transaction import Transaction
 
@@ -19,10 +20,10 @@ class RPC(object):
     '''
 
     __slots__ = ('readonly', 'instantiate', 'result', 'check_access',
-        'fresh_session', 'unique')
+        'fresh_session', 'unique', 'cache')
 
     def __init__(self, readonly=True, instantiate=None, result=None,
-            check_access=True, fresh_session=False, unique=True):
+            check_access=True, fresh_session=False, unique=True, cache=None):
         self.readonly = readonly
         self.instantiate = instantiate
         if result is None:
@@ -31,6 +32,10 @@ class RPC(object):
         self.check_access = check_access
         self.fresh_session = fresh_session
         self.unique = unique
+        if cache:
+            if not isinstance(cache, RPCCache):
+                cache = RPCCache(**cache)
+        self.cache = cache
 
     def convert(self, obj, *args, **kwargs):
         args = list(args)
@@ -70,3 +75,15 @@ class RPC(object):
         if self.check_access:
             context['_check_access'] = True
         return args, kwargs, context, timestamp
+
+
+class RPCCache:
+    __slots__ = ('duration',)
+
+    def __init__(self, days=0, seconds=0):
+        self.duration = dt.timedelta(days=days, seconds=seconds)
+
+    def headers(self):
+        return {
+            'X-Tryton-Cache': int(self.duration.total_seconds()),
+            }

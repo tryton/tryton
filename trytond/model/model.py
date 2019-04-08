@@ -35,8 +35,8 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     def __setup__(cls):
         super(Model, cls).__setup__()
         cls.__rpc__ = {
-            'default_get': RPC(),
-            'fields_get': RPC(),
+            'default_get': RPC(cache=dict(seconds=5 * 60)),
+            'fields_get': RPC(cache=dict(days=1)),
             'pre_validate': RPC(instantiate=0),
             }
 

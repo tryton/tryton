@@ -312,7 +312,7 @@ class ViewTreeState(ModelSQL, ModelView):
         super(ViewTreeState, cls).__setup__()
         cls.__rpc__.update({
                 'set': RPC(readonly=False, check_access=False),
-                'get': RPC(check_access=False),
+                'get': RPC(check_access=False, cache=dict(days=1)),
                 })
 
     @classmethod
