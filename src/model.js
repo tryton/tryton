@@ -960,7 +960,6 @@
                 });
                 result[arg] = scope;
             });
-            result.id = this.id;
             return result;
         },
         on_change: function(fieldnames) {
@@ -974,12 +973,21 @@
                 }
             }.bind(this));
             if (!jQuery.isEmptyObject(values)) {
-                var prm = this.model.execute('on_change',
-                        [values, fieldnames], this.get_context());
-                return prm.then(function(changes) {
-                    return jQuery.when.apply(jQuery,
-                        changes.map(this.set_on_change.bind(this)));
-                }.bind(this));
+                var prm;
+                if (fieldnames.length == 1) {
+                    prm = this.model.execute(
+                        'on_change_' + fieldnames[0],
+                        [values], this.get_context())
+                        .then(this.set_on_change.bind(this));
+                } else {
+                    prm = this.model.execute('on_change',
+                        [values, fieldnames], this.get_context())
+                        .then(function(changes) {
+                            return jQuery.when.apply(jQuery,
+                                changes.map(this.set_on_change.bind(this)));
+                        }.bind(this));
+                }
+                return prm;
             } else {
                 return jQuery.when();
             }
@@ -1024,17 +1032,26 @@
             }
             var prms = [];
             var prm;
-            if (!jQuery.isEmptyObject(fieldnames)) {
-                prm = this.model.execute('on_change_with',
-                        [values, Object.keys(fieldnames)], this.get_context());
-                prms.push(prm.then(this.set_on_change.bind(this)));
-            }
             var set_on_change = function(fieldname) {
                 return function(result) {
                     return this.model.fields[fieldname].set_on_change(
                         this, result);
                 };
             };
+            fieldnames = Object.keys(fieldnames);
+            if (fieldnames) {
+                if (fieldnames.length == 1) {
+                    prm = this.model.execute(
+                        'on_change_with_' + fieldnames[0],
+                        [values], this.get_context());
+                    prms.push(prm.then(set_on_change(fieldnames[0]).bind(this)));
+                } else {
+                    prm = this.model.execute(
+                        'on_change_with',
+                        [values, Object.keys(fieldnames)], this.get_context());
+                    prms.push(prm.then(this.set_on_change.bind(this)));
+                }
+            }
             for (fieldname in later) {
                 if (!later.hasOwnProperty(fieldname)) {
                     continue;
