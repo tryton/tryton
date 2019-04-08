@@ -569,8 +569,8 @@ class Screen(SignalEvent):
         self.group.add_fields(fields)
         for field in fields:
             self.group.fields[field].views.add(view_id)
-        view = View.parse(self, xml_dom, view.get('field_childs'))
-        view.view_id = view_id
+        view = View.parse(
+            self, view_id, view['type'], xml_dom, view.get('field_childs'))
         self.views.append(view)
 
         return view
@@ -658,7 +658,7 @@ class Screen(SignalEvent):
         current_view = self.current_view
         if not current_view:
             return
-        elif current_view.view_type in ('tree', 'form'):
+        elif current_view.view_type in ('tree', 'form', 'list-form'):
             current_view.set_cursor(new=new, reset_view=reset_view)
 
     def get(self):
@@ -946,6 +946,11 @@ class Screen(SignalEvent):
                 record = next
                 break
             self.current_record = record
+        elif (view.view_type == 'list-form' and len(self.group)
+                and self.current_record in self.group):
+            idx = self.group.index(self.current_record)
+            if 0 <= idx < len(self.group) - 1:
+                self.current_record = self.group[idx + 1]
         elif view.view_type == 'calendar':
             record = self.current_record
             goocalendar = view.widgets.get('goocalendar')
@@ -1032,6 +1037,11 @@ class Screen(SignalEvent):
                             if prev_id >= 0:
                                 self.current_record = events[prev_id].record
                             break
+        elif (view.view_type == 'list-form' and len(self.group)
+                and self.current_record in self.group):
+            idx = self.group.index(self.current_record)
+            if 0 < idx <= len(self.group) - 1:
+                self.current_record = self.group[idx - 1]
         else:
             self.current_record = self.group[-1] if len(self.group) else None
         self.set_cursor(reset_view=False)

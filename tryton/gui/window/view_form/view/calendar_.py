@@ -55,7 +55,7 @@ class ViewCalendar(View):
     view_type = 'calendar'
     xml_parser = CalendarXMLViewParser
 
-    def __init__(self, screen, xml):
+    def __init__(self, view_id, screen, xml):
         self.widget = Gtk.VBox()
 
         if not Calendar_:
@@ -66,7 +66,7 @@ class ViewCalendar(View):
         self.widget.pack_end(
             scrolledWindow, expand=True, fill=True, padding=0)
 
-        super().__init__(screen, xml)
+        super().__init__(view_id, screen, xml)
 
         goocalendar = self.widgets['goocalendar']
         toolbar = self.widgets['toolbar']

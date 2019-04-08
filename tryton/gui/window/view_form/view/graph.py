@@ -69,9 +69,9 @@ class ViewGraph(View):
     editable = False
     xml_parser = GraphXMLViewParser
 
-    def __init__(self, screen, xml):
+    def __init__(self, view_id, screen, xml):
         self.widget = event = Gtk.EventBox()
-        super().__init__(screen, xml)
+        super().__init__(view_id, screen, xml)
         event.connect('button-press-event', self.button_press)
 
     def __getitem__(self, name):

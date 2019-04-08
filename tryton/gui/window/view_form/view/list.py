@@ -429,7 +429,7 @@ class ViewTree(View):
     view_type = 'tree'
     xml_parser = TreeXMLViewParser
 
-    def __init__(self, screen, xml, children_field):
+    def __init__(self, view_id, screen, xml, children_field):
         self.children_field = children_field
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
@@ -443,7 +443,7 @@ class ViewTree(View):
             self.treeview = TreeView(self)
             grid_lines = Gtk.TreeViewGridLines.VERTICAL
 
-        super().__init__(screen, xml)
+        super().__init__(view_id, screen, xml)
 
         self.mnemonic_widget = self.treeview
 

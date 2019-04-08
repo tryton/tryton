@@ -20,17 +20,19 @@ class View(object):
     scroll = None
     xml_parser = None
 
-    def __init__(self, screen, xml):
+    def __init__(self, view_id, screen, xml):
+        self.view_id = view_id
         self.screen = screen
         self.widgets = defaultdict(list_)
         self.state_widgets = []
         self.attributes = node_attributes(xml)
         screen.set_on_write(self.attributes.get('on_write'))
 
-        self.xml_parser(
-            self, self.screen.exclude_field,
-            {k: f.attrs for k, f in self.screen.group.fields.items()}
-            ).parse(xml)
+        if self.xml_parser:
+            self.xml_parser(
+                self, self.screen.exclude_field,
+                {k: f.attrs for k, f in self.screen.group.fields.items()}
+                ).parse(xml)
 
     def set_value(self):
         raise NotImplementedError
@@ -58,22 +60,24 @@ class View(object):
         raise NotImplementedError
 
     @staticmethod
-    def parse(screen, xml, children_field):
+    def parse(screen, view_id, view_type, xml, children_field):
         from .list import ViewTree
         from .form import ViewForm
         from .graph import ViewGraph
         from .calendar_ import ViewCalendar
+        from .list_form import ViewListForm
 
         root, = xml.childNodes
-        tagname = root.tagName
-        if tagname == 'tree':
-            return ViewTree(screen, root, children_field)
-        elif tagname == 'form':
-            return ViewForm(screen, root)
-        elif tagname == 'graph':
-            return ViewGraph(screen, root)
-        elif tagname == 'calendar':
-            return ViewCalendar(screen, root)
+        if view_type == 'tree':
+            return ViewTree(view_id, screen, root, children_field)
+        elif view_type == 'form':
+            return ViewForm(view_id, screen, root)
+        elif view_type == 'graph':
+            return ViewGraph(view_id, screen, root)
+        elif view_type == 'calendar':
+            return ViewCalendar(view_id, screen, root)
+        elif view_type == 'list-form':
+            return ViewListForm(view_id, screen, root)
 
 
 class XMLViewParser:

@@ -100,7 +100,7 @@ class Group(SignalEvent, list):
         super(Group, self).insert(pos, record)
         self.__id2record[record.id] = record
         if not self.lock_signal:
-            self.signal('group-list-changed', ('record-added', record))
+            self.signal('group-list-changed', ('record-added', record, pos))
 
     def append(self, record):
         assert record.group is self
@@ -110,7 +110,8 @@ class Group(SignalEvent, list):
         super(Group, self).append(record)
         self.__id2record[record.id] = record
         if not self.lock_signal:
-            self.signal('group-list-changed', ('record-added', record))
+            self.signal('group-list-changed', (
+                    'record-added', record, self.__len__() - 1))
 
     def _remove(self, record):
         idx = self.index(record)
@@ -120,17 +121,20 @@ class Group(SignalEvent, list):
                     self.__getitem__(idx + 1)
             else:
                 self.__getitem__(idx - 1).next[id(self)] = None
-        self.signal('group-list-changed', ('record-removed', record))
+        self.signal('group-list-changed', ('record-removed', record, idx))
         super(Group, self).remove(record)
         del self.__id2record[record.id]
 
     def clear(self):
         # Use reversed order to minimize the cursor reposition as the cursor
         # has more chances to be on top of the list.
+        length = self.__len__()
         for record in reversed(self[:]):
-            self.signal('group-list-changed', ('record-removed', record))
+            self.signal(
+                'group-list-changed', ('record-removed', record, length - 1))
             record.destroy()
             self.pop()
+            length -= 1
         self.__id2record = {}
         self.record_removed, self.record_deleted = [], []
 

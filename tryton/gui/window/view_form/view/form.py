@@ -393,7 +393,7 @@ class ViewForm(View):
     view_type = 'form'
     xml_parser = FormXMLViewParser
 
-    def __init__(self, screen, xml):
+    def __init__(self, view_id, screen, xml):
         self.notebooks = []
         self.expandables = []
 
@@ -413,7 +413,7 @@ class ViewForm(View):
         self.widget = vbox
         self.viewport = vp
 
-        super().__init__(screen, xml)
+        super().__init__(view_id, screen, xml)
 
     def get_fields(self):
         return list(self.widgets.keys())

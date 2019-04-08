@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 
-from gi.repository import Gtk
+from gi.repository import Gtk, Gdk
 try:
     from gi.repository import GtkSpell
 except ImportError:
@@ -32,6 +32,10 @@ class TextBox(Widget, TranslateMixin):
         self.textview.connect('focus-out-event',
             lambda x, y: self._focus_out())
         self.textview.connect('key-press-event', self.send_modified)
+        # The click is grabbed by ListBox widget in this case user can never
+        # set the input with a click
+        self.textview.add_events(Gdk.EventMask.BUTTON_PRESS_MASK)
+        self.textview.connect_after('button-press-event', self._button_press)
         self.scrolledwindow.add(self.textview)
         self.scrolledwindow.show_all()
 
@@ -55,6 +59,10 @@ class TextBox(Widget, TranslateMixin):
         # TODO better tab solution
         textview.set_accepts_tab(False)
         return textview
+
+    def _button_press(self, textview, event):
+        textview.grab_focus()
+        return True
 
     def translate_widget(self):
         box = Gtk.VBox()
