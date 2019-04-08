@@ -14,6 +14,7 @@ from trytond.model import (
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.pool import Pool
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from .exceptions import InvalidFormat
@@ -56,6 +57,10 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     def __setup__(cls):
         super(Address, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
+        cls.__rpc__.update(
+            autocomplete_zip=RPC(instantiate=0, cache=dict(days=1)),
+            autocomplete_city=RPC(instantiate=0, cache=dict(days=1)),
+            )
 
     @classmethod
     def __register__(cls, module_name):
