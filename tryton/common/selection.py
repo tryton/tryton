@@ -52,7 +52,7 @@ class SelectionMixin(object):
         if 'relation' not in self.attrs:
             change_with = self.attrs.get('selection_change_with') or []
             value = record._get_on_change_args(change_with)
-            del value['id']
+            value.pop('id', None)
             self.init_selection(value)
             self.filter_selection(domain, record, field)
         else:

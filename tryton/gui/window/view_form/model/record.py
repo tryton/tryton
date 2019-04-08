@@ -513,7 +513,6 @@ class Record(SignalEvent):
                 scope = scope[i]
             else:
                 res[arg] = scope
-        res['id'] = self.id
         return res
 
     def on_change(self, fieldnames):
@@ -526,8 +525,16 @@ class Record(SignalEvent):
 
         if values:
             try:
-                changes = RPCExecute('model', self.model_name, 'on_change',
-                    values, fieldnames, context=self.get_context())
+                if len(fieldnames) == 1:
+                    fieldname, = fieldnames
+                    changes = []
+                    changes.append(RPCExecute(
+                            'model', self.model_name, 'on_change_' + fieldname,
+                            values, context=self.get_context()))
+                else:
+                    changes = RPCExecute(
+                        'model', self.model_name, 'on_change',
+                        values, fieldnames, context=self.get_context())
             except RPCException:
                 return
             for change in changes:
@@ -555,8 +562,17 @@ class Record(SignalEvent):
                 self.value.pop(fieldname + '.', None)
         if fieldnames:
             try:
-                result = RPCExecute('model', self.model_name, 'on_change_with',
-                    values, list(fieldnames), context=self.get_context())
+                if len(fieldnames) == 1:
+                    fieldname, = fieldnames
+                    result = {}
+                    result[fieldname] = RPCExecute(
+                        'model', self.model_name,
+                        'on_change_with_' + fieldname,
+                        values, context=self.get_context())
+                else:
+                    result = RPCExecute(
+                        'model', self.model_name, 'on_change_with',
+                        values, list(fieldnames), context=self.get_context())
             except RPCException:
                 return
             self.set_on_change(result)
