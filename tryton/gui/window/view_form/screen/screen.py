@@ -119,7 +119,7 @@ class Screen(SignalEvent):
                 remove_bin(widget)
 
             self.screen_container.filter_vbox.pack_start(
-                context_widget, expand=False, fill=True)
+                context_widget, expand=False, fill=True, padding=0)
             self.screen_container.filter_vbox.reorder_child(
                 context_widget, 0)
             self.context_screen.widget.show()
