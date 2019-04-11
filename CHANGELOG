@@ -1,3 +1,4 @@
+* Remove starting wildcard when searching on codes and numbers
 * Include all identifier from python-stdnum
 * Use country code as local prefix to parse phone numbers
 

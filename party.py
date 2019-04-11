@@ -14,6 +14,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
 from trytond.tools.multivalue import migrate_property
+from trytond.tools import lstrip_wildcard
 from .exceptions import (
     InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
 
@@ -220,9 +221,12 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         return [bool_op,
-            ('code',) + tuple(clause[1:]),
-            ('identifiers.code',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
+            ('identifiers.code', clause[1], code_value) + tuple(clause[3:]),
             ('name',) + tuple(clause[1:]),
             ('contact_mechanisms.rec_name',) + tuple(clause[1:]),
             ]
