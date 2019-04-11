@@ -13,8 +13,6 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits
-
 __all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move', 'Location']
 
 
@@ -154,35 +152,9 @@ def process_purchase_move(func):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    purchase = fields.Function(fields.Many2One('purchase.purchase', 'Purchase',
-            states={
-                'invisible': ~Eval('purchase_visible', False),
-                },
-            depends=['purchase_visible']), 'get_purchase',
-        searcher='search_purchase')
-    purchase_quantity = fields.Function(fields.Float('Purchase Quantity',
-            digits=(16, Eval('unit_digits', 2)),
-            states={
-                'invisible': ~Eval('purchase_visible', False),
-                },
-            depends=['purchase_visible', 'unit_digits']),
-        'get_purchase_fields')
-    purchase_unit = fields.Function(fields.Many2One('product.uom',
-            'Purchase Unit', states={
-                'invisible': ~Eval('purchase_visible', False),
-                }, depends=['purchase_visible']), 'get_purchase_fields')
-    purchase_unit_digits = fields.Function(fields.Integer(
-        'Purchase Unit Digits'), 'get_purchase_fields')
-    purchase_unit_price = fields.Function(fields.Numeric('Purchase Unit Price',
-            digits=price_digits, states={
-                'invisible': ~Eval('purchase_visible', False),
-                }, depends=['purchase_visible']), 'get_purchase_fields')
-    purchase_currency = fields.Function(fields.Many2One('currency.currency',
-            'Purchase Currency', states={
-                'invisible': ~Eval('purchase_visible', False),
-                }, depends=['purchase_visible']), 'get_purchase_fields')
-    purchase_visible = fields.Function(fields.Boolean('Purchase Visible'),
-        'on_change_with_purchase_visible')
+    purchase = fields.Function(
+        fields.Many2One('purchase.purchase', 'Purchase'),
+        'get_purchase', searcher='search_purchase')
     supplier = fields.Function(fields.Many2One('party.party', 'Supplier'),
         'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
@@ -221,33 +193,6 @@ class Move(metaclass=PoolMeta):
             return 'recreated'
         if self in self.origin.moves_ignored:
             return 'ignored'
-
-    def get_purchase_fields(self, name):
-        PurchaseLine = Pool().get('purchase.line')
-        if isinstance(self.origin, PurchaseLine):
-            if name[9:] == 'currency':
-                return self.origin.purchase.currency.id
-            elif name[9:] in ('quantity', 'unit_digits', 'unit_price'):
-                return getattr(self.origin, name[9:])
-            else:
-                return getattr(self.origin, name[9:]).id
-        else:
-            if name[9:] == 'quantity':
-                return 0.0
-            elif name[9:] == 'unit_digits':
-                return 2
-
-    @fields.depends('from_location', 'to_location')
-    def on_change_with_purchase_visible(self, name=None):
-        if self.from_location:
-            if self.from_location.type == 'supplier':
-                if self.to_location and self.to_location == 'supplier':
-                    return False
-                return True
-        elif self.to_location:
-            if self.to_location.type == 'supplier':
-                return True
-        return False
 
     def get_supplier(self, name):
         PurchaseLine = Pool().get('purchase.line')
