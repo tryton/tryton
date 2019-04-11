@@ -1,3 +1,4 @@
+* Remove starting wildcard when searching on codes and numbers
 * Remove display balance
 * Merge account kind and account type
 * Add origin on move line

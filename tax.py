@@ -18,7 +18,7 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond import backend
 from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.tools import cursor_dict
+from trytond.tools import cursor_dict, lstrip_wildcard
 from trytond.pool import Pool
 
 from .common import PeriodMixin, ActivePeriodMixin
@@ -227,8 +227,11 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         return [bool_op,
-            ('code',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
             (cls._rec_name,) + tuple(clause[1:]),
             ]
 
