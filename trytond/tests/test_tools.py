@@ -8,7 +8,8 @@ import sql
 import sql.operators
 
 from trytond.tools import (
-    reduce_ids, reduce_domain, decimal_, is_instance_method, file_open)
+    reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
+    strip_wildcard, lstrip_wildcard, rstrip_wildcard)
 from trytond.tools.string_ import StringPartitioned
 
 
@@ -131,6 +132,59 @@ class ToolsTestCase(unittest.TestCase):
         "Test file_open from same root name but with a suffix"
         with self.assertRaisesRegex(IOError, "Permission denied:"):
             file_open('../trytond_suffix', subdir=None)
+
+    def test_strip_wildcard(self):
+        'Test strip wildcard'
+        for clause, result in [
+                ('%a%', 'a'),
+                ('%%%%a%%%', 'a'),
+                ('\\%a%', '\\%a'),
+                ('\\%a\\%', '\\%a\\%'),
+                ('a', 'a'),
+                ('', ''),
+                (None, None),
+                ]:
+            self.assertEqual(
+                strip_wildcard(clause), result, msg=clause)
+
+    def test_strip_wildcard_different_wildcard(self):
+        'Test strip wildcard with different wildcard'
+        self.assertEqual(strip_wildcard('___a___', '_'), 'a')
+
+    def test_lstrip_wildcard(self):
+        'Test lstrip wildcard'
+        for clause, result in [
+                ('%a', 'a'),
+                ('%a%', 'a%'),
+                ('%%%%a%', 'a%'),
+                ('\\%a%', '\\%a%'),
+                ('a', 'a'),
+                ('', ''),
+                (None, None),
+                ]:
+            self.assertEqual(
+                lstrip_wildcard(clause), result, msg=clause)
+
+    def test_lstrip_wildcard_different_wildcard(self):
+        'Test lstrip wildcard with different wildcard'
+        self.assertEqual(lstrip_wildcard('___a', '_'), 'a')
+
+    def test_rstrip_wildcard(self):
+        'Test rstrip wildcard'
+        for clause, result in [
+                ('a%', 'a'),
+                ('%a%', '%a'),
+                ('%a%%%%%', '%a'),
+                ('%a\\%', '%a\\%'),
+                ('a', 'a'),
+                ('', ''),
+                (None, None),
+                ]:
+            self.assertEqual(
+                rstrip_wildcard(clause), result, msg=clause)
+
+    def test_rstrip_wildcard_diferent_wildcard(self):
+        self.assertEqual(rstrip_wildcard('a___', '_'), 'a')
 
 
 class StringPartitionedTestCase(unittest.TestCase):

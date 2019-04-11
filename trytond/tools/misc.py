@@ -248,3 +248,26 @@ def resolve(name):
         except AttributeError:
             found = importlib.import_module(used)
     return found
+
+
+def strip_wildcard(string, wildcard='%', escape='\\'):
+    "Strip starting and ending wildcard from string"
+    string = lstrip_wildcard(string, wildcard)
+    return rstrip_wildcard(string, wildcard, escape)
+
+
+def lstrip_wildcard(string, wildcard='%'):
+    "Strip starting wildcard from string"
+    if not string:
+        return string
+    return string.lstrip(wildcard)
+
+
+def rstrip_wildcard(string, wildcard='%', escape='\\'):
+    "Strip ending wildcard from string"
+    if not string:
+        return string
+    new_string = string.rstrip(wildcard)
+    if new_string[-1] == escape:
+        return string
+    return new_string

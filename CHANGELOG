@@ -1,3 +1,4 @@
+* Add strip wildcards helpers
 * Add list-form view
 * Do not set id for on_change calls if cached
 * Add cache on RPC
