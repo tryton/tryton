@@ -1,3 +1,4 @@
+* Remove starting wildcard when searching on codes and numbers
 * Add active field on country and subdivision
 
 Version 5.0.0 - 2018-10-01

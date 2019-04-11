@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
 from trytond.pyson import Eval
+from trytond.tools import lstrip_wildcard
 
 __all__ = ['Country', 'Subdivision', 'Zip']
 
@@ -40,11 +41,14 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_rec_name(cls, name, clause):
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         return ['OR',
             ('name',) + tuple(clause[1:]),
-            ('code',) + tuple(clause[1:]),
-            ('code3',) + tuple(clause[1:]),
-            ('code_numeric',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
+            ('code3', clause[1], code_value) + tuple(clause[3:]),
+            ('code_numeric', clause[1], code_value) + tuple(clause[3:]),
             ]
 
     @classmethod
