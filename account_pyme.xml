@@ -79,15 +79,16 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         
         
-        <record id="es_pyg_resultado_antes_de_impuestos_pyme" model="account.account.type.template">
-            <field name="name">C) RESULTADO ANTES DE IMPUESTOS (A + B)</field>
-            <field name="parent" ref="es_pyg_resultado_ejercicio_pyme"/>
-            <field name="statement">income</field>
-        </record>
         <record id="es_pyg_impuestos_sobre_beneficios_pyme" model="account.account.type.template">
             <field name="name">18. Impuestos sobre beneficios</field>
             <field name="parent" ref="es_pyg_resultado_ejercicio_pyme"/>
-            <field name="sequence" eval="41900"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="es_pyg_resultado_antes_de_impuestos_pyme" model="account.account.type.template">
+            <field name="name">C) RESULTADO ANTES DE IMPUESTOS (A + B)</field>
+            <field name="parent" ref="es_pyg_resultado_ejercicio_pyme"/>
+            <field name="sequence" eval="20"/>
             <field name="statement">income</field>
         </record>
         
