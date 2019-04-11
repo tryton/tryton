@@ -5,6 +5,7 @@ from trytond.model import (fields, ModelSQL, ModelView, sequence_ordered,
     MatchMixin)
 from trytond.pool import PoolMeta
 from trytond.pyson import If, Eval, Bool
+from trytond.tools import lstrip_wildcard
 
 
 class ProductCustomer(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
@@ -55,11 +56,14 @@ class ProductCustomer(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         domain = [bool_op,
             ('template',) + tuple(clause[1:]),
             ('product',) + tuple(clause[1:]),
             ('party',) + tuple(clause[1:]),
-            ('code',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
             ('name',) + tuple(clause[1:]),
             ]
         return domain
