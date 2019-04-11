@@ -9,6 +9,8 @@ from operator import attrgetter
 
 import stripe
 
+from trytond.cache import Cache
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
     ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
@@ -758,6 +760,11 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
             'invisible': ~Eval('stripe_error_param'),
             })
 
+    _sources_cache = Cache(
+        'account_payment_stripe_customer.sources',
+        duration=config.getint(
+            'account_payment_stripe', 'sources_cache', default=15 * 60))
+
     @classmethod
     def __setup__(cls):
         super(Customer, cls).__setup__()
@@ -774,6 +781,11 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
     def get_rec_name(self, name):
         name = super(Customer, self).get_rec_name(name)
         return self.stripe_customer_id if self.stripe_customer_id else name
+
+    @classmethod
+    def write(cls, *args, **kwargs):
+        super().write(*args, **kwargs)
+        cls._sources_cache.clear()
 
     @classmethod
     def delete(cls, customers):
@@ -887,6 +899,9 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
             logger.warning(str(e))
 
     def sources(self):
+        sources = self._sources_cache.get(self.id)
+        if sources is not None:
+            return sources
         sources = []
         customer = self.retrieve()
         if customer:
@@ -901,6 +916,7 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                 else:
                     continue
                 sources.append((source.id, name))
+            self._sources_cache.set(self.id, sources)
         return sources
 
     def _source_name(cls, source):

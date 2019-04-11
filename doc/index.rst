@@ -45,3 +45,12 @@ The capture box can be unchecked to only authorize on processing and capture
 the amount in a second step.
 
 If the payment is disputed, it will be updated at the closure of the dispute.
+
+Configuration
+*************
+
+The account_payment_stripe module uses the section `account_payment_stripe` to
+retrieve some parameters:
+
+- `sources_cache`: defines the duration in seconds the sources are kept in the
+  cache. The default value is `15 * 60`.
