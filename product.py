@@ -11,6 +11,7 @@ from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.tools import lstrip_wildcard
 
 from trytond.modules.product import price_digits
 
@@ -293,11 +294,14 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         domain = [bool_op,
             ('template',) + tuple(clause[1:]),
             ('product',) + tuple(clause[1:]),
             ('party',) + tuple(clause[1:]),
-            ('code',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
             ('name',) + tuple(clause[1:]),
             ]
         return domain

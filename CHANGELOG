@@ -1,3 +1,4 @@
+* Remove starting wildcard when searching on codes and numbers
 * Allow product supplier to be defined on variants
 
 Version 5.0.0 - 2018-10-01
