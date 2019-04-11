@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//group[@id='checkboxes']" position="inside">
         <label name="unearned_revenue"/>
-        <field name="unearned_revenue"/>
+        <field name="unearned_revenue" xexpand="0" width="25"/>
     </xpath>
 </data>
