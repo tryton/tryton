@@ -5,16 +5,17 @@
 Cache
 =====
 
-.. class:: Cache(name[, size_limit[, context]])
+.. class:: Cache(name[, size_limit[, duration[, context]]])
 
-The class is used to cache values between server requests. The `name` should
-be unique and it's used to identify the cache. We usually use
-`<class_name>.<content_name>` to make it unique. The `size_limit` field can
-be used to limit the number of values cached and the `context` parameter
-is used to indicate if the cache depends on the user context and is true
-by default.
-The cache is cleaned on :class:`Transaction` starts and resets on
-:class:`Transaction` commit or rollback.
+The class is used to cache values between server requests. The `name` should be
+unique and it's used to identify the cache. We usually use
+`<class_name>.<content_name>` to make it unique. The `size_limit` parameter can
+be used to limit the number of values cached and it has 1024 as the default
+value.  The `duration` parameter defines how long a cached value stays valid
+but if it is not set the value remains valid until it is cleared.  And the
+`context` parameter is used to indicate if the cache depends on the user
+context and is true by default.  The cache is cleaned on :class:`Transaction`
+starts and resets on :class:`Transaction` commit or rollback.
 
 .. warning::
     As there is no deepcopy of the values cached, they must never be mutated

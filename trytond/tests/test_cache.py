@@ -12,6 +12,7 @@ from trytond.transaction import Transaction
 
 
 cache = MemoryCache('test.cache')
+cache_expire = MemoryCache('test.cache_expire', duration=1)
 
 
 class CacheTestCase(unittest.TestCase):
@@ -133,6 +134,14 @@ class MemoryCacheTestCase(unittest.TestCase):
         transaction3 = transaction1.new_transaction()
         self.addCleanup(transaction3.stop)
         self.assertEqual(cache.get('foo'), None)
+
+    @with_transaction()
+    def test_memory_cache_expire(self):
+        "Test expired cache"
+        cache_expire.set('foo', "bar")
+        time.sleep(cache_expire.duration.total_seconds())
+
+        self.assertEqual(cache_expire.get('foo'), None)
 
 
 @unittest.skipIf(backend.name() == 'sqlite', "SQLite has not channel")

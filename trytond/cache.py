@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import json
 import logging
 import select
@@ -44,10 +45,18 @@ def freeze(o):
 class BaseCache(object):
     _instances = {}
 
-    def __init__(self, name, size_limit=1024, context=True):
+    def __init__(self, name, size_limit=1024, duration=None, context=True):
         self._name = name
         self.size_limit = size_limit
         self.context = context
+        if isinstance(duration, dt.timedelta):
+            self.duration = duration
+        elif isinstance(duration, (int, float)):
+            self.duration = dt.timedelta(seconds=duration)
+        elif duration:
+            self.duration = dt.timedelta(**duration)
+        else:
+            self.duration = None
         assert self._name not in self._instances
         self._instances[self._name] = self
 
@@ -94,9 +103,9 @@ class MemoryCache(BaseCache):
     _table = 'ir_cache'
     _channel = _table
 
-    def __init__(self, name, size_limit=1024, context=True):
-        super(MemoryCache, self).__init__(name, size_limit, context)
-        self._database_cache = defaultdict(lambda: LRUDict(size_limit))
+    def __init__(self, *args, **kwargs):
+        super(MemoryCache, self).__init__(*args, **kwargs)
+        self._database_cache = defaultdict(lambda: LRUDict(self.size_limit))
         self._transaction_cache = WeakKeyDictionary()
         self._transaction_lower = {}
         self._timestamp = {}
@@ -120,7 +129,10 @@ class MemoryCache(BaseCache):
         key = self._key(key)
         cache = self._get_cache()
         try:
-            result = cache[key] = cache.pop(key)
+            (expire, result) = cache.pop(key)
+            if expire and expire < dt.datetime.now():
+                return default
+            cache[key] = (expire, result)
             return result
         except (KeyError, TypeError):
             return default
@@ -128,8 +140,12 @@ class MemoryCache(BaseCache):
     def set(self, key, value):
         key = self._key(key)
         cache = self._get_cache()
+        if self.duration:
+            expire = dt.datetime.now() + self.duration
+        else:
+            expire = None
         try:
-            cache[key] = value
+            cache[key] = (expire, value)
         except TypeError:
             pass
         return value
