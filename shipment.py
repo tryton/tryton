@@ -377,8 +377,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         default.setdefault('done_by', None)
         return super(ShipmentIn, cls).copy(shipments, default=default)
 
-    @classmethod
-    def _get_inventory_moves(cls, incoming_move):
+    def _get_inventory_move(self, incoming_move):
+        'Return inventory move for the incoming move'
         pool = Pool()
         Move = pool.get('stock.move')
         if incoming_move.quantity <= 0.0:
@@ -388,7 +388,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment.warehouse_storage
+        move.to_location = self.warehouse_storage
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -407,7 +407,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
             # moves, it will reset also the incoming_moves
             moves = list(shipment.moves)
             for incoming_move in shipment.incoming_moves:
-                move = cls._get_inventory_moves(incoming_move)
+                move = shipment._get_inventory_move(incoming_move)
                 if move:
                     moves.append(move)
             shipment.moves = moves
@@ -1729,8 +1729,8 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         Move.cancel([m for s in shipments
                 for m in s.incoming_moves + s.inventory_moves])
 
-    @staticmethod
-    def _get_inventory_moves(incoming_move):
+    def _get_inventory_move(self, incoming_move):
+        'Return inventory move for the incoming move'
         pool = Pool()
         Move = pool.get('stock.move')
         if incoming_move.quantity <= 0.0:
@@ -1740,7 +1740,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         move.uom = incoming_move.uom
         move.quantity = incoming_move.quantity
         move.from_location = incoming_move.to_location
-        move.to_location = incoming_move.shipment.warehouse_storage
+        move.to_location = self.warehouse_storage
         move.state = Move.default_state()
         # Product will be considered in stock only when the inventory
         # move will be made:
@@ -1759,7 +1759,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
             # moves, it will reset also the incoming_moves
             moves = list(shipment.moves)
             for incoming_move in shipment.incoming_moves:
-                move = cls._get_inventory_moves(incoming_move)
+                move = shipment._get_inventory_move(incoming_move)
                 if move:
                     moves.append(move)
             shipment.moves = moves
