@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 from trytond.model import fields
+from trytond.tools import lstrip_wildcard
 
 
 __all__ = ['Party', 'PartyReplace']
@@ -19,9 +20,12 @@ class Party(metaclass=PoolMeta):
             bool_op = 'AND'
         else:
             bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
         return [bool_op,
             domain,
-            ('bank_accounts',) + tuple(clause[1:]),
+            ('bank_accounts', clause[1], code_value) + tuple(clause[3:]),
             ]
 
 
