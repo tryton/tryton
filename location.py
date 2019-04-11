@@ -44,23 +44,18 @@ class Move(metaclass=PoolMeta):
 class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
-    @classmethod
-    def _get_inventory_moves(cls, incoming_move):
-        move = super(ShipmentIn, cls)._get_inventory_moves(incoming_move)
+    def _get_inventory_move(self, incoming_move):
+        move = super()._get_inventory_move(incoming_move)
         if move:
-            move.set_product_location(
-                warehouse=incoming_move.shipment.warehouse.id)
+            move.set_product_location(warehouse=self.warehouse.id)
         return move
 
 
 class ShipmentOutReturn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'
 
-    @classmethod
-    def _get_inventory_moves(cls, incoming_move):
-        move = super(ShipmentOutReturn, cls)._get_inventory_moves(
-            incoming_move)
+    def _get_inventory_move(self, incoming_move):
+        move = super()._get_inventory_move(incoming_move)
         if move:
-            move.set_product_location(
-                warehouse=incoming_move.shipment.warehouse.id)
+            move.set_product_location(warehouse=self.warehouse.id)
         return move
