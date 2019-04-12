@@ -792,27 +792,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
-        <record model="res.user" id="user_trigger">
-            <field name="login">user_cron_trigger</field>
-            <field name="name">Cron Trigger</field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group" id="user_trigger_group_admin">
-            <field name="user" ref="user_trigger"/>
-            <field name="group" ref="group_admin"/>
-        </record>
-
         <record model="ir.cron" id="cron_trigger_time">
-            <field name="name">Run On Time Triggers</field>
-            <field name="request_user" ref="user_admin"/>
-            <field name="user" ref="user_trigger"/>
-            <field name="active" eval="True"/>
+            <field name="method">ir.trigger|trigger_time</field>
             <field name="interval_number" eval="5"/>
             <field name="interval_type">minutes</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">ir.trigger</field>
-            <field name="function">trigger_time</field>
         </record>
 
         <record model="ir.model.access" id="rule_default_view_tree_state">

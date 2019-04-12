@@ -30,6 +30,7 @@ Introduction to all the key parts of trytond:
     reports/index
     rpc
     task_queue
+    cron
     user_application
     bus
     modules/index

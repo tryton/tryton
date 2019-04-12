@@ -2,31 +2,27 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="name"/>
-    <field name="name"/>
+    <label name="method"/>
+    <field name="method"/>
     <label name="active"/>
     <field name="active"/>
-    <label name="user"/>
-    <field name="user"/>
-    <label name="request_user"/>
-    <field name="request_user"/>
-    <label name="interval_number"/>
-    <field name="interval_number"/>
-    <label name="interval_type"/>
-    <field name="interval_type"/>
-    <label name="number_calls"/>
-    <field name="number_calls"/>
+    <label id="interval_label" string="Every"/>
+    <group id="interval" col="-1" colspan="3">
+        <field name="interval_number"/>
+        <field name="interval_type"/>
+    </group>
+    <label id="time_label" string="At"/>
+    <group id="time" col="-1" colspan="3">
+        <label name="minute"/>
+        <field name="minute" xexpand="0"/>
+        <label name="hour"/>
+        <field name="hour" xexpand="0"/>
+        <label name="day"/>
+        <field name="day" xexpand="0"/>
+        <label name="weekday"/>
+        <field name="weekday" xexpand="0" widget="selection"/>
+    </group>
     <label name="next_call"/>
     <field name="next_call"/>
-    <label name="repeat_missed"/>
-    <field name="repeat_missed"/>
     <button name="run_once" colspan="2"/>
-    <separator string="Action to trigger" colspan="4"
-        id="action_trigger"/>
-    <label name="model"/>
-    <field name="model"/>
-    <label name="function"/>
-    <field name="function"/>
-    <label name="args"/>
-    <field name="args" colspan="3" widget="char"/>
 </form>

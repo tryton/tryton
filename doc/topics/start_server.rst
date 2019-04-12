@@ -43,8 +43,8 @@ You can start the server with coroutine using the option `--coroutine`.
 Cron service
 ============
 
-If you want to run some scheduled actions, you must also run the cron server
-with this command line::
+If you want to run some :ref:`scheduled actions <topics-cron>`, you must also
+run the cron server with this command line::
 
     trytond-cron -c <config file> -d <database>
 

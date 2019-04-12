@@ -1,3 +1,4 @@
+* Simplify cron
 * Add duration on Cache
 * Add strip wildcards helpers
 * Add list-form view
