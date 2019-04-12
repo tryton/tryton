@@ -254,7 +254,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invisible': (~Eval('state').in_(['draft', 'validated'])
                         & ~((Eval('state') == 'posted')
                             & (Eval('type') == 'in'))),
-                    'help': 'Cancel the invoice',
                     'depends': ['state', 'type'],
                     },
                 'draft': {
