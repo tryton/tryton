@@ -8,6 +8,7 @@ from . import service
 from . import subscription
 from . import invoice
 from . import party
+from . import ir
 
 
 def register():
@@ -23,6 +24,7 @@ def register():
         subscription.CreateLineConsumptionStart,
         subscription.CreateSubscriptionInvoiceStart,
         invoice.InvoiceLine,
+        ir.Cron,
         module='sale_subscription', type_='model')
     Pool.register(
         subscription.CreateLineConsumption,

@@ -309,6 +309,8 @@ class Subscription(Workflow, ModelSQL, ModelView):
                 ('invoice_line', '=', None),
                 ('line.subscription.next_invoice_date', '<=', date),
                 ('line.subscription.state', 'in', ['running', 'closed']),
+                ('line.subscription.company', '=',
+                    Transaction().context.get('company')),
                 ],
             order=[
                 ('line.subscription.id', 'DESC'),
@@ -658,6 +660,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 ('consumption_recurrence', '!=', None),
                 ('next_consumption_date_delayed', '<=', date),
                 ('subscription.state', '=', 'running'),
+                ('subscription.company', '=',
+                    Transaction().context.get('company')),
                 ])
 
         consumptions = []

@@ -300,29 +300,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">line_consumption_create_start_form</field>
         </record>
 
-        <record model="res.user" id="user_generate_line_consumption">
-            <field name="login">user_cron_subscription_line_consumption</field>
-            <field name="name">Cron Subscription Line Consumption</field>
-            <field name="signature"></field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group"
-            id="user_generate_line_consumption_group_sale">
-            <field name="user" ref="user_generate_line_consumption"/>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-
         <record model="ir.cron" id="cron_generate_line_consumption">
-            <field name="name">Generate Subscription Line Consumptions</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_generate_line_consumption"/>
-            <field name="active" eval="True"/>
+            <field name="method">sale.subscription.line|generate_consumption</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">sale.subscription.line</field>
-            <field name="function">generate_consumption</field>
         </record>
 
         <record model="ir.action.wizard" id="act_create_invoice">
@@ -345,34 +326,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">create_invoice_start_form</field>
         </record>
 
-        <record model="res.user" id="user_generate_invoice">
-            <field name="login">user_cron_subscription_invoice</field>
-            <field name="name">Cron Subscription Invoice</field>
-            <field name="signature"></field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group"
-            id="user_generate_invoice_group_sale">
-            <field name="user" ref="user_generate_invoice"/>
-            <field name="group" ref="sale.group_sale"/>
-        </record>
-        <record model="res.user-res.group"
-            id="user_generate_invoice_group_account">
-            <field name="user" ref="user_generate_invoice"/>
-            <field name="group" ref="account.group_account"/>
-        </record>
-
         <record model="ir.cron" id="cron_generate_invoice">
-            <field name="name">Generate Subscription Invoices</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_generate_invoice"/>
-            <field name="active" eval="True"/>
+            <field name="method">sale.subscription|generate_invoice</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">days</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">sale.subscription</field>
-            <field name="function">generate_invoice</field>
         </record>
 
     </data>
