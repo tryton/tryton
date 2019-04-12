@@ -164,8 +164,7 @@ Run cron::
 
     >>> Cron = Model.get('ir.cron')
     >>> cron_customer_create, = Cron.find([
-    ...     ('model', '=', 'account.payment.stripe.customer'),
-    ...     ('function', '=', 'stripe_create'),
+    ...     ('method', '=', 'account.payment.stripe.customer|stripe_create'),
     ...     ])
     >>> cron_customer_create.companies.append(Company(company.id))
     >>> cron_customer_create.click('run_once')
@@ -201,8 +200,7 @@ Delete customer::
 Run cron::
 
     >>> cron_customer_delete, = Cron.find([
-    ...     ('model', '=', 'account.payment.stripe.customer'),
-    ...     ('function', '=', 'stripe_delete'),
+    ...     ('method', '=', 'account.payment.stripe.customer|stripe_delete'),
     ...     ])
     >>> cron_customer_delete.companies.append(Company(company.id))
     >>> cron_customer_delete.click('run_once')
