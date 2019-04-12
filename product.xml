@@ -11,10 +11,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_product_admin"/>
         </record>
-        <record model="res.user-res.group" id="user_trigger_group_product_admin">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_product_admin"/>
-        </record>
 
         <record model="ir.ui.icon" id="product_icon">
             <field name="name">tryton-product</field>
