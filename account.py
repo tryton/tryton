@@ -251,7 +251,7 @@ class PayLine(Wizard):
         for kind in types:
             parties = types[kind]['parties']
             others = Line.search([
-                    ('account.type.' + kind, '=', reverse[kind]),
+                    ('account.type.' + reverse[kind], '=', True),
                     ('party', 'in', [p.id for p in parties]),
                     ('reconciliation', '=', None),
                     ('payment_amount', '!=', 0),
