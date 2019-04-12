@@ -18,15 +18,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_account_admin"/>
         </record>
 
-        <record model="res.user-res.group" id="user_trigger_group_account">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_account"/>
-        </record>
-        <record model="res.user-res.group" id="user_trigger_group_account_admin">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_account_admin"/>
-        </record>
-
         <record model="ir.ui.icon" id="account_icon">
             <field name="name">tryton-account</field>
             <field name="path">icons/tryton-account.svg</field>
