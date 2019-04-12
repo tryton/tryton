@@ -55,27 +55,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="res.user" id="user_chorus">
-            <field name="login">user_cron_chorus</field>
-            <field name="name">Cron Chorus</field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group" id="user_chorus-group_account">
-            <field name="user" ref="user_chorus"/>
-            <field name="group" ref="account.group_account"/>
-        </record>
-
         <record model="ir.cron" id="cron_invoice_send">
-            <field name="name">Send invoices to Chorus</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_chorus"/>
-            <field name="active" eval="True"/>
+            <field name="method">account.invoice.chorus|send</field>
             <field name="interval_number" eval="15"/>
             <field name="interval_type">minutes</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">account.invoice.chorus</field>
-            <field name="function">send</field>
         </record>
     </data>
 </tryton>

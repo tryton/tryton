@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import account
 from . import party
 from . import edocument
+from . import ir
 
 __all__ = ['register']
 
@@ -16,6 +17,7 @@ def register():
         account.Invoice,
         account.InvoiceChorus,
         party.Party,
+        ir.Cron,
         module='account_fr_chorus', type_='model')
     Pool.register(
         edocument.UNCEFACTInvoice,
