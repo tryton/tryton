@@ -15,5 +15,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_pay_line_blocked">
             <field name="text">Line "%(line)s" is blocked for payment.</field>
         </record>
+        <record model="ir.message" id="msg_pay_line_group">
+            <field name="text">The lines "%(names)s" for %(party)s could be grouped with the line "%(line)s".</field>
+        </record>
     </data>
 </tryton>

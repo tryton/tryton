@@ -18,7 +18,7 @@ from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-from .exceptions import BlockedWarning
+from .exceptions import BlockedWarning, GroupWarning
 from .payment import KINDS
 
 __all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal',
@@ -228,6 +228,49 @@ class PayLine(Wizard):
             Button('Pay', 'next_', 'tryton-ok', default=True),
             ])
     pay = StateAction('account_payment.act_payment_form')
+
+    def default_start(self, fields):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        Warning = pool.get('res.user.warning')
+
+        reverse = {'receivable': 'payable', 'payable': 'receivable'}
+        types = {
+            kind: {
+                'parties': set(),
+                'lines': list(),
+                }
+            for kind in reverse.keys()}
+        lines = Line.browse(Transaction().context['active_ids'])
+        for line in lines:
+            for kind in types:
+                if getattr(line.account.type, kind):
+                    types[kind]['parties'].add(line.party)
+                    types[kind]['lines'].append(line)
+
+        for kind in types:
+            parties = types[kind]['parties']
+            others = Line.search([
+                    ('account.type.' + kind, '=', reverse[kind]),
+                    ('party', 'in', [p.id for p in parties]),
+                    ('reconciliation', '=', None),
+                    ('payment_amount', '!=', 0),
+                    ('move_state', '=', 'posted'),
+                    ])
+            for line in others:
+                warning_name = '%s:%s' % (reverse[kind], line.party)
+                if Warning.check(warning_name):
+                    lines = [l for l in types[kind]['lines']
+                        if l.party == line.party]
+                    names = ', '.join(l.rec_name for l in lines[:5])
+                    if len(lines) > 5:
+                        names += '...'
+                    raise GroupWarning(warning_name,
+                        gettext('account_payment.msg_pay_line_group',
+                            names=names,
+                            party=line.party.rec_name,
+                            line=line.rec_name))
+        return {}
 
     def _get_journals(self):
         journals = {}

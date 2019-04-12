@@ -19,3 +19,7 @@ class PaymentValidationError(ValidationError):
 
 class BlockedWarning(UserWarning):
     pass
+
+
+class GroupWarning(UserWarning):
+    pass
