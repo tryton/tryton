@@ -11,11 +11,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_credit_limit"/>
         </record>
-        <record model="res.user-res.group"
-            id="user_trigger_group_credit_limit">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_credit_limit"/>
-        </record>
 
         <record model="ir.ui.view" id="configuration_view_form">
             <field name="model">account.configuration</field>
