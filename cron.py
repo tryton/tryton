@@ -16,23 +16,13 @@ class Cron(metaclass=PoolMeta):
     @dualmethod
     @ModelView.button
     def run_once(cls, crons):
-        User = Pool().get('res.user')
         for cron in crons:
             if not cron.companies:
                 super(Cron, cls).run_once([cron])
             else:
-                # TODO replace with context
                 for company in cron.companies:
-                    User.write([cron.user], {
-                            'company': company.id,
-                            'main_company': company.id,
-                            })
                     with Transaction().set_context(company=company.id):
                         super(Cron, cls).run_once([cron])
-                User.write([cron.user], {
-                        'company': None,
-                        'main_company': None,
-                        })
 
     @staticmethod
     def default_companies():
