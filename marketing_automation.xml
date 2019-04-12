@@ -299,39 +299,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="template_extension">html</field>
         </record>
 
-       <record model="res.user" id="user_marketing_automation">
-           <field name="login">user_marketing_automation</field>
-           <field name="name">Cron Marketing Automation</field>
-           <field name="active" eval="False"/>
-       </record>
-       <record model="res.user-res.group" id="user_marketing_automation_group_marketing_automation">
-           <field name="user" ref="user_marketing_automation"/>
-           <field name="group" ref="marketing.group_marketing"/>
-       </record>
-
        <record model="ir.cron" id="cron_scenario_trigger">
-           <field name="name">Trigger Scenarios</field>
-           <field name="request_user" ref="res.user_admin"/>
-           <field name="user" ref="user_marketing_automation"/>
-           <field name="active" eval="True"/>
+           <field name="method">marketing.automation.scenario|trigger</field>
            <field name="interval_number" eval="1"/>
            <field name="interval_type">hours</field>
-           <field name="number_calls" eval="-1"/>
-           <field name="repeat_missed" eval="False"/>
-           <field name="model">marketing.automation.scenario</field>
-           <field name="function">trigger</field>
        </record>
        <record model="ir.cron" id="cron_record_activity_process">
-           <field name="name">Process Record Activity</field>
-           <field name="request_user" ref="res.user_admin"/>
-           <field name="user" ref="user_marketing_automation"/>
-           <field name="active" eval="True"/>
+           <field name="method">marketing.automation.record.activity|process</field>
            <field name="interval_number" eval="15"/>
            <field name="interval_type">minutes</field>
-           <field name="number_calls" eval="-1"/>
-           <field name="repeat_missed" eval="False"/>
-           <field name="model">marketing.automation.record.activity</field>
-           <field name="function">process</field>
        </record>
 
     </data>

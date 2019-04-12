@@ -87,12 +87,10 @@ Trigger scenario::
 
     >>> Cron = Model.get('ir.cron')
     >>> cron_trigger, = Cron.find([
-    ...     ('model', '=', 'marketing.automation.scenario'),
-    ...     ('function', '=', 'trigger'),
+    ...     ('method', '=', 'marketing.automation.scenario|trigger'),
     ...     ])
     >>> cron_process, = Cron.find([
-    ...     ('model', '=', 'marketing.automation.record.activity'),
-    ...     ('function', '=', 'process'),
+    ...     ('method', '=', 'marketing.automation.record.activity|process'),
     ...     ])
     >>> cron_trigger.click('run_once')
     >>> cron_process.click('run_once')

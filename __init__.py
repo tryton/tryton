@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 
+from . import ir
 from . import marketing_automation
 from . import web
 from . import party
@@ -14,6 +15,7 @@ __all__ = ['register', 'routes']
 
 def register():
     Pool.register(
+        ir.Cron,
         marketing_automation.Scenario,
         marketing_automation.Activity,
         marketing_automation.Record,
