@@ -623,7 +623,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return result
 
     def get_reconciled(self, name):
-        reconciliations = [l.reconciliation for l in self.lines_to_pay]
+        def get_reconciliation(line):
+            if line.reconciliation and line.reconciliation.delegate_to:
+                return get_reconciliation(line.reconciliation.delegate_to)
+            else:
+                return line.reconciliation
+        reconciliations = list(map(get_reconciliation, self.lines_to_pay))
         if not reconciliations:
             return None
         elif not all(reconciliations):

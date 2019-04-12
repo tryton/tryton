@@ -268,16 +268,24 @@ class Reconciliation(metaclass=PoolMeta):
     def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
         reconciliations = super(Reconciliation, cls).create(vlist)
-        move_ids = set()
-        account_ids = set()
-        for reconciliation in reconciliations:
-            move_ids |= {l.move.id for l in reconciliation.lines}
-            account_ids |= {l.account.id for l in reconciliation.lines}
-        invoices = Invoice.search([
-                ('move', 'in', list(move_ids)),
-                ('account', 'in', list(account_ids)),
-                ])
-        Invoice.process(invoices)
+
+        def process(reconciliations):
+            move_ids = set()
+            others = set()
+            for reconciliation in reconciliations:
+                for line in reconciliation.lines:
+                    move_ids.add(line.move.id)
+                    others.update(line.reconciliations_delegated)
+            if others:
+                move_ids.update(process(cls.browse(others)))
+            return move_ids
+        move_ids = process(reconciliations)
+        invoices = set()
+        for sub_ids in grouped_slice(move_ids):
+            invoices.update(Invoice.search([
+                        ('move', 'in', list(sub_ids)),
+                        ]))
+        Invoice.process(Invoice.browse(invoices))
         return reconciliations
 
     @classmethod
