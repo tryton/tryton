@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from . import res
+from . import ir
 
 __all__ = ['register']
 
@@ -13,6 +14,7 @@ def register():
         res.RoleGroup,
         res.User,
         res.UserRole,
+        ir.Cron,
         module='user_role', type_='model')
     Pool.register(
         module='user_role', type_='wizard')

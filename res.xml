@@ -85,26 +85,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="res.user" id="user_role">
-            <field name="login">user_cron_role</field>
-            <field name="name">Cron Role</field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group" id="user_role_group_admin">
-            <field name="user" ref="user_role"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-
         <record model="ir.cron" id="cron_sync_roles">
-            <field name="name">Synchronize Users Roles</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_role"/>
-            <field name="active" eval="True"/>
+            <field name="method">res.user|sync_roles</field>
             <field name="interval_number" eval="1"/>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">res.user</field>
-            <field name="function">sync_roles</field>
+            <field name="interval_type">days</field>
         </record>
     </data>
 </tryton>
