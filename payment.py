@@ -47,6 +47,7 @@ class Journal(metaclass=PoolMeta):
                         ('origin.journal.id', '=', journal.id,
                             'account.payment'),
                         ('state', '=', 'draft'),
+                        ('company', '=', Transaction().context.get('company')),
                         ]))
         Move.post(moves)
 

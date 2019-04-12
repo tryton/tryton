@@ -195,8 +195,8 @@ Succeed payment and post clearing::
     >>> Cron = Model.get('ir.cron')
     >>> Company = Model.get('company.company')
     >>> cron_post_clearing_moves, = Cron.find([
-    ...     ('model', '=', 'account.payment.journal'),
-    ...     ('function', '=', 'cron_post_clearing_moves'),
+    ...     ('method', '=',
+    ...         'account.payment.journal|cron_post_clearing_moves'),
     ...     ])
     >>> cron_post_clearing_moves.companies.append(Company(company.id))
     >>> cron_post_clearing_moves.click('run_once')

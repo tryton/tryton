@@ -4,6 +4,7 @@ from trytond.pool import Pool
 from . import payment
 from . import account
 from . import statement
+from . import ir
 
 
 def register():
@@ -12,6 +13,7 @@ def register():
         payment.Payment,
         payment.SucceedStart,
         account.Move,
+        ir.Cron,
         module='account_payment_clearing', type_='model')
     Pool.register(
         statement.Statement,
