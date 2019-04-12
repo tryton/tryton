@@ -716,7 +716,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ('id', '!=', Eval('currency', -1)),
             ],
         states={
-            'reaodnly': _states['readonly'],
+            'readonly': _states['readonly'],
             'invisible': ~Eval('deferral', False),
             },
         depends=['currency', 'deferral'])
