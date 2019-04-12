@@ -10,10 +10,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_dunning"/>
         </record>
-        <record model="res.user-res.group" id="user_trigger_group_dunning">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_dunning"/>
-        </record>
 
         <menuitem name="Dunnings" parent="account.menu_account_configuration"
             sequence="70" id="menu_dunning_configuration"/>
