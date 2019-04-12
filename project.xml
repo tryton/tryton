@@ -10,10 +10,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_project_invoice"/>
         </record>
-        <record model="res.user-res.group"
-            id="user_trigger_group_project_invoice">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_project_invoice"/>
-        </record>
     </data>
 </tryton>
