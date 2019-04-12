@@ -178,11 +178,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_purchase_request"/>
         </record>
-        <record model="res.user-res.group"
-            id="user_trigger_group_purchase_request">
-            <field name="user" ref="res.user_trigger"/>
-            <field name="group" ref="group_purchase_request"/>
-        </record>
 
         <record model="ir.model.access" id="access_purchase_purchase_request">
             <field name="model" search="[('model', '=',
