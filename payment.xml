@@ -181,66 +181,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="template_extension">html</field>
         </record>
 
-        <record model="res.user" id="user_stripe">
-            <field name="login">user_cron_stripe</field>
-            <field name="name">Cron Stripe</field>
-            <field name="active" eval="False"/>
-        </record>
-        <record model="res.user-res.group" id="user_stripe_group_payment">
-            <field name="user" ref="user_stripe"/>
-            <field name="group" ref="account_payment.group_payment"/>
-        </record>
-
         <record model="ir.cron" id="cron_charge">
-            <field name="name">Charge Stripe Payments</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_stripe"/>
-            <field name="active" eval="True"/>
+            <field name="method">account.payment|stripe_charge</field>
             <field name="interval_number" eval="15"/>
             <field name="interval_type">minutes</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">account.payment</field>
-            <field name="function">stripe_charge</field>
         </record>
 
         <record model="ir.cron" id="cron_capture">
-            <field name="name">Capture Stripe Payments</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_stripe"/>
-            <field name="active" eval="True"/>
+            <field name="method">account.payment|stripe_capture_</field>
             <field name="interval_number" eval="15"/>
             <field name="interval_type">minutes</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">account.payment</field>
-            <field name="function">stripe_capture_</field>
         </record>
 
         <record model="ir.cron" id="cron_create_customer">
-            <field name="name">Create Stripe Customer</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_stripe"/>
-            <field name="active" eval="True"/>
+            <field name="method">account.payment.stripe.customer|stripe_create</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">hours</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">account.payment.stripe.customer</field>
-            <field name="function">stripe_create</field>
         </record>
 
         <record model="ir.cron" id="cron_delete_customer">
-            <field name="name">Delete Stripe Customer</field>
-            <field name="request_user" ref="res.user_admin"/>
-            <field name="user" ref="user_stripe"/>
-            <field name="active" eval="True"/>
+            <field name="method">account.payment.stripe.customer|stripe_delete</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">hours</field>
-            <field name="number_calls" eval="-1"/>
-            <field name="repeat_missed" eval="False"/>
-            <field name="model">account.payment.stripe.customer</field>
-            <field name="function">stripe_delete</field>
         </record>
     </data>
     <data noupdate="1">

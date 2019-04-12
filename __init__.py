@@ -6,6 +6,7 @@ from trytond.pool import Pool
 from . import payment
 from . import party
 from . import routes
+from . import ir
 
 __all__ = ['register', 'routes']
 
@@ -18,6 +19,7 @@ def register():
         payment.Group,
         payment.Payment,
         party.Party,
+        ir.Cron,
         module='account_payment_stripe', type_='model')
     Pool.register(
         payment.Checkout,

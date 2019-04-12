@@ -365,6 +365,7 @@ class Payment(metaclass=PoolMeta):
                         ('stripe_customer.stripe_customer_id', '!=', None),
                         ],
                     ('stripe_charge_id', '=', None),
+                    ('company', '=', Transaction().context.get('company')),
                     ])
         for payment in payments:
             if (payment.stripe_charge_id
@@ -443,6 +444,7 @@ class Payment(metaclass=PoolMeta):
                     ('stripe_charge_id', '!=', None),
                     ('stripe_captured', '=', False),
                     ('stripe_capture', '=', True),
+                    ('company', '=', Transaction().context.get('company')),
                     ])
         for payment in payments:
             if (not payment.stripe_charge_id
