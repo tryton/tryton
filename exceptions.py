@@ -75,3 +75,11 @@ class CancelWarning(UserWarning):
 
 class ReconciliationError(ValidationError):
     pass
+
+
+class DeleteDelegatedWarning(UserWarning):
+    pass
+
+
+class GroupLineError(UserError):
+    pass

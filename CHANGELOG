@@ -1,3 +1,5 @@
+* Add group lines wizard
+* Manage delegate reconciliation
 * Remove starting wildcard when searching on codes and numbers
 * Remove display balance
 * Merge account kind and account type

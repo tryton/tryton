@@ -124,6 +124,10 @@ Use the current period to cancel the move?</field>
         <record model="ir.message" id="msg_write_reconciliation">
             <field name="text">You cannot modify any reconciliation.</field>
         </record>
+        <record model="ir.message" id="msg_reconciliation_delete_delegated">
+            <field name="text">The reconciliation "%(reconciliation)s" is delegated to the line "%(line)s".
+You may need to cancel its move "%(move)s".</field>
+        </record>
         <record model="ir.message" id="msg_reconciliation_line_not_valid">
             <field name="text">You cannot reconcile non-valid line "%(line)s".</field>
         </record>
@@ -166,6 +170,25 @@ Use the current period to cancel the move?</field>
         </record>
         <record model="ir.message" id="msg_line_party_set">
             <field name="text">To create a line on account "%(account)s", you must remove the party on line "%(line)s".</field>
+        </record>
+
+        <record model="ir.message" id="msg_group_line">
+            <field name="text">Line "%(line)s" can not be grouped.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_single">
+            <field name="text">You cannot group a single line.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_many_parties">
+            <field name="text">You cannot group lines with different parties.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_same_company">
+            <field name="text">You cannot group lines of different companies.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_same_second_currency">
+            <field name="text">You cannot group lines of different second currencies.</field>
+        </record>
+        <record model="ir.message" id="msg_group_line_maximum_account">
+            <field name="text">You cannot group lines from more than 2 different accounts.</field>
         </record>
     </data>
 </tryton>

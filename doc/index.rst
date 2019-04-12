@@ -177,6 +177,9 @@ possible. The configuration `reconciliation_chunk` in `account` section allow
 to define the length of lines that is allowed to search for proposal. The
 default is 10.
 
+The *Group Lines* wizard allow to group payable and/or receivable lines in
+order to have a unique payable or receivable line.
+
 
 Tax Code
 ********

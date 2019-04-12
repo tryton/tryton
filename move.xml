@@ -392,6 +392,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.action.wizard" id="act_group_lines_wizard">
+            <field name="name">Group Lines</field>
+            <field name="wiz_name">account.move.line.group</field>
+        </record>
+        <record model="ir.action.keyword" id="act_group_lines_keyword1">
+            <field name="keyword">form_action</field>
+            <field name="model">account.move.line,-1</field>
+            <field name="action" ref="act_group_lines_wizard"/>
+        </record>
+
+        <record model="ir.ui.view" id="move_line_group_start_view_form">
+            <field name="model">account.move.line.group.start</field>
+            <field name="type">form</field>
+            <field name="name">move_line_group_start_form</field>
+        </record>
+
         <record model="ir.ui.view" id="print_general_journal_start_view_form">
             <field name="model">account.move.print_general_journal.start</field>
             <field name="type">form</field>
