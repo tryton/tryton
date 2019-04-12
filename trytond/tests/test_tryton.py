@@ -612,6 +612,25 @@ class ModuleTestCase(unittest.TestCase):
                     'model': model.__name__,
                     })
 
+    @with_transaction()
+    def test_buttons_states(self):
+        "Test the states of buttons"
+        pool = Pool()
+        keys = {'readonly', 'invisible', 'icon', 'pre_validate', 'depends'}
+        for mname, model in pool.iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            if not issubclass(model, ModelView):
+                continue
+            for button, states in model._buttons.items():
+                assert set(states).issubset(keys), (
+                    'The button "%(button)s" of Model "%(model)s" has extra '
+                    'keys "%(keys)s".' % {
+                        'button': button,
+                        'model': mname,
+                        'keys': set(states) - keys,
+                        })
+
 
 def db_exist(name=DB_NAME):
     Database = backend.get('Database')

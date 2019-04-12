@@ -46,9 +46,11 @@ def domain_validate(value):
 
 def states_validate(value):
     assert isinstance(value, dict), 'states must be a dict'
+    assert set(value).issubset({'required', 'readonly', 'invisible'}), (
+        'extra keys "%(keys)s" in states' % {
+            'keys': set(value) - {'required', 'readonly', 'invisible'},
+            })
     for state in value:
-        if state == 'icon':
-            continue
         assert isinstance(value[state], (bool, PYSON)), \
             'values of states must be PYSON'
         if hasattr(value[state], 'types'):
