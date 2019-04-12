@@ -582,7 +582,7 @@ class Account(ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ('id', '!=', Eval('currency', -1)),
             ],
         states={
-            'reaodnly': _states['readonly'],
+            'readonly': _states['readonly'],
             'invisible': (Eval('kind').in_(
                     ['payable', 'revenue', 'receivable', 'expense'])
                 | ~Eval('deferral', False)),
