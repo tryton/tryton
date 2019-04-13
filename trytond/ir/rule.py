@@ -221,7 +221,7 @@ class Rule(ModelSQL, ModelView):
 
             if no_rules:
                 group_id = no_rules[0]
-                clause[cls(group_id)] = []
+                clause[RuleGroup(group_id)] = []
 
         return clause, clause_global
 
