@@ -18,7 +18,7 @@ for country in pycountry.countries:
             <field name="code_numeric">%s</field>
         </record>\n''' % (country.alpha_2.lower(), country.name,
                 country.alpha_2, country.alpha_3, country.numeric)
-    sys.stdout.write(record.encode('utf-8'))
+    sys.stdout.write(record)
 sys.stdout.write('    </data>\n')
 
 subdivision_codes = {s.code.lower() for s in pycountry.subdivisions}
@@ -48,7 +48,7 @@ while existing_parents < subdivision_codes:
             <field name="country" ref="%s"/>
         </record>\n''' % subdivision.country.alpha_2.lower()
 
-        sys.stdout.write(record.encode('utf-8'))
+        sys.stdout.write(record)
     sys.stdout.write('    </data>\n')
     existing_parents |= new_parents
 

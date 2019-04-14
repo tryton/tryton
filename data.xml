@@ -9847,7 +9847,7 @@
         </record>
 
         <record model="country.subdivision" id="in-dd">
-            <field name="name">Damen and Diu</field>
+            <field name="name">Daman and Diu</field>
             <field name="code">IN-DD</field>
             <field name="type">union territory</field>
             <field name="country" ref="in"/>
@@ -9973,7 +9973,7 @@
         </record>
 
         <record model="country.subdivision" id="in-or">
-            <field name="name">Orissa</field>
+            <field name="name">Odisha</field>
             <field name="code">IN-OR</field>
             <field name="type">state</field>
             <field name="country" ref="in"/>
@@ -10003,6 +10003,13 @@
         <record model="country.subdivision" id="in-sk">
             <field name="name">Sikkim</field>
             <field name="code">IN-SK</field>
+            <field name="type">state</field>
+            <field name="country" ref="in"/>
+        </record>
+
+        <record model="country.subdivision" id="in-tg">
+            <field name="name">Telangana</field>
+            <field name="code">IN-TG</field>
             <field name="type">state</field>
             <field name="country" ref="in"/>
         </record>
@@ -26289,9 +26296,9 @@
             <field name="country" ref="za"/>
         </record>
 
-        <record model="country.subdivision" id="za-gp">
+        <record model="country.subdivision" id="za-gt">
             <field name="name">Gauteng</field>
-            <field name="code">ZA-GP</field>
+            <field name="code">ZA-GT</field>
             <field name="type">province</field>
             <field name="country" ref="za"/>
         </record>
@@ -26317,6 +26324,13 @@
             <field name="country" ref="za"/>
         </record>
 
+        <record model="country.subdivision" id="za-nl">
+            <field name="name">Kwazulu-Natal</field>
+            <field name="code">ZA-NL</field>
+            <field name="type">province</field>
+            <field name="country" ref="za"/>
+        </record>
+
         <record model="country.subdivision" id="za-nw">
             <field name="name">North-West (South Africa)</field>
             <field name="code">ZA-NW</field>
@@ -26327,13 +26341,6 @@
         <record model="country.subdivision" id="za-wc">
             <field name="name">Western Cape</field>
             <field name="code">ZA-WC</field>
-            <field name="type">province</field>
-            <field name="country" ref="za"/>
-        </record>
-
-        <record model="country.subdivision" id="za-zn">
-            <field name="name">Kwazulu-Natal</field>
-            <field name="code">ZA-ZN</field>
             <field name="type">province</field>
             <field name="country" ref="za"/>
         </record>
