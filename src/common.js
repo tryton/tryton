@@ -2339,13 +2339,22 @@
         },
         unique_value: function(domain) {
             if ((domain instanceof Array) &&
-                    (domain.length == 1) &&
-                    !domain[0][0].contains('.') &&
-                    (domain[0][1] == '=')) {
-                return [true, domain[0][1], domain[0][2]];
-            } else {
-                return [false, null, null];
+                    (domain.length == 1)) {
+                domain = domain[0];
+                var name = domain[0];
+                var value = domain[2];
+                var count = 0;
+                if (domain.length == 4 && name.endsWith('.id')) {
+                    count = 1;
+                    var model = domain[3];
+                    value = [model, value];
+                }
+                if ((name.split('.').length - 1) == count &&
+                        (domain[1] == '=')) {
+                    return [true, domain[1], value];
+                }
             }
+            return [false, null, null];
         },
         parse: function(domain) {
             var And = Sao.common.DomainInversion.And;

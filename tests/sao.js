@@ -2201,6 +2201,10 @@
         QUnit.ok(!unique_value(domain)[0]);
         domain = [['a.b', '=', 1]];
         QUnit.ok(!unique_value(domain)[0]);
+        domain = [['a.id', '=', 1, 'model']];
+        QUnit.ok(compare(unique_value(domain), [true, '=', ['model', 1]]));
+        domain = [['a.b.id', '=', 1, 'model']];
+        QUnit.ok(compare(unique_value(domain), [false, null, null]));
     });
 
     QUnit.test('DomainInversion evaldomain', function() {

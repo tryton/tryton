@@ -1,3 +1,4 @@
+* Add domain inversion for reference fields
 * Add list-form view
 * Support HTML widget
 * Use locale format for data export
