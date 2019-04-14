@@ -95,6 +95,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="inventory_confirm_button">
             <field name="name">confirm</field>
             <field name="string">Confirm</field>
+            <field name="confirm">Are you sure you want to confirm the inventory?</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
         <record model="ir.model.button-res.group"
@@ -106,6 +107,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="inventory_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the inventory?</field>
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
         </record>
         <record model="ir.model.button-res.group"

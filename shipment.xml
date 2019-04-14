@@ -578,6 +578,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_in_receive_button">
             <field name="name">receive</field>
             <field name="string">Receive</field>
+            <field name="confirm">Are you sure you want to receive the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.in')]"/>
         </record>
@@ -674,6 +675,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_out_done_button">
             <field name="name">done</field>
             <field name="string">Done</field>
+            <field name="confirm">Are you sure you want to complete the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
@@ -882,6 +884,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_out_return_receive_button">
             <field name="name">receive</field>
             <field name="string">Receive</field>
+            <field name="confirm">Are you sure you want to receive the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out.return')]"/>
         </record>
@@ -966,6 +969,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="shipment_in_return_done_button">
             <field name="name">done</field>
             <field name="string">Done</field>
+            <field name="confirm">Are you sure you want to complete the shipment?</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.in.return')]"/>
         </record>

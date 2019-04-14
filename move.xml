@@ -114,6 +114,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="move_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
+            <field name="confirm">Are you sure you want to cancel the move?</field>
             <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
@@ -131,6 +132,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="move_do_button">
             <field name="name">do</field>
             <field name="string">Do</field>
+            <field name="confirm">Are you sure you want to complete the move?</field>
             <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
