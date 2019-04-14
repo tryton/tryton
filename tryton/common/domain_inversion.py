@@ -281,12 +281,18 @@ def concat(*domains, **kwargs):
 def unique_value(domain):
     "Return if unique, the field and the value"
     if (isinstance(domain, list)
-            and len(domain) == 1
-            and '.' not in domain[0][0]
-            and domain[0][1] == '='):
-        return True, domain[0][1], domain[0][2]
-    else:
-        return False, None, None
+            and len(domain) == 1):
+        domain, = domain
+        name = domain[0]
+        value = domain[2]
+        count = 0
+        if len(domain) == 4 and name[-3:] == '.id':
+            count = 1
+            model = domain[3]
+            value = [model, value]
+        if name.count('.') == count and domain[1] == '=':
+            return True, domain[1], value
+    return False, None, None
 
 
 def parse(domain):
@@ -586,6 +592,10 @@ def test_unique_value():
     assert unique_value(domain)[0] is False
     domain = [['a.b', '=', 1]]
     assert unique_value(domain)[0] is False
+    domain = [['a.id', '=', 1, 'model']]
+    assert unique_value(domain) == (True, '=', ['model', 1])
+    domain = [['a.b.id', '=', 1, 'model']]
+    assert unique_value(domain) == (False, None, None)
 
 
 def test_evaldomain():
@@ -803,6 +813,7 @@ if __name__ == '__main__':
     test_oror_inversion()
     test_parse()
     test_simplify()
+    test_unique_value()
     test_evaldomain()
     test_localize()
     test_prepare_reference_domain()
