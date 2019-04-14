@@ -1,26 +1,31 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import unicodedata
 from collections import defaultdict
 from decimal import Decimal
 from operator import attrgetter
 
 from sql import Cast, Null, Literal
-from sql.aggregate import Count
+from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Case
-from sql.functions import Substring, Position
+from sql.functions import Substring, Position, Extract
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.modelsql import convert_from
 from trytond.pool import Pool
+from trytond.pyson import Eval
 from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
     Button
+from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
 
 from .exceptions import PrintError
 
-__all__ = ['AEAT111', 'AEAT115', 'AEAT303', 'PrintAEATStart', 'PrintAEAT']
+__all__ = ['AEAT111', 'AEAT115', 'AEAT303', 'PrintAEATStart', 'PrintAEAT',
+    'ESVATList', 'ESVATListContext', 'AEAT347', 'ECOperationList',
+    'ECOperationListContext', 'AEAT349']
 
 
 # XXX fix: https://genshi.edgewall.org/ticket/582
@@ -61,6 +66,26 @@ def format_integer(n, size=8):
 
 def format_percentage(n, size=5):
     return ('{0:.2f}'.format(n)).replace('.', '').rjust(size, '0')
+
+
+def identifier_code(identifier):
+    if identifier:
+        return identifier.code[2:]
+    return ''
+
+
+def country_code(record):
+    code = None
+    if record.party_tax_identifier:
+        code = record.party_tax_identifier.code[:2]
+    if code is None or code == 'ES':
+        return ''
+    return code
+
+
+def strip_accents(s):
+    return ''.join(c for c in unicodedata.normalize('NFD', s)
+        if unicodedata.category(c) != 'Mn')
 
 
 class AEATReport(Report):
@@ -348,3 +373,271 @@ class PrintAEAT(Wizard):
         if len(set(p.fiscalyear for p in self.start.periods)) > 1:
             raise PrintError(
                 gettext('account_es.msg_report_same_fiscalyear'))
+
+
+class ESVATList(ModelSQL, ModelView):
+    "Spanish VAT List"
+    __name__ = 'account.reporting.vat_list_es'
+
+    company_tax_identifier = fields.Many2One(
+        'party.identifier', "Company Tax Identifier")
+    party_tax_identifier = fields.Many2One(
+        'party.identifier', "Party Tax Identifier")
+    party = fields.Many2One('party.party', "Party")
+    province_code = fields.Function(fields.Char("Province Code"),
+        'get_province_code', searcher='search_province_code')
+    code = fields.Char("Code")
+    amount = fields.Numeric(
+        "Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    first_period_amount = fields.Numeric(
+        "First Period Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    second_period_amount = fields.Numeric(
+        "Second Period Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    third_period_amount = fields.Numeric(
+        "Third Period Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    fourth_period_amount = fields.Numeric(
+        "Fourth Period Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    currency = fields.Many2One('currency.currency', "Currency")
+    currency_digits = fields.Function(
+        fields.Integer("Currency Digits"), 'get_currency_digits')
+
+    def get_currency_digits(self, name):
+        return self.currency.digits
+
+    @classmethod
+    def get_province_code(cls, records, name):
+        return {r.id: r.party.es_province_code or '' if r.party else ''
+            for r in records}
+
+    @classmethod
+    def search_province_code(cls, name, clause):
+        return [(('party.es_province_code',) + tuple(clause[1:]))]
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        InvoiceTax = pool.get('account.invoice.tax')
+        Tax = pool.get('account.tax')
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        invoice = Invoice.__table__()
+        invoice_tax = InvoiceTax.__table__()
+        tax = Tax.__table__()
+
+        amount = invoice_tax.base + invoice_tax.amount
+        month = Extract('MONTH', invoice.invoice_date)
+
+        where = ((invoice.company == context.get('company'))
+            & (invoice.state.in_(['posted', 'paid']))
+            & (tax.es_vat_list_code != Null)
+            & (Extract('year', invoice.invoice_date)
+                == context.get('date', Date.today()).year))
+        return (invoice_tax
+            .join(invoice,
+                condition=invoice_tax.invoice == invoice.id)
+            .join(tax, condition=invoice_tax.tax == tax.id)
+            .select(
+                Max(invoice_tax.id).as_('id'),
+                Literal(0).as_('create_uid'),
+                Min(invoice_tax.create_date).as_('create_date'),
+                Literal(0).as_('write_uid'),
+                Max(invoice_tax.write_date).as_('write_date'),
+                invoice.tax_identifier.as_('company_tax_identifier'),
+                invoice.party.as_('party'),
+                invoice.party_tax_identifier.as_('party_tax_identifier'),
+                tax.es_vat_list_code.as_('code'),
+                Sum(amount).as_('amount'),
+                Sum(amount, filter_=month <= Literal(3)).as_(
+                    'first_period_amount'),
+                Sum(amount, filter_=(
+                        (month > Literal(3)) & (month <= Literal(6)))).as_(
+                    'second_period_amount'),
+                Sum(amount, filter_=(
+                        (month > Literal(6)) & (month <= Literal(9)))).as_(
+                    'third_period_amount'),
+                Sum(amount, filter_=(
+                        (month > Literal(9)) & (month <= Literal(12)))).as_(
+                    'fourth_period_amount'),
+                invoice.currency.as_('currency'),
+                where=where,
+                group_by=[
+                    invoice.tax_identifier,
+                    invoice.type,
+                    invoice.party,
+                    invoice.party_tax_identifier,
+                    invoice.currency,
+                    tax.es_vat_list_code,
+                    ]))
+
+
+class ESVATListContext(ModelView):
+    "Spanish VAT List Context"
+    __name__ = 'account.reporting.vat_list_es.context'
+
+    company = fields.Many2One('company.company', "Company", required=True)
+    date = fields.Date("Date", required=True,
+        context={'date_format': '%Y'})
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def default_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+
+class AEAT347(Report):
+    __name__ = 'account.reporting.aeat347'
+
+    @classmethod
+    def get_context(cls, records, data):
+        pool = Pool()
+        Company = pool.get('company.company')
+        t_context = Transaction().context
+
+        context = super().get_context(records, data)
+
+        context['year'] = str(t_context['date'].year)
+        context['company'] = Company(t_context['company'])
+        context['records_amount'] = sum(
+            (r.amount for r in records), Decimal(0))
+
+        context['justify'] = justify
+
+        def format_decimal(n):
+            if not isinstance(n, Decimal):
+                n = Decimal(n)
+            sign = 'N' if n < 0 else ' '
+            return sign + ('{0:.2f}'.format(abs(n))).replace('.', '').rjust(
+                15, '0')
+        context['format_decimal'] = format_decimal
+        context['format_integer'] = format_integer
+        context['identifier_code'] = identifier_code
+        context['country_code'] = country_code
+        context['strip_accents'] = strip_accents
+
+        return context
+
+
+class ECOperationList(ECSalesList):
+    "EC Operation List"
+    __name__ = 'account.reporting.es_ec_operation_list'
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        InvoiceTax = pool.get('account.invoice.tax')
+        Move = pool.get('account.move')
+        Period = pool.get('account.period')
+        Tax = pool.get('account.tax')
+        context = Transaction().context
+        invoice = Invoice.__table__()
+        invoice_tax = InvoiceTax.__table__()
+        move = Move.__table__()
+        period = Period.__table__()
+        tax = Tax.__table__()
+
+        sales = super().table_query()
+
+        where = ((invoice.company == context.get('company'))
+            & (period.fiscalyear == context.get('fiscalyear')))
+        if context.get('period'):
+            where &= (period.id == context.get('period'))
+        where &= ((tax.es_ec_purchases_list_code != Null)
+            & (tax.es_ec_purchases_list_code != ''))
+        where &= invoice.type == 'in'
+        purchases = (invoice_tax
+            .join(invoice,
+                condition=invoice_tax.invoice == invoice.id)
+            .join(tax, condition=invoice_tax.tax == tax.id)
+            .join(move, condition=invoice.move == move.id)
+            .join(period, condition=move.period == period.id)
+            .select(
+                Max(invoice_tax.id).as_('id'),
+                Literal(0).as_('create_uid'),
+                Min(invoice_tax.create_date).as_('create_date'),
+                Literal(0).as_('write_uid'),
+                Max(invoice_tax.write_date).as_('write_date'),
+                invoice.tax_identifier.as_('company_tax_identifier'),
+                invoice.party.as_('party'),
+                invoice.party_tax_identifier.as_('party_tax_identifier'),
+                tax.es_ec_purchases_list_code.as_('code'),
+                Sum(invoice_tax.base).as_('amount'),
+                invoice.currency.as_('currency'),
+                where=where,
+                group_by=[
+                    invoice.tax_identifier,
+                    invoice.party,
+                    invoice.party_tax_identifier,
+                    tax.es_ec_purchases_list_code,
+                    invoice.currency,
+                    ]))
+        return sales | purchases
+
+
+class ECOperationListContext(ECSalesListContext):
+    "EC Operation List Context"
+    __name__ = 'account.reporting.es_ec_operation_list.context'
+
+
+class AEAT349(Report):
+    __name__ = 'account.reporting.aeat349'
+
+    @classmethod
+    def get_context(cls, records, data):
+        pool = Pool()
+        Period = pool.get('account.period')
+        Fiscalyear = pool.get('account.fiscalyear')
+        t_context = Transaction().context
+
+        context = super().get_context(records, data)
+
+        fiscalyear = Fiscalyear(t_context['fiscalyear'])
+        context['year'] = str(fiscalyear.start_date.year)
+        context['company'] = fiscalyear.company
+        context['records_amount'] = sum(
+            (r.amount for r in records), Decimal(0))
+
+        period_id = t_context.get('period')
+        if not period_id:
+            # Yearly
+            context['period'] = '0A'
+            context['period_number'] = '99'
+        else:
+            period = Period(period_id)
+            start_month = period.start_date.month
+            end_month = period.end_date.month
+            if end_month - start_month > 0:
+                context['period'] = str(end_month // 3) + 'T'
+                context['period_number'] = str(20 + (end_month // 3))
+            else:
+                context['period'] = str(start_month).rjust(2, '0')
+                context['period_number'] = str(start_month).rjust(2, '0')
+
+        context['justify'] = justify
+        context['format_integer'] = format_integer
+        context['format_percentage'] = format_percentage
+        context['records_amount'] = sum(
+            (r.amount for r in records), Decimal(0))
+
+        context['justify'] = justify
+        context['identifier_code'] = identifier_code
+
+        def format_decimal(n, digits=13):
+            if not isinstance(n, Decimal):
+                n = Decimal(n)
+            return ('{0:.2f}'.format(abs(n))).replace('.', '').rjust(
+                digits, '0')
+        context['format_decimal'] = format_decimal
+
+        return context

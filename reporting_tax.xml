@@ -63,5 +63,114 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="account.group_account"/>
         </record>
 
+        <record model="ir.ui.view" id="vat_list_view_list">
+            <field name="model">account.reporting.vat_list_es</field>
+            <field name="type">tree</field>
+            <field name="name">vat_list_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_vat_list_form">
+            <field name="name">Spanish VAT List</field>
+            <field name="res_model">account.reporting.vat_list_es</field>
+            <field name="context_model">account.reporting.vat_list_es.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_vat_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="vat_list_view_list"/>
+            <field name="act_window" ref="act_vat_list_form"/>
+        </record>
+        <menuitem parent="account.menu_reporting"
+            action="act_vat_list_form" id="menu_vat_list"/>
+
+        <record model="ir.ui.view" id="vat_list_context_view_form">
+            <field name="model">account.reporting.vat_list_es.context</field>
+            <field name="type">form</field>
+            <field name="name">vat_list_context_form</field>
+        </record>
+
+        <record model="ir.model.access" id="access_vat_list">
+            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_vat_list_account">
+            <field name="model" search="[('model', '=', 'account.reporting.vat_list_es')]"/>
+            <field name="group" ref="account.group_account"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_347">
+            <field name="name">AEAT Model 347</field>
+            <field name="report_name">account.reporting.aeat347</field>
+            <field name="report">account_es/aeat347.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_347_group_account">
+            <field name="action" ref="report_aeat_347"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_347_group_account_admin">
+            <field name="action" ref="report_aeat_347"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="report_aeat_347_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.reporting.vat_list_es,-1</field>
+            <field name="action" ref="report_aeat_347"/>
+        </record>
+
+        <record model="ir.ui.view" id="es_ec_operation_list_view_list">
+            <field name="model">account.reporting.es_ec_operation_list</field>
+            <field name="type">tree</field>
+            <field name="name">es_ec_operation_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_es_ec_operation_list_form">
+            <field name="name">EC Operation List</field>
+            <field name="res_model">account.reporting.es_ec_operation_list</field>
+            <field name="context_model">account.reporting.es_ec_operation_list.context</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_es_ec_operation_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="es_ec_operation_list_view_list"/>
+            <field name="act_window" ref="act_es_ec_operation_list_form"/>
+        </record>
+        <menuitem parent="account.menu_reporting"
+            action="act_es_ec_operation_list_form" id="menu_es_ec_operation_list"/>
+
+        <record model="ir.ui.view" id="es_ec_operation_list_context_view_form">
+            <field name="model">account.reporting.es_ec_operation_list.context</field>
+            <field name="type">form</field>
+            <field name="name">es_ec_operation_list_context_form</field>
+        </record>
+
+        <record model="ir.action.report" id="report_aeat_349">
+            <field name="name">AEAT Model 349</field>
+            <field name="report_name">account.reporting.aeat349</field>
+            <field name="report">account_es/aeat349.txt</field>
+            <field name="template_extension">txt</field>
+            <field name="translatable" eval="False"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_349_group_account">
+            <field name="action" ref="report_aeat_349"/>
+            <field name="group" ref="account.group_account"/>
+        </record>
+        <record model="ir.action-res.group" id="report_aeat_349_group_account_admin">
+            <field name="action" ref="report_aeat_349"/>
+            <field name="group" ref="account.group_account_admin"/>
+        </record>
+        <record model="ir.action.keyword" id="report_aeat_349_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.reporting.es_ec_operation_list,-1</field>
+            <field name="action" ref="report_aeat_349"/>
+        </record>
     </data>
 </tryton>

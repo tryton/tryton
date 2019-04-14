@@ -12,6 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.21')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record id="iva_rep_10_pyme" model="account.tax.template">
             <field name="name">IVA 10%</field>
@@ -22,6 +23,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.1')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record id="iva_rep_4_pyme" model="account.tax.template">
             <field name="name">IVA 4%</field>
@@ -32,6 +34,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.04')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
             <field name="credit_note_account" ref="pgc_477_pyme"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record id="iva_rep_ex_pyme" model="account.tax.template">
             <field name="name">IVA Exento</field>
@@ -117,6 +120,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.21')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_10_pyme" model="account.tax.template">
             <field name="name">IVA 10% (operaciones corrientes)</field>
@@ -127,6 +131,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.1')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_4_pyme" model="account.tax.template">
             <field name="name">IVA 4% (operaciones corrientes)</field>
@@ -137,6 +142,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.04')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_ex_pyme" model="account.tax.template">
             <field name="name">IVA Exento (operaciones corrientes)</field>
@@ -157,6 +163,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.21')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_10_inv_pyme" model="account.tax.template">
             <field name="name">IVA 10% (bienes de inversión)</field>
@@ -167,6 +174,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.1')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_4_inv_pyme" model="account.tax.template">
             <field name="name">IVA 4% (bienes de inversión)</field>
@@ -177,6 +185,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.04')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_ex_inv_pyme" model="account.tax.template">
             <field name="name">IVA Exento (bienes de inversión)</field>
@@ -319,6 +328,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.21')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_ec_purchases_list_code">A</field>
         </record>
         <record id="iva_sop_intracomunitario_2_pyme" model="account.tax.template">
             <field name="name">IVA Intracomunitario. Operaciones corrientes (2)</field>
@@ -341,6 +351,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.21')"/>
             <field name="invoice_account" ref="pgc_472_pyme"/>
             <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_ec_purchases_list_code">A</field>
         </record>
         <record id="iva_sop_intracomunitario_inv_2_pyme" model="account.tax.template">
             <field name="name">IVA Intracomunitario. Bienes inversión (2)</field>

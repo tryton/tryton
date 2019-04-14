@@ -6,7 +6,7 @@ Imports::
 
     >>> import datetime
     >>> from decimal import Decimal
-    >>> from proteus import Model, Wizard
+    >>> from proteus import Model, Wizard, Report
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -65,9 +65,20 @@ Create chart of accounts::
 
 Create parties::
 
+    >>> Country = Model.get('country.country')
+    >>> spain = Country(name='Spain', code='ES')
+    >>> spain.save()
     >>> Party = Model.get('party.party')
     >>> TaxRule = Model.get('account.tax.rule')
     >>> party = Party(name='Party')
+    >>> tax_identifier = party.identifiers.new()
+    >>> tax_identifier.type = 'eu_vat'
+    >>> tax_identifier.code = 'ES00000000T'
+    >>> address, = party.addresses
+    >>> address.country = spain
+    >>> address.zip = '25001'
+    >>> party.es_province_code
+    '25'
     >>> party.save()
     >>> tax_rule, = TaxRule.find([
     ...     ('company', '=', company.id),
@@ -76,7 +87,22 @@ Create parties::
     ...     ])
     >>> supplier = Party(name='Supplier')
     >>> supplier.supplier_tax_rule = tax_rule
+    >>> tax_identifier = supplier.identifiers.new()
+    >>> tax_identifier.type = 'eu_vat'
+    >>> tax_identifier.code = 'ES00000001R'
+    >>> supplier.es_province_code = '08'
     >>> supplier.save()
+    >>> tax_rule, = TaxRule.find([
+    ...     ('company', '=', company.id),
+    ...     ('kind', '=', 'purchase'),
+    ...     ('name', '=', 'Compras Intracomunitarias'),
+    ...     ])
+    >>> ec_supplier = Party(name='Intracomunitary Supplier')
+    >>> ec_supplier.supplier_tax_rule = tax_rule
+    >>> tax_identifier = ec_supplier.identifiers.new()
+    >>> tax_identifier.type = 'eu_vat'
+    >>> tax_identifier.code = 'BE0897290877'
+    >>> ec_supplier.save()
 
 Create account category::
 
@@ -136,6 +162,17 @@ Create invoices::
     >>> invoice.click('post')
     >>> invoice.total_amount
     Decimal('106.00')
+    >>> invoice = Invoice()
+    >>> invoice.type = 'in'
+    >>> invoice.party = ec_supplier
+    >>> invoice.invoice_date = period.start_date
+    >>> line = invoice.lines.new()
+    >>> line.product = product
+    >>> line.quantity = 5
+    >>> line.unit_price = Decimal('20')
+    >>> invoice.click('post')
+    >>> invoice.total_amount
+    Decimal('100.00')
 
 Generate aeat reports::
 
@@ -179,3 +216,37 @@ Generate aeat reports::
     True
     >>> name
     'AEAT Model 303'
+
+    >>> VatList = Model.get('account.reporting.vat_list_es')
+    >>> context = {
+    ...     'company': company.id,
+    ...     'date': period.end_date,
+    ...     }
+    >>> with config.set_context(context):
+    ...     vat_list_records = VatList.find([])
+    ...     report = Report('account.reporting.aeat347')
+    ...     extension, content, _, name = report.execute(vat_list_records)
+    >>> extension
+    'txt'
+    >>> with file_open('account_es/tests/347.txt') as f:
+    ...     content == f.read()
+    True
+    >>> name
+    'AEAT Model 347'
+
+    >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
+    >>> context = {
+    ...     'company': company.id,
+    ...     'fiscalyear': fiscalyear.id,
+    ...     }
+    >>> with config.set_context(context):
+    ...     records = ECOperationList.find([])
+    ...     report = Report('account.reporting.aeat349')
+    ...     extension, content, _, name = report.execute(records)
+    >>> extension
+    'txt'
+    >>> with file_open('account_es/tests/349.txt') as f:
+    ...     content == f.read()
+    True
+    >>> name
+    'AEAT Model 349'
