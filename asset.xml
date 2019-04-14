@@ -129,7 +129,7 @@
         <record model="ir.model.button" id="asset_close_button">
             <field name="name">close</field>
             <field name="string">Close</field>
-            <field name="confirm">Are you sure to close the asset?</field>
+            <field name="confirm">Are you sure you want to close the asset?</field>
             <field name="model" search="[('model', '=', 'account.asset')]"/>
         </record>
 
