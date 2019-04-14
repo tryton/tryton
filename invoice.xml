@@ -151,7 +151,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="invoice_cancel_button">
             <field name="name">cancel</field>
             <field name="string">Cancel</field>
-            <field name="confirm">Are you sure to cancel the invoice?</field>
+            <field name="confirm">Are you sure you want to cancel the invoices?</field>
             <field name="help">Cancel the invoice</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
@@ -187,6 +187,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="invoice_post_button">
             <field name="name">post</field>
             <field name="string">Post</field>
+            <field name="confirm">Are you sure you want to post the invoices?</field>
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
         </record>
         <record model="ir.model.button-res.group"
