@@ -151,7 +151,7 @@ for currency in pycountry.currencies:
         </record>\n''' % (currency.alpha_3.lower(), currency.name,
                 currency.alpha_3, currency.numeric,
                 symbols.get(currency.alpha_3, currency.alpha_3), extend)
-    sys.stdout.write(record.encode('utf-8'))
+    sys.stdout.write(record)
 
 sys.stdout.write('    </data>\n')
 sys.stdout.write('</tryton>\n')
