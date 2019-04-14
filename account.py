@@ -38,6 +38,7 @@ class ECSalesList(ModelSQL, ModelView):
 
     company_tax_identifier = fields.Many2One(
         'party.identifier', "Company Tax Identifier")
+    party = fields.Many2One('party.party', "Party")
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier")
     code = fields.Char("Code")
@@ -85,6 +86,7 @@ class ECSalesList(ModelSQL, ModelView):
                 Literal(0).as_('write_uid'),
                 Max(invoice_tax.write_date).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
+                invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
                 tax.ec_sales_list_code.as_('code'),
                 Sum(invoice_tax.base).as_('amount'),
@@ -92,6 +94,7 @@ class ECSalesList(ModelSQL, ModelView):
                 where=where,
                 group_by=[
                     invoice.tax_identifier,
+                    invoice.party,
                     invoice.party_tax_identifier,
                     tax.ec_sales_list_code,
                     invoice.currency,
