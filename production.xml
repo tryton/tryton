@@ -250,6 +250,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="production_done_button">
             <field name="name">done</field>
             <field name="string">Done</field>
+            <field name="confirm">Are you sure you want to complete the production?</field>
             <field name="model"
                 search="[('model', '=', 'production')]"/>
         </record>
