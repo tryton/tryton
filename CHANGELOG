@@ -1,3 +1,4 @@
+* Use invoice amount to pay as line amount when creating lines from origins
 * Rename Origin field informations to information
 
 Version 5.0.0 - 2018-10-01

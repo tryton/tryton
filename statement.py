@@ -248,6 +248,51 @@ class Statement(Workflow, ModelSQL, ModelView):
         return ((getattr(self, 'end_balance', 0) or 0)
             - (getattr(self, 'start_balance', 0) or 0))
 
+    @fields.depends('origins', 'lines', 'journal', 'company')
+    def on_change_origins(self):
+        if not self.journal or not self.origins or not self.company:
+            return
+        if self.journal.currency != self.company.currency:
+            return
+
+        invoices = set()
+        for line in self.lines:
+            if (getattr(line, 'invoice', None)
+                    and line.invoice.currency == self.company.currency):
+                invoices.add(line.invoice)
+        for origin in self.origins:
+            for line in origin.lines:
+                if (getattr(line, 'invoice', None)
+                        and line.invoice.currency == self.company.currency):
+                    invoices.add(line.invoice)
+        invoice_id2amount_to_pay = {}
+        for invoice in invoices:
+            if invoice.type == 'out':
+                sign = -1
+            else:
+                sign = 1
+            invoice_id2amount_to_pay[invoice.id] = sign * invoice.amount_to_pay
+
+        origins = list(self.origins)
+        for origin in origins:
+            lines = list(origin.lines)
+            for line in lines:
+                if (getattr(line, 'invoice', None) and line.id
+                        and line.invoice.id in invoice_id2amount_to_pay):
+                    amount_to_pay = invoice_id2amount_to_pay[line.invoice.id]
+                    if (amount_to_pay
+                            and getattr(line, 'amount', None)
+                            and (line.amount >= 0) == (amount_to_pay <= 0)):
+                        if abs(line.amount) > abs(amount_to_pay):
+                            line.amount = amount_to_pay.copy_sign(line.amount)
+                        else:
+                            invoice_id2amount_to_pay[line.invoice.id] = (
+                                line.amount + amount_to_pay)
+                    else:
+                        line.invoice = None
+            origin.lines = lines
+        self.origins = origins
+
     @fields.depends('lines', 'journal', 'company')
     def on_change_lines(self):
         pool = Pool()
