@@ -16,6 +16,7 @@ import errno
 from functools import partial
 from contextlib import contextmanager
 import string
+from urllib import quote
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]
@@ -249,6 +250,7 @@ class ServerProxy(xmlrpclib.ServerProxy):
             fingerprints=None, ca_certs=None, session=None):
         self.__host = '%s:%s' % (host, port)
         if database:
+            database = quote(database)
             self.__handler = '/%s/' % database
         else:
             self.__handler = '/'
