@@ -1048,7 +1048,7 @@
                 } else {
                     prm = this.model.execute(
                         'on_change_with',
-                        [values, Object.keys(fieldnames)], this.get_context());
+                        [values, fieldnames], this.get_context());
                     prms.push(prm.then(this.set_on_change.bind(this)));
                 }
             }
