@@ -1,3 +1,4 @@
+* Do not create empty translations
 * Replace dsn by params to connect to postgresql
 * Simplify cron
 * Add duration on Cache

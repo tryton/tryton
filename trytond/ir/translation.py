@@ -115,6 +115,8 @@ class Translation(ModelSQL, ModelView):
 
         name = model.__name__ + ',name'
         src = model._get_name()
+        if not src:
+            return
         cursor.execute(*ir_translation.select(ir_translation.id,
                 where=(ir_translation.lang == 'en')
                 & (ir_translation.type == 'model')
@@ -172,7 +174,7 @@ class Translation(ModelSQL, ModelView):
 
         def insert(field, type, name, string):
             for val in string:
-                if val in translations[type][name]:
+                if not val or val in translations[type][name]:
                     continue
                 cursor.execute(
                     *ir_translation.insert(columns,
@@ -202,6 +204,8 @@ class Translation(ModelSQL, ModelView):
         trans_buttons = {t['name']: t for t in cursor_dict(cursor)}
 
         def update_insert_button(state_name, button):
+            if not button.string:
+                return
             trans_name = '%s,%s,%s' % (
                 wizard.__name__, state_name, button.state)
             if trans_name not in trans_buttons:
@@ -422,6 +426,8 @@ class Translation(ModelSQL, ModelView):
                     else:
                         src = getattr(record, field_name)
                     if not translation:
+                        if not src and not value:
+                            continue
                         translation = cls()
                         translation.name = name
                         translation.lang = lang
@@ -467,6 +473,8 @@ class Translation(ModelSQL, ModelView):
                 else:
                     src = getattr(record, field_name)
                 if not translation:
+                    if not src and not value:
+                        continue
                     translation = cls()
                     translation.name = name
                     translation.lang = lang
@@ -847,7 +855,8 @@ class Translation(ModelSQL, ModelView):
             entry = polib.POEntry(msgid=(translation.src or ''),
                 msgstr=(translation.value or ''), msgctxt=trans_ctxt,
                 flags=flags)
-            pofile.append(entry)
+            if entry.msgid or entry.msgstr:
+                pofile.append(entry)
 
         if pofile:
             pofile.sort()
@@ -926,7 +935,8 @@ class TranslationSet(Wizard):
 
             for _, _, string, _ in genshi_extract(
                     content, keywords, comment_tags, options):
-                yield string
+                if string:
+                    yield string
         if not template_class:
             raise ValueError('a template class is required')
         return method
