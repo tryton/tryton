@@ -127,10 +127,7 @@ class Sale(metaclass=PoolMeta):
         carriers = CarrierSelection.get_carriers(pattern)
         return [c.id for c in carriers]
 
-    # XXX We must have the same depends than on_change_with_available_carriers,
-    # for now it is maintain manually until we can specify cross-kind depends
-    # on on_changes
-    @fields.depends('carrier', 'warehouse', 'shipment_address')
+    @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_party(self):
         super(Sale, self).on_change_party()
         self.available_carriers = self.on_change_with_available_carriers()
@@ -140,7 +137,7 @@ class Sale(metaclass=PoolMeta):
         elif not self.available_carriers:
             self.carrier = None
 
-    @fields.depends('carrier', 'warehouse', 'shipment_address')
+    @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_shipment_party(self):
         super(Sale, self).on_change_shipment_party()
         self.available_carriers = self.on_change_with_available_carriers()
@@ -150,7 +147,7 @@ class Sale(metaclass=PoolMeta):
         elif not self.available_carriers:
             self.carrier = None
 
-    @fields.depends('carrier', 'warehouse', 'shipment_address')
+    @fields.depends('carrier', methods=['on_change_with_available_carriers'])
     def on_change_shipment_address(self):
         try:
             super_on_change = super(Sale, self).on_change_shipment_address
