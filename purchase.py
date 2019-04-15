@@ -856,6 +856,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         process, done = [], []
         cls.lock(purchases)
         for purchase in purchases:
+            if purchase.state not in {'confirmed', 'processing', 'done'}:
+                continue
             purchase.create_invoice()
             purchase.set_invoice_state()
             purchase.create_move('in')
