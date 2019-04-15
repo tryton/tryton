@@ -14,7 +14,7 @@ import errno
 from functools import partial
 from contextlib import contextmanager
 from functools import reduce
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 
 __all__ = ["ResponseError", "Fault", "ProtocolError", "Transport",
     "ServerProxy", "ServerPool"]
@@ -237,6 +237,7 @@ class ServerProxy(xmlrpc.client.ServerProxy):
             fingerprints=None, ca_certs=None, session=None):
         self.__host = '%s:%s' % (host, port)
         if database:
+            database = quote(database)
             self.__handler = '/%s/' % database
         else:
             self.__handler = '/'
