@@ -99,7 +99,7 @@ class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
                 ('ir.action.act_window', 'ir.action.act_window'),
                 ('ir.action.wizard', 'ir.action.wizard'),
                 ('ir.action.url', 'ir.action.url'),
-                ]), 'get_action', setter='set_action')
+                ], translate=False), 'get_action', setter='set_action')
     action_keywords = fields.One2Many('ir.action.keyword', 'model',
         'Action Keywords')
     favorite = fields.Function(fields.Boolean('Favorite'), 'get_favorite')

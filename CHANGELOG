@@ -1,3 +1,4 @@
+* Add sort and translate options to Reference field
 * Do not create empty translations
 * Replace dsn by params to connect to postgresql
 * Simplify cron

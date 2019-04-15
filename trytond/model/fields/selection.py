@@ -13,6 +13,7 @@ from ...rpc import RPC
 
 class SelectionMixin(Field):
     translate_selection = True
+    sort = True
 
     def translated(self, name=None):
         "Return a descriptor for the translated value of the field"
@@ -39,6 +40,7 @@ class SelectionMixin(Field):
             selection = self.selection
         definition['selection'] = selection
         definition['selection_change_with'] = list(self.selection_change_with)
+        definition['sort'] = self.sort
         return definition
 
     def definition_translations(self, model, language):
@@ -116,11 +118,6 @@ class Selection(SelectionMixin, Field):
             return [Case(*whens, else_=column)]
         else:
             return [column]
-
-    def definition(self, model, language):
-        definition = super().definition(model, language)
-        definition['sort'] = self.sort
-        return definition
 
 
 class TranslatedSelection(object):

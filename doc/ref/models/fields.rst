@@ -446,7 +446,7 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
 Selection
 ---------
 
-.. class:: Selection(selection, string[, sort[, selection_change_with[, translate[, \**options]]])
+.. class:: Selection(selection, string[, sort[, selection_change_with[, translate[, \**options]]]])
 
 A string field with limited values to choice.
 
@@ -505,7 +505,7 @@ Instance methods:
 Reference
 ---------
 
-.. class:: Reference(string[, selection[, selection_change_with[, search_order[, search_context[, \**options]]]])
+.. class:: Reference(string[, selection[, sort[, selection_change_with[, translated[,search_order[, search_context[, \**options]]]]]]])
 
 A field that refers to a record of a model. It will be represented in Python by
 a ``str`` instance like this::
@@ -520,9 +520,17 @@ But a ``tuple`` can be used to search or set value.
 
     Same as :attr:`Selection.selection` but only for model name.
 
+.. attribute:: Reference.sort
+
+    Same as :attr:`Selection.sort`.
+
 .. attribute:: Reference.selection_change_with
 
     Same as :attr:`Selection.selection_change_with`.
+
+.. attribute:: Reference.translate_selection
+
+    Same as :attr:`Selection.translate_selection`.
 
 .. attribute:: Reference.datetime_field
 

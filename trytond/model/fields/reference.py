@@ -21,15 +21,17 @@ class Reference(SelectionMixin, Field):
     _type = 'reference'
     _sql_type = 'VARCHAR'
 
-    def __init__(self, string='', selection=None, selection_change_with=None,
-            search_order=None, search_context=None, help='', required=False,
-            readonly=False, domain=None, states=None, select=False,
-            on_change=None, on_change_with=None, depends=None, context=None,
-            loading='lazy', datetime_field=None):
+    def __init__(self, string='', selection=None, sort=True,
+            selection_change_with=None, translate=True, search_order=None,
+            search_context=None, help='', required=False, readonly=False,
+            domain=None, states=None, select=False, on_change=None,
+            on_change_with=None, depends=None, context=None, loading='lazy',
+            datetime_field=None):
         '''
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is an internal name
             of model and the second is the user name of model.
+        :param sort: A boolean to sort or not the selections.
         :param datetime_field: The name of the field that contains the datetime
             value to read the target records.
         :param search_order: The order to use when searching for a record
@@ -52,6 +54,8 @@ class Reference(SelectionMixin, Field):
                 'use the depends decorator',
                 DeprecationWarning, stacklevel=2)
             self.selection_change_with |= set(selection_change_with)
+        self.sort = sort
+        self.translate_selection = translate
         self.__search_order = None
         self.search_order = search_order
         self.__search_context = None
