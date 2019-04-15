@@ -1,3 +1,5 @@
+* Replace dsn by params to connect to postgresql
+
 Version 4.4.19 - 2019-04-02
 * Bug fixes (see mercurial logs for details)
 * Check read access on field in search order (issue8189)

@@ -93,21 +93,26 @@ class Database(DatabaseInterface):
             minconn = config.getint('database', 'minconn', default=1)
             maxconn = config.getint('database', 'maxconn', default=64)
             inst._connpool = ThreadedConnectionPool(
-                minconn, maxconn, cls.dsn(name),
-                cursor_factory=LoggingCursor)
-
+                minconn, maxconn,
+                cursor_factory=LoggingCursor,
+                **cls._connection_params(name))
             return inst
 
     @classmethod
-    def dsn(cls, name):
+    def _connection_params(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
-        host = uri.hostname and "host=%s" % uri.hostname or ''
-        port = uri.port and "port=%s" % uri.port or ''
-        name = "dbname=%s" % name
-        user = uri.username and "user=%s" % uri.username or ''
-        password = ("password=%s" % urllib.unquote_plus(uri.password)
-            if uri.password else '')
-        return '%s %s %s %s %s' % (host, port, name, user, password)
+        params = {
+            'dbname': name,
+            }
+        if uri.username:
+            params['user'] = uri.username
+        if uri.password:
+            params['password'] = urllib.unquote_plus(uri.password)
+        if uri.hostname:
+            params['host'] = uri.hostname
+        if uri.port:
+            params['port'] = uri.port
+        return params
 
     def connect(self):
         return self
@@ -177,7 +182,8 @@ class Database(DatabaseInterface):
             res = []
             for db_name, in cursor:
                 try:
-                    with connect(self.dsn(db_name)) as conn:
+                    with connect(**self._connection_params(db_name)
+                            ) as conn:
                         if self._test(conn):
                             res.append(db_name)
                 except Exception:
