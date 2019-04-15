@@ -1373,9 +1373,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             Move.save(moves)
         cls.save(invoices)
         Move.post([i.move for i in invoices if i.move.state != 'posted'])
+        reconciled = []
         for invoice in invoices:
             if invoice.type == 'out':
                 invoice.print_invoice()
+            if invoice.reconciled:
+                reconciled.append(invoice)
+        if reconciled:
+            cls.__queue__.process(reconciled)
 
     @classmethod
     @ModelView.button_action('account_invoice.wizard_pay')
