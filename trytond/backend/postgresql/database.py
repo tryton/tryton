@@ -118,7 +118,7 @@ class Database(DatabaseInterface):
                 inst = DatabaseInterface.__new__(cls, name=name)
                 logger.info('connect to "%s"', name)
                 inst._connpool = ThreadedConnectionPool(
-                    minconn, _maxconn, cls.dsn(name),
+                    minconn, _maxconn, **cls._connection_params(name),
                     cursor_factory=LoggingCursor)
                 cls._databases[name] = inst
             inst._last_use = datetime.now()
@@ -128,15 +128,20 @@ class Database(DatabaseInterface):
         super(Database, self).__init__(name)
 
     @classmethod
-    def dsn(cls, name):
+    def _connection_params(cls, name):
         uri = parse_uri(config.get('database', 'uri'))
-        host = uri.hostname and "host=%s" % uri.hostname or ''
-        port = uri.port and "port=%s" % uri.port or ''
-        name = "dbname=%s" % name
-        user = uri.username and "user=%s" % uri.username or ''
-        password = ("password=%s" % urllib.parse.unquote_plus(uri.password)
-            if uri.password else '')
-        return '%s %s %s %s %s' % (host, port, name, user, password)
+        params = {
+            'dbname': name,
+            }
+        if uri.username:
+            params['user'] = uri.username
+        if uri.password:
+            params['password'] = urllib.parse.unquote_plus(uri.password)
+        if uri.hostname:
+            params['host'] = uri.hostname
+        if uri.port:
+            params['port'] = uri.port
+        return params
 
     def connect(self):
         return self
@@ -205,7 +210,8 @@ class Database(DatabaseInterface):
             res = []
             for db_name, in cursor:
                 try:
-                    with connect(self.dsn(db_name)) as conn:
+                    with connect(**self._connection_params(db_name)
+                            ) as conn:
                         if self._test(conn, hostname=hostname):
                             res.append(db_name)
                 except Exception:
