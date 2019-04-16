@@ -26,7 +26,7 @@ class ImportStatementStart(metaclass=PoolMeta):
 class ImportStatement(metaclass=PoolMeta):
     __name__ = 'account.statement.import'
 
-    def parse_aeb43(self, encoding='ascii'):
+    def parse_aeb43(self, encoding='iso-8859-1'):
         file_ = self.start.file_
         if not isinstance(file_, str):
             file_ = file_.decode(encoding)
