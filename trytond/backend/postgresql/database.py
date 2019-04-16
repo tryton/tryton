@@ -118,8 +118,9 @@ class Database(DatabaseInterface):
                 inst = DatabaseInterface.__new__(cls, name=name)
                 logger.info('connect to "%s"', name)
                 inst._connpool = ThreadedConnectionPool(
-                    minconn, _maxconn, **cls._connection_params(name),
-                    cursor_factory=LoggingCursor)
+                    minconn, _maxconn,
+                    cursor_factory=LoggingCursor,
+                    **cls._connection_params(name))
                 cls._databases[name] = inst
             inst._last_use = datetime.now()
             return inst
