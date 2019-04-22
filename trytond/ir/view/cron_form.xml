@@ -13,14 +13,14 @@ this repository contains the full copyright notices and license terms. -->
     </group>
     <label id="time_label" string="At"/>
     <group id="time" col="-1" colspan="3">
-        <label name="minute"/>
-        <field name="minute" xexpand="0"/>
-        <label name="hour"/>
-        <field name="hour" xexpand="0"/>
-        <label name="day"/>
-        <field name="day" xexpand="0"/>
         <label name="weekday"/>
         <field name="weekday" xexpand="0" widget="selection"/>
+        <label name="day"/>
+        <field name="day" xexpand="0"/>
+        <label name="hour"/>
+        <field name="hour" xexpand="0"/>
+        <label name="minute"/>
+        <field name="minute" xexpand="0"/>
     </group>
     <label name="next_call"/>
     <field name="next_call"/>

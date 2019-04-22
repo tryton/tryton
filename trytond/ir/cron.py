@@ -23,7 +23,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             ('days', 'Days'),
             ('weeks', 'Weeks'),
             ('months', 'Months'),
-            ], "Interval Type", required=True)
+            ], "Interval Type", sort=False, required=True)
     minute = fields.Integer("Minute",
         states={
             'invisible': Eval('interval_type').in_(['minutes']),
@@ -79,6 +79,14 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     @staticmethod
     def check_xml_record(crons, values):
         return True
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('//label[@id="time_label"]', 'states', {
+                    'invisible': Eval('interval_type') == 'minutes',
+                }),
+            ]
 
     def compute_next_call(self, now):
         return (now
