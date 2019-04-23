@@ -80,8 +80,7 @@ Receive a single product line::
     >>> move.to_location = shipment.warehouse.input_location
     >>> move.product = product
     >>> move.quantity = 50
-    >>> move.unit_price
-    Decimal('8')
+    >>> move.unit_price = Decimal('8')
     >>> shipment.carrier = carrier
     >>> shipment.cost
     Decimal('3')
@@ -105,6 +104,7 @@ Receive many product lines::
     ...     move.to_location = shipment.warehouse.input_location
     ...     move.product = product
     ...     move.quantity = quantity
+    ...     move.unit_price = Decimal('8')
     >>> shipment.carrier = carrier
     >>> shipment.cost
     Decimal('3')
