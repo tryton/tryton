@@ -100,6 +100,7 @@ Create needs for tomorrow in second warehouse::
     >>> move.quantity = 10
     >>> move.from_location = sec_warehouse_loc.output_location
     >>> move.to_location = customer_loc
+    >>> move.unit_price = Decimal('20')
     >>> shipment.click('wait')
     >>> shipment.state
     'waiting'
