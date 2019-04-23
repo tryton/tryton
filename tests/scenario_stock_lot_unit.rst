@@ -67,11 +67,13 @@ Create an incoming shipment without lot::
     >>> move1 = shipment.incoming_moves.new()
     >>> move1.product = product
     >>> move1.quantity = 60
+    >>> move1.unit_price = Decimal('8')
     >>> move1.from_location = supplier_loc
     >>> move1.to_location = input_loc
     >>> move2 = shipment.incoming_moves.new()
     >>> move2.product = product
     >>> move2.quantity = 40
+    >>> move2.unit_price = Decimal('8')
     >>> move2.from_location = supplier_loc
     >>> move2.to_location = input_loc
     >>> shipment.click('receive')
@@ -93,6 +95,7 @@ Let's ship a product with a lot::
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('20')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.lot = lot
@@ -112,12 +115,14 @@ Let's ship now two times the same lot::
     >>> move1 = shipment.outgoing_moves.new()
     >>> move1.product = product
     >>> move1.quantity = 1
+    >>> move1.unit_price = Decimal('20')
     >>> move1.from_location = output_loc
     >>> move1.to_location = customer_loc
     >>> move1.lot = lot
     >>> move2 = shipment.outgoing_moves.new()
     >>> move2.product = product
     >>> move2.quantity = 1
+    >>> move2.unit_price = Decimal('20')
     >>> move2.from_location = output_loc
     >>> move2.to_location = customer_loc
     >>> move2.lot = lot
@@ -141,6 +146,7 @@ Now let's ship one move with a quantity bigger than lot unit quantity::
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product
     >>> move.quantity = 4
+    >>> move.unit_price = Decimal('20')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.lot = lot
