@@ -348,12 +348,12 @@ class Statement(Workflow, ModelSQL, ModelView):
 
             @property
             def amount(self):
-                return sum((l.amount for l in lines))
+                return sum((l.amount for l in self.lines))
 
             @property
             def descriptions(self):
                 done = set()
-                for line in lines:
+                for line in self.lines:
                     if line.description and line.description not in done:
                         done.add(line.description)
                         yield line.description
