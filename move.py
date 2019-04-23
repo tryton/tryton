@@ -170,11 +170,15 @@ class Move(Workflow, ModelSQL, ModelView):
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
-    uom = fields.Many2One("product.uom", "Uom", required=True, states=STATES,
+    uom = fields.Many2One("product.uom", "Uom", required=True,
+        states={
+            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
+                | Eval('unit_price')),
+            },
         domain=[
             ('category', '=', Eval('product_uom_category')),
             ],
-        depends=['state', 'product_uom_category'],
+        depends=['state', 'unit_price', 'product_uom_category'],
         help="The unit in which the quantity is specified.")
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
@@ -358,55 +362,18 @@ class Move(Workflow, ModelSQL, ModelView):
             return self.uom.digits
         return 2
 
-    @fields.depends('product', 'currency', 'uom', 'company', 'from_location',
-        'to_location')
+    @fields.depends('product', 'uom')
     def on_change_product(self):
-        pool = Pool()
-        Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
-
-        self.unit_price = Decimal('0.0')
         if self.product:
-            self.uom = self.product.default_uom
-            self.unit_digits = self.product.default_uom.digits
-            unit_price = None
-            if self.from_location and self.from_location.type in ('supplier',
-                    'production'):
-                unit_price = self.product.cost_price
-            elif self.to_location and self.to_location.type == 'customer':
-                unit_price = self.product.list_price
-            if unit_price:
-                if self.uom != self.product.default_uom:
-                    unit_price = Uom.compute_price(self.product.default_uom,
-                        unit_price, self.uom)
-                if self.currency and self.company:
-                    unit_price = Currency.compute(self.company.currency,
-                        unit_price, self.currency, round=False)
-                self.unit_price = unit_price
+            if (not self.uom
+                    or self.uom.category != self.product.default_uom.category):
+                self.uom = self.product.default_uom
+                self.unit_digits = self.product.default_uom.digits
 
     @fields.depends('product')
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
-
-    @fields.depends('product', 'currency', 'uom', 'company', 'from_location',
-        'to_location')
-    def on_change_uom(self):
-        pool = Pool()
-        Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
-
-        self.unit_price = Decimal('0.0')
-        if self.product:
-            if self.to_location and self.to_location.type == 'storage':
-                unit_price = self.product.cost_price
-                if self.uom and self.uom != self.product.default_uom:
-                    unit_price = Uom.compute_price(self.product.default_uom,
-                        unit_price, self.uom)
-                if self.currency and self.company:
-                    unit_price = Currency.compute(self.company.currency,
-                        unit_price, self.currency, round=False)
-                self.unit_price = unit_price
 
     @fields.depends('from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):

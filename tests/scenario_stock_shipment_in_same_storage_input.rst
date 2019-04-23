@@ -63,6 +63,7 @@ Create Shipment In::
     >>> move.product = product
     >>> move.uom = unit
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('5')
     >>> move.from_location = supplier_loc
     >>> move.to_location = storage1
     >>> shipment_in.save()

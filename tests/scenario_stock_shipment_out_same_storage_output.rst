@@ -59,6 +59,7 @@ Create Shipment Out::
     >>> move.product = product
     >>> move.uom = unit
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('5')
     >>> move.from_location = storage_loc
     >>> move.to_location = customer_loc
     >>> shipment_out.save()
