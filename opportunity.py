@@ -500,14 +500,18 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         SaleLine = Pool().get('sale.line')
         sale_line = SaleLine(
             type='line',
-            quantity=self.quantity,
-            unit=self.unit,
             product=self.product,
             sale=sale,
             description=None,
             )
         sale_line.on_change_product()
+        self._set_sale_line_quantity(sale_line)
+        sale_line.on_change_quantity()
         return sale_line
+
+    def _set_sale_line_quantity(self, sale_line):
+        sale_line.quantity = self.quantity
+        sale_line.unit = self.unit
 
     def get_rec_name(self, name):
         return self.product.rec_name
