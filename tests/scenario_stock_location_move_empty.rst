@@ -76,6 +76,7 @@ Fill storage locations::
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product1
     >>> incoming_move.quantity = 1
+    >>> incoming_move.unit_price = Decimal('0')
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = storage1
     >>> incoming_move.effective_date = yesterday
@@ -84,6 +85,7 @@ Fill storage locations::
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product2
     >>> incoming_move.quantity = 1
+    >>> incoming_move.unit_price = Decimal('0')
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = pallet1
     >>> incoming_move.effective_date = yesterday
@@ -92,6 +94,7 @@ Fill storage locations::
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product3
     >>> incoming_move.quantity = 2
+    >>> incoming_move.unit_price = Decimal('0')
     >>> incoming_move.from_location = supplier_loc
     >>> incoming_move.to_location = pallet2
     >>> incoming_move.effective_date = yesterday
@@ -106,16 +109,19 @@ Ship 1 product from the locations::
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product1
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('0')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product2
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('0')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move = shipment.outgoing_moves.new()
     >>> move.product = product3
     >>> move.quantity = 1
+    >>> move.unit_price = Decimal('0')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> shipment.click('wait')
