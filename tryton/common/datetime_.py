@@ -16,9 +16,19 @@ _ = gettext.gettext
 
 
 def date_parse(text, format_='%x'):
+    try:
+        return datetime.datetime.strptime(text, format_)
+    except ValueError:
+        pass
     formatted_date = datetime.date(1988, 7, 16).strftime(format_)
-    dayfirst = formatted_date.index('16') == 0
-    monthfirst = formatted_date.index('7') <= 1
+    try:
+        dayfirst = formatted_date.index('16') == 0
+    except ValueError:
+        dayfirst = False
+    try:
+        monthfirst = formatted_date.index('7') <= 1
+    except ValueError:
+        monthfirst = False
     yearfirst = not dayfirst and not monthfirst
     return parse(text, dayfirst=dayfirst, yearfirst=yearfirst, ignoretz=True)
 
