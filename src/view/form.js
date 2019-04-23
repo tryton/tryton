@@ -3283,6 +3283,11 @@ function eval_pyson(value){
         add: function() {
             var dom;
             var domain = this.field.get_domain(this.record);
+            var add_remove = this.record.expr_eval(
+                this.attributes.add_remove);
+            if (!jQuery.isEmptyObject(add_remove)) {
+                domain = [domain, add_remove];
+            }
             var context = this.field.get_search_context(this.record);
             var order = this.field.get_search_order(this.record);
             var value = this.entry.val();
