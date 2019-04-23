@@ -473,6 +473,10 @@ class DateTime(Gtk.HBox):
         self.__time.connect('time-changed',
             lambda e: self.emit('datetime-changed'))
 
+    def parse(self):
+        self.__date.parse()
+        self.__time.parse()
+
     def do_set_property(self, prop, value):
         if prop.name == 'value':
             self.__date.props.value = value
