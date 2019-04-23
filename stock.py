@@ -60,6 +60,10 @@ def set_origin_consignment(func):
             InvoiceLine.save(to_save)
             for move, line in move2line.items():
                 move.origin = line
+                if (not move.unit_price
+                        and move.on_change_with_unit_price_required()):
+                    move.unit_price = line.unit_price
+                    move.currency = line.currency
             cls.save(list(move2line.keys()))
         return func(cls, moves)
     return wrapper
@@ -88,6 +92,23 @@ class Move(metaclass=PoolMeta):
 
     invoice_lines = fields.One2Many(
         'account.invoice.line', 'origin', "Invoice Lines", readonly=True)
+
+    @fields.depends('origin', 'from_location', 'to_location')
+    def on_change_with_unit_price_required(self, name=None):
+        required = super().on_change_with_unit_price_required(name)
+        if (required
+                and not self.origin
+                and self.from_location
+                and self.to_location
+                and ((self.from_location.type == 'supplier'
+                        and self.to_location.type in {
+                            'storage', 'production', 'customer'})
+                    or (self.from_location.type in {
+                            'storage', 'production', 'supplier'}
+                        and self.to_location.type == 'customer'))
+                and self.from_location.consignment_party):
+            required = False
+        return required
 
     @classmethod
     def _get_origin(cls):

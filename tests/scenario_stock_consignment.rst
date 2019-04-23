@@ -176,6 +176,7 @@ Use supplier consignment stock for shipment out::
     >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
     >>> move.quantity = 3
+    >>> move.unit_price = Decimal('10')
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> shipment_out.click('wait')
