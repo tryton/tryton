@@ -18,12 +18,13 @@ class Work(metaclass=PoolMeta):
         fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
     timesheet_lines = fields.Function(
-        fields.One2Many('timesheet.line', 'work', 'Timesheet Lines',
+        fields.One2Many('timesheet.line', None, 'Timesheet Lines',
             states={
                 'invisible': ~Eval('timesheet_works'),
                 },
             domain=[
                 ('company', '=', Eval('company', -1)),
+                ('work', 'in', Eval('timesheet_works', [])),
                 ],
             depends=['timesheet_works', 'company']),
         'get_timesheet_lines', setter='set_timesheet_lines')
