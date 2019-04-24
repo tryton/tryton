@@ -180,7 +180,7 @@
                 'role': 'menu'
             })).append(jQuery('<button/>', {
                 'type': 'button',
-                'class': 'close visible-xs visible-sm',
+                'class': 'close visible-xs',
                 'aria-label': Sao.i18n.gettext('Close')
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
