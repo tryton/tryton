@@ -1665,12 +1665,16 @@
                     var operator = clause[1];
                     var value = clause[2];
                     var field = this.strings[clause[0].toLowerCase()];
+                    var field_name = field.name;
 
                     var target = null;
                     if (field.type == 'reference') {
                         var split = this.split_target_value(field, value);
                         target = split[0];
                         value = split[1];
+                        if (target) {
+                            field_name += '.rec_name';
+                        }
                     }
 
                     if (!operator) {
@@ -1694,8 +1698,8 @@
                             var lvalue = this.convert_value(field, values[0]);
                             var rvalue = this.convert_value(field, values[1]);
                             result.push([
-                                    this._clausify([field.name, '>=', lvalue]),
-                                    this._clausify([field.name, '<=', rvalue])
+                                    this._clausify([field_name, '>=', lvalue]),
+                                    this._clausify([field_name, '<=', rvalue])
                                     ]);
                             return;
                         }
@@ -1704,6 +1708,10 @@
                         value = value.map(function(v) {
                             return this.convert_value(field, v);
                         }.bind(this));
+                        if (~['many2one', 'one2many', 'many2many', 'one2one',
+                            'many2many', 'one2one'].indexOf(field.type)) {
+                            field_name += '.rec_name';
+                        }
                     } else {
                         value = this.convert_value(field, value);
                     }
@@ -1711,11 +1719,11 @@
                         value = this.likify(value);
                     }
                     if (target) {
-                        result.push(this._clausify([field.name + '.rec_name',
-                                    operator, value, target]));
+                        result.push(this._clausify(
+                            [field_name, operator, value, target]));
                     } else {
                         result.push(this._clausify(
-                                    [field.name, operator, value]));
+                            [field_name, operator, value]));
                     }
                 }
             }.bind(this));
