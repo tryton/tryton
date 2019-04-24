@@ -465,7 +465,7 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                     'targets': [('create', [{}])],
                     }])
 
-        self.assertEqual(record.targets[0].context, 'foo')
+        self.assertEqual(record.targets[0].context, record.id)
 
     @with_transaction()
     def test_context_read(self):
@@ -478,7 +478,23 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
                     }])
         data, = Many2One.read([record.id], ['targets.context'])
 
-        self.assertEqual(data['targets.'][0]['context'], 'foo')
+        self.assertEqual(data['targets.'][0]['context'], record.id)
+
+    @with_transaction()
+    def test_context_read_multi(self):
+        "Test context on one2many read multiple records"
+        pool = Pool()
+        Many2One = pool.get('test.one2many_context')
+
+        records = Many2One.create([{
+                    'targets': [('create', [{}])],
+                    }, {
+                    'targets': [('create', [{}])],
+                    }])
+        data = Many2One.read([r.id for r in records], ['targets.context'])
+
+        self.assertEqual(data[0]['targets.'][0]['context'], records[0].id)
+        self.assertEqual(data[1]['targets.'][0]['context'], records[1].id)
 
     @with_transaction()
     def test_context_set(self):
@@ -490,7 +506,7 @@ class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
         target, = Target.create([{}])
         record = Many2One(targets=[target.id])
 
-        self.assertEqual(record.targets[0].context, 'foo')
+        self.assertEqual(record.targets[0].context, record.id)
 
 
 class FieldOne2ManyReferenceTestCase(unittest.TestCase, CommonTestCaseMixin):

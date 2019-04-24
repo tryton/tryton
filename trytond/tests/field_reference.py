@@ -34,6 +34,7 @@ class ReferenceContext(ModelSQL):
     "Reference Context"
     __name__ = 'test.reference_context'
     target = fields.Reference("Reference", selection=[
+            (None, ''),
             ('test.reference_context.target', "Target"),
             ], context={'test': 'foo'})
 

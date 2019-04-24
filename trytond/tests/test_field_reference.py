@@ -428,6 +428,24 @@ class FieldReferenceTestCase(unittest.TestCase):
         self.assertEqual(data['target.']['context'], 'foo')
 
     @with_transaction()
+    def test_context_read_multi(self):
+        "Test context on reference read with value and None"
+        pool = Pool()
+        Reference = pool.get('test.reference_context')
+        Target = pool.get('test.reference_context.target')
+
+        target, = Target.create([{}])
+        records = Reference.create([{
+                    'target': str(target),
+                    }, {
+                    'target': None,
+                    }])
+        data = Reference.read([r.id for r in records], ['target.context'])
+
+        self.assertEqual(data[0]['target.']['context'], 'foo')
+        self.assertEqual(data[1]['target.'], None)
+
+    @with_transaction()
     def test_context_set(self):
         "Test context on reference set"
         pool = Pool()

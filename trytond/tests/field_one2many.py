@@ -116,7 +116,7 @@ class One2ManyContext(ModelSQL):
     __name__ = 'test.one2many_context'
     targets = fields.One2Many(
         'test.one2many_context.target', 'origin', "Targets",
-        context={'test': 'foo'})
+        context={'test': Eval('id')})
 
 
 class One2ManyContextTarget(ModelSQL):

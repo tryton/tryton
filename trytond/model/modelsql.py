@@ -883,7 +883,7 @@ class ModelSQL(ModelStorage):
             field = cls._fields[fname]
             datetime_field = getattr(field, 'datetime_field', None)
 
-            def keyfunc(row):
+            def groupfunc(row):
                 ctx = {}
                 if field.context:
                     pyson_context = PYSONEncoder().encode(field.context)
@@ -901,8 +901,14 @@ class ModelSQL(ModelStorage):
                     Target = field.get_target()
                 return Target, ctx
 
+            def orderfunc(row):
+                Target, ctx = groupfunc(row)
+                return (
+                    Target.__name__ if Target else '',
+                    hash(tuple(ctx.items())))
+
             for (Target, ctx), rows in groupby(
-                    sorted(result, key=keyfunc), key=keyfunc):
+                    sorted(result, key=orderfunc), key=groupfunc):
                 rows = list(rows)
                 with Transaction().set_context(ctx):
                     if Target:
