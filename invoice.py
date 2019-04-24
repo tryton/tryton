@@ -1976,8 +1976,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def get_rec_name(self, name):
         if self.product:
             prefix = self.product.rec_name
-        else:
+        elif self.account:
             prefix = self.account.rec_name
+        else:
+            prefix = '(%s)' % self.id
         if self.invoice:
             return '%s @ %s' % (prefix, self.invoice.rec_name)
         else:
