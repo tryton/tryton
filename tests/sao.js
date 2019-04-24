@@ -1442,7 +1442,12 @@
                     ['spam', 'Spam'],
                     ['ham', 'Ham']
                 ]
-            }
+            },
+            'many2one': {
+                'string': "Many2One",
+                'name': 'many2one',
+                'type': 'many2one',
+            },
         });
         var c = function(value) {
             value.clause = true;
@@ -1483,6 +1488,9 @@
             ['OR', c(['name', 'ilike', '%John%']),
                 c(['name', 'ilike', '%Jane%'])
             ]],
+        [[c(['Many2One', null, 'John'])], [['many2one', 'ilike', '%John%']]],
+        [[c(['Many2One', null, ['John', 'Jane']])],
+            [['many2one.rec_name', 'in', ['John', 'Jane']]]],
         [[[c(['John'])]], [[['rec_name', 'ilike', '%John%']]]],
         ].forEach(function(test) {
             var value = test[0];
@@ -1673,7 +1681,12 @@
                     ['spam', 'Spam'],
                     ['ham', 'Ham']
                 ]
-            }
+            },
+            'many2one': {
+                'string': "Many2One",
+                'name': 'many2one',
+                'type': 'many2one',
+            },
         });
 
         [
@@ -1718,7 +1731,9 @@
         [[['selection', '!=', 'male']], 'Selection: !Male'],
         [[['reference', 'ilike', '%foo%']], 'Reference: foo'],
         [[['reference', 'ilike', '%bar%', 'spam']], 'Reference: Spam,bar'],
-        [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar']
+        [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar'],
+        [[['many2one', 'ilike', '%John%']], 'Many2One: John'],
+        [[['many2one.rec_name', 'in', ['John', 'Jane']]], 'Many2One: John;Jane'],
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
