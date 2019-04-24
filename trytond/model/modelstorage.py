@@ -445,8 +445,10 @@ class ModelStorage(Model):
                 if relate:
                     if len(domain) >= 4:
                         target = pool.get(domain[3])
-                    else:
+                    elif hasattr(cls._fields[local], 'get_target'):
                         target = cls._fields[local].get_target()
+                    else:
+                        return
                     target_domain = [(relate,) + tuple(domain[1:])]
                     check_domain(target_domain, target, to_check)
             elif not domain:
@@ -462,7 +464,7 @@ class ModelStorage(Model):
             for oexpr, otype in order:
                 local, _, relate = oexpr.partition('.')
                 to_check[cls.__name__].add(local)
-                if relate:
+                if relate and hasattr(cls._fields[local], 'get_target'):
                     target = cls._fields[local].get_target()
                     target_order = [(relate, otype)]
                     check_order(target_order, target, to_check)

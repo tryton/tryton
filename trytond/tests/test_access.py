@@ -299,7 +299,9 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
         TestAccess.read([record.id], ['relate.value'])
         TestAccess.search([('relate.value', '=', 42)])
         TestAccess.search([('reference.value', '=', 42, 'test.access.relate')])
+        TestAccess.search([('dict_.key', '=', 42)])
         TestAccess.search([], order=[('relate.value', 'ASC')])
+        TestAccess.search([], order=[('dict_.key', 'ASC')])
 
     @with_transaction(context=_context)
     def test_no_access_relate(self):

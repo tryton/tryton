@@ -14,6 +14,7 @@ class TestAccess(ModelSQL):
             (None, ""),
             ('test.access.relate', "Reference"),
             ])
+    dict_ = fields.Dict(None, "Dict")
 
 
 class TestAccessRelate(ModelSQL):
