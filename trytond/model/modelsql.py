@@ -20,7 +20,7 @@ from trytond.tools import reduce_ids, grouped_slice, cursor_dict
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder, PYSONDecoder
-from trytond.cache import LRUDict
+from trytond.cache import LRUDict, freeze
 from trytond.exceptions import ConcurrencyException
 from trytond.rpc import RPC
 from trytond.config import config
@@ -903,9 +903,7 @@ class ModelSQL(ModelStorage):
 
             def orderfunc(row):
                 Target, ctx = groupfunc(row)
-                return (
-                    Target.__name__ if Target else '',
-                    hash(tuple(ctx.items())))
+                return (Target.__name__ if Target else '', freeze(ctx))
 
             for (Target, ctx), rows in groupby(
                     sorted(result, key=orderfunc), key=groupfunc):
