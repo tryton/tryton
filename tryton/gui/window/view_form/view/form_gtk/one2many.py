@@ -194,7 +194,7 @@ class One2Many(Widget):
         if (event.keyval in [Gdk.KEY_Delete, Gdk.KEY_KP_Delete]
                 and widget == self.screen.widget):
             remove = not (event.state & Gdk.ModifierType.CONTROL_MASK)
-            if remove:
+            if remove and self.attrs.get('add_remove'):
                 but = self.but_remove
             else:
                 but = self.but_del
