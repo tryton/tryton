@@ -214,14 +214,14 @@ class EditableTreeView(TreeView):
                         for col in self.get_columns():
                             if col.name in invalid_fields:
                                 break
-                        GLib.idle_add(self.set_cursor, path, col, True)
+                        GLib.idle_add(self.set_cursor, path, col, None, True)
                         return
                     if ((self.view.screen.pre_validate
                                 and not record.pre_validate())
                             or (not self.view.screen.parent
                                 and not record.save())):
-                        GLib.idle_add(self.set_cursor, path, column,
-                            True)
+                        GLib.idle_add(
+                            self.set_cursor, path, column, None, True)
                         return
                     entry.handler_block(entry.editing_done_id)
                     if keyval == Gdk.KEY_Up:
@@ -237,7 +237,7 @@ class EditableTreeView(TreeView):
                             *self.next_column(new_path), True)
                     entry.handler_unblock(entry.editing_done_id)
                 else:
-                    GLib.idle_add(self.set_cursor, path, column, True)
+                    GLib.idle_add(self.set_cursor, path, column, None, True)
             self.on_quit_cell(record, column, renderer, txt, callback=callback)
             return True
         elif event.keyval in [Gdk.KEY_F3, Gdk.KEY_F2]:
@@ -278,22 +278,22 @@ class EditableTreeView(TreeView):
     def _key_down(self, path, model, column=None):
         if path[0] == len(model) - 1 and self.editable == 'bottom':
             self.on_create_line()
-        new_path = (path[0] + 1) % len(model)
+        new_path = Gtk.TreePath((path[0] + 1) % len(model))
         if not column:
             column, cell = self.next_column(new_path)
-        self.set_cursor(new_path, column, True)
+        self.set_cursor(new_path, column, start_editing=True)
         self.scroll_to_cell(new_path)
         return new_path
 
     def _key_up(self, path, model, column=None):
         if path[0] == 0 and self.editable == 'top':
             self.on_create_line()
-            new_path = 0
+            new_path = Gtk.TreePath(0)
         else:
-            new_path = (path[0] - 1) % len(model)
+            new_path = Gtk.TreePath((path[0] - 1) % len(model))
         if not column:
             column, cell = self.next_column(new_path)
-        self.set_cursor(new_path, column, True)
+        self.set_cursor(new_path, column, start_editing=True)
         self.scroll_to_cell(new_path)
         return new_path
 
