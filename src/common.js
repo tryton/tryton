@@ -712,7 +712,8 @@
 
         var _model_evaluator = function(allowed_models) {
             return function(value) {
-                return ~allowed_models.indexOf(value[0]);
+                return ~allowed_models.indexOf(value[0]) ||
+                    jQuery.isEmptyObject(allowed_models);
             };
         };
 
