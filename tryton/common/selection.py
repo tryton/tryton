@@ -94,7 +94,7 @@ class SelectionMixin(object):
 
         def _model_evaluator(allowed_models):
             def test(value):
-                return value[0] in allowed_models
+                return value[0] in allowed_models or not allowed_models
             return test
 
         if field.attrs['type'] == 'reference':
