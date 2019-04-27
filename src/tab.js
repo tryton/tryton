@@ -1368,8 +1368,6 @@
                 action.update_domain(this.board.actions);
             }
         },
-        note: function() {
-        },
         refresh_resources: function() {
         },
         update_resources: function() {
