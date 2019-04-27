@@ -906,8 +906,6 @@
         },
         attachment_count: function() {
         },
-        note: function() {
-        },
         update_unread_note: function() {
         }
     });
