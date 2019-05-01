@@ -12,15 +12,15 @@ msgstr ""
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,id:"
 msgid "ID"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:party.party.sale_price_list,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,rec_name:"
 msgid "Record Name"
@@ -40,11 +40,11 @@ msgstr ""
 
 msgctxt "field:party.party.sale_price_list,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
@@ -52,15 +52,15 @@ msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,id:"
 msgid "ID"
@@ -76,11 +76,11 @@ msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "model:party.party.sale_price_list,name:"
 msgid "Party Sale Price List"
-msgstr "Kontrahento kainoraštis perkant"
+msgstr ""
 
 msgctxt "model:sale.configuration.sale_price_list,name:"
 msgid "Sale Configuration Sale PriceList"
