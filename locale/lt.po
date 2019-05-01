@@ -8,4 +8,4 @@ msgstr ""
 
 msgctxt "model:edocument.uncefact.invoice,name:"
 msgid "EDocument UN/CEFACT Invoice"
-msgstr ""
+msgstr "EDocument UN/CEFACT sąskaita faktūra"
