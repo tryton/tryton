@@ -4,465 +4,411 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr ""
+msgstr "Vaikimisi meenutuse protseduur"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Looja"
 
 msgctxt ""
 "field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
-msgstr ""
+msgstr "Vaikimisi meenutuse protseduur"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:account.dunning,active:"
 msgid "Active"
-msgstr "Actief"
+msgstr "Aktiivne"
 
-#, fuzzy
 msgctxt "field:account.dunning,amount:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "Väärtus"
 
-#, fuzzy
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "Bedrag alternatieve valuta"
+msgstr "Sekundaarse valuuta väärtus"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Blokeeritud"
 
-#, fuzzy
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr "Valuuta numbriväärtuse arv"
 
-#, fuzzy
 msgctxt "field:account.dunning,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
-msgstr ""
+msgstr "Tase"
 
-#, fuzzy
 msgctxt "field:account.dunning,line:"
 msgid "Line"
-msgstr "Regel"
+msgstr "Rida"
 
-#, fuzzy
 msgctxt "field:account.dunning,maturity_date:"
 msgid "Maturity Date"
-msgstr "Vervaldag"
+msgstr "Aegumise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Ospaool"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
-msgstr ""
+msgstr "Protseduur"
 
 msgctxt "field:account.dunning,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr "Tweede valuta"
+msgstr "Teisene valuuta"
 
-#, fuzzy
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "Tweede valuta decimalen"
+msgstr "Teisese valuuta numbriväärtuse arv"
 
-#, fuzzy
 msgctxt "field:account.dunning,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Olek"
 
-#, fuzzy
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
-msgstr "Vervaldatum"
+msgstr "Kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
-msgstr ""
+msgstr "Üle tähtaja"
 
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
-msgstr ""
+msgstr "Protseduur"
 
 msgctxt "field:account.dunning.level,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,sequence:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "Jada"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
-msgstr ""
+msgstr "Tasemed"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Nimetus"
 
 msgctxt "field:account.dunning.procedure,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutus"
 
-#, fuzzy
 msgctxt "field:party.party,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Dunning Procedures"
+msgstr "Meenutuse protseduur"
 
-#, fuzzy
 msgctxt "field:party.party,dunning_procedures:"
 msgid "Dunning Procedures"
-msgstr "Dunning Procedures"
+msgstr "Meenutuse protseduurid"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,create_date:"
 msgid "Create Date"
-msgstr "Datum"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
-msgstr "Dunning Procedures"
+msgstr "Meenutuse protseduur"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Osapool"
 
 msgctxt "field:party.party.dunning_procedure,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,write_date:"
 msgid "Write Date"
-msgstr "Schrijfdatum"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Muutja"
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
-msgstr ""
+msgstr "Uue kliendi vaikimisi meenutuse protseduur"
 
 msgctxt ""
 "help:account.configuration.default_dunning_procedure,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
-msgstr ""
+msgstr "Uue kliendi vaikimisi meenutuse protseduur"
 
 msgctxt "help:account.dunning,blocked:"
 msgid "Check to block further levels of the procedure."
-msgstr ""
+msgstr "Märgista, et blokeerida protseduuri edasised tasemed"
 
 msgctxt "help:account.dunning,company:"
 msgid "Make the dunning belong to the company."
-msgstr ""
+msgstr "Määra meenutus ettevõttele"
 
 msgctxt "help:account.dunning,line:"
 msgid "The receivable line to dun for."
-msgstr ""
+msgstr "Nõude rida mida meenutada"
 
 msgctxt "help:account.dunning.create.start,date:"
 msgid "Create dunning up to this date."
-msgstr ""
+msgstr "Koosta meenutus kuni selle kuupäevani"
 
 msgctxt "help:account.dunning.level,overdue:"
 msgid "When the level should be applied."
-msgstr ""
+msgstr "Kui tase läheb rakendamisele"
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
-msgstr ""
+msgstr "Meenutuse protseduuri peamine eristaja"
 
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
-msgstr ""
+msgstr "Konto seaded, vaikimisi meenutuse protseduur"
 
 msgctxt "model:account.dunning,name:"
 msgid "Account Dunning"
-msgstr ""
+msgstr "Meenutuse konto"
 
 msgctxt "model:account.dunning.create.start,name:"
 msgid "Create Account Dunning"
-msgstr ""
+msgstr "Loo meenutuse konto"
 
 msgctxt "model:account.dunning.level,name:"
 msgid "Account Dunning Level"
-msgstr ""
+msgstr "Meenutuse konto tase"
 
 msgctxt "model:account.dunning.procedure,name:"
 msgid "Account Dunning Procedure"
-msgstr ""
+msgstr "Meenutuse konto protseduur"
 
 msgctxt "model:account.dunning.process.start,name:"
 msgid "Create Account Dunning"
-msgstr ""
+msgstr "Loo meenutuse konto"
 
 msgctxt "model:ir.action,name:act_dunning_form"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutused"
 
 msgctxt "model:ir.action,name:act_dunning_party"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutused"
 
 msgctxt "model:ir.action,name:act_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Dunning Procedures"
+msgstr "Meenutuse protseduur"
 
 msgctxt "model:ir.action,name:wizard_dunning_create"
 msgid "Create Dunnings"
-msgstr "Create Dunnings"
+msgstr "Loo meenutused"
 
 msgctxt "model:ir.action,name:wizard_dunning_process"
 msgid "Process Dunning"
-msgstr "Process Dunning"
+msgstr "Meenutuse protsess"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Kõik"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "Mustand"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
 msgid "Final"
-msgstr ""
+msgstr "Lõplik"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "Ootel"
 
 msgctxt "model:ir.message,text:msg_dunning_line_unique"
 msgid "Line can be used only once on dunning."
-msgstr ""
+msgstr "Rida saab meenutusel kasutada ainult üks kord"
 
 msgctxt "model:ir.rule.group,name:rule_group_dunning"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutused"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_create"
 msgid "Create Dunnings"
-msgstr "Create Dunnings"
+msgstr "Loo meenutused"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_form"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutused"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_procedure_form"
 msgid "Dunning Procedures"
-msgstr "Dunning Procedures"
+msgstr "Meenutuse protseduur"
 
 msgctxt "model:ir.ui.menu,name:menu_dunnings"
 msgid "Dunnings"
-msgstr "Dunnings"
+msgstr "Meenutused"
 
 msgctxt "model:party.party.dunning_procedure,name:"
 msgid "Party Dunning Procedure"
-msgstr ""
+msgstr "Osapool meenutuse protsessis"
 
 msgctxt "model:res.group,name:group_dunning"
 msgid "Dunning"
-msgstr "Dunning"
+msgstr "Meenutus"
 
-#, fuzzy
 msgctxt "selection:account.dunning,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr "Mustand"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Final"
-msgstr ""
+msgstr "Lõpp"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "Ootel"
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Dunning"
-msgstr "Dunning"
+msgstr "Meenutus"
 
 msgctxt "view:account.dunning.create.start:"
 msgid "Create Dunning for date"
-msgstr ""
+msgstr "Loo kuupäeva kohta meeldetuletus"
 
-#, fuzzy
 msgctxt "view:account.dunning.process.start:"
 msgid "Process Dunning?"
-msgstr "Process Dunning"
+msgstr "Protsessi meenutust?"
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Dunning"
-msgstr "Dunning"
+msgstr "Meenutus"
 
-#, fuzzy
 msgctxt "wizard_button:account.dunning.create,start,create_:"
 msgid "Create"
-msgstr "Maken"
+msgstr "Loo"
 
-#, fuzzy
 msgctxt "wizard_button:account.dunning.create,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Tühista"
 
-#, fuzzy
 msgctxt "wizard_button:account.dunning.process,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.dunning.process,start,process:"
 msgid "Process"
-msgstr ""
+msgstr "Protsessi"

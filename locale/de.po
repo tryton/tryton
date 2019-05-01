@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning:"
-msgid "Line can be used only once on dunning."
-msgstr "Eine Position kann nur einmal auf einer Mahnung verwendet werden."
-
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr "Standardmahnprozess"
@@ -274,7 +270,7 @@ msgstr "Wann die Mahnstufe angewendet werden soll."
 
 msgctxt "help:account.dunning.procedure,name:"
 msgid "The main identifier of the Dunning Procedure."
-msgstr "Die Hauptbezeichnung des Mahnprozesses."
+msgstr "Das Hauptidentifizierungsmerkmal des Mahnprozesses."
 
 msgctxt "model:account.configuration.default_dunning_procedure,name:"
 msgid "Account Configuration Default Dunning Procedure"
@@ -336,6 +332,14 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
 msgstr "Wartend"
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr "Eine Position kann nur einmal auf einer Mahnung verwendet werden."
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
 msgid "Dunnings"

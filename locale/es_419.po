@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning:"
-msgid "Line can be used only once on dunning."
-msgstr "La línea puede ser utilizada sólo una vez en el cobro."
-
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr "Procedimiento de cobro por defecto"
@@ -14,10 +10,9 @@ msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
@@ -36,10 +31,9 @@ msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
@@ -67,7 +61,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
@@ -119,7 +113,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
@@ -135,7 +129,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
@@ -163,7 +157,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
@@ -171,7 +165,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
@@ -195,7 +189,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
@@ -217,10 +211,9 @@ msgctxt "field:party.party.dunning_procedure,create_date:"
 msgid "Create Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
@@ -242,10 +235,9 @@ msgctxt "field:party.party.dunning_procedure,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
@@ -343,6 +335,15 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr "La línea puede ser utilizada sólo una vez en el cobro."
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
 msgstr ""
 
 #, fuzzy

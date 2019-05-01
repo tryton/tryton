@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning:"
-msgid "Line can be used only once on dunning."
-msgstr "سطر را می توان تنها یک بار در دانینگ استفاده کرد."
-
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr "روال دانینگ پیش فرض"
@@ -330,11 +326,19 @@ msgstr "پیش‌نویس"
 
 msgctxt "model:ir.action.act_window.domain,name:act_dunning_form_domain_final"
 msgid "Final"
-msgstr ""
+msgstr "نهایی"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
+msgstr "درحال انتظار"
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr "سطر را می توان تنها یک بار در دانینگ استفاده کرد."
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
@@ -371,11 +375,11 @@ msgstr "پیش‌نویس"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Final"
-msgstr ""
+msgstr "نهایی"
 
 msgctxt "selection:account.dunning,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "درحال انتظار"
 
 msgctxt "view:account.configuration:"
 msgid "Dunning"

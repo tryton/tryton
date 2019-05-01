@@ -2,21 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning:"
-msgid "Line can be used only once on dunning."
-msgstr ""
-
 msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt ""
 "field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
@@ -25,7 +21,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
 msgid "Record Name"
@@ -33,11 +29,11 @@ msgstr ""
 
 msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
@@ -49,7 +45,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr ""
+msgstr "Antroji sąskaitos valiuta"
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
@@ -57,23 +53,23 @@ msgstr ""
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.dunning,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.dunning,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.dunning,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
@@ -89,7 +85,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
@@ -101,11 +97,11 @@ msgstr ""
 
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Antroji valiuta"
 
 msgctxt "field:account.dunning,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr ""
+msgstr "Antrosios valiutos skaitmenų skaičius"
 
 msgctxt "field:account.dunning,state:"
 msgid "State"
@@ -113,11 +109,11 @@ msgstr ""
 
 msgctxt "field:account.dunning,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.dunning,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
@@ -125,19 +121,19 @@ msgstr ""
 
 msgctxt "field:account.dunning.create.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.dunning.level,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.dunning.level,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.dunning.level,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
@@ -157,23 +153,23 @@ msgstr ""
 
 msgctxt "field:account.dunning.level,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.dunning.level,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.dunning.procedure,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.dunning.procedure,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.dunning.procedure,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
@@ -190,15 +186,15 @@ msgstr ""
 
 msgctxt "field:account.dunning.procedure,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.dunning.procedure,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.dunning.process.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.move.line,dunnings:"
@@ -217,11 +213,11 @@ msgstr "Dunning Procedures"
 
 msgctxt "field:party.party.dunning_procedure,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.party.dunning_procedure,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
@@ -230,11 +226,11 @@ msgstr "Dunning Procedures"
 
 msgctxt "field:party.party.dunning_procedure,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:party.party.dunning_procedure,rec_name:"
 msgid "Record Name"
@@ -242,11 +238,11 @@ msgstr ""
 
 msgctxt "field:party.party.dunning_procedure,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.party.dunning_procedure,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
@@ -340,6 +336,14 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_dunning_form_domain_waiting"
 msgid "Waiting"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dunning_line_unique"
+msgid "Line can be used only once on dunning."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_dunning"
+msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_configuration"
