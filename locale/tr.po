@@ -14,102 +14,85 @@ msgctxt "field:stock.move,package:"
 msgid "Package"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,children:"
 msgid "Children"
-msgstr "Подчиненый"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,code:"
 msgid "Code"
-msgstr "Код языка"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr "Перемещения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Предок"
+msgstr ""
 
 msgctxt "field:stock.package,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
-msgstr "Доставка"
+msgstr ""
 
 msgctxt "field:stock.package,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,type:"
 msgid "Type"
-msgstr "Тип"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,create_date:"
 msgid "Create Date"
-msgstr "Дата создания"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,create_uid:"
 msgid "Create User"
-msgstr "Создано пользователем"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
-msgstr "Правило оплаты"
+msgstr ""
 
 msgctxt "field:stock.package.type,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
-msgstr "Дата изменения"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.package.type,write_uid:"
 msgid "Write User"
-msgstr "Изменено пользователем"
+msgstr ""
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -164,10 +147,9 @@ msgctxt "report:stock.package.label:"
 msgid "Package:"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
-msgstr "Доставка"
+msgstr ""
 
 msgctxt "selection:stock.package,state:"
 msgid "Closed"

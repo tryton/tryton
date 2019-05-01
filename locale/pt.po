@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr ""
-"Nem todas as Movimentações de Retorno de Remessas \"%s\" do Fornecedor estão"
-" embalados."
-
-msgctxt "error:stock.shipment.out:"
-msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr ""
-"Nem todas as Movimentações de Saída de Remessas ao Cliente \"%s\" estão "
-"embaladas."
-
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
 msgstr "Sequência das Embalagens"
@@ -61,6 +49,10 @@ msgstr "Nome do Registro"
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
 msgstr "Remessa"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
@@ -128,6 +120,10 @@ msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr "Package Labels"
 
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -158,6 +154,14 @@ msgstr "Pacote:"
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr "Remessa:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"

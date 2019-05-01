@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr ""
-
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
 msgstr ""
@@ -32,11 +24,11 @@ msgstr ""
 
 msgctxt "field:stock.package,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:stock.package,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:stock.package,id:"
 msgid "ID"
@@ -58,25 +50,29 @@ msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
 msgstr ""
 
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
+
 msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr ""
 
 msgctxt "field:stock.package,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:stock.package,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:stock.package.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:stock.package.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:stock.package.type,id:"
 msgid "ID"
@@ -93,11 +89,11 @@ msgstr ""
 
 msgctxt "field:stock.package.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:stock.package.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -122,6 +118,10 @@ msgstr "Package Types"
 msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr "Package Labels"
+
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -150,4 +150,12 @@ msgstr ""
 
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
 msgstr ""

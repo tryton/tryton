@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr "محموله بسته بندی شده مرجوعی به تأمین کننده: \"%s\" کاملاً جابجا نشده است."
-
-msgctxt "error:stock.shipment.out:"
-msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr "محموله بسته بندی شده مشتری: \"%s\" کاملاً جابجا و خارج نشده است."
-
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
 msgstr "ادامه بسته"
@@ -57,6 +49,10 @@ msgstr "نام پرونده"
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
 msgstr "محموله"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
@@ -122,6 +118,12 @@ msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr "برچسب های بسته"
 
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"برای پردازش محموله :\"%(shipment)s\"، شما باید همه جابجایی های آن را بسته "
+"بندی کنید."
+
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
 msgstr "بسته کالا"
@@ -149,3 +151,11 @@ msgstr "بسته :"
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr "محموله :"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""

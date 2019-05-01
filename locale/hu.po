@@ -2,15 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr "Nem lehetett az összes elfogyó visszárut  \"%s\" elcsomagolni"
-
-msgctxt "error:stock.shipment.out:"
-msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr "Nem lehetett az összes elfogyó beszállítói tételt \"%s\" elcsomagolni."
-
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
 msgstr "Csomag számkör"
@@ -59,6 +50,10 @@ msgstr ""
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
 msgstr "Szállítási tétel"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr ""
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
@@ -126,6 +121,10 @@ msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr "Package Labels"
 
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
@@ -156,6 +155,14 @@ msgstr "Csomag:"
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr "Szállítási pont:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"

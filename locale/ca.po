@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.in.return:"
-msgid "Not all Moves of Supplier Return Shipment \"%s\" are packaged."
-msgstr ""
-"No s'han empaquetat tots els moviments de l'albarà de devolució a proveïdor "
-"\"%s\"."
-
-msgctxt "error:stock.shipment.out:"
-msgid "Not all Outgoing Moves of Customer Shipment \"%s\" are packaged."
-msgstr "L'albarà de client \"%s\" no està completament empaquetat."
-
 msgctxt "field:stock.configuration,package_sequence:"
 msgid "Package Sequence"
 msgstr "Seqüència de paquet"
@@ -59,6 +49,10 @@ msgstr "Nom del registre"
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
 msgstr "Albarà"
+
+msgctxt "field:stock.package,state:"
+msgid "State"
+msgstr "Estat"
 
 msgctxt "field:stock.package,type:"
 msgid "Type"
@@ -124,6 +118,12 @@ msgctxt "model:ir.action,name:report_package_label"
 msgid "Package Labels"
 msgstr "Etiquetes de paquet"
 
+msgctxt "model:ir.message,text:msg_package_mismatch"
+msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
+msgstr ""
+"Per a processar l'albarà \"%(shipment)s\", heu d'empaquetar tots els seus "
+"moviments."
+
 msgctxt "model:ir.sequence,name:sequence_package"
 msgid "Stock Package"
 msgstr "Paquet"
@@ -151,6 +151,14 @@ msgstr "Paquet:"
 msgctxt "report:stock.package.label:"
 msgid "Shipment:"
 msgstr "Albarà:"
+
+msgctxt "selection:stock.package,state:"
+msgid "Closed"
+msgstr "Tancat"
+
+msgctxt "selection:stock.package,state:"
+msgid "Open"
+msgstr "Obert"
 
 msgctxt "view:stock.package.type:"
 msgid "Package Type"
