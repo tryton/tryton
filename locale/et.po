@@ -4,48 +4,44 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.dunning.level,print_on_letter:"
 msgid "Print on Letter"
-msgstr "Auf Mahnschreiben drucken"
+msgstr "Prindi kirjale"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Dunning Letter"
-msgstr "Mahnschreiben"
+msgstr "Teatis"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
-msgstr "Betrag"
+msgstr "Väärtus"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Kuupäev"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Datum:"
+msgstr "Kuupäev:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
-msgstr "Beschreibung"
+msgstr "Kirjeldus"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Fälligkeitsdatum"
+msgstr "Tähtaeg"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr "Gebühren:"
+msgstr "Tasud:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Nicht zugeordnete erhaltene Zahlungen"
+msgstr "Ootel tasumiste eest saadud"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
-msgstr "Beleg-Nr."
+msgstr "Viide"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Erinnerung"
-
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "s"
+msgstr "Meenutus teade"
