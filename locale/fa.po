@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.quotation.create:"
-msgid "A quotation was already made for the request \"%(request)s\"."
-msgstr "نقل قول در حال حاضر برای درخواست : \"%s\" ساخته شده است."
-
 msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
 msgstr "پیگیری نقل قول درخواست خرید"
@@ -246,6 +242,18 @@ msgctxt ""
 msgid "Sent"
 msgstr "ارسال"
 
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "یک نقل قول(دستور) در حال حاضر برای درخواست : \"%s\" وجود دارد."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
 msgstr "درخواست نقل قول خرید"
@@ -280,7 +288,7 @@ msgstr ":"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Date:"
-msgstr ""
+msgstr "تاریخ :"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Delivery Address:"

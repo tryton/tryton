@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.quotation.create:"
-msgid "A quotation was already made for the request \"%(request)s\"."
-msgstr ""
-
 msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
 msgstr ""
@@ -33,15 +29,15 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:purchase.request.quotation,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:purchase.request.quotation,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:purchase.request.quotation,id:"
 msgid "ID"
@@ -77,7 +73,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,supplier_address:"
 msgid "Supplier Address"
-msgstr ""
+msgstr "Tiekėjo adresas"
 
 msgctxt "field:purchase.request.quotation,warehouse:"
 msgid "Warehouse"
@@ -85,11 +81,11 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:purchase.request.quotation,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:purchase.request.quotation.create.ask_suppliers,id:"
 msgid "ID"
@@ -109,19 +105,19 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:purchase.request.quotation.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:purchase.request.quotation.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
@@ -182,11 +178,11 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:purchase.request.quotation.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:purchase.request,preferred_quotation_line:"
 msgid ""
@@ -245,6 +241,18 @@ msgctxt ""
 msgid "Sent"
 msgstr "Sent"
 
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
 msgstr "Purchase Request Quotation"
@@ -286,7 +294,7 @@ msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Delivery Address:"
-msgstr ""
+msgstr "Siuntimo adresas"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Description"

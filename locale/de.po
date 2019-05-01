@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.quotation.create:"
-msgid "A quotation was already made for the request \"%(request)s\"."
-msgstr "Es wurde bereits ein Angebot für die Anfrage \"%(request)s\" erstellt."
-
 msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
 msgstr "Nummernkreis Angebotsanfrage Einkauf"
@@ -37,7 +33,7 @@ msgstr "Unternehmen"
 
 msgctxt "field:purchase.request.quotation,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:purchase.request.quotation,create_uid:"
 msgid "Create User"
@@ -57,11 +53,11 @@ msgstr "Nummer"
 
 msgctxt "field:purchase.request.quotation,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.request.quotation,reference:"
 msgid "Reference"
-msgstr "Referenz"
+msgstr "Bestellnummer"
 
 msgctxt "field:purchase.request.quotation,revision:"
 msgid "Revision"
@@ -109,7 +105,7 @@ msgstr "Anzahl der erstellten Angebotsanfragen"
 
 msgctxt "field:purchase.request.quotation.line,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:purchase.request.quotation.line,create_uid:"
 msgid "Create User"
@@ -153,7 +149,7 @@ msgstr "Status der Angebotsanfrage"
 
 msgctxt "field:purchase.request.quotation.line,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:purchase.request.quotation.line,request:"
 msgid "Request"
@@ -201,7 +197,7 @@ msgstr "Die eindeutige Identifikation der Angebotsanfrage."
 
 msgctxt "help:purchase.request.quotation,reference:"
 msgid "The reference used by the supplier."
-msgstr "Die vom Lieferanten genutzte Referenz."
+msgstr "Die Bestellnummer beim Lieferanten."
 
 msgctxt "help:purchase.request.quotation,revision:"
 msgid "Number incremented each time the quotation is sent."
@@ -245,6 +241,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
 msgid "Sent"
 msgstr "Gesendet"
+
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "Es wurde bereits ein Angebot für die Anfrage \"%(request)s\" erstellt."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
@@ -312,7 +320,7 @@ msgstr "Angebot"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Reference:"
-msgstr "Referenz:"
+msgstr "Bestellnummer:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Request for Quotation N°:"

@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.request.quotation.create:"
-msgid "A quotation was already made for the request \"%(request)s\"."
-msgstr "Un devis a déjà été fait pour cette demande « %(request)s »."
-
 msgctxt "field:purchase.configuration,purchase_request_quotation_sequence:"
 msgid "Purchase Request Quotation Sequence"
 msgstr "Séquence de devis de demande d'achat"
@@ -245,6 +241,18 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
 msgid "Sent"
 msgstr "Envoyé"
+
+msgctxt "model:ir.message,text:msg_previous_quotation"
+msgid "A quotation was already made for request \"%(request)s\"."
+msgstr "Un devis a déjà été fait pour la demande « %(request)s »."
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
