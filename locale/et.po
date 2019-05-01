@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.classification.dummy,active:"
 msgid "Active"
-msgstr "Ativo"
+msgstr "Aktiivne"
 
 msgctxt "field:product.classification.dummy,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "Looja"
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
@@ -20,39 +20,39 @@ msgstr "ID"
 
 msgctxt "field:product.classification.dummy,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "Nimetus"
 
 msgctxt "field:product.classification.dummy,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:product.classification.dummy,selectable:"
 msgid "Selectable"
-msgstr "Selecionável"
+msgstr "Valitav"
 
 msgctxt "field:product.classification.dummy,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "Muutja"
 
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
-msgstr "Ativo"
+msgstr "Aktiivne"
 
 msgctxt "field:product.classification_tree.dummy,childs:"
 msgid "Children"
-msgstr "Filhos"
+msgstr "Alamjaotis"
 
 msgctxt "field:product.classification_tree.dummy,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "Looja"
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
@@ -60,57 +60,52 @@ msgstr "ID"
 
 msgctxt "field:product.classification_tree.dummy,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "Nimetus"
 
 msgctxt "field:product.classification_tree.dummy,parent:"
 msgid "Parent"
-msgstr "Pai"
+msgstr "Ülemjaotis"
 
 msgctxt "field:product.classification_tree.dummy,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
 msgid "Selectable"
-msgstr "Selecionável"
+msgstr "Valitav"
 
 msgctxt "field:product.classification_tree.dummy,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "Muutja"
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
-msgstr "Classificação"
+msgstr "Liigitus"
 
 msgctxt "field:product.template,classification:"
 msgid "Classification"
-msgstr "Classificação"
+msgstr "Liigitus"
 
 msgctxt "help:product.classification.dummy,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:product.classification_tree.dummy,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
-msgstr "Classifications"
+msgstr "Liigitus"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"
-msgstr "Classificação de Produto Falso"
+msgstr "Test toote liigitus"
 
 msgctxt "model:product.classification_tree.dummy,name:"
 msgid "Dummy Product Classification Tree"
-msgstr "Listagem de Classificação de Produto Falso"
-
-msgctxt "view:product.classification.dummy:"
-msgid "Classification"
-msgstr "Classificação"
+msgstr "Test toote liigituse puu"

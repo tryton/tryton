@@ -4,15 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.classification.dummy,active:"
 msgid "Active"
-msgstr "Ativo"
+msgstr "Etkin"
 
 msgctxt "field:product.classification.dummy,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Oluşturma Tarihi"
 
 msgctxt "field:product.classification.dummy,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "Oluşturan Kullanıcı"
 
 msgctxt "field:product.classification.dummy,id:"
 msgid "ID"
@@ -20,39 +20,39 @@ msgstr "ID"
 
 msgctxt "field:product.classification.dummy,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "Ad"
 
 msgctxt "field:product.classification.dummy,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kayıt Adı"
 
 msgctxt "field:product.classification.dummy,selectable:"
 msgid "Selectable"
-msgstr "Selecionável"
+msgstr "Seçilebilir"
 
 msgctxt "field:product.classification.dummy,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "Yazım Tarihi"
 
 msgctxt "field:product.classification.dummy,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "Yazan Kullanıcı"
 
 msgctxt "field:product.classification_tree.dummy,active:"
 msgid "Active"
-msgstr "Ativo"
+msgstr "Etkin"
 
 msgctxt "field:product.classification_tree.dummy,childs:"
 msgid "Children"
-msgstr "Filhos"
+msgstr "Alt Öge"
 
 msgctxt "field:product.classification_tree.dummy,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Oluşturma Tarihi"
 
 msgctxt "field:product.classification_tree.dummy,create_uid:"
 msgid "Create User"
-msgstr "Criado por"
+msgstr "Kullanıcı Oluştur"
 
 msgctxt "field:product.classification_tree.dummy,id:"
 msgid "ID"
@@ -60,43 +60,43 @@ msgstr "ID"
 
 msgctxt "field:product.classification_tree.dummy,name:"
 msgid "Name"
-msgstr "Nome"
+msgstr "Ad"
 
 msgctxt "field:product.classification_tree.dummy,parent:"
 msgid "Parent"
-msgstr "Pai"
+msgstr "Ana Öğe"
 
 msgctxt "field:product.classification_tree.dummy,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kayıt Adı"
 
 msgctxt "field:product.classification_tree.dummy,selectable:"
 msgid "Selectable"
-msgstr "Selecionável"
+msgstr "Seçilebilir"
 
 msgctxt "field:product.classification_tree.dummy,write_date:"
 msgid "Write Date"
-msgstr "Data de edição"
+msgstr "Yazım Tarihi"
 
 msgctxt "field:product.classification_tree.dummy,write_uid:"
 msgid "Write User"
-msgstr "Editado por"
+msgstr "Yazan Kullanıcı"
 
 msgctxt "field:product.product,classification:"
 msgid "Classification"
-msgstr "Classificação"
+msgstr "Sınıflandırma"
 
 msgctxt "field:product.template,classification:"
 msgid "Classification"
-msgstr "Classificação"
+msgstr "Sınıflandırma"
 
 msgctxt "help:product.classification.dummy,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
+msgstr ""
 
 msgctxt "help:product.classification_tree.dummy,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_classification"
@@ -105,12 +105,8 @@ msgstr "Classifications"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"
-msgstr "Classificação de Produto Falso"
+msgstr "Yapay Ürün Sınıflandırma"
 
 msgctxt "model:product.classification_tree.dummy,name:"
 msgid "Dummy Product Classification Tree"
-msgstr "Listagem de Classificação de Produto Falso"
-
-msgctxt "view:product.classification.dummy:"
-msgid "Classification"
-msgstr "Classificação"
+msgstr "Yapay Ürün Sınıflandırma Ağacı"
