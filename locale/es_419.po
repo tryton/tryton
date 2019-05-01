@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
@@ -68,7 +68,7 @@ msgstr ""
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"

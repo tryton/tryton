@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.allocation,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:project.allocation,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
@@ -32,19 +32,19 @@ msgstr ""
 
 msgctxt "field:project.allocation,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:project.allocation,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,id:"
 msgid "ID"
@@ -64,11 +64,11 @@ msgstr ""
 
 msgctxt "field:project.predecessor_successor,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
