@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr "Contador"
+msgstr "Loendused"
 
 msgctxt "field:stock.move.split.start,id:"
 msgid "ID"
@@ -12,23 +12,23 @@ msgstr "ID"
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr "Cantidad"
+msgstr "Kogus"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Ühiku numbriväärtus"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "Mõõtühik"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr "Categoría UdM"
+msgstr "Mõõtühiku kategooria"
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
-msgstr "Movimientos del dominio"
+msgstr ""
 
 msgctxt "field:stock.shipment.split.start,id:"
 msgid "ID"
@@ -36,80 +36,68 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr "Movimientos"
+msgstr "Liikumised"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves"
-msgstr "El número límite de movimientos."
+msgstr ""
 
 msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
-msgstr "Los movimientos seleccionados se enviarán en un albarán nuevo."
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Dividir movimiento"
+msgstr "Jaga liikumine"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr "Dividir albarán"
+msgstr "Jaga lähetus"
 
 msgctxt "model:ir.model.button,string:move_split_wizard_button"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Dividir movimiento"
+msgstr "Jaga liikumine"
 
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
-msgstr "Dividir albarán"
+msgstr "Jaga lähetus"
 
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment"
-msgstr "Selecciona los movimientos a enviar en un albarán nuevo."
+msgstr ""
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Tühista"
 
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
 
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Tühista"
 
 msgctxt "wizard_button:stock.shipment.split,start,split:"
 msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Split"
-msgstr "Dividir"
+msgstr "Jaga"
