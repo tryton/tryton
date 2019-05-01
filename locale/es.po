@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.price_list.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-"La fórmula \"%(formula)s\" en la línea de tarifa \"%(line)s\" no es correcta"
-" generando la excepción \"%(exception)s\"."
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -148,6 +140,18 @@ msgstr "Aplicar sólo cuando la cantidad es mas grande. "
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Tarifas"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"La fórmula \"%(formula)s\" en la línea de tarifa \"%(line)s\" no es correcta"
+" generando la excepción \"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr "Usuario en la empresa"
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"

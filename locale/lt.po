@@ -2,23 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.price_list.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:product.price_list,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.price_list,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.price_list,id:"
 msgid "ID"
@@ -43,11 +37,11 @@ msgstr ""
 
 msgctxt "field:product.price_list,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
@@ -55,11 +49,11 @@ msgstr ""
 
 msgctxt "field:product.price_list.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.price_list.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
@@ -96,11 +90,11 @@ msgstr ""
 
 msgctxt "field:product.price_list.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.price_list.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:product.price_list,company:"
 msgid ""
@@ -145,6 +139,16 @@ msgstr ""
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Price Lists"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"

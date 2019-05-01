@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.price_list.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-"Ungültige Formel \"%(formula)s\" in Preislistenzeile \"%(line)s\" mit "
-"Fehlermeldung \"%(exception)s\""
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "Unternehmen"
@@ -80,7 +72,7 @@ msgstr "Artikel"
 
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 msgctxt "field:product.price_list.line,rec_name:"
 msgid "Record Name"
@@ -116,7 +108,7 @@ msgstr "Preisformeln für verschiedene Kriterien hinzufügen."
 
 msgctxt "help:product.price_list,name:"
 msgid "The main identifier of the price list."
-msgstr "Die Hauptbezeichnung der Preisliste."
+msgstr "Das Hauptidentifizierungsmerkmal der Preisliste."
 
 msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
@@ -150,6 +142,18 @@ msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Preislisten"
 
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Ungültige Formel \"%(formula)s\" in Preislistenposition \"%(line)s\" mit "
+"Fehlermeldung \"%(exception)s\""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"
 msgstr "Preislisten"
@@ -160,15 +164,15 @@ msgstr "Preisliste"
 
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
-msgstr "Preisliste Zeile"
+msgstr "Preislistenposition"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Line"
-msgstr "Preisliste Zeile"
+msgstr "Preislistenposition"
 
 msgctxt "view:product.price_list.line:"
 msgid "Price List Lines"
-msgstr "Preisliste Positionen"
+msgstr "Preislistenpositionen"
 
 msgctxt "view:product.price_list:"
 msgid "Price List"

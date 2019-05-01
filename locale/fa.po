@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.price_list.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr "فرمول: \"%s\" در خط لیست قیمت: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -147,6 +141,16 @@ msgstr "هنگامی که مقدار بزرگتر است فقط اعمال می 
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "لیست های قیمت"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در سطر لیست قیمت: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_price_list"
 msgid "Price Lists"

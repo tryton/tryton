@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.price_list.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-"Neveljavna formula \"%(formula)s\" v postavki cenika \"%(line)s\" z napako "
-"\"%(exception)s\"."
-
 msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "Družba"
@@ -148,6 +140,19 @@ msgstr "Upoštevaj samo, ko je količina večja."
 msgctxt "model:ir.action,name:act_price_list_form"
 msgid "Price Lists"
 msgstr "Price Lists"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Neveljavna formula \"%(formula)s\" v postavki cenika \"%(line)s\" z napako "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_product_list"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_price_list"
