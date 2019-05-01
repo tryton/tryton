@@ -2,178 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.invoice-account.move.line:"
-msgid "A payment line can be linked to only one invoice."
-msgstr "یک خط پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
-
-msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it has payments."
-msgstr ""
-"شما نمی توانید با استرداد صورتحساب \"٪ s\" خرید(اعتباری) کنید زیرا آن "
-"صورتحساب پرداخت شده است."
-
-msgctxt "error:account.invoice.credit:"
-msgid ""
-"You can not credit with refund invoice \"%s\" because it is a supplier "
-"invoice/credit note."
-msgstr ""
-"شما نمی توانید با استرداد صورتحساب \"٪ s\" خرید(اعتباری) کنید چرا که این یک "
-"یاداشت صورتحساب/خرید(اعتباری) تأمیین کننده است."
-
-msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it is not posted."
-msgstr ""
-"شما نمی توانید با استرداد صورتحساب \"٪ s\" خرید(اعتباری) کنید زیرا آن "
-"صورتحساب صادر نشده است."
-
-msgctxt "error:account.invoice.line:"
-msgid "Line with \"line\" type must have an account."
-msgstr "خط با نوع خط باید یک حساب داشته باشد."
-
-msgctxt "error:account.invoice.line:"
-msgid "Line without \"line\" type must have an invoice."
-msgstr "خط بدون نوع خط باید یک صورتحساب داشته باشد."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not add a line to invoice \"%(invoice)s\" that is posted, paid or "
-"cancelled."
-msgstr ""
-"شما نمی توانید یک خط جدید به صورتحساب \"٪s\" اضافه کنید که صادر شده، پرداخت "
-"شده یا لغو شده است."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
-"because the invoice uses the same account (%(account)s)."
-msgstr ""
-"شما نمی توانید خط صورتحساب \"٪s\" را در فاکتور \"٪s\" ایجاد کنید زیرا "
-"صورتحساب از حساب \"٪\"s استفاده می کند."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not modify line \"%(line)s\" from invoice \"%(invoice)s\" that is "
-"posted or paid."
-msgstr ""
-"شما نمیتوانید خط \"٪s\" را از صورتحساب \"٪s\" اصلاح کنید! ازآنجاکه صادر یا "
-"پرداخت شده است."
-
-msgctxt "error:account.invoice.pay:"
-msgid ""
-"On invoice \"%s\" you can not create a partial payment with an amount "
-"greater than the amount to pay."
-msgstr ""
-"در صورتحساب \"٪ s\" شما نمیتوانید پرداخت جزئی را با مبلغی بیشتر از مبلغ "
-"پرداختی ایجاد کنید."
-
-msgctxt "error:account.invoice.payment_term.line:"
-msgid ""
-"Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
-"term \"%(term)s\"."
-msgstr "مقادیر ضریب و مقسوم علیه در خط \"٪s\" از شرایط پرداخت \"٪s\" سازگار نیست."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
-msgstr "خط \"٪s\" در شرایط پرداخت \"٪s\" نامعتبر است."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Last line of payment term \"%s\" must be of type remainder."
-msgstr "خط پایانی شرایط پرداخت \"٪ s\" باید از نوع باقیمانده باشد."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Missing remainder line in payment term \"%s\"."
-msgstr "خط باقیمانده در شرایط پرداخت \"٪ s\" فراموش شده است."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
-" canceled."
-msgstr ""
-"شما نمیتوانید مالیات را به صورتحساب\"٪s\" اضافه کنید زیرا آن صادر، پرداخت و "
-"یا لغو شده است."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
-"is posted or paid."
-msgstr ""
-"شما نمیتوانید مالیات \"٪s\" را از صورتحساب \"٪s\" اصلاح کنید ! زیرا آن صادر "
-"و یا پرداخت شده است."
-
-msgctxt "error:account.invoice:"
-msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
-msgstr ""
-"پس از لغو کردن یاداشت صورتحساب/خرید(اعتباری) مشتری \"٪ s\"، نمی توان آن را "
-"صادر کرد."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
-"invoice and in line \"%(line)s\"."
-msgstr "صورتحساب \"٪s\" از همان حساب \"٪s\" برای صورتحساب و در خط \"٪s\" استفاده می کند."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" has taxes defined but not on invoice lines.\n"
-"Re-compute the invoice."
-msgstr ""
-"مالیات های صورتحساب \"٪ s\" تعریف شده است امادرخطوط صورتحساب اعمال نشده.\n"
-"صورتحساب مجددا محاسبه شود."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" has taxes on invoice lines that are not in the invoice.\n"
-"Re-compute the invoice."
-msgstr ""
-"صورتحساب \"٪ s\" دارای مالیات بر خطوط صورتحساب است که در فاکتور موجود نیستند.\n"
-"صورتحساب مجددا محاسبه شود."
-
-msgctxt "error:account.invoice:"
-msgid "Invoice \"%s\" must be cancelled before deletion."
-msgstr "صورتحساب\"٪ s\" قبل از حذف ابتدا باید لغو شود."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" tax bases are different from invoice lines.\n"
-"Re-compute the invoice."
-msgstr ""
-"پایه مالیات صورتحساب \"٪ s\" متفاوت از خطوط صورتحساب میباشد.\n"
-"صورتحساب مجددا محاسبه شود."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Missing invoice sequence for invoice \"%(invoice)s\" on fiscalyear "
-"\"%(fiscalyear)s\"."
-msgstr "ادامه صورتحساب فاکتور: \"%s\" در سال مالی: \"%s\" گمشده است."
-
-msgctxt "error:account.invoice:"
-msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
-msgstr "خطوط پرداخت صورتحساب پرداخت شده : \"%s\" نمی توانند اصلاح شوند\""
-
-msgctxt "error:account.invoice:"
-msgid "The numbered invoice \"%s\" can not be deleted."
-msgstr "صورتحساب شماره \"٪ s\" نباید حذف شود."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The payment lines on invoice \"%(invoice)s\" can not be greater than the "
-"invoice amount."
-msgstr "خطوط پرداخت در صورتحساب :\"%s\" نمیتوانند بزرگتراز مجموع صورتحساب باشد."
-
-msgctxt "error:account.invoice:"
-msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
-msgstr ""
-"شما نمی توانید فاکتور \"٪ s\" را تغییر دهید زیرا آن صادر، پرداخت و یا لغو "
-"شده است."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending invoices "
-"for the company \"%(company)s\"."
-msgstr ""
-"نهاد/سازمان: \"%s\" نباید حذف شود چرا که صورتحساب های معلق در شرکت: \"%s\" "
-"وجود دارد."
-
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
 msgstr "دنباله های صورتحساب"
@@ -365,6 +193,11 @@ msgstr "نام پرونده"
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "مغایرت گیری شده"
+
+#, fuzzy
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "خطوط پرداخت"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
@@ -666,16 +499,14 @@ msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
 msgstr "نوع"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.ask,writeoff:"
 msgid "Write Off"
-msgstr "سوخت شده"
+msgstr "قلم زده شده"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -700,69 +531,58 @@ msgctxt "field:account.invoice.pay.start,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
 msgstr "حساب فاکتور"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
-msgstr ""
+msgstr "روش پرداخت"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,active:"
 msgid "Active"
 msgstr "فعال"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
 msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,create_date:"
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,create_uid:"
 msgid "Create User"
 msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
-msgstr ""
+msgstr "حساب اعتباری"
 
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
-msgstr ""
+msgstr "حساب پیش خرید بدهکاری"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
 msgstr "روزنامه"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
 msgstr "نام"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,write_date:"
 msgid "Write Date"
 msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
@@ -1100,10 +920,9 @@ msgid "Write User"
 msgstr "نوشته کاربر"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
-msgid "If true, the current invoice(s) will be paid."
+msgid "If true, the current invoice(s) will be cancelled."
 msgstr "اگر درست باشد، صورتحساب های فعلی پرداخت خواهد شد."
 
-#, fuzzy
 msgctxt "help:account.invoice.payment.method,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
@@ -1146,7 +965,7 @@ msgstr "پرداخت صورتحساب"
 
 msgctxt "model:account.invoice.payment.method,name:"
 msgid "Payment Method"
-msgstr ""
+msgstr "روش پرداخت"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
@@ -1190,7 +1009,7 @@ msgstr "صورتحساب های مشتری"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "روش پرداخت صورتحساب"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
@@ -1246,8 +1065,153 @@ msgctxt ""
 msgid "Validated"
 msgstr "تایید شده"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان : \"%(party)s\"را حذف کنید هنگامی که با شرکت : "
+"\"%(company)s\"صورتحساب معوقه دارد."
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr ""
+"شما نمی توانید صورتحساب : \"%(invoice)s\" را بازپرداخت شده کنید، چرا که "
+"ارسال نشده است."
+
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid "You cannot cancel customer invoice \"%(invoice)s\" because it is posted."
+msgstr ""
+"شما نمیتوانید صورتحساب مشتری : \"%(invoice)s\" را لغو کنید، چراکه آن ارسال "
+"شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr "برای حذف صورتحساب : \"%(invoice)s\" شما باید آنرا لغو کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr ""
+"شما نمیتوانید صورتحساب : \"%(invoice)s\" را حذف کنید چراکه آن یک شماره دارد."
+
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"شما نمیتوانید یک سطر به صورتحساب : \"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
+" یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+"شما نمیتوانید سطر: \"%(line)s\" را تغییر دهید، زیرا صورتحساب : \"٪s\" ارسال،"
+" پرداخت و یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr ""
+"شما نمیتوانید صورتحساب\"٪s\" را تغییر دهید، زیرا آن ارسال، پرداخت و یا لغو "
+"شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr ""
+"برای ارسال صورتحساب : \"%(invoice)s\"،شما باید یک دنباله در سال مالی : "
+"\"%(fiscalyear)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr ""
+"شما نمیتوانید یک پرداخت جزئی به صورتحساب : \"%(invoice)s\" با مقدار بیشتر از"
+" مبلغ پرداختی: \"%(amount_to_pay)s\" اضافه کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr "یک سطر پرداخت را می توانید تنهابه یک صورتحساب پیوند کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr ""
+"شما نمی توانید سطرهای پرداخت را در صورتحساب : \"%(invoice)s\"پرداخت شده، "
+"اضافه / حذف کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+"مبلغ سطرهای پرداخت در صورتحساب :\"%s\" نمیتوانند بزرگتراز مجموع مبلغ "
+"صورتحساب باشد."
+
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(lines)s\"."
+msgstr ""
+"شما نمیتوانید از همان حساب : \"%(account)s\" بر صورتحساب : \"%(invoice)s\" و"
+" روی سطر:\"%(lines)s\" استفاده کنید. "
+
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"شما نمیتوانید مالیات را به صورتحساب\"٪s\" اضافه کنید زیرا آن ارسال، پرداخت و"
+" یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr ""
+"مالیات بر صورتحساب: \"%(invoice)s\" غیر معتبر است،شما باید آن را دوباره "
+"ذخیره کنید تا مجبور شوید آنها را مجددا محاسبه کنید."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+"شما نمیتوانید مالیات : \"%(tax)s\" را تغیردهید، زیرا صورتحساب: \"٪s\" ارسال،"
+" پرداخت و یا لغو شده است."
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr "ضریب و تقسیم کننده در سطر: \"%(line)s\" سازگارنیستند."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr ""
+"برای صرفه جویی در مدت پرداخت: \"%(payment_term)s\" شما باید یک سطر\"یادآوری "
+"آخر\" اضافه کنید."
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr ""
+"برای محاسبه مدت، شما باید یک سطر یادآوری ،بر روی مدت پرداخت: "
+"\"%(payment_term)s\" اضافه کنید."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
-msgid "Are you sure to cancel the invoice?"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "Are you sure to cancel the invoice?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
 msgstr "Are you sure to cancel the invoice?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
@@ -1278,6 +1242,18 @@ msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
 msgstr "Validate"
 
+msgctxt "model:ir.rule.group,name:rule_group_invoice"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
 msgstr "صورت حساب"
@@ -1296,7 +1272,7 @@ msgstr "صورتحساب ها"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
-msgstr ""
+msgstr "روش پرداخت صورتحساب"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
@@ -1395,7 +1371,7 @@ msgid "Unit Price"
 msgstr "قیمت واحد"
 
 msgctxt "selection:account.invoice,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:account.invoice,state:"
@@ -1423,7 +1399,7 @@ msgid "Supplier"
 msgstr "تامین کننده"
 
 msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:account.invoice.line,invoice_state:"
@@ -1441,10 +1417,6 @@ msgstr "ارسال شده"
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Validated"
 msgstr "تایید شده"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
@@ -1494,92 +1466,8 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "باقيمانده"
 
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "April"
-msgstr "آوریل"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "August"
-msgstr "اوت"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "December"
-msgstr "دسامبر"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "February"
-msgstr "فوریه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "January"
-msgstr "ژانویه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "July"
-msgstr "جولای"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "June"
-msgstr "ژوئن"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "March"
-msgstr "مارس"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "May"
-msgstr "می"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "November"
-msgstr "نوامبر"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "October"
-msgstr "اکتبر"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "September"
-msgstr "سپتامبر"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Friday"
-msgstr "جمعه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Monday"
-msgstr "دوشنبه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Saturday"
-msgstr "شنبه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Sunday"
-msgstr "یکشنبه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Thursday"
-msgstr "پنج شنبه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Tuesday"
-msgstr "سه شنبه"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Wednesday"
-msgstr "چهار شنبه"
-
 msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:account.invoice.tax,invoice_state:"

@@ -2,183 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.invoice-account.move.line:"
-msgid "A payment line can be linked to only one invoice."
-msgstr ""
-
-msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it has payments."
-msgstr ""
-"Você não pode pagar com a fatura de devolução \"%s\" porque ela possui "
-"pagamentos."
-
-msgctxt "error:account.invoice.credit:"
-msgid ""
-"You can not credit with refund invoice \"%s\" because it is a supplier "
-"invoice/credit note."
-msgstr ""
-"Você não pode creditar com a fatura de devolução \"%s\" porque é uma fatura "
-"de fornecedor."
-
-msgctxt "error:account.invoice.credit:"
-msgid "You can not credit with refund invoice \"%s\" because it is not posted."
-msgstr ""
-"Você não pode pagar com a fatura de devolução \"%s\" porque ela não foi "
-"confirmada."
-
-msgctxt "error:account.invoice.line:"
-msgid "Line with \"line\" type must have an account."
-msgstr "Linha com o tipo \"linha\" deve possuir uma conta."
-
-msgctxt "error:account.invoice.line:"
-msgid "Line without \"line\" type must have an invoice."
-msgstr "A linha sem o tipo \"linha\" deve possuir uma fatura."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not add a line to invoice \"%(invoice)s\" that is posted, paid or "
-"cancelled."
-msgstr ""
-"Você não pode adicionar uma linha à fatura \"%(invoice)s\" porque está "
-"confirmada, paga ou foi cancelada."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not create invoice line \"%(line)s\" on invoice \"%(invoice)s\" "
-"because the invoice uses the same account (%(account)s)."
-msgstr ""
-"Você não pode criar a linha de fatura \"%(line)s\" na fatura \"%(invoice)s\""
-" porque a fatura usa a mesma conta  (%(account)s)."
-
-msgctxt "error:account.invoice.line:"
-msgid ""
-"You can not modify line \"%(line)s\" from invoice \"%(invoice)s\" that is "
-"posted or paid."
-msgstr ""
-"Você não pode modificar a linha  \"%(line)s\" da fatura \"%(invoice)s\", "
-"porque está confirmada ou paga."
-
-msgctxt "error:account.invoice.pay:"
-msgid ""
-"On invoice \"%s\" you can not create a partial payment with an amount "
-"greater than the amount to pay."
-msgstr ""
-"Na fatura \"%s\" você não pode criar um pagamento parcial com um montante "
-"maior do que o montante a pagar."
-
-msgctxt "error:account.invoice.payment_term.line:"
-msgid ""
-"Ratio and Divisor values are not consistent in line \"%(line)s\" of payment "
-"term \"%(term)s\"."
-msgstr ""
-"Os valores da Razão e do Divisor não são consistentes na linha \"%(line)s\" "
-"do prazo de pagamento \"%(term)s\"."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Invalid line \"%(line)s\" in payment term \"%(term)s\"."
-msgstr "Linha \"%(line)s\" inválida no prazo de pagamento \"%(term)s\"."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Last line of payment term \"%s\" must be of type remainder."
-msgstr ""
-"A última linha do prazo de pagamento \"%s\" deve ser do tipo remanescente."
-
-msgctxt "error:account.invoice.payment_term:"
-msgid "Missing remainder line in payment term \"%s\"."
-msgstr "Falta a linha de remanescente no prazo de pagamento \"%s\"."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not add tax to invoice \"%(invoice)s\" because it is posted, paid or"
-" canceled."
-msgstr ""
-"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
-" ela já foi confirmada, paga ou cancelada."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not modify tax \"%(tax)s\" from invoice \"%(invoice)s\" because it "
-"is posted or paid."
-msgstr ""
-"Você não pode modificar o tributo \"%(tax)s\" da fatura \"%(invoice)s\" "
-"porque está confirmado ou pago."
-
-msgctxt "error:account.invoice:"
-msgid "Customer invoice/credit note \"%s\" can not be cancelled once posted."
-msgstr ""
-"Não se pode cancelar a fatura do cliente/nota de crédito \"%s\" porque já "
-"foi confirmada."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%(invoice)s\" uses the same account \"%(account)s\" for the "
-"invoice and in line \"%(line)s\"."
-msgstr ""
-"A fatura \"%(invoice)s\" usa a mesma conta \"%(account)s\" para a fatura e "
-"para a linha \"%(line)s\"."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" has taxes defined but not on invoice lines.\n"
-"Re-compute the invoice."
-msgstr ""
-"A fatura \"%s\" possui tributos definidos mas não nas suas linhas.\n"
-"Recalcule a fatura."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" has taxes on invoice lines that are not in the invoice.\n"
-"Re-compute the invoice."
-msgstr ""
-"A fatura \"%s\" possui tributos nas linhas fatura que não estão na fatura.\n"
-"Recaulcule a fatura."
-
-msgctxt "error:account.invoice:"
-msgid "Invoice \"%s\" must be cancelled before deletion."
-msgstr "A fatura \"%s\" deve ser cancelara antes de ser apagada."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Invoice \"%s\" tax bases are different from invoice lines.\n"
-"Re-compute the invoice."
-msgstr ""
-"A base dos tributos da fatura \"%s\" não corresponde às das linhas da fatura.\n"
-"Recaucule a fatura."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"Missing invoice sequence for invoice \"%(invoice)s\" on fiscalyear "
-"\"%(fiscalyear)s\"."
-msgstr ""
-"Falta sequência de fatura para fatura \"%(invoice)s\" no exercício fiscal "
-"\"%(fiscalyear)s\"."
-
-msgctxt "error:account.invoice:"
-msgid "Payment lines can not be modified on a paid invoice \"%(invoice)s\""
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "The numbered invoice \"%s\" can not be deleted."
-msgstr "A fatura numerada \"%s\" não pode ser apagada."
-
-msgctxt "error:account.invoice:"
-msgid ""
-"The payment lines on invoice \"%(invoice)s\" can not be greater than the "
-"invoice amount."
-msgstr ""
-
-msgctxt "error:account.invoice:"
-msgid "You can not modify invoice \"%s\" because it is posted, paid or cancelled."
-msgstr ""
-"Você não pode modificar a fatura \"%s\" porque ela foi confirmada, paga ou "
-"cancelada."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending invoices "
-"for the company \"%(company)s\"."
-msgstr ""
-
 msgctxt "field:account.fiscalyear,invoice_sequences:"
 msgid "Invoice Sequences"
 msgstr "Sequências de Fatura"
@@ -370,6 +193,11 @@ msgstr "Nome do Registro"
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Conciliado"
+
+#, fuzzy
+msgctxt "field:account.invoice,reconciliation_lines:"
+msgid "Payment Lines"
+msgstr "Linhas de Pagamento"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
@@ -1105,17 +933,18 @@ msgctxt "field:party.party.payment_term,write_uid:"
 msgid "Write User"
 msgstr "Editado por"
 
+#, fuzzy
 msgctxt "help:account.invoice.credit.start,with_refund:"
-msgid "If true, the current invoice(s) will be paid."
+msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Se verdadeiro, as faturas atuais serão pagas."
 
 msgctxt "help:account.invoice.payment.method,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:account.invoice.payment_term,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
@@ -1268,8 +1097,129 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validated"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_invoice"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending invoices with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
+msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
+msgid "You cannot cancel customer invoice \"%(invoice)s\" because it is posted."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
+msgid "To delete invoice \"%(invoice)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_numbered"
+msgid "You cannot delete invoice \"%(invoice)s\" because it has a number."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_create"
+msgid ""
+"You cannot add a line to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
+" ela já foi confirmada, paga ou cancelada."
+
+msgctxt "model:ir.message,text:msg_invoice_line_modify"
+msgid ""
+"You cannot modify line \"%(line)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_modify"
+msgid ""
+"You cannot modify invoice \"%(invoice)s\" because it is posted, paid or "
+"cancelled."
+msgstr ""
+"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
+" ela já foi confirmada, paga ou cancelada."
+
+msgctxt "model:ir.message,text:msg_invoice_no_sequence"
+msgid ""
+"To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
+"\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
+msgid ""
+"You cannot add a partial payment on invoice \"%(invoice)s\" with an amount "
+"greater than the amount to pay \"%(amount_to_pay)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_line_unique"
+msgid "A payment line can be linked to only one invoice."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_add_remove_paid"
+msgid "You cannot add/remove payment lines on paid invoice \"%(invoice)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_payment_lines_greater_amount"
+msgid ""
+"Payment lines amount on invoice \"%(invoice)s\" can not be greater than the "
+"invoice amount."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_same_account_line"
+msgid ""
+"You cannot use the same account \"%(account)s\" on invoice \"%(invoice)s\" "
+"and on line \"%(lines)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_tax_create"
+msgid ""
+"You cannot add a tax to invoice \"%(invoice)s\" because it is posted, paid "
+"or cancelled."
+msgstr ""
+"Você não pode adicionar a linha \"%(line)s\" à fatura \"%(invoice)s\" porque"
+" ela já foi confirmada, paga ou cancelada."
+
+msgctxt "model:ir.message,text:msg_invoice_tax_invalid"
+msgid ""
+"The taxes on invoice \"%(invoice)s\" are not valid, you must save it again "
+"to force them to be recalculated."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_tax_modify"
+msgid ""
+"You cannot modify tax \"%(tax)s\" because its invoice \"%(invoice)s\" is "
+"posted, paid or cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_invalid_ratio_divisor"
+msgid "The ratio and divisor are not consistent on line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_last_remainder"
+msgid ""
+"To save payment term \"%(payment_term)s\", you must append a last remainder "
+"line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_term_missing_remainder"
+msgid ""
+"To compute terms, you must append a remainder line on payment term "
+"\"%(payment_term)s\"."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
-msgid "Are you sure to cancel the invoice?"
+msgid "Are you sure you want to cancel the invoices?"
+msgstr "Are you sure to cancel the invoice?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:invoice_post_button"
+msgid "Are you sure you want to post the invoices?"
 msgstr "Are you sure to cancel the invoice?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
@@ -1299,6 +1249,18 @@ msgstr "Post"
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
 msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
@@ -1423,8 +1385,9 @@ msgctxt "report:account.invoice:"
 msgid "Unit Price"
 msgstr "Preço unitário"
 
+#, fuzzy
 msgctxt "selection:account.invoice,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancelado"
 
 msgctxt "selection:account.invoice,state:"
@@ -1451,8 +1414,9 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "Fornecedor"
 
+#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancelado"
 
 msgctxt "selection:account.invoice.line,invoice_state:"
@@ -1470,10 +1434,6 @@ msgstr "Confirmado"
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Validated"
 msgstr "Validado"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
@@ -1523,92 +1483,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Remanescente"
 
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "April"
-msgstr "Abril"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "August"
-msgstr "Agosto"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "December"
-msgstr "Dezembro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "February"
-msgstr "Fevereiro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "January"
-msgstr "Janeiro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "July"
-msgstr "Julho"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "June"
-msgstr "Junho"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "March"
-msgstr "Março"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "May"
-msgstr "Maio"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "November"
-msgstr "Novembro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "October"
-msgstr "Outubro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,month:"
-msgid "September"
-msgstr "Setembro"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Friday"
-msgstr "Sexta"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Monday"
-msgstr "Segunda"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Saturday"
-msgstr "Sábado"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Sunday"
-msgstr "Domingo"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Thursday"
-msgstr "Quinta"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Tuesday"
-msgstr "Terça"
-
-msgctxt "selection:account.invoice.payment_term.line.delta,weekday:"
-msgid "Wednesday"
-msgstr "Quarta"
-
+#, fuzzy
 msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancelado"
 
 msgctxt "selection:account.invoice.tax,invoice_state:"
