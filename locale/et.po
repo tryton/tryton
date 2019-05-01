@@ -4,103 +4,95 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr "Редове от аналитична сметка"
+msgstr "Analüütilised read"
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
-msgstr ""
+msgstr "Analüütiline staatus"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr "Източник"
+msgstr "Päritolu"
 
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Muutja"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
-msgstr "Активен"
+msgstr "Aktiivne"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr "Баланс"
+msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr "Наследници"
+msgstr ""
 
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Kood"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Ettevõte"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Looja"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Kreedit"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Валута"
+msgstr "Valuuta"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Valuuta numbriväärtus"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deebet"
 
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
@@ -116,120 +108,111 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr "Име"
+msgstr "Nimetus"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr "Бележка"
+msgstr "Märkus"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Ülem"
 
 msgctxt "field:analytic_account.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
-msgstr "Начало"
+msgstr "Juur"
 
 msgctxt "field:analytic_account.account,state:"
 msgid "State"
-msgstr "Щат"
+msgstr "Olek"
 
 msgctxt "field:analytic_account.account,type:"
 msgid "Type"
-msgstr "Вид"
+msgstr "Tüüp"
 
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
-msgstr "Родител"
+msgstr "Ülem"
 
 msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
-msgstr ""
+msgstr "Tegur"
 
 msgctxt "field:analytic_account.account.distribution,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
-msgstr "Начало"
+msgstr "Juur"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Muutja"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Ettevõte"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Looja"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Kreedit"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Цифри за валута"
+msgstr "Valuuta numbriväärtus"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Kuupäev"
 
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deebet"
 
 msgctxt "field:analytic_account.line,id:"
 msgid "ID"
@@ -237,23 +220,23 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
-msgstr "Ред от движение по сметка"
+msgstr "Kande rida"
 
 msgctxt "field:analytic_account.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Muutja"
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr "Крайна дата"
+msgstr "Lõppkuupäev"
 
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
@@ -261,86 +244,75 @@ msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr "Начална дата"
+msgstr "Alguskuupäev"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
-msgstr "Фактури"
+msgstr "Konto"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Аналитични сметки"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Аналитични сметки"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
-msgstr "Фирма"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,create_date:"
 msgid "Create Date"
-msgstr "Създадено на"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,create_uid:"
 msgid "Create User"
-msgstr "Създадено от"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
-msgstr "Дневник"
+msgstr "Andmik"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,party:"
 msgid "Party"
-msgstr "Партньор"
+msgstr "Osapool"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
+msgstr "Nähtav osapool"
 
 msgctxt "field:analytic_account.rule,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:analytic_account.rule,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Järjestus"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,write_date:"
 msgid "Write Date"
-msgstr "Променено на"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
-msgstr "Променено от"
+msgstr "Muutja"
 
 msgctxt "help:analytic_account.account,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
-msgstr ""
+msgstr "Analüütiline kanne"
 
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr "Аналитична сметка"
+msgstr "Analüütiline konto"
 
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
@@ -348,55 +320,47 @@ msgstr ""
 
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr "Ред от аналитична сметка"
+msgstr "Analüütiline rida"
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Отваряне на сметкоплан"
+msgstr "Ava kontoplaan"
 
-#, fuzzy
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
-msgstr "Ред от аналитична сметка"
+msgstr "Analüütiline reegel"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr "Analytic Lines"
+msgstr "Analüütilised read"
 
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Open Account"
+msgstr "Avatud konto"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr "Ava analüütiline kontoplaan"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
-msgstr "Редове от аналитична сметка"
+msgstr "Analüütilised reeglid"
 
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
@@ -410,62 +374,55 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr "Analüütilised kontod"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr "Analytic Account"
+msgstr "Analüütiline konto"
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr "Ava analüütiline kontoplaan"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Analytic Rules"
-msgstr "Редове от аналитична сметка"
+msgstr "Analüütilised reeglid"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Analytic Administration"
+msgstr "Analüütika administreerimine"
 
-#, fuzzy
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Mustand"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
-msgstr ""
+msgstr "Kehtiv"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
-msgstr "Приключен"
+msgstr "Suletud"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr "Проект"
+msgstr "Mustand"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
-msgstr "Отворен"
+msgstr "Avatud"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Distribution"
@@ -473,55 +430,44 @@ msgstr ""
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
-msgstr "Нормален"
+msgstr "Normaalne"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
-msgstr "Начало"
+msgstr "Juur"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "View"
-msgstr "Изглед"
+msgstr "Vaade"
 
 msgctxt "view:account.move.line:"
 msgid "Analytic"
-msgstr "Задължителен"
+msgstr "Analüütiline"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Кредит"
+msgstr "Kreedit"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Дебит"
+msgstr "Deebet"
 
-#, fuzzy
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
-msgstr "Обща информация"
+msgstr "Üldinfo"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr "Бележки"
+msgstr "Märkused"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "Отказ"
+msgstr "Tühista"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr "Отваряне"
-
-msgctxt "view:analytic_account.line:"
-msgid "General Information"
-msgstr "Обща информация"
-
-msgctxt "view:analytic_account.open_chart.start:"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Отваряне на аналитичен сметкоплан"
+msgstr "Avatud"

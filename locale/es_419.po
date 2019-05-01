@@ -2,32 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic.account.entry:"
-msgid "Only one account is allowed per analytic root and origin."
-msgstr ""
-
-msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%%."
-msgstr ""
-
-msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values."
-msgstr "Valores de crédito/débito erróneos."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using inactive account \"%s\"."
-msgstr "No puede crear una línea de asiento utilizando la cuenta inactiva \"%s\"."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using view account \"%s\"."
-msgstr ""
-"No puede crear una línea de asiento utilizando la cuenta de tipo vista "
-"\"%s\"."
-
-msgctxt "error:analytic_account.rule:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr ""
-
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr ""
@@ -62,10 +36,6 @@ msgstr ""
 
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,required:"
-msgid "Required"
 msgstr ""
 
 msgctxt "field:analytic.account.entry,root:"
@@ -125,10 +95,6 @@ msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "Débito"
 
-msgctxt "field:analytic_account.account,display_balance:"
-msgid "Display Balance"
-msgstr ""
-
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
 msgstr ""
@@ -139,10 +105,6 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
-msgstr ""
-
-msgctxt "field:analytic_account.account,mandatory:"
-msgid "Mandatory"
 msgstr ""
 
 msgctxt "field:analytic_account.account,name:"
@@ -345,10 +307,6 @@ msgctxt "help:analytic_account.account,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
-msgctxt "help:analytic_account.account,mandatory:"
-msgid "Make this account mandatory when filling documents"
-msgstr ""
-
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr "Asiento de cuenta analítica"
@@ -405,6 +363,20 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr ""
@@ -440,14 +412,6 @@ msgstr ""
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
 msgstr ""
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Credit - Debit"
-msgstr "Crédito - Débito"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Debit - Credit"
-msgstr "Débito - Crédito"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"

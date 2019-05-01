@@ -2,30 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic.account.entry:"
-msgid "Only one account is allowed per analytic root and origin."
-msgstr ""
-
-msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%%."
-msgstr ""
-
-msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values."
-msgstr ""
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using inactive account \"%s\"."
-msgstr ""
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using view account \"%s\"."
-msgstr ""
-
-msgctxt "error:analytic_account.rule:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
@@ -41,15 +17,15 @@ msgstr ""
 
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:analytic.account.entry,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:analytic.account.entry,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:analytic.account.entry,id:"
 msgid "ID"
@@ -63,21 +39,17 @@ msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-msgctxt "field:analytic.account.entry,required:"
-msgid "Required"
-msgstr ""
-
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
 
 msgctxt "field:analytic.account.entry,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:analytic.account.entry,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:analytic_account.account,active:"
 msgid "Active"
@@ -97,15 +69,15 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:analytic_account.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:analytic_account.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -113,18 +85,14 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
-msgstr ""
-
-msgctxt "field:analytic_account.account,display_balance:"
-msgid "Display Balance"
 msgstr ""
 
 msgctxt "field:analytic_account.account,distribution_parents:"
@@ -139,10 +107,6 @@ msgctxt "field:analytic_account.account,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "field:analytic_account.account,mandatory:"
-msgid "Mandatory"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
@@ -150,7 +114,7 @@ msgstr "Namu"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr ""
+msgstr "Pastaba"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
@@ -174,11 +138,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:analytic_account.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
@@ -186,11 +150,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:analytic_account.account.distribution,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:analytic_account.account.distribution,id:"
 msgid "ID"
@@ -214,11 +178,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:analytic_account.account.distribution,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
@@ -226,15 +190,15 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:analytic_account.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:analytic_account.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -242,7 +206,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
@@ -266,15 +230,15 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:analytic_account.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:analytic_account.open_chart.start,id:"
 msgid "ID"
@@ -282,7 +246,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
@@ -300,15 +264,15 @@ msgstr "Analytic Accounts"
 
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:analytic_account.rule,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:analytic_account.rule,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:analytic_account.rule,id:"
 msgid "ID"
@@ -320,11 +284,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.rule,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
+msgstr "Kontrahentas matomas"
 
 msgctxt "field:analytic_account.rule,rec_name:"
 msgid "Record Name"
@@ -336,18 +300,14 @@ msgstr ""
 
 msgctxt "field:analytic_account.rule,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:analytic_account.rule,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:analytic_account.account,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:analytic_account.account,mandatory:"
-msgid "Make this account mandatory when filling documents"
 msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"
@@ -409,6 +369,20 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
 msgstr "Analytic Rules"
 
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Analytic Accounts"
@@ -443,14 +417,6 @@ msgstr ""
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
-msgstr ""
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Credit - Debit"
-msgstr ""
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Debit - Credit"
 msgstr ""
 
 msgctxt "selection:analytic_account.account,state:"
@@ -504,7 +470,7 @@ msgstr ""
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr ""
+msgstr "Pastabos"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"

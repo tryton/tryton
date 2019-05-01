@@ -2,31 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic.account.entry:"
-msgid "Only one account is allowed per analytic root and origin."
-msgstr ""
-"Sólo se puede seleccionar una cuenta por cada origen y raíz analítica."
-
-msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%%."
-msgstr "La suma de la distribución de la cuenta \"%(account)s\" no es el 100%%."
-
-msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values."
-msgstr "Valores de haber/debe erróneos."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using inactive account \"%s\"."
-msgstr "No puede crear un apunte usando una cuenta inactiva \"%s\"."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using view account \"%s\"."
-msgstr "No puede crear un apunte utilizando la cuenta tipo vista \"%s\"."
-
-msgctxt "error:analytic_account.rule:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Faltan algunas cuentas raíz en \"%(name)s\""
-
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "Líneas analíticas"
@@ -62,10 +37,6 @@ msgstr "Origen"
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Record Name"
 msgstr "Nombre del registro"
-
-msgctxt "field:analytic.account.entry,required:"
-msgid "Required"
-msgstr "Obligatorio"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
@@ -123,10 +94,6 @@ msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "Debe"
 
-msgctxt "field:analytic_account.account,display_balance:"
-msgid "Display Balance"
-msgstr "Mostrar saldo"
-
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
 msgstr "Padres de la distribución"
@@ -138,10 +105,6 @@ msgstr "Distribuciones"
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
 msgstr "ID"
-
-msgctxt "field:analytic_account.account,mandatory:"
-msgid "Mandatory"
-msgstr "Obligatorio"
 
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
@@ -343,10 +306,6 @@ msgctxt "help:analytic_account.account,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
-msgctxt "help:analytic_account.account,mandatory:"
-msgid "Make this account mandatory when filling documents"
-msgstr "Hacer a esta cuenta obligatoria cuando se introduzcan documentos"
-
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr "Asiento cuenta analítica"
@@ -403,6 +362,23 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
 msgstr "Reglas analíticas"
 
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr ""
+"Para grabar la cuenta \"%(account)s\" la suma de sus distribuciones debe ser"
+" 100%."
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+"Sólo se puede seleccionar una cuenta por cada origen y raíz analítica."
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr "Usuario en la empresa"
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "Cuentas analíticas"
@@ -438,14 +414,6 @@ msgstr "Borrador"
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
 msgstr "Válido"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Credit - Debit"
-msgstr "Haber - Debe"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Debit - Credit"
-msgstr "Debe - Haber"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"

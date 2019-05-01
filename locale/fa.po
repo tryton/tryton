@@ -2,34 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:analytic.account.entry:"
-msgid "Only one account is allowed per analytic root and origin."
-msgstr "در هر تجزیه و تحلیل ریشه و مبدأ فقط یک حساب مجاز است."
-
-#, fuzzy
-msgctxt "error:analytic_account.account:"
-msgid "The distribution sum of account \"%(account)s\" is not 100%%."
-msgstr "مجموع توزیع حساب: \"٪ s\" ،100 % نیست."
-
-msgctxt "error:analytic_account.line:"
-msgid "Wrong credit/debit values."
-msgstr "مقادیر بستانکار/بدهکار اشتباه است."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using inactive account \"%s\"."
-msgstr ""
-"شما نمی توانید یک خط جابجایی با حساب: \"٪ s\" ایجاد کنید زیرا غیرفعال است."
-
-msgctxt "error:analytic_account.line:"
-msgid "You can not create a move line using view account \"%s\"."
-msgstr ""
-"شما نمی توانید یک خط حرکت با حساب: \"٪ s\" ایجاد کنید زیرا آن یک حساب نمایشی"
-" است."
-
-msgctxt "error:analytic_account.rule:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "برخی از الزامات حساب ریشه مفقود شده است در: \"٪ s\""
-
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
 msgstr "سطر های تحلیلی"
@@ -65,10 +37,6 @@ msgstr "مبداء"
 msgctxt "field:analytic.account.entry,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
-
-msgctxt "field:analytic.account.entry,required:"
-msgid "Required"
-msgstr "مورد نیاز"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
@@ -126,10 +94,6 @@ msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
 msgstr "بدهی"
 
-msgctxt "field:analytic_account.account,display_balance:"
-msgid "Display Balance"
-msgstr "نمایش تراز"
-
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
 msgstr "توزیع منابع"
@@ -141,10 +105,6 @@ msgstr "توزیع"
 msgctxt "field:analytic_account.account,id:"
 msgid "ID"
 msgstr "شناسه"
-
-msgctxt "field:analytic_account.account,mandatory:"
-msgid "Mandatory"
-msgstr "اجباری"
 
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
@@ -346,10 +306,6 @@ msgctxt "help:analytic_account.account,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
-msgctxt "help:analytic_account.account,mandatory:"
-msgid "Make this account mandatory when filling documents"
-msgstr "هنگام ثبت اسناد، این حساب را اجباری کنید"
-
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr "ورودی تجزیه و تحلیل حساب"
@@ -406,6 +362,20 @@ msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
 msgstr "قوانین تحلیلی"
 
+msgctxt "model:ir.message,text:msg_invalid_distribution"
+msgid ""
+"To save account \"%(account)s\" the sum of their distributions must be "
+"100%%."
+msgstr "برای ذخیره حساب : \"%(account)s\" مجموع توزیع آنها باید %100 باشد."
+
+msgctxt "model:ir.message,text:msg_root_origin_unique"
+msgid "Only one account is allowed by analytic root and origin."
+msgstr "در هر تجزیه و تحلیل ریشه و مبدأ فقط یک حساب مجاز است."
+
+msgctxt "model:ir.rule.group,name:rule_group_rule"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
 msgstr "تجزیه و تحلیل حساب ها"
@@ -441,14 +411,6 @@ msgstr "پیش‌نویس"
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
 msgstr "معتبر"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Credit - Debit"
-msgstr "بستانکار - بدهکار"
-
-msgctxt "selection:analytic_account.account,display_balance:"
-msgid "Debit - Credit"
-msgstr "بدهکار - بستانکار"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
