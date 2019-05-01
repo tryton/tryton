@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production:"
-msgid "The productions \"%s\" can not be done as they have pending purchases"
-msgstr ""
-
 msgctxt "field:production,purchase_lines:"
 msgid "Purchase Lines"
 msgstr ""
@@ -52,6 +48,12 @@ msgstr ""
 
 msgctxt "help:purchase.line,production:"
 msgid "Add to the cost of the production."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
 msgstr ""
 
 msgctxt "view:production.routing:"

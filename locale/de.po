@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production:"
-msgid "The productions \"%s\" can not be done as they have pending purchases"
-msgstr ""
-"Die Produktionsaufträge \"%s\" können nicht erledigt werden, da sie offene "
-"Einkäufe haben."
-
 msgctxt "field:production,purchase_lines:"
 msgid "Purchase Lines"
 msgstr "Einkaufspositionen"
@@ -55,6 +49,14 @@ msgstr "Die vom Lieferanten zu beziehende Dienstleistung für die Produktion."
 msgctxt "help:purchase.line,production:"
 msgid "Add to the cost of the production."
 msgstr "Zu den Produktionskosten hinzufügen."
+
+msgctxt "model:ir.message,text:msg_pending_purchase_done"
+msgid ""
+"The productions \"%(productions)s\" cannot be processed as they have pending"
+" purchases."
+msgstr ""
+"Die Produktionsaufträge \"%(productions)s\" können nicht ausgeführt werden, "
+"weil zugehörige Einkäufe noch nicht erledigt sind."
 
 msgctxt "view:production.routing:"
 msgid "Supplier"
