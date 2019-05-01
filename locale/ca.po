@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:project.work:"
-msgid "There is no list price on work \"%s\"."
-msgstr "No hi ha cap preu al treball \"%s\"."
-
-msgctxt "error:project.work:"
-msgid "There is no party on work \"%s\"."
-msgstr "No hi ha cap tercer al treball \"%s\"."
-
-msgctxt "error:project.work:"
-msgid "There is no product on work \"%s\"."
-msgstr "No hi ha cap producte al treball \"%s\"."
-
-msgctxt "error:timesheet.line:"
-msgid "You can not delete invoiced line."
-msgstr "No podeu eliminar una línia facturada."
-
-msgctxt "error:timesheet.line:"
-msgid "You can not modify invoiced line."
-msgstr "No podeu modificar una línia facturada."
-
 msgctxt "field:project.work,duration_to_invoice:"
 msgid "Duration to Invoice"
 msgstr "Temps a facturar"
@@ -98,9 +78,33 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Factures"
 
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr "No podeu eliminar una línia facturada."
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr "No hi ha cap preu de venda al treball \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr "No hi ha cap tercer al treball \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_product"
+msgid "There is no product on work \"%(work)s\"."
+msgstr "No hi ha cap producte al treball \"%(work)s\"."
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr "No podeu modificar una línia facturada."
+
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
 msgstr "Factura"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_project_invoice"
+msgid "Any timesheet line"
+msgstr "Qualsevol línia del full de treball"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"

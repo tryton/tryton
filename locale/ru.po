@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:project.work:"
-msgid "There is no list price on work \"%s\"."
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid "There is no party on work \"%s\"."
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid "There is no product on work \"%s\"."
-msgstr ""
-
-msgctxt "error:timesheet.line:"
-msgid "You can not delete invoiced line."
-msgstr ""
-
-msgctxt "error:timesheet.line:"
-msgid "You can not modify invoiced line."
-msgstr ""
-
 msgctxt "field:project.work,duration_to_invoice:"
 msgid "Duration to Invoice"
 msgstr ""
@@ -111,9 +91,33 @@ msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Инвойсы"
 
+msgctxt "model:ir.message,text:msg_delete_invoiced_line"
+msgid "You cannot delete an invoiced line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_list_price"
+msgid "There is no list price on work \"%(work)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_party"
+msgid "There is no party on work \"%(work)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_product"
+msgid "There is no product on work \"%(work)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_invoiced_line"
+msgid "You cannot modify an invoiced line."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
 msgstr "Invoice"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_project_invoice"
+msgid "Any timesheet line"
+msgstr ""
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
