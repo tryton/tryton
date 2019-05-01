@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr "Leer lassen, um den Wert aus der Konfiguration zu verwenden."
+msgstr "Leer lassen, um den Wert aus der Konfigurationsdatei zu verwenden."
 
 msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
@@ -124,7 +124,7 @@ msgstr "Gebühren:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Erhaltene Zahlungen"
+msgstr "Nicht zugeordnete erhaltene Zahlungen"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"

@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
-msgstr ""
+msgstr "کاربر عقب افتاده"
 
 msgctxt "field:account.dunning.email.log,create_date:"
 msgid "Create Date"
@@ -56,7 +56,7 @@ msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "مکانیزم تماس"
 
 msgctxt "field:account.dunning.level,email_from:"
 msgid "From"
@@ -72,11 +72,11 @@ msgstr "ارسال ایمیل"
 
 msgctxt "help:account.configuration,dunning_email_fallback:"
 msgid "User notified when no e-mail is found to send the dunning"
-msgstr ""
+msgstr "ابلاغ شده به کاربر هنگامی که هیچ ایمیلی برای بازپرداخت ارسال نشده"
 
 msgctxt "help:account.dunning.level,email_contact_mechanism:"
 msgid "Define which e-mail to use from the party's contact mechanisms"
-msgstr ""
+msgstr "تعریف کدام ایمیل را از مکانیسم های تماس حزب استفاده کنید"
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
@@ -136,4 +136,4 @@ msgstr "زمان"
 
 msgctxt "view:account.dunning.level:"
 msgid "E-mail"
-msgstr ""
+msgstr "ایمیل"
