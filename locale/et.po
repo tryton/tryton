@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.fr.fec.result,file:"
 msgid "File"
-msgstr ""
+msgstr "Fail"
 
 msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
-msgstr ""
+msgstr "Faili nimi"
 
 msgctxt "field:account.fr.fec.result,id:"
 msgid "ID"
@@ -16,11 +16,11 @@ msgstr "ID"
 
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
-msgstr ""
+msgstr "Viivituse periood"
 
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Majandusaasta"
 
 msgctxt "field:account.fr.fec.start,id:"
 msgid "ID"
@@ -28,44 +28,42 @@ msgstr "ID"
 
 msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 msgctxt "help:account.fr.fec.start,deferral_period:"
 msgid ""
 "The period to exclude which contains the moves to balance non-deferral "
 "account"
-msgstr ""
+msgstr "Välistatav periood, mis sisaldab mitte-viivituse konto saldo kandeid"
 
-#, fuzzy
 msgctxt "model:account.fr.fec.result,name:"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr "Loo FEC"
 
-#, fuzzy
 msgctxt "model:account.fr.fec.start,name:"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr "Loo FEC"
 
 msgctxt "model:ir.action,name:act_fec"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr "Loo FEC"
 
 msgctxt "model:ir.ui.menu,name:menu_fec"
 msgid "Generate FEC"
-msgstr "Generate FEC"
+msgstr "Loo FEC"
 
 msgctxt "selection:account.fr.fec.start,type:"
 msgid "IS-BIC"
-msgstr ""
+msgstr "IS-BIC kood"
 
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.fr.fec,start,generate:"
 msgid "Generate"
-msgstr ""
+msgstr "Loo"

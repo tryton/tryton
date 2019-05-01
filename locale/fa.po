@@ -16,7 +16,7 @@ msgstr "شناسه"
 
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
-msgstr ""
+msgstr "دوره بازپرداخت"
 
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
@@ -35,6 +35,7 @@ msgid ""
 "The period to exclude which contains the moves to balance non-deferral "
 "account"
 msgstr ""
+"دوره ای که محتویات آن را شامل حرکت به تعادل حساب غیر از بازپرداخت می شود "
 
 msgctxt "model:account.fr.fec.result,name:"
 msgid "Generate FEC"
