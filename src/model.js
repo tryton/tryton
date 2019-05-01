@@ -513,7 +513,12 @@
             if ((this.id < 0) || !jQuery.isEmptyObject(values)) {
                 if (this.id < 0) {
                     // synchronous call to avoid multiple creation
-                    this.id = this.model.execute('create', [[values]], context,  false)[0];
+                    try {
+                        this.id = this.model.execute(
+                            'create', [[values]], context,  false)[0];
+                    } catch (e) {
+                        return jQuery.Deferred().reject(e);
+                    }
                 } else {
                     if (!jQuery.isEmptyObject(values)) {
                         context._timestamp = this.get_timestamp();
