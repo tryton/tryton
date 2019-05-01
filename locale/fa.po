@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning.fee.dunning_level:"
-msgid "Fee must be unique per dunning and level."
-msgstr "قیمت باید منحصربفرد باشد در هر دانینگ و هر سطح."
-
 msgctxt "field:account.dunning,fees:"
 msgid "Fees"
 msgstr "قیمت ها"
@@ -129,6 +125,10 @@ msgstr "حساب دانینگ قیمت سطح - دانینگ"
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
 msgstr "بهای دانینگ"
+
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "قیمت باید منحصربفرد باشد در هر دانینگ و هر سطح."
 
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
 msgid "Dunning Fees"

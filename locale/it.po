@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.dunning.fee.dunning_level:"
-msgid "Fee must be unique per dunning and level."
-msgstr "L'addebito di spesa dev'essere unico per ogni sollecito e livello"
-
 msgctxt "field:account.dunning,fees:"
 msgid "Fees"
 msgstr "Spese"
@@ -130,6 +126,11 @@ msgstr "Conto di imputazione della spesa per livello di sollecito"
 msgctxt "model:ir.action,name:act_dunning_fee_form"
 msgid "Dunning Fees"
 msgstr "Dunning Fees"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_fee_dunning_level_unique"
+msgid "Fee must be unique by dunning and level."
+msgstr "L'addebito di spesa dev'essere unico per ogni sollecito e livello"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dunning_fee_form"
