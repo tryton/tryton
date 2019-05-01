@@ -4,31 +4,31 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Crianças"
+msgstr "Alamjaotus"
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr "Criado pelo usuário"
+msgstr "Looja"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Moeda"
+msgstr "Valuuta"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Empregados"
+msgstr "Töötajad"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Rodapé"
+msgstr "Jalus"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr "Cabeçalho"
+msgstr "Päis"
 
 msgctxt "field:company.company,id:"
 msgid "ID"
@@ -36,27 +36,27 @@ msgstr "ID"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Pai"
+msgstr "Ülem"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Pessoa"
+msgstr "Osapool"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr "Fuso Horário"
+msgstr "Ajavöönd"
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:company.company,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Muutja"
 
 msgctxt "field:company.company.config.start,id:"
 msgid "ID"
@@ -64,19 +64,19 @@ msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr "Criado pelo usuário"
+msgstr "Looja"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr "Data de término"
+msgstr "Lõppkuupäev"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -84,39 +84,39 @@ msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Pessoa"
+msgstr "Osapool"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr "Data de início"
+msgstr "Alguskuupäev"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Muutja"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr "Criado pelo usuário"
+msgstr "Looja"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
@@ -128,63 +128,63 @@ msgstr "ID"
 
 msgctxt "field:ir.cron-company.company,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Muutja"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:res.user,companies:"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Empresa Atual"
+msgstr "Praegune ettevõte"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Empregado Atual"
+msgstr "Praegune töötaja"
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Empregados"
+msgstr "Töötajad"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Empresa Principal"
+msgstr "Peamine ettevõte"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr "Criado pelo usuário"
+msgstr "Looja"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Empregado"
+msgstr "Töötaja"
 
 msgctxt "field:res.user-company.employee,id:"
 msgid "ID"
@@ -192,187 +192,187 @@ msgstr "ID"
 
 msgctxt "field:res.user-company.employee,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr "Usuário"
+msgstr "Kasutaja"
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
-msgstr "Data de gravação"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
-msgstr "Gravado pelo usuário"
+msgstr "Muutja"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."
-msgstr "Adicione filhos abaixo da empresa."
+msgstr "Lisa ettevõttele alamjaotus"
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr "A principal moeda para a empresa."
+msgstr "Ettevõtte peamine valuuta"
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
-msgstr "Adicione empregados à empresa."
+msgstr "Lisa ettevõtte töötajad"
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
-msgstr "Texto a ser exibido no rodapé dos relatórios."
+msgstr "Aruande jaluses kuvatav tekst"
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr "Texto a ser exibido no cabeçalho dos relatórios."
+msgstr "Aruande päises kuvatav tekst"
 
 msgctxt "help:company.company,parent:"
 msgid "Add the company below the parent."
-msgstr "Adicione a empresa abaixo do pai."
+msgstr "Lisa ettevõte ülemjaotus ealla"
 
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
-msgstr "Usado para computar a data de hoje."
+msgstr "Kasutatakse tänase kuupäeva tekitamiseks"
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
-msgstr "A empresa a qual o empregado pertence."
+msgstr "Ettevõte kuhu töötaja kuulub"
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr "Quando o empregado sai da empresa."
+msgstr "Kui töötaja ettevõttest lahkub"
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr "A pessoa que representa o empregado."
+msgstr "Osapool kes töötajat esindab"
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr "Quando o empregado entra na empresa."
+msgstr "Kui töötaja ettevõttes alustab"
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr "Empresas registradas para este cron"
+msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
-msgstr "Restringe a sequência usada pela empresa."
+msgstr "Piira järjestuse kasutamist ettevõtte puhul"
 
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restrict the sequence usage to the company."
-msgstr "Restringe a sequência usada pela empresa."
+msgstr "Piira järjestuse kasutamist ettevõtte puhul"
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
-msgstr "Selecione a empresa a trabalhar para."
+msgstr "Vali ettevõte millega töötada"
 
 msgctxt "help:res.user,employee:"
 msgid "Select the employee to make the user behave as such."
-msgstr "Selecione o empregado para fazer com que o usuário o represente."
+msgstr "Vali töötaja, et määrata kasutajale õigused"
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
-msgstr "Adicione empregados para que os usuários tenham acesso a eles."
+msgstr "Lisa töötaja et anda kasutajale õigused selle haldamiseks"
 
 msgctxt "help:res.user,main_company:"
 msgid "Grant access to the company and its children."
-msgstr "Permitir acesso à empresa e seus filhos."
+msgstr "Ligipääsu lubamine ettevõttesse ja selle alamjaotustesse"
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Configuração da Empresa"
+msgstr "Ettevõtte seadistus"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Empregado"
+msgstr "Töötaja"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configurar Empresa"
+msgstr "Seadista ettevõte"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Empregados"
+msgstr "Töötajad"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Carta"
+msgstr "Letter"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Cron - Empresa"
+msgstr "Cron - ettevõte"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Empresas"
+msgstr "Ettevõtted"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Empregados"
+msgstr "Töötajad"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr "Usuário - Empregado"
+msgstr "Corn - töölin"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr "Atenciosamente,"
+msgstr "Parimate soovidega,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
-msgstr "Data:"
+msgstr "Kuupäev:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Caros senhores e senhoras,"
+msgstr "Lugupeetud daamid ja härrad,"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr "Assunto:"
+msgstr "Teema:"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr "Você pode agora adicionar sua empresa ao sistema."
+msgstr "Võid lisada oma ettevõtte süsteemi."
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Relatórios"
+msgstr "Aruanded"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Adicionar"
+msgstr "Lisa"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Tühista"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
@@ -380,4 +380,4 @@ msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Tühista"

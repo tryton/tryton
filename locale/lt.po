@@ -8,15 +8,15 @@ msgstr ""
 
 msgctxt "field:company.company,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:company.company,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 #, fuzzy
 msgctxt "field:company.company,employees:"
@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:company.company,rec_name:"
 msgid "Record Name"
@@ -53,11 +53,11 @@ msgstr ""
 
 msgctxt "field:company.company,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:company.company,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:company.company.config.start,id:"
 msgid "ID"
@@ -65,19 +65,19 @@ msgstr ""
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:company.employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:company.employee,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:company.employee,id:"
 msgid "ID"
@@ -85,7 +85,7 @@ msgstr ""
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:company.employee,rec_name:"
 msgid "Record Name"
@@ -93,15 +93,15 @@ msgstr ""
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:company.employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:company.employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:ir.cron,companies:"
@@ -110,15 +110,15 @@ msgstr "Companies"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:ir.cron-company.company,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.cron-company.company,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
@@ -134,27 +134,27 @@ msgstr ""
 
 msgctxt "field:ir.cron-company.company,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.cron-company.company,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 #, fuzzy
 msgctxt "field:res.user,companies:"
@@ -163,7 +163,7 @@ msgstr "Companies"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr ""
+msgstr "Dabartinė organizacija"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -176,15 +176,15 @@ msgstr "Employees"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr ""
+msgstr "Pagrindinė organizacija"
 
 msgctxt "field:res.user-company.employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user-company.employee,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,employee:"
@@ -201,15 +201,15 @@ msgstr ""
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr ""
+msgstr "Naudotojas"
 
 msgctxt "field:res.user-company.employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user-company.employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."
@@ -217,7 +217,7 @@ msgstr ""
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr ""
+msgstr "Organizacijos pagrindinė valiuta."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
@@ -283,9 +283,10 @@ msgctxt "help:res.user,main_company:"
 msgid "Grant access to the company and its children."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
@@ -318,6 +319,14 @@ msgstr "Letter"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
+msgstr "Cron - Organizacija"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
@@ -334,7 +343,7 @@ msgstr "Employees"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr ""
+msgstr "Naudotojas - darbuotojas"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
@@ -358,7 +367,7 @@ msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "view:company.company:"
 msgid "Reports"

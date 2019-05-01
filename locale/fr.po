@@ -316,6 +316,14 @@ msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Cron - Société"
 
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "Sociétés"

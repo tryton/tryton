@@ -167,12 +167,10 @@ msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
 msgstr "Azienda"
@@ -348,6 +346,14 @@ msgstr "Letter"
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
 msgstr "Cron - Azienda"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
