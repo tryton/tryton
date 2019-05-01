@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.sale:"
-msgid "The carrier '%(carrier)s' on sale '%(sale)s' is not valid."
-msgstr "El transportista '%(carrier)s' de la venda '%(sale)s' no es vàlid."
-
-msgctxt "error:stock.shipment.out:"
-msgid "Missing \"Account Revenue\" on product \"%s\"."
-msgstr "No es troba el \"Compte d'ingressos\" al producte \"%s\"."
-
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Mètode de cost enviament"
@@ -49,6 +41,21 @@ msgstr "Moneda de cost"
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Cost de la línia de factura"
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+"Per confirmar la venda \"%(sale)s\" heu de canviar el transportista "
+"\"%(carrier)s\"."
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
+"Per facturar el cost de l'enviament \"%(shipment)s\" heu de definir un "
+"compte d'ingressos pel producte \"%(product)s\"."
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"

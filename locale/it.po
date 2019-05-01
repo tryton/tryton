@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.sale:"
-msgid "The carrier '%(carrier)s' on sale '%(sale)s' is not valid."
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "Missing \"Account Revenue\" on product \"%s\"."
-msgstr "Manca \"conto di ricavo\" su prodotto \"%s\"."
-
 msgctxt "field:sale.configuration,sale_shipment_cost_method:"
 msgid "Sale Shipment Cost Method"
 msgstr "Metodo costo di spedizione per vendita"
@@ -50,6 +42,17 @@ msgstr "Valuta costo"
 msgctxt "field:stock.shipment.out,cost_invoice_line:"
 msgid "Cost Invoice Line"
 msgstr "Riga fattura costo"
+
+msgctxt "model:ir.message,text:msg_sale_invalid_carrier"
+msgid "To confirm sale \"%(sale)s\" you must change the carrier \"%(carrier)s\"."
+msgstr ""
+
+msgctxt ""
+"model:ir.message,text:msg_shipment_cost_invoice_missing_account_revenue"
+msgid ""
+"To invoice shipment cost of \"%(shipment)s\", you must define an account "
+"revenue for product \"%(product)s\"."
+msgstr ""
 
 msgctxt "selection:sale.sale,shipment_cost_method:"
 msgid "On Order"
