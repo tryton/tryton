@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr "Štetje plačilnih skupin"
+msgstr "Maksegrupi jada"
 
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:account.configuration.payment_group_sequence,id:"
 msgid "ID"
@@ -25,51 +25,51 @@ msgstr "ID"
 msgctxt ""
 "field:account.configuration.payment_group_sequence,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr "Štetje plačilnih skupin"
+msgstr "Maksegrupi jada"
 
 msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Direktna bremenitev"
+msgstr "Otsene deebet"
 
 msgctxt "field:account.move.line,payment_amount:"
 msgid "Payment Amount"
-msgstr "Znesek plačila"
+msgstr "Tasumise väärtus"
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
-msgstr "Zamrznjeno"
+msgstr "Blokeeritud"
 
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Direktna bremenitev"
+msgstr "Otsene deebet"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
-msgstr "Vrsta plačila"
+msgstr "Tasumisevorm"
 
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr "Plačila"
+msgstr "Tasumised"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Valuuta"
 
 msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
@@ -77,57 +77,55 @@ msgstr "ID"
 
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Andmik"
 
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
-msgstr "Dnevniki"
+msgstr "Andmikud"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Kuupäev"
 
-#, fuzzy
 msgctxt "field:account.move.line.pay.start,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
-msgstr "Znesek"
+msgstr "Väärtus"
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Valuuta"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
-msgstr "Decimalke"
+msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Kuupäev"
 
 msgctxt "field:account.payment,description:"
 msgid "Description"
-msgstr "Opis"
+msgstr "Selgitus"
 
 msgctxt "field:account.payment,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:account.payment,id:"
 msgid "ID"
@@ -135,51 +133,51 @@ msgstr "ID"
 
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Andmik"
 
 msgctxt "field:account.payment,kind:"
 msgid "Kind"
-msgstr "Vrsta"
+msgstr "Vorm"
 
 msgctxt "field:account.payment,line:"
 msgid "Line"
-msgstr "Postavka"
+msgstr "Rida"
 
 msgctxt "field:account.payment,origin:"
 msgid "Origin"
-msgstr "Poreklo"
+msgstr "Päritolu"
 
 msgctxt "field:account.payment,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Osapool"
 
 msgctxt "field:account.payment,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:account.payment,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr "Olek"
 
 msgctxt "field:account.payment,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.payment,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
@@ -187,47 +185,47 @@ msgstr "ID"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
-msgstr "Dnevnik"
+msgstr "Andmik"
 
 msgctxt "field:account.payment.group,kind:"
 msgid "Kind"
-msgstr "Vrsta"
+msgstr "Vorm"
 
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
-msgstr "Številka"
+msgstr "Number"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr "Plačila"
+msgstr "Tasumised"
 
 msgctxt "field:account.payment.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.payment.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Valuuta"
 
 msgctxt "field:account.payment.journal,id:"
 msgid "ID"
@@ -235,23 +233,23 @@ msgstr "ID"
 
 msgctxt "field:account.payment.journal,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "NImetus"
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
-msgstr "Način obdelave"
+msgstr "Protsesi meetodit"
 
 msgctxt "field:account.payment.journal,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.payment.journal,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
@@ -259,23 +257,23 @@ msgstr "ID"
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Direktna bremenitev"
+msgstr "Otsene deebet"
 
 msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
-msgstr "Direktne bremenitve"
+msgstr "Otsene deebet"
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:party.party.payment_direct_debit,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:party.party.payment_direct_debit,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:party.party.payment_direct_debit,id:"
 msgid "ID"
@@ -283,168 +281,153 @@ msgstr "ID"
 
 msgctxt "field:party.party.payment_direct_debit,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Osapool"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr "Direktna bremenitev"
+msgstr "Otsene deebet"
 
 msgctxt "field:party.party.payment_direct_debit,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:party.party.payment_direct_debit,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:party.party.payment_direct_debit,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
-msgstr "Označite, če je račun bil plačan preko direktne bremenitve."
+msgstr "Märgi kui arve on tasutud otse deebeti meetodil."
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
-msgstr "Označite, če bo postavka plačana preko direktne bremenitve."
+msgstr "Märgi kui rida tasutakse otse deebeti meetodil."
 
 msgctxt "help:account.move.line.pay.start,date:"
 msgid "When the payments are scheduled to happen."
-msgstr ""
+msgstr "Millal on tasumised planeeritud toimuma."
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr "Označite, če dobavitelj uporablja direktno bremenitev."
+msgstr "Kontrolli kas hankija võimaldab otse deebetit."
 
 msgctxt "help:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
-msgstr "Označite, če dobabitelj uporablja direktno bremenitev."
+msgstr "Kontrolli kas hankija võimaldab otse deebetit."
 
 msgctxt "model:account.configuration.payment_group_sequence,name:"
 msgid "Account Configuration Payment Group Sequence"
-msgstr "Konfiguracija štetja plačilnih skupin"
+msgstr "Konto kinnituse tasumise grupi jada"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgstr "Maksa rida"
 
-#, fuzzy
 msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
-msgstr "Plačilo postavke"
+msgstr "Maksa rida"
 
 msgctxt "model:account.payment,name:"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr "Tasumine"
 
 msgctxt "model:account.payment.group,name:"
 msgid "Payment Group"
-msgstr "Plačilna skupina"
+msgstr "Tasumise grupp"
 
 msgctxt "model:account.payment.journal,name:"
 msgid "Payment Journal"
-msgstr "Dnevnik plačil"
+msgstr "Tasumise andmik"
 
 msgctxt "model:account.payment.process.start,name:"
 msgid "Process Payment"
-msgstr "Obdelava plačila"
+msgstr "Protsessi tasumised"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr "Tasumisele kuuluvad read"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_pay_line"
 msgid "Pay Lines"
-msgstr "Pay Lines"
+msgstr "Maksa rida"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr "Tasumiste grupp"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr "Tasumiste andmik"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_process_payments"
 msgid "Process Payments"
-msgstr "Process Payments"
+msgstr "Protsessi tasumised"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_payable"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Kohustus"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Nõue"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Kõik"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_approved"
 msgid "Approved"
-msgstr "Approved"
+msgstr "Kinnitatud"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_payment_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Mustand"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_failed"
 msgid "Failed"
-msgstr "Failed"
+msgstr "Ebaõnnestunud"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr "Protsessimine"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_payment_form_domain_suceeded"
 msgid "Succeeded"
-msgstr "Succeeded"
+msgstr "Õnnestunud"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending payments with "
 "company \"%(company)s\"."
 msgstr ""
+"Osapoolt \"%(osapooli)\" ei saa kustutada kuni neil on ootel tasumised "
+"ettevõttega \"%(ettevõtetega)\""
 
 msgctxt "model:ir.message,text:msg_pay_line_blocked"
 msgid "Line \"%(line)s\" is blocked for payment."
-msgstr ""
+msgstr "Rida \"%(read)\" on tasumiseks blokeeritud"
 
 msgctxt "model:ir.message,text:msg_pay_line_group"
 msgid ""
@@ -454,226 +437,184 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
-msgstr ""
+msgstr "Tasumise \"%(tasumiste)\" kustutamiseks tuleb taastada mustandi staatus"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_payment_overpay"
 msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
-msgstr "Plačilo \"%(payment)s\" je preplačalo postavko \"%(line)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
-msgstr "Pay Lines"
+msgstr "Maksa read"
 
 msgctxt "model:ir.model.button,string:move_line_payment_block_button"
 msgid "Block"
-msgstr "Block"
+msgstr "Blokeeri"
 
 msgctxt "model:ir.model.button,string:move_line_payment_unblock_button"
 msgid "Unblock"
-msgstr "Unblock"
+msgstr "Eemalda blokeering"
 
 msgctxt "model:ir.model.button,string:payment_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Kinnita"
 
 msgctxt "model:ir.model.button,string:payment_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Mustand"
 
 msgctxt "model:ir.model.button,string:payment_fail_button"
 msgid "Fail"
-msgstr "Fail"
+msgstr "Ebaõnnestunud"
 
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
-msgstr "Succeed"
+msgstr "Õnnestunud"
 
 msgctxt "model:ir.rule.group,name:rule_group_payment"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_group"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
-msgstr "Default Account Payment Group"
+msgstr "Vaikimisi tasumise grupi konto"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_account_payment_group"
 msgid "Account Payment Group"
-msgstr "Account Payment Group"
+msgstr "Tasumise grupi konto"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_move_line_form"
 msgid "Lines to Pay"
-msgstr "Lines to Pay"
+msgstr "Tasumisele kuuluvad read"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
-msgstr "Payment Groups"
+msgstr "Tasumise grupp"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payment_journal_form"
 msgid "Payment Journals"
-msgstr "Payment Journals"
+msgstr "Tasumise andmik"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr "Payments"
+msgstr "Tasumised"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"
-msgstr "Plačilo z direktno bremenitvijo partnerja"
+msgstr "Osapoole tasumine otsene deebet"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_payment"
 msgid "Payment"
-msgstr "Payment"
+msgstr "Tasumine"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
-msgstr "Payment Approval"
+msgstr "Tasumise kinnitus"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Kohustus"
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "Nõue"
 
 msgctxt "selection:account.payment,kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Kohustus"
 
 msgctxt "selection:account.payment,kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "Nõue"
 
 msgctxt "selection:account.payment,state:"
 msgid "Approved"
-msgstr "Odobreno"
+msgstr "Kinnitatud"
 
 msgctxt "selection:account.payment,state:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr "Mustand"
 
 msgctxt "selection:account.payment,state:"
 msgid "Failed"
-msgstr "Neuspešno"
+msgstr "Ebaõnnestunud"
 
 msgctxt "selection:account.payment,state:"
 msgid "Processing"
-msgstr "Obdelava"
+msgstr "Protsessimises"
 
 msgctxt "selection:account.payment,state:"
 msgid "Succeeded"
-msgstr "Uspešno"
+msgstr "Õnnestunud"
 
 msgctxt "selection:account.payment.group,kind:"
 msgid "Payable"
-msgstr "Obveznosti"
+msgstr "Kohustus"
 
 msgctxt "selection:account.payment.group,kind:"
 msgid "Receivable"
-msgstr "Terjatve"
+msgstr "Nõue"
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Manual"
-msgstr "Ročno"
+msgstr "Käsitsi"
 
 msgctxt "view:account.configuration:"
 msgid "Group Sequence"
-msgstr "Štetje skupin"
+msgstr "Grupeeri jada"
 
 msgctxt "view:account.configuration:"
 msgid "Payment"
-msgstr "Plačilo"
+msgstr "Tasumine"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"
-msgstr "Obdelava plačil?"
+msgstr "Protsessin tasumisi?"
 
 msgctxt "view:account.payment:"
 msgid "Description"
-msgstr "Opis"
+msgstr "Selgitus"
 
 msgctxt "view:account.payment:"
 msgid "Other Info"
-msgstr "Drugo"
+msgstr "Muu info"
 
 msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Tühista"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
 msgid "Pay"
-msgstr "Plačaj"
+msgstr "Maksa"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Tühista"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
-msgstr "Plačaj"
+msgstr "Maksa"
 
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
-msgstr "Obdelava"
-
-msgctxt "view:account.move.line:"
-msgid "Block"
-msgstr "Blokada"
-
-msgctxt "view:account.move.line:"
-msgid "Pay Lines"
-msgstr "Plačilo postavk"
-
-msgctxt "view:account.move.line:"
-msgid "Unblock"
-msgstr "Preklic blokade"
-
-msgctxt "view:account.payment:"
-msgid "Approve"
-msgstr "Odobritev"
-
-msgctxt "view:account.payment:"
-msgid "Draft"
-msgstr "Priprava"
-
-msgctxt "view:account.payment:"
-msgid "Fail"
-msgstr "Neuspelo"
-
-msgctxt "view:account.payment:"
-msgid "Succeed"
-msgstr "Uspelo"
+msgstr "Protsessi"

@@ -2,29 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.move.line.pay:"
-msgid "The Line \"%(line)s\" is blocked."
-msgstr "La riga \"%(line)s\" è bloccata."
-
-msgctxt "error:account.payment.process:"
-msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr "Il pagamento \"%(payment)s\"supera la riga \"%(line)s\"."
-
-msgctxt "error:account.payment:"
-msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "Il pagamento \"%s\" dev'essere in stato bozza per essere eliminato."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending payments "
-"for the company \"%(company)s\"."
-msgstr ""
-
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Sequenza gruppo pagamenti"
 
-#, fuzzy
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
 msgstr "Azienda"
@@ -107,6 +88,16 @@ msgstr "Registro"
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
 msgstr "Registri"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
@@ -280,7 +271,6 @@ msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr "Azienda"
@@ -331,6 +321,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
+msgctxt "help:account.move.line.pay.start,date:"
+msgid "When the payments are scheduled to happen."
+msgstr ""
+
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr ""
@@ -344,6 +338,11 @@ msgid "Account Configuration Payment Group Sequence"
 msgstr ""
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "Riga pagamento"
+
+#, fuzzy
+msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
 msgstr "Riga pagamento"
 
@@ -449,6 +448,31 @@ msgctxt ""
 msgid "Succeeded"
 msgstr "Succeeded"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr "Il pagamento \"%(payment)s\"supera la riga \"%(line)s\"."
+
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
 msgstr "Pay Lines"
@@ -476,6 +500,18 @@ msgstr "Fail"
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
@@ -530,10 +566,6 @@ msgstr "Payment"
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
 msgstr "Payment Approval"
-
-msgctxt "selection:account.move.line,payment_kind:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -607,7 +639,18 @@ msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Annulla"
 
-msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Pagare"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Annulla"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Pagare"
 

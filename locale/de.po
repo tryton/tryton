@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.move.line.pay:"
-msgid "The Line \"%(line)s\" is blocked."
-msgstr "Zeile \"%(line)s\" ist gesperrt."
-
-msgctxt "error:account.payment.process:"
-msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr "Zahlung \"%(payment)s\" überzahlt die Position \"%(line)s\""
-
-msgctxt "error:account.payment:"
-msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "Zahlung \"%s\" kann nur in Status Entwurf gelöscht werden."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending payments "
-"for the company \"%(company)s\"."
-msgstr ""
-"Die Partei \"%(party)s\" kann nicht gelöscht werden, da sie offene Zahlungen"
-" für das Unternehmen \"%(company)s\" hat."
-
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Nummernkreis Zahlungsgruppe"
@@ -102,6 +82,14 @@ msgstr "Journal"
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
 msgstr "Journal"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
@@ -319,6 +307,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Aktivieren wenn die Rechnungsposition per Lastschrift bezahlt wird."
 
+msgctxt "help:account.move.line.pay.start,date:"
+msgid "When the payments are scheduled to happen."
+msgstr "Das Datum an dem die Ausführung der Zahlungen geplant ist."
+
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Aktivieren wenn der Lieferant eine Lastschrift durchführt."
@@ -334,6 +326,10 @@ msgstr "Einstellungen Buchhaltung Nummernkreis Zahlungsgruppe"
 msgctxt "model:account.move.line.pay.ask_journal,name:"
 msgid "Pay Line"
 msgstr "Zahlungsposition bezahlen"
+
+msgctxt "model:account.move.line.pay.start,name:"
+msgid "Pay Line"
+msgstr "Zahlungsposition"
 
 msgctxt "model:account.payment,name:"
 msgid "Payment"
@@ -421,6 +417,36 @@ msgctxt ""
 msgid "Succeeded"
 msgstr "Erfolgreich"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+"Partei \"%(party)s\" kann nicht gelöscht werden, solange noch Zahlungen bei "
+"Unternehmen \"%(company)s\" ausstehen."
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr "Für Position \"%(line)s\" ist eine Zahlsperre gesetzt."
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+"Die Buchungszeilen \"%(names)s\" für %(party)s konnten nicht mit "
+"Buchungszeile \"%(line)s\" gruppiert werden."
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+"Um Zahlung \"%(payment)s\" zu löschen, muss sie auf den Entwurfsstatus "
+"zurückgesetzt werden."
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr "Die Zahlung \"%(payment)s\" überzahlt die Position \"%(line)s\""
+
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
 msgstr "Zahlungsposten bezahlen"
@@ -448,6 +474,18 @@ msgstr "Erfolglos markieren"
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Erfolgreich markieren"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
@@ -492,10 +530,6 @@ msgstr "Zahlung"
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
 msgstr "Zahlungsbewilligung"
-
-msgctxt "selection:account.move.line,payment_kind:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -569,7 +603,15 @@ msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Bezahlen"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Bezahlen"
 

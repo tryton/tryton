@@ -2,43 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.move.line.pay:"
-msgid "The Line \"%(line)s\" is blocked."
-msgstr ""
-
-msgctxt "error:account.payment.process:"
-msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr ""
-
-msgctxt "error:account.payment:"
-msgid "Payment \"%s\" must be in draft before deletion."
-msgstr ""
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending payments "
-"for the company \"%(company)s\"."
-msgstr ""
-
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr ""
 
 msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.configuration.payment_group_sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt ""
 "field:account.configuration.payment_group_sequence,payment_group_sequence:"
@@ -51,11 +33,11 @@ msgstr ""
 
 msgctxt "field:account.configuration.payment_group_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.invoice,payment_direct_debit:"
 msgid "Direct Debit"
@@ -84,15 +66,15 @@ msgstr "Payments"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:account.move.line.pay.ask_journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
@@ -102,29 +84,37 @@ msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
 msgstr ""
 
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
+
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr ""
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.payment,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.payment,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.payment,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:account.payment,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.payment,date:"
 msgid "Date"
@@ -140,7 +130,7 @@ msgstr ""
 
 msgctxt "field:account.payment,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
@@ -160,7 +150,7 @@ msgstr ""
 
 msgctxt "field:account.payment,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.payment,rec_name:"
 msgid "Record Name"
@@ -172,27 +162,27 @@ msgstr ""
 
 msgctxt "field:account.payment,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.payment,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.payment.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.payment.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.payment.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
@@ -217,31 +207,31 @@ msgstr ""
 
 msgctxt "field:account.payment.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.payment.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.payment.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.payment.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:account.payment.journal,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.payment.journal,name:"
@@ -258,15 +248,15 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.payment.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.payment.process.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
@@ -278,23 +268,23 @@ msgstr ""
 
 msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:party.party.payment_direct_debit,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.party.payment_direct_debit,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.party.payment_direct_debit,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.party.payment_direct_debit,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
@@ -306,18 +296,22 @@ msgstr ""
 
 msgctxt "field:party.party.payment_direct_debit,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.party.payment_direct_debit,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
-msgstr ""
+msgstr "Pažymėkite, jei sąskaita faktūra yra apmokama tiesioginiu debetu"
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
+msgstr "Pažymėkite, jei sąskaita faktūra bus apmokama tiesioginiu debetu"
+
+msgctxt "help:account.move.line.pay.start,date:"
+msgid "When the payments are scheduled to happen."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
@@ -334,6 +328,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "Pay Lines"
+
+#, fuzzy
+msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
 msgstr "Pay Lines"
 
@@ -429,6 +428,30 @@ msgctxt ""
 msgid "Succeeded"
 msgstr "Succeeded"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
 msgstr "Pay Lines"
@@ -456,6 +479,18 @@ msgstr "Fail"
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Succeed"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
@@ -500,10 +535,6 @@ msgstr "Payment"
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
 msgstr "Payment Approval"
-
-msgctxt "selection:account.move.line,payment_kind:"
-msgid ""
-msgstr ""
 
 #, fuzzy
 msgctxt "selection:account.move.line,payment_kind:"
@@ -590,7 +621,15 @@ msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr ""
 
-msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr ""
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr ""
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr ""
 

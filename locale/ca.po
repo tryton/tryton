@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.move.line.pay:"
-msgid "The Line \"%(line)s\" is blocked."
-msgstr "L'apunt \"%(line)s\" està bloquejat."
-
-msgctxt "error:account.payment.process:"
-msgid "The Payment \"%(payment)s\" overpays the Line \"%(line)s\"."
-msgstr "El pagament \"%(payment)s\" paga amb excés l'apunt \"%(line)s\"."
-
-msgctxt "error:account.payment:"
-msgid "Payment \"%s\" must be in draft before deletion."
-msgstr "El pagament \"%s\" ha d'estar en esborrany abans d'esborrar-lo."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending payments "
-"for the company \"%(company)s\"."
-msgstr ""
-"No es pot eliminar el tercer \"%(party)s\" perquè té pagaments pendents per "
-"l'empresa \"%(company)s\"."
-
 msgctxt "field:account.configuration,payment_group_sequence:"
 msgid "Payment Group Sequence"
 msgstr "Seqüència de grups de pagament"
@@ -102,6 +82,14 @@ msgstr "Diari"
 msgctxt "field:account.move.line.pay.ask_journal,journals:"
 msgid "Journals"
 msgstr "Diaris"
+
+msgctxt "field:account.move.line.pay.start,date:"
+msgid "Date"
+msgstr "Data"
+
+msgctxt "field:account.move.line.pay.start,id:"
+msgid "ID"
+msgstr "ID"
 
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
@@ -319,6 +307,10 @@ msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
 msgstr "Marca si la línia es paga a través de domiciliació bancària."
 
+msgctxt "help:account.move.line.pay.start,date:"
+msgid "When the payments are scheduled to happen."
+msgstr "Quan està previst realitzar els pagaments."
+
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
 msgstr "Marca si es paga al proveïdor a través de domiciliació bancària."
@@ -332,6 +324,10 @@ msgid "Account Configuration Payment Group Sequence"
 msgstr "Configuració de la seqüencia de grups de pagament"
 
 msgctxt "model:account.move.line.pay.ask_journal,name:"
+msgid "Pay Line"
+msgstr "Paga efecte"
+
+msgctxt "model:account.move.line.pay.start,name:"
 msgid "Pay Line"
 msgstr "Paga efecte"
 
@@ -421,6 +417,36 @@ msgctxt ""
 msgid "Succeeded"
 msgstr "Amb èxit"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_payment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending payments with "
+"company \"%(company)s\"."
+msgstr ""
+"No podeu eliminar el tercer \"%(party)s\" mentre tingui pagaments pendents "
+"amb l'empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_pay_line_blocked"
+msgid "Line \"%(line)s\" is blocked for payment."
+msgstr "El pagament de l'apunt \"%(line)s\" està bloquejat."
+
+msgctxt "model:ir.message,text:msg_pay_line_group"
+msgid ""
+"The lines \"%(names)s\" for %(party)s could be grouped with the line "
+"\"%(line)s\"."
+msgstr ""
+"Les apunts \"%(names)s\" del tercer %(party)s es poden agrupar amb l'apunt "
+"\"%(line)s\"."
+
+msgctxt "model:ir.message,text:msg_payment_delete_draft"
+msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
+msgstr ""
+"Per eliminar el pagament \"%(payment)s\" heu de restablir el seu estat a "
+"esborrany."
+
+msgctxt "model:ir.message,text:msg_payment_overpay"
+msgid "Payment \"%(payment)s\" overpays line \"%(line)s\"."
+msgstr "El pagament \"%(payment)s\" paga amb excés l'apunt \"%(line)s\"."
+
 msgctxt "model:ir.model.button,string:move_line_pay_button"
 msgid "Pay Lines"
 msgstr "Paga efectes"
@@ -448,6 +474,18 @@ msgstr "Falla"
 msgctxt "model:ir.model.button,string:payment_succeed_button"
 msgid "Succeed"
 msgstr "Amb èxit"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_group"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_payment_journal"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:ir.sequence,name:sequence_account_payment_group"
 msgid "Default Account Payment Group"
@@ -492,10 +530,6 @@ msgstr "Pagament"
 msgctxt "model:res.group,name:group_payment_approval"
 msgid "Payment Approval"
 msgstr "Aprova pagaments"
-
-msgctxt "selection:account.move.line,payment_kind:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.move.line,payment_kind:"
 msgid "Payable"
@@ -569,7 +603,15 @@ msgctxt "wizard_button:account.move.line.pay,ask_journal,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
 
-msgctxt "wizard_button:account.move.line.pay,ask_journal,start:"
+msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
+msgid "Pay"
+msgstr "Paga"
+
+msgctxt "wizard_button:account.move.line.pay,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:account.move.line.pay,start,next_:"
 msgid "Pay"
 msgstr "Paga"
 
