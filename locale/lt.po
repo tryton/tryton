@@ -2,30 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:timesheet.line:"
-msgid "Duration of line \"%(line)s\" must be positive."
-msgstr ""
-
-msgctxt "error:timesheet.line:"
-msgid "The UUID of timesheet line must be unique."
-msgstr ""
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different than the origin's company"
-msgstr ""
-
-msgctxt "error:timesheet.work:"
-msgid "The origin must be unique per company."
-msgstr ""
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:timesheet.hours_employee,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
@@ -45,15 +28,15 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:timesheet.hours_employee,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:timesheet.hours_employee.context,id:"
 msgid "ID"
@@ -61,15 +44,15 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
@@ -97,11 +80,11 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee_monthly,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
@@ -109,11 +92,11 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
@@ -141,11 +124,11 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
@@ -153,15 +136,15 @@ msgstr ""
 
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:timesheet.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:timesheet.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -198,11 +181,11 @@ msgstr "Works"
 
 msgctxt "field:timesheet.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:timesheet.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -222,15 +205,15 @@ msgstr ""
 
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:timesheet.work,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:timesheet.work,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
@@ -274,11 +257,11 @@ msgstr "Works"
 
 msgctxt "field:timesheet.work,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:timesheet.work,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
@@ -391,6 +374,46 @@ msgstr "Works"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Works"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"

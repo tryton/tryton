@@ -2,23 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:timesheet.line:"
-msgid "Duration of line \"%(line)s\" must be positive."
-msgstr "A duração da linha \"%(line)s\" deve ser positiva."
-
-msgctxt "error:timesheet.line:"
-msgid "The UUID of timesheet line must be unique."
-msgstr ""
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different than the origin's company"
-msgstr "A empresa do trabalho \"%(work)s\" é diferente da empresa de origem"
-
-msgctxt "error:timesheet.work:"
-msgid "The origin must be unique per company."
-msgstr "A origem deve ser única por empresa."
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -315,10 +298,9 @@ msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
 msgstr "O empregado que gasta o tempo."
 
-#, fuzzy
 msgctxt "help:timesheet.work,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar o trabalho futuramente."
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
@@ -371,20 +353,17 @@ msgctxt "model:ir.action,name:act_hours_employee_weekly_form"
 msgid "Hours per Employee per Week"
 msgstr "Hours per Employee per Week"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "Digite Quadro de Horários"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "Linhas do Horário de Trabalho"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "Linhas do Horário de Trabalho"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
@@ -395,6 +374,48 @@ msgstr "Works"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Works"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "A duração da linha \"%(line)s\" deve ser positiva."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "A UUID da linha do horário de trabalho deve ser única."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "A origem deve ser única por empresa."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
@@ -416,25 +437,22 @@ msgctxt "model:ir.ui.menu,name:menu_hours_employee_open_weekly"
 msgid "Hours per Employee per Week"
 msgstr "Hours per Employee per Week"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Enter Timesheet"
+msgstr "Digite Quadro de Horários "
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "Linhas do Horário de Trabalho"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Reporting"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"
-msgstr "Timesheet"
+msgstr "Quadro de Horários"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
@@ -446,10 +464,9 @@ msgctxt "model:ir.ui.menu,name:menu_work_report"
 msgid "Works"
 msgstr "Works"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_timesheet_admin"
 msgid "Timesheet Administration"
-msgstr "Timesheet Administration"
+msgstr "Administração do Quadro de Horários"
 
 msgctxt "model:timesheet.hours_employee,name:"
 msgid "Hours per Employee"
@@ -485,7 +502,7 @@ msgstr "Contexto do Trabalho"
 
 msgctxt "selection:res.user.application,application:"
 msgid "Timesheet"
-msgstr "Quadro de tempo"
+msgstr "Quadro de Horários"
 
 msgctxt "view:timesheet.hours_employee:"
 msgid "Duration"

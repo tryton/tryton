@@ -2,25 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:timesheet.line:"
-msgid "Duration of line \"%(line)s\" must be positive."
-msgstr "El tiempo de la línea \"%(line)s\" debe ser positivo."
-
-msgctxt "error:timesheet.line:"
-msgid "The UUID of timesheet line must be unique."
-msgstr "El UUID de la linea del parte de trabajo tiene que ser único."
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different than the origin's company"
-msgstr ""
-"La empresa del parte de trabajo \"%(work)s\" es diferente a la empresa del "
-"origen"
-
-msgctxt "error:timesheet.work:"
-msgid "The origin must be unique per company."
-msgstr "El origen debe ser único por empresa."
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
@@ -388,6 +369,47 @@ msgstr "Trabajos"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Trabajos"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "La duración de la línea \"%(line)s\" debe ser positiva."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "El UUID de la linea del parte de trabajo tiene que ser único."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+"Las empresas asociadas con el trabajo \"%(work)s\" y sus orígenes difieren."
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr "El origen debe ser único por empresa."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr "Horas del propio empleado"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr "Cualquier hora de empleado"
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr "Lineas del parte de trabajo propias"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr "Cualquier línea del parte de trabajo"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Usuario en la empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr "Cualquier trabajo"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"

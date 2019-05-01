@@ -2,25 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:timesheet.line:"
-msgid "Duration of line \"%(line)s\" must be positive."
-msgstr "Zeitdauer von Zeile \"%(line)s\" muss positiv sein."
-
-msgctxt "error:timesheet.line:"
-msgid "The UUID of timesheet line must be unique."
-msgstr "Die UUID der Zeiterfassungsposition muss eindeutig sein."
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different than the origin's company"
-msgstr ""
-"Das Unternehmen für die Tätigkeit \"%(work)s\" unterscheidet sich von dem "
-"Unternehmen der Herkunft."
-
-msgctxt "error:timesheet.work:"
-msgid "The origin must be unique per company."
-msgstr "Die Herkunft pro Unternehmen kann nur einmal vergeben werden."
-
 msgctxt "field:timesheet.hours_employee,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -331,7 +312,7 @@ msgstr "Die gesamte Zeit, die für diese Aufgabe verwendet wurde."
 
 msgctxt "help:timesheet.work,name:"
 msgid "The main identifier of the work."
-msgstr "Die Hauptbezeichnung der Aufgabe."
+msgstr "Das Hauptidentifizierungsmerkmal der Aufgabe."
 
 msgctxt "help:timesheet.work,origin:"
 msgid "Use to relate the time spent to other records."
@@ -388,6 +369,49 @@ msgstr "Tätigkeiten"
 msgctxt "model:ir.action,name:act_work_report"
 msgid "Works"
 msgstr "Tätigkeiten"
+
+msgctxt "model:ir.message,text:msg_line_duration_positive"
+msgid "The duration of line \"%(line)s\" must be positive."
+msgstr "Die Zeitdauer von Zeile \"%(line)s\" muss positiv sein."
+
+msgctxt "model:ir.message,text:msg_line_uuid_unique"
+msgid "The UUID of timesheet line must be unique."
+msgstr "Die UUID der Zeiterfassungsposition muss eindeutig sein."
+
+msgctxt "model:ir.message,text:msg_work_company_different_origin"
+msgid "The companies associated with work \"%(work)s\" and its origin differ."
+msgstr ""
+"Die mit der Tätigkeit \"%(work)s\" und Ihrer Herkunft verknüpften "
+"Unternehmen weichen voneinander ab."
+
+msgctxt "model:ir.message,text:msg_work_origin_unique_company"
+msgid "Work origin must be unique by company."
+msgstr ""
+"Die Herkunft der Arbeit pro Unternehmen kann nur einmal vergeben werden."
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee"
+msgid "Own employee hours"
+msgstr "Eigene Mitarbeiterzeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_hours_employee_admin"
+msgid "Any employee hours"
+msgstr "Alle Mitarbeiterzeiten"
+
+msgctxt "model:ir.rule.group,name:rule_group_line"
+msgid "Own timesheet line"
+msgstr "Eigene Zeiterfassungspositionen"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_admin"
+msgid "Any timesheet line"
+msgstr "Alle Zeiterfassungspositionen"
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_admin"
+msgid "Any work"
+msgstr "Alle Tätigkeiten"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
