@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Faltan algunas cuentas analíticas obligatorias en \"%(name)s\"."
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "La cuenta analítica de \"%(roots)s\" en la línea \"%(line)s\" es obligatoria."
-
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Cuentas analíticas"
@@ -21,3 +13,19 @@ msgstr "Tamaño de cuentas analíticas"
 msgctxt "view:purchase.line:"
 msgid "Analytic"
 msgstr "Analítica"
+
+msgctxt "model:ir.message,text:msg_analytic_account_required_for_quotation"
+msgid ""
+"To get a quote for purchase \"%(purchase)s\", you must enter a analytic "
+"account for \"%(roots)s\" on line \"%(line)s\"."
+msgstr ""
+"Para obtener un presupuesto para la compra \"%(purchase)s\", debe introducir"
+" una cuenta analítica para \"%(roots)s\" en la línea \"%(line)s\"."
+
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Faltan algunas cuentas analíticas obligatorias en \"%(name)s\"."
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "La cuenta analítica de \"%(roots)s\" en la línea \"%(line)s\" es obligatoria."

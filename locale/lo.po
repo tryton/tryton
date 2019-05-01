@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "ບາງບັນຊີຫຼັກບັງຄັບ ບໍາມີໃນ \"%(name)s\""
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "ຕ້ອງການໃຫ້ມີ ບັນຊີວິເຄາະ ສຳລັບ \"%(roots)s\" ໃນລາຍການ \"%(line)s\"."
-
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "ບັນຊີວິເຄາະ"
@@ -21,3 +13,11 @@ msgstr "ຂະໜາດບັນຊີວິເຄາະ"
 msgctxt "view:purchase.line:"
 msgid "Analytic"
 msgstr ""
+
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "ບາງບັນຊີຫຼັກບັງຄັບ ບໍາມີໃນ \"%(name)s\""
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "ຕ້ອງການໃຫ້ມີ ບັນຊີວິເຄາະ ສຳລັບ \"%(roots)s\" ໃນລາຍການ \"%(line)s\"."

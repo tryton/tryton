@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Erforderliches Wurzelkonto für \"%(name)s\" fehlt"
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "Kostenstelle ist erforderlich \"%(roots)s\" für Zeile \"%(line)s\""
-
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Kostenstellen"
@@ -21,3 +13,19 @@ msgstr "Kostenstellengröße"
 msgctxt "view:purchase.line:"
 msgid "Analytic"
 msgstr "Kostenstelle"
+
+msgctxt "model:ir.message,text:msg_analytic_account_required_for_quotation"
+msgid ""
+"To get a quote for purchase \"%(purchase)s\", you must enter a analytic "
+"account for \"%(roots)s\" on line \"%(line)s\"."
+msgstr ""
+"Um eine Anfrage für Einkauf \"%(purchase)s\" erstellen zu können, muss eine "
+"Kostenstelle für \"%(root)s\" auf Zeile \"%(line)s\" erfasst werden."
+
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "Erforderliches Wurzelkonto für \"%(name)s\" fehlt"
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "Kostenstelle ist erforderlich \"%(roots)s\" für Zeile \"%(line)s\""

@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "mancano alcuni conti radice obbligatori in \"%(name)s\""
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "e' obbligatorio un conto analitico per \"%(root)s\" nella riga \"%(line)s\""
-
 msgctxt "field:purchase.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "conti analitici"
@@ -21,3 +13,11 @@ msgstr "dimensione conti analitici"
 msgctxt "view:purchase.line:"
 msgid "Analytic"
 msgstr ""
+
+msgctxt "error:purchase.line:"
+msgid "Some mandatory root account are missing on \"%(name)s\""
+msgstr "mancano alcuni conti radice obbligatori in \"%(name)s\""
+
+msgctxt "error:purchase.purchase:"
+msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
+msgstr "e' obbligatorio un conto analitico per \"%(root)s\" nella riga \"%(line)s\""
