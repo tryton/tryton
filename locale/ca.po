@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.statement.import:"
-msgid "No journal found for the bank account '%(account)s'."
-msgstr "No s'ha trobat cap diari pel compte bancari '%(account)s'."
-
-msgctxt "error:account.statement.import:"
-msgid ""
-"The journal '%(journal)s' must have the currency '%(coda_currency)s' instead"
-" of '%(currency)s'"
-msgstr ""
-"El diari '%(journal)s' ha de tenir la moneda '%(coda_currency)s' en comptes "
-"de '%(currency)s'"
-
 msgctxt ""
 "model:account.statement.origin.information,selection:information_r_transaction"
 msgid ""
