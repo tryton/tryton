@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Sularaha baasil maksugrupp"
 
 msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Sularaha baasil maksugrupp"
 
 msgctxt "field:account.invoice.tax.group.cash,create_date:"
 msgid "Create Date"
-msgstr "Creato il"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.invoice.tax.group.cash,create_uid:"
 msgid "Create User"
-msgstr "Creato da"
+msgstr "Looja"
 
 msgctxt "field:account.invoice.tax.group.cash,id:"
 msgid "ID"
@@ -24,40 +24,39 @@ msgstr "ID"
 
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
-msgstr "Fattura"
+msgstr "Arve"
 
 msgctxt "field:account.invoice.tax.group.cash,rec_name:"
 msgid "Record Name"
-msgstr "Nome del record"
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr "Gruppo imposta"
+msgstr "Maksugrupp"
 
 msgctxt "field:account.invoice.tax.group.cash,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.invoice.tax.group.cash,write_uid:"
 msgid "Write User"
-msgstr "Modificato da"
+msgstr "Muutja"
 
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Sularaha baasil maksugrupp"
 
 msgctxt "field:account.tax.group.cash,create_date:"
 msgid "Create Date"
-msgstr "Creato il"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.tax.group.cash,create_uid:"
 msgid "Create User"
-msgstr "Creato da"
+msgstr "Looja"
 
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "Esercizio"
+msgstr "Majandusaasta"
 
 msgctxt "field:account.tax.group.cash,id:"
 msgid "ID"
@@ -65,64 +64,63 @@ msgstr "ID"
 
 msgctxt "field:account.tax.group.cash,party:"
 msgid "Party"
-msgstr "Controparte"
+msgstr "Osapool"
 
 msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
-msgstr "Periodo"
+msgstr "Periood"
 
 msgctxt "field:account.tax.group.cash,rec_name:"
 msgid "Record Name"
-msgstr "Nome del record"
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr "Gruppo imposta"
+msgstr "Maksugrupp"
 
 msgctxt "field:account.tax.group.cash,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.tax.group.cash,write_uid:"
 msgid "Write User"
-msgstr "Modificato da"
+msgstr "Muutja"
 
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"
-msgstr ""
+msgstr "Sularaha baasil"
 
 msgctxt "field:account.tax.line,period:"
 msgid "Period"
-msgstr "Periodo"
+msgstr "Periood"
 
 msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
 msgid "Supplier Tax Group On Cash Basis"
-msgstr ""
+msgstr "Hankija sularaha baasil maksugrupp"
 
 msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this fiscal year."
-msgstr ""
+msgstr "Majandusaasta kohta aruandes esitatud sularaha baasil maksugrupp"
 
 msgctxt "help:account.invoice,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this invoice."
-msgstr ""
+msgstr "Aruandes esitatud sularaha baasil maksugrupp selle arve kohta"
 
 msgctxt "help:account.period,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this period."
-msgstr ""
+msgstr "Aruandes esitatud sularaha baasil maksugrupp selle perioodi kohta"
 
 msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this supplier."
-msgstr ""
+msgstr "Aruandes esitatud sularaha baasil maksugrupp selle hankija kohta"
 
 msgctxt "model:account.invoice.tax.group.cash,name:"
 msgid "Tax Group on Cash Basis per Invoice"
-msgstr ""
+msgstr "Sularaha baasil maksugrupp arve lõikes"
 
 msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Sularaha baasil maksugrupp"
 
 msgctxt "model:ir.message,text:msg_close_period_line_payment"
 msgid ""
@@ -132,4 +130,4 @@ msgstr ""
 
 msgctxt "view:account.fiscalyear:"
 msgid "Taxes"
-msgstr "Imposte"
+msgstr "Maksud"

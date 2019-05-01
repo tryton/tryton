@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.period:"
-msgid ""
-"There are payable/receivable lines from the period \"%(period)s\" not linked"
-" to an invoice."
-msgstr ""
-"Es gibt Forderungs-/Verbindlichkeitspositionen im Buchungzeitraum "
-"\"%(period)s\" die keiner Rechnung zugeordnet sind."
-
 msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
 msgstr "Steuergruppen im Bargeschäft"
@@ -20,7 +12,7 @@ msgstr "Steuergruppen im Bargeschäft"
 
 msgctxt "field:account.invoice.tax.group.cash,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:account.invoice.tax.group.cash,create_uid:"
 msgid "Create User"
@@ -36,7 +28,7 @@ msgstr "Rechnung"
 
 msgctxt "field:account.invoice.tax.group.cash,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
@@ -56,7 +48,7 @@ msgstr "Steuergruppen im Bargeschäft"
 
 msgctxt "field:account.tax.group.cash,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:account.tax.group.cash,create_uid:"
 msgid "Create User"
@@ -80,7 +72,7 @@ msgstr "Buchungszeitraum"
 
 msgctxt "field:account.tax.group.cash,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
@@ -129,6 +121,15 @@ msgstr "Steuergruppe im Bargeschäft pro Rechnung"
 msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
 msgstr "Steuergruppe im Bargeschäft"
+
+msgctxt "model:ir.message,text:msg_close_period_line_payment"
+msgid ""
+"To close period \"%(period)s\" you must link all payable/receivable lines to"
+" invoices."
+msgstr ""
+"Damit der Buchungszeitraum \"%(period)s\" geschlossen werden kann, müssen "
+"alle Buchungszeilen für Forderungen/Verbindlichkeiten mit Rechnungen "
+"verknüpft sein."
 
 msgctxt "view:account.fiscalyear:"
 msgid "Taxes"
