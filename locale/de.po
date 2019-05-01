@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.subscription.line:"
-msgid "The lines \"%(line1)s\" and \"%(line2)s\" for the same lot overlap."
-msgstr ""
-"Die Positionen \"%(line1)s\" und \"%(line2)s\" für dieselbe Charge "
-"überschneiden einander."
-
 msgctxt "field:sale.subscription.line,asset_lot:"
 msgid "Asset Lot"
 msgstr "Charge Abonnement Objekt"
@@ -67,6 +61,14 @@ msgstr "Abonnementpositionen"
 msgctxt "field:stock.lot,subscription_services:"
 msgid "Services"
 msgstr "Dienstleistungen"
+
+msgctxt "model:ir.message,text:msg_asset_line_overlap"
+msgid ""
+"The lines \"%(line1)s\" and \"%(line2)s\" overlap, you must use different "
+"dates."
+msgstr ""
+"Die Positionen \"%(line1)s\" und \"%(line2)s\" überschneiden sich. Es müssen"
+" unterschiedliche Daten verwendet werden."
 
 msgctxt "model:sale.subscription.service-stock.lot.asset,name:"
 msgid "Subscription Service - Stock Lot Asset"
