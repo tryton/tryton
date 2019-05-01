@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:web.user.session:"
-msgid "Key must be unique"
-msgstr "La clave debe ser única."
-
-msgctxt "error:web.user:"
-msgid "E-mail must be unique"
-msgstr "El correo electrónico debe ser único. "
-
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "Activo"
@@ -153,6 +145,14 @@ msgstr "Restablecer contraseña"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "Validación correo electrónico"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "El correo electrónico del usuario web debe ser único"
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr "La clave de sesión del usuario web debe ser única."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"

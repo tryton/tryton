@@ -2,25 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:web.user.session:"
-msgid "Key must be unique"
-msgstr ""
-
-msgctxt "error:web.user:"
-msgid "E-mail must be unique"
-msgstr ""
-
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr ""
 
 msgctxt "field:web.user,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:web.user,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
@@ -40,7 +32,7 @@ msgstr ""
 
 msgctxt "field:web.user,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:web.user,password:"
 msgid "Password"
@@ -64,19 +56,19 @@ msgstr ""
 
 msgctxt "field:web.user,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:web.user,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:web.user.authenticate.attempt,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:web.user.authenticate.attempt,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:web.user.authenticate.attempt,id:"
 msgid "ID"
@@ -84,7 +76,7 @@ msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "IP adresas"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
@@ -100,19 +92,19 @@ msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:web.user.authenticate.attempt,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:web.user.session,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:web.user.session,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:web.user.session,id:"
 msgid "ID"
@@ -128,15 +120,15 @@ msgstr ""
 
 msgctxt "field:web.user.session,user:"
 msgid "User"
-msgstr ""
+msgstr "Naudotojas"
 
 msgctxt "field:web.user.session,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:web.user.session,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:web.user,active:"
 msgid "Uncheck to exclude from future use."
@@ -153,6 +145,14 @@ msgstr "Reset Password"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "Email Validation"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"

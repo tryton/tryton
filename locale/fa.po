@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:web.user.session:"
-msgid "Key must be unique"
-msgstr "کلید باید منحصر به فرد باشد"
-
-msgctxt "error:web.user:"
-msgid "E-mail must be unique"
-msgstr "ایمیل باید منحصر به فرد باشد"
-
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "فعال"
@@ -153,6 +145,14 @@ msgstr "بازنشانی رمز عبور"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "اعتبار سنجی ایمیل"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr "پست الکترونیکی کاربر فعال وب سایت باید منحصر به فرد باشد."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr "کلید جلسه کاربر وب باید منحصر به فرد باشد."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"

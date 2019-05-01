@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:web.user.session:"
-msgid "Key must be unique"
-msgstr "Ein Schlüssel kann nur einmal vergeben werden."
-
-msgctxt "error:web.user:"
-msgid "E-mail must be unique"
-msgstr "Es existiert bereits ein Nutzer mit dieser E-Mail."
-
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -153,6 +145,16 @@ msgstr "Passwort zurücksetzen"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "E-Mail-Validierung"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr ""
+"Die E-Mail eines aktiven Webbenutzers kann nur einmal vergeben werden."
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
+"Der Sitzungsschlüssel eines Webbenutzers kann nur einmal vergeben werden."
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"

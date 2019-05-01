@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:web.user.session:"
-msgid "Key must be unique"
-msgstr "ຄຳສຳຄັນຕ້ອງບໍ່ຊໍ້າກັນ"
-
-msgctxt "error:web.user:"
-msgid "E-mail must be unique"
-msgstr "ອີ-ເມວລ໌ ຕ້ອງບໍ່ຊໍ້າກັນ"
-
 msgctxt "field:web.user,active:"
 msgid "Active"
 msgstr "ໃຊ້ຢູ່"
@@ -156,6 +148,14 @@ msgstr "Reset Password"
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
 msgstr "Email Validation"
+
+msgctxt "model:ir.message,text:msg_user_email_unique"
+msgid "E-mail of active web user must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_session_key_unique"
+msgid "Web user session key must be unique."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
