@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.line:"
-msgid "The Sale Line \"%s\" exceed the over shipment tolerance."
-msgstr "La línia de venda \"%s\" sobrepassa la tolerància d'enviament excessiu."
-
 msgctxt "field:sale.configuration,sale_over_shipment_tolerance:"
 msgid "Sale Over Shipment Tolerance"
 msgstr "Tolerància d'enviament excessiu de venda"
@@ -65,6 +61,10 @@ msgctxt ""
 "help:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
 msgid "The lower quantity accepted in percentage."
 msgstr "El percentatge de quantitat mínim a acceptar com a enviat."
+
+msgctxt "model:ir.message,text:msg_over_shipment"
+msgid "The sale line \"%(line)s\" exceeds the over shipment tolerance."
+msgstr "La línia de venda \"%s\" sobrepassa la tolerància d'enviament excessiu."
 
 msgctxt "model:sale.configuration.shipment_tolerance,name:"
 msgid "Sale Configuration Shipment Tolerance"
