@@ -170,6 +170,10 @@ msgctxt ""
 msgid "Posted"
 msgstr "Festgeschrieben"
 
+msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
+msgid "Are you sure you want to post the landed cost?"
+msgstr "Sind Sie sicher, dass Sie die Einstandkosten verbuchen möchten?"
+
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
 msgstr "Annullieren"
@@ -181,6 +185,10 @@ msgstr "Entwurf"
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr "Festschreiben"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

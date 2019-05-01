@@ -170,6 +170,10 @@ msgctxt ""
 msgid "Posted"
 msgstr "Posté"
 
+msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
+msgid "Are you sure you want to post the landed cost?"
+msgstr "Êtes-vous sûr de vouloir poster le coût de débarquement ?"
+
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
 msgstr "Annuler"
@@ -181,6 +185,10 @@ msgstr "Brouillon"
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr "Post"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

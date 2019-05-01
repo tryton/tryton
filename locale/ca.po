@@ -170,6 +170,10 @@ msgctxt ""
 msgid "Posted"
 msgstr "Comptabilitzat"
 
+msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
+msgid "Are you sure you want to post the landed cost?"
+msgstr "Segur que vols confirmar el cost de recepció?"
+
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -181,6 +185,10 @@ msgstr "Esborrany"
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
 msgstr "Comptabilitza"
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"

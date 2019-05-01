@@ -171,6 +171,10 @@ msgctxt ""
 msgid "Posted"
 msgstr ""
 
+msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
+msgid "Are you sure you want to post the landed cost?"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
 msgstr ""
@@ -181,6 +185,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
+msgid "User in company"
 msgstr ""
 
 #, fuzzy
