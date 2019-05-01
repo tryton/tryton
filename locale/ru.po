@@ -2,38 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.forecast.complete:"
-msgid "\"From Date\" should be smaller than \"To Date\"."
-msgstr "\"Начальная дата\" должна быть меньше \"Конечной даты\"."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be greater than the minimal quantity"
-msgstr "Кол-во в строке должно быть больше чем минимальное кол-во."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be positive"
-msgstr "Кол-во в строке должно быть положительным."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Product must be unique by forecast"
-msgstr "Продукт должен быть уникальным в пределах прогноза."
-
-msgctxt "error:stock.forecast:"
-msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Конечная дата\" должна быть больше чем \"Начальная дата\""
-
-msgctxt "error:stock.forecast:"
-msgid ""
-"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
-" same location."
-msgstr ""
-"Прогноз \"%(first)s\" пересекается в датах с прогнозом \"%(second)s\" в "
-"одинаковом местоположении."
-
-msgctxt "error:stock.forecast:"
-msgid "Forecast \"%s\" must be cancelled before deletion."
-msgstr "Прогноз \"%s\" должен быть отменен перед удалением."
-
 #, fuzzy
 msgctxt "field:stock.forecast,active:"
 msgid "Active"
@@ -232,6 +200,21 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr "Продукт должен быть уникальным в пределах прогноза."
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"

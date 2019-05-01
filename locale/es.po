@@ -2,38 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.forecast.complete:"
-msgid "\"From Date\" should be smaller than \"To Date\"."
-msgstr "\"Desde la fecha\" debe ser anterior a \"Hasta la fecha\"."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be greater than the minimal quantity"
-msgstr "La cantidad de la línea debe ser más grande que la cantidad mínima."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Line quantity must be positive"
-msgstr "La cantidad de la línea debe ser positiva."
-
-msgctxt "error:stock.forecast.line:"
-msgid "Product must be unique by forecast"
-msgstr "El producto debe ser único en la previsión de existencias."
-
-msgctxt "error:stock.forecast:"
-msgid "\"To Date\" must be greater than \"From Date\""
-msgstr "\"Hasta la fecha\" debe ser posterior a \"Desde la fecha\"."
-
-msgctxt "error:stock.forecast:"
-msgid ""
-"Forecast \"%(first)s\" overlaps with dates of forecast \"%(second)s\" in the"
-" same location."
-msgstr ""
-"La previsión \"%(first)s\" se solapa con las fechas de la previsión "
-"%(second)s\" en la misma ubicación."
-
-msgctxt "error:stock.forecast:"
-msgid "Forecast \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar la previsión \"%s\" antes de borrarla."
-
 msgctxt "field:stock.forecast,active:"
 msgid "Active"
 msgstr "Activo"
@@ -226,6 +194,22 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_forecast_form_domain_draft"
 msgid "Draft"
 msgstr "Borrador"
+
+msgctxt "model:ir.message,text:msg_forecast_date_overlap"
+msgid ""
+"The forecasts \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+"Las previsiones \"%(first)s\" y \"%(second)s\" se solapan, debe usar fechas "
+"diferentes."
+
+msgctxt "model:ir.message,text:msg_forecast_delete_cancel"
+msgid "To delete forecast \"%(forecast)s\" you must cancel it."
+msgstr "Para eliminar la previsión \"%(forecast)s\" debe cancelarla."
+
+msgctxt "model:ir.message,text:msg_forecast_line_product_unique"
+msgid "Product must be unique by forecast."
+msgstr "El producto debe ser único en la previsión de existencias."
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
