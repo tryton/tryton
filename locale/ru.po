@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:company.employee_cost_price:"
-msgid "A employee can only have one cost price by date."
-msgstr "У сотрудника может быть только одна себестоимость за день."
-
 msgctxt "field:company.employee,cost_price:"
 msgid "Cost Price"
 msgstr "Себестоимость"
@@ -69,6 +65,11 @@ msgstr "Часовая себестоимость"
 msgctxt "model:company.employee_cost_price,name:"
 msgid "Employee Cost Price"
 msgstr "Себестоимость сотрудника"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_employee_unique_cost_price_date"
+msgid "An employee can only have one cost price by date."
+msgstr "У сотрудника может быть только одна себестоимость за день."
 
 msgctxt "view:company.employee:"
 msgid "Cost"
