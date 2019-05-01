@@ -2,36 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.payment.group:"
-msgid "No bank account for payment \"%s\"."
-msgstr "No hi ha cap compte bancari pel pagament \"%s\"."
-
-msgctxt "error:account.payment.group:"
-msgid "No valid mandate for payment \"%s\""
-msgstr "No s'ha trobat un mandat vàlid pel pagament \"%s\"."
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid "The identification of the SEPA mandate must be unique in a company."
-msgstr "L'identificador del mandat SEPA ha de ser únic per empresa."
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid ""
-"You can not delete mandate \"%s\" because it is not in draft or canceled "
-"state."
-msgstr ""
-"No podeu eliminar el mandat \"%s\" perquè no està en estat esborrany o "
-"cancel·lat."
-
-msgctxt "error:party.identifier:"
-msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr "El tercer \"%(party)s\" té més d'un identificador de creditor SEPA."
-
-msgctxt "error:party.identifier:"
-msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
-msgstr ""
-"L'identificador de creditor SEPA \"%(code)s\" del tercer \"%(party)s\" no és"
-" vàlid."
-
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Seqüència de mandat SEPA"
@@ -318,9 +288,47 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "A cobrar amb mandat"
 
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgid ""
+"To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+"Per eliminar el mandat \"%(mandate)s\" l'heu de cancel·lar o restablir a "
+"esborrany."
+
+msgctxt "model:ir.message,text:msg_mandate_unique_id"
+msgid "SEPA mandate identification must be unique by company."
+msgstr "L'identificador del mandat SEPA ha de ser únic per empresa."
+
+msgctxt "model:ir.message,text:msg_party_invalid_sepa"
+msgid ""
+"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
+"valid."
+msgstr ""
+"L'identificador de creditor SEPA \"%(code)s\" del tercer \"%(party)s\" no és"
+" vàlid."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_iban"
+msgid "To process payment \"%(payment)s\" you must define IBAN for it."
+msgstr "Per processar el pagament \"%(payment)s\" heu de afegir-hi un IBAN."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
+msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
+msgstr ""
+"Per processar el pagament \"%(payment)s\" heu de definir-n'he un Mandat "
+"SEPA."
+
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
-msgid "Are you sure to cancel the mandate?"
-msgstr "Esteu segur de cancel·lar el mandat?"
+msgid "Are you sure you want to cancel the mandate?"
+msgstr "Esteu segur que voleu cancel·lar el mandat?"
+
+msgctxt "model:ir.model.button,confirm:message_cancel_button"
+msgid "Are you sure you want to cancel the messages?"
+msgstr "Segur que vols cancel·lar els missatges?"
+
+msgctxt "model:ir.model.button,confirm:message_do_button"
+msgid "Are you sure you want to process the messages?"
+msgstr "Segur que vols processar els missatges?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
 msgid "Generate Message"
@@ -357,6 +365,14 @@ msgstr "Esborrany"
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
 msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_mandate"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_message"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
@@ -580,7 +596,7 @@ msgstr "SEPA"
 
 msgctxt "view:account.payment.group:"
 msgid "Generate Message"
-msgstr "Missatge generat"
+msgstr "Genera missatge"
 
 msgctxt "view:account.payment.sepa.mandate:"
 msgid "Are you sure to cancel the mandate?"

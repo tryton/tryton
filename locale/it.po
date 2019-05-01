@@ -2,74 +2,39 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.payment.group:"
-msgid "No bank account for payment \"%s\"."
-msgstr ""
-
-msgctxt "error:account.payment.group:"
-msgid "No valid mandate for payment \"%s\""
-msgstr "Manca un mandato valido per il pagamento \"%s\""
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid "The identification of the SEPA mandate must be unique in a company."
-msgstr "L'identificazione del mandato SEPA dev'essere unica per azienda."
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid ""
-"You can not delete mandate \"%s\" because it is not in draft or canceled "
-"state."
-msgstr "Mandato \"%s\"  non eliminabile perché non è in stato bozza o cancellato."
-
-msgctxt "error:party.identifier:"
-msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr "La controparte \"%(party)s\" ha più di un identificatore  SEPA Creditor"
-
-msgctxt "error:party.identifier:"
-msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
-msgstr ""
-"L'identificatore SEPA \"%(code)s\" on per la controparte \"%(party)s\" non è"
-" valido."
-
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Sequenza mandato SEPA"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
 msgid "Create Date"
 msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
 msgid "Create User"
 msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
-msgstr "Sequenza mandato SEPA"
+msgstr "Sequenza di mandati SEPA"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "Data modifica"
 
-#, fuzzy
 msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
@@ -100,7 +65,7 @@ msgstr "Informazione motivo del ritorno"
 
 msgctxt "field:account.payment.group,sepa_messages:"
 msgid "SEPA Messages"
-msgstr "messaggi SEPA"
+msgstr "Messaggi SEPA"
 
 msgctxt "field:account.payment.journal,company_party:"
 msgid "Company Party"
@@ -112,11 +77,11 @@ msgstr "Numero conto bancario"
 
 msgctxt "field:account.payment.journal,sepa_batch_booking:"
 msgid "Batch Booking"
-msgstr "registrazione in batch"
+msgstr "Registrazione in batch"
 
 msgctxt "field:account.payment.journal,sepa_charge_bearer:"
 msgid "Charge Bearer"
-msgstr "soggetto gravato delle spese"
+msgstr "Soggetto gravato delle spese"
 
 msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
@@ -164,7 +129,7 @@ msgstr "Pagamenti"
 
 msgctxt "field:account.payment.sepa.mandate,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -224,7 +189,7 @@ msgstr "Origine"
 
 msgctxt "field:account.payment.sepa.message,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
@@ -248,97 +213,126 @@ msgstr "Identificatore SEPA del creditore usato"
 
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
-msgstr "mandati SEPA"
+msgstr "Mandati SEPA"
 
 msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
 msgid "Account Configuration SEPA Mandate Sequence"
-msgstr ""
+msgstr "Configurazione account sequenza di mandati SEPA"
 
 msgctxt "model:account.payment.sepa.mandate,name:"
 msgid "SEPA Mandate"
-msgstr "mandato SEPA"
+msgstr "Mandato SEPA"
 
 msgctxt "model:account.payment.sepa.message,name:"
 msgid "SEPA Message"
-msgstr "messaggio SEPA"
+msgstr "Messaggio SEPA"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_mandate_form"
 msgid "SEPA Mandates"
-msgstr "SEPA Mandates"
+msgstr "Mandati SEPA"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_mandate_form2"
 msgid "Mandates"
-msgstr "Mandates"
+msgstr "Mandati"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_message_form"
 msgid "SEPA Messages"
-msgstr "SEPA Messages"
+msgstr "Messaggi SEPA"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_mandate"
 msgid "Mandate"
-msgstr "Mandate"
+msgstr "Mandato"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Tutti"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_mandate_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Bozza"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_requested"
 msgid "Requested"
-msgstr "Requested"
+msgstr "Richieste"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_mandate_form_domain_validated"
 msgid "Validated"
-msgstr "Validated"
+msgstr "Validati"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Tutti"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
 msgid "Canceled"
-msgstr "Canceled"
+msgstr "Annullati"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
-msgstr "Done"
+msgstr "Fatto"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Bozza"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_message_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr "In attesa"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_form_domain_receivable_mandate"
 msgid "Receivable with Mandate"
-msgstr "Receivable with Mandate"
+msgstr "Ricevibili con mandato"
 
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgid ""
+"To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+"Per eliminare il mandato \"%(mandate)s\" è necessario annullarlo o "
+"reimpostare il suo stato come bozza."
+
+msgctxt "model:ir.message,text:msg_mandate_unique_id"
+msgid "SEPA mandate identification must be unique by company."
+msgstr "L'identificazione del mandato SEPA deve essere univoca per azienda."
+
+msgctxt "model:ir.message,text:msg_party_invalid_sepa"
+msgid ""
+"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
+"valid."
+msgstr ""
+"L'identificatore SEPA \"%(code)s\" per la controparte \"%(party)s\" non è "
+"valido."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_iban"
+msgid "To process payment \"%(payment)s\" you must define IBAN for it."
+msgstr ""
+"Per elaborare il pagamento \"%(payment)s\" è necessario definire un codice "
+"IBAN per esso."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
+msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
+msgstr ""
+"Per elaborare il pagamento \"%(payment)s\" è necessario definire un mandato "
+"SEPA per esso."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
-msgid "Are you sure to cancel the mandate?"
+msgid "Are you sure you want to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_cancel_button"
+msgid "Are you sure you want to cancel the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_do_button"
+msgid "Are you sure you want to process the messages?"
 msgstr "Are you sure to cancel the mandate?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
@@ -377,20 +371,25 @@ msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_mandate"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_message"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
-msgstr "SEPA Mandate"
+msgstr "Mandato SEPA"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_mandate_form"
 msgid "SEPA Mandates"
-msgstr "SEPA Mandates"
+msgstr "Mandati SEPA"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "SEPA Messages"
-msgstr "SEPA Messages"
+msgstr "Messaggi SEPA"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "."
@@ -458,7 +457,7 @@ msgstr "Nome del debitore"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "One-off payment"
-msgstr "pagamento one-off (unica disposizione)"
+msgstr "Pagamento one-off (unica disposizione)"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Postal code"
@@ -466,7 +465,7 @@ msgstr "Codice di avviamento postale"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "Recurrent payment"
-msgstr "pagamento ricorrente"
+msgstr "Pagamento ricorrente"
 
 msgctxt "report:account.payment.sepa.mandate:"
 msgid "SEPA"
@@ -554,7 +553,7 @@ msgstr "Convalidato"
 
 msgctxt "selection:account.payment.sepa.mandate,type:"
 msgid "One-off"
-msgstr "one-off (unica disposizione)"
+msgstr "One-off (unica disposizione)"
 
 msgctxt "selection:account.payment.sepa.mandate,type:"
 msgid "Recurrent"
@@ -584,10 +583,9 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "OUT"
 
-#, fuzzy
 msgctxt "selection:party.identifier,type:"
 msgid "SEPA Creditor Identifier"
-msgstr "Identificatore SEPA del creditore"
+msgstr "Identificativo creditore SEPA"
 
 msgctxt "view:account.configuration:"
 msgid "SEPA"

@@ -2,34 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.payment.group:"
-msgid "No bank account for payment \"%s\"."
-msgstr "حساب بانکی برای پرداخت \"٪ s\" وجود ندارد."
-
-msgctxt "error:account.payment.group:"
-msgid "No valid mandate for payment \"%s\""
-msgstr "بدون اعتبار معتبر برای پرداخت \"%s\""
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid "The identification of the SEPA mandate must be unique in a company."
-msgstr "شناسه مجوز SEPA باید در یک شرکت منحصر به فرد باشد."
-
-msgctxt "error:account.payment.sepa.mandate:"
-msgid ""
-"You can not delete mandate \"%s\" because it is not in draft or canceled "
-"state."
-msgstr ""
-"شما نمیتوانید مجوز\"%s\" را حذف کنید چرا که در حالت پیش نویس یا لغو شده "
-"نیست."
-
-msgctxt "error:party.identifier:"
-msgid "Party \"%(party)s\" has more than one SEPA Creditor Identifier."
-msgstr "نهاد/سازمان: \"%s\" دارای بیش از یک شناسه اعتباری SEPA است."
-
-msgctxt "error:party.identifier:"
-msgid "The SEPA identifier \"%(code)s\" on party \"%(party)s\" is not valid."
-msgstr "شناسه مجوز(SEPA) : \"%s\" در نهاد/سازمان: \"%s\" معتبر نمی باشد."
-
 msgctxt "field:account.configuration,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "ادامه مجوز SEPA"
@@ -316,8 +288,47 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "قابل دریافت با مجوز"
 
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgid ""
+"To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+"برای حذف مجوز\"%(mandate)s\" شما باید آنرا لغو یا حالت آنرا به پیش نویس "
+"دوباره تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_mandate_unique_id"
+msgid "SEPA mandate identification must be unique by company."
+msgstr "شناسه مجوز SEPA باید برای هر شرکت منحصر بفرد باشد."
+
+msgctxt "model:ir.message,text:msg_party_invalid_sepa"
+msgid ""
+"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
+"valid."
+msgstr "شناسه مجوز(SEPA) بستانکار: \"%s\" در نهاد/سازمان: \"%s\" معتبر نمی باشد."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_iban"
+msgid "To process payment \"%(payment)s\" you must define IBAN for it."
+msgstr "برای پردازش پرداخت :\"%(payment)s\" شما باید یک IBAN برای آن تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_payment_process_no_mandate"
+msgid "To process payment \"%(payment)s\" you must define a SEPA mandate for it."
+msgstr ""
+"برای پردازش پرداخت :\"%(payment)s\" شما باید یک مجوز SEPA برای آن تعریف "
+"کنید."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:mandate_cancel_button"
-msgid "Are you sure to cancel the mandate?"
+msgid "Are you sure you want to cancel the mandate?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_cancel_button"
+msgid "Are you sure you want to cancel the messages?"
+msgstr "Are you sure to cancel the mandate?"
+
+#, fuzzy
+msgctxt "model:ir.model.button,confirm:message_do_button"
+msgid "Are you sure you want to process the messages?"
 msgstr "Are you sure to cancel the mandate?"
 
 msgctxt "model:ir.model.button,string:group_generate_message_button"
@@ -355,6 +366,14 @@ msgstr "Draft"
 msgctxt "model:ir.model.button,string:message_wait_button"
 msgid "Wait"
 msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_mandate"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_message"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_mandate"
 msgid "SEPA Mandate"
