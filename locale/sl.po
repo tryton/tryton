@@ -35,10 +35,6 @@ msgid "Standard code of the United Nations Economic Commission for Europe."
 msgstr ""
 
 msgctxt "selection:account.tax,unece_category_code:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.tax,unece_category_code:"
 msgid "Canary Islands general indirect tax"
 msgstr ""
 
@@ -120,10 +116,6 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Zero rated goods"
-msgstr ""
-
-msgctxt "selection:account.tax,unece_code:"
-msgid ""
 msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"

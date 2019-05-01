@@ -38,10 +38,6 @@ msgstr ""
 "Código estándar de la comisión económica de las naciones unidas a Europa."
 
 msgctxt "selection:account.tax,unece_category_code:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.tax,unece_category_code:"
 msgid "Canary Islands general indirect tax"
 msgstr "Impuesto indirecto Islas Canarias"
 
@@ -132,10 +128,6 @@ msgstr "Impuesto sobre el valor añadido (IVA) no vencido por su pago"
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Zero rated goods"
 msgstr "Bienes con impuesto cero"
-
-msgctxt "selection:account.tax,unece_code:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Agricultural export rebate"

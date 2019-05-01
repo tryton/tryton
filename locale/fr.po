@@ -38,10 +38,6 @@ msgstr ""
 "Code standard de la Commission économique pour l'Europe des Nations unies."
 
 msgctxt "selection:account.tax,unece_category_code:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.tax,unece_category_code:"
 msgid "Canary Islands general indirect tax"
 msgstr "Taxe indirecte générale des îles Canaries"
 
@@ -131,11 +127,7 @@ msgstr "Taxe sur la valeur ajoutée (TVA) non exigible pour le paiement"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Zero rated goods"
-msgstr "Marchandises sans cote"
-
-msgctxt "selection:account.tax,unece_code:"
-msgid ""
-msgstr ""
+msgstr "Biens sans cote"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Agricultural export rebate"
