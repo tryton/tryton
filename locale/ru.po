@@ -2,48 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"subscriptions for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "Product \"%(product)s\" misses a revenue account."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not delete invoiced consumption."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not modify invoiced consumption."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month Day\" (%(bymonthday)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month\" (%(bymonth)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Position\" (%(bysetpos)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Day\" (%(byweekday)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Number\" (%(byweekno)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Year Day\" (%(byyearday)s) is not valid."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
@@ -360,7 +318,7 @@ msgctxt "field:sale.subscription.recurrence.rule,set_:"
 msgid "Set"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule,wkst:"
+msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
 msgid "Week Start Day"
 msgstr ""
 
@@ -558,13 +516,32 @@ msgctxt ""
 msgid "Running"
 msgstr "Running"
 
-msgctxt "model:ir.cron,name:cron_generate_invoice"
-msgid "Generate Subscription Invoices"
-msgstr "Generate Subscription Invoices"
+msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
+msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
+msgstr ""
 
-msgctxt "model:ir.cron,name:cron_generate_line_consumption"
-msgid "Generate Subscription Line Consumptions"
-msgstr "Generate Subscription Line Consumptions"
+msgctxt ""
+"model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
+msgid ""
+"To invoice consumptions you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
+msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending subscriptions "
+"with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
+msgid ""
+"Invalid \"%(field)s\" \"%(value)s\" in recurence rule "
+"\"%(recurrence_rule)s\" with exception \"%(exception)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
@@ -651,6 +628,16 @@ msgid "Subscription Service"
 msgstr "Subscription Services"
 
 #, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Invoices"
+msgstr "Generate Subscription Invoices"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Line Consumptions"
+msgstr "Generate Subscription Line Consumptions"
+
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
 msgid "Canceled"
 msgstr "Cancel"
@@ -712,38 +699,6 @@ msgstr ""
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Yearly"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Friday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Monday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Saturday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Sunday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Thursday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Tuesday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Wednesday"
 msgstr ""
 
 #, fuzzy

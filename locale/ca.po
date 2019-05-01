@@ -2,50 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"subscriptions for the company \"%(company)s\"."
-msgstr ""
-"No es pot eliminar el tercer \"%(party)s\" perquè té subscripcions pendents "
-"per l'empresa \"%(company)s\"."
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "Product \"%(product)s\" misses a revenue account."
-msgstr "Falta el compte d'ingressos per defecte pel producte \"%(product)s\"."
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not delete invoiced consumption."
-msgstr "No podeu eliminar un consum facturat."
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not modify invoiced consumption."
-msgstr "No podeu modificar un consum facturat."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month Day\" (%(bymonthday)s) is not valid."
-msgstr "\"El dia del més\" (%bymonthday)s) no es vàlid."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month\" (%(bymonth)s) is not valid."
-msgstr "\"El més\" (%bymonth)s) no es vàlid."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Position\" (%(bysetpos)s) is not valid."
-msgstr "\"La posició\" (%bysetpos)s) no es vàlida."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Day\" (%(byweekday)s) is not valid."
-msgstr "\"El dia de la setmana\" (%byweekday)s) no es vàlid."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Number\" (%(byweekno)s) is not valid."
-msgstr "\"El nombre de setmana\" (%byweekno)s) no es vàlid."
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Year Day\" (%(byyearday)s) is not valid."
-msgstr "\"El dia de l'any\" (%byyearday)s) no es vàlid."
-
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
 msgstr "Seqüència de subscripció"
@@ -354,7 +310,7 @@ msgctxt "field:sale.subscription.recurrence.rule,set_:"
 msgid "Set"
 msgstr "Conjunt"
 
-msgctxt "field:sale.subscription.recurrence.rule,wkst:"
+msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
 msgid "Week Start Day"
 msgstr "Dia setmana inici"
 
@@ -553,13 +509,38 @@ msgctxt ""
 msgid "Running"
 msgstr "En execució"
 
-msgctxt "model:ir.cron,name:cron_generate_invoice"
-msgid "Generate Subscription Invoices"
-msgstr "Genera les factures de les subscripcions"
+msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
+msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
+msgstr "No podeu eliminar el consum facturat \"%(consumption)s\"."
 
-msgctxt "model:ir.cron,name:cron_generate_line_consumption"
-msgid "Generate Subscription Line Consumptions"
-msgstr "Genera consums de les línies de subscripció"
+msgctxt ""
+"model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
+msgid ""
+"To invoice consumptions you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+"Per facturar els consums heu de definir un compte d'ingressos pel producte "
+"\"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
+msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
+msgstr "No podeu modificar el consum facturat \"%(consumption)s\"."
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending subscriptions "
+"with company \"%(company)s\"."
+msgstr ""
+"No podeu eliminar el tercer \"%(party)s\" mentre tingui subscripcions "
+"pendents amb l'empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
+msgid ""
+"Invalid \"%(field)s\" \"%(value)s\" in recurence rule "
+"\"%(recurrence_rule)s\" with exception \"%(exception)s\"."
+msgstr ""
+"Invalid \"%(fields)\" \"%(value)s\" a la regla de recurrència "
+"\"%(recurrence_rule)s\" amb l'excpeció \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
@@ -637,6 +618,14 @@ msgctxt "model:sale.subscription.service,name:"
 msgid "Subscription Service"
 msgstr "Serveis de subcripció"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Invoices"
+msgstr "Genera les factures de les subscripcions"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Line Consumptions"
+msgstr "Genera consums de les línies de subscripció"
+
 msgctxt "selection:sale.subscription,state:"
 msgid "Canceled"
 msgstr "Cancel·lat"
@@ -692,38 +681,6 @@ msgstr "Setmanalment"
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Yearly"
 msgstr "Anualment"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Friday"
-msgstr "Divendres"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Monday"
-msgstr "Dilluns"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Saturday"
-msgstr "Dissabte"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Sunday"
-msgstr "Diumenge"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Thursday"
-msgstr "Dijous"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Tuesday"
-msgstr "Dimarts"
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Wednesday"
-msgstr "Dimecres"
 
 msgctxt "view:sale.subscription.create_invoice.start:"
 msgid "Create Subscription Invoices for date"

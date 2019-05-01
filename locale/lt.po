@@ -2,48 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"subscriptions for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "Product \"%(product)s\" misses a revenue account."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not delete invoiced consumption."
-msgstr ""
-
-msgctxt "error:sale.subscription.line.consumption:"
-msgid "You can not modify invoiced consumption."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month Day\" (%(bymonthday)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Month\" (%(bymonth)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Position\" (%(bysetpos)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Day\" (%(byweekday)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Week Number\" (%(byweekno)s) is not valid."
-msgstr ""
-
-msgctxt "error:sale.subscription.recurrence.rule:"
-msgid "\"By Year Day\" (%(byyearday)s) is not valid."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
@@ -56,19 +14,19 @@ msgstr "Subscription Services"
 
 msgctxt "field:sale.subscription,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:sale.subscription,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 #, fuzzy
 msgctxt "field:sale.subscription,description:"
@@ -77,7 +35,7 @@ msgstr "Subscription"
 
 msgctxt "field:sale.subscription,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:sale.subscription,id:"
 msgid "ID"
@@ -85,11 +43,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Juridinis adresas"
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
-msgstr ""
+msgstr "Pasikartojanti sąskaita faktūra"
 
 msgctxt "field:sale.subscription,invoice_start_date:"
 msgid "Invoice Start Date"
@@ -109,7 +67,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
@@ -125,7 +83,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:sale.subscription,state:"
 msgid "State"
@@ -133,11 +91,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
@@ -161,11 +119,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,description:"
@@ -174,7 +132,7 @@ msgstr "Subscription"
 
 msgctxt "field:sale.subscription.line,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:sale.subscription.line,id:"
 msgid "ID"
@@ -210,7 +168,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,subscription:"
@@ -222,10 +180,9 @@ msgctxt "field:sale.subscription.line,subscription_end_date:"
 msgid "Subscription End Date"
 msgstr "Subscription Services"
 
-#, fuzzy
 msgctxt "field:sale.subscription.line,subscription_start_date:"
 msgid "Subscription Start Date"
-msgstr "Subscription Services"
+msgstr "Prenumeratos pradžios data"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,subscription_state:"
@@ -246,19 +203,19 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.subscription.line.consumption,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription.line.consumption,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.subscription.line.consumption,date:"
 msgid "Date"
@@ -270,7 +227,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Sąskaitos faktūros eilutė"
 
 msgctxt "field:sale.subscription.line.consumption,line:"
 msgid "Line"
@@ -290,11 +247,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription.line.consumption,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -330,11 +287,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription.recurrence.rule,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.subscription.recurrence.rule,exclusive:"
 msgid "Exclusive"
@@ -360,25 +317,25 @@ msgctxt "field:sale.subscription.recurrence.rule,set_:"
 msgid "Set"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule,wkst:"
+msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
 msgid "Week Start Day"
 msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription.recurrence.rule,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,id:"
 msgid "ID"
@@ -398,11 +355,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule.set,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
 msgid "Consumption Delay"
@@ -414,11 +371,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.service,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.subscription.service,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.subscription.service,id:"
 msgid "ID"
@@ -434,11 +391,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.service,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.subscription.service,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:sale.subscription,company:"
 msgid "Make the subscription belong to the company."
@@ -518,7 +475,7 @@ msgstr "Subscriptions"
 
 msgctxt "model:ir.action,name:act_subscription_invoice_relate"
 msgid "Invoices"
-msgstr ""
+msgstr "Sąskaitos faktūros"
 
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
@@ -558,13 +515,32 @@ msgctxt ""
 msgid "Running"
 msgstr "Running"
 
-msgctxt "model:ir.cron,name:cron_generate_invoice"
-msgid "Generate Subscription Invoices"
-msgstr "Generate Subscription Invoices"
+msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
+msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
+msgstr ""
 
-msgctxt "model:ir.cron,name:cron_generate_line_consumption"
-msgid "Generate Subscription Line Consumptions"
-msgstr "Generate Subscription Line Consumptions"
+msgctxt ""
+"model:ir.message,text:msg_consumption_invoice_missing_account_revenue"
+msgid ""
+"To invoice consumptions you must define an account revenue for product "
+"\"%(product)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
+msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending subscriptions "
+"with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_recurrence_rule_invalid_by"
+msgid ""
+"Invalid \"%(field)s\" \"%(value)s\" in recurence rule "
+"\"%(recurrence_rule)s\" with exception \"%(exception)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
@@ -651,6 +627,16 @@ msgid "Subscription Service"
 msgstr "Subscription Services"
 
 #, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Invoices"
+msgstr "Generate Subscription Invoices"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Generate Subscription Line Consumptions"
+msgstr "Generate Subscription Line Consumptions"
+
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
 msgid "Canceled"
 msgstr "Cancel"
@@ -712,38 +698,6 @@ msgstr ""
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Yearly"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Friday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Monday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Saturday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Sunday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Thursday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Tuesday"
-msgstr ""
-
-msgctxt "selection:sale.subscription.recurrence.rule,wkst:"
-msgid "Wednesday"
 msgstr ""
 
 #, fuzzy
