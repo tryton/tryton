@@ -4,31 +4,31 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.trigger,action_model_name:"
 msgid "Action Model Name"
-msgstr ""
+msgstr "Toimingu mudeli nimi"
 
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
-msgstr ""
+msgstr "E-kirja teatis"
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
-msgstr ""
+msgstr "Manudes"
 
 msgctxt "field:notification.email,contact_mechanism:"
 msgid "Contact Mechanism"
-msgstr ""
+msgstr "Kontakteerumise viis"
 
 msgctxt "field:notification.email,content:"
 msgid "Content"
-msgstr ""
+msgstr "Sisu"
 
 msgctxt "field:notification.email,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:notification.email,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:notification.email,fallback_recipients:"
 msgid "Recipients Fallback User"
@@ -44,31 +44,31 @@ msgstr ""
 
 msgctxt "field:notification.email,from_:"
 msgid "From"
-msgstr ""
+msgstr "Saatja"
 
 msgctxt "field:notification.email,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:notification.email,model:"
 msgid "Model"
-msgstr ""
+msgstr "Mudel"
 
 msgctxt "field:notification.email,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:notification.email,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Saajad"
 
 msgctxt "field:notification.email,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Peidetud saajad"
 
 msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Teised saajad"
 
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
@@ -76,79 +76,79 @@ msgstr ""
 
 msgctxt "field:notification.email,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:notification.email,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:notification.email.attachment,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:notification.email.attachment,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:notification.email.attachment,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:notification.email.attachment,model:"
 msgid "Model"
-msgstr ""
+msgstr "Mudel"
 
 msgctxt "field:notification.email.attachment,notification:"
 msgid "Notification"
-msgstr ""
+msgstr "Teavitus"
 
 msgctxt "field:notification.email.attachment,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
-msgstr ""
+msgstr "Aruanne"
 
 msgctxt "field:notification.email.attachment,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:notification.email.attachment,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:notification.email.log,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:notification.email.log,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:notification.email.log,date:"
 msgid "Date"
-msgstr ""
+msgstr "Kuupäev"
 
 msgctxt "field:notification.email.log,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:notification.email.log,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
-msgstr ""
+msgstr "Saajad"
 
 msgctxt "field:notification.email.log,recipients_hidden:"
 msgid "Hidden Recipients"
-msgstr ""
+msgstr "Peidetud saajad"
 
 msgctxt "field:notification.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr ""
+msgstr "Teised saajad"
 
 msgctxt "field:notification.email.log,trigger:"
 msgid "Trigger"
@@ -156,15 +156,15 @@ msgstr ""
 
 msgctxt "field:notification.email.log,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:notification.email.log,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
-msgstr ""
+msgstr "Aruanded, mida kasutatakse manusena."
 
 msgctxt "help:notification.email,contact_mechanism:"
 msgid "Define which email to use from the party's contact mechanisms"
@@ -192,15 +192,15 @@ msgstr ""
 
 msgctxt "help:notification.email,recipients:"
 msgid "The field that contains the recipient(s)."
-msgstr ""
+msgstr "Väli, mis sisaldab saajat."
 
 msgctxt "help:notification.email,recipients_hidden:"
 msgid "The field that contains the hidden recipient(s)."
-msgstr ""
+msgstr "Väli, mis sisaldab peidetud saajat."
 
 msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
-msgstr ""
+msgstr "Väli, mis sisaldab teist saajat."
 
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
@@ -208,29 +208,28 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-kirja teavitused"
 
 msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
-msgstr "Logs"
+msgstr "Logid"
 
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
-msgstr "Notification Emails"
+msgstr "E-kirja teavitused"
 
 msgctxt "model:notification.email,name:"
 msgid "Email Notitification"
-msgstr ""
+msgstr "E-kirja teavitused"
 
 msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
-msgstr ""
+msgstr "E-kirja teavituse manus"
 
-#, fuzzy
 msgctxt "model:notification.email.log,name:"
 msgid "Notitification Email Log"
-msgstr "Notification Emails"
+msgstr "Teavituskirja logi"
 
 msgctxt "view:notification.email.log:"
 msgid "Time"
-msgstr ""
+msgstr "Aeg"
