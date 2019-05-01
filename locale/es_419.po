@@ -56,14 +56,14 @@ msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Pago exitoso"
 
-msgctxt "model:ir.cron,name:cron_post_clearing_moves"
-msgid "Post Clearing Moves"
-msgstr ""
-
 #, fuzzy
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
 msgstr "Exitoso"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Post Clearing Moves"
+msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"

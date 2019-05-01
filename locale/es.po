@@ -58,13 +58,13 @@ msgctxt "model:ir.action,name:wizard_succeed"
 msgid "Succeed Payments"
 msgstr "Marcar pagos con éxito"
 
-msgctxt "model:ir.cron,name:cron_post_clearing_moves"
-msgid "Post Clearing Moves"
-msgstr "Contabilizar asientos de liquidación"
-
 msgctxt "model:ir.model.button,string:payment_succeed_wizard_button"
 msgid "Succeed"
 msgstr "Con éxito"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Post Clearing Moves"
+msgstr "Contabilizar asientos de liquidación"
 
 msgctxt "view:account.payment.journal:"
 msgid "Clearing"
