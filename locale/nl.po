@@ -2,22 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production.work.center:"
-msgid ""
-"Could not find a work center of category \"%(category)s\" under "
-"\"%(parent)s\"."
-msgstr ""
-
-msgctxt "error:production.work:"
-msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
-msgstr ""
-
-msgctxt "error:production:"
-msgid ""
-"Production \"%(production)s\" can not be done because work \"%(work)s\" is "
-"not finished."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:production,work_center:"
 msgid "Work Center"
@@ -314,6 +298,18 @@ msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
 msgstr "Run"
 
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
 msgstr "Work Center Categories"
@@ -377,10 +373,6 @@ msgstr "Running"
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
 msgstr "In afwachting"
-
-msgctxt "selection:production.work.center,cost_method:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Cycle"

@@ -19,15 +19,15 @@ msgstr "Work Center Categories"
 
 msgctxt "field:production.work,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr ""
 
 msgctxt "field:production.work,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:production.work,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
@@ -73,11 +73,11 @@ msgstr "Work Center Categories"
 
 msgctxt "field:production.work,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:production.work,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.center,active:"
 msgid "Active"
@@ -93,7 +93,7 @@ msgstr ""
 
 msgctxt "field:production.work.center,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr ""
 
 msgctxt "field:production.work.center,cost_method:"
 msgid "Cost Method"
@@ -105,20 +105,19 @@ msgstr ""
 
 msgctxt "field:production.work.center,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:production.work.center,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.center,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.work.center,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:production.work.center,parent:"
 msgid "Parent"
@@ -134,28 +133,27 @@ msgstr ""
 
 msgctxt "field:production.work.center,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:production.work.center,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.center.category,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:production.work.center.category,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.center.category,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:production.work.center.category,rec_name:"
 msgid "Record Name"
@@ -163,11 +161,11 @@ msgstr ""
 
 msgctxt "field:production.work.center.category,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:production.work.center.category,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
@@ -175,11 +173,11 @@ msgstr ""
 
 msgctxt "field:production.work.cycle,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:production.work.cycle,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
@@ -204,11 +202,11 @@ msgstr "Works"
 
 msgctxt "field:production.work.cycle,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "help:production.work.center,active:"
 msgid "Uncheck to exclude from future use."

@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production.work.center:"
-msgid ""
-"Could not find a work center of category \"%(category)s\" under "
-"\"%(parent)s\"."
-msgstr ""
-"No existeix un centre de treball de la categoria \"%(category)s\" sota de "
-"\"%(parent)s\"."
-
-msgctxt "error:production.work:"
-msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
-msgstr "El treball \"%s\" no es pot eliminar ja que no està en estat \"sol·licitud\"."
-
-msgctxt "error:production:"
-msgid ""
-"Production \"%(production)s\" can not be done because work \"%(work)s\" is "
-"not finished."
-msgstr ""
-"La producció \"%(production)s\" no es pot finalitzar perquè el treball "
-"\"%(work)s\" no està acabat."
-
 msgctxt "field:production,work_center:"
 msgid "Work Center"
 msgstr "Centre de treball"
@@ -274,6 +254,18 @@ msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
 msgstr "Executa"
 
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
 msgstr "Categories de centre de treball"
@@ -329,10 +321,6 @@ msgstr "En execució"
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
 msgstr "En espera"
-
-msgctxt "selection:production.work.center,cost_method:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:production.work.center,cost_method:"
 msgid "Per Cycle"

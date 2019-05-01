@@ -2,22 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:production.work.center:"
-msgid ""
-"Could not find a work center of category \"%(category)s\" under "
-"\"%(parent)s\"."
-msgstr ""
-
-msgctxt "error:production.work:"
-msgid "Work \"%s\" can not be deleted as it is not in state \"request\""
-msgstr ""
-
-msgctxt "error:production:"
-msgid ""
-"Production \"%(production)s\" can not be done because work \"%(work)s\" is "
-"not finished."
-msgstr ""
-
 msgctxt "field:production,work_center:"
 msgid "Work Center"
 msgstr ""
@@ -88,7 +72,7 @@ msgstr ""
 
 msgctxt "field:production.work,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.work.center,active:"
 msgid "Active"
@@ -148,7 +132,7 @@ msgstr ""
 
 msgctxt "field:production.work.center,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.work.center.category,create_date:"
 msgid "Create Date"
@@ -176,7 +160,7 @@ msgstr ""
 
 msgctxt "field:production.work.center.category,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
@@ -216,7 +200,7 @@ msgstr ""
 
 msgctxt "field:production.work.cycle,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:production.work.center,active:"
 msgid "Uncheck to exclude from future use."
@@ -270,6 +254,18 @@ msgstr "Realizar"
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_center"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
+msgid "User in company"
 msgstr ""
 
 #, fuzzy
@@ -327,10 +323,6 @@ msgstr ""
 
 msgctxt "selection:production.work,state:"
 msgid "Waiting"
-msgstr ""
-
-msgctxt "selection:production.work.center,cost_method:"
-msgid ""
 msgstr ""
 
 msgctxt "selection:production.work.center,cost_method:"
