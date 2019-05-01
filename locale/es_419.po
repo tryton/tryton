@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.payment.group:"
-msgid "No Stripe token found for payment \"%(payment)s\"."
-msgstr ""
-
-msgctxt "error:account.payment:"
-msgid ""
-"Stripe journal \"%(journal)s\" can only be used for receivable payment "
-"\"%(payment)s\"."
-msgstr ""
-
 msgctxt "field:account.payment,stripe_account:"
 msgid "Stripe Account"
 msgstr ""
@@ -102,7 +92,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,id:"
 msgid "ID"
@@ -142,7 +132,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.account,zip_code:"
 msgid "Zip Code"
@@ -158,7 +148,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,id:"
 msgid "ID"
@@ -210,7 +200,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
@@ -260,16 +250,13 @@ msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr ""
 
-msgctxt "model:ir.cron,name:cron_charge"
-msgid "Charge Stripe Payments"
+msgctxt "model:ir.message,text:msg_no_stripe_token"
+msgid ""
+"To process payment \"%(payment)s\" you must set a Stripe token or customer."
 msgstr ""
 
-msgctxt "model:ir.cron,name:cron_create_customer"
-msgid "Create Stripe Customer"
-msgstr ""
-
-msgctxt "model:ir.cron,name:cron_delete_customer"
-msgid "Delete Stripe Customer"
+msgctxt "model:ir.message,text:msg_stripe_receivable"
+msgid "To pay \"%(payment)s\", you cannot use a stripe journal \"%(journal)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
@@ -319,6 +306,22 @@ msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Capture Stripe Payments"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Charge Stripe Payments"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Customer"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Delete Stripe Customer"
 msgstr ""
 
 msgctxt "view:account.payment.journal:"
