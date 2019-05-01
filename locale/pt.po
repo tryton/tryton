@@ -2,46 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.product:"
-msgid ""
-"You are trying to create a recursive BOM with product \"%s\" which is not "
-"allowed."
-msgstr ""
-"Você está tentando criar uma lista de materiais recursiva com o produto "
-"\"%s\". Isso não é permitido."
-
-msgctxt "error:production.bom.input:"
-msgid "Product must be unique per BOM."
-msgstr "O produto deve ser único por lista de materiais."
-
-msgctxt "error:production.bom.input:"
-msgid "You can not create recursive BOMs."
-msgstr "Você não pode criar listas de materiais recursivas."
-
-msgctxt "error:production.bom.input:"
-msgid "product_bom_uniq"
-msgstr "O produto deve ser único por lista de materiais."
-
-msgctxt "error:production.bom.output:"
-msgid "Product must be unique per BOM."
-msgstr "O produto deve ser único por lista de materiais."
-
-msgctxt "error:production.bom.output:"
-msgid "You can not create recursive BOMs."
-msgstr "Você não pode criar listas de materiais recursivas."
-
-msgctxt "error:production.bom.output:"
-msgid "product_bom_uniq"
-msgstr "O produto deve ser único por lista de materiais"
-
-msgctxt "error:production:"
-msgid ""
-"The costs of the outputs (%(outputs)s) of production \"%(production)s\" do "
-"not match the cost of the production (%(costs)s)."
-msgstr ""
-"Os custos das saídas (%(outputs)s) de produção \"%(production)s\" não "
-"coincidem com o custo da produção (%(costs)s)."
-
 msgctxt "field:product.product,boms:"
 msgid "BOMs"
 msgstr "Listas de Materiais"
@@ -517,95 +477,100 @@ msgstr "Saída da produção"
 
 msgctxt "help:production.bom,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
-msgstr "BOM"
+msgstr "Lista de Materiais"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bom_list"
 msgid "BOMs"
-msgstr "BOMs"
+msgstr "Listas de Materiais"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_product_in_bom"
 msgid "BOMs"
-msgstr "BOMs"
+msgstr "Listas de Materiais"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_calendar"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produções"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_configuration_form"
 msgid "Production Configuration"
-msgstr "Production Configuration"
+msgstr "Configuração da Produção"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produções"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_assign"
 msgid "Assign Production"
-msgstr "Assign Production"
+msgstr "Atribuir Produção"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
-msgstr "BOM Tree"
+msgstr "Listagem da lista de materiais"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
 msgid "As Inputs"
-msgstr "As Inputs"
+msgstr "Como Entradas"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_output"
 msgid "As Outputs"
-msgstr "As Outputs"
+msgstr "Como Saídas"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todos"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_assigned"
 msgid "Assigned"
-msgstr "Assigned"
+msgstr "Atribuído"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_requests"
 msgid "Requests"
-msgstr "Requests"
+msgstr "Solicitações"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_running"
 msgid "Running"
-msgstr "Running"
+msgstr "Executando"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_production_list_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr "Esperando"
+
+msgctxt "model:ir.message,text:msg_product_bom_unique"
+msgid "Products can only appear once on each BOM."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_recursive_bom"
+msgid "You cannot create a recursive BOM for product \"%(product)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_uneven_costs"
+msgid ""
+"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
+" not match the cost of the production \"%(costs)s\"."
+msgstr ""
+"Os custos das saídas (%(outputs)s) de produção \"%(production)s\" não "
+"coincidem com o custo da produção (%(costs)s)."
+
+msgctxt "model:ir.model.button,confirm:production_done_button"
+msgid "Are you sure you want to complete the production?"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:production_assign_wizard_button"
 msgid "Assign"
@@ -635,45 +600,41 @@ msgctxt "model:ir.model.button,string:production_wait_button"
 msgid "Wait"
 msgstr "Wait"
 
-#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_production"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bom_list"
 msgid "BOMs"
-msgstr "BOMs"
+msgstr "Listas de Materiais"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_calendar"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produções"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_configuration"
 msgid "Production Configuration"
-msgstr "Production Configuration"
+msgstr "Configuração de Produção"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_production_list"
 msgid "Productions"
-msgstr "Productions"
+msgstr "Produções"
 
 msgctxt "model:product.product-production.bom,name:"
 msgid "Product - BOM"
@@ -723,20 +684,17 @@ msgctxt "model:production.lead_time,name:"
 msgid "Production Lead Time"
 msgstr "Tempo de Espera da Produção"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_production_admin"
 msgid "Production Administration"
-msgstr "Production Administration"
+msgstr "Administração de Produção"
 
-#, fuzzy
 msgctxt "model:stock.location,name:location_production"
 msgid "Production"
-msgstr "Production"
+msgstr "Produção"
 
 msgctxt "selection:production,state:"
 msgid "Assigned"
