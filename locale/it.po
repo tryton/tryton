@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.invoice.chorus:"
-msgid "Invoice can be registered only once for Chorus."
-msgstr ""
-
-msgctxt "error:account.invoice.chorus:"
-msgid "The Chorus invoice \"%(invoice)s\" can not be deleted once sent."
-msgstr ""
-
-msgctxt "error:account.invoice.chorus:"
-msgid "The address \"%(address)s\" is missing a SIRET."
-msgstr ""
-
 msgctxt "field:account.configuration,chorus_login:"
 msgid "Chorus Login"
 msgstr ""
@@ -44,7 +32,7 @@ msgstr ""
 
 msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:account.credential.chorus,create_date:"
 msgid "Create Date"
@@ -130,8 +118,18 @@ msgctxt "model:ir.action,name:act_invoice_chorus_form"
 msgid "Chorus"
 msgstr ""
 
-msgctxt "model:ir.cron,name:cron_invoice_send"
-msgid "Send invoices to Chorus"
+msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
+msgid ""
+"To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
+"address \"%(address)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_delete_sent"
+msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_unique"
+msgid "You can create only one Chorus invoice per invoice."
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
@@ -139,10 +137,6 @@ msgid "Chorus"
 msgstr ""
 
 msgctxt "selection:account.configuration,chorus_service:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.configuration,chorus_service:"
 msgid "Production"
 msgstr ""
 
@@ -151,15 +145,15 @@ msgid "Qualification"
 msgstr ""
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Production"
 msgstr ""
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Qualification"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to Chorus"
 msgstr ""
 
 msgctxt "view:account.configuration:"

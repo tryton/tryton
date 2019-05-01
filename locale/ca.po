@@ -2,20 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.invoice.chorus:"
-msgid "Invoice can be registered only once for Chorus."
-msgstr "Una factura només es pot registrar una vegada pel Chorus."
-
-msgctxt "error:account.invoice.chorus:"
-msgid "The Chorus invoice \"%(invoice)s\" can not be deleted once sent."
-msgstr ""
-"La factura del Chorus \"%(invoices)s\" no es pot eliminar una vegada "
-"enviada."
-
-msgctxt "error:account.invoice.chorus:"
-msgid "The address \"%(address)s\" is missing a SIRET."
-msgstr "Falta el SIRET per l'adreça \"%(address)s\" ."
-
 msgctxt "field:account.configuration,chorus_login:"
 msgid "Chorus Login"
 msgstr "Nom d'usuari Chorus"
@@ -132,19 +118,28 @@ msgctxt "model:ir.action,name:act_invoice_chorus_form"
 msgid "Chorus"
 msgstr "Chorus"
 
-msgctxt "model:ir.cron,name:cron_invoice_send"
-msgid "Send invoices to Chorus"
-msgstr "Envia les factures a Chorus"
+msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
+msgid ""
+"To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
+"address \"%(address)s\"."
+msgstr ""
+"Per crear una factura de Chours per \"%(invoice)s\", heu d'establir un SIRET"
+" per l'adreça \"%(address)s\"."
+
+msgctxt "model:ir.message,text:msg_invoice_delete_sent"
+msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
+msgstr ""
+"No podeu eliminar la factura Chorus \"%(invoice)s\" perquè ja està enviada."
+
+msgctxt "model:ir.message,text:msg_invoice_unique"
+msgid "You can create only one Chorus invoice per invoice."
+msgstr "Només podeu crear una factura Chorus per factura."
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
 msgid "Chorus"
 msgstr "Chorus"
 
 msgctxt "selection:account.configuration,chorus_service:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.configuration,chorus_service:"
 msgid "Production"
 msgstr "Producció"
 
@@ -153,16 +148,16 @@ msgid "Qualification"
 msgstr "Desenvolupament"
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Production"
 msgstr "Producció"
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Qualification"
 msgstr "Desenvolupament"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send invoices to Chorus"
+msgstr "Envia les factures a Chorus"
 
 msgctxt "view:account.configuration:"
 msgid "Chorus"
