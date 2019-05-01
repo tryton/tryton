@@ -2,46 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.statement.journal:"
-msgid "Only one journal is allowed per bank account."
-msgstr "در هر حساب بانکی تنها یک روزنامه مجاز است."
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value."
-msgstr "مقدار باید دارای یک ارزش مثبت یا منفی باشد."
-
-msgctxt "error:account.statement.origin.information:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "End Balance must be \"%s\"."
-msgstr "پایان تراز باید : \"%s\" باشد."
-
-msgctxt "error:account.statement:"
-msgid "Number of Lines must be \"%s\"."
-msgstr "تعداد خطوط. باید : \"%s\" باشد."
-
-msgctxt "error:account.statement:"
-msgid ""
-"Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
-"pending amount of \"%(amount)s\"."
-msgstr ""
-"خط اصلی: \"%s\" از اظهاریه: \"%s\" هنوز دارای مقادیر معلق از مجموع : \"%s\" "
-"میباشد."
-
-msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr "بیانیه \"%s\" باید قبل از حذف لغو شد."
-
-msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements."
-msgstr "صورت حساب های پرداخت شده درپیش نویس بیانیه ها وجود دارد."
-
-msgctxt "error:account.statement:"
-msgid "Total Amount must be \"%s\"."
-msgstr "مقدار کل باید \"%s\" باشد."
-
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr "تراز"
@@ -150,7 +110,6 @@ msgctxt "field:account.statement.import.start,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
 msgstr "حساب"
@@ -375,8 +334,9 @@ msgctxt "field:account.statement.origin,id:"
 msgid "ID"
 msgstr "شناسه"
 
-msgctxt "field:account.statement.origin,informations:"
-msgid "Informations"
+#, fuzzy
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
 msgstr "اطلاعات"
 
 msgctxt "field:account.statement.origin,lines:"
@@ -433,7 +393,7 @@ msgstr "رقم‌ها"
 
 msgctxt "field:account.statement.origin.information,domain:"
 msgid "Domain"
-msgstr ""
+msgstr "دامنه"
 
 msgctxt "field:account.statement.origin.information,id:"
 msgid "ID"
@@ -578,6 +538,81 @@ msgctxt ""
 msgid "Validated"
 msgstr "تایید شده"
 
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+"برای وارد کردن اضهارنامه، باید یک روزنامه برای حساب: \"%(account)s\" ایجاد "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+"برای وارد کردن اضهارنامه، روزنامه : \"%(journal)s\" باید دارای ارز : "
+"\"%(currency)s\"بجای: \"%(journal_currency)s\" باشد."
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr "در هر حساب بانکی تنها یک روزنامه مجاز است."
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr "مبلغ سطر اظهارنامه نمی تواند صفر باشد."
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr "برای حذف اظهارنامه : \"%(statement)s\" شما باید ابتدا آنرا لغو کنید."
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+"اعتبار این اظهارانامه، صورتحساب های پرداخت شده را از اظهارنامه های دیگر حذف "
+"خواهد کرد."
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+"برای ارسال اظهارنامه : \"%(statement)s\"شما باید سطرهایی را برای "
+"انتظار:\"%(مبلغ)s\" از منشاء : \"%(origin)s\"ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+"برای اعتبار اظهارنامه :\"%(statement)s\"برای داشتن تراز پایانی از: \"%(تراز "
+"پایانی)s\" بجای: \"%(مقدار)s\" شما باید سطرهایی را تغییر دهید."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+"برای اعتبار اظهارنامه : \"%(statement)s\" شما باید :\"%(تعداد)s\" سطر اضافه "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+"برای اعتبار اظهارنامه : \"%(statement)s\" شما باید :\"%(تعداد)s\" سطر حذف "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+"برای اعتبار اظهارنامه :\"%(statement)s\"برای داشتن مبلغ کل از: \"%(مبلغ)s\" "
+"بجای: \"%(مبلغ)s\" شما باید سطرهایی را تغییر دهید."
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
@@ -597,6 +632,26 @@ msgstr "Reconcile"
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
 msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_group"
+msgid "User in statement's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
+msgid "User in statement's company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
@@ -674,7 +729,6 @@ msgctxt "report:account.statement:"
 msgid "Total"
 msgstr "مجموع"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Statement"
 msgstr "بیانیه"
@@ -694,10 +748,6 @@ msgstr "ارسال شده"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "تایید شده"
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid ""
-msgstr "فرمت"
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"

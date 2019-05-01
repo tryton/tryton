@@ -2,63 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.statement.journal:"
-msgid "Only one journal is allowed per bank account."
-msgstr ""
-
-msgctxt "error:account.statement.line:"
-msgid "Amount should be a positive or negative value."
-msgstr ""
-
-msgctxt "error:account.statement.origin.information:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "End Balance must be \"%s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "Number of Lines must be \"%s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid ""
-"Origin line \"%(origin)s\" of statement \"%(statement)s\" still has a "
-"pending amount of \"%(amount)s\"."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "Statement \"%s\" must be cancelled before deletion."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "There are paid invoices on draft statements."
-msgstr ""
-
-msgctxt "error:account.statement:"
-msgid "Total Amount must be \"%s\"."
-msgstr ""
-
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
 msgstr ""
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.statement,date:"
 msgid "Date"
@@ -129,15 +91,15 @@ msgstr ""
 
 msgctxt "field:account.statement,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement.import.start,file_:"
 msgid "File"
@@ -161,23 +123,23 @@ msgstr ""
 
 msgctxt "field:account.statement.journal,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement.journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement.journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:account.statement.journal,id:"
 msgid "ID"
@@ -202,11 +164,11 @@ msgstr ""
 
 msgctxt "field:account.statement.journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement.journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -218,15 +180,15 @@ msgstr ""
 
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -242,7 +204,7 @@ msgstr ""
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Sąskaita faktūra"
 
 msgctxt "field:account.statement.line,move:"
 msgid "Account Move"
@@ -259,7 +221,7 @@ msgstr "Origins"
 
 msgctxt "field:account.statement.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.statement.line,rec_name:"
 msgid "Record Name"
@@ -280,11 +242,11 @@ msgstr ""
 
 msgctxt "field:account.statement.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
@@ -292,19 +254,19 @@ msgstr ""
 
 msgctxt "field:account.statement.line.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement.line.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:account.statement.line.group,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
@@ -329,7 +291,7 @@ msgstr ""
 
 msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.statement.line.group,rec_name:"
 msgid "Record Name"
@@ -342,11 +304,11 @@ msgstr "Statement"
 
 msgctxt "field:account.statement.line.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement.line.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
@@ -358,15 +320,15 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.statement.origin,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement.origin,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -380,8 +342,8 @@ msgctxt "field:account.statement.origin,id:"
 msgid "ID"
 msgstr ""
 
-msgctxt "field:account.statement.origin,informations:"
-msgid "Informations"
+msgctxt "field:account.statement.origin,information:"
+msgid "Information"
 msgstr ""
 
 msgctxt "field:account.statement.origin,lines:"
@@ -394,7 +356,7 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
@@ -420,19 +382,19 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement.origin,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.statement.origin.information,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.statement.origin.information,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.statement.origin.information,digits:"
 msgid "Digits"
@@ -477,11 +439,11 @@ msgstr ""
 
 msgctxt "field:account.statement.origin.information,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.statement.origin.information,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:account.statement.origin.information,selection:"
 msgid "A couple of key and label separated by \":\" per line"
@@ -588,6 +550,65 @@ msgctxt ""
 msgid "Validated"
 msgstr "Validated"
 
+msgctxt "model:ir.message,text:msg_import_no_journal"
+msgid ""
+"To import statement, you must create a journal for account \"%(account)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_import_wrong_currency"
+msgid ""
+"To import statement, the journal \"%(journal)s\" must have the currency "
+"\"%(currency)s\" instead of \"%(journal_currency)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_bank_account_unique"
+msgid "Only one journal is allowed per bank account."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_amount_non_zero"
+msgid "Statement line amount cannot be zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_delete_cancel"
+msgid "To delete statement \"%(statement)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_paid_invoice_draft"
+msgid ""
+"The validation of the statements will remove paid invoices from other "
+"statements."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_post_pending_amount"
+msgid ""
+"To post statement \"%(statement)s\" you must create lines for pending "
+"%(amount)s of origin \"%(origin)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_end_balance"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have end "
+"balance of %(end_balance)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_add"
+msgid "To validate statement \"%(statement)s\" you must add %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_number_of_lines_remove"
+msgid "To validate statement \"%(statement)s\" you must remove %(n)s line(s)."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_statement_wrong_total_amount"
+msgid ""
+"To validate statement \"%(statement)s\" you must change lines to have total "
+"amount of %(total_amount)s instead of %(amount)s."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:statement_post_button"
+msgid "Are you sure you want to post the statement?"
+msgstr ""
+
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
 msgstr "Cancel"
@@ -607,6 +628,26 @@ msgstr "Reconcile"
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
 msgstr "Validate"
+
+msgctxt "model:ir.rule.group,name:rule_group_line_group"
+msgid "User in statement's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_journal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_statement_origin"
+msgid "User in statement's company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_line_group_form"
 msgid "Statement Line Groups"
@@ -677,7 +718,7 @@ msgstr ""
 
 msgctxt "report:account.statement:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 #, fuzzy
 msgctxt "report:account.statement:"
@@ -712,10 +753,6 @@ msgstr "Posted"
 msgctxt "selection:account.statement,state:"
 msgid "Validated"
 msgstr "Validate"
-
-msgctxt "selection:account.statement.import.start,file_format:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:account.statement.journal,validation:"
 msgid "Amount"
