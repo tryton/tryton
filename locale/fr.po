@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
-msgstr "L'opportunité de vente « %s » doit être annulée avant suppression."
-
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
 msgstr "Séquence d'opportunité"
@@ -513,6 +509,11 @@ msgctxt ""
 msgid "Won"
 msgstr "Gagnés"
 
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+"Pour supprimer l’opportunité « %(opportunity)s », vous devez l'annuler."
+
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
 msgstr "Annuler"
@@ -532,6 +533,22 @@ msgstr "Marquer comme perdue"
 msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
 msgstr "Convertir en opportunité"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr "Utilisateur dans la société de l'opportunité"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"

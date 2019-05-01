@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
-msgstr "Debe cancelar la oportunidad de venta \"%s\" antes de eliminarla."
-
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
 msgstr ""
@@ -112,7 +108,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.opportunity.line,create_date:"
 msgid "Create Date"
@@ -164,7 +160,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -249,7 +245,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
@@ -349,7 +345,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
@@ -438,7 +434,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
@@ -518,6 +514,10 @@ msgctxt ""
 msgid "Won"
 msgstr "Ganada"
 
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
 msgstr ""
@@ -537,6 +537,22 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
 msgstr ""
 
 #, fuzzy

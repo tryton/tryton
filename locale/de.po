@@ -2,19 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.opportunity:"
-msgid "Sale Opportunity \"%s\" must be cancelled before deletion."
-msgstr ""
-"Verkaufschance \"%s\" muss annulliert werden, bevor sie gelöscht werden "
-"kann."
-
 msgctxt "field:sale.configuration,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr "Nummernkreis Varkaufschance"
+msgstr "Nummernkreis Verkaufschance"
 
 msgctxt "field:sale.configuration.sequence,sale_opportunity_sequence:"
 msgid "Opportunity Sequence"
-msgstr "Nummernkreis Verkaufsgelegenheit"
+msgstr "Nummernkreis Verkaufschance"
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
@@ -142,7 +136,7 @@ msgstr "Artikel"
 
 msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 msgctxt "field:sale.opportunity.line,rec_name:"
 msgid "Record Name"
@@ -515,6 +509,12 @@ msgctxt ""
 msgid "Won"
 msgstr "Gewonnen"
 
+msgctxt "model:ir.message,text:msg_opportunity_delete_cancel"
+msgid "To delete opportunity \"%(opportunity)s\", you must cancel it."
+msgstr ""
+"Damit die Verkaufschance \"%(opportunity)s\" gelöscht werden kann, muss sie "
+"zuerst annulliert werden."
+
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
 msgstr "Annullieren"
@@ -534,6 +534,22 @@ msgstr "Als Verlust markieren"
 msgctxt "model:ir.model.button,string:opportunity_opportunity_button"
 msgid "Convert to Opportunity"
 msgstr "In Verkaufschance umwandeln"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity"
+msgid "User in company of opportunity"
+msgstr "Benutzer in Unternehmen der Verkaufschance"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_employee_monthly"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_opportunity_monthly"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:ir.sequence,name:sequence_sale_opportunity"
 msgid "Sale Opportunity"
