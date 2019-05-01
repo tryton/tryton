@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.requisition:"
-msgid "A warehouse must be defined for requisition: \"%(requisition)s\"."
-msgstr ""
-"Un entrepôt doit être défini pour la demande d'employé : "
-"« %(requisition)s »."
-
-msgctxt "error:purchase.requisition:"
-msgid "Requisition \"%s\" must be cancelled before deletion."
-msgstr "La demande d'employé « %s » doit être annulée avant suppression."
-
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Séquence de demande d'achat d'employé"
@@ -200,6 +190,18 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En attentes"
 
+msgctxt "model:ir.message,text:msg_delete_cancel"
+msgid "To delete requisition \"%(requisition)s\" you must cancel it."
+msgstr ""
+"Pour supprimer la demande d'achat d'employé « %(requisition)s », vous devez "
+"l'annuler."
+
+msgctxt "model:ir.message,text:msg_warehouse_required"
+msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
+msgstr ""
+"Un entrepôt doit être défini pour la demande d'achat d'employé "
+"« %(requisition)s »."
+
 msgctxt "model:ir.model.button,string:requisition_approve_button"
 msgid "Approve"
 msgstr "Approuver"
@@ -219,6 +221,22 @@ msgstr "Rejeter"
 msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
 msgstr "Attendre"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition"
+msgid "Any requisition"
+msgstr "N'importe quelle demande"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_default"
+msgid "Own requisition"
+msgstr "Demande propre"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line"
+msgid "Any requisition line"
+msgstr "N'importe quelle ligne de demande"
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line_default"
+msgid "Own requisition line"
+msgstr "Ligne de demande propre"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
 msgid "Purchase Requisition"

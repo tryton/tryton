@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.requisition:"
-msgid "A warehouse must be defined for requisition: \"%(requisition)s\"."
-msgstr "Debe definirse una bodega para la petición: \"%(requisition)s\"."
-
-msgctxt "error:purchase.requisition:"
-msgid "Requisition \"%s\" must be cancelled before deletion."
-msgstr ""
-
 msgctxt "field:purchase.configuration,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr ""
@@ -88,7 +80,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
@@ -164,7 +156,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
@@ -198,6 +190,15 @@ msgctxt ""
 msgid "Waiting"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_delete_cancel"
+msgid "To delete requisition \"%(requisition)s\" you must cancel it."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_warehouse_required"
+msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
+msgstr "Debe definirse una bodega para la petición: \"%(requisition)s\"."
+
 msgctxt "model:ir.model.button,string:requisition_approve_button"
 msgid "Approve"
 msgstr ""
@@ -216,6 +217,22 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:requisition_wait_button"
 msgid "Wait"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition"
+msgid "Any requisition"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_default"
+msgid "Own requisition"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line"
+msgid "Any requisition line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_requisition_line_default"
+msgid "Own requisition line"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_purchase_requisition"
