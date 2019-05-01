@@ -2,39 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:carrier.credential.dpd:"
-msgid ""
-"DPD webservice call failed with the following error message:\n"
-"\n"
-"%(message)s"
-msgstr ""
-
-msgctxt "error:stock.shipment.create_shipping.dpd:"
-msgid ""
-"DPD webservice call failed with the following error message:\n"
-"\n"
-"%(message)s"
-msgstr ""
-
-msgctxt "error:stock.shipment.create_shipping.dpd:"
-msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "An address is required for warehouse \"%(warehouse)s\"."
-msgstr ""
-
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:carrier.credential.dpd,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:carrier.credential.dpd,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
@@ -62,15 +40,15 @@ msgstr ""
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "Naudotojo ID"
 
 msgctxt "field:carrier.credential.dpd,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:carrier.credential.dpd,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
@@ -84,6 +62,24 @@ msgstr "Create DPD Shipping for Packages"
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "DPD Credentials"
+
+msgctxt "model:ir.message,text:msg_dpd_webservice_error"
+msgid ""
+"DPD webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on the "
+"warehouse \"%(warehouse)s\"."
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
@@ -102,5 +98,5 @@ msgid "Testing"
 msgstr ""
 
 msgctxt "view:carrier.credential.dpd:"
-msgid "Credential Informations"
+msgid "Credential Information"
 msgstr ""

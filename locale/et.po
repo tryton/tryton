@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Ettevõte"
 
 msgctxt "field:carrier.credential.dpd,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:carrier.credential.dpd,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
-msgstr "Skladišče"
+msgstr ""
 
 msgctxt "field:carrier.credential.dpd,id:"
 msgid "ID"
@@ -24,55 +24,49 @@ msgstr "ID"
 
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
-msgstr "Geslo"
+msgstr "Salasõna"
 
 msgctxt "field:carrier.credential.dpd,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
-msgstr "Strežnik"
+msgstr "Server"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
-msgstr "Žeton"
+msgstr "Token"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr "Uporabnik"
+msgstr "Kasutaja ID"
 
 msgctxt "field:carrier.credential.dpd,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:carrier.credential.dpd,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr "DPD prijava"
+msgstr "DPD viide"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr "Create DPD Shipping for Packages"
+msgstr "Loo DPD saadetis"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr "DPD viide"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
-"Sporočilo napake pri klicu DPD spletne storitve:\n"
-"\n"
-"%(message)s"
 
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
@@ -86,10 +80,9 @@ msgid ""
 "warehouse \"%(warehouse)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
-msgstr "DPD Credentials"
+msgstr "DPD viide"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
@@ -97,13 +90,12 @@ msgstr "DPD"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Production"
-msgstr "Produkcijski"
+msgstr "Tootmine"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Testing"
-msgstr "Preizkusni"
+msgstr "Testimine"
 
-#, fuzzy
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Information"
-msgstr "Prijavni podatki"
+msgstr "Viite info"
