@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" ha raggiunto il livello di fido (%s)"
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" ha raggiunto il livello di sollecito (%s)"
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "Importo predeterminato del fido cliente"
@@ -20,7 +12,7 @@ msgstr "posizioni valuta"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
 msgid "Create Date"
@@ -81,7 +73,7 @@ msgstr "posizioni valuta"
 
 msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:party.party.credit_limit_amount,create_date:"
 msgid "Create Date"
@@ -136,6 +128,14 @@ msgstr "limite fido cliente raggiunto"
 
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
 msgstr ""
 
 #, fuzzy

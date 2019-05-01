@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" ha arribat al límit de l'import de crèdit (%s)."
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" ha arribat al límit del crèdit reclamat (%s)."
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "Import límit de crèdit per defecte"
@@ -132,6 +124,16 @@ msgstr "Ha arribat al límit de crèdit."
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Configuració del límit de crèdit per defecte."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr "El tercer \"%(party)s\" ha assolit el seu límit de crèdit de %(limit)s."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr ""
+"El tercer \"%(party)s\" ha assolit el seu nivell de límit de crèdit "
+"%(dunning)s."
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"

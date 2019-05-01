@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "ໜີ້ \"%s\" ຮອດຂີດຈຳນວນຈຳກັດ (%s) ແລ້ວ"
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" ໄດ້ຮອດກຳນົດວົງເງິນຈຳກັດຕິດໜີ້ແລ້ວ (%s)"
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "ມູນຄ່າຈຳກັດລົງເງິນຕິດໜີ້ພື້ນຖານ"
@@ -132,6 +124,14 @@ msgstr "ໄດ້ຮອດວົງຈຳກັດໜີ້ແລ້ວ"
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "ການກຳນົດຄ່າບັນຊີຕົ້ນມູນຄ່າຈຳກັດວົງໜີ້"
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr ""
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"

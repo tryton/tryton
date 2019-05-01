@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" hat das Kreditlimit (%s) erreicht."
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" hat das Mahnlimit (%s) erreicht."
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "Standardkreditlimit"
@@ -132,6 +124,14 @@ msgstr "Kreditlimit ausgeschöpft"
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Einstellungen Buchhaltung Standardkonto Kreditlimit"
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr "Partei \"%(party)s\" hat ihr Kreditlimit von %(limit)s erreicht."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr "Partei \"%(party)s\" hat das Kreditlimitlevel von %(dunning)s erreicht."
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"

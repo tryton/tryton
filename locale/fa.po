@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" به مقدار محدودیت اعتبار رسیده است(%s)"
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" به محدودیت اعتبارگردآوری معوقه ها رسیده است(%s)"
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "مقدار محدودیت اعتباری پیش فرض"
@@ -132,6 +124,16 @@ msgstr "به محدودیت اعتباری رسیده است"
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "پیکره بندی حساب پیش فرض مقدار محدودیت اعتبار"
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr "نهاد/سازمان: \"%(party)s\" به حد اعتبار خود از : \"%(محدودیت)s\" رسیده است."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr ""
+"نهاد/سازمان: \"%(party)s\" به حد مجاز سطح محدودیت اعتبار از : \"%(دانینگ)s\""
+" رسیده است."
 
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"

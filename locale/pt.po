@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the credit limit amount (%s)"
-msgstr "\"%s\" chegou ao limite de crédito total de (%s)"
-
-msgctxt "error:party.party:"
-msgid "\"%s\" has reached the dunning credit limit (%s)"
-msgstr "\"%s\" atingiu o limite de crédito de cobranca (%s)"
-
 msgctxt "field:account.configuration,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
 msgstr "Limite de crédito total padrão"
@@ -118,12 +110,12 @@ msgstr "Editado por"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "O limite de crédito padrão para novos clientes."
 
 msgctxt ""
 "help:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
-msgstr ""
+msgstr "O limite de crédito padrão para novos clientes."
 
 msgctxt "help:account.dunning.level,credit_limit:"
 msgid "Has reached the credit limit"
@@ -133,14 +125,22 @@ msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
 msgstr "Configuração de Conta Montante Padrão Limite de Crédito"
 
+msgctxt "model:ir.message,text:msg_party_credit_limit_amount"
+msgid "Party \"%(party)s\" has reached their credit limit of %(limit)s."
+msgstr "A pessoa \"%(party)s\" atingiu o limite de crédito de %(limit)s."
+
+msgctxt "model:ir.message,text:msg_party_credit_limit_dunning"
+msgid "Party \"%(party)s\" has reached the credit limit level of %(dunning)s."
+msgstr ""
+"A pessoa \"%(party)s\" atingiu o nível de limite de crédito de %(dunning)s."
+
 msgctxt "model:party.party.credit_limit_amount,name:"
 msgid "Party Credit Limit Amount"
 msgstr "Montante Limite de Crédito da Pessoa"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_credit_limit"
 msgid "Account Credit Limit"
-msgstr "Account Credit Limit"
+msgstr "Conta de Limite de Crédito"
 
 msgctxt "view:account.configuration:"
 msgid "Credit Limit"
