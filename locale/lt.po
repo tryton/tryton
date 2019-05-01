@@ -2,21 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.supply:"
-msgid "There are some late productions."
-msgstr ""
-
 msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
 msgctxt "field:production.configuration.supply_period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:production.configuration.supply_period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:production.configuration.supply_period,id:"
 msgid "ID"
@@ -32,11 +28,11 @@ msgstr ""
 
 msgctxt "field:production.configuration.supply_period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:production.configuration.supply_period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
@@ -46,6 +42,10 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_production"
 msgid "Production"
 msgstr "Production"
+
+msgctxt "model:ir.message,text:msg_late_productions"
+msgid "There are some productions that are late."
+msgstr ""
 
 msgctxt "model:production.configuration.supply_period,name:"
 msgid "Production Configuration Supply Period"
