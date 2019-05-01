@@ -2,35 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:purchase.purchase:"
-msgid ""
-"The warehouse \"%(purchase_warehouse)s\" of purchase \"%(purchase)s\" is "
-"different of the warehouse \"%(request_warehouse)s\" of the linked purchase "
-"request."
-msgstr ""
-
-msgctxt "error:purchase.purchase:"
-msgid ""
-"You can not delete the purchase \"%(purchase)s\" because it is linked to at "
-"least one purchase request."
-msgstr ""
-
-msgctxt "error:purchase.request.create_purchase:"
-msgid "Purchase price is missing for product \"%s\"."
-msgstr ""
-
-msgctxt "error:purchase.request.create_purchase:"
-msgid "This price is necessary for creating purchases."
-msgstr ""
-
-msgctxt "error:purchase.request:"
-msgid "Purchase requests are only created by the system."
-msgstr ""
-
-msgctxt "error:purchase.request:"
-msgid "You can not delete purchased request."
-msgstr ""
-
 msgctxt "field:purchase.line,requests:"
 msgid "Requests"
 msgstr ""
@@ -216,10 +187,36 @@ msgctxt ""
 msgid "Exception"
 msgstr "Особая ситуация"
 
+msgctxt "model:ir.message,text:msg_purchase_delete_request"
+msgid ""
+"You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
+" requests."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
+msgid ""
+"Warehouse \"%(purchase_warehouse)s\" on purchase \"%(purchase)s\" is "
+"different to warehouse \"%(request_warehouse)s\" on linked purchase request "
+"\"%(request)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_request_delete_purchased"
+msgid ""
+"You cannot delete purchase request \"%(request)s\" because it is purchased."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_request_no_create"
+msgid "Purchase requests can only be created by the system."
+msgstr ""
+
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
 msgid "Handle Purchase Cancellation"
 msgstr "Handle Purchase Cancellation"
+
+msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
