@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.asset:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "برخی از الزامات حساب ریشه مفقود شده است در: \"٪ s\""
-
-msgctxt "error:account.invoice.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "برخی از الزامات حساب ریشه مفقود شده است در: \"٪ s\""
-
 msgctxt "field:account.asset,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "تجزیه و تحلیل حساب ها"
