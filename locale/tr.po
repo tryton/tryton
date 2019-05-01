@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list.line,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr ""
 
 msgctxt "field:product.price_list.line,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr ""
 
 msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
