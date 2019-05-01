@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.invoice.line:"
-msgid ""
-"The invoice line '%(line)s' is linked to stock moves for other products than '%(product)s'.\n"
-"This may compute a wrong COGS."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Anglo-Saxon quantity can not be greater than quantity."
-msgstr ""
-
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
 msgstr ""
@@ -26,6 +16,16 @@ msgstr ""
 
 msgctxt "field:stock.move,out_anglo_saxon_quantity:"
 msgid "Output Anglo-Saxon Quantity"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_stock_move_different_product"
+msgid ""
+"The invoice line \"%(line)s\" is linked to stock moves of other products than \"%(product)s\".\n"
+"This may compute a wrong COGS."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_quantity_greater"
+msgid "Anglo-Saxon quantity cannot be greater than quantity."
 msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
