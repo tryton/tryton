@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Alguma conta de raíz obrigatória está faltando em \"%(name)s\""
-
 msgctxt "field:sale.line,analytic_accounts:"
 msgid "Analytic Accounts"
 msgstr "Contas Analíticas"
@@ -16,4 +12,4 @@ msgstr "Tamanho da Conta Analítica"
 
 msgctxt "view:sale.line:"
 msgid "Analytic"
-msgstr ""
+msgstr "Analítico"
