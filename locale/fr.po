@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.out:"
-msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr "L'expédition « %(shipment)s » n'a pas de transporteur défini"
-
-msgctxt "error:stock.shipment.out:"
-msgid ""
-"The shipment \"%(shipment)s\" must be packed before creating the shipping "
-"labels"
-msgstr ""
-"L’expédition « %(shipment)s » doit être emballée avant de créer les "
-"étiquettes de livraison"
-
 msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Service de livraison"
@@ -70,6 +58,16 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Créer la livraison"
 
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+"Pour créer les étiquettes de livraison pour l'expédition « %(shipment)s », "
+"vous devez l'emballer."
+
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "L'expédition « %(shipment)s » n'a pas de transporteur défini."
+
 msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Créer la livraison pour les emballages"
@@ -77,10 +75,6 @@ msgstr "Créer la livraison pour les emballages"
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
 msgstr "Livraison"
-
-msgctxt "selection:carrier,shipping_service:"
-msgid ""
-msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"

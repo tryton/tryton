@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.out:"
-msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr ""
-"Dem Lieferposten \"%(shipment)s\" ist kein Versanddienstleister zugeordnet."
-
-msgctxt "error:stock.shipment.out:"
-msgid ""
-"The shipment \"%(shipment)s\" must be packed before creating the shipping "
-"labels"
-msgstr ""
-"Vor der Erstellung von Versandetiketten muss der Lieferposten "
-"\"%(shipment)s\" gepackt werden."
-
 msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Versanddienst"
@@ -71,6 +58,17 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Versand erstellen"
 
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+"Damit die Versandaufkleber für die Lieferung \"%(shipment)s\" generiert "
+"werden können, muss die Lieferung zuerst gepackt werden."
+
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr ""
+"Dem Lieferposten \"%(shipment)s\" ist kein Versanddienstleister zugeordnet."
+
 msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Versand erstellen"
@@ -78,10 +76,6 @@ msgstr "Versand erstellen"
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
 msgstr "Versand"
-
-msgctxt "selection:carrier,shipping_service:"
-msgid ""
-msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"

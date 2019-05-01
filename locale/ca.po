@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.out:"
-msgid "The shipment \"%(shipment)s\" does not have a carrier set"
-msgstr "L'albarà \"%(shipment)s\" no té assignat un transportista."
-
-msgctxt "error:stock.shipment.out:"
-msgid ""
-"The shipment \"%(shipment)s\" must be packed before creating the shipping "
-"labels"
-msgstr ""
-"L'albarà \"%(shipment)s\" ha d'estar empaquetat abans de crear les etiquetes"
-" d'enviament."
-
 msgctxt "field:carrier,shipping_service:"
 msgid "Shipping Service"
 msgstr "Servei d'enviament"
@@ -70,6 +58,16 @@ msgctxt "model:ir.action,name:act_create_shipping_wizard"
 msgid "Create Shipping"
 msgstr "Crea enviament"
 
+msgctxt "model:ir.message,text:msg_shipment_not_packed"
+msgid "To create shipping labels for shipment \"%(shipment)s\", you must pack it."
+msgstr ""
+"Per crear etiquetes d'enviament per l'albarà \"%(shipment)s\", l'heu "
+"d'empaquetar."
+
+msgctxt "model:ir.message,text:msg_shipment_without_carrier"
+msgid "The shipment \"%(shipment)s\" does not have a carrier set."
+msgstr "L'albarà \"%(shipment)s\" no té assignat un transportista."
+
 msgctxt "model:ir.model.button,string:shipment_out_create_shipping_button"
 msgid "Create Shipping for Packages"
 msgstr "Crea enviament per paquets"
@@ -77,10 +75,6 @@ msgstr "Crea enviament per paquets"
 msgctxt "model:ir.ui.menu,name:menu_package_shipping_configuration"
 msgid "Shipping"
 msgstr "Enviament"
-
-msgctxt "selection:carrier,shipping_service:"
-msgid ""
-msgstr ""
 
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
