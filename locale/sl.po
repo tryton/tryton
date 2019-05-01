@@ -2,54 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.address.format:"
-msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
-msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
-
-msgctxt "error:party.address:"
-msgid "You can not modify the party of address \"%s\"."
-msgstr "Partnerjev naslov \"%s\" ni možno popravljati."
-
-msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent."
-msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
-
-msgctxt "error:party.check_vies:"
-msgid "The VIES service is unavailable, try again later."
-msgstr "VIES storitev je nedostopna, poskusite kasneje."
-
-msgctxt "error:party.contact_mechanism:"
-msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
-msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
-
-msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr "Partnerjevega kontakta \"%s\" ni možno popravljati."
-
-msgctxt "error:party.erase:"
-msgid "The party \"%(party)s\" can not be erased because he is still active."
-msgstr ""
-
-msgctxt "error:party.identifier:"
-msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr "Neveljavna DDV številka \"%(code)s\" pri partnerju \"%(party)s\"."
-
-msgctxt "error:party.party:"
-msgid "The code of the party must be unique."
-msgstr "Šifra partnerja mora biti edinstvena."
-
-msgctxt "error:party.replace:"
-msgid ""
-"Parties have different Tax Identifier: %(source_code)s vs "
-"%(destination_code)s."
-msgstr ""
-"Partnerja imata različen davčni ID: %(source_code)s in %(destination_code)s."
-
-msgctxt "error:party.replace:"
-msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
-msgstr ""
-"Partnerja imata različna imena: %(source_name)s in %(destination_name)s."
-
 msgctxt "field:party.address,active:"
 msgid "Active"
 msgstr "Aktivno"
@@ -788,6 +740,62 @@ msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
 msgstr "Replace"
 
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr "Naziv kategorije partnerja mora biti edinstven na matično kategorijo."
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+"Partnerja imata različna imena: %(source_name)s in %(destination_name)s."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+"Partnerja imata različen davčni ID: %(source_code)s in %(destination_code)s."
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr "Neveljavna oblika \"%(format)s\", napaka \"%(exception)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr "Telefonska številka \"%(phone)s\" partnerja \"%(party)s\" je neveljavna."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr "Šifra partnerja mora biti edinstvena."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr "VIES storitev je nedostopna, poskusite kasneje."
+
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
@@ -945,12 +953,408 @@ msgid "Website"
 msgstr "Spletna stran"
 
 msgctxt "selection:party.identifier,type:"
-msgid ""
+msgid "Albanian VAT Number"
 msgstr ""
 
 msgctxt "selection:party.identifier,type:"
-msgid "VAT"
-msgstr "DDV"
+msgid "Argentinian Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "General"

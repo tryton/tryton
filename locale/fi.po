@@ -4,40 +4,40 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.address,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
 msgctxt "field:party.address,city:"
 msgid "City"
-msgstr "Város"
+msgstr ""
 
 msgctxt "field:party.address,country:"
 msgid "Country"
-msgstr "Ország"
+msgstr ""
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr "Teljes cím"
+msgstr ""
 
 msgctxt "field:party.address,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address,name:"
 msgid "Building Name"
-msgstr "Név"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.address,party_name:"
 msgid "Party Name"
@@ -49,103 +49,95 @@ msgstr ""
 
 msgctxt "field:party.address,sequence:"
 msgid "Sequence"
-msgstr "Sorrend"
+msgstr ""
 
 msgctxt "field:party.address,street:"
 msgid "Street"
-msgstr "Utca"
+msgstr ""
 
 msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
-msgstr "Alrészleg"
+msgstr ""
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr "Utoljára módosított dátum"
+msgstr ""
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
-msgstr "Irányítószám"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,country:"
 msgid "Country"
-msgstr "Ország"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr ""
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,language:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr ""
 
 msgctxt "field:party.address.format,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address.format,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.category,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
-msgstr "Alárendelt (kategória)"
+msgstr ""
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.category,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.category,name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "Fölérendelt (kategória)"
+msgstr ""
 
 msgctxt "field:party.category,rec_name:"
 msgid "Record Name"
@@ -153,35 +145,35 @@ msgstr ""
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
+msgstr ""
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
-msgstr "Partnerek sikertelen felülvizsgálása"
+msgstr ""
 
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
-msgstr "Partnerek sikeres felülvizsgálása"
+msgstr ""
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
@@ -189,7 +181,7 @@ msgstr ""
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr "Partner számköre"
+msgstr ""
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Record Name"
@@ -197,26 +189,23 @@ msgstr ""
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
+msgstr ""
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
@@ -226,86 +215,78 @@ msgctxt "field:party.configuration.party_lang,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
-msgstr "Utoljára módosított dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_lang,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
-msgstr "Partner számköre"
+msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
-msgstr "Utoljára módosított dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.configuration.party_sequence,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr "Megjegyzés"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
-msgstr "E-mail"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,id:"
 msgid "ID"
-msgstr "Azonosító"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr "Érték"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Record Name"
@@ -313,27 +294,27 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,sequence:"
 msgid "Sequence"
-msgstr "Sorrend"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
-msgstr "SIP"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,skype:"
 msgid "Skype"
-msgstr "Skype"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,url:"
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr "Érték"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,value_compact:"
 msgid "Value Compact"
@@ -341,114 +322,116 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
-msgstr "Weboldal"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
+msgstr ""
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr "Utolsó módosítás a következő felhasználó által"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.erase.ask,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
-msgstr "Partner kód"
+msgstr ""
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.identifier,sequence:"
 msgid "Sequence"
-msgstr "Sorrend"
+msgstr ""
 
 msgctxt "field:party.identifier,type:"
 msgid "Type"
-msgstr "Típus"
+msgstr ""
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr "Utoljára módosított dátum"
+msgstr ""
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.party,active:"
 msgid "Active"
-msgstr "Aktív"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr "Címek"
+msgstr "Addresses"
 
+#, fuzzy
 msgctxt "field:party.party,categories:"
 msgid "Categories"
-msgstr "Kategóriák"
+msgstr "Categories"
 
 msgctxt "field:party.party,code:"
 msgid "Code"
-msgstr "Partner kód"
+msgstr ""
 
 msgctxt "field:party.party,code_readonly:"
 msgid "Code Readonly"
-msgstr "Kód (olvasható)"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
-msgstr "Kapcsolat lehetőség"
+msgstr "Contact Mechanisms"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
-msgstr "E-mail"
+msgstr ""
 
 msgctxt "field:party.party,fax:"
 msgid "Fax"
-msgstr "Fax"
+msgstr ""
 
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
-msgstr "Teljes név"
+msgstr ""
 
 msgctxt "field:party.party,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
@@ -456,24 +439,23 @@ msgstr ""
 
 msgctxt "field:party.party,lang:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,langs:"
 msgid "Languages"
-msgstr "Nyelv"
+msgstr ""
 
 msgctxt "field:party.party,mobile:"
 msgid "Mobile"
-msgstr "Mobiltelefon"
+msgstr ""
 
 msgctxt "field:party.party,name:"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 msgctxt "field:party.party,phone:"
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 msgctxt "field:party.party,rec_name:"
 msgid "Record Name"
@@ -489,35 +471,36 @@ msgstr ""
 
 msgctxt "field:party.party,website:"
 msgid "Website"
-msgstr "Weboldal"
+msgstr ""
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
+msgstr ""
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
-msgstr "Kategória"
+msgstr ""
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr ""
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Record Name"
@@ -525,59 +508,52 @@ msgstr ""
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
+msgstr ""
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,lang:"
 msgid "Language"
-msgstr "Nyelv"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:party.party.lang,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "field:party.party.lang,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
-msgstr "Utoljára módosított dátum"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr ""
 
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.replace.ask,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
@@ -694,7 +670,6 @@ msgctxt "help:party.replace.ask,source:"
 msgid "The party to be replaced."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
 msgstr "Addresses"
@@ -703,42 +678,34 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr "Address Formats"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categories"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categories"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Contact Mechanisms"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_by_category"
 msgid "Parties by Category"
 msgstr "Parties by Category"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_configuration_form"
 msgid "Party Configuration"
 msgstr "Party Configuration"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_party_form"
 msgid "Parties"
 msgstr "Parties"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_label"
 msgid "Labels"
 msgstr "Labels"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_check_vies"
 msgid "Check VIES"
 msgstr "Check VIES"
@@ -755,11 +722,9 @@ msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
 msgstr ""
-"A partnerkategória neve felülrendelt kategóriánként csak egyszer adható ki"
 
 msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
 msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
@@ -791,27 +756,22 @@ msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
-msgstr "Egy partner kódja csak egyszer adható ki"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
-msgstr "A kiszolgáló nem érhető el, próbálkozzon később"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
 msgstr "Party"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
 msgstr "Party"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
 msgstr "Addresses"
@@ -820,44 +780,38 @@ msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
 msgstr "Address Formats"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categories"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categories"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_contact_mechanism_form"
 msgid "Contact Mechanisms"
 msgstr "Contact Mechanisms"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
 msgstr "Party"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
 msgstr "Party Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "Parties"
 
+#, fuzzy
 msgctxt "model:party.address,name:"
 msgid "Address"
-msgstr "Cím"
+msgstr "Addresses"
 
 #, fuzzy
 msgctxt "model:party.address.format,name:"
@@ -866,29 +820,32 @@ msgstr "Address Formats"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
-msgstr "Kategória"
+msgstr ""
 
+#, fuzzy
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr "Adóazonosító szám vizsgálása VIES által"
+msgstr "Check VIES"
 
+#, fuzzy
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Partner beállítások"
+msgstr "Party Configuration"
 
 #, fuzzy
 msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
-msgstr "Partner"
+msgstr "Party Configuration"
 
 #, fuzzy
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
-msgstr "Partner"
+msgstr "Party Configuration"
 
+#, fuzzy
 msgctxt "model:party.contact_mechanism,name:"
 msgid "Contact Mechanism"
-msgstr "Kapcsolat lehetőségek"
+msgstr "Contact Mechanisms"
 
 msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
@@ -898,13 +855,14 @@ msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
 msgstr ""
 
+#, fuzzy
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr "Partner-Partner kategória"
+msgstr ""
 
 msgctxt "model:party.party.lang,name:"
 msgid "Party Lang"
@@ -914,50 +872,49 @@ msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_party_admin"
 msgid "Party Administration"
 msgstr "Party Administration"
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "E-Mail"
-msgstr "E-mail"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Fax"
-msgstr "Fax"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "IRC"
-msgstr "IRC"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Jabber"
-msgstr "Jabber"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Mobile"
-msgstr "Mobiltelefon"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Other"
-msgstr "Más kapcsolat"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Phone"
-msgstr "Telefon"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "SIP"
-msgstr "SIP"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Skype"
-msgstr "Skype"
+msgstr ""
 
 msgctxt "selection:party.contact_mechanism,type:"
 msgid "Website"
-msgstr "Weboldal"
+msgstr ""
 
 msgctxt "selection:party.identifier,type:"
 msgid "Albanian VAT Number"
@@ -1370,7 +1327,7 @@ msgstr ""
 #, fuzzy
 msgctxt "view:party.replace.ask:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Party"
 
 msgctxt "view:party.replace.ask:"
 msgid "Replace By"
@@ -1378,7 +1335,7 @@ msgstr ""
 
 msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"
@@ -1397,27 +1354,3 @@ msgstr ""
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "Replace"
-
-msgctxt "view:party.address:"
-msgid "Addresses"
-msgstr "Címek"
-
-msgctxt "view:party.category:"
-msgid "Categories"
-msgstr "Kategóriák"
-
-msgctxt "view:party.category:"
-msgid "Category"
-msgstr "Kategória"
-
-msgctxt "view:party.configuration:"
-msgid "Party Configuration"
-msgstr "Partner"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanism"
-msgstr "Kapcsolat lehetőségek"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanisms"
-msgstr "Kapcsolat lehetőség"

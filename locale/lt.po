@@ -2,52 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.address.format:"
-msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
-msgstr ""
-
-msgctxt "error:party.address:"
-msgid "You can not modify the party of address \"%s\"."
-msgstr ""
-
-msgctxt "error:party.category:"
-msgid "The name of a party category must be unique by parent."
-msgstr ""
-
-msgctxt "error:party.check_vies:"
-msgid "The VIES service is unavailable, try again later."
-msgstr ""
-
-msgctxt "error:party.contact_mechanism:"
-msgid "The phone number \"%(phone)s\" of party \"%(party)s\" is not valid ."
-msgstr ""
-
-msgctxt "error:party.contact_mechanism:"
-msgid "You can not modify the party of contact mechanism \"%s\"."
-msgstr ""
-
-msgctxt "error:party.erase:"
-msgid "The party \"%(party)s\" can not be erased because he is still active."
-msgstr ""
-
-msgctxt "error:party.identifier:"
-msgid "Invalid VAT number \"%(code)s\" on party \"%(party)s\"."
-msgstr ""
-
-msgctxt "error:party.party:"
-msgid "The code of the party must be unique."
-msgstr ""
-
-msgctxt "error:party.replace:"
-msgid ""
-"Parties have different Tax Identifier: %(source_code)s vs "
-"%(destination_code)s."
-msgstr ""
-
-msgctxt "error:party.replace:"
-msgid "Parties have different names: %(source_name)s vs %(destination_name)s."
-msgstr ""
-
 msgctxt "field:party.address,active:"
 msgid "Active"
 msgstr ""
@@ -63,15 +17,15 @@ msgstr "Koventris"
 
 msgctxt "field:party.address,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.address,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
-msgstr ""
+msgstr "Pilnas adresas"
 
 msgctxt "field:party.address,id:"
 msgid "ID"
@@ -81,14 +35,13 @@ msgctxt "field:party.address,name:"
 msgid "Building Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.address,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.address,party_name:"
 msgid "Party Name"
-msgstr ""
+msgstr "Kontrahento pavadinimas"
 
 msgctxt "field:party.address,rec_name:"
 msgid "Record Name"
@@ -108,11 +61,11 @@ msgstr ""
 
 msgctxt "field:party.address,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.address,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
@@ -129,11 +82,11 @@ msgstr "Koventris"
 
 msgctxt "field:party.address.format,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.address.format,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
@@ -153,11 +106,11 @@ msgstr ""
 
 msgctxt "field:party.address.format,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.address.format,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.category,active:"
 msgid "Active"
@@ -169,11 +122,11 @@ msgstr ""
 
 msgctxt "field:party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.category,id:"
 msgid "ID"
@@ -194,11 +147,11 @@ msgstr ""
 
 msgctxt "field:party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.check_vies.result,id:"
 msgid "ID"
@@ -214,11 +167,11 @@ msgstr ""
 
 msgctxt "field:party.configuration,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.configuration,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.configuration,id:"
 msgid "ID"
@@ -226,11 +179,11 @@ msgstr ""
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
-msgstr ""
+msgstr "Kontrahento kalba"
 
 msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
-msgstr ""
+msgstr "Kontrahento numeruotė"
 
 msgctxt "field:party.configuration,rec_name:"
 msgid "Record Name"
@@ -238,19 +191,19 @@ msgstr ""
 
 msgctxt "field:party.configuration,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.configuration,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.configuration.party_lang,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.configuration.party_lang,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.configuration.party_lang,id:"
 msgid "ID"
@@ -258,7 +211,7 @@ msgstr ""
 
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
-msgstr ""
+msgstr "Kontrahento kalba"
 
 msgctxt "field:party.configuration.party_lang,rec_name:"
 msgid "Record Name"
@@ -266,19 +219,19 @@ msgstr ""
 
 msgctxt "field:party.configuration.party_lang,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.configuration.party_lang,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.configuration.party_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.configuration.party_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.configuration.party_sequence,id:"
 msgid "ID"
@@ -286,7 +239,7 @@ msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
-msgstr ""
+msgstr "Kontrahento numeruotė"
 
 msgctxt "field:party.configuration.party_sequence,rec_name:"
 msgid "Record Name"
@@ -294,11 +247,11 @@ msgstr ""
 
 msgctxt "field:party.configuration.party_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.configuration.party_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.contact_mechanism,active:"
 msgid "Active"
@@ -306,15 +259,15 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentaras"
 
 msgctxt "field:party.contact_mechanism,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.contact_mechanism,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
@@ -333,10 +286,9 @@ msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.contact_mechanism,rec_name:"
 msgid "Record Name"
@@ -376,20 +328,19 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.contact_mechanism,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.erase.ask,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.identifier,code:"
 msgid "Code"
@@ -397,20 +348,19 @@ msgstr ""
 
 msgctxt "field:party.identifier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.identifier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.identifier,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.identifier,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.identifier,rec_name:"
 msgid "Record Name"
@@ -426,20 +376,19 @@ msgstr ""
 
 msgctxt "field:party.identifier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.identifier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.party,active:"
 msgid "Active"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
-msgstr "Addresses"
+msgstr "Adresai"
 
 #, fuzzy
 msgctxt "field:party.party,categories:"
@@ -461,11 +410,11 @@ msgstr "Contact Mechanisms"
 
 msgctxt "field:party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.party,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
@@ -526,11 +475,11 @@ msgstr ""
 
 msgctxt "field:party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
@@ -538,20 +487,19 @@ msgstr ""
 
 msgctxt "field:party.party-party.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.party-party.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.party-party.category,id:"
 msgid "ID"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.party-party.category,rec_name:"
 msgid "Record Name"
@@ -559,19 +507,19 @@ msgstr ""
 
 msgctxt "field:party.party-party.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.party-party.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.party.lang,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:party.party.lang,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:party.party.lang,id:"
 msgid "ID"
@@ -581,10 +529,9 @@ msgctxt "field:party.party.lang,lang:"
 msgid "Language"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party.lang,party:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "field:party.party.lang,rec_name:"
 msgid "Record Name"
@@ -592,11 +539,11 @@ msgstr ""
 
 msgctxt "field:party.party.lang,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:party.party.lang,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
@@ -723,11 +670,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr "Addresses"
+msgstr "Adresai"
 
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
-msgstr "Address Formats"
+msgstr "Adreso formatai"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -769,21 +716,67 @@ msgctxt "model:ir.action,name:wizard_replace"
 msgid "Replace"
 msgstr "Replace"
 
+msgctxt "model:ir.message,text:msg_address_change_party"
+msgid "You cannot change the party of address \"%(address)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_category_name_unique"
+msgid "The name of party category must be unique by parent."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_contact_mechanism_change_party"
+msgid "You cannot change the party of contact mechanism \"%(contact)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_different_name"
+msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_different_tax_identifier"
+msgid ""
+"Parties have different tax identifiers: \"%(source_code)s\" vs "
+"\"%(destination_code)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_active_party"
+msgid "Party \"%(party)s\" cannot be erased because they are still active."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invalid_format"
+msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invalid_phone_number"
+msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_code_unique"
+msgid "The code on party must be unique."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_vies_unavailable"
+msgid "The VIES service is unavailable, try again later."
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_party"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_party"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr "Addresses"
+msgstr "Adresai"
 
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
-msgstr "Address Formats"
+msgstr "Adreso formatai"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
@@ -803,25 +796,23 @@ msgstr "Contact Mechanisms"
 
 msgctxt "model:ir.ui.menu,name:menu_party"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "model:ir.ui.menu,name:menu_party_configuration"
 msgid "Party Configuration"
-msgstr "Party Configuration"
+msgstr "Kontrahento nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_party_form"
 msgid "Parties"
 msgstr "Parties"
 
-#, fuzzy
 msgctxt "model:party.address,name:"
 msgid "Address"
-msgstr "Addresses"
+msgstr "Adresas"
 
-#, fuzzy
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
-msgstr "Address Formats"
+msgstr "Adreso Formatas"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -832,20 +823,17 @@ msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
 msgstr "Check VIES"
 
-#, fuzzy
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
-msgstr "Party Configuration"
+msgstr "Kontrahento nuostatos"
 
-#, fuzzy
 msgctxt "model:party.configuration.party_lang,name:"
 msgid "Party Configuration Lang"
-msgstr "Party Configuration"
+msgstr "Kontrahento nuostatos"
 
-#, fuzzy
 msgctxt "model:party.configuration.party_sequence,name:"
 msgid "Party Configuration Sequence"
-msgstr "Party Configuration"
+msgstr "Kontrahento nuostatų numeruotė"
 
 #, fuzzy
 msgctxt "model:party.contact_mechanism,name:"
@@ -854,24 +842,23 @@ msgstr "Contact Mechanisms"
 
 msgctxt "model:party.erase.ask,name:"
 msgid "Erase Party"
-msgstr ""
+msgstr "Ištrinti kontrahentą"
 
 msgctxt "model:party.identifier,name:"
 msgid "Party Identifier"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:party.party,name:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "model:party.party-party.category,name:"
 msgid "Party - Category"
-msgstr ""
+msgstr "Kontrahentas - kategorija"
 
 msgctxt "model:party.party.lang,name:"
 msgid "Party Lang"
-msgstr ""
+msgstr "Kontrahento kalba"
 
 msgctxt "model:party.replace.ask,name:"
 msgid "Replace Party"
@@ -922,21 +909,416 @@ msgid "Website"
 msgstr ""
 
 msgctxt "selection:party.identifier,type:"
-msgid ""
+msgid "Albanian VAT Number"
 msgstr ""
 
 msgctxt "selection:party.identifier,type:"
-msgid "VAT"
+msgid "Argentinian Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Australian Tax File Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Company Register"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Austrian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian Company Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Brazillian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Number of a Foreigner"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Bulgarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Business Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Canadian Social Insurance Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chilean National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Chinese Resident Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Business Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Colombian Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Croatian Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cypriot VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Czech VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish Citizen Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Danish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dominican Republic Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch Citizen Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch School Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Dutch student identification number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Ecuadorian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "English Unique Pupil Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Organisation Registration Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian Personcal ID number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Estonian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "European VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Association Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish Personal Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Finnish individual tax number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "French VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Company Register Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Personal Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "German VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Greek VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Hungarian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic Personal and Organisation Identity Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Icelandic VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Digital Resident Personal Identity Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Indian Income Tax Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish Personal Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Irish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian Tax Code for Individuals"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Italian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Latvian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Lithuanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Luxembourgian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Malaysian National Registration Identity Card Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Maltese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mauritian National Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Mexican Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Monacan VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian Organisation Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Norwegian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish National Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish Register of Economic Units"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Polish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Portuguese VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian Numerical Personal Code"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Romanian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Russian Tax identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "SEPA Identifier of the Creditor (AT-02)"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "San Marino National Tax Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Serbian Tax Identification"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak Birth Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovak VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Slovenian VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Company Tax"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Foreigner Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish Personal Identity Codes"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish Company Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swedish VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Business Identifier"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Swiss VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "Turkish Personal Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Adoption Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Employer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Individual Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Preparer Tax Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Social Security Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "U.S. Taxpayer Identification Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom (and Isle of Man) VAT Number"
+msgstr ""
+
+msgctxt "selection:party.identifier,type:"
+msgid "United Kingdom National Health Service Patient Identifier"
 msgstr ""
 
 msgctxt "view:party.party:"
 msgid "General"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.replace.ask:"
 msgid "Party"
-msgstr "Party"
+msgstr "Kontrahentas"
 
 msgctxt "view:party.replace.ask:"
 msgid "Replace By"
