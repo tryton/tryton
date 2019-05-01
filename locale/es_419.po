@@ -40,7 +40,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
