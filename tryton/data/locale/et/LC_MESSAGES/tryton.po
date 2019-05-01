@@ -1,35 +1,35 @@
-# Slovenian (Slovenia) translations for tryton.
-# Copyright (C) 2010 B2CK
+# Translations template for tryton.
+# Copyright (C) 2018 Tryton
 # This file is distributed under the same license as the tryton project.
-# Venceslav Vezjak <vezjakv@gmail.com>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgid "specify alternate config file"
-msgstr "določi alterntivno konfiguracijsko datoteko"
+msgstr "määra alternatiivne konfiguratsioonifail"
 
 msgid "development mode"
-msgstr "Razvijalski način"
+msgstr "arendusreziim"
 
 msgid "logging everything at INFO level"
-msgstr "beleženje vsega na INFO ravni"
+msgstr "logi kõik INFO tasemel"
 
 msgid "specify the log level: DEBUG, INFO, WARNING, ERROR, CRITICAL"
-msgstr "določi nivo beleženja: DEBUG, INFO, WARNING, ERROR, CRITICAL"
+msgstr "määra logimise tase: DEBUG, INFO, WARNING, ERROR, CRITICAL"
 
 msgid "specify the login user"
-msgstr "določi uporabniško ime"
+msgstr "määra kasutaja sisselogimise tunnus"
 
 msgid "specify the server hostname:port"
-msgstr "določi ime in vrata strežniškega gostitelja"
+msgstr "määra server:port"
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Unable to write config file %s."
-msgstr "Ni možno zapisati konfiguracijske datoteke %s."
+msgstr "Ei saa kirjutada konfiguratsioonifaili %s."
 
 #, python-format
 msgid "Unable to set locale %s"
-msgstr "Ni možno nastaviti krajevnih nastavitev %s"
+msgstr "Ei saa seadistada lokaati %s"
 
 msgid ", "
 msgstr ", "
@@ -37,143 +37,140 @@ msgstr ", "
 msgid ",…"
 msgstr ",…"
 
-# ?
 #, python-format
 msgid "%s (%s)"
 msgstr "%s (%s)"
 
 msgid "Select your action"
-msgstr "Izberi ukrep"
+msgstr "Vali toiming"
 
 msgid "No action defined."
-msgstr "Nobenega ukrepa ni določenega."
+msgstr "Toiming on määramata."
 
 msgid "By: "
-msgstr "Od: "
+msgstr "Poolt:"
 
 msgid "Selection"
-msgstr "Izbira"
+msgstr "Valik"
 
-#, fuzzy
 msgid "Cancel"
-msgstr "_Prekliči"
+msgstr "Tühista"
 
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgid "Your selection:"
-msgstr "Vaša izbira:"
+msgstr "Teie valik:"
 
 msgid "Select"
-msgstr "Izberi"
+msgstr "Vali"
 
 msgid "Save"
-msgstr "Shrani"
+msgstr "Salvesta"
 
 msgid "Save As..."
-msgstr "Shrani kot..."
+msgstr "Salvesta nimega..."
 
 msgid "Always ignore this warning."
-msgstr "Vedno prezri to opozorilo."
+msgstr "Eira alati seda hoiatust."
 
 msgid "Do you want to proceed?"
-msgstr "Ali želite nadaljevati?"
+msgstr "Kas soovid jätkata?"
 
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 msgid "Yes"
-msgstr "Da"
+msgstr "Jah"
 
 msgid "Concurrency Exception"
-msgstr "Izjema sočasnega izvajanja"
+msgstr "Konkurentsi erand"
 
 msgid "This record has been modified while you were editing it."
-msgstr ""
+msgstr "Seda kirjet on muudetud."
 
 msgid "Cancel saving"
-msgstr ""
+msgstr "Tühista salvestamine"
 
 msgid "Compare"
-msgstr "Primerjaj"
+msgstr "Võrdle"
 
 msgid "See the modified version"
-msgstr ""
+msgstr "Vaata muudetud versiooni"
 
 msgid "Write Anyway"
-msgstr "Vseeno zapiši"
+msgstr "Kirjuta ikkagi"
 
 msgid "Save your current version"
-msgstr ""
+msgstr "Salvesta praegune versioon"
 
 msgid "Close"
-msgstr ""
+msgstr "Sulge"
 
-#, fuzzy
 msgid "Application Error"
-msgstr "Napaka programa."
+msgstr "Rakenduse viga"
 
 msgid "Report Bug"
-msgstr "Prijava programske napake"
+msgstr "Teatvita veast"
 
 #, python-format
 msgid "Check URL: %s"
-msgstr ""
+msgstr "Kontrolli URLi: %s"
 
 msgid "Unable to check for new version"
-msgstr ""
+msgstr "Ei saa kontrollida uut versiooni"
 
 msgid "A new version is available!"
-msgstr ""
+msgstr "Uus versioon on saadaval!"
 
 msgid "Download"
-msgstr ""
+msgstr "Allalaadimine"
 
 msgid "..."
 msgstr "..."
 
 msgid "<i>Search...</i>"
-msgstr "<i>Išči...</i>"
+msgstr "<i>Otsi...</i>"
 
 msgid "<i>Create...</i>"
-msgstr "<i>Ustvari...</i>"
+msgstr "<i>Loo...</i>"
 
 #, python-format
 msgid "Unable to search for completion of %s"
 msgstr ""
 
 msgid "Value"
-msgstr "Vrednost"
+msgstr "Väärtus"
 
 msgid "Displayed value"
-msgstr "Prikazana vrednost"
+msgstr "Kuvatud väärtus"
 
 msgid "Format"
-msgstr "Oblika"
+msgstr "Formaat"
 
 msgid "Display format"
-msgstr "Oblika prikaza"
+msgstr "Kuvatav formaat"
 
 msgid "Open the calendar"
-msgstr "Odpri koledar"
+msgstr "Ava kalender"
 
 msgid "Date Format"
-msgstr "Oblika datuma"
+msgstr "Kuupäevaformaat"
 
 msgid "Displayed date format"
-msgstr "Prikazana oblika datuma"
+msgstr "Kuvatav kuupäevaformaat"
 
 msgid "y"
-msgstr "d"
+msgstr "j"
 
 msgid "True"
-msgstr "Da"
+msgstr "Tõene"
 
 msgid "t"
 msgstr "t"
 
 msgid "False"
-msgstr "Ne"
+msgstr "Väär"
 
 msgid "Digits"
 msgstr ""
@@ -182,43 +179,43 @@ msgid "The number of decimal"
 msgstr ""
 
 msgid "Edit..."
-msgstr "Uredi ..."
+msgstr "Muuda..."
 
 msgid "Attachments..."
-msgstr "Priponke..."
+msgstr "Manused..."
 
 msgid "Notes..."
-msgstr "Zabeležke ..."
+msgstr "Märkused..."
 
 msgid "Actions..."
-msgstr "_Ukrepi..."
+msgstr "Toimingud..."
 
 msgid "Relate..."
-msgstr "_Veze..."
+msgstr "Seosta..."
 
 msgid "Report..."
-msgstr "Poročila..."
+msgstr "Aruanne..."
 
 msgid "E-Mail..."
-msgstr "_Elektronska pošta..."
+msgstr "E-kiri..."
 
 msgid "Print..."
-msgstr "_Izpis..."
+msgstr "Prindi..."
 
 msgid "Y"
-msgstr "l"
+msgstr "A"
 
 msgid "M"
-msgstr "M"
+msgstr "K"
 
 msgid "w"
-msgstr "t"
+msgstr "n"
 
 msgid "d"
-msgstr "d"
+msgstr "p"
 
 msgid "h"
-msgstr "u"
+msgstr "t"
 
 msgid "m"
 msgstr "m"
@@ -226,103 +223,90 @@ msgstr "m"
 msgid "s"
 msgstr "s"
 
-#, fuzzy
 msgid "Preferences..."
-msgstr "_Nastavitve..."
+msgstr "Eelistused..."
 
-#, fuzzy
 msgid "Toolbar"
-msgstr "_Orodna vrstica"
+msgstr "Tööriistariba"
 
-#, fuzzy
 msgid "Default"
-msgstr "_Privzeto"
+msgstr "Vaikimisi"
 
-#, fuzzy
 msgid "Text and Icons"
-msgstr "Bese_dilo in ikone"
+msgstr "Tekst ja ikoonid"
 
-#, fuzzy
 msgid "Text"
-msgstr "_Besedilo"
+msgstr "Tekst"
 
-#, fuzzy
 msgid "Icons"
-msgstr "_Ikone"
+msgstr "Ikoonid"
 
-#, fuzzy
 msgid "Form"
-msgstr "O_brazec"
+msgstr "Vorm"
 
 msgid "Save Width/Height"
-msgstr "Shrani širino/višino"
+msgstr "Salvesta kõrgus/laius"
 
 msgid "Save Tree State"
-msgstr "Shrani stanje drevesa"
+msgstr "Salvesta puu olek"
 
 msgid "Fast Tabbing"
-msgstr "Hitri premik"
+msgstr ""
 
 msgid "Spell Checking"
-msgstr "Črkovanje"
+msgstr "Õigekirja kontroll"
 
 msgid "PDA Mode"
-msgstr ""
+msgstr "PDA reziim"
 
 msgid "Search Limit..."
-msgstr "Omejitev iskanja..."
+msgstr "Otsingupiirang..."
 
-#, fuzzy
 msgid "Email..."
-msgstr "_Epošta..."
+msgstr "E-kiri..."
 
 msgid "Check Version"
+msgstr "Kontrolli versiooni"
+
+msgid "Options"
+msgstr "Valikud"
+
+msgid "Keyboard Shortcuts..."
+msgstr "Kiirklahvid..."
+
+msgid "About..."
 msgstr ""
 
-#, fuzzy
-msgid "Options"
-msgstr "_Možnosti"
-
-#, fuzzy
-msgid "Keyboard Shortcuts..."
-msgstr "_Bližnjice na tipkovnici..."
-
-#, fuzzy
-msgid "About..."
-msgstr "_Vizitka..."
-
-#, fuzzy
 msgid "Help"
-msgstr "_Pomoč"
+msgstr "Abi"
 
 msgid "Quit"
-msgstr ""
+msgstr "Välju"
 
 msgid "No result found."
-msgstr "Brez rezultatov."
+msgstr "Tulemusi ei leitud."
 
-#, fuzzy
 msgid "Favorites"
-msgstr "P_riljubljeno"
+msgstr "Lemmikud"
 
 msgid "Manage..."
-msgstr ""
+msgstr "Halda..."
 
 msgid "Action"
-msgstr "Ukrep"
+msgstr "Toiming"
 
 msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
-"Za naslednji ukrep morajo biti vsi zavihki zaprti.\n"
-"Ali želite nadaljevati?"
+"Järgneva toimingu teostamiseks on vaja sulgeda kõik vahelehed. \n"
+"Kas jätkata?"
 
 msgid "Application Shortcuts"
-msgstr ""
+msgstr "Rakenduse otseteed"
 
 msgid "Global"
-msgstr ""
+msgstr "Globaalne"
 
 msgid "Search menu"
 msgstr ""
@@ -330,16 +314,14 @@ msgstr ""
 msgid "Toggle menu"
 msgstr ""
 
-#, fuzzy
 msgid "Previous tab"
-msgstr "P_rejšnji zavihek"
+msgstr "Eelmine vaheleht"
 
-#, fuzzy
 msgid "Next tab"
-msgstr "_Naslednji zavihek"
+msgstr "Järgmine vaheleht"
 
 msgid "Shortcuts"
-msgstr ""
+msgstr "Otseteed"
 
 msgid "Edition Shortcuts"
 msgstr ""
@@ -348,40 +330,41 @@ msgid "Text Entries"
 msgstr ""
 
 msgid "Cut selected text"
-msgstr "Izreži vsebino"
+msgstr "Lõika valitud tekst"
 
 msgid "Copy selected text"
-msgstr "Kopiraj vsebino"
+msgstr "Kopeeri valitud tekst"
 
 msgid "Paste copied text"
-msgstr "Prilepi vsebino"
+msgstr "Aseta valitud tekst"
 
 msgid "Next entry"
-msgstr ""
+msgstr "Järgmine"
 
 msgid "Previous entry"
-msgstr ""
+msgstr "Eelmine"
 
 msgid "Relation Entries"
-msgstr ""
+msgstr "Seotud kirjed"
 
 msgid "Create new relation"
-msgstr "Dodajanje nove veze"
+msgstr ""
 
 msgid "Open/Search relation"
-msgstr "Urejanje/iskanje veze"
+msgstr ""
 
 msgid "List Entries"
 msgstr ""
 
+#, fuzzy
 msgid "Switch view"
-msgstr "Preklopi pogled"
+msgstr "Vaheta vaadet"
 
 msgid "Create/Select new line"
 msgstr ""
 
 msgid "Open relation"
-msgstr "Urejenje postavke"
+msgstr ""
 
 msgid "Mark line for deletion/removal"
 msgstr ""
@@ -390,78 +373,76 @@ msgid "Mark line for removal"
 msgstr ""
 
 msgid "Unmark line for deletion"
-msgstr "Postavka neoznačena za brisanje"
+msgstr ""
 
 msgid "List/Tree Shortcuts"
 msgstr ""
 
 msgid "Move Cursor"
-msgstr "Premiki"
+msgstr ""
 
-#, fuzzy
 msgid "Move right"
-msgstr "Premik desno"
+msgstr "Liigu paremale"
 
-#, fuzzy
 msgid "Move left"
-msgstr "Premik levo"
+msgstr "Liigu vasakule"
 
 msgid "Move up"
-msgstr "Premik gor"
+msgstr "Liigu üles"
 
 msgid "Move down"
-msgstr "Premik dol"
+msgstr "Liigu alla"
 
 msgid "Move up of one page"
-msgstr "Premik za eno stran gor"
+msgstr "Liigu lehekülg üles"
 
 msgid "Move down of one page"
-msgstr "Premik za eno stran dol"
+msgstr "Liigu lehekülg alla"
 
 msgid "Move to top"
-msgstr "Premik na začetek"
+msgstr "Liigu algusesse"
 
 msgid "Move to bottom"
-msgstr "Premik na konec"
+msgstr "Liigu lõppu"
 
 msgid "Move to parent"
-msgstr "Premik na nadrejeno vejo"
+msgstr ""
 
 msgid "Select all"
-msgstr "Izberi vse"
+msgstr "Vali kõik"
 
 msgid "Unselect all"
-msgstr "Odznači vse"
+msgstr "Tühista valik"
 
 msgid "Select parent"
-msgstr "Izberi nadrejeno vejo"
+msgstr "Vali ülem"
 
 msgid "Select/Activate current row"
-msgstr "Izberi/Aktiviraj trenutno vrstico"
+msgstr "Vali/aktiveeri rida"
 
 msgid "Toggle selection"
-msgstr "Vklopi/Izklopi izbor"
+msgstr ""
 
 msgid "Expand/Collapse"
-msgstr "Razširi/Skrči"
+msgstr "Ava/sule"
 
 msgid "Expand row"
-msgstr "Razširi vrstico"
+msgstr "Ava rida"
 
 msgid "Collapse row"
-msgstr "Skrči vrstico"
+msgstr "Sulge rida"
 
 msgid "Toggle row"
-msgstr "Razširi/Skrči vrstico"
+msgstr ""
 
 msgid "Collapse all rows"
-msgstr "Skrči vse vrstice"
+msgstr "Sulge kõik read"
 
 msgid "Expand all rows"
-msgstr "Razširi vse vrstice"
+msgstr "Ava kõik read"
 
 msgid "Close Tab"
-msgstr "Zapri zavihek"
+msgstr "Sulge vaheleht"
 
 msgid "modularity, scalability and security"
 msgstr ""
@@ -469,697 +450,693 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "Attachments (%s)"
-msgstr "Priponke (%s)"
+msgstr "Manus (%ed)"
 
 msgid "Profile Editor"
-msgstr "Urejevalnik profilov"
+msgstr "Profiili muutmine"
 
 msgid "Profile"
-msgstr "Profil"
+msgstr "Profiil"
 
 msgid "Add new profile"
-msgstr ""
+msgstr "Lisa uus profiil"
 
 msgid "Remove selected profile"
-msgstr ""
+msgstr "Eemalda valitud profiil"
 
 msgid "Host:"
-msgstr "Strežnik:"
+msgstr "Server:"
 
 msgid "Database:"
-msgstr "Podatkovna baza:"
+msgstr "Andmebaas:"
 
 msgid "Fetching databases list"
-msgstr "Pridobivanje seznama podatkovnih baz"
-
-msgid "Username:"
-msgstr "Uporabniško ime:"
-
-msgid "Incompatible version of the server"
-msgstr "Nezdružljiva inačica strežnika"
-
-msgid "Could not connect to the server"
-msgstr "Ni se možno povezati s strežnikom"
-
-msgid "Login"
-msgstr "Prijava"
-
-msgid "_Cancel"
-msgstr "_Prekliči"
-
-msgid "Cancel connection to the Tryton server"
-msgstr "Prekliči povezavo do Tryton strežnika"
-
-msgid "C_onnect"
-msgstr "P_oveži"
-
-msgid "Connect the Tryton server"
-msgstr "Poveži se s Tryton strežnikom"
-
-msgid "Profile:"
-msgstr "Profil:"
-
-msgid "Host / Database information"
-msgstr "Strežnik in podatkovna baza"
-
-msgid "User name:"
-msgstr "Uporabnik:"
-
-msgid "Email"
-msgstr "Epošta"
-
-msgid "Email Program Settings"
-msgstr "Nastavitve poštnega odjemalca"
-
-msgid "Command Line:"
-msgstr "Ukazna vrstica:"
-
-msgid "Legend of Available Placeholders:"
-msgstr "Opis možnih prostornikov:"
-
-msgid "To:"
-msgstr "Za:"
-
-msgid "CC:"
-msgstr "Kp:"
-
-msgid "Subject:"
-msgstr "Zadeva:"
-
-msgid "Body:"
-msgstr "Vsebina:"
-
-msgid "Attachment:"
-msgstr "Priponka:"
-
-msgid "Add..."
 msgstr ""
 
-#, python-format, fuzzy, python-format
+msgid "Username:"
+msgstr "Kasutajanimi:"
+
+msgid "Incompatible version of the server"
+msgstr ""
+
+msgid "Could not connect to the server"
+msgstr "Ei saanud serveriga ühendust"
+
+msgid "Login"
+msgstr "Logi sisse"
+
+msgid "_Cancel"
+msgstr "_Tühista"
+
+msgid "Cancel connection to the Tryton server"
+msgstr "Katkesta ühendus Tryton serveriga"
+
+msgid "C_onnect"
+msgstr "Ü_hendu"
+
+msgid "Connect the Tryton server"
+msgstr "Ühendu Tryton serveriga"
+
+msgid "Profile:"
+msgstr "Profiil:"
+
+msgid "Host / Database information"
+msgstr "Serveri / andmebaasi info"
+
+msgid "User name:"
+msgstr "Kasutaja nimi:"
+
+msgid "Email"
+msgstr "E-kiri"
+
+msgid "Email Program Settings"
+msgstr "E-kirja seadistus"
+
+msgid "Command Line:"
+msgstr "Käsurida:"
+
+msgid "Legend of Available Placeholders:"
+msgstr ""
+
+msgid "To:"
+msgstr "Saaja:"
+
+msgid "CC:"
+msgstr "CC:"
+
+msgid "Subject:"
+msgstr "Pealkiri:"
+
+msgid "Body:"
+msgstr "Sisu:"
+
+msgid "Attachment:"
+msgstr "Manus:"
+
+msgid "Add..."
+msgstr "Lisa..."
+
+#, python-format
 msgid "Attachment (%s)"
-msgstr "Priponke (%s)"
+msgstr "Manus (%s)"
 
 #, python-format
 msgid "Note (%d/%d)"
-msgstr ""
+msgstr "Märkus (%d%d)"
 
 msgid "You have to select one record."
-msgstr "En zapis mora biti izbran."
+msgstr "Pead valima vähemasti ühe rea."
 
 msgid "ID:"
-msgstr "ID:"
+msgstr "ID"
 
 msgid "Creation User:"
-msgstr "Ustvaril:"
+msgstr "Looja:"
 
 msgid "Creation Date:"
-msgstr "Ustvarjeno:"
+msgstr "Luumise kuupäev:"
 
 msgid "Latest Modification by:"
-msgstr "Nazadnje popravil:"
+msgstr "Muutja:"
 
 msgid "Latest Modification Date:"
-msgstr "Nazadnje popravljeno:"
+msgstr "Muutmise kuupäev:"
 
 msgid "Model:"
-msgstr "Model:"
+msgstr "Mudel:"
 
 msgid "Are you sure to remove this record?"
-msgstr "Ali res želiš izbrisati ta zapis?"
+msgstr "Oled kindel, et kustutada see kirje?"
 
 msgid "Are you sure to remove those records?"
-msgstr "Ali res želiš izbrisati te zapise?"
+msgstr "Oled kindel, et kustutada need kirjed?"
 
 msgid "Records not removed."
-msgstr "Zapisi niso izbrisani."
+msgstr "Kirjeid ei kustutatud."
 
 msgid "Records removed."
-msgstr "Zapisi izbrisani."
+msgstr "Kirjed kustutatud."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Trenutno se dela na podvojenih zapisih."
+msgstr ""
 
 msgid "Record saved."
-msgstr "Zapis shranjen."
+msgstr "Kirje salvestatud."
 
 msgid " of "
-msgstr " od "
+msgstr ""
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Ta zapis je bil spremenjen,\n"
-"ga želiš shraniti?"
+"Seda kirjet on muudetud,\n"
+"kas soovid salvestada?"
 
 msgid "Launch action"
-msgstr "Zaženi ukrep"
+msgstr "Käivita toiming"
 
 msgid "Relate"
-msgstr "Veza"
+msgstr "Seo"
 
 msgid "Open related records"
-msgstr "Odpri vezo"
+msgstr "Ava seotud kirjed"
 
 msgid "Report"
-msgstr "Poročila"
+msgstr "Aruanne"
 
 msgid "Open report"
-msgstr "Odpri poročilo"
+msgstr "Ava aruanne"
 
 msgid "E-Mail"
-msgstr "Pošlji"
+msgstr "E-kiri"
 
 msgid "E-Mail report"
-msgstr "Pošlji poročilo"
+msgstr "E-mail aruanne"
 
 msgid "Print"
-msgstr "Tisk"
+msgstr "Prindi"
 
 msgid "Print report"
-msgstr "Izpis poročila"
+msgstr "Prindi aruanne"
 
 msgid "_Copy URL"
-msgstr "_Kopiraj URL"
+msgstr "_Kopeeri URL"
 
 msgid "Copy URL into clipboard"
-msgstr "Kopiraj URL na odložišče"
+msgstr "Kopeeri URL lõikelauale"
 
 msgid "Unknown"
-msgstr "Neznano"
+msgstr "Tundmatu"
 
 msgid "Limit"
-msgstr "Omejitev"
+msgstr "Limiit"
 
 msgid "Search Limit Settings"
-msgstr "Nastavitev omejitev iskanja"
+msgstr "Otsingupiirangu seaded"
 
 msgid "Limit:"
-msgstr "Omejitev:"
+msgstr "Limiit"
 
 #, python-format
 msgid "Notes (%s)"
-msgstr "Zabeležke (%s)"
+msgstr "Märkused (%s)"
 
 msgid "Preferences"
-msgstr "Nastavitve"
+msgstr "Eelistused"
 
 msgid "Edit User Preferences"
-msgstr "Uredi uporabniške nastavitve"
+msgstr "Muuda kasutaja eelistusi"
 
 msgid "Preference"
-msgstr "Nastavitev"
+msgstr "Eelistus"
 
 msgid "Revision"
-msgstr "Različica"
+msgstr "Läbivaatus"
 
 msgid "Select a revision"
-msgstr "Izberi različico"
+msgstr "Vali läbivaatus"
 
 msgid "Revision:"
-msgstr "Različica:"
+msgstr "Läbivaatus:"
 
 msgid "_Switch View"
-msgstr "Preklopi po_gled"
+msgstr "_Vaheta vaadet"
 
 msgid "Switch View"
-msgstr "Preklopi pogled"
+msgstr "Vaheta vaadet"
 
 msgid "_Previous"
-msgstr "P_rejšnji"
+msgstr "_Eelmine"
 
 msgid "Previous Record"
-msgstr "Prejšnji zapis"
+msgstr "Eelmine kirje"
 
 msgid "_Next"
-msgstr "Nas_lednji"
+msgstr "_Edasi"
 
 msgid "Next Record"
-msgstr "Naslednji zapis"
+msgstr "Järgmine kirje"
 
 msgid "_Search"
-msgstr "_Išči"
+msgstr "_Otsi"
 
 msgid "_New"
-msgstr "_Nov"
+msgstr "_Uus"
 
 msgid "Create a new record"
-msgstr "Ustvari nov zapis"
+msgstr "Loo uus kirje"
 
 msgid "_Save"
-msgstr "_Shrani"
+msgstr "_Salvesta"
 
 msgid "Save this record"
-msgstr "Shrani ta zapis"
+msgstr "Salvesta kirje"
 
 msgid "_Reload/Undo"
-msgstr "Ponovno naloži/Razvel_javi"
-
-msgid "Reload/Undo"
-msgstr "Ponovno naloži/Razveljavi"
-
-msgid "_Duplicate"
-msgstr "_Podvoji"
-
-msgid "_Delete..."
-msgstr "Z_briši..."
-
-msgid "View _Logs..."
-msgstr "Poglej dnevni_k..."
-
-msgid "Show revisions..."
-msgstr "Prikaži različice ..."
-
-msgid "A_ttachments..."
-msgstr "P_riponke..."
-
-msgid "Add an attachment to the record"
-msgstr "Dodaj priponko zapisu"
-
-msgid "_Notes..."
-msgstr "_Zabeležke ..."
-
-msgid "Add a note to the record"
-msgstr "K zapisu dodaj zabeležko"
-
-msgid "_Actions..."
-msgstr "_Ukrepi..."
-
-msgid "_Relate..."
-msgstr "_Veze..."
-
-msgid "_Report..."
-msgstr "P_oročila..."
-
-msgid "_E-Mail..."
-msgstr "_Elektronska pošta..."
-
-msgid "_Print..."
-msgstr "_Tiskaj..."
-
-msgid "_Export Data..."
-msgstr "I_zvozi podatke..."
-
-msgid "_Import Data..."
-msgstr "Uv_ozi podatke..."
-
-msgid "Copy _URL..."
-msgstr "_Kopiraj URL ..."
-
-msgid "_Close Tab"
-msgstr "Zapri zavi_hek"
-
-msgid "<b>All fields</b>"
-msgstr "<b>Vsa polja</b>"
-
-msgid "_Add"
-msgstr "_Dodaj"
-
-msgid "_Remove"
-msgstr "_Odstrani"
-
-msgid "_Clear"
-msgstr "_Počisti"
-
-msgid "<b>Fields selected</b>"
-msgstr "<b>Izbrana polja</b>"
-
-msgid "CSV Parameters"
-msgstr "CSV parametri"
-
-msgid "Delimiter:"
-msgstr "Ločilo:"
-
-msgid "Quote char:"
-msgstr "Narekovaj:"
-
-msgid "Encoding:"
-msgstr "Kodiranje:"
-
-msgid "Use locale format"
 msgstr ""
 
+msgid "Reload/Undo"
+msgstr ""
+
+msgid "_Duplicate"
+msgstr "_Duplikaat"
+
+msgid "_Delete..."
+msgstr "_Kustuta..."
+
+msgid "View _Logs..."
+msgstr "Vaata _logisid"
+
+msgid "Show revisions..."
+msgstr "Näita läbivaatust..."
+
+msgid "A_ttachments..."
+msgstr "M_anused..."
+
+msgid "Add an attachment to the record"
+msgstr "Lisa kirjele manus"
+
+msgid "_Notes..."
+msgstr "_Märkused..."
+
+msgid "Add a note to the record"
+msgstr "Lisa kirjele manus"
+
+msgid "_Actions..."
+msgstr "_Toimingud..."
+
+msgid "_Relate..."
+msgstr "_Seosta..."
+
+msgid "_Report..."
+msgstr "_Aruanne..."
+
+msgid "_E-Mail..."
+msgstr "_E-kiri..."
+
+msgid "_Print..."
+msgstr "_Prindi..."
+
+msgid "_Export Data..."
+msgstr "_Ekspordi andmed..."
+
+msgid "_Import Data..."
+msgstr "_Impordi andmed..."
+
+msgid "Copy _URL..."
+msgstr "Kopeeri _URL..."
+
+msgid "_Close Tab"
+msgstr "_Sulge vaheleht"
+
+msgid "<b>All fields</b>"
+msgstr "<b>Kõik väljad</b>"
+
+msgid "_Add"
+msgstr "_Lisa"
+
+msgid "_Remove"
+msgstr "_Eemalda"
+
+msgid "_Clear"
+msgstr "_Tühjenda"
+
+msgid "<b>Fields selected</b>"
+msgstr "<b>Valitud väljad</b>"
+
+msgid "CSV Parameters"
+msgstr "CSV parameetrid"
+
+msgid "Delimiter:"
+msgstr "Eralaja:"
+
+msgid "Quote char:"
+msgstr ""
+
+msgid "Encoding:"
+msgstr ""
+
+msgid "Use locale format"
+msgstr "Kasuta piirkonna formaati"
+
 msgid "Field name"
-msgstr "Naziv polja"
+msgstr "Välja nimi"
 
 #, python-format
 msgid "CSV Export: %s"
-msgstr ""
+msgstr "CSV eksport: %s"
 
 msgid "_Save Export"
-msgstr "_Shrani izvoz"
+msgstr "_Salvesta eksport"
 
 msgid "_Delete Export"
-msgstr "_Izbriši izvoz"
+msgstr "_Kustuta eksport"
 
 msgid "<b>Predefined exports</b>"
-msgstr "<b>Predefinirani izvozi</b>"
+msgstr "<b>Eelnevalt määratletud ekspordid</b>"
 
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nimi"
 
 msgid "Open"
-msgstr "Odpri"
+msgstr "Ava"
 
-#, fuzzy
 msgid "Add field names"
-msgstr "Dodaj imena _polj"
+msgstr "Lisa välja nimed"
 
 #, python-format
 msgid "%s (string)"
-msgstr "%s (niz)"
+msgstr "%s (string)"
 
 #, python-format
 msgid "%s (model name)"
-msgstr "%s (ime modela)"
+msgstr "%s (model name)"
 
 #, python-format
 msgid "%s (record name)"
-msgstr "%s (ime zapisa)"
+msgstr "%s (record name)"
 
 msgid "What is the name of this export?"
-msgstr "Kako se imenuje ta izvoz?"
+msgstr ""
 
 #, python-format
 msgid "Override '%s' definition?"
-msgstr "Prepišem definicijo izvoza '%s'?"
+msgstr ""
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record saved."
-msgstr "%d zapis shranjen."
+msgstr "%d kirje salvestatud."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records saved."
-msgstr "%d zapisov shranjenih."
+msgstr "%d kirjed salvestatud."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid ""
 "Operation failed.\n"
 "Error message:\n"
 "%s"
 msgstr ""
-"Operacija odpovedala.\n"
-"Sporočilo napake:\n"
+"Toiming ebaõnnestus.\n"
+"Veateade:\n"
 "%s"
 
 msgid "Error"
-msgstr "Napaka"
+msgstr "Viga"
 
 msgid "Link"
-msgstr "Povezava"
+msgstr "Link"
 
 msgid "Delete"
-msgstr "Zbriši"
+msgstr "Kustuta"
 
 msgid "New"
-msgstr "Novo"
+msgstr "Uus"
 
 msgid "Switch"
-msgstr "Preklopi"
+msgstr "Vaheta"
 
 msgid "Previous"
-msgstr "Prejšnji"
+msgstr "Eelmine"
 
 msgid "Next"
-msgstr "Naslednji"
+msgstr "Edasi"
 
 msgid "Add"
-msgstr "Dodaj"
+msgstr "Lisa"
 
 msgid "Remove <Del>"
-msgstr "Odstrani <Del>"
+msgstr "Eemalda <Del>"
 
 msgid "Create a new record <F3>"
-msgstr "Ustvari nov zapis <F3>"
+msgstr "Uus kirje <F3>"
 
 msgid "Delete selected record <Del>"
-msgstr "Zbriši izbran zapis <Del>"
+msgstr "Kustuta <Del>"
 
 msgid "Undelete selected record <Ins>"
-msgstr "Povrni izbran zapis <Ins>"
+msgstr "Taasta valitud kirje <Ins>"
 
 #, python-format
 msgid "CSV Import: %s"
-msgstr ""
+msgstr "CSV import: %s"
 
 msgid "_Auto-Detect"
-msgstr "_Samozaznava"
+msgstr "_Automaatne tuvastus"
 
 msgid "File to Import:"
-msgstr "Datoteka za uvoz:"
+msgstr "Imporditav fail:"
 
 msgid "Open..."
-msgstr "Odpri..."
+msgstr "Ava..."
 
 msgid "Lines to Skip:"
-msgstr "Izpuščene vrstice:"
+msgstr ""
 
 msgid "You must select an import file first."
-msgstr "Najprej morate izbrati datoteke za uvažanje."
+msgstr "Esmalt tuleb valida imporditav fail."
 
 msgid "Error opening CSV file"
-msgstr "Napaka pri odpiranju CSV datoteke"
+msgstr "CSV faili avamisel tekkis viga"
 
 #, python-format
 msgid "Error processing the file at field %s."
-msgstr "Napaka obdelave datoteke pri polju %s."
+msgstr "Faili töötlemisel tekkis väljal %s viga."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d record imported."
-msgstr "%d zapis uvožen."
+msgstr "%d kirje imporditud."
 
-#, python-format, python-format, python-format, python-format
+#, python-format
 msgid "%d records imported."
-msgstr "%d zapisov uvoženih."
+msgstr "%d kirjed imporditud."
 
 msgid "Search"
-msgstr "Išči"
+msgstr "Otsi"
 
 #, python-format
 msgid "Search %s"
-msgstr "Išči %s"
+msgstr "Otsi %s"
 
 #, python-format
 msgid "Unable to delete wizard %s"
-msgstr ""
+msgstr "Ei saa kustutada nõustajat %s"
 
 msgid "Wizard"
-msgstr "Čarovnik"
+msgstr "Nõustaja"
 
 msgid "ID"
 msgstr "ID"
 
 msgid "Creation User"
-msgstr "Ustvaril"
+msgstr "Looja"
 
 msgid "Creation Date"
-msgstr "Ustvarjeno"
+msgstr "Loomise kuupäev"
 
 msgid "Modification User"
-msgstr "Popravil"
+msgstr "Muutja"
 
 msgid "Modification Date"
-msgstr "Popravljeno"
+msgstr "Muutmise kuupäev"
 
-#, python-format, python-format, fuzzy, python-format
+#, python-format
 msgid "Unable to get view tree state for %s"
-msgstr "Ni možno nastaviti stanja obrazca %s"
+msgstr ""
 
 msgid "Unable to set view tree state"
-msgstr "Ni možno nastaviti stanja obrazca"
+msgstr ""
 
 #, python-format
 msgid "\"%s\" is not valid according to its domain"
-msgstr "Polje \"%s\" ni veljavno glede na svojo domeno"
+msgstr "\"%s\" ei ole selle domeeni jaoks lubatud"
 
 #, python-format
 msgid "\"%s\" is required"
-msgstr "Polje \"%s\" je obvezno"
+msgstr "\"%s\" on nõutud"
 
 #, python-format
 msgid "The values of \"%s\" are not valid"
-msgstr "Vrednosti v polju \"%s\" niso veljavne"
+msgstr "\"%s\" väärtused ei ole lubatud"
 
 msgid "Pre-validation"
-msgstr "Predpreverjanje"
+msgstr "Eelkontroll"
 
 msgid ":"
 msgstr ":"
 
 msgid "Image Size"
-msgstr "Velikost slike"
+msgstr "Pildi suurus"
 
 msgid "Width:"
-msgstr "Širina:"
+msgstr "Laius:"
 
 msgid "Height:"
-msgstr "Velikost:"
+msgstr "Kõrgus:"
 
 msgid "PNG image (*.png)"
-msgstr "PNG slika (*.png)"
+msgstr "PNG pilt (*.png)"
 
 msgid "Save As"
-msgstr "Shrani kot"
+msgstr "Salvesta nimega"
 
 msgid "Image size too large."
-msgstr "Slika je prevelika."
+msgstr "Pilt on liiga suur."
 
 msgid "Copy"
-msgstr ""
+msgstr "Kopeeri"
 
 msgid "Paste"
-msgstr ""
+msgstr "Aseta"
 
 msgid ".."
 msgstr ".."
 
 msgid "Open filters"
-msgstr "Odpri filtre"
+msgstr "Ava filtrid"
 
 msgid "Show bookmarks of filters"
-msgstr "Prikaži zaznamke filtrov"
+msgstr "Näita filtrite järjehoidjaid"
 
 msgid "Remove this bookmark"
-msgstr "Odstrani ta zaznamek"
+msgstr "Eemalda järjehoidja"
 
 msgid "Bookmark this filter"
-msgstr "Shrani ta filter"
+msgstr "Lisa filter järjehoidjatesse"
 
 msgid "Show active records"
-msgstr ""
+msgstr "Näita aktiivseid kirjeid"
 
 msgid "Show inactive records"
-msgstr ""
+msgstr "Näita mitteaktiivseid filtreid"
 
 msgid "Bookmark Name:"
-msgstr "Ime zaznamka:"
+msgstr "Järjehoidja nimi:"
 
 msgid "Find"
-msgstr "Najdi"
+msgstr "Otsi"
 
 msgid "Today"
-msgstr "Danes"
+msgstr "Täna"
 
 msgid "go back"
-msgstr "pojdi nazaj"
+msgstr "mine tagasi"
 
 msgid "go forward"
-msgstr "pojdi naprej"
+msgstr "mine edasi"
 
 msgid "previous year"
-msgstr "Prejšnje leto"
+msgstr "eelmine aasta"
 
 msgid "next year"
-msgstr "naslednje leto"
+msgstr "järgmine aasta"
 
 msgid "Day View"
-msgstr ""
+msgstr "Päeva vaade"
 
 msgid "Week View"
-msgstr "Tedensko"
+msgstr "Nädala vaade"
 
 msgid "Month View"
-msgstr "Mesečno"
+msgstr "Kuu vaade"
 
 msgid "Week"
-msgstr "Teden"
+msgstr "Nädal"
 
 msgid "Select..."
-msgstr "Izberi ..."
+msgstr "Vali..."
 
 msgid "Clear"
-msgstr "Počisti"
+msgstr "Tühjenda"
 
 msgid "All files"
-msgstr "Vse datoteke"
+msgstr "Kõik failid"
 
 msgid "Show plain text"
-msgstr "Prikaži navadno besedilo"
+msgstr "Näita tekstina"
 
 msgid "Add value"
-msgstr "Dodaj vrednost"
+msgstr "Lisa väärtus"
 
 #, python-format
 msgid "Remove \"%s\""
-msgstr "Odstrani \"%s\""
+msgstr "Eemalda \"%s\""
 
 msgid "Images"
-msgstr "Slike"
+msgstr "Pildid"
 
 msgid "Add existing record"
-msgstr "Dodaj obstoječi zapis"
+msgstr "Lisa olemasolev kirje"
 
 msgid "Remove selected record"
-msgstr "Odstrani izbran zapis"
+msgstr "Eemalda valitud kirje"
 
 msgid "Open the record <F2>"
-msgstr "Odpri zapis <F2>"
+msgstr "Ava see kirje <F2>"
 
-#, fuzzy
 msgid "Clear the field <Del>"
-msgstr "Počisti zapis <Del>"
+msgstr "Tühjenda väli <Del>"
 
 msgid "Search a record <F2>"
-msgstr "Poišči zapis <F2>"
+msgstr "Otsi kirjet <F2>"
 
-#, fuzzy
 msgid "Edit selected record"
-msgstr "Uredi izbran zapis <F2>"
+msgstr "Muuda valitud kirjet"
 
-#, fuzzy
 msgid "Delete selected record"
-msgstr "Odstrani izbran zapis"
+msgstr "Kustuta valitud kirje"
 
 #, python-format
 msgid "%s%%"
 msgstr "%s%%"
 
 msgid "Bold"
-msgstr ""
+msgstr "Paks"
 
 msgid "Italic"
-msgstr ""
+msgstr "Kursiiv"
 
 msgid "Underline"
-msgstr ""
+msgstr "Allajoonitud"
 
 msgid "Align Left"
-msgstr ""
+msgstr "Joonda vasakule"
 
 msgid "Align Center"
-msgstr ""
+msgstr "Joonda keskele"
 
 msgid "Align Right"
-msgstr ""
+msgstr "Joonda paremale"
 
 msgid "Justify"
-msgstr ""
+msgstr "Ühtlusta"
 
 msgid "Foreground Color"
-msgstr ""
+msgstr "Esiplaani värv"
 
 msgid "Select a color"
-msgstr "Izberi barvo"
+msgstr "Vali värv"
 
 msgid "Choose a language"
-msgstr ""
+msgstr "Vali keel"
 
 msgid "Translation"
-msgstr "Prevod"
+msgstr "Tõlge"
 
 msgid "Edit"
-msgstr "Uredi"
+msgstr "Muuda"
 
 msgid "Fuzzy"
-msgstr "Nejasno"
+msgstr "Hägune"
 
 msgid "You need to save the record before adding translations."
-msgstr "Pred dodajanjem prevodov morate zapis shraniti."
+msgstr "Kirje tuleb salvestada enne tõlke lisamist."
 
 msgid "No other language available."
-msgstr "Drugih jezikov ni na voljo."
+msgstr "Teisi keeli pole saadaval."
 
 msgid "Translate view"
-msgstr "Prevedi pogled"
+msgstr "Tõlgi vaade"
