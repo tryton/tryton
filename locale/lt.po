@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
@@ -28,11 +28,11 @@ msgstr ""
 
 msgctxt "field:carrier.weight_price_list,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:carrier.weight_price_list,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:carrier.weight_price_list,id:"
 msgid "ID"
@@ -52,15 +52,15 @@ msgstr ""
 
 msgctxt "field:carrier.weight_price_list,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:carrier.weight_price_list,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
-msgstr ""
+msgstr "Kainos valiuta"
 
 msgctxt "help:carrier,weight_price_list:"
 msgid "Add price to the carrier service."
@@ -79,7 +79,7 @@ msgid "The price of the carrier service."
 msgstr ""
 
 msgctxt "help:carrier.weight_price_list,weight:"
-msgid "The upper limit for the price."
+msgid "The lower limit for the price."
 msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"

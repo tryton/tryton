@@ -79,8 +79,8 @@ msgid "The price of the carrier service."
 msgstr "El precio del servicio del transportista."
 
 msgctxt "help:carrier.weight_price_list,weight:"
-msgid "The upper limit for the price."
-msgstr "El límite superior al que aplica el precio."
+msgid "The lower limit for the price."
+msgstr "El límite inferior al que aplica el precio."
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"

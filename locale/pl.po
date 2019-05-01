@@ -79,7 +79,7 @@ msgid "The price of the carrier service."
 msgstr ""
 
 msgctxt "help:carrier.weight_price_list,weight:"
-msgid "The upper limit for the price."
+msgid "The lower limit for the price."
 msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"
