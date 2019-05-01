@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date."
-msgstr ""
-
-msgctxt "error:currency.currency.rate:"
-msgid "The currency rate must greater than or equal to 0"
-msgstr ""
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr ""
-
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr ""
@@ -24,11 +12,11 @@ msgstr ""
 
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
@@ -69,24 +57,23 @@ msgstr ""
 
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
@@ -106,11 +93,11 @@ msgstr ""
 
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:currency.currency,active:"
 msgid "Uncheck to exclude from future use."
@@ -118,7 +105,7 @@ msgstr ""
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
-msgstr ""
+msgstr "Valiutos 3 simbolių ISO kodas."
 
 msgctxt "help:currency.currency,digits:"
 msgid "The number of digits to display after the decimal separator."
@@ -126,27 +113,27 @@ msgstr ""
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
-msgstr ""
+msgstr "Pagrindinis valiutos identifikatorius."
 
 msgctxt "help:currency.currency,numeric_code:"
 msgid "The 3 digits ISO currency code."
-msgstr ""
+msgstr "Valiutos 3 skaitmenų kodas."
 
 msgctxt "help:currency.currency,rates:"
 msgid "Add floating exchange rates for the currency."
-msgstr ""
+msgstr "Pridėti kintamus valiutos kursus."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr ""
+msgstr "Minimali suma, kuri gali būti parodoma šia valiuta"
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
-msgstr ""
+msgstr "Valiutos formatui naudojamas simbolis."
 
 msgctxt "help:currency.currency.rate,currency:"
 msgid "The currency on which the rate applies."
-msgstr ""
+msgstr "Valiuta, kuriai pritaikomas kursas."
 
 msgctxt "help:currency.currency.rate,date:"
 msgid "From when the rate applies."
@@ -156,10 +143,9 @@ msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Valiuta"
 
 msgctxt "model:currency.currency,name:aed"
 msgid "UAE Dirham"
@@ -851,9 +837,21 @@ msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Currencies"
 
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Valiutos kursas turi būti teigiamas."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Valiuta vienai datai gali turėti tik vieną keitimo kursą."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Valiuta"
 
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
@@ -861,7 +859,7 @@ msgstr "Currencies"
 
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Currency Administration"
+msgstr "Valiutos administravimas"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

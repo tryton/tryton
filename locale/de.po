@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date."
-msgstr "Es kann nur einen Kurs pro Datum für eine Währung geben."
-
-msgctxt "error:currency.currency.rate:"
-msgid "The currency rate must greater than or equal to 0"
-msgstr "Der Kurs muss größer oder gleich 0 sein"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr "Fehlender Kurs für Währung \"%(currency)s\" am \"%(date)s\"."
-
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -124,7 +112,7 @@ msgstr "Die Anzahl der Nachkommastellen die angezeigt werden sollen."
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
-msgstr "Die Hauptbezeichnung der Währung."
+msgstr "Das Hauptidentifizierungsmerkmal der Währung."
 
 msgctxt "help:currency.currency,numeric_code:"
 msgid "The 3 digits ISO currency code."
@@ -200,7 +188,7 @@ msgstr "Aserbeidschanischer Manat"
 
 msgctxt "model:currency.currency,name:bam"
 msgid "Convertible Mark"
-msgstr "Konvertierbare Mark"
+msgstr "Konvertible Mark"
 
 msgctxt "model:currency.currency,name:bbd"
 msgid "Barbados Dollar"
@@ -846,6 +834,18 @@ msgstr "Kurs"
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Währungen"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Der Währungskurs muss positiv sein."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Es darf nur einen Kurs pro Datum für eine Währung geben."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr "Fehlender Kurs für Währung \"%(currency)s\" am \"%(date)s\"."
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"

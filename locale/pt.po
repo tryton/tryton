@@ -2,20 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date."
-msgstr "Uma moeda somente pode ter uma taxa de conversão por dia."
-
-msgctxt "error:currency.currency.rate:"
-msgid "The currency rate must greater than or equal to 0"
-msgstr "A taxa de conversão deve ser maior ou igual a 0"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr ""
-"Não foi encontrata nenhuma taxa de câmbio para a moeda \"%(currency)s\" em  "
-"\"%(date)s\""
-
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Ativo"
@@ -34,7 +20,7 @@ msgstr "Usuário de Criação"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Dígitos"
 
 msgctxt "field:currency.currency,id:"
 msgid "ID"
@@ -114,47 +100,47 @@ msgstr "Editado por"
 
 msgctxt "help:currency.currency,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
-msgstr ""
+msgstr "O código ISO de 3 caracteres da moeda."
 
 msgctxt "help:currency.currency,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr ""
+msgstr "Número de dígitos a serem exibidos após o separador decimal."
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
-msgstr ""
+msgstr "O principal identificador da moeda."
 
 msgctxt "help:currency.currency,numeric_code:"
 msgid "The 3 digits ISO currency code."
-msgstr ""
+msgstr "O código ISO de 3 dígitos da moeda."
 
 msgctxt "help:currency.currency,rates:"
 msgid "Add floating exchange rates for the currency."
-msgstr ""
+msgstr "Adicionar taxas de câmbio flutuantes para a moeda."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr ""
+msgstr "A quantidade mínima que pode ser representada nesta moeda."
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
-msgstr ""
+msgstr "O símbolo utilizado para formatar a moeda."
 
 msgctxt "help:currency.currency.rate,currency:"
 msgid "The currency on which the rate applies."
-msgstr ""
+msgstr "A moeda a qual a taxa se aplica."
 
 msgctxt "help:currency.currency.rate,date:"
 msgid "From when the rate applies."
-msgstr ""
+msgstr "Desde quando a taxa se aplica."
 
 msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
-msgstr ""
+msgstr "A taxa de câmbio flutuante utilizada para converter a moeda."
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
@@ -302,7 +288,7 @@ msgstr "Cabo Verde Escudo"
 
 msgctxt "model:currency.currency,name:czk"
 msgid "Czech Koruna"
-msgstr "Coroa Tcheca"
+msgstr "Koruna Checa"
 
 msgctxt "model:currency.currency,name:djf"
 msgid "Djibouti Franc"
@@ -574,7 +560,7 @@ msgstr "Dólar Neo-Zelandês"
 
 msgctxt "model:currency.currency,name:omr"
 msgid "Rial Omani"
-msgstr "Rial de Omã"
+msgstr "Omani do Rial"
 
 msgctxt "model:currency.currency,name:pab"
 msgid "Balboa"
@@ -832,7 +818,6 @@ msgctxt "model:currency.currency,name:zar"
 msgid "Rand"
 msgstr "Rand"
 
-#, fuzzy
 msgctxt "model:currency.currency,name:zmw"
 msgid "Zambian Kwacha"
 msgstr "Zambian Kwacha"
@@ -845,25 +830,35 @@ msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Taxa de câmbio"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Moedas"
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "A taxa da moeda deve ser positiva."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Uma moeda só pode ter uma taxa de conversão por dia."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+"Nenhuma taxa de câmbio encontrada para a moeda \"%(currency)s\" em "
+"\"%(date)s\"."
+
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Moeda"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Moedas"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Currency Administration"
+msgstr "Administração de moedas"
 
 msgctxt "view:currency.currency:"
 msgid "Rates"

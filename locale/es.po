@@ -2,20 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date."
-msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
-
-msgctxt "error:currency.currency.rate:"
-msgid "The currency rate must greater than or equal to 0"
-msgstr "La tasa de cambio de la moneda debe ser mayor o igual a 0."
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr ""
-"No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
-"en la fecha \"%(date)s\"."
-
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Activo"
@@ -202,7 +188,7 @@ msgstr "Manat de Azerbayán"
 
 msgctxt "model:currency.currency,name:bam"
 msgid "Convertible Mark"
-msgstr "Marco convertible"
+msgstr "Convertible Mark"
 
 msgctxt "model:currency.currency,name:bbd"
 msgid "Barbados Dollar"
@@ -814,7 +800,7 @@ msgstr "Sucre"
 
 msgctxt "model:currency.currency,name:xts"
 msgid "Codes specifically reserved for testing purposes"
-msgstr "Códigos reservados específicamente para pruebas"
+msgstr "Codes specifically reserved for testing purposes"
 
 msgctxt "model:currency.currency,name:xua"
 msgid "ADB Unit of Account"
@@ -822,8 +808,7 @@ msgstr "ADB Unit of Account"
 
 msgctxt "model:currency.currency,name:xxx"
 msgid "The codes assigned for transactions where no currency is involved"
-msgstr ""
-"Los códigos asignados para transacciones dónde no hay moneda involucrada"
+msgstr "The codes assigned for transactions where no currency is involved"
 
 msgctxt "model:currency.currency,name:yer"
 msgid "Yemeni Rial"
@@ -848,6 +833,20 @@ msgstr "Tasa de cambio"
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
 msgstr "Monedas"
+
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "La tasa de cambio debe ser positiva"
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Una moneda sólo puede tener una tasa de cambio por fecha."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr ""
+"No se ha encontrado ninguna tasa de cambio para la moneda \"%(currency)s\" "
+"para la fecha \"%(date)s\"."
 
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"

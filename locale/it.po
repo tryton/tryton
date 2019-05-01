@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:currency.currency.rate:"
-msgid "A currency can only have one rate by date."
-msgstr "Una valuta può avere solo un cambio per giorno"
-
-msgctxt "error:currency.currency.rate:"
-msgid "The currency rate must greater than or equal to 0"
-msgstr "Il tasso di cambio dev'essere maggiore o uguale a 0"
-
-msgctxt "error:currency.currency:"
-msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\""
-msgstr "Tasso di cambio non trovato per la valuta \"%(currency)s\" il \"%(date)s\""
-
 msgctxt "field:currency.currency,active:"
 msgid "Active"
 msgstr "Attivo"
@@ -22,26 +10,22 @@ msgctxt "field:currency.currency,code:"
 msgid "Code"
 msgstr "Codice"
 
-#, fuzzy
 msgctxt "field:currency.currency,create_date:"
 msgid "Create Date"
-msgstr "Creazione Data"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:currency.currency,create_uid:"
 msgid "Create User"
-msgstr "Creazione Utente"
+msgstr "Creato da"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Posizioni"
 
-#, fuzzy
 msgctxt "field:currency.currency,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:currency.currency,name:"
 msgid "Name"
 msgstr "Nome"
@@ -60,7 +44,7 @@ msgstr "Tassi"
 
 msgctxt "field:currency.currency,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
@@ -70,36 +54,30 @@ msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
 msgstr "Simbolo"
 
-#, fuzzy
 msgctxt "field:currency.currency,write_date:"
 msgid "Write Date"
-msgstr "Data di Scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:currency.currency,write_uid:"
 msgid "Write User"
-msgstr "Scrivente"
+msgstr "Utente Scrittura"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,create_date:"
 msgid "Create Date"
-msgstr "Creazione Data"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,create_uid:"
 msgid "Create User"
-msgstr "Creazione Utente"
+msgstr "Creato da"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,id:"
 msgid "ID"
 msgstr "ID"
@@ -110,57 +88,55 @@ msgstr "Cambio"
 
 msgctxt "field:currency.currency.rate,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,write_date:"
 msgid "Write Date"
-msgstr "Data di Scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:currency.currency.rate,write_uid:"
 msgid "Write User"
-msgstr "Scrivente"
+msgstr "Utente Scrittura"
 
 msgctxt "help:currency.currency,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Deselezionare per escludere dall'uso futuro."
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
-msgstr ""
+msgstr "Il codice valuta ISO 3 caratteri."
 
 msgctxt "help:currency.currency,digits:"
 msgid "The number of digits to display after the decimal separator."
-msgstr ""
+msgstr "Il numero di cifre da visualizzare dopo il separatore decimale."
 
 msgctxt "help:currency.currency,name:"
 msgid "The main identifier of the currency."
-msgstr ""
+msgstr "L'identificatore principale della valuta."
 
 msgctxt "help:currency.currency,numeric_code:"
 msgid "The 3 digits ISO currency code."
-msgstr ""
+msgstr "Il codice valuta ISO a 3 cifre."
 
 msgctxt "help:currency.currency,rates:"
 msgid "Add floating exchange rates for the currency."
-msgstr ""
+msgstr "Aggiungere tassi di cambio fluttuanti per la valuta."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr ""
+msgstr "L'importo minimo che può essere rappresentato in questa valuta."
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
-msgstr ""
+msgstr "Il simbolo utilizzato per la formattazione della valuta."
 
 msgctxt "help:currency.currency.rate,currency:"
 msgid "The currency on which the rate applies."
-msgstr ""
+msgstr "La valuta su cui si applica la tariffa."
 
 msgctxt "help:currency.currency.rate,date:"
 msgid "From when the rate applies."
-msgstr ""
+msgstr "Da quando si applica la tariffa."
 
 msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
@@ -730,7 +706,6 @@ msgctxt "model:currency.currency,name:tzs"
 msgid "Tanzanian Shilling"
 msgstr "Scellino tanzaniano"
 
-#, fuzzy
 msgctxt "model:currency.currency,name:uah"
 msgid "Hryvnia"
 msgstr "Hryvnia"
@@ -847,7 +822,6 @@ msgctxt "model:currency.currency,name:zmw"
 msgid "Zambian Kwacha"
 msgstr "Kwacha zambiano"
 
-#, fuzzy
 msgctxt "model:currency.currency,name:zwl"
 msgid "Zimbabwe Dollar"
 msgstr "Dollaro dello Zimbabwe"
@@ -856,20 +830,29 @@ msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
 msgstr "Cambio"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_currency_rate_positive"
+msgid "A currency rate must be positive."
+msgstr "Un tasso di cambio deve essere positivo."
+
+msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
+msgid "A currency can only have one rate by date."
+msgstr "Una valuta può avere solo un cambio per giorno."
+
+msgctxt "model:ir.message,text:msg_no_rate"
+msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
+msgstr "Tasso di cambio non trovato per la valuta \"%(currency)s\" il \"%(date)s\"."
+
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "Valute"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
@@ -880,7 +863,6 @@ msgctxt "view:currency.currency:"
 msgid "Rates"
 msgstr "Tassi"
 
-#, fuzzy
 msgctxt "error:currency.currency:"
 msgid "Invalid grouping \"%(grouping)s\" on currency \"%(currency)s\"."
 msgstr "Raggruppamento \"%(grouping)s\" invalido nella valuta \"%(currency)s\"."
@@ -889,17 +871,14 @@ msgctxt "field:currency.currency,digits:"
 msgid "Display Digits"
 msgstr "Posizioni"
 
-#, fuzzy
 msgctxt "field:currency.currency,mon_decimal_point:"
 msgid "Decimal Separator"
 msgstr "Separatore dei decimali"
 
-#, fuzzy
 msgctxt "field:currency.currency,mon_grouping:"
 msgid "Grouping"
 msgstr "Raggruppamento"
 
-#, fuzzy
 msgctxt "field:currency.currency,mon_thousands_sep:"
 msgid "Thousands Separator"
 msgstr "Separatore delle migliaia"
