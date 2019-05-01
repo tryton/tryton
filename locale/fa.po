@@ -2,20 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:commission.plan.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr "فرمول: \"%s\" در خط برنامه حق العمل: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending commissions"
-" for the company \"%(company)s\"."
-msgstr ""
-"نهاد/سازمان: \"%s\" نباید حذف شود چرا که حق العمل های معلق در شرکت: \"%s\" "
-"وجود دارد."
-
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "عامل حق العمل"
@@ -352,6 +338,20 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "طرح حق العمل"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان : \"%(party)s\" تا زمانی که کمیسون معوقه با "
+"شرکت:\"%(company)s\"دارد را حذف کنید."
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در خط برنامه حق العمل: \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
+
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
 msgstr "Invoice"
@@ -392,14 +392,9 @@ msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
 msgstr "مدیریت حق العمل"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Commission"
 msgstr "حق العمل"
-
-msgctxt "selection:commission,invoice_state:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"

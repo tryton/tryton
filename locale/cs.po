@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:commission.plan.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending commissions"
-" for the company \"%(company)s\"."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
@@ -360,6 +348,18 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "Commission Plans"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
 msgstr "Invoice"
@@ -404,10 +404,6 @@ msgstr "Commission Administration"
 msgctxt "selection:account.journal,type:"
 msgid "Commission"
 msgstr "Commission"
-
-msgctxt "selection:commission,invoice_state:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"

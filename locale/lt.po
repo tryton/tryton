@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:commission.plan.line:"
-msgid ""
-"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending commissions"
-" for the company \"%(company)s\"."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
@@ -44,15 +32,15 @@ msgstr ""
 
 msgctxt "field:commission,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:commission,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:commission,date:"
 msgid "Date"
@@ -64,11 +52,11 @@ msgstr ""
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Sąskaitos faktūros eilutė"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "Sąskaitos faktūros būsena"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
@@ -88,27 +76,27 @@ msgstr ""
 
 msgctxt "field:commission,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:commission,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:commission.agent,id:"
 msgid "ID"
@@ -116,7 +104,7 @@ msgstr ""
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
@@ -136,11 +124,11 @@ msgstr ""
 
 msgctxt "field:commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
@@ -168,11 +156,11 @@ msgstr ""
 
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:commission.plan,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:commission.plan,id:"
 msgid "ID"
@@ -193,11 +181,11 @@ msgstr ""
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
@@ -205,11 +193,11 @@ msgstr ""
 
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:commission.plan.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
@@ -237,11 +225,11 @@ msgstr ""
 
 msgctxt "field:commission.plan.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -258,11 +246,11 @@ msgstr "Agents"
 
 msgctxt "field:product.template-commission.agent,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.template-commission.agent,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
@@ -278,11 +266,11 @@ msgstr ""
 
 msgctxt "field:product.template-commission.agent,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.template-commission.agent,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -360,9 +348,21 @@ msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
 msgstr "Commission Plans"
 
+msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending commissions "
+"with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Sąskaita faktūra"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -406,17 +406,12 @@ msgid "Commission"
 msgstr "Commission"
 
 msgctxt "selection:commission,invoice_state:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"
-msgstr "Invoice"
+msgstr "Sąskaita faktūra"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Paid"

@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
-msgstr "Agent comissió"
+msgstr "Komisjoni agent"
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonid"
 
 msgctxt "field:account.invoice.line,from_commissions:"
 msgid "From Commissions"
-msgstr "De les comissions"
+msgstr "Komisjonidelt"
 
 msgctxt "field:account.invoice.line,principal:"
 msgid "Commission Principal"
-msgstr "Comissió principal"
+msgstr "Komisjoni põhiosa"
 
 msgctxt "field:commission,agent:"
 msgid "Agent"
@@ -24,23 +24,23 @@ msgstr "Agent"
 
 msgctxt "field:commission,amount:"
 msgid "Amount"
-msgstr "Import"
+msgstr "Väärtus"
 
 msgctxt "field:commission,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:commission,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Looja"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuuta"
 
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr "Data"
+msgstr "Kuupäev"
 
 msgctxt "field:commission,id:"
 msgid "ID"
@@ -48,51 +48,51 @@ msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
-msgstr "Línia de factura"
+msgstr "Arve rida"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
-msgstr "Estat de la factura"
+msgstr "Arve olek"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
-msgstr "Origen"
+msgstr "Päritolu"
 
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr "Producte"
+msgstr "Toode"
 
 msgctxt "field:commission,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr "Kirje nimi"
 
 msgctxt "field:commission,type_:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Tüüp"
 
 msgctxt "field:commission,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:commission,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Muutja"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Ettevõte"
 
 msgctxt "field:commission.agent,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:commission.agent,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Looja"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr "Moneda"
+msgstr "Valuuta"
 
 msgctxt "field:commission.agent,id:"
 msgid "ID"
@@ -100,35 +100,35 @@ msgstr "ID"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
-msgstr "Tercer"
+msgstr "Osapool"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
-msgstr "Import pendent"
+msgstr "Avatud väärtus"
 
 msgctxt "field:commission.agent,plan:"
 msgid "Plan"
-msgstr "Pla"
+msgstr "Plaan"
 
 msgctxt "field:commission.agent,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr "Kirje nimi"
 
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Tüüp"
 
 msgctxt "field:commission.agent,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:commission.agent,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Muutja"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
-msgstr "De"
+msgstr "Kellelt"
 
 msgctxt "field:commission.create_invoice.ask,id:"
 msgid "ID"
@@ -136,27 +136,27 @@ msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr "A"
+msgstr "Kellele"
 
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
-msgstr "Tipus"
+msgstr "Tüüp"
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
-msgstr "Mètode comissió"
+msgstr "Komisjoni meetod"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
-msgstr "Producte comissió"
+msgstr "Komisjonikaup"
 
 msgctxt "field:commission.plan,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:commission.plan,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Looja"
 
 msgctxt "field:commission.plan,id:"
 msgid "ID"
@@ -164,39 +164,39 @@ msgstr "ID"
 
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr "Línies"
+msgstr "Read"
 
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr "Nom"
+msgstr "Nimetus"
 
 msgctxt "field:commission.plan,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr "Kirje nimi"
 
 msgctxt "field:commission.plan,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:commission.plan,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Muutja"
 
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
-msgstr "Categoria"
+msgstr "Kategooria"
 
 msgctxt "field:commission.plan.line,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:commission.plan.line,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Looja"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
-msgstr "Fórmula"
+msgstr "Valem"
 
 msgctxt "field:commission.plan.line,id:"
 msgid "ID"
@@ -204,35 +204,35 @@ msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
-msgstr "Pla"
+msgstr "Plaan"
 
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr "Producte"
+msgstr "Toode"
 
 msgctxt "field:commission.plan.line,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr "Kirje nimi"
 
 msgctxt "field:commission.plan.line,sequence:"
 msgid "Sequence"
-msgstr "Seqüència"
+msgstr "Jada"
 
 msgctxt "field:commission.plan.line,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:commission.plan.line,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Muutja"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
-msgstr "Comissió principals"
+msgstr "Komisjoni põhiosad"
 
 msgctxt "field:product.template,principals:"
 msgid "Commission Principals"
-msgstr "Comissió principals"
+msgstr "Komisjoni põhiosad"
 
 msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
@@ -240,11 +240,11 @@ msgstr "Agent"
 
 msgctxt "field:product.template-commission.agent,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.template-commission.agent,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Looja"
 
 msgctxt "field:product.template-commission.agent,id:"
 msgid "ID"
@@ -252,248 +252,210 @@ msgstr "ID"
 
 msgctxt "field:product.template-commission.agent,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr "Kirje nimi"
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
-msgstr "Plantilla"
+msgstr "Mall"
 
 msgctxt "field:product.template-commission.agent,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.template-commission.agent,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Muutja"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
-msgstr "Comissió principal"
+msgstr "Komisjoni põhiosa"
 
 msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
-msgstr "Agent comissió"
+msgstr "Komisjoni agent"
 
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due"
-msgstr "Quan la comissió venç."
+msgstr ""
 
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
-"Expressió Python que s'avaluarà amb:\n"
-"- amount: L'import original"
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr "Comissions"
+msgstr "Komisjonitasu"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
-msgstr "Comissió"
+msgstr "Komisjonitasu"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
-msgstr "Agent comissió"
+msgstr "Komisjoni agent"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
-msgstr "Crea factura de comissió"
+msgstr "Loo komisjonitasu arve"
 
 msgctxt "model:commission.plan,name:"
 msgid "Commission Plan"
-msgstr "Pla comissió"
+msgstr "Komisjonitasu plaan"
 
 msgctxt "model:commission.plan.line,name:"
 msgid "Commission Plan Line"
-msgstr "Línia de pla comissió"
+msgstr "Komisjonitasu plaani rida"
 
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
-msgstr "Agents"
+msgstr "Agendid"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Crea factures de comissió"
+msgstr "Loo komisjonitasu arve"
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
-msgstr "De les comissions"
+msgstr "Komisjonitasudelt"
 
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
-msgstr "Plans de comissió"
+msgstr "Komisjonitasu plaan"
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_commission"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending commissions "
 "with company \"%(company)s\"."
 msgstr ""
-"No podeu eliminar el tercer \"%(party)s\" mentre tingui comissions pendents "
-"amb l'empresa \"%(company)s\"."
 
 msgctxt "model:ir.message,text:msg_plan_line_invalid_formula"
 msgid ""
 "Invalid formula \"%(formula)s\" in commission plan line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"La fórmula \"%(formula)s\" de la línia de pla de comissions \"%(line)s\" es "
-"invàlida generant l'excepció \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr "Factura"
+msgstr "Arve"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
-msgstr "Agents"
+msgstr "Agendid"
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr "Comissions"
+msgstr "Komisjonitasu"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
-msgstr "Crea factures de comissió"
+msgstr "Loo komisjonitasu arve"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasu"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuració"
+msgstr "Seadistus"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
-msgstr "Plans de comissió"
+msgstr "Komisjonitasu plaanid"
 
 msgctxt "model:product.template-commission.agent,name:"
 msgid "Product Template - Commission Agent"
-msgstr "Plantilla de producte - Agent comisionista"
+msgstr "Toote mall - komisjonimüüja"
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr "Comissió"
+msgstr "Komisjonitasu"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
-msgstr "Administració de comissions"
+msgstr "Komisjonitasu juhtimine"
 
 msgctxt "selection:account.journal,type:"
 msgid "Commission"
-msgstr "Comissió"
+msgstr "Komisjonitasu"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
-msgstr "Cancel·lada"
+msgstr "Tühistatud"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"
-msgstr "Facturada"
+msgstr "Arveldatud"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Paid"
-msgstr "Pagada"
+msgstr "Tasutud"
 
 msgctxt "selection:commission,type_:"
 msgid "Incoming"
-msgstr "Entrada"
+msgstr "Sissetulev"
 
 msgctxt "selection:commission,type_:"
 msgid "Outgoing"
-msgstr "Sortida"
+msgstr "Väljaminev"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Agent Of"
-msgstr "Agent de"
+msgstr "Agent"
 
 msgctxt "selection:commission.agent,type_:"
 msgid "Principal Of"
-msgstr "Principal de"
+msgstr "Põhiosa"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Both"
-msgstr "Ambdós"
+msgstr "Mõlemad"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Incoming"
-msgstr "Entrada"
+msgstr "Sissetulev"
 
 msgctxt "selection:commission.create_invoice.ask,type_:"
 msgid "Outgoing"
-msgstr "Sortida"
+msgstr "Väljaminev"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Payment"
-msgstr "Al pagar"
+msgstr "Tasumisel"
 
 msgctxt "selection:commission.plan,commission_method:"
 msgid "On Posting"
-msgstr "Al comptabilitzar"
+msgstr "Postitusel"
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "view:product.template:"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "view:sale.line:"
 msgid "Commissions"
-msgstr "Comissions"
+msgstr "Komisjonitasud"
 
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
-msgstr "D'acord"
+msgstr "OK"
 
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Factura"
-
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr "Agent"
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr "Agents"
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr "Crea factura de comissió"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr "Línia de pla comissió"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr "Línies de pla comissió"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr "Pla comissió"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
-msgstr "Plans comissió"
+msgstr "Tühista"
