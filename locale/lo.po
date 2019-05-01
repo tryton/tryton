@@ -2,22 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.lot:"
-msgid ""
-"You can not modify the expiration dates of lot \"%(lot)s\" because it is "
-"used on a move \"%(move)s\" in a closed period"
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "The lot \"%(lot)s\" on move \"%(move)s\" is expired"
-msgstr ""
-
-msgctxt "error:stock.period:"
-msgid ""
-"You can not close a period before the Shelf Live Expiration Date "
-"\"%(date)s\" of Lot \"%(lot)s\""
-msgstr ""
-
 msgctxt "field:product.product,expiration_state:"
 msgid "Expiration State"
 msgstr ""
@@ -120,6 +104,22 @@ msgstr ""
 
 msgctxt "help:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "The delay before removal from the forecast."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_lot_modify_expiration_date_period_close"
+msgid ""
+"You cannot modify expiration dates of lot \"%(lot)s because it is used on "
+"move \"%(move)s\" in a closed period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_lot_expired"
+msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_close_sled"
+msgid ""
+"You cannot close periods before the expiration of lot \"%(lot)s\" "
+"(%(date)s)."
 msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
