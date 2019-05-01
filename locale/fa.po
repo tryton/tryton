@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.user.login.sms_code:"
-msgid "%(name)s code %(code)s"
-msgstr "نام : \"٪ s\" : \"٪ s\" کد"
-
 msgctxt "field:res.user,mobile:"
 msgid "Mobile"
 msgstr "موبایل"
@@ -49,6 +45,10 @@ msgstr "نوشته کاربر"
 msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS"
 msgstr "شماره تلفن همراه که پیام کوتاه را پشتیبانی کند"
+
+msgctxt "model:ir.message,text:msg_sms_text"
+msgid "%(name)s code %(code)s"
+msgstr "\"%(name)s\" کد \"%(کد)s\""
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"

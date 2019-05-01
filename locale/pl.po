@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.user.login.sms_code:"
-msgid "%(name)s code %(code)s"
-msgstr "%(name)s kod %(code)s"
-
 msgctxt "field:res.user,mobile:"
 msgid "Mobile"
 msgstr "Komórka"
@@ -49,6 +45,11 @@ msgstr "Zapisał"
 msgctxt "help:res.user,mobile:"
 msgid "Phone number that supports receiving SMS"
 msgstr "Numer telefonu, który umożliwia otrzymywanie SMS-ów"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sms_text"
+msgid "%(name)s code %(code)s"
+msgstr "%(name)s kod %(code)s"
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"
