@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
@@ -76,7 +76,7 @@ msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
@@ -112,7 +112,7 @@ msgstr ""
 
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:product.taxon,active:"
 msgid "Active"
@@ -160,7 +160,7 @@ msgstr ""
 
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:product.cultivar,active:"
 msgid "Uncheck to exclude from future use."

@@ -4,252 +4,243 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.cultivar,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiivne"
 
 msgctxt "field:product.cultivar,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.cultivar,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Grupid"
 
 msgctxt "field:product.cultivar,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nimi"
 
 msgctxt "field:product.cultivar,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Valitav"
 
-#, fuzzy
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "field:product.cultivar,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.cultivar,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
-msgstr "Cultivars"
+msgstr "Kasvav"
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr ""
+msgstr "Grupp"
 
 msgctxt "field:product.cultivar-product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:product.cultivar.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiivne"
 
 msgctxt "field:product.cultivar.group,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.cultivar.group,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Kasvavad"
 
 msgctxt "field:product.cultivar.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nimi"
 
 msgctxt "field:product.cultivar.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:product.cultivar.group,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.cultivar.group,write_uid:"
 msgid "Write User"
-msgstr "PPakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:product.taxon,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktiivne"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Alamjaotus"
 
 msgctxt "field:product.taxon,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:product.taxon,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:product.taxon,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nimi"
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Ülemjaotus"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 msgctxt "field:product.taxon,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "Valitav"
 
 msgctxt "field:product.taxon,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:product.taxon,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "help:product.cultivar,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:product.cultivar.group,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:product.taxon,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Kasvav"
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Kasvav grupp"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Kasvavad"
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Kasvav grupp"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
-msgstr "Cultivars"
+msgstr "Kasvav"
 
 msgctxt "model:product.cultivar-product.cultivar.group,name:"
 msgid "Cultivar-CultivarGroup"
-msgstr ""
+msgstr "Kasvav-KasvavGrupp"
 
-#, fuzzy
 msgctxt "model:product.cultivar.group,name:"
 msgid "Cultivar Group"
-msgstr "Cultivar Groups"
+msgstr "Kasvav Grupp"
 
-#, fuzzy
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr ""
+msgstr "Klass"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr ""
+msgstr "Divisjon"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr ""
+msgstr "Domeen"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr ""
+msgstr "Perekond"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr ""
+msgstr "Vorm"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
@@ -257,11 +248,11 @@ msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr ""
+msgstr "Kuningriik"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr ""
+msgstr "Kord"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
@@ -269,19 +260,19 @@ msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr ""
+msgstr "Seksioon"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr ""
+msgstr "Seeria"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr ""
+msgstr "Liik"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr ""
+msgstr "Hõim"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"

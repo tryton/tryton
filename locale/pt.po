@@ -164,15 +164,15 @@ msgstr "Editado por"
 
 msgctxt "help:product.cultivar,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:product.cultivar.group,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:product.taxon,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
