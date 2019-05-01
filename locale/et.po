@@ -4,45 +4,40 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.inventory.create.start,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
-msgstr "Data"
+msgstr "Kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.inventory.create.start,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
-msgstr ""
+msgstr "Asukohad"
 
 msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
-msgstr ""
+msgstr "Kaotatud ja leitud"
 
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Create Inventories"
+msgstr "Loo laoseis"
 
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Create Inventories"
+msgstr "Loo laoseis"
 
-#, fuzzy
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr "Create Inventories"
+msgstr "Loo laoseis"
 
-#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr "Creazione"
+msgstr "Loo"
 
-#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Tühista"
