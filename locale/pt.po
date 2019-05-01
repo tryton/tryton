@@ -2,28 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.create_shipping.ups:"
-msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr "O Envio \"%(shipment)s\" já possui número de referência."
-
-msgctxt "error:stock.shipment.create_shipping.ups:"
-msgid ""
-"UPS webservice call failed with the following error message:\n"
-"\n"
-"%(message)s"
-msgstr ""
-"A chamada ao serviço web UPS falhou com a seguinte mensagem:\n"
-"\n"
-"%(message)s"
-
-msgctxt "error:stock.shipment.out:"
-msgid "A phone number is required for party \"%(party)s\"."
-msgstr "Um número de telefone é necessário para a pessoa \"%(party)s\"."
-
-msgctxt "error:stock.shipment.out:"
-msgid "A shipping description is required for shipment \"%(shipment)s\"."
-msgstr "É necessária uma descrição de remessa para o envio \"%(shipment)s\"."
-
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
 msgstr "Altura da Etiqueta"
@@ -106,6 +84,40 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Credentials"
 
+msgctxt "model:ir.message,text:msg_phone_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add phone number to party "
+"\"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipping_description_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must fill its shipping "
+"description."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_ups_webservice_error"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+"A chamada ao serviço web UPS falhou com a seguinte mensagem:\n"
+"\n"
+"%(message)s"
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
@@ -123,8 +135,9 @@ msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
 msgstr "Testando"
 
+#, fuzzy
 msgctxt "view:carrier.credential.ups:"
-msgid "Credential Informations"
+msgid "Credential Information"
 msgstr "Informações da Credencial"
 
 msgctxt "view:carrier:"

@@ -4,56 +4,51 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
-msgstr ""
+msgstr "Etiketi kõrgus"
 
 msgctxt "field:carrier,ups_label_image_format:"
 msgid "Label Image Format"
-msgstr ""
+msgstr "Etiketi pildi formaat"
 
 msgctxt "field:carrier,ups_service_type:"
 msgid "Service Type"
-msgstr ""
+msgstr "Teenuse tüüp"
 
 msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
-msgstr ""
+msgstr "Konto number"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_date:"
 msgid "Create Date"
-msgstr "Létrehozás détuma"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,create_uid:"
 msgid "Create User"
-msgstr "Által létrehozva "
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
-msgstr ""
+msgstr "Litsents"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr "Jelszó"
+msgstr "Salasõna"
 
 msgctxt "field:carrier.credential.ups,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
@@ -61,34 +56,31 @@ msgstr ""
 
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "Kasutaja ID"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_date:"
 msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,write_uid:"
 msgid "Write User"
-msgstr "Által módosítva"
+msgstr "Muutja"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
-msgstr ""
+msgstr "UPS kood"
 
-#, fuzzy
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr "UPS Credentials"
+msgstr "UPS viide"
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "Create UPS Shipping for Packages"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr "UPS viide"
 
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
@@ -122,20 +114,19 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr "UPSviide"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
-#, fuzzy
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Production"
-msgstr "Termelés"
+msgstr "Tootmine"
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
-msgstr ""
+msgstr "Testimine"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"
@@ -143,8 +134,8 @@ msgstr ""
 
 msgctxt "view:carrier:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"
 
 msgctxt "view:stock.package.type:"
 msgid "UPS"
-msgstr ""
+msgstr "UPS"

@@ -2,25 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.create_shipping.ups:"
-msgid "Shipment \"%(shipment)s\" already has a reference number."
-msgstr ""
-
-msgctxt "error:stock.shipment.create_shipping.ups:"
-msgid ""
-"UPS webservice call failed with the following error message:\n"
-"\n"
-"%(message)s"
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "A phone number is required for party \"%(party)s\"."
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "A shipping description is required for shipment \"%(shipment)s\"."
-msgstr ""
-
 msgctxt "field:carrier,ups_label_height:"
 msgid "Label Height"
 msgstr ""
@@ -108,6 +89,36 @@ msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Credentials"
 
+msgctxt "model:ir.message,text:msg_phone_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must add phone number to party "
+"\"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
+msgid ""
+"You cannot create shipping for shipment \"%(shipment)s\" because it has "
+"already a reference number."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipping_description_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must fill its shipping "
+"description."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_ups_webservice_error"
+msgid ""
+"UPS webservice call failed with the following error message:\n"
+"%(message)s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_warehouse_address_required"
+msgid ""
+"To validate shipment \"%(shipment)s\" you must set an address on warehouse "
+"\"%(warehouse)s\"."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
 msgstr "UPS Credentials"
@@ -126,7 +137,7 @@ msgid "Testing"
 msgstr ""
 
 msgctxt "view:carrier.credential.ups:"
-msgid "Credential Informations"
+msgid "Credential Information"
 msgstr ""
 
 msgctxt "view:carrier:"
