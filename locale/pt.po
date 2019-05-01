@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.complaint.action:"
-msgid "Action \"%s\" must not have result to be deleted."
-msgstr "A ação \"%s\" não deve possuir resultado para poder ser apagada."
-
-msgctxt "error:sale.complaint:"
-msgid "Complaint \"%s\" must be in draft to be deleted."
-msgstr "A reclamação \"%s\" deve estar no estado rascunho para poder ser apagada."
-
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "Ações"
@@ -313,6 +305,14 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Waiting"
 
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
 msgstr "Approve"
@@ -336,6 +336,14 @@ msgstr "Reject"
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
 msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_complaint"

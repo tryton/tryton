@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.complaint.action:"
-msgid "Action \"%s\" must not have result to be deleted."
-msgstr "La acción \"%s\" no debe tener resultados para ser eliminada."
-
-msgctxt "error:sale.complaint:"
-msgid "Complaint \"%s\" must be in draft to be deleted."
-msgstr "La reclamación \"%s\" debe estar en borrador para ser eliminada."
-
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr "Acciones"
@@ -305,6 +297,15 @@ msgctxt ""
 msgid "Waiting"
 msgstr "En espera"
 
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr "No puede eliminar la acción \"%(action)s\" porque tiene un resultado."
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+"Para eliminar la reclamación \"%(complaint)s\" debe establecerla a borrador."
+
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
 msgstr "Aprobar"
@@ -328,6 +329,14 @@ msgstr "Rechazar"
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
 msgstr "En espera"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Usuario en la empresa de la reclamación"
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr "Usuario en la empresa"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"

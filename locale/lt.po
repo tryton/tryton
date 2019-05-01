@@ -2,33 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.complaint.action:"
-msgid "Action \"%s\" must not have result to be deleted."
-msgstr ""
-
-msgctxt "error:sale.complaint:"
-msgid "Complaint \"%s\" must be in draft to be deleted."
-msgstr ""
-
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr ""
 
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr ""
+msgstr "Adresas"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:sale.complaint,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.complaint,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
@@ -85,11 +77,11 @@ msgstr "Types"
 
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
@@ -102,11 +94,11 @@ msgstr "Complaints"
 
 msgctxt "field:sale.complaint.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.complaint.action,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
@@ -114,7 +106,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Sąskaitos faktūros eilutės"
 
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
@@ -146,11 +138,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
@@ -158,11 +150,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
@@ -170,7 +162,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Sąskaitos faktūros eilutė"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Record Name"
@@ -178,11 +170,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
@@ -190,11 +182,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.complaint.action-sale.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
@@ -210,19 +202,19 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.complaint.type,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
@@ -243,11 +235,11 @@ msgstr ""
 
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -309,6 +301,14 @@ msgctxt ""
 msgid "Waiting"
 msgstr "Waiting"
 
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
 msgstr "Approve"
@@ -332,6 +332,14 @@ msgstr "Reject"
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
 msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"

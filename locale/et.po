@@ -2,352 +2,300 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr "ການປະຕິບັດ"
+msgstr "Toimingud"
 
-#, fuzzy
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr "ທີ່ຢູ່"
+msgstr "Aadress"
 
-#, fuzzy
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
-msgstr "ຫ້ອງການ/ສຳນັກງານ"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:sale.complaint,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
-msgstr ""
+msgstr "Klient"
 
-#, fuzzy
 msgctxt "field:sale.complaint,date:"
 msgid "Date"
-msgstr "ວັນທີ:"
+msgstr "Kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint,description:"
 msgid "Description"
-msgstr "ເນື້ອໃນລາຍການ"
+msgstr "Kirjeldus"
 
-#, fuzzy
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
-msgstr "ພະນັກງານ"
+msgstr "Töötaja"
 
-#, fuzzy
 msgctxt "field:sale.complaint,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
-msgstr "ເລກທີ"
+msgstr "Number"
 
-#, fuzzy
 msgctxt "field:sale.complaint,origin:"
 msgid "Origin"
-msgstr "ລາຍການຂັ້ນຕົ້ນ"
+msgstr "Päritolu"
 
 msgctxt "field:sale.complaint,origin_id:"
 msgid "Origin ID"
-msgstr ""
+msgstr "Päritolu ID"
 
 msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
-msgstr ""
+msgstr "Päritplu mudel"
 
 msgctxt "field:sale.complaint,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
-msgstr "ເອກະສານອ້າງອີງ"
+msgstr "Viide"
 
-#, fuzzy
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr "ສະຖານະ"
+msgstr "Olek"
 
-#, fuzzy
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr "ຮູບແບບ"
+msgstr "Tüüp"
 
-#, fuzzy
 msgctxt "field:sale.complaint,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
-msgstr "ການປະຕິບັດ"
+msgstr "Toiming"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr "Kaebus"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "ລາຍການເກັບເງິນ"
+msgstr "Arve read"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr "Kogus"
 
 msgctxt "field:sale.complaint.action,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
-msgstr ""
+msgstr "Tulemus"
 
 msgctxt "field:sale.complaint.action,sale_lines:"
 msgid "Sale Lines"
-msgstr ""
+msgstr "Müügiread"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit:"
 msgid "Unit"
-msgstr "ໜ່ວຍ"
+msgstr "Ühik"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit_digits:"
 msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
+msgstr "Ühiku numbriväärtus"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr "ລາຄາຫົວໜ່ວຍ"
+msgstr "Ühiku hind"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
-msgstr "ການປະຕິບັດ"
+msgstr "Toiming"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
-msgstr "ລາຍການ"
+msgstr "Arve rida"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
-msgstr "ການປະຕິບັດ"
+msgstr "Toiming"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
-msgstr ""
+msgstr "Müügi rida"
 
 msgctxt "field:sale.complaint.action-sale.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Nimetus"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
-msgstr "ລາຍການຂັ້ນຕົ້ນ"
+msgstr "Päritolu"
 
 msgctxt "field:sale.complaint.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "Kaebuse järjestus"
 
 msgctxt "field:sale.configuration.sequence,complaint_sequence:"
 msgid "Complaint Sequence"
-msgstr ""
+msgstr "Kaebuse järjestus"
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
 msgid "Leave empty for all lines"
-msgstr ""
+msgstr "Kõikide ridade jaosk jäta tühjaks"
 
 msgctxt "help:sale.complaint.action,quantity:"
 msgid "Leave empty for the same quantity"
-msgstr ""
+msgstr "Sama koguse jaoks jäta tühjaks"
 
 msgctxt "help:sale.complaint.action,sale_lines:"
 msgid "Leave empty for all lines"
-msgstr ""
+msgstr "Kõikide ridade jaoks jäta tühjaks"
 
 msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price"
-msgstr ""
+msgstr "Sama hinna jaoks jäta tühjaks"
 
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "Kaebused"
 
 msgctxt "model:ir.action,name:act_complaint_relate_party"
 msgid "Customer Complaints"
-msgstr "Customer Complaints"
+msgstr "Kliendikaebused"
 
 msgctxt "model:ir.action,name:act_complaint_relate_sale"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "Kaebused"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_type_form"
 msgid "Types"
-msgstr "ຮູບແບບ"
+msgstr "Tüübid"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_complaint_form_domain_all"
 msgid "All"
-msgstr "ທັງໝົດ"
+msgstr "Kõik"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "ອະນຸມັດແລ້ວ"
+msgstr "Kinnitatud"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
 msgid "Draft"
-msgstr "ຮ່າງກຽມ"
+msgstr "Mustand"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_waiting"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr "Ootel"
 
 msgctxt "model:ir.message,text:msg_action_delete_result"
 msgid "You cannot delete action \"%(action)s\" because it has a result."
@@ -356,141 +304,117 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_complaint_delete_draft"
 msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
 msgstr ""
+"Kaebuse \"%(complaint)s\" kustutamiseks tuleb selle staatus muuta "
+"mustandiks."
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr "Approve"
+msgstr "Kinnita"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Tühista"
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Töötle"
 
 msgctxt "model:ir.model.button,string:complaint_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Mustand"
 
 msgctxt "model:ir.model.button,string:complaint_reject_button"
 msgid "Reject"
-msgstr "Reject"
+msgstr "Lükka tagasi"
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
-msgstr "Wait"
+msgstr "Oota"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in complaint's company"
-msgstr ""
+msgstr "Kliendikaebuse ettevõte"
 
 msgctxt "model:ir.rule.group,name:rule_group_complaint"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebus"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_complaint"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebus"
 
 msgctxt "model:ir.ui.menu,name:menu_complaint"
 msgid "Complaints"
-msgstr "Complaints"
+msgstr "Kaebused"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebus"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_type"
 msgid "Types"
-msgstr "ຮູບແບບ"
+msgstr "Tüübid"
 
-#, fuzzy
 msgctxt "model:sale.complaint,name:"
 msgid "Customer Complaint"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebus"
 
-#, fuzzy
 msgctxt "model:sale.complaint.action,name:"
 msgid "Customer Complaint Action"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebuse toiming"
 
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
-msgstr ""
+msgstr "Kliendikaebuse toiming - arverida"
 
 msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
-msgstr ""
+msgstr "Kliendikaebuse toiming - müügirida"
 
-#, fuzzy
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"
-msgstr "Customer Complaint"
+msgstr "Kliendikaebuse tüüp"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr "ອະນຸມັດແລ້ວ"
+msgstr "Kinnitatud"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Tühistatud"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Done"
-msgstr "ແລ້ວໆ"
+msgstr "Tehtud"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Draft"
-msgstr "ຮ່າງກຽມ"
+msgstr "Mustand"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Rejected"
-msgstr "Reject"
+msgstr "Tagasi lükatud"
 
-#, fuzzy
 msgctxt "selection:sale.complaint,state:"
 msgid "Waiting"
-msgstr "Waiting"
+msgstr "Ootel"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Credit Note"
-msgstr ""
+msgstr "Loo kreeditarve"
 
 msgctxt "selection:sale.complaint.action,action:"
 msgid "Create Sale Return"
-msgstr ""
+msgstr "Loo tagastus"
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Complaint"
-msgstr "Complaints"
+msgstr "Kaebus"
 
-#, fuzzy
 msgctxt "view:sale.complaint:"
 msgid "Process"
-msgstr "ປະມວນຜົນ"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr "ອະນຸມັດ"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr "ຮ່າງກຽມ"
+msgstr "Töötle"

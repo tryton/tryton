@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.complaint.action:"
-msgid "Action \"%s\" must not have result to be deleted."
-msgstr ""
-
-msgctxt "error:sale.complaint:"
-msgid "Complaint \"%s\" must be in draft to be deleted."
-msgstr ""
-
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
 msgstr ""
@@ -88,7 +80,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
@@ -148,7 +140,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
@@ -180,7 +172,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
@@ -212,7 +204,7 @@ msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,create_date:"
 msgid "Create Date"
@@ -242,10 +234,9 @@ msgctxt "field:sale.complaint.type,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.complaint.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -306,6 +297,14 @@ msgctxt ""
 msgid "Waiting"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_action_delete_result"
+msgid "You cannot delete action \"%(action)s\" because it has a result."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_complaint_delete_draft"
+msgid "To delete complaint \"%(complaint)s\" you must reset it to draft state."
+msgstr ""
+
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
 msgstr ""
@@ -328,6 +327,14 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_wait_button"
 msgid "Wait"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_complaint"
+msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_complaint"
