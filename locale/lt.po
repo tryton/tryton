@@ -2,21 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:bank.account.number:"
-msgid "Invalid IBAN \"%s\"."
-msgstr ""
-
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr ""
 
 msgctxt "field:bank,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:bank,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:bank,id:"
 msgid "ID"
@@ -24,7 +20,7 @@ msgstr ""
 
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:bank,rec_name:"
 msgid "Record Name"
@@ -32,11 +28,11 @@ msgstr ""
 
 msgctxt "field:bank,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:bank,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:bank.account,active:"
 msgid "Active"
@@ -49,15 +45,15 @@ msgstr "Banks"
 
 msgctxt "field:bank.account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:bank.account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:bank.account,id:"
 msgid "ID"
@@ -77,11 +73,11 @@ msgstr ""
 
 msgctxt "field:bank.account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:bank.account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:bank.account-party.party,account:"
@@ -90,11 +86,11 @@ msgstr "Accounts"
 
 msgctxt "field:bank.account-party.party,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:bank.account-party.party,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:bank.account-party.party,id:"
 msgid "ID"
@@ -110,11 +106,11 @@ msgstr ""
 
 msgctxt "field:bank.account-party.party,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:bank.account-party.party,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:bank.account.number,account:"
@@ -123,11 +119,11 @@ msgstr "Accounts"
 
 msgctxt "field:bank.account.number,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:bank.account.number,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:bank.account.number,id:"
 msgid "ID"
@@ -155,11 +151,11 @@ msgstr ""
 
 msgctxt "field:bank.account.number,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:bank.account.number,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -196,7 +192,7 @@ msgstr ""
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr ""
+msgstr "banko sąskaita - Kontrahentas"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
@@ -209,6 +205,10 @@ msgstr "Accounts"
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banks"
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"

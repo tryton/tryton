@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:bank.account.number:"
-msgid "Invalid IBAN \"%s\"."
-msgstr "شماره شبا(IBAN ): \"%s\" نامعتبر است."
-
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
@@ -205,6 +201,10 @@ msgstr "حساب ها"
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "بانک ها"
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr "شماره IBAN : \"%(number)s\" معتبر نیست."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"

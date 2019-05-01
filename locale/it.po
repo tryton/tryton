@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:bank.account.number:"
-msgid "Invalid IBAN \"%s\"."
-msgstr "IBAN \"%s\" invalido"
-
 msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
@@ -163,10 +159,9 @@ msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
 msgstr "conti bancari"
 
-#, fuzzy
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "codice identificatore banca/azienda"
+msgstr "Codice identificatore banca/azienda."
 
 msgctxt "help:bank.account,active:"
 msgid "Uncheck to exclude from future use."
@@ -190,11 +185,11 @@ msgstr "Banca"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr "conto bancario"
+msgstr "Conto bancario"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr "conto bancario - controparte"
+msgstr "Conto bancario - controparte"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
@@ -209,6 +204,10 @@ msgstr "Accounts"
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banks"
+
+msgctxt "model:ir.message,text:msg_invalid_iban"
+msgid "IBAN number \"%(number)s\" is not valid."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
