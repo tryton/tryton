@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product.cost_history,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de costo"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,create_date:"
 msgid "Create Date"
@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:product.product.cost_history,create_uid:"
 msgid "Create User"
-msgstr "Creado por usuario"
+msgstr ""
 
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
@@ -40,16 +40,12 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_product_cost_history_form"
 msgid "Product Cost History"
-msgstr ""
+msgstr "Product Cost History"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr "Historial de costos de producto"
+msgstr ""
 
 msgctxt "view:product.product.cost_history:"
 msgid "Time"
 msgstr ""
-
-msgctxt "model:ir.action,name:wizard_product_cost_history_open"
-msgid "Cost History"
-msgstr "Historial de costos"
