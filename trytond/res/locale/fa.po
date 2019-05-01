@@ -2,46 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.group:"
-msgid "The name of the group must be unique!"
-msgstr "نام گروه باید منحصر به فرد!"
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user email."
-msgstr "رمز عبور نمی تواند همان ایمیل کاربر باشد."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user login."
-msgstr "رمز عبور نمیتواند همان نام ورود به سیستم کاربر باشد."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user name."
-msgstr "رمز عبور نمی تواند مشابه نام کاربر باشد."
-
-msgctxt "error:res.user:"
-msgid "The password contains too much times the same characters."
-msgstr "رمز عبور حاوی بیش از حد تعداد کاراکتر های مشابه است."
-
-msgctxt "error:res.user:"
-msgid "The password is forbidden."
-msgstr "رمز عبور ممنوع است."
-
-msgctxt "error:res.user:"
-msgid "The password is too short."
-msgstr "رمز عبور خیلی کوتاه است."
-
-msgctxt "error:res.user:"
-msgid ""
-"Users can not be deleted for logging purpose.\n"
-"Instead you must inactivate them."
-msgstr ""
-"کاربران برای اهداف ورود به سیستم قابل حذف نیستند.\n"
-"در عوض شما میتوانید آنها را غیرفعال کنید."
-
-msgctxt "error:res.user:"
-msgid "You can not have two users with the same login!"
-msgstr "شما نمیتوانید دو کاربر با نام ورود به سیستم مشابه داشته باشید!"
-
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "اقدام"
@@ -117,38 +77,6 @@ msgstr "کاربر"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "گروه"
-
-msgctxt "field:ir.model.field-res.group,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:ir.model.field-res.group,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:ir.model.field-res.group,field:"
-msgid "Model Field"
-msgstr "مدل فیلد"
-
-msgctxt "field:ir.model.field-res.group,group:"
-msgid "Group"
-msgstr "گروه"
-
-msgctxt "field:ir.model.field-res.group,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:ir.model.field-res.group,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:ir.model.field-res.group,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -257,6 +185,10 @@ msgstr "تاریخ نوشته"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
+
+msgctxt "field:res.group,active:"
+msgid "Active"
+msgstr "فعال"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
@@ -598,6 +530,10 @@ msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr "گروه ها مجاز به ویرایش توالی این نوع هستند"
 
+msgctxt "help:res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
+
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "اقداماتی که در ورود به سیستم باید اجرا شوند"
@@ -626,9 +562,37 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "اقدام - گروه"
 
-msgctxt "model:ir.cron,name:cron_trigger_time"
-msgid "Run On Time Triggers"
-msgstr "ماشه های در زمان اجرا"
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "رمز عبور نمی تواند همان ایمیل کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "کاراکترهای مشابه در رمز عبور چندین بار ظاهر می شوند."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "رمز عبور ممنوع است."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "رمز عبور خیلی کوتاه است."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "رمز عبور نمیتواند همان نام ورود به سیستم کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "رمز عبور نمی تواند مشابه نام کاربر باشد."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"برای اهداف ورود به سیستم، کاربران نمی توانند حذف شوند، در عوض آنها را "
+"میتوانید غیرفعال کنید."
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -650,9 +614,73 @@ msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
 msgstr "مدل دکمه - گروه"
 
-msgctxt "model:ir.model.field-res.group,name:"
-msgid "Model Field Group Rel"
-msgstr "گروه مرتبط مدل فیلد"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"

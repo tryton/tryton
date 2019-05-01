@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
-msgstr "Ukrep"
+msgstr "Toiming"
 
 msgctxt "field:ir.action-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
@@ -24,35 +24,35 @@ msgstr "ID"
 
 msgctxt "field:ir.action-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
-msgstr "Aktivno"
+msgstr "Aktiivne"
 
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
-msgstr "Gumb"
+msgstr "Nupp"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
@@ -60,35 +60,35 @@ msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
@@ -96,43 +96,43 @@ msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
-msgstr "Skupina pravila"
+msgstr "Reegli grupp"
 
 msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
-msgstr "Uporabniške skupine"
+msgstr "Kasutajagrupid"
 
 msgctxt "field:ir.sequence.strict,groups:"
 msgid "User Groups"
-msgstr "Uporabniške skupine"
+msgstr "Kasutajagrupid"
 
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
-msgstr "Uporabniške skupine"
+msgstr "Kasutajagrupid"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.sequence.type-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
-msgstr "Uporabniške skupine"
+msgstr "Kasutajagrupid"
 
 msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
@@ -140,31 +140,31 @@ msgstr "ID"
 
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr "Tip štetja"
+msgstr "Järjekorra tüüp"
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:ir.ui.menu-res.group,id:"
 msgid "ID"
@@ -172,40 +172,39 @@ msgstr "ID"
 
 msgctxt "field:ir.ui.menu-res.group,menu:"
 msgid "Menu"
-msgstr "Meni"
+msgstr "Menüü"
 
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:res.group,active:"
 msgid "Active"
-msgstr "Aktivno"
+msgstr "Aktiivne"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
-msgstr "Gumbi"
+msgstr "Nupud"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
-msgstr "Dostop do polj"
+msgstr ""
 
 msgctxt "field:res.group,id:"
 msgid "ID"
@@ -213,63 +212,63 @@ msgstr "ID"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
-msgstr "Dostop do menijev"
+msgstr ""
 
 msgctxt "field:res.group,model_access:"
 msgid "Access Model"
-msgstr "Dostop do modelov"
+msgstr ""
 
 msgctxt "field:res.group,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nimi"
 
 msgctxt "field:res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
-msgstr "Pravila"
+msgstr "Reeglid"
 
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr "Uporabniki"
+msgstr "Kasutajad"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
-msgstr "Ukrepi"
+msgstr "Toimingud"
 
 msgctxt "field:res.user,active:"
 msgid "Active"
-msgstr "Aktivno"
+msgstr "Aktiivne"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
-msgstr "Aplikacije"
+msgstr "Rakendused"
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
-msgstr "E-pošta"
+msgstr "E-kiri"
 
 msgctxt "field:res.user,groups:"
 msgid "Groups"
-msgstr "Skupine"
+msgstr "Grupid"
 
 msgctxt "field:res.user,id:"
 msgid "ID"
@@ -277,84 +276,83 @@ msgstr "ID"
 
 msgctxt "field:res.user,language:"
 msgid "Language"
-msgstr "Jezik"
+msgstr "Keel"
 
 msgctxt "field:res.user,language_direction:"
 msgid "Language Direction"
-msgstr "Smer jezika"
+msgstr ""
 
 msgctxt "field:res.user,login:"
 msgid "Login"
-msgstr "Prijava"
+msgstr "Logi sisse"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
-msgstr "Izhodiščni meni"
+msgstr "Menüü toiming"
 
 msgctxt "field:res.user,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nimi"
 
 msgctxt "field:res.user,password:"
 msgid "Password"
-msgstr "Geslo"
+msgstr "Salasõna"
 
 msgctxt "field:res.user,password_hash:"
 msgid "Password Hash"
-msgstr "Zgoščena vrednost gesla"
+msgstr "Salasõna räsi"
 
-#, fuzzy
 msgctxt "field:res.user,password_reset:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Salasõna lähtestamine"
 
 msgctxt "field:res.user,password_reset_expire:"
 msgid "Reset Password Expire"
-msgstr ""
+msgstr "Salasõna aegumistähtaeg"
 
 msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
-msgstr "PySON meni"
+msgstr "PySON menüü"
 
 msgctxt "field:res.user,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
-msgstr "Seje"
+msgstr "Seanss"
 
 msgctxt "field:res.user,signature:"
 msgid "Signature"
-msgstr "Podpis"
+msgstr "Allkiri"
 
 msgctxt "field:res.user,status_bar:"
 msgid "Status Bar"
-msgstr "Statusna vrstica"
+msgstr "Olekuriba"
 
 msgctxt "field:res.user,warnings:"
 msgid "Warnings"
-msgstr "Opozorila"
+msgstr "Hoiatused"
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
-msgstr "Ukrep"
+msgstr "Toiming"
 
 msgctxt "field:res.user-ir.action,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user-ir.action,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user-ir.action,id:"
 msgid "ID"
@@ -362,31 +360,31 @@ msgstr "ID"
 
 msgctxt "field:res.user-ir.action,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
 msgctxt "field:res.user-res.group,id:"
 msgid "ID"
@@ -394,31 +392,31 @@ msgstr "ID"
 
 msgctxt "field:res.user-res.group,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
-msgstr "Aplikacija"
+msgstr "Rakendus"
 
 msgctxt "field:res.user.application,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user.application,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user.application,id:"
 msgid "ID"
@@ -426,27 +424,27 @@ msgstr "ID"
 
 msgctxt "field:res.user.application,key:"
 msgid "Key"
-msgstr "Ključ"
+msgstr "Võti"
 
 msgctxt "field:res.user.application,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr "Olek"
 
 msgctxt "field:res.user.application,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
@@ -454,11 +452,11 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
@@ -466,39 +464,39 @@ msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "IP aadress"
 
 msgctxt "field:res.user.login.attempt,ip_network:"
 msgid "IP Network"
-msgstr ""
+msgstr "IP võrk"
 
 msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
-msgstr "Prijava"
+msgstr "Logi sisse"
 
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
-msgstr "Vedno"
+msgstr "Alati"
 
 msgctxt "field:res.user.warning,create_date:"
 msgid "Create Date"
-msgstr "Izdelano"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:res.user.warning,create_uid:"
 msgid "Create User"
-msgstr "Izdelal"
+msgstr "Looja"
 
 msgctxt "field:res.user.warning,id:"
 msgid "ID"
@@ -506,95 +504,87 @@ msgstr "ID"
 
 msgctxt "field:res.user.warning,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nimi"
 
 msgctxt "field:res.user.warning,rec_name:"
 msgid "Record Name"
-msgstr "Ime"
+msgstr "Kirje nimi"
 
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
-msgstr "Zapisano"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr "Zapisal"
+msgstr "Muutja"
 
 msgctxt "help:ir.model.button-res.group,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
-msgstr "Skupine, ki omogočajo urejanje ta oštevilčenja"
+msgstr "Grupid, kellel on lubatud seda tüüpi järjestusi redigeerida"
 
 msgctxt "help:res.group,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
-msgstr "Ukrepi, ki se zaženejo ob prijavi"
+msgstr "Sisselogimisel käivitatavad toimingud"
 
 msgctxt "help:res.user,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Tühista valik, et välistada tulevast kasutust."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Grupid"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_config"
 msgid "Configure Users"
-msgstr "Configure Users"
+msgstr "Kasutajate seadistamine"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Kasutajad"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Salasõna lähtestamine"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
-msgstr "Ukrep - Skupina"
+msgstr "Toiming - Grupp"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_email"
 msgid "The password cannot be the same as user's email address."
-msgstr "Geslo mora biti različno od elektronskega naslova uporabnika."
+msgstr "Salasõna ei tohi olla sama mis kasutaja e-maili aadress."
 
 msgctxt "model:ir.message,text:msg_password_entropy"
 msgid "The same characters appear in the password too many times."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_forbidden"
 msgid "The password is forbidden."
-msgstr "Geslo je prepovedano."
+msgstr "Salasõna on keelatud."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_length"
 msgid "The password is too short."
-msgstr "Geslo je prekratko."
+msgstr "Salasõna on liiga lühike."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_login"
 msgid "The password cannot be the same as user's login."
-msgstr "Geslo mora biti različno od uporabnikove prijave."
+msgstr "Salasõna ei tohi olla sama mis kasutajanimi."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_password_name"
 msgid "The password cannot be the same as user's name."
-msgstr "Geslo mora biti različno od uporabniškega imena."
+msgstr "Salasõna ei tohi olla sama mis kasutaja nimi."
 
 msgctxt "model:ir.message,text:msg_user_delete_forbidden"
 msgid ""
@@ -604,305 +594,252 @@ msgstr ""
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
-msgstr "Send by email a new temporary password to the user"
+msgstr "Saada kasutajale e-kirjaga uus ajutine salasõna"
 
 msgctxt "model:ir.model.button,string:user_application_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Tühista"
 
 msgctxt "model:ir.model.button,string:user_application_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Kinnita"
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Lähtesta salasõna"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Model Gumb - Skupina"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_report"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_url"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
-msgstr ""
+msgstr "Kasutaja gruppides"
 
 msgctxt "model:ir.rule.group,name:rule_group_session"
 msgid "Own session"
-msgstr ""
+msgstr "Oma sessioon"
 
 msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
 msgid "Own session"
-msgstr ""
+msgstr "Oma sessioon"
 
 msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
 msgid "Own favorite"
-msgstr ""
+msgstr "Oma sessioon"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application"
 msgid "Own user application"
-msgstr ""
+msgstr "Oma kasutaja aplikatsioon"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
 msgid "Any user application"
-msgstr ""
+msgstr "Kõigi kasutajate aplikatsioon"
 
 msgctxt "model:ir.rule.group,name:rule_group_user_warning"
 msgid "Own warning"
-msgstr ""
+msgstr "Oma teavitus"
 
 msgctxt "model:ir.rule.group,name:rule_group_view_search"
 msgid "Own view search"
-msgstr ""
+msgstr "Oma vaate otsing"
 
 msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
-msgstr ""
+msgstr "Kõigi vaate otsing"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
-msgstr "Skupina pravila - Skupina"
+msgstr "Reegli grupp - Grupp"
 
 msgctxt "model:ir.sequence.type-res.group,name:"
 msgid "Sequence Type - Group"
-msgstr "Tip štetja - Skupina"
+msgstr "Järjestuse grupp -Grupp"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_group_form"
 msgid "Groups"
-msgstr "Groups"
+msgstr "Grupid"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Users"
+msgstr "Kasutajad"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Kasutajad"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
-msgstr "UI meni - Skupina"
+msgstr "Kasutajaliidese menüü - Grupp"
 
 msgctxt "model:res.group,name:"
 msgid "Group"
-msgstr "Skupina"
+msgstr "Grupp"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
-msgstr "Administration"
+msgstr "Administreerimine"
 
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
-msgstr "Uporabnik - Ukrep"
+msgstr "Kasutaja - Toiming"
 
 msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
-msgstr "Uporabnik - Skupina"
+msgstr "Kasutaja - Grupp"
 
 msgctxt "model:res.user.application,name:"
 msgid "User Application"
-msgstr "Uporabniška aplikacija"
+msgstr "Kasutaja rakendus"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
-msgstr "Začetna nastavitev uporabnika"
+msgstr "Kasutaja seadistuste laadimine"
 
 msgctxt "model:res.user.login.attempt,name:"
 msgid "Login Attempt"
-msgstr "Poskus prijave"
+msgstr "Sisselogimiskatse"
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
-msgstr "Uporabniško opozorilo"
+msgstr "Kasutaja hoiatus"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ", has been reset."
-msgstr ""
+msgstr ", on lähtestatud."
 
-#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr "Salasõna lähtestamine"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password for your account,"
-msgstr ""
+msgstr "Konto salasõna on,"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password will expire at"
-msgstr ""
+msgstr "Salasõna aegub"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "UTC"
-msgstr ""
+msgstr "UTC"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "You can connect with this temporary password"
-msgstr ""
+msgstr "Saate kasutada ajutist salasõna"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "You must set a new one from the user's preferences."
-msgstr ""
+msgstr "Seadistage uus kasutaja eelistuste alt."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "https://"
-msgstr ""
+msgstr "https://"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "to"
-msgstr ""
+msgstr "kuni"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "tryton://"
-msgstr ""
+msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"
-msgstr "Preklicano"
+msgstr "Tühistatud"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Requested"
-msgstr "Zahtevano"
+msgstr "Taotletud"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Validated"
-msgstr "Odobreno"
+msgstr "Kinnitatud"
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr "Dostop"
+msgstr "Ligipääsuõigused"
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr "Člani"
+msgstr "Liikmed"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique!"
-msgstr "Upoštevajte, da mora biti prijava edinstvena."
+msgstr "Kasutajanimi peab olema unikaalne!"
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr "Sedaj lahko v sistem dodajate uporabnike."
+msgstr "Süsteemile saab lisada kasutajaid."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr "Dostop"
+msgstr "Ligipääsuõigused"
 
 msgctxt "view:res.user:"
 msgid "Actions"
-msgstr "Ukrepi"
+msgstr "Toimingud"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
-msgstr "Članstvo v skupinah"
+msgstr "Grupi liikmelisus"
 
 msgctxt "view:res.user:"
 msgid "Preferences"
-msgstr "Nastavitve"
+msgstr "Eelistused"
 
 msgctxt "view:res.user:"
 msgid "User"
-msgstr "Uporabnik"
+msgstr "Kasutaja"
 
 msgctxt "wizard_button:res.user.config,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Tühista"
 
 msgctxt "wizard_button:res.user.config,start,user:"
 msgid "OK"
-msgstr "V redu"
+msgstr "OK"
 
 msgctxt "wizard_button:res.user.config,user,add:"
 msgid "Add"
-msgstr "Dodaj"
+msgstr "Lisa"
 
 msgctxt "wizard_button:res.user.config,user,end:"
 msgid "End"
-msgstr "Zapri"
-
-msgctxt "field:ir.rule.group-res.user,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:ir.rule.group-res.user,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:ir.rule.group-res.user,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.rule.group-res.user,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:ir.rule.group-res.user,rule_group:"
-msgid "Rule Group"
-msgstr "Skupina pravila"
-
-msgctxt "field:ir.rule.group-res.user,user:"
-msgid "User"
-msgstr "Uporabnik"
-
-msgctxt "field:ir.rule.group-res.user,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:ir.rule.group-res.user,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:res.user,rule_groups:"
-msgid "Rules"
-msgstr "Pravila"
-
-msgctxt "model:ir.rule.group-res.user,name:"
-msgid "Rule Group - User"
-msgstr "Skupina pravila - Uporabnik"
-
-msgctxt "view:res.user.application:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "view:res.user.application:"
-msgid "Validate"
-msgstr "Odobritev"
+msgstr "Lõpp"

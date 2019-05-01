@@ -2,221 +2,151 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.group:"
-msgid "The name of the group must be unique!"
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user email."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user login."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user name."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password contains too much times the same characters."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password is forbidden."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password is too short."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid ""
-"Users can not be deleted for logging purpose.\n"
-"Instead you must inactivate them."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "You can not have two users with the same login!"
-msgstr ""
-
+#, fuzzy
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
-msgstr ""
+msgstr "Veiksmai"
 
 msgctxt "field:ir.action-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.action-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
-#, fuzzy
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr "Groupė"
 
+#, fuzzy
 msgctxt "field:ir.action-res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.action-res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:ir.action-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.action-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:ir.model.button-res.group,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktyvus"
 
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
-msgstr ""
+msgstr "Mygtukas"
 
 msgctxt "field:ir.model.button-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.model.button-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs vartotojas"
 
-#, fuzzy
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr "Groupė"
 
+#, fuzzy
 msgctxt "field:ir.model.button-res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.model.button-res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo padavinimas"
 
 msgctxt "field:ir.model.button-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.model.button-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
-#, fuzzy
 msgctxt "field:ir.model.button.click,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
-#, fuzzy
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
-msgstr "Groups"
-
-msgctxt "field:ir.model.field-res.group,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,field:"
-msgid "Model Field"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.model.field-res.group,group:"
-msgid "Group"
-msgstr "Groups"
-
-msgctxt "field:ir.model.field-res.group,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Groupė"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.rule.group-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
-#, fuzzy
 msgctxt "field:ir.rule.group-res.group,group:"
 msgid "Group"
-msgstr "Groups"
+msgstr "Groupė"
 
+#, fuzzy
 msgctxt "field:ir.rule.group-res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.rule.group-res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:ir.rule.group-res.group,rule_group:"
 msgid "Rule Group"
-msgstr ""
+msgstr "Taisyklė grupei"
 
 msgctxt "field:ir.rule.group-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.rule.group-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:ir.sequence,groups:"
 msgid "User Groups"
-msgstr ""
+msgstr "Naudotojo grupės"
 
 msgctxt "field:ir.sequence.strict,groups:"
 msgid "User Groups"
-msgstr ""
+msgstr "Naudotojo grupės"
 
 msgctxt "field:ir.sequence.type,groups:"
 msgid "User Groups"
-msgstr ""
+msgstr "Naudotojo grupės"
 
 msgctxt "field:ir.sequence.type-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.sequence.type-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:ir.sequence.type-res.group,group:"
 msgid "User Groups"
-msgstr ""
+msgstr "Naudotojo grupės"
 
+#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
+#, fuzzy
 msgctxt "field:ir.sequence.type-res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
@@ -224,64 +154,73 @@ msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.sequence.type-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:ir.ui.menu-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:ir.ui.menu-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
 msgstr "Groups"
 
+#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:ir.ui.menu-res.group,menu:"
 msgid "Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:ir.ui.menu-res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:ir.ui.menu-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
+#, fuzzy
+msgctxt "field:res.group,active:"
+msgid "Active"
+msgstr "Aktyvus"
+
+#, fuzzy
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
-msgstr ""
+msgstr "Mygtukas"
 
 msgctxt "field:res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.group,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:res.group,menu_access:"
 msgid "Access Menu"
@@ -296,34 +235,36 @@ msgctxt "field:res.group,name:"
 msgid "Name"
 msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:res.group,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:res.group,rule_groups:"
 msgid "Rules"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr "Users"
+msgstr "Naudotojai"
 
 msgctxt "field:res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user,actions:"
 msgid "Actions"
-msgstr ""
+msgstr "Veiksmai"
 
+#, fuzzy
 msgctxt "field:res.user,active:"
 msgid "Active"
-msgstr ""
+msgstr "Aktyvus"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
@@ -331,11 +272,11 @@ msgstr ""
 
 msgctxt "field:res.user,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:res.user,email:"
 msgid "Email"
@@ -346,9 +287,10 @@ msgctxt "field:res.user,groups:"
 msgid "Groups"
 msgstr "Groups"
 
+#, fuzzy
 msgctxt "field:res.user,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:res.user,language:"
 msgid "Language"
@@ -392,9 +334,10 @@ msgctxt "field:res.user,pyson_menu:"
 msgid "PySON Menu"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:res.user,sessions:"
 msgid "Sessions"
@@ -414,78 +357,81 @@ msgstr ""
 
 msgctxt "field:res.user,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user-ir.action,action:"
 msgid "Action"
-msgstr ""
+msgstr "Veiksmai"
 
 msgctxt "field:res.user-ir.action,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user-ir.action,create_uid:"
 msgid "Create User"
-msgstr ""
-
-msgctxt "field:res.user-ir.action,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:res.user-ir.action,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
+msgctxt "field:res.user-ir.action,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "field:res.user-ir.action,rec_name:"
+msgid "Record Name"
+msgstr "Įrašo pavadinimas"
+
 msgctxt "field:res.user-ir.action,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "field:res.user-ir.action,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user-ir.action,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:res.user-res.group,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user-res.group,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 #, fuzzy
 msgctxt "field:res.user-res.group,group:"
 msgid "Group"
 msgstr "Groups"
 
+#, fuzzy
 msgctxt "field:res.user-res.group,id:"
 msgid "ID"
-msgstr ""
-
-msgctxt "field:res.user-res.group,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
+msgctxt "field:res.user-res.group,rec_name:"
+msgid "Record Name"
+msgstr "Įrašo pavadinimas"
+
 msgctxt "field:res.user-res.group,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "field:res.user-res.group,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user-res.group,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:res.user.application,application:"
 msgid "Application"
@@ -493,60 +439,63 @@ msgstr ""
 
 msgctxt "field:res.user.application,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user.application,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user.application,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:res.user.application,key:"
 msgid "Key"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.application,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.application,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "field:res.user.application,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user.application,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user.config.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user.login.attempt,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user.login.attempt,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:res.user.login.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "IP adresas"
 
 msgctxt "field:res.user.login.attempt,ip_network:"
 msgid "IP Network"
@@ -556,17 +505,18 @@ msgctxt "field:res.user.login.attempt,login:"
 msgid "Login"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:res.user.login.attempt,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
 msgctxt "field:res.user.login.attempt,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user.login.attempt,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:res.user.warning,always:"
 msgid "Always"
@@ -574,37 +524,38 @@ msgstr ""
 
 msgctxt "field:res.user.warning,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:res.user.warning,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
+#, fuzzy
 msgctxt "field:res.user.warning,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #, fuzzy
 msgctxt "field:res.user.warning,name:"
 msgid "Name"
 msgstr "Namu"
 
+#, fuzzy
 msgctxt "field:res.user.warning,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Įrašo pavadinimas"
 
-#, fuzzy
 msgctxt "field:res.user.warning,user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "field:res.user.warning,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:res.user.warning,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:ir.model.button-res.group,active:"
 msgid "Uncheck to exclude from future use."
@@ -612,6 +563,10 @@ msgstr ""
 
 msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
+msgstr ""
+
+msgctxt "help:res.group,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:res.user,actions:"
@@ -632,7 +587,7 @@ msgstr "Configure Users"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
@@ -642,9 +597,35 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr ""
 
-msgctxt "model:ir.cron,name:cron_trigger_time"
-msgid "Run On Time Triggers"
-msgstr "Run On Time Triggers"
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -666,8 +647,72 @@ msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
 msgstr ""
 
-msgctxt "model:ir.model.field-res.group,name:"
-msgid "Model Field Group Rel"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
 msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"
@@ -684,11 +729,11 @@ msgstr "Groups"
 
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr "Users"
+msgstr "Naudotojai"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr "Users"
+msgstr "Naudotojai"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -703,22 +748,21 @@ msgctxt "model:res.group,name:group_admin"
 msgid "Administration"
 msgstr "Administration"
 
-#, fuzzy
 msgctxt "model:res.user,name:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 msgctxt "model:res.user-ir.action,name:"
 msgid "User - Action"
-msgstr ""
+msgstr "Naudotojas - Veiksmas"
 
 msgctxt "model:res.user-res.group,name:"
 msgid "User - Group"
-msgstr ""
+msgstr "Naudotojas - Grupė"
 
 msgctxt "model:res.user.application,name:"
 msgid "User Application"
-msgstr ""
+msgstr "Naudotojo taikomoji programa"
 
 msgctxt "model:res.user.config.start,name:"
 msgid "User Config Init"
@@ -730,7 +774,7 @@ msgstr ""
 
 msgctxt "model:res.user.warning,name:"
 msgid "User Warning"
-msgstr ""
+msgstr "Perspėjimai naudotojui"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ", has been reset."
@@ -806,9 +850,10 @@ msgctxt "view:res.user:"
 msgid "Access Permissions"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:res.user:"
 msgid "Actions"
-msgstr ""
+msgstr "Veiksmai"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"
@@ -818,10 +863,9 @@ msgctxt "view:res.user:"
 msgid "Preferences"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:res.user:"
 msgid "User"
-msgstr "Users"
+msgstr "Naudotojas"
 
 #, fuzzy
 msgctxt "wizard_button:res.user.config,start,end:"

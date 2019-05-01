@@ -2,44 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.group:"
-msgid "The name of the group must be unique!"
-msgstr "Името на групата трябва да е уникално!"
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user email."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user login."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user name."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password contains too much times the same characters."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password is forbidden."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "The password is too short."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid ""
-"Users can not be deleted for logging purpose.\n"
-"Instead you must inactivate them."
-msgstr ""
-
-msgctxt "error:res.user:"
-msgid "You can not have two users with the same login!"
-msgstr "Не може да имате двама потребители с еднакво потребителско име"
-
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "Действие"
@@ -117,39 +79,6 @@ msgstr "Потребител"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Група"
-
-msgctxt "field:ir.model.field-res.group,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:ir.model.field-res.group,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:ir.model.field-res.group,field:"
-msgid "Model Field"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.model.field-res.group,group:"
-msgid "Group"
-msgstr "Група"
-
-msgctxt "field:ir.model.field-res.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:ir.model.field-res.group,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -258,6 +187,11 @@ msgstr "Променено на"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Променено от"
+
+#, fuzzy
+msgctxt "field:res.group,active:"
+msgid "Active"
+msgstr "Активен"
 
 #, fuzzy
 msgctxt "field:res.group,buttons:"
@@ -613,6 +547,10 @@ msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr "Групите на които е позволено да редактират този вид последователност"
 
+msgctxt "help:res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "Действие което ще бъде изпълнено при влизане"
@@ -644,10 +582,35 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "Действие - група"
 
-#, fuzzy
-msgctxt "model:ir.cron,name:cron_trigger_time"
-msgid "Run On Time Triggers"
-msgstr "Run On Time Triggers"
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -669,9 +632,73 @@ msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
 msgstr "Бутон модел - група"
 
-msgctxt "model:ir.model.field-res.group,name:"
-msgid "Model Field Group Rel"
-msgstr "Връзка на група за модел на поле"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"

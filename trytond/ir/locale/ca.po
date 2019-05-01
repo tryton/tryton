@@ -2,337 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:access_error:"
-msgid ""
-"You try to bypass an access rule.\n"
-"(Document type: %s)"
-msgstr ""
-"Esteu intentant accedir a registres que no existeixen.(Tipus de document: "
-"%s)"
-
-msgctxt "error:delete_xml_record:"
-msgid "You are not allowed to delete this record."
-msgstr "No podeu eliminar aquest registre."
-
-msgctxt "error:digits_validation_record:"
-msgid ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
-msgstr ""
-"El valor \"%(value)s\" del camp \"%(field)s\" a \"%(model)s\" excedeix el "
-"límit de dígits \"%(digits)s\"."
-
-msgctxt "error:domain_validation_record:"
-msgid ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
-msgstr ""
-"El valor del camp \"%(field)s\" de \"%(model)s\" no és correcte segons "
-"aquest domini."
-
-msgctxt "error:foreign_model_exist:"
-msgid ""
-"Could not delete the records because they are used on field \"%(field)s\" of"
-" \"%(model)s\"."
-msgstr ""
-"No es poden eliminar els registres perquè es fan servir al camp "
-"\"%(field)s\" de \"%(model)s\"."
-
-msgctxt "error:foreign_model_missing:"
-msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr "El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no existeix."
-
-msgctxt "error:ir.action.act_window.domain:"
-msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
-msgstr ""
-"El domini o el criteri de cerca \"%(domain)s\" de l'acció \"%(action)s\" no "
-"és correcte."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
-msgstr "El context \"%(context)s\" de l'acció \"%(action)s\" no és correcte."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
-msgstr ""
-"El domini o el criteri de cerca \"%(domain)s\" de l'acció \"%(action)s\" no "
-"és correcte."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
-msgstr "La vista \"%(view)s\" per l'acció \"%(action)s\" no és correcte."
-
-msgctxt "error:ir.action.keyword:"
-msgid "Wrong wizard model in keyword action \"%s\"."
-msgstr "El model d'assistent és incorrecte en l'acció de teclat \"%s\"."
-
-msgctxt "error:ir.action.report:"
-msgid "Invalid email definition on report \"%s\"."
-msgstr ""
-"La definició del correu electrònic sobre l'informe \"%s\", no és correcta."
-
-msgctxt "error:ir.cron:"
-msgid "Scheduled action failed"
-msgstr "L'acció planificada ha fallat."
-
-msgctxt "error:ir.cron:"
-msgid ""
-"The following action failed to execute properly: \"%s\"\n"
-"%s\n"
-" Traceback: \n"
-"\n"
-"%s\n"
-msgstr ""
-"Ha fallat l'acció quan s'executava: \"%s\"\n"
-"%s\n"
-" Traça del programa: \n"
-"\n"
-"%s\n"
-
-msgctxt "error:ir.lang:"
-msgid "Default language can not be deleted."
-msgstr "L'idioma per defecte no es pot eliminar."
-
-msgctxt "error:ir.lang:"
-msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
-msgstr "El format de la data \"%(format)s\" de \"%(language)s\" no és correcte."
-
-msgctxt "error:ir.lang:"
-msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
-msgstr "L'agrupació \"%(grouping)s\" de \"%(language)s\" no és correcte."
-
-msgctxt "error:ir.lang:"
-msgid "The default language must be translatable."
-msgstr "L'idioma per defecte ha de ser traduïble."
-
-msgctxt "error:ir.lang:"
-msgid "decimal_point and thousands_sep must be different!"
-msgstr "El punt decimal i el separador de milers han de ser diferents."
-
-msgctxt "error:ir.model.access:"
-msgid "You can not create this kind of document! (%s)"
-msgstr "No podeu crear aquest tipus de document (%s)."
-
-msgctxt "error:ir.model.access:"
-msgid "You can not delete this document! (%s)"
-msgstr "No podeu eliminar aquest document (%s)."
-
-msgctxt "error:ir.model.access:"
-msgid "You can not read this document! (%s)"
-msgstr "No podeu llegir aquest document (%s)."
-
-msgctxt "error:ir.model.access:"
-msgid "You can not write in this document! (%s)"
-msgstr "No podeu modificar aquest document (%s)."
-
-msgctxt "error:ir.model.button.rule:"
-msgid ""
-"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
-"\"%(rule)s\"."
-msgstr ""
-"La condició \"%(condition)s\" no és una expressió PYSON vàlida en la regla "
-"del botó \"%(rule)s\"."
-
-msgctxt "error:ir.model.button:"
-msgid "The button name in model must be unique!"
-msgstr "El nom del botó del model ha de ser únic."
-
-msgctxt "error:ir.model.data:"
-msgid "The triple (fs_id, module, model) must be unique!"
-msgstr "El triplet (fs_id, module, model) ha de ser únic."
-
-msgctxt "error:ir.model.field.access:"
-msgid "You can not read the field! (%s.%s)"
-msgstr "No podeu llegir el camp: (%s.%s)"
-
-msgctxt "error:ir.model.field.access:"
-msgid "You can not write on the field! (%s.%s)"
-msgstr "No podeu modificar el camp (%s.%s)."
-
-msgctxt "error:ir.model.field:"
-msgid "The field name in model must be unique!"
-msgstr "El nom del camp ha de ser únic."
-
-msgctxt "error:ir.model:"
-msgid "The model must be unique!"
-msgstr "El model ha de ser únic."
-
-msgctxt "error:ir.module.dependency:"
-msgid "Dependency must be unique by module!"
-msgstr "La dependència ha de ser únic en el mòdul."
-
-msgctxt "error:ir.module:"
-msgid ""
-"Some activated modules depend on the ones you are trying to deactivate:"
-msgstr ""
-"Alguns modules activats depenen dels mòduls que esteu intentant desactivar:"
-
-msgctxt "error:ir.module:"
-msgid "The name of the module must be unique!"
-msgstr "El nom del mòdul ha de ser únic."
-
-msgctxt "error:ir.module:"
-msgid "You can not remove a module that is activated or will be activated"
-msgstr "No podeu eliminar un mòdul que està activat o serà activat."
-
-msgctxt "error:ir.rule.group:"
-msgid "Global and Default are mutually exclusive!"
-msgstr "Global i per defecte són mútuament excloents."
-
-msgctxt "error:ir.rule:"
-msgid "Invalid domain in rule \"%s\"."
-msgstr "La regla del domini \"%s\" no és correcte."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Prefix \"%(prefix)s\" de la seqüència \"%(sequence)s\" no és correcte."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "Sufix \"%(suffix)s\" de la seqüència \"%(sequence)s\" no és correcte."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Missing sequence."
-msgstr "No es troba la seqüència."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Timestamp rounding should be greater than 0"
-msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "Prefix \"%(prefix)s\" de la seqüència \"%(sequence)s\" no és correcte."
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "Sufix \"%(suffix)s\" de la seqüència \"%(sequence)s\" no és correcte."
-
-msgctxt "error:ir.sequence:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
-
-msgctxt "error:ir.sequence:"
-msgid "Missing sequence."
-msgstr "No es troba la seqüència."
-
-msgctxt "error:ir.sequence:"
-msgid "Timestamp rounding should be greater than 0"
-msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
-
-msgctxt "error:ir.translation:"
-msgid "Translation must be unique"
-msgstr "La traducció ha de ser única."
-
-msgctxt "error:ir.translation:"
-msgid ""
-"You can not export translation %(name)s because it is an overridden "
-"translation by module %(overriding_module)s"
-msgstr ""
-"No podeu exportar la traducció %(name)s perquè s'utilitza en el mòdul "
-"%(overriding_module)s."
-
-msgctxt "error:ir.trigger:"
-msgid "\"On Time\" and others are mutually exclusive!"
-msgstr "\"Al moment\" i altres són mútuament exclusius."
-
-msgctxt "error:ir.trigger:"
-msgid ""
-"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
-"\"%(trigger)s\"."
-msgstr ""
-"La condició \"%(condition)s\" no és una expressió PYSON vàlida al disparador"
-" \"%(trigger)s\"."
-
-msgctxt "error:ir.ui.view:"
-msgid "Invalid XML for view \"%s\"."
-msgstr "XML en les vistes \"%s\" no és correcte."
-
-msgctxt "error:read_error:"
-msgid ""
-"You try to read records that don't exist anymore.\n"
-"(Document type: %s)"
-msgstr ""
-"Esteu intentant llegir registres que ja no existeixen.(Tipus de document: "
-"%s)"
-
-msgctxt "error:recursion_error:"
-msgid ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
-msgstr ""
-"Error de recursivitat: El registre \"%(rec_name)s\" amb el pare "
-"\"%(parent_rec_name)s\" s'ha configurat com a pare de si mateix."
-
-msgctxt "error:reference_syntax_error:"
-msgid "Syntax error for reference %r in %s"
-msgstr "Error de sintaxi en la referència %r de %s."
-
-msgctxt "error:relation_not_found:"
-msgid "Relation not found: %r in %s"
-msgstr "No s'ha trobat la relació: %r a %s."
-
-msgctxt "error:required_field:"
-msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "El camp \"%(field)s\" de \"%(model)s\" és obligatori."
-
-msgctxt "error:required_validation_record:"
-msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "El camp \"%(field)s\" de \"%(model)s\" és obligatori."
-
-msgctxt "error:search_function_missing:"
-msgid "Missing search function on field \"%s\"."
-msgstr "Falta la funció de cerca del camp \"%s\"."
-
-msgctxt "error:selection_validation_record:"
-msgid ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
-msgstr ""
-"El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no està a la "
-"selecció."
-
-msgctxt "error:selection_value_notfound:"
-msgid "Value not in the selection for field \"%s\"."
-msgstr "El valor no es troba en la selecció en el camp \"%s\"."
-
-msgctxt "error:size_validation_record:"
-msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr "La mida \"%(size)s\" del camp \"%(field)s\" de \"%(model)s\" és massa gran."
-
-msgctxt "error:time_format_validation_record:"
-msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
-msgstr ""
-"El valor de temps \"%(value)s\" del camp %(field)s\" de \"%(model)s\" no és "
-"vàlid."
-
-msgctxt "error:too_many_relations_found:"
-msgid "Too many relations found: %r in %s"
-msgstr "S'han trobat massa relacions: %r a %s."
-
-msgctxt "error:write_error:"
-msgid ""
-"You try to write on records that don't exist anymore.\n"
-"(Document type: %s)"
-msgstr ""
-"Esteu intentant modificar registres que no existeixen.(Tipus de document: "
-"%s)"
-
-msgctxt "error:write_xml_record:"
-msgid "You are not allowed to modify this record."
-msgstr "No es permet modificar aquest registre."
-
-msgctxt "error:xml_id_syntax_error:"
-msgid "Syntax error for XML id %r in %s"
-msgstr "Error de sintaxi en el XML id %r de %s."
-
-msgctxt "error:xml_record_desc:"
-msgid "This record is part of the base configuration."
-msgstr "Aquest registre es part de la configuració inicial."
-
 msgctxt "field:ir.action,active:"
 msgid "Active"
 msgstr "Actiu"
@@ -713,6 +382,10 @@ msgctxt "field:ir.action.report,report_content_custom:"
 msgid "Content"
 msgstr "Contingut"
 
+msgctxt "field:ir.action.report,report_content_html:"
+msgid "Content HTML"
+msgstr "Contingut HTML"
+
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
 msgstr "Nom del contingut"
@@ -981,6 +654,78 @@ msgctxt "field:ir.cache,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
+msgctxt "field:ir.calendar.day,abbreviation:"
+msgid "Abbreviation"
+msgstr "Abreviació"
+
+msgctxt "field:ir.calendar.day,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:ir.calendar.day,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:ir.calendar.day,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.calendar.day,index:"
+msgid "Index"
+msgstr "Índex"
+
+msgctxt "field:ir.calendar.day,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.calendar.day,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:ir.calendar.day,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:ir.calendar.day,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:ir.calendar.month,abbreviation:"
+msgid "Abbreviation"
+msgstr "Abreviació"
+
+msgctxt "field:ir.calendar.month,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:ir.calendar.month,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:ir.calendar.month,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.calendar.month,index:"
+msgid "Index"
+msgstr "Índex"
+
+msgctxt "field:ir.calendar.month,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.calendar.month,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:ir.calendar.month,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:ir.calendar.month,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
 msgctxt "field:ir.configuration,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -1017,10 +762,6 @@ msgctxt "field:ir.cron,active:"
 msgid "Active"
 msgstr "Actiu"
 
-msgctxt "field:ir.cron,args:"
-msgid "Arguments"
-msgstr "Arguments"
-
 msgctxt "field:ir.cron,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
@@ -1029,9 +770,13 @@ msgctxt "field:ir.cron,create_uid:"
 msgid "Create User"
 msgstr "Usuari de creació"
 
-msgctxt "field:ir.cron,function:"
-msgid "Function"
-msgstr "Funció"
+msgctxt "field:ir.cron,day:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "field:ir.cron,hour:"
+msgid "Hour"
+msgstr "Hora"
 
 msgctxt "field:ir.cron,id:"
 msgid "ID"
@@ -1042,40 +787,28 @@ msgid "Interval Number"
 msgstr "Número d'interval"
 
 msgctxt "field:ir.cron,interval_type:"
-msgid "Interval Unit"
-msgstr "Unitat d'interval"
+msgid "Interval Type"
+msgstr "Tipus d'interval"
 
-msgctxt "field:ir.cron,model:"
-msgid "Model"
-msgstr "Model"
+msgctxt "field:ir.cron,method:"
+msgid "Method"
+msgstr "Mètode"
 
-msgctxt "field:ir.cron,name:"
-msgid "Name"
-msgstr "Nom"
+msgctxt "field:ir.cron,minute:"
+msgid "Minute"
+msgstr "Minut"
 
 msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "Següent execució"
 
-msgctxt "field:ir.cron,number_calls:"
-msgid "Number of Calls"
-msgstr "Número de crides"
-
 msgctxt "field:ir.cron,rec_name:"
 msgid "Record Name"
 msgstr "Nom del registre"
 
-msgctxt "field:ir.cron,repeat_missed:"
-msgid "Repeat Missed"
-msgstr "Repeteix perduts"
-
-msgctxt "field:ir.cron,request_user:"
-msgid "Request User"
-msgstr "Usuari sol·licitant"
-
-msgctxt "field:ir.cron,user:"
-msgid "Execution User"
-msgstr "Usuari execució"
+msgctxt "field:ir.cron,weekday:"
+msgid "Day of Week"
+msgstr "Dia de la setmana"
 
 msgctxt "field:ir.cron,write_date:"
 msgid "Write Date"
@@ -1161,6 +894,10 @@ msgctxt "field:ir.lang,active:"
 msgid "Active"
 msgstr "Actiu"
 
+msgctxt "field:ir.lang,am:"
+msgid "AM"
+msgstr "AM"
+
 msgctxt "field:ir.lang,code:"
 msgid "Code"
 msgstr "Codi"
@@ -1241,6 +978,10 @@ msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
 msgstr "Codi del pare"
 
+msgctxt "field:ir.lang,pm:"
+msgid "PM"
+msgstr "PM"
+
 msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
 msgstr "Signe positiu"
@@ -1262,6 +1003,34 @@ msgid "Write Date"
 msgstr "Data de modificació"
 
 msgctxt "field:ir.lang,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:ir.message,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:ir.message,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:ir.message,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:ir.message,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:ir.message,text:"
+msgid "Text"
+msgstr "Text"
+
+msgctxt "field:ir.message,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:ir.message,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -1312,6 +1081,10 @@ msgstr "Data de modificació"
 msgctxt "field:ir.model,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:ir.model.access,active:"
+msgid "Active"
+msgstr "Actiu"
 
 msgctxt "field:ir.model.access,create_date:"
 msgid "Create Date"
@@ -1605,10 +1378,6 @@ msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
 msgstr "Descripció del camp"
 
-msgctxt "field:ir.model.field,groups:"
-msgid "Groups"
-msgstr "Grups"
-
 msgctxt "field:ir.model.field,help:"
 msgid "Help"
 msgstr "Ajuda"
@@ -1648,6 +1417,10 @@ msgstr "Data de modificació"
 msgctxt "field:ir.model.field,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:ir.model.field.access,active:"
+msgid "Active"
+msgstr "Actiu"
 
 msgctxt "field:ir.model.field.access,create_date:"
 msgid "Create Date"
@@ -2377,10 +2150,6 @@ msgctxt "field:ir.translation,src:"
 msgid "Source"
 msgstr "Original"
 
-msgctxt "field:ir.translation,src_md5:"
-msgid "Source MD5"
-msgstr "Codi MD5"
-
 msgctxt "field:ir.translation,type:"
 msgid "Type"
 msgstr "Tipus"
@@ -2961,22 +2730,6 @@ msgctxt "help:ir.cron,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
-msgctxt "help:ir.cron,number_calls:"
-msgid ""
-"Number of times the function is called, a negative number indicates that the"
-" function will always be called"
-msgstr ""
-"Número d'execucions de la funció, un número negatiu indica que aquesta "
-"funció s'executarà sempre."
-
-msgctxt "help:ir.cron,request_user:"
-msgid "The user who will receive requests in case of failure"
-msgstr "L'usuari que rebrà sol·licituds en cas d'errors."
-
-msgctxt "help:ir.cron,user:"
-msgid "The user used to execute this action"
-msgstr "L'usuari que executarà aquesta acció."
-
 msgctxt "help:ir.lang,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarca per eliminar l'ús del registre en el futur."
@@ -2992,6 +2745,10 @@ msgstr "Codi del pare excepcional"
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined"
 msgstr "Mòdul en què es defineix aquest model."
+
+msgctxt "help:ir.model.access,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
@@ -3024,6 +2781,10 @@ msgstr "L'id del registre com es coneix al sistema de fitxers."
 msgctxt "help:ir.model.field,module:"
 msgid "Module in which this field is defined"
 msgstr "Mòdul en el qual es defineix aquest camp."
+
+msgctxt "help:ir.model.field.access,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
@@ -3058,6 +2819,11 @@ msgid ""
 msgstr ""
 "Marcar la regla global \n"
 "per tant tots els usuari hauran de seguir aquesta regla."
+
+msgctxt "help:ir.rule.group,name:"
+msgid "Displayed to users when access error is raised for this rule."
+msgstr ""
+"Es mostra als usuaris quan es produeix un error d'accés per aquesta regla"
 
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True"
@@ -3162,6 +2928,10 @@ msgstr "Menú"
 msgctxt "model:ir.action,name:act_menu_tree"
 msgid "Menu"
 msgstr "Menú"
+
+msgctxt "model:ir.action,name:act_message_form"
+msgid "Message"
+msgstr "Missatge"
 
 msgctxt "model:ir.action,name:act_model_access_form"
 msgid "Models Access"
@@ -3355,6 +3125,166 @@ msgctxt "model:ir.cache,name:"
 msgid "Cache"
 msgstr "Memòria cau"
 
+msgctxt "model:ir.calendar.day,abbreviation:Friday"
+msgid "Fri"
+msgstr "Div"
+
+msgctxt "model:ir.calendar.day,abbreviation:Monday"
+msgid "Mon"
+msgstr "Dl"
+
+msgctxt "model:ir.calendar.day,abbreviation:Saturday"
+msgid "Sat"
+msgstr "Ds"
+
+msgctxt "model:ir.calendar.day,abbreviation:Sunday"
+msgid "Sun"
+msgstr "Dg"
+
+msgctxt "model:ir.calendar.day,abbreviation:Thursday"
+msgid "Thu"
+msgstr "Dj"
+
+msgctxt "model:ir.calendar.day,abbreviation:Tuesday"
+msgid "Tue"
+msgstr "Dt"
+
+msgctxt "model:ir.calendar.day,abbreviation:Wednesday"
+msgid "Wed"
+msgstr "Dc"
+
+msgctxt "model:ir.calendar.day,name:"
+msgid "Day"
+msgstr "Dia"
+
+msgctxt "model:ir.calendar.day,name:Friday"
+msgid "Friday"
+msgstr "Divendres"
+
+msgctxt "model:ir.calendar.day,name:Monday"
+msgid "Monday"
+msgstr "Dilluns"
+
+msgctxt "model:ir.calendar.day,name:Saturday"
+msgid "Saturday"
+msgstr "Dissabte"
+
+msgctxt "model:ir.calendar.day,name:Sunday"
+msgid "Sunday"
+msgstr "Diumenge"
+
+msgctxt "model:ir.calendar.day,name:Thursday"
+msgid "Thursday"
+msgstr "Dijous"
+
+msgctxt "model:ir.calendar.day,name:Tuesday"
+msgid "Tuesday"
+msgstr "Dimarts"
+
+msgctxt "model:ir.calendar.day,name:Wednesday"
+msgid "Wednesday"
+msgstr "Dimecres"
+
+msgctxt "model:ir.calendar.month,abbreviation:April"
+msgid "Apr"
+msgstr "Abr"
+
+msgctxt "model:ir.calendar.month,abbreviation:August"
+msgid "Aug"
+msgstr "Ag"
+
+msgctxt "model:ir.calendar.month,abbreviation:December"
+msgid "Dec"
+msgstr "Des"
+
+msgctxt "model:ir.calendar.month,abbreviation:February"
+msgid "Feb"
+msgstr "Febr"
+
+msgctxt "model:ir.calendar.month,abbreviation:January"
+msgid "Jan"
+msgstr "Gen"
+
+msgctxt "model:ir.calendar.month,abbreviation:July"
+msgid "Jul"
+msgstr "Jul"
+
+msgctxt "model:ir.calendar.month,abbreviation:June"
+msgid "Jun"
+msgstr "Juny"
+
+msgctxt "model:ir.calendar.month,abbreviation:March"
+msgid "Mar"
+msgstr "Març"
+
+msgctxt "model:ir.calendar.month,abbreviation:May"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "model:ir.calendar.month,abbreviation:November"
+msgid "Nov"
+msgstr "Nov"
+
+msgctxt "model:ir.calendar.month,abbreviation:October"
+msgid "Oct"
+msgstr "Oct"
+
+msgctxt "model:ir.calendar.month,abbreviation:September"
+msgid "Sep"
+msgstr "Set"
+
+msgctxt "model:ir.calendar.month,name:"
+msgid "Month"
+msgstr "Mes"
+
+msgctxt "model:ir.calendar.month,name:April"
+msgid "April"
+msgstr "Abril"
+
+msgctxt "model:ir.calendar.month,name:August"
+msgid "August"
+msgstr "Agost"
+
+msgctxt "model:ir.calendar.month,name:December"
+msgid "December"
+msgstr "Desembre"
+
+msgctxt "model:ir.calendar.month,name:February"
+msgid "February"
+msgstr "Febrer"
+
+msgctxt "model:ir.calendar.month,name:January"
+msgid "January"
+msgstr "Gener"
+
+msgctxt "model:ir.calendar.month,name:July"
+msgid "July"
+msgstr "Juliol"
+
+msgctxt "model:ir.calendar.month,name:June"
+msgid "June"
+msgstr "Juny"
+
+msgctxt "model:ir.calendar.month,name:March"
+msgid "March"
+msgstr "Març"
+
+msgctxt "model:ir.calendar.month,name:May"
+msgid "May"
+msgstr "Maig"
+
+msgctxt "model:ir.calendar.month,name:November"
+msgid "November"
+msgstr "Novembre"
+
+msgctxt "model:ir.calendar.month,name:October"
+msgid "October"
+msgstr "Octubre"
+
+msgctxt "model:ir.calendar.month,name:September"
+msgid "September"
+msgstr "Setembre"
+
 msgctxt "model:ir.configuration,name:"
 msgid "Configuration"
 msgstr "Configuració"
@@ -3401,11 +3331,11 @@ msgstr "Anglès"
 
 msgctxt "model:ir.lang,name:lang_es"
 msgid "Spanish"
-msgstr "Espanyol"
+msgstr "Castellà"
 
 msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
-msgstr "Espanyol (llatinoamericà)"
+msgstr "Castellà (llatinoamericà)"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
@@ -3415,11 +3345,11 @@ msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
 msgstr "Francès"
 
-msgctxt "model:ir.lang,name:lang_hu_HU"
+msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Hongarès"
 
-msgctxt "model:ir.lang,name:lang_it_IT"
+msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italià"
 
@@ -3439,9 +3369,9 @@ msgctxt "model:ir.lang,name:lang_pl"
 msgid "Polish"
 msgstr "Polonès"
 
-msgctxt "model:ir.lang,name:lang_pt_BR"
-msgid "Portuguese (Brazil)"
-msgstr "Portuguès (Brasil)"
+msgctxt "model:ir.lang,name:lang_pt"
+msgid "Portuguese"
+msgstr "Portuguès"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -3454,6 +3384,302 @@ msgstr "Eslovè"
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Xinès simplificat"
+
+msgctxt "model:ir.message,name:"
+msgid "Message"
+msgstr "Missatge"
+
+msgctxt "model:ir.message,text:msg_access_button_error"
+msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
+msgstr "La crida al botó \"%(button)s\" de \"%(model)s\" no està permesa."
+
+msgctxt "model:ir.message,text:msg_access_rule_error"
+msgid "You are not allowed to access \"%(model)s\"."
+msgstr "No teniu permisos per accedir a \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_access_rule_field_error"
+msgid "You are not allowed to access \"%(model)s.%(field)s\"."
+msgstr "No teniu permisos per accedir a \"%(model)s.%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_action_invalid_context"
+msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
+msgstr "El context \"%(context)s\" de l'acció \"%(action)s\" és invàlid."
+
+msgctxt "model:ir.message,text:msg_action_invalid_domain"
+msgid "Invalid domain or search criteria \"%(domain)s\" for action \"%(action)s\"."
+msgstr ""
+"El domini o el criteri de cerca \"%(domain)s\" de l'acció \"%(action)s\" es "
+"invàlid."
+
+msgctxt "model:ir.message,text:msg_action_invalid_views"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "La vista \"%(view)s\" de l'acció \"%(action)s\" es invàlida."
+
+msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
+msgid "Wrong wizard model in keyword action \"%(name)s\"."
+msgstr "El model d'assistent és incorrecte per l'acció de teclat \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_base_config_record"
+msgid "This record is part of the base configuration."
+msgstr "Aquest registre es part de la configuració inicial."
+
+msgctxt "model:ir.message,text:msg_create_rule_error"
+msgid ""
+"You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"No podeu crear registres a \"%(model)s\" perquè no compleixen almenys alguna"
+" d'aquestes regles:%(rules)s"
+
+msgctxt "model:ir.message,text:msg_cron_email"
+msgid ""
+"Scheduled action failed\n"
+"The following action failed to execute properly: \"%(name)s\"\n"
+"%(url)s\n"
+"\n"
+"Traceback:\n"
+"%(traceback)s"
+msgstr ""
+"La acció planificada ha fallat\n"
+"La següent acció no s'ha executat correctament: \"%(name)s\"\n"
+"%(url)s\n"
+"\n"
+"Traça:\n"
+"%(traceback)s"
+
+msgctxt "model:ir.message,text:msg_delete_rule_error"
+msgid ""
+"You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
+"%(rules)s"
+msgstr ""
+"No podeu eliminar els registres \"%(ids)s\" de \"%(model)s\" per alguna de "
+"les següents regles:%(rules)s"
+
+msgctxt "model:ir.message,text:msg_delete_xml_record"
+msgid "You are not allowed to delete this record."
+msgstr "No podeu eliminar aquest registre."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
+msgid "Invalid domain in schema \"%(schema)s\"."
+msgstr "Domini invalid en el esquema \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
+msgid "Invalid selection in schema \"%(schema)s\"."
+msgstr "Domini invàlid en el esquema \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_digits_validation_record"
+msgid ""
+"The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
+"\"%(model)s\" exceeds the limit of \"%(digits)i\"."
+msgstr ""
+"El nombre de dígits del valor \"%(value)s\" del camp \"%(field)s\" de "
+"\"%(model)s\" excedeix el seu límit de \"%(digits)i\"."
+
+msgctxt "model:ir.message,text:msg_domain_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is not valid according to"
+" its domain."
+msgstr ""
+"El valor del camp \"%(field)s\" de \"%(model)s\" no és correcte segons el "
+"seu domini."
+
+msgctxt "model:ir.message,text:msg_foreign_model_exist"
+msgid ""
+"The records could not be deleted because they are used by field "
+"\"%(field)s\" of \"%(model)s\"."
+msgstr ""
+"Els registres no s'han pogut eliminar perquè s'utilitzen en el camp "
+"\"%(field)s\" de \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_foreign_model_missing"
+msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
+msgstr "El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no existeix."
+
+msgctxt "model:ir.message,text:msg_html_editor_save_fail"
+msgid "Failed to save, please retry."
+msgstr "No s'ha pogut desar, si us plau torna-ho a intentar"
+
+msgctxt "model:ir.message,text:msg_id_positive"
+msgid "ID must be positive."
+msgstr "L'ID ha de ser positiu."
+
+msgctxt "model:ir.message,text:msg_language_default_translatable"
+msgid "The default language must be translatable."
+msgstr "L'idioma per defecte ha de ser traduïble."
+
+msgctxt "model:ir.message,text:msg_language_delete_default"
+msgid "The default language can not be deleted."
+msgstr "L'idioma per defecte no es pot eliminar."
+
+msgctxt "model:ir.message,text:msg_language_invalid_date"
+msgid "Invalid date format \"%(format)s\" for language \"%(language)s\"."
+msgstr "El format de data \"%(format)s\" de l'idioma \"%(language)s\" és invàlid."
+
+msgctxt "model:ir.message,text:msg_language_invalid_grouping"
+msgid "Invalid grouping \"%(grouping)s\" for language \"%(language)s\"."
+msgstr "L'agrupació \"%(grouping)s\" de l'idioma \"%(language)s\" es invàlida."
+
+msgctxt "model:ir.message,text:msg_model_invalid_condition"
+msgid ""
+"The condition \"%(condition)s\" is not a valid PYSON expression for button "
+"rule \"%(rule)s\"."
+msgstr ""
+"La condició \"%(condition)s\" de la regla del botó \"%(rule)s\" no és una "
+"expressió PYSON vàlida."
+
+msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Alguns modules activats depenen dels mòduls que esteu intentant desactivar:"
+
+msgctxt "model:ir.message,text:msg_module_delete_state"
+msgid ""
+"You can not remove a module that is activated or that is about to be "
+"activated."
+msgstr "No podeu eliminar un mòdul que està activat o serà activat."
+
+msgctxt "model:ir.message,text:msg_read_error"
+msgid ""
+"You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
+" anymore."
+msgstr ""
+"Esteu intentant llegir els registres \"%(ids)s\" del model \"%(model)s\" que"
+" ja no existeixen."
+
+msgctxt "model:ir.message,text:msg_read_rule_error"
+msgid ""
+"You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"No podeu llegir els registres \"%(ids)s\" de \"%(model)s\" per almenys una "
+"d'aquestes regles:%(rules)s"
+
+msgctxt "model:ir.message,text:msg_recursion_error"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"Error de recursivitat: El registre \"%(rec_name)s\" amb el pare "
+"\"%(parent_rec_name)s\" s'ha configurat com a pare de si mateix."
+
+msgctxt "model:ir.message,text:msg_reference_syntax_error"
+msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
+msgstr "Error de sintaxis per la referència: \"%(value)r\" en \"%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_relation_not_found"
+msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
+msgstr "No s'ha trobat la relació: \"%(value)r\" en \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_report_invalid_email"
+msgid "Invalid email definition for report \"%(name)s\"."
+msgstr ""
+"La definició del correu electrònic sobre l'informe \"%(name)s\", és "
+"invàlida."
+
+msgctxt "model:ir.message,text:msg_required_validation_record"
+msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Es requereix un valor pel camp \"%(field)s\" de \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_rule_invalid_domain"
+msgid "Invalid domain in rule \"%(name)s\"."
+msgstr "La regla del domini \"%(name)s\" es invàlida."
+
+msgctxt "model:ir.message,text:msg_search_function_missing"
+msgid "Missing search function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Falta la funció de cerca del camp \"%(field)s\" a \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_selection_validation_record"
+msgid ""
+"The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not one "
+"of the allowed options."
+msgstr ""
+"El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no és un dels"
+" seus valors permesos."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
+msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "El prefix \"%(prefix)s\" de la seqüència \"%(sequence)s\" es invàlid."
+
+msgctxt "model:ir.message,text:msg_sequence_invalid_suffix"
+msgid "Invalid suffix \"%(affix)s\" for sequence \"%(sequence)s\"."
+msgstr "El sufix \"%(affix)s\" de la seqüència \"%(sequence)s\" es invàlid."
+
+msgctxt "model:ir.message,text:msg_sequence_last_timestamp_future"
+msgid "The \"Last Timestamp\" cannot be in the future for sequence \"%s\"."
+msgstr "L'última data-hora no pot ser en el futur per la seqüència \"%s\"."
+
+msgctxt "model:ir.message,text:msg_sequence_missing"
+msgid "Missing sequence."
+msgstr "No s'ha trobat la seqüència."
+
+msgctxt "model:ir.message,text:msg_setter_function_missing"
+msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
+msgstr "Falta funció d'escriptura del camp \"%(field)s\" a \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_size_validation_record"
+msgid ""
+"The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
+"%(max_size)i)."
+msgstr ""
+"El valor del camp \"%(field)s\" de \"%(model)s\" es massa llarg (%(size)i > "
+"%(max_size)i)."
+
+msgctxt "model:ir.message,text:msg_time_format_validation_record"
+msgid ""
+"The time value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" is not"
+" valid."
+msgstr ""
+"El valor de temps \"%(value)s\" del camp %(field)s\" de \"%(model)s\" no és "
+"vàlid."
+
+msgctxt "model:ir.message,text:msg_too_many_relations_found"
+msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
+msgstr "S'han trobat massa relacions: \"%(value)r\" en \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_translation_overridden"
+msgid ""
+"You can not export translation \"%(name)s\" because it has been overridden "
+"by module \"%(overriding_module)s\"."
+msgstr ""
+"No podeu exportar la traducció \"%(name)\"s perquè s'ha sobreescrit en el "
+"mòdul \"%(overriding_module)s\"."
+
+msgctxt "model:ir.message,text:msg_trigger_invalid_condition"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression for trigger "
+"\"%(trigger)s\"."
+msgstr ""
+"La condició \"%(condition)s\" no és una expressió PYSON vàlida pel "
+"disparador \"%(trigger)s\"."
+
+msgctxt "model:ir.message,text:msg_view_invalid_xml"
+msgid "Invalid XML for view \"%(name)s\"."
+msgstr "El XML de la vista \"%(name)s\" és invàlid."
+
+msgctxt "model:ir.message,text:msg_write_error"
+msgid ""
+"You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
+"exist anymore."
+msgstr ""
+"Esteu intentant escriure als registres \"%(ids)s\" del model \"%(model)s\" "
+"que ja no existeixen."
+
+msgctxt "model:ir.message,text:msg_write_rule_error"
+msgid ""
+"You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
+"%(rules)s"
+msgstr ""
+"No podeu modificar els registres \"%(ids)s\" de \"%(model)s\" per almenys "
+"una d'aquestes regles:%(rules)s"
+
+msgctxt "model:ir.message,text:msg_write_xml_record"
+msgid "You are not allowed to modify this record."
+msgstr "No podeu modificar aquest registre."
+
+msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
+msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
+msgstr "Error de sintaxis per l'ID de XML: %(value)r\" en \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -3715,6 +3941,10 @@ msgctxt "model:ir.ui.menu,name:menu_menu_list"
 msgid "Menu"
 msgstr "Menú"
 
+msgctxt "model:ir.ui.menu,name:menu_message_form"
+msgid "Messages"
+msgstr "Missatges"
+
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
 msgstr "Accés model"
@@ -3895,6 +4125,10 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Setmanes"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Run On Time Triggers"
+msgstr "Executa disparadors de temps"
+
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
 msgstr "D'esquerra a dreta"
@@ -3980,10 +4214,6 @@ msgid "Incremental"
 msgstr "Increment"
 
 msgctxt "selection:ir.translation,type:"
-msgid "Error"
-msgstr "Error"
-
-msgctxt "selection:ir.translation,type:"
 msgid "Field"
 msgstr "Camp"
 
@@ -4011,30 +4241,6 @@ msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
 msgstr "Botó de l'assistent"
 
-msgctxt "selection:ir.ui.menu,action:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.act_window"
-msgstr "ir.action.act_window"
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.report"
-msgstr "ir.action.report"
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.url"
-msgstr "ir.action.url"
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.wizard"
-msgstr "ir.action.wizard"
-
-msgctxt "selection:ir.ui.view,type:"
-msgid ""
-msgstr ""
-
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
 msgstr "Taulell"
@@ -4052,12 +4258,20 @@ msgid "Graph"
 msgstr "Gràfica"
 
 msgctxt "selection:ir.ui.view,type:"
+msgid "List Form"
+msgstr "Llista formulari"
+
+msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
 msgstr "Arbre"
 
 msgctxt "view:ir.action.act_window:"
 msgid "General"
 msgstr "General"
+
+msgctxt "view:ir.action.report:"
+msgid "Edit"
+msgstr "Edita"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -4080,8 +4294,12 @@ msgid "Last Modification Time"
 msgstr "Hora última modificació"
 
 msgctxt "view:ir.cron:"
-msgid "Action to trigger"
-msgstr "Acció de disparador"
+msgid "At"
+msgstr "A"
+
+msgctxt "view:ir.cron:"
+msgid "Every"
+msgstr "Cada"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
@@ -4309,6 +4527,274 @@ msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "Tanca"
 
+msgctxt "field:ir.cron,args:"
+msgid "Arguments"
+msgstr "Arguments"
+
+msgctxt "field:ir.cron,function:"
+msgid "Function"
+msgstr "Funció"
+
+msgctxt "field:ir.cron,interval_type:"
+msgid "Interval Unit"
+msgstr "Unitat d'interval"
+
+msgctxt "field:ir.cron,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.cron,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:ir.cron,number_calls:"
+msgid "Number of Calls"
+msgstr "Número de crides"
+
+msgctxt "field:ir.cron,repeat_missed:"
+msgid "Repeat Missed"
+msgstr "Repeteix perduts"
+
+msgctxt "field:ir.cron,request_user:"
+msgid "Request User"
+msgstr "Usuari sol·licitant"
+
+msgctxt "field:ir.cron,user:"
+msgid "Execution User"
+msgstr "Usuari execució"
+
+msgctxt "help:ir.cron,number_calls:"
+msgid ""
+"Number of times the function is called, a negative number indicates that the"
+" function will always be called"
+msgstr ""
+"Número d'execucions de la funció, un número negatiu indica que aquesta "
+"funció s'executarà sempre."
+
+msgctxt "help:ir.cron,request_user:"
+msgid "The user who will receive requests in case of failure"
+msgstr "L'usuari que rebrà sol·licituds en cas d'errors."
+
+msgctxt "help:ir.cron,user:"
+msgid "The user used to execute this action"
+msgstr "L'usuari que executarà aquesta acció."
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.act_window"
+msgstr "ir.action.act_window"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.report"
+msgstr "ir.action.report"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.url"
+msgstr "ir.action.url"
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid "ir.action.wizard"
+msgstr "ir.action.wizard"
+
+msgctxt "view:ir.cron:"
+msgid "Action to trigger"
+msgstr "Acció de disparador"
+
+msgctxt "field:ir.translation,src_md5:"
+msgid "Source MD5"
+msgstr "Codi MD5"
+
+msgctxt "error:access_error:"
+msgid ""
+"You try to bypass an access rule.\n"
+"(Document type: %s)"
+msgstr ""
+"Esteu intentant accedir a registres que no existeixen.(Tipus de document: "
+"%s)"
+
+msgctxt "error:digits_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
+"digits limit of \"%(digits)s\"."
+msgstr ""
+"El valor \"%(value)s\" del camp \"%(field)s\" a \"%(model)s\" excedeix el "
+"límit de dígits \"%(digits)s\"."
+
+msgctxt "error:foreign_model_exist:"
+msgid ""
+"Could not delete the records because they are used on field \"%(field)s\" of"
+" \"%(model)s\"."
+msgstr ""
+"No es poden eliminar els registres perquè es fan servir al camp "
+"\"%(field)s\" de \"%(model)s\"."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr ""
+"El domini o el criteri de cerca \"%(domain)s\" de l'acció \"%(action)s\" no "
+"és correcte."
+
+msgctxt "error:ir.cron:"
+msgid "Scheduled action failed"
+msgstr "L'acció planificada ha fallat."
+
+msgctxt "error:ir.cron:"
+msgid ""
+"The following action failed to execute properly: \"%s\"\n"
+"%s\n"
+" Traceback: \n"
+"\n"
+"%s\n"
+msgstr ""
+"Ha fallat l'acció quan s'executava: \"%s\"\n"
+"%s\n"
+" Traça del programa: \n"
+"\n"
+"%s\n"
+
+msgctxt "error:ir.lang:"
+msgid "decimal_point and thousands_sep must be different!"
+msgstr "El punt decimal i el separador de milers han de ser diferents."
+
+msgctxt "error:ir.model.access:"
+msgid "You can not create this kind of document! (%s)"
+msgstr "No podeu crear aquest tipus de document (%s)."
+
+msgctxt "error:ir.model.access:"
+msgid "You can not delete this document! (%s)"
+msgstr "No podeu eliminar aquest document (%s)."
+
+msgctxt "error:ir.model.access:"
+msgid "You can not read this document! (%s)"
+msgstr "No podeu llegir aquest document (%s)."
+
+msgctxt "error:ir.model.access:"
+msgid "You can not write in this document! (%s)"
+msgstr "No podeu modificar aquest document (%s)."
+
+msgctxt "error:ir.model.button:"
+msgid "The button name in model must be unique!"
+msgstr "El nom del botó del model ha de ser únic."
+
+msgctxt "error:ir.model.data:"
+msgid "The triple (fs_id, module, model) must be unique!"
+msgstr "El triplet (fs_id, module, model) ha de ser únic."
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not read the field! (%s.%s)"
+msgstr "No podeu llegir el camp: (%s.%s)"
+
+msgctxt "error:ir.model.field.access:"
+msgid "You can not write on the field! (%s.%s)"
+msgstr "No podeu modificar el camp (%s.%s)."
+
+msgctxt "error:ir.model.field:"
+msgid "The field name in model must be unique!"
+msgstr "El nom del camp ha de ser únic."
+
+msgctxt "error:ir.model:"
+msgid "The model must be unique!"
+msgstr "El model ha de ser únic."
+
+msgctxt "error:ir.module.dependency:"
+msgid "Dependency must be unique by module!"
+msgstr "La dependència ha de ser únic en el mòdul."
+
+msgctxt "error:ir.module:"
+msgid "The name of the module must be unique!"
+msgstr "El nom del mòdul ha de ser únic."
+
+msgctxt "error:ir.rule.group:"
+msgid "Global and Default are mutually exclusive!"
+msgstr "Global i per defecte són mútuament excloents."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "Prefix \"%(prefix)s\" de la seqüència \"%(sequence)s\" no és correcte."
+
+msgctxt "error:ir.sequence:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "Sufix \"%(suffix)s\" de la seqüència \"%(sequence)s\" no és correcte."
+
+msgctxt "error:ir.sequence:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
+
+msgctxt "error:ir.sequence:"
+msgid "Missing sequence."
+msgstr "No es troba la seqüència."
+
+msgctxt "error:ir.sequence:"
+msgid "Timestamp rounding should be greater than 0"
+msgstr "L'arrodoniment de data-hora ha de ser més gran que 0."
+
+msgctxt "error:ir.translation:"
+msgid "Translation must be unique"
+msgstr "La traducció ha de ser única."
+
+msgctxt "error:ir.trigger:"
+msgid "\"On Time\" and others are mutually exclusive!"
+msgstr "\"Al moment\" i altres són mútuament exclusius."
+
+msgctxt "error:read_error:"
+msgid ""
+"You try to read records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"Esteu intentant llegir registres que ja no existeixen.(Tipus de document: "
+"%s)"
+
+msgctxt "error:reference_syntax_error:"
+msgid "Syntax error for reference %r in %s"
+msgstr "Error de sintaxi en la referència %r de %s."
+
+msgctxt "error:relation_not_found:"
+msgid "Relation not found: %r in %s"
+msgstr "No s'ha trobat la relació: %r a %s."
+
+msgctxt "error:required_field:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "El camp \"%(field)s\" de \"%(model)s\" és obligatori."
+
+msgctxt "error:required_validation_record:"
+msgid "The field \"%(field)s\" on \"%(model)s\" is required."
+msgstr "El camp \"%(field)s\" de \"%(model)s\" és obligatori."
+
+msgctxt "error:selection_value_notfound:"
+msgid "Value not in the selection for field \"%s\"."
+msgstr "El valor no es troba en la selecció en el camp \"%s\"."
+
+msgctxt "error:size_validation_record:"
+msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
+msgstr "La mida \"%(size)s\" del camp \"%(field)s\" de \"%(model)s\" és massa gran."
+
+msgctxt "error:too_many_relations_found:"
+msgid "Too many relations found: %r in %s"
+msgstr "S'han trobat massa relacions: %r a %s."
+
+msgctxt "error:write_error:"
+msgid ""
+"You try to write on records that don't exist anymore.\n"
+"(Document type: %s)"
+msgstr ""
+"Esteu intentant modificar registres que no existeixen.(Tipus de document: "
+"%s)"
+
+msgctxt "error:xml_id_syntax_error:"
+msgid "Syntax error for XML id %r in %s"
+msgstr "Error de sintaxi en el XML id %r de %s."
+
+msgctxt "field:ir.model.field,groups:"
+msgid "Groups"
+msgstr "Grups"
+
+msgctxt "selection:ir.translation,type:"
+msgid "Error"
+msgstr "Error"
+
 msgctxt "error:digits_validation_record:"
 msgid ""
 "The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
@@ -4336,3 +4822,180 @@ msgstr "Sincronitza"
 msgctxt "view:ir.ui.view:"
 msgid "Show"
 msgstr "Mostra"
+
+msgctxt "model:ir.lang,name:lang_pt"
+msgid "Portuguese (Brazil)"
+msgstr "Portuguès (Brasil)"
+
+msgctxt "error:delete_xml_record:"
+msgid "You are not allowed to delete this record."
+msgstr "No podeu eliminar aquest registre."
+
+msgctxt "error:domain_validation_record:"
+msgid ""
+"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
+" to its domain."
+msgstr ""
+"El valor del camp \"%(field)s\" de \"%(model)s\" no és correcte segons "
+"aquest domini."
+
+msgctxt "error:foreign_model_missing:"
+msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
+msgstr "El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no existeix."
+
+msgctxt "error:ir.action.act_window.domain:"
+msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
+msgstr ""
+"El domini o el criteri de cerca \"%(domain)s\" de l'acció \"%(action)s\" no "
+"és correcte."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
+msgstr "El context \"%(context)s\" de l'acció \"%(action)s\" no és correcte."
+
+msgctxt "error:ir.action.act_window:"
+msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
+msgstr "La vista \"%(view)s\" per l'acció \"%(action)s\" no és correcte."
+
+msgctxt "error:ir.action.keyword:"
+msgid "Wrong wizard model in keyword action \"%s\"."
+msgstr "El model d'assistent és incorrecte en l'acció de teclat \"%s\"."
+
+msgctxt "error:ir.action.report:"
+msgid "Invalid email definition on report \"%s\"."
+msgstr ""
+"La definició del correu electrònic sobre l'informe \"%s\", no és correcta."
+
+msgctxt "error:ir.lang:"
+msgid "Default language can not be deleted."
+msgstr "L'idioma per defecte no es pot eliminar."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
+msgstr "El format de la data \"%(format)s\" de \"%(language)s\" no és correcte."
+
+msgctxt "error:ir.lang:"
+msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
+msgstr "L'agrupació \"%(grouping)s\" de \"%(language)s\" no és correcte."
+
+msgctxt "error:ir.lang:"
+msgid "The default language must be translatable."
+msgstr "L'idioma per defecte ha de ser traduïble."
+
+msgctxt "error:ir.model.button.rule:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
+"\"%(rule)s\"."
+msgstr ""
+"La condició \"%(condition)s\" no és una expressió PYSON vàlida en la regla "
+"del botó \"%(rule)s\"."
+
+msgctxt "error:ir.module:"
+msgid ""
+"Some activated modules depend on the ones you are trying to deactivate:"
+msgstr ""
+"Alguns modules activats depenen dels mòduls que esteu intentant desactivar:"
+
+msgctxt "error:ir.module:"
+msgid "You can not remove a module that is activated or will be activated"
+msgstr "No podeu eliminar un mòdul que està activat o serà activat."
+
+msgctxt "error:ir.rule:"
+msgid "Invalid domain in rule \"%s\"."
+msgstr "La regla del domini \"%s\" no és correcte."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
+msgstr "Prefix \"%(prefix)s\" de la seqüència \"%(sequence)s\" no és correcte."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
+msgstr "Sufix \"%(suffix)s\" de la seqüència \"%(sequence)s\" no és correcte."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
+msgstr "L'última data-hora no pot ser del futur a la seqüència \"%s\"."
+
+msgctxt "error:ir.sequence.strict:"
+msgid "Missing sequence."
+msgstr "No es troba la seqüència."
+
+msgctxt "error:ir.translation:"
+msgid ""
+"You can not export translation %(name)s because it is an overridden "
+"translation by module %(overriding_module)s"
+msgstr ""
+"No podeu exportar la traducció %(name)s perquè s'utilitza en el mòdul "
+"%(overriding_module)s."
+
+msgctxt "error:ir.trigger:"
+msgid ""
+"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
+"\"%(trigger)s\"."
+msgstr ""
+"La condició \"%(condition)s\" no és una expressió PYSON vàlida al disparador"
+" \"%(trigger)s\"."
+
+msgctxt "error:ir.ui.view:"
+msgid "Invalid XML for view \"%s\"."
+msgstr "XML en les vistes \"%s\" no és correcte."
+
+msgctxt "error:recursion_error:"
+msgid ""
+"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
+" was configured as ancestor of itself."
+msgstr ""
+"Error de recursivitat: El registre \"%(rec_name)s\" amb el pare "
+"\"%(parent_rec_name)s\" s'ha configurat com a pare de si mateix."
+
+msgctxt "error:search_function_missing:"
+msgid "Missing search function on field \"%s\"."
+msgstr "Falta la funció de cerca del camp \"%s\"."
+
+msgctxt "error:selection_validation_record:"
+msgid ""
+"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
+"the selection."
+msgstr ""
+"El valor \"%(value)s\" del camp \"%(field)s\" de \"%(model)s\" no està a la "
+"selecció."
+
+msgctxt "error:time_format_validation_record:"
+msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
+msgstr ""
+"El valor de temps \"%(value)s\" del camp %(field)s\" de \"%(model)s\" no és "
+"vàlid."
+
+msgctxt "error:write_xml_record:"
+msgid "You are not allowed to modify this record."
+msgstr "No es permet modificar aquest registre."
+
+msgctxt "error:xml_record_desc:"
+msgid "This record is part of the base configuration."
+msgstr "Aquest registre es part de la configuració inicial."
+
+msgctxt "model:ir.message,text:msg_read_error"
+msgid "You are trying to read records of \"%(model)s\" that don't exist anymore."
+msgstr ""
+"Esteu intentar llegir registres del model \"%(model)s\" que ja no "
+"existeixen."
+
+msgctxt "model:ir.message,text:msg_search_function_missing"
+msgid "Missing search function for field \"%(field)s\"."
+msgstr "Falta la funció de cerca del camp \"%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_write_error"
+msgid ""
+"You are trying to write to records of \"%(model)s\" that don't exist "
+"anymore."
+msgstr ""
+"Esteu intentant escriure en registres del model \"%(model)s\" que ja no "
+"existeixen."
+
+msgctxt "selection:ir.ui.menu,action:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:ir.ui.view,type:"
+msgid ""
+msgstr ""

@@ -2,47 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.group:"
-msgid "The name of the group must be unique!"
-msgstr "El nom del grup ha de ser únic."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user email."
-msgstr ""
-"La contrasenya no pot ser la mateixa que el correu electrònic de l'usuari."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user login."
-msgstr "La contrasenya no pot ser la mateixa que el nom d'usuari de l'usuari."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user name."
-msgstr "La contrasenya no pot ser la mateixa que el nom de l'usuari."
-
-msgctxt "error:res.user:"
-msgid "The password contains too much times the same characters."
-msgstr "La contrasenya té massa vegades els mateixos caràcters."
-
-msgctxt "error:res.user:"
-msgid "The password is forbidden."
-msgstr "La contrasenya està prohibida."
-
-msgctxt "error:res.user:"
-msgid "The password is too short."
-msgstr "La contrasenya es massa curta."
-
-msgctxt "error:res.user:"
-msgid ""
-"Users can not be deleted for logging purpose.\n"
-"Instead you must inactivate them."
-msgstr ""
-"Els usuaris no poden ser eliminats per evitar que puguin accedir.\n"
-"Cal que els desactiveu."
-
-msgctxt "error:res.user:"
-msgid "You can not have two users with the same login!"
-msgstr "No podeu tenir dos usuaris amb el mateix nom d'usuari."
-
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "Acció"
@@ -118,38 +77,6 @@ msgstr "Usuari"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "Grup"
-
-msgctxt "field:ir.model.field-res.group,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:ir.model.field-res.group,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:ir.model.field-res.group,field:"
-msgid "Model Field"
-msgstr "Camp del model"
-
-msgctxt "field:ir.model.field-res.group,group:"
-msgid "Group"
-msgstr "Grup"
-
-msgctxt "field:ir.model.field-res.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:ir.model.field-res.group,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:ir.model.field-res.group,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -258,6 +185,10 @@ msgstr "Data de modificació"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "field:res.group,active:"
+msgid "Active"
+msgstr "Actiu"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
@@ -599,6 +530,10 @@ msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr "Els grups permesos per editar les seqüències d'aquest tipus."
 
+msgctxt "help:res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarca per eliminar l'ús del registre en el futur."
+
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "Les accions que s'executaran quan s'identifiqui."
@@ -627,9 +562,38 @@ msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
 msgstr "Acció - grup"
 
-msgctxt "model:ir.cron,name:cron_trigger_time"
-msgid "Run On Time Triggers"
-msgstr "Executa disparadors per temps"
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr ""
+"La contrasenya no pot ser la mateixa que el correu electrònic de l'usuari."
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr "El mateixos caràcters apareixen a la contrasenya massa vegades."
+
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "La contrasenya està prohibida."
+
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "La contrasenya es massa curta."
+
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "La contrasenya no pot ser la mateixa que el nom d'usuari de l'usuari."
+
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "La contrasenya no pot ser la mateixa que el nom de l'usuari."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
+"Per motius de registres els usuaris no es poden eliminar, en el seu lloc els"
+" podeu de desactivar."
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -651,9 +615,73 @@ msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
 msgstr "Model Botó - Grup"
 
-msgctxt "model:ir.model.field-res.group,name:"
-msgid "Model Field Group Rel"
-msgstr "Relació entre grup i camp del model"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr "Usuari als grups"
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr "Sessió pròpia"
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr "Sessió pròpia"
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr "Favorit propi"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr "Aplicació d'usuari pròpia"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr "Qualsevol aplicació d'usuari"
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr "Advertència pròpia"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr "Vista de cerca pròpia"
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr "Qualsevol vista de cerca"
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
@@ -867,4 +895,4 @@ msgstr "Cancel·la"
 
 msgctxt "view:res.user.application:"
 msgid "Validate"
-msgstr "Validat"
+msgstr "Valida"

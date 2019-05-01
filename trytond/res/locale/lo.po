@@ -2,45 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:res.group:"
-msgid "The name of the group must be unique!"
-msgstr "ຊື່ຂອງກຸ່ມຕ້ອງບໍ່ຊໍ້າກັນ"
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user email."
-msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ຊິເປັນອັນດຽວກັນກັບຊື່ຜູ້ໃຊ້ ອີເມວລ໌"
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user login."
-msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ທີ່ໃຊ້ເຊື່ອມຕໍ່ເຂົ້າລະບົບ."
-
-msgctxt "error:res.user:"
-msgid "The password can not be the same as user name."
-msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ຜູ້ໃຊ້ງານ."
-
-msgctxt "error:res.user:"
-msgid "The password contains too much times the same characters."
-msgstr "ລະຫັດຜ່ານ ປະກອບດ້ວຍອັກຂະລະຊໍ້າກັນຫຼາຍໆເທື່ອ."
-
-msgctxt "error:res.user:"
-msgid "The password is forbidden."
-msgstr "ລະຫັດຜ່ານນີ້ຖືກຫ້າມໃຊ້"
-
-msgctxt "error:res.user:"
-msgid "The password is too short."
-msgstr "ລະຫັດຜ່ານນີ້ສັ້ນໂພດ."
-
-msgctxt "error:res.user:"
-msgid ""
-"Users can not be deleted for logging purpose.\n"
-"Instead you must inactivate them."
-msgstr ""
-"ບໍ່ສາມາດລຶບຜູ້ໃຊ້ງານສຳລັບການເຊື່ອມຕໍ່ເຂົ້າໃຊ້ງານຕ່າງໆ.ທ່ານຕ້ອງປົດການໃຊ້ງານໄວ້ແທນ."
-
-msgctxt "error:res.user:"
-msgid "You can not have two users with the same login!"
-msgstr "ທ່ານບໍ່ສາມາດມີສອງຜູ້ໃຊ້ງານໃນຊື່ເຊື່ອມຕໍ່ດຽວກັນ!"
-
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "ການດຳເນີນການ"
@@ -116,38 +77,6 @@ msgstr "ຜູ້ໃຊ້"
 msgctxt "field:ir.model.button.rule,group:"
 msgid "Group"
 msgstr "ກຸ່ມ"
-
-msgctxt "field:ir.model.field-res.group,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:ir.model.field-res.group,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-msgctxt "field:ir.model.field-res.group,field:"
-msgid "Model Field"
-msgstr "ຊ່ອງຂໍ້ມູນແບບ"
-
-msgctxt "field:ir.model.field-res.group,group:"
-msgid "Group"
-msgstr "ກຸ່ມ"
-
-msgctxt "field:ir.model.field-res.group,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
-msgctxt "field:ir.model.field-res.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:ir.model.field-res.group,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-msgctxt "field:ir.model.field-res.group,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "field:ir.rule.group-res.group,create_date:"
 msgid "Create Date"
@@ -256,6 +185,11 @@ msgstr "ວັນທີບັນທຶກ"
 msgctxt "field:ir.ui.menu-res.group,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:res.group,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
@@ -598,6 +532,10 @@ msgctxt "help:ir.sequence.type,groups:"
 msgid "Groups allowed to edit the sequences of this type"
 msgstr "ກຸ່ມອະນຸຍາດໃຫ້ແກ້ໄຂລຳດັບຂອງປະເພດນີ້"
 
+msgctxt "help:res.group,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:res.user,actions:"
 msgid "Actions that will be run at login"
 msgstr "ດຳເນີນການ ທີ່ຈະແລ່ນຂຶ້ນ ໃນເວລາ ເຂົ້າສູ່ລະບົບ"
@@ -630,9 +568,39 @@ msgid "Action - Group"
 msgstr "ດຳເນີນການ - ກຸ່ມ"
 
 #, fuzzy
-msgctxt "model:ir.cron,name:cron_trigger_time"
-msgid "Run On Time Triggers"
-msgstr "Run On Time Triggers"
+msgctxt "model:ir.message,text:msg_password_email"
+msgid "The password cannot be the same as user's email address."
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ຊິເປັນອັນດຽວກັນກັບຊື່ຜູ້ໃຊ້ ອີເມວລ໌"
+
+msgctxt "model:ir.message,text:msg_password_entropy"
+msgid "The same characters appear in the password too many times."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_password_forbidden"
+msgid "The password is forbidden."
+msgstr "ລະຫັດຜ່ານນີ້ຖືກຫ້າມໃຊ້"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_password_length"
+msgid "The password is too short."
+msgstr "ລະຫັດຜ່ານນີ້ສັ້ນໂພດ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_password_login"
+msgid "The password cannot be the same as user's login."
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ທີ່ໃຊ້ເຊື່ອມຕໍ່ເຂົ້າລະບົບ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_password_name"
+msgid "The password cannot be the same as user's name."
+msgstr "ລະຫັດຜ່ານ ບໍ່ສາມາດ ເປັນອັນດຽວກັນກັບ ຊື່ ຜູ້ໃຊ້ງານ."
+
+msgctxt "model:ir.message,text:msg_user_delete_forbidden"
+msgid ""
+"For logging purposes users cannot be deleted, instead they should be "
+"deactivated."
+msgstr ""
 
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
@@ -654,9 +622,73 @@ msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
 msgstr "ແບບປຸ່ມ - ກຸ່ມ"
 
-msgctxt "model:ir.model.field-res.group,name:"
-msgid "Model Field Group Rel"
-msgstr "Rel ແບບກຸ່ມຊ່ອງຂໍ້ມູນ"
+msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_report"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_url"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_menu"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
+msgid "User in groups"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_session_wizard"
+msgid "Own session"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_ui_menu_favorite"
+msgid "Own favorite"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application"
+msgid "Own user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_application_admin"
+msgid "Any user application"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_user_warning"
+msgid "Own warning"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search"
+msgid "Own view search"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
+msgid "Any view search"
+msgstr ""
 
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
