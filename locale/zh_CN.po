@@ -2,149 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending shipments "
-"for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the default uom for a product which is associated to stock"
-" moves."
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the type for a product which is associated to stock moves."
-msgstr ""
-
-msgctxt "error:stock.inventory.count:"
-msgid "No existing line found for %(search)s."
-msgstr ""
-
-msgctxt "error:stock.inventory.line:"
-msgid "An option for empty quantity is missing for inventory \"%(inventory)s\"."
-msgstr ""
-
-msgctxt "error:stock.inventory.line:"
-msgid "Line quantity must be positive."
-msgstr ""
-
-msgctxt "error:stock.inventory.line:"
-msgid ""
-"The line \"%(line)s\" must be on canceled or draft inventory to be deleted."
-msgstr ""
-
-msgctxt "error:stock.inventory:"
-msgid "Inventory \"%s\" must be canceled before deletion."
-msgstr ""
-
-msgctxt "error:stock.inventory:"
-msgid "Line \"%s\" is not unique on Inventory \"%s\"."
-msgstr ""
-
-msgctxt "error:stock.location:"
-msgid "Location \"%(location)s\" must be a child of warehouse \"%(warehouse)s\"."
-msgstr ""
-
-msgctxt "error:stock.location:"
-msgid ""
-"Location \"%s\" with existing moves cannot be changed to a type that does "
-"not support moves."
-msgstr ""
-
-msgctxt "error:stock.location:"
-msgid "The location '%(location)s' must be empty to be deactivated."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Internal move quantity must be positive"
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Move quantity must be positive"
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Source and destination location must be different"
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "The stock moves \"%s\" have no origin."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid ""
-"You can not delete stock move \"%s\" because it is not in staging, draft nor"
-" cancelled state."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "You can not modify move \"%(move)s\" because period \"%(period)s\" is closed."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "You can not modify stock move \"%s\" because it is in \"Assigned\" state."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid ""
-"You can not modify stock move \"%s\" because it is in \"Done\" or \"Cancel\""
-" state."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "You can not set stock move \"%s\" to assigned state."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "You can not set stock move \"%s\" to done state."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "You can not set stock move \"%s\" to draft state."
-msgstr ""
-
-msgctxt "error:stock.period:"
-msgid "You can not close a period in the future or today."
-msgstr ""
-
-msgctxt "error:stock.period:"
-msgid "You can not close a period when there still are assigned moves."
-msgstr ""
-
-msgctxt "error:stock.shipment.in.return:"
-msgid "Supplier Return Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-
-msgctxt "error:stock.shipment.in:"
-msgid ""
-"Incoming Moves must have the warehouse input location as destination "
-"location."
-msgstr ""
-
-msgctxt "error:stock.shipment.in:"
-msgid ""
-"Inventory Moves must have the warehouse input location as source location."
-msgstr ""
-
-msgctxt "error:stock.shipment.in:"
-msgid "Supplier Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-
-msgctxt "error:stock.shipment.internal:"
-msgid "Internal Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-
-msgctxt "error:stock.shipment.out.return:"
-msgid "Customer Return Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-
-msgctxt "error:stock.shipment.out:"
-msgid "Customer Shipment \"%s\" must be cancelled before deletion."
-msgstr ""
-
 msgctxt "field:party.address,delivery:"
 msgid "Delivery"
 msgstr ""
@@ -470,8 +327,8 @@ msgctxt "field:stock.inventory.count.quantity,quantity_added:"
 msgid "Added Quantity"
 msgstr ""
 
-msgctxt "field:stock.inventory.count.quantity,quantity_resulting:"
-msgid "Resulting Quantity"
+msgctxt "field:stock.inventory.count.quantity,total_quantity:"
+msgid "Total Quantity"
 msgstr ""
 
 msgctxt "field:stock.inventory.count.quantity,unit_digits:"
@@ -1512,50 +1369,519 @@ msgctxt "field:stock.shipment.out.return,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "help:party.address,delivery:"
+msgid "Check to send deliveries to the address."
+msgstr ""
+
 msgctxt "help:party.party,customer_location:"
-msgid "The default destination location when sending products to the party."
+msgid "The default destination location for stock sent to the party."
 msgstr ""
 
 msgctxt "help:party.party,supplier_location:"
-msgid "The default source location when receiving products from the party."
+msgid "The default source location for stock received from the party."
 msgstr ""
 
 msgctxt "help:party.party.location,customer_location:"
-msgid "The default destination location when sending products to the party."
+msgid "The default destination location for stock sent to the party."
 msgstr ""
 
 msgctxt "help:party.party.location,supplier_location:"
-msgid "The default source location when receiving products from the party."
+msgid "The default source location for stock received from the party."
 msgstr ""
 
 msgctxt "help:product.by_location.context,forecast_date:"
 msgid ""
-"Allow to compute expected stock quantities for this date.\n"
-"* An empty value is an infinite date in the future.\n"
+"The date for which the stock quantity is calculated.\n"
+"* An empty value calculates as far ahead as possible.\n"
 "* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:product.product,cost_value:"
+msgid "The value of the stock in the location."
+msgstr ""
+
+msgctxt "help:product.product,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr ""
+
+msgctxt "help:product.product,quantity:"
+msgid "The amount of stock in the location."
+msgstr ""
+
+msgctxt "help:product.template,cost_value:"
+msgid "The value of the stock in the location."
+msgstr ""
+
+msgctxt "help:product.template,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr ""
+
+msgctxt "help:product.template,quantity:"
+msgid "The amount of stock in the location."
+msgstr ""
+
+msgctxt "help:stock.configuration,inventory_sequence:"
+msgid "Used to generate the number given to inventories."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_in_return_sequence:"
+msgid "Used to generate the number given to supplier return shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_in_sequence:"
+msgid "Used to generate the number given to supplier shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_internal_sequence:"
+msgid "Used to generate the number given to internal shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_internal_transit:"
+msgid ""
+"The default location used for stock that is in transit between warehouses."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_out_return_sequence:"
+msgid "Used to generate the number given to customer return shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration,shipment_out_sequence:"
+msgid "Used to generate the number given to customer shipments."
+msgstr ""
+
+msgctxt "help:stock.configuration.location,shipment_internal_transit:"
+msgid ""
+"The default location used for stock that is in transit between warehouses."
+msgstr ""
+
+msgctxt "help:stock.inventory,company:"
+msgid "The company the inventory is associated with."
+msgstr ""
+
+msgctxt "help:stock.inventory,date:"
+msgid "The date of the stock count."
 msgstr ""
 
 msgctxt "help:stock.inventory,empty_quantity:"
 msgid "How lines without quantity are handled."
 msgstr ""
 
+msgctxt "help:stock.inventory,location:"
+msgid "The location inventoried."
+msgstr ""
+
+msgctxt "help:stock.inventory,lost_found:"
+msgid "Used for the balancing entries needed when the stock is corrected."
+msgstr ""
+
+msgctxt "help:stock.inventory,number:"
+msgid "The main identifier for the inventory."
+msgstr ""
+
+msgctxt "help:stock.inventory,state:"
+msgid "The current state of the inventory."
+msgstr ""
+
+msgctxt "help:stock.inventory.count.quantity,quantity_added:"
+msgid "The quantity to add to the existing count."
+msgstr ""
+
+msgctxt "help:stock.inventory.count.quantity,total_quantity:"
+msgid "The total amount of the line counted so far."
+msgstr ""
+
+msgctxt "help:stock.inventory.count.quantity,uom:"
+msgid "The unit in which the quantities are specified."
+msgstr ""
+
+msgctxt "help:stock.inventory.count.search,search:"
+msgid "The item that's counted."
+msgstr ""
+
+msgctxt "help:stock.inventory.line,expected_quantity:"
+msgid "The quantity the system calculated should be in the location."
+msgstr ""
+
+msgctxt "help:stock.inventory.line,inventory:"
+msgid "The inventory the line belongs to."
+msgstr ""
+
+msgctxt "help:stock.inventory.line,quantity:"
+msgid "The actual quantity found in the location."
+msgstr ""
+
+msgctxt "help:stock.inventory.line,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
 msgctxt "help:stock.location,active:"
 msgid "Uncheck to exclude from future use."
 msgstr ""
 
+msgctxt "help:stock.location,childs:"
+msgid "Used to add structure below the location."
+msgstr ""
+
+msgctxt "help:stock.location,code:"
+msgid "The internal identifier used for the location."
+msgstr ""
+
+msgctxt "help:stock.location,cost_value:"
+msgid "The value of the stock in the location."
+msgstr ""
+
 msgctxt "help:stock.location,flat_childs:"
-msgid "Check to restrict to one level of children."
+msgid "Check to enforce a single level of children with no grandchildren."
+msgstr ""
+
+msgctxt "help:stock.location,forecast_quantity:"
+msgid "The amount of stock expected to be in the location."
+msgstr ""
+
+msgctxt "help:stock.location,input_location:"
+msgid "Where incoming stock is received."
+msgstr ""
+
+msgctxt "help:stock.location,output_location:"
+msgid "Where outgoing stock is sent from."
+msgstr ""
+
+msgctxt "help:stock.location,parent:"
+msgid "Used to add structure above the location."
 msgstr ""
 
 msgctxt "help:stock.location,picking_location:"
-msgid "If empty the Storage is used"
+msgid ""
+"Where stock is picked from.\n"
+"Leave empty to use the storage location."
+msgstr ""
+
+msgctxt "help:stock.location,quantity:"
+msgid "The amount of stock in the location."
+msgstr ""
+
+msgctxt "help:stock.location,storage_location:"
+msgid "The top level location where stock is stored."
+msgstr ""
+
+msgctxt "help:stock.location.lead_time,lead_time:"
+msgid "The time it takes to move stock between the warehouses."
+msgstr ""
+
+msgctxt "help:stock.move,company:"
+msgid "The company the stock move is associated with."
+msgstr ""
+
+msgctxt "help:stock.move,currency:"
+msgid "The currency in which the unit price is specified."
+msgstr ""
+
+msgctxt "help:stock.move,effective_date:"
+msgid "When the stock was actually moved."
+msgstr ""
+
+msgctxt "help:stock.move,from_location:"
+msgid "Where the stock is moved from."
+msgstr ""
+
+msgctxt "help:stock.move,origin:"
+msgid "The source of the stock move."
+msgstr ""
+
+msgctxt "help:stock.move,planned_date:"
+msgid "When the stock is expected to be moved."
+msgstr ""
+
+msgctxt "help:stock.move,product:"
+msgid "The product that the move is associated with."
+msgstr ""
+
+msgctxt "help:stock.move,quantity:"
+msgid "The amount of stock moved."
+msgstr ""
+
+msgctxt "help:stock.move,shipment:"
+msgid "Used to group several stock moves together."
+msgstr ""
+
+msgctxt "help:stock.move,state:"
+msgid "The current state of the stock move."
+msgstr ""
+
+msgctxt "help:stock.move,to_location:"
+msgid "Where the stock is moved to."
+msgstr ""
+
+msgctxt "help:stock.move,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
+msgctxt "help:stock.period,company:"
+msgid "The company the stock period is associated with."
+msgstr ""
+
+msgctxt "help:stock.period,date:"
+msgid "When the stock period ends."
+msgstr ""
+
+msgctxt "help:stock.period,state:"
+msgid "The current state of the stock period."
+msgstr ""
+
+msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
+msgid "The warehouse for which the quantities will be calculated."
 msgstr ""
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
-"Allow to compute expected stock quantities for this date.\n"
-"* An empty value is an infinite date in the future.\n"
+"The date for which the stock quantity is calculated.\n"
+"* An empty value calculates as far ahead as possible.\n"
 "* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,company:"
+msgid "The company the shipment is associated with."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,contact_address:"
+msgid "The address at which the supplier can be contacted."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,effective_date:"
+msgid "When the stock was actually received."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,incoming_moves:"
+msgid "The moves that bring the stock into the warehouse."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,inventory_moves:"
+msgid "The moves that put the stock away into the storage area."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,planned_date:"
+msgid "When the stock is expected to be received."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,reference:"
+msgid "The supplier's identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,state:"
+msgid "The current state of the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,supplier:"
+msgid "The party that supplied the stock."
+msgstr ""
+
+msgctxt "help:stock.shipment.in,warehouse:"
+msgid "Where the stock is received."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,company:"
+msgid "The company the shipment is associated with."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,delivery_address:"
+msgid "Where the stock is sent to."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,effective_date:"
+msgid "When the stock was actually returned."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,from_location:"
+msgid "Where the stock is moved from."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,moves:"
+msgid "The moves that return the stock to the supplier."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,planned_date:"
+msgid "When the stock is expected to be returned."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,reference:"
+msgid "The supplier's identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,state:"
+msgid "The current state of the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,supplier:"
+msgid "The party that supplied the stock."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return,to_location:"
+msgid "Where the stock is moved to."
+msgstr ""
+
+msgctxt "help:stock.shipment.in.return.assign.failed,moves:"
+msgid "The moves that were not assigned."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,company:"
+msgid "The company the shipment is associated with."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,effective_date:"
+msgid "When the shipment was actually completed."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,effective_start_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,from_location:"
+msgid "Where the stock is moved from."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,incoming_moves:"
+msgid "The moves that receive the stock in."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,moves:"
+msgid "The moves that perform the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,outgoing_moves:"
+msgid "The moves that send the stock out."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,planned_date:"
+msgid "When the shipment is expected to be completed."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,planned_start_date:"
+msgid "When the stock is expected to be sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,reference:"
+msgid "The external identifiers for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,state:"
+msgid "The current state of the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,to_location:"
+msgid "Where the stock is moved to."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal,transit_location:"
+msgid ""
+"Where the stock is located while it is in transit between the warehouses."
+msgstr ""
+
+msgctxt "help:stock.shipment.internal.assign.failed,moves:"
+msgid "The moves that were not assigned."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,company:"
+msgid "The company the shipment is associated with."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,customer:"
+msgid "The party that purchased the stock."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,delivery_address:"
+msgid "Where the stock is sent to."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,effective_date:"
+msgid "When the stock was actually sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,inventory_moves:"
+msgid "The moves that pick the stock from the storage area."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,outgoing_moves:"
+msgid "The moves that send the stock to the customer."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,planned_date:"
+msgid "When the stock is expected to be sent."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,reference:"
+msgid "The customer's identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,state:"
+msgid "The current state of the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out,warehouse:"
+msgid "Where the stock is sent from."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.assign.failed,inventory_moves:"
+msgid "The inventory moves that were not assigned."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,company:"
+msgid "The company the shipment is associated with."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,customer:"
+msgid "The party that purchased the stock."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,delivery_address:"
+msgid "The address the customer can be contacted at."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,effective_date:"
+msgid "When the stock was returned."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,incoming_moves:"
+msgid "The moves that bring the stock into the warehouse."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,inventory_moves:"
+msgid "The moves that put the stock away into the storage area."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,number:"
+msgid "The main identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,planned_date:"
+msgid "When the stock is expected to be returned."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,reference:"
+msgid "The customer's identifier for the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,state:"
+msgid "The current state of the shipment."
+msgstr ""
+
+msgctxt "help:stock.shipment.out.return,warehouse:"
+msgid "Where the stock is returned."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_inventory_form"
@@ -1815,6 +2141,149 @@ msgctxt ""
 msgid "Received"
 msgstr "Received"
 
+msgctxt "model:ir.message,text:msg_erase_party_shipment"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending shipments with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_count_create_line"
+msgid "No existing line found for \"%(search)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
+msgid "To delete inventory \"%(inventory)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
+msgid ""
+"To delete inventory line \"%(line)s\" you must cancel inventory "
+"\"%(inventory)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_line_quantity_positive"
+msgid "Inventory line quantity must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_line_unique"
+msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
+msgid ""
+"To confirm the inventory \"%(inventory)s\" you must select an option for "
+"empty quantity."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
+msgid ""
+"To set location \"%(location)s\" as storage/input/output of warehouse "
+"\"%(warehouse)s\", it must be in the warehouse."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_location_inactive_not_empty"
+msgid "To inactivate location \"%(location)s\", you must empty it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_location_invalid_type_for_moves"
+msgid ""
+"You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
+"because the type does not support moves and location has existing moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
+msgid ""
+"To delete stock move \"%(move)s\" you must cancel it or reset its state to "
+"draft."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_from_to_location"
+msgid "The source and destination of stock move must be different."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_internal_quantity_positive"
+msgid "Internal move quantity must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_modify_assigned"
+msgid "To modify stock move \"%(move)s\" you must reset its state to draft."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_modify_cancel"
+msgid "You cannot modify stock move \"%(move)s\" because it is cancelled."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_modify_done"
+msgid "You cannot modify stock move \"%(move)s\" because it is done."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_modify_period_close"
+msgid "To modify stock move \"%(move)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_no_origin"
+msgid "Stock moves \"%(moves)s\" have no origin."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_quantity_positive"
+msgid "Move quantity must be positive."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_close_assigned_move"
+msgid "You cannot close periods with assigned moves in it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_close_date"
+msgid "You cannot close periods with a date in the future or today."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_change_default_uom"
+msgid ""
+"You cannot change the default UOM of a product which is associated to stock "
+"moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_product_change_type"
+msgid ""
+"You cannot change the type of a product which is associated to stock moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
+msgid "To delete shipment \"%(shipment)s\" you must cancel it."
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:inventory_cancel_button"
+msgid "Are you sure you want to cancel the inventory?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:inventory_confirm_button"
+msgid "Are you sure you want to confirm the inventory?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:move_cancel_button"
+msgid "Are you sure you want to cancel the move?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:move_do_button"
+msgid "Are you sure you want to complete the move?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_in_receive_button"
+msgid "Are you sure you want to receive the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_in_return_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_done_button"
+msgid "Are you sure you want to complete the shipment?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:shipment_out_return_receive_button"
+msgid "Are you sure you want to receive the shipment?"
+msgstr ""
+
 msgctxt "model:ir.model.button,help:inventory_complete_lines_button"
 msgid "Add an inventory line for each missing products"
 msgstr "Add an inventory line for each missing products"
@@ -1958,6 +2427,30 @@ msgstr "Receive"
 msgctxt "model:ir.model.button,string:shipment_out_wait_button"
 msgid "Wait"
 msgstr "Wait"
+
+msgctxt "model:ir.rule.group,name:rule_group_move"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_in"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_in_return"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_internal"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_out"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_shipment_out_return"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_inventory"
 msgid "Inventory"
@@ -2480,10 +2973,6 @@ msgstr ""
 msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Warehouse"
-
-msgctxt "selection:stock.inventory,empty_quantity:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
