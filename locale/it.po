@@ -2,14 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.advance_payment_term.line:"
-msgid "Invalid formula \"%(formula)s\" with exception \"%(exception)s\"."
+msgctxt "field:account.account.type,unearned_revenue:"
+msgid "Unearned Revenue"
 msgstr ""
 
-msgctxt "error:stock.shipment.out:"
-msgid ""
-"The customer has not paid the required advance payment amount for the sale "
-"\"%(sale)s\"."
+msgctxt "field:account.account.type.template,unearned_revenue:"
+msgid "Unearned Revenue"
 msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,account:"
@@ -66,7 +64,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,sale_company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
@@ -179,7 +177,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:sale.advance_payment_term.line.account,create_date:"
 msgid "Create Date"
@@ -261,6 +259,18 @@ msgstr "Advance Invoices"
 msgctxt "model:ir.action,name:act_advance_payment_term_form"
 msgid "Advance Payment Terms"
 msgstr "Advance Payment Terms"
+
+msgctxt "model:ir.message,text:msg_shipping_blocked"
+msgid ""
+"To pack shipments the customer must paid the advance payment for sale "
+"\"%(sale)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_term_line_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in term line \"%(term_line)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_advance_payment_term"
 msgid "Advance Payment Terms"
