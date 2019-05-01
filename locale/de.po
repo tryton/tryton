@@ -12,7 +12,7 @@ msgstr "Code"
 
 msgctxt "field:account.ec_sales_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Umsatzsteuer-ID des Unternehmens"
+msgstr "Steueridentifikator Unternehmen"
 
 msgctxt "field:account.ec_sales_list,create_date:"
 msgid "Create Date"
@@ -33,6 +33,10 @@ msgstr "Nachkommastellen Währung"
 msgctxt "field:account.ec_sales_list,id:"
 msgid "ID"
 msgstr "ID"
+
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr "Partei"
 
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"

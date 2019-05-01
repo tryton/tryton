@@ -34,6 +34,10 @@ msgctxt "field:account.ec_sales_list,id:"
 msgid "ID"
 msgstr "شناسه"
 
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr ""
+
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "شناسه مالیاتی نهاد/سازمان"

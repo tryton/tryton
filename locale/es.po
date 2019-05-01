@@ -12,7 +12,7 @@ msgstr "Código"
 
 msgctxt "field:account.ec_sales_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr "Identificador impositivo Empresa"
+msgstr "Identificador fiscal de la Empresa"
 
 msgctxt "field:account.ec_sales_list,create_date:"
 msgid "Create Date"
@@ -34,9 +34,13 @@ msgctxt "field:account.ec_sales_list,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:account.ec_sales_list,party:"
+msgid "Party"
+msgstr "Tercero"
+
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr "Identificador impositivo del tercero"
+msgstr "Identificador fiscal del tercero"
 
 msgctxt "field:account.ec_sales_list,rec_name:"
 msgid "Record Name"
