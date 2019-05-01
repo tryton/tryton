@@ -8,10 +8,14 @@ msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
+msgstr "Sukūręs naudotojas"
+
+msgctxt "field:purchase.product_supplier.day,day:"
+msgid "Day"
 msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,id:"
@@ -26,46 +30,14 @@ msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-msgctxt "field:purchase.product_supplier.day,weekday:"
-msgid "Week Day"
-msgstr ""
-
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Friday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Monday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Saturday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Sunday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Thursday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Tuesday"
-msgstr ""
-
-msgctxt "selection:purchase.product_supplier.day,weekday:"
-msgid "Wednesday"
 msgstr ""

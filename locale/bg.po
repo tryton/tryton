@@ -14,6 +14,10 @@ msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
 msgstr "Създадено от"
 
+msgctxt "field:purchase.product_supplier.day,day:"
+msgid "Day"
+msgstr ""
+
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
 msgstr "ID"
@@ -25,10 +29,6 @@ msgstr "Доставчик"
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Record Name"
 msgstr ""
-
-msgctxt "field:purchase.product_supplier.day,weekday:"
-msgid "Week Day"
-msgstr "Ден от седмица"
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"

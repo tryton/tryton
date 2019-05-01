@@ -4,72 +4,68 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.product_supplier,weekdays:"
 msgid "Week Days"
-msgstr "Dies de la setmana"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,day:"
 msgid "Day"
-msgstr "Dia"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,product_supplier:"
 msgid "Supplier"
-msgstr "Proveïdor"
+msgstr "Tedarikçi"
 
 msgctxt "field:purchase.product_supplier.day,rec_name:"
 msgid "Record Name"
-msgstr "Nom del registre"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier.day,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr ""
 
 msgctxt "model:purchase.product_supplier.day,name:"
 msgid "Product Supplier Day"
-msgstr "Dia del proveïdor del producte"
+msgstr "Ürün Tedarikçi Günü"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Friday"
-msgstr "Divendres"
+msgstr "Cuma"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Monday"
-msgstr "Dilluns"
+msgstr "Pazartesi"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Saturday"
-msgstr "Dissabte"
+msgstr "Cumartesi"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Sunday"
-msgstr "Diumenge"
+msgstr "Pazar"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Thursday"
-msgstr "Dijous"
+msgstr "Perşembe"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Tuesday"
-msgstr "Dimarts"
+msgstr "Salı"
 
 msgctxt "selection:purchase.product_supplier.day,weekday:"
 msgid "Wednesday"
-msgstr "Dimecres"
-
-msgctxt "view:purchase.product_supplier.day:"
-msgid "Week Day"
-msgstr "Dia de la setmana"
+msgstr "Çarşamba"
