@@ -17,19 +17,19 @@ msgstr "Koventris"
 
 msgctxt "field:customs.duty.rate,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:customs.duty.rate,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valiuta"
 
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:customs.duty.rate,id:"
 msgid "ID"
@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 #, fuzzy
 msgctxt "field:customs.duty.rate,tariff_code:"
@@ -58,11 +58,11 @@ msgstr ""
 
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:customs.duty.rate,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:customs.tariff.code,active:"
 msgid "Active"
@@ -79,11 +79,11 @@ msgstr "Koventris"
 
 msgctxt "field:customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
@@ -94,9 +94,10 @@ msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
 msgstr "Duty Rates"
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
@@ -110,9 +111,10 @@ msgctxt "field:customs.tariff.code,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
@@ -120,19 +122,19 @@ msgstr ""
 
 msgctxt "field:customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:product-customs.tariff.code,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product-customs.tariff.code,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product-customs.tariff.code,id:"
 msgid "ID"
@@ -157,11 +159,11 @@ msgstr "Tariff Codes"
 
 msgctxt "field:product-customs.tariff.code,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product-customs.tariff.code,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:product.category,customs:"
@@ -288,10 +290,6 @@ msgid "Import"
 msgstr "Import"
 
 msgctxt "selection:customs.tariff.code,end_month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
 msgstr ""
 
@@ -337,10 +335,6 @@ msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,start_month:"
-msgid ""
 msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"

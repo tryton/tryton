@@ -52,7 +52,7 @@ msgstr "Type"
 
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr "UdM"
+msgstr "UDM"
 
 msgctxt "field:customs.duty.rate,write_date:"
 msgid "Write Date"
@@ -275,10 +275,6 @@ msgid "Import"
 msgstr "Importation"
 
 msgctxt "selection:customs.tariff.code,end_month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
 msgstr "Avril"
 
@@ -325,10 +321,6 @@ msgstr "Octobre"
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
 msgstr "Septembre"
-
-msgctxt "selection:customs.tariff.code,start_month:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"

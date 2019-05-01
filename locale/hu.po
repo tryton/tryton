@@ -313,10 +313,6 @@ msgid "Import"
 msgstr "Import"
 
 msgctxt "selection:customs.tariff.code,end_month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
 msgstr ""
 
@@ -362,10 +358,6 @@ msgstr ""
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,start_month:"
-msgid ""
 msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"

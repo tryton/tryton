@@ -196,7 +196,7 @@ msgstr "Utilizar os Códigos da Categoria de Tarifa"
 
 msgctxt "help:customs.tariff.code,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:customs.tariff.code,code:"
 msgid "The code from Harmonized System of Nomenclature"
@@ -283,10 +283,6 @@ msgid "Import"
 msgstr "Importar"
 
 msgctxt "selection:customs.tariff.code,end_month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
 msgstr "Abril"
 
@@ -333,10 +329,6 @@ msgstr "Outubro"
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
 msgstr "Setembro"
-
-msgctxt "selection:customs.tariff.code,start_month:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"

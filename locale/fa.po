@@ -275,10 +275,6 @@ msgid "Import"
 msgstr "واردات"
 
 msgctxt "selection:customs.tariff.code,end_month:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
 msgstr "آوریل"
 
@@ -325,10 +321,6 @@ msgstr "اکتبر"
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
 msgstr "سپتامبر"
-
-msgctxt "selection:customs.tariff.code,start_month:"
-msgid ""
-msgstr ""
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
