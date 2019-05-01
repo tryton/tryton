@@ -28,10 +28,6 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Запросы на покупку"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid ""
-msgstr ""
-
 #, fuzzy
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"

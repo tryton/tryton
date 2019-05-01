@@ -28,10 +28,6 @@ msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
 msgctxt "selection:sale.line,purchase_request_state:"
-msgid ""
-msgstr "ຕ້ອງການສັ່ງຊື້"
-
-msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 

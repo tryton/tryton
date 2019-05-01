@@ -27,10 +27,6 @@ msgid "Purchase Requests"
 msgstr "Solicitudes de compra"
 
 msgctxt "selection:sale.line,purchase_request_state:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
 msgstr "Cancelado"
 

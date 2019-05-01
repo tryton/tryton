@@ -4,36 +4,36 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Subministra a la venda"
+msgstr "Müügitarne"
 
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Subministra a la venda"
+msgstr "Müügitarne"
 
 msgctxt "field:purchase.request,sale_lines:"
 msgid "Sale Lines"
-msgstr "Línies de venda"
+msgstr "Müügirida"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Sol·licitud de compra"
+msgstr "Ostupäring"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
-msgstr "Estat de la sol·licitud de compra"
+msgstr "Ostupäringu olek"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Sol·licituds de compra"
+msgstr "Ostupäringud"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr "Cancel·lat"
+msgstr "Tühista"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
-msgstr "Comprat"
+msgstr "Ostetus"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr "Sol·licitat"
+msgstr "Päritud"

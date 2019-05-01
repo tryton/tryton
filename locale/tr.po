@@ -2,38 +2,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
 msgctxt "field:product.product,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Subministra a la venda"
+msgstr "Satış Tedariği"
 
+#, fuzzy
 msgctxt "field:product.template,supply_on_sale:"
 msgid "Supply On Sale"
-msgstr "Subministra a la venda"
+msgstr "Satış Tedariği"
 
+#, fuzzy
 msgctxt "field:purchase.request,sale_lines:"
 msgid "Sale Lines"
-msgstr "Línies de venda"
+msgstr "Satış Kanalları"
 
 msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
-msgstr "Sol·licitud de compra"
+msgstr "Satınalma Talebi"
 
 msgctxt "field:sale.line,purchase_request_state:"
 msgid "Purchase Request State"
-msgstr "Estat de la sol·licitud de compra"
+msgstr "Satınalma Talebi Durumu"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Sol·licituds de compra"
+msgstr "Purchase Requests"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Cancel"
-msgstr "Cancel·lat"
+msgstr "Vazgeç"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Purchased"
-msgstr "Comprat"
+msgstr "Satınalınan"
 
 msgctxt "selection:sale.line,purchase_request_state:"
 msgid "Requested"
-msgstr "Sol·licitat"
+msgstr "Talep Edilen"
