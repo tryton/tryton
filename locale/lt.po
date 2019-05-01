@@ -2,21 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion.coupon.number:"
-msgid "The coupon numbered '%(numbers)s' are duplicated."
-msgstr ""
-
 msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr ""
 
 msgctxt "field:sale.promotion.coupon,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.promotion.coupon,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.promotion.coupon,id:"
 msgid "ID"
@@ -36,7 +32,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon,per_party:"
 msgid "Per Party"
-msgstr ""
+msgstr "Kontrahentui"
 
 msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
@@ -48,11 +44,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.promotion.coupon,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
@@ -64,11 +60,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.promotion.coupon.number,id:"
 msgid "ID"
@@ -84,11 +80,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon.number,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.promotion.coupon.number,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
@@ -96,11 +92,11 @@ msgstr ""
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
 msgid "ID"
@@ -120,11 +116,11 @@ msgstr ""
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""
@@ -134,6 +130,10 @@ msgstr ""
 
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
 msgstr ""
 
 msgctxt "model:sale.promotion.coupon,name:"

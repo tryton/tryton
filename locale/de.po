@@ -2,17 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion.coupon.number:"
-msgid "The coupon numbered '%(numbers)s' are duplicated."
-msgstr "Der Coupon Nummer \"%(numbers)s' existiert doppelt."
-
 msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Coupons"
 
 msgctxt "field:sale.promotion.coupon,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:sale.promotion.coupon,create_uid:"
 msgid "Create User"
@@ -26,9 +22,11 @@ msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Name"
 
+# For a condensed but talking representation in list view it seems better to
+# put 'Anzahl' at the first place.
 msgctxt "field:sale.promotion.coupon,number_of_use:"
 msgid "Number of Use"
-msgstr "Genutzte Anzahl"
+msgstr "Anzahl Nutzung"
 
 msgctxt "field:sale.promotion.coupon,numbers:"
 msgid "Numbers"
@@ -44,7 +42,7 @@ msgstr "Verkaufsaktion"
 
 msgctxt "field:sale.promotion.coupon,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.promotion.coupon,write_date:"
 msgid "Write Date"
@@ -64,7 +62,7 @@ msgstr "Coupon"
 
 msgctxt "field:sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
@@ -80,7 +78,7 @@ msgstr "Nummer"
 
 msgctxt "field:sale.promotion.coupon.number,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.promotion.coupon.number,write_date:"
 msgid "Write Date"
@@ -96,7 +94,7 @@ msgstr "Coupons"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr "Erstellt am"
+msgstr "Erstellungsdatum"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
@@ -112,7 +110,7 @@ msgstr "Nummer"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
 msgid "Record Name"
-msgstr "Name des Datensatzes"
+msgstr "Bezeichnung des Datensatzes"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
@@ -137,6 +135,10 @@ msgstr ""
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
 msgstr "Aktivieren um die Anzahl der Nutzungen pro Partei zu zählen."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "Die Coupon Nummern \"%(numbers)s' sind doppelt."
 
 msgctxt "model:sale.promotion.coupon,name:"
 msgid "Promotion Coupon"

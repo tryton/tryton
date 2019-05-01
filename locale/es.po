@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion.coupon.number:"
-msgid "The coupon numbered '%(numbers)s' are duplicated."
-msgstr "El cupón con numeración \"%(numbers)s\" esta duplicado."
-
 msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Cupones"
@@ -137,6 +133,10 @@ msgstr ""
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
 msgstr "Marcar para contar el uso por tercero."
+
+msgctxt "model:ir.message,text:msg_duplicate_numbers"
+msgid "The coupons numbered \"%(numbers)s\" are duplicated."
+msgstr "Los cupones con numeración \"%(numbers)s\" están duplicados."
 
 msgctxt "model:sale.promotion.coupon,name:"
 msgid "Promotion Coupon"

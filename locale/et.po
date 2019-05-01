@@ -4,148 +4,146 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
-msgstr "کوپن ها"
+msgstr "Kupongid"
 
 msgctxt "field:sale.promotion.coupon,create_date:"
 msgid "Create Date"
-msgstr "تاریخ ایجاد"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:sale.promotion.coupon,create_uid:"
 msgid "Create User"
-msgstr "کاربر ایجاد کننده"
+msgstr "Looja"
 
 msgctxt "field:sale.promotion.coupon,id:"
 msgid "ID"
-msgstr "شناسه"
+msgstr "ID"
 
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
-msgstr "نام"
+msgstr "Nimi"
 
 msgctxt "field:sale.promotion.coupon,number_of_use:"
 msgid "Number of Use"
-msgstr "تعداد استفاده"
+msgstr "Kasutuse arv"
 
 msgctxt "field:sale.promotion.coupon,numbers:"
 msgid "Numbers"
-msgstr "تعداد"
+msgstr "Numbrid"
 
 msgctxt "field:sale.promotion.coupon,per_party:"
 msgid "Per Party"
-msgstr "در هر نهاد/سازمان"
+msgstr "Osapoole kohta"
 
 msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
-msgstr "تبلیغ و ترویج"
+msgstr "Soodustus"
 
 msgctxt "field:sale.promotion.coupon,rec_name:"
 msgid "Record Name"
-msgstr "نام پرونده"
+msgstr "Kirje nimi"
 
 msgctxt "field:sale.promotion.coupon,write_date:"
 msgid "Write Date"
-msgstr "تاریخ نوشته"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:sale.promotion.coupon,write_uid:"
 msgid "Write User"
-msgstr "نوشته کاربر"
+msgstr "Muutja"
 
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
-msgstr "فعال"
+msgstr "Aktiivne"
 
 msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
-msgstr "کوپن"
+msgstr "Kupong"
 
 msgctxt "field:sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr "تاریخ ایجاد"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
-msgstr "کاربر ایجاد کننده"
+msgstr "Looja"
 
 msgctxt "field:sale.promotion.coupon.number,id:"
 msgid "ID"
-msgstr "شناسه"
+msgstr "ID"
 
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
-msgstr "شماره"
+msgstr "Number"
 
 msgctxt "field:sale.promotion.coupon.number,rec_name:"
 msgid "Record Name"
-msgstr "نام پرونده"
+msgstr "Kirje nimi"
 
 msgctxt "field:sale.promotion.coupon.number,write_date:"
 msgid "Write Date"
-msgstr "تاریخ نوشته"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:sale.promotion.coupon.number,write_uid:"
 msgid "Write User"
-msgstr "نوشته کاربر"
+msgstr "Muutja"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
-msgstr "کوپن ها"
+msgstr "Kupongid"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
 msgid "Create Date"
-msgstr "تاریخ ایجاد"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
 msgid "Create User"
-msgstr "کاربر ایجاد کننده"
+msgstr "Looja"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
 msgid "ID"
-msgstr "شناسه"
+msgstr "ID"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
-msgstr "شماره"
+msgstr "Number"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
 msgid "Record Name"
-msgstr "نام پرونده"
+msgstr "Kirje nimi"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
-msgstr "فروش"
+msgstr "Müük"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
 msgid "Write Date"
-msgstr "تاریخ نوشته"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
 msgid "Write User"
-msgstr "نوشته کاربر"
+msgstr "Muutja"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""
 "How much times a coupon number can be used.\n"
 "0 or below for no limit."
 msgstr ""
-"چه مدت زمان یک کوپن باید استفاده شود.\n"
-"0 یا کمتر برای نامحدود."
 
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
-msgstr "تیک بزنید برای شمارش استفاده در هر نهاد/سازمان."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The coupons numbered \"%(numbers)s\" are duplicated."
-msgstr "تعداد کوپن های :\"%s\" دوبرابر شده است."
+msgstr ""
 
 msgctxt "model:sale.promotion.coupon,name:"
 msgid "Promotion Coupon"
-msgstr "کوپن تبلیغ و ترویج"
+msgstr "Sooduskupong"
 
 msgctxt "model:sale.promotion.coupon.number,name:"
 msgid "Promotion Coupon Number"
-msgstr "شماره کوپن تبلیغ و ترویج"
+msgstr "Sooduskupongi number"
 
 msgctxt "model:sale.sale-sale.promotion.coupon.number,name:"
 msgid "Sale - Promotion Coupon Number"
-msgstr "فروش - شماره کوپن تبلیغ و ترویج"
+msgstr "Müük - sooduskupongi number"
