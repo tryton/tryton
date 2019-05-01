@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:stock.product.location,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr ""
 
 msgctxt "field:stock.product.location,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr ""
 
 msgctxt "field:stock.product.location,id:"
 msgid "ID"
@@ -20,32 +20,32 @@ msgstr ""
 
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
-msgstr ""
+msgstr "Depolama Konumu"
 
 msgctxt "field:stock.product.location,product:"
 msgid "Product"
-msgstr ""
+msgstr "Ürün"
 
 msgctxt "field:stock.product.location,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kayıt Adı"
 
 msgctxt "field:stock.product.location,sequence:"
 msgid "Sequence"
-msgstr ""
+msgstr "Sıra"
 
 msgctxt "field:stock.product.location,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Depo"
 
 msgctxt "field:stock.product.location,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr ""
 
 msgctxt "field:stock.product.location,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr ""
 
 msgctxt "model:stock.product.location,name:"
 msgid "Product Location"
-msgstr ""
+msgstr "Ürün Konumu"
