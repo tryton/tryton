@@ -2,28 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has opened projects for"
-" the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid ""
-"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
-"is already done."
-msgstr ""
-"O trabalho  \"%(child)s\" não pode ser aberto porque seu trabalho pai  "
-"\"%(parent)s\" já está pronto."
-
-msgctxt "error:project.work:"
-msgid ""
-"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
-"still opened."
-msgstr ""
-"O trabalho \"%(parent)s\" não pode ser concluído porque seu trabalho filho "
-"\"%(child)s\" ainda está aberto."
-
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr "Filhos"
@@ -94,7 +72,7 @@ msgstr "Estado"
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Disponível em folhas de registro de trabalho"
+msgstr "Disponível em quadros de tempo"
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
@@ -152,114 +130,111 @@ msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works"
 msgstr "O progresso total estimado para esta tarefa e para suas sub-tarefas."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr "Tarefas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Projects"
+msgstr "Projetos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Projects"
+msgstr "Projetos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr "Tarefas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr "Linhas de Horário de Trabalho"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr "Esforços de trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr "Esforços de trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Done"
+msgstr "Concluído"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr "Aberto"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Done"
+msgstr "Concluído"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr "Aberto"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Done"
+msgstr "Concluído"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr "Aberto"
 
-#, fuzzy
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+"Você não pode remover a pessoa \"%(party)s\" enquanto ela tiver projetos em "
+"aberto com a empresa \"%(company)s\"."
+
+msgctxt "model:ir.message,text:msg_work_invalid_children_state"
+msgid "To close work \"%(parent)s\", you must close its child \"%(child)s\"."
+msgstr ""
+"Para fechar o trabalho \"%(parent)s\", você precisa fechar o trabalho "
+"\"%(child)s\"."
+
+msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
+msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
+msgstr "Para abrir o trabalho \"%(child)s\", você precisa abrir \"%(parent)s\"."
+
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configuração"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Project"
+msgstr "Projeto"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Projects"
+msgstr "Projetos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Projects"
+msgstr "Projetos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr "Tarefas"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr "Esforços de Trabalhos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr "Esforços de Trabalhos"
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
 msgstr "Esforço do trabalho"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Project Administration"
+msgstr "Administração de Projetos"
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
@@ -283,7 +258,7 @@ msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "End:"
-msgstr ""
+msgstr "Fim:"
 
 msgctxt "view:project.work:"
 msgid "General"
@@ -291,11 +266,11 @@ msgstr "Geral"
 
 msgctxt "view:project.work:"
 msgid "Start:"
-msgstr ""
+msgstr "Início:"
 
 msgctxt "view:project.work:"
 msgid "Timesheet:"
-msgstr ""
+msgstr "Quadro de Tempo:"
 
 msgctxt "view:project.work:"
 msgid "Children"

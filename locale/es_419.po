@@ -2,24 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has opened projects for"
-" the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid ""
-"Work \"%(child)s\" can not be opened because its parent work \"%(parent)s\" "
-"is already done."
-msgstr ""
-
-msgctxt "error:project.work:"
-msgid ""
-"Work \"%(parent)s\" can not be done because its child work \"%(child)s\" is "
-"still opened."
-msgstr ""
-
 msgctxt "field:project.work,children:"
 msgid "Children"
 msgstr ""
@@ -126,7 +108,7 @@ msgstr ""
 
 msgctxt "field:project.work,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work"
@@ -199,6 +181,20 @@ msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_opened_project"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have opened projects with "
+"company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_invalid_children_state"
+msgid "To close work \"%(parent)s\", you must close its child \"%(child)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
+msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
