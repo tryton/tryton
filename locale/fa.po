@@ -2,306 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.account.deferral:"
-msgid "Deferral must be unique by account and fiscal year"
-msgstr "بازپرداخت باید در حساب و سال مالی منحصر به فرد باشد"
-
-msgctxt "error:account.account.deferral:"
-msgid "You can not modify Account Deferral records"
-msgstr "شما نمی توانید رکورد های حساب بازپرداخت را تغییر دهید"
-
-msgctxt "error:account.account:"
-msgid ""
-"The Account \"%(account)s\" can not have a second currency because it is not"
-" deferral."
-msgstr "حساب \"%s\" نمیتواند ارز دوم داشته باشد، زیرا بازپرداخت نیست."
-
-msgctxt "error:account.account:"
-msgid ""
-"The currency \"%(currency)s\" of Account \"%(account)s\" is not compatible "
-"with existing lines."
-msgstr "ارز \"٪s\" از حساب \"٪s\" با سطرهای موجود سازگار نیست."
-
-msgctxt "error:account.account:"
-msgid ""
-"The kind of Account \"%(account)s\" does not allow to set a second currency.\n"
-"Only \"Other\" type allows."
-msgstr ""
-"نوع حساب \"%s\" تنظیم ارز دوم را اجازه نمی دهد.\n"
-"تنها \"سایر\" نوع مجاز می باشد."
-
-msgctxt "error:account.account:"
-msgid "You can not delete account \"%s\" because it has move lines."
-msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts that have children."
-msgstr "شما نمی توانید حساب های دارای زیرمجموعه را حذف کنید."
-
-msgctxt "error:account.create_chart:"
-msgid "A chart of accounts already exists for the company \"%(company)s\"."
-msgstr "نمودار حساب ها برای شرکت \"%s\" وجود دارد."
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
-msgstr "سال مالی \"%s\" و \"%s\" دارای برخی دنباله ارسال جابجایی است."
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
-msgstr "سال مالی \"%s\" و \"%s\" دارای تداخل و همپوشانی است."
-
-msgctxt "error:account.fiscalyear:"
-msgid "No fiscal year defined for \"%s\"."
-msgstr "برای \"%s\" هیچ سال مالی تعیین نشده است."
-
-msgctxt "error:account.fiscalyear:"
-msgid "The balance of the account \"%s\" must be zero."
-msgstr "موجودی حساب \"%s\" باید صفر باشد."
-
-msgctxt "error:account.fiscalyear:"
-msgid "You can not change the post move sequence in fiscal year \"%s\"."
-msgstr "شما نمیتوانید دنباله ارسال جابجایی در سال مالی \"%s\" را تغییر دهید."
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not close fiscal year \"%s\" until you close all previous fiscal "
-"years."
-msgstr ""
-"تا زمانی که همه سال های مالی پیشین را نبندید نمیتوانید سال مالی \"%s\" را "
-"ببنندید."
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
-"years."
-msgstr ""
-"شما نمیتوانید سال مالی \"%s\" را دوباره باز کنید تا زمانی که همه سالهای مالی"
-" بعد از آن را باز کنید."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr "شما نمی توانید یک دوره - روزنامه ایجاد کنید در دوره بسته شده : \"%s\"."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not modify/delete journal - period \"%s\" because it has moves."
-msgstr ""
-"شما نمیتوانید دوره - روزنامه \"%s\" را حذف یا تغییر دهید چرا که دارای "
-"جابجایی است."
-
-msgctxt "error:account.journal.period:"
-msgid ""
-"You can not open journal - period \"%(journal_period)s\" because period "
-"\"%(period)s\" is closed."
-msgstr ""
-"شما نمیتوانید دوره - روزنامه \"%s\" را باز کنید، چونکه دوره \"%s\" بسته شده "
-"است."
-
-msgctxt "error:account.journal.period:"
-msgid "You can only open one journal per period."
-msgstr "شما از هر دوره فقط میتوانید یک روزنامه باز کنید."
-
-msgctxt "error:account.move.line:"
-msgid "Line \"%s\" (%d) already reconciled."
-msgstr "سطر \"%s\" (%d) مطابقت داده شده است."
-
-msgctxt "error:account.move.line:"
-msgid "Move line cannot be created because there is no journal defined."
-msgstr "سطر جابجایی ایجاد نمی شود زیرا هیچ روزنامه یی برای آن تعریف نشده است."
-
-msgctxt "error:account.move.line:"
-msgid "Party is required on line \"%s\""
-msgstr "نهاد/موسسه لازم است در سطر \"%s\""
-
-msgctxt "error:account.move.line:"
-msgid "Party must not be set on line \"%s\""
-msgstr "نهاد/موسسه لازم نیست تنظیم شود در سطر \"%s\""
-
-msgctxt "error:account.move.line:"
-msgid "Wrong credit/debit values."
-msgstr "مقادیر بستانکار/بدهکار اشتباه است."
-
-msgctxt "error:account.move.line:"
-msgid "Wrong second currency sign."
-msgstr "علامت ارز دوم اشتباه است."
-
-msgctxt "error:account.move.line:"
-msgid "You can not add/modify lines in closed journal period \"%s\"."
-msgstr ""
-"روزنامه دوره \"%s\" بسته شده است، شما نمیتوانید سطری به آن اضافه یا اصلاح "
-"کنید."
-
-msgctxt "error:account.move.line:"
-msgid ""
-"You can not create a move line with account \"%s\" because it is a view "
-"account."
-msgstr ""
-"شما نمی توانید یک سطر جابجایی با حساب \"٪ s\" ایجاد کنید زیرا آن یک حساب "
-"نمایشی است."
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify line \"%s\" because it is reconciled."
-msgstr "شمانمی توانید سطر \"%s\" را تغییر دهید چونکه مطابقت داده شده است."
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify lines of move \"%s\" because it is already posted."
-msgstr ""
-"شما نمی توانید سطرهای جابجایی \"٪ s\" را تغییر دهید زیرا درحال حاضرارسال شده"
-" اند."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not create a reconciliation where debit \"%(debit)s\" and credit "
-"\"%(credit)s\" differ."
-msgstr ""
-"در جایی که بدهکاری \"%s\" و بستانکاری \"%s\" متفاوت دارند، شما نمی توانید "
-"مطابقت ایجاد کنید."
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not modify a reconciliation."
-msgstr "شما نمی توانید اصلاحیه را تغییر دهید."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
-"is configured as not reconcilable."
-msgstr ""
-"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" غیر قابل مطابقت "
-"گیری تنظیم شده است."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account1)s\""
-" is different from \"%(account2)s\"."
-msgstr ""
-"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" با \"%s\" دارای "
-"اختلاف است."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its party \"%(party1)s\" is "
-"different from \"%(party2)s\"."
-msgstr ""
-"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه نهاد/مؤسسه: \"%s\" مغایراست "
-"با \"%s\"."
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr "شما نمی تواند سطر \"%s\" را مطابقت دهید زیرا در وضعیت معتبری نیست."
-
-msgctxt "error:account.move:"
-msgid ""
-"The period of move \"%s\" is closed.\n"
-"Use the current period?"
-msgstr ""
-"دوره جابجایی \"%s\" بسته است.\n"
-"از دوره جاری استفاده شود؟"
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not create move \"%(move)s\" because its date is outside its period."
-msgstr ""
-"شما نمیتوانید جابجایی : \"%(move)s\" ایجاد کنید چرا که تاریخ آن خارج از این "
-"دوره است."
-
-msgctxt "error:account.move:"
-msgid "You can not modify move \"%s\" because it is already posted."
-msgstr ""
-"شما نمیتوانید جابجایی : \"%(move)s\" را تغییر دهید زیرا در حال حاضرارسال شده"
-" است."
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is an unbalanced."
-msgstr "شما نمیتوانید جابجایی : \"%(move)s\" ارسال کنید زیرا هماهنگ شده نیست."
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is empty."
-msgstr "شما نمیتوانید جابجایی : \"%(move)s\" ارسال کنید زیرا خالی است."
-
-msgctxt "error:account.period:"
-msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
-msgstr "\"%(first)s\" و \"%(second)s\" تداخل دوره."
-
-msgctxt "error:account.period:"
-msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
-msgstr "تاریخ های دوره \"%s\" خارج است!، خارج از تاریخ سال مالی آن است."
-
-msgctxt "error:account.period:"
-msgid "No period defined for date \"%s\"."
-msgstr "هیچ دوره ای تعریف نشده است برای تاریخ \"%s\"."
-
-msgctxt "error:account.period:"
-msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
-msgstr "دوره \"%s (اول)\" و \"%s\" (دوم) دارای توالی مشابه است."
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not change the post move sequence of period \"%s\" because there are"
-" already posted moves in the period."
-msgstr ""
-"شما نمی تواند ترتیب ارسال جابجایی دوره \"%s\" را تغییر دهید از آنجا که در "
-"حال حاضر جابجایی ها در دوره ارسال شده است."
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not close period \"%(period)s\" because there are non posted moves "
-"\"%(move)s\" in this period."
-msgstr ""
-"شما نمیتوانید دوره : \"%(period)s\" را ببندید چرا که در: \"%(move)s\" "
-"جابجایی های ارسال نشده وجود دارد."
-
-msgctxt "error:account.period:"
-msgid "You can not create a period on fiscal year \"%s\" because it is closed."
-msgstr ""
-"شما نمیتوانید دوره ایی برای سال مالی : \"%s\" ایجاد کنید زیرا بسته شده است."
-
-msgctxt "error:account.period:"
-msgid "You can not modify/delete period \"%s\" because it has moves."
-msgstr "شما نمیتوانید دوره : \"%s\" را حذف یا تغییر دهید چونکه دارای جابجایی است."
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not open period \"%(period)s\" because its fiscal year "
-"\"%(fiscalyear)s\" is closed."
-msgstr ""
-"شما نمیتوانید دوره : \"%(period)s\" را باز کنید چرا که سال مالی : "
-"\"%(fiscalyear)s\" بسته شده است."
-
-msgctxt "error:account.tax.line:"
-msgid "You can not add/modify tax lines in closed period \"%s\"."
-msgstr "شما نمی توانید سطرهای مالیاتی را در دوره بسته \"%s\" ،اضافه / تغییر دهید."
-
-msgctxt "error:account.tax.template:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-"\"به روز رسانی واحد قیمت\" نمیتواند بر مالیات \"%(template)s\" اعمال شود چون"
-" مرجع است."
-
-msgctxt "error:account.tax:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-"\"به روز رسانی واحد قیمت\" نمیتواند بر مالیات \"%(template)s\" اعمال شود چون"
-" مرجع است."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"receivable/payable for the company \"%(company)s\"."
-msgstr ""
-"نهاد/سازمان \"%(party)s\" نباید حذف شود چرا که برخی پرداختی ها و دریافتی های"
-" معوقه در شرکت \"%(company)s\" ،وابسته به آن وجود دارد."
-
-msgctxt "error:party.party:"
-msgid "There is no payable account on party \"%(name)s\"."
-msgstr "هیچ حساب پرداختی در نهاد/سازمان \"%(name)s\" وجود ندارد."
-
-msgctxt "error:party.party:"
-msgid "There is no receivable account on party \"%(name)s\"."
-msgstr "هیچ حساب دریافتی در نهاد/سازمان \"%(name)s\" وجود ندارد."
-
 msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "فعال"
@@ -317,6 +17,11 @@ msgstr "تراز"
 msgctxt "field:account.account,childs:"
 msgid "Children"
 msgstr "زیر مجموعه"
+
+#, fuzzy
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "بسته"
 
 msgctxt "field:account.account,code:"
 msgid "Code"
@@ -358,7 +63,6 @@ msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
 msgstr "بازپرداخت ها"
 
-#, fuzzy
 msgctxt "field:account.account,end_date:"
 msgid "End Date"
 msgstr "تاریخ پایان"
@@ -370,10 +74,6 @@ msgstr "تراز دفتر کل"
 msgctxt "field:account.account,id:"
 msgid "ID"
 msgstr "شناسه"
-
-msgctxt "field:account.account,kind:"
-msgid "Kind"
-msgstr "نوع"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
@@ -405,7 +105,7 @@ msgstr "تطبیق"
 
 msgctxt "field:account.account,replaced_by:"
 msgid "Replaced By"
-msgstr ""
+msgstr "جایگزین شده توسط"
 
 msgctxt "field:account.account,right:"
 msgid "Right"
@@ -419,7 +119,6 @@ msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "رقم های پول دوم"
 
-#, fuzzy
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
@@ -548,6 +247,11 @@ msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "زیر مجموعه"
 
+#, fuzzy
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "بسته"
+
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "کد"
@@ -564,7 +268,6 @@ msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr "بازپرداخت"
 
-#, fuzzy
 msgctxt "field:account.account.template,end_date:"
 msgid "End Date"
 msgstr "تاریخ پایان"
@@ -576,10 +279,6 @@ msgstr "تراز دفتر کل"
 msgctxt "field:account.account.template,id:"
 msgid "ID"
 msgstr "شناسه"
-
-msgctxt "field:account.account.template,kind:"
-msgid "Kind"
-msgstr "نوع"
 
 msgctxt "field:account.account.template,name:"
 msgid "Name"
@@ -603,9 +302,8 @@ msgstr "تطبیق"
 
 msgctxt "field:account.account.template,replaced_by:"
 msgid "Replaced By"
-msgstr ""
+msgstr "جایگزین شده توسط"
 
-#, fuzzy
 msgctxt "field:account.account.template,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
@@ -666,9 +364,9 @@ msgctxt "field:account.account.type,amount_cmp:"
 msgid "Amount"
 msgstr "مقدار"
 
-msgctxt "field:account.account.type,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "ترازنامه"
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr ""
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
@@ -690,17 +388,14 @@ msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
 
-msgctxt "field:account.account.type,display_balance:"
-msgid "Display Balance"
-msgstr "نمایش تراز"
+#, fuzzy
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "هزینه"
 
 msgctxt "field:account.account.type,id:"
 msgid "ID"
 msgstr "شناسه"
-
-msgctxt "field:account.account.type,income_statement:"
-msgid "Income Statement"
-msgstr "صورت حساب درآمد"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
@@ -710,13 +405,37 @@ msgctxt "field:account.account.type,parent:"
 msgid "Parent"
 msgstr "منبع"
 
+#, fuzzy
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
 msgctxt "field:account.account.type,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
+#, fuzzy
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+#, fuzzy
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
 msgstr "ادامه"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "موجودی"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
@@ -734,9 +453,9 @@ msgctxt "field:account.account.type,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
-msgctxt "field:account.account.type.template,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "ترازنامه"
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr ""
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
@@ -750,17 +469,14 @@ msgctxt "field:account.account.type.template,create_uid:"
 msgid "Create User"
 msgstr "کاربر ایجاد کننده"
 
-msgctxt "field:account.account.type.template,display_balance:"
-msgid "Display Balance"
-msgstr "نمایش تراز"
+#, fuzzy
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "هزینه"
 
 msgctxt "field:account.account.type.template,id:"
 msgid "ID"
 msgstr "شناسه"
-
-msgctxt "field:account.account.type.template,income_statement:"
-msgid "Income Statement"
-msgstr "صورت حساب درآمد"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
@@ -770,13 +486,37 @@ msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
 msgstr "منبع"
 
+#, fuzzy
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "پرداختی"
+
 msgctxt "field:account.account.type.template,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
+#, fuzzy
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "دریافتی"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "درآمد"
+
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
 msgstr "ادامه"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "موجودی"
 
 msgctxt "field:account.account.type.template,write_date:"
 msgid "Write Date"
@@ -1211,7 +951,6 @@ msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
 msgstr "پایان بستانکاری"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,end_date:"
 msgid "End Date"
 msgstr "تاریخ پایان"
@@ -1248,7 +987,6 @@ msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
 msgstr "شروع بستانکاری"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
@@ -1773,6 +1511,10 @@ msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
 msgstr "توضیحات جابجایی"
 
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "وضعیت جابجایی"
@@ -1801,6 +1543,10 @@ msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "تطبیق دادن"
 
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr ""
+
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr "مقدارپول دوم"
@@ -1828,6 +1574,21 @@ msgstr "تاریخ نوشته"
 msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "شرح"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,id:"
+msgid "ID"
+msgstr "شناسه"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "روزنامه"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
@@ -1917,62 +1678,50 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr "تا تاریخ"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,active:"
 msgid "Active"
 msgstr "فعال"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
 msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,create_date:"
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,create_uid:"
 msgid "Create User"
 msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
 msgid "Credit Account"
 msgstr "حساب بستانکاری"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,debit_account:"
 msgid "Debit Account"
 msgstr "حساب بدهی"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,journal:"
 msgid "Journal"
 msgstr "روزنامه"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,name:"
 msgid "Name"
 msgstr "نام"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,write_date:"
 msgid "Write Date"
 msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
@@ -1981,7 +1730,6 @@ msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -2002,7 +1750,6 @@ msgctxt "field:account.move.reconcile_lines.writeoff,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
 msgstr "قلم زده شده"
@@ -2018,6 +1765,10 @@ msgstr "کاربر ایجاد کننده"
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
 msgstr "تاریخ"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr ""
 
 msgctxt "field:account.move.reconciliation,id:"
 msgid "ID"
@@ -2275,12 +2026,10 @@ msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write Off"
 msgstr "قلم زده شده"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
 msgstr "مقدار"
@@ -2441,7 +2190,6 @@ msgctxt "field:account.tax.code,description:"
 msgid "Description"
 msgstr "شرح"
 
-#, fuzzy
 msgctxt "field:account.tax.code,end_date:"
 msgid "End Date"
 msgstr "تاریخ پایان"
@@ -2466,7 +2214,6 @@ msgctxt "field:account.tax.code,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:account.tax.code,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
@@ -2623,7 +2370,6 @@ msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr "شرح"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,end_date:"
 msgid "End Date"
 msgstr "تاریخ پایان"
@@ -2648,7 +2394,6 @@ msgctxt "field:account.tax.code.template,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
@@ -2821,7 +2566,6 @@ msgctxt "field:account.tax.rule,template:"
 msgid "Template"
 msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "بازنویسی الگو"
@@ -2878,7 +2622,6 @@ msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
 msgstr "الگو"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "بازنویسی الگو"
@@ -2982,6 +2725,10 @@ msgstr "نوشته کاربر"
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
 msgstr "الگوی حساب"
+
+msgctxt "field:account.tax.template,active:"
+msgid "Active"
+msgstr "فعال"
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
@@ -3107,14 +2854,6 @@ msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "پایه"
 
-msgctxt "field:account.tax.test.result,base_code:"
-msgid "Base Code"
-msgstr "کد پایه"
-
-msgctxt "field:account.tax.test.result,base_sign:"
-msgid "Base Sign"
-msgstr "امضاء پایه"
-
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
 msgstr "شرح"
@@ -3123,17 +2862,14 @@ msgctxt "field:account.tax.test.result,id:"
 msgid "ID"
 msgstr "شناسه"
 
+#, fuzzy
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr "اطلاع قانونی"
+
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
 msgstr "مالیات"
-
-msgctxt "field:account.tax.test.result,tax_code:"
-msgid "Tax Code"
-msgstr "کد مالیات"
-
-msgctxt "field:account.tax.test.result,tax_sign:"
-msgid "Tax Sign"
-msgstr "امضاء مالیات"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
@@ -3235,14 +2971,17 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
 
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "نمایش فقط تراز در گزارش دفتر کل"
 
+#, fuzzy
 msgctxt "help:account.account,reconcile:"
-msgid ""
-"Allow move lines of this account \n"
-"to be reconciled."
+msgid "Allow move lines of this account to be reconciled."
 msgstr ""
 "جابجایی سطرهای این حساب مجاز است\n"
 "برای تطبیق دادن."
@@ -3267,9 +3006,20 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
 
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "نمایش فقط تراز در گزارش دفتر کل"
+
+#, fuzzy
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"جابجایی سطرهای این حساب مجاز است\n"
+"برای تطبیق دادن."
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
@@ -3351,7 +3101,6 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr "نمایش فقط جابجایی ارسال شده"
 
-#, fuzzy
 msgctxt "help:account.move.reconcile.write_off,active:"
 msgid "Uncheck to exclude from future use."
 msgstr "برای خارج کردن از استفاده در آینده، علامت را حذف کنید."
@@ -3359,6 +3108,10 @@ msgstr "برای خارج کردن از استفاده در آینده، علا�
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "بالاترین تاریخ تطبیق دادن سطرها"
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr ""
 
 msgctxt "help:account.move.template,active:"
 msgid "Uncheck to exclude from future use."
@@ -3424,7 +3177,6 @@ msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
 msgstr "یک عبارت پایتون که با کلمات کلیدی ارزیابی می شود."
 
-#, fuzzy
 msgctxt "help:account.tax.rule,template_override:"
 msgid "Check to override template definition"
 msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
@@ -3438,7 +3190,6 @@ msgid ""
 "If the original tax is filled, the rule will be applied only for this tax."
 msgstr "اگر مالیات اصلی پر شود، این قانون فقط برای این مالیات اعمال خواهد شد."
 
-#, fuzzy
 msgctxt "help:account.tax.rule.line,template_override:"
 msgid "Check to override template definition"
 msgstr "علامت گذاری برای بازنویسی تعاریف الگو"
@@ -3454,6 +3205,10 @@ msgid ""
 msgstr ""
 "اگر الگوی مالیات اصلی پر شده، این قانون تنها برای این الگو مالیات اعمال می "
 "شود."
+
+msgctxt "help:account.tax.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
@@ -3608,6 +3363,10 @@ msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "حساب سطر جابجایی"
 
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr ""
+
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
 msgstr "حساب الگوی سطر جابجایی"
@@ -3622,7 +3381,7 @@ msgstr "چاپ روزنامه کل"
 
 msgctxt "model:account.move.reconcile.write_off,name:"
 msgid "Reconcile Write Off"
-msgstr ""
+msgstr "تطبیق دادن قلم زده شده"
 
 msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
@@ -3812,6 +3571,10 @@ msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
 msgstr "دفتر کل - خطوط"
 
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
 msgstr "روزنامه ها"
@@ -3898,7 +3661,7 @@ msgstr "تطبیق دادن سطرها"
 
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
 msgid "WriteOff Methods"
-msgstr ""
+msgstr "روش های قلم زدن"
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -3995,12 +3758,373 @@ msgctxt ""
 msgid "Receivable"
 msgstr "قابل دریافت"
 
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr "یک نمودار حساب ها برای شرکت \"%s\" وجود دارد."
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+"برای تعیین یک ارز دوم برای حساب \"%(account)s\" ، باید آن را به تعویق "
+"انداخت."
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+"شما نمی توانید دنباله حرکت پست را در سال مالی \"%(fiscalyear)s\" تغییر "
+"دهید،زیرا شامل حرکت های ارسال شده است."
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+"شما نمیتوانید دنباله حرکت پست در دوره \"%(period)s\" را تغییر دهید، زیرا "
+"حرکتهای ارسال شده را ارسال کرده است."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr "برای بستن سال مالی، تعادل حساب \"%(account)s\" باید صفر باشد."
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+"برای بستن سال مالی \"%(fiscalyear)s\"، شما باید تمام سال های مالی قبل را "
+"ببندید."
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr ""
+"برای بستن دوره \"%(period)s\" شما باید جابجایی های \"%(moves)s\" را ارسال "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "شما نمی توانید یک دوره - روزنامه ایجاد کنید در دوره بسته شده : \"%s\"."
+
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+"شما نمیتوانید دوره ایی برای سال مالی : \"%s\" ایجاد کنید زیرا بسته شده است."
+
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "بازپرداخت باید در حساب و سال مالی منحصر به فرد باشد"
+
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "شما نمیتوانید حساب \"٪ s\" را حذف کنید زیرا دارای سطرهای جابجایی است."
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+"شما نمیتوانید نهاد/سازمان: \"%(party)s\" در حالی که آنها در انتظار قابل "
+"دریافت/ قابل پرداخت با شرکت:\"%(company)s\"  هستند راحذف کنید."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" نمی تواند دنباله انتقال پست "
+"یکسان داشته باشد، شما باید از توالی های مختلف استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+"سال های مالی: \"%(اولیه)s\" و \"%(ثانویه)s\" همپوشانی دارند، شما باید از "
+"تاریخ های مختلف استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "شما برای هر دوره فقط میتوانید یک روزنامه ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr "شما نمیتوانید مطابقت سطر: \"%(line)s\" را تطبیق دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
+"سطر:\"%(line)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr "شما نمی توانید هر دو (بدهی و اعتباری) را در سطرتنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید یک نهاد/سازمان روی "
+"سطر:\"%(line)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+"برای ایجاد یک سطر در حساب:\"%(account)s\"،شما باید نهاد/سازمان روی "
+"سطر:\"%(line)s\" را حذف کنید."
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+"شما باید علامت ارز دوم را برای مطابقت با کارت اعتباری-کارت پیش خرید تنظیم "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+"شما نمیتوانید روزنامه-دوره : \"%(journal_period)s\" را اصلاح یا حذف کنید، "
+"زیرا دارای جابجایی ها میباشد."
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+"شما نمیتوانید دوره : \"%(period)s\" را اصلاح یا حذف کنید، زیرا دارای جابجایی"
+" ها میباشد."
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+"شما نمیتوانید سطرهایی را در روزنامه-دوره بسته شده :\"%(journal_period)s\"، "
+"اضافه / اصلاح/ حذف کنید."
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr ""
+"شما نمی توانید خط :\"%(line)s\" از حرکت ارسال شده :\"%(move)s\" را تغییر "
+"دهید."
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr "شما نمی توانید سطر : \"%(line)s\" مطابقت شده را اصلاح کنید. "
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr "شما نمی توانید جابجایی: \"%(جابجایی)s\" ارسال شده را اصلاح کنید. "
+
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr ""
+"شما نمی توانید سطرهای مالیاتی را در دوره بسته \"%s\" ،اضافه / تغییر/حذف "
+"کنید."
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+"دوره جابجایی:\"%(move)s\" بسته شده است.\n"
+"از دوره جاری برای لغو جابجایی استفاده می کنید؟"
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+"تاریخ جابجایی : \"%(move)s\" خارج از دوره است، شما باید تاریخ یا دوره را "
+"تغییر دهید."
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr "برای ادامه، شما باید یک سال مالی برای تاریخ : \"%(date)s\" ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr "برای ادامه، شما باید یک دوره برای تاریخ : \"%(date)s\" ایجاد کنید."
+
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+"شما نمیتوانید روزنامه - دوره : \"%s\" را دوباره باز کنید، چونکه دوره \"%s\" "
+"بسته شده است."
+
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+"شما نمیتوانید دوره : \"%(period)s\" را دوباره باز کنید چرا که سال مالی : "
+"\"%(fiscalyear)s\" بسته شده است."
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل پرداخت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr ""
+"برای ادامه، شما باید یک حساب قابل دریافت برای نهاد/سازمان : "
+"\"%(نهاد/سازمان)s\" تعریف کنید."
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+"تاریخ های دوره : \"%(period)s\" باید مابین تاریخ های این سال مای : "
+"\"%(fiscalyear)s\" باشد."
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr ""
+"دوره های : \"%(اولیه)s\" و \"%(ثانویه)s\" دارای همپوشانی هستند، شما باید از "
+"تاریخ های متفاوت استفاده کنید."
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+"شما نمیتوانید از همان دنباله ارسال جابجایی برای دوره های : \"%(اولیه)s\" و "
+"\"%(ثانویه)s\" استفاده کنید، چراکه آنها از سال های مالی مختلف هستند."
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr "برای ارسال جابجایی : \"%(move)s\" شما باید این سطرها را پر کنید."
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+"برای ارسال جابجایی : \"%(move)s\" شما باید تمام خطوط بدهی و اعتبارات آن را "
+"تراز کنید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr ""
+"برای مطابقت سطر: \"%(line)s\" شماباید حساب : \"%(account)s\" را بعنوان قابل "
+"مطابقت تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه حساب \"%s\" با \"%s\" دارای "
+"تفاوت است."
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+"شما نمیتوانید سطر \"%s\" را مطابقت دهید، چراکه نهاد/مؤسسه: \"%s\" مغایراست "
+"با \"%s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr "شما نمی توانید سطرغیر معتبر: \"%(line)s\" را مطابقت دهید."
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+"برای مطابقت دادن سطرها، آنها باید دارای مقدار بدهی: \"%(debit)s\" و اعتبار: "
+"\"%(credit)s\" باشند."
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+"برای دوباره باز کردن سال مالی : \"%(fiscalyear)s\" شما باید همه سالهای مالی "
+"بعدی را دوباره باز کنید."
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+"شما نمی توانید \"به روز رسانی قیمت واحد\" را بر روی زیرمجموعه مالیات: "
+"\"%(tax)s\" تنظیم کنید."
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr "شما نمی توانید هر گونه حساب معوقه را اصلاح کنید."
+
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr "شما نمی توانید هرگونه اصلاحیه و تطابق را تغییر دهید."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
-msgid "Are you sure to lock the fiscal year?"
+msgid "Are you sure you want to lock the fiscal year?"
 msgstr "برای قفل کردن سال مالی اطمینان کامل دارید؟"
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
-msgid "Are you sure to lock the period?"
+msgid "Are you sure you want to lock the period?"
 msgstr "برای قفل کردن دوره اطمینان دارید؟"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
@@ -4038,6 +4162,50 @@ msgstr "قفل"
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
 msgstr "بازگشایی"
+
+msgctxt "model:ir.rule.group,name:rule_group_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_type"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_line"
+msgid "User in code's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -4210,7 +4378,7 @@ msgstr "تطبیق دادن حساب ها"
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
 msgid "WriteOff Methods"
-msgstr ""
+msgstr "روش های قلم زدن"
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
@@ -4548,77 +4716,31 @@ msgctxt "report:account.trial_balance:"
 msgid "at"
 msgstr "در"
 
-msgctxt "selection:account.account,kind:"
-msgid "Expense"
-msgstr "هزینه"
+#, fuzzy
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "تراز"
 
-msgctxt "selection:account.account,kind:"
-msgid "Other"
-msgstr "سایر"
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Payable"
-msgstr "قابل پرداخت"
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Receivable"
-msgstr "قابل دریافت"
+#, fuzzy
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "تراز"
 
-msgctxt "selection:account.account,kind:"
-msgid "Revenue"
-msgstr "درآمد"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Stock"
-msgstr "موجودی"
-
-msgctxt "selection:account.account,kind:"
-msgid "View"
-msgstr "مشاهده"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Expense"
-msgstr "هزینه"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Other"
-msgstr "سایر"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Payable"
-msgstr "قابل پرداخت"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Receivable"
-msgstr "قابل دریافت"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Revenue"
-msgstr "درآمد"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Stock"
-msgstr "موجودی"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "View"
-msgstr "مشاهده"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Credit - Debit"
-msgstr "بستانکار - بدهکار"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Debit - Credit"
-msgstr "بدهکار - بستانکار"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Credit - Debit"
-msgstr "بستانکار - بدهکار"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Debit - Credit"
-msgstr "بدهکار - بستانکار"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr ""
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers"
@@ -4676,32 +4798,26 @@ msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr "ارسال شده"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Cash"
 msgstr "نقدی"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Expense"
 msgstr "هزینه"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "General"
 msgstr "عمومی"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Revenue"
 msgstr "درآمد"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Situation"
 msgstr "وضعیت"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
 msgstr "قلم زده شده"
@@ -5089,6 +5205,16 @@ msgstr "قبول"
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "انصراف"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "گروه"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"

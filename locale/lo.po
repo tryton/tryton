@@ -2,310 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.account.deferral:"
-msgid "Deferral must be unique by account and fiscal year"
-msgstr "ການເຍື້ອນຊໍາລະຕ້ອງບໍ່ຊໍ້າກັນ ດ້ວຍບັນຊີ ແລະ ປີການບັນຊີ"
-
-msgctxt "error:account.account.deferral:"
-msgid "You can not modify Account Deferral records"
-msgstr "ທ່ານບໍ່ສາມາດແກ້ໄຂແຖວຂໍ້ມູນບັນຊີເຍື້ອນຊໍາລະໄດ້"
-
-msgctxt "error:account.account:"
-msgid ""
-"The Account \"%(account)s\" can not have a second currency because it is not"
-" deferral."
-msgstr ""
-"ບັນຊີ \"%(account)s\" "
-"ບໍ່ສາມາດມີສະກຸນີທີສອງໄດ້ເພາະວ່າມັນບໍ່ແມ່ນບັນຊີເລື່ອນຊໍາລະ."
-
-msgctxt "error:account.account:"
-msgid ""
-"The currency \"%(currency)s\" of Account \"%(account)s\" is not compatible "
-"with existing lines."
-msgstr ""
-"ສະກຸນເງິນ \"%(currency)s\" ຂອງບັນຊີ \"%(account)s\" ນີ້ ບໍ່ສາມາດເຂົ້າກັນໄດ້ "
-"ກັບລາຍການເຄື່ອນໄຫວທີ່ມີຢູ່."
-
-msgctxt "error:account.account:"
-msgid ""
-"The kind of Account \"%(account)s\" does not allow to set a second currency.\n"
-"Only \"Other\" type allows."
-msgstr ""
-"ປະເພດບັນຊີ \"%(account)s\" ນີ້ ບໍ່ສາມາດອະນຸຍາດໃຫ້ຕັ້ງຄ່າສະກຸນເງິນທີສອງໄດ້.\n"
-"ມີພຽງປະເພດບັນຊີ \"Other\" ອື່ນໆ ເທົ່ານັ້ນ ທີ່ອະນຸຍາດໃຫ້."
-
-msgctxt "error:account.account:"
-msgid "You can not delete account \"%s\" because it has move lines."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts that have children."
-msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີທີ່ມີລູກຮ່ວງໄດ້."
-
-msgctxt "error:account.create_chart:"
-msgid "A chart of accounts already exists for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
-msgstr ""
-"ປີການບັນຊີ \"%(first)s\" ແລະ \"%(second)s\" "
-"ມີການປະກາດລຳດັບການເຄື່ອນຍ້າຍອັນດຽວກັນ."
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
-msgstr "ປີການບັນຊີ \"%(first)s\" ແລະ \"%(second)s\" ຊໍ້າຊ້ອນກັນ"
-
-msgctxt "error:account.fiscalyear:"
-msgid "No fiscal year defined for \"%s\"."
-msgstr "ບໍ່ມີປີການບັນຊີ ລະບຸໄວ້ ສຳລັບ \"%s\" ນີ້."
-
-msgctxt "error:account.fiscalyear:"
-msgid "The balance of the account \"%s\" must be zero."
-msgstr "ການດຸ່ນດ່ຽງບັນຊີ \"%s\" ຕ້ອງ ເປັນ 0. "
-
-msgctxt "error:account.fiscalyear:"
-msgid "You can not change the post move sequence in fiscal year \"%s\"."
-msgstr "ທ່ານບໍ່ສາມາດປ່ຽນລຳດັບປະກາດການເຄື່ອນໄຫວ ໃນ ປີການບັນຊີ \"%s\" ນີ້ໄດ້."
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not close fiscal year \"%s\" until you close all previous fiscal "
-"years."
-msgstr ""
-"ທ່ານບໍ່ສາມາດອັດປີການບັນຊີ \"%s\" ຂຶ້ນມາອີກ ຈົນກວ່າ ທ່ານຈະ "
-"ອັດປີການບັນຊີຂອງຊຸມປີຕໍ່ມາລົງທັງໝົດກ່ອນ."
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
-"years."
-msgstr ""
-"ທ່ານບໍ່ສາມາດໄຂປີການບັນຊີ \"%s\" ຂຶ້ນມາອີກ ຈົນກວ່າ ທ່ານຈະໄຂ "
-"ປີການບັນຊີຂອງຊຸມປີຕໍ່ມາທັງໝົດຂຶ້ນຄືນກ່ອນ."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr "ທ່ານບໍ່ສາມາດ ສ້າງ ບັນຊີປະຈຳວັນ - ໄລຍະ ໃສ່ໃນ ໄລຍະ \"%s\" ທີ່ອັດແລ້ວ."
-
-msgctxt "error:account.journal.period:"
-msgid "You can not modify/delete journal - period \"%s\" because it has moves."
-msgstr ""
-"ທ່ານບໍ່ສາມາດແກ້ໄຂ/ລຶບ ບັນຊີປະຈຳວັນ - ໄລຍະ \"%s\" ນີ້ໄດ້ "
-"ເພາະວ່າມັນໄດ້ເຄື່ອນໄຫວແລ້ວ."
-
-msgctxt "error:account.journal.period:"
-msgid ""
-"You can not open journal - period \"%(journal_period)s\" because period "
-"\"%(period)s\" is closed."
-msgstr ""
-"ທ່ານບໍ່ສາມາດໄຂ ບັນຊີປະຈຳວັນ - ໄລຍະ \"%(journal_period)s\" ນີ້ໄດ້ ເພາະວ່າ "
-"ໄລຍະ \"%(period)s\" ຖືກອັດລົງແລ້ວ."
-
-msgctxt "error:account.journal.period:"
-msgid "You can only open one journal per period."
-msgstr "ທ່ານສາມາດໄຂພຽງແຕ່ບັນຊີປະຈຳວັນດຽວເທົ່ານັ້ນສຳລັບໜຶ່ງໄລຍະ"
-
-msgctxt "error:account.move.line:"
-msgid "Line \"%s\" (%d) already reconciled."
-msgstr "ແຖວລາຍການ \"%s\" (%d)ນີ້ ພິສູດຍອດແລ້ວ."
-
-msgctxt "error:account.move.line:"
-msgid "Move line cannot be created because there is no journal defined."
-msgstr ""
-"ແຖວລາຍການເຄື່ອນໄຫວນີ້ ບໍ່ສາມາດສ້າງຂຶ້ນໄດ້ ມັນບໍ່ມີບັນຊີປະຈຳວັນ ລະບຸໄວ້"
-
-msgctxt "error:account.move.line:"
-msgid "Party is required on line \"%s\""
-msgstr "ຕ້ອງການໃຫ້ມີພາກສ່ວນ ໃນລາຍການ \"%s\""
-
-msgctxt "error:account.move.line:"
-msgid "Party must not be set on line \"%s\""
-msgstr "ພາກສ່ວນຕ້ອງບໍ່ກຳນົດໄວ້ໃນແຖວລາຍການ \"%s\" ນີ້"
-
-msgctxt "error:account.move.line:"
-msgid "Wrong credit/debit values."
-msgstr "ຄ່າ ບັນຊີ ມີ/ໜີ້ ຜິດ"
-
-msgctxt "error:account.move.line:"
-msgid "Wrong second currency sign."
-msgstr "ເຄື່ອງໝາຍສະກຸນເງິນທີສອງຜິດ"
-
-msgctxt "error:account.move.line:"
-msgid "You can not add/modify lines in closed journal period \"%s\"."
-msgstr "ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%s\" ແລ້ວ"
-
-msgctxt "error:account.move.line:"
-msgid ""
-"You can not create a move line with account \"%s\" because it is a view "
-"account."
-msgstr ""
-"ທ່ານບໍ່ສາມາດ ສ້າງ ລາຍການເຄື່ອນໄຫວ ກັບ ບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນ "
-"ເປັນບັນຊີສຳລັບເບິ່ງເທົ່ານັ້ນ."
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify line \"%s\" because it is reconciled."
-msgstr ""
-"ທ່ານບໍ່ສາມາດປ່ຽນແປງແກ້ໄຂ ການເຄື່ອນໄຫວ \"%s\" ໄດ້ເພາະວ່າ ມັນຖືກພິສູດຍອດແລ້ວ."
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify lines of move \"%s\" because it is already posted."
-msgstr ""
-"ທ່ານບໍ່ສາມາດປ່ຽນແປງແກ້ໄຂ ລາຍການເຄື່ອນໄຫວ \"%s\" "
-"ໄດ້ເພາະວ່າມັນໄດ້ຖືກປະກາດໄປແລ້ວ."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not create a reconciliation where debit \"%(debit)s\" and credit "
-"\"%(credit)s\" differ."
-msgstr ""
-"ທ່ານບໍ່ສາມາດ ສ້າງການພິສູດຍອດໄດ້ ເມື່ອ ໜີ້ \"%(debit)s\"  ແລະ ມີ "
-"\"%(credit)s\" ຜິດດ່ຽງກັນ."
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not modify a reconciliation."
-msgstr "ທ່ານບໍ່ສາມາດແກ້ໄຂການພິສູດຍອດໄດ້."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
-"is configured as not reconcilable."
-msgstr ""
-"ທ່ານບໍ່ສາມາດ ພິສູດຍອດ ລາຍການ \"%(line)s\" ນີ້ໄດ້ ຍ້ອນວ່າ ບັນຊີ "
-"\"%(account)s\"ຂອງມັນ ໄດ້ກຳນົດບໍ່ໃຫ້ພິສູດຍອດໄດ້"
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account1)s\""
-" is different from \"%(account2)s\"."
-msgstr ""
-"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າບັນຊີມັນ \"%(party1)s\" "
-"ແຕກຕ່າງກັບ \"%(party2)s\"."
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its party \"%(party1)s\" is "
-"different from \"%(party2)s\"."
-msgstr ""
-"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າ ພາກສ່ວນມັນ "
-"\"%(party1)s\" ແຕກຕ່າງກັບ \"%(party2)s\"."
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr "ທ່ານບໍ່ສາມາດ ພິສູດຍອດລາຍການ \"%s\" ເພາະວ່າ ມັນບໍ່ຢູ່ໃນສະຖານະທີ່ຖືກຕ້ອງ"
-
-msgctxt "error:account.move:"
-msgid ""
-"The period of move \"%s\" is closed.\n"
-"Use the current period?"
-msgstr "ໃຊ້ ໄລຍະ ປັດຈຸບັນນີ້ບໍ່?"
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not create move \"%(move)s\" because its date is outside its period."
-msgstr ""
-"ທ່ານບໍ່ສາມາດສ້າງລາຍການເຄື່ອນໄຫວ \"%(move)s\" ຍ້ອນວ່າ "
-"ວັນທີມັນຢູ່ນອກໄລຍະຂອງມັນ."
-
-msgctxt "error:account.move:"
-msgid "You can not modify move \"%s\" because it is already posted."
-msgstr ""
-"ທ່ານບໍ່ສາມາດປ່ຽນແປງແກ້ໄຂ ການເຄື່ອນໄຫວ \"%s\" ໄດ້ເພາະວ່າ ມັນຖືກປະກາດໄປແລ້ວ."
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is an unbalanced."
-msgstr "ທ່ານບໍ່ສາມາດປະກາດການເຄື່ອນໄຫວ \"%s\" ໄດ້ເພາະວ່າ ມັນບໍ່ດຸນດ່ຽງ."
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is empty."
-msgstr "ທ່ານບໍ່ສາມາດປະກາດການເຄື່ອນໄຫວ \"%s\" ເພາະວ່າ ມັນບໍ່ມີຂໍ້ມູນຫຍັງ."
-
-msgctxt "error:account.period:"
-msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
-msgstr "ໄລຍະ \"%(first)s\" ແລະ ໄລຍະ \"%(second)s\" ກວມກັນ."
-
-msgctxt "error:account.period:"
-msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
-msgstr "ວັນທີຂອງໄລຍະ \"%s\" ຢູ່ນອກ ວັນທີ ຂອງ ປີການບັນຊີຂອງມັນ."
-
-msgctxt "error:account.period:"
-msgid "No period defined for date \"%s\"."
-msgstr "ບໍ່ມີ ໄລຍະ ລະບຸ ໄວ້ ສຳລັບ ວັນທີ \"%s\" ນີ້."
-
-msgctxt "error:account.period:"
-msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
-msgstr "ໄລຍະ \"%(first)s\" ແລະ \"%(second)s\" ມີ ລຳດັບດຽວກັນ"
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not change the post move sequence of period \"%s\" because there are"
-" already posted moves in the period."
-msgstr ""
-"ທ່ານບໍ່ສາມາດປ່ຽນລຳດັບປະກາດການເຄື່ອນໄຫວ ຂອງ ໄລຍະ "
-"ເພາະວ່າມັນເປັນການເຄື່ອນໄຫວທີ່ປະກາດ ໃນ ໄລຍະ ໄປແລ້ວ"
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not close period \"%(period)s\" because there are non posted moves "
-"\"%(move)s\" in this period."
-msgstr ""
-"ທ່ານບໍ່ສາມາດອັດໄລຍະ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າມັນບໍ່ແມ່ນ \"%(move)s\" "
-"ປະກາດ ໃນໄລຍະນີ້."
-
-msgctxt "error:account.period:"
-msgid "You can not create a period on fiscal year \"%s\" because it is closed."
-msgstr ""
-"ທ່ານບໍ່ສາມາດສ້າງ ໄລຍະ ໃສ່ປີການບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ "
-"ມັນໄດ້ຖືກອັດໄປແລ້ວ."
-
-msgctxt "error:account.period:"
-msgid "You can not modify/delete period \"%s\" because it has moves."
-msgstr ""
-"ທ່ານບໍ່ສາມາດແກ້ໄຂ/ລຶບ ໄລຍະ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າມັນໄດ້ເຄື່ອນໄຫວແລ້ວ."
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not open period \"%(period)s\" because its fiscal year "
-"\"%(fiscalyear)s\" is closed."
-msgstr ""
-"ທ່ານບໍ່ສາມາດໄຂ ໄລຍະ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ ມັນເປັນ ປີການບັນຊີ "
-"\"%(fiscalyear)s\" ທີ່ໄດ້ອັດແລ້ວ."
-
-#, fuzzy
-msgctxt "error:account.tax.line:"
-msgid "You can not add/modify tax lines in closed period \"%s\"."
-msgstr "ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%s\" ແລ້ວ"
-
-msgctxt "error:account.tax.template:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-"\"ປັບປຸງລາຄາຫົວໜ່ວຍ\" ບໍ່ສາມາດຕັ້ງຄ່າໃສ່ ຮ່າງແບບພາສີ %(template)s\" ທີ່ມີ "
-"ໝວດຢູ່ນໍາ."
-
-msgctxt "error:account.tax:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-"\"ປັບປຸງລາຄາຫົວໜ່ວຍ\" ບໍ່ສາມາດຕັ້ງຄ່າໃສ່ ຮ່າງແບບພາສີ %(template)s\" ທີ່ມີ "
-"ໝວດຢູ່ນໍາ."
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"receivable/payable for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:party.party:"
-msgid "There is no payable account on party \"%(name)s\"."
-msgstr ""
-
-msgctxt "error:party.party:"
-msgid "There is no receivable account on party \"%(name)s\"."
-msgstr ""
-
 msgctxt "field:account.account,active:"
 msgid "Active"
 msgstr "ໃຊ້ຢູ່"
@@ -321,6 +17,11 @@ msgstr "ດຸນດ່ຽງ"
 msgctxt "field:account.account,childs:"
 msgid "Children"
 msgstr "ລູກຮ່ວງ"
+
+#, fuzzy
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "Close"
 
 msgctxt "field:account.account,code:"
 msgid "Code"
@@ -374,10 +75,6 @@ msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 msgctxt "field:account.account,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
-
-msgctxt "field:account.account,kind:"
-msgid "Kind"
-msgstr "ປະເພດ"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
@@ -552,6 +249,11 @@ msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "ລູກຮ່ວງ"
 
+#, fuzzy
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "Close"
+
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
@@ -580,10 +282,6 @@ msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 msgctxt "field:account.account.template,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
-
-msgctxt "field:account.account.template,kind:"
-msgid "Kind"
-msgstr "ປະເພດ"
 
 msgctxt "field:account.account.template,name:"
 msgid "Name"
@@ -670,9 +368,9 @@ msgctxt "field:account.account.type,amount_cmp:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
 
-msgctxt "field:account.account.type,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "ສະຫຼຸບຊັບສົມບັດ"
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr ""
 
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
@@ -694,17 +392,14 @@ msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນ"
 
-msgctxt "field:account.account.type,display_balance:"
-msgid "Display Balance"
-msgstr "ສະແດງຜົນດຸນດ່ຽງ"
+#, fuzzy
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "Expense"
 
 msgctxt "field:account.account.type,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
-
-msgctxt "field:account.account.type,income_statement:"
-msgid "Income Statement"
-msgstr "ສະຫຼຸບຜົນໄດ້ຮັບ"
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
@@ -714,13 +409,37 @@ msgctxt "field:account.account.type,parent:"
 msgid "Parent"
 msgstr "ຮ່ວງ"
 
+#, fuzzy
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
 msgctxt "field:account.account.type,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
 msgstr "ລຳດັບ"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "Stock"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
@@ -738,9 +457,9 @@ msgctxt "field:account.account.type,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
-msgctxt "field:account.account.type.template,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "ສະຫຼຸບຊັບສົມບັດ"
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr ""
 
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
@@ -754,17 +473,14 @@ msgctxt "field:account.account.type.template,create_uid:"
 msgid "Create User"
 msgstr "ຜູ້ສ້າງ"
 
-msgctxt "field:account.account.type.template,display_balance:"
-msgid "Display Balance"
-msgstr "ສະແດງຜົນດຸນດ່ຽງ"
+#, fuzzy
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "Expense"
 
 msgctxt "field:account.account.type.template,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
-
-msgctxt "field:account.account.type.template,income_statement:"
-msgid "Income Statement"
-msgstr "ສະຫຼຸບຜົນໄດ້ຮັບ"
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
@@ -774,13 +490,37 @@ msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
 msgstr "ຮ່ວງ"
 
+#, fuzzy
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "ຕ້ອງຈ່າຍ"
+
 msgctxt "field:account.account.type.template,rec_name:"
 msgid "Record Name"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "ຕ້ອງຮັບ"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
 msgstr "ລຳດັບ"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "Stock"
 
 msgctxt "field:account.account.type.template,write_date:"
 msgid "Write Date"
@@ -1816,6 +1556,10 @@ msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
 msgstr "ລາຍລະອຽດການເຄື່ອນໄຫວ"
 
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr "ສະຖານະເຄື່ອນໄຫວບັນຊີ"
@@ -1844,6 +1588,10 @@ msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
 msgstr "ການພິສູດຍອດ"
 
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
+msgstr ""
+
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
 msgstr "ສະກຸນເງິນທີສອງ"
@@ -1871,6 +1619,21 @@ msgstr "ວັນທີບັນທຶກ"
 msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "ເນື້ອໃນລາຍການ"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,id:"
+msgid "ID"
+msgstr "ເລກລຳດັບ"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "ບັນຊີປະຈໍາວັນ"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
@@ -2060,6 +1823,10 @@ msgstr "ຜູ້ສ້າງ"
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
 msgstr "ວັນທີ"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr ""
 
 msgctxt "field:account.move.reconciliation,id:"
 msgid "ID"
@@ -3050,6 +2817,11 @@ msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
 msgstr "ຮ່າງແບບບັນຊີ"
 
+#, fuzzy
+msgctxt "field:account.tax.template,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
@@ -3174,14 +2946,6 @@ msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr "ຖານຄິດໄລ່"
 
-msgctxt "field:account.tax.test.result,base_code:"
-msgid "Base Code"
-msgstr "ລະຫັດຖານ"
-
-msgctxt "field:account.tax.test.result,base_sign:"
-msgid "Base Sign"
-msgstr "ເຄື່ອງໝາຍຖານ"
-
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
@@ -3190,17 +2954,13 @@ msgctxt "field:account.tax.test.result,id:"
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
+msgstr ""
+
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
 msgstr "ພາສີ"
-
-msgctxt "field:account.tax.test.result,tax_code:"
-msgid "Tax Code"
-msgstr "ລະຫັດພາສີ"
-
-msgctxt "field:account.tax.test.result,tax_sign:"
-msgid "Tax Sign"
-msgstr "ເຄື່ອງໝາຍພາສີ"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
@@ -3315,14 +3075,17 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
 
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
 
+#, fuzzy
 msgctxt "help:account.account,reconcile:"
-msgid ""
-"Allow move lines of this account \n"
-"to be reconciled."
+msgid "Allow move lines of this account to be reconciled."
 msgstr ""
 "ອະນຸຍາດເອົາລາຍການຂອງບັນຊີນີ້\n"
 "ໃຫ້ສາມາດທຽບຍອດໄດ້."
@@ -3343,9 +3106,20 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
+msgstr ""
+"ອະນຸຍາດເອົາລາຍການຂອງບັນຊີນີ້\n"
+"ໃຫ້ສາມາດທຽບຍອດໄດ້."
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
@@ -3436,6 +3210,10 @@ msgstr ""
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr "ວັນທີສູງສຸດຂອງລາຍການກວດສອບຍອດ"
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
+msgstr ""
 
 msgctxt "help:account.move.template,active:"
 msgid "Uncheck to exclude from future use."
@@ -3529,6 +3307,10 @@ msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
 msgstr "ຖ້າຫາກຮ່າງແບບພາສີຖືກຕື່ມຂໍ້ມູນໃສ່ ສູດຄິດໄລ່ຈະປັບໃຊ້ກັບຮ່າງແບບພາສີນີ້."
+
+msgctxt "help:account.tax.template,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
@@ -3686,6 +3468,10 @@ msgstr "ຍົກເລີກການເຄື່ອນໄຫວ"
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "ລາຍການເຄື່ອນໄຫວບັນຊີ"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr ""
 
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
@@ -3910,6 +3696,10 @@ msgstr "General Ledger - Accounts"
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
 msgstr "General Ledger - Lines"
+
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_journal_form"
@@ -4137,12 +3927,326 @@ msgctxt ""
 msgid "Receivable"
 msgstr "Receivable"
 
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr "ທ່ານບໍ່ສາມາດ ສ້າງ ບັນຊີປະຈຳວັນ - ໄລຍະ ໃສ່ໃນ ໄລຍະ \"%s\" ທີ່ອັດແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+"ທ່ານບໍ່ສາມາດສ້າງ ໄລຍະ ໃສ່ປີການບັນຊີ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ "
+"ມັນໄດ້ຖືກອັດໄປແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr "ການເຍື້ອນຊໍາລະຕ້ອງບໍ່ຊໍ້າກັນ ດ້ວຍບັນຊີ ແລະ ປີການບັນຊີ"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr "ທ່ານບໍ່ສາມາດລຶບບັນຊີ \"%s\" ນີ້ໄດ້ ເພາະວ່າມັນມີລາຍການເຄື່ອນໄຫວ"
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr "ທ່ານສາມາດໄຂພຽງແຕ່ບັນຊີປະຈຳວັນດຽວເທົ່ານັ້ນສຳລັບໜຶ່ງໄລຍະ"
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr "ທ່ານບໍ່ສາມາດ ເພີ່ມ / ແກ້ໄຂ ແຖວລາຍການ ໃນບັນຊີທີ່ອັດໄລຍະ \"%s\" ແລ້ວ"
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດໄຂ ບັນຊີປະຈຳວັນ - ໄລຍະ \"%(journal_period)s\" ນີ້ໄດ້ ເພາະວ່າ "
+"ໄລຍະ \"%(period)s\" ຖືກອັດລົງແລ້ວ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+"ທ່ານບໍ່ສາມາດໄຂ ໄລຍະ \"%(period)s\" ນີ້ໄດ້ ເພາະວ່າ ມັນເປັນ ປີການບັນຊີ "
+"\"%(fiscalyear)s\" ທີ່ໄດ້ອັດແລ້ວ."
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າບັນຊີມັນ \"%(party1)s\" "
+"ແຕກຕ່າງກັບ \"%(party2)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+"ທ່ານບໍ່ສາມາດກວດສອບຍອດລາຍການ \"%(line)s\" ໄດ້ ເພາະວ່າ ພາກສ່ວນມັນ "
+"\"%(party1)s\" ແຕກຕ່າງກັບ \"%(party2)s\"."
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr "ທ່ານບໍ່ສາມາດແກ້ໄຂການພິສູດຍອດໄດ້."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
-msgid "Are you sure to lock the fiscal year?"
+msgid "Are you sure you want to lock the fiscal year?"
 msgstr "Are you sure to lock the fiscal year?"
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
-msgid "Are you sure to lock the period?"
+msgid "Are you sure you want to lock the period?"
 msgstr "Are you sure to lock the period?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
@@ -4180,6 +4284,50 @@ msgstr "Lock"
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
 msgstr "Re-Open"
+
+msgctxt "model:ir.rule.group,name:rule_group_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_type"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_line"
+msgid "User in code's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_account_journal"
@@ -4752,77 +4900,31 @@ msgctxt "report:account.trial_balance:"
 msgid "at"
 msgstr "ເວລາ"
 
-msgctxt "selection:account.account,kind:"
-msgid "Expense"
-msgstr "ລາຍຈ່າຍ"
+#, fuzzy
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
 
-msgctxt "selection:account.account,kind:"
-msgid "Other"
-msgstr "ອື່ນໆ"
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Payable"
-msgstr "ໜີ້ຕ້ອງສົ່ງ"
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Receivable"
-msgstr "ໜີ້ຕ້ອງຮັບ"
+#, fuzzy
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
 
-msgctxt "selection:account.account,kind:"
-msgid "Revenue"
-msgstr "ລາຍຮັບ"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
+msgstr ""
 
-msgctxt "selection:account.account,kind:"
-msgid "Stock"
-msgstr "ສາງ"
-
-msgctxt "selection:account.account,kind:"
-msgid "View"
-msgstr "ເບິ່ງ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Expense"
-msgstr "ລາຍຈ່າຍ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Other"
-msgstr "ອື່ນໆ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Payable"
-msgstr "ໜີ້ຕ້ອງສົ່ງ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Receivable"
-msgstr "ໜີ້ຕ້ອງຮັບ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Revenue"
-msgstr "ລາຍຮັບ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Stock"
-msgstr "ສາງ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "View"
-msgstr "ເບິ່ງ"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Credit - Debit"
-msgstr "ມີ - ໜີ້"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Debit - Credit"
-msgstr "ໜີ້ - ມີ"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Credit - Debit"
-msgstr "ມີ - ໜີ້"
-
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Debit - Credit"
-msgstr "ໜີ້ - ມີ"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
+msgstr ""
 
 msgctxt "selection:account.aged_balance.context,type:"
 msgid "Customers"
@@ -5313,6 +5415,16 @@ msgstr "ຕົກລົງ"
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "ກຸ່ມ"
 
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"

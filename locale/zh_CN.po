@@ -2,263 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.account.deferral:"
-msgid "Deferral must be unique by account and fiscal year"
-msgstr ""
-
-msgctxt "error:account.account.deferral:"
-msgid "You can not modify Account Deferral records"
-msgstr ""
-
-msgctxt "error:account.account:"
-msgid ""
-"The Account \"%(account)s\" can not have a second currency because it is not"
-" deferral."
-msgstr ""
-
-msgctxt "error:account.account:"
-msgid ""
-"The currency \"%(currency)s\" of Account \"%(account)s\" is not compatible "
-"with existing lines."
-msgstr ""
-
-msgctxt "error:account.account:"
-msgid ""
-"The kind of Account \"%(account)s\" does not allow to set a second currency.\n"
-"Only \"Other\" type allows."
-msgstr ""
-
-msgctxt "error:account.account:"
-msgid "You can not delete account \"%s\" because it has move lines."
-msgstr ""
-
-msgctxt "error:account.account:"
-msgid "You can not delete accounts that have children."
-msgstr ""
-
-msgctxt "error:account.create_chart:"
-msgid "A chart of accounts already exists for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" have the same post move sequence."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "Fiscal year \"%(first)s\" and \"%(second)s\" overlap."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "No fiscal year defined for \"%s\"."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "The balance of the account \"%s\" must be zero."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid "You can not change the post move sequence in fiscal year \"%s\"."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not close fiscal year \"%s\" until you close all previous fiscal "
-"years."
-msgstr ""
-
-msgctxt "error:account.fiscalyear:"
-msgid ""
-"You can not reopen fiscal year \"%s\" until you reopen all later fiscal "
-"years."
-msgstr ""
-
-msgctxt "error:account.journal.period:"
-msgid "You can not create a journal - period on closed period \"%s\"."
-msgstr ""
-
-msgctxt "error:account.journal.period:"
-msgid "You can not modify/delete journal - period \"%s\" because it has moves."
-msgstr ""
-
-msgctxt "error:account.journal.period:"
-msgid ""
-"You can not open journal - period \"%(journal_period)s\" because period "
-"\"%(period)s\" is closed."
-msgstr ""
-
-msgctxt "error:account.journal.period:"
-msgid "You can only open one journal per period."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Line \"%s\" (%d) already reconciled."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Move line cannot be created because there is no journal defined."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Party is required on line \"%s\""
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Party must not be set on line \"%s\""
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Wrong credit/debit values."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "Wrong second currency sign."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "You can not add/modify lines in closed journal period \"%s\"."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid ""
-"You can not create a move line with account \"%s\" because it is a view "
-"account."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify line \"%s\" because it is reconciled."
-msgstr ""
-
-msgctxt "error:account.move.line:"
-msgid "You can not modify lines of move \"%s\" because it is already posted."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not create a reconciliation where debit \"%(debit)s\" and credit "
-"\"%(credit)s\" differ."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not modify a reconciliation."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account)s\" "
-"is configured as not reconcilable."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its account \"%(account1)s\""
-" is different from \"%(account2)s\"."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid ""
-"You can not reconcile line \"%(line)s\" because its party \"%(party1)s\" is "
-"different from \"%(party2)s\"."
-msgstr ""
-
-msgctxt "error:account.move.reconciliation:"
-msgid "You can not reconcile line \"%s\" because it is not in valid state."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid ""
-"The period of move \"%s\" is closed.\n"
-"Use the current period?"
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid ""
-"You can not create move \"%(move)s\" because its date is outside its period."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid "You can not modify move \"%s\" because it is already posted."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is an unbalanced."
-msgstr ""
-
-msgctxt "error:account.move:"
-msgid "You can not post move \"%s\" because it is empty."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "\"%(first)s\" and \"%(second)s\" periods overlap."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "Dates of period \"%s\" are outside are outside it's fiscal year dates."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "No period defined for date \"%s\"."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "Period \"%(first)s\" and \"%(second)s\" have the same sequence."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not change the post move sequence of period \"%s\" because there are"
-" already posted moves in the period."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not close period \"%(period)s\" because there are non posted moves "
-"\"%(move)s\" in this period."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "You can not create a period on fiscal year \"%s\" because it is closed."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid "You can not modify/delete period \"%s\" because it has moves."
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid ""
-"You can not open period \"%(period)s\" because its fiscal year "
-"\"%(fiscalyear)s\" is closed."
-msgstr ""
-
-msgctxt "error:account.tax.line:"
-msgid "You can not add/modify tax lines in closed period \"%s\"."
-msgstr ""
-
-msgctxt "error:account.tax.template:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-
-msgctxt "error:account.tax:"
-msgid ""
-"\"Update Unit Price\" can not be set on tax \"%(template)s\" which has a "
-"parent."
-msgstr ""
-
-msgctxt "error:party.erase:"
-msgid ""
-"The party \"%(party)s\" can not be erased because he has pending "
-"receivable/payable for the company \"%(company)s\"."
-msgstr ""
-
-msgctxt "error:party.party:"
-msgid "There is no payable account on party \"%(name)s\"."
-msgstr ""
-
-msgctxt "error:party.party:"
-msgid "There is no receivable account on party \"%(name)s\"."
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account,active:"
 msgid "Active"
@@ -276,6 +19,11 @@ msgstr ""
 msgctxt "field:account.account,childs:"
 msgid "Children"
 msgstr "子项"
+
+#, fuzzy
+msgctxt "field:account.account,closed:"
+msgid "Closed"
+msgstr "Close"
 
 #, fuzzy
 msgctxt "field:account.account,code:"
@@ -333,10 +81,6 @@ msgstr "General Ledger - Lines"
 msgctxt "field:account.account,id:"
 msgid "ID"
 msgstr "编号"
-
-msgctxt "field:account.account,kind:"
-msgid "Kind"
-msgstr ""
 
 msgctxt "field:account.account,left:"
 msgid "Left"
@@ -532,6 +276,11 @@ msgid "Children"
 msgstr "子项"
 
 #, fuzzy
+msgctxt "field:account.account.template,closed:"
+msgid "Closed"
+msgstr "Close"
+
+#, fuzzy
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "语言编码"
@@ -563,10 +312,6 @@ msgstr "General Ledger - Lines"
 msgctxt "field:account.account.template,id:"
 msgid "ID"
 msgstr "编号"
-
-msgctxt "field:account.account.template,kind:"
-msgid "Kind"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.template,name:"
@@ -664,10 +409,9 @@ msgctxt "field:account.account.type,amount_cmp:"
 msgid "Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.account.type,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgctxt "field:account.account.type,assets:"
+msgid "Assets"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.type,childs:"
@@ -692,19 +436,15 @@ msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-msgctxt "field:account.account.type,display_balance:"
-msgid "Display Balance"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.account.type,expense:"
+msgid "Expense"
+msgstr "Expense"
 
 #, fuzzy
 msgctxt "field:account.account.type,id:"
 msgid "ID"
 msgstr "编号"
-
-#, fuzzy
-msgctxt "field:account.account.type,income_statement:"
-msgid "Income Statement"
-msgstr "Income Statement"
 
 #, fuzzy
 msgctxt "field:account.account.type,name:"
@@ -716,14 +456,38 @@ msgctxt "field:account.account.type,parent:"
 msgid "Parent"
 msgstr "上级"
 
+#, fuzzy
+msgctxt "field:account.account.type,payable:"
+msgid "Payable"
+msgstr "Payable"
+
 msgctxt "field:account.account.type,rec_name:"
 msgid "Record Name"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:account.account.type,receivable:"
+msgid "Receivable"
+msgstr "Receivable"
+
+#, fuzzy
+msgctxt "field:account.account.type,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
+#, fuzzy
 msgctxt "field:account.account.type,sequence:"
 msgid "Sequence"
 msgstr "序列"
+
+msgctxt "field:account.account.type,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type,stock:"
+msgid "Stock"
+msgstr "Stock"
 
 #, fuzzy
 msgctxt "field:account.account.type,template:"
@@ -744,10 +508,9 @@ msgctxt "field:account.account.type,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
-#, fuzzy
-msgctxt "field:account.account.type.template,balance_sheet:"
-msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgctxt "field:account.account.type.template,assets:"
+msgid "Assets"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.account.type.template,childs:"
@@ -764,19 +527,15 @@ msgctxt "field:account.account.type.template,create_uid:"
 msgid "Create User"
 msgstr "添加用户"
 
-msgctxt "field:account.account.type.template,display_balance:"
-msgid "Display Balance"
-msgstr ""
+#, fuzzy
+msgctxt "field:account.account.type.template,expense:"
+msgid "Expense"
+msgstr "Expense"
 
 #, fuzzy
 msgctxt "field:account.account.type.template,id:"
 msgid "ID"
 msgstr "编号"
-
-#, fuzzy
-msgctxt "field:account.account.type.template,income_statement:"
-msgid "Income Statement"
-msgstr "Income Statement"
 
 #, fuzzy
 msgctxt "field:account.account.type.template,name:"
@@ -788,14 +547,38 @@ msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
 msgstr "上级"
 
+#, fuzzy
+msgctxt "field:account.account.type.template,payable:"
+msgid "Payable"
+msgstr "Payable"
+
 msgctxt "field:account.account.type.template,rec_name:"
 msgid "Record Name"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:account.account.type.template,receivable:"
+msgid "Receivable"
+msgstr "Receivable"
+
+#, fuzzy
+msgctxt "field:account.account.type.template,revenue:"
+msgid "Revenue"
+msgstr "Revenue"
+
+#, fuzzy
 msgctxt "field:account.account.type.template,sequence:"
 msgid "Sequence"
 msgstr "序列"
+
+msgctxt "field:account.account.type.template,statement:"
+msgid "Statement"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.account.type.template,stock:"
+msgid "Stock"
+msgstr "Stock"
 
 #, fuzzy
 msgctxt "field:account.account.type.template,write_date:"
@@ -1913,6 +1696,10 @@ msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
 msgstr ""
 
+msgctxt "field:account.move.line,move_origin:"
+msgid "Move Origin"
+msgstr ""
+
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
 msgstr ""
@@ -1940,6 +1727,10 @@ msgstr ""
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
+msgstr ""
+
+msgctxt "field:account.move.line,reconciliations_delegated:"
+msgid "Reconciliations Delegated"
 msgstr ""
 
 msgctxt "field:account.move.line,second_currency:"
@@ -1973,6 +1764,21 @@ msgstr "写入日期"
 msgctxt "field:account.move.line,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,description:"
+msgid "Description"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,id:"
+msgid "ID"
+msgstr "编号"
+
+#, fuzzy
+msgctxt "field:account.move.line.group.start,journal:"
+msgid "Journal"
+msgstr "Journals"
 
 #, fuzzy
 msgctxt "field:account.move.line.template,account:"
@@ -2176,6 +1982,10 @@ msgstr "添加用户"
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
 msgstr "日期格式"
+
+msgctxt "field:account.move.reconciliation,delegate_to:"
+msgid "Delegate To"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:account.move.reconciliation,id:"
@@ -3285,6 +3095,11 @@ msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
 msgstr "Account Templates"
 
+#, fuzzy
+msgctxt "field:account.tax.template,active:"
+msgid "Active"
+msgstr "启用"
+
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
 msgstr ""
@@ -3426,14 +3241,6 @@ msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr ""
 
-msgctxt "field:account.tax.test.result,base_code:"
-msgid "Base Code"
-msgstr ""
-
-msgctxt "field:account.tax.test.result,base_sign:"
-msgid "Base Sign"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
@@ -3444,17 +3251,12 @@ msgctxt "field:account.tax.test.result,id:"
 msgid "ID"
 msgstr "编号"
 
-msgctxt "field:account.tax.test.result,tax:"
-msgid "Tax"
+msgctxt "field:account.tax.test.result,legal_notice:"
+msgid "Legal Notice"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.test.result,tax_code:"
-msgid "Tax Code"
-msgstr "Tax Codes"
-
-msgctxt "field:account.tax.test.result,tax_sign:"
-msgid "Tax Sign"
+msgctxt "field:account.tax.test.result,tax:"
+msgid "Tax"
 msgstr ""
 
 msgctxt "field:account.update_chart.start,account:"
@@ -3567,14 +3369,16 @@ msgctxt "field:party.party.account,write_uid:"
 msgid "Write User"
 msgstr "写入帐号"
 
+msgctxt "help:account.account,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
 msgstr ""
 
 msgctxt "help:account.account,reconcile:"
-msgid ""
-"Allow move lines of this account \n"
-"to be reconciled."
+msgid "Allow move lines of this account to be reconciled."
 msgstr ""
 
 msgctxt "help:account.account,second_currency:"
@@ -3593,8 +3397,16 @@ msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+msgctxt "help:account.account.template,closed:"
+msgid "Check to prevent posting move on the account."
+msgstr ""
+
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report"
+msgstr ""
+
+msgctxt "help:account.account.template,reconcile:"
+msgid "Allow move lines of this account to be reconciled."
 msgstr ""
 
 msgctxt "help:account.account.type,template_override:"
@@ -3681,6 +3493,10 @@ msgstr ""
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
+msgstr ""
+
+msgctxt "help:account.move.reconciliation,delegate_to:"
+msgid "The line to which the reconciliation status is delegated."
 msgstr ""
 
 msgctxt "help:account.move.template,active:"
@@ -3770,6 +3586,10 @@ msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
+msgstr ""
+
+msgctxt "help:account.tax.template,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.party,customer_tax_rule:"
@@ -3939,6 +3759,10 @@ msgstr "Cancel Moves"
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
 msgstr "Account Move Lines"
+
+msgctxt "model:account.move.line.group.start,name:"
+msgid "Group Lines"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:account.move.line.template,name:"
@@ -4168,6 +3992,10 @@ msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
 msgstr "General Ledger - Lines"
 
+msgctxt "model:ir.action,name:act_group_lines_wizard"
+msgid "Group Lines"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
 msgstr "Journals"
@@ -4352,12 +4180,305 @@ msgctxt ""
 msgid "Receivable"
 msgstr "Receivable"
 
+msgctxt "model:ir.message,text:msg_account_chart_exists"
+msgid "A chart of accounts already exists for company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
+msgid "To set a second currency for account \"%(account)s\", it must be deferral."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
+msgid ""
+"To set a second currency for account \"%(account)s\", it must not have a "
+"type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
+"because it contains posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
+msgid ""
+"You cannot change the post move sequence in period \"%(period)s\" because it"
+" has posted moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
+msgid ""
+"To close the fiscal year, the balance of account \"%(account)s\" must be "
+"zero."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
+msgid ""
+"To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
+msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
+msgid "You cannot create a journal-period in closed period \"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
+msgid ""
+"You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
+"closed."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_deferral_unique"
+msgid "Deferral must be unique by account and fiscal year."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_delete_account_with_move_lines"
+msgid "You cannot delete account \"%(account)s\" because it has move lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_erase_party_receivable_payable"
+msgid ""
+"You cannot erase party \"%(party)s\" while they have pending "
+"receivable/payable with company \"%(company)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_different_post_move_sequence"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" cannot have the same post "
+"move sequence, you must use different sequences."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_fiscalyear_overlap"
+msgid ""
+"The fiscal years \"%(first)s\" and \"%(second)s\" overlap, you must use "
+"different dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line"
+msgid "Line \"%(line)s\" can not be grouped."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_many_parties"
+msgid "You cannot group lines with different parties."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_maximum_account"
+msgid "You cannot group lines from more than 2 different accounts."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_company"
+msgid "You cannot group lines of different companies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
+msgid "You cannot group lines of different second currencies."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_group_line_single"
+msgid "You cannot group a single line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_journal_period_unique"
+msgid "You can create only one journal per period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_already_reconciled"
+msgid "You cannot reconcile already reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_closed_account"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a type or unclose "
+"it."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_debit_credit"
+msgid "You cannot set both debit and credit on the line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_required"
+msgid ""
+"To create a line on account \"%(account)s\", you must set a party on line "
+"\"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_party_set"
+msgid ""
+"To create a line on account \"%(account)s\", you must remove the party on "
+"line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_line_second_currency_sign"
+msgid ""
+"You must set the sign for second currency to match the sign of debit - "
+"credit."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_journal_period_moves"
+msgid ""
+"You cannot modify or delete journal-period \"%(journal_period)s\" because it"
+" contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
+msgid ""
+"You cannot modify or delete period \"%(period)s\" because it contains moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
+msgid ""
+"You cannot add/modify/delete lines on closed journal-period "
+"\"%(journal_period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_posted_move"
+msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_line_reconciled"
+msgid "You cannot modify reconciled line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_posted_moved"
+msgid "You cannot modify posted move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
+msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
+msgid ""
+"The period of move \"%(move)s\" is closed.\n"
+"Use the current period to cancel the move?"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_move_date_outside_period"
+msgid ""
+"The date of move \"%(move)s\" is outside the period, you must change the "
+"date or the period."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
+msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_no_period_date"
+msgid "To continue, you must create a period for the date \"%(date)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
+msgid ""
+"You cannot reopen journal-period \"%(journal_period)s\" in closed period "
+"\"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
+msgid ""
+"You cannot reopen period \"%(period)s\" because its fiscal year "
+"\"%(fiscalyear)s\" is closed."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_missing_payable_account"
+msgid "To continue, you must define a payable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
+msgid "To continue, you must define a receivable account for party \"%(party)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
+msgid ""
+"The dates for period \"%(period)s\" must be between the dates of its fiscal "
+"year \"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_overlap"
+msgid ""
+"The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
+" dates."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_period_same_sequence"
+msgid ""
+"You cannot use the same post move sequence for the periods \"%(first)s\" and"
+" \"%(second)s\" because they are from different fiscal years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_empty_move"
+msgid "To post move \"%(move)s\", you must fill in its lines."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_post_unbalanced_move"
+msgid ""
+"To post move \"%(move)s\", you must balance all its lines debits and "
+"credits."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
+msgid ""
+"To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
+"reconcilable."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
+msgid ""
+"The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
+"You may need to cancel its move \"%(move)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its account "
+"\"%(account1)s\" is different from \"%(account2)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
+msgid ""
+"You cannot reconcile line \"%(line)s\" with others because its party "
+"\"%(party1)s\" is different from \"%(party2)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
+msgid "You cannot reconcile non-valid line \"%(line)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
+msgid ""
+"To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
+"\"%(credit)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
+msgid ""
+"To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
+"years."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
+msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_deferral"
+msgid "You cannot modify any account deferrals."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_write_reconciliation"
+msgid "You cannot modify any reconciliation."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
-msgid "Are you sure to lock the fiscal year?"
+msgid "Are you sure you want to lock the fiscal year?"
 msgstr "Are you sure to lock the fiscal year?"
 
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
-msgid "Are you sure to lock the period?"
+msgid "Are you sure you want to lock the period?"
 msgstr "Are you sure to lock the period?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
@@ -4395,6 +4516,50 @@ msgstr "Lock"
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
 msgstr "Re-Open"
+
+msgctxt "model:ir.rule.group,name:rule_group_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_account_type"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_aged_balance"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_fiscalyear"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_period"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_code_line"
+msgid "User in code's company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_tax_rule"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
@@ -4930,88 +5095,28 @@ msgctxt "report:account.trial_balance:"
 msgid "at"
 msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "Expense"
-msgstr "Expense"
-
-msgctxt "selection:account.account,kind:"
-msgid "Other"
+msgctxt "selection:account.account.type,statement:"
+msgid "Balance"
 msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "Payable"
-msgstr "Payable"
-
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "Receivable"
-msgstr "Receivable"
-
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "Revenue"
-msgstr "Revenue"
-
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "Stock"
-msgstr "Stock"
-
-#, fuzzy
-msgctxt "selection:account.account,kind:"
-msgid "View"
-msgstr "视图"
-
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "Expense"
-msgstr "Expense"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Other"
+msgctxt "selection:account.account.type,statement:"
+msgid "Income"
 msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "Payable"
-msgstr "Payable"
-
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "Receivable"
-msgstr "Receivable"
-
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "Revenue"
-msgstr "Revenue"
-
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "Stock"
-msgstr "Stock"
-
-#, fuzzy
-msgctxt "selection:account.account.template,kind:"
-msgid "View"
-msgstr "视图"
-
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Credit - Debit"
+msgctxt "selection:account.account.type,statement:"
+msgid "Off-Balance"
 msgstr ""
 
-msgctxt "selection:account.account.type,display_balance:"
-msgid "Debit - Credit"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Balance"
 msgstr ""
 
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Credit - Debit"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Income"
 msgstr ""
 
-msgctxt "selection:account.account.type.template,display_balance:"
-msgid "Debit - Credit"
+msgctxt "selection:account.account.type.template,statement:"
+msgid "Off-Balance"
 msgstr ""
 
 msgctxt "selection:account.aged_balance.context,type:"
@@ -5517,6 +5622,16 @@ msgstr "确定"
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
 msgstr "取消"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,end:"
+msgid "Cancel"
+msgstr "取消"
+
+#, fuzzy
+msgctxt "wizard_button:account.move.line.group,start,group:"
+msgid "Group"
+msgstr "用户组"
 
 #, fuzzy
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
