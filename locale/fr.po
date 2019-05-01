@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
-msgstr "Il n'y a pas de « %(field)s » définit sur la catégorie « %(name)s »"
-
-msgctxt "error:product.template:"
-msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
-msgstr "Il n'y a pas de « %(field)s » définit sur le produit « %(name)s »"
-
-msgctxt "error:product.template:"
-msgid "There is no account category defined on the product \"%(name)s\""
-msgstr ""
-"Il n'y a pas de catégorie comptable définie sur le produit « %(name)s »"
-
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Compte de charges par défaut"
@@ -40,6 +27,14 @@ msgstr "Compte de charges par défaut"
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Compte de produits par défaut"
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Produit"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr "Catégorie de produit"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -246,6 +241,31 @@ msgstr ""
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Utiliser les taxes définies sur la catégorie parente."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "Il n'y a pas de « %(field)s » défini·e sur « %(name)s »."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+"Il n'y a pas de catégorie comptable définie sur le produit « %(name)s »."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr "N'importe quel produit"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr "Pas une catégorie comptable"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr "Utilisateur dans le société"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -535,10 +555,6 @@ msgctxt "model:product.template.account,name:"
 msgid "Product Template Account"
 msgstr "Compte de modèle de produit"
 
-msgctxt "view:account.configuration:"
-msgid "Product"
-msgstr "Produit"
-
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Produit"
@@ -553,8 +569,7 @@ msgstr "Taxes"
 
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
-msgstr ""
-"Il n'y a pas de compte charges/produits définit sur le produit %s (%d)"
+msgstr "Il n'y a pas de compte charges/produits défini sur le produit %s (%d)"
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to convert into accouting category."

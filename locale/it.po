@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid "There is no account category defined on the product \"%(name)s\""
-msgstr ""
-
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Conto di costo predefinito"
@@ -22,13 +10,11 @@ msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
 msgstr "Conto di ricavo predefinito"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Conto di costo predefinito"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
@@ -36,10 +22,19 @@ msgstr "Conto di ricavo predefinito"
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr ""
+msgstr "Conto di costo predefinito"
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
+msgstr "Conto di ricavo predefinito"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Prodotto"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
 msgstr ""
 
 msgctxt "field:product.category,account_expense:"
@@ -58,7 +53,6 @@ msgctxt "field:product.category,accounting:"
 msgid "Accounting"
 msgstr "Contabilità"
 
-#, fuzzy
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
 msgstr "Conti"
@@ -101,7 +95,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-customer-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
@@ -133,7 +127,7 @@ msgstr "ID"
 
 msgctxt "field:product.category-supplier-account.tax,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
@@ -147,50 +141,42 @@ msgctxt "field:product.category-supplier-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
 msgstr "Conto di costo"
 
-#, fuzzy
 msgctxt "field:product.category.account,account_revenue:"
 msgid "Account Revenue"
 msgstr "Conto di ricavo"
 
-#, fuzzy
 msgctxt "field:product.category.account,category:"
 msgid "Category"
 msgstr "Categoria"
 
 msgctxt "field:product.category.account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:product.category.account,create_date:"
 msgid "Create Date"
-msgstr "Data creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.category.account,create_uid:"
 msgid "Create User"
 msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.category.account,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.category.account,write_date:"
 msgid "Write Date"
-msgstr "Data modifica"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
@@ -203,65 +189,84 @@ msgctxt "field:product.template,account_category:"
 msgid "Account Category"
 msgstr "Categoria contabile"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,create_date:"
 msgid "Create Date"
-msgstr "Data creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,create_uid:"
 msgid "Create User"
 msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,id:"
 msgid "ID"
 msgstr "ID"
 
 msgctxt "field:product.template-product.category.account,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,write_date:"
 msgid "Write Date"
-msgstr "Data modifica"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.account,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
-msgstr "Usare i conti definiti per la categoria padre"
+msgstr "Usare i conti definiti nella categoria padre."
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to convert into accounting category."
-msgstr ""
+msgstr "Spunta per convertire in una categoria contabile."
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
-msgstr ""
+msgstr "Le tasse da applicare quando si vendono prodotti di questa categoria."
 
 msgctxt "help:product.category,supplier_taxes:"
 msgid "The taxes to apply when purchasing products of this category."
 msgstr ""
+"Le tasse da applicare al momento dell'acquisto di prodotti di questa "
+"categoria."
 
-#, fuzzy
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
-msgstr "Utilizzare le imposte definite per la categoria padre"
+msgstr "Utilizzare le imposte definite nella categoria padre."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "Non c'è \"%(field)s\" definito per \"%(name)s\"."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+"Manca la definizione della categoria di conto per il prodotto \"%(name)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -273,17 +278,16 @@ msgstr "Categoria - Imposta fornitore"
 
 msgctxt "model:product.category.account,name:"
 msgid "Category Account"
-msgstr ""
+msgstr "Categoria del conto"
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr ""
+msgstr "Modello - Categoria del conto"
 
 msgctxt "view:account.configuration:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"
 msgstr "Categoria"
@@ -320,7 +324,6 @@ msgctxt "field:product.product,account_revenue:"
 msgid "Account Revenue"
 msgstr "Conto di ricavo"
 
-#, fuzzy
 msgctxt "field:product.product,accounts:"
 msgid "Accounts"
 msgstr "Conti"
@@ -357,7 +360,6 @@ msgctxt "field:product.template,account_revenue:"
 msgid "Account Revenue"
 msgstr "Conto di ricavo"
 
-#, fuzzy
 msgctxt "field:product.template,accounts:"
 msgid "Accounts"
 msgstr "Conti"
@@ -442,37 +444,30 @@ msgctxt "field:product.template-supplier-account.tax,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.template.account,account_expense:"
 msgid "Account Expense"
 msgstr "Conto di costo"
 
-#, fuzzy
 msgctxt "field:product.template.account,account_revenue:"
 msgid "Account Revenue"
 msgstr "Conto di ricavo"
 
-#, fuzzy
 msgctxt "field:product.template.account,create_date:"
 msgid "Create Date"
-msgstr "Data creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template.account,create_uid:"
 msgid "Create User"
 msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.template.account,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.template.account,write_date:"
 msgid "Write Date"
-msgstr "Data modifica"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.template.account,write_uid:"
 msgid "Write User"
 msgstr "Modificato da"
@@ -485,11 +480,6 @@ msgctxt "model:product.template-supplier-account.tax,name:"
 msgid "Product Template - Supplier Tax"
 msgstr "Modello di prodotto - Imposta fornitore"
 
-msgctxt "view:account.configuration:"
-msgid "Product"
-msgstr "Prodotto"
-
-#, fuzzy
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
 msgstr "Prodotto"
@@ -505,25 +495,25 @@ msgstr "Imposte"
 msgctxt "error:product.template:"
 msgid "There is no account expense/revenue defined on the product %s (%d)"
 msgstr ""
-"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
+"Manca la definizione del conto di costo/ricavo per il prodotto %s (%d)"
 
-#, fuzzy
 msgctxt "error:product.category:"
 msgid ""
 "There is no account expense/revenue defined on the category %(name)s "
 "(%(id)d)"
 msgstr ""
-"Manca la definizione del conto di costo/ricavo per la categoria %s (%d)"
+"Manca la definizione del conto di costo/ricavo per la categoria %(name)s "
+"(%(id)d)"
 
 msgctxt "help:product.product,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
-"Questo conto verrà utilizzato al posto di quello definito per la categoria"
+"Questo conto verrà utilizzato al posto di quello definito per la categoria."
 
 msgctxt "help:product.product,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
-"Questo conto verrà utilizzato al posto di quello definito per la categoria"
+"Questo conto verrà utilizzato al posto di quello definito per la categoria."
 
 msgctxt "help:product.product,accounts_category:"
 msgid "Use the accounts defined on the category"
@@ -536,16 +526,16 @@ msgstr "Utilizzare le imposte definite per la categoria"
 msgctxt "help:product.template,account_expense:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
-"Questo conto verrà utilizzato al posto di quello definito per la categoria"
+"Questo conto verrà utilizzato al posto di quello definito per la categoria."
 
 msgctxt "help:product.template,account_revenue:"
 msgid "This account will be used instead of the one defined on the category."
 msgstr ""
-"Questo conto verrà utilizzato al posto di quello definito per la categoria"
+"Questo conto verrà utilizzato al posto di quello definito per la categoria."
 
 msgctxt "help:product.template,accounts_category:"
 msgid "Use the accounts defined on the category"
-msgstr "Utilizzare i conti definiti per la categoria "
+msgstr "Utilizzare i conti definiti per la categoria"
 
 msgctxt "help:product.template,taxes_category:"
 msgid "Use the taxes defined on the category"

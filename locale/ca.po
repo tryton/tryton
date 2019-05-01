@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
-msgstr "No s'ha definit el \"%(field)s\" a la categoria \"%(name)s\""
-
-msgctxt "error:product.template:"
-msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
-msgstr "No s'ha definit el \"%(field)s\" al producte \"%(name)s\""
-
-msgctxt "error:product.template:"
-msgid "There is no account category defined on the product \"%(name)s\""
-msgstr "No hi ha cap categoria comptable definida pel producte \"%(name)s\""
-
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Compte de despeses per defecte"
@@ -39,6 +27,14 @@ msgstr "Compte de despeses per defecte"
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Compte de ingressos per defecte"
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr "Categoria de producte"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -243,6 +239,30 @@ msgstr "Els impostos a aplicar quan es compren productes d'aquesta categoria."
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Utilitza els impostos definits en la categoria pare."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "No s'ha definit el \"%(field)s\" per \"%(name)s\""
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr "No hi ha cap categoria comptable definida pel producte \"%(name)s\""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr "Qualsevol categoria"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr "Categoria no comptable"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr "Usuari a l'empresa"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -535,10 +555,6 @@ msgstr "Plantilla de producte - Impost proveïdor"
 msgctxt "model:product.template.account,name:"
 msgid "Product Template Account"
 msgstr "Comptes de la plantilla de producte"
-
-msgctxt "view:account.configuration:"
-msgid "Product"
-msgstr "Producte"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"

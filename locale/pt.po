@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
-msgstr ""
-
-msgctxt "error:product.template:"
-msgid "There is no account category defined on the product \"%(name)s\""
-msgstr ""
-
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Conta de Despesas Padrão"
@@ -39,6 +27,15 @@ msgstr "Conta de Despesas Padrão"
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Conta de Receitas Padrão"
+
+#, fuzzy
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Produto"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr ""
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -244,6 +241,30 @@ msgstr "As taxas a serem aplicadas quando comprar produtos desta categoria."
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Utilize os tributos definidos na categoria pai."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -532,10 +553,6 @@ msgstr "Modelo de Produto - Tributo de Fornecedor"
 msgctxt "model:product.template.account,name:"
 msgid "Product Template Account"
 msgstr "Modelo de Conta de Produto"
-
-msgctxt "view:account.configuration:"
-msgid "Product"
-msgstr "Produto"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"

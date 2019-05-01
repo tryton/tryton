@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.category:"
-msgid "There is no \"%(field)s\" defined on the category \"%(name)s\""
-msgstr "Es wurde kein \"%(field)s\" in der Katergorie \"%(name)s\" definiert"
-
-msgctxt "error:product.template:"
-msgid "There is no \"%(field)s\" defined on the product \"%(name)s\""
-msgstr "Es ist kein \"%(field)s\" definiert für Artikelvorlage \"%(name)s\""
-
-msgctxt "error:product.template:"
-msgid "There is no account category defined on the product \"%(name)s\""
-msgstr ""
-"Es ist keine Buchhaltungskategorie definiert für Artikelvorlage \"%(name)s\""
-
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
 msgstr "Standardaufwandskonto"
@@ -40,6 +27,14 @@ msgstr "Standard Aufwandskonto"
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Standard Ertragskonto"
+
+msgctxt "field:analytic_account.rule,product:"
+msgid "Product"
+msgstr "Artikel"
+
+msgctxt "field:analytic_account.rule,product_category:"
+msgid "Product Category"
+msgstr "Artikel Kategorie"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -246,6 +241,30 @@ msgstr ""
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
 msgstr "Steuern der übergeordneten Kategorie anwenden."
+
+msgctxt "model:ir.message,text:msg_missing_account"
+msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
+msgstr "Es wurde kein \"%(field)s\" für \"%(name)s\" definiert."
+
+msgctxt "model:ir.message,text:msg_missing_taxes"
+msgid "There is no account category defined on product \"%(name)s\"."
+msgstr "Es ist keine Buchhaltungskategorie definiert für Artikel \"%(name)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
+msgid "Any category"
+msgstr "Beliebige Buchhaltungskategorie"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_default"
+msgid "Not accounting category"
+msgstr "Keine Buchhaltungskategorie"
+
+msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
+msgid "User in company"
+msgstr "Benutzer im Unternehmen"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
@@ -540,10 +559,6 @@ msgstr "Artikelvorlage - Steuer Lieferant"
 msgctxt "model:product.template.account,name:"
 msgid "Product Template Account"
 msgstr "Produkt Konto"
-
-msgctxt "view:account.configuration:"
-msgid "Product"
-msgstr "Artikel"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Product"
