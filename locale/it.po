@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the cost price for a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
-msgstr ""
-"Il costo di un prodotto associato a movimenti di magazzino non è modificabile .\n"
-" Va utilizzato il wizard \"Update Cost Price\"."
-
-msgctxt "error:product.update_cost_price:"
-msgid "The stock account and the counterpart can not be the same account"
-msgstr ""
-"Conto di magazzino e contropartita non possono essere lo stesso conto."
-
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
 msgstr "Contropartita del conto di costo."
@@ -25,7 +12,7 @@ msgstr "Registro di magazzino"
 
 msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 #, fuzzy
 msgctxt ""
@@ -198,6 +185,21 @@ msgstr ""
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Update Cost Price"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Il costo di un prodotto associato a movimenti di magazzino non è modificabile .\n"
+" Va utilizzato il wizard \"Update Cost Price\"."
+
+msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
+msgid ""
+"To update cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:product.update_cost_price.ask,name:"

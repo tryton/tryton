@@ -2,16 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the cost price for a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
-msgstr ""
-
-msgctxt "error:product.update_cost_price:"
-msgid "The stock account and the counterpart can not be the same account"
-msgstr ""
-
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
 msgstr ""
@@ -198,6 +188,18 @@ msgstr ""
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Update Cost Price"
+
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
+msgid ""
+"To update cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:product.update_cost_price.ask,name:"

@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the cost price for a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
-msgstr ""
-"Você não pode trocar o preço de custo de um produto que está associado a movimentações do estoque.\n"
-"Você deve usar o assistente \"Atualizar Preço de Custo\"."
-
-msgctxt "error:product.update_cost_price:"
-msgid "The stock account and the counterpart can not be the same account"
-msgstr "A conta de estoque e a contrapartirda não podem ser a mesma conta."
-
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
 msgstr "Conta de Contrapartida de Preço de Custo"
@@ -192,6 +180,21 @@ msgstr "Configurações de Contabilidade Diário de Estoque"
 msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Update Cost Price"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+"Você não pode trocar o preço de custo de um produto que está associado a movimentações do estoque.\n"
+"Você deve usar o assistente \"Atualizar Preço de Custo\"."
+
+msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
+msgid ""
+"To update cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
 
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"

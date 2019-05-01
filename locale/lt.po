@@ -2,27 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.template:"
-msgid ""
-"You cannot change the cost price for a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
-msgstr ""
-
-msgctxt "error:product.update_cost_price:"
-msgid "The stock account and the counterpart can not be the same account"
-msgstr ""
-
 msgctxt "field:account.configuration,cost_price_counterpart_account:"
 msgid "Cost Price Counterpart Account"
 msgstr ""
 
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
-msgstr ""
+msgstr "Sandėlio žurnalas"
 
 msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
@@ -32,12 +22,12 @@ msgstr ""
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
 msgid "ID"
@@ -50,20 +40,20 @@ msgstr ""
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt ""
 "field:account.configuration.cost_price_counterpart_account,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.configuration.stock_journal,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.configuration.stock_journal,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.configuration.stock_journal,id:"
 msgid "ID"
@@ -75,15 +65,15 @@ msgstr ""
 
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
-msgstr ""
+msgstr "Sandėlio žurnalas"
 
 msgctxt "field:account.configuration.stock_journal,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.configuration.stock_journal,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
@@ -155,7 +145,7 @@ msgstr ""
 
 msgctxt "field:product.update_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:product.update_cost_price.show_move,description:"
 msgid "Description"
@@ -189,6 +179,18 @@ msgctxt "model:ir.action,name:wizard_update_cost_price"
 msgid "Update Cost Price"
 msgstr "Update Cost Price"
 
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated to stock moves.\n"
+"You must use the \"Update Cost Price\" wizard."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
+msgid ""
+"To update cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
+
 #, fuzzy
 msgctxt "model:product.update_cost_price.ask,name:"
 msgid "Update Cost Price Ask"
@@ -208,7 +210,7 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Stock"
-msgstr ""
+msgstr "Sandėlys"
 
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
