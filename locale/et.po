@@ -2,42 +2,41 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:product.product,order_points:"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
 msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Tarneaeg"
 
 msgctxt "field:purchase.configuration.supply_period,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Loomise kuupäev"
 
 msgctxt "field:purchase.configuration.supply_period,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Looja"
 
 msgctxt "field:purchase.configuration.supply_period,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:purchase.configuration.supply_period,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
-msgstr ""
+msgstr "Tarneaeg"
 
 msgctxt "field:purchase.configuration.supply_period,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:purchase.configuration.supply_period,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Muutja"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
@@ -49,31 +48,31 @@ msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr ""
+msgstr "Ettevõte"
 
 msgctxt "field:stock.order_point,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Loomise kuupäev"
 
 msgctxt "field:stock.order_point,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Looja"
 
 msgctxt "field:stock.order_point,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
-msgstr ""
+msgstr "Asukoht"
 
 msgctxt "field:stock.order_point,max_quantity:"
 msgid "Maximal Quantity"
-msgstr ""
+msgstr "Maksimaalne kogus"
 
 msgctxt "field:stock.order_point,min_quantity:"
 msgid "Minimal Quantity"
-msgstr ""
+msgstr "Minimaalne kogus"
 
 msgctxt "field:stock.order_point,overflowing_location:"
 msgid "Overflowing Location"
@@ -81,7 +80,7 @@ msgstr ""
 
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
-msgstr ""
+msgstr "Toode"
 
 msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
@@ -89,11 +88,11 @@ msgstr ""
 
 msgctxt "field:stock.order_point,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
-msgstr ""
+msgstr "Lao asukoht"
 
 msgctxt "field:stock.order_point,target_quantity:"
 msgid "Target Quantity"
@@ -101,31 +100,31 @@ msgstr ""
 
 msgctxt "field:stock.order_point,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 msgctxt "field:stock.order_point,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Ühik"
 
 msgctxt "field:stock.order_point,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Ühiku numbriväärtus"
 
 msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
-msgstr ""
+msgstr "Lao asukoht"
 
 msgctxt "field:stock.order_point,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:stock.order_point,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Muutja"
 
 msgctxt "field:stock.supply.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "help:stock.location,overflowing_location:"
 msgid "Leave empty for no default overflowing"
@@ -137,34 +136,34 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
 msgctxt "model:ir.action,name:act_order_point_form_relate"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
 msgctxt "model:ir.action,name:act_order_point_form_relate2"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
 msgctxt "model:ir.action,name:act_stock_supply"
 msgid "Supply Stock"
-msgstr "Supply Stock"
+msgstr "hanke ladu"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Kõik"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_internal"
 msgid "Internal"
-msgstr "Internal"
+msgstr "Sisemine"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_order_point_form_domain_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Ost"
 
 msgctxt "model:ir.message,text:msg_late_customer_moves"
 msgid "There are some customer moves that are late."
@@ -194,57 +193,52 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_order_point"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
 msgctxt "model:ir.ui.menu,name:menu_order_point_form"
 msgid "Order Points"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
 msgctxt "model:ir.ui.menu,name:menu_stock_supply"
 msgid "Supply Stock"
-msgstr "Supply Stock"
+msgstr "Hanke ladu"
 
 msgctxt "model:purchase.configuration.supply_period,name:"
 msgid "Purchase Configuration Supply Period"
-msgstr ""
+msgstr "Hanke seadistus - hanke periood"
 
-#, fuzzy
 msgctxt "model:stock.order_point,name:"
 msgid "Order Point"
-msgstr "Order Points"
+msgstr "Tellimiskohad"
 
-#, fuzzy
 msgctxt "model:stock.supply.start,name:"
 msgid "Supply Stock"
-msgstr "Supply Stock"
+msgstr "Hanke ladu"
 
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
-msgstr "Internal"
+msgstr "Sisemine"
 
-#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Ost"
 
 msgctxt "view:stock.order_point:"
 msgid "Order Point Type"
-msgstr ""
+msgstr "Tellimiskoha tüüp"
 
 msgctxt "view:stock.order_point:"
 msgid "Product Info"
-msgstr ""
+msgstr "Toote info"
 
-#, fuzzy
 msgctxt "view:stock.supply.start:"
 msgid "Supply Stock?"
-msgstr "Supply Stock"
+msgstr "Hanke ladu?"
 
 msgctxt "wizard_button:stock.supply,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Loo"
 
 msgctxt "wizard_button:stock.supply,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Tühista"
