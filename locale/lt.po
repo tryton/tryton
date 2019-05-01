@@ -2,25 +2,29 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr ""
+msgstr "3 raidžių kodas"
 
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kodas"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Skaitmenų kodas"
 
 msgctxt "field:country.country,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:country.country,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:country.country,id:"
 msgid "ID"
@@ -41,15 +45,20 @@ msgstr ""
 
 msgctxt "field:country.country,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
+msgstr "Pakeitęs naudotojas"
+
+msgctxt "field:country.subdivision,active:"
+msgid "Active"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kodas"
 
 #, fuzzy
 msgctxt "field:country.subdivision,country:"
@@ -58,11 +67,11 @@ msgstr "Koventris"
 
 msgctxt "field:country.subdivision,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:country.subdivision,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:country.subdivision,id:"
 msgid "ID"
@@ -87,11 +96,11 @@ msgstr ""
 
 msgctxt "field:country.subdivision,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:country.subdivision,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
@@ -104,11 +113,11 @@ msgstr "Koventris"
 
 msgctxt "field:country.zip,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:country.zip,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:country.zip,id:"
 msgid "ID"
@@ -124,16 +133,20 @@ msgstr ""
 
 msgctxt "field:country.zip,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:country.zip,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Zip"
+
+msgctxt "help:country.country,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
@@ -149,6 +162,10 @@ msgstr ""
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
+msgstr ""
+
+msgctxt "help:country.subdivision,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:country.subdivision,code:"
@@ -9121,8 +9138,8 @@ msgid "Chhattisgarh"
 msgstr "Chhattisgarh"
 
 msgctxt "model:country.subdivision,name:in-dd"
-msgid "Damen and Diu"
-msgstr "Damen and Diu"
+msgid "Daman and Diu"
+msgstr "Daman and Diu"
 
 msgctxt "model:country.subdivision,name:in-dl"
 msgid "Delhi"
@@ -9193,8 +9210,8 @@ msgid "Nagaland"
 msgstr "Nagaland"
 
 msgctxt "model:country.subdivision,name:in-or"
-msgid "Orissa"
-msgstr "Orisa"
+msgid "Odisha"
+msgstr "Odisha"
 
 msgctxt "model:country.subdivision,name:in-pb"
 msgid "Punjab"
@@ -9211,6 +9228,10 @@ msgstr "Rajasthan"
 msgctxt "model:country.subdivision,name:in-sk"
 msgid "Sikkim"
 msgstr "Sikimas"
+
+msgctxt "model:country.subdivision,name:in-tg"
+msgid "Telangana"
+msgstr "Telangana"
 
 msgctxt "model:country.subdivision,name:in-tn"
 msgid "Tamil Nadu"
@@ -20460,7 +20481,8 @@ msgctxt "model:country.subdivision,name:za-fs"
 msgid "Free State"
 msgstr "Fristeitas (Laisvoji valstija)"
 
-msgctxt "model:country.subdivision,name:za-gp"
+#, fuzzy
+msgctxt "model:country.subdivision,name:za-gt"
 msgid "Gauteng"
 msgstr "Gautengas"
 
@@ -20476,6 +20498,11 @@ msgctxt "model:country.subdivision,name:za-nc"
 msgid "Northern Cape"
 msgstr "Šiaurės Kapas"
 
+#, fuzzy
+msgctxt "model:country.subdivision,name:za-nl"
+msgid "Kwazulu-Natal"
+msgstr "Kvazulu-Natalis"
+
 msgctxt "model:country.subdivision,name:za-nw"
 msgid "North-West (South Africa)"
 msgstr "Šiaurės Vakarai (Pietų Afrika)"
@@ -20483,10 +20510,6 @@ msgstr "Šiaurės Vakarai (Pietų Afrika)"
 msgctxt "model:country.subdivision,name:za-wc"
 msgid "Western Cape"
 msgstr "Vakarų Kapas"
-
-msgctxt "model:country.subdivision,name:za-zn"
-msgid "Kwazulu-Natal"
-msgstr "Kvazulu-Natalis"
 
 msgctxt "model:country.subdivision,name:zm-01"
 msgid "Western"

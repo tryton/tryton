@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,active:"
+msgid "Active"
+msgstr "Activo"
+
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
 msgstr "Código de 3 letras"
@@ -45,6 +49,10 @@ msgstr "Fecha de modificación"
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
+
+msgctxt "field:country.subdivision,active:"
+msgid "Active"
+msgstr "Activo"
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -130,6 +138,10 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Código postal"
 
+msgctxt "help:country.country,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para excluir de uso en el futuro."
+
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr "El código ISO de 3 dígitos del país."
@@ -145,6 +157,10 @@ msgstr "El código númerico ISO del país."
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
 msgstr "El identificador principal del país."
+
+msgctxt "help:country.subdivision,active:"
+msgid "Uncheck to exclude from future use."
+msgstr "Desmarcar para excluir de uso en el futuro."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -6580,7 +6596,7 @@ msgstr "Guadeloupe"
 
 msgctxt "model:country.subdivision,name:fr-gua"
 msgid "Guadeloupe"
-msgstr "Guadalupe"
+msgstr "Guadeloupe"
 
 msgctxt "model:country.subdivision,name:fr-hdf"
 msgid "Hauts-de-France"
@@ -6628,7 +6644,7 @@ msgstr "Provence-Alpes-Côte-d’Azur"
 
 msgctxt "model:country.subdivision,name:fr-pdl"
 msgid "Pays-de-la-Loire"
-msgstr "Pays de la Loire"
+msgstr "Pays-de-la-Loire"
 
 msgctxt "model:country.subdivision,name:fr-pf"
 msgid "Polynésie française"
@@ -9075,8 +9091,8 @@ msgid "Chhattisgarh"
 msgstr "Chhattisgarh"
 
 msgctxt "model:country.subdivision,name:in-dd"
-msgid "Damen and Diu"
-msgstr "Damen and Diu"
+msgid "Daman and Diu"
+msgstr "Daman and Diu"
 
 msgctxt "model:country.subdivision,name:in-dl"
 msgid "Delhi"
@@ -9147,8 +9163,8 @@ msgid "Nagaland"
 msgstr "Nagaland"
 
 msgctxt "model:country.subdivision,name:in-or"
-msgid "Orissa"
-msgstr "Orissa"
+msgid "Odisha"
+msgstr "Odisha"
 
 msgctxt "model:country.subdivision,name:in-pb"
 msgid "Punjab"
@@ -9165,6 +9181,10 @@ msgstr "Rajasthan"
 msgctxt "model:country.subdivision,name:in-sk"
 msgid "Sikkim"
 msgstr "Sikkim"
+
+msgctxt "model:country.subdivision,name:in-tg"
+msgid "Telangana"
+msgstr "Telangana"
 
 msgctxt "model:country.subdivision,name:in-tn"
 msgid "Tamil Nadu"
@@ -19656,11 +19676,11 @@ msgstr "New Hampshire"
 
 msgctxt "model:country.subdivision,name:us-nj"
 msgid "New Jersey"
-msgstr "Nueva Jersey"
+msgstr "New Jersey"
 
 msgctxt "model:country.subdivision,name:us-nm"
 msgid "New Mexico"
-msgstr "Nuevo México"
+msgstr "New Mexico"
 
 msgctxt "model:country.subdivision,name:us-nv"
 msgid "Nevada"
@@ -19668,7 +19688,7 @@ msgstr "Nevada"
 
 msgctxt "model:country.subdivision,name:us-ny"
 msgid "New York"
-msgstr "Nueva York"
+msgstr "New York"
 
 msgctxt "model:country.subdivision,name:us-oh"
 msgid "Ohio"
@@ -20414,7 +20434,7 @@ msgctxt "model:country.subdivision,name:za-fs"
 msgid "Free State"
 msgstr "Free State"
 
-msgctxt "model:country.subdivision,name:za-gp"
+msgctxt "model:country.subdivision,name:za-gt"
 msgid "Gauteng"
 msgstr "Gauteng"
 
@@ -20430,6 +20450,10 @@ msgctxt "model:country.subdivision,name:za-nc"
 msgid "Northern Cape"
 msgstr "Northern Cape"
 
+msgctxt "model:country.subdivision,name:za-nl"
+msgid "Kwazulu-Natal"
+msgstr "Kwazulu-Natal"
+
 msgctxt "model:country.subdivision,name:za-nw"
 msgid "North-West (South Africa)"
 msgstr "North-West (South Africa)"
@@ -20437,10 +20461,6 @@ msgstr "North-West (South Africa)"
 msgctxt "model:country.subdivision,name:za-wc"
 msgid "Western Cape"
 msgstr "Western Cape"
-
-msgctxt "model:country.subdivision,name:za-zn"
-msgid "Kwazulu-Natal"
-msgstr "Kwazulu-Natal"
 
 msgctxt "model:country.subdivision,name:zm-01"
 msgid "Western"

@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:country.country,active:"
+msgid "Active"
+msgstr ""
+
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
 msgstr "ລະຫັດ 3 ໂຕອັກສອນ"
@@ -45,6 +49,10 @@ msgstr "ວັນທີບັນທຶກ"
 msgctxt "field:country.country,write_uid:"
 msgid "Write User"
 msgstr "ຜູ້ບັນທຶກ"
+
+msgctxt "field:country.subdivision,active:"
+msgid "Active"
+msgstr ""
 
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
@@ -130,6 +138,10 @@ msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "ລະຫັດປະເທດ"
 
+msgctxt "help:country.country,active:"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
 msgstr ""
@@ -144,6 +156,10 @@ msgstr ""
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
+msgstr ""
+
+msgctxt "help:country.subdivision,active:"
+msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:country.subdivision,code:"
@@ -9114,7 +9130,7 @@ msgid "Chhattisgarh"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:in-dd"
-msgid "Damen and Diu"
+msgid "Daman and Diu"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:in-dl"
@@ -9186,7 +9202,7 @@ msgid "Nagaland"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:in-or"
-msgid "Orissa"
+msgid "Odisha"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:in-pb"
@@ -9203,6 +9219,10 @@ msgstr ""
 
 msgctxt "model:country.subdivision,name:in-sk"
 msgid "Sikkim"
+msgstr ""
+
+msgctxt "model:country.subdivision,name:in-tg"
+msgid "Telangana"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:in-tn"
@@ -20512,7 +20532,7 @@ msgctxt "model:country.subdivision,name:za-fs"
 msgid "Free State"
 msgstr ""
 
-msgctxt "model:country.subdivision,name:za-gp"
+msgctxt "model:country.subdivision,name:za-gt"
 msgid "Gauteng"
 msgstr ""
 
@@ -20528,16 +20548,16 @@ msgctxt "model:country.subdivision,name:za-nc"
 msgid "Northern Cape"
 msgstr ""
 
+msgctxt "model:country.subdivision,name:za-nl"
+msgid "Kwazulu-Natal"
+msgstr ""
+
 msgctxt "model:country.subdivision,name:za-nw"
 msgid "North-West (South Africa)"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:za-wc"
 msgid "Western Cape"
-msgstr ""
-
-msgctxt "model:country.subdivision,name:za-zn"
-msgid "Kwazulu-Natal"
 msgstr ""
 
 msgctxt "model:country.subdivision,name:zm-01"
