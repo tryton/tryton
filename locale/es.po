@@ -138,6 +138,14 @@ msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
 msgstr "Extras de venta"
 
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr "Usuario en la empresa"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr "Usuario en la empresa del extra"
+
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"
 msgstr "Extras"

@@ -92,7 +92,7 @@ msgstr "Maßeinheitenkategorie"
 
 msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 msgctxt "field:sale.extra.line,rec_name:"
 msgid "Record Name"
@@ -137,6 +137,14 @@ msgstr "Extras"
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
 msgstr "Verkaufsextras"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr "Benutzer in Unternehmen"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr "Benutzer in Unternehmen des Extras"
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"

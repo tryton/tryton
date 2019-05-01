@@ -128,7 +128,7 @@ msgstr "Extra"
 
 msgctxt "help:sale.extra,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"
@@ -138,6 +138,14 @@ msgstr "Extras"
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
 msgstr "Sale Extras"
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"
 msgid "Extras"

@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:sale.extra,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.extra.line,create_date:"
 msgid "Create Date"
@@ -120,7 +120,7 @@ msgstr ""
 
 msgctxt "field:sale.extra.line,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
@@ -136,6 +136,14 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_extra_relate"
 msgid "Sale Extras"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_extra_line"
+msgid "User in extra's company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_extra"

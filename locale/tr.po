@@ -34,10 +34,9 @@ msgctxt "field:sale.extra,lines:"
 msgid "Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.extra,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr ""
 
 msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
