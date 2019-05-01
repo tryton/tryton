@@ -12,11 +12,11 @@ msgstr ""
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:carrier,id:"
 msgid "ID"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:carrier,rec_name:"
 msgid "Record Name"
@@ -32,11 +32,11 @@ msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
@@ -49,11 +49,11 @@ msgstr "Carrier"
 
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
@@ -77,11 +77,11 @@ msgstr ""
 
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"

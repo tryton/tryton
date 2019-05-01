@@ -96,7 +96,7 @@ msgstr ""
 
 msgctxt "help:carrier.selection,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:carrier.selection,carrier:"
 msgid "The selected carrier."

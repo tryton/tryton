@@ -4,164 +4,155 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr "Versandkostenmethode"
+msgstr ""
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr "Versanddienstleistung"
+msgstr ""
 
 msgctxt "field:carrier,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr ""
 
 msgctxt "field:carrier,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr ""
 
 msgctxt "field:carrier,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:carrier,party:"
 msgid "Party"
-msgstr "Partei"
+msgstr ""
 
 msgctxt "field:carrier,rec_name:"
 msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
+msgstr ""
 
 msgctxt "field:carrier,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr ""
 
 msgctxt "field:carrier,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr ""
 
 msgctxt "field:carrier.selection,active:"
 msgid "Active"
-msgstr "Aktiv"
+msgstr ""
 
+#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
-msgstr "Versanddienstleister"
+msgstr "Carrier"
 
 msgctxt "field:carrier.selection,create_date:"
 msgid "Create Date"
-msgstr "Erstellungsdatum"
+msgstr ""
 
 msgctxt "field:carrier.selection,create_uid:"
 msgid "Create User"
-msgstr "Erstellt durch"
+msgstr ""
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
-msgstr "Ursprungsland"
+msgstr ""
 
 msgctxt "field:carrier.selection,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:carrier.selection,rec_name:"
 msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
+msgstr ""
 
 msgctxt "field:carrier.selection,sequence:"
 msgid "Sequence"
-msgstr "Reihenfolge"
+msgstr ""
 
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
-msgstr "Bestimmungsland"
+msgstr ""
 
 msgctxt "field:carrier.selection,write_date:"
 msgid "Write Date"
-msgstr "Zuletzt geändert"
+msgstr ""
 
 msgctxt "field:carrier.selection,write_uid:"
 msgid "Write User"
-msgstr "Letzte Änderung durch"
+msgstr ""
 
 msgctxt "help:carrier,carrier_cost_method:"
 msgid "Method to compute carrier cost"
-msgstr "Methode für die Berechnung der Versandkosten"
+msgstr ""
 
 msgctxt "help:carrier,carrier_product:"
 msgid "The product to invoice the carrier service."
-msgstr "Der an den Versanddienstleister zu verrechnende Artikel."
+msgstr ""
 
 msgctxt "help:carrier,party:"
 msgid "The party which represents the carrier."
-msgstr "Die Partei die den Versanddienstleister repräsentiert."
+msgstr ""
 
 msgctxt "help:carrier.selection,active:"
 msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+msgstr ""
 
 msgctxt "help:carrier.selection,carrier:"
 msgid "The selected carrier."
-msgstr "Der ausgewählte Versanddienstleiter."
+msgstr ""
 
 msgctxt "help:carrier.selection,from_country:"
 msgid ""
 "Apply only when shipping from this country.\n"
 "Leave empty for any countries."
 msgstr ""
-"Gilt nur für Sendungen aus diesem Land.\n"
-"Für alle Länder frei lassen."
 
 msgctxt "help:carrier.selection,to_country:"
 msgid ""
 "Apply only when shipping to this country.\n"
 "Leave empty for any countries."
 msgstr ""
-"Gilt nur für Sendungen in dieses Land.\n"
-"Für alle Länder frei lassen."
 
+#, fuzzy
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "Versanddienstleister"
+msgstr "Carrier"
 
+#, fuzzy
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgstr "Carrier Selection"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr "Versanddienstleister"
+msgstr "Carriers"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgstr "Carrier Selection"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Versand"
+msgstr "Carrier"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Versanddienstleister"
+msgstr "Carriers"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr "Zuordnung Versanddienstleister"
+msgstr "Carrier Selection"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Versanddienstleister Administration"
+msgstr "Carrier Administration"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr "Artikelpreis"
+msgstr ""
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr "Kriterien"
-
-msgctxt "view:carrier:"
-msgid "Carrier"
-msgstr "Versanddienstleister"
-
-msgctxt "view:carrier:"
-msgid "Carriers"
-msgstr "Versanddienstleister"
+msgstr ""
