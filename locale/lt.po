@@ -2,26 +2,12 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted."
+msgctxt "field:account.account.type,fixed_asset:"
+msgid "Fixed Asset"
 msgstr ""
 
-msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset."
-msgstr ""
-
-msgctxt "error:account.invoice.line:"
-msgid "Asset can be used only once on invoice line!"
-msgstr ""
-
-msgctxt "error:account.period:"
-msgid ""
-"Some asset lines \"%(names)s\" are still running for this period "
-"\"%(period)s\"."
-msgstr ""
-
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"."
+msgctxt "field:account.account.type.template,fixed_asset:"
+msgid "Fixed Asset"
 msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
@@ -30,27 +16,27 @@ msgstr ""
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentaras"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr ""
+msgstr "Sąskaitos pirkėjui eilutė"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -58,7 +44,7 @@ msgstr ""
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
@@ -66,7 +52,7 @@ msgstr ""
 
 msgctxt "field:account.asset,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -86,7 +72,7 @@ msgstr ""
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr ""
+msgstr "Pirkimo data"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
@@ -102,7 +88,7 @@ msgstr ""
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
@@ -110,7 +96,7 @@ msgstr ""
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr ""
+msgstr "Tiekėjo sąskaitos eilutė"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
@@ -130,11 +116,11 @@ msgstr ""
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:account.asset-update-account.move,asset:"
@@ -143,15 +129,15 @@ msgstr "Asset"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
@@ -163,19 +149,19 @@ msgstr ""
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -196,15 +182,15 @@ msgstr "Asset"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
@@ -216,7 +202,7 @@ msgstr ""
 
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
@@ -228,23 +214,23 @@ msgstr ""
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
@@ -254,9 +240,10 @@ msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
 msgstr ""
 
+#, fuzzy
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
@@ -264,7 +251,7 @@ msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
@@ -276,11 +263,11 @@ msgstr ""
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -312,19 +299,20 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
+#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.configuration.asset_date,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.configuration.asset_date,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.asset_date,rec_name:"
 msgid "Record Name"
@@ -332,11 +320,11 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_date,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.configuration.asset_date,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -344,19 +332,19 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:account.configuration.asset_sequence,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:account.configuration.asset_sequence,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.configuration.asset_sequence,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
 msgid "Record Name"
@@ -364,11 +352,11 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:account.configuration.asset_sequence,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:account.invoice.line,asset:"
@@ -519,8 +507,33 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "Running"
 
+msgctxt "model:ir.message,text:msg_asset_delete_draft"
+msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
+msgid "Invoice line can be used only once on asset."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_asset_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
+"still have lines without move."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
+msgid "Asset can be used only once on invoice line."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
+msgid ""
+"To invoice purchase \"%(purchase)s\", you must set an account asset on "
+"product \"%(product)s\"."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
-msgid "Are you sure to close the asset?"
+msgid "Are you sure you want to close the asset?"
 msgstr "Are you sure to close the asset?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
@@ -542,6 +555,10 @@ msgstr "Run"
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "Update Asset"
+
+msgctxt "model:ir.rule.group,name:rule_group_asset"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -614,7 +631,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
@@ -636,9 +653,10 @@ msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
 msgstr ""
 
+#, fuzzy
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr ""
+msgstr "Naudotojas:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"

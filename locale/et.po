@@ -4,605 +4,585 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Põhivara"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr ""
+msgstr "Põhivara"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
+msgstr "Andmik"
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "ຄຳເຫັນ"
+msgstr "Kommentaar"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "Ettevõte"
 
 msgctxt "field:account.asset,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.asset,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "Looja"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "ເລກເສດສະກຸນເງິນ"
+msgstr "Valuuta numbrikohtade arv"
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "ລາຍການເກັບເງິນລູກຄ້າ"
+msgstr "Müügiarve rida"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "ວິທີການຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi meetod"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "ວັນທີສິ້ນສຸດ"
+msgstr "Lõppkuupäev"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "ຄວາມຖີ່"
+msgstr "Sagedus"
 
 msgctxt "field:account.asset,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "ລາຍການ"
+msgstr "Read"
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+msgstr "Konto kanne"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "ເລກກຳກັບ"
+msgstr "Number"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Toode"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "ວັນທີຈັດຊື້"
+msgstr "Ostu kuupäev"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr "Kogus"
 
 msgctxt "field:account.asset,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "ມູນຄ່າຄົງເຫຼືອ"
+msgstr "Jääkväärtus"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "ວັນທີເລີ່ມ"
+msgstr "Alguskuupäev"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "ສະຖານະ"
+msgstr "Olek"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr "ລາຍການເກັບເງິນລູກຄ້າ"
+msgstr "Hankija arve rida"
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "ຫົວໜ່ວຍ"
+msgstr "Ühik"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
+msgstr "Ühiku numbriline väärtus"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "ປັບປຸງເຄື່ອນຍ້າຍ"
+msgstr "Uuenda kanded"
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "ມູນຄ່າ"
+msgstr "Väärtus"
 
 msgctxt "field:account.asset,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.asset,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "Muutja"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Põhivara"
 
 msgctxt "field:account.asset-update-account.move,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.asset-update-account.move,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "Looja"
 
 msgctxt "field:account.asset-update-account.move,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "ຍ້າຍ"
+msgstr "Kanne"
 
 msgctxt "field:account.asset-update-account.move,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:account.asset-update-account.move,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.asset-update-account.move,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "Muutja"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "ວັນທີ"
+msgstr "Kuupäev"
 
 msgctxt "field:account.asset.create_moves.start,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "ຄ່າຫຼຸ້ຍຫ້ຽນສະສົມ"
+msgstr "Akumuleeritud kulum"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "ມູນຄ່າຊັບສິນທີ່ໄດ້ຮັບ"
+msgstr "Soetusmaksumus"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "ມູນຄ່າປັດຈຸບັນ"
+msgstr "Tegelik väärtus"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Põhivara"
 
 msgctxt "field:account.asset.line,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.asset.line,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "Looja"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "ວັນທີ"
+msgstr "Kuupäev"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "ຖານຄິດໄລ່ຄ່າເຊື່ອມລາຄາ"
+msgstr "Kulumi baas"
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "ຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulum"
 
 msgctxt "field:account.asset.line,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
+msgstr "Konto liikumine"
 
 msgctxt "field:account.asset.line,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:account.asset.line,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.asset.line,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "Muutja"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "ວັນທີສິ້ນສຸດ"
+msgstr "Lõppkuupäev"
 
 msgctxt "field:account.asset.print_depreciation_table.start,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "ວັນທີເລີ່ມ"
+msgstr "Alguskuupäev"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "ມູນຄ່າ"
+msgstr "Väärtus"
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "ບັນຊີຄູ່"
+msgstr "Vastaspoole konto"
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "ວັນທີ"
+msgstr "Kuupäev"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi konto"
 
 msgctxt "field:account.asset.update.show_depreciation,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr "ວັນທີເຄື່ອນຍ້າຍລ້າສຸດ"
+msgstr "Viimane liikumise kuupäev"
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "ວັທີຫັກຄ່າຫຼຸ້ຍຫ້ຽນຄັ້ງຕໍ່ໄປ"
+msgstr "Järgmine kulumi kuupäev"
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr "ວັນທີສິ້ນສຸດ"
+msgstr "Lõppkuupäev"
 
 msgctxt "field:account.asset.update.start,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
-msgstr "ມູນຄ່າຄົງເຫຼືອ"
+msgstr "Jääkväärtus"
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "ມູນຄ່າຊັບສິນ"
+msgstr "Vara väärtus"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Kuu"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Päev kalendrikuus"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
+msgstr "Vara viite järjestus"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Kuu"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Päev kalendrikuus"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "Ettevõte"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.configuration.asset_date,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "Muutja"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
+msgstr "Vara viite järjestus"
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
-msgstr "ບໍລິສັດ"
+msgstr "Ettevõte"
 
 msgctxt "field:account.configuration.asset_sequence,create_date:"
 msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:account.configuration.asset_sequence,create_uid:"
 msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+msgstr "Looja"
 
 msgctxt "field:account.configuration.asset_sequence,id:"
 msgid "ID"
-msgstr "ເລກລໍາດັບ"
+msgstr "ID"
 
 msgctxt "field:account.configuration.asset_sequence,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:account.configuration.asset_sequence,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:account.configuration.asset_sequence,write_uid:"
 msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
+msgstr "Muutja"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Põhivara"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "ຊັບສິນເຊື່ອມມູນຄ່າ"
+msgstr "Kas vara kuulub kulumi arvestusse?"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "ບັນຊີຊັບສິນ"
+msgstr "Põhivara konto"
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi konto"
 
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
-msgstr "ບັນຊີຊັບສິນ"
+msgstr "Põhivara konto"
 
 msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi konto"
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "ຄິດໄລ່ຄ່າເຊື່ອມລາຄາ"
+msgstr "Kuluv"
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "ກຳນົດຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi kestvus"
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "ຄິດໄລ່ຄ່າເຊື່ອມລາຄາ"
+msgstr "Kuluv"
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "ກຳນົດຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulumi kestvus"
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
 msgstr ""
-"ວັນທີຕ້ອງຢູ່ລະຫວ່າງ ປັບປຸງລ້າສຸດ/ວັນທີຫັກຄ່າຫຼຸເຍຫ້ຽນ ແລະ "
-"ວັນທີຫັກຄ່າຫຼຸ້ຍຫ້ຽນຄັ້ງຕໍ່ໄປ."
+"Kuupäev peab olema viimase uuendatud/kulumi kuupäeva ja järgmise kulumi "
+"kuupäeva vahel."
 
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "Kuu millesse luua kulumi kanded."
 
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "Päev kalendrikuus, millesse luua kulumi kanded."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "Kuu, millesse luua kulumi kanded."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "Kalendrikuu päev, millal luuakse kulumi kanded."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr "ເປັນເດືອນ"
+msgstr "Kuudes"
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr "ເປັນເດືອນ"
+msgstr "Kuudes"
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Põhivara"
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "ຊັບສິນ - ປັບປຸງ - ເຄື່ອນຍ້າຍ"
+msgstr "Vara - Uuenda - Kanne"
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "ເລີ່ມສ້າງການເຄື່ອນຍ້າຍ"
+msgstr "Loo kande algus"
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr "ລາຍການຊັບສິນ"
+msgstr "Vara rida"
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
-msgstr "ເລີ່ມ ຕາຕະລາງ ຊັບສິນ ຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Vara kulumiarvestuste tabeli algus"
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "ປັບປຸງ ຊັບສິນ ສະແດງ ຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Uuenda vara näita kulumit"
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "ເລີ່ມປັບປຸງຊັບສິນ"
+msgstr "Uuenda vara alusta"
 
-#, fuzzy
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
-msgstr "ລຳດັບ ການກຳນົດຄ່າບັນຊີຊັບສິນ"
+msgstr "Konto kinnitus vara kuupäev"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
-msgstr "ລຳດັບ ການກຳນົດຄ່າບັນຊີຊັບສິນ"
+msgstr "Konto seadistuse varade jada"
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Vara"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Vara"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Depreciation Table"
+msgstr "Kulumi tabel"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Create Assets Moves"
+msgstr "Loo vara kanded"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Print Depreciation Table"
+msgstr "Prindi kulumi tabel"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Uuenda vara"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Kõik"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Closed"
+msgstr "Suletud"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Mustand"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "Running"
+msgstr "Jooksev"
 
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
+"Sa ei saa kustutada vara \"%(vara)sid\" kuna see ei ole \"mustandi\" "
+"staatuses."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
-msgstr "ລາຍການເກັບເງິນລູກຄ້າ ສາມາດໃຊ້ໄດ້ ພຽງ ເທື່ອດຽວເທົ່ານັ້ນ ໃນ ຊັບສິນ."
+msgstr "Arve rida saab vara puhul kasutada ainult üks kord."
 
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
 "still have lines without move."
 msgstr ""
+"Ei saa sulgeda perioodi \"%(period)s\", kuna mõned varad \"%(assets)s\" "
+"omavad kanneteta ridu."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
-msgstr "ຊັບສິນ ສາມາດໃຊ້ໄດ້ ພຽງ ເທື່ອດຽວເທົ່ານັ້ນ ໃນ ລາຍການ ຂອງ ໃບເກັບເງິນ."
+msgstr "Vara saab kasutada üks kord arve rea kohta."
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
 "product \"%(product)s\"."
 msgstr ""
+"Ostu \"%(ostu)de\" arveldamiseks tuleb määrata tootel \"%(toode)tel\" vara "
+"konto."
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure you want to close the asset?"
-msgstr "Are you sure to close the asset?"
+msgstr "Oled kindel et tahada vara sulgeda?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr "Clear Lines"
+msgstr "Tühjenda read"
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Sulge"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr "Create Lines"
+msgstr "Loo read"
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr "Käivita"
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Uuenda vara"
 
 msgctxt "model:ir.rule.group,name:rule_group_asset"
 msgid "User in company"
-msgstr ""
+msgstr "Kasutaja ettevõttes"
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Vara"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Vara"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Varad"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Varad"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Print Depreciation Table"
+msgstr "Prindi kulumi tabel"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Create Assets Moves"
+msgstr "Loo varade kanded"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -626,277 +606,252 @@ msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "ມູນຄ່າປັດຈຸບັນ"
+msgstr "Tegelik väärtus"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr "ການຕັດບັນຊີຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Amortisatsioon"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr "ຕາຕະລາງການຕັດບັນຊີຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Amortisatsiooni tabel"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "ບັນດາຊັບສິນ"
+msgstr "Varad"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr "ມູນຄ່າຍັງເຫຼືອ"
+msgstr "Sulgemise väärtus"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "ບໍລິສັດ:"
+msgstr "Ettevõte:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
-msgstr "ຄົງທີ່"
+msgstr "Fikseeritud"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "ຈາກ"
+msgstr "Alates:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr "ວັນທີພິມອອກ:"
+msgstr "Prindi kuupäev:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "ເຖິງ:"
+msgstr "Saaja:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "ລວມທັງໝົດ - "
+msgstr "Kokku -"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr "ຜູ້ໃຊ້:"
+msgstr "Kasutaja:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr "ຢູ່"
+msgstr "@"
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr "ແບບເສັ້ນ"
+msgstr "Lineaarne"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "ລາຍເດືອນ"
+msgstr "Kuine"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "ປະຈຳປີ"
+msgstr "Aastane"
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "ອັດ"
+msgstr "Suletud"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "ຮ່າງກຽມ"
+msgstr "Mustand"
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "ກຳລັງດຳເນີນງານ"
+msgstr "Jooksev"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Aprill"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Detsember"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Veebruar"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Jaanuar"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Juuli"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Juuni"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Märts"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Oktoober"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Esimene"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Viimane"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Aprill"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "August"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Detsember"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Veebruar"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Jaanuar"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Juuli"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Juuni"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Märts"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Mai"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "November"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Oktoober"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "September"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Esimene"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Viimane"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Vara"
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "ສ້າງການເຄື່ອນຍ້າຍຊັບສິນຈົນຮອດ"
+msgstr "Loo vara kanded kuni"
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "ລາຍການ"
+msgstr "Read"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "ຂໍ້ມູນອື່ນໆ"
+msgstr "Muu info"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr "ຊັບສິນ"
+msgstr "Vara"
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr ""
+msgstr "Vara kanne"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "ລໍາດັບ"
+msgstr "Järjestus"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr "ຄ່າຫຼຸ້ຍຫ້ຽນ"
+msgstr "Kulum"
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "ຕົກລົງ"
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "ພິມອອກ"
+msgstr "Prindi"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "ຕົກລົງ"
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "ຍົກເລີກ"
+msgstr "Tühista"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "ຕົກລົງ"
-
-msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ອັດບັນຊີຊັບສິນນີ້?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "ລາຍການສະສາງ"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "ອັດ"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "ສ້າງລາຍການ"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "ດຳເນີນງານ"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "ປັບປຸງຊັບສິນ"
+msgstr "OK"

@@ -2,28 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "O ativo \"%s\" deve estar em estado rascunho para ser apagado."
-
-msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset."
-msgstr ""
-"A linha da fatura de fornecedor somente pode ser usada uma vez no ativo."
-
-msgctxt "error:account.invoice.line:"
-msgid "Asset can be used only once on invoice line!"
-msgstr "O ativo somente pode ser usado uma vez na linha da fatura!"
-
-msgctxt "error:account.period:"
-msgid ""
-"Some asset lines \"%(names)s\" are still running for this period "
-"\"%(period)s\"."
+msgctxt "field:account.account.type,fixed_asset:"
+msgid "Fixed Asset"
 msgstr ""
 
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Falta uma \"Conta de Ativo\" no produto \"%s\"."
+msgctxt "field:account.account.type.template,fixed_asset:"
+msgid "Fixed Asset"
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -291,11 +276,11 @@ msgstr "Valor do Ativo"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Mês"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Dia do Mês"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -303,43 +288,36 @@ msgstr "Sequência de Referência do Ativo"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "Mês"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Dia do Mês"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Empresa"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_date:"
 msgid "Create Date"
-msgstr "Data de criação"
+msgstr "Data de Criação"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_uid:"
 msgid "Create User"
 msgstr "Criado por"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,id:"
 msgid "ID"
 msgstr "ID"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,rec_name:"
 msgid "Record Name"
-msgstr "Nome do Registro"
+msgstr "Nome do Registo"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_date:"
 msgid "Write Date"
 msgstr "Data de edição"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_uid:"
 msgid "Write User"
 msgstr "Gravado por"
@@ -426,19 +404,19 @@ msgstr ""
 
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "O mês para criação de movimentos de depreciação."
 
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "O dia do mês para criação de movimentos de depreciação."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "O mês para criação dos movimentos de depreciação."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "O dia do mês para criação de movimentos de depreciação."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -476,67 +454,85 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "Atualiza Ativos - Início"
 
-#, fuzzy
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
-msgstr "Configuração de Contas Sequência de Ativo"
+msgstr "Configuração de Contas da Data do Ativo"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr "Configuração de Contas Sequência de Ativo"
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Ativo"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Ativos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Depreciation Table"
+msgstr "Tabela de Depreciação"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Create Assets Moves"
+msgstr "Criar Movimentos de Ativos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Print Depreciation Table"
+msgstr "Imprimir tabela de depreciação"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Update Asset"
+msgstr "Atualizar Activo"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Todos"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Closed"
+msgstr "Fechado"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rascunho"
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "Running"
+msgstr "Em execução"
 
+msgctxt "model:ir.message,text:msg_asset_delete_draft"
+msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
+msgstr "Você não pode apagar o ativo \"%(asset)s\", pois o estado não é \"rascunho\"."
+
+msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
+msgid "Invoice line can be used only once on asset."
+msgstr "A linha da fatura somente pode ser usada uma vez no ativo."
+
+msgctxt "model:ir.message,text:msg_asset_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
+"still have lines without move."
+msgstr ""
+"Você não pode fechar o período \"%(period)s\", pois alguns ativos "
+"\"%(assets)s\" ainda têm linhas sem movimento."
+
+msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
+msgid "Asset can be used only once on invoice line."
+msgstr "O ativo somente pode ser usado uma vez na linha da fatura."
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
+msgid ""
+"To invoice purchase \"%(purchase)s\", you must set an account asset on "
+"product \"%(product)s\"."
+msgstr ""
+"Para faturar a compra \"%(purchase)s\", você precisa definir uma conta de "
+"ativo no produto \"%(product)s\"."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
-msgid "Are you sure to close the asset?"
+msgid "Are you sure you want to close the asset?"
 msgstr "Are you sure to close the asset?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
@@ -559,35 +555,33 @@ msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "Update Asset"
 
-#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_asset"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Ativo"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Ativo"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Ativos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Assets"
+msgstr "Ativos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "Print Depreciation Table"
+msgstr "Imprimir Tabela de Depreciação"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Create Assets Moves"
+msgstr "Criar Movimentos de Ativos"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -687,117 +681,116 @@ msgstr "Em execução"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Dezembro"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Fevereiro"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Janeiro"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Julho"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Junho"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Março"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Maio"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "Novembro"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Outubro"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "Setembro"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Primeiro"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Último"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "Abril"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "Dezembro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "Fevereiro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "Janeiro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "Julho"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "Junho"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "Março"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "Maio"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "Novembro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "Outubro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "Setembro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "Primeiro"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "Último"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Asset"
 msgstr "Ativo"
@@ -820,7 +813,7 @@ msgstr "Ativo"
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr ""
+msgstr "Movimentação de Ativo"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

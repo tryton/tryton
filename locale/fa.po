@@ -2,27 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "دارایی \"٪ s\" باید در پیش نویس حذف شود."
+msgctxt "field:account.account.type,fixed_asset:"
+msgid "Fixed Asset"
+msgstr ""
 
-msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset."
-msgstr "سطرصورتحساب تامین کننده فقط یکبار در هر دارایی استفاده می شود."
-
-msgctxt "error:account.invoice.line:"
-msgid "Asset can be used only once on invoice line!"
-msgstr "دارایی را می توان تنها یک بار در سطرصورتحساب استفاده کرد!"
-
-msgctxt "error:account.period:"
-msgid ""
-"Some asset lines \"%(names)s\" are still running for this period "
-"\"%(period)s\"."
-msgstr "برخی سطرهای دارایی : \"%s\" از دوره : \"%s\" هنوز در حال اجراء هستند."
-
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "یک محصول \"%s\" از \"حساب دارایی\" کسر خواهد شد."
+msgctxt "field:account.account.type.template,fixed_asset:"
+msgid "Fixed Asset"
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -290,11 +276,11 @@ msgstr "مقدار دارایی"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "ماه"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "روز از ماه"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -302,43 +288,36 @@ msgstr "توالی مرجع دارایی"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr ""
+msgstr "ماه"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "روز از ماه"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "شرکت"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_date:"
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_uid:"
 msgid "Create User"
 msgstr "کاربر ایجاد کننده"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,id:"
 msgid "ID"
 msgstr "شناسه"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,rec_name:"
 msgid "Record Name"
 msgstr "نام پرونده"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_date:"
 msgid "Write Date"
 msgstr "تاریخ نوشته"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,write_uid:"
 msgid "Write User"
 msgstr "نوشته کاربر"
@@ -424,19 +403,19 @@ msgstr ""
 
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "ماه برای ایجاد حرکت های استهلاک."
 
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "روز ماه برای ایجاد حرکت های استهلاک."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr ""
+msgstr "ماه برای ایجاد حرکت های استهلاک."
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr ""
+msgstr "روز ماه برای ایجاد حرکت های استهلاک."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -474,7 +453,6 @@ msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
 msgstr "شروع به روزرسانی دارایی"
 
-#, fuzzy
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "پیکربندی حساب توالی دارایی"
@@ -523,8 +501,39 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "در حال اجرا"
 
+msgctxt "model:ir.message,text:msg_asset_delete_draft"
+msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
+msgstr ""
+"شما نمی توانید دارایی : \"%(asset)s\" را حذف کنید، زیرا در حالت پیش نویس "
+"نیست."
+
+msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
+msgid "Invoice line can be used only once on asset."
+msgstr "سطر صورتحساب را می توان تنها یکبار در دارایی استفاده کرد."
+
+msgctxt "model:ir.message,text:msg_asset_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
+"still have lines without move."
+msgstr ""
+"شما نمی توانید دوره : \"%(period)s\" را ببندید، چون بعضی از دارایی های : "
+"\"%(assets)s\" دارای سطرهای بدون جابجایی هستند."
+
+msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
+msgid "Asset can be used only once on invoice line."
+msgstr "دارایی را می توان تنها یک بار در سطر صورتحساب استفاده کرد."
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
+msgid ""
+"To invoice purchase \"%(purchase)s\", you must set an account asset on "
+"product \"%(product)s\"."
+msgstr ""
+"برای صورتحساب خرید : \"%(purchase)s\" شما باید حساب دارایی را بر روی محصول :"
+" \"%(product)s\" تنظیم کنید."
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
-msgid "Are you sure to close the asset?"
+msgid "Are you sure you want to close the asset?"
 msgstr "برای بستن دارایی اطمینان دارید؟"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
@@ -546,6 +555,10 @@ msgstr "اجرا"
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "به روزرسانی دارایی"
+
+msgctxt "model:ir.rule.group,name:rule_group_asset"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
@@ -669,117 +682,116 @@ msgstr "در حال اجرا"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "آوریل"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "اوت"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "دسامبر"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "فوریه"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "ژانویه"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "جولای"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "ژوئن"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "مارس"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "می"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "نوامبر"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "اکتبر"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "سپتامبر"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "اولین"
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "آخرین"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
-msgstr ""
+msgstr "آوریل"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr ""
+msgstr "اوت"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr ""
+msgstr "دسامبر"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
-msgstr ""
+msgstr "فوریه"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "January"
-msgstr ""
+msgstr "ژانویه"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "July"
-msgstr ""
+msgstr "جولای"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "June"
-msgstr ""
+msgstr "ژوئن"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr ""
+msgstr "مارس"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
-msgstr ""
+msgstr "می"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "November"
-msgstr ""
+msgstr "نوامبر"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "October"
-msgstr ""
+msgstr "اکتبر"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "September"
-msgstr ""
+msgstr "سپتامبر"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
-msgstr ""
+msgstr "اولین"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "Last"
-msgstr ""
+msgstr "آخرین"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Asset"
 msgstr "دارایی"
@@ -802,7 +814,7 @@ msgstr "دارایی"
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr ""
+msgstr "حرکت دارایی"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

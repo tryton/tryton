@@ -2,29 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:account.asset:"
-msgid "Asset \"%s\" must be in draft to be deleted."
-msgstr "L'immobilizzazione \"%s\" per essere eliminata dev'essere in bozza."
-
-msgctxt "error:account.asset:"
-msgid "Supplier Invoice Line can be used only once on asset."
-msgstr ""
-"Una riga fattura fornitore si può usare solo una volta come "
-"immobilizzazione."
-
-msgctxt "error:account.invoice.line:"
-msgid "Asset can be used only once on invoice line!"
-msgstr "Un immobilizzazione si può usare solo una volta in riga fattura!"
-
-msgctxt "error:account.period:"
-msgid ""
-"Some asset lines \"%(names)s\" are still running for this period "
-"\"%(period)s\"."
+msgctxt "field:account.account.type,fixed_asset:"
+msgid "Fixed Asset"
 msgstr ""
 
-msgctxt "error:purchase.line:"
-msgid "It misses an \"Account Asset\" on product \"%s\"."
-msgstr "Manca un \"conto immobilizzazione\" nel prodotto \"%s\"."
+msgctxt "field:account.account.type.template,fixed_asset:"
+msgid "Fixed Asset"
+msgstr ""
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -296,7 +280,7 @@ msgstr ""
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Giorno del mese"
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
@@ -308,17 +292,15 @@ msgstr ""
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr ""
+msgstr "Giorno del mese"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:account.configuration.asset_date,create_date:"
 msgid "Create Date"
-msgstr "Crea data"
+msgstr "Creato il"
 
 #, fuzzy
 msgctxt "field:account.configuration.asset_date,create_uid:"
@@ -485,10 +467,9 @@ msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Asset"
+msgstr "Cespiti"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_asset_form"
@@ -535,8 +516,37 @@ msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
 msgstr "Running"
 
+msgctxt "model:ir.message,text:msg_asset_delete_draft"
+msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
+msgid "Invoice line can be used only once on asset."
+msgstr ""
+"Una riga fattura fornitore si può usare solo una volta come "
+"immobilizzazione."
+
+msgctxt "model:ir.message,text:msg_asset_running_close_period"
+msgid ""
+"You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
+"still have lines without move."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
+msgid "Asset can be used only once on invoice line."
+msgstr "Un immobilizzazione si può usare solo una volta in riga fattura!"
+
+msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
+msgid ""
+"To invoice purchase \"%(purchase)s\", you must set an account asset on "
+"product \"%(product)s\"."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.model.button,confirm:asset_close_button"
-msgid "Are you sure to close the asset?"
+msgid "Are you sure you want to close the asset?"
 msgstr "Are you sure to close the asset?"
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
@@ -558,6 +568,10 @@ msgstr "Run"
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
 msgstr "Update Asset"
+
+msgctxt "model:ir.rule.group,name:rule_group_asset"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence,name:sequence_asset"
