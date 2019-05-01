@@ -5,24 +5,24 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 #, fuzzy
 msgctxt "field:account.account.type,deposit:"
 msgid "Deposit"
-msgstr "Depósito"
+msgstr "Depozit"
 
 #, fuzzy
 msgctxt "field:account.account.type.template,deposit:"
 msgid "Deposit"
-msgstr "Depósito"
+msgstr "Depozit"
 
 msgctxt "field:account.invoice.recall_deposit.start,account:"
 msgid "Account"
-msgstr "Conta"
+msgstr "Hesap"
 
 msgctxt "field:account.invoice.recall_deposit.start,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Şirket"
 
 msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
-msgstr "Descrição"
+msgstr "Tanım"
 
 msgctxt "field:account.invoice.recall_deposit.start,id:"
 msgid "ID"
@@ -30,17 +30,16 @@ msgstr "ID"
 
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
-msgstr "Depósito"
+msgstr "Depozit"
 
 msgctxt "model:account.invoice.recall_deposit.start,name:"
 msgid "Recall deposit on Invoice"
-msgstr "Recuperar o depósito na fatura"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_line_deposit"
 msgid "Deposit Lines"
-msgstr "Linhas de Depósito"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_recall_deposit"
 msgid "Recall Deposit"
 msgstr "Recall Deposit"
@@ -61,20 +60,16 @@ msgstr "Recall Deposit"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Vazgeç"
 
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
-msgstr "Recuperar"
+msgstr ""
 
 msgctxt "selection:account.account,kind:"
 msgid "Deposit"
-msgstr "Depósito"
+msgstr "Depozit"
 
 msgctxt "selection:account.account.template,kind:"
 msgid "Deposit"
-msgstr "Depósito"
-
-msgctxt "view:account.invoice:"
-msgid "Recall Deposit"
-msgstr "Recuperar o depósito"
+msgstr "Depozit"
