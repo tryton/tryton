@@ -2,17 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.attribute:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
-
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.attribute,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.attribute,digits:"
 msgid "Digits"
@@ -61,11 +57,11 @@ msgstr ""
 
 msgctxt "field:product.attribute,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.attribute,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
@@ -78,11 +74,11 @@ msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.attribute-product.attribute-set,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.attribute-product.attribute-set,id:"
 msgid "ID"
@@ -94,11 +90,11 @@ msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.attribute-product.attribute-set,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:product.attribute.set,attributes:"
@@ -107,11 +103,11 @@ msgstr "Attributes"
 
 msgctxt "field:product.attribute.set,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:product.attribute.set,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:product.attribute.set,id:"
 msgid "ID"
@@ -128,11 +124,11 @@ msgstr ""
 
 msgctxt "field:product.attribute.set,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:product.attribute.set,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 #, fuzzy
 msgctxt "field:product.product,attribute_set:"

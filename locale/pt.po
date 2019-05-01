@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.attribute:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
-
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
 msgstr "Data de criação"
@@ -20,7 +16,7 @@ msgstr "Dígitos"
 
 msgctxt "field:product.attribute,domain:"
 msgid "Domain"
-msgstr ""
+msgstr "Domínio"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"
@@ -152,47 +148,43 @@ msgstr "Se a seleção deve ser ordenada pela etiqueta"
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
-msgstr ""
+msgstr "Adicionar conjuntos ao atributo."
 
 msgctxt "help:product.attribute.set,attributes:"
 msgid "Add attributes to the set."
-msgstr ""
+msgstr "Adicionar atributos ao conjunto."
 
 msgctxt "help:product.attribute.set,name:"
 msgid "The main identifier of product attribute set."
-msgstr ""
+msgstr "O principal identificador do conjunto de atributos do produto."
 
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "Selecione um conjunto de atributos para aplicar às variantes."
 
 msgctxt "help:product.product,attributes:"
 msgid "Add attributes to the variant."
-msgstr ""
+msgstr "Adicionar atributos à variante."
 
 msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "Selecione um conjunto de atributos para aplicar nas variantes."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atributos"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Conjuntos de Atributos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atributos"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Conjuntos de Atributos"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"

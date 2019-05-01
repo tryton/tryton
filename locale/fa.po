@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.attribute:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
-
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
 msgstr "تاریخ ایجاد"
@@ -20,7 +16,7 @@ msgstr "رقم‌ها"
 
 msgctxt "field:product.attribute,domain:"
 msgid "Domain"
-msgstr ""
+msgstr "دامنه"
 
 msgctxt "field:product.attribute,id:"
 msgid "ID"

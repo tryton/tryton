@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.attribute:"
-msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr "Ungültiger Wertebereich (Domain) in Schema \"%(schema)s\"."
-
 msgctxt "field:product.attribute,create_date:"
 msgid "Create Date"
 msgstr "Erstellungsdatum"
@@ -160,7 +156,7 @@ msgstr "Fügt das Attribut zum Satz."
 
 msgctxt "help:product.attribute.set,name:"
 msgid "The main identifier of product attribute set."
-msgstr "Die Hauptbezeichnung des Attributsatzes."
+msgstr "Das Hauptidentifizierungsmerkmal des Attributsatzes."
 
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
