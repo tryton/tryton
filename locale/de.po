@@ -112,7 +112,7 @@ msgstr "Letzte Änderung durch"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
-msgstr "Die Hauptbezeichnung des Beziehungstypen."
+msgstr "Das Hauptidentifizierungsmerkmal des Beziehungstypen."
 
 msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."

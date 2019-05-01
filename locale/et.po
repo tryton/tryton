@@ -4,100 +4,99 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,relations:"
 msgid "Relations"
-msgstr ""
+msgstr "Seotud"
 
 msgctxt "field:party.relation,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:party.relation,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
+msgstr "Saatja"
 
 msgctxt "field:party.relation,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.relation,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr ""
+msgstr "Saaja"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 msgctxt "field:party.relation,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:party.relation,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:party.relation.all,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:party.relation.all,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
+msgstr "Saatja"
 
 msgctxt "field:party.relation.all,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 msgctxt "field:party.relation.all,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr ""
+msgstr "Saaja"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tüüp"
 
 msgctxt "field:party.relation.all,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:party.relation.all,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "field:party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Sukūrimo data"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Looja"
 
 msgctxt "field:party.relation.type,id:"
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nimi"
 
 msgctxt "field:party.relation.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
@@ -105,11 +104,11 @@ msgstr ""
 
 msgctxt "field:party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Pakeitimo data"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Muutja"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
@@ -121,33 +120,32 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "Kontrahentų ryšiai"
+msgstr "Osapoole seosed"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Seose tüüp"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "Kontrahento ryšiai"
+msgstr "Osapoolse seosed"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Seose tüüp"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "Kontrahento ryšiai"
+msgstr "Osapoole seos"
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "Kontrahento ryšiai"
+msgstr "Osapoole seos"
 
-#, fuzzy
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Relation Types"
+msgstr "Seose tüüp"
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr ""
+msgstr "Seotud"
