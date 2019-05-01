@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.correct.start,id:"
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 msgctxt "field:account.invoice.correct.start,invoice:"
 msgid "Invoice"
-msgstr "Sąskaita faktūra"
+msgstr ""
 
 msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
-msgstr "Sąskaitos faktūros eilutės"
+msgstr ""
 
 msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
-msgstr "Koreguoti sąskaitą faktūrą"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"

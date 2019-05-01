@@ -18,10 +18,9 @@ msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
 msgstr "Fatura Correta"
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Correto"
 
 msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
