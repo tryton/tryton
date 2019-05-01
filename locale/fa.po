@@ -2,27 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"اگرواحد اندازه گیری هنوز استفاده نشده است، شما می توانید آن را حذف کنید "
-"همجنین می توانید آن را غیر فعال کرده و یا یک جدید ایجاد کنید."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "ضریب عامل و ارزش مقادیر نامعتبراست در واحد اندازه گیری : \"%s\"."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "نرخ و عامل هر دو برابر صفر نمی توانند باشند."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"شما نمیتوانید میزان، عامل یا زیرمجموعه واحد اندازه گیری را تغییر دهید."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "زیر مجموعه"

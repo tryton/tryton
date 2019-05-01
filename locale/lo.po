@@ -2,26 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"ຖ້າຫົວໜ່ວຍວັດແທກນີ້ຍັງບໍ່ຖືກໃຊ້, ໃຫ້ລຶບຖິ້ມ ຫຼື ບໍ່ກໍ່ໝາຍໃສ່ບໍ່ໃຊ້ອີກ ຫຼື "
-"ສ້າງຂຶ້ນໃໝ່."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "ປັດໄຈ ແລະ ຄ່າອັດຕາ ໃນຫົວໜ່ວຍ \"%s\" ບໍ່ຖືກຕ້ອງ."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "ອັດຕາ ແລະ ປັດໄຈຄູນ ທັງສອງບໍ່ສາມາດເທົ່າກັບສູນໄດ້."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr "ທ່ານບໍ່ສາມາດປ່ຽນອັດຕາ, ປັດໄຈ ຫຼື ປະເພດຫົວໜ່ວຍ ຂອງ ການວັດແທກ."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "ໝວດຍ່ອຍ"

@@ -2,29 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Ha a mértékegység nem lett még használva, törölni lehet.\n"
-"Különben csak inaktiválni lehet és helyette ehy másik újat előállítani."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Érvénytelen mértékegység érték a faktor és árfolyamnak \"%s\""
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Faktor és reciprok faktor nem lehet mind kettő 0"
-
-#, fuzzy
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"Faktort, faktorértéket vagy kategóriáját egy mértékegységnek nem lehet "
-"módosítani"
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Alárendelt (kategória)"

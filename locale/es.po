@@ -2,28 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Si no se ha usado la UdM puede eliminarla. En caso contrario, puede "
-"desactivarla y crear una de nueva."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Los valores de factor y conversión de la UdM \"%s\" no son correctos."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "La conversión y el factor no pueden ser cero simultáneamente."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"No puede cambiar la conversión, el factor o la categoría de una unidad de "
-"medida."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Hijos"

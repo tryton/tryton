@@ -2,28 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Si l'UDM n'est pas utilisée, vous pouvez la supprimer, sinon vous pouvez la "
-"désactiver et en créer une nouvelle."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Facteur et taux non valides sur l'UDM « %s »."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Le taux et le facteur ne peuvent pas être égaux à zéro."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"Vous ne pouvez pas changer le taux, le facteur ou la catégorie d'une unité "
-"de mesure."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Enfants"
@@ -743,7 +721,7 @@ msgstr "Gallon"
 
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Gram"
+msgstr "Gramme"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
@@ -999,7 +977,7 @@ msgstr "Fixe"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Biens"
+msgstr "Actifs"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
@@ -1019,11 +997,11 @@ msgstr "Fixé"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Biens"
+msgstr "Actifs"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr "Marchandises"
+msgstr "Biens"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"

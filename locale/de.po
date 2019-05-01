@@ -2,28 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Wenn die Maßeinheit noch nicht verwendet wurde, kann sie gelöscht werden. "
-"Andernfalls kann sie nur deaktiviert und eine andere neue erstellt werden."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Ungültige Werte für Faktor und Kurs in Maßeinheit \"%s\"."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Faktor und Kehrwert Faktor können beide nicht 0 sein"
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"Faktor, Faktorkehrwert oder Kategorie einer Maßeinheit können nicht geändert"
-" werden."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Untergeordnet (Kategorien)"
@@ -685,7 +663,7 @@ msgstr "Artikel Listenpreis"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr "Variante"
+msgstr "Artikel Variante"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
@@ -1001,7 +979,7 @@ msgstr "Fix"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr "Inventar"
+msgstr "Anlagegut"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
@@ -1021,7 +999,7 @@ msgstr "Fix"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr "Inventar"
+msgstr "Anlagegut"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"

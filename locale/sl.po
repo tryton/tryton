@@ -2,27 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Če ME še vendno ni uporabljena, jo lahko zbrišete ali pa izklopite in "
-"izdelate novo."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Neveljavna faktor in razmerje v ME\"%s\"."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Oba, razmerje in faktor, ne moreta biti enaka ničli."
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"Pri merski enoti ni možno popraviti razmerja, faktorja ali kategorije."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Podkategorije"

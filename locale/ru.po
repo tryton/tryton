@@ -2,29 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-"Если ед.измерения не используется, то можно её удалить, иначе её нужно "
-"деактивировать и создать новую."
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr "Некорректный коэффициент и размер в Ед.измерения \"%s\"."
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr "Размер и коэффициент не могут быть одновременно равны нулю."
-
-#, fuzzy
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-"Вы не можете изменить размер, коэффициент или категорию на единицу "
-"измерения."
-
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Подчиненные"

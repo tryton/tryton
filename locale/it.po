@@ -2,286 +2,231 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:product.uom:"
-msgid ""
-"If the UOM is still not used, you can delete it otherwise you can deactivate"
-" it and create a new one."
-msgstr ""
-
-msgctxt "error:product.uom:"
-msgid "Invalid Factor and Rate values in UOM \"%s\"."
-msgstr ""
-
-msgctxt "error:product.uom:"
-msgid "Rate and factor can not be both equal to zero."
-msgstr ""
-
-msgctxt "error:product.uom:"
-msgid "You cannot change Rate, Factor or Category on a Unit of Measure."
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Figlio"
 
-#, fuzzy
 msgctxt "field:product.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.category,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 msgctxt "field:product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.configuration,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Metodo di costo predefinito"
 
-#, fuzzy
 msgctxt "field:product.configuration,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.configuration,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.configuration,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
+#, fuzzy
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Metodo di costo predefinito"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Costo"
 
-#, fuzzy
 msgctxt "field:product.cost_price,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.cost_price,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.cost_price,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.cost_price,product:"
 msgid "Product"
 msgstr "Prodotto"
 
 msgctxt "field:product.cost_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.cost_price,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.cost_price,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
 msgctxt "field:product.cost_price_method,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:product.cost_price_method,cost_price_method:"
 msgid "Cost Price Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.cost_price_method,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.cost_price_method,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
 msgctxt "field:product.list_price,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:product.list_price,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.list_price,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.list_price,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "Listino prezzi"
 
 msgctxt "field:product.list_price,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
-#, fuzzy
 msgctxt "field:product.list_price,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.list_price,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.product,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "field:product.product,categories_all:"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "field:product.product,code:"
 msgid "Code"
 msgstr "Codice"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Consumabile"
 
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Costo"
 
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Price Method"
@@ -293,103 +238,91 @@ msgstr ""
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Costo"
 
 msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
-msgstr ""
+msgstr "Costi"
 
-#, fuzzy
 msgctxt "field:product.product,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.product,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "UdM predefinita"
 
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,description:"
 msgid "Description"
 msgstr "Descrizione"
 
-#, fuzzy
 msgctxt "field:product.product,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "Listino prezzi"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr ""
+msgstr "Listino prezzi"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "Listino prezzi"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:product.product,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr "Modello prodotto/articolo"
+msgstr "Modello prodotto"
 
-#, fuzzy
 msgctxt "field:product.product,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:product.product,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.product,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.template,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "field:product.template,categories_all:"
 msgid "Categories"
 msgstr "Categorie"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Consumabile"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Costo"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Price Method"
@@ -399,161 +332,137 @@ msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "UdM predefinita"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "Listino prezzi"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "Listino prezzi"
 
-#, fuzzy
 msgctxt "field:product.template,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Varianti"
 
 msgctxt "field:product.template,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.template,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:product.template,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.template,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.template-product.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,category:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
 msgctxt "field:product.template-product.category.all,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.template-product.category.all,template:"
 msgid "Template"
-msgstr ""
+msgstr "Modello"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.template-product.category.all,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.uom,active:"
 msgid "Active"
 msgstr "Attivo"
 
-#, fuzzy
 msgctxt "field:product.uom,category:"
 msgid "Category"
 msgstr "Categoria"
 
-#, fuzzy
 msgctxt "field:product.uom,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.uom,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
 #, fuzzy
 msgctxt "field:product.uom,digits:"
@@ -562,115 +471,104 @@ msgstr "Posizioni"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr ""
+msgstr "Fattore"
 
-#, fuzzy
 msgctxt "field:product.uom,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.uom,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
 msgstr "Cambio"
 
 msgctxt "field:product.uom,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
-msgstr ""
+msgstr "Precisione di arrotondamento"
 
-#, fuzzy
 msgctxt "field:product.uom,symbol:"
 msgid "Symbol"
 msgstr "Simbolo"
 
-#, fuzzy
 msgctxt "field:product.uom,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.uom,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_date:"
 msgid "Create Date"
-msgstr "Data di creazione"
+msgstr "Creato il"
 
-#, fuzzy
 msgctxt "field:product.uom.category,create_uid:"
 msgid "Create User"
-msgstr "Utente creazione"
+msgstr "Creato da"
 
-#, fuzzy
 msgctxt "field:product.uom.category,id:"
 msgid "ID"
-msgstr "Movimento contabile"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:product.uom.category,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Nome del record"
 
-#, fuzzy
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
-msgstr "Units of Measure"
+msgstr "Unità di misura"
 
-#, fuzzy
 msgctxt "field:product.uom.category,write_date:"
 msgid "Write Date"
-msgstr "Utente scrittura"
+msgstr "Modificato il"
 
-#, fuzzy
 msgctxt "field:product.uom.category,write_uid:"
 msgid "Write User"
-msgstr "modificato da"
+msgstr "Modificato da"
 
 msgctxt "help:product.product,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Deselezionare per escludere dall'uso futuro."
 
 msgctxt "help:product.template,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Deselezionare per escludere dall'uso futuro."
 
 msgctxt "help:product.uom,active:"
 msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Deselezionare per escludere dall'uso futuro."
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
 msgstr ""
+"Il coefficiente per la formula:\n"
+"coef (unità base) = 1 (questa unità)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
 msgstr ""
+"Il coefficiente per la formula:\n"
+"1 (unità base) = coef (questa unità)"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
 msgstr "Categorie"
@@ -691,10 +589,9 @@ msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
 msgstr "Product by Category"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Prodotto"
+msgstr "Prodotti"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
@@ -704,22 +601,18 @@ msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
 msgstr "Units of Measure"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
 msgstr "Categorie"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "Configurazione"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
 msgstr "Prodotto"
@@ -732,12 +625,10 @@ msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
 msgstr "Product Configuration"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Prodotto"
+msgstr "Prodotti"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
 msgstr "Categorie"
@@ -746,10 +637,9 @@ msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
 msgstr "Units of Measure"
 
-#, fuzzy
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Product by Category"
+msgstr "Categoria Prodotto"
 
 #, fuzzy
 msgctxt "model:product.configuration,name:"
@@ -762,7 +652,7 @@ msgstr ""
 
 msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
-msgstr ""
+msgstr "Prezzo del prodotto"
 
 msgctxt "model:product.cost_price_method,name:"
 msgid "Product Cost Price Method"
@@ -770,16 +660,15 @@ msgstr ""
 
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
-msgstr ""
+msgstr "Prezzo di listino dei prodotti"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr ""
+msgstr "Variante prodotto"
 
-#, fuzzy
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr "Modello prodotto/articolo"
+msgstr "Modello prodotto"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
@@ -789,10 +678,9 @@ msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
-msgstr "Units of Measure"
+msgstr "Unità di Misura"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
@@ -910,7 +798,6 @@ msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
 msgstr "Square yard"
 
-#, fuzzy
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
 msgstr "Unità"
@@ -1058,7 +945,7 @@ msgstr "Product by Category"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Length"
+msgstr "Lunghezza"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
@@ -1066,9 +953,8 @@ msgstr "Surface"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Time"
+msgstr "Tempo"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
 msgstr "Unità"
@@ -1079,20 +965,19 @@ msgstr "Volume"
 
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Weight"
+msgstr "Peso"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Product Administration"
+msgstr "Amministrazione prodotto"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "Media"
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
-msgstr "Fisso"
+msgstr "Fissa"
 
 #, fuzzy
 msgctxt "selection:product.product,type:"
@@ -1101,20 +986,19 @@ msgstr "Immobilizzazioni"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Beni"
 
 msgctxt "selection:product.product,type:"
 msgid "Service"
-msgstr ""
+msgstr "Servizio"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "Media"
 
-#, fuzzy
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
-msgstr "Fisso"
+msgstr "Fissa"
 
 #, fuzzy
 msgctxt "selection:product.template,type:"
@@ -1123,28 +1007,24 @@ msgstr "Immobilizzazioni"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Beni"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr ""
+msgstr "Servizio"
 
-#, fuzzy
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Figlio"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "General"
 msgstr "Generale"
 
-#, fuzzy
 msgctxt "view:product.configuration:"
 msgid "Party Configuration"
-msgstr "Connfigurazione Controparte"
+msgstr "Configurazione controparte"
 
-#, fuzzy
 msgctxt "view:product.product:"
 msgid "Product"
 msgstr "Prodotto"
