@@ -70,12 +70,10 @@ msgctxt "model:account.be.vat_customer.context,name:"
 msgid "Belgium VAT Customer Context"
 msgstr "Contexto do IVA De Clientes Belgas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_vat_customer_form"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "IVA do Cliente"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_vat_customer"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "IVA do Cliente"

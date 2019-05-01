@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
