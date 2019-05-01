@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.inventory.count:"
-msgid "Only lot can be selected for \"%(product)s\"."
-msgstr ""
-
-msgctxt "error:stock.lot:"
-msgid ""
-"You cannot change the product of a lot which is associated to stock moves."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"."
-msgstr "قطعه موردنیاز برای جابجایی محصول \"%s\"."
-
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "قطعه مورد نیاز"
@@ -225,6 +212,22 @@ msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr "جابجایی ها"
 
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"شما نمیتوانید محصول زیادی از یک جنس را تغییر دهید که جابجایی اجناس داشته "
+"باشد."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+"برای جابجایی محصول :\"%(product)s\" شما باید یک قطعه از جنس را ارائه کنید."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+"شما باید یک مقدار جنس را به جای یک محصول برای \"%(product)s\" انتخاب کنید."
+
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "قطعه‌ها"
@@ -269,7 +272,6 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "موجودی دوره انبار در هر قطعه"
 
-#, fuzzy
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
 msgstr "قطعه"

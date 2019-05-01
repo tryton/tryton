@@ -2,21 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.inventory.count:"
-msgid "Only lot can be selected for \"%(product)s\"."
-msgstr "Seulement un lot peut être sélectionné pour « %(product)s »."
-
-msgctxt "error:stock.lot:"
-msgid ""
-"You cannot change the product of a lot which is associated to stock moves."
-msgstr ""
-"Vous ne pouvez pas changer le produit d'un lot qui a déjà fait l'objet de "
-"mouvements de stock."
-
-msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"."
-msgstr "Un lot est requis pour les mouvements du produit « %s »."
-
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "Lot requis"
@@ -226,6 +211,21 @@ msgstr "Lot"
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr "Mouvements"
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"Vous ne pouvez pas changer le produit d'un lot qui a des mouvements de "
+"stock."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr "Pour déplacer le produit « %(product)s », vous devez fournir un lot."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+"Vous devez sélectionner un lot au lieu d'un produit pour « %(product)s »."
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"

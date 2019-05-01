@@ -2,23 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.inventory.count:"
-msgid "Only lot can be selected for \"%(product)s\"."
-msgstr "Für Artikel \"%(product)s\" können nur Chargen ausgewählt werden."
-
-msgctxt "error:stock.lot:"
-msgid ""
-"You cannot change the product of a lot which is associated to stock moves."
-msgstr ""
-"Der Artikel einer Charge mit zugeordneten Lagerbewegungen kann nicht "
-"geändert werden."
-
-msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"."
-msgstr ""
-"Für die Lagerbewegung von Artikel \"%s\" ist eine Chargennummer "
-"erforderlich."
-
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "Charge erforderlich für Lagerort"
@@ -73,7 +56,7 @@ msgstr "Erstellt durch"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr "Voraussichtliche Anzahl"
+msgstr "Voraussichtliche Menge"
 
 msgctxt "field:stock.lot,id:"
 msgid "ID"
@@ -89,7 +72,7 @@ msgstr "Artikel"
 
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
-msgstr "Anzahl"
+msgstr "Menge"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Record Name"
@@ -169,7 +152,7 @@ msgstr "ID"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "Interne Anzahl"
+msgstr "Interne Menge"
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
@@ -229,6 +212,24 @@ msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
 msgstr "Lagerbewegungen"
 
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+"Der Artikel einer Charge, für die es Lagerbewegungen gibt, kann nicht "
+"geändert werden."
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+"Damit der Artikel \"%(product)s\" umgelagert werden kann, muss eine Charge "
+"angegeben werden."
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
+msgstr ""
+"Für \"%(product)s\" muss eine Charge ausgewählt werden anstatt einem "
+"Artikel."
+
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Chargen"
@@ -251,7 +252,7 @@ msgstr "Kunde"
 
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "Differenzen allgemein"
+msgstr "Inventurdifferenz"
 
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
@@ -271,7 +272,7 @@ msgstr "Chargen nach Lagerort"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr "Lager Cache Periode pro Charge"
+msgstr "Lagerperioden Cache pro Charge"
 
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"

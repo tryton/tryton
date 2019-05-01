@@ -2,19 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.inventory.count:"
-msgid "Only lot can be selected for \"%(product)s\"."
-msgstr ""
-
-msgctxt "error:stock.lot:"
-msgid ""
-"You cannot change the product of a lot which is associated to stock moves."
-msgstr ""
-
-msgctxt "error:stock.move:"
-msgid "Lot is required for move of product \"%s\"."
-msgstr "El lote es requerido para el movimiento del producto \\\"%s\\\"."
-
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
 msgstr "Lote requerido"
@@ -53,7 +40,7 @@ msgstr ""
 
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
@@ -97,7 +84,7 @@ msgstr ""
 
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
@@ -129,7 +116,7 @@ msgstr ""
 
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
@@ -193,7 +180,7 @@ msgstr ""
 
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
@@ -220,6 +207,18 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_change_product"
+msgid "You cannot change the product of a stock lot which has stock moves."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_lot_required"
+msgid "To move product \"%(product)s\" you must provide a stock lot."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_only_lot"
+msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"

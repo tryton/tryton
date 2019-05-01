@@ -4,217 +4,183 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Partii nõutav"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Partii nõutav"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
 msgctxt "field:product.template-stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,template:"
 msgid "Template"
-msgstr "ຮ່າງແບບ"
+msgstr "Mall"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,type:"
 msgid "Type"
-msgstr "ຮູບແບບ"
+msgstr "Tüüp"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:product.template-stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Partii"
 
-#, fuzzy
 msgctxt "field:stock.lot,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.lot,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr ""
+msgstr "Prognoositav kogus"
 
-#, fuzzy
 msgctxt "field:stock.lot,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:stock.lot,number:"
 msgid "Number"
-msgstr "ເລກທີ"
+msgstr "Number"
 
-#, fuzzy
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Toode"
 
-#, fuzzy
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr "Kogus"
 
 msgctxt "field:stock.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:stock.lot,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.lot,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,code:"
 msgid "Code"
-msgstr "ລະຫັດແຂວງ"
+msgstr "Kood"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr "Nimi"
 
 msgctxt "field:stock.lot.type,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.lot.type,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
+msgstr "Kuupäeval"
 
-#, fuzzy
 msgctxt "field:stock.lots_by_location.context,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Kuupäeval"
 
-#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Partii"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr "Loomise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr "Looja"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr "ID"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr "ຈຳນວນພາຍໃນ"
+msgstr "Sisemine kogus"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
-msgstr "ບ່ອນຢູ່"
+msgstr "Asukoht"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Partii"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
-msgstr "ໄລຍະ"
+msgstr "Periood"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Toode"
 
 msgctxt "field:stock.period.cache.lot,rec_name:"
 msgid "Record Name"
-msgstr ""
+msgstr "Kirje nimi"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr "Muutmise kuupäev"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr "Muutja"
 
 msgctxt "help:product.product,lot_required:"
 msgid "The type of location for which lot is required"
@@ -233,16 +199,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lots"
+msgstr "Partiid"
 
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Partii"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "ຕັດບັນຊີສາງ"
+msgstr "Liikumised"
 
 msgctxt "model:ir.message,text:msg_change_product"
 msgid "You cannot change the product of a stock lot which has stock moves."
@@ -258,43 +223,39 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lots"
+msgstr "Partiid"
 
 msgctxt "model:product.template-stock.lot.type,name:"
 msgid "Template - Stock Lot Type"
-msgstr ""
+msgstr "Mall - varude partii tüüp"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr ""
+msgstr "Partii laos"
 
 msgctxt "model:stock.lot.type,name:"
 msgid "Stock Lot Type"
-msgstr ""
+msgstr "Partiitunnuse tüüp"
 
 msgctxt "model:stock.lot.type,name:type_customer"
 msgid "Customer"
-msgstr "Customer"
+msgstr "Klient"
 
-#, fuzzy
 msgctxt "model:stock.lot.type,name:type_lost_found"
 msgid "Lost and Found"
-msgstr "ລໍຮັບຈ່າຍ"
+msgstr "Kaotatud ja leitud"
 
-#, fuzzy
 msgctxt "model:stock.lot.type,name:type_production"
 msgid "Production"
-msgstr "ຜະລິດຕະພັນ"
+msgstr "Tootmine"
 
-#, fuzzy
 msgctxt "model:stock.lot.type,name:type_storage"
 msgid "Storage"
-msgstr "ຫ້ອງເກັບມ້ຽນຢາ"
+msgstr "Laokoht"
 
-#, fuzzy
 msgctxt "model:stock.lot.type,name:type_supplier"
 msgid "Supplier"
-msgstr "ຜູ້ສະໜອງ"
+msgstr "Hankija"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
@@ -304,12 +265,10 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
-msgstr "Lot"
+msgstr "Partii"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lots"
+msgstr "Partiid"
