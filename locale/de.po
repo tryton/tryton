@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.internal:"
-msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
-msgstr "Der Lagerort '%(location)s' ist bereits '%(assigned_by)s' zugeordnet."
-
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
 msgstr "Zugewiesen von"
@@ -50,9 +46,23 @@ msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
 msgstr "Letzte Änderung durch"
 
+msgctxt "model:ir.message,text:msg_location_already_assigned"
+msgid ""
+"The location \"%(location)s\" has already been assigned by "
+"\"%(assigned_by)s\"."
+msgstr "Der Lagerort '%(location)s' ist bereits '%(assigned_by)s' zugeordnet."
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable"
+msgid "Movable location"
+msgstr "Mobiler Lagerort"
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
+msgid "Any location"
+msgstr "Beliebiger Lagerort"
+
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr "Stock Location Movable"
+msgstr "Mobiler Lagerort"
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"

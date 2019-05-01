@@ -4,23 +4,23 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
-msgstr "Assegnato da"
+msgstr "Määratud"
 
 msgctxt "field:stock.location,movable:"
 msgid "Movable"
-msgstr "Mobiliare"
+msgstr "Liigutatav"
 
 msgctxt "field:stock.shipment.internal,locations:"
 msgid "Locations"
-msgstr "Luoghi"
+msgstr "Asukohad"
 
 msgctxt "field:stock.shipment.internal-location,create_date:"
 msgid "Create Date"
-msgstr "Creato il"
+msgstr "Loomise kuupäev"
 
 msgctxt "field:stock.shipment.internal-location,create_uid:"
 msgid "Create User"
-msgstr "Creato da"
+msgstr "Looja"
 
 msgctxt "field:stock.shipment.internal-location,id:"
 msgid "ID"
@@ -28,29 +28,29 @@ msgstr "ID"
 
 msgctxt "field:stock.shipment.internal-location,location:"
 msgid "Location"
-msgstr "Luogo"
+msgstr "Asukoht"
 
 msgctxt "field:stock.shipment.internal-location,rec_name:"
 msgid "Record Name"
-msgstr "Nome del record"
+msgstr "Kirje nimi"
 
 msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
-msgstr "Spedizione"
+msgstr "Lähetus"
 
 msgctxt "field:stock.shipment.internal-location,write_date:"
 msgid "Write Date"
-msgstr "Modificato il"
+msgstr "Muutmise kuupäev"
 
 msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
-msgstr "Modificato da"
+msgstr "Muutja"
 
 msgctxt "model:ir.message,text:msg_location_already_assigned"
 msgid ""
 "The location \"%(location)s\" has already been assigned by "
 "\"%(assigned_by)s\"."
-msgstr "Il luogo \"%(location)s\" è già stata assegnata da \"%(assigned_by)s\"."
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_location_movable"
 msgid "Movable location"
@@ -62,8 +62,8 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr "Luogo di stock mobiliare"
+msgstr ""
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"
-msgstr "Spedizione interna - Ubicazione"
+msgstr ""

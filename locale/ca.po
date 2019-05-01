@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.internal:"
-msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
-msgstr "La ubicació '%(location)s' ja està reservada per '%(assigned_by)s'."
-
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
 msgstr "Reservat per"
@@ -49,6 +45,20 @@ msgstr "Data de modificació"
 msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
+
+msgctxt "model:ir.message,text:msg_location_already_assigned"
+msgid ""
+"The location \"%(location)s\" has already been assigned by "
+"\"%(assigned_by)s\"."
+msgstr "La ubicació '%(location)s' ja està reservada per '%(assigned_by)s'."
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable"
+msgid "Movable location"
+msgstr "Ubicació movible"
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
+msgid "Any location"
+msgstr "Qualsevol ubicació"
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"

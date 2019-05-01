@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:stock.shipment.internal:"
-msgid "The location '%(location)s' is already assigned by '%(assigned_by)s'."
-msgstr ""
-
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
 msgstr ""
@@ -20,11 +16,11 @@ msgstr ""
 
 msgctxt "field:stock.shipment.internal-location,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:stock.shipment.internal-location,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:stock.shipment.internal-location,id:"
 msgid "ID"
@@ -44,10 +40,24 @@ msgstr ""
 
 msgctxt "field:stock.shipment.internal-location,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:stock.shipment.internal-location,write_uid:"
 msgid "Write User"
+msgstr "Pakeitęs naudotojas"
+
+msgctxt "model:ir.message,text:msg_location_already_assigned"
+msgid ""
+"The location \"%(location)s\" has already been assigned by "
+"\"%(assigned_by)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable"
+msgid "Movable location"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
+msgid "Any location"
 msgstr ""
 
 msgctxt "model:res.group,name:group_stock_location_movable"
