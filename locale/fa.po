@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion:"
-msgid ""
-"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
-"exception \"%(exception)s\"."
-msgstr "فرمول: \"%s\" در ترویج وتبلیع : \"%s\" با استثنا: \"%s\" نامعتبر میباشد."
-
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr "پیش نویس واحد قیمت"
@@ -171,6 +165,16 @@ msgstr "ترویج ها و تبلیغات"
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "ترویج ها و تبلیغات فروش"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr "فرمول: \"%s\" در ترویج وتبلیع : \"%s\" با شرایط :\"%s\" نامعتبر میباشد."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"

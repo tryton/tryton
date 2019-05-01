@@ -11,111 +11,93 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Promotions"
 
-#, fuzzy
 msgctxt "field:sale.promotion,active:"
 msgid "Active"
-msgstr "ໃຊ້ຢູ່"
+msgstr ""
 
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr "ຫ້ອງການ/ສຳນັກງານ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr "ວັນທີສິ້ນສຸດ"
+msgstr ""
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "ຊື່"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr "ລາຍການລາຄາ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "ຜະລິດຕະພັນ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "ຈຳນວນ"
+msgstr ""
 
 msgctxt "field:sale.promotion,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "ວັນທີເລີ່ມ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "ໜ່ວຍ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr "ຫົວໜ່ວຍເສດ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.promotion-product.category,promotion:"
@@ -126,35 +108,29 @@ msgctxt "field:sale.promotion-product.category,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
-msgstr "ເລດລຳດັບ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "ຜະລິດຕະພັນ"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.promotion-product.product,promotion:"
@@ -165,15 +141,13 @@ msgctxt "field:sale.promotion-product.product,rec_name:"
 msgid "Record Name"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
+msgstr ""
 
 msgctxt "help:sale.promotion,active:"
 msgid "Uncheck to exclude from future use."

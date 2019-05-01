@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion:"
-msgid ""
-"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr ""
@@ -200,6 +194,16 @@ msgstr "Promotions"
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Sale Promotions"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"

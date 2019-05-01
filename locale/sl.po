@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion:"
-msgid ""
-"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-"Neveljavna formula \"%(formula)s\" v spodbude \"%(promotion)s\" z napako "
-"\"%(exception)s\"."
-
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr "Cena v pripravi"
@@ -182,6 +174,19 @@ msgstr "Promotions"
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Sale Promotions"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Neveljavna formula \"%(formula)s\" v spodbude \"%(promotion)s\" z napako "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_promotion"

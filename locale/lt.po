@@ -2,12 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion:"
-msgid ""
-"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr ""
@@ -27,19 +21,19 @@ msgstr ""
 
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr ""
+msgstr "Organizacija"
 
 msgctxt "field:sale.promotion,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.promotion,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Pabaigos data"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
@@ -72,7 +66,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Pradžios data"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
@@ -84,11 +78,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -96,11 +90,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.category,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.promotion-product.category,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.promotion-product.category,id:"
 msgid "ID"
@@ -117,19 +111,19 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.category,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
-msgstr ""
+msgstr "Sukūrimo data"
 
 msgctxt "field:sale.promotion-product.product,create_uid:"
 msgid "Create User"
-msgstr ""
+msgstr "Sukūręs naudotojas"
 
 msgctxt "field:sale.promotion-product.product,id:"
 msgid "ID"
@@ -150,11 +144,11 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.product,write_date:"
 msgid "Write Date"
-msgstr ""
+msgstr "Pakeitimo data"
 
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr ""
+msgstr "Pakeitęs naudotojas"
 
 msgctxt "help:sale.promotion,active:"
 msgid "Uncheck to exclude from future use."
@@ -173,6 +167,16 @@ msgstr "Promotions"
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
 msgstr "Sale Promotions"
+
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"

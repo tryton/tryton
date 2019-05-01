@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:sale.promotion:"
-msgid ""
-"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" with "
-"exception \"%(exception)s\"."
-msgstr ""
-"Fórmula \"%(formula)s\" no válida en la promoción \"%(promotion)s\" con "
-"excepción \"%(exception)s\"."
-
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
 msgstr "Precio unitario borrador"
@@ -88,7 +80,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
@@ -119,10 +111,9 @@ msgctxt "field:sale.promotion-product.category,write_date:"
 msgid "Write Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,create_date:"
 msgid "Create Date"
@@ -154,7 +145,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.product,write_uid:"
 msgid "Write User"
-msgstr "Modificado por usuario"
+msgstr ""
 
 msgctxt "help:sale.promotion,active:"
 msgid "Uncheck to exclude from future use."
@@ -174,6 +165,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_formula"
+msgid ""
+"Invalid formula \"%(formula)s\" in promotion \"%(promotion)s\" 'with "
+"exception \"%(exception)s\"."
+msgstr ""
+"Fórmula \"%(formula)s\" no válida en la promoción \"%(promotion)s\" con "
+"excepción \"%(exception)s\"."
+
+msgctxt "model:ir.rule.group,name:rule_group_promotion"
+msgid "User in company"
 msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_promotion"
