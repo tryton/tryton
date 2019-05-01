@@ -32,7 +32,7 @@ msgstr "تلاش کار"
 
 msgctxt "help:purchase.line,work:"
 msgid "Add to the cost of the work effort."
-msgstr ""
+msgstr "اضافه کردن هزینه تلاش کار."
 
 msgctxt "view:project.work:"
 msgid "Purchases"
