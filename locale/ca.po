@@ -1,0 +1,135 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:res.role,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:res.role,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:res.role,groups:"
+msgid "Groups"
+msgstr "Grups"
+
+msgctxt "field:res.role,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.role,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:res.role,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:res.role,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:res.role,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:res.role-res.group,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:res.role-res.group,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:res.role-res.group,group:"
+msgid "Group"
+msgstr "Grup"
+
+msgctxt "field:res.role-res.group,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.role-res.group,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:res.role-res.group,role:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "field:res.role-res.group,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:res.role-res.group,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "field:res.user,roles:"
+msgid "Roles"
+msgstr "Rols"
+
+msgctxt "field:res.user.role,create_date:"
+msgid "Create Date"
+msgstr "Data de creació"
+
+msgctxt "field:res.user.role,create_uid:"
+msgid "Create User"
+msgstr "Usuari de creació"
+
+msgctxt "field:res.user.role,from_date:"
+msgid "From Date"
+msgstr "Des de la data"
+
+msgctxt "field:res.user.role,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:res.user.role,rec_name:"
+msgid "Record Name"
+msgstr "Nom del registre"
+
+msgctxt "field:res.user.role,role:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "field:res.user.role,to_date:"
+msgid "To Date"
+msgstr "Fins a la data"
+
+msgctxt "field:res.user.role,user:"
+msgid "User"
+msgstr "Usuari"
+
+msgctxt "field:res.user.role,write_date:"
+msgid "Write Date"
+msgstr "Data de modificació"
+
+msgctxt "field:res.user.role,write_uid:"
+msgid "Write User"
+msgstr "Usuari de modificació"
+
+msgctxt "model:ir.action,name:act_role_form"
+msgid "Roles"
+msgstr "Rols"
+
+msgctxt "model:ir.ui.menu,name:menu_role_form"
+msgid "Roles"
+msgstr "Rols"
+
+msgctxt "model:res.role,name:"
+msgid "Role"
+msgstr "Rol"
+
+msgctxt "model:res.role-res.group,name:"
+msgid "Role - Group"
+msgstr "Rol - Grup"
+
+msgctxt "model:res.user.role,name:"
+msgid "User Role"
+msgstr "Rol d'usuari"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Synchronize Users Roles"
+msgstr "Sincronitza rols d'usuari"
