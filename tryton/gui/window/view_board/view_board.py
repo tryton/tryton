@@ -25,7 +25,7 @@ class ViewBoard(object):
                 break
 
         self.attributes = node_attributes(node)
-        self.widget = self.parse(node).table
+        self.widget = self.parse(node).container
         self.widget.show_all()
 
         self._active_changed(None)
@@ -110,17 +110,17 @@ class ViewBoard(object):
         scrolledwindow.show_all()
         notebook.append_page(scrolledwindow, tab_box)
         container = self.parse(node)
-        viewport.add(container.table)
+        viewport.add(container.container)
 
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)
-        group.table.set_homogeneous(attributes.get('homogeneous', False))
+        group.container.set_homogeneous(attributes.get('homogeneous', False))
         frame = Gtk.Frame()
         frame.set_label(attributes.get('string'))
         if not attributes.get('string'):
             frame.set_shadow_type(Gtk.ShadowType.NONE)
         frame.set_border_width(0)
-        frame.add(group.table)
+        frame.add(group.container)
         container.add(frame, attributes)
 
     def _parse_paned(self, node, container, attributes, Paned):
@@ -144,7 +144,7 @@ class ViewBoard(object):
             pack = paned.pack1
         else:
             pack = paned.pack2
-        pack(container.table, resize=True, shrink=True)
+        pack(container.container, resize=True, shrink=True)
 
     def _parse_action(self, node, container, attributes):
         attributes.setdefault('yexpand', True)
