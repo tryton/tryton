@@ -1053,6 +1053,7 @@
                     domain = domain_parser.parse(search_string);
                 } else {
                     domain = this.attributes.search_value;
+                    this.attributes.search_value = null;
                 }
                 if (set_text) {
                     this.screen_container.set_text(
@@ -1920,8 +1921,13 @@
             var view_ids = this.views.map(
                 function(v) {return v.view_id;}).concat(this.view_ids);
             if (this.current_view.view_type != 'form') {
-                var search_string = this.screen_container.get_text();
-                var search_value = this.domain_parser.parse(search_string);
+                var search_value;
+                if (this.attributes.search_value) {
+                    search_value = this.attributes.search_value;
+                } else {
+                    var search_string = this.screen_container.get_text();
+                    search_value = this.domain_parser.parse(search_string);
+                }
                 if (!jQuery.isEmptyObject(search_value)) {
                     query_string.push(['search_value', dumps(search_value)]);
                 }
