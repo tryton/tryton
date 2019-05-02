@@ -216,9 +216,9 @@
                     for (i = 0; i < affixes.length; i++) {
                         affix = affixes[i];
                         affix_attributes = {};
-                        for (i = 0, len = affix.attributes.length; i < len;
-                                i++) {
-                            attribute = affix.attributes[i];
+                        for (var j = 0, ln = affix.attributes.length; j < ln;
+                                j++) {
+                            attribute = affix.attributes[j];
                             affix_attributes[attribute.name] = attribute.value;
                         }
                         if (!affix_attributes.name) {
