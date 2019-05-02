@@ -298,6 +298,7 @@ class Screen(SignalEvent):
                 domain = self.domain_parser.parse(search_string)
             else:
                 domain = self.search_value
+                self.search_value = None
             if set_text:
                 self.screen_container.set_text(
                     self.domain_parser.string(domain))
@@ -1181,8 +1182,11 @@ class Screen(SignalEvent):
         path = [rpc._DATABASE, 'model', self.model_name]
         view_ids = [v.view_id for v in self.views] + self.view_ids
         if self.current_view.view_type != 'form':
-            search_string = self.screen_container.get_text()
-            search_value = self.domain_parser.parse(search_string)
+            if self.search_value:
+                search_value = self.search_value
+            else:
+                search_string = self.screen_container.get_text()
+                search_value = self.domain_parser.parse(search_string)
             if search_value:
                 query_string.append(('search_value', json.dumps(
                             search_value, cls=JSONEncoder,
