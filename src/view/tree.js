@@ -30,11 +30,11 @@
             }
             var affix, affix_attributes;
             var affixes = node.childNodes;
-            for (i = 0; i < affixes.length; i++) {
+            for (var i = 0; i < affixes.length; i++) {
                 affix = affixes[i];
                 affix_attributes = {};
-                for (var i = 0, len = affix.attributes.length; i < len; i++) {
-                    var attribute = affix.attributes[i];
+                for (var j = 0, len = affix.attributes.length; j < len; j++) {
+                    var attribute = affix.attributes[j];
                     affix_attributes[attribute.name] = attribute.value;
                 }
                 if (!affix_attributes.name) {
