@@ -256,7 +256,7 @@ class Screen(SignalEvent):
                 self.clear()
                 self.context_screen.display(set_cursor=True)
                 return False
-            context = self.context
+            context = self.group._context.copy()
             context.update(self.context_screen.get_on_change_value())
             self.new_group(context)
 
