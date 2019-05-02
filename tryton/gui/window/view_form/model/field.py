@@ -905,6 +905,12 @@ class _FileCache(object):
     def __init__(self, path):
         self.path = path
 
+    def __del__(self):
+        try:
+            os.remove(self.path)
+        except IOError:
+            pass
+
 
 class BinaryField(Field):
 
