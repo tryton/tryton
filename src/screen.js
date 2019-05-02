@@ -978,7 +978,8 @@
                     this.context_screen.display(true);
                     return jQuery.when();
                 }
-                this.new_group(jQuery.extend(this.context,
+                this.new_group(jQuery.extend({},
+                    this.group._context,
                     this.context_screen.get_on_change_value()));
             }
 
