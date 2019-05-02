@@ -95,17 +95,17 @@
             var text, separator;
             text = attributes.string;
             separator = new Sao.view.Form.Separator(text, attributes);
-            container.add(attributes, separator);
+            container.add(separator, attributes);
         },
         _parse_label: function(node, container, attributes) {
             var text, label;
             text = attributes.string;
             if (!text) {
-                container.add(attributes);
+                container.add(null, attributes);
                 return;
             }
             label = new Sao.View.Form.Label(text, attributes);
-            container.add(attributes, label);
+            container.add(label, attributes);
         },
         _parse_notebook: function(node, container, attributes) {
             var notebook;
@@ -116,7 +116,7 @@
                 attributes.yfill = true;
             }
             notebook = new Sao.View.Form.Notebook(attributes);
-            container.add(attributes, notebook);
+            container.add(notebook, attributes);
             this.parse(node, container);
         },
         _parse_page: function(node, container, attributes) {
@@ -129,7 +129,7 @@
         _parse_group: function(node, container, attributes) {
             var group;
             group = new Sao.View.Form.Group(attributes);
-            container.add(attributes, group);
+            container.add(group, attributes);
         },
         _parse_pane: function(node, container, attributes, orientation) {
             var paned;
@@ -140,7 +140,7 @@
                 attributes.yfill = true;
             }
             paned = new Sao.common.Paned(orientation);
-            container.add(attributes, paned);
+            container.add(paned, attributes);
             this.parse(node, paned);
         },
         _parse_child: function(node, paned, attributes) {
@@ -164,7 +164,7 @@
             }
             action = new Sao.View.Board.Action(attributes, this.context);
             this.actions.push(action);
-            container.add(attributes, action);
+            container.add(action, attributes);
         },
         reload: function() {
             for (var i = 0; i < this.actions.length; i++) {
