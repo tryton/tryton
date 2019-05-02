@@ -530,7 +530,7 @@ class Form(SignalEvent, TabContent):
             'id': record_id,
             'ids': record_ids,
         }
-        Action._exec_action(action, data, self.screen.context)
+        Action._exec_action(action, data, self.screen.group._context.copy())
 
     def activate_save(self):
         self.buttons['save'].props.sensitive = self.screen.modified()
