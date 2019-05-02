@@ -1466,7 +1466,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if to_remove:
                 to_write.append([invoice])
                 to_write.append({
-                        'payment_lines': ('remove', to_remove),
+                        'payment_lines': [('remove', to_remove)],
                         })
         if to_write:
             cls.write(*to_write)
