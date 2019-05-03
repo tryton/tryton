@@ -148,8 +148,10 @@
             return node_attrs;
         },
         parse: function(node) {
-            var attributes = this._node_attributes(node);
-            this['_parse_' + node.tagName](node, attributes);
+            if (node.tagName) {
+                var attributes = this._node_attributes(node);
+                this['_parse_' + node.tagName](node, attributes);
+            }
         },
     });
 }());
