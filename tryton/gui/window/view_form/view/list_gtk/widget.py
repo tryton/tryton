@@ -914,7 +914,7 @@ class Reference(GenericText, SelectionMixin):
             callback()
 
 
-class ProgressBar(object):
+class ProgressBar(Cell):
     align = 0.5
     orientations = {
         'left_to_right': gtk.PROGRESS_LEFT_TO_RIGHT,
