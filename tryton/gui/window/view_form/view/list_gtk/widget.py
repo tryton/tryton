@@ -1053,7 +1053,7 @@ class _ReferenceSelection(Selection):
         return False
 
 
-class ProgressBar(object):
+class ProgressBar(Cell):
     align = 0.5
     orientations = {
         'left_to_right': (Gtk.Orientation.HORIZONTAL, False),
