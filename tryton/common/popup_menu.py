@@ -94,11 +94,11 @@ def populate(menu, model, record, title='', field=None, context=None):
     action_menu.append(note_item)
     note_item.connect('activate', note)
 
-    def set_toolbar(toolbar):
-        try:
-            toolbar = toolbar()
-        except RPCException:
-            return
+    try:
+        toolbar = RPCExecute('model', model, 'view_toolbar_get')
+    except RPCException:
+        pass
+    else:
         for atype, icon, label, flavor in (
                 ('action', 'tryton-launch', _('Actions...'), None),
                 ('relate', 'tryton-link', _('Relate...'), None),
@@ -125,5 +125,4 @@ def populate(menu, model, record, title='', field=None, context=None):
                     action['email_print'] = True
                 item.connect('activate', activate, action, atype)
             menu.show_all()
-    RPCExecute('model', model, 'view_toolbar_get', callback=set_toolbar)
     menu.show_all()

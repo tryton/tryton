@@ -823,11 +823,6 @@ class ViewTree(View):
                 paste_item = Gtk.MenuItem(label=_('Paste'))
                 paste_item.connect('activate', lambda x: self.on_paste())
                 menu.append(paste_item)
-            menu.show_all()
-            if hasattr(menu, 'popup_at_pointer'):
-                menu.popup_at_pointer(event)
-            else:
-                menu.popup(None, None, None, event.button, event.time)
 
             def pop(menu, group, record):
                 # Don't activate actions if parent is modified
@@ -858,7 +853,6 @@ class ViewTree(View):
                     populate(
                         menu, model, record_id, title=label, field=field,
                         context=context)
-                menu.show_all()
 
             selection = treeview.get_selection()
             if selection.count_selected_rows() == 1:
@@ -868,8 +862,12 @@ class ViewTree(View):
                 elif selection.get_mode() == Gtk.SelectionMode.MULTIPLE:
                     model = selection.get_selected_rows()[0]
                 record = model.get_value(model.get_iter(path), 0)
-                # Delay filling of popup as it can take time
-                GLib.idle_add(pop, menu, group, record)
+                pop(menu, group, record)
+            menu.show_all()
+            if hasattr(menu, 'popup_at_pointer'):
+                menu.popup_at_pointer(event)
+            else:
+                menu.popup(None, None, None, event.button, event.time)
             return True  # Don't change the selection
         elif event.button == 2:
             with Window(allow_similar=True):
