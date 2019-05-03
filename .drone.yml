@@ -4,7 +4,7 @@ clone:
 
 pipeline:
     npm:
-        image: node
+        image: tryton/sao-test
         commands:
             - sh .bower_allow_root.sh
             - npm -s install --unsafe-perm

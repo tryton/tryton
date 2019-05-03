@@ -126,6 +126,14 @@ module.exports = function(grunt) {
         }
     },
     qunit: {
+        options: {
+            puppeteer: {
+                headless: true,
+                args: [
+                    '--no-sandbox',
+                ],
+            },
+        },
         all: ['tests/*.html']
     }
   });
