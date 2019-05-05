@@ -113,7 +113,7 @@
                 }
             });
             ['yexpand', 'yfill', 'xexpand', 'xfill', 'colspan',
-                'position'].forEach(function(name) {
+                'position', 'height', 'width'].forEach(function(name) {
                     if (node_attrs[name]) {
                         node_attrs[name] = Number(node_attrs[name]);
                     }
