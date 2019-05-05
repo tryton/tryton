@@ -98,7 +98,8 @@ class XMLViewParser:
             if name in node_attrs:
                 node_attrs[name] = bool(int(node_attrs[name]))
         for name in [
-                'yexpand', 'yfill', 'xexpand', 'xfill', 'colspan', 'position']:
+                'yexpand', 'yfill', 'xexpand', 'xfill', 'colspan', 'position',
+                'height', 'width']:
             if name in node_attrs:
                 node_attrs[name] = int(node_attrs[name])
         for name in ['xalign', 'yalign']:
