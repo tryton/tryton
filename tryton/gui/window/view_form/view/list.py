@@ -812,6 +812,9 @@ class ViewTree(View):
             gtk.gdk.drop_finish(context, False, etime)
         else:
             context.drop_finish(False, etime)
+        selection = self.treeview.get_selection()
+        selection.unselect_all()
+        selection.select_path(record.get_index_path(model.group))
         if self.attributes.get('sequence'):
             record.group.set_sequence(field=self.attributes['sequence'])
         return True
