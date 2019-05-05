@@ -248,15 +248,13 @@ function eval_pyson(value){
                 // Force to set fields in record
                 // Get first the lazy one from the view to reduce number of requests
                 var fields = [];
-                for (name in record.model.fields) {
+                for (name in this.widgets) {
                     field = record.model.fields[name];
-                    if (field.views.has(this.view_id)) {
-                        fields.push([
-                            name,
-                            field.description.loading || 'eager' == 'eager',
-                            field.views.size,
-                        ]);
-                    }
+                    fields.push([
+                        name,
+                        field.description.loading || 'eager' == 'eager',
+                        field.views.size,
+                    ]);
                 }
                 fields.sort(function(a, b) {
                     if (!a[1] && b[1]) {
