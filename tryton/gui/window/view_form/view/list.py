@@ -793,6 +793,9 @@ class ViewTree(View):
         else:
             model.move_after(record, (len(model) - 1,))
         Gdk.drop_finish(context, False, etime)
+        selection = self.treeview.get_selection()
+        selection.unselect_all()
+        selection.select_path(record.get_index_path(model.group))
         if self.attributes.get('sequence'):
             record.group.set_sequence(field=self.attributes['sequence'])
         return True
