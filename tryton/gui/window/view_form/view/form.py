@@ -513,12 +513,13 @@ class ViewForm(View):
         if record:
             # Force to set fields in record
             # Get first the lazy one from the view to reduce number of requests
+            fields = ((name, record.group.fields[name])
+                for name in self.widgets)
             fields = (
                 (name,
                     field.attrs.get('loading', 'eager') == 'eager',
                     len(field.views))
-                for name, field in record.group.fields.items()
-                if self.view_id in field.views)
+                for name, field in fields)
             fields = sorted(fields, key=operator.itemgetter(1, 2))
             for field, _, _ in fields:
                 record[field].get(record)
