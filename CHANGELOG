@@ -1,3 +1,5 @@
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
 * Add cache for sources
 * Use queue to charge and capture
 
