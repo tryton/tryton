@@ -1,3 +1,5 @@
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
 * Remove purchase fields from stock move
 * Remove starting wildcard when searching on codes and numbers
 * Allow product supplier to be defined on variants
