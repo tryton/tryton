@@ -298,6 +298,7 @@ class Production(Workflow, ModelSQL, ModelView):
         move.unit_price_required = move.on_change_with_unit_price_required()
         return move
 
+    @fields.depends(*BOM_CHANGES)
     def explode_bom(self):
         pool = Pool()
         Uom = pool.get('product.uom')
@@ -338,7 +339,7 @@ class Production(Workflow, ModelSQL, ModelView):
         if self.warehouse:
             self.location = self.warehouse.production_location
 
-    @fields.depends(*BOM_CHANGES)
+    @fields.depends('product', 'uom', methods=['explode_bom'])
     def on_change_product(self):
         if self.product:
             category = self.product.default_uom.category
@@ -362,15 +363,15 @@ class Production(Workflow, ModelSQL, ModelView):
             return self.uom.digits
         return 2
 
-    @fields.depends(*BOM_CHANGES)
+    @fields.depends(methods=['explode_bom'])
     def on_change_bom(self):
         self.explode_bom()
 
-    @fields.depends(*BOM_CHANGES)
+    @fields.depends(methods=['explode_bom'])
     def on_change_uom(self):
         self.explode_bom()
 
-    @fields.depends(*BOM_CHANGES)
+    @fields.depends(methods=['explode_bom'])
     def on_change_quantity(self):
         self.explode_bom()
 
