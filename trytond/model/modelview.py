@@ -215,6 +215,13 @@ class ModelView(Model):
                 cls.__rpc__.setdefault(button,
                     RPC(instantiate=0, result=on_change_result))
 
+            for parent_cls in cls.__mro__:
+                parent_meth = getattr(parent_cls, button, None)
+                if not parent_meth:
+                    continue
+                cls.__change_buttons[button] |= getattr(
+                    parent_meth, 'change', set())
+
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form'):
         '''
