@@ -1,3 +1,5 @@
+Version 5.2.0 - 2019-05-06
+* Bug fixes (see mercurial logs for details)
 * Add sort and translate options to Reference field
 * Do not create empty translations
 * Replace dsn by params to connect to postgresql

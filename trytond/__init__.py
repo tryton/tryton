@@ -5,7 +5,7 @@ import time
 import warnings
 from email import charset
 
-__version__ = "5.1.0"
+__version__ = "5.2.0"
 
 os.environ['TZ'] = 'UTC'
 if hasattr(time, 'tzset'):
