@@ -254,7 +254,8 @@ class Record(SignalEvent):
         value = {}
         for name, field in self.group.fields.items():
             if (field.attrs.get('readonly')
-                    and not isinstance(field, fields.O2MField)):
+                    and not (isinstance(field, fields.O2MField)
+                        and not isinstance(field, fields.M2MField))):
                 continue
             if field.name not in self.modified_fields and self.id >= 0:
                 continue
