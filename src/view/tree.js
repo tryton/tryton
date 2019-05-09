@@ -2001,7 +2001,7 @@
 
     Sao.View.TreeXMLViewParser.WIDGETS = {
         'biginteger': Sao.View.Tree.IntegerColumn,
-        'binary': Sao.View.Tree.BinaryColum,
+        'binary': Sao.View.Tree.BinaryColumn,
         'boolean': Sao.View.Tree.BooleanColumn,
         'callto': Sao.View.Tree.URLColumn,
         'char': Sao.View.Tree.CharColumn,
