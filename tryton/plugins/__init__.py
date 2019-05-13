@@ -23,15 +23,23 @@ def register():
 
     imported = set()
     for path in paths:
+        finder = importlib.machinery.FileFinder(
+            path, (
+                importlib.machinery.SourceFileLoader,
+                importlib.machinery.SOURCE_SUFFIXES))
         for plugin in os.listdir(path):
             module = os.path.splitext(plugin)[0]
             if (module.startswith('_') or module in imported):
                 continue
             module = 'tryton.plugins.%s' % module
+            spec = finder.find_spec(module)
+            if not spec:
+                continue
+            module = importlib.util.module_from_spec(spec)
             try:
-                module = importlib.import_module(module)
-                MODULES.append(module)
+                spec.loader.exec_module(module)
             except ImportError:
                 continue
             else:
+                MODULES.append(module)
                 imported.add(module.__name__)
