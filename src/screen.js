@@ -1426,19 +1426,24 @@
                 prm = this.group.save().then(function() {
                     return this.current_record;
                 }.bind(this));
+            } else if (current_record.validate(fields, null, null, true)) {
+                prm = current_record.save().then(function() {
+                    return current_record;
+                });
             } else {
-                current_record.validate(fields).then(function(validate) {
-                    if (validate) {
-                        current_record.save().then(function() {
-                            prm.resolve(current_record);
-                        }, prm.reject);
-                    } else {
-                        this.current_view.display().done(
-                                this.set_cursor.bind(this));
-                        prm.reject();
-                    }
-                }.bind(this));
+                return this.current_view.display().then(function() {
+                    this.set_cursor();
+                    return jQuery.Deferred().reject();
+                });
             }
+            var display = function() {
+                // Return the original promise to keep succeed/rejected state
+                return this.display().then(function() {
+                    return prm;
+                }, function() {
+                    return prm;
+                });
+            }.bind(this);
             return prm.then(function(current_record) {
                 if (path && current_record && current_record.id) {
                     path.splice(-1, 1,
@@ -1447,7 +1452,7 @@
                 return this.group.get_by_path(path).then(function(record) {
                     this.current_record = record;
                 }.bind(this));
-            }.bind(this)).always(this.display.bind(this));
+            }.bind(this)).then(display, display);
         },
         set_cursor: function(new_, reset_view) {
             if (!this.current_view) {
