@@ -517,7 +517,7 @@
                         this.id = this.model.execute(
                             'create', [[values]], context,  false)[0];
                     } catch (e) {
-                        return jQuery.Deferred().reject(e);
+                        return jQuery.Deferred().reject();
                     }
                 } else {
                     if (!jQuery.isEmptyObject(values)) {
