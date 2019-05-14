@@ -29,8 +29,6 @@ The Work model is extended to support planning features:
   also Late Start and Early Finish dates) are computed automatically.
 - Resource allocation: Each task may allocate one or more resource
   (I.E. a certain amount of time of an employee).
-- Requests: On each work, a list of request is available, allowing to
-  exchange and follow various information about the work execution.
 
 
 The *Task Leveling* wizard allow to level a group of tasks to avoid
