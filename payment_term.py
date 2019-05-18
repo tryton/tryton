@@ -43,7 +43,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
     def check_remainder(self):
         if not self.lines or not self.lines[-1].type == 'remainder':
             raise PaymentTermValidationError(
-                gettext('account_invoive'
+                gettext('account_invoice'
                     '.msg_payment_term_missing_last_remainder',
                     payment_term=self.rec_name))
 
