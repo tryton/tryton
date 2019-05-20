@@ -1272,7 +1272,10 @@ class TaxLine(ModelSQL, ModelView):
             return self.move_line.account.company.id
 
     def get_rec_name(self, name):
-        return self.tax.rec_name
+        name = super(TaxLine, self).get_rec_name(name)
+        if self.tax:
+            name = self.tax.rec_name
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):
