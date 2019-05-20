@@ -106,7 +106,6 @@ Sale 5 products::
     >>> sale_line.quantity = 2
     >>> sale.click('quote')
     >>> sale.click('confirm')
-    >>> sale.click('process')
 
 Post the invoice::
 
@@ -130,9 +129,6 @@ Create a complaint to return the sale::
     'waiting'
     >>> complaint.click('approve')
     >>> complaint.state
-    'approved'
-    >>> complaint.click('process')
-    >>> complaint.state
     'done'
     >>> action, = complaint.actions
     >>> return_sale = action.result
@@ -152,7 +148,6 @@ Create a complaint to return a sale line::
     >>> action.quantity = 1
     >>> complaint.click('wait')
     >>> complaint.click('approve')
-    >>> complaint.click('process')
     >>> complaint.state
     'done'
     >>> action, = complaint.actions
@@ -171,7 +166,6 @@ Create a complaint to credit the invoice::
     >>> action.action = 'credit_note'
     >>> complaint.click('wait')
     >>> complaint.click('approve')
-    >>> complaint.click('process')
     >>> complaint.state
     'done'
     >>> action, = complaint.actions
@@ -194,7 +188,6 @@ Create a complaint to credit a invoice line::
     >>> action.quantity = 1
     >>> complaint.click('wait')
     >>> complaint.click('approve')
-    >>> complaint.click('process')
     >>> complaint.state
     'done'
     >>> action, = complaint.actions

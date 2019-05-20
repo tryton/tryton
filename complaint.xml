@@ -252,9 +252,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="string">Process</field>
             <field name="model" search="[('model', '=', 'sale.complaint')]"/>
         </record>
-        <record model="ir.model.button-res.group" id="complaint_do_button_group_sale">
+        <record model="ir.model.button-res.group" id="complaint_do_button_group_sale_admin">
             <field name="button" ref="complaint_do_button"/>
-            <field name="group" ref="sale.group_sale"/>
+            <field name="group" ref="sale.group_sale_admin"/>
         </record>
 
         <record model="ir.ui.view" id="action_view_form">

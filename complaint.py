@@ -87,9 +87,11 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 ('waiting', 'approved'),
                 ('waiting', 'rejected'),
                 ('approved', 'done'),
+                ('approved', 'draft'),
                 ('draft', 'cancelled'),
                 ('waiting', 'cancelled'),
                 ('done', 'draft'),
+                ('rejected', 'draft'),
                 ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
@@ -269,7 +271,13 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('approved')
     def approve(cls, complaints):
-        pass
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        config = Configuration(1)
+        with Transaction().set_context(
+                queue_name='sale',
+                queue_scheduled_at=config.sale_process_after):
+            cls.__queue__.process(complaints)
 
     @classmethod
     @ModelView.button
