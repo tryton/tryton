@@ -170,6 +170,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                 ('waiting', 'rejected'),
                 ('waiting', 'approved'),
                 ('approved', 'processing'),
+                ('approved', 'draft'),
                 ('processing', 'done'),
                 ('done', 'processing'),
                 ))
@@ -180,7 +181,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
-                        ['cancel', 'waiting', 'rejected']),
+                        ['cancel', 'waiting', 'approved', 'rejected']),
                     'icon': If(Eval('state').in_(['cancel', 'rejected']),
                         'tryton-undo',
                         'tryton-back'),
@@ -281,6 +282,19 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         return total_amount
 
     @classmethod
+    def create_requests(cls, requisitions):
+        pool = Pool()
+        Request = pool.get('purchase.request')
+        requests = []
+        for requisition in requisitions:
+            for line in requisition.lines:
+                request = line.compute_request()
+                if request:
+                    requests.append(request)
+        if requests:
+            Request.save(requests)
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -354,23 +368,13 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @Workflow.transition('approved')
     def approve(cls, requisitions):
         pool = Pool()
-        Request = pool.get('purchase.request')
-        new_requests = []
-        for requisition in requisitions:
-            for line in requisition.lines:
-                request = line.compute_request()
-                if request:
-                    new_requests.append(request)
-        if new_requests:
-            Request.save(new_requests)
-
+        Configuration = pool.get('purchase.configuration')
         cls.store_cache(requisitions)
-
-        # Update the state to allow transition to processing
-        cls.write(requisitions, {
-                'state': 'approved',
-                })
-        cls.proceed(requisitions)
+        config = Configuration(1)
+        with Transaction().set_context(
+                queue_name='purchase',
+                queue_scheduled_at=config.purchase_process_after):
+            cls.__queue__.process(requisitions)
 
     @classmethod
     @Workflow.transition('processing')
@@ -386,9 +390,10 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def process(cls, requisitions):
         done = []
         process = []
+        requisitions = [r for r in requisitions
+            if r.state in {'approved', 'processing', 'done'}]
+        cls.create_requests(requisitions)
         for requisition in requisitions:
-            if requisition.state not in {'processing', 'done'}:
-                continue
             if requisition.is_done():
                 if requisition.state != 'done':
                     done.append(requisition)

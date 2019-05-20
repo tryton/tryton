@@ -1,3 +1,6 @@
+* Use processing delay to process approved requisition
+* Allow reset to draft approved but not processed requisition
+
 Version 5.2.0 - 2019-05-06
 * Bug fixes (see mercurial logs for details)
 
