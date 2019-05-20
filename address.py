@@ -83,6 +83,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     _autocomplete_limit = 100
 
+    @fields.depends('country', 'subdivision')
     def _autocomplete_domain(self):
         domain = []
         if self.country:
@@ -104,14 +105,14 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                 return sorted({getattr(z, name) for z in records})
         return []
 
-    @fields.depends('city', 'country', 'subdivision')
+    @fields.depends('city', methods=['_autocomplete_domain'])
     def autocomplete_zip(self):
         domain = self._autocomplete_domain()
         if self.city:
             domain.append(('city', 'ilike', '%%%s%%' % self.city))
         return self._autocomplete_search(domain, 'zip')
 
-    @fields.depends('zip', 'country', 'subdivision')
+    @fields.depends('zip', methods=['_autocomplete_domain'])
     def autocomplete_city(self):
         domain = self._autocomplete_domain()
         if self.zip:
