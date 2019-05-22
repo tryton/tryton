@@ -290,7 +290,21 @@ class ProductByLocationContext(ModelView):
 class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
     'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse'
-    date = fields.Date('Date')
+
+    class _Date(fields.Date):
+        def get(self, ids, model, name, values=None):
+            if values is None:
+                values = {}
+            result = {}
+            for v in values:
+                date = v[name]
+                # SQLite does not convert to date
+                if isinstance(date, str):
+                    date = datetime.date(*map(int, date.split('-', 2)))
+                result[v['id']] = date
+            return result
+
+    date = _Date('Date')
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
 
     @classmethod
