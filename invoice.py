@@ -113,8 +113,7 @@ class InvoiceLine(metaclass=PoolMeta):
         PurchaseLine = pool.get('purchase.line')
         name = super(InvoiceLine, self).origin_name
         if isinstance(self.origin, PurchaseLine):
-            name = (self.origin.purchase.reference
-                or self.origin.purchase.rec_name)
+            name = self.origin.purchase.rec_name
         return name
 
     @classmethod
