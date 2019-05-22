@@ -100,11 +100,14 @@
     }
 }
 
-@media screen and (max-width: @screen-xs-max) {
+@media screen and (max-height: 750px) {
     .tab-form, .tab-board {
-        .navbar-header > ul > li {
-            float: left;
-            width: 50%;
+        .navbar-header > ul {
+            min-width: 320px;
+            > li {
+                float: left;
+                width: 50%;
+            }
         }
     }
 }
