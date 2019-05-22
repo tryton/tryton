@@ -764,7 +764,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             fs_values = old_values.copy()
             fs_values.update(new_values)
 
-            if values != old_values:
+            if values != fs_values:
                 self.grouped_model_data.extend(([self.ModelData(mdata_id)], {
                             'fs_id': fs_id,
                             'model': model,
