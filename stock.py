@@ -161,7 +161,7 @@ class Move(metaclass=PoolMeta):
         SaleLine = pool.get('sale.line')
         name = super(Move, self).origin_name
         if isinstance(self.origin, SaleLine):
-            name = self.origin.sale.reference or self.origin.sale.rec_name
+            name = self.origin.sale.rec_name
         return name
 
     @classmethod
