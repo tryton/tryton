@@ -44,7 +44,7 @@ try:
         }
 
 except ImportError:
-        pass
+    pass
 
 package_data = {
     'tryton': ['data/pixmaps/tryton/*.png',
