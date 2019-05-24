@@ -3,7 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="product"/>
-    <field name="product" colspan="3"/>
+    <field name="product"/>
+    <label name="active"/>
+    <field name="active"/>
     <label name="consumption_recurrence"/>
     <field name="consumption_recurrence"/>
     <label name="consumption_delay"/>
