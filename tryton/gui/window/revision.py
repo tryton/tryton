@@ -4,7 +4,8 @@ import gtk
 import gettext
 
 from tryton.config import TRYTON_ICON
-from tryton.common import get_toplevel_window
+from tryton.common import (get_toplevel_window,
+    timezoned_date, untimezoned_date)
 from tryton.common.datetime_strftime import datetime_strftime
 from tryton.common.datetime_ import date_parse
 
@@ -50,7 +51,8 @@ class Revision(object):
             active = 0
         list_store.append(('', ''))
         for i, (rev, id_, name) in enumerate(revisions, 1):
-            list_store.append((datetime_strftime(rev, self._format), name))
+            list_store.append(
+                (datetime_strftime(timezoned_date(rev), self._format), name))
             if rev == revision:
                 active = i
         combobox.set_active(active)
@@ -85,7 +87,7 @@ class Revision(object):
         value = None
         if text:
             try:
-                value = date_parse(text, self._format)
+                value = untimezoned_date(date_parse(text, self._format))
             except ValueError:
                 pass
         self._value = value
