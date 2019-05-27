@@ -197,7 +197,7 @@ class WinImport(WinCSV):
                 continue
             row = []
             for field, val in zip(fields, line):
-                if locale_format:
+                if locale_format and val:
                     type_ = self.fields_data[field]['type']
                     if type_ in ['integer', 'biginteger']:
                         val = locale.atoi(val)
