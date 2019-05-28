@@ -332,6 +332,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
     date = _Date('Date')
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
 
+    del _Date
+
     @classmethod
     def __setup__(cls):
         super(ProductQuantitiesByWarehouse, cls).__setup__()
