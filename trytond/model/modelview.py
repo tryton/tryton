@@ -125,15 +125,12 @@ class ModelView(Model):
         cls._buttons = {}
 
         fields_ = {}
-        callables = {}
         for name in dir(cls):
             if name.startswith('__'):
                 continue
             attr = getattr(cls, name)
             if isinstance(attr, fields.Field):
                 fields_[name] = attr
-            elif callable(attr):
-                callables[name] = attr
 
         methods = {
             '_done': set(),
