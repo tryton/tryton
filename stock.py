@@ -112,9 +112,9 @@ class CreateDPDShipping(Wizard):
                 else:
                     raise
         else:
-            self.raise_user_error('can_not_login', {
-                    'credential': credential.rec_name,
-                    })
+            raise DPDError(
+                gettext('stock_package_shipping_dpd.msg_dpd_login_error',
+                    credential=credential.rec_name))
 
         response, = shipment_response.shipmentResponses
         if response.faults:
