@@ -242,7 +242,7 @@ class RecordTagHandler:
                     context.update(CONTEXT)
                 value = eval(eval_attr, context)
                 if pyson_attr:
-                    value = PYSONEncoder().encode(value)
+                    value = PYSONEncoder(sort_keys=True).encode(value)
                 self.values[field_name] = value
 
         else:
