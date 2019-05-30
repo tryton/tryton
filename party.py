@@ -1,6 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
+
+from trytond.modules.party.exceptions import EraseError
 
 __all__ = ['PartyReplace', 'PartyErase']
 
@@ -34,7 +37,7 @@ class PartyErase(metaclass=PoolMeta):
                 ('state', 'not in', ['done', 'cancel']),
                 ])
         if shipments:
-            self.raise_user_error('pending_shipment', {
-                    'party': party.rec_name,
-                    'company': company.rec_name,
-                    })
+            raise EraseError(
+                gettext('stock.msg_erase_party_shipment',
+                    party=party.rec_name,
+                    company=company.rec_name))
