@@ -38,13 +38,20 @@ class PurchaseRequest(ModelSQL, ModelView):
     quantity = fields.Float('Quantity', required=True, states=STATES,
         digits=(16, Eval('uom_digits', 2)), depends=DEPENDS + ['uom_digits'])
     uom = fields.Many2One('product.uom', 'UOM', select=True,
+        ondelete='RESTRICT',
+        domain=[
+            ('category', '=', Eval('product_uom_category')),
+            ],
         states={
             'required': Bool(Eval('product')),
             'readonly': STATES['readonly'],
             },
-        depends=['product'] + DEPENDS)
+        depends=['product', 'product_uom_category'] + DEPENDS)
     uom_digits = fields.Function(fields.Integer('UOM Digits'),
         'on_change_with_uom_digits')
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', "Product Uom Category"),
+        'on_change_with_product_uom_category')
     computed_quantity = fields.Float('Computed Quantity', readonly=True)
     computed_uom = fields.Many2One('product.uom', 'Computed UOM',
         readonly=True)
@@ -231,6 +238,11 @@ class PurchaseRequest(ModelSQL, ModelView):
         if self.uom:
             return self.uom.digits
         return 2
+
+    @fields.depends('product')
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
     @fields.depends('product')
     def on_change_with_default_uom_digits(self, name=None):
@@ -451,6 +463,10 @@ class CreatePurchase(Wizard):
         line.quantity = sum(r.quantity for r in requests)
         line.purchase = purchase
         line.on_change_product()
+        # Set again in case on_change's changed them
+        for f, v in key:
+            setattr(line, f, v)
+        line.on_change_quantity()
         return line
 
 
