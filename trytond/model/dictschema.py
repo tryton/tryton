@@ -117,7 +117,7 @@ class DictSchemaMixin(object):
                 'id': record.id,
                 'name': record.name,
                 'string': record.string,
-                'type_': record.type_,
+                'type': record.type_,
                 'domain': record.domain,
                 }
             if record.type_ == 'selection':
@@ -127,7 +127,7 @@ class DictSchemaMixin(object):
                             english_key.selection_json))
                 selection.update(dict(json.loads(record.selection_json)))
                 new_key['selection'] = list(selection.items())
-                new_key['sorted'] = record.selection_sorted
+                new_key['sort'] = record.selection_sorted
             elif record.type_ in ('float', 'numeric'):
                 new_key['digits'] = (16, record.digits)
             keys.append(new_key)
