@@ -806,21 +806,26 @@
     });
 
     function redraw_async(rows, selected, expanded) {
-        var chunk = Sao.config.display_size;
-        var dfd = jQuery.Deferred();
-        var redraw_rows = function(i) {
-            rows.slice(i, i + chunk).forEach(function(row) {
-                row.redraw(selected, expanded);
-            });
-            i += chunk;
-            if (i < rows.length) {
-                setTimeout(redraw_rows, 0, i);
-            } else {
-                dfd.resolve();
+        var dfd= jQuery.Deferred(),
+            i = 0;
+        var redraw = function() {
+            for (; i < rows.length; i++) {
+                var row = rows[i];
+                var record = row.record,
+                    column = row.tree.columns[0];
+                if (!record.is_loaded(column.attributes.name)) {
+                    // Prefetch the first field to prevent promises in
+                    // Cell.render
+                    record.load(column.attributes.name).done(redraw);
+                    return;
+                } else {
+                    row.redraw(selected, expanded);
+                }
             }
+            dfd.resolve();
         };
-        setTimeout(redraw_rows, 0, 0);
-        return dfd;
+        redraw();
+        return dfd.promise();
     }
 
     Sao.View.Tree.Row = Sao.class_(Object, {
@@ -1523,7 +1528,7 @@
             if (!cell) {
                 cell = this.get_cell();
             }
-            record.load(this.attributes.name).done(function() {
+            var render = function() {
                 var value;
                 var field = record.model.fields[this.attributes.name];
                 var invisible = field.get_state_attrs(record).invisible;
@@ -1574,7 +1579,12 @@
                     }
                     cell.text(value);
                 }
-            }.bind(this));
+            }.bind(this);
+            if (!record.is_loaded(this.attributes.name)) {
+                record.load(this.attributes.name).done(render);
+            } else {
+                render();
+            }
             return cell;
         },
         clicked: function(event) {
@@ -1610,7 +1620,7 @@
             if (!cell) {
                 cell = this.get_cell();
             }
-            record.load(this.attributes.name).done(function() {
+            var render = function() {
                 this.update_text(cell, record);
                 this.field.set_state(record);
                 var state_attrs = this.field.get_state_attrs(record);
@@ -1619,7 +1629,12 @@
                 } else {
                     cell.show();
                 }
-            }.bind(this));
+            }.bind(this);
+            if (!record.is_loaded(this.attributes.name)) {
+                record.load(this.attributes.name).done(render);
+            } else {
+                render();
+            }
             return cell;
         }
     });
@@ -1883,18 +1898,8 @@
             if (!cell) {
                 cell = this.get_cell();
             }
-            record.load(this.attributes.name).done(function() {
-                var value = this.field.get_client(record);
-                if (value) {
-                    if (value > Sao.common.BIG_IMAGE_SIZE) {
-                        value = jQuery.when(null);
-                    } else {
-                        value = this.field.get_data(record);
-                    }
-                } else {
-                    value = jQuery.when(null);
-                }
-                value.done(function(data) {
+            var render = function() {
+                var set_src = function(data) {
                     var img_url, blob;
                     if (!data) {
                         img_url = null;
@@ -1903,8 +1908,24 @@
                         img_url = window.URL.createObjectURL(blob);
                     }
                     cell.attr('src', img_url);
-                }.bind(this));
-            }.bind(this));
+                }.bind(this);
+
+                var value = this.field.get_client(record);
+                if (value) {
+                    if (value > Sao.common.BIG_IMAGE_SIZE) {
+                        set_src(null);
+                    } else {
+                        this.field.get_data(record).done(set_src);
+                    }
+                } else {
+                    set_src(null);
+                }
+            }.bind(this);
+            if (!record.is_loaded(this.attributes.name)) {
+                record.load(this.attributes.name).done(render);
+            } else {
+                render();
+            }
             return cell;
         }
     });
@@ -1975,10 +1996,7 @@
                         return undefined;
                     }
                 });
-            // Wait at least one eager field is loaded before evaluating states
-            record.load(fields[0]).done(function() {
-                button.set_state(record);
-            });
+            button.set_state(record);
             return button.el;
         },
         button_clicked: function(event) {

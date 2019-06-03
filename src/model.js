@@ -559,10 +559,13 @@
                 return jQuery.when.apply(jQuery, prms);
             }
         },
+        is_loaded: function(name) {
+            return ((this.id < 0) || (name in this._loaded));
+        },
         load: function(name) {
             var fname;
             var prm;
-            if ((this.id < 0) || (name in this._loaded)) {
+            if (this.is_loaded(name)) {
                 return jQuery.when();
             }
             if (this.group.prm.state() == 'pending') {
