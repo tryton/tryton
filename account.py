@@ -279,7 +279,6 @@ class Invoice:
             if 'payment_lines' in values:
                 invoices.extend(records)
         invoices = cls.browse(sum(args[0:None:2], []))
-        invoices = [i for i in invoices if i.move]
         cls._update_tax_cash_basis(invoices)
 
     @classmethod
@@ -307,6 +306,8 @@ class Invoice:
         date = Transaction().context.get('payment_date', Date.today())
         periods = {}
         for invoice in invoices:
+            if not invoice.move:
+                continue
             if invoice.company not in periods:
                 periods[invoice.company] = Period.find(
                     invoice.company.id, date=date)
