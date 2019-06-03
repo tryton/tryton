@@ -112,7 +112,7 @@ def timesheet(request, pool, line=None):
             if not line:
                 line, = Line.create([data])
             else:
-                lines = Line.search([('id', '=', line)])
+                lines = Line.search([('id', '=', int(line))])
                 if not lines:
                     return Response(None, 204)
                 line, = lines
