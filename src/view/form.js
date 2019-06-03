@@ -4046,7 +4046,7 @@ function eval_pyson(value){
             var field, row;
             var key_schema = this.field.keys[key];
             this.fields[key] = field = new (
-                this.get_entries(key_schema.type_))(key, this);
+                this.get_entries(key_schema.type))(key, this);
             this.rows[key] = row = jQuery('<div/>', {
                 'class': 'form-group'
             });
@@ -4235,6 +4235,11 @@ function eval_pyson(value){
             this.input.replaceWith(select);
             this.input = this.labelled = select;
             var selection = jQuery.extend([], this.definition.selection);
+            if (this.definition.sort === undefined || this.definition.sort) {
+                selection.sort(function(a, b) {
+                    return a[1].localeCompare(b[1]);
+                });
+            }
             selection.splice(0, 0, [null, '']);
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
