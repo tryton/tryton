@@ -113,7 +113,7 @@ class DictSelectionEntry(DictEntry):
         self._selection = {'': None}
         width = 10
         selection = self.definition['selection']
-        if self.definition.get('sorted', True):
+        if self.definition.get('sort', True):
             selection.sort(key=operator.itemgetter(1))
         for value, name in selection:
             name = str(name)
@@ -430,7 +430,7 @@ class DictWidget(Widget):
 
     def add_line(self, key):
         key_schema = self.field.keys[key]
-        self.fields[key] = DICT_ENTRIES[key_schema['type_']](key, self)
+        self.fields[key] = DICT_ENTRIES[key_schema['type']](key, self)
         field = self.fields[key]
         text = key_schema['string'] + _(':')
         label = Gtk.Label(
