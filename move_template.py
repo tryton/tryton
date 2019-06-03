@@ -89,6 +89,7 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
                 'name': self.name,
                 'string': self.string,
                 'required': self.required,
+                'help': '',
                 })
         return field
 
@@ -257,6 +258,7 @@ class KeywordStateView(StateView):
         view = {
             'model': 'account.move.template.create.keywords',
             'view_id': 0,
+            'type': 'form',
             'fields': fields,
             }
         if not hasattr(wizard.template, 'template'):
