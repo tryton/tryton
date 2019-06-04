@@ -352,8 +352,8 @@ class CreatePurchase(Wizard):
             'company': request.company.id,
             }
 
-    @staticmethod
-    def _group_purchase_key(requests, request):
+    @classmethod
+    def _group_purchase_key(cls, requests, request):
         '''
         The key to group lines by purchases
         A list of key-value as tuples of the purchase
