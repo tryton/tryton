@@ -428,6 +428,7 @@ class TreeXMLViewParser(XMLViewParser):
 class ViewTree(View):
     view_type = 'tree'
     xml_parser = TreeXMLViewParser
+    draggable = False
 
     def __init__(self, view_id, screen, xml, children_field):
         self.children_field = children_field
@@ -444,6 +445,7 @@ class ViewTree(View):
             grid_lines = Gtk.TreeViewGridLines.VERTICAL
 
         super().__init__(view_id, screen, xml)
+        self.set_drag_and_drop()
 
         self.mnemonic_widget = self.treeview
 
@@ -467,15 +469,15 @@ class ViewTree(View):
         self.treeview.connect('key-press-event', self.on_keypress)
         self.treeview.connect_after('row-activated', self.__sig_switch)
         if self.children_field:
+            child_col = 1 if self.draggable else 0
             self.treeview.connect('test-expand-row', self.test_expand_row)
-            self.treeview.set_expander_column(self.treeview.get_column(0))
+            self.treeview.set_expander_column(
+                self.treeview.get_column(child_col))
         self.treeview.set_rubber_banding(True)
 
         selection = self.treeview.get_selection()
         selection.set_mode(Gtk.SelectionMode.MULTIPLE)
         selection.connect('changed', self.__select_changed)
-
-        self.set_drag_and_drop()
 
         self.widget = Gtk.VBox()
         self.scroll = scroll = Gtk.ScrolledWindow()
@@ -565,6 +567,7 @@ class ViewTree(View):
         if self.screen.readonly:
             dnd = False
 
+        self.draggable = dnd
         if not dnd:
             return
 
@@ -589,6 +592,14 @@ class ViewTree(View):
             self.drag_data_received)
         self.treeview.connect('drag-drop', self.drag_drop)
         self.treeview.connect('drag-data-delete', self.drag_data_delete)
+
+        drag_column = Gtk.TreeViewColumn()
+        drag_column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+        drag_column.name = None
+        cell_pixbuf = Gtk.CellRendererPixbuf()
+        cell_pixbuf.props.pixbuf = common.IconFactory.get_pixbuf('tryton-drag')
+        drag_column.pack_start(cell_pixbuf, expand=False)
+        self.treeview.insert_column(drag_column, 0)
 
     @property
     def modified(self):

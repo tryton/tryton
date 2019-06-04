@@ -241,6 +241,13 @@ class WinCSV(NoModal):
             self.view2.connect('drag-data-received', self.drag_data_received)
             self.view2.connect('drag-data-delete', self.drag_data_delete)
 
+            drag_column = Gtk.TreeViewColumn()
+            drag_column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+            cell_pixbuf = Gtk.CellRendererPixbuf()
+            cell_pixbuf.props.pixbuf = IconFactory.get_pixbuf('tryton-drag')
+            drag_column.pack_start(cell_pixbuf, expand=False)
+            self.view2.insert_column(drag_column, 0)
+
     def drag_begin(self, treeview, context):
         return True
 
