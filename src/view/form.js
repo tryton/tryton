@@ -865,7 +865,11 @@ function eval_pyson(value){
             }
             Sao.common.ICONFACTORY.get_icon_url(name)
                 .done(function(url) {
-                    this.img.attr('src', url);
+                    if (url) {
+                        this.img.attr('src', url);
+                    } else {
+                        this.img.removeAttr('src');
+                    }
                 }.bind(this));
         }
     });

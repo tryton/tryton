@@ -1570,7 +1570,11 @@
                             } else {
                                 img_tag = cell;
                             }
-                            img_tag.attr('src', url || '');
+                            if (url) {
+                                img_tag.attr('src', url);
+                            } else {
+                                img_tag.removeAttr('src');
+                            }
                         }.bind(this));
                 } else {
                     value = this.attributes.string || '';

@@ -2762,7 +2762,7 @@
         },
         get_icon_url: function(icon_name) {
             if (!icon_name) {
-                return;
+                return jQuery.when('');
             }
             return this.register_icon(icon_name).then(function() {
                 if (icon_name in this.loaded_icons) {
