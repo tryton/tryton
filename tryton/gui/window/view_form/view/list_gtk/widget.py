@@ -1053,6 +1053,21 @@ class _ReferenceSelection(Selection):
         return False
 
 
+class Dict(GenericText):
+    align = 0.5
+
+    def __init__(self, view, attrs):
+        super().__init__(view, attrs)
+        self.renderer.props.editable = False
+
+    def setter(self, column, cell, store, iter_, user_data=None):
+        super().setter(column, cell, store, iter_, user_data=None)
+        cell.props.editable = False
+
+    def get_textual_value(self, record):
+        return '(%s)' % len(record[self.attrs['name']].get_client(record))
+
+
 class ProgressBar(Cell):
     align = 0.5
     orientations = {

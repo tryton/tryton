@@ -21,7 +21,7 @@ from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
 from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
     Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
-    ProgressBar, Button, Image)
+    Dict, ProgressBar, Button, Image)
 
 _ = gettext.gettext
 
@@ -258,6 +258,7 @@ class TreeXMLViewParser(XMLViewParser):
         'callto': URL,
         'char': Char,
         'date': Date,
+        'dict': Dict,
         'email': URL,
         'float': Float,
         'image': Image,
