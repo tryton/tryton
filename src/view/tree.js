@@ -1793,6 +1793,14 @@
         }
     });
 
+    Sao.View.Tree.DictColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-dict',
+        update_text: function(cell, record) {
+            var text = '(' + Object.keys(this.field.get_client(record)).length + ')';
+            cell.text(text).attr('title', text);
+        },
+    });
+
     Sao.View.Tree.DateColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-date',
         update_text: function(cell, record) {
@@ -2028,6 +2036,7 @@
         'callto': Sao.View.Tree.URLColumn,
         'char': Sao.View.Tree.CharColumn,
         'date': Sao.View.Tree.DateColumn,
+        'dict': Sao.View.Tree.DictColumn,
         'email': Sao.View.Tree.URLColumn,
         'float': Sao.View.Tree.FloatColumn,
         'image': Sao.View.Tree.ImageColumn,
