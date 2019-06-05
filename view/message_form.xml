@@ -9,8 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="origin"/>
     <field name="origin"/>
     <label name="message"/>
-    <field name="message" widget="binary" filename="filename"/>
-    <field name="message" colspan="6"/>
+    <field name="message" filename="filename"/>
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="4" id="buttons">

@@ -76,3 +76,16 @@ Party
 
 The Party has a field `SEPA Creditor Identifier` used for the party of the
 company.
+
+
+Configuration
+*************
+
+The account_payment_sepa module uses the section `account_payment_sepa` to
+retrieve some parameters:
+
+- `filestore`: a boolean value to store SEPA message in the FileStore.
+  The default value is `False`.
+
+- `store_prefix`: the prefix to use with the FileStore. The default value is
+  `None`.

@@ -11,6 +11,7 @@ import genshi.template
 from lxml import etree
 from sql import Literal
 
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import (ModelSQL, ModelView, Workflow, fields, dualmethod,
@@ -45,6 +46,14 @@ if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
 if not hasattr(ASTTransformer, 'visit_NameConstant'):
     # Re-use visit_Name because _clone is deleted
     ASTTransformer.visit_NameConstant = ASTTransformer.visit_Name
+
+if config.getboolean('account_payment_sepa', 'filestore', default=False):
+    file_id = 'message_file_id'
+    store_prefix = config.get(
+        'account_payment_sepa', 'store_prefix', default=None)
+else:
+    file_id = None
+    store_prefix = None
 
 
 class Journal(metaclass=PoolMeta):
@@ -613,7 +622,10 @@ class Message(Workflow, ModelSQL, ModelView):
         'readonly': Eval('state') != 'draft',
         }
     _depends = ['state']
-    message = fields.Text('Message', states=_states, depends=_depends)
+    message = fields.Binary('Message', filename='filename',
+        file_id=file_id, store_prefix=store_prefix,
+        states=_states, depends=_depends)
+    message_file_id = fields.Char("Message File ID", readonly=True)
     filename = fields.Function(fields.Char('Filename'), 'get_filename')
     type = fields.Selection([
             ('in', 'IN'),

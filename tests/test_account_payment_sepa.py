@@ -138,7 +138,7 @@ def validate_file(flavor, kind, xsd=None):
         message, = group.sepa_messages
         assert message.type == 'out', message.type
         assert message.state == 'waiting', message.state
-        sepa_string = message.message.encode('utf-8')
+        sepa_string = bytes(message.message)
         sepa_xml = etree.fromstring(sepa_string)
         schema_file = os.path.join(os.path.dirname(__file__),
             '%s.xsd' % xsd)

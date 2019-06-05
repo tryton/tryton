@@ -1,3 +1,5 @@
+* Allow to store SEPA message content on the file system
+
 Version 5.2.0 - 2019-05-06
 * Bug fixes (see mercurial logs for details)
 * Remove unique constraint on SEPA identifier
