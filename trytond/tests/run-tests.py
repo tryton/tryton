@@ -45,6 +45,7 @@ from trytond.tests.test_tryton import all_suite, modules_suite
 if not opt.modules:
     suite = all_suite(opt.tests)
 else:
+    breakpoint()
     suite = modules_suite(opt.tests, doc=opt.doctest)
 result = unittest.TextTestRunner(
     verbosity=opt.verbosity, failfast=opt.failfast).run(suite)
