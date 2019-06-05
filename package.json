@@ -32,8 +32,8 @@
     "tests"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/grunt test",
-    "postinstall": "./node_modules/.bin/bower install"
+    "test": "npx grunt test",
+    "postinstall": "npx bower install"
   },
   "devDependencies": {
     "grunt-contrib-nodeunit": "^2.0",
