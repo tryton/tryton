@@ -1432,8 +1432,13 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.sale.currency
         if self.moves:
-            # backorder can not be planned
-            move.planned_date = Date.today()
+            # backorder can not be planned but shipping date could be used
+            # if set in the future
+            today = Date.today()
+            if self.shipping_date and self.shipping_date > today:
+                move.planned_date = self.shipping_date
+            else:
+                move.planned_date = today
         else:
             move.planned_date = self.shipping_date
         move.invoice_lines = self._get_move_invoice_lines(shipment_type)
