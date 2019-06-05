@@ -1437,6 +1437,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
 
         if self.type != 'line':
             return
@@ -1471,8 +1472,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         move.unit_price = self.unit_price
         move.currency = self.purchase.currency
         if self.moves:
-            # backorder can not be planned
-            move.planned_date = None
+            # backorder can not be planned but delivery date could be used
+            # if set in the future
+            if self.delivery_date and self.delivery_date > Date.today():
+                move.planned_date = self.delivery_date
+            else:
+                move.planned_date = None
         else:
             move.planned_date = self.delivery_date
         move.invoice_lines = self._get_move_invoice_lines(move_type)
