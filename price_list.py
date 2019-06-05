@@ -6,7 +6,7 @@ from simpleeval import simple_eval
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+    DeactivableMixin, sequence_ordered
 from trytond.tools import decistmt
 from trytond.pyson import If, Eval
 from trytond.transaction import Transaction
@@ -17,7 +17,7 @@ from .exceptions import FormulaError
 __all__ = ['PriceList', 'PriceListLine']
 
 
-class PriceList(ModelSQL, ModelView):
+class PriceList(DeactivableMixin, ModelSQL, ModelView):
     'Price List'
     __name__ = 'product.price_list'
 
