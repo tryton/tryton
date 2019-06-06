@@ -186,5 +186,40 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_product_from_template"/>
         </record>
 
+        <record model="ir.ui.view" id="identifier_view_form">
+            <field name="model">product.identifier</field>
+            <field name="type">form</field>
+            <field name="name">identifier_form</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_view_list">
+            <field name="model">product.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">identifier_list</field>
+        </record>
+        <record model="ir.ui.view" id="identifier_view_list_sequence">
+            <field name="model">product.identifier</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">identifier_list_sequence</field>
+        </record>
+
+        <record model="ir.model.access" id="access_product_identifier">
+            <field name="model" search="[('model', '=', 'product.identifier')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_product_identifier_admin">
+            <field name="model" search="[('model', '=', 'product.identifier')]"/>
+            <field name="group" ref="group_product_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+
     </data>
 </tryton>

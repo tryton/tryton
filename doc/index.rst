@@ -60,7 +60,16 @@ The Product Template model contains the following fields:
 
 
 The Product model extend the Product Template with two fields: Code
-and Description.
+and Description. It's also possible to define a list of identifiers on product.
+An identifier is composed by a type and a code. The following types are
+available:
+
+    * International Article Number (EAN)
+    * International Standard Audiovisual Number (ISAN)
+    * International Standard Book Number (ISBN)
+    * International Standard Identifier for Libraries (ISIL)
+    * International Securities Identification Number (ISIN)
+    * International Standard Music Number (ISMN)
 
 Configuration
 *************

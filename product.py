@@ -3,11 +3,16 @@
 import copy
 import logging
 from decimal import Decimal
+from importlib import import_module
 
+import stdnum
+import stdnum.exceptions
 from sql import Null, Column
 
+from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, fields)
+    ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, sequence_ordered,
+    fields)
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -17,10 +22,12 @@ from trytond.tools import lstrip_wildcard
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
+from .exceptions import InvalidIdentifierCode
+
 
 __all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction',
     'ProductListPrice', 'ProductCostPriceMethod', 'ProductCostPrice',
-    'TemplateCategory', 'TemplateCategoryAll']
+    'TemplateCategory', 'TemplateCategoryAll', 'ProductIdentifier']
 logger = logging.getLogger(__name__)
 
 STATES = {
@@ -200,6 +207,9 @@ class Product(
         depends=DEPENDS)
     code = fields.Char("Code", size=None, select=True, states=STATES,
         depends=DEPENDS)
+    identifiers = fields.One2Many('product.identifier', 'product',
+        "Identifiers", states=STATES, depends=DEPENDS,
+        help="Add other identifiers to the variant.")
     cost_price = fields.MultiValue(fields.Numeric(
             "Cost Price", required=True, digits=price_digits,
             states=STATES, depends=DEPENDS))
@@ -315,6 +325,7 @@ class Product(
             code_value = lstrip_wildcard(clause[2])
         return [bool_op,
             ('code', clause[1], code_value) + tuple(clause[3:]),
+            ('identifiers.code', clause[1], code_value) + tuple(clause[3:]),
             ('template.name',) + tuple(clause[1:]),
             ]
 
@@ -499,3 +510,57 @@ class TemplateCategoryAll(UnionMixin, ModelSQL):
     @classmethod
     def union_models(cls):
         return ['product.template-product.category']
+
+
+class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
+    "Product Identifier"
+    __name__ = 'product.identifier'
+    _rec_name = 'code'
+    product = fields.Many2One('product.product', "Product", ondelete='CASCADE',
+        required=True, select=True,
+        help="The product identified by this identifier.")
+    type = fields.Selection([
+            (None, ''),
+            ('ean', "International Article Number"),
+            ('isan', "International Standard Audiovisual Number"),
+            ('isbn', "International Standard Book Number"),
+            ('isil', "International Standard Identifier for Libraries"),
+            ('isin', "International Securities Identification Number"),
+            ('ismn', "International Standard Music Number"),
+            ], "Type")
+    type_string = type.translated('type')
+    code = fields.Char("Code", required=True)
+
+    @fields.depends('type', 'code')
+    def on_change_with_code(self):
+        if self.type and self.type != 'other':
+            try:
+                module = import_module('stdnum.%s' % self.type)
+                return module.compact(self.code)
+            except ModuleNotFoundError:
+                pass
+            except stdnum.exceptions.ValidationError:
+                pass
+        return self.code
+
+    def pre_validate(self):
+        super().pre_validate()
+        self.check_code()
+
+    @fields.depends('type', 'product', 'code')
+    def check_code(self):
+        if self.type:
+            try:
+                module = import_module('stdnum.%s' % self.type)
+            except ModuleNotFoundError:
+                return
+            if not module.is_valid(self.code):
+                if self.product and self.product.id > 0:
+                    product = self.product.rec_name
+                else:
+                    product = ''
+                raise InvalidIdentifierCode(
+                    gettext('product.msg_invalid_code',
+                        type=self.type_string,
+                        code=self.code,
+                        product=product))

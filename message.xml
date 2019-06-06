@@ -21,5 +21,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_uom_no_zero_factor_rate">
             <field name="text">Rate and factor can not be both equal to zero.</field>
         </record>
+        <record model="ir.message" id="msg_invalid_code">
+            <field name="text">The %(type)s "%(code)s" for product "%(product)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

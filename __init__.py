@@ -15,6 +15,7 @@ def register():
         Category,
         Template,
         Product,
+        ProductIdentifier,
         ProductListPrice,
         ProductCostPriceMethod,  # before ProductCostPrice for migration
         ProductCostPrice,

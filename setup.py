@@ -45,12 +45,13 @@ if minor_version % 2:
         'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
             name[8:], name, version))
 
-requires = ['python-sql']
+requires = ['python-sql', 'python-stdnum']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [get_require_version('proteus')]
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -77,7 +78,8 @@ setup(name=name,
         ),
     package_data={
         'trytond.modules.product': (info.get('xml', [])
-            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
+            + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg',
+                'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
@@ -126,4 +128,5 @@ setup(name=name,
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )

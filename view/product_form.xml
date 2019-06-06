@@ -17,4 +17,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="description"/>
         </group>
     </xpath>
+    <xpath expr="/form/notebook/page[@id='general']" position="after">
+        <page name="identifiers" col="1">
+            <field name="identifiers" pre_validate="1"
+                view_ids="product.identifier_view_list_sequence"/>
+        </page>
+    </xpath>
 </data>

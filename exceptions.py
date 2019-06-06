@@ -6,3 +6,7 @@ from trytond.model.exceptions import ValidationError
 
 class UOMValidationError(ValidationError):
     pass
+
+
+class InvalidIdentifierCode(ValidationError):
+    pass
