@@ -537,7 +537,7 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
             try:
                 module = import_module('stdnum.%s' % self.type)
                 return module.compact(self.code)
-            except ModuleNotFoundError:
+            except ImportError:
                 pass
             except stdnum.exceptions.ValidationError:
                 pass
