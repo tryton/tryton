@@ -156,20 +156,29 @@ class Move(ModelSQL, ModelView):
         pool = Pool()
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
+        today = Date.today()
         period_id = cls.default_period()
         if period_id:
             period = Period(period_id)
-            return period.start_date
-        return Date.today()
+            if today < period.start_date or today > period.end_date:
+                return period.start_date
+        return today
 
     @fields.depends('period', 'journal', 'date')
     def on_change_with_date(self):
-        Line = Pool().get('account.move.line')
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        Date = pool.get('ir.date')
+        today = Date.today()
         date = self.date
         if date:
             if self.period and not (
                     self.period.start_date <= date <= self.period.end_date):
-                date = self.period.start_date
+                if (today >= self.period.start_date
+                        and today <= self.period.end_date):
+                    date = today
+                else:
+                    date = self.period.start_date
             return date
         lines = Line.search([
                 ('journal', '=', self.journal),
@@ -178,7 +187,11 @@ class Move(ModelSQL, ModelView):
         if lines:
             date = lines[0].date
         elif self.period:
-            date = self.period.start_date
+            if (today >= self.period.start_date
+                    and today <= self.period.end_date):
+                date = today
+            else:
+                date = self.period.start_date
         return date
 
     @classmethod
