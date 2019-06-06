@@ -122,7 +122,6 @@ setup(name=name,
     install_requires=requires,
     extras_require={
         'VIES': ['python-stdnum[SOAP]'],
-        'VIES-ALT': ['python-stdnum[SOAP-ALT]'],
         'phonenumbers': ['phonenumbers'],
         },
     dependency_links=dependency_links,
