@@ -199,7 +199,11 @@ class Production:
             while (products_period
                     and products_period[0][0] <= (current_date - date)):
                 _, product = products_period.pop(0)
-                product_ids.remove(product.id)
+                try:
+                    product_ids.remove(product.id)
+                except ValueError:
+                    # product may have been already removed on get_shortages
+                    pass
             current_date += datetime.timedelta(1)
 
             # Update current quantities with next moves
