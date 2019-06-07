@@ -129,9 +129,9 @@ dist = setup(name=name,
     license='GPL-3',
     python_requires='>=3.5',
     install_requires=[
-        # "py-gobject3",
         'pycairo',
         "python-dateutil",
+        'PyGObject',
         ],
     extras_require={
         'calendar': ['GooCalendar>=0.5'],
