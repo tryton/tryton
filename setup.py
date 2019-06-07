@@ -101,8 +101,9 @@ dist = setup(name=name,
     platforms='any',
     license='GPL-3',
     install_requires=[
-        # "py-gobject3",
+        'pycairo',
         "python-dateutil",
+        'PyGObject',
         ],
     extras_require={
         'cdecimal': ['cdecimal'],
