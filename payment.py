@@ -206,7 +206,7 @@ class Group(metaclass=PoolMeta):
                 group.sepa_messages = ()
             message = tmpl.generate(group=group,
                 datetime=datetime, normalize=unicodedata.normalize,
-                ).filter(remove_comment).render()
+                ).filter(remove_comment).render().encode('utf8')
             message = Message(message=message, type='out', state='waiting',
                 company=group.company)
             group.sepa_messages += (message,)
@@ -789,9 +789,8 @@ class Message(Workflow, ModelSQL, ModelView):
                 return tag.namespace
 
     def parse(self):
-        message = self.message.encode('utf-8')
-        f = BytesIO(message)
-        namespace = self.get_namespace(message)
+        f = BytesIO(self.message)
+        namespace = self.get_namespace(self.message)
         handlers = self._get_handlers()
         if namespace not in handlers:
             raise  # TODO UserError
