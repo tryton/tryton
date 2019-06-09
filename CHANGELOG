@@ -1,3 +1,5 @@
+* Relax Account domain on Payment
+
 Version 5.2.0 - 2019-05-06
 * Bug fixes (see mercurial logs for details)
 * Add support for payment and payment_group on Statement Rule
