@@ -1,3 +1,6 @@
+Version 4.4.21 - 2019-06-10
+* Bug fixes (see mercurial logs for details)
+
 Version 4.4.20 - 2019-04-22
 * Bug fixes (see mercurial logs for details)
 * Replace dsn by params to connect to postgresql
