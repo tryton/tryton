@@ -111,7 +111,7 @@ A move can be in one of this states:
 
 
 Product Quantities
-++++++++++++++++++
+------------------
 
 Product quantities on each location are the sum of all moves coming
 from or going to this location.  For quantities that are computed for
@@ -130,7 +130,7 @@ around the same location.
 
 
 Supplier Shipment
-+++++++++++++++++
+-----------------
 
 A supplier shipment is used when products are received from a
 supplier. It is mainly composed of a party (the supplier), a location
@@ -171,7 +171,7 @@ The supplier shipment can be in one of this states:
 
 
 Customer Shipment
-+++++++++++++++++
+-----------------
 
 A customer shipment is used for sending products to customer. It is
 mainly composed of a party (the customer), a location (the warehouse
@@ -226,7 +226,7 @@ The customer shipment can be in one of this states:
 
 
 Internal Shipment
-+++++++++++++++++
+-----------------
 
 An internal shipment is used for sending products across locations
 inside the company. It is mainly composed of two locations and a list
