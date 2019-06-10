@@ -791,7 +791,7 @@ msgstr "Lauko pavadinimas"
 
 #, python-format
 msgid "CSV Export: %s"
-msgstr "CSV eksportavimas:"
+msgstr "CSV eksportavimas: %s"
 
 msgid "_Save Export"
 msgstr "Išsaugoti eksporto šabloną"
@@ -822,7 +822,7 @@ msgstr "%s (modelio pavadinimas)"
 
 #, python-format
 msgid "%s (record name)"
-msgstr "% (įrašo pavadinimas)"
+msgstr "%s (įrašo pavadinimas)"
 
 msgid "What is the name of this export?"
 msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"

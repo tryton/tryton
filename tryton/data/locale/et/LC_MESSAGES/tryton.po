@@ -452,7 +452,7 @@ msgstr ""
 
 #, python-format
 msgid "Attachments (%s)"
-msgstr "Manus (%ed)"
+msgstr "Manus (%s)"
 
 msgid "Profile Editor"
 msgstr "Profiili muutmine"
