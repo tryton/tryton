@@ -413,7 +413,7 @@ class DBLogin(object):
             alignment, expand=True, fill=True, padding=0)
 
         image = Gtk.Image()
-        image.set_from_file(os.path.join(PIXMAPS_DIR, 'tryton.png'))
+        image.set_from_file(os.path.join(PIXMAPS_DIR, 'tryton.svg'))
         image.set_valign(Gtk.Align.START)
         overlay = Gtk.Overlay()
         overlay.add(image)
