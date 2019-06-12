@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import copy
 import xmlrpc.client
 import json
 import ssl
@@ -402,7 +403,7 @@ class _Cache:
             expire = datetime.timedelta(seconds=expire)
         if isinstance(expire, datetime.timedelta):
             expire = datetime.datetime.now() + expire
-        self.store[prefix][key] = (expire, value)
+        self.store[prefix][key] = (expire, copy.deepcopy(value))
 
     def get(self, prefix, key):
         now = datetime.datetime.now()
@@ -414,7 +415,7 @@ class _Cache:
             self.store.pop(key)
             raise KeyError
         logger.info('(cached) %s %s', prefix, key)
-        return value
+        return copy.deepcopy(value)
 
     def clear(self, prefix=None):
         if prefix:
