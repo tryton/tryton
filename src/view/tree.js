@@ -1330,7 +1330,13 @@
                     continue;
                 }
                 var state_attrs = col.field.get_state_attrs(this.record);
-                var readonly = col.attributes.readonly || state_attrs.readonly;
+                var readonly = col.attributes.readonly;
+                if (readonly === undefined) {
+                    readonly = state_attrs.readonly;
+                    if (readonly === undefined) {
+                        readonly = false;
+                    }
+                }
 
                 var EditableBuilder = Sao.View.EditableTree.WIDGETS[
                     col.attributes.widget];
