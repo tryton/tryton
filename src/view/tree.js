@@ -68,7 +68,7 @@
         },
         _parse_button: function(node, attributes) {
             var column = new Sao.View.Tree.ButtonColumn(
-                this.view.screen, attributes);
+                this.view, attributes);
             this.view.columns.push(column);
         }
     });
@@ -1955,8 +1955,8 @@
     });
 
     Sao.View.Tree.ButtonColumn = Sao.class_(Object, {
-        init: function(screen, attributes) {
-            this.screen = screen;
+        init: function(view, attributes) {
+            this.view = view;
             this.type = 'button';
             this.attributes = attributes;
         },
@@ -1966,7 +1966,7 @@
                 button.el.click(
                         [record, button], this.button_clicked.bind(this));
             }
-            var fields = jQuery.map(this.screen.model.fields,
+            var fields = jQuery.map(this.view.screen.model.fields,
                 function(field, name) {
                     if ((field.description.loading || 'eager') ==
                         'eager') {
@@ -1984,7 +1984,7 @@
         button_clicked: function(event) {
             var record = event.data[0];
             var button = event.data[1];
-            if (record != this.record) {
+            if (record != this.view.screen.current_record) {
                 // Need to raise the event to get the record selected
                 return true;
             }
@@ -1993,7 +1993,7 @@
                 return;
             }
             button.el.prop('disabled', true);
-            this.screen.button(this.attributes).always(function() {
+            this.view.screen.button(this.attributes).always(function() {
                 button.el.prop('disabled', false);
             });
         }
