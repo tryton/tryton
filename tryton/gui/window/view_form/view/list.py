@@ -307,6 +307,7 @@ class TreeXMLViewParser(XMLViewParser):
             else:
                 list_ = suffixes
             list_.append(Affix(self.view, affix_attrs))
+        prefixes.extend(widget.prefixes)
 
         for prefix in prefixes:
             column.pack_start(prefix.renderer, expand=prefix.expand)
