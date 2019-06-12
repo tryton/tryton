@@ -5,6 +5,8 @@
 import unittest
 import doctest
 import datetime
+import sys
+
 import sql
 import sql.operators
 
@@ -50,6 +52,7 @@ class ToolsTestCase(unittest.TestCase):
             (((self.table.id >= 1) & (self.table.id <= 12))
                 | (self.table.id.in_([15, 18, 19, 21]))))
 
+    @unittest.skipIf(sys.flags.optimize, "assert removed by optimization")
     def test_reduce_ids_float(self):
         'Test reduce_ids with integer as float'
         self.assertEqual(reduce_ids(self.table.id,
