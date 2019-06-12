@@ -3723,8 +3723,10 @@ function eval_pyson(value){
             }
             return false;
         },
-        display_update_selection: function(record, field) {
+        display_update_selection: function() {
             var i, len, element;
+            var record = this.record;
+            var field = this.field;
             this.update_selection(record, field, function() {
                 var yexpand = this.attributes.yexpand;
                 if (yexpand === undefined) {
