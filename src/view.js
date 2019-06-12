@@ -8,6 +8,7 @@
         el: null,
         mnemonic_widget: null,
         view_id: null,
+        modified: null,
         editable: null,
         children_field: null,
         xml_parser: null,

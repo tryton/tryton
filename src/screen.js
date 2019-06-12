@@ -1477,7 +1477,9 @@
                     return true;
                 }
             }
-            // TODO test view modified
+            if (this.current_view.modified) {
+                return true;
+            }
             return false;
         },
         unremove: function() {
