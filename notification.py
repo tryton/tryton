@@ -359,7 +359,8 @@ class EmailLog(ModelSQL, ModelView):
     recipients = fields.Char("Recipients")
     recipients_secondary = fields.Char("Secondary Recipients")
     recipients_hidden = fields.Char("Hidden Recipients")
-    trigger = fields.Many2One('ir.trigger', 'Trigger', required=True)
+    trigger = fields.Many2One(
+        'ir.trigger', 'Trigger', required=True, ondelete='CASCADE')
 
     def get_date(self, name):
         return self.create_date.replace(microsecond=0)
