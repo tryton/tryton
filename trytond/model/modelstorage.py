@@ -91,10 +91,10 @@ class ModelStorage(Model):
     Define a model with storage capability in Tryton.
     """
 
-    create_uid = fields.Many2One('res.user', 'Create User', readonly=True)
-    create_date = fields.Timestamp('Create Date', readonly=True)
-    write_uid = fields.Many2One('res.user', 'Write User', readonly=True)
-    write_date = fields.Timestamp('Write Date', readonly=True)
+    create_uid = fields.Many2One('res.user', "Created by", readonly=True)
+    create_date = fields.Timestamp("Created at", readonly=True)
+    write_uid = fields.Many2One('res.user', "Edited by", readonly=True)
+    write_date = fields.Timestamp('Edited at', readonly=True)
     rec_name = fields.Function(fields.Char('Record Name'), 'get_rec_name',
             searcher='search_rec_name')
 

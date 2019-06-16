@@ -154,7 +154,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         return value
 
     @classmethod
-    def fields_get(cls, fields_names=None):
+    def fields_get(cls, fields_names=None, level=0):
         """
         Return the definition of each field on the model.
         """
@@ -189,6 +189,29 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             for right in ['create', 'delete']:
                 definition[fname][right] = accesses.get(
                     fname, {}).get(right, True)
+            if level > 0:
+                relation = definition[fname].get('relation')
+                if relation:
+                    Relation = pool.get(relation)
+                    relation_fields = Relation.fields_get(level=level - 1)
+                    definition[fname]['relation_fields'] = relation_fields
+                    for name, props in relation_fields.items():
+                        # Convert selection into list
+                        if isinstance(props.get('selection'), str):
+                            change_with = props.get('selection_change_with')
+                            if change_with:
+                                selection = getattr(
+                                    Relation, props['selection'])(
+                                        dict((p, None) for p in change_with))
+                            else:
+                                selection = getattr(
+                                    Relation, props['selection'])()
+                            props['selection'] = selection
+                schema = definition[fname].get('schema_model')
+                if schema:
+                    Schema = pool.get(schema)
+                    definition[fname]['relation_fields'] = (
+                        Schema.get_relation_fields())
 
         for fname in list(definition.keys()):
             # filter out fields which aren't in the fields_names list

@@ -220,7 +220,7 @@ class ModelView(Model):
                     parent_meth, 'change', set())
 
     @classmethod
-    def fields_view_get(cls, view_id=None, view_type='form'):
+    def fields_view_get(cls, view_id=None, view_type='form', level=None):
         '''
         Return a view definition.
         If view_id is None the first one will be used of view_type.
@@ -232,7 +232,7 @@ class ModelView(Model):
            - fields: a dictionary with the definition of each field in the view
            - field_childs: the name of the childs field for tree
         '''
-        key = (cls.__name__, view_id, view_type)
+        key = (cls.__name__, view_id, view_type, level)
         result = cls._fields_view_get_cache.get(key)
         if result:
             return result
@@ -344,11 +344,14 @@ class ModelView(Model):
             result['field_childs'] = None
             result['view_id'] = view_id
 
+        if level is None:
+            level = 1 if result['type'] == 'tree' else 0
+
         # Update arch and compute fields from arch
         parser = etree.XMLParser(remove_blank_text=True)
         tree = etree.fromstring(result['arch'], parser)
-        xarch, xfields = cls._view_look_dom_arch(tree, result['type'],
-                result['field_childs'])
+        xarch, xfields = cls._view_look_dom_arch(
+            tree, result['type'], result['field_childs'], level=level)
         result['arch'] = xarch
         result['fields'] = xfields
 
@@ -393,7 +396,7 @@ class ModelView(Model):
         return []
 
     @classmethod
-    def _view_look_dom_arch(cls, tree, type, field_children=None):
+    def _view_look_dom_arch(cls, tree, type, field_children=None, level=0):
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         FieldAccess = pool.get('ir.model.field.access')
@@ -494,7 +497,7 @@ class ModelView(Model):
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')
         # Do not call fields_def without fields as it returns all fields
         if fields_def:
-            fields2 = cls.fields_get(list(fields_def.keys()))
+            fields2 = cls.fields_get(list(fields_def.keys()), level=level)
         else:
             fields2 = {}
         for field in fields_def:

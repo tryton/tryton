@@ -3,6 +3,8 @@
 import json
 from collections import OrderedDict
 
+from trytond.cache import Cache
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.model.exceptions import ValidationError
@@ -58,6 +60,10 @@ class DictSchemaMixin(object):
         cls.__rpc__.update({
                 'get_keys': RPC(instantiate=0),
                 })
+        # Do not instantiate more than one Cache
+        if not hasattr(cls, '_relation_fields_cache'):
+            cls._relation_fields_cache = Cache(
+                cls.__name__ + '.get_relation_fields')
 
     @staticmethod
     def default_digits():
@@ -132,3 +138,31 @@ class DictSchemaMixin(object):
                 new_key['digits'] = (16, record.digits)
             keys.append(new_key)
         return keys
+
+    @classmethod
+    def get_relation_fields(cls):
+        if config.get('dict', cls.__name__, default=True):
+            return {}
+        fields = cls._relation_fields_cache.get(None)
+        if fields is not None:
+            return fields
+        keys = cls.get_keys(cls.search([]))
+        fields = {k['name']: k for k in keys}
+        cls._relation_fields_cache.set(None, fields)
+        return fields
+
+    @classmethod
+    def create(cls, vlist):
+        records = super().create(vlist)
+        cls._relation_fields_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._relation_fields_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        super().delete(records)
+        cls._relation_fields_cache.clear()

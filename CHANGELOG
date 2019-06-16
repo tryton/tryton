@@ -1,3 +1,6 @@
+* Add get_relation_fields to DictSchemaMixin
+* Add level on Model.fields_get to fill relation_fields
+
 Version 5.2.0 - 2019-05-06
 * Bug fixes (see mercurial logs for details)
 * Add sort and translate options to Reference field

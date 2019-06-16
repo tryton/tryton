@@ -59,9 +59,11 @@ Class methods:
     The `default_rec_name` key in the context can be used to define the value
     of the :attr:`Model._rec_name` field.
 
-.. classmethod:: Model.fields_get([fields_names])
+.. classmethod:: Model.fields_get([fields_names[, level]])
 
     Return the definition of each field on the model.
+    The ``level`` defines the number of relations to include in the relation
+    field definition.
 
 .. classmethod:: Model.__names__([field])
 
@@ -122,7 +124,7 @@ Static methods:
 
 Class methods:
 
-.. classmethod:: ModelView.fields_view_get([view_id[, view_type[, toolbar]]])
+.. classmethod:: ModelView.fields_view_get([view_id[, view_type[, level]]])
 
     Return a view definition used by the client. The definition is::
 
@@ -671,6 +673,15 @@ Class methods:
 .. classmethod:: DictSchemaMixin.get_keys(records)
 
     Return the definition of the keys for the records.
+
+.. classmethod:: DictSchemaMixin.get_relation_fields()
+
+   Return a dictionary with the field definition of all the keys like the
+   result of :meth:`Model.fields_get`.
+
+   It is possible to disable this method (returns an empty dictionary) by
+   setting in the `dict` section of the configuration, the
+   :attr:`Model.__name__` to ``False``.
 
 Instance methods:
 
