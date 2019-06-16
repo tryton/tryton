@@ -131,8 +131,7 @@ def _end_base64(self, data):
     cast = bytearray if bytes == str else bytes
     self.append(cast(value.data))
     self._value = 0
-if bytes == str:
-    client.Unmarshaller.dispatch['base64'] = _end_base64
+client.Unmarshaller.dispatch['base64'] = _end_base64
 
 
 class XMLRequest(Request):
