@@ -597,6 +597,7 @@ class ViewTree(View):
 
         drag_column = Gtk.TreeViewColumn()
         drag_column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
+        drag_column._type = 'drag'
         drag_column.name = None
         cell_pixbuf = Gtk.CellRendererPixbuf()
         cell_pixbuf.props.pixbuf = common.IconFactory.get_pixbuf('tryton-drag')
