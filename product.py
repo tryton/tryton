@@ -13,8 +13,8 @@ from sql.conditionals import Coalesce
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateTransition
-from trytond.pyson import Eval, Or
+from trytond.wizard import Wizard, StateTransition, StateAction
+from trytond.pyson import Eval, Or, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
@@ -426,6 +426,32 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
         return dict((l.id, quantities[l.date]) for l in lines)
 
+    @classmethod
+    def get_rec_name(cls, records, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Location = pool.get('stock.location')
+        context = Transaction().context
+
+        if context.get('product_template'):
+            name = Template(context['product_template']).rec_name
+        elif context.get('product'):
+            name = Product(context['product']).rec_name
+        else:
+            name = ''
+        if context.get('warehouse'):
+            warehouse_name = Location(context['warehouse']).rec_name
+        else:
+            warehouse_name = '-'
+        lang = Lang.get()
+        names = {}
+        for record in records:
+            names[record.id] = '%s (%s) @ %s' % (
+                name, warehouse_name, lang.strftime(record.date))
+        return names
+
 
 class ProductQuantitiesByWarehouseContext(ModelView):
     'Product Quantities By Warehouse'
@@ -444,6 +470,55 @@ class ProductQuantitiesByWarehouseContext(ModelView):
                 ])
         if len(warehouses) == 1:
             return warehouses[0].id
+
+
+class OpenProductQuantitiesByWarehouse(Wizard):
+    "Open Product Quantities By Warehouse"
+    __name__ = 'stock.product_quantities_warehouse.open'
+    start_state = 'open_'
+    open_ = StateAction('stock.act_move_form')
+
+    def do_open_(self, action):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        ProductQuantitiesByWarehouse = pool.get(
+            'stock.product_quantities_warehouse')
+        context = Transaction().context
+        today = Date.today()
+
+        record = ProductQuantitiesByWarehouse(context['active_id'])
+        warehouse_id = context.get('warehouse', -1)
+        domain = [
+            ['OR',
+                [
+                    ('from_location', 'child_of', [warehouse_id], 'parent'),
+                    ('to_location', 'not child_of', [warehouse_id], 'parent'),
+                    ],
+                [
+                    ('to_location', 'child_of', [warehouse_id], 'parent'),
+                    ('from_location', 'not child_of',
+                        [warehouse_id], 'parent'),
+                    ],
+                ],
+            ['OR',
+                ('effective_date', '=', record.date),
+                [
+                    ('effective_date', '=', None),
+                    ('planned_date', '=', record.date),
+                    ],
+                ],
+            ]
+        if record.date < today:
+            domain.append(('state', '=', 'done'))
+        if context.get('product_template'):
+            domain.append(
+                ('product.template', '=', context['product_template']))
+        else:
+            domain.append(('product', '=', context.get('product', -1)))
+        action['pyson_domain'] = PYSONEncoder().encode(domain)
+        action['pyson_search_value'] = None
+        action['name'] += ' (' + record.rec_name + ')'
+        return action, {}
 
 
 class RecomputeCostPrice(Wizard):

@@ -157,6 +157,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_quantities_warehouse_context_form</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_open_product_quantities_by_warehouse">
+            <field name="name">Stock Moves</field>
+            <field name="wiz_name">stock.product_quantities_warehouse.open</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword1">
+            <field name="keyword">tree_open</field>
+            <field name="model">stock.product_quantities_warehouse,-1</field>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+        </record>
+
         <record model="ir.action.keyword"
             id="act_product_quantities_warehouse_keyword1">
             <field name="keyword">form_relate</field>
