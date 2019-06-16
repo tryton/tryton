@@ -4220,15 +4220,26 @@ function eval_pyson(value){
             }
             prm.then(function() {
                 var i, len, key;
-                var keys = Object.keys(value).sort();
+                var keys = Object.keys(value)
+                    .filter(function(key) {
+                        return field.keys[key];
+                    })
+                    .sort(function(key1, key2) {
+                        var seq1 = field.keys[key1].sequence;
+                        var seq2 = field.keys[key2].sequence;
+                        if (seq1 < seq2) {
+                            return -1;
+                        } else if (seq1 > seq2) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    });
                 var decoder = new Sao.PYSON.Decoder();
                 var inversion = new Sao.common.DomainInversion();
                 for (i = 0, len = keys.length; i < len; i++) {
                     key = keys[i];
                     var val = value[key];
-                    if (!field.keys[key]) {
-                        continue;
-                    }
                     if (!this.fields[key]) {
                         this.add_line(key);
                     }
