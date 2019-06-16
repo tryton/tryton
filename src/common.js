@@ -994,15 +994,28 @@
         init: function(fields, context) {
             this.fields = {};
             this.strings = {};
-            this.update_fields(fields);
             this.context = context;
+            this.update_fields(fields);
         },
-        update_fields: function(fields) {
+        update_fields: function(fields, prefix, string_prefix) {
+            prefix = prefix || '';
+            string_prefix = string_prefix || '';
             for (var name in fields) {
                 var field = fields[name];
-                if (field.searchable || (field.searchable === undefined)) {
-                    this.fields[name] = field;
+                if ((field.searchable || (field.searchable === undefined)) &&
+                    (name !== 'rec_name')) {
+                    field = jQuery.extend({}, field);
+                    var fullname = prefix ? prefix + '.' + name : name;
+                    var string = string_prefix ?
+                        string_prefix + '.' + field.string : field.string;
+                    field.string = string;
+                    field.name = fullname;
+                    this.fields[fullname] = field;
                     this.strings[field.string.toLowerCase()] = field;
+                    var rfields = field.relation_fields;
+                    if (rfields) {
+                        this.update_fields(rfields, fullname, string);
+                    }
                 }
             }
         },

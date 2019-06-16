@@ -441,7 +441,8 @@
                 var field;
                 for (var f in domain_parser.fields) {
                     field = domain_parser.fields[f];
-                    if (field.searchable || field.searchable === undefined) {
+                    if ((field.searchable || field.searchable === undefined) &&
+                        !field.name.contains('.')) {
                         fields.push(field);
                     }
                 }
@@ -1633,14 +1634,10 @@
             // Add common fields
             [
                 ['id', Sao.i18n.gettext('ID'), 'integer'],
-                ['create_uid', Sao.i18n.gettext('Creation User'),
-                    'many2one'],
-                ['create_date', Sao.i18n.gettext('Creation Date'),
-                    'datetime'],
-                ['write_uid', Sao.i18n.gettext('Modification User'),
-                     'many2one'],
-                ['write_date', Sao.i18n.gettext('Modification Date'),
-                     'datetime']
+                ['create_uid', Sao.i18n.gettext('Created by'), 'many2one'],
+                ['create_date', Sao.i18n.gettext('Created at'), 'datetime'],
+                ['write_uid', Sao.i18n.gettext('Modified by'), 'many2one'],
+                ['write_date', Sao.i18n.gettext('Modified at'), 'datetime']
                     ] .forEach(function(e) {
                         var name = e[0];
                         var string = e[1];

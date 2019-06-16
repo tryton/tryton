@@ -1,3 +1,4 @@
+* Support relation fields in domain parser
 * Add view modified
 * Add Dict widget for tree view
 
