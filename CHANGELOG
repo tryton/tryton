@@ -1,3 +1,4 @@
+* Order Dict keys by sequence
 * Support relation fields in domain parser
 * Add Dict widget for tree view
 * Add handle to reordable line of tree views

@@ -473,9 +473,16 @@ class DictWidget(Widget):
         if new_key_names:
             self.field.add_keys(list(new_key_names), self.record)
         decoder = PYSONDecoder()
-        for key, val in sorted(value.items()):
-            if key not in self.field.keys:
-                continue
+
+        def filter_func(item):
+            key, value = item
+            return key in self.field.keys
+
+        def key(item):
+            key, value = item
+            return self.field.keys[key]['sequence'] or 0
+
+        for key, val in sorted(filter(filter_func, value.items()), key=key):
             if key not in self.fields:
                 self.add_line(key)
             widget = self.fields[key]
