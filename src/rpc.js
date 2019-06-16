@@ -63,6 +63,15 @@
                 } else if (data.error[0] == 'UserError') {
                     msg = data.error[1][0];
                     description = data.error[1][1];
+                    var domain = data.error[1][2];
+                    if (!jQuery.isEmptyObject(domain)) {
+                        var fields = domain[1];
+                        domain = domain[0];
+                        var domain_parser = new Sao.common.DomainParser(fields);
+                        if (domain_parser.stringable(domain)) {
+                            description += '\n' + domain_parser.string(domain);
+                        }
+                    }
                     Sao.common.warning.run(description, msg)
                         .always(dfd.reject);
                     return;
