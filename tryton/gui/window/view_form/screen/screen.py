@@ -204,10 +204,10 @@ class Screen(SignalEvent):
         # Add common fields
         for name, string, type_ in (
                 ('id', _('ID'), 'integer'),
-                ('create_uid', _('Creation User'), 'many2one'),
-                ('create_date', _('Creation Date'), 'datetime'),
-                ('write_uid', _('Modification User'), 'many2one'),
-                ('write_date', _('Modification Date'), 'datetime'),
+                ('create_uid', _('Create by'), 'many2one'),
+                ('create_date', _('Created at'), 'datetime'),
+                ('write_uid', _('Edited by'), 'many2one'),
+                ('write_date', _('Edited at'), 'datetime'),
                 ):
             if name not in fields:
                 fields[name] = {

@@ -945,13 +945,26 @@ class DomainParser(object):
     "A parser for domain"
 
     def __init__(self, fields, context=None):
-        self.fields = OrderedDict((name, f)
-            for name, f in fields.items()
-            if f.get('searchable', True))
-        self.strings = dict((f['string'].lower(), f)
-            for f in fields.values()
-            if f.get('searchable', True))
+        self.fields = OrderedDict()
+        self.strings = {}
         self.context = context
+
+        def update_fields(fields, prefix='', string_prefix=''):
+            for name, field in fields.items():
+                if not field.get('searchable', True) or name == 'rec_name':
+                    continue
+                field = field.copy()
+                fullname = '.'.join(filter(None, [prefix, name]))
+                string = '.'.join(
+                    filter(None, [string_prefix, field['string']]))
+                field['string'] = string
+                field['name'] = fullname
+                self.fields[fullname] = field
+                self.strings[string.lower()] = field
+                rfields = field.get('relation_fields')
+                if rfields:
+                    update_fields(rfields, fullname, string)
+        update_fields(fields)
 
     def parse(self, input_):
         "Return domain for the input string"
@@ -1285,6 +1298,12 @@ def test_stringable():
             'relation': {
                 'string': 'Relation',
                 'type': 'many2one',
+                'relation_fields': {
+                    'name': {
+                        'string': "Name",
+                        'type': 'char',
+                        },
+                    },
                 },
             'relations': {
                 'string': 'Relations',
@@ -1306,6 +1325,7 @@ def test_stringable():
     assert dom.stringable([('relations', '=', "Foo")])
     assert dom.stringable([('relations', 'in', ["Foo"])])
     assert not dom.stringable([('relations', 'in', [42])])
+    assert dom.stringable([('relation.name', '=', "Foo")])
 
 
 def test_string():
@@ -1343,6 +1363,12 @@ def test_string():
                 'string': 'Many2One',
                 'name': 'many2one',
                 'type': 'many2one',
+                'relation_fields': {
+                    'name': {
+                        'string': "Name",
+                        'type': 'char',
+                        },
+                    },
                 },
             })
     assert dom.string([('name', '=', 'Doe')]) == 'Name: =Doe'
@@ -1391,6 +1417,8 @@ def test_string():
     assert dom.string([('many2one', 'ilike', '%John%')]) == 'Many2One: John'
     assert dom.string([('many2one.rec_name', 'in', ['John', 'Jane'])]) == \
         'Many2One: John;Jane'
+    assert dom.string([('many2one.name', 'ilike', '%Foo%')]) == \
+        "Many2One.Name: Foo"
 
 
 def test_group():
@@ -1403,6 +1431,15 @@ def test_group():
                 },
             'surname': {
                 'string': '(Sur)Name',
+                },
+            'relation': {
+                'string': "Relation",
+                'relation': 'relation',
+                'relation_fields': {
+                    'name': {
+                        'string': "Name",
+                        },
+                    },
                 },
             })
     assert rlist(dom.group(udlex('Name: Doe'))) == [('Name', None, 'Doe')]
@@ -1482,6 +1519,9 @@ def test_group():
     assert rlist(dom.group(udlex('Name: "" <'))) == [
         ('Name', '', '<'),
         ]
+    assert rlist(dom.group(udlex('Relation.Name: Test'))) == [
+        ('Relation.Name', None, "Test"),
+        ]
 
 
 def test_parse_clause():
@@ -1518,6 +1558,18 @@ def test_parse_clause():
                 'string': 'Many2One',
                 'name': 'many2one',
                 'type': 'many2one',
+                },
+            'relation': {
+                'string': "Relation",
+                'relation': 'relation',
+                'name': 'relation',
+                'relation_fields': {
+                    'name': {
+                        'string': "Name",
+                        'name': 'name',
+                        'type': 'char',
+                        },
+                    },
                 },
             })
     assert rlist(dom.parse_clause([('John',)])) == [
@@ -1582,6 +1634,9 @@ def test_parse_clause():
         ]
     assert rlist(dom.parse_clause(iter([iter([['John']])]))) == [
         [('rec_name', 'ilike', '%John%')]]
+    assert rlist(dom.parse_clause(
+            iter([['Relation.Name', None, "Test"]]))) == [
+                ('relation.name', 'ilike', "%Test%")]
 
 
 def test_completion():
@@ -1599,6 +1654,23 @@ def test_completion():
     assert list(dom.completion('Name: !=foo')) == []
     assert list(dom.completion('')) == ['Name: ']
     assert list(dom.completion(' ')) == ['', 'Name: ']
+
+    dom = DomainParser({
+            'relation': {
+                'name': 'relation',
+                'string': "Relation",
+                'type': 'many2one',
+                'relation_fields': {
+                    'name': {
+                        'name': 'name',
+                        'string': "Name",
+                        'type': 'char',
+                        },
+                    },
+                },
+            })
+    assert list(dom.completion('Relatio')) == [
+        'Relation: ', 'Relation.Name: ']
 
 
 if __name__ == '__main__':

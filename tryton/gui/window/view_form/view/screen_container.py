@@ -588,7 +588,7 @@ class ScreenContainer(object):
 
             vbox = Gtk.VBox()
             fields = [f for f in self.screen.domain_parser.fields.values()
-                if f.get('searchable', True)]
+                if f.get('searchable', True) and '.' not in f['name']]
             self.search_grid = Gtk.Grid(column_spacing=3, row_spacing=3)
 
             # Fill table with fields
