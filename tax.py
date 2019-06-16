@@ -1099,7 +1099,7 @@ class TaxableMixin(object):
         line['legal_notice'] = tax.legal_notice
         line['base'] = base
         line['amount'] = amount
-        line['tax'] = tax.id if tax else None
+        line['tax'] = tax.id
         line['account'] = getattr(tax, '%s_account' % type_).id
 
         return _TaxKey(**line)
@@ -1152,7 +1152,7 @@ class TaxLine(ModelSQL, ModelView):
             ('base', "Base"),
             ], "Type", required=True)
     tax = fields.Many2One('account.tax', 'Tax', select=True,
-        ondelete='RESTRICT',
+        ondelete='RESTRICT', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
             ],
