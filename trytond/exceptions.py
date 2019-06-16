@@ -8,10 +8,11 @@ class TrytonException(Exception):
 
 class UserError(TrytonException):
 
-    def __init__(self, message, description=''):
-        super(UserError, self).__init__('UserError', (message, description))
+    def __init__(self, message, description='', domain=None):
+        super().__init__('UserError', (message, description, domain))
         self.message = message
         self.description = description
+        self.domain = domain
         self.code = 1
 
     def __unicode__(self):

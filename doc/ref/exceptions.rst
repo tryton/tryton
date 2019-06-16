@@ -10,9 +10,12 @@ Exceptions
 
     The base class for all Tryton exceptions.
 
-.. exception:: UserError(message[, description])
+.. exception:: UserError(message[, description[, domain]])
 
     The base class for exceptions used to display an error message to users.
+    The domain may be a 2-tuple containing a :ref:`domain <topics-domain>` and
+    a dictionary of field definitions used to format the domain and append to
+    the description.
 
 .. exception:: UserWarning(name, message[, description])
 

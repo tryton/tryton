@@ -16,6 +16,7 @@ from trytond.model import Model
 from trytond.model import fields
 from trytond.tools import reduce_domain, memoize, is_instance_method, \
     grouped_slice
+from trytond.tools.domain_inversion import domain_inversion
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
@@ -626,15 +627,8 @@ class ModelStorage(Model):
                 eModel = pool.get(value.__name__)
                 field = eModel._fields[field_name]
                 if field.states and 'invisible' in field.states:
-                    pyson_invisible = PYSONEncoder().encode(
-                            field.states['invisible'])
-                    env = EvalEnvironment(value, eModel)
-                    env.update(Transaction().context)
-                    env['current_date'] = datetime.datetime.today()
-                    env['time'] = time
-                    env['context'] = Transaction().context
-                    env['active_id'] = value.id
-                    invisible = PYSONDecoder(env).decode(pyson_invisible)
+                    invisible = _record_eval_pyson(
+                        value, field.states['invisible'])
                     if invisible:
                         value = ''
                         break
@@ -1056,13 +1050,8 @@ class ModelStorage(Model):
             if is_pyson(field.domain):
                 pyson_domain = PYSONEncoder().encode(field.domain)
                 for record in records:
-                    env = EvalEnvironment(record, cls)
-                    env.update(Transaction().context)
-                    env['current_date'] = datetime.datetime.today()
-                    env['time'] = time
-                    env['context'] = Transaction().context
-                    env['active_id'] = record.id
-                    domain = freeze(PYSONDecoder(env).decode(pyson_domain))
+                    domain = freeze(_record_eval_pyson(
+                            record, pyson_domain, encoded=True))
                     domains[domain].append(record)
                 # Select strategy depending if it is closer to one domain per
                 # record or one domain for all records
@@ -1116,10 +1105,21 @@ class ModelStorage(Model):
                                 [('id', 'in', [r.id for r in sub_relations])],
                                 domain,
                                 ])
-                    if sub_relations != set(finds):
+                    invalid_records = sub_relations - set(finds)
+                    if invalid_records:
+                        invalid_record = invalid_records.pop()
+                        domain = field.domain
+                        if is_pyson(domain):
+                            domain = _record_eval_pyson(
+                                invalid_record, domain)
+                        invalid_domain = domain_inversion(
+                            domain, field.name,
+                            EvalEnvironment(invalid_record, cls))
+                        field_def = cls.fields_get([field.name])
                         raise DomainValidationError(
                             gettext('ir.msg_domain_validation_record',
-                                **cls.__names__(field.name)))
+                                **cls.__names__(field.name)),
+                            domain=(invalid_domain, field_def))
 
         field_names = set(field_names or [])
         function_fields = {name for name, field in cls._fields.items()
@@ -1153,13 +1153,8 @@ class ModelStorage(Model):
                         pyson_required = PYSONEncoder().encode(
                                 field.states['required'])
                         for record in records:
-                            env = EvalEnvironment(record, cls)
-                            env.update(Transaction().context)
-                            env['current_date'] = datetime.datetime.today()
-                            env['time'] = time
-                            env['context'] = Transaction().context
-                            env['active_id'] = record.id
-                            required = PYSONDecoder(env).decode(pyson_required)
+                            required = _record_eval_pyson(
+                                record, pyson_required, encoded=True)
                             if required:
                                 required_test(getattr(record, field_name),
                                     field_name, field)
@@ -1177,14 +1172,7 @@ class ModelStorage(Model):
                 if hasattr(field, 'size') and field.size is not None:
                     for record in records:
                         if isinstance(field.size, PYSON):
-                            pyson_size = PYSONEncoder().encode(field.size)
-                            env = EvalEnvironment(record, cls)
-                            env.update(Transaction().context)
-                            env['current_date'] = datetime.datetime.today()
-                            env['time'] = time
-                            env['context'] = Transaction().context
-                            env['active_id'] = record.id
-                            field_size = PYSONDecoder(env).decode(pyson_size)
+                            field_size = _record_eval_pyson(record, field.size)
                         else:
                             field_size = field.size
                         size = len(getattr(record, field_name) or '')
@@ -1220,13 +1208,8 @@ class ModelStorage(Model):
                     if is_pyson(field.digits):
                         pyson_digits = PYSONEncoder().encode(field.digits)
                         for record in records:
-                            env = EvalEnvironment(record, cls)
-                            env.update(Transaction().context)
-                            env['current_date'] = datetime.datetime.today()
-                            env['time'] = time
-                            env['context'] = Transaction().context
-                            env['active_id'] = record.id
-                            digits = PYSONDecoder(env).decode(pyson_digits)
+                            digits = _record_eval_pyson(
+                                record, pyson_digits, encoded=True)
                             digits_test(getattr(record, field_name), digits,
                                 field_name)
                     else:
@@ -1696,3 +1679,21 @@ class EvalEnvironment(dict):
 
     def __bool__(self):
         return bool(self._record)
+
+
+def _record_eval_pyson(record, source, encoded=False):
+    transaction = Transaction()
+    if not encoded:
+        pyson = _pyson_encoder.encode(source)
+    else:
+        pyson = source
+    env = EvalEnvironment(record, record.__class__)
+    env.update(transaction.context)
+    env['current_date'] = datetime.datetime.today()
+    env['time'] = time
+    env['context'] = transaction.context
+    env['active_id'] = record.id
+    return PYSONDecoder(env).decode(pyson)
+
+
+_pyson_encoder = PYSONEncoder()

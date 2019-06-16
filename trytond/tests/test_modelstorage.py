@@ -174,8 +174,10 @@ class ModelStorageTestCase(unittest.TestCase):
 
         Model.create([{'constraint': 'foo', 'value': 'foo'}] * 10)
 
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaises(DomainValidationError) as cm:
             Model.create([{'constraint': 'foo', 'value': 'bar'}] * 10)
+        self.assertEqual(cm.exception.domain[0], [['value', '=', 'foo']])
+        self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
     def test_pyson_domain_unique(self):
@@ -186,10 +188,12 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.create(
             [{'constraint': str(i), 'value': str(i)} for i in range(10)])
 
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaises(DomainValidationError) as cm:
             Model.create(
                 [{'constraint': str(i), 'value': str(i + 1)}
                     for i in range(10)])
+        self.assertTrue(cm.exception.domain[0])
+        self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
     def test_pyson_domain_single(self):
@@ -199,8 +203,10 @@ class ModelStorageTestCase(unittest.TestCase):
 
         Model.create([{'constraint': 'foo', 'value': 'foo'}])
 
-        with self.assertRaises(DomainValidationError):
+        with self.assertRaises(DomainValidationError) as cm:
             Model.create([{'constraint': 'foo', 'value': 'bar'}])
+        self.assertEqual(cm.exception.domain[0], [['value', '=', 'foo']])
+        self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
     def test_check_xml_record_without_record(self):

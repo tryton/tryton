@@ -1,3 +1,5 @@
+* Add invalid domain in DomainValidationError
+* Add domain inversion tools
 * Add get_relation_fields to DictSchemaMixin
 * Add level on Model.fields_get to fill relation_fields
 
