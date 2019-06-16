@@ -3,6 +3,7 @@
 import csv
 import os
 import logging.config
+import threading
 from io import StringIO
 
 __all__ = ['app']
@@ -25,5 +26,5 @@ db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
 if db_names:
     # Read with csv so database name can include special chars
     reader = csv.reader(StringIO(db_names))
-    for db_name in next(reader):
-        Pool(db_name).init()
+    for name in next(reader):
+        threading.Thread(target=Pool(name).init).start()

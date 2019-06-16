@@ -5,6 +5,7 @@ import glob
 import logging
 import os
 import sys
+import threading
 
 DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
     '..', '..', 'trytond')))
@@ -30,9 +31,8 @@ from trytond.pool import Pool
 from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
-    Pool.start()
     for name in options.database_names:
-        Pool(name).init()
+        threading.Thread(target=Pool(name).init).start()
     hostname, port = split_netloc(config.get('web', 'listen'))
     certificate = config.get('ssl', 'certificate')
     privatekey = config.get('ssl', 'privatekey')

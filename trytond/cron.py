@@ -5,17 +5,19 @@ import time
 import logging
 
 from trytond.pool import Pool
-from trytond.transaction import Transaction
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
 
 
 def run(options):
-    for db_name in options.database_names:
-        pool = Pool(db_name)
-        with Transaction().start(db_name, 0, readonly=True):
-            pool.init()
+    threads = []
+    for name in options.database_names:
+        thread = threading.Thread(target=Pool(name).init)
+        thread.start()
+        threads.append(thread)
+    for thread in threads:
+        thread.join()
 
     threads = {}
     while True:
