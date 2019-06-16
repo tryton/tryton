@@ -1,3 +1,4 @@
+* Allow customizing Dict keys order with a sequence field
 * Add invalid domain in DomainValidationError
 * Add domain inversion tools
 * Add get_relation_fields to DictSchemaMixin

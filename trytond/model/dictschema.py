@@ -125,6 +125,7 @@ class DictSchemaMixin(object):
                 'string': record.string,
                 'type': record.type_,
                 'domain': record.domain,
+                'sequence': getattr(record, 'sequence', record.name),
                 }
             if record.type_ == 'selection':
                 with Transaction().set_context(language=Config.get_language()):
