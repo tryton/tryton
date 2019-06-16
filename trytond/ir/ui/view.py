@@ -34,7 +34,7 @@ class View(ModelSQL, ModelView):
     __name__ = 'ir.ui.view'
     _rec_name = 'model'
     model = fields.Char('Model', select=True, states={
-            'required': Eval('type').in_([None, 'tree', 'form', 'graph']),
+            'required': Eval('type') != 'board',
             })
     priority = fields.Integer('Priority', required=True, select=True)
     type = fields.Selection([
