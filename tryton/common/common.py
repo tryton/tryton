@@ -845,6 +845,7 @@ PLOCK = Lock()
 
 
 def process_exception(exception, *args, **kwargs):
+    from .domain_parser import DomainParser
 
     rpc_execute = kwargs.get('rpc_execute', rpc.execute)
 
@@ -861,7 +862,12 @@ def process_exception(exception, *args, **kwargs):
                     process_exception=False)
                 return rpc_execute(*args)
         elif exception.faultCode == 'UserError':
-            msg, description = exception.args
+            msg, description, domain = exception.args
+            if domain:
+                domain, fields = domain
+                domain_parser = DomainParser(fields)
+                if domain_parser.stringable(domain):
+                    description += '\n' + domain_parser.string(domain)
             warning(description, msg)
         elif exception.faultCode == 'ConcurrencyException':
             if len(args) >= 6:
