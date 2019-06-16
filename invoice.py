@@ -2353,11 +2353,12 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         if self.account.party_required:
             line.party = self.invoice.party
         line.origin = self
-        tax_line = TaxLine()
-        tax_line.amount = amount
-        tax_line.type = 'tax'
-        tax_line.tax = self.tax
-        line.tax_lines = [tax_line]
+        if self.tax:
+            tax_line = TaxLine()
+            tax_line.amount = amount
+            tax_line.type = 'tax'
+            tax_line.tax = self.tax
+            line.tax_lines = [tax_line]
         return [line]
 
     def _credit(self):
