@@ -446,7 +446,9 @@
 
             screen.message_callback = this.record_message.bind(this);
             screen.switch_callback = function() {
-                Sao.set_url(this.get_url(), this.name);
+                if (this === Sao.Tab.tabs.get_current()) {
+                    Sao.set_url(this.get_url(), this.name);
+                }
             }.bind(this);
 
             this.set_buttons_sensitive();
