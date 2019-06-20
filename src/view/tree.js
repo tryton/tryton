@@ -2123,7 +2123,6 @@
         init: function(view, attributes) {
             Sao.View.EditableTree.Many2One._super.init.call(
                 this, view, attributes);
-            this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.TAB_KEYCODE) {
@@ -2140,7 +2139,6 @@
         init: function(view, attributes) {
             Sao.View.EditableTree.Reference._super.init.call(
                 this, view, attributes);
-            this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.TAB_KEYCODE) {
@@ -2157,7 +2155,6 @@
         init: function(view, attributes) {
             Sao.View.EditableTree.One2One._super.init.call(
                 this, view, attributes);
-            this.el.on('keydown', this.key_press.bind(this));
         },
         key_press: function(event_) {
             if (event_.which == Sao.common.TAB_KEYCODE) {
