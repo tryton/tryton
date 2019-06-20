@@ -111,10 +111,9 @@ class IconFactory:
             cls._tryton_icons.remove((icon['id'], icon['name']))
             del cls._name2id[icon['name']]
 
-    colors = CONFIG['icon.colors'].split(',')
-
     @classmethod
     def get_pixbuf(cls, iconname, size=16, color=None, badge=None):
+        colors = CONFIG['icon.colors'].split(',')
         cls.register_icon(iconname)
         if iconname not in cls._pixbufs[(size, badge)]:
             if iconname in cls._icons:
@@ -127,7 +126,7 @@ class IconFactory:
                 logger.error("Unknown icon %s" % iconname)
                 return
             if not color:
-                color = cls.colors[0]
+                color = colors[0]
             try:
                 ET.register_namespace('', 'http://www.w3.org/2000/svg')
                 root = ET.fromstring(data)
@@ -135,7 +134,7 @@ class IconFactory:
                 if badge:
                     if not isinstance(badge, str):
                         try:
-                            badge = cls.colors[badge]
+                            badge = colors[badge]
                         except IndexError:
                             badge = color
                     ET.SubElement(root, 'circle', {
