@@ -114,7 +114,9 @@ class ViewBoard(object):
 
     def _parse_group(self, node, container, attributes):
         group = self.parse(node)
-        group.container.set_homogeneous(attributes.get('homogeneous', False))
+        homogeneous = bool(attributes.get('homogeneous', False))
+        group.container.set_column_homogeneous(homogeneous)
+        group.container.set_row_homogeneous(homogeneous)
         frame = Gtk.Frame()
         frame.set_label(attributes.get('string'))
         if not attributes.get('string'):
