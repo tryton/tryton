@@ -1480,7 +1480,8 @@ function eval_pyson(value){
         get modified() {
             if (this.record && this.field) {
                 var field_value = this.field.get_client(this.record);
-                return field_value != this.get_value();
+                return (JSON.stringify(field_value) !=
+                    JSON.stringify(this.get_value()));
             }
             return false;
         },
@@ -1618,6 +1619,8 @@ function eval_pyson(value){
                 value = field.get(this.record);
                 if (value !== null) {
                     value *= this.factor;
+                } else {
+                    value = '';
                 }
             }
             return value;
@@ -1846,12 +1849,15 @@ function eval_pyson(value){
         },
         get modified() {
             if (this.record && this.field) {
+                return this.field.get_client(this.record) != this.get_value();
             }
             return false;
         },
+        get_value: function() {
+            return this.input.val() || '';
+        },
         set_value: function() {
-            var value = this.input.val() || '';
-            this.field.set_client(this.record, value);
+            this.field.set_client(this.record, this.get_value());
         },
         set_readonly: function(readonly) {
             this.input.prop('readonly', readonly);
@@ -2038,10 +2044,13 @@ function eval_pyson(value){
         focus: function() {
             this.input.focus();
         },
+        get_value: function() {
+            return this.input.html() || '';
+        },
         set_value: function() {
             // avoid modification of not normalized value
             this._normalize(this.input);
-            var value = this.input.html() || '';
+            var value = this.get_value();
             var previous = this.field.get_client(this.record);
             var previous_el = jQuery('<div/>').html(previous || '');
             this._normalize(previous_el);
@@ -2075,7 +2084,7 @@ function eval_pyson(value){
             if (this.record && this.field) {
                 var value = this.field.get_client(this.record) || '';
                 this._normalize(this.input);
-                return value != (this.input.html() || '');
+                return value != this.get_value();
             }
             return false;
         },
@@ -4321,7 +4330,8 @@ function eval_pyson(value){
                     this.parent_widget.focus_out.bind(this.parent_widget));
         },
         modified: function(value) {
-            return this.get_value() != value.get(this.name);
+            return (JSON.stringify(this.get_value()) !=
+                JSON.stringify(value[this.name]));
         },
         get_value: function() {
             return this.input.val();
