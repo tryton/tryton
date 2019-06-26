@@ -20,6 +20,9 @@ Sale
     `Extra </projects/modules-sale-extra/en/latest>`_
         Add extra lines.
 
+    `History </projects/modules-sale-history/en/latest>`_
+        Manages revisions.
+
     `Invoice Grouping </projects/modules-sale-invoice-grouping/en/latest>`_
         Groups invoices.
 
