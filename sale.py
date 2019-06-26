@@ -605,10 +605,14 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
                     shipment_method=self.shipment_method_string,
                     sale=self.rec_name))
 
+    @property
+    def full_number(self):
+        return self.number
+
     def get_rec_name(self, name):
         items = []
-        if self.number:
-            items.append(self.number)
+        if self.full_number:
+            items.append(self.full_number)
         if self.reference:
             items.append('[%s]' % self.reference)
         if not items:

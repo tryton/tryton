@@ -523,10 +523,10 @@
    <text:p text:style-name="P22">Draft Sale Order</text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;sale.state == &apos;quotation&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P22">Quotation N°: <text:placeholder text:placeholder-type="text">&lt;sale.number&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P22">Quotation N°: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;otherwise test=&quot;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P22">Sale Order N°: <text:placeholder text:placeholder-type="text">&lt;sale.number&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P22">Sale Order N°: <text:placeholder text:placeholder-type="text">&lt;sale.full_number&gt;</text:placeholder></text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;/otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;/choose&gt;</text:placeholder></text:p>
    <text:p text:style-name="Text_20_body">Description: <text:placeholder text:placeholder-type="text">&lt;sale.description or &apos;&apos;&gt;</text:placeholder></text:p>
