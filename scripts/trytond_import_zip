@@ -36,7 +36,7 @@ def clean(code):
 
 def fetch(code):
     sys.stderr.write('Fetching')
-    url = 'http://download.geonames.org/export/zip/%s.zip' % code
+    url = 'https://download.geonames.org/export/zip/%s.zip' % code
     responce = urlopen(url)
     data = responce.read()
     with zipfile.ZipFile(BytesIO(data)) as zf:
