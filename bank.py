@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from stdnum import iban
+from stdnum import iban, bic
+import stdnum.exceptions
 from sql import operators, Literal
 
 from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 
-from .exceptions import IBANValidationError
+from .exceptions import IBANValidationError, InvalidBIC
 
 
 __all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
@@ -26,6 +27,23 @@ class Bank(ModelSQL, ModelView):
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('party',) + tuple(clause[1:])]
+
+    @fields.depends('bic')
+    def on_change_with_bic(self):
+        try:
+            return bic.compact(self.bic)
+        except stdnum.exceptions.ValidationError:
+            pass
+        return self.bic
+
+    def pre_validate(self):
+        super().pre_validate()
+        self.check_bic()
+
+    @fields.depends('bic')
+    def check_bic(self):
+        if self.bic and not bic.is_valid(self.bic):
+            raise InvalidBIC(gettext('bank.msg_invalid_bic', bic=self.bic))
 
 
 class BankAccount(DeactivableMixin, ModelSQL, ModelView):

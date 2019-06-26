@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_iban">
             <field name="text">IBAN number "%(number)s" is not valid.</field>
         </record>
+        <record model="ir.message" id="msg_invalid_bic">
+            <field name="text">The BIC "%(bic)s" is not valid.</field>
+        </record>
     </data>
 </tryton>

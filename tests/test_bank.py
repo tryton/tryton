@@ -5,10 +5,34 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
+from ..exceptions import InvalidBIC
+
 
 class BankTestCase(ModuleTestCase):
     'Test Bank module'
     module = 'bank'
+
+    @with_transaction()
+    def test_bic_validation(self):
+        "Test BIC validation"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Bank = pool.get('bank')
+
+        party = Party(name='Test')
+        party.save()
+        bank = Bank(party=party)
+        bank.save()
+
+        bank.bic = 'ABNA BE 2A'
+        bank.bic = bank.on_change_with_bic()
+        self.assertEqual(bank.bic, 'ABNABE2A')
+
+        bank.save()
+
+        with self.assertRaises(InvalidBIC):
+            bank.bic = 'foo'
+            bank.save()
 
     @with_transaction()
     def test_iban_format(self):

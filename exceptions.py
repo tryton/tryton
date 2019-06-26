@@ -6,3 +6,7 @@ from trytond.model.exceptions import ValidationError
 
 class IBANValidationError(ValidationError):
     pass
+
+
+class InvalidBIC(ValidationError):
+    pass
