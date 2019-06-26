@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from sql import Literal
+
 from trytond.model.exceptions import (
     RequiredValidationError, DigitsValidationError)
 from trytond.pool import Pool
@@ -57,6 +59,15 @@ class FieldFloatTestCase(unittest.TestCase):
         float_, = Float.create([{}])
 
         self.assertEqual(float_.float, 5.5)
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create float with SQL value"
+        Float = Pool().get('test.float')
+
+        float_, = Float.create([{'float': Literal(5.) / Literal(2.)}])
+
+        self.assertEqual(float_.float, 2.5)
 
     @with_transaction()
     def test_create_non_float(self):

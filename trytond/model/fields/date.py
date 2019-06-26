@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+
 from sql.functions import Function
 
 from trytond.pyson import PYSONEncoder
@@ -29,23 +30,16 @@ class Date(Field):
     '''
     _type = 'date'
     _sql_type = 'DATE'
+    _py_type = datetime.date
 
     def sql_format(self, value):
-        if value is None:
-            return None
         if isinstance(value, str):
             year, month, day = list(map(int, value.split("-", 2)))
-            return datetime.date(year, month, day)
-
-        if (not isinstance(value, datetime.date)
-                # Allow datetime with min time for XML-RPC
-                # datetime must be tested separately because datetime is a
-                # subclass of date
-                or (isinstance(value, datetime.datetime)
-                    and value.time() != datetime.time())):
-            raise ValueError("invalid type '%s' for %s"
-                % (type(value), type(self)))
-        return value
+            value = datetime.date(year, month, day)
+        elif isinstance(value, datetime.datetime):
+            if value.time() != datetime.time():
+                raise ValueError("Date field can not have time")
+        return super().sql_format(value)
 
     def sql_cast(self, expression):
         if backend.name() == 'sqlite':
@@ -68,11 +62,10 @@ class Timestamp(FormatMixin, Field):
     '''
     _type = 'timestamp'
     _sql_type = 'TIMESTAMP'
+    _py_type = datetime.datetime
     format = '%H:%M:%S.%f'
 
     def sql_format(self, value):
-        if value is None:
-            return None
         if isinstance(value, str):
             datepart, timepart = value.split(" ")
             year, month, day = map(int, datepart.split("-", 2))
@@ -82,12 +75,9 @@ class Timestamp(FormatMixin, Field):
                 microseconds = int(timepart_full[1])
             else:
                 microseconds = 0
-            return datetime.datetime(year, month, day, hours, minutes, seconds,
-                    microseconds)
-        if not isinstance(value, datetime.datetime):
-            raise ValueError("invalid type '%s' for %s"
-                % (type(value), type(self)))
-        return value
+            value = datetime.datetime(
+                year, month, day, hours, minutes, seconds, microseconds)
+        return super().sql_format(value)
 
     def sql_cast(self, expression):
         if backend.name() == 'sqlite':
@@ -119,28 +109,40 @@ class DateTime(Timestamp):
 
     def sql_format(self, value):
         value = super().sql_format(value)
-        if value:
+        if isinstance(value, datetime.datetime):
             value = value.replace(microsecond=0)
         return value
 
 
-class Time(DateTime):
+class Time(FormatMixin, Field):
     '''
     Define a time field (``time``).
     '''
     _type = 'time'
     _sql_type = 'TIME'
+    _py_type = datetime.time
+
+    def __init__(self, string='', format='%H:%M:%S', help='', required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None,
+            context=None, loading='eager'):
+        '''
+        :param format: The validation format as used by strftime.
+        '''
+        super().__init__(string=string, help=help,
+            required=required, readonly=readonly, domain=domain, states=states,
+            select=select, on_change=on_change, on_change_with=on_change_with,
+            depends=depends, context=context, loading=loading)
+        self.format = format
 
     def sql_format(self, value):
-        if value is None:
-            return None
         if isinstance(value, str):
             hours, minutes, seconds = map(int, value.split(":"))
-            return datetime.time(hours, minutes, seconds)
-        if not isinstance(value, datetime.time):
-            raise ValueError("invalid type '%s' for %s"
-                % (type(value), type(self)))
-        return value.replace(microsecond=0)
+            value = datetime.time(hours, minutes, seconds)
+        value = super().sql_format(value)
+        if isinstance(value, datetime.time):
+            value = value.replace(microsecond=0)
+        return value
 
     def sql_cast(self, expression):
         if backend.name() == 'sqlite':
@@ -154,6 +156,7 @@ class TimeDelta(Field):
     '''
     _type = 'timedelta'
     _sql_type = 'INTERVAL'
+    _py_type = datetime.timedelta
 
     def __init__(self, string='', converter=None, help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -170,12 +173,9 @@ class TimeDelta(Field):
         self.converter = converter
 
     def sql_format(self, value):
-        if value is None:
-            return None
-        if not isinstance(value, datetime.timedelta):
-            raise ValueError("invalid type '%s' for %s"
-                % (type(value), type(self)))
-        return super(TimeDelta, self).sql_format(value)
+        if isinstance(value, (int, float)):
+            raise TypeError("TimeDelta requires a timedelta")
+        return super().sql_format(value)
 
     @classmethod
     def get(cls, ids, model, name, values=None):

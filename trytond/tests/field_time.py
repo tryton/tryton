@@ -35,10 +35,17 @@ class TimeFormat(ModelSQL):
     time = fields.Time(string='Time', format='%H:%M')
 
 
+class TimePrecision(ModelSQL):
+    "Time precision"
+    __name__ = 'test.time_precision'
+    time = fields.Time(string="Time", format="%H:%M:%S.%f")
+
+
 def register(module):
     Pool.register(
         Time,
         TimeDefault,
         TimeRequired,
         TimeFormat,
+        TimePrecision,
         module=module, type_='model')

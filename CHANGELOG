@@ -1,3 +1,4 @@
+* Allow SQL expression as value of fields
 * Allow customizing Dict keys order with a sequence field
 * Add invalid domain in DomainValidationError
 * Add domain inversion tools

@@ -21,6 +21,7 @@ class Dict(Field):
     'Define dict field.'
     _type = 'dict'
     _sql_type = 'TEXT'
+    _py_type = dict
 
     def __init__(self, schema_model, string='', help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -44,11 +45,10 @@ class Dict(Field):
         return dicts
 
     def sql_format(self, value):
-        if value is None:
-            return None
-        assert isinstance(value, dict)
-        value = {k: v for k, v in value.items() if v is not None}
-        return dumps(value)
+        value = super().sql_format(value)
+        if isinstance(value, dict):
+            value = dumps({k: v for k, v in value.items() if v is not None})
+        return value
 
     def translated(self, name=None, type_='values'):
         "Return a descriptor for the translated value of the field"

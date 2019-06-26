@@ -9,11 +9,7 @@ class Integer(Field):
     '''
     _type = 'integer'
     _sql_type = 'INTEGER'
-
-    def sql_format(self, value):
-        if value is None:
-            return None
-        return int(str(value))
+    _py_type = int
 
 
 class BigInteger(Integer):

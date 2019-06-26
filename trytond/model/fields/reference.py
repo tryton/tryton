@@ -20,6 +20,7 @@ class Reference(SelectionMixin, Field):
     '''
     _type = 'reference'
     _sql_type = 'VARCHAR'
+    _py_type = str
 
     def __init__(self, string='', selection=None, sort=True,
             selection_change_with=None, translate=True, search_order=None,

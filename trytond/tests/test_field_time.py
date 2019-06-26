@@ -3,6 +3,8 @@
 import datetime
 import unittest
 
+from sql.functions import CurrentTimestamp
+
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
@@ -75,6 +77,15 @@ class FieldTimeTestCase(unittest.TestCase):
         self.assertEqual(time.time, default_time)
 
     @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create time with SQL value"
+        Time = Pool().get('test.time_precision')
+
+        time, = Time.create([{'time': Time.time.sql_cast(CurrentTimestamp())}])
+
+        self.assert_(time.time)
+
+    @with_transaction()
     def test_create_non_time(self):
         "Test create time with non time"
         Time = Pool().get('test.time')
@@ -99,7 +110,7 @@ class FieldTimeTestCase(unittest.TestCase):
         "Test create time with date"
         Time = Pool().get('test.time')
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             Time.create([{
                         'time': datetime.date(2009, 1, 1),
                         }])
@@ -460,7 +471,7 @@ class FieldTimeTestCase(unittest.TestCase):
                     'time': evening,
                     }])
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             Time.write([time], {
                     'time': datetime.date(2009, 1, 1),
                     })

@@ -210,6 +210,7 @@ SQL_OPERATORS = {
 class Field(object):
     _type = None
     _sql_type = None
+    _py_type = None
 
     def __init__(self, string='', help='', required=False, readonly=False,
             domain=None, states=None, select=False, on_change=None,
@@ -343,6 +344,9 @@ class Field(object):
 
         assert self._sql_type is not None
         database = Transaction().database
+        if (self._py_type and value is not None
+                and not isinstance(value, self._py_type)):
+            value = self._py_type(value)
         return database.sql_format(self._sql_type, value)
 
     def sql_type(self):

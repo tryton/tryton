@@ -3,6 +3,8 @@
 import datetime
 import unittest
 
+from sql.functions import CurrentTimestamp
+
 from trytond.model.exceptions import (
     RequiredValidationError, TimeFormatValidationError)
 from trytond.pool import Pool
@@ -75,6 +77,17 @@ class FieldDateTimeTestCase(unittest.TestCase):
         self.assertEqual(datetime.datetime, default_datetime)
 
     @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create datetime with SQL value"
+        DateTime = Pool().get('test.datetime')
+
+        datetime, = DateTime.create([{
+                    'datetime': DateTime.datetime.sql_cast(CurrentTimestamp()),
+                    }])
+
+        self.assert_(datetime.datetime)
+
+    @with_transaction()
     def test_create_non_datetime(self):
         "Test create datetime with non datetime"
         DateTime = Pool().get('test.datetime')
@@ -89,7 +102,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
         "Test create datetime with integer"
         DateTime = Pool().get('test.datetime')
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             DateTime.create([{
                         'datetime': 42,
                         }])
@@ -99,7 +112,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
         "Test create datetime with date"
         DateTime = Pool().get('test.datetime')
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             DateTime.create([{
                         'datetime': datetime.date(2009, 1, 1),
                         }])
@@ -447,7 +460,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
                     'datetime': today,
                     }])
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             DateTime.write([datetime], {
                     'datetime': 42,
                     })
@@ -460,7 +473,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
                     'datetime': today,
                     }])
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             DateTime.write([datetime_], {
                     'datetime': datetime.date(2009, 1, 1),
                     })

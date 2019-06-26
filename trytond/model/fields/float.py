@@ -22,6 +22,7 @@ class Float(Field):
     '''
     _type = 'float'
     _sql_type = 'FLOAT'
+    _py_type = float
 
     def __init__(self, string='', digits=None, help='', required=False,
             readonly=False, domain=None, states=None, select=False,
@@ -48,11 +49,6 @@ class Float(Field):
         self.__digits = value
 
     digits = property(_get_digits, _set_digits)
-
-    def sql_format(self, value):
-        if value is None:
-            return None
-        return float(value)
 
     def definition(self, model, language):
         encoder = PYSONEncoder()

@@ -3,6 +3,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from sql import Literal
+
 from trytond import backend
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
@@ -36,6 +38,15 @@ class CommonTestCaseMixin:
                     }])
 
         self.assertEqual(char.char, "é")
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create with SQL value"
+        Char = self.Char()
+
+        char, = Char.create([{'char': Literal('Foo')}])
+
+        self.assertEqual(char.char, "Foo")
 
     @with_transaction()
     def test_search_equals(self):

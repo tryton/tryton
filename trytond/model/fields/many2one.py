@@ -19,6 +19,7 @@ class Many2One(Field):
     '''
     _type = 'many2one'
     _sql_type = 'INTEGER'
+    _py_type = int
 
     def __init__(self, model_name, string='', left=None, right=None,
             ondelete='SET NULL', datetime_field=None, target_search='join',
@@ -111,10 +112,8 @@ class Many2One(Field):
         super(Many2One, self).__set__(inst, value)
 
     def sql_format(self, value):
-        if value is None:
-            return None
         assert value is not False
-        return int(value)
+        return super().sql_format(value)
 
     def convert_domain_mptt(self, domain, tables):
         cursor = Transaction().connection.cursor()

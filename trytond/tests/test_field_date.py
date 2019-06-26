@@ -3,6 +3,8 @@
 import datetime
 import unittest
 
+from sql.functions import CurrentDate
+
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
@@ -74,6 +76,15 @@ class FieldDateTestCase(unittest.TestCase):
         self.assertEqual(date.date, default_date)
 
     @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create date with SQL value"
+        Date = Pool().get('test.date')
+
+        date, = Date.create([{'date': CurrentDate()}])
+
+        self.assert_(date.date)
+
+    @with_transaction()
     def test_create_non_date(self):
         "Test create date with non date"
         Date = Pool().get('test.date')
@@ -88,7 +99,7 @@ class FieldDateTestCase(unittest.TestCase):
         "Test create date with integer"
         Date = Pool().get('test.date')
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             Date.create([{
                         'date': 42,
                         }])
@@ -413,7 +424,7 @@ class FieldDateTestCase(unittest.TestCase):
                     'date': today,
                     }])
 
-        with self.assertRaises(ValueError):
+        with self.assertRaises(TypeError):
             Date.write([date], {
                     'date': 42,
                     })

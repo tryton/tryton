@@ -10,6 +10,7 @@ class Boolean(Field):
     '''
     _type = 'boolean'
     _sql_type = 'BOOL'
+    _py_type = bool
 
     def __init__(self, string='', help='', readonly=False, domain=None,
             states=None, select=False, on_change=None, on_change_with=None,

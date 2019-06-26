@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from sql import Literal
+
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 
@@ -45,6 +47,15 @@ class FieldBooleanTestCase(unittest.TestCase):
         Boolean = Pool().get('test.boolean_default')
 
         boolean, = Boolean.create([{}])
+
+        self.assertEqual(boolean.boolean, True)
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create boolean with SQL value"
+        Boolean = Pool().get('test.boolean')
+
+        boolean, = Boolean.create([{'boolean': Literal(True)}])
 
         self.assertEqual(boolean.boolean, True)
 

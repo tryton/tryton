@@ -20,14 +20,7 @@ class Numeric(Float):
     '''
     _type = 'numeric'
     _sql_type = 'NUMERIC'
-
-    def sql_format(self, value):
-        if value is None:
-            return None
-        if isinstance(value, int):
-            value = Decimal(str(value))
-        value = Decimal(value)
-        return value
+    _py_type = Decimal
 
     def sql_column(self, table):
         column = super(Numeric, self).sql_column(table)

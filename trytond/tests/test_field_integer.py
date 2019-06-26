@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from sql import Literal
+
 from trytond.model.exceptions import (
     RequiredValidationError, DomainValidationError)
 from trytond.pool import Pool
@@ -44,6 +46,15 @@ class FieldIntegerTestCase(unittest.TestCase):
         Integer = Pool().get('test.integer_default')
 
         integer, = Integer.create([{}])
+
+        self.assertEqual(integer.integer, 5)
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create integer with SQL value"
+        Integer = Pool().get('test.integer_default')
+
+        integer, = Integer.create([{'integer': Literal(5)}])
 
         self.assertEqual(integer.integer, 5)
 

@@ -3,6 +3,8 @@
 import unittest
 from decimal import Decimal, InvalidOperation
 
+from sql import Literal
+
 from trytond.model.exceptions import (
     RequiredValidationError, DigitsValidationError)
 from trytond.pool import Pool
@@ -58,6 +60,15 @@ class FieldNumericTestCase(unittest.TestCase):
         numeric, = Numeric.create([{}])
 
         self.assertEqual(numeric.numeric, Decimal('5.5'))
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create numeric with SQL value"
+        Numeric = Pool().get('test.numeric')
+
+        numeric, = Numeric.create([{'numeric': Literal(5.) / Literal(2.)}])
+
+        self.assertEqual(numeric.numeric, Decimal('2.5'))
 
     @with_transaction()
     def test_create_non_numeric(self):

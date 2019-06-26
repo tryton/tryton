@@ -12,6 +12,7 @@ class Char(FieldTranslate):
     Define a char field (``unicode``).
     '''
     _type = 'char'
+    _py_type = str
 
     def __init__(self, string='', size=None, help='', required=False,
             readonly=False, domain=None, states=None, translate=False,
@@ -46,12 +47,6 @@ class Char(FieldTranslate):
         self.__size = value
 
     size = property(_get_size, _set_size)
-
-    def sql_format(self, value):
-        if value is None:
-            return None
-        assert isinstance(value, str)
-        return value
 
     @property
     def _sql_type(self):

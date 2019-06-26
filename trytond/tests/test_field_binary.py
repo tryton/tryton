@@ -4,6 +4,8 @@ import shutil
 import tempfile
 import unittest
 
+from sql import Literal
+
 from trytond.config import config
 from trytond.model.exceptions import RequiredValidationError
 from trytond.model import fields
@@ -109,6 +111,17 @@ class FieldBinaryTestCase(unittest.TestCase):
 
         self.assertEqual(binary.binary, None)
         self.assertEqual(binary.binary_id, None)
+
+    @with_transaction()
+    def test_create_with_sql_value(self):
+        "Test create binary with SQL value"
+        Binary = Pool().get('test.binary')
+
+        binary, = Binary.create([{
+                    'binary': Literal('foo'),
+                    }])
+
+        self.assertEqual(binary.binary, cast(b'foo'))
 
     @with_transaction()
     def test_read_size(self):

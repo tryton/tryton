@@ -59,6 +59,7 @@ class Selection(SelectionMixin, Field):
     '''
     _type = 'selection'
     _sql_type = 'VARCHAR'
+    _py_type = str
 
     def __init__(self, selection, string='', sort=True,
             selection_change_with=None, translate=True, help='',
