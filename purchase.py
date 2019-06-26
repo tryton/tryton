@@ -591,10 +591,14 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             return self.warehouse.address.full_address
         return ''
 
+    @property
+    def full_number(self):
+        return self.number
+
     def get_rec_name(self, name):
         items = []
         if self.number:
-            items.append(self.number)
+            items.append(self.full_number)
         if self.reference:
             items.append('[%s]' % self.reference)
         if not items:
