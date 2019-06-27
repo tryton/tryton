@@ -1017,7 +1017,7 @@
             }
             var record = this.screen.current_record;
             var menu = dropdown.find('.dropdown-menu');
-            menu.children().remove();
+            menu.empty();
             Sao.Window.Attachment.get_attachments(record)
                 .then(function(attachments) {
                     attachments.forEach(function(value) {

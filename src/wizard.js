@@ -123,7 +123,7 @@
             }.bind(this));
         },
         clean: function() {
-            this.widget.children().remove();
+            this.widget.empty();
             this.states = {};
         },
         response: function(state) {
@@ -193,7 +193,7 @@
         },
         clean: function() {
             Sao.Wizard.Form._super.clean.call(this);
-            this.footer.children().remove();
+            this.footer.empty();
         },
         _get_button: function(definition) {
             var button = Sao.Wizard.Form._super._get_button.call(this,
@@ -247,7 +247,7 @@
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);
-            this.footer.children().remove();
+            this.footer.empty();
         },
         _get_button: function(definition) {
             var button = Sao.Wizard.Dialog._super._get_button.call(this,

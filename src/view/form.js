@@ -1282,7 +1282,7 @@ function eval_pyson(value){
 
             var record = this.record;
             if (this.datalist) {
-                this.datalist.children().remove();
+                this.datalist.empty();
                 var set_autocompletion = function() {
                     var selection = [];
                     if (record) {

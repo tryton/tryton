@@ -96,7 +96,7 @@
                 'aria-labelledby': 'bookmarks'
             });
             this.but_bookmark.click(function() {
-                dropdown_bookmark.children().remove();
+                dropdown_bookmark.empty();
                 var bookmarks = this.bookmarks();
                 for (var i=0; i < bookmarks.length; i++) {
                     var name = bookmarks[i][1];
@@ -223,7 +223,7 @@
         update: function() {
             var completions = this.screen.domain_parser.completion(
                     this.get_text());
-            this.search_list.children().remove();
+            this.search_list.empty();
             completions.forEach(function(e) {
                 jQuery('<option/>', {
                     'value': e.trim()

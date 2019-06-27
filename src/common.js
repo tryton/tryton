@@ -2929,7 +2929,7 @@
                 );
             dialog.body.append(jQuery('<p/>')
                     .text(Sao.i18n.gettext('Do you want to proceed?')));
-            dialog.footer.children().remove();
+            dialog.footer.empty();
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
