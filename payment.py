@@ -240,6 +240,15 @@ class Payment:
             for lines in to_reconcile[party].itervalues():
                 Line.reconcile(lines)
 
+    @classmethod
+    def copy(cls, payments, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('clearing_move')
+        return super(Payment, cls).copy(payments, default=default)
+
 
 class Succeed(Wizard):
     "Succeed Payment"
