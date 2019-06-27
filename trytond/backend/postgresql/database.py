@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 import time
 import logging
 import os
@@ -108,7 +109,7 @@ class JSONContains(BinaryOperator):
 class Database(DatabaseInterface):
 
     _lock = RLock()
-    _databases = {}
+    _databases = defaultdict(dict)
     _connpool = None
     _list_cache = {}
     _list_cache_timestamp = {}
@@ -130,13 +131,14 @@ class Database(DatabaseInterface):
     def __new__(cls, name='template1'):
         with cls._lock:
             now = datetime.now()
-            for database in list(cls._databases.values()):
+            databases = cls._databases[os.getpid()]
+            for database in list(databases.values()):
                 if ((now - database._last_use).total_seconds() > _timeout
                         and database.name != name
                         and not database._connpool._used):
                     database.close()
-            if name in cls._databases:
-                inst = cls._databases[name]
+            if name in databases:
+                inst = databases[name]
             else:
                 if name == 'template1':
                     minconn = 0
@@ -147,7 +149,7 @@ class Database(DatabaseInterface):
                 inst._connpool = ThreadedConnectionPool(
                     minconn, _maxconn, **cls._connection_params(name),
                     cursor_factory=LoggingCursor)
-                cls._databases[name] = inst
+                databases[name] = inst
             inst._last_use = datetime.now()
             return inst
 
@@ -200,7 +202,7 @@ class Database(DatabaseInterface):
         with self._lock:
             logger.info('disconnect from "%s"', self.name)
             self._connpool.closeall()
-            self._databases.pop(self.name)
+            self._databases[os.getpid()].pop(self.name)
 
     @classmethod
     def create(cls, connection, database_name, template='template0'):
