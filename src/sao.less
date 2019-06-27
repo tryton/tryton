@@ -163,6 +163,12 @@ input[type='color'] {
         li& {
             top: auto;
             height: auto;
+
+            &:hover + a, &:focus + a {
+                background-color: @dropdown-link-hover-bg;
+                color: @dropdown-link-hover-color;
+                text-decoration: none;
+            }
         }
     }
 }
