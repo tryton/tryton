@@ -82,14 +82,14 @@ There is now a production request::
     >>> production.quantity
     1.0
 
-With an order point without minimal quantity::
+Create an order point negative minimal quantity::
 
     >>> OrderPoint = Model.get('stock.order_point')
     >>> order_point = OrderPoint()
     >>> order_point.type = 'production'
     >>> order_point.product = product
     >>> order_point.warehouse_location = warehouse_loc
-    >>> order_point.min_quantity = None
+    >>> order_point.min_quantity = -1
     >>> order_point.target_quantity = 10
     >>> order_point.save()
 
@@ -116,6 +116,20 @@ Create production request::
 
 There is now a production request::
 
+    >>> production, = Production.find([])
+    >>> production.state
+    'request'
+    >>> production.product == product
+    True
+    >>> production.quantity
+    11.0
+
+Using zero as minimal quantity also creates a production request::
+
+    >>> order_point.min_quantity = 0
+    >>> order_point.save()
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
     >>> production, = Production.find([])
     >>> production.state
     'request'
