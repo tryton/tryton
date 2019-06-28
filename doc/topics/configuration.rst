@@ -360,7 +360,7 @@ The time in seconds until the reset password expires.
 Default: `86400` (24h)
 
 passlib
--------
+~~~~~~~
 
 The path to the `INI file to load as CryptContext
 <https://passlib.readthedocs.io/en/stable/narr/context-tutorial.html#loading-saving-a-cryptcontext>`_.
