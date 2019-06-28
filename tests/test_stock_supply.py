@@ -148,6 +148,7 @@ class StockSupplyTestCase(ModuleTestCase):
                         'product': product.id,
                         'type': 'purchase',
                         'warehouse_location': warehouse.id,
+                        'min_quantity': 0.0,
                         'target_quantity': 5.0,
                         }])
 

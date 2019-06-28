@@ -71,11 +71,15 @@ class OrderPoint(ModelSQL, ModelView):
         'Type', select=True, required=True)
     min_quantity = fields.Float('Minimal Quantity',
         digits=(16, Eval('unit_digits', 2)),
+        states={
+            # required for purchase and production types
+            'required': Eval('type') != 'internal',
+            },
         domain=['OR',
             ('min_quantity', '=', None),
             ('min_quantity', '<=', Eval('target_quantity', 0)),
             ],
-        depends=['unit_digits', 'target_quantity'])
+        depends=['unit_digits', 'target_quantity', 'type'])
     target_quantity = fields.Float('Target Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)),
         domain=[

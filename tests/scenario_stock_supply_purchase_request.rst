@@ -162,6 +162,63 @@ There is now a draft purchase request::
     >>> pr.quantity
     1.0
 
+Create an order point with negative minimal quantity::
+
+    >>> set_user(stock_admin_user)
+    >>> OrderPoint = Model.get('stock.order_point')
+    >>> order_point = OrderPoint()
+    >>> order_point.type = 'purchase'
+    >>> order_point.product = product
+    >>> order_point.warehouse_location = warehouse_loc
+    >>> order_point.min_quantity = -1
+    >>> order_point.target_quantity = 10
+    >>> order_point.save()
+
+Create production request::
+
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+There is no more production request::
+
+    >>> set_user(purchase_user)
+    >>> PurchaseRequest.find([])
+    []
+
+Set a postive minimal quantity on order point create purchase request::
+
+    >>> set_user(stock_admin_user)
+    >>> order_point.min_quantity = 5
+    >>> order_point.save()
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+There is now a draft purchase request::
+
+    >>> set_user(purchase_user)
+    >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
+    >>> pr.product == product
+    True
+    >>> pr.quantity
+    11.0
+
+Using zero as minimal quantity on order point also creates purchase request::
+
+    >>> set_user(stock_admin_user)
+    >>> order_point.min_quantity = 0
+    >>> order_point.save()
+    >>> create_pr = Wizard('stock.supply')
+    >>> create_pr.execute('create_')
+
+There is now a draft purchase request::
+
+    >>> set_user(purchase_user)
+    >>> pr, = PurchaseRequest.find([('state', '=', 'draft')])
+    >>> pr.product == product
+    True
+    >>> pr.quantity
+    11.0
+
 Re-run with purchased request::
 
     >>> create_purchase = Wizard('purchase.request.create_purchase', [pr])
