@@ -22,11 +22,6 @@ bind_pass
 
 The LDAP password used to bind if needed.
 
-active_directory
-----------------
-
-A boolean to set if the LDAP server is an Active Directory.
-
 uid
 ---
 
