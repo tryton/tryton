@@ -213,7 +213,7 @@ class LongPollingBus:
         cursor.execute('NOTIFY "%s", %%s' % cls._channel, (payload,))
 
 
-if config.get('bus', 'queue'):
+if config.get('bus', 'class'):
     Bus = resolve(config.get('bus', 'class'))
 else:
     Bus = LongPollingBus
