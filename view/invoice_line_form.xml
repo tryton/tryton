@@ -28,7 +28,7 @@ this repository contains the full copyright notices and license terms. -->
         </page>
         <page name="description">
             <separator name="description" colspan="4"/>
-            <field name="description"/>
+            <field name="description" colspan="4"/>
         </page>
         <page string="Notes" id="notes">
             <separator name="note" colspan="4"/>
