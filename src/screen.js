@@ -34,7 +34,10 @@
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
                 'class': 'form-control mousetrap',
-                'placeholder': Sao.i18n.gettext('Search')
+                'placeholder': Sao.i18n.gettext('Search'),
+                // workaround for
+                // https://bugzilla.mozilla.org/show_bug.cgi?id=1474137
+                'autocomplete': 'off',
             });
             this.search_list = jQuery('<datalist/>');
             this.search_list.uniqueId();

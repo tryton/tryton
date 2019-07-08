@@ -1251,6 +1251,9 @@ function eval_pyson(value){
                 this.datalist = jQuery('<datalist/>').appendTo(this.el);
                 this.datalist.uniqueId();
                 this.input.attr('list', this.datalist.attr('id'));
+                // workaround for
+                // https://bugzilla.mozilla.org/show_bug.cgi?id=1474137
+                this.input.attr('autocomplete', 'off');
             }
             this.el.change(this.focus_out.bind(this));
 
