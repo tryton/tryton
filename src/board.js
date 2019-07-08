@@ -3,158 +3,17 @@
 (function() {
     'use strict';
 
-    Sao.View.Board = Sao.class_(Object, {
-        init: function(view_xml, context) {
-            var attributes, attribute, node, actions_prms;
-
-            this.context = context;
-            this.actions = [];
-            this.el = jQuery('<div/>', {
-                'class': 'board'
-            });
-
-            attributes = {};
-            node = view_xml.children()[0];
-            for (var i = 0, len = node.attributes.length; i < len; i++) {
-                attribute = node.attributes[i];
-                attributes[attribute.name] = attribute.value;
-            }
-            this.attributes = attributes;
-            this.el.append(this.parse(node).el);
-
-            actions_prms = [];
-            for (i = 0, len = this.actions.length; i < len; i++) {
-                actions_prms.push(this.actions[i].action_prm);
-            }
-            this.actions_prms = jQuery.when.apply(jQuery, actions_prms);
-        },
-        _parse_node: function(child, container, attributes) {
-            switch (child.tagName) {
-                case 'image':
-                    break;
-                case 'separator':
-                    this._parse_separator(child, container, attributes);
-                    break;
-                case 'label':
-                    this._parse_label(child, container, attributes);
-                    break;
-                case 'newline':
-                    container.add_row();
-                    break;
-                case 'notebook':
-                    this._parse_notebook(child, container, attributes);
-                    break;
-                case 'page':
-                    this._parse_page(child, container, attributes);
-                    break;
-                case 'group':
-                    this._parse_group(child, container, attributes);
-                    break;
-                case 'hpaned':
-                    this._parse_pane(child, container, attributes,
-                            'horizontal');
-                    break;
-                case 'vpaned':
-                    this._parse_pane(child, container, attributes,
-                            'vertical');
-                    break;
-                case 'child':
-                    this._parse_child(child, container, attributes);
-                    break;
-                case 'action':
-                    this._parse_action(child, container, attributes);
-                    break;
+    Sao.View.BoardXMLViewParser = Sao.class_(Sao.View.FormXMLViewParser, {
+        _parse_board: function(node, attributes) {
+            var container = new Sao.View.Form.Container(
+                Number(node.getAttribute('col') || 4));
+            this.view.el.append(container.el);
+            this.parse_child(node, container);
+            if (this._containers.length > 0) {
+                throw 'AssertionError';
             }
         },
-        parse: function(node, container) {
-            var _parse;
-            if (!container) {
-                container = new Sao.View.Form.Container(
-                        Number(node.getAttribute('col') || 4));
-            }
-            _parse = function(index, child) {
-                var attributes, attribute;
-                var i, len;
-                attributes = {};
-                for (i = 0, len = child.attributes.length; i < len; i++) {
-                    attribute = child.attributes[i];
-                    attributes[attribute.name] = attribute.value;
-                }
-                ['yexpand', 'yfill', 'xexpand', 'xfill', 'colspan',
-                 'position'].forEach(function(name) {
-                     if (attributes[name]) {
-                         attributes[name] = Number(attributes[name]);
-                     }
-                });
-                this._parse_node(child, container, attributes);
-            };
-            jQuery(node).children().each(_parse.bind(this));
-            return container;
-        },
-        _parse_separator: function(node, container, attributes) {
-            var text, separator;
-            text = attributes.string;
-            separator = new Sao.view.Form.Separator(text, attributes);
-            container.add(separator, attributes);
-        },
-        _parse_label: function(node, container, attributes) {
-            var text, label;
-            text = attributes.string;
-            if (!text) {
-                container.add(null, attributes);
-                return;
-            }
-            label = new Sao.View.Form.Label(text, attributes);
-            container.add(label, attributes);
-        },
-        _parse_notebook: function(node, container, attributes) {
-            var notebook;
-            if (attributes.yexpand === undefined) {
-                attributes.yexpand = true;
-            }
-            if (attributes.yfill === undefined) {
-                attributes.yfill = true;
-            }
-            notebook = new Sao.View.Form.Notebook(attributes);
-            container.add(notebook, attributes);
-            this.parse(node, container);
-        },
-        _parse_page: function(node, container, attributes) {
-            var text;
-            text = attributes.string;
-            page = this.parse(node, container);
-            page = new Sao.View.Form.Page(container.add(page.el, text),
-                    attributes);
-        },
-        _parse_group: function(node, container, attributes) {
-            var group;
-            group = new Sao.View.Form.Group(attributes);
-            container.add(group, attributes);
-        },
-        _parse_pane: function(node, container, attributes, orientation) {
-            var paned;
-            if (attributes.yexpand === undefined) {
-                attributes.yexpand = true;
-            }
-            if (attributes.yfill === undefined) {
-                attributes.yfill = true;
-            }
-            paned = new Sao.common.Paned(orientation);
-            container.add(paned, attributes);
-            this.parse(node, paned);
-        },
-        _parse_child: function(node, paned, attributes) {
-            var container, child1, child2;
-            container = this.parse(node);
-            child1 = paned.get_child1();
-            if (child1.children().length > 0) {
-                child2 = paned.get_child2();
-                child2.append(container.el);
-            } else {
-                child1.append(container.el);
-            }
-        },
-        _parse_action: function(node, container, attributes) {
+        _parse_action: function(node, attributes) {
             var action;
             if (attributes.yexpand === undefined) {
                 attributes.yexpand = true;
@@ -162,9 +21,29 @@
             if (attributes.yfill === undefined) {
                 attributes.yfill = true;
             }
-            action = new Sao.View.Board.Action(attributes, this.context);
-            this.actions.push(action);
-            container.add(action, attributes);
+            action = new Sao.View.Board.Action(attributes, this.view.context);
+            this.view.actions.push(action);
+            this.container.add(action, attributes);
+        },
+    });
+
+    Sao.View.Board = Sao.class_(Object, {
+        xml_parser: Sao.View.BoardXMLViewParser,
+        init: function(xml, context) {
+            var attributes, attribute, node, actions_prms;
+
+            this.context = context;
+            this.actions = [];
+            this.el = jQuery('<div/>', {
+                'class': 'board'
+            });
+            new this.xml_parser(this, null, {}).parse(xml.children()[0]);
+
+            actions_prms = [];
+            for (var i = 0, len = this.actions.length; i < len; i++) {
+                actions_prms.push(this.actions[i].action_prm);
+            }
+            this.actions_prms = jQuery.when.apply(jQuery, actions_prms);
         },
         reload: function() {
             for (var i = 0; i < this.actions.length; i++) {
