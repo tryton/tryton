@@ -36,6 +36,17 @@ class ModelSQLTestCase(unittest.TestCase):
             [{'id': foo.id, 'name': "Foo"}, {'id': bar.id, 'name': "Bar"}])
 
     @with_transaction()
+    def test_read_context_id(self):
+        "Test read with ID in context of field"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read.context_id')
+
+        record, = Model.create([{'name': "Record"}])
+        values = Model.read([record.id], ['name'])
+
+        self.assertEqual(values, [{'id': record.id, 'name': "Record"}])
+
+    @with_transaction()
     def test_read_related_2one(self):
         "Test read with related Many2One"
         pool = Pool()
