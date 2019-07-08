@@ -4,4 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name"/>
     <field name="tax_included"/>
+    <field name="unit"/>
 </tree>

@@ -32,6 +32,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             "It defines the currency of the price list."))
     tax_included = fields.Boolean('Tax Included',
         help="Check if result's formula includes taxes.")
+    unit = fields.Selection([
+            ('product_default', "Product Default"),
+            ], "Unit", required=True,
+        help="The unit in which the quantity is expressed.")
     lines = fields.One2Many('product.price_list.line', 'price_list', 'Lines',
         help="Add price formulas for different criterias.")
 
@@ -43,6 +47,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
     def default_tax_included():
         return False
 
+    @classmethod
+    def default_unit(cls):
+        return 'product_default'
+
     def get_context_formula(self, party, product, unit_price, quantity, uom,
             pattern=None):
         return {
@@ -50,6 +58,9 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
                 'unit_price': unit_price,
                 },
             }
+
+    def get_uom(self, product):
+        return product.default_uom
 
     def compute(self, party, product, unit_price, quantity, uom,
             pattern=None):
@@ -72,7 +83,7 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
                 c.id for c in parents(product.categories_all)]
             pattern['product'] = product.id
         pattern['quantity'] = Uom.compute_qty(uom, quantity,
-            product.default_uom, round=False) if product else quantity
+            self.get_uom(product), round=False) if product else quantity
 
         context = self.get_context_formula(
             party, product, unit_price, quantity, uom, pattern=pattern)
@@ -96,12 +107,8 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help="Apply only to this product.")
     quantity = fields.Float(
         'Quantity',
-        digits=(16, Eval('unit_digits', 2)),
         domain=['OR', ('quantity', '>=', 0), ('quantity', '=', None)],
-        depends=['unit_digits'],
         help="Apply only when quantity is greater.")
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'on_change_with_unit_digits')
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
@@ -109,11 +116,6 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @staticmethod
     def default_formula():
         return 'unit_price'
-
-    @fields.depends('product')
-    def on_change_with_unit_digits(self, name=None):
-        if self.product:
-            return self.product.default_uom.digits
 
     @classmethod
     def validate(cls, lines):
