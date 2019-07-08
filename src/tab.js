@@ -283,7 +283,10 @@
                 }
                 tab.remove();
                 content.remove();
-                Sao.Tab.tabs.splice(Sao.Tab.tabs.indexOf(this), 1);
+                var i = Sao.Tab.tabs.indexOf(this);
+                if (i >= 0) {
+                    Sao.Tab.tabs.splice(i, 1);
+                }
                 if (next.length) {
                     next.find('a').tab('show');
                 } else {
