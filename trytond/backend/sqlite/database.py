@@ -6,6 +6,7 @@ import os
 import threading
 import time
 from decimal import Decimal
+from weakref import WeakKeyDictionary
 
 _FIX_ROWCOUNT = False
 try:
@@ -25,6 +26,7 @@ from sql.functions import (Function, Extract, Position, Substring,
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config
+from trytond.transaction import Transaction
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
@@ -130,7 +132,12 @@ def replace(text, pattern, replacement):
 
 
 def now():
-    return datetime.datetime.now().isoformat(' ')
+    transaction = Transaction()
+    return _nows.setdefault(transaction, {}).setdefault(
+        transaction.started_at, datetime.datetime.now().isoformat(' '))
+
+
+_nows = WeakKeyDictionary()
 
 
 class SQLiteSubstring(Function):

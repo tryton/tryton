@@ -219,6 +219,7 @@ class Transaction(object):
                     datamanager.commit(self)
                 for datamanager in self._datamanagers:
                     datamanager.tpc_vote(self)
+            self.started_at = self.monotonic_time()
             Cache.commit(self)
             self.connection.commit()
         except:
