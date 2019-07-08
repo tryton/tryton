@@ -104,6 +104,19 @@ class MemoryCacheTestCase(unittest.TestCase):
             self.wait_cache_sync()
         self.assertEqual(cache.get('foo'), None)
 
+    def test_memory_cache_nested_transactions(self):
+        "Test MemoryCache with nested transactions"
+        # Create entry in the cache table to trigger 2 updates
+        with Transaction().start(DB_NAME, USER):
+            cache.clear()
+        # Ensure sync is performed on start
+        time.sleep(cache_mod._clear_timeout)
+
+        with Transaction().start(DB_NAME, USER) as transaction1:
+            cache.clear()
+            with transaction1.new_transaction():
+                cache.clear()
+
     def test_memory_cache_sync(self):
         "Test MemoryCache synchronisation"
         with Transaction().start(DB_NAME, USER):
