@@ -14,6 +14,7 @@ from sql import Table
 from sql.functions import CurrentTimestamp
 
 import trytond.tools as tools
+from trytond.cache import Cache
 from trytond.config import config
 from trytond.exceptions import MissingDependenciesException
 from trytond.transaction import Transaction
@@ -266,6 +267,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
                                 ]))
                 module2state[module] = 'activated'
 
+            # Avoid clearing cache to prevent dead lock on ir.cache table
+            Cache.rollback(transaction)
             transaction.commit()
 
         if not update:

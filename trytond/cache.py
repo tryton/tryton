@@ -165,8 +165,9 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def sync(cls, transaction):
-        dbname = transaction.database.name
-        if not _clear_timeout and transaction.database.has_channel():
+        database = transaction.database
+        dbname = database.name
+        if not _clear_timeout and database.has_channel():
             with cls._listener_lock:
                 if dbname not in cls._listener:
                     cls._listener[dbname] = listener = threading.Thread(
@@ -175,12 +176,17 @@ class MemoryCache(BaseCache):
             return
         if (datetime.now() - cls._clean_last).total_seconds() < _clear_timeout:
             return
-        with transaction.connection.cursor() as cursor:
-            table = Table(cls._table)
-            cursor.execute(*table.select(_cast(table.timestamp), table.name))
-            timestamps = {}
-            for timestamp, name in cursor.fetchall():
-                timestamps[name] = timestamp
+        connection = database.get_connection(readonly=True, autocommit=True)
+        try:
+            with connection.cursor() as cursor:
+                table = Table(cls._table)
+                cursor.execute(*table.select(
+                        _cast(table.timestamp), table.name))
+                timestamps = {}
+                for timestamp, name in cursor.fetchall():
+                    timestamps[name] = timestamp
+        finally:
+            database.put_connection(connection)
         for name, timestamp in timestamps.items():
             try:
                 inst = cls._instances[name]
@@ -197,39 +203,48 @@ class MemoryCache(BaseCache):
         reset = cls._reset.setdefault(transaction, set())
         if not reset:
             return
-        dbname = transaction.database.name
-        with transaction.connection.cursor() as cursor:
-            if not _clear_timeout and transaction.database.has_channel():
+        database = transaction.database
+        dbname = database.name
+        if not _clear_timeout and transaction.database.has_channel():
+            with transaction.connection.cursor() as cursor:
                 cursor.execute(
                     'NOTIFY "%s", %%s' % cls._channel,
                     (json.dumps(list(reset), separators=(',', ':')),))
-            else:
-                for name in reset:
-                    cursor.execute(*table.select(table.name,
-                            where=table.name == name,
-                            limit=1))
-                    if cursor.fetchone():
-                        # It would be better to insert only
-                        cursor.execute(*table.update([table.timestamp],
-                                [CurrentTimestamp()],
+        else:
+            connection = database.get_connection(
+                readonly=False, autocommit=True)
+            try:
+                with connection.cursor() as cursor:
+                    for name in reset:
+                        cursor.execute(*table.select(table.name, table.id,
+                                table.timestamp,
+                                where=table.name == name,
+                                limit=1))
+                        if cursor.fetchone():
+                            # It would be better to insert only
+                            cursor.execute(*table.update([table.timestamp],
+                                    [CurrentTimestamp()],
+                                    where=table.name == name))
+                        else:
+                            cursor.execute(*table.insert(
+                                    [table.timestamp, table.name],
+                                    [[CurrentTimestamp(), name]]))
+
+                        cursor.execute(*table.select(
+                                Max(table.timestamp),
                                 where=table.name == name))
-                    else:
-                        cursor.execute(*table.insert(
-                                [table.timestamp, table.name],
-                                [[CurrentTimestamp(), name]]))
+                        timestamp, = cursor.fetchone()
 
-                    cursor.execute(*table.select(
-                            Max(table.timestamp),
-                            where=table.name == name))
-                    timestamp, = cursor.fetchone()
+                        cursor.execute(*table.select(
+                                _cast(Max(table.timestamp)),
+                                where=table.name == name))
+                        timestamp, = cursor.fetchone()
 
-                    cursor.execute(*table.select(
-                            _cast(Max(table.timestamp)),
-                            where=table.name == name))
-                    timestamp, = cursor.fetchone()
-
-                    inst = cls._instances[name]
-                    inst._clear(dbname, timestamp)
+                        inst = cls._instances[name]
+                        inst._clear(dbname, timestamp)
+                connection.commit()
+            finally:
+                database.put_connection(connection)
         reset.clear()
 
     @classmethod
