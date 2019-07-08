@@ -339,9 +339,7 @@
         return jQuery.when();
     };
     Sao.Tab.tabs.get_current = function() {
-        var tabs = jQuery('#tablist');
-        var i = tabs.find('li').index(tabs.find('li.active'));
-        return Sao.Tab.tabs[i];
+        return jQuery('#tablist').find('li.active').data('tab');
     };
     Sao.Tab.tabs.close_current = function() {
         var tab = this.get_current();
@@ -399,7 +397,8 @@
             'data-placement': 'bottom',
             id: 'nav-' + tab.id
         }).append(tab_link)
-        .appendTo(tablist);
+        .appendTo(tablist)
+        .data('tab', tab);
         jQuery('<div/>', {
             role: 'tabpanel',
             'class': 'tab-pane',
