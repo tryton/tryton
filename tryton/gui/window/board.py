@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 "Board"
 import gettext
+import xml.dom.minidom
+
 from tryton.signal_event import SignalEvent
 from tryton.gui import Main
 from tryton.gui.window.view_board import ViewBoard
@@ -27,7 +29,9 @@ class Board(SignalEvent, TabContent):
         except RPCException:
             raise
 
-        self.board = ViewBoard(view['arch'], context=context)
+        xml_dom = xml.dom.minidom.parseString(view['arch'])
+        root, = xml_dom.childNodes
+        self.board = ViewBoard(root, context=context)
         self.model = model
         self.dialogs = []
         if not name:
