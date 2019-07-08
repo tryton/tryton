@@ -313,6 +313,8 @@ class Payment:
                     ('stripe_charge_id', '=', None),
                     ])
         for payment in payments:
+            # Use clear cache after a commit
+            payment = cls(payment.id)
             cls.__lock([payment])
             try:
                 charge = stripe.Charge.create(**payment._charge_parameters())
@@ -369,6 +371,8 @@ class Payment:
         The transaction is committed after each payment capture.
         """
         for payment in payments:
+            # Use clear cache after a commit
+            payment = cls(payment.id)
             if (not payment.stripe_charge_id
                     or payment.stripe_captured
                     or payment.state != 'processing'):
@@ -686,6 +690,8 @@ class Customer(ModelSQL, ModelView):
                         ],
                     ])
         for customer in customers:
+            # Use clear cache after a commit
+            customer = cls(customer.id)
             assert not customer.stripe_customer_id
             try:
                 cu = stripe.Customer.create(
@@ -725,6 +731,8 @@ class Customer(ModelSQL, ModelView):
                     ('stripe_customer_id', '!=', None),
                     ])
         for customer in customers:
+            # Use clear cache after a commit
+            customer = cls(customer.id)
             assert not customer.active
             try:
                 cu = stripe.Customer.retrieve(
