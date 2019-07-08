@@ -368,6 +368,8 @@ class Payment(metaclass=PoolMeta):
                     ('company', '=', Transaction().context.get('company')),
                     ])
         for payment in payments:
+            # Use clear cache after a commit
+            payment = cls(payment.id)
             if (payment.stripe_charge_id
                     or payment.journal.process_method != 'stripe'
                     or payment.state != 'processing'):
@@ -447,6 +449,8 @@ class Payment(metaclass=PoolMeta):
                     ('company', '=', Transaction().context.get('company')),
                     ])
         for payment in payments:
+            # Use clear cache after a commit
+            payment = cls(payment.id)
             if (not payment.stripe_charge_id
                     or payment.journal.process_method != 'stripe'
                     or payment.stripe_captured
@@ -828,6 +832,8 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                         ],
                     ])
         for customer in customers:
+            # Use clear cache after a commit
+            customer = cls(customer.id)
             if customer.stripe_customer_id:
                 continue
             customer.lock()
@@ -869,6 +875,8 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                     ('stripe_customer_id', '!=', None),
                     ])
         for customer in customers:
+            # Use clear cache after a commit
+            customer = cls(customer.id)
             assert not customer.active
             customer.lock()
             try:
