@@ -415,10 +415,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
 
-    @staticmethod
-    def _get_origin():
+    @classmethod
+    def _get_origin(cls):
         'Return list of Model names for origin Reference'
-        return ['stock.inventory.line']
+        return [cls.__name__, 'stock.inventory.line']
 
     @classmethod
     def get_origin(cls):

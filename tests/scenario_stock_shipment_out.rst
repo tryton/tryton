@@ -108,6 +108,12 @@ Set the shipment state to waiting::
     2
     >>> len(shipment_out.inventory_moves)
     2
+    >>> sorted(
+    ...     [m.origin for m in shipment_out.inventory_moves],
+    ...     key=lambda m: m.id) == \
+    ...     sorted(
+    ...     [m for m in shipment_out.outgoing_moves], key=lambda m: m.id)
+    True
 
 Make 1 unit of the product available::
 

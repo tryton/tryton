@@ -394,6 +394,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
         # move will be made:
         move.planned_date = None
         move.company = incoming_move.company
+        move.origin = incoming_move
         return move
 
     @classmethod
@@ -1123,6 +1124,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
             company=move.company,
             currency=move.currency,
             unit_price=move.unit_price,
+            origin=move,
             state='staging' if move.state == 'staging' else 'draft',
             )
 
@@ -1746,6 +1748,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
         # move will be made:
         move.planned_date = None
         move.company = incoming_move.company
+        move.origin = incoming_move
         return move
 
     @classmethod
