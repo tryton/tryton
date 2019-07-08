@@ -3,8 +3,6 @@
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Product']
-
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -42,3 +40,18 @@ class Product(metaclass=PoolMeta):
                     price = Tax.reverse_compute(price, taxes)
                 prices[product.id] = price
         return prices
+
+
+class PriceList(metaclass=PoolMeta):
+    __name__ = 'product.price_list'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.unit.selection.append(('product_sale', "Product Sale"))
+
+    def get_uom(self, product):
+        uom = super().get_uom(product)
+        if self.unit == 'product_sale' and self.product.sale_uom:
+            uom = self.product.sale_uom
+        return uom

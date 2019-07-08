@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 from .party import *
 from .sale import *
-from .product import *
+from . import product
 from . import configuration
 
 
@@ -14,7 +14,8 @@ def register():
         PartySalePriceList,
         Sale,
         SaleLine,
-        Product,
+        product.Product,
+        product.PriceList,
         configuration.Configuration,
         configuration.ConfigurationSalePriceList,
         module='sale_price_list', type_='model')
