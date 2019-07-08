@@ -636,7 +636,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     @classmethod
     def set_report_content_html(cls, reports, name, value):
-        value = value.encode('utf-8')
+        if value is not None:
+            value = value.encode('utf-8')
         cls.set_report_content(reports, name[:-5], value)
 
     @fields.depends('name', 'template_extension')
