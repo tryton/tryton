@@ -201,6 +201,8 @@ class InvoiceChorus(ModelSQL, ModelView, _SyntaxMixin, metaclass=PoolMeta):
                     ])
 
         for record in records:
+            # Use clear cache after a commit
+            record = cls(record.id)
             with Transaction().set_context(**record._send_context()):
                 payload = record.get_payload()
                 resp = Credential.post('factures/deposer/flux', payload)
