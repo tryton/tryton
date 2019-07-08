@@ -76,9 +76,12 @@ Configuration
 
 The product module uses the section `product` to retrieve some parameters:
 
-- `price_decimal`: defines the number of decimal with which the unit prices are
-  stored. The default value is `4`.
+- `price_decimal`: defines the number of decimal digits with which the unit
+  prices are stored. The default value is `4`.
+
+- `uom_conversion_decimal`: defines the number of decimal digits with which the
+  conversion rates and factors of UoM are stored. The default value is `12`.
 
 .. warning::
-    It can not be lowered once a database is created.
+    They can not be lowered once a database is created.
 ..

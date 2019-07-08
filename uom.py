@@ -4,6 +4,7 @@
 from decimal import Decimal
 from math import ceil, floor, log10
 
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from trytond.model.exceptions import AccessError
@@ -12,12 +13,15 @@ from trytond.transaction import Transaction
 
 from .exceptions import UOMValidationError
 
-__all__ = ['UomCategory', 'Uom']
+__all__ = ['UomCategory', 'Uom', 'uom_conversion_digits']
 
 STATES = {
     'readonly': ~Eval('active', True),
     }
 DEPENDS = ['active']
+
+uom_conversion_digits = (
+    config.getint('product', 'uom_conversion_decimal', default=12),) * 2
 
 
 class UomCategory(ModelSQL, ModelView):
@@ -41,12 +45,14 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         translate=True, depends=DEPENDS)
     category = fields.Many2One('product.uom.category', 'Category',
         required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
-    rate = fields.Float('Rate', digits=(12, 12), required=True,
+    rate = fields.Float(
+        "Rate", digits=uom_conversion_digits, required=True,
         states=STATES, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             '1 (base unit) = coef (this unit)'))
-    factor = fields.Float('Factor', digits=(12, 12), states=STATES,
-        required=True, depends=DEPENDS,
+    factor = fields.Float(
+        "Factor", digits=uom_conversion_digits, required=True,
+        states=STATES, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             'coef (base unit) = 1 (this unit)'))
     rounding = fields.Float('Rounding Precision',
@@ -92,7 +98,7 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         if (self.factor or 0.0) == 0.0:
             self.rate = 0.0
         else:
-            self.rate = round(1.0 / self.factor, self.__class__.rate.digits[1])
+            self.rate = round(1.0 / self.factor, uom_conversion_digits[1])
 
     @fields.depends('rate')
     def on_change_rate(self):
@@ -100,7 +106,7 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
             self.factor = 0.0
         else:
             self.factor = round(
-                1.0 / self.rate, self.__class__.factor.digits[1])
+                1.0 / self.rate, uom_conversion_digits[1])
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -133,9 +139,9 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         if self.rate == self.factor == 0.0:
             return
         if (self.rate != round(
-                    1.0 / self.factor, self.__class__.rate.digits[1])
+                    1.0 / self.factor, uom_conversion_digits[1])
                 and self.factor != round(
-                    1.0 / self.rate, self.__class__.factor.digits[1])):
+                    1.0 / self.rate, uom_conversion_digits[1])):
             raise UOMValidationError(
                 gettext('product.msg_uom_incompatible_factor_rate',
                     uom=self.rec_name))
@@ -173,24 +179,17 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         Select the more accurate field.
         It chooses the field that has the least decimal.
         """
-        lengths = {}
-        for field in ('rate', 'factor'):
-            format = '%%.%df' % getattr(self.__class__, field).digits[1]
-            lengths[field] = len((format % getattr(self,
-                        field)).split('.')[1].rstrip('0'))
-        if lengths['rate'] < lengths['factor']:
-            return 'rate'
-        elif lengths['factor'] < lengths['rate']:
-            return 'factor'
-        elif self.factor >= 1.0:
-            return 'factor'
-        else:
-            return 'rate'
+        return _accurate_operator(self.factor, self.rate)
 
     @classmethod
-    def compute_qty(cls, from_uom, qty, to_uom, round=True):
+    def compute_qty(cls, from_uom, qty, to_uom, round=True,
+            factor=None, rate=None):
         """
         Convert quantity for given uom's.
+
+        When converting between uom's from different categories the factor and
+        rate provide the ratio to use to convert between the category's base
+        uom's.
         """
         if not qty or (from_uom is None and to_uom is None):
             return qty
@@ -199,13 +198,27 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         if to_uom is None:
             raise ValueError("missing to_uom")
         if from_uom.category.id != to_uom.category.id:
-            raise ValueError("cannot convert between %s and %s"
+            if not factor and not rate:
+                raise ValueError(
+                    "cannot convert between %s and %s without a factor or rate"
                     % (from_uom.category.name, to_uom.category.name))
+        elif factor or rate:
+            raise ValueError("factor and rate not allowed for same category")
 
         if from_uom.accurate_field == 'factor':
             amount = qty * from_uom.factor
         else:
             amount = qty / from_uom.rate
+
+        if factor and rate:
+            if _accurate_operator(factor, rate) == 'rate':
+                factor = None
+            else:
+                rate = None
+        if factor:
+            amount *= factor
+        elif rate:
+            amount /= rate
 
         if to_uom.accurate_field == 'factor':
             amount = amount / to_uom.factor
@@ -218,9 +231,13 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         return amount
 
     @classmethod
-    def compute_price(cls, from_uom, price, to_uom):
+    def compute_price(cls, from_uom, price, to_uom, factor=None, rate=None):
         """
         Convert price for given uom's.
+
+        When converting between uom's from different categories the factor and
+        rate provide the ratio to use to convert between the category's base
+        uom's.
         """
         if not price or (from_uom is None and to_uom is None):
             return price
@@ -229,21 +246,34 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         if to_uom is None:
             raise ValueError("missing to_uom")
         if from_uom.category.id != to_uom.category.id:
-            raise ValueError('cannot convert between %s and %s'
+            if not factor and not rate:
+                raise ValueError(
+                    "cannot convert between %s and %s without a factor or rate"
                     % (from_uom.category.name, to_uom.category.name))
+        elif factor or rate:
+            raise ValueError("factor and rate not allow for same category")
 
-        factor_format = '%%.%df' % cls.factor.digits[1]
-        rate_format = '%%.%df' % cls.rate.digits[1]
+        format_ = '%%.%df' % uom_conversion_digits[1]
 
         if from_uom.accurate_field == 'factor':
-            new_price = price / Decimal(factor_format % from_uom.factor)
+            new_price = price / Decimal(format_ % from_uom.factor)
         else:
-            new_price = price * Decimal(rate_format % from_uom.rate)
+            new_price = price * Decimal(format_ % from_uom.rate)
+
+        if factor and rate:
+            if _accurate_operator(factor, rate) == 'rate':
+                factor = None
+            else:
+                rate = None
+        if factor:
+            new_price /= Decimal(factor)
+        elif rate:
+            new_price *= Decimal(rate)
 
         if to_uom.accurate_field == 'factor':
-            new_price = new_price * Decimal(factor_format % to_uom.factor)
+            new_price = new_price * Decimal(format_ % to_uom.factor)
         else:
-            new_price = new_price / Decimal(rate_format % to_uom.rate)
+            new_price = new_price / Decimal(format_ % to_uom.rate)
 
         return new_price
 
@@ -267,3 +297,18 @@ def _round(uom, number, func=round):
     # >>> 3 / 10.
     # 0.3
     return func(number / precision) * precision / factor
+
+
+def _accurate_operator(factor, rate):
+    lengths = {}
+    for name, value in [('rate', rate), ('factor', factor)]:
+        format_ = '%%.%df' % uom_conversion_digits[1]
+        lengths[name] = len((format_ % value).split('.')[1].rstrip('0'))
+    if lengths['rate'] < lengths['factor']:
+        return 'rate'
+    elif lengths['factor'] < lengths['rate']:
+        return 'factor'
+    elif factor >= 1.0:
+        return 'factor'
+    else:
+        return 'rate'
