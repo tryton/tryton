@@ -4,5 +4,5 @@
 from trytond.exceptions import UserError
 
 
-class UpdateCostPriceError(UserError):
+class ModifyCostPriceError(UserError):
     pass

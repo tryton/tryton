@@ -375,3 +375,20 @@ Create Drop Shipment Move::
     Decimal('66.00')
     >>> stock_customer.credit
     Decimal('0.00')
+
+Modify cost price::
+    >>> Account = Model.get('account.account')
+    >>> counterpart, = Account.find([('name', '=', 'Stock Lost and Found')])
+    >>> modify_price = Wizard('product.modify_cost_price', [product])
+    >>> modify_price.form.cost_price = Decimal('3.00')
+    >>> modify_price.execute('should_show_move')
+    >>> modify_price.form.description = 'Change product cost price.'
+    >>> modify_price.form.counterpart = counterpart
+    >>> modify_price.execute('create_move')
+    >>> product.cost_price
+    Decimal('3.00')
+    >>> stock_lost_found.reload()
+    >>> stock_lost_found.debit
+    Decimal('13.00')
+    >>> stock_lost_found.credit
+    Decimal('0.00')

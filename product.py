@@ -13,11 +13,11 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.account_product.product import (
     account_used, template_property)
 from trytond.modules.product import price_digits
-from .exceptions import UpdateCostPriceError
+from .exceptions import ModifyCostPriceError
 
 __all__ = ['Category', 'CategoryAccount', 'Template',
-    'Product', 'UpdateCostPriceAsk',
-    'UpdateCostPriceShowMove', 'UpdateCostPrice']
+    'Product', 'ModifyCostPriceAsk',
+    'ModifyCostPriceShowMove', 'ModifyCostPrice']
 account_names = [
     'account_stock', 'account_stock_supplier', 'account_stock_customer',
     'account_stock_production', 'account_stock_lost_found']
@@ -233,9 +233,9 @@ class Product(metaclass=PoolMeta):
         'account_stock_lost_found_used')
 
 
-class UpdateCostPriceAsk(ModelView):
-    'Update Cost Price Ask'
-    __name__ = 'product.update_cost_price.ask'
+class ModifyCostPriceAsk(ModelView):
+    'Modify Cost Price Ask'
+    __name__ = 'product.modify_cost_price.ask'
     template = fields.Many2One('product.template', 'Product', readonly=True,
         states={
             'invisible': ~Eval('template'),
@@ -248,9 +248,9 @@ class UpdateCostPriceAsk(ModelView):
         digits=price_digits)
 
 
-class UpdateCostPriceShowMove(ModelView):
-    'Update Cost Price Show Move'
-    __name__ = 'product.update_cost_price.show_move'
+class ModifyCostPriceShowMove(ModelView):
+    'Modify Cost Price Show Move'
+    __name__ = 'product.modify_cost_price.show_move'
     price_difference = fields.Numeric('Price Difference', readonly=True,
         digits=price_digits)
     amount = fields.Numeric('Amount', readonly=True,
@@ -270,23 +270,23 @@ class UpdateCostPriceShowMove(ModelView):
     description = fields.Char('Description')
 
 
-class UpdateCostPrice(Wizard):
-    'Update Cost Price'
-    __name__ = 'product.update_cost_price'
+class ModifyCostPrice(Wizard):
+    'Modify Cost Price'
+    __name__ = 'product.modify_cost_price'
     start_state = 'ask_price'
-    ask_price = StateView('product.update_cost_price.ask',
-        'account_stock_continental.update_cost_price_ask_form', [
+    ask_price = StateView('product.modify_cost_price.ask',
+        'account_stock_continental.modify_cost_price_ask_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('OK', 'should_show_move', 'tryton-forward', default=True),
             ])
     should_show_move = StateTransition()
-    show_move = StateView('product.update_cost_price.show_move',
-        'account_stock_continental.update_cost_price_show_move_form', [
+    show_move = StateView('product.modify_cost_price.show_move',
+        'account_stock_continental.modify_cost_price_show_move_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
             Button('OK', 'create_move', 'tryton-ok', default=True),
             ])
     create_move = StateTransition()
-    update_price = StateTransition()
+    modify_price = StateTransition()
 
     def default_ask_price(self, fields):
         pool = Pool()
@@ -324,7 +324,7 @@ class UpdateCostPrice(Wizard):
     def transition_should_show_move(self):
         if self.get_quantity() != 0:
             return 'show_move'
-        return 'update_price'
+        return 'modify_price'
 
     def default_show_move(self, fields):
         pool = Pool()
@@ -388,16 +388,16 @@ class UpdateCostPrice(Wizard):
         Move = Pool().get('account.move')
 
         if self.show_move.counterpart == self.show_move.stock_account:
-            raise UpdateCostPriceError(
+            raise ModifyCostPriceError(
                 gettext('account_stock_continental'
-                    '.msg_update_cost_price_same_account',
+                    '.msg_modify_cost_price_same_account',
                     account=self.show_move.counterpart.rec_name))
         move = self.get_move()
         move.save()
         Move.post([move])
-        return 'update_price'
+        return 'modify_price'
 
-    def transition_update_price(self):
+    def transition_modify_price(self):
         self.ask_price.product.set_multivalue(
             'cost_price', self.ask_price.cost_price)
         return 'end'

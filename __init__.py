@@ -19,9 +19,9 @@ def register():
         account.ConfigurationCostPriceCounterpartAccount,
         account.FiscalYear,
         account.AccountMove,
-        product.UpdateCostPriceAsk,
-        product.UpdateCostPriceShowMove,
+        product.ModifyCostPriceAsk,
+        product.ModifyCostPriceShowMove,
         module='account_stock_continental', type_='model')
     Pool.register(
-        product.UpdateCostPrice,
+        product.ModifyCostPrice,
         module='account_stock_continental', type_='wizard')

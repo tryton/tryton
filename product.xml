@@ -3,28 +3,28 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="update_cost_price_ask_form">
-            <field name="model">product.update_cost_price.ask</field>
+        <record model="ir.ui.view" id="modify_cost_price_ask_form">
+            <field name="model">product.modify_cost_price.ask</field>
             <field name="type">form</field>
-            <field name="name">update_cost_price_ask_form</field>
+            <field name="name">modify_cost_price_ask_form</field>
         </record>
-        <record model="ir.ui.view" id="update_cost_price_show_move_form">
-            <field name="model">product.update_cost_price.show_move</field>
+        <record model="ir.ui.view" id="modify_cost_price_show_move_form">
+            <field name="model">product.modify_cost_price.show_move</field>
             <field name="type">form</field>
-            <field name="name">update_cost_price_show_move_form</field>
+            <field name="name">modify_cost_price_show_move_form</field>
         </record>
-        <record model="ir.action.wizard" id="wizard_update_cost_price">
-            <field name="name">Update Cost Price</field>
-            <field name="wiz_name">product.update_cost_price</field>
+        <record model="ir.action.wizard" id="wizard_modify_cost_price">
+            <field name="name">Modify Cost Price</field>
+            <field name="wiz_name">product.modify_cost_price</field>
         </record>
-        <record model="ir.action.keyword" id="update_cost_price_product_keyword">
+        <record model="ir.action.keyword" id="modify_cost_price_product_keyword">
             <field name="keyword">form_action</field>
             <field name="model">product.product,-1</field>
-            <field name="action" ref="wizard_update_cost_price"/>
+            <field name="action" ref="wizard_modify_cost_price"/>
         </record>
         <record model="ir.action-res.group"
-            id="wizard_update_cost_price-group_account">
-            <field name="action" ref="wizard_update_cost_price"/>
+            id="wizard_modify_cost_price-group_account">
+            <field name="action" ref="wizard_modify_cost_price"/>
             <field name="group" ref="account.group_account" />
         </record>
 
