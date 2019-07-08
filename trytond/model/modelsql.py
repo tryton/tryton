@@ -704,6 +704,7 @@ class ModelSQL(ModelStorage):
                 extra_fields.add(field.datetime_field)
             if field.context:
                 extra_fields.update(fields.get_eval_fields(field.context))
+        extra_fields.discard('id')
         all_fields = (
             set(fields_names) | set(fields_related.keys()) | extra_fields)
 
