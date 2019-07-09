@@ -274,6 +274,10 @@ class Type(
     def default_template_override(cls):
         return False
 
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
     def get_currency_digits(self, name):
         return self.company.currency.digits
 
