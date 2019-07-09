@@ -236,7 +236,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Receivable</field>
             <field name="sequence" eval="20"/>
             <field name="domain"
-                eval="[('account.type.payable', '=', True)]" pyson="1"/>
+                eval="[('account.type.receivable', '=', True)]" pyson="1"/>
             <field name="act_window" ref="act_move_line_payable_receivable"/>
         </record>
         <record model="ir.action.act_window.domain"
