@@ -342,7 +342,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
-                    (m.origin_name for m in self.moves))))
+                    (m.origin_name for m in self.incoming_moves))))
 
     @classmethod
     def create(cls, vlist):
@@ -1072,7 +1072,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
-                    (m.origin_name for m in self.moves))))
+                    (m.origin_name for m in self.outgoing_moves))))
 
     @classmethod
     @ModelView.button
@@ -1637,7 +1637,7 @@ class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
-                    (m.origin_name for m in self.moves))))
+                    (m.origin_name for m in self.incoming_moves))))
 
     @classmethod
     def create(cls, vlist):
