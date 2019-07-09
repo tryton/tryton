@@ -799,6 +799,28 @@
   </define>
   <define name="attlist.notebook" combine="interleave">
     <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">yexpand</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.notebook" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">yfill</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.notebook" combine="interleave">
+    <optional>
       <attribute>
         <name ns="">states</name>
         <text/>
