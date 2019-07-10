@@ -135,7 +135,7 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 raise ValueError
         except Exception as exception:
             raise FormulaError(
-                gettext('product_price_list.msg_invalid_format',
+                gettext('product_price_list.msg_invalid_formula',
                     formula=self.formula,
                     line=self.rec_name,
                     exception=exception)) from exception
