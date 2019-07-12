@@ -82,9 +82,23 @@
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_MULTIPLE);
-            this.el = jQuery('<div/>', {
+            this.el = jQuery('<div/>');
+            this.scrollbar = jQuery('<div/>')
+                .appendTo(jQuery('<div/>', {
+                    'class': 'scrollbar responsive',
+                }).appendTo(this.el));
+            this.treeview = jQuery('<div/>', {
                 'class': 'treeview responsive'
-            });
+            }).appendTo(this.el);
+
+            // Synchronize both scrollbars
+            this.treeview.scroll(function() {
+                this.scrollbar.parent().scrollLeft(this.treeview.scrollLeft());
+            }.bind(this));
+            this.scrollbar.parent().scroll(function() {
+                this.treeview.scrollLeft(this.scrollbar.parent().scrollLeft());
+            }.bind(this));
+
             this.expanded = {};
 
             Sao.View.Tree._super.init.call(this, view_id, screen, xml);
@@ -98,7 +112,7 @@
             if (this.editable) {
                 this.table.addClass('table-bordered');
             }
-            this.el.append(this.table);
+            this.treeview.append(this.table);
             var colgroup = jQuery('<colgroup/>').appendTo(this.table);
             var col = jQuery('<col/>', {
                 'class': 'selection-state',
@@ -358,6 +372,7 @@
             var inversion = new Sao.common.DomainInversion();
             domain = inversion.simplify(domain);
             var decoder = new Sao.PYSON.Decoder(this.screen.context);
+            var min_width = 0;
             this.columns.forEach(function(column) {
                 visible_columns += 1;
                 var name = column.attributes.name;
@@ -403,22 +418,23 @@
                         'biginteger': 6,
                         'float': 8,
                         'numeric': 8,
-                        'timedelta': 10,
-                        'date': 10,
-                        'datetime': 10,
-                        'time': 10,
                         'selection': 9,
-                        'char': 10,
                         'one2many': 5,
                         'many2many': 5,
                         'boolean': 2,
                         'binary': 20,
                     }[column.attributes.widget] || 10;
-                    width = width * 100 + '%';
-                    column.col.css('width', width);
+                    var factor = 1;
+                    if (column.attributes.expand) {
+                        factor += parseInt(column.attributes.expand, 10);
+                    }
+                    column.col.css('width', width * 100 * factor  + '%');
                     column.col.show();
+                    min_width += width * 10;
                 }
             }.bind(this));
+            this.table.css('min-width', min_width + 'px');
+            this.scrollbar.css('min-width', min_width + 'px');
             this.tbody.find('tr.more-row > td').attr(
                 'colspan', visible_columns);
 

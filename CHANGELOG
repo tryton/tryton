@@ -1,3 +1,5 @@
+* Support expand on column
+* Set minimal width for columns
 * Order Dict keys by sequence
 * Support relation fields in domain parser
 * Add view modified

@@ -514,6 +514,15 @@ function eval_pyson(value){
             var col = this.col;
             var has_expand = false;
             var i, j;
+
+            var parent_max_width = 1;
+            this.el.parents('td').each(function() {
+                var width = this.style.width;
+                if (width.endsWith('%')) {
+                    parent_max_width *= parseFloat(width.slice(0, -1), 10) / 100;
+                }
+            });
+
             var get_xexpands = function(row) {
                 row = jQuery(row);
                 var xexpands = [];
@@ -592,6 +601,12 @@ function eval_pyson(value){
                             width += widths[i + j] || 0;
                         }
                         cell.css('width', width + '%');
+                        if (0 < width) {
+                            // 25 is the percentage of offcanvas on md
+                            cell.css(
+                                'max-width',
+                                ((width * parent_max_width) - 25) + 'vw');
+                        }
                     } else {
                         cell.css('width', '');
                     }

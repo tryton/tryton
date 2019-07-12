@@ -555,6 +555,11 @@ input.column-boolean {
 }
 
 @media screen and (max-width: @screen-xs-max) {
+    .responsive.scrollbar {
+        > div {
+            min-width: unset !important;
+        }
+    }
     table.responsive,
     table.responsive > thead,
     table.responsive > thead > tr,
@@ -568,6 +573,7 @@ input.column-boolean {
         display: block !important;
     }
     table.responsive {
+        min-width: unset !important;
         /* Hide table headers (but not display: none; for accessiblity) */
         > thead > tr {
             position: absolute;
@@ -576,6 +582,7 @@ input.column-boolean {
         }
         > thead > tr,
         > tbody > tr > td {
+            max-width: unset !important;
             text-align: left !important;
             text-align: start !important;
             /* Force height to empty content */
@@ -645,6 +652,14 @@ input.column-boolean {
     top: 0px;
     width: 100%;
     z-index: 2000;
+}
+
+.scrollbar {
+    overflow: auto;
+
+    > div {
+        height: 1rem;
+    }
 }
 
 .infobar {
