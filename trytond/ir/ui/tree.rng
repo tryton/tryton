@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
-         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0">
+         xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+         datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <define name="tree">
     <element>
       <name ns="">tree</name>
@@ -135,10 +136,7 @@
     <optional>
       <attribute a:defaultValue="0">
         <name ns="">expand</name>
-        <choice>
-          <value>0</value>
-          <value>1</value>
-        </choice>
+        <data type="integer"/>
       </attribute>
     </optional>
   </define>

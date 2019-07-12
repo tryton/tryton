@@ -557,10 +557,10 @@ field
 
     * ``width``: Set the width of the column.
 
-    * ``expand``: Boolean to specify if the column should be expanded to take
-      available extra space in the view. This space is shared equally among all
-      columns that have their "expand" property set to True. Resize don't work
-      if this option is enabled.
+    * ``expand``: An integer that specifies if the column should be expanded to
+      take available extra space in the view. This space is shared
+      proportionaly among all columns that have their "expand" property set.
+      Resize doesn't work if this option is enabled.
 
     * ``pre_validate``: see in common-attributes-pre_validate_.
 
