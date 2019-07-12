@@ -1060,7 +1060,8 @@ class ModelStorage(Model):
                     in_max = Transaction().database.IN_MAX
                     count = in_max // 10
                     new_domains = {}
-                    for sub_domains in grouped_slice(list(domains.keys()), count):
+                    for sub_domains in grouped_slice(
+                            list(domains.keys()), count):
                         grouped_domain = ['OR']
                         grouped_records = []
                         for d in sub_domains:
@@ -1071,7 +1072,11 @@ class ModelStorage(Model):
                                 break
                             grouped_domain.append(
                                 [('id', 'in', [r.id for r in relations]), d])
-                        new_domains[freeze(grouped_domain)] = grouped_records
+                        else:
+                            new_domains[freeze(grouped_domain)] = \
+                                grouped_records
+                            continue
+                        break
                     else:
                         domains = new_domains
             else:
