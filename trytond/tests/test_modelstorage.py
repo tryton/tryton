@@ -196,6 +196,29 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
+    def test_pyson_domain_unique_in_max(self):
+        "Test unique pyson domain validation with greater IN_MAX"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.pyson_domain')
+
+        in_max = Transaction().database.IN_MAX
+        self.addCleanup(setattr, Transaction().database, 'IN_MAX', in_max)
+        Transaction().database.IN_MAX = 1
+
+        # Use modulo 6 so len(domains) is greater then len(records) * 0.5
+        # and more than 1 (IN_MAX) have the same domain
+        Model.create(
+            [{'constraint': str(i % 6), 'value': str(i % 6)}
+                for i in range(10)])
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create(
+                [{'constraint': str(i % 6), 'value': str(i)}
+                    for i in range(10)])
+        self.assertTrue(cm.exception.domain[0])
+        self.assertTrue(cm.exception.domain[1]['value'])
+
+    @with_transaction()
     def test_pyson_domain_single(self):
         "Test pyson domain validation for 1 record"
         pool = Pool()
