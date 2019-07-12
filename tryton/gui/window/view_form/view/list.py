@@ -420,7 +420,7 @@ class TreeXMLViewParser(XMLViewParser):
             column.set_fixed_width(width)
         column.set_min_width(1)
 
-        expand = attributes.get('expand', False)
+        expand = bool(attributes.get('expand', False))
         column.set_expand(expand)
         column.set_resizable(True)
         if attributes.get('widget') != 'text':
