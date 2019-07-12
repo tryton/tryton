@@ -225,6 +225,7 @@ def grouped_slice(records, count=None):
     from trytond.transaction import Transaction
     if count is None:
         count = Transaction().database.IN_MAX
+    count = max(1, count)
     for i in range(0, len(records), count):
         yield islice(records, i, i + count)
 
