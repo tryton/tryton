@@ -1027,7 +1027,11 @@ class ModelStorage(Model):
                                 break
                             grouped_domain.append(
                                 [('id', 'in', [r.id for r in relations]), d])
-                        new_domains[freeze(grouped_domain)] = grouped_records
+                        else:
+                            new_domains[freeze(grouped_domain)] = \
+                                grouped_records
+                            continue
+                        break
                     else:
                         domains = new_domains
             else:
