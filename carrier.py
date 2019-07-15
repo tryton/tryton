@@ -32,6 +32,17 @@ class Carrier(ModelSQL, ModelView):
     def get_rec_name(self, name):
         return '%s - %s' % (self.party.rec_name, self.carrier_product.rec_name)
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('party.rec_name',) + tuple(clause[1:]),
+            ('carrier_product.rec_name',) + tuple(clause[1:]),
+            ]
+
     def get_sale_price(self):
         'Compute carrier sale price with currency'
         User = Pool().get('res.user')
