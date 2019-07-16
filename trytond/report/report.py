@@ -332,12 +332,12 @@ class Report(URLMixin, PoolBase):
                 pass
 
     @classmethod
-    def format_date(cls, value, lang=None):
+    def format_date(cls, value, lang=None, format=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
-        return lang.strftime(value)
+        return lang.strftime(value, format=format)
 
     @classmethod
     def format_currency(cls, value, lang, currency, symbol=True,
