@@ -1239,6 +1239,17 @@ class ModelData(ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     def sync(cls, records):
+        def settable(Model, fieldname):
+            try:
+                field = Model._fields[fieldname]
+            except KeyError:
+                return False
+
+            if isinstance(field, fields.Function) and not field.setter:
+                return False
+
+            return True
+
         with Transaction().set_user(0):
             pool = Pool()
             to_write = []
@@ -1254,7 +1265,7 @@ class ModelData(ModelSQL, ModelView):
                 # if they come from version < 3.2
                 if values != fs_values:
                     values = {f: v for f, v in fs_values.items()
-                        if f in Model._fields}
+                        if settable(Model, f)}
                     record = Model(data.db_id)
                     models_to_write[Model].extend(([record], values))
                 to_write.extend([[data], {
