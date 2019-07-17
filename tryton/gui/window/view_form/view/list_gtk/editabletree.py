@@ -13,8 +13,10 @@ _ = gettext.gettext
 
 def focusable_cells(column, editable=True):
     for cell in column.get_cells():
-        mode = cell.props.mode
-        if not editable or mode & Gtk.CellRendererMode.EDITABLE:
+        if not editable or isinstance(cell, (
+                    Gtk.CellRendererText,
+                    Gtk.CellRendererCombo,
+                    Gtk.CellRendererToggle)):
             yield cell
 
 
