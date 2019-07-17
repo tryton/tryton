@@ -1435,11 +1435,18 @@
                         widget.focus();
                     }
                 } else if (event_.which == Sao.common.UP_KEYCODE ||
-                    event_.which == Sao.common.DOWN_KEYCODE) {
+                    event_.which == Sao.common.DOWN_KEYCODE ||
+                    event_.which == Sao.common.RETURN_KEYCODE) {
                     if (event_.which == Sao.common.UP_KEYCODE) {
                         next_row = this.el.prev('tr');
-                    } else {
+                    } else if (event_.which == Sao.common.DOWN_KEYCODE) {
                         next_row = this.el.next('tr');
+                    } else {
+                        if (this.tree.attributes.editable == 'bottom') {
+                            next_row = this.el.next('tr');
+                        } else {
+                            next_row = this.el.prev('tr');
+                        }
                     }
                     next_column = this.edited_column;
                     this.record.validate(this.tree.get_fields())
@@ -1456,62 +1463,52 @@
                                     }
                                 }
                             } else {
-                                var prm;
+                                var prm = jQuery.when();
                                 if (!this.tree.screen.group.parent) {
                                     prm = this.record.save();
                                 } else if (this.tree.screen.attributes.pre_validate) {
                                     prm = this.record.pre_validate();
                                 }
-                                if (prm) {
-                                    return prm.fail(function() {
-                                        widget.focus();
-                                    });
+                                prm.fail(function() {
+                                    widget.focus();
+                                });
+                                if (!next_row.length &&
+                                    ((event_.which == Sao.common.RETURN_KEYCODE) ||
+                                        ((event_.which == Sao.common.UP_KEYCODE) &&
+                                            (this.tree.attributes.editable == 'top')) ||
+                                        ((event_.which == Sao.common.DOWN_KEYCODE) &&
+                                            (this.tree.attributes.editable == 'bottom')))) {
+                                    var model = this.tree.screen.group;
+                                    var access = Sao.common.MODELACCESS.get(
+                                        this.tree.screen.model_name);
+                                    var limit = ((this.tree.screen.size_limit !== null) &&
+                                        (model.length >= this.tree.screen.size_limit));
+                                    if (access.create && !limit) {
+                                        prm = prm.then(function() {
+                                            return this.tree.screen.new_();
+                                        }.bind(this))
+                                            .then(function() {
+                                                var rows = this.tree.tbody.children('tr');
+                                                if (this.tree.attributes.editable == 'bottom') {
+                                                    next_row = rows.last();
+                                                } else {
+                                                    next_row = rows.first();
+                                                }
+                                            }.bind(this));
+                                    }
                                 }
+                                return prm;
                             }
                         }.bind(this)).then(function() {
                             window.setTimeout(function() {
                                 this._get_column_td(next_column, next_row)
-                                    .trigger('click');
+                                    .click()
+                                    .find(':input,[tabindex=0]').focus();
                             }.bind(this), 0);
                         }.bind(this));
                 } else if (event_.which == Sao.common.ESC_KEYCODE) {
                     this.tree.edit_row(null);
                     this.get_static_el().show().find('[tabindex=0]').focus();
-                } else if (event_.which == Sao.common.RETURN_KEYCODE) {
-                    var focus_cell = function(row) {
-                        this._get_column_td(this.edited_column, row)
-                            .trigger('click');
-                    }.bind(this);
-                    if (this.tree.attributes.editable == 'bottom') {
-                        next_row = this.el.next('tr');
-                    } else {
-                        next_row = this.el.prev('tr');
-                    }
-                    if (next_row.length) {
-                        focus_cell(next_row);
-                    } else {
-                        var model = this.tree.screen.group;
-                        var access = Sao.common.MODELACCESS.get(
-                                this.tree.screen.model_name);
-                        var limit = ((this.tree.screen.size_limit !== null) &&
-                                (model.length >= this.tree.screen.size_limit));
-                        var prm;
-                        if (!access.create || limit) {
-                            prm = jQuery.when();
-                        } else {
-                            prm = this.tree.screen.new_();
-                        }
-                        prm.done(function() {
-                            var new_row;
-                            var rows = this.tree.tbody.children('tr');
-                            if (this.tree.attributes.editable == 'bottom') {
-                                new_row = rows.last();
-                            } else {
-                                new_row = rows.first();
-                            }
-                            focus_cell(new_row);
-                        }.bind(this));
-                    }
                 }
                 event_.preventDefault();
             } else {
