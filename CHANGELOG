@@ -1,3 +1,6 @@
+Version 5.2.2 - 2019-07-17
+* Bug fixes (see mercurial logs for details)
+
 Version 5.2.1 - 2019-07-01
 * Bug fixes (see mercurial logs for details)
 * Relax Account domain on Payment
