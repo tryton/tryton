@@ -1591,8 +1591,10 @@ function eval_pyson(value){
         input.attr('lang', Sao.i18n.getlang());
 
         input.hide().on('focusout', function() {
-            input.hide();
-            input_text.show();
+            if (input[0].checkValidity()) {
+                input.hide();
+                input_text.show();
+            }
         });
         input_text.on('focusin', function() {
             if (!input.prop('readonly')) {
@@ -1626,7 +1628,11 @@ function eval_pyson(value){
                 this.record, this.get_value(), undefined, this.factor);
         },
         get_value: function() {
-            return this.input.val();
+            if (this.input[0].checkValidity()) {
+                return this.input.val();
+            } else {
+                return NaN;
+            }
         },
         get_client_value: function() {
             var value = '';
