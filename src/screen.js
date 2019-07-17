@@ -1782,7 +1782,7 @@
         button: function(attributes) {
             var ids;
             var process_action = function(action) {
-                this.reload(ids, true).then(function() {
+                return this.reload(ids, true).then(function() {
                     if (typeof action == 'string') {
                         this.client_action(action);
                     }
