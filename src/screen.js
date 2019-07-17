@@ -1365,15 +1365,11 @@
                 return prm.then(function() {
                     group.add(record, this.new_model_position());
                     this.current_record = record;
-                    var prm = jQuery.when();
                     if (previous_view.view_type == 'calendar') {
-                        prm = previous_view.set_default_date(
-                            record, selected_date);
+                        previous_view.set_default_date(record, selected_date);
                     }
-                    prm.then(function() {
-                        this.display().done(function() {
-                            this.set_cursor(true, true);
-                        }.bind(this));
+                    this.display().done(function() {
+                        this.set_cursor(true, true);
                     }.bind(this));
                     return record;
                 }.bind(this));

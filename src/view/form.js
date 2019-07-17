@@ -1301,22 +1301,20 @@ function eval_pyson(value){
             var record = this.record;
             if (this.datalist) {
                 this.datalist.empty();
-                var set_autocompletion = function() {
-                    var selection = [];
-                    if (record) {
-                        selection = record.autocompletion[this.field_name] || [];
+                var selection;
+                if (record) {
+                    if (!(this.field_name in record.autocompletion)) {
+                        record.do_autocomplete(this.field_name);
                     }
-                    selection.forEach(function(e) {
-                        jQuery('<option/>', {
-                            'value': e
-                        }).appendTo(this.datalist);
-                    }.bind(this));
-                }.bind(this);
-                if (record && !(this.field_name in record.autocompletion)) {
-                    record.do_autocomplete(this.field_name).done(set_autocompletion);
+                    selection = record.autocompletion[this.field_name] || [];
                 } else {
-                    set_autocompletion();
+                    selection = [];
                 }
+                selection.forEach(function(e) {
+                    jQuery('<option/>', {
+                        'value': e
+                    }).appendTo(this.datalist);
+                }.bind(this));
             }
 
             // Set size
