@@ -1301,6 +1301,13 @@
                 return;
             }
 
+            var current_record = this.tree.screen.current_record;
+            if ((this.record != current_record) &&
+                !current_record.validate(
+                    this.tree.get_fields(), false, false, true)) {
+                return;
+            }
+
             body = listener = jQuery(document.body);
             if (body.hasClass('modal-open')) {
                 listener = this.tree.el.parents('.modal').last();
