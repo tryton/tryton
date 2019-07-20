@@ -1035,18 +1035,10 @@ function eval_pyson(value){
             dialog.modal.modal('hide');
         },
         read: function(widget, dialog) {
+            function field_value(result) {
+                return result[0][widget.field_name] || '';
+            }
             this.languages.forEach(function(lang){
-                var context = {};
-                context.language = lang.code;
-                var params = [
-                    [widget.record.id],
-                    [widget.field_name],
-                    context
-                ];
-                var args = {
-                    'method': 'model.' + widget.model.name  + '.read',
-                    'params': params
-                };
                 var value;
                 var row = jQuery('<div/>', {
                     'class':'row form-group'
@@ -1065,32 +1057,31 @@ function eval_pyson(value){
                     'disabled': true,
                     'title': Sao.i18n.gettext('Fuzzy')
                 });
-                var prm = Sao.rpc(args, widget.model.session)
-                        .then(function(result) {
-                    value = result[0][widget.field_name];
-                }.bind(this));
-                params = [
-                    [widget.record.id],
-                    [widget.field_name],
-                    context
-                ];
-                context.fuzzy_translation = true;
-                args = {
+                var prm1 = Sao.rpc({
                     'method': 'model.' + widget.model.name  + '.read',
-                    'params': params
-                };
-                prm.then(function() {
-                    Sao.rpc(args, widget.model.session)
-                            .then(function(fuzzy_value) {
-                        value = fuzzy_value[0][widget.field_name] || '';
-                        widget.translate_widget_set(
-                            input, value);
-                        widget.translate_widget_set_readonly(
-                            input, true);
-                        fuzzy_box.attr('checked',
-                               fuzzy_value[0].name != value);
-                    }.bind(this));
-                }.bind(this));
+                    'params': [
+                        [widget.record.id],
+                        [widget.field_name],
+                        {language: lang.code},
+                    ],
+                }, widget.model.session).then(field_value);
+                var prm2 = Sao.rpc({
+                    'method': 'model.' + widget.model.name  + '.read',
+                    'params': [
+                        [widget.record.id],
+                        [widget.field_name],
+                        {
+                            language: lang.code,
+                            fuzzy_translation: true,
+                        },
+                    ],
+                }, widget.model.session).then(field_value);
+
+                jQuery.when(prm1, prm2).done(function(value, fuzzy_value) {
+                    widget.translate_widget_set(input, fuzzy_value);
+                    widget.translate_widget_set_readonly( input, true);
+                    fuzzy_box.attr('checked', value !== fuzzy_value);
+                });
                 checkbox.click(function() {
                     widget.translate_widget_set_readonly(
                         input, !jQuery(this).prop('checked'));
