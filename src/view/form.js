@@ -1231,7 +1231,6 @@ function eval_pyson(value){
             }.bind(this));
         },
         write: function(widget, dialog) {
-            var promises = [];
             this.languages.forEach(function(lang) {
                 var input = jQuery('[data-lang-id=' + lang.id + ']');
                 if (!input.attr('readonly')) {
@@ -1251,15 +1250,12 @@ function eval_pyson(value){
                         'method': 'model.' + widget.model.name  + '.write',
                         'params': params
                     };
-                    var prm = Sao.rpc(args, widget.model.session);
-                    promises.push(prm);
+                    Sao.rpc(args, widget.model.session, false);
                 }
             }.bind(this));
+            widget.record().cancel();
+            widget.view.display();
             this.close(dialog);
-            jQuery.when.apply(jQuery, promises).then(function() {
-                widget.record().cancel();
-                widget.view.display();
-            });
         }
     });
 
