@@ -890,15 +890,20 @@
                     fields.map(function(field) {
                         return field[0];
                     })], this.screen.context)
-            .then(function(result) {
-                result = result[0];
+            .then(function(data) {
+                data = data[0];
                 var message = '';
                 fields.forEach(function(field) {
                     var key = field[0];
                     var label = field[1];
-                    var value = result[key] || '/';
-                    if (result[key] &&
-                        ~['create_date', 'write_date'].indexOf(key)) {
+                    var value = data;
+                    var keys = key.split('.');
+                    var name = keys.splice(-1);
+                    keys.forEach(function(key) {
+                        value = value[key + '.'] || {};
+                    });
+                    value = (value || {})[name] || '/';
+                    if (value && value.isDateTime) {
                         value = Sao.common.format_datetime(
                             Sao.common.date_format(),
                             '%H:%M:%S',
