@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Form"
 import csv
+import datetime
 import gettext
 import locale
 import os
@@ -207,21 +208,23 @@ class Form(SignalEvent, TabContent):
         ]
 
         try:
-            res = RPCExecute('model', self.model, 'read', [current_record.id],
-                [x[0] for x in fields], context=self.screen.context)
+            data = RPCExecute('model', self.model, 'read', [current_record.id],
+                [x[0] for x in fields], context=self.screen.context)[0]
         except RPCException:
             return
         date_format = self.screen.context.get('date_format', '%x')
         datetime_format = date_format + ' %H:%M:%S.%f'
         message_str = ''
-        for line in res:
-            for (key, val) in fields:
-                value = str(line.get(key, False) or '/')
-                if line.get(key, False) \
-                        and key in ('create_date', 'write_date'):
-                    date = timezoned_date(line[key])
-                    value = date.strftime(datetime_format)
-                message_str += val + ' ' + value + '\n'
+        for (key, label) in fields:
+            value = data
+            keys = key.split('.')
+            name = keys.pop(-1)
+            for key in keys:
+                value = value.get(key + '.', {})
+            value = (value or {}).get(name, '/')
+            if isinstance(value, datetime.datetime):
+                value = timezoned_date(value).strftime(datetime_format)
+            message_str += '%s %s\n' % (label, value)
         message_str += _('Model:') + ' ' + self.model
         message(message_str)
         return True
