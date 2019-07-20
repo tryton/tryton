@@ -1389,7 +1389,8 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
                 columns.append(Column(account, fname).as_(fname))
         return account.select(*columns,
             where=(account.company == context.get('company'))
-            & (account.type != Null))
+            & (account.type != Null)
+            & (account.closed != Literal(True)))
 
     @classmethod
     def get_period_ids(cls, name):
