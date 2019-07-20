@@ -141,7 +141,7 @@
                     'sort', 'context', 'size', 'filename', 'autocomplete',
                     'translate', 'create', 'delete', 'selection_change_with',
                     'schema_model'].forEach(function(name) {
-                        if (field[name] && !node_attrs[name]) {
+                        if ((name in field) && (!(name in node_attrs))) {
                             node_attrs[name] = field[name];
                         }
                     });
