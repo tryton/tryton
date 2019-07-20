@@ -9,10 +9,13 @@ from configparser import ConfigParser
 from setuptools import setup, find_packages
 
 
-def read(fname):
-    return io.open(
+def read(fname, slice=None):
+    content = io.open(
         os.path.join(os.path.dirname(__file__), fname),
         'r', encoding='utf-8').read()
+    if slice:
+        content = '\n'.join(content.splitlines()[slice])
+    return content
 
 
 def get_require_version(name):
@@ -58,7 +61,7 @@ if minor_version % 2:
 setup(name=name,
     version=version,
     description='Tryton module with timesheets',
-    long_description=read('README.rst'),
+    long_description=read('README.rst', slice=slice(0, -5)),
     author='Tryton',
     author_email='bugs@tryton.org',
     url='http://www.tryton.org/',
