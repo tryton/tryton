@@ -74,6 +74,7 @@
 
                         this.screen.new_(false).then(function() {
                             this.screen.current_record.set_default(view.defaults);
+                            this.update_buttons();
                             this.screen.set_cursor();
                         }.bind(this));
 
@@ -151,6 +152,13 @@
             }
             return button;
         },
+        update_buttons: function() {
+            var record = this.screen.current_record;
+            for (var state in this.states) {
+                var button = this.states[state];
+                button.set_state(record);
+            }
+        },
         update: function(view, buttons) {
             buttons.forEach(function(button) {
                 this._get_button(button);
@@ -159,9 +167,11 @@
                     {mode: [], context: this.context});
             this.screen.add_view(view);
             this.screen.switch_view();
-            // TODO record-modified
-            // TODO title
-            // TODO toolbar
+            this.screen.group_changed_callback = this.update_buttons.bind(this);
+            this.header.append(jQuery('<h4/>', {
+                'class': 'model-title',
+                'title': this.name,
+            }).append(Sao.common.ellipsize(this.name, 20)));
             this.widget.append(this.screen.screen_container.el);
         }
     });
@@ -184,15 +194,19 @@
             this.tab = null;  // Filled by Sao.Tab.Wizard
             this.name = name || '';
 
+            this.header = jQuery('<div/>', {
+                'class': 'modal-header',
+            });
             this.form = jQuery('<div/>', {
                 'class': 'wizard-form',
-            }).append(this.widget);
+            }).append(this.header).append(this.widget);
             this.footer = jQuery('<div/>', {
                 'class': 'modal-footer'
             }).appendTo(this.form);
         },
         clean: function() {
             Sao.Wizard.Form._super.clean.call(this);
+            this.header.empty();
             this.footer.empty();
         },
         _get_button: function(definition) {
@@ -233,6 +247,7 @@
             Sao.Wizard.Dialog._super.init.call(this);
             var dialog = new Sao.Dialog(name, 'wizard-dialog', 'md', false);
             this.dialog = dialog.modal;
+            this.header = dialog.header;
             this.content = dialog.content;
             this.footer = dialog.footer;
             this.dialog.on('keydown', function(e) {
@@ -247,6 +262,7 @@
         },
         clean: function() {
             Sao.Wizard.Dialog._super.clean.call(this);
+            this.header.empty();
             this.footer.empty();
         },
         _get_button: function(definition) {

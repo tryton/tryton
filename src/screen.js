@@ -813,6 +813,7 @@
             this.tab = null;
             this.message_callback = null;
             this.switch_callback = null;
+            this.group_changed_callback = null;
             // count_tab_domain is called in Sao.Tab.Form.init after
             // switch_view to avoid unnecessary call to fields_view_get by
             // domain_parser.

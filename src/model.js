@@ -228,6 +228,9 @@
             if (!this.parent) {
                 return jQuery.when.apply(jQuery,
                     this.screens.map(function(screen) {
+                        if (screen.group_changed_callback) {
+                            screen.group_changed_callback();
+                        }
                         return screen.display();
                     }));
             }
