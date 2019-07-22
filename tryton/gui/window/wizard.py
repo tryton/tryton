@@ -27,7 +27,6 @@ class Wizard(InfoBar):
     def __init__(self, name=''):
         super(Wizard, self).__init__()
         self.widget = Gtk.VBox(spacing=3)
-        self.toolbar_box = None
         self.widget.show()
         self.name = name or ''
         self.id = None
@@ -225,10 +224,6 @@ class Wizard(InfoBar):
 
         self.widget.pack_start(frame, expand=False, fill=True, padding=3)
 
-        if self.toolbar_box:
-            self.widget.pack_start(
-                self.toolbar_box, expand=False, fill=True, padding=0)
-
         viewport = Gtk.Viewport()
         viewport.set_shadow_type(Gtk.ShadowType.NONE)
         viewport.add(self.screen.widget)
@@ -253,13 +248,10 @@ class WizardForm(Wizard, TabContent, SignalEvent):
 
     def __init__(self, name=''):
         super(WizardForm, self).__init__(name=name)
-        self.toolbar_box = Gtk.HBox()
         self.hbuttonbox = Gtk.HButtonBox()
         self.hbuttonbox.set_spacing(5)
         self.hbuttonbox.set_layout(Gtk.ButtonBoxStyle.END)
         self.hbuttonbox.show()
-        self.widget.pack_start(
-            self.toolbar_box, expand=False, fill=True, padding=0)
         self.dialogs = []
 
         self.handlers = {
@@ -289,9 +281,6 @@ class WizardForm(Wizard, TabContent, SignalEvent):
         return self.state == self.end_state
 
     def destroy(self, action=None):
-        if self.toolbar_box.get_children():
-            toolbar = self.toolbar_box.get_children()[0]
-            self.toolbar_box.remove(toolbar)
         super(WizardForm, self).destroy(action=action)
         if action == 'reload menu':
             RPCContextReload(Main().sig_win_menu)
