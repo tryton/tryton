@@ -6,6 +6,7 @@ from .payment_term import *
 from .invoice import *
 from . import party
 from .account import *
+from . import company
 
 
 def register():
@@ -36,6 +37,7 @@ def register():
         MoveLine,
         Reconciliation,
         PaymentMethod,
+        company.Company,
         module='account_invoice', type_='model')
     Pool.register(
         TestPaymentTerm,

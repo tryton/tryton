@@ -34,7 +34,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot delete invoice "%(invoice)s" because it has a number.</field>
         </record>
         <record model="ir.message" id="msg_invoice_customer_cancel_move">
-            <field name="text">You cannot cancel customer invoice "%(invoice)s" because it is posted.</field>
+            <field name="text">You cannot cancel customer invoice "%(invoice)s" because it is posted and company setup does not allow it.</field>
         </record>
         <record model="ir.message" id="msg_invoice_payment_lines_greater_amount">
             <field name="text">Payment lines amount on invoice "%(invoice)s" can not be greater than the invoice amount.</field>

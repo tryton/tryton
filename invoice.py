@@ -1423,7 +1423,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 if invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                 elif not invoice.cancel_move:
-                    if invoice.type == 'out':
+                    if (invoice.type == 'out'
+                            and not invoice.company.cancel_invoice_out):
                         raise AccessError(
                             gettext('account_invoice'
                                 '.msg_invoice_customer_cancel_move',
