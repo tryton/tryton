@@ -561,6 +561,8 @@ class Account(ModelSQL, ModelView):
             return self.webhook_charge_succeeded(data)
         if type_ == 'charge.captured':
             return self.webhook_charge_captured(data)
+        elif type_ == 'charge.expired':
+            return self.webhook_charge_expired(data)
         elif type_ == 'charge.failed':
             return self.webhook_charge_failed(data)
         elif type_ == 'charge.pending':
@@ -608,13 +610,16 @@ class Account(ModelSQL, ModelView):
     def webhook_charge_captured(self, payload):
         return self.webhook_charge_succeeded(payload, _event='charge.captured')
 
+    def webhook_charge_expired(self, payload):
+        return self.webhook_source_failed(payload, _event='charge.expired')
+
     def webhook_charge_pending(self, payload):
         return self.webhook_charge_succeeded(payload, _event='charge.pending')
 
     def webhook_charge_refunded(self, payload):
         return self.webhook_charge_succeeded(payload, _event='charge.pending')
 
-    def webhook_charge_failed(self, payload):
+    def webhook_charge_failed(self, payload, _event='charge.failed'):
         pool = Pool()
         Payment = pool.get('account.payment')
 
@@ -623,7 +628,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
-            logger.error("charge.failed: No payment '%s'", charge['id'])
+            logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
