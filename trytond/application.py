@@ -10,8 +10,16 @@ __all__ = ['app']
 
 # Logging must be set before importing
 logging_config = os.environ.get('TRYTOND_LOGGING_CONFIG')
+logging_level = int(os.environ.get(
+        'TRYTOND_LOGGING_LEVEL', default=logging.ERROR))
 if logging_config:
     logging.config.fileConfig(logging_config)
+else:
+    logformat = ('%(process)s %(thread)s [%(asctime)s] '
+        '%(levelname)s %(name)s %(message)s')
+    level = max(logging_level, logging.NOTSET)
+    logging.basicConfig(level=level, format=logformat)
+logging.captureWarnings(True)
 
 if os.environ.get('TRYTOND_COROUTINE'):
     from gevent import monkey

@@ -26,11 +26,15 @@ Following environment variables can be set:
 
  * `TRYTOND_CONFIG`: Point to :ref:`configuration <topics-configuration>` file.
  * `TRYTOND_LOGGING_CONFIG`: Point to :ref:`logging <topics-logs>` file.
+ * `TRYTOND_LOGGING_LEVEL`: An integer to set the default `logging level`_
+   (default: `ERROR`).
  * `TRYTOND_COROUTINE`: Use coroutine for concurrency.
  * `TRYTOND_DATABASE_NAMES`: A list of database names in CSV format, using
    python default dialect.
 
 .. warning:: You must manage to serve the static files from the web root.
+
+.. _`logging level`: <https://docs.python.org/library/logging.html#logging-levels>`.
 
 Coroutine server
 ----------------
