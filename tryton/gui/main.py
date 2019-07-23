@@ -174,7 +174,7 @@ class Main(Gtk.Application):
         self.set_title()
 
         menu = Gtk.Button.new()
-        menu .set_relief(Gtk.ReliefStyle.NONE)
+        menu.set_relief(Gtk.ReliefStyle.NONE)
         menu.set_image(
             common.IconFactory.get_image('tryton-menu', Gtk.IconSize.BUTTON))
         menu.connect('clicked', self.menu_toggle)
