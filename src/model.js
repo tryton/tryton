@@ -512,8 +512,8 @@
             }
             var context = this.get_context();
             var prm = jQuery.when();
-            var values = this.get();
-            if ((this.id < 0) || !jQuery.isEmptyObject(values)) {
+            if ((this.id < 0) || this.has_changed()) {
+                var values = this.get();
                 if (this.id < 0) {
                     prm = this.model.execute('create', [[values]], context);
                     var created = function(ids) {
