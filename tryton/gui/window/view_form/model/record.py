@@ -313,8 +313,8 @@ class Record(SignalEvent):
 
     def save(self, force_reload=True):
         if self.id < 0 or self.modified:
+            value = self.get()
             if self.id < 0:
-                value = self.get()
                 try:
                     res, = RPCExecute('model', self.model_name, 'create',
                         [value], context=self.get_context())
@@ -324,7 +324,6 @@ class Record(SignalEvent):
                 self.id = res
                 self.group.id_changed(old_id)
             elif self.modified:
-                value = self.get()
                 if value:
                     context = self.get_context()
                     context = context.copy()
