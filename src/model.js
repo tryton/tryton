@@ -503,8 +503,8 @@
             }
             var context = this.get_context();
             var prm = jQuery.when();
-            var values = this.get();
-            if ((this.id < 0) || !jQuery.isEmptyObject(values)) {
+            if ((this.id < 0) || this.has_changed()) {
+                var values = this.get();
                 if (this.id < 0) {
                     // synchronous call to avoid multiple creation
                     try {
