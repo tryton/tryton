@@ -725,7 +725,7 @@
                 return;
             }
             path = this.screen.current_record.get_index_path(this.screen.group);
-            if (this.rows.length < path[0]) {
+            if (this.rows.length <= path[0]) {
                 this.display_size = this.screen.group.length;
                 this.display();
             }
