@@ -3502,6 +3502,7 @@ function eval_pyson(value){
             }.bind(this));
         },
         clear: function() {
+            this.input_select.val(null);
             var filename_field = this.filename_field;
             if (filename_field) {
                 filename_field.set_client(this.record, null);
