@@ -10,7 +10,7 @@ include tryton.desktop
 include *.nsh
 include setup-freeze.py
 include make-*-installer.sh
-include */gtk-2.0/*
+include */gtk-3.0/*
 include doc/*
 recursive-include doc *.rst
 recursive-include doc *.po
