@@ -145,13 +145,19 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             },
         depends=['company'])
     account = fields.Many2One('account.account', 'Account', required=True,
-        states=_STATES, depends=_DEPENDS + ['type', 'company'],
+        states=_STATES, depends=_DEPENDS + [
+            'type', 'company', 'accounting_date', 'invoice_date'],
         domain=[
             ('company', '=', Eval('company', -1)),
             If(Eval('type') == 'out',
                 ('type.receivable', '=', True),
                 ('type.payable', '=', True)),
-            ])
+            ],
+        context={
+            'date': If(Eval('accounting_date'),
+                Eval('accounting_date'),
+                Eval('invoice_date')),
+            })
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states=_STATES, depends=_DEPENDS)
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
@@ -1615,9 +1621,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'readonly': _states['readonly'],
             },
         context={
-            'date': If(Bool(Eval('_parent_invoice.accounting_date')),
-                Eval('_parent_invoice.accounting_date'),
-                Eval('_parent_invoice.invoice_date')),
+            'date': If(Eval('_parent_invoice', {}).get('accounting_date'),
+                Eval('_parent_invoice', {}).get('accounting_date'),
+                Eval('_parent_invoice', {}).get('invoice_date')),
             },
         depends=['type', 'invoice_type', 'company'] + _depends)
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
