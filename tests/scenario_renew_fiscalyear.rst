@@ -60,3 +60,19 @@ Renew fiscalyear resetting sequences::
     >>> new_fiscalyear, = renew_fiscalyear.actions[0]
     >>> int(new_fiscalyear.post_move_sequence.number_next)
     1
+
+Set the sequence name::
+
+    >>> sequence = new_fiscalyear.post_move_sequence
+    >>> sequence.name = 'Sequence %s' % new_fiscalyear.start_date.strftime('%Y')
+    >>> sequence.save()
+
+Renew fiscalyear and test sequence name is updated::
+
+    >>> renew_fiscalyear = Wizard('account.fiscalyear.renew')
+    >>> renew_fiscalyear.form.reset_sequences = True
+    >>> renew_fiscalyear.execute('create_')
+    >>> new_fiscalyear, = renew_fiscalyear.actions[0]
+    >>> new_fiscalyear.post_move_sequence.name == (
+    ...     'Sequence %s' % new_fiscalyear.start_date.strftime('%Y'))
+    True

@@ -550,7 +550,12 @@ class RenewFiscalYear(Wizard):
             'periods': [],
             }
         previous_sequence = self.start.previous_fiscalyear.post_move_sequence
-        sequence, = Sequence.copy([previous_sequence])
+        sequence, = Sequence.copy([previous_sequence],
+            default={
+                'name': lambda data: data['name'].replace(
+                    self.start.previous_fiscalyear.name,
+                    self.start.name)
+                })
         if self.start.reset_sequences:
             sequence.number_next = 1
         else:
