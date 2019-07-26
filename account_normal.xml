@@ -16,13 +16,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
         </record>
-        <record id="es_pyg_normal" model="account.account.type.template">
-            <field name="name">PÉRDIDAS Y GANANCIAS NORMAL (PGCE 2008)</field>
-            
-            <field name="parent" ref="es_normal"/>
-            <field name="sequence" eval="20"/>
-            <field name="statement">income</field>
-        </record>
         <record id="es_eiyg_normal" model="account.account.type.template">
             <field name="name">ESTADO DE INGRESOS Y GASTOS RECONOCIDOS NORMAL (PGCE 2008)</field>
             <field name="parent" ref="es_normal"/>
@@ -42,12 +35,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
-        </record>
-        <record id="es_pyg_resultado_ejercicio_normal" model="account.account.type.template">
-            <field name="name">A.5) RESULTADO DEL EJERCICIO (A.4 + 20)</field>
-            
-            <field name="parent" ref="es_pyg_normal"/>
-            <field name="statement">income</field>
         </record>
         <record id="es_eig_total_ingressos_gastos_normal" model="account.account.type.template">
             <field name="name">TOTAL DE INGRESOS Y GASTOS RECONOCIDOS (A + B + C)</field>
@@ -86,20 +73,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
         </record>
-        <record id="es_pyg_operaciones_continuadas_normal" model="account.account.type.template">
-            <field name="name">A) OPERACIONES CONTINUADAS</field>
-            <field name="parent" ref="es_pyg_resultado_ejercicio_normal"/>
-            <field name="sequence" eval="10"/>
-            <field name="statement">income</field>
-        </record>
-        <record id="es_pyg_operaciones_interrumpidas_normal" model="account.account.type.template">
-            <field name="name">B) OPERACIONES INTERRUMPIDAS</field>
-            <field name="parent" ref="es_pyg_resultado_ejercicio_normal"/>
-            <field name="sequence" eval="20"/>
-            <field name="statement">income</field>
-        </record>
-        
-        
         <record id="es_eiyg_resultado_perdidas_ganancias_normal" model="account.account.type.template">
             <field name="name">A) RESULTADO DE LA CUENTA DE PÉRDIDAS Y GANANCIAS</field>
             <field name="parent" ref="es_eig_total_ingressos_gastos_normal"/>
@@ -296,19 +269,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_pasivo_corriente_normal"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
-        </record>
-        
-        
-        <record id="es_pyg_resultado_operaciones_continuadas_normal" model="account.account.type.template">
-            <field name="name">A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3 + 19)</field>
-            <field name="parent" ref="es_pyg_operaciones_continuadas_normal"/>
-            <field name="statement">income</field>
-        </record>
-        <record id="es_pyg_resultado_operaciones_interrumpidas_normal" model="account.account.type.template">
-            <field name="name">20. Resultado del ejercicio procedente de operaciones interrumpidas neto de impuestos</field>
-            <field name="parent" ref="es_pyg_operaciones_interrumpidas_normal"/>
-            <field name="sequence" eval="20"/>
-            <field name="statement">income</field>
         </record>
         <record id="es_eiyg_ingresos_gastos_valoracion_instrumentios_financieros_normal" model="account.account.type.template">
             <field name="name">I. Por valoración de instrumentos financieros</field>
@@ -912,19 +872,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
         </record>
-        <record id="es_pyg_impuestos_sobre_beneficios_normal" model="account.account.type.template">
-            <field name="name">19. Impuestos sobre beneficios</field>
-            <field name="parent" ref="es_pyg_resultado_operaciones_continuadas_normal"/>
-            <field name="sequence" eval="10"/>
-            <field name="statement">income</field>
-            <field name="expense" eval="True"/>
-        </record>
-        <record id="es_pyg_resultado_antes_de_impuestos_normal" model="account.account.type.template">
-            <field name="name">A.3) RESULTADO ANTES DE IMPUESTOS (A.1 + A.2)</field>
-            <field name="parent" ref="es_pyg_resultado_operaciones_continuadas_normal"/>
-            <field name="sequence" eval="20"/>
-            <field name="statement">income</field>
-        </record>
         <record id="es_eiyg_ingresos_gastos_activos_financiers_disponibles_venta_normal" model="account.account.type.template">
             <field name="name">1. Activos financieros disponibles para la venta</field>
             <field name="parent" ref="es_eiyg_ingresos_gastos_valoracion_instrumentios_financieros_normal"/>
@@ -987,155 +934,201 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
         </record>
-        <record id="es_pyg_resultado_explotacion_normal" model="account.account.type.template">
-            <field name="name">A.1)  RESULTADO DE EXPLOTACIÓN (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13)</field>
-            <field name="parent" ref="es_pyg_resultado_antes_de_impuestos_normal"/>
+        <record id="es_balance_pyg_operaciones_continuadas_normal" model="account.account.type.template">
+            <field name="name">A) OPERACIONES CONTINUADAS</field>
+            <field name="parent" ref="es_balance_resultado_del_ejercicio_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
-        <record id="es_pyg_resultado_financiero_normal" model="account.account.type.template">
-            <field name="name">A.2) RESULTADO FINANCIERO (14 + 15 + 16 + 17 + 18)</field>
-            <field name="parent" ref="es_pyg_resultado_antes_de_impuestos_normal"/>
+        <record id="es_balance_pyg_operaciones_interrumpidas_normal" model="account.account.type.template">
+            <field name="name">B) OPERACIONES INTERRUMPIDAS</field>
+            <field name="parent" ref="es_balance_resultado_del_ejercicio_normal"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+        </record>
+        
+        
+    </data>
+    <data grouped="1">
+        <record id="es_balance_pyg_resultado_operaciones_continuadas_normal" model="account.account.type.template">
+            <field name="name">A.4) RESULTADO DEL EJERCICIO PROCEDENTE DE OPERACIONES CONTINUADAS (A.3 + 19)</field>
+            <field name="parent" ref="es_balance_pyg_operaciones_continuadas_normal"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="es_balance_pyg_resultado_operaciones_interrumpidas_normal" model="account.account.type.template">
+            <field name="name">20. Resultado del ejercicio procedente de operaciones interrumpidas neto de impuestos</field>
+            <field name="parent" ref="es_balance_pyg_operaciones_interrumpidas_normal"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+        </record>
+        
+        
+    </data>
+    <data grouped="1">
+        <record id="es_balance_pyg_impuestos_sobre_beneficios_normal" model="account.account.type.template">
+            <field name="name">19. Impuestos sobre beneficios</field>
+            <field name="parent" ref="es_balance_pyg_resultado_operaciones_continuadas_normal"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="es_balance_pyg_resultado_antes_de_impuestos_normal" model="account.account.type.template">
+            <field name="name">A.3) RESULTADO ANTES DE IMPUESTOS (A.1 + A.2)</field>
+            <field name="parent" ref="es_balance_pyg_resultado_operaciones_continuadas_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
         </record>
     </data>
     <data grouped="1">
-        <record id="es_pyg_importe_neto_cifra_negocios_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_resultado_explotacion_normal" model="account.account.type.template">
+            <field name="name">A.1)  RESULTADO DE EXPLOTACIÓN (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 + 11 + 12 + 13)</field>
+            <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos_normal"/>
+            <field name="sequence" eval="10"/>
+            <field name="statement">income</field>
+        </record>
+        <record id="es_balance_pyg_resultado_financiero_normal" model="account.account.type.template">
+            <field name="name">A.2) RESULTADO FINANCIERO (14 + 15 + 16 + 17 + 18)</field>
+            <field name="parent" ref="es_balance_pyg_resultado_antes_de_impuestos_normal"/>
+            <field name="sequence" eval="20"/>
+            <field name="statement">income</field>
+        </record>
+    </data>
+    <data grouped="1">
+        <record id="es_balance_pyg_importe_neto_cifra_negocios_normal" model="account.account.type.template">
             <field name="name">1. Importe neto de la cifra de negocios</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             
         </record>
-        <record id="es_pyg_variacion_existencias_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_variacion_existencias_normal" model="account.account.type.template">
             <field name="name">2. Variación de existencias de productos terminados y en curso de fabricación</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
             <field name="stock" eval="True"/>
         </record>
-        <record id="es_pyg_trabajos_por_activo_empresa_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_trabajos_por_activo_empresa_normal" model="account.account.type.template">
             <field name="name">3. Trabajos realizados por la empresa para su activo</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_aprovisionamientos_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_aprovisionamientos_normal" model="account.account.type.template">
             <field name="name">4. Aprovisionamientos</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
             
             
             
         </record>
-        <record id="es_pyg_otros_ingresos_explotacion_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_otros_ingresos_explotacion_normal" model="account.account.type.template">
             <field name="name">5. Otros ingresos de explotación</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">income</field>
             
         </record>
-        <record id="es_pyg_gastos_de_personal_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_gastos_de_personal_normal" model="account.account.type.template">
             <field name="name">6. Gastos de personal</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">income</field>
             
         </record>
-        <record id="es_pyg_otros_gastos_explocation_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_otros_gastos_explocation_normal" model="account.account.type.template">
             <field name="name">7. Otros gastos de explotación</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="70"/>
             <field name="statement">income</field>
             
             
         </record>
-        <record id="es_pyg_amortizacion_inmovilizado_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_amortizacion_inmovilizado_normal" model="account.account.type.template">
             <field name="name">8. Amortización del inmovilizado</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="80"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_imputacion_subenciones_inmovilizdo_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_imputacion_subenciones_inmovilizdo_normal" model="account.account.type.template">
             <field name="name">9. Imputación de subvenciones de inmovilizado no financiero y otras</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="90"/>
             <field name="statement">income</field>
         </record>
-        <record id="es_pyg_excesos_provisiones_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_excesos_provisiones_normal" model="account.account.type.template">
             <field name="name">10. Excesos de provisiones</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="100"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal" model="account.account.type.template">
             <field name="name">11. Deterioro y resultado por enajenaciones del inmovilizado</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="110"/>
             <field name="statement">income</field>
             
             
         </record>
-        <record id="es_pyg_diferencia_negativa_combinaciones_negocio_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_diferencia_negativa_combinaciones_negocio_normal" model="account.account.type.template">
             <field name="name">12. Diferencia negativa de combinaciones de negocio</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="120"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_otros_resultados_explotacion_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_otros_resultados_explotacion_normal" model="account.account.type.template">
             
             <field name="name">13. Otros resultados</field>
-            <field name="parent" ref="es_pyg_resultado_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_explotacion_normal"/>
             <field name="sequence" eval="130"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_ingresos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_ingresos_financieros_normal" model="account.account.type.template">
             
             <field name="name">14. Ingresos financieros</field>
-            <field name="parent" ref="es_pyg_resultado_financiero_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_financiero_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             
         </record>
-        <record id="es_pyg_gastos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_gastos_financieros_normal" model="account.account.type.template">
             
             <field name="name">15. Gastos financieros</field>
-            <field name="parent" ref="es_pyg_resultado_financiero_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_financiero_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             
         </record>
-        <record id="es_pyg_variacion_valor_razonable_instrumentos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_variacion_valor_razonable_instrumentos_financieros_normal" model="account.account.type.template">
             
             <field name="name">16. Variación de valor razonable en instrumentos financieros</field>
-            <field name="parent" ref="es_pyg_resultado_financiero_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_financiero_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_diferencias_cambio_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_diferencias_cambio_normal" model="account.account.type.template">
             
             <field name="name">17. Diferencias de cambio</field>
-            <field name="parent" ref="es_pyg_resultado_financiero_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_financiero_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal" model="account.account.type.template">
             
             <field name="name">18. Deterioro y resultado por enajenaciones de instrumentos financieros</field>
-            <field name="parent" ref="es_pyg_resultado_financiero_normal"/>
+            <field name="parent" ref="es_balance_pyg_resultado_financiero_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">income</field>
             
@@ -1143,199 +1136,199 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data grouped="1">
-        <record id="es_pyg_ventas_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_ventas_normal" model="account.account.type.template">
             <field name="name">a) Ventas</field>
-            <field name="parent" ref="es_pyg_importe_neto_cifra_negocios_normal"/>
+            <field name="parent" ref="es_balance_pyg_importe_neto_cifra_negocios_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_servicios_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_servicios_normal" model="account.account.type.template">
             <field name="name">b) Prestaciones de servicios</field>
-            <field name="parent" ref="es_pyg_importe_neto_cifra_negocios_normal"/>
+            <field name="parent" ref="es_balance_pyg_importe_neto_cifra_negocios_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_consumo_mercaderias_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_consumo_mercaderias_normal" model="account.account.type.template">
             <field name="name">a) Consumo de mercaderías</field>
-            <field name="parent" ref="es_pyg_aprovisionamientos_normal"/>
+            <field name="parent" ref="es_balance_pyg_aprovisionamientos_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="stock" eval="True"/>
         </record>
-        <record id="es_pyg_consumo_materias_primer_otros_consumibles_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal" model="account.account.type.template">
             <field name="name">b) Consumo de materias primas y otras materias consumibles</field>
-            <field name="parent" ref="es_pyg_aprovisionamientos_normal"/>
+            <field name="parent" ref="es_balance_pyg_aprovisionamientos_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="stock" eval="True"/>
         </record>
-        <record id="es_pyg_trabajo_realizados_otras_empresas_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_trabajo_realizados_otras_empresas_normal" model="account.account.type.template">
             <field name="name">c) Trabajos realizados por otras empresas</field>
-            <field name="parent" ref="es_pyg_aprovisionamientos_normal"/>
+            <field name="parent" ref="es_balance_pyg_aprovisionamientos_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_deterioro_mercaderias_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deterioro_mercaderias_normal" model="account.account.type.template">
             <field name="name">d) Deterioro de mercaderías, materias primas y otros aprovisionamientos</field>
-            <field name="parent" ref="es_pyg_aprovisionamientos_normal"/>
+            <field name="parent" ref="es_balance_pyg_aprovisionamientos_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_ingresso_accesorios_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_ingresso_accesorios_normal" model="account.account.type.template">
             <field name="name">a) Ingresos accesorios y otros de gestión corriente</field>
-            <field name="parent" ref="es_pyg_otros_ingresos_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_ingresos_explotacion_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal" model="account.account.type.template">
             <field name="name">b) Subvenciones de explotación incorporadas al resultado del ejercicio</field>
-            <field name="parent" ref="es_pyg_otros_ingresos_explotacion_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_ingresos_explotacion_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_sueldos_salarios_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_sueldos_salarios_normal" model="account.account.type.template">
             <field name="name">a) Sueldos, salarios y asimilados</field>
-            <field name="parent" ref="es_pyg_gastos_de_personal_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_de_personal_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_cargas_sociales_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_cargas_sociales_normal" model="account.account.type.template">
             <field name="name">b) Cargas sociales</field>
-            <field name="parent" ref="es_pyg_gastos_de_personal_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_de_personal_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_provisiones_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_provisiones_normal" model="account.account.type.template">
             <field name="name">c) Provisiones</field>
-            <field name="parent" ref="es_pyg_gastos_de_personal_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_de_personal_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_servicios_exteriores_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_servicios_exteriores_normal" model="account.account.type.template">
             <field name="name">a) Servicios exteriores</field>
-            <field name="parent" ref="es_pyg_otros_gastos_explocation_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_gastos_explocation_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_tributos_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_tributos_normal" model="account.account.type.template">
             <field name="name">b) Tributos</field>
-            <field name="parent" ref="es_pyg_otros_gastos_explocation_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_gastos_explocation_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal" model="account.account.type.template">
             <field name="name">c) Pérdidas, deterioro y variación de provisiones por operaciones comerciales</field>
-            <field name="parent" ref="es_pyg_otros_gastos_explocation_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_gastos_explocation_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_otros_gastos_gestion_corriente_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_otros_gastos_gestion_corriente_normal" model="account.account.type.template">
             <field name="name">d) Otros gastos de gestión corriente</field>
-            <field name="parent" ref="es_pyg_otros_gastos_explocation_normal"/>
+            <field name="parent" ref="es_balance_pyg_otros_gastos_explocation_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_deteriorio_perdidas_inmovilizado_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal" model="account.account.type.template">
             <field name="name">a) Deterioro y pérdidas</field>
-            <field name="parent" ref="es_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal"/>
+            <field name="parent" ref="es_balance_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal" model="account.account.type.template">
             <field name="name">b) Resultados por enajenaciones y otras</field>
-            <field name="parent" ref="es_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal"/>
+            <field name="parent" ref="es_balance_pyg_deteriorio_resultado_enajenaciones_inmovilizado_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_participacions_instrumentos_patrimonio_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_participacions_instrumentos_patrimonio_normal" model="account.account.type.template">
             <field name="name">a) De participaciones en instrumentos de patrimonio</field>
-            <field name="parent" ref="es_pyg_ingresos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_ingresos_financieros_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
         </record>
-        <record id="es_pyg_valores_negociables_otros_instrumentos_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_valores_negociables_otros_instrumentos_normal" model="account.account.type.template">
             <field name="name">b) De valores negociables y otros instrumentos financieros</field>
-            <field name="parent" ref="es_pyg_ingresos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_ingresos_financieros_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
         </record>
-        <record id="es_pyg_subvenciones_donaciones_legados_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_subvenciones_donaciones_legados_financieros_normal" model="account.account.type.template">
             <field name="name">c) Imputación de subvenciones, donaciones y legados de carácter financiero</field>
-            <field name="parent" ref="es_pyg_ingresos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_ingresos_financieros_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_deudas_empresas_grupo_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deudas_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">a) Por deudas con empresas del grupo y asociadas</field>
-            <field name="parent" ref="es_pyg_gastos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_financieros_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_deudas_con_terceros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deudas_con_terceros_normal" model="account.account.type.template">
             <field name="name">b) Por deudas con terceros</field>
-            <field name="parent" ref="es_pyg_gastos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_financieros_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_actualizacion_provisiones_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_actualizacion_provisiones_normal" model="account.account.type.template">
             <field name="name">c) Por actualización de provisiones</field>
-            <field name="parent" ref="es_pyg_gastos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_gastos_financieros_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
         </record>
-        <record id="es_pyg_caartera_negociacion_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_caartera_negociacion_normal" model="account.account.type.template">
             <field name="name">a) Cartera de negociación y otros</field>
-            <field name="parent" ref="es_pyg_variacion_valor_razonable_instrumentos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_variacion_valor_razonable_instrumentos_financieros_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_imputacion_resultado_activos_financieros_para_venta_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_imputacion_resultado_activos_financieros_para_venta_normal" model="account.account.type.template">
             <field name="name">b) Imputación al resultado del ejercicio por activos financieros disponibles para la venta</field>
-            <field name="parent" ref="es_pyg_variacion_valor_razonable_instrumentos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_variacion_valor_razonable_instrumentos_financieros_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal" model="account.account.type.template">
             <field name="name">a) Deterioros y pérdidas</field>
-            <field name="parent" ref="es_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal" model="account.account.type.template">
             <field name="name">b) Resultados por enajenaciones y otras</field>
-            <field name="parent" ref="es_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal"/>
+            <field name="parent" ref="es_balance_pyg_deterioro_resultado_enajenaciones_instrumentos_financieros_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="expense" eval="True"/>
@@ -1343,30 +1336,30 @@ this repository contains the full copyright notices and license terms. -->
         </record>
     </data>
     <data grouped="1">
-        <record id="es_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">a 1) En empresas del grupo y asociadas</field>
-            <field name="parent" ref="es_pyg_participacions_instrumentos_patrimonio_normal"/>
+            <field name="parent" ref="es_balance_pyg_participacions_instrumentos_patrimonio_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_participacions_instrumentos_patrimonio_terceros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_participacions_instrumentos_patrimonio_terceros_normal" model="account.account.type.template">
             <field name="name">a 2) En terceros</field>
-            <field name="parent" ref="es_pyg_participacions_instrumentos_patrimonio_normal"/>
+            <field name="parent" ref="es_balance_pyg_participacions_instrumentos_patrimonio_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">b 1) De empresas del grupo y asociadas</field>
-            <field name="parent" ref="es_pyg_valores_negociables_otros_instrumentos_normal"/>
+            <field name="parent" ref="es_balance_pyg_valores_negociables_otros_instrumentos_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
         </record>
-        <record id="es_pyg_valores_negociables_otros_instrumentos_terceros_normal" model="account.account.type.template">
+        <record id="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal" model="account.account.type.template">
             <field name="name">b 2) De terceros</field>
-            <field name="parent" ref="es_pyg_valores_negociables_otros_instrumentos_normal"/>
+            <field name="parent" ref="es_balance_pyg_valores_negociables_otros_instrumentos_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">income</field>
             <field name="revenue" eval="True"/>
@@ -5220,1276 +5213,1276 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="pgc_60_normal"/>
             <field name="code">600</field>
             
-            <field name="type" ref="es_pyg_consumo_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_mercaderias_normal"/>
         </record>
         <record id="pgc_601_normal" model="account.account.template">
             <field name="name">Compras de materias primas</field>
             <field name="parent" ref="pgc_60_normal"/>
             <field name="code">601</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_602_normal" model="account.account.template">
             <field name="name">Compras de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_60_normal"/>
             <field name="code">602</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_6060_normal" model="account.account.template">
             <field name="name">Descuentos sobre compras por pronto pago de mercaderías</field>
             <field name="parent" ref="pgc_606_normal"/>
             <field name="code">6060</field>
             
-            <field name="type" ref="es_pyg_consumo_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_mercaderias_normal"/>
         </record>
         <record id="pgc_6061_normal" model="account.account.template">
             <field name="name">Descuentos sobre compras por pronto pago de materias primas</field>
             <field name="parent" ref="pgc_606_normal"/>
             <field name="code">6061</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_6062_normal" model="account.account.template">
             <field name="name">Descuentos sobre compras por pronto pago de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_606_normal"/>
             <field name="code">6062</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_607_normal" model="account.account.template">
             <field name="name">Trabajos realizados por otras empresas</field>
             <field name="parent" ref="pgc_60_normal"/>
             <field name="code">607</field>
             
-            <field name="type" ref="es_pyg_trabajo_realizados_otras_empresas_normal"/>
+            <field name="type" ref="es_balance_pyg_trabajo_realizados_otras_empresas_normal"/>
         </record>
         <record id="pgc_6080_normal" model="account.account.template">
             <field name="name">Devoluciones de compras de mercaderías</field>
             <field name="parent" ref="pgc_608_normal"/>
             <field name="code">6080</field>
             
-            <field name="type" ref="es_pyg_consumo_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_mercaderias_normal"/>
         </record>
         <record id="pgc_6081_normal" model="account.account.template">
             <field name="name">Devoluciones de compras de materias primas</field>
             <field name="parent" ref="pgc_608_normal"/>
             <field name="code">6081</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_6082_normal" model="account.account.template">
             <field name="name">Devoluciones de compras de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_608_normal"/>
             <field name="code">6082</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_6090_normal" model="account.account.template">
             <field name="name">"Rappels" por compras de mercaderías</field>
             <field name="parent" ref="pgc_609_normal"/>
             <field name="code">6090</field>
             
-            <field name="type" ref="es_pyg_consumo_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_mercaderias_normal"/>
         </record>
         <record id="pgc_6091_normal" model="account.account.template">
             <field name="name">"Rappels" por compras de materias primas</field>
             <field name="parent" ref="pgc_609_normal"/>
             <field name="code">6091</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_6092_normal" model="account.account.template">
             <field name="name">"Rappels" por compras de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_609_normal"/>
             <field name="code">6092</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_610_normal" model="account.account.template">
             <field name="name">Variación de existencias de mercaderías</field>
             <field name="parent" ref="pgc_61_normal"/>
             <field name="code">610</field>
             
-            <field name="type" ref="es_pyg_consumo_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_mercaderias_normal"/>
         </record>
         <record id="pgc_611_normal" model="account.account.template">
             <field name="name">Variación de existencias de materias primas</field>
             <field name="parent" ref="pgc_61_normal"/>
             <field name="code">611</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_612_normal" model="account.account.template">
             <field name="name">Variación de existencias de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_61_normal"/>
             <field name="code">612</field>
             
-            <field name="type" ref="es_pyg_consumo_materias_primer_otros_consumibles_normal"/>
+            <field name="type" ref="es_balance_pyg_consumo_materias_primer_otros_consumibles_normal"/>
         </record>
         <record id="pgc_620_normal" model="account.account.template">
             <field name="name">Gastos en investigación y desarrollo del ejercicio</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">620</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_621_normal" model="account.account.template">
             <field name="name">Arrendamientos y cánones</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">621</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_622_normal" model="account.account.template">
             <field name="name">Reparaciones y conservación</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">622</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_623_normal" model="account.account.template">
             <field name="name">Servicios de profesionales independientes</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">623</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_624_normal" model="account.account.template">
             <field name="name">Transportes</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">624</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_625_normal" model="account.account.template">
             <field name="name">Primas de seguros</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">625</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_626_normal" model="account.account.template">
             <field name="name">Servicios bancarios y similares</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">626</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_627_normal" model="account.account.template">
             <field name="name">Publicidad, propaganda y relaciones públicas</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">627</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_628_normal" model="account.account.template">
             <field name="name">Suministros</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">628</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_629_normal" model="account.account.template">
             <field name="name">Otros servicios</field>
             <field name="parent" ref="pgc_62_normal"/>
             <field name="code">629</field>
             
-            <field name="type" ref="es_pyg_servicios_exteriores_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_exteriores_normal"/>
         </record>
         <record id="pgc_6300_normal" model="account.account.template">
             <field name="name">Impuesto corriente</field>
             <field name="parent" ref="pgc_630_normal"/>
             <field name="code">6300</field>
-            <field name="type" ref="es_pyg_impuestos_sobre_beneficios_normal"/>
+            <field name="type" ref="es_balance_pyg_impuestos_sobre_beneficios_normal"/>
         </record>
         <record id="pgc_6301_normal" model="account.account.template">
             <field name="name">Impuesto diferido</field>
             <field name="parent" ref="pgc_630_normal"/>
             <field name="code">6301</field>
-            <field name="type" ref="es_pyg_impuestos_sobre_beneficios_normal"/>
+            <field name="type" ref="es_balance_pyg_impuestos_sobre_beneficios_normal"/>
         </record>
         <record id="pgc_631_normal" model="account.account.template">
             <field name="name">Otros tributos</field>
             <field name="parent" ref="pgc_63_normal"/>
             <field name="code">631</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_633_normal" model="account.account.template">
             <field name="name">Ajustes negativos en la imposición sobre beneficios</field>
             <field name="parent" ref="pgc_63_normal"/>
             <field name="code">633</field>
-            <field name="type" ref="es_pyg_impuestos_sobre_beneficios_normal"/>
+            <field name="type" ref="es_balance_pyg_impuestos_sobre_beneficios_normal"/>
         </record>
         <record id="pgc_6341_normal" model="account.account.template">
             <field name="name">Ajustes negativos en IVA de activo corriente</field>
             <field name="parent" ref="pgc_634_normal"/>
             <field name="code">6341</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_6342_normal" model="account.account.template">
             <field name="name">Ajustes negativos en IVA de inversiones</field>
             <field name="parent" ref="pgc_634_normal"/>
             <field name="code">6342</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_636_normal" model="account.account.template">
             <field name="name">Devolución de impuestos</field>
             <field name="parent" ref="pgc_63_normal"/>
             <field name="code">636</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_638_normal" model="account.account.template">
             <field name="name">Ajustes positivos en la imposición sobre beneficios</field>
             <field name="parent" ref="pgc_63_normal"/>
             <field name="code">638</field>
-            <field name="type" ref="es_pyg_impuestos_sobre_beneficios_normal"/>
+            <field name="type" ref="es_balance_pyg_impuestos_sobre_beneficios_normal"/>
         </record>
         <record id="pgc_6391_normal" model="account.account.template">
             <field name="name">Ajustes positivos en IVA de activo corriente</field>
             <field name="parent" ref="pgc_639_normal"/>
             <field name="code">6391</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_6392_normal" model="account.account.template">
             <field name="name">Ajustes positivos en IVA de inversiones</field>
             <field name="parent" ref="pgc_639_normal"/>
             <field name="code">6392</field>
             
-            <field name="type" ref="es_pyg_tributos_normal"/>
+            <field name="type" ref="es_balance_pyg_tributos_normal"/>
         </record>
         <record id="pgc_640_normal" model="account.account.template">
             <field name="name">Sueldos y salarios</field>
             <field name="parent" ref="pgc_64_normal"/>
             <field name="code">640</field>
             
-            <field name="type" ref="es_pyg_sueldos_salarios_normal"/>
+            <field name="type" ref="es_balance_pyg_sueldos_salarios_normal"/>
         </record>
         <record id="pgc_641_normal" model="account.account.template">
             <field name="name">Indemnizaciones</field>
             <field name="parent" ref="pgc_64_normal"/>
             <field name="code">641</field>
             
-            <field name="type" ref="es_pyg_sueldos_salarios_normal"/>
+            <field name="type" ref="es_balance_pyg_sueldos_salarios_normal"/>
         </record>
         <record id="pgc_642_normal" model="account.account.template">
             <field name="name">Seguridad Social a cargo de la empresa</field>
             <field name="parent" ref="pgc_64_normal"/>
             <field name="code">642</field>
             
-            <field name="type" ref="es_pyg_cargas_sociales_normal"/>
+            <field name="type" ref="es_balance_pyg_cargas_sociales_normal"/>
             <field name="party_required" eval="False"/>
         </record>
         <record id="pgc_643_normal" model="account.account.template">
             <field name="name">Retribuciones mediante sistemas de aportación definida</field>
             <field name="parent" ref="pgc_64_normal"/>
             <field name="code">643</field>
-            <field name="type" ref="es_pyg_cargas_sociales_normal"/>
+            <field name="type" ref="es_balance_pyg_cargas_sociales_normal"/>
         </record>
         <record id="pgc_6440_normal" model="account.account.template">
             <field name="name">Contribuciones anuales</field>
             <field name="parent" ref="pgc_644_normal"/>
             <field name="code">6440</field>
-            <field name="type" ref="es_pyg_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_provisiones_normal"/>
         </record>
         <record id="pgc_6442_normal" model="account.account.template">
             <field name="name">Otros costes</field>
             <field name="parent" ref="pgc_644_normal"/>
             <field name="code">6442</field>
-            <field name="type" ref="es_pyg_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_provisiones_normal"/>
         </record>
         <record id="pgc_6450_normal" model="account.account.template">
             <field name="name">Retribuciones al personal liquidados con instrumentos de patrimonio</field>
             <field name="parent" ref="pgc_645_normal"/>
             <field name="code">6450</field>
-            <field name="type" ref="es_pyg_sueldos_salarios_normal"/>
+            <field name="type" ref="es_balance_pyg_sueldos_salarios_normal"/>
         </record>
         <record id="pgc_6457_normal" model="account.account.template">
             <field name="name">Retribuciones al personal liquidados en efectivo basado en instrumentos de patrimonio</field>
             <field name="parent" ref="pgc_645_normal"/>
             <field name="code">6457</field>
-            <field name="type" ref="es_pyg_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_provisiones_normal"/>
         </record>
         <record id="pgc_649_normal" model="account.account.template">
             <field name="name">Otros gastos sociales</field>
             <field name="parent" ref="pgc_64_normal"/>
             <field name="code">649</field>
             
-            <field name="type" ref="es_pyg_cargas_sociales_normal"/>
+            <field name="type" ref="es_balance_pyg_cargas_sociales_normal"/>
         </record>
         <record id="pgc_650_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos comerciales incobrables</field>
             <field name="parent" ref="pgc_65_normal"/>
             <field name="code">650</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_6510_normal" model="account.account.template">
             <field name="name">Beneficio transferido (gestor)</field>
             <field name="parent" ref="pgc_651_normal"/>
             <field name="code">6510</field>
             
-            <field name="type" ref="es_pyg_otros_gastos_gestion_corriente_normal"/>
+            <field name="type" ref="es_balance_pyg_otros_gastos_gestion_corriente_normal"/>
         </record>
         <record id="pgc_6511_normal" model="account.account.template">
             <field name="name">Pérdida soportada (partícipe o asociado no gestor)</field>
             <field name="parent" ref="pgc_651_normal"/>
             <field name="code">6511</field>
             
-            <field name="type" ref="es_pyg_otros_gastos_gestion_corriente_normal"/>
+            <field name="type" ref="es_balance_pyg_otros_gastos_gestion_corriente_normal"/>
         </record>
         <record id="pgc_659_normal" model="account.account.template">
             <field name="name">Otras pérdidas en gestión corriente</field>
             <field name="parent" ref="pgc_65_normal"/>
             <field name="code">659</field>
             
-            <field name="type" ref="es_pyg_otros_gastos_gestion_corriente_normal"/>
+            <field name="type" ref="es_balance_pyg_otros_gastos_gestion_corriente_normal"/>
         </record>
         <record id="pgc_660_normal" model="account.account.template">
             <field name="name">Gastos financieros por actualización de provisiones</field>
             <field name="parent" ref="pgc_66_normal"/>
             <field name="code">660</field>
             
-            <field name="type" ref="es_pyg_actualizacion_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_actualizacion_provisiones_normal"/>
         </record>
         <record id="pgc_6610_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a largo plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6610</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6611_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6611</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6612_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6612</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6613_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a largo plazo, otras empresas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6613</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6615_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6615</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6616_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6616</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6617_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6617</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6618_normal" model="account.account.template">
             <field name="name">Intereses de obligaciones y bonos a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_661_normal"/>
             <field name="code">6618</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6620_normal" model="account.account.template">
             <field name="name">Intereses de deudas, empresas del grupo</field>
             <field name="parent" ref="pgc_662_normal"/>
             <field name="code">6620</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6621_normal" model="account.account.template">
             <field name="name">Intereses de deudas, empresas asociadas</field>
             <field name="parent" ref="pgc_662_normal"/>
             <field name="code">6621</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6622_normal" model="account.account.template">
             <field name="name">Intereses de deudas, otras partes vinculadas</field>
             <field name="parent" ref="pgc_662_normal"/>
             <field name="code">6622</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6623_normal" model="account.account.template">
             <field name="name">Intereses de deudas con entidades de crédito</field>
             <field name="parent" ref="pgc_662_normal"/>
             <field name="code">6623</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6624_normal" model="account.account.template">
             <field name="name">Intereses de deudas, otras empresas</field>
             <field name="parent" ref="pgc_662_normal"/>
             <field name="code">6624</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6630_normal" model="account.account.template">
             <field name="name">Pérdidas de cartera de negociación</field>
             <field name="parent" ref="pgc_663_normal"/>
             <field name="code">6630</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_6631_normal" model="account.account.template">
             <field name="name">Pérdidas de designados por la empresa</field>
             <field name="parent" ref="pgc_663_normal"/>
             <field name="code">6631</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_6632_normal" model="account.account.template">
             <field name="name">Pérdidas de disponibles para la venta</field>
             <field name="parent" ref="pgc_663_normal"/>
             <field name="code">6632</field>
-            <field name="type" ref="es_pyg_imputacion_resultado_activos_financieros_para_venta_normal"/>
+            <field name="type" ref="es_balance_pyg_imputacion_resultado_activos_financieros_para_venta_normal"/>
         </record>
         <record id="pgc_6633_normal" model="account.account.template">
             <field name="name">Pérdidas de instrumentos de cobertura</field>
             <field name="parent" ref="pgc_663_normal"/>
             <field name="code">6633</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_6640_normal" model="account.account.template">
             <field name="name">Dividendos de pasivos, empresas del grupo</field>
             <field name="parent" ref="pgc_664_normal"/>
             <field name="code">6640</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6641_normal" model="account.account.template">
             <field name="name">Dividendos de pasivos, empresas asociadas</field>
             <field name="parent" ref="pgc_664_normal"/>
             <field name="code">6641</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6642_normal" model="account.account.template">
             <field name="name">Dividendos de pasivos, otras partes vinculadas</field>
             <field name="parent" ref="pgc_664_normal"/>
             <field name="code">6642</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6643_normal" model="account.account.template">
             <field name="name">Dividendos de pasivos, otras empresas</field>
             <field name="parent" ref="pgc_664_normal"/>
             <field name="code">6643</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6650_normal" model="account.account.template">
             <field name="name">Intereses por descuento de efectos en entidades de crédito del grupo</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6650</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6651_normal" model="account.account.template">
             <field name="name">Intereses por descuento de efectos en entidades de crédito asociadas</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6651</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6652_normal" model="account.account.template">
             <field name="name">Intereses por descuento de efectos en entidades de crédito vinculadas</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6652</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6653_normal" model="account.account.template">
             <field name="name">Intereses por descuento de efectos en otras entidades de crédito</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6653</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6654_normal" model="account.account.template">
             <field name="name">Intereses por operaciones de "factoring" con entidades de crédito del grupo</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6654</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6655_normal" model="account.account.template">
             <field name="name">Intereses por operaciones de "factoring" con entidades de crédito asociadas</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6655</field>
             
-            <field name="type" ref="es_pyg_deudas_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_empresas_grupo_normal"/>
         </record>
         <record id="pgc_6656_normal" model="account.account.template">
             <field name="name">Intereses por operaciones de "factoring" con entidades de crédito vinculadas</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6656</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6657_normal" model="account.account.template">
             <field name="name">Intereses por operaciones de "factoring" con otras entidades de crédito</field>
             <field name="parent" ref="pgc_665_normal"/>
             <field name="code">6657</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_6660_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda, empresas del grupo</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6660</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6661_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda, empresas asociadas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6661</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6662_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda, otras partes vinculadas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6662</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6663_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda, otras empresas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6663</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6665_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6665</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6666_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6666</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6667_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6667</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6668_normal" model="account.account.template">
             <field name="name">Pérdidas en valores representativos de deuda a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_666_normal"/>
             <field name="code">6668</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6670_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos, empresas del grupo</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6670</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6671_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos, empresas asociadas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6671</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6672_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos, otras partes vinculadas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6672</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6673_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos, otras empresas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6673</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6675_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6675</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6676_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6676</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6677_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6677</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6678_normal" model="account.account.template">
             <field name="name">Pérdidas de créditos a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_667_normal"/>
             <field name="code">6678</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_668_normal" model="account.account.template">
             <field name="name">Diferencias negativas de cambio</field>
             <field name="parent" ref="pgc_66_normal"/>
             <field name="code">668</field>
-            <field name="type" ref="es_pyg_diferencias_cambio_normal"/>
+            <field name="type" ref="es_balance_pyg_diferencias_cambio_normal"/>
         </record>
         <record id="pgc_669_normal" model="account.account.template">
             <field name="name">Otros gastos financieros</field>
             <field name="parent" ref="pgc_66_normal"/>
             <field name="code">669</field>
             
-            <field name="type" ref="es_pyg_deudas_con_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_deudas_con_terceros_normal"/>
         </record>
         <record id="pgc_670_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes del inmovilizado intangible</field>
             <field name="parent" ref="pgc_67_normal"/>
             <field name="code">670</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_671_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes del inmovilizado material</field>
             <field name="parent" ref="pgc_67_normal"/>
             <field name="code">671</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_672_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes de las inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_67_normal"/>
             <field name="code">672</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_6733_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes de participaciones en, empresas del grupo</field>
             <field name="parent" ref="pgc_673_normal"/>
             <field name="code">6733</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6734_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes de participaciones, empresas asociadas</field>
             <field name="parent" ref="pgc_673_normal"/>
             <field name="code">6734</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6735_normal" model="account.account.template">
             <field name="name">Pérdidas procedentes de participaciones, otras partes vinculadas</field>
             <field name="parent" ref="pgc_673_normal"/>
             <field name="code">6735</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_675_normal" model="account.account.template">
             <field name="name">Pérdidas por operaciones con obligaciones propias</field>
             <field name="parent" ref="pgc_67_normal"/>
             <field name="code">675</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_678_normal" model="account.account.template">
             <field name="name">Gastos excepcionales</field>
             <field name="parent" ref="pgc_67_normal"/>
             <field name="code">678</field>
-            <field name="type" ref="es_pyg_otros_resultados_explotacion_normal"/>
+            <field name="type" ref="es_balance_pyg_otros_resultados_explotacion_normal"/>
         </record>
         <record id="pgc_680_normal" model="account.account.template">
             <field name="name">Amortización del inmovilizado intangible</field>
             <field name="parent" ref="pgc_68_normal"/>
             <field name="code">680</field>
-            <field name="type" ref="es_pyg_amortizacion_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_amortizacion_inmovilizado_normal"/>
         </record>
         <record id="pgc_681_normal" model="account.account.template">
             <field name="name">Amortización del inmovilizado material</field>
             <field name="parent" ref="pgc_68_normal"/>
             <field name="code">681</field>
-            <field name="type" ref="es_pyg_amortizacion_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_amortizacion_inmovilizado_normal"/>
         </record>
         <record id="pgc_682_normal" model="account.account.template">
             <field name="name">Amortización de las inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_68_normal"/>
             <field name="code">682</field>
-            <field name="type" ref="es_pyg_amortizacion_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_amortizacion_inmovilizado_normal"/>
         </record>
         <record id="pgc_690_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro del inmovilizado intangible</field>
             <field name="parent" ref="pgc_69_normal"/>
             <field name="code">690</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_691_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro del inmovilizado material</field>
             <field name="parent" ref="pgc_69_normal"/>
             <field name="code">691</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_692_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de las inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_69_normal"/>
             <field name="code">692</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_6930_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de productos terminados y en curso de fabricación</field>
             <field name="parent" ref="pgc_693_normal"/>
             <field name="code">6930</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_6931_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de mercaderías</field>
             <field name="parent" ref="pgc_693_normal"/>
             <field name="code">6931</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_6932_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de materias primas</field>
             <field name="parent" ref="pgc_693_normal"/>
             <field name="code">6932</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_6933_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_693_normal"/>
             <field name="code">6933</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_694_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos por operaciones comerciales</field>
             <field name="parent" ref="pgc_69_normal"/>
             <field name="code">694</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_6954_normal" model="account.account.template">
             <field name="name">Dotación a la provisión por contratos onerosos</field>
             <field name="parent" ref="pgc_695_normal"/>
             <field name="code">6954</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_6959_normal" model="account.account.template">
             <field name="name">Dotación a la provisión para otras operaciones comerciales</field>
             <field name="parent" ref="pgc_695_normal"/>
             <field name="code">6959</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_6960_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto, empresas del grupo</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6960</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6961_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto, empresas asociadas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6961</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6962_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto, otras partes vinculadas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6962</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6963_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto, otras empresas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6963</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6965_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda, empresas del grupo</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6965</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6966_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda, empresas asociadas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6966</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6967_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda, otras partes vinculadas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6967</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6968_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda, otras empresas</field>
             <field name="parent" ref="pgc_696_normal"/>
             <field name="code">6968</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6970_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos, empresas del grupo</field>
             <field name="parent" ref="pgc_697_normal"/>
             <field name="code">6970</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6971_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos, empresas asociadas</field>
             <field name="parent" ref="pgc_697_normal"/>
             <field name="code">6971</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6972_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos, otras partes vinculadas</field>
             <field name="parent" ref="pgc_697_normal"/>
             <field name="code">6972</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6973_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos, otras empresas</field>
             <field name="parent" ref="pgc_697_normal"/>
             <field name="code">6973</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6980_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6980</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6981_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6981</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6985_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6985</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6986_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6986</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6987_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6987</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6988_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro en valores representativos de deuda a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_698_normal"/>
             <field name="code">6988</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6990_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_699_normal"/>
             <field name="code">6990</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6991_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_699_normal"/>
             <field name="code">6991</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6992_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_699_normal"/>
             <field name="code">6992</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_6993_normal" model="account.account.template">
             <field name="name">Pérdidas por deterioro de créditos a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_699_normal"/>
             <field name="code">6993</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_700_normal" model="account.account.template">
             <field name="name">Ventas de mercaderías</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">700</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_701_normal" model="account.account.template">
             <field name="name">Ventas de productos terminados</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">701</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_702_normal" model="account.account.template">
             <field name="name">Ventas de productos semiterminados</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">702</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_703_normal" model="account.account.template">
             <field name="name">Ventas de subproductos y residuos</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">703</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_704_normal" model="account.account.template">
             <field name="name">Ventas de envases y embalajes</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">704</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_705_normal" model="account.account.template">
             <field name="name">Prestaciones de servicios</field>
             <field name="parent" ref="pgc_70_normal"/>
             <field name="code">705</field>
             
-            <field name="type" ref="es_pyg_servicios_normal"/>
+            <field name="type" ref="es_balance_pyg_servicios_normal"/>
         </record>
         <record id="pgc_7060_normal" model="account.account.template">
             <field name="name">Descuentos sobre ventas por pronto pago de mercaderías</field>
             <field name="parent" ref="pgc_706_normal"/>
             <field name="code">7060</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7061_normal" model="account.account.template">
             <field name="name">Descuentos sobre ventas por pronto pago de productos terminados</field>
             <field name="parent" ref="pgc_706_normal"/>
             <field name="code">7061</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7062_normal" model="account.account.template">
             <field name="name">Descuentos sobre ventas por pronto pago de productos semiterminados</field>
             <field name="parent" ref="pgc_706_normal"/>
             <field name="code">7062</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7063_normal" model="account.account.template">
             <field name="name">Descuentos sobre ventas por pronto pago de subproductos y residuos</field>
             <field name="parent" ref="pgc_706_normal"/>
             <field name="code">7063</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7080_normal" model="account.account.template">
             <field name="name">Devoluciones de ventas de mercaderías</field>
             <field name="parent" ref="pgc_708_normal"/>
             <field name="code">7080</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7081_normal" model="account.account.template">
             <field name="name">Devoluciones de ventas de productos terminados</field>
             <field name="parent" ref="pgc_708_normal"/>
             <field name="code">7081</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7082_normal" model="account.account.template">
             <field name="name">Devoluciones de ventas de productos semiterminados</field>
             <field name="parent" ref="pgc_708_normal"/>
             <field name="code">7082</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7083_normal" model="account.account.template">
             <field name="name">Devoluciones de ventas de subproductos y residuos</field>
             <field name="parent" ref="pgc_708_normal"/>
             <field name="code">7083</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7084_normal" model="account.account.template">
             <field name="name">Devoluciones de ventas de envases y embalajes</field>
             <field name="parent" ref="pgc_708_normal"/>
             <field name="code">7084</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7090_normal" model="account.account.template">
             <field name="name">"Rappels" sobre ventas de mercaderías</field>
             <field name="parent" ref="pgc_709_normal"/>
             <field name="code">7090</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7091_normal" model="account.account.template">
             <field name="name">"Rappels" sobre ventas de productos terminados</field>
             <field name="parent" ref="pgc_709_normal"/>
             <field name="code">7091</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7092_normal" model="account.account.template">
             <field name="name">"Rappels" sobre ventas de productos semiterminados</field>
             <field name="parent" ref="pgc_709_normal"/>
             <field name="code">7092</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7093_normal" model="account.account.template">
             <field name="name">"Rappels" sobre ventas de subproductos y residuos</field>
             <field name="parent" ref="pgc_709_normal"/>
             <field name="code">7093</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_7094_normal" model="account.account.template">
             <field name="name">"Rappels" sobre ventas de envases y embalajes</field>
             <field name="parent" ref="pgc_709_normal"/>
             <field name="code">7094</field>
             
-            <field name="type" ref="es_pyg_ventas_normal"/>
+            <field name="type" ref="es_balance_pyg_ventas_normal"/>
         </record>
         <record id="pgc_710_normal" model="account.account.template">
             <field name="name">Variación de existencias de productos en curso</field>
             <field name="parent" ref="pgc_71_normal"/>
             <field name="code">710</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_711_normal" model="account.account.template">
             <field name="name">Variación de existencias de productos semiterminados</field>
             <field name="parent" ref="pgc_71_normal"/>
             <field name="code">711</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_712_normal" model="account.account.template">
             <field name="name">Variación de existencias de productos terminados</field>
             <field name="parent" ref="pgc_71_normal"/>
             <field name="code">712</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_713_normal" model="account.account.template">
             <field name="name">Variación de existencias de subproductos, residuos y materiales recuperados</field>
             <field name="parent" ref="pgc_71_normal"/>
             <field name="code">713</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_730_normal" model="account.account.template">
             <field name="name">Trabajos realizados para el inmovilizado intangible</field>
             <field name="parent" ref="pgc_73_normal"/>
             <field name="code">730</field>
-            <field name="type" ref="es_pyg_trabajos_por_activo_empresa_normal"/>
+            <field name="type" ref="es_balance_pyg_trabajos_por_activo_empresa_normal"/>
         </record>
         <record id="pgc_731_normal" model="account.account.template">
             <field name="name">Trabajos realizados para el inmovilizado material</field>
             <field name="parent" ref="pgc_73_normal"/>
             <field name="code">731</field>
-            <field name="type" ref="es_pyg_trabajos_por_activo_empresa_normal"/>
+            <field name="type" ref="es_balance_pyg_trabajos_por_activo_empresa_normal"/>
         </record>
         <record id="pgc_732_normal" model="account.account.template">
             <field name="name">Trabajos realizados en inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_73_normal"/>
             <field name="code">732</field>
-            <field name="type" ref="es_pyg_trabajos_por_activo_empresa_normal"/>
+            <field name="type" ref="es_balance_pyg_trabajos_por_activo_empresa_normal"/>
         </record>
         <record id="pgc_733_normal" model="account.account.template">
             <field name="name">Trabajos realizados para el inmovilizado material en curso</field>
             <field name="parent" ref="pgc_73_normal"/>
             <field name="code">733</field>
-            <field name="type" ref="es_pyg_trabajos_por_activo_empresa_normal"/>
+            <field name="type" ref="es_balance_pyg_trabajos_por_activo_empresa_normal"/>
         </record>
         <record id="pgc_740_normal" model="account.account.template">
             <field name="name">Subvenciones, donaciones y legados a la explotación</field>
             <field name="parent" ref="pgc_74_normal"/>
             <field name="code">740</field>
             
-            <field name="type" ref="es_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal"/>
+            <field name="type" ref="es_balance_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal"/>
         </record>
         <record id="pgc_746_normal" model="account.account.template">
             <field name="name">Subvenciones, donaciones y legados de capital transferidos al resultado del ejercicio</field>
             <field name="parent" ref="pgc_74_normal"/>
             <field name="code">746</field>
             
-            <field name="type" ref="es_pyg_subvenciones_donaciones_legados_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_subvenciones_donaciones_legados_financieros_normal"/>
         </record>
         <record id="pgc_747_normal" model="account.account.template">
             <field name="name">Otras subvenciones, donaciones y legados transferidos al resultado del ejercicio</field>
             <field name="parent" ref="pgc_74_normal"/>
             <field name="code">747</field>
             
-            <field name="type" ref="es_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal"/>
+            <field name="type" ref="es_balance_pyg_subvenciones_explotacion_incorporadas_al_resultado_normal"/>
         </record>
         <record id="pgc_7510_normal" model="account.account.template">
             <field name="name">Pérdida transferido (gestor)</field>
             <field name="parent" ref="pgc_751_normal"/>
             <field name="code">7510</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_7511_normal" model="account.account.template">
             <field name="name">Beneficio atribuido (partícipe o asociado no gestor)</field>
             <field name="parent" ref="pgc_751_normal"/>
             <field name="code">7511</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_752_normal" model="account.account.template">
             <field name="name">Ingresos por arrendamientos</field>
             <field name="parent" ref="pgc_75_normal"/>
             <field name="code">752</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_753_normal" model="account.account.template">
             <field name="name">Ingresos de propiedad industrial cedida en explotación</field>
             <field name="parent" ref="pgc_75_normal"/>
             <field name="code">753</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_754_normal" model="account.account.template">
             <field name="name">Ingresos por comisiones</field>
             <field name="parent" ref="pgc_75_normal"/>
             <field name="code">754</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_755_normal" model="account.account.template">
             <field name="name">Ingresos por servicios al personal</field>
             <field name="parent" ref="pgc_75_normal"/>
             <field name="code">755</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_759_normal" model="account.account.template">
             <field name="name">Ingresos por servicios diversos</field>
             <field name="parent" ref="pgc_75_normal"/>
             <field name="code">759</field>
             
-            <field name="type" ref="es_pyg_ingresso_accesorios_normal"/>
+            <field name="type" ref="es_balance_pyg_ingresso_accesorios_normal"/>
         </record>
         <record id="pgc_7600_normal" model="account.account.template">
             <field name="name">Ingresos de participaciones en instrumentos de patrimonio, empresas del grupo</field>
             <field name="parent" ref="pgc_760_normal"/>
             <field name="code">7600</field>
             
-            <field name="type" ref="es_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal"/>
         </record>
         <record id="pgc_7601_normal" model="account.account.template">
             <field name="name">Ingresos de participaciones en instrumentos de patrimonio, empresas asociadas</field>
             <field name="parent" ref="pgc_760_normal"/>
             <field name="code">7601</field>
             
-            <field name="type" ref="es_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_participacions_instrumentos_patrimonio_empresas_grupo_normal"/>
         </record>
         <record id="pgc_7602_normal" model="account.account.template">
             <field name="name">Ingresos de participaciones en instrumentos de patrimonio, otras partes vinculadas</field>
             <field name="parent" ref="pgc_760_normal"/>
             <field name="code">7602</field>
             
-            <field name="type" ref="es_pyg_participacions_instrumentos_patrimonio_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_participacions_instrumentos_patrimonio_terceros_normal"/>
         </record>
         <record id="pgc_7603_normal" model="account.account.template">
             <field name="name">Ingresos de participaciones en instrumentos de patrimonio, otras empresas</field>
             <field name="parent" ref="pgc_760_normal"/>
             <field name="code">7603</field>
             
-            <field name="type" ref="es_pyg_participacions_instrumentos_patrimonio_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_participacions_instrumentos_patrimonio_terceros_normal"/>
         </record>
         <record id="pgc_7610_normal" model="account.account.template">
             <field name="name">Ingresos de valores representativos de deuda, empresas del grupo</field>
             <field name="parent" ref="pgc_761_normal"/>
             <field name="code">7610</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_7611_normal" model="account.account.template">
             <field name="name">Ingresos de valores representativos de deuda, empresas asociadas</field>
             <field name="parent" ref="pgc_761_normal"/>
             <field name="code">7611</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_7612_normal" model="account.account.template">
             <field name="name">Ingresos de valores representativos de deuda, otras partes vinculadas</field>
             <field name="parent" ref="pgc_761_normal"/>
             <field name="code">7612</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_7613_normal" model="account.account.template">
             <field name="name">Ingresos de valores representativos de deuda, otras empresas</field>
             <field name="parent" ref="pgc_761_normal"/>
             <field name="code">7613</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_7620_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a largo plazo</field>
@@ -6506,234 +6499,234 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Beneficios de cartera de negociación</field>
             <field name="parent" ref="pgc_763_normal"/>
             <field name="code">7630</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_7631_normal" model="account.account.template">
             <field name="name">Beneficios de designados por la empresa</field>
             <field name="parent" ref="pgc_763_normal"/>
             <field name="code">7631</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_7632_normal" model="account.account.template">
             <field name="name">Beneficios de disponibles para la venta</field>
             <field name="parent" ref="pgc_763_normal"/>
             <field name="code">7632</field>
-            <field name="type" ref="es_pyg_imputacion_resultado_activos_financieros_para_venta_normal"/>
+            <field name="type" ref="es_balance_pyg_imputacion_resultado_activos_financieros_para_venta_normal"/>
         </record>
         <record id="pgc_7633_normal" model="account.account.template">
             <field name="name">Beneficios de instrumentos de cobertura</field>
             <field name="parent" ref="pgc_763_normal"/>
             <field name="code">7633</field>
-            <field name="type" ref="es_pyg_caartera_negociacion_normal"/>
+            <field name="type" ref="es_balance_pyg_caartera_negociacion_normal"/>
         </record>
         <record id="pgc_7660_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a largo plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7660</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7661_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7661</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7662_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7662</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7663_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a largo plazo, otras empresas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7663</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7665_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7665</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7666_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7666</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7667_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7667</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7668_normal" model="account.account.template">
             <field name="name">Beneficios en valores representativos de deuda a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_766_normal"/>
             <field name="code">7668</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_767_normal" model="account.account.template">
             <field name="name">Ingresos de activos afectos y de derechos de reembolso relativos a retribuciones a largo plazo</field>
             <field name="parent" ref="pgc_76_normal"/>
             <field name="code">767</field>
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_768_normal" model="account.account.template">
             <field name="name">Diferencias positivas de cambio</field>
             <field name="parent" ref="pgc_76_normal"/>
             <field name="code">768</field>
-            <field name="type" ref="es_pyg_diferencias_cambio_normal"/>
+            <field name="type" ref="es_balance_pyg_diferencias_cambio_normal"/>
         </record>
         <record id="pgc_769_normal" model="account.account.template">
             <field name="name">Otros ingresos financieros</field>
             <field name="parent" ref="pgc_76_normal"/>
             <field name="code">769</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_770_normal" model="account.account.template">
             <field name="name">Beneficios procedentes del inmovilizado intangible</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">770</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_771_normal" model="account.account.template">
             <field name="name">Beneficios procedentes del inmovilizado material</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">771</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_772_normal" model="account.account.template">
             <field name="name">Beneficios procedentes de las inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">772</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_inmovilizado_normal"/>
         </record>
         <record id="pgc_7733_normal" model="account.account.template">
             <field name="name">Beneficios procedentes de participaciones a largo plazo en, empresas del grupo</field>
             <field name="parent" ref="pgc_773_normal"/>
             <field name="code">7733</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7734_normal" model="account.account.template">
             <field name="name">Beneficios procedentes de participaciones a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_773_normal"/>
             <field name="code">7734</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7735_normal" model="account.account.template">
             <field name="name">Beneficios procedentes de participaciones a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_773_normal"/>
             <field name="code">7735</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_774_normal" model="account.account.template">
             <field name="name">Diferencia negativa en combinaciones de negocios</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">774</field>
-            <field name="type" ref="es_pyg_diferencia_negativa_combinaciones_negocio_normal"/>
+            <field name="type" ref="es_balance_pyg_diferencia_negativa_combinaciones_negocio_normal"/>
         </record>
         <record id="pgc_775_normal" model="account.account.template">
             <field name="name">Beneficos por operaciones con obligaciones propias</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">775</field>
             
-            <field name="type" ref="es_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_resultados_enajenaciones_otras_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_778_normal" model="account.account.template">
             <field name="name">Ingresos excepcionales</field>
             <field name="parent" ref="pgc_77_normal"/>
             <field name="code">778</field>
-            <field name="type" ref="es_pyg_otros_resultados_explotacion_normal"/>
+            <field name="type" ref="es_balance_pyg_otros_resultados_explotacion_normal"/>
         </record>
         <record id="pgc_790_normal" model="account.account.template">
             <field name="name">Reversión del deterioro del inmovilizado intangible</field>
             <field name="parent" ref="pgc_79_normal"/>
             <field name="code">790</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_791_normal" model="account.account.template">
             <field name="name">Reversión del deterioro del inmovilizado material</field>
             <field name="parent" ref="pgc_79_normal"/>
             <field name="code">791</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_792_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de las inversiones inmobiliarias</field>
             <field name="parent" ref="pgc_79_normal"/>
             <field name="code">792</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_inmovilizado_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_inmovilizado_normal"/>
         </record>
         <record id="pgc_7930_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de productos terminados y en curso de fabricación</field>
             <field name="parent" ref="pgc_793_normal"/>
             <field name="code">7930</field>
-            <field name="type" ref="es_pyg_variacion_existencias_normal"/>
+            <field name="type" ref="es_balance_pyg_variacion_existencias_normal"/>
         </record>
         <record id="pgc_7931_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de mercaderías</field>
             <field name="parent" ref="pgc_793_normal"/>
             <field name="code">7931</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_7932_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de materias primas</field>
             <field name="parent" ref="pgc_793_normal"/>
             <field name="code">7932</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_7933_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de otros aprovisionamientos</field>
             <field name="parent" ref="pgc_793_normal"/>
             <field name="code">7933</field>
             
-            <field name="type" ref="es_pyg_deterioro_mercaderias_normal"/>
+            <field name="type" ref="es_balance_pyg_deterioro_mercaderias_normal"/>
         </record>
         <record id="pgc_794_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos por operaciones comerciales</field>
             <field name="parent" ref="pgc_79_normal"/>
             <field name="code">794</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_7950_normal" model="account.account.template">
             <field name="name">Exceso de provisión por retribuciones al personal</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7950</field>
-            <field name="type" ref="es_pyg_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_provisiones_normal"/>
         </record>
         <record id="pgc_7951_normal" model="account.account.template">
             <field name="name">Exceso de provisión para impuestos</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7951</field>
-            <field name="type" ref="es_pyg_excesos_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_excesos_provisiones_normal"/>
         </record>
         <record id="pgc_7952_normal" model="account.account.template">
             <field name="name">Exceso de provisión para otras responsabilidades</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7952</field>
-            <field name="type" ref="es_pyg_excesos_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_excesos_provisiones_normal"/>
         </record>
         <record id="pgc_7954_normal" model="account.account.template">
             <field name="name">Exceso de provisión por operaciones comerciales</field>
@@ -6744,159 +6737,159 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Exceso de provisión para actuaciones medioambientales</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7955</field>
-            <field name="type" ref="es_pyg_excesos_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_excesos_provisiones_normal"/>
         </record>
         <record id="pgc_7956_normal" model="account.account.template">
             <field name="name">Exceso de provisión para reestructuraciones</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7956</field>
-            <field name="type" ref="es_pyg_excesos_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_excesos_provisiones_normal"/>
         </record>
         <record id="pgc_7957_normal" model="account.account.template">
             <field name="name">Exceso de provisión por transacciones con pagos basados en instrumentos de patrimonio</field>
             <field name="parent" ref="pgc_795_normal"/>
             <field name="code">7957</field>
-            <field name="type" ref="es_pyg_provisiones_normal"/>
+            <field name="type" ref="es_balance_pyg_provisiones_normal"/>
         </record>
         <record id="pgc_7960_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7960</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7961_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de participaciones en instrumentos de patrimonio neto a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7961</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7965_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a largo plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7965</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7966_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7966</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7967_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7967</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7968_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a largo plazo, otras empresas</field>
             <field name="parent" ref="pgc_796_normal"/>
             <field name="code">7968</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7970_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a largo plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_797_normal"/>
             <field name="code">7970</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7971_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_797_normal"/>
             <field name="code">7971</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7972_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_797_normal"/>
             <field name="code">7972</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7973_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a largo plazo, otras empresas</field>
             <field name="parent" ref="pgc_797_normal"/>
             <field name="code">7973</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7980_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7980</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7981_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de participaciones en instrumentos de patrimonio neto a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7981</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7985_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7985</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7986_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7986</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7987_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7987</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7988_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de valores representativos de deuda a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_798_normal"/>
             <field name="code">7988</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7990_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_799_normal"/>
             <field name="code">7990</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7991_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_799_normal"/>
             <field name="code">7991</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7992_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_799_normal"/>
             <field name="code">7992</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_7993_normal" model="account.account.template">
             <field name="name">Reversión del deterioro de créditos a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_799_normal"/>
             <field name="code">7993</field>
             
-            <field name="type" ref="es_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
+            <field name="type" ref="es_balance_pyg_deteriorio_perdidas_instrumentos_financieros_normal"/>
         </record>
         <record id="pgc_800_normal" model="account.account.template">
             <field name="name">Pérdidas en activos financieros disponibles para la venta</field>
@@ -7169,70 +7162,70 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="pgc_7620_normal"/>
             <field name="code">76200</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_76201_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a largo plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_7620_normal"/>
             <field name="code">76201</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_76202_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a largo plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_7620_normal"/>
             <field name="code">76202</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_76203_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a largo plazo, otras empresas</field>
             <field name="parent" ref="pgc_7620_normal"/>
             <field name="code">76203</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_76210_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a corto plazo, empresas del grupo</field>
             <field name="parent" ref="pgc_7621_normal"/>
             <field name="code">76210</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_76211_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a corto plazo, empresas asociadas</field>
             <field name="parent" ref="pgc_7621_normal"/>
             <field name="code">76211</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_empresas_grupo_normal"/>
         </record>
         <record id="pgc_76212_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a corto plazo, otras partes vinculadas</field>
             <field name="parent" ref="pgc_7621_normal"/>
             <field name="code">76212</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_76213_normal" model="account.account.template">
             <field name="name">Ingresos de créditos a corto plazo, otras empresas</field>
             <field name="parent" ref="pgc_7621_normal"/>
             <field name="code">76213</field>
             
-            <field name="type" ref="es_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
+            <field name="type" ref="es_balance_pyg_valores_negociables_otros_instrumentos_terceros_normal"/>
         </record>
         <record id="pgc_79544_normal" model="account.account.template">
             <field name="name">Exceso de provisión por contratos onerosos</field>
             <field name="parent" ref="pgc_7954_normal"/>
             <field name="code">79544</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
         <record id="pgc_79549_normal" model="account.account.template">
             <field name="name">Exceso de provisión para otras operaciones comerciales</field>
             <field name="parent" ref="pgc_7954_normal"/>
             <field name="code">79549</field>
             
-            <field name="type" ref="es_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
+            <field name="type" ref="es_balance_pyg_perdidas_deterioro_variacion_provisiones_operaciones_comerciales_normal"/>
         </record>
     </data>
 </tryton>
