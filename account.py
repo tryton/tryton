@@ -345,6 +345,9 @@ class RenewFiscalYear(metaclass=PoolMeta):
                 sequences[sequence.id] = sequence
         copies = Sequence.copy(list(sequences.values()), default={
                 'next_number': 1,
+                'name': lambda data: data['name'].replace(
+                    self.start.previous_fiscalyear.name,
+                    self.start.name)
                 })
 
         mapping = {}

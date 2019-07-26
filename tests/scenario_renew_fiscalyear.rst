@@ -85,3 +85,22 @@ Renew fiscal year resetting sequences::
     >>> [int(seq.out_invoice_sequence.number_next)
     ...     for seq in new_fiscalyear.invoice_sequences]
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
+
+Set the sequence name::
+
+    >>> for seq in new_fiscalyear.invoice_sequences:
+    ...     seq.out_invoice_sequence.name = ('Sequence %s' %
+    ...         new_fiscalyear.start_date.strftime('%Y'))
+    ...     seq.out_invoice_sequence.save()
+
+Renew fiscalyear and test sequence name is updated::
+
+    >>> renew_fiscalyear = Wizard('account.fiscalyear.renew')
+    >>> renew_fiscalyear.form.reset_sequences = True
+    >>> renew_fiscalyear.execute('create_')
+    >>> new_fiscalyear, = renew_fiscalyear.actions[0]
+    >>> all(seq.out_invoice_sequence.name ==
+    ...         'Sequence %s' % new_fiscalyear.start_date.strftime('%Y')
+    ...     for seq in new_fiscalyear.invoice_sequences)
+    True
