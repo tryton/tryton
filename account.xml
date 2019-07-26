@@ -657,7 +657,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
-                eval="[('statement', '=', 'income'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'income')]]"
+                eval="[('statement', '=', 'income'), ['OR', ('parent', '=', None), ('parent.statement', '!=', 'income'), ('parent.statement', '=', None)]]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_income_statement_view1">
