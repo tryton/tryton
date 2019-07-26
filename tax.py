@@ -514,13 +514,23 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         domain=[
             ('type.statement', '=', 'balance'),
             ('closed', '!=', True),
-            ])
+            ],
+        states={
+            'invisible': Eval('type') == 'none',
+            'required': Eval('type') != 'none',
+            },
+        depends=['type'])
     credit_note_account = fields.Many2One(
         'account.account.template', 'Credit Note Account',
         domain=[
             ('type.statement', '=', 'balance'),
             ('closed', '!=', True),
-            ])
+            ],
+        states={
+            'invisible': Eval('type') == 'none',
+            'required': Eval('type') != 'none',
+            },
+        depends=['type'])
     account = fields.Many2One('account.account.template', 'Account Template',
             domain=[('parent', '=', None)], required=True)
     legal_notice = fields.Text("Legal Notice")
