@@ -47,6 +47,9 @@ Stock
     `Product Location </projects/modules-stock-product-location/en/latest>`_
         Defines preferred locations for products.
 
+    `Secondary Unit </projects/modules-stock-secondary-unit/en/latest>`_
+        Adds a secondary unit of measure.
+
     `Shipment Measurements </projects/modules-stock-shipment-measurements/en/latest>`_
         Adds measurements to shipments.
 

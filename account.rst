@@ -59,6 +59,9 @@ Accounting
     `Invoice Line Standalone </projects/modules-account-invoice-line-standalone/en/latest>`_
         Supports invoice line without invoice.
 
+    `Invoice Secondary Unit </projects/modules-account-invoice-secondary-unit/en/latest>`_
+        Adds a secondary unit of measure.
+
     `Invoice Stock </projects/modules-account-invoice-stock/en/latest>`_
         Links invoice lines and stock moves.
 

@@ -53,6 +53,9 @@ Sale
     `Shipment Tolerance </projects/modules-sale-shipment-tolerance/en/latest>`_
         Define tolerance for under and over shipment.
 
+    `Secondary Unit </projects/modules-sale-secondary-unit/en/latest>`_
+        Adds a secondary unit of measure.
+
     `Stock Quantity </projects/modules-sale-stock-quantity/en/latest>`_
         Checks stock level.
 

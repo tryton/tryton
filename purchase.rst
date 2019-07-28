@@ -23,5 +23,8 @@ Purchase
     `Requisition </projects/modules-purchase-requisition/en/latest>`_
         Requires purchase by employees.
 
+    `Secondary Unit </projects/modules-sale-secondary-unit/en/latest>`_
+        Adds a secondary unit of measure.
+
     `Shipment Cost </projects/modules-shipment-cost/en/latest>`_
         Computes shipment cost.
