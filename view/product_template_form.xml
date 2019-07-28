@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='customers']//field[@name='sale_uom']" position="after">
+        <newline/>
+        <label name="sale_secondary_uom"/>
+        <field name="sale_secondary_uom"/>
+        <group id="sale_secondary_uom" col="-1" colspan="2">
+            <label name="sale_secondary_uom_factor" string="Factor:"/>
+            <field name="sale_secondary_uom_factor"/>
+            <label name="sale_secondary_uom_rate" string="Rate:"/>
+            <field name="sale_secondary_uom_rate"/>
+        </group>
+    </xpath>
+</data>
