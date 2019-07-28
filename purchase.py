@@ -439,17 +439,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             'required': Bool(Eval('product')),
             'readonly': _states['readonly'],
             },
-        domain=[
-            If(Bool(Eval('product_uom_category')),
-                ('category', '=', Eval('product_uom_category')),
-                ('category', '!=', -1)),
-        ],
-        depends=['product', 'product_uom_category'] + _depends)
+        depends=['product'] + _depends)
     unit_digits = fields.Function(
         fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
-    product_uom_category = fields.Function(
-        fields.Many2One('product.uom.category', 'Product Uom Category'),
-        'on_change_with_product_uom_category')
     unit_price = fields.Numeric(
         'Unit Price', digits=price_digits, states=_states, depends=_depends)
     amount = fields.Function(
@@ -490,11 +482,6 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             amount = self.requisition.currency.round(amount)
         return amount
 
-    @fields.depends('product')
-    def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
-
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
@@ -523,12 +510,13 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             supplier = self.supplier
             # TODO compute purchase_date for product_supplier
 
-        if self.product:
-            uom = self.product.purchase_uom or self.product.default_uom
-            quantity = Uom.compute_qty(self.unit, self.quantity, uom)
-        else:
-            uom = self.unit
-            quantity = self.quantity
+        uom = self.unit
+        quantity = self.quantity
+        if (self.product
+                and self.product.purchase_uom.category == self.unit.category):
+            uom = self.product.purchase_uom
+            quantity = Uom.compute_qty(self.unit, self.quantity,
+                uom, round=True)
 
         return Request(
             product=self.product,

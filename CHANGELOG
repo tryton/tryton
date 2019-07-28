@@ -1,3 +1,4 @@
+* Remove domain constraint on unit
 * Use processing delay to process approved requisition
 * Allow reset to draft approved but not processed requisition
 
