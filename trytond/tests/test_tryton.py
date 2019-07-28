@@ -161,6 +161,7 @@ def _pg_restore(cache_file):
         return not subprocess.call(cmd, env=env)
     except OSError:
         cache_name, _ = os.path.splitext(os.path.basename(cache_file))
+        cache_name = backend.get('TableHandler').convert_name(cache_name)
         with Transaction().start(
                 None, 0, close=True, autocommit=True, _nocache=True) \
                 as transaction:
@@ -179,6 +180,7 @@ def _pg_dump(cache_file):
         return not subprocess.call(cmd, env=env)
     except OSError:
         cache_name, _ = os.path.splitext(os.path.basename(cache_file))
+        cache_name = backend.get('TableHandler').convert_name(cache_name)
         # Ensure any connection is left open
         backend.get('Database')(DB_NAME).close()
         with Transaction().start(
