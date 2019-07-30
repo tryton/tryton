@@ -194,6 +194,8 @@ class EnterLines(Wizard):
     enter = StateAction('timesheet.act_line_form')
 
     def do_enter(self, action):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         date = self.start.date
         date = Date(date.year, date.month, date.day)
         action['pyson_domain'] = PYSONEncoder().encode([
@@ -206,7 +208,10 @@ class EnterLines(Wizard):
                 'company': self.start.employee.company.id,
                 'date': date,
                 })
-        action['name'] += " - " + self.start.employee.rec_name
+        action['name'] += ' @ %(date)s - %(employee)s' % {
+            'date': Lang.get().strftime(self.start.date),
+            'employee': self.start.employee.rec_name,
+            }
         return action, {}
 
     def transition_enter(self):
