@@ -333,7 +333,7 @@ ${COUNTRY}"""
             pattern = pattern.copy()
         pattern.setdefault(
             'country_code', address.country.code if address.country else None)
-        pattern.setdefault('language', Transaction().language[:2])
+        pattern.setdefault('language_code', Transaction().language[:2])
 
         key = tuple(sorted(pattern.items()))
         format_ = cls._get_format_cache.get(key)
