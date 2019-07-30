@@ -1,3 +1,4 @@
+* Replace country and language in address format by codes
 * Add sequence field to contact mechanism form view
 
 Version 5.2.0 - 2019-05-06

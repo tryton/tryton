@@ -3,8 +3,8 @@
 'Address'
 from string import Template
 
-from sql import Null
-from sql.conditionals import Case, Coalesce
+from sql.conditionals import Coalesce
+from sql.functions import Substring
 from sql.operators import Concat
 
 from trytond.i18n import gettext
@@ -225,8 +225,8 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     "Address Format"
     __name__ = 'party.address.format'
-    country = fields.Many2One('country.country', "Country")
-    language = fields.Many2One('ir.lang', "Language")
+    country_code = fields.Char("Country Code", size=2)
+    language_code = fields.Char("Language Code", size=2)
     format_ = fields.Text("Format", required=True,
         help="Available variables (also in upper case):\n"
         "- ${party_name}\n"
@@ -245,8 +245,42 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(AddressFormat, cls).__setup__()
-        cls._order.insert(0, ('country', 'ASC'))
-        cls._order.insert(1, ('language', 'ASC'))
+        cls._order.insert(0, ('country_code', 'ASC NULLS LAST'))
+        cls._order.insert(1, ('language_code', 'ASC NULLS LAST'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Country = pool.get('country.country')
+        Language = pool.get('ir.lang')
+        country = Country.__table__()
+        language = Language.__table__()
+        table = cls.__table__()
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__()
+
+        # Migration from 5.2: replace country by country_code
+        if table_h.column_exist('country'):
+            query = table.update(
+                [table.country_code],
+                country.select(
+                    country.code,
+                    where=country.id == table.country))
+            cursor.execute(*query)
+            table_h.drop_column('country')
+
+        # Migration from 5.2: replace language by language_code
+        if table_h.column_exist('language'):
+            query = table.update(
+                [table.language_code],
+                language.select(
+                    Substring(language.code, 0, 2),
+                    where=language.id == table.language))
+            cursor.execute(*query)
+            table_h.drop_column('language')
 
     @classmethod
     def default_format_(cls):
@@ -256,11 +290,6 @@ ${street}
 ${zip} ${city}
 ${subdivision}
 ${COUNTRY}"""
-
-    @staticmethod
-    def order_language(tables):
-        table, _ = tables[None]
-        return [Case((table.language == Null, 1), else_=0), table.language]
 
     @classmethod
     def create(cls, *args, **kwargs):
@@ -298,24 +327,13 @@ ${COUNTRY}"""
 
     @classmethod
     def get_format(cls, address, pattern=None):
-        pool = Pool()
-        Language = pool.get('ir.lang')
-
         if pattern is None:
             pattern = {}
         else:
             pattern = pattern.copy()
         pattern.setdefault(
-            'country', address.country.id if address.country else None)
-
-        languages = Language.search([
-                ('code', '=', Transaction().language),
-                ], limit=1)
-        if languages:
-            language, = languages
-        else:
-            language = None
-        pattern.setdefault('language', language.id if language else None)
+            'country_code', address.country.code if address.country else None)
+        pattern.setdefault('language', Transaction().language[:2])
 
         key = tuple(sorted(pattern.items()))
         format_ = cls._get_format_cache.get(key)

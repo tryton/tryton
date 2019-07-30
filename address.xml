@@ -86,10 +86,10 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data noupdate="1" grouped="1" skiptest="1">
+    <data noupdate="1" grouped="1">
         <!-- From https://en.wikipedia.org/wiki/Address_(geography) -->
         <record model="party.address.format" id="address_format_ar">
-            <field name="country" ref="country.ar"/>
+            <field name="country_code">AR</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
@@ -99,7 +99,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_au">
-            <field name="country" ref="country.au"/>
+            <field name="country_code">AU</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -110,7 +110,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_at">
-            <field name="country" ref="country.at"/>
+            <field name="country_code">AT</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -120,7 +120,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_bd">
-            <field name="country" ref="country.bd"/>
+            <field name="country_code">BD</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -130,7 +130,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_by">
-            <field name="country" ref="country.by"/>
+            <field name="country_code">BY</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
@@ -140,7 +140,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_be">
-            <field name="country" ref="country.be"/>
+            <field name="country_code">BE</field>
             <field name="format_">${attn}
 ${party_name}
 ${name}
@@ -150,7 +150,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_br">
-            <field name="country" ref="country.br"/>
+            <field name="country_code">BR</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -160,8 +160,8 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ca_fr">
-            <field name="country" ref="country.ca"/>
-            <field name="language" ref="ir.lang_fr"/>
+            <field name="country_code">CA</field>
+            <field name="language_code">fr</field>
             <field name="format_">${attn}
 ${party_name}
 ${name}
@@ -171,7 +171,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ca">
-            <field name="country" ref="country.ca"/>
+            <field name="country_code">CA</field>
             <field name="format_">${ATTN}
 ${PARTY_NAME}
 ${NAME}
@@ -181,7 +181,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cl">
-            <field name="country" ref="country.cl"/>
+            <field name="country_code">CL</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -191,22 +191,22 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cn_zh_CN">
-            <field name="country" ref="country.cn"/>
-            <field name="language" ref="ir.lang_zh_CN"/>
+            <field name="country_code">CN</field>
+            <field name="language_code">zh</field>
             <field name="format_">${COUNTRY} ${ZIP}
 ${subdivision}${city}${street}${name}
 ${party_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cn">
-            <field name="country" ref="country.cn"/>
+            <field name="country_code">CN</field>
             <field name="format_">${COUNTRY} ${ZIP}
 ${subdivision}, ${city}, ${street}, ${name}
 ${party_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_hr">
-            <field name="country" ref="country.hr"/>
+            <field name="country_code">HR</field>
             <field name="format_">${party_name}
 ${street}
 ${COUNTRY_CODE}-${ZIP} ${city}
@@ -214,7 +214,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cz">
-            <field name="country" ref="country.cz"/>
+            <field name="country_code">CZ</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
@@ -223,7 +223,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_dk">
-            <field name="country" ref="country.dk"/>
+            <field name="country_code">DK</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -231,7 +231,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ee">
-            <field name="country" ref="country.ee"/>
+            <field name="country_code">EE</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -239,7 +239,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_fi">
-            <field name="country" ref="country.fi"/>
+            <field name="country_code">FI</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
@@ -248,7 +248,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_fr">
-            <field name="country" ref="country.fr"/>
+            <field name="country_code">FR</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -258,7 +258,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_de">
-            <field name="country" ref="country.de"/>
+            <field name="country_code">DE</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -268,7 +268,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_gr">
-            <field name="country" ref="country.gr"/>
+            <field name="country_code">GR</field>
             <field name="format_">${party_name}
 ${street}
 ${COUNTRY_CODE}-${ZIP} ${CITY}
@@ -276,7 +276,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_hk">
-            <field name="country" ref="country.hk"/>
+            <field name="country_code">HK</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
@@ -285,7 +285,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_hu">
-            <field name="country" ref="country.hu"/>
+            <field name="country_code">HU</field>
             <field name="format_">${party_name}
 ${city}
 ${street}
@@ -294,7 +294,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_is">
-            <field name="country" ref="country.is"/>
+            <field name="country_code">IS</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -303,7 +303,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_in">
-            <field name="country" ref="country.in"/>
+            <field name="country_code">IN</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
@@ -313,7 +313,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_id">
-            <field name="country" ref="country.id"/>
+            <field name="country_code">ID</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
@@ -323,7 +323,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ir">
-            <field name="country" ref="country.ir"/>
+            <field name="country_code">IR</field>
             <field name="format_">${party_name}
 ${name}
 ${city}
@@ -334,7 +334,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_iq">
-            <field name="country" ref="country.iq"/>
+            <field name="country_code">IQ</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -344,7 +344,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ie">
-            <field name="country" ref="country.ie"/>
+            <field name="country_code">IE</field>
             <field name="format_">${party_name}
 ${street}
 ${city} ${zip}
@@ -352,7 +352,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_il">
-            <field name="country" ref="country.il"/>
+            <field name="country_code">IL</field>
             <field name="format_">${party_name}
 ${street}
 ${city} ${zip}
@@ -360,7 +360,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_it">
-            <field name="country" ref="country.it"/>
+            <field name="country_code">IT</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -369,38 +369,34 @@ ${zip} ${city} ${SUBDIVISION_CODE}
 ${COUNTRY}</field>
         </record>
 
-        <!-- for Japan language
         <record model="party.address.format" id="address_format_jp_jp">
-            <field name="country" ref="country.jp"/>
-            <field name="language" ref="ir.lang_jp"/>
+            <field name="country_code">JP</field>
+            <field name="language_code">jp</field>
             <field name="format_">${COUNTRY}
 ${zip}
 ${subdivision}${city}${street}
 ${party_name}</field>
         </record>
-        -->
 
         <record model="party.address.format" id="address_format_jp">
-            <field name="country" ref="country.jp"/>
+            <field name="country_code">JP</field>
             <field name="format_">${party_name}
 ${street}
 ${city}, ${SUBDIVISION} ${zip}
 ${COUNTRY}</field>
         </record>
 
-        <!-- for Korean language
         <record model="party.address.format" id="address_format_kr_ko">
-            <field name="country" ref="country.kr"/>
-            <field name="language" ref="ir.lang_ko"/>
+            <field name="country_code">KR</field>
+            <field name="language_code">ko</field>
             <field name="format_">${COUNTRY}
 ${street}
 ${party_name}
 ${zip}</field>
         </record>
-        -->
 
         <record model="party.address.format" id="address_format_kr">
-            <field name="country" ref="country.kr"/>
+            <field name="country_code">KR</field>
             <field name="format_">${party_name}
 ${street}
 ${city}, ${subdivision} ${zip}
@@ -408,7 +404,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_lv">
-            <field name="country" ref="country.lv"/>
+            <field name="country_code">LV</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -418,8 +414,8 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_mo_zh_CN">
-            <field name="country" ref="country.mo"/>
-            <field name="language" ref="ir.lang_zh_CN"/>
+            <field name="country_code">MO</field>
+            <field name="language_code">zh</field>
             <field name="format_">${COUNTRY}
 ${city}
 ${street}
@@ -427,7 +423,7 @@ ${party_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_mo">
-            <field name="country" ref="country.mo"/>
+            <field name="country_code">MO</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -435,7 +431,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_my">
-            <field name="country" ref="country.my"/>
+            <field name="country_code">MY</field>
             <field name="format_">${attn}
 ${party_name}
 ${name}
@@ -446,7 +442,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_mx">
-            <field name="country" ref="country.mx"/>
+            <field name="country_code">MX</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
@@ -456,7 +452,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_nl">
-            <field name="country" ref="country.nl"/>
+            <field name="country_code">NL</field>
             <field name="format_">${party_name}
 ${attn}
 ${name}
@@ -466,7 +462,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_nz">
-            <field name="country" ref="country.nz"/>
+            <field name="country_code">NZ</field>
             <field name="format_">${party_name}
 ${street}
 ${city} ${zip}
@@ -474,7 +470,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_no">
-            <field name="country" ref="country.no"/>
+            <field name="country_code">NO</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${CITY}
@@ -482,7 +478,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_om">
-            <field name="country" ref="country.om"/>
+            <field name="country_code">OM</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -490,7 +486,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_pk">
-            <field name="country" ref="country.pk"/>
+            <field name="country_code">PK</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -500,7 +496,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_pe">
-            <field name="country" ref="country.pe"/>
+            <field name="country_code">PE</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -510,7 +506,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ph">
-            <field name="country" ref="country.ph"/>
+            <field name="country_code">PH</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${CITY}
@@ -518,7 +514,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_pl">
-            <field name="country" ref="country.pl"/>
+            <field name="country_code">PL</field>
             <field name="format_">${attn} ${party_name}
 ${street}
 ${zip} ${city}
@@ -526,7 +522,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_pt">
-            <field name="country" ref="country.pt"/>
+            <field name="country_code">PT</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -534,7 +530,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_qa">
-            <field name="country" ref="country.qa"/>
+            <field name="country_code">QA</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -542,7 +538,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ro">
-            <field name="country" ref="country.ro"/>
+            <field name="country_code">RO</field>
             <field name="format_">${attn} ${party_name}
 ${street}
 ${city}
@@ -551,7 +547,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ru">
-            <field name="country" ref="country.ru"/>
+            <field name="country_code">RU</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -561,7 +557,7 @@ ${zip}</field>
         </record>
 
         <record model="party.address.format" id="address_format_sa">
-            <field name="country" ref="country.sa"/>
+            <field name="country_code">SA</field>
             <field name="format_">${party_name}
 ${street}
 ${city} ${zip}
@@ -569,7 +565,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_rs">
-            <field name="country" ref="country.rs"/>
+            <field name="country_code">RS</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -577,7 +573,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_sg">
-            <field name="country" ref="country.sg"/>
+            <field name="country_code">SG</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -586,7 +582,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_sk">
-            <field name="country" ref="country.sk"/>
+            <field name="country_code">SK</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
@@ -595,7 +591,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_sl">
-            <field name="country" ref="country.sl"/>
+            <field name="country_code">SL</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
@@ -604,7 +600,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_es">
-            <field name="country" ref="country.es"/>
+            <field name="country_code">ES</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -613,7 +609,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_lk">
-            <field name="country" ref="country.lk"/>
+            <field name="country_code">LK</field>
             <field name="format_">${party_name}
 ${street}
 ${CITY}
@@ -622,7 +618,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_se">
-            <field name="country" ref="country.se"/>
+            <field name="country_code">SE</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -630,7 +626,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ch">
-            <field name="country" ref="country.ch"/>
+            <field name="country_code">CH</field>
             <field name="format_">${party_name}
 ${street}
 ${zip} ${city}
@@ -638,8 +634,8 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tw_zh_CN">
-            <field name="country" ref="country.tw"/>
-            <field name="language" ref="ir.lang_zh_CN"/>
+            <field name="country_code">TW</field>
+            <field name="language_code">zh</field>
             <field name="format_">${COUNTRY}
 ${zip}
 ${street}
@@ -647,7 +643,7 @@ ${party_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tw">
-            <field name="country" ref="country.tw"/>
+            <field name="country_code">TW</field>
             <field name="format_">${party_name}
 ${street}
 ${city}, ${subdivision} ${zip}
@@ -655,7 +651,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_th">
-            <field name="country" ref="country.th"/>
+            <field name="country_code">TH</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
@@ -665,7 +661,7 @@ ${zip}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tr">
-            <field name="country" ref="country.tr"/>
+            <field name="country_code">TR</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
@@ -675,7 +671,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_ua">
-            <field name="country" ref="country.ua"/>
+            <field name="country_code">UA</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
@@ -685,7 +681,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_gb">
-            <field name="country" ref="country.gb"/>
+            <field name="country_code">GB</field>
             <field name="format_">${party_name}
 ${street}
 ${CITY}
@@ -694,7 +690,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_us">
-            <field name="country" ref="country.us"/>
+            <field name="country_code">US</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
@@ -703,7 +699,7 @@ ${COUNTRY}</field>
         </record>
 
         <record model="party.address.format" id="address_format_vn">
-            <field name="country" ref="country.vn"/>
+            <field name="country_code">VN</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
