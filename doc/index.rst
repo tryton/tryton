@@ -21,3 +21,11 @@ Rate
 A rate is defined by a date and a numeric value. The date gives the
 time from which this rate is correct. All rates are defined implicitly
 with respect to the same currency (the one whose rate is 1).
+
+Scripts
+*******
+
+There is a scripts:
+
+    * `trytond_import_currencies` to create and update currencies from the ISO
+      database.

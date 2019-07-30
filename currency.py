@@ -51,6 +51,11 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Data = pool.get('ir.model.data')
+        data = Data.__table__()
+        cursor = Transaction().connection.cursor()
+
         super(Currency, cls).__register__(module_name)
 
         table_h = cls.__table_handler__(module_name)
@@ -60,6 +65,10 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
                 'mon_grouping', 'mon_decimal_point',
                 'p_sign_posn', 'n_sign_posn']:
             table_h.not_null_action(col, 'remove')
+
+        # Migration from 5.2: remove country data
+        cursor.execute(*data.delete(where=(data.module == 'currency')
+                & (data.model == cls.__name__)))
 
     @staticmethod
     def default_rounding():

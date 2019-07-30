@@ -99,14 +99,4 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-
-    <data noupdate="1" skiptest="1">
-        <!--- Default rate -->
-        <record model="currency.currency.rate" id="eur_rate">
-            <field name="date" eval="time.strftime('%Y-01-01')"/>
-            <field name="rate" eval="Decimal('1.0')"/>
-            <field name="currency" ref="eur"/>
-        </record>
-
-    </data>
 </tryton>

@@ -81,6 +81,9 @@ setup(name=name,
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg',
             'tests/*.rst']),
         },
+    scripts=[
+        'scripts/trytond_import_currencies',
+        ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -121,6 +124,10 @@ setup(name=name,
     license='GPL-3',
     python_requires='>=3.5',
     install_requires=requires,
+    extras_require={
+        'data': [
+            'pycountry', 'forex-python', get_require_version('proteus')],
+        },
     dependency_links=dependency_links,
     zip_safe=False,
     entry_points="""
