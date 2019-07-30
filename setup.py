@@ -79,7 +79,10 @@ setup(name=name,
         'trytond.modules.country': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
         },
-    scripts=['scripts/trytond_import_zip'],
+    scripts=[
+        'scripts/trytond_import_countries',
+        'scripts/trytond_import_zip',
+        ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -120,6 +123,7 @@ setup(name=name,
     python_requires='>=3.5',
     install_requires=requires,
     extras_require={
+        'data': ['pycountry', get_require_version('proteus')],
         'GeoNames': [get_require_version('proteus')],
         },
     dependency_links=dependency_links,

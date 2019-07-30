@@ -24,3 +24,13 @@ Zip
 ***
 
 A zip links a zip code of a country to a city.
+
+Scripts
+*******
+
+There are two scripts:
+
+* `trytond_import_countries` to create and update countries and
+  subdivisions from the ISO database.
+
+* `trytond_import_zip` to create zips by country from the geonames database.

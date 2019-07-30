@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
+from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 from trytond.tools import lstrip_wildcard
 
 __all__ = ['Country', 'Subdivision', 'Zip']
@@ -28,6 +30,11 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        Data = pool.get('ir.model.data')
+        data = Data.__table__()
+        cursor = Transaction().connection.cursor()
+
         super(Country, cls).__register__(module_name)
 
         table = cls.__table_handler__(module_name)
@@ -38,6 +45,10 @@ class Country(DeactivableMixin, ModelSQL, ModelView):
 
         # Migration from 3.8: remove required on code
         table.not_null_action('code', 'remove')
+
+        # Migration from 5.2: remove country data
+        cursor.execute(*data.delete(where=(data.module == 'country')
+                & (data.model == cls.__name__)))
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -200,6 +211,19 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(Subdivision, cls).__setup__()
         cls._order.insert(0, ('code', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Data = pool.get('ir.model.data')
+        data = Data.__table__()
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module_name)
+
+        # Migration from 5.2: remove country data
+        cursor.execute(*data.delete(where=(data.module == 'country')
+                & (data.model == cls.__name__)))
 
     @classmethod
     def search_rec_name(cls, name, clause):
