@@ -1216,7 +1216,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             payment_acccount = 'debit_account'
         else:
             payment_acccount = 'credit_account'
-        line2.account = getattr(payment_method, payment_acccount)
+        line2.account = getattr(payment_method, payment_acccount).current(
+            date=date)
 
         for line in lines:
             if line.account.party_required:
