@@ -399,25 +399,29 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if len(payment_terms) == 1:
             return payment_terms[0].id
 
+    @fields.depends('party', 'type')
+    def on_change_with_payment_term(self):
+        payment_term = None
+        if self.party:
+            if self.type == 'out':
+                payment_term = self.party.customer_payment_term
+            elif self.type == 'in':
+                payment_term = self.party.supplier_payment_term
+        return payment_term.id if payment_term else None
+
     @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
-    def _get_account_payment_term(self):
-        '''
-        Return default account and payment term
-        '''
-        self.account = None
+    def on_change_with_account(self):
+        account = None
         if self.party:
             with Transaction().set_context(
                     date=self.accounting_date or self.invoice_date):
                 if self.type == 'out':
-                    self.account = self.party.account_receivable_used
-                    if self.party.customer_payment_term:
-                        self.payment_term = self.party.customer_payment_term
+                    account = self.party.account_receivable_used
                 elif self.type == 'in':
-                    self.account = self.party.account_payable_used
-                    if self.party.supplier_payment_term:
-                        self.payment_term = self.party.supplier_payment_term
+                    account = self.party.account_payable_used
+        return account.id if account else None
 
-    @fields.depends('type', methods=['_get_account_payment_term'])
+    @fields.depends('type')
     def on_change_type(self):
         Journal = Pool().get('account.journal')
         journals = Journal.search([
@@ -426,13 +430,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ], limit=1)
         if journals:
             self.journal, = journals
-        self._get_account_payment_term()
 
-    @fields.depends('party', methods=['_get_account_payment_term'])
+    @fields.depends('party')
     def on_change_party(self):
         self.invoice_address = None
-        self._get_account_payment_term()
-
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             self.party_tax_identifier = self.party.tax_identifier
