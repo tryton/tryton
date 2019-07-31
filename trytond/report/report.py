@@ -7,6 +7,7 @@ import subprocess
 import tempfile
 import warnings
 import zipfile
+import operator
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from io import BytesIO
@@ -245,6 +246,7 @@ class Report(URLMixin, PoolBase):
         report_context['records'] = records
         report_context['record'] = records[0] if records else None
         report_context['format_date'] = cls.format_date
+        report_context['format_timedelta'] = cls.format_timedelta
         report_context['format_currency'] = cls.format_currency
         report_context['format_number'] = cls.format_number
         report_context['datetime'] = datetime
@@ -338,6 +340,51 @@ class Report(URLMixin, PoolBase):
         if lang is None:
             lang = Lang.get()
         return lang.strftime(value, format=format)
+
+    @classmethod
+    def format_timedelta(cls, value, converter=None, lang=None,
+            skip_zeros=False):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if lang is None:
+            lang = Lang.get()
+        if converter is None:
+            converter = {
+                's': 1,
+                }
+            converter['m'] = converter['s'] * 60
+            converter['h'] = converter['m'] * 60
+            converter['d'] = converter['h'] * 24
+            converter['w'] = converter['d'] * 7
+            converter['M'] = converter['d'] * 30
+            converter['Y'] = converter['d'] * 365
+
+        text = []
+        value = value.total_seconds()
+        sign = '-' if value < 0 else ''
+        value = abs(value)
+        converter = sorted(
+            converter.items(), key=operator.itemgetter(1), reverse=True)
+        values = []
+        for k, v in converter:
+            part, value = divmod(value, v)
+            values.append(part)
+
+        for (k, _), v in zip(converter[:-3], values):
+            if v:
+                text.append(lang.format('%d', v, True) + k)
+        if not skip_zeros:
+            time = '%02d:%02d' % tuple(values[-3:-1])
+            if values[-1] or value:
+                time += ':%02d' % values[-1]
+            text.append(time)
+        text = sign + ' '.join(text)
+        if value:
+            if not any(values[-3:]):
+                # Add space if no time
+                text += ' '
+            text += ('%.6f' % value)[1:]
+        return text
 
     @classmethod
     def format_currency(cls, value, lang, currency, symbol=True,
