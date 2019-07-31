@@ -11,7 +11,7 @@ class Trigger(metaclass=PoolMeta):
     __name__ = 'ir.trigger'
 
     _required = ((Eval('action_function') == 'trigger')
-        & (Eval('action_model_name' == 'notification.email')))
+        & (Eval('action_model_name') == 'notification.email'))
 
     notification_email = fields.Many2One(
         'notification.email', "Email Notification", readonly=True,
