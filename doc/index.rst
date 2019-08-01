@@ -17,7 +17,7 @@ additional security, the Stripe's requests signature can be verified if the
 webhook `signing secret`_ is set on the Account.
 
 .. _webhooks: https://stripe.com/docs/webhooks
-.. _`endpoint secret`: https://stripe.com/docs/webhooks#signatures
+.. _`signing secret`: https://stripe.com/docs/webhooks/signatures
 
 Customer
 ********
