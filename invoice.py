@@ -228,6 +228,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         file_id=file_id, store_prefix=store_prefix)
     invoice_report_cache_id = fields.Char('Invoice Report ID', readonly=True)
     invoice_report_format = fields.Char('Invoice Report Format', readonly=True)
+    allow_cancel = fields.Function(
+        fields.Boolean("Allow Cancel Invoice"), 'get_allow_cancel')
 
     @classmethod
     def __setup__(cls):
@@ -257,10 +259,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': (~Eval('state').in_(['draft', 'validated'])
-                        & ~((Eval('state') == 'posted')
-                            & (Eval('type') == 'in'))),
-                    'depends': ['state', 'type'],
+                    'invisible': ~Eval('allow_cancel', False),
+                    'depends': ['allow_cancel'],
                     },
                 'draft': {
                     'invisible': (~Eval('state').in_(['cancel', 'validated'])
@@ -808,6 +808,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             having=Operator(Coalesce(Sum(tax.amount), 0).cast(type_name),
                 value))
         return [('id', 'in', query)]
+
+    def get_allow_cancel(self, name):
+        if self.state in {'draft', 'validated'}:
+            return True
+        if self.state == 'posted':
+            return self.type == 'in' or self.company.cancel_invoice_out
+        return False
 
     @property
     def taxable_lines(self):
