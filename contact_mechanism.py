@@ -118,7 +118,7 @@ class ContactMechanism(
             return 'callto:%s' % value
         elif self.type == 'sip':
             return 'sip:%s' % value
-        elif self.type == 'phone':
+        elif self.type in {'phone', 'mobile'}:
             return 'tel:%s' % value
         elif self.type == 'fax':
             return 'fax:%s' % value
