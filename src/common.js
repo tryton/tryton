@@ -1481,14 +1481,13 @@
             var _group = function(parts) {
                 var result = [];
                 var push_result = function(part) {
-                    result.push([part]);
+                    var clause = [part];
+                    clause.clause = true;
+                    result.push(clause);
                 };
                 var i = parts.indexOf(':');
                 if (!~i) {
                     parts.forEach(push_result);
-                    result.forEach(function (e) {
-                        e.clause = true;
-                    });
                     return result;
                 }
                 var sub_group = function(name, lvalue) {
