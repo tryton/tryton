@@ -1474,6 +1474,8 @@ def test_group():
     assert rlist(dom.group(udlex('Name: "John Doe"'))) == [
         ('Name', None, 'John Doe'),
         ]
+    assert rlist(dom.group(udlex('Doe Name: John'))) == [
+        ('Doe',), ('Name', None, 'John')]
     assert rlist(dom.group(udlex('Name: =Doe'))) == [('Name', '=', 'Doe')]
     assert rlist(dom.group(udlex('Name: =Doe Name: >John'))) == [
         ('Name', '=', 'Doe'),
