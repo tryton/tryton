@@ -201,8 +201,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                             change_with = props.get('selection_change_with')
                             if change_with:
                                 selection = getattr(
-                                    Relation, props['selection'])(
-                                        dict((p, None) for p in change_with))
+                                    Relation(), props['selection'])()
                             else:
                                 selection = getattr(
                                     Relation, props['selection'])()
