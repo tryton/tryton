@@ -898,15 +898,18 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             for tax in group_taxes:
                 start_date = tax.start_date or datetime.date.min
                 end_date = tax.end_date or datetime.date.max
+                values = []
                 if not (start_date <= date <= end_date):
                     continue
                 if tax.type != 'none':
-                    value = tax._process_tax(price_unit)
-                    res.append(value)
-                    if tax.update_unit_price:
-                        unit_price_variation += value['amount']
+                    values.append(tax._process_tax(price_unit))
                 if len(tax.childs):
-                    res.extend(cls._unit_compute(tax.childs, price_unit, date))
+                    values.extend(
+                        cls._unit_compute(tax.childs, price_unit, date))
+                if tax.update_unit_price:
+                    for value in values:
+                        unit_price_variation += value['amount']
+                res.extend(values)
             price_unit += unit_price_variation
         return res
 

@@ -884,6 +884,59 @@ class AccountTestCase(ModuleTestCase):
                 Decimal(100))
 
     @with_transaction()
+    def test_tax_compute_with_children_update_unit_price(self):
+        "Test tax compute with children taxes modifying unit_price"
+        pool = Pool()
+        Account = pool.get('account.account')
+        Tax = pool.get('account.tax')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company)
+
+            tax_account, = Account.search([
+                    ('name', '=', 'Main Tax'),
+                    ])
+
+            tax1 = Tax()
+            tax1.name = tax1.description = "Tax 1"
+            tax1.type = 'none'
+            tax1.update_unit_price = True
+            tax1.sequence = 1
+            tax1.save()
+            child1 = Tax()
+            child1.name = child1.description = "Child 1"
+            child1.type = 'percentage'
+            child1.rate = Decimal('0.1')
+            child1.invoice_account = tax_account
+            child1.credit_note_account = tax_account
+            child1.parent = tax1
+            child1.save()
+
+            tax2 = Tax()
+            tax2.name = tax2.description = "Tax 2"
+            tax2.type = 'fixed'
+            tax2.amount = Decimal('10')
+            tax2.invoice_account = tax_account
+            tax2.credit_note_account = tax_account
+            tax2.sequence = 2
+            tax2.save()
+
+            self.assertEqual(
+                Tax.compute([tax1, tax2], Decimal(100), 2), [{
+                        'base': Decimal(200),
+                        'amount': Decimal(20),
+                        'tax': child1,
+                        }, {
+                        'base': Decimal('220'),
+                        'amount': Decimal('20'),
+                        'tax': tax2,
+                        }])
+            self.assertEqual(
+                Tax.reverse_compute(Decimal('120'), [tax1, tax2]),
+                Decimal('100'))
+
+    @with_transaction()
     def test_receivable_payable(self):
         'Test party receivable payable'
         pool = Pool()
