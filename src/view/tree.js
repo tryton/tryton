@@ -1389,11 +1389,12 @@
             var current_td, selector, next_column, next_idx, i, next_row;
             var states;
 
-            if ((event_.which != Sao.common.TAB_KEYCODE) &&
+            if (((event_.which != Sao.common.TAB_KEYCODE) &&
                     (event_.which != Sao.common.UP_KEYCODE) &&
                     (event_.which != Sao.common.DOWN_KEYCODE) &&
                     (event_.which != Sao.common.ESC_KEYCODE) &&
-                    (event_.which != Sao.common.RETURN_KEYCODE)) {
+                    (event_.which != Sao.common.RETURN_KEYCODE)) ||
+                jQuery(event_.currentTarget).find('.dropdown-menu').length) {
                 return;
             }
             var td = this._get_column_td(this.edited_column);

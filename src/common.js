@@ -3236,6 +3236,7 @@
                 } else if (evt.which == Sao.common.DOWN_KEYCODE) {
                     if (this.dropdown.hasClass('open')) {
                         evt.preventDefault();
+                        evt.stopPropagation();
                         this.menu.find('li > a').first().focus();
                     }
                 }
