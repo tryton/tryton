@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from decimal import Decimal, ROUND_HALF_EVEN
+from decimal import Decimal, ROUND_HALF_EVEN, localcontext
 
 from sql import Window
 from sql.functions import NthValue
@@ -136,8 +136,12 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
 
     def round(self, amount, rounding=ROUND_HALF_EVEN):
         'Round the amount depending of the currency'
-        return (amount / self.rounding).quantize(Decimal('1.'),
-                rounding=rounding) * self.rounding
+        with localcontext() as ctx:
+            ctx.prec = max(ctx.prec, (amount / self.rounding).adjusted() + 1)
+            # Divide and multiple by rounding for case rounding is not 10En
+            result = (amount / self.rounding).quantize(Decimal('1.'),
+                    rounding=rounding) * self.rounding
+        return Decimal(result)
 
     def is_zero(self, amount):
         'Return True if the amount can be considered as zero for the currency'
