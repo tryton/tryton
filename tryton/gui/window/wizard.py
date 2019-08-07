@@ -28,7 +28,7 @@ class Wizard(InfoBar):
         super(Wizard, self).__init__()
         self.widget = Gtk.VBox(spacing=3)
         self.widget.show()
-        self.name = name or ''
+        self.name = name or _('Wizard')
         self.id = None
         self.ids = None
         self.action = None
@@ -299,8 +299,6 @@ class WizardForm(Wizard, TabContent, SignalEvent):
 class WizardDialog(Wizard, NoModal):
 
     def __init__(self, name=''):
-        if not name:
-            name = _('Wizard')
         Wizard.__init__(self, name=name)
         NoModal.__init__(self)
         self.dia = Gtk.Dialog(
