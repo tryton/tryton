@@ -263,9 +263,11 @@ class Move(metaclass=PoolMeta):
                     item = getattr(join, pos)
                     if isinstance(item, Table):
                         if item._name == cls._table:
-                            return join, pos, getattr(join, pos)
+                            return join, pos, item
                     else:
-                        return find_table(item)
+                        found = find_table(item)
+                        if found:
+                            return found
 
             def find_queries(query):
                 if isinstance(query, Union):
@@ -276,6 +278,11 @@ class Move(metaclass=PoolMeta):
                     yield query
                     for table in query.from_:
                         for q in find_queries(table):
+                            yield q
+                elif isinstance(query, Join):
+                    for pos in ['left', 'right']:
+                        item = getattr(query, pos)
+                        for q in find_queries(item):
                             yield q
 
             def add_join(from_, lot):
@@ -298,9 +305,13 @@ class Move(metaclass=PoolMeta):
             for sub_query in find_queries(union):
                 lot = Lot.__table__()
                 if add_join(sub_query.from_, lot):
-                    sub_query.where &= (
+                    clause = (
                         (lot.shelf_life_expiration_date == Null)
                         | (lot.shelf_life_expiration_date >= expiration_date))
+                    if sub_query.where:
+                        sub_query.where &= clause
+                    else:
+                        sub_query.where = clause
 
             stock_date_start = context.get('stock_date_start')
             if stock_date_start:
@@ -315,11 +326,15 @@ class Move(metaclass=PoolMeta):
                         lot = Lot.__table__()
                         if add_join(sub_query.from_, lot):
                             # only lot expiring during the period
-                            sub_query.where &= (
+                            clause = (
                                 (lot.shelf_life_expiration_date >=
                                     stock_date_start)
                                 & (lot.shelf_life_expiration_date <
                                     stock_date_end))
+                            if sub_query.where:
+                                sub_query.where &= clause
+                            else:
+                                sub_query.where = clause
                         # Inverse quantity
                         for column in sub_query._columns:
                             if (isinstance(column, As)
