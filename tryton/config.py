@@ -58,7 +58,7 @@ class ConfigManager(object):
             'icon.colors': '#3465a4,#555753,#cc0000',
             'image.max_size': 10 ** 6,
             'bug.url': 'https://bugs.tryton.org/',
-            'download.url': 'https://downloads.tryton.org/',
+            'download.url': 'https://downloads-cdn.tryton.org/',
             'download.frequency': 60 * 60 * 8,
             'menu.pane': 200,
         }
