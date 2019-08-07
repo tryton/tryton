@@ -1080,6 +1080,7 @@
             c(['Doe'])
             ]],
         ['Name: "John Doe"', [c(['Name', null, 'John Doe'])]],
+        ['Doe Name: John', [c(['Doe']), c(['Name', null, 'John'])]],
         ['Name: =Doe', [['Name', '=', 'Doe']]],
         ['Name: =Doe Name: >John', [
             c(['Name', '=', 'Doe']),
