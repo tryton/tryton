@@ -2068,8 +2068,8 @@
             this.tree_states_done.push(view);
             return state_prm.done(function(state) {
                 var expanded_nodes, selected_nodes, record;
-                expanded_nodes = state[1];
-                selected_nodes = state[2];
+                expanded_nodes = state[0];
+                selected_nodes = state[1];
                 if (view.view_type == 'tree') {
                     return view.display(selected_nodes, expanded_nodes);
                 } else {
