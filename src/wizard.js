@@ -8,7 +8,7 @@
             this.widget = jQuery('<div/>', {
                 'class': 'wizard'
             });
-            this.name = name || '';
+            this.name = name || Sao.i18n.gettext('Wizard');
             this.action_id = null;
             this.id = null;
             this.ids = null;
@@ -171,7 +171,7 @@
             this.header.append(jQuery('<h4/>', {
                 'class': 'model-title',
                 'title': this.name,
-            }).append(Sao.common.ellipsize(this.name, 20)));
+            }).append(Sao.common.ellipsize(this.name, 80)));
             this.widget.append(this.screen.screen_container.el);
         }
     });
@@ -190,9 +190,8 @@
 
     Sao.Wizard.Form = Sao.class_(Sao.Wizard, {
         init: function(name) {
-            Sao.Wizard.Form._super.init.call(this);
+            Sao.Wizard.Form._super.init.call(this, name);
             this.tab = null;  // Filled by Sao.Tab.Wizard
-            this.name = name || '';
 
             this.header = jQuery('<div/>', {
                 'class': 'modal-header',
@@ -241,10 +240,7 @@
 
     Sao.Wizard.Dialog = Sao.class_(Sao.Wizard, { // TODO nomodal
         init: function(name) {
-            if (!name) {
-                name = Sao.i18n.gettext('Wizard');
-            }
-            Sao.Wizard.Dialog._super.init.call(this);
+            Sao.Wizard.Dialog._super.init.call(this, name);
             var dialog = new Sao.Dialog(name, 'wizard-dialog', 'md', false);
             this.dialog = dialog.modal;
             this.header = dialog.header;
