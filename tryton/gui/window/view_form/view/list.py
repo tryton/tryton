@@ -462,7 +462,6 @@ class ViewTree(View):
             column.set_sizing(Gtk.TreeViewColumnSizing.FIXED)
             self.treeview.append_column(column)
 
-        self.treeview.set_property('rules-hint', True)
         self.treeview.set_property('enable-grid-lines', grid_lines)
         self.treeview.set_fixed_height_mode(
             all(c.get_sizing() == Gtk.TreeViewColumnSizing.FIXED
