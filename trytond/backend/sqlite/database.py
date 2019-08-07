@@ -140,6 +140,50 @@ def now():
 _nows = WeakKeyDictionary()
 
 
+def to_char(value, format):
+    try:
+        value = datetime.datetime.strptime(value, '%Y-%m-%d %H:%M:%S.%f')
+    except ValueError:
+        try:
+            value = datetime.datetime.strptime(value, '%Y-%m-%d').date()
+        except ValueError:
+            pass
+    if isinstance(value, datetime.date):
+        # Convert SQL pattern into compatible Python
+        return value.strftime(format
+            .replace('%', '%%')
+            .replace('HH12', '%I')
+            .replace('HH24', '%H')
+            .replace('HH', '%I')
+            .replace('MI', '%M')
+            .replace('SS', '%S')
+            .replace('US', '%f')
+            .replace('AM', '%p')
+            .replace('A.M.', '%p')
+            .replace('PM', '%p')
+            .replace('P.M.', '%p')
+            .replace('am', '%p')
+            .replace('a.m.', '%p')
+            .replace('pm', '%p')
+            .replace('p.m.', '%p')
+            .replace('YYYY', '%Y')
+            .replace('YY', '%y')
+            .replace('Month', '%B')
+            .replace('Mon', '%b')
+            .replace('MM', '%m')
+            .replace('Day', '%A')
+            .replace('Dy', '%a')
+            .replace('DDD', '%j')
+            .replace('DD', '%d')
+            .replace('D', '%w')
+            .replace('TZ', '%Z')
+            )
+    elif isinstance(value, datetime.timedelta):
+        raise NotImplementedError
+    else:
+        raise NotImplementedError
+
+
 class SQLiteSubstring(Function):
     __slots__ = ()
     _function = 'SUBSTR'
@@ -290,6 +334,7 @@ class Database(DatabaseInterface):
         self._conn.create_function('date_trunc', 2, date_trunc)
         self._conn.create_function('split_part', 3, split_part)
         self._conn.create_function('position', 2, SQLitePosition.position)
+        self._conn.create_function('to_char', 2, to_char)
         self._conn.create_function('overlay', 3, SQLiteOverlay.overlay)
         self._conn.create_function('overlay', 4, SQLiteOverlay.overlay)
         if sqlite.sqlite_version_info < (3, 3, 14):

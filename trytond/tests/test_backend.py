@@ -1,9 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime
 import unittest
 
 from sql import Select
-from sql.functions import CurrentTimestamp
+from sql.functions import CurrentTimestamp, ToChar
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -58,6 +59,30 @@ class BackendTestCase(unittest.TestCase):
             second, = cursor.fetchone()
 
         self.assertNotEqual(current, second)
+
+    @with_transaction()
+    def test_to_char_datetime(self):
+        "Test TO_CHAR with datetime"
+        now = datetime.datetime.now()
+        query = Select([ToChar(now, 'YYYYMMDD HH24:MI:SS.US')])
+        cursor = Transaction().connection.cursor()
+
+        cursor.execute(*query)
+        text, = cursor.fetchone()
+
+        self.assertEqual(text, now.strftime('%Y%m%d %H:%M:%S.%f'))
+
+    @with_transaction()
+    def test_to_char_date(self):
+        "Test TO_CHAR with date"
+        today = datetime.date.today()
+        query = Select([ToChar(today, 'YYYY-MM-DD')])
+        cursor = Transaction().connection.cursor()
+
+        cursor.execute(*query)
+        text, = cursor.fetchone()
+
+        self.assertEqual(text, today.strftime('%Y-%m-%d'))
 
 
 def suite():
