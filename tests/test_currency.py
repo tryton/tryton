@@ -87,6 +87,39 @@ class CurrencyTestCase(ModuleTestCase):
                 })
 
     @with_transaction()
+    def test_round(self):
+        "Test simple round"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('0.001')
+        cu.digits = 3
+        cu.save()
+
+        rounded = cu.round(Decimal('1.2345678'))
+
+        self.assertEqual(rounded, Decimal('1.235'))
+
+    @with_transaction()
+    def test_round_non_unity(self):
+        "Test round with non unity"
+        cu = create_currency('cu')
+        cu.rounding = Decimal('0.02')
+        cu.digits = 2
+        cu.save()
+
+        rounded = cu.round(Decimal('1.2345'))
+
+        self.assertEqual(rounded, Decimal('1.24'))
+
+    @with_transaction()
+    def test_round_big_number(self):
+        "Test rounding big number"
+        cu = create_currency('cu')
+
+        rounded = cu.round(Decimal('1E50'))
+
+        self.assertEqual(rounded, Decimal('1E50'))
+
+    @with_transaction()
     def test_compute_simple(self):
         'Simple conversion'
         pool = Pool()
