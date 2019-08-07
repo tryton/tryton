@@ -1058,8 +1058,11 @@
             this.set_selection(Sao.common.contains(selected, row_id_path));
             if (this.children_field) {
                 this.record.load(this.children_field).done(function() {
+                    var children = this.record.field_get_client(
+                        this.children_field);
                     if (this.is_expanded() ||
-                        Sao.common.contains(expanded, row_id_path)) {
+                        Sao.common.contains(expanded, row_id_path) &&
+                        !jQuery.isEmptyObject(children)) {
                         this.expander.css('visibility', 'visible');
                         this.tree.expanded[this.path] = this;
                         this.expand_children(selected, expanded);
