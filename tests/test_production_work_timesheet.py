@@ -6,7 +6,8 @@ import unittest
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, create_employee)
 
 
 class ProductionWorkTimesheetTestCase(ModuleTestCase):
@@ -86,18 +87,13 @@ class ProductionWorkTimesheetTestCase(ModuleTestCase):
         'Test timesheet_lines'
         pool = Pool()
         TimesheetLine = pool.get('timesheet.line')
-        Party = pool.get('party.party')
-        Employee = pool.get('company.employee')
 
         company = create_company()
         with set_company(company):
             work = self.create_work()
             work.save()
 
-            party = Party()
-            party.save()
-            employee = Employee(party=party)
-            employee.save()
+            employee = create_employee(company)
 
             timesheet_line = TimesheetLine(
                 employee=employee,
