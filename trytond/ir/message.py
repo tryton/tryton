@@ -42,3 +42,7 @@ class Message(ModelSQL, ModelView):
     def delete(cls, messages):
         super(Message, cls).delete(messages)
         cls._message_cache.clear()
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('text',) + tuple(clause[1:])]
