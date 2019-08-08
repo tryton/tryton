@@ -8,7 +8,8 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, create_employee)
 
 
 class TimesheetCostTestCase(ModuleTestCase):
@@ -20,7 +21,6 @@ class TimesheetCostTestCase(ModuleTestCase):
         'Test compute_cost_price'
         pool = Pool()
         Party = pool.get('party.party')
-        Employee = pool.get('company.employee')
         EmployeeCostPrice = pool.get('company.employee_cost_price')
 
         cost_prices = [
@@ -41,8 +41,7 @@ class TimesheetCostTestCase(ModuleTestCase):
         party.save()
         company = create_company()
         with set_company(company):
-            employee = Employee(party=party.id, company=company)
-            employee.save()
+            employee = create_employee(company)
             for date, cost_price in cost_prices:
                 EmployeeCostPrice(
                     employee=employee,
