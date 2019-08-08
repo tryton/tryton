@@ -3,8 +3,9 @@
 
 try:
     from trytond.modules.company.tests.test_company import (
-        suite, create_company, set_company)
+        suite, create_company, set_company, create_employee)
 except ImportError:
-    from .test_company import suite, create_company, set_company
+    from .test_company import (
+        suite, create_company, set_company, create_employee)
 
-__all__ = ['suite', 'create_company', 'set_company']
+__all__ = ['suite', 'create_company', 'set_company', 'create_employee']
