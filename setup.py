@@ -77,7 +77,7 @@ setup(name=name,
     packages=find_packages(exclude=['*.modules.*', 'modules.*', 'modules',
             '*.proteus.*', 'proteus.*', 'proteus']),
     package_data={
-        'trytond': ['ir/ui/icons/*.svg'],
+        'trytond': ['ir/ui/icons/*.svg', '*.rnc', '*.rng'],
         'trytond.backend.postgresql': ['init.sql'],
         'trytond.backend.sqlite': ['init.sql'],
         'trytond.ir': ['tryton.cfg', '*.xml', 'view/*.xml', 'locale/*.po'],
