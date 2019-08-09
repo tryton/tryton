@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data group="1">
+    <data grouped="1">
         <record model="ir.message" id="msg_change_purchase_uom">
             <field name="text">You are trying to change the purchase UoM on which the purchase prices are based.</field>
         </record>
