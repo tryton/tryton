@@ -48,10 +48,12 @@
     </optional>
   </define>
   <define name="attlist.data" combine="interleave">
-    <attribute>
-      <name ns="">depends</name>
-      <text/>
-    </attribute>
+    <optional>
+      <attribute>
+        <name ns="">depends</name>
+        <text/>
+      </attribute>
+    </optional>
   </define>
   <define name="record">
     <element>
@@ -138,6 +140,14 @@
       <attribute>
         <name ns="">type</name>
         <value>xml</value>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">depends</name>
+        <text/>
       </attribute>
     </optional>
   </define>

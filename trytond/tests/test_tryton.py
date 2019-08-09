@@ -9,6 +9,7 @@ import subprocess
 import sys
 import time
 import unittest
+from configparser import ConfigParser
 from functools import reduce
 from functools import wraps
 from itertools import chain
@@ -24,7 +25,7 @@ from trytond.pool import Pool, isregisteredby
 from trytond import backend
 from trytond.model import Workflow, ModelSQL, ModelSingleton, ModelView, fields
 from trytond.model.fields import get_eval_fields, Function
-from trytond.tools import is_instance_method
+from trytond.tools import is_instance_method, file_open
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.config import config, parse_uri
@@ -632,6 +633,24 @@ class ModuleTestCase(unittest.TestCase):
                         'model': mname,
                         'keys': set(states) - keys,
                         })
+
+    @with_transaction()
+    def test_xml_files(self):
+        "Test validity of the xml files of the module"
+        config = ConfigParser()
+        with file_open('%s/tryton.cfg' % self.module,
+                subdir='modules', mode='r', encoding='utf-8') as fp:
+            config.read_file(fp)
+        if not config.has_option('tryton', 'xml'):
+            return
+        with file_open('tryton.rng', subdir='', mode='rb') as fp:
+            rng = etree.parse(fp)
+        validator = etree.RelaxNG(etree=rng)
+        for xml_file in filter(None, config.get('tryton', 'xml').splitlines()):
+            with file_open('%s/%s' % (self.module, xml_file),
+                    subdir='modules', mode='rb') as fp:
+                tree = etree.parse(fp)
+            validator.assertValid(tree)
 
 
 def db_exist(name=DB_NAME):
