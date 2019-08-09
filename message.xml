@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data group="1">
+    <data grouped="1">
         <record model="ir.message" id="msg_work_company_different_origin">
             <field name="text">The companies associated with work "%(work)s" and its origin differ.</field>
         </record>
