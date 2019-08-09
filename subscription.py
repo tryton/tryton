@@ -368,7 +368,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
             party=self.party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_receivable,
+            account=self.party.account_receivable_used,
             )
         invoice.on_change_type()
         invoice.payment_term = self.payment_term
