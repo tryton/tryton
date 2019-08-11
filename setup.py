@@ -52,7 +52,8 @@ for dep in info.get('depends', []):
 requires.append(get_require_version('trytond'))
 
 tests_require = [
-    'lxml',
+    'lxml; python_version != "3.4"',
+    'lxml < 4.4; python_version == "3.4"',
     get_require_version('trytond_account_invoice'),
     ]
 dependency_links = []
