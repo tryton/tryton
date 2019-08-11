@@ -47,7 +47,11 @@ if minor_version % 2:
         'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
             name[8:], name, version))
 
-requires = ['lxml', 'python-sql >= 0.4']
+requires = [
+    'lxml; python_version != "3.4"',
+    'lxml < 4.4; python_version == "3.4"',
+    'python-sql >= 0.4',
+    ]
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
