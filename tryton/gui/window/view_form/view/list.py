@@ -260,7 +260,6 @@ class ViewTree(View):
         self.children_field = children_field
         self.sum_widgets = []
         self.sum_box = gtk.HBox()
-        self.reload = False
         if self.attributes.get('editable') and not screen.readonly:
             self.treeview = EditableTreeView(self.attributes['editable'], self)
             grid_lines = gtk.TREE_VIEW_GRID_LINES_BOTH
@@ -1016,10 +1015,10 @@ class ViewTree(View):
     def reset(self):
         pass
 
-    def display(self):
+    def display(self, force=False):
         self.treeview.display_counter += 1
         current_record = self.screen.current_record
-        if (self.reload
+        if (force
                 or not self.treeview.get_model()
                 or (self.screen.group !=
                     self.treeview.get_model().group)):
@@ -1032,7 +1031,6 @@ class ViewTree(View):
                 selection = self.treeview.get_selection()
                 path = current_record.get_index_path(model.group)
                 selection.select_path(path)
-        self.reload = False
         if not current_record:
             selection = self.treeview.get_selection()
             selection.unselect_all()

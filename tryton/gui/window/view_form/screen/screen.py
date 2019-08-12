@@ -385,8 +385,8 @@ class Screen(SignalEvent):
 
     def _group_cleared(self, group, signal):
         for view in self.views:
-            if hasattr(view, 'reload'):
-                view.reload = True
+            if view.view_type == 'tree':
+                view.display(force=True)
 
     def _group_list_changed(self, group, signal):
         for view in self.views:
