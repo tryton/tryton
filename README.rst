@@ -20,7 +20,7 @@ Development
 For development, you have to run instead:
 
     $ npm install
-    $ grunt
+    $ grunt dev
 
 Setup
 -----
