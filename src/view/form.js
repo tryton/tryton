@@ -373,7 +373,7 @@ function eval_pyson(value){
                 var error_els = this.el.find('.has-error');
                 var invalid_fields = record.invalid_fields();
                 for (name in invalid_fields) {
-                    widgets = this.widgets[name];
+                    widgets = this.widgets[name] || [];
                     for (i = 0; i < error_els.length; i++) {
                         error_el = jQuery(error_els[i]);
                         for (j = 0; j < widgets.length; j++) {
