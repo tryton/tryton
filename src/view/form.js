@@ -191,7 +191,6 @@ function eval_pyson(value){
         _parse_paned: function(node, attributes, orientation) {
             var paned = new Sao.common.Paned(orientation);
             // TODO position
-            this.view.containers.push(paned);
             this.container.add(paned, attributes);
             this.parse_child(node, paned);
         },
