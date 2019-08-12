@@ -1250,6 +1250,16 @@
         get readonly() {
             return this.deleted || this.removed || this.exception;
         },
+        get identity() {
+            return JSON.stringify(
+                Object.keys(this._values).reduce(function(values, name) {
+                    var field = this.model.fields[name];
+                    if (field) {
+                        values[name] = field.get(this);
+                    }
+                    return values;
+                }.bind(this), {}));
+        },
         set_field_context: function() {
             for (var name in this.model.fields) {
                 if (!this.model.fields.hasOwnProperty(name)) {
