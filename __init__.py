@@ -10,6 +10,7 @@ from . import stock
 
 def register():
     Pool.register(
+        account.TaxRule,
         account.TaxRuleLineTemplate,
         account.TaxRuleLine,
         module='account_tax_rule_country', type_='model')

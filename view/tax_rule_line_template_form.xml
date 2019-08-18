@@ -5,7 +5,11 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/field[@name='origin_tax']" position="after">
         <label name="from_country"/>
         <field name="from_country"/>
+        <label name="from_subdivision"/>
+        <field name="from_subdivision"/>
         <label name="to_country"/>
         <field name="to_country"/>
+        <label name="to_subdivision"/>
+        <field name="to_subdivision"/>
     </xpath>
 </data>

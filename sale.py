@@ -31,7 +31,7 @@ class SaleLine(metaclass=PoolMeta):
 
         pattern = super(SaleLine, self)._get_tax_rule_pattern()
 
-        from_country, to_country = None, None
+        from_country = from_subdivision = to_country = to_subdivision = None
         if self.id is None or self.id < 0:
             warehouse = self.get_warehouse('warehouse')
             if warehouse:
@@ -40,9 +40,15 @@ class SaleLine(metaclass=PoolMeta):
             warehouse = self.warehouse
         if warehouse and warehouse.address:
             from_country = warehouse.address.country
+            from_subdivision = warehouse.address.subdivision
         if self.sale and self.sale.shipment_address:
             to_country = self.sale.shipment_address.country
+            to_subdivision = self.sale.shipment_address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
+        pattern['from_subdivision'] = (
+            from_subdivision.id if from_subdivision else None)
         pattern['to_country'] = to_country.id if to_country else None
+        pattern['to_subdivision'] = (
+            to_subdivision.id if to_subdivision else None)
         return pattern

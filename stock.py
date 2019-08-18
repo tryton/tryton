@@ -14,18 +14,30 @@ class Move(metaclass=PoolMeta):
 
         pattern = super(Move, self)._get_tax_rule_pattern()
 
-        from_country, to_country = None, None
+        from_country = from_subdivision = to_country = to_subdivision = None
         if self.from_location.warehouse:
-            if self.from_location.warehouse.address:
-                from_country = self.from_location.warehouse.address.country
+            warehouse_address = self.from_location.warehouse.address
+            if warehouse_address:
+                from_country = warehouse_address.country
+                from_subdivision = warehouse_address.subdivision
         elif isinstance(self.origin, ShipmentOutReturn):
-            from_country = self.origin.delivery_address.country
+            delivery_address = self.origin.delivery_address
+            from_country = delivery_address.country
+            from_subdivision = delivery_address.subdivision
         if self.to_location.warehouse:
-            if self.to_location.warehouse.address:
-                to_country = self.to_location.warehouse.address.country
+            warehouse_address = self.to_location.warehouse.address
+            if warehouse_address:
+                to_country = warehouse_address.country
+                to_subdivision = warehouse_address.subdivision
         elif isinstance(self.origin, ShipmentOut):
-            to_country = self.origin.delivery_address.country
+            delivery_address = self.origin.delivery_address
+            to_country = delivery_address.country
+            to_subdivision = delivery_address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
+        pattern['from_subdivision'] = (
+            from_subdivision.id if from_subdivision else None)
         pattern['to_country'] = to_country.id if to_country else None
+        pattern['to_subdivision'] = (
+            to_subdivision.id if to_subdivision else None)
         return pattern

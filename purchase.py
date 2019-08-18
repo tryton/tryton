@@ -28,14 +28,20 @@ class PurchaseLine(metaclass=PoolMeta):
     def _get_tax_rule_pattern(self):
         pattern = super(PurchaseLine, self)._get_tax_rule_pattern()
 
-        from_country, to_country = None, None
+        from_country = from_subdivision = to_country = to_subdivision = None
         if self.purchase:
             if self.purchase.invoice_address:
                 from_country = self.purchase.invoice_address.country
+                from_subdivision = self.purchase.invoice_address.subdivision
             warehouse = self.purchase.warehouse
             if warehouse and warehouse.address:
                 to_country = warehouse.address.country
+                to_subdivision = warehouse.address.subdivision
 
         pattern['from_country'] = from_country.id if from_country else None
+        pattern['from_subdivision'] = (
+            from_subdivision.id if from_subdivision else None)
         pattern['to_country'] = to_country.id if to_country else None
+        pattern['to_subdivision'] = (
+            to_subdivision.id if to_subdivision else None)
         return pattern
