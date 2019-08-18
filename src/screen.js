@@ -878,7 +878,8 @@
         get number_of_views() {
             return this.views.length + this.view_to_load.length;
         },
-        switch_view: function(view_type, view_id) {
+        switch_view: function(view_type, view_id, display) {
+            display = display === undefined ? true : display;
             if ((view_id !== undefined) && (view_id !== null)) {
                 view_id = Number(view_id);
             } else {
@@ -917,12 +918,19 @@
             var _switch = function() {
                 var set_container = function() {
                     this.screen_container.set(this.current_view.el);
-                    return this.display().done(function() {
-                        this.set_cursor();
-                        if (this.switch_callback) {
-                            this.switch_callback();
-                        }
-                    }.bind(this));
+                    var prm;
+                    if (display) {
+                        prm = this.display().done(function() {
+                            this.set_cursor();
+                        }.bind(this));
+                    } else {
+                        prm = jQuery.when();
+                    }
+                    return prm.done(function() {
+                            if (this.switch_callback) {
+                                this.switch_callback();
+                            }
+                        }.bind(this));
                 }.bind(this);
                 var continue_loop = function() {
                     if (!view_type && (view_id === null)) {
@@ -1348,13 +1356,13 @@
             var prm = jQuery.when();
             if (this.current_view.view_type == 'calendar') {
                 var selected_date = this.current_view.get_selected_date();
-                prm = this.switch_view('form');
+                prm = this.switch_view('form', undefined, false);
             }
             if (this.current_view &&
                     ((this.current_view.view_type == 'tree' &&
                       !this.current_view.editable) ||
                      this.current_view.view_type == 'graph')) {
-                prm = this.switch_view('form');
+                prm = this.switch_view('form', undefined, false);
             }
             return prm.then(function() {
                 var group;
