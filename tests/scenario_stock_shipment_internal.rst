@@ -152,7 +152,7 @@ Create Internal Shipment with lead time::
     True
     >>> move = shipment.moves.new()
     >>> move.product = product
-    >>> move.quantity = 1
+    >>> move.quantity = 2
     >>> move.from_location = internal_loc
     >>> move.to_location = storage_loc
     >>> shipment.click('wait')
@@ -160,22 +160,28 @@ Create Internal Shipment with lead time::
     2
     >>> outgoing_move, = shipment.outgoing_moves
     >>> outgoing_move.quantity
-    1.0
+    2.0
     >>> outgoing_move.from_location == internal_loc
     True
     >>> outgoing_move.to_location == shipment.transit_location
     True
     >>> incoming_move, = shipment.incoming_moves
     >>> incoming_move.quantity
-    1.0
+    2.0
     >>> incoming_move.from_location == shipment.transit_location
     True
     >>> incoming_move.to_location == storage_loc
     True
 
+    >>> outgoing_move.quantity = 1
+    >>> outgoing_move.save()
+
     >>> shipment.click('assign_try')
     True
     >>> shipment.click('ship')
+    >>> incoming_move, = shipment.incoming_moves
+    >>> incoming_move.quantity
+    1.0
     >>> shipment.outgoing_moves[0].state
     'done'
     >>> shipment.click('done')

@@ -1132,7 +1132,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
     @Workflow.transition('assigned')
     @set_employee('assigned_by')
     def assign(cls, shipments):
-        cls._sync_inventory_to_outgoing(shipments, create=True, write=False)
+        cls._sync_inventory_to_outgoing(shipments, quantity=False)
 
     @classmethod
     @ModelView.button
@@ -1142,95 +1142,84 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         Move.do([m for s in shipments for m in s.inventory_moves])
-        cls._sync_inventory_to_outgoing(shipments)
+        cls._sync_inventory_to_outgoing(shipments, quantity=True)
         Move.assign([m for s in shipments for m in s.outgoing_moves])
 
-    def _get_outgoing_move(self, move):
-        'Return outgoing move for the inventory move'
-        pool = Pool()
-        Move = pool.get('stock.move')
-        return Move(
-            from_location=move.to_location,
-            to_location=self.customer.customer_location,
-            product=move.product,
-            uom=move.uom,
-            quantity=move.quantity,
-            shipment=self,
-            planned_date=self.planned_date,
-            company=move.company,
-            currency=move.company.currency,
-            unit_price=move.unit_price,
+    def _sync_move_key(self, move):
+        return (
+            ('product', move.product),
+            ('uom', move.uom),
             )
 
+    def _sync_outgoing_move(self, template=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        move = Move(
+            from_location=self.warehouse_output,
+            to_location=self.customer_location,
+            quantity=0,
+            shipment=self,
+            planned_date=self.planned_date,
+            company=self.company,
+            )
+        if template:
+            move.origin = template.origin
+            move.currency = template.currency
+            move.unit_price = template.unit_price
+        else:
+            move.currency = self.company.currency
+            move.unit_price = 0
+        return move
+
     @classmethod
-    def _sync_inventory_to_outgoing(cls, shipments, create=True, write=True):
-        'Synchronise outgoing moves with inventory moves'
+    def _sync_inventory_to_outgoing(cls, shipments, quantity=True):
         pool = Pool()
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
+
+        def active(move):
+            return move.state != 'cancel'
+
+        moves = []
         for shipment in shipments:
             if shipment.warehouse_storage == shipment.warehouse_output:
-                # Do not create inventory moves
+                # Do not have inventory moves
                 continue
-            # Sum all outgoing quantities
-            outgoing_qty = {}
-            for move in shipment.outgoing_moves:
-                if move.state == 'cancel':
-                    continue
-                quantity = Uom.compute_qty(move.uom, move.quantity,
-                        move.product.default_uom, round=False)
-                outgoing_qty.setdefault(move.product.id, 0.0)
-                outgoing_qty[move.product.id] += quantity
 
-            to_create = []
-            for move in shipment.inventory_moves:
-                if move.state == 'cancel':
-                    continue
-                qty_default_uom = Uom.compute_qty(move.uom, move.quantity,
+            outgoing_moves = {m: m for m in shipment.outgoing_moves}
+            inventory_qty = defaultdict(lambda: defaultdict(float))
+            for move in filter(active, shipment.outgoing_moves):
+                key = shipment._sync_move_key(move)
+                inventory_qty[move][key] = 0
+            for move in filter(active, shipment.inventory_moves):
+                key = shipment._sync_move_key(move)
+                outgoing_move = outgoing_moves.get(move.origin)
+                qty_default_uom = Uom.compute_qty(
+                    move.uom, move.quantity,
                     move.product.default_uom, round=False)
-                # Check if the outgoing move doesn't exist already
-                if outgoing_qty.get(move.product.id):
-                    # If it exist, decrease the sum
-                    if qty_default_uom <= outgoing_qty[move.product.id]:
-                        outgoing_qty[move.product.id] -= qty_default_uom
+                inventory_qty[outgoing_move][key] += qty_default_uom
+
+            for outgoing_move in inventory_qty:
+                if outgoing_move:
+                    outgoing_key = shipment._sync_move_key(outgoing_move)
+                for key, qty in inventory_qty[outgoing_move].items():
+                    if not quantity and outgoing_move:
+                        # Do not create outgoing move with origin
+                        # to allow to reset to draft
                         continue
-                    # Else create the complement
+                    if outgoing_move and key == outgoing_key:
+                        move = outgoing_move
                     else:
-                        out_quantity = (qty_default_uom
-                            - outgoing_qty[move.product.id])
-                        out_quantity = Uom.compute_qty(
-                            move.product.default_uom, out_quantity, move.uom)
-                        outgoing_qty[move.product.id] = 0.0
-                else:
-                    out_quantity = move.quantity
-
-                if not out_quantity:
-                    continue
-                unit_price = Uom.compute_price(move.product.default_uom,
-                        move.product.list_price, move.uom)
-                to_create.append(shipment._get_outgoing_move(move))
-                to_create[-1].quantity = out_quantity
-                to_create[-1].unit_price = unit_price
-            if create and to_create:
-                Move.save(to_create)
-
-            # Re-read the shipment and remove exceeding quantities
-            for move in shipment.outgoing_moves:
-                if move.state == 'cancel':
-                    continue
-                if outgoing_qty.get(move.product.id, 0.0) > 0.0:
-                    exc_qty = Uom.compute_qty(move.product.default_uom,
-                            outgoing_qty[move.product.id], move.uom)
-                    removed_qty = Uom.compute_qty(move.uom,
-                        min(exc_qty, move.quantity), move.product.default_uom,
-                        round=False)
-                    if write:
-                        Move.write([move], {
-                                'quantity': max(
-                                    0.0,
-                                    move.uom.round(move.quantity - exc_qty)),
-                                })
-                    outgoing_qty[move.product.id] -= removed_qty
+                        move = shipment._sync_outgoing_move(outgoing_move)
+                        for name, value in key:
+                            setattr(move, name, value)
+                    qty = Uom.compute_qty(
+                        move.product.default_uom, qty,
+                        move.uom)
+                    if quantity and move.quantity != qty:
+                        move.quantity = qty
+                        moves.append(move)
+        Move.save(moves)
 
     @classmethod
     @ModelView.button
@@ -2192,44 +2181,76 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
         default.setdefault('done_by', None)
         return super().copy(shipments, default=default)
 
+    def _sync_move_key(self, move):
+        return (
+            ('product', move.product),
+            ('uom', move.uom),
+            )
+
+    def _sync_incoming_move(self, template=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        move = Move(
+            from_location=self.transit_location,
+            to_location=self.to_location,
+            quantity=0,
+            shipment=self,
+            planned_date=self.planned_date,
+            company=self.company,
+            )
+        if template:
+            move.origin = template.origin
+            move.currency = template.currency
+            move.unit_price = template.unit_price
+        else:
+            move.currency = self.company.currency
+            move.unit_price = 0
+        return move
+
     @classmethod
     def _sync_moves(cls, shipments):
-        'Synchronise incoming moves with outgoing moves'
         pool = Pool()
         Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
-        to_delete = []
-        to_save = []
+
+        def active(move):
+            return move.state != 'cancel'
+
+        moves = []
         for shipment in shipments:
             if not shipment.transit_location:
                 continue
-            product_qty = defaultdict(int)
-            for move in shipment.outgoing_moves:
-                if move.state == 'cancel':
-                    continue
-                product_qty[move.product] += Uom.compute_qty(
-                    move.uom, move.quantity, move.product.default_uom,
-                    round=False)
 
-            for move in shipment.incoming_moves:
-                if move.state == 'cancel':
-                    continue
-                if product_qty[move.product] <= 0:
-                    to_delete.append(move)
-                else:
-                    quantity = Uom.compute_qty(
-                        move.uom, move.quantity, move.product.default_uom,
-                        round=False)
-                    quantity = min(product_qty[move.product], quantity)
-                    move.quantity = Uom.compute_qty(
-                        move.product.default_uom, quantity, move.uom)
-                    product_qty[move.product] -= quantity
-                    to_save.append(move)
+            incoming_moves = {m: m for m in shipment.incoming_moves}
+            outgoing_qty = defaultdict(lambda: defaultdict(lambda: 0))
+            for move in filter(active, shipment.incoming_moves):
+                key = shipment._sync_move_key(move)
+                outgoing_qty[move][key] = 0
+            for move in filter(active, shipment.outgoing_moves):
+                key = shipment._sync_move_key(move)
+                incoming_move = incoming_moves.get(move.origin)
+                qty_default_uom = Uom.compute_qty(
+                    move.uom, move.quantity,
+                    move.product.default_uom, round=False)
+                outgoing_qty[incoming_move][key] += qty_default_uom
 
-        if to_save:
-            Move.save(to_save)
-        if to_delete:
-            Move.delete(to_delete)
+            for incoming_move in outgoing_qty:
+                if incoming_move:
+                    incoming_key = shipment._sync_move_key(incoming_move)
+                for key, qty in outgoing_qty[incoming_move].items():
+                    if incoming_move and key == incoming_key:
+                        move = incoming_move
+                    else:
+                        move = shipment._sync_incoming_move(incoming_move)
+                        for name, value in key:
+                            setattr(move, name, value)
+                    qty = Uom.compute_qty(
+                        move.product.default_uom, qty,
+                        move.uom)
+                    if move.quantity != qty:
+                        move.quantity = qty
+                        moves.append(move)
+        Move.save(moves)
 
     @classmethod
     def _set_transit(cls, shipments):
@@ -2245,12 +2266,14 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 and m.from_location != shipment.transit_location
                 and m.to_location != shipment.transit_location]
             Move.copy(moves, default={
-                    'from_location': shipment.transit_location.id,
+                    'to_location': shipment.transit_location.id,
                     'planned_date': shipment.planned_date,
+                    'origin': lambda data: '%s,%s' % (
+                        Move.__name__, data['id']),
                     })
             to_write.append(moves)
             to_write.append({
-                    'to_location': shipment.transit_location.id,
+                    'from_location': shipment.transit_location.id,
                     'planned_date': shipment.planned_start_date,
                     })
         if to_write:
