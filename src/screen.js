@@ -983,8 +983,8 @@
                     this.context_screen.display(true);
                     return jQuery.when();
                 }
-                this.new_group(jQuery.extend({},
-                    this.group._context,
+                this.new_group(jQuery.extend(
+                    this.local_context,
                     this.context_screen.get_on_change_value()));
             }
 
@@ -1114,6 +1114,13 @@
         get context() {
             var context = this.group.context;
             if ( this.context_screen ){
+                context.context_model = this.context_screen.model_name;
+            }
+            return context;
+        },
+        get local_context() {
+            var context = this.group.local_context;
+            if (this.context_screen) {
                 context.context_model = this.context_screen.model_name;
             }
             return context;
@@ -1321,7 +1328,7 @@
                     'model': this.model_name,
                     'id': this.get_id(),
                     'ids': [this.get_id()]
-                    }, jQuery.extend({}, this.group._context), false);
+                }, this.local_context, false);
             } else {
                 if (!this.modified()) {
                     this.switch_view('form');
@@ -1907,7 +1914,7 @@
             if (!jQuery.isEmptyObject(this.domain)) {
                 query_string.push(['domain', dumps(this.domain)]);
             }
-            var context = this.group._context;  // Avoid rpc context
+            var context = this.local_context;  // Avoid rpc context
             if (!jQuery.isEmptyObject(context)) {
                 query_string.push(['context', dumps(context)]);
             }
