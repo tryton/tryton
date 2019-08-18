@@ -25,6 +25,8 @@ try:
 except ImportError:
     Manifest, MANIFEST = None, None
 from genshi.filters import Translator
+
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
@@ -63,6 +65,16 @@ FORMAT2EXT = {
     'xls5': 'xls',
     'xls95': 'xls',
     }
+
+TIMEDELTA_DEFAULT_CONVERTER = {
+    's': 1,
+    }
+TIMEDELTA_DEFAULT_CONVERTER['m'] = TIMEDELTA_DEFAULT_CONVERTER['s'] * 60
+TIMEDELTA_DEFAULT_CONVERTER['h'] = TIMEDELTA_DEFAULT_CONVERTER['m'] * 60
+TIMEDELTA_DEFAULT_CONVERTER['d'] = TIMEDELTA_DEFAULT_CONVERTER['h'] * 24
+TIMEDELTA_DEFAULT_CONVERTER['w'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 7
+TIMEDELTA_DEFAULT_CONVERTER['M'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 30
+TIMEDELTA_DEFAULT_CONVERTER['Y'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 365
 
 
 class ReportFactory:
@@ -342,22 +354,20 @@ class Report(URLMixin, PoolBase):
         return lang.strftime(value, format=format)
 
     @classmethod
-    def format_timedelta(cls, value, converter=None, lang=None,
-            skip_zeros=False):
+    def format_timedelta(cls, value, converter=None, lang=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
-        if converter is None:
-            converter = {
-                's': 1,
-                }
-            converter['m'] = converter['s'] * 60
-            converter['h'] = converter['m'] * 60
-            converter['d'] = converter['h'] * 24
-            converter['w'] = converter['d'] * 7
-            converter['M'] = converter['d'] * 30
-            converter['Y'] = converter['d'] * 365
+        if not converter:
+            converter = TIMEDELTA_DEFAULT_CONVERTER
+        if value is None:
+            return ''
+
+        def translate(k):
+            xml_id = 'ir.msg_timedelta_%s' % k
+            translation = gettext(xml_id)
+            return translation if translation != xml_id else k
 
         text = []
         value = value.total_seconds()
@@ -372,8 +382,8 @@ class Report(URLMixin, PoolBase):
 
         for (k, _), v in zip(converter[:-3], values):
             if v:
-                text.append(lang.format('%d', v, True) + k)
-        if not skip_zeros:
+                text.append(lang.format('%d', v, True) + translate(k))
+        if any(values[-3:]) or not text:
             time = '%02d:%02d' % tuple(values[-3:-1])
             if values[-1] or value:
                 time += ':%02d' % values[-1]

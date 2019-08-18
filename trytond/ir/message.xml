@@ -197,5 +197,26 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_html_editor_save_fail">
             <field name="text">Failed to save, please retry.</field>
         </record>
+        <record model="ir.message" id="msg_timedelta_Y">
+            <field name="text">Y</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_M">
+            <field name="text">M</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_w">
+            <field name="text">w</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_d">
+            <field name="text">d</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_h">
+            <field name="text">h</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_m">
+            <field name="text">m</field>
+        </record>
+        <record model="ir.message" id="msg_timedelta_s">
+            <field name="text">s</field>
+        </record>
     </data>
 </tryton>
