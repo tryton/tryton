@@ -648,7 +648,7 @@
                                     ids: record_ids
                                 };
                                 Sao.Action.exec_action(exec_action, data,
-                                    jQuery.extend({}, screen.group._context));
+                                    jQuery.extend({}, screen.local_context));
                             });
                         }.bind(this))
                         .appendTo(menu);

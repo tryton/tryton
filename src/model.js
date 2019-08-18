@@ -396,27 +396,40 @@
         });
         Object.defineProperty(array, 'context', {
             get: function() {
-                var context = jQuery.extend({}, this.model.session.context);
-                if (this.parent) {
-                    var parent_context = this.parent.get_context();
-                    jQuery.extend(context, parent_context);
-                    if (this.child_name in this.parent.model.fields) {
-                        var field = this.parent.model.fields[this.child_name];
-                        jQuery.extend(context, field.get_context(
-                            this.parent, parent_context));
-                    }
-                }
-                jQuery.extend(context, this._context);
-                if (this.parent_datetime_field) {
-                    context._datetime = this.parent.get_eval()
-                        [this.parent_datetime_field];
-                }
-                return context;
+                return this._get_context();
             },
             set: function(context) {
                 this._context = jQuery.extend({}, context);
             }
         });
+        Object.defineProperty(array, 'local_context', {
+            get: function() {
+                return this._get_context(true);
+            }
+        });
+        array._get_context = function(local) {
+            var context;
+            if (!local) {
+                context = jQuery.extend({}, this.model.session.context);
+            } else {
+                context = {};
+            }
+            if (this.parent) {
+                var parent_context = this.parent.get_context(local);
+                jQuery.extend(context, parent_context);
+                if (this.child_name in this.parent.model.fields) {
+                    var field = this.parent.model.fields[this.child_name];
+                    jQuery.extend(context, field.get_context(
+                        this.parent, parent_context, local));
+                }
+            }
+            jQuery.extend(context, this._context);
+            if (this.parent_datetime_field) {
+                context._datetime = this.parent.get_eval()
+                [this.parent_datetime_field];
+            }
+            return context;
+        };
         array.clean4inversion = function(domain) {
             if (jQuery.isEmptyObject(domain)) {
                 return [];
@@ -821,8 +834,12 @@
             }
             return fields;
         },
-        get_context: function() {
-            return this.group.context;
+        get_context: function(local) {
+            if (!local) {
+                return this.group.context;
+            } else {
+                return this.group.local_context;
+            }
         },
         field_get: function(name) {
             return this.model.fields[name].get(this);
@@ -1433,12 +1450,12 @@
         get_timestamp: function(record) {
             return {};
         },
-        get_context: function(record, record_context) {
+        get_context: function(record, record_context, local) {
             var context;
             if (record_context) {
                 context = jQuery.extend({}, record_context);
             } else {
-                context = record.get_context();
+                context = record.get_context(local);
             }
             jQuery.extend(context,
                 record.expr_eval(this.description.context || {}));
@@ -1882,9 +1899,9 @@
             Sao.field.Many2One._super.set_client.call(this, record, value,
                     force_change);
         },
-        get_context: function(record, record_context) {
+        get_context: function(record, record_context, local) {
             var context = Sao.field.Many2One._super.get_context.call(
-                this, record, record_context);
+                this, record, record_context, local);
             if (this.description.datetime_field) {
                 context._datetime = record.get_eval()[
                     this.description.datetime_field];
@@ -2414,9 +2431,9 @@
             return Sao.field.Reference._super.get_on_change_value.call(
                     this, record);
         },
-        get_context: function(record, record_context) {
+        get_context: function(record, record_context, local) {
             var context = Sao.field.Reference._super.get_context.call(
-                this, record, record_context);
+                this, record, record_context, local);
             if (this.description.datetime_field) {
                 context._datetime = record.get_eval()[
                     this.description.datetime_field];
