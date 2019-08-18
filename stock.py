@@ -51,11 +51,12 @@ def set_origin_consignment(func):
         to_save = []
         move2line = {}
         for move in moves:
-            if not move.origin:
+            if not move.invoice_lines:
                 lines = move.get_invoice_lines_consignment()
                 if lines:
                     to_save.extend(lines)
-                    move2line[move] = lines[0]
+                    if not move.origin:
+                        move2line[move] = lines[0]
         if to_save:
             InvoiceLine.save(to_save)
             for move, line in move2line.items():
@@ -76,10 +77,12 @@ def unset_origin_consignment(func):
         InvoiceLine = pool.get('account.invoice.line')
         lines, to_save = [], []
         for move in moves:
-            if isinstance(move.origin, InvoiceLine):
-                lines.extend(move.invoice_lines)
-                move.origin = None
-                to_save.append(move)
+            for invoice_line in move.invoice_lines:
+                if invoice_line.origin == move:
+                    lines.append(invoice_line)
+                    if isinstance(move.origin, InvoiceLine):
+                        move.origin = None
+                    to_save.append(move)
         if lines:
             InvoiceLine.delete(lines)
             cls.save(to_save)

@@ -185,8 +185,8 @@ Use supplier consignment stock for shipment out::
     >>> shipment_out.click('assign_try')
     True
     >>> move, = shipment_out.inventory_moves
-    >>> isinstance(move.origin, InvoiceLine)
-    True
+    >>> len(move.invoice_lines)
+    1
 
 Fill customer consignment location::
 
