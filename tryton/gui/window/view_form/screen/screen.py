@@ -484,7 +484,7 @@ class Screen(SignalEvent):
     def number_of_views(self):
         return len(self.views) + len(self.view_to_load)
 
-    def switch_view(self, view_type=None, view_id=None):
+    def switch_view(self, view_type=None, view_id=None, display=True):
         if view_id is not None:
             view_id = int(view_id)
         if self.current_view:
@@ -526,9 +526,10 @@ class Screen(SignalEvent):
             if view_type and not view_id and not len(self.view_to_load):
                 break
         self.screen_container.set(self.current_view.widget)
-        self.display()
-        # Postpone set of the cursor to ensure widgets are allocated
-        GLib.idle_add(self.set_cursor)
+        if display:
+            self.display()
+            # Postpone set of the cursor to ensure widgets are allocated
+            GLib.idle_add(self.set_cursor)
 
     def load_view_to_load(self):
         if len(self.view_to_load):
@@ -588,7 +589,7 @@ class Screen(SignalEvent):
         if self.current_view.view_type == 'calendar':
             selected_date = self.current_view.get_selected_date()
         if self.current_view and not self.current_view.editable:
-            self.switch_view('form')
+            self.switch_view('form', display=False)
             if self.current_view.view_type != 'form':
                 return None
         if self.current_record:
