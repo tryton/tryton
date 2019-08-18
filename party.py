@@ -94,6 +94,24 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         return super(Party, cls).multivalue_model(field)
 
     @classmethod
+    def _default_tax_rule(cls, type_, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        assert type_ in {'customer', 'supplier'}
+        tax_rule = config.get_multivalue(
+            'default_%s_tax_rule' % type_, **pattern)
+        return tax_rule.id if tax_rule else None
+
+    @classmethod
+    def default_customer_tax_rule(cls, **pattern):
+        return cls._default_tax_rule('customer', **pattern)
+
+    @classmethod
+    def default_supplier_tax_rule(cls, **pattern):
+        return cls._default_tax_rule('supplier', **pattern)
+
+    @classmethod
     def get_currency_digits(cls, parties, name):
         pool = Pool()
         Company = pool.get('company.company')

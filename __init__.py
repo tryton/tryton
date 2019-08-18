@@ -4,7 +4,7 @@
 from trytond.pool import Pool
 from .fiscalyear import *
 from .account import *
-from .configuration import *
+from . import configuration
 from .period import *
 from .journal import *
 from .move import *
@@ -39,8 +39,9 @@ def register():
         UpdateChartSucceed,
         AgedBalanceContext,
         AgedBalance,
-        Configuration,
-        ConfigurationDefaultAccount,
+        configuration.Configuration,
+        configuration.ConfigurationDefaultAccount,
+        configuration.DefaultTaxRule,
         Period,
         Journal,
         JournalSequence,
@@ -48,7 +49,7 @@ def register():
         JournalPeriod,
         Move,
         Reconciliation,
-        ConfigurationTaxRounding,
+        configuration.ConfigurationTaxRounding,
         Line,
         WriteOff,
         OpenJournalAsk,

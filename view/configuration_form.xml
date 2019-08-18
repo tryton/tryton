@@ -8,6 +8,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="default_account_payable"/>
     <field name="default_account_payable"/>
     <separator id="invoice" string="Invoice" colspan="4"/>
+    <label name="default_customer_tax_rule"/>
+    <field name="default_customer_tax_rule"/>
+    <label name="default_supplier_tax_rule"/>
+    <field name="default_supplier_tax_rule"/>
     <label name="tax_rounding"/>
     <field name="tax_rounding"/>
 </form>

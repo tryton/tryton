@@ -7,8 +7,6 @@ from trytond.pyson import Eval
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Configuration', 'ConfigurationDefaultAccount',
-    'ConfigurationTaxRounding']
 tax_roundings = [
     ('document', 'Per Document'),
     ('line', 'Per Line'),
@@ -33,6 +31,20 @@ class Configuration(
                 ('party_required', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ]))
+    default_customer_tax_rule = fields.MultiValue(fields.Many2One(
+            'account.tax.rule', "Default Customer Tax Rule",
+            domain=[
+                ('company', '=', Eval('context', {}).get('company', -1)),
+                ('kind', 'in', ['sale', 'both']),
+                ]),
+        help="Default customer tax rule for new parties.")
+    default_supplier_tax_rule = fields.MultiValue(fields.Many2One(
+            'account.tax.rule', "Default Supplier Tax Rule",
+            domain=[
+                ('company', '=', Eval('context', {}).get('company', -1)),
+                ('kind', 'in', ['purchase', 'both']),
+                ]),
+        help="Default supplier tax rule for new parties.")
     tax_rounding = fields.MultiValue(fields.Selection(
             tax_roundings, "Tax Rounding"))
 
@@ -41,6 +53,8 @@ class Configuration(
         pool = Pool()
         if field in {'default_account_receivable', 'default_account_payable'}:
             return pool.get('account.configuration.default_account')
+        if field in {'default_customer_tax_rule', 'default_supplier_tax_rule'}:
+            return pool.get('account.configuration.default_tax_rule')
         return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
@@ -65,6 +79,25 @@ class ConfigurationDefaultAccount(ModelSQL, CompanyValueMixin):
             ('type.payable', '=', True),
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
+
+
+class DefaultTaxRule(ModelSQL, CompanyValueMixin):
+    "Account Configuration Default Tax Rule"
+    __name__ = 'account.configuration.default_tax_rule'
+    default_customer_tax_rule = fields.Many2One(
+        'account.tax.rule', "Default Customer Tax Rule",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('kind', 'in', ['sale', 'both']),
+            ],
+        depends=['company'])
+    default_supplier_tax_rule = fields.Many2One(
+        'account.tax.rule', "Default Supplier Tax Rule",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ('kind', 'in', ['purchase', 'both']),
             ],
         depends=['company'])
 
