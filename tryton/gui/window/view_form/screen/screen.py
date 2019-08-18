@@ -247,7 +247,7 @@ class Screen(SignalEvent):
                 self.clear()
                 self.context_screen.display(set_cursor=True)
                 return False
-            context = self.group._context.copy()
+            context = self.local_context
             context.update(self.context_screen.get_on_change_value())
             self.new_group(context)
 
@@ -344,6 +344,13 @@ class Screen(SignalEvent):
     @property
     def context(self):
         context = self.group.context
+        if self.context_screen:
+            context['context_model'] = self.context_screen.model_name
+        return context
+
+    @property
+    def local_context(self):
+        context = self.group.local_context
         if self.context_screen:
             context['context_model'] = self.context_screen.model_name
         return context
@@ -466,7 +473,7 @@ class Screen(SignalEvent):
                 'model': self.model_name,
                 'id': self.current_record.id if self.current_record else None,
                 'ids': [r.id for r in self.selected_records],
-                }, context=self.group._context.copy(), warning=False)
+                }, context=self.local_context, warning=False)
         else:
             if not self.modified():
                 self.switch_view(view_type='form')
@@ -1169,7 +1176,7 @@ class Screen(SignalEvent):
         if self.domain:
             query_string.append(('domain', json.dumps(
                         self.domain, cls=JSONEncoder, separators=(',', ':'))))
-        context = self.group._context  # Avoid rpc context
+        context = self.local_context  # Avoid rpc context
         if context:
             query_string.append(('context', json.dumps(
                         context, cls=JSONEncoder, separators=(',', ':'))))

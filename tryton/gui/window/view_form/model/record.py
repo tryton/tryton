@@ -421,8 +421,11 @@ class Record(SignalEvent):
 
     invalid_fields = property(_get_invalid_fields)
 
-    def get_context(self):
-        return self.group.context
+    def get_context(self, local=False):
+        if not local:
+            return self.group.context
+        else:
+            return self.group.local_context
 
     def set_default(self, val, signal=True, validate=True):
         fieldnames = []

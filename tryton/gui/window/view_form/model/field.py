@@ -58,8 +58,8 @@ class Field(object):
     def validation_domains(self, record, pre_validate=None):
         return concat(*self.domains_get(record, pre_validate))
 
-    def get_context(self, record):
-        context = record.get_context()
+    def get_context(self, record, local=False):
+        context = record.get_context(local=local)
         context.update(record.expr_eval(self.attrs.get('context', {})))
         return context
 
@@ -433,8 +433,9 @@ class M2OField(Field):
         record.value[self.name + '.rec_name'] = rec_name
         record.value[self.name] = value
 
-    def get_context(self, record):
-        context = super(M2OField, self).get_context(record)
+    def get_context(self, record, local=False):
+        context = super(M2OField, self).get_context(
+            record, local=local)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
                 )[self.attrs.get('datetime_field')]
@@ -852,8 +853,9 @@ class ReferenceField(Field):
         record.value[self.name] = ref_model, ref_id
         record.value[self.name + '.rec_name'] = rec_name
 
-    def get_context(self, record):
-        context = super(ReferenceField, self).get_context(record)
+    def get_context(self, record, local=False):
+        context = super(ReferenceField, self).get_context(
+            record, local=local)
         if self.attrs.get('datetime_field'):
             context['_datetime'] = record.get_eval(
                 )[self.attrs.get('datetime_field')]
