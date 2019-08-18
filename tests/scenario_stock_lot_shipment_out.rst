@@ -59,25 +59,10 @@ Create Shipment Out::
     >>> shipment_out.customer = customer
     >>> shipment_out.warehouse = warehouse_loc
     >>> shipment_out.company = company
-
-Add two shipment lines of same product::
-
-    >>> StockMove = Model.get('stock.move')
-    >>> move = StockMove()
-    >>> shipment_out.outgoing_moves.append(move)
+    >>> move = shipment_out.outgoing_moves.new()
     >>> move.product = product
     >>> move.uom =unit
     >>> move.quantity = 10
-    >>> move.from_location = output_loc
-    >>> move.to_location = customer_loc
-    >>> move.company = company
-    >>> move.unit_price = Decimal('1')
-    >>> move.currency = company.currency
-    >>> move = StockMove()
-    >>> shipment_out.outgoing_moves.append(move)
-    >>> move.product = product
-    >>> move.uom =unit
-    >>> move.quantity = 4
     >>> move.from_location = output_loc
     >>> move.to_location = customer_loc
     >>> move.company = company
@@ -89,23 +74,32 @@ Set the shipment state to waiting::
 
     >>> shipment_out.click('wait')
     >>> len(shipment_out.outgoing_moves)
-    2
+    1
     >>> len(shipment_out.inventory_moves)
-    2
+    1
 
-Assign the shipment with 2 lines of 7 products::
+Split inventory move::
 
-    >>> for move in shipment_out.inventory_moves:
-    ...     move.quantity = 7
+    >>> move, = shipment_out.inventory_moves
+    >>> move.quantity = 7
+    >>> move.save()
+    >>> with config.set_context(_stock_move_split=True):
+    ...     _ = move.duplicate(default=dict(quantity=3))
+    >>> shipment_out.reload()
+
+Assign the shipment::
+
     >>> shipment_out.click('assign_force')
     >>> shipment_out.state
     'assigned'
+    >>> len(shipment_out.outgoing_moves)
+    1
 
 Set 2 lots::
 
     >>> Lot = Model.get('stock.lot')
     >>> for i, move in enumerate(shipment_out.inventory_moves, start=1):
-    ...     lot = Lot(number='%05i' % i, product=product)
+    ...     lot = Lot(number='%05i' % i, product=move.product)
     ...     lot.save()
     ...     move.lot = lot
     >>> shipment_out.save()
@@ -118,10 +112,11 @@ Pack the shipment::
     >>> len(shipment_out.outgoing_moves)
     3
     >>> sorted([m.quantity for m in shipment_out.outgoing_moves])
-    [3.0, 4.0, 7.0]
+    [0.0, 3.0, 7.0]
     >>> lot_quantities = {}
     >>> for move in shipment_out.outgoing_moves:
-    ...     quantity = lot_quantities.setdefault(move.lot.number, 0)
-    ...     lot_quantities[move.lot.number] += move.quantity
+    ...     number = move.lot.number if move.lot else ''
+    ...     quantity = lot_quantities.setdefault(number, 0)
+    ...     lot_quantities[number] += move.quantity
     >>> sorted(lot_quantities.items())
-    [('00001', 7.0), ('00002', 7.0)]
+    [('', 0.0), ('00001', 3.0), ('00002', 7.0)]

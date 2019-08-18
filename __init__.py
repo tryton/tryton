@@ -15,6 +15,7 @@ def register():
         stock.ShipmentIn,
         stock.ShipmentOut,
         stock.ShipmentOutReturn,
+        stock.ShipmentInternal,
         stock.Period,
         stock.PeriodCacheLot,
         stock.Inventory,

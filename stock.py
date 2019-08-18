@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from collections import defaultdict
 from functools import wraps
 
 from trytond.i18n import gettext
@@ -161,44 +160,8 @@ class ShipmentIn(metaclass=PoolMeta):
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
-    @classmethod
-    def _sync_inventory_to_outgoing(cls, shipments, create=True, write=True):
-        pool = Pool()
-        Uom = pool.get('product.uom')
-        Move = pool.get('stock.move')
-        super(ShipmentOut, cls)._sync_inventory_to_outgoing(
-            shipments, create=create, write=write)
-        to_write = []
-        for shipment in shipments:
-            outgoing_by_product = defaultdict(list)
-            for move in shipment.outgoing_moves:
-                outgoing_by_product[move.product.id].append(move)
-            for move in shipment.inventory_moves:
-                if not move.lot:
-                    continue
-                quantity = Uom.compute_qty(move.uom, move.quantity,
-                    move.product.default_uom, round=False)
-                outgoing_moves = outgoing_by_product[move.product.id]
-                while outgoing_moves and quantity > 0:
-                    out_move = outgoing_moves.pop()
-                    out_quantity = Uom.compute_qty(out_move.uom,
-                        out_move.quantity, out_move.product.default_uom,
-                        round=False)
-                    values = {}
-                    if quantity < out_quantity:
-                        with Transaction().set_context(_stock_move_split=True):
-                            outgoing_moves.extend(
-                                Move.copy([out_move], default={
-                                        'quantity': out_move.uom.round(
-                                            out_quantity - quantity),
-                                        }))
-                        values['quantity'] = out_move.uom.round(quantity)
-                    values['lot'] = move.lot.id
-                    to_write.extend(([out_move], values))
-                    quantity -= out_quantity
-                assert move.uom.round(quantity) <= 0
-        if to_write:
-            Move.write(*to_write)
+    def _sync_move_key(self, move):
+        return super()._sync_move_key(move) + (('lot', move.lot),)
 
 
 class ShipmentOutReturn(metaclass=PoolMeta):
@@ -209,6 +172,13 @@ class ShipmentOutReturn(metaclass=PoolMeta):
         if move and incoming_move.lot:
             move.lot = incoming_move.lot
         return move
+
+
+class ShipmentInternal(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.internal'
+
+    def _sync_move_key(self, move):
+        return super()._sync_move_key(move) + (('lot', move.lot),)
 
 
 class Period(metaclass=PoolMeta):
