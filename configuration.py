@@ -36,15 +36,15 @@ class Configuration(
             domain=[
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['sale', 'both']),
-                ]),
-        help="Default customer tax rule for new parties.")
+                ],
+            help="Default customer tax rule for new parties."))
     default_supplier_tax_rule = fields.MultiValue(fields.Many2One(
             'account.tax.rule', "Default Supplier Tax Rule",
             domain=[
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ('kind', 'in', ['purchase', 'both']),
-                ]),
-        help="Default supplier tax rule for new parties.")
+                ],
+            help="Default supplier tax rule for new parties."))
     tax_rounding = fields.MultiValue(fields.Selection(
             tax_roundings, "Tax Rounding"))
 
