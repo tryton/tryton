@@ -205,8 +205,13 @@ class Product(
     template = fields.Many2One('product.template', 'Product Template',
         required=True, ondelete='CASCADE', select=True, states=STATES,
         depends=DEPENDS)
-    code = fields.Char("Code", size=None, select=True, states=STATES,
-        depends=DEPENDS)
+    code_readonly = fields.Function(fields.Boolean('Code Readonly'),
+        'get_code_readonly')
+    code = fields.Char("Code", size=None, select=True,
+        states={
+            'readonly': STATES['readonly'] | Eval('code_readonly', False),
+            },
+        depends=DEPENDS + ['code_readonly'])
     identifiers = fields.One2Many('product.identifier', 'product',
         "Identifiers", states=STATES, depends=DEPENDS,
         help="Add other identifiers to the variant.")
@@ -352,6 +357,43 @@ class Product(
         for id_, rec_name, icon in super(Product, cls).search_global(text):
             icon = icon or 'tryton-product'
             yield id_, rec_name, icon
+
+    @classmethod
+    def default_code_readonly(cls):
+        pool = Pool()
+        Configuration = pool.get('product.configuration')
+        config = Configuration(1)
+        return bool(config.product_sequence)
+
+    def get_code_readonly(self, name):
+        return self.default_code_readonly()
+
+    @classmethod
+    def _new_code(cls):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Configuration = pool.get('product.configuration')
+        config = Configuration(1)
+        sequence = config.product_sequence
+        if sequence:
+            return Sequence.get_id(sequence.id)
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [x.copy() for x in vlist]
+        for values in vlist:
+            if not values.get('code'):
+                values['code'] = cls._new_code()
+        return super().create(vlist)
+
+    @classmethod
+    def copy(cls, products, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('code', None)
+        return super().copy(products, default=default)
 
 
 class ProductListPrice(ModelSQL, CompanyValueMixin):

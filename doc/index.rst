@@ -53,16 +53,18 @@ The Product Template model contains the following fields:
 - Cost Price Method, which can be *Fixed* or *Average*. Defines how
   the cost price should be updated. *Fixed* means that the cost price
   stay unchanged. *Average* means that the cost price is the average
-  cost of all the items that are in stock.
+  cost of all the items that are in stock. It's default value can be defined
+  on product configuration.
 - Default UOM. The default UOM for this product. Used for example to
   express stock levels.
 - Active, allow to disable a product.
 
 
 The Product model extend the Product Template with two fields: Code
-and Description. It's also possible to define a list of identifiers on product.
-An identifier is composed by a type and a code. The following types are
-available:
+and Description. If a sequence is set on product configuration the code will
+be readonly and will be filled in using the sequence. It's also possible to 
+define a list of identifiers on product. An identifier is composed by a type 
+and a code. The following types are available:
 
     * International Article Number (EAN)
     * International Standard Audiovisual Number (ISAN)
