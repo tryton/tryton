@@ -53,9 +53,11 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
 
     def get_context_formula(self, party, product, unit_price, quantity, uom,
             pattern=None):
+        cost_price = product.get_multivalue('cost_price') or Decimal('0')
         return {
             'names': {
                 'unit_price': unit_price,
+                'cost_price': cost_price,
                 },
             }
 
@@ -111,7 +113,8 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         help="Apply only when quantity is greater.")
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
-            '- unit_price: the original unit_price'))
+            '- unit_price: the original unit_price\n'
+            '- cost_price: the cost price of the product'))
 
     @staticmethod
     def default_formula():
@@ -123,12 +126,20 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         for line in lines:
             line.check_formula()
 
+    @classmethod
+    def get_check_formula_product(cls):
+        pool = Pool()
+        Product = pool.get('product.product')
+        product = Product()
+        product.get_multivalue = lambda name: Decimal('0')
+        return product
+
     def check_formula(self):
         '''
         Check formula
         '''
         context = self.price_list.get_context_formula(
-            None, None, Decimal('0'), 0, None)
+            None, self.get_check_formula_product(), Decimal('0'), 0, None)
 
         try:
             if not isinstance(self.get_unit_price(**context), Decimal):
