@@ -15,7 +15,7 @@ def register():
         Move,
         Purchase,
         PurchaseIgnoredInvoice,
-        PurchaseRecreadtedInvoice,
+        PurchaseRecreatedInvoice,
         PurchaseLine,
         PurchaseLineTax,
         PurchaseLineIgnoredMove,

@@ -27,7 +27,7 @@ from trytond.modules.product import price_digits
 from .exceptions import PurchaseQuotationError, PartyLocationError
 
 __all__ = ['Purchase', 'PurchaseIgnoredInvoice',
-    'PurchaseRecreadtedInvoice', 'PurchaseLine', 'PurchaseLineTax',
+    'PurchaseRecreatedInvoice', 'PurchaseLine', 'PurchaseLineTax',
     'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
     'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
     'HandleInvoiceExceptionAsk', 'HandleInvoiceException', 'ModifyHeader',
@@ -897,7 +897,7 @@ class PurchaseIgnoredInvoice(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class PurchaseRecreadtedInvoice(ModelSQL):
+class PurchaseRecreatedInvoice(ModelSQL):
     'Purchase - Recreated Invoice'
     __name__ = 'purchase.purchase-recreated-account.invoice'
     _table = 'purchase_invoice_recreated_rel'
