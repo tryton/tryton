@@ -34,6 +34,8 @@ def register():
         Invoice,
         InvoiceLine,
         Location,
+        party.Party,
+        party.CustomerCode,
         module='purchase', type_='model')
     Pool.register(
         PurchaseReport,

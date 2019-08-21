@@ -61,6 +61,7 @@ Create parties::
 
     >>> Party = Model.get('party.party')
     >>> supplier = Party(name='Supplier')
+    >>> supplier.customer_code = '1234'
     >>> supplier.save()
     >>> customer = Party(name='Customer')
     >>> customer.save()
