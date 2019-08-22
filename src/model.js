@@ -702,7 +702,6 @@
             var succeed = function(values, exception) {
                 if (exception === undefined) exception = false;
                 var id2value = {};
-                var promises = [];
                 values.forEach(function(e, i, a) {
                     id2value[e.id] = e;
                 });
@@ -722,10 +721,9 @@
                             }
                             delete value[key];
                         }
-                        promises.push(record.set(value));
+                        record.set(value);
                     }
                 }
-                return jQuery.when.apply(jQuery, promises);
             }.bind(this);
             var failed = function() {
                 var failed_values = [];
