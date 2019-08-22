@@ -42,8 +42,15 @@ class RPC(object):
         kwargs = kwargs.copy()
         if 'context' in kwargs:
             context = kwargs.pop('context')
+            if not isinstance(context, dict):
+                raise TypeError("context must be a dictionary")
         else:
-            context = args.pop()
+            try:
+                context = args.pop()
+            except IndexError:
+                context = None
+            if not isinstance(context, dict):
+                raise ValueError("Missing context argument")
         context = copy.deepcopy(context)
         timestamp = None
         for key in list(context.keys()):

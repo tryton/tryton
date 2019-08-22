@@ -32,6 +32,26 @@ class RPCTestCase(unittest.TestCase):
             (['foo'], {'bar': True}, {}, None))
 
     @with_transaction()
+    def test_wrong_context_type(self):
+        "Test wrong context type"
+        rpc = RPC()
+        with self.assertRaises(TypeError) as cm:
+            rpc.convert(None, context=None)
+
+        self.assertEqual(
+            str(cm.exception), "context must be a dictionary")
+
+    @with_transaction()
+    def test_missing_context(self):
+        "Test missing context"
+        rpc = RPC()
+        with self.assertRaises(ValueError) as cm:
+            rpc.convert(None)
+
+        self.assertEqual(
+            str(cm.exception), "Missing context argument")
+
+    @with_transaction()
     def test_clean_context(self):
         "Test clean context"
         rpc = RPC(check_access=False)
