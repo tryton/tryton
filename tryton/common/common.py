@@ -113,6 +113,8 @@ class IconFactory:
 
     @classmethod
     def get_pixbuf(cls, iconname, size=16, color=None, badge=None):
+        if not iconname:
+            return
         colors = CONFIG['icon.colors'].split(',')
         cls.register_icon(iconname)
         if iconname not in cls._pixbufs[(size, badge)]:
@@ -160,9 +162,10 @@ class IconFactory:
 
     @classmethod
     def get_image(cls, iconname, size=16, color=None, badge=None):
-        pixbuf = cls.get_pixbuf(iconname, size, color, badge)
         image = Gtk.Image()
-        image.set_from_pixbuf(pixbuf)
+        if iconname:
+            pixbuf = cls.get_pixbuf(iconname, size, color, badge)
+            image.set_from_pixbuf(pixbuf)
         return image
 
 
