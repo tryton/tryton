@@ -649,9 +649,8 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
 
     @fields.depends('name', 'template_extension')
     def on_change_with_report_content_name(self, name=None):
-        if not self.name:
-            return
-        return ''.join([self.name, os.extsep, self.template_extension])
+        return ''.join(
+            filter(None, [self.name, os.extsep, self.template_extension]))
 
     @classmethod
     def get_pyson(cls, reports, name):
