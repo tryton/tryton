@@ -33,7 +33,7 @@ def sendmail(from_addr, to_addrs, msg, server=None):
         quit = False
     try:
         senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
-    except smtplib.SMTPException:
+    except Exception:
         logger.error('fail to send email', exc_info=True)
     else:
         if senderrs:
@@ -57,8 +57,8 @@ def get_smtp_server(uri=None):
         connector = smtplib.SMTP
     try:
         server = connector(uri.hostname, uri.port, **extra)
-    except smtplib.SMTPConnectError:
-        logger.error('fail to connect to %s', uri)
+    except Exception:
+        logger.error('fail to connect to %s', uri, exc_info=True)
         return
 
     if 'tls' in uri.scheme:
