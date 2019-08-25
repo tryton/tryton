@@ -1,11 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.tools.string_ import LazyString
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 
 def gettext(message_id, *args, **variables):
     "Returns the message translated into language"
+    if not Transaction().database:
+        return message_id
     pool = Pool()
     Message = pool.get('ir.message')
     if not args:
@@ -20,3 +23,8 @@ def gettext(message_id, *args, **variables):
         return Message.gettext(module, id_, language, **variables)
     except KeyError:
         return message_id
+
+
+def lazy_gettext(message_id, *args, **variables):
+    "Like gettext but the string returned is lazy"
+    return LazyString(gettext, message_id, *args, **variables)

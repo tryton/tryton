@@ -20,7 +20,7 @@ from trytond.tools.domain_inversion import domain_inversion
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
-from trytond.i18n import gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict, LRUDictTransaction, freeze
@@ -92,12 +92,17 @@ class ModelStorage(Model):
     Define a model with storage capability in Tryton.
     """
 
-    create_uid = fields.Many2One('res.user', "Created by", readonly=True)
-    create_date = fields.Timestamp("Created at", readonly=True)
-    write_uid = fields.Many2One('res.user', "Edited by", readonly=True)
-    write_date = fields.Timestamp('Edited at', readonly=True)
-    rec_name = fields.Function(fields.Char('Record Name'), 'get_rec_name',
-            searcher='search_rec_name')
+    create_uid = fields.Many2One(
+        'res.user', lazy_gettext('ir.msg_created_by'), readonly=True)
+    create_date = fields.Timestamp(
+        lazy_gettext('ir.msg_created_by'), readonly=True)
+    write_uid = fields.Many2One(
+        'res.user', lazy_gettext('ir.msg_edited_by'), readonly=True)
+    write_date = fields.Timestamp(
+        lazy_gettext('ir.msg_edited_at'), readonly=True)
+    rec_name = fields.Function(
+        fields.Char(lazy_gettext('ir.msg_record_name')), 'get_rec_name',
+        searcher='search_rec_name')
 
     @classmethod
     def __setup__(cls):

@@ -30,6 +30,84 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem name="Messages" parent="menu_localization" action="act_message_form" id="menu_message_form" sequence="10"/>
     </data>
     <data grouped="1">
+        <record model="ir.message" id="msg_ID">
+            <field name="text">ID</field>
+        </record>
+        <record model="ir.message" id="msg_created_by">
+            <field name="text">Created by</field>
+        </record>
+        <record model="ir.message" id="msg_created_at">
+            <field name="text">Created at</field>
+        </record>
+        <record model="ir.message" id="msg_edited_by">
+            <field name="text">Edited by</field>
+        </record>
+        <record model="ir.message" id="msg_edited_at">
+            <field name="text">Edited at</field>
+        </record>
+        <record model="ir.message" id="msg_record_name">
+            <field name="text">Record Name</field>
+        </record>
+        <record model="ir.message" id="msg_active">
+            <field name="text">Active</field>
+        </record>
+        <record model="ir.message" id="msg_active_help">
+            <field name="text">Uncheck to exclude from future use.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_name">
+            <field name="text">Name</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_string">
+            <field name="text">String</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_type">
+            <field name="text">Type</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_boolean">
+            <field name="text">Boolean</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_integer">
+            <field name="text">Integer</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_char">
+            <field name="text">Char</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_float">
+            <field name="text">Float</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_numeric">
+            <field name="text">Numeric</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_date">
+            <field name="text">Date</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_datetime">
+            <field name="text">DateTime</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection">
+            <field name="text">Selection</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_digits">
+            <field name="text">Digits</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_domain">
+            <field name="text">Domain</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_help">
+            <field name="text">A couple of key and label separated by ":" per line.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_sorted">
+            <field name="text">Selection Sorted</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_sorted_help">
+            <field name="text">If the selection must be sorted on label.</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_selection_json">
+            <field name="text">Selection JSON</field>
+        </record>
+        <record model="ir.message" id="msg_sequence">
+            <field name="text">Sequence</field>
+        </record>
         <record model="ir.message" id="msg_id_positive">
             <field name="text">ID must be positive.</field>
         </record>

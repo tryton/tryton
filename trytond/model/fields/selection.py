@@ -7,6 +7,7 @@ from sql.conditionals import Case
 from trytond.pool import Pool
 from ...transaction import Transaction
 from ...tools import is_instance_method
+from trytond.tools.string_ import LazyString
 from .field import Field
 from ...rpc import RPC
 
@@ -31,9 +32,10 @@ class SelectionMixin(Field):
             name = '%s,%s' % (model.__name__, self.name)
             selection = []
             for key, source in self.selection:
-                trans = Translation.get_source(
-                    name, 'selection', language, source)
-                selection.append((key, trans or source))
+                if not isinstance(source, LazyString):
+                    source = Translation.get_source(
+                        name, 'selection', language, source) or source
+                selection.append((key, source))
         elif hasattr(self.selection, 'copy'):
             selection = self.selection.copy()
         else:
@@ -48,8 +50,9 @@ class SelectionMixin(Field):
         selection = []
         if not isinstance(self.selection, str) and self.translate_selection:
             for key, source in self.selection:
-                selection.append(
-                    (name, 'selection', language, source))
+                if not isinstance(source, LazyString):
+                    selection.append(
+                        (name, 'selection', language, source))
         return super().definition_translations(model, language) + selection
 
 

@@ -20,6 +20,7 @@ from relatorio.templates.opendocument import get_zip_file
 
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
+from trytond.tools.string_ import LazyString
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
@@ -175,6 +176,8 @@ class Translation(ModelSQL, ModelView):
         def insert(field, type, name, string):
             for val in string:
                 if not val or val in translations[type][name]:
+                    continue
+                if isinstance(val, LazyString):
                     continue
                 cursor.execute(
                     *ir_translation.insert(columns,
@@ -1173,7 +1176,10 @@ class TranslationClean(Wizard):
             Model = pool.get(model_name)
         except KeyError:
             return True
-        if field_name not in Model._fields:
+        field = Model._fields.get(field_name)
+        if not field:
+            return True
+        if translation.src not in list(field.string):
             return True
 
     @staticmethod
@@ -1271,10 +1277,13 @@ class TranslationClean(Wizard):
             Model = pool.get(model_name)
         except KeyError:
             return True
-        if field_name not in Model._fields:
+        field = Model._fields.get(field_name)
+        if not field:
             return True
-        field = Model._fields[field_name]
-        return not field.help
+        if not field.help:
+            return True
+        if translation.src not in list(field.help):
+            return True
 
     def transition_clean(self):
         pool = Pool()

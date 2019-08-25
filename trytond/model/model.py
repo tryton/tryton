@@ -4,6 +4,7 @@
 import copy
 from functools import total_ordering
 
+from trytond.i18n import lazy_gettext
 from trytond.model import fields
 from trytond.pool import Pool, PoolBase, PoolMeta
 from trytond.pyson import PYSONEncoder, PYSONDecoder
@@ -29,7 +30,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     """
     _rec_name = 'name'
 
-    id = fields.Integer('ID', readonly=True)
+    id = fields.Integer(lazy_gettext('ir.msg_ID'), readonly=True)
 
     @classmethod
     def __setup__(cls):

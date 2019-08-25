@@ -1,3 +1,4 @@
+* Add lazy_gettext
 * Add format_timedelta to Report
 * Add partial TO_CHAR support for date and datetime on SQLite
 * Setup default logging for WSGI app

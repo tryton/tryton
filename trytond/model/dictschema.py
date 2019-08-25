@@ -5,7 +5,7 @@ from collections import OrderedDict
 
 from trytond.cache import Cache
 from trytond.config import config
-from trytond.i18n import gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.model import fields
 from trytond.model.exceptions import ValidationError
 from trytond.pyson import Eval, PYSONDecoder
@@ -24,31 +24,40 @@ class SelectionError(ValidationError):
 
 class DictSchemaMixin(object):
     _rec_name = 'string'
-    name = fields.Char('Name', required=True)
-    string = fields.Char('String', translate=True, required=True)
+    name = fields.Char(lazy_gettext('ir.msg_dict_schema_name'), required=True)
+    string = fields.Char(
+        lazy_gettext('ir.msg_dict_schema_string'),
+        translate=True, required=True)
     type_ = fields.Selection([
-            ('boolean', 'Boolean'),
-            ('integer', 'Integer'),
-            ('char', 'Char'),
-            ('float', 'Float'),
-            ('numeric', 'Numeric'),
-            ('date', 'Date'),
-            ('datetime', 'DateTime'),
-            ('selection', 'Selection'),
-            ], 'Type', required=True)
-    digits = fields.Integer('Digits', states={
+            ('boolean', lazy_gettext('ir.msg_dict_schema_boolean')),
+            ('integer', lazy_gettext('ir.msg_dict_schema_integer')),
+            ('char', lazy_gettext('ir.msg_dict_schema_char')),
+            ('float', lazy_gettext('ir.msg_dict_schema_float')),
+            ('numeric', lazy_gettext('ir.msg_dict_schema_numeric')),
+            ('date', lazy_gettext('ir.msg_dict_schema_date')),
+            ('datetime', lazy_gettext('ir.msg_dict_schema_datetime')),
+            ('selection', lazy_gettext('ir.msg_dict_schema_selection')),
+            ], lazy_gettext('ir.msg_dict_schema_type'), required=True)
+    digits = fields.Integer(
+        lazy_gettext('ir.msg_dict_schema_digits'),
+        states={
             'invisible': ~Eval('type_').in_(['float', 'numeric']),
             }, depends=['type_'])
-    domain = fields.Char("Domain")
-    selection = fields.Text('Selection', states={
+    domain = fields.Char(lazy_gettext('ir.msg_dict_schema_domain'))
+    selection = fields.Text(
+        lazy_gettext('ir.msg_dict_schema_selection'),
+        states={
             'invisible': Eval('type_') != 'selection',
             }, translate=True, depends=['type_'],
-        help='A couple of key and label separated by ":" per line')
-    selection_sorted = fields.Boolean('Selection Sorted', states={
+        help=lazy_gettext('ir.msg_dict_schema_selection_help'))
+    selection_sorted = fields.Boolean(
+        lazy_gettext('ir.msg_dict_schema_selection_sorted'),
+        states={
             'invisible': Eval('type_') != 'selection',
             }, depends=['type_'],
-        help='If the selection must be sorted on label')
-    selection_json = fields.Function(fields.Char('Selection JSON',
+        help=lazy_gettext('ir.msg_dict_schema_selection_sorted_help'))
+    selection_json = fields.Function(fields.Char(
+            lazy_gettext('ir.msg_dict_schema_selection_json'),
             states={
                 'invisible': Eval('type_') != 'selection',
                 },

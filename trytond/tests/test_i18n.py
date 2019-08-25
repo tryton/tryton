@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 from trytond.tests.test_tryton import activate_module, with_transaction
-from trytond.i18n import gettext
+from trytond.i18n import gettext, lazy_gettext
 from trytond.pool import Pool
+from trytond.tools.string_ import LazyString
 
 
 class I18nTestCase(unittest.TestCase):
@@ -90,6 +91,20 @@ class I18nTestCase(unittest.TestCase):
         message = gettext('tests.not_exist')
 
         self.assertEqual(message, 'tests.not_exist')
+
+    def test_gettext_without_transaction(self):
+        "gettext return the id if there is no transaction"
+        message = gettext('test.msg_test')
+
+        self.assertEqual(message, 'test.msg_test')
+
+    @with_transaction()
+    def test_lazy_gettext(self):
+        "lazy_gettext returns a LazyString"
+        lazy = lazy_gettext('tests.msg_test')
+
+        self.assertIsInstance(lazy, LazyString)
+        self.assertEqual(str(lazy), "Message")
 
 
 def suite():

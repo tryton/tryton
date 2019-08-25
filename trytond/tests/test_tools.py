@@ -13,7 +13,7 @@ import sql.operators
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
     strip_wildcard, lstrip_wildcard, rstrip_wildcard)
-from trytond.tools.string_ import StringPartitioned
+from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
     eval_domain, localize_domain,
@@ -245,6 +245,36 @@ class StringPartitionedTestCase(unittest.TestCase):
 
         self.assertEqual(s, 'barfoo')
         self.assertEqual(list(s), ['bar', 'foo'])
+
+
+class LazyStringTestCase(unittest.TestCase):
+    "Test LazyString"
+
+    def test_init(self):
+        s = LazyString(lambda: 'foo')
+
+        self.assertIsInstance(s, LazyString)
+        self.assertEqual(str(s), 'foo')
+
+    def test_init_args(self):
+        s = LazyString(lambda a: a, 'foo')
+
+        self.assertIsInstance(s, LazyString)
+        self.assertEqual(str(s), 'foo')
+
+    def test_add(self):
+        s = LazyString(lambda: 'foo')
+
+        s = s + 'bar'
+
+        self.assertEqual(s, 'foobar')
+
+    def test_radd(self):
+        s = LazyString(lambda: 'foo')
+
+        s = 'bar' + s
+
+        self.assertEqual(s, 'barfoo')
 
 
 class DomainInversionTestCase(unittest.TestCase):

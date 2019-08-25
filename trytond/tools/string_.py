@@ -3,7 +3,7 @@
 
 # Code come from python-Levenshtein
 
-__all__ = ['StringMatcher', 'StringPartitioned']
+__all__ = ['StringMatcher', 'StringPartitioned', 'LazyString']
 
 from warnings import warn
 try:
@@ -104,3 +104,19 @@ class StringPartitioned(str):
         new = self.__class__(other + str(self))
         new._parts = (other,) + self._parts
         return new
+
+
+class LazyString():
+    def __init__(self, func, *args, **kwargs):
+        self._func = func
+        self._args = args
+        self._kwargs = kwargs
+
+    def __str__(self):
+        return self._func(*self._args, **self._kwargs)
+
+    def __add__(self, other):
+        return str(self) + other
+
+    def __radd__(self, other):
+        return other + str(self)

@@ -11,7 +11,7 @@ from sql.operators import Concat
 from trytond import backend
 from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
 from trytond.const import OPERATORS
-from trytond.tools.string_ import StringPartitioned
+from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDictTransaction
@@ -241,7 +241,8 @@ class Field(object):
         :param loading: Define how the field must be loaded:
             ``lazy`` or ``eager``.
         '''
-        assert string, 'a string is required'
+        if not isinstance(string, LazyString):
+            assert string, 'a string is required'
         self.string = string
         self.help = help
         self.required = required
@@ -454,9 +455,11 @@ class Field(object):
         for attr, ttype in [('string', 'field'), ('help', 'help')]:
             definition[attr] = ''
             for source in getattr(self, attr):
-                definition[attr] += (
-                    Translation.get_source(name, ttype, language, source)
-                    or source)
+                if not isinstance(source, LazyString):
+                    source = (
+                        Translation.get_source(name, ttype, language, source)
+                        or source)
+                definition[attr] += source
         return definition
 
     def definition_translations(self, model, language):
@@ -465,7 +468,8 @@ class Field(object):
         translations = []
         for attr, ttype in [('string', 'field'), ('help', 'help')]:
             for source in getattr(self, attr):
-                translations.append((name, ttype, language, source))
+                if not isinstance(source, LazyString):
+                    translations.append((name, ttype, language, source))
         return translations
 
 
