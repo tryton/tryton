@@ -35,7 +35,7 @@ class SelectionMixin(Field):
                 if not isinstance(source, LazyString):
                     source = Translation.get_source(
                         name, 'selection', language, source) or source
-                selection.append((key, source))
+                selection.append((key, str(source)))
         elif hasattr(self.selection, 'copy'):
             selection = self.selection.copy()
         else:
