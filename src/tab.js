@@ -1181,7 +1181,7 @@
             this.title.html(this.name_el.text());
         },
         compare: function(attributes) {
-            if (!value) {
+            if (!attributes) {
                 return false;
             }
             var compare = Sao.common.compare;
