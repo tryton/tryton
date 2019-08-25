@@ -2053,19 +2053,21 @@ function eval_pyson(value){
             this.input.focus();
         },
         get_value: function() {
-            return this.input.html() || '';
+            return this._normalize_markup(this.input.html());
         },
         set_value: function() {
             // avoid modification of not normalized value
-            this._normalize(this.input);
             var value = this.get_value();
-            var previous = this.field.get_client(this.record);
-            var previous_el = jQuery('<div/>').html(previous || '');
-            this._normalize(previous_el);
-            if (value == previous_el.html()) {
-                value = previous;
+            var prev_value  = this.field.get_client(this.record);
+            if (value == this._normalize_markup(prev_value)) {
+                value = prev_value;
             }
             this.field.set_client(this.record, value);
+        },
+        _normalize_markup: function(content) {
+            var el = jQuery('<div/>').html(content || '');
+            this._normalize(el);
+            return el.html();
         },
         _normalize: function(el) {
             // TODO order attributes
@@ -2090,8 +2092,8 @@ function eval_pyson(value){
         },
         get modified() {
             if (this.record && this.field) {
-                var value = this.field.get_client(this.record) || '';
-                this._normalize(this.input);
+                var value = this._normalize_markup(
+                    this.field.get_client(this.record));
                 return value != this.get_value();
             }
             return false;
