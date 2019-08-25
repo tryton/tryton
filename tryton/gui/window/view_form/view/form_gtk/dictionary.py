@@ -224,7 +224,7 @@ class DictNumericEntry(DictFloatEntry):
         txt_value = self.widget.get_text()
         if txt_value:
             try:
-                return locale.atof(txt_value, Decimal)
+                return Decimal(locale.delocalize(txt_value))
             except decimal.InvalidOperation:
                 pass
         return None

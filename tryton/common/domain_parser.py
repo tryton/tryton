@@ -257,7 +257,7 @@ def convert_value(field, value, context=None):
     def convert_numeric():
         factor = Decimal(field.get('factor', 1))
         try:
-            return locale.atof(value, Decimal) / factor
+            return Decimal(locale.delocalize(value)) / factor
         except (decimal.InvalidOperation, AttributeError):
             return
 

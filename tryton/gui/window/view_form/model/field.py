@@ -357,7 +357,7 @@ class NumericField(FloatField):
 
     def convert(self, value):
         try:
-            return locale.atof(value, Decimal)
+            return Decimal(locale.delocalize(value))
         except decimal.InvalidOperation:
             return self._default
 

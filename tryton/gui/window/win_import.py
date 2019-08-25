@@ -204,7 +204,7 @@ class WinImport(WinCSV):
                     elif type_ == 'float':
                         val = locale.atof(val)
                     elif type_ == 'numeric':
-                        val = locale.atof(val, Decimal)
+                        val = Decimal(locale.delocalize(val))
                     elif type_ in ['date', 'datetime']:
                         val = date_parse(val, common.date_format())
                 row.append(val)
