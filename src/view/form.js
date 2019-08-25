@@ -2077,17 +2077,22 @@ function eval_pyson(value){
         focus: function() {
             this.input.focus();
         },
+        get_value: function() {
+            return this._normalize_markup(this.input.html());
+        },
         set_value: function(record, field) {
             // avoid modification of not normalized value
-            this._normalize(this.input);
-            var value = this.input.html() || '';
-            var previous = field.get_client(record);
-            var previous_el = jQuery('<div/>').html(previous || '');
-            this._normalize(previous_el);
-            if (value == previous_el.html()) {
-                value = previous;
+            var value = this.get_value();
+            var prev_value  = field.get_client(record);
+            if (value == this._normalize_markup(prev_value)) {
+                value = prev_value;
             }
             field.set_client(record, value);
+        },
+        _normalize_markup: function(content) {
+            var el = jQuery('<div/>').html(content || '');
+            this._normalize(el);
+            return el.html();
         },
         _normalize: function(el) {
             // TODO order attributes
