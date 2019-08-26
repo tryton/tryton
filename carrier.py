@@ -106,10 +106,11 @@ class WeightPriceList(ModelSQL, ModelView):
     carrier = fields.Many2One('carrier', 'Carrier', required=True, select=True,
         help="The carrier that the price list belongs to.")
     weight = fields.Float('Weight',
-        digits=(16, Eval('_parent_carrier.weight_uom_digits', 2)),
+        digits=(16, Eval('_parent_carrier', {}).get('weight_uom_digits', 2)),
         help="The lower limit for the price.")
     price = fields.Numeric('Price',
-        digits=(16, Eval('_parent_carrier.weight_currency_digits', 2)),
+        digits=(16, Eval('_parent_carrier', {}).get(
+                'weight_currency_digits', 2)),
         help="The price of the carrier service.")
 
     @classmethod
