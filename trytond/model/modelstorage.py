@@ -16,7 +16,8 @@ from trytond.model import Model
 from trytond.model import fields
 from trytond.tools import reduce_domain, memoize, is_instance_method, \
     grouped_slice
-from trytond.tools.domain_inversion import domain_inversion
+from trytond.tools.domain_inversion import (
+    domain_inversion, parse as domain_parse)
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
 from trytond.const import OPERATORS
 from trytond.config import config
@@ -1122,14 +1123,30 @@ class ModelStorage(Model):
                         if is_pyson(domain):
                             domain = _record_eval_pyson(
                                 invalid_record, domain)
-                        invalid_domain = domain_inversion(
-                            domain, field.name,
-                            EvalEnvironment(invalid_record, cls))
-                        field_def = cls.fields_get([field.name])
-                        raise DomainValidationError(
-                            gettext('ir.msg_domain_validation_record',
-                                **cls.__names__(field.name)),
-                            domain=(invalid_domain, field_def))
+                        msg = gettext(
+                            'ir.msg_domain_validation_record',
+                            **cls.__names__(field.name))
+                        fields = set()
+                        level = 0
+                        if field not in Relation._fields.values():
+                            expression = domain_parse(domain)
+                            for variable in expression.variables:
+                                parts = variable.split('.')
+                                fields.add(parts[0])
+                                level = max(level, len(parts))
+                        else:
+                            fields.add(field.name)
+                        for field_name in sorted(fields):
+                            invalid_domain = domain_inversion(
+                                domain, field_name,
+                                EvalEnvironment(invalid_record, Relation))
+                            if isinstance(invalid_domain, bool):
+                                continue
+                            field_def = Relation.fields_get(
+                                [field_name], level=level)
+                            raise DomainValidationError(
+                                msg, domain=(invalid_domain, field_def))
+                        raise DomainValidationError(msg)
 
         field_names = set(field_names or [])
         function_fields = {name for name, field in cls._fields.items()

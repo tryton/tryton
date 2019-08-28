@@ -232,6 +232,50 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
+    def test_relation_domain(self):
+        "Test valid relation domain"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{'value': 'valid'}])
+
+        record, = Model.create([{'relation': target.id}])
+
+    @with_transaction()
+    def test_relation_domain_invalid(self):
+        "Test invalid relation domain"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{'value': 'invalid'}])
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create([{'relation': target.id}])
+        self.assertEqual(cm.exception.domain[0], [('value', '=', 'valid')])
+        self.assertTrue(cm.exception.domain[1]['value'])
+
+    @with_transaction()
+    def test_relation2_domain_invalid(self):
+        "Test invalid relation domain with 2 level"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain2')
+        Target2 = pool.get('test.modelstorage.relation_domain2.target')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{'value': 'invalid'}])
+        target2, = Target2.create([{'relation2': target.id}])
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create([{'relation': target2.id}])
+        self.assertEqual(
+            cm.exception.domain[0], [('relation2.value', '=', 'valid')])
+        self.assertTrue(cm.exception.domain[1]['relation2'])
+        self.assertTrue(
+            cm.exception.domain[1]['relation2']['relation_fields']['value'])
+
+    @with_transaction()
     def test_check_xml_record_without_record(self):
         "Test check_xml_record without record"
         pool = Pool()
