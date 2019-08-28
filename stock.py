@@ -111,6 +111,9 @@ class Move(metaclass=PoolMeta):
 
     def get_product_secondary_uom_category(self, name):
         category = None
+        if self.secondary_unit:
+            # Stay valid even if origin has been deleted
+            category = self.secondary_unit.category.id
         if isinstance(self.origin, self.__class__):
             if self.origin.product_secondary_uom_category:
                 category = self.origin.product_secondary_uom_category.id
