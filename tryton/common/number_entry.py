@@ -49,14 +49,14 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         buffer_ = self.get_buffer()
         text = self.get_buffer().get_text()
         text = text[:position] + new_text + text[position:]
-        if text in ['-', self.__decimal_point]:
-            pass
-        else:
+        value = None
+        if text not in ['-', self.__decimal_point]:
             try:
                 value = locale.atof(text)
             except ValueError:
                 return position
-        if self.__digits is not None and round(value, self.__digits) != value:
+        if (value and self.__digits is not None
+                and round(value, self.__digits) != value):
             return position
         buffer_.insert_text(position, new_text, length)
         return position + length
