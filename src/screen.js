@@ -1933,7 +1933,7 @@
             if (name) {
                 query_string.push(['name', dumps(name)]);
             }
-            if (this.attributes.tab_domain) {
+            if (!jQuery.isEmptyObject(this.attributes.tab_domain)) {
                 query_string.push([
                     'tab_domain', dumps(this.attributes.tab_domain)]);
             }
