@@ -111,6 +111,8 @@ class FieldDescriptor(object):
         return instance._values.get(self.name, self.default)
 
     def __set__(self, instance, value):
+        if self.definition.get('readonly'):
+            raise AttributeError
         if instance.id > 0:
             instance._read(self.name)
         previous = getattr(instance, self.name)
