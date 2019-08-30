@@ -3,6 +3,7 @@
 import logging
 import smtplib
 from email.message import Message
+from email.utils import formatdate
 from urllib.parse import parse_qs, unquote_plus
 
 from .config import config, parse_uri
@@ -29,6 +30,8 @@ def sendmail(from_addr, to_addrs, msg, server=None):
         quit = True
     else:
         quit = False
+    if 'Date' not in msg:
+        msg['Date'] = formatdate()
     try:
         senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
     except smtplib.SMTPException:
