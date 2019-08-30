@@ -893,6 +893,11 @@ class Model(object):
             if definition.get('readonly') and definition['type'] != 'one2many':
                 continue
             values[name] = getattr(self, '__%s_value' % name)
+            # Sending an empty X2Many fields breaks ModelFieldAccess.check
+            if (definition['type'] in {'one2many', 'many2many'}
+                    and not values[name]):
+                breakpoint()
+                del values[name]
         return values
 
     @property
