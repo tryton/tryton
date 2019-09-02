@@ -108,13 +108,15 @@
         },
         create_tabcontent: function() {
             this.el = jQuery('<div/>', {
-                'class': this.class_
+                'class': 'panel panel-default ' + this.class_,
             });
 
             var toolbar = this.create_toolbar().appendTo(this.el);
             this.title = toolbar.find('.title');
 
-            this.content = jQuery('<div/>').appendTo(this.el);
+            this.content = jQuery('<div/>', {
+                'class': 'panel-body',
+            }).appendTo(this.el);
 
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
@@ -158,7 +160,7 @@
         },
         create_toolbar: function() {
             var toolbar = jQuery('<nav/>', {
-                'class': 'toolbar navbar navbar-default',
+                'class': 'toolbar panel-heading',
                 'role': 'toolbar'
             }).append(jQuery('<div/>', {
                 'class': 'container-fluid'
@@ -1347,7 +1349,7 @@
                         action.screen.tab = this;
                     }
                 }.bind(this));
-                this.el.append(this.board.el);
+                this.content.append(this.board.el);
             }.bind(this));
             this.create_tabcontent();
             this.set_name(this.name);
