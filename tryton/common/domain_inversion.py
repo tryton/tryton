@@ -105,7 +105,7 @@ def inverse_leaf(domain):
     if domain in ('AND', 'OR'):
         return domain
     elif is_leaf(domain):
-        if 'child_of' in domain[1]:
+        if 'child_of' in domain[1] and '.' not in domain[0]:
             if len(domain) == 3:
                 return domain
             else:
