@@ -334,8 +334,8 @@ function eval_pyson(value){
             var widgets, error_el, pages, is_ancestor;
 
             var currently_focused = jQuery(document.activeElement);
-            var has_focus = currently_focused.closest(this.el) > 0;
-            if (reset_view || has_focus) {
+            var has_focus = currently_focused.closest(this.el).length > 0;
+            if (reset_view || !has_focus) {
                 if (reset_view) {
                     for (i = 0; i < this.notebooks.length; i++) {
                         notebook = this.notebooks[i];
