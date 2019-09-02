@@ -460,7 +460,7 @@ class InventoryLine(ModelSQL, ModelView):
         '''
         values = {}
         # if nothing changed, no update
-        if self.quantity == self.expected_quantity == quantity:
+        if self.expected_quantity == quantity:
             return values
         values['expected_quantity'] = quantity
         return values
