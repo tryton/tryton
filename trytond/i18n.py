@@ -10,7 +10,10 @@ def gettext(message_id, *args, **variables):
     if not Transaction().database:
         return message_id
     pool = Pool()
-    Message = pool.get('ir.message')
+    try:
+        Message = pool.get('ir.message')
+    except KeyError:
+        return message_id
     if not args:
         language = Transaction().language
     else:
