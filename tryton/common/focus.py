@@ -54,7 +54,8 @@ def get_focus_children(widget):
 def find_focusable_child(widget):
     if not widget.get_visible():
         return None
-    if widget.get_can_focus():
+    if (widget.get_can_focus()
+            and (not isinstance(widget, Gtk.Entry) or widget.props.editable)):
         return widget
     for child in get_focus_children(widget):
         focusable = find_focusable_child(child)
