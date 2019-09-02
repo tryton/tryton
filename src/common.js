@@ -2167,7 +2167,7 @@
             if (~['AND', 'OR'].indexOf(domain)) {
                 return domain;
             } else if (this.is_leaf(domain)) {
-                if (domain[1].contains('child_of')) {
+                if (domain[1].contains('child_of') && !domain[0].contains('.')) {
                     if (domain.length == 3) {
                         return domain;
                     } else {
