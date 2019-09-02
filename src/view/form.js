@@ -4487,6 +4487,7 @@ function eval_pyson(value){
         create_widget: function() {
             Sao.View.Form.Dict.Date._super.create_widget.call(this);
             this.date = this.input.parent();
+            this.date.addClass('input-icon input-icon-primary');
             Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                 .appendTo(jQuery('<div/>', {
                     'class': 'datepickerbutton icon-input icon-primary',
