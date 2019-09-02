@@ -904,7 +904,6 @@ class Model(object):
             # Sending an empty X2Many fields breaks ModelFieldAccess.check
             if (definition['type'] in {'one2many', 'many2many'}
                     and not values[name]):
-                breakpoint()
                 del values[name]
         return values
 
