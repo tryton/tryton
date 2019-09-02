@@ -65,6 +65,10 @@ class TrytondWSGI(object):
             return func
         return decorator
 
+    def error_handler(self, handler):
+        self.error_handlers.append(handler)
+        return handler
+
     @wrapt.decorator
     def auth_required(self, wrapped, instance, args, kwargs):
         request = args[0]
@@ -111,7 +115,7 @@ class TrytondWSGI(object):
             e.__format_traceback__ = tb_s
             response = e
             for error_handler in self.error_handlers:
-                rv = error_handler(e)
+                rv = error_handler(self, request, e)
                 if isinstance(rv, Response):
                     response = rv
             return response
