@@ -21,7 +21,7 @@
     "eonasdan-bootstrap-datetimepicker": "^4.17",
     "gettext.js": "^0.5",
     "c3": "^0.6",
-    "papaparse": "^4.1",
+    "papaparse": "^5.0",
     "fullcalendar": "^3.0",
     "mousetrap": "^1.6",
     "bootstrap-rtl-ondemand": "^3.3.4-ondemand"
