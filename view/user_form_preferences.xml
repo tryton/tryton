@@ -4,5 +4,6 @@
         position="after">
         <label name="mobile"/>
         <field name="mobile"/>
+        <newline/>
     </xpath>
 </data>
