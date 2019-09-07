@@ -85,7 +85,7 @@ Receive cash::
     >>> journal_cash, = Journal.find([('type', '=', 'cash')])
     >>> move = Move()
     >>> move.period = period
-    >>> move.data = period.start_date
+    >>> move.date = period.start_date
     >>> move.journal = journal_cash
     >>> line = move.lines.new()
     >>> line.account = account_cash
