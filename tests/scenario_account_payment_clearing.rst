@@ -49,7 +49,6 @@ Create chart of accounts::
     >>> bank_clearing.type = payable.type
     >>> bank_clearing.reconcile = True
     >>> bank_clearing.deferral = True
-    >>> bank_clearing.kind = 'other'
     >>> bank_clearing.save()
 
     >>> Journal = Model.get('account.journal')
