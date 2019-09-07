@@ -462,14 +462,10 @@ class ProductQuantitiesByWarehouseContext(ModelView):
             ],
         help="The warehouse for which the quantities will be calculated.")
 
-    @staticmethod
-    def default_warehouse():
+    @classmethod
+    def default_warehouse(cls):
         Location = Pool().get('stock.location')
-        warehouses = Location.search([
-                ('type', '=', 'warehouse'),
-                ])
-        if len(warehouses) == 1:
-            return warehouses[0].id
+        return Location.get_default_warehouse()
 
 
 class OpenProductQuantitiesByWarehouse(Wizard):

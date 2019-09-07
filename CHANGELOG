@@ -1,3 +1,5 @@
+* Let the user select a default warehouse
+* Add method to get default warehouse
 * Improve moves synchronisation on shipments
 * Allow move as move's origin
 * Open product quantities by warehouse to show moves

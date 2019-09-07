@@ -9,6 +9,7 @@ from trytond.model import (
     ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin, fields,
     sequence_ordered, tree)
 from trytond import backend
+from trytond.cache import Cache
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
@@ -29,6 +30,9 @@ DEPENDS = ['active']
 class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     "Stock Location"
     __name__ = 'stock.location'
+    _default_warehouse_cache = Cache('stock.location.default_warehouse',
+        context=False)
+
     name = fields.Char("Name", size=None, required=True, states=STATES,
         depends=DEPENDS, translate=True)
     code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
@@ -296,6 +300,24 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             return locations[0].id
 
     @classmethod
+    def get_default_warehouse(cls):
+        warehouse = Transaction().context.get('warehouse')
+        if warehouse:
+            return warehouse
+
+        warehouse = cls._default_warehouse_cache.get(None, -1)
+        if warehouse == -1:
+            warehouses = cls.search([
+                    ('type', '=', 'warehouse'),
+                    ], limit=2)
+            if len(warehouses) == 1:
+                warehouse = warehouses[0].id
+            else:
+                warehouse = None
+            cls._default_warehouse_cache.set(None, warehouse)
+        return warehouse
+
+    @classmethod
     def search_rec_name(cls, name, clause):
         if clause[1].startswith('!') or clause[1].startswith('not '):
             bool_op = 'AND'
@@ -436,6 +458,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     def create(cls, vlist):
         locations = super(Location, cls).create(vlist)
         cls._set_warehouse_parent(locations)
+        cls._default_warehouse_cache.clear()
         return locations
 
     @classmethod
@@ -443,6 +466,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         super(Location, cls).write(*args)
         locations = sum(args[::2], [])
         cls._set_warehouse_parent(locations)
+        cls._default_warehouse_cache.clear()
 
         ids = [l.id for l in locations]
         warehouses = cls.search([
@@ -468,6 +492,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                         gettext('stock.msg_location_child_of_warehouse',
                             location=location.rec_name,
                             warehouse=warehouse.rec_name))
+
+    @classmethod
+    def delete(cls, *args):
+        super().delete(*args)
+        cls._default_warehouse_cache.clear()
 
     @classmethod
     def copy(cls, locations, default=None):

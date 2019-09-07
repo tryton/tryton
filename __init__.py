@@ -10,6 +10,7 @@ from . import product
 from . import inventory
 from . import configuration
 from . import party
+from . import res
 
 from .move import StockMixin
 
@@ -47,6 +48,7 @@ def register():
         configuration.Configuration,
         configuration.ConfigurationSequence,
         configuration.ConfigurationLocation,
+        res.User,
         module='stock', type_='model')
     Pool.register(
         shipment.AssignShipmentOut,
