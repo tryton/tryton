@@ -18,6 +18,8 @@ _MODELS = threading.local()
 
 class _EvalEnvironment(dict):
     'Dictionary for evaluation'
+    __slots__ = ('parent', 'eval_type')
+
     def __init__(self, parent, eval_type='eval'):
         super(_EvalEnvironment, self).__init__()
         self.parent = parent
@@ -82,6 +84,8 @@ class dualmethod(object):
     >>> Example().method()
     1
     """
+    __slots__ = ('func')
+
     def __init__(self, func):
         self.func = func
 
@@ -447,6 +451,8 @@ class MetaModelFactory(object):
 
         class MetaModel(type):
             'Meta class for Model'
+            __slots__ = ()
+
             def __new__(mcs, name, bases, dict):
                 if self.model_name in getattr(_MODELS, models_key):
                     return getattr(_MODELS, models_key)[self.model_name]
@@ -481,6 +487,9 @@ class MetaModelFactory(object):
 
 class ModelList(list):
     'List for Model'
+    __slots__ = ('model_name', 'parent', 'parent_field_name', 'parent_name',
+        'domain', 'context', 'add_remove', 'search_order', 'search_context',
+        'record_removed', 'record_deleted')
 
     def __init__(self, definition, sequence=None, parent=None,
             parent_field_name=''):
@@ -650,6 +659,7 @@ class ModelList(list):
 
 class Model(object):
     'Model class for Tryton records'
+    __slots__ = ('__id', '_values', '_changed', '_group', '__context')
 
     __counter = -1
     _proxy = None
@@ -725,7 +735,7 @@ class Model(object):
             name = name.encode('utf-8')
 
         class Spam(Model, metaclass=MetaModelFactory(name, config=config)()):
-            pass
+            __slots__ = ()
         return Spam
 
     @classmethod
@@ -1132,6 +1142,9 @@ class Model(object):
 
 class Wizard(object):
     'Wizard class for Tryton wizards'
+    __slots__ = ('name', 'form', 'form_state', 'actions', '_config',
+        '_context', '_proxy', 'session_id', 'start_state', 'end_state',
+        'states', 'state', 'models', 'action')
 
     def __init__(self, name, models=None, action=None, config=None,
             context=None):
@@ -1210,6 +1223,7 @@ class Wizard(object):
 
 class Report(object):
     'Report class for Tryton reports'
+    __slots__ = ('name', '_config', '_context', '_proxy')
 
     def __init__(self, name, config=None, context=None):
         super(Report, self).__init__()

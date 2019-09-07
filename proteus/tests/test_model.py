@@ -103,6 +103,14 @@ class TestModel(ProteusTestCase):
         self.assertEqual(len(User(groups=[x.id for x in groups]).groups),
                 len(groups))
 
+    def test_assign_unknown_field(self):
+        "Test it is not allowed to assign unknown field"
+        User = Model.get('res.user')
+        user = User()
+
+        with self.assertRaises(AttributeError):
+            user.unknown_field = 'foo'
+
     def test_save(self):
         User = Model.get('res.user')
         test = User()
@@ -286,7 +294,6 @@ class TestModel(ProteusTestCase):
         Group = Model.get('res.group')
         test = Group()
         test.name = 'Test delete'
-        test.login = 'test delete'
         test.save()
         test.delete()
 
