@@ -65,6 +65,17 @@
         return result;
     };
 
+    Sao.common.scrollIntoViewIfNeeded = function(element) {
+        element = element[0];
+        var rect = element.getBoundingClientRect();
+        if (rect.bottom > window.innerHeight) {
+            element.scrollIntoView(false);
+        }
+        if (rect.top < 0) {
+            element.scrollIntoView();
+        }
+    };
+
     // Handle click and Return press event
     // If one, the handler is executed at most once for both events
     Sao.common.click_press = function(func, one) {
@@ -3272,7 +3283,7 @@
                     .css('max-height', '');
                 this.input.closest('.modal-body').css('overflow', '');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', '');
-                this.input[0].scrollIntoView();
+                Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
             this.dropdown.on('show.bs.dropdown', function() {
                 this.input.closest('.treeview')
@@ -3280,7 +3291,7 @@
                     .css('max-height', 'none');
                 this.input.closest('.modal-body').css('overflow', 'visible');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', 'visible');
-                this.input[0].scrollIntoView();
+                Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
         },
         set_actions: function(actions, action_activated) {
