@@ -99,8 +99,8 @@ Add lead time inside the warehouse::
 
     >>> LeadTime = Model.get('stock.location.lead_time')
     >>> lead_time = LeadTime()
-    >>> lead_time.from_warehouse = storage_loc.warehouse
-    >>> lead_time.to_warehouse = storage_loc.warehouse
+    >>> lead_time.warehouse_from = storage_loc.warehouse
+    >>> lead_time.warehouse_to = storage_loc.warehouse
     >>> lead_time.lead_time = datetime.timedelta(1)
     >>> lead_time.save()
 
