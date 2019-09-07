@@ -1074,6 +1074,7 @@ _TaxableLine = namedtuple('_TaxableLine', ('taxes', 'unit_price', 'quantity'))
 
 
 class TaxableMixin(object):
+    __slots__ = ()
 
     @property
     def taxable_lines(self):

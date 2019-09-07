@@ -50,6 +50,7 @@ def inactive_records(func):
 def TypeMixin(template=False):
 
     class Mixin:
+        __slots__ = ()
         name = fields.Char('Name', required=True)
 
         statement = fields.Selection([
@@ -418,6 +419,7 @@ class OpenType(Wizard):
 def AccountMixin(template=False):
 
     class Mixin:
+        __slots__ = ()
         name = fields.Char('Name', required=True, select=True)
         code = fields.Char('Code', select=True)
 

@@ -362,4 +362,5 @@ class CreateMoveTemplate(ModelView):
 
 class CreateMoveKeywords(ModelView):
     'Create Move from Template'
+    __no_slots__ = True
     __name__ = 'account.move.template.create.keywords'
