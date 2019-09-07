@@ -1648,9 +1648,11 @@
                     node.click();
                 }
             }).click(function(event) {
-                node.addClass('bg-primary')
+                node.toggleClass('bg-primary')
                     .siblings().removeClass('bg-primary');
-                this.sel_predef(jQuery(event.target).attr('export_id'));
+                if (node.hasClass('bg-primary')) {
+                    this.sel_predef(node.attr('export_id'));
+                }
             }.bind(this));
             this.predef_exports_list.append(node);
         },
