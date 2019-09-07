@@ -265,6 +265,7 @@ class Context(ModelView):
 
 
 class CustomerMixin(object):
+    __slots__ = ()
     customer = fields.Many2One('party.party', "Customer")
 
     @classmethod
@@ -301,6 +302,7 @@ class CustomerTimeseries(CustomerMixin, AbstractTimeseries, ModelView):
 
 
 class ProductMixin(object):
+    __slots__ = ()
     product = fields.Many2One('product.product', "Product")
 
     @classmethod
@@ -344,6 +346,7 @@ class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
 
 
 class CategoryMixin(object):
+    __slots__ = ()
     category = fields.Many2One('product.category', "Category")
 
     @classmethod
@@ -513,7 +516,7 @@ class CategoryTree(ModelSQL, ModelView):
 
 
 class CountryMixin(object):
-
+    __slots__ = ()
     country = fields.Many2One('country.country', "Country")
 
     @classmethod
@@ -570,7 +573,7 @@ class CountryTimeseries(CountryMixin, AbstractTimeseries, ModelView):
 
 
 class SubdivisionMixin(CountryMixin):
-
+    __slots__ = ()
     subdivision = fields.Many2One('country.subdivision', "Subdivision")
 
     @classmethod
