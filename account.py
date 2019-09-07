@@ -33,6 +33,8 @@ logger = logging.getLogger(__name__)
 
 
 class _SyntaxMixin(object):
+    __slots__ = ()
+
     @classmethod
     def get_syntaxes(cls):
         pool = Pool()
