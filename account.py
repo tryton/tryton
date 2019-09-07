@@ -8,6 +8,7 @@ from trytond.pyson import If, Eval, Bool
 def AccountTypeMixin(template=False):
 
     class Mixin:
+        __slots__ = ()
         deposit = fields.Boolean(
             "Deposit",
             domain=[
