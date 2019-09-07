@@ -10,6 +10,7 @@ __all__ = ['ClassificationMixin', 'classification_tree',
 
 
 class ClassificationMixin(DeactivableMixin):
+    __slots__ = ()
     name = fields.Char('Name', translate=True, required=True)
     selectable = fields.Boolean('Selectable', select=True)
 
@@ -22,6 +23,7 @@ def classification_tree(name):
     'Return a ClassificationMixin with tree structure'
 
     class ClassificationTreeMixin(tree(separator=' / '), ClassificationMixin):
+        __slots__ = ()
         parent = fields.Many2One(name, 'Parent', select=True)
         childs = fields.One2Many(name, 'parent', 'Children')
 
