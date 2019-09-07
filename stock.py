@@ -115,6 +115,7 @@ class Move(metaclass=PoolMeta):
 
 
 class MeasurementsMixin(object):
+    __slots__ = ()
     weight = fields.Function(
         fields.Float("Weight", digits=None,
             help="The total weight of the record's moves in kg."),
