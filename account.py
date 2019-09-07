@@ -9,6 +9,7 @@ from trytond.pyson import If, Eval, Bool
 def AccountTypeMixin(template=False):
 
     class Mixin:
+        __slots__ = ()
         unearned_revenue = fields.Boolean(
             "Unearned Revenue",
             domain=[
