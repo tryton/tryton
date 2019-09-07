@@ -3,4 +3,4 @@
 
 
 class MarketingAutomationMixin:
-    pass
+    __slots__ = ()
