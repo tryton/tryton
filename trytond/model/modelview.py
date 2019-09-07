@@ -727,7 +727,7 @@ class ModelView(Model):
                         value = value.id
             elif field._type == 'one2many':
                 targets = value
-                init_targets = list(init_values.get(fname, []))
+                init_targets = list(init_values.get(fname, targets))
                 value = collections.defaultdict(list)
                 value['remove'] = [t.id for t in init_targets if t.id]
                 for i, target in enumerate(targets):
