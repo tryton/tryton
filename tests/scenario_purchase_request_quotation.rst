@@ -109,7 +109,7 @@ Create purchase requisition::
     >>> requisition_line.description = 'Description'
     >>> requisition_line.quantity = 2.0
     >>> requisition_line.supplier = supplier
-    >>> requisition_line.price = 10.0
+    >>> requisition_line.unit_price = Decimal('10.0')
     >>> requisition.warehouse = warehouse_loc
     >>> requisition.click('wait')
     >>> requisition.click('approve')
