@@ -95,6 +95,8 @@ class Letter(CompanyReport, metaclass=PoolMeta):
     def get_party_letter():
 
         class PartyLetter(object, metaclass=PoolMeta):
+            __slots__ = ('dunnings', 'payments')
+
             def __init__(self, dunnings, payments):
                 self.dunnings = dunnings
                 self.payments = payments
