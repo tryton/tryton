@@ -12,6 +12,7 @@ def sequence_ordered(
 
     class SequenceOrderedMixin(object):
         "Mixin to order model by a sequence field"
+        __slots__ = ()
 
         @classmethod
         def __setup__(cls):

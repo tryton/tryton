@@ -17,6 +17,7 @@ HOSTNAME = '.'.join(encodings.idna.ToASCII(part).decode('ascii')
 
 
 class URLAccessor(object):
+    __slots__ = ()
 
     def __get__(self, inst, cls):
         from trytond.model import Model
@@ -43,5 +44,5 @@ class URLAccessor(object):
 
 
 class URLMixin(object):
-
-        __url__ = URLAccessor()
+    __slots__ = ()
+    __url__ = URLAccessor()

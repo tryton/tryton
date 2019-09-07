@@ -1,3 +1,4 @@
+* Add __slots__
 * Pass app and request to wsgi error handlers
 * Add lazy_gettext
 * Add format_timedelta to Report

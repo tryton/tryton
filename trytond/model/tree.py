@@ -12,6 +12,7 @@ class RecursionError(ValidationError):
 
 def tree(parent='parent', name='name', separator=None):
     class TreeMixin(object):
+        __slots__ = ()
 
         if separator:
             @classmethod

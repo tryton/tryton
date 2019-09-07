@@ -6,6 +6,7 @@ from trytond.model import fields
 
 class DeactivableMixin(object):
     "Mixin to allow to soft deletion of records"
+    __slots__ = ()
 
     active = fields.Boolean(
         lazy_gettext('ir.msg_active'),

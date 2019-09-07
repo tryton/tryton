@@ -351,7 +351,7 @@ class ModelSQLTestCase(unittest.TestCase):
         # Create target record without required name
         # to ensure create_records is filled to prevent raising
         # foreign_model_missing
-        record = ParentModel(name="test")
+        record = ParentModel()
         record.targets = [TargetModel()]
         with self.assertRaises(RequiredValidationError) as cm:
             record.save()

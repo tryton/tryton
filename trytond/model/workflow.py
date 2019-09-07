@@ -8,6 +8,7 @@ class Workflow(object):
     """
     Mix-in class to handle transition check.
     """
+    __slots__ = ()
     _transition_state = 'state'
 
     @classmethod

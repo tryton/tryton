@@ -178,6 +178,7 @@ class StateReport(StateAction):
 
 
 class Wizard(URLMixin, PoolBase):
+    __no_slots__ = True  # To allow setting State
     start_state = 'start'
     end_state = 'end'
 

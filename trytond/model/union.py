@@ -8,6 +8,7 @@ from trytond.pool import Pool
 
 class UnionMixin:
     'Mixin to combine models'
+    __slots__ = ()
 
     @staticmethod
     def union_models():

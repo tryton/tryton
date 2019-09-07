@@ -164,6 +164,7 @@ class ModelSQL(ModelStorage):
     """
     Define a model with storage in database.
     """
+    __slots__ = ()
     _table = None  # The name of the table in database
     _order = None
     _order_name = None  # Use to force order field when sorting on Many2One

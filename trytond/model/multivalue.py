@@ -6,6 +6,7 @@ from .match import MatchMixin
 
 
 class MultiValueMixin(object):
+    __slots__ = ()
 
     @classmethod
     def multivalue_model(cls, field):

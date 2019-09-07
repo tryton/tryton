@@ -97,6 +97,7 @@ class ModelView(Model):
     """
     Define a model with views in Tryton.
     """
+    __slots__ = ()
     __modules_list = None  # Cache for the modules list sorted by dependency
     _fields_view_get_cache = Cache('modelview.fields_view_get')
     _view_toolbar_get_cache = Cache('modelview.view_toolbar_get')

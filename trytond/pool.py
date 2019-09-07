@@ -15,6 +15,8 @@ logger = logging.getLogger(__name__)
 class PoolMeta(type):
 
     def __new__(cls, name, bases, dct):
+        if '__slots__' not in dct and not dct.get('__no_slots__'):
+            dct['__slots__'] = ()
         new = type.__new__(cls, name, bases, dct)
         if '__name__' in dct:
             try:
@@ -215,7 +217,8 @@ class Pool(object):
                     continue
                 try:
                     previous_cls = self.get(cls.__name__, type=type_)
-                    cls = type(cls.__name__, (cls, previous_cls), {})
+                    cls = type(
+                        cls.__name__, (cls, previous_cls), {'__slots__': ()})
                 except KeyError:
                     pass
                 assert issubclass(cls, PoolBase), cls

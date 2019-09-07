@@ -23,6 +23,7 @@ class SelectionError(ValidationError):
 
 
 class DictSchemaMixin(object):
+    __slots__ = ()
     _rec_name = 'string'
     name = fields.Char(lazy_gettext('ir.msg_dict_schema_name'), required=True)
     string = fields.Char(

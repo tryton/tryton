@@ -92,6 +92,8 @@ class ModelStorage(Model):
     """
     Define a model with storage capability in Tryton.
     """
+    __slots__ = ('_transaction', '_user', '_context', '_ids',
+        '_transaction_cache', '_local_cache')
 
     create_uid = fields.Many2One(
         'res.user', lazy_gettext('ir.msg_created_by'), readonly=True)
@@ -1667,6 +1669,7 @@ class ModelStorage(Model):
 
 
 class EvalEnvironment(dict):
+    __slots__ = ('_record', '_model')
 
     def __init__(self, record, Model):
         super(EvalEnvironment, self).__init__()

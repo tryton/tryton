@@ -3,6 +3,7 @@
 
 
 class MatchMixin(object):
+    __slots__ = ()
 
     def match(self, pattern, match_none=False):
         '''Match on pattern
