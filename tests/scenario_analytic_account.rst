@@ -83,8 +83,6 @@ Create Move analytic accounts::
     >>> line.account = revenue
     >>> line.credit = Decimal(42)
     >>> analytic_line = line.analytic_lines.new()
-    >>> analytic_line.journal = journal_revenue
-    >>> analytic_line.name = 'Analytic Line'
     >>> analytic_line.credit = line.credit
     >>> analytic_line.account = analytic_account
     >>> line = move.lines.new()
