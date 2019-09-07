@@ -520,7 +520,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         for key in computed_taxes:
             if key not in tax_keys:
                 self.tax_amount += computed_taxes[key]['amount']
-                value = InvoiceTax.default_get(list(InvoiceTax._fields.keys()))
+                value = InvoiceTax.default_get(
+                    list(InvoiceTax._fields.keys()), with_rec_name=False)
                 value.update(computed_taxes[key])
                 invoice_tax = InvoiceTax(**value)
                 if invoice_tax.tax:
