@@ -74,7 +74,6 @@ Create subscription service::
     >>> template.default_uom = unit
     >>> template.type = 'service'
     >>> template.list_price = Decimal('10')
-    >>> template.account_revenue = revenue
     >>> template.save()
     >>> product, = template.products
 
