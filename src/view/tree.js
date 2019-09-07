@@ -1237,15 +1237,24 @@
 
             Sao.View.Tree.RowEditable._super.redraw.call(this, selected,
                     expanded);
+            var display_callback = function(widget) {
+                var record = this.record;
+                return function() {
+                    var field = record.model.fields[widget.field_name];
+                    field.set_state(record);
+                    widget.display(record, field);
+                };
+            }.bind(this);
             // The autocompletion widget do not call display thus we have to
             // call it when redrawing the row
             for (i = 0; i < this.tree.columns.length; i++) {
+                var column = this.tree.columns[i];
                 td = this._get_column_td(i);
                 tr = td.find('tr');
                 widget = jQuery(tr.children('.widget-editable')).data('widget');
                 if (widget) {
-                    field = this.record.model.fields[widget.field_name];
-                    widget.display(this.record, field);
+                    this.record.load(column.attributes.name).done(
+                        display_callback(widget));
                 }
             }
         },
@@ -1307,16 +1316,8 @@
                 if (!col.field) {
                     continue;
                 }
-                var state_attrs = col.field.get_state_attrs(this.record);
-                var readonly = col.attributes.readonly;
-                if (readonly === undefined) {
-                    readonly = state_attrs.readonly;
-                    if (readonly === undefined) {
-                        readonly = false;
-                    }
-                }
 
-                if (!readonly) {
+                if (!col.attributes.readonly) {
                     var EditableBuilder = Sao.View.editabletree_widget_get(
                         col.attributes.widget);
                     var widget = new EditableBuilder(col.attributes.name,
