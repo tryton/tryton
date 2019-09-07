@@ -29,6 +29,7 @@ class TaxRule(metaclass=PoolMeta):
 
 
 class _TaxRuleLineMixin:
+    __slots__ = ()
     from_country = fields.Many2One(
         'country.country', 'From Country', ondelete='RESTRICT',
         help="Apply only to addresses of this country.")
