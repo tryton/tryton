@@ -7,6 +7,7 @@ __all__ = ['CompanyMultiValueMixin', 'CompanyValueMixin']
 
 
 class CompanyMultiValueMixin(MultiValueMixin):
+    __slots__ = ()
 
     def multivalue_records(self, field):
         Value = self.multivalue_model(field)
@@ -33,5 +34,6 @@ class CompanyMultiValueMixin(MultiValueMixin):
 
 
 class CompanyValueMixin(ValueMixin):
+    __slots__ = ()
     company = fields.Many2One(
         'company.company', "Company", select=True, ondelete='CASCADE')
