@@ -77,6 +77,18 @@ class ModelView(unittest.TestCase):
                     },
                 })
 
+        # no initial value
+        record = Model()
+        record._values = {}
+        target = Target(id=1)
+        record._values['targets'] = [target]
+        target.name = 'foo'
+        self.assertEqual(record._changed_values, {
+                'targets': {
+                    'update': [{'id': 1, 'name': 'foo'}],
+                    },
+                })
+
     @with_transaction(context={'_check_access': True})
     def test_button_access(self):
         'Test Button Access'
