@@ -11,6 +11,7 @@ from trytond.modules.product.exceptions import UOMValidationError
 
 
 class SaleSecondaryMixin:
+    __slots__ = ()
     sale_secondary_uom = fields.Many2One(
         'product.uom', "Sale Secondary UOM",
         domain=[
