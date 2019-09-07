@@ -45,7 +45,6 @@ Create waiting account::
     >>> waiting_account.reconcile = True
     >>> waiting_account.deferral = True
     >>> waiting_account.party_required = False
-    >>> waiting_account.kind = 'payable'
     >>> waiting_account.save()
 
 Create customer::
