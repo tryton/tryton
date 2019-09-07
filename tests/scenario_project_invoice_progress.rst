@@ -109,10 +109,6 @@ Create a Project::
     >>> TimesheetWork = Model.get('timesheet.work')
     >>> project = ProjectWork()
     >>> project.name = 'Test effort'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Test effort'
-    >>> work.save()
-    >>> project.work = work
     >>> project.type = 'project'
     >>> project.party = customer
     >>> project.project_invoice_method = 'progress'
@@ -120,10 +116,6 @@ Create a Project::
     >>> project.effort_duration = datetime.timedelta(hours=1)
     >>> task = ProjectWork()
     >>> task.name = 'Task 1'
-    >>> work = TimesheetWork()
-    >>> work.name = 'Task 1'
-    >>> work.save()
-    >>> task.work = work
     >>> task.type = 'task'
     >>> task.product = product
     >>> task.effort_duration = datetime.timedelta(hours=5)
