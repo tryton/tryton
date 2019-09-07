@@ -465,7 +465,7 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
 
 
 class AnalyticMixin(object):
-
+    __slots__ = ()
     analytic_accounts = fields.One2Many('analytic.account.entry', 'origin',
         'Analytic Accounts',
         size=Eval('analytic_accounts_size', 0),

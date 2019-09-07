@@ -200,12 +200,12 @@ class AnalyticAccountTestCase(ModuleTestCase):
 
             expense_line.analytic_lines = [
                 AnalyticLine(
-                    account=analytic_account1, name='Test',
-                    debit=Decimal(50), journal=journal_expense,
+                    account=analytic_account1,
+                    debit=Decimal(50),
                     date=period.start_date),
                 AnalyticLine(
-                    account=analytic_account2, name='Test',
-                    debit=Decimal(50), journal=journal_expense,
+                    account=analytic_account2,
+                    debit=Decimal(50),
                     date=period.start_date),
                 ]
             expense_line.save()
