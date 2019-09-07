@@ -138,6 +138,7 @@ class InventoryCount(metaclass=PoolMeta):
 
 
 class LotUnitMixin(object):
+    __slots__ = ()
     _lot_unit_moves = None
 
     @classmethod
