@@ -1760,13 +1760,16 @@
         },
         reload: function(ids, written) {
             this.group.reload(ids);
+            var promises = [];
             if (written) {
-                this.group.written(ids);
+                promises.push(this.group.written(ids));
             }
             if (this.group.parent) {
-                this.group.parent.root_parent.reload();
+                promises.push(this.group.parent.root_parent.reload());
             }
-            return this.display();
+            return jQuery.when.apply(jQuery, promises).then(function() {
+                this.display();
+            }.bind(this));
         },
         get_buttons: function() {
             var selected_records = this.current_view.selected_records;
