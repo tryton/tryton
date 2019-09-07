@@ -846,7 +846,7 @@ class Line(
             return self.origin.company.id
         return company
 
-    @fields.depends('origin', '_parent_origin.state')
+    @fields.depends('origin', '_parent_origin.statement_state')
     def on_change_with_statement_state(self, name=None):
         try:
             state = super(Line, self).on_change_with_statement_state()
