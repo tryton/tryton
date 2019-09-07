@@ -124,7 +124,7 @@ class ContactMechanism(
             return 'fax:%s' % value
         return None
 
-    @fields.depends('party', '_parent_party.addreses')
+    @fields.depends('party', '_parent_party.addresses')
     def _phone_country_codes(self):
         if self.party:
             for address in self.party.addresses:
