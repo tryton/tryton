@@ -103,9 +103,6 @@ Create return shipment out::
     >>> Shipment_out_Return = Model.get('stock.shipment.out.return')
     >>> shipment_out_return = Shipment_out_Return()
     >>> shipment_out_return.customer = customer
-    >>> shipment_out_return.supplier = supplier
-    >>> shipment_out_return.from_location = output_loc
-    >>> shipment_out_return.to_location = supplier_loc
     >>> shipment_out_return.save()
 
 Add one shipment return line::
