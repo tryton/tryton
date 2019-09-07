@@ -103,7 +103,7 @@ Create Internal Shipment from lost_found location::
     >>> move = StockMove()
     >>> move = lost_found_shipment.moves.new()
     >>> move.product = product
-    >>> move.oum = unit
+    >>> move.uom = unit
     >>> move.quantity = 2
     >>> move.from_location = lost_found_loc
     >>> move.to_location = internal_loc
@@ -136,8 +136,8 @@ Add lead time inside the warehouse::
     >>> set_user(1)
     >>> LeadTime = Model.get('stock.location.lead_time')
     >>> lead_time = LeadTime()
-    >>> lead_time.from_warehouse = storage_loc.warehouse
-    >>> lead_time.to_warehouse = storage_loc.warehouse
+    >>> lead_time.warehouse_from = internal_loc.warehouse
+    >>> lead_time.warehouse_to = storage_loc.warehouse
     >>> lead_time.lead_time = datetime.timedelta(1)
     >>> lead_time.save()
 
