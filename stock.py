@@ -178,6 +178,7 @@ class Move(metaclass=PoolMeta):
 
 
 class PackageMixin(object):
+    __slots__ = ()
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         states={
             'readonly': Eval('state').in_(['packed', 'done', 'cancel']),
