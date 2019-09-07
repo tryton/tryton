@@ -122,6 +122,7 @@ class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
 def AccountTypeMixin(template=False):
 
     class Mixin:
+        __slots__ = ()
         fixed_asset = fields.Boolean(
             "Fixed Asset",
             domain=[
