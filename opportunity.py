@@ -510,6 +510,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
 
 
 class SaleOpportunityReportMixin:
+    __slots__ = ()
     number = fields.Integer('Number')
     converted = fields.Integer('Converted')
     conversion_rate = fields.Function(fields.Float('Conversion Rate',
