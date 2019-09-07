@@ -480,6 +480,45 @@
             };
             return jQuery.when().then(browse_child);
         };
+        array.set_sequence = function(field) {
+            var changed = false;
+            var prev = null;
+            var record, index, update, value;
+            for (var i=0; i < this.length; i++) {
+                record = this[i];
+                if (record.get_loaded([field]) || changed || record.id < 0) {
+                    if (prev) {
+                        index = prev.field_get(field);
+                    } else {
+                        index = null;
+                    }
+                    update = false;
+                    value = record.field_get(field);
+                    if (value === null) {
+                        if (index) {
+                            update = true;
+                        } else if (prev && (record.id >= 0)) {
+                            update = record.id < prev.id;
+                        }
+                    } else if (value === index) {
+                        if (prev && (record.id >= 0)) {
+                            update = record.id < prev.id;
+                        }
+                    } else if (value <= (index || 0)) {
+                        update = true;
+                    }
+                    if (update) {
+                        if (index === null) {
+                            index = 0;
+                        }
+                        index += 1;
+                        record.field_set_client(field, index);
+                        changed = record;
+                    }
+                }
+                prev = record;
+            }
+        };
         return array;
     };
 
@@ -1255,6 +1294,33 @@
             }
             path.reverse();
             return path;
+        },
+        children_group: function(field_name) {
+            var group_prm = jQuery.Deferred();
+            if (!field_name) {
+                group_prm.resolve([]);
+                return group_prm;
+            }
+            var load_prm = this._check_load([field_name]);
+            load_prm.done(function() {
+                var group = this._values[field_name];
+                if (group === undefined) {
+                    group_prm.resolve(null);
+                    return;
+                }
+
+                if (group.model.fields !== this.group.model.fields) {
+                    jQuery.extend(this.group.model.fields, group.model.fields);
+                    group.model.fields = this.group.model.fields;
+                }
+                group.on_write = this.group.on_write;
+                group.readonly = this.group.readonly;
+                jQuery.extend(group._context, this.group._context);
+
+                group_prm.resolve(group);
+                return;
+            }.bind(this));
+            return group_prm;
         },
         get deleted() {
             return Boolean(~this.group.record_deleted.indexOf(this));

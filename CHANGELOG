@@ -1,3 +1,5 @@
+* Manage sequence
+* Add drag and drop on tree views
 * Support expand on column
 * Set minimal width for columns
 * Order Dict keys by sequence

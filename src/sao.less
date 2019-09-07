@@ -213,10 +213,13 @@ img.icon {
         width: 100%;
         table-layout: fixed;
 
-        col.selection-state, col.favorite {
+        col.selection-state, col.favorite, col.draggable-handle {
             width: 30px;
         }
 
+        td.draggable-handle {
+            cursor: grab;
+        }
         th.selection-state, td.selection-state {
             > input {
                 .center-block();
@@ -244,6 +247,9 @@ img.icon {
             > * {
                 vertical-align: middle;
             }
+        }
+        > tbody > tr.dragged-row {
+            background-color: @state-info-bg;
         }
 
         td.prefix {

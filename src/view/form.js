@@ -2959,6 +2959,17 @@ function eval_pyson(value){
                         !this.position || !access.write || !access.read);
             }
         },
+        _sequence: function() {
+            for (var i=0, len = this.screen.views.length; i < len; i++) {
+                var view = this.screen.views[i];
+                if (view.view_type == 'tree') {
+                    var sequence = view.attributes.sequence;
+                    if (sequence) {
+                        return sequence;
+                    }
+                }
+            }
+        },
         display: function() {
             Sao.View.Form.One2Many._super.display.call(this);
 
@@ -3027,7 +3038,7 @@ function eval_pyson(value){
             domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
 
-            // TODO sequence
+            var sequence = self._sequence();
 
             var callback = function(result) {
                 var prm = jQuery.when();
@@ -3039,6 +3050,9 @@ function eval_pyson(value){
                     }
                     this.screen.group.load(ids, true);
                     prm = this.screen.display();
+                    if (sequence) {
+                        this.screen.group.set_sequence(sequence);
+                    }
                 }
                 prm.done(function() {
                     this.screen.set_cursor();
@@ -3083,17 +3097,22 @@ function eval_pyson(value){
         new_single: function() {
             var context = jQuery.extend({},
                     this.field.get_context(this.record));
-            // TODO sequence
+            var sequence = this._sequence();
+            var update_sequence = function() {
+                if (sequence) {
+                    this.screen.group.set_sequence(sequence);
+                }
+            }.bind(this);
             if (this.screen.current_view.type == 'form' ||
                     this.screen.current_view.editable) {
-                this.screen.new_();
+                this.screen.new_().then(update_sequence);
                 this.screen.current_view.el.prop('disabled', false);
             } else {
                 var record = this.record;
                 var field_size = record.expr_eval(
                     this.attributes.size) || -1;
                 field_size -= this.field.get_eval(record);
-                var win = new Sao.Window.Form(this.screen, function() {}, {
+                var win = new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
                     many: field_size,
                     context: context,
@@ -3162,6 +3181,10 @@ function eval_pyson(value){
                                 record.set_default(default_value);
                             });
                         });
+                        var sequence = this._sequence();
+                        if (sequence) {
+                            screen.group.set_sequence(sequence);
+                        }
                     };
 
                     search_set();
