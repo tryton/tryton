@@ -639,6 +639,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
 def origin_mixin(_states, _depends):
     class Mixin:
+        __slots__ = ()
         statement = fields.Many2One(
             'account.statement', "Statement",
             required=True, ondelete='CASCADE', states=_states,
