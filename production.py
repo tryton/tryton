@@ -244,9 +244,7 @@ class Production(Workflow, ModelSQL, ModelView):
     @classmethod
     def default_warehouse(cls):
         Location = Pool().get('stock.location')
-        locations = Location.search(cls.warehouse.domain)
-        if len(locations) == 1:
-            return locations[0].id
+        return Location.get_default_warehouse()
 
     @classmethod
     def default_location(cls):
