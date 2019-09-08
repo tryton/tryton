@@ -130,8 +130,11 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     def get_check_formula_product(cls):
         pool = Pool()
         Product = pool.get('product.product')
-        product = Product()
-        product.get_multivalue = lambda name: Decimal('0')
+
+        class Mock(Product):
+            def get_multivalue(self, name, **pattern):
+                return Decimal(0)
+        product = Mock()
         return product
 
     def check_formula(self):
