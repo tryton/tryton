@@ -782,10 +782,11 @@ class ModelView(Model):
                 for i, target in enumerate(targets):
                     if target.id in value['remove']:
                         value['remove'].remove(target.id)
-                        target_changed = target._changed_values
-                        if target_changed:
-                            target_changed['id'] = target.id
-                            value['update'].append(target_changed)
+                        if isinstance(target, ModelView):
+                            target_changed = target._changed_values
+                            if target_changed:
+                                target_changed['id'] = target.id
+                                value['update'].append(target_changed)
                     else:
                         if isinstance(target, ModelView):
                             # Ensure initial values are returned because target
