@@ -57,6 +57,71 @@ class ModelTestCase(unittest.TestCase):
         self.assertEqual(record.parent.parent.name, "Test 2")
 
     @with_transaction()
+    def test_init_context(self):
+        "Test __init__ for field with context"
+        pool = Pool()
+        Model = pool.get('test.model')
+        ModelContext = pool.get('test.model_context')
+
+        target, = Model.create([{'name': "Test Context"}])
+        # The dictionary order is important
+        values = {
+            'target': target.id,
+            'name': "foo",
+            }
+        record = ModelContext(**values)
+
+        self.assertEqual(record.target._context, {'name': "foo"})
+
+    @with_transaction()
+    def test_init_parent_context(self):
+        "Test __init__ with _parent for field with context"
+        pool = Pool()
+        ModelContext = pool.get('test.model_context')
+
+        # The dictionary order is important
+        values = {
+            '_parent_target.name': "Test Context",
+            'name': "foo",
+            }
+        record = ModelContext(**values)
+
+        self.assertEqual(record.target._context, {'name': "foo"})
+
+    @with_transaction()
+    def test_init_context_parent(self):
+        "Test __init__ for field with context from _parent"
+        pool = Pool()
+        Model = pool.get('test.model')
+        ModelContext = pool.get('test.model_context_parent')
+
+        target, = Model.create([{'name': "Test Context"}])
+        # The dictionary order is important
+        values = {
+            'target': target.id,
+            '_parent_parent.name': "bar",
+            }
+        record = ModelContext(**values)
+
+        self.assertEqual(record.target._context, {'name': "bar"})
+
+    @with_transaction()
+    def test_init_parent_context_parent(self):
+        "Test __init__ with _parent for field with context from _parent"
+        pool = Pool()
+        ModelContext = pool.get('test.model_context_parent')
+
+        # The dictionary order is important
+        values = {
+            '_parent_target.name': "Test Context",
+            '_parent_parent.name': "bar",
+            }
+        record = ModelContext(**values)
+
+        self.assertEqual(record.parent.name, "bar")
+        self.assertEqual(record.target._context, {'name': "bar"})
+
+    @with_transaction()
     def test_names_model(self):
         "Test __names__ for model only"
         pool = Pool()

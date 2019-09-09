@@ -3,6 +3,7 @@
 from trytond.model import (ModelSingleton, ModelSQL, UnionMixin, fields,
     sequence_ordered)
 from trytond.pool import Pool
+from trytond.pyson import Eval
 
 
 class Model(ModelSQL):
@@ -29,6 +30,28 @@ class ModelChildChild(Model):
     __name__ = 'test.model_child_child'
     name = fields.Char("Name")
     parent = fields.Many2One('test.model_child', "Parent")
+
+
+class ModelContext(Model):
+    "Model with contextual field"
+    __name__ = 'test.model_context'
+    name = fields.Char("Name")
+    target = fields.Many2One(
+        'test.model', "Target",
+        context={
+            'name': Eval('name'),
+            })
+
+
+class ModelContextParent(Model):
+    "Model with contextual field from _parent"
+    __name__ = 'test.model_context_parent'
+    parent = fields.Many2One('test.model', "Parent")
+    target = fields.Many2One(
+        'test.model', "Target",
+        context={
+            'name': Eval('_parent_parent', {}).get('name'),
+            })
 
 
 class Singleton(ModelSingleton, ModelSQL):
@@ -129,6 +152,8 @@ def register(module):
         ModelParent,
         ModelChild,
         ModelChildChild,
+        ModelContext,
+        ModelContextParent,
         Singleton,
         URLObject,
         Model4Union1,

@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import copy
+from collections import defaultdict
 from functools import total_ordering
 
 from trytond.i18n import lazy_gettext
@@ -247,27 +248,25 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         self._id = id
         if kwargs:
             self._values = {}
-            parent_values = {}
+            parent_values = defaultdict(dict)
+            has_context = {}
             for name, value in kwargs.items():
                 if not name.startswith('_parent_'):
                     setattr(self, name, value)
                 else:
-                    parent_values[name] = value
-
-            def set_parent_value(record, name, value):
-                parent_name, field = name.split('.', 1)
-                parent_name = parent_name[8:]  # Strip '_parent_'
-                parent = getattr(record, parent_name, None)
-                if parent is not None:
-                    if not field.startswith('_parent_'):
-                        setattr(parent, field, value)
-                    else:
-                        set_parent_value(parent, field, value)
-                else:
-                    setattr(record, parent_name, {field: value})
+                    name, field = name.split('.', 1)
+                    name = name[len('_parent_'):]
+                    parent_values[name][field] = value
+                    value = parent_values[name]
+                if getattr(self.__class__, name).context:
+                    has_context[name] = value
 
             for name, value in parent_values.items():
-                set_parent_value(self, name, value)
+                setattr(self, name, value)
+            # Set field with context a second times
+            # to ensure it was evaluated with all the fields
+            for name, value in has_context.items():
+                setattr(self, name, value)
             self._init_values = self._values.copy()
         else:
             self._values = None
