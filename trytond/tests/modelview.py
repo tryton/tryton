@@ -1,19 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-
-from trytond.model import ModelView, fields
-
-
-__all__ = [
-    'ModelViewChangedValues',
-    'ModelViewChangedValuesTarget',
-    'ModelViewButton',
-    'ModelViewButtonDepends',
-    'ModelViewRPC',
-    'ModelViewEmptyPage',
-    'ModelViewCircularDepends',
-    ]
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.pool import Pool
 
 
 class ModelViewChangedValues(ModelView):
@@ -21,6 +10,8 @@ class ModelViewChangedValues(ModelView):
     __name__ = 'test.modelview.changed_values'
     name = fields.Char('Name')
     target = fields.Many2One('test.modelview.changed_values.target', 'Target')
+    stored_target = fields.Many2One(
+        'test.modelview.changed_values.stored_target', "Stored Target")
     ref_target = fields.Reference('Target Reference', [
             ('test.modelview.changed_values.target', 'Target'),
             ])
@@ -35,6 +26,12 @@ class ModelViewChangedValuesTarget(ModelView):
     __name__ = 'test.modelview.changed_values.target'
     name = fields.Char('Name')
     parent = fields.Many2One('test.modelview.changed_values', 'Parent')
+
+
+class ModelViewChangedValuesStoredTarget(ModelSQL):
+    "ModelSQL Changed Values Target"
+    __name__ = 'test.modelview.changed_values.stored_target'
+    name = fields.Char("Name")
 
 
 class ModelViewButton(ModelView):
@@ -143,3 +140,16 @@ class ModelViewCircularDepends(ModelView):
     foo = fields.Char("Char", depends=['bar'])
     bar = fields.Char("Char", depends=['foobar'])
     foobar = fields.Char("Char", depends=['foo'])
+
+
+def register(module):
+    Pool.register(
+        ModelViewChangedValues,
+        ModelViewChangedValuesTarget,
+        ModelViewChangedValuesStoredTarget,
+        ModelViewButton,
+        ModelViewButtonDepends,
+        ModelViewRPC,
+        ModelViewEmptyPage,
+        ModelViewCircularDepends,
+        module=module, type_='model')

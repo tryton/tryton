@@ -89,6 +89,24 @@ class ModelView(unittest.TestCase):
                     },
                 })
 
+    @with_transaction()
+    def test_changed_values_rec_name(self):
+        "Test rec_name of ModelStorage is added"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+        Target = pool.get('test.modelview.changed_values.stored_target')
+
+        target, = Target.create([{'name': "Target"}])
+        record = Model()
+        record.stored_target = target
+
+        self.assertEqual(record._changed_values, {
+                'stored_target': target.id,
+                'stored_target.': {
+                    'rec_name': "Target",
+                    },
+                })
+
     @with_transaction(context={'_check_access': True})
     def test_button_access(self):
         'Test Button Access'

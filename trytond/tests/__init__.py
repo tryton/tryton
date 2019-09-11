@@ -8,7 +8,6 @@ except ImportError:
 
 
 from ..pool import Pool
-from .modelview import *
 from .mptt import *
 from . import import_data
 from .export_data import *
@@ -20,6 +19,7 @@ from .history import *
 from .field_context import *
 from . import model
 from . import modelstorage
+from . import modelview
 from . import modelsql
 from . import field_boolean
 from . import field_integer
@@ -48,13 +48,6 @@ from . import copy_
 
 def register():
     Pool.register(
-        ModelViewChangedValues,
-        ModelViewChangedValuesTarget,
-        ModelViewButton,
-        ModelViewButtonDepends,
-        ModelViewRPC,
-        ModelViewEmptyPage,
-        ModelViewCircularDepends,
         MPTT,
         ExportDataTarget,
         ExportData,
@@ -77,6 +70,7 @@ def register():
     access.register('tests')
     model.register('tests')
     modelstorage.register('tests')
+    modelview.register('tests')
     modelsql.register('tests')
     field_boolean.register('tests')
     field_integer.register('tests')
