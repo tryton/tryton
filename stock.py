@@ -160,6 +160,12 @@ class ShipmentIn(metaclass=PoolMeta):
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
+    def _get_inventory_move(self, outgoing_move):
+        move = super()._get_inventory_move(outgoing_move)
+        if move and outgoing_move.lot:
+            move.lot = outgoing_move.lot
+        return move
+
     def _sync_move_key(self, move):
         return super()._sync_move_key(move) + (('lot', move.lot),)
 
