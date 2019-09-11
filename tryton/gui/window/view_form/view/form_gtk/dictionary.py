@@ -16,7 +16,7 @@ from tryton.common import Tooltips, timezoned_date, untimezoned_date, \
         IconFactory
 from tryton.common.selection import selection_shortcuts
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.datetime_ import Date, DateTime
+from tryton.common.datetime_ import Date, DateTime, add_operators
 from tryton.common.domain_parser import quote
 from tryton.common.entry_position import reset_position
 from tryton.common.number_entry import NumberEntry
@@ -235,7 +235,7 @@ class DictDateTimeEntry(DictEntry):
     fill = False
 
     def create_widget(self):
-        widget = DateTime()
+        widget = add_operators(DateTime())
         record = self.parent_widget.record
         field = self.parent_widget.field
         if record and field:
@@ -258,7 +258,7 @@ class DictDateEntry(DictEntry):
     fill = False
 
     def create_widget(self):
-        widget = Date()
+        widget = add_operators(Date())
         record = self.parent_widget.record
         field = self.parent_widget.field
         if record and field:
