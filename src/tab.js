@@ -1297,6 +1297,7 @@
                     .then(function(data) {
                         var unparse_obj = {
                             'fields': fields,
+                            'data': data,
                         };
                         var delimiter = ',';
                         var encoding = 'utf-8';
