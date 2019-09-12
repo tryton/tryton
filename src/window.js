@@ -930,11 +930,8 @@
             }).css('cursor', 'pointer')
                 .appendTo(column_fields_all.find('.panel'));
 
-            var prm = this.get_fields(this.screen.model_name)
-                .then(function(fields){
-                    this.model_populate(fields);
-                    this.view_populate(this.fields_model, this.fields_all);
-                }.bind(this));
+            this.model_populate(this._get_fields(this.screen.model_name));
+            this.view_populate(this.fields_model, this.fields_all);
 
             this.column_buttons = jQuery('<div/>', {
                 'class': 'col-md-2'
@@ -1102,19 +1099,17 @@
             this.el.on('hidden.bs.modal', function() {
                 jQuery(this).remove();
             });
-            return prm;
         },
-        get_fields: function(model) {
+        _get_fields: function(model) {
             return Sao.rpc({
                 'method': 'model.' + model + '.fields_get'
-            }, this.session);
+            }, this.session, false);
         },
         on_row_expanded: function(node) {
             var container_view = jQuery('<ul/>').css('list-style', 'none')
                 .insertAfter(node.view);
-            this.children_expand(node).done(function() {
-                this.view_populate(node.children, container_view);
-            }.bind(this));
+            this.children_expand(node);
+            this.view_populate(node.children, container_view);
         },
         destroy: function() {
             this.el.modal('hide');
@@ -1274,17 +1269,11 @@
             }.bind(this));
         },
         children_expand: function(node) {
-            var dfd = jQuery.Deferred();
             if (jQuery.isEmptyObject(node.children)) {
-                this.get_fields(node.relation).done(function(fields) {
-                    this.model_populate(fields, node.children,
-                        node.field + '/', node.name + '/');
-                    dfd.resolve(this);
-                }.bind(this));
-            } else {
-                dfd.resolve(this);
+                this.model_populate(
+                    this._get_fields(node.relation), node.children,
+                    node.field + '/', node.name + '/');
             }
-            return dfd.promise();
         },
         autodetect: function() {
             var fname = this.file_input.val();
@@ -1306,20 +1295,18 @@
                 },
                 complete: function(results) {
                     results.data[0].forEach(function(word) {
-                        if(word in this.fields_invert || word in this.fields) {
-                            this.auto_select(word);
-                        }
-                        else {
+                        if (!(word in this.fields_invert) && !(word in this.fields)) {
                             var fields = this.fields_model;
                             var prefix = '';
-                            var parents = word.split('/');
-                            this.traverse(fields, prefix, parents, 0);
+                            var parents = word.split('/').slice(0, -1);
+                            this._traverse(fields, prefix, parents, 0);
                         }
+                        this._auto_select(word);
                     }.bind(this));
                 }.bind(this)
             });
         },
-        auto_select: function(word) {
+        _auto_select: function(word) {
             var name,field;
             if(word in this.fields_invert) {
                 name = word;
@@ -1343,29 +1330,19 @@
                     .siblings().removeClass('bg-primary');
             }).appendTo(this.fields_selected);
         },
-        traverse: function(fields, prefix, parents, i) {
-            if(i >= parents.length - 1) {
-                this.auto_select(parents.join('/'));
-                return;
-            }
+        _traverse: function(fields, prefix, parents, i) {
             var field, item;
             var names = Object.keys(fields);
-            for(item = 0; item<names.length; item++) {
+            for (item = 0; item<names.length; item++) {
                 field = fields[names[item]];
-                if(field.name == (prefix+parents[i]) ||
-                    field.field == (prefix+parents[i])) {
-                    this.children_expand(field).done(callback);
+                if (field.name == (prefix + parents[i]) ||
+                    field.field == (prefix + parents[i])) {
+                    this.children_expand(field);
+                    fields = field.children;
+                    prefix += parents[i] + '/';
+                    this._traverse(fields, prefix, parents, ++i);
                     break;
                 }
-            }
-            if(item == names.length) {
-                this.auto_select(parents.join('/'));
-                return;
-            }
-            function callback(self) {
-                fields = field.children;
-                prefix += parents[i] + '/';
-                self.traverse(fields, prefix, parents, ++i);
             }
         },
         response: function(response_id) {
@@ -1426,20 +1403,19 @@
             this.session = Sao.Session.current_session;
             this.context = context;
             Sao.Window.Export._super.init.call(this,
-                Sao.i18n.gettext('CSV Export: %1',name)).then(function() {
-                    var fields = this.screen.model.fields;
-                    names.forEach(function(name) {
-                        var type = fields[name].description.type;
-                        if (type == 'selection') {
-                            this.sel_field(name + '.translated');
-                        } else if (type == 'reference') {
-                            this.sel_field(name + '.translated');
-                            this.sel_field(name + '/rec_name');
-                        } else {
-                            this.sel_field(name);
-                        }
-                    }.bind(this));
-                }.bind(this));
+                Sao.i18n.gettext('CSV Export: %1',name));
+            var fields = this.screen.model.fields;
+            names.forEach(function(name) {
+                var type = fields[name].description.type;
+                if (type == 'selection') {
+                    this.sel_field(name + '.translated');
+                } else if (type == 'reference') {
+                    this.sel_field(name + '.translated');
+                    this.sel_field(name + '/rec_name');
+                } else {
+                    this.sel_field(name);
+                }
+            }.bind(this));
 
             this.predef_exports = {};
             this.fill_predefwin();
@@ -1605,17 +1581,11 @@
             }.bind(this));
         },
         children_expand: function(node) {
-            var dfd = jQuery.Deferred();
-            if(jQuery.isEmptyObject(node.children)) {
-                this.get_fields(node.relation).done(function(fields) {
-                    this.model_populate(fields, node.children,
-                        node.path + '/', node.string + '/');
-                    dfd.resolve(this);
-                }.bind(this));
-            } else {
-                dfd.resolve(this);
+            if (jQuery.isEmptyObject(node.children)) {
+                this.model_populate(
+                    this._get_fields(node.relation), node.children,
+                    node.path + '/', node.string + '/');
             }
-            return dfd.promise();
         },
         sig_sel_add: function(el_field) {
             el_field = jQuery(el_field);
@@ -1741,8 +1711,8 @@
                 if (!(name in this.fields)) {
                     var fields = this.fields_model;
                     var prefix = '';
-                    var parents = name.split('/');
-                    this.traverse(fields, prefix, parents, 0);
+                    var parents = name.split('/').slice(0, -1);
+                    this._traverse(fields, prefix, parents, 0);
                 }
                 if(!(name in this.fields)) {
                     return;
@@ -1750,28 +1720,18 @@
                 this.sel_field(name);
             }.bind(this));
         },
-        traverse: function(fields, prefix, parents, i) {
-            if(i >= parents.length-1) {
-                this.sel_field(parents.join('/'));
-                return;
-            }
+        _traverse: function(fields, prefix, parents, i) {
             var field, item;
             var names = Object.keys(fields);
-            for(item = 0; item < names.length; item++) {
+            for (item = 0; item < names.length; item++) {
                 field = fields[names[item]];
-                if(field.path == (prefix+parents[i])) {
-                    this.children_expand(field).done(callback);
+                if (field.path == (prefix + parents[i])) {
+                    this.children_expand(field);
+                    fields = field.children;
+                    prefix += parents[i] + '/';
+                    this._traverse(fields, prefix, parents, ++i);
                     break;
                 }
-            }
-            if(item == names.length) {
-                this.sel_field(parents.join('/'));
-                return;
-            }
-            function callback(self){
-                fields = field.children;
-                prefix += parents[i] + '/';
-                self.traverse(fields, prefix, parents, ++i);
             }
         },
         sel_field: function(name) {
