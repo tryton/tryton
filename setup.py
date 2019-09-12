@@ -79,7 +79,7 @@ setup(name=name,
     package_data={
         'trytond.modules.stock_split': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po',
-                'tests/*.rst']),
+                'icons/*.svg', 'tests/*.rst']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="stock_split_icon">
+            <field name="name">tryton-stock-split</field>
+            <field name="path">icons/tryton-stock-split.svg</field>
+        </record>
+
         <record model="ir.action.wizard" id="wizard_split_move">
             <field name="name">Split Move</field>
             <field name="wiz_name">stock.move.split</field>
