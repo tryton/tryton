@@ -256,6 +256,12 @@ class ModuleTestCase(unittest.TestCase):
                 ('model', '!=', ''),
                 ])
         for view in views:
+            if not view.inherit or view.inherit.model == view.model:
+                assert view.arch, ('missing architecture for view "%(name)s" '
+                    'of model "%(model)s"' % {
+                        'name': view.name or str(view.id),
+                        'model': view.model,
+                        })
             if view.inherit and view.inherit.model == view.model:
                 view_id = view.inherit.id
             else:
