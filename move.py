@@ -183,6 +183,7 @@ class Move(ModelSQL, ModelView):
                     date = today
                 else:
                     date = self.period.start_date
+                self.on_change_date()
             return date
         lines = Line.search([
                 ('journal', '=', self.journal),
@@ -197,6 +198,16 @@ class Move(ModelSQL, ModelView):
             else:
                 date = self.period.start_date
         return date
+
+    @fields.depends('date', 'lines')
+    def on_change_date(self):
+        for line in (self.lines or []):
+            line.date = self.date
+
+    @fields.depends(methods=['on_change_with_date', 'on_change_date'])
+    def on_change_period(self):
+        self.date = self.on_change_with_date()
+        self.on_change_date()
 
     @classmethod
     def _get_origin(cls):
