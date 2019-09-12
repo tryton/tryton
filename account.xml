@@ -9,7 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Receivable with Mandate</field>
             <field name="sequence" eval="25"/>
             <field name="domain"
-                eval="['AND', ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)], ('party.sepa_mandates', '!=', None)]"
+                eval="['AND', ['OR', ('debit', '&gt;', 0), ('credit', '&lt;', 0)], ('party.sepa_mandates.state', '=', 'validated')]"
                 pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="account_payment.act_move_line_form"/>
