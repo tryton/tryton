@@ -3,12 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="purchase_configuration_view_form">
-            <field name="model">purchase.configuration</field>
-            <field name="inherit"
-                ref="purchase.purchase_configuration_view_form"/>
-            <field name="name">purchase_configuration_form</field>
-        </record>
 
         <record model="ir.model.access" id="access_purchase_request_stock">
             <field name="model" search="[('model', '=', 'purchase.request')]"/>
