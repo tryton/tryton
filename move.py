@@ -59,8 +59,12 @@ class Move(ModelSQL, ModelView):
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('company', '=', Eval('company', -1)),
+            If(Eval('state') == 'draft',
+                ('state', '=', 'open'),
+                ()),
             ],
-        states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'], select=True)
+        states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company', 'state'],
+        select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
             states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     date = fields.Date('Effective Date', required=True, select=True,
