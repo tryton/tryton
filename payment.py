@@ -611,7 +611,7 @@ class Account(ModelSQL, ModelView):
         return self.webhook_charge_succeeded(payload, _event='charge.captured')
 
     def webhook_charge_expired(self, payload):
-        return self.webhook_source_failed(payload, _event='charge.expired')
+        return self.webhook_source_failed(payload)
 
     def webhook_charge_pending(self, payload):
         return self.webhook_charge_succeeded(payload, _event='charge.pending')
