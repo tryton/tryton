@@ -2,7 +2,6 @@
 @import "mixins";
 
 #tablist > li > a {
-    border: 0;
     > span {
         max-width: 9em;
         overflow: hidden;
@@ -19,13 +18,16 @@
 }
 
 #menu, #tabs {
-    padding-top: 5px;
+    margin-top: 5px;
 }
 
 #menu {
-    border-width: 1px;
+    background-color: @navbar-default-bg;
+    border-color: @panel-default-border;
     border-style: solid;
-    border-top: none;
+    border-radius: 0 @panel-border-radius @panel-border-radius 0;
+    border-width: 1px;
+    margin-top: 5px;
 }
 [dir="rtl"] #menu {
     border-right: none;
