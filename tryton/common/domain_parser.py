@@ -237,8 +237,6 @@ def convert_value(field, value, context=None):
             return any(test.lower().startswith(value.lower())
                 for test in (
                     _('y'), _('Yes'), _('True'), _('t'), '1'))
-        else:
-            return bool(value)
 
     def convert_float():
         factor = float(field.get('factor', 1))
@@ -332,7 +330,7 @@ def test_convert_boolean():
             ('False', False),
             ('no', False),
             ('0', False),
-            (None, False),
+            (None, None),
             ):
         assert convert_value(field, value) == result
 
@@ -487,7 +485,12 @@ def format_value(field, value, target=None, context=None):
         context = {}
 
     def format_boolean():
-        return _('True') if value else _('False')
+        if value is False:
+            return _("False")
+        elif value:
+            return _("True")
+        else:
+            return ''
 
     def format_integer():
         factor = float(field.get('factor', 1))
@@ -580,7 +583,7 @@ def test_format_boolean():
     for value, result in (
             (True, 'True'),
             (False, 'False'),
-            (None, 'False'),
+            (None, ''),
             ):
         assert format_value(field, value) == result
 
@@ -738,7 +741,10 @@ def complete_value(field, value):
     "Complete value for field"
 
     def complete_boolean():
-        if value:
+        if value is None:
+            yield True
+            yield False
+        elif value:
             yield False
         else:
             yield True
@@ -786,6 +792,18 @@ def complete_value(field, value):
         'time': complete_time,
         }
     return completes.get(field['type'], lambda: [])()
+
+
+def test_complete_boolean():
+    field = {
+        'type': 'boolean',
+        }
+    for value, result in [
+            (None, [True, False]),
+            (True, [False]),
+            (False, [True]),
+            ]:
+        assert list(complete_value(field, value)) == result
 
 
 def test_complete_selection():
@@ -1673,6 +1691,22 @@ def test_completion():
             })
     assert list(dom.completion('Relatio')) == [
         'Relation: ', 'Relation.Name: ']
+
+    dom = DomainParser({
+            'name': {
+                'string': "Active",
+                'name': 'active',
+                'type': 'boolean',
+                },
+            })
+
+    assert list(dom.completion("Act")) == ["Active: "]
+    assert list(dom.completion("Active:")) == [
+        "Active: ", "Active: True", "Active: False"]
+    assert list(dom.completion("Active: t")) == [
+        "Active: True", "Active: False"]
+    assert list(dom.completion("Active: f")) == [
+        "Active: False", "Active: True"]
 
 
 if __name__ == '__main__':
