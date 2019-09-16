@@ -1299,6 +1299,9 @@
                             'fields': fields,
                             'data': data,
                         };
+                        unparse_obj.data = data.map(function(row) {
+                            return Sao.Window.Export.format_row(row);
+                        });
                         var delimiter = ',';
                         var encoding = 'utf-8';
                         if (navigator.platform &&

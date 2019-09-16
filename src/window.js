@@ -1776,27 +1776,8 @@
             var encoding = this.el_csv_encoding.val();
             var locale_format = this.el_csv_locale.prop('checked');
             var unparse_obj = {};
-            unparse_obj.data = [];
-            data.forEach(function(line) {
-                var row = [];
-                line.forEach(function(val) {
-                    if (locale_format) {
-                        if (val.isDateTime) {
-                            val = val.format(
-                                Sao.common.date_format() + ' ' +
-                                Sao.common.moment_format('%X'));
-                        } else if (val.isDate) {
-                            val = val.format(Sao.common.date_format());
-                        } else if (!isNaN(Number(val))) {
-                            val = val.toLocaleString(
-                                Sao.i18n.BC47(Sao.i18n.getlang()));
-                        }
-                    } else if (typeof(val) == 'boolean') {
-                        val += 0;
-                    }
-                    row.push(val);
-                });
-                unparse_obj.data.push(row);
+            unparse_obj.data = data.map(function(row) {
+                return Sao.Window.Export.format_row(row, locale_format);
             });
             if (this.el_add_field_names.is(':checked')) {
                 unparse_obj.fields = fields;
@@ -1810,7 +1791,32 @@
             return Sao.common.message.run(
                 Sao.i18n.ngettext('%1 record saved', '%1 records saved',
                     data.length));
-        }
+        },
     });
+
+    Sao.Window.Export.format_row = function(line, locale_format) {
+        if (locale_format === undefined) {
+            locale_format = true;
+        }
+        var row = [];
+        line.forEach(function(val) {
+            if (locale_format) {
+                if (val.isDateTime) {
+                    val = val.format(
+                        Sao.common.date_format() + ' ' +
+                        Sao.common.moment_format('%X'));
+                } else if (val.isDate) {
+                    val = val.format(Sao.common.date_format());
+                } else if (!isNaN(Number(val))) {
+                    val = val.toLocaleString(
+                        Sao.i18n.BC47(Sao.i18n.getlang()));
+                }
+            } else if (typeof(val) == 'boolean') {
+                val += 0;
+            }
+            row.push(val);
+        });
+        return row;
+    };
 
 }());
