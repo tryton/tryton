@@ -1308,7 +1308,7 @@
         ['False', false],
         ['no', false],
         ['0', false],
-        [null, false]
+        [null, null],
         ].forEach(test_func, field);
 
         field = {
@@ -1553,7 +1553,7 @@
         [
         [true, 'True'],
         [false, 'False'],
-        [null, 'False']
+        [null, '']
         ].forEach(test_func, field);
 
         field = {
@@ -1811,6 +1811,15 @@
                     'complete_value(' + JSON.stringify(this) +
                         ', ' + JSON.stringify(value) + ')');
         };
+
+        field = {
+            'type': 'boolean',
+        };
+        [
+            [null, [true, false]],
+            [true, [false]],
+            [false, [true]],
+        ].forEach(test_func, field);
 
         field = {
             'type': 'selection',
@@ -2536,6 +2545,21 @@
         });
         QUnit.ok(compare(parser.completion('Relatio'),
             ["Relation: ", "Relation.Name: "]));
+
+        parser = new Sao.common.DomainParser({
+            'name': {
+                'string': "Active",
+                'name': 'active',
+                'type': 'boolean',
+            },
+        });
+        QUnit.ok(compare(parser.completion("Act"), ["Active: "]));
+        QUnit.ok(compare(parser.completion("Active:"),
+            ["Active: ", "Active: True", "Active: False"]));
+        QUnit.ok(compare(parser.completion("Active: t"),
+            ["Active: True", "Active: False"]));
+        QUnit.ok(compare(parser.completion("Active: f"),
+            ["Active: False", "Active: True"]));
     });
 
         /*
