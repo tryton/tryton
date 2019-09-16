@@ -507,5 +507,205 @@ class ModelSQLTestCase(unittest.TestCase):
                     record.lock()
 
 
+class ModelSQLTranslationTestCase(unittest.TestCase):
+    "Test ModelSQL translation"
+    default_language = 'fr'
+    other_language = 'en'
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+        cls.setup_language()
+
+    @classmethod
+    @with_transaction()
+    def setup_language(cls):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Configuration = pool.get('ir.configuration')
+
+        default, = Language.search([('code', '=', cls.default_language)])
+        default.translatable = True
+        default.save()
+
+        other, = Language.search([('code', '=', cls.other_language)])
+        other.translatable = True
+        other.save()
+
+        config = Configuration(1)
+        config.language = cls.default_language
+        config.save()
+
+        Transaction().commit()
+
+    @with_transaction()
+    def test_create_default_language(self):
+        "Test create default language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        with Transaction().set_context(language=self.default_language):
+            record, = Model.create([{'name': "Foo"}])
+        translation, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+
+        self.assertEqual(translation.src, "Foo")
+        self.assertEqual(translation.value, "Foo")
+        self.assertEqual(translation.lang, self.default_language)
+        self.assertFalse(translation.fuzzy)
+
+    @with_transaction()
+    def test_create_other_language(self):
+        "Test create other language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        with Transaction().set_context(language=self.other_language):
+            record, = Model.create([{'name': "Bar"}])
+        translation, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+
+        self.assertEqual(translation.src, "Bar")
+        self.assertEqual(translation.value, "Bar")
+        self.assertEqual(translation.lang, self.other_language)
+        self.assertFalse(translation.fuzzy)
+
+    @with_transaction()
+    def test_write_default_language(self):
+        "Test write default language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.default_language):
+            Model.write([record], {'name': "Bar"})
+        translation, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+
+        self.assertEqual(translation.src, "Bar")
+        self.assertEqual(translation.value, "Bar")
+        self.assertEqual(translation.lang, self.default_language)
+        self.assertFalse(translation.fuzzy)
+
+    @with_transaction()
+    def test_write_other_language(self):
+        "Test write other language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+        default, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.default_language),
+                ])
+        other, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.other_language),
+                ])
+
+        self.assertEqual(default.src, "Foo")
+        self.assertEqual(default.value, "Foo")
+        self.assertFalse(default.fuzzy)
+        self.assertEqual(other.src, "Foo")
+        self.assertEqual(other.value, "Bar")
+        self.assertFalse(other.fuzzy)
+
+    @with_transaction()
+    def test_write_default_language_with_other_language(self):
+        "Test write default language with other language"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+        with Transaction().set_context(language=self.default_language):
+            Model.write([record], {'name': "FooBar"})
+        default, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.default_language),
+                ])
+        other, = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ('lang', '=', self.other_language),
+                ])
+
+        self.assertEqual(default.src, "FooBar")
+        self.assertEqual(default.value, "FooBar")
+        self.assertFalse(default.fuzzy)
+        self.assertEqual(other.src, "FooBar")
+        self.assertEqual(other.value, "Bar")
+        self.assertTrue(other.fuzzy)
+
+    @with_transaction()
+    def test_delete(self):
+        "Test delete"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+        before_translations = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+        Model.delete([record])
+        after_translations = Translation.search([
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('res_id', '=', record.id),
+                ('type', '=', 'model'),
+                ])
+
+        self.assertTrue(before_translations)
+        self.assertFalse(after_translations)
+
+    @with_transaction()
+    def test_read(self):
+        "Test read translations"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+
+        with Transaction().set_context(language=self.default_language):
+            record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+            other = Model(record.id)
+
+        self.assertEqual(record.name, "Foo")
+        self.assertEqual(other.name, "Bar")
+
+
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ModelSQLTestCase)
+    suite_ = unittest.TestSuite()
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            ModelSQLTestCase))
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            ModelSQLTranslationTestCase))
+    return suite_
