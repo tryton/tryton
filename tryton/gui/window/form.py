@@ -350,7 +350,8 @@ class Form(SignalEvent, TabContent):
         with open(fname, 'w') as fp:
             writer = csv.writer(fp, delimiter=delimiter)
             writer.writerow(fields)
-            writer.writerows(data)
+            for row in data:
+                writer.writerow(WinExport.format_row(row))
         os.close(fileno)
         common.file_open(fname, 'csv')
 

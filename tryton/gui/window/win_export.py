@@ -312,20 +312,8 @@ class WinExport(WinCSV):
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():
                 writer.writerow(fields)
-            for line in data:
-                row = []
-                for val in line:
-                    if locale_format:
-                        if isinstance(val, Number):
-                            val = locale.str(val)
-                        elif isinstance(val, datetime.datetime):
-                            val = val.strftime(common.date_format() + ' %X')
-                        elif isinstance(val, datetime.date):
-                            val = val.strftime(common.date_format())
-                    elif isinstance(val, bool):
-                        val = int(val)
-                    row.append(val)
-                writer.writerow(row)
+            for row in data:
+                writer.writerow(self.format_row(row, locale_format))
             if popup:
                 if len(data) == 1:
                     common.message(_('%d record saved.') % len(data))
@@ -336,6 +324,22 @@ class WinExport(WinCSV):
             common.warning(_("Operation failed.\nError message:\n%s")
                 % exception, _('Error'))
             return False
+
+    @classmethod
+    def format_row(cls, line, locale_format=True):
+        row = []
+        for val in line:
+            if locale_format:
+                if isinstance(val, Number):
+                    val = locale.str(val)
+                elif isinstance(val, datetime.datetime):
+                    val = val.strftime(common.date_format() + ' %X')
+                elif isinstance(val, datetime.date):
+                    val = val.strftime(common.date_format())
+            elif isinstance(val, bool):
+                val = int(val)
+            row.append(val)
+        return row
 
     def export_click(self, treeview, event):
         path_at_pos = treeview.get_path_at_pos(int(event.x), int(event.y))
