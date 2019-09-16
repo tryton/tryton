@@ -2261,14 +2261,14 @@ class ShipmentInternal(Workflow, ModelSQL, ModelView):
                 and m.to_location != shipment.transit_location]
             Move.copy(moves, default={
                     'to_location': shipment.transit_location.id,
-                    'planned_date': shipment.planned_date,
+                    'planned_date': shipment.planned_start_date,
                     'origin': lambda data: '%s,%s' % (
                         Move.__name__, data['id']),
                     })
             to_write.append(moves)
             to_write.append({
                     'from_location': shipment.transit_location.id,
-                    'planned_date': shipment.planned_start_date,
+                    'planned_date': shipment.planned_date,
                     })
         if to_write:
             Move.write(*to_write)

@@ -165,12 +165,16 @@ Create Internal Shipment with lead time::
     True
     >>> outgoing_move.to_location == shipment.transit_location
     True
+    >>> outgoing_move.planned_date == today
+    True
     >>> incoming_move, = shipment.incoming_moves
     >>> incoming_move.quantity
     2.0
     >>> incoming_move.from_location == shipment.transit_location
     True
     >>> incoming_move.to_location == storage_loc
+    True
+    >>> incoming_move.planned_date == tomorrow
     True
 
     >>> outgoing_move.quantity = 1
