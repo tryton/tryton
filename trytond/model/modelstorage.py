@@ -857,11 +857,26 @@ class ModelStorage(Model):
                         else:
                             res = bool(int(value))
                     elif field_type == 'integer':
-                        res = int(value) if value else None
+                        if isinstance(value, int):
+                            res = value
+                        elif value:
+                            res = int(value)
+                        else:
+                            res = None
                     elif field_type == 'float':
-                        res = float(value) if value else None
+                        if isinstance(value, float):
+                            res = value
+                        elif value:
+                            res = float(value)
+                        else:
+                            res = None
                     elif field_type == 'numeric':
-                        res = Decimal(value) if value else None
+                        if isinstance(value, Decimal):
+                            res = value
+                        elif value:
+                            res = Decimal(value)
+                        else:
+                            res = None
                     elif field_type == 'date':
                         if isinstance(value, datetime.date):
                             res = value
