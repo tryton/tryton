@@ -56,6 +56,9 @@ class ImportDataTestCase(unittest.TestCase):
             [['1']]), 1)
 
         self.assertEqual(Integer.import_data(['integer'],
+            [[0]]), 1)
+
+        self.assertEqual(Integer.import_data(['integer'],
             [[1]]), 1)
 
         self.assertEqual(Integer.import_data(['integer'],
@@ -78,6 +81,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Integer.import_data(['integer'],
             [['0']]), 1)
+
+        self.assertEqual(Integer.import_data(['integer'],
+            [[None]]), 1)
 
     @with_transaction()
     def test_integer_required(self):
@@ -111,6 +117,13 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(IntegerRequired.import_data(['integer'],
             [['0']]), 1)
 
+        self.assertEqual(IntegerRequired.import_data(['integer'],
+            [[0]]), 1)
+
+        with self.assertRaises(RequiredValidationError):
+            IntegerRequired.import_data(['integer'], [[None]])
+        transaction.rollback()
+
     @with_transaction()
     def test_float(self):
         'Test float'
@@ -119,6 +132,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Float.import_data(['float'],
             [['1.1']]), 1)
+
+        self.assertEqual(Float.import_data(['float'],
+            [[0.0]]), 1)
 
         self.assertEqual(Float.import_data(['float'],
             [[1.1]]), 1)
@@ -143,6 +159,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Float.import_data(['float'],
             [['0.0']]), 1)
+
+        self.assertEqual(Float.import_data(['float'],
+            [[None]]), 1)
 
     @with_transaction()
     def test_float_required(self):
@@ -176,6 +195,13 @@ class ImportDataTestCase(unittest.TestCase):
         self.assertEqual(FloatRequired.import_data(['float'],
             [['0.0']]), 1)
 
+        self.assertEqual(FloatRequired.import_data(['float'],
+            [[0.0]]), 1)
+
+        with self.assertRaises(RequiredValidationError):
+            FloatRequired.import_data(['float'], [[None]])
+        transaction.rollback()
+
     @with_transaction()
     def test_numeric(self):
         'Test numeric'
@@ -184,6 +210,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Numeric.import_data(['numeric'],
             [['1.1']]), 1)
+
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [[Decimal('0.0')]]), 1)
 
         self.assertEqual(Numeric.import_data(['numeric'],
             [[Decimal('1.1')]]), 1)
@@ -208,6 +237,9 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(Numeric.import_data(['numeric'],
             [['0.0']]), 1)
+
+        self.assertEqual(Numeric.import_data(['numeric'],
+            [[None]]), 1)
 
     @with_transaction()
     def test_numeric_required(self):
@@ -240,6 +272,13 @@ class ImportDataTestCase(unittest.TestCase):
 
         self.assertEqual(NumericRequired.import_data(['numeric'],
             [['0.0']]), 1)
+
+        self.assertEqual(NumericRequired.import_data(['numeric'],
+            [[Decimal('0.0')]]), 1)
+
+        with self.assertRaises(RequiredValidationError):
+            NumericRequired.import_data(['numeric'], [[None]])
+        transaction.rollback()
 
     @with_transaction()
     def test_char(self):
