@@ -149,6 +149,13 @@
     });
 
     Sao.PYSON.Eval.eval_ = function(value, context) {
+        var idx = value.v.indexOf('.');
+        if (idx >= 0) {
+            return Sao.PYSON.Eval.eval_({
+                'v': value.v.substring(idx + 1),
+                'd': value.d,
+            }, context[value.v.substring(0, idx)] || {});
+        }
         if (value.v in context) {
             return context[value.v];
         } else {

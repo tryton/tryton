@@ -989,6 +989,38 @@
             '{"test": ["foo", "bar"], "pyson": Eval("test", "")}');
     });
 
+    QUnit.test('PYSON.Eval dot notation', function() {
+        var eval_;
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Eval('foo.bar', 0));
+        [[{'foo': {'bar': 1}}, 1],
+            [{'foo': {'foo': 1}}, 0],
+            [{'bar': {'bar': 1}}, 0],
+        ].forEach(function(params){
+            var ctx = params[0];
+            var result = params[1];
+            QUnit.strictEqual(
+                new Sao.PYSON.Decoder(ctx).decode(eval_), result,
+                "decode(" + JSON.stringify(ctx) + ")");
+        });
+    });
+
+    QUnit.test('PYSON.Eval dot notation nested', function() {
+        var eval_;
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Eval('foo.bar.test', 0));
+        [[{'foo': {'bar': {'test': 1}}}, 1],
+            [{'foo': {'foo': 1}}, 0],
+            [{'bar': {'bar': 1}}, 0],
+        ].forEach(function(params){
+            var ctx = params[0];
+            var result = params[1];
+            QUnit.strictEqual(
+                new Sao.PYSON.Decoder(ctx).decode(eval_), result,
+                "decode(" + JSON.stringify(ctx) + ")");
+        });
+    });
+
     QUnit.test('DomainParser.group_operator', function() {
         var parser = new Sao.common.DomainParser();
         QUnit.ok(Sao.common.compare(parser.group_operator(['a', '>', '=']),

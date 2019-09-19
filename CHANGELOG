@@ -1,3 +1,4 @@
+* Support dot notation on PYSON Eval
 * Manage sequence
 * Add drag and drop on tree views
 * Support expand on column
