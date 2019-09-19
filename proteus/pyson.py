@@ -153,6 +153,12 @@ class Eval(PYSON):
 
     @staticmethod
     def eval(dct, context):
+        if '.' in dct['v']:
+            base, name = dct['v'].split('.', 1)
+            return Eval.eval({
+                    'v': name,
+                    'd': dct['d'],
+                    }, context.get(base) or {})
         return context.get(dct['v'], dct['d'])
 
 
