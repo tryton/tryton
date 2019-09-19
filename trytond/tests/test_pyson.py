@@ -664,6 +664,32 @@ class PYSONTestCase(unittest.TestCase):
             self.assertEqual(decoder.decode(encoder.encode(instance)).pyson(),
                 instance.pyson())
 
+    def test_Eval_dot_notation(self):
+        'Test pyson.Eval with dot notation'
+
+        eval = pyson.PYSONEncoder().encode(pyson.Eval('foo.bar', 0))
+
+        for ctx, result in [
+                ({'foo': {'bar': 1}}, 1),
+                ({'foo': {'foo': 1}}, 0),
+                ({'bar': {'bar': 1}}, 0),
+                ({}, 0),
+                ]:
+            self.assertEqual(pyson.PYSONDecoder(ctx).decode(eval), result)
+
+    def test_Eval_dot_notation_nested(self):
+        'Test pyson.Eval with dot notation with nested dots'
+
+        eval = pyson.PYSONEncoder().encode(pyson.Eval('foo.bar.test', 0))
+
+        for ctx, result in [
+                ({'foo': {'bar': {'test': 1}}}, 1),
+                ({'foo': {'foo': 1}}, 0),
+                ({'bar': {'bar': 1}}, 0),
+                ({}, 0),
+                ]:
+            self.assertEqual(pyson.PYSONDecoder(ctx).decode(eval), result)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(PYSONTestCase)
