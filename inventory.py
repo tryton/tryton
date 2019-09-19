@@ -246,8 +246,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
             # Update existing lines
             for line in inventory.lines:
-                if not (line.product.type == 'goods'
-                        and not line.product.consumable):
+                if line.product.type != 'goods':
                     Line.delete([line])
                     continue
 
@@ -297,7 +296,6 @@ class InventoryLine(ModelSQL, ModelView):
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[
             ('type', '=', 'goods'),
-            ('consumable', '=', False),
             ], states=_states, depends=_depends)
     uom = fields.Function(fields.Many2One('product.uom', 'UOM',
         help="The unit in which the quantity is specified."), 'get_uom')

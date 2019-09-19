@@ -58,6 +58,18 @@ Create products::
     >>> template2.save()
     >>> product2, = template2.products
 
+    >>> template = ProductTemplate()
+    >>> template.name = 'Product'
+    >>> template.default_uom = unit
+    >>> template.type = 'goods'
+    >>> template.consumable = True
+    >>> template.list_price = Decimal('300')
+    >>> template.cost_price_method = 'average'
+    >>> consumable, = template.products
+    >>> consumable.cost_price = Decimal('80')
+    >>> template.save()
+    >>> consumable, = template.products
+
 Fill storage::
 
     >>> StockMove = Model.get('stock.move')
@@ -201,6 +213,27 @@ Empty storage::
     >>> line_p2.expected_quantity
     3.8
     >>> inventory.click('confirm')
+
+Add quantity of consumable product::
+
+    >>> inventory = Inventory()
+    >>> inventory.location = storage_loc
+    >>> inventory.empty_quantity = 'keep'
+    >>> line = inventory.lines.new()
+    >>> line.product = consumable
+    >>> line.quantity = 5.0
+    >>> inventory.click('complete_lines')
+    >>> len(inventory.lines)
+    1
+    >>> inventory.click('confirm')
+    >>> line, = inventory.lines
+    >>> move, = line.moves
+    >>> move.quantity
+    5.0
+    >>> move.from_location == inventory.lost_found
+    True
+    >>> move.to_location == inventory.location
+    True
 
 Create an inventory that should be empty after completion::
 
