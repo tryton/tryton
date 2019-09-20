@@ -243,6 +243,12 @@ class Subscription(Workflow, ModelSQL, ModelView):
         return super(Subscription, cls).copy(subscriptions, default=default)
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'canceled', 'muted', '')),
+            ]
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('canceled')
     def cancel(cls, subscriptions):
