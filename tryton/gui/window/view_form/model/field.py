@@ -208,8 +208,19 @@ class SelectionField(Field):
 
     _default = None
 
-    def get_client(self, record):
-        return record.value.get(self.name)
+
+class MultiSelectionField(Field):
+
+    _default = None
+
+    def get(self, record):
+        return super().get(record) or self._default
+
+    def get_eval(self, record):
+        value = super().get_eval(record)
+        if value is None:
+            value = []
+        return value
 
 
 class DateTimeField(Field):
@@ -1078,6 +1089,7 @@ TYPES = {
     'one2many': O2MField,
     'reference': ReferenceField,
     'selection': SelectionField,
+    'multiselection': MultiSelectionField,
     'boolean': BooleanField,
     'datetime': DateTimeField,
     'date': DateField,

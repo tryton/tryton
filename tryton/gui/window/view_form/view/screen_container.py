@@ -604,7 +604,7 @@ class ScreenContainer(object):
                     selections = (_('True'), _('False'))
                     for selection in selections:
                         entry.append_text(selection)
-                elif field['type'] == 'selection':
+                elif field['type'] in ['selection', 'multiselection']:
                     selections = tuple(x[1] for x in field['selection'])
                     entry = Selection(selections)
                     entry.set_vexpand(True)

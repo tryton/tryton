@@ -985,6 +985,33 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         return False
 
 
+class MultiSelection(GenericText, SelectionMixin):
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.init_selection()
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_, user_data=None):
+        super().setter(column, cell, store, iter_, user_data=user_data)
+        cell.set_property('editable', False)
+
+    def value_from_text(self, record, text, callback=None):
+        if callback:
+            callback()
+
+    def get_textual_value(self, record):
+        field = record[self.attrs['name']]
+        self.update_selection(record, field)
+        selection = dict(self.selection)
+        values = []
+        for value in field.get_eval(record):
+            text = selection.get(value, '')
+            values.append(text)
+        return ';'.join(values)
+
+
 class Reference(M2O):
 
     def __init__(self, view, attrs, renderer=None):

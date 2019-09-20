@@ -1,3 +1,4 @@
+* Support multiselection field
 * Support dot notation on PYSON Eval
 * Order Dict keys by sequence
 * Support relation fields in domain parser

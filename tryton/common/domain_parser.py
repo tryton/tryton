@@ -177,6 +177,8 @@ def default_operator(field):
     if field['type'] in ('char', 'text', 'many2one', 'many2many', 'one2many',
             'reference'):
         return 'ilike'
+    elif field['type'] == 'multiselection':
+        return 'in'
     else:
         return '='
 
@@ -307,6 +309,7 @@ def convert_value(field, value, context=None):
         'integer': convert_integer,
         'numeric': convert_numeric,
         'selection': convert_selection,
+        'multiselection': convert_selection,
         'reference': convert_selection,
         'datetime': convert_datetime,
         'date': convert_date,
@@ -563,6 +566,7 @@ def format_value(field, value, target=None, context=None):
         'float': format_float,
         'numeric': format_float,
         'selection': format_selection,
+        'multiselection': format_selection,
         'reference': format_reference,
         'datetime': format_datetime,
         'date': format_date,
@@ -786,6 +790,7 @@ def complete_value(field, value):
     completes = {
         'boolean': complete_boolean,
         'selection': complete_selection,
+        'multiselection': complete_selection,
         'reference': complete_reference,
         'datetime': complete_datetime,
         'date': complete_date,
@@ -1023,6 +1028,8 @@ class DomainParser(object):
                         return all(isinstance(v, types) for v in value)
                     else:
                         return isinstance(value, types)
+                elif field['type'] == 'multiselection':
+                    return not value or isinstance(value, list)
                 else:
                     return True
             elif name == 'rec_name':
@@ -1270,16 +1277,25 @@ class DomainParser(object):
                         target, value = split_target_value(field, value)
                         if target:
                             field_name += '.rec_name'
+                    elif field['type'] == 'multiselection':
+                        if value is not None and not isinstance(value, list):
+                            value = [value]
 
                     if not operator:
                         operator = default_operator(field)
-                    if isinstance(value, list):
+                    if (isinstance(value, list)
+                            and field['type'] != 'multiselection'):
                         if operator == '!':
                             operator = 'not in'
                         else:
                             operator = 'in'
                     if operator == '!':
                         operator = negate_operator(default_operator(field))
+                    if value is None and operator.endswith('in'):
+                        if operator.startswith('not'):
+                            operator = '!='
+                        else:
+                            operator = '='
                     if field['type'] in ('integer', 'float', 'numeric',
                             'datetime', 'date', 'time'):
                         if value and '..' in value:
@@ -1313,6 +1329,15 @@ def test_stringable():
                 'string': 'Name',
                 'type': 'char',
                 },
+            'multiselection': {
+                'string': "MultiSelection",
+                'type': 'multiselection',
+                'selection': [
+                    ('foo', "Foo"),
+                    ('bar', "Bar"),
+                    ('baz', "Baz"),
+                    ],
+                },
             'relation': {
                 'string': 'Relation',
                 'type': 'many2one',
@@ -1336,6 +1361,10 @@ def test_stringable():
     assert not dom.stringable(['AND', valid, invalid])
     assert dom.stringable([[valid]])
     assert not dom.stringable([[valid], [invalid]])
+    assert dom.stringable([('multiselection', '=', None)])
+    assert dom.stringable([('multiselection', '=', '')])
+    assert not dom.stringable([('multiselection', '=', 'foo')])
+    assert dom.stringable([('multiselection', '=', ['foo'])])
     assert dom.stringable([('relation', '=', None)])
     assert dom.stringable([('relation', '=', "Foo")])
     assert dom.stringable([('relation.rec_name', '=', "Foo")])
@@ -1367,6 +1396,15 @@ def test_string():
                     ('male', 'Male'),
                     ('female', 'Female'),
                     ('', ''),
+                    ],
+                },
+            'multiselection': {
+                'string': "MultiSelection",
+                'type': 'multiselection',
+                'selection': [
+                    ('foo', "Foo"),
+                    ('bar', "Bar"),
+                    ('baz', "Baz"),
                     ],
                 },
             'reference': {
@@ -1426,6 +1464,29 @@ def test_string():
     assert dom.string([('selection', '!=', '')]) == 'Selection: !""'
     assert dom.string([('selection', '=', 'male')]) == 'Selection: Male'
     assert dom.string([('selection', '!=', 'male')]) == 'Selection: !Male'
+    assert dom.string([('multiselection', '=', None)]) == "MultiSelection: ="
+    assert dom.string([('multiselection', '=', '')]) == "MultiSelection: ="
+    assert dom.string([('multiselection', '!=', '')]) == "MultiSelection: !="
+    assert dom.string([('multiselection', '=', ['foo'])]) == \
+        "MultiSelection: =Foo"
+    assert dom.string([('multiselection', '!=', ['foo'])]) == \
+        "MultiSelection: !=Foo"
+    assert dom.string([('multiselection', '=', ['foo', 'bar'])]) == \
+        "MultiSelection: =Foo;Bar"
+    assert dom.string([('multiselection', '!=', ['foo', 'bar'])]) == \
+        "MultiSelection: !=Foo;Bar"
+    assert dom.string([('multiselection', 'in', ['foo'])]) == \
+        "MultiSelection: Foo"
+    assert dom.string([('multiselection', 'not in', ['foo'])]) == \
+        "MultiSelection: !Foo"
+    assert dom.string([('multiselection', '=', ['foo', 'bar'])]) == \
+        "MultiSelection: =Foo;Bar"
+    assert dom.string([('multiselection', '!=', ['foo', 'bar'])]) == \
+        "MultiSelection: !=Foo;Bar"
+    assert dom.string([('multiselection', 'in', ['foo', 'bar'])]) == \
+        "MultiSelection: Foo;Bar"
+    assert dom.string([('multiselection', 'not in', ['foo', 'bar'])]) == \
+        "MultiSelection: !Foo;Bar"
     assert dom.string([('reference', 'ilike', '%foo%')]) == \
         'Reference: foo'
     assert dom.string([('reference.rec_name', 'ilike', '%bar%', 'spam')]) == \
@@ -1565,6 +1626,16 @@ def test_parse_clause():
                     ('female', 'Female'),
                     ],
                 },
+            'multiselection': {
+                'string': "MultiSelection",
+                'name': 'multiselection',
+                'type': 'multiselection',
+                'selection': [
+                    ('foo', "Foo"),
+                    ('bar', "Bar"),
+                    ('baz', "Baz"),
+                    ],
+                },
             'reference': {
                 'string': 'Reference',
                 'name': 'reference',
@@ -1622,6 +1693,37 @@ def test_parse_clause():
         == [
             ('selection', 'in', ['male', 'female'])
             ]
+    assert rlist(dom.parse_clause([('MultiSelection', None, None)])) == [
+        ('multiselection', '=', None),
+        ]
+    assert rlist(dom.parse_clause([('MultiSelection', None, '')])) == [
+        ('multiselection', 'in', ['']),
+        ]
+    assert rlist(dom.parse_clause([('MultiSelection', '=', '')])) == [
+        ('multiselection', '=', ['']),
+        ]
+    assert rlist(dom.parse_clause([('MultiSelection', '!', '')])) == [
+        ('multiselection', 'not in', ['']),
+        ]
+    assert rlist(dom.parse_clause([('MultiSelection', '!=', '')])) == [
+        ('multiselection', '!=', ['']),
+        ]
+    assert rlist(dom.parse_clause(
+            [('MultiSelection', None, ['Foo', 'Bar'])])) == [
+        ('multiselection', 'in', ['foo', 'bar']),
+        ]
+    assert rlist(dom.parse_clause(
+            [('MultiSelection', '=', ['Foo', 'Bar'])])) == [
+        ('multiselection', '=', ['foo', 'bar']),
+        ]
+    assert rlist(dom.parse_clause(
+            [('MultiSelection', '!', ['Foo', 'Bar'])])) == [
+        ('multiselection', 'not in', ['foo', 'bar']),
+        ]
+    assert rlist(dom.parse_clause(
+            [('MultiSelection', '!=', ['Foo', 'Bar'])])) == [
+        ('multiselection', '!=', ['foo', 'bar']),
+        ]
     assert rlist(dom.parse_clause([('Integer', None, None)])) == [
         ('integer', '=', None),
         ]

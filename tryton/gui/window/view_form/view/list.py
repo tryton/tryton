@@ -20,8 +20,8 @@ import tryton.common as common
 from . import View, XMLViewParser
 from .list_gtk.editabletree import EditableTreeView, TreeView
 from .list_gtk.widget import (Affix, Char, Text, Int, Boolean, URL, Date,
-    Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection, Reference,
-    Dict, ProgressBar, Button, Image)
+    Time, Float, TimeDelta, Binary, M2O, O2O, O2M, M2M, Selection,
+    MultiSelection, Reference, Dict, ProgressBar, Button, Image)
 
 _ = gettext.gettext
 
@@ -271,6 +271,7 @@ class TreeXMLViewParser(XMLViewParser):
         'progressbar': ProgressBar,
         'reference': Reference,
         'selection': Selection,
+        'multiselection': MultiSelection,
         'sip': URL,
         'text': Text,
         'time': Time,
