@@ -227,6 +227,12 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             return payment_terms[0].id
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
