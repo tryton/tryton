@@ -10,7 +10,6 @@ def register():
     Pool.register(
         stock.Lot,
         stock.LotByLocationContext,
-        stock.LotType,
         stock.Move,
         stock.ShipmentIn,
         stock.ShipmentOut,
@@ -23,7 +22,6 @@ def register():
         stock.InventoryCountSearch,
         product.Template,
         product.Product,
-        product.TemplateLotType,
         module='stock_lot', type_='model')
     Pool.register(
         stock.InventoryCount,

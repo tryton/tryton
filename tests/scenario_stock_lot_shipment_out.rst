@@ -39,6 +39,7 @@ Create product::
     >>> template.default_uom = unit
     >>> template.type = 'goods'
     >>> template.list_price = Decimal('20')
+    >>> template.lot_required = ['storage']
     >>> template.save()
     >>> product, = template.products
 
@@ -94,6 +95,13 @@ Assign the shipment::
     'assigned'
     >>> len(shipment_out.outgoing_moves)
     1
+
+Try to pack without lot::
+
+    >>> shipment_out.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    RequiredValidationError: ...
 
 Set 2 lots::
 

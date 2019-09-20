@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/notebook/page[@id='general']" position="after">
         <page string="Lots" name="lot_required">
             <label name="lot_required"/>
-            <field name="lot_required" widget="multiselection" yexpand="0"/>
+            <field name="lot_required" yexpand="0"/>
         </page>
     </xpath>
 </data>

@@ -12,12 +12,6 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.modules.stock import StockMixin
 
-__all__ = ['Lot', 'LotType', 'Move', 'ShipmentIn', 'ShipmentOut',
-    'LotByLocationContext', 'ShipmentOutReturn',
-    'Period', 'PeriodCacheLot',
-    'Inventory', 'InventoryLine', 'InventoryCount', 'InventoryCountSearch',
-    'LotByLocationContext']
-
 
 def check_no_move(func):
     def find_moves(cls, records, state=None):
@@ -109,13 +103,6 @@ class LotByLocationContext(ModelView):
         if self.forecast_date is None:
             return datetime.date.max
         return self.forecast_date
-
-
-class LotType(ModelSQL, ModelView):
-    "Stock Lot Type"
-    __name__ = 'stock.lot.type'
-    name = fields.Char('Name', required=True, translate=True)
-    code = fields.Char('Code', required=True)
 
 
 class Move(metaclass=PoolMeta):
