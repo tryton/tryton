@@ -48,8 +48,10 @@
         var date = Sao.Date(2002, 0, 1);
         var datetime = Sao.DateTime(2002, 0, 1, 12, 30, 0, 0);
         var pyson_date = new Sao.PYSON.Date(2002, 1, 1).pyson();
+        pyson_date.start = null;
         var pyson_datetime = new Sao.PYSON.DateTime(
             2002, 1, 1, 12, 30, 0, 0).pyson();
+        pyson_datetime.start = null;
         var array = ["create_date", '>=', date];
         var pyson_array = ["create_date", '>=', pyson_date];
         QUnit.strictEqual(encoder.encode(), 'null', "encode()");
@@ -707,7 +709,42 @@
 
         QUnit.strictEqual(
             new Sao.PYSON.Date(2010, 1, 12, -1, 12, -7).toString(),
-            'Date(2010, 1, 12, -1, 12, -7)');
+            'Date(2010, 1, 12, -1, 12, -7, null)');
+    });
+
+    QUnit.test('PYSON Date start', function() {
+        var eval_;
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Date(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                new Sao.PYSON.Eval('date')));
+        var date = Sao.Date(2000, 1, 1);
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'date': date}).decode(eval_).valueOf(), date.valueOf());
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Date(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                new Sao.PYSON.Eval('datetime')));
+        var datetime = Sao.DateTime(2000, 1, 1, 12, 0);
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'datetime': datetime}).decode(eval_).valueOf(),
+            Sao.Date(2000, 1, 1).valueOf());
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Date(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                new Sao.PYSON.Eval('foo')));
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'foo': 'bar'}).decode(eval_).valueOf(),
+            Sao.Date().valueOf());
     });
 
     QUnit.test('PYSON DateTime', function() {
@@ -874,7 +911,49 @@
 
         QUnit.strictEqual(new Sao.PYSON.DateTime(2010, 1, 12, 10, 30, 20, 0,
                 -1, 12, -7, 2, 15, 30, 1).toString(),
-            'DateTime(2010, 1, 12, 10, 30, 20, 0, -1, 12, -7, 2, 15, 30, 1)');
+            'DateTime(2010, 1, 12, 10, 30, 20, 0, -1, 12, -7, 2, 15, 30, 1, null)');
+    });
+
+    QUnit.test('PYSON DateTime start', function() {
+        var eval_;
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.DateTime(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                new Sao.PYSON.Eval('datetime')));
+        var datetime = Sao.DateTime(2000, 1, 1, 12, 0);
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'datetime': datetime}).decode(eval_).valueOf(),
+            datetime.valueOf());
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.DateTime(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                new Sao.PYSON.Eval('date')));
+        var date = Sao.DateTime(2000, 1, 1);
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'date': date}).decode(eval_).valueOf(),
+            Sao.DateTime(2000, 1, 1, 0, 0).valueOf());
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.DateTime(
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                undefined, undefined, undefined,
+                undefined, undefined, undefined, undefined,
+                new Sao.PYSON.Eval('foo')));
+
+        QUnit.strictEqual(new Sao.PYSON.Decoder(
+            {'foo': 'bar'}).decode(eval_).valueOf(),
+            Sao.DateTime().valueOf());
     });
 
     QUnit.test('PYSON TimeDelta', function() {
