@@ -218,6 +218,12 @@ class Complaint(Workflow, ModelSQL, ModelView):
             return self.origin.__class__.__name__
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
