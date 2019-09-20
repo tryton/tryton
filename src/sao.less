@@ -493,6 +493,11 @@ img.icon {
 
 .form-binary, .editabletree-binary {
     min-width: calc(5 * 2.4em);
+
+    input:last-of-type {
+        text-align: right;
+        text-align: end;
+    }
 }
 
 .form-integer, .form-float, .form-timedelta,
@@ -503,7 +508,7 @@ img.icon {
         text-align: end;
     }
 }
-.column-integer, .column-float, .column-timedelta {
+.column-integer, .column-float, .column-timedelta, .column-binary {
     text-align: right;
     text-align: end;
 }
