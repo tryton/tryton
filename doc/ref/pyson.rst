@@ -176,17 +176,16 @@ statement for look-up dictionary or integer objects. Returns true when
 a list (or dictionary) object named by ``obj`` contains the value of
 the variable (or key) named by ``key``. Otherwise returns false.
 
-.. class:: Date([year[, month[, day[, delta_years[, delta_month[, delta_days]]]]]])
+.. class:: Date([year[, month[, day[, delta_years[, delta_month[, delta_days[, start]]]]]]])
 
-A :class:`Date` object represents the PYSON ``Date()``
-statement for date related conversions and basic calculations.
-Returns a date object which represents
-the values of arguments named by the *variables* explained below.
-Missing values of arguments named by ``year`` or ``month`` or
-``day`` take their defaults from the actual date. When values of
-arguments named by ``delta_*`` are given, they are added to the
-values of the appropriate arguments in a date and time preserving
-manner.
+A :class:`Date` object represents the PYSON ``Date()`` statement for date
+related conversions and basic calculations.
+Returns a date object which represents the values of arguments named by the
+*variables* explained below.
+Missing values of arguments named by ``year`` or ``month`` or ``day`` take
+their defaults from ``start`` or the actual date. When values of arguments
+named by ``delta_*`` are given, they are added to the values of the appropriate
+arguments in a date and time preserving manner.
 
 Arguments:
 
@@ -208,18 +207,20 @@ Arguments:
 ``delta_days``
     Contains a PYSON statement of type int or long.
 
-.. class:: DateTime([year[, month[, day[, hour[, minute[, second[, microsecond[, delta_years[, delta_months[, delta_days[, delta_hours[, delta_minutes[, delta_seconds[, delta_microseconds]]]]]]]]]]]]]])
+``start``
+    Contains a PYSON statement of type date.
 
-A :class:`DateTime` object represents the PYSON ``Date()``
-statement for date and time related conversions and calculations.
-Returns a date time object which represents the values of
-variables named by the *arguments* explained below.
-Missing values of arguments named by  ``year``, ``month``, ``day``,
-``hour``, ``minute``, ``second``, ``microseconds`` take their
-defaults from the actual date and time.
-When values of arguments named by ``delta_*`` are given, these are
-added  to the appropriate attributes in a date and time preserving
-manner.
+.. class:: DateTime([year[, month[, day[, hour[, minute[, second[, microsecond[, delta_years[, delta_months[, delta_days[, delta_hours[, delta_minutes[, delta_seconds[, delta_microseconds[, start]]]]]]]]]]]]]]])
+
+A :class:`DateTime` object represents the PYSON ``Date()`` statement for date
+and time related conversions and calculations.
+Returns a date time object which represents the values of variables named by
+the *arguments* explained below.
+Missing values of arguments named by  ``year``, ``month``, ``day``, ``hour``,
+``minute``, ``second``, ``microseconds`` take their defaults from ``start`` or
+the actual date and time.
+When values of arguments named by ``delta_*`` are given, these are added  to
+the appropriate attributes in a date and time preserving manner.
 
 Arguments:
 
@@ -264,6 +265,9 @@ Arguments:
 
 ``delta_microseconds``
     Contains a PYSON statement of type int or long.
+
+``start``
+    Contains a PYSON statement of type datetime.
 
 .. class:: Len(value)
 

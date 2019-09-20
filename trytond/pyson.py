@@ -501,7 +501,7 @@ class In(PYSON):
 class Date(PYSON):
 
     def __init__(self, year=None, month=None, day=None,
-            delta_years=0, delta_months=0, delta_days=0, **kwargs):
+            delta_years=0, delta_months=0, delta_days=0, start=None, **kwargs):
         year = kwargs.get('y', year)
         month = kwargs.get('M', month)
         day = kwargs.get('d', day)
@@ -522,11 +522,13 @@ class Date(PYSON):
         self._delta_years = delta_years
         self._delta_months = delta_months
         self._delta_days = delta_days
+        self._start = start
 
     @property
     def __repr_params__(self):
         return (self._year, self._month, self._day,
-            self._delta_years, self._delta_months, self._delta_days)
+            self._delta_years, self._delta_months, self._delta_days,
+            self._start)
 
     def pyson(self):
         return {
@@ -537,6 +539,7 @@ class Date(PYSON):
             'dy': self._delta_years,
             'dM': self._delta_months,
             'dd': self._delta_days,
+            'start': self._start,
             }
 
     def types(self):
@@ -544,7 +547,12 @@ class Date(PYSON):
 
     @staticmethod
     def eval(dct, context):
-        return datetime.date.today() + relativedelta(
+        today = dct.get('start')
+        if isinstance(today, datetime.datetime):
+            today = today.date()
+        if not isinstance(today, datetime.date):
+            today = datetime.date.today()
+        return today + relativedelta(
             year=dct['y'],
             month=dct['M'],
             day=dct['d'],
@@ -560,7 +568,7 @@ class DateTime(Date):
             hour=None, minute=None, second=None, microsecond=None,
             delta_years=0, delta_months=0, delta_days=0,
             delta_hours=0, delta_minutes=0, delta_seconds=0,
-            delta_microseconds=0, **kwargs):
+            delta_microseconds=0, start=None, **kwargs):
         hour = kwargs.get('h', hour)
         minute = kwargs.get('m', minute)
         second = kwargs.get('s', second)
@@ -571,7 +579,7 @@ class DateTime(Date):
         delta_microseconds = kwargs.get('dms', delta_microseconds)
         super(DateTime, self).__init__(year=year, month=month, day=day,
                 delta_years=delta_years, delta_months=delta_months,
-                delta_days=delta_days, **kwargs)
+                delta_days=delta_days, start=start, **kwargs)
         for i in (hour, minute, second, microsecond,
                 delta_hours, delta_minutes, delta_seconds, delta_microseconds):
             if isinstance(i, PYSON):
@@ -594,9 +602,10 @@ class DateTime(Date):
         date_params = super(DateTime, self).__repr_params__
         return (date_params[:3]
             + (self._hour, self._minute, self._second, self._microsecond)
-            + date_params[3:]
+            + date_params[3:-1]
             + (self._delta_hours, self._delta_minutes, self._delta_seconds,
-                self._delta_microseconds))
+                self._delta_microseconds)
+            + date_params[-1:])
 
     def pyson(self):
         res = super(DateTime, self).pyson()
@@ -616,7 +625,13 @@ class DateTime(Date):
 
     @staticmethod
     def eval(dct, context):
-        return datetime.datetime.now() + relativedelta(
+        now = dct.get('start')
+        if (isinstance(now, datetime.date)
+                and not isinstance(now, datetime.datetime)):
+            now = datetime.datetime.combine(now, datetime.time())
+        if not isinstance(now, datetime.datetime):
+            now = datetime.datetime.now()
+        return now + relativedelta(
             year=dct['y'],
             month=dct['M'],
             day=dct['d'],

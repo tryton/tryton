@@ -1,3 +1,4 @@
+* Add start value to PYSON Date and DateTime
 * Add MultiSelection field
 * Support dot notation on PYSON Eval
 * Add __slots__

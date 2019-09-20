@@ -408,7 +408,8 @@ class PYSONTestCase(unittest.TestCase):
             'd': 12,
             'dy': -1,
             'dM': 12,
-            'dd': -7
+            'dd': -7,
+            'start': None,
             })
 
         if not sys.flags.optimize:
@@ -453,7 +454,33 @@ class PYSONTestCase(unittest.TestCase):
             datetime.date(2010, 2, 22))
 
         self.assertEqual(repr(pyson.Date(2010, 1, 12, -1, 12, -7)),
-            'Date(2010, 1, 12, -1, 12, -7)')
+            'Date(2010, 1, 12, -1, 12, -7, None)')
+
+    def test_Date_start(self):
+        "Test Date with start"
+        eval = pyson.PYSONEncoder().encode(pyson.Date(
+                start=pyson.Eval('date')))
+
+        date = datetime.date(2000, 1, 1)
+        self.assertEqual(pyson.PYSONDecoder(
+                {'date': date}).decode(eval), date)
+
+    def test_Date_start_datetime(self):
+        "Test Date with start as datetime"
+        eval = pyson.PYSONEncoder().encode(pyson.Date(
+                start=pyson.Eval('datetime')))
+
+        datetime_ = datetime.datetime(2000, 1, 1, 12, 00)
+        self.assertEqual(pyson.PYSONDecoder(
+                {'datetime': datetime_}).decode(eval), datetime_.date())
+
+    def test_Date_start_invalid(self):
+        "Test Date with invalid start"
+        eval = pyson.PYSONEncoder().encode(pyson.Date(
+                start=pyson.Eval('foo')))
+
+        self.assertEqual(pyson.PYSONDecoder(
+                {'foo': 'bar'}).decode(eval), datetime.date.today())
 
     def test_DateTime(self):
         'Test pyson.DateTime'
@@ -474,6 +501,7 @@ class PYSONTestCase(unittest.TestCase):
                 'dm': 15,
                 'ds': 30,
                 'dms': 1,
+                'start': None,
                 })
 
         if not sys.flags.optimize:
@@ -570,7 +598,35 @@ class PYSONTestCase(unittest.TestCase):
 
         self.assertEqual(repr(pyson.DateTime(2010, 1, 12, 10, 30, 20, 0,
                     -1, 12, -7, 2, 15, 30, 1)),
-            'DateTime(2010, 1, 12, 10, 30, 20, 0, -1, 12, -7, 2, 15, 30, 1)')
+            ('DateTime(2010, 1, 12, 10, 30, 20, 0, '
+                '-1, 12, -7, 2, 15, 30, 1, None)'))
+
+    def test_DateTime_start(self):
+        "Test DateTime with start"
+        eval = pyson.PYSONEncoder().encode(pyson.DateTime(
+                start=pyson.Eval('datetime')))
+
+        datetime_ = datetime.datetime(2000, 1, 1, 12, 0)
+        self.assertEqual(pyson.PYSONDecoder(
+                {'datetime': datetime_}).decode(eval), datetime_)
+
+    def test_DateTime_start_datetime(self):
+        "Test DateTime with start as date"
+        eval = pyson.PYSONEncoder().encode(pyson.DateTime(
+                start=pyson.Eval('date')))
+
+        date = datetime.date(2000, 1, 1)
+        self.assertEqual(pyson.PYSONDecoder(
+                {'date': date}).decode(eval),
+            datetime.datetime(2000, 1, 1, 0, 0))
+
+    def test_DateTime_start_invalid(self):
+        "Test DateTime with invalid start"
+        eval = pyson.PYSONEncoder().encode(pyson.DateTime(
+                start=pyson.Eval('foo')))
+
+        self.assertIsInstance(pyson.PYSONDecoder(
+                {'foo': 'bar'}).decode(eval), datetime.datetime)
 
     def test_Len(self):
         'Test pyson.Len'
