@@ -265,6 +265,12 @@ class PurchaseRequest(ModelSQL, ModelView):
         return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         for vals in vlist:
             for field_name in ('quantity', 'company'):
