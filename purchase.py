@@ -619,7 +619,13 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def view_attributes(cls):
         attributes = [
-            ('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+            ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree/field[@name="invoice_state"]', 'visual',
+                If(Eval('invoice_state') == 'exception', 'danger', '')),
+            ('/tree/field[@name="shipment_state"]', 'visual',
+                If(Eval('shipment_state') == 'exception', 'danger', '')),
+            ]
         if Transaction().context.get('modify_header'):
             attributes.extend([
                     ('//group[@id="states"]', 'states', {'invisible': True}),
