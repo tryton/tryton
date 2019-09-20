@@ -1,3 +1,4 @@
+* Support visual context on tree view
 * Support multiselection field
 * Support dot notation on PYSON Eval
 * Manage sequence
