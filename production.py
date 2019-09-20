@@ -493,6 +493,12 @@ class Production(Workflow, ModelSQL, ModelView):
                     outputs=cost_price))
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         Sequence = Pool().get('ir.sequence')
         Config = Pool().get('production.configuration')
