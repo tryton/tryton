@@ -1097,7 +1097,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [('/form//field[@name="comment"]', 'spell', Eval('party_lang'))]
+        return [
+            ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
+            ('/tree', 'visual',
+                If(((Eval('type') == 'out')
+                        & (Eval('amount_to_pay_today', 0) > 0))
+                    | ((Eval('type') == 'in')
+                        & (Eval('amount_to_pay_today', 0) < 0)),
+                    'danger',
+                    If(Eval('state') == 'cancel', 'muted', ''))),
+            ]
 
     @classmethod
     def delete(cls, invoices):
