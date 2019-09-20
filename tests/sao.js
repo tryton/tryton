@@ -1488,6 +1488,15 @@
                     ['female', 'Female']
                 ]
             },
+            'multiselection': {
+                'string': "MultiSelection",
+                'type': 'multiselection',
+                'selection': [
+                    ['foo', "Foo"],
+                    ['bar', "Bar"],
+                    ['baz', "Baz"],
+                ],
+            },
             'reference': {
                 'string': 'Reference',
                 'name': 'reference',
@@ -1535,6 +1544,24 @@
         [[c(['Selection', null, ''])], [c(['selection', '=', ''])]],
         [[c(['Selection', null, ['Male', 'Female']])],
             [c(['selection', 'in', ['male', 'female']])]],
+        [[c(['MultiSelection', null, null])],
+            [c(['multiselection', '=', null])]],
+        [[c(['MultiSelection', null, ''])],
+            [c(['multiselection', 'in', ['']])]],
+        [[c(['MultiSelection', '=', ''])],
+            [c(['multiselection', '=', ['']])]],
+        [[c(['MultiSelection', '!', ''])],
+            [c(['multiselection', 'not in', ['']])]],
+        [[c(['MultiSelection', '!=', ''])],
+            [c(['multiselection', '!=', ['']])]],
+        [[c(['MultiSelection', null, ['Foo', 'Bar']])],
+            [c(['multiselection', 'in', ['foo', 'bar']])]],
+        [[c(['MultiSelection', '=', ['Foo', 'Bar']])],
+            [c(['multiselection', '=', ['foo', 'bar']])]],
+        [[c(['MultiSelection', '!', ['Foo', 'Bar']])],
+            [c(['multiselection', 'not in', ['foo', 'bar']])]],
+        [[c(['MultiSelection', '!=', ['Foo', 'Bar']])],
+            [c(['multiselection', '!=', ['foo', 'bar']])]],
         [[c(['Integer', null, null])], [c(['integer', '=', null])]],
         [[c(['Integer', null, '3..5'])], [[
             c(['integer', '>=', 3]),
@@ -1702,6 +1729,15 @@
                 'string': 'Name',
                 'type': 'char',
             },
+            'multiselection': {
+                'string': "MultiSelection",
+                'type': 'multiselection',
+                'selection': [
+                    ['foo', "Foo"],
+                    ['bar', "Bar"],
+                    ['baz', "Baz"],
+                ],
+            },
             'relation': {
                 'string': 'Relation',
                 'type': 'many2one',
@@ -1725,6 +1761,10 @@
         QUnit.ok(!parser.stringable(['AND', valid, invalid]));
         QUnit.ok(parser.stringable([[valid]]));
         QUnit.ok(!parser.stringable([[valid], [invalid]]));
+        QUnit.ok(parser.stringable([['multiselection', '=', null]]));
+        QUnit.ok(parser.stringable([['multiselection', '=', '']]));
+        QUnit.ok(!parser.stringable([['multiselection', '=', 'foo']]));
+        QUnit.ok(parser.stringable([['multiselection', '=', ['foo']]]));
         QUnit.ok(parser.stringable([['relation', '=', null]]));
         QUnit.ok(parser.stringable([['relation', '=', 'Foo']]));
         QUnit.ok(parser.stringable([['relation.rec_name', '=', 'Foo']]));
@@ -1756,6 +1796,15 @@
                     ['male', 'Male'],
                     ['femal', 'Femal']
                 ]
+            },
+            'multiselection': {
+                'string': "MultiSelection",
+                'type': 'multiselection',
+                'selection': [
+                    ['foo', "Foo"],
+                    ['bar', "Bar"],
+                    ['baz', "Baz"],
+                ],
             },
             'reference': {
                 'string': 'Reference',
@@ -1818,6 +1867,17 @@
         [[['selection', '!=', '']], 'Selection: !""'],
         [[['selection', '=', 'male']], 'Selection: Male'],
         [[['selection', '!=', 'male']], 'Selection: !Male'],
+        [[['multiselection', '=', null]], "MultiSelection: ="],
+        [[['multiselection', '=', '']], "MultiSelection: ="],
+        [[['multiselection', '!=', '']], "MultiSelection: !="],
+        [[['multiselection', '=', ['foo']]], "MultiSelection: =Foo"],
+        [[['multiselection', '!=', ['foo']]], "MultiSelection: !=Foo"],
+        [[['multiselection', '=', ['foo', 'bar']]], "MultiSelection: =Foo;Bar"],
+        [[['multiselection', '!=', ['foo', 'bar']]], "MultiSelection: !=Foo;Bar"],
+        [[['multiselection', 'in', ['foo']]], "MultiSelection: Foo"],
+        [[['multiselection', 'not in', ['foo']]], "MultiSelection: !Foo"],
+        [[['multiselection', 'in', ['foo', 'bar']]], "MultiSelection: Foo;Bar"],
+        [[['multiselection', 'not in', ['foo', 'bar']]], "MultiSelection: !Foo;Bar"],
         [[['reference', 'ilike', '%foo%']], 'Reference: foo'],
         [[['reference', 'ilike', '%bar%', 'spam']], 'Reference: Spam,bar'],
         [[['reference', 'in', ['foo', 'bar']]], 'Reference: foo;bar'],

@@ -3757,10 +3757,7 @@ function eval_pyson(value){
         },
         get modified() {
             if (this.record && this.field) {
-                var group = new Set(this.field.get_client(this.record)
-                    .map(function(r) {
-                        return r.id;
-                    }));
+                var group = new Set(this.field.get_eval(this.record));
                 var value = new Set(this.get_value());
                 return !Sao.common.compare(value, group);
             }
@@ -3781,22 +3778,15 @@ function eval_pyson(value){
                 if (!field) {
                     return;
                 }
-                var value = [];
-                var group = record.field_get_client(this.field_name);
-                for (i = 0, len = group.length; i < len; i++) {
-                    element = group[i];
-                    if (!~group.record_removed.indexOf(element) &&
-                        !~group.record_deleted.indexOf(element)) {
-                            value.push(element.id);
-                    }
-                }
+                var value = field.get_eval(record);
+                value = value.map(function(e) { return JSON.stringify(e); });
                 this.select.val(value);
             }.bind(this));
         },
         get_value: function() {
             var value = this.select.val();
             if (value) {
-                return value.map(function(e) { return parseInt(e, 10); });
+                return value.map(function(e) { return JSON.parse(e); });
             }
             return [];
         },

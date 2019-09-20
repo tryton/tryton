@@ -493,6 +493,7 @@
                                     boolean_option(input));
                             break;
                         case 'selection':
+                        case 'multiselection':
                             entry = new Sao.ScreenContainer.Selection(
                                     field.selection, prefix + field.name);
                             input = entry.el;

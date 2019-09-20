@@ -1499,8 +1499,11 @@
                     invisible = true;
                 }
                 if (editable) {
+                    var EditableBuilder = Sao.View.EditableTree.WIDGETS[
+                        column.attributes.widget];
                     readonly = (column.attributes.readonly ||
-                            state_attrs.readonly);
+                        state_attrs.readonly ||
+                        !EditableBuilder);
                 } else {
                     readonly = false;
                 }
@@ -2031,6 +2034,37 @@
         }
     });
 
+    Sao.View.Tree.MultiSelectionColumn = Sao.class_(Sao.View.Tree.CharColumn, {
+        class_: 'column-multiselection',
+        init: function(model, attributes) {
+            Sao.View.Tree.MultiSelectionColumn._super.init.call(
+                this, model, attributes);
+            Sao.common.selection_mixin.init.call(this);
+            this.init_selection();
+        },
+        init_selection: function(key) {
+            Sao.common.selection_mixin.init_selection.call(this, key);
+        },
+        update_selection: function(record, callback) {
+            Sao.common.selection_mixin.update_selection.call(this, record,
+                this.field, callback);
+        },
+        update_text: function(cell, record) {
+            this.update_selection(record, function() {
+                var values = this.field.get_eval(record).map(function(value) {
+                    for (var i = 0; i < this.selection.length; i++) {
+                        if (this.selection[i][0] === value) {
+                            return this.selection[i][1];
+                        }
+                    }
+                    return '';
+                }.bind(this));
+                var text_value = values.join(';');
+                cell.text(text_value).attr('title', text_value);
+            }.bind(this));
+        },
+    });
+
     Sao.View.Tree.ReferenceColumn = Sao.class_(Sao.View.Tree.CharColumn, {
         class_: 'column-reference',
         init: function(model, attributes) {
@@ -2329,6 +2363,7 @@
         'progressbar': Sao.View.Tree.ProgressBar,
         'reference': Sao.View.Tree.ReferenceColumn,
         'selection': Sao.View.Tree.SelectionColumn,
+        'multiselection': Sao.View.Tree.MultiSelectionColumn,
         'sip': Sao.View.Tree.URLColumn,
         'text': Sao.View.Tree.TextColum,
         'time': Sao.View.Tree.TimeColumn,
