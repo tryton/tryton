@@ -518,6 +518,12 @@ class Move(Workflow, ModelSQL, ModelView):
             self.effective_date = Date.today()
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, moves):

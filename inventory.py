@@ -129,6 +129,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
             return locations[0].id
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     def delete(cls, inventories):
         # Cancel before delete
         cls.cancel(inventories)

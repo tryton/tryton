@@ -60,7 +60,16 @@ def employee_field(string):
         depends=['company', 'state'])
 
 
-class ShipmentIn(Workflow, ModelSQL, ModelView):
+class ShipmentMixin:
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+
+class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Supplier Shipment"
     __name__ = 'stock.shipment.in'
     _rec_name = 'number'
@@ -472,7 +481,7 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
                 })
 
 
-class ShipmentInReturn(Workflow, ModelSQL, ModelView):
+class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
     _rec_name = 'number'
@@ -798,7 +807,7 @@ class ShipmentInReturn(Workflow, ModelSQL, ModelView):
         cls.assign(shipments)
 
 
-class ShipmentOut(Workflow, ModelSQL, ModelView):
+class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _rec_name = 'number'
@@ -1359,7 +1368,7 @@ class ShipmentOut(Workflow, ModelSQL, ModelView):
         cls.assign(shipments)
 
 
-class ShipmentOutReturn(Workflow, ModelSQL, ModelView):
+class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Customer Return Shipment"
     __name__ = 'stock.shipment.out.return'
     _rec_name = 'number'
@@ -1801,7 +1810,7 @@ class AssignShipmentOut(Wizard):
         return 'end'
 
 
-class ShipmentInternal(Workflow, ModelSQL, ModelView):
+class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _rec_name = 'number'
