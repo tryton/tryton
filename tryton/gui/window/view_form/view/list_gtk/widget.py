@@ -31,6 +31,10 @@ from tryton.config import CONFIG
 
 _ = gettext.gettext
 
+COLORS = {n: v for n, v in zip(
+        ['muted', 'success', 'warning', 'danger'],
+        CONFIG['tree.colors'].split(','))}
+
 
 def send_keys(renderer, editable, position, treeview):
     editable.connect('key_press_event', treeview.on_keypressed, renderer)
@@ -133,6 +137,17 @@ class Cell(object):
         field = record[self.attrs['name']]
         return record, field
 
+    def _set_visual(self, cell, record):
+        visual = record.expr_eval(self.attrs.get('visual'))
+        if not visual:
+            visual = record.expr_eval(self.view.attributes.get('visual'))
+        background = COLORS.get(visual) if visual != 'muted' else None
+        foreground = COLORS.get(visual) if visual == 'muted' else None
+        cell.set_property('cell-background', background)
+        if isinstance(cell, Gtk.CellRendererText):
+            cell.set_property('foreground', foreground)
+            cell.set_property('foreground-set', bool(foreground))
+
 
 class Affix(Cell):
     expand = False
@@ -173,6 +188,7 @@ class Affix(Cell):
             if not text:
                 text = field.get_client(record) or ''
             cell.set_property('text', text)
+        self._set_visual(cell, record)
 
     def clicked(self, renderer, path):
         record, field = self._get_record_field_from_path(path)
@@ -215,19 +231,16 @@ class GenericText(Cell):
     @realized
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
-        record = store.get_value(iter_, 0)
+        record, field = self._get_record_field_from_iter(iter_, store)
         text = self.get_textual_value(record)
 
-        if isinstance(cell, CellRendererToggle):
+        if isinstance(cell, Gtk.CellRendererToggle):
             cell.set_active(bool(text))
         else:
             cell.set_sensitive(not (record.deleted or record.removed))
-            if isinstance(cell,
-                    (CellRendererText, CellRendererDate, CellRendererCombo)):
+            if isinstance(cell, Gtk.CellRendererText):
                 cell.set_property('strikethrough', record.deleted)
             cell.set_property('text', text)
-
-        field = record[self.attrs['name']]
 
         editable = getattr(self.view.treeview, 'editable', False)
         states = ('invisible',)
@@ -261,6 +274,7 @@ class GenericText(Cell):
         else:
             if isinstance(cell, CellRendererToggle):
                 cell.set_property('activatable', False)
+        self._set_visual(cell, record)
 
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
@@ -475,6 +489,7 @@ class Binary(GenericText):
         field.state_set(record, states=states)
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible)
+        self._set_visual(cell, record)
 
     def get_data(self, record, field):
         if hasattr(field, 'get_data'):
@@ -537,6 +552,7 @@ class _BinarySave(_BinaryIcon):
         field.state_set(record, states=['invisible'])
         invisible = field.get_state_attrs(record).get('invisible', False)
         cell.set_property('visible', not invisible and size)
+        self._set_visual(cell, record)
 
 
 class _BinarySelect(_BinaryIcon):
@@ -587,6 +603,7 @@ class _BinarySelect(_BinaryIcon):
             cell.set_property('visible', False)
         else:
             cell.set_property('visible', not invisible)
+        self._set_visual(cell, record)
 
 
 class _BinaryOpen(_BinarySave):
@@ -639,6 +656,7 @@ class Image(GenericText):
         if pixbuf and (width != -1 or height != -1):
             pixbuf = common.resize_pixbuf(pixbuf, width, height)
         cell.set_property('pixbuf', pixbuf)
+        self._set_visual(cell, record)
 
     def get_textual_value(self, record):
         if not record:
@@ -1128,6 +1146,7 @@ class ProgressBar(Cell):
         cell.set_property('text', text)
         value = field.get(record) or 0.0
         cell.set_property('value', value * 100)
+        self._set_visual(cell, record)
 
     def open_remote(self, record, create, changed=False, text=None,
             callback=None):
@@ -1170,6 +1189,7 @@ class Button(Cell):
                 break
             parent = parent.parent
         # TODO icon
+        self._set_visual(cell, record)
 
     def button_clicked(self, widget, path):
         if not path:

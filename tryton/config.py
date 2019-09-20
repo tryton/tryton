@@ -56,6 +56,7 @@ class ConfigManager(object):
             'client.check_version': True,
             'client.bus_timeout': 10 * 60,
             'icon.colors': '#3465a4,#555753,#cc0000',
+            'tree.colors': '#777,#dff0d8,#fcf8e3,#f2dede',
             'image.max_size': 10 ** 6,
             'bug.url': 'https://bugs.tryton.org/',
             'download.url': 'https://downloads-cdn.tryton.org/',
