@@ -9,7 +9,7 @@ from sql.conditionals import Coalesce
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -264,6 +264,15 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                     party=self.rec_name))
         if account:
             return account.current()
+
+    @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree/field[@name="receivable_today"]',
+                'visual', If(Eval('receivable_today', 0) > 0, 'danger', '')),
+            ('/tree/field[@name="payable_today"]',
+                'visual', If(Eval('payable_today', 0) < 0, 'warning', '')),
+            ]
 
 
 class PartyAccount(ModelSQL, CompanyValueMixin):
