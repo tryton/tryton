@@ -151,4 +151,11 @@ class TranslatedSelection(object):
         # Use Model __name__ for Reference field
         elif isinstance(value, Model):
             value = value.__name__
-        return selection[value]
+        if isinstance(value, (list, tuple)):
+            values = []
+            for item in value:
+                if item in selection:
+                    values.append(selection[item])
+            return values
+        else:
+            return selection.get(value)

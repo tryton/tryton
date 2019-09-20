@@ -1,3 +1,4 @@
+* Add MultiSelection field
 * Support dot notation on PYSON Eval
 * Add __slots__
 * Pass app and request to wsgi error handlers

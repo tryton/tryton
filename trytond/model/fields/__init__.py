@@ -18,3 +18,4 @@ from .many2many import *
 from .function import *
 from .one2one import *
 from .dict import *
+from .multiselection import *

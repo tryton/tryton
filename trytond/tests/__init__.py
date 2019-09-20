@@ -39,6 +39,7 @@ from . import field_reference
 from . import field_one2many
 from . import field_many2many
 from . import field_one2one
+from . import field_multiselection
 from . import multivalue
 from . import mixin
 from . import tree
@@ -90,6 +91,7 @@ def register():
     field_one2many.register('tests')
     field_many2many.register('tests')
     field_one2one.register('tests')
+    field_multiselection.register('tests')
     multivalue.register('tests')
     mixin.register('tests')
     tree.register('tests')

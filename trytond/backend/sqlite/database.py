@@ -507,7 +507,7 @@ class Database(DatabaseInterface):
                 value = int(value)
         return value
 
-    def json_get(self, column, key):
+    def json_get(self, column, key=None):
         if key:
             column = JSONExtract(column, '$.%s' % key)
         return NullIf(JSONQuote(column), JSONQuote(Null))

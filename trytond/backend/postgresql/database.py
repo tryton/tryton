@@ -91,12 +91,29 @@ class JSONKeyExists(BinaryOperator):
     _operator = '?'
 
 
-class JSONAnyKeyExist(BinaryOperator):
+class _BinaryOperatorArray(BinaryOperator):
+    "Binary Operator that convert list into Array"
+
+    @property
+    def _operands(self):
+        if isinstance(self.right, list):
+            return (self.left, None)
+        return super()._operands
+
+    @property
+    def params(self):
+        params = super().params
+        if isinstance(self.right, list):
+            params = params[:-1] + (self.right,)
+        return params
+
+
+class JSONAnyKeyExist(_BinaryOperatorArray):
     __slots__ = ()
     _operator = '?|'
 
 
-class JSONAllKeyExist(BinaryOperator):
+class JSONAllKeyExist(_BinaryOperatorArray):
     __slots__ = ()
     _operator = '?&'
 

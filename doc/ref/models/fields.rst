@@ -448,7 +448,7 @@ Selection
 
 .. class:: Selection(selection, string[, sort[, selection_change_with[, translate[, \**options]]]])
 
-A string field with limited values to choice.
+A string field with limited values to choose from.
 
 :class:`Selection` has one extra required argument:
 
@@ -501,6 +501,37 @@ Instance methods:
     Returns a descriptor for the translated value of the field. The descriptor
     must be used on the same class as the field. It will use the language
     defined in the context of the instance accessed.
+
+
+MultiSelection
+--------------
+
+.. class:: MultiSelection(selection, string[, sort[, translate[, \**options]]])
+
+A list field with limited values to choose from.
+
+:class:`MultiSelection` has one extra required argument:
+
+.. attribute:: MultiSelection.selection
+
+    Same as :attr:`Selection.selection`
+
+:class:`MultiSelection` has two extra optional arguments:
+
+.. attribute:: MultiSelection.sort
+
+    Same as :attr:`Selection.sort`
+
+.. attribute:: MultiSelection.translate_selection
+
+    Same as :attr:`Selection.translate_selection`
+
+Instance methods:
+
+.. method:: MultiSelection.translated([name])
+
+    Same as :meth:`Selection.translated` but returns a list of translated values.
+
 
 Reference
 ---------

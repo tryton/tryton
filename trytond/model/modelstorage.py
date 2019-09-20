@@ -1283,12 +1283,17 @@ class ModelStorage(Model):
                         if '' in test or None in test:
                             test.add('')
                             test.add(None)
-                        if value not in test:
-                            error_args = cls.__names__(field_name)
-                            error_args['value'] = value
-                            raise SelectionValidationError(
-                                gettext('ir.msg_selection_validation_record',
-                                    **error_args))
+                        if field._type != 'multiselection':
+                            values = [value]
+                        else:
+                            values = value or []
+                        for value in values:
+                            if value not in test:
+                                error_args = cls.__names__(field_name)
+                                error_args['value'] = value
+                                raise SelectionValidationError(gettext(
+                                        'ir.msg_selection_validation_record',
+                                        **error_args))
 
                 def format_test(value, format, field_name):
                     if not value:

@@ -97,29 +97,30 @@
       <attribute>
         <name ns="">widget</name>
         <choice>
-          <value>char</value>
-          <value>many2one</value>
-          <value>date</value>
-          <value>one2many</value>
-          <value>many2many</value>
-          <value>selection</value>
-          <value>float</value>
-          <value>numeric</value>
-          <value>timedelta</value>
-          <value>integer</value>
-          <value>datetime</value>
-          <value>time</value>
+          <value>binary</value>
           <value>boolean</value>
-          <value>text</value>
-          <value>url</value>
-          <value>email</value>
           <value>callto</value>
-          <value>sip</value>
+          <value>char</value>
+          <value>date</value>
+          <value>datetime</value>
+          <value>email</value>
+          <value>float</value>
+          <value>image</value>
+          <value>integer</value>
+          <value>many2many</value>
+          <value>many2one</value>
+          <value>multiselection</value>
+          <value>numeric</value>
+          <value>one2many</value>
+          <value>one2one</value>
           <value>progressbar</value>
           <value>reference</value>
-          <value>one2one</value>
-          <value>binary</value>
-          <value>image</value>
+          <value>selection</value>
+          <value>sip</value>
+          <value>text</value>
+          <value>time</value>
+          <value>timedelta</value>
+          <value>url</value>
         </choice>
       </attribute>
     </optional>
