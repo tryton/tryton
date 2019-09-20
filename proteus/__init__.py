@@ -175,6 +175,22 @@ class NumericDescriptor(FieldDescriptor):
         super(NumericDescriptor, self).__set__(instance, value)
 
 
+class SelectionDescriptor(FieldDescriptor):
+
+    def __set__(self, instance, value):
+        assert isinstance(value, str) or value is None
+        # TODO add selection validation
+        super().__set__(instance, value)
+
+
+class MultiSelectionDescriptor(FieldDescriptor):
+
+    def __set__(self, instance, value):
+        assert isinstance(value, (list, type(None)))
+        # TODO add selection validation
+        super().__set__(instance, value)
+
+
 class ReferenceDescriptor(FieldDescriptor):
     def __get__(self, instance, owner):
         value = super(ReferenceDescriptor, self).__get__(instance, owner)
@@ -407,7 +423,8 @@ class MetaModelFactory(object):
         'char': CharDescriptor,
         'text': CharDescriptor,
         'binary': BinaryDescriptor,
-        'selection': CharDescriptor,  # TODO implement its own descriptor
+        'selection': SelectionDescriptor,
+        'multiselection': MultiSelectionDescriptor,
         'integer': IntegerDescriptor,
         'biginteger': IntegerDescriptor,
         'float': FloatDescriptor,
