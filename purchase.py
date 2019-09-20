@@ -293,6 +293,12 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             Request.save(requests)
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
