@@ -410,6 +410,12 @@ class Statement(Workflow, ModelSQL, ModelView):
             yield Line(**dict(key + (('lines', list(lines)),)))
 
     @classmethod
+    def view_attributes(cls):
+        return [
+            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ]
+
+    @classmethod
     def delete(cls, statements):
         # Cancel before delete
         cls.cancel(statements)
