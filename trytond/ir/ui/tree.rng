@@ -63,6 +63,14 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.tree" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">visual</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="field">
     <element>
       <name ns="">field</name>
@@ -138,6 +146,14 @@
       <attribute a:defaultValue="0">
         <name ns="">expand</name>
         <data type="integer"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">visual</name>
+        <text/>
       </attribute>
     </optional>
   </define>

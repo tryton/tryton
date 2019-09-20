@@ -533,6 +533,10 @@ Each tree view must start with this tag.
     * ``tree_state``: A boolean to specify if the client should save the state
       of the tree.
 
+    * ``visual``: A :ref:`PYSON statement <topics-pyson>` that will be
+      evaluated as string ``muted``, ``success``, ``warning`` or ``danger``
+      with the context of the record to provide a visual context to the row.
+
 field
 ^^^^^
 
@@ -545,6 +549,10 @@ field
     * ``tree_invisible``: A string of :ref:`PYSON statement <topics-pyson>`
       that will be evaluated as boolean with the context of the view to display
       or not the column.
+
+    * ``visual``: A :ref:`PYSON statement <topics-pyson>` that will be
+      evaluated as string ``muted``, ``success``, ``warning`` or ``danger``
+      with the context of the record to provide a visual context to the field.
 
     * ``icon``: The name of the field that contains the name of the icon to
       display in the column.
