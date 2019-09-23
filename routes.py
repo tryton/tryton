@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from werkzeug.exceptions import abort, Response
+from werkzeug.exceptions import abort
+from werkzeug.wrappers import Response
 
 from trytond.transaction import Transaction
 from trytond.wsgi import app
