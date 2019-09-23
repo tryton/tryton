@@ -1037,18 +1037,16 @@
             this.set_selection(Sao.common.contains(selected, row_id_path));
             if (this.children_field) {
                 this.record.load(this.children_field).done(function() {
-                    var children = this.record.field_get_client(
-                        this.children_field);
-                    if (this.is_expanded() ||
-                        Sao.common.contains(expanded, row_id_path) &&
-                        !jQuery.isEmptyObject(children)) {
+                    var length = this.record.field_get_client(
+                        this.children_field).length;
+                    if (length && (
+                        this.is_expanded() ||
+                        Sao.common.contains(expanded, row_id_path))) {
                         this.expander.css('visibility', 'visible');
                         this.tree.expanded[this.path] = this;
                         this.expand_children(selected, expanded);
                         this.update_expander(true);
                     } else {
-                        var length = this.record.field_get_client(
-                            this.children_field).length;
                         this.expander.css('visibility',
                             length ? 'visible' : 'hidden');
                         this.update_expander(false);
