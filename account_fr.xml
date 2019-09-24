@@ -511,6 +511,7 @@
             <field name="sequence" eval="10"/>
             <field name="parent" ref="dotation"/>
             <field name="statement">income</field>
+            <field name="expense" eval="True"/>
         </record>
         <record model="account.account.type.template" id="dotation_depreciations_immobilisations">
             <field name="name">Sur immobilisations : dotations aux dépréciations</field>
