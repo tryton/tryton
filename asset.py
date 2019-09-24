@@ -643,19 +643,30 @@ class AssetLine(ModelSQL, ModelView):
         ondelete='CASCADE', readonly=True)
     date = fields.Date('Date', readonly=True)
     depreciation = fields.Numeric('Depreciation',
-        digits=(16, Eval('_parent_asset', {}).get('currency_digits', 2)),
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'],
         required=True, readonly=True)
-    acquired_value = fields.Numeric('Acquired Value', readonly=True)
-    depreciable_basis = fields.Numeric('Depreciable Basis', readonly=True)
-    actual_value = fields.Numeric('Actual Value', readonly=True)
+    acquired_value = fields.Numeric('Acquired Value', readonly=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    depreciable_basis = fields.Numeric('Depreciable Basis', readonly=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    actual_value = fields.Numeric('Actual Value', readonly=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     accumulated_depreciation = fields.Numeric(
-        'Accumulated Depreciation', readonly=True)
+        'Accumulated Depreciation', readonly=True,
+        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
+    currency_digits = fields.Function(fields.Integer('Currency Digits'),
+        'on_change_with_currency_digits')
 
     @classmethod
     def __setup__(cls):
         super(AssetLine, cls).__setup__()
         cls._order.insert(0, ('date', 'ASC'))
+
+    @fields.depends('asset', '_parent_asset.currency_digits')
+    def on_change_with_currency_digits(self, name=None):
+        if self.asset:
+            return self.asset.currency_digits
 
 
 class AssetUpdateMove(ModelSQL):
