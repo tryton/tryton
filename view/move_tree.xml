@@ -2,10 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="origin"/>
-    <field name="product"/>
-    <field name="from_location"/>
-    <field name="to_location"/>
+    <field name="origin" expand="1"/>
+    <field name="product" expand="1"/>
+    <field name="from_location" expand="1"/>
+    <field name="to_location" expand="1"/>
     <field name="quantity"/>
     <field name="uom"/>
     <field name="planned_date"/>
@@ -14,6 +14,4 @@ this repository contains the full copyright notices and license terms. -->
     <button name="cancel"/>
     <button name="draft"/>
     <button name="do"/>
-    <field name="unit_digits" tree_invisible="1"/>
-    <field name="assignation_required" tree_invisible="1"/>
 </tree>

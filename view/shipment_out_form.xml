@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form col="4" cursor="customer">
+<form cursor="customer">
     <label name="reference"/>
     <field name="reference"/>
     <label name="number"/>
@@ -34,18 +34,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="done_by"/>
         </page>
     </notebook>
-    <group col="4" colspan="4" id="state_buttons">
-        <label name="state"/>
-        <field name="state"/>
-        <group col="-1" colspan="2" id="buttons">
-            <button name="cancel" icon="tryton-cancel"/>
-            <button name="draft"/>
-            <button name="wait"/>
-            <button name="assign_wizard" icon="tryton-forward"/>
-            <button name="pack" icon="tryton-forward"/>
-            <button name="done" icon="tryton-ok"/>
-        </group>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft"/>
+        <button name="wait"/>
+        <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="pack" icon="tryton-forward"/>
+        <button name="done" icon="tryton-ok"/>
     </group>
-    <field name="warehouse_storage" invisible="1" colspan="4"/>
-    <field name="warehouse_output" invisible="1" colspan="4"/>
 </form>

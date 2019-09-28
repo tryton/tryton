@@ -33,14 +33,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="done_by"/>
         </page>
     </notebook>
-    <group col="4" colspan="6" id="state_buttons">
-        <label name="state"/>
-        <field name="state"/>
-        <group col="-1" colspan="2" id="buttons">
-            <button name="cancel" icon="tryton-cancel"/>
-            <button name="receive" icon="tryton-forward"/>
-            <button name="done" icon="tryton-ok"/>
-            <button name="draft" icon="tryton-undo"/>
-        </group>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="receive" icon="tryton-forward"/>
+        <button name="done" icon="tryton-ok"/>
+        <button name="draft" icon="tryton-undo"/>
     </group>
 </form>
