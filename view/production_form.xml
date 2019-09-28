@@ -39,17 +39,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="cost"/>
         </page>
     </notebook>
-    <group col="4" colspan="4" id="state_buttons">
-        <label name="state"/>
-        <field name="state"/>
-        <group col="-1" colspan="2" id="buttons">
-            <button name="cancel" icon="tryton-cancel"/>
-            <button name="draft"/>
-            <button name="reset_bom" icon="tryton-clear"/>
-            <button name="wait"/>
-            <button name="assign_wizard" icon="tryton-forward"/>
-            <button name="run" icon="tryton-forward"/>
-            <button name="done" icon="tryton-forward"/>
-        </group>
+    <label name="state"/>
+    <field name="state"/>
+    <group col="-1" colspan="2" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft"/>
+        <button name="reset_bom" icon="tryton-clear"/>
+        <button name="wait"/>
+        <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="run" icon="tryton-forward"/>
+        <button name="done" icon="tryton-forward"/>
     </group>
 </form>
