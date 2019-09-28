@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     editable="bottom">
     <field name="type"/>
     <field name="value" expand="1"/>
-    <field name="name"/>
-    <field name="party"/>
+    <field name="name" expand="1"/>
+    <field name="party" expand="2"/>
     <field name="url" widget="url"/>
 </tree>

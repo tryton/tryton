@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="type"/>
-    <field name="value"/>
-    <field name="name"/>
-    <field name="party"/>
-    <field name="active"/>
+    <field name="value" expand="1"/>
+    <field name="name" expand="1"/>
+    <field name="party" expand="2"/>
 </tree>
