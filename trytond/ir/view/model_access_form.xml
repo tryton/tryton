@@ -18,6 +18,6 @@ this repository contains the full copyright notices and license terms. -->
         <label name="perm_delete"/>
         <field name="perm_delete"/>
     </group>
-    <separator name="description" colspan="4"/>
-    <field name="description" colspan="4"/>
+    <separator name="description" colspan="6"/>
+    <field name="description" colspan="6"/>
 </form>

@@ -2,8 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
-    <field name="name" icon="name"/>
+    <field name="name" icon="name" expand="2"/>
     <field name="module"/>
-    <field name="path"/>
-    <field name="sequence" tree_invisible="1"/>
+    <field name="path" expand="1"/>
 </tree>

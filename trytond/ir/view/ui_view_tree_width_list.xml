@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="model"/>
-    <field name="field"/>
-    <field name="user"/>
+    <field name="model" expand="1"/>
+    <field name="field" expand="1"/>
+    <field name="user" expand="1"/>
     <field name="width"/>
 </tree>

@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="name"/>
-    <field name="model"/>
+    <field name="name" expand="1"/>
+    <field name="model" expand="1"/>
     <field name="on_time"/>
     <field name="on_create"/>
     <field name="on_write"/>

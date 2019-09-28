@@ -2,10 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree editable="top">
-    <field name="src" widget="char"/>
-    <field name="value" widget="char"/>
+    <field name="src" widget="char" expand="2"/>
+    <field name="value" widget="char" expand="2"/>
     <field name="fuzzy"/>
-    <field name="name"/>
+    <field name="name" expand="1"/>
     <field name="lang"/>
     <field name="type"/>
     <field name="res_id"/>

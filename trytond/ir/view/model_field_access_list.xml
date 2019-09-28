@@ -6,6 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="perm_write"/>
     <field name="perm_create"/>
     <field name="perm_delete"/>
-    <field name="field"/>
-    <field name="group"/>
+    <field name="field" expand="1"/>
+    <field name="group" expand="1"/>
 </tree>

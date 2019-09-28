@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="priority"/>
-    <field name="model"/>
+    <field name="model" expand="2"/>
     <field name="type"/>
-    <field name="inherit"/>
-    <field name="domain"/>
+    <field name="inherit" expand="1"/>
+    <field name="domain" expand="1"/>
     <field name="field_childs"/>
 </tree>

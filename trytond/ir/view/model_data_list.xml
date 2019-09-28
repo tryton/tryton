@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="module"/>
-    <field name="model"/>
-    <field name="fs_id"/>
+    <field name="model" expand="1"/>
+    <field name="fs_id" expand="1"/>
     <field name="db_id"/>
     <field name="noupdate"/>
     <field name="out_of_sync"/>

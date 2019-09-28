@@ -32,5 +32,17 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="ir.menu_models"
             action="act_export_form" id="menu_export_form"/>
+
+        <record model="ir.ui.view" id="export_line_view_form">
+            <field name="model">ir.export.line</field>
+            <field name="type">form</field>
+            <field name="name">export_line_form</field>
+        </record>
+        <record model="ir.ui.view" id="export_line_view_tree">
+            <field name="model">ir.export.line</field>
+            <field name="type">tree</field>
+            <field name="name">export_line_list</field>
+        </record>
+
     </data>
 </tryton>
