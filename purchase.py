@@ -311,7 +311,7 @@ class QuotationLine(ModelSQL, ModelView):
         ],
         depends=['supplier'])
     quotation_state = fields.Function(fields.Selection(
-            'get_quotation_state', 'Request for Quotation State'),
+            'get_quotation_state', 'Quotation State'),
         'on_change_with_quotation_state', searcher='search_quotation_state')
 
     @staticmethod
