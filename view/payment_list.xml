@@ -2,9 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="journal"/>
+    <field name="journal" expand="1"/>
     <field name="kind"/>
-    <field name="party"/>
+    <field name="party" expand="2"/>
     <field name="amount"/>
     <field name="currency"/>
     <field name="date"/>
