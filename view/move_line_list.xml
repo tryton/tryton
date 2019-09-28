@@ -3,12 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="move"/>
-    <field name="origin"/>
-    <field name="description"/>
-    <field name="move_description"/>
+    <field name="origin" expand="1"/>
+    <field name="description" expand="1"/>
+    <field name="move_description" expand="1"/>
     <field name="date"/>
-    <field name="account"/>
-    <field name="party"/>
+    <field name="account" expand="1"/>
+    <field name="party" expand="1"/>
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
     <field name="analytic_state"/>

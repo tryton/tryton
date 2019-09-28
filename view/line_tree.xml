@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="top">
     <field name="move_line"/>
-    <field name="account"/>
+    <field name="account" expand="1"/>
     <field name="date"/>
     <field name="debit"/>
     <field name="credit"/>

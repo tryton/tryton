@@ -31,8 +31,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="note"/>
         </page>
     </notebook>
-    <group colspan="6" col="2" id="state">
-        <label name="state"/>
-        <field name="state"/>
-    </group>
+    <label name="state" colspan="3"/>
+    <field name="state" colspan="3"/>
 </form>
