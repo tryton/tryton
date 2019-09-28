@@ -41,5 +41,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="account_dunning.dunning_level_view_form"/>
             <field name="name">dunning_level_form</field>
         </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit" ref="account_dunning.dunning_level_view_list"/>
+            <field name="name">dunning_level_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="dunning_level_view_list_sequence">
+            <field name="model">account.dunning.level</field>
+            <field name="inherit" ref="account_dunning.dunning_level_view_list_sequence"/>
+            <field name="name">dunning_level_list</field>
+        </record>
     </data>
 </tryton>
