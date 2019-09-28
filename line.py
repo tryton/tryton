@@ -311,9 +311,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     'Hours per Employee per Month'
     __name__ = 'timesheet.hours_employee_monthly'
     year = fields.Char('Year')
-    month_internal = fields.Char('Month')
-    month = fields.Function(fields.Char('Month'),
-        'get_month', searcher='search_month')
+    month = fields.Many2One('ir.calendar.month', "Month")
     employee = fields.Many2One('company.employee', 'Employee')
     duration = fields.TimeDelta('Duration', 'company_work_time')
 
@@ -321,20 +319,20 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
     def __setup__(cls):
         super(HoursEmployeeMonthly, cls).__setup__()
         cls._order.insert(0, ('year', 'DESC'))
-        cls._order.insert(1, ('month', 'DESC'))
+        cls._order.insert(1, ('month.index', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))
 
     @classmethod
     def table_query(cls):
         pool = Pool()
         Line = pool.get('timesheet.line')
+        Month = pool.get('ir.calendar.month')
         line = Line.__table__()
+        month = Month.__table__()
         type_name = cls.year.sql_type().base
         year_column = Extract('YEAR', line.date).cast(type_name).as_('year')
-        type_name = cls.month_internal.sql_type().base
-        month_column = Extract('MONTH', line.date).cast(type_name).as_(
-            'month_internal')
-        return line.select(
+        month_index = Extract('MONTH', line.date)
+        return line.join(month, condition=month_index == month.id).select(
             Max(Extract('MONTH', line.date)
                 + Extract('YEAR', line.date) * 100
                 + line.employee * 1000000).as_('id'),
@@ -343,19 +341,7 @@ class HoursEmployeeMonthly(ModelSQL, ModelView):
             Max(line.write_uid).as_('write_uid'),
             Max(line.write_date).as_('write_date'),
             year_column,
-            month_column,
+            month.id.as_('month'),
             line.employee,
             Sum(line.duration).as_('duration'),
-            group_by=(year_column, month_column, line.employee))
-
-    def get_month(self, name):
-        return '%02i' % int(self.month_internal)
-
-    @classmethod
-    def search_month(cls, name, domain):
-        return [('month_internal',) + tuple(domain[1:])]
-
-    @classmethod
-    def order_month(cls, tables):
-        table, _ = tables[None]
-        return [CharLength(table.month_internal), table.month_internal]
+            group_by=(year_column, month.id, line.employee))
