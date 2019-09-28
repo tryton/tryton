@@ -433,6 +433,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             ('purchasable', '=', True),
             ],
         states=_states, depends=_depends)
+    product_uom_category = fields.Function(
+        fields.Many2One('product.uom.category', "Product UOM Category"),
+        'on_change_with_product_uom_category')
     description = fields.Text("Description", states=_states, depends=_depends)
     quantity = fields.Float(
         'Quantity', digits=(16, Eval('unit_digits', 2)), required=True,
@@ -460,6 +463,24 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_purchase_requisition_state')
 
     del _states
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        unit_categories = cls._unit_categories()
+        cls.unit.domain = [
+            ('category', 'in', [Eval(c) for c in unit_categories]),
+            ]
+        cls.unit.depends.extend(unit_categories)
+
+    @classmethod
+    def _unit_categories(cls):
+        return ['product_uom_category']
+
+    @fields.depends('product')
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
 
     @fields.depends('requisition', '_parent_requisition.state')
     def on_change_with_purchase_requisition_state(self, name=None):
