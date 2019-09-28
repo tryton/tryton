@@ -3,9 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="price_list"/>
-    <field name="price_list"/>
+    <field name="price_list" colspan="3"/>
     <label name="sequence"/>
     <field name="sequence"/>
+    <newline/>
     <label name="category"/>
     <field name="category"/>
     <label name="product"/>
