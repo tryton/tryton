@@ -28,10 +28,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="currency"/>
             <field name="lines" colspan="6"
                 view_ids="account_invoice.invoice_line_view_tree_sequence"/>
-            <group col="2" colspan="6" id="taxes_amount_state_buttons">
+            <group col="2" colspan="6" id="taxes_amount_state">
                 <field name="taxes"
                     view_ids="account_invoice.invoice_tax_view_tree_sequence"/>
-                <group col="4" colspan="1" id="amount_state_buttons" yfill="1">
+                <group col="4" colspan="1" id="amount_state" yfill="1">
                     <group col="2" colspan="2" id="reconciled_state" yfill="1">
                         <label name="reconciled"/>
                         <field name="reconciled"/>
@@ -45,13 +45,6 @@ this repository contains the full copyright notices and license terms. -->
                         <field name="tax_amount" xalign="1.0" xexpand="0"/>
                         <label name="total_amount" xalign="1.0" xexpand="1"/>
                         <field name="total_amount" xalign="1.0" xexpand="0"/>
-                    </group>
-                    <group col="-1" colspan="4" id="buttons">
-                        <button name="cancel" icon="tryton-cancel"/>
-                        <button name="draft" icon="tryton-back"/>
-                        <button name="validate_invoice" icon="tryton-forward"/>
-                        <button name="post" icon="tryton-ok"/>
-                        <button name="pay" icon="tryton-forward"/>
                     </group>
                 </group>
             </group>
@@ -82,5 +75,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="reconciliation_lines" colspan="4" view_ids="account_invoice.move_line_view_list_payment"/>
         </page>
     </notebook>
+    <label id="empty" colspan="3"/>
+    <group col="-1" colspan="3" id="buttons">
+        <button name="cancel" icon="tryton-cancel"/>
+        <button name="draft" icon="tryton-back"/>
+        <button name="validate_invoice" icon="tryton-forward"/>
+        <button name="post" icon="tryton-ok"/>
+        <button name="pay" icon="tryton-forward"/>
+    </group>
     <field name="party_lang" invisible="1" colspan="6"/>
 </form>
