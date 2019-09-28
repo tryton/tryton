@@ -2,8 +2,8 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="country"/>
-    <field name="subdivision"/>
-    <field name="zip"/>
-    <field name="city"/>
+    <field name="country" expand="1"/>
+    <field name="subdivision" expand="1"/>
+    <field name="zip" expand="1"/>
+    <field name="city" expand="1"/>
 </tree>
