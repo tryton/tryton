@@ -3814,7 +3814,6 @@ function eval_pyson(value){
                     'class': 'text-center'
                 }).append(group).appendTo(this.el);
             }
-            this.update_img();
         },
         set_readonly: function(readonly) {
             this.but_select.prop('disable', readonly);
