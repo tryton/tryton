@@ -2,12 +2,12 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="statement"/>
+    <field name="statement" expand="1"/>
     <field name="number"/>
     <field name="date"/>
     <field name="amount"/>
-    <field name="party"/>
-    <field name="account"/>
-    <field name="invoice"/>
-    <field name="description"/>
+    <field name="party" expand="1"/>
+    <field name="account" expand="1"/>
+    <field name="invoice" expand="1"/>
+    <field name="description" expand="1"/>
 </tree>
