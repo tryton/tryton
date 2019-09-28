@@ -4,8 +4,10 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='sequence']" position="after">
         <label name="start_date"/>
-        <field name="start_date"/>
-        <label name="end_date"/>
-        <field name="end_date"/>
+        <group id="start_end_date" col="3">
+            <field name="start_date"/>
+            <label name="end_date"/>
+            <field name="end_date"/>
+        </group>
     </xpath>
 </data>
