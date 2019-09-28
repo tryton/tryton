@@ -10,8 +10,8 @@ from .form import ViewForm
 class ListBoxViewForm(ViewForm):
 
     def __init__(self, view_id, screen, xml):
-        super().__init__(view_id, screen, xml)
         self._record = None
+        super().__init__(view_id, screen, xml)
         self.scroll.set_policy(Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER)
 
     @property

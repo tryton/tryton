@@ -44,8 +44,6 @@ class Image(BinaryMixin, Widget):
 
         self._readonly = False
 
-        self.update_img()
-
     @property
     def filters(self):
         filters = super(Image, self).filters
