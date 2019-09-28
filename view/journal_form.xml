@@ -8,12 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="active"/>
     <field name="active" xexpand="0" width="100"/>
-    <notebook colspan="6">
-        <page string="General Information" id="general">
-            <label name="type"/>
-            <field name="type"/>
-            <label name="sequence"/>
-            <field name="sequence"/>
-        </page>
-    </notebook>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="sequence"/>
+    <field name="sequence"/>
 </form>

@@ -3,11 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="top">
     <field name="move"/>
-    <field name="account"/>
-    <field name="party"/>
+    <field name="account" expand="1"/>
+    <field name="party" expand="1"/>
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
     <field name="tax_lines"/>
-    <field name="description"/>
+    <field name="description" expand="1"/>
     <field name="reconciliation"/>
 </tree>

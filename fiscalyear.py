@@ -35,7 +35,11 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         domain=[('end_date', '>=', Eval('start_date', None))],
         depends=DEPENDS + ['start_date'])
     periods = fields.One2Many('account.period', 'fiscalyear', 'Periods',
-            states=STATES, depends=DEPENDS)
+        states=STATES,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=DEPENDS + ['company'])
     state = fields.Selection([
             ('open', 'Open'),
             ('close', 'Close'),

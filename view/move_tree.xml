@@ -10,7 +10,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <field name="post_date"/>
     <field name="origin"/>
-    <field name="description"/>
+    <field name="description" expand="1"/>
     <field name="state"/>
     <button name="post"/>
 </tree>

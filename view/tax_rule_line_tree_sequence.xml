@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="group"/>
-    <field name="origin_tax"/>
-    <field name="tax"/>
+    <field name="origin_tax" expand="2"/>
+    <field name="tax" expand="2"/>
     <field name="keep_origin"/>
 </tree>

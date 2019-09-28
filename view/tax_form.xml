@@ -1,9 +1,11 @@
 <?xml version="1.0"?>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<form>
+<form col="6">
     <label name="name"/>
     <field name="name"/>
+    <label name="company"/>
+    <field name="company"/>
     <group col="-1" colspan="2" id="checkboxes">
         <label name="active"/>
         <field name="active" xexpand="0" width="100"/>
@@ -11,17 +13,21 @@ this repository contains the full copyright notices and license terms. -->
         <field name="template_override" xexpand="0" width="100"/>
     </group>
     <label name="description"/>
-    <field name="description" colspan="3"/>
-    <notebook colspan="4">
+    <field name="description" colspan="5"/>
+    <notebook colspan="6">
         <page string="General Information" id="general">
             <label name="group"/>
             <field name="group"/>
             <label name="sequence"/>
             <field name="sequence"/>
             <label name="start_date"/>
-            <field name="start_date"/>
-            <label name="end_date"/>
-            <field name="end_date"/>
+            <group col="-1" id="start_end_date">
+                <field name="start_date"/>
+                <label name="end_date"/>
+                <field name="end_date"/>
+            </group>
+            <label name="update_unit_price"/>
+            <field name="update_unit_price"/>
             <label name="type"/>
             <field name="type"/>
             <group col="1" id="label_amount_rate">
@@ -35,18 +41,10 @@ this repository contains the full copyright notices and license terms. -->
                     <label name="rate" string="%" xalign="0.0" xexpand="1"/>
                 </group>
             </group>
-            <label name="company"/>
-            <field name="company"/>
-            <newline/>
-            <label name="update_unit_price"/>
-            <field name="update_unit_price"/>
-            <newline/>
             <label name="invoice_account"/>
             <field name="invoice_account"/>
-            <newline/>
             <label name="credit_note_account"/>
             <field name="credit_note_account"/>
-            <newline/>
             <field name="childs" colspan="4"
                 view_ids="account.tax_view_list"/>
         </page>

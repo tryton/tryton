@@ -31,7 +31,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax_lines" colspan="4"/>
         </page>
     </notebook>
-    <label id="empty" colspan="2"/>
     <label name="state"/>
     <field name="state"/>
 </form>
