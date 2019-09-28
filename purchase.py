@@ -190,6 +190,20 @@ class Line(metaclass=PoolMeta):
 class RequisitionLine(metaclass=PoolMeta):
     __name__ = 'purchase.requisition.line'
 
+    product_secondary_uom_category = fields.Function(
+        fields.Many2One(
+            'product.uom.category', "Product Secondary UOM Category"),
+        'on_change_with_product_secondary_uom_category')
+
+    @classmethod
+    def _unit_categories(cls):
+        return super()._unit_categories() + ['product_secondary_uom_category']
+
+    @fields.depends('product')
+    def on_change_with_product_secondary_uom_category(self, name=None):
+        if self.product and self.product.purchase_secondary_uom:
+            return self.product.purchase_secondary_uom.category.id
+
     def compute_request(self):
         pool = Pool()
         Uom = pool.get('product.uom')
