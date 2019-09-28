@@ -652,7 +652,7 @@ class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):
     'Sale Opportunity per Month'
     __name__ = 'sale.opportunity_monthly'
     year = fields.Char('Year')
-    month = fields.Integer('Month')
+    month = fields.Many2One('ir.calendar.month', "Month")
     year_month = fields.Function(fields.Char('Year-Month'),
             'get_year_month')
 
@@ -660,27 +660,32 @@ class SaleOpportunityMonthly(SaleOpportunityReportMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(SaleOpportunityMonthly, cls).__setup__()
         cls._order.insert(0, ('year', 'DESC'))
-        cls._order.insert(1, ('month', 'DESC'))
+        cls._order.insert(1, ('month.index', 'DESC'))
 
     def get_year_month(self, name):
-        return '%s-%s' % (self.year, int(self.month))
+        return '%s-%s' % (self.year, self.month.index)
 
     @classmethod
     def table_query(cls):
+        pool = Pool()
+        Month = pool.get('ir.calendar.month')
+        month = Month.__table__()
         query = super(SaleOpportunityMonthly, cls).table_query()
         opportunity, = query.from_
         type_id = cls.id.sql_type().base
         type_year = cls.year.sql_type().base
         year_column = Extract('YEAR', opportunity.start_date
             ).cast(type_year).as_('year')
-        month_column = Extract('MONTH', opportunity.start_date).as_('month')
+        month_index = Extract('MONTH', opportunity.start_date)
+        query.from_ = opportunity.join(
+            month, condition=month_index == month.index)
         query.columns += (
             Max(Extract('MONTH', opportunity.start_date)
                 + Extract('YEAR', opportunity.start_date) * 100
                 ).cast(type_id).as_('id'),
             year_column,
-            month_column)
-        query.group_by = (year_column, month_column, opportunity.company)
+            month.id.as_('month'))
+        query.group_by = (year_column, month.id, opportunity.company)
         return query
 
 
@@ -689,34 +694,39 @@ class SaleOpportunityEmployeeMonthly(
     'Sale Opportunity per Employee per Month'
     __name__ = 'sale.opportunity_employee_monthly'
     year = fields.Char('Year')
-    month = fields.Integer('Month')
+    month = fields.Many2One('ir.calendar.month', "Month")
     employee = fields.Many2One('company.employee', 'Employee')
 
     @classmethod
     def __setup__(cls):
         super(SaleOpportunityEmployeeMonthly, cls).__setup__()
         cls._order.insert(0, ('year', 'DESC'))
-        cls._order.insert(1, ('month', 'DESC'))
+        cls._order.insert(1, ('month.index', 'DESC'))
         cls._order.insert(2, ('employee', 'ASC'))
 
     @classmethod
     def table_query(cls):
+        pool = Pool()
+        Month = pool.get('ir.calendar.month')
+        month = Month.__table__()
         query = super(SaleOpportunityEmployeeMonthly, cls).table_query()
         opportunity, = query.from_
         type_id = cls.id.sql_type().base
         type_year = cls.year.sql_type().base
         year_column = Extract('YEAR', opportunity.start_date
             ).cast(type_year).as_('year')
-        month_column = Extract('MONTH', opportunity.start_date).as_('month')
+        month_index = Extract('MONTH', opportunity.start_date)
+        query.from_ = opportunity.join(
+            month, condition=month_index == month.index)
         query.columns += (
             Max(Extract('MONTH', opportunity.start_date)
                 + Extract('YEAR', opportunity.start_date) * 100
                 + Coalesce(opportunity.employee, 0) * 1000000
                 ).cast(type_id).as_('id'),
             year_column,
-            month_column,
+            month.id.as_('month'),
             opportunity.employee,
             )
-        query.group_by = (year_column, month_column,
+        query.group_by = (year_column, month.id,
             opportunity.employee, opportunity.company)
         return query
