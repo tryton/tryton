@@ -3,9 +3,9 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='origin_tax']" position="after">
-        <field name="from_country"/>
-        <field name="from_subdivision"/>
-        <field name="to_country"/>
-        <field name="to_subdivision"/>
+        <field name="from_country" expand="1"/>
+        <field name="from_subdivision" expand="1"/>
+        <field name="to_country" expand="1"/>
+        <field name="to_subdivision" expand="1"/>
     </xpath>
 </data>
