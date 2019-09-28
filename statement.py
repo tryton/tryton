@@ -59,7 +59,9 @@ class Statement(metaclass=PoolMeta):
 
     def _group_key(self, line):
         key = super(Statement, self)._group_key(line)
-        return key + (('payment', line.payment),)
+        if hasattr(line, 'payment'):
+            key += (('payment', line.payment),)
+        return key
 
 
 class StatementLine(metaclass=PoolMeta):
