@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='product']" position="after">
-        <field name="lot"/>
+        <field name="lot" expand="1"/>
     </xpath>
 </data>
