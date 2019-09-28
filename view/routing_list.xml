@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree" position="inside">
-        <field name="supplier"/>
+        <field name="supplier" expand="1"/>
     </xpath>
 </data>
