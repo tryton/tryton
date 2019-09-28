@@ -2,7 +2,6 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="coupon"/>
-    <field name="number"/>
-    <field name="active" tree_invisible="1"/>
+    <field name="coupon" expand="1"/>
+    <field name="number" expand="1"/>
 </tree>
