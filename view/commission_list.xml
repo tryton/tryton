@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="type_"/>
-    <field name="agent"/>
+    <field name="agent" expand="1"/>
     <field name="date"/>
     <field name="amount"/>
     <field name="currency"/>
