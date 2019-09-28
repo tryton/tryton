@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='shipment']" position="after">
-        <field name="purchase"/>
+        <field name="purchase" expand="1"/>
     </xpath>
 </data>

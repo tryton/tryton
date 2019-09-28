@@ -23,14 +23,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="unit_price"/>
             <label name="amount"/>
             <field name="amount"/>
-            <separator name="description" colspan="4"/>
-            <field name="description" colspan="4"/>
-            <label id="delivery_date" string="Delivery Date"/>
+            <label id="delivery_date" string="Delivery Date:"/>
             <group id="delivery_date" col="-1">
                 <field name="delivery_date" xexpand="0"/>
                 <field name="delivery_date_store" xexpand="0"/>
                 <field name="delivery_date_edit" xexpand="0"/>
             </group>
+            <separator name="description" colspan="4"/>
+            <field name="description" colspan="4"/>
         </page>
         <page string="Taxes" id="taxes">
             <field name="taxes" colspan="4"/>
