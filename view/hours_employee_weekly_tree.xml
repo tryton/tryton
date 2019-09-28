@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="year"/>
     <field name="week"/>
-    <field name="employee"/>
-    <field name="duration"/>
+    <field name="employee" expand="2"/>
+    <field name="duration" expand="1"/>
 </tree>
