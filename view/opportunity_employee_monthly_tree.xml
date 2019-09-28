@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="year"/>
     <field name="month" widget="selection"/>
-    <field name="employee"/>
+    <field name="employee" expand="1"/>
     <field name="number"/>
     <field name="converted"/>
     <field name="won"/>
