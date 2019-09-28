@@ -28,20 +28,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="currency"/>
             <field name="lines" colspan="4"
                 view_ids="sale_subscription.subscription_line_view_list_sequence"/>
-            <group col="2" colspan="2" id="states" yfill="1">
-                <label name="state"/>
-                <field name="state"/>
-            </group>
-            <group col="4" colspan="2" id="buttons" yfill="1">
-                <button name="cancel"/>
-                <button name="draft"/>
-                <button name="quote"/>
-                <button name="run"/>
-            </group>
         </page>
         <page string="Other Info" id="other">
             <label name="company"/>
             <field name="company"/>
         </page>
     </notebook>
+    <label name="state"/>
+    <field name="state" colspan="2"/>
+    <group col="-1" colspan="3" id="buttons" yfill="1">
+        <button name="cancel"/>
+        <button name="draft"/>
+        <button name="quote"/>
+        <button name="run"/>
+    </group>
 </form>

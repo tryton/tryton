@@ -2,9 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="subscription"/>
-    <field name="service"/>
-    <field name="description"/>
+    <field name="subscription" expand="1"/>
+    <field name="service" expand="1"/>
+    <field name="description" expand="1"/>
     <field name="consumption_recurrence"/>
     <field name="consumption_delay"/>
     <field name="quantity"/>
