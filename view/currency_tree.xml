@@ -2,9 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tree>
-    <field name="name"/>
+    <field name="name" expand="2"/>
     <field name="symbol"/>
     <field name="code"/>
     <field name="numeric_code"/>
-    <field name="rate"/>
+    <field name="rate" expand="1"/>
 </tree>
