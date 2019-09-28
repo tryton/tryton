@@ -109,6 +109,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=['state'])
     accounting_date = fields.Date('Accounting Date', states=_STATES,
         depends=_DEPENDS)
+    sequence = fields.Many2One('ir.sequence.strict', "Sequence", readonly=True)
     party = fields.Many2One('party.party', 'Party',
         required=True, states=_STATES, depends=_DEPENDS)
     party_tax_identifier = fields.Many2One(
@@ -981,6 +982,14 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         '''
         pool = Pool()
         Date = pool.get('ir.date')
+        Lang = pool.get('ir.lang')
+        today = Date.today()
+
+        def accounting_date(invoice):
+            return invoice.accounting_date or invoice.invoice_date or today
+
+        invoices = sorted(invoices, key=accounting_date)
+        sequences = set()
 
         for invoice in invoices:
             # Posted and paid invoices are tested by check_modify so we can
@@ -997,11 +1006,35 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 continue
 
             if not invoice.invoice_date and invoice.type == 'out':
-                invoice.invoice_date = Date.today()
-            invoice.number = invoice.get_next_number()
+                invoice.invoice_date = today
+            invoice.number, invoice.sequence = invoice.get_next_number()
+            if invoice.type == 'out' and invoice.sequence not in sequences:
+                date = accounting_date(invoice)
+                # Do not need to lock the table
+                # because sequence.get_id is sequential
+                invoices = cls.search([
+                            ('sequence', '=', invoice.sequence.id),
+                            ['OR',
+                                ('accounting_date', '>', date),
+                                [
+                                    ('accounting_date', '=', None),
+                                    ('invoice_date', '>', date),
+                                    ],
+                                ],
+                            ], limit=1)
+                if invoices:
+                    after_invoice, = invoices
+                    raise InvoiceNumberError(
+                        gettext('account_invoice.msg_invoice_number_after',
+                            invoice=invoice.rec_name,
+                            sequence=invoice.sequence.rec_name,
+                            date=Lang.get().strftime(date),
+                            after_invoice=after_invoice.rec_name))
+                sequences.add(invoice.sequence)
         cls.save(invoices)
 
     def get_next_number(self, pattern=None):
+        "Return invoice number and sequence used"
         pool = Pool()
         Sequence = pool.get('ir.sequence.strict')
         Period = pool.get('account.period')
@@ -1039,7 +1072,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     invoice=self.rec_name,
                     fiscalyear=fiscalyear.rec_name))
         with Transaction().set_context(date=accounting_date):
-            return Sequence.get_id(sequence.id)
+            return Sequence.get_id(sequence.id), sequence
 
     @classmethod
     def tax_identifier_types(cls):

@@ -21,6 +21,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_no_sequence">
             <field name="text">To post invoice "%(invoice)s", you must define a sequence on fiscal year "%(fiscalyear)s".</field>
         </record>
+        <record model="ir.message" id="msg_invoice_number_after">
+            <field name="text">To number the invoice "%(invoice)s", you must set an accounting date after "%(date)s" because the sequence "%(sequence)s" has already been used for invoice "%(after_invoice)s".</field>
+        </record>
         <record model="ir.message" id="msg_invoice_modify">
             <field name="text">You cannot modify invoice "%(invoice)s" because it is posted, paid or cancelled.</field>
         </record>
