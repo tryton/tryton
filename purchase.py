@@ -1166,14 +1166,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             'party': self.purchase.party.id if self.purchase.party else -1,
             }
 
-    @fields.depends('product', 'unit', 'quantity', 'purchase',
-        '_parent_purchase.party', 'product_supplier',
-        methods=['_get_tax_rule_pattern', '_get_context_purchase_price',
+    @fields.depends('product', 'unit', 'purchase', '_parent_purchase.party',
+        'product_supplier', methods=['compute_taxes', 'compute_unit_price',
             '_get_product_supplier_pattern'])
     def on_change_product(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-
         if not self.product:
             return
 
@@ -1183,20 +1179,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
         # Set taxes before unit_price to have taxes in context of purchase
         # price
-        taxes = []
-        pattern = self._get_tax_rule_pattern()
-        for tax in self.product.supplier_taxes_used:
-            if party and party.supplier_tax_rule:
-                tax_ids = party.supplier_tax_rule.apply(tax, pattern)
-                if tax_ids:
-                    taxes.extend(tax_ids)
-                continue
-            taxes.append(tax.id)
-        if party and party.supplier_tax_rule:
-            tax_ids = party.supplier_tax_rule.apply(None, pattern)
-            if tax_ids:
-                taxes.extend(tax_ids)
-        self.taxes = taxes
+        self.taxes = self.compute_taxes(party)
 
         category = self.product.purchase_uom.category
         if not self.unit or self.unit.category != category:
@@ -1211,15 +1194,44 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 and self.product_supplier not in product_suppliers):
             self.product_supplier = None
 
-        with Transaction().set_context(self._get_context_purchase_price()):
-            self.unit_price = Product.get_purchase_price([self.product],
-                abs(self.quantity or 0))[self.product.id]
-            if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+        self.unit_price = self.compute_unit_price()
 
         self.type = 'line'
         self.amount = self.on_change_with_amount()
+
+    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    def compute_taxes(self, party):
+        taxes = []
+        pattern = self._get_tax_rule_pattern()
+        for tax in self.product.supplier_taxes_used:
+            if party and party.supplier_tax_rule:
+                tax_ids = party.supplier_tax_rule.apply(tax, pattern)
+                if tax_ids:
+                    taxes.extend(tax_ids)
+                continue
+            taxes.append(tax.id)
+        if party and party.supplier_tax_rule:
+            tax_ids = party.supplier_tax_rule.apply(None, pattern)
+            if tax_ids:
+                taxes.extend(tax_ids)
+        return taxes
+
+    @fields.depends('product', 'quantity',
+        methods=['_get_context_purchase_price'])
+    def compute_unit_price(self):
+        pool = Pool()
+        Product = pool.get('product.product')
+
+        if not self.product:
+            return
+
+        with Transaction().set_context(self._get_context_purchase_price()):
+            unit_price = Product.get_purchase_price([self.product],
+                abs(self.quantity or 0))[self.product.id]
+            if unit_price:
+                unit_price = unit_price.quantize(
+                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+            return unit_price
 
     @fields.depends('product', 'product_supplier',
         methods=['on_change_product'])
