@@ -8,6 +8,9 @@ Purchase
     `Purchase </projects/modules-purchase/en/latest>`_
         Fundamentals to follow purchases.
 
+    `Amendment </projects/modules-purchase-amendment/en/latest>`_
+        Amend purchases in processing.
+
     `History </projects/modules-purchase-history/en/latest>`_
         Manages revisions.
 
