@@ -11,6 +11,9 @@ Sale
     `Advance Payment </projects/modules-sale-advance-payment/en/latest>`_
         Manage advance payment on sale.
 
+    `Amendment </projects/modules-sale-amendment/en/latest>`_
+        Amend sales in processing.
+
     `Complaint </projects/modules-sale-complaint/en/latest>`_
         Solves customer complaints.
 
