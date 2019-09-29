@@ -1153,13 +1153,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
-    @fields.depends('product', 'unit', 'quantity', 'sale',
-        '_parent_sale.party',
-        methods=['_get_tax_rule_pattern', '_get_context_sale_price',
-        'on_change_with_amount'])
+    @fields.depends('product', 'unit', 'sale', '_parent_sale.party',
+        methods=['compute_taxes', 'compute_unit_price',
+            'on_change_with_amount'])
     def on_change_product(self):
-        Product = Pool().get('product.product')
-
         if not self.product:
             return
 
@@ -1168,6 +1165,20 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             party = self.sale.party
 
         # Set taxes before unit_price to have taxes in context of sale price
+        self.taxes = self.compute_taxes(party)
+
+        category = self.product.sale_uom.category
+        if not self.unit or self.unit.category != category:
+            self.unit = self.product.sale_uom
+            self.unit_digits = self.product.sale_uom.digits
+
+        self.unit_price = self.compute_unit_price()
+
+        self.type = 'line'
+        self.amount = self.on_change_with_amount()
+
+    @fields.depends('product', methods=['_get_tax_rule_pattern'])
+    def compute_taxes(self, party):
         taxes = []
         pattern = self._get_tax_rule_pattern()
         for tax in self.product.customer_taxes_used:
@@ -1181,43 +1192,33 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             tax_ids = party.customer_tax_rule.apply(None, pattern)
             if tax_ids:
                 taxes.extend(tax_ids)
-        self.taxes = taxes
+        return taxes
 
-        category = self.product.sale_uom.category
-        if not self.unit or self.unit.category != category:
-            self.unit = self.product.sale_uom
-            self.unit_digits = self.product.sale_uom.digits
-
-        with Transaction().set_context(self._get_context_sale_price()):
-            self.unit_price = Product.get_sale_price([self.product],
-                    self.quantity or 0)[self.product.id]
-            if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
-
-        self.type = 'line'
-        self.amount = self.on_change_with_amount()
-
-    @fields.depends('product')
-    def on_change_with_product_uom_category(self, name=None):
-        if self.product:
-            return self.product.default_uom_category.id
-
-    @fields.depends('product', 'quantity',
-        methods=['_get_context_sale_price'])
-    def on_change_quantity(self):
-        Product = Pool().get('product.product')
+    @fields.depends('product', 'quantity', methods=['_get_context_sale_price'])
+    def compute_unit_price(self):
+        pool = Pool()
+        Product = pool.get('product.product')
 
         if not self.product:
             return
 
         with Transaction().set_context(
                 self._get_context_sale_price()):
-            self.unit_price = Product.get_sale_price([self.product],
+            unit_price = Product.get_sale_price([self.product],
                 self.quantity or 0)[self.product.id]
-            if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
+            if unit_price:
+                unit_price = unit_price.quantize(
                     Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+            return unit_price
+
+    @fields.depends('product')
+    def on_change_with_product_uom_category(self, name=None):
+        if self.product:
+            return self.product.default_uom_category.id
+
+    @fields.depends(methods=['compute_unit_price'])
+    def on_change_quantity(self):
+        self.unit_price = self.compute_unit_price()
 
     @fields.depends(methods=['on_change_quantity'])
     def on_change_unit(self):
