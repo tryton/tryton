@@ -1148,6 +1148,14 @@
             this.selection.change(this.selection_changed.bind(this));
             td.append(this.selection);
 
+            var on_click = function(event_) {
+                if (this.expander && !this.is_expanded() &&
+                    (this.tree.n_children(this) <= Sao.config.limit)) {
+                    this.toggle_row();
+                }
+                this.select_column(event_.data.index);
+            }.bind(this);
+
             for (var i = 0; i < this.tree.columns.length; i++) {
                 var column = this.tree.columns[i];
                 td = jQuery('<td/>', {
@@ -1155,12 +1163,7 @@
                 }).append(jQuery('<span/>', { // For responsive min-height
                     'aria-hidden': true
                 }));
-                td.on('click keypress', {'index': i}, function(event_) {
-                    if (this.expander && !this.is_expanded()) {
-                        this.toggle_row();
-                    }
-                    this.select_column(event_.data.index);
-                }.bind(this));
+                td.on('click keypress', {'index': i}, on_click);
                 if (!this.tree.editable) {
                     td.dblclick(this.switch_row.bind(this));
                 } else {
