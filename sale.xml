@@ -74,4 +74,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
     </data>
+
+    <data depends="sale_amendment">
+        <record model="ir.ui.view" id="sale_amendment_line_view_form">
+            <field name="model">sale.amendment.line</field>
+            <field name="inherit" ref="sale_amendment.sale_amendment_line_view_form"/>
+            <field name="name">sale_amendment_line_form</field>
+        </record>
+    </data>
 </tryton>
