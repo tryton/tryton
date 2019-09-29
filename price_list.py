@@ -53,7 +53,10 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
 
     def get_context_formula(self, party, product, unit_price, quantity, uom,
             pattern=None):
-        cost_price = product.get_multivalue('cost_price') or Decimal('0')
+        if product:
+            cost_price = product.get_multivalue('cost_price') or Decimal('0')
+        else:
+            cost_price = Decimal('0')
         return {
             'names': {
                 'unit_price': unit_price,
