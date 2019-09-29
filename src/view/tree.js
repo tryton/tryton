@@ -937,7 +937,7 @@
         },
         set_cursor: function(new_, reset_view) {
             var i, root_group, path, row_path, row, column;
-            var row_idx, rest, td;
+            var td, prm;
 
             if (!this.record) {
                 return;
@@ -947,19 +947,32 @@
                 this.display_size = this.group.length;
                 this.display();
             }
-            row_idx = path[0];
-            rest = path.slice(1);
-            if (rest.length > 0) {
-                this.rows[row_idx].expand_to_path(rest);
+            if (path.length > 1) {
+                prm = this.rows[path[0]].expand_to_path(
+                    path.slice(1),
+                    [this.record.get_path(this.group).map(function(value) {
+                        return value[1];
+                    })]);
             }
-            row = this.find_row(path);
-            column = row.next_column(null, new_);
-            if (column !== null) {
-                td = row._get_column_td(column);
-                if (this.editable && new_) {
-                    td.trigger('click');
+
+            var focus = function() {
+                row = this.find_row(path);
+                if (row) {
+                    column = row.next_column(null, new_);
+                    if (column !== null) {
+                        td = row._get_column_td(column);
+                        if (this.editable && new_) {
+                            td.trigger('click');
+                        }
+                        td.find(':input,[tabindex=0]').focus();
+                    }
                 }
-                td.find(':input,[tabindex=0]').focus();
+            }.bind(this);
+
+            if (prm) {
+                prm.then(focus);
+            } else {
+                focus();
             }
         },
         save_row: function() {
@@ -1479,13 +1492,14 @@
             }
             this.tree.update_selection();
         },
-        expand_to_path: function(path) {
-            var row_idx, rest;
-            row_idx = path[0];
-            rest = path.slice(1);
-            if (rest.length > 0) {
-                this.rows[row_idx].expand_children().done(function() {
-                    this.rows[row_idx].expand_to_path(rest);
+        expand_to_path: function(path, selected) {
+            if (path.length &&
+                this.record.field_get_client(this.children_field).length) {
+                this.expander.css('visibility', 'visible');
+                this.tree.expanded.add(this);
+                this.update_expander(true);
+                return this.expand_children(selected).done(function() {
+                    return this.rows[path[0]].expand_to_path(path.slice(1), selected);
                 }.bind(this));
             }
         },
