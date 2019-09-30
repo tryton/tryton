@@ -1724,20 +1724,21 @@
                     if ((invalid == 'required') ||
                             (Sao.common.compare(invalid,
                                                 [[field, '!=', null]]))) {
-                        fields.push(Sao.i18n.gettext('"%1" is required', string));
+                        fields.push(Sao.i18n.gettext(
+                                '"%1" is required.', string));
                     } else if (invalid == 'domain') {
                         fields.push(Sao.i18n.gettext(
-                                    '"%1" is not valid according to its domain',
-                                    string));
+                                '"%1" is not valid according to its domain.',
+                            string));
                     } else if (invalid == 'children') {
                         fields.push(Sao.i18n.gettext(
-                                'The values of "%1" are not valid', string));
+                                'The values of "%1" are not valid.', string));
                     } else {
                         if (domain_parser.stringable(invalid)) {
                             fields.push(domain_parser.string(invalid));
                         } else {
                             fields.push(Sao.i18n.gettext(
-                                    '"%1" is not valid according to its domain'),
+                                    '"%1" is not valid according to its domain.'),
                                 string);
                         }
                     }

@@ -33,7 +33,7 @@
         var ajax_success = function(data, status_, query) {
             if (data === null) {
                 Sao.common.warning.run('',
-                        Sao.i18n.gettext('Unable to reach the server'));
+                        Sao.i18n.gettext('Unable to reach the server.'));
                 dfd.reject();
             } else if (data.error) {
                 var name, msg, description;
