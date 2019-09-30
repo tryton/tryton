@@ -23,7 +23,7 @@ class Carrier(ModelSQL, ModelView):
     carrier_cost_method = fields.Selection([
         ('product', 'Product Price'),
         ], 'Carrier Cost Method', required=True,
-        help='Method to compute carrier cost')
+        help='Method to compute carrier cost.')
 
     @staticmethod
     def default_carrier_cost_method():
