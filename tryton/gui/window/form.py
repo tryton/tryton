@@ -201,10 +201,10 @@ class Form(SignalEvent, TabContent):
 
         fields = [
             ('id', _('ID:')),
-            ('create_uid.rec_name', _('Creation User:')),
-            ('create_date', _('Creation Date:')),
-            ('write_uid.rec_name', _('Latest Modification by:')),
-            ('write_date', _('Latest Modification Date:')),
+            ('create_uid.rec_name', _('Created by:')),
+            ('create_date', _('Created at:')),
+            ('write_uid.rec_name', _('Edited by:')),
+            ('write_date', _('Edited at:')),
         ]
 
         try:
