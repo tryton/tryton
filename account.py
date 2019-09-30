@@ -49,4 +49,4 @@ class ConfigurationDefaultCreditLimitAmount(ModelSQL, CompanyValueMixin):
 class Level(metaclass=PoolMeta):
     __name__ = 'account.dunning.level'
     credit_limit = fields.Boolean('Credit Limit',
-        help='Has reached the credit limit')
+        help='Has reached the credit limit.')
