@@ -1059,18 +1059,18 @@ class Screen(SignalEvent):
     def invalid_message(self, record=None):
         if record is None:
             record = self.current_record
-        domain_string = _('"%s" is not valid according to its domain')
+        domain_string = _('"%s" is not valid according to its domain.')
         domain_parser = DomainParser(
             {n: f.attrs for n, f in record.group.fields.items()})
         fields = []
         for field, invalid in sorted(record.invalid_fields.items()):
             string = record.group.fields[field].attrs['string']
             if invalid == 'required' or invalid == [[field, '!=', None]]:
-                fields.append(_('"%s" is required') % string)
+                fields.append(_('"%s" is required.') % string)
             elif invalid == 'domain':
                 fields.append(domain_string % string)
             elif invalid == 'children':
-                fields.append(_('The values of "%s" are not valid') % string)
+                fields.append(_('The values of "%s" are not valid.') % string)
             else:
                 if domain_parser.stringable(invalid):
                     fields.append(domain_parser.string(invalid))

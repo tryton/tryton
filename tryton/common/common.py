@@ -822,7 +822,7 @@ def check_version(box, version=__version__):
         return True
     except Exception:
         logger.error(
-            _("Unable to check for new version"), exc_info=True)
+            _("Unable to check for new version."), exc_info=True)
         return True
     else:
         if check_version(box, version):

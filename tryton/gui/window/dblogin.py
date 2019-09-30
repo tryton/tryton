@@ -307,9 +307,9 @@ class DBListEditor(object):
 
         label = None
         if self.test_server_version(host, port) is False:
-            label = _('Incompatible version of the server')
+            label = _('Incompatible version of the server.')
         elif dbs is None:
-            label = _('Could not connect to the server')
+            label = _('Could not connect to the server.')
         if label:
             self.database_label.set_label('<b>%s</b>' % label)
             self.database_label.show()
@@ -623,11 +623,11 @@ class DBLogin(object):
             if not test:
                 if test is False:
                     common.warning('',
-                        _('Incompatible version of the server'),
+                        _('Incompatible version of the server.'),
                         parent=self.dialog)
                 else:
                     common.warning('',
-                        _('Could not connect to the server'),
+                        _('Could not connect to the server.'),
                         parent=self.dialog)
                 continue
             database = self.entry_database.get_text()
