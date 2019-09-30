@@ -19,7 +19,7 @@ class Template(metaclass=PoolMeta):
             'invisible': Eval('shelf_life_state', 'none') == 'none',
             },
         depends=['shelf_life_state'],
-        help='In number of days')
+        help='In number of days.')
     expiration_state = fields.Selection(
         DATE_STATE, 'Expiration State', sort=False)
     expiration_time = fields.Integer('Expiration Time',
@@ -27,7 +27,7 @@ class Template(metaclass=PoolMeta):
             'invisible': Eval('expiration_state', 'none') == 'none',
             },
         depends=['expiration_state'],
-        help='In number of days')
+        help='In number of days.')
 
     @staticmethod
     def default_shelf_life_state():
