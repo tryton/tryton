@@ -380,7 +380,7 @@ class ViewSearch(ModelSQL, ModelView):
 
     name = fields.Char('Name', required=True)
     model = fields.Char('Model', required=True)
-    domain = fields.Char('Domain', help="The PYSON domain")
+    domain = fields.Char('Domain', help="The PYSON domain.")
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
 

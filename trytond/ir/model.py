@@ -59,7 +59,7 @@ class Model(ModelSQL, ModelView):
             },
         depends=['module'])
     module = fields.Char('Module',
-       help="Module in which this model is defined", readonly=True)
+       help="Module in which this model is defined.", readonly=True)
     global_search_p = fields.Boolean('Global Search')
     fields = fields.One2Many('ir.model.field', 'model', 'Fields',
        required=True)
@@ -234,7 +234,7 @@ class ModelField(ModelSQL, ModelView):
             },
         depends=['module'])
     module = fields.Char('Module',
-       help="Module in which this field is defined")
+       help="Module in which this field is defined.")
     _get_name_cache = Cache('ir.model.field.get_name')
 
     @classmethod
@@ -793,7 +793,7 @@ class ModelButton(ModelSQL, ModelView):
             ('id', '!=', Eval('id', -1)),
             ],
         depends=['model', 'id'],
-        help="Button that should reset the rules")
+        help="Button that should reset the rules.")
     reset = fields.Many2Many(
         'ir.model.button-button.reset', 'button', 'button_ruled', "Reset",
         domain=[

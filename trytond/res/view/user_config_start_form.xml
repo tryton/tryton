@@ -7,7 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <label string="You can now add some users into the system."
             id="add"
             yalign="0.0" xalign="0.0" xexpand="1"/>
-        <label string="Be careful that the login must be unique!"
+        <label string="Be careful that the login must be unique."
             id="carefull"
             yalign="0.0" xalign="0.0" xexpand="1"/>
     </group>

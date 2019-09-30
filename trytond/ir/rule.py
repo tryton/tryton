@@ -28,11 +28,11 @@ class RuleGroup(ModelSQL, ModelView):
     model = fields.Many2One('ir.model', 'Model', select=True,
         required=True, ondelete='CASCADE')
     global_p = fields.Boolean('Global', select=True,
-        help="Make the rule global \nso every users must follow this rule")
+        help="Make the rule global \nso every users must follow this rule.")
     default_p = fields.Boolean('Default', select=True,
-        help="Add this rule to all users by default")
+        help="Add this rule to all users by default.")
     rules = fields.One2Many('ir.rule', 'rule_group', 'Tests',
-        help="The rule is satisfied if at least one test is True")
+        help="The rule is satisfied if at least one test is True.")
     groups = fields.Many2Many('ir.rule.group-res.group',
         'rule_group', 'group', 'Groups')
     perm_read = fields.Boolean('Read Access')

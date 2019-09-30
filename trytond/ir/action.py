@@ -518,7 +518,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
             ('xpm', 'X PixMap'),
             ], translate=False,
         string='Extension', help='Leave empty for the same as template, '
-        'see LibreOffice documentation for compatible format')
+        'see LibreOffice documentation for compatible format.')
     module = fields.Char('Module', readonly=True, select=True)
     email = fields.Char('Email',
         help='Python dictonary where keys define "to" "cc" "subject"\n'
@@ -698,18 +698,18 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     context_model = fields.Char('Context Model')
     context_domain = fields.Char(
         "Context Domain",
-        help="Part of the domain that will be evaluated on each refresh")
+        help="Part of the domain that will be evaluated on each refresh.")
     act_window_views = fields.One2Many('ir.action.act_window.view',
             'act_window', 'Views')
     views = fields.Function(fields.Binary('Views'), 'get_views')
     act_window_domains = fields.One2Many('ir.action.act_window.domain',
         'act_window', 'Domains')
     domains = fields.Function(fields.Binary('Domains'), 'get_domains')
-    limit = fields.Integer('Limit', help='Default limit for the list view')
+    limit = fields.Integer('Limit', help='Default limit for the list view.')
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     search_value = fields.Char('Search Criteria',
-            help='Default search criteria for the list view')
+            help='Default search criteria for the list view.')
     pyson_domain = fields.Function(fields.Char('PySON Domain'), 'get_pyson')
     pyson_context = fields.Function(fields.Char('PySON Context'),
             'get_pyson')
@@ -1015,7 +1015,7 @@ class ActionWizard(ActionMixin, ModelSQL, ModelView):
             ondelete='CASCADE')
     model = fields.Char('Model')
     email = fields.Char('Email')
-    window = fields.Boolean('Window', help='Run wizard in a new window')
+    window = fields.Boolean('Window', help='Run wizard in a new window.')
 
     @staticmethod
     def default_type():

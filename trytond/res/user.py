@@ -133,7 +133,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         domain=[('usage', '=', 'menu')], required=True)
     pyson_menu = fields.Function(fields.Char('PySON Menu'), 'get_pyson_menu')
     actions = fields.Many2Many('res.user-ir.action', 'user', 'action',
-        'Actions', help='Actions that will be run at login')
+        'Actions', help='Actions that will be run at login.')
     groups = fields.Many2Many('res.user-res.group',
        'user', 'group', 'Groups')
     applications = fields.One2Many(

@@ -145,7 +145,7 @@ class SequenceType(metaclass=PoolMeta):
     __name__ = 'ir.sequence.type'
     groups = fields.Many2Many('ir.sequence.type-res.group', 'sequence_type',
             'group', 'User Groups',
-            help='Groups allowed to edit the sequences of this type')
+            help='Groups allowed to edit the sequences of this type.')
 
 
 class SequenceTypeGroup(ModelSQL):
