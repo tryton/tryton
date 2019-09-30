@@ -128,7 +128,7 @@ class Plan(ModelSQL, ModelView):
             ('posting', 'On Posting'),
             ('payment', 'On Payment'),
             ], 'Commission Method',
-        help='When the commission is due')
+        help='When the commission is due.')
     lines = fields.One2Many('commission.plan.line', 'plan', 'Lines')
 
     @staticmethod
