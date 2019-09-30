@@ -881,11 +881,11 @@
             var fields = [
                 ['id', Sao.i18n.gettext('ID:')],
                 ['create_uid.rec_name',
-                    Sao.i18n.gettext('Creation User:')],
-                ['create_date', Sao.i18n.gettext('Creation Date:')],
+                    Sao.i18n.gettext('Created by:')],
+                ['create_date', Sao.i18n.gettext('Created at:')],
                 ['write_uid.rec_name',
-                    Sao.i18n.gettext('Latest Modification by:')],
-                ['write_date', Sao.i18n.gettext('Latest Modification Date:')]
+                    Sao.i18n.gettext('Edited by:')],
+                ['write_date', Sao.i18n.gettext('Edited at:')]
                 ];
 
             return this.screen.model.execute('read', [[record.id],
