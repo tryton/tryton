@@ -56,13 +56,13 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         'get_timesheet_date', setter='set_timesheet_date')
     timesheet_duration = fields.Function(fields.TimeDelta('Duration',
             'company_work_time',
-            help="Total time spent on this work and the sub-works"),
+            help="Total time spent on this work and the sub-works."),
         'get_total')
     effort_duration = fields.TimeDelta('Effort', 'company_work_time',
-        help="Estimated Effort for this work")
+        help="Estimated Effort for this work.")
     total_effort = fields.Function(fields.TimeDelta('Total Effort',
             'company_work_time',
-            help="Estimated total effort for this work and the sub-works"),
+            help="Estimated total effort for this work and the sub-works."),
         'get_total')
     progress = fields.Float('Progress',
         domain=['OR',
@@ -72,10 +72,10 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                 ('progress', '<=', 1),
                 ],
             ],
-        help='Estimated progress for this work')
+        help='Estimated progress for this work.')
     total_progress = fields.Function(fields.Float('Total Progress',
             digits=(16, 4),
-            help='Estimated total progress for this work and the sub-works',
+            help='Estimated total progress for this work and the sub-works.',
             states={
                 'invisible': Eval('total_progress', None) == None,
                 }),
