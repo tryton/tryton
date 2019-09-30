@@ -19,7 +19,7 @@ class Template(metaclass=PoolMeta):
             ('storage', "Storage"),
             ('production', "Production"),
             ], "Lot Required",
-        help='The type of location for which lot is required',
+        help='The type of location for which lot is required.',
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),
             },
