@@ -81,7 +81,7 @@ class Move(metaclass=PoolMeta):
 class SplitMoveStart(ModelView):
     'Split Move'
     __name__ = 'stock.move.split.start'
-    count = fields.Integer('Counts', help='The limit number of moves')
+    count = fields.Integer('Counts', help='The limit number of moves.')
     quantity = fields.Float('Quantity', required=True,
         digits=(16, Eval('unit_digits', 2)),
         depends=['unit_digits'])
