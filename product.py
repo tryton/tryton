@@ -22,7 +22,7 @@ class Category(metaclass=PoolMeta):
             'invisible': ~Eval('customs', False),
             },
         depends=['customs'],
-        help='Use the tariff codes defined on the parent category')
+        help='Use the tariff codes defined on the parent category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
         'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
@@ -99,7 +99,7 @@ class Template(metaclass=PoolMeta):
             },
         depends=['tariff_codes_category'])
     tariff_codes_category = fields.Boolean("Use Category's Tariff Codes",
-        help='Use the tariff codes defined on the category')
+        help='Use the tariff codes defined on the category.')
     tariff_codes = fields.One2Many('product-customs.tariff.code',
         'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={

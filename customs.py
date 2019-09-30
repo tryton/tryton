@@ -37,7 +37,7 @@ class TariffCode(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     __name__ = 'customs.tariff.code'
     _rec_name = 'code'
     code = fields.Char('Code', required=True,
-        help='The code from Harmonized System of Nomenclature')
+        help='The code from Harmonized System of Nomenclature.')
     description = fields.Char('Description', translate=True)
     country = fields.Many2One('country.country', 'Country')
     # TODO country group
