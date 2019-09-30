@@ -28,7 +28,7 @@ def send_sms(text, to):
 class User(metaclass=PoolMeta):
     __name__ = 'res.user'
     mobile = fields.Char('Mobile',
-        help='Phone number that supports receiving SMS')
+        help='Phone number that supports receiving SMS.')
 
     @classmethod
     def __setup__(cls):
