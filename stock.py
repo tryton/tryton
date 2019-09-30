@@ -254,4 +254,4 @@ class Location(metaclass=PoolMeta):
             ('parent', 'child_of', [Eval('id', -1)]),
             ],
         depends=['type', 'active', 'id'],
-        help='If empty the Storage location is used')
+        help='If empty the Storage location is used.')

@@ -354,7 +354,7 @@ class ProductSupplierPrice(
         "Quantity",
         required=True,
         domain=[('quantity', '>=', 0)],
-        help='Minimal quantity')
+        help='Minimal quantity.')
     unit_price = fields.Numeric('Unit Price', required=True,
         digits=price_digits)
 
