@@ -17,9 +17,9 @@ class Employee(metaclass=PoolMeta):
     __name__ = 'company.employee'
     cost_price = fields.Function(fields.Numeric('Cost Price',
             digits=price_digits,
-            help="Hourly cost price for this Employee"), 'get_cost_price')
+            help="Hourly cost price for this Employee."), 'get_cost_price')
     cost_prices = fields.One2Many('company.employee_cost_price', 'employee',
-            'Cost Prices', help="List of hourly cost price over time")
+            'Cost Prices', help="List of hourly cost price over time.")
     _cost_prices_cache = Cache('company_employee.cost_prices')
 
     def get_cost_price(self, name):
@@ -73,7 +73,7 @@ class EmployeeCostPrice(ModelSQL, ModelView):
     __name__ = 'company.employee_cost_price'
     date = fields.Date('Date', required=True, select=True)
     cost_price = fields.Numeric('Cost Price',
-        digits=price_digits, required=True, help="Hourly cost price")
+        digits=price_digits, required=True, help="Hourly cost price.")
     employee = fields.Many2One('company.employee', 'Employee')
 
     @classmethod
