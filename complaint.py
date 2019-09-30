@@ -342,7 +342,7 @@ class Action(ModelSQL, ModelView):
             'readonly': _states['readonly'],
             },
         depends=_depends,
-        help='Leave empty for all lines')
+        help='Leave empty for all lines.')
 
     invoice_lines = fields.Many2Many(
         'sale.complaint.action-account.invoice.line', 'action', 'line',
@@ -356,12 +356,12 @@ class Action(ModelSQL, ModelView):
             'readonly': _states['readonly'],
             },
         depends=_depends,
-        help='Leave empty for all lines')
+        help='Leave empty for all lines.')
 
     quantity = fields.Float('Quantity',
         digits=(16, Eval('unit_digits', 2)),
         states=_line_states, depends=_line_depends + ['unit_digits'],
-        help='Leave empty for the same quantity')
+        help='Leave empty for the same quantity.')
     unit = fields.Function(fields.Many2One('product.uom', 'Unit',
             states=_line_states, depends=_line_depends),
         'on_change_with_unit')
@@ -369,7 +369,7 @@ class Action(ModelSQL, ModelView):
         'get_unit_digits')
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states=_line_states, depends=_line_depends,
-        help='Leave empty for the same price')
+        help='Leave empty for the same price.')
 
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
