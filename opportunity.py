@@ -65,7 +65,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         states=_STATES_STOP, depends=_DEPENDS_STOP + ['currency_digits'],
-        help='Estimated revenue amount')
+        help='Estimated revenue amount.')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
             'readonly': In(Eval('state'),
@@ -101,7 +101,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(
                 ['opportunity', 'lead', 'converted']),
             },
-        depends=['state'], help="Percentage between 0 and 100")
+        depends=['state'], help="Percentage between 0 and 100.")
     lost_reason = fields.Text('Reason for loss', states={
             'invisible': Eval('state') != 'lost',
             }, depends=['state'])
