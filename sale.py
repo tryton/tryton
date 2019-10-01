@@ -47,8 +47,6 @@ class SaleLine(metaclass=PoolMeta):
         super(SaleLine, cls).__setup__()
         cls.product.context['price_list'] = Eval(
             '_parent_sale', {}).get('price_list')
-        cls.product.context['company'] = Eval(
-            '_parent_sale', {}).get('company', None)
 
     @fields.depends('sale', '_parent_sale.price_list', '_parent_sale.company')
     def _get_context_sale_price(self):
@@ -56,7 +54,4 @@ class SaleLine(metaclass=PoolMeta):
         if self.sale:
             if getattr(self.sale, 'price_list', None):
                 context['price_list'] = self.sale.price_list.id
-            # Ensure cost_price is for the one of the sale company
-            if getattr(self.sale, 'company', None):
-                context['company'] = self.sale.company.id
         return context
