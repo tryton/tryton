@@ -24,6 +24,11 @@ class TestModel(ProteusTestCase):
         admin = User.find([('login', '=', 'admin')])[0]
         self.assertEqual(int(admin), admin.id)
 
+    def test_id_zero(self):
+        User = Model.get('res.user')
+        root = User(0)
+        self.assertEqual(root.login, 'root')
+
     def test_find(self):
         User = Model.get('res.user')
         admin = User.find([('login', '=', 'admin')])[0]
