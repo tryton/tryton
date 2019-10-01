@@ -106,12 +106,12 @@ class FieldDescriptor(object):
         self.__doc__ = definition['string']
 
     def __get__(self, instance, owner):
-        if instance.id > 0:
+        if instance.id >= 0:
             instance._read(self.name)
         return instance._values.get(self.name, self.default)
 
     def __set__(self, instance, value):
-        if instance.id > 0:
+        if instance.id >= 0:
             instance._read(self.name)
         previous = getattr(instance, self.name)
         instance._values[self.name] = value
@@ -658,9 +658,9 @@ class Model(object):
 
     def __init__(self, id=None, _default=True, _group=None, **kwargs):
         super(Model, self).__init__()
-        if id:
+        if id is not None:
             assert not kwargs
-        self.__id = id or Model.__counter
+        self.__id = id if id is not None else Model.__counter
         if self.__id < 0:
             Model.__counter -= 1
         self._values = {}  # store the values of fields
@@ -842,7 +842,7 @@ class Model(object):
             assert proxy == record._proxy
             assert config == record._config
             assert context == record._context
-            if record.id > 0:
+            if record.id >= 0:
                 timestamp.update(record._get_timestamp())
                 delete.append(record.id)
         context['_timestamp'] = timestamp
