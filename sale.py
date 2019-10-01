@@ -1011,6 +1011,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'stock_skip_warehouse': True,
             # From _get_context_sale_price
+            'company': Eval(
+                '_parent_sale', {}).get('company', None),
             'currency': Eval('_parent_sale', {}).get('currency'),
             'customer': Eval('_parent_sale', {}).get('party'),
             'sale_date': Eval('_parent_sale', {}).get('sale_date'),
@@ -1136,8 +1138,10 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         return {}
 
-    @fields.depends('sale', '_parent_sale.currency', '_parent_sale.party',
-        '_parent_sale.sale_date', 'unit', 'product', 'taxes')
+    @fields.depends(
+        'sale', '_parent_sale.currency', '_parent_sale.party',
+        '_parent_sale.sale_date', '_parent_sale.company',
+        'unit', 'product', 'taxes')
     def _get_context_sale_price(self):
         context = {}
         if self.sale:
@@ -1146,6 +1150,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if self.sale.party:
                 context['customer'] = self.sale.party.id
             context['sale_date'] = self.sale.sale_date
+            if self.sale.company:
+                context['company'] = self.sale.company.id
         if self.unit:
             context['uom'] = self.unit.id
         elif self.product:

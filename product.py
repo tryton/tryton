@@ -89,8 +89,8 @@ class Product(metaclass=PoolMeta):
         quantity = Transaction().context.get('quantity') or 0
         return cls.get_sale_price(products, quantity=quantity)
 
-    @staticmethod
-    def get_sale_price(products, quantity=0):
+    @classmethod
+    def get_sale_price(cls, products, quantity=0):
         '''
         Return the sale price for products and quantity.
         It uses if exists from the context:
@@ -119,7 +119,7 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product.list_price
+            prices[product.id] = product.list_price_used
             if uom and product.default_uom.category == uom.category:
                 prices[product.id] = Uom.compute_price(
                     product.default_uom, prices[product.id], uom)
