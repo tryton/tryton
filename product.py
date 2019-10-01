@@ -152,7 +152,7 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product.cost_price
+            prices[product.id] = product.get_multivalue('cost_price')
             default_uom = product.default_uom
             default_currency = (user.company.currency if user.company
                 else None)

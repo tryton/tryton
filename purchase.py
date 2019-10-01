@@ -975,6 +975,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                 'purchase_date'),
             'stock_skip_warehouse': True,
             # From _get_context_purchase_price
+            'company': Eval(
+                '_parent_purchase', {}).get('company', None),
             'currency': Eval('_parent_purchase', {}).get('currency'),
             'supplier': Eval('_parent_purchase', {}).get('party'),
             'purchase_date': Eval('_parent_purchase', {}).get('purchase_date'),
@@ -1140,8 +1142,9 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         '''
         return {}
 
-    @fields.depends('purchase', '_parent_purchase.currency',
-        '_parent_purchase.party', '_parent_purchase.purchase_date',
+    @fields.depends(
+        'purchase', '_parent_purchase.currency', '_parent_purchase.party',
+        '_parent_purchase.purchase_date', '_parent_purchase.company',
         'unit', 'product', 'product_supplier', 'taxes')
     def _get_context_purchase_price(self):
         context = {}
@@ -1151,6 +1154,8 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             if self.purchase.party:
                 context['supplier'] = self.purchase.party.id
             context['purchase_date'] = self.purchase.purchase_date
+            if self.purchase.company:
+                context['company'] = self.purchase.company.id
         if self.unit:
             context['uom'] = self.unit.id
         elif self.product:
