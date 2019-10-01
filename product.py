@@ -395,6 +395,10 @@ class Product(
         default.setdefault('code', None)
         return super().copy(products, default=default)
 
+    @property
+    def list_price_used(self):
+        return self.template.get_multivalue('list_price')
+
 
 class ProductListPrice(ModelSQL, CompanyValueMixin):
     "Product List Price"
