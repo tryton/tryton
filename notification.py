@@ -190,6 +190,10 @@ class Email(ModelSQL, ModelView):
             WebUser = pool.get('web.user')
         except KeyError:
             WebUser = None
+        try:
+            Employee = pool.get('company.employee')
+        except KeyError:
+            Employee = None
         if isinstance(record, User):
             if record.language:
                 return record.language
@@ -198,6 +202,9 @@ class Email(ModelSQL, ModelView):
                 return record.lang
         elif WebUser and isinstance(record, WebUser):
             if record.party and record.party.lang:
+                return record.party.lang
+        elif Employee and isinstance(record, Employee):
+            if record.party.lang:
                 return record.party.lang
         lang, = Lang.search([
                 ('code', '=', Configuration.get_language()),
