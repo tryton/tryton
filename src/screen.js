@@ -1444,7 +1444,7 @@
                 return this.current_view.display().then(function() {
                     this.set_cursor();
                     return jQuery.Deferred().reject();
-                });
+                }.bind(this));
             }
             var display = function() {
                 // Return the original promise to keep succeed/rejected state
