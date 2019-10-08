@@ -8,6 +8,7 @@ from ..transaction import Transaction
 
 
 class _Calendar(ModelSQL):
+    _order_name = 'index'
     index = fields.Integer("Index", required=True)
     name = fields.Char("Name", required=True, translate=True)
     abbreviation = fields.Char("Abbreviation", required=True, translate=True)
