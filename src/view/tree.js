@@ -60,7 +60,7 @@
                 var sum = jQuery('<label/>', {
                     'text': label,
                 });
-                var aggregate = jQuery('<span/>', {
+                var aggregate = jQuery('<label/>', {
                     'class': 'value',
                 });
                 this.view.sum_widgets[name] = [sum, aggregate];
@@ -138,7 +138,7 @@
             var sum_row;
             if (!jQuery.isEmptyObject(this.sum_widgets)) {
                 sum_row = jQuery('<tr/>');
-                sum_row.append(jQuery('<td/>'));
+                sum_row.append(jQuery('<th/>'));
                 this.tfoot = jQuery('<tfoot/>');
                 this.tfoot.append(sum_row);
                 this.table.append(this.tfoot);
@@ -181,7 +181,7 @@
                 column.footers = [];
                 if (!jQuery.isEmptyObject(this.sum_widgets)) {
                     var field_name = column.attributes.name;
-                    var total_cell = jQuery('<td/>', {
+                    var total_cell = jQuery('<th/>', {
                         'class': column.class_,
                     });
                     if (field_name in this.sum_widgets) {
