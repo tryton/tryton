@@ -140,18 +140,18 @@ class User(metaclass=PoolMeta):
                 users = cls.ldap_search_user(login, server, attrs=[uid])
                 if users and len(users) == 1:
                     [(dn, attrs)] = users
-                    con = ldap3.Connection(server, dn, password)
-                    if (password and con.bind()):
-                        # Use ldap uid so we always get the right case
-                        login = attrs.get(uid, [login])[0]
-                        user_id = cls._get_login(login)[0]
-                        if user_id:
-                            return user_id
-                        elif config.getboolean(section, 'create_user'):
-                            user, = cls.create([{
-                                        'name': login,
-                                        'login': login,
-                                        }])
-                            return user.id
+                    with ldap3.Connection(server, dn, password) as con:
+                        if (password and con.bind()):
+                            # Use ldap uid so we always get the right case
+                            login = attrs.get(uid, [login])[0]
+                            user_id = cls._get_login(login)[0]
+                            if user_id:
+                                return user_id
+                            elif config.getboolean(section, 'create_user'):
+                                user, = cls.create([{
+                                            'name': login,
+                                            'login': login,
+                                            }])
+                                return user.id
         except LDAPException:
             logger.error('LDAPError when login', exc_info=True)
