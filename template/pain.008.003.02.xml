@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
             <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
             <InitgPty>
-                ${PartyIdentification(group.sepa_initiating_party, with_address=False)}
+                ${PartyIdentification(group.sepa_initiating_party, id=group.journal.sepa_receivable_initiator_id, with_address=False)}
             </InitgPty>
         </GrpHdr>
         <PmtInf py:for="key, payments in group.sepa_payments">
@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
             </PmtTpInf>
             <ReqdColltnDt>${key['date'].isoformat()}</ReqdColltnDt>
             <Cdtr>
-                ${PartyIdentification(group.company.party, id=False)}
+                ${PartyIdentification(group.company.party)}
             </Cdtr>
             <CdtrAcct>
                 ${Account(group.journal.sepa_bank_account_number)}
@@ -49,7 +49,7 @@ this repository contains the full copyright notices and license terms. -->
             <!-- UltmtCdtr -->
             <ChrgBr>SLEV</ChrgBr>
             <CdtrSchmeId>
-                ${PartyIdentification(group.company.party, with_name=False, with_address=False)}
+                ${PartyIdentification(group.company.party, id='sepa', with_name=False, with_address=False)}
             </CdtrSchmeId>
             <DrctDbtTxInf py:for="payment in payments">
                 <PmtId>

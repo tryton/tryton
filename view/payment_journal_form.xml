@@ -15,5 +15,9 @@ this repository contains the full copyright notices and license terms. -->
         <field name="sepa_payable_flavor"/>
         <label name="sepa_receivable_flavor"/>
         <field name="sepa_receivable_flavor"/>
+        <label name="sepa_payable_initiator_id"/>
+        <field name="sepa_payable_initiator_id"/>
+        <label name="sepa_receivable_initiator_id"/>
+        <field name="sepa_receivable_initiator_id"/>
     </xpath>
 </data>

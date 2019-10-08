@@ -14,9 +14,15 @@ The Journal has some fields when the process method is SEPA:
 - Payable Flavor:
   - pain.001.001.03
   - pain.001.001.05
+  - pain.001.003.05
 - Receivable Flavor:
   - pain.008.001.02
   - pain.008.001.04
+  - pain.008.003.02
+- Payable/Receivable Initiator Identifier:
+  - SEPA Creditor Identifier
+  - Belgian Enterprise Number
+  - Spanish VAT Number
 - Batch Booking.
 - Charge Bearer:
   - Debtor

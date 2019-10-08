@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <!-- PmtTpInf -->
             <!-- ReqdColltnDt -->
             <InitgPty>
-                ${PartyIdentification(group.sepa_initiating_party)}
+                ${PartyIdentification(group.sepa_initiating_party, id=group.journal.sepa_payable_initiator_id)}
             </InitgPty>
             <!-- FwdgAgt -->
         </GrpHdr>

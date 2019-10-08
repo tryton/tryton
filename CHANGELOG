@@ -1,3 +1,4 @@
+* Add initiator identifiers on journal
 * Allow to store SEPA message content on the file system
 
 Version 5.2.0 - 2019-05-06

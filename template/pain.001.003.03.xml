@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
             <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
             <InitgPty>
-                ${PartyIdentification(group.sepa_initiating_party, with_address=False)}
+                ${PartyIdentification(group.sepa_initiating_party, id=group.journal.sepa_payable_initiator_id, with_address=False)}
             </InitgPty>
         </GrpHdr>
         <PmtInf py:for="key, payments in group.sepa_payments">

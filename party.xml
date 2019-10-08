@@ -3,6 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="party_identifier_view_form">
+            <field name="model">party.identifier</field>
+            <field name="inherit" ref="party.identifier_form"/>
+            <field name="name">party_identifier_form</field>
+        </record>
+
         <record model="ir.action.act_window" id="act_mandate_form2">
             <field name="name">Mandates</field>
             <field name="res_model">account.payment.sepa.mandate</field>

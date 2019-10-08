@@ -1,23 +1,23 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
-from .payment import *
-from .party import *
-from .account import *
+from . import payment
+from . import party
+from . import account
 
 
 def register():
     Pool.register(
-        Journal,
-        Group,
-        Mandate,
-        Payment,
-        Message,
-        Party,
-        PartyIdentifier,
-        Configuration,
-        ConfigurationSepaMandateSequence,
+        payment.Journal,
+        payment.Group,
+        payment.Mandate,
+        payment.Payment,
+        payment.Message,
+        party.Party,
+        party.PartyIdentifier,
+        account.Configuration,
+        account.ConfigurationSepaMandateSequence,
         module='account_payment_sepa', type_='model')
     Pool.register(
-        MandateReport,
+        payment.MandateReport,
         module='account_payment_sepa', type_='report')

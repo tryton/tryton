@@ -10,10 +10,10 @@ from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.transaction import Transaction
+from trytond.pyson import Eval
 
 from trytond.modules.party.exceptions import InvalidIdentifierCode
-
-__all__ = ['Party', 'PartyIdentifier']
+from .exceptions import PartyIdentificationdError
 
 
 class Party(metaclass=PoolMeta):
@@ -51,9 +51,30 @@ class Party(metaclass=PoolMeta):
             if identifier.type == 'sepa':
                 return identifier.code
 
+    def get_sepa_identifier(self, name):
+        pool = Pool()
+        Identifier = pool.get('party.identifier')
+        for identifier in self.identifiers:
+            if identifier.type == name:
+                return identifier.sepa_identifier
+        else:
+            selection = Identifier.fields_get(['type'])['type']['selection']
+            type = dict(selection).get(name, name)
+            raise PartyIdentificationdError(
+                gettext('account_payment_sepa.msg_party_no_id',
+                    party=self.rec_name,
+                    type=type))
+
 
 class PartyIdentifier(metaclass=PoolMeta):
     __name__ = 'party.identifier'
+
+    sepa_es_suffix = fields.Char(
+        "SEPA Suffix", size=3,
+        states={
+            'invisible': Eval('type') != 'es_nif',
+            },
+        depends=['type'])
 
     @classmethod
     def __setup__(cls):
@@ -84,3 +105,18 @@ class PartyIdentifier(metaclass=PoolMeta):
             except stdnum.exceptions.ValidationError:
                 pass
         return code
+
+    @property
+    def sepa_identifier(self):
+        identifier = {
+            'Type': 'OrgId',
+            'Id': self.code,
+            }
+        if self.type == 'sepa':
+            identifier['Type'] = 'PrvtId'
+            identifier['SchmeNm'] = {'Prtry': 'SEPA'}
+        elif self.type == 'be_vat':
+            identifier['Issr'] = 'KBO-BCE'
+        elif self.type == 'es_nif':
+            identifier['Id'] += self.sepa_es_suffix or '000'
+        return identifier

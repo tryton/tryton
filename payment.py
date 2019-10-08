@@ -27,9 +27,6 @@ from trytond.modules.company import CompanyReport
 
 from .sepa_handler import CAMT054
 
-__all__ = ['Journal', 'Group', 'Payment', 'Mandate', 'Message',
-    'MandateReport']
-
 # XXX fix: https://genshi.edgewall.org/ticket/582
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):
@@ -54,6 +51,13 @@ if config.getboolean('account_payment_sepa', 'filestore', default=False):
 else:
     file_id = None
     store_prefix = None
+
+INITIATOR_IDS = [
+    (None, ''),
+    ('sepa', "SEPA Creditor Identifier"),
+    ('be_vat', "Belgian Enterprise Number"),
+    ('es_nif', "Spanish VAT Number"),
+    ]
 
 
 class Journal(metaclass=PoolMeta):
@@ -92,6 +96,20 @@ class Journal(metaclass=PoolMeta):
             },
         translate=False,
         depends=['process_method'])
+    sepa_payable_initiator_id = fields.Selection(
+        INITIATOR_IDS, "SEPA Payable Initiator Identifier",
+        states={
+            'invisible': Eval('process_method') != 'sepa',
+            },
+        depends=['process_method'],
+        help="The identifier used for the initiating party.")
+    sepa_receivable_initiator_id = fields.Selection(
+        INITIATOR_IDS, "SEPA Receivable Initiator Identifier",
+        states={
+            'invisible': Eval('process_method') != 'sepa',
+            },
+        depends=['process_method'],
+        help="The identifier used for the initiating party.")
     sepa_batch_booking = fields.Boolean('Batch Booking', states={
             'invisible': Eval('process_method') != 'sepa',
             },

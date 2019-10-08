@@ -18,5 +18,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_party_invalid_sepa">
             <field name="text">The SEPA creditor identifier "%(code)s" for party "%(party)s" is not valid.</field>
         </record>
+        <record model="ir.message" id="msg_party_no_id">
+            <field name="text">The party "%(party)s" is missing a "%(type)s" identifier.</field>
+        </record>
     </data>
 </tryton>
