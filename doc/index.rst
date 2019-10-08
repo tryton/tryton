@@ -10,7 +10,7 @@ An Asset defines how an asset is depreciated. It is mainly defined by:
 
 - Product (of type "Assets").
 - Journal.
-- Value and Residual Value.
+- Value, Depreciated Amount and Residual Value.
 - Start and End Date.
 - Depreciation Method:
   - Linear

@@ -101,12 +101,33 @@ class Asset(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
         depends=['currency_digits', 'state'],
-        required=True)
-    residual_value = fields.Numeric('Residual Value',
+        required=True,
+        help="The value of the asset when purchased.")
+    depreciated_amount = fields.Numeric("Depreciated Amount",
+        digits=(16, Eval('currency_digits', 2)),
+        domain=[
+            ('depreciated_amount', '<=', Eval('value')),
+            ],
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['currency_digits', 'state'],
+        depends=['currency_digits', 'value', 'state'],
+        required=True,
+        help="The amount already depreciated at the start date.")
+    depreciating_value = fields.Function(fields.Numeric(
+            "Depreciating Value",
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits'],
+            help="The value of the asset at the start date."),
+        'on_change_with_depreciating_value')
+    residual_value = fields.Numeric('Residual Value',
+        domain=[
+            ('residual_value', '<=', Eval('depreciating_value')),
+            ],
+        states={
+            'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
+            },
+        depends=['currency_digits', 'depreciating_value', 'state'],
         required=True,
         digits=(16, Eval('currency_digits', 2)))
     purchase_date = fields.Date('Purchase Date', states={
@@ -227,6 +248,14 @@ class Asset(Workflow, ModelSQL, ModelView):
     def default_depreciation_method():
         return 'linear'
 
+    @classmethod
+    def default_depreciated_amount(cls):
+        return Decimal(0)
+
+    @classmethod
+    def default_residual_value(cls):
+        return Decimal(0)
+
     @staticmethod
     def default_start_date():
         return Pool().get('ir.date').today()
@@ -244,6 +273,13 @@ class Asset(Workflow, ModelSQL, ModelView):
         if len(journals) == 1:
             return journals[0].id
         return None
+
+    @fields.depends('value', 'depreciated_amount')
+    def on_change_with_depreciating_value(self, name=None):
+        if self.value is not None and self.depreciated_amount is not None:
+            return self.value - self.depreciated_amount
+        else:
+            return Decimal(0)
 
     @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
@@ -320,9 +356,9 @@ class Asset(Workflow, ModelSQL, ModelView):
         return result
 
     def get_depreciated_amount(self):
-        lines = [line.accumulated_depreciation for line in self.lines
+        lines = [line.depreciation for line in self.lines
             if line.move and line.move.state == 'posted']
-        return max(lines) if lines else 0
+        return sum(lines, Decimal(0))
 
     def compute_move_dates(self):
         """
@@ -352,12 +388,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         dates.append(self.end_date)
         return dates
 
-    def compute_depreciation(self, date, dates):
+    def compute_depreciation(self, amount, date, dates):
         """
         Returns the depreciation amount for an asset on a certain date.
         """
-        amount = (self.value - self.get_depreciated_amount()
-            - self.residual_value)
         if self.depreciation_method == 'linear':
             start_date = max([self.start_date
                     - relativedelta.relativedelta(days=1)]
@@ -392,14 +426,17 @@ class Asset(Workflow, ModelSQL, ModelView):
         Line = Pool().get('account.asset.line')
         amounts = {}
         dates = self.compute_move_dates()
-        amount = (self.value - self.get_depreciated_amount()
+        depreciated_amount = self.get_depreciated_amount()
+        amount = (self.depreciating_value
+            - depreciated_amount
             - self.residual_value)
         if amount <= 0:
             return amounts
-        residual_value, acc_depreciation = amount, Decimal(0)
+        residual_value, acc_depreciation = (
+            amount, depreciated_amount + self.depreciated_amount)
         asset_line = None
         for date in dates:
-            depreciation = self.compute_depreciation(date, dates)
+            depreciation = self.compute_depreciation(amount, date, dates)
             amounts[date] = asset_line = Line(
                 acquired_value=self.value,
                 depreciable_basis=amount,
@@ -407,22 +444,20 @@ class Asset(Workflow, ModelSQL, ModelView):
             if depreciation > residual_value:
                 asset_line.depreciation = residual_value
                 asset_line.accumulated_depreciation = (
-                    self.get_depreciated_amount()
-                    + acc_depreciation + residual_value)
+                    acc_depreciation + residual_value)
                 break
             else:
                 residual_value -= depreciation
                 acc_depreciation += depreciation
                 asset_line.depreciation = depreciation
-                asset_line.accumulated_depreciation = (
-                    self.get_depreciated_amount() + acc_depreciation)
+                asset_line.accumulated_depreciation = acc_depreciation
         else:
             if residual_value > 0 and asset_line is not None:
                 asset_line.depreciation += residual_value
                 asset_line.accumulated_depreciation += residual_value
         for asset_line in amounts.values():
-            asset_line.actual_value = (self.value -
-                asset_line.accumulated_depreciation)
+            asset_line.actual_value = (self.value
+                - asset_line.accumulated_depreciation)
         return amounts
 
     @classmethod
@@ -536,7 +571,7 @@ class Asset(Workflow, ModelSQL, ModelView):
             account=account_asset,
             )
         depreciation_line = MoveLine(
-            debit=self.get_depreciated_amount(),
+            debit=self.get_depreciated_amount() + self.depreciated_amount,
             credit=0,
             account=self.product.account_depreciation_used,
             )

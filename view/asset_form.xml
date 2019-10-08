@@ -4,14 +4,14 @@
 <form col="6">
     <label name="product"/>
     <field name="product"/>
-    <label name="account_journal"/>
-    <field name="account_journal"/>
     <label name="number"/>
     <field name="number"/>
     <label name="supplier_invoice_line"/>
     <field name="supplier_invoice_line"/>
     <label name="value"/>
     <field name="value"/>
+    <label name="depreciated_amount"/>
+    <field name="depreciated_amount"/>
     <label name="residual_value"/>
     <field name="residual_value"/>
     <label name="purchase_date"/>
@@ -27,7 +27,8 @@
         <page string="Other Info" id="info">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
+            <label name="account_journal"/>
+            <field name="account_journal"/>
             <label name="depreciation_method"/>
             <field name="depreciation_method"/>
             <label name="frequency"/>
