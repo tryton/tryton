@@ -1,3 +1,4 @@
+* Retry cron job on DatabaseOperationalError
 * Add visual context on tree view
 * Add start value to PYSON Date and DateTime
 * Add MultiSelection field

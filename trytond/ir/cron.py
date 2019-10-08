@@ -1,12 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import time
 from dateutil.relativedelta import relativedelta
 import logging
 
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, dualmethod
 from ..transaction import Transaction
 from ..pool import Pool
+from trytond import backend
+from trytond.config import config
 from trytond.pyson import Eval
 from trytond.worker import run_task
 
@@ -110,8 +113,10 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def run(cls, db_name):
+        DatabaseOperationalError = backend.get('DatabaseOperationalError')
         logger.info('cron started for "%s"', db_name)
         now = datetime.datetime.now()
+        retry = config.getint('database', 'retry')
         with Transaction().start(db_name, 0) as transaction:
             transaction.database.lock(transaction.connection, cls._table)
             crons = cls.search(['OR',
@@ -121,14 +126,20 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
             for cron in crons:
                 logger.info("Run cron %s", cron.id)
-                try:
-                    cron.run_once()
-                    cron.next_call = cron.compute_next_call(now)
-                    cron.save()
-                    transaction.commit()
-                except Exception:
-                    transaction.rollback()
-                    logger.error('Running cron %s', cron.id, exc_info=True)
+                for count in range(retry, -1, -1):
+                    if count != retry:
+                        time.sleep(0.02 * (retry - count))
+                    try:
+                        cron.run_once()
+                        cron.next_call = cron.compute_next_call(now)
+                        cron.save()
+                        transaction.commit()
+                    except Exception as e:
+                        transaction.rollback()
+                        if isinstance(e, DatabaseOperationalError) and count:
+                            continue
+                        logger.error('Running cron %s', cron.id, exc_info=True)
+                        break
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(db_name, task_id)
