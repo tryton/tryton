@@ -181,7 +181,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             if fields_names and fname not in fields_names:
                 continue
             definition[fname] = field.definition(cls, language)
-            if not accesses.get(field, {}).get('write', True):
+            if not accesses.get(fname, {}).get('write', True):
                 definition[fname]['readonly'] = True
                 states = decoder.decode(definition[fname]['states'])
                 states.pop('readonly', None)
