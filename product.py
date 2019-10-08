@@ -5,7 +5,7 @@ import functools
 from decimal import Decimal
 from collections import defaultdict
 
-from sql import Literal, Null
+from sql import Literal, Null, Select
 from sql.aggregate import Max
 from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce
@@ -348,8 +348,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Location = pool.get('stock.location')
         Product = pool.get('product.product')
+        Date = pool.get('ir.date')
         move = from_ = Move.__table__()
         context = Transaction().context
+        today = Date.today()
 
         if context.get('product_template') is not None:
             product = Product.__table__()
@@ -363,20 +365,28 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         warehouse_query = Location.search([
                 ('parent', 'child_of', [warehouse_id]),
                 ], query=True, order=[])
-        date_column = Coalesce(move.effective_date, move.planned_date
-            ).as_('date')
-        return from_.select(
-            Max(move.id).as_('id'),
-            Literal(0).as_('create_uid'),
-            CurrentTimestamp().as_('create_date'),
-            Literal(None).as_('write_uid'),
-            Literal(None).as_('write_date'),
-            date_column,
-            where=product_clause
-            & (move.from_location.in_(warehouse_query)
-                | move.to_location.in_(warehouse_query))
-            & (Coalesce(move.effective_date, move.planned_date) != Null),
-            group_by=(date_column, move.product))
+        date_column = Coalesce(move.effective_date, move.planned_date)
+        return (from_.select(
+                Max(move.id).as_('id'),
+                Literal(0).as_('create_uid'),
+                CurrentTimestamp().as_('create_date'),
+                Literal(None).as_('write_uid'),
+                Literal(None).as_('write_date'),
+                date_column.as_('date'),
+                where=product_clause
+                & (move.from_location.in_(warehouse_query)
+                    | move.to_location.in_(warehouse_query))
+                & (Coalesce(move.effective_date, move.planned_date) != Null)
+                & (date_column != today),
+                group_by=(date_column, move.product))
+            | Select([
+                    Literal(0).as_('id'),
+                    Literal(0).as_('create_uid'),
+                    CurrentTimestamp().as_('create_date'),
+                    Literal(None).as_('write_uid'),
+                    Literal(None).as_('write_date'),
+                    Literal(today).as_('date'),
+                    ]))
 
     @classmethod
     def get_quantity(cls, lines, name):

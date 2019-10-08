@@ -1,3 +1,4 @@
+* Add today record in Product Quantities By Warehouse
 * Allow consumable product on inventories
 * Let the user select a default warehouse
 * Add method to get default warehouse

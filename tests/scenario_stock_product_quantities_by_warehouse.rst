@@ -77,6 +77,7 @@ Check Product Quantities by Warehouse::
    ...      product_template=template.id, warehouse=warehouse_loc.id):
    ...   records = ProductQuantitiesByWarehouse.find([])
    >>> len(records)
-   2
-   >>> [(r.date, r.quantity) for r in records] == [(yesterday, 10), (tomorrow, 6)]
+   3
+   >>> [(r.date, r.quantity) for r in records] == [
+   ...      (yesterday, 10), (today, 10), (tomorrow, 6)]
    True
