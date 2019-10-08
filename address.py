@@ -5,12 +5,12 @@ from string import Template
 
 from sql.conditionals import Coalesce
 from sql.functions import Substring
-from sql.operators import Concat
+from sql.operators import Concat, Equal
 
 from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, MatchMixin, DeactivableMixin, fields,
-    sequence_ordered)
+    sequence_ordered, Exclude)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.pool import Pool
@@ -18,8 +18,6 @@ from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.cache import Cache
 from .exceptions import InvalidFormat
-
-__all__ = ['Address', 'AddressFormat']
 
 STATES = {
     'readonly': ~Eval('active'),
@@ -44,12 +42,21 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     city = fields.Char('City', states=STATES, depends=DEPENDS)
     country = fields.Many2One('country.country', 'Country',
         states=STATES, depends=DEPENDS)
+    subdivision_types = fields.Function(
+        fields.MultiSelection(
+            'get_subdivision_types', "Subdivision Types"),
+        'on_change_with_subdivision_types')
     subdivision = fields.Many2One("country.subdivision",
-        'Subdivision', domain=[
+        'Subdivision',
+        domain=[
             ('country', '=', Eval('country', -1)),
-            ('parent', '=', None),
+            If(Eval('subdivision_types', []),
+                ('type', 'in', Eval('subdivision_types', [])),
+                ()
+                ),
             ],
-        states=STATES, depends=['active', 'country'])
+        states=STATES,
+        depends=['active', 'country', 'subdivision_types'])
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 
@@ -221,6 +228,18 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                 and self.subdivision.country != self.country):
             self.subdivision = None
 
+    @classmethod
+    def get_subdivision_types(cls):
+        pool = Pool()
+        Subdivision = pool.get('country.subdivision')
+        return Subdivision.fields_get(['type'])['type']['selection']
+
+    @fields.depends('country')
+    def on_change_with_subdivision_types(self, name=None):
+        pool = Pool()
+        Types = pool.get('party.address.subdivision_type')
+        return Types.get_types(self.country)
+
 
 class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
     "Address Format"
@@ -349,3 +368,64 @@ ${COUNTRY}"""
 
         cls._get_format_cache.set(key, format_)
         return format_
+
+
+class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
+    "Address Subdivision Type"
+    __name__ = 'party.address.subdivision_type'
+    country_code = fields.Char("Country Code", size=2, required=True)
+    types = fields.MultiSelection('get_subdivision_types', "Subdivision Types")
+    _get_types_cache = Cache('party.address.subdivision_type.get_types')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('country_code_unique',
+                Exclude(t, (t.country_code, Equal),
+                    where=t.active == True),
+                'party.msg_address_subdivision_country_code_unique')
+            ]
+        cls._order.insert(0, ('country_code', 'ASC NULLS LAST'))
+
+    @classmethod
+    def get_subdivision_types(cls):
+        pool = Pool()
+        Subdivision = pool.get('country.subdivision')
+        return Subdivision.fields_get(['type'])['type']['selection']
+
+    @classmethod
+    def create(cls, *args, **kwargs):
+        records = super().create(*args, **kwargs)
+        cls._get_types_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args, **kwargs):
+        super().write(*args, **kwargs)
+        cls._get_types_cache.clear()
+
+    @classmethod
+    def delete(cls, *args, **kwargs):
+        super().delete(*args, **kwargs)
+        cls._get_types_cache.clear()
+
+    @classmethod
+    def get_types(cls, country):
+        key = country.code if country else None
+        types = cls._get_types_cache.get(key)
+        if types is not None:
+            return list(types)
+
+        records = cls.search([
+                ('country_code', '=', country.code if country else None),
+                ])
+        if records:
+            record, = records
+            types = record.types
+        else:
+            types = []
+
+        cls._get_types_cache.set(key, types)
+        return types

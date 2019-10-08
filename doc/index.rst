@@ -51,6 +51,11 @@ Address Format
 It allows to define per country and language, how addresses should be
 formatted.
 
+Address Subdivision Type
+************************
+
+It allows to define for each country which types of subdivision are allowed on
+the address.
 
 Contact Mechanism
 *****************

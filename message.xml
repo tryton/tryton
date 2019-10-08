@@ -36,5 +36,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_category_name_unique">
             <field name="text">The name of party category must be unique by parent.</field>
         </record>
+        <record model="ir.message" id="msg_address_subdivision_country_code_unique">
+            <field name="text">The country code on subdivision type must be unique.</field>
+        </record>
     </data>
 </tryton>

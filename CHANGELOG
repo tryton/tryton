@@ -1,3 +1,4 @@
+* Limit subdivision types on address
 * Add call url for mobile contact mechanisms
 * Replace country and language in address format by codes
 * Add sequence field to contact mechanism form view

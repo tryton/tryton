@@ -85,6 +85,51 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="address_subdivision_type_view_list">
+            <field name="model">party.address.subdivision_type</field>
+            <field name="type">tree</field>
+            <field name="name">address_subdivision_type_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="address_subdivision_type_view_form">
+            <field name="model">party.address.subdivision_type</field>
+            <field name="type">form</field>
+            <field name="name">address_subdivision_type_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_address_subdivision_type_form">
+            <field name="name">Address Subdivision Types</field>
+            <field name="res_model">party.address.subdivision_type</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_address_subdivision_type_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="address_subdivision_type_view_list"/>
+            <field name="act_window" ref="act_address_subdivision_type_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_address_subdivision_type_form_view2">
+          <field name="sequence" eval="20"/>
+          <field name="view" ref="address_subdivision_type_view_form"/>
+          <field name="act_window" ref="act_address_subdivision_type_form"/>
+        </record>
+        <menuitem parent="menu_configuration" sequence="20"
+            action="act_address_subdivision_type_form" id="menu_address_subdivision_type_form"/>
+
+        <record model="ir.model.access" id="access_address_subdivision_type">
+            <field name="model" search="[('model', '=', 'party.address.subdivision_type')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_address_subdivision_type_admin">
+            <field name="model" search="[('model', '=', 'party.address.subdivision_type')]"/>
+            <field name="group" ref="group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
     </data>
     <data noupdate="1" grouped="1">
         <!-- From https://en.wikipedia.org/wiki/Address_(geography) -->
@@ -156,6 +201,16 @@ ${street}
 ${name}
 ${city} - ${subdivision_code}
 ${zip}
+${COUNTRY}</field>
+        </record>
+
+        <record model="party.address.format" id="address_format_bg">
+            <field name="country_code">BG</field>
+            <field name="format_">${party_name}
+${street}
+${name}
+${zip} ${city}
+${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -322,6 +377,11 @@ ${subdivision}
 ${COUNTRY}</field>
         </record>
 
+        <record model="party.address.subdivision_type" id="address_subdivision_type_id">
+            <field name="country_code">ID</field>
+            <field name="types" eval="['province', 'autonomous province', 'special district', 'special region']"/>
+        </record>
+
         <record model="party.address.format" id="address_format_ir">
             <field name="country_code">IR</field>
             <field name="format_">${party_name}
@@ -367,6 +427,11 @@ ${name}
 ${street}
 ${zip} ${city} ${SUBDIVISION_CODE}
 ${COUNTRY}</field>
+        </record>
+
+        <record model="party.address.subdivision_type" id="address_subdivision_it">
+            <field name="country_code">IT</field>
+            <field name="types" eval="['province']"/>
         </record>
 
         <record model="party.address.format" id="address_format_jp_jp">
@@ -608,6 +673,11 @@ ${subdivision}
 ${COUNTRY}</field>
         </record>
 
+        <record model="party.address.subdivision_type" id="address_subdivision_es">
+            <field name="country_code">ES</field>
+            <field name="types" eval="['province']"/>
+        </record>
+
         <record model="party.address.format" id="address_format_lk">
             <field name="country_code">LK</field>
             <field name="format_">${party_name}
@@ -706,6 +776,5 @@ ${city}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
-
     </data>
 </tryton>

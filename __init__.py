@@ -21,6 +21,7 @@ def register():
         party.PartyEraseAsk,
         address.Address,
         address.AddressFormat,
+        address.SubdivisionType,
         contact_mechanism.ContactMechanism,
         configuration.Configuration,
         configuration.ConfigurationSequence,
