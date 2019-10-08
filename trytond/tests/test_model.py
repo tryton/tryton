@@ -141,6 +141,27 @@ class ModelTestCase(unittest.TestCase):
 
         self.assertEqual(names, {'model': "Model", 'field': "Name"})
 
+    @with_transaction()
+    def test_fields_get_no_write_access(self):
+        "Test field is readonly when no write access on it"
+        pool = Pool()
+        Model = pool.get('test.model')
+        Field = pool.get('ir.model.field')
+        FieldAccess = pool.get('ir.model.field.access')
+
+        field, = Field.search([
+                ('name', '=', 'name'),
+                ('model.model', '=', Model.__name__),
+                ])
+        FieldAccess.create([{
+                    'field': field.id,
+                    'perm_write': False,
+                    }])
+
+        definition = Model.fields_get(['name'])
+
+        self.assertTrue(definition['name']['readonly'])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ModelTestCase)
