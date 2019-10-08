@@ -106,7 +106,12 @@ def run_task(pool, task_id):
                 time.sleep(0.02 * (retry - count))
             with Transaction().start(pool.database_name, 0) as transaction:
                 try:
-                    Queue(task_id).run()
+                    try:
+                        task, = Queue.search([('id', '=', task_id)])
+                    except ValueError:
+                        # the task was rollbacked, nothing to do
+                        break
+                    task.run()
                     break
                 except DatabaseOperationalError:
                     if count:
