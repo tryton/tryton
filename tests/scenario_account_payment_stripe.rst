@@ -41,12 +41,26 @@ Create Stripe account::
     >>> stripe_account.secret_key = os.getenv('STRIPE_SECRET_KEY')
     >>> stripe_account.publishable_key = os.getenv('STRIPE_PUBLISHABLE_KEY')
     >>> stripe_account.save()
+    >>> stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
 
 Create webhook identifier::
 
     >>> stripe_account.click('new_identifier')
     >>> len(stripe_account.webhook_identifier)
     32
+
+Remove webhook::
+
+    >>> stripe_account.click('new_identifier')
+    >>> stripe_account.webhook_identifier
+
+Setup fetch events cron::
+
+    >>> Cron = Model.get('ir.cron')
+    >>> cron_fetch_events, = Cron.find([
+    ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
+    ...     ])
+    >>> cron_fetch_events.companies.append(Company(company.id))
 
 Create payment journal::
 
@@ -82,7 +96,6 @@ Checkout the payment::
     True
 
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4242424242424242',
     ...         'exp_month': 12,
@@ -90,14 +103,20 @@ Checkout the payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.stripe_chargeable = True
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     'stripe_chargeable': True,
+    ...     }, config.context)
 
 Process the payment::
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -117,7 +136,6 @@ Create failing payment::
     >>> bool(payment.stripe_checkout_id)
     True
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4000000000000002',
     ...         'exp_month': 12,
@@ -125,8 +143,9 @@ Create failing payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     }, config.context)
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
     >>> payment.state
@@ -149,7 +168,6 @@ Checkout the customer::
     True
 
     >>> token = stripe.Token.create(
-    ...     api_key=stripe_customer.stripe_account.secret_key,
     ...     card={
     ...         'number': '4012888888881881',
     ...         'exp_month': 12,
@@ -162,7 +180,6 @@ Checkout the customer::
 
 Run cron::
 
-    >>> Cron = Model.get('ir.cron')
     >>> cron_customer_create, = Cron.find([
     ...     ('method', '=', 'account.payment.stripe.customer|stripe_create'),
     ...     ])
@@ -188,6 +205,11 @@ Make payment with customer::
     'approved'
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
 
@@ -220,7 +242,6 @@ Create capture payment::
 Checkout the capture payment::
 
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4242424242424242',
     ...         'exp_month': 12,
@@ -228,8 +249,9 @@ Checkout the capture payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     }, config.context)
 
 Process the capture payment::
 
@@ -244,6 +266,11 @@ Capture lower amount::
 
     >>> payment.amount = Decimal('40')
     >>> payment.click('stripe_do_capture')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)

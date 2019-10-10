@@ -1,3 +1,8 @@
+* New identifier button toggles webhook
+* Add fetch events cron task
+* Update checkout.html to use Stripe.js and Intent
+* Manage Setup Intent and Payment Intent for SCA
+
 Version 5.2.0 - 2019-05-06
 * Bug fixes (see mercurial logs for details)
 * Add cache for sources

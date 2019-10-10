@@ -4,6 +4,7 @@ import uuid
 import logging
 import urllib.parse
 from decimal import Decimal
+from email.header import Header
 from itertools import groupby
 from operator import attrgetter
 
@@ -13,11 +14,12 @@ from trytond.cache import Cache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelSQL, ModelView, Workflow, DeactivableMixin, fields)
+    ModelSQL, ModelView, Workflow, DeactivableMixin, fields, dualmethod)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool
-from trytond.report import Report
+from trytond.report import Report, get_email
 from trytond.rpc import RPC
+from trytond.sendmail import sendmail_transactional
 from trytond.transaction import Transaction
 from trytond.url import HOSTNAME
 from trytond.wizard import Wizard, StateAction
@@ -71,18 +73,51 @@ class Group(metaclass=PoolMeta):
         Payment.__queue__.stripe_charge(self.payments)
 
 
-class Payment(metaclass=PoolMeta):
+class CheckoutMixin:
+    stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('stripe_checkout_id')
+        return super().copy(records, default=default)
+
+    @classmethod
+    @ModelView.button_action('account_payment_stripe.wizard_checkout')
+    def stripe_checkout(cls, records):
+        for record in records:
+            record.stripe_checkout_id = uuid.uuid4().hex
+        cls.save(records)
+
+    @property
+    def stripe_checkout_url(self):
+        pool = Pool()
+        database = Transaction().database.name
+        Checkout = pool.get('account.payment.stripe.checkout', type='wizard')
+        action = Checkout.checkout.get_action()
+        return action['url'] % {
+            'hostname': HOSTNAME,
+            'database': database,
+            'model': self.__class__.__name__,
+            'id': self.stripe_checkout_id,
+            }
+
+
+class Payment(CheckoutMixin, metaclass=PoolMeta):
     __name__ = 'account.payment'
 
     stripe_journal = fields.Function(
         fields.Boolean("Stripe Journal"), 'on_change_with_stripe_journal')
     stripe_checkout_needed = fields.Function(
-        fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
-    stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
+        fields.Boolean("Stripe Checkout Needed"),
+        'on_change_with_stripe_checkout_needed')
     stripe_charge_id = fields.Char(
         "Stripe Charge ID", readonly=True,
         states={
-            'invisible': ~Eval('stripe_journal') & ~Eval('stripe_charge_id'),
+            'invisible': ~Eval('stripe_journal') | ~Eval('stripe_charge_id'),
             },
         depends=['stripe_journal'])
     stripe_capture = fields.Boolean(
@@ -97,19 +132,32 @@ class Payment(metaclass=PoolMeta):
     stripe_capture_needed = fields.Function(
         fields.Boolean("Stripe Capture Needed"),
         'get_stripe_capture_needed')
-    stripe_token = fields.Char("Stripe Token",
+    stripe_token = fields.Char(
+        "Stripe Token", readonly=True,
         states={
-            'invisible': (~Eval('stripe_journal')
-                | Eval('stripe_customer_source')),
-            'readonly': ~Eval('state').in_(['draft', 'approved']),
-            },
-        depends=['stripe_journal', 'stripe_customer_source', 'state'])
+            'invisible': ~Eval('stripe_token'),
+            })
+    stripe_payment_intent_id = fields.Char(
+        "Stripe Payment Intent", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_payment_intent_id'),
+            })
     stripe_chargeable = fields.Boolean(
         "Stripe Chargeable",
         states={
             'invisible': ~Eval('stripe_journal') | ~Eval('stripe_token'),
             },
         depends=['stripe_journal', 'stripe_token'])
+    stripe_capturable = fields.Boolean(
+        "Stripe Capturable",
+        states={
+            'invisible': (~Eval('stripe_journal')
+                | ~Eval('stripe_payment_intent_id')
+                | ~Eval('stripe_capture_needed')),
+            },
+        depends=[
+            'stripe_journal', 'stripe_payment_intent_id',
+            'stripe_capture_needed'])
     stripe_idempotency_key = fields.Char(
         "Stripe Idempotency Key", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
@@ -141,30 +189,64 @@ class Payment(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('stripe_journal'),
             'required': Bool(Eval('stripe_customer_source')),
-            'readonly': ~Eval('state').in_(['draft', 'approved']),
+            'readonly': (~Eval('state').in_(['draft', 'approved'])
+                | Eval('stripe_token') | Eval('stripe_payment_intent_id')),
             },
         depends=['party', 'stripe_account', 'stripe_journal',
-            'stripe_customer_source', 'state'])
+            'stripe_customer_source', 'stripe_token',
+            'stripe_payment_intent_id', 'state'])
     stripe_customer_source = fields.Char(
         "Stripe Customer Source",
         states={
-            'invisible': (~Eval('stripe_journal') | Eval('stripe_token')
+            'invisible': (~Eval('stripe_journal')
+                | Eval('stripe_token')
+                | Eval('stripe_payment_intent_id')
                 | ~Eval('stripe_customer')),
             'readonly': ~Eval('state').in_(['draft', 'approved']),
             },
-        depends=['stripe_account', 'stripe_token', 'stripe_customer', 'state'])
+        depends=['stripe_journal', 'stripe_token', 'stripe_payment_intent_id',
+            'stripe_customer', 'state'])
     # Use Function field with selection to avoid to query Stripe
     # to validate the value
     stripe_customer_source_selection = fields.Function(fields.Selection(
             'get_stripe_customer_sources', "Stripe Customer Source",
             states={
-                'invisible': (~Eval('stripe_journal') | Eval('stripe_token')
+                'invisible': (~Eval('stripe_journal')
+                    | Eval('stripe_token')
+                    | Eval('stripe_payment_intent_id')
                     | ~Eval('stripe_customer')),
                 'readonly': ~Eval('state').in_(['draft', 'approved']),
                 },
             depends=[
-                'stripe_account', 'stripe_token', 'stripe_customer', 'state']),
+                'stripe_journal', 'stripe_token', 'stripe_customer', 'state']),
         'get_stripe_customer_source', setter='set_stripe_customer_source')
+    stripe_customer_payment_method = fields.Char(
+        "Stripe Payment Method",
+        states={
+            'invisible': (~Eval('stripe_journal')
+                | Eval('stripe_token')
+                | ~Eval('stripe_customer')),
+            'readonly': (~Eval('state').in_(['draft', 'approved'])
+                | Eval('stripe_payment_intent_id')),
+            },
+        depends=['stripe_journal', 'stripe_token', 'stripe_customer', 'state'])
+    # Use Function field with selection to avoid to query Stripe
+    # to validate the value
+    stripe_customer_payment_method_selection = fields.Function(
+        fields.Selection(
+            'get_stripe_customer_payment_methods',
+            "Stripe Customer Payment Method",
+            states={
+                'invisible': (~Eval('stripe_journal')
+                    | Eval('stripe_token')
+                    | ~Eval('stripe_customer')),
+                'readonly': (~Eval('state').in_(['draft', 'approved'])
+                    | Eval('stripe_payment_intent_id')),
+                },
+            depends=[
+                'stripe_journal', 'stripe_token', 'stripe_customer', 'state']),
+        'get_stripe_customer_payment_method',
+        setter='set_stripe_customer_payment_method')
     stripe_account = fields.Function(fields.Many2One(
             'account.payment.stripe.account', "Stripe Account"),
         'on_change_with_stripe_account')
@@ -220,6 +302,10 @@ class Payment(metaclass=PoolMeta):
         return False
 
     @classmethod
+    def default_stripe_capturable(cls):
+        return False
+
+    @classmethod
     def default_stripe_idempotency_key(cls):
         return uuid.uuid4().hex
 
@@ -261,14 +347,48 @@ class Payment(metaclass=PoolMeta):
     def set_stripe_customer_source(cls, payments, name, value):
         pass
 
-    def get_stripe_checkout_needed(self, name):
-        return (self.journal.process_method == 'stripe'
+    @fields.depends('stripe_customer', 'stripe_customer_payment_method')
+    def get_stripe_customer_payment_methods(self):
+        methods = [('', '')]
+        if self.stripe_customer:
+            methods.extend(self.stripe_customer.payment_methods())
+        if (self.stripe_customer_payment_method
+                and self.stripe_customer_payment_method not in dict(methods)):
+            methods.append(
+                (self.stripe_customer_payment_method,
+                    self.stripe_customer_payment_method))
+        return methods
+
+    @fields.depends(
+        'stripe_customer_payment_method_selection',
+        'stripe_customer_payment_method')
+    def on_change_stripe_customer_payment_method_selection(self):
+        self.stripe_customer_payment_method = (
+            self.stripe_customer_payment_method_selection)
+
+    def get_stripe_customer_payment_method(self, name):
+        return self.stripe_customer_payment_method
+
+    @classmethod
+    def set_stripe_customer_payment_method(cls, payments, name, value):
+        pass
+
+    @fields.depends('stripe_journal',
+        'stripe_token', 'stripe_payment_intent_id',
+        'stripe_customer_source', 'stripe_customer_source_selection',
+        'stripe_customer_payment_method',
+        'stripe_customer_payment_method_selection')
+    def on_change_with_stripe_checkout_needed(self, name=None):
+        return (self.stripe_journal
             and not self.stripe_token
-            and not self.stripe_customer)
+            and not self.stripe_payment_intent_id
+            and not self.stripe_customer_source
+            and not self.stripe_customer_payment_method)
 
     def get_stripe_capture_needed(self, name):
         return (self.journal.process_method == 'stripe'
-            and self.stripe_charge_id
+            and (self.stripe_charge_id
+                or self.stripe_payment_intent_id)
             and not self.stripe_capture
             and not self.stripe_captured)
 
@@ -290,6 +410,14 @@ class Payment(metaclass=PoolMeta):
             cls.write(list(payments), {
                     'amount': value * 10 ** -digits,
                     })
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//group[@id="stripe"]', 'states', {
+                    'invisible': ~Eval('stripe_journal'),
+                    }),
+            ]
 
     @classmethod
     def validate(cls, payments):
@@ -321,13 +449,16 @@ class Payment(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('stripe_checkout_id', None)
         default.setdefault('stripe_charge_id', None)
         default.setdefault('stripe_token', None)
+        default.setdefault('stripe_payment_intent_id', None)
         default.setdefault('stripe_idempotency_key', None)
         default.setdefault('stripe_error_message', None)
         default.setdefault('stripe_error_code', None)
         default.setdefault('stripe_error_param', None)
+        default.setdefault('stripe_captured', False)
+        default.setdefault('stripe_chargeable', False)
+        default.setdefault('stripe_capturable', False)
         return super(Payment, cls).copy(payments, default=default)
 
     @classmethod
@@ -338,14 +469,62 @@ class Payment(metaclass=PoolMeta):
         for payment in payments:
             if payment.stripe_token:
                 payment.stripe_token = None
+                payment.stripe_payment_intent_id = None
         cls.save(payments)
 
     @classmethod
-    @ModelView.button_action('account_payment_stripe.wizard_checkout')
     def stripe_checkout(cls, payments):
         for payment in payments:
-            payment.stripe_checkout_id = uuid.uuid4().hex
-        cls.save(payments)
+            if not payment.stripe_payment_intent_id:
+                payment_intent = stripe.PaymentIntent.create(
+                    **payment._payment_intent_parameters(off_session=False))
+                payment.stripe_payment_intent_id = payment_intent.id
+        return super().stripe_checkout(payments)
+
+    def _send_email_checkout(self, from_=None):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        if from_ is None:
+            from_ = config.get('email', 'from')
+        self.stripe_checkout([self])
+        emails = self._emails_checkout()
+        if not emails:
+            logger.warning("Could not send checkout email for %d", self.id)
+            return
+        languages = [self.party.lang or Language.get()]
+        msg, title = get_email(
+            'account.payment.stripe.email_checkout', self, languages)
+        msg['From'] = from_
+        msg['To'] = ','.join(emails)
+        msg['Subject'] = Header(title, 'utf-8')
+        sendmail_transactional(from_, emails, msg)
+
+    def _emails_checkout(self):
+        emails = []
+        if self.party.email:
+            emails.append(self.party.email)
+        return emails
+
+    def _payment_intent_parameters(self, off_session=False):
+        idempotency_key = None
+        if self.stripe_idempotency_key:
+            idempotency_key = 'payment_intent-%s' % self.stripe_idempotency_key
+        params = {
+            'api_key': self.journal.stripe_account.secret_key,
+            'amount': self.stripe_amount,
+            'currency': self.currency.code,
+            'capture_method': 'automatic' if self.stripe_capture else 'manual',
+            'customer': (self.stripe_customer.stripe_customer_id
+                if self.stripe_customer else None),
+            'description': self.description,
+            'off_session': off_session,
+            'payment_method_types': ['card'],
+            'idempotency_key': idempotency_key,
+            }
+        if self.stripe_customer_payment_method:
+            params['payment_method'] = self.stripe_customer_payment_method
+            params['confirm'] = True
+        return params
 
     @classmethod
     def stripe_charge(cls, payments=None):
@@ -362,11 +541,32 @@ class Payment(metaclass=PoolMeta):
                             ('stripe_token', '!=', None),
                             ('stripe_chargeable', '=', True),
                             ],
-                        ('stripe_customer.stripe_customer_id', '!=', None),
+                        ('stripe_customer_source', '!=', None),
+                        ('stripe_customer_payment_method', '!=', None),
                         ],
                     ('stripe_charge_id', '=', None),
+                    ('stripe_payment_intent_id', '=', None),
                     ('company', '=', Transaction().context.get('company')),
                     ])
+
+        def create_charge(payment):
+            charge = stripe.Charge.create(**payment._charge_parameters())
+            payment.stripe_charge_id = charge.id
+            payment.stripe_captured = charge.captured
+            payment.save()
+
+        def create_payment_intent(payment):
+            try:
+                payment_intent = stripe.PaymentIntent.create(
+                    **payment._payment_intent_parameters(off_session=True))
+            except stripe.error.CardError as e:
+                error = e.json_body.get('error', {})
+                payment_intent = error.get('payment_intent')
+                if not payment_intent:
+                    raise
+            payment.stripe_payment_intent_id = payment_intent['id']
+            payment.save()
+
         for payment in payments:
             # Use clear cache after a commit
             payment = cls(payment.id)
@@ -376,7 +576,10 @@ class Payment(metaclass=PoolMeta):
                 continue
             payment.lock()
             try:
-                charge = stripe.Charge.create(**payment._charge_parameters())
+                if payment.stripe_token or payment.stripe_customer_source:
+                    create_charge(payment)
+                elif payment.stripe_customer_payment_method:
+                    create_payment_intent(payment)
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))
@@ -393,14 +596,6 @@ class Payment(metaclass=PoolMeta):
                     "Error when processing payment %d", payment.id,
                     exc_info=True)
                 continue
-            else:
-                payment.stripe_charge_id = charge.id
-                payment.stripe_captured = charge.captured
-                payment.save()
-                if charge.status == 'succeeded' and charge.captured:
-                    cls.succeed([payment])
-                elif charge.status == 'failed':
-                    cls.fail([payment])
             Transaction().commit()
 
     def _charge_parameters(self):
@@ -443,25 +638,49 @@ class Payment(metaclass=PoolMeta):
             payments = cls.search([
                     ('state', '=', 'processing'),
                     ('journal.process_method', '=', 'stripe'),
-                    ('stripe_charge_id', '!=', None),
+                    ['OR',
+                        ('stripe_charge_id', '!=', None),
+                        [
+                            ('stripe_payment_intent_id', '!=', None),
+                            ('stripe_capturable', '=', True),
+                            ],
+                        ],
                     ('stripe_captured', '=', False),
                     ('stripe_capture', '=', True),
                     ('company', '=', Transaction().context.get('company')),
                     ])
+
+        def capture_charge(payment):
+            charge = stripe.Charge.retrieve(
+                payment.stripe_charge_id,
+                api_key=payment.journal.stripe_account.secret_key)
+            charge.capture(**payment._capture_parameters())
+            payment.stripe_captured = charge.captured
+            payment.save()
+
+        def capture_intent(payment):
+            params = payment._capture_parameters()
+            params['amount_to_capture'] = params.pop('amount')
+            stripe.PaymentIntent.capture(
+                payment.stripe_payment_intent_id,
+                api_key=payment.journal.stripe_account.secret_key,
+                **params)
+            payment.stripe_captured = True
+            payment.save()
+
         for payment in payments:
             # Use clear cache after a commit
             payment = cls(payment.id)
-            if (not payment.stripe_charge_id
-                    or payment.journal.process_method != 'stripe'
+            if (payment.journal.process_method != 'stripe'
                     or payment.stripe_captured
                     or payment.state != 'processing'):
                 continue
             payment.lock()
             try:
-                charge = stripe.Charge.retrieve(
-                    payment.stripe_charge_id,
-                    api_key=payment.journal.stripe_account.secret_key)
-                charge.capture(**payment._capture_parameters())
+                if payment.stripe_charge_id:
+                    capture_charge(payment)
+                elif payment.stripe_payment_intent_id:
+                    capture_intent(payment)
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))
@@ -475,14 +694,6 @@ class Payment(metaclass=PoolMeta):
                     "Error when capturing payment %d", payment.id,
                     exc_info=True)
                 continue
-            else:
-                payment.stripe_charge_id = charge.id
-                payment.stripe_captured = charge.captured
-                payment.save()
-                if charge.status == 'succeeded' and charge.captured:
-                    cls.succeed([payment])
-                elif charge.status == 'failed':
-                    cls.fail([payment])
             Transaction().commit()
 
     def _capture_parameters(self):
@@ -493,6 +704,24 @@ class Payment(metaclass=PoolMeta):
             'amount': self.stripe_amount,
             'idempotency_key': idempotency_key,
             }
+
+    @property
+    def stripe_payment_intent(self):
+        if not self.stripe_payment_intent_id:
+            return
+        try:
+            return stripe.PaymentIntent.retrieve(
+                self.stripe_payment_intent_id,
+                api_key=self.journal.stripe_account.secret_key)
+        except (stripe.error.RateLimitError,
+                stripe.error.APIConnectionError) as e:
+            logger.warning(str(e))
+
+    stripe_intent = stripe_payment_intent
+
+    @dualmethod
+    def stripe_intent_update(cls, payments=None):
+        pass
 
 
 class Account(ModelSQL, ModelView):
@@ -516,6 +745,7 @@ class Account(ModelSQL, ModelView):
         depends=['webhook_identifier'],
         help="The Stripe's signing secret of the webhook.")
     zip_code = fields.Boolean("Zip Code", help="Verification on checkout")
+    last_event = fields.Char("Last Event", readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -546,6 +776,26 @@ class Account(ModelSQL, ModelView):
                 '/%(database_name)s/account_payment_stripe'
                 '/webhook/%(identifier)s'
                 % url_part))
+
+    @classmethod
+    def fetch_events(cls):
+        """Fetch last events of each account without webhook and process them
+
+        The transaction is committed after each event.
+        """
+        accounts = cls.search([
+                ('webhook_identifier', '=', None),
+                ])
+        for account in accounts:
+            events = stripe.Event.list(
+                api_key=account.secret_key,
+                ending_before=account.last_event,
+                limit=100)
+            for event in reversed(list(events)):
+                account.webhook(event)
+                account.last_event = event.id
+                account.save()
+                Transaction().commit()
 
     def webhook(self, payload):
         """This method handles stripe webhook callbacks
@@ -579,6 +829,12 @@ class Account(ModelSQL, ModelView):
             return self.webhook_source_failed(data)
         elif type_ == 'source.canceled':
             return self.webhook_source_canceled(data)
+        elif type_ == 'payment_intent.succeeded':
+            return self.webhook_payment_intent_succeeded(data)
+        elif type_ == 'payment_intent.amount_capturable_updated':
+            return self.webhook_payment_intent_amount_capturable_updated(data)
+        elif type_ == 'payment_intent.payment_failed':
+            return self.webhook_payment_intent_payment_failed(data)
         return None
 
     def webhook_charge_succeeded(self, payload, _event='charge.succeeded'):
@@ -590,6 +846,11 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
+            payment_intent_id = charge.get('payment_intent')
+            if payment_intent_id and Payment.search([
+                        ('stripe_payment_intent_id', '=', payment_intent_id),
+                        ]):
+                return True
             logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
@@ -628,6 +889,11 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', charge['id']),
                 ])
         if not payments:
+            payment_intent_id = charge.get('payment_intent')
+            if payment_intent_id and Payment.search([
+                        ('stripe_payment_intent_id', '=', payment_intent_id),
+                        ]):
+                return True
             logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
@@ -649,6 +915,14 @@ class Account(ModelSQL, ModelView):
                 ('stripe_charge_id', '=', source['charge']),
                 ])
         if not payments:
+            charge = stripe.Charge.retrieve(source['charge'],
+                api_key=self.secret_key)
+            if charge.payment_intent:
+                payments = Payment.search([
+                        ('stripe_payment_intent_id', '=',
+                            charge.payment_intent),
+                        ])
+        if not payments:
             logger.error(
                 "charge.dispute.created: No payment '%s'", source['charge'])
         for payment in payments:
@@ -667,6 +941,14 @@ class Account(ModelSQL, ModelView):
         payments = Payment.search([
                 ('stripe_charge_id', '=', source['charge']),
                 ])
+        if not payments:
+            charge = stripe.Charge.retrieve(source['charge'],
+                api_key=self.secret_key)
+            if charge.payment_intent:
+                payments = Payment.search([
+                        ('stripe_payment_intent_id', '=',
+                            charge.payment_intent),
+                        ])
         if not payments:
             logger.error(
                 "charge.dispute.closed: No payment '%s'", source['charge'])
@@ -724,15 +1006,97 @@ class Account(ModelSQL, ModelView):
                 Payment.fail([payment])
         return True
 
+    def webhook_payment_intent_succeeded(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        payment_intent = payload['object']
+        payments = Payment.search([
+                ('stripe_payment_intent_id', '=', payment_intent['id']),
+                ])
+        if not payments:
+            logger.error(
+                "payment_intent.succeeded: No payment '%s'",
+                payment_intent['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                if payment.state == 'succeeded':
+                    Payment.fail([payment])
+                payment.stripe_captured = bool(
+                    payment_intent['amount_received'])
+                payment.stripe_amount = payment_intent['amount_received']
+                payment.save()
+                if payment.amount:
+                    Payment.succeed([payment])
+                else:
+                    Payment.fail([payment])
+        return bool(payments)
+
+    def webhook_payment_intent_amount_capturable_updated(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        payment_intent = payload['object']
+        payments = Payment.search([
+                ('stripe_payment_intent_id', '=', payment_intent['id']),
+                ])
+        if not payments:
+            logger.error(
+                "payment_intent.succeeded: No payment '%s'",
+                payment_intent['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                if payment.state == 'succeeded':
+                    Payment.fail([payment])
+                payment.stripe_capturable = bool(
+                    payment_intent['amount_capturable'])
+                if payment.stripe_amount > payment_intent['amount_capturable']:
+                    payment.stripe_amount = payment_intent['amount_capturable']
+                payment.save()
+        return bool(payments)
+
+    def webhook_payment_intent_payment_failed(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        payment_intent = payload['object']
+        payments = Payment.search([
+                ('stripe_payment_intent_id', '=', payment_intent['id']),
+                ])
+        if not payments:
+            logger.error(
+                "payment_intent.succeeded: No payment '%s'",
+                payment_intent['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                error = payment_intent['last_payment_error']
+                if error:
+                    payment.stripe_error_message = error['message']
+                    payment.stripe_error_code = error['code']
+                    payment.stripe_error_param = None
+                    payment.save()
+                if payment_intent['status'] in [
+                        'requires_payment_method', 'requires_source']:
+                    payment._send_email_checkout()
+                else:
+                    Payment.fail([payment])
+        return bool(payments)
+
     @classmethod
     @ModelView.button
     def new_identifier(cls, accounts):
         for account in accounts:
-            account.webhook_identifier = uuid.uuid4().hex
+            if account.webhook_identifier:
+                account.webhook_identifier = None
+            else:
+                account.webhook_identifier = uuid.uuid4().hex
         cls.save(accounts)
 
 
-class Customer(DeactivableMixin, ModelSQL, ModelView):
+class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     "Stripe Customer"
     __name__ = 'account.payment.stripe.customer'
     _history = True
@@ -749,7 +1113,6 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
         depends=['stripe_customer_id', 'stripe_token'])
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"), 'get_stripe_checkout_needed')
-    stripe_checkout_id = fields.Char("Stripe Checkout ID", readonly=True)
     stripe_customer_id = fields.Char(
         "Stripe Customer ID",
         states={
@@ -758,6 +1121,8 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
             },
         depends=['stripe_token'])
     stripe_token = fields.Char("Stripe Token", readonly=True)
+    stripe_setup_intent_id = fields.Char(
+        "Stripe SetupIntent ID", readonly=True)
     stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
         states={
             'invisible': ~Eval('stripe_error_message'),
@@ -775,6 +1140,10 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
         'account_payment_stripe_customer.sources',
         duration=config.getint(
             'account_payment_stripe', 'sources_cache', default=15 * 60))
+    _payment_methods_cache = Cache(
+        'account_payment_stripe_customer.payment_methods',
+        duration=config.getint(
+            'account_payment_stripe', 'payment_methods', default=15 * 60))
 
     @classmethod
     def __setup__(cls):
@@ -787,7 +1156,9 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                 })
 
     def get_stripe_checkout_needed(self, name):
-        return not self.stripe_customer_id and not self.stripe_token
+        return (not self.stripe_customer_id
+            or not self.stripe_token
+            or not self.stripe_setup_intent_id)
 
     def get_rec_name(self, name):
         name = super(Customer, self).get_rec_name(name)
@@ -797,6 +1168,7 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
     def write(cls, *args, **kwargs):
         super().write(*args, **kwargs)
         cls._sources_cache.clear()
+        cls._payment_methods_cache.clear()
 
     @classmethod
     def delete(cls, customers):
@@ -810,21 +1182,23 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('stripe_checkout_id', None)
         default.setdefault('stripe_token', None)
         default.setdefault('stripe_customer_id', None)
         return super(Customer, cls).copy(customers, default=default)
 
     @classmethod
-    @ModelView.button_action('account_payment_stripe.wizard_checkout')
     def stripe_checkout(cls, customers):
         for customer in customers:
-            customer.stripe_checkout_id = uuid.uuid4().hex
-        cls.save(customers)
+            if customer.stripe_setup_intent_id:
+                continue
+            setup_intent = stripe.SetupIntent.create(
+                api_key=customer.stripe_account.secret_key)
+            customer.stripe_setup_intent_id = setup_intent.id
+        return super().stripe_checkout(customers)
 
     @classmethod
     def stripe_create(cls, customers=None):
-        """Create stripe customer
+        """Create stripe customer with token
 
         The transaction is committed after each customer.
         """
@@ -953,6 +1327,101 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                 name = '****' + source.sepa_debit.last4
         return name
 
+    def payment_methods(self):
+        methods = self._payment_methods_cache.get(self.id)
+        if methods is not None:
+            return methods
+        methods = []
+        if self.stripe_customer_id:
+            try:
+                payment_methods = stripe.PaymentMethod.list(
+                    api_key=self.stripe_account.secret_key,
+                    customer=self.stripe_customer_id,
+                    type='card')
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
+                return []
+            for payment_method in payment_methods:
+                name = self._payment_method_name(payment_method)
+                methods.append((payment_method.id, name))
+        self._payment_methods_cache.set(self.id, methods)
+        return methods
+
+    def _payment_method_name(cls, payment_method):
+        name = payment_method.id
+        if payment_method.type == 'card':
+            card = payment_method.card
+            name = card.brand
+            if card.last4:
+                name += ' ****' + card.last4
+            if card.exp_month and card.exp_year:
+                name += ' %s/%s' % (card.exp_month, card.exp_year)
+        return name
+
+    @property
+    def stripe_setup_intent(self):
+        if not self.stripe_setup_intent_id:
+            return
+        try:
+            return stripe.SetupIntent.retrieve(
+                self.stripe_setup_intent_id,
+                api_key=self.stripe_account.secret_key)
+        except (stripe.error.RateLimitError,
+                stripe.error.APIConnectionError) as e:
+            logger.warning(str(e))
+
+    stripe_intent = stripe_setup_intent
+
+    @dualmethod
+    def stripe_intent_update(cls, customers=None):
+        """Update stripe customers with intent
+
+        The transaction is committed after each customer."""
+        if customers is None:
+            customers = cls.search([
+                    ('stripe_setup_intent_id', '!=', None),
+                    ])
+
+        for customer in customers:
+            # Use clear cache after commit
+            customer = cls(customer.id)
+            setup_intent = customer.stripe_setup_intent
+            if not setup_intent or setup_intent.status != 'succeeded':
+                continue
+            customer.lock()
+            try:
+                if customer.stripe_customer_id:
+                    stripe.PaymentMethod.attach(
+                        setup_intent.payment_method,
+                        customer=customer.stripe_customer_id,
+                        api_key=customer.stripe_account.secret_key)
+                else:
+                    cu = stripe.Customer.create(
+                        api_key=customer.stripe_account.secret_key,
+                        description=customer.rec_name,
+                        email=customer.party.email,
+                        payment_method=setup_intent.payment_method)
+                    customer.stripe_customer_id = cu.id
+            except stripe.error.RateLimitError:
+                logger.warning("Rate limit error")
+                continue
+            except stripe.error.StripeError as e:
+                customer.stripe_error_message = str(e)
+            except Exception:
+                logger.error(
+                    "Error when updating customer %d", customer.id,
+                    exc_info=True)
+                continue
+            else:
+                customer.stripe_error_message = None
+                customer.stripe_error_code = None
+                customer.stripe_error_param = None
+            customer.stripe_setup_intent_id = None
+            customer.save()
+            cls._payment_methods_cache.clear()
+            Transaction().commit()
+
 
 class Checkout(Wizard):
     "Stripe Checkout"
@@ -974,13 +1443,7 @@ class Checkout(Wizard):
         else:
             raise ValueError("Invalid active_model: %s" % active_model)
         record = Model(active_id)
-        database = Transaction().database.name
-        action['url'] = action['url'] % {
-            'hostname': HOSTNAME,
-            'database': database,
-            'model': active_model,
-            'id': record.stripe_checkout_id,
-            }
+        action['url'] = record.stripe_checkout_url
         return action, {}
 
 

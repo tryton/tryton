@@ -14,6 +14,10 @@ class Cron(metaclass=PoolMeta):
                 ('account.payment|stripe_capture_', "Capture Stripe Payments"),
                 ('account.payment.stripe.customer|stripe_create',
                     "Create Stripe Customer"),
+                ('account.payment.stripe.customer|stripe_intent_update',
+                    "Update Stripe Intent Customer"),
                 ('account.payment.stripe.customer|stripe_delete',
                     "Delete Stripe Customer"),
+                ('account.payment.stripe.account|fetch_events',
+                    "Fetch Stripe Events"),
                 ])

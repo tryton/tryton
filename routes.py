@@ -22,7 +22,6 @@ logger = logging.getLogger(__name__)
 def checkout(request, pool, model, id):
     Payment = pool.get('account.payment')
     Customer = pool.get('account.payment.stripe.customer')
-    ContactMechanism = pool.get('party.contact_mechanism')
     if model == Payment.__name__:
         Model = Payment
     elif model == Customer.__name__:
@@ -41,22 +40,13 @@ def checkout(request, pool, model, id):
         data = {
             'model': Model.__name__,
             }
+        if model == Payment.__name__ and record.stripe_customer_payment_method:
+            data['payment_method'] = record.stripe_customer_payment_method
         ext, content, _, _ = Report.execute([record.id], data)
         assert ext == 'html'
         return Response(content, 200, content_type='text/html')
     elif request.method == 'POST':
-        record.stripe_token = request.form['stripeToken']
-        record.stripe_chargeable = True
-        record.save()
-        email = request.form.get('stripeEmail')
-        if email:
-            for mechanism in record.party.contact_mechanisms:
-                if mechanism.type == 'email' and mechanism.value == email:
-                    break
-            else:
-                mechanism = ContactMechanism(
-                    type='email', value=email, party=record.party)
-                mechanism.save()
+        record.stripe_intent_update()
         return Response(
             '<body onload="window.close()">', 200, content_type='text/html')
 

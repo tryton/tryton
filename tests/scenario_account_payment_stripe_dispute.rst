@@ -41,6 +41,15 @@ Create Stripe account::
     >>> stripe_account.secret_key = os.getenv('STRIPE_SECRET_KEY')
     >>> stripe_account.publishable_key = os.getenv('STRIPE_PUBLISHABLE_KEY')
     >>> stripe_account.save()
+    >>> stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
+
+Setup fetch events cron::
+
+    >>> Cron = Model.get('ir.cron')
+    >>> cron_fetch_events, = Cron.find([
+    ...     ('method', '=', 'account.payment.stripe.account|fetch_events'),
+    ...     ])
+    >>> cron_fetch_events.companies.append(Company(company.id))
 
 Create payment journal::
 
@@ -74,7 +83,6 @@ Create fully disputed payment::
     True
 
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
@@ -82,12 +90,18 @@ Create fully disputed payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.stripe_chargeable = True
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     'stripe_chargeable': True,
+    ...     }, config.context)
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -160,7 +174,6 @@ Create partial disputed payment::
     True
 
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
@@ -168,12 +181,18 @@ Create partial disputed payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.stripe_chargeable = True
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     'stripe_chargeable': True,
+    ...     }, config.context)
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -224,7 +243,6 @@ Create won disputed payment::
     True
 
     >>> token = stripe.Token.create(
-    ...     api_key=payment.journal.stripe_account.secret_key,
     ...     card={
     ...         'number': '4000000000000259',
     ...         'exp_month': 12,
@@ -232,12 +250,18 @@ Create won disputed payment::
     ...         'cvc': '123',
     ...         },
     ...     )
-    >>> payment.stripe_token = token.id
-    >>> payment.stripe_chargeable = True
-    >>> payment.save()
+    >>> Payment.write([payment.id], {
+    ...     'stripe_token': token.id,
+    ...     'stripe_chargeable': True,
+    ...     }, config.context)
 
     >>> process_payment = Wizard('account.payment.process', [payment])
     >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> bool(payment.stripe_captured)
@@ -245,26 +269,17 @@ Create won disputed payment::
 
 Simulate charge.dispute.closed event::
 
-    >>> StripeAccount.webhook([stripe_account], {
-    ...         'type': 'charge.dispute.closed',
-    ...         'data': {
-    ...             'object': {
-    ...                 'object': 'dispute',
-    ...                 'charge': payment.stripe_charge_id,
-    ...                 'amount': 4200,
-    ...                 'currency': 'usd',
-    ...                 'reason': 'general',
-    ...                 'status': 'won',
-    ...                 },
-    ...             },
-    ...         }, {})
-    [True]
+    >>> charge = stripe.Charge.retrieve(payment.stripe_charge_id)
+    >>> dispute = stripe.Dispute.modify(charge.dispute,
+    ...     evidence={'uncategorized_text': 'winning_evidence'})
+
+    >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
     'succeeded'
     >>> payment.amount
-    Decimal('42')
+    Decimal('42.00')
     >>> payment.stripe_dispute_reason
-    'general'
+    'fraudulent'
     >>> payment.stripe_dispute_status
     'won'

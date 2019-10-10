@@ -162,7 +162,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.button" id="customer_stripe_checkout_button">
             <field name="name">stripe_checkout</field>
-            <field name="string">Stripe Checkout</field>
+            <field name="string">Add Card</field>
             <field name="model"
                 search="[('model', '=', 'account.payment.stripe.customer')]"/>
         </record>
@@ -178,6 +178,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"></field>
             <field name="report_name">account.payment.stripe.checkout</field>
             <field name="report">account_payment_stripe/checkout.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.action.report" id="report_email_checkout">
+            <field name="name">Checkout</field>
+            <field name="model">account.payment</field>
+            <field name="report_name">account.payment.stripe.email_checkout</field>
+            <field name="report">account_payment_stripe/email_checkout.html</field>
             <field name="template_extension">html</field>
         </record>
 
@@ -199,10 +207,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="interval_type">hours</field>
         </record>
 
+        <record model="ir.cron" id="cron_update_customer">
+            <field name="method">account.payment.stripe.customer|stripe_intent_update</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+
         <record model="ir.cron" id="cron_delete_customer">
             <field name="method">account.payment.stripe.customer|stripe_delete</field>
             <field name="interval_number" eval="1"/>
             <field name="interval_type">hours</field>
+        </record>
+
+        <record model="ir.cron" id="cron_fetch_events">
+            <field name="method">account.payment.stripe.account|fetch_events</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
         </record>
     </data>
     <data noupdate="1">
