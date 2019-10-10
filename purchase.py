@@ -544,6 +544,15 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             origin=self,
             )
 
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('purchase_requests')
+        return super(PurchaseRequisitionLine, cls).copy(lines, default=default)
+
 
 class PurchaseRequest:
     __metaclass__ = PoolMeta
