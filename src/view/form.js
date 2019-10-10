@@ -3038,7 +3038,7 @@ function eval_pyson(value){
             domain = ['OR', domain, ['id', 'in', removed_ids]];
             var text = this.wid_text.val();
 
-            var sequence = self._sequence();
+            var sequence = this._sequence();
 
             var callback = function(result) {
                 var prm = jQuery.when();
