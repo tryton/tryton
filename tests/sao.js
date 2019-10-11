@@ -1666,6 +1666,8 @@
         [[[c(['John'])]], [[['rec_name', 'ilike', '%John%']]]],
         [[c(['Relation.Name', null, "Test"])],
             [['relation.name', 'ilike', "%Test%"]]],
+        [[c(['OR'])], [['rec_name', 'ilike', "%OR%"]]],
+        [[c(['AND'])], [['rec_name', 'ilike', "%AND%"]]],
         ].forEach(function(test) {
             var value = test[0];
             var result = test[1];
