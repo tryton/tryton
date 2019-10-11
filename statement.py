@@ -16,6 +16,7 @@ from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.rpc import RPC
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.modules.company import CompanyReport
 
@@ -173,6 +174,10 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'readonly': ~Eval('to_reconcile'),
                     'depends': ['state', 'to_reconcile'],
                     },
+                })
+        cls.__rpc__.update({
+                'post': RPC(
+                    readonly=False, instantiate=0, fresh_session=True),
                 })
 
     @classmethod
