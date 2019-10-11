@@ -279,6 +279,9 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
 
 
 def _round(uom, number, func=round):
+    if not number:
+        # Avoid unnecessary computation
+        return number
     precision = uom.rounding
     # Convert precision into an integer greater than 1 to avoid precision lost.
     # This works for most cases because rounding is often: n * 10**i
