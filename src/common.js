@@ -1740,7 +1740,7 @@
                     }
                     if (~['integer', 'float', 'numeric', 'datetime', 'date',
                             'time'].indexOf(field.type)) {
-                        if ((value instanceof String) && value.contains('..')) {
+                        if ((typeof value == 'string') && value.contains('..')) {
                             var values = value.split('..', 2);
                             var lvalue = this.convert_value(field, values[0]);
                             var rvalue = this.convert_value(field, values[1]);
