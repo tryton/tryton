@@ -1688,7 +1688,7 @@
             tokens.forEach(function(clause) {
                 if (this.is_generator(clause)) {
                     result.push(this.parse_clause(clause));
-                } else if ((clause == 'OR') || (clause == 'AND')) {
+                } else if ((clause === 'OR') || (clause === 'AND')) {
                     result.push(clause);
                 } else if ((clause.length == 1) &&
                     !(clause[0] instanceof Array)) {
