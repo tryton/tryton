@@ -1188,7 +1188,7 @@ class DomainParser(object):
                         operator = negate_operator(default_operator(field))
                     if field['type'] in ('integer', 'float', 'numeric',
                             'datetime', 'date', 'time'):
-                        if value and '..' in value:
+                        if isinstance(value, str) and '..' in value:
                             lvalue, rvalue = value.split('..', 1)
                             lvalue = convert_value(field, lvalue, self.context)
                             rvalue = convert_value(field, rvalue, self.context)
