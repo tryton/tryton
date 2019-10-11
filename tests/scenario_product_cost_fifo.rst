@@ -45,6 +45,8 @@ Get stock locations::
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
+    >>> production_loc = Location(name="Production", type='production')
+    >>> production_loc.save()
 
 Make 4 units of the product available @ 10 ::
 
@@ -67,13 +69,13 @@ Check Cost Price is 10::
     >>> product.cost_price
     Decimal('10.0000')
 
-Add 2 more units @ 25::
+Add 2 more units @ 25 from production::
 
     >>> incoming_move = StockMove()
     >>> incoming_move.product = product
     >>> incoming_move.uom = unit
     >>> incoming_move.quantity = 2
-    >>> incoming_move.from_location = supplier_loc
+    >>> incoming_move.from_location = production_loc
     >>> incoming_move.to_location = storage_loc
     >>> incoming_move.planned_date = today
     >>> incoming_move.company = company
