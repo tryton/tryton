@@ -1759,6 +1759,12 @@ def test_parse_clause():
     assert rlist(dom.parse_clause(
             iter([['Relation.Name', None, "Test"]]))) == [
                 ('relation.name', 'ilike', "%Test%")]
+    assert rlist(dom.parse_clause(
+            iter([['OR']]))) == [
+                ('rec_name', 'ilike', "%OR%")]
+    assert rlist(dom.parse_clause(
+            iter([['AND']]))) == [
+                ('rec_name', 'ilike', "%AND%")]
 
 
 def test_completion():
