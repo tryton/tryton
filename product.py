@@ -48,7 +48,8 @@ class Template:
             moves = Move.search([
                 ('product.template.id', '=', template.id),
                 ('state', '=', 'done'),
-                ('from_location.type', '=', 'supplier'),
+                ('from_location.type', 'in', ['supplier', 'production']),
+                ('to_location.type', '=', 'storage'),
                 ], offset=offset, limit=limit,
                 order=[('effective_date', 'DESC'), ('id', 'DESC')])
             if not moves:
