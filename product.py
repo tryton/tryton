@@ -21,6 +21,33 @@ class Template(metaclass=PoolMeta):
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
+    def _get_available_fifo_moves(self):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.search([
+                ('product', '=', self.id),
+                ('state', '=', 'done'),
+                self._domain_moves_cost,
+                ('fifo_quantity_available', '>', 0),
+                ('to_location.type', '=', 'storage'),
+                ('from_location.type', 'in', ['supplier', 'production']),
+                ('to_location.type', '=', 'storage'),
+                ], order=[('effective_date', 'DESC'), ('id', 'DESC')])
+
+    def _get_fifo_quantity(self):
+        pool = Pool()
+        Location = pool.get('stock.location')
+
+        locations = Location.search([
+            ('type', '=', 'storage'),
+            ])
+        stock_date_end = datetime.date.today()
+        location_ids = [l.id for l in locations]
+        with Transaction().set_context(
+                locations=location_ids,
+                stock_date_end=stock_date_end):
+            return self.__class__(self.id).quantity
+
     def get_fifo_move(self, quantity=0.0):
         '''
         Return a list of (move, qty) where move is the move to be
@@ -29,50 +56,25 @@ class Product(metaclass=PoolMeta):
         moves for the given quantity.
         '''
         pool = Pool()
-        Move = pool.get('stock.move')
         Uom = pool.get('product.uom')
-        Location = pool.get('stock.location')
 
-        locations = Location.search([
-            ('type', '=', 'storage'),
-            ])
-        stock_date_end = datetime.date.today()
-        location_ids = [l.id for l in locations]
-        with Transaction().set_context(locations=location_ids,
-                stock_date_end=stock_date_end):
-            product = self.__class__(self.id)
-        offset = 0
-        limit = Transaction().database.IN_MAX
-        avail_qty = product.quantity
+        avail_qty = self._get_fifo_quantity()
         fifo_moves = []
+        moves = self._get_available_fifo_moves()
+        for move in moves:
+            qty = Uom.compute_qty(move.uom,
+                    move.fifo_quantity_available,
+                    self.default_uom, round=False)
+            avail_qty -= qty
 
-        while avail_qty > 0.0:
-            moves = Move.search([
-                ('product', '=', product.id),
-                ('state', '=', 'done'),
-                ('from_location.type', 'in', ['supplier', 'production']),
-                ('to_location.type', '=', 'storage'),
-                ], offset=offset, limit=limit,
-                order=[('effective_date', 'DESC'), ('id', 'DESC')])
-            if not moves:
-                break
-            offset += limit
-
-            for move in moves:
-                qty = Uom.compute_qty(move.uom,
-                        move.quantity - move.fifo_quantity,
-                        product.default_uom, round=False)
-                avail_qty -= qty
-
-                if avail_qty <= quantity:
-                    if avail_qty > 0.0:
-                        fifo_moves.append(
-                            (move, min(qty, quantity - avail_qty)))
-                    else:
-                        fifo_moves.append(
-                            (move, min(quantity, qty + avail_qty)))
-                        break
-
+            if avail_qty <= quantity:
+                if avail_qty > 0.0:
+                    fifo_moves.append(
+                        (move, min(qty, quantity - avail_qty)))
+                else:
+                    fifo_moves.append(
+                        (move, min(quantity, qty + avail_qty)))
+                    break
         fifo_moves.reverse()
         return fifo_moves
 
