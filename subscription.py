@@ -5,7 +5,7 @@ from decimal import Decimal
 from itertools import groupby
 
 from sql import operators, Literal, Null
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
 
 from trytond import backend
 from trytond.i18n import gettext
@@ -279,7 +279,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
                     subscription.compute_next_invoice_date())
             for line in subscription.lines:
                 if (line.next_consumption_date is None
-                        and not line.consumed):
+                        and not line.consumed_until):
                     line.next_consumption_date = (
                         line.compute_next_consumption_date())
             lines.extend(subscription.lines)
@@ -465,7 +465,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     next_consumption_date_delayed = fields.Function(
         fields.Date("Next Consumption Delayed"),
         'get_next_consumption_date_delayed')
-    consumed = fields.Boolean("Consumed")
+    consumed_until = fields.Date("Consumed until", readonly=True)
     start_date = fields.Date(
         "Start Date", required=True,
         domain=[
@@ -473,9 +473,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             ],
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
-                | Eval('consumed')),
+                | Eval('consumed_until')),
             },
-        depends=['subscription_start_date', 'subscription_state', 'consumed'])
+        depends=[
+            'subscription_start_date', 'subscription_state', 'consumed_until'])
     end_date = fields.Date(
         "End Date",
         domain=['OR', [
@@ -483,18 +484,18 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 If(Bool(Eval('subscription_end_date')),
                     ('end_date', '<=', Eval('subscription_end_date')),
                     ()),
-                If(Bool(Eval('next_consumption_date')),
-                    ('end_date', '>=', Eval('next_consumption_date')),
+                If(Bool(Eval('consumed_until')),
+                    ('end_date', '>=', Eval('consumed_until')),
                     ()),
                 ],
             ('end_date', '=', None),
             ],
         states={
             'readonly': ((Eval('subscription_state') != 'draft')
-                | (~Eval('next_consumption_date') & Eval('consumed'))),
+                | (~Eval('consumed_until') & Eval('consumed_until'))),
             },
         depends=['subscription_end_date', 'start_date',
-            'next_consumption_date', 'subscription_state', 'consumed'])
+            'consumed_until', 'subscription_state', 'consumed_until'])
 
     @classmethod
     def __register__(cls, module):
@@ -522,6 +523,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 4.8: drop required on description
         table_h.not_null_action('description', action='remove')
+
+        # Migration from 5.2: replace consumed by consumed_until
+        if table_h.column_exist('consumed'):
+            cursor.execute(*table.update(
+                    [table.consumed_until],
+                    [Case((table.consumed, Coalesce(
+                                    table.next_consumption_date,
+                                    table.end_date)), else_=Null)]))
+            table_h.drop_column('consumed')
 
     @fields.depends('subscription', '_parent_subscription.state')
     def on_change_with_subscription_state(self, name=None):
@@ -620,10 +630,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return self.next_consumption_date + self.consumption_delay
         return self.next_consumption_date
 
-    @classmethod
-    def default_consumed(cls):
-        return False
-
     def get_rec_name(self, name):
         return '%s @ %s' % (self.service.rec_name, self.subscription.rec_name)
 
@@ -675,11 +681,16 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         while remainings:
             lines, remainings = remainings, []
             for line in lines:
-                consumptions.append(
-                    line.get_consumption(line.next_consumption_date))
+                consumption = line.get_consumption(line.next_consumption_date)
+                if consumption:
+                    consumptions.append(consumption)
                 line.next_consumption_date = (
                     line.compute_next_consumption_date())
-                line.consumed = True
+                if line.next_consumption_date:
+                    line.consumed_until = (
+                        line.next_consumption_date - datetime.timedelta(1))
+                else:
+                    line.consumed_until = line.end_date
                 if line.next_consumption_date is None:
                     subscription_ids.add(line.subscription.id)
                 elif line.get_next_consumption_date_delayed() <= date:
@@ -692,7 +703,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def get_consumption(self, date):
         pool = Pool()
         Consumption = pool.get('sale.subscription.line.consumption')
-        return Consumption(line=self, quantity=self.quantity, date=date)
+        if date < (self.end_date or datetime.date.max):
+            return Consumption(line=self, quantity=self.quantity, date=date)
 
     def compute_next_consumption_date(self):
         if not self.consumption_recurrence:

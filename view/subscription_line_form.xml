@@ -6,28 +6,34 @@ this repository contains the full copyright notices and license terms. -->
     <field name="subscription"/>
     <label name="sequence"/>
     <field name="sequence"/>
+
     <notebook colspan="4">
         <page string="General" id="general">
             <label name="service"/>
             <field name="service"/>
-            <newline/>
+            <label name="unit_price"/>
+            <field name="unit_price"/>
+
             <label name="description"/>
             <field name="description" colspan="3" yexpand="0"/>
+
             <label name="consumption_recurrence"/>
             <field name="consumption_recurrence"/>
             <label name="consumption_delay"/>
             <field name="consumption_delay"/>
+
             <label name="quantity"/>
             <field name="quantity"/>
             <label name="unit"/>
             <field name="unit"/>
-            <label name="unit_price"/>
-            <field name="unit_price"/>
-            <newline/>
+
             <label name="start_date"/>
             <field name="start_date"/>
             <label name="end_date"/>
             <field name="end_date"/>
+
+            <label name="consumed_until"/>
+            <field name="consumed_until"/>
         </page>
     </notebook>
 </form>
