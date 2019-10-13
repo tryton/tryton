@@ -205,23 +205,24 @@ class WinExport(WinCSV):
             if not override:
                 return
         try:
-            new_id, = RPCExecute('model', 'ir.export', 'create', [{
-                    'name': name,
-                    'resource': self.model,
-                    'export_fields': [('create', [{
-                                        'name': x,
-                                        } for x in fields])],
-                    }], context=self.context)
-            if pref_id:
-                RPCExecute('model', 'ir.export', 'delete', [pref_id],
+            if not pref_id:
+                pref_id, = RPCExecute('model', 'ir.export', 'create', [{
+                        'name': name,
+                        'resource': self.model,
+                        'export_fields': [('create', [{
+                                            'name': x,
+                                            } for x in fields])],
+                        }], context=self.context)
+            else:
+                RPCExecute('model', 'ir.export', 'update', [pref_id], fields,
                     context=self.context)
         except RPCException:
             return
         clear_cache('model.%s.view_toolbar_get' % self.model)
         if iter_ is None:
-            self.predef_model.append((new_id, fields, name))
+            self.predef_model.append((pref_id, fields, name))
         else:
-            model.set_value(iter_, 0, new_id)
+            model.set_value(iter_, 0, pref_id)
             model.set_value(iter_, 1, fields)
 
     def remove_predef(self, widget):
