@@ -24,6 +24,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_pyme"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_total_patrimonio_pasivo_pyme" model="account.account.type.template">
             <field name="name">TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)</field>
@@ -39,12 +40,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_total_activo_pyme"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activo_corriente_pyme" model="account.account.type.template">
             <field name="name">B) ACTIVO CORRIENTE</field>
             <field name="parent" ref="es_balance_total_activo_pyme"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_patrimonio_neto_pyme" model="account.account.type.template">
             <field name="name">A) PATRIMONIO NETO</field>
@@ -74,48 +77,59 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_inmovilizado_material_pyme" model="account.account.type.template">
             <field name="name">II. Inmovilizado material</field>
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_inversiones_inmobiliarias_pyme" model="account.account.type.template">
             <field name="name">III. Inversiones inmobiliarias</field>
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_inversiones_empresas_del_grupo_largo_plazo_pyme" model="account.account.type.template">
             <field name="name">IV. Inversiones en empresas del grupo y asociadas a largo plazo</field>
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_financieras_pyme" model="account.account.type.template">
             <field name="name">V. Inversiones financieras a largo plazo</field>
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activos_por_impuesto_diferido_pyme" model="account.account.type.template">
             <field name="name">VI. Activos por impuesto diferido</field>
             <field name="parent" ref="es_balance_activo_no_corriente_pyme"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activos_no_corrientes_mantenidos_pyme" model="account.account.type.template">
             <field name="name">I. Activos no corrientes mantenidos para la venta</field>
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_existencias_pyme" model="account.account.type.template">
             <field name="name">II. Existencias</field>
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             <field name="stock" eval="True"/>
         </record>
         <record id="es_balance_deudores_comerciales_pyme" model="account.account.type.template">
@@ -123,18 +137,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_empresas_del_grupo_corto_plazo_pyme" model="account.account.type.template">
             <field name="name">IV. Inversiones en empresas del grupo y asociadas a corto plazo</field>
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_finanzieras_corto_plazo_pyme" model="account.account.type.template">
             <field name="name">V. Inversiones financieras a corto plazo</field>
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_periodificaciones_a_corto_plazo_pyme" model="account.account.type.template">
             <field name="name">V. Periodificaciones a corto plazo</field>
@@ -142,6 +159,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_efectivo_pyme" model="account.account.type.template">
             <field name="name">VI. Efectivo y otros activos líquidos equivalentes</field>
@@ -149,6 +167,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_pyme"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_fondos_propios_pyme" model="account.account.type.template">
             <field name="name">A-1) Fondos propios</field>
@@ -296,6 +315,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         
         
@@ -308,6 +328,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudores_comerciales_pyme"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_deudores_pyme" model="account.account.type.template">
             <field name="name">3. Otros deudores</field>
@@ -315,6 +336,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="80"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         
         

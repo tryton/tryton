@@ -29,6 +29,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_total_patrimonio_pasivo_normal" model="account.account.type.template">
             <field name="name">TOTAL PATRIMONIO NETO Y PASIVO (A + B + C)</field>
@@ -48,12 +49,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_total_activo_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activo_corriente_normal" model="account.account.type.template">
             <field name="name">B) ACTIVO CORRIENTE</field>
             <field name="parent" ref="es_balance_total_activo_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_patrimonio_neto_normal" model="account.account.type.template">
             <field name="name">A) PATRIMONIO NETO</field>
@@ -98,48 +101,59 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            
         </record>
         <record id="es_balance_inmovilizado_material_normal" model="account.account.type.template">
             <field name="name">II. Inmovilizado material</field>
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            
         </record>
         <record id="es_balance_inversiones_inmobiliarias_normal" model="account.account.type.template">
             <field name="name">III. Inversiones inmobiliarias</field>
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            
         </record>
         <record id="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal" model="account.account.type.template">
             <field name="name">IV. Inversiones en empresas del grupo y asociadas a largo plazo</field>
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">V. Inversiones financieras a largo plazo</field>
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activos_por_impuesto_diferido_normal" model="account.account.type.template">
             <field name="name">VI. Activos por impuesto diferido</field>
             <field name="parent" ref="es_balance_activo_no_corriente_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activos_no_corrientes_mantenidos_normal" model="account.account.type.template">
             <field name="name">I. Activos no corrientes mantenidos para la venta</field>
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_existencias_normal" model="account.account.type.template">
             <field name="name">II. Existencias</field>
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
             
         </record>
         <record id="es_balance_deudores_comerciales_normal" model="account.account.type.template">
@@ -147,18 +161,21 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal" model="account.account.type.template">
             <field name="name">IV. Inversiones en empresas del grupo y asociadas a corto plazo</field>
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_inversiones_finanzieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">V. Inversiones financieras a corto plazo</field>
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_periodificaciones_a_corto_plazo_normal" model="account.account.type.template">
             
@@ -166,6 +183,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_efectivo_normal" model="account.account.type.template">
             
@@ -173,6 +191,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_activo_corriente_normal"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_fondos_propios_normal" model="account.account.type.template">
             <field name="name">A-1) Fondos propios</field>
@@ -355,138 +374,173 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_concesiones_normal" model="account.account.type.template">
             <field name="name">2. Concesiones</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_patentes_normal" model="account.account.type.template">
             <field name="name">3. Patentes, licencias, marcas y similares</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_fondo_de_comercio_normal" model="account.account.type.template">
             <field name="name">4. Fondo de comercio</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_aplicaciones_informaticas_normal" model="account.account.type.template">
             <field name="name">5. Aplicaciones informáticas</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_investigacion_normal" model="account.account.type.template">
             <field name="name">6. Investigación</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_11170_normal" model="account.account.type.template">
             <field name="name">7. Otro inmovilizado intangible</field>
             <field name="parent" ref="es_balance_inmovilizado_intangible_normal"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_otro_inmovilizado_intangible_normal" model="account.account.type.template">
             <field name="name">1. Terrenos y construcciones</field>
             <field name="parent" ref="es_balance_inmovilizado_material_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_instalaciones_tecnicas_normal" model="account.account.type.template">
             <field name="name">2. Instalaciones técnicas y otro inmovilizado material</field>
             <field name="parent" ref="es_balance_inmovilizado_material_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_inmovilizado_en_curso_normal" model="account.account.type.template">
             <field name="name">3. Inmovilizado en curso y anticipos</field>
             <field name="parent" ref="es_balance_inmovilizado_material_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_terrenos_normal" model="account.account.type.template">
             <field name="name">1. Terrenos</field>
             <field name="parent" ref="es_balance_inversiones_inmobiliarias_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_construcciones_normal" model="account.account.type.template">
             <field name="name">2. Construcciones</field>
             <field name="parent" ref="es_balance_inversiones_inmobiliarias_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="fixed_asset" depends="account_asset" eval="True"/>
         </record>
         <record id="es_balance_instrumentos_patrimonio_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">1. Instrumentos de patrimonio</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_creditos_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">2. Créditos a empresas</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_valores_representativos_deuda_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">3. Valores representativos de deuda</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_derivados_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">4. Derivados</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_activos_financieros_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">5. Otros activos financieros</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_largo_plazo_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_instrumentos_de_patrimonio_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">1. Instrumentos de patrimonio</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_creditos_a_terceros_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">2. Créditos a terceros</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_valores_representativos_deudas_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">3. Valores representativos de deuda</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_derivados_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">4. Derivados</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_activos_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">5. Otros activos financieros</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otras_inversiones_financieras_normal" model="account.account.type.template">
             <field name="name">6. Otras inversiones</field>
             <field name="parent" ref="es_balance_inversiones_financieras_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_existencias_comerciales_normal" model="account.account.type.template">
             <field name="name">1. Comerciales</field>
@@ -494,6 +548,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
             <field name="stock" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_materias_primas_normal" model="account.account.type.template">
             <field name="name">2. Materias primas y otros aprovisionamientos</field>
@@ -501,6 +556,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
             <field name="stock" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_productos_en_curso_normal" model="account.account.type.template">
             <field name="name">3. Productos en curso</field>
@@ -508,6 +564,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
             <field name="stock" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_productos_terminados_normal" model="account.account.type.template">
             <field name="name">4. Productos terminados</field>
@@ -515,6 +572,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
             <field name="stock" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_subproductos_residuos_materiales_recuperados_normal" model="account.account.type.template">
             <field name="name">5. Subproductos, residuos y materiales recuperados</field>
@@ -522,12 +580,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
             <field name="stock" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_anticipos_a_proveedores_normal" model="account.account.type.template">
             <field name="name">6. Anticipos a proveedores</field>
             <field name="parent" ref="es_balance_existencias_normal"/>
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_clientes_ventas_y_servicios_normal" model="account.account.type.template">
             <field name="name">1. Clientes por ventas y prestaciones de servicios</field>
@@ -535,6 +595,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_clientes_empresas_grupo_normal" model="account.account.type.template">
             <field name="name">2. Clientes empresas del grupo y asociadas</field>
@@ -542,6 +603,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_dedudores_varios_normal" model="account.account.type.template">
             <field name="name">3. Deudores varios</field>
@@ -549,12 +611,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_personal_normal" model="account.account.type.template">
             <field name="name">4. Personal</field>
             <field name="parent" ref="es_balance_deudores_comerciales_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_activos_impuesto_corriente_normal" model="account.account.type.template">
             <field name="name">5. Activos por impuesto corriente</field>
@@ -562,6 +626,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_creditos_administracion_publica_normal" model="account.account.type.template">
             <field name="name">6. Otros créditos con las Administraciones Públicas</field>
@@ -569,6 +634,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="60"/>
             <field name="statement">balance</field>
             <field name="receivable" eval="True"/>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_accionistas_normal" model="account.account.type.template">
             
@@ -576,6 +642,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_deudores_comerciales_normal"/>
             <field name="sequence" eval="70"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         
         <record id="es_balance_instrumentos_patrimonio_inversion_empresas_grupo_corto_plazo_normal" model="account.account.type.template">
@@ -583,72 +650,84 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_creditos_empresas_inversion_empresas_grupo_corto_plazo_normal" model="account.account.type.template">
             <field name="name">2. Créditos a empresas</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_valores_representativos_deuda_inversion_empresas_grupo_corto_plazo_normal" model="account.account.type.template">
             <field name="name">3. Valores representativos de deuda</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_derivados_inversion_empresas_grupo_corto_plazo_normal" model="account.account.type.template">
             <field name="name">4. Derivados</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_activos_inversion_empresas_grupo_corto_plazo_normal" model="account.account.type.template">
             <field name="name">5. Otros activos financieros</field>
             <field name="parent" ref="es_balance_inversiones_empresas_del_grupo_corto_plazo_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_instrumentos_patrimonio_inversiones_financieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">1. Instrumentos de patrimonio</field>
             <field name="parent" ref="es_balance_inversiones_finanzieras_corto_plazo_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_creditos_empresas_inversiones_financieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">2. Créditos a empresas</field>
             <field name="parent" ref="es_balance_inversiones_finanzieras_corto_plazo_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_valores_representativos_inversiones_financieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">3. Valores representativos de deuda</field>
             <field name="parent" ref="es_balance_inversiones_finanzieras_corto_plazo_normal"/>
             <field name="sequence" eval="30"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_derivados_inversiones_financieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">4. Derivados</field>
             <field name="parent" ref="es_balance_inversiones_finanzieras_corto_plazo_normal"/>
             <field name="sequence" eval="40"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_activos_inversiones_financieras_corto_plazo_normal" model="account.account.type.template">
             <field name="name">5. Otros activos financieros</field>
             <field name="parent" ref="es_balance_inversiones_finanzieras_corto_plazo_normal"/>
             <field name="sequence" eval="50"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_tesoreria_normal" model="account.account.type.template">
             <field name="name">1. Tesorería</field>
             <field name="parent" ref="es_balance_efectivo_normal"/>
             <field name="sequence" eval="10"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_otros_liquidos_equivalentes_normal" model="account.account.type.template">
             <field name="name">2. Otros activos líquidos equivalentes</field>
             <field name="parent" ref="es_balance_efectivo_normal"/>
             <field name="sequence" eval="20"/>
             <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
         </record>
         <record id="es_balance_capital_normal" model="account.account.type.template">
             <field name="name">I. Capital</field>
