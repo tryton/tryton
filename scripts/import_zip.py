@@ -94,7 +94,10 @@ _fieldnames = ['country', 'postal', 'place', 'name1', 'code1',
 
 def main(database, codes, config_file=None):
     config.set_trytond(database, config_file=config_file)
+    do_import(codes)
 
+
+def do_import(codes):
     for code in codes:
         print(code, file=sys.stderr)
         code = code.upper()
@@ -102,7 +105,7 @@ def main(database, codes, config_file=None):
         import_(fetch(code))
 
 
-if __name__ == '__main__':
+def run():
     parser = ArgumentParser()
     parser.add_argument('-d', '--database', dest='database')
     parser.add_argument('-c', '--config', dest='config_file',
@@ -113,3 +116,7 @@ if __name__ == '__main__':
     if not args.database:
         parser.error('Missing database')
     main(args.database, args.codes, args.config_file)
+
+
+if __name__ == '__main__':
+    run()

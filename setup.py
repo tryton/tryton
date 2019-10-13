@@ -51,6 +51,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
+tests_require = [get_require_version('proteus'), 'pycountry']
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -79,10 +80,6 @@ setup(name=name,
         'trytond.modules.country': (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg']),
         },
-    scripts=[
-        'scripts/trytond_import_countries',
-        'scripts/trytond_import_zip',
-        ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -131,7 +128,11 @@ setup(name=name,
     entry_points="""
     [trytond.modules]
     country = trytond.modules.country
+    [console_scripts]
+    trytond_import_countries = trytond.modules.country.scripts.import_countries:run [data]
+    trytond_import_zip = trytond.modules.country.scripts.import_zip:run [GeoNames]
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )

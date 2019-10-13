@@ -44,7 +44,7 @@ def get_countries():
 
 
 def update_countries(countries):
-    print("Update countries")
+    print("Update countries", file=sys.stderr)
     Country = Model.get('country.country')
 
     records = []
@@ -73,7 +73,7 @@ def translate_countries(countries):
                 'iso3166', pycountry.LOCALES_DIR, languages=[code])
         except IOError:
             continue
-        print("Update countries %s" % code)
+        print("Update countries %s" % code, file=sys.stderr)
         with current_config.set_context(language=code):
             records = []
             for country in _progress(pycountry.countries):
@@ -91,7 +91,7 @@ def get_subdivisions():
 
 
 def update_subdivisions(countries, subdivisions):
-    print("Update subdivisions")
+    print("Update subdivisions", file=sys.stderr)
     Subdivision = Model.get('country.subdivision')
 
     records = []
@@ -111,7 +111,7 @@ def update_subdivisions(countries, subdivisions):
 
 
 def update_subdivisions_parent(subdivisions):
-    print("Update subdivisions parent")
+    print("Update subdivisions parent", file=sys.stderr)
     Subdivision = Model.get('country.subdivision')
 
     records = []
@@ -119,9 +119,9 @@ def update_subdivisions_parent(subdivisions):
         code = subdivision.code
         country_code = subdivision.country_code
         record = subdivisions[(country_code, code)]
-        if subdivision.parent_code:
+        if subdivision.parent:
             record.parent = subdivisions[
-                (country_code, subdivision.parent_code)]
+                (country_code, subdivision.parent.code)]
         else:
             record.parent = None
         records.append(record)
@@ -138,7 +138,7 @@ def translate_subdivisions(subdivisions):
                 'iso3166-2', pycountry.LOCALES_DIR, languages=[code])
         except IOError:
             continue
-        print("Update subdivisions %s" % code)
+        print("Update subdivisions %s" % code, file=sys.stderr)
         with current_config.set_context(language=code):
             records = []
             for subdivision in _progress(pycountry.subdivisions):
@@ -151,7 +151,10 @@ def translate_subdivisions(subdivisions):
 
 def main(database, config_file=None):
     config.set_trytond(database, config_file=config_file)
+    do_import()
 
+
+def do_import():
     countries = get_countries()
     countries = update_countries(countries)
     translate_countries(countries)
@@ -161,7 +164,7 @@ def main(database, config_file=None):
     translate_subdivisions(subdivisions)
 
 
-if __name__ == '__main__':
+def run():
     parser = ArgumentParser()
     parser.add_argument('-d', '--database', dest='database')
     parser.add_argument('-c', '--config', dest='config_file',
@@ -171,3 +174,7 @@ if __name__ == '__main__':
     if not args.database:
         parser.error('Missing database')
     main(args.database, args.config_file)
+
+
+if __name__ == '__main__':
+    run()
