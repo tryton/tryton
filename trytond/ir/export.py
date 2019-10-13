@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 "Exports"
 from ..model import ModelView, ModelSQL, fields
-
-__all__ = [
-    'Export', 'ExportLine',
-    ]
+from trytond.pool import Pool
+from trytond.rpc import RPC
 
 
 class _ClearCache(ModelSQL):
@@ -32,6 +30,24 @@ class Export(_ClearCache, ModelSQL, ModelView):
     resource = fields.Char('Resource')
     export_fields = fields.One2Many('ir.export.line', 'export',
        'Fields')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__rpc__.update(
+            update=RPC(instantiate=0, readonly=False))
+
+    @classmethod
+    def update(cls, exports, fields):
+        pool = Pool()
+        Line = pool.get('ir.export.line')
+        to_delete = []
+        to_save = []
+        for export in exports:
+            to_delete.extend(export.export_fields)
+            to_save.extend(Line(export=export, name=f) for f in fields)
+        Line.delete(to_delete)
+        Line.save(to_save)
 
 
 class ExportLine(_ClearCache, ModelSQL, ModelView):

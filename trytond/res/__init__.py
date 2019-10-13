@@ -4,7 +4,7 @@ from ..pool import Pool
 
 from .group import *
 from .user import *
-from .ir import *
+from . import ir
 from . import routes
 
 __all__ = ['register', 'routes']
@@ -20,18 +20,21 @@ def register():
         Warning_,
         UserApplication,
         UserConfigStart,
-        UIMenuGroup,
-        ActionGroup,
-        ModelButtonGroup,
-        ModelButtonRule,
-        ModelButtonClick,
-        RuleGroupGroup,
-        Lang,
-        SequenceType,
-        SequenceTypeGroup,
-        Sequence,
-        SequenceStrict,
-        ModuleConfigWizardItem,
+        ir.UIMenuGroup,
+        ir.ActionGroup,
+        ir.ModelButtonGroup,
+        ir.ModelButtonRule,
+        ir.ModelButtonClick,
+        ir.RuleGroupGroup,
+        ir.Lang,
+        ir.SequenceType,
+        ir.SequenceTypeGroup,
+        ir.Sequence,
+        ir.SequenceStrict,
+        ir.ModuleConfigWizardItem,
+        ir.Export,
+        ir.Export_Group,
+        ir.Export_Write_Group,
         module='res', type_='model')
     Pool.register(
         UserConfig,

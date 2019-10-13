@@ -13,7 +13,7 @@ from .attachment import *
 from .note import *
 from .cron import *
 from .lang import *
-from .export import *
+from . import export
 from .rule import *
 from .module import *
 from .cache import *
@@ -73,8 +73,8 @@ def register():
         NoteRead,
         Cron,
         Lang,
-        Export,
-        ExportLine,
+        export.Export,
+        export.ExportLine,
         RuleGroup,
         Rule,
         Module,

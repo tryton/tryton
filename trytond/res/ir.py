@@ -2,14 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from ..model import ModelSQL, DeactivableMixin, fields
 from ..pool import Pool, PoolMeta
-
-__all__ = [
-    'UIMenuGroup', 'ActionGroup', 'ModelButtonGroup',
-    'ModelButtonRule', 'ModelButtonClick',
-    'RuleGroupGroup', 'Lang', 'SequenceType',
-    'SequenceTypeGroup', 'Sequence', 'SequenceStrict',
-    'ModuleConfigWizardItem',
-    ]
+from trytond.pyson import Eval
 
 
 class UIMenuGroup(ModelSQL):
@@ -244,3 +237,38 @@ class ModuleConfigWizardItem(metaclass=PoolMeta):
         super(ModuleConfigWizardItem, cls).delete(items)
         # Restart the cache for get_preferences
         User._get_preferences_cache.clear()
+
+
+class Export(metaclass=PoolMeta):
+    __name__ = 'ir.export'
+
+    groups = fields.Many2Many(
+        'ir.export-res.group', 'export', 'group', "Groups",
+        help="The user groups that can use the export.")
+    write_groups = fields.Many2Many(
+        'ir.export-write-res.group', 'export', 'group',
+        "Modification Groups",
+        domain=[
+            ('id', 'in', Eval('groups', [])),
+            ],
+        states={
+            'invisible': ~Eval('groups'),
+            },
+        depends=['groups'],
+        help="The user groups that can modify the export.")
+
+
+class Export_Group(ModelSQL):
+    "Export Group"
+    __name__ = 'ir.export-res.group'
+
+    export = fields.Many2One(
+        'ir.export', "Export", required=True, select=True, ondelete='CASCADE')
+    group = fields.Many2One(
+        'res.group', "Group", required=True, ondelete='CASCADE')
+
+
+class Export_Write_Group(Export_Group):
+    "Export Modification Group"
+    __name__ = 'ir.export-write-res.group'
+    _table = None  # Needed to reset Export_Group._table

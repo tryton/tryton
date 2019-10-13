@@ -904,5 +904,131 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="export_view_form">
+            <field name="model">ir.export</field>
+            <field name="inherit" ref="ir.export_view_form"/>
+            <field name="name">export_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="export_view_list">
+            <field name="model">ir.export</field>
+            <field name="inherit" ref="ir.export_view_tree"/>
+            <field name="name">export_list</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_read">
+            <field name="name">User in groups</field>
+            <field name="model" search="[('model', '=', 'ir.export')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_read1">
+            <field name="domain" eval="[('groups', 'in', Eval('user.groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_read"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_read2">
+            <field name="domain" eval="[('create_uid', '=', Eval('user.id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_read"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_write">
+            <field name="name">User in modification groups</field>
+            <field name="model" search="[('model', '=', 'ir.export')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_write1">
+            <field name="domain" eval="[('write_groups', 'in', Eval('user.groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_write"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_write2">
+            <field name="domain" eval="[('create_uid', '=', Eval('user.id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_write"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_any">
+            <field name="name">Any export</field>
+            <field name="model" search="[('model', '=', 'ir.export')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_any1">
+            <field name="domain" eval="[]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_any"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_export_any_admin">
+            <field name="rule_group" ref="rule_group_export_any"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_line_read">
+            <field name="name">User in groups</field>
+            <field name="model" search="[('model', '=', 'ir.export.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_line_read1">
+            <field name="domain" eval="[('export.groups', 'in', Eval('user.groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_line_read"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_line_read2">
+            <field name="domain" eval="[('export.create_uid', '=', Eval('user.id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_line_read"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_line_write">
+            <field name="name">User in modification groups</field>
+            <field name="model" search="[('model', '=', 'ir.export.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_line_write1">
+            <field name="domain" eval="[('export.write_groups', 'in', Eval('user.groups', []))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_line_write"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_line_write2">
+            <field name="domain" eval="[('export.create_uid', '=', Eval('user.id', -1))]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_line_write"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_export_line_any">
+            <field name="name">Any export</field>
+            <field name="model" search="[('model', '=', 'ir.export.line')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="False"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_group_export_line_any1">
+            <field name="domain" eval="[]" pyson="1"/>
+            <field name="rule_group" ref="rule_group_export_line_any"/>
+        </record>
+        <record model="ir.rule.group-res.group" id="rule_group_export_line_any_admin">
+            <field name="rule_group" ref="rule_group_export_line_any"/>
+            <field name="group" ref="group_admin"/>
+        </record>
+
     </data>
 </tryton>
