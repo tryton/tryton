@@ -60,17 +60,17 @@ body {
 
 
 @media (min-width: @screen-lg-min) {
-    .make-offcanvas(16.6666%);
-}
-
-@media (min-width: @screen-md-min) and (max-width: @screen-md-max) {
     .make-offcanvas(25%);
 }
 
-@media (min-width: @screen-xs-min) and (max-width: @screen-sm-max) {
+@media (max-width: @screen-md-max) {
+    .make-offcanvas(33.3333%);
+}
+
+@media (max-width: (@screen-sm-max)) {
     .make-offcanvas(50%);
 }
 
-@media (max-width: (@screen-xs-min - 1)) {
+@media (max-width: (@screen-xs-max)) {
     .make-offcanvas(100%);
 }
