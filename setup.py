@@ -51,7 +51,7 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus')]
+tests_require = [get_require_version('proteus'), 'pycountry', 'forex-python']
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
@@ -81,9 +81,6 @@ setup(name=name,
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', 'icons/*.svg',
             'tests/*.rst']),
         },
-    scripts=[
-        'scripts/trytond_import_currencies',
-        ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -133,6 +130,8 @@ setup(name=name,
     entry_points="""
     [trytond.modules]
     currency = trytond.modules.currency
+    [console_scripts]
+    trytond_import_currencies = trytond.modules.currency.scripts.import_currencies:run [data]
     """,
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',

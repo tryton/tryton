@@ -45,7 +45,7 @@ def get_currencies():
 
 
 def update_currencies(currencies):
-    print("Update currencies")
+    print("Update currencies", file=sys.stderr)
     Currency = Model.get('currency.currency')
     codes = CurrencyCodes()
 
@@ -75,7 +75,7 @@ def translate_currencies(currencies):
                 'iso4217', pycountry.LOCALES_DIR, languages=[code])
         except IOError:
             continue
-        print("Update currencies %s" % code)
+        print("Update currencies %s" % code, file=sys.stderr)
         with current_config.set_context(language=code):
             records = []
             for currency in _progress(pycountry.currencies):
@@ -87,13 +87,16 @@ def translate_currencies(currencies):
 
 def main(database, config_file=None):
     config.set_trytond(database, config_file=config_file)
+    do_import()
 
+
+def do_import():
     currencies = get_currencies()
     currencies = update_currencies(currencies)
     translate_currencies(currencies)
 
 
-if __name__ == '__main__':
+def run():
     parser = ArgumentParser()
     parser.add_argument('-d', '--database', dest='database')
     parser.add_argument('-c', '--config', dest='config_file',
@@ -103,3 +106,7 @@ if __name__ == '__main__':
     if not args.database:
         parser.error('Missing database')
     main(args.database, args.config_file)
+
+
+if __name__ == '__main__':
+    run()
