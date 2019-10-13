@@ -14,6 +14,9 @@ class Work(metaclass=PoolMeta):
 
     timesheet_works = fields.One2Many(
         'timesheet.work', 'origin', 'Timesheet Works', readonly=True, size=1)
+    timesheet_work = fields.Function(
+        fields.Many2One('timesheet.work', "Timesheet Work"),
+        'get_timesheet_work')
     timesheet_available = fields.Function(
         fields.Boolean('Available on timesheets'),
         'on_change_with_timesheet_available')
@@ -24,10 +27,15 @@ class Work(metaclass=PoolMeta):
                 },
             domain=[
                 ('company', '=', Eval('company', -1)),
-                ('work', 'in', Eval('timesheet_works', [])),
+                ('work', '=', Eval('timesheet_work', -1)),
                 ],
-            depends=['timesheet_works', 'company']),
+            depends=['timesheet_works', 'timesheet_work', 'company']),
         'get_timesheet_lines', setter='set_timesheet_lines')
+
+    def get_timesheet_work(self, name):
+        if self.timesheet_works:
+            timesheet_work, = self.timesheet_works
+            return timesheet_work.id
 
     @fields.depends('operation')
     def on_change_with_timesheet_available(self, name=None):
