@@ -617,6 +617,7 @@ class Move(Workflow, ModelSQL, ModelView):
         context['with_childs'] = False
         context['locations'] = [l.id for l in locations]
         context['stock_date_end'] = Date.today()
+        context['company'] = moves[0].company.id
         return context
 
     def _do(self):

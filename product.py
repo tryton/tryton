@@ -19,7 +19,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-from trytond.modules.product import TemplateFunction
 from .move import StockMixin
 
 __all__ = ['Template', 'Product',
@@ -238,23 +237,24 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     def recompute_cost_price_fixed(self):
         return self.cost_price
 
+    @property
+    def _domain_moves_cost(self):
+        "Returns the domain for moves to use in cost computation"
+        context = Transaction().context
+        return [
+            ('company', '=', context.get('company')),
+            ]
+
     def recompute_cost_price_average(self):
         pool = Pool()
         Move = pool.get('stock.move')
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
 
-        context = Transaction().context
-
-        if not isinstance(self.__class__.cost_price, TemplateFunction):
-            product_clause = ('product', '=', self.id)
-        else:
-            product_clause = ('product.template', '=', self.template.id)
-
         moves = Move.search([
-                product_clause,
+                ('product', '=', self.id),
                 ('state', '=', 'done'),
-                ('company', '=', context.get('company')),
+                self._domain_moves_cost,
                 ['OR',
                     [
                         ('to_location.type', '=', 'storage'),
