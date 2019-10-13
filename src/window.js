@@ -1636,59 +1636,58 @@
             if(fields.length === 0) {
                 return;
             }
-            var pref_id, name;
+            var pref_id;
+
+            var save = function(name) {
+                var prm;
+                if (!pref_id) {
+                    prm = Sao.rpc({
+                        method: 'model.ir.export.create',
+                        params: [[{
+                            name: name,
+                            resource: this.screen.model_name,
+                            export_fields: [['create', fields.map(function(f) {
+                                return {name: f};
+                            })]],
+                        }], this.context],
+                    }, this.session).then(function(new_ids) {
+                        return new_ids[0];
+                    });
+                } else {
+                    prm = Sao.rpc({
+                        method: 'model.ir.export.update',
+                        params: [[pref_id], fields, this.context],
+                    }, this.session).then(function() {
+                        return pref_id;
+                    });
+                }
+                return prm.then(function(pref_id) {
+                    this.session.cache.clear(
+                        'model.' + this.screen.model_name + '.view_toolbar_get');
+                    this.predef_exports[pref_id] = fields;
+                    if (selection.length === 0) {
+                        this.add_to_predef(pref_id, name);
+                    }
+                    else {
+                        selection.attr('export_id', pref_id);
+                    }
+                }.bind(this));
+            }.bind(this);
+
             var selection = this.predef_exports_list.children('li.bg-primary');
             if (selection.length === 0) {
                 pref_id = null;
                 Sao.common.ask.run(
                     Sao.i18n.gettext('What is the name of this export?'))
-                .then(function(name) {
-                    if (!name) {
-                        return;
-                    }
-                    this.save_predef(name, fields, selection);
-                }.bind(this));
+                .then(save);
             }
             else {
                 pref_id = selection.attr('export_id');
-                name = selection.text();
                 Sao.common.sur.run(
-                    Sao.i18n.gettext('Override %1 definition?', name))
-                .done(function() {
-                    this.save_predef(name, fields, selection);
-                    Sao.rpc({
-                        'method': 'model.ir.export.delete',
-                        'params': [[pref_id], {}]
-                    }, this.session).then(function() {
-                        delete this.predef_exports[pref_id];
-                    }.bind(this));
-                }.bind(this));
+                    Sao.i18n.gettext(
+                        'Override %1 definition?', selection.text()))
+                .then(save);
             }
-        },
-        save_predef: function(name, fields, selection) {
-            Sao.rpc({
-                'method': 'model.ir.export.create',
-                'params': [[{
-                    'name': name,
-                    'resource': this.screen.model_name,
-                    'export_fields': [['create', fields.map(function(x) {
-                        return {
-                            'name': x
-                        };
-                    })]]
-                }], {}]
-            }, this.session).then(function(new_id) {
-                this.session.cache.clear(
-                    'model.' + this.screen.model_name + '.view_toolbar_get');
-                this.predef_exports[new_id] = fields;
-                if (selection.length === 0) {
-                    this.add_to_predef(new_id, name);
-                }
-                else {
-                    this.predef_exports[new_id] = fields;
-                    selection.attr('export_id', new_id);
-                }
-            }.bind(this));
         },
         remove_predef: function() {
             var selection = this.predef_exports_list.children('li.bg-primary');
