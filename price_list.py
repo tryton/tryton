@@ -129,23 +129,12 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         for line in lines:
             line.check_formula()
 
-    @classmethod
-    def get_check_formula_product(cls):
-        pool = Pool()
-        Product = pool.get('product.product')
-
-        class Mock(Product):
-            def get_multivalue(self, name, **pattern):
-                return Decimal(0)
-        product = Mock()
-        return product
-
     def check_formula(self):
         '''
         Check formula
         '''
         context = self.price_list.get_context_formula(
-            None, self.get_check_formula_product(), Decimal('0'), 0, None)
+            None, None, Decimal('0'), 0, None)
 
         try:
             if not isinstance(self.get_unit_price(**context), Decimal):
