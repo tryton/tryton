@@ -23,6 +23,15 @@ class Purchase(metaclass=PoolMeta):
             },
         depends=['state'])
 
+    @classmethod
+    def copy(cls, purchases, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('amendments')
+        return super().copy(purchases, default=default)
+
 
 class Amendment(Workflow, ModelSQL, ModelView):
     "Purchase Amendment"
