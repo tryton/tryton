@@ -263,7 +263,7 @@ class Product(
         # Prevent NotImplementedError for One2Many
         pass
 
-    @fields.depends('template')
+    @fields.depends('template', '_parent_template.id')
     def on_change_template(self):
         for name, field in self._fields.items():
             if isinstance(field, TemplateFunction):
