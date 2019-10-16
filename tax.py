@@ -1124,7 +1124,7 @@ class TaxLine(ModelSQL, ModelView):
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'on_change_with_company')
 
-    @fields.depends('move_line')
+    @fields.depends('move_line', '_parent_move_line.currency_digits')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
             return self.move_line.currency_digits
