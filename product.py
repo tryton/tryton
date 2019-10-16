@@ -240,7 +240,7 @@ class Product(
                     order_method = TemplateFunction.order(attr)
                     setattr(cls, 'order_%s' % attr, order_method)
 
-    @fields.depends('template')
+    @fields.depends('template', '_parent_template.id')
     def on_change_template(self):
         for name, field in self._fields.items():
             if isinstance(field, TemplateFunction):
