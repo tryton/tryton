@@ -190,7 +190,7 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     def default_company(cls):
         return Transaction().context.get('company')
 
-    @fields.depends('production')
+    @fields.depends('production', '_parent_production.warehouse')
     def on_change_with_warehouse(self, name=None):
         if self.production:
             return self.production.warehouse.id
