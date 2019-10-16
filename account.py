@@ -968,7 +968,8 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         'reconcile', 'kind', 'deferral', 'party_required',
         'general_ledger_balance', 'taxes']
 
-    @fields.depends('parent', *__on_change_parent_fields)
+    @fields.depends('parent', *(__on_change_parent_fields
+            + ['_parent_parent.%s' % f for f in __on_change_parent_fields]))
     def on_change_parent(self):
         if not self.parent:
             return

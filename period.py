@@ -114,7 +114,7 @@ class Period(Workflow, ModelSQL, ModelView):
     def default_type():
         return 'standard'
 
-    @fields.depends('fiscalyear')
+    @fields.depends('fiscalyear', '_parent_fiscalyear.company')
     def on_change_with_company(self, name=None):
         if self.fiscalyear:
             return self.fiscalyear.company.id

@@ -1260,7 +1260,7 @@ class TaxLine(ModelSQL, ModelView):
                         & (table.code.in_(
                                 [invoice_base_code, credit_note_base_code]))))
 
-    @fields.depends('move_line')
+    @fields.depends('move_line', '_parent_move_line.currency_digits')
     def on_change_with_currency_digits(self, name=None):
         if self.move_line:
             return self.move_line.currency_digits
