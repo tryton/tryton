@@ -136,10 +136,10 @@ class ProductCustomer(SaleSecondaryMixin, metaclass=PoolMeta):
     @fields.depends('template', '_parent_template.purchase_uom',
         'product', '_parent_product.purchase_uom')
     def on_change_with_default_uom_category(self, name=None):
-        if self.product and self.product.purchase_uom:
-            return self.product.purchase_uom.category.id
-        elif self.template and self.template.purchase_uom:
-            return self.template.purchase_uom.category.id
+        if self.product and self.product.sale_uom:
+            return self.product.sale_uom.category.id
+        elif self.template and self.template.sale_uom:
+            return self.template.sale_uom.category.id
 
     @property
     def sale_uom(self):
