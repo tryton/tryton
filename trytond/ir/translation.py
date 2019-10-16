@@ -11,7 +11,6 @@ import polib
 from sql import Column, Null, Literal
 from sql.functions import Substring, Position
 from sql.conditionals import Case
-from sql.operators import Or, And
 from sql.aggregate import Max
 
 from genshi.filters.i18n import extract as genshi_extract
@@ -23,7 +22,7 @@ from trytond.i18n import gettext
 from ..model import ModelView, ModelSQL, fields
 from ..wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
-from ..tools import file_open, reduce_ids, grouped_slice, cursor_dict
+from ..tools import file_open, grouped_slice, cursor_dict
 from ..pyson import PYSONEncoder, Eval
 from ..transaction import Transaction
 from ..pool import Pool
@@ -343,27 +342,20 @@ class Translation(ModelSQL, ModelView):
                 translations.update(
                     cls.get_ids(name, ttype, parent_lang, to_fetch))
 
-            transaction = Transaction()
-            cursor = transaction.connection.cursor()
-            table = cls.__table__()
-            fuzzy_sql = table.fuzzy == False
             if Transaction().context.get('fuzzy_translation', False):
-                fuzzy_sql = None
-            in_max = transaction.database.IN_MAX // 7
-            for sub_to_fetch in grouped_slice(to_fetch, in_max):
-                red_sql = reduce_ids(table.res_id, sub_to_fetch)
-                where = And(((table.lang == lang),
-                        (table.type == ttype),
-                        (table.name == name),
-                        (table.value != ''),
-                        (table.value != Null),
-                        red_sql,
-                        ))
-                if fuzzy_sql:
-                    where &= fuzzy_sql
-                cursor.execute(*table.select(table.res_id, table.value,
-                        where=where))
-                translations.update(cursor)
+                fuzzy_clause = []
+            else:
+                fuzzy_clause = [('fuzzy', '=', False)]
+            for sub_to_fetch in grouped_slice(to_fetch):
+                for translation in cls.search([
+                            ('lang', '=', lang),
+                            ('type', '=', ttype),
+                            ('name', '=', name),
+                            ('value', '!=', ''),
+                            ('value', '!=', None),
+                            ('res_id', 'in', list(sub_to_fetch)),
+                            ] + fuzzy_clause):
+                    translations[translation.res_id] = translation.value
             # Don't store fuzzy translation in cache
             if not Transaction().context.get('fuzzy_translation', False):
                 for res_id in to_fetch:
@@ -523,10 +515,8 @@ class Translation(ModelSQL, ModelView):
         res = {}
         parent_args = []
         parent_langs = []
-        clause = []
+        clauses = []
         transaction = Transaction()
-        cursor = transaction.connection.cursor()
-        table = cls.__table__()
         if len(args) > transaction.database.IN_MAX:
             for sub_args in grouped_slice(args):
                 res.update(cls.get_sources(list(sub_args)))
@@ -549,17 +539,18 @@ class Translation(ModelSQL, ModelView):
                     parent_args.append((name, ttype, parent_lang, source))
                     parent_langs.append(lang)
                 res[(name, ttype, lang, source)] = None
-                where = And(((table.lang == lang),
-                        (table.type == ttype),
-                        (table.name == name),
-                        (table.value != ''),
-                        (table.value != Null),
-                        (table.fuzzy == False),
-                        (table.res_id == -1),
-                        ))
+                clause = [
+                    ('lang', '=', lang),
+                    ('type', '=', ttype),
+                    ('name', '=', name),
+                    ('value', '!=', ''),
+                    ('value', '!=', None),
+                    ('fuzzy', '=', False),
+                    ('res_id', '=', -1),
+                    ]
                 if source is not None:
-                    where &= table.src == source
-                clause.append(where)
+                    clause.append(('src', '=', source))
+                clauses.append(clause)
 
         # Get parent transactions
         if parent_args:
@@ -569,17 +560,14 @@ class Translation(ModelSQL, ModelView):
                 res[(name, ttype, lang, source)] = parent_src[
                     (name, ttype, parent_lang, source)]
 
-        if clause:
-            in_max = transaction.database.IN_MAX // 7
-            for sub_clause in grouped_slice(clause, in_max):
-                cursor.execute(*table.select(
-                        table.lang, table.type, table.name, table.src,
-                        table.value,
-                        where=Or(list(sub_clause))))
-                for lang, ttype, name, source, value in cursor.fetchall():
-                    if (name, ttype, lang, source) not in args:
-                        source = None
-                    res[(name, ttype, lang, source)] = value
+        in_max = transaction.database.IN_MAX // 7
+        for sub_clause in grouped_slice(clauses, in_max):
+            for translation in cls.search(['OR'] + list(sub_clause)):
+                key = (translation.name, translation.type,
+                    translation.name, translation.name, translation.src)
+                if key not in args:
+                    key = key[:-1] + (None,)
+                res[key] = translation.value
         for key in to_cache:
             cls._translation_cache.set(key, res[key])
         return res
