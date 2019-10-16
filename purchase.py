@@ -338,7 +338,8 @@ class QuotationLine(ModelSQL, ModelView):
             self.description = self.request.description
             self.quantity = self.request.quantity
             self.unit = self.request.uom
-            self.currency = self.request.currency
+            if self.request.company:
+                self.currency = self.request.company.currency
             self.supply_date = self.request.supply_date or datetime.date.max
 
     @fields.depends('unit')
