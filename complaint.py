@@ -367,7 +367,8 @@ class Action(ModelSQL, ModelView):
                     'to be deleted.'),
                 })
 
-    @fields.depends('complaint')
+    @fields.depends('complaint',
+        '_parent_complaint.origin_model', '_parent_complaint.origin')
     def on_change_with_unit(self, name=None):
         if self.complaint and self.complaint.origin_model == 'sale.line':
             return self.complaint.origin.unit.id
