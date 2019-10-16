@@ -329,7 +329,10 @@ class QuotationLine(ModelSQL, ModelView):
         if self.quotation and self.quotation.supplier:
             return self.quotation.supplier.id
 
-    @fields.depends('request')
+    @fields.depends('request',
+        '_parent_request.product', '_parent_request.description',
+        '_parent_request.quantity', '_parent_request.uom',
+        '_parent_request.company.currency', '_parent_request.supply_date')
     def on_change_request(self):
         if self.request:
             self.product = self.request.product
