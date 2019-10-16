@@ -34,7 +34,8 @@ class ProductCustomer(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     name = fields.Char("Name", translate=True)
     code = fields.Char("Code")
 
-    @fields.depends('product', 'template')
+    @fields.depends(
+        'product', '_parent_product.template')
     def on_change_product(self):
         if self.product:
             self.template = self.product.template
