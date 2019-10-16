@@ -51,7 +51,7 @@ class Category(metaclass=PoolMeta):
     def default_tariff_codes_parent(cls):
         return False
 
-    @fields.depends('parent', 'customs')
+    @fields.depends('parent', '_parent_parent.customs', 'customs')
     def on_change_with_customs(self):
         if self.parent:
             return self.parent.customs
