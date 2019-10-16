@@ -266,7 +266,8 @@ class Payment(Workflow, ModelSQL, ModelView):
     def on_change_party(self):
         self.line = None
 
-    @fields.depends('line')
+    @fields.depends('line',
+        '_parent_line.maturity_date', '_parent_line.payment_amount')
     def on_change_line(self):
         if self.line:
             self.date = self.line.maturity_date
