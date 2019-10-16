@@ -298,7 +298,7 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
 
-    @fields.depends('rule')
+    @fields.depends('rule', '_parent_rule.company')
     def on_change_with_company(self, name=None):
         if self.rule and self.rule.company:
             return self.rule.company.id
