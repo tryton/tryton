@@ -1067,7 +1067,7 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
 
         super(Origin, cls).__register__(module_name)
 
-    @fields.depends('statement')
+    @fields.depends('statement', '_parent_statement.id')
     def on_change_with_statement_id(self, name=None):
         if self.statement:
             return self.statement.id
