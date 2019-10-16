@@ -136,7 +136,7 @@ class OrderPoint(ModelSQL, ModelView):
     def default_type():
         return "purchase"
 
-    @fields.depends('product')
+    @fields.depends('product', '_parent_product.default_uom')
     def on_change_product(self):
         self.unit = None
         self.unit_digits = 2
