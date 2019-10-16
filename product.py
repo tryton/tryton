@@ -133,8 +133,8 @@ class ProductCustomer(SaleSecondaryMixin, metaclass=PoolMeta):
         fields.Many2One('product.uom.category', "Default UOM Category"),
         'on_change_with_default_uom_category')
 
-    @fields.depends('template', '_parent_template.purchase_uom',
-        'product', '_parent_product.purchase_uom')
+    @fields.depends('template', '_parent_template.sale_uom',
+        'product', '_parent_product.sale_uom')
     def on_change_with_default_uom_category(self, name=None):
         if self.product and self.product.sale_uom:
             return self.product.sale_uom.category.id
