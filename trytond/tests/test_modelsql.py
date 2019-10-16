@@ -701,6 +701,30 @@ class ModelSQLTranslationTestCase(unittest.TestCase):
         self.assertEqual(record.name, "Foo")
         self.assertEqual(other.name, "Bar")
 
+    @with_transaction()
+    def test_read_last_translation(self):
+        "Test read last translation record"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        with Transaction().set_context(language=self.default_language):
+            record, = Model.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Model.write([record], {'name': "Bar"})
+            other = Model(record.id)
+
+        translation, = Translation.search([
+                ('lang', '=', self.other_language),
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('type', '=', 'model'),
+                ('res_id', '=', record.id),
+                ])
+        Translation.copy([translation], default={'value': "Baz"})
+
+        self.assertEqual(record.name, "Foo")
+        self.assertEqual(other.name, "Baz")
+
 
 def suite():
     suite_ = unittest.TestSuite()
