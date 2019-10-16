@@ -301,7 +301,7 @@ class ModuleTestCase(unittest.TestCase):
                     % (method_name, model.__name__))
 
     @with_transaction()
-    def test_depends(self):
+    def test_missing_depends(self):
         'Test for missing depends'
         for mname, model in Pool().iterobject():
             if not isregisteredby(model, self.module):
@@ -333,8 +333,48 @@ class ModuleTestCase(unittest.TestCase):
                             list(depends - set(model._fields)), mname, bname))
 
     @with_transaction()
-    def test_depends_parent(self):
-        "Test depends on _parent_ contains also the parent relation"
+    def test_depends(self):
+        "Test depends"
+        def test_missing_relation(depend, depends, qualname):
+            prefix = []
+            for d in depend.split('.'):
+                if d.startswith('_parent_'):
+                    relation = '.'.join(
+                        prefix + [d[len('_parent_'):]])
+                    assert relation in depends, (
+                        'Missing "%s" in %s' % (relation, qualname))
+                prefix.append(d)
+
+        def test_parent_empty(depend, qualname):
+            if depend.startswith('_parent_'):
+                assert '.' in depend, (
+                    'Invalid empty "%s" in %s' % (depend, qualname))
+
+        def test_missing_parent(model, depend, depends, qualname):
+            dfield = model._fields.get(depend)
+            parent_depends = {d.split('.', 1)[0] for d in depends}
+            if dfield and dfield._type == 'many2one':
+                target = dfield.get_target()
+                for tfield in target._fields.values():
+                    if (tfield._type == 'one2many'
+                            and tfield.model_name == mname
+                            and tfield.field == depend):
+                        assert '_parent_%s' % depend in parent_depends, (
+                            'Missing "_parent_%s" in %s' % (depend, qualname))
+
+        def test_depend_exists(model, depend, qualname):
+            try:
+                depend, nested = depend.split('.', 1)
+            except ValueError:
+                nested = None
+            if depend.startswith('_parent_'):
+                depend = depend[len('_parent_'):]
+            assert isinstance(getattr(model, depend, None), fields.Field), (
+                'Unknonw "%s" in %s' % (depend, qualname))
+            if nested:
+                target = getattr(model, depend).get_target()
+                test_depend_exists(target, nested, qualname)
+
         for mname, model in Pool().iterobject():
             if not isregisteredby(model, self.module):
                 continue
@@ -342,16 +382,14 @@ class ModuleTestCase(unittest.TestCase):
                 for attribute in ['depends', 'on_change', 'on_change_with',
                         'selection_change_with', 'autocomplete']:
                     depends = getattr(field, attribute, [])
+                    qualname = '"%s"."%s"."%s"' % (mname, fname, attribute)
                     for depend in depends:
-                        prefix = []
-                        for d in depend.split('.'):
-                            if d.startswith('_parent_'):
-                                relation = '.'.join(
-                                    prefix + [d[len('_parent_'):]])
-                                assert relation in depends, (
-                                    'Missing "%s" in "%s"."%s"."%s"' % (
-                                        relation, mname, fname, attribute))
-                            prefix.append(d)
+                        test_depend_exists(model, depend, qualname)
+                        test_missing_relation(depend, depends, qualname)
+                        test_parent_empty(depend, qualname)
+                        if attribute != 'depends':
+                            test_missing_parent(
+                                model, depend, depends, qualname)
 
     @with_transaction()
     def test_field_methods(self):

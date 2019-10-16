@@ -1,3 +1,4 @@
+* Improve tests on depends
 * Add permission groups on export
 * Retry cron job on DatabaseOperationalError
 * Add visual context on tree view
