@@ -800,41 +800,48 @@ class Move(Workflow, ModelSQL, ModelView):
             locations = list(set((m.from_location for m in moves)))
         location_ids = [l.id for l in locations]
         product_ids = list(set((m.product.id for m in moves)))
+        companies = {m.company for m in moves}
         stock_date_end = Date.today()
 
         if database.has_select_for():
-            table = cls.__table__()
-            query = table.select(Literal(1),
-                where=(table.to_location.in_(location_ids)
-                    | table.from_location.in_(location_ids))
-                & table.product.in_(product_ids),
-                for_=For('UPDATE', nowait=True))
+            for company in companies:
+                table = cls.__table__()
+                query = table.select(Literal(1),
+                    where=(table.to_location.in_(location_ids)
+                        | table.from_location.in_(location_ids))
+                    & table.product.in_(product_ids)
+                    & (table.company == company.id),
+                    for_=For('UPDATE', nowait=True))
 
-            PeriodCache = Period.get_cache(grouping)
-            if PeriodCache:
-                periods = Period.search([
-                        ('date', '<', stock_date_end),
-                        ('state', '=', 'closed'),
-                        ], order=[('date', 'DESC')], limit=1)
-                if periods:
-                    period, = periods
-                    query.where &= Coalesce(
-                        table.effective_date,
-                        table.planned_date,
-                        datetime.date.max) > period.date
+                PeriodCache = Period.get_cache(grouping)
+                if PeriodCache:
+                    periods = Period.search([
+                            ('date', '<', stock_date_end),
+                            ('company', '=', company.id),
+                            ('state', '=', 'closed'),
+                            ], order=[('date', 'DESC')], limit=1)
+                    if periods:
+                        period, = periods
+                        query.where &= Coalesce(
+                            table.effective_date,
+                            table.planned_date,
+                            datetime.date.max) > period.date
 
-            with connection.cursor() as cursor:
-                cursor.execute(*query)
+                with connection.cursor() as cursor:
+                    cursor.execute(*query)
         else:
             database.lock(connection, cls._table)
 
-        with Transaction().set_context(
-                stock_date_end=stock_date_end,
-                stock_assign=True):
-            pbl = Product.products_by_location(
-                location_ids,
-                grouping=grouping,
-                grouping_filter=(product_ids,))
+        pblc = {}
+        for company in companies:
+            with Transaction().set_context(
+                    stock_date_end=stock_date_end,
+                    stock_assign=True,
+                    company=company.id):
+                pblc[company.id] = Product.products_by_location(
+                    location_ids,
+                    grouping=grouping,
+                    grouping_filter=(product_ids,))
 
         def get_key(move, location):
             key = (location.id,)
@@ -854,6 +861,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 if move.state == 'staging':
                     success = False
                 continue
+            pbl = pblc[move.company.id]
             # Keep location order for pick_product
             location_qties = OrderedDict()
             if with_childs:
@@ -947,7 +955,7 @@ class Move(Workflow, ModelSQL, ModelView):
             grouping, and the last column is the quantity.
         """
         pool = Pool()
-        Rule = pool.get('ir.rule')
+        User = pool.get('res.user')
         Location = pool.get('stock.location')
         Date = pool.get('ir.date')
         Period = pool.get('stock.period')
@@ -974,7 +982,7 @@ class Move(Workflow, ModelSQL, ModelView):
         assert grouping_filter is None or len(grouping_filter) <= len(grouping)
         assert len(set(grouping)) == len(grouping)
 
-        move_rule_query = Rule.query_get('stock.move')
+        company = User(Transaction().user).company
 
         def get_column(name, table, product):
             if name.startswith('product.'):
@@ -986,7 +994,7 @@ class Move(Workflow, ModelSQL, ModelView):
         if use_product:
             product = Product.__table__()
             columns = ['id', 'state', 'effective_date', 'planned_date',
-            'internal_quantity', 'from_location', 'to_location']
+            'internal_quantity', 'from_location', 'to_location', 'company']
             columns += [c for c in grouping if c not in columns]
             columns = [get_column(c, move, product) for c in columns]
             move = (move
@@ -997,6 +1005,7 @@ class Move(Workflow, ModelSQL, ModelView):
         period = None
         if PeriodCache:
             period_cache = PeriodCache.__table__()
+            period_table = Period.__table__()
             if use_product:
                 product_cache = Product.__table__()
                 columns = ['internal_quantity', 'period', 'location']
@@ -1005,7 +1014,11 @@ class Move(Workflow, ModelSQL, ModelView):
                     for c in columns]
                 period_cache = (period_cache
                     .join(product_cache,
-                        condition=period_cache.product == product_cache.id)
+                        condition=(period_cache.product == product_cache.id))
+                    .join(period_table,
+                        condition=(period_cache.period == period_table.id)
+                        & ((period_table.company == company.id)
+                            if company else Literal(True)))
                     .select(*columns))
 
         if with_childs:
@@ -1016,7 +1029,7 @@ class Move(Workflow, ModelSQL, ModelView):
             to_location = Location.__table__()
             to_parent_location = Location.__table__()
             columns = ['id', 'state', 'effective_date', 'planned_date',
-                'internal_quantity']
+                'internal_quantity', 'company']
             columns += [c for c in grouping if c not in columns]
             columns = [Column(move, c).as_(c) for c in columns]
 
@@ -1274,8 +1287,7 @@ class Move(Workflow, ModelSQL, ModelView):
             where=state_date_clause_in
             & where
             & move.to_location.in_(location_query)
-            & (move.id.in_(move_rule_query) if move_rule_query
-                else Literal(True))
+            & ((move.company == company.id) if company else Literal(True))
             & dest_clause_from,
             group_by=[move.to_location] + move_keys)
         query = Union(query, move.select(move.from_location.as_('location'),
@@ -1284,8 +1296,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 where=state_date_clause_out
                 & where
                 & move.from_location.in_(location_query)
-                & (move.id.in_(move_rule_query) if move_rule_query
-                    else Literal(True))
+                & ((move.company == company.id) if company else Literal(True))
                 & dest_clause_to,
                 group_by=[move.from_location] + move_keys),
             all_=True)
