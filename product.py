@@ -184,7 +184,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         else:
             return [x.id for x in getattr(self, name[:-5])]
 
-    @fields.depends('parent', 'accounting')
+    @fields.depends('parent', '_parent_parent.accounting', 'accounting')
     def on_change_with_accounting(self):
         if self.parent:
             return self.parent.accounting
