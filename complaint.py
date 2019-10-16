@@ -360,15 +360,8 @@ class Action(ModelSQL, ModelView):
 
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
-    @classmethod
-    def __setup__(cls):
-        super(Action, cls).__setup__()
-        cls._error_messages.update({
-                'delete_result': ('Action "%s" must not have result '
-                    'to be deleted.'),
-                })
-
-    @fields.depends('complaint')
+    @fields.depends('complaint',
+        '_parent_complaint.origin_model', '_parent_complaint.origin')
     def on_change_with_unit(self, name=None):
         if self.complaint and self.complaint.origin_model == 'sale.line':
             return self.complaint.origin.unit.id
