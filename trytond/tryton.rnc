@@ -8,6 +8,7 @@ attlist.data &=
 attlist.data &=
   [ a:defaultValue = "0" ] attribute grouped { "0" | "1" }?
 attlist.data &= attribute depends { text }
+attlist.data &= attribute skiptest { "0" | "1" }?
 record = element record { attlist.record, field* }
 attlist.record &= attribute model { text }
 attlist.record &= attribute id { text }

@@ -53,6 +53,17 @@
       <text/>
     </attribute>
   </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">skiptest</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <define name="record">
     <element>
       <name ns="">record</name>
