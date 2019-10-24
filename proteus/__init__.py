@@ -27,6 +27,8 @@ class _EvalEnvironment(dict):
         self.eval_type = eval_type
 
     def __getitem__(self, item):
+        if item == 'id':
+            return self.parent.id
         if item == '_parent_' + self.parent._parent_name \
                 and self.parent._parent:
             return _EvalEnvironment(self.parent._parent,
@@ -58,6 +60,8 @@ class _EvalEnvironment(dict):
     __repr__ = __str__
 
     def __contains__(self, item):
+        if item == 'id':
+            return True
         if item == '_parent_' + self.parent._parent_name \
                 and self.parent._parent:
             return True
