@@ -38,9 +38,7 @@ def _get_language_codes():
 
 def get_countries():
     Country = Model.get('country.country')
-
-    with config.get_config().set_context(active_test=False):
-        return {c.code: c for c in Country.find([])}
+    return {c.code: c for c in Country.find([])}
 
 
 def update_countries(countries):
@@ -85,9 +83,7 @@ def translate_countries(countries):
 
 def get_subdivisions():
     Subdivision = Model.get('country.subdivision')
-
-    with config.get_config().set_context(active_test=False):
-        return {(s.country.code, s.code): s for s in Subdivision.find([])}
+    return {(s.country.code, s.code): s for s in Subdivision.find([])}
 
 
 def update_subdivisions(countries, subdivisions):
@@ -151,7 +147,8 @@ def translate_subdivisions(subdivisions):
 
 def main(database, config_file=None):
     config.set_trytond(database, config_file=config_file)
-    do_import()
+    with config.get_config().set_context(active_test=False):
+        do_import()
 
 
 def do_import():
