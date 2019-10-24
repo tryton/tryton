@@ -918,14 +918,16 @@ class Screen(SignalEvent):
         view.set_value()
         self.set_cursor(reset_view=False)
         if view.view_type == 'tree' and len(self.group):
-            start, end = view.treeview.get_visible_range()
-            vadjustment = view.treeview.get_vadjustment()
-            vadjustment.props.value = min(
-                vadjustment.props.value + vadjustment.props.page_increment,
-                vadjustment.props.upper)
-            model = view.treeview.get_model()
-            iter_ = model.get_iter(end)
-            self.current_record = model.get_value(iter_, 0)
+            range_ = view.treeview.get_visible_range()
+            if range_:
+                start, end = range_
+                vadjustment = view.treeview.get_vadjustment()
+                vadjustment.props.value = min(
+                    vadjustment.props.value + vadjustment.props.page_increment,
+                    vadjustment.props.upper)
+                model = view.treeview.get_model()
+                iter_ = model.get_iter(end)
+                self.current_record = model.get_value(iter_, 0)
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
@@ -994,14 +996,16 @@ class Screen(SignalEvent):
         view.set_value()
         self.set_cursor(reset_view=False)
         if view.view_type == 'tree' and len(self.group):
-            start, end = view.treeview.get_visible_range()
-            vadjustment = view.treeview.get_vadjustment()
-            vadjustment.props.value = min(
-                vadjustment.props.value - vadjustment.props.page_increment,
-                vadjustment.props.lower)
-            model = view.treeview.get_model()
-            iter_ = model.get_iter(start)
-            self.current_record = model.get_value(iter_, 0)
+            range_ = view.treeview.get_visible_range()
+            if range_:
+                start, end = range_
+                vadjustment = view.treeview.get_vadjustment()
+                vadjustment.props.value = min(
+                    vadjustment.props.value - vadjustment.props.page_increment,
+                    vadjustment.props.lower)
+                model = view.treeview.get_model()
+                iter_ = model.get_iter(start)
+                self.current_record = model.get_value(iter_, 0)
         elif (view.view_type == 'form'
                 and self.current_record
                 and self.current_record.group):
