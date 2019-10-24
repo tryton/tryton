@@ -39,9 +39,7 @@ def _get_language_codes():
 
 def get_currencies():
     Currency = Model.get('currency.currency')
-
-    with config.get_config().set_context(active_test=False):
-        return {c.code: c for c in Currency.find([])}
+    return {c.code: c for c in Currency.find([])}
 
 
 def update_currencies(currencies):
@@ -87,7 +85,8 @@ def translate_currencies(currencies):
 
 def main(database, config_file=None):
     config.set_trytond(database, config_file=config_file)
-    do_import()
+    with config.get_config().set_context(active_test=False):
+        do_import()
 
 
 def do_import():
