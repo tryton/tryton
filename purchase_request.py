@@ -88,7 +88,8 @@ class PurchaseRequest(metaclass=PoolMeta):
         # aggregate product by minimum supply date
         date2products = {}
         for product in products:
-            min_date, max_date = cls.get_supply_dates(product)
+            min_date, max_date = cls.get_supply_dates(
+                product, company=company.id)
             date2products.setdefault((min_date, max_date), []).append(product)
 
         # compute requests
@@ -211,7 +212,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         return new_requests
 
     @classmethod
-    def get_supply_dates(cls, product):
+    def get_supply_dates(cls, product, **pattern):
         """
         Return the minimal interval of earliest supply dates for a product.
         """
@@ -221,7 +222,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         max_date = None
         today = Date.today()
 
-        for product_supplier in product.product_suppliers_used():
+        for product_supplier in product.product_suppliers_used(**pattern):
             supply_date = product_supplier.compute_supply_date(date=today)
             next_day = today + product_supplier.get_supply_period()
             next_supply_date = product_supplier.compute_supply_date(
@@ -243,7 +244,8 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @classmethod
     def compute_request(cls, product, location_id, shortage_date,
-            product_quantity, company, order_point=None):
+            product_quantity, company, order_point=None,
+            supplier_pattern=None):
         """
         Return the value of the purchase request which will answer to
         the needed quantity at the given date. I.e: the latest
@@ -253,6 +255,12 @@ class PurchaseRequest(metaclass=PoolMeta):
         pool = Pool()
         Uom = pool.get('product.uom')
         Request = pool.get('purchase.request')
+
+        if supplier_pattern is None:
+            supplier_pattern = {}
+        else:
+            supplier_pattern = supplier_pattern.copy()
+        supplier_pattern['company'] = company.id
 
         supplier, purchase_date = cls.find_best_supplier(product,
             shortage_date)
