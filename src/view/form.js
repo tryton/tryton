@@ -1627,6 +1627,12 @@ function eval_pyson(value){
                 value = field.get(this.record);
                 if (value !== null) {
                     value *= this.factor;
+                    var digits = field.digits(this.record, this.factor);
+                    if (digits) {
+                        // Round to avoid float precision error
+                        // after the multiplication
+                        value = value.toFixed(digits[1]);
+                    }
                 } else {
                     value = '';
                 }
