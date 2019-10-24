@@ -115,7 +115,9 @@ class SaleLine(metaclass=PoolMeta):
         return move
 
     def _get_purchase_request_product_supplier_pattern(self):
-        return {}
+        return {
+            'company': self.sale.company.id,
+            }
 
     def get_purchase_request(self):
         'Return purchase request for the sale line'
