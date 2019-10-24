@@ -42,7 +42,7 @@
                     msg = data.error[1][1];
                     description = data.error[1][2];
                     Sao.common.userwarning.run(msg, description)
-                        .done(function(result) {
+                        .then(function(result) {
                             if (!~['always', 'ok'].indexOf(result)) {
                                 dfd.reject();
                                 return;
@@ -58,7 +58,7 @@
                                 Sao.rpc(args, session).then(
                                     dfd.resolve, dfd.reject);
                             });
-                        });
+                        }, dfd.reject);
                     return;
                 } else if (data.error[0] == 'UserError') {
                     msg = data.error[1][0];
