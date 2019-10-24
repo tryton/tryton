@@ -1034,6 +1034,16 @@ class Model(object):
         return values
 
     def _on_change_args(self, args):
+        # Ensure arguments has been read
+        for arg in args:
+            record = self
+            for i in arg.split('.'):
+                if i in record._fields:
+                    getattr(record, i)
+                elif i == '_parent_' + record._parent_name:
+                    getattr(record, record._parent_name)
+                    record = record._parent
+
         res = {}
         values = _EvalEnvironment(self, 'on_change')
         for arg in args:
