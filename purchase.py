@@ -513,6 +513,11 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             return self.unit.digits
         return 2
 
+    def _get_purchase_request_product_supplier_pattern(self):
+        return {
+            'company': self.requisition.company.id,
+            }
+
     def compute_request(self):
         """
         Return the value of the purchase request which will answer to
@@ -530,7 +535,8 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
 
         if not self.supplier and self.product:
             supplier, purchase_date = Request.find_best_supplier(
-                self.product, supply_date)
+                self.product, supply_date,
+                **self._get_purchase_request_product_supplier_pattern())
         else:
             supplier = self.supplier
             # TODO compute purchase_date for product_supplier
