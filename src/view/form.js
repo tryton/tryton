@@ -1673,7 +1673,7 @@ function eval_pyson(value){
             if (record) {
                 var digits = field.digits(record, this.factor);
                 if (digits) {
-                    step = Math.pow(10, -digits[1]);
+                    step = Math.pow(10, -digits[1]).toFixed(digits[1]);
                 }
             }
             this.input.attr('step', step);
@@ -4461,7 +4461,7 @@ function eval_pyson(value){
                 options = {};
             var digits = this.digits;
             if (digits) {
-                step = Math.pow(10, -digits[1]);
+                step = Math.pow(10, -digits[1]).toFixed(digits[1]);
                 options.minimumFractionDigits = digits[1];
                 options.maximumFractionDigits = digits[1];
             }
