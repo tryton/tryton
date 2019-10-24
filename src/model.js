@@ -1752,6 +1752,12 @@
         apply_factor: function(record, value, factor) {
             if (value !== null) {
                 value /= factor;
+                var digits = this.digits(record);
+                if (digits) {
+                    // Round to avoid float precision error
+                    // after the division by factor
+                    value = this.convert(value.toFixed(digits[1]));
+                }
             }
             return value;
         },
@@ -1794,19 +1800,6 @@
             }
             return value;
         },
-        apply_factor: function(record, value, factor) {
-            value = Sao.field.Numeric._super.apply_factor(record, value, factor);
-            if (value !== null) {
-                var digits = this.digits(record);
-                if (digits) {
-                    // Round to avoid float precision error
-                    // after the division by factor
-                    value = value.toFixed(digits[1]);
-                }
-                value = new Sao.Decimal(value);
-            }
-            return value;
-        }
     });
 
     Sao.field.Integer = Sao.class_(Sao.field.Float, {
