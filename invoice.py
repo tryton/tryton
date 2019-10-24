@@ -1012,7 +1012,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 date = accounting_date(invoice)
                 # Do not need to lock the table
                 # because sequence.get_id is sequential
-                invoices = cls.search([
+                after_invoices = cls.search([
                             ('sequence', '=', invoice.sequence.id),
                             ['OR',
                                 ('accounting_date', '>', date),
@@ -1022,8 +1022,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                                     ],
                                 ],
                             ], limit=1)
-                if invoices:
-                    after_invoice, = invoices
+                if after_invoices:
+                    after_invoice, = after_invoices
                     raise InvoiceNumberError(
                         gettext('account_invoice.msg_invoice_number_after',
                             invoice=invoice.rec_name,
