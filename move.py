@@ -69,8 +69,11 @@ class Move(metaclass=PoolMeta):
             # TODO save in do method when product change
             self.__class__.save(to_save)
 
-        if Decimal(str(consumed_qty)) != Decimal("0"):
+        if consumed_qty:
             cost_price = cost_price / Decimal(str(consumed_qty))
+        else:
+            cost_price = self.product.get_multivalue(
+                'cost_price', **self._cost_price_pattern)
 
         # Compute average cost price
         unit_price = self.unit_price
@@ -79,7 +82,7 @@ class Move(metaclass=PoolMeta):
         average_cost_price = self._compute_product_cost_price('out')
         self.unit_price = unit_price
 
-        if cost_price != Decimal("0"):
+        if cost_price:
             digits = self.__class__.cost_price.digits
             cost_price = cost_price.quantize(
                 Decimal(str(10.0 ** -digits[1])))
