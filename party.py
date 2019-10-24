@@ -28,7 +28,7 @@ class Party(metaclass=PoolMeta):
 
         sales = Sale.search([
                 ('party', 'in', [p.id for p in parties]),
-                ('state', '=', 'processing'),
+                ('state', 'in', ['confirmed', 'processing']),
                 ])
         for sale in sales:
             amount = 0

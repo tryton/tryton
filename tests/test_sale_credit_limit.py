@@ -95,19 +95,18 @@ class SaleCreditLimitTestCase(ModuleTestCase):
                         }])
             self.assertEqual(party.credit_amount, Decimal('100'))
             Sale.quote([sale])
-            Sale.confirm([sale])
-            self.assertEqual(party.credit_amount, Decimal('100'))
             # Test limit reaches
-            self.assertRaises(UserWarning, Sale.process, [sale])
+            self.assertRaises(UserWarning, Sale.confirm, [sale])
+            self.assertEqual(party.credit_amount, Decimal('100'))
             # Increase limit
             party.credit_limit_amount = Decimal('200')
             party.save()
             # process should work
-            Sale.process([sale])
-            self.assertEqual(sale.state, 'processing')
+            Sale.confirm([sale])
+            self.assertEqual(sale.state, 'confirmed')
             self.assertEqual(party.credit_amount, Decimal('150'))
 
-            # Re-process
+            # Process
             Sale.process([sale])
             # Decrease limit
             party.credit_limit_amount = Decimal('100')
