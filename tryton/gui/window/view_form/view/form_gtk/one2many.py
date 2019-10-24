@@ -197,6 +197,7 @@ class One2Many(Widget):
             if remove and self.attrs.get('add_remove'):
                 but = self.but_remove
             else:
+                remove = False
                 but = self.but_del
             if but.get_property('sensitive'):
                 self._sig_remove(widget, remove)
