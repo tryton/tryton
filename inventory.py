@@ -246,7 +246,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             # Index some data
             product2type = {}
             product2consumable = {}
-            for product in Product.browse([line[1] for line in pbl]):
+            for product in Product.browse({line[1] for line in pbl}):
                 product2type[product.id] = product.type
                 product2consumable[product.id] = product.consumable
 
