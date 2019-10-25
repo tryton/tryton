@@ -1213,6 +1213,7 @@ class Move(Workflow, ModelSQL, ModelView):
             periods = Period.search([
                     ('date', '<=', context['stock_date_end']),
                     ('state', '=', 'closed'),
+                    ('company', '=', company.id if company else -1),
                     ], order=[('date', 'DESC')], limit=1)
             if periods:
                 period, = periods
