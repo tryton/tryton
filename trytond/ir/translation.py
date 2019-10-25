@@ -567,7 +567,7 @@ class Translation(ModelSQL, ModelView):
         for sub_clause in grouped_slice(clauses, in_max):
             for translation in cls.search(['OR'] + list(sub_clause)):
                 key = (translation.name, translation.type,
-                    translation.name, translation.name, translation.src)
+                    translation.lang, translation.src)
                 if key not in args:
                     key = key[:-1] + (None,)
                 res[key] = translation.value
