@@ -113,7 +113,7 @@
                     }
                 });
             } else {
-                card = {payment_method: '${data['payment_method']}'}
+                card = {payment_method: '${data.get('payment_method', '')}'}
             }
 
             var cardButton = document.getElementById('card-button');
