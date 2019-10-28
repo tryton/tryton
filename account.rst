@@ -80,7 +80,7 @@ Accounting
     `Stock Landed Cost Weight </projects/modules-account-stock-landed-cost-weight/en/4.8>`_
         Allocates landed cost based on weight.
 
-    `Tax Cach </projects/modules-account-tax-cash/en/4.8>`_
+    `Tax Cash </projects/modules-account-tax-cash/en/4.8>`_
         Reports tax on cash basis.
 
     `Tax Rule Country </projects/modules-account-tax-rule-country/en/4.8>`_
