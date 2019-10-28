@@ -11,7 +11,7 @@ Accounting
     `Asset </projects/modules-account-asset/en/latest>`_
         Depreciation of fixed assets.
 
-    `Belgian <projects/modules-account-be/en/latest>`_
+    `Belgian </projects/modules-account-be/en/latest>`_
         Belgian accounting.
 
     `Credit Limit </projects/modules-account-credit-limit/en/latest>`_
