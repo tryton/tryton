@@ -107,7 +107,7 @@ Accounting
     `Stock Landed Cost Weight </projects/modules-account-stock-landed-cost-weight/en/5.2>`_
         Allocates landed cost based on weight.
 
-    `Tax Cach </projects/modules-account-tax-cash/en/5.2>`_
+    `Tax Cash </projects/modules-account-tax-cash/en/5.2>`_
         Reports tax on cash basis.
 
     `Tax Rule Country </projects/modules-account-tax-rule-country/en/5.2>`_
