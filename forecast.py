@@ -434,7 +434,7 @@ class ForecastLine(ModelSQL, ModelView):
             from_date = today
         to_date = self.forecast.to_date
         if to_date < today:
-            return
+            return []
 
         delta = to_date - from_date
         delta = delta.days + 1
@@ -457,8 +457,7 @@ class ForecastLine(ModelSQL, ModelView):
             move.product = self.product
             move.uom = self.uom
             move.quantity = qty * self.minimal_quantity
-            move.planned_date = (self.forecast.from_date
-                + datetime.timedelta(day))
+            move.planned_date = from_date + datetime.timedelta(day)
             move.company = self.forecast.company
             move.currency = self.forecast.company.currency
             move.unit_price = unit_price
