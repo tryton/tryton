@@ -242,8 +242,6 @@ class Report(URLMixin, PoolBase):
             def __str__(self):
                 return '%s,%s' % (Model.__name__, self.id)
 
-            def __unicode__(self):
-                return '%s,%s' % (Model.__name__, self.id)
         return [TranslateModel(id) for id in ids]
 
     @classmethod

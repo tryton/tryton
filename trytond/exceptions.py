@@ -15,7 +15,7 @@ class UserError(TrytonException):
         self.domain = domain
         self.code = 1
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s - %s' % (self.message, self.description)
 
 
@@ -30,7 +30,7 @@ class UserWarning(TrytonException):
         self.description = description
         self.code = 2
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s - %s' % (self.message, self.description)
 
 
@@ -56,7 +56,7 @@ class ConcurrencyException(TrytonException):
         self.message = message
         self.code = 4
 
-    def __unicode__(self):
+    def __str__(self):
         return self.message
 
 
@@ -69,5 +69,5 @@ class MissingDependenciesException(TrytonException):
     def __init__(self, missings):
         self.missings = missings
 
-    def __unicode__(self):
+    def __str__(self):
         return 'Missing dependencies: %s' % ' '.join(self.missings)
