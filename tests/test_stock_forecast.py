@@ -32,8 +32,8 @@ class StockForecastTestCase(ModuleTestCase):
             self.assertEqual(line.distribute(*values), result)
 
     @with_transaction()
-    def test_create_moves(self):
-        'Test create_moves'
+    def test_create_moves_before(self):
+        "Test create moves before start date"
         pool = Pool()
         Uom = pool.get('product.uom')
         Template = pool.get('product.template')
@@ -82,6 +82,8 @@ class StockForecastTestCase(ModuleTestCase):
             self.assertEqual(line.quantity_executed, 0)
             self.assertEqual(len(line.moves), 5)
             self.assertEqual(sum(move.quantity for move in line.moves), 10)
+            self.assertGreaterEqual(
+                min(m.planned_date for m in line.moves), forecast.from_date)
 
             Forecast.delete_moves([forecast])
             line, = forecast.lines
@@ -106,6 +108,137 @@ class StockForecastTestCase(ModuleTestCase):
             self.assertEqual(line.quantity_executed, 2)
             self.assertEqual(len(line.moves), 4)
             self.assertEqual(sum(move.quantity for move in line.moves), 8)
+            self.assertGreaterEqual(
+                min(m.planned_date for m in line.moves), forecast.from_date)
+
+    @with_transaction()
+    def test_create_moves_during(self):
+        "Test create moves during the period"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Forecast = pool.get('stock.forecast')
+        Move = pool.get('stock.move')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test create_moves',
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    'list_price': Decimal('1'),
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        customer, = Location.search([('code', '=', 'CUS')])
+        warehouse, = Location.search([('code', '=', 'WH')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
+            today = datetime.date.today()
+
+            forecast, = Forecast.create([{
+                        'warehouse': warehouse.id,
+                        'destination': customer.id,
+                        'from_date': today - relativedelta(days=20),
+                        'to_date': today + relativedelta(days=10),
+                        'company': company.id,
+                        'lines': [
+                            ('create', [{
+                                        'product': product.id,
+                                        'quantity': 20,
+                                        'uom': unit.id,
+                                        'minimal_quantity': 2,
+                                        }],
+                                ),
+                            ],
+                        }])
+            Forecast.confirm([forecast])
+
+            Forecast.create_moves([forecast])
+            line, = forecast.lines
+            self.assertEqual(line.quantity_executed, 0)
+            self.assertEqual(len(line.moves), 10)
+            self.assertEqual(sum(move.quantity for move in line.moves), 20)
+            self.assertGreaterEqual(
+                min(m.planned_date for m in line.moves), today)
+
+            Forecast.delete_moves([forecast])
+            line, = forecast.lines
+            self.assertEqual(len(line.moves), 0)
+
+            Move.create([{
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'product': product.id,
+                        'uom': unit.id,
+                        'quantity': 10,
+                        'planned_date': today - relativedelta(days=5),
+                        'company': company.id,
+                        'currency': company.currency.id,
+                        'unit_price': Decimal('1'),
+                        }])
+            line, = forecast.lines
+            self.assertEqual(line.quantity_executed, 10)
+
+            Forecast.create_moves([forecast])
+            line, = forecast.lines
+            self.assertEqual(line.quantity_executed, 10)
+            self.assertEqual(len(line.moves), 5)
+            self.assertEqual(sum(move.quantity for move in line.moves), 10)
+            self.assertGreaterEqual(
+                min(m.planned_date for m in line.moves), today)
+
+    @with_transaction()
+    def test_create_moves_after(self):
+        "Test create not moves after end date"
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Location = pool.get('stock.location')
+        Forecast = pool.get('stock.forecast')
+
+        unit, = Uom.search([('name', '=', 'Unit')])
+        template, = Template.create([{
+                    'name': 'Test create_moves',
+                    'type': 'goods',
+                    'default_uom': unit.id,
+                    'list_price': Decimal('1'),
+                    }])
+        product, = Product.create([{
+                    'template': template.id,
+                    }])
+        customer, = Location.search([('code', '=', 'CUS')])
+        warehouse, = Location.search([('code', '=', 'WH')])
+        storage, = Location.search([('code', '=', 'STO')])
+        company = create_company()
+        with set_company(company):
+            today = datetime.date.today()
+
+            forecast, = Forecast.create([{
+                        'warehouse': warehouse.id,
+                        'destination': customer.id,
+                        'from_date': today - relativedelta(days=20),
+                        'to_date': today - relativedelta(days=10),
+                        'company': company.id,
+                        'lines': [
+                            ('create', [{
+                                        'product': product.id,
+                                        'quantity': 20,
+                                        'uom': unit.id,
+                                        'minimal_quantity': 2,
+                                        }],
+                                ),
+                            ],
+                        }])
+            Forecast.confirm([forecast])
+
+            Forecast.create_moves([forecast])
+            line, = forecast.lines
+            self.assertEqual(len(line.moves), 0)
 
     @with_transaction()
     def test_complete(self):
