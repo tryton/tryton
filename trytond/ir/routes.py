@@ -5,6 +5,7 @@ try:
 except ImportError:
     from http import client as HTTPStatus
 
+from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 from werkzeug.wrappers import Response
 
@@ -63,9 +64,15 @@ def html_editor(request, pool, model, record, field):
                 error = gettext('ir.msg_html_editor_save_fail')
 
         csrf_token = get_token(record)
-        text = getattr(record, field.name)
+        text = getattr(record, field.name) or ''
         if isinstance(text, bytes):
-            text = text.decode('utf-8')
+            try:
+                text = text.decode('utf-8')
+            except UnicodeDecodeError as e:
+                error = str(e).replace("'", "\\'")
+                text = ''
+        elif not isinstance(text, str):
+            abort(HTTPStatus.BAD_REQUEST)
         title = '%(model)s "%(name)s" %(field)s - %(title)s' % {
             'model': field.model.name,
             'name': record.rec_name,
