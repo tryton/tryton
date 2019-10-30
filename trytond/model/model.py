@@ -265,9 +265,6 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     def __str__(self):
         return '%s,%s' % (self.__name__, self.id)
 
-    def __unicode__(self):
-        return '%s,%s' % (self.__name__, self.id)
-
     def __repr__(self):
         if self.id is None or self.id < 0:
             return "Pool().get('%s')(**%s)" % (self.__name__,
