@@ -346,8 +346,6 @@ img.icon {
     .btn {
         padding-top: 0;
         padding-bottom: 0;
-        margin-top: -@table-condensed-cell-padding;
-        margin-bottom: -@table-condensed-cell-padding;
     }
 }
 
@@ -611,6 +609,12 @@ input.column-boolean {
             & > span:empty {
                 min-height: calc(@line-height-computed + @table-condensed-cell-padding);
                 display: block;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                font-size: @font-size-base;
             }
         }
 

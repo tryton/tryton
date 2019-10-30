@@ -2341,7 +2341,7 @@
             this.attributes = attributes;
         },
         render: function(record, el) {
-            var button = new Sao.common.Button(this.attributes, el);
+            var button = new Sao.common.Button(this.attributes, el, 'btn-sm');
             if (!el) {
                 button.el.click(
                         [record, button], this.button_clicked.bind(this));
