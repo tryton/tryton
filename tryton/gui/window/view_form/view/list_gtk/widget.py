@@ -695,7 +695,7 @@ class M2O(GenericText):
                 callback()
             return
 
-        if model:
+        if model and common.get_toplevel_window().get_focus():
             field = record[self.attrs['name']]
             win = self.search_remote(record, field, text, callback=callback)
             if len(win.screen.group) == 1:
