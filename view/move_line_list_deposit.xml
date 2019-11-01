@@ -10,4 +10,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="origin"/>
     <field name="description"/>
     <field name="move_description"/>
+    <field name="reconciliation" tree_invisible="1"/>
 </tree>
