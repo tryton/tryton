@@ -577,7 +577,8 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
                 continue
             payment.lock()
             try:
-                if payment.stripe_token or payment.stripe_customer_source:
+                if ((payment.stripe_token and payment.stripe_chargeable)
+                        or payment.stripe_customer_source):
                     create_charge(payment)
                 elif payment.stripe_customer_payment_method:
                     create_payment_intent(payment)
