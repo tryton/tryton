@@ -538,7 +538,7 @@ class ModelSQL(ModelStorage):
                         '%s,%s' % (cls.__name__, id_))
                 except KeyError:
                     continue
-                sql_type = fields.Numeric('timestamp').sql_type().base
+                sql_type = fields.Float('timestamp').sql_type().base
                 where.append((table.id == id_)
                     & (Extract('EPOCH',
                             Coalesce(table.write_date, table.create_date)
