@@ -1059,7 +1059,7 @@ class _TaxKey(dict):
         self.update(kwargs)
 
     def _key(self):
-        return (self['account'], self['tax'])
+        return (self['account'], self['tax'], self['base'] >= 0)
 
     def __eq__(self, other):
         if isinstance(other, _TaxKey):
