@@ -592,6 +592,7 @@ class Account(ModelSQL, ModelView):
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
+                payment = Payment(payment.id)
                 if payment.state == 'succeeded':
                     Payment.fail([payment])
                 payment.stripe_captured = charge['captured']
@@ -627,6 +628,7 @@ class Account(ModelSQL, ModelView):
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
+                payment = Payment(payment.id)
                 payment.stripe_error_message = charge['failure_message']
                 payment.stripe_error_code = charge['failure_code']
                 payment.stripe_error_param = None
@@ -649,6 +651,7 @@ class Account(ModelSQL, ModelView):
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
+                payment = Payment(payment.id)
                 payment.stripe_dispute_reason = source['reason']
                 payment.stripe_dispute_status = source['status']
                 payment.save()
@@ -668,6 +671,7 @@ class Account(ModelSQL, ModelView):
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
+                payment = Payment(payment.id)
                 payment.stripe_dispute_reason = source['reason']
                 payment.stripe_dispute_status = source['status']
                 payment.save()
