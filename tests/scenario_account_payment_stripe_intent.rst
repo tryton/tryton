@@ -122,3 +122,15 @@ Process off-session the payment::
     'succeeded'
     >>> bool(payment.stripe_captured)
     True
+
+Refund the payment::
+
+    >>> payment_intent = stripe.PaymentIntent.retrieve(
+    ...     payment.stripe_payment_intent_id)
+    >>> charge, = payment_intent.charges
+    >>> refund = stripe.Refund.create(charge=charge)
+
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
+    >>> payment.state
+    'failed'

@@ -849,11 +849,18 @@ class Account(ModelSQL, ModelView):
                 ])
         if not payments:
             payment_intent_id = charge.get('payment_intent')
-            if payment_intent_id and Payment.search([
+            if payment_intent_id:
+                found = Payment.search([
                         ('stripe_payment_intent_id', '=', payment_intent_id),
-                        ]):
-                return True
-            logger.error("%s: No payment '%s'", _event, charge['id'])
+                        ])
+                # Once payment intent has succeeded or failed,
+                # only charge events are sent.
+                payments = [p for p in found
+                    if p.state in {'succeeded', 'failed'}]
+                if found and not payments:
+                    return True
+            if not payments:
+                logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
@@ -893,11 +900,18 @@ class Account(ModelSQL, ModelView):
                 ])
         if not payments:
             payment_intent_id = charge.get('payment_intent')
-            if payment_intent_id and Payment.search([
+            if payment_intent_id:
+                found = Payment.search([
                         ('stripe_payment_intent_id', '=', payment_intent_id),
-                        ]):
-                return True
-            logger.error("%s: No payment '%s'", _event, charge['id'])
+                        ])
+                # Once payment intent has succeeded or failed,
+                # only charge events are sent.
+                payments = [p for p in found
+                    if p.state in {'succeeded', 'failed'}]
+                if found and not payments:
+                    return True
+            if not payments:
+                logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
             with Transaction().set_context(company=payment.company.id):
