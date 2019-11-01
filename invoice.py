@@ -2699,7 +2699,8 @@ class PayInvoice(Wizard):
             amount_second_currency = self.start.amount
             second_currency = self.start.currency
 
-        if (amount_invoice > invoice.amount_to_pay
+        if (0 <= invoice.amount_to_pay < amount_invoice
+                or amount_invoice < invoice.amount_to_pay <= 0
                 and self.ask.type != 'writeoff'):
             self.raise_user_error('amount_greater_amount_to_pay',
                 (invoice.rec_name,))
