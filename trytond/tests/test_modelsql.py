@@ -65,6 +65,7 @@ class ModelSQLTestCase(unittest.TestCase):
             # timestamp precision of sqlite is the second
             time.sleep(1)
 
+        transaction.timestamp[str(record)] = timestamp
         ModelsqlTimestamp.write([record], {})
         transaction.commit()
 
