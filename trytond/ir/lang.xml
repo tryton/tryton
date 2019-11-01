@@ -236,6 +236,27 @@ this repository contains the full copyright notices and license terms. -->
             <field name="p_sep_by_space" eval="True"/>
             <field name="n_sep_by_space" eval="True"/>
         </record>
+        <record model="ir.lang" id="lang_id">
+            <field name="code">id</field>
+            <field name="name">Indonesian</field>
+            <field name="date">%d/%m/%Y</field>
+            <field name="am"></field>
+            <field name="pm"></field>
+            <field name="grouping">[3, 3]</field>
+            <field name="decimal_point">,</field>
+            <field name="thousands_sep">.</field>
+            <field name="mon_grouping">[3, 3]</field>
+            <field name="mon_decimal_point">,</field>
+            <field name="mon_thousands_sep">.</field>
+            <field name="p_sign_posn" eval="1"/>
+            <field name="n_sign_posn" eval="1"/>
+            <field name="positive_sign"></field>
+            <field name="negative_sign">-</field>
+            <field name="p_cs_precedes" eval="True"/>
+            <field name="n_cs_precedes" eval="True"/>
+            <field name="p_sep_by_space" eval="False"/>
+            <field name="n_sep_by_space" eval="False"/>
+        </record>
         <record model="ir.lang" id="lang_it">
             <field name="code">it</field>
             <field name="name">Italian</field>
