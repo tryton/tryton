@@ -571,6 +571,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
             # Use clear cache after a commit
             payment = cls(payment.id)
             if (payment.stripe_charge_id
+                    or payment.stripe_payment_intent_id
                     or payment.journal.process_method != 'stripe'
                     or payment.state != 'processing'):
                 continue
