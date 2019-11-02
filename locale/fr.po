@@ -34,23 +34,3 @@ msgstr ""
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"
 msgstr "Anglo-Saxonne"
-
-msgctxt "field:product.product,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Compte « coût des marchandises vendues »"
-
-msgctxt "field:product.template,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Compte « coût des marchandises vendues »"
-
-msgctxt "field:product.template.account,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Compte « coût des marchandises vendues »"
-
-msgctxt "help:product.product,account_cogs:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."
-
-msgctxt "help:product.template,account_cogs:"
-msgid "This account will be used instead of the one defined on the category."
-msgstr "Ce compte sera utilisé au lieu de celui défini sur la catégorie."

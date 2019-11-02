@@ -31,15 +31,3 @@ msgstr ""
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Anglo-Saxon"
 msgstr ""
-
-msgctxt "field:product.product,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Cuenta de costo de mercancías vendidas"
-
-msgctxt "field:product.template,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Cuenta de costo de mercancías vendidas"
-
-msgctxt "field:product.template.account,account_cogs:"
-msgid "Account Cost of Goods Sold"
-msgstr "Cuenta de costo de mercancías vendidas"
