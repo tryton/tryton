@@ -6,18 +6,6 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Coupons"
 
-msgctxt "field:sale.promotion.coupon,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.promotion.coupon,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.promotion.coupon,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Name"
@@ -26,7 +14,7 @@ msgstr "Name"
 # put 'Anzahl' at the first place.
 msgctxt "field:sale.promotion.coupon,number_of_use:"
 msgid "Number of Use"
-msgstr "Anzahl Nutzung"
+msgstr "Maximale Anzahl Verwendung"
 
 msgctxt "field:sale.promotion.coupon,numbers:"
 msgid "Numbers"
@@ -40,18 +28,6 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
 
-msgctxt "field:sale.promotion.coupon,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:sale.promotion.coupon,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.promotion.coupon,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
 msgstr "Aktiv"
@@ -60,69 +36,21 @@ msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "Coupon"
 
-msgctxt "field:sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Nummer"
-
-msgctxt "field:sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "Coupons"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Nummer"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
 msgstr "Verkauf"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""
@@ -134,7 +62,7 @@ msgstr ""
 
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
-msgstr "Aktivieren um die Anzahl der Nutzungen pro Partei zu zählen."
+msgstr "Aktivieren um die Anzahl der Verwendungen pro Partei zu zählen."
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The coupons numbered \"%(numbers)s\" are duplicated."

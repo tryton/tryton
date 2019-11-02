@@ -6,18 +6,6 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Cupons"
 
-msgctxt "field:sale.promotion.coupon,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:sale.promotion.coupon,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:sale.promotion.coupon,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Nom"
@@ -38,18 +26,6 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "Promoció"
 
-msgctxt "field:sale.promotion.coupon,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:sale.promotion.coupon,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:sale.promotion.coupon,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
 msgstr "Actiu"
@@ -58,69 +34,21 @@ msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "Cupó"
 
-msgctxt "field:sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Número"
-
-msgctxt "field:sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "Cupons"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Número"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
 msgstr "Venda"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""
@@ -132,7 +60,7 @@ msgstr ""
 
 msgctxt "help:sale.promotion.coupon,per_party:"
 msgid "Check to count usage per party."
-msgstr "Marca per contar l'ús per tercer"
+msgstr "Marca per contar l'ús per tercer."
 
 msgctxt "model:ir.message,text:msg_duplicate_numbers"
 msgid "The coupons numbered \"%(numbers)s\" are duplicated."

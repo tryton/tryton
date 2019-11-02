@@ -6,18 +6,6 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Cupones"
 
-msgctxt "field:sale.promotion.coupon,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.promotion.coupon,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.promotion.coupon,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Nombre"
@@ -38,18 +26,6 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "Promoción"
 
-msgctxt "field:sale.promotion.coupon,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.promotion.coupon,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.promotion.coupon,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
 msgstr "Activo"
@@ -58,69 +34,21 @@ msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "Cupón"
 
-msgctxt "field:sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Número"
-
-msgctxt "field:sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "Cupones"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Número"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
 msgstr "Venta"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""

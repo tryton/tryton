@@ -6,18 +6,6 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "Kupongid"
 
-msgctxt "field:sale.promotion.coupon,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.promotion.coupon,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:sale.promotion.coupon,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "Nimi"
@@ -38,18 +26,6 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "Soodustus"
 
-msgctxt "field:sale.promotion.coupon,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:sale.promotion.coupon,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.promotion.coupon,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
 msgstr "Aktiivne"
@@ -58,69 +34,21 @@ msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "Kupong"
 
-msgctxt "field:sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Number"
-
-msgctxt "field:sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "Kupongid"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "Number"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
 msgstr "Müük"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""

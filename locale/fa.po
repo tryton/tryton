@@ -6,18 +6,6 @@ msgctxt "field:sale.promotion,coupons:"
 msgid "Coupons"
 msgstr "کوپن ها"
 
-msgctxt "field:sale.promotion.coupon,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.promotion.coupon,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:sale.promotion.coupon,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
 msgstr "نام"
@@ -38,18 +26,6 @@ msgctxt "field:sale.promotion.coupon,promotion:"
 msgid "Promotion"
 msgstr "تبلیغ و ترویج"
 
-msgctxt "field:sale.promotion.coupon,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:sale.promotion.coupon,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.promotion.coupon,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:sale.promotion.coupon.number,active:"
 msgid "Active"
 msgstr "فعال"
@@ -58,69 +34,21 @@ msgctxt "field:sale.promotion.coupon.number,coupon:"
 msgid "Coupon"
 msgstr "کوپن"
 
-msgctxt "field:sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "شماره"
-
-msgctxt "field:sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
 msgstr "کوپن ها"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
 msgstr "شماره"
 
-msgctxt "field:sale.sale-sale.promotion.coupon.number,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
 msgstr "فروش"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.sale-sale.promotion.coupon.number,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "help:sale.promotion.coupon,number_of_use:"
 msgid ""
