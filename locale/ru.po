@@ -11,14 +11,6 @@ msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Организация"
 
-msgctxt "field:stock.forecast,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:stock.forecast,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
 msgstr "Назначение"
@@ -27,17 +19,9 @@ msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
 msgstr "Начальная дата"
 
-msgctxt "field:stock.forecast,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
 msgstr "Строки"
-
-msgctxt "field:stock.forecast,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -51,41 +35,17 @@ msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
 msgstr "Местоположение"
 
-msgctxt "field:stock.forecast,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:stock.forecast,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
 msgstr "Начальная дата"
-
-msgctxt "field:stock.forecast.complete.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
 msgstr "Конечная дата"
 
-msgctxt "field:stock.forecast.complete.choose,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
 msgstr "Продукция"
-
-msgctxt "field:stock.forecast.line,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:stock.forecast.line,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
@@ -94,10 +54,6 @@ msgstr "Прогноз"
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
 msgstr ""
-
-msgctxt "field:stock.forecast.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"
@@ -123,10 +79,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Кол-во выполнено"
 
-msgctxt "field:stock.forecast.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Кол-во цифр после запятой"
@@ -135,26 +87,6 @@ msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "Ед.изм."
 
-msgctxt "field:stock.forecast.line,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:stock.forecast.line,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-msgctxt "field:stock.forecast.line-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:stock.forecast.line-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-msgctxt "field:stock.forecast.line-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
 msgstr "Строка прогноза"
@@ -162,18 +94,6 @@ msgstr "Строка прогноза"
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
 msgstr "Перемещение"
-
-msgctxt "field:stock.forecast.line-stock.move,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:stock.forecast.line-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:stock.forecast.line-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_forecast_form"
@@ -316,15 +236,3 @@ msgstr "Завершить"
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Отменить"
-
-msgctxt "view:stock.forecast:"
-msgid "Cancel"
-msgstr "Отменить"
-
-msgctxt "view:stock.forecast:"
-msgid "Confirm"
-msgstr "Подтвердить"
-
-msgctxt "view:stock.forecast:"
-msgid "Reset to Draft"
-msgstr "Сброс в черновик"

@@ -10,14 +10,6 @@ msgctxt "field:stock.forecast,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:stock.forecast,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.forecast,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:stock.forecast,destination:"
 msgid "Destination"
 msgstr "Cilj"
@@ -26,17 +18,9 @@ msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
 msgstr "Od"
 
-msgctxt "field:stock.forecast,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
 msgstr "Postavke"
-
-msgctxt "field:stock.forecast,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
@@ -50,41 +34,17 @@ msgctxt "field:stock.forecast,warehouse:"
 msgid "Location"
 msgstr "Lokacija"
 
-msgctxt "field:stock.forecast,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.forecast,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
 msgstr "Od"
-
-msgctxt "field:stock.forecast.complete.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
 msgstr "Do"
 
-msgctxt "field:stock.forecast.complete.choose,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast.complete.choose,products:"
 msgid "Products"
 msgstr "Izdelki"
-
-msgctxt "field:stock.forecast.line,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.forecast.line,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
 
 msgctxt "field:stock.forecast.line,forecast:"
 msgid "Forecast"
@@ -93,10 +53,6 @@ msgstr "Napoved"
 msgctxt "field:stock.forecast.line,forecast_state:"
 msgid "Forecast State"
 msgstr "Stanje napovedi"
-
-msgctxt "field:stock.forecast.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.forecast.line,minimal_quantity:"
 msgid "Minimal Qty"
@@ -122,10 +78,6 @@ msgctxt "field:stock.forecast.line,quantity_executed:"
 msgid "Quantity Executed"
 msgstr "Izvedena količina"
 
-msgctxt "field:stock.forecast.line,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalke"
@@ -134,26 +86,6 @@ msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
 msgstr "ME"
 
-msgctxt "field:stock.forecast.line,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.forecast.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:stock.forecast.line-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.forecast.line-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:stock.forecast.line-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
 msgstr "Postavka napovedi"
@@ -161,18 +93,6 @@ msgstr "Postavka napovedi"
 msgctxt "field:stock.forecast.line-stock.move,move:"
 msgid "Move"
 msgstr "Promet"
-
-msgctxt "field:stock.forecast.line-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:stock.forecast.line-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.forecast.line-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_forecast_form"
@@ -312,15 +232,3 @@ msgstr "Zaključi"
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
 msgstr "Prekliči"
-
-msgctxt "view:stock.forecast:"
-msgid "Cancel"
-msgstr "Preklic"
-
-msgctxt "view:stock.forecast:"
-msgid "Confirm"
-msgstr "Potrditev"
-
-msgctxt "view:stock.forecast:"
-msgid "Reset to Draft"
-msgstr "Ponastavitev"
