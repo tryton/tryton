@@ -4,173 +4,155 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,children:"
 msgid "Children"
-msgstr "Podnaloge"
+msgstr "Cabang"
 
 msgctxt "field:project.work,comment:"
 msgid "Comment"
-msgstr "Opomba"
+msgstr "Komentar"
 
 msgctxt "field:project.work,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Perusahaan"
 
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
-msgstr "Porabljen čas"
+msgstr ""
 
 msgctxt "field:project.work,left:"
 msgid "Left"
-msgstr "Levo"
+msgstr "Kiri"
 
 msgctxt "field:project.work,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nama"
 
 msgctxt "field:project.work,parent:"
 msgid "Parent"
-msgstr "Matičnia dejavnost"
+msgstr "Induk"
 
 msgctxt "field:project.work,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Pihak"
 
 msgctxt "field:project.work,party_address:"
 msgid "Contact Address"
-msgstr "Kontakt"
+msgstr ""
 
 msgctxt "field:project.work,progress:"
 msgid "Progress"
-msgstr "Napredek"
+msgstr ""
 
 msgctxt "field:project.work,right:"
 msgid "Right"
-msgstr "Desno"
+msgstr "Kanan"
 
 msgctxt "field:project.work,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_available:"
 msgid "Available on timesheets"
-msgstr "Na evidenci"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_duration:"
 msgid "Duration"
-msgstr "Trajanje"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_end_date:"
 msgid "Timesheet End"
-msgstr "Konec evidence"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_start_date:"
 msgid "Timesheet Start"
-msgstr "Začetek evidence"
+msgstr ""
 
 msgctxt "field:project.work,timesheet_works:"
 msgid "Timesheet Works"
-msgstr "Evidentirane naloge"
+msgstr ""
 
 msgctxt "field:project.work,total_effort:"
 msgid "Total Effort"
-msgstr "Ocena skupaj"
+msgstr ""
 
 msgctxt "field:project.work,total_progress:"
 msgid "Total Progress"
-msgstr "Napredek skupaj"
+msgstr ""
 
 msgctxt "field:project.work,type:"
 msgid "Type"
-msgstr "Tip"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
-msgstr "Ocenjen čas za to nalogo"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:project.work,progress:"
 msgid "Estimated progress for this work."
-msgstr "Ocenjen napredek za to nalogo"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:project.work,timesheet_duration:"
 msgid "Total time spent on this work and the sub-works."
-msgstr "Skupni čas, porabljen na tej nalogi in podnalogami."
+msgstr ""
 
-#, fuzzy
 msgctxt "help:project.work,total_effort:"
 msgid "Estimated total effort for this work and the sub-works."
-msgstr "Skupen čas, porabljen za to nalogo in podnaloge"
+msgstr ""
 
-#, fuzzy
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works."
-msgstr "Skupen napredek za to nalogo in podnaloge"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_form"
 msgid "Projects"
-msgstr "Projects"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_project_tree"
 msgid "Projects"
-msgstr "Projects"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_task_form"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_work"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
 msgid "Done"
-msgstr "Done"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
 msgid "Done"
-msgstr "Done"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
 msgid "Done"
-msgstr "Done"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
 msgid "Opened"
-msgstr "Opened"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
@@ -186,65 +168,57 @@ msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
 msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfigurasi"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
 msgid "Project"
-msgstr "Project"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_form"
 msgid "Projects"
-msgstr "Projects"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project_tree"
 msgid "Projects"
-msgstr "Projects"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_task_form"
 msgid "Tasks"
-msgstr "Tasks"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
-msgstr "Works Efforts"
+msgstr ""
 
 msgctxt "model:project.work,name:"
 msgid "Work Effort"
-msgstr "Ocena naloge"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
-msgstr "Project Administration"
+msgstr ""
 
 msgctxt "selection:project.work,state:"
 msgid "Done"
-msgstr "Zaključeno"
+msgstr ""
 
 msgctxt "selection:project.work,state:"
 msgid "Opened"
-msgstr "Odprto"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
-msgstr "Projekt"
+msgstr ""
 
 msgctxt "selection:project.work,type:"
 msgid "Task"
-msgstr "Naloga"
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "%"
@@ -256,11 +230,11 @@ msgstr ""
 
 msgctxt "view:project.work:"
 msgid "General"
-msgstr "Splošno"
+msgstr "Umum"
 
 msgctxt "view:project.work:"
 msgid "Start:"
-msgstr ""
+msgstr "Mulai:"
 
 msgctxt "view:project.work:"
 msgid "Timesheet:"

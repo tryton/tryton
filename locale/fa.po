@@ -14,21 +14,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "تلاش"
-
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
@@ -54,17 +42,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "پیشرفت"
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "راست"
-
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -102,32 +82,29 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "نوع"
 
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
+#, fuzzy
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
+msgid "Estimated Effort for this work."
 msgstr "تلاش پیش بینی شده برای این کار"
 
+#, fuzzy
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
+msgid "Estimated progress for this work."
 msgstr "پیشرفت پیش بینی شده برای این کار"
 
+#, fuzzy
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
+msgid "Total time spent on this work and the sub-works."
 msgstr "کل زمان صرف شده در این کار و زیر کارهای آن"
 
+#, fuzzy
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
+msgid "Estimated total effort for this work and the sub-works."
 msgstr "برآورد کل تلاش برای این کار و زیرکارهای آن"
 
+#, fuzzy
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
+msgid "Estimated total progress for this work and the sub-works."
 msgstr "برآورد کل پیشرفت برای این کار و زیرکارهای آن"
 
 msgctxt "model:ir.action,name:act_open_child_work"

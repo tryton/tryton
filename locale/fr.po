@@ -14,21 +14,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Effort"
-
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
@@ -54,17 +42,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Progression"
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "Droite"
-
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "Séquence"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -102,33 +82,25 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Type"
 
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
-msgstr "Effort estimé pour ce travail"
+msgid "Estimated Effort for this work."
+msgstr "Effort estimé pour ce travail."
 
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
-msgstr "Progression estimée pour ce travail"
+msgid "Estimated progress for this work."
+msgstr "Progression estimée pour ce travail."
 
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
-msgstr "Temps total passé sur ce travail et ses sous-travaux"
+msgid "Total time spent on this work and the sub-works."
+msgstr "Temps total passé sur ce travail et ses sous-travaux."
 
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
-msgstr "Effort total estimé pour ce travail et ses sous-travaux"
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Effort total estimé pour ce travail et ses sous-travaux."
 
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
-msgstr "Progression total estimée pour ce travail et ses sous-travaux"
+msgid "Estimated total progress for this work and the sub-works."
+msgstr "Progression total estimée pour ce travail et ses sous-travaux."
 
 msgctxt "model:ir.action,name:act_open_child_work"
 msgid "Tasks"
@@ -273,7 +245,3 @@ msgstr "Début :"
 msgctxt "view:project.work:"
 msgid "Timesheet:"
 msgstr "Feuilles de présence :"
-
-msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Enfants"

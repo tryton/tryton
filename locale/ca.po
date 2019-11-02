@@ -14,21 +14,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr "Esforç"
-
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
@@ -54,17 +42,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Progrés"
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "Dreta"
-
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -102,32 +82,24 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Tipus"
 
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
-msgstr "Temps estimat per aquest treball."
+msgid "Estimated Effort for this work."
+msgstr "Esforç estimat per aquest treball."
 
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
+msgid "Estimated progress for this work."
 msgstr "Progrés estimat per aquest treball."
 
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
+msgid "Total time spent on this work and the sub-works."
 msgstr "Temps total dedicat en aquest treball i els seus subtreballs."
 
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
-msgstr "Temps total estimat per aquest treball i els seus subtreballs."
+msgid "Estimated total effort for this work and the sub-works."
+msgstr "Esforç total estimat per aquest treball i els seus subtreballs."
 
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
+msgid "Estimated total progress for this work and the sub-works."
 msgstr "Progrés total estimat per aquest treball i els seus subtreballs."
 
 msgctxt "model:ir.action,name:act_open_child_work"
@@ -271,7 +243,3 @@ msgstr "Inici:"
 msgctxt "view:project.work:"
 msgid "Timesheet:"
 msgstr "Full de treball:"
-
-msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Fills"

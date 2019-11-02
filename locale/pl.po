@@ -14,21 +14,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr "Firma"
 
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
-
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
@@ -54,17 +42,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr "Postęp"
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "W prawo"
-
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -102,32 +82,24 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Typ"
 
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
+msgid "Estimated Effort for this work."
 msgstr ""
 
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
+msgid "Estimated progress for this work."
 msgstr ""
 
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
+msgid "Total time spent on this work and the sub-works."
 msgstr ""
 
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
+msgid "Estimated total effort for this work and the sub-works."
 msgstr ""
 
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
+msgid "Estimated total progress for this work and the sub-works."
 msgstr ""
 
 #, fuzzy
@@ -288,7 +260,3 @@ msgstr ""
 msgctxt "view:project.work:"
 msgid "Timesheet:"
 msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Elementy podrzędne"

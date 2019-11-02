@@ -15,24 +15,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:project.work,left:"
 msgid "Left"
@@ -60,18 +45,9 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "序列"
 
 #, fuzzy
 msgctxt "field:project.work,state:"
@@ -111,34 +87,24 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "类型"
 
-#, fuzzy
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
+msgid "Estimated Effort for this work."
 msgstr ""
 
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
+msgid "Estimated progress for this work."
 msgstr ""
 
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
+msgid "Total time spent on this work and the sub-works."
 msgstr ""
 
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
+msgid "Estimated total effort for this work and the sub-works."
 msgstr ""
 
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
+msgid "Estimated total progress for this work and the sub-works."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_child_work"
@@ -210,7 +176,6 @@ msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
 msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
@@ -289,8 +254,3 @@ msgstr ""
 msgctxt "view:project.work:"
 msgid "Timesheet:"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:project.work:"
-msgid "Children"
-msgstr "子项"

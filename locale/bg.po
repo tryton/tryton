@@ -15,21 +15,9 @@ msgctxt "field:project.work,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:project.work,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:project.work,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:project.work,effort_duration:"
 msgid "Effort"
 msgstr ""
-
-msgctxt "field:project.work,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:project.work,left:"
@@ -56,18 +44,10 @@ msgctxt "field:project.work,progress:"
 msgid "Progress"
 msgstr ""
 
-msgctxt "field:project.work,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "Десен"
-
-msgctxt "field:project.work,sequence:"
-msgid "Sequence"
-msgstr "Последователност"
 
 msgctxt "field:project.work,state:"
 msgid "State"
@@ -108,33 +88,29 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Вид"
 
-msgctxt "field:project.work,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:project.work,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
+#, fuzzy
 msgctxt "help:project.work,effort_duration:"
-msgid "Estimated Effort for this work"
-msgstr ""
+msgid "Estimated Effort for this work."
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "help:project.work,progress:"
-msgid "Estimated progress for this work"
-msgstr ""
+msgid "Estimated progress for this work."
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "help:project.work,timesheet_duration:"
-msgid "Total time spent on this work and the sub-works"
-msgstr ""
+msgid "Total time spent on this work and the sub-works."
+msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
+#, fuzzy
 msgctxt "help:project.work,total_effort:"
-msgid "Estimated total effort for this work and the sub-works"
+msgid "Estimated total effort for this work and the sub-works."
 msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
 #, fuzzy
 msgctxt "help:project.work,total_progress:"
-msgid "Estimated total progress for this work and the sub-works"
+msgid "Estimated total progress for this work and the sub-works."
 msgstr "Предполагаеми общо усилия за тази задача и подзадачите"
 
 #, fuzzy
@@ -295,7 +271,3 @@ msgstr ""
 msgctxt "view:project.work:"
 msgid "Timesheet:"
 msgstr ""
-
-msgctxt "view:project.work:"
-msgid "Children"
-msgstr "Наследници"
