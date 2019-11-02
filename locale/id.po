@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.statement.rule,currency_digits:"
 msgid "Currency Digits"
@@ -20,23 +20,23 @@ msgstr ""
 
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
-msgstr ""
+msgstr "Aturan Informasi"
 
 msgctxt "field:account.statement.rule,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:account.statement.rule,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:account.statement.rule,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
@@ -64,11 +64,11 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.information,key:"
 msgid "Key"
-msgstr ""
+msgstr "Kunci"
 
 msgctxt "field:account.statement.rule.information,key_type:"
 msgid "Key Type"
-msgstr ""
+msgstr "Jenis Kunci"
 
 msgctxt "field:account.statement.rule.information,number_high:"
 msgid "Numeric High"
@@ -88,19 +88,19 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgctxt "field:account.statement.rule.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
@@ -159,12 +159,10 @@ msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.statement.rule.information:"
 msgid "-"
 msgstr "-"
 
-#, fuzzy
 msgctxt "view:account.statement.rule:"
 msgid "-"
 msgstr "-"

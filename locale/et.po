@@ -14,14 +14,6 @@ msgctxt "field:account.statement.rule,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.statement.rule,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.statement.rule,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:account.statement.rule,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtus"
@@ -29,10 +21,6 @@ msgstr "Valuuta numbriväärtus"
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
 msgstr "Kirjeldus"
-
-msgctxt "field:account.statement.rule,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
@@ -50,22 +38,6 @@ msgctxt "field:account.statement.rule,name:"
 msgid "Name"
 msgstr "Nimetus"
 
-msgctxt "field:account.statement.rule,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.statement.rule,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
-msgctxt "field:account.statement.rule,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.statement.rule,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
 msgstr "Jah/ei"
@@ -74,14 +46,6 @@ msgctxt "field:account.statement.rule.information,char:"
 msgid "Char"
 msgstr "Char"
 
-msgctxt "field:account.statement.rule.information,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.statement.rule.information,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:account.statement.rule.information,float_high:"
 msgid "Float High"
 msgstr "Kõrgeim ujuv"
@@ -89,10 +53,6 @@ msgstr "Kõrgeim ujuv"
 msgctxt "field:account.statement.rule.information,float_low:"
 msgid "Float Low"
 msgstr "Madalaim ujuv"
-
-msgctxt "field:account.statement.rule.information,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.rule.information,integer_high:"
 msgid "Integer High"
@@ -118,10 +78,6 @@ msgctxt "field:account.statement.rule.information,number_low:"
 msgid "Numeric Low"
 msgstr "Madalaim numbriline"
 
-msgctxt "field:account.statement.rule.information,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:account.statement.rule.information,rule:"
 msgid "Rule"
 msgstr "Reegel"
@@ -129,18 +85,6 @@ msgstr "Reegel"
 msgctxt "field:account.statement.rule.information,selection:"
 msgid "Selection"
 msgstr "Valik"
-
-msgctxt "field:account.statement.rule.information,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
-msgctxt "field:account.statement.rule.information,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.statement.rule.information,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
@@ -154,41 +98,13 @@ msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.statement.rule.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.statement.rule.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.statement.rule.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
 msgstr "Osapool"
 
-msgctxt "field:account.statement.rule.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
 msgstr "Reegel"
-
-msgctxt "field:account.statement.rule.line,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
-msgctxt "field:account.statement.rule.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.statement.rule.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "help:account.statement.rule,description:"
 msgid ""

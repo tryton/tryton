@@ -14,14 +14,6 @@ msgctxt "field:account.statement.rule,company:"
 msgid "Company"
 msgstr "Azienda"
 
-msgctxt "field:account.statement.rule,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:account.statement.rule,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
 msgctxt "field:account.statement.rule,currency_digits:"
 msgid "Currency Digits"
 msgstr "Posizioni Valuta"
@@ -29,10 +21,6 @@ msgstr "Posizioni Valuta"
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
 msgstr "Descrizione"
-
-msgctxt "field:account.statement.rule,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
@@ -50,22 +38,6 @@ msgctxt "field:account.statement.rule,name:"
 msgid "Name"
 msgstr "Nome"
 
-msgctxt "field:account.statement.rule,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
-msgctxt "field:account.statement.rule,sequence:"
-msgid "Sequence"
-msgstr "Sequenza"
-
-msgctxt "field:account.statement.rule,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-msgctxt "field:account.statement.rule,write_uid:"
-msgid "Write User"
-msgstr "Utente Scrittura"
-
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
 msgstr "Boolean"
@@ -74,14 +46,6 @@ msgctxt "field:account.statement.rule.information,char:"
 msgid "Char"
 msgstr "Char"
 
-msgctxt "field:account.statement.rule.information,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:account.statement.rule.information,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
 msgctxt "field:account.statement.rule.information,float_high:"
 msgid "Float High"
 msgstr ""
@@ -89,10 +53,6 @@ msgstr ""
 msgctxt "field:account.statement.rule.information,float_low:"
 msgid "Float Low"
 msgstr ""
-
-msgctxt "field:account.statement.rule.information,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.rule.information,integer_high:"
 msgid "Integer High"
@@ -118,10 +78,6 @@ msgctxt "field:account.statement.rule.information,number_low:"
 msgid "Numeric Low"
 msgstr ""
 
-msgctxt "field:account.statement.rule.information,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 msgctxt "field:account.statement.rule.information,rule:"
 msgid "Rule"
 msgstr "Regola"
@@ -129,18 +85,6 @@ msgstr "Regola"
 msgctxt "field:account.statement.rule.information,selection:"
 msgid "Selection"
 msgstr "Selezione"
-
-msgctxt "field:account.statement.rule.information,sequence:"
-msgid "Sequence"
-msgstr "Sequenza"
-
-msgctxt "field:account.statement.rule.information,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-msgctxt "field:account.statement.rule.information,write_uid:"
-msgid "Write User"
-msgstr "Utente Scrittura"
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
@@ -154,41 +98,13 @@ msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
 msgstr "Azienda"
 
-msgctxt "field:account.statement.rule.line,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:account.statement.rule.line,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
-msgctxt "field:account.statement.rule.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
 msgstr "Controparte"
 
-msgctxt "field:account.statement.rule.line,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
 msgstr "Regola"
-
-msgctxt "field:account.statement.rule.line,sequence:"
-msgid "Sequence"
-msgstr "Sequenza"
-
-msgctxt "field:account.statement.rule.line,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-msgctxt "field:account.statement.rule.line,write_uid:"
-msgid "Write User"
-msgstr "Utente Scrittura"
 
 msgctxt "help:account.statement.rule,description:"
 msgid ""

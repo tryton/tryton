@@ -4,191 +4,107 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.statement.rule,amount_high:"
 msgid "Amount High"
-msgstr ""
+msgstr "maximumbedrag"
 
 msgctxt "field:account.statement.rule,amount_low:"
 msgid "Amount Low"
-msgstr ""
+msgstr "minimumbedrag"
 
 msgctxt "field:account.statement.rule,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.statement.rule,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule,create_uid:"
-msgid "Create User"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.statement.rule,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Valuta decimalen"
 
 msgctxt "field:account.statement.rule,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.statement.rule,id:"
-msgid "ID"
-msgstr ""
+msgstr "Omschrijving"
 
 msgctxt "field:account.statement.rule,information_rules:"
 msgid "Information Rules"
-msgstr ""
+msgstr "Informatie regels"
 
 msgctxt "field:account.statement.rule,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Dagboek"
 
 msgctxt "field:account.statement.rule,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "field:account.statement.rule,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.statement.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.statement.rule,sequence:"
-msgid "Sequence"
-msgstr ""
-
-msgctxt "field:account.statement.rule,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:account.statement.rule.information,boolean:"
 msgid "Boolean"
-msgstr ""
+msgstr "Booleaanse uitdrukking"
 
 msgctxt "field:account.statement.rule.information,char:"
 msgid "Char"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,create_uid:"
-msgid "Create User"
-msgstr ""
+msgstr "tekens (char/caractères)"
 
 msgctxt "field:account.statement.rule.information,float_high:"
 msgid "Float High"
-msgstr ""
+msgstr "Float hoog"
 
 msgctxt "field:account.statement.rule.information,float_low:"
 msgid "Float Low"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,id:"
-msgid "ID"
-msgstr ""
+msgstr "Float laag"
 
 msgctxt "field:account.statement.rule.information,integer_high:"
 msgid "Integer High"
-msgstr ""
+msgstr "integer hoog"
 
 msgctxt "field:account.statement.rule.information,integer_low:"
 msgid "Integer Low"
-msgstr ""
+msgstr "integer laag"
 
 msgctxt "field:account.statement.rule.information,key:"
 msgid "Key"
-msgstr ""
+msgstr "Sleutel"
 
 msgctxt "field:account.statement.rule.information,key_type:"
 msgid "Key Type"
-msgstr ""
+msgstr "Sleutel type"
 
 msgctxt "field:account.statement.rule.information,number_high:"
 msgid "Numeric High"
-msgstr ""
+msgstr "Numeriek hoog"
 
 msgctxt "field:account.statement.rule.information,number_low:"
 msgid "Numeric Low"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Numeriek Laag"
 
 msgctxt "field:account.statement.rule.information,rule:"
 msgid "Rule"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "field:account.statement.rule.information,selection:"
 msgid "Selection"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,sequence:"
-msgid "Sequence"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule.information,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Selectie"
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgctxt "field:account.statement.rule.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Bedrag"
 
 msgctxt "field:account.statement.rule.line,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,id:"
-msgid "ID"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.statement.rule.line,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.statement.rule.line,rule:"
 msgid "Rule"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,sequence:"
-msgid "Sequence"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.statement.rule.line,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Regel"
 
 msgctxt "help:account.statement.rule,description:"
 msgid ""
@@ -196,6 +112,9 @@ msgid ""
 "It may define the groups named:\n"
 "'party', 'bank_account', 'invoice'."
 msgstr ""
+"De reguliere expressie waarmee de beschrijving wordt doorzocht.\n"
+"Het kan de groepen definiëren met de naam:\n"
+"'relatie', 'bank_rekening', 'factuur'."
 
 msgctxt "help:account.statement.rule.information,char:"
 msgid ""
@@ -203,60 +122,67 @@ msgid ""
 "It may define the groups named:\n"
 "party, bank_account, invoice."
 msgstr ""
+"De reguliere expressie waarmee de sleutelinformatie wordt doorzocht.\n"
+"Het kan de groepen definiëren met de naam:\n"
+"relatie, bankrekening, factuur."
 
 msgctxt "help:account.statement.rule.line,account:"
 msgid ""
 "Leave empty to use the party's receivable or payable account.\n"
 "The rule must have a company to use this field."
 msgstr ""
+"Leeg laten om de te ontvangen of te betalen rekening van de relatie te gebruiken.\n"
+"De regel moet een bedrijf hebben om dit veld te gebruiken."
 
 msgctxt "help:account.statement.rule.line,amount:"
 msgid "A Python expression evaluated with 'amount' and 'pending'."
 msgstr ""
+"Een Python-expressie geëvalueerd met 'hoeveelheid' en 'in behandeling' "
+"(amount and pending)."
 
 msgctxt "help:account.statement.rule.line,party:"
 msgid ""
 "Leave empty to use the group named 'party' from the regular expressions."
 msgstr ""
+"Laat leeg om de groep met de naam 'relatie' uit de reguliere expressies te "
+"gebruiken."
 
 msgctxt "model:account.statement.rule,name:"
 msgid "Account Statement Rule"
-msgstr ""
+msgstr "Boekhoudkundige regel"
 
 msgctxt "model:account.statement.rule.information,name:"
 msgid "Account Statement Rule Information"
-msgstr ""
+msgstr "Boekhoudkundige regel informatie"
 
 msgctxt "model:account.statement.rule.line,name:"
 msgid "Account Statement Rule Line"
-msgstr ""
+msgstr "Boekhoudkundige regel lijn"
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Regels"
 
 msgctxt "model:ir.model.button,string:statement_apply_rules_button"
 msgid "Apply Rules"
-msgstr ""
+msgstr "Regels toepassen"
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Rules"
-msgstr ""
+msgstr "Regels"
 
-#, fuzzy
 msgctxt "view:account.statement.rule.information:"
 msgid "-"
 msgstr "-"
 
-#, fuzzy
 msgctxt "view:account.statement.rule:"
 msgid "-"
 msgstr "-"
 
 msgctxt "view:account.statement.rule:"
 msgid "Between"
-msgstr ""
+msgstr "Tussen"
 
 msgctxt "view:account.statement.rule:"
 msgid "Criteria"
-msgstr ""
+msgstr "criteria"
