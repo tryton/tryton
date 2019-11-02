@@ -46,7 +46,3 @@ msgstr "ເອກະສານອ້າງອີງ"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "ໜັງສືແຈ້ງເຕືອນ"
-
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "ວິນາທີ"

@@ -45,7 +45,3 @@ msgstr "Referência"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr "Lembrete"
-
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "s"

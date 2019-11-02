@@ -28,7 +28,7 @@ msgstr "Descripció"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Data venciment"
+msgstr "Data de venciment"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
@@ -44,8 +44,4 @@ msgstr "Referència"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Avís recordatori"
-
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "s"
+msgstr "Avís de recordatori"

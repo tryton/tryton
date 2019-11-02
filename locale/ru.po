@@ -51,8 +51,3 @@ msgstr "Ссылка"
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
 msgstr ""
-
-#, fuzzy
-msgctxt "report:account.dunning.letter:"
-msgid "s"
-msgstr "с"
