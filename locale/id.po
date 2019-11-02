@@ -2,20 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr "ພະນັກງານ"
+msgstr "Pegawai"
 
-#, fuzzy
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
-msgstr "ອັດຕາສ່ວນຮ້ອຍ"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr "ເຮັດວຽກ"
+msgstr ""
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -65,10 +62,9 @@ msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr "ກຳນົດເວລາ"
+msgstr ""
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
@@ -116,7 +112,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_leveling"
 msgid "Tasks Leveling"
-msgstr "Tasks Leveling"
+msgstr ""
 
 msgctxt "model:project.allocation,name:"
 msgid "Allocation"

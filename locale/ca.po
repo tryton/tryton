@@ -2,73 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Empleat"
-
-msgctxt "field:project.allocation,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "Percentatge"
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr "Treball"
-
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr "Predecessor"
 
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr "Successor"
-
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
@@ -177,11 +129,3 @@ msgstr "Assignacions"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "Planificació"
-
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Assignació"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Assignacions"

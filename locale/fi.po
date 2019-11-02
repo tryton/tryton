@@ -2,72 +2,24 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
-msgstr ""
-
-msgctxt "field:project.allocation,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr ""
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr ""
-
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr ""
 
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:project.work,actual_finish_date:"

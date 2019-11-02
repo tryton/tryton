@@ -2,73 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Employé"
-
-msgctxt "field:project.allocation,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "Pourcentage"
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr "Travail"
-
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr "Prédécesseur"
 
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr "Successeur"
-
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
@@ -177,11 +129,3 @@ msgstr "Répartitions"
 msgctxt "view:project.work:"
 msgid "Plan"
 msgstr "Planification"
-
-msgctxt "view:project.allocation:"
-msgid "Allocation"
-msgstr "Répartition"
-
-msgctxt "view:project.allocation:"
-msgid "Allocations"
-msgstr "Répartitions"

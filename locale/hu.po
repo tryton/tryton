@@ -3,85 +3,27 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 #, fuzzy
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Alkalmazott"
-
-#, fuzzy
-msgctxt "field:project.allocation,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "Százalék:"
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr "Tevékenység"
 
-#, fuzzy
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
-msgstr ""
-
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"

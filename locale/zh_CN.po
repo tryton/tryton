@@ -2,84 +2,26 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.allocation,id:"
-msgid "ID"
-msgstr "编号"
 
 #, fuzzy
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "百分比"
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr ""
 
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"

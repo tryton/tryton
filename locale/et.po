@@ -2,73 +2,25 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:project.allocation,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:project.allocation,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Töötaja"
-
-msgctxt "field:project.allocation,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "Protsent"
 
-msgctxt "field:project.allocation,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:project.allocation,work:"
 msgid "Work"
 msgstr "Töö"
-
-msgctxt "field:project.allocation,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:project.allocation,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:project.predecessor_successor,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:project.predecessor_successor,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:project.predecessor_successor,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
 msgstr "Eelkäija"
 
-msgctxt "field:project.predecessor_successor,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:project.predecessor_successor,successor:"
 msgid "Successor"
 msgstr "Järeltulija"
-
-msgctxt "field:project.predecessor_successor,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:project.predecessor_successor,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:project.work,actual_finish_date:"
 msgid "Actual Finish"
