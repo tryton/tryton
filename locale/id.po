@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:web.user,email:"
 msgid "E-mail"
-msgstr ""
+msgstr "E-mail"
 
 msgctxt "field:web.user,email_token:"
 msgid "E-mail Token"
@@ -14,15 +14,13 @@ msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:web.user,party:"
 msgid "Party"
-msgstr "Организации"
+msgstr "Pihak"
 
-#, fuzzy
 msgctxt "field:web.user,password:"
 msgid "Password"
-msgstr "Пароль"
+msgstr "Kata sandi"
 
 msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
@@ -38,38 +36,35 @@ msgstr ""
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr ""
+msgstr "Alamat IP"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
-msgstr "Логин"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:web.user.session,key:"
 msgid "Key"
-msgstr "Ключ"
+msgstr "Kunci"
 
-#, fuzzy
 msgctxt "field:web.user.session,user:"
 msgid "User"
-msgstr "Пользователь"
+msgstr "Pengguna"
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr "Pengguna Web"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_email_validation"
 msgid "Email Validation"
-msgstr "Email Validation"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_user_email_unique"
 msgid "E-mail of active web user must be unique."
@@ -81,20 +76,19 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:user_validate_email_button"
 msgid "Validate E-mail"
-msgstr "Validate E-mail"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Web Users"
-msgstr "Web Users"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:web.user,name:"
 msgid "Web User"
-msgstr "Web Users"
+msgstr ""
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
@@ -112,10 +106,9 @@ msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
 msgstr ""
 
-#, fuzzy
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
@@ -125,10 +118,9 @@ msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"
-msgstr "Email Validation"
+msgstr ""
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
@@ -138,17 +130,14 @@ msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
 msgstr ""
 
-#, fuzzy
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
-msgstr "Утвержденный"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr "Reset Password"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:web.user:"
 msgid "Validate E-mail"
-msgstr "Validate E-mail"
+msgstr ""

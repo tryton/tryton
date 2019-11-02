@@ -2,20 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "field:web.user,active:"
-msgid "Active"
-msgstr "Attivo"
-
-#, fuzzy
-msgctxt "field:web.user,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-msgctxt "field:web.user,create_uid:"
-msgid "Create User"
-msgstr "creato da"
-
 msgctxt "field:web.user,email:"
 msgid "E-mail"
 msgstr "E-mail"
@@ -29,10 +15,6 @@ msgstr "_E-Mail..."
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
 msgstr "_E-Mail..."
-
-msgctxt "field:web.user,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -48,10 +30,6 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr "Hash della Password"
 
-msgctxt "field:web.user,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 #, fuzzy
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
@@ -62,31 +40,9 @@ msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "Reset Password"
 
-msgctxt "field:web.user,write_date:"
-msgid "Write Date"
-msgstr "modificato il"
-
-#, fuzzy
-msgctxt "field:web.user,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
-msgctxt "field:web.user.authenticate.attempt,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-msgctxt "field:web.user.authenticate.attempt,create_uid:"
-msgid "Create User"
-msgstr "creato da"
-
-msgctxt "field:web.user.authenticate.attempt,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
-msgstr "Indirizzo IP "
+msgstr "Indirizzo IP"
 
 msgctxt "field:web.user.authenticate.attempt,ip_network:"
 msgid "IP Network"
@@ -97,57 +53,15 @@ msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "Login"
 
-msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
-msgctxt "field:web.user.authenticate.attempt,write_date:"
-msgid "Write Date"
-msgstr "modificato il"
-
-#, fuzzy
-msgctxt "field:web.user.authenticate.attempt,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
-msgctxt "field:web.user.session,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-msgctxt "field:web.user.session,create_uid:"
-msgid "Create User"
-msgstr "creato da"
-
-msgctxt "field:web.user.session,id:"
-msgid "ID"
-msgstr "ID"
-
 #, fuzzy
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "Chiave"
 
-msgctxt "field:web.user.session,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 #, fuzzy
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Utente"
-
-msgctxt "field:web.user.session,write_date:"
-msgid "Write Date"
-msgstr "modificato il"
-
-msgctxt "field:web.user.session,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
-
-msgctxt "help:web.user,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Deselezionare per escludere dall'uso futuro."
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"

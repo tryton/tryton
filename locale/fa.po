@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:web.user,active:"
-msgid "Active"
-msgstr "فعال"
-
-msgctxt "field:web.user,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:web.user,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:web.user,email:"
 msgid "E-mail"
 msgstr "ایمیل"
@@ -25,10 +13,6 @@ msgstr "نشانه(Token) ایمیل"
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
 msgstr "ایمیل معتبر است"
-
-msgctxt "field:web.user,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -42,10 +26,6 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr "کلمه عبور درهم"
 
-msgctxt "field:web.user,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
 msgstr "بازنشانی نشانه(Token) کلمه عبور"
@@ -53,26 +33,6 @@ msgstr "بازنشانی نشانه(Token) کلمه عبور"
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "بازنشانی انقضای نشانه(Token) کلمه عبور"
-
-msgctxt "field:web.user,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:web.user,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:web.user.authenticate.attempt,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:web.user.authenticate.attempt,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:web.user.authenticate.attempt,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
@@ -86,53 +46,13 @@ msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "ورود به سیستم"
 
-msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:web.user.authenticate.attempt,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:web.user.authenticate.attempt,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:web.user.session,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:web.user.session,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:web.user.session,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "کلید"
 
-msgctxt "field:web.user.session,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "کاربر"
-
-msgctxt "field:web.user.session,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:web.user.session,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "help:web.user,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"

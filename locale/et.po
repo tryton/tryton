@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:web.user,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
-msgctxt "field:web.user,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:web.user,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:web.user,email:"
 msgid "E-mail"
 msgstr "E-kiri"
@@ -25,10 +13,6 @@ msgstr ""
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
 msgstr ""
-
-msgctxt "field:web.user,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -42,10 +26,6 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr "Salasõna räsi"
 
-msgctxt "field:web.user,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
 msgstr ""
@@ -53,26 +33,6 @@ msgstr ""
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr ""
-
-msgctxt "field:web.user,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:web.user,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:web.user.authenticate.attempt,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:web.user.authenticate.attempt,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:web.user.authenticate.attempt,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
@@ -86,53 +46,13 @@ msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "Logi sisse"
 
-msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:web.user.authenticate.attempt,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:web.user.authenticate.attempt,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:web.user.session,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:web.user.session,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:web.user.session,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "Võti"
 
-msgctxt "field:web.user.session,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Kasutaja"
-
-msgctxt "field:web.user.session,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:web.user.session,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "help:web.user,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"

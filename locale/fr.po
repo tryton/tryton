@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:web.user,active:"
-msgid "Active"
-msgstr "Actif"
-
-msgctxt "field:web.user,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:web.user,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:web.user,email:"
 msgid "E-mail"
 msgstr "E-mail"
@@ -25,10 +13,6 @@ msgstr "Jeton d'E-mail"
 msgctxt "field:web.user,email_valid:"
 msgid "E-mail Valid"
 msgstr "E-mail valide"
-
-msgctxt "field:web.user,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
@@ -42,10 +26,6 @@ msgctxt "field:web.user,password_hash:"
 msgid "Password Hash"
 msgstr "Hachage de mot de passe"
 
-msgctxt "field:web.user,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:web.user,reset_password_token:"
 msgid "Reset Password Token"
 msgstr "Jeton de réinitialisation du mot de passe"
@@ -53,26 +33,6 @@ msgstr "Jeton de réinitialisation du mot de passe"
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "Expiration du jeton de réinitialisation du mot de passe"
-
-msgctxt "field:web.user,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:web.user,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:web.user.authenticate.attempt,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:web.user.authenticate.attempt,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:web.user.authenticate.attempt,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
@@ -86,53 +46,13 @@ msgctxt "field:web.user.authenticate.attempt,login:"
 msgid "Login"
 msgstr "Identifiant"
 
-msgctxt "field:web.user.authenticate.attempt,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:web.user.authenticate.attempt,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:web.user.authenticate.attempt,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:web.user.session,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:web.user.session,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:web.user.session,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:web.user.session,key:"
 msgid "Key"
 msgstr "Clé"
 
-msgctxt "field:web.user.session,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:web.user.session,user:"
 msgid "User"
 msgstr "Utilisateur"
-
-msgctxt "field:web.user.session,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:web.user.session,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "help:web.user,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Web Users"
