@@ -10,38 +10,14 @@ msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
 msgstr "Método de Agrupamento de Remessa de Venda"
 
-msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:party.party.sale_shipment_grouping_method,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
 msgstr "Pessoa"
-
-msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
 msgstr "Método de Agrupamento de Remessa de Venda"
-
-msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"

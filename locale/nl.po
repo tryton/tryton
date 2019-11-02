@@ -4,76 +4,49 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Verkoopverzending Groeperingsmethode"
 
 msgctxt "field:party.party,sale_shipment_grouping_methods:"
 msgid "Sale Shipment Grouping Methods"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,id:"
-msgid "ID"
-msgstr ""
+msgstr "Verkoopverzending Groeperingsmethode"
 
 msgctxt "field:party.party.sale_shipment_grouping_method,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt ""
 "field:party.party.sale_shipment_grouping_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:party.party.sale_shipment_grouping_method,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Verkoopverzending Groeperingsmethode"
 
 msgctxt "field:sale.configuration,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Verkoopverzending Groeperingsmethode"
 
 msgctxt "field:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "Sale Shipment Grouping Method"
-msgstr ""
+msgstr "Verkoopverzending Groeperingsmethode"
 
 msgctxt "help:sale.configuration,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "De standaard verzendgroeperingsmethode voor nieuwe klanten."
 
 msgctxt "help:sale.configuration.sale_method,sale_shipment_grouping_method:"
 msgid "The default shipment grouping method for new customers."
-msgstr ""
+msgstr "De standaard verzendgroeperingsmethode voor nieuwe klanten."
 
 msgctxt "model:party.party.sale_shipment_grouping_method,name:"
 msgid "Party Sale Shipment Grouping Method"
-msgstr ""
+msgstr "relatie Verkoopverzending Groeperingsmethode"
 
-#, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "None"
 msgstr "Geen"
 
-#, fuzzy
 msgctxt "selection:party.party,sale_shipment_grouping_method:"
 msgid "Standard"
 msgstr "Standaard"
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Shipments"
 msgstr "Leveringen"
