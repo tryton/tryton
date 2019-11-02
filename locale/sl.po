@@ -10,22 +10,6 @@ msgctxt "field:sale.configuration,sale_under_shipment_tolerance:"
 msgid "Sale Under Shipment Tolerance"
 msgstr ""
 
-msgctxt "field:sale.configuration.shipment_tolerance,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.configuration.shipment_tolerance,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:sale.configuration.shipment_tolerance,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:sale.configuration.shipment_tolerance,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt ""
 "field:sale.configuration.shipment_tolerance,sale_over_shipment_tolerance:"
 msgid "Sale Over Shipment Tolerance"
@@ -34,14 +18,6 @@ msgstr ""
 msgctxt ""
 "field:sale.configuration.shipment_tolerance,sale_under_shipment_tolerance:"
 msgid "Sale Under Shipment Tolerance"
-msgstr ""
-
-msgctxt "field:sale.configuration.shipment_tolerance,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.configuration.shipment_tolerance,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:sale.configuration,sale_over_shipment_tolerance:"
