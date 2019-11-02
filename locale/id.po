@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:party.party.sale_invoice_grouping_method,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
@@ -39,15 +39,13 @@ msgctxt "model:party.party.sale_invoice_grouping_method,name:"
 msgid "Party Sale Invoice Grouping Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "None"
-msgstr "Няма"
+msgstr "Tidak ada"
 
-#, fuzzy
 msgctxt "selection:party.party,sale_invoice_grouping_method:"
 msgid "Standard"
-msgstr "Стандартен"
+msgstr "Standar"
 
 msgctxt "view:party.party:"
 msgid "Invoicing"

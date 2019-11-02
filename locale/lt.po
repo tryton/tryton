@@ -10,38 +10,14 @@ msgctxt "field:party.party,sale_invoice_grouping_methods:"
 msgid "Sale Invoice Grouping Methods"
 msgstr "Pardavimo sąskaitų faktūrų grupavimo būdai"
 
-msgctxt "field:party.party.sale_invoice_grouping_method,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:party.party.sale_invoice_grouping_method,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:party.party.sale_invoice_grouping_method,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:party.party.sale_invoice_grouping_method,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:party.party.sale_invoice_grouping_method,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt ""
 "field:party.party.sale_invoice_grouping_method,sale_invoice_grouping_method:"
 msgid "Sale Invoice Grouping Method"
 msgstr "Pardavimo sąskaitų faktūrų grupavimo būdas"
-
-msgctxt "field:party.party.sale_invoice_grouping_method,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:party.party.sale_invoice_grouping_method,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.configuration,sale_invoice_grouping_method:"
 msgid "Sale Invoice Grouping Method"
