@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.address,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Linn"
@@ -14,21 +10,9 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "Riik"
 
-msgctxt "field:party.address,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.address,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Täis aadress"
-
-msgctxt "field:party.address,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.address,name:"
 msgid "Building Name"
@@ -42,14 +26,6 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Osapoole nimi"
 
-msgctxt "field:party.address,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.address,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Tänav"
@@ -58,77 +34,42 @@ msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "Alajaotus"
 
-msgctxt "field:party.address,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.address,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
+#, fuzzy
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Alajaotus"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "Postiindeks"
 
-msgctxt "field:party.address.format,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
-msgctxt "field:party.address.format,country:"
-msgid "Country"
+#, fuzzy
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
 msgstr "Riik"
-
-msgctxt "field:party.address.format,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.address.format,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr "Formaat"
 
-msgctxt "field:party.address.format,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:party.address.format,language:"
-msgid "Language"
+#, fuzzy
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
 msgstr "Keel"
 
-msgctxt "field:party.address.format,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Riik"
 
-msgctxt "field:party.address.format,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.address.format,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.category,active:"
-msgid "Active"
-msgstr "Aktiivne"
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Alajaotus"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
 msgstr "Alamjaotus"
-
-msgctxt "field:party.category,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.category,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.category,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
@@ -138,22 +79,6 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Ülem"
 
-msgctxt "field:party.category,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.category,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.category,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.check_vies.result,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
 msgstr "Ebaõnnestunud osapooled"
@@ -161,18 +86,6 @@ msgstr "Ebaõnnestunud osapooled"
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
 msgstr "Õnnestunud osapooled"
-
-msgctxt "field:party.configuration,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.configuration,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.configuration,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
@@ -182,97 +95,21 @@ msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Osapoole jada"
 
-msgctxt "field:party.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.configuration,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.configuration,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.configuration.party_lang,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.configuration.party_lang,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.configuration.party_lang,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
 msgstr "Osapoole keel"
-
-msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.configuration.party_lang,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.configuration.party_lang,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.configuration.party_sequence,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.configuration.party_sequence,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.configuration.party_sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Osapoole jada"
 
-msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.configuration.party_sequence,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.configuration.party_sequence,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.contact_mechanism,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr "Kommentaar"
 
-msgctxt "field:party.contact_mechanism,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.contact_mechanism,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "E-Kiri"
-
-msgctxt "field:party.contact_mechanism,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
@@ -285,14 +122,6 @@ msgstr "Väärtus"
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
 msgstr "Osapool"
-
-msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.contact_mechanism,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -322,18 +151,6 @@ msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Koduleht"
 
-msgctxt "field:party.contact_mechanism,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.contact_mechanism,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.erase.ask,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Osapool"
@@ -342,45 +159,13 @@ msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Kood"
 
-msgctxt "field:party.identifier,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.identifier,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.identifier,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.identifier,party:"
 msgid "Party"
 msgstr "Osapool"
 
-msgctxt "field:party.identifier,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.identifier,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tüüp"
-
-msgctxt "field:party.identifier,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.identifier,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.party,active:"
-msgid "Active"
-msgstr "Aktiivne"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -402,14 +187,6 @@ msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr "Kontakteerumisviis"
 
-msgctxt "field:party.party,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.party,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
 msgstr "E-Kiri"
@@ -421,10 +198,6 @@ msgstr "Faks"
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
 msgstr "Täisnimi"
-
-msgctxt "field:party.party,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
@@ -450,10 +223,6 @@ msgctxt "field:party.party,phone:"
 msgid "Phone"
 msgstr "Telefon"
 
-msgctxt "field:party.party,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
 msgstr "Asendatud"
@@ -466,57 +235,13 @@ msgctxt "field:party.party,website:"
 msgid "Website"
 msgstr "Koduleht"
 
-msgctxt "field:party.party,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.party,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
 msgstr "Kategooria"
 
-msgctxt "field:party.party-party.category,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.party-party.category,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.party-party.category,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
 msgstr "Osapool"
-
-msgctxt "field:party.party-party.category,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.party-party.category,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.party-party.category,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:party.party.lang,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:party.party.lang,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:party.party.lang,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party.lang,lang:"
 msgid "Language"
@@ -526,41 +251,17 @@ msgctxt "field:party.party.lang,party:"
 msgid "Party"
 msgstr "Osapool"
 
-msgctxt "field:party.party.lang,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:party.party.lang,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:party.party.lang,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr "Sihtkoht"
-
-msgctxt "field:party.replace.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Lähtekoht"
 
-msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
-
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr ""
-
-msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -576,10 +277,6 @@ msgid ""
 "- ${country}\n"
 "- ${country_code}"
 msgstr ""
-
-msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -609,10 +306,6 @@ msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
 msgstr "Kasutatakse osapoole koodi loomiseks"
 
-msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
-
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "Kustutatav osapool."
@@ -620,10 +313,6 @@ msgstr "Kustutatav osapool."
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "Kirje poolt identifitseeritud osapool"
-
-msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
@@ -669,6 +358,11 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr "Aadressi formaat"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Alajaotus"
+
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Kategooriad"
@@ -712,6 +406,11 @@ msgstr "Asenda"
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "Osapoole kood peab olema unikaalne."
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -771,6 +470,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
 msgstr "Aadressi formaat"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Alajaotus"
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Kategooriad"
@@ -806,6 +510,11 @@ msgstr "Aadressid"
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
 msgstr "Aadressi formaat"
+
+#, fuzzy
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Alajaotus"
 
 msgctxt "model:party.category,name:"
 msgid "Category"

@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.address,active:"
-msgid "Active"
-msgstr "Actiu"
-
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Ciutat"
@@ -14,21 +10,9 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "País"
 
-msgctxt "field:party.address,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.address,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "Adreça completa"
-
-msgctxt "field:party.address,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.address,name:"
 msgid "Building Name"
@@ -42,14 +26,6 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "Nom del tercer"
 
-msgctxt "field:party.address,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.address,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
-
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "Carrer"
@@ -58,77 +34,37 @@ msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "Subdivisió"
 
-msgctxt "field:party.address,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.address,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "Tipus de subdivisió"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "Codi postal"
 
-msgctxt "field:party.address.format,active:"
-msgid "Active"
-msgstr "Actiu"
-
-msgctxt "field:party.address.format,country:"
-msgid "Country"
-msgstr "País"
-
-msgctxt "field:party.address.format,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.address.format,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
+msgstr "Codi País"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr "Format"
 
-msgctxt "field:party.address.format,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
+msgstr "Codi idioma"
 
-msgctxt "field:party.address.format,language:"
-msgid "Language"
-msgstr "Idioma"
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "Codi País"
 
-msgctxt "field:party.address.format,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.address.format,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.address.format,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.category,active:"
-msgid "Active"
-msgstr "Actiu"
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "Tipus de subdivisió"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
 msgstr "Fills"
-
-msgctxt "field:party.category,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.category,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.category,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
@@ -138,22 +74,6 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "Pare"
 
-msgctxt "field:party.category,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.category,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.category,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.check_vies.result,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
 msgstr "Tercer erroni"
@@ -161,18 +81,6 @@ msgstr "Tercer erroni"
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
 msgstr "Tercers correctes"
-
-msgctxt "field:party.configuration,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.configuration,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.configuration,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
@@ -182,97 +90,21 @@ msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "Seqüència de tercer"
 
-msgctxt "field:party.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.configuration,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.configuration,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.configuration.party_lang,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.configuration.party_lang,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.configuration.party_lang,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
 msgstr "Idioma del tercer"
-
-msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.configuration.party_lang,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.configuration.party_lang,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.configuration.party_sequence,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.configuration.party_sequence,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.configuration.party_sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "Seqüència de tercer"
 
-msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.configuration.party_sequence,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.configuration.party_sequence,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.contact_mechanism,active:"
-msgid "Active"
-msgstr "Actiu"
-
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr "Comentari"
 
-msgctxt "field:party.contact_mechanism,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.contact_mechanism,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "Correu electrònic"
-
-msgctxt "field:party.contact_mechanism,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
@@ -285,14 +117,6 @@ msgstr "Valor"
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
 msgstr "Tercer"
-
-msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.contact_mechanism,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -322,18 +146,6 @@ msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "Lloc web"
 
-msgctxt "field:party.contact_mechanism,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.contact_mechanism,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.erase.ask,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "Tercer"
@@ -342,45 +154,13 @@ msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "Codi"
 
-msgctxt "field:party.identifier,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.identifier,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.identifier,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.identifier,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.identifier,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.identifier,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
-
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "Tipus"
-
-msgctxt "field:party.identifier,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.identifier,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.party,active:"
-msgid "Active"
-msgstr "Actiu"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -402,14 +182,6 @@ msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr "Mitjans de contacte"
 
-msgctxt "field:party.party,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.party,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
 msgstr "Correu electrònic"
@@ -421,10 +193,6 @@ msgstr "Fax"
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
 msgstr "Nom complet"
-
-msgctxt "field:party.party,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
@@ -450,10 +218,6 @@ msgctxt "field:party.party,phone:"
 msgid "Phone"
 msgstr "Telèfon"
 
-msgctxt "field:party.party,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
 msgstr "Substituït per"
@@ -466,57 +230,13 @@ msgctxt "field:party.party,website:"
 msgid "Website"
 msgstr "Lloc web"
 
-msgctxt "field:party.party,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.party,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "field:party.party-party.category,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.party-party.category,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.party-party.category,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
 msgstr "Tercer"
-
-msgctxt "field:party.party-party.category,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.party-party.category,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.party-party.category,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:party.party.lang,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.party.lang,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:party.party.lang,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party.lang,lang:"
 msgid "Language"
@@ -526,42 +246,18 @@ msgctxt "field:party.party.lang,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.party.lang,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:party.party.lang,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.party.lang,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr "Destí"
-
-msgctxt "field:party.replace.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Origen"
 
-msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr ""
 "Si s'emplena, es substituirà el nom del tercer en el format de l'adreça"
-
-msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -588,10 +284,6 @@ msgstr ""
 "- ${subdivision_code}\n"
 "- ${country}\n"
 "- ${country_code}"
-
-msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -621,10 +313,6 @@ msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
 msgstr "Utilitzada per generar el codi del tercer."
 
-msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "El tercer que serà eliminat."
@@ -632,10 +320,6 @@ msgstr "El tercer que serà eliminat."
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "El tercer identificat per aquest registre."
-
-msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
@@ -681,6 +365,10 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr "Formats de les adreces"
 
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipus de subdivisió per adreça"
+
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -724,6 +412,10 @@ msgstr "Substitueix"
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr "No es pot canviar el tercer de l'adreça \"%(address)s\"."
+
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "El codi de páis al tipus de subdivisió ha de ser únic."
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -787,6 +479,10 @@ msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
 msgstr "Formats de les adreces"
 
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "Tipus de subdivisió per adreça"
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "Categories"
@@ -822,6 +518,10 @@ msgstr "Adreça"
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
 msgstr "Format de les adreces"
+
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "Tipus de subdivisió per adreça"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -1350,61 +1050,3 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "Substitueix"
-
-msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "view:party.address:"
-msgid "Addresses"
-msgstr "Adreces"
-
-msgctxt "view:party.category:"
-msgid "Categories"
-msgstr "Categories de tercer"
-
-msgctxt "view:party.category:"
-msgid "Category"
-msgstr "Categoria"
-
-msgctxt "view:party.check_vies.result:"
-msgid "VAT Information Exchange System Results"
-msgstr ""
-"Resultat del sistema d'intercanvi d'informació d'Identificador fiscal "
-"Europeu"
-
-msgctxt "view:party.configuration:"
-msgid "Party Configuration"
-msgstr "Configuració de tercers"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanism"
-msgstr "Mitjà de contacte"
-
-msgctxt "view:party.contact_mechanism:"
-msgid "Contact Mechanisms"
-msgstr "Mitjà de contacte"
-
-msgctxt "view:party.identifier:"
-msgid "Party Identifier"
-msgstr "Identificador del tercer"
-
-msgctxt "view:party.identifier:"
-msgid "Party Identifiers"
-msgstr "Identificadors del tercer"

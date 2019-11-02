@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:party.address,active:"
-msgid "Active"
-msgstr "فعال"
-
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "شهر"
@@ -14,21 +10,9 @@ msgctxt "field:party.address,country:"
 msgid "Country"
 msgstr "کشور"
 
-msgctxt "field:party.address,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.address,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:party.address,full_address:"
 msgid "Full Address"
 msgstr "آدرس کامل"
-
-msgctxt "field:party.address,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.address,name:"
 msgid "Building Name"
@@ -42,14 +26,6 @@ msgctxt "field:party.address,party_name:"
 msgid "Party Name"
 msgstr "نام نهاد/سازمان"
 
-msgctxt "field:party.address,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.address,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:party.address,street:"
 msgid "Street"
 msgstr "خیابان"
@@ -58,77 +34,42 @@ msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "زیرمجموعه"
 
-msgctxt "field:party.address,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.address,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
+#, fuzzy
+msgctxt "field:party.address,subdivision_types:"
+msgid "Subdivision Types"
+msgstr "زیرمجموعه"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "کدپستی"
 
-msgctxt "field:party.address.format,active:"
-msgid "Active"
-msgstr "فعال"
-
-msgctxt "field:party.address.format,country:"
-msgid "Country"
+#, fuzzy
+msgctxt "field:party.address.format,country_code:"
+msgid "Country Code"
 msgstr "کشور"
-
-msgctxt "field:party.address.format,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.address.format,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr "قالب"
 
-msgctxt "field:party.address.format,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:party.address.format,language:"
-msgid "Language"
+#, fuzzy
+msgctxt "field:party.address.format,language_code:"
+msgid "Language Code"
 msgstr "زبان"
 
-msgctxt "field:party.address.format,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,country_code:"
+msgid "Country Code"
+msgstr "کشور"
 
-msgctxt "field:party.address.format,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.address.format,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.category,active:"
-msgid "Active"
-msgstr "فعال"
+#, fuzzy
+msgctxt "field:party.address.subdivision_type,types:"
+msgid "Subdivision Types"
+msgstr "زیرمجموعه"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
 msgstr "زیر مجموعه"
-
-msgctxt "field:party.category,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.category,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.category,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.category,name:"
 msgid "Name"
@@ -138,22 +79,6 @@ msgctxt "field:party.category,parent:"
 msgid "Parent"
 msgstr "منبع"
 
-msgctxt "field:party.category,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.category,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.category,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.check_vies.result,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
 msgstr "نهادها/سازمان ها ناموفق"
@@ -161,18 +86,6 @@ msgstr "نهادها/سازمان ها ناموفق"
 msgctxt "field:party.check_vies.result,parties_succeed:"
 msgid "Parties Succeed"
 msgstr "نهادها/سازمان ها موفق"
-
-msgctxt "field:party.configuration,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.configuration,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.configuration,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.configuration,party_lang:"
 msgid "Party Language"
@@ -182,97 +95,21 @@ msgctxt "field:party.configuration,party_sequence:"
 msgid "Party Sequence"
 msgstr "دنباله نهاد/سازمان"
 
-msgctxt "field:party.configuration,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.configuration,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.configuration,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.configuration.party_lang,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.configuration.party_lang,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.configuration.party_lang,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.configuration.party_lang,party_lang:"
 msgid "Party Language"
 msgstr "زبان نهاد/سازمان"
-
-msgctxt "field:party.configuration.party_lang,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.configuration.party_lang,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.configuration.party_lang,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.configuration.party_sequence,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.configuration.party_sequence,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.configuration.party_sequence,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.configuration.party_sequence,party_sequence:"
 msgid "Party Sequence"
 msgstr "دنباله نهاد/سازمان"
 
-msgctxt "field:party.configuration.party_sequence,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.configuration.party_sequence,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.configuration.party_sequence,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.contact_mechanism,active:"
-msgid "Active"
-msgstr "فعال"
-
 msgctxt "field:party.contact_mechanism,comment:"
 msgid "Comment"
 msgstr "اظهار نظر"
 
-msgctxt "field:party.contact_mechanism,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.contact_mechanism,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "ایمیل"
-
-msgctxt "field:party.contact_mechanism,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
@@ -285,14 +122,6 @@ msgstr "مقدار"
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
-
-msgctxt "field:party.contact_mechanism,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.contact_mechanism,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
 
 msgctxt "field:party.contact_mechanism,sip:"
 msgid "SIP"
@@ -322,18 +151,6 @@ msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
 msgstr "وب سایت"
 
-msgctxt "field:party.contact_mechanism,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.contact_mechanism,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.erase.ask,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
@@ -342,45 +159,13 @@ msgctxt "field:party.identifier,code:"
 msgid "Code"
 msgstr "کد"
 
-msgctxt "field:party.identifier,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.identifier,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.identifier,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.identifier,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "field:party.identifier,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.identifier,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:party.identifier,type:"
 msgid "Type"
 msgstr "نوع"
-
-msgctxt "field:party.identifier,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.identifier,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.party,active:"
-msgid "Active"
-msgstr "فعال"
 
 msgctxt "field:party.party,addresses:"
 msgid "Addresses"
@@ -402,14 +187,6 @@ msgctxt "field:party.party,contact_mechanisms:"
 msgid "Contact Mechanisms"
 msgstr "مکانیسم های تماس"
 
-msgctxt "field:party.party,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.party,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:party.party,email:"
 msgid "E-Mail"
 msgstr "ایمیل"
@@ -421,10 +198,6 @@ msgstr "فکس"
 msgctxt "field:party.party,full_name:"
 msgid "Full Name"
 msgstr "نام کامل"
-
-msgctxt "field:party.party,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.party,identifiers:"
 msgid "Identifiers"
@@ -450,10 +223,6 @@ msgctxt "field:party.party,phone:"
 msgid "Phone"
 msgstr "تلفن"
 
-msgctxt "field:party.party,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:party.party,replaced_by:"
 msgid "Replaced By"
 msgstr "جایگزین شده توسط"
@@ -466,57 +235,13 @@ msgctxt "field:party.party,website:"
 msgid "Website"
 msgstr "وب سایت"
 
-msgctxt "field:party.party,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.party,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:party.party-party.category,category:"
 msgid "Category"
 msgstr "دسته‌بندی‌"
 
-msgctxt "field:party.party-party.category,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.party-party.category,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.party-party.category,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.party-party.category,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
-
-msgctxt "field:party.party-party.category,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.party-party.category,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.party-party.category,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:party.party.lang,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.party.lang,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:party.party.lang,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.party.lang,lang:"
 msgid "Language"
@@ -526,41 +251,17 @@ msgctxt "field:party.party.lang,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "field:party.party.lang,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.party.lang,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.party.lang,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:party.replace.ask,destination:"
 msgid "Destination"
 msgstr "مقصد"
-
-msgctxt "field:party.replace.ask,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "منبع"
 
-msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
-
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr "اگر پر شود، نام نهاد/سازمان را برای قالب بندی آدرس جایگزین کنید"
-
-msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -586,10 +287,6 @@ msgstr ""
 "- ${کد بخش} \n"
 "- ${کشور} \n"
 "- ${کد کشور}"
-
-msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:party.category,childs:"
 msgid "Add children below the category."
@@ -619,10 +316,6 @@ msgctxt "help:party.configuration.party_sequence,party_sequence:"
 msgid "Used to generate the party code."
 msgstr "برای تولید کد نهاد/سازمان استفاده کنید."
 
-msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
-
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
 msgstr "نهاد/سازمان باید حذف شود."
@@ -630,10 +323,6 @@ msgstr "نهاد/سازمان باید حذف شود."
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
 msgstr "نهاد/سازمان شناسایی شده توسط این پرونده."
-
-msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:party.party,categories:"
 msgid "The categories the party belongs to."
@@ -679,6 +368,11 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr "فرمت آدرس ها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "زیرمجموعه"
+
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
 msgstr "دسته بندی ها"
@@ -722,6 +416,11 @@ msgstr "جایگزین"
 msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr "شما نمی توانید آدرس : \"%(address)s\" نهاد/سازمان را تغییر دهید."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
+msgid "The country code on subdivision type must be unique."
+msgstr "کد نهاد/سازمان باید منحصربفرد یاشد."
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -784,6 +483,11 @@ msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
 msgstr "فرمت آدرس ها"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
+msgid "Address Subdivision Types"
+msgstr "زیرمجموعه"
+
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
 msgstr "دسته بندی ها"
@@ -819,6 +523,11 @@ msgstr "آدرس"
 msgctxt "model:party.address.format,name:"
 msgid "Address Format"
 msgstr "فرمت آدرس"
+
+#, fuzzy
+msgctxt "model:party.address.subdivision_type,name:"
+msgid "Address Subdivision Type"
+msgstr "زیرمجموعه"
 
 msgctxt "model:party.category,name:"
 msgid "Category"
@@ -1347,23 +1056,3 @@ msgstr "انصراف"
 msgctxt "wizard_button:party.replace,ask,replace:"
 msgid "Replace"
 msgstr "جایگزین"
-
-msgctxt "help:party.address,active:"
-msgid "Uncheck to exclude the address from future use."
-msgstr "برای خارج کردن آدرس از استفاده در آینده، تیک را بردارید."
-
-msgctxt "help:party.address.format,active:"
-msgid "Uncheck to exclude the format from future use."
-msgstr "برای خارج کردن قالب از استفاده در آینده، تیک را بردارید."
-
-msgctxt "help:party.category,active:"
-msgid "Uncheck to exclude the category from future use."
-msgstr "برای خارج کردن زیرمجموعه از استفاده در آینده، تیک را بردارید."
-
-msgctxt "help:party.contact_mechanism,active:"
-msgid "Uncheck to exclude the contact mechanism from future use."
-msgstr "برای خارج کردن مکانیسم تماس از استفاده در آینده، تیک را بردارید."
-
-msgctxt "help:party.party,active:"
-msgid "Uncheck to exclude the party from future use."
-msgstr "برای خارج کردن نهاد/سازمان از استفاده در آینده، تیک را بردارید."
