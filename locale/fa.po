@@ -24,10 +24,6 @@ msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "شرح"
 
-msgctxt "field:account.invoice.recall_deposit.start,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "سپرده"
@@ -67,15 +63,3 @@ msgstr "انصراف"
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
 msgstr "فراخوانی"
-
-msgctxt "selection:account.account,kind:"
-msgid "Deposit"
-msgstr "سپرده"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Deposit"
-msgstr "سپرده"
-
-msgctxt "view:account.invoice:"
-msgid "Recall Deposit"
-msgstr "فراخوانی سپرده"

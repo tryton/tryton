@@ -24,10 +24,6 @@ msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
-msgctxt "field:account.invoice.recall_deposit.start,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "ເງິນມັດຈໍາ"
@@ -66,15 +62,3 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
 msgstr "ຮຽກຄືນ"
-
-msgctxt "selection:account.account,kind:"
-msgid "Deposit"
-msgstr "ເງິນມັດຈໍາ"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Deposit"
-msgstr "ເງິນມັດຈໍາ"
-
-msgctxt "view:account.invoice:"
-msgid "Recall Deposit"
-msgstr "ຮຽກເງິນມັດຈໍາຄືນ"

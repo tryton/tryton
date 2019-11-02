@@ -22,10 +22,6 @@ msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "Beschreibung"
 
-msgctxt "field:account.invoice.recall_deposit.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Anzahlung"
@@ -67,15 +63,3 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
 msgstr "Verrechnen"
-
-msgctxt "selection:account.account,kind:"
-msgid "Deposit"
-msgstr "Anzahlung"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Deposit"
-msgstr "Anzahlung"
-
-msgctxt "view:account.invoice:"
-msgid "Recall Deposit"
-msgstr "Anzahlung verrechnen"

@@ -22,10 +22,6 @@ msgctxt "field:account.invoice.recall_deposit.start,description:"
 msgid "Description"
 msgstr "Description"
 
-msgctxt "field:account.invoice.recall_deposit.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party,deposit:"
 msgid "Deposit"
 msgstr "Dépôt"
@@ -66,15 +62,3 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.invoice.recall_deposit,start,recall:"
 msgid "Recall"
 msgstr "Rappeler"
-
-msgctxt "selection:account.account,kind:"
-msgid "Deposit"
-msgstr "Dépôt"
-
-msgctxt "selection:account.account.template,kind:"
-msgid "Deposit"
-msgstr "Dépôt"
-
-msgctxt "view:account.invoice:"
-msgid "Recall Deposit"
-msgstr "Rappeler les dépôts"
