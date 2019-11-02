@@ -2,18 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.action,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-msgctxt "field:ir.action,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
 msgstr "用户组"
@@ -21,10 +9,6 @@ msgstr "用户组"
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "图标"
-
-msgctxt "field:ir.action,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.action,keywords:"
 msgid "Keywords"
@@ -34,10 +18,6 @@ msgctxt "field:ir.action,name:"
 msgid "Name"
 msgstr "名称"
 
-msgctxt "field:ir.action,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.action,type:"
 msgid "Type"
 msgstr "类型"
@@ -45,14 +25,6 @@ msgstr "类型"
 msgctxt "field:ir.action,usage:"
 msgid "Usage"
 msgstr "用法"
-
-msgctxt "field:ir.action,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:ir.action.act_window,act_window_domains:"
 msgid "Domains"
@@ -66,10 +38,6 @@ msgctxt "field:ir.action.act_window,action:"
 msgid "Action"
 msgstr "操作"
 
-msgctxt "field:ir.action.act_window,active:"
-msgid "Active"
-msgstr "启用"
-
 msgctxt "field:ir.action.act_window,context:"
 msgid "Context Value"
 msgstr "场景值"
@@ -81,14 +49,6 @@ msgstr "上下文域"
 msgctxt "field:ir.action.act_window,context_model:"
 msgid "Context Model"
 msgstr "上下文模型"
-
-msgctxt "field:ir.action.act_window,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-msgctxt "field:ir.action.act_window,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.action.act_window,domain:"
 msgid "Domain Value"
@@ -105,10 +65,6 @@ msgstr "用户组"
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
 msgstr "图标"
-
-msgctxt "field:ir.action.act_window,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.action.act_window,keywords:"
 msgid "Keywords"
@@ -142,10 +98,6 @@ msgctxt "field:ir.action.act_window,pyson_search_value:"
 msgid "PySON Search Criteria"
 msgstr "PySON查找表达式"
 
-msgctxt "field:ir.action.act_window,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.action.act_window,res_model:"
 msgid "Model"
 msgstr "模型"
@@ -166,121 +118,37 @@ msgctxt "field:ir.action.act_window,views:"
 msgid "Views"
 msgstr "视图"
 
-msgctxt "field:ir.action.act_window,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.act_window,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.act_window.domain,act_window:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.act_window.domain,active:"
-msgid "Active"
-msgstr "启用"
 
 msgctxt "field:ir.action.act_window.domain,count:"
 msgid "Count"
 msgstr ""
 
-msgctxt "field:ir.action.act_window.domain,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-msgctxt "field:ir.action.act_window.domain,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.action.act_window.domain,domain:"
 msgid "Domain"
 msgstr "域配置"
-
-msgctxt "field:ir.action.act_window.domain,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.action.act_window.domain,name:"
 msgid "Name"
 msgstr "名称"
 
-msgctxt "field:ir.action.act_window.domain,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.action.act_window.domain,sequence:"
-msgid "Sequence"
-msgstr "序列"
-
-msgctxt "field:ir.action.act_window.domain,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.act_window.domain,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.act_window.view,act_window:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.act_window.view,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.action.act_window.view,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-msgctxt "field:ir.action.act_window.view,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.action.act_window.view,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.action.act_window.view,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.action.act_window.view,sequence:"
-msgid "Sequence"
-msgstr "序列"
 
 msgctxt "field:ir.action.act_window.view,view:"
 msgid "View"
 msgstr "视图"
 
-msgctxt "field:ir.action.act_window.view,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.act_window.view,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "动作"
 
-msgctxt "field:ir.action.keyword,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.action.keyword,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.action.keyword,groups:"
 msgid "Groups"
 msgstr "用户组"
-
-msgctxt "field:ir.action.keyword,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
@@ -290,34 +158,9 @@ msgctxt "field:ir.action.keyword,model:"
 msgid "Model"
 msgstr "模型"
 
-#, fuzzy
-msgctxt "field:ir.action.keyword,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.action.keyword,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.keyword,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.report,action:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.report,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.action.report,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.action.report,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
@@ -338,10 +181,6 @@ msgstr "用户组"
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
 msgstr "图标"
-
-msgctxt "field:ir.action.report,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.action.report,is_custom:"
 msgid "Is Custom"
@@ -366,10 +205,6 @@ msgstr "名称"
 msgctxt "field:ir.action.report,pyson_email:"
 msgid "PySON Email"
 msgstr "PySON 邮箱"
-
-msgctxt "field:ir.action.report,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -416,29 +251,9 @@ msgctxt "field:ir.action.report,usage:"
 msgid "Usage"
 msgstr "用法"
 
-msgctxt "field:ir.action.report,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.report,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.url,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.action.url,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.action.url,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.action.url,groups:"
 msgid "Groups"
@@ -448,10 +263,6 @@ msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "图标"
 
-msgctxt "field:ir.action.url,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.action.url,keywords:"
 msgid "Keywords"
 msgstr "关键词"
@@ -459,10 +270,6 @@ msgstr "关键词"
 msgctxt "field:ir.action.url,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.action.url,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.action.url,type:"
 msgid "Type"
@@ -476,29 +283,9 @@ msgctxt "field:ir.action.url,usage:"
 msgid "Usage"
 msgstr "用法"
 
-msgctxt "field:ir.action.url,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.url,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.wizard,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.action.wizard,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.action.wizard,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.action.wizard,email:"
 msgid "Email"
@@ -512,10 +299,6 @@ msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
 msgstr "图标"
 
-msgctxt "field:ir.action.wizard,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.action.wizard,keywords:"
 msgid "Keywords"
 msgstr "关键词"
@@ -527,10 +310,6 @@ msgstr "模型"
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.action.wizard,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.action.wizard,type:"
 msgid "Type"
@@ -548,22 +327,6 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "向导名称"
 
-msgctxt "field:ir.action.wizard,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.action.wizard,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.attachment,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.attachment,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
 msgstr "数据"
@@ -579,10 +342,6 @@ msgstr "描述"
 msgctxt "field:ir.attachment,file_id:"
 msgid "File ID"
 msgstr ""
-
-msgctxt "field:ir.attachment,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.attachment,last_modification:"
 msgid "Last Modification"
@@ -600,10 +359,6 @@ msgctxt "field:ir.attachment,name:"
 msgid "Name"
 msgstr "名称"
 
-msgctxt "field:ir.attachment,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.attachment,resource:"
 msgid "Resource"
 msgstr "附件文档资源"
@@ -616,64 +371,17 @@ msgctxt "field:ir.attachment,type:"
 msgid "Type"
 msgstr "类型"
 
-msgctxt "field:ir.attachment,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.attachment,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.cache,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.cache,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.cache,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.cache,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.cache,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.cache,timestamp:"
 msgid "Timestamp"
 msgstr "时间戳"
 
-msgctxt "field:ir.cache,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.cache,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.calendar.day,abbreviation:"
 msgid "Abbreviation"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.calendar.day,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.calendar.day,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.calendar.day,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.calendar.day,index:"
 msgid "Index"
@@ -684,39 +392,9 @@ msgctxt "field:ir.calendar.day,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
-msgctxt "field:ir.calendar.day,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
-msgctxt "field:ir.calendar.day,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.calendar.day,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.calendar.month,abbreviation:"
 msgid "Abbreviation"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.calendar.month,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.calendar.month,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.calendar.month,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.calendar.month,index:"
 msgid "Index"
@@ -727,64 +405,13 @@ msgctxt "field:ir.calendar.month,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
-msgctxt "field:ir.calendar.month,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
-msgctxt "field:ir.calendar.month,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.calendar.month,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.configuration,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.configuration,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.configuration,hostname:"
 msgid "Hostname"
 msgstr ""
 
-msgctxt "field:ir.configuration,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.configuration,language:"
 msgid "language"
 msgstr "语言"
-
-msgctxt "field:ir.configuration,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.configuration,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.configuration,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.cron,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.cron,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.cron,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 #, fuzzy
 msgctxt "field:ir.cron,day:"
@@ -795,10 +422,6 @@ msgstr "日"
 msgctxt "field:ir.cron,hour:"
 msgid "Hour"
 msgstr "小时"
-
-msgctxt "field:ir.cron,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.cron,interval_number:"
 msgid "Interval Number"
@@ -821,97 +444,29 @@ msgctxt "field:ir.cron,next_call:"
 msgid "Next Call"
 msgstr "下次调用"
 
-msgctxt "field:ir.cron,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr ""
-
-msgctxt "field:ir.cron,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.cron,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.date,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.export,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.export,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
 msgstr "数据"
 
-msgctxt "field:ir.export,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.export,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.export,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.export,resource:"
 msgid "Resource"
 msgstr "资源"
 
-msgctxt "field:ir.export,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.export,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.export.line,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.export.line,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.export.line,export:"
 msgid "Export"
 msgstr "导出"
 
-msgctxt "field:ir.export.line,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.export.line,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.export.line,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.export.line,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.export.line,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.lang,active:"
-msgid "Active"
-msgstr "启用"
 
 msgctxt "field:ir.lang,am:"
 msgid "AM"
@@ -920,14 +475,6 @@ msgstr ""
 msgctxt "field:ir.lang,code:"
 msgid "Code"
 msgstr "语言编码"
-
-msgctxt "field:ir.lang,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.lang,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.lang,date:"
 msgid "Date"
@@ -944,10 +491,6 @@ msgstr "语言方向"
 msgctxt "field:ir.lang,grouping:"
 msgid "Grouping"
 msgstr "类别"
-
-msgctxt "field:ir.lang,id:"
-msgid "ID"
-msgstr "标识"
 
 #, fuzzy
 msgctxt "field:ir.lang,mon_decimal_point:"
@@ -1008,10 +551,6 @@ msgctxt "field:ir.lang,positive_sign:"
 msgid "Positive Sign"
 msgstr ""
 
-msgctxt "field:ir.lang,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.lang,thousands_sep:"
 msgid "Thousands Separator"
 msgstr "千位分隔符"
@@ -1020,56 +559,10 @@ msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "可翻译"
 
-msgctxt "field:ir.lang,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.lang,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.message,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.message,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.message,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.message,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 #, fuzzy
 msgctxt "field:ir.message,text:"
 msgid "Text"
 msgstr "下一步"
-
-#, fuzzy
-msgctxt "field:ir.message,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.message,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.model,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.model,fields:"
 msgid "Fields"
@@ -1078,10 +571,6 @@ msgstr "数据"
 msgctxt "field:ir.model,global_search_p:"
 msgid "Global Search"
 msgstr "全局查找"
-
-msgctxt "field:ir.model,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model,info:"
 msgid "Information"
@@ -1099,31 +588,6 @@ msgctxt "field:ir.model,name:"
 msgid "Model Description"
 msgstr "模型描述"
 
-msgctxt "field:ir.model,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.model,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.model.access,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.model.access,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model.access,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
 msgstr "描述"
@@ -1131,10 +595,6 @@ msgstr "描述"
 msgctxt "field:ir.model.access,group:"
 msgid "Group"
 msgstr "用户组"
-
-msgctxt "field:ir.model.access,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model.access,model:"
 msgid "Model"
@@ -1157,19 +617,6 @@ msgid "Write Access"
 msgstr "写入"
 
 #, fuzzy
-msgctxt "field:ir.model.access,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.model.access,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model.access,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
 msgctxt "field:ir.model.button,clicks:"
 msgid "Clicks"
 msgstr "Clicks"
@@ -1177,14 +624,6 @@ msgstr "Clicks"
 msgctxt "field:ir.model.button,confirm:"
 msgid "Confirm"
 msgstr ""
-
-msgctxt "field:ir.model.button,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model.button,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.model.button,groups:"
 msgid "Groups"
@@ -1195,10 +634,6 @@ msgctxt "field:ir.model.button,help:"
 msgid "Help"
 msgstr "帮助"
 
-msgctxt "field:ir.model.button,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.model.button,model:"
 msgid "Model"
 msgstr "模型"
@@ -1206,10 +641,6 @@ msgstr "模型"
 msgctxt "field:ir.model.button,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.model.button,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.model.button,reset:"
 msgid "Reset"
@@ -1228,14 +659,6 @@ msgctxt "field:ir.model.button,string:"
 msgid "Label"
 msgstr ""
 
-msgctxt "field:ir.model.button,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model.button,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 #, fuzzy
 msgctxt "field:ir.model.button-button.reset,button:"
 msgid "Button"
@@ -1246,79 +669,14 @@ msgid "Button Ruled"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:ir.model.button-button.reset,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.model.button-button.reset,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.model.button-button.reset,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.model.button-button.reset,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
-msgctxt "field:ir.model.button-button.reset,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.model.button-button.reset,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,active:"
-msgid "Active"
-msgstr "启用"
-
-#, fuzzy
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
 msgstr "按钮"
 
 #, fuzzy
-msgctxt "field:ir.model.button.click,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
 msgstr "记录标识"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.model.button.click,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 #, fuzzy
 msgctxt "field:ir.model.button.rule,button:"
@@ -1331,51 +689,13 @@ msgid "Condition"
 msgstr "条件"
 
 #, fuzzy
-msgctxt "field:ir.model.button.rule,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.model.button.rule,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
 msgctxt "field:ir.model.button.rule,description:"
 msgid "Description"
 msgstr "描述"
 
-#, fuzzy
-msgctxt "field:ir.model.button.rule,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.model.button.rule,number_user:"
 msgid "Number of User"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.model.button.rule,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
-msgctxt "field:ir.model.button.rule,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.model.button.rule,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.model.data,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model.data,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.model.data,db_id:"
 msgid "Resource ID"
@@ -1388,10 +708,6 @@ msgstr "文件系统标识"
 msgctxt "field:ir.model.data,fs_values:"
 msgid "Values on File System"
 msgstr "文件系统值"
-
-msgctxt "field:ir.model.data,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model.data,model:"
 msgid "Model"
@@ -1409,30 +725,9 @@ msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
 msgstr "未同步"
 
-#, fuzzy
-msgctxt "field:ir.model.data,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.model.data,values:"
 msgid "Values"
 msgstr "值"
-
-msgctxt "field:ir.model.data,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model.data,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.model.field,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model.field,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.model.field,field_description:"
 msgid "Field Description"
@@ -1441,10 +736,6 @@ msgstr "数据描述"
 msgctxt "field:ir.model.field,help:"
 msgid "Help"
 msgstr "帮助"
-
-msgctxt "field:ir.model.field,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model.field,model:"
 msgid "Model"
@@ -1458,11 +749,6 @@ msgctxt "field:ir.model.field,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
-msgctxt "field:ir.model.field,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.model.field,relation:"
 msgid "Model Relation"
 msgstr "模型关联"
@@ -1470,27 +756,6 @@ msgstr "模型关联"
 msgctxt "field:ir.model.field,ttype:"
 msgid "Field Type"
 msgstr "数据类型"
-
-msgctxt "field:ir.model.field,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model.field,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.model.field.access,active:"
-msgid "Active"
-msgstr "启用"
-
-msgctxt "field:ir.model.field.access,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.model.field.access,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.model.field.access,description:"
 msgid "Description"
@@ -1503,10 +768,6 @@ msgstr "数据"
 msgctxt "field:ir.model.field.access,group:"
 msgid "Group"
 msgstr "用户组"
-
-msgctxt "field:ir.model.field.access,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model.field.access,perm_create:"
 msgid "Create Access"
@@ -1524,26 +785,9 @@ msgctxt "field:ir.model.field.access,perm_write:"
 msgid "Write Access"
 msgstr "写入"
 
-#, fuzzy
-msgctxt "field:ir.model.field.access,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.model.field.access,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.model.field.access,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.model.print_model_graph.start,filter:"
 msgid "Filter"
 msgstr "筛选"
-
-msgctxt "field:ir.model.print_model_graph.start,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.model.print_model_graph.start,level:"
 msgid "Level"
@@ -1553,21 +797,9 @@ msgctxt "field:ir.module,childs:"
 msgid "Childs"
 msgstr "子项"
 
-msgctxt "field:ir.module,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.module,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.module,dependencies:"
 msgid "Dependencies"
 msgstr "依赖"
-
-msgctxt "field:ir.module,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.module,name:"
 msgid "Name"
@@ -1577,11 +809,6 @@ msgctxt "field:ir.module,parents:"
 msgid "Parents"
 msgstr "父级"
 
-#, fuzzy
-msgctxt "field:ir.module,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.module,state:"
 msgid "State"
 msgstr "状态"
@@ -1590,93 +817,22 @@ msgctxt "field:ir.module,version:"
 msgid "Version"
 msgstr "版本"
 
-msgctxt "field:ir.module,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.module,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.module.activate_upgrade.done,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.module.activate_upgrade.start,id:"
-msgid "ID"
-msgstr "标识"
-
 #, fuzzy
 msgctxt "field:ir.module.activate_upgrade.start,module_info:"
 msgid "Modules to update"
 msgstr "待更新模块"
 
-msgctxt "field:ir.module.config_wizard.done,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.module.config_wizard.first,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.module.config_wizard.item,action:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.module.config_wizard.item,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.module.config_wizard.item,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.module.config_wizard.item,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.module.config_wizard.item,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.module.config_wizard.item,sequence:"
-msgid "Sequence"
-msgstr "序列"
 
 msgctxt "field:ir.module.config_wizard.item,state:"
 msgid "State"
 msgstr "状态"
 
-msgctxt "field:ir.module.config_wizard.item,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.module.config_wizard.item,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.module.config_wizard.other,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.module.config_wizard.other,percentage:"
 msgid "Percentage"
 msgstr "百分比"
-
-msgctxt "field:ir.module.dependency,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.module.dependency,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-msgctxt "field:ir.module.dependency,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
@@ -1686,37 +842,9 @@ msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
-msgctxt "field:ir.module.dependency,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "状态"
-
-msgctxt "field:ir.module.dependency,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.module.dependency,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.note,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.note,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.note,id:"
-msgid "ID"
-msgstr "标识"
 
 #, fuzzy
 msgctxt "field:ir.note,last_modification:"
@@ -1737,11 +865,6 @@ msgid "Message"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:ir.note,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
 msgctxt "field:ir.note,resource:"
 msgid "Resource"
 msgstr "附件文档资源"
@@ -1751,64 +874,14 @@ msgid "Unread"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:ir.note,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.note,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.note.read,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.note.read,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-#, fuzzy
-msgctxt "field:ir.note.read,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
 msgctxt "field:ir.note.read,note:"
 msgid "Note"
 msgstr "注释"
 
 #, fuzzy
-msgctxt "field:ir.note.read,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-#, fuzzy
 msgctxt "field:ir.note.read,user:"
 msgid "User"
 msgstr "用户"
-
-#, fuzzy
-msgctxt "field:ir.note.read,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.note.read,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:ir.queue,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.queue,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 #, fuzzy
 msgctxt "field:ir.queue,data:"
@@ -1832,74 +905,21 @@ msgid "Finished at"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:ir.queue,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
 msgctxt "field:ir.queue,name:"
 msgid "Name"
 msgstr "名称"
-
-#, fuzzy
-msgctxt "field:ir.queue,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.queue,scheduled_at:"
 msgid "Scheduled at"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:ir.queue,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.queue,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.rule,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.rule,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
 msgstr "域配置"
 
-msgctxt "field:ir.rule,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.rule,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.rule,rule_group:"
 msgid "Group"
 msgstr "用户组"
-
-msgctxt "field:ir.rule,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.rule,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.rule.group,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.rule.group,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.rule.group,default_p:"
 msgid "Default"
@@ -1912,10 +932,6 @@ msgstr "全局"
 msgctxt "field:ir.rule.group,groups:"
 msgid "Groups"
 msgstr "用户组"
-
-msgctxt "field:ir.rule.group,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
@@ -1941,42 +957,13 @@ msgctxt "field:ir.rule.group,perm_write:"
 msgid "Write Access"
 msgstr "写入"
 
-#, fuzzy
-msgctxt "field:ir.rule.group,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.rule.group,rules:"
 msgid "Tests"
 msgstr "测试"
 
-msgctxt "field:ir.rule.group,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.rule.group,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.sequence,active:"
-msgid "Active"
-msgstr "启用"
-
 msgctxt "field:ir.sequence,code:"
 msgid "Sequence Code"
 msgstr "序列编号"
-
-msgctxt "field:ir.sequence,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.sequence,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.sequence,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.sequence,last_timestamp:"
 msgid "Last Timestamp"
@@ -2006,11 +993,6 @@ msgctxt "field:ir.sequence,prefix:"
 msgid "Prefix"
 msgstr "前缀"
 
-#, fuzzy
-msgctxt "field:ir.sequence,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.sequence,suffix:"
 msgid "Suffix"
 msgstr "后缀"
@@ -2027,33 +1009,9 @@ msgctxt "field:ir.sequence,type:"
 msgid "Type"
 msgstr "类型"
 
-msgctxt "field:ir.sequence,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.sequence,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.sequence.strict,active:"
-msgid "Active"
-msgstr "启用"
-
 msgctxt "field:ir.sequence.strict,code:"
 msgid "Sequence Code"
 msgstr "序列编号"
-
-msgctxt "field:ir.sequence.strict,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.sequence.strict,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-msgctxt "field:ir.sequence.strict,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.sequence.strict,last_timestamp:"
 msgid "Last Timestamp"
@@ -2083,11 +1041,6 @@ msgctxt "field:ir.sequence.strict,prefix:"
 msgid "Prefix"
 msgstr "前缀"
 
-#, fuzzy
-msgctxt "field:ir.sequence.strict,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.sequence.strict,suffix:"
 msgid "Suffix"
 msgstr "后缀"
@@ -2104,120 +1057,25 @@ msgctxt "field:ir.sequence.strict,type:"
 msgid "Type"
 msgstr "类型"
 
-msgctxt "field:ir.sequence.strict,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.sequence.strict,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.sequence.type,code:"
 msgid "Sequence Code"
 msgstr "序列编号"
-
-msgctxt "field:ir.sequence.type,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.sequence.type,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-msgctxt "field:ir.sequence.type,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.sequence.type,name:"
 msgid "Sequence Name"
 msgstr "序列名"
 
-#, fuzzy
-msgctxt "field:ir.sequence.type,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.sequence.type,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.sequence.type,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.session,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.session,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.session,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.session,key:"
 msgid "Key"
 msgstr "密匙"
-
-#, fuzzy
-msgctxt "field:ir.session,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.session,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.session,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.session.wizard,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.session.wizard,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.session.wizard,data:"
 msgid "Data"
 msgstr "数据"
 
-msgctxt "field:ir.session.wizard,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.session.wizard,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.session.wizard,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.session.wizard,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.translation,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.translation,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.translation,fuzzy:"
 msgid "Fuzzy"
 msgstr "模糊"
-
-msgctxt "field:ir.translation,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.translation,lang:"
 msgid "Language"
@@ -2239,11 +1097,6 @@ msgctxt "field:ir.translation,overriding_module:"
 msgid "Overriding Module"
 msgstr "来源模块"
 
-#, fuzzy
-msgctxt "field:ir.translation,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.translation,res_id:"
 msgid "Resource ID"
 msgstr "资源 ID"
@@ -2260,33 +1113,9 @@ msgctxt "field:ir.translation,value:"
 msgid "Translation Value"
 msgstr "翻译"
 
-msgctxt "field:ir.translation,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.translation,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.translation.clean.start,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.translation.clean.succeed,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "文件"
-
-msgctxt "field:ir.translation.export.result,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.translation.export.start,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
@@ -2295,18 +1124,6 @@ msgstr "语言"
 msgctxt "field:ir.translation.export.start,module:"
 msgid "Module"
 msgstr "模块"
-
-msgctxt "field:ir.translation.set.start,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.translation.set.succeed,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.translation.update.start,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
@@ -2320,25 +1137,9 @@ msgctxt "field:ir.trigger,action_model:"
 msgid "Action Model"
 msgstr "动作模型"
 
-msgctxt "field:ir.trigger,active:"
-msgid "Active"
-msgstr "启用"
-
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
 msgstr "条件"
-
-msgctxt "field:ir.trigger,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.trigger,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.trigger,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.trigger,limit_number:"
 msgid "Limit Number"
@@ -2372,36 +1173,6 @@ msgctxt "field:ir.trigger,on_write:"
 msgid "On Write"
 msgstr "写入触发"
 
-#, fuzzy
-msgctxt "field:ir.trigger,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.trigger,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.trigger,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.trigger.log,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.trigger.log,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.trigger.log,id:"
-msgid "ID"
-msgstr "标识"
-
-#, fuzzy
-msgctxt "field:ir.trigger.log,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.trigger.log,record_id:"
 msgid "Record ID"
 msgstr "记录标识"
@@ -2410,29 +1181,9 @@ msgctxt "field:ir.trigger.log,trigger:"
 msgid "Trigger"
 msgstr "触发器"
 
-msgctxt "field:ir.trigger.log,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.trigger.log,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.ui.icon,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.icon,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.ui.icon,icon:"
 msgid "Icon"
 msgstr "图标"
-
-msgctxt "field:ir.ui.icon,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
@@ -2446,23 +1197,6 @@ msgctxt "field:ir.ui.icon,path:"
 msgid "SVG Path"
 msgstr "SVG Path"
 
-#, fuzzy
-msgctxt "field:ir.ui.icon,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.ui.icon,sequence:"
-msgid "Sequence"
-msgstr "序列"
-
-msgctxt "field:ir.ui.icon,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.icon,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.ui.menu,action:"
 msgid "Action"
 msgstr "动作"
@@ -2471,10 +1205,6 @@ msgctxt "field:ir.ui.menu,action_keywords:"
 msgid "Action Keywords"
 msgstr "动作关键词"
 
-msgctxt "field:ir.ui.menu,active:"
-msgid "Active"
-msgstr "启用"
-
 msgctxt "field:ir.ui.menu,childs:"
 msgid "Children"
 msgstr "子项"
@@ -2482,14 +1212,6 @@ msgstr "子项"
 msgctxt "field:ir.ui.menu,complete_name:"
 msgid "Complete Name"
 msgstr "全名"
-
-msgctxt "field:ir.ui.menu,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.menu,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.ui.menu,favorite:"
 msgid "Favorite"
@@ -2503,10 +1225,6 @@ msgctxt "field:ir.ui.menu,icon:"
 msgid "Icon"
 msgstr "图标"
 
-msgctxt "field:ir.ui.menu,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.ui.menu,name:"
 msgid "Menu"
 msgstr "菜单"
@@ -2515,71 +1233,17 @@ msgctxt "field:ir.ui.menu,parent:"
 msgid "Parent Menu"
 msgstr "上一级菜单"
 
-#, fuzzy
-msgctxt "field:ir.ui.menu,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.ui.menu,sequence:"
-msgid "Sequence"
-msgstr "序列"
-
-msgctxt "field:ir.ui.menu,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.menu,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.ui.menu.favorite,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.menu.favorite,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
-msgctxt "field:ir.ui.menu.favorite,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.ui.menu.favorite,menu:"
 msgid "Menu"
 msgstr "菜单"
-
-#, fuzzy
-msgctxt "field:ir.ui.menu.favorite,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
-msgctxt "field:ir.ui.menu.favorite,sequence:"
-msgid "Sequence"
-msgstr "序列"
 
 msgctxt "field:ir.ui.menu.favorite,user:"
 msgid "User"
 msgstr "用户"
 
-msgctxt "field:ir.ui.menu.favorite,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.menu.favorite,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:ir.ui.view,arch:"
 msgid "View Architecture"
 msgstr "视图层次"
-
-msgctxt "field:ir.ui.view,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.view,create_uid:"
-msgid "Create User"
-msgstr "创建者"
 
 msgctxt "field:ir.ui.view,data:"
 msgid "Data"
@@ -2592,10 +1256,6 @@ msgstr "域配置"
 msgctxt "field:ir.ui.view,field_childs:"
 msgid "Children Field"
 msgstr "子项"
-
-msgctxt "field:ir.ui.view,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.ui.view,inherit:"
 msgid "Inherited View"
@@ -2617,42 +1277,13 @@ msgctxt "field:ir.ui.view,priority:"
 msgid "Priority"
 msgstr "优先级"
 
-#, fuzzy
-msgctxt "field:ir.ui.view,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.ui.view,type:"
 msgid "View Type"
 msgstr "视图类型"
 
-msgctxt "field:ir.ui.view,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.view,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.ui.view.show.start,id:"
-msgid "ID"
-msgstr "标识"
-
-msgctxt "field:ir.ui.view_search,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.view_search,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.ui.view_search,domain:"
 msgid "Domain"
 msgstr "域配置"
-
-msgctxt "field:ir.ui.view_search,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
@@ -2662,42 +1293,17 @@ msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
 msgstr "名称"
 
-#, fuzzy
-msgctxt "field:ir.ui.view_search,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.ui.view_search,user:"
 msgid "User"
 msgstr "用户"
-
-msgctxt "field:ir.ui.view_search,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.view_search,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:ir.ui.view_tree_state,child_name:"
 msgid "Child Name"
 msgstr "子项名称"
 
-msgctxt "field:ir.ui.view_tree_state,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.view_tree_state,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.ui.view_tree_state,domain:"
 msgid "Domain"
 msgstr "域配置"
-
-msgctxt "field:ir.ui.view_tree_state,id:"
-msgid "ID"
-msgstr "标识"
 
 msgctxt "field:ir.ui.view_tree_state,model:"
 msgid "Model"
@@ -2707,11 +1313,6 @@ msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
 msgstr "展开节点"
 
-#, fuzzy
-msgctxt "field:ir.ui.view_tree_state,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
-
 msgctxt "field:ir.ui.view_tree_state,selected_nodes:"
 msgid "Selected Nodes"
 msgstr "选中节点"
@@ -2720,38 +1321,13 @@ msgctxt "field:ir.ui.view_tree_state,user:"
 msgid "User"
 msgstr "用户"
 
-msgctxt "field:ir.ui.view_tree_state,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.view_tree_state,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "field:ir.ui.view_tree_width,create_date:"
-msgid "Create Date"
-msgstr "创建日期"
-
-msgctxt "field:ir.ui.view_tree_width,create_uid:"
-msgid "Create User"
-msgstr "创建者"
-
 msgctxt "field:ir.ui.view_tree_width,field:"
 msgid "Field"
 msgstr "数据"
 
-msgctxt "field:ir.ui.view_tree_width,id:"
-msgid "ID"
-msgstr "标识"
-
 msgctxt "field:ir.ui.view_tree_width,model:"
 msgid "Model"
 msgstr "模型"
-
-#, fuzzy
-msgctxt "field:ir.ui.view_tree_width,rec_name:"
-msgid "Record Name"
-msgstr "记录名称"
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -2761,45 +1337,19 @@ msgctxt "field:ir.ui.view_tree_width,width:"
 msgid "Width"
 msgstr "宽"
 
-msgctxt "field:ir.ui.view_tree_width,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-msgctxt "field:ir.ui.view_tree_width,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-msgctxt "help:ir.action,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.action.act_window,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
 msgctxt "help:ir.action.act_window,context_domain:"
-msgid "Part of the domain that will be evaluated on each refresh"
+msgid "Part of the domain that will be evaluated on each refresh."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:ir.action.act_window,limit:"
-msgid "Default limit for the list view"
+msgid "Default limit for the list view."
 msgstr "列表视图默认限制"
 
+#, fuzzy
 msgctxt "help:ir.action.act_window,search_value:"
-msgid "Default search criteria for the list view"
+msgid "Default search criteria for the list view."
 msgstr "列表视图默认搜索表达式"
-
-msgctxt "help:ir.action.act_window.domain,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.action.act_window.view,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.action.report,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:ir.action.report,email:"
 msgid ""
@@ -2813,7 +1363,7 @@ msgstr ""
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
-"compatible format"
+"compatible format."
 msgstr "参考unoconv文档有关格式部分，模版空白不要改动"
 
 msgctxt "help:ir.action.report,single:"
@@ -2824,25 +1374,10 @@ msgctxt "help:ir.action.report,translatable:"
 msgid "Uncheck to disable translations for this report."
 msgstr ""
 
-msgctxt "help:ir.action.url,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.action.wizard,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
+#, fuzzy
 msgctxt "help:ir.action.wizard,window:"
-msgid "Run wizard in a new window"
+msgid "Run wizard in a new window."
 msgstr "打开新窗口运行向导"
-
-msgctxt "help:ir.cron,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.lang,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -2852,24 +1387,17 @@ msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:ir.model,module:"
-msgid "Module in which this model is defined"
+msgid "Module in which this model is defined."
 msgstr "定义该模型的模块"
-
-msgctxt "help:ir.model.access,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:ir.model.button,confirm:"
 msgid "Text to ask user confirmation when clicking the button."
 msgstr ""
 
 msgctxt "help:ir.model.button,reset_by:"
-msgid "Button that should reset the rules"
-msgstr ""
-
-msgctxt "help:ir.model.button.click,active:"
-msgid "Uncheck to exclude from future use."
+msgid "Button that should reset the rules."
 msgstr ""
 
 #, fuzzy
@@ -2889,13 +1417,10 @@ msgctxt "help:ir.model.data,fs_id:"
 msgid "The id of the record as known on the file system."
 msgstr "文件系统里的记录ID"
 
+#, fuzzy
 msgctxt "help:ir.model.field,module:"
-msgid "Module in which this field is defined"
+msgid "Module in which this field is defined."
 msgstr "定义该数据的模块"
-
-msgctxt "help:ir.model.field.access,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:ir.model.print_model_graph.start,filter:"
 msgid ""
@@ -2917,14 +1442,16 @@ msgid ""
 "- \"user\" as the current user"
 msgstr "PYSON场景满足当前用户名为“用户名”, 域配置生效."
 
+#, fuzzy
 msgctxt "help:ir.rule.group,default_p:"
-msgid "Add this rule to all users by default"
+msgid "Add this rule to all users by default."
 msgstr "默认向所有用户启用本规则"
 
+#, fuzzy
 msgctxt "help:ir.rule.group,global_p:"
 msgid ""
 "Make the rule global \n"
-"so every users must follow this rule"
+"so every users must follow this rule."
 msgstr ""
 "本规则设定为“全局”\n"
 " 对所有用户有效"
@@ -2933,21 +1460,10 @@ msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:ir.rule.group,rules:"
-msgid "The rule is satisfied if at least one test is True"
+msgid "The rule is satisfied if at least one test is True."
 msgstr "任意一项测试结果为真，即判断符合规则."
-
-msgctxt "help:ir.sequence,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.sequence.strict,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:ir.trigger,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:ir.trigger,condition:"
 msgid ""
@@ -2973,12 +1489,9 @@ msgstr ""
 "设置对相同数据调用\"动作方法\" 的最小间隔时间\n"
 " 留空表示不限制"
 
-msgctxt "help:ir.ui.menu,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
+#, fuzzy
 msgctxt "help:ir.ui.view_search,domain:"
-msgid "The PYSON domain"
+msgid "The PYSON domain."
 msgstr "PYSON 域"
 
 msgctxt "model:ir.action,name:"
@@ -3499,8 +2012,16 @@ msgctxt "model:ir.lang,name:lang_es_419"
 msgid "Spanish (Latin American)"
 msgstr "Spanish (Latin American)"
 
+msgctxt "model:ir.lang,name:lang_et"
+msgid "Estonian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
+msgstr ""
+
+msgctxt "model:ir.lang,name:lang_fi"
+msgid "Finnish"
 msgstr ""
 
 #, fuzzy
@@ -3550,6 +2071,10 @@ msgctxt "model:ir.lang,name:lang_sl"
 msgid "Slovenian"
 msgstr "Slovenian"
 
+msgctxt "model:ir.lang,name:lang_tr"
+msgid "Turkish"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinese Simplified"
@@ -3557,6 +2082,11 @@ msgstr "Chinese Simplified"
 msgctxt "model:ir.message,name:"
 msgid "Message"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_ID"
+msgid "ID"
+msgstr "标识"
 
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
@@ -3591,6 +2121,15 @@ msgid "Wrong wizard model in keyword action \"%(name)s\"."
 msgstr "关键字操作\"%s\"的向导模型有误."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_active"
+msgid "Active"
+msgstr "启用"
+
+msgctxt "model:ir.message,text:msg_active_help"
+msgid "Uncheck to exclude from future use."
+msgstr ""
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
 msgstr "This record is part of the base configuration."
@@ -3601,15 +2140,15 @@ msgid ""
 "%(rules)s"
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_cron_email"
-msgid ""
-"Scheduled action failed\n"
-"The following action failed to execute properly: \"%(name)s\"\n"
-"%(url)s\n"
-"\n"
-"Traceback:\n"
-"%(traceback)s"
-msgstr ""
+#, fuzzy
+msgctxt "model:ir.message,text:msg_created_at"
+msgid "Created at"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_created_by"
+msgid "Created by"
+msgstr "创建者"
 
 msgctxt "model:ir.message,text:msg_delete_rule_error"
 msgid ""
@@ -3622,6 +2161,42 @@ msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
 msgstr "You are not allowed to delete this record."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_boolean"
+msgid "Boolean"
+msgstr "清理"
+
+msgctxt "model:ir.message,text:msg_dict_schema_char"
+msgid "Char"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_date"
+msgid "Date"
+msgstr "日期格式"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_datetime"
+msgid "DateTime"
+msgstr "日期格式"
+
+msgctxt "model:ir.message,text:msg_dict_schema_digits"
+msgid "Digits"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_domain"
+msgid "Domain"
+msgstr "域配置"
+
+msgctxt "model:ir.message,text:msg_dict_schema_float"
+msgid "Float"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dict_schema_integer"
+msgid "Integer"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
 msgstr ""
@@ -3629,6 +2204,47 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_name"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "model:ir.message,text:msg_dict_schema_numeric"
+msgid "Numeric"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_selection"
+msgid "Selection"
+msgstr "选择"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
+msgid "A couple of key and label separated by \":\" per line."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
+msgid "Selection JSON"
+msgstr "选择"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted"
+msgid "Selection Sorted"
+msgstr "选择"
+
+msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
+msgid "If the selection must be sorted on label."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dict_schema_string"
+msgid "String"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_type"
+msgid "Type"
+msgstr "类型"
 
 msgctxt "model:ir.message,text:msg_digits_validation_record"
 msgid ""
@@ -3644,6 +2260,16 @@ msgid ""
 msgstr ""
 "The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
 " to its domain."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_edited_at"
+msgid "Edited at"
+msgstr "创建日期:"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_edited_by"
+msgid "Edited by"
+msgstr "创建者"
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -3717,6 +2343,11 @@ msgid ""
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_record_name"
+msgid "Record Name"
+msgstr "记录名称"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_recursion_error"
 msgid ""
 "Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
@@ -3762,6 +2393,11 @@ msgstr ""
 "the selection."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_sequence"
+msgid "Sequence"
+msgstr "序列"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_sequence_invalid_prefix"
 msgid "Invalid prefix \"%(affix)s\" for sequence \"%(sequence)s\"."
 msgstr "序列 \"%(sequence)s\"前缀\"%(prefix)s\"无效."
@@ -3799,6 +2435,34 @@ msgid ""
 msgstr ""
 "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
 "valid."
+
+msgctxt "model:ir.message,text:msg_timedelta_M"
+msgid "M"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_Y"
+msgid "Y"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_d"
+msgid "d"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_h"
+msgid "h"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_m"
+msgid "m"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_s"
+msgid "s"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_timedelta_w"
+msgid "w"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
 msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
@@ -4595,13 +3259,15 @@ msgctxt "view:ir.note:"
 msgid "User"
 msgstr "用户"
 
+#, fuzzy
 msgctxt "view:ir.rule.group:"
 msgid ""
-"If there is no test defined, the rule is always satisfied if not global"
+"If there is no test defined, the rule is always satisfied if not global."
 msgstr "非全局规则有明确的测试定义才有效."
 
+#, fuzzy
 msgctxt "view:ir.rule.group:"
-msgid "The rule is satisfied if at least one test is True"
+msgid "The rule is satisfied if at least one test is True."
 msgstr "任意一项测试结果为真，即判断符合规则."
 
 msgctxt "view:ir.sequence:"
@@ -4746,477 +3412,3 @@ msgstr "更新"
 msgctxt "wizard_button:ir.ui.view.show,start,end:"
 msgid "Close"
 msgstr "关闭"
-
-msgctxt "field:ir.cron,args:"
-msgid "Arguments"
-msgstr "参数"
-
-msgctxt "field:ir.cron,function:"
-msgid "Function"
-msgstr "方法"
-
-msgctxt "field:ir.cron,interval_type:"
-msgid "Interval Unit"
-msgstr "单位"
-
-msgctxt "field:ir.cron,model:"
-msgid "Model"
-msgstr "模型"
-
-msgctxt "field:ir.cron,name:"
-msgid "Name"
-msgstr "名称"
-
-msgctxt "field:ir.cron,number_calls:"
-msgid "Number of Calls"
-msgstr "调用次数"
-
-msgctxt "field:ir.cron,repeat_missed:"
-msgid "Repeat Missed"
-msgstr "重启错过项目"
-
-msgctxt "field:ir.cron,request_user:"
-msgid "Request User"
-msgstr "请求用户"
-
-msgctxt "field:ir.cron,user:"
-msgid "Execution User"
-msgstr "执行用户"
-
-msgctxt "help:ir.cron,number_calls:"
-msgid ""
-"Number of times the function is called, a negative number indicates that the"
-" function will always be called"
-msgstr "方法被调用的次数，负数表示方法总是被调用"
-
-msgctxt "help:ir.cron,request_user:"
-msgid "The user who will receive requests in case of failure"
-msgstr "运行失败后由哪个用户接收请求"
-
-msgctxt "help:ir.cron,user:"
-msgid "The user used to execute this action"
-msgstr "执行动作的用户"
-
-msgctxt "view:ir.cron:"
-msgid "Action to trigger"
-msgstr "待执行"
-
-msgctxt "field:ir.translation,src_md5:"
-msgid "Source MD5"
-msgstr "源 MD5"
-
-#, fuzzy
-msgctxt "error:access_error:"
-msgid ""
-"You try to bypass an access rule.\n"
-"(Document type: %s)"
-msgstr ""
-"You try to bypass an access rule.\n"
-"(Document type: %s)"
-
-msgctxt "error:digits_validation_record:"
-msgid ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
-msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" exceeds the "
-"digits limit of \"%(digits)s\"."
-
-#, fuzzy
-msgctxt "error:foreign_model_exist:"
-msgid ""
-"Could not delete the records because they are used on field \"%(field)s\" of"
-" \"%(model)s\"."
-msgstr ""
-"Could not delete the records because they are used on field \"%(field)s\" of"
-" \"%(model)s\"."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
-msgstr "动作\"%(action)s\"的域配置或查找表达式\"%(domain)s\"无效."
-
-msgctxt "error:ir.cron:"
-msgid "Scheduled action failed"
-msgstr "计划动作失败"
-
-msgctxt "error:ir.cron:"
-msgid ""
-"The following action failed to execute properly: \"%s\"\n"
-"%s\n"
-" Traceback: \n"
-"\n"
-"%s\n"
-msgstr ""
-"下列动作没有执行: \"%s\"\n"
-"%s\n"
-"Traceback: \n"
-"\n"
-"%s\n"
-
-msgctxt "error:ir.lang:"
-msgid "decimal_point and thousands_sep must be different!"
-msgstr "小数点和千位分隔符不能相同！"
-
-msgctxt "error:ir.model.access:"
-msgid "You can not create this kind of document! (%s)"
-msgstr "(%s) 类型文档无创建权限！"
-
-msgctxt "error:ir.model.access:"
-msgid "You can not delete this document! (%s)"
-msgstr "文件 (%s) 无删除权限!"
-
-msgctxt "error:ir.model.access:"
-msgid "You can not read this document! (%s)"
-msgstr "文件 (%s) 无读取权限!"
-
-msgctxt "error:ir.model.access:"
-msgid "You can not write in this document! (%s)"
-msgstr "文件 (%s) 无写入权限!"
-
-msgctxt "error:ir.model.button:"
-msgid "The button name in model must be unique!"
-msgstr "模型中按钮的名称必须唯一！"
-
-msgctxt "error:ir.model.data:"
-msgid "The triple (fs_id, module, model) must be unique!"
-msgstr " (fs_id, module, model) 组合必须唯一！"
-
-msgctxt "error:ir.model.field.access:"
-msgid "You can not read the field! (%s.%s)"
-msgstr "数据 (%s.%s)  无读取权限 ！"
-
-msgctxt "error:ir.model.field.access:"
-msgid "You can not write on the field! (%s.%s)"
-msgstr "数据 (%s.%s)  无写入权限 ！"
-
-msgctxt "error:ir.model.field:"
-msgid "The field name in model must be unique!"
-msgstr "模型的数据名称必须唯一！"
-
-msgctxt "error:ir.model:"
-msgid "The model must be unique!"
-msgstr "模型必须唯一！"
-
-msgctxt "error:ir.module.dependency:"
-msgid "Dependency must be unique by module!"
-msgstr "模块的依赖对象必须唯一！"
-
-msgctxt "error:ir.module:"
-msgid "The name of the module must be unique!"
-msgstr "模块名称必须唯一！"
-
-msgctxt "error:ir.rule.group:"
-msgid "Global and Default are mutually exclusive!"
-msgstr "全局和默认是互斥的关系！"
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Timestamp rounding should be greater than 0"
-msgstr "时间戳的近似整数应大于0"
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "序列 \"%(sequence)s\"前缀\"%(prefix)s\"无效."
-
-msgctxt "error:ir.sequence:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "序列 \"%(sequence)s\"后缀\"%(suffix)s\"无效."
-
-msgctxt "error:ir.sequence:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "上一时间戳不可用在序列\"%s\"将来态."
-
-msgctxt "error:ir.sequence:"
-msgid "Missing sequence."
-msgstr "序列缺失."
-
-msgctxt "error:ir.sequence:"
-msgid "Timestamp rounding should be greater than 0"
-msgstr "时间戳的近似整数应大于0"
-
-msgctxt "error:ir.translation:"
-msgid "Translation must be unique"
-msgstr "翻译字符串必须唯一！"
-
-msgctxt "error:ir.trigger:"
-msgid "\"On Time\" and others are mutually exclusive!"
-msgstr "“On Time\"和其他触发器互不相容."
-
-#, fuzzy
-msgctxt "error:read_error:"
-msgid ""
-"You try to read records that don't exist anymore.\n"
-"(Document type: %s)"
-msgstr ""
-"You try to read records that don't exist anymore.\n"
-"(Document type: %s)"
-
-#, fuzzy
-msgctxt "error:reference_syntax_error:"
-msgid "Syntax error for reference %r in %s"
-msgstr "Syntax error for reference %r in %s"
-
-#, fuzzy
-msgctxt "error:relation_not_found:"
-msgid "Relation not found: %r in %s"
-msgstr "Relation not found: %r in %s"
-
-#, fuzzy
-msgctxt "error:required_field:"
-msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
-
-#, fuzzy
-msgctxt "error:required_validation_record:"
-msgid "The field \"%(field)s\" on \"%(model)s\" is required."
-msgstr "The field \"%(field)s\" on \"%(model)s\" is required."
-
-#, fuzzy
-msgctxt "error:selection_value_notfound:"
-msgid "Value not in the selection for field \"%s\"."
-msgstr "Value not in the selection for field \"%s\"."
-
-#, fuzzy
-msgctxt "error:size_validation_record:"
-msgid "The size \"%(size)s\" of the field \"%(field)s\" on \"%(model)s\" is too long."
-msgstr "The size \"%(size)s\" of the field \"%(field)s\" on \"(model)%s\" is too long."
-
-#, fuzzy
-msgctxt "error:too_many_relations_found:"
-msgid "Too many relations found: %r in %s"
-msgstr "Too many relations found: %r in %s"
-
-#, fuzzy
-msgctxt "error:write_error:"
-msgid ""
-"You try to write on records that don't exist anymore.\n"
-"(Document type: %s)"
-msgstr ""
-"You try to write on records that don't exist anymore.\n"
-"(Document type: %s)"
-
-#, fuzzy
-msgctxt "error:xml_id_syntax_error:"
-msgid "Syntax error for XML id %r in %s"
-msgstr "Syntax error for XML id %r in %s"
-
-msgctxt "field:ir.model.field,groups:"
-msgid "Groups"
-msgstr "用户组"
-
-msgctxt "selection:ir.translation,type:"
-msgid "Error"
-msgstr "错误"
-
-msgctxt "error:digits_validation_record:"
-msgid ""
-"The number of digits \"%(digits)s\" of field \"%(field)s\" on \"%(value)s\" "
-"exceeds its limit."
-msgstr " 数据\"%(field)s\"的值\"%(value)s\" 的位数\"%(digits)s\"超过限制."
-
-msgctxt "field:ir.rule.group,users:"
-msgid "Users"
-msgstr "用户"
-
-msgctxt "help:ir.action.report,extension:"
-msgid ""
-"Leave empty for the same as template, see unoconv documentation for "
-"compatible format"
-msgstr "参考unoconv文档有关格式部分，模版空白不要改动"
-
-msgctxt "view:ir.model.data:"
-msgid "Sync"
-msgstr "同步"
-
-msgctxt "view:ir.ui.view:"
-msgid "Show"
-msgstr "显示"
-
-#, fuzzy
-msgctxt "model:ir.lang,name:lang_pt"
-msgid "Portuguese (Brazil)"
-msgstr "Portuguese (Brazil)"
-
-#, fuzzy
-msgctxt "error:delete_xml_record:"
-msgid "You are not allowed to delete this record."
-msgstr "You are not allowed to delete this record."
-
-#, fuzzy
-msgctxt "error:domain_validation_record:"
-msgid ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
-msgstr ""
-"The value of the field \"%(field)s\" on \"%(model)s\" is not valid according"
-" to its domain."
-
-#, fuzzy
-msgctxt "error:foreign_model_missing:"
-msgid "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-msgstr "The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" doesn't exist."
-
-msgctxt "error:ir.action.act_window.domain:"
-msgid "Invalid domain or search criteria \"%(domain)s\" on action \"%(action)s\"."
-msgstr "动作\"%(action)s\"的域配置或查找表达式\"%(domain)s\"无效."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid context \"%(context)s\" on action \"%(action)s\"."
-msgstr "动作\"%(action)s\"的条件\"%(context)s\"设置无效."
-
-msgctxt "error:ir.action.act_window:"
-msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
-msgstr "动作\"%(action)s\"的视图\"%(view)s\"无效."
-
-msgctxt "error:ir.action.keyword:"
-msgid "Wrong wizard model in keyword action \"%s\"."
-msgstr "关键字操作\"%s\"的向导模型有误."
-
-msgctxt "error:ir.action.report:"
-msgid "Invalid email definition on report \"%s\"."
-msgstr "报表\"%s\"的email定义无效."
-
-msgctxt "error:ir.lang:"
-msgid "Default language can not be deleted."
-msgstr "默认语言不可删除."
-
-msgctxt "error:ir.lang:"
-msgid "Invalid date format \"%(format)s\" on \"%(language)s\" language."
-msgstr "语言\"%(language)s\"中的日期格式 \"%(format)s\"设置无效."
-
-msgctxt "error:ir.lang:"
-msgid "Invalid grouping \"%(grouping)s\" on \"%(language)s\" language."
-msgstr "语言\"%(language)s\"中的分组 \"%(grouping)s\"设置无效."
-
-msgctxt "error:ir.lang:"
-msgid "The default language must be translatable."
-msgstr "默认语言应设置为可翻译成其他语言."
-
-msgctxt "error:ir.model.button.rule:"
-msgid ""
-"Condition \"%(condition)s\" is not a valid PYSON expression on button rule "
-"\"%(rule)s\"."
-msgstr "按钮规则\"%(rule)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
-
-msgctxt "error:ir.module:"
-msgid ""
-"Some activated modules depend on the ones you are trying to deactivate:"
-msgstr "有已安装模块依赖你准备卸载的模块:"
-
-msgctxt "error:ir.module:"
-msgid "You can not remove a module that is activated or will be activated"
-msgstr "无法移除未安装或者待装状态的模块"
-
-msgctxt "error:ir.rule:"
-msgid "Invalid domain in rule \"%s\"."
-msgstr "规则\"%s\"的域配置无效."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid prefix \"%(prefix)s\" on sequence \"%(sequence)s\"."
-msgstr "序列 \"%(sequence)s\"前缀\"%(prefix)s\"无效."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Invalid suffix \"%(suffix)s\" on sequence \"%(sequence)s\"."
-msgstr "序列 \"%(sequence)s\"后缀\"%(suffix)s\"无效."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Last Timestamp cannot be in the future on sequence \"%s\"."
-msgstr "上一时间戳不可用在序列\"%s\"将来态."
-
-msgctxt "error:ir.sequence.strict:"
-msgid "Missing sequence."
-msgstr "序列缺失."
-
-msgctxt "error:ir.translation:"
-msgid ""
-"You can not export translation %(name)s because it is an overridden "
-"translation by module %(overriding_module)s"
-msgstr "翻译%(name)s源于模块%(overriding_module)s的条目替换，无法导出."
-
-msgctxt "error:ir.trigger:"
-msgid ""
-"Condition \"%(condition)s\" is not a valid PYSON expression on trigger "
-"\"%(trigger)s\"."
-msgstr "触发器\"%(trigger)s\"的条件\"%(condition)s\"配置不是合法的PYSON表达式."
-
-msgctxt "error:ir.ui.view:"
-msgid "Invalid XML for view \"%s\"."
-msgstr "视图\"%s\"的XML表达不合法."
-
-#, fuzzy
-msgctxt "error:recursion_error:"
-msgid ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
-msgstr ""
-"Recursion error: Record \"%(rec_name)s\" with parent \"%(parent_rec_name)s\""
-" was configured as ancestor of itself."
-
-#, fuzzy
-msgctxt "error:search_function_missing:"
-msgid "Missing search function on field \"%s\"."
-msgstr "Missing search function on field \"%s\"."
-
-#, fuzzy
-msgctxt "error:selection_validation_record:"
-msgid ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
-msgstr ""
-"The value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not in "
-"the selection."
-
-#, fuzzy
-msgctxt "error:time_format_validation_record:"
-msgid "The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not valid."
-msgstr ""
-"The time value \"%(value)s\" of field \"%(field)s\" on \"%(model)s\" is not "
-"valid."
-
-#, fuzzy
-msgctxt "error:write_xml_record:"
-msgid "You are not allowed to modify this record."
-msgstr "You are not allowed to modify this record."
-
-#, fuzzy
-msgctxt "error:xml_record_desc:"
-msgid "This record is part of the base configuration."
-msgstr "This record is part of the base configuration."
-
-#, fuzzy
-msgctxt "model:ir.message,text:msg_search_function_missing"
-msgid "Missing search function for field \"%(field)s\"."
-msgstr "Missing search function on field \"%s\"."
-
-msgctxt "model:ir.message,text:msg_read_error"
-msgid "You are trying to read records of \"%(model)s\" that don't exist anymore."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_write_error"
-msgid ""
-"You are trying to write to records of \"%(model)s\" that don't exist "
-"anymore."
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid ""
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.act_window"
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.report"
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.url"
-msgstr ""
-
-msgctxt "selection:ir.ui.menu,action:"
-msgid "ir.action.wizard"
-msgstr ""
-
-msgctxt "selection:ir.ui.view,type:"
-msgid ""
-msgstr ""
