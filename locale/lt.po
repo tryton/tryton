@@ -12,7 +12,7 @@ msgstr "Sąskaitos faktūros eilutė"
 
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
-msgstr "Sąskaitos faktūros tipas"
+msgstr "Sąskaita faktūra išrašoma"
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -28,43 +28,19 @@ msgstr ""
 
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
-msgstr "Sąskaitos faktūros tipas"
-
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Sąskaita faktūra išrašoma"
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
-msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Sąskaitos faktūros eilutė"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"

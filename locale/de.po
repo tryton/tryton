@@ -30,41 +30,17 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr "Methode Rechnungsstellung"
 
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr "Zeitaufwand"
-
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Rechnungsposition"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr "Tätigkeit"
-
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
@@ -145,15 +121,3 @@ msgstr "Nach Fortschritt"
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr "Nach erfasstem Aufwand"
-
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Rechnung erstellen"
-
-msgctxt "view:project.work.invoiced_progress:"
-msgid "Work Invoiced Progress"
-msgstr "Nach Forstschritt fakturierte Aufgabe"
-
-msgctxt "view:project.work.invoiced_progress:"
-msgid "Work Invoiced Progresses"
-msgstr "Nach Forstschritt fakturierte Aufgaben"

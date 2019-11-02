@@ -33,48 +33,19 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr "Метод инвойса"
 
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Строка инвойса"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr "Работа"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:timesheet.line,invoice_line:"
@@ -160,8 +131,3 @@ msgstr ""
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Инвойсы"

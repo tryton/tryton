@@ -4,164 +4,120 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,duration_to_invoice:"
 msgid "Duration to Invoice"
-msgstr ""
+msgstr "Factureerbare uren"
 
-#, fuzzy
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
 msgstr "Factuurregel"
 
-#, fuzzy
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
-msgstr "Factuur afhandeling"
+msgstr "Factuurmethode"
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
-msgstr ""
+msgstr "Gefactureerd bedrag"
 
 msgctxt "field:project.work,invoiced_duration:"
 msgid "Invoiced Duration"
-msgstr ""
+msgstr "Gefactureerde tijd"
 
 msgctxt "field:project.work,invoiced_progress:"
 msgid "Invoiced Progress"
-msgstr ""
+msgstr "Gefactureerde voortgang"
 
-#, fuzzy
 msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
-msgstr "Factuur afhandeling"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Factuurmethode"
 
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
-msgstr ""
+msgstr "Inspanning"
 
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Factuurregel"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr "Werk"
 
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
 msgstr "Factuurregel"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
 msgstr "Tijdregistratieregels"
 
-#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
 msgstr "Verkoopfacturen"
 
 msgctxt "model:ir.message,text:msg_delete_invoiced_line"
 msgid "You cannot delete an invoiced line."
-msgstr ""
+msgstr "U kunt een factuurregel niet verwijderen."
 
 msgctxt "model:ir.message,text:msg_missing_list_price"
 msgid "There is no list price on work \"%(work)s\"."
-msgstr ""
+msgstr "Er is geen catalogusprijs op werk \"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_party"
 msgid "There is no party on work \"%(work)s\"."
-msgstr ""
+msgstr "Er is geen relatie op werk \"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_product"
 msgid "There is no product on work \"%(work)s\"."
-msgstr ""
+msgstr "Er is geen product op werk\"%(work)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_invoiced_line"
 msgid "You cannot modify an invoiced line."
-msgstr ""
+msgstr "U kunt een factuurregel niet wijzigen."
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Factuur"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_project_invoice"
 msgid "Any timesheet line"
-msgstr ""
+msgstr "eender welke tijdregistratieregel"
 
 msgctxt "model:project.work.invoiced_progress,name:"
 msgid "Work Invoiced Progress"
-msgstr ""
+msgstr "Werk gefactureerde voortgang"
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr "Project Invoice"
+msgstr "Projectfactuur"
 
-#, fuzzy
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
 msgstr "Handmatig"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Effort"
-msgstr ""
+msgstr "Naar inspanning (in regie?)"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Progress"
-msgstr ""
+msgstr "In uitvoering"
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "On Timesheet"
-msgstr ""
+msgstr "Op urenstaat"
 
-#, fuzzy
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "Manual"
 msgstr "Handmatig"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Effort"
-msgstr ""
+msgstr "Naar inspanning (in regie?)"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Progress"
-msgstr ""
+msgstr "Naar voortgang"
 
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
-msgstr ""
-
-#, fuzzy
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Verkoopfacturen"
+msgstr "Op urenstaat"

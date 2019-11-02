@@ -31,47 +31,18 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
-msgstr "Movimento contabile"
 
 #, fuzzy
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Riga fattura"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
 
 #, fuzzy
 msgctxt "field:timesheet.line,invoice_line:"
@@ -156,8 +127,3 @@ msgstr ""
 msgctxt "selection:project.work,project_invoice_method:"
 msgid "On Timesheet"
 msgstr ""
-
-#, fuzzy
-msgctxt "view:project.work:"
-msgid "Invoice"
-msgstr "Fattura"

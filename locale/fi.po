@@ -30,40 +30,16 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr ""
 
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
-msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr ""
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:timesheet.line,invoice_line:"

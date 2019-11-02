@@ -30,41 +30,17 @@ msgctxt "field:project.work,project_invoice_method:"
 msgid "Invoice Method"
 msgstr "Arve meetod"
 
-msgctxt "field:project.work.invoiced_progress,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:project.work.invoiced_progress,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:project.work.invoiced_progress,effort_duration:"
 msgid "Effort"
 msgstr "Saavutus"
-
-msgctxt "field:project.work.invoiced_progress,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
 msgstr "Arve rida"
 
-msgctxt "field:project.work.invoiced_progress,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
 msgstr "Töö"
-
-msgctxt "field:project.work.invoiced_progress,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:project.work.invoiced_progress,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"

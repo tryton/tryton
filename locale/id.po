@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:project.work,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "field:project.work,invoice_method:"
 msgid "Invoice Method"
-msgstr ""
+msgstr "Metode Faktur"
 
 msgctxt "field:project.work,invoiced_amount:"
 msgid "Invoiced Amount"
@@ -36,24 +36,23 @@ msgstr ""
 
 msgctxt "field:project.work.invoiced_progress,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "field:project.work.invoiced_progress,work:"
 msgid "Work"
-msgstr ""
+msgstr "Kerja"
 
 msgctxt "field:timesheet.line,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "model:ir.action,name:act_timesheet_line_form_invoice"
 msgid "Timesheet Lines"
-msgstr "Timesheet Lines"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_delete_invoiced_line"
 msgid "You cannot delete an invoiced line."
@@ -77,7 +76,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_invoice_button"
 msgid "Invoice"
-msgstr "Invoice"
+msgstr "Faktur"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_project_invoice"
 msgid "Any timesheet line"
@@ -89,7 +88,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_project_invoice"
 msgid "Project Invoice"
-msgstr "Project Invoice"
+msgstr ""
 
 msgctxt "selection:project.work,invoice_method:"
 msgid "Manual"
