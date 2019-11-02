@@ -6,14 +6,6 @@ msgctxt "field:account.configuration,dunning_email_fallback:"
 msgid "Fall-back User"
 msgstr ""
 
-msgctxt "field:account.dunning.email.log,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.dunning.email.log,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:account.dunning.email.log,date:"
 msgid "Date"
 msgstr ""
@@ -22,16 +14,8 @@ msgctxt "field:account.dunning.email.log,dunning:"
 msgid "Dunning"
 msgstr ""
 
-msgctxt "field:account.dunning.email.log,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.dunning.email.log,level:"
 msgid "Level"
-msgstr ""
-
-msgctxt "field:account.dunning.email.log,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.dunning.email.log,recipients:"
@@ -45,14 +29,6 @@ msgstr "Paslėpti gavėjai"
 msgctxt "field:account.dunning.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr ""
-
-msgctxt "field:account.dunning.email.log,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.dunning.email.log,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"
