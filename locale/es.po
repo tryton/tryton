@@ -6,57 +6,17 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "Tercero"
-
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:bank.account,active:"
-msgid "Active"
-msgstr "Activo"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Banco"
 
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -66,65 +26,17 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Titulares"
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Cuenta"
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr "Titular"
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "Cuenta"
-
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
@@ -134,25 +46,9 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr "Número compacto"
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -161,10 +57,6 @@ msgstr "Cuentas bancarias"
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Código Identificador de Banco/Negocio (BIC)."
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -202,6 +94,10 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Bancos"
 
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "El BIC \"%(bic)s\" no es válido."
+
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
 msgstr "El número IBAN \"%(number)s\" no es válido."
@@ -230,34 +126,10 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Otro"
 
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Número"
+
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "Banca"
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "Desmarcar para eliminar el uso del registro en el futuro."
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Number"
-msgstr "Número de cuenta bancaria"
-
-msgctxt "view:bank.account.number:"
-msgid "Bank Account Numbers"
-msgstr "Números de cuenta bancaria"
-
-msgctxt "view:bank.account:"
-msgid "Bank Account"
-msgstr "Cuenta bancaria"
-
-msgctxt "view:bank.account:"
-msgid "Bank Accounts"
-msgstr "Cuentas bancarias"
-
-msgctxt "view:bank:"
-msgid "Bank"
-msgstr "Banco"
-
-msgctxt "view:bank:"
-msgid "Banks"
-msgstr "Bancos"

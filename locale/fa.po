@@ -6,57 +6,17 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
-
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:bank.account,active:"
-msgid "Active"
-msgstr "فعال"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "بانک"
 
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "واحد پول"
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -66,65 +26,17 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "صاحبان"
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "حساب"
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr "مالک"
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "حساب"
-
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
@@ -134,25 +46,9 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr "شماره فشرده"
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "نوع"
-
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -161,10 +57,6 @@ msgstr "حساب های بانکی"
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "کد شناسه بانک/کسب و کار."
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -202,6 +94,11 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "بانک ها"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "شماره IBAN : \"%(number)s\" معتبر نیست."
+
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
 msgstr "شماره IBAN : \"%(number)s\" معتبر نیست."
@@ -230,10 +127,11 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "سایر"
 
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "شماره"
+
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "بانکداری"
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "برای خارج کردن از استفاده از حساب بانکی در آینده، تیک را بردارید."

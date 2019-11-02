@@ -6,57 +6,17 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "Osapool"
-
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:bank.account,active:"
-msgid "Active"
-msgstr "Aktiivne"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Pank"
 
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -66,65 +26,17 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Omanikud"
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr "Omanik"
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
@@ -134,25 +46,9 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr "Kompaktne number"
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "Tüüp"
-
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -161,10 +57,6 @@ msgstr "Pangakontod"
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "BIC kood"
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -202,6 +94,11 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Pangad"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "INAB number \"%(number)s\" ei ole õige."
+
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
 msgstr "INAB number \"%(number)s\" ei ole õige."
@@ -229,6 +126,11 @@ msgstr "IBAN"
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Muud"
+
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Number"
 
 msgctxt "view:party.party:"
 msgid "Banking"

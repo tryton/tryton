@@ -6,57 +6,17 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "Strona"
-
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:bank.account,active:"
-msgid "Active"
-msgstr "Aktywne"
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr "Bank"
 
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "Waluta"
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
@@ -66,65 +26,17 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr "Właściciele"
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr "Właściciel"
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
@@ -134,25 +46,9 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr "Numer kompaktowy"
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
-
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "Typ"
-
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
@@ -161,10 +57,6 @@ msgstr "Konta bankowe"
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Bankowy/biznesowy kod identyfikacyjny."
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Odznacz, aby nie używać w przyszłości."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -202,6 +94,10 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr "Banki"
 
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
 msgstr ""
@@ -230,10 +126,11 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Inne"
 
+#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Numer"
+
 msgctxt "view:party.party:"
 msgid "Banking"
 msgstr "Bankowość"
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude the bank account from future use."
-msgstr "Odznacz, aby nie używać konta w przyszłości."

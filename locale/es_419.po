@@ -6,56 +6,16 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC / SWIFT"
 
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:bank,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:bank.account,active:"
-msgid "Active"
 msgstr ""
 
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
 msgstr ""
 
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:bank.account,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:bank.account,numbers:"
@@ -66,64 +26,16 @@ msgctxt "field:bank.account,owners:"
 msgid "Owners"
 msgstr ""
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr ""
-
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
 msgstr ""
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr ""
-
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:bank.account.number,number:"
@@ -134,24 +46,8 @@ msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
 msgstr ""
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr ""
-
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
-msgstr ""
-
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:party.party,bank_accounts:"
@@ -161,10 +57,6 @@ msgstr ""
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
 msgstr "Código de Identificación del Banco (BIC / SWIFT)"
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
@@ -202,6 +94,10 @@ msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
 msgstr ""
@@ -228,6 +124,10 @@ msgstr ""
 
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
+msgstr ""
+
+msgctxt "view:bank.account:"
+msgid "Number"
 msgstr ""
 
 msgctxt "view:party.party:"

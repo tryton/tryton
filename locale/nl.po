@@ -6,245 +6,113 @@ msgctxt "field:bank,bic:"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
-msgctxt "field:bank,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:bank,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-msgctxt "field:bank,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:bank,party:"
 msgid "Party"
 msgstr "Relatie"
 
-msgctxt "field:bank,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:bank,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:bank,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:bank.account,active:"
-msgid "Active"
-msgstr "Actief"
-
-#, fuzzy
 msgctxt "field:bank.account,bank:"
 msgid "Bank"
-msgstr "Banks"
+msgstr "Bank"
 
-#, fuzzy
-msgctxt "field:bank.account,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:bank.account,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:bank.account,currency:"
 msgid "Currency"
 msgstr "Valuta"
 
-msgctxt "field:bank.account,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:bank.account,numbers:"
 msgid "Numbers"
-msgstr "Nummer"
+msgstr "Nummers"
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr ""
+msgstr "Eigenaars"
 
-msgctxt "field:bank.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:bank.account,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:bank.account,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Rekeningen"
-
-#, fuzzy
-msgctxt "field:bank.account-party.party,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:bank.account-party.party,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-msgctxt "field:bank.account-party.party,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Rekening"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
-msgstr ""
+msgstr "Eigenaar"
 
-msgctxt "field:bank.account-party.party,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:bank.account-party.party,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:bank.account-party.party,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr "Rekeningen"
+msgstr "Rekening"
 
-#, fuzzy
-msgctxt "field:bank.account.number,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:bank.account.number,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-msgctxt "field:bank.account.number,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
 msgstr "Nummer"
 
 msgctxt "field:bank.account.number,number_compact:"
 msgid "Number Compact"
-msgstr ""
+msgstr "nummer compactformaat"
 
-msgctxt "field:bank.account.number,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:bank.account.number,sequence:"
-msgid "Sequence"
-msgstr "Reeks"
-
-#, fuzzy
 msgctxt "field:bank.account.number,type:"
 msgid "Type"
 msgstr "Type"
 
-#, fuzzy
-msgctxt "field:bank.account.number,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:bank.account.number,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
 msgctxt "field:party.party,bank_accounts:"
 msgid "Bank Accounts"
-msgstr ""
+msgstr "Bankrekeningen"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr ""
-
-msgctxt "help:bank.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Bank/BIC (Business Identifier Code)."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."
-msgstr ""
+msgstr "De bank waar de rekening geopend is."
 
 msgctxt "help:bank.account,numbers:"
 msgid "Add the numbers which identify the bank account."
-msgstr ""
+msgstr "Voeg de nummers toe die de bankrekening identificeren."
 
 msgctxt "help:bank.account.number,account:"
 msgid "The bank account which is identified by the number."
-msgstr ""
+msgstr "De bankrekening die wordt aangeduid met het nummer."
 
-#, fuzzy
 msgctxt "model:bank,name:"
 msgid "Bank"
-msgstr "Banks"
+msgstr "Bank"
 
 msgctxt "model:bank.account,name:"
 msgid "Bank Account"
-msgstr ""
+msgstr "Bankrekening"
 
 msgctxt "model:bank.account-party.party,name:"
 msgid "Bank Account - Party"
-msgstr ""
+msgstr "Bankrekening - Relatie"
 
 msgctxt "model:bank.account.number,name:"
 msgid "Bank Account Number"
-msgstr ""
+msgstr "Bankrekeningnummer"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_bank_account_form"
 msgid "Accounts"
 msgstr "Rekeningen"
 
 msgctxt "model:ir.action,name:act_bank_form"
 msgid "Banks"
-msgstr "Banks"
+msgstr "Banken"
+
+msgctxt "model:ir.message,text:msg_invalid_bic"
+msgid "The BIC \"%(bic)s\" is not valid."
+msgstr "De BIC \"%(bic)s\" is niet geldig."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
-msgstr ""
+msgstr "IBAN-nummer \"%(number)s\" is niet geldig."
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
 msgstr "Rekeningen"
 
 msgctxt "model:ir.ui.menu,name:menu_bank_form"
 msgid "Banks"
-msgstr "Banks"
+msgstr "Banken"
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr "Banking"
+msgstr "Bank"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
@@ -252,14 +120,16 @@ msgstr "Bank Administration"
 
 msgctxt "selection:bank.account.number,type:"
 msgid "IBAN"
-msgstr ""
+msgstr "IBAN"
 
-#, fuzzy
 msgctxt "selection:bank.account.number,type:"
 msgid "Other"
-msgstr "Overig"
+msgstr "Overige"
 
-#, fuzzy
+msgctxt "view:bank.account:"
+msgid "Number"
+msgstr "Nummer"
+
 msgctxt "view:party.party:"
 msgid "Banking"
-msgstr "Banking"
+msgstr "Bank"
