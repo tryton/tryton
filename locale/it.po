@@ -23,14 +23,6 @@ msgctxt "field:notification.email,content:"
 msgid "Content"
 msgstr "Contenuto"
 
-msgctxt "field:notification.email,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:notification.email,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
 msgctxt "field:notification.email,fallback_recipients:"
 msgid "Recipients Fallback User"
 msgstr "Utenti destinatari di ripiego"
@@ -47,17 +39,9 @@ msgctxt "field:notification.email,from_:"
 msgid "From"
 msgstr "Da"
 
-msgctxt "field:notification.email,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:notification.email,model:"
 msgid "Model"
 msgstr "Modello"
-
-msgctxt "field:notification.email,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
 
 msgctxt "field:notification.email,recipients:"
 msgid "Recipients"
@@ -75,26 +59,6 @@ msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
 msgstr "Trigger"
 
-msgctxt "field:notification.email,write_date:"
-msgid "Write Date"
-msgstr "Modificato il"
-
-msgctxt "field:notification.email,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
-
-msgctxt "field:notification.email.attachment,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:notification.email.attachment,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
-msgctxt "field:notification.email.attachment,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:notification.email.attachment,model:"
 msgid "Model"
 msgstr "Modello"
@@ -103,41 +67,13 @@ msgctxt "field:notification.email.attachment,notification:"
 msgid "Notification"
 msgstr "Notifica"
 
-msgctxt "field:notification.email.attachment,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 msgctxt "field:notification.email.attachment,report:"
 msgid "Report"
 msgstr "Segnala"
 
-msgctxt "field:notification.email.attachment,write_date:"
-msgid "Write Date"
-msgstr "Modificato il"
-
-msgctxt "field:notification.email.attachment,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
-
-msgctxt "field:notification.email.log,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:notification.email.log,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
 msgctxt "field:notification.email.log,date:"
 msgid "Date"
 msgstr "Data"
-
-msgctxt "field:notification.email.log,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:notification.email.log,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
 
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
@@ -154,14 +90,6 @@ msgstr "Destinatari secondari"
 msgctxt "field:notification.email.log,trigger:"
 msgid "Trigger"
 msgstr "Trigger"
-
-msgctxt "field:notification.email.log,write_date:"
-msgid "Write Date"
-msgstr "Modificato il"
-
-msgctxt "field:notification.email.log,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
 
 msgctxt "help:notification.email,attachments:"
 msgid "The reports used as attachments."
