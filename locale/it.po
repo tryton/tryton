@@ -11,11 +11,6 @@ msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
-msgctxt "field:stock.inventory.create.start,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
 msgstr ""

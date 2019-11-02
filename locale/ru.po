@@ -13,11 +13,6 @@ msgid "Date"
 msgstr "Дата"
 
 #, fuzzy
-msgctxt "field:stock.inventory.create.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
 msgstr "Местоположения"

@@ -4,38 +4,36 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.inventory.create.start,company:"
 msgid "Company"
-msgstr "Empresa"
+msgstr "Perusahaan"
 
 msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
-msgstr "Data"
+msgstr "Tanggal"
 
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
-msgstr "Localizações"
+msgstr ""
 
 msgctxt "field:stock.inventory.create.start,lost_found:"
 msgid "Lost and Found"
-msgstr "Achados e perdidos"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_create_inventory"
 msgid "Create Inventories"
-msgstr "Create Inventories"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_inventory"
 msgid "Create Inventories"
-msgstr "Create Inventories"
+msgstr ""
 
 msgctxt "model:stock.inventory.create.start,name:"
 msgid "Create Inventories"
-msgstr "Criar inventários"
+msgstr ""
 
 msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
-msgstr "Criar"
+msgstr "Buat"
 
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Batal"

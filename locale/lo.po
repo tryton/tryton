@@ -10,10 +10,6 @@ msgctxt "field:stock.inventory.create.start,date:"
 msgid "Date"
 msgstr "ວັນທີ"
 
-msgctxt "field:stock.inventory.create.start,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
 msgctxt "field:stock.inventory.create.start,locations:"
 msgid "Locations"
 msgstr "ສະຖານທີ່"
