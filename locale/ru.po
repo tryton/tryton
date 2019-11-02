@@ -8,21 +8,6 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
-msgctxt "field:product.price_list,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:product.price_list,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:product.price_list,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
 msgstr "Строки"
@@ -32,46 +17,21 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Наименование"
 
-msgctxt "field:product.price_list,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.price_list,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:product.price_list,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
+msgctxt "field:product.price_list,unit:"
+msgid "Unit"
+msgstr ""
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.price_list.line,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:product.price_list.line,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:product.price_list.line,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:product.price_list.line,price_list:"
@@ -87,30 +47,6 @@ msgstr "Товарно материальные ценности (ТМЦ)"
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"
-
-msgctxt "field:product.price_list.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.price_list.line,sequence:"
-msgid "Sequence"
-msgstr "Последовательность"
-
-#, fuzzy
-msgctxt "field:product.price_list.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Группа цифр"
-
-#, fuzzy
-msgctxt "field:product.price_list.line,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:product.price_list.line,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "help:product.price_list,company:"
 msgid ""
@@ -130,6 +66,10 @@ msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
 msgstr ""
 
+msgctxt "help:product.price_list,unit:"
+msgid "The unit in which the quantity is expressed."
+msgstr ""
+
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
 msgstr ""
@@ -137,7 +77,8 @@ msgstr ""
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
-"- unit_price: the original unit_price"
+"- unit_price: the original unit_price\n"
+"- cost_price: the cost price of the product"
 msgstr ""
 
 msgctxt "help:product.price_list.line,price_list:"
@@ -178,3 +119,8 @@ msgstr "Price Lists"
 msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr ""
+
+#, fuzzy
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Default"
+msgstr "Товарно материальные ценности (ТМЦ)"

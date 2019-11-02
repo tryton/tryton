@@ -6,18 +6,6 @@ msgctxt "field:product.price_list,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:product.price_list,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:product.price_list,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:product.price_list,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.price_list,lines:"
 msgid "Lines"
 msgstr "Lignes"
@@ -26,41 +14,21 @@ msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:product.price_list,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:product.price_list,tax_included:"
 msgid "Tax Included"
 msgstr "Taxe incluse"
 
-msgctxt "field:product.price_list,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:product.price_list,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
+msgctxt "field:product.price_list,unit:"
+msgid "Unit"
+msgstr "Unité"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"
 msgstr "Catégorie"
 
-msgctxt "field:product.price_list.line,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:product.price_list.line,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:product.price_list.line,formula:"
 msgid "Formula"
 msgstr "Formule"
-
-msgctxt "field:product.price_list.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
@@ -73,26 +41,6 @@ msgstr "Produit"
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
-
-msgctxt "field:product.price_list.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:product.price_list.line,sequence:"
-msgid "Sequence"
-msgstr "Séquence"
-
-msgctxt "field:product.price_list.line,unit_digits:"
-msgid "Unit Digits"
-msgstr "Décimales de l'unité"
-
-msgctxt "field:product.price_list.line,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:product.price_list.line,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "help:product.price_list,company:"
 msgid ""
@@ -114,6 +62,10 @@ msgctxt "help:product.price_list,tax_included:"
 msgid "Check if result's formula includes taxes."
 msgstr "Cocher si le résultat de la formule est taxes incluses."
 
+msgctxt "help:product.price_list,unit:"
+msgid "The unit in which the quantity is expressed."
+msgstr "L'unité dans laquelle la quantité est exprimée."
+
 msgctxt "help:product.price_list.line,category:"
 msgid "Apply only to products of this category."
 msgstr "S'applique seulement aux produits de cette catégorie."
@@ -121,10 +73,12 @@ msgstr "S'applique seulement aux produits de cette catégorie."
 msgctxt "help:product.price_list.line,formula:"
 msgid ""
 "Python expression that will be evaluated with:\n"
-"- unit_price: the original unit_price"
+"- unit_price: the original unit_price\n"
+"- cost_price: the cost price of the product"
 msgstr ""
 "Une expression Python qui sera évaluée avec:\n"
-"- unit_price: le prix unitaire original"
+"- unit_price: le prix unitaire original\n"
+"- cost_price: le prix de revient du produit"
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."
@@ -166,18 +120,6 @@ msgctxt "model:product.price_list.line,name:"
 msgid "Price List Line"
 msgstr "Ligne de liste de prix"
 
-msgctxt "view:product.price_list.line:"
-msgid "Price List Line"
-msgstr "Ligne de liste de prix"
-
-msgctxt "view:product.price_list.line:"
-msgid "Price List Lines"
-msgstr "Lignes de liste de prix"
-
-msgctxt "view:product.price_list:"
-msgid "Price List"
-msgstr "Liste de prix"
-
-msgctxt "view:product.price_list:"
-msgid "Price Lists"
-msgstr "Listes de prix"
+msgctxt "selection:product.price_list,unit:"
+msgid "Product Default"
+msgstr "Produit par défaut"
