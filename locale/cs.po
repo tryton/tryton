@@ -10,20 +10,12 @@ msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
 msgstr ""
 
-msgctxt "field:account.fr.fec.result,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
 msgstr ""
 
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
-
-msgctxt "field:account.fr.fec.start,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.fr.fec.start,type:"

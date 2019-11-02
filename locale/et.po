@@ -10,10 +10,6 @@ msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
 msgstr "Faili nimi"
 
-msgctxt "field:account.fr.fec.result,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
 msgstr "Viivituse periood"
@@ -21,10 +17,6 @@ msgstr "Viivituse periood"
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Majandusaasta"
-
-msgctxt "field:account.fr.fec.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"

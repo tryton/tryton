@@ -11,11 +11,6 @@ msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.fr.fec.result,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
 msgstr ""
@@ -24,11 +19,6 @@ msgstr ""
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Финансовый год"
-
-#, fuzzy
-msgctxt "field:account.fr.fec.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.fr.fec.start,type:"

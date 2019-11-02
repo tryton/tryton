@@ -10,10 +10,6 @@ msgctxt "field:account.fr.fec.result,filename:"
 msgid "File Name"
 msgstr "文件名"
 
-msgctxt "field:account.fr.fec.result,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:account.fr.fec.start,deferral_period:"
 msgid "Deferral Period"
 msgstr ""
@@ -21,10 +17,6 @@ msgstr ""
 msgctxt "field:account.fr.fec.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "财年"
-
-msgctxt "field:account.fr.fec.start,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:account.fr.fec.start,type:"
 msgid "Type"
