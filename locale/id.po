@@ -29,23 +29,23 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:purchase.request.quotation,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:purchase.request.quotation,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nomor"
 
 msgctxt "field:purchase.request.quotation,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referensi"
 
 msgctxt "field:purchase.request.quotation,revision:"
 msgid "Revision"
-msgstr ""
+msgstr "Revisi"
 
 msgctxt "field:purchase.request.quotation,state:"
 msgid "State"
@@ -53,7 +53,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Pemasok"
 
 msgctxt "field:purchase.request.quotation,supplier_address:"
 msgid "Supplier Address"
@@ -61,7 +61,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation,warehouse:"
 msgid "Warehouse"
-msgstr "Bodega"
+msgstr "Gudang"
 
 msgctxt "field:purchase.request.quotation.create.ask_suppliers,suppliers:"
 msgid "Suppliers"
@@ -73,7 +73,7 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata uang"
 
 msgctxt "field:purchase.request.quotation.line,currency_digits:"
 msgid "Currency Digits"
@@ -81,11 +81,11 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:purchase.request.quotation.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:purchase.request.quotation.line,product_uom_category:"
 msgid "Product Uom Category"
@@ -109,11 +109,11 @@ msgstr ""
 
 msgctxt "field:purchase.request.quotation.line,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Pemasok"
 
 msgctxt "field:purchase.request.quotation.line,supply_date:"
 msgid "Supply Date"
-msgstr ""
+msgstr "Tanggal Persediaan"
 
 msgctxt "field:purchase.request.quotation.line,unit:"
 msgid "Unit"
@@ -177,7 +177,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_sent"
@@ -190,11 +190,11 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_request_quotation_line"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_purchase_request_quotation"
 msgid "Purchase Request Quotation"
@@ -224,7 +224,6 @@ msgctxt "model:purchase.request.quotation.line,name:"
 msgid "Purchase Request For Quotation Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:purchase.request.quotation:"
 msgid ":"
 msgstr ":"
@@ -235,7 +234,7 @@ msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Date:"
-msgstr ""
+msgstr "Tanggal:"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Delivery Address:"
@@ -243,11 +242,11 @@ msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Expected Supply Date"
@@ -255,7 +254,7 @@ msgstr ""
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "report:purchase.request.quotation:"
 msgid "Quantity"
@@ -295,7 +294,7 @@ msgstr ""
 
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:purchase.request.quotation,state:"
 msgid "Received"
@@ -311,19 +310,19 @@ msgstr ""
 
 msgctxt "view:purchase.request.quotation.line:"
 msgid "General"
-msgstr ""
+msgstr "Umum"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Quotation"
@@ -352,11 +351,11 @@ msgstr ""
 msgctxt ""
 "wizard_button:purchase.request.quotation.create,ask_suppliers,create_quotations:"
 msgid "Process"
-msgstr ""
+msgstr "Proses"
 
 msgctxt "wizard_button:purchase.request.quotation.create,ask_suppliers,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
 msgid "Close"
