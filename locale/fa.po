@@ -30,21 +30,9 @@ msgctxt "field:sale.advance_payment.condition,completed:"
 msgid "Completed"
 msgstr "تکمیل شده"
 
-msgctxt "field:sale.advance_payment.condition,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.advance_payment.condition,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
 msgstr "شرح"
-
-msgctxt "field:sale.advance_payment.condition,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:sale.advance_payment.condition,invoice_delay:"
 msgid "Invoice Delay"
@@ -53,10 +41,6 @@ msgstr "صورتحساب تأخیر"
 msgctxt "field:sale.advance_payment.condition,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "سطرهای صورتحساب"
-
-msgctxt "field:sale.advance_payment.condition,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -70,30 +54,6 @@ msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
 msgstr "وضعیت فروش"
 
-msgctxt "field:sale.advance_payment.condition,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.advance_payment.condition,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:sale.advance_payment_term,active:"
-msgid "Active"
-msgstr "فعال"
-
-msgctxt "field:sale.advance_payment_term,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.advance_payment_term,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:sale.advance_payment_term,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.advance_payment_term,lines:"
 msgid "Lines"
 msgstr "سطرها"
@@ -101,18 +61,6 @@ msgstr "سطرها"
 msgctxt "field:sale.advance_payment_term,name:"
 msgid "Name"
 msgstr "نام"
-
-msgctxt "field:sale.advance_payment_term,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:sale.advance_payment_term,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.advance_payment_term,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
@@ -134,14 +82,6 @@ msgctxt "field:sale.advance_payment_term.line,block_supply:"
 msgid "Block Supply"
 msgstr "عرضه مسدود"
 
-msgctxt "field:sale.advance_payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.advance_payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:sale.advance_payment_term.line,description:"
 msgid "Description"
 msgstr "شرح"
@@ -150,25 +90,9 @@ msgctxt "field:sale.advance_payment_term.line,formula:"
 msgid "Formula"
 msgstr "فرمول"
 
-msgctxt "field:sale.advance_payment_term.line,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "صورتحساب تأخیر"
-
-msgctxt "field:sale.advance_payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:sale.advance_payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.advance_payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:sale.advance_payment_term.line.account,account:"
 msgid "Account"
@@ -178,33 +102,9 @@ msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:sale.advance_payment_term.line.account,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:sale.advance_payment_term.line.account,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:sale.advance_payment_term.line.account,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "سطر"
-
-msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:sale.advance_payment_term.line.account,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:sale.advance_payment_term.line.account,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
@@ -217,10 +117,6 @@ msgstr "صورتحساب پرداخت پیش پرداخت"
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "نحوه پرداخت پیش پرداخت"
-
-msgctxt "help:sale.advance_payment_term,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."

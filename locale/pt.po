@@ -30,21 +30,9 @@ msgctxt "field:sale.advance_payment.condition,completed:"
 msgid "Completed"
 msgstr "Concluído"
 
-msgctxt "field:sale.advance_payment.condition,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.advance_payment.condition,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
 msgstr "Descrição"
-
-msgctxt "field:sale.advance_payment.condition,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.advance_payment.condition,invoice_delay:"
 msgid "Invoice Delay"
@@ -53,10 +41,6 @@ msgstr "Atraso na Fatura"
 msgctxt "field:sale.advance_payment.condition,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Linhas de Faturas"
-
-msgctxt "field:sale.advance_payment.condition,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -70,30 +54,6 @@ msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
 msgstr "Estado da Venda"
 
-msgctxt "field:sale.advance_payment.condition,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:sale.advance_payment.condition,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
-msgctxt "field:sale.advance_payment_term,active:"
-msgid "Active"
-msgstr "Ativo"
-
-msgctxt "field:sale.advance_payment_term,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.advance_payment_term,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:sale.advance_payment_term,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.advance_payment_term,lines:"
 msgid "Lines"
 msgstr "Linhas"
@@ -101,18 +61,6 @@ msgstr "Linhas"
 msgctxt "field:sale.advance_payment_term,name:"
 msgid "Name"
 msgstr "Nome"
-
-msgctxt "field:sale.advance_payment_term,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:sale.advance_payment_term,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:sale.advance_payment_term,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
@@ -134,14 +82,6 @@ msgctxt "field:sale.advance_payment_term.line,block_supply:"
 msgid "Block Supply"
 msgstr "Bloquear Abastecimento"
 
-msgctxt "field:sale.advance_payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.advance_payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:sale.advance_payment_term.line,description:"
 msgid "Description"
 msgstr "Descrição"
@@ -150,25 +90,9 @@ msgctxt "field:sale.advance_payment_term.line,formula:"
 msgid "Formula"
 msgstr "Fórmula"
 
-msgctxt "field:sale.advance_payment_term.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "Atraso na Fatura"
-
-msgctxt "field:sale.advance_payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:sale.advance_payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:sale.advance_payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.advance_payment_term.line.account,account:"
 msgid "Account"
@@ -178,33 +102,9 @@ msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:sale.advance_payment_term.line.account,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.advance_payment_term.line.account,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:sale.advance_payment_term.line.account,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr "Linha"
-
-msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:sale.advance_payment_term.line.account,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:sale.advance_payment_term.line.account,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
@@ -217,10 +117,6 @@ msgstr "Faturas de Pagamentos Adiantados"
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Prazo de Pagamento Avançado"
-
-msgctxt "help:sale.advance_payment_term,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."

@@ -30,20 +30,8 @@ msgctxt "field:sale.advance_payment.condition,completed:"
 msgid "Completed"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:sale.advance_payment.condition,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:sale.advance_payment.condition,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:sale.advance_payment.condition,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,invoice_delay:"
@@ -53,10 +41,6 @@ msgstr "Sąskaitos faktūros užlaikymas"
 msgctxt "field:sale.advance_payment.condition,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Sąskaitos faktūros eilutės"
-
-msgctxt "field:sale.advance_payment.condition,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
@@ -70,30 +54,6 @@ msgctxt "field:sale.advance_payment.condition,sale_state:"
 msgid "Sale State"
 msgstr ""
 
-msgctxt "field:sale.advance_payment.condition,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:sale.advance_payment.condition,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:sale.advance_payment_term,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:sale.advance_payment_term,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:sale.advance_payment_term,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:sale.advance_payment_term,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.advance_payment_term,lines:"
 msgid "Lines"
 msgstr ""
@@ -101,18 +61,6 @@ msgstr ""
 msgctxt "field:sale.advance_payment_term,name:"
 msgid "Name"
 msgstr ""
-
-msgctxt "field:sale.advance_payment_term,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.advance_payment_term,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:sale.advance_payment_term,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
@@ -135,14 +83,6 @@ msgctxt "field:sale.advance_payment_term.line,block_supply:"
 msgid "Block Supply"
 msgstr ""
 
-msgctxt "field:sale.advance_payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:sale.advance_payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:sale.advance_payment_term.line,description:"
 msgid "Description"
 msgstr ""
@@ -151,25 +91,9 @@ msgctxt "field:sale.advance_payment_term.line,formula:"
 msgid "Formula"
 msgstr ""
 
-msgctxt "field:sale.advance_payment_term.line,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.advance_payment_term.line,invoice_delay:"
 msgid "Invoice Delay"
 msgstr "Sąskaitos faktūros užlaikymas"
-
-msgctxt "field:sale.advance_payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.advance_payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:sale.advance_payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.advance_payment_term.line.account,account:"
 msgid "Account"
@@ -179,33 +103,9 @@ msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:sale.advance_payment_term.line.account,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:sale.advance_payment_term.line.account,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:sale.advance_payment_term.line.account,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.advance_payment_term.line.account,line:"
 msgid "Line"
 msgstr ""
-
-msgctxt "field:sale.advance_payment_term.line.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.advance_payment_term.line.account,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:sale.advance_payment_term.line.account,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:sale.sale,advance_payment_conditions:"
 msgid "Advance Payment Conditions"
@@ -219,10 +119,6 @@ msgstr "Išankstinio mokėjimo sąskaitos faktūros"
 msgctxt "field:sale.sale,advance_payment_term:"
 msgid "Advance Payment Term"
 msgstr "Advance Payment Terms"
-
-msgctxt "help:sale.advance_payment_term,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
