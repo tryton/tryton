@@ -16,14 +16,6 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Azienda"
 
-msgctxt "field:sale.subscription,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr ""
@@ -35,10 +27,6 @@ msgstr "Subscription"
 
 msgctxt "field:sale.subscription,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:sale.subscription,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.subscription,invoice_address:"
@@ -73,10 +61,6 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
-msgctxt "field:sale.subscription,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
 msgstr ""
@@ -89,25 +73,14 @@ msgctxt "field:sale.subscription,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:sale.subscription,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:sale.subscription.create_invoice.start,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,consumed:"
-msgid "Consumed"
-msgstr ""
+#, fuzzy
+msgctxt "field:sale.subscription.line,consumed_until:"
+msgid "Consumed until"
+msgstr "Consumptions"
 
 msgctxt "field:sale.subscription.line,consumption_delay:"
 msgid "Consumption Delay"
@@ -117,14 +90,6 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
 
-msgctxt "field:sale.subscription.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
@@ -132,10 +97,6 @@ msgstr "Subscription"
 
 msgctxt "field:sale.subscription.line,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.subscription.line,next_consumption_date:"
@@ -148,14 +109,6 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,quantity:"
 msgid "Quantity"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,sequence:"
-msgid "Sequence"
 msgstr ""
 
 msgctxt "field:sale.subscription.line,service:"
@@ -202,28 +155,8 @@ msgctxt "field:sale.subscription.line,unit_price:"
 msgid "Unit Price"
 msgstr ""
 
-msgctxt "field:sale.subscription.line,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:sale.subscription.line.consumption,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line.consumption,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:sale.subscription.line.consumption,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line.consumption,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,invoice_line:"
@@ -238,28 +171,12 @@ msgctxt "field:sale.subscription.line.consumption,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:sale.subscription.line.consumption,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.subscription.line.consumption,unit_digits:"
 msgid "Unit Digits"
 msgstr ""
 
-msgctxt "field:sale.subscription.line.consumption,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line.consumption,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.line.consumption.create.start,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,bymonth:"
@@ -286,14 +203,6 @@ msgctxt "field:sale.subscription.recurrence.rule,byyearday:"
 msgid "By Year Day"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:sale.subscription.recurrence.rule,exclusive:"
 msgid "Exclusive"
 msgstr ""
@@ -302,16 +211,8 @@ msgctxt "field:sale.subscription.recurrence.rule,freq:"
 msgid "Frequency"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.subscription.recurrence.rule,interval:"
 msgid "Interval"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,set_:"
@@ -322,44 +223,12 @@ msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
 msgid "Week Start Day"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule.set,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule.set,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule.set,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.subscription.recurrence.rule.set,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:sale.subscription.recurrence.rule.set,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule.set,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.recurrence.rule.set,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
@@ -370,32 +239,8 @@ msgctxt "field:sale.subscription.service,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
 
-msgctxt "field:sale.subscription.service,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.service,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:sale.subscription.service,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.subscription.service,product:"
 msgid "Product"
-msgstr ""
-
-msgctxt "field:sale.subscription.service,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.subscription.service,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.subscription.service,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:sale.subscription,company:"

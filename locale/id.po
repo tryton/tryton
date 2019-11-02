@@ -4,374 +4,353 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.configuration,subscription_sequence:"
 msgid "Subscription Sequence"
-msgstr "Štetje naročnin"
+msgstr ""
 
 msgctxt "field:sale.configuration.sequence,subscription_sequence:"
 msgid "Subscription Sequence"
-msgstr "Štetje naročnin"
+msgstr ""
 
 msgctxt "field:sale.subscription,company:"
 msgid "Company"
-msgstr "Družba"
+msgstr "Perusahaan"
 
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
-msgstr "Valuta"
+msgstr "Mata uang"
 
 msgctxt "field:sale.subscription,description:"
 msgid "Description"
-msgstr "Opis"
+msgstr "Deskripsi"
 
 msgctxt "field:sale.subscription,end_date:"
 msgid "End Date"
-msgstr "Konec"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
-msgstr "Naslov plačnika"
+msgstr ""
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
-msgstr "Perioda zaračunavanja"
+msgstr ""
 
 msgctxt "field:sale.subscription,invoice_start_date:"
 msgid "Invoice Start Date"
-msgstr "Začetek zaračunavanja"
+msgstr ""
 
 msgctxt "field:sale.subscription,lines:"
 msgid "Lines"
-msgstr "Postavke"
+msgstr "Baris"
 
 msgctxt "field:sale.subscription,next_invoice_date:"
 msgid "Next Invoice Date"
-msgstr "Datum naslednjega računa"
+msgstr "Tanggal Faktur Berikutnya"
 
 msgctxt "field:sale.subscription,number:"
 msgid "Number"
-msgstr "Številka"
+msgstr "Nomor"
 
 msgctxt "field:sale.subscription,party:"
 msgid "Party"
-msgstr "Partner"
+msgstr "Pihak"
 
 msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
-msgstr "Plačilni pogoj"
+msgstr ""
 
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
-msgstr "Sklic"
+msgstr "Referensi"
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
-msgstr "Začetek"
+msgstr "Tanggal Awal"
 
 msgctxt "field:sale.subscription,state:"
 msgid "State"
-msgstr "Stanje"
+msgstr ""
 
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
-msgstr "Porabljeno"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,consumption_delay:"
 msgid "Consumption Delay"
-msgstr "Zamki porabe"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
-msgstr "Perioda porabe"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
-msgstr "Opis"
+msgstr "Deskripsi"
 
 msgctxt "field:sale.subscription.line,end_date:"
 msgid "End Date"
-msgstr "Konec"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:sale.subscription.line,next_consumption_date:"
 msgid "Next Consumption Date"
-msgstr "Naslednja poraba"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,next_consumption_date_delayed:"
 msgid "Next Consumption Delayed"
-msgstr "Naslednja poraba z zamikom"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,quantity:"
 msgid "Quantity"
-msgstr "Količina"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,service:"
 msgid "Service"
-msgstr "Storitev"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,service_unit_category:"
 msgid "Service Unit Category"
-msgstr "Kategorija ME storitve"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,start_date:"
 msgid "Start Date"
-msgstr "Začetek"
+msgstr "Tanggal Awal"
 
 msgctxt "field:sale.subscription.line,subscription:"
 msgid "Subscription"
-msgstr "Naročnina"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,subscription_end_date:"
 msgid "Subscription End Date"
-msgstr "Konec naročnine"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,subscription_start_date:"
 msgid "Subscription Start Date"
-msgstr "Začetek naročnine"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,subscription_state:"
 msgid "Subscription State"
-msgstr "Stanje naročnine"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
-msgstr "Enota"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalke"
+msgstr ""
 
 msgctxt "field:sale.subscription.line,unit_price:"
 msgid "Unit Price"
-msgstr "Cena enote"
+msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
 msgctxt "field:sale.subscription.line.consumption,invoice_line:"
 msgid "Invoice Line"
-msgstr "Postavka računa"
+msgstr "Baris Faktur"
 
 msgctxt "field:sale.subscription.line.consumption,line:"
 msgid "Line"
-msgstr "Postavka"
+msgstr "Baris"
 
 msgctxt "field:sale.subscription.line.consumption,quantity:"
 msgid "Quantity"
-msgstr "Količina"
+msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalke"
+msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
 msgctxt "field:sale.subscription.recurrence.rule,bymonth:"
 msgid "By Month"
-msgstr "Po mesecih"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,bymonthday:"
 msgid "By Month Day"
-msgstr "Po dnevih v mesecu"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,bysetpos:"
 msgid "By Position"
-msgstr "Po položaju znotraj periode"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,byweekday:"
 msgid "By Week Day"
-msgstr "Po dnevih v tednu"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,byweekno:"
 msgid "By Week Number"
-msgstr "Po tednih"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,byyearday:"
 msgid "By Year Day"
-msgstr "Po dnevih v letu"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,exclusive:"
 msgid "Exclusive"
-msgstr "Izključno"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,freq:"
 msgid "Frequency"
-msgstr "Pogostost"
+msgstr "Frekuensi"
 
 msgctxt "field:sale.subscription.recurrence.rule,interval:"
 msgid "Interval"
-msgstr "Razmik"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule,set_:"
 msgid "Set"
-msgstr "Niz"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.subscription.recurrence.rule,week_start_day:"
 msgid "Week Start Day"
-msgstr "Začetek tedna"
+msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule.set,name:"
 msgid "Name"
-msgstr "Naziv"
+msgstr "Nama"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
-msgstr "Pravila"
+msgstr ""
 
 msgctxt "field:sale.subscription.service,consumption_delay:"
 msgid "Consumption Delay"
-msgstr "Zamik porabe"
+msgstr ""
 
 msgctxt "field:sale.subscription.service,consumption_recurrence:"
 msgid "Consumption Recurrence"
-msgstr "Ponovitev porabe"
+msgstr ""
 
 msgctxt "field:sale.subscription.service,product:"
 msgid "Product"
-msgstr "Izdelek"
+msgstr "Produk"
 
 msgctxt "help:sale.subscription,company:"
 msgid "Make the subscription belong to the company."
-msgstr "Poveži naročnino z družbo."
+msgstr ""
 
 msgctxt "help:sale.subscription,number:"
 msgid "The main identification of the subscription."
-msgstr "Glavni identifikator naročnine."
+msgstr ""
 
 msgctxt "help:sale.subscription,party:"
 msgid "The party who subscribes."
-msgstr "Naročnik"
+msgstr ""
 
 msgctxt "help:sale.subscription,reference:"
 msgid "The identification of an external origin."
-msgstr "Identifikacija zunanjega vira."
+msgstr ""
 
 msgctxt "help:sale.subscription,state:"
 msgid "The current state of the subscription."
-msgstr "Stanje naroćnine"
+msgstr ""
 
 msgctxt "help:sale.subscription.line,subscription:"
 msgid "Add the line below the subscription."
-msgstr "Dodajanje postavke naročnini."
+msgstr ""
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
 msgid "A comma separated list of integers."
-msgstr "Z vejico loćen seznam celih števil, ki predstavljajo mesece."
+msgstr ""
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonthday:"
 msgid "A comma separated list of integers."
-msgstr "Z vejico loćen seznam celih števil, ki predstavljajo dneve v mesecu."
+msgstr ""
 
 msgctxt "help:sale.subscription.recurrence.rule,bysetpos:"
 msgid "A comma separated list of integers."
 msgstr ""
-"Z vejico loćen seznam celih števil, ki predstavljajo položaj znotraj "
-"obdobja."
 
 msgctxt "help:sale.subscription.recurrence.rule,byweekday:"
 msgid "A comma separated list of integers or weekday (MO, TU etc)."
 msgstr ""
-"Z vejico loćen seznam celih števil ali kratic, ki predstavljajo dneve v "
-"tednu (1,2, ... ali MO, TU, itd)."
 
 msgctxt "help:sale.subscription.recurrence.rule,byweekno:"
 msgid "A comma separated list of integers (ISO8601)."
 msgstr ""
-"Z vejico loćen seznam celih števil, ki predstavljajo tedne v letu "
-"(ISO-8601)."
 
 msgctxt "help:sale.subscription.recurrence.rule,byyearday:"
 msgid "A comma separated list of integers."
-msgstr "Z vejico loćen seznam celih števil, ki predstavljajo dneve v letu."
+msgstr ""
 
 msgctxt "help:sale.subscription.recurrence.rule,set_:"
 msgid "Add the rule below the set."
-msgstr "Dodajanje pravila nizu pravil."
+msgstr ""
 
 msgctxt "help:sale.subscription.recurrence.rule.set,name:"
 msgid "The main identifier of the rule set."
-msgstr "Glavni identifikator niza pravil."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr "Create Subscription Invoices"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr "Create Line Consumptions"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr "Subscription Recurrence Rule Sets"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_service_form"
 msgid "Subscription Services"
-msgstr "Subscription Services"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_subscription_form"
 msgid "Subscriptions"
-msgstr "Subscriptions"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_subscription_invoice_relate"
 msgid "Invoices"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
-msgstr "Consumptions"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action,name:act_subscription_line_consumption_subscription_line_relate"
 msgid "Consumptions"
-msgstr "Consumptions"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action,name:act_subscription_line_consumption_subscription_relate"
 msgid "Consumptions"
-msgstr "Consumptions"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_subscription_party_relate"
 msgid "Subscriptions"
-msgstr "Subscriptions"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_running"
 msgid "Running"
-msgstr "Running"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_consumption_delete_invoiced"
 msgid "You cannot delete invoiced consumption \"%(consumption)s\"."
@@ -402,186 +381,177 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "model:ir.model.button,string:subscription_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rancangan"
 
 msgctxt "model:ir.model.button,string:subscription_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:subscription_run_button"
 msgid "Run"
-msgstr "Run"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_subscription"
 msgid "Subscription"
-msgstr "Subscription"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_subscription"
 msgid "Subscription"
-msgstr "Subscription"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_create_invoice"
 msgid "Create Subscription Invoices"
-msgstr "Create Subscription Invoices"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_line_consumption_create"
 msgid "Create Line Consumptions"
-msgstr "Create Line Consumptions"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_recurrence_rule_set_form"
 msgid "Subscription Recurrence Rule Sets"
-msgstr "Subscription Recurrence Rule Sets"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_service_form"
 msgid "Subscription Services"
-msgstr "Subscription Services"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_subscription_form"
 msgid "Subscriptions"
-msgstr "Subscriptions"
+msgstr ""
 
 msgctxt "model:sale.subscription,name:"
 msgid "Subscription"
-msgstr "Naročnina"
+msgstr ""
 
 msgctxt "model:sale.subscription.create_invoice.start,name:"
 msgid "Create Subscription Invoice"
-msgstr "Izdelava računa naročnine"
+msgstr ""
 
 msgctxt "model:sale.subscription.line,name:"
 msgid "Subscription Line"
-msgstr "Postavka naročnine"
+msgstr ""
 
 msgctxt "model:sale.subscription.line.consumption,name:"
 msgid "Subscription Line Consumption"
-msgstr "Poraba naročniške postavke"
+msgstr ""
 
 msgctxt "model:sale.subscription.line.consumption.create.start,name:"
 msgid "Create Subscription Line Consumption"
-msgstr "Izdelava porabe naročniške postavke"
+msgstr ""
 
 msgctxt "model:sale.subscription.recurrence.rule,name:"
 msgid "Subscription Recurrence Rule"
-msgstr "Pravilo za periodičnost naročnine"
+msgstr ""
 
 msgctxt "model:sale.subscription.recurrence.rule.set,name:"
 msgid "Subscription Recurrence Rule Set"
-msgstr "Niz pravil za periodičnost naročnine"
+msgstr ""
 
 msgctxt "model:sale.subscription.service,name:"
 msgid "Subscription Service"
-msgstr "Naročniška storitev"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Invoices"
-msgstr "Generate Subscription Invoices"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Line Consumptions"
-msgstr "Generate Subscription Line Consumptions"
+msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Canceled"
-msgstr "Preklicano"
+msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Closed"
-msgstr "Zaprto"
+msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Quotation"
-msgstr "Ponudba"
+msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Running"
-msgstr "Tekoče"
+msgstr ""
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Canceled"
-msgstr "Preklicano"
+msgstr ""
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Closed"
-msgstr "Zaprto"
+msgstr ""
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Draft"
-msgstr "V pripravi"
+msgstr ""
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Quotation"
-msgstr "Ponudba"
+msgstr ""
 
 msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
-msgstr "Tekoče"
+msgstr ""
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Daily"
-msgstr "Dnevno"
+msgstr "Harian"
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Monthly"
-msgstr "Mesečno"
+msgstr "Bulanan"
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Weekly"
-msgstr "Tedensko"
+msgstr "Mingguan"
 
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Yearly"
-msgstr "Letno"
+msgstr "Tahunan"
 
 msgctxt "view:sale.subscription.create_invoice.start:"
 msgid "Create Subscription Invoices for date"
-msgstr "Zaračunavanje naročnine na dan"
+msgstr ""
 
 msgctxt "view:sale.subscription.line.consumption.create.start:"
 msgid "Create Subscription Line Consumptions for date"
-msgstr "Poraba naročnine na dan"
+msgstr ""
 
 msgctxt "view:sale.subscription.line:"
 msgid "General"
-msgstr "Splošno"
+msgstr "Umum"
 
 msgctxt "view:sale.subscription:"
 msgid "Other Info"
-msgstr "Drugo"
+msgstr "Info Lain"
 
 msgctxt "view:sale.subscription:"
 msgid "Subscription"
-msgstr "Naročnina"
+msgstr ""
 
 msgctxt "wizard_button:sale.subscription.create_invoice,start,create_:"
 msgid "Create"
-msgstr "Izdelava"
+msgstr "Buat"
 
 msgctxt "wizard_button:sale.subscription.create_invoice,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Batal"
 
 msgctxt ""
 "wizard_button:sale.subscription.line.consumption.create,start,create_:"
 msgid "Create"
-msgstr "Izdelava"
+msgstr "Buat"
 
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
-msgstr "Prekliči"
+msgstr "Batal"
