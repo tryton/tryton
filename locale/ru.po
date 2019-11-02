@@ -6,39 +6,10 @@ msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 msgctxt ""
 "field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.default_dunning_procedure,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:account.dunning,active:"
@@ -65,24 +36,9 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
-msgctxt "field:account.dunning,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:account.dunning,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
-
-#, fuzzy
-msgctxt "field:account.dunning,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.dunning,level:"
@@ -108,10 +64,6 @@ msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
 msgstr ""
 
-msgctxt "field:account.dunning,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
@@ -128,39 +80,9 @@ msgid "State"
 msgstr "Штат"
 
 #, fuzzy
-msgctxt "field:account.dunning,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:account.dunning,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-#, fuzzy
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "Дата"
-
-#, fuzzy
-msgctxt "field:account.dunning.create.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.dunning.level,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:account.dunning.level,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:account.dunning.level,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
@@ -169,40 +91,6 @@ msgstr ""
 msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
 msgstr ""
-
-msgctxt "field:account.dunning.level,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.dunning.level,sequence:"
-msgid "Sequence"
-msgstr "Последовательность"
-
-#, fuzzy
-msgctxt "field:account.dunning.level,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:account.dunning.level,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-#, fuzzy
-msgctxt "field:account.dunning.procedure,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:account.dunning.procedure,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:account.dunning.procedure,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.dunning.procedure,levels:"
@@ -213,25 +101,6 @@ msgstr "Уровень"
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
 msgstr "Правило оплаты"
-
-msgctxt "field:account.dunning.procedure,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.dunning.procedure,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:account.dunning.procedure,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-#, fuzzy
-msgctxt "field:account.dunning.process.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.move.line,dunnings:"
@@ -249,43 +118,14 @@ msgid "Dunning Procedures"
 msgstr "Dunning Procedures"
 
 #, fuzzy
-msgctxt "field:party.party.dunning_procedure,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:party.party.dunning_procedure,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
 msgstr "Dunning Procedures"
 
 #, fuzzy
-msgctxt "field:party.party.dunning_procedure,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
 msgstr "Организации"
-
-msgctxt "field:party.party.dunning_procedure,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.party.dunning_procedure,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:party.party.dunning_procedure,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."

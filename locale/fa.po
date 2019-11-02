@@ -6,34 +6,10 @@ msgctxt "field:account.configuration,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr "روال دانینگ پیش فرض"
 
-msgctxt "field:account.configuration.default_dunning_procedure,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.configuration.default_dunning_procedure,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt ""
 "field:account.configuration.default_dunning_procedure,default_dunning_procedure:"
 msgid "Default Dunning Procedure"
 msgstr "روال دانینگ پیش فرض"
-
-msgctxt "field:account.configuration.default_dunning_procedure,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:account.configuration.default_dunning_procedure,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.configuration.default_dunning_procedure,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.configuration.default_dunning_procedure,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:account.dunning,active:"
 msgid "Active"
@@ -55,21 +31,9 @@ msgctxt "field:account.dunning,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.dunning,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.dunning,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.dunning,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
-
-msgctxt "field:account.dunning,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.dunning,level:"
 msgid "Level"
@@ -91,10 +55,6 @@ msgctxt "field:account.dunning,procedure:"
 msgid "Procedure"
 msgstr "روال"
 
-msgctxt "field:account.dunning,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:account.dunning,second_currency:"
 msgid "Second Currency"
 msgstr "ارز دوم"
@@ -107,33 +67,9 @@ msgctxt "field:account.dunning,state:"
 msgid "State"
 msgstr "وضعیت"
 
-msgctxt "field:account.dunning,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.dunning,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:account.dunning.create.start,date:"
 msgid "Date"
 msgstr "تاریخ"
-
-msgctxt "field:account.dunning.create.start,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:account.dunning.level,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.dunning.level,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:account.dunning.level,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.dunning.level,overdue:"
 msgid "Overdue"
@@ -143,34 +79,6 @@ msgctxt "field:account.dunning.level,procedure:"
 msgid "Procedure"
 msgstr "روال"
 
-msgctxt "field:account.dunning.level,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.dunning.level,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
-msgctxt "field:account.dunning.level,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.dunning.level,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:account.dunning.procedure,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.dunning.procedure,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:account.dunning.procedure,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:account.dunning.procedure,levels:"
 msgid "Levels"
 msgstr "سطوح"
@@ -178,22 +86,6 @@ msgstr "سطوح"
 msgctxt "field:account.dunning.procedure,name:"
 msgid "Name"
 msgstr "نام"
-
-msgctxt "field:account.dunning.procedure,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.dunning.procedure,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.dunning.procedure,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:account.dunning.process.start,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.move.line,dunnings:"
 msgid "Dunnings"
@@ -207,37 +99,13 @@ msgctxt "field:party.party,dunning_procedures:"
 msgid "Dunning Procedures"
 msgstr "روال های دانینگ"
 
-msgctxt "field:party.party.dunning_procedure,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.party.dunning_procedure,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:party.party.dunning_procedure,dunning_procedure:"
 msgid "Dunning Procedure"
 msgstr "روال دانینگ"
 
-msgctxt "field:party.party.dunning_procedure,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:party.party.dunning_procedure,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
-
-msgctxt "field:party.party.dunning_procedure,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:party.party.dunning_procedure,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.party.dunning_procedure,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "help:account.configuration,default_dunning_procedure:"
 msgid "The default dunning procedure for new customers."
