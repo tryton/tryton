@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,stripe_account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Rekening"
 
 msgctxt "field:account.payment.stripe.account,last_event:"
 msgid "Last Event"
@@ -108,7 +108,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,name:"
 msgid "Name"
-msgstr "Nimetus"
+msgstr "Nama"
 
 msgctxt "field:account.payment.stripe.account,publishable_key:"
 msgid "Publishable Key"
@@ -132,15 +132,15 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,zip_code:"
 msgid "Zip Code"
-msgstr "Postiindeks"
+msgstr "Kode Pos"
 
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
-msgstr "Osapool"
+msgstr "Pihak"
 
 msgctxt "field:account.payment.stripe.customer,stripe_account:"
 msgid "Account"
-msgstr "Konto"
+msgstr "Rekening"
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
@@ -238,7 +238,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
-msgstr "Uus URL"
+msgstr "URL Baru"
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
@@ -266,12 +266,12 @@ msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Pay"
-msgstr "Tasu"
+msgstr "Bayar"
 
 #, fuzzy
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Register card"
-msgstr "Registreeri"
+msgstr "Daftar"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"

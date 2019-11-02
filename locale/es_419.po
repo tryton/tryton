@@ -10,6 +10,10 @@ msgctxt "field:account.payment,stripe_amount:"
 msgid "Stripe Amount"
 msgstr ""
 
+msgctxt "field:account.payment,stripe_capturable:"
+msgid "Stripe Capturable"
+msgstr ""
+
 msgctxt "field:account.payment,stripe_capture:"
 msgid "Stripe Capture"
 msgstr ""
@@ -40,6 +44,14 @@ msgstr "Se requiere proceso de pago de Stripe"
 
 msgctxt "field:account.payment,stripe_customer:"
 msgid "Stripe Customer"
+msgstr ""
+
+msgctxt "field:account.payment,stripe_customer_payment_method:"
+msgid "Stripe Payment Method"
+msgstr ""
+
+msgctxt "field:account.payment,stripe_customer_payment_method_selection:"
+msgid "Stripe Customer Payment Method"
 msgstr ""
 
 msgctxt "field:account.payment,stripe_customer_source:"
@@ -78,6 +90,10 @@ msgctxt "field:account.payment,stripe_journal:"
 msgid "Stripe Journal"
 msgstr ""
 
+msgctxt "field:account.payment,stripe_payment_intent_id:"
+msgid "Stripe Payment Intent"
+msgstr ""
+
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
 msgstr ""
@@ -86,16 +102,8 @@ msgctxt "field:account.payment.journal,stripe_account:"
 msgid "Account"
 msgstr ""
 
-msgctxt "field:account.payment.stripe.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.account,id:"
-msgid "ID"
+msgctxt "field:account.payment.stripe.account,last_event:"
+msgid "Last Event"
 msgstr ""
 
 msgctxt "field:account.payment.stripe.account,name:"
@@ -104,10 +112,6 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,publishable_key:"
 msgid "Publishable Key"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.account,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.payment.stripe.account,secret_key:"
@@ -126,40 +130,12 @@ msgctxt "field:account.payment.stripe.account,webhook_signing_secret:"
 msgid "Webhook Signing Secret"
 msgstr ""
 
-msgctxt "field:account.payment.stripe.account,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.payment.stripe.account,zip_code:"
 msgid "Zip Code"
 msgstr ""
 
-msgctxt "field:account.payment.stripe.customer,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.payment.stripe.customer,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.payment.stripe.customer,stripe_account:"
@@ -190,16 +166,12 @@ msgctxt "field:account.payment.stripe.customer,stripe_error_param:"
 msgid "Stripe Error Param"
 msgstr ""
 
+msgctxt "field:account.payment.stripe.customer,stripe_setup_intent_id:"
+msgid "Stripe SetupIntent ID"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.payment.stripe.customer,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:party.party,stripe_customers:"
@@ -216,10 +188,6 @@ msgstr ""
 
 msgctxt "help:account.payment.stripe.account,zip_code:"
 msgid "Verification on checkout"
-msgstr ""
-
-msgctxt "help:account.payment.stripe.customer,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:account.payment.stripe.account,name:"
@@ -240,6 +208,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
+msgstr ""
+
+msgctxt "model:ir.action,name:report_email_checkout"
+msgid "Checkout"
 msgstr ""
 
 msgctxt "model:ir.action,name:url_checkout"
@@ -269,7 +241,7 @@ msgid "New URL"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
-msgid "Stripe Checkout"
+msgid "Add Card"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:payment_stripe_capture_button"
@@ -289,19 +261,31 @@ msgid "Stripe Customers"
 msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
+msgid "Credit or debit card"
+msgstr ""
+
+msgctxt "report:account.payment.stripe.checkout:"
 msgid "Pay"
 msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
-msgid "Register"
+msgid "Register card"
 msgstr ""
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Stripe Checkout"
 msgstr ""
 
-msgctxt "report:account.payment.stripe.checkout:"
-msgid "Stripe Checkout for"
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Authorization needed"
+msgstr ""
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Checkout"
+msgstr ""
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "You need to authorize the payment"
 msgstr ""
 
 msgctxt "selection:account.payment.journal,process_method:"
@@ -324,6 +308,54 @@ msgctxt "selection:ir.cron,method:"
 msgid "Delete Stripe Customer"
 msgstr ""
 
+msgctxt "selection:ir.cron,method:"
+msgid "Fetch Stripe Events"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
+msgid "Update Stripe Intent Customer"
+msgstr ""
+
 msgctxt "view:account.payment.journal:"
 msgid "Stripe"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Capturable:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Capture:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Charge ID:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Chargeable:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Customer:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Payment Intent:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Payment Method:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Source:"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Stripe"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Token:"
 msgstr ""
