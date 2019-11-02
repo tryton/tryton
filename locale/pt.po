@@ -10,33 +10,9 @@ msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Período de Abastecimento"
 
-msgctxt "field:purchase.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:purchase.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:purchase.configuration.supply_period,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
 msgstr "Período de Abastecimento"
-
-msgctxt "field:purchase.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:purchase.configuration.supply_period,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
@@ -49,18 +25,6 @@ msgstr "Localização do Abastecimento"
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.order_point,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:stock.order_point,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
-
-msgctxt "field:stock.order_point,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
@@ -86,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Localização do Abastecimento"
 
-msgctxt "field:stock.order_point,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr "Local de armazenamento"
@@ -114,24 +74,14 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Localização do Almoxarifado"
 
-msgctxt "field:stock.order_point,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:stock.order_point,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
-msgctxt "field:stock.supply.start,id:"
-msgid "ID"
-msgstr "ID"
-
+#, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
-msgid "Leave empty for no default overflowing"
+msgid "Leave empty for no default overflowing."
 msgstr "Deixe vazio para nenhum transbordo padrão"
 
+#, fuzzy
 msgctxt "help:stock.location,provisioning_location:"
-msgid "Leave empty for no default provisioning"
+msgid "Leave empty for no default provisioning."
 msgstr "Deixe vazio para nenhum abastecimento padrão"
 
 #, fuzzy
@@ -260,45 +210,5 @@ msgid "Create"
 msgstr "Criar"
 
 msgctxt "wizard_button:stock.supply,start,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "model:ir.cron,name:cron_generate_request"
-msgid "Generate Purchase Requests"
-msgstr "Gerar Pedidos de Compra"
-
-msgctxt "model:ir.cron,name:cron_shipment_iternal"
-msgid "Generate Internal Shipments"
-msgstr "Gere expedições internas"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
-msgid "Create Purchase Requests"
-msgstr "Criar Pedidos de Compra"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
-msgid "Create Internal Shipments"
-msgstr "Gerar Remessas Internas"
-
-msgctxt "model:purchase.request.create.start,name:"
-msgid "Create Purchase Request"
-msgstr "Criar Pedidos de Compra"
-
-msgctxt "model:stock.shipment.internal.create.start,name:"
-msgid "Create Shipment Internal"
-msgstr "Criar Remessa Interna"
-
-msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests?"
-msgstr "Criar Pedidos de Compra?"
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments?"
-msgstr "Criar Remessas Internas?"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
-msgid "Create"
-msgstr "Criar"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"

@@ -10,33 +10,9 @@ msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Période d'approvisionnement"
 
-msgctxt "field:purchase.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:purchase.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:purchase.configuration.supply_period,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
 msgstr "Période d'approvisionnement"
-
-msgctxt "field:purchase.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:purchase.configuration.supply_period,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
@@ -49,18 +25,6 @@ msgstr "Emplacement d’approvisionnement"
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.order_point,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.order_point,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.order_point,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
@@ -86,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Emplacement d'approvisionnement"
 
-msgctxt "field:stock.order_point,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr "Emplacement de stockage"
@@ -114,25 +74,13 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Entrepôt"
 
-msgctxt "field:stock.order_point,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.order_point,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.supply.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "help:stock.location,overflowing_location:"
-msgid "Leave empty for no default overflowing"
-msgstr "Laisser vide pour aucun surplus par défaut"
+msgid "Leave empty for no default overflowing."
+msgstr "Laisser vide pour aucun surplus par défaut."
 
 msgctxt "help:stock.location,provisioning_location:"
-msgid "Leave empty for no default provisioning"
-msgstr "Laisser vide pour aucun approvisionnement par défaut"
+msgid "Leave empty for no default provisioning."
+msgstr "Laisser vide pour aucun approvisionnement par défaut."
 
 msgctxt "model:ir.action,name:act_order_point_form"
 msgid "Order Points"
@@ -246,45 +194,5 @@ msgid "Create"
 msgstr "Créer"
 
 msgctxt "wizard_button:stock.supply,start,end:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "model:ir.cron,name:cron_generate_request"
-msgid "Generate Purchase Requests"
-msgstr "Générer les demandes d'achat"
-
-msgctxt "model:ir.cron,name:cron_shipment_iternal"
-msgid "Generate Internal Shipments"
-msgstr "Générer les expéditions internes"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
-msgid "Create Purchase Requests"
-msgstr "Créer les demandes d'achat"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
-msgid "Create Internal Shipments"
-msgstr "Créer les expéditions internes"
-
-msgctxt "model:purchase.request.create.start,name:"
-msgid "Create Purchase Request"
-msgstr "Créer les demandes d'achat"
-
-msgctxt "model:stock.shipment.internal.create.start,name:"
-msgid "Create Shipment Internal"
-msgstr "Créer l'expédition interne"
-
-msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests?"
-msgstr "Créer les demandes d'achat ?"
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments?"
-msgstr "Créer les expéditions internes ?"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
-msgid "Create"
-msgstr "Créer"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
 msgstr "Annuler"

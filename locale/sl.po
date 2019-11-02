@@ -10,33 +10,9 @@ msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr "Obdobje dobave"
 
-msgctxt "field:purchase.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:purchase.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:purchase.configuration.supply_period,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
 msgstr "Obdobje dobave"
-
-msgctxt "field:purchase.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:purchase.configuration.supply_period,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:stock.location,overflowing_location:"
 msgid "Overflowing Location"
@@ -49,18 +25,6 @@ msgstr "Preskrbovalna lokacija"
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
 msgstr "Družba"
-
-msgctxt "field:stock.order_point,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.order_point,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:stock.order_point,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.order_point,location:"
 msgid "Location"
@@ -86,10 +50,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr "Preskrbovalna lokacija"
 
-msgctxt "field:stock.order_point,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr "Shramba"
@@ -114,24 +74,14 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr "Skladišče"
 
-msgctxt "field:stock.order_point,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.order_point,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:stock.supply.start,id:"
-msgid "ID"
-msgstr "ID"
-
+#, fuzzy
 msgctxt "help:stock.location,overflowing_location:"
-msgid "Leave empty for no default overflowing"
+msgid "Leave empty for no default overflowing."
 msgstr "Pusti prazno, če ni privzetega preliva"
 
+#, fuzzy
 msgctxt "help:stock.location,provisioning_location:"
-msgid "Leave empty for no default provisioning"
+msgid "Leave empty for no default provisioning."
 msgstr "Pusti prazno, če ni privzete preskrbe"
 
 #, fuzzy
@@ -256,45 +206,5 @@ msgid "Create"
 msgstr "Izdelava"
 
 msgctxt "wizard_button:stock.supply,start,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "model:ir.cron,name:cron_generate_request"
-msgid "Generate Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
-
-msgctxt "model:ir.cron,name:cron_shipment_iternal"
-msgid "Generate Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
-
-msgctxt "model:ir.ui.menu,name:menu_purchase_request_create"
-msgid "Create Purchase Requests"
-msgstr "Izdelava nabavnih zahtevkov"
-
-msgctxt "model:ir.ui.menu,name:menu_shipment_internal_create"
-msgid "Create Internal Shipments"
-msgstr "Izdelava notranjih odpremnic"
-
-msgctxt "model:purchase.request.create.start,name:"
-msgid "Create Purchase Request"
-msgstr "Izdelava nabavnega zahtevka"
-
-msgctxt "model:stock.shipment.internal.create.start,name:"
-msgid "Create Shipment Internal"
-msgstr "Izdelava notranje odpremnice"
-
-msgctxt "view:purchase.request.create.start:"
-msgid "Create Purchase Requests?"
-msgstr "Izdelava nabavnih zahtevkov?"
-
-msgctxt "view:stock.shipment.internal.create.start:"
-msgid "Create Internal Shipments?"
-msgstr "Izdelava notranjih odpremnic?"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,create_:"
-msgid "Create"
-msgstr "Izdelaj"
-
-msgctxt "wizard_button:stock.shipment.internal.create,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"

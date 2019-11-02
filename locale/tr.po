@@ -11,32 +11,8 @@ msgctxt "field:purchase.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
-msgctxt "field:purchase.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:purchase.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:purchase.configuration.supply_period,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:purchase.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:purchase.configuration.supply_period,supply_period:"
 msgid "Supply Period"
-msgstr ""
-
-msgctxt "field:purchase.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:purchase.configuration.supply_period,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:stock.location,overflowing_location:"
@@ -49,18 +25,6 @@ msgstr ""
 
 msgctxt "field:stock.order_point,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:stock.order_point,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:stock.order_point,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:stock.order_point,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:stock.order_point,location:"
@@ -87,10 +51,6 @@ msgctxt "field:stock.order_point,provisioning_location:"
 msgid "Provisioning Location"
 msgstr ""
 
-msgctxt "field:stock.order_point,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:stock.order_point,storage_location:"
 msgid "Storage Location"
 msgstr ""
@@ -115,24 +75,12 @@ msgctxt "field:stock.order_point,warehouse_location:"
 msgid "Warehouse Location"
 msgstr ""
 
-msgctxt "field:stock.order_point,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:stock.order_point,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:stock.supply.start,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "help:stock.location,overflowing_location:"
-msgid "Leave empty for no default overflowing"
+msgid "Leave empty for no default overflowing."
 msgstr ""
 
 msgctxt "help:stock.location,provisioning_location:"
-msgid "Leave empty for no default provisioning"
+msgid "Leave empty for no default provisioning."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_order_point_form"
