@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,hours_per_work_day:"
 msgid "Hours per Work Day"
-msgstr ""
+msgstr "Uren per werkdag"
 
 msgctxt "field:company.company,hours_per_work_month:"
 msgid "Hours per Work Month"
-msgstr ""
+msgstr "Uren per werkmaand"
 
 msgctxt "field:company.company,hours_per_work_week:"
 msgid "Hours per Work Week"
-msgstr ""
+msgstr "Uren per werkweek"
 
 msgctxt "field:company.company,hours_per_work_year:"
 msgid "Hours per Work Year"
-msgstr ""
+msgstr "Uren per werkjaar"
 
 msgctxt "view:company.company:"
 msgid "Work Time"
-msgstr ""
+msgstr "Werktijd"

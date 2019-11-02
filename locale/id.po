@@ -4,20 +4,20 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,hours_per_work_day:"
 msgid "Hours per Work Day"
-msgstr "Valandų per dieną"
+msgstr ""
 
 msgctxt "field:company.company,hours_per_work_month:"
 msgid "Hours per Work Month"
-msgstr "Valandų per mėnesį"
+msgstr ""
 
 msgctxt "field:company.company,hours_per_work_week:"
 msgid "Hours per Work Week"
-msgstr "Valandų per savaitę"
+msgstr ""
 
 msgctxt "field:company.company,hours_per_work_year:"
 msgid "Hours per Work Year"
-msgstr "Valandų per metus"
+msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Work Time"
-msgstr "Darbo laikas"
+msgstr ""
