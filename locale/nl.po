@@ -1,0 +1,35 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice.line,product_secondary_uom_category:"
+msgid "Product Secondary UOM Category"
+msgstr "Product secundaire maateenheid categorie"
+
+msgctxt "field:account.invoice.line,secondary_quantity:"
+msgid "Secondary Quantity"
+msgstr "Secundaire hoeveelheid"
+
+msgctxt "field:account.invoice.line,secondary_unit:"
+msgid "Secondary Unit"
+msgstr "Secundaire eenheid"
+
+msgctxt "field:account.invoice.line,secondary_unit_digits:"
+msgid "Secondary Unit Digits"
+msgstr "decimalen secondaire eenheid"
+
+msgctxt "field:account.invoice.line,secondary_unit_price:"
+msgid "Secondary Unit Price"
+msgstr "secundaire eenheidsprijs"
+
+msgctxt "view:account.invoice.line:"
+msgid "Quantity:"
+msgstr "Hoeveelheid:"
+
+msgctxt "view:account.invoice.line:"
+msgid "Unit Price:"
+msgstr "Eenheid prijs:"
+
+msgctxt "view:account.invoice.line:"
+msgid "Unit:"
+msgstr "Eenheid:"
