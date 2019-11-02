@@ -4,88 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,carrier_cost_method:"
 msgid "Carrier Cost Method"
-msgstr ""
+msgstr "Vežėjo kainos skaičiavimo būdas"
 
 msgctxt "field:carrier,carrier_product:"
 msgid "Carrier Product"
-msgstr ""
-
-msgctxt "field:carrier,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:carrier,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:carrier,id:"
-msgid "ID"
-msgstr ""
+msgstr "Vežėjo produktas"
 
 msgctxt "field:carrier,party:"
 msgid "Party"
 msgstr "Kontrahentas"
 
-msgctxt "field:carrier,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:carrier,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:carrier,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:carrier.selection,active:"
-msgid "Active"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
-msgstr "Carrier"
-
-msgctxt "field:carrier.selection,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:carrier.selection,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Vežėjas"
 
 msgctxt "field:carrier.selection,from_country:"
 msgid "From Country"
-msgstr ""
-
-msgctxt "field:carrier.selection,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:carrier.selection,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:carrier.selection,sequence:"
-msgid "Sequence"
-msgstr ""
+msgstr "Iš šalies"
 
 msgctxt "field:carrier.selection,to_country:"
 msgid "To Country"
-msgstr ""
+msgstr "Į šalį"
 
-msgctxt "field:carrier.selection,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:carrier.selection,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
+#, fuzzy
 msgctxt "help:carrier,carrier_cost_method:"
-msgid "Method to compute carrier cost"
-msgstr ""
+msgid "Method to compute carrier cost."
+msgstr "Pervežimo kainos skaičiavimo būdas"
 
 msgctxt "help:carrier,carrier_product:"
 msgid "The product to invoice the carrier service."
@@ -93,15 +37,11 @@ msgstr ""
 
 msgctxt "help:carrier,party:"
 msgid "The party which represents the carrier."
-msgstr ""
-
-msgctxt "help:carrier.selection,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "Kontrahentas atstovaujantis vežėją."
 
 msgctxt "help:carrier.selection,carrier:"
 msgid "The selected carrier."
-msgstr ""
+msgstr "Pasirinktas vežėjas."
 
 msgctxt "help:carrier.selection,from_country:"
 msgid ""
@@ -115,44 +55,42 @@ msgid ""
 "Leave empty for any countries."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:carrier,name:"
 msgid "Carrier"
-msgstr "Carrier"
+msgstr "Vežėjas"
 
-#, fuzzy
 msgctxt "model:carrier.selection,name:"
 msgid "Carrier Selection"
-msgstr "Carrier Selection"
+msgstr "Vežėjo pasirinkimas"
 
 msgctxt "model:ir.action,name:act_carrier_form"
 msgid "Carriers"
-msgstr "Carriers"
+msgstr "Vežėjai"
 
 msgctxt "model:ir.action,name:act_carrier_selection_form"
 msgid "Carrier Selection"
-msgstr "Carrier Selection"
+msgstr "Vežėjo pasirinkimas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier"
 msgid "Carrier"
-msgstr "Carrier"
+msgstr "Vežėjas"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_form"
 msgid "Carriers"
-msgstr "Carriers"
+msgstr "Vežėjai"
 
 msgctxt "model:ir.ui.menu,name:menu_carrier_selection"
 msgid "Carrier Selection"
-msgstr "Carrier Selection"
+msgstr "Vežėjo pasirinkimas"
 
 msgctxt "model:res.group,name:group_carrier_admin"
 msgid "Carrier Administration"
-msgstr "Carrier Administration"
+msgstr "Vežėjo valdymas"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Product Price"
-msgstr ""
+msgstr "Prekės kaina"
 
 msgctxt "view:carrier.selection:"
 msgid "Criteria"
-msgstr ""
+msgstr "Kriterijus"
