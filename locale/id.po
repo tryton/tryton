@@ -4,52 +4,52 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
-msgstr "Aktion"
+msgstr "Tindakan"
 
 msgctxt "field:dashboard.action,user:"
 msgid "User"
-msgstr "Benutzer"
+msgstr "Pengguna"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
-msgstr "Dashboard Aktionen"
+msgstr ""
 
 msgctxt "field:res.user,dashboard_layout:"
 msgid "Dashboard Layout"
-msgstr "Dashboard Anordnung"
+msgstr ""
 
 msgctxt "model:dashboard.action,name:"
 msgid "Dashboard Action"
-msgstr "Dashboard Aktion"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_dashboard"
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_dashboard"
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Square"
-msgstr "Rechtecke"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Bottom"
-msgstr "Stapel unten"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Left"
-msgstr "Stapel links"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Right"
-msgstr "Stapel rechts"
+msgstr ""
 
 msgctxt "selection:res.user,dashboard_layout:"
 msgid "Stack Top"
-msgstr "Stapel oben"
+msgstr ""
 
 msgctxt "view:res.user:"
 msgid "Dashboard"
-msgstr "Dashboard"
+msgstr ""

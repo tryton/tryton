@@ -6,37 +6,9 @@ msgctxt "field:dashboard.action,act_window:"
 msgid "Action"
 msgstr "Ukrep"
 
-msgctxt "field:dashboard.action,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:dashboard.action,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:dashboard.action,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:dashboard.action,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:dashboard.action,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:dashboard.action,user:"
 msgid "User"
 msgstr "Uporabnik"
-
-msgctxt "field:dashboard.action,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:dashboard.action,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:res.user,dashboard_actions:"
 msgid "Dashboard Actions"
@@ -83,11 +55,3 @@ msgstr "Zloženo na vrhu"
 msgctxt "view:res.user:"
 msgid "Dashboard"
 msgstr "Delovna tabla"
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Action"
-msgstr "Ukrep delovne table"
-
-msgctxt "view:dashboard.action:"
-msgid "Dashboard Actions"
-msgstr "Ukrepi delovne table"
