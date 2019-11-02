@@ -18,49 +18,21 @@ msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "محل تامین کننده"
 
-msgctxt "field:party.party.location,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:party.party.location,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
 msgstr "محل مشتری"
-
-msgctxt "field:party.party.location,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:party.party.location,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "field:party.party.location,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
 msgstr "محل تامین کننده"
 
-msgctxt "field:party.party.location,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:party.party.location,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "در تاریخ"
-
-msgctxt "field:product.by_location.context,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
@@ -90,25 +62,14 @@ msgctxt "field:product.template,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:stock.configuration,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.configuration,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:stock.configuration,id:"
-msgid "ID"
-msgstr "شناسه"
+#, fuzzy
+msgctxt "field:res.user,warehouse:"
+msgid "Current Warehouse"
+msgstr "انبار"
 
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "ادامه فهرست دارایی"
-
-msgctxt "field:stock.configuration,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -134,65 +95,17 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "ادامه حمل و نقل مشتری"
 
-msgctxt "field:stock.configuration,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.configuration,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.configuration.location,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.configuration.location,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:stock.configuration.location,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:stock.configuration.location,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "حمل ونقل محموله داخلی"
-
-msgctxt "field:stock.configuration.location,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.configuration.location,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:stock.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:stock.configuration.sequence,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.configuration.sequence,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "ادامه فهرست دارایی"
-
-msgctxt "field:stock.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -214,25 +127,9 @@ msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "ادامه حمل و نقل مشتری"
 
-msgctxt "field:stock.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:stock.inventory,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:stock.inventory,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.inventory,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
@@ -241,10 +138,6 @@ msgstr "تاریخ"
 msgctxt "field:stock.inventory,empty_quantity:"
 msgid "Empty Quantity"
 msgstr "مقدار خالی"
-
-msgctxt "field:stock.inventory,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.inventory,lines:"
 msgid "Lines"
@@ -262,25 +155,9 @@ msgctxt "field:stock.inventory,number:"
 msgid "Number"
 msgstr "شماره"
 
-msgctxt "field:stock.inventory,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.inventory,state:"
 msgid "State"
 msgstr "وضعیت"
-
-msgctxt "field:stock.inventory,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.inventory,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.inventory.count.quantity,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.inventory.count.quantity,line:"
 msgid "Line"
@@ -306,10 +183,6 @@ msgctxt "field:stock.inventory.count.quantity,uom:"
 msgid "UOM"
 msgstr "واحد اندازی گیری"
 
-msgctxt "field:stock.inventory.count.search,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "جستجو"
@@ -318,21 +191,9 @@ msgctxt "field:stock.inventory.count.search,search_model:"
 msgid "Search Model"
 msgstr "مدل جستجو"
 
-msgctxt "field:stock.inventory.line,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.inventory.line,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "مقدار مورد انتظار"
-
-msgctxt "field:stock.inventory.line,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
@@ -354,10 +215,6 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:stock.inventory.line,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "ارقام واحد"
@@ -365,18 +222,6 @@ msgstr "ارقام واحد"
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
 msgstr "واحد اندازی گیری"
-
-msgctxt "field:stock.inventory.line,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.inventory.line,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.location,active:"
-msgid "Active"
-msgstr "فعال"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
@@ -394,14 +239,6 @@ msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
 msgstr "مقدار هزینه"
 
-msgctxt "field:stock.location,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.location,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.location,flat_childs:"
 msgid "Flat Children"
 msgstr "مجموعه یکنواخت"
@@ -409,10 +246,6 @@ msgstr "مجموعه یکنواخت"
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "مقدار پیش بینی شده"
-
-msgctxt "field:stock.location,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.location,input_location:"
 msgid "Input"
@@ -442,10 +275,6 @@ msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:stock.location,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.location,right:"
 msgid "Right"
 msgstr "راست"
@@ -462,37 +291,9 @@ msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
 msgstr "انبار"
 
-msgctxt "field:stock.location,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.location,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.location.lead_time,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.location.lead_time,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:stock.location.lead_time,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "زمان پیشبرد"
-
-msgctxt "field:stock.location.lead_time,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:stock.location.lead_time,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
 
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
@@ -501,14 +302,6 @@ msgstr "از انبار"
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
 msgstr "به انبار"
-
-msgctxt "field:stock.location.lead_time,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.location.lead_time,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
@@ -522,14 +315,6 @@ msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
 msgstr "ارزش بها"
 
-msgctxt "field:stock.move,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.move,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
 msgstr "واحد پول"
@@ -541,10 +326,6 @@ msgstr "تاریخ موثر"
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "از مکان"
-
-msgctxt "field:stock.move,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
@@ -569,10 +350,6 @@ msgstr "دسته بندی واحد اندازه گیری محصول"
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
-
-msgctxt "field:stock.move,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
@@ -602,14 +379,6 @@ msgctxt "field:stock.move,uom:"
 msgid "Uom"
 msgstr "واحد اندازی گیری"
 
-msgctxt "field:stock.move,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.move,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
 msgstr "مخازن نگهداری"
@@ -618,49 +387,13 @@ msgctxt "field:stock.period,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:stock.period,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.period,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.period,date:"
 msgid "Date"
 msgstr "تاریخ"
 
-msgctxt "field:stock.period,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:stock.period,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.period,state:"
 msgid "State"
 msgstr "وضعیت"
-
-msgctxt "field:stock.period,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.period,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.period.cache,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.period.cache,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:stock.period.cache,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.period.cache,internal_quantity:"
 msgid "Internal Quantity"
@@ -678,53 +411,13 @@ msgctxt "field:stock.period.cache,product:"
 msgid "Product"
 msgstr "محصول"
 
-msgctxt "field:stock.period.cache,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:stock.period.cache,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.period.cache,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.product_quantities_warehouse,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.product_quantities_warehouse,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "تاریخ"
 
-msgctxt "field:stock.product_quantities_warehouse,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
-
-msgctxt "field:stock.product_quantities_warehouse,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:stock.product_quantities_warehouse,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.product_quantities_warehouse,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.product_quantities_warehouse.context,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -733,10 +426,6 @@ msgstr "انبار"
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
 msgstr "در تاریخ"
-
-msgctxt "field:stock.products_by_locations.context,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
@@ -750,14 +439,6 @@ msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
 msgstr "آدرس تماس"
 
-msgctxt "field:stock.shipment.in,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.shipment.in,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
 msgstr "انجام شد توسط"
@@ -765,10 +446,6 @@ msgstr "انجام شد توسط"
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
 msgstr "تاریخ موثر"
-
-msgctxt "field:stock.shipment.in,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
@@ -793,10 +470,6 @@ msgstr "مبداء"
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "تاریخ برنامه ریزی شده"
-
-msgctxt "field:stock.shipment.in,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -830,14 +503,6 @@ msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "انبار ذخیره سازی"
 
-msgctxt "field:stock.shipment.in,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.shipment.in,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:stock.shipment.in.return,assigned_by:"
 msgid "Assigned By"
 msgstr "اختصاص داده شده توسط"
@@ -845,14 +510,6 @@ msgstr "اختصاص داده شده توسط"
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:stock.shipment.in.return,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.shipment.in.return,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
@@ -870,10 +527,6 @@ msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
 msgstr "از مکان"
 
-msgctxt "field:stock.shipment.in.return,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "جابجایی ها"
@@ -889,10 +542,6 @@ msgstr "مبداء"
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
 msgstr "تاریخ برنامه ریزی شده"
-
-msgctxt "field:stock.shipment.in.return,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -910,18 +559,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "به مکان"
 
-msgctxt "field:stock.shipment.in.return,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.shipment.in.return,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.shipment.in.return.assign.failed,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "جابجایی ها"
@@ -933,14 +570,6 @@ msgstr "دریافت شده توسط"
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:stock.shipment.internal,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.shipment.internal,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
@@ -957,10 +586,6 @@ msgstr "شروع تاریخ موثر"
 msgctxt "field:stock.shipment.internal,from_location:"
 msgid "From Location"
 msgstr "از مکان"
-
-msgctxt "field:stock.shipment.internal,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
@@ -986,10 +611,6 @@ msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
 msgstr "شروع تاریخ برنامه ریزی شده"
 
-msgctxt "field:stock.shipment.internal,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
 msgstr "مرجع"
@@ -1010,18 +631,6 @@ msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
 msgstr "مکان حمل و نقل"
 
-msgctxt "field:stock.shipment.internal,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.shipment.internal,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.shipment.internal.assign.failed,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "جابجایی ها"
@@ -1033,14 +642,6 @@ msgstr "اختصاص داده شده توسط"
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:stock.shipment.out,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.shipment.out,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
@@ -1061,10 +662,6 @@ msgstr "انجام شد توسط"
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
 msgstr "تاریخ موثر"
-
-msgctxt "field:stock.shipment.out,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
@@ -1094,10 +691,6 @@ msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
 msgstr "تاریخ برنامه ریزی شده"
 
-msgctxt "field:stock.shipment.out,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
 msgstr "مرجع"
@@ -1118,18 +711,6 @@ msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "انبار ذخیره سازی"
 
-msgctxt "field:stock.shipment.out,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.shipment.out,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:stock.shipment.out.assign.failed,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
 msgid "Inventory Moves"
 msgstr "دفتر دارایی جابجایی ها"
@@ -1137,14 +718,6 @@ msgstr "دفتر دارایی جابجایی ها"
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:stock.shipment.out.return,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:stock.shipment.out.return,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
@@ -1165,10 +738,6 @@ msgstr "انجام شد توسط"
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
 msgstr "تاریخ موثر"
-
-msgctxt "field:stock.shipment.out.return,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
@@ -1194,10 +763,6 @@ msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
 msgstr "تاریخ برنامه ریزی شده"
 
-msgctxt "field:stock.shipment.out.return,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
 msgstr "دریافت شده توسط"
@@ -1221,14 +786,6 @@ msgstr "انبار ورودی"
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "انبار ذخیره سازی"
-
-msgctxt "field:stock.shipment.out.return,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:stock.shipment.out.return,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "help:party.address,delivery:"
 msgid "Check to send deliveries to the address."
@@ -1283,6 +840,11 @@ msgstr "مقدار محصولاتی که انتظار می رود در محل ب
 msgctxt "help:product.template,quantity:"
 msgid "The amount of stock in the location."
 msgstr "مقدار محصولات در محل."
+
+#, fuzzy
+msgctxt "help:res.user,warehouse:"
+msgid "The warehouse that the user works at."
+msgstr "جابجایی هایی که سهام را خارج می کند."
 
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
@@ -1381,10 +943,6 @@ msgstr "مقدار واقعی موجود در محل."
 msgctxt "help:stock.inventory.line,uom:"
 msgid "The unit in which the quantity is specified."
 msgstr "واحد که مقدار آن مشخص شده است."
-
-msgctxt "help:stock.location,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
@@ -1852,6 +1410,11 @@ msgstr "فهرست درحال تأمیین"
 msgctxt "model:ir.action,name:wizard_inventory_count"
 msgid "Count"
 msgstr "شمردن"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
+msgid "Stock Moves"
+msgstr "جابجایی موجودی"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
@@ -3029,6 +2592,10 @@ msgstr "موجودی"
 msgctxt "view:product.product:"
 msgid "Cost Value"
 msgstr "مقدار هزینه"
+
+msgctxt "view:res.user:"
+msgid "The warehouse that you work at."
+msgstr ""
 
 msgctxt "view:stock.configuration:"
 msgid "Inventory"

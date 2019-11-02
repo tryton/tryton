@@ -18,49 +18,21 @@ msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Emplacement fournisseur"
 
-msgctxt "field:party.party.location,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:party.party.location,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
 msgstr "Emplacement client"
-
-msgctxt "field:party.party.location,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party.location,party:"
 msgid "Party"
 msgstr "Tiers"
 
-msgctxt "field:party.party.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
 msgstr "Emplacement fournisseur"
 
-msgctxt "field:party.party.location,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:party.party.location,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "À la date"
-
-msgctxt "field:product.by_location.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
@@ -90,25 +62,13 @@ msgctxt "field:product.template,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
 
-msgctxt "field:stock.configuration,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.configuration,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.configuration,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:res.user,warehouse:"
+msgid "Current Warehouse"
+msgstr "Entrepôt actuel"
 
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Séquence d'inventaire"
-
-msgctxt "field:stock.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -134,65 +94,17 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Séquence d'expédition cliente"
 
-msgctxt "field:stock.configuration,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.configuration,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.configuration.location,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.configuration.location,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.configuration.location,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.configuration.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "Transit d'expédition interne"
-
-msgctxt "field:stock.configuration.location,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.configuration.location,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:stock.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.configuration.sequence,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.configuration.sequence,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Séquence d'inventaire"
-
-msgctxt "field:stock.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -214,25 +126,9 @@ msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Séquence d'expédition cliente"
 
-msgctxt "field:stock.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:stock.inventory,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.inventory,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.inventory,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
@@ -241,10 +137,6 @@ msgstr "Date"
 msgctxt "field:stock.inventory,empty_quantity:"
 msgid "Empty Quantity"
 msgstr "Quantité vide"
-
-msgctxt "field:stock.inventory,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory,lines:"
 msgid "Lines"
@@ -262,25 +154,9 @@ msgctxt "field:stock.inventory,number:"
 msgid "Number"
 msgstr "Numéro"
 
-msgctxt "field:stock.inventory,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.inventory,state:"
 msgid "State"
 msgstr "État"
-
-msgctxt "field:stock.inventory,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.inventory,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.inventory.count.quantity,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory.count.quantity,line:"
 msgid "Line"
@@ -306,10 +182,6 @@ msgctxt "field:stock.inventory.count.quantity,uom:"
 msgid "UOM"
 msgstr "UDM"
 
-msgctxt "field:stock.inventory.count.search,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Recherche"
@@ -318,21 +190,9 @@ msgctxt "field:stock.inventory.count.search,search_model:"
 msgid "Search Model"
 msgstr "Modèle recherché"
 
-msgctxt "field:stock.inventory.line,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.inventory.line,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Quantité attendue"
-
-msgctxt "field:stock.inventory.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
@@ -354,10 +214,6 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
 
-msgctxt "field:stock.inventory.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Décimales de l'unité"
@@ -365,18 +221,6 @@ msgstr "Décimales de l'unité"
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
 msgstr "UDM"
-
-msgctxt "field:stock.inventory.line,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.inventory.line,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.location,active:"
-msgid "Active"
-msgstr "Actif"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
@@ -394,14 +238,6 @@ msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
 msgstr "Valeur du coût"
 
-msgctxt "field:stock.location,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.location,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.location,flat_childs:"
 msgid "Flat Children"
 msgstr "Enfants plats"
@@ -409,10 +245,6 @@ msgstr "Enfants plats"
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "Quantité prévisionnelle"
-
-msgctxt "field:stock.location,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.location,input_location:"
 msgid "Input"
@@ -442,10 +274,6 @@ msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
 
-msgctxt "field:stock.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.location,right:"
 msgid "Right"
 msgstr "Droit"
@@ -462,37 +290,9 @@ msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
 msgstr "Entrepôt"
 
-msgctxt "field:stock.location,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.location,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.location.lead_time,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.location.lead_time,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.location.lead_time,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Délai de livraison"
-
-msgctxt "field:stock.location.lead_time,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:stock.location.lead_time,sequence:"
-msgid "Sequence"
-msgstr "Séquence"
 
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
@@ -501,14 +301,6 @@ msgstr "Entrepôt d'origine"
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
 msgstr "Entrepôt de destination"
-
-msgctxt "field:stock.location.lead_time,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.location.lead_time,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
@@ -522,14 +314,6 @@ msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
 msgstr "Prix de revient"
 
-msgctxt "field:stock.move,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.move,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -541,10 +325,6 @@ msgstr "Date effective"
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
-
-msgctxt "field:stock.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
@@ -569,10 +349,6 @@ msgstr "Catégorie d'unité de mesure"
 msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
-
-msgctxt "field:stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
@@ -602,14 +378,6 @@ msgctxt "field:stock.move,uom:"
 msgid "Uom"
 msgstr "UDM"
 
-msgctxt "field:stock.move,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.move,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
 msgstr "Caches"
@@ -618,49 +386,13 @@ msgctxt "field:stock.period,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:stock.period,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.period,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.period,date:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "field:stock.period,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.period,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.period,state:"
 msgid "State"
 msgstr "État"
-
-msgctxt "field:stock.period,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.period,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.period.cache,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.period.cache,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.period.cache,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.period.cache,internal_quantity:"
 msgid "Internal Quantity"
@@ -678,53 +410,13 @@ msgctxt "field:stock.period.cache,product:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "field:stock.period.cache,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:stock.period.cache,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.period.cache,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.product_quantities_warehouse,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.product_quantities_warehouse,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "Date"
 
-msgctxt "field:stock.product_quantities_warehouse,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
-
-msgctxt "field:stock.product_quantities_warehouse,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:stock.product_quantities_warehouse,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.product_quantities_warehouse,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.product_quantities_warehouse.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -733,10 +425,6 @@ msgstr "Entrepôt"
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
 msgstr "À la date"
-
-msgctxt "field:stock.products_by_locations.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
@@ -750,14 +438,6 @@ msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
 msgstr "Adresse de contact"
 
-msgctxt "field:stock.shipment.in,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.shipment.in,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
 msgstr "Effectué par"
@@ -765,10 +445,6 @@ msgstr "Effectué par"
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
 msgstr "Date effective"
-
-msgctxt "field:stock.shipment.in,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
@@ -793,10 +469,6 @@ msgstr "Origines"
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Date planifiée"
-
-msgctxt "field:stock.shipment.in,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -830,14 +502,6 @@ msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magasin de l'entrepôt"
 
-msgctxt "field:stock.shipment.in,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.shipment.in,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:stock.shipment.in.return,assigned_by:"
 msgid "Assigned By"
 msgstr "Assigné par"
@@ -845,14 +509,6 @@ msgstr "Assigné par"
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.shipment.in.return,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.shipment.in.return,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
@@ -870,10 +526,6 @@ msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
 
-msgctxt "field:stock.shipment.in.return,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Mouvements"
@@ -889,10 +541,6 @@ msgstr "Origines"
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
 msgstr "Date planifiée"
-
-msgctxt "field:stock.shipment.in.return,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -910,18 +558,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Emplacement de destination"
 
-msgctxt "field:stock.shipment.in.return,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.shipment.in.return,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.shipment.in.return.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "Mouvements"
@@ -933,14 +569,6 @@ msgstr "Reçu par"
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.shipment.internal,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.shipment.internal,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
@@ -957,10 +585,6 @@ msgstr "Date de début effective"
 msgctxt "field:stock.shipment.internal,from_location:"
 msgid "From Location"
 msgstr "Emplacement d'origine"
-
-msgctxt "field:stock.shipment.internal,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
@@ -986,10 +610,6 @@ msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
 msgstr "Date de début planifiée"
 
-msgctxt "field:stock.shipment.internal,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
 msgstr "Référence"
@@ -1010,18 +630,6 @@ msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
 msgstr "Emplacement de transit"
 
-msgctxt "field:stock.shipment.internal,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.shipment.internal,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.shipment.internal.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "Mouvements"
@@ -1033,14 +641,6 @@ msgstr "Assigné par"
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.shipment.out,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.shipment.out,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
@@ -1061,10 +661,6 @@ msgstr "Effectué par"
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
 msgstr "Date effective"
-
-msgctxt "field:stock.shipment.out,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
@@ -1094,10 +690,6 @@ msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
 msgstr "Date planifiée"
 
-msgctxt "field:stock.shipment.out,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
 msgstr "Référence"
@@ -1118,18 +710,6 @@ msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magasin de l'entrepôt"
 
-msgctxt "field:stock.shipment.out,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.shipment.out,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.shipment.out.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
 msgid "Inventory Moves"
 msgstr "Mouvements internes"
@@ -1137,14 +717,6 @@ msgstr "Mouvements internes"
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:stock.shipment.out.return,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.shipment.out.return,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
@@ -1165,10 +737,6 @@ msgstr "Effectué par"
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
 msgstr "Date effective"
-
-msgctxt "field:stock.shipment.out.return,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
@@ -1194,10 +762,6 @@ msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
 msgstr "Date planifiée"
 
-msgctxt "field:stock.shipment.out.return,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
 msgstr "Reçu par"
@@ -1221,14 +785,6 @@ msgstr "Entrée entrepôt"
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magasin de l'entrepôt"
-
-msgctxt "field:stock.shipment.out.return,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.shipment.out.return,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "help:party.address,delivery:"
 msgid "Check to send deliveries to the address."
@@ -1285,6 +841,10 @@ msgstr "La quantité de stock attendue à l'emplacement."
 msgctxt "help:product.template,quantity:"
 msgid "The amount of stock in the location."
 msgstr "La quantité de stock à l'emplacement."
+
+msgctxt "help:res.user,warehouse:"
+msgid "The warehouse that the user works at."
+msgstr "L'entrepôt dans lequel l'utilisateur travaille."
 
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
@@ -1386,10 +946,6 @@ msgstr "La quantité trouvée à cet emplacement."
 msgctxt "help:stock.inventory.line,uom:"
 msgid "The unit in which the quantity is specified."
 msgstr "L'unité dans laquelle la quantité est spécifiée."
-
-msgctxt "help:stock.location,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Décocher pour exclure d'une utilisation future."
 
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
@@ -1859,6 +1415,10 @@ msgstr "Liste de restockage"
 msgctxt "model:ir.action,name:wizard_inventory_count"
 msgid "Count"
 msgstr "Compter"
+
+msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
+msgid "Stock Moves"
+msgstr "Mouvements de stock"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
@@ -3042,6 +2602,10 @@ msgctxt "view:product.product:"
 msgid "Cost Value"
 msgstr "Valeur du coût"
 
+msgctxt "view:res.user:"
+msgid "The warehouse that you work at."
+msgstr "L'entrepôt dans lequel vous travaillez."
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventaire"
@@ -3137,139 +2701,3 @@ msgstr "OK"
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
 msgid "Force Assign"
 msgstr "Forcer l'assignation"
-
-msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "Quantités par emplacements"
-
-msgctxt "view:stock.inventory:"
-msgid "Add an inventory line for each missing products"
-msgstr "Ajouter une ligne d'inventaire pour chaque produit manquant"
-
-msgctxt "view:stock.inventory:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.inventory:"
-msgid "Complete Inventory"
-msgstr "Compléter l'inventaire"
-
-msgctxt "view:stock.inventory:"
-msgid "Confirm"
-msgstr "Confirmer"
-
-msgctxt "view:stock.period:"
-msgid "Close"
-msgstr "Clôturer"
-
-msgctxt "view:stock.period:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Assign"
-msgstr "Assigner"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Done"
-msgstr "Effectuée"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Wait"
-msgstr "Attendre"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Done"
-msgstr "Effectuée"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Incoming Moves"
-msgstr "Mouvements entrants"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Inventory Moves"
-msgstr "Mouvements internes"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Receive"
-msgstr "Recevoir"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Reset to Draft"
-msgstr "Réinitialiser à l'état brouillon"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Assign"
-msgstr "Assigner"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Done"
-msgstr "Effectuée"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Ship"
-msgstr "Livrer"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Wait"
-msgstr "Attendre"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Done"
-msgstr "Effectuée"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Received"
-msgstr "Reçu"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Assign"
-msgstr "Assigner"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Done"
-msgstr "Effectuée"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Make shipment"
-msgstr "Faire l'expédition"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Wait"
-msgstr "Attendre"

@@ -18,49 +18,21 @@ msgctxt "field:party.party,supplier_location:"
 msgid "Supplier Location"
 msgstr "Ubicació del proveïdor"
 
-msgctxt "field:party.party.location,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:party.party.location,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:party.party.location,customer_location:"
 msgid "Customer Location"
 msgstr "Ubicació del client"
-
-msgctxt "field:party.party.location,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party.location,party:"
 msgid "Party"
 msgstr "Tercer"
 
-msgctxt "field:party.party.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:party.party.location,supplier_location:"
 msgid "Supplier Location"
 msgstr "Ubicació del proveïdor"
 
-msgctxt "field:party.party.location,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:party.party.location,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:product.by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "A data"
-
-msgctxt "field:product.by_location.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
@@ -90,25 +62,13 @@ msgctxt "field:product.template,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.configuration,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.configuration,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.configuration,id:"
-msgid "ID"
-msgstr "ID"
+msgctxt "field:res.user,warehouse:"
+msgid "Current Warehouse"
+msgstr "Magatzem actual"
 
 msgctxt "field:stock.configuration,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Seqüència d'inventari"
-
-msgctxt "field:stock.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:stock.configuration,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -134,65 +94,17 @@ msgctxt "field:stock.configuration,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Seqüència d'albarà client"
 
-msgctxt "field:stock.configuration,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.configuration,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.configuration.location,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.configuration.location,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.configuration.location,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.configuration.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.configuration.location,shipment_internal_transit:"
 msgid "Internal Shipment Transit"
 msgstr "Trànsit albarans interns"
-
-msgctxt "field:stock.configuration.location,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.configuration.location,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:stock.configuration.sequence,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:stock.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.configuration.sequence,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.configuration.sequence,inventory_sequence:"
 msgid "Inventory Sequence"
 msgstr "Seqüència d'inventari"
-
-msgctxt "field:stock.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:stock.configuration.sequence,shipment_in_return_sequence:"
 msgid "Supplier Return Shipment Sequence"
@@ -214,25 +126,9 @@ msgctxt "field:stock.configuration.sequence,shipment_out_sequence:"
 msgid "Customer Shipment Sequence"
 msgstr "Seqüència d'albarà client"
 
-msgctxt "field:stock.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:stock.inventory,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.inventory,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.inventory,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
 
 msgctxt "field:stock.inventory,date:"
 msgid "Date"
@@ -241,10 +137,6 @@ msgstr "Data"
 msgctxt "field:stock.inventory,empty_quantity:"
 msgid "Empty Quantity"
 msgstr "Quantitat en blanc"
-
-msgctxt "field:stock.inventory,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory,lines:"
 msgid "Lines"
@@ -256,31 +148,15 @@ msgstr "Ubicació"
 
 msgctxt "field:stock.inventory,lost_found:"
 msgid "Lost and Found"
-msgstr "Perdut-trobat"
+msgstr "Perdut i trobat"
 
 msgctxt "field:stock.inventory,number:"
 msgid "Number"
 msgstr "Número"
 
-msgctxt "field:stock.inventory,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.inventory,state:"
 msgid "State"
 msgstr "Estat"
-
-msgctxt "field:stock.inventory,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.inventory,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.inventory.count.quantity,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory.count.quantity,line:"
 msgid "Line"
@@ -306,10 +182,6 @@ msgctxt "field:stock.inventory.count.quantity,uom:"
 msgid "UOM"
 msgstr "UdM"
 
-msgctxt "field:stock.inventory.count.search,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.inventory.count.search,search:"
 msgid "Search"
 msgstr "Cerca"
@@ -318,21 +190,9 @@ msgctxt "field:stock.inventory.count.search,search_model:"
 msgid "Search Model"
 msgstr "Model de la cerca"
 
-msgctxt "field:stock.inventory.line,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.inventory.line,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.inventory.line,expected_quantity:"
 msgid "Expected Quantity"
 msgstr "Quantitat esperada"
-
-msgctxt "field:stock.inventory.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
@@ -354,29 +214,13 @@ msgctxt "field:stock.inventory.line,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.inventory.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.inventory.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:stock.inventory.line,uom:"
 msgid "UOM"
 msgstr "UdM"
-
-msgctxt "field:stock.inventory.line,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.inventory.line,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.location,active:"
-msgid "Active"
-msgstr "Actiu"
 
 msgctxt "field:stock.location,address:"
 msgid "Address"
@@ -394,14 +238,6 @@ msgctxt "field:stock.location,cost_value:"
 msgid "Cost Value"
 msgstr "Valor de cost"
 
-msgctxt "field:stock.location,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.location,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.location,flat_childs:"
 msgid "Flat Children"
 msgstr "Fills plans"
@@ -409,10 +245,6 @@ msgstr "Fills plans"
 msgctxt "field:stock.location,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "Quantitat prevista"
-
-msgctxt "field:stock.location,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.location,input_location:"
 msgid "Input"
@@ -442,10 +274,6 @@ msgctxt "field:stock.location,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.location,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.location,right:"
 msgid "Right"
 msgstr "Dreta"
@@ -462,37 +290,9 @@ msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
 msgstr "Magatzem"
 
-msgctxt "field:stock.location,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.location,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.location.lead_time,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.location.lead_time,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.location.lead_time,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Temps d'espera"
-
-msgctxt "field:stock.location.lead_time,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.location.lead_time,sequence:"
-msgid "Sequence"
-msgstr "Seqüència"
 
 msgctxt "field:stock.location.lead_time,warehouse_from:"
 msgid "Warehouse From"
@@ -501,14 +301,6 @@ msgstr "Des del magatzem"
 msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
 msgstr "Al magatzem"
-
-msgctxt "field:stock.location.lead_time,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.location.lead_time,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
@@ -522,14 +314,6 @@ msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
 msgstr "Preu de cost"
 
-msgctxt "field:stock.move,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.move,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -541,10 +325,6 @@ msgstr "Data efectiva"
 msgctxt "field:stock.move,from_location:"
 msgid "From Location"
 msgstr "Des d'ubicació"
-
-msgctxt "field:stock.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.move,internal_quantity:"
 msgid "Internal Quantity"
@@ -570,10 +350,6 @@ msgctxt "field:stock.move,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.move,shipment:"
 msgid "Shipment"
 msgstr "Albarà"
@@ -588,7 +364,7 @@ msgstr "A la ubicació"
 
 msgctxt "field:stock.move,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
@@ -602,14 +378,6 @@ msgctxt "field:stock.move,uom:"
 msgid "Uom"
 msgstr "UdM"
 
-msgctxt "field:stock.move,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.move,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:stock.period,caches:"
 msgid "Caches"
 msgstr "Precalculat"
@@ -618,49 +386,13 @@ msgctxt "field:stock.period,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:stock.period,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.period,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.period,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:stock.period,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.period,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.period,state:"
 msgid "State"
 msgstr "Estat"
-
-msgctxt "field:stock.period,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.period,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.period.cache,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.period.cache,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.period.cache,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.period.cache,internal_quantity:"
 msgid "Internal Quantity"
@@ -678,53 +410,13 @@ msgctxt "field:stock.period.cache,product:"
 msgid "Product"
 msgstr "Productes"
 
-msgctxt "field:stock.period.cache,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.period.cache,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.period.cache,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.product_quantities_warehouse,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.product_quantities_warehouse,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:stock.product_quantities_warehouse,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
-
-msgctxt "field:stock.product_quantities_warehouse,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.product_quantities_warehouse,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.product_quantities_warehouse,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.product_quantities_warehouse.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -733,10 +425,6 @@ msgstr "Magatzem"
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
 msgstr "A data"
-
-msgctxt "field:stock.products_by_locations.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
@@ -750,14 +438,6 @@ msgctxt "field:stock.shipment.in,contact_address:"
 msgid "Contact Address"
 msgstr "Adreça de contacte"
 
-msgctxt "field:stock.shipment.in,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.shipment.in,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.shipment.in,done_by:"
 msgid "Done By"
 msgstr "Finalitzat per"
@@ -765,10 +445,6 @@ msgstr "Finalitzat per"
 msgctxt "field:stock.shipment.in,effective_date:"
 msgid "Effective Date"
 msgstr "Data efectiva"
-
-msgctxt "field:stock.shipment.in,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.in,incoming_moves:"
 msgid "Incoming Moves"
@@ -793,10 +469,6 @@ msgstr "Orígens"
 msgctxt "field:stock.shipment.in,planned_date:"
 msgid "Planned Date"
 msgstr "Data estimada"
-
-msgctxt "field:stock.shipment.in,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:stock.shipment.in,received_by:"
 msgid "Received By"
@@ -830,14 +502,6 @@ msgctxt "field:stock.shipment.in,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magatzem intern"
 
-msgctxt "field:stock.shipment.in,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.shipment.in,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:stock.shipment.in.return,assigned_by:"
 msgid "Assigned By"
 msgstr "Reservat per"
@@ -845,14 +509,6 @@ msgstr "Reservat per"
 msgctxt "field:stock.shipment.in.return,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.shipment.in.return,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.shipment.in.return,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.in.return,delivery_address:"
 msgid "Delivery Address"
@@ -870,10 +526,6 @@ msgctxt "field:stock.shipment.in.return,from_location:"
 msgid "From Location"
 msgstr "Des de la ubicació"
 
-msgctxt "field:stock.shipment.in.return,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.in.return,moves:"
 msgid "Moves"
 msgstr "Moviments"
@@ -889,10 +541,6 @@ msgstr "Orígens"
 msgctxt "field:stock.shipment.in.return,planned_date:"
 msgid "Planned Date"
 msgstr "Data estimada"
-
-msgctxt "field:stock.shipment.in.return,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:stock.shipment.in.return,reference:"
 msgid "Reference"
@@ -910,18 +558,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "A la ubicació"
 
-msgctxt "field:stock.shipment.in.return,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.shipment.in.return,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.shipment.in.return.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
 msgid "Moves"
 msgstr "Moviments"
@@ -933,14 +569,6 @@ msgstr "Rebut per"
 msgctxt "field:stock.shipment.internal,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.shipment.internal,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.shipment.internal,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.internal,done_by:"
 msgid "Done By"
@@ -957,10 +585,6 @@ msgstr "Inici data efectiva"
 msgctxt "field:stock.shipment.internal,from_location:"
 msgid "From Location"
 msgstr "Des de la ubicació"
-
-msgctxt "field:stock.shipment.internal,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.internal,incoming_moves:"
 msgid "Incoming Moves"
@@ -986,10 +610,6 @@ msgctxt "field:stock.shipment.internal,planned_start_date:"
 msgid "Planned Start Date"
 msgstr "Data d'inici estimada"
 
-msgctxt "field:stock.shipment.internal,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.shipment.internal,reference:"
 msgid "Reference"
 msgstr "Referència"
@@ -1010,18 +630,6 @@ msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
 msgstr "Ubicació en tránsit"
 
-msgctxt "field:stock.shipment.internal,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.shipment.internal,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.shipment.internal.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.internal.assign.failed,moves:"
 msgid "Moves"
 msgstr "Moviments"
@@ -1033,14 +641,6 @@ msgstr "Reservat per"
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.shipment.out,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.shipment.out,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.out,customer:"
 msgid "Customer"
@@ -1061,10 +661,6 @@ msgstr "Finalitzat per"
 msgctxt "field:stock.shipment.out,effective_date:"
 msgid "Effective Date"
 msgstr "Data efectiva"
-
-msgctxt "field:stock.shipment.out,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.out,inventory_moves:"
 msgid "Inventory Moves"
@@ -1094,10 +690,6 @@ msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
 msgstr "Data estimada"
 
-msgctxt "field:stock.shipment.out,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.shipment.out,reference:"
 msgid "Reference"
 msgstr "Referència"
@@ -1118,18 +710,6 @@ msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magatzem intern"
 
-msgctxt "field:stock.shipment.out,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.shipment.out,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.shipment.out.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
 msgid "Inventory Moves"
 msgstr "Moviments interns"
@@ -1137,14 +717,6 @@ msgstr "Moviments interns"
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:stock.shipment.out.return,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.shipment.out.return,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
 
 msgctxt "field:stock.shipment.out.return,customer:"
 msgid "Customer"
@@ -1165,10 +737,6 @@ msgstr "Finalitzat per"
 msgctxt "field:stock.shipment.out.return,effective_date:"
 msgid "Effective Date"
 msgstr "Data efectiva"
-
-msgctxt "field:stock.shipment.out.return,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.shipment.out.return,incoming_moves:"
 msgid "Incoming Moves"
@@ -1194,10 +762,6 @@ msgctxt "field:stock.shipment.out.return,planned_date:"
 msgid "Planned Date"
 msgstr "Data estimada"
 
-msgctxt "field:stock.shipment.out.return,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:stock.shipment.out.return,received_by:"
 msgid "Received By"
 msgstr "Rebut per"
@@ -1221,14 +785,6 @@ msgstr "Magatzem entrada"
 msgctxt "field:stock.shipment.out.return,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magatzem intern"
-
-msgctxt "field:stock.shipment.out.return,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.shipment.out.return,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "help:party.address,delivery:"
 msgid "Check to send deliveries to the address."
@@ -1285,6 +841,10 @@ msgstr "La quantitat d'existències que s'espera tenir a la ubicació."
 msgctxt "help:product.template,quantity:"
 msgid "The amount of stock in the location."
 msgstr "La quantitat d'existències a la ubicació."
+
+msgctxt "help:res.user,warehouse:"
+msgid "The warehouse that the user works at."
+msgstr "El magatzem al que treball l'usuari."
 
 msgctxt "help:stock.configuration,inventory_sequence:"
 msgid "Used to generate the number given to inventories."
@@ -1390,10 +950,6 @@ msgctxt "help:stock.inventory.line,uom:"
 msgid "The unit in which the quantity is specified."
 msgstr "La unitat en que s'especifica la quantitat."
 
-msgctxt "help:stock.location,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
 msgctxt "help:stock.location,childs:"
 msgid "Used to add structure below the location."
 msgstr "Utilitzat per afegir una estructura per sota la ubicació."
@@ -1484,7 +1040,7 @@ msgstr "Utilitzat per agrupar varis moviments d'existències conjuntament."
 
 msgctxt "help:stock.move,state:"
 msgid "The current state of the stock move."
-msgstr "L'estat actual del moviment d'existències"
+msgstr "L'estat actual del moviment d'existències."
 
 msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
@@ -1500,15 +1056,15 @@ msgstr "L'empresa amb la que s'associa el període d'existències."
 
 msgctxt "help:stock.period,date:"
 msgid "When the stock period ends."
-msgstr "Quan finalitza el període d'existències"
+msgstr "Quan finalitza el període d'existències."
 
 msgctxt "help:stock.period,state:"
 msgid "The current state of the stock period."
-msgstr "L'estat actual del període d'existències"
+msgstr "L'estat actual del període d'existències."
 
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
 msgid "The warehouse for which the quantities will be calculated."
-msgstr "El magatzem pel qual es calculen les quantitats"
+msgstr "El magatzem pel qual es calculen les quantitats."
 
 msgctxt "help:stock.products_by_locations.context,forecast_date:"
 msgid ""
@@ -1862,6 +1418,10 @@ msgctxt "model:ir.action,name:wizard_inventory_count"
 msgid "Count"
 msgstr "Recompte"
 
+msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
+msgid "Stock Moves"
+msgstr "Moviment d'existències"
+
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
 msgstr "Recalcula preu de cost"
@@ -2025,7 +1585,7 @@ msgstr "No s'ha trobat cap línia per la cerca %(search)s."
 
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
-msgstr "Per eliminar l'inventari \"%(inventory)s\" l'heu de cancel·lar. "
+msgstr "Per eliminar l'inventari \"%(inventory)s\" l'heu de cancel·lar."
 
 msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
 msgid ""
@@ -2071,8 +1631,8 @@ msgid ""
 "You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
 "because the type does not support moves and location has existing moves."
 msgstr ""
-"No podeu canviar el tipus d'ubicació de \"%(location)s\" a "
-"\"%(type)s\"perquè el tipus no suporta moviments i la ubicació els te. "
+"No podeu canviar el tipus d'ubicació de \"%(location)s\" a \"%(type)s\"\n"
+"perquè el tipus no suporta moviments i la ubicació els te."
 
 msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
 msgid ""
@@ -2880,7 +2440,7 @@ msgstr "Enviament directe"
 
 msgctxt "selection:stock.location,type:"
 msgid "Lost and Found"
-msgstr "Perdut-trobat"
+msgstr "Perdut i trobat"
 
 msgctxt "selection:stock.location,type:"
 msgid "Production"
@@ -3042,6 +2602,10 @@ msgctxt "view:product.product:"
 msgid "Cost Value"
 msgstr "Valor de cost"
 
+msgctxt "view:res.user:"
+msgid "The warehouse that you work at."
+msgstr "El magatzem al que estas treballant."
+
 msgctxt "view:stock.configuration:"
 msgid "Inventory"
 msgstr "Inventari"
@@ -3137,139 +2701,3 @@ msgstr "D'acord"
 msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
 msgid "Force Assign"
 msgstr "Força reserva"
-
-msgctxt "model:ir.action,name:act_location_quantity_tree"
-msgid "Locations Quantity"
-msgstr "Quantitat per ubicacions"
-
-msgctxt "view:stock.inventory:"
-msgid "Add an inventory line for each missing products"
-msgstr "Afegir una línia d'inventari per cada producte que falta"
-
-msgctxt "view:stock.inventory:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.inventory:"
-msgid "Complete Inventory"
-msgstr "Inventari complet"
-
-msgctxt "view:stock.inventory:"
-msgid "Confirm"
-msgstr "Confirma"
-
-msgctxt "view:stock.period:"
-msgid "Close"
-msgstr "Tancat"
-
-msgctxt "view:stock.period:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Assign"
-msgstr "Reserva"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Done"
-msgstr "Finalitza"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Wait"
-msgstr "En espera"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Done"
-msgstr "Finalitza"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Incoming Moves"
-msgstr "Moviments d'entrada"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Inventory Moves"
-msgstr "Moviments interns"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Receive"
-msgstr "Rebut"
-
-msgctxt "view:stock.shipment.in:"
-msgid "Reset to Draft"
-msgstr "Restaura a esborrany"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Assign"
-msgstr "Reserva"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Done"
-msgstr "Finalitza"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Ship"
-msgstr "Envia"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Wait"
-msgstr "En espera"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Done"
-msgstr "Finalitza"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.out.return:"
-msgid "Received"
-msgstr "Rebut"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Assign"
-msgstr "Reserva"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Done"
-msgstr "Finalitza"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Make shipment"
-msgstr "Empaqueta"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Wait"
-msgstr "En espera"
