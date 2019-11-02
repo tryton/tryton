@@ -6,14 +6,6 @@ msgctxt "field:account.be.vat_customer,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr "شناسه مالیات شرکت"
 
-msgctxt "field:account.be.vat_customer,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.be.vat_customer,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
 msgstr "واحد پول"
@@ -22,17 +14,9 @@ msgctxt "field:account.be.vat_customer,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
 
-msgctxt "field:account.be.vat_customer,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "شناسه مالیاتی نهاد/سازمان"
-
-msgctxt "field:account.be.vat_customer,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
@@ -42,14 +26,6 @@ msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
 msgstr "VAT"
 
-msgctxt "field:account.be.vat_customer,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.be.vat_customer,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -57,10 +33,6 @@ msgstr "شرکت"
 msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "سال مالی"
-
-msgctxt "field:account.be.vat_customer.context,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "model:account.be.vat_customer,name:"
 msgid "Belgium VAT Customer"
