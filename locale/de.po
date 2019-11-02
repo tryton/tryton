@@ -14,14 +14,6 @@ msgctxt "field:company.employee_cost_price,cost_price:"
 msgid "Cost Price"
 msgstr "Kostenpreis"
 
-msgctxt "field:company.employee_cost_price,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:company.employee_cost_price,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:company.employee_cost_price,date:"
 msgid "Date"
 msgstr "Datum"
@@ -30,37 +22,21 @@ msgctxt "field:company.employee_cost_price,employee:"
 msgid "Employee"
 msgstr "Mitarbeiter"
 
-msgctxt "field:company.employee_cost_price,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:company.employee_cost_price,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:company.employee_cost_price,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:company.employee_cost_price,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:timesheet.line,cost_price:"
 msgid "Cost Price"
 msgstr "Kostenpreis"
 
 msgctxt "help:company.employee,cost_price:"
-msgid "Hourly cost price for this Employee"
-msgstr "Kostenpreis pro Stunde für diesen Mitarbeiter"
+msgid "Hourly cost price for this Employee."
+msgstr "Kostenpreis pro Stunde für diesen Mitarbeiter."
 
 msgctxt "help:company.employee,cost_prices:"
-msgid "List of hourly cost price over time"
-msgstr "Liste der Kostenpreise pro Stunde über die Zeit"
+msgid "List of hourly cost price over time."
+msgstr "Entwicklung des Kostenpreises pro Stunde."
 
 msgctxt "help:company.employee_cost_price,cost_price:"
-msgid "Hourly cost price"
-msgstr "Kostenpreis pro Stunde"
+msgid "Hourly cost price."
+msgstr "Kostenpreis pro Stunde."
 
 msgctxt "model:company.employee_cost_price,name:"
 msgid "Employee Cost Price"
@@ -75,7 +51,3 @@ msgstr ""
 msgctxt "view:company.employee:"
 msgid "Cost"
 msgstr "Kosten"
-
-msgctxt "view:company.employee_cost_price:"
-msgid "Cost Prices"
-msgstr "Kostenpreise"
