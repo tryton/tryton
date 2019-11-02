@@ -22,14 +22,6 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:account.asset,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.asset,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
@@ -37,6 +29,14 @@ msgstr "Décimales de la devise"
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Ligne de facture client"
+
+msgctxt "field:account.asset,depreciated_amount:"
+msgid "Depreciated Amount"
+msgstr "Montant déprécié"
+
+msgctxt "field:account.asset,depreciating_value:"
+msgid "Depreciating Value"
+msgstr "Valeur de dépréciation"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -49,10 +49,6 @@ msgstr "Date de fin"
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr "Fréquence"
-
-msgctxt "field:account.asset,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -77,10 +73,6 @@ msgstr "Date d'achat"
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
-
-msgctxt "field:account.asset,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -114,53 +106,17 @@ msgctxt "field:account.asset,value:"
 msgid "Value"
 msgstr "Valeur"
 
-msgctxt "field:account.asset,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.asset,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr "Actif"
-
-msgctxt "field:account.asset-update-account.move,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.asset-update-account.move,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:account.asset-update-account.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr "Mouvement"
 
-msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.asset-update-account.move,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.asset-update-account.move,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "Date"
-
-msgctxt "field:account.asset.create_moves.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -178,13 +134,9 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Actif"
 
-msgctxt "field:account.asset.line,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.asset.line,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
+msgctxt "field:account.asset.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -198,33 +150,13 @@ msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
 msgstr "Amortissement"
 
-msgctxt "field:account.asset.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr "Mouvement comptable"
 
-msgctxt "field:account.asset.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.asset.line,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.asset.line,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr "Date de fin"
-
-msgctxt "field:account.asset.print_depreciation_table.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
@@ -246,10 +178,6 @@ msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr "Compte d'amortissement"
 
-msgctxt "field:account.asset.update.show_depreciation,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
 msgstr "Dernière date d'amortissement"
@@ -261,10 +189,6 @@ msgstr "Prochaine date d'amortissement"
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "Date de fin"
-
-msgctxt "field:account.asset.update.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -298,30 +222,6 @@ msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:account.configuration.asset_date,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.configuration.asset_date,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:account.configuration.asset_date,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_date,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.configuration.asset_date,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.configuration.asset_date,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Séquence de référence d'actif"
@@ -329,30 +229,6 @@ msgstr "Séquence de référence d'actif"
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Société"
-
-msgctxt "field:account.configuration.asset_sequence,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.configuration.asset_sequence,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:account.configuration.asset_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.configuration.asset_sequence,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.configuration.asset_sequence,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -393,6 +269,18 @@ msgstr "Dépréciable"
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Durée d'amortissement"
+
+msgctxt "help:account.asset,depreciated_amount:"
+msgid "The amount already depreciated at the start date."
+msgstr "Le montant déjà amorti à la date de début."
+
+msgctxt "help:account.asset,depreciating_value:"
+msgid "The value of the asset at the start date."
+msgstr "La valeur de l'actif à la date de début."
+
+msgctxt "help:account.asset,value:"
+msgid "The value of the asset when purchased."
+msgstr "La valeur de l'actif lors de l'achat."
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
@@ -856,27 +744,3 @@ msgstr "Annuler"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "OK"
-
-msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Êtes-vous sûr de clôturer l'actif ?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "Nettoyer les lignes"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Clôturer"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "Créer les lignes"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Lancer"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Mise à jour des actifs"

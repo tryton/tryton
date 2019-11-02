@@ -22,14 +22,6 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
 
-msgctxt "field:account.asset,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:account.asset,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນ"
@@ -37,6 +29,16 @@ msgstr "ເລກເສດສະກຸນເງິນ"
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "ລາຍການເກັບເງິນລູກຄ້າ"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciated_amount:"
+msgid "Depreciated Amount"
+msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciating_value:"
+msgid "Depreciating Value"
+msgstr "Depreciation Table"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -49,10 +51,6 @@ msgstr "ວັນທີສິ້ນສຸດ"
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr "ຄວາມຖີ່"
-
-msgctxt "field:account.asset,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -77,10 +75,6 @@ msgstr "ວັນທີຈັດຊື້"
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
-
-msgctxt "field:account.asset,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -114,53 +108,17 @@ msgctxt "field:account.asset,value:"
 msgid "Value"
 msgstr "ມູນຄ່າ"
 
-msgctxt "field:account.asset,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
-
-msgctxt "field:account.asset,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
-
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr "ຊັບສິນ"
-
-msgctxt "field:account.asset-update-account.move,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:account.asset-update-account.move,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-msgctxt "field:account.asset-update-account.move,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr "ຍ້າຍ"
 
-msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.asset-update-account.move,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
-
-msgctxt "field:account.asset-update-account.move,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
-
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "ວັນທີ"
-
-msgctxt "field:account.asset.create_moves.start,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -178,13 +136,10 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "ຊັບສິນ"
 
-msgctxt "field:account.asset.line,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:account.asset.line,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
+#, fuzzy
+msgctxt "field:account.asset.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -198,33 +153,13 @@ msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
 msgstr "ຄ່າຫຼຸ້ຍຫ້ຽນ"
 
-msgctxt "field:account.asset.line,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
 
-msgctxt "field:account.asset.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.asset.line,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
-
-msgctxt "field:account.asset.line,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
-
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
-
-msgctxt "field:account.asset.print_depreciation_table.start,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
@@ -246,10 +181,6 @@ msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr "ບັນຊີຄ່າຫຼຸ້ຍຫ້ຽນ"
 
-msgctxt "field:account.asset.update.show_depreciation,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
 msgstr "ວັນທີເຄື່ອນຍ້າຍລ້າສຸດ"
@@ -261,10 +192,6 @@ msgstr "ວັທີຫັກຄ່າຫຼຸ້ຍຫ້ຽນຄັ້ງຕ
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
-
-msgctxt "field:account.asset.update.start,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -299,35 +226,6 @@ msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
 
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
-msgctxt "field:account.configuration.asset_date,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
-
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບສິນ"
@@ -335,30 +233,6 @@ msgstr "ລໍາດັບ ເອກະສານອ້າງອີງ ຊັບ�
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
-
-msgctxt "field:account.configuration.asset_sequence,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:account.configuration.asset_sequence,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-msgctxt "field:account.configuration.asset_sequence,id:"
-msgid "ID"
-msgstr "ເລກລໍາດັບ"
-
-msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.configuration.asset_sequence,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີຂຽນ"
-
-msgctxt "field:account.configuration.asset_sequence,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ຂຽນ"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
@@ -399,6 +273,18 @@ msgstr "ຄິດໄລ່ຄ່າເຊື່ອມລາຄາ"
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "ກຳນົດຫັກຄ່າຫຼຸ້ຍຫ້ຽນ"
+
+msgctxt "help:account.asset,depreciated_amount:"
+msgid "The amount already depreciated at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,depreciating_value:"
+msgid "The value of the asset at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,value:"
+msgid "The value of the asset when purchased."
+msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
@@ -654,7 +540,7 @@ msgstr "ຄົງທີ່"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "ຈາກ"
+msgstr "ຈາກ:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
@@ -666,7 +552,7 @@ msgstr "ເຖິງ:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "ລວມທັງໝົດ - "
+msgstr "ລວມທັງໝົດ -"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
@@ -876,27 +762,3 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "ຕົກລົງ"
-
-msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "ທ່ານແນ່ໃຈບໍ່ທີ່ອັດບັນຊີຊັບສິນນີ້?"
-
-msgctxt "view:account.asset:"
-msgid "Clear Lines"
-msgstr "ລາຍການສະສາງ"
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "ອັດ"
-
-msgctxt "view:account.asset:"
-msgid "Create Lines"
-msgstr "ສ້າງລາຍການ"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "ດຳເນີນງານ"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "ປັບປຸງຊັບສິນ"

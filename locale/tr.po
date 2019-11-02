@@ -22,14 +22,6 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Şirket"
 
-msgctxt "field:account.asset,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:account.asset,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
-
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Para Birimi Basamakları"
@@ -37,6 +29,16 @@ msgstr "Para Birimi Basamakları"
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Müşteri Fatura Hattı"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciated_amount:"
+msgid "Depreciated Amount"
+msgstr "Amortisman Hesabı"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciating_value:"
+msgid "Depreciating Value"
+msgstr "Depreciation Table"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -49,10 +51,6 @@ msgstr "Son Tarih"
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr "Sıklık"
-
-msgctxt "field:account.asset,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -77,10 +75,6 @@ msgstr "Satınalma Tarihi"
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "Miktar"
-
-msgctxt "field:account.asset,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -115,53 +109,17 @@ msgctxt "field:account.asset,value:"
 msgid "Value"
 msgstr "Değer"
 
-msgctxt "field:account.asset,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.asset,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr "Aktif"
-
-msgctxt "field:account.asset-update-account.move,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:account.asset-update-account.move,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
-
-msgctxt "field:account.asset-update-account.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr "Hareket"
 
-msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:account.asset-update-account.move,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.asset-update-account.move,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "Tarih"
-
-msgctxt "field:account.asset.create_moves.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -179,13 +137,10 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Aktif"
 
-msgctxt "field:account.asset.line,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:account.asset.line,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
+#, fuzzy
+msgctxt "field:account.asset.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Para Birimi Basamakları"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -199,33 +154,13 @@ msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
 msgstr "Amortisman"
 
-msgctxt "field:account.asset.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr "Hesap Hareketi"
 
-msgctxt "field:account.asset.line,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:account.asset.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.asset.line,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr "Son Tarih"
-
-msgctxt "field:account.asset.print_depreciation_table.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
@@ -247,10 +182,6 @@ msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr "Amortisman Hesabı"
 
-msgctxt "field:account.asset.update.show_depreciation,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
 msgstr "En Son Hareket Tarihi"
@@ -262,10 +193,6 @@ msgstr "Sonraki Amortisman Tarihi"
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "Son Tarih"
-
-msgctxt "field:account.asset.update.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -300,36 +227,6 @@ msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Şirket"
 
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Aktif Referans Sırası"
@@ -338,37 +235,13 @@ msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Şirket"
 
-msgctxt "field:account.configuration.asset_sequence,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:account.configuration.asset_sequence,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
-
-msgctxt "field:account.configuration.asset_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:account.configuration.asset_sequence,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.configuration.asset_sequence,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "Aktif"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Aktifler amortismana tabi midir?"
+msgstr "Aktifler amortismana tabi midir"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
@@ -401,6 +274,18 @@ msgstr "Amortismana Tabi"
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Amortisman Süresi"
+
+msgctxt "help:account.asset,depreciated_amount:"
+msgid "The amount already depreciated at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,depreciating_value:"
+msgid "The value of the asset at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,value:"
+msgid "The value of the asset when purchased."
+msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
@@ -646,7 +531,7 @@ msgstr "Kapanış Değeri"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Şirket"
+msgstr "Şirket:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
@@ -878,19 +763,3 @@ msgstr "Vazgeç"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "Tamam"
-
-msgctxt "view:account.asset:"
-msgid "Are you sure to close the asset?"
-msgstr "Aktifi kapamaya emin misin? "
-
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Kapa"
-
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Çalıştır"
-
-msgctxt "view:account.asset:"
-msgid "Update Asset"
-msgstr "Aktif Güncelle"

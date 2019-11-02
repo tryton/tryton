@@ -22,14 +22,6 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.asset,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.asset,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbrikohtade arv"
@@ -37,6 +29,16 @@ msgstr "Valuuta numbrikohtade arv"
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Müügiarve rida"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciated_amount:"
+msgid "Depreciated Amount"
+msgstr "Kulumi konto"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciating_value:"
+msgid "Depreciating Value"
+msgstr "Kulumi tabel"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -49,10 +51,6 @@ msgstr "Lõppkuupäev"
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr "Sagedus"
-
-msgctxt "field:account.asset,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -77,10 +75,6 @@ msgstr "Ostu kuupäev"
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
-
-msgctxt "field:account.asset,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -114,53 +108,17 @@ msgctxt "field:account.asset,value:"
 msgid "Value"
 msgstr "Väärtus"
 
-msgctxt "field:account.asset,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.asset,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr "Põhivara"
-
-msgctxt "field:account.asset-update-account.move,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.asset-update-account.move,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.asset-update-account.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr "Kanne"
 
-msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.asset-update-account.move,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.asset-update-account.move,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "Kuupäev"
-
-msgctxt "field:account.asset.create_moves.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -178,13 +136,10 @@ msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Põhivara"
 
-msgctxt "field:account.asset.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.asset.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
+#, fuzzy
+msgctxt "field:account.asset.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbrikohtade arv"
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
@@ -198,33 +153,13 @@ msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
 msgstr "Kulum"
 
-msgctxt "field:account.asset.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr "Konto liikumine"
 
-msgctxt "field:account.asset.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.asset.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.asset.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr "Lõppkuupäev"
-
-msgctxt "field:account.asset.print_depreciation_table.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
@@ -246,10 +181,6 @@ msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr "Kulumi konto"
 
-msgctxt "field:account.asset.update.show_depreciation,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
 msgstr "Viimane liikumise kuupäev"
@@ -261,10 +192,6 @@ msgstr "Järgmine kulumi kuupäev"
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "Lõppkuupäev"
-
-msgctxt "field:account.asset.update.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -298,30 +225,6 @@ msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.configuration.asset_date,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.configuration.asset_date,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.configuration.asset_date,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_date,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.configuration.asset_date,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.configuration.asset_date,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Vara viite järjestus"
@@ -330,37 +233,13 @@ msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.configuration.asset_sequence,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.configuration.asset_sequence,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.configuration.asset_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.configuration.asset_sequence,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.configuration.asset_sequence,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
 msgstr "Põhivara"
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "Kas vara kuulub kulumi arvestusse?"
+msgstr "Kas vara on amortiseeritav"
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
@@ -393,6 +272,18 @@ msgstr "Kuluv"
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
 msgstr "Kulumi kestvus"
+
+msgctxt "help:account.asset,depreciated_amount:"
+msgid "The amount already depreciated at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,depreciating_value:"
+msgid "The value of the asset at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,value:"
+msgid "The value of the asset when purchased."
+msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""

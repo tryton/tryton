@@ -26,16 +26,6 @@ msgid "Company"
 msgstr "Фирма"
 
 #, fuzzy
-msgctxt "field:account.asset,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.asset,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
@@ -43,6 +33,16 @@ msgstr "Цифри за валута"
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.asset,depreciated_amount:"
+msgid "Depreciated Amount"
+msgstr "Depreciation Table"
+
+#, fuzzy
+msgctxt "field:account.asset,depreciating_value:"
+msgid "Depreciating Value"
+msgstr "Depreciation Table"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -56,11 +56,6 @@ msgstr "Крайна дата"
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.asset,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.asset,lines:"
@@ -91,10 +86,6 @@ msgstr "Дата на покупка"
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
 msgstr "Количество"
-
-msgctxt "field:account.asset,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
@@ -134,63 +125,19 @@ msgid "Value"
 msgstr "Стойност"
 
 #, fuzzy
-msgctxt "field:account.asset,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.asset,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
 msgstr "Притежание"
-
-#, fuzzy
-msgctxt "field:account.asset-update-account.move,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.asset-update-account.move,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:account.asset-update-account.move,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
 msgstr "Движение"
 
-msgctxt "field:account.asset-update-account.move,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.asset-update-account.move,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.asset-update-account.move,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 #, fuzzy
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
 msgstr "Дата"
-
-#, fuzzy
-msgctxt "field:account.asset.create_moves.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
@@ -210,14 +157,9 @@ msgid "Asset"
 msgstr "Притежание"
 
 #, fuzzy
-msgctxt "field:account.asset.line,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.asset.line,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
+msgctxt "field:account.asset.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Цифри за валута"
 
 #, fuzzy
 msgctxt "field:account.asset.line,date:"
@@ -233,38 +175,14 @@ msgid "Depreciation"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.asset.line,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
 msgstr "Движение по сметка"
-
-msgctxt "field:account.asset.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.asset.line,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.asset.line,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 #, fuzzy
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
-
-#, fuzzy
-msgctxt "field:account.asset.print_depreciation_table.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
@@ -289,11 +207,6 @@ msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.asset.update.show_depreciation,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
 msgstr ""
@@ -306,11 +219,6 @@ msgstr ""
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
-
-#, fuzzy
-msgctxt "field:account.asset.update.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
@@ -345,35 +253,6 @@ msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
 msgstr "Фирма"
 
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_date,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_date,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
@@ -382,35 +261,6 @@ msgstr ""
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
 msgstr "Фирма"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_sequence,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_sequence,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.asset_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_sequence,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.configuration.asset_sequence,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 #, fuzzy
 msgctxt "field:account.invoice.line,asset:"
@@ -451,6 +301,18 @@ msgstr ""
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
+msgstr ""
+
+msgctxt "help:account.asset,depreciated_amount:"
+msgid "The amount already depreciated at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,depreciating_value:"
+msgid "The value of the asset at the start date."
+msgstr ""
+
+msgctxt "help:account.asset,value:"
+msgid "The value of the asset when purchased."
 msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
@@ -944,13 +806,3 @@ msgstr "Отказване"
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
 msgstr "Добре"
-
-#, fuzzy
-msgctxt "view:account.asset:"
-msgid "Close"
-msgstr "Приключен"
-
-#, fuzzy
-msgctxt "view:account.asset:"
-msgid "Run"
-msgstr "Изпълнявано"

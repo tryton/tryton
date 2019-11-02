@@ -4,473 +4,467 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Vaste activa"
+msgstr "Aset tetap"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Vaste activa"
+msgstr "Aset tetap"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
-msgstr "Dagboek"
+msgstr "Jurnal"
 
 msgctxt "field:account.asset,comment:"
 msgid "Comment"
-msgstr "Opmerking"
+msgstr "Komentar"
 
 msgctxt "field:account.asset,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Perusahaan"
 
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr ""
 
 msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
-msgstr "Verkoopfactuur regel"
+msgstr "Baris Faktur Pelanggan"
 
+#, fuzzy
 msgctxt "field:account.asset,depreciated_amount:"
 msgid "Depreciated Amount"
-msgstr "Afschrijvingsrekening"
+msgstr "Akun Penyusutan"
 
+#, fuzzy
 msgctxt "field:account.asset,depreciating_value:"
 msgid "Depreciating Value"
-msgstr "Afschrijvingswaarde"
+msgstr "Penyusutan"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
-msgstr "Afschrijving methode"
+msgstr "Metode Penyusutan"
 
 msgctxt "field:account.asset,end_date:"
 msgid "End Date"
-msgstr "Eind datum"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Frequentie"
+msgstr "Frekuensi"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
-msgstr "Regels"
+msgstr "Baris"
 
 msgctxt "field:account.asset,move:"
 msgid "Account Move"
-msgstr "Boeking"
+msgstr "Perpindahan Akun"
 
 msgctxt "field:account.asset,number:"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Nomor"
 
 msgctxt "field:account.asset,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Produk"
 
 msgctxt "field:account.asset,purchase_date:"
 msgid "Purchase Date"
-msgstr "Aankoopdatum"
+msgstr "Tanggal Pembelian"
 
 msgctxt "field:account.asset,quantity:"
 msgid "Quantity"
-msgstr "Hoeveelheid"
+msgstr ""
 
 msgctxt "field:account.asset,residual_value:"
 msgid "Residual Value"
-msgstr "Restwaarde"
+msgstr "Nilai Sisa"
 
 msgctxt "field:account.asset,start_date:"
 msgid "Start Date"
-msgstr "Start datum"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.asset,state:"
 msgid "State"
-msgstr "Status"
+msgstr "Negara"
 
 msgctxt "field:account.asset,supplier_invoice_line:"
 msgid "Supplier Invoice Line"
-msgstr "Leverancier factuurregel"
+msgstr ""
 
 msgctxt "field:account.asset,unit:"
 msgid "Unit"
-msgstr "Eenheid"
+msgstr ""
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimalen eenheid"
+msgstr ""
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
-msgstr "boekingen bijwerken"
+msgstr ""
 
 msgctxt "field:account.asset,value:"
 msgid "Value"
-msgstr "Waarde"
+msgstr "Nilai"
 
 msgctxt "field:account.asset-update-account.move,asset:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "field:account.asset-update-account.move,move:"
 msgid "Move"
-msgstr "Boeking"
+msgstr "Perpindahan"
 
 msgctxt "field:account.asset.create_moves.start,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
 msgctxt "field:account.asset.line,accumulated_depreciation:"
 msgid "Accumulated Depreciation"
-msgstr "Cumulatieve afschrijving"
+msgstr "Akumulasi penyusutan"
 
 msgctxt "field:account.asset.line,acquired_value:"
 msgid "Acquired Value"
-msgstr "Verworven waarde"
+msgstr "Nilai yang Diperoleh"
 
 msgctxt "field:account.asset.line,actual_value:"
 msgid "Actual Value"
-msgstr "Werkelijke waarde"
+msgstr "Nilai sebenarnya"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "field:account.asset.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr ""
 
 msgctxt "field:account.asset.line,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
 msgctxt "field:account.asset.line,depreciable_basis:"
 msgid "Depreciable Basis"
-msgstr "Afschrijvings basis"
+msgstr ""
 
 msgctxt "field:account.asset.line,depreciation:"
 msgid "Depreciation"
-msgstr "waardevermindering"
+msgstr "Penyusutan"
 
 msgctxt "field:account.asset.line,move:"
 msgid "Account Move"
-msgstr "Boeking"
+msgstr "Perpindahan Akun"
 
 msgctxt "field:account.asset.print_depreciation_table.start,end_date:"
 msgid "End Date"
-msgstr "Eind datum"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.asset.print_depreciation_table.start,start_date:"
 msgid "Start Date"
-msgstr "Start datum"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.asset.update.show_depreciation,amount:"
 msgid "Amount"
-msgstr "Bedrag"
+msgstr "Jumlah"
 
 msgctxt "field:account.asset.update.show_depreciation,counterpart_account:"
 msgid "Counterpart Account"
-msgstr "Rekening van de tegenpartij"
+msgstr "Rekening Rekanan"
 
 msgctxt "field:account.asset.update.show_depreciation,date:"
 msgid "Date"
-msgstr "Datum"
+msgstr "Tanggal"
 
 msgctxt "field:account.asset.update.show_depreciation,depreciation_account:"
 msgid "Depreciation Account"
-msgstr "Afschrijvingsrekening"
+msgstr "Akun Penyusutan"
 
 msgctxt "field:account.asset.update.show_depreciation,latest_move_date:"
 msgid "Latest Move Date"
-msgstr "laatste boekings datum"
+msgstr ""
 
 msgctxt "field:account.asset.update.show_depreciation,next_depreciation_date:"
 msgid "Next Depreciation Date"
-msgstr "Volgende afschrijving datum"
+msgstr "Tanggal Penyusutan Berikutnya"
 
 msgctxt "field:account.asset.update.start,end_date:"
 msgid "End Date"
-msgstr "Eind datum"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.asset.update.start,residual_value:"
 msgid "Residual Value"
-msgstr "Restwaarde"
+msgstr "Nilai Sisa"
 
 msgctxt "field:account.asset.update.start,value:"
 msgid "Asset Value"
-msgstr "Activawaarde"
+msgstr "Nilai Aset"
 
 msgctxt "field:account.configuration,asset_bymonth:"
 msgid "Month"
-msgstr "Maand"
+msgstr "Bulan"
 
 msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr "Dag van de maand"
+msgstr ""
 
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Volgorde van activa"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_date,asset_bymonth:"
 msgid "Month"
-msgstr "Maand"
+msgstr "Bulan"
 
 msgctxt "field:account.configuration.asset_date,asset_bymonthday:"
 msgid "Day of the Month"
-msgstr "Dag van de maand"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_date,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Perusahaan"
 
 msgctxt "field:account.configuration.asset_sequence,asset_sequence:"
 msgid "Asset Reference Sequence"
-msgstr "Volgorde van activa"
+msgstr ""
 
 msgctxt "field:account.configuration.asset_sequence,company:"
 msgid "Company"
-msgstr "Bedrijf"
+msgstr "Perusahaan"
 
 msgctxt "field:account.invoice.line,asset:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "field:account.invoice.line,is_assets_depreciable:"
 msgid "Is Assets depreciable"
-msgstr "af te schrijven actief"
+msgstr ""
 
 msgctxt "field:product.category,account_asset:"
 msgid "Account Asset"
-msgstr "activa rekening"
+msgstr ""
 
 msgctxt "field:product.category,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "afschrijvingsrekening"
+msgstr ""
 
 msgctxt "field:product.category.account,account_asset:"
 msgid "Account Asset"
-msgstr "activa rekening"
+msgstr ""
 
 msgctxt "field:product.category.account,account_depreciation:"
 msgid "Account Depreciation"
-msgstr "afschrijvingsrekening"
+msgstr ""
 
 msgctxt "field:product.product,depreciable:"
 msgid "Depreciable"
-msgstr "af te schrijven"
+msgstr ""
 
 msgctxt "field:product.product,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Afschrijvingsduur"
+msgstr ""
 
 msgctxt "field:product.template,depreciable:"
 msgid "Depreciable"
-msgstr "af te schrijven"
+msgstr ""
 
 msgctxt "field:product.template,depreciation_duration:"
 msgid "Depreciation Duration"
-msgstr "Afschrijvingsduur"
+msgstr ""
 
 msgctxt "help:account.asset,depreciated_amount:"
 msgid "The amount already depreciated at the start date."
-msgstr "Het bedrag is al afgeschreven op de startdatum."
+msgstr ""
 
 msgctxt "help:account.asset,depreciating_value:"
 msgid "The value of the asset at the start date."
-msgstr "De waarde van het activum op de startdatum."
+msgstr ""
 
 msgctxt "help:account.asset,value:"
 msgid "The value of the asset when purchased."
-msgstr "De waarde van het actief bij aankoop."
+msgstr ""
 
 msgctxt "help:account.asset.update.show_depreciation,date:"
 msgid ""
 "The date must be between the last update/depreciation date and the next "
 "depreciation date."
 msgstr ""
-"De datum moet liggen tussen de laatste update / afschrijvingsdatum en de "
-"volgende afschrijvingsdatum."
 
 msgctxt "help:account.configuration,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr "De maand om de afschrijvingsbewegingen te maken."
+msgstr ""
 
 msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr "De dag van de maand om de afschrijvingsbewegingen te maken."
+msgstr ""
 
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
-msgstr "De maand om de afschrijvingsbewegingen te maken."
+msgstr ""
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
-msgstr "De dag van de maand om de afschrijvingsbewegingen te maken."
+msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
-msgstr "In maanden"
+msgstr ""
 
 msgctxt "help:product.template,depreciation_duration:"
 msgid "In months"
-msgstr "In maanden"
+msgstr ""
 
 msgctxt "model:account.asset,name:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:account.asset-update-account.move,name:"
 msgid "Asset - Update - Move"
-msgstr "Activa - Update - boeking"
+msgstr ""
 
 msgctxt "model:account.asset.create_moves.start,name:"
 msgid "Create Moves Start"
-msgstr "maak boeking -start"
+msgstr ""
 
 msgctxt "model:account.asset.line,name:"
 msgid "Asset Line"
-msgstr "Activa lijn"
+msgstr ""
 
 msgctxt "model:account.asset.print_depreciation_table.start,name:"
 msgid "Asset Depreciation Table Start"
-msgstr "Activa afschrijvingstabel Start"
+msgstr ""
 
 msgctxt "model:account.asset.update.show_depreciation,name:"
 msgid "Update Asset Show Depreciation"
-msgstr "Activa bijwerken toon afschrijvingen ( - Afschijvingsweergave)"
+msgstr ""
 
 msgctxt "model:account.asset.update.start,name:"
 msgid "Update Asset Start"
-msgstr "Start activa bijwerken"
+msgstr ""
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
-msgstr "Rekening configuratie Activa datum"
+msgstr ""
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
-msgstr "Rekening configuratie activa volgorde (sequence)"
+msgstr ""
 
 msgctxt "model:account.journal,name:journal_asset"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr "Afschrijvingstabel"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
-msgstr "Maak activa boeking"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "duk afschrijfingstabellen af"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update"
 msgid "Update Asset"
-msgstr "Activa bijwerken"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_all"
 msgid "All"
-msgstr "Alle"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Afgesloten"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"
-msgstr "Concept"
+msgstr "Rancangan"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_running"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_asset_delete_draft"
 msgid "You cannot delete asset \"%(asset)s\" because it is not in \"draft\" state."
 msgstr ""
-"U kunt item \"% (asset)s\" niet verwijderen omdat het zich niet in de "
-"\"draft\" -status bevindt."
 
 msgctxt "model:ir.message,text:msg_asset_invoice_line_unique"
 msgid "Invoice line can be used only once on asset."
-msgstr "Factuurregel kan slechts eenmaal worden gebruikt voor activa."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_asset_running_close_period"
 msgid ""
 "You cannot close period \"%(period)s\" because some assets \"%(assets)s\" "
 "still have lines without move."
 msgstr ""
-"U kunt periode \"%(period s\" niet afsluiten omdat sommige activa "
-"\"%(assets)s\" nog steeds lijnen hebben zonder boekingen."
 
 msgctxt "model:ir.message,text:msg_invoice_line_asset_unique"
 msgid "Asset can be used only once on invoice line."
-msgstr "Activa kunnen slechts eenmaal op de factuurregel worden gebruikt."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_purchase_product_missing_account_asset"
 msgid ""
 "To invoice purchase \"%(purchase)s\", you must set an account asset on "
 "product \"%(product)s\"."
 msgstr ""
-"Als u de aankoop \"%(purchase)s\", wilt factureren, moet u een "
-"actiefrekening instellen voor product \"%(product)s\"."
 
 msgctxt "model:ir.model.button,confirm:asset_close_button"
 msgid "Are you sure you want to close the asset?"
-msgstr "afschrijving echt afsluiten?"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_clear_lines_button"
 msgid "Clear Lines"
-msgstr "Lijnen verwijderen"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr "Sluiten"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"
-msgstr "Maak lijnen"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_run_button"
 msgid "Run"
-msgstr "uitvoeren"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_update_button"
 msgid "Update Asset"
-msgstr "Activa bijwerken"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_asset"
 msgid "User in company"
-msgstr "Gebruiker in het bedrijf"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_asset"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_asset"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
-msgstr "duk afschrijfingstabellen af"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_moves"
 msgid "Create Assets Moves"
-msgstr "Maak afschrijvingsboeking(activaboeking)"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "("
@@ -494,79 +488,79 @@ msgstr "/"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Actual Value"
-msgstr "Werkelijke waarde"
+msgstr "Nilai sebenarnya"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization"
-msgstr "Afschrijvingen"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Amortization Table"
-msgstr "Aflossingstabel"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
-msgstr "Slotwaarde (afsluitwaarde)"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Company:"
-msgstr "Bedrijf:"
+msgstr "Perusahaan:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Fixed"
-msgstr "Vast"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "From:"
-msgstr "Van:"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Print Date:"
-msgstr "Datum afdruk:"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "To:"
-msgstr "Tot:"
+msgstr "Kepada:"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Total -"
-msgstr "Totaal-"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "User:"
-msgstr "Gebruiker:"
+msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "at"
-msgstr "om"
+msgstr ""
 
 msgctxt "selection:account.asset,depreciation_method:"
 msgid "Linear"
-msgstr "Lineair"
+msgstr ""
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Monthly"
-msgstr "Maandelijks"
+msgstr "Bulanan"
 
 msgctxt "selection:account.asset,frequency:"
 msgid "Yearly"
-msgstr "Jaarlijks"
+msgstr "Tahunan"
 
 msgctxt "selection:account.asset,state:"
 msgid "Closed"
-msgstr "Afgesloten"
+msgstr "Tutup"
 
 msgctxt "selection:account.asset,state:"
 msgid "Draft"
-msgstr "Concept"
+msgstr ""
 
 msgctxt "selection:account.asset,state:"
 msgid "Running"
-msgstr "in uitvoering"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "April"
@@ -574,11 +568,11 @@ msgstr "April"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "August"
-msgstr "Augustus"
+msgstr "Agustus"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "December"
-msgstr "December"
+msgstr "Desember"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "February"
@@ -598,7 +592,7 @@ msgstr "Juni"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "March"
-msgstr "Maart"
+msgstr "Maret"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "May"
@@ -606,7 +600,7 @@ msgstr "Mei"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "November"
-msgstr "November"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "October"
@@ -614,15 +608,15 @@ msgstr "Oktober"
 
 msgctxt "selection:account.configuration,asset_bymonth:"
 msgid "September"
-msgstr "September"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "First"
-msgstr "Eerste"
+msgstr ""
 
 msgctxt "selection:account.configuration,asset_bymonthday:"
 msgid "Last"
-msgstr "Laatste"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "April"
@@ -630,11 +624,11 @@ msgstr "April"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "August"
-msgstr "Augustus"
+msgstr "Agustus"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "December"
-msgstr "December"
+msgstr "Desember"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "February"
@@ -654,7 +648,7 @@ msgstr "Juni"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "March"
-msgstr "Maart"
+msgstr "Maret"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonth:"
 msgid "May"
@@ -674,72 +668,72 @@ msgstr "September"
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "First"
-msgstr "Eerste"
+msgstr ""
 
 msgctxt "selection:account.configuration.asset_date,asset_bymonthday:"
 msgid "Last"
-msgstr "Laatste"
+msgstr ""
 
 msgctxt "selection:account.journal,type:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "view:account.asset.create_moves.start:"
 msgid "Create Assets Moves up to"
-msgstr "Maak activaboekingen tot (afschrijvingsboekingen?)"
+msgstr ""
 
 msgctxt "view:account.asset:"
 msgid "Lines"
-msgstr "Regels"
+msgstr "Baris"
 
 msgctxt "view:account.asset:"
 msgid "Other Info"
-msgstr "Overige informatie"
+msgstr "Info Lain"
 
 msgctxt "view:account.configuration:"
 msgid "Asset"
-msgstr "Activa"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
-msgstr "Activa boeking"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Reeks"
+msgstr "Urutan"
 
 msgctxt "view:product.template:"
 msgid "Depreciation"
-msgstr "afschrijving (waardevermindering)"
+msgstr ""
 
 msgctxt "wizard_button:account.asset.create_moves,start,create_moves:"
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.create_moves,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.asset.print_depreciation_table,start,print_:"
 msgid "Print"
-msgstr "Afdrukken"
+msgstr "Cetak"
 
 msgctxt "wizard_button:account.asset.update,show_move,create_move:"
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
 
 msgctxt "wizard_button:account.asset.update,show_move,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.asset.update,start,end:"
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.asset.update,start,update_asset:"
 msgid "OK"
-msgstr "Ok"
+msgstr "OK"
