@@ -2,10 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.move.line,analytic_lines:"
 msgid "Analytic Lines"
-msgstr "Analytic Lines"
+msgstr ""
 
 msgctxt "field:account.move.line,analytic_state:"
 msgid "Analytic State"
@@ -13,15 +12,15 @@ msgstr ""
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
@@ -29,35 +28,35 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "field:analytic_account.account,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Cabang"
 
 msgctxt "field:analytic_account.account,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "field:analytic_account.account,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Mata uang"
 
 msgctxt "field:analytic_account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr ""
 
 msgctxt "field:analytic_account.account,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:analytic_account.account,distribution_parents:"
 msgid "Distribution Parents"
@@ -67,18 +66,17 @@ msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nama"
 
 msgctxt "field:analytic_account.account,note:"
 msgid "Note"
-msgstr "Pastaba"
+msgstr "Catatan"
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -94,11 +92,11 @@ msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
@@ -110,27 +108,27 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "field:analytic_account.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr ""
 
 msgctxt "field:analytic_account.line,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
@@ -138,100 +136,95 @@ msgstr ""
 
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Tanggal Awal"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
-msgstr ""
+msgstr "Rekening"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,analytic_accounts_size:"
 msgid "Analytic Accounts Size"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Jurnal"
 
 msgctxt "field:analytic_account.rule,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Pihak"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr "Kontrahentas matomas"
+msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:analytic_account.account,name:"
 msgid "Analytic Account"
-msgstr "Analytic Account"
+msgstr ""
 
 msgctxt "model:analytic_account.account.distribution,name:"
 msgid "Analytic Account Distribution"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:analytic_account.line,name:"
 msgid "Analytic Line"
-msgstr "Analytic Lines"
+msgstr ""
 
 msgctxt "model:analytic_account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:analytic_account.rule,name:"
 msgid "Analytic Rule"
-msgstr "Analytic Rules"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_line_form"
 msgid "Analytic Lines"
-msgstr "Analytic Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_line_form_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Account"
-msgstr "Open Account"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_rule_form"
 msgid "Analytic Rules"
-msgstr "Analytic Rules"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invalid_distribution"
 msgid ""
@@ -245,43 +238,43 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Analytic Accounts"
-msgstr "Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_analytic_account_configuration"
 msgid "Analytic Account"
-msgstr "Analytic Account"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_completion"
 msgid "Analytic Lines to Complete"
-msgstr "Analytic Lines to Complete"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Analytic Accounts"
-msgstr "Open Chart of Analytic Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Analytic Rules"
-msgstr "Analytic Rules"
+msgstr ""
 
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Analytic Administration"
+msgstr ""
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Valid"
-msgstr ""
+msgstr "Sah"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Closed"
@@ -289,7 +282,7 @@ msgstr ""
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:analytic_account.account,state:"
 msgid "Opened"
@@ -301,7 +294,7 @@ msgstr ""
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Normal"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "selection:analytic_account.account,type:"
 msgid "Root"
@@ -317,29 +310,28 @@ msgstr ""
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Kreditas"
+msgstr "Kredit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr "Debetas"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "view:analytic_account.account.distribution:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:analytic_account.account:"
 msgid "General Information"
-msgstr ""
+msgstr "Informasi Umum"
 
 msgctxt "view:analytic_account.account:"
 msgid "Notes"
-msgstr "Pastabos"
+msgstr ""
 
 msgctxt "wizard_button:analytic_account.open_chart,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
-msgstr ""
+msgstr "Buka"

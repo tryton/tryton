@@ -22,47 +22,13 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
-msgctxt "field:analytic.account.entry,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "ລາຍການຂັ້ນຕົ້ນ"
 
-msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,active:"
-msgid "Active"
-msgstr "ໃຊ້ຢູ່"
 
 #, fuzzy
 msgctxt "field:analytic_account.account,balance:"
@@ -83,16 +49,6 @@ msgstr "ລະຫັດແຂວງ"
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:analytic_account.account,credit:"
@@ -123,11 +79,6 @@ msgid "Distributions"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:analytic_account.account,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
 msgstr "ຊື່"
@@ -141,10 +92,6 @@ msgstr "ໝາຍເຫດ"
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
 msgstr "ຮ່ວງ"
-
-msgctxt "field:analytic_account.account,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -161,34 +108,9 @@ msgid "Type"
 msgstr "ຮູບແບບ"
 
 #, fuzzy
-msgctxt "field:analytic_account.account,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:analytic_account.account.distribution,parent:"
@@ -199,23 +121,9 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr ""
 
-msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,account:"
@@ -226,16 +134,6 @@ msgstr "ບັນຊີ"
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,credit:"
@@ -258,38 +156,14 @@ msgid "Debit"
 msgstr "ໜີ້"
 
 #, fuzzy
-msgctxt "field:analytic_account.line,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "ລາຍການເຄື່ອນໄຫວບັນຊີ"
-
-msgctxt "field:analytic_account.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.line,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
 
 #, fuzzy
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
-
-#, fuzzy
-msgctxt "field:analytic_account.open_chart.start,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:analytic_account.open_chart.start,start_date:"
@@ -317,21 +191,6 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
-msgctxt "field:analytic_account.rule,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
 msgstr "ປຶ້ມບັນຊີປະຈຳວັນ"
@@ -343,28 +202,6 @@ msgstr "ພາກສ່ວນ"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,sequence:"
-msgid "Sequence"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-msgctxt "help:analytic_account.account,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"

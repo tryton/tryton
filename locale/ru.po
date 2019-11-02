@@ -21,46 +21,13 @@ msgid "Company"
 msgstr "Организация"
 
 #, fuzzy
-msgctxt "field:analytic.account.entry,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "Первоисточник"
 
-msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-msgctxt "field:analytic_account.account,active:"
-msgid "Active"
-msgstr "Действующий"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -77,14 +44,6 @@ msgstr "Код"
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
 msgstr "Организация"
-
-msgctxt "field:analytic_account.account,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:analytic_account.account,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -110,10 +69,6 @@ msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
 msgstr ""
 
-msgctxt "field:analytic_account.account,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
 msgstr "Наименование"
@@ -125,10 +80,6 @@ msgstr "Комментарий"
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
 msgstr "Предок"
-
-msgctxt "field:analytic_account.account,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -142,33 +93,10 @@ msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr "Тип"
 
-msgctxt "field:analytic_account.account,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 #, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Счет"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:analytic_account.account.distribution,parent:"
@@ -179,24 +107,10 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr ""
 
-msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr "Корневой"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
@@ -206,14 +120,6 @@ msgstr "Счет"
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
 msgstr "Учет.орг."
-
-msgctxt "field:analytic_account.line,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:analytic_account.line,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -231,33 +137,13 @@ msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr "Дебет"
 
-msgctxt "field:analytic_account.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "Строчка проводки"
 
-msgctxt "field:analytic_account.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.line,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:analytic_account.line,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr "Дата окончания"
-
-msgctxt "field:analytic_account.open_chart.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
@@ -284,21 +170,6 @@ msgid "Company"
 msgstr "Организация"
 
 #, fuzzy
-msgctxt "field:analytic_account.rule,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
 msgstr "Журнал"
@@ -310,28 +181,6 @@ msgstr "Контрагент"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,sequence:"
-msgid "Sequence"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
-msgctxt "help:analytic_account.account,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"
@@ -517,11 +366,3 @@ msgstr "Отменить"
 msgctxt "wizard_button:analytic_account.open_chart,start,open_:"
 msgid "Open"
 msgstr "Открыть"
-
-msgctxt "view:analytic_account.line:"
-msgid "General Information"
-msgstr "Основная информация"
-
-msgctxt "view:analytic_account.open_chart.start:"
-msgid "Open Chart of Analytic Accounts"
-msgstr "Открыть схему счетов аналитики"

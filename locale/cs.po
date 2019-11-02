@@ -19,40 +19,12 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:analytic.account.entry,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr ""
 
-msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:analytic_account.account,active:"
-msgid "Active"
 msgstr ""
 
 msgctxt "field:analytic_account.account,balance:"
@@ -69,14 +41,6 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:analytic_account.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:analytic_account.account,credit:"
@@ -103,10 +67,6 @@ msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
 msgstr ""
 
-msgctxt "field:analytic_account.account,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
@@ -118,10 +78,6 @@ msgstr ""
 
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
-msgstr ""
-
-msgctxt "field:analytic_account.account,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
@@ -136,28 +92,8 @@ msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr ""
 
-msgctxt "field:analytic_account.account,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr ""
-
-msgctxt "field:analytic_account.account.distribution,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account.distribution,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:analytic_account.account.distribution,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,parent:"
@@ -168,20 +104,8 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr ""
 
-msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
-msgstr ""
-
-msgctxt "field:analytic_account.account.distribution,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic_account.account.distribution,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:analytic_account.line,account:"
@@ -190,14 +114,6 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:analytic_account.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic_account.line,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:analytic_account.line,credit:"
@@ -216,32 +132,12 @@ msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr ""
 
-msgctxt "field:analytic_account.line,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
-msgctxt "field:analytic_account.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.line,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic_account.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:analytic_account.open_chart.start,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
@@ -266,18 +162,6 @@ msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:analytic_account.rule,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
 msgstr ""
@@ -288,26 +172,6 @@ msgstr ""
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,sequence:"
-msgid "Sequence"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "help:analytic_account.account,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"

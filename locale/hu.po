@@ -21,47 +21,13 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Társaság"
 
-#, fuzzy
-msgctxt "field:analytic.account.entry,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
-msgstr ""
-
-msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:analytic.account.entry,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,active:"
-msgid "Active"
-msgstr "Aktív"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -81,16 +47,6 @@ msgstr "Partner kód"
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
 msgstr "Társaság"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -118,11 +74,6 @@ msgid "Distributions"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:analytic_account.account,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
 msgstr "Név"
@@ -135,10 +86,6 @@ msgstr ""
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
 msgstr "Szülő (csomag)"
-
-msgctxt "field:analytic_account.account,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -155,34 +102,9 @@ msgid "Type"
 msgstr "Típus"
 
 #, fuzzy
-msgctxt "field:analytic_account.account,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Számla"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:analytic_account.account.distribution,parent:"
@@ -193,23 +115,9 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr ""
 
-msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.account.distribution,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 #, fuzzy
 msgctxt "field:analytic_account.line,account:"
@@ -220,16 +128,6 @@ msgstr "Számla"
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
 msgstr "Társaság"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -248,37 +146,13 @@ msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:analytic_account.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr ""
 
-msgctxt "field:analytic_account.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.open_chart.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
@@ -304,21 +178,6 @@ msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
 msgstr "Társaság"
 
-#, fuzzy
-msgctxt "field:analytic_account.rule,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
 msgstr ""
@@ -330,28 +189,6 @@ msgstr "Partner"
 
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:analytic_account.rule,sequence:"
-msgid "Sequence"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:analytic_account.rule,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-msgctxt "help:analytic_account.account,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:analytic.account.entry,name:"

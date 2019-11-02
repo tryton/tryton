@@ -18,41 +18,13 @@ msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:analytic.account.entry,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:analytic.account.entry,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:analytic.account.entry,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic.account.entry,origin:"
 msgid "Origin"
 msgstr "Päritolu"
 
-msgctxt "field:analytic.account.entry,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:analytic.account.entry,root:"
 msgid "Root Analytic"
 msgstr ""
-
-msgctxt "field:analytic.account.entry,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:analytic.account.entry,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:analytic_account.account,active:"
-msgid "Active"
-msgstr "Aktiivne"
 
 msgctxt "field:analytic_account.account,balance:"
 msgid "Balance"
@@ -69,14 +41,6 @@ msgstr "Kood"
 msgctxt "field:analytic_account.account,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:analytic_account.account,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:analytic_account.account,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:analytic_account.account,credit:"
 msgid "Credit"
@@ -102,10 +66,6 @@ msgctxt "field:analytic_account.account,distributions:"
 msgid "Distributions"
 msgstr ""
 
-msgctxt "field:analytic_account.account,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.account,name:"
 msgid "Name"
 msgstr "Nimetus"
@@ -117,10 +77,6 @@ msgstr "Märkus"
 msgctxt "field:analytic_account.account,parent:"
 msgid "Parent"
 msgstr "Ülem"
-
-msgctxt "field:analytic_account.account,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:analytic_account.account,root:"
 msgid "Root"
@@ -134,29 +90,9 @@ msgctxt "field:analytic_account.account,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:analytic_account.account,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:analytic_account.account,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
 msgstr "Konto"
-
-msgctxt "field:analytic_account.account.distribution,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:analytic_account.account.distribution,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:analytic_account.account.distribution,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
@@ -166,21 +102,9 @@ msgctxt "field:analytic_account.account.distribution,ratio:"
 msgid "Ratio"
 msgstr "Tegur"
 
-msgctxt "field:analytic_account.account.distribution,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:analytic_account.account.distribution,root:"
 msgid "Root"
 msgstr "Juur"
-
-msgctxt "field:analytic_account.account.distribution,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:analytic_account.account.distribution,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
@@ -189,14 +113,6 @@ msgstr "Konto"
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:analytic_account.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:analytic_account.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:analytic_account.line,credit:"
 msgid "Credit"
@@ -214,33 +130,13 @@ msgctxt "field:analytic_account.line,debit:"
 msgid "Debit"
 msgstr "Deebet"
 
-msgctxt "field:analytic_account.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.line,move_line:"
 msgid "Account Move Line"
 msgstr "Kande rida"
 
-msgctxt "field:analytic_account.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:analytic_account.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:analytic_account.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:analytic_account.open_chart.start,end_date:"
 msgid "End Date"
 msgstr "Lõppkuupäev"
-
-msgctxt "field:analytic_account.open_chart.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
@@ -262,18 +158,6 @@ msgctxt "field:analytic_account.rule,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:analytic_account.rule,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:analytic_account.rule,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:analytic_account.rule,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:analytic_account.rule,journal:"
 msgid "Journal"
 msgstr "Andmik"
@@ -285,26 +169,6 @@ msgstr "Osapool"
 msgctxt "field:analytic_account.rule,party_visible:"
 msgid "Party Visible"
 msgstr "Nähtav osapool"
-
-msgctxt "field:analytic_account.rule,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:analytic_account.rule,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
-msgctxt "field:analytic_account.rule,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:analytic_account.rule,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "help:analytic_account.account,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:analytic.account.entry,name:"
 msgid "Analytic Account Entry"
