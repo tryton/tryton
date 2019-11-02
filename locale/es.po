@@ -10,14 +10,6 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.statement,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimales de la moneda"
@@ -29,10 +21,6 @@ msgstr "Fecha"
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "Saldo final"
-
-msgctxt "field:account.statement,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -62,10 +50,6 @@ msgctxt "field:account.statement,origins:"
 msgid "Origins"
 msgstr "Orígenes"
 
-msgctxt "field:account.statement,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr "Saldo inicial"
@@ -86,14 +70,6 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr "Validación"
 
-msgctxt "field:account.statement,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -105,10 +81,6 @@ msgstr "Archivo"
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
 msgstr "Formato del archivo"
-
-msgctxt "field:account.statement.import.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
@@ -126,21 +98,9 @@ msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
 msgstr "Tercero de la empresa"
 
-msgctxt "field:account.statement.journal,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement.journal,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "Moneda"
-
-msgctxt "field:account.statement.journal,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -150,21 +110,9 @@ msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:account.statement.journal,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
 msgstr "Tipo de validación"
-
-msgctxt "field:account.statement.journal,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement.journal,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -178,14 +126,6 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.statement.line,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement.line,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -193,10 +133,6 @@ msgstr "Fecha"
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Descripción"
-
-msgctxt "field:account.statement.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -218,14 +154,6 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Tercero"
 
-msgctxt "field:account.statement.line,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:account.statement.line,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Extracto"
@@ -234,25 +162,9 @@ msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
 msgstr "Estado del extracto"
 
-msgctxt "field:account.statement.line,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement.line,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr "Importe"
-
-msgctxt "field:account.statement.line.group,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement.line.group,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -265,10 +177,6 @@ msgstr "Decimales de la moneda"
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Fecha"
-
-msgctxt "field:account.statement.line.group,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
@@ -286,21 +194,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Tercero"
 
-msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr "Extracto"
-
-msgctxt "field:account.statement.line.group,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement.line.group,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
@@ -314,14 +210,6 @@ msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.statement.origin,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement.origin,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -329,10 +217,6 @@ msgstr "Fecha"
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
 msgstr "Descripción"
-
-msgctxt "field:account.statement.origin,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.origin,information:"
 msgid "Information"
@@ -354,10 +238,6 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "Importe pendiente"
 
-msgctxt "field:account.statement.origin,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
 msgstr "Extracto"
@@ -369,78 +249,6 @@ msgstr "ID del Extracto"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "Estado del extracto"
-
-msgctxt "field:account.statement.origin,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement.origin,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:account.statement.origin.information,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.statement.origin.information,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:account.statement.origin.information,digits:"
-msgid "Digits"
-msgstr "Dígitos"
-
-msgctxt "field:account.statement.origin.information,domain:"
-msgid "Domain"
-msgstr "Dominio"
-
-msgctxt "field:account.statement.origin.information,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.statement.origin.information,name:"
-msgid "Name"
-msgstr "Nombre"
-
-msgctxt "field:account.statement.origin.information,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:account.statement.origin.information,selection:"
-msgid "Selection"
-msgstr "Selección"
-
-msgctxt "field:account.statement.origin.information,selection_json:"
-msgid "Selection JSON"
-msgstr "Selección JSON"
-
-msgctxt "field:account.statement.origin.information,selection_sorted:"
-msgid "Selection Sorted"
-msgstr "Selección ordenada"
-
-msgctxt "field:account.statement.origin.information,string:"
-msgid "String"
-msgstr "Etiqueta"
-
-msgctxt "field:account.statement.origin.information,type_:"
-msgid "Type"
-msgstr "Tipo"
-
-msgctxt "field:account.statement.origin.information,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.statement.origin.information,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "help:account.statement.origin.information,selection:"
-msgid "A couple of key and label separated by \":\" per line"
-msgstr "Clave y valor separados por \\\":\\\" en cada línea."
-
-msgctxt "help:account.statement.origin.information,selection_sorted:"
-msgid "If the selection must be sorted on label"
-msgstr "Si debe ordenarse la selección en la etiqueta."
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -756,38 +564,6 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "Número de líneas"
 
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Boolean"
-msgstr "Booleano"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Char"
-msgstr "Carácter"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Date"
-msgstr "Fecha"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "DateTime"
-msgstr "Fecha-hora"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Float"
-msgstr "Número coma flotante"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Integer"
-msgstr "Entero"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Numeric"
-msgstr "Numérico"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Selection"
-msgstr "Selección"
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Importe"
@@ -811,19 +587,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr "Importar"
-
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Contabilizar"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Validar"

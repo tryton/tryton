@@ -10,14 +10,6 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.statement,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -29,10 +21,6 @@ msgstr "تاریخ"
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "تراز پایانی"
-
-msgctxt "field:account.statement,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -62,10 +50,6 @@ msgctxt "field:account.statement,origins:"
 msgid "Origins"
 msgstr "مبداء"
 
-msgctxt "field:account.statement,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr "شروع تراز"
@@ -86,14 +70,6 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr "اعتبار سنجی"
 
-msgctxt "field:account.statement,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -105,10 +81,6 @@ msgstr "فایل"
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
 msgstr "فرمت فایل"
-
-msgctxt "field:account.statement.import.start,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
@@ -126,21 +98,9 @@ msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
 msgstr "شرکت نهاد/سازمان"
 
-msgctxt "field:account.statement.journal,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement.journal,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "واحد پول"
-
-msgctxt "field:account.statement.journal,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -150,21 +110,9 @@ msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "نام"
 
-msgctxt "field:account.statement.journal,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
 msgstr "نوع اعتبار سنجی"
-
-msgctxt "field:account.statement.journal,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement.journal,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -178,14 +126,6 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.statement.line,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement.line,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "تاریخ"
@@ -193,10 +133,6 @@ msgstr "تاریخ"
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "شرح"
-
-msgctxt "field:account.statement.line,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -218,14 +154,6 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "field:account.statement.line,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.statement.line,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "بیانیه"
@@ -234,25 +162,9 @@ msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
 msgstr "وضعیت بیانیه"
 
-msgctxt "field:account.statement.line,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement.line,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr "مقدار"
-
-msgctxt "field:account.statement.line.group,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement.line.group,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:account.statement.line.group,currency:"
 msgid "Currency"
@@ -265,10 +177,6 @@ msgstr "رقم های واحد پول"
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "تاریخ"
-
-msgctxt "field:account.statement.line.group,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:account.statement.line.group,journal:"
 msgid "Journal"
@@ -286,21 +194,9 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
-msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr "بیانیه"
-
-msgctxt "field:account.statement.line.group,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement.line.group,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
@@ -314,14 +210,6 @@ msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:account.statement.origin,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement.origin,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
 msgstr "تاریخ"
@@ -329,10 +217,6 @@ msgstr "تاریخ"
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
 msgstr "شرح"
-
-msgctxt "field:account.statement.origin,id:"
-msgid "ID"
-msgstr "شناسه"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,information:"
@@ -355,10 +239,6 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr "مقدار معلق"
 
-msgctxt "field:account.statement.origin,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
 msgstr "بیانیه"
@@ -370,78 +250,6 @@ msgstr "شناسه بیانیه"
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
 msgstr "وضعیت بیانیه"
-
-msgctxt "field:account.statement.origin,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement.origin,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:account.statement.origin.information,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:account.statement.origin.information,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:account.statement.origin.information,digits:"
-msgid "Digits"
-msgstr "رقم‌ها"
-
-msgctxt "field:account.statement.origin.information,domain:"
-msgid "Domain"
-msgstr "دامنه"
-
-msgctxt "field:account.statement.origin.information,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:account.statement.origin.information,name:"
-msgid "Name"
-msgstr "نام"
-
-msgctxt "field:account.statement.origin.information,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:account.statement.origin.information,selection:"
-msgid "Selection"
-msgstr "انتخاب"
-
-msgctxt "field:account.statement.origin.information,selection_json:"
-msgid "Selection JSON"
-msgstr "انتخاب JSON"
-
-msgctxt "field:account.statement.origin.information,selection_sorted:"
-msgid "Selection Sorted"
-msgstr "انتخاب مرتب شده"
-
-msgctxt "field:account.statement.origin.information,string:"
-msgid "String"
-msgstr "متنی"
-
-msgctxt "field:account.statement.origin.information,type_:"
-msgid "Type"
-msgstr "نوع"
-
-msgctxt "field:account.statement.origin.information,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:account.statement.origin.information,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "help:account.statement.origin.information,selection:"
-msgid "A couple of key and label separated by \":\" per line"
-msgstr "یک چند کلید و برچسب جدا شده توسط \":\" در هر خط"
-
-msgctxt "help:account.statement.origin.information,selection_sorted:"
-msgid "If the selection must be sorted on label"
-msgstr "اگر انتخاب باید بر روی برچسب مرتب شود"
 
 msgctxt "model:account.statement,name:"
 msgid "Account Statement"
@@ -761,38 +569,6 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr "تعداد خطوط"
 
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Boolean"
-msgstr "بولین"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Char"
-msgstr "کاراکتر"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Date"
-msgstr "تاریخ"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "DateTime"
-msgstr "تاریخ و زمان"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Float"
-msgstr "شناور"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Integer"
-msgstr "عدد صحیح"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Numeric"
-msgstr "عددی"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Selection"
-msgstr "انتخاب"
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "مقدار"
@@ -816,19 +592,3 @@ msgstr "انصراف"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr "وارد کردن"
-
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
-msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "ارسال"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "تایید اعتبار"

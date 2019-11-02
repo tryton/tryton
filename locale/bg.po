@@ -10,14 +10,6 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:account.statement,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:account.statement,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
@@ -29,10 +21,6 @@ msgstr "Дата"
 msgctxt "field:account.statement,end_balance:"
 msgid "End Balance"
 msgstr "Краен баланс"
-
-msgctxt "field:account.statement,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement,journal:"
 msgid "Journal"
@@ -65,10 +53,6 @@ msgctxt "field:account.statement,origins:"
 msgid "Origins"
 msgstr "Origins"
 
-msgctxt "field:account.statement,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.statement,start_balance:"
 msgid "Start Balance"
 msgstr "Начален баланс"
@@ -90,14 +74,6 @@ msgctxt "field:account.statement,validation:"
 msgid "Validation"
 msgstr ""
 
-msgctxt "field:account.statement,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:account.statement,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 #, fuzzy
 msgctxt "field:account.statement.import.start,company:"
 msgid "Company"
@@ -110,11 +86,6 @@ msgstr ""
 msgctxt "field:account.statement.import.start,file_format:"
 msgid "File Format"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.statement.import.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.statement.journal,account:"
@@ -133,21 +104,9 @@ msgctxt "field:account.statement.journal,company_party:"
 msgid "Company Party"
 msgstr ""
 
-msgctxt "field:account.statement.journal,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:account.statement.journal,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:account.statement.journal,currency:"
 msgid "Currency"
 msgstr "Валута"
-
-msgctxt "field:account.statement.journal,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.journal,journal:"
 msgid "Journal"
@@ -157,21 +116,9 @@ msgctxt "field:account.statement.journal,name:"
 msgid "Name"
 msgstr "Име"
 
-msgctxt "field:account.statement.journal,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.statement.journal,validation:"
 msgid "Validation Type"
 msgstr ""
-
-msgctxt "field:account.statement.journal,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:account.statement.journal,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
@@ -186,14 +133,6 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Фирма"
 
-msgctxt "field:account.statement.line,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:account.statement.line,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Дата"
@@ -201,10 +140,6 @@ msgstr "Дата"
 msgctxt "field:account.statement.line,description:"
 msgid "Description"
 msgstr "Описание"
-
-msgctxt "field:account.statement.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.line,invoice:"
 msgid "Invoice"
@@ -228,15 +163,6 @@ msgctxt "field:account.statement.line,party:"
 msgid "Party"
 msgstr "Партньор"
 
-msgctxt "field:account.statement.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.statement.line,sequence:"
-msgid "Sequence"
-msgstr "Последователност"
-
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
 msgstr "Отчет"
@@ -245,28 +171,10 @@ msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
 msgstr ""
 
-msgctxt "field:account.statement.line,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:account.statement.line,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 #, fuzzy
 msgctxt "field:account.statement.line.group,amount:"
 msgid "Amount"
 msgstr "Сума"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
 
 #, fuzzy
 msgctxt "field:account.statement.line.group,currency:"
@@ -282,11 +190,6 @@ msgstr "Цифри за валута"
 msgctxt "field:account.statement.line.group,date:"
 msgid "Date"
 msgstr "Дата"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.statement.line.group,journal:"
@@ -308,24 +211,10 @@ msgctxt "field:account.statement.line.group,party:"
 msgid "Party"
 msgstr "Управление на партньор"
 
-msgctxt "field:account.statement.line.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
 msgstr "Отчет"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.statement.line.group,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,account:"
@@ -343,16 +232,6 @@ msgid "Company"
 msgstr "Фирма"
 
 #, fuzzy
-msgctxt "field:account.statement.origin,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
 msgstr "Дата"
@@ -361,11 +240,6 @@ msgstr "Дата"
 msgctxt "field:account.statement.origin,description:"
 msgid "Description"
 msgstr "Описание"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.statement.origin,information:"
 msgid "Information"
@@ -390,10 +264,6 @@ msgctxt "field:account.statement.origin,pending_amount:"
 msgid "Pending Amount"
 msgstr ""
 
-msgctxt "field:account.statement.origin,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
@@ -406,86 +276,6 @@ msgstr "Отчет"
 
 msgctxt "field:account.statement.origin,statement_state:"
 msgid "Statement State"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.statement.origin,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.statement.origin,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:account.statement.origin.information,digits:"
-msgid "Digits"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,domain:"
-msgid "Domain"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,name:"
-msgid "Name"
-msgstr "Условие за плащане"
-
-msgctxt "field:account.statement.origin.information,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,selection:"
-msgid "Selection"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,selection_json:"
-msgid "Selection JSON"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,selection_sorted:"
-msgid "Selection Sorted"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,string:"
-msgid "String"
-msgstr ""
-
-msgctxt "field:account.statement.origin.information,type_:"
-msgid "Type"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:account.statement.origin.information,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-msgctxt "help:account.statement.origin.information,selection:"
-msgid "A couple of key and label separated by \":\" per line"
-msgstr ""
-
-msgctxt "help:account.statement.origin.information,selection_sorted:"
-msgid "If the selection must be sorted on label"
 msgstr ""
 
 msgctxt "model:account.statement,name:"
@@ -821,39 +611,6 @@ msgctxt "selection:account.statement.journal,validation:"
 msgid "Number of Lines"
 msgstr ""
 
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Boolean"
-msgstr ""
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Char"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Date"
-msgstr "Дата"
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "DateTime"
-msgstr ""
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Float"
-msgstr ""
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Integer"
-msgstr ""
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Numeric"
-msgstr ""
-
-msgctxt "selection:account.statement.origin.information,type_:"
-msgid "Selection"
-msgstr ""
-
 msgctxt "view:account.statement.line:"
 msgid "Amount"
 msgstr "Сума"
@@ -879,20 +636,3 @@ msgstr "Отказ"
 msgctxt "wizard_button:account.statement.import,start,import_:"
 msgid "Import"
 msgstr ""
-
-msgctxt "view:account.statement:"
-msgid "Cancel"
-msgstr "Отказ"
-
-#, fuzzy
-msgctxt "view:account.statement:"
-msgid "Draft"
-msgstr "Проект"
-
-msgctxt "view:account.statement:"
-msgid "Post"
-msgstr "Публикуван"
-
-msgctxt "view:account.statement:"
-msgid "Validate"
-msgstr "Проверка"
