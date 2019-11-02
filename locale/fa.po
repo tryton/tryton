@@ -79,7 +79,3 @@ msgstr "حمل و نقل"
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
 msgstr "ابعاد"
-
-msgctxt "selection:carrier,shipping_service:"
-msgid ""
-msgstr " "

@@ -79,7 +79,3 @@ msgstr "Envío"
 msgctxt "view:stock.package.type:"
 msgid "Dimensions"
 msgstr "Dimensiones"
-
-msgctxt "view:stock.shipment.out:"
-msgid "Create Shipping for Packages"
-msgstr "Crear envío de paquetes"
