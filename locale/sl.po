@@ -13,11 +13,3 @@ msgstr "Število analitičnih kontov"
 msgctxt "view:purchase.line:"
 msgid "Analytic"
 msgstr ""
-
-msgctxt "error:purchase.line:"
-msgid "Some mandatory root account are missing on \"%(name)s\""
-msgstr "Pri \"%(name)s\" manjkajo nekateri korenski konti."
-
-msgctxt "error:purchase.purchase:"
-msgid "Analytic account is required for \"%(roots)s\" on line \"%(line)s\"."
-msgstr "Analitični konto je obvezen za \"%(roots)s\" na postavki \"%(line)s\"."
