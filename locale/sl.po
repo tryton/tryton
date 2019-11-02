@@ -26,14 +26,6 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr "Znesek"
 
-msgctxt "field:commission,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:commission,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -41,10 +33,6 @@ msgstr "Valuta"
 msgctxt "field:commission,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:commission,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -62,41 +50,17 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr "Izdelek"
 
-msgctxt "field:commission,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:commission,type_:"
 msgid "Type"
 msgstr "Tip"
-
-msgctxt "field:commission,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:commission,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
 msgstr "Valuta"
-
-msgctxt "field:commission.agent,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
@@ -110,29 +74,13 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Načrt"
 
-msgctxt "field:commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Tip"
 
-msgctxt "field:commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr "Od"
-
-msgctxt "field:commission.create_invoice.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
@@ -150,18 +98,6 @@ msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
 msgstr "Komisijski izdelek"
 
-msgctxt "field:commission.plan,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:commission.plan,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:commission.plan,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
 msgstr "Postavke"
@@ -170,37 +106,13 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Naziv"
 
-msgctxt "field:commission.plan,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:commission.plan,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:commission.plan,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
 msgstr "Kategorija"
 
-msgctxt "field:commission.plan.line,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:commission.plan.line,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
 msgstr "Formula"
-
-msgctxt "field:commission.plan.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
@@ -209,22 +121,6 @@ msgstr "Načrt"
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Izdelek"
-
-msgctxt "field:commission.plan.line,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:commission.plan.line,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
-msgctxt "field:commission.plan.line,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:commission.plan.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -238,33 +134,9 @@ msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
 msgstr "Zastopnik"
 
-msgctxt "field:product.template-commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product.template-commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:product.template-commission.agent,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
 msgstr "Predloga"
-
-msgctxt "field:product.template-commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product.template-commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -274,8 +146,9 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Komisijski zastopnik"
 
+#, fuzzy
 msgctxt "help:commission.plan,commission_method:"
-msgid "When the commission is due"
+msgid "When the commission is due."
 msgstr "Kdaj zapade komisija"
 
 msgctxt "help:commission.plan.line,formula:"
@@ -481,35 +354,3 @@ msgstr "V redu"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Prekliči"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Račun"
-
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr "Zastopnik"
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr "Zastopniki"
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr "Izdelava komisijskega računa"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr "Postavka komisijskega načrta"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr "Postaveke komisijskega načrta"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr "Komisijski načrt"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
-msgstr "Komisijski načrti"

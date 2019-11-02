@@ -31,16 +31,6 @@ msgid "Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:commission,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:commission,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -49,11 +39,6 @@ msgstr "Pénznem"
 msgctxt "field:commission,date:"
 msgid "Date"
 msgstr "Dátum"
-
-#, fuzzy
-msgctxt "field:commission,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -72,24 +57,10 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr "Termék"
 
-msgctxt "field:commission,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:commission,type_:"
 msgid "Type"
 msgstr "Típus"
-
-#, fuzzy
-msgctxt "field:commission,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:commission,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 #, fuzzy
 msgctxt "field:commission.agent,company:"
@@ -97,24 +68,9 @@ msgid "Company"
 msgstr "Társaság"
 
 #, fuzzy
-msgctxt "field:commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
 msgstr "Pénznem"
-
-#, fuzzy
-msgctxt "field:commission.agent,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:commission.agent,party:"
@@ -129,34 +85,15 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr ""
 
-msgctxt "field:commission.agent,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Típus"
 
 #, fuzzy
-msgctxt "field:commission.agent,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr "-tól; től"
-
-#, fuzzy
-msgctxt "field:commission.create_invoice.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:commission.create_invoice.ask,to:"
@@ -177,21 +114,6 @@ msgid "Commission Product"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:commission.plan,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:commission.plan,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:commission.plan,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
 msgstr "Sor"
@@ -201,43 +123,14 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Név"
 
-msgctxt "field:commission.plan,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:commission.plan,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:commission.plan,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:commission.plan.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:commission.plan.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
 msgstr "Űrlap"
-
-#, fuzzy
-msgctxt "field:commission.plan.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
@@ -247,25 +140,6 @@ msgstr ""
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Termék"
-
-msgctxt "field:commission.plan.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:commission.plan.line,sequence:"
-msgid "Sequence"
-msgstr "Számkör"
-
-#, fuzzy
-msgctxt "field:commission.plan.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:commission.plan.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -281,38 +155,9 @@ msgid "Agent"
 msgstr "Agents"
 
 #, fuzzy
-msgctxt "field:product.template-commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:product.template-commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:product.template-commission.agent,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
 msgstr "Űrlap adószámlához"
-
-#, fuzzy
-msgctxt "field:product.template-commission.agent,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:product.template-commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -323,9 +168,10 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Commission Plans"
 
+#, fuzzy
 msgctxt "help:commission.plan,commission_method:"
-msgid "When the commission is due"
-msgstr ""
+msgid "When the commission is due."
+msgstr "Create Commission Invoices"
 
 msgctxt "help:commission.plan.line,formula:"
 msgid ""

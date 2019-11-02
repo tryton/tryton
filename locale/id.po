@@ -24,19 +24,19 @@ msgstr ""
 
 msgctxt "field:commission,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 msgctxt "field:commission,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata uang"
 
 msgctxt "field:commission,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
@@ -44,11 +44,11 @@ msgstr ""
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:commission,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:commission,type_:"
 msgid "Type"
@@ -56,15 +56,15 @@ msgstr ""
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata uang"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:commission.agent,pending_amount:"
 msgid "Pending Amount"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
-msgstr ""
+msgstr "Kepada"
 
 msgctxt "field:commission.create_invoice.ask,type_:"
 msgid "Type"
@@ -100,15 +100,15 @@ msgstr ""
 
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:commission.plan,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
@@ -120,7 +120,7 @@ msgstr ""
 
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -155,8 +155,6 @@ msgid ""
 "Python expression that will be evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
-"Expresión de python que se evaluará con:\n"
-"- amount: El valor original."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
@@ -224,7 +222,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:commission_invoice_button"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
 msgctxt "model:ir.ui.menu,name:menu_agent_form"
 msgid "Agents"
@@ -244,7 +242,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr ""
+msgstr "Konfigurasi"
 
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
 msgid "Commission Plans"
@@ -328,8 +326,8 @@ msgstr ""
 
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"

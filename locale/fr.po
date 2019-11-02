@@ -26,14 +26,6 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr "Montant"
 
-msgctxt "field:commission,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:commission,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -41,10 +33,6 @@ msgstr "Devise"
 msgctxt "field:commission,date:"
 msgid "Date"
 msgstr "Date"
-
-msgctxt "field:commission,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -62,41 +50,17 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr "Produit"
 
-msgctxt "field:commission,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:commission,type_:"
 msgid "Type"
 msgstr "Type"
-
-msgctxt "field:commission,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:commission,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
 msgstr "Devise"
-
-msgctxt "field:commission.agent,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
@@ -110,29 +74,13 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plan"
 
-msgctxt "field:commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Type"
 
-msgctxt "field:commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr "De"
-
-msgctxt "field:commission.create_invoice.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
@@ -150,18 +98,6 @@ msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
 msgstr "Produit de commission"
 
-msgctxt "field:commission.plan,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:commission.plan,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:commission.plan,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
 msgstr "Lignes"
@@ -170,37 +106,13 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:commission.plan,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:commission.plan,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:commission.plan,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
 msgstr "Catégorie"
 
-msgctxt "field:commission.plan.line,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:commission.plan.line,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
 msgstr "Formule"
-
-msgctxt "field:commission.plan.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
@@ -209,22 +121,6 @@ msgstr "Plan"
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Produit"
-
-msgctxt "field:commission.plan.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:commission.plan.line,sequence:"
-msgid "Sequence"
-msgstr "Séquence"
-
-msgctxt "field:commission.plan.line,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:commission.plan.line,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -238,33 +134,9 @@ msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
 msgstr "Agent"
 
-msgctxt "field:product.template-commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:product.template-commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:product.template-commission.agent,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
 msgstr "Modèle"
-
-msgctxt "field:product.template-commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:product.template-commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -275,8 +147,8 @@ msgid "Commission Agent"
 msgstr "Agent de commission"
 
 msgctxt "help:commission.plan,commission_method:"
-msgid "When the commission is due"
-msgstr "Quand la commission est dûe"
+msgid "When the commission is due."
+msgstr "Quand la commission est due."
 
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
@@ -465,35 +337,3 @@ msgstr "OK"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Annuler"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Facturer"
-
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr "Agent"
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr "Agents"
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr "Créer les factures de commission"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr "Ligne de plan de commission"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr "Lignes de plan de commission"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr "Plan de commission"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
-msgstr "Plans de commission"

@@ -26,14 +26,6 @@ msgctxt "field:commission,amount:"
 msgid "Amount"
 msgstr "Montante"
 
-msgctxt "field:commission,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:commission,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:commission,currency:"
 msgid "Currency"
 msgstr "Moeda"
@@ -41,10 +33,6 @@ msgstr "Moeda"
 msgctxt "field:commission,date:"
 msgid "Date"
 msgstr "Data"
-
-msgctxt "field:commission,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission,invoice_line:"
 msgid "Invoice Line"
@@ -62,41 +50,17 @@ msgctxt "field:commission,product:"
 msgid "Product"
 msgstr "Produto"
 
-msgctxt "field:commission,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:commission,type_:"
 msgid "Type"
 msgstr "Tipo"
-
-msgctxt "field:commission,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:commission,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:commission.agent,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:commission.agent,currency:"
 msgid "Currency"
 msgstr "Moeda"
-
-msgctxt "field:commission.agent,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.agent,party:"
 msgid "Party"
@@ -110,29 +74,13 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plano"
 
-msgctxt "field:commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
 msgstr "De"
-
-msgctxt "field:commission.create_invoice.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.create_invoice.ask,to:"
 msgid "To"
@@ -150,18 +98,6 @@ msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
 msgstr "Produto de Comissão"
 
-msgctxt "field:commission.plan,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:commission.plan,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:commission.plan,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:commission.plan,lines:"
 msgid "Lines"
 msgstr "Linhas"
@@ -170,37 +106,13 @@ msgctxt "field:commission.plan,name:"
 msgid "Name"
 msgstr "Nome"
 
-msgctxt "field:commission.plan,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:commission.plan,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:commission.plan,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
 msgctxt "field:commission.plan.line,category:"
 msgid "Category"
 msgstr "Categoria"
 
-msgctxt "field:commission.plan.line,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:commission.plan.line,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:commission.plan.line,formula:"
 msgid "Formula"
 msgstr "Fórmula"
-
-msgctxt "field:commission.plan.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:commission.plan.line,plan:"
 msgid "Plan"
@@ -209,22 +121,6 @@ msgstr "Plano"
 msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Produto"
-
-msgctxt "field:commission.plan.line,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:commission.plan.line,sequence:"
-msgid "Sequence"
-msgstr "Sequência"
-
-msgctxt "field:commission.plan.line,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:commission.plan.line,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
@@ -238,33 +134,9 @@ msgctxt "field:product.template-commission.agent,agent:"
 msgid "Agent"
 msgstr "Agente"
 
-msgctxt "field:product.template-commission.agent,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:product.template-commission.agent,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:product.template-commission.agent,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-commission.agent,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
 msgstr "Modelo"
-
-msgctxt "field:product.template-commission.agent,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:product.template-commission.agent,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -274,8 +146,9 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Agente da Comissão"
 
+#, fuzzy
 msgctxt "help:commission.plan,commission_method:"
-msgid "When the commission is due"
+msgid "When the commission is due."
 msgstr "Quando a comissão é devida"
 
 msgctxt "help:commission.plan.line,formula:"
@@ -481,35 +354,3 @@ msgstr "OK"
 msgctxt "wizard_button:commission.create_invoice,ask,end:"
 msgid "Cancel"
 msgstr "Cancelar"
-
-msgctxt "view:commission:"
-msgid "Invoice"
-msgstr "Fatura"
-
-msgctxt "view:commission.agent:"
-msgid "Agent"
-msgstr "Agente"
-
-msgctxt "view:commission.agent:"
-msgid "Agents"
-msgstr "Agentes"
-
-msgctxt "view:commission.create_invoice.ask:"
-msgid "Create Commission Invoice"
-msgstr "Criar Fatura de Comissão"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Line"
-msgstr "Linha de Plano de Comissão"
-
-msgctxt "view:commission.plan.line:"
-msgid "Commission Plan Lines"
-msgstr "Linhas de Plano de Comissão"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plan"
-msgstr "Plano de Comissão"
-
-msgctxt "view:commission.plan:"
-msgid "Commission Plans"
-msgstr "Planos de Comissão"
