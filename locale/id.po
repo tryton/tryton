@@ -4,88 +4,79 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
-msgstr "3-字母代码"
+msgstr "Kode 3 huruf"
 
-#, fuzzy
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr "数字代码"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
-msgstr "行政区划"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
-#, fuzzy
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:country.zip,city:"
 msgid "City"
-msgstr "城市"
+msgstr "Kota"
 
-#, fuzzy
 msgctxt "field:country.zip,country:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "Negara"
 
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
-msgstr "行政区划"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
-msgstr "Zip"
+msgstr ""
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
-msgstr "三字符 ISO 国家代码."
+msgstr ""
 
 msgctxt "help:country.country,code:"
 msgid "The 2 chars ISO country code."
-msgstr "两字符 ISO 国家代码."
+msgstr ""
 
 msgctxt "help:country.country,code_numeric:"
 msgid "The ISO numeric country code."
-msgstr "ISO 国家数字代码."
+msgstr ""
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
-msgstr "国家的主要标识符."
+msgstr ""
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
-msgstr "ISO 行政区划代码."
+msgstr ""
 
 msgctxt "help:country.subdivision,country:"
 msgid "The country where this subdivision is."
@@ -93,7 +84,7 @@ msgstr ""
 
 msgctxt "help:country.subdivision,name:"
 msgid "The main identifier of the subdivision."
-msgstr "此行政区划的主标识符"
+msgstr ""
 
 msgctxt "help:country.subdivision,parent:"
 msgid "Add subdivision below the parent."
@@ -101,7 +92,7 @@ msgstr ""
 
 msgctxt "help:country.zip,city:"
 msgid "The name of the city for the zip."
-msgstr "邮政编码所在城市的名称."
+msgstr ""
 
 msgctxt "help:country.zip,country:"
 msgid "The country where the zip is."
@@ -111,40 +102,37 @@ msgctxt "help:country.zip,subdivision:"
 msgid "The subdivision where the zip is."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "Negara"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
-msgstr "行政区划"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:country.zip,name:"
 msgid "Zip"
-msgstr "Zip"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_zip_form"
 msgid "Zip"
-msgstr "Zip"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
-msgstr "管理员"
+msgstr "Administrasi"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr ""
+msgstr "Wilayah Administratif"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
@@ -160,32 +148,31 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
-msgstr "北极地区"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
-msgstr "阿尔塔州"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Atoll"
-msgstr "环礁"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous City"
-msgstr "自治市"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Commune"
-msgstr "自治公社"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous District"
-msgstr "自治区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Province"
-msgstr "自治省"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous Region"
@@ -193,7 +180,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous communities"
-msgstr "自治县"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous community"
@@ -201,19 +188,19 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous island"
-msgstr "自治岛"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous monastic state"
-msgstr "自治的僧侣国家"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous municipality"
-msgstr "自治市"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous republic"
-msgstr "自治共和国"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Autonomous sector"
@@ -229,7 +216,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Borough"
-msgstr "自治市镇"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Canton"
@@ -257,7 +244,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City"
-msgstr "城市"
+msgstr "Kota"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City corporation"
@@ -265,7 +252,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "City with county rights"
-msgstr "县级市"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Commune"
@@ -273,34 +260,31 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Constitutional province"
-msgstr "宪法管辖区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
-msgstr "议会区"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "考文垂郡"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr "模块依赖关系"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
-msgstr "开发区"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "District"
@@ -324,7 +308,7 @@ msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Emirate"
-msgstr "酋长国"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Entity"
@@ -438,10 +422,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr "巴黎省"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -463,10 +446,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr "罗勇府"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
@@ -516,10 +498,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
-msgstr "状态"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Territorial unit"
