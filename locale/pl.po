@@ -19,61 +19,9 @@ msgctxt ""
 msgid "Cost Price Counterpart Account"
 msgstr ""
 
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:account.configuration.stock_journal,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:account.configuration.stock_journal,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:account.configuration.stock_journal,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.stock_journal,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
 msgstr ""
-
-msgctxt "field:account.configuration.stock_journal,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:account.configuration.stock_journal,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
@@ -119,51 +67,48 @@ msgctxt "field:product.category.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr ""
 
-msgctxt "field:product.update_cost_price.ask,cost_price:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,cost_price:"
 msgid "Cost Price"
 msgstr "Cena kosztu"
 
-msgctxt "field:product.update_cost_price.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.ask,product:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,product:"
 msgid "Variant"
 msgstr "Wariant"
 
-msgctxt "field:product.update_cost_price.ask,template:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,template:"
 msgid "Product"
 msgstr "Produkt"
 
-msgctxt "field:product.update_cost_price.show_move,amount:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,amount:"
 msgid "Amount"
 msgstr "Ilość"
 
-msgctxt "field:product.update_cost_price.show_move,counterpart:"
+msgctxt "field:product.modify_cost_price.show_move,counterpart:"
 msgid "Counterpart"
 msgstr ""
 
-msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+msgctxt "field:product.modify_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-msgctxt "field:product.update_cost_price.show_move,description:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,description:"
 msgid "Description"
 msgstr "Opis"
 
-msgctxt "field:product.update_cost_price.show_move,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.show_move,journal:"
+msgctxt "field:product.modify_cost_price.show_move,journal:"
 msgid "Journal"
 msgstr ""
 
-msgctxt "field:product.update_cost_price.show_move,price_difference:"
+msgctxt "field:product.modify_cost_price.show_move,price_difference:"
 msgid "Price Difference"
 msgstr ""
 
-msgctxt "field:product.update_cost_price.show_move,stock_account:"
+msgctxt "field:product.modify_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr ""
 
@@ -176,29 +121,29 @@ msgid "Account Configuration Stock Journal"
 msgstr ""
 
 #, fuzzy
-msgctxt "model:ir.action,name:wizard_update_cost_price"
-msgid "Update Cost Price"
-msgstr "Update Cost Price"
+msgctxt "model:ir.action,name:wizard_modify_cost_price"
+msgid "Modify Cost Price"
+msgstr "Cena kosztu"
+
+msgctxt "model:ir.message,text:msg_modify_cost_price_same_account"
+msgid ""
+"To modify the cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_change_cost_price"
 msgid ""
 "You cannot change the cost price of a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
-msgid ""
-"To update cost price, you must change the counterpart account "
-"\"%(account)s\"."
+"You must use the \"Modify Cost Price\" wizard."
 msgstr ""
 
 #, fuzzy
-msgctxt "model:product.update_cost_price.ask,name:"
-msgid "Update Cost Price Ask"
+msgctxt "model:product.modify_cost_price.ask,name:"
+msgid "Modify Cost Price Ask"
 msgstr "Update Cost Price"
 
-msgctxt "model:product.update_cost_price.show_move,name:"
-msgid "Update Cost Price Show Move"
+msgctxt "model:product.modify_cost_price.show_move,name:"
+msgid "Modify Cost Price Show Move"
 msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
@@ -217,18 +162,22 @@ msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr ""
 
-msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,ask_price,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
-msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,ask_price,should_show_move:"
 msgid "OK"
 msgstr "OK"
 
-msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,show_move,create_move:"
 msgid "OK"
 msgstr "OK"
 
-msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,show_move,end:"
 msgid "Cancel"
 msgstr "Anuluj"

@@ -19,61 +19,9 @@ msgctxt ""
 msgid "Cost Price Counterpart Account"
 msgstr "Kuluhinna vastapoole konto"
 
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:account.configuration.stock_journal,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.configuration.stock_journal,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.configuration.stock_journal,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.stock_journal,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
 msgstr "Lao andmik"
-
-msgctxt "field:account.configuration.stock_journal,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.configuration.stock_journal,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:account.fiscalyear,account_stock_method:"
 msgid "Account Stock Method"
@@ -119,51 +67,53 @@ msgctxt "field:product.category.account,account_stock_supplier:"
 msgid "Account Stock Supplier"
 msgstr "Lao konto hankija"
 
-msgctxt "field:product.update_cost_price.ask,cost_price:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,cost_price:"
 msgid "Cost Price"
 msgstr "Kuluhind"
 
-msgctxt "field:product.update_cost_price.ask,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.ask,product:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,product:"
 msgid "Variant"
 msgstr "Variant"
 
-msgctxt "field:product.update_cost_price.ask,template:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.ask,template:"
 msgid "Product"
 msgstr "Toode"
 
-msgctxt "field:product.update_cost_price.show_move,amount:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,amount:"
 msgid "Amount"
 msgstr "Väärtus"
 
-msgctxt "field:product.update_cost_price.show_move,counterpart:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,counterpart:"
 msgid "Counterpart"
 msgstr "Vastapool"
 
-msgctxt "field:product.update_cost_price.show_move,currency_digits:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtus"
 
-msgctxt "field:product.update_cost_price.show_move,description:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,description:"
 msgid "Description"
 msgstr "Kirjeldus"
 
-msgctxt "field:product.update_cost_price.show_move,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.update_cost_price.show_move,journal:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,journal:"
 msgid "Journal"
 msgstr "Andmik"
 
-msgctxt "field:product.update_cost_price.show_move,price_difference:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,price_difference:"
 msgid "Price Difference"
 msgstr "Hinnaerinevus"
 
-msgctxt "field:product.update_cost_price.show_move,stock_account:"
+#, fuzzy
+msgctxt "field:product.modify_cost_price.show_move,stock_account:"
 msgid "Stock Account"
 msgstr "Lao konto"
 
@@ -175,28 +125,31 @@ msgctxt "model:account.configuration.stock_journal,name:"
 msgid "Account Configuration Stock Journal"
 msgstr ""
 
-msgctxt "model:ir.action,name:wizard_update_cost_price"
-msgid "Update Cost Price"
-msgstr "Uuenda kulu hind"
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_modify_cost_price"
+msgid "Modify Cost Price"
+msgstr "Kuluhind"
+
+msgctxt "model:ir.message,text:msg_modify_cost_price_same_account"
+msgid ""
+"To modify the cost price, you must change the counterpart account "
+"\"%(account)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_change_cost_price"
 msgid ""
 "You cannot change the cost price of a product which is associated to stock moves.\n"
-"You must use the \"Update Cost Price\" wizard."
+"You must use the \"Modify Cost Price\" wizard."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_update_cost_price_same_account"
-msgid ""
-"To update cost price, you must change the counterpart account "
-"\"%(account)s\"."
-msgstr ""
-
-msgctxt "model:product.update_cost_price.ask,name:"
-msgid "Update Cost Price Ask"
+#, fuzzy
+msgctxt "model:product.modify_cost_price.ask,name:"
+msgid "Modify Cost Price Ask"
 msgstr "Uuenda kulu hind - küsi"
 
-msgctxt "model:product.update_cost_price.show_move,name:"
-msgid "Update Cost Price Show Move"
+#, fuzzy
+msgctxt "model:product.modify_cost_price.show_move,name:"
+msgid "Modify Cost Price Show Move"
 msgstr "Uuenda kulu hind - kanne"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
@@ -215,18 +168,22 @@ msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Lao konto"
 
-msgctxt "wizard_button:product.update_cost_price,ask_price,end:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,ask_price,end:"
 msgid "Cancel"
 msgstr "Tühista"
 
-msgctxt "wizard_button:product.update_cost_price,ask_price,should_show_move:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,ask_price,should_show_move:"
 msgid "OK"
 msgstr "OK"
 
-msgctxt "wizard_button:product.update_cost_price,show_move,create_move:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,show_move,create_move:"
 msgid "OK"
 msgstr "OK"
 
-msgctxt "wizard_button:product.update_cost_price,show_move,end:"
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,show_move,end:"
 msgid "Cancel"
 msgstr "Tühista"
