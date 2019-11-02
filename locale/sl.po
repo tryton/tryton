@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice.correct.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.correct.start,invoice:"
 msgid "Invoice"
 msgstr "Račun"
@@ -38,7 +34,3 @@ msgstr "Popravi"
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
 msgstr "Prekliči"
-
-msgctxt "view:account.invoice:"
-msgid "Correct"
-msgstr "Popravek"
