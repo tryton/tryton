@@ -26,37 +26,13 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Versanddienstleister"
 
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr "Preis"
 
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Gewicht"
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
@@ -89,11 +65,3 @@ msgstr "Preisliste Versandgewicht"
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
 msgstr "Gewicht"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price List"
-msgstr "Preisliste Versandgewicht"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price Lists"
-msgstr "Preislisten Versandgewicht"

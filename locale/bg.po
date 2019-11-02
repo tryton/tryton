@@ -26,37 +26,13 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Превозвач"
 
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr "Цена"
 
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Тегло"
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
@@ -90,11 +66,3 @@ msgstr "Ценови лист на карго тегло"
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
 msgstr "Тегло"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price List"
-msgstr "Ценови лист на карго тегло"
-
-msgctxt "view:carrier.weight_price_list:"
-msgid "Carrier Weight Price Lists"
-msgstr "Ценови листи на карго тегло"

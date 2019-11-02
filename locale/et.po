@@ -26,37 +26,13 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "Vedaja"
 
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr "Hind"
 
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Kaal"
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."

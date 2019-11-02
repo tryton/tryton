@@ -8,59 +8,35 @@ msgstr "Valiuta"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr ""
+msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
-msgstr ""
+msgstr "Kainoraštis"
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
-msgstr ""
+msgstr "Svorio mato vienetas"
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr ""
+msgstr "Svorio mato vieneto skaitmenų po kablelio skaičius"
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr ""
+msgstr "Vežėjas"
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Kaina"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Svoris"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
-msgstr "Kainos valiuta"
+msgstr "Kainos valiuta."
 
 msgctxt "help:carrier,weight_price_list:"
 msgid "Add price to the carrier service."
@@ -84,8 +60,8 @@ msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr ""
+msgstr "Vežėjo kainoraštis pagal svorį"
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
-msgstr ""
+msgstr "Svoris"

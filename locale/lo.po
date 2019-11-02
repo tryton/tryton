@@ -26,37 +26,13 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr "ຜູ້ໃຫ້ບໍລິການ"
 
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "ວັນທີສ້າງ"
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "ຜູ້ສ້າງ"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr "ລາຄາ"
 
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "ນໍ້າໜັກ"
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "ຜູ້ບັນທຶກ"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."

@@ -4,35 +4,35 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:carrier,weight_currency:"
 msgid "Currency"
-msgstr "Moeda"
+msgstr "Mata uang"
 
 msgctxt "field:carrier,weight_currency_digits:"
 msgid "Weight Currency Digits"
-msgstr "Decimais da moeda do peso"
+msgstr ""
 
 msgctxt "field:carrier,weight_price_list:"
 msgid "Price List"
-msgstr "Lista de preços"
+msgstr ""
 
 msgctxt "field:carrier,weight_uom:"
 msgid "Weight Uom"
-msgstr "UDM do peso"
+msgstr ""
 
 msgctxt "field:carrier,weight_uom_digits:"
 msgid "Weight Uom Digits"
-msgstr "Dígitos decimais da UDM do peso"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
-msgstr "Transportadora"
+msgstr ""
 
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr "Preço"
+msgstr "Harga"
 
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."
@@ -60,8 +60,8 @@ msgstr ""
 
 msgctxt "model:carrier.weight_price_list,name:"
 msgid "Carrier Weight Price List"
-msgstr "Lista de preço por peso da transportadora"
+msgstr ""
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Weight"
-msgstr "Peso"
+msgstr ""

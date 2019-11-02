@@ -27,43 +27,14 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 #, fuzzy
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
 msgstr "Ширина"
-
-#, fuzzy
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "help:carrier,weight_currency:"
 msgid "The currency of the price."

@@ -26,36 +26,12 @@ msgctxt "field:carrier.weight_price_list,carrier:"
 msgid "Carrier"
 msgstr ""
 
-msgctxt "field:carrier.weight_price_list,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,create_uid:"
-msgid "Create User"
-msgstr "Creado por usuario"
-
-msgctxt "field:carrier.weight_price_list,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:carrier.weight_price_list,price:"
 msgid "Price"
 msgstr ""
 
-msgctxt "field:carrier.weight_price_list,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:carrier.weight_price_list,weight:"
 msgid "Weight"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:carrier.weight_price_list,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:carrier,weight_currency:"
