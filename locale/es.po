@@ -10,6 +10,10 @@ msgctxt "field:product.template,product_customers:"
 msgid "Customers"
 msgstr "Clientes"
 
+msgctxt "field:sale.amendment.line,product_customer:"
+msgid "Customer's Product"
+msgstr "Producto del cliente"
+
 msgctxt "field:sale.line,product_customer:"
 msgid "Customer's Product"
 msgstr "Producto del cliente"
@@ -17,18 +21,6 @@ msgstr "Producto del cliente"
 msgctxt "field:sale.product_customer,code:"
 msgid "Code"
 msgstr "Código"
-
-msgctxt "field:sale.product_customer,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.product_customer,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.product_customer,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.product_customer,name:"
 msgid "Name"
@@ -42,25 +34,9 @@ msgctxt "field:sale.product_customer,product:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "field:sale.product_customer,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.product_customer,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
 msgctxt "field:sale.product_customer,template:"
 msgid "Product"
 msgstr "Producto"
-
-msgctxt "field:sale.product_customer,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.product_customer,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "model:ir.action,name:act_product_customer_form"
 msgid "Product Customers"
