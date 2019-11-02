@@ -38,22 +38,6 @@ msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
 msgstr "Jm sprzedaży"
 
-msgctxt "field:sale.configuration,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.configuration,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
 msgstr ""
@@ -70,30 +54,6 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Metoda wysyłki sprzedaży"
 
-msgctxt "field:sale.configuration,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.configuration,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.configuration.sale_method,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.configuration.sale_method,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.configuration.sale_method,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
 msgstr ""
@@ -102,53 +62,17 @@ msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr "Metoda wysyłki sprzedaży"
 
-msgctxt "field:sale.configuration.sale_method,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.configuration.sale_method,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
 msgstr "Firma"
-
-msgctxt "field:sale.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.configuration.sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
 msgstr "Sekwencja sprzedaży"
 
-msgctxt "field:sale.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr ""
-
-msgctxt "field:sale.handle.invoice.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -158,10 +82,6 @@ msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr ""
 
-msgctxt "field:sale.handle.shipment.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr ""
@@ -170,14 +90,6 @@ msgctxt "field:sale.line,amount:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "field:sale.line,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.line,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Opis"
@@ -185,10 +97,6 @@ msgstr "Opis"
 msgctxt "field:sale.line,from_location:"
 msgid "From Location"
 msgstr "Z lokalizacji"
-
-msgctxt "field:sale.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -230,10 +138,6 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr "Ilość"
 
-msgctxt "field:sale.line,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
 msgstr "Sprzedaż"
@@ -241,10 +145,6 @@ msgstr "Sprzedaż"
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
 msgstr "Stan sprzedaży"
-
-msgctxt "field:sale.line,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
@@ -278,109 +178,29 @@ msgctxt "field:sale.line,warehouse:"
 msgid "Warehouse"
 msgstr "Magazyn"
 
-msgctxt "field:sale.line,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.line-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.line-account.tax,line:"
 msgid "Sale Line"
 msgstr "Wiersz sprzedaży"
-
-msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
 msgstr "Podatek"
 
-msgctxt "field:sale.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.line-ignored-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.line-ignored-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.line-ignored-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.line-ignored-stock.move,move:"
 msgid "Move"
 msgstr "Ruch"
-
-msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Wiersz sprzedaży"
 
-msgctxt "field:sale.line-ignored-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.line-ignored-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.line-recreated-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.line-recreated-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.line-recreated-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.line-recreated-stock.move,move:"
 msgid "Move"
 msgstr "Ruch"
 
-msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr "Wiersz sprzedaży"
-
-msgctxt "field:sale.line-recreated-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.line-recreated-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:sale.reporting.category,category:"
 msgid "Category"
@@ -392,34 +212,14 @@ msgid "Company"
 msgstr "Firma"
 
 #, fuzzy
-msgctxt "field:sale.reporting.category,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
 
 #, fuzzy
-msgctxt "field:sale.reporting.category,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.category,revenue:"
 msgid "Revenue"
@@ -433,16 +233,6 @@ msgctxt "field:sale.reporting.category,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:sale.reporting.category.time_series,category:"
 msgid "Category"
 msgstr ""
@@ -451,16 +241,6 @@ msgstr ""
 msgctxt "field:sale.reporting.category.time_series,company:"
 msgid "Company"
 msgstr "Firma"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.reporting.category.time_series,currency_digits:"
@@ -473,19 +253,9 @@ msgid "Date"
 msgstr "Data:"
 
 #, fuzzy
-msgctxt "field:sale.reporting.category.time_series,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category.time_series,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.category.time_series,revenue:"
 msgid "Revenue"
@@ -495,39 +265,14 @@ msgctxt "field:sale.reporting.category.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:sale.reporting.category.tree,children:"
 msgid "Children"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.category.tree,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category.tree,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.reporting.category.tree,name:"
 msgid "Name"
@@ -537,24 +282,9 @@ msgctxt "field:sale.reporting.category.tree,parent:"
 msgid "Parent"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.reporting.category.tree,revenue:"
 msgid "Revenue"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "field:sale.reporting.context,company:"
@@ -564,11 +294,6 @@ msgstr "Firma"
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
@@ -593,34 +318,14 @@ msgid "Country"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
 
 #, fuzzy
-msgctxt "field:sale.reporting.country,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.country,revenue:"
 msgid "Revenue"
@@ -635,16 +340,6 @@ msgid "Time Series"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision,company:"
 msgid "Company"
 msgstr "Firma"
@@ -654,34 +349,14 @@ msgid "Country"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.country.subdivision,revenue:"
 msgid "Revenue"
@@ -700,16 +375,6 @@ msgid "Time Series"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision.time_series,company:"
 msgid "Company"
 msgstr "Firma"
@@ -717,16 +382,6 @@ msgstr "Firma"
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt ""
@@ -740,19 +395,9 @@ msgid "Date"
 msgstr "Data:"
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision.time_series,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,revenue:"
 msgid "Revenue"
@@ -767,16 +412,6 @@ msgid "Subdivision"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.time_series,company:"
 msgid "Company"
 msgstr "Firma"
@@ -784,16 +419,6 @@ msgstr "Firma"
 msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.reporting.country.time_series,currency_digits:"
@@ -806,19 +431,9 @@ msgid "Date"
 msgstr "Data:"
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.time_series,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.time_series,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.country.time_series,revenue:"
 msgid "Revenue"
@@ -829,29 +444,9 @@ msgid "Revenue Trend"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.time_series,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer,company:"
 msgid "Company"
 msgstr "Firma"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer,currency_digits:"
@@ -864,19 +459,9 @@ msgid "Customer"
 msgstr "Odbiorcy"
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.customer,revenue:"
 msgid "Revenue"
@@ -891,29 +476,9 @@ msgid "Time Series"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,company:"
 msgid "Company"
 msgstr "Firma"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,currency_digits:"
@@ -931,19 +496,9 @@ msgid "Date"
 msgstr "Data:"
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,number:"
 msgid "#"
 msgstr "#"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.customer.time_series,revenue:"
 msgid "Revenue"
@@ -954,39 +509,14 @@ msgid "Revenue Trend"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.product,company:"
 msgid "Company"
 msgstr "Firma"
 
 #, fuzzy
-msgctxt "field:sale.reporting.product,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.product,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.reporting.product,number:"
@@ -997,11 +527,6 @@ msgstr "#"
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Produkt"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.product,revenue:"
 msgid "Revenue"
@@ -1016,29 +541,9 @@ msgid "Time Series"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.product,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-#, fuzzy
 msgctxt "field:sale.reporting.product.time_series,company:"
 msgid "Company"
 msgstr "Firma"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.reporting.product.time_series,currency_digits:"
@@ -1051,11 +556,6 @@ msgid "Date"
 msgstr "Data:"
 
 #, fuzzy
-msgctxt "field:sale.reporting.product.time_series,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.reporting.product.time_series,number:"
 msgid "#"
 msgstr "#"
@@ -1065,11 +565,6 @@ msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Produkt"
 
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.reporting.product.time_series,revenue:"
 msgid "Revenue"
 msgstr ""
@@ -1077,16 +572,6 @@ msgstr ""
 msgctxt "field:sale.reporting.product.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:sale.reporting.region,children:"
 msgid "Children"
@@ -1098,24 +583,9 @@ msgid "Company"
 msgstr "Firma"
 
 #, fuzzy
-msgctxt "field:sale.reporting.region,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-#, fuzzy
 msgctxt "field:sale.reporting.region,currency_digits:"
 msgid "Currency Digits"
 msgstr "Cyfry waluty"
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.reporting.region,number:"
@@ -1125,11 +595,6 @@ msgstr "#"
 msgctxt "field:sale.reporting.region,parent:"
 msgid "Parent"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.reporting.region,region:"
 msgid "Region"
@@ -1143,20 +608,6 @@ msgctxt "field:sale.reporting.region,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.region,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.return_sale.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Komentarz"
@@ -1164,14 +615,6 @@ msgstr "Komentarz"
 msgctxt "field:sale.sale,company:"
 msgid "Company"
 msgstr "Firma"
-
-msgctxt "field:sale.sale,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.sale,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
@@ -1184,10 +627,6 @@ msgstr "Cyfry waluty"
 msgctxt "field:sale.sale,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:sale.sale,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.sale,invoice_address:"
 msgid "Invoice Address"
@@ -1240,10 +679,6 @@ msgstr "Język strony"
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
 msgstr "Termin płatności"
-
-msgctxt "field:sale.sale,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -1309,77 +744,21 @@ msgctxt "field:sale.sale,warehouse:"
 msgid "Warehouse"
 msgstr "Magazyn"
 
-msgctxt "field:sale.sale,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.sale,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.sale-ignored-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.sale-ignored-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.sale-ignored-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Faktura"
-
-msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
 msgid "Sale"
 msgstr "Sprzedaż"
 
-msgctxt "field:sale.sale-ignored-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.sale-ignored-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.sale-recreated-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.sale-recreated-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:sale.sale-recreated-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Faktura"
 
-msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
 msgstr "Sprzedaż"
-
-msgctxt "field:sale.sale-recreated-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.sale-recreated-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:stock.move,sale:"
 msgid "Sale"
@@ -2103,14 +1482,6 @@ msgctxt "view:sale.sale:"
 msgid "Sale"
 msgstr "Sprzedaż"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Anuluj"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr ""
-
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Anuluj"
@@ -2143,26 +1514,3 @@ msgstr "Anuluj"
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
 msgstr "Zwrot"
-
-msgctxt "view:sale.sale:"
-msgid "Cancel"
-msgstr "Anuluj"
-
-msgctxt "view:sale.sale:"
-msgid "Confirm"
-msgstr "Potwierdź"
-
-#, fuzzy
-msgctxt "view:sale.sale:"
-msgid "Draft"
-msgstr "Draft"
-
-#, fuzzy
-msgctxt "view:sale.sale:"
-msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
-
-#, fuzzy
-msgctxt "view:sale.sale:"
-msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"

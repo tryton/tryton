@@ -39,25 +39,6 @@ msgctxt "field:product.template,sale_uom:"
 msgid "Sale UOM"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.configuration,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.configuration,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.configuration,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:sale.configuration,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.configuration,sale_invoice_method:"
 msgid "Sale Invoice Method"
 msgstr ""
@@ -74,35 +55,6 @@ msgctxt "field:sale.configuration,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.configuration,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.configuration,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_method,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_method,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_method,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:sale.configuration.sale_method,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.configuration.sale_method,sale_invoice_method:"
 msgid "Sale Invoice Method"
 msgstr ""
@@ -111,61 +63,17 @@ msgctxt "field:sale.configuration.sale_method,sale_shipment_method:"
 msgid "Sale Shipment Method"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.configuration.sale_method,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_method,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.configuration.sequence,company:"
 msgid "Company"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sequence,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:sale.configuration.sequence,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.configuration.sequence,sale_sequence:"
 msgid "Sale Sequence"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.handle.invoice.exception.ask,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -174,11 +82,6 @@ msgstr ""
 msgctxt "field:sale.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.handle.shipment.exception.ask,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
@@ -189,16 +92,6 @@ msgid "Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.line,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.line,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "描述"
@@ -206,11 +99,6 @@ msgstr "描述"
 msgctxt "field:sale.line,from_location:"
 msgid "From Location"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.line,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -253,10 +141,6 @@ msgctxt "field:sale.line,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:sale.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.line,sale:"
 msgid "Sale"
@@ -265,11 +149,6 @@ msgstr "Sales"
 msgctxt "field:sale.line,sale_state:"
 msgid "Sale State"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.line,sequence:"
-msgid "Sequence"
-msgstr "序列"
 
 msgctxt "field:sale.line,shipping_date:"
 msgid "Shipping Date"
@@ -304,126 +183,29 @@ msgctxt "field:sale.line,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.line,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.line,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.line-account.tax,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:sale.line-account.tax,line:"
 msgid "Sale Line"
-msgstr ""
-
-msgctxt "field:sale.line-account.tax,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-account.tax,tax:"
 msgid "Tax"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.line-ignored-stock.move,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.line-ignored-stock.move,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.line-ignored-stock.move,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:sale.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
-
-msgctxt "field:sale.line-ignored-stock.move,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-ignored-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.line-ignored-stock.move,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.line-ignored-stock.move,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.line-recreated-stock.move,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.line-recreated-stock.move,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.line-recreated-stock.move,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:sale.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
-
-msgctxt "field:sale.line-recreated-stock.move,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.line-recreated-stock.move,sale_line:"
 msgid "Sale Line"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.line-recreated-stock.move,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.line-recreated-stock.move,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:sale.reporting.category,category:"
 msgid "Category"
@@ -433,33 +215,14 @@ msgctxt "field:sale.reporting.category,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.category,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.category,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.category,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.category,revenue:"
 msgid "Revenue"
@@ -473,16 +236,6 @@ msgctxt "field:sale.reporting.category,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.category.time_series,category:"
 msgid "Category"
 msgstr ""
@@ -490,16 +243,6 @@ msgstr ""
 msgctxt "field:sale.reporting.category.time_series,company:"
 msgid "Company"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.reporting.category.time_series,currency_digits:"
 msgid "Currency Digits"
@@ -510,18 +253,9 @@ msgid "Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.category.time_series,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.category.time_series,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.category.time_series,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.category.time_series,revenue:"
 msgid "Revenue"
@@ -531,38 +265,13 @@ msgctxt "field:sale.reporting.category.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.time_series,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.category.tree,children:"
 msgid "Children"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.category.tree,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,id:"
-msgid "ID"
-msgstr "编号"
 
 #, fuzzy
 msgctxt "field:sale.reporting.category.tree,name:"
@@ -573,23 +282,9 @@ msgctxt "field:sale.reporting.category.tree,parent:"
 msgid "Parent"
 msgstr ""
 
-msgctxt "field:sale.reporting.category.tree,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.reporting.category.tree,revenue:"
 msgid "Revenue"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.category.tree,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:sale.reporting.context,company:"
 msgid "Company"
@@ -598,11 +293,6 @@ msgstr ""
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.context,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
@@ -624,33 +314,14 @@ msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.country,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.country,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.country,revenue:"
 msgid "Revenue"
@@ -664,16 +335,6 @@ msgctxt "field:sale.reporting.country,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.country.subdivision,company:"
 msgid "Company"
 msgstr ""
@@ -682,33 +343,14 @@ msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.country.subdivision,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.country.subdivision,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.country.subdivision,revenue:"
 msgid "Revenue"
@@ -726,16 +368,6 @@ msgctxt "field:sale.reporting.country.subdivision,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,company:"
 msgid "Company"
 msgstr ""
@@ -743,16 +375,6 @@ msgstr ""
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt ""
 "field:sale.reporting.country.subdivision.time_series,currency_digits:"
@@ -764,18 +386,9 @@ msgid "Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.subdivision.time_series,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,revenue:"
 msgid "Revenue"
@@ -789,16 +402,6 @@ msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.subdivision.time_series,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.country.time_series,company:"
 msgid "Company"
 msgstr ""
@@ -806,16 +409,6 @@ msgstr ""
 msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.reporting.country.time_series,currency_digits:"
 msgid "Currency Digits"
@@ -826,18 +419,9 @@ msgid "Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.country.time_series,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.country.time_series,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.country.time_series,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.country.time_series,revenue:"
 msgid "Revenue"
@@ -847,29 +431,9 @@ msgctxt "field:sale.reporting.country.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.country.time_series,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.customer,company:"
 msgid "Company"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.reporting.customer,currency_digits:"
 msgid "Currency Digits"
@@ -880,18 +444,9 @@ msgid "Customer"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.customer,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.customer,revenue:"
 msgid "Revenue"
@@ -905,29 +460,9 @@ msgctxt "field:sale.reporting.customer,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.customer,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.customer.time_series,company:"
 msgid "Company"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.reporting.customer.time_series,currency_digits:"
 msgid "Currency Digits"
@@ -942,18 +477,9 @@ msgid "Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.customer.time_series,number:"
 msgid "#"
 msgstr "#"
-
-msgctxt "field:sale.reporting.customer.time_series,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.reporting.customer.time_series,revenue:"
 msgid "Revenue"
@@ -963,38 +489,13 @@ msgctxt "field:sale.reporting.customer.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.customer.time_series,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.product,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.product,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.product,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,id:"
-msgid "ID"
-msgstr "编号"
 
 #, fuzzy
 msgctxt "field:sale.reporting.product,number:"
@@ -1003,10 +504,6 @@ msgstr "#"
 
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
-msgstr ""
-
-msgctxt "field:sale.reporting.product,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.reporting.product,revenue:"
@@ -1021,29 +518,9 @@ msgctxt "field:sale.reporting.product,time_series:"
 msgid "Time Series"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.product,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.product.time_series,company:"
 msgid "Company"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.reporting.product.time_series,currency_digits:"
 msgid "Currency Digits"
@@ -1054,21 +531,12 @@ msgid "Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.reporting.product.time_series,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.reporting.product.time_series,number:"
 msgid "#"
 msgstr "#"
 
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
-msgstr ""
-
-msgctxt "field:sale.reporting.product.time_series,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.reporting.product.time_series,revenue:"
@@ -1079,16 +547,6 @@ msgctxt "field:sale.reporting.product.time_series,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.product.time_series,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.reporting.region,children:"
 msgid "Children"
 msgstr ""
@@ -1097,24 +555,9 @@ msgctxt "field:sale.reporting.region,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.region,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.reporting.region,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,id:"
-msgid "ID"
-msgstr "编号"
 
 #, fuzzy
 msgctxt "field:sale.reporting.region,number:"
@@ -1123,10 +566,6 @@ msgstr "#"
 
 msgctxt "field:sale.reporting.region,parent:"
 msgid "Parent"
-msgstr ""
-
-msgctxt "field:sale.reporting.region,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.reporting.region,region:"
@@ -1141,21 +580,6 @@ msgctxt "field:sale.reporting.region,revenue_trend:"
 msgid "Revenue Trend"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.reporting.region,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.reporting.region,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.return_sale.start,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr ""
@@ -1163,16 +587,6 @@ msgstr ""
 msgctxt "field:sale.sale,company:"
 msgid "Company"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.sale,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.sale,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
@@ -1186,11 +600,6 @@ msgstr ""
 msgctxt "field:sale.sale,description:"
 msgid "Description"
 msgstr "描述"
-
-#, fuzzy
-msgctxt "field:sale.sale,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.sale,invoice_address:"
 msgid "Invoice Address"
@@ -1243,10 +652,6 @@ msgstr ""
 
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
-msgstr ""
-
-msgctxt "field:sale.sale,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.sale,reference:"
@@ -1316,38 +721,9 @@ msgid "Warehouse"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.sale,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.sale,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.sale-ignored-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.sale-ignored-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.sale-ignored-account.invoice,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Invoices"
-
-msgctxt "field:sale.sale-ignored-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.sale-ignored-account.invoice,sale:"
@@ -1355,53 +731,14 @@ msgid "Sale"
 msgstr "Sales"
 
 #, fuzzy
-msgctxt "field:sale.sale-ignored-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.sale-ignored-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.sale-recreated-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.sale-recreated-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.sale-recreated-account.invoice,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Invoices"
-
-msgctxt "field:sale.sale-recreated-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:sale.sale-recreated-account.invoice,sale:"
 msgid "Sale"
 msgstr "Sales"
-
-#, fuzzy
-msgctxt "field:sale.sale-recreated-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.sale-recreated-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 #, fuzzy
 msgctxt "field:stock.move,sale:"
@@ -1711,7 +1048,6 @@ msgctxt "model:ir.sequence.type,name:sequence_type_sale"
 msgid "Sale"
 msgstr "Sale"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
 msgstr "设置"
@@ -2127,15 +1463,6 @@ msgid "Sale"
 msgstr "Sales"
 
 #, fuzzy
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "取消"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr ""
-
-#, fuzzy
 msgctxt "wizard_button:sale.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "取消"
@@ -2173,8 +1500,3 @@ msgstr "取消"
 msgctxt "wizard_button:sale.return_sale,start,return_:"
 msgid "Return"
 msgstr "Returns"
-
-#, fuzzy
-msgctxt "view:sale.sale:"
-msgid "Cancel"
-msgstr "取消"
