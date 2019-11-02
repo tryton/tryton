@@ -6,25 +6,9 @@ msgctxt "field:web.shortened_url,count:"
 msgid "Click Count"
 msgstr "Nombre de clics"
 
-msgctxt "field:web.shortened_url,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:web.shortened_url,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:web.shortened_url,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:web.shortened_url,method:"
 msgid "Method"
 msgstr "Mètode"
-
-msgctxt "field:web.shortened_url,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:web.shortened_url,record:"
 msgid "Record"
@@ -38,41 +22,9 @@ msgctxt "field:web.shortened_url,shortened_url:"
 msgid "Shortened URL"
 msgstr "URL escurçada"
 
-msgctxt "field:web.shortened_url,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:web.shortened_url,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:web.shortened_url.access,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:web.shortened_url.access,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:web.shortened_url.access,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:web.shortened_url.access,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:web.shortened_url.access,url:"
 msgid "URL"
 msgstr "URL"
-
-msgctxt "field:web.shortened_url.access,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:web.shortened_url.access,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "model:ir.action,name:act_shortened_url"
 msgid "Shortened URLs"
