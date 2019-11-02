@@ -10,21 +10,9 @@ msgctxt "field:account.fiscalyear.invoice_sequence,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:account.fiscalyear.invoice_sequence,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Poslovno leto"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -46,22 +34,6 @@ msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
 msgstr "Obdobje"
 
-msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
-msgctxt "field:account.fiscalyear.invoice_sequence,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:account.invoice,account:"
 msgid "Account"
 msgstr "Konto"
@@ -69,6 +41,11 @@ msgstr "Konto"
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "Datum knjiženja"
+
+#, fuzzy
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Cancel the invoice"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -94,14 +71,6 @@ msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
 msgstr "Družba"
 
-msgctxt "field:account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -117,10 +86,6 @@ msgstr "Decimalke"
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:account.invoice,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -186,10 +151,6 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "Plačilni rok"
 
-msgctxt "field:account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "Usklajeno"
@@ -202,6 +163,11 @@ msgstr "Postavke plačila"
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
 msgstr "Sklic"
+
+#, fuzzy
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "Zap.št."
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -235,26 +201,6 @@ msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "Neobdavčeno"
 
-msgctxt "field:account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:account.invoice-account.move.line,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice-account.move.line,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:account.invoice-account.move.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
 msgstr "Račun"
@@ -271,22 +217,6 @@ msgstr "Datum računa"
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Postavka plačila"
-
-msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.invoice-account.move.line,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice-account.move.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:account.invoice.credit.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
@@ -308,14 +238,6 @@ msgctxt "field:account.invoice.line,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -327,10 +249,6 @@ msgstr "Decimalke"
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
@@ -376,14 +294,6 @@ msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.invoice.line,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Davki"
@@ -404,45 +314,13 @@ msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "Cena"
 
-msgctxt "field:account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:account.invoice.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:account.invoice.line-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
 msgstr "Postavka računa"
 
-msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
 msgstr "Davek"
-
-msgctxt "field:account.invoice.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
@@ -475,10 +353,6 @@ msgstr "Valuta odpisa"
 msgctxt "field:account.invoice.pay.ask,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:account.invoice.pay.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -530,10 +404,6 @@ msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
 msgstr "Opis"
 
-msgctxt "field:account.invoice.pay.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
 msgstr ""
@@ -543,24 +413,9 @@ msgid "Payment Method"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment.method,active:"
-msgid "Active"
-msgstr "Aktivno"
-
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
 msgstr "Družba"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
@@ -569,11 +424,6 @@ msgstr ""
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment.method,journal:"
@@ -585,40 +435,9 @@ msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
 msgstr "Plačilni rok"
 
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:account.invoice.payment_term,active:"
-msgid "Active"
-msgstr "Aktivno"
-
-msgctxt "field:account.invoice.payment_term,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.payment_term,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:account.invoice.payment_term,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
@@ -628,29 +447,9 @@ msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
 msgstr "Plačilni rok"
 
-msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.invoice.payment_term,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.payment_term,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
 msgstr "Znesek"
-
-msgctxt "field:account.invoice.payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
@@ -664,10 +463,6 @@ msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
 msgstr "Delitelj"
 
-msgctxt "field:account.invoice.payment_term.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
 msgstr "Plačilni rok"
@@ -676,37 +471,13 @@ msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
 msgstr "Delež"
 
-msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
 msgstr "Obroki"
 
-msgctxt "field:account.invoice.payment_term.line,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
 msgstr "Tip"
-
-msgctxt "field:account.invoice.payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
 
 msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
@@ -715,10 +486,6 @@ msgstr "Dan v mesecu"
 msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
 msgstr "Število dni"
-
-msgctxt "field:account.invoice.payment_term.line.delta,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
@@ -732,14 +499,6 @@ msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr "Število mesecev"
 
-msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
 msgstr "Dan v tednu"
@@ -747,14 +506,6 @@ msgstr "Dan v tednu"
 msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
 msgstr "Število tednov"
-
-msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
@@ -771,10 +522,6 @@ msgstr "Decimalke"
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:account.invoice.payment_term.test,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
@@ -796,10 +543,6 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "field:account.invoice.payment_term.test.result,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "Konto"
@@ -812,21 +555,9 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "Osnova"
 
-msgctxt "field:account.invoice.tax,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:account.invoice.tax,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
 msgstr "Opis"
-
-msgctxt "field:account.invoice.tax,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
@@ -844,14 +575,6 @@ msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr "Ročno"
 
-msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:account.invoice.tax,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
 msgstr "Zap.št."
@@ -860,14 +583,6 @@ msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
 msgstr "Davek"
 
-msgctxt "field:account.invoice.tax,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:account.invoice.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:account.move.line,invoice_payment:"
 msgid "Invoice Payment"
 msgstr ""
@@ -875,6 +590,11 @@ msgstr ""
 msgctxt "field:account.move.line,invoice_payments:"
 msgid "Invoice Payments"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "Customer Invoices"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
@@ -897,53 +617,25 @@ msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Plačilni rok dobavitelja"
 
-msgctxt "field:party.party.payment_term,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:party.party.payment_term,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:party.party.payment_term,customer_payment_term:"
 msgid "Customer Payment Term"
 msgstr "Plačilni rok kupca"
-
-msgctxt "field:party.party.payment_term,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:party.party.payment_term,party:"
 msgid "Party"
 msgstr "Partner"
 
-msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr "Plačilni rok dobavitelja"
-
-msgctxt "field:party.party.payment_term,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:party.party.payment_term,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 #, fuzzy
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Če resnično, bo(do) trenutni račun(i) plačan(i)."
 
-msgctxt "help:account.invoice.payment.method,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:account.invoice.payment_term,active:"
-msgid "Uncheck to exclude from future use."
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
 msgstr ""
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
@@ -1107,9 +799,14 @@ msgctxt "model:ir.message,text:msg_invoice_credit_refund_not_posted"
 msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
-msgid "You cannot cancel customer invoice \"%(invoice)s\" because it is posted."
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
 msgstr ""
+"Davka pri računu \"%(invoice)s\" ni možno dodati, ker je bodisi knjižen ali "
+"plačan bodisi preklican."
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
 msgid "To delete invoice \"%(invoice)s\" you must cancel it."
@@ -1147,6 +844,13 @@ msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
 "\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
@@ -1549,6 +1253,11 @@ msgctxt "view:account.move.line:"
 msgid "Debit"
 msgstr "Debet"
 
+#, fuzzy
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "Račun"
+
 msgctxt "view:party.party:"
 msgid "Payment Terms"
 msgstr "Plačilni roki"
@@ -1580,82 +1289,3 @@ msgstr "Prekliči"
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
 msgstr "Zapri"
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using base tax code \"%(base_code)s\" from company "
-"\"%(base_code_company)s\"."
-msgstr ""
-"Računa \"%(invoice)s\" pri družbi \"%(invoice_company)s\" ni možno izdelati "
-"z uporabo šifre davčne osnove \"%(base_code)s\" iz družbe "
-"\"%(base_code_company)s\"."
-
-msgctxt "error:account.invoice.tax:"
-msgid ""
-"You can not create invoice \"%(invoice)s\" on company "
-"\"%(invoice_company)s\" using tax code \"%(tax_code)s\" from company "
-"\"%(tax_code_company)s\"."
-msgstr ""
-"Računa \"%(invoice)s\" pri družbi \"%(invoice_company)s\" ni možno izdelati "
-"z uporabo davčne šifre \"%(tax_code)s\" iz družbe \"%(tax_code_company)s\"."
-
-msgctxt "field:account.invoice.tax,base_code:"
-msgid "Base Code"
-msgstr "Šifra osnove"
-
-msgctxt "field:account.invoice.tax,base_sign:"
-msgid "Base Sign"
-msgstr "Predznak osnove"
-
-msgctxt "field:account.invoice.tax,tax_code:"
-msgid "Tax Code"
-msgstr "Davčna šifra"
-
-msgctxt "field:account.invoice.tax,tax_sign:"
-msgid "Tax Sign"
-msgstr "Predznak davka"
-
-msgctxt "view:account.invoice.tax:"
-msgid "Tax Code"
-msgstr "Davčna šifra"
-
-msgctxt "view:account.invoice:"
-msgid "Also known as Pro Forma"
-msgstr "Znan tudi kot predračun"
-
-msgctxt "view:account.invoice:"
-msgid "Are you sure to cancel the invoice?"
-msgstr "Ali res želite preklicati račun?"
-
-msgctxt "view:account.invoice:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "view:account.invoice:"
-msgid "Draft"
-msgstr "Priprava"
-
-msgctxt "view:account.invoice:"
-msgid "Pay"
-msgstr "Plačilo"
-
-msgctxt "view:account.invoice:"
-msgid "Post"
-msgstr "Vknjižba"
-
-msgctxt "view:account.invoice:"
-msgid "Tax Identifier"
-msgstr "Davčna identifikacija"
-
-msgctxt "view:account.invoice:"
-msgid "Validate"
-msgstr "Odobritev"
-
-msgctxt "wizard_button:account.invoice.print,warning,end:"
-msgid "Cancel"
-msgstr "Prekliči"
-
-msgctxt "wizard_button:account.invoice.print,warning,print_:"
-msgid "Print"
-msgstr "Natisni"

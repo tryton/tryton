@@ -10,25 +10,13 @@ msgctxt "field:account.fiscalyear.invoice_sequence,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:account.fiscalyear.invoice_sequence,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
-
-msgctxt "field:account.fiscalyear.invoice_sequence,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Finansiniai metai"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr ""
+msgstr "Tiekėjo kreditinių sąskaitų numeruotė"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
@@ -36,7 +24,7 @@ msgstr "Tiekėjo sąskaitų numeruotė"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr ""
+msgstr "Kreditinių sąskaitų pirkėjui numeruotė"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
@@ -44,43 +32,32 @@ msgstr "Sąskaitų pirkėjams numeruotė"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
-msgstr ""
-
-msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
-msgid "Sequence"
-msgstr ""
-
-msgctxt "field:account.fiscalyear.invoice_sequence,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.fiscalyear.invoice_sequence,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Periodas"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr ""
+msgstr "Koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
-msgstr ""
+msgstr "Apskaitos data"
+
+#, fuzzy
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Anuliuoti sąskaitą faktūrą"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
-msgstr ""
+msgstr "Mokėtina suma"
 
 msgctxt "field:account.invoice,amount_to_pay_today:"
 msgid "Amount to Pay Today"
-msgstr ""
+msgstr "Mokėtina šiandien suma"
 
 msgctxt "field:account.invoice,cancel_move:"
 msgid "Cancel Move"
-msgstr ""
+msgstr "Anuliuoti operaciją"
 
 msgctxt "field:account.invoice,comment:"
 msgid "Comment"
@@ -92,15 +69,7 @@ msgstr "Organizacija"
 
 msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
-msgstr "Organizacija"
-
-msgctxt "field:account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Organizacijos rekvizitai"
 
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
@@ -108,7 +77,7 @@ msgstr "Valiuta"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr "Valiutos data"
+msgstr "Valiutos kurso data"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
@@ -116,11 +85,7 @@ msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.invoice,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Aprašymas"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -144,27 +109,27 @@ msgstr "Sąskaitos faktūros ataskaitos formatas"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Žurnalas"
 
 msgctxt "field:account.invoice,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Eilutės"
 
 msgctxt "field:account.invoice,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr ""
+msgstr "Eilutės apmokėjimui"
 
 msgctxt "field:account.invoice,move:"
 msgid "Move"
-msgstr ""
+msgstr "Operacija"
 
 msgctxt "field:account.invoice,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numeris"
 
 msgctxt "field:account.invoice,origins:"
 msgid "Origins"
-msgstr ""
+msgstr "Šaltiniai"
 
 msgctxt "field:account.invoice,party:"
 msgid "Party"
@@ -180,36 +145,36 @@ msgstr "Kontrahento mokesčių mokėtojo identifikatorius"
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Mokėjimo eilutės"
 
-#, fuzzy
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
-msgstr "Payment Terms"
-
-msgctxt "field:account.invoice,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
-msgstr ""
+msgstr "Sudengta"
 
 msgctxt "field:account.invoice,reconciliation_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Mokėjimo eilutės"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Nuoroda"
+
+#, fuzzy
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "Numeruotė"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
-msgstr ""
+msgstr "Būsena"
 
 msgctxt "field:account.invoice,tax_amount:"
 msgid "Tax"
-msgstr ""
+msgstr "PVM"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
@@ -217,43 +182,23 @@ msgstr "Mokesčių mokėtojo identifikatorius"
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
-msgstr ""
+msgstr "Mokesčių eilutės"
 
 msgctxt "field:account.invoice,total_amount:"
 msgid "Total"
-msgstr ""
+msgstr "Viso su PVM"
 
 msgctxt "field:account.invoice,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:account.invoice,type_name:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
-msgstr ""
-
-msgctxt "field:account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice-account.move.line,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice-account.move.line,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:account.invoice-account.move.line,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Viso"
 
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -269,51 +214,27 @@ msgstr "Sąskaitos faktūros kontrahentas"
 
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
-msgstr ""
-
-msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice-account.move.line,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice-account.move.line,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice.credit.start,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Mokėjimo eilutė"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
-msgstr ""
+msgstr "Su grąžinimu"
 
 msgctxt "field:account.invoice.credit.start,with_refund_allowed:"
 msgid "With Refund Allowed"
-msgstr ""
+msgstr "Leistinas grąžinimas"
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr ""
+msgstr "Koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.line,company:"
 msgid "Company"
 msgstr "Organizacija"
-
-msgctxt "field:account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
 
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
@@ -325,11 +246,7 @@ msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Aprašymas"
 
 msgctxt "field:account.invoice.line,invoice:"
 msgid "Invoice"
@@ -353,7 +270,7 @@ msgstr "Pastaba"
 
 msgctxt "field:account.invoice.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Šaltinis"
 
 msgctxt "field:account.invoice.line,party:"
 msgid "Party"
@@ -365,91 +282,51 @@ msgstr "Kontrahento kalba"
 
 msgctxt "field:account.invoice.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prekė"
 
 msgctxt "field:account.invoice.line,product_uom_category:"
 msgid "Product Uom Category"
-msgstr ""
+msgstr "Prekės mato vieneto kategorija"
 
 msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
-msgstr ""
-
-msgctxt "field:account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.line,sequence:"
-msgid "Sequence"
-msgstr ""
+msgstr "Kiekis"
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
-msgstr ""
+msgstr "Mokesčiai"
 
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:account.invoice.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Mato vienetas"
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Mato vieneto skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
-
-msgctxt "field:account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:account.invoice.line-account.tax,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Kaina"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
 msgstr "Sąskaitos faktūros eilutė"
 
-msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
-msgstr ""
-
-msgctxt "field:account.invoice.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "PVM"
 
 msgctxt "field:account.invoice.pay.ask,amount:"
 msgid "Payment Amount"
-msgstr ""
+msgstr "Mokėjimo suma"
 
 msgctxt "field:account.invoice.pay.ask,amount_writeoff:"
 msgid "Write-Off Amount"
-msgstr ""
+msgstr "Nurašoma suma"
 
 msgctxt "field:account.invoice.pay.ask,company:"
 msgid "Company"
@@ -461,11 +338,11 @@ msgstr "Mokėjimo valiuta"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits:"
 msgid "Payment Currency Digits"
-msgstr "Mokėjimo valiutos skaitmenų skaičius"
+msgstr "Mokėjimo valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.pay.ask,currency_digits_writeoff:"
 msgid "Write-Off Currency Digits"
-msgstr "Nurašymo valiutos skaitmenų skaičius"
+msgstr "Nurašymo valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.pay.ask,currency_writeoff:"
 msgid "Write-Off Currency"
@@ -473,11 +350,7 @@ msgstr "Nurašymo valiuta"
 
 msgctxt "field:account.invoice.pay.ask,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.ask,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Data"
 
 msgctxt "field:account.invoice.pay.ask,invoice:"
 msgid "Invoice"
@@ -485,27 +358,27 @@ msgstr "Sąskaita faktūra"
 
 msgctxt "field:account.invoice.pay.ask,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Eilutės"
 
 msgctxt "field:account.invoice.pay.ask,lines_to_pay:"
 msgid "Lines to Pay"
-msgstr ""
+msgstr "Mokėtinos eilutės"
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Mokėjimo eilutės"
 
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:account.invoice.pay.ask,writeoff:"
 msgid "Write Off"
-msgstr ""
+msgstr "Nurašymas"
 
 msgctxt "field:account.invoice.pay.start,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.pay.start,company:"
 msgid "Company"
@@ -517,19 +390,15 @@ msgstr "Valiuta"
 
 msgctxt "field:account.invoice.pay.start,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.pay.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.invoice.pay.start,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Aprašymas"
 
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
@@ -537,109 +406,43 @@ msgstr "Sąskaitos faktūros koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice.pay.start,payment_method:"
 msgid "Payment Method"
-msgstr ""
-
-msgctxt "field:account.invoice.payment.method,active:"
-msgid "Active"
-msgstr ""
+msgstr "Mokėjimo būdas"
 
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:account.invoice.payment.method,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.payment.method,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
-msgstr ""
+msgstr "Kreditinė koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
-msgstr ""
-
-msgctxt "field:account.invoice.payment.method,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Debetinė koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice.payment.method,journal:"
 msgid "Journal"
-msgstr ""
+msgstr "Žurnalas"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
-msgstr "Namu"
-
-msgctxt "field:account.invoice.payment.method,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.payment.method,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.payment.method,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice.payment_term,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.payment_term,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Pavadinimas"
 
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Aprašymas"
 
 msgctxt "field:account.invoice.payment_term,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Eilutės"
 
-#, fuzzy
 msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
-msgstr "Namu"
-
-msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.payment_term,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Pavadinimas"
 
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Suma"
 
 msgctxt "field:account.invoice.payment_term.line,currency:"
 msgid "Currency"
@@ -647,108 +450,59 @@ msgstr "Valiuta"
 
 msgctxt "field:account.invoice.payment_term.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.payment_term.line,divisor:"
 msgid "Divisor"
-msgstr ""
+msgstr "Daliklis"
 
-msgctxt "field:account.invoice.payment_term.line,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Dalis procentais"
 
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line,sequence:"
-msgid "Sequence"
-msgstr ""
+msgstr "Delta"
 
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Tipas"
 
 msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
-msgstr ""
+msgstr "Mėnesio diena"
 
 msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line.delta,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Dienų skaičius"
 
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Mokėjimo sąlygų eilutė"
 
 msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
-msgstr ""
+msgstr "Mėnuo"
 
 msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
-msgid "Sequence"
-msgstr ""
+msgstr "Mėnesių skaičius"
 
 msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Savaitės diena"
 
 msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Savaičių skaičius"
 
 msgctxt "field:account.invoice.payment_term.test,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.payment_term.test,currency:"
 msgid "Currency"
@@ -756,68 +510,47 @@ msgstr "Valiuta"
 
 msgctxt "field:account.invoice.payment_term.test,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-msgctxt "field:account.invoice.payment_term.test,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
 msgid "Payment Term"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "field:account.invoice.payment_term.test,result:"
 msgid "Result"
-msgstr ""
+msgstr "Rezultatas"
 
 msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valiutos skaitmenų skaičius"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
 
 msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term.test.result,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Data"
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr ""
+msgstr "Koresponduojanti sąskaita"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.tax,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Bazė"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Aprašymas"
 
 msgctxt "field:account.invoice.tax,invoice:"
 msgid "Invoice"
@@ -829,35 +562,19 @@ msgstr "Sąskaitos faktūros būsena"
 
 msgctxt "field:account.invoice.tax,legal_notice:"
 msgid "Legal Notice"
-msgstr ""
+msgstr "Teisinė informacija"
 
 msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,sequence:"
-msgid "Sequence"
-msgstr ""
+msgstr "Rankiniu būdu"
 
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
-msgstr ""
+msgstr "Numeruotės numeris"
 
 msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.tax,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "PVM"
 
 msgctxt "field:account.move.line,invoice_payment:"
 msgid "Invoice Payment"
@@ -866,6 +583,10 @@ msgstr "Sąskaitos faktūros apmokėjimas"
 msgctxt "field:account.move.line,invoice_payments:"
 msgid "Invoice Payments"
 msgstr "Sąskaitų faktūrų apmokėjimai"
+
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "Anuliuoti sąskaitą pirkėjui"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
@@ -877,64 +598,35 @@ msgstr "Sąskaita faktūra"
 
 msgctxt "field:party.party,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr ""
+msgstr "Mokėjimo sąlygos pirkėjui"
 
-#, fuzzy
 msgctxt "field:party.party,payment_terms:"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr ""
-
-msgctxt "field:party.party.payment_term,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:party.party.payment_term,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Tiekėjo mokėjimo sąlygos"
 
 msgctxt "field:party.party.payment_term,customer_payment_term:"
 msgid "Customer Payment Term"
-msgstr ""
-
-msgctxt "field:party.party.payment_term,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Mokėjimo sąlygos pirkėjui"
 
 msgctxt "field:party.party.payment_term,party:"
 msgid "Party"
 msgstr "Kontrahentas"
 
-msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
-msgstr ""
-
-msgctxt "field:party.party.payment_term,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:party.party.payment_term,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Tiekėjo mokėjimo sąlygos"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
-msgstr ""
+msgstr "Jei teisinga,  ši sąskaita faktūra bus anuliuota."
 
-msgctxt "help:account.invoice.payment.method,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:account.invoice.payment_term,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
+msgstr "Leisti sąskaitų faktūrų pirkėjams anuliavimą."
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
 msgid "Invoice Sequence"
@@ -946,7 +638,7 @@ msgstr "Sąskaita faktūra"
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr "Sąskaitos faktūros apmokėjimo eilutė "
+msgstr "Sąskaitos faktūros apmokėjimo eilutė"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
@@ -970,35 +662,33 @@ msgstr "Apmokėti sąskaitą faktūrą"
 
 msgctxt "model:account.invoice.payment.method,name:"
 msgid "Payment Method"
-msgstr ""
+msgstr "Mokėjimo būdas"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Mokėjimo sąlygų eilutė"
 
 msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
-msgstr ""
+msgstr "Mokėjimo sąlygų eilutės santykinis skirtumas"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test,name:"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
 
-#, fuzzy
 msgctxt "model:account.invoice.payment_term.test.result,name:"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
 
 msgctxt "model:account.invoice.tax,name:"
 msgid "Invoice Tax"
 msgstr "Sąskaitos faktūros mokesčiai"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Sąskaitos faktūros"
@@ -1013,7 +703,7 @@ msgstr "Tiekėjų sąskaitos"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr "Sąskaitos pirkėjams "
+msgstr "Sąskaitos pirkėjams"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -1021,11 +711,11 @@ msgstr "Sąskaitų faktūrų apmokėjimo būdai"
 
 msgctxt "model:ir.action,name:act_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "model:ir.action,name:credit"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Kreditas"
 
 msgctxt "model:ir.action,name:report_invoice"
 msgid "Invoice"
@@ -1037,7 +727,7 @@ msgstr "Apmokėti sąskaitą faktūrą"
 
 msgctxt "model:ir.action,name:wizard_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_all"
 msgid "All"
@@ -1045,11 +735,11 @@ msgstr "All"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Juodraštis"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_in_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Įtraukta į apskaitą"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_in_domain_validated"
@@ -1062,11 +752,11 @@ msgstr "All"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Juodraštis"
 
 msgctxt "model:ir.action.act_window.domain,name:act_invoice_out_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Įtraukta į apskaitą"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_invoice_out_domain_validated"
@@ -1084,7 +774,9 @@ msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
-msgid "You cannot cancel customer invoice \"%(invoice)s\" because it is posted."
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
@@ -1117,6 +809,13 @@ msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
 "\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
@@ -1179,15 +878,13 @@ msgid ""
 "\"%(payment_term)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_cancel_button"
 msgid "Are you sure you want to cancel the invoices?"
 msgstr "Ar tikrai norite anuliuoti šią sąskaitą faktūrą?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:invoice_post_button"
 msgid "Are you sure you want to post the invoices?"
-msgstr "Ar tikrai norite anuliuoti šią sąskaitą faktūrą?"
+msgstr "Ar tikrai norite šią sąskaitą faktūrą įtraukti į apskaitą?"
 
 msgctxt "model:ir.model.button,help:invoice_cancel_button"
 msgid "Cancel the invoice"
@@ -1195,23 +892,23 @@ msgstr "Anuliuoti sąskaitą faktūrą"
 
 msgctxt "model:ir.model.button,help:invoice_validate_button"
 msgid "Also known as Pro Forma"
-msgstr "Also known as Pro Forma"
+msgstr "Dar žinoma kaip proforma"
 
 msgctxt "model:ir.model.button,string:invoice_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuliuoti"
 
 msgctxt "model:ir.model.button,string:invoice_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Taisyti"
 
 msgctxt "model:ir.model.button,string:invoice_pay_button"
 msgid "Pay"
-msgstr "Pay"
+msgstr "Mokėti"
 
 msgctxt "model:ir.model.button,string:invoice_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Įtraukti į apskaitą"
 
 msgctxt "model:ir.model.button,string:invoice_validate_button"
 msgid "Validate"
@@ -1219,15 +916,15 @@ msgstr "Patvirtinti"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice"
 msgid "User in company"
-msgstr ""
+msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_line"
 msgid "User in company"
-msgstr ""
+msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.rule.group,name:rule_group_invoice_sequence"
 msgid "User in company"
-msgstr ""
+msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_invoice"
 msgid "Invoice"
@@ -1251,49 +948,47 @@ msgstr "Sąskaitų faktūrų apmokėjimo būdai"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_form"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_term_test"
 msgid "Test Payment Term"
-msgstr "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_terms_configuration"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
-#, fuzzy
 msgctxt "model:party.party.payment_term,name:"
 msgid "Party Payment Term"
-msgstr "Test Payment Term"
+msgstr "Tikrinti mokėjimo sąlygą"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:account.invoice:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "report:account.invoice:"
 msgid "Base"
-msgstr ""
+msgstr "Bazė"
 
 msgctxt "report:account.invoice:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "report:account.invoice:"
 msgid "Date:"
-msgstr ""
+msgstr "Data:"
 
 msgctxt "report:account.invoice:"
 msgid "Description"
-msgstr ""
+msgstr "Aprašymas"
 
 msgctxt "report:account.invoice:"
 msgid "Description:"
-msgstr ""
+msgstr "Aprašymas:"
 
 msgctxt "report:account.invoice:"
 msgid "Draft Invoice"
@@ -1301,12 +996,11 @@ msgstr "Sąskaitos faktūros juodraštis"
 
 msgctxt "report:account.invoice:"
 msgid "Invoice N°:"
-msgstr "Sąskaita faktūra Nr."
+msgstr "Sąskaita faktūra Nr.:"
 
-#, fuzzy
 msgctxt "report:account.invoice:"
 msgid "Payment Term"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
 msgctxt "report:account.invoice:"
 msgid "Pro forma Invoice"
@@ -1314,58 +1008,55 @@ msgstr "Išankstinė sąskaita"
 
 msgctxt "report:account.invoice:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kiekis"
 
 msgctxt "report:account.invoice:"
 msgid "Reference"
-msgstr ""
+msgstr "Nuoroda"
 
 msgctxt "report:account.invoice:"
 msgid "Supplier Invoice N°:"
-msgstr "Tiekėjo sąskaita Nr.:"
+msgstr "Tiekėjo sąskaita faktūra Nr.:"
 
 msgctxt "report:account.invoice:"
 msgid "Tax"
-msgstr ""
+msgstr "PVM"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes"
-msgstr ""
+msgstr "PVM"
 
 msgctxt "report:account.invoice:"
 msgid "Taxes:"
-msgstr ""
+msgstr "Mokesčiai:"
 
 msgctxt "report:account.invoice:"
 msgid "Total (excl. taxes):"
-msgstr ""
+msgstr "Viso:"
 
 msgctxt "report:account.invoice:"
 msgid "Total:"
-msgstr ""
+msgstr "Viso su PVM:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Kaina"
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
-msgstr "Cancel"
+msgstr "Anuliuota"
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Juodraštis"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Paid"
 msgstr "Apmokėta"
 
-#, fuzzy
 msgctxt "selection:account.invoice,state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Įtraukta į apskaitą"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Validated"
@@ -1373,30 +1064,27 @@ msgstr "Patvirtinta"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Customer"
-msgstr ""
+msgstr "Pirkėjas"
 
 msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Tiekėjas"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Cancelled"
-msgstr "Cancel"
+msgstr "Anuliuota"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Juodraštis"
 
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Paid"
 msgstr "Apmokėta"
 
-#, fuzzy
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Įtraukta į apskaitą"
 
 msgctxt "selection:account.invoice.line,invoice_state:"
 msgid "Validated"
@@ -1404,11 +1092,11 @@ msgstr "Patvirtinta"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Customer"
-msgstr ""
+msgstr "Pirkėjas"
 
 msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
-msgstr ""
+msgstr "Tiekėjas"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
@@ -1416,58 +1104,55 @@ msgstr "Komentaras"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Line"
-msgstr ""
+msgstr "Eilutė"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Subtotal"
-msgstr ""
+msgstr "Tarpinė suma"
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
-msgstr ""
+msgstr "Antraštė"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
-msgstr ""
+msgstr "Dalinis mokėjimas"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Write-Off"
-msgstr ""
+msgstr "Nurašymas"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Fixed"
-msgstr ""
+msgstr "Fiksuota"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Remainder"
-msgstr ""
+msgstr "Procentai nuo likučio"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Percentage on Total"
-msgstr ""
+msgstr "Procentai nuo visos sumos"
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr ""
+msgstr "Likutis"
 
-#, fuzzy
 msgctxt "selection:account.invoice.tax,invoice_state:"
 msgid "Cancelled"
-msgstr "Cancel"
+msgstr "Anuliuota"
 
-#, fuzzy
 msgctxt "selection:account.invoice.tax,invoice_state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Juodraštis"
 
 msgctxt "selection:account.invoice.tax,invoice_state:"
 msgid "Paid"
 msgstr "Apmokėta"
 
-#, fuzzy
 msgctxt "selection:account.invoice.tax,invoice_state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr "Įtraukta į apskaitą"
 
 msgctxt "selection:account.invoice.tax,invoice_state:"
 msgid "Validated"
@@ -1479,13 +1164,12 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "General"
-msgstr ""
+msgstr "Pagrindinis"
 
 msgctxt "view:account.invoice.line:"
 msgid "Notes"
 msgstr "Pastabos"
 
-#, fuzzy
 msgctxt "view:account.invoice.payment_term.line:"
 msgid "%"
 msgstr "%"
@@ -1496,62 +1180,60 @@ msgstr "Sąskaita faktūra"
 
 msgctxt "view:account.invoice:"
 msgid "Other Info"
-msgstr ""
+msgstr "Kita informacija"
 
 msgctxt "view:account.invoice:"
 msgid "Payment"
-msgstr ""
+msgstr "Mokėjimas"
 
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr "Mokesčių mokėtojo identifikatorius "
+msgstr "Mokesčių mokėtojo identifikatorius:"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"
-msgstr "Sąskaitos antroji valiuta"
+msgstr "Suma antrąja valiuta"
 
-#, fuzzy
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Kreditas"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debetas"
 
-#, fuzzy
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "Sąskaita faktūra"
+
 msgctxt "view:party.party:"
 msgid "Payment Terms"
-msgstr "Payment Terms"
+msgstr "Mokėjimo sąlygos"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,credit:"
 msgid "Credit"
-msgstr "Credit"
+msgstr "Kreditas"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.credit,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuliuoti"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,ask,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuliuoti"
 
 msgctxt "wizard_button:account.invoice.pay,ask,pay:"
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
 msgctxt "wizard_button:account.invoice.pay,start,choice:"
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.pay,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Anuliuoti"
 
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
-msgstr ""
+msgstr "Užverti"

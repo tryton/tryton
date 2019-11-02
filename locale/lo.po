@@ -11,24 +11,9 @@ msgctxt "field:account.fiscalyear.invoice_sequence,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
 
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.fiscalyear.invoice_sequence,fiscalyear:"
 msgid "Fiscal Year"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
@@ -50,25 +35,6 @@ msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
 msgstr ""
 
-msgctxt "field:account.fiscalyear.invoice_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
-
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-#, fuzzy
-msgctxt "field:account.fiscalyear.invoice_sequence,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.invoice,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
@@ -76,6 +42,11 @@ msgstr "ບັນຊີ"
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
 msgstr "ວັນຄິດໄລ່ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.invoice,allow_cancel:"
+msgid "Allow Cancel Invoice"
+msgstr "Cancel the invoice"
 
 msgctxt "field:account.invoice,amount_to_pay:"
 msgid "Amount to Pay"
@@ -101,14 +72,6 @@ msgctxt "field:account.invoice,company_party:"
 msgid "Company Party"
 msgstr ""
 
-msgctxt "field:account.invoice,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.invoice,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
@@ -124,10 +87,6 @@ msgstr "ໂຕເລກສະກຸນເງິນ"
 msgctxt "field:account.invoice,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
-
-msgctxt "field:account.invoice,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 msgctxt "field:account.invoice,invoice_address:"
 msgid "Invoice Address"
@@ -194,10 +153,6 @@ msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
 msgstr "ຮູບແບບການຈ່າຍ"
 
-msgctxt "field:account.invoice,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.invoice,reconciled:"
 msgid "Reconciled"
 msgstr "ພິສູດຍອດແລ້ວ"
@@ -210,6 +165,11 @@ msgstr "ຮ່ວງຊໍາລະ"
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
 msgstr "ເອກະສານອ້າງອີງ"
+
+#, fuzzy
+msgctxt "field:account.invoice,sequence:"
+msgid "Sequence"
+msgstr "ລໍາດັບ"
 
 msgctxt "field:account.invoice,state:"
 msgid "State"
@@ -243,28 +203,6 @@ msgctxt "field:account.invoice,untaxed_amount:"
 msgid "Untaxed"
 msgstr "ມູນຄ່າບໍ່ລວມອາກອນ"
 
-msgctxt "field:account.invoice,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:account.invoice-account.move.line,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice-account.move.line,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:account.invoice-account.move.line,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
-
 #, fuzzy
 msgctxt "field:account.invoice-account.move.line,invoice:"
 msgid "Invoice"
@@ -283,23 +221,6 @@ msgstr "ວັນທີໃບເກັບເງິນ"
 msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "ຮ່ວງຊໍາລະ"
-
-msgctxt "field:account.invoice-account.move.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice-account.move.line,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice-account.move.line,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:account.invoice.credit.start,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
@@ -323,15 +244,6 @@ msgid "Company"
 msgstr "ສຳນັກງານ"
 
 #, fuzzy
-msgctxt "field:account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
 msgctxt "field:account.invoice.line,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
@@ -344,11 +256,6 @@ msgstr "ໂຕເລກສະກຸນເງິນ"
 msgctxt "field:account.invoice.line,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
-
-#, fuzzy
-msgctxt "field:account.invoice.line,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.line,invoice:"
@@ -401,15 +308,6 @@ msgctxt "field:account.invoice.line,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
 
-msgctxt "field:account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.line,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
-
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "ອາກອນ"
@@ -431,46 +329,13 @@ msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
 msgstr "ລາຄາຫົວໜ່ວຍ"
 
-msgctxt "field:account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
-msgctxt "field:account.invoice.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:account.invoice.line-account.tax,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
-
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
 msgstr "ລາຍການ"
 
-msgctxt "field:account.invoice.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.invoice.line-account.tax,tax:"
 msgid "Tax"
 msgstr "ອາກອນ"
-
-msgctxt "field:account.invoice.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:account.invoice.pay.ask,amount:"
@@ -505,11 +370,6 @@ msgstr ""
 msgctxt "field:account.invoice.pay.ask,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
-
-#, fuzzy
-msgctxt "field:account.invoice.pay.ask,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.pay.ask,invoice:"
@@ -568,11 +428,6 @@ msgctxt "field:account.invoice.pay.start,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
-#, fuzzy
-msgctxt "field:account.invoice.pay.start,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
-
 msgctxt "field:account.invoice.pay.start,invoice_account:"
 msgid "Invoice Account"
 msgstr ""
@@ -582,24 +437,9 @@ msgid "Payment Method"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment.method,active:"
-msgid "Active"
-msgstr "ໃຊ້ງານຢູ່"
-
-#, fuzzy
 msgctxt "field:account.invoice.payment.method,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:account.invoice.payment.method,credit_account:"
 msgid "Credit Account"
@@ -608,11 +448,6 @@ msgstr ""
 msgctxt "field:account.invoice.payment.method,debit_account:"
 msgid "Debit Account"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment.method,journal:"
@@ -624,41 +459,9 @@ msgctxt "field:account.invoice.payment.method,name:"
 msgid "Name"
 msgstr "ຊື່"
 
-msgctxt "field:account.invoice.payment.method,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment.method,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
-msgctxt "field:account.invoice.payment_term,active:"
-msgid "Active"
-msgstr "ໃຊ້ງານຢູ່"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice.payment_term,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.invoice.payment_term,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term,lines:"
@@ -670,30 +473,9 @@ msgctxt "field:account.invoice.payment_term,name:"
 msgid "Name"
 msgstr "ຊື່"
 
-msgctxt "field:account.invoice.payment_term,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.payment_term,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice.payment_term,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.invoice.payment_term.line,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice.payment_term.line,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.line,currency:"
@@ -710,11 +492,6 @@ msgid "Divisor"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.invoice.payment_term.line,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
-
-#, fuzzy
 msgctxt "field:account.invoice.payment_term.line,payment:"
 msgid "Payment Term"
 msgstr "ຮູບແບບການຈ່າຍ"
@@ -723,40 +500,13 @@ msgctxt "field:account.invoice.payment_term.line,ratio:"
 msgid "Ratio"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.invoice.payment_term.line,relativedeltas:"
 msgid "Deltas"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
-
 msgctxt "field:account.invoice.payment_term.line,type:"
 msgid "Type"
 msgstr "ປະເພດ"
-
-msgctxt "field:account.invoice.payment_term.line,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice.payment_term.line,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
 
 msgctxt "field:account.invoice.payment_term.line.delta,day:"
 msgid "Day of Month"
@@ -765,11 +515,6 @@ msgstr ""
 msgctxt "field:account.invoice.payment_term.line.delta,days:"
 msgid "Number of Days"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
@@ -785,15 +530,6 @@ msgctxt "field:account.invoice.payment_term.line.delta,months:"
 msgid "Number of Months"
 msgstr ""
 
-msgctxt "field:account.invoice.payment_term.line.delta,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
-
 msgctxt "field:account.invoice.payment_term.line.delta,weekday:"
 msgid "Day of Week"
 msgstr ""
@@ -801,16 +537,6 @@ msgstr ""
 msgctxt "field:account.invoice.payment_term.line.delta,weeks:"
 msgid "Number of Weeks"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.line.delta,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.test,amount:"
@@ -831,11 +557,6 @@ msgstr "ໂຕເລກສະກຸນເງິນ"
 msgctxt "field:account.invoice.payment_term.test,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
-
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.test,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.payment_term.test,payment_term:"
@@ -861,11 +582,6 @@ msgctxt "field:account.invoice.payment_term.test.result,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
 
-#, fuzzy
-msgctxt "field:account.invoice.payment_term.test.result,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
-
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
@@ -878,22 +594,9 @@ msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr ""
 
-msgctxt "field:account.invoice.tax,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:account.invoice.tax,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
-
-#, fuzzy
-msgctxt "field:account.invoice.tax,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:account.invoice.tax,invoice:"
@@ -913,14 +616,6 @@ msgctxt "field:account.invoice.tax,manual:"
 msgid "Manual"
 msgstr "ໃສ່ເອົາເອງ"
 
-msgctxt "field:account.invoice.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.invoice.tax,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
-
 msgctxt "field:account.invoice.tax,sequence_number:"
 msgid "Sequence Number"
 msgstr ""
@@ -929,14 +624,6 @@ msgctxt "field:account.invoice.tax,tax:"
 msgid "Tax"
 msgstr "ອາກອນ"
 
-msgctxt "field:account.invoice.tax,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:account.invoice.tax,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
-
 msgctxt "field:account.move.line,invoice_payment:"
 msgid "Invoice Payment"
 msgstr ""
@@ -944,6 +631,11 @@ msgstr ""
 msgctxt "field:account.move.line,invoice_payments:"
 msgid "Invoice Payments"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:company.company,cancel_invoice_out:"
+msgid "Cancel Customer Invoice"
+msgstr "Customer Invoices"
 
 msgctxt "field:party.address,invoice:"
 msgid "Invoice"
@@ -967,58 +659,25 @@ msgctxt "field:party.party,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:party.party.payment_term,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:party.party.payment_term,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:party.party.payment_term,customer_payment_term:"
 msgid "Customer Payment Term"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:party.party.payment_term,id:"
-msgid "ID"
-msgstr "ລໍາດັບໃບເກັບເງິນ"
 
 #, fuzzy
 msgctxt "field:party.party.payment_term,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
-msgctxt "field:party.party.payment_term,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:party.party.payment_term,supplier_payment_term:"
 msgid "Supplier Payment Term"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:party.party.payment_term,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-#, fuzzy
-msgctxt "field:party.party.payment_term,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຜູ້ໃຊ້ງານ"
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr ""
 
-msgctxt "help:account.invoice.payment.method,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:account.invoice.payment_term,active:"
-msgid "Uncheck to exclude from future use."
+msgctxt "help:company.company,cancel_invoice_out:"
+msgid "Allow cancelling move of customer invoice."
 msgstr ""
 
 msgctxt "model:account.fiscalyear.invoice_sequence,name:"
@@ -1188,7 +847,9 @@ msgid "You cannot refund invoice \"%(invoice)s\" because it is not posted."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_customer_cancel_move"
-msgid "You cannot cancel customer invoice \"%(invoice)s\" because it is posted."
+msgid ""
+"You cannot cancel customer invoice \"%(invoice)s\" because it is posted and "
+"company setup does not allow it."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_delete_cancel"
@@ -1221,6 +882,13 @@ msgctxt "model:ir.message,text:msg_invoice_no_sequence"
 msgid ""
 "To post invoice \"%(invoice)s\", you must define a sequence on fiscal year "
 "\"%(fiscalyear)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_invoice_number_after"
+msgid ""
+"To number the invoice \"%(invoice)s\", you must set an accounting date after"
+" \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
+"for invoice \"%(after_invoice)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
@@ -1640,6 +1308,11 @@ msgid "Debit"
 msgstr "ໜີ້"
 
 #, fuzzy
+msgctxt "view:company.company:"
+msgid "Invoice"
+msgstr "ໃບເກັບເງິນ"
+
+#, fuzzy
 msgctxt "view:party.party:"
 msgid "Payment Terms"
 msgstr "ຮູບແບບການຈ່າຍ"
@@ -1674,45 +1347,3 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:account.invoice.payment_term.test,test,end:"
 msgid "Close"
 msgstr "ອັດ"
-
-#, fuzzy
-msgctxt "field:account.invoice.tax,tax_code:"
-msgid "Tax Code"
-msgstr "ລະຫັດພາສີ"
-
-#, fuzzy
-msgctxt "view:account.invoice.tax:"
-msgid "Tax Code"
-msgstr "ລະຫັດພາສີ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Draft"
-msgstr "ຊົ່ວຄາວ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Pay"
-msgstr "ຈ່າຍ"
-
-#, fuzzy
-msgctxt "view:account.invoice:"
-msgid "Post"
-msgstr "ປະກາດ"
-
-msgctxt "view:account.invoice:"
-msgid "Validate"
-msgstr "ກວດສອບ"
-
-msgctxt "wizard_button:account.invoice.print,warning,end:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-msgctxt "wizard_button:account.invoice.print,warning,print_:"
-msgid "Print"
-msgstr "ພິມ"
