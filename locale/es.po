@@ -34,45 +34,9 @@ msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.credential.chorus,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.credential.chorus,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:account.credential.chorus,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.credential.chorus,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:account.credential.chorus,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.credential.chorus,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:account.invoice.chorus,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:account.invoice.chorus,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:account.invoice.chorus,date:"
 msgid "Date"
 msgstr "Fecha"
-
-msgctxt "field:account.invoice.chorus,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.chorus,invoice:"
 msgid "Invoice"
@@ -82,21 +46,9 @@ msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
 msgstr "Número"
 
-msgctxt "field:account.invoice.chorus,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
 msgstr "Sintaxis"
-
-msgctxt "field:account.invoice.chorus,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:account.invoice.chorus,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:party.party,chorus:"
 msgid "Chorus Pro"

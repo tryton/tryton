@@ -34,45 +34,9 @@ msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:account.credential.chorus,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.credential.chorus,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:account.credential.chorus,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.credential.chorus,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.credential.chorus,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:account.invoice.chorus,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:account.invoice.chorus,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:account.invoice.chorus,date:"
 msgid "Date"
 msgstr ""
-
-msgctxt "field:account.invoice.chorus,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.invoice.chorus,invoice:"
 msgid "Invoice"
@@ -82,21 +46,9 @@ msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
 msgstr ""
 
-msgctxt "field:account.invoice.chorus,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
 msgstr ""
-
-msgctxt "field:account.invoice.chorus,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:account.invoice.chorus,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:party.party,chorus:"
 msgid "Chorus Pro"

@@ -4,158 +4,114 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,chorus_login:"
 msgid "Chorus Login"
-msgstr ""
+msgstr "Chorus-aanmelding"
 
 msgctxt "field:account.configuration,chorus_password:"
 msgid "Chorus Password"
-msgstr ""
+msgstr "Chorus wachtwoord"
 
 msgctxt "field:account.configuration,chorus_service:"
 msgid "Chorus Service"
-msgstr ""
+msgstr "Chorus Dienst"
 
 msgctxt "field:account.configuration,chorus_syntax:"
 msgid "Chorus Syntax"
-msgstr ""
+msgstr "Syntaxis van chorus"
 
 msgctxt "field:account.credential.chorus,chorus_login:"
 msgid "Login"
-msgstr ""
+msgstr "Inlognaam"
 
 msgctxt "field:account.credential.chorus,chorus_password:"
 msgid "Password"
-msgstr ""
+msgstr "Paswoord"
 
 msgctxt "field:account.credential.chorus,chorus_service:"
 msgid "Service"
-msgstr ""
+msgstr "Diensten"
 
 msgctxt "field:account.credential.chorus,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.credential.chorus,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,create_uid:"
-msgid "Create User"
-msgstr ""
+msgstr "Bedrijf"
 
 msgctxt "field:account.invoice.chorus,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,id:"
-msgid "ID"
-msgstr ""
+msgstr "Datum"
 
 msgctxt "field:account.invoice.chorus,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Factuur"
 
 msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Nummer"
 
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.invoice.chorus,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Syntaxis"
 
 msgctxt "field:party.party,chorus:"
 msgid "Chorus Pro"
-msgstr ""
+msgstr "Chorus Pro"
 
 msgctxt "help:party.party,chorus:"
 msgid "Send documents for this party through Chorus Pro"
-msgstr ""
+msgstr "Stuur documenten voor deze relatie via Chorus Pro"
 
 msgctxt "model:account.credential.chorus,name:"
 msgid "Account Credential Chorus"
-msgstr ""
+msgstr "Rekening gegevens Chorus"
 
 msgctxt "model:account.invoice.chorus,name:"
 msgid "Invoice Chorus"
-msgstr ""
+msgstr "Factuur Chorus"
 
 msgctxt "model:ir.action,name:act_invoice_chorus_form"
 msgid "Chorus"
-msgstr ""
+msgstr "Chorus"
 
 msgctxt "model:ir.message,text:msg_invoice_address_no_siret"
 msgid ""
 "To create a Chorus invoice for \"%(invoice)s\", you must set a SIRET on "
 "address \"%(address)s\"."
 msgstr ""
+"Om een Chorus-factuur voor \"%(invoice)s\" te maken, moet u een SIRET "
+"instellen op adres \"%(address)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_delete_sent"
 msgid "You cannot delete Chorus invoice \"%(invoice)s\" because it is sent."
 msgstr ""
+"U kunt Chorus-factuur \"%(invoice)s\" niet verwijderen omdat deze verzonden "
+"is."
 
 msgctxt "model:ir.message,text:msg_invoice_unique"
 msgid "You can create only one Chorus invoice per invoice."
-msgstr ""
+msgstr "U kunt slechts één Chorus-factuur per factuur maken."
 
 msgctxt "model:ir.ui.menu,name:menu_invoice_chorus_form"
 msgid "Chorus"
-msgstr ""
+msgstr "Chorus"
 
 msgctxt "selection:account.configuration,chorus_service:"
 msgid "Production"
-msgstr ""
+msgstr "Productie"
 
 msgctxt "selection:account.configuration,chorus_service:"
 msgid "Qualification"
-msgstr ""
+msgstr "Kwalificatie"
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Production"
-msgstr ""
+msgstr "Productie"
 
 msgctxt "selection:account.credential.chorus,chorus_service:"
 msgid "Qualification"
-msgstr ""
+msgstr "Kwalificatie"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Send invoices to Chorus"
-msgstr ""
+msgstr "Verzend facturen naar Chorus"
 
 msgctxt "view:account.configuration:"
 msgid "Chorus"
-msgstr ""
+msgstr "Chorus"
