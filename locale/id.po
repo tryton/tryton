@@ -8,11 +8,11 @@ msgstr ""
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr ""
+msgstr "Kepada"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr ""
+msgstr "Kepada"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
@@ -32,7 +32,7 @@ msgstr ""
 
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"

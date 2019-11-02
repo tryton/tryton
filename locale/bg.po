@@ -6,27 +6,8 @@ msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:party.relation,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:party.relation,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:party.relation,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.relation,to:"
@@ -38,37 +19,8 @@ msgctxt "field:party.relation,type:"
 msgid "Type"
 msgstr "Вид"
 
-#, fuzzy
-msgctxt "field:party.relation,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:party.relation,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
-msgctxt "field:party.relation.all,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:party.relation.all,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation.all,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:party.relation.all,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.relation.all,to:"
@@ -81,52 +33,13 @@ msgid "Type"
 msgstr "Вид"
 
 #, fuzzy
-msgctxt "field:party.relation.all,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:party.relation.all,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
-msgctxt "field:party.relation.type,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:party.relation.type,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:party.relation.type,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
 msgstr "Условие за плащане"
 
-msgctxt "field:party.relation.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation.type,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:party.relation.type,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."

@@ -6,25 +6,9 @@ msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr "Relacje"
 
-msgctxt "field:party.relation,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:party.relation,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:party.relation,from_:"
 msgid "From"
 msgstr "Od"
-
-msgctxt "field:party.relation,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:party.relation,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
@@ -34,33 +18,9 @@ msgctxt "field:party.relation,type:"
 msgid "Type"
 msgstr "Typ"
 
-msgctxt "field:party.relation,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:party.relation,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:party.relation.all,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:party.relation.all,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
 msgstr "Od"
-
-msgctxt "field:party.relation.all,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:party.relation.all,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
@@ -70,45 +30,13 @@ msgctxt "field:party.relation.all,type:"
 msgid "Type"
 msgstr "Typ"
 
-msgctxt "field:party.relation.all,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:party.relation.all,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:party.relation.type,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:party.relation.type,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:party.relation.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
 msgstr "Nazwa"
 
-msgctxt "field:party.relation.type,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
 msgstr "Odwrotna relacja"
-
-msgctxt "field:party.relation.type,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:party.relation.type,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."

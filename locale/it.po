@@ -6,27 +6,8 @@ msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:party.relation,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:party.relation,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-msgctxt "field:party.relation,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.relation,to:"
@@ -38,37 +19,8 @@ msgctxt "field:party.relation,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
-msgctxt "field:party.relation,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:party.relation,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
-msgctxt "field:party.relation.all,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:party.relation.all,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation.all,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-msgctxt "field:party.relation.all,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:party.relation.all,to:"
@@ -81,52 +33,13 @@ msgid "Type"
 msgstr "Tipo"
 
 #, fuzzy
-msgctxt "field:party.relation.all,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:party.relation.all,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
-msgctxt "field:party.relation.type,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:party.relation.type,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
-#, fuzzy
-msgctxt "field:party.relation.type,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
 msgstr "Nome"
 
-msgctxt "field:party.relation.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:party.relation.type,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:party.relation.type,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
