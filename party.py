@@ -105,7 +105,7 @@ class ContactMechanism(CompanyMultiValueMixin, metaclass=PoolMeta):
 
         yield from super()._phone_country_codes()
 
-        if 'company' in context:
+        if context.get('company'):
             company = Company(context['company'])
             for address in company.party.addresses:
                 if address.country:
