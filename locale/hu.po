@@ -10,21 +10,6 @@ msgctxt "field:purchase.purchase,invoice_lines_ignored:"
 msgid "Invoice Lines Ignored"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
 msgstr ""
@@ -33,20 +18,6 @@ msgstr ""
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr "Vásárlás"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:purchase.purchase-ignored-account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"

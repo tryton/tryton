@@ -2,24 +2,21 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoice_lines:"
 msgid "Invoice Lines"
-msgstr "Строки инвойса"
+msgstr "Baris Faktur"
 
 msgctxt "field:purchase.purchase,invoice_lines_ignored:"
 msgid "Invoice Lines Ignored"
-msgstr ""
+msgstr "Baris Faktur Diabaikan"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,invoice:"
 msgid "Invoice Line"
-msgstr "Строка инвойса"
+msgstr "Baris Faktur"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
-msgstr "Покупки"
+msgstr "Pembelian"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
