@@ -14,14 +14,6 @@ msgctxt "field:sale.complaint,company:"
 msgid "Company"
 msgstr "Társaság"
 
-msgctxt "field:sale.complaint,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-msgctxt "field:sale.complaint,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
 msgstr "Vevő"
@@ -37,10 +29,6 @@ msgstr "Leírás"
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
 msgstr "Alkalmazott"
-
-msgctxt "field:sale.complaint,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -58,10 +46,6 @@ msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
 msgstr "Származási modell"
 
-msgctxt "field:sale.complaint,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr "Hivatkozás"
@@ -74,14 +58,6 @@ msgctxt "field:sale.complaint,type:"
 msgid "Type"
 msgstr "Típus"
 
-msgctxt "field:sale.complaint,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-msgctxt "field:sale.complaint,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr "Művelet"
@@ -90,18 +66,6 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reklamáció"
 
-msgctxt "field:sale.complaint.action,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-msgctxt "field:sale.complaint.action,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-msgctxt "field:sale.complaint.action,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Számla pozíció"
@@ -109,10 +73,6 @@ msgstr "Számla pozíció"
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
-
-msgctxt "field:sale.complaint.action,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -134,89 +94,21 @@ msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
 msgstr "Darab ár"
 
-msgctxt "field:sale.complaint.action,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-msgctxt "field:sale.complaint.action,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Művelet"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-msgctxt "field:sale.complaint.action-account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Számla pozíció"
 
-msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Művelet"
 
-msgctxt "field:sale.complaint.action-sale.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-msgctxt "field:sale.complaint.action-sale.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-msgctxt "field:sale.complaint.action-sale.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Eladási pozíció"
-
-msgctxt "field:sale.complaint.action-sale.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.complaint.action-sale.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-msgctxt "field:sale.complaint.action-sale.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-msgctxt "field:sale.complaint.type,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-msgctxt "field:sale.complaint.type,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-msgctxt "field:sale.complaint.type,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -225,18 +117,6 @@ msgstr "Név"
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr "Származás"
-
-msgctxt "field:sale.complaint.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.complaint.type,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-msgctxt "field:sale.complaint.type,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -247,20 +127,24 @@ msgctxt "field:sale.configuration.sequence,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr "Reklamáció számkör"
 
+#, fuzzy
 msgctxt "help:sale.complaint.action,invoice_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr "Üresen hagyni a soroknak"
 
+#, fuzzy
 msgctxt "help:sale.complaint.action,quantity:"
-msgid "Leave empty for the same quantity"
+msgid "Leave empty for the same quantity."
 msgstr "Üresen hagyni az azonos mennyiségnek"
 
+#, fuzzy
 msgctxt "help:sale.complaint.action,sale_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr "Üresen hagyni a soroknak"
 
+#, fuzzy
 msgctxt "help:sale.complaint.action,unit_price:"
-msgid "Leave empty for the same price"
+msgid "Leave empty for the same price."
 msgstr "Üresen hagyni az azonos árnak"
 
 #, fuzzy
@@ -430,23 +314,3 @@ msgstr "Reklamáció"
 msgctxt "view:sale.complaint:"
 msgid "Process"
 msgstr "Kivitelez"
-
-msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr "Jóváhagyás"
-
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr "Mégse"
-
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr "Piszkozat"
-
-msgctxt "view:sale.complaint:"
-msgid "Reject"
-msgstr "Elutasítás"
-
-msgctxt "view:sale.complaint:"
-msgid "Wait"
-msgstr "Várakozás"

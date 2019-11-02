@@ -14,14 +14,6 @@ msgctxt "field:sale.complaint,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:sale.complaint,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.complaint,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
 msgstr "Cliente"
@@ -37,10 +29,6 @@ msgstr "Descripción"
 msgctxt "field:sale.complaint,employee:"
 msgid "Employee"
 msgstr "Empleado"
-
-msgctxt "field:sale.complaint,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
@@ -58,10 +46,6 @@ msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
 msgstr "Modelo del origen"
 
-msgctxt "field:sale.complaint,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:sale.complaint,reference:"
 msgid "Reference"
 msgstr "Referencia"
@@ -74,14 +58,6 @@ msgctxt "field:sale.complaint,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:sale.complaint,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.complaint,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr "Acción"
@@ -90,18 +66,6 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reclamación"
 
-msgctxt "field:sale.complaint.action,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.complaint.action,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.complaint.action,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Líneas de factura"
@@ -109,10 +73,6 @@ msgstr "Líneas de factura"
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
-
-msgctxt "field:sale.complaint.action,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -134,89 +94,21 @@ msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
 msgstr "Precio de la unidad"
 
-msgctxt "field:sale.complaint.action,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.complaint.action,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Acción"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Línea de factura"
 
-msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Acción"
 
-msgctxt "field:sale.complaint.action-sale.line,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.complaint.action-sale.line,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.complaint.action-sale.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Línea de venta"
-
-msgctxt "field:sale.complaint.action-sale.line,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.complaint.action-sale.line,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.complaint.action-sale.line,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:sale.complaint.type,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:sale.complaint.type,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:sale.complaint.type,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -225,18 +117,6 @@ msgstr "Nombre"
 msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr "Origen"
-
-msgctxt "field:sale.complaint.type,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:sale.complaint.type,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:sale.complaint.type,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
@@ -247,19 +127,19 @@ msgid "Complaint Sequence"
 msgstr "Secuencia de reclamación"
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr "Dejarlo vacío para todas las líneas."
 
 msgctxt "help:sale.complaint.action,quantity:"
-msgid "Leave empty for the same quantity"
+msgid "Leave empty for the same quantity."
 msgstr "Dejarlo vacío para la misma cantidad."
 
 msgctxt "help:sale.complaint.action,sale_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr "Dejarlo vacío para todas las líneas."
 
 msgctxt "help:sale.complaint.action,unit_price:"
-msgid "Leave empty for the same price"
+msgid "Leave empty for the same price."
 msgstr "Dejarlo vacío para el mismo precio."
 
 msgctxt "model:ir.action,name:act_complaint_form"
@@ -417,23 +297,3 @@ msgstr "Reclamación"
 msgctxt "view:sale.complaint:"
 msgid "Process"
 msgstr "Procesar"
-
-msgctxt "view:sale.complaint:"
-msgid "Approve"
-msgstr "Aprobar"
-
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:sale.complaint:"
-msgid "Reject"
-msgstr "Rechazar"
-
-msgctxt "view:sale.complaint:"
-msgid "Wait"
-msgstr "En espera"

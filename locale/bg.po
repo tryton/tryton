@@ -18,16 +18,6 @@ msgid "Company"
 msgstr "Фирма"
 
 #, fuzzy
-msgctxt "field:sale.complaint,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
 msgctxt "field:sale.complaint,customer:"
 msgid "Customer"
 msgstr "Клиент"
@@ -48,11 +38,6 @@ msgid "Employee"
 msgstr "Служител"
 
 #, fuzzy
-msgctxt "field:sale.complaint,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.complaint,number:"
 msgid "Number"
 msgstr "Номер"
@@ -68,10 +53,6 @@ msgstr ""
 
 msgctxt "field:sale.complaint,origin_model:"
 msgid "Origin Model"
-msgstr ""
-
-msgctxt "field:sale.complaint,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -90,16 +71,6 @@ msgid "Type"
 msgstr "Вид"
 
 #, fuzzy
-msgctxt "field:sale.complaint,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
 msgstr "Действие"
@@ -110,21 +81,6 @@ msgid "Complaint"
 msgstr "Complaints"
 
 #, fuzzy
-msgctxt "field:sale.complaint.action,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Редове от фактура"
@@ -133,10 +89,6 @@ msgstr "Редове от фактура"
 msgctxt "field:sale.complaint.action,quantity:"
 msgid "Quantity"
 msgstr "Количество"
-
-msgctxt "field:sale.complaint.action,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.complaint.action,result:"
 msgid "Result"
@@ -163,53 +115,14 @@ msgid "Unit Price"
 msgstr "Единична цена"
 
 #, fuzzy
-msgctxt "field:sale.complaint.action,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Действие"
 
 #, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Ред от фактура"
-
-msgctxt "field:sale.complaint.action-account.invoice.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-account.invoice.line,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,action:"
@@ -217,53 +130,9 @@ msgid "Action"
 msgstr "Действие"
 
 #, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Ред от продажба"
-
-msgctxt "field:sale.complaint.action-sale.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.action-sale.line,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
-msgctxt "field:sale.complaint.type,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.type,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:sale.complaint.type,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.complaint.type,name:"
@@ -275,20 +144,6 @@ msgctxt "field:sale.complaint.type,origin:"
 msgid "Origin"
 msgstr "Източник"
 
-msgctxt "field:sale.complaint.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.complaint.type,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:sale.complaint.type,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 msgctxt "field:sale.configuration,complaint_sequence:"
 msgid "Complaint Sequence"
 msgstr ""
@@ -298,19 +153,19 @@ msgid "Complaint Sequence"
 msgstr ""
 
 msgctxt "help:sale.complaint.action,invoice_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr ""
 
 msgctxt "help:sale.complaint.action,quantity:"
-msgid "Leave empty for the same quantity"
+msgid "Leave empty for the same quantity."
 msgstr ""
 
 msgctxt "help:sale.complaint.action,sale_lines:"
-msgid "Leave empty for all lines"
+msgid "Leave empty for all lines."
 msgstr ""
 
 msgctxt "help:sale.complaint.action,unit_price:"
-msgid "Leave empty for the same price"
+msgid "Leave empty for the same price."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_complaint_form"
@@ -483,18 +338,3 @@ msgstr "Complaints"
 msgctxt "view:sale.complaint:"
 msgid "Process"
 msgstr "Обработване"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Cancel"
-msgstr "Отказване"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Draft"
-msgstr "Проект"
-
-#, fuzzy
-msgctxt "view:sale.complaint:"
-msgid "Wait"
-msgstr "Очаквано"
