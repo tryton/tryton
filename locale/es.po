@@ -26,10 +26,6 @@ msgctxt "field:account.payment.succeed.start,date:"
 msgid "Date"
 msgstr "Fecha"
 
-msgctxt "field:account.payment.succeed.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.statement.line,payment:"
 msgid "Payment"
 msgstr "Pago"
