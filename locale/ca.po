@@ -2,6 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice,open_date:"
-msgid "Open Date"
-msgstr "Data d'obertura"
+msgctxt "field:account.invoice,numbered_at:"
+msgid "Numbered At"
+msgstr "Numerat el"
