@@ -14,6 +14,10 @@ msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
 msgstr "Líneas del parte de trabajo"
 
+msgctxt "field:production.work,timesheet_work:"
+msgid "Timesheet Work"
+msgstr "Partes de trabajo"
+
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr "Partes de trabajo"

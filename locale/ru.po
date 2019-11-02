@@ -17,6 +17,11 @@ msgctxt "field:production.work,timesheet_lines:"
 msgid "Timesheet Lines"
 msgstr "Строки табеля"
 
+#, fuzzy
+msgctxt "field:production.work,timesheet_work:"
+msgid "Timesheet Work"
+msgstr "Строки табеля"
+
 msgctxt "field:production.work,timesheet_works:"
 msgid "Timesheet Works"
 msgstr ""
