@@ -10,34 +10,10 @@ msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "SEPA mandaadi jada"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -87,9 +63,19 @@ msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
 msgstr "Payable Flavor"
 
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Payable Initiator Identifier"
+msgstr "SEPA kreeditori identifikaator"
+
 msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
 msgid "Receivable Flavor"
 msgstr "Receivable Flavor"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Receivable Initiator Identifier"
+msgstr "SEPA kreeditori identifikaator"
 
 msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
@@ -98,18 +84,6 @@ msgstr "Konto number"
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:account.payment.sepa.mandate,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.payment.sepa.mandate,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.payment.sepa.mandate,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
@@ -126,10 +100,6 @@ msgstr "Osapool"
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr "Tausmised"
-
-msgctxt "field:account.payment.sepa.mandate,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -151,45 +121,26 @@ msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:account.payment.sepa.mandate,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.payment.sepa.mandate,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:account.payment.sepa.message,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.payment.sepa.message,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
 msgstr "Failinimi"
 
-msgctxt "field:account.payment.sepa.message,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
+msgstr "Sõnum"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,message_file_id:"
+msgid "Message File ID"
 msgstr "Sõnum"
 
 msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr "Päritolu"
-
-msgctxt "field:account.payment.sepa.message,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
@@ -199,13 +150,9 @@ msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:account.payment.sepa.message,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.payment.sepa.message,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
+msgctxt "field:party.identifier,sepa_es_suffix:"
+msgid "SEPA Suffix"
+msgstr ""
 
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
@@ -214,6 +161,14 @@ msgstr "SEPA Creditor Identifier Used"
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "SEPA mandaadid"
+
+msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
 
 msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
 msgid "Account Configuration SEPA Mandate Sequence"
@@ -307,6 +262,10 @@ msgid ""
 msgstr ""
 "SEPA kreeditori identifikaator \"%(koodid)\" osapoolele \"%(osapooltele)\" "
 "ei kehti"
+
+msgctxt "model:ir.message,text:msg_party_no_id"
+msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
@@ -516,6 +475,32 @@ msgstr "Teenuse tase"
 msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
 msgid "Shared"
 msgstr "Jagatud"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "SEPA kreeditori identifikaator"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "SEPA kreeditori identifikaator"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
 
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Business to Business"

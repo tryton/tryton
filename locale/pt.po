@@ -10,34 +10,10 @@ msgctxt "field:account.configuration.sepa_mandate_sequence,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.configuration.sepa_mandate_sequence,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt ""
 "field:account.configuration.sepa_mandate_sequence,sepa_mandate_sequence:"
 msgid "SEPA Mandate Sequence"
 msgstr "Sequência de Mandato SEPA"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:account.configuration.sepa_mandate_sequence,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:account.payment,sepa_end_to_end_id:"
 msgid "SEPA End To End ID"
@@ -87,9 +63,19 @@ msgctxt "field:account.payment.journal,sepa_payable_flavor:"
 msgid "Payable Flavor"
 msgstr "Formato para Pagamentos"
 
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Payable Initiator Identifier"
+msgstr "Identificador do Credor SEPA"
+
 msgctxt "field:account.payment.journal,sepa_receivable_flavor:"
 msgid "Receivable Flavor"
 msgstr "Formato para Cobrança"
+
+#, fuzzy
+msgctxt "field:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Receivable Initiator Identifier"
+msgstr "Identificador do Credor SEPA"
 
 msgctxt "field:account.payment.sepa.mandate,account_number:"
 msgid "Account Number"
@@ -98,18 +84,6 @@ msgstr "Número da Conta"
 msgctxt "field:account.payment.sepa.mandate,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:account.payment.sepa.mandate,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:account.payment.sepa.mandate,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:account.payment.sepa.mandate,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.payment.sepa.mandate,identification:"
 msgid "Identification"
@@ -126,10 +100,6 @@ msgstr "Pessoa"
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
 msgstr "Pagamentos"
-
-msgctxt "field:account.payment.sepa.mandate,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
@@ -151,45 +121,26 @@ msgctxt "field:account.payment.sepa.mandate,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:account.payment.sepa.mandate,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:account.payment.sepa.mandate,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
 msgctxt "field:account.payment.sepa.message,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:account.payment.sepa.message,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:account.payment.sepa.message,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
 
 msgctxt "field:account.payment.sepa.message,filename:"
 msgid "Filename"
 msgstr "Nome do arquivo"
 
-msgctxt "field:account.payment.sepa.message,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.payment.sepa.message,message:"
 msgid "Message"
+msgstr "Mensagem"
+
+#, fuzzy
+msgctxt "field:account.payment.sepa.message,message_file_id:"
+msgid "Message File ID"
 msgstr "Mensagem"
 
 msgctxt "field:account.payment.sepa.message,origin:"
 msgid "Origin"
 msgstr "Origem"
-
-msgctxt "field:account.payment.sepa.message,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:account.payment.sepa.message,state:"
 msgid "State"
@@ -199,13 +150,9 @@ msgctxt "field:account.payment.sepa.message,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:account.payment.sepa.message,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:account.payment.sepa.message,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
+msgctxt "field:party.identifier,sepa_es_suffix:"
+msgid "SEPA Suffix"
+msgstr ""
 
 msgctxt "field:party.party,sepa_creditor_identifier_used:"
 msgid "SEPA Creditor Identifier Used"
@@ -214,6 +161,14 @@ msgstr "Identificador do Credor SEPA Utilizado"
 msgctxt "field:party.party,sepa_mandates:"
 msgid "SEPA Mandates"
 msgstr "Mandatos SEPA"
+
+msgctxt "help:account.payment.journal,sepa_payable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
+
+msgctxt "help:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "The identifier used for the initiating party."
+msgstr ""
 
 msgctxt "model:account.configuration.sepa_mandate_sequence,name:"
 msgid "Account Configuration SEPA Mandate Sequence"
@@ -318,6 +273,10 @@ msgid ""
 "The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
 "valid."
 msgstr "O identificador SEPA \"%(code)s\" da pessoa \"%(party)s\" é inválido."
+
+msgctxt "model:ir.message,text:msg_party_no_id"
+msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_payment_process_no_iban"
 msgid "To process payment \"%(payment)s\" you must define IBAN for it."
@@ -536,6 +495,32 @@ msgctxt "selection:account.payment.journal,sepa_charge_bearer:"
 msgid "Shared"
 msgstr "Compartilhado"
 
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identificador do Credor SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_payable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Belgian Enterprise Number"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "SEPA Creditor Identifier"
+msgstr "Identificador do Credor SEPA"
+
+msgctxt "selection:account.payment.journal,sepa_receivable_initiator_id:"
+msgid "Spanish VAT Number"
+msgstr ""
+
 msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Business to Business"
 msgstr "B2B"
@@ -601,49 +586,5 @@ msgid "SEPA"
 msgstr "SEPA"
 
 msgctxt "view:account.payment.journal:"
-msgid "SEPA"
-msgstr "Você tem certeza que deseja cancelar o mandato?"
-
-msgctxt "view:account.payment.group:"
-msgid "Generate Message"
-msgstr "Gerar Mensagem"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Are you sure to cancel the mandate?"
-msgstr "Você tem certeza que quer cancelar o mandato?"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Request"
-msgstr "Solicitar"
-
-msgctxt "view:account.payment.sepa.mandate:"
-msgid "Validate"
-msgstr "Validar"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Do"
-msgstr "Executar"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt "view:account.payment.sepa.message:"
-msgid "Wait"
-msgstr "Esperar"
-
-msgctxt "view:party.party:"
 msgid "SEPA"
 msgstr "SEPA"
