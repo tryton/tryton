@@ -4,90 +4,88 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
-msgstr "Attributssätze"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
-msgstr "Attribut"
+msgstr ""
 
 msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
-msgstr "Attribute"
+msgstr ""
 
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
-msgstr "Name"
+msgstr "Nama"
 
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "field:product.product,attributes:"
 msgid "Attributes"
-msgstr "Attribute"
+msgstr ""
 
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
-msgstr "Hinzufügen von Sätzen zum Attribut."
+msgstr ""
 
 msgctxt "help:product.attribute.set,attributes:"
 msgid "Add attributes to the set."
-msgstr "Fügt das Attribut zum Satz."
+msgstr ""
 
 msgctxt "help:product.attribute.set,name:"
 msgid "The main identifier of product attribute set."
-msgstr "Das Hauptidentifizierungsmerkmal des Attributsatzes."
+msgstr ""
 
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
 msgstr ""
-"Auswahl eine Satzes von Attributen der auf die Varianten angewandt wird."
 
 msgctxt "help:product.product,attributes:"
 msgid "Add attributes to the variant."
-msgstr "Attribute zur Variante hinzufügen."
+msgstr ""
 
 msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
 msgstr ""
-"Auswahl eines Satzes von Attributen der auf die Varianten angewendet wird."
 
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attribute"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attribute"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
-msgstr "Artikelattribut"
+msgstr ""
 
 msgctxt "model:product.attribute-product.attribute-set,name:"
 msgid "Product Attribute - Set"
-msgstr "Artikelattribut - Satz"
+msgstr ""
 
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
-msgstr "Attributssatz"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Attributes"
-msgstr "Attribute"
+msgstr ""

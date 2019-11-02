@@ -2,65 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.attribute,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:product.attribute,create_uid:"
-msgid "Create User"
-msgstr "Oluşturan Kullanıcı"
-
-msgctxt "field:product.attribute,digits:"
-msgid "Digits"
-msgstr "Basamaklar"
-
-msgctxt "field:product.attribute,domain:"
-msgid "Domain"
-msgstr ""
-
-msgctxt "field:product.attribute,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.attribute,name:"
-msgid "Name"
-msgstr "Ad"
-
-msgctxt "field:product.attribute,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:product.attribute,selection:"
-msgid "Selection"
-msgstr "Seçim"
-
-msgctxt "field:product.attribute,selection_json:"
-msgid "Selection JSON"
-msgstr "JSON Seçimi"
-
-msgctxt "field:product.attribute,selection_sorted:"
-msgid "Selection Sorted"
-msgstr "Sıralanmış Seçimi"
-
 msgctxt "field:product.attribute,sets:"
 msgid "Sets"
 msgstr "Kümeler"
-
-msgctxt "field:product.attribute,string:"
-msgid "String"
-msgstr "Söz dizisi"
-
-msgctxt "field:product.attribute,type_:"
-msgid "Type"
-msgstr "Tip"
-
-msgctxt "field:product.attribute,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:product.attribute,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
 
 msgctxt "field:product.attribute-product.attribute-set,attribute:"
 msgid "Attribute"
@@ -70,61 +14,13 @@ msgctxt "field:product.attribute-product.attribute-set,attribute_set:"
 msgid "Set"
 msgstr "Küme"
 
-msgctxt "field:product.attribute-product.attribute-set,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:product.attribute-product.attribute-set,create_uid:"
-msgid "Create User"
-msgstr "Kullanıcı Oluştur"
-
-msgctxt "field:product.attribute-product.attribute-set,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.attribute-product.attribute-set,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:product.attribute-product.attribute-set,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:product.attribute-product.attribute-set,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
-
 msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
 msgstr "Özellikler"
 
-msgctxt "field:product.attribute.set,create_date:"
-msgid "Create Date"
-msgstr "Oluşturma Tarihi"
-
-msgctxt "field:product.attribute.set,create_uid:"
-msgid "Create User"
-msgstr "Kullanıcı Oluştur"
-
-msgctxt "field:product.attribute.set,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
 msgstr "Ad"
-
-msgctxt "field:product.attribute.set,rec_name:"
-msgid "Record Name"
-msgstr "Kayıt Adı"
-
-msgctxt "field:product.attribute.set,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:product.attribute.set,write_uid:"
-msgid "Write User"
-msgstr "Yazan Kullanıcı"
 
 msgctxt "field:product.product,attribute_set:"
 msgid "Attribute Set"
@@ -137,14 +33,6 @@ msgstr "Özellikler"
 msgctxt "field:product.template,attribute_set:"
 msgid "Attribute Set"
 msgstr "Özellik Kümesi"
-
-msgctxt "help:product.attribute,selection:"
-msgid "A couple of key and label separated by \":\" per line"
-msgstr "Her bir satırda anahtar ve etiket çifti \":\" ile ayrılmıştır"
-
-msgctxt "help:product.attribute,selection_sorted:"
-msgid "If the selection must be sorted on label"
-msgstr "Eğer seçim etikete göre sıralanmalı ise"
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
@@ -201,38 +89,6 @@ msgstr "Ürün Özellik - Küme"
 msgctxt "model:product.attribute.set,name:"
 msgid "Product Attribute Set"
 msgstr "Ürün Özellik Kümesi"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Boolean"
-msgstr "Mantıksal Değer"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Char"
-msgstr "Karakter"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Date"
-msgstr "Tarih"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "DateTime"
-msgstr "TarihZaman"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Float"
-msgstr "Reel Sayı"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Integer"
-msgstr "Tamsayı"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Numeric"
-msgstr "Sayısal"
-
-msgctxt "selection:product.attribute,type_:"
-msgid "Selection"
-msgstr "Seçim"
 
 msgctxt "view:product.template:"
 msgid "Attributes"
