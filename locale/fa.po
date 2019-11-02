@@ -10,6 +10,28 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "خریدها"
 
+msgctxt "field:party.party,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+msgctxt "field:party.party,customer_codes:"
+msgid "Customer Codes"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt "field:party.party.customer_code,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "تأمین کنندگان"
@@ -38,18 +60,6 @@ msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "واحد اندازی گیری خرید"
 
-msgctxt "field:purchase.configuration,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.configuration,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.configuration,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "سبک صورتحساب"
@@ -62,86 +72,22 @@ msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "ادامه خرید"
 
-msgctxt "field:purchase.configuration,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.configuration,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.configuration,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.configuration.purchase_method,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.configuration.purchase_method,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.configuration.purchase_method,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt ""
 "field:purchase.configuration.purchase_method,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "سبک صورتحساب"
 
-msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.configuration.purchase_method,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.configuration.purchase_method,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:purchase.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.configuration.sequence,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "ادامه خرید"
 
-msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "دامنه صورتحساب ها"
-
-msgctxt "field:purchase.handle.invoice.exception.ask,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -151,10 +97,6 @@ msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr "دامنه جابجایی ها"
 
-msgctxt "field:purchase.handle.shipment.exception.ask,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "ایجاد دوباره جابجایی ها"
@@ -162,14 +104,6 @@ msgstr "ایجاد دوباره جابجایی ها"
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "مقدار"
-
-msgctxt "field:purchase.line,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.line,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -190,10 +124,6 @@ msgstr "شرح"
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
 msgstr "از مکان"
-
-msgctxt "field:purchase.line,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -247,14 +177,6 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:purchase.line,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.line,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
 msgstr "مالیات ها"
@@ -279,57 +201,13 @@ msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
 
-msgctxt "field:purchase.line,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.line,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.line-account.tax,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
 msgstr "خط خرید"
 
-msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
 msgstr "مالیات"
-
-msgctxt "field:purchase.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.line-ignored-stock.move,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
@@ -339,30 +217,6 @@ msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "خط خرید"
 
-msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.line-recreated-stock.move,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
 msgstr "جابجایی"
@@ -370,18 +224,6 @@ msgstr "جابجایی"
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "خط خرید"
-
-msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
@@ -391,21 +233,9 @@ msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:purchase.product_supplier,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.product_supplier,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "واحد پول"
-
-msgctxt "field:purchase.product_supplier,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
@@ -427,38 +257,10 @@ msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
 msgstr ""
 
-msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.product_supplier,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 #, fuzzy
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "محصول"
-
-msgctxt "field:purchase.product_supplier,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.product_supplier,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.product_supplier.price,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.product_supplier.price,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.product_supplier.price,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
@@ -468,25 +270,9 @@ msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
 
-msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.product_supplier.price,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
-
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
-
-msgctxt "field:purchase.product_supplier.price,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.product_supplier.price,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -495,14 +281,6 @@ msgstr "اظهار نظر"
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "شرکت"
-
-msgctxt "field:purchase.purchase,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.purchase,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -519,10 +297,6 @@ msgstr "تاریخ تحویل"
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "شرح"
-
-msgctxt "field:purchase.purchase,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
@@ -576,10 +350,6 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "تاریخ خرید"
 
-msgctxt "field:purchase.purchase,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
 msgstr "مرجع"
@@ -628,26 +398,6 @@ msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
 msgstr "انبار"
 
-msgctxt "field:purchase.purchase,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.purchase,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "صورت حساب"
@@ -656,30 +406,6 @@ msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "خرید"
 
-msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "صورت حساب"
@@ -687,18 +413,6 @@ msgstr "صورت حساب"
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "خرید"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -715,6 +429,11 @@ msgstr "حالت اعتراضی"
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
 msgstr "تامین کننده"
+
+msgctxt "help:party.party,customer_code:"
+msgid ""
+"The code the party as supplier has assigned to the company as customer."
+msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -739,16 +458,18 @@ msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "برای اصلاح تاریخ تحویل کادر را تیک بزنید."
 
+#, fuzzy
 msgctxt "help:purchase.product_supplier.price,quantity:"
-msgid "Minimal quantity"
+msgid "Minimal quantity."
 msgstr "حداقل مقدار"
 
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr "تاریخ تحویل پیشفرض هر خط."
 
+#, fuzzy
 msgctxt "help:stock.location,supplier_return_location:"
-msgid "If empty the Storage location is used"
+msgid "If empty the Storage location is used."
 msgstr "اگر محل انبار خالی است میتواند مورد استفاده قرار گیرد"
 
 msgctxt "model:ir.action,name:act_invoice_form"
@@ -998,6 +719,10 @@ msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
 msgstr "نهادها/سازمان های مرتبط با خریدها"
 
+msgctxt "model:party.party.customer_code,name:"
+msgid "Party Customer Code"
+msgstr ""
+
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "پیکربندی خریدها"
@@ -1069,6 +794,10 @@ msgstr ":"
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "مقدار"
+
+msgctxt "report:purchase.purchase:"
+msgid "Customer Code:"
+msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
@@ -1250,6 +979,11 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "دوباره ایجاد شده"
 
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Supplier"
+msgstr "تامین کننده"
+
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "تأمین کنندگان"
@@ -1262,8 +996,9 @@ msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "انتخاب جابجایی برای ایجاد دوباره"
 
+#, fuzzy
 msgctxt "view:purchase.line:"
-msgid "Delivery Date"
+msgid "Delivery Date:"
 msgstr "تاریخ تحویل"
 
 msgctxt "view:purchase.line:"
@@ -1285,14 +1020,6 @@ msgstr "سایر اطلاعات"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "خرید"
-
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "بازنشانی در پیش نویس"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"

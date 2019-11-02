@@ -10,6 +10,28 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Ostud"
 
+msgctxt "field:party.party,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+msgctxt "field:party.party,customer_codes:"
+msgid "Customer Codes"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+msgctxt "field:party.party.customer_code,customer_code:"
+msgid "Customer Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:party.party.customer_code,party:"
+msgid "Party"
+msgstr "Osapool"
+
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "Hankijad"
@@ -38,18 +60,6 @@ msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Ostuühik"
 
-msgctxt "field:purchase.configuration,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.configuration,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "Arveldusmeetod"
@@ -62,86 +72,22 @@ msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "Ostu järjestus"
 
-msgctxt "field:purchase.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.configuration,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.configuration,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.configuration.purchase_method,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.configuration.purchase_method,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.configuration.purchase_method,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt ""
 "field:purchase.configuration.purchase_method,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "Arveldusmeetod"
 
-msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.configuration.purchase_method,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.configuration.purchase_method,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:purchase.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.configuration.sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "Ostu järjestus"
 
-msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Domeeni arved"
-
-msgctxt "field:purchase.handle.invoice.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -151,10 +97,6 @@ msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr "Domeeni liikumised"
 
-msgctxt "field:purchase.handle.shipment.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Taasloo liikumised"
@@ -162,14 +104,6 @@ msgstr "Taasloo liikumised"
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Kogus"
-
-msgctxt "field:purchase.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -190,10 +124,6 @@ msgstr "Kirjeldus"
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
 msgstr "Asukohast"
-
-msgctxt "field:purchase.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -247,14 +177,6 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:purchase.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.line,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
 msgstr "Maksud"
@@ -279,57 +201,13 @@ msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
 
-msgctxt "field:purchase.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.line-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
 msgstr "Ostu rida"
 
-msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
 msgstr "Maks"
-
-msgctxt "field:purchase.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.line-ignored-stock.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
@@ -339,30 +217,6 @@ msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ostu rida"
 
-msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.line-recreated-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
 msgstr "Liikumine"
@@ -370,18 +224,6 @@ msgstr "Liikumine"
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Ostu rida"
-
-msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
@@ -391,21 +233,9 @@ msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:purchase.product_supplier,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.product_supplier,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Valuuta"
-
-msgctxt "field:purchase.product_supplier,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
@@ -427,37 +257,9 @@ msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
 msgstr "Variant"
 
-msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.product_supplier,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Toode"
-
-msgctxt "field:purchase.product_supplier,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.product_supplier,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.product_supplier.price,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.product_supplier.price,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.product_supplier.price,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
@@ -467,25 +269,9 @@ msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.product_supplier.price,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
-
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
-
-msgctxt "field:purchase.product_supplier.price,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.product_supplier.price,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -494,14 +280,6 @@ msgstr "Kommentaar"
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:purchase.purchase,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.purchase,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -518,10 +296,6 @@ msgstr "Tarne kuupäev"
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "Kirjeldus"
-
-msgctxt "field:purchase.purchase,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
@@ -575,10 +349,6 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Ostu kuupäev"
 
-msgctxt "field:purchase.purchase,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
 msgstr "Viide"
@@ -627,26 +397,6 @@ msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
 msgstr "Ladu"
 
-msgctxt "field:purchase.purchase,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.purchase,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Arve"
@@ -655,30 +405,6 @@ msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Ost"
 
-msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Arve"
@@ -686,18 +412,6 @@ msgstr "Arve"
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Ost"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -714,6 +428,11 @@ msgstr "Erandi olek"
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
 msgstr "Hankija"
+
+msgctxt "help:party.party,customer_code:"
+msgid ""
+"The code the party as supplier has assigned to the company as customer."
+msgstr ""
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -734,8 +453,9 @@ msgctxt "help:purchase.line,delivery_date_edit:"
 msgid "Check to edit the delivery date."
 msgstr "Vali, et muuta tarnekuupäeva."
 
+#, fuzzy
 msgctxt "help:purchase.product_supplier.price,quantity:"
-msgid "Minimal quantity"
+msgid "Minimal quantity."
 msgstr "Miinimumkogus"
 
 msgctxt "help:purchase.purchase,delivery_date:"
@@ -743,7 +463,7 @@ msgid "The default delivery date for each line."
 msgstr "Vaikimisi tarnekuupäev igale reale."
 
 msgctxt "help:stock.location,supplier_return_location:"
-msgid "If empty the Storage location is used"
+msgid "If empty the Storage location is used."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
@@ -975,6 +695,10 @@ msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Ostuga seotud osapooled"
 
+msgctxt "model:party.party.customer_code,name:"
+msgid "Party Customer Code"
+msgstr ""
+
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Ostu seadistus"
@@ -1046,6 +770,10 @@ msgstr ":"
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
 msgstr "Kogus"
+
+msgctxt "report:purchase.purchase:"
+msgid "Customer Code:"
+msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
@@ -1227,6 +955,11 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Taasloodud"
 
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Supplier"
+msgstr "Hankija"
+
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Hankijad"
@@ -1239,8 +972,9 @@ msgctxt "view:purchase.handle.shipment.exception.ask:"
 msgid "Choose move to recreate"
 msgstr "Vali taasloodavad liikumised"
 
+#, fuzzy
 msgctxt "view:purchase.line:"
-msgid "Delivery Date"
+msgid "Delivery Date:"
 msgstr "Tarne kuupäev"
 
 msgctxt "view:purchase.line:"
@@ -1262,14 +996,6 @@ msgstr "Muu info"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Ost"
-
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Tühista"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Lähtesta mustandiks"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"

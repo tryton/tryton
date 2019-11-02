@@ -6,10 +6,9 @@ msgctxt "field:account.invoice,purchase_exception_state:"
 msgid "Exception State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "field:party.party,customer_code:"
 msgid "Customer Code"
@@ -21,7 +20,7 @@ msgstr ""
 
 msgctxt "field:party.party.customer_code,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:party.party.customer_code,customer_code:"
 msgid "Customer Code"
@@ -29,7 +28,7 @@ msgstr ""
 
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -78,7 +77,7 @@ msgstr ""
 
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
@@ -102,7 +101,7 @@ msgstr ""
 
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -118,7 +117,7 @@ msgstr ""
 
 msgctxt "field:purchase.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
@@ -126,11 +125,11 @@ msgstr ""
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "field:purchase.line,move_done:"
 msgid "Moves Done"
-msgstr ""
+msgstr "Perpindahan Selesai"
 
 msgctxt "field:purchase.line,move_exception:"
 msgid "Moves Exception"
@@ -150,11 +149,11 @@ msgstr ""
 
 msgctxt "field:purchase.line,note:"
 msgid "Note"
-msgstr ""
+msgstr "Catatan"
 
 msgctxt "field:purchase.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:purchase.line,product_supplier:"
 msgid "Supplier's Product"
@@ -164,10 +163,9 @@ msgctxt "field:purchase.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.line,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "field:purchase.line,purchase_state:"
 msgid "Purchase State"
@@ -203,57 +201,55 @@ msgstr ""
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Baris Pembelian"
 
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Baris Pembelian"
 
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Baris Pembelian"
 
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata uang"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Nama"
 
 msgctxt "field:purchase.product_supplier,party:"
 msgid "Supplier"
-msgstr ""
+msgstr "Pemasok"
 
-#, fuzzy
 msgctxt "field:purchase.product_supplier,prices:"
 msgid "Prices"
-msgstr "Prices"
+msgstr ""
 
 msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
@@ -261,11 +257,11 @@ msgstr ""
 
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Pemasok"
 
 msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
@@ -277,15 +273,15 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentar"
 
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Mata uang"
 
 msgctxt "field:purchase.purchase,currency_digits:"
 msgid "Currency Digits"
@@ -297,7 +293,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
@@ -311,10 +307,9 @@ msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,invoices:"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "field:purchase.purchase,invoices_ignored:"
 msgid "Ignored Invoices"
@@ -326,19 +321,19 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:purchase.purchase,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:purchase.purchase,number:"
 msgid "Number"
-msgstr ""
+msgstr "Nomor"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:purchase.purchase,party_lang:"
 msgid "Party Language"
@@ -350,11 +345,11 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
-msgstr ""
+msgstr "Tanggal Pembelian"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
-msgstr ""
+msgstr "Referensi"
 
 msgctxt "field:purchase.purchase,shipment_returns:"
 msgid "Shipment Returns"
@@ -364,10 +359,9 @@ msgctxt "field:purchase.purchase,shipment_state:"
 msgid "Shipment State"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:purchase.purchase,shipments:"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr ""
 
 msgctxt "field:purchase.purchase,state:"
 msgid "State"
@@ -375,7 +369,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,tax_amount:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "field:purchase.purchase,tax_amount_cache:"
 msgid "Tax Cache"
@@ -383,7 +377,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,total_amount:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgctxt "field:purchase.purchase,total_amount_cache:"
 msgid "Total Cache"
@@ -399,36 +393,31 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr "Faktur"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
-msgstr "Invoices"
+msgstr "Faktur"
 
-#, fuzzy
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move,purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "field:stock.move,purchase_exception_state:"
 msgid "Exception State"
@@ -436,7 +425,7 @@ msgstr ""
 
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
-msgstr ""
+msgstr "Pemasok"
 
 msgctxt "help:party.party,customer_code:"
 msgid ""
@@ -476,93 +465,91 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Parties associated to Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_product_supplier_price_form"
 msgid "Prices"
-msgstr "Prices"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_configuration_form"
 msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgstr "Konfigurasi Pembelian"
 
 msgctxt "model:ir.action,name:act_purchase_form"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "model:ir.action,name:act_purchase_form2"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_return_form"
 msgid "Returns"
-msgstr "Returns"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_shipment_form"
 msgid "Shipments"
-msgstr "Shipments"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:report_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Pembelian"
 
 msgctxt "model:ir.action,name:wizard_invoice_handle_exception"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_purchase_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_confirmed"
 msgid "Confirmed"
-msgstr "Confirmed"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_purchase_uom"
 msgid ""
@@ -630,166 +617,156 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "model:ir.model.button,string:purchase_confirm_button"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Konfirmasi"
 
 msgctxt "model:ir.model.button,string:purchase_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rancangan"
 
 msgctxt "model:ir.model.button,string:purchase_hande_invoice_exception_button"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_shipment_exception_button"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_modify_header_button"
 msgid "Modify Header"
-msgstr "Modify Header"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:purchase_process_button"
 msgid "Process"
-msgstr "Process"
+msgstr "Proses"
 
 msgctxt "model:ir.model.button,string:purchase_quote_button"
 msgid "Quote"
-msgstr "Quote"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_product_supplier"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_purchase"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.sequence,name:sequence_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Pembelian"
 
-#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Pembelian"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfigurasi"
 
 msgctxt "model:ir.ui.menu,name:menu_product_supplier"
 msgid "Product Suppliers"
-msgstr "Product Suppliers"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Pembelian"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_configuration"
 msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgstr "Konfigurasi Pembelian"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_form"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Pelaporan"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
-msgstr "Parties associated to Purchases"
+msgstr "Pihak terkait dengan Pembelian"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
-msgstr "Purchase Configuration"
+msgstr "Konfigurasi Pembelian"
 
 msgctxt "model:purchase.configuration.purchase_method,name:"
 msgid "Purchase Configuration Purchase Method"
-msgstr ""
+msgstr "Konfigurasi Pembelian Metode Pembelian"
 
 msgctxt "model:purchase.configuration.sequence,name:"
 msgid "Purchase Configuration Sequence"
-msgstr ""
+msgstr "Urutan Konfigurasi Pembelian"
 
-#, fuzzy
 msgctxt "model:purchase.handle.invoice.exception.ask,name:"
 msgid "Handle Invoice Exception"
-msgstr "Handle Invoice Exception"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:purchase.handle.shipment.exception.ask,name:"
 msgid "Handle Shipment Exception"
-msgstr "Handle Shipment Exception"
+msgstr ""
 
 msgctxt "model:purchase.line,name:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "Baris Pembelian"
 
 msgctxt "model:purchase.line-account.tax,name:"
 msgid "Purchase Line - Tax"
-msgstr ""
+msgstr "Baris Pembelian - Pajak"
 
 msgctxt "model:purchase.line-ignored-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr ""
+msgstr "Baris Pembelian - Perpindahan Diabaikan"
 
 msgctxt "model:purchase.line-recreated-stock.move,name:"
 msgid "Purchase Line - Ignored Move"
-msgstr ""
+msgstr "Baris Pembelian - Perpindahan Diabaikan"
 
-#, fuzzy
 msgctxt "model:purchase.product_supplier,name:"
 msgid "Product Supplier"
-msgstr "Product Suppliers"
+msgstr "Pemasok Produk"
 
 msgctxt "model:purchase.product_supplier.price,name:"
 msgid "Product Supplier Price"
-msgstr ""
+msgstr "Harga Pemasok Produk"
 
-#, fuzzy
 msgctxt "model:purchase.purchase,name:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
 msgctxt "model:purchase.purchase-ignored-account.invoice,name:"
 msgid "Purchase - Ignored Invoice"
-msgstr ""
+msgstr "Pembelian - Faktur yang Diabaikan"
 
 msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
-msgstr "Purchase"
+msgstr "Pembelian"
 
 msgctxt "model:res.group,name:group_purchase_admin"
 msgid "Purchase Administrator"
-msgstr "Purchase Administrator"
+msgstr "Administrator Pembelian"
 
-#, fuzzy
 msgctxt "report:purchase.purchase:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:purchase.purchase:"
 msgid "Amount"
-msgstr ""
+msgstr "Jumlah"
 
 msgctxt "report:purchase.purchase:"
 msgid "Customer Code:"
@@ -797,7 +774,7 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Date:"
-msgstr ""
+msgstr "Tanggal:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Delivery Address:"
@@ -805,19 +782,19 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "report:purchase.purchase:"
 msgid "Description:"
-msgstr ""
+msgstr "Deskripsi:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Draft Purchase Order"
-msgstr ""
+msgstr "Draf Pesanan Pembelian"
 
 msgctxt "report:purchase.purchase:"
 msgid "Purchase Order N°:"
-msgstr ""
+msgstr "Pesanan Pembelian N°:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Quantity"
@@ -841,11 +818,11 @@ msgstr ""
 
 msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
-msgstr ""
+msgstr "Total (di luar pajak):"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total:"
-msgstr ""
+msgstr "Total:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
@@ -859,38 +836,33 @@ msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Canceled"
-msgstr "Cancel"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Confirmed"
-msgstr "Confirm"
+msgstr ""
 
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Done"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.line,purchase_state:"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
-msgstr ""
+msgstr "Komentar"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Line"
@@ -922,7 +894,7 @@ msgstr ""
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 msgctxt "selection:purchase.purchase,invoice_state:"
 msgid "Paid"
@@ -938,7 +910,7 @@ msgstr ""
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "None"
-msgstr ""
+msgstr "Tidak ada"
 
 msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Received"
@@ -948,34 +920,29 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Canceled"
-msgstr "Cancel"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Confirmed"
-msgstr "Confirm"
+msgstr ""
 
 msgctxt "selection:purchase.purchase,state:"
 msgid "Done"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr ""
 
 msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Ignored"
@@ -985,10 +952,9 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Supplier"
-msgstr "Product Suppliers"
+msgstr "Pemasok"
 
 msgctxt "view:product.template:"
 msgid "Suppliers"
@@ -1008,7 +974,7 @@ msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "General"
-msgstr ""
+msgstr "Umum"
 
 msgctxt "view:purchase.line:"
 msgid "Notes"
@@ -1020,35 +986,31 @@ msgstr ""
 
 msgctxt "view:purchase.purchase:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
-#, fuzzy
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
-msgstr "Purchases"
+msgstr "Pembelian"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "wizard_button:purchase.handle.shipment.exception,ask,handle:"
 msgid "OK"
-msgstr ""
+msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.modify_header,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"

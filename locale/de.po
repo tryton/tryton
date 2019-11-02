@@ -10,6 +10,26 @@ msgctxt "field:account.invoice,purchases:"
 msgid "Purchases"
 msgstr "Einkäufe"
 
+msgctxt "field:party.party,customer_code:"
+msgid "Customer Code"
+msgstr "Kundennummer"
+
+msgctxt "field:party.party,customer_codes:"
+msgid "Customer Codes"
+msgstr "Kundennummern"
+
+msgctxt "field:party.party.customer_code,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:party.party.customer_code,customer_code:"
+msgid "Customer Code"
+msgstr "Kundennummer"
+
+msgctxt "field:party.party.customer_code,party:"
+msgid "Party"
+msgstr "Partei"
+
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
 msgstr "Lieferanten"
@@ -38,18 +58,6 @@ msgctxt "field:product.template,purchase_uom:"
 msgid "Purchase UOM"
 msgstr "Maßeinheit Einkauf"
 
-msgctxt "field:purchase.configuration,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.configuration,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.configuration,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "Rechnungsstellung Einkauf"
@@ -62,86 +70,22 @@ msgctxt "field:purchase.configuration,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "Nummernkreis Einkauf"
 
-msgctxt "field:purchase.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.configuration,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.configuration,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.configuration.purchase_method,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.configuration.purchase_method,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.configuration.purchase_method,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt ""
 "field:purchase.configuration.purchase_method,purchase_invoice_method:"
 msgid "Invoice Method"
 msgstr "Rechnungsstellung Einkauf"
 
-msgctxt "field:purchase.configuration.purchase_method,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.configuration.purchase_method,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.configuration.purchase_method,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:purchase.configuration.sequence,company:"
 msgid "Company"
 msgstr "Unternehmen"
-
-msgctxt "field:purchase.configuration.sequence,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.configuration.sequence,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.configuration.sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.configuration.sequence,purchase_sequence:"
 msgid "Purchase Sequence"
 msgstr "Nummernkreis Einkauf"
 
-msgctxt "field:purchase.configuration.sequence,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.configuration.sequence,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.configuration.sequence,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:purchase.handle.invoice.exception.ask,domain_invoices:"
 msgid "Domain Invoices"
 msgstr "Wertebereich Rechnungen (Domain)"
-
-msgctxt "field:purchase.handle.invoice.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.handle.invoice.exception.ask,recreate_invoices:"
 msgid "Recreate Invoices"
@@ -151,10 +95,6 @@ msgctxt "field:purchase.handle.shipment.exception.ask,domain_moves:"
 msgid "Domain Moves"
 msgstr "Wertebereich Bewegungen (Domain)"
 
-msgctxt "field:purchase.handle.shipment.exception.ask,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Lagerbewegungen neu erstellen"
@@ -162,14 +102,6 @@ msgstr "Lagerbewegungen neu erstellen"
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Betrag"
-
-msgctxt "field:purchase.line,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.line,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -190,10 +122,6 @@ msgstr "Beschreibung"
 msgctxt "field:purchase.line,from_location:"
 msgid "From Location"
 msgstr "Von Lagerort"
-
-msgctxt "field:purchase.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.line,invoice_lines:"
 msgid "Invoice Lines"
@@ -247,14 +175,6 @@ msgctxt "field:purchase.line,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
-msgctxt "field:purchase.line,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.line,sequence:"
-msgid "Sequence"
-msgstr "Reihenfolge"
-
 msgctxt "field:purchase.line,taxes:"
 msgid "Taxes"
 msgstr "Steuern"
@@ -279,57 +199,13 @@ msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
 
-msgctxt "field:purchase.line,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.line,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.line-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.line-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.line-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
 msgstr "Einkaufsposition"
 
-msgctxt "field:purchase.line-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:purchase.line-account.tax,tax:"
 msgid "Tax"
 msgstr "Steuer"
-
-msgctxt "field:purchase.line-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.line-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.line-ignored-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.line-ignored-stock.move,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.line-ignored-stock.move,move:"
 msgid "Move"
@@ -339,30 +215,6 @@ msgctxt "field:purchase.line-ignored-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Einkaufsposition"
 
-msgctxt "field:purchase.line-ignored-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.line-ignored-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.line-recreated-stock.move,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.line-recreated-stock.move,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.line-recreated-stock.move,move:"
 msgid "Move"
 msgstr "Bewegung"
@@ -371,41 +223,17 @@ msgctxt "field:purchase.line-recreated-stock.move,purchase_line:"
 msgid "Purchase Line"
 msgstr "Einkaufsposition"
 
-msgctxt "field:purchase.line-recreated-stock.move,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.line-recreated-stock.move,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:purchase.product_supplier,code:"
 msgid "Code"
-msgstr "Code Lieferant"
+msgstr "Artikelnummer Lieferant"
 
 msgctxt "field:purchase.product_supplier,company:"
 msgid "Company"
 msgstr "Lieferfirma"
 
-msgctxt "field:purchase.product_supplier,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.product_supplier,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:purchase.product_supplier,currency:"
 msgid "Currency"
 msgstr "Währung"
-
-msgctxt "field:purchase.product_supplier,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.product_supplier,lead_time:"
 msgid "Lead Time"
@@ -427,37 +255,9 @@ msgctxt "field:purchase.product_supplier,product:"
 msgid "Variant"
 msgstr "Variante"
 
-msgctxt "field:purchase.product_supplier,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.product_supplier,sequence:"
-msgid "Sequence"
-msgstr "Reihenfolge"
-
 msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Artikel"
-
-msgctxt "field:purchase.product_supplier,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.product_supplier,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.product_supplier.price,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.product_supplier.price,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.product_supplier.price,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
@@ -467,25 +267,9 @@ msgctxt "field:purchase.product_supplier.price,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
-msgctxt "field:purchase.product_supplier.price,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.product_supplier.price,sequence:"
-msgid "Sequence"
-msgstr "Reihenfolge"
-
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Einzelpreis"
-
-msgctxt "field:purchase.product_supplier.price,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.product_supplier.price,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -494,14 +278,6 @@ msgstr "Kommentar"
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Unternehmen"
-
-msgctxt "field:purchase.purchase,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.purchase,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -518,10 +294,6 @@ msgstr "Lieferdatum"
 msgctxt "field:purchase.purchase,description:"
 msgid "Description"
 msgstr "Beschreibung"
-
-msgctxt "field:purchase.purchase,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.purchase,invoice_address:"
 msgid "Invoice Address"
@@ -575,10 +347,6 @@ msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Bestelldatum"
 
-msgctxt "field:purchase.purchase,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
 msgstr "Bestellnummer"
@@ -627,26 +395,6 @@ msgctxt "field:purchase.purchase,warehouse:"
 msgid "Warehouse"
 msgstr "Warenlager"
 
-msgctxt "field:purchase.purchase,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.purchase,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.purchase-ignored-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Rechnung"
@@ -655,30 +403,6 @@ msgctxt "field:purchase.purchase-ignored-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
 
-msgctxt "field:purchase.purchase-ignored-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.purchase-ignored-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.purchase-recreated-account.invoice,invoice:"
 msgid "Invoice"
 msgstr "Rechnung"
@@ -686,18 +410,6 @@ msgstr "Rechnung"
 msgctxt "field:purchase.purchase-recreated-account.invoice,purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:purchase.purchase-recreated-account.invoice,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:stock.location,supplier_return_location:"
 msgid "Supplier Return"
@@ -714,6 +426,13 @@ msgstr "Status Vorbehalt"
 msgctxt "field:stock.move,supplier:"
 msgid "Supplier"
 msgstr "Lieferant"
+
+msgctxt "help:party.party,customer_code:"
+msgid ""
+"The code the party as supplier has assigned to the company as customer."
+msgstr ""
+"Nummer die diese Partei als Lieferant dem Unternehmen als ihr Kunde "
+"zugewiesen hat."
 
 msgctxt "help:purchase.configuration,purchase_process_after:"
 msgid ""
@@ -741,20 +460,20 @@ msgid "Check to edit the delivery date."
 msgstr "Aktivieren um das Lieferdatum zu ändern."
 
 msgctxt "help:purchase.product_supplier.price,quantity:"
-msgid "Minimal quantity"
-msgstr "Minimale Menge"
+msgid "Minimal quantity."
+msgstr "Minimale Menge."
 
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr "Das Standard-Lieferdatum für jede Position."
 
 msgctxt "help:stock.location,supplier_return_location:"
-msgid "If empty the Storage location is used"
+msgid "If empty the Storage location is used."
 msgstr "Wenn kein Wert eingetragen ist, wird die Lagerzone verwendet."
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Rechnungseingang"
+msgstr "Rechnungen"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
@@ -1002,6 +721,10 @@ msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
 msgstr "Parteien mit Einkäufen"
 
+msgctxt "model:party.party.customer_code,name:"
+msgid "Party Customer Code"
+msgstr "Partei Kundennummer"
+
 msgctxt "model:purchase.configuration,name:"
 msgid "Purchase Configuration"
 msgstr "Einstellungen Einkauf"
@@ -1075,6 +798,10 @@ msgid "Amount"
 msgstr "Betrag"
 
 msgctxt "report:purchase.purchase:"
+msgid "Customer Code:"
+msgstr "Kundennummer:"
+
+msgctxt "report:purchase.purchase:"
 msgid "Date:"
 msgstr "Datum:"
 
@@ -1116,15 +843,15 @@ msgstr "Steuern"
 
 msgctxt "report:purchase.purchase:"
 msgid "Taxes:"
-msgstr "Steuern"
+msgstr "Steuern:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total (excl. taxes):"
-msgstr "Netto"
+msgstr "Netto:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Total:"
-msgstr "Gesamt"
+msgstr "Gesamt:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
@@ -1254,6 +981,10 @@ msgctxt "selection:stock.move,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Neu erstellt"
 
+msgctxt "view:party.party:"
+msgid "Supplier"
+msgstr "Lieferant"
+
 msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Lieferanten"
@@ -1267,8 +998,8 @@ msgid "Choose move to recreate"
 msgstr "Lagerbewegungen zur Neuerstellung auswählen"
 
 msgctxt "view:purchase.line:"
-msgid "Delivery Date"
-msgstr "Lieferdatum"
+msgid "Delivery Date:"
+msgstr "Lieferdatum:"
 
 msgctxt "view:purchase.line:"
 msgid "General"
@@ -1289,14 +1020,6 @@ msgstr "Sonstiges"
 msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Einkauf"
-
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Abbrechen"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Auf Entwurf zurücksetzen"
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
@@ -1321,31 +1044,3 @@ msgstr "Abbrechen"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Ändern"
-
-msgctxt "view:purchase.purchase:"
-msgid "Cancel"
-msgstr "Annullieren"
-
-msgctxt "view:purchase.purchase:"
-msgid "Confirm"
-msgstr "Bestellen"
-
-msgctxt "view:purchase.purchase:"
-msgid "Draft"
-msgstr "Entwurf"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Invoice Exception"
-msgstr "Rechnungsvorbehalt bearbeiten"
-
-msgctxt "view:purchase.purchase:"
-msgid "Handle Shipment Exception"
-msgstr "Liefervorbehalt bearbeiten"
-
-msgctxt "view:purchase.purchase:"
-msgid "Process"
-msgstr "Ausführen"
-
-msgctxt "view:purchase.purchase:"
-msgid "Quote"
-msgstr "Anfrage"
