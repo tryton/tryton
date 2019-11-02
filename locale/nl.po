@@ -4,54 +4,44 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:production.split.start,count:"
 msgid "Count"
-msgstr ""
+msgstr "aantal"
 
-#, fuzzy
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:production.split.start,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalen eenheid"
 
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "maateenheid"
 
 msgctxt "field:production.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "maateenheid categorie"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
-msgstr ""
+msgstr "Het limiet aantal producties"
 
 msgctxt "model:ir.action,name:wizard_split_production"
 msgid "Split Production"
-msgstr "Split Production"
+msgstr "Productie opsplitsen"
 
 msgctxt "model:ir.model.button,string:production_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
-#, fuzzy
 msgctxt "model:production.split.start,name:"
 msgid "Split Production"
-msgstr "Split Production"
+msgstr "Productie opsplitsen"
 
-#, fuzzy
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
 msgstr "Geannuleerd"
 
-#, fuzzy
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"

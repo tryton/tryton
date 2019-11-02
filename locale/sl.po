@@ -6,10 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "Zgornja meja"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Količina"
@@ -50,7 +46,3 @@ msgstr "Prekliči"
 msgctxt "wizard_button:production.split,start,split:"
 msgid "Split"
 msgstr "Razdeli"
-
-msgctxt "view:production:"
-msgid "Split"
-msgstr "Razdelitev"

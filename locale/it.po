@@ -7,11 +7,6 @@ msgid "Count"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"

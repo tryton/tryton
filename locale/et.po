@@ -6,10 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "Loend"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Kogus"

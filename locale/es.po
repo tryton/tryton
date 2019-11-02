@@ -6,10 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "Contador"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
@@ -47,9 +43,5 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 msgctxt "wizard_button:production.split,start,split:"
-msgid "Split"
-msgstr "Dividir"
-
-msgctxt "view:production:"
 msgid "Split"
 msgstr "Dividir"

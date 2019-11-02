@@ -6,17 +6,13 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "Comptador"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
 msgctxt "field:production.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:production.split.start,uom:"
 msgid "Uom"
@@ -47,9 +43,5 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:production.split,start,split:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:production:"
 msgid "Split"
 msgstr "Divideix"

@@ -6,10 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "Adet"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Miktar"
@@ -28,7 +24,7 @@ msgstr "Ölçü Birimi Kategorisi"
 
 msgctxt "help:production.split.start,count:"
 msgid "The limit number of productions"
-msgstr "Üretimler sayısı limiti "
+msgstr "Üretimler sayısı limiti"
 
 #, fuzzy
 msgctxt "model:ir.action,name:wizard_split_production"
@@ -48,9 +44,5 @@ msgid "Cancel"
 msgstr "Vazgeç"
 
 msgctxt "wizard_button:production.split,start,split:"
-msgid "Split"
-msgstr "Bölme"
-
-msgctxt "view:production:"
 msgid "Split"
 msgstr "Bölme"

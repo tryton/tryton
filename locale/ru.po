@@ -8,11 +8,6 @@ msgid "Count"
 msgstr "Кол-во"
 
 #, fuzzy
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Кол-во"

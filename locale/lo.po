@@ -6,10 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr "ນັບ"
 
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
@@ -48,9 +44,5 @@ msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
 msgctxt "wizard_button:production.split,start,split:"
-msgid "Split"
-msgstr "ແຍກ"
-
-msgctxt "view:production:"
 msgid "Split"
 msgstr "ແຍກ"

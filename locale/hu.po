@@ -7,11 +7,6 @@ msgid "Count"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
@@ -55,10 +50,5 @@ msgstr "Mégse"
 
 #, fuzzy
 msgctxt "wizard_button:production.split,start,split:"
-msgid "Split"
-msgstr "Beosztás"
-
-#, fuzzy
-msgctxt "view:production:"
 msgid "Split"
 msgstr "Beosztás"

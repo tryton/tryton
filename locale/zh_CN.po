@@ -6,11 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:production.split.start,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr ""
