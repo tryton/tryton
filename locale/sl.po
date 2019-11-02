@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.reporting.aeat.start,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
 msgstr ""
@@ -26,24 +22,12 @@ msgctxt "field:account.reporting.es_ec_operation_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr ""
 
-msgctxt "field:account.reporting.es_ec_operation_list,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.reporting.es_ec_operation_list,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
-
-msgctxt "field:account.reporting.es_ec_operation_list,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
@@ -54,28 +38,12 @@ msgctxt "field:account.reporting.es_ec_operation_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr ""
 
-msgctxt "field:account.reporting.es_ec_operation_list,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
 msgid "Company"
 msgstr ""
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
-
-msgctxt "field:account.reporting.es_ec_operation_list.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,period:"
@@ -94,14 +62,6 @@ msgctxt "field:account.reporting.vat_list_es,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr ""
 
-msgctxt "field:account.reporting.vat_list_es,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.reporting.vat_list_es,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr ""
@@ -118,10 +78,6 @@ msgctxt "field:account.reporting.vat_list_es,fourth_period_amount:"
 msgid "Fourth Period Amount"
 msgstr ""
 
-msgctxt "field:account.reporting.vat_list_es,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.reporting.vat_list_es,party:"
 msgid "Party"
 msgstr ""
@@ -134,10 +90,6 @@ msgctxt "field:account.reporting.vat_list_es,province_code:"
 msgid "Province Code"
 msgstr ""
 
-msgctxt "field:account.reporting.vat_list_es,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.reporting.vat_list_es,second_period_amount:"
 msgid "Second Period Amount"
 msgstr ""
@@ -146,24 +98,12 @@ msgctxt "field:account.reporting.vat_list_es,third_period_amount:"
 msgid "Third Period Amount"
 msgstr ""
 
-msgctxt "field:account.reporting.vat_list_es,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.reporting.vat_list_es,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.reporting.vat_list_es.context,company:"
 msgid "Company"
 msgstr ""
 
 msgctxt "field:account.reporting.vat_list_es.context,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:account.reporting.vat_list_es.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.tax,es_ec_purchases_list_code:"

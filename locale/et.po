@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.reporting.aeat.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
 msgstr "Perioodid"
@@ -26,14 +22,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr "Ettevõtte TIN kood"
 
-msgctxt "field:account.reporting.es_ec_operation_list,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.reporting.es_ec_operation_list,create_uid:"
-msgid "Create User"
-msgstr "Loonud kasutaja"
-
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -41,10 +29,6 @@ msgstr "Valuuta"
 msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtuse arv"
-
-msgctxt "field:account.reporting.es_ec_operation_list,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
@@ -54,18 +38,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "Osapoole TIN kood"
 
-msgctxt "field:account.reporting.es_ec_operation_list,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_uid:"
-msgid "Write User"
-msgstr "Kirjutanud kaustaja"
-
 msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -73,10 +45,6 @@ msgstr "Ettevõte"
 msgctxt "field:account.reporting.es_ec_operation_list.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Majandusaasta"
-
-msgctxt "field:account.reporting.es_ec_operation_list.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,period:"
 msgid "Period"
@@ -94,14 +62,6 @@ msgctxt "field:account.reporting.vat_list_es,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr "Ettevõtte TIN kood"
 
-msgctxt "field:account.reporting.vat_list_es,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.reporting.vat_list_es,create_uid:"
-msgid "Create User"
-msgstr "Loonud kasutaja"
-
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -118,10 +78,6 @@ msgctxt "field:account.reporting.vat_list_es,fourth_period_amount:"
 msgid "Fourth Period Amount"
 msgstr "Neljana perioodi väärtus"
 
-msgctxt "field:account.reporting.vat_list_es,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.reporting.vat_list_es,party:"
 msgid "Party"
 msgstr "Osapool"
@@ -134,10 +90,6 @@ msgctxt "field:account.reporting.vat_list_es,province_code:"
 msgid "Province Code"
 msgstr "Maakonna kood"
 
-msgctxt "field:account.reporting.vat_list_es,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimetus"
-
 msgctxt "field:account.reporting.vat_list_es,second_period_amount:"
 msgid "Second Period Amount"
 msgstr "Teise perioodi väärtus"
@@ -146,14 +98,6 @@ msgctxt "field:account.reporting.vat_list_es,third_period_amount:"
 msgid "Third Period Amount"
 msgstr "Kolmanda perioodi väärtus"
 
-msgctxt "field:account.reporting.vat_list_es,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:account.reporting.vat_list_es,write_uid:"
-msgid "Write User"
-msgstr "Kirjutanud kasutaja"
-
 msgctxt "field:account.reporting.vat_list_es.context,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -161,10 +105,6 @@ msgstr "Ettevõte"
 msgctxt "field:account.reporting.vat_list_es.context,date:"
 msgid "Date"
 msgstr "Kuupäev"
-
-msgctxt "field:account.reporting.vat_list_es.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"

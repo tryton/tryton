@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.reporting.aeat.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
 msgstr "Périodes"
@@ -26,14 +22,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr "Identifiant de taxe de la société"
 
-msgctxt "field:account.reporting.es_ec_operation_list,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.reporting.es_ec_operation_list,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:account.reporting.es_ec_operation_list,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -41,10 +29,6 @@ msgstr "Devise"
 msgctxt "field:account.reporting.es_ec_operation_list,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
-
-msgctxt "field:account.reporting.es_ec_operation_list,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.reporting.es_ec_operation_list,party:"
 msgid "Party"
@@ -54,18 +38,6 @@ msgctxt "field:account.reporting.es_ec_operation_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
 msgstr "Identifiant de taxe du tiers"
 
-msgctxt "field:account.reporting.es_ec_operation_list,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:account.reporting.es_ec_operation_list,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
 msgid "Company"
 msgstr "Société"
@@ -73,10 +45,6 @@ msgstr "Société"
 msgctxt "field:account.reporting.es_ec_operation_list.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Année fiscale"
-
-msgctxt "field:account.reporting.es_ec_operation_list.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.reporting.es_ec_operation_list.context,period:"
 msgid "Period"
@@ -94,14 +62,6 @@ msgctxt "field:account.reporting.vat_list_es,company_tax_identifier:"
 msgid "Company Tax Identifier"
 msgstr "Identifiant de taxe de la société"
 
-msgctxt "field:account.reporting.vat_list_es,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.reporting.vat_list_es,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:account.reporting.vat_list_es,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -118,10 +78,6 @@ msgctxt "field:account.reporting.vat_list_es,fourth_period_amount:"
 msgid "Fourth Period Amount"
 msgstr "Montant de la quatrième période"
 
-msgctxt "field:account.reporting.vat_list_es,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.reporting.vat_list_es,party:"
 msgid "Party"
 msgstr "Tiers"
@@ -134,10 +90,6 @@ msgctxt "field:account.reporting.vat_list_es,province_code:"
 msgid "Province Code"
 msgstr "Code de province"
 
-msgctxt "field:account.reporting.vat_list_es,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:account.reporting.vat_list_es,second_period_amount:"
 msgid "Second Period Amount"
 msgstr "Montant de la deuxième période"
@@ -146,14 +98,6 @@ msgctxt "field:account.reporting.vat_list_es,third_period_amount:"
 msgid "Third Period Amount"
 msgstr "Montant de la troisième période"
 
-msgctxt "field:account.reporting.vat_list_es,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:account.reporting.vat_list_es,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:account.reporting.vat_list_es.context,company:"
 msgid "Company"
 msgstr "Société"
@@ -161,10 +105,6 @@ msgstr "Société"
 msgctxt "field:account.reporting.vat_list_es.context,date:"
 msgid "Date"
 msgstr "Date"
-
-msgctxt "field:account.reporting.vat_list_es.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
@@ -196,7 +136,7 @@ msgstr "Code de province espagnole"
 
 msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
-msgstr "Entrer 99 pour les tiers non espagnoles"
+msgstr "Entrer 99 pour les tiers non espagnoles."
 
 msgctxt "model:account.reporting.aeat.start,name:"
 msgid "Print AEAT Start"
