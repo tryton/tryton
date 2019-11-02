@@ -6,72 +6,62 @@ msgctxt "field:account.configuration,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Perusahaan"
 
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.invoice.line,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
-msgstr "Társaság"
+msgstr "Perusahaan"
 
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Baris Faktur"
 
-#, fuzzy
 msgctxt "field:account.landed_cost,number:"
 msgid "Number"
-msgstr "Szám"
+msgstr "Nomor"
 
 msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Szállítási tétel"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
-msgstr "Állapot"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr "Szállítási tétel"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.product,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:product.template,landed_cost:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
@@ -81,10 +71,9 @@ msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
@@ -92,23 +81,22 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_all"
 msgid "All"
-msgstr "Összes"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_draft"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rancangan"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_landed_cost_form_domain_posted"
 msgid "Posted"
-msgstr "Posted"
+msgstr ""
 
 msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
 msgid "Are you sure you want to post the landed cost?"
@@ -116,57 +104,52 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Batal"
 
 msgctxt "model:ir.model.button,string:landed_cost_draft_button"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rancangan"
 
 msgctxt "model:ir.model.button,string:landed_cost_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_landed_cost"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_landed_cost"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_landed_cost"
 msgid "Landed Costs"
-msgstr "Landed Costs"
+msgstr ""
 
 msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Canceled"
-msgstr "Mégse"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Draft"
-msgstr "Draft"
+msgstr "Rancangan"
 
-#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
 msgid "Posted"
-msgstr "Posted"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Landed Cost"
-msgstr "Landed Cost"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.configuration:"
 msgid "Sequence"
-msgstr "Számkör"
+msgstr "Urutan"

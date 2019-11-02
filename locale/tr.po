@@ -10,33 +10,9 @@ msgctxt "field:account.configuration.landed_cost_sequence,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.configuration.landed_cost_sequence,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.configuration.landed_cost_sequence,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.configuration.landed_cost_sequence,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt ""
 "field:account.configuration.landed_cost_sequence,landed_cost_sequence:"
 msgid "Landed Cost Sequence"
-msgstr ""
-
-msgctxt "field:account.configuration.landed_cost_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.configuration.landed_cost_sequence,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.configuration.landed_cost_sequence,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
@@ -52,18 +28,6 @@ msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.landed_cost,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.landed_cost,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.landed_cost,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.landed_cost,invoice_lines:"
 msgid "Invoice Lines"
 msgstr ""
@@ -76,10 +40,6 @@ msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr ""
 
-msgctxt "field:account.landed_cost,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
 msgstr ""
@@ -88,45 +48,13 @@ msgctxt "field:account.landed_cost,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:account.landed_cost,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.landed_cost,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.landed_cost-stock.shipment.in,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.landed_cost-stock.shipment.in,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.landed_cost-stock.shipment.in,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
 msgstr "Landed Cost"
 
-msgctxt "field:account.landed_cost-stock.shipment.in,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.landed_cost-stock.shipment.in,shipment:"
 msgid "Shipment"
-msgstr ""
-
-msgctxt "field:account.landed_cost-stock.shipment.in,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.landed_cost-stock.shipment.in,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
