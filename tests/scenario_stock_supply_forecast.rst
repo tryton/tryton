@@ -98,4 +98,4 @@ There is a draft purchase request after confirming the forecast::
     >>> pr.product == product
     True
     >>> pr.quantity
-    5.0
+    10.0
