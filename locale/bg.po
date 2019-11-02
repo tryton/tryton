@@ -25,21 +25,6 @@ msgid "Code"
 msgstr "Код"
 
 #, fuzzy
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Движения"
@@ -48,10 +33,6 @@ msgstr "Движения"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Родител"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -67,48 +48,9 @@ msgid "Type"
 msgstr "Вид"
 
 #, fuzzy
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-#, fuzzy
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Условие за плащане"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"

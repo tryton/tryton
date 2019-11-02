@@ -23,18 +23,6 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Kód"
 
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás dátuma"
-
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva"
-
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Raktár mozgatás"
@@ -42,10 +30,6 @@ msgstr "Raktár mozgatás"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Szülő (csomag)"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -59,41 +43,9 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Típus"
 
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
-
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás dátuma"
-
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva"
-
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Név"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Utolsó módosítás dátuma"
-
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -163,19 +115,3 @@ msgstr ""
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr ""
-
-msgctxt "view:stock.package.type:"
-msgid "Package Type"
-msgstr "Csomag típus"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Types"
-msgstr "Csomag típus"
-
-msgctxt "view:stock.package:"
-msgid "Package"
-msgstr "Csomag"
-
-msgctxt "view:stock.package:"
-msgid "Packages"
-msgstr "Csomagok"

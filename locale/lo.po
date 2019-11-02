@@ -25,21 +25,6 @@ msgid "Code"
 msgstr "ລະຫັດແຂວງ"
 
 #, fuzzy
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "ຕັດບັນຊີສາງ"
@@ -48,10 +33,6 @@ msgstr "ຕັດບັນຊີສາງ"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "ຮ່ວງ"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -67,48 +48,9 @@ msgid "Type"
 msgstr "ຮູບແບບ"
 
 #, fuzzy
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "ຊື່"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"

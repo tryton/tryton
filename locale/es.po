@@ -22,18 +22,6 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Movimientos"
@@ -41,10 +29,6 @@ msgstr "Movimientos"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Padre"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -58,41 +42,9 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nombre"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -159,19 +111,3 @@ msgstr "Cerrado"
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr "Abierto"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Type"
-msgstr "Tipo de paquete"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Types"
-msgstr "Tipos de paquete"
-
-msgctxt "view:stock.package:"
-msgid "Package"
-msgstr "Paquete"
-
-msgctxt "view:stock.package:"
-msgid "Packages"
-msgstr "Paquetes"

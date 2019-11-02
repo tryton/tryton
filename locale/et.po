@@ -22,18 +22,6 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Kood"
 
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Kanded"
@@ -41,10 +29,6 @@ msgstr "Kanded"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Ülemjaotus"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -58,41 +42,9 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nimi"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"

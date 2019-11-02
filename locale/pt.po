@@ -22,18 +22,6 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Código"
 
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Movimentações"
@@ -41,10 +29,6 @@ msgstr "Movimentações"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Pai"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -58,41 +42,9 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Tipo"
 
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nome"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -162,19 +114,3 @@ msgstr ""
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr ""
-
-msgctxt "view:stock.package.type:"
-msgid "Package Type"
-msgstr "Tipo de Pacote"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Types"
-msgstr "Tipo de Pacote"
-
-msgctxt "view:stock.package:"
-msgid "Package"
-msgstr "Pacote"
-
-msgctxt "view:stock.package:"
-msgid "Packages"
-msgstr "Pacotes"

@@ -22,18 +22,6 @@ msgctxt "field:stock.package,code:"
 msgid "Code"
 msgstr "Code"
 
-msgctxt "field:stock.package,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.package,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.package,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Mouvements"
@@ -41,10 +29,6 @@ msgstr "Mouvements"
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
 msgstr "Parent"
-
-msgctxt "field:stock.package,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -58,41 +42,9 @@ msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Type"
 
-msgctxt "field:stock.package,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.package,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:stock.package.type,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:stock.package.type,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:stock.package.type,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:stock.package.type,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:stock.package.type,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:stock.package.type,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:stock.shipment.in.return,packages:"
 msgid "Packages"
@@ -159,19 +111,3 @@ msgstr "Fermé"
 msgctxt "selection:stock.package,state:"
 msgid "Open"
 msgstr "Ouvert"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Type"
-msgstr "Type d'emballage"
-
-msgctxt "view:stock.package.type:"
-msgid "Package Types"
-msgstr "Types d'emballage"
-
-msgctxt "view:stock.package:"
-msgid "Package"
-msgstr "Emballage"
-
-msgctxt "view:stock.package:"
-msgid "Packages"
-msgstr "Emballages"
