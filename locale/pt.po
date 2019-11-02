@@ -25,18 +25,3 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_draft_payment"
 msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
-
-msgctxt "error:account.payment:"
-msgid "Payment cannot be approved because sale \"%(sale)s\" is cancelled."
-msgstr ""
-"Pagamento não pode ser aprovado porque a venda \"%(sale)s\" foi cancelada."
-
-msgctxt "error:sale.sale:"
-msgid "The sale \"%(sale)s\" can not be canceled because it has payments."
-msgstr "A venda \"%(sale)s\" não pode ser cancelada, pois ela contém pagamentos."
-
-msgctxt "error:sale.sale:"
-msgid "The sale \"%(sale)s\" can not be reset to draft because it has payments."
-msgstr ""
-"A venda \"%(sale)s\" não pode voltar para rascunho, pois ela contém "
-"pagamentos."

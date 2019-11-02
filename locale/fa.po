@@ -31,15 +31,3 @@ msgid "You cannot reset to draft sale \"%(sale)s\" because it has payments."
 msgstr ""
 "شما نمیتوانید حالت فروش :\"%(sale)s\" را به پیش نویس بازنشانی کنید، چرا که "
 "پرداخت شده است."
-
-msgctxt "error:account.payment:"
-msgid "Payment cannot be approved because sale \"%(sale)s\" is cancelled."
-msgstr "پرداخت نمیتواند تصویب شود چراکه فروش : \"%s\" لغو شده است!."
-
-msgctxt "error:sale.sale:"
-msgid "The sale \"%(sale)s\" can not be canceled because it has payments."
-msgstr "فروش : \"%s\" نمیتواند لغو شود! چونکه پرداختی دارد."
-
-msgctxt "error:sale.sale:"
-msgid "The sale \"%(sale)s\" can not be reset to draft because it has payments."
-msgstr "فروش : \"%s\" نمیتواند بعنوان پیش نویس بازنشانی شود! چونکه پرداختی دارد."
