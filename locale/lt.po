@@ -4,97 +4,29 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.category,childs:"
 msgid "Children"
-msgstr ""
+msgstr "Dukterinės"
 
-msgctxt "field:product.category,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.category,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.category,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.category,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Pavadinimas"
 
 msgctxt "field:product.category,parent:"
 msgid "Parent"
-msgstr ""
-
-msgctxt "field:product.category,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.category,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.category,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.configuration,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.configuration,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Motininė"
 
 msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
+msgstr "Numatytasis savikainos metodas"
 
-msgctxt "field:product.configuration,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.configuration,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.configuration,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.configuration,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.configuration.default_cost_price_method,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.configuration.default_cost_price_method,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+#, fuzzy
+msgctxt "field:product.configuration,product_sequence:"
+msgid "Product Sequence"
+msgstr "Numeruotė"
 
 msgctxt ""
 "field:product.configuration.default_cost_price_method,default_cost_price_method:"
 msgid "Default Cost Method"
-msgstr ""
-
-msgctxt "field:product.configuration.default_cost_price_method,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.configuration.default_cost_price_method,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.configuration.default_cost_price_method,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.configuration.default_cost_price_method,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Numatytasis savikainos metodas"
 
 msgctxt "field:product.cost_price,company:"
 msgid "Company"
@@ -102,36 +34,11 @@ msgstr "Organizacija"
 
 msgctxt "field:product.cost_price,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Savikaina"
 
-msgctxt "field:product.cost_price,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.cost_price,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.cost_price,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.cost_price,product:"
 msgid "Product"
-msgstr "Product"
-
-msgctxt "field:product.cost_price,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.cost_price,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.cost_price,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Prekė"
 
 msgctxt "field:product.cost_price_method,company:"
 msgid "Company"
@@ -139,684 +46,530 @@ msgstr "Organizacija"
 
 msgctxt "field:product.cost_price_method,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
-
-msgctxt "field:product.cost_price_method,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.cost_price_method,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.cost_price_method,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.cost_price_method,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Savikainos metodas"
 
 msgctxt "field:product.cost_price_method,template:"
 msgid "Template"
-msgstr ""
+msgstr "Prekės šablonas"
 
-msgctxt "field:product.cost_price_method,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
+msgctxt "field:product.identifier,code:"
+msgid "Code"
+msgstr "Kodas"
 
-msgctxt "field:product.cost_price_method,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgctxt "field:product.identifier,product:"
+msgid "Product"
+msgstr "Prekė"
+
+msgctxt "field:product.identifier,type:"
+msgid "Type"
+msgstr "Tipas"
 
 msgctxt "field:product.list_price,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:product.list_price,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.list_price,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.list_price,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:product.list_price,list_price:"
 msgid "List Price"
-msgstr ""
-
-msgctxt "field:product.list_price,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Pardavimo kaina"
 
 msgctxt "field:product.list_price,template:"
 msgid "Template"
-msgstr ""
+msgstr "Prekės šablonas"
 
-msgctxt "field:product.list_price,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.list_price,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.product,active:"
-msgid "Active"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.product,categories:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
-#, fuzzy
 msgctxt "field:product.product,categories_all:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "field:product.product,code:"
 msgid "Code"
+msgstr "Kodas"
+
+msgctxt "field:product.product,code_readonly:"
+msgid "Code Readonly"
 msgstr ""
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Vartojamoji"
 
 msgctxt "field:product.product,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Savikaina"
 
 msgctxt "field:product.product,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "Savikainos metodas"
 
 msgctxt "field:product.product,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr ""
+msgstr "Savikainos skaičiavimo metodai"
 
 msgctxt "field:product.product,cost_price_uom:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Savikaina"
 
 msgctxt "field:product.product,cost_prices:"
 msgid "Cost Prices"
-msgstr ""
-
-msgctxt "field:product.product,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.product,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Savikainos"
 
 msgctxt "field:product.product,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "Numatytasis mato vienetas"
 
 msgctxt "field:product.product,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
+msgstr "Numatytojo mato vieneto kategorija"
 
 msgctxt "field:product.product,description:"
 msgid "Description"
-msgstr ""
+msgstr "Aprašymas"
 
-msgctxt "field:product.product,id:"
-msgid "ID"
-msgstr ""
+msgctxt "field:product.product,identifiers:"
+msgid "Identifiers"
+msgstr "Identifikatoriai"
 
 msgctxt "field:product.product,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "Pardavimo kaina"
 
 msgctxt "field:product.product,list_price_uom:"
 msgid "List Price"
-msgstr ""
+msgstr "Pardavimo kaina"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "Pardavimo kainos"
 
-#, fuzzy
 msgctxt "field:product.product,name:"
 msgid "Name"
-msgstr "Namu"
-
-msgctxt "field:product.product,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Pavadinimas"
 
 msgctxt "field:product.product,template:"
 msgid "Product Template"
-msgstr ""
+msgstr "Prekės šablonas"
 
 msgctxt "field:product.product,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
-msgctxt "field:product.product,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.product,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.template,active:"
-msgid "Active"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.template,categories:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
-#, fuzzy
 msgctxt "field:product.template,categories_all:"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
-msgstr ""
+msgstr "Vartojamoji"
 
 msgctxt "field:product.template,cost_price:"
 msgid "Cost Price"
-msgstr ""
+msgstr "Savikaina"
 
 msgctxt "field:product.template,cost_price_method:"
 msgid "Cost Price Method"
-msgstr ""
+msgstr "Savikainos metodas"
 
 msgctxt "field:product.template,cost_price_methods:"
 msgid "Cost Price Methods"
-msgstr ""
-
-msgctxt "field:product.template,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.template,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Savikainos skaičiavimo metodai"
 
 msgctxt "field:product.template,default_uom:"
 msgid "Default UOM"
-msgstr ""
+msgstr "Numatytasis mato vienetas"
 
 msgctxt "field:product.template,default_uom_category:"
 msgid "Default UOM Category"
-msgstr ""
-
-msgctxt "field:product.template,id:"
-msgid "ID"
-msgstr ""
+msgstr "Numatytojo mato vieneto kategorija"
 
 msgctxt "field:product.template,list_price:"
 msgid "List Price"
-msgstr ""
+msgstr "Pardavimo kaina"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr ""
+msgstr "Pardavimo kainos"
 
-#, fuzzy
 msgctxt "field:product.template,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Pavadinimas"
 
-#, fuzzy
 msgctxt "field:product.template,products:"
 msgid "Variants"
-msgstr "Variants"
-
-msgctxt "field:product.template,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Variantai"
 
 msgctxt "field:product.template,type:"
 msgid "Type"
-msgstr ""
-
-msgctxt "field:product.template,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.template,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Tipas"
 
 msgctxt "field:product.template-product.category,category:"
 msgid "Category"
-msgstr ""
-
-msgctxt "field:product.template-product.category,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.template-product.category,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.template-product.category,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.template-product.category,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Kategorija"
 
 msgctxt "field:product.template-product.category,template:"
 msgid "Template"
-msgstr ""
-
-msgctxt "field:product.template-product.category,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.template-product.category,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
+msgstr "Prekės šablonas"
 
 msgctxt "field:product.template-product.category.all,category:"
 msgid "Category"
-msgstr ""
-
-msgctxt "field:product.template-product.category.all,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.template-product.category.all,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.template-product.category.all,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.template-product.category.all,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Kategorija"
 
 msgctxt "field:product.template-product.category.all,template:"
 msgid "Template"
-msgstr ""
-
-msgctxt "field:product.template-product.category.all,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.template-product.category.all,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.uom,active:"
-msgid "Active"
-msgstr ""
+msgstr "Prekės šablonas"
 
 msgctxt "field:product.uom,category:"
 msgid "Category"
-msgstr ""
-
-msgctxt "field:product.uom,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.uom,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Kategorija"
 
 msgctxt "field:product.uom,digits:"
 msgid "Display Digits"
-msgstr ""
+msgstr "Rodomų skaičių po kablelio skaičius"
 
 msgctxt "field:product.uom,factor:"
 msgid "Factor"
-msgstr ""
+msgstr "Perskaičiavimo į pagrindinį mato vienetą koeficientas"
 
-msgctxt "field:product.uom,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.uom,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Pavadinimas"
 
 msgctxt "field:product.uom,rate:"
 msgid "Rate"
-msgstr ""
-
-msgctxt "field:product.uom,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Pagrindinio mato vieneto koeficientas"
 
 msgctxt "field:product.uom,rounding:"
 msgid "Rounding Precision"
-msgstr ""
+msgstr "Apvalinimo tikslumas"
 
 msgctxt "field:product.uom,symbol:"
 msgid "Symbol"
-msgstr ""
+msgstr "Simbolis"
 
-msgctxt "field:product.uom,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.uom,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.uom.category,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.uom.category,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.uom.category,id:"
-msgid "ID"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.uom.category,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Pavadinimas"
 
-msgctxt "field:product.uom.category,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product.uom.category,uoms:"
 msgid "Unit of Measures"
-msgstr "Units of Measure"
+msgstr "Mato vienetas"
 
-msgctxt "field:product.uom.category,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.uom.category,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "help:product.product,active:"
-msgid "Uncheck to exclude from future use."
+msgctxt "help:product.configuration,product_sequence:"
+msgid "Used to generate the product code."
 msgstr ""
 
-msgctxt "help:product.template,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgctxt "help:product.identifier,product:"
+msgid "The product identified by this identifier."
+msgstr "Šio identifikatoriaus aprašoma prekė."
 
-msgctxt "help:product.uom,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgctxt "help:product.product,identifiers:"
+msgid "Add other identifiers to the variant."
+msgstr "Pridėkite kitus prekės identifikatorius."
 
 msgctxt "help:product.uom,factor:"
 msgid ""
 "The coefficient for the formula:\n"
 "coef (base unit) = 1 (this unit)"
 msgstr ""
+"Koeficientas formulei:\n"
+"koeficientas (pagrindinis vienetas) = 1 (šis mato vienetas)"
 
 msgctxt "help:product.uom,rate:"
 msgid ""
 "The coefficient for the formula:\n"
 "1 (base unit) = coef (this unit)"
 msgstr ""
+"Koeficientas formulei:\n"
+"1 (bazinis vienetas) = koeficientas (šis vienetas)"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "model:ir.action,name:act_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "model:ir.action,name:act_product_configuration_form"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "Prekės nuostatos"
 
 msgctxt "model:ir.action,name:act_product_form"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Variantai"
 
 msgctxt "model:ir.action,name:act_product_from_template"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Variantai"
 
 msgctxt "model:ir.action,name:act_template_by_category"
 msgid "Product by Category"
-msgstr "Product by Category"
+msgstr "Prekės pagal kategoriją"
 
 msgctxt "model:ir.action,name:act_template_form"
 msgid "Products"
-msgstr "Products"
+msgstr "Prekės"
 
 msgctxt "model:ir.action,name:act_uom_category_form"
 msgid "Categories of Unit of Measure"
-msgstr "Categories of Unit of Measure"
+msgstr "Mato vieneto kategorijos"
 
 msgctxt "model:ir.action,name:act_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "Mato vienetai"
+
+msgctxt "model:ir.message,text:msg_invalid_code"
+msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_incompatible_factor_rate"
+msgid "Incompatible factor and rate values on UOM \"%(uom)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_modify_category"
+msgid "You cannot modify the category of UOM \"%(uom)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_modify_factor"
+msgid "You cannot modify the factor of UOM \"%(uom)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_modify_options"
+msgid ""
+"If the UOM is still not used, you can delete it otherwise you can deactivate"
+" it and create a new one."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_modify_rate"
+msgid "You cannot modify the rate of UOM \"%(uom)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
+msgid "Rate and factor can not be both equal to zero."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Product"
+msgstr "Prekė"
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "model:ir.ui.menu,name:menu_category_tree"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_main_product"
 msgid "Product"
-msgstr "Product"
+msgstr "Prekė"
 
 msgctxt "model:ir.ui.menu,name:menu_product"
 msgid "Variants"
-msgstr "Variants"
+msgstr "Variantai"
 
 msgctxt "model:ir.ui.menu,name:menu_product_configuration"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "Prekės nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_template"
 msgid "Products"
-msgstr "Products"
+msgstr "Prekės"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_category_form"
 msgid "Categories"
-msgstr "Categories"
+msgstr "Kategorijos"
 
 msgctxt "model:ir.ui.menu,name:menu_uom_form"
 msgid "Units of Measure"
-msgstr "Units of Measure"
+msgstr "Mato vienetai"
 
-#, fuzzy
 msgctxt "model:product.category,name:"
 msgid "Product Category"
-msgstr "Product by Category"
+msgstr "Prekės kategorija"
 
-#, fuzzy
 msgctxt "model:product.configuration,name:"
 msgid "Product Configuration"
-msgstr "Product Configuration"
+msgstr "Prekės nuostatos"
 
 msgctxt "model:product.configuration.default_cost_price_method,name:"
 msgid "Product Configuration Default Cost Price Method"
-msgstr ""
+msgstr "Numatytasis savikainos skaičiavimo būdas"
 
 msgctxt "model:product.cost_price,name:"
 msgid "Product Cost Price"
-msgstr ""
+msgstr "Prekės savikaina"
 
 msgctxt "model:product.cost_price_method,name:"
 msgid "Product Cost Price Method"
-msgstr ""
+msgstr "Prekės savikainos skaičiavimo būdas"
+
+msgctxt "model:product.identifier,name:"
+msgid "Product Identifier"
+msgstr "Prekės identifikatorius"
 
 msgctxt "model:product.list_price,name:"
 msgid "Product List Price"
-msgstr ""
+msgstr "Prekės kaina"
 
 msgctxt "model:product.product,name:"
 msgid "Product Variant"
-msgstr ""
+msgstr "Prekės variantas"
 
 msgctxt "model:product.template,name:"
 msgid "Product Template"
-msgstr ""
+msgstr "Prekės šablonas"
 
 msgctxt "model:product.template-product.category,name:"
 msgid "Template - Category"
-msgstr ""
+msgstr "Šablono kategorija"
 
 msgctxt "model:product.template-product.category.all,name:"
 msgid "Template - Category All"
-msgstr ""
+msgstr "Šablonas - visos kategorijos"
 
-#, fuzzy
 msgctxt "model:product.uom,name:"
 msgid "Unit of measure"
-msgstr "Units of Measure"
+msgstr "Mato vienetas"
 
 msgctxt "model:product.uom,name:uom_are"
 msgid "Are"
-msgstr "Are"
+msgstr "Aras"
 
 msgctxt "model:product.uom,name:uom_carat"
 msgid "Carat"
-msgstr "Carat"
+msgstr "Karatas"
 
 msgctxt "model:product.uom,name:uom_centimeter"
 msgid "centimeter"
-msgstr "centimeter"
+msgstr "Centimetras"
 
 msgctxt "model:product.uom,name:uom_cubic_centimeter"
 msgid "Cubic centimeter"
-msgstr "Cubic centimeter"
+msgstr "Kubinis centimetras"
 
 msgctxt "model:product.uom,name:uom_cubic_foot"
 msgid "Cubic foot"
-msgstr "Cubic foot"
+msgstr "Kubinė pėda"
 
 msgctxt "model:product.uom,name:uom_cubic_inch"
 msgid "Cubic inch"
-msgstr "Cubic inch"
+msgstr "Kubinis colis"
 
 msgctxt "model:product.uom,name:uom_cubic_meter"
 msgid "Cubic meter"
-msgstr "Cubic meter"
+msgstr "Kubinis metras"
 
 msgctxt "model:product.uom,name:uom_day"
 msgid "Day"
-msgstr "Day"
+msgstr "Diena"
 
 msgctxt "model:product.uom,name:uom_foot"
 msgid "Foot"
-msgstr "Foot"
+msgstr "Pėda"
 
 msgctxt "model:product.uom,name:uom_gallon"
 msgid "Gallon"
-msgstr "Gallon"
+msgstr "Galonas"
 
 msgctxt "model:product.uom,name:uom_gram"
 msgid "Gram"
-msgstr "Gram"
+msgstr "Gramas"
 
 msgctxt "model:product.uom,name:uom_hectare"
 msgid "Hectare"
-msgstr "Hectare"
+msgstr "Hektaras"
 
 msgctxt "model:product.uom,name:uom_hour"
 msgid "Hour"
-msgstr "Hour"
+msgstr "Valanda"
 
 msgctxt "model:product.uom,name:uom_inch"
 msgid "Inch"
-msgstr "Inch"
+msgstr "Colis"
 
 msgctxt "model:product.uom,name:uom_kilogram"
 msgid "Kilogram"
-msgstr "Kilogram"
+msgstr "Kilogramas"
 
 msgctxt "model:product.uom,name:uom_kilometer"
 msgid "Kilometer"
-msgstr "Kilometer"
+msgstr "Kilometras"
 
 msgctxt "model:product.uom,name:uom_liter"
 msgid "Liter"
-msgstr "Liter"
+msgstr "Litras"
 
 msgctxt "model:product.uom,name:uom_meter"
 msgid "Meter"
-msgstr "Meter"
+msgstr "Metras"
 
 msgctxt "model:product.uom,name:uom_mile"
 msgid "Mile"
-msgstr "Mile"
+msgstr "Mylia"
 
 msgctxt "model:product.uom,name:uom_millimeter"
 msgid "Millimeter"
-msgstr "Millimeter"
+msgstr "Millimetras"
 
 msgctxt "model:product.uom,name:uom_minute"
 msgid "Minute"
-msgstr "Minute"
+msgstr "Minutė"
 
 msgctxt "model:product.uom,name:uom_ounce"
 msgid "Ounce"
-msgstr "Ounce"
+msgstr "Uncija"
 
 msgctxt "model:product.uom,name:uom_pound"
 msgid "Pound"
-msgstr "Pound"
+msgstr "Svaras"
 
 msgctxt "model:product.uom,name:uom_second"
 msgid "Second"
-msgstr "Second"
+msgstr "Sekundė"
 
 msgctxt "model:product.uom,name:uom_square_centimeter"
 msgid "Square centimeter"
-msgstr "Square centimeter"
+msgstr "Kvadratins centimetras"
 
 msgctxt "model:product.uom,name:uom_square_foot"
 msgid "Square foot"
-msgstr "Square foot"
+msgstr "Kvadratinė pėda"
 
 msgctxt "model:product.uom,name:uom_square_inch"
 msgid "Square inch"
-msgstr "Square inch"
+msgstr "Kvadratinis colis"
 
 msgctxt "model:product.uom,name:uom_square_meter"
 msgid "Square meter"
-msgstr "Square meter"
+msgstr "Kvadratinis metras"
 
 msgctxt "model:product.uom,name:uom_square_yard"
 msgid "Square yard"
-msgstr "Square yard"
+msgstr "Kvadratinis jardas"
 
 msgctxt "model:product.uom,name:uom_unit"
 msgid "Unit"
-msgstr "Unit"
+msgstr "Vienetas"
 
 msgctxt "model:product.uom,name:uom_work_day"
 msgid "Work Day"
-msgstr "Work Day"
+msgstr "Darbo diena"
 
 msgctxt "model:product.uom,name:uom_yard"
 msgid "Yard"
-msgstr "Yard"
+msgstr "Jardas"
 
 msgctxt "model:product.uom,symbol:uom_are"
 msgid "a"
@@ -868,7 +621,7 @@ msgstr "ha"
 
 msgctxt "model:product.uom,symbol:uom_hour"
 msgid "h"
-msgstr "h"
+msgstr "val"
 
 msgctxt "model:product.uom,symbol:uom_inch"
 msgid "in"
@@ -936,93 +689,116 @@ msgstr "yd²"
 
 msgctxt "model:product.uom,symbol:uom_unit"
 msgid "u"
-msgstr "u"
+msgstr "vnt"
 
 msgctxt "model:product.uom,symbol:uom_work_day"
 msgid "wd"
-msgstr "wd"
+msgstr "dd"
 
 msgctxt "model:product.uom,symbol:uom_yard"
 msgid "yd"
 msgstr "yd"
 
-#, fuzzy
 msgctxt "model:product.uom.category,name:"
 msgid "Product uom category"
-msgstr "Product by Category"
+msgstr "Prekės vieneto kategorija"
 
 msgctxt "model:product.uom.category,name:uom_cat_length"
 msgid "Length"
-msgstr "Length"
+msgstr "Ilgis"
 
 msgctxt "model:product.uom.category,name:uom_cat_surface"
 msgid "Surface"
-msgstr "Surface"
+msgstr "Paviršius"
 
 msgctxt "model:product.uom.category,name:uom_cat_time"
 msgid "Time"
-msgstr "Time"
+msgstr "Laikas"
 
 msgctxt "model:product.uom.category,name:uom_cat_unit"
 msgid "Units"
-msgstr "Units"
+msgstr "Vienetai"
 
 msgctxt "model:product.uom.category,name:uom_cat_volume"
 msgid "Volume"
-msgstr "Volume"
+msgstr "Tūris"
 
 msgctxt "model:product.uom.category,name:uom_cat_weight"
 msgid "Weight"
-msgstr "Weight"
+msgstr "Svoris"
 
 msgctxt "model:res.group,name:group_product_admin"
 msgid "Product Administration"
-msgstr "Product Administration"
+msgstr "Prekių valdymas"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Article Number"
+msgstr "Tarptautinis  artikulas"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Securities Identification Number"
+msgstr "Tarptautinis saugumo numeris"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Audiovisual Number"
+msgstr "Tarptautinis standartinis audiovizualinis numeris"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Book Number"
+msgstr "Tarptautinis standartinis knygos numeris"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Identifier for Libraries"
+msgstr "Tarptautinis standartinis bibliotekų identifikatorius"
+
+msgctxt "selection:product.identifier,type:"
+msgid "International Standard Music Number"
+msgstr "Tarptautinis standartinis muzikos numeris"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "Vidutinė"
 
 msgctxt "selection:product.product,cost_price_method:"
 msgid "Fixed"
-msgstr ""
+msgstr "Fiksuota"
 
 msgctxt "selection:product.product,type:"
 msgid "Assets"
-msgstr ""
+msgstr "Ilgalaikis turtas"
 
 msgctxt "selection:product.product,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Prekės"
 
 msgctxt "selection:product.product,type:"
 msgid "Service"
-msgstr ""
+msgstr "Paslaugos"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Average"
-msgstr ""
+msgstr "Vidutinė kaina"
 
 msgctxt "selection:product.template,cost_price_method:"
 msgid "Fixed"
-msgstr ""
+msgstr "Fiksuota"
 
 msgctxt "selection:product.template,type:"
 msgid "Assets"
-msgstr ""
+msgstr "Ilgalaikis turtas"
 
 msgctxt "selection:product.template,type:"
 msgid "Goods"
-msgstr ""
+msgstr "Prekės"
 
 msgctxt "selection:product.template,type:"
 msgid "Service"
-msgstr ""
+msgstr "Paslaugos"
 
 msgctxt "view:product.category:"
 msgid "Children"
-msgstr ""
+msgstr "Dukterinė"
 
 msgctxt "view:product.template:"
 msgid "General"
-msgstr ""
+msgstr "Pagrindinis"
