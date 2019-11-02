@@ -6,33 +6,8 @@ msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
-msgctxt "field:production.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:production.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:production.configuration.supply_period,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:production.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
-msgstr ""
-
-msgctxt "field:production.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:production.configuration.supply_period,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_production_request"
@@ -56,8 +31,3 @@ msgstr ""
 msgctxt "selection:stock.order_point,type:"
 msgid "Production"
 msgstr "Production"
-
-#, fuzzy
-msgctxt "wizard_button:production.create_request,start,end:"
-msgid "Cancel"
-msgstr "取消"

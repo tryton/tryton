@@ -6,33 +6,9 @@ msgctxt "field:production.configuration,supply_period:"
 msgid "Supply Period"
 msgstr ""
 
-msgctxt "field:production.configuration.supply_period,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:production.configuration.supply_period,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:production.configuration.supply_period,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:production.configuration.supply_period,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:production.configuration.supply_period,supply_period:"
 msgid "Supply Period"
 msgstr ""
-
-msgctxt "field:production.configuration.supply_period,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:production.configuration.supply_period,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "model:ir.action,name:act_production_request"
 msgid "Request Productions"
