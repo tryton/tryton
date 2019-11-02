@@ -2,21 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.extra,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
 msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Ettevõte"
-
-msgctxt "field:sale.extra,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.extra,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
@@ -25,10 +13,6 @@ msgstr "Valuuta numbriväärtus"
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
 msgstr "Lõppkuupäev"
-
-msgctxt "field:sale.extra,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
@@ -42,10 +26,6 @@ msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
 msgstr "Hinnakiri"
 
-msgctxt "field:sale.extra,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
 msgstr "Summa"
@@ -54,22 +34,6 @@ msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
 
-msgctxt "field:sale.extra,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.extra,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:sale.extra.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.extra.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
 msgstr "Ekstra"
@@ -77,10 +41,6 @@ msgstr "Ekstra"
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
 msgstr "Tasuta"
-
-msgctxt "field:sale.extra.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
@@ -94,17 +54,9 @@ msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:sale.extra.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
 msgstr "Summa"
-
-msgctxt "field:sale.extra.line,sequence:"
-msgid "Sequence"
-msgstr "Järjestus"
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
@@ -114,21 +66,9 @@ msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Ühiku numbriväärtus"
 
-msgctxt "field:sale.extra.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.extra.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Ekstra"
-
-msgctxt "help:sale.extra,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:ir.action,name:act_extra_form"
 msgid "Extras"

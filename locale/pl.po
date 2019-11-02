@@ -2,21 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:sale.extra,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:sale.extra,company:"
 msgid "Company"
 msgstr "Firma"
-
-msgctxt "field:sale.extra,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.extra,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 msgctxt "field:sale.extra,currency_digits:"
 msgid "Currency Digits"
@@ -25,10 +13,6 @@ msgstr "Cyfry waluty"
 msgctxt "field:sale.extra,end_date:"
 msgid "End Date"
 msgstr "Data ukończenia"
-
-msgctxt "field:sale.extra,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.extra,lines:"
 msgid "Lines"
@@ -42,10 +26,6 @@ msgctxt "field:sale.extra,price_list:"
 msgid "Price List"
 msgstr "Cennik"
 
-msgctxt "field:sale.extra,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.extra,sale_amount:"
 msgid "Sale Amount"
 msgstr ""
@@ -53,22 +33,6 @@ msgstr ""
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
 msgstr "Data rozpoczęcia"
-
-msgctxt "field:sale.extra,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.extra,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:sale.extra.line,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:sale.extra.line,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
 
 #, fuzzy
 msgctxt "field:sale.extra.line,extra:"
@@ -78,10 +42,6 @@ msgstr "Extras"
 msgctxt "field:sale.extra.line,free:"
 msgid "Free"
 msgstr ""
-
-msgctxt "field:sale.extra.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.extra.line,product:"
 msgid "Product"
@@ -95,17 +55,9 @@ msgctxt "field:sale.extra.line,quantity:"
 msgid "Quantity"
 msgstr "Ilość"
 
-msgctxt "field:sale.extra.line,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:sale.extra.line,sale_amount:"
 msgid "Sale Amount"
 msgstr ""
-
-msgctxt "field:sale.extra.line,sequence:"
-msgid "Sequence"
-msgstr "Sekwencja"
 
 msgctxt "field:sale.extra.line,unit:"
 msgid "Unit"
@@ -115,22 +67,10 @@ msgctxt "field:sale.extra.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Cyfry jednostki"
 
-msgctxt "field:sale.extra.line,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:sale.extra.line,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 #, fuzzy
 msgctxt "field:sale.line,extra:"
 msgid "Extra"
 msgstr "Extras"
-
-msgctxt "help:sale.extra,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_extra_form"
