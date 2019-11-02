@@ -14,14 +14,6 @@ msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
 msgstr "Condició"
 
-msgctxt "field:marketing.automation.activity,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:marketing.automation.activity,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr "Retard"
@@ -50,10 +42,6 @@ msgctxt "field:marketing.automation.activity,event:"
 msgid "Event"
 msgstr "Esdeveniment"
 
-msgctxt "field:marketing.automation.activity,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:marketing.automation.activity,name:"
 msgid "Name"
 msgstr "Nom"
@@ -74,41 +62,13 @@ msgctxt "field:marketing.automation.activity,parent_action:"
 msgid "Parent Action"
 msgstr "Acció pare"
 
-msgctxt "field:marketing.automation.activity,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:marketing.automation.activity,record_count:"
 msgid "Records"
 msgstr "Registres"
 
-msgctxt "field:marketing.automation.activity,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:marketing.automation.activity,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:marketing.automation.record,blocked:"
 msgid "Blocked"
 msgstr "Bloquejat"
-
-msgctxt "field:marketing.automation.record,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:marketing.automation.record,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:marketing.automation.record,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:marketing.automation.record,record:"
 msgid "Record"
@@ -122,14 +82,6 @@ msgctxt "field:marketing.automation.record,uuid:"
 msgid "UUID"
 msgstr "Identificador únic universal"
 
-msgctxt "field:marketing.automation.record,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:marketing.automation.record,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:marketing.automation.record.activity,activity:"
 msgid "Activity"
 msgstr "Activitat"
@@ -142,14 +94,6 @@ msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
 msgstr "A"
 
-msgctxt "field:marketing.automation.record.activity,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:marketing.automation.record.activity,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
 msgstr "Correus electrònics clicats"
@@ -157,14 +101,6 @@ msgstr "Correus electrònics clicats"
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
 msgstr "Correus electrònics oberts"
-
-msgctxt "field:marketing.automation.record.activity,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record.activity,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:marketing.automation.record.activity,record:"
 msgid "Record"
@@ -174,33 +110,13 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:marketing.automation.record.activity,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:marketing.automation.record.activity,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr "Activitats"
 
-msgctxt "field:marketing.automation.scenario,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:marketing.automation.scenario,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
 msgstr "Domini"
-
-msgctxt "field:marketing.automation.scenario,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:marketing.automation.scenario,model:"
 msgid "Model"
@@ -209,10 +125,6 @@ msgstr "Model"
 msgctxt "field:marketing.automation.scenario,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:marketing.automation.scenario,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:marketing.automation.scenario,record_count:"
 msgid "Records"
@@ -226,25 +138,17 @@ msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
 msgstr "Estat"
 
-msgctxt "field:marketing.automation.scenario,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:marketing.automation.scenario,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""
 "The PYSON statement that the record must match in order to execute the activity.\n"
 "The record is represented by \"self\""
 msgstr ""
 "L'expressió PYSON que el registre ha de complir per tal d'executar-se l'activitat.\n"
-"El registre s'expressa amb \"self\"."
+"El registre s'expressa amb \"self\""
 
 msgctxt "help:marketing.automation.activity,delay:"
 msgid "After how much time the action should be executed."
-msgstr "Desprès de quant temps s'hauria d'executar l'acció"
+msgstr "Desprès de quant temps s'hauria d'executar l'acció."
 
 msgctxt "help:marketing.automation.activity,email_from:"
 msgid "Leave empty to use the value defined in the configuration file."
@@ -348,15 +252,15 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_activity_record_unique"
 msgid "Record Activity must be unique by record and activity."
-msgstr "L'activitat del registre ha de ser única per registre i activitat"
+msgstr "L'activitat del registre ha de ser única per registre i activitat."
 
 msgctxt "model:ir.message,text:msg_record_scenario_record_unique"
 msgid "Record must be unique by scenario."
-msgstr "El registre ha de ser únic per cada escenari"
+msgstr "El registre ha de ser únic per cada escenari."
 
 msgctxt "model:ir.message,text:msg_record_uuid_unique"
 msgid "UUID of record must be unique."
-msgstr "L'UUID del registre ha de ser únic"
+msgstr "L'UUID del registre ha de ser únic."
 
 msgctxt "model:ir.message,text:msg_scenario_invalid_domain"
 msgid "Invalid domain in scenario \"%(scenario)s\" with exception \"%(exception)s\"."
@@ -413,7 +317,7 @@ msgid ""
 "We are sorry to see you go, and apologize if we have overwhelmed your inbox."
 msgstr ""
 "Sentim veure't marxar, i ens disculpem si hem aclaparat la teva safata "
-"d'entrada"
+"d'entrada."
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "You are unsubscribed"
@@ -421,7 +325,7 @@ msgstr "T'has donat de baixa"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "You have been successfully unsubscribed from this kind of email."
-msgstr "T'has donat de baixa amb èxit d'aquest tipus de correu electrònic"
+msgstr "T'has donat de baixa amb èxit d'aquest tipus de correu electrònic."
 
 msgctxt "selection:ir.cron,method:"
 msgid "Process Marketing Activity"

@@ -14,14 +14,6 @@ msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
 msgstr ""
 
-msgctxt "field:marketing.automation.activity,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.activity,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr ""
@@ -50,10 +42,6 @@ msgctxt "field:marketing.automation.activity,event:"
 msgid "Event"
 msgstr ""
 
-msgctxt "field:marketing.automation.activity,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:marketing.automation.activity,name:"
 msgid "Name"
 msgstr ""
@@ -74,40 +62,12 @@ msgctxt "field:marketing.automation.activity,parent_action:"
 msgid "Parent Action"
 msgstr ""
 
-msgctxt "field:marketing.automation.activity,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:marketing.automation.activity,record_count:"
 msgid "Records"
 msgstr ""
 
-msgctxt "field:marketing.automation.activity,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.activity,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:marketing.automation.record,blocked:"
 msgid "Blocked"
-msgstr ""
-
-msgctxt "field:marketing.automation.record,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.record,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:marketing.automation.record,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:marketing.automation.record,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:marketing.automation.record,record:"
@@ -122,14 +82,6 @@ msgctxt "field:marketing.automation.record,uuid:"
 msgid "UUID"
 msgstr ""
 
-msgctxt "field:marketing.automation.record,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.record,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:marketing.automation.record.activity,activity:"
 msgid "Activity"
 msgstr ""
@@ -142,28 +94,12 @@ msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
 msgstr ""
 
-msgctxt "field:marketing.automation.record.activity,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.record.activity,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
 msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
-msgstr ""
-
-msgctxt "field:marketing.automation.record.activity,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:marketing.automation.record.activity,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,record:"
@@ -174,32 +110,12 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:marketing.automation.record.activity,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.record.activity,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr ""
 
-msgctxt "field:marketing.automation.scenario,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.scenario,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
-msgstr ""
-
-msgctxt "field:marketing.automation.scenario,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:marketing.automation.scenario,model:"
@@ -208,10 +124,6 @@ msgstr ""
 
 msgctxt "field:marketing.automation.scenario,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:marketing.automation.scenario,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:marketing.automation.scenario,record_count:"
@@ -224,14 +136,6 @@ msgstr ""
 
 msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
-msgstr ""
-
-msgctxt "field:marketing.automation.scenario,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:marketing.automation.scenario,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:marketing.automation.activity,condition:"

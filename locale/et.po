@@ -14,14 +14,6 @@ msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
 msgstr "Tingimus"
 
-msgctxt "field:marketing.automation.activity,create_date:"
-msgid "Create Date"
-msgstr "Loo kuupäev"
-
-msgctxt "field:marketing.automation.activity,create_uid:"
-msgid "Create User"
-msgstr "Loo kasutaja"
-
 msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr "Viide"
@@ -50,10 +42,6 @@ msgctxt "field:marketing.automation.activity,event:"
 msgid "Event"
 msgstr "Sündmus"
 
-msgctxt "field:marketing.automation.activity,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:marketing.automation.activity,name:"
 msgid "Name"
 msgstr "Nimetus"
@@ -74,41 +62,13 @@ msgctxt "field:marketing.automation.activity,parent_action:"
 msgid "Parent Action"
 msgstr "Ülemjaotuse toiming"
 
-msgctxt "field:marketing.automation.activity,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:marketing.automation.activity,record_count:"
 msgid "Records"
 msgstr "Kirjed"
 
-msgctxt "field:marketing.automation.activity,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:marketing.automation.activity,write_uid:"
-msgid "Write User"
-msgstr "Kirjutaja"
-
 msgctxt "field:marketing.automation.record,blocked:"
 msgid "Blocked"
 msgstr "Blokeeirtud"
-
-msgctxt "field:marketing.automation.record,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäeva"
-
-msgctxt "field:marketing.automation.record,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:marketing.automation.record,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:marketing.automation.record,record:"
 msgid "Record"
@@ -122,14 +82,6 @@ msgctxt "field:marketing.automation.record,uuid:"
 msgid "UUID"
 msgstr "UUID"
 
-msgctxt "field:marketing.automation.record,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:marketing.automation.record,write_uid:"
-msgid "Write User"
-msgstr "Kirjutaja"
-
 msgctxt "field:marketing.automation.record.activity,activity:"
 msgid "Activity"
 msgstr "Aktiviteet"
@@ -142,14 +94,6 @@ msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
 msgstr "Asukohas"
 
-msgctxt "field:marketing.automation.record.activity,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:marketing.automation.record.activity,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
 msgstr "E-mail vajutatud"
@@ -157,14 +101,6 @@ msgstr "E-mail vajutatud"
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
 msgstr "E-mail avatud"
-
-msgctxt "field:marketing.automation.record.activity,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record.activity,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:marketing.automation.record.activity,record:"
 msgid "Record"
@@ -174,33 +110,13 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr "Olek"
 
-msgctxt "field:marketing.automation.record.activity,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:marketing.automation.record.activity,write_uid:"
-msgid "Write User"
-msgstr "Kirjutaja"
-
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr "Aktiviteedid"
 
-msgctxt "field:marketing.automation.scenario,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:marketing.automation.scenario,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
 msgstr "Domeen"
-
-msgctxt "field:marketing.automation.scenario,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:marketing.automation.scenario,model:"
 msgid "Model"
@@ -209,10 +125,6 @@ msgstr "Mudel"
 msgctxt "field:marketing.automation.scenario,name:"
 msgid "Name"
 msgstr "Nimetus"
-
-msgctxt "field:marketing.automation.scenario,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:marketing.automation.scenario,record_count:"
 msgid "Records"
@@ -225,14 +137,6 @@ msgstr "Blokeeritud kirjed"
 msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
 msgstr "Olek"
-
-msgctxt "field:marketing.automation.scenario,write_date:"
-msgid "Write Date"
-msgstr "Kirjutamise kuupäev"
-
-msgctxt "field:marketing.automation.scenario,write_uid:"
-msgid "Write User"
-msgstr "Kirjutaja"
 
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""

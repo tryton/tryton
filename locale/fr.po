@@ -14,14 +14,6 @@ msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
 msgstr "Condition"
 
-msgctxt "field:marketing.automation.activity,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:marketing.automation.activity,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
 msgstr "Délai"
@@ -50,10 +42,6 @@ msgctxt "field:marketing.automation.activity,event:"
 msgid "Event"
 msgstr "Événement"
 
-msgctxt "field:marketing.automation.activity,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:marketing.automation.activity,name:"
 msgid "Name"
 msgstr "Nom"
@@ -74,41 +62,13 @@ msgctxt "field:marketing.automation.activity,parent_action:"
 msgid "Parent Action"
 msgstr "Action parente"
 
-msgctxt "field:marketing.automation.activity,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:marketing.automation.activity,record_count:"
 msgid "Records"
 msgstr "Enregistrements"
 
-msgctxt "field:marketing.automation.activity,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:marketing.automation.activity,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:marketing.automation.record,blocked:"
 msgid "Blocked"
 msgstr "Bloqué"
-
-msgctxt "field:marketing.automation.record,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:marketing.automation.record,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:marketing.automation.record,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:marketing.automation.record,record:"
 msgid "Record"
@@ -122,14 +82,6 @@ msgctxt "field:marketing.automation.record,uuid:"
 msgid "UUID"
 msgstr "UUID"
 
-msgctxt "field:marketing.automation.record,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:marketing.automation.record,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:marketing.automation.record.activity,activity:"
 msgid "Activity"
 msgstr "Activité"
@@ -142,14 +94,6 @@ msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
 msgstr "À"
 
-msgctxt "field:marketing.automation.record.activity,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:marketing.automation.record.activity,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
 msgstr "E-mail cliqué"
@@ -157,14 +101,6 @@ msgstr "E-mail cliqué"
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
 msgstr "E-mail ouvert"
-
-msgctxt "field:marketing.automation.record.activity,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:marketing.automation.record.activity,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:marketing.automation.record.activity,record:"
 msgid "Record"
@@ -174,33 +110,13 @@ msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
 msgstr "État"
 
-msgctxt "field:marketing.automation.record.activity,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:marketing.automation.record.activity,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
 msgstr "Activés"
 
-msgctxt "field:marketing.automation.scenario,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:marketing.automation.scenario,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
 msgstr "Domaine"
-
-msgctxt "field:marketing.automation.scenario,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:marketing.automation.scenario,model:"
 msgid "Model"
@@ -209,10 +125,6 @@ msgstr "Modèle"
 msgctxt "field:marketing.automation.scenario,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:marketing.automation.scenario,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:marketing.automation.scenario,record_count:"
 msgid "Records"
@@ -225,14 +137,6 @@ msgstr "Enregistrements bloqués"
 msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
 msgstr "État"
-
-msgctxt "field:marketing.automation.scenario,write_date:"
-msgid "Write Date"
-msgstr "Date de modification"
-
-msgctxt "field:marketing.automation.scenario,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""
