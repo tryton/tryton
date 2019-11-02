@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:timesheet.hours_employee,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:timesheet.hours_employee,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
 msgstr "ກຳນົດເວລາ"
@@ -18,41 +10,13 @@ msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:timesheet.hours_employee,id:"
-msgid "ID"
-msgstr "ບັດ"
-
-msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:timesheet.hours_employee,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "ວັນທີສິ້ນສຸດ"
 
-msgctxt "field:timesheet.hours_employee.context,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
-
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ່ໃຊ້"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
@@ -62,41 +26,13 @@ msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:timesheet.hours_employee_monthly,id:"
-msgid "ID"
-msgstr "ບັດ"
-
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "ເດືອນ"
 
-msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
-msgid "Month"
-msgstr "ເດືອນ"
-
-msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
 msgstr "ປີ"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ່ໃຊ້"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
@@ -106,14 +42,6 @@ msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:timesheet.hours_employee_weekly,id:"
-msgid "ID"
-msgstr "ບັດ"
-
-msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "ອາທິດ"
@@ -122,14 +50,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "ອາທິດ"
 
-msgctxt "field:timesheet.hours_employee_weekly,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "ປີ"
@@ -137,14 +57,6 @@ msgstr "ປີ"
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
 msgstr "ບໍລິສັດ"
-
-msgctxt "field:timesheet.line,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:timesheet.line,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ່ໃຊ້"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -162,14 +74,6 @@ msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:timesheet.line,id:"
-msgid "ID"
-msgstr "ບັດ"
-
-msgctxt "field:timesheet.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
 msgstr ""
@@ -177,14 +81,6 @@ msgstr ""
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr "ເຮັດວຽກ"
-
-msgctxt "field:timesheet.line,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:timesheet.line,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -194,33 +90,13 @@ msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr "ພະນັກງານ"
 
-msgctxt "field:timesheet.line.enter.start,id:"
-msgid "ID"
-msgstr "ບັດ"
-
-msgctxt "field:timesheet.work,active:"
-msgid "Active"
-msgstr "ຍັງໃຊ້ຢູ່"
-
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "ສູນການແພດ"
 
-msgctxt "field:timesheet.work,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-msgctxt "field:timesheet.work,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
 msgstr "ກຳນົດເວລາຂອງຕາຕະລາງເວລາ"
-
-msgctxt "field:timesheet.work,id:"
-msgid "ID"
-msgstr "ບັດ"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -229,10 +105,6 @@ msgstr "ຊື່"
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "ໜ້າວຽກເດີມ"
-
-msgctxt "field:timesheet.work,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
@@ -250,21 +122,9 @@ msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "ວຽກ"
 
-msgctxt "field:timesheet.work,write_date:"
-msgid "Write Date"
-msgstr "ຂຽນວັນທີ"
-
-msgctxt "field:timesheet.work,write_uid:"
-msgid "Write User"
-msgstr "ຂຽນຊື່ຜູ່ໃຊ້"
-
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "ແຕ່ວັນທີ"
-
-msgctxt "field:timesheet.work.context,id:"
-msgid "ID"
-msgstr "ເລກລຳດັບ"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
@@ -296,10 +156,6 @@ msgstr ""
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
-
-msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:timesheet.work,company:"
@@ -527,34 +383,3 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "ເຂົ້າໄປ"
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
-msgstr ""
-"ສຳນັກງານທີ່ຮັບຜິດຊອບວຽກ \"%(work)s\" ແຕກຕ່າງກັນ "
-"ດັ່ງນັ້ນຈະໃຊ້ສຳນັກງານເດີມແທນ."
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງຕໍ່ເດືອນ"
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr "ຊົ່ວໂມງຕໍ່ພະນັກງານຜູ້ນື່ງຕໍ່ອາທິດ"
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr "ເຂົ້າຕາຕະລາງເຮັດວຽກ"
-
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr "ຊົ່ວໂມງຕໍ່ການເຮັດວຽກ"
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr "ເຮັດວຽກ"
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr "ເຮັດວຽກ"

@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:timesheet.hours_employee,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:timesheet.hours_employee,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
 msgstr ""
@@ -18,41 +10,13 @@ msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr ""
 
-msgctxt "field:timesheet.hours_employee,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:timesheet.hours_employee,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "Pabaigos data"
 
-msgctxt "field:timesheet.hours_employee.context,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
@@ -62,41 +26,13 @@ msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr ""
 
-msgctxt "field:timesheet.hours_employee_monthly,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr ""
 
-msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
-msgid "Month"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
 msgstr ""
-
-msgctxt "field:timesheet.hours_employee_weekly,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
@@ -104,14 +40,6 @@ msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_weekly,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:timesheet.hours_employee_weekly,week:"
@@ -122,14 +50,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr ""
 
-msgctxt "field:timesheet.hours_employee_weekly,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr ""
@@ -137,14 +57,6 @@ msgstr ""
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
 msgstr "Organizacija"
-
-msgctxt "field:timesheet.line,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:timesheet.line,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -162,14 +74,6 @@ msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr ""
 
-msgctxt "field:timesheet.line,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:timesheet.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
 msgstr ""
@@ -179,14 +83,6 @@ msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr "Works"
 
-msgctxt "field:timesheet.line,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:timesheet.line,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
 msgstr ""
@@ -195,32 +91,12 @@ msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr ""
 
-msgctxt "field:timesheet.line.enter.start,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:timesheet.work,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:timesheet.work,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:timesheet.work,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
-msgstr ""
-
-msgctxt "field:timesheet.work,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -230,10 +106,6 @@ msgstr "Namu"
 
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
-msgstr ""
-
-msgctxt "field:timesheet.work,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 #, fuzzy
@@ -255,20 +127,8 @@ msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Works"
 
-msgctxt "field:timesheet.work,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:timesheet.work,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr ""
-
-msgctxt "field:timesheet.work.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:timesheet.work.context,to_date:"
@@ -301,10 +161,6 @@ msgstr ""
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
-
-msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:timesheet.work,company:"
@@ -417,7 +273,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Nuostatos"
 
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"
 msgid "Hours per Employee"
@@ -441,7 +297,7 @@ msgstr "Timesheet Lines"
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Ataskaitos"
 
 msgctxt "model:ir.ui.menu,name:menu_timesheet"
 msgid "Timesheet"

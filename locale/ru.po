@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:timesheet.hours_employee,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:timesheet.hours_employee,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 #, fuzzy
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
@@ -19,44 +11,15 @@ msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Сотрудник"
 
-msgctxt "field:timesheet.hours_employee,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:timesheet.hours_employee,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 #, fuzzy
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "Дата окончания"
 
 #, fuzzy
-msgctxt "field:timesheet.hours_employee.context,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Дата начала"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
@@ -67,42 +30,13 @@ msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Сотрудник"
 
-msgctxt "field:timesheet.hours_employee_monthly,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Месяц"
 
-#, fuzzy
-msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
-msgid "Month"
-msgstr "Месяц"
-
-msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:timesheet.hours_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
 msgstr "Год"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 #, fuzzy
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
@@ -113,14 +47,6 @@ msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Сотрудник"
 
-msgctxt "field:timesheet.hours_employee_weekly,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Неделя"
@@ -130,14 +56,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Неделя"
 
-msgctxt "field:timesheet.hours_employee_weekly,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Год"
@@ -146,14 +64,6 @@ msgstr "Год"
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
 msgstr "Учет.орг."
-
-msgctxt "field:timesheet.line,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:timesheet.line,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -172,14 +82,6 @@ msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Сотрудник"
 
-msgctxt "field:timesheet.line,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
 msgstr ""
@@ -187,14 +89,6 @@ msgstr ""
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr "Работа"
-
-msgctxt "field:timesheet.line,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:timesheet.line,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -204,33 +98,13 @@ msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr "Сотрудник"
 
-msgctxt "field:timesheet.line.enter.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.work,active:"
-msgid "Active"
-msgstr "Действующий"
-
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "Организация"
 
-msgctxt "field:timesheet.work,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-msgctxt "field:timesheet.work,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
 msgstr ""
-
-msgctxt "field:timesheet.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -240,10 +114,6 @@ msgstr "Наименование"
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Первоисточник"
-
-msgctxt "field:timesheet.work,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
@@ -262,23 +132,10 @@ msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Работа"
 
-msgctxt "field:timesheet.work,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-msgctxt "field:timesheet.work,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
-
 #, fuzzy
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Начальная дата"
-
-#, fuzzy
-msgctxt "field:timesheet.work.context,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:timesheet.work.context,to_date:"
@@ -311,10 +168,6 @@ msgstr ""
 
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
-msgstr ""
-
-msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:timesheet.work,company:"
@@ -542,27 +395,3 @@ msgstr "Отменить"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Ввод"
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr "Часы на сотрудника в месяц"
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr "Часы на сотрудника в неделю"
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr "Ввод табеля"
-
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr "Часов на работу"
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr "Работа"
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr "Работы"

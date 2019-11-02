@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:timesheet.hours_employee,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:timesheet.hours_employee,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
-
 msgctxt "field:timesheet.hours_employee,duration:"
 msgid "Duration"
 msgstr "Duração"
@@ -18,41 +10,13 @@ msgctxt "field:timesheet.hours_employee,employee:"
 msgid "Employee"
 msgstr "Empregado"
 
-msgctxt "field:timesheet.hours_employee,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.hours_employee,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:timesheet.hours_employee,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:timesheet.hours_employee,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
 msgctxt "field:timesheet.hours_employee.context,end_date:"
 msgid "End Date"
 msgstr "Data de término"
 
-msgctxt "field:timesheet.hours_employee.context,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
 msgstr "Data de início"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:timesheet.hours_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
@@ -62,41 +26,13 @@ msgctxt "field:timesheet.hours_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Empregado"
 
-msgctxt "field:timesheet.hours_employee_monthly,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:timesheet.hours_employee_monthly,month:"
 msgid "Month"
 msgstr "Mês"
 
-msgctxt "field:timesheet.hours_employee_monthly,month_internal:"
-msgid "Month"
-msgstr "Mês"
-
-msgctxt "field:timesheet.hours_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:timesheet.hours_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:timesheet.hours_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
 msgctxt "field:timesheet.hours_employee_monthly,year:"
 msgid "Year"
 msgstr "Ano"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:timesheet.hours_employee_weekly,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
 
 msgctxt "field:timesheet.hours_employee_weekly,duration:"
 msgid "Duration"
@@ -106,14 +42,6 @@ msgctxt "field:timesheet.hours_employee_weekly,employee:"
 msgid "Employee"
 msgstr "Empregado"
 
-msgctxt "field:timesheet.hours_employee_weekly,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.hours_employee_weekly,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:timesheet.hours_employee_weekly,week:"
 msgid "Week"
 msgstr "Semana"
@@ -122,14 +50,6 @@ msgctxt "field:timesheet.hours_employee_weekly,week_internal:"
 msgid "Week"
 msgstr "Semana"
 
-msgctxt "field:timesheet.hours_employee_weekly,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:timesheet.hours_employee_weekly,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
 msgctxt "field:timesheet.hours_employee_weekly,year:"
 msgid "Year"
 msgstr "Ano"
@@ -137,14 +57,6 @@ msgstr "Ano"
 msgctxt "field:timesheet.line,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:timesheet.line,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:timesheet.line,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
 
 msgctxt "field:timesheet.line,date:"
 msgid "Date"
@@ -162,14 +74,6 @@ msgctxt "field:timesheet.line,employee:"
 msgid "Employee"
 msgstr "Empregado"
 
-msgctxt "field:timesheet.line,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.line,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:timesheet.line,uuid:"
 msgid "UUID"
 msgstr ""
@@ -177,14 +81,6 @@ msgstr ""
 msgctxt "field:timesheet.line,work:"
 msgid "Work"
 msgstr "Trabalho"
-
-msgctxt "field:timesheet.line,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:timesheet.line,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
 
 msgctxt "field:timesheet.line.enter.start,date:"
 msgid "Date"
@@ -194,33 +90,13 @@ msgctxt "field:timesheet.line.enter.start,employee:"
 msgid "Employee"
 msgstr "Empregado"
 
-msgctxt "field:timesheet.line.enter.start,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:timesheet.work,active:"
-msgid "Active"
-msgstr "Ativo"
-
 msgctxt "field:timesheet.work,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:timesheet.work,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:timesheet.work,create_uid:"
-msgid "Create User"
-msgstr "Criado pelo usuário"
-
 msgctxt "field:timesheet.work,duration:"
 msgid "Timesheet Duration"
 msgstr "Duração do Horário de Trabalho"
-
-msgctxt "field:timesheet.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:timesheet.work,name:"
 msgid "Name"
@@ -229,10 +105,6 @@ msgstr "Nome"
 msgctxt "field:timesheet.work,origin:"
 msgid "Origin"
 msgstr "Origem"
-
-msgctxt "field:timesheet.work,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:timesheet.work,timesheet_end_date:"
 msgid "Timesheet End"
@@ -250,21 +122,9 @@ msgctxt "field:timesheet.work,work:"
 msgid "Work"
 msgstr "Trabalho"
 
-msgctxt "field:timesheet.work,write_date:"
-msgid "Write Date"
-msgstr "Data de gravação"
-
-msgctxt "field:timesheet.work,write_uid:"
-msgid "Write User"
-msgstr "Gravado pelo usuário"
-
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
 msgstr "Desde a Data"
-
-msgctxt "field:timesheet.work.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"
@@ -297,10 +157,6 @@ msgstr "Quando o tempo é gasto."
 msgctxt "help:timesheet.line.enter.start,employee:"
 msgid "The employee who spends the time."
 msgstr "O empregado que gasta o tempo."
-
-msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
 
 msgctxt "help:timesheet.work,company:"
 msgid "Make the work belong to the company."
@@ -439,7 +295,7 @@ msgstr "Hours per Employee per Week"
 
 msgctxt "model:ir.ui.menu,name:menu_line_enter"
 msgid "Enter Timesheet"
-msgstr "Digite Quadro de Horários "
+msgstr "Digite Quadro de Horários"
 
 msgctxt "model:ir.ui.menu,name:menu_line_form"
 msgid "Timesheet Lines"
@@ -519,40 +375,3 @@ msgstr "Cancelar"
 msgctxt "wizard_button:timesheet.line.enter,start,enter:"
 msgid "Enter"
 msgstr "Inserir"
-
-msgctxt "help:timesheet.work,active:"
-msgid "Uncheck to exclude the work from future use."
-msgstr "Desmarque para não usar o trabalho futuramente."
-
-msgctxt "error:timesheet.work:"
-msgid ""
-"The company of the work \"%(work)s\" is different then the origin's company"
-msgstr "A empresa do trabalho \"%(work)s\" é diferente da empresa de origem"
-
-msgctxt "help:timesheet.line,work:"
-msgid "The work on which is the time is spent."
-msgstr "O trabalho no qual o tempo é gasto."
-
-msgctxt "view:timesheet.hours_employee_monthly:"
-msgid "Hours per Employee per Month"
-msgstr "Horas por Empregado por Mês"
-
-msgctxt "view:timesheet.hours_employee_weekly:"
-msgid "Hours per Employee per Week"
-msgstr "Horas por empregado por semana"
-
-msgctxt "view:timesheet.line.enter.start:"
-msgid "Enter Timesheet"
-msgstr "Digite Quadro de Horários"
-
-msgctxt "view:timesheet.work:"
-msgid "Hours per Work"
-msgstr "Horas por Trabalho"
-
-msgctxt "view:timesheet.work:"
-msgid "Work"
-msgstr "Trabalho"
-
-msgctxt "view:timesheet.work:"
-msgid "Works"
-msgstr "Trabalhos"
