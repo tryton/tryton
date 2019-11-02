@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
-msgstr "Promocja"
+msgstr ""
 
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
@@ -16,60 +16,59 @@ msgstr ""
 
 msgctxt "field:sale.promotion,company:"
 msgid "Company"
-msgstr "Firma"
+msgstr "Perusahaan"
 
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
-msgstr "Data ukończenia"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr "Formuła"
+msgstr ""
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
-msgstr "Nazwa"
+msgstr "Nama"
 
 msgctxt "field:sale.promotion,price_list:"
 msgid "Price List"
-msgstr "Cennik"
+msgstr ""
 
 msgctxt "field:sale.promotion,products:"
 msgid "Products"
-msgstr "Produkty"
+msgstr ""
 
 msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
-msgstr "Ilość"
+msgstr ""
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "Data rozpoczęcia"
+msgstr "Tanggal Awal"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"
-msgstr "Jednostka"
+msgstr ""
 
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr "Cyfry jednostki"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
-msgstr "Promocja"
+msgstr ""
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
-msgstr "Produkt"
+msgstr "Produk"
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr "Promocja"
+msgstr ""
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -77,15 +76,13 @@ msgid ""
 "- unit_price: the original unit_price"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
-msgstr "Promotions"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_promotion_relate"
 msgid "Sale Promotions"
-msgstr "Sale Promotions"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_invalid_formula"
 msgid ""
@@ -95,16 +92,15 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_promotion"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_promotion"
 msgid "Promotions"
-msgstr "Promotions"
+msgstr ""
 
 msgctxt "model:sale.promotion,name:"
 msgid "Sale Promotion"
-msgstr "Promocja sprzedaży"
+msgstr ""
 
 msgctxt "model:sale.promotion-product.category,name:"
 msgid "Sale Promotion - Product Category"
@@ -112,4 +108,4 @@ msgstr ""
 
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
-msgstr "Promocja sprzedaży - Produkt"
+msgstr ""

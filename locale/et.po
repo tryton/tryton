@@ -10,10 +10,6 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Soodustus"
 
-msgctxt "field:sale.promotion,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr "Kategooriad"
@@ -22,14 +18,6 @@ msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:sale.promotion,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.promotion,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Lõppkuupäev"
@@ -37,10 +25,6 @@ msgstr "Lõppkuupäev"
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr "Valem"
-
-msgctxt "field:sale.promotion,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
@@ -58,10 +42,6 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:sale.promotion,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
@@ -74,57 +54,13 @@ msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Ühiku numbriväärtus"
 
-msgctxt "field:sale.promotion,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.promotion,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
 msgstr "Kategooria"
 
-msgctxt "field:sale.promotion-product.category,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.promotion-product.category,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:sale.promotion-product.category,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
 msgstr "Soodustus"
-
-msgctxt "field:sale.promotion-product.category,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:sale.promotion-product.category,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.promotion-product.category,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:sale.promotion-product.product,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:sale.promotion-product.product,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:sale.promotion-product.product,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
@@ -133,22 +69,6 @@ msgstr "Toode"
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr "Soodustus"
-
-msgctxt "field:sale.promotion-product.product,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:sale.promotion-product.product,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:sale.promotion-product.product,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "help:sale.promotion,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""

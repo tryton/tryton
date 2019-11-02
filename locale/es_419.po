@@ -10,10 +10,6 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr ""
 
-msgctxt "field:sale.promotion,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
@@ -22,24 +18,12 @@ msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:sale.promotion,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.promotion,create_uid:"
-msgid "Create User"
-msgstr "Creado por usuario"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr ""
 
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
-msgstr ""
-
-msgctxt "field:sale.promotion,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.promotion,name:"
@@ -58,10 +42,6 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:sale.promotion,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
 msgstr ""
@@ -74,57 +54,12 @@ msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr ""
 
-msgctxt "field:sale.promotion,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.promotion,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
 msgstr ""
 
-msgctxt "field:sale.promotion-product.category,create_date:"
-msgid "Create Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,create_uid:"
-msgid "Create User"
-msgstr "Creado por usuario"
-
-msgctxt "field:sale.promotion-product.category,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.category,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.category,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.category,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.product,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.product,create_uid:"
-msgid "Create User"
-msgstr "Creado por usuario"
-
-msgctxt "field:sale.promotion-product.product,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:sale.promotion-product.product,product:"
@@ -133,22 +68,6 @@ msgstr ""
 
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.product,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.product,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:sale.promotion-product.product,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "help:sale.promotion,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:sale.promotion,formula:"

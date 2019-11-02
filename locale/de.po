@@ -10,10 +10,6 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
 
-msgctxt "field:sale.promotion,active:"
-msgid "Active"
-msgstr "Aktiv"
-
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr "Kategorien"
@@ -22,14 +18,6 @@ msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-msgctxt "field:sale.promotion,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.promotion,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Enddatum"
@@ -37,10 +25,6 @@ msgstr "Enddatum"
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr "Formel"
-
-msgctxt "field:sale.promotion,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
@@ -58,10 +42,6 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr "Menge"
 
-msgctxt "field:sale.promotion,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
 msgstr "Anfangsdatum"
@@ -74,57 +54,13 @@ msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Nachkommastellen"
 
-msgctxt "field:sale.promotion,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.promotion,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
 msgstr "Kategorie"
 
-msgctxt "field:sale.promotion-product.category,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.promotion-product.category,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.promotion-product.category,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
-
-msgctxt "field:sale.promotion-product.category,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:sale.promotion-product.category,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.promotion-product.category,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:sale.promotion-product.product,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.promotion-product.product,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.promotion-product.product,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
@@ -133,22 +69,6 @@ msgstr "Artikel"
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr "Verkaufsaktion"
-
-msgctxt "field:sale.promotion-product.product,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:sale.promotion-product.product,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.promotion-product.product,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "help:sale.promotion,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -193,15 +113,3 @@ msgstr "Verkaufsaktion - Artikelkategorie"
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Verkaufsaktion - Artikel"
-
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr "Einheitenkategorie"
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotion"
-msgstr "Verkaufsaktion"
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotions"
-msgstr "Verkaufsaktionen"

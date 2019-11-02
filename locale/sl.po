@@ -10,10 +10,6 @@ msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
 msgstr "Spodbuda"
 
-msgctxt "field:sale.promotion,active:"
-msgid "Active"
-msgstr "Aktivno"
-
 msgctxt "field:sale.promotion,categories:"
 msgid "Categories"
 msgstr ""
@@ -22,14 +18,6 @@ msgctxt "field:sale.promotion,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:sale.promotion,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:sale.promotion,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:sale.promotion,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
@@ -37,10 +25,6 @@ msgstr "Končni datum"
 msgctxt "field:sale.promotion,formula:"
 msgid "Formula"
 msgstr "Formula"
-
-msgctxt "field:sale.promotion,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion,name:"
 msgid "Name"
@@ -58,10 +42,6 @@ msgctxt "field:sale.promotion,quantity:"
 msgid "Quantity"
 msgstr "Količina"
 
-msgctxt "field:sale.promotion,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
@@ -74,64 +54,14 @@ msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalke"
 
-msgctxt "field:sale.promotion,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:sale.promotion,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.promotion-product.category,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.promotion-product.category,promotion:"
 msgid "Promotion"
 msgstr "Spodbuda"
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-#, fuzzy
-msgctxt "field:sale.promotion-product.category,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:sale.promotion-product.product,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:sale.promotion-product.product,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:sale.promotion-product.product,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.promotion-product.product,product:"
 msgid "Product"
@@ -140,22 +70,6 @@ msgstr "Izdelek"
 msgctxt "field:sale.promotion-product.product,promotion:"
 msgid "Promotion"
 msgstr "Spodbuda"
-
-msgctxt "field:sale.promotion-product.product,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:sale.promotion-product.product,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:sale.promotion-product.product,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "help:sale.promotion,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "help:sale.promotion,formula:"
 msgid ""
@@ -204,15 +118,3 @@ msgstr ""
 msgctxt "model:sale.promotion-product.product,name:"
 msgid "Sale Promotion - Product"
 msgstr "Spodbuda prodaje - Izdelek"
-
-msgctxt "field:sale.promotion,unit_category:"
-msgid "Unit Category"
-msgstr "Kategorija enote"
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotion"
-msgstr "Spodbuda prodaje"
-
-msgctxt "view:sale.promotion:"
-msgid "Sale Promotions"
-msgstr "Spodbude prodaje"
