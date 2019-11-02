@@ -14,14 +14,6 @@ msgctxt "field:account.configuration.default_credit_limit_amount,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
@@ -31,22 +23,6 @@ msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
 msgid "Currency Digits"
 msgstr "Dígitos Decimais da Moeda"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
@@ -72,14 +48,6 @@ msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:party.party.credit_limit_amount,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:party.party.credit_limit_amount,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Montante do Limite de Crédito"
@@ -88,25 +56,9 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
 msgid "Currency Digits"
 msgstr "Dígitos Decimais da moeda"
 
-msgctxt "field:party.party.credit_limit_amount,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
 msgstr "Pessoa"
-
-msgctxt "field:party.party.credit_limit_amount,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:party.party.credit_limit_amount,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:party.party.credit_limit_amount,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
@@ -117,8 +69,9 @@ msgctxt ""
 msgid "The default credit limit amount for new customers."
 msgstr "O limite de crédito padrão para novos clientes."
 
+#, fuzzy
 msgctxt "help:account.dunning.level,credit_limit:"
-msgid "Has reached the credit limit"
+msgid "Has reached the credit limit."
 msgstr "Atingiu o limite de crédito"
 
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"

@@ -14,14 +14,6 @@ msgctxt "field:account.configuration.default_credit_limit_amount,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:account.configuration.default_credit_limit_amount,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount:"
 msgid "Default Credit Limit Amount"
@@ -31,22 +23,6 @@ msgctxt ""
 "field:account.configuration.default_credit_limit_amount,default_credit_limit_amount_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:account.configuration.default_credit_limit_amount,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:account.dunning.level,credit_limit:"
 msgid "Credit Limit"
@@ -72,14 +48,6 @@ msgctxt "field:party.party.credit_limit_amount,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:party.party.credit_limit_amount,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:party.party.credit_limit_amount,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:party.party.credit_limit_amount,credit_limit_amount:"
 msgid "Credit Limit Amount"
 msgstr "Montant de la limite de crédit"
@@ -88,25 +56,9 @@ msgctxt "field:party.party.credit_limit_amount,credit_limit_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
 
-msgctxt "field:party.party.credit_limit_amount,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:party.party.credit_limit_amount,party:"
 msgid "Party"
 msgstr "Tiers"
-
-msgctxt "field:party.party.credit_limit_amount,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:party.party.credit_limit_amount,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:party.party.credit_limit_amount,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "help:account.configuration,default_credit_limit_amount:"
 msgid "The default credit limit amount for new customers."
@@ -118,8 +70,8 @@ msgid "The default credit limit amount for new customers."
 msgstr "Le montant limite de crédit par défaut pour les nouveaux clients."
 
 msgctxt "help:account.dunning.level,credit_limit:"
-msgid "Has reached the credit limit"
-msgstr "A atteint la limite de crédit"
+msgid "Has reached the credit limit."
+msgstr "A atteint la limite de crédit."
 
 msgctxt "model:account.configuration.default_credit_limit_amount,name:"
 msgid "Account Configuration Default Credit Limit Amount"
