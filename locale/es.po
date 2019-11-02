@@ -14,14 +14,6 @@ msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:purchase.requisition,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:purchase.requisition,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -38,10 +30,6 @@ msgctxt "field:purchase.requisition,employee:"
 msgid "Employee"
 msgstr "Empleado"
 
-msgctxt "field:purchase.requisition,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.requisition,lines:"
 msgid "Lines"
 msgstr "Líneas"
@@ -49,10 +37,6 @@ msgstr "Líneas"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Número"
-
-msgctxt "field:purchase.requisition,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -74,40 +58,20 @@ msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
 msgstr "Almacén"
 
-msgctxt "field:purchase.requisition,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:purchase.requisition,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Importe"
 
-msgctxt "field:purchase.requisition.line,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:purchase.requisition.line,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Descripción"
-
-msgctxt "field:purchase.requisition.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.requisition.line,product:"
 msgid "Product"
 msgstr "Producto"
 
 msgctxt "field:purchase.requisition.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UOM Category"
 msgstr "Categoría UdM del producto"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
@@ -122,17 +86,9 @@ msgctxt "field:purchase.requisition.line,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "field:purchase.requisition.line,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
 msgstr "Petición"
-
-msgctxt "field:purchase.requisition.line,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
 
 msgctxt "field:purchase.requisition.line,supplier:"
 msgid "Supplier"
@@ -149,14 +105,6 @@ msgstr "Dígitos de la unidad"
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Precio unitario"
-
-msgctxt "field:purchase.requisition.line,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:purchase.requisition.line,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
@@ -329,23 +277,3 @@ msgstr "Otra información"
 msgctxt "view:purchase.requisition:"
 msgid "Requisition"
 msgstr "Petición"
-
-msgctxt "view:purchase.requisition:"
-msgid "Approve"
-msgstr "Aprobar"
-
-msgctxt "view:purchase.requisition:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:purchase.requisition:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:purchase.requisition:"
-msgid "Reject"
-msgstr "Rechazar"
-
-msgctxt "view:purchase.requisition:"
-msgid "Wait"
-msgstr "Esperar"

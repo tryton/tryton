@@ -14,14 +14,6 @@ msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
-msgctxt "field:purchase.requisition,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.requisition,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:purchase.requisition,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -38,10 +30,6 @@ msgctxt "field:purchase.requisition,employee:"
 msgid "Employee"
 msgstr "Töötaja"
 
-msgctxt "field:purchase.requisition,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.requisition,lines:"
 msgid "Lines"
 msgstr "Read"
@@ -49,10 +37,6 @@ msgstr "Read"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Number"
-
-msgctxt "field:purchase.requisition,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -74,40 +58,21 @@ msgctxt "field:purchase.requisition,warehouse:"
 msgid "Warehouse"
 msgstr "Ladu"
 
-msgctxt "field:purchase.requisition,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.requisition,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Väärtus"
-
-msgctxt "field:purchase.requisition.line,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:purchase.requisition.line,create_uid:"
-msgid "Create User"
-msgstr "Looja"
 
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Selgitus"
 
-msgctxt "field:purchase.requisition.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:purchase.requisition.line,product:"
 msgid "Product"
 msgstr "Toode"
 
+#, fuzzy
 msgctxt "field:purchase.requisition.line,product_uom_category:"
-msgid "Product Uom Category"
+msgid "Product UOM Category"
 msgstr "Toote mõõtühiku kategooria"
 
 msgctxt "field:purchase.requisition.line,purchase_requests:"
@@ -122,17 +87,9 @@ msgctxt "field:purchase.requisition.line,quantity:"
 msgid "Quantity"
 msgstr "Kogus"
 
-msgctxt "field:purchase.requisition.line,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:purchase.requisition.line,requisition:"
 msgid "Requisition"
 msgstr "Soov"
-
-msgctxt "field:purchase.requisition.line,sequence:"
-msgid "Sequence"
-msgstr "Jada"
 
 msgctxt "field:purchase.requisition.line,supplier:"
 msgid "Supplier"
@@ -149,14 +106,6 @@ msgstr "Ühiku numbriväärtus"
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
 msgstr "Ühiku hind"
-
-msgctxt "field:purchase.requisition.line,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:purchase.requisition.line,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "model:ir.action,name:act_open_purchase_request_form"
 msgid "Requests"
