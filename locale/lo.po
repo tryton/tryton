@@ -19,16 +19,6 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:purchase.request,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:purchase.request,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
@@ -41,11 +31,6 @@ msgstr "ເນື້ອໃນລາຍການ"
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.request,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:purchase.request,origin:"
@@ -61,6 +46,10 @@ msgstr "ພາກສ່ວນ"
 msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,purchase:"
@@ -79,10 +68,6 @@ msgstr ""
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
-
-msgctxt "field:purchase.request,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,state:"
@@ -114,16 +99,6 @@ msgid "Warehouse Required"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:purchase.request,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:purchase.request,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
@@ -134,11 +109,6 @@ msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
 
 #, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_party,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
 msgstr "ຜູ້ສະໜອງ"
@@ -147,11 +117,6 @@ msgstr "ຜູ້ສະໜອງ"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
-
-#, fuzzy
-msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"

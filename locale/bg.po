@@ -19,16 +19,6 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:purchase.request,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-#, fuzzy
-msgctxt "field:purchase.request,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
@@ -41,11 +31,6 @@ msgstr "Описание"
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.request,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:purchase.request,origin:"
@@ -61,6 +46,10 @@ msgstr "Управление на партньор"
 msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "Продукт"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,purchase:"
@@ -80,10 +69,6 @@ msgstr "Ред от покупка"
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Количество"
-
-msgctxt "field:purchase.request,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,state:"
@@ -117,16 +102,6 @@ msgid "Warehouse Required"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:purchase.request,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-#, fuzzy
-msgctxt "field:purchase.request,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Фирма"
@@ -137,11 +112,6 @@ msgid "Description"
 msgstr "Описание"
 
 #, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_party,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
 msgstr "Доставчик"
@@ -150,11 +120,6 @@ msgstr "Доставчик"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Продукт"
-
-#, fuzzy
-msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"

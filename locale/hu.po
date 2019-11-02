@@ -19,16 +19,6 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:purchase.request,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:purchase.request,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
@@ -41,11 +31,6 @@ msgstr "Leírás"
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.request,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
@@ -60,6 +45,10 @@ msgstr "Partner"
 msgctxt "field:purchase.request,product:"
 msgid "Product"
 msgstr "Termék"
+
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,purchase:"
@@ -78,10 +67,6 @@ msgstr ""
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
-
-msgctxt "field:purchase.request,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:purchase.request,state:"
@@ -115,16 +100,6 @@ msgid "Warehouse Required"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:purchase.request,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:purchase.request,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Társaság"
@@ -135,11 +110,6 @@ msgid "Description"
 msgstr "Leírás"
 
 #, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_party,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
 msgstr "Beszállítók"
@@ -148,11 +118,6 @@ msgstr "Beszállítók"
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
 msgstr "Termék"
-
-#, fuzzy
-msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"

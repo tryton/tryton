@@ -4,180 +4,130 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.line,requests:"
 msgid "Requests"
-msgstr ""
+msgstr "verzoeken"
 
-#, fuzzy
 msgctxt "field:purchase.request,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
 msgctxt "field:purchase.request,computed_quantity:"
 msgid "Computed Quantity"
-msgstr ""
+msgstr "Berekende hoeveelheid"
 
 msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.request,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:purchase.request,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
+msgstr "Berekende maateenheid"
 
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
-msgstr ""
+msgstr "standaard maateenheid decimalen"
 
-#, fuzzy
 msgctxt "field:purchase.request,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "Omschrijving"
 
 msgctxt "field:purchase.request,exception_ignored:"
 msgid "Ignored Exception"
-msgstr ""
+msgstr "Genegeerde uitzondering"
 
-#, fuzzy
-msgctxt "field:purchase.request,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:purchase.request,origin:"
 msgid "Origin"
-msgstr "Oorsprong"
+msgstr "Oorsprong(herkomst)"
 
-#, fuzzy
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr "Relaties"
+msgstr "Relatie"
 
-#, fuzzy
 msgctxt "field:purchase.request,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Product"
 
-#, fuzzy
+msgctxt "field:purchase.request,product_uom_category:"
+msgid "Product Uom Category"
+msgstr "Poduct maateenheid categorie"
+
 msgctxt "field:purchase.request,purchase:"
 msgid "Purchase"
 msgstr "Inkoop"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
-msgstr ""
+msgstr "Beste aankoopdatum"
 
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
-msgstr ""
+msgstr "aankooplijn"
 
-#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:purchase.request,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:purchase.request,state:"
 msgid "State"
 msgstr "Status"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
-msgstr ""
+msgstr "Voorraad op datum levering"
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
-msgstr ""
+msgstr "Verwachte leverdatum"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "maateenheid"
 
 msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"
-msgstr ""
+msgstr "maateenheid decimalen"
 
-#, fuzzy
 msgctxt "field:purchase.request,warehouse:"
 msgid "Warehouse"
 msgstr "Magazijn"
 
 msgctxt "field:purchase.request,warehouse_required:"
 msgid "Warehouse Required"
-msgstr ""
+msgstr "Magazijn vereist"
 
-#, fuzzy
-msgctxt "field:purchase.request,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:purchase.request,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,description:"
 msgid "Description"
-msgstr "Specificatie"
+msgstr "Omschrijving"
 
-#, fuzzy
-msgctxt "field:purchase.request.create_purchase.ask_party,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,party:"
 msgid "Supplier"
 msgstr "Leverancier"
 
-#, fuzzy
 msgctxt "field:purchase.request.create_purchase.ask_party,product:"
 msgid "Product"
-msgstr "Producten"
-
-#, fuzzy
-msgctxt "field:purchase.request.handle.purchase.cancellation.start,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Product"
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr "Aankoopverzoeken"
 
 msgctxt "model:ir.action,name:wizard_create_purchase"
 msgid "Create Purchase"
-msgstr "Create Purchase"
+msgstr "Aankoop maken"
 
 msgctxt "model:ir.action,name:wizard_purchase_cancellation_handle_exception"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr "Aankoopafhandeling annuleren"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Alle"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_draft"
 msgid "Draft"
 msgstr "Concept"
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_form_domain_exception"
 msgid "Exception"
@@ -188,6 +138,8 @@ msgid ""
 "You cannot delete purchase \"%(purchase)s\" because it is linked to purchase"
 " requests."
 msgstr ""
+"U kunt de aankoop \"%(purchase)s\" niet verwijderen omdat deze is gekoppeld "
+"aan aankoopverzoeken."
 
 msgctxt "model:ir.message,text:msg_purchase_request_warehouse"
 msgid ""
@@ -195,104 +147,101 @@ msgid ""
 "different to warehouse \"%(request_warehouse)s\" on linked purchase request "
 "\"%(request)s\"."
 msgstr ""
+"Magazijn \"%(purchase_warehouse)s\" bij aankoop  \"%(purchase)s\"verschilt "
+"van magazijn \"%(request_warehouse)s\" bij gekoppeld inkoopverzoek "
+"\"%(request)s\"."
 
 msgctxt "model:ir.message,text:msg_request_delete_purchased"
 msgid ""
 "You cannot delete purchase request \"%(request)s\" because it is purchased."
 msgstr ""
+"U kunt het aankoopverzoek \"%(request)s\" niet verwijderen omdat het al "
+"gekocht is."
 
 msgctxt "model:ir.message,text:msg_request_no_create"
 msgid "Purchase requests can only be created by the system."
-msgstr ""
+msgstr "Aankoopverzoeken kunnen alleen door het systeem worden aangemaakt."
 
 msgctxt ""
 "model:ir.model.button,string:purchase_hande_purchase_cancellation_exception_button"
 msgid "Handle Purchase Cancellation"
-msgstr "Handle Purchase Cancellation"
+msgstr "Aankoopafhandeling annuleren"
 
 msgctxt "model:ir.rule.group,name:rule_group_purchase_request"
 msgid "User in company"
-msgstr ""
+msgstr "Gebruiker in het bedrijf"
 
 msgctxt "model:ir.ui.menu,name:menu_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr "Aankoopverzoeken"
 
-#, fuzzy
 msgctxt "model:purchase.request,name:"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr "Aankoopverzoek"
 
 msgctxt "model:purchase.request.create_purchase.ask_party,name:"
 msgid "Create Purchase Ask Party"
-msgstr ""
+msgstr "Aankoop creatie vraag relatie"
 
 msgctxt "model:purchase.request.handle.purchase.cancellation.start,name:"
 msgid "Handle Purchase Cancellation Exception - Start"
-msgstr ""
+msgstr "Omgaan met uitzondering van koopannulering - Start"
 
 msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
-msgstr "Purchase Request"
+msgstr "Aankoopverzoek"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr "Geannuleerd"
+msgstr "Annuleer"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
 msgstr "Klaar"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Draft"
 msgstr "Concept"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Exception"
 msgstr "Uitzondering"
 
-#, fuzzy
 msgctxt "selection:purchase.request,state:"
 msgid "Purchased"
-msgstr "Inkoop"
+msgstr "Gekocht"
 
 msgctxt "view:purchase.request.handle.purchase.cancellation.start:"
 msgid "Do you want to cancel the request or to reset it to draft?"
-msgstr ""
+msgstr "Wilt u het verzoek annuleren of opnieuw instellen als concept?"
 
 msgctxt "view:purchase.request:"
 msgid "Product Info"
-msgstr ""
+msgstr "Product informatie"
 
 msgctxt "view:purchase.request:"
 msgid "Supply Info"
-msgstr ""
+msgstr "Leveringsinfo"
 
-#, fuzzy
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
-msgstr "Geannuleerd"
+msgstr "Annuleer"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
-msgstr ""
+msgstr "doorgaan"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,cancel_request:"
 msgid "Cancel Request"
-msgstr ""
+msgstr "Annuleer verzoek"
 
-#, fuzzy
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
 msgid "Cancel"
-msgstr "Geannuleerd"
+msgstr "Annuleer"
 
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,reset:"
 msgid "Reset to draft"
-msgstr ""
+msgstr "Terug naar concept"
