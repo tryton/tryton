@@ -10,33 +10,9 @@ msgctxt "field:account.configuration.payment_group_sequence,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.configuration.payment_group_sequence,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.configuration.payment_group_sequence,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.configuration.payment_group_sequence,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt ""
 "field:account.configuration.payment_group_sequence,payment_group_sequence:"
 msgid "Payment Group Sequence"
-msgstr ""
-
-msgctxt "field:account.configuration.payment_group_sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.configuration.payment_group_sequence,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.configuration.payment_group_sequence,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.invoice,payment_direct_debit:"
@@ -71,10 +47,6 @@ msgctxt "field:account.move.line.pay.ask_journal,currency:"
 msgid "Currency"
 msgstr ""
 
-msgctxt "field:account.move.line.pay.ask_journal,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.move.line.pay.ask_journal,journal:"
 msgid "Journal"
 msgstr "Libro diario"
@@ -87,24 +59,12 @@ msgctxt "field:account.move.line.pay.start,date:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:account.move.line.pay.start,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.payment,amount:"
 msgid "Amount"
 msgstr ""
 
 msgctxt "field:account.payment,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.payment,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.payment,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.payment,currency:"
@@ -127,10 +87,6 @@ msgctxt "field:account.payment,group:"
 msgid "Group"
 msgstr ""
 
-msgctxt "field:account.payment,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.payment,journal:"
 msgid "Journal"
 msgstr "Libro diario"
@@ -151,36 +107,12 @@ msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr ""
 
-msgctxt "field:account.payment,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr ""
 
-msgctxt "field:account.payment,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.payment,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.payment.group,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.payment.group,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.payment.group,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.payment.group,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.payment.group,journal:"
@@ -199,36 +131,12 @@ msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
 msgstr ""
 
-msgctxt "field:account.payment.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.payment.group,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.payment.group,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.payment.journal,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.payment.journal,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.payment.journal,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.payment.journal,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.payment.journal,name:"
@@ -237,22 +145,6 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,process_method:"
 msgid "Process Method"
-msgstr ""
-
-msgctxt "field:account.payment.journal,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.payment.journal,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.payment.journal,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.payment.process.start,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:party.party,payment_direct_debit:"
@@ -267,36 +159,12 @@ msgctxt "field:party.party.payment_direct_debit,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:party.party.payment_direct_debit,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:party.party.payment_direct_debit,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:party.party.payment_direct_debit,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:party.party.payment_direct_debit,party:"
 msgid "Party"
 msgstr ""
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
-
-msgctxt "field:party.party.payment_direct_debit,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:party.party.payment_direct_debit,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:party.party.payment_direct_debit,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:account.invoice,payment_direct_debit:"
@@ -625,11 +493,3 @@ msgstr ""
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"
 msgstr ""
-
-msgctxt "view:account.move.line:"
-msgid "Pay Lines"
-msgstr "Pagar líneas"
-
-msgctxt "view:account.payment:"
-msgid "Fail"
-msgstr "Fallo"
