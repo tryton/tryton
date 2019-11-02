@@ -4,63 +4,59 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:party.party,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Listino di vendita"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,sale_price_lists:"
 msgid "Sale Price Lists"
-msgstr "Listino di vendita"
+msgstr ""
 
 msgctxt "field:party.party.sale_price_list,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr "Perusahaan"
 
 msgctxt "field:party.party.sale_price_list,party:"
 msgid "Party"
-msgstr "Controparte"
+msgstr "Pihak"
 
-#, fuzzy
 msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Listino di vendita"
+msgstr ""
 
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Listino di vendita"
+msgstr ""
 
 msgctxt "field:sale.configuration.sale_price_list,company:"
 msgid "Company"
-msgstr "Azienda"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:sale.configuration.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
-msgstr "Listino di vendita"
+msgstr ""
 
 msgctxt "field:sale.sale,price_list:"
 msgid "Price List"
-msgstr "Listino"
+msgstr ""
 
 msgctxt "help:party.party,sale_price_list:"
 msgid "The default price list for new sales."
-msgstr "Il listino prezzi predefinito per le nuove vendite."
+msgstr ""
 
 msgctxt "help:sale.configuration,sale_price_list:"
 msgid "The default price list for new parties."
-msgstr "Il listino prezzi predefinito per le nuove controparti."
+msgstr ""
 
 msgctxt "help:sale.sale,price_list:"
 msgid "Use to compute the unit price of lines."
-msgstr "Utilizzare per calcolare il prezzo unitario delle righe."
+msgstr ""
 
 msgctxt "model:party.party.sale_price_list,name:"
 msgid "Party Sale Price List"
-msgstr "Listino prezzi vendita della controparte"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:sale.configuration.sale_price_list,name:"
 msgid "Sale Configuration Sale PriceList"
-msgstr "Configurazione vendita listino di vendita"
+msgstr ""
 
 msgctxt "selection:product.price_list,unit:"
 msgid "Product Sale"
