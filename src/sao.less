@@ -258,20 +258,6 @@ img.icon {
             background-color: @state-info-bg;
         }
 
-        td.prefix {
-            padding-right: @table-cell-padding;
-            [dir="rtl"] & {
-                padding-right: 0;
-                padding-left: @table-cell-padding;
-            }
-        }
-        td.suffix {
-            padding-left: @table-cell-padding;
-            [dir="rtl"] & {
-                padding-left: 0;
-                padding-right: @table-cell-padding;
-            }
-        }
         img.column-affix, a.column-affix > img {
             width: unit(@line-height-base, em);
             height: unit(@line-height-base, em);
@@ -319,6 +305,39 @@ img.icon {
         }
         > .column-text {
             white-space: pre;
+        }
+    }
+    .cell {
+        display: flex;
+        justify-content: space-between;
+
+        .widget, .widget-editable {
+            min-width: 0;
+            flex-grow: 2;
+
+            > * {
+                width: 100%;
+            }
+        }
+        .widget {
+            > * {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+       .prefix {
+            padding-right: @table-cell-padding;
+            [dir="rtl"] & {
+                padding-right: 0;
+                padding-left: @table-cell-padding;
+            }
+        }
+        .suffix {
+            padding-left: @table-cell-padding;
+            [dir="rtl"] & {
+                padding-left: 0;
+                padding-right: @table-cell-padding;
+            }
         }
     }
     .expander {

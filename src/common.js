@@ -763,7 +763,9 @@
             if (el) {
                 this.el = el;
             } else {
-                this.el = jQuery('<button/>');
+                this.el = jQuery('<button/>', {
+                    title: attributes.string || '',
+                });
                 this.el.append(attributes.string || '');
                 if (this.attributes.rule) {
                     this.el.append(' ').append(jQuery('<span/>', {

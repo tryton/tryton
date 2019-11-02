@@ -1122,13 +1122,6 @@
             }
             return this.parent_.get_id_path().concat([this.record.id]);
         },
-        build_widgets: function() {
-            var table = jQuery('<table/>');
-            table.css('width', '100%');
-            var row = jQuery('<tr/>');
-            table.append(row);
-            return [table, row];
-        },
         construct: function() {
             var el_node = this.el[0];
             while (el_node.firstChild) {
@@ -1187,10 +1180,10 @@
                         td.addClass('editable');
                     }
                 }
-                var widgets = this.build_widgets();
-                var table = widgets[0];
-                var row = widgets[1];
-                td.append(table);
+                var cell = jQuery('<div>', {
+                    'class': 'cell',
+                });
+                td.append(cell);
                 if ((i === 0) && this.children_field) {
                     this.expander = jQuery('<img/>', {
                         'tabindex': 0,
@@ -1199,28 +1192,28 @@
                     this.expander.html('&nbsp;');
                     this.expander.on('click keypress',
                             Sao.common.click_press(this.toggle_row.bind(this)));
-                    row.append(jQuery('<td/>', {
+                    cell.append(jQuery('<span/>', {
                         'class': 'expander'
-                    }).append(this.expander).css('width', 1));
+                    }).append(this.expander));
                 }
                 var j;
                 if (column.prefixes) {
                     for (j = 0; j < column.prefixes.length; j++) {
                         var prefix = column.prefixes[j];
-                        row.append(jQuery('<td/>', {
+                        cell.append(jQuery('<span/>', {
                             'class': 'prefix'
-                        }).css('width', 1));
+                        }));
                     }
                 }
-                row.append(jQuery('<td/>', {
+                cell.append(jQuery('<span/>', {
                     'class': 'widget'
                 }));
                 if (column.suffixes) {
                     for (j = 0; j < column.suffixes.length; j++) {
                         var suffix = column.suffixes[j];
-                        row.append(jQuery('<td/>', {
+                        cell.append(jQuery('<span/>', {
                             'class': 'suffix'
-                        }).css('width', 1));
+                        }));
                     }
                 }
 
@@ -1276,34 +1269,34 @@
                 for (var i = 0; i < this.tree.columns.length; i++) {
                     var column = this.tree.columns[i];
                     var td = this._get_column_td(i);
-                    var tr = td.find('tr');
-                    var cell;
+                    var cell = td.find('.cell');
+                    var item;
                     if (column.prefixes) {
                         for (var j = 0; j < column.prefixes.length; j++) {
                             var prefix = column.prefixes[j];
-                            var prefix_el = jQuery(tr.children('.prefix')[j]);
-                            cell = prefix_el.children();
-                            if (cell.length) {
-                                prefix.render(this.record, cell);
+                            var prefix_el = jQuery(cell.children('.prefix')[j]);
+                            item = prefix_el.children();
+                            if (item.length) {
+                                prefix.render(this.record, item);
                             } else {
                                 prefix_el.html(prefix.render(this.record));
                             }
                         }
                     }
-                    var widget = tr.children('.widget');
-                    cell = widget.children();
-                    if (cell.length) {
-                        column.render(this.record, cell);
+                    var widget = cell.children('.widget');
+                    item = widget.children();
+                    if (item.length) {
+                        column.render(this.record, item);
                     } else {
                         widget.html(column.render(this.record));
                     }
                     if (column.suffixes) {
                         for (var k = 0; k < column.suffixes.length; k++) {
                             var suffix = column.suffixes[k];
-                            var suffix_el = jQuery(tr.children('.suffix')[k]);
-                            cell = suffix_el.children();
-                            if (cell.length) {
-                                suffix.render(this.record, cell);
+                            var suffix_el = jQuery(cell.children('.suffix')[k]);
+                            item = suffix_el.children();
+                            if (item.length) {
+                                suffix.render(this.record, item);
                             } else {
                                 suffix_el.html(suffix.render(this.record));
                             }
@@ -1561,7 +1554,7 @@
             }.bind(this));
         },
         redraw: function(selected, expanded) {
-            var i, tr, td, widget;
+            var i, cell, widget;
             var field;
 
             Sao.View.Tree.RowEditable._super.redraw.call(this, selected,
@@ -1578,9 +1571,8 @@
             // call it when redrawing the row
             for (i = 0; i < this.tree.columns.length; i++) {
                 var column = this.tree.columns[i];
-                td = this._get_column_td(i);
-                tr = td.find('tr');
-                widget = jQuery(tr.children('.widget-editable')).data('widget');
+                cell = this._get_column_td(i).children('.cell');
+                widget = jQuery(cell.children('.widget-editable')).data('widget');
                 if (widget) {
                     var callback = display_callback(widget);
                     if (!this.record.is_loaded(column.attributes.name)) {
@@ -1647,6 +1639,7 @@
                 this.get_editable_el(td)
                     .empty()
                     .data('widget', null)
+                    .hide()
                     .parents('.treeview td').addBack().removeClass('edited');
             }.bind(this));
         },
@@ -1693,7 +1686,7 @@
             td = td || this.get_active_td();
             var editable = td.find('.widget-editable');
             if (!editable.length) {
-                editable = jQuery('<td/>', {
+                editable = jQuery('<span/>', {
                         'class': 'widget-editable'
                     }).insertAfter(td.find('.widget'));
             }
