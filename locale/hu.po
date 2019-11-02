@@ -23,21 +23,6 @@ msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Társaság"
 
-#, fuzzy
-msgctxt "field:carrier.credential.ups,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
 msgstr ""
@@ -46,10 +31,6 @@ msgstr ""
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
 msgstr "Jelszó"
-
-msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -62,16 +43,6 @@ msgstr ""
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"

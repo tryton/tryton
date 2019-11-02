@@ -22,18 +22,6 @@ msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:carrier.credential.ups,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:carrier.credential.ups,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:carrier.credential.ups,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
 msgstr "Licença"
@@ -41,10 +29,6 @@ msgstr "Licença"
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
 msgstr "Senha"
-
-msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
@@ -57,14 +41,6 @@ msgstr "Usar Métrica"
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
 msgstr "ID de usuário"
-
-msgctxt "field:carrier.credential.ups,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:carrier.credential.ups,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"

@@ -23,31 +23,12 @@ msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
-#, fuzzy
-msgctxt "field:carrier.credential.ups,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
 msgstr ""
 
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr ""
-
-msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
@@ -61,16 +42,6 @@ msgstr ""
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:carrier.credential.ups,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"

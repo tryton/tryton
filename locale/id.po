@@ -18,24 +18,21 @@ msgctxt "field:carrier.credential.ups,account_number:"
 msgid "Account Number"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
-msgstr "Учет.орг."
+msgstr "Perusahaan"
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr "Пароль"
+msgstr "Kata sandi"
 
-#, fuzzy
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
-msgstr "Сервер"
+msgstr ""
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
@@ -49,18 +46,17 @@ msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:carrier.credential.ups,name:"
 msgid "UPS Credential"
-msgstr "UPS Credentials"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_create_shipping_ups_wizard"
 msgid "Create UPS Shipping for Packages"
-msgstr "Create UPS Shipping for Packages"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_phone_required"
 msgid ""
@@ -94,20 +90,19 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
-msgstr "UPS Credentials"
+msgstr ""
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "UPS"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Production"
-msgstr "Производство"
+msgstr "Produksi"
 
 msgctxt "selection:carrier.credential.ups,server:"
 msgid "Testing"
-msgstr ""
+msgstr "Testing"
 
 msgctxt "view:carrier.credential.ups:"
 msgid "Credential Information"

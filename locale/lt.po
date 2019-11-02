@@ -22,28 +22,12 @@ msgctxt "field:carrier.credential.ups,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-msgctxt "field:carrier.credential.ups,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:carrier.credential.ups,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:carrier.credential.ups,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
 msgstr ""
 
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
-msgstr ""
-
-msgctxt "field:carrier.credential.ups,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:carrier.credential.ups,server:"
@@ -57,14 +41,6 @@ msgstr ""
 msgctxt "field:carrier.credential.ups,user_id:"
 msgid "User ID"
 msgstr "Naudotojo ID"
-
-msgctxt "field:carrier.credential.ups,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:carrier.credential.ups,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
 
 msgctxt "field:stock.package.type,ups_code:"
 msgid "UPS Code"
