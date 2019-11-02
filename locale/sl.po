@@ -14,14 +14,6 @@ msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
 msgstr "Država"
 
-msgctxt "field:customs.duty.rate,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:customs.duty.rate,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -29,14 +21,6 @@ msgstr "Valuta"
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
 msgstr "Končni datum"
-
-msgctxt "field:customs.duty.rate,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:customs.duty.rate,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -54,18 +38,6 @@ msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
 msgstr "ME"
 
-msgctxt "field:customs.duty.rate,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:customs.duty.rate,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:customs.tariff.code,active:"
-msgid "Active"
-msgstr "Aktivno"
-
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
 msgstr "Šifra"
@@ -73,14 +45,6 @@ msgstr "Šifra"
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
 msgstr "Država"
-
-msgctxt "field:customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
@@ -98,14 +62,6 @@ msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
 msgstr "Končni mesec"
 
-msgctxt "field:customs.tariff.code,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
 msgstr "Začetni dan"
@@ -114,49 +70,13 @@ msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr "Začetni mesec"
 
-msgctxt "field:customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:product-customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product-customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:product-customs.tariff.code,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
 msgstr "Izdelek"
 
-msgctxt "field:product-customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:product-customs.tariff.code,sequence:"
-msgid "Sequence"
-msgstr "Zap.št."
-
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
 msgstr "Tarifna številka"
-
-msgctxt "field:product-customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product-customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
@@ -194,24 +114,24 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Uporabi tarifne številke iz kategorije"
 
-msgctxt "help:customs.tariff.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
+#, fuzzy
 msgctxt "help:customs.tariff.code,code:"
-msgid "The code from Harmonized System of Nomenclature"
+msgid "The code from Harmonized System of Nomenclature."
 msgstr "Številka iz nomenklature harmoniziranega sistema"
 
+#, fuzzy
 msgctxt "help:product.category,tariff_codes_parent:"
-msgid "Use the tariff codes defined on the parent category"
+msgid "Use the tariff codes defined on the parent category."
 msgstr "Uporabi tarfine številke, ki so definirane v nadkategoriji"
 
+#, fuzzy
 msgctxt "help:product.product,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr "Uporabi tarifne številke, ki so definirane v kategoriji"
 
+#, fuzzy
 msgctxt "help:product.template,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr "Uporabi tarifne številke, ki so definirane v kategoriji"
 
 msgctxt "model:customs.duty.rate,name:"

@@ -14,14 +14,6 @@ msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
 msgstr "País"
 
-msgctxt "field:customs.duty.rate,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:customs.duty.rate,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -29,14 +21,6 @@ msgstr "Moneda"
 msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
 msgstr "Fecha final"
-
-msgctxt "field:customs.duty.rate,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:customs.duty.rate,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
@@ -54,18 +38,6 @@ msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
 msgstr "UdM"
 
-msgctxt "field:customs.duty.rate,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:customs.duty.rate,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:customs.tariff.code,active:"
-msgid "Active"
-msgstr "Activo"
-
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
 msgstr "Código"
@@ -73,14 +45,6 @@ msgstr "Código"
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
 msgstr "País"
-
-msgctxt "field:customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
@@ -98,14 +62,6 @@ msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
 msgstr "Mes final"
 
-msgctxt "field:customs.tariff.code,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
 msgstr "Día inicial"
@@ -114,49 +70,13 @@ msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
 msgstr "Mes inicial"
 
-msgctxt "field:customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:product-customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:product-customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:product-customs.tariff.code,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
 msgstr "Producto"
 
-msgctxt "field:product-customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:product-customs.tariff.code,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
 msgstr "Código arancelario"
-
-msgctxt "field:product-customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:product-customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:product.category,customs:"
 msgid "Customs"
@@ -194,24 +114,20 @@ msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr "Usar los códigos arancelarios de la categoría"
 
-msgctxt "help:customs.tariff.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarcar para eliminar el uso del registro en el futuro."
-
 msgctxt "help:customs.tariff.code,code:"
-msgid "The code from Harmonized System of Nomenclature"
+msgid "The code from Harmonized System of Nomenclature."
 msgstr "El código del sistema armonizado de nomenclatura."
 
 msgctxt "help:product.category,tariff_codes_parent:"
-msgid "Use the tariff codes defined on the parent category"
+msgid "Use the tariff codes defined on the parent category."
 msgstr "Usar los códigos arancelarios definidos en la categoría padre."
 
 msgctxt "help:product.product,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr "Usar los códigos arancelarios definidos en la categoría."
 
 msgctxt "help:product.template,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr "Usar los códigos arancelarios definidos en la categoría."
 
 msgctxt "model:customs.duty.rate,name:"

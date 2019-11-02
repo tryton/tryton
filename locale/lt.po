@@ -4,24 +4,15 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:customs.duty.rate,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:customs.duty.rate,computation_type:"
 msgid "Computation Type"
-msgstr ""
+msgstr "Skaičiavimo būdas"
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,country:"
 msgid "Country"
-msgstr "Koventris"
-
-msgctxt "field:customs.duty.rate,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:customs.duty.rate,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Šalis"
 
 msgctxt "field:customs.duty.rate,currency:"
 msgid "Currency"
@@ -31,149 +22,69 @@ msgctxt "field:customs.duty.rate,end_date:"
 msgid "End Date"
 msgstr "Pabaigos data"
 
-msgctxt "field:customs.duty.rate,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:customs.duty.rate,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
 
-#, fuzzy
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr "Tarifo kodas"
 
 msgctxt "field:customs.duty.rate,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:customs.duty.rate,uom:"
 msgid "Uom"
-msgstr ""
-
-msgctxt "field:customs.duty.rate,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:customs.duty.rate,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:customs.tariff.code,active:"
-msgid "Active"
-msgstr ""
+msgstr "Mato vienetas"
 
 msgctxt "field:customs.tariff.code,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kodas"
 
-#, fuzzy
 msgctxt "field:customs.tariff.code,country:"
 msgid "Country"
-msgstr "Koventris"
-
-msgctxt "field:customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
+msgstr "Šalis"
 
 msgctxt "field:customs.tariff.code,description:"
 msgid "Description"
-msgstr ""
+msgstr "Aprašymas"
 
-#, fuzzy
 msgctxt "field:customs.tariff.code,duty_rates:"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Muito tarifai"
 
-#, fuzzy
 msgctxt "field:customs.tariff.code,end_day:"
 msgid "End Day"
 msgstr "Pabaigos data"
 
 msgctxt "field:customs.tariff.code,end_month:"
 msgid "End Month"
-msgstr ""
+msgstr "Pabaigos mėnuo"
 
-msgctxt "field:customs.tariff.code,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:customs.tariff.code,start_day:"
 msgid "Start Day"
 msgstr "Pradžios data"
 
 msgctxt "field:customs.tariff.code,start_month:"
 msgid "Start Month"
-msgstr ""
-
-msgctxt "field:customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product-customs.tariff.code,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product-customs.tariff.code,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product-customs.tariff.code,id:"
-msgid "ID"
-msgstr ""
+msgstr "Pradžios mėnuo"
 
 msgctxt "field:product-customs.tariff.code,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prekė"
 
-msgctxt "field:product-customs.tariff.code,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product-customs.tariff.code,sequence:"
-msgid "Sequence"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:product-customs.tariff.code,tariff_code:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr "Tarifo kodas"
 
-msgctxt "field:product-customs.tariff.code,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product-customs.tariff.code,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-#, fuzzy
 msgctxt "field:product.category,customs:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Muitai"
 
-#, fuzzy
 msgctxt "field:product.category,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Tarifų kodai"
 
 msgctxt "field:product.category,tariff_codes_parent:"
 msgid "Use Parent's Tariff Codes"
@@ -181,12 +92,11 @@ msgstr ""
 
 msgctxt "field:product.product,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Muitinės kategorija"
 
-#, fuzzy
 msgctxt "field:product.product,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Tarifų kodai"
 
 msgctxt "field:product.product,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
@@ -194,223 +104,212 @@ msgstr ""
 
 msgctxt "field:product.template,customs_category:"
 msgid "Customs Category"
-msgstr ""
+msgstr "Muitinės kategorija"
 
-#, fuzzy
 msgctxt "field:product.template,tariff_codes:"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Tarifų kodai"
 
 msgctxt "field:product.template,tariff_codes_category:"
 msgid "Use Category's Tariff Codes"
 msgstr ""
 
-msgctxt "help:customs.tariff.code,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
 msgctxt "help:customs.tariff.code,code:"
-msgid "The code from Harmonized System of Nomenclature"
+msgid "The code from Harmonized System of Nomenclature."
 msgstr ""
 
 msgctxt "help:product.category,tariff_codes_parent:"
-msgid "Use the tariff codes defined on the parent category"
+msgid "Use the tariff codes defined on the parent category."
 msgstr ""
 
 msgctxt "help:product.product,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr ""
 
 msgctxt "help:product.template,tariff_codes_category:"
-msgid "Use the tariff codes defined on the category"
+msgid "Use the tariff codes defined on the category."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:customs.duty.rate,name:"
 msgid "Duty Rate"
-msgstr "Duty Rates"
+msgstr "Muito tarifas"
 
-#, fuzzy
 msgctxt "model:customs.tariff.code,name:"
 msgid "Tariff Code"
-msgstr "Tariff Codes"
+msgstr "Tarifo kodas"
 
 msgctxt "model:ir.action,name:act_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Muito tarifai"
 
 msgctxt "model:ir.action,name:act_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Tarifų kodai"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_export"
 msgid "Export"
-msgstr "Export"
+msgstr "Eksportas"
 
 msgctxt "model:ir.action.act_window.domain,name:act_duty_rate_domain_import"
 msgid "Import"
-msgstr "Import"
+msgstr "Importas"
 
 msgctxt "model:ir.ui.menu,name:menu_customs"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Muitai"
 
 msgctxt "model:ir.ui.menu,name:menu_duty_rate_form"
 msgid "Duty Rates"
-msgstr "Duty Rates"
+msgstr "Muito tarifai"
 
 msgctxt "model:ir.ui.menu,name:menu_tariff_code_form"
 msgid "Tariff Codes"
-msgstr "Tariff Codes"
+msgstr "Tarifų kodai"
 
 msgctxt "model:product-customs.tariff.code,name:"
 msgid "Product - Tariff Code"
-msgstr ""
+msgstr "Prekė - tarifo kodas"
 
 msgctxt "model:res.group,name:group_customs_admin"
 msgid "Customs Administration"
-msgstr "Customs Administration"
+msgstr "Muitų valdymas"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "selection:customs.duty.rate,computation_type:"
 msgid "Quantity"
-msgstr ""
+msgstr "Kiekis"
 
-#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Export"
-msgstr "Export"
+msgstr "Eksportas"
 
-#, fuzzy
 msgctxt "selection:customs.duty.rate,type:"
 msgid "Import"
-msgstr "Import"
+msgstr "Importas"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "April"
-msgstr ""
+msgstr "Balandis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "August"
-msgstr ""
+msgstr "Rugpjūtis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "December"
-msgstr ""
+msgstr "Gruodis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "February"
-msgstr ""
+msgstr "Vasaris"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "January"
-msgstr ""
+msgstr "Sausis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "July"
-msgstr ""
+msgstr "Liepa"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "June"
-msgstr ""
+msgstr "Birželis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "March"
-msgstr ""
+msgstr "Kovas"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "May"
-msgstr ""
+msgstr "Gegužė"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "November"
-msgstr ""
+msgstr "Lapkritis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "October"
-msgstr ""
+msgstr "Spalis"
 
 msgctxt "selection:customs.tariff.code,end_month:"
 msgid "September"
-msgstr ""
+msgstr "Rugsėjis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "April"
-msgstr ""
+msgstr "Balandis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "August"
-msgstr ""
+msgstr "Rugpjūtis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "December"
-msgstr ""
+msgstr "Gruodis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "February"
-msgstr ""
+msgstr "Vasaris"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "January"
-msgstr ""
+msgstr "Sausis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "July"
-msgstr ""
+msgstr "Liepa"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "June"
-msgstr ""
+msgstr "Birželis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "March"
-msgstr ""
+msgstr "Kovas"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "May"
-msgstr ""
+msgstr "Gegužė"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "November"
-msgstr ""
+msgstr "Lapkritis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "October"
-msgstr ""
+msgstr "Spalis"
 
 msgctxt "selection:customs.tariff.code,start_month:"
 msgid "September"
-msgstr ""
+msgstr "Rugsėjis"
 
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Category"
-msgstr ""
+msgstr "Kategorija"
 
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr ""
+msgstr "Prekės šablonas"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
-msgstr ""
+msgstr "Skaičiavimas"
 
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr ""
+msgstr "Nuo"
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"
-msgstr ""
+msgstr "Iki"
 
-#, fuzzy
 msgctxt "view:product.category:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Muitai"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Customs"
-msgstr "Customs"
+msgstr "Muitai"
