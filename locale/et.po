@@ -2,33 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.cultivar,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
-msgctxt "field:product.cultivar,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:product.cultivar,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
 msgstr "Grupid"
 
-msgctxt "field:product.cultivar,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
 msgstr "Nimi"
-
-msgctxt "field:product.cultivar,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,22 +18,6 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr ""
 
-msgctxt "field:product.cultivar,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:product.cultivar,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr "Kasvav"
@@ -62,77 +26,17 @@ msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
 msgstr "Grupp"
 
-msgctxt "field:product.cultivar-product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:product.cultivar.group,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
-msgctxt "field:product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Kasvavad"
-
-msgctxt "field:product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
 msgstr "Nimi"
 
-msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
-msgctxt "field:product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "field:product.taxon,active:"
-msgid "Active"
-msgstr "Aktiivne"
-
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
 msgstr "Alamjaotus"
-
-msgctxt "field:product.taxon,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:product.taxon,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:product.taxon,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
@@ -146,33 +50,9 @@ msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr "Tüüp"
 
-msgctxt "field:product.taxon,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Valitav"
-
-msgctxt "field:product.taxon,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:product.taxon,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
-msgctxt "help:product.cultivar,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
-
-msgctxt "help:product.cultivar.group,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
-
-msgctxt "help:product.taxon,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Tühista valik, et välistada tulevast kasutust."
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"

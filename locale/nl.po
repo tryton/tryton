@@ -2,211 +2,57 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
-msgctxt "field:product.cultivar,active:"
-msgid "Active"
-msgstr "Actief"
-
-#, fuzzy
-msgctxt "field:product.cultivar,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:product.cultivar,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
 msgstr "Groepen"
 
-#, fuzzy
-msgctxt "field:product.cultivar,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr "Naam bijlage"
-
-msgctxt "field:product.cultivar,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Naam"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr ""
+msgstr "selecteerbaar"
 
-#, fuzzy
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr "Taxons"
+msgstr "taxon"
 
-#, fuzzy
-msgctxt "field:product.cultivar,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:product.cultivar,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
-msgstr "Cultivars"
+msgstr "Cultivar"
 
-#, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
 msgstr "Groep"
 
-#, fuzzy
-msgctxt "field:product.cultivar-product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:product.cultivar.group,active:"
-msgid "Active"
-msgstr "Actief"
-
-#, fuzzy
-msgctxt "field:product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Cultivars"
 
-#, fuzzy
-msgctxt "field:product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Naam"
 
-msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:product.taxon,active:"
-msgid "Active"
-msgstr "Actief"
-
-#, fuzzy
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
 
-#, fuzzy
-msgctxt "field:product.taxon,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:product.taxon,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:product.taxon,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr "Naam bijlage"
+msgstr "Naam"
 
-#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
 msgstr "Bovenliggend niveau"
 
-#, fuzzy
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr "Type"
 
-msgctxt "field:product.taxon,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.taxon,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:product.taxon,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-msgctxt "help:product.cultivar,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.cultivar.group,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.taxon,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
+msgstr "selecteerbaar"
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -214,7 +60,7 @@ msgstr "Cultivars"
 
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Cultivar Groepen"
 
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
@@ -230,7 +76,7 @@ msgstr "Cultivars"
 
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Cultivar Groepen"
 
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
@@ -240,79 +86,74 @@ msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
 msgstr "Taxons"
 
-#, fuzzy
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
-msgstr "Cultivars"
+msgstr "Cultivar"
 
 msgctxt "model:product.cultivar-product.cultivar.group,name:"
 msgid "Cultivar-CultivarGroup"
-msgstr ""
+msgstr "Cultivar-CultivarGroep"
 
-#, fuzzy
 msgctxt "model:product.cultivar.group,name:"
 msgid "Cultivar Group"
-msgstr "Cultivar Groups"
+msgstr "Cultivar Groep"
 
-#, fuzzy
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr "Taxons"
+msgstr "Taxon"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr ""
+msgstr "Klasse"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr ""
+msgstr "Divisie"
 
-#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
 msgstr "Domein"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr ""
+msgstr "Familie"
 
-#, fuzzy
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr "Formulier"
+msgstr "Form"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr ""
+msgstr "Geslacht"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr ""
+msgstr "Koninkrijk"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr ""
+msgstr "Orde"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
-msgstr ""
+msgstr "stam (phylum)"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr ""
+msgstr "Sectie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr ""
+msgstr "Serie"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr ""
+msgstr "soort (species)"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr ""
+msgstr "Stam"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr ""
+msgstr "Varieteit"

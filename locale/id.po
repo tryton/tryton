@@ -4,164 +4,156 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr "Grupy"
+msgstr ""
 
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
-msgstr "Nazwa"
+msgstr "Nama"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
-msgstr "Do wyboru"
+msgstr ""
 
 msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
-msgstr "Takson"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
-msgstr "Kultywar"
+msgstr ""
 
 msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
-msgstr "Grupa"
+msgstr "Kelompok"
 
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
-msgstr "Kultywary"
+msgstr ""
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
-msgstr "Nazwa"
+msgstr "Nama"
 
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr "Taksony podrzędne"
+msgstr "Cabang"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
-msgstr "Nazwa"
+msgstr "Nama"
 
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr "Takson nadrzędny"
+msgstr "Induk"
 
 msgctxt "field:product.taxon,rank:"
 msgid "Type"
-msgstr "Typ"
+msgstr ""
 
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr "Do wyboru"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr ""
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
-msgstr "Kultywar"
+msgstr ""
 
 msgctxt "model:product.cultivar-product.cultivar.group,name:"
 msgid "Cultivar-CultivarGroup"
-msgstr "Kultywar - Grupa kultywarów"
+msgstr ""
 
 msgctxt "model:product.cultivar.group,name:"
 msgid "Cultivar Group"
-msgstr "Grupy kultywarów"
+msgstr ""
 
 msgctxt "model:product.taxon,name:"
 msgid "Taxon"
-msgstr "Takson"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Class"
-msgstr "Klasa"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Division"
-msgstr "Podział"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Domain"
-msgstr "Domena"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Family"
-msgstr "Rodzina"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Form"
-msgstr "Formularz"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr "Genus"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
-msgstr "Królestwo"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Order"
-msgstr "Porządek"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Phylum"
-msgstr "Gromada"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Section"
-msgstr "Sekcja"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Series"
-msgstr "Seria"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Species"
-msgstr "Gatunek"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Tribe"
-msgstr "Szczep"
+msgstr ""
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
-msgstr "Odmiana"
+msgstr ""

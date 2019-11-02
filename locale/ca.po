@@ -2,33 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.cultivar,active:"
-msgid "Active"
-msgstr "Actiu"
-
-msgctxt "field:product.cultivar,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.cultivar,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
 msgstr "Grups"
 
-msgctxt "field:product.cultivar,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
 msgstr "Nom"
-
-msgctxt "field:product.cultivar,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,22 +18,6 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr "Tàxon"
 
-msgctxt "field:product.cultivar,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:product.cultivar,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr "Cultivar"
@@ -62,77 +26,17 @@ msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
 msgstr "Grup"
 
-msgctxt "field:product.cultivar-product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:product.cultivar.group,active:"
-msgid "Active"
-msgstr "Actiu"
-
-msgctxt "field:product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Cultivars"
-
-msgctxt "field:product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:product.taxon,active:"
-msgid "Active"
-msgstr "Actiu"
-
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
 msgstr "Fills"
-
-msgctxt "field:product.taxon,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.taxon,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:product.taxon,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
@@ -146,33 +50,9 @@ msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr "Tipus"
 
-msgctxt "field:product.taxon,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Seleccionable"
-
-msgctxt "field:product.taxon,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:product.taxon,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "help:product.cultivar,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:product.cultivar.group,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
-
-msgctxt "help:product.taxon,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarca per eliminar l'ús del registre en el futur."
 
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
@@ -277,11 +157,3 @@ msgstr "Tribu"
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
 msgstr "Varietat"
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Group"
-msgstr "Grup de cultivar"
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Groups"
-msgstr "Grups de cultivars"

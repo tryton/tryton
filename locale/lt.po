@@ -2,34 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.cultivar,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:product.cultivar,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.cultivar,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
-msgstr ""
-
-msgctxt "field:product.cultivar,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
 msgstr "Namu"
-
-msgctxt "field:product.cultivar,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -40,22 +20,6 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr "Taxons"
 
-msgctxt "field:product.cultivar,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.cultivar,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 #, fuzzy
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
@@ -65,78 +29,18 @@ msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
 msgstr ""
 
-msgctxt "field:product.cultivar-product.cultivar.group,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "field:product.cultivar.group,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
 #, fuzzy
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Cultivars"
-
-msgctxt "field:product.cultivar.group,id:"
-msgid "ID"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
 msgstr "Namu"
 
-msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "PPakeitęs naudotojas"
-
-msgctxt "field:product.taxon,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
-msgstr ""
-
-msgctxt "field:product.taxon,create_date:"
-msgid "Create Date"
-msgstr "Sukūrimo data"
-
-msgctxt "field:product.taxon,create_uid:"
-msgid "Create User"
-msgstr "Sukūręs naudotojas"
-
-msgctxt "field:product.taxon,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -152,32 +56,8 @@ msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr ""
 
-msgctxt "field:product.taxon,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
-msgstr ""
-
-msgctxt "field:product.taxon,write_date:"
-msgid "Write Date"
-msgstr "Pakeitimo data"
-
-msgctxt "field:product.taxon,write_uid:"
-msgid "Write User"
-msgstr "Pakeitęs naudotojas"
-
-msgctxt "help:product.cultivar,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.cultivar.group,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.taxon,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_cultivar_form"

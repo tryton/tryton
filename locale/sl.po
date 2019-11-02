@@ -2,33 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:product.cultivar,active:"
-msgid "Active"
-msgstr "Aktivno"
-
-msgctxt "field:product.cultivar,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product.cultivar,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
 msgstr "Skupine"
 
-msgctxt "field:product.cultivar,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
 msgstr "Naziv"
-
-msgctxt "field:product.cultivar,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
 
 msgctxt "field:product.cultivar,selectable:"
 msgid "Selectable"
@@ -38,22 +18,6 @@ msgctxt "field:product.cultivar,taxon:"
 msgid "Taxon"
 msgstr "Takson"
 
-msgctxt "field:product.cultivar,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product.cultivar,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product.cultivar-product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:product.cultivar-product.cultivar.group,cultivar:"
 msgid "Cultivar"
 msgstr "Kultivar"
@@ -62,77 +26,17 @@ msgctxt "field:product.cultivar-product.cultivar.group,group:"
 msgid "Group"
 msgstr "Skupina"
 
-msgctxt "field:product.cultivar-product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.cultivar-product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product.cultivar-product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:product.cultivar.group,active:"
-msgid "Active"
-msgstr "Aktivno"
-
-msgctxt "field:product.cultivar.group,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product.cultivar.group,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Kultivarji"
-
-msgctxt "field:product.cultivar.group,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
 msgstr "Naziv"
 
-msgctxt "field:product.cultivar.group,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:product.cultivar.group,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product.cultivar.group,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:product.taxon,active:"
-msgid "Active"
-msgstr "Aktivno"
-
 msgctxt "field:product.taxon,childs:"
 msgid "Children"
 msgstr "Podtaksoni"
-
-msgctxt "field:product.taxon,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:product.taxon,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:product.taxon,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:product.taxon,name:"
 msgid "Name"
@@ -146,33 +50,9 @@ msgctxt "field:product.taxon,rank:"
 msgid "Type"
 msgstr "Tip"
 
-msgctxt "field:product.taxon,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Izbirno"
-
-msgctxt "field:product.taxon,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:product.taxon,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "help:product.cultivar,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.cultivar.group,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:product.taxon,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
@@ -285,11 +165,3 @@ msgstr "Pleme"
 msgctxt "selection:product.taxon,rank:"
 msgid "Variety"
 msgstr "Sorta"
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Group"
-msgstr "Kultivarske skupine"
-
-msgctxt "view:product.cultivar.group:"
-msgid "Cultivar Groups"
-msgstr "Kultivarske skupine"
