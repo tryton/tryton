@@ -9,7 +9,7 @@ msgstr "Número verificació"
 
 msgctxt "model:account.statement.origin.information,string:information_mcc"
 msgid "Merchant Category Code (MCC)"
-msgstr "Merchant Category Code (MCC)"
+msgstr "Códi Categoria Comerciant (MCC)"
 
 msgctxt "model:account.statement.origin.information,string:information_sic"
 msgid "Standard Industry Code (SIC)"
