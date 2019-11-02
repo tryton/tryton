@@ -34,16 +34,6 @@ msgid "Conversion Probability"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -65,11 +55,6 @@ msgstr "Alkalmazott"
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.opportunity,lines:"
@@ -94,10 +79,6 @@ msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
-msgctxt "field:sale.opportunity,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
 msgstr ""
@@ -115,31 +96,6 @@ msgstr ""
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Állapot"
-
-#, fuzzy
-msgctxt "field:sale.opportunity,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity:"
@@ -160,15 +116,6 @@ msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Mennyiség"
 
-msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,sequence:"
-msgid "Sequence"
-msgstr "Számkör"
-
 #, fuzzy
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
@@ -178,16 +125,6 @@ msgstr "Egység"
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Tizedes vessző utáni számjegy"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -216,16 +153,6 @@ msgid "Converted Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -240,11 +167,6 @@ msgid "Employee"
 msgstr "Alkalmazott"
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
 msgstr "Lost"
@@ -253,10 +175,6 @@ msgstr "Lost"
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Szám"
-
-msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -275,24 +193,9 @@ msgctxt "field:sale.opportunity_employee,won_amount:"
 msgid "Won Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
@@ -325,16 +228,6 @@ msgid "Converted Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -347,11 +240,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Alkalmazott"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
@@ -367,10 +255,6 @@ msgstr "Hónap"
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Szám"
-
-msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -388,16 +272,6 @@ msgstr "von"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,year:"
@@ -431,16 +305,6 @@ msgid "Converted Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_monthly,create_date:"
-msgid "Create Date"
-msgstr "Létrehozás détuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,create_uid:"
-msgid "Create User"
-msgstr "Által létrehozva "
-
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Pénznem"
@@ -448,11 +312,6 @@ msgstr "Pénznem"
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,lost:"
@@ -468,10 +327,6 @@ msgstr "Hónap"
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Szám"
-
-msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -491,16 +346,6 @@ msgid "Won Amount"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_monthly,write_date:"
-msgid "Write Date"
-msgstr "utolsó módosítás dátuma"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,write_uid:"
-msgid "Write User"
-msgstr "Által módosítva"
-
-#, fuzzy
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr "Év"
@@ -510,11 +355,11 @@ msgid "Year-Month"
 msgstr ""
 
 msgctxt "help:sale.opportunity,amount:"
-msgid "Estimated revenue amount"
+msgid "Estimated revenue amount."
 msgstr ""
 
 msgctxt "help:sale.opportunity,conversion_probability:"
-msgid "Percentage between 0 and 100"
+msgid "Percentage between 0 and 100."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_sale_form"
@@ -759,13 +604,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Jelentés"
-
-#, fuzzy
-msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Mégse"

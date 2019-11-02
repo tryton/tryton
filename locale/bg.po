@@ -30,14 +30,6 @@ msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr ""
 
-msgctxt "field:sale.opportunity,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:sale.opportunity,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Валута"
@@ -57,10 +49,6 @@ msgstr "Служител"
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
-
-msgctxt "field:sale.opportunity,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
@@ -83,10 +71,6 @@ msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Условие за плащане"
 
-msgctxt "field:sale.opportunity,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
@@ -105,26 +89,6 @@ msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "Състояние"
 
-msgctxt "field:sale.opportunity,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
-msgctxt "field:sale.opportunity.line,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:sale.opportunity.line,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
-msgctxt "field:sale.opportunity.line,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Възможност"
@@ -141,14 +105,6 @@ msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Количество"
 
-msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:sale.opportunity.line,sequence:"
-msgid "Sequence"
-msgstr "Последователност"
-
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Единица"
@@ -156,14 +112,6 @@ msgstr "Единица"
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Десетични единици"
-
-msgctxt "field:sale.opportunity.line,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:sale.opportunity.line,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -189,14 +137,6 @@ msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_employee,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:sale.opportunity_employee,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Валута"
@@ -209,10 +149,6 @@ msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity_employee,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
 msgstr "Изгубен"
@@ -220,10 +156,6 @@ msgstr "Изгубен"
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Номер"
-
-msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -242,23 +174,10 @@ msgctxt "field:sale.opportunity_employee,won_amount:"
 msgid "Won Amount"
 msgstr ""
 
-msgctxt "field:sale.opportunity_employee,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:sale.opportunity_employee,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 #, fuzzy
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr "Крайна дата"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee.context,id:"
-msgid "ID"
-msgstr "ID"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_employee.context,start_date:"
@@ -289,14 +208,6 @@ msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Валута"
@@ -309,10 +220,6 @@ msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Служител"
 
-msgctxt "field:sale.opportunity_employee_monthly,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
 msgstr "Изгубен"
@@ -324,10 +231,6 @@ msgstr "Месец"
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Номер"
-
-msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -345,14 +248,6 @@ msgstr "Уон"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
@@ -382,14 +277,6 @@ msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Конвертирана сума"
 
-msgctxt "field:sale.opportunity_monthly,create_date:"
-msgid "Create Date"
-msgstr "Създадено на"
-
-msgctxt "field:sale.opportunity_monthly,create_uid:"
-msgid "Create User"
-msgstr "Създадено от"
-
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Валута"
@@ -397,10 +284,6 @@ msgstr "Валута"
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
-
-msgctxt "field:sale.opportunity_monthly,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
@@ -413,10 +296,6 @@ msgstr "Месец"
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Номер"
-
-msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -435,14 +314,6 @@ msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
 
-msgctxt "field:sale.opportunity_monthly,write_date:"
-msgid "Write Date"
-msgstr "Променено на"
-
-msgctxt "field:sale.opportunity_monthly,write_uid:"
-msgid "Write User"
-msgstr "Променено от"
-
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr "Година"
@@ -451,12 +322,13 @@ msgctxt "field:sale.opportunity_monthly,year_month:"
 msgid "Year-Month"
 msgstr "Година-Месец"
 
+#, fuzzy
 msgctxt "help:sale.opportunity,amount:"
-msgid "Estimated revenue amount"
+msgid "Estimated revenue amount."
 msgstr "Очаквани приходи"
 
 msgctxt "help:sale.opportunity,conversion_probability:"
-msgid "Percentage between 0 and 100"
+msgid "Percentage between 0 and 100."
 msgstr ""
 
 #, fuzzy
@@ -708,39 +580,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
-
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Справки"
-
-msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Отказ"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "Превръщане във възможност"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Прехвърлено в продажба"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Отбелязване като загубен"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Прехвърляне в инициатива"
-
-msgctxt "view:sale.opportunity_employee:"
-msgid "Opportunities per Employee"
-msgstr "Възможности по служител"
-
-msgctxt "view:sale.opportunity_employee_monthly:"
-msgid "Sale Opportunities per Month"
-msgstr "Възможности за продажба по месец"
-
-msgctxt "view:sale.opportunity_monthly:"
-msgid "Sale Opportunities per Month"
-msgstr "Възможности за продажба по месец"

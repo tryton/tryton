@@ -30,14 +30,6 @@ msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Probabilité de conversion"
 
-msgctxt "field:sale.opportunity,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:sale.opportunity,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -57,10 +49,6 @@ msgstr "Employé"
 msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr "Date de fin"
-
-msgctxt "field:sale.opportunity,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
@@ -82,10 +70,6 @@ msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
 msgstr "Conditions de paiement"
 
-msgctxt "field:sale.opportunity,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
 msgstr "Référence"
@@ -101,26 +85,6 @@ msgstr "Date de début"
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
 msgstr "État"
-
-msgctxt "field:sale.opportunity,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
-msgctxt "field:sale.opportunity.line,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:sale.opportunity.line,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
-msgctxt "field:sale.opportunity.line,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
@@ -138,14 +102,6 @@ msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
 
-msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
-
-msgctxt "field:sale.opportunity.line,sequence:"
-msgid "Sequence"
-msgstr "Séquence"
-
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr "Unité"
@@ -153,14 +109,6 @@ msgstr "Unité"
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
 msgstr "Décimales de l'unité"
-
-msgctxt "field:sale.opportunity.line,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:sale.opportunity.line,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -186,14 +134,6 @@ msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
 msgstr "Montant convertit"
 
-msgctxt "field:sale.opportunity_employee,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:sale.opportunity_employee,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -206,10 +146,6 @@ msgctxt "field:sale.opportunity_employee,employee:"
 msgid "Employee"
 msgstr "Employé"
 
-msgctxt "field:sale.opportunity_employee,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
 msgstr "Perdue"
@@ -217,10 +153,6 @@ msgstr "Perdue"
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
 msgstr "Nombre"
-
-msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -238,21 +170,9 @@ msgctxt "field:sale.opportunity_employee,won_amount:"
 msgid "Won Amount"
 msgstr "Montant gagné"
 
-msgctxt "field:sale.opportunity_employee,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:sale.opportunity_employee,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr "Date de fin"
-
-msgctxt "field:sale.opportunity_employee.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
@@ -282,14 +202,6 @@ msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Montant converti"
 
-msgctxt "field:sale.opportunity_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -302,10 +214,6 @@ msgctxt "field:sale.opportunity_employee_monthly,employee:"
 msgid "Employee"
 msgstr "Employé"
 
-msgctxt "field:sale.opportunity_employee_monthly,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
 msgstr "Perdue"
@@ -317,10 +225,6 @@ msgstr "Mois"
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
 msgstr "Nombre"
-
-msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -337,14 +241,6 @@ msgstr "Gagné"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "Montant gagné"
-
-msgctxt "field:sale.opportunity_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
@@ -374,14 +270,6 @@ msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr "Montant converti"
 
-msgctxt "field:sale.opportunity_monthly,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:sale.opportunity_monthly,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr "Devise"
@@ -389,10 +277,6 @@ msgstr "Devise"
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
-
-msgctxt "field:sale.opportunity_monthly,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:sale.opportunity_monthly,lost:"
 msgid "Lost"
@@ -405,10 +289,6 @@ msgstr "Mois"
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
 msgstr "Nombre"
-
-msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
 msgid "Winning Amount Rate"
@@ -426,14 +306,6 @@ msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr "Montant gagné"
 
-msgctxt "field:sale.opportunity_monthly,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:sale.opportunity_monthly,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr "Année"
@@ -443,12 +315,12 @@ msgid "Year-Month"
 msgstr "Année-Mois"
 
 msgctxt "help:sale.opportunity,amount:"
-msgid "Estimated revenue amount"
-msgstr "Revenu estimé"
+msgid "Estimated revenue amount."
+msgstr "Revenu estimé."
 
 msgctxt "help:sale.opportunity,conversion_probability:"
-msgid "Percentage between 0 and 100"
-msgstr "Pourcentage entre 0 et 100"
+msgid "Percentage between 0 and 100."
+msgstr "Pourcentage entre 0 et 100."
 
 msgctxt "model:ir.action,name:act_open_sale_form"
 msgid "Sales"
@@ -669,39 +541,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
-
-msgctxt "model:ir.ui.menu,name:menu_reporting"
-msgid "Reporting"
-msgstr "Rapports"
-
-msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "Annuler"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Opportunity"
-msgstr "Convertir en opportunité"
-
-msgctxt "view:sale.opportunity:"
-msgid "Convert to Sale"
-msgstr "Convertir en vente"
-
-msgctxt "view:sale.opportunity:"
-msgid "Mark as Lost"
-msgstr "Marquer comme perdue"
-
-msgctxt "view:sale.opportunity:"
-msgid "Set as Lead"
-msgstr "Reconvertir en contact"
-
-msgctxt "view:sale.opportunity_employee:"
-msgid "Opportunities per Employee"
-msgstr "Opportunités par employé"
-
-msgctxt "view:sale.opportunity_employee_monthly:"
-msgid "Sale Opportunities per Month"
-msgstr "Opportunités de vente par mois"
-
-msgctxt "view:sale.opportunity_monthly:"
-msgid "Sale Opportunities per Month"
-msgstr "Opportunités de vente par mois"

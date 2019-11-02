@@ -30,16 +30,6 @@ msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.opportunity,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
 msgstr ""
@@ -61,11 +51,6 @@ msgctxt "field:sale.opportunity,end_date:"
 msgid "End Date"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity,id:"
-msgid "ID"
-msgstr "编号"
-
 msgctxt "field:sale.opportunity,lines:"
 msgid "Lines"
 msgstr ""
@@ -84,10 +69,6 @@ msgstr ""
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr ""
-
-msgctxt "field:sale.opportunity,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.opportunity,reference:"
@@ -109,31 +90,6 @@ msgid "State"
 msgstr "状态"
 
 #, fuzzy
-msgctxt "field:sale.opportunity,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.opportunity,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
 msgstr "Opportunities"
@@ -150,15 +106,6 @@ msgctxt "field:sale.opportunity.line,quantity:"
 msgid "Quantity"
 msgstr ""
 
-msgctxt "field:sale.opportunity.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,sequence:"
-msgid "Sequence"
-msgstr "序列"
-
 msgctxt "field:sale.opportunity.line,unit:"
 msgid "Unit"
 msgstr ""
@@ -166,16 +113,6 @@ msgstr ""
 msgctxt "field:sale.opportunity.line,unit_digits:"
 msgid "Unit Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.opportunity.line,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:sale.opportunity_employee,amount:"
 msgid "Amount"
@@ -202,16 +139,6 @@ msgctxt "field:sale.opportunity_employee,converted_amount:"
 msgid "Converted Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.opportunity_employee,currency:"
 msgid "Currency"
 msgstr ""
@@ -225,21 +152,12 @@ msgid "Employee"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.opportunity_employee,lost:"
 msgid "Lost"
 msgstr "Lost"
 
 msgctxt "field:sale.opportunity_employee,number:"
 msgid "Number"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.opportunity_employee,winning_amount_rate:"
@@ -259,24 +177,9 @@ msgctxt "field:sale.opportunity_employee,won_amount:"
 msgid "Won Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.opportunity_employee.context,end_date:"
 msgid "End Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee.context,id:"
-msgid "ID"
-msgstr "编号"
 
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
@@ -307,16 +210,6 @@ msgctxt "field:sale.opportunity_employee_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.opportunity_employee_monthly,currency:"
 msgid "Currency"
 msgstr ""
@@ -330,11 +223,6 @@ msgid "Employee"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:sale.opportunity_employee_monthly,lost:"
 msgid "Lost"
 msgstr "Lost"
@@ -345,10 +233,6 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,number:"
 msgid "Number"
-msgstr ""
-
-msgctxt "field:sale.opportunity_employee_monthly,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.opportunity_employee_monthly,winning_amount_rate:"
@@ -367,16 +251,6 @@ msgstr "圆"
 msgctxt "field:sale.opportunity_employee_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_employee_monthly,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:sale.opportunity_employee_monthly,year:"
 msgid "Year"
@@ -407,16 +281,6 @@ msgctxt "field:sale.opportunity_monthly,converted_amount:"
 msgid "Converted Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
 msgctxt "field:sale.opportunity_monthly,currency:"
 msgid "Currency"
 msgstr ""
@@ -424,11 +288,6 @@ msgstr ""
 msgctxt "field:sale.opportunity_monthly,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,id:"
-msgid "ID"
-msgstr "编号"
 
 #, fuzzy
 msgctxt "field:sale.opportunity_monthly,lost:"
@@ -441,10 +300,6 @@ msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,number:"
 msgid "Number"
-msgstr ""
-
-msgctxt "field:sale.opportunity_monthly,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:sale.opportunity_monthly,winning_amount_rate:"
@@ -464,16 +319,6 @@ msgctxt "field:sale.opportunity_monthly,won_amount:"
 msgid "Won Amount"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:sale.opportunity_monthly,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:sale.opportunity_monthly,year:"
 msgid "Year"
 msgstr ""
@@ -483,11 +328,11 @@ msgid "Year-Month"
 msgstr ""
 
 msgctxt "help:sale.opportunity,amount:"
-msgid "Estimated revenue amount"
+msgid "Estimated revenue amount."
 msgstr ""
 
 msgctxt "help:sale.opportunity,conversion_probability:"
-msgid "Percentage between 0 and 100"
+msgid "Percentage between 0 and 100."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_open_sale_form"
@@ -732,8 +577,3 @@ msgstr "%"
 msgctxt "view:sale.opportunity_monthly:"
 msgid "%"
 msgstr "%"
-
-#, fuzzy
-msgctxt "view:sale.opportunity:"
-msgid "Cancel"
-msgstr "取消"
