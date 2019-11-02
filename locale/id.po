@@ -4,29 +4,29 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
-msgstr "Assegnato da"
+msgstr ""
 
 msgctxt "field:stock.location,movable:"
 msgid "Movable"
-msgstr "Mobiliare"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal,locations:"
 msgid "Locations"
-msgstr "Luoghi"
+msgstr ""
 
 msgctxt "field:stock.shipment.internal-location,location:"
 msgid "Location"
-msgstr "Luogo"
+msgstr "Lokasi"
 
 msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
-msgstr "Spedizione"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_location_already_assigned"
 msgid ""
 "The location \"%(location)s\" has already been assigned by "
 "\"%(assigned_by)s\"."
-msgstr "Il luogo \"%(location)s\" è già stata assegnata da \"%(assigned_by)s\"."
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_location_movable"
 msgid "Movable location"
@@ -38,8 +38,8 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"
-msgstr "Luogo di stock mobiliare"
+msgstr ""
 
 msgctxt "model:stock.shipment.internal-location,name:"
 msgid "Shipment Internal - Location"
-msgstr "Spedizione interna - Ubicazione"
+msgstr ""

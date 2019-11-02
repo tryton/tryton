@@ -14,37 +14,13 @@ msgctxt "field:stock.shipment.internal,locations:"
 msgid "Locations"
 msgstr "Lokalizacje"
 
-msgctxt "field:stock.shipment.internal-location,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:stock.shipment.internal-location,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:stock.shipment.internal-location,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.internal-location,location:"
 msgid "Location"
 msgstr "Lokalizacja"
 
-msgctxt "field:stock.shipment.internal-location,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:stock.shipment.internal-location,shipment:"
 msgid "Shipment"
 msgstr "Wysyłka"
-
-msgctxt "field:stock.shipment.internal-location,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:stock.shipment.internal-location,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "model:ir.message,text:msg_location_already_assigned"
 msgid ""
