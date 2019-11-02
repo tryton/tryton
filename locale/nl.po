@@ -4,130 +4,84 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Belastinggroep op kasbasis"
 
 msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,id:"
-msgid "ID"
-msgstr ""
+msgstr "Belastinggroep op kasbasis"
 
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Factuur"
 
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.invoice.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr ""
+msgstr "Belastinggroep op kasbasis"
 
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,id:"
-msgid "ID"
-msgstr ""
+msgstr "Boekjaar"
 
 msgctxt "field:account.tax.group.cash,party:"
 msgid "Party"
-msgstr ""
+msgstr "Relatie"
 
 msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:account.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr ""
+msgstr "Belastinggroep"
 
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"
-msgstr ""
+msgstr "Op kasbasis"
 
 msgctxt "field:account.tax.line,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periode"
 
 msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
 msgid "Supplier Tax Group On Cash Basis"
-msgstr ""
+msgstr "Belastinggroep leveranciers op kasbasis"
 
 msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this fiscal year."
-msgstr ""
+msgstr "Aangegeven belastinggroep in de cash voor dit boekjaar."
 
 msgctxt "help:account.invoice,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this invoice."
-msgstr ""
+msgstr "Aangegeven belastinggroep in de cash voor deze factuur."
 
 msgctxt "help:account.period,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this period."
-msgstr ""
+msgstr "Aangegeven belastinggroep in de cash voor deze periode."
 
 msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this supplier."
-msgstr ""
+msgstr "Aangegeven belastinggroep in de cash voor deze leverancier."
 
 msgctxt "model:account.invoice.tax.group.cash,name:"
 msgid "Tax Group on Cash Basis per Invoice"
-msgstr ""
+msgstr "Belastinggroep op basis van contant geld per factuur"
 
 msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
-msgstr ""
+msgstr "Belastinggroep op kasbasis"
 
 msgctxt "model:ir.message,text:msg_close_period_line_payment"
 msgid ""
 "To close period \"%(period)s\" you must link all payable/receivable lines to"
 " invoices."
 msgstr ""
+"Om periode \"%(period)s\" te sluiten, moet u alle te betalen / te ontvangen "
+"regels aan facturen koppelen."
 
 msgctxt "view:account.fiscalyear:"
 msgid "Taxes"
-msgstr ""
+msgstr "Belastingen"

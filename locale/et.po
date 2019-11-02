@@ -10,57 +10,21 @@ msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
 msgstr "Sularaha baasil maksugrupp"
 
-msgctxt "field:account.invoice.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.invoice.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:account.invoice.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
 msgstr "Arve"
-
-msgctxt "field:account.invoice.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
 
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Maksugrupp"
 
-msgctxt "field:account.invoice.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.invoice.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
-
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
 msgstr "Sularaha baasil maksugrupp"
 
-msgctxt "field:account.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:account.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Majandusaasta"
-
-msgctxt "field:account.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.tax.group.cash,party:"
 msgid "Party"
@@ -70,21 +34,9 @@ msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
 msgstr "Periood"
 
-msgctxt "field:account.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Maksugrupp"
-
-msgctxt "field:account.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:account.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"

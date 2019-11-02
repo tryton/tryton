@@ -10,58 +10,22 @@ msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
 msgstr ""
 
-msgctxt "field:account.invoice.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:account.invoice.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
-msgctxt "field:account.invoice.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
 msgstr "Fattura"
-
-msgctxt "field:account.invoice.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
 
 #, fuzzy
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Gruppo imposta"
 
-msgctxt "field:account.invoice.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Modificato il"
-
-msgctxt "field:account.invoice.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
-
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
 msgstr ""
 
-msgctxt "field:account.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Creato il"
-
-msgctxt "field:account.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Creato da"
-
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Esercizio"
-
-msgctxt "field:account.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.tax.group.cash,party:"
 msgid "Party"
@@ -71,22 +35,10 @@ msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
 msgstr "Periodo"
 
-msgctxt "field:account.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Nome del record"
-
 #, fuzzy
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Gruppo imposta"
-
-msgctxt "field:account.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Modificato il"
-
-msgctxt "field:account.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Modificato da"
 
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"

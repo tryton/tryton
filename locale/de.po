@@ -4,63 +4,27 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr "Steuergruppen im Bargeschäft"
+msgstr "Steuergruppe Istversteuerung"
 
 msgctxt "field:account.invoice,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr "Steuergruppen im Bargeschäft"
-
-msgctxt "field:account.invoice.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:account.invoice.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:account.invoice.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Steuergruppe Istversteuerung"
 
 msgctxt "field:account.invoice.tax.group.cash,invoice:"
 msgid "Invoice"
 msgstr "Rechnung"
 
-msgctxt "field:account.invoice.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:account.invoice.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Steuergruppe"
 
-msgctxt "field:account.invoice.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:account.invoice.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:account.period,tax_group_on_cash_basis:"
 msgid "Tax Group On Cash Basis"
-msgstr "Steuergruppen im Bargeschäft"
-
-msgctxt "field:account.tax.group.cash,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:account.tax.group.cash,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
+msgstr "Steuergruppe Istversteuerung"
 
 msgctxt "field:account.tax.group.cash,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Geschäftsjahr"
-
-msgctxt "field:account.tax.group.cash,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:account.tax.group.cash,party:"
 msgid "Party"
@@ -70,25 +34,13 @@ msgctxt "field:account.tax.group.cash,period:"
 msgid "Period"
 msgstr "Buchungszeitraum"
 
-msgctxt "field:account.tax.group.cash,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:account.tax.group.cash,tax_group:"
 msgid "Tax Group"
 msgstr "Steuergruppe"
 
-msgctxt "field:account.tax.group.cash,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:account.tax.group.cash,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
 msgctxt "field:account.tax.line,on_cash_basis:"
 msgid "On Cash Basis"
-msgstr "Bargeschäft"
+msgstr "Istversteuerung"
 
 msgctxt "field:account.tax.line,period:"
 msgid "Period"
@@ -96,31 +48,31 @@ msgstr "Buchungszeitraum"
 
 msgctxt "field:party.party,supplier_tax_group_on_cash_basis:"
 msgid "Supplier Tax Group On Cash Basis"
-msgstr "Steuergruppen Lieferanten im Bargeschäft "
+msgstr "Steuergruppe Lieferant Istversteuerung"
 
 msgctxt "help:account.fiscalyear,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this fiscal year."
-msgstr "Deklarierte Steuergruppe im Bargeschäft für dieses Geschäftsjahr."
+msgstr "Die Steuergruppe bei Istversteuerung für dieses Geschäftsjahr."
 
 msgctxt "help:account.invoice,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this invoice."
-msgstr "Deklarierte Steuergruppe im Bargeschäft für diese Rechnung."
+msgstr "Die Steuergruppe bei Istversteuerung für diese Rechnung."
 
 msgctxt "help:account.period,tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this period."
-msgstr "Deklarierte Steuergruppe im Bargeschäft für diesen Buchungszeitraum."
+msgstr "Die Steuergruppe bei Istversteuerung für diesen Buchungszeitraum."
 
 msgctxt "help:party.party,supplier_tax_group_on_cash_basis:"
 msgid "The tax group reported on cash basis for this supplier."
-msgstr "Deklarierte Steuergruppe im Bargeschäft für diesen Lieferanten."
+msgstr "Die Steuergruppe bei Istversteuerung für diesen Lieferanten."
 
 msgctxt "model:account.invoice.tax.group.cash,name:"
 msgid "Tax Group on Cash Basis per Invoice"
-msgstr "Steuergruppe im Bargeschäft pro Rechnung"
+msgstr "Steuergruppe für Istversteuerung pro Rechnung"
 
 msgctxt "model:account.tax.group.cash,name:"
 msgid "Tax Group On Cash Basis"
-msgstr "Steuergruppe im Bargeschäft"
+msgstr "Steuergruppe Istversteuerung"
 
 msgctxt "model:ir.message,text:msg_close_period_line_payment"
 msgid ""
