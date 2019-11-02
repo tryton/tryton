@@ -4,224 +4,75 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Lot vereist"
 
 msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
-msgstr ""
+msgstr "Lot vereist"
 
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,template:"
-msgid "Template"
-msgstr "Sjabloon"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,type:"
-msgid "Type"
-msgstr "Type"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "Lot"
 
-#, fuzzy
-msgctxt "field:stock.lot,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:stock.lot,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr ""
+msgstr "Verwachte hoeveelheid"
 
-#, fuzzy
-msgctxt "field:stock.lot,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.lot,number:"
 msgid "Number"
 msgstr "Nummer"
 
-#, fuzzy
 msgctxt "field:stock.lot,product:"
 msgid "Product"
-msgstr "Producten"
+msgstr "Product"
 
-#, fuzzy
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-msgctxt "field:stock.lot,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lot,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:stock.lot,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,code:"
-msgid "Code"
-msgstr "Code"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,name:"
-msgid "Name"
-msgstr "Naam bijlage"
-
-msgctxt "field:stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lots_by_location.context,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Op datum van"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Op datum van"
 
-#, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
 msgstr "Lot"
 
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Lot Caches"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
-msgstr ""
+msgstr "Interne hoeveelheid"
 
 msgctxt "field:stock.period.cache.lot,location:"
 msgid "Location"
-msgstr ""
+msgstr "Plaats"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,lot:"
 msgid "Lot"
 msgstr "Lot"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
 msgstr "Periode"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
-msgstr "Producten"
-
-msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
+msgstr "Product"
 
 msgctxt "help:product.product,lot_required:"
-msgid "The type of location for which lot is required"
-msgstr ""
+msgid "The type of location for which lot is required."
+msgstr "Het type locatie waarvoor een lot vereist is."
 
 msgctxt "help:product.template,lot_required:"
-msgid "The type of location for which lot is required"
-msgstr ""
+msgid "The type of location for which lot is required."
+msgstr "Het type locatie waarvoor een lot vereist is."
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
@@ -229,97 +80,98 @@ msgid ""
 "* An empty value is an infinite date in the future.\n"
 "* A date in the past will provide historical values."
 msgstr ""
+"Laat de verwachte voorraadhoeveelheden voor deze datum berekenen.\n"
+"* Een lege waarde is een oneindige datum in de toekomst.\n"
+"* Een datum in het verleden levert historische waarden op."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
-msgstr "Lot"
+msgstr "Loten"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
 msgid "Lot"
 msgstr "Lot"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr "Boekingen"
+msgstr "Boekingen/ bewegingen"
 
 msgctxt "model:ir.message,text:msg_change_product"
 msgid "You cannot change the product of a stock lot which has stock moves."
 msgstr ""
+"U kunt het product van een lot die voorraadbewegingen heeft niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_lot_required"
 msgid "To move product \"%(product)s\" you must provide a stock lot."
 msgstr ""
+"Om product \"%(product)s\" te verplaatsen, moet u een stockpartij opgeven."
 
 msgctxt "model:ir.message,text:msg_only_lot"
 msgid "You must select a stock lot instead of a product for \"%(product)s\"."
 msgstr ""
+"U moet een stock lot selecteren in plaats van een product voor "
+"\"%(product)s\"."
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
-msgstr "Lot"
-
-msgctxt "model:product.template-stock.lot.type,name:"
-msgid "Template - Stock Lot Type"
-msgstr ""
+msgstr "Loten"
 
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
-msgstr ""
-
-msgctxt "model:stock.lot.type,name:"
-msgid "Stock Lot Type"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:stock.lot.type,name:type_customer"
-msgid "Customer"
-msgstr "Klant"
-
-msgctxt "model:stock.lot.type,name:type_lost_found"
-msgid "Lost and Found"
-msgstr "Lost and Found"
-
-msgctxt "model:stock.lot.type,name:type_production"
-msgid "Production"
-msgstr "Production"
-
-msgctxt "model:stock.lot.type,name:type_storage"
-msgid "Storage"
-msgstr "Storage"
-
-#, fuzzy
-msgctxt "model:stock.lot.type,name:type_supplier"
-msgid "Supplier"
-msgstr "Leverancier"
+msgstr "Stock Lot"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
-msgstr ""
+msgstr "lot per locatie"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
-msgstr ""
+msgstr "Voorraadperiode Cache per partij"
 
-#, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "inventaris verschil"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "magazijn"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Leverancier"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "inventaris verschil"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "magazijn"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Leverancier"
+
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
 msgstr "Lot"
 
-#, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lot"
-
-#, fuzzy
-msgctxt "view:stock.lot:"
-msgid "Lot"
-msgstr "Lot"
-
-#, fuzzy
-msgctxt "view:stock.lot:"
-msgid "Lots"
-msgstr "Lot"
+msgstr "Loten"

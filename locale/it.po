@@ -11,66 +11,13 @@ msgid "Lot Required"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:product.template-stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.template-stock.lot.type,template:"
-msgid "Template"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,type:"
-msgid "Type"
-msgstr "Tipo"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:product.template-stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "Lot"
 
-#, fuzzy
-msgctxt "field:stock.lot,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:stock.lot,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lot,id:"
-msgid "ID"
-msgstr "Movimento contabile"
 
 #, fuzzy
 msgctxt "field:stock.lot,number:"
@@ -87,67 +34,9 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
 
-msgctxt "field:stock.lot,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lot,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:stock.lot,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,code:"
-msgid "Code"
-msgstr "Codice"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,name:"
-msgid "Name"
-msgstr "Nome"
-
-msgctxt "field:stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.lots_by_location.context,id:"
-msgid "ID"
-msgstr "Movimento contabile"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
@@ -161,21 +50,6 @@ msgstr "Lot"
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,create_date:"
-msgid "Create Date"
-msgstr "Data di creazione"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,create_uid:"
-msgid "Create User"
-msgstr "Utente creazione"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,id:"
-msgid "ID"
-msgstr "Movimento contabile"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
@@ -201,26 +75,12 @@ msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr "Prodotto"
 
-msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,write_date:"
-msgid "Write Date"
-msgstr "Utente scrittura"
-
-#, fuzzy
-msgctxt "field:stock.period.cache.lot,write_uid:"
-msgid "Write User"
-msgstr "modificato da"
-
 msgctxt "help:product.product,lot_required:"
-msgid "The type of location for which lot is required"
+msgid "The type of location for which lot is required."
 msgstr ""
 
 msgctxt "help:product.template,lot_required:"
-msgid "The type of location for which lot is required"
+msgid "The type of location for which lot is required."
 msgstr ""
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
@@ -262,39 +122,9 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lot"
 
-msgctxt "model:product.template-stock.lot.type,name:"
-msgid "Template - Stock Lot Type"
-msgstr ""
-
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
 msgstr ""
-
-msgctxt "model:stock.lot.type,name:"
-msgid "Stock Lot Type"
-msgstr ""
-
-#, fuzzy
-msgctxt "model:stock.lot.type,name:type_customer"
-msgid "Customer"
-msgstr "Cliente"
-
-msgctxt "model:stock.lot.type,name:type_lost_found"
-msgid "Lost and Found"
-msgstr "Lost and Found"
-
-msgctxt "model:stock.lot.type,name:type_production"
-msgid "Production"
-msgstr "Production"
-
-msgctxt "model:stock.lot.type,name:type_storage"
-msgid "Storage"
-msgstr "Storage"
-
-#, fuzzy
-msgctxt "model:stock.lot.type,name:type_supplier"
-msgid "Supplier"
-msgstr "Fornitore"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
@@ -305,6 +135,56 @@ msgid "Stock Period Cache per Lot"
 msgstr ""
 
 #, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Cliente"
+
+#, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "Lost and Found"
+
+#, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "Storage"
+
+#, fuzzy
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Fornitore"
+
+#, fuzzy
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Cliente"
+
+#, fuzzy
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "Lost and Found"
+
+#, fuzzy
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Production"
+
+#, fuzzy
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "Storage"
+
+#, fuzzy
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Fornitore"
+
+#, fuzzy
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
 msgstr "Lot"
@@ -312,9 +192,4 @@ msgstr "Lot"
 #, fuzzy
 msgctxt "view:product.template:"
 msgid "Lots"
-msgstr "Lot"
-
-#, fuzzy
-msgctxt "view:stock.lot:"
-msgid "Lot"
 msgstr "Lot"

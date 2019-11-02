@@ -10,57 +10,13 @@ msgctxt "field:product.template,lot_required:"
 msgid "Lot Required"
 msgstr "Lot obligatori"
 
-msgctxt "field:product.template-stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:product.template-stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:product.template-stock.lot.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:product.template-stock.lot.type,template:"
-msgid "Template"
-msgstr "Plantilla"
-
-msgctxt "field:product.template-stock.lot.type,type:"
-msgid "Type"
-msgstr "Tipus"
-
-msgctxt "field:product.template-stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:product.template-stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:stock.inventory.line,lot:"
 msgid "Lot"
 msgstr "Lot"
 
-msgctxt "field:stock.lot,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.lot,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
 msgstr "Quantitat prevista"
-
-msgctxt "field:stock.lot,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.lot,number:"
 msgid "Number"
@@ -74,57 +30,9 @@ msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
-msgctxt "field:stock.lot,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.lot,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.lot,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "field:stock.lot.type,code:"
-msgid "Code"
-msgstr "Codi"
-
-msgctxt "field:stock.lot.type,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.lot.type,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.lot.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.lot.type,name:"
-msgid "Name"
-msgstr "Nom"
-
-msgctxt "field:stock.lot.type,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.lot.type,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.lot.type,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
 msgstr "A data"
-
-msgctxt "field:stock.lots_by_location.context,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
@@ -137,18 +45,6 @@ msgstr "Lot"
 msgctxt "field:stock.period,lot_caches:"
 msgid "Lot Caches"
 msgstr "Precàlculs de lot"
-
-msgctxt "field:stock.period.cache.lot,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:stock.period.cache.lot,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:stock.period.cache.lot,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:stock.period.cache.lot,internal_quantity:"
 msgid "Internal Quantity"
@@ -170,25 +66,13 @@ msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr "Producte"
 
-msgctxt "field:stock.period.cache.lot,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
-
-msgctxt "field:stock.period.cache.lot,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:stock.period.cache.lot,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "help:product.product,lot_required:"
-msgid "The type of location for which lot is required"
-msgstr "Tipus d'ubicació per la qual el lot és obligatori."
+msgid "The type of location for which lot is required."
+msgstr "El tipus d'ubicació per la qual el lot és obligatori."
 
 msgctxt "help:product.template,lot_required:"
-msgid "The type of location for which lot is required"
-msgstr "Tipus d'ubicació per la qual el lot és obligatori."
+msgid "The type of location for which lot is required."
+msgstr "El tipus d'ubicació per la qual el lot és obligatori."
 
 msgctxt "help:stock.lots_by_location.context,forecast_date:"
 msgid ""
@@ -198,7 +82,7 @@ msgid ""
 msgstr ""
 "Permet calcular les quantitats previstes per a aquesta data.\n"
 "* Un valor buit és un data infinita en el futur.\n"
-"* Una data en el passat proporcionarà valors històrics. "
+"* Una data en el passat proporcionarà valors històrics."
 
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
@@ -228,37 +112,9 @@ msgctxt "model:ir.ui.menu,name:menu_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
-msgctxt "model:product.template-stock.lot.type,name:"
-msgid "Template - Stock Lot Type"
-msgstr "Plantilla - Tipus de lot"
-
 msgctxt "model:stock.lot,name:"
 msgid "Stock Lot"
 msgstr "Lot"
-
-msgctxt "model:stock.lot.type,name:"
-msgid "Stock Lot Type"
-msgstr "Tipus de lot"
-
-msgctxt "model:stock.lot.type,name:type_customer"
-msgid "Customer"
-msgstr "Client"
-
-msgctxt "model:stock.lot.type,name:type_lost_found"
-msgid "Lost and Found"
-msgstr "Perdut i trobat"
-
-msgctxt "model:stock.lot.type,name:type_production"
-msgid "Production"
-msgstr "Producció"
-
-msgctxt "model:stock.lot.type,name:type_storage"
-msgid "Storage"
-msgstr "Intern"
-
-msgctxt "model:stock.lot.type,name:type_supplier"
-msgid "Supplier"
-msgstr "Proveïdor"
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
@@ -268,6 +124,46 @@ msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"
 msgstr "Període d'existències precalculat per lot"
 
+msgctxt "selection:product.product,lot_required:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdut i trobat"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Storage"
+msgstr "Intern"
+
+msgctxt "selection:product.product,lot_required:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Lost and Found"
+msgstr "Perdut i trobat"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Production"
+msgstr "Producció"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Storage"
+msgstr "Intern"
+
+msgctxt "selection:product.template,lot_required:"
+msgid "Supplier"
+msgstr "Proveïdor"
+
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Lot"
 msgstr "Lot"
@@ -275,19 +171,3 @@ msgstr "Lot"
 msgctxt "view:product.template:"
 msgid "Lots"
 msgstr "Lots"
-
-msgctxt "view:stock.lot:"
-msgid "Lot"
-msgstr "Lot"
-
-msgctxt "view:stock.lot:"
-msgid "Lots"
-msgstr "Lots"
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Cache"
-msgstr "Període d'existències precalculat"
-
-msgctxt "view:stock.period.cache.lot:"
-msgid "Period Lot Caches"
-msgstr "Períodes d'existències precalculat"
