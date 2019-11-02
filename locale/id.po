@@ -2,20 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:res.user,mobile:"
 msgid "Mobile"
-msgstr "Mobiltelefon"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:res.user.login.sms_code,code:"
 msgid "Code"
-msgstr "Partner kód"
+msgstr "Kode"
 
-#, fuzzy
 msgctxt "field:res.user.login.sms_code,user:"
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Pengguna"
 
 msgctxt "field:res.user.login.sms_code,user_id:"
 msgid "User ID"
@@ -31,4 +28,4 @@ msgstr ""
 
 msgctxt "model:res.user.login.sms_code,name:"
 msgid "SMS Code"
-msgstr ""
+msgstr "Kode SMS"
