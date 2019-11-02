@@ -38,33 +38,9 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Atraso da Vida Útil"
 
-msgctxt "field:stock.location.lot.shelf_life,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:stock.location.lot.shelf_life,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:stock.location.lot.shelf_life,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.location.lot.shelf_life,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Atraso da Vida Útil"
-
-msgctxt "field:stock.location.lot.shelf_life,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:stock.location.lot.shelf_life,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
@@ -82,20 +58,24 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Estado de Expiração da Vida Útil"
 
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Em número de dias"
 
+#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Em número de dias"
 
+#, fuzzy
 msgctxt "help:product.template,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Em número de dias"
 
+#, fuzzy
 msgctxt "help:product.template,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Em número de dias"
 
 msgctxt "help:stock.configuration,shelf_life_delay:"

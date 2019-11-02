@@ -38,33 +38,9 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr ""
 
-msgctxt "field:stock.location.lot.shelf_life,create_date:"
-msgid "Create Date"
-msgstr "Loomise kuupäev"
-
-msgctxt "field:stock.location.lot.shelf_life,create_uid:"
-msgid "Create User"
-msgstr "Looja"
-
-msgctxt "field:stock.location.lot.shelf_life,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.location.lot.shelf_life,rec_name:"
-msgid "Record Name"
-msgstr "Kirje nimi"
-
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr ""
-
-msgctxt "field:stock.location.lot.shelf_life,write_date:"
-msgid "Write Date"
-msgstr "Muutmise kuupäev"
-
-msgctxt "field:stock.location.lot.shelf_life,write_uid:"
-msgid "Write User"
-msgstr "Muutja"
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
@@ -82,20 +58,24 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Päevades"
 
+#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Päevades"
 
+#, fuzzy
 msgctxt "help:product.template,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Päevades"
 
+#, fuzzy
 msgctxt "help:product.template,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "Päevades"
 
 msgctxt "help:stock.configuration,shelf_life_delay:"

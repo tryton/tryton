@@ -38,33 +38,9 @@ msgctxt "field:stock.configuration,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Zakasnitev roka trajanja"
 
-msgctxt "field:stock.location.lot.shelf_life,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.location.lot.shelf_life,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:stock.location.lot.shelf_life,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:stock.location.lot.shelf_life,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:stock.location.lot.shelf_life,shelf_life_delay:"
 msgid "Shelf Life Delay"
 msgstr "Zakasnitev roka trajanja"
-
-msgctxt "field:stock.location.lot.shelf_life,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.location.lot.shelf_life,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:stock.lot,expiration_date:"
 msgid "Expiration Date"
@@ -82,20 +58,24 @@ msgctxt "field:stock.lot,shelf_life_expiration_state:"
 msgid "Shelf Life Expiration State"
 msgstr "Trajanje"
 
+#, fuzzy
 msgctxt "help:product.product,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "V dnevih"
 
+#, fuzzy
 msgctxt "help:product.product,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "V dnevih"
 
+#, fuzzy
 msgctxt "help:product.template,expiration_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "V dnevih"
 
+#, fuzzy
 msgctxt "help:product.template,shelf_life_time:"
-msgid "In number of days"
+msgid "In number of days."
 msgstr "V dnevih"
 
 msgctxt "help:stock.configuration,shelf_life_delay:"

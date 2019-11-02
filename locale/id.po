@@ -100,95 +100,83 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_stock_force_expiration"
 msgid "Stock Force Expiration"
-msgstr "Stock Force Expiration"
+msgstr ""
 
 msgctxt "model:stock.location.lot.shelf_life,name:"
 msgid "Stock Configuration Lot Shelf Life"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:product.product,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:product.product,expiration_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:product.product,shelf_life_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
-#, fuzzy
 msgctxt "selection:product.template,expiration_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:product.template,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:product.template,expiration_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
-#, fuzzy
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:product.template,shelf_life_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
-#, fuzzy
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:stock.lot,expiration_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
-#, fuzzy
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "None"
-msgstr "ບໍ່ມີ"
+msgstr "Tidak ada"
 
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Optional"
-msgstr ""
+msgstr "Pilihan"
 
-#, fuzzy
 msgctxt "selection:stock.lot,shelf_life_expiration_state:"
 msgid "Required"
-msgstr "ຕ້ອງມີ"
+msgstr "Wajib"
 
 msgctxt "view:product.template:"
 msgid "Shelf Life"
