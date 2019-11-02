@@ -6,17 +6,13 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr "Número"
 
-msgctxt "field:stock.move.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantitat"
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
@@ -30,16 +26,12 @@ msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
 msgstr "Moviments del domini"
 
-msgctxt "field:stock.shipment.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
 msgstr "Moviments"
 
 msgctxt "help:stock.move.split.start,count:"
-msgid "The limit number of moves"
+msgid "The limit number of moves."
 msgstr "El número màxim de moviments."
 
 msgctxt "help:stock.shipment.split.start,moves:"
@@ -83,8 +75,8 @@ msgid "Split"
 msgstr "Divideix"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment"
-msgstr "Trieu els moviments a enviar en un albarà nou."
+msgid "Choose move to send in new shipment:"
+msgstr "Trieu els moviments a enviar en un albarà nou:"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
@@ -99,17 +91,5 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgctxt "wizard_button:stock.shipment.split,start,split:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Divideix"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Divideix"

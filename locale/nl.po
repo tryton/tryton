@@ -4,111 +4,92 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
-msgstr ""
+msgstr "tellingen"
 
-#, fuzzy
-msgctxt "field:stock.move.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
 msgstr "Decimalen eenheid"
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr ""
+msgstr "maateenheid"
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr ""
+msgstr "maateenheid categorie"
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.shipment.split.start,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Domein boekingen"
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Boekingen/bewegingen"
 
 msgctxt "help:stock.move.split.start,count:"
-msgid "The limit number of moves"
-msgstr ""
+msgid "The limit number of moves."
+msgstr "maximum aantal bewegingen."
 
 msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
-msgstr ""
+msgstr "De geselecteerde bewegingen worden verzonden in de nieuwe zending."
 
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr "Split de beweging"
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr "Split Shipment"
+msgstr "Zending splitsen"
 
 msgctxt "model:ir.model.button,string:move_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
 msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
 msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
 msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
-#, fuzzy
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr "Split de beweging"
 
-#, fuzzy
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
-msgstr "Split Shipment"
+msgstr "Zending splitsen"
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment"
-msgstr ""
+msgid "Choose move to send in new shipment:"
+msgstr "Kies beweging om nieuwe zending te verzenden:"
 
-#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
 msgstr "Annuleren"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,split:"
 msgid "Split"
-msgstr "Split"
+msgstr "opsplitsen"

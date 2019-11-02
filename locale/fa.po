@@ -6,10 +6,6 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr "شمارش"
 
-msgctxt "field:stock.move.split.start,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
@@ -30,16 +26,13 @@ msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
 msgstr "دامنه جابجایی ها"
 
-msgctxt "field:stock.shipment.split.start,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
 msgstr "جابجایی ها"
 
+#, fuzzy
 msgctxt "help:stock.move.split.start,count:"
-msgid "The limit number of moves"
+msgid "The limit number of moves."
 msgstr "تعداد محدود جابجایی ها"
 
 msgctxt "help:stock.shipment.split.start,moves:"
@@ -82,8 +75,9 @@ msgctxt "view:stock.move:"
 msgid "Split"
 msgstr "جداسازی"
 
+#, fuzzy
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment"
+msgid "Choose move to send in new shipment:"
 msgstr "انتخاب جابجایی برای ارسال در محموله جدید"
 
 msgctxt "wizard_button:stock.move.split,start,end:"

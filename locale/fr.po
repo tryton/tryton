@@ -6,10 +6,6 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr "Décompte"
 
-msgctxt "field:stock.move.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantité"
@@ -30,17 +26,13 @@ msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
 msgstr "Domaine des mouvements"
 
-msgctxt "field:stock.shipment.split.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
 msgstr "Mouvements"
 
 msgctxt "help:stock.move.split.start,count:"
-msgid "The limit number of moves"
-msgstr "Le nombre limite de mouvements"
+msgid "The limit number of moves."
+msgstr "Le nombre limite de mouvements."
 
 msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
@@ -84,8 +76,8 @@ msgid "Split"
 msgstr "Diviser"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment"
-msgstr "Choisir les mouvements à envoyer sur la nouvelle expédition"
+msgid "Choose move to send in new shipment:"
+msgstr "Choisir les mouvements à envoyer sur la nouvelle expédition :"
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
@@ -100,17 +92,5 @@ msgid "Cancel"
 msgstr "Annuler"
 
 msgctxt "wizard_button:stock.shipment.split,start,split:"
-msgid "Split"
-msgstr "Diviser"
-
-msgctxt "view:stock.shipment.in.return:"
-msgid "Split"
-msgstr "Diviser"
-
-msgctxt "view:stock.shipment.internal:"
-msgid "Split"
-msgstr "Diviser"
-
-msgctxt "view:stock.shipment.out:"
 msgid "Split"
 msgstr "Diviser"

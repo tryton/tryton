@@ -7,11 +7,6 @@ msgid "Counts"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:stock.move.split.start,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
-#, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -33,17 +28,12 @@ msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:stock.shipment.split.start,id:"
-msgid "ID"
-msgstr "Movimento contabile"
-
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
 msgstr ""
 
 msgctxt "help:stock.move.split.start,count:"
-msgid "The limit number of moves"
+msgid "The limit number of moves."
 msgstr ""
 
 msgctxt "help:stock.shipment.split.start,moves:"
@@ -90,7 +80,7 @@ msgid "Split"
 msgstr "Split"
 
 msgctxt "view:stock.shipment.split.start:"
-msgid "Choose move to send in new shipment"
+msgid "Choose move to send in new shipment:"
 msgstr ""
 
 #, fuzzy

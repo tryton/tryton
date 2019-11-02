@@ -8,19 +8,19 @@ msgstr ""
 
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
-msgstr "Ilość"
+msgstr ""
 
 msgctxt "field:stock.move.split.start,unit_digits:"
 msgid "Unit Digits"
-msgstr "Cyfry jednostki"
+msgstr ""
 
 msgctxt "field:stock.move.split.start,uom:"
 msgid "Uom"
-msgstr "Jm"
+msgstr ""
 
 msgctxt "field:stock.move.split.start,uom_category:"
 msgid "Uom Category"
-msgstr "Kategoria jm"
+msgstr ""
 
 msgctxt "field:stock.shipment.split.start,domain_moves:"
 msgid "Domain Moves"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr "Ruchy"
+msgstr ""
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves."
@@ -38,45 +38,41 @@ msgctxt "help:stock.shipment.split.start,moves:"
 msgid "The selected moves will be sent in the new shipment."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_split_move"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_split_shipment"
 msgid "Split Shipment"
-msgstr "Split Shipment"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_in_return_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_internal_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_out_split_wizard_button"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.move.split.start,name:"
 msgid "Split Move"
-msgstr "Split Move"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:stock.shipment.split.start,name:"
 msgid "Split Shipment"
-msgstr "Split Shipment"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:stock.move:"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
 msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment:"
@@ -84,18 +80,16 @@ msgstr ""
 
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr "Anuluj"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
-msgstr "Split"
+msgstr ""
 
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
-msgstr "Anuluj"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,split:"
 msgid "Split"
-msgstr "Split"
+msgstr ""
