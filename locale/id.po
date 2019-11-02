@@ -8,15 +8,15 @@ msgstr ""
 
 msgctxt "field:account.invoice.line-stock.move,invoice_line:"
 msgid "Invoice Line"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "field:account.invoice.line-stock.move,stock_move:"
 msgid "Stock Move"
-msgstr ""
+msgstr "Perpindahan Persediaan"
 
 msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Baris Faktur"
 
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
@@ -24,4 +24,4 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"
-msgstr ""
+msgstr "Persediaan"
