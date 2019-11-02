@@ -6,14 +6,6 @@ msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Hčerinske družbe"
 
-msgctxt "field:company.company,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:company.company,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -30,10 +22,6 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Glava"
 
-msgctxt "field:company.company,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:company.company,parent:"
 msgid "Parent"
 msgstr "Matična družba"
@@ -42,65 +30,25 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Partner"
 
-msgctxt "field:company.company,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Časovni pas"
-
-msgctxt "field:company.company,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:company.company,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
-
-msgctxt "field:company.company.config.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:company.employee,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:company.employee,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
 msgstr "Zapustil"
-
-msgctxt "field:company.employee,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
 msgstr "Partner"
 
-msgctxt "field:company.employee,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
-
-msgctxt "field:company.employee,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:company.employee,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -110,33 +58,9 @@ msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "Družba"
 
-msgctxt "field:ir.cron-company.company,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:ir.cron-company.company,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
 msgstr "Razporejevalnik"
-
-msgctxt "field:ir.cron-company.company,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:ir.cron-company.company,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:ir.cron-company.company,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
@@ -174,37 +98,13 @@ msgctxt "field:res.user,main_company:"
 msgid "Main Company"
 msgstr "Glavna družba"
 
-msgctxt "field:res.user-company.employee,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:res.user-company.employee,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "Zaposlenec"
 
-msgctxt "field:res.user-company.employee,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Uporabnik"
-
-msgctxt "field:res.user-company.employee,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:res.user-company.employee,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."

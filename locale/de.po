@@ -6,14 +6,6 @@ msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Untergeordnet (Unternehmen)"
 
-msgctxt "field:company.company,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:company.company,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "Währung"
@@ -30,10 +22,6 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Dokumentenkopf"
 
-msgctxt "field:company.company,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:company.company,parent:"
 msgid "Parent"
 msgstr "Übergeordnet (Unternehmen)"
@@ -42,65 +30,25 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Partei"
 
-msgctxt "field:company.company,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Zeitzone"
-
-msgctxt "field:company.company,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:company.company,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
-
-msgctxt "field:company.company.config.start,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-msgctxt "field:company.employee,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:company.employee,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
 msgstr "Enddatum"
-
-msgctxt "field:company.employee,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
 msgstr "Partei"
 
-msgctxt "field:company.employee,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "Anfangsdatum"
-
-msgctxt "field:company.employee,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:company.employee,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -110,33 +58,9 @@ msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
-msgctxt "field:ir.cron-company.company,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:ir.cron-company.company,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
 msgstr "Cron"
-
-msgctxt "field:ir.cron-company.company,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
-msgctxt "field:ir.cron-company.company,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:ir.cron-company.company,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
@@ -174,37 +98,13 @@ msgctxt "field:res.user,main_company:"
 msgid "Main Company"
 msgstr "Mutterbetrieb"
 
-msgctxt "field:res.user-company.employee,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:res.user-company.employee,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "Mitarbeiter"
 
-msgctxt "field:res.user-company.employee,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Benutzer"
-
-msgctxt "field:res.user-company.employee,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:res.user-company.employee,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."

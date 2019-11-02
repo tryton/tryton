@@ -2,20 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Figlio"
-
-#, fuzzy
-msgctxt "field:company.company,create_date:"
-msgid "Create Date"
-msgstr "Creazione Data"
-
-#, fuzzy
-msgctxt "field:company.company,create_uid:"
-msgid "Create User"
-msgstr "Creazione Utente"
 
 #, fuzzy
 msgctxt "field:company.company,currency:"
@@ -34,11 +23,6 @@ msgctxt "field:company.company,header:"
 msgid "Header"
 msgstr "Intestazione"
 
-#, fuzzy
-msgctxt "field:company.company,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:company.company,parent:"
 msgid "Parent"
 msgstr "Padre"
@@ -48,74 +32,26 @@ msgctxt "field:company.company,party:"
 msgid "Party"
 msgstr "Controparti"
 
-msgctxt "field:company.company,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
 msgstr "Ora"
 
-#, fuzzy
-msgctxt "field:company.company,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-#, fuzzy
-msgctxt "field:company.company,write_uid:"
-msgid "Write User"
-msgstr "Scrivente"
-
-#, fuzzy
-msgctxt "field:company.company.config.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:company.employee,company:"
 msgid "Company"
 msgstr "Azienda"
-
-#, fuzzy
-msgctxt "field:company.employee,create_date:"
-msgid "Create Date"
-msgstr "Creazione Data"
-
-#, fuzzy
-msgctxt "field:company.employee,create_uid:"
-msgid "Create User"
-msgstr "Creazione Utente"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:company.employee,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:company.employee,party:"
 msgid "Party"
 msgstr "Controparti"
 
-msgctxt "field:company.employee,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:company.employee,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-#, fuzzy
-msgctxt "field:company.employee,write_uid:"
-msgid "Write User"
-msgstr "Scrivente"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -126,38 +62,9 @@ msgid "Company"
 msgstr "Azienda"
 
 #, fuzzy
-msgctxt "field:ir.cron-company.company,create_date:"
-msgid "Create Date"
-msgstr "Creazione Data"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,create_uid:"
-msgid "Create User"
-msgstr "Creazione Utente"
-
-#, fuzzy
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
 msgstr "Cron"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,write_uid:"
-msgid "Write User"
-msgstr "Scrivente"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
@@ -196,43 +103,14 @@ msgctxt "field:res.user,main_company:"
 msgid "Main Company"
 msgstr "Azienda Principale"
 
-#, fuzzy
-msgctxt "field:res.user-company.employee,create_date:"
-msgid "Create Date"
-msgstr "Creazione Data"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,create_uid:"
-msgid "Create User"
-msgstr "Creazione Utente"
-
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
 #, fuzzy
-msgctxt "field:res.user-company.employee,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Utente"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,write_date:"
-msgid "Write Date"
-msgstr "Data di Scrittura"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,write_uid:"
-msgid "Write User"
-msgstr "Scrivente"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."

@@ -2,324 +2,194 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "子项"
-
-#, fuzzy
-msgctxt "field:company.company,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:company.company,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
+msgstr "子公司"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "货币"
 
-#, fuzzy
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Employees"
+msgstr "雇员"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr ""
+msgstr "页脚"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr ""
+msgstr "页眉"
 
-#, fuzzy
-msgctxt "field:company.company,id:"
-msgid "ID"
-msgstr "编号"
-
-#, fuzzy
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "上级公司"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:company.company,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "参与对象"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:company.company,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:company.company,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
-msgctxt "field:company.company.config.start,id:"
-msgid "ID"
-msgstr "编号"
+msgstr "时区"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:company.employee,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:company.employee,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
+msgstr "公司"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:company.employee,id:"
-msgid "ID"
-msgstr "编号"
+msgstr "离职日期"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:company.employee,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "参与对象"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "入职日期"
 
-#, fuzzy
-msgctxt "field:company.employee,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:company.employee,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
-#, fuzzy
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
-#, fuzzy
-msgctxt "field:ir.cron-company.company,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Cron"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:ir.cron-company.company,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:ir.cron-company.company,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
+msgstr "计划任务"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
-#, fuzzy
 msgctxt "field:res.user,companies:"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr ""
+msgstr "当前公司"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr ""
+msgstr "现任员工"
 
-#, fuzzy
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Employees"
+msgstr "雇员"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr ""
+msgstr "主要公司"
 
-#, fuzzy
-msgctxt "field:res.user-company.employee,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Employees"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:res.user-company.employee,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "雇员"
 
 #, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "用户"
 
-#, fuzzy
-msgctxt "field:res.user-company.employee,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:res.user-company.employee,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."
-msgstr ""
+msgstr "为这个公司添加子公司."
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr ""
+msgstr "这个公司使用的主要货币."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
-msgstr ""
+msgstr "为当前公司添加雇员."
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
-msgstr ""
+msgstr "要在报告页脚上显示的文本."
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr ""
+msgstr "要在报告页眉上显示的文本."
 
 msgctxt "help:company.company,parent:"
 msgid "Add the company below the parent."
-msgstr ""
+msgstr "为这个公司设置上级公司."
 
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
-msgstr ""
+msgstr "用于计算当前日期."
 
 msgctxt "help:company.employee,company:"
 msgid "The company to which the employee belongs."
-msgstr ""
+msgstr "员工所属的公司."
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr ""
+msgstr "当员工离开公司的时间."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr ""
+msgstr "代表雇员的参与对象."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr ""
+msgstr "雇员加入公司的时候."
 
 msgctxt "help:ir.cron,companies:"
 msgid "Companies registered for this cron"
-msgstr ""
+msgstr "在这个 cron 注册的公司"
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
-msgstr ""
+msgstr "限制当前序列仅用于某个公司."
 
 msgctxt "help:ir.sequence.strict,company:"
 msgid "Restrict the sequence usage to the company."
-msgstr ""
+msgstr "限制公司使用序列."
 
 msgctxt "help:res.user,company:"
 msgid "Select the company to work for."
-msgstr ""
+msgstr "选择要为其工作的公司."
 
 msgctxt "help:res.user,employee:"
 msgid "Select the employee to make the user behave as such."
-msgstr ""
+msgstr "选择一个雇员，好让这个用户对应."
 
 msgctxt "help:res.user,employees:"
 msgid "Add employees to grant the user access to them."
-msgstr ""
+msgstr "添加员工，授予用户访问权限。"
 
 msgctxt "help:res.user,main_company:"
 msgid "Grant access to the company and its children."
-msgstr ""
+msgstr "允许访问公司及其子公司."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr ""
+msgstr "公司配置"
 
-#, fuzzy
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Employees"
+msgstr "雇员"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
@@ -343,15 +213,15 @@ msgstr "Letter"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr ""
+msgstr "计划任务 - 公司"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in company"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
-msgstr ""
+msgstr "公司中的用户"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
@@ -367,36 +237,35 @@ msgstr "Employees"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr ""
+msgstr "用户 - 雇员"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr ""
+msgstr "真挚的问候,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
-msgstr ""
+msgstr "日期:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr ""
+msgstr "尊敬的女士们、先生们,"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr ""
+msgstr "主题:"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr ""
+msgstr "现在可以将你的公司添加到系统中了."
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr ""
+msgstr "公司"
 
-#, fuzzy
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "报表"
+msgstr "报告"
 
 #, fuzzy
 msgctxt "wizard_button:company.company.config,company,add:"

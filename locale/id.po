@@ -4,119 +4,119 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:company.company,childs:"
 msgid "Children"
-msgstr "Dukterinės"
+msgstr "Cabang"
 
 msgctxt "field:company.company,currency:"
 msgid "Currency"
-msgstr "Valiuta"
+msgstr "Mata uang"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr "Darbuotojai"
+msgstr ""
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr "Puslapio poraštė"
+msgstr ""
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr "Puslapio antraštė"
+msgstr ""
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
-msgstr "Motininė"
+msgstr "Induk"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Pihak"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr "Laiko zona"
+msgstr ""
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr "Pabaigos data"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Kontrahentas"
+msgstr "Pihak"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
-msgstr "Pradžios data"
+msgstr "Tanggal Awal"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
-msgstr "Planuotojas (Cron)"
+msgstr "Cron"
 
 msgctxt "field:ir.sequence,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:ir.sequence.strict,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:party.configuration.party_lang,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:party.party.lang,company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "field:res.user,companies:"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr "Dabartinė organizacija"
+msgstr ""
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
-msgstr "Dabartinis darbuotojas"
+msgstr ""
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr "Darbuotojai"
+msgstr ""
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr "Pagrindinė organizacija"
+msgstr ""
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
-msgstr "Darbuotojas"
+msgstr "Pegawai"
 
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
-msgstr "Naudotojas"
+msgstr "Pengguna"
 
 msgctxt "help:company.company,childs:"
 msgid "Add children below the company."
-msgstr ""
+msgstr "Tambahkan cabang di bawah perusahaan."
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr "Organizacijos pagrindinė valiuta."
+msgstr "Mata uang utama untuk perusahaan."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
-msgstr ""
+msgstr "Tambahkan pegawai ke perusahaan."
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
@@ -128,7 +128,7 @@ msgstr ""
 
 msgctxt "help:company.company,parent:"
 msgid "Add the company below the parent."
-msgstr ""
+msgstr "Tambahkan perusahaan di bawah induknya."
 
 msgctxt "help:company.company,timezone:"
 msgid "Used to compute the today date."
@@ -180,79 +180,79 @@ msgstr ""
 
 msgctxt "model:company.company,name:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "model:company.company.config.start,name:"
 msgid "Company Config"
-msgstr "Organizacijos nuostatos"
+msgstr "Konfigurasi Perusahaan"
 
 msgctxt "model:company.employee,name:"
 msgid "Employee"
-msgstr "Tarnautojas"
+msgstr "Pegawai"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Organizacijos nuostatos"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Darbuotojai"
+msgstr "Pegawai-pegawai"
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Laiškas"
+msgstr ""
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
-msgstr "Planuotojas (Cron) - Organizacija"
+msgstr "Cron - Perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in company"
-msgstr "Organizacijos naudotojas"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
-msgstr "Organizacijos naudotojas"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Organizacijos"
+msgstr "Perusahaan-perusahaan"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Darbuotojai"
+msgstr "Pegawai-pegawai"
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
-msgstr "Naudotojas - darbuotojas"
+msgstr "Pengguna - Pegawai"
 
 msgctxt "report:party.letter:"
 msgid "Best Regards,"
-msgstr "Pagarbiai"
+msgstr "Salam Hormat,"
 
 msgctxt "report:party.letter:"
 msgid "Date:"
-msgstr "Data:"
+msgstr "Tanggal:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr "Ponios ir Ponai,"
+msgstr ""
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
-msgstr "Tema:"
+msgstr "Subject:"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
@@ -260,24 +260,24 @@ msgstr ""
 
 msgctxt "view:company.company:"
 msgid "Company"
-msgstr "Organizacija"
+msgstr "Perusahaan"
 
 msgctxt "view:company.company:"
 msgid "Reports"
-msgstr "Raportai"
+msgstr "Laporan"
 
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
-msgstr "Pridėti"
+msgstr "Tambahkan"
 
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Batal"
 
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
-msgstr "Gerai"
+msgstr "OK"
 
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Atsisakyti"
+msgstr "Batal"
