@@ -4,40 +4,40 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:project.work,cost:"
 msgid "Cost"
-msgstr "Kosten"
+msgstr ""
 
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
-msgstr "Valuta decimalen"
+msgstr ""
 
 msgctxt "field:project.work,list_price:"
 msgid "List Price"
-msgstr "Catalogusprijs"
+msgstr ""
 
 msgctxt "field:project.work,product:"
 msgid "Product"
-msgstr "Product"
+msgstr "Produk"
 
 msgctxt "field:project.work,purchase_lines:"
 msgid "Purchase Lines"
-msgstr "aankooplijnen"
+msgstr ""
 
 msgctxt "field:project.work,revenue:"
 msgid "Revenue"
-msgstr "Opbrengst/omzet?"
+msgstr "Pendapatan"
 
 msgctxt "field:purchase.line,work:"
 msgid "Work Effort"
-msgstr "Arbeidsinspanning"
+msgstr ""
 
 msgctxt "help:purchase.line,work:"
 msgid "Add to the cost of the work effort."
-msgstr "Voeg toe aan de kosten van de werkinspanning."
+msgstr ""
 
 msgctxt "view:project.work:"
 msgid "Purchases"
-msgstr "Aankopen"
+msgstr ""
 
 msgctxt "view:purchase.line:"
 msgid "Project"
-msgstr "Project"
+msgstr ""
