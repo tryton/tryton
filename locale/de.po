@@ -18,37 +18,13 @@ msgctxt "field:sale.subscription.service,asset_lots_available:"
 msgid "Available Asset Lots"
 msgstr "Verfügbare Abonnement Objekte"
 
-msgctxt "field:sale.subscription.service-stock.lot.asset,create_date:"
-msgid "Create Date"
-msgstr "Erstellungsdatum"
-
-msgctxt "field:sale.subscription.service-stock.lot.asset,create_uid:"
-msgid "Create User"
-msgstr "Erstellt durch"
-
-msgctxt "field:sale.subscription.service-stock.lot.asset,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:sale.subscription.service-stock.lot.asset,lot:"
 msgid "Lot"
 msgstr "Charge"
 
-msgctxt "field:sale.subscription.service-stock.lot.asset,rec_name:"
-msgid "Record Name"
-msgstr "Bezeichnung des Datensatzes"
-
 msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
 msgid "Service"
 msgstr "Dienstleistung"
-
-msgctxt "field:sale.subscription.service-stock.lot.asset,write_date:"
-msgid "Write Date"
-msgstr "Zuletzt geändert"
-
-msgctxt "field:sale.subscription.service-stock.lot.asset,write_uid:"
-msgid "Write User"
-msgstr "Letzte Änderung durch"
 
 msgctxt "field:stock.lot,subscribed:"
 msgid "Subscribed"
