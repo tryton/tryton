@@ -6,6 +6,18 @@ msgctxt "field:stock.move,fifo_quantity:"
 msgid "FIFO Quantity"
 msgstr "Quantitat FIFO"
 
+msgctxt "field:stock.move,fifo_quantity_available:"
+msgid "FIFO Quantity Available"
+msgstr "Quantitat FIFO disponible"
+
+msgctxt "help:stock.move,fifo_quantity:"
+msgid "Quantity used by FIFO."
+msgstr "Quantitat utilizada pel FIFO."
+
+msgctxt "help:stock.move,fifo_quantity_available:"
+msgid "Quantity available for FIFO"
+msgstr "Quantitat disponible per FIFO"
+
 msgctxt "model:ir.message,text:msg_move_delete_fifo"
 msgid ""
 "You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
@@ -26,13 +38,3 @@ msgstr "FIFO"
 msgctxt "selection:product.template,cost_price_method:"
 msgid "FIFO"
 msgstr "FIFO"
-
-msgctxt "error:stock.move:"
-msgid "FIFO quantity can not be greater than quantity."
-msgstr "Quantitat FIFO no pot ser més gran que quantitat."
-
-msgctxt "error:stock.move:"
-msgid "You can not delete move \"%s\" that is used for FIFO cost price."
-msgstr ""
-"No podeu eliminar el moviment \"%s\" que està sent usat pel preu de cost "
-"FIFO."
