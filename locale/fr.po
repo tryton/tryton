@@ -100,8 +100,8 @@ msgstr "Raccourcis globaux"
 msgid "Tab shortcuts"
 msgstr "Raccourcis d'onglet"
 
-msgid "Unable to reach the server"
-msgstr "Impossible de joindre le serveur"
+msgid "Unable to reach the server."
+msgstr "Impossible de joindre le serveur."
 
 msgid "Login"
 msgstr "Connexion"
@@ -111,9 +111,6 @@ msgstr "Nom d'utilisateur"
 
 msgid "Database"
 msgstr "Base de données"
-
-msgid "Unable to reach the server."
-msgstr "Impossible de joindre le serveur."
 
 msgid "Switch view"
 msgstr "Basculer la vue"
@@ -125,7 +122,7 @@ msgid "Next Record"
 msgstr "Enregistrement suivant"
 
 msgid "Create a new record"
-msgstr "Crée un nouvel enregistrement"
+msgstr "Créer un nouvel enregistrement"
 
 msgid "Save this record"
 msgstr "Sauver cet enregistrement"
@@ -175,7 +172,7 @@ msgstr ""
 "voulez-vous le sauvegarder ?"
 
 msgid "Record saved."
-msgstr "Enregistrement sauvé."
+msgstr "Enregistrement sauvegardé."
 
 msgid "Working now on the duplicated record(s)."
 msgstr "Sur les enregistrement(s) dupliqué(s) maintenant."
@@ -198,17 +195,17 @@ msgstr "Vous devez sélectionner un enregistrement."
 msgid "ID:"
 msgstr "ID :"
 
-msgid "Creation User:"
-msgstr "Créé par l'utilisateur :"
+msgid "Created by:"
+msgstr "Crée par :"
 
-msgid "Creation Date:"
-msgstr "Date de création :"
+msgid "Created at:"
+msgstr "Crée le :"
 
-msgid "Latest Modification by:"
-msgstr "Dernière modification par :"
+msgid "Edited by:"
+msgstr "Édité par :"
 
-msgid "Latest Modification Date:"
-msgstr "Date de dernière modification :"
+msgid "Edited at:"
+msgstr "Édité le :"
 
 msgid "Model: "
 msgstr "Modèle : "
@@ -270,26 +267,26 @@ msgstr "Ouvrir le calendrier"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Créé par l'utilisateur"
+msgid "Created by"
+msgstr "Créé par"
 
-msgid "Creation Date"
-msgstr "Date de création"
+msgid "Created at"
+msgstr "Crée le"
 
-msgid "Modification User"
-msgstr "Modifié par l'utilisateur"
+msgid "Modified by"
+msgstr "Modifié par"
 
-msgid "Modification Date"
-msgstr "Date de modification"
+msgid "Modified at"
+msgstr "Modifié le"
 
-msgid "\"%1\" is required"
-msgstr "« %1 » est requis"
+msgid "\"%1\" is required."
+msgstr "« %1 » est requis."
 
-msgid "\"%1\" is not valid according to its domain"
-msgstr "« %1 » n'est pas valide selon son domaine"
+msgid "\"%1\" is not valid according to its domain."
+msgstr "« %1 » n'est pas valide selon son domaine."
 
-msgid "The values of \"%1\" are not valid"
-msgstr "Les valeurs de « %1 » ne sont pas valides"
+msgid "The values of \"%1\" are not valid."
+msgstr "Les valeurs de « %1 » ne sont pas valides."
 
 msgid "Pre-validation"
 msgstr "Pré-validation"
@@ -468,8 +465,8 @@ msgstr "Attention, accès en écriture concurrents : "
 
 msgid "This record has been modified while you were editing it."
 msgstr ""
-"Cet enregistrement a été édité pendant que vous étiez en train de le "
-"modifier."
+"Cet enregistrement a été modifié pendant que vous étiez en train de "
+"l'éditer."
 
 msgid "Choose:"
 msgstr "Choisissez :"
@@ -552,17 +549,20 @@ msgstr "Fichier à importer :"
 msgid "Lines to Skip:"
 msgstr "Lignes à ignorer :"
 
-msgid "You must select an import file first"
-msgstr "Vous devez d'abord sélectionner un fichier d'import"
+msgid "You must select an import file first."
+msgstr "Vous devez d'abord sélectionner un fichier d'import."
 
-msgid "Error occured in loading the file"
-msgstr "Une erreur a eu lieu au chargement du fichier"
+msgid "An error occured in loading the file."
+msgstr "Une erreur a eu lieu au chargement du fichier."
 
 msgid "Error processing the file at field %1."
 msgstr "Erreur lors du traitement du fichier du champ %1."
 
 msgid "Error"
 msgstr "Erreur"
+
+msgid "Error occured in loading the file"
+msgstr "Une erreur a eu lieu au chargement du fichier"
 
 msgid "CSV Export: %1"
 msgstr "Export CSV: %1"

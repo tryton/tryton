@@ -100,8 +100,8 @@ msgstr "Atalhos Globais"
 msgid "Tab shortcuts"
 msgstr "Atalhos para abas"
 
-msgid "Unable to reach the server"
-msgstr "Não é possível se conectar ao servidor"
+msgid "Unable to reach the server."
+msgstr "Não foi possível se conectar ao servidor."
 
 msgid "Login"
 msgstr "Entrar"
@@ -111,9 +111,6 @@ msgstr "Usuário"
 
 msgid "Database"
 msgstr "Banco de dados"
-
-msgid "Unable to reach the server."
-msgstr "Não foi possível se conectar ao servidor."
 
 msgid "Switch view"
 msgstr "Alternar a visão"
@@ -198,17 +195,21 @@ msgstr "Você precisa selecionar um registro."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "Criado por:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Criar..."
 
-msgid "Creation Date:"
-msgstr "Data de criação:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Data de criação"
 
-msgid "Latest Modification by:"
-msgstr "Última modificação por:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Criar..."
 
-msgid "Latest Modification Date:"
-msgstr "Data da última modificação:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Data de modificação"
 
 msgid "Model: "
 msgstr "Modelo: "
@@ -271,25 +272,31 @@ msgstr "Abrir o calendário"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Criado por"
+#, fuzzy
+msgid "Created by"
+msgstr "Criar..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "Data de criação"
 
-msgid "Modification User"
-msgstr "Editado por"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "Data de modificação"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" é obrigatório"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" não é válido de acordo com seu domínio"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "Os valores para \"%1\" não são válidos"
 
 msgid "Pre-validation"
@@ -552,10 +559,12 @@ msgstr "Arquivo a importar"
 msgid "Lines to Skip:"
 msgstr "Linhas a Ignorar:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "Primeiro você deve selecionar um arquivo para importar."
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "Ocorreu um erro ao carregar o arquivo"
 
 msgid "Error processing the file at field %1."
@@ -563,6 +572,9 @@ msgstr "Erro ao processar o arquivo no campo %1."
 
 msgid "Error"
 msgstr "Erro"
+
+msgid "Error occured in loading the file"
+msgstr "Ocorreu um erro ao carregar o arquivo"
 
 msgid "CSV Export: %1"
 msgstr "Exportar CSV: %1"

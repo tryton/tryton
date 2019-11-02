@@ -7,46 +7,46 @@ msgid "Are your sure to leave?"
 msgstr ""
 
 msgid "Favorites"
-msgstr ""
+msgstr "Mėgstami"
 
 msgid "Manage..."
-msgstr ""
+msgstr "Valdyti..."
 
 msgid "Logout"
 msgstr ""
 
 msgid "Action"
-msgstr ""
+msgstr "Veiksmai"
 
 msgid "New"
-msgstr ""
+msgstr "Naujas"
 
 msgid "Save"
-msgstr ""
+msgstr "Išsaugoti"
 
 msgid "Switch"
-msgstr ""
+msgstr "Perjungti"
 
 msgid "Reload/Undo"
-msgstr ""
+msgstr "Perkrauti/Atšaukti"
 
 msgid "Duplicate"
 msgstr ""
 
 msgid "Delete"
-msgstr ""
+msgstr "Naikinti"
 
 msgid "Previous"
-msgstr ""
+msgstr "Buvęs"
 
 msgid "Next"
-msgstr ""
+msgstr "Kitas"
 
 msgid "Search"
-msgstr ""
+msgstr "Ieškoti"
 
 msgid "Close Tab"
-msgstr ""
+msgstr "Uždaryti kortelę"
 
 msgid "Attachment"
 msgstr ""
@@ -55,16 +55,18 @@ msgid "Note"
 msgstr "Pastaba"
 
 msgid "Relate"
-msgstr ""
+msgstr "Susijęs"
 
 msgid "Print"
-msgstr ""
+msgstr "Spausdinimas"
 
+#, fuzzy
 msgid "Previous tab"
-msgstr ""
+msgstr "_Buvusi kortelė"
 
+#, fuzzy
 msgid "Next tab"
-msgstr ""
+msgstr "Kita kortelė"
 
 msgid "Global search"
 msgstr ""
@@ -76,7 +78,7 @@ msgid "Keyboard shortcuts"
 msgstr ""
 
 msgid "Close"
-msgstr ""
+msgstr "Užverti"
 
 msgid "Global shortcuts"
 msgstr ""
@@ -84,11 +86,11 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr ""
 
 msgid "Login"
-msgstr ""
+msgstr "Prisijungti"
 
 msgid "User name"
 msgstr "Naudotojo vardas"
@@ -96,23 +98,20 @@ msgstr "Naudotojo vardas"
 msgid "Database"
 msgstr ""
 
-msgid "Unable to reach the server."
-msgstr ""
-
 msgid "Switch view"
-msgstr ""
+msgstr "Perjungti rodymą"
 
 msgid "Previous Record"
-msgstr ""
+msgstr "Buvęs įrašas"
 
 msgid "Next Record"
-msgstr ""
+msgstr "Kitas įrašas"
 
 msgid "Create a new record"
-msgstr ""
+msgstr "Sukurti naują įrašą"
 
 msgid "Save this record"
-msgstr ""
+msgstr "Išsaugoti šį įrašą"
 
 msgid "Reload"
 msgstr ""
@@ -121,13 +120,13 @@ msgid "View Logs..."
 msgstr ""
 
 msgid "Show revisions..."
-msgstr ""
+msgstr "Rodyti pakeitimus..."
 
 msgid "Add an attachment to the record"
-msgstr ""
+msgstr "Prisegti failą prie įrašo"
 
 msgid "Add a note to the record"
-msgstr ""
+msgstr "Prisegti pastabą prie įrašo"
 
 msgid "Export"
 msgstr ""
@@ -139,62 +138,70 @@ msgid ""
 "The following action requires to close all tabs.\n"
 "Do you want to continue?"
 msgstr ""
+"Atliekant šį veiksmą bus uždarytos visos kortelės.\n"
+"Ar norite tęsti?"
 
 msgid "Launch action"
-msgstr ""
+msgstr "Vykdyti veiksmą"
 
 msgid "Open related records"
-msgstr ""
+msgstr "Atverti susijusius įrašus"
 
 msgid "Print report"
-msgstr ""
+msgstr "Spausdinti ataskaitą"
 
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
+"Šis įrašas buvo pakeistas\n"
+"Ar norite jį išsaugoti?"
 
 msgid "Record saved."
-msgstr ""
+msgstr "Įrašas išsaugotas."
 
 msgid "Working now on the duplicated record(s)."
-msgstr ""
+msgstr "Dabar dirbate su įrašo(-ų) kopija(-omis)."
 
 msgid "Are you sure to remove this record?"
-msgstr ""
+msgstr "Ar tikrai norite ištrinti šį įrašą?"
 
 msgid "Are you sure to remove those records?"
-msgstr ""
+msgstr "Ar tikrai norite ištrinti šiuos įrašus?"
 
 msgid "Records removed."
-msgstr ""
+msgstr "Įrašai ištrinti."
 
 msgid "Records not removed."
-msgstr ""
+msgstr "Įrašai nebuvo ištrinti!"
 
 msgid "You have to select one record."
-msgstr ""
+msgstr "Pasirinkite bent vieną įrašą!"
 
 msgid "ID:"
-msgstr ""
+msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "Sukūręs naudotojas:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Sukūręs naudotojas"
 
-msgid "Creation Date:"
-msgstr ""
+#, fuzzy
+msgid "Created at:"
+msgstr "Sukūrimo data"
 
-msgid "Latest Modification by:"
-msgstr ""
+#, fuzzy
+msgid "Edited by:"
+msgstr "Sukūręs naudotojas"
 
-msgid "Latest Modification Date:"
-msgstr ""
+#, fuzzy
+msgid "Edited at:"
+msgstr "Pakeitęs naudotojas"
 
 msgid "Model: "
 msgstr ""
 
 msgid "Add..."
-msgstr ""
+msgstr "Sukurti naują..."
 
 msgid "Attachment (%1)"
 msgstr ""
@@ -203,7 +210,7 @@ msgid "Note (%1/%2)"
 msgstr ""
 
 msgid " of "
-msgstr ""
+msgstr " iš "
 
 msgid "Filters"
 msgstr ""
@@ -215,28 +222,28 @@ msgid "Bookmarks"
 msgstr ""
 
 msgid "Remove this bookmark"
-msgstr ""
+msgstr "Šalinti šią žymelę"
 
 msgid "Bookmark this filter"
-msgstr ""
+msgstr "Sukurti šio filtro žymelę"
 
 msgid "Bookmark Name:"
-msgstr ""
+msgstr "Žymelės pavadinimas:"
 
 msgid "Show active records"
-msgstr ""
+msgstr "Rodyti aktyvius įrašus"
 
 msgid "Show inactive records"
-msgstr ""
+msgstr "Rodyti neaktyvius įrašus"
 
 msgid "True"
-msgstr ""
+msgstr "Tiesa"
 
 msgid "False"
-msgstr ""
+msgstr "Netiesa"
 
 msgid "Find"
-msgstr ""
+msgstr "Rasti"
 
 msgid "From"
 msgstr ""
@@ -245,56 +252,56 @@ msgid "To"
 msgstr ""
 
 msgid "Open the calendar"
-msgstr ""
+msgstr "Atverti kalendorių"
 
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-msgid "Creation User"
+msgid "Created by"
 msgstr "Sukūręs naudotojas"
 
-msgid "Creation Date"
-msgstr ""
+msgid "Created at"
+msgstr "Sukūrimo data"
 
-msgid "Modification User"
-msgstr "Pakeitęs naudotojas"
+msgid "Modified by"
+msgstr ""
 
 #, fuzzy
-msgid "Modification Date"
+msgid "Modified at"
 msgstr "Pakeitęs naudotojas"
 
-msgid "\"%1\" is required"
+msgid "\"%1\" is required."
 msgstr ""
 
-msgid "\"%1\" is not valid according to its domain"
+msgid "\"%1\" is not valid according to its domain."
 msgstr ""
 
-msgid "The values of \"%1\" are not valid"
+msgid "The values of \"%1\" are not valid."
 msgstr ""
 
 msgid "Pre-validation"
-msgstr ""
+msgstr "Išankstinis patikrinimas"
 
 msgid ":"
-msgstr ""
+msgstr ":"
 
 msgid "Translate"
 msgstr ""
 
 msgid "Cancel"
-msgstr ""
+msgstr "Atsisakyti"
 
 msgid "OK"
-msgstr ""
+msgstr "Gerai"
 
 msgid "Edit"
-msgstr ""
+msgstr "Keisti"
 
 msgid "Fuzzy"
-msgstr ""
+msgstr "Netikslus"
 
 msgid "You need to save the record before adding translations."
-msgstr ""
+msgstr "Išsaugokite įrašą prieš pridedant vertimą."
 
 msgid "No other language available."
 msgstr ""
@@ -321,34 +328,34 @@ msgid "Search a record"
 msgstr ""
 
 msgid "Add"
-msgstr ""
+msgstr "Pridėti"
 
 msgid "Remove"
 msgstr ""
 
 msgid "Open"
-msgstr ""
+msgstr "Atvėrimas"
 
 msgid "Undelete"
 msgstr ""
 
 msgid "Save As"
-msgstr ""
+msgstr "Įrašyti kaip"
 
 msgid "Save As..."
-msgstr ""
+msgstr "Įrašyti kaip..."
 
 msgid "Select"
-msgstr ""
+msgstr "Pasirinkti"
 
 msgid "Select..."
-msgstr ""
+msgstr "Pasirinkti..."
 
 msgid "Clear"
-msgstr ""
+msgstr "Valyti"
 
 msgid "Choose a language"
-msgstr ""
+msgstr "Pasirinkti kalbą"
 
 msgid "%1%"
 msgstr ""
@@ -361,22 +368,20 @@ msgid "More"
 msgstr ""
 
 msgid "Today"
-msgstr ""
+msgstr "Šiandien"
 
 msgid "Month"
 msgstr ""
 
 msgid "Week"
-msgstr ""
+msgstr "Savaitė"
 
 msgid "Day"
 msgstr ""
 
-#, fuzzy
 msgid ", "
 msgstr ", "
 
-#, fuzzy
 msgid ",…"
 msgstr ",…"
 
@@ -384,46 +389,46 @@ msgid "%1 (%2)"
 msgstr ""
 
 msgid "Select your action"
-msgstr ""
+msgstr "Pasirinkite veiksmą"
 
 msgid "No action defined."
-msgstr ""
+msgstr "Nėra apibrėžtų veiksmų!"
 
 msgid "Your selection:"
-msgstr ""
+msgstr "Jūsų pasirinkimas:"
 
 msgid "Y"
-msgstr ""
+msgstr "m."
 
 msgid "M"
-msgstr ""
+msgstr "mėn."
 
 msgid "w"
-msgstr ""
+msgstr "sav."
 
 msgid "d"
-msgstr ""
+msgstr "d."
 
 msgid "h"
-msgstr ""
+msgstr "val."
 
 msgid "m"
-msgstr ""
+msgstr "min."
 
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgid "By: "
 msgstr ""
 
 msgid "y"
-msgstr ""
+msgstr "t"
 
 msgid "Yes"
 msgstr "Taip"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "Message: "
 msgstr ""
@@ -432,13 +437,13 @@ msgid "Warning: "
 msgstr ""
 
 msgid "Always ignore this warning."
-msgstr ""
+msgstr "Daugiau nepaisyti šio pranešimo."
 
 msgid "Do you want to proceed?"
-msgstr ""
+msgstr "Ar tikrai norite vykdyti?"
 
 msgid "No"
-msgstr ""
+msgstr "Ne"
 
 msgid "Confirmation: "
 msgstr ""
@@ -447,10 +452,10 @@ msgid "Concurrency Exception"
 msgstr "Lygiagretaus duomenų rašymo klaida"
 
 msgid "Write Concurrency Warning: "
-msgstr "Lygiagretaus duomenų rašymo perspėjimas:"
+msgstr "Lygiagretaus duomenų rašymo perspėjimas: "
 
 msgid "This record has been modified while you were editing it."
-msgstr ""
+msgstr "Kol jūs taisėte šį įrašą, jis buvo pakeistas."
 
 msgid "Choose:"
 msgstr ""
@@ -465,16 +470,16 @@ msgid "\"Write Anyway\" to save your current version."
 msgstr ""
 
 msgid "Compare"
-msgstr ""
+msgstr "Palyginti"
 
 msgid "Write Anyway"
-msgstr ""
+msgstr "Rašyti visvien"
 
 msgid "Application Error"
-msgstr ""
+msgstr "Programos klaida!"
 
 msgid "Report Bug"
-msgstr ""
+msgstr "Pranešti apie klaidą"
 
 msgid "Processing..."
 msgstr ""
@@ -486,9 +491,8 @@ msgid "Create..."
 msgstr ""
 
 msgid "Download"
-msgstr ""
+msgstr "Atsisiųsti"
 
-#, fuzzy
 msgid "..."
 msgstr "..."
 
@@ -502,7 +506,7 @@ msgid "Search %1"
 msgstr ""
 
 msgid "Revision"
-msgstr ""
+msgstr "Taisymas"
 
 msgid "All Fields"
 msgstr ""
@@ -511,16 +515,16 @@ msgid "Fields Selected"
 msgstr ""
 
 msgid "CSV Parameters"
-msgstr ""
+msgstr "CSV parametrai"
 
 msgid "Delimiter:"
-msgstr ""
+msgstr "Skirtukas:"
 
 msgid "Quote Char:"
 msgstr ""
 
 msgid "Encoding:"
-msgstr ""
+msgstr "Koduotė:"
 
 msgid "CSV Import: %1"
 msgstr ""
@@ -532,18 +536,21 @@ msgid "File to Import"
 msgstr ""
 
 msgid "Lines to Skip:"
+msgstr "Praleisti eilutes:"
+
+msgid "You must select an import file first."
 msgstr ""
 
-msgid "You must select an import file first"
-msgstr ""
-
-msgid "Error occured in loading the file"
+msgid "An error occured in loading the file."
 msgstr ""
 
 msgid "Error processing the file at field %1."
 msgstr ""
 
 msgid "Error"
+msgstr "Klaida"
+
+msgid "Error occured in loading the file"
 msgstr ""
 
 msgid "CSV Export: %1"
@@ -559,7 +566,7 @@ msgid "Predefined Exports"
 msgstr ""
 
 msgid "Use locale format"
-msgstr ""
+msgstr "Naudoti lokalės formatą"
 
 msgid "Add Field Names"
 msgstr ""
@@ -574,13 +581,13 @@ msgid "%1 (record name)"
 msgstr ""
 
 msgid "What is the name of this export?"
-msgstr ""
+msgstr "Kokiu pavadinimu išsaugoti šį eksportavimo šabloną?"
 
 msgid "Override %1 definition?"
 msgstr ""
 
 msgid "Wizard"
-msgstr ""
+msgstr "Vedlys"
 
 msgid "Translate view"
 msgstr ""

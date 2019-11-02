@@ -100,7 +100,7 @@ msgstr "Atajos globales"
 msgid "Tab shortcuts"
 msgstr "Atajos de las pestañas"
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr "No es posible conectar con el servidor."
 
 msgid "Login"
@@ -112,9 +112,6 @@ msgstr "Nombre de usuario"
 msgid "Database"
 msgstr "Base de datos"
 
-msgid "Unable to reach the server."
-msgstr "No es posible conectar con el servidor."
-
 msgid "Switch view"
 msgstr "Cambiar de vista"
 
@@ -125,10 +122,10 @@ msgid "Next Record"
 msgstr "Registro siguiente"
 
 msgid "Create a new record"
-msgstr "Crea un registro nuevo"
+msgstr "Crear un nuevo registro"
 
 msgid "Save this record"
-msgstr "Guarda este registro"
+msgstr "Guardar este registro"
 
 msgid "Reload"
 msgstr "Recargar"
@@ -187,7 +184,7 @@ msgid "Are you sure to remove those records?"
 msgstr "¿Está seguro que quiere eliminar estos registros?"
 
 msgid "Records removed."
-msgstr "Los registros se han eliminado."
+msgstr "Registros eliminados."
 
 msgid "Records not removed."
 msgstr "Los registros no se han eliminado."
@@ -198,17 +195,17 @@ msgstr "Debe elegir un registro."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Creado por:"
 
-msgid "Creation Date:"
-msgstr "Fecha creación:"
+msgid "Created at:"
+msgstr "Creado el:"
 
-msgid "Latest Modification by:"
-msgstr "Última modificación por:"
+msgid "Edited by:"
+msgstr "Editado por:"
 
-msgid "Latest Modification Date:"
-msgstr "Última fecha de modificación:"
+msgid "Edited at:"
+msgstr "Editado el:"
 
 msgid "Model: "
 msgstr "Modelo: "
@@ -270,25 +267,25 @@ msgstr "Abrir el calendario"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Creado por:"
+msgid "Created by"
+msgstr "Creado por"
 
-msgid "Creation Date"
-msgstr "Fecha creación:"
+msgid "Created at"
+msgstr "Creado el"
 
-msgid "Modification User"
-msgstr "Última modificación por:"
+msgid "Modified by"
+msgstr "Modifcador por"
 
-msgid "Modification Date"
-msgstr "Última fecha de modificación:"
+msgid "Modified at"
+msgstr "Modificado el"
 
-msgid "\"%1\" is required"
+msgid "\"%1\" is required."
 msgstr "\"%1\" es obligatorio."
 
-msgid "\"%1\" is not valid according to its domain"
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" no es válido según su dominio."
 
-msgid "The values of \"%1\" are not valid"
+msgid "The values of \"%1\" are not valid."
 msgstr "Los valores de \"%1\" no son válidos."
 
 msgid "Pre-validation"
@@ -313,10 +310,10 @@ msgid "Fuzzy"
 msgstr "Dudoso"
 
 msgid "You need to save the record before adding translations."
-msgstr "Debe guardar el registro antes de agregar traducciones."
+msgstr "Debe guardar el registro antes de añadir traducciones."
 
 msgid "No other language available."
-msgstr "No hay otros lenguajes disponibles."
+msgstr "No hay otro idioma disponible."
 
 msgid "Show"
 msgstr "Mostrar"
@@ -436,7 +433,7 @@ msgid "y"
 msgstr "a"
 
 msgid "Yes"
-msgstr "Si"
+msgstr "Sí"
 
 msgid "t"
 msgstr "v"
@@ -487,7 +484,7 @@ msgid "Write Anyway"
 msgstr "Guardar de todas formas"
 
 msgid "Application Error"
-msgstr "Error de aplicación."
+msgstr "Error de aplicación"
 
 msgid "Report Bug"
 msgstr "Informar del error"
@@ -549,17 +546,20 @@ msgstr "Fichero a importar"
 msgid "Lines to Skip:"
 msgstr "Líneas a omitir:"
 
-msgid "You must select an import file first"
-msgstr "Primero debe seleccionar el fichero a importar."
+msgid "You must select an import file first."
+msgstr "Primero debe elegir un archivo a importar."
 
-msgid "Error occured in loading the file"
-msgstr "Ha ocurrido un al cargar el fichero"
+msgid "An error occured in loading the file."
+msgstr "Ha ocurrido un error al cargar el fichero."
 
 msgid "Error processing the file at field %1."
 msgstr "Error procesando el fichero en el campo %1."
 
 msgid "Error"
 msgstr "Error"
+
+msgid "Error occured in loading the file"
+msgstr "Ha ocurrido un al cargar el fichero"
 
 msgid "CSV Export: %1"
 msgstr "Exportación CSV: %1"
@@ -589,7 +589,7 @@ msgid "%1 (record name)"
 msgstr "%1 (nombre del registro)"
 
 msgid "What is the name of this export?"
-msgstr "Cuál es el nombre de esta exportación?"
+msgstr "¿Cuál es el nombre de esta exportación?"
 
 msgid "Override %1 definition?"
 msgstr "Queréis sobrescribir la definición de %1?"

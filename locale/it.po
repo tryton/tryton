@@ -84,7 +84,7 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr "server non raggiungibile"
 
 msgid "Login"
@@ -95,9 +95,6 @@ msgstr ""
 
 msgid "Database"
 msgstr "Database"
-
-msgid "Unable to reach the server."
-msgstr "server non raggiungibile"
 
 msgid "Switch view"
 msgstr "cambia visualizzazione"
@@ -180,17 +177,21 @@ msgstr "va selezionato un record"
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "creato da:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Crea..."
 
-msgid "Creation Date:"
-msgstr "creato il:"
+#, fuzzy
+msgid "Created at:"
+msgstr "creato il "
 
-msgid "Latest Modification by:"
-msgstr "ultima modifica da:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Crea..."
 
-msgid "Latest Modification Date:"
-msgstr "ultima modifica il:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Data di modifica "
 
 msgid "Model: "
 msgstr "Modello: "
@@ -221,7 +222,7 @@ msgid "Remove this bookmark"
 msgstr "rimuovere questo segnalibro"
 
 msgid "Bookmark this filter"
-msgstr "contrassegnare questo filtro "
+msgstr "contrassegnare questo filtro"
 
 msgid "Bookmark Name:"
 msgstr "Nome segnalibro"
@@ -253,33 +254,38 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "creato da"
-
-msgid "Creation Date"
-msgstr "creato il "
+#, fuzzy
+msgid "Created by"
+msgstr "Crea..."
 
 #, fuzzy
-msgid "Modification User"
-msgstr "utente modifica "
+msgid "Created at"
+msgstr "creato il "
 
-msgid "Modification Date"
+msgid "Modified by"
+msgstr ""
+
+#, fuzzy
+msgid "Modified at"
 msgstr "Data di modifica "
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" è obbligatorio"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" non è valido rispetto al dominio"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "i valori di \"%1\" non sono validi"
 
 msgid "Pre-validation"
 msgstr "pre-validazione"
 
 msgid ":"
-msgstr ": "
+msgstr ":"
 
 msgid "Translate"
 msgstr "Traduci"
@@ -379,7 +385,7 @@ msgid ", "
 msgstr ", "
 
 msgid ",…"
-msgstr ",… "
+msgstr ",…"
 
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -415,7 +421,7 @@ msgid "s"
 msgstr "s"
 
 msgid "By: "
-msgstr "per:"
+msgstr "per: "
 
 msgid "y"
 msgstr "y"
@@ -427,7 +433,7 @@ msgid "t"
 msgstr "t"
 
 msgid "Message: "
-msgstr "messaggio"
+msgstr "messaggio: "
 
 msgid "Warning: "
 msgstr "Attenzione: "
@@ -442,13 +448,13 @@ msgid "No"
 msgstr "no"
 
 msgid "Confirmation: "
-msgstr "conferma"
+msgstr "conferma: "
 
 msgid "Concurrency Exception"
 msgstr "eccezione di concorrenza"
 
 msgid "Write Concurrency Warning: "
-msgstr "scrivi avviso di concorrenza"
+msgstr "scrivi avviso di concorrenza: "
 
 msgid "This record has been modified while you were editing it."
 msgstr "il record è stato modificato durante la scrittura"
@@ -457,10 +463,10 @@ msgid "Choose:"
 msgstr "scegliere:"
 
 msgid "\"Cancel\" to cancel saving;"
-msgstr "\"cancel\" per annullare il salvataggio"
+msgstr "\"cancel\" per annullare il salvataggio;"
 
 msgid "\"Compare\" to see the modified version;"
-msgstr "\"compare\" per vedere la versione modificata"
+msgstr "\"compare\" per vedere la versione modificata;"
 
 msgid "\"Write Anyway\" to save your current version."
 msgstr "\"write anyway\" per salvare la versione corrente"
@@ -535,10 +541,12 @@ msgstr "file da importare"
 msgid "Lines to Skip:"
 msgstr "righe da saltare"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "va prima selezionato un file da importare"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "si è verificato un errore nel caricamento del file"
 
 msgid "Error processing the file at field %1."
@@ -546,6 +554,9 @@ msgstr "errore nell'elaborazione del file nel campo %1"
 
 msgid "Error"
 msgstr "Errore"
+
+msgid "Error occured in loading the file"
+msgstr "si è verificato un errore nel caricamento del file"
 
 msgid "CSV Export: %1"
 msgstr ""

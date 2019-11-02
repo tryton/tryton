@@ -41,10 +41,10 @@ msgid "Save"
 msgstr "Desa"
 
 msgid "Switch"
-msgstr "Canvia"
+msgstr "Canvia la vista"
 
 msgid "Reload/Undo"
-msgstr "Refresca/Desfés"
+msgstr "Recarrega/Desfés"
 
 msgid "Duplicate"
 msgstr "Duplica"
@@ -56,7 +56,7 @@ msgid "Previous"
 msgstr "Anterior"
 
 msgid "Next"
-msgstr "Registre següent"
+msgstr "Següent"
 
 msgid "Search"
 msgstr "Cerca"
@@ -100,20 +100,17 @@ msgstr "Dreceres globals"
 msgid "Tab shortcuts"
 msgstr "Dreceres de la pestanya"
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr "No s'ha pogut connectar amb el servidor."
 
 msgid "Login"
-msgstr "Identificació"
+msgstr "Usuari"
 
 msgid "User name"
 msgstr "Nom d'usuari"
 
 msgid "Database"
 msgstr "Base de dades"
-
-msgid "Unable to reach the server."
-msgstr "No s'ha pogut connectar amb el servidor."
 
 msgid "Switch view"
 msgstr "Canvia la vista"
@@ -122,7 +119,7 @@ msgid "Previous Record"
 msgstr "Registre anterior"
 
 msgid "Next Record"
-msgstr "Següent registre"
+msgstr "Registre següent"
 
 msgid "Create a new record"
 msgstr "Crea un nou registre"
@@ -140,7 +137,7 @@ msgid "Show revisions..."
 msgstr "Mostra revisions..."
 
 msgid "Add an attachment to the record"
-msgstr "Afegeix un adjunt en el registre"
+msgstr "Afegeix un adjunt al registre"
 
 msgid "Add a note to the record"
 msgstr "Afegeix una nota al registre"
@@ -171,11 +168,11 @@ msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Aquest registre ha estat modificat mentre l'editàveu\n"
-"el voleu desar?"
+"Aquest registre ha estat modificat.\n"
+"Voleu desar-lo?"
 
 msgid "Record saved."
-msgstr "Registre desat"
+msgstr "Registre desat."
 
 msgid "Working now on the duplicated record(s)."
 msgstr "Està treballant amb un registre(s) duplicat."
@@ -187,31 +184,31 @@ msgid "Are you sure to remove those records?"
 msgstr "Esteu segur que voleu eliminar aquests registres?"
 
 msgid "Records removed."
-msgstr "Registres eliminats"
+msgstr "Registres eliminats."
 
 msgid "Records not removed."
-msgstr "Registres no eliminats"
+msgstr "Els registres no s'han eliminat."
 
 msgid "You have to select one record."
-msgstr "Ha de seleccionar un registre"
+msgstr "Ha de seleccionar un registre."
 
 msgid "ID:"
 msgstr "Identificador:"
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr "Creat per:"
 
-msgid "Creation Date:"
-msgstr "Data creació:"
+msgid "Created at:"
+msgstr "Creat el:"
 
-msgid "Latest Modification by:"
-msgstr "Última modificació per:"
+msgid "Edited by:"
+msgstr "Editat per:"
 
-msgid "Latest Modification Date:"
-msgstr "Última data de modificació:"
+msgid "Edited at:"
+msgstr "Editat el:"
 
 msgid "Model: "
-msgstr "Model:"
+msgstr "Model: "
 
 msgid "Add..."
 msgstr "Afegeix..."
@@ -241,7 +238,7 @@ msgid "Bookmark this filter"
 msgstr "Desa com a cerca preferida"
 
 msgid "Bookmark Name:"
-msgstr "Nom de la cerca preferida"
+msgstr "Nom de la cerca preferida:"
 
 msgid "Show active records"
 msgstr "Mostra registres actius"
@@ -270,25 +267,25 @@ msgstr "Obre el calendari"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Creat per:"
+msgid "Created by"
+msgstr "Creat per"
 
-msgid "Creation Date"
-msgstr "Data creació:"
+msgid "Created at"
+msgstr "Creat el"
 
-msgid "Modification User"
+msgid "Modified by"
 msgstr "Modificat per"
 
-msgid "Modification Date"
-msgstr "Última data de modificació:"
+msgid "Modified at"
+msgstr "Modificat el"
 
-msgid "\"%1\" is required"
+msgid "\"%1\" is required."
 msgstr "\"%1\" és obligatori."
 
-msgid "\"%1\" is not valid according to its domain"
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" no és vàlid segons el seu domini."
 
-msgid "The values of \"%1\" are not valid"
+msgid "The values of \"%1\" are not valid."
 msgstr "Els valors de \"%1\" no són vàlids."
 
 msgid "Pre-validation"
@@ -304,7 +301,7 @@ msgid "Cancel"
 msgstr "Cancel·la"
 
 msgid "OK"
-msgstr "OK"
+msgstr "D'acord"
 
 msgid "Edit"
 msgstr "Edita"
@@ -436,10 +433,10 @@ msgid "y"
 msgstr "a"
 
 msgid "Yes"
-msgstr "Sí"
+msgstr "Si"
 
 msgid "t"
-msgstr "c"
+msgstr "v"
 
 msgid "Message: "
 msgstr "Missatge: "
@@ -487,7 +484,7 @@ msgid "Write Anyway"
 msgstr "Desa de totes formes"
 
 msgid "Application Error"
-msgstr "Error d'aplicació."
+msgstr "Error d'aplicació"
 
 msgid "Report Bug"
 msgstr "Informa de l'error"
@@ -529,7 +526,7 @@ msgid "CSV Parameters"
 msgstr "Paràmetres CSV"
 
 msgid "Delimiter:"
-msgstr "Separador de camp:"
+msgstr "Separador:"
 
 msgid "Quote Char:"
 msgstr "Delimitador de text:"
@@ -549,17 +546,20 @@ msgstr "Fitxer a importar"
 msgid "Lines to Skip:"
 msgstr "Línies a ometre:"
 
-msgid "You must select an import file first"
+msgid "You must select an import file first."
 msgstr "Primer heu de seleccionar un fitxer a importar."
 
-msgid "Error occured in loading the file"
-msgstr "S'ha produït un error al carregar el fitxer"
+msgid "An error occured in loading the file."
+msgstr "S'ha produït un error al carregar el fitxer."
 
 msgid "Error processing the file at field %1."
 msgstr "S'ha produït un error al processar el fitxer al camp %1."
 
 msgid "Error"
 msgstr "Error"
+
+msgid "Error occured in loading the file"
+msgstr "S'ha produït un error al carregar el fitxer"
 
 msgid "CSV Export: %1"
 msgstr "Exportació CSV: %1"
@@ -592,7 +592,7 @@ msgid "What is the name of this export?"
 msgstr "Quin és el nom d'aquesta exportació?"
 
 msgid "Override %1 definition?"
-msgstr "Voleu sobreescriure la definició %1? "
+msgstr "Voleu sobreescriure la definició %1?"
 
 msgid "Wizard"
 msgstr "Assistent"

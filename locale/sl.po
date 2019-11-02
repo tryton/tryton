@@ -86,8 +86,8 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
-msgstr "Ni se mogoče povezati s strežnikom"
+msgid "Unable to reach the server."
+msgstr "Ni se mogoče povezati s strežnikom."
 
 msgid "Login"
 msgstr "Prijava"
@@ -97,9 +97,6 @@ msgstr "Uporabniško ime"
 
 msgid "Database"
 msgstr "Podatkovna baza"
-
-msgid "Unable to reach the server."
-msgstr "Ni se mogoče povezati s strežnikom."
 
 msgid "Switch view"
 msgstr "Preklopi pogled"
@@ -184,17 +181,21 @@ msgstr "En zapis mora biti izbran."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "Ustvaril:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Izdelaj ..."
 
-msgid "Creation Date:"
-msgstr "Ustvarjeno:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Ustvarjeno"
 
-msgid "Latest Modification by:"
-msgstr "Nazadnje popravil:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Izdelaj ..."
 
-msgid "Latest Modification Date:"
-msgstr "Nazadnje popravljeno:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Popravljeno"
 
 msgid "Model: "
 msgstr "Model: "
@@ -257,25 +258,31 @@ msgstr ""
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Ustvaril"
+#, fuzzy
+msgid "Created by"
+msgstr "Izdelaj ..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "Ustvarjeno"
 
-msgid "Modification User"
-msgstr "Popravil"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "Popravljeno"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "Polje \"%1\" je obvezno"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "Polje \"%1\" ni veljavno glede na svojo domeno"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "Vrednosti polja \"%1\" niso veljavne"
 
 msgid "Pre-validation"
@@ -429,7 +436,7 @@ msgid "t"
 msgstr "d"
 
 msgid "Message: "
-msgstr "Sporočilo:"
+msgstr "Sporočilo: "
 
 msgid "Warning: "
 msgstr "Opozorilo: "
@@ -536,10 +543,12 @@ msgstr "Datoteka za uvoz"
 msgid "Lines to Skip:"
 msgstr "Izpuščene vrstice:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "Najprej je potrebno izbrati datoteko za uvoz"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "Pri nalaganju datoteke je prišlo do napake"
 
 msgid "Error processing the file at field %1."
@@ -547,6 +556,9 @@ msgstr "Napaka pri obdelavi datoteke pri polju %1."
 
 msgid "Error"
 msgstr "Napaka"
+
+msgid "Error occured in loading the file"
+msgstr "Pri nalaganju datoteke je prišlo do napake"
 
 msgid "CSV Export: %1"
 msgstr ""

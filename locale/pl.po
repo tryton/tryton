@@ -98,8 +98,8 @@ msgstr "Skróty globalne"
 msgid "Tab shortcuts"
 msgstr "Skróty kart"
 
-msgid "Unable to reach the server"
-msgstr "Brak dostępu do serwera"
+msgid "Unable to reach the server."
+msgstr "Brak dostępu do serwera."
 
 msgid "Login"
 msgstr "Login"
@@ -109,9 +109,6 @@ msgstr "Nazwa użytkownika"
 
 msgid "Database"
 msgstr "Baza danych"
-
-msgid "Unable to reach the server."
-msgstr "Brak dostępu do serwera."
 
 msgid "Switch view"
 msgstr "Przełącz widok"
@@ -196,17 +193,21 @@ msgstr "Musisz wybrać jeden rekord."
 msgid "ID:"
 msgstr "ID:"
 
-msgid "Creation User:"
-msgstr "Utworzył:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Utwórz..."
 
-msgid "Creation Date:"
-msgstr "Data utworzenia:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Data utworzenia"
 
-msgid "Latest Modification by:"
-msgstr "Autor ostatniej modyfikacji:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Utwórz..."
 
-msgid "Latest Modification Date:"
-msgstr "Data ostatniej modyfikacji:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Data modyfikacji"
 
 msgid "Model: "
 msgstr "Model: "
@@ -269,25 +270,31 @@ msgstr "Otwórz kalendarz"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Utworzył"
+#, fuzzy
+msgid "Created by"
+msgstr "Utwórz..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "Data utworzenia"
 
-msgid "Modification User"
-msgstr "Zmodyfikował"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "Data modyfikacji"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" jest wymagany"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" jest nieprawidłowy pod względem swojej domeny"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "Wartości \"%1\" nie są prawidłowe"
 
 msgid "Pre-validation"
@@ -550,10 +557,12 @@ msgstr "Plik do zaimportowania"
 msgid "Lines to Skip:"
 msgstr "Wiersze do ominięcia:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "Najpierw wybierz plik do zaimportowania"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "Błąd ładowania pliku"
 
 msgid "Error processing the file at field %1."
@@ -561,6 +570,9 @@ msgstr "Błąd przetwarzania pliku w polu %1."
 
 msgid "Error"
 msgstr "Błąd"
+
+msgid "Error occured in loading the file"
+msgstr "Błąd ładowania pliku"
 
 msgid "CSV Export: %1"
 msgstr "Eksport do CSV: %1"

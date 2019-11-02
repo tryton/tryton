@@ -85,7 +85,7 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
 
 msgid "Login"
@@ -96,9 +96,6 @@ msgstr "ຊື່ຜູ້ໃຊ້"
 
 msgid "Database"
 msgstr "ຖານຂໍ້ມູນ"
-
-msgid "Unable to reach the server."
-msgstr "ບໍ່ສາມາດເຂົ້າເຖິງແມ່ຂ່າຍໄດ້"
 
 msgid "Switch view"
 msgstr "ສະຫຼັບໜ້າເບິ່ງ"
@@ -183,20 +180,24 @@ msgstr "ທ່ານຕ້ອງເລືອກເອົາໜຶ່ງແຖວ
 msgid "ID:"
 msgstr "ເລກກຳກັບ:"
 
-msgid "Creation User:"
-msgstr "ການສ້າງຜູ້ໃຊ້ງານ:"
+#, fuzzy
+msgid "Created by:"
+msgstr "ສ້າງ..."
 
-msgid "Creation Date:"
-msgstr "ການສ້າງວັນທີ:"
+#, fuzzy
+msgid "Created at:"
+msgstr "ວັນທີສ້າງ"
 
-msgid "Latest Modification by:"
-msgstr "ການແກ້ໄຂລ້າສຸດ ໂດຍ:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "ສ້າງ..."
 
-msgid "Latest Modification Date:"
-msgstr "ວັນທີການແກ້ໄຂລ້າສຸດ:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "ວັນທີແກ້ໄຂ"
 
 msgid "Model: "
-msgstr "ແມ່ແບບ:"
+msgstr "ແມ່ແບບ: "
 
 msgid "Add..."
 msgstr ""
@@ -256,25 +257,31 @@ msgstr ""
 msgid "ID"
 msgstr "ເລກລຳດັບ"
 
-msgid "Creation User"
-msgstr "ຜູ້ສ້າງ"
+#, fuzzy
+msgid "Created by"
+msgstr "ສ້າງ..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "ວັນທີສ້າງ"
 
-msgid "Modification User"
-msgstr "ຜູ້ແກ້ໄຂ"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "ວັນທີແກ້ໄຂ"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "ຕ້ອງໃຫ້ມີ \"%1\""
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" ບໍ່ມີຄ່າທີ່ຖຶກຕ້ອງກັບ ໂດເມນຂອງມັນ"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "ຄ່າ ຂອງ \"%1\" ນີ້ ບໍ່ຖືກຕ້ອງ"
 
 msgid "Pre-validation"
@@ -428,10 +435,10 @@ msgid "t"
 msgstr "ຈ"
 
 msgid "Message: "
-msgstr "ຂໍ້ຄວາມ:"
+msgstr "ຂໍ້ຄວາມ: "
 
 msgid "Warning: "
-msgstr "ຄຳເຕືອນ:"
+msgstr "ຄຳເຕືອນ: "
 
 msgid "Always ignore this warning."
 msgstr "ບໍ່ສົນກັບຄຳເຕືອນນີ້."
@@ -443,13 +450,13 @@ msgid "No"
 msgstr "ບໍ່"
 
 msgid "Confirmation: "
-msgstr "ຄຳຢັ້ງຢືນ:"
+msgstr "ຄຳຢັ້ງຢືນ: "
 
 msgid "Concurrency Exception"
 msgstr "ຍົກເວັ້ນສະກຸນເງິນ"
 
 msgid "Write Concurrency Warning: "
-msgstr "ຂຽນຄຳເຕືອນສະກຸນເງິນ:"
+msgstr "ຂຽນຄຳເຕືອນສະກຸນເງິນ: "
 
 msgid "This record has been modified while you were editing it."
 msgstr "ແຖວຂໍ້ມູນນີ້ຖືກດັດແປງແລ້ວໃນຂະນະທີ່ທ່ານແກ້ໄຂມັນ."
@@ -535,10 +542,12 @@ msgstr "ຟາຍລ໌ທີ່ຈະນຳເຂົ້າ"
 msgid "Lines to Skip:"
 msgstr "ແຖວທີ່ຈະຂວ້າມ:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "ທ່ານຕ້ອງໄດ້ເລືອກຟາຍລ໌ທີ່ຈະນຳເຂົ້ານັ້ນກ່ອນ"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "ມີຂໍ້ຜິດພາດເກີດຂຶ້ນໃນການດຶງເອົາຟາຍລ໌"
 
 msgid "Error processing the file at field %1."
@@ -546,6 +555,9 @@ msgstr "ມີຂໍ້ຜິດພາດໃນການປະມວນຜົນ
 
 msgid "Error"
 msgstr "ຜິດພາດ"
+
+msgid "Error occured in loading the file"
+msgstr "ມີຂໍ້ຜິດພາດເກີດຂຶ້ນໃນການດຶງເອົາຟາຍລ໌"
 
 msgid "CSV Export: %1"
 msgstr ""

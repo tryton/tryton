@@ -86,8 +86,8 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
-msgstr "无法连接到服务器"
+msgid "Unable to reach the server."
+msgstr "无法连接到服务器."
 
 msgid "Login"
 msgstr "登录"
@@ -97,9 +97,6 @@ msgstr ""
 
 msgid "Database"
 msgstr "服务标识:"
-
-msgid "Unable to reach the server."
-msgstr "无法连接到服务器."
 
 msgid "Switch view"
 msgstr "切换视图"
@@ -182,20 +179,24 @@ msgstr "选择需要操作的项目"
 msgid "ID:"
 msgstr "标识:"
 
-msgid "Creation User:"
-msgstr "创建者:"
+#, fuzzy
+msgid "Created by:"
+msgstr "新建..."
 
-msgid "Creation Date:"
-msgstr "创建日期:"
+#, fuzzy
+msgid "Created at:"
+msgstr "创建日期"
 
-msgid "Latest Modification by:"
-msgstr "最近更改:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "新建..."
 
-msgid "Latest Modification Date:"
-msgstr "最近更改日期:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "修改日期"
 
 msgid "Model: "
-msgstr "模型:"
+msgstr "模型: "
 
 msgid "Add..."
 msgstr ""
@@ -255,25 +256,31 @@ msgstr ""
 msgid "ID"
 msgstr "标识"
 
-msgid "Creation User"
-msgstr "创建者"
+#, fuzzy
+msgid "Created by"
+msgstr "新建..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "创建日期"
 
-msgid "Modification User"
-msgstr "修改者"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "修改日期"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" 是必填项"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "根据域设置，\"%1\" 不可用"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "无法获得\"%1\" 的值"
 
 msgid "Pre-validation"
@@ -289,7 +296,7 @@ msgid "Cancel"
 msgstr "取消"
 
 msgid "OK"
-msgstr "确定"
+msgstr ""
 
 msgid "Edit"
 msgstr ""
@@ -431,10 +438,10 @@ msgid "t"
 msgstr "t"
 
 msgid "Message: "
-msgstr "信息:"
+msgstr "信息: "
 
 msgid "Warning: "
-msgstr "警告:"
+msgstr "警告: "
 
 msgid "Always ignore this warning."
 msgstr "下次不再提示."
@@ -446,16 +453,16 @@ msgid "No"
 msgstr "否"
 
 msgid "Confirmation: "
-msgstr "确认:"
+msgstr "确认: "
 
 msgid "Concurrency Exception"
 msgstr "并行操作异常"
 
 msgid "Write Concurrency Warning: "
-msgstr "同步操作警告:"
+msgstr "同步操作警告: "
 
 msgid "This record has been modified while you were editing it."
-msgstr "当前数据已经被其他操作更改."
+msgstr "在你编辑的时候，这条记录已经被更改."
 
 msgid "Choose:"
 msgstr "选择："
@@ -464,10 +471,10 @@ msgid "\"Cancel\" to cancel saving;"
 msgstr "\"取消\" 不保存;"
 
 msgid "\"Compare\" to see the modified version;"
-msgstr " \"对比\" 查看变更的数据;"
+msgstr "\"对比\" 查看变更的数据;"
 
 msgid "\"Write Anyway\" to save your current version."
-msgstr " \"覆写\" 保存当前数据."
+msgstr "\"覆写\" 保存当前数据."
 
 msgid "Compare"
 msgstr "对比"
@@ -541,16 +548,19 @@ msgstr ""
 msgid "Lines to Skip:"
 msgstr ""
 
-msgid "You must select an import file first"
+msgid "You must select an import file first."
 msgstr ""
 
-msgid "Error occured in loading the file"
+msgid "An error occured in loading the file."
 msgstr ""
 
 msgid "Error processing the file at field %1."
 msgstr ""
 
 msgid "Error"
+msgstr ""
+
+msgid "Error occured in loading the file"
 msgstr ""
 
 msgid "CSV Export: %1"

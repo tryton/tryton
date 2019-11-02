@@ -84,7 +84,7 @@ msgstr ""
 msgid "Tab shortcuts"
 msgstr ""
 
-msgid "Unable to reach the server"
+msgid "Unable to reach the server."
 msgstr ""
 
 msgid "Login"
@@ -94,9 +94,6 @@ msgid "User name"
 msgstr ""
 
 msgid "Database"
-msgstr ""
-
-msgid "Unable to reach the server."
 msgstr ""
 
 msgid "Switch view"
@@ -178,16 +175,16 @@ msgstr ""
 msgid "ID:"
 msgstr ""
 
-msgid "Creation User:"
+msgid "Created by:"
 msgstr ""
 
-msgid "Creation Date:"
+msgid "Created at:"
 msgstr ""
 
-msgid "Latest Modification by:"
+msgid "Edited by:"
 msgstr ""
 
-msgid "Latest Modification Date:"
+msgid "Edited at:"
 msgstr ""
 
 msgid "Model: "
@@ -250,25 +247,25 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-msgid "Creation User"
+msgid "Created by"
 msgstr ""
 
-msgid "Creation Date"
+msgid "Created at"
 msgstr ""
 
-msgid "Modification User"
+msgid "Modified by"
 msgstr ""
 
-msgid "Modification Date"
+msgid "Modified at"
 msgstr ""
 
-msgid "\"%1\" is required"
+msgid "\"%1\" is required."
 msgstr ""
 
-msgid "\"%1\" is not valid according to its domain"
+msgid "\"%1\" is not valid according to its domain."
 msgstr ""
 
-msgid "The values of \"%1\" are not valid"
+msgid "The values of \"%1\" are not valid."
 msgstr ""
 
 msgid "Pre-validation"
@@ -533,16 +530,19 @@ msgstr ""
 msgid "Lines to Skip:"
 msgstr ""
 
-msgid "You must select an import file first"
+msgid "You must select an import file first."
 msgstr ""
 
-msgid "Error occured in loading the file"
+msgid "An error occured in loading the file."
 msgstr ""
 
 msgid "Error processing the file at field %1."
 msgstr ""
 
 msgid "Error"
+msgstr ""
+
+msgid "Error occured in loading the file"
 msgstr ""
 
 msgid "CSV Export: %1"

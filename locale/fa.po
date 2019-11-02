@@ -97,8 +97,8 @@ msgstr "کلید های میانبر سراسری"
 msgid "Tab shortcuts"
 msgstr "کلید های میانبر برگه"
 
-msgid "Unable to reach the server"
-msgstr "امکان دسترسی به سرور وجود ندارد"
+msgid "Unable to reach the server."
+msgstr "امکان دسترسی به سرور وجود ندارد."
 
 msgid "Login"
 msgstr "ورود"
@@ -108,9 +108,6 @@ msgstr "نام کاربری"
 
 msgid "Database"
 msgstr "پایگاه داده"
-
-msgid "Unable to reach the server."
-msgstr "امکان دسترسی به سرور وجود ندارد."
 
 msgid "Switch view"
 msgstr "تعویض نمایه"
@@ -195,17 +192,21 @@ msgstr "شما باید یک پرونده را انتخاب کنید."
 msgid "ID:"
 msgstr "شناسه :"
 
-msgid "Creation User:"
-msgstr "ایجاد کاربر :"
+#, fuzzy
+msgid "Created by:"
+msgstr "ایجاد..."
 
-msgid "Creation Date:"
-msgstr "تاريخ ايجاد :"
+#, fuzzy
+msgid "Created at:"
+msgstr "تاریخ ایجاد"
 
-msgid "Latest Modification by:"
-msgstr "آخرین تغییرات بوسیله :"
+#, fuzzy
+msgid "Edited by:"
+msgstr "ایجاد..."
 
-msgid "Latest Modification Date:"
-msgstr "تاریخ آخرین تغییرات :"
+#, fuzzy
+msgid "Edited at:"
+msgstr "تاریخ اصلاح"
 
 msgid "Model: "
 msgstr "مدل : "
@@ -268,25 +269,31 @@ msgstr "بازکردن تقویم"
 msgid "ID"
 msgstr "شناسه"
 
-msgid "Creation User"
-msgstr "ایجاد کاربر"
+#, fuzzy
+msgid "Created by"
+msgstr "ایجاد..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "تاریخ ایجاد"
 
-msgid "Modification User"
-msgstr "کاربر اصلاح کننده"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "تاریخ اصلاح"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" مورد نیاز است"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" با توجه به دامنه آن معتبر نیست"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "مقادیر \"%1\" معتبر نیستند"
 
 msgid "Pre-validation"
@@ -549,10 +556,12 @@ msgstr "فایل برای واردکردن"
 msgid "Lines to Skip:"
 msgstr "چشم پوشی ازخطوط:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "شما باید ابتدا فایل ورودی را انتخاب کنید"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "خطا هنگام بارگیری فایل"
 
 msgid "Error processing the file at field %1."
@@ -560,6 +569,9 @@ msgstr "خطای پردازش فایل واقع در فیلد : \"%1\"."
 
 msgid "Error"
 msgstr "خطا"
+
+msgid "Error occured in loading the file"
+msgstr "خطا هنگام بارگیری فایل"
 
 msgid "CSV Export: %1"
 msgstr "صادرکردن (CSV) : 1%"

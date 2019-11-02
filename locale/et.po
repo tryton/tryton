@@ -90,8 +90,8 @@ msgstr "Globaalsed otseteed"
 msgid "Tab shortcuts"
 msgstr "Vahelehe otseteed"
 
-msgid "Unable to reach the server"
-msgstr "Serverit ei leita"
+msgid "Unable to reach the server."
+msgstr "Serverit ei leita."
 
 msgid "Login"
 msgstr "Logi sisse"
@@ -101,9 +101,6 @@ msgstr "Kasutaja nimi"
 
 msgid "Database"
 msgstr "Andmebaas"
-
-msgid "Unable to reach the server."
-msgstr "Serverit ei leita."
 
 msgid "Switch view"
 msgstr "Vaheta vaadet"
@@ -188,20 +185,24 @@ msgstr "Aktiveeri üks kirje."
 msgid "ID:"
 msgstr "ID"
 
-msgid "Creation User:"
-msgstr "Looja:"
+#, fuzzy
+msgid "Created by:"
+msgstr "Loo..."
 
-msgid "Creation Date:"
-msgstr "Loomise kuupäev:"
+#, fuzzy
+msgid "Created at:"
+msgstr "Loomise kuupäev"
 
-msgid "Latest Modification by:"
-msgstr "Muutja:"
+#, fuzzy
+msgid "Edited by:"
+msgstr "Loo..."
 
-msgid "Latest Modification Date:"
-msgstr "Muutmise kuupäev:"
+#, fuzzy
+msgid "Edited at:"
+msgstr "Muutmise kuupäev"
 
 msgid "Model: "
-msgstr "Mudel:"
+msgstr "Mudel: "
 
 msgid "Add..."
 msgstr "Lisa..."
@@ -260,25 +261,31 @@ msgstr "Ava kalender"
 msgid "ID"
 msgstr "ID"
 
-msgid "Creation User"
-msgstr "Looja"
+#, fuzzy
+msgid "Created by"
+msgstr "Loo..."
 
-msgid "Creation Date"
+#, fuzzy
+msgid "Created at"
 msgstr "Loomise kuupäev"
 
-msgid "Modification User"
-msgstr "Muutja"
+msgid "Modified by"
+msgstr ""
 
-msgid "Modification Date"
+#, fuzzy
+msgid "Modified at"
 msgstr "Muutmise kuupäev"
 
-msgid "\"%1\" is required"
+#, fuzzy
+msgid "\"%1\" is required."
 msgstr "\"%1\" on nõutud"
 
-msgid "\"%1\" is not valid according to its domain"
+#, fuzzy
+msgid "\"%1\" is not valid according to its domain."
 msgstr "\"%1\" ei ole kehtiv selle domeeni jaoks"
 
-msgid "The values of \"%1\" are not valid"
+#, fuzzy
+msgid "The values of \"%1\" are not valid."
 msgstr "Väärtused \"%1\" ei ole kehtivad"
 
 msgid "Pre-validation"
@@ -432,10 +439,10 @@ msgid "t"
 msgstr ""
 
 msgid "Message: "
-msgstr "Teade:"
+msgstr "Teade: "
 
 msgid "Warning: "
-msgstr "Hoiatus:"
+msgstr "Hoiatus: "
 
 msgid "Always ignore this warning."
 msgstr "Eira alati seda hoiatust."
@@ -447,7 +454,7 @@ msgid "No"
 msgstr "Ei"
 
 msgid "Confirmation: "
-msgstr "Kinnitus:"
+msgstr "Kinnitus: "
 
 msgid "Concurrency Exception"
 msgstr ""
@@ -539,10 +546,12 @@ msgstr "Impordi fail"
 msgid "Lines to Skip:"
 msgstr "Jäta vahele read:"
 
-msgid "You must select an import file first"
+#, fuzzy
+msgid "You must select an import file first."
 msgstr "Vali imporditav fail"
 
-msgid "Error occured in loading the file"
+#, fuzzy
+msgid "An error occured in loading the file."
 msgstr "Faili laadimisel tekkis viga"
 
 msgid "Error processing the file at field %1."
@@ -550,6 +559,9 @@ msgstr "Faili töötlemisel tekkis väljal %1 viga."
 
 msgid "Error"
 msgstr "Viga"
+
+msgid "Error occured in loading the file"
+msgstr "Faili laadimisel tekkis viga"
 
 msgid "CSV Export: %1"
 msgstr "CSV eksport: %1"
