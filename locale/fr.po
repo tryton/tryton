@@ -7,8 +7,3 @@ msgid "You cannot change the password of LDAP user \"%(user)s\"."
 msgstr ""
 "Vous ne pouvez pas changer le mot de passe de l'utilisateur LDAP "
 "« %(user)s »."
-
-msgctxt "error:res.user:"
-msgid "You can not set the password of ldap user \"%s\"."
-msgstr ""
-"Vous ne pouvez pas définir le mot de passe de l'utilisateur LDAP « %s »."
