@@ -18,21 +18,9 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:production.work,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:production.work,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr "Ciclos"
-
-msgctxt "field:production.work,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
@@ -41,14 +29,6 @@ msgstr "Operação"
 msgctxt "field:production.work,production:"
 msgid "Production"
 msgstr "Produção"
-
-msgctxt "field:production.work,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:production.work,sequence:"
-msgid "Sequence"
-msgstr "Sequência"
 
 msgctxt "field:production.work,state:"
 msgid "State"
@@ -65,18 +45,6 @@ msgstr "Centro de Trabalho"
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
 msgstr "Categoria de Centro de Trabalho"
-
-msgctxt "field:production.work,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:production.work,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
-msgctxt "field:production.work.center,active:"
-msgid "Active"
-msgstr "Ativo"
 
 msgctxt "field:production.work.center,category:"
 msgid "Category"
@@ -98,18 +66,6 @@ msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
 msgstr "Preço de Custo"
 
-msgctxt "field:production.work.center,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:production.work.center,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:production.work.center,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.work.center,name:"
 msgid "Name"
 msgstr "Nome"
@@ -118,73 +74,21 @@ msgctxt "field:production.work.center,parent:"
 msgid "Parent"
 msgstr "Pai"
 
-msgctxt "field:production.work.center,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
 msgstr "Almoxarifado"
-
-msgctxt "field:production.work.center,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:production.work.center,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
-msgctxt "field:production.work.center.category,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:production.work.center.category,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:production.work.center.category,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Nome"
 
-msgctxt "field:production.work.center.category,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:production.work.center.category,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:production.work.center.category,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "Custo"
 
-msgctxt "field:production.work.cycle,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:production.work.cycle,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "Duração"
-
-msgctxt "field:production.work.cycle,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:production.work.cycle,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -193,18 +97,6 @@ msgstr "Estado"
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr "Trabalho"
-
-msgctxt "field:production.work.cycle,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:production.work.cycle,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
-
-msgctxt "help:production.work.center,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarque para não usar futuramente."
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_work_center_category_list"
@@ -250,6 +142,20 @@ msgstr "Running"
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "Waiting"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
@@ -358,23 +264,3 @@ msgstr "Rascunho"
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "Em execução"
-
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:production.work.cycle:"
-msgid "Do"
-msgstr "Executar"
-
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr "Executar"
-
-msgctxt "view:production.work:"
-msgid "Work"
-msgstr "Trabalho"
-
-msgctxt "view:production.work:"
-msgid "Works"
-msgstr "Trabalhos"

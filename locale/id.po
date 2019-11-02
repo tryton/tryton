@@ -12,11 +12,11 @@ msgstr ""
 
 msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
-msgstr "Categoría de centro de trabajo"
+msgstr ""
 
 msgctxt "field:production.work,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:production.work,production:"
 msgid "Production"
-msgstr ""
+msgstr "Produksi"
 
 msgctxt "field:production.work,state:"
 msgid "State"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:production.work,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:production.work,work_center:"
 msgid "Work Center"
@@ -44,47 +44,47 @@ msgstr ""
 
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
-msgstr "Categoría de centro de trabajo"
+msgstr ""
 
 msgctxt "field:production.work.center,category:"
 msgid "Category"
-msgstr ""
+msgstr "Kategori"
 
 msgctxt "field:production.work.center,children:"
 msgid "Children"
-msgstr ""
+msgstr "Cabang"
 
 msgctxt "field:production.work.center,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:production.work.center,cost_method:"
 msgid "Cost Method"
-msgstr "Método de costo"
+msgstr ""
 
 msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
-msgstr "Precio de costo"
+msgstr ""
 
 msgctxt "field:production.work.center,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:production.work.center,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Induk"
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Gudang"
 
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nama"
 
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
-msgstr "Costo"
+msgstr ""
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
@@ -98,10 +98,9 @@ msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categoría de centro de trabajo"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_work_center_list"
 msgid "Work Centers"
@@ -151,12 +150,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
-msgstr ""
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
-msgstr "Realizar"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
@@ -164,20 +162,19 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_work"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_center"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_work_cycle"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_center_category_list"
 msgid "Work Center Categories"
-msgstr "Categoría de centro de trabajo"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_work_center_list"
 msgid "Work Centers"
@@ -201,7 +198,7 @@ msgstr ""
 
 msgctxt "model:production.work.center.category,name:"
 msgid "Work Center Category"
-msgstr "Categoría de centro de trabajo"
+msgstr ""
 
 msgctxt "model:production.work.cycle,name:"
 msgid "Work Cycle"

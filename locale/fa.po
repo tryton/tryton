@@ -18,21 +18,9 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "شرکت"
 
-msgctxt "field:production.work,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:production.work,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr "چرخه"
-
-msgctxt "field:production.work,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:production.work,operation:"
 msgid "Operation"
@@ -41,14 +29,6 @@ msgstr "عملگر"
 msgctxt "field:production.work,production:"
 msgid "Production"
 msgstr "تهیه کننده"
-
-msgctxt "field:production.work,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:production.work,sequence:"
-msgid "Sequence"
-msgstr "ادامه"
 
 msgctxt "field:production.work,state:"
 msgid "State"
@@ -65,18 +45,6 @@ msgstr "مرکز کار"
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
 msgstr "دسته بندی مرکز کار"
-
-msgctxt "field:production.work,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:production.work,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:production.work.center,active:"
-msgid "Active"
-msgstr "فعال"
 
 msgctxt "field:production.work.center,category:"
 msgid "Category"
@@ -98,18 +66,6 @@ msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
 msgstr "ارزش بها"
 
-msgctxt "field:production.work.center,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:production.work.center,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:production.work.center,id:"
-msgid "ID"
-msgstr "شناسه"
-
 msgctxt "field:production.work.center,name:"
 msgid "Name"
 msgstr "نام"
@@ -118,73 +74,21 @@ msgctxt "field:production.work.center,parent:"
 msgid "Parent"
 msgstr "منبع"
 
-msgctxt "field:production.work.center,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
 msgstr "انبار"
-
-msgctxt "field:production.work.center,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:production.work.center,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "field:production.work.center.category,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:production.work.center.category,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
-msgctxt "field:production.work.center.category,id:"
-msgid "ID"
-msgstr "شناسه"
 
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "نام"
 
-msgctxt "field:production.work.center.category,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
-
-msgctxt "field:production.work.center.category,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:production.work.center.category,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr "هزینه"
 
-msgctxt "field:production.work.cycle,create_date:"
-msgid "Create Date"
-msgstr "تاریخ ایجاد"
-
-msgctxt "field:production.work.cycle,create_uid:"
-msgid "Create User"
-msgstr "کاربر ایجاد کننده"
-
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "مدت زمان"
-
-msgctxt "field:production.work.cycle,id:"
-msgid "ID"
-msgstr "شناسه"
-
-msgctxt "field:production.work.cycle,rec_name:"
-msgid "Record Name"
-msgstr "نام پرونده"
 
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
@@ -193,18 +97,6 @@ msgstr "وضعیت"
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr "کار"
-
-msgctxt "field:production.work.cycle,write_date:"
-msgid "Write Date"
-msgstr "تاریخ نوشته"
-
-msgctxt "field:production.work.cycle,write_uid:"
-msgid "Write User"
-msgstr "نوشته کاربر"
-
-msgctxt "help:production.work.center,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "برای خارج کردن از استفاده در آینده، تیک را بردارید."
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -241,6 +133,20 @@ msgstr "در حال اجرا"
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "در انتظار"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"

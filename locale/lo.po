@@ -22,24 +22,9 @@ msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
-#, fuzzy
-msgctxt "field:production.work,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:production.work,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
 msgctxt "field:production.work,cycles:"
 msgid "Cycles"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:production.work,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.work,operation:"
@@ -50,15 +35,6 @@ msgstr "ການດຳເນີນການ"
 msgctxt "field:production.work,production:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
-
-msgctxt "field:production.work,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:production.work,sequence:"
-msgid "Sequence"
-msgstr "ລໍາດັບ"
 
 #, fuzzy
 msgctxt "field:production.work,state:"
@@ -78,21 +54,6 @@ msgstr "Work Centers"
 msgctxt "field:production.work,work_center_category:"
 msgid "Work Center Category"
 msgstr "Work Center Categories"
-
-#, fuzzy
-msgctxt "field:production.work,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:production.work,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
-msgctxt "field:production.work.center,active:"
-msgid "Active"
-msgstr "ໃຊ້ຢູ່"
 
 #, fuzzy
 msgctxt "field:production.work.center,category:"
@@ -120,21 +81,6 @@ msgid "Cost Price"
 msgstr "ລາຄາຄິດໄລ່"
 
 #, fuzzy
-msgctxt "field:production.work.center,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:production.work.center,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:production.work.center,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-#, fuzzy
 msgctxt "field:production.work.center,name:"
 msgid "Name"
 msgstr "ຊື່"
@@ -144,85 +90,23 @@ msgctxt "field:production.work.center,parent:"
 msgid "Parent"
 msgstr "ຮ່ວງ"
 
-msgctxt "field:production.work.center,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:production.work.center,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:production.work.center,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-#, fuzzy
-msgctxt "field:production.work.center.category,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:production.work.center.category,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
-msgctxt "field:production.work.center.category,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
 
 #, fuzzy
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "ຊື່"
 
-msgctxt "field:production.work.center.category,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:production.work.center.category,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:production.work.center.category,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
 msgctxt "field:production.work.cycle,cost:"
 msgid "Cost"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:production.work.cycle,create_date:"
-msgid "Create Date"
-msgstr "ສ້າງວັນທີ"
-
-#, fuzzy
-msgctxt "field:production.work.cycle,create_uid:"
-msgid "Create User"
-msgstr "ສ້າງຜູ້ໃຊ້ງານ"
-
-#, fuzzy
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
 msgstr "ກຳນົດເວລາ"
-
-#, fuzzy
-msgctxt "field:production.work.cycle,id:"
-msgid "ID"
-msgstr "ເລດລຳດັບ"
-
-msgctxt "field:production.work.cycle,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:production.work.cycle,state:"
@@ -233,20 +117,6 @@ msgstr "ສະຖານະ"
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
 msgstr "ເຮັດວຽກ"
-
-#, fuzzy
-msgctxt "field:production.work.cycle,write_date:"
-msgid "Write Date"
-msgstr "ວັນທີບັນທຶກ"
-
-#, fuzzy
-msgctxt "field:production.work.cycle,write_uid:"
-msgid "Write User"
-msgstr "ສ້າງຜູ້ໃຊ້"
-
-msgctxt "help:production.work.center,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -287,6 +157,20 @@ msgstr "ກຳລັງດຳເນີນງານ"
 msgctxt "model:ir.action.act_window.domain,name:act_work_list_domain_waiting"
 msgid "Waiting"
 msgstr "Waiting"
+
+msgctxt "model:ir.message,text:msg_delete_request"
+msgid "To delete work \"%(work)s\" it must be in the \"request\" or \"draft\" state."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_do_finished_work"
+msgid "To complete production \"%(production)s\", work \"%(work)s\" must be finished."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_missing_work_center"
+msgid ""
+"Could not find a work center of category \"%(category)s\" under "
+"\"%(parent)s\"."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
@@ -402,23 +286,3 @@ msgstr "ຮ່າງກຽມ"
 msgctxt "selection:production.work.cycle,state:"
 msgid "Running"
 msgstr "ກຳລັງດຳເນີນງານ"
-
-#, fuzzy
-msgctxt "view:production.work.cycle:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "view:production.work.cycle:"
-msgid "Run"
-msgstr "ດຳເນີນງານ"
-
-#, fuzzy
-msgctxt "view:production.work:"
-msgid "Work"
-msgstr "ເຮັດວຽກ"
-
-#, fuzzy
-msgctxt "view:production.work:"
-msgid "Works"
-msgstr "ເຮັດວຽກ"
