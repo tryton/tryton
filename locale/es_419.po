@@ -6,28 +6,12 @@ msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:carrier.credential.dpd,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:carrier.credential.dpd,create_uid:"
-msgid "Create User"
-msgstr "Creado por usuario"
-
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
 msgstr "Depósito"
 
-msgctxt "field:carrier.credential.dpd,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
-msgstr ""
-
-msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:carrier.credential.dpd,server:"
@@ -42,14 +26,6 @@ msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
 msgstr ""
 
-msgctxt "field:carrier.credential.dpd,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:carrier.credential.dpd,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
 msgstr ""
@@ -60,6 +36,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"

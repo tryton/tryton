@@ -6,29 +6,13 @@ msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Société"
 
-msgctxt "field:carrier.credential.dpd,create_date:"
-msgid "Create Date"
-msgstr "Date de création"
-
-msgctxt "field:carrier.credential.dpd,create_uid:"
-msgid "Create User"
-msgstr "Créé par"
-
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
 msgstr "Dépôt"
 
-msgctxt "field:carrier.credential.dpd,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
 msgstr "Mot de passe"
-
-msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Record Name"
-msgstr "Nom de l'enregistrement"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
@@ -42,14 +26,6 @@ msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
 msgstr "ID d'utilisateur"
 
-msgctxt "field:carrier.credential.dpd,write_date:"
-msgid "Write Date"
-msgstr "Date de mise à jour"
-
-msgctxt "field:carrier.credential.dpd,write_uid:"
-msgid "Write User"
-msgstr "Mis à jour par"
-
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
 msgstr "Accréditation de DPD"
@@ -61,6 +37,12 @@ msgstr "Créer la livraison DPD pour les emballages"
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "Accréditations de DPD"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr ""
+"La connexion DPD a échoué avec les informations d'identification "
+"« %(credential)s »."
 
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""

@@ -2,90 +2,69 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
-#, fuzzy
-msgctxt "field:carrier.credential.dpd,create_date:"
-msgid "Create Date"
-msgstr "Datum"
-
-#, fuzzy
-msgctxt "field:carrier.credential.dpd,create_uid:"
-msgid "Create User"
-msgstr "Gebruiker"
-
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:carrier.credential.dpd,id:"
-msgid "ID"
-msgstr "ID"
+msgstr "Depot"
 
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
-msgstr ""
-
-msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Record Name"
-msgstr ""
+msgstr "Paswoord"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
-msgstr ""
+msgstr "Token"
 
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
-msgstr ""
+msgstr "Gebruiker ID"
 
-#, fuzzy
-msgctxt "field:carrier.credential.dpd,write_date:"
-msgid "Write Date"
-msgstr "Schrijfdatum"
-
-#, fuzzy
-msgctxt "field:carrier.credential.dpd,write_uid:"
-msgid "Write User"
-msgstr "Gebruiker"
-
-#, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
-msgstr "DPD Credentials"
+msgstr "DPD-referentie"
 
 msgctxt "model:ir.action,name:act_create_shipping_dpd_wizard"
 msgid "Create DPD Shipping for Packages"
-msgstr "Create DPD Shipping for Packages"
+msgstr "Maak een DPD-verzending voor de pakketten"
 
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "DPD Credentials"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr "DPD-aanmelding is mislukt met referentie %(credential)s\"."
 
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
 "DPD webservice call failed with the following error message:\n"
 "%(message)s"
 msgstr ""
+"DPD webservice-oproep mislukt met het volgende foutbericht:\n"
+"%(message)s"
 
 msgctxt "model:ir.message,text:msg_shipment_has_reference_number"
 msgid ""
 "You cannot create shipping for shipment \"%(shipment)s\" because it has "
 "already a reference number."
 msgstr ""
+"U kunt geen verzending voor zending \"%(shipment)s\" maken omdat deze al een"
+" referentienummer heeft."
 
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
 "To validate shipment \"%(shipment)s\" you must set an address on the "
 "warehouse \"%(warehouse)s\"."
 msgstr ""
+"Om zending \"%(shipment)s\" te valideren, moet u een adres in het magazijn "
+"\"%(warehouse)s\"  instellen."
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
@@ -93,16 +72,16 @@ msgstr "DPD Credentials"
 
 msgctxt "selection:carrier,shipping_service:"
 msgid "DPD"
-msgstr ""
+msgstr "DPD"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Production"
-msgstr ""
+msgstr "Productie"
 
 msgctxt "selection:carrier.credential.dpd,server:"
 msgid "Testing"
-msgstr ""
+msgstr "testen"
 
 msgctxt "view:carrier.credential.dpd:"
 msgid "Credential Information"
-msgstr ""
+msgstr "Referentiegegevens"

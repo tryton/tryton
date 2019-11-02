@@ -6,29 +6,13 @@ msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Firma"
 
-msgctxt "field:carrier.credential.dpd,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:carrier.credential.dpd,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
 msgstr ""
 
-msgctxt "field:carrier.credential.dpd,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
 msgstr "Hasło"
-
-msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
@@ -41,14 +25,6 @@ msgstr "Token"
 msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
 msgstr "ID użytkownika"
-
-msgctxt "field:carrier.credential.dpd,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:carrier.credential.dpd,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 #, fuzzy
 msgctxt "model:carrier.credential.dpd,name:"
@@ -63,6 +39,10 @@ msgstr "Create DPD Shipping for Packages"
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "DPD Credentials"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""

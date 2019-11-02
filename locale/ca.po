@@ -6,29 +6,13 @@ msgctxt "field:carrier.credential.dpd,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:carrier.credential.dpd,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:carrier.credential.dpd,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
 msgctxt "field:carrier.credential.dpd,depot:"
 msgid "Depot"
 msgstr "Dipòsit"
 
-msgctxt "field:carrier.credential.dpd,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:carrier.credential.dpd,password:"
 msgid "Password"
 msgstr "Contrasenya"
-
-msgctxt "field:carrier.credential.dpd,rec_name:"
-msgid "Record Name"
-msgstr "Nom del registre"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
@@ -42,14 +26,6 @@ msgctxt "field:carrier.credential.dpd,user_id:"
 msgid "User ID"
 msgstr "Identificador usuari"
 
-msgctxt "field:carrier.credential.dpd,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:carrier.credential.dpd,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
 msgctxt "model:carrier.credential.dpd,name:"
 msgid "DPD Credential"
 msgstr "Credencial DPD"
@@ -61,6 +37,10 @@ msgstr "Crea enviaments DPD per paquets"
 msgctxt "model:ir.action,name:act_dpd_credential_form"
 msgid "DPD Credentials"
 msgstr "Credencials DPD"
+
+msgctxt "model:ir.message,text:msg_dpd_login_error"
+msgid "DPD login failed with credential \"%(credential)s\"."
+msgstr "La identificació DPD ha fallat amb les credencials \"%(credential)s\"."
 
 msgctxt "model:ir.message,text:msg_dpd_webservice_error"
 msgid ""
@@ -76,7 +56,7 @@ msgid ""
 "already a reference number."
 msgstr ""
 "No podeu crear el enviament per l'albarà \"%(shipment)s\" perquè ja té un "
-"número de referència. "
+"número de referència."
 
 msgctxt "model:ir.message,text:msg_warehouse_address_required"
 msgid ""
