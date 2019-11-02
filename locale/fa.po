@@ -333,3 +333,13 @@ msgstr "ارزیابی سپرده"
 msgctxt "selection:account.tax,unece_code:"
 msgid "Value added tax"
 msgstr "مالیات ارزش افزوده"
+
+#, fuzzy
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "کد UNECE"
+
+#, fuzzy
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "کد UNECE"

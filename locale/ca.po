@@ -342,3 +342,11 @@ msgstr "Dipòsit de valoració"
 msgctxt "selection:account.tax,unece_code:"
 msgid "Value added tax"
 msgstr "Impost sobre el valor afegit"
+
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "UNECE"
+
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "UNECE"

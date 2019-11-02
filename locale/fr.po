@@ -344,3 +344,11 @@ msgstr "Dépôt de garantie"
 msgctxt "selection:account.tax,unece_code:"
 msgid "Value added tax"
 msgstr "Taxe sur la valeur ajoutée"
+
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "CEE-ONU"
+
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "CEE-ONU"

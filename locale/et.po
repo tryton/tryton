@@ -335,3 +335,13 @@ msgstr ""
 msgctxt "selection:account.tax,unece_code:"
 msgid "Value added tax"
 msgstr "Käibemaks"
+
+#, fuzzy
+msgctxt "view:account.tax.template:"
+msgid "UNECE"
+msgstr "UNECE kood"
+
+#, fuzzy
+msgctxt "view:account.tax:"
+msgid "UNECE"
+msgstr "UNECE kood"
