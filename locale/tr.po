@@ -32,14 +32,6 @@ msgctxt "field:account.account,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.account,credit:"
 msgid "Credit"
 msgstr ""
@@ -73,10 +65,6 @@ msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "General Ledger - Lines"
 
-msgctxt "field:account.account,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.account,left:"
 msgid "Left"
 msgstr ""
@@ -95,10 +83,6 @@ msgstr ""
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr ""
-
-msgctxt "field:account.account,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.account,reconcile:"
@@ -143,46 +127,12 @@ msgid "Type"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.account,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
 msgstr "Accounts"
 
-msgctxt "field:account.account-account.tax,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account-account.tax,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.account-account.tax,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.account-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.account-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account-account.tax,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
@@ -196,14 +146,6 @@ msgstr ""
 
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
-msgstr ""
-
-msgctxt "field:account.account.deferral,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account.deferral,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.account.deferral,credit:"
@@ -227,29 +169,12 @@ msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Fiscal Years"
 
-msgctxt "field:account.account.deferral,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.account.deferral,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
 msgstr ""
 
 msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.account.deferral,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account.deferral,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.account.template,childs:"
@@ -266,14 +191,6 @@ msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "Kod"
 
-msgctxt "field:account.account.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
 msgstr ""
@@ -287,10 +204,6 @@ msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "General Ledger - Lines"
 
-msgctxt "field:account.account.template,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.account.template,name:"
 msgid "Name"
 msgstr ""
@@ -301,10 +214,6 @@ msgstr ""
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr ""
-
-msgctxt "field:account.account.template,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.account.template,reconcile:"
@@ -327,48 +236,15 @@ msgctxt "field:account.account.template,type:"
 msgid "Type"
 msgstr ""
 
-msgctxt "field:account.account.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account.template-account.tax.template,account:"
 msgid "Account Template"
 msgstr "Account Templates"
 
-msgctxt "field:account.account.template-account.tax.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account.template-account.tax.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.account.template-account.tax.template,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.account.template-account.tax.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
 msgstr "Taxes Templates"
-
-#, fuzzy
-msgctxt "field:account.account.template-account.tax.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account.template-account.tax.template,write_uid:"
-msgid "Write User"
-msgstr ""
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
@@ -390,14 +266,6 @@ msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.account.type,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account.type,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -406,10 +274,6 @@ msgstr ""
 msgctxt "field:account.account.type,expense:"
 msgid "Expense"
 msgstr "Expense"
-
-msgctxt "field:account.account.type,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.account.type,name:"
 msgid "Name"
@@ -424,10 +288,6 @@ msgctxt "field:account.account.type,payable:"
 msgid "Payable"
 msgstr "Payable"
 
-msgctxt "field:account.account.type,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account.type,receivable:"
 msgid "Receivable"
@@ -437,10 +297,6 @@ msgstr "Receivable"
 msgctxt "field:account.account.type,revenue:"
 msgid "Revenue"
 msgstr "Revenue"
-
-msgctxt "field:account.account.type,sequence:"
-msgid "Sequence"
-msgstr ""
 
 msgctxt "field:account.account.type,statement:"
 msgid "Statement"
@@ -460,15 +316,6 @@ msgctxt "field:account.account.type,template_override:"
 msgid "Override Template"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.account.type,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account.type,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.account.type.template,assets:"
 msgid "Assets"
 msgstr ""
@@ -477,22 +324,10 @@ msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
 msgstr ""
 
-msgctxt "field:account.account.type.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.account.type.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account.type.template,expense:"
 msgid "Expense"
 msgstr "Expense"
-
-msgctxt "field:account.account.type.template,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
@@ -507,10 +342,6 @@ msgctxt "field:account.account.type.template,payable:"
 msgid "Payable"
 msgstr "Payable"
 
-msgctxt "field:account.account.type.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.account.type.template,receivable:"
 msgid "Receivable"
@@ -521,10 +352,6 @@ msgctxt "field:account.account.type.template,revenue:"
 msgid "Revenue"
 msgstr "Revenue"
 
-msgctxt "field:account.account.type.template,sequence:"
-msgid "Sequence"
-msgstr ""
-
 msgctxt "field:account.account.type.template,statement:"
 msgid "Statement"
 msgstr ""
@@ -534,15 +361,6 @@ msgctxt "field:account.account.type.template,stock:"
 msgid "Stock"
 msgstr "Stock"
 
-#, fuzzy
-msgctxt "field:account.account.type.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.account.type.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
 msgstr ""
@@ -551,28 +369,12 @@ msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.aged_balance,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.aged_balance,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-msgctxt "field:account.aged_balance,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr ""
-
-msgctxt "field:account.aged_balance,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.aged_balance,term0:"
@@ -591,25 +393,12 @@ msgctxt "field:account.aged_balance,term3:"
 msgid "Third Term"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.aged_balance,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.aged_balance,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
 msgstr ""
 
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
-msgstr ""
-
-msgctxt "field:account.aged_balance.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.aged_balance.context,posted:"
@@ -652,10 +441,6 @@ msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:account.balance_sheet.comparision.context,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.balance_sheet.comparision.context,posted:"
 msgid "Posted Move"
 msgstr ""
@@ -668,20 +453,8 @@ msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
 msgstr ""
 
-msgctxt "field:account.balance_sheet.context,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Move"
-msgstr ""
-
-msgctxt "field:account.configuration,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.configuration,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.configuration,default_account_payable:"
@@ -692,37 +465,20 @@ msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
 msgstr ""
 
-msgctxt "field:account.configuration,id:"
-msgid "ID"
+msgctxt "field:account.configuration,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
 msgstr ""
 
-msgctxt "field:account.configuration,rec_name:"
-msgid "Record Name"
+msgctxt "field:account.configuration,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
 msgstr ""
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.configuration,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.configuration,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.configuration.default_account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.configuration.default_account,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.configuration.default_account,default_account_payable:"
@@ -734,21 +490,18 @@ msgctxt ""
 msgid "Default Account Receivable"
 msgstr ""
 
-msgctxt "field:account.configuration.default_account,id:"
-msgid "ID"
+msgctxt "field:account.configuration.default_tax_rule,company:"
+msgid "Company"
 msgstr ""
 
-msgctxt "field:account.configuration.default_account,rec_name:"
-msgid "Record Name"
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_customer_tax_rule:"
+msgid "Default Customer Tax Rule"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.configuration.default_account,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.configuration.default_account,write_uid:"
-msgid "Write User"
+msgctxt ""
+"field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
+msgid "Default Supplier Tax Rule"
 msgstr ""
 
 msgctxt "field:account.configuration.tax_rounding,company:"
@@ -760,33 +513,8 @@ msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
 msgstr "Configuration"
 
-msgctxt "field:account.configuration.tax_rounding,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.configuration.tax_rounding,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.configuration.tax_rounding,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.configuration.tax_rounding,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
 msgid "Method"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.configuration.tax_rounding,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.configuration.tax_rounding,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
@@ -796,10 +524,6 @@ msgstr "Account Templates"
 
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.create_chart.account,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.create_chart.properties,account_payable:"
@@ -814,24 +538,8 @@ msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.create_chart.properties,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.create_chart.start,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.fiscalyear,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.fiscalyear,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.fiscalyear,end_date:"
@@ -840,10 +548,6 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
-msgstr ""
-
-msgctxt "field:account.fiscalyear,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.fiscalyear,name:"
@@ -859,25 +563,12 @@ msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
 msgstr ""
 
-msgctxt "field:account.fiscalyear,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
 msgstr ""
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.fiscalyear,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.fiscalyear,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
@@ -897,10 +588,6 @@ msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Fiscal Years"
 
-msgctxt "field:account.fiscalyear.balance_non_deferral.start,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
@@ -917,10 +604,6 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear.renew.start,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:account.fiscalyear.renew.start,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.fiscalyear.renew.start,name:"
@@ -950,14 +633,6 @@ msgstr "Kod"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.general_ledger.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.general_ledger.account,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.general_ledger.account,credit:"
@@ -994,20 +669,12 @@ msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
 msgstr "General Ledger - Lines"
 
-msgctxt "field:account.general_ledger.account,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr ""
 
 msgctxt "field:account.general_ledger.account,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.general_ledger.account,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.general_ledger.account,start_balance:"
@@ -1030,15 +697,6 @@ msgctxt "field:account.general_ledger.account,type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.general_ledger.account,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.general_ledger.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
 msgstr ""
@@ -1054,10 +712,6 @@ msgstr "Fiscal Years"
 
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
-msgstr ""
-
-msgctxt "field:account.general_ledger.account.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.general_ledger.account.context,posted:"
@@ -1085,14 +739,6 @@ msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.general_ledger.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.general_ledger.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr ""
@@ -1111,10 +757,6 @@ msgstr ""
 
 msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.general_ledger.line,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.general_ledger.line,move:"
@@ -1137,21 +779,8 @@ msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
 msgstr ""
 
-msgctxt "field:account.general_ledger.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.general_ledger.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.general_ledger.line,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.general_ledger.line.context,company:"
@@ -1169,10 +798,6 @@ msgstr "Fiscal Years"
 
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
-msgstr ""
-
-msgctxt "field:account.general_ledger.line.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
@@ -1225,10 +850,6 @@ msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
 msgstr ""
 
-msgctxt "field:account.income_statement.context,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
 msgstr ""
@@ -1249,10 +870,6 @@ msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
 msgstr ""
 
-msgctxt "field:account.journal,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
 msgstr ""
@@ -1261,14 +878,6 @@ msgstr ""
 msgctxt "field:account.journal,code:"
 msgid "Code"
 msgstr "Kod"
-
-msgctxt "field:account.journal,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.journal,create_uid:"
-msgid "Create User"
-msgstr ""
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
@@ -1282,16 +891,8 @@ msgctxt "field:account.journal,debit:"
 msgid "Debit"
 msgstr ""
 
-msgctxt "field:account.journal,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.journal,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.journal,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.journal,sequence:"
@@ -1306,45 +907,16 @@ msgctxt "field:account.journal,type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.journal,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.journal,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.journal.open_cash.context,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:account.journal.open_cash.context,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
 msgstr ""
 
-msgctxt "field:account.journal.period,active:"
-msgid "Active"
-msgstr ""
-
-msgctxt "field:account.journal.period,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.journal.period,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr ""
-
-msgctxt "field:account.journal.period,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1357,37 +929,12 @@ msgctxt "field:account.journal.period,period:"
 msgid "Period"
 msgstr "Periods"
 
-msgctxt "field:account.journal.period,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.journal.period,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.journal.period,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.journal.period,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.journal.sequence,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.journal.sequence,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.journal.sequence,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.journal.sequence,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1395,33 +942,12 @@ msgctxt "field:account.journal.sequence,journal:"
 msgid "Journal"
 msgstr "Journals"
 
-msgctxt "field:account.journal.sequence,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.journal.sequence,sequence:"
 msgid "Sequence"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.journal.sequence,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.journal.sequence,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.move,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.move,date:"
@@ -1430,10 +956,6 @@ msgstr ""
 
 msgctxt "field:account.move,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1466,29 +988,12 @@ msgctxt "field:account.move,post_number:"
 msgid "Post Number"
 msgstr ""
 
-msgctxt "field:account.move,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.move,state:"
 msgid "State"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.move,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move.cancel.default,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1512,14 +1017,6 @@ msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
 msgstr ""
 
-msgctxt "field:account.move.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr ""
@@ -1538,10 +1035,6 @@ msgstr ""
 
 msgctxt "field:account.move.line,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move.line,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1586,10 +1079,6 @@ msgctxt "field:account.move.line,period:"
 msgid "Period"
 msgstr "Periods"
 
-msgctxt "field:account.move.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
 msgstr ""
@@ -1619,21 +1108,8 @@ msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
 msgstr "Tax Lines"
 
-#, fuzzy
-msgctxt "field:account.move.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move.line.group.start,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1650,20 +1126,8 @@ msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "field:account.move.line.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.line.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.move.line.template,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move.line.template,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.move.line.template,move:"
@@ -1682,27 +1146,10 @@ msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
 msgstr ""
 
-msgctxt "field:account.move.line.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
 msgstr "Taxes"
-
-#, fuzzy
-msgctxt "field:account.move.line.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.line.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.move.open_journal.ask,id:"
-msgid "ID"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:account.move.open_journal.ask,journal:"
@@ -1722,10 +1169,6 @@ msgctxt "field:account.move.print_general_journal.start,from_date:"
 msgid "From Date"
 msgstr ""
 
-msgctxt "field:account.move.print_general_journal.start,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
 msgstr ""
@@ -1734,20 +1177,8 @@ msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
 msgstr ""
 
-msgctxt "field:account.move.reconcile.write_off,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.move.reconcile.write_off,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.reconcile.write_off,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
@@ -1758,10 +1189,6 @@ msgctxt "field:account.move.reconcile.write_off,debit_account:"
 msgid "Debit Account"
 msgstr ""
 
-msgctxt "field:account.move.reconcile.write_off,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.move.reconcile.write_off,journal:"
 msgid "Journal"
@@ -1769,19 +1196,6 @@ msgstr "Journals"
 
 msgctxt "field:account.move.reconcile.write_off,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.move.reconcile.write_off,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.reconcile.write_off,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.reconcile.write_off,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
@@ -1804,22 +1218,10 @@ msgctxt "field:account.move.reconcile_lines.writeoff,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:account.move.reconcile_lines.writeoff,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
 msgstr "Write-Off"
-
-msgctxt "field:account.move.reconciliation,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.reconciliation,create_uid:"
-msgid "Create User"
-msgstr ""
 
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
@@ -1827,10 +1229,6 @@ msgstr ""
 
 msgctxt "field:account.move.reconciliation,delegate_to:"
 msgid "Delegate To"
-msgstr ""
-
-msgctxt "field:account.move.reconciliation,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.move.reconciliation,lines:"
@@ -1841,33 +1239,8 @@ msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:account.move.reconciliation,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.reconciliation,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.reconciliation,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.move.template,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.move.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.template,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.move.template,date:"
@@ -1876,10 +1249,6 @@ msgstr ""
 
 msgctxt "field:account.move.template,description:"
 msgid "Description"
-msgstr ""
-
-msgctxt "field:account.move.template,id:"
-msgid "ID"
 msgstr ""
 
 #, fuzzy
@@ -1899,27 +1268,6 @@ msgctxt "field:account.move.template,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:account.move.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.move.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.move.template.create.keywords,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.move.template.create.template,id:"
-msgid "ID"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
@@ -1930,20 +1278,8 @@ msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
 msgstr "Templates"
 
-msgctxt "field:account.move.template.keyword,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.move.template.keyword,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
-msgstr ""
-
-msgctxt "field:account.move.template.keyword,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.move.template.keyword,move:"
@@ -1954,16 +1290,8 @@ msgctxt "field:account.move.template.keyword,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:account.move.template.keyword,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
-msgstr ""
-
-msgctxt "field:account.move.template.keyword,sequence:"
-msgid "Sequence"
 msgstr ""
 
 msgctxt "field:account.move.template.keyword,string:"
@@ -1975,22 +1303,9 @@ msgid "Type"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.move.template.keyword,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.move.template.keyword,write_uid:"
-msgid "Write User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Fiscal Years"
-
-msgctxt "field:account.open_chart.start,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
@@ -1998,14 +1313,6 @@ msgstr ""
 
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.period,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.period,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.period,end_date:"
@@ -2021,20 +1328,12 @@ msgctxt "field:account.period,icon:"
 msgid "Icon"
 msgstr ""
 
-msgctxt "field:account.period,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.period,name:"
 msgid "Name"
 msgstr ""
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr ""
-
-msgctxt "field:account.period,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.period,start_date:"
@@ -2047,15 +1346,6 @@ msgstr ""
 
 msgctxt "field:account.period,type:"
 msgid "Type"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.period,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.period,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
@@ -2080,10 +1370,6 @@ msgctxt "field:account.reconcile.show,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:account.reconcile.show,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
 msgstr ""
@@ -2105,10 +1391,6 @@ msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "field:account.tax,active:"
-msgid "Active"
-msgstr ""
-
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
 msgstr ""
@@ -2119,14 +1401,6 @@ msgstr ""
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.tax,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.tax,credit_base_amount:"
@@ -2157,10 +1431,6 @@ msgctxt "field:account.tax,group:"
 msgid "Group"
 msgstr ""
 
-msgctxt "field:account.tax,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
 msgstr ""
@@ -2189,14 +1459,6 @@ msgctxt "field:account.tax,rate:"
 msgid "Rate"
 msgstr ""
 
-msgctxt "field:account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.tax,sequence:"
-msgid "Sequence"
-msgstr ""
-
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
 msgstr ""
@@ -2216,15 +1478,6 @@ msgstr ""
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.tax.code,active:"
@@ -2248,14 +1501,6 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.tax.code,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.code,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -2268,10 +1513,6 @@ msgctxt "field:account.tax.code,end_date:"
 msgid "End Date"
 msgstr ""
 
-msgctxt "field:account.tax.code,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.code,lines:"
 msgid "Lines"
 msgstr ""
@@ -2282,10 +1523,6 @@ msgstr ""
 
 msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
-msgstr ""
-
-msgctxt "field:account.tax.code,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.tax.code,start_date:"
@@ -2301,15 +1538,6 @@ msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.code,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.code,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
 msgstr ""
@@ -2319,24 +1547,8 @@ msgctxt "field:account.tax.code.line,code:"
 msgid "Code"
 msgstr "Kod"
 
-msgctxt "field:account.tax.code.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.code.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.code.line,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.code.line,operator:"
 msgid "Operator"
-msgstr ""
-
-msgctxt "field:account.tax.code.line,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.tax.code.line,tax:"
@@ -2356,15 +1568,6 @@ msgctxt "field:account.tax.code.line,type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.code.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.code.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.tax.code.line.template,amount:"
 msgid "Amount"
 msgstr ""
@@ -2374,24 +1577,8 @@ msgctxt "field:account.tax.code.line.template,code:"
 msgid "Code"
 msgstr "Kod"
 
-msgctxt "field:account.tax.code.line.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.code.line.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.code.line.template,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.code.line.template,operator:"
 msgid "Operator"
-msgstr ""
-
-msgctxt "field:account.tax.code.line.template,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.tax.code.line.template,tax:"
@@ -2403,22 +1590,9 @@ msgid "Type"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.tax.code.line.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.code.line.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Fiscal Years"
-
-msgctxt "field:account.tax.code.open_chart.start,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
@@ -2443,24 +1617,12 @@ msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
 msgstr "Kod"
 
-msgctxt "field:account.tax.code.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.code.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
 msgstr ""
 
 msgctxt "field:account.tax.code.template,end_date:"
 msgid "End Date"
-msgstr ""
-
-msgctxt "field:account.tax.code.template,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.tax.code.template,lines:"
@@ -2475,21 +1637,8 @@ msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
 msgstr ""
 
-msgctxt "field:account.tax.code.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.tax.code.template,start_date:"
 msgid "Start Date"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax.code.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.code.template,write_uid:"
-msgid "Write User"
 msgstr ""
 
 #, fuzzy
@@ -2497,37 +1646,12 @@ msgctxt "field:account.tax.group,code:"
 msgid "Code"
 msgstr "Kod"
 
-msgctxt "field:account.tax.group,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.group,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.group,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.group,kind:"
 msgid "Kind"
 msgstr ""
 
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
-msgstr ""
-
-msgctxt "field:account.tax.group,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax.group,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.group,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:account.tax.line,amount:"
@@ -2538,28 +1662,12 @@ msgctxt "field:account.tax.line,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:account.tax.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
 
-msgctxt "field:account.tax.line,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
-msgstr ""
-
-msgctxt "field:account.tax.line,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.tax.line,tax:"
@@ -2570,37 +1678,12 @@ msgctxt "field:account.tax.line,type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
 msgstr ""
 
-msgctxt "field:account.tax.line.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.line.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.line.template,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr ""
-
-msgctxt "field:account.tax.line.template,rec_name:"
-msgid "Record Name"
 msgstr ""
 
 msgctxt "field:account.tax.line.template,tax:"
@@ -2611,29 +1694,8 @@ msgctxt "field:account.tax.line.template,type:"
 msgid "Type"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.line.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.line.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr ""
-
-msgctxt "field:account.tax.rule,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.rule,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.rule,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.tax.rule,kind:"
@@ -2648,10 +1710,6 @@ msgctxt "field:account.tax.rule,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:account.tax.rule,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
@@ -2662,30 +1720,9 @@ msgid "Override Template"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.tax.rule,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.rule,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line,create_uid:"
-msgid "Create User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "Tax Groups"
-
-msgctxt "field:account.tax.rule.line,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.tax.rule.line,keep_origin:"
 msgid "Keep Origin"
@@ -2695,16 +1732,8 @@ msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
 msgstr ""
 
-msgctxt "field:account.tax.rule.line,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line,sequence:"
-msgid "Sequence"
 msgstr ""
 
 msgctxt "field:account.tax.rule.line,tax:"
@@ -2721,30 +1750,9 @@ msgid "Override Template"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.tax.rule.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.rule.line,write_uid:"
-msgid "Write User"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
 msgstr "Tax Groups"
-
-msgctxt "field:account.tax.rule.line.template,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,keep_origin:"
 msgid "Keep Origin"
@@ -2754,16 +1762,8 @@ msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
 msgstr ""
 
-msgctxt "field:account.tax.rule.line.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
-msgstr ""
-
-msgctxt "field:account.tax.rule.line.template,sequence:"
-msgid "Sequence"
 msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,tax:"
@@ -2771,30 +1771,9 @@ msgid "Substitution Tax"
 msgstr ""
 
 #, fuzzy
-msgctxt "field:account.tax.rule.line.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.rule.line.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
-#, fuzzy
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
 msgstr "Account Templates"
-
-msgctxt "field:account.tax.rule.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.rule.template,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:account.tax.rule.template,id:"
-msgid "ID"
-msgstr ""
 
 msgctxt "field:account.tax.rule.template,kind:"
 msgid "Kind"
@@ -2808,27 +1787,10 @@ msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
 msgstr ""
 
-msgctxt "field:account.tax.rule.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:account.tax.rule.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.rule.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
 msgstr "Account Templates"
-
-msgctxt "field:account.tax.template,active:"
-msgid "Active"
-msgstr ""
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
@@ -2836,14 +1798,6 @@ msgstr ""
 
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
-msgstr ""
-
-msgctxt "field:account.tax.template,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:account.tax.template,create_uid:"
-msgid "Create User"
 msgstr ""
 
 msgctxt "field:account.tax.template,credit_note_account:"
@@ -2860,10 +1814,6 @@ msgstr ""
 
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
-msgstr ""
-
-msgctxt "field:account.tax.template,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.tax.template,invoice_account:"
@@ -2886,14 +1836,6 @@ msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
 msgstr ""
 
-msgctxt "field:account.tax.template,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:account.tax.template,sequence:"
-msgid "Sequence"
-msgstr ""
-
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
 msgstr ""
@@ -2906,21 +1848,8 @@ msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:account.tax.template,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:account.tax.template,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:account.tax.test,currency:"
 msgid "Currency"
-msgstr ""
-
-msgctxt "field:account.tax.test,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:account.tax.test,quantity:"
@@ -2961,10 +1890,6 @@ msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
 msgstr ""
 
-msgctxt "field:account.tax.test.result,id:"
-msgid "ID"
-msgstr ""
-
 msgctxt "field:account.tax.test.result,legal_notice:"
 msgid "Legal Notice"
 msgstr ""
@@ -2975,14 +1900,6 @@ msgstr ""
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr ""
-
-msgctxt "field:account.update_chart.start,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:account.update_chart.succeed,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:party.party,account_payable:"
@@ -3040,41 +1957,16 @@ msgctxt "field:party.party.account,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:party.party.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:party.party.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
 msgctxt "field:party.party.account,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr ""
-
-msgctxt "field:party.party.account,id:"
-msgid "ID"
 msgstr ""
 
 msgctxt "field:party.party.account,party:"
 msgid "Party"
 msgstr ""
 
-msgctxt "field:party.party.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:party.party.account,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:party.party.account,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-msgctxt "field:party.party.account,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:account.account,closed:"
@@ -3133,6 +2025,14 @@ msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Show only posted move"
 msgstr ""
 
+msgctxt "help:account.configuration,default_customer_tax_rule:"
+msgid "Default customer tax rule for new parties."
+msgstr ""
+
+msgctxt "help:account.configuration,default_supplier_tax_rule:"
+msgid "Default supplier tax rule for new parties."
+msgstr ""
+
 msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Used as reference for fiscalyear configuration."
 msgstr ""
@@ -3151,14 +2051,6 @@ msgstr ""
 
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Show only posted move"
-msgstr ""
-
-msgctxt "help:account.journal,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
-msgctxt "help:account.journal.period,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:account.move,post_number:"
@@ -3195,20 +2087,12 @@ msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
 msgstr ""
 
-msgctxt "help:account.move.reconcile.write_off,active:"
-msgid "Uncheck to exclude from future use."
-msgstr ""
-
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines"
 msgstr ""
 
 msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
-msgstr ""
-
-msgctxt "help:account.move.template,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:account.move.template,date:"
@@ -3225,10 +2109,6 @@ msgstr ""
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
-msgstr ""
-
-msgctxt "help:account.tax,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:account.tax,amount:"
@@ -3294,10 +2174,6 @@ msgctxt "help:account.tax.rule.line.template,origin_tax:"
 msgid ""
 "If the original tax template is filled, the rule will be applied only for "
 "this tax template."
-msgstr ""
-
-msgctxt "help:account.tax.template,active:"
-msgid "Uncheck to exclude from future use."
 msgstr ""
 
 msgctxt "help:party.party,customer_tax_rule:"
@@ -3366,6 +2242,11 @@ msgstr "Account Configuration"
 msgctxt "model:account.configuration.default_account,name:"
 msgid "Account Configuration Default Account"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.configuration.default_tax_rule,name:"
+msgid "Account Configuration Default Tax Rule"
+msgstr "Account Configuration"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
@@ -5185,10 +4066,6 @@ msgctxt "view:account.journal.period:"
 msgid "Re-Open"
 msgstr "Re-Open"
 
-msgctxt "view:account.journal:"
-msgid "General Information"
-msgstr ""
-
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
 msgstr ""
@@ -5384,27 +4261,3 @@ msgstr ""
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:account.fiscalyear-account.move.line,write_date:"
-msgid "Write Date"
-msgstr "Yazım Tarihi"
-
-#, fuzzy
-msgctxt "field:account.tax.line,code:"
-msgid "Code"
-msgstr "Kod"
-
-#, fuzzy
-msgctxt "field:account.tax.line.template,code:"
-msgid "Code"
-msgstr "Kod"
-
-#, fuzzy
-msgctxt "view:account.tax.template:"
-msgid "Code"
-msgstr "Kod"
-
-msgctxt "view:account.tax:"
-msgid "Code"
-msgstr "Kod"

@@ -2,1027 +2,940 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:account.account,active:"
 msgid "Active"
-msgstr "启用"
+msgstr "Aktif"
 
 msgctxt "field:account.account,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "第二货币金额"
+msgstr ""
 
 msgctxt "field:account.account,balance:"
 msgid "Balance"
-msgstr "结余"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.account,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:account.account,closed:"
 msgid "Closed"
-msgstr "Close"
+msgstr "Tutup"
 
-#, fuzzy
 msgctxt "field:account.account,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.account,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.account,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr "货币"
+msgstr "Mata uang"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
-msgstr "延期"
+msgstr "Penangguhan"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr "延期"
+msgstr ""
 
 msgctxt "field:account.account,end_date:"
 msgid "End Date"
-msgstr "停用日期"
+msgstr "Tanggal Akhir"
 
-#, fuzzy
 msgctxt "field:account.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "General Ledger - Lines"
+msgstr "Saldo Buku Besar"
 
 msgctxt "field:account.account,left:"
 msgid "Left"
-msgstr ""
+msgstr "Kiri"
 
-#, fuzzy
 msgctxt "field:account.account,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.account,note:"
 msgid "Note"
-msgstr "注释"
+msgstr "Catatan"
 
-#, fuzzy
 msgctxt "field:account.account,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "Pihak yang Dibutuhkan"
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
-msgstr "对账"
+msgstr ""
 
 msgctxt "field:account.account,replaced_by:"
 msgid "Replaced By"
-msgstr ""
+msgstr "Digantikan Oleh"
 
 msgctxt "field:account.account,right:"
 msgid "Right"
-msgstr ""
+msgstr "Kanan"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr "第二货币"
+msgstr ""
 
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
+msgstr ""
 
 msgctxt "field:account.account,start_date:"
 msgid "Start Date"
-msgstr "启用日期"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.account,taxes:"
 msgid "Default Taxes"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.account,template_override:"
 msgid "Override Template"
-msgstr "覆盖模版"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
-#, fuzzy
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
-#, fuzzy
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.account.deferral,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "第二货币金额"
+msgstr ""
 
 msgctxt "field:account.account.deferral,balance:"
 msgid "Balance"
-msgstr "余额"
+msgstr "Saldo"
 
 msgctxt "field:account.account.deferral,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.account.deferral,currency:"
 msgid "Currency"
-msgstr "货币"
+msgstr "Mata Uang"
 
 msgctxt "field:account.account.deferral,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.account.deferral,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.account.deferral,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
-msgstr "第二货币"
+msgstr ""
 
 msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:account.account.template,closed:"
 msgid "Closed"
-msgstr "Close"
+msgstr "Tutup"
 
-#, fuzzy
 msgctxt "field:account.account.template,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
-msgstr "延期"
+msgstr "Penangguhan"
 
 msgctxt "field:account.account.template,end_date:"
 msgid "End Date"
-msgstr "停用日期"
+msgstr "Tanggal Akhir"
 
-#, fuzzy
 msgctxt "field:account.account.template,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "General Ledger - Lines"
+msgstr "Saldo Buku Besar"
 
-#, fuzzy
 msgctxt "field:account.account.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.account.template,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr "需要的参与对象"
+msgstr "Pihak yang Dibutuhkan"
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
-msgstr "对账"
+msgstr ""
 
 msgctxt "field:account.account.template,replaced_by:"
 msgid "Replaced By"
-msgstr "替换为"
+msgstr "Digantikan Oleh"
 
 msgctxt "field:account.account.template,start_date:"
 msgid "Start Date"
-msgstr "启用日期"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.account.template,taxes:"
 msgid "Default Taxes"
-msgstr "默认税"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.template,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
-#, fuzzy
 msgctxt "field:account.account.template-account.tax.template,account:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.template-account.tax.template,tax:"
 msgid "Tax Template"
-msgstr "Taxes Templates"
+msgstr ""
 
 msgctxt "field:account.account.type,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.account.type,amount_cmp:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.account.type,assets:"
 msgid "Assets"
-msgstr "资产"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.type,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
 msgctxt "field:account.account.type,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.type,expense:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Biaya"
 
-#, fuzzy
 msgctxt "field:account.account.type,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.account.type,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:account.account.type,payable:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Utang"
 
-#, fuzzy
 msgctxt "field:account.account.type,receivable:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Piutang"
 
-#, fuzzy
 msgctxt "field:account.account.type,revenue:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Pendapatan"
 
 msgctxt "field:account.account.type,statement:"
 msgid "Statement"
-msgstr "结算单"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.type,stock:"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Persediaan"
 
-#, fuzzy
 msgctxt "field:account.account.type,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.account.type,template_override:"
 msgid "Override Template"
-msgstr "覆盖模板"
+msgstr ""
 
 msgctxt "field:account.account.type.template,assets:"
 msgid "Assets"
-msgstr "资产"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.type.template,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,expense:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Biaya"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,payable:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Utang"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,receivable:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Piutang"
 
-#, fuzzy
 msgctxt "field:account.account.type.template,revenue:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Pendapatan"
 
 msgctxt "field:account.account.type.template,statement:"
 msgid "Statement"
-msgstr "结算单"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.account.type.template,stock:"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Persediaan"
 
 msgctxt "field:account.aged_balance,balance:"
 msgid "Balance"
-msgstr "余额"
+msgstr "Saldo"
 
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
-msgstr "现在"
+msgstr "Sekarang"
 
 msgctxt "field:account.aged_balance,term1:"
 msgid "First Term"
-msgstr "第一期限"
+msgstr "Masa Pertama"
 
 msgctxt "field:account.aged_balance,term2:"
 msgid "Second Term"
-msgstr "第二期限"
+msgstr "Masa Kedua"
 
 msgctxt "field:account.aged_balance,term3:"
 msgid "Third Term"
-msgstr "第三期限"
+msgstr "Masa Ketiga"
 
 msgctxt "field:account.aged_balance.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "field:account.aged_balance.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.aged_balance.context,term1:"
 msgid "First Term"
-msgstr "第一期限"
+msgstr "Masa Pertama"
 
 msgctxt "field:account.aged_balance.context,term2:"
 msgid "Second Term"
-msgstr "第二期限"
+msgstr "Masa Kedua"
 
 msgctxt "field:account.aged_balance.context,term3:"
 msgid "Third Term"
-msgstr "第三期限"
+msgstr "Masa Ketiga"
 
-#, fuzzy
 msgctxt "field:account.aged_balance.context,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
 msgctxt "field:account.aged_balance.context,unit:"
 msgid "Unit"
-msgstr "单位"
+msgstr "Unit"
 
 msgctxt "field:account.balance_sheet.comparision.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.balance_sheet.comparision.context,comparison:"
 msgid "Comparison"
-msgstr "比较"
+msgstr "Perbandingan"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparision.context,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.comparision.context,date_cmp:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "field:account.balance_sheet.comparision.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.balance_sheet.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.balance_sheet.context,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "field:account.balance_sheet.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.configuration,default_account_payable:"
 msgid "Default Account Payable"
-msgstr "默认付款账户"
+msgstr ""
 
 msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr "默认收款账户"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "客户税规则"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "供应商税收规则"
+msgstr ""
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
-msgstr "税收四舍五入"
+msgstr "Pembulatan Pajak"
 
 msgctxt "field:account.configuration.default_account,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.configuration.default_account,default_account_payable:"
 msgid "Default Account Payable"
-msgstr "默认付款账户"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.default_account,default_account_receivable:"
 msgid "Default Account Receivable"
-msgstr "默认收款账户"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.configuration.default_tax_rule,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "客户税规则"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "供应商税收规则"
+msgstr ""
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.configuration.tax_rounding,configuration:"
 msgid "Configuration"
-msgstr "设置"
+msgstr "Konfigurasi"
 
 msgctxt "field:account.configuration.tax_rounding,tax_rounding:"
 msgid "Method"
-msgstr "方式"
+msgstr "Metode"
 
-#, fuzzy
 msgctxt "field:account.create_chart.account,account_template:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "field:account.create_chart.account,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.create_chart.properties,account_payable:"
 msgid "Default Payable Account"
-msgstr "默认付款账户"
+msgstr ""
 
 msgctxt "field:account.create_chart.properties,account_receivable:"
 msgid "Default Receivable Account"
-msgstr "默认收款账户"
+msgstr ""
 
 msgctxt "field:account.create_chart.properties,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.fiscalyear,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.fiscalyear,end_date:"
 msgid "Ending Date"
-msgstr "结束日期"
+msgstr "Tanggal Berakhir"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear,icon:"
 msgid "Icon"
-msgstr "图标"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.fiscalyear,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear,periods:"
 msgid "Periods"
-msgstr "Periods"
+msgstr ""
 
 msgctxt "field:account.fiscalyear,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr ""
+msgstr "Urutan Pindah Buku"
 
 msgctxt "field:account.fiscalyear,start_date:"
 msgid "Starting Date"
-msgstr "开始日期"
+msgstr "Tanggal Berawal"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,credit_account:"
 msgid "Credit Account"
-msgstr "贷方帐户"
+msgstr "Akun Kredit"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,debit_account:"
 msgid "Debit Account"
-msgstr "借方帐户"
+msgstr "Akun Debit"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
 msgctxt "field:account.fiscalyear.renew.start,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.fiscalyear.renew.start,end_date:"
 msgid "End Date"
-msgstr "结束日期"
+msgstr "Tanggal Akhir"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.renew.start,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Previous Fiscalyear"
-msgstr "上一会计年度"
+msgstr ""
 
 msgctxt "field:account.fiscalyear.renew.start,reset_sequences:"
 msgid "Reset Sequences"
-msgstr "重置序列"
+msgstr ""
 
 msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "Tanggal Awal"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
-msgstr "启用"
+msgstr "Aktif"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,end_balance:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr "Saldo Akhir"
 
 msgctxt "field:account.general_ledger.account,end_credit:"
 msgid "End Credit"
-msgstr ""
+msgstr "Kredit Akhir"
 
 msgctxt "field:account.general_ledger.account,end_date:"
 msgid "End Date"
-msgstr "结束日期"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.general_ledger.account,end_debit:"
 msgid "End Debit"
-msgstr ""
+msgstr "Debit Akhir"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,general_ledger_balance:"
 msgid "General Ledger Balance"
-msgstr "General Ledger - Lines"
+msgstr "Saldo Buku Besar"
 
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Saldo Awal"
 
 msgctxt "field:account.general_ledger.account,start_credit:"
 msgid "Start Credit"
-msgstr ""
+msgstr "Kredit Awal"
 
 msgctxt "field:account.general_ledger.account,start_date:"
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "Tanggal Awal"
 
 msgctxt "field:account.general_ledger.account,start_debit:"
 msgid "Start Debit"
-msgstr ""
+msgstr "Debit Awal"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
 msgctxt "field:account.general_ledger.account.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.general_ledger.account.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Periode Akhir"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
-msgstr "从日期"
+msgstr ""
 
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.general_ledger.account.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Periode Awal"
 
 msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
-msgstr "到日期"
+msgstr "Ke Tanggal"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
-msgstr "余额"
+msgstr "Saldo"
 
 msgctxt "field:account.general_ledger.line,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "field:account.general_ledger.line,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.general_ledger.line,move:"
 msgid "Move"
-msgstr "移动"
+msgstr "Perpindahan"
 
 msgctxt "field:account.general_ledger.line,move_description:"
 msgid "Move Description"
-msgstr "移动说明"
+msgstr "Deskripsi Pindah"
 
 msgctxt "field:account.general_ledger.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:account.general_ledger.line,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
 msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "Pihak yang Dibutuhkan"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.general_ledger.line.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Periode Akhir"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.line.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
-msgstr "从日期"
+msgstr ""
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr "按参与对象累计"
+msgstr ""
 
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.general_ledger.line.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Periode Awal"
 
 msgctxt "field:account.general_ledger.line.context,to_date:"
 msgid "To Date"
-msgstr "到日期"
+msgstr "Ke Tanggal"
 
 msgctxt "field:account.income_statement.context,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.income_statement.context,comparison:"
 msgid "Comparison"
-msgstr "比较"
+msgstr "Perbandingan"
 
 msgctxt "field:account.income_statement.context,end_period:"
 msgid "End Period"
-msgstr ""
+msgstr "Periode Akhir"
 
 msgctxt "field:account.income_statement.context,end_period_cmp:"
 msgid "End Period"
-msgstr ""
+msgstr "Periode Akhir"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
-#, fuzzy
 msgctxt "field:account.income_statement.context,fiscalyear_cmp:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.income_statement.context,from_date:"
 msgid "From Date"
-msgstr "从日期"
+msgstr ""
 
 msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
-msgstr "从日期"
+msgstr ""
 
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.income_statement.context,start_period:"
 msgid "Start Period"
-msgstr ""
+msgstr "Periode Awal"
 
 msgctxt "field:account.income_statement.context,start_period_cmp:"
 msgid "Start Period"
-msgstr ""
+msgstr "Periode Awal"
 
 msgctxt "field:account.income_statement.context,to_date:"
 msgid "To Date"
-msgstr "到日期"
+msgstr "Ke Tanggal"
 
 msgctxt "field:account.income_statement.context,to_date_cmp:"
 msgid "To Date"
-msgstr "到日期"
+msgstr "Ke Tanggal"
 
 msgctxt "field:account.journal,balance:"
 msgid "Balance"
-msgstr "余额"
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "field:account.journal,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.journal,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.journal,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.journal,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.journal,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.journal,sequence:"
 msgid "Sequence"
-msgstr "序列"
+msgstr "Urutan"
 
-#, fuzzy
 msgctxt "field:account.journal,sequences:"
 msgid "Sequences"
-msgstr "序列"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.journal,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
 msgctxt "field:account.journal.open_cash.context,end_date:"
 msgid "End Date"
-msgstr "结束日期"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.journal.open_cash.context,start_date:"
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "Tanggal Awal"
 
-#, fuzzy
 msgctxt "field:account.journal.period,icon:"
 msgid "Icon"
-msgstr "图标"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.journal.period,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.journal.period,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
-#, fuzzy
 msgctxt "field:account.journal.period,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
 msgctxt "field:account.journal.sequence,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.journal.sequence,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.journal.sequence,sequence:"
 msgid "Sequence"
-msgstr "序列"
+msgstr "Urutan"
 
 msgctxt "field:account.move,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.move,date:"
 msgid "Effective Date"
-msgstr "生效日期"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
 msgctxt "field:account.move,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
 msgctxt "field:account.move,number:"
 msgid "Number"
-msgstr "编号"
+msgstr "Nomor"
 
 msgctxt "field:account.move,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
-#, fuzzy
 msgctxt "field:account.move,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
 msgctxt "field:account.move,post_date:"
 msgid "Post Date"
@@ -1032,74 +945,69 @@ msgctxt "field:account.move,post_number:"
 msgid "Post Number"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.line,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.move.line,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.move.line,amount_currency:"
 msgid "Amount Currency"
-msgstr "货币金额"
+msgstr ""
 
 msgctxt "field:account.move.line,amount_currency_digits:"
 msgid "Amount Currency Digits"
-msgstr "货币金额有效数字"
+msgstr ""
 
 msgctxt "field:account.move.line,amount_second_currency:"
 msgid "Amount Second Currency"
-msgstr "第二货币金额"
+msgstr ""
 
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
-msgstr "贷方"
+msgstr "Kredit"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.move.line,date:"
 msgid "Effective Date"
-msgstr "生效日期"
+msgstr ""
 
 msgctxt "field:account.move.line,debit:"
 msgid "Debit"
-msgstr "借方"
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "field:account.move.line,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.line,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
 msgctxt "field:account.move.line,maturity_date:"
 msgid "Maturity Date"
-msgstr "到期之日"
+msgstr "Tanggal Jatuh tempo"
 
 msgctxt "field:account.move.line,move:"
 msgid "Move"
-msgstr "移动"
+msgstr "Perpindahan"
 
 msgctxt "field:account.move.line,move_description:"
 msgid "Move Description"
-msgstr "移动说明"
+msgstr "Deskripsi Pindah"
 
 msgctxt "field:account.move.line,move_origin:"
 msgid "Move Origin"
@@ -1107,235 +1015,211 @@ msgstr ""
 
 msgctxt "field:account.move.line,move_state:"
 msgid "Move State"
-msgstr "移动状态"
+msgstr ""
 
 msgctxt "field:account.move.line,origin:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "Pihak yang Dibutuhkan"
 
-#, fuzzy
 msgctxt "field:account.move.line,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
 msgctxt "field:account.move.line,reconciliation:"
 msgid "Reconciliation"
-msgstr "对账"
+msgstr ""
 
 msgctxt "field:account.move.line,reconciliations_delegated:"
 msgid "Reconciliations Delegated"
-msgstr "委托对账"
+msgstr ""
 
 msgctxt "field:account.move.line,second_currency:"
 msgid "Second Currency"
-msgstr "第二货币"
+msgstr ""
 
 msgctxt "field:account.move.line,second_currency_digits:"
 msgid "Second Currency Digits"
-msgstr "第二货币有效数字"
+msgstr ""
 
 msgctxt "field:account.move.line,second_currency_required:"
 msgid "Second Currency Required"
-msgstr "要求的第二货币"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
-msgstr "Tax Lines"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.line.group.start,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.line.group.start,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.move.line.template,move:"
 msgid "Move"
-msgstr "移动"
+msgstr "Perpindahan"
 
 msgctxt "field:account.move.line.template,operation:"
 msgid "Operation"
-msgstr "操作"
+msgstr ""
 
 msgctxt "field:account.move.line.template,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
 msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "Pihak yang Dibutuhkan"
 
-#, fuzzy
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.open_journal.ask,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.move.open_journal.ask,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
 msgctxt "field:account.move.print_general_journal.start,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.move.print_general_journal.start,from_date:"
 msgid "From Date"
-msgstr "从日期"
+msgstr ""
 
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
-msgstr ""
+msgstr "Membukukan Perpindahan"
 
 msgctxt "field:account.move.print_general_journal.start,to_date:"
 msgid "To Date"
-msgstr "到日期"
+msgstr "Ke Tanggal"
 
 msgctxt "field:account.move.reconcile.write_off,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.move.reconcile.write_off,credit_account:"
 msgid "Credit Account"
-msgstr "贷方账户"
+msgstr "Akun Kredit"
 
 msgctxt "field:account.move.reconcile.write_off,debit_account:"
 msgid "Debit Account"
-msgstr "借方账户"
+msgstr "Akun Debit"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile.write_off,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.move.reconcile_lines.writeoff,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.reconcile_lines.writeoff,writeoff:"
 msgid "Write Off"
-msgstr "Write-Off"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.move.reconciliation,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "field:account.move.reconciliation,delegate_to:"
 msgid "Delegate To"
-msgstr "委托人"
+msgstr ""
 
 msgctxt "field:account.move.reconciliation,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.move.reconciliation,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.move.template,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
-#, fuzzy
 msgctxt "field:account.move.template,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:account.move.template,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
-#, fuzzy
 msgctxt "field:account.move.template,journal:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
-#, fuzzy
 msgctxt "field:account.move.template,keywords:"
 msgid "Keywords"
-msgstr "关键词"
+msgstr "Kata kunci"
 
 msgctxt "field:account.move.template,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.move.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,period:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
-#, fuzzy
 msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
@@ -1343,30 +1227,27 @@ msgstr ""
 
 msgctxt "field:account.move.template.keyword,move:"
 msgid "Move"
-msgstr "移动"
+msgstr "Perpindahan"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.move.template.keyword,required:"
 msgid "Required"
-msgstr "需要的"
+msgstr "Wajib"
 
 msgctxt "field:account.move.template.keyword,string:"
 msgid "String"
-msgstr "字符串"
+msgstr "String"
 
-#, fuzzy
 msgctxt "field:account.move.template.keyword,type_:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
-#, fuzzy
 msgctxt "field:account.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.open_chart.start,posted:"
 msgid "Posted Moves"
@@ -1374,383 +1255,343 @@ msgstr ""
 
 msgctxt "field:account.period,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.period,end_date:"
 msgid "Ending Date"
-msgstr "结束日期"
+msgstr "Tanggal Berakhir"
 
-#, fuzzy
 msgctxt "field:account.period,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
-#, fuzzy
 msgctxt "field:account.period,icon:"
 msgid "Icon"
-msgstr "图标"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.period,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.period,post_move_sequence:"
 msgid "Post Move Sequence"
-msgstr ""
+msgstr "Urutan Pindah Buku"
 
 msgctxt "field:account.period,start_date:"
 msgid "Starting Date"
-msgstr "开始日期"
+msgstr "Tanggal Berawal"
 
-#, fuzzy
 msgctxt "field:account.period,state:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
-#, fuzzy
 msgctxt "field:account.period,type:"
 msgid "Type"
-msgstr "类型"
+msgstr "Jenis"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.reconcile.show,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr "参与对象"
+msgstr ""
 
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
-#, fuzzy
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write Off"
-msgstr "Write-Off"
+msgstr "Penghapusan"
 
 msgctxt "field:account.reconcile.show,write_off_amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.tax,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.tax,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
 msgctxt "field:account.tax,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.tax,credit_base_amount:"
 msgid "Credit Base Amount"
-msgstr "贷方基准金额"
+msgstr ""
 
 msgctxt "field:account.tax,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "贷方通知帐户"
+msgstr ""
 
 msgctxt "field:account.tax,credit_tax_amount:"
 msgid "Credit Tax Amount"
-msgstr "贷方税额"
+msgstr ""
 
 msgctxt "field:account.tax,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.tax,end_date:"
 msgid "Ending Date"
-msgstr "结束日期"
+msgstr "Tanggal Berakhir"
 
-#, fuzzy
 msgctxt "field:account.tax,group:"
 msgid "Group"
-msgstr "用户组"
+msgstr "Kelompok"
 
 msgctxt "field:account.tax,invoice_account:"
 msgid "Invoice Account"
-msgstr "发票账户"
+msgstr ""
 
 msgctxt "field:account.tax,invoice_base_amount:"
 msgid "Invoice Base Amount"
-msgstr "发票基本金额"
+msgstr ""
 
 msgctxt "field:account.tax,invoice_tax_amount:"
 msgid "Invoice Tax Amount"
-msgstr "发票税额"
+msgstr ""
 
 msgctxt "field:account.tax,legal_notice:"
 msgid "Legal Notice"
-msgstr "法律声明"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:account.tax,rate:"
 msgid "Rate"
-msgstr "日期格式"
+msgstr ""
 
 msgctxt "field:account.tax,start_date:"
 msgid "Starting Date"
-msgstr "开始日期"
+msgstr "Tanggal Berawal"
 
-#, fuzzy
 msgctxt "field:account.tax,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.tax,template_override:"
 msgid "Override Template"
-msgstr "覆盖模板"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:account.tax,update_unit_price:"
 msgid "Update Unit Price"
-msgstr "更新单价"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code,active:"
 msgid "Active"
-msgstr "启用"
+msgstr "Aktif"
 
 msgctxt "field:account.tax.code,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.tax.code,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:account.tax.code,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.tax.code,end_date:"
 msgid "End Date"
-msgstr "结束日期"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax.code,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.tax.code,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax.code,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
 msgctxt "field:account.tax.code,start_date:"
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "Tanggal Awal"
 
-#, fuzzy
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
-msgstr "覆盖模版"
+msgstr ""
 
 msgctxt "field:account.tax.code.line,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.tax.code.line,operator:"
 msgid "Operator"
-msgstr "操作人员"
+msgstr ""
 
 msgctxt "field:account.tax.code.line,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.tax.code.line,template_override:"
 msgid "Override Template"
-msgstr "覆盖模版"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code.line,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:account.tax.code.line.template,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line.template,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.tax.code.line.template,operator:"
 msgid "Operator"
-msgstr "操作者"
+msgstr ""
 
 msgctxt "field:account.tax.code.line.template,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
-#, fuzzy
 msgctxt "field:account.tax.code.line.template,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
 msgctxt "field:account.tax.code.open_chart.start,method:"
 msgid "Method"
-msgstr "方式"
+msgstr "Metode"
 
-#, fuzzy
 msgctxt "field:account.tax.code.open_chart.start,periods:"
 msgid "Periods"
-msgstr "Periods"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,account:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.tax.code.template,end_date:"
 msgid "End Date"
-msgstr "结束日期"
+msgstr "Tanggal Akhir"
 
 msgctxt "field:account.tax.code.template,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax.code.template,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
 msgctxt "field:account.tax.code.template,start_date:"
 msgid "Start Date"
-msgstr "开始日期"
+msgstr "Tanggal Awal"
 
-#, fuzzy
 msgctxt "field:account.tax.group,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "field:account.tax.group,kind:"
 msgid "Kind"
-msgstr "种类"
+msgstr "Jenis"
 
-#, fuzzy
 msgctxt "field:account.tax.group,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "field:account.tax.line,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.tax.line,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.tax.line,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:account.tax.line,move_line:"
 msgid "Move Line"
@@ -1758,60 +1599,55 @@ msgstr ""
 
 msgctxt "field:account.tax.line,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
-#, fuzzy
 msgctxt "field:account.tax.line,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:account.tax.line.template,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.tax.line.template,line:"
 msgid "Line"
-msgstr "列表"
+msgstr ""
 
 msgctxt "field:account.tax.line.template,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
-#, fuzzy
 msgctxt "field:account.tax.line.template,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:account.tax.rule,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:account.tax.rule,kind:"
 msgid "Kind"
-msgstr "种类"
+msgstr "Jenis"
 
 msgctxt "field:account.tax.rule,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.tax.rule,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
-msgstr "替换模版"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
-msgstr "Tax Groups"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,keep_origin:"
 msgid "Keep Origin"
@@ -1819,30 +1655,27 @@ msgstr ""
 
 msgctxt "field:account.tax.rule.line,origin_tax:"
 msgid "Original Tax"
-msgstr "原税"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
-msgstr "规则"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
-msgstr "替代税"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
-msgstr "覆盖模版"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
-msgstr "Tax Groups"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,keep_origin:"
 msgid "Keep Origin"
@@ -1850,225 +1683,207 @@ msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,origin_tax:"
 msgid "Original Tax"
-msgstr "原税"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
-msgstr "规则"
+msgstr ""
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
-msgstr "替代税"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.rule.template,account:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "field:account.tax.rule.template,kind:"
 msgid "Kind"
-msgstr "种类"
+msgstr "Jenis"
 
 msgctxt "field:account.tax.rule.template,lines:"
 msgid "Lines"
-msgstr "列表"
+msgstr "Baris"
 
-#, fuzzy
 msgctxt "field:account.tax.rule.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax.template,account:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "field:account.tax.template,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
-#, fuzzy
 msgctxt "field:account.tax.template,childs:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
 msgctxt "field:account.tax.template,credit_note_account:"
 msgid "Credit Note Account"
-msgstr "贷方通知帐户"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.template,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.tax.template,end_date:"
 msgid "Ending Date"
-msgstr "结束日期"
+msgstr "Tanggal Berakhir"
 
-#, fuzzy
 msgctxt "field:account.tax.template,group:"
 msgid "Group"
-msgstr "用户组"
+msgstr "Kelompok"
 
 msgctxt "field:account.tax.template,invoice_account:"
 msgid "Invoice Account"
-msgstr "发票账户"
+msgstr ""
 
 msgctxt "field:account.tax.template,legal_notice:"
 msgid "Legal Notice"
-msgstr "法律声明"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.template,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
-#, fuzzy
 msgctxt "field:account.tax.template,parent:"
 msgid "Parent"
-msgstr "上级"
+msgstr "Induk"
 
-#, fuzzy
 msgctxt "field:account.tax.template,rate:"
 msgid "Rate"
-msgstr "日期格式"
+msgstr ""
 
 msgctxt "field:account.tax.template,start_date:"
 msgid "Starting Date"
-msgstr "开始日期"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.template,type:"
 msgid "Type"
-msgstr "类型"
+msgstr ""
 
 msgctxt "field:account.tax.template,update_unit_price:"
 msgid "Update Unit Price"
-msgstr "更新单价"
+msgstr "Perbarui Harga Satuan"
 
 msgctxt "field:account.tax.test,currency:"
 msgid "Currency"
-msgstr "货币"
+msgstr "Mata uang"
 
 msgctxt "field:account.tax.test,quantity:"
 msgid "Quantity"
-msgstr "数量"
+msgstr ""
 
 msgctxt "field:account.tax.test,result:"
 msgid "Result"
-msgstr "结果"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.test,tax_date:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:account.tax.test,taxes:"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 msgctxt "field:account.tax.test,unit_price:"
 msgid "Unit Price"
-msgstr "单价"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.test.result,account:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "field:account.tax.test.result,amount:"
 msgid "Amount"
-msgstr "数额"
+msgstr "Jumlah"
 
 msgctxt "field:account.tax.test.result,base:"
 msgid "Base"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:account.tax.test.result,description:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "field:account.tax.test.result,legal_notice:"
 msgid "Legal Notice"
-msgstr "法律声明"
+msgstr ""
 
 msgctxt "field:account.tax.test.result,tax:"
 msgid "Tax"
-msgstr "税"
+msgstr "Pajak"
 
 msgctxt "field:account.update_chart.start,account:"
 msgid "Root Account"
-msgstr "根账户"
+msgstr ""
 
 msgctxt "field:party.party,account_payable:"
 msgid "Account Payable"
-msgstr "付款账户"
+msgstr "Akun utang"
 
 msgctxt "field:party.party,account_receivable:"
 msgid "Account Receivable"
-msgstr "收款账户"
+msgstr "Akun piutang"
 
-#, fuzzy
 msgctxt "field:party.party,accounts:"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr "Akun"
 
 msgctxt "field:party.party,currency_digits:"
 msgid "Currency Digits"
-msgstr "货币有效数字"
+msgstr ""
 
 msgctxt "field:party.party,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr "客户税规则"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,payable:"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Utang"
 
 msgctxt "field:party.party,payable_today:"
 msgid "Payable Today"
-msgstr "今日应付"
+msgstr ""
 
-#, fuzzy
 msgctxt "field:party.party,receivable:"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Piutang"
 
 msgctxt "field:party.party,receivable_today:"
 msgid "Receivable Today"
-msgstr "今日应收"
+msgstr ""
 
 msgctxt "field:party.party,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "供应商税收规则"
+msgstr ""
 
 msgctxt "field:party.party.account,account_payable:"
 msgid "Account Payable"
-msgstr "付款账户"
+msgstr ""
 
 msgctxt "field:party.party.account,account_receivable:"
 msgid "Account Receivable"
-msgstr "收款账户"
+msgstr "Akun piutang"
 
 msgctxt "field:party.party.account,company:"
 msgid "Company"
-msgstr "公司"
+msgstr "Perusahaan"
 
 msgctxt "field:party.party.account,customer_tax_rule:"
 msgid "Customer Tax Rule"
-msgstr "客户税规则"
+msgstr ""
 
 msgctxt "field:party.party.account,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "Pihak"
 
 msgctxt "field:party.party.account,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
-msgstr "供应商税收规则"
+msgstr ""
 
 msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
@@ -2096,7 +1911,7 @@ msgstr ""
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
-msgstr "选中后可重写模板定义"
+msgstr ""
 
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
@@ -2112,7 +1927,7 @@ msgstr ""
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
-msgstr "选中可重写模板定义"
+msgstr ""
 
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Show only posted move"
@@ -2140,7 +1955,7 @@ msgstr ""
 
 msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
-msgstr "如果选中，将创建新序列."
+msgstr ""
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Show only posted move"
@@ -2160,23 +1975,21 @@ msgstr ""
 
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency"
-msgstr "用第二种货币表示的金额"
+msgstr ""
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
 "This field is used for payable and receivable lines. \n"
 "You can put the limit date for the payment."
 msgstr ""
-"此字段用于应付和应收行。\n"
-"你可以设定付款的限制日期."
 
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency"
-msgstr "第二货币"
+msgstr ""
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr "用关键字计算的python表达式."
+msgstr ""
 
 msgctxt "help:account.move.line.template,description:"
 msgid "Keywords values substitutions are identified by braces ('{' and '}')."
@@ -2184,7 +1997,7 @@ msgstr ""
 
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
-msgstr "“party”关键字的名称."
+msgstr ""
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Show only posted move"
@@ -2200,7 +2013,7 @@ msgstr ""
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today."
-msgstr "日期是今天的话，就空着"
+msgstr ""
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
@@ -2208,7 +2021,7 @@ msgstr ""
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "对于所有未结会计年度，保留为空."
+msgstr ""
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Show posted moves only"
@@ -2216,49 +2029,49 @@ msgstr ""
 
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency"
-msgstr "以公司货币"
+msgstr ""
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports"
-msgstr "报告中使用的名称"
+msgstr ""
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
-msgstr "选中可覆盖模板定义"
+msgstr ""
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
 "by this tax"
-msgstr "如果勾选，则将修改以后纳税计算的单价"
+msgstr ""
 
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
-msgstr "选中可重写模板定义"
+msgstr ""
 
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
-msgstr "选中可重写模板定义"
+msgstr ""
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year"
-msgstr "对于所有未结会计年度，保留为空"
+msgstr ""
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year"
-msgstr "对于所有未结会计年度，保留为空"
+msgstr ""
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr "将用关键字计算的python表达式."
+msgstr ""
 
 msgctxt "help:account.tax.rule,template_override:"
 msgid "Check to override template definition"
-msgstr "选中可重写模板定义"
+msgstr ""
 
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
-msgstr "勾选后，原税将追加到替代税."
+msgstr ""
 
 msgctxt "help:account.tax.rule.line,origin_tax:"
 msgid ""
@@ -2287,43 +2100,37 @@ msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.account,name:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
-#, fuzzy
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
-msgstr "Account Types"
+msgstr ""
 
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "model:account.account.template-account.tax.template,name:"
 msgid "Account Template - Tax Template"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.account.type,name:"
 msgid "Account Type"
-msgstr "Account Types"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.account.type.template,name:"
 msgid "Account Type Template"
-msgstr "Account Type Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.aged_balance,name:"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "model:account.aged_balance.context,name:"
 msgid "Aged Balance Context"
@@ -2337,19 +2144,17 @@ msgctxt "model:account.balance_sheet.context,name:"
 msgid "Balance Sheet Context"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.configuration,name:"
 msgid "Account Configuration"
-msgstr "Account Configuration"
+msgstr "Konfigurasi Akun"
 
 msgctxt "model:account.configuration.default_account,name:"
 msgid "Account Configuration Default Account"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
-msgstr "Account Configuration"
+msgstr "Konfigurasi Akun Aturan Pajak Standar"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
@@ -2357,43 +2162,39 @@ msgstr ""
 
 msgctxt "model:account.create_chart.account,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Buat Bagan"
 
 msgctxt "model:account.create_chart.properties,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Buat Bagan"
 
 msgctxt "model:account.create_chart.start,name:"
 msgid "Create Chart"
-msgstr ""
+msgstr "Buat Bagan"
 
-#, fuzzy
 msgctxt "model:account.fiscalyear,name:"
 msgid "Fiscal Year"
-msgstr "财年"
+msgstr "Tahun Fiskal"
 
-#, fuzzy
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
-msgstr "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.general_ledger.account,name:"
 msgid "General Ledger Account"
-msgstr "General Ledger - Accounts"
+msgstr "Akun Buku Besar"
 
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
-msgstr "General Ledger - Lines"
+msgstr ""
 
 msgctxt "model:account.general_ledger.line.context,name:"
 msgid "General Ledger Line Context"
@@ -2403,73 +2204,65 @@ msgctxt "model:account.income_statement.context,name:"
 msgid "Income Statement Context"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.journal,name:"
 msgid "Journal"
-msgstr "Journals"
+msgstr "Jurnal"
 
 msgctxt "model:account.journal,name:journal_cash"
 msgid "Cash"
-msgstr "Cash"
+msgstr "Kas"
 
 msgctxt "model:account.journal,name:journal_expense"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Biaya"
 
 msgctxt "model:account.journal,name:journal_revenue"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Pendapatan"
 
 msgctxt "model:account.journal,name:journal_stock"
 msgid "Stock"
-msgstr "Stock"
+msgstr "Persediaan"
 
 msgctxt "model:account.journal.open_cash.context,name:"
 msgid "Journal Cash Context"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.journal.period,name:"
 msgid "Journal - Period"
-msgstr "Journals - Periods"
+msgstr ""
 
 msgctxt "model:account.journal.sequence,name:"
 msgid "Journal Sequence"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move,name:"
 msgid "Account Move"
-msgstr "Account Move"
+msgstr "Perpindahan Akun"
 
-#, fuzzy
 msgctxt "model:account.move.cancel.default,name:"
 msgid "Cancel Moves"
-msgstr "Cancel Moves"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.line,name:"
 msgid "Account Move Line"
-msgstr "Account Move Lines"
+msgstr ""
 
 msgctxt "model:account.move.line.group.start,name:"
 msgid "Group Lines"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.line.template,name:"
 msgid "Account Move Line Template"
-msgstr "Account Move Template"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.open_journal.ask,name:"
 msgid "Open Journal Ask"
-msgstr "Open Journal"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.print_general_journal.start,name:"
 msgid "Print General Journal"
-msgstr "Print General Journal"
+msgstr ""
 
 msgctxt "model:account.move.reconcile.write_off,name:"
 msgid "Reconcile Write Off"
@@ -2479,121 +2272,101 @@ msgctxt "model:account.move.reconcile_lines.writeoff,name:"
 msgid "Reconcile Lines Write-Off"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.reconciliation,name:"
 msgid "Account Move Reconciliation Lines"
-msgstr "Account Move Reconciliation"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.template,name:"
 msgid "Account Move Template"
-msgstr "Account Move Template"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.template.create.keywords,name:"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.move.template.create.template,name:"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr ""
 
 msgctxt "model:account.move.template.keyword,name:"
 msgid "Account Move Template Keyword"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.open_chart.start,name:"
 msgid "Open Chart of Accounts"
-msgstr "Open Chart of Accounts"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.period,name:"
 msgid "Period"
-msgstr "Periods"
+msgstr "Periode"
 
 msgctxt "model:account.reconcile.show,name:"
 msgid "Reconcile"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax,name:"
 msgid "Account Tax"
-msgstr "Account Types"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.code,name:"
 msgid "Tax Code"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:account.tax.code.line,name:"
 msgid "Tax Code Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.code.line.template,name:"
 msgid "Tax Code Line Template"
-msgstr "Tax Codes Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.code.open_chart.start,name:"
 msgid "Open Chart of Tax Codes"
-msgstr "Open Chart of Tax Codes"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.code.template,name:"
 msgid "Tax Code Template"
-msgstr "Tax Codes Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.group,name:"
 msgid "Tax Group"
-msgstr "Tax Groups"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.line,name:"
 msgid "Tax Line"
-msgstr "Tax Lines"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.line.template,name:"
 msgid "Account Tax Line Template"
-msgstr "Account Move Template"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.rule,name:"
 msgid "Tax Rule"
-msgstr "Tax Rules"
+msgstr ""
 
 msgctxt "model:account.tax.rule.line,name:"
 msgid "Tax Rule Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.rule.line.template,name:"
 msgid "Tax Rule Line Template"
-msgstr "Tax Rule Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.rule.template,name:"
 msgid "Tax Rule Template"
-msgstr "Tax Rule Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.template,name:"
 msgid "Account Tax Template"
-msgstr "Account Type Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.test,name:"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:account.tax.test.result,name:"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr ""
 
 msgctxt "model:account.update_chart.start,name:"
 msgid "Update Chart"
@@ -2605,84 +2378,83 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_balance_sheet_tree"
 msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgstr "Neraca"
 
 msgctxt "model:ir.action,name:act_account_general_ledger"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_income_statement_tree"
 msgid "Income Statement"
-msgstr "Income Statement"
+msgstr "Laporan Laba Rugi"
 
 msgctxt "model:ir.action,name:act_account_list"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_template_tree"
 msgid "Account Templates"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_tree"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_tree2"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_type_list"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Account Type Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_account_type_tree"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_aged_balance_list"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_cancel_moves"
 msgid "Cancel Moves"
-msgstr "Cancel Moves"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Open Chart of Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
-msgstr "Account Configuration"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "财年"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
 msgid "Close Fiscal Years"
-msgstr "Close Fiscal Years"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
-msgstr "General Ledger - Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
-msgstr "General Ledger - Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_group_lines_wizard"
 msgid "Group Lines"
@@ -2690,87 +2462,87 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_form"
 msgid "Journals"
-msgstr "Journals"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Journals Cash"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_period_form_close"
 msgid "Close Journals - Periods"
-msgstr "Close Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
-msgstr "Account Moves"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
-msgstr "Account Move"
+msgstr "Perpindahan Akun"
 
 msgctxt "model:ir.action,name:act_move_line_form"
 msgid "Account Move Lines"
-msgstr "Account Move Lines"
+msgstr "Baris Perpindahan Akun"
 
 msgctxt "model:ir.action,name:act_move_line_payable_receivable"
 msgid "Payable/Receivable Lines"
-msgstr "Payable/Receivable Lines"
+msgstr "Baris Utang/Piutang"
 
 msgctxt "model:ir.action,name:act_move_reconciliation_lines"
 msgid "Reconciliation Lines"
-msgstr "Reconciliation Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_template_create"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_template_form"
 msgid "Account Move Template"
-msgstr "Account Move Template"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_account"
 msgid "Open Move Account"
-msgstr "Open Move Account"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Open Chart of Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_journal"
 msgid "Open Journal"
-msgstr "Open Journal"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_tax_code"
 msgid "Open Tax Code"
-msgstr "Open Tax Code"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_open_type"
 msgid "Open Type"
-msgstr "Open Type"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_period_form"
 msgid "Periods"
-msgstr "Periods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_period_form_close"
 msgid "Close Periods"
-msgstr "Close Periods"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Reconcile Accounts"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_reconcile_lines"
 msgid "Reconcile Lines"
-msgstr "Reconcile Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_reconcile_writeoff_form"
 msgid "WriteOff Methods"
@@ -2778,99 +2550,98 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Renew Fiscal Year"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_code_list"
 msgid "Tax Codes"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Tax Codes Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_code_tree2"
 msgid "Tax Codes"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_group_form"
 msgid "Tax Groups"
-msgstr "Tax Groups"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_line_form"
 msgid "Tax Lines"
-msgstr "Tax Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_list"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Tax Rules"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Tax Rule Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_tax_template_list"
 msgid "Taxes Templates"
-msgstr "Taxes Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_unreconcile_lines"
 msgid "Unreconcile Lines"
-msgstr "Unreconcile Lines"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_aged_balance"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_general_journal"
 msgid "General Journal"
-msgstr "General Journal"
+msgstr "Jurnal Umum"
 
 msgctxt "model:ir.action,name:report_general_ledger"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Buku Besar"
 
 msgctxt "model:ir.action,name:report_trial_balance"
 msgid "Trial Balance"
-msgstr "Trial Balance"
+msgstr "Neraca Saldo"
 
 msgctxt "model:ir.action,name:wizard_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Create Chart of Accounts from Template"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_print_general_journal"
 msgid "Print General Journal"
-msgstr "Print General Journal"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_tax_test"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr ""
 
 msgctxt "model:ir.action,name:wizard_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Update Chart of Accounts from Template"
+msgstr ""
 
-#, fuzzy
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_all"
 msgid "All"
-msgstr "全部"
+msgstr ""
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_payable"
 msgid "Payable"
-msgstr "Payable"
+msgstr "Utang"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_move_line_payable_receivable_domain_receivable"
 msgid "Receivable"
-msgstr "Receivable"
+msgstr "Piutang"
 
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
@@ -2902,13 +2673,15 @@ msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
-msgstr ""
+msgstr "Untuk menutup tahun fiskal, saldo akun \"%(account)s\" harus nol."
 
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
 msgstr ""
+"Untuk menutup tahun fiskal \"%(fiscalyear)s\", Anda harus menutup semua "
+"tahun fiskal sebelumnya."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
@@ -2976,11 +2749,13 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
-msgstr ""
+msgstr "Anda hanya dapat membuat satu jurnal per periode."
 
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
 msgstr ""
+"Anda tidak dapat merekonsiliasi baris yang sudah direkonsiliasi "
+"\"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
@@ -3163,87 +2938,85 @@ msgctxt "model:ir.message,text:msg_write_reconciliation"
 msgid "You cannot modify any reconciliation."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure you want to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure you want to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Tutup"
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
 msgid "Create 3 Monthly Periods"
-msgstr "Create 3 Monthly Periods"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
 msgid "Create Monthly Periods"
-msgstr "Create Monthly Periods"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:fiscalyear_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:move_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Close"
+msgstr "Tutup"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
-msgstr "Lock"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:period_reopen_button"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_account"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_account_type"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_aged_balance"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_fiscalyear"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_period"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_tax"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_tax_code"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_tax_code_line"
 msgid "User in code's company"
@@ -3251,179 +3024,176 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_tax_rule"
 msgid "User in company"
-msgstr ""
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.sequence,name:sequence_account_journal"
 msgid "Default Account Journal"
-msgstr "Default Account Journal"
+msgstr ""
 
 msgctxt "model:ir.sequence,name:sequence_account_move_reconciliation"
 msgid "Default Account Move Reconciliation"
-msgstr "Default Account Move Reconciliation"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_journal"
 msgid "Account Journal"
-msgstr "Account Journal"
+msgstr ""
 
 msgctxt "model:ir.sequence.type,name:sequence_type_account_move"
 msgid "Account Move"
-msgstr "Account Move"
+msgstr "Perpindahan Akun"
 
 msgctxt ""
 "model:ir.sequence.type,name:sequence_type_account_move_reconciliation"
 msgid "Account Move Reconciliation"
-msgstr "Account Move Reconciliation"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account"
 msgid "Financial"
-msgstr "Financial"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_account_configuration"
 msgid "Configuration"
-msgstr "设置"
+msgstr "Konfigurasi"
 
 msgctxt "model:ir.ui.menu,name:menu_account_list"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_template_tree"
 msgid "Account Templates"
-msgstr "Account Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_tree"
 msgid "Accounts"
-msgstr "Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_list"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_template_tree"
 msgid "Account Type Templates"
-msgstr "Account Type Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_account_type_tree"
 msgid "Account Types"
-msgstr "Account Types"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_aged_balance"
 msgid "Aged Balance"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_balance_non_deferral"
 msgid "Balance Non-Deferral"
-msgstr "Balance Non-Deferral"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr "Charts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
-msgstr "Close Fiscal Years"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_close_journal_period"
 msgid "Close Journals - Periods"
-msgstr "Close Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_close_period"
 msgid "Close Periods"
-msgstr "Close Periods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_code_tax_open_chart"
 msgid "Open Chart of Tax Codes"
-msgstr "Open Chart of Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_create_chart"
 msgid "Create Chart of Accounts from Template"
-msgstr "Create Chart of Accounts from Template"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_entries"
 msgid "Entries"
-msgstr "Entries"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr "财年"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr "财年"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
-msgstr "General Account"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_general_ledger"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Buku Besar"
 
 msgctxt "model:ir.ui.menu,name:menu_journal_configuration"
 msgid "Journals"
-msgstr "Journals"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_form"
 msgid "Journals"
-msgstr "Journals"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_open_cash"
 msgid "Journals Cash"
-msgstr "Journals Cash"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_journal_period_tree2"
 msgid "Journals - Periods"
-msgstr "Journals - Periods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_form"
 msgid "Account Moves"
-msgstr "Account Moves"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_create"
 msgid "Create Move from Template"
-msgstr "Create Move from Template"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_move_template_form"
 msgid "Account Move Template"
-msgstr "Account Move Template"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_balance_sheet"
 msgid "Balance Sheet"
-msgstr "Balance Sheet"
+msgstr "Neraca"
 
 msgctxt "model:ir.ui.menu,name:menu_open_chart"
 msgid "Open Chart of Accounts"
-msgstr "Open Chart of Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_open_income_statement"
 msgid "Income Statement"
-msgstr "Income Statement"
+msgstr "Laporan Laba Rugi"
 
 msgctxt "model:ir.ui.menu,name:menu_open_journal"
 msgid "Open Journal"
-msgstr "Open Journal"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_period_form"
 msgid "Periods"
-msgstr "Periods"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_print_general_journal"
 msgid "Print General Journal"
-msgstr "Print General Journal"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_processing"
 msgid "Processing"
-msgstr "Processing"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile"
 msgid "Reconcile Accounts"
-msgstr "Reconcile Accounts"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reconcile_writeoff_form"
 msgid "WriteOff Methods"
@@ -3431,107 +3201,103 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_renew_fiscalyear"
 msgid "Renew Fiscal Year"
-msgstr "Renew Fiscal Year"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
-msgstr "Reporting"
+msgstr "Pelaporan"
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_list"
 msgid "Tax Codes"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_template_tree"
 msgid "Tax Codes Templates"
-msgstr "Tax Codes Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_code_tree"
 msgid "Tax Codes"
-msgstr "Tax Codes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_group_form"
 msgid "Tax Groups"
-msgstr "Tax Groups"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_list"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_form"
 msgid "Tax Rules"
-msgstr "Tax Rules"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_rule_template_form"
 msgid "Tax Rule Templates"
-msgstr "Tax Rule Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_template_list"
 msgid "Taxes Templates"
-msgstr "Taxes Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_tax_test"
 msgid "Test Tax"
-msgstr "Test Tax"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_taxes"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_templates"
 msgid "Templates"
-msgstr "Templates"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_update_chart"
 msgid "Update Chart of Accounts from Template"
-msgstr "Update Chart of Accounts from Template"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menuitem_account_configuration"
 msgid "Account Configuration"
-msgstr "Account Configuration"
+msgstr ""
 
 msgctxt "model:party.party.account,name:"
 msgid "Party Account"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Account"
+msgstr "Rekening"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
-msgstr "Account Administration"
+msgstr ""
 
 msgctxt "report:account.aged_balance:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Aged Balance for"
-msgstr "Aged Balance"
+msgstr ""
 
 msgctxt "report:account.aged_balance:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "report:account.aged_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Perusahaan:"
 
-#, fuzzy
 msgctxt "report:account.aged_balance:"
 msgid "Date:"
-msgstr "日期格式"
+msgstr "Tanggal:"
 
 msgctxt "report:account.aged_balance:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "report:account.aged_balance:"
 msgid "Print Date:"
@@ -3539,7 +3305,7 @@ msgstr ""
 
 msgctxt "report:account.aged_balance:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgctxt "report:account.aged_balance:"
 msgid "User:"
@@ -3549,93 +3315,85 @@ msgctxt "report:account.aged_balance:"
 msgid "at"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid ":"
 msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "Kode"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
-msgstr ""
+msgstr "Perusahaan:"
 
 msgctxt "report:account.general_ledger:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "report:account.general_ledger:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "report:account.general_ledger:"
 msgid "Descr."
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Fiscal Year:"
-msgstr "财年"
+msgstr "Tahun Fiskal:"
 
 msgctxt "report:account.general_ledger:"
 msgid "From Date:"
-msgstr ""
+msgstr "Dari Tanggal:"
 
 msgctxt "report:account.general_ledger:"
 msgid "From Period"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "General Ledger"
-msgstr "General Ledger"
+msgstr "Buku Besar"
 
 msgctxt "report:account.general_ledger:"
 msgid "Move"
-msgstr ""
+msgstr "Perpindahan"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "Name"
-msgstr "纳木"
+msgstr "Nama"
 
 msgctxt "report:account.general_ledger:"
 msgid "Origin"
-msgstr ""
+msgstr "Asal"
 
 msgctxt "report:account.general_ledger:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Tanggal Cetak:"
 
-#, fuzzy
 msgctxt "report:account.general_ledger:"
 msgid "State"
-msgstr "状态"
+msgstr "Negara"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
-msgstr ""
+msgstr "Kepada"
 
 msgctxt "report:account.general_ledger:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgctxt "report:account.general_ledger:"
 msgid "User:"
@@ -3645,50 +3403,45 @@ msgctxt "report:account.general_ledger:"
 msgid "at"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
-msgstr ""
+msgstr "Perusahaan:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Date:"
-msgstr "日期格式"
+msgstr "Tanggal:"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "Description"
-msgstr "描述"
+msgstr "Deskripsi"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "report:account.move.general_journal:"
 msgid "From Date:"
-msgstr ""
+msgstr "Dari Tanggal:"
 
-#, fuzzy
 msgctxt "report:account.move.general_journal:"
 msgid "General Journal"
-msgstr "General Journal"
+msgstr ""
 
 msgctxt "report:account.move.general_journal:"
 msgid "Journal Entry:"
@@ -3718,45 +3471,41 @@ msgctxt "report:account.move.general_journal:"
 msgid "at"
 msgstr ""
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "/"
 msgstr "/"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
-msgstr ""
+msgstr "Perusahaan:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "report:account.trial_balance:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr "Saldo Akhir"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Fiscal Year:"
-msgstr "财年"
+msgstr "Tahun Fiskal:"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Date:"
-msgstr ""
+msgstr "Dari Tanggal:"
 
 msgctxt "report:account.trial_balance:"
 msgid "From Period:"
-msgstr ""
+msgstr "Dari Periode:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
@@ -3764,20 +3513,19 @@ msgstr ""
 
 msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Saldo Awal"
 
 msgctxt "report:account.trial_balance:"
 msgid "To"
-msgstr ""
+msgstr "Untuk"
 
 msgctxt "report:account.trial_balance:"
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
-#, fuzzy
 msgctxt "report:account.trial_balance:"
 msgid "Trial Balance"
-msgstr "Trial Balance"
+msgstr "Neraca Saldo"
 
 msgctxt "report:account.trial_balance:"
 msgid "User:"
@@ -3789,11 +3537,11 @@ msgstr ""
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Income"
-msgstr ""
+msgstr "Penghasilan"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Off-Balance"
@@ -3801,11 +3549,11 @@ msgstr ""
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Balance"
-msgstr ""
+msgstr "Saldo"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Income"
-msgstr ""
+msgstr "Penghasilan"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Off-Balance"
@@ -3823,15 +3571,13 @@ msgctxt "selection:account.aged_balance.context,type:"
 msgid "Suppliers"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Days"
-msgstr "日"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.aged_balance.context,unit:"
 msgid "Months"
-msgstr "月"
+msgstr ""
 
 msgctxt "selection:account.configuration,tax_rounding:"
 msgid "Per Document"
@@ -3849,71 +3595,61 @@ msgctxt "selection:account.configuration.tax_rounding,tax_rounding:"
 msgid "Per Line"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Close"
-msgstr "关闭"
+msgstr "Tutup"
 
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Locked"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Posted"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Cash"
-msgstr "Cash"
+msgstr "Kas"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Expense"
-msgstr "Expense"
+msgstr "Biaya"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "General"
-msgstr "基本"
+msgstr "Umum"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Revenue"
-msgstr "Revenue"
+msgstr "Pendapatan"
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Situation"
-msgstr "Situation"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.journal,type:"
 msgid "Write-Off"
-msgstr "Write-Off"
+msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.journal.period,state:"
 msgid "Close"
-msgstr "关闭"
+msgstr "Tutup"
 
-#, fuzzy
 msgctxt "selection:account.journal.period,state:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
 msgctxt "selection:account.move,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:account.move,state:"
 msgid "Posted"
@@ -3921,7 +3657,7 @@ msgstr ""
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:account.move.line,move_state:"
 msgid "Posted"
@@ -3929,7 +3665,7 @@ msgstr ""
 
 msgctxt "selection:account.move.line,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Rancangan"
 
 msgctxt "selection:account.move.line,state:"
 msgid "Valid"
@@ -3937,20 +3673,19 @@ msgstr ""
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "selection:account.move.line.template,operation:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Char"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Date"
-msgstr "日期格式"
+msgstr "Tanggal"
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Numeric"
@@ -3958,21 +3693,19 @@ msgstr ""
 
 msgctxt "selection:account.move.template.keyword,type_:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
-#, fuzzy
 msgctxt "selection:account.period,state:"
 msgid "Close"
-msgstr "关闭"
+msgstr "Tutup"
 
 msgctxt "selection:account.period,state:"
 msgid "Locked"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.period,state:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
@@ -3980,21 +3713,19 @@ msgstr ""
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
-msgstr ""
+msgstr "Standar"
 
 msgctxt "selection:account.tax,type:"
 msgid "Fixed"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.tax,type:"
 msgid "None"
-msgstr "注释"
+msgstr "Tidak ada"
 
-#, fuzzy
 msgctxt "selection:account.tax,type:"
 msgid "Percentage"
-msgstr "百分比"
+msgstr ""
 
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Base"
@@ -4002,24 +3733,23 @@ msgstr ""
 
 msgctxt "selection:account.tax.code.line,amount:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line,operator:"
 msgid "-"
 msgstr "-"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "selection:account.tax.code.line,type:"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
 msgctxt "selection:account.tax.code.line.template,amount:"
 msgid "Base"
@@ -4027,29 +3757,27 @@ msgstr ""
 
 msgctxt "selection:account.tax.code.line.template,amount:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "selection:account.tax.code.line.template,operator:"
 msgid "+"
-msgstr ""
+msgstr "+"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.line.template,operator:"
 msgid "-"
 msgstr "-"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "selection:account.tax.code.line.template,type:"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
-#, fuzzy
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Fiscal Year"
-msgstr "财年"
+msgstr ""
 
 msgctxt "selection:account.tax.code.open_chart.start,method:"
 msgid "By Periods"
@@ -4061,11 +3789,11 @@ msgstr ""
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "selection:account.tax.group,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Penjualan"
 
 msgctxt "selection:account.tax.line,type:"
 msgid "Base"
@@ -4073,7 +3801,7 @@ msgstr ""
 
 msgctxt "selection:account.tax.line,type:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "selection:account.tax.line.template,type:"
 msgid "Base"
@@ -4081,7 +3809,7 @@ msgstr ""
 
 msgctxt "selection:account.tax.line.template,type:"
 msgid "Tax"
-msgstr ""
+msgstr "Pajak"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Both"
@@ -4089,11 +3817,11 @@ msgstr ""
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "selection:account.tax.rule,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Penjualan"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Both"
@@ -4101,38 +3829,35 @@ msgstr ""
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "selection:account.tax.rule.template,kind:"
 msgid "Sale"
-msgstr ""
+msgstr "Penjualan"
 
 msgctxt "selection:account.tax.template,type:"
 msgid "Fixed"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.tax.template,type:"
 msgid "None"
-msgstr "注释"
+msgstr "Tidak ada"
 
-#, fuzzy
 msgctxt "selection:account.tax.template,type:"
 msgid "Percentage"
-msgstr "百分比"
+msgstr ""
 
 msgctxt "view:account.account.type:"
 msgid "Comparison"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.account:"
 msgid "Children"
-msgstr "子项"
+msgstr "Cabang"
 
 msgctxt "view:account.account:"
 msgid "General Information"
-msgstr ""
+msgstr "Informasi Umum"
 
 msgctxt "view:account.aged_balance.context:"
 msgid "Terms"
@@ -4140,11 +3865,11 @@ msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Invoice"
-msgstr ""
+msgstr "Faktur"
 
 msgctxt "view:account.configuration:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "view:account.create_chart.start:"
 msgid ""
@@ -4152,199 +3877,173 @@ msgid ""
 "of account template."
 msgstr ""
 
-#, fuzzy
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
-msgstr "Periods"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.fiscalyear:"
 msgid "Sequences"
-msgstr "序列"
+msgstr ""
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "view:account.general_ledger.account:"
 msgid "End Balance"
-msgstr "Aged Balance"
+msgstr "Saldo Akhir"
 
 msgctxt "view:account.general_ledger.account:"
 msgid "Start Balance"
-msgstr ""
+msgstr "Saldo Awal"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "view:account.general_ledger.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
-#, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Close"
-msgstr "关闭"
+msgstr "Tutup"
 
-#, fuzzy
 msgctxt "view:account.journal.period:"
 msgid "Re-Open"
-msgstr "Re-Open"
+msgstr ""
 
 msgctxt "view:account.move.line.template:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
 msgctxt "view:account.move.line:"
 msgid "Credit"
-msgstr ""
+msgstr "Kredit"
 
 msgctxt "view:account.move.line:"
 msgid "Debit"
-msgstr ""
+msgstr "Debit"
 
 msgctxt "view:account.move.line:"
 msgid "Other Info"
-msgstr ""
+msgstr "Info Lain"
 
-#, fuzzy
 msgctxt "view:account.move.template:"
 msgid "Template"
-msgstr "Templates"
+msgstr ""
 
-#, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax.template:"
 msgid "General Information"
-msgstr ""
+msgstr "Informasi Umum"
 
-#, fuzzy
 msgctxt "view:account.tax:"
 msgid "%"
 msgstr "%"
 
 msgctxt "view:account.tax:"
 msgid "General Information"
-msgstr ""
+msgstr "Informasi Umum"
 
 msgctxt "view:account.update_chart.succeed:"
 msgid "Update Chart of Accounts Succeed!"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Account"
-msgstr "Accounts"
+msgstr "Rekening"
 
 msgctxt "view:party.party:"
 msgid "Accounting"
 msgstr ""
 
-#, fuzzy
 msgctxt "view:party.party:"
 msgid "Taxes"
-msgstr "Taxes"
+msgstr ""
 
 msgctxt "wizard_button:account.create_chart,account,create_account:"
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
-#, fuzzy
 msgctxt "wizard_button:account.create_chart,account,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.create_chart,properties,create_properties:"
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
-#, fuzzy
 msgctxt "wizard_button:account.create_chart,properties,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.create_chart,start,account:"
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:account.create_chart,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,balance:"
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.fiscalyear.renew,start,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
-#, fuzzy
 msgctxt "wizard_button:account.fiscalyear.renew,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,cancel:"
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.cancel,default,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.group,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.group,start,group:"
 msgid "Group"
-msgstr "用户组"
+msgstr "Kelompok"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.open_journal,ask,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.open_journal,ask,open_:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.print_general_journal,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.print_general_journal,start,print_:"
 msgid "Print"
-msgstr "打印"
+msgstr "Cetak"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.move.reconcile_lines,writeoff,reconcile:"
 msgid "Reconcile"
@@ -4352,72 +4051,60 @@ msgstr ""
 
 msgctxt "wizard_button:account.move.template.create,keywords,create_:"
 msgid "Create"
-msgstr ""
+msgstr "Buat"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,keywords,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,template,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.template.create,template,keywords:"
 msgid "Next"
-msgstr "下一步"
+msgstr "Berikutnya"
 
-#, fuzzy
 msgctxt "wizard_button:account.open_chart,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.open_chart,start,open_:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
-#, fuzzy
 msgctxt "wizard_button:account.reconcile,show,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
 msgctxt "wizard_button:account.reconcile,show,next_:"
 msgid "Skip"
-msgstr ""
+msgstr "Lewati"
 
 msgctxt "wizard_button:account.reconcile,show,reconcile:"
 msgid "Reconcile"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.code.open_chart,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.code.open_chart,start,open_:"
 msgid "Open"
-msgstr "打开"
+msgstr "Buka"
 
-#, fuzzy
 msgctxt "wizard_button:account.tax.test,test,end:"
 msgid "Close"
-msgstr "关闭"
+msgstr "Tutup"
 
-#, fuzzy
 msgctxt "wizard_button:account.update_chart,start,end:"
 msgid "Cancel"
-msgstr "取消"
+msgstr "Batal"
 
-#, fuzzy
 msgctxt "wizard_button:account.update_chart,start,update:"
 msgid "Update"
-msgstr "更新"
+msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:account.update_chart,succeed,end:"
 msgid "OK"
-msgstr "确定"
+msgstr "OK"
