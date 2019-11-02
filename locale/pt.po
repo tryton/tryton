@@ -14,10 +14,6 @@ msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:product.price_list.line.context,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"
 msgstr "Linhas"
@@ -29,7 +25,3 @@ msgstr "Open Lines"
 msgctxt "model:product.price_list.line.context,name:"
 msgid "Price List Line Context"
 msgstr "Contexto das linhas de Preço de Tabela"
-
-msgctxt "view:product.price_list:"
-msgid "Open Lines"
-msgstr "Linhas Abertas"

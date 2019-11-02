@@ -14,10 +14,6 @@ msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
 msgstr "Data"
 
-msgctxt "field:product.price_list.line.context,id:"
-msgid "ID"
-msgstr "ID"
-
 #, fuzzy
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"

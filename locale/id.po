@@ -4,19 +4,19 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.price_list.line,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Tanggal Akhir"
 
 msgctxt "field:product.price_list.line,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Tanggal Awal"
 
 msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "model:ir.model.button,string:price_list_open_lines_button"
 msgid "Open Lines"
