@@ -18,37 +18,9 @@ msgctxt "field:product.product-production.bom,bom:"
 msgid "BOM"
 msgstr "LdM"
 
-msgctxt "field:product.product-production.bom,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:product.product-production.bom,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:product.product-production.bom,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:product.product-production.bom,product:"
 msgid "Product"
 msgstr "Producto"
-
-msgctxt "field:product.product-production.bom,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:product.product-production.bom,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
-msgctxt "field:product.product-production.bom,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:product.product-production.bom,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:product.template,producible:"
 msgid "Producible"
@@ -66,14 +38,6 @@ msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Coste"
 
-msgctxt "field:production,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
 msgstr "Fecha efectiva"
@@ -81,10 +45,6 @@ msgstr "Fecha efectiva"
 msgctxt "field:production,effective_start_date:"
 msgid "Effective Start Date"
 msgstr "Fecha inicio efectiva"
-
-msgctxt "field:production,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production,inputs:"
 msgid "Inputs"
@@ -118,10 +78,6 @@ msgctxt "field:production,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
 
-msgctxt "field:production,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "Referencia"
@@ -146,37 +102,9 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Almacén"
 
-msgctxt "field:production,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
-msgctxt "field:production.assign.failed,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.assign.failed,moves:"
 msgid "Moves"
 msgstr "Movimientos"
-
-msgctxt "field:production.bom,active:"
-msgid "Active"
-msgstr "Activo"
-
-msgctxt "field:production.bom,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.bom,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.bom,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
@@ -194,33 +122,9 @@ msgctxt "field:production.bom,outputs:"
 msgid "Outputs"
 msgstr "Salidas"
 
-msgctxt "field:production.bom,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:production.bom,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.bom,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:production.bom.input,bom:"
 msgid "BOM"
 msgstr "LdM"
-
-msgctxt "field:production.bom.input,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.bom.input,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.bom.input,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.bom.input,product:"
 msgid "Product"
@@ -229,10 +133,6 @@ msgstr "Producto"
 msgctxt "field:production.bom.input,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
-
-msgctxt "field:production.bom.input,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:production.bom.input,unit_digits:"
 msgid "Unit Digits"
@@ -246,29 +146,9 @@ msgctxt "field:production.bom.input,uom_category:"
 msgid "Uom Category"
 msgstr "Categoría de UdM"
 
-msgctxt "field:production.bom.input,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.bom.input,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:production.bom.output,bom:"
 msgid "BOM"
 msgstr "LdM"
-
-msgctxt "field:production.bom.output,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.bom.output,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.bom.output,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.bom.output,product:"
 msgid "Product"
@@ -277,10 +157,6 @@ msgstr "Producto"
 msgctxt "field:production.bom.output,quantity:"
 msgid "Quantity"
 msgstr "Cantidad"
-
-msgctxt "field:production.bom.output,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
 
 msgctxt "field:production.bom.output,unit_digits:"
 msgid "Unit Digits"
@@ -294,21 +170,9 @@ msgctxt "field:production.bom.output,uom_category:"
 msgid "Uom Category"
 msgstr "Categoría de UdM"
 
-msgctxt "field:production.bom.output,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.bom.output,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:production.bom.tree,childs:"
 msgid "Childs"
 msgstr "Hijos"
-
-msgctxt "field:production.bom.tree,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.bom.tree,product:"
 msgid "Product"
@@ -334,10 +198,6 @@ msgctxt "field:production.bom.tree.open.start,category:"
 msgid "Category"
 msgstr "Categoría"
 
-msgctxt "field:production.bom.tree.open.start,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.bom.tree.open.start,product:"
 msgid "Product"
 msgstr "Producto"
@@ -358,86 +218,22 @@ msgctxt "field:production.bom.tree.open.tree,bom_tree:"
 msgid "BOM Tree"
 msgstr "Árbol LdM"
 
-msgctxt "field:production.bom.tree.open.tree,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:production.configuration,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.configuration,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:production.configuration,production_sequence:"
 msgid "Production Sequence"
 msgstr "Secuencia de producción"
 
-msgctxt "field:production.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:production.configuration,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.configuration,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:production.configuration.production_sequence,company:"
 msgid "Company"
 msgstr "Empresa"
-
-msgctxt "field:production.configuration.production_sequence,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.configuration.production_sequence,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.configuration.production_sequence,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt ""
 "field:production.configuration.production_sequence,production_sequence:"
 msgid "Production Sequence"
 msgstr "Secuencia de producción"
 
-msgctxt "field:production.configuration.production_sequence,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:production.configuration.production_sequence,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.configuration.production_sequence,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
-
 msgctxt "field:production.lead_time,bom:"
 msgid "BOM"
 msgstr "Lista de material"
-
-msgctxt "field:production.lead_time,create_date:"
-msgid "Create Date"
-msgstr "Fecha de creación"
-
-msgctxt "field:production.lead_time,create_uid:"
-msgid "Create User"
-msgstr "Usuario de creación"
-
-msgctxt "field:production.lead_time,id:"
-msgid "ID"
-msgstr "ID"
 
 msgctxt "field:production.lead_time,lead_time:"
 msgid "Lead Time"
@@ -446,22 +242,6 @@ msgstr "Tiempo de espera"
 msgctxt "field:production.lead_time,product:"
 msgid "Product"
 msgstr "Producto"
-
-msgctxt "field:production.lead_time,rec_name:"
-msgid "Record Name"
-msgstr "Nombre del registro"
-
-msgctxt "field:production.lead_time,sequence:"
-msgid "Sequence"
-msgstr "Secuencia"
-
-msgctxt "field:production.lead_time,write_date:"
-msgid "Write Date"
-msgstr "Fecha de modificación"
-
-msgctxt "field:production.lead_time,write_uid:"
-msgid "Write User"
-msgstr "Usuario de modificación"
 
 msgctxt "field:stock.location,production_location:"
 msgid "Production"
@@ -474,10 +254,6 @@ msgstr "Entrada producción"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Salida producción"
-
-msgctxt "help:production.bom,active:"
-msgid "Uncheck to exclude from future use."
-msgstr "Desmarcar para eliminar el uso del registro en el futuro."
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
@@ -766,31 +542,3 @@ msgstr "Cerrar"
 msgctxt "wizard_button:production.bom.tree.open,tree,start:"
 msgid "Change"
 msgstr "Cambiar"
-
-msgctxt "view:production:"
-msgid "Assign"
-msgstr "Reservar"
-
-msgctxt "view:production:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:production:"
-msgid "Done"
-msgstr "Finalizar"
-
-msgctxt "view:production:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "view:production:"
-msgid "Reset to BOM"
-msgstr "Restaurar con la LdM"
-
-msgctxt "view:production:"
-msgid "Run"
-msgstr "Ejecutar"
-
-msgctxt "view:production:"
-msgid "Wait"
-msgstr "En espera"
