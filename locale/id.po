@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:currency.currency,code:"
 msgid "Code"
-msgstr "Код"
+msgstr "Kode"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
@@ -12,39 +12,39 @@ msgstr ""
 
 msgctxt "field:currency.currency,name:"
 msgid "Name"
-msgstr "Наименование"
+msgstr "Nama"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr "Код валюты"
+msgstr ""
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
-msgstr "Текущий курс"
+msgstr ""
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr "Курсы"
+msgstr ""
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
-msgstr "Округление"
+msgstr ""
 
 msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
-msgstr "Символ"
+msgstr ""
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
-msgstr "Валюты"
+msgstr "Mata uang"
 
 msgctxt "field:currency.currency.rate,date:"
 msgid "Date"
-msgstr "Дата"
+msgstr "Tanggal"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
-msgstr "Курс"
+msgstr ""
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
@@ -88,46 +88,40 @@ msgstr ""
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
-msgstr "Валюты"
+msgstr "Mata uang"
 
 msgctxt "model:currency.currency.rate,name:"
 msgid "Rate"
-msgstr "Курс"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_currency_rate_positive"
 msgid "A currency rate must be positive."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
-msgstr "Валюта может иметь только один курс в день."
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
-msgstr "Не найдено курса для валюты \"%(currency)s\" на дату \"%(date)s\""
+msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency"
 msgid "Currency"
-msgstr "Currency"
+msgstr "Mata uang"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr ""
 
-#, fuzzy
 msgctxt "model:res.group,name:group_currency_admin"
 msgid "Currency Administration"
-msgstr "Currency Administration"
+msgstr ""
 
 msgctxt "view:currency.currency:"
 msgid "Rates"
-msgstr "Курсы"
+msgstr ""
