@@ -4,124 +4,124 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product,height:"
 msgid "Height"
-msgstr "Hoogte"
+msgstr ""
 
 msgctxt "field:product.product,height_digits:"
 msgid "Height Digits"
-msgstr "Hoogte decimalen"
+msgstr ""
 
 msgctxt "field:product.product,height_uom:"
 msgid "Height Uom"
-msgstr "hoogte maateenheid"
+msgstr ""
 
 msgctxt "field:product.product,length:"
 msgid "Length"
-msgstr "Lengte"
+msgstr ""
 
 msgctxt "field:product.product,length_digits:"
 msgid "Length Digits"
-msgstr "lengte decimalen"
+msgstr ""
 
 msgctxt "field:product.product,length_uom:"
 msgid "Length Uom"
-msgstr "Lengte maateenheid"
+msgstr ""
 
 msgctxt "field:product.product,volume:"
 msgid "Volume"
-msgstr "Volume"
+msgstr ""
 
 msgctxt "field:product.product,volume_digits:"
 msgid "Volume Digits"
-msgstr "Volume decimalen"
+msgstr ""
 
 msgctxt "field:product.product,volume_uom:"
 msgid "Volume Uom"
-msgstr "Volume maateenhied"
+msgstr ""
 
 msgctxt "field:product.product,weight:"
 msgid "Weight"
-msgstr "Gewicht"
+msgstr ""
 
 msgctxt "field:product.product,weight_digits:"
 msgid "Weight Digits"
-msgstr "decimalen gewicht"
+msgstr ""
 
 msgctxt "field:product.product,weight_uom:"
 msgid "Weight Uom"
-msgstr "maateenheid gewicht"
+msgstr ""
 
 msgctxt "field:product.product,width:"
 msgid "Width"
-msgstr "Breedte"
+msgstr ""
 
 msgctxt "field:product.product,width_digits:"
 msgid "Width Digits"
-msgstr "decimalen breedte"
+msgstr ""
 
 msgctxt "field:product.product,width_uom:"
 msgid "Width Uom"
-msgstr "maateenheid breedte"
+msgstr ""
 
 msgctxt "field:product.template,height:"
 msgid "Height"
-msgstr "Hoogte"
+msgstr ""
 
 msgctxt "field:product.template,height_digits:"
 msgid "Height Digits"
-msgstr "decimalen hoogte"
+msgstr ""
 
 msgctxt "field:product.template,height_uom:"
 msgid "Height Uom"
-msgstr "maateenheid hoogte"
+msgstr ""
 
 msgctxt "field:product.template,length:"
 msgid "Length"
-msgstr "Lengte"
+msgstr ""
 
 msgctxt "field:product.template,length_digits:"
 msgid "Length Digits"
-msgstr "lengte decimalen"
+msgstr ""
 
 msgctxt "field:product.template,length_uom:"
 msgid "Length Uom"
-msgstr "lengte maateenheid"
+msgstr ""
 
 msgctxt "field:product.template,volume:"
 msgid "Volume"
-msgstr "Volume"
+msgstr ""
 
 msgctxt "field:product.template,volume_digits:"
 msgid "Volume Digits"
-msgstr "volume decimalen"
+msgstr ""
 
 msgctxt "field:product.template,volume_uom:"
 msgid "Volume Uom"
-msgstr "volume maateenheid"
+msgstr ""
 
 msgctxt "field:product.template,weight:"
 msgid "Weight"
-msgstr "Gewicht"
+msgstr ""
 
 msgctxt "field:product.template,weight_digits:"
 msgid "Weight Digits"
-msgstr "gewicht decimalen"
+msgstr ""
 
 msgctxt "field:product.template,weight_uom:"
 msgid "Weight Uom"
-msgstr "gewicht maateenheid"
+msgstr ""
 
 msgctxt "field:product.template,width:"
 msgid "Width"
-msgstr "Breedte"
+msgstr ""
 
 msgctxt "field:product.template,width_digits:"
 msgid "Width Digits"
-msgstr "decimalen breedte"
+msgstr ""
 
 msgctxt "field:product.template,width_uom:"
 msgid "Width Uom"
-msgstr "maateenheid breedte"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Measurements"
-msgstr "afmetingen"
+msgstr ""
