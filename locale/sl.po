@@ -6,34 +6,10 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Nabavna dostavna lokacija"
 
-msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt ""
 "field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Nabavna dostavna lokacija"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
@@ -71,33 +47,9 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Prodajna dostavna lokacija"
 
-msgctxt "field:sale.configuration.sale_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
-msgctxt "field:sale.configuration.sale_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
-
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Prodajna dostavna lokacija"
-
-msgctxt "field:sale.configuration.sale_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
@@ -131,14 +83,6 @@ msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
 msgstr "Kontakt"
 
-msgctxt "field:stock.shipment.drop,create_date:"
-msgid "Create Date"
-msgstr "Izdelano"
-
-msgctxt "field:stock.shipment.drop,create_uid:"
-msgid "Create User"
-msgstr "Izdelal"
-
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
 msgstr "Kupec"
@@ -155,10 +99,6 @@ msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
 msgstr "Dejanski datum"
 
-msgctxt "field:stock.shipment.drop,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Promet"
@@ -166,10 +106,6 @@ msgstr "Promet"
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr "Načrtovan datum"
-
-msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Record Name"
-msgstr "Ime"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -186,14 +122,6 @@ msgstr "Dobavitelj"
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr "Promet dobavitelja"
-
-msgctxt "field:stock.shipment.drop,write_date:"
-msgid "Write Date"
-msgstr "Zapisano"
-
-msgctxt "field:stock.shipment.drop,write_uid:"
-msgid "Write User"
-msgstr "Zapisal"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
@@ -338,23 +266,3 @@ msgstr "Odpremljeno"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Čakajoče"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Cancel"
-msgstr "Preklic"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Done"
-msgstr "Zaključeno"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Draft"
-msgstr "Priprava"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Ship"
-msgstr "Pošiljanje"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Wait"
-msgstr "Čakanje"

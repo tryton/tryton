@@ -6,39 +6,10 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:purchase.configuration.purchase_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt ""
 "field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr ""
-
-msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 #, fuzzy
 msgctxt "field:purchase.product_supplier,drop_shipment:"
@@ -82,38 +53,9 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:sale.configuration.sale_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
@@ -152,16 +94,6 @@ msgid "Contact Address"
 msgstr "Контактный адрес"
 
 #, fuzzy
-msgctxt "field:stock.shipment.drop,create_date:"
-msgid "Create Date"
-msgstr "Дата создания"
-
-#, fuzzy
-msgctxt "field:stock.shipment.drop,create_uid:"
-msgid "Create User"
-msgstr "Создано пользователем"
-
-#, fuzzy
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
 msgstr "Заказчик"
@@ -181,11 +113,6 @@ msgid "Effective Date"
 msgstr "Учетная дата"
 
 #, fuzzy
-msgctxt "field:stock.shipment.drop,id:"
-msgid "ID"
-msgstr "ID"
-
-#, fuzzy
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Перемещения"
@@ -194,10 +121,6 @@ msgstr "Перемещения"
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr "Плановая дата"
-
-msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Record Name"
-msgstr ""
 
 #, fuzzy
 msgctxt "field:stock.shipment.drop,reference:"
@@ -217,16 +140,6 @@ msgstr "Поставщик"
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:stock.shipment.drop,write_date:"
-msgid "Write Date"
-msgstr "Дата изменения"
-
-#, fuzzy
-msgctxt "field:stock.shipment.drop,write_uid:"
-msgid "Write User"
-msgstr "Изменено пользователем"
 
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
 msgid "Drop Shipments"
@@ -369,23 +282,3 @@ msgstr "Shipped"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Ожидание"
-
-#, fuzzy
-msgctxt "view:stock.shipment.drop:"
-msgid "Cancel"
-msgstr "Отменено"
-
-#, fuzzy
-msgctxt "view:stock.shipment.drop:"
-msgid "Done"
-msgstr "Выполнено"
-
-#, fuzzy
-msgctxt "view:stock.shipment.drop:"
-msgid "Draft"
-msgstr "Черновик"
-
-#, fuzzy
-msgctxt "view:stock.shipment.drop:"
-msgid "Wait"
-msgstr "Ожидают"

@@ -6,34 +6,10 @@ msgctxt "field:purchase.configuration,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Localização de Envio Direto"
 
-msgctxt "field:purchase.configuration.purchase_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt ""
 "field:purchase.configuration.purchase_drop_location,purchase_drop_location:"
 msgid "Purchase Drop Location"
 msgstr "Localização de Compra do Envio Direto"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:purchase.configuration.purchase_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:purchase.product_supplier,drop_shipment:"
 msgid "Drop Shipment"
@@ -71,33 +47,9 @@ msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Localização de Envio Direto de Venda"
 
-msgctxt "field:sale.configuration.sale_drop_location,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:sale.configuration.sale_drop_location,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
-msgctxt "field:sale.configuration.sale_drop_location,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:sale.configuration.sale_drop_location,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
-
 msgctxt "field:sale.configuration.sale_drop_location,sale_drop_location:"
 msgid "Sale Drop Location"
 msgstr "Localização de Envio Direto de Venda"
-
-msgctxt "field:sale.configuration.sale_drop_location,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:sale.configuration.sale_drop_location,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 msgctxt "field:sale.sale,drop_location:"
 msgid "Drop Location"
@@ -131,14 +83,6 @@ msgctxt "field:stock.shipment.drop,contact_address:"
 msgid "Contact Address"
 msgstr "Endereço de Contato"
 
-msgctxt "field:stock.shipment.drop,create_date:"
-msgid "Create Date"
-msgstr "Data de criação"
-
-msgctxt "field:stock.shipment.drop,create_uid:"
-msgid "Create User"
-msgstr "Criado por"
-
 msgctxt "field:stock.shipment.drop,customer:"
 msgid "Customer"
 msgstr "Cliente"
@@ -155,10 +99,6 @@ msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
 msgstr "Data efetiva"
 
-msgctxt "field:stock.shipment.drop,id:"
-msgid "ID"
-msgstr "ID"
-
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
 msgstr "Movimentações"
@@ -166,10 +106,6 @@ msgstr "Movimentações"
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"
 msgstr "Data Planejada"
-
-msgctxt "field:stock.shipment.drop,rec_name:"
-msgid "Record Name"
-msgstr "Nome do Registro"
 
 msgctxt "field:stock.shipment.drop,reference:"
 msgid "Reference"
@@ -186,14 +122,6 @@ msgstr "Fornecedor"
 msgctxt "field:stock.shipment.drop,supplier_moves:"
 msgid "Supplier Moves"
 msgstr "Movimentações do Fornecedor"
-
-msgctxt "field:stock.shipment.drop,write_date:"
-msgid "Write Date"
-msgstr "Data de edição"
-
-msgctxt "field:stock.shipment.drop,write_uid:"
-msgid "Write User"
-msgstr "Editado por"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_drop_shipment_form"
@@ -338,23 +266,3 @@ msgstr "Enviado"
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Waiting"
 msgstr "Em espera"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Done"
-msgstr "Concluído"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Draft"
-msgstr "Rascunho"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Ship"
-msgstr "Enviar"
-
-msgctxt "view:stock.shipment.drop:"
-msgid "Wait"
-msgstr "Esperar"
