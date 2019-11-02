@@ -80,75 +80,17 @@ msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.category-customer-account.tax,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:product.category-customer-account.tax,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:product.category-customer-account.tax,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:product.category-customer-account.tax,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:product.category-customer-account.tax,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.category-supplier-account.tax,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:product.category-supplier-account.tax,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:product.category-supplier-account.tax,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:product.category-supplier-account.tax,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:product.category-supplier-account.tax,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
@@ -166,35 +108,6 @@ msgctxt "field:product.category.account,company:"
 msgid "Company"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.category.account,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:product.category.account,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:product.category.account,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:product.category.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-#, fuzzy
-msgctxt "field:product.category.account,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:product.category.account,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
-
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
 msgstr ""
@@ -207,38 +120,9 @@ msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr ""
 
-#, fuzzy
-msgctxt "field:product.template-product.category.account,create_date:"
-msgid "Create Date"
-msgstr "创建日期:"
-
-#, fuzzy
-msgctxt "field:product.template-product.category.account,create_uid:"
-msgid "Create User"
-msgstr "添加用户"
-
-#, fuzzy
-msgctxt "field:product.template-product.category.account,id:"
-msgid "ID"
-msgstr "编号"
-
-msgctxt "field:product.template-product.category.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
 msgstr ""
-
-#, fuzzy
-msgctxt "field:product.template-product.category.account,write_date:"
-msgid "Write Date"
-msgstr "写入日期"
-
-#, fuzzy
-msgctxt "field:product.template-product.category.account,write_uid:"
-msgid "Write User"
-msgstr "写入帐号"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."

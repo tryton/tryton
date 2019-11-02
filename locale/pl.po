@@ -81,65 +81,17 @@ msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
 msgstr "Kategoria"
 
-msgctxt "field:product.category-customer-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.category-customer-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.category-customer-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
 msgstr "Podatek"
-
-msgctxt "field:product.category-customer-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.category-customer-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
 msgstr "Kategoria"
 
-msgctxt "field:product.category-supplier-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.category-supplier-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.category-supplier-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
 msgstr "Podatek"
-
-msgctxt "field:product.category-supplier-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.category-supplier-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
@@ -157,30 +109,6 @@ msgctxt "field:product.category.account,company:"
 msgid "Company"
 msgstr "Firma"
 
-msgctxt "field:product.category.account,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.category.account,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.category.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.category.account,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:product.category.account,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.category.account,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
 msgstr ""
@@ -193,33 +121,9 @@ msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr "Kategoria"
 
-msgctxt "field:product.template-product.category.account,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.template-product.category.account,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.template-product.category.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-product.category.account,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
 msgstr "Szablon"
-
-msgctxt "field:product.template-product.category.account,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.template-product.category.account,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
@@ -304,119 +208,3 @@ msgstr "Podatki"
 msgctxt "view:product.template:"
 msgid "Accounting"
 msgstr ""
-
-msgctxt "field:product.product,accounts:"
-msgid "Accounts"
-msgstr "Konta"
-
-msgctxt "field:product.template,accounts:"
-msgid "Accounts"
-msgstr "Konta"
-
-msgctxt "field:product.template-customer-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.template-customer-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.template-customer-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-customer-account.tax,product:"
-msgid "Product Template"
-msgstr "Szablon produktu"
-
-msgctxt "field:product.template-customer-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:product.template-customer-account.tax,tax:"
-msgid "Tax"
-msgstr "Podatek"
-
-msgctxt "field:product.template-customer-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.template-customer-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:product.template-supplier-account.tax,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.template-supplier-account.tax,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.template-supplier-account.tax,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template-supplier-account.tax,product:"
-msgid "Product Template"
-msgstr "Szablon produktu"
-
-msgctxt "field:product.template-supplier-account.tax,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:product.template-supplier-account.tax,tax:"
-msgid "Tax"
-msgstr "Podatek"
-
-msgctxt "field:product.template-supplier-account.tax,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.template-supplier-account.tax,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "field:product.template.account,company:"
-msgid "Company"
-msgstr "Firma"
-
-msgctxt "field:product.template.account,create_date:"
-msgid "Create Date"
-msgstr "Data utworzenia"
-
-msgctxt "field:product.template.account,create_uid:"
-msgid "Create User"
-msgstr "Utworzył"
-
-msgctxt "field:product.template.account,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:product.template.account,rec_name:"
-msgid "Record Name"
-msgstr "Nazwa rekordu"
-
-msgctxt "field:product.template.account,template:"
-msgid "Template"
-msgstr "Szablon"
-
-msgctxt "field:product.template.account,write_date:"
-msgid "Write Date"
-msgstr "Data zapisu"
-
-msgctxt "field:product.template.account,write_uid:"
-msgid "Write User"
-msgstr "Zapisał"
-
-msgctxt "view:account.create_chart.properties:"
-msgid "Product"
-msgstr "Produkt"
-
-msgctxt "view:product.template:"
-msgid "Accounts"
-msgstr "Konta"
-
-msgctxt "view:product.template:"
-msgid "Taxes"
-msgstr "Podatki"

@@ -80,64 +80,16 @@ msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
 msgstr ""
 
-msgctxt "field:product.category-customer-account.tax,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
-msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:product.category-customer-account.tax,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
 msgstr ""
 
-msgctxt "field:product.category-supplier-account.tax,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:product.category-supplier-account.tax,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:product.category-supplier-account.tax,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.category-supplier-account.tax,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
-msgstr ""
-
-msgctxt "field:product.category-supplier-account.tax,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:product.category-supplier-account.tax,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "field:product.category.account,account_expense:"
@@ -156,30 +108,6 @@ msgctxt "field:product.category.account,company:"
 msgid "Company"
 msgstr ""
 
-msgctxt "field:product.category.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:product.category.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:product.category.account,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.category.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
-msgctxt "field:product.category.account,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:product.category.account,write_uid:"
-msgid "Write User"
-msgstr ""
-
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
 msgstr ""
@@ -192,32 +120,8 @@ msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
 msgstr ""
 
-msgctxt "field:product.template-product.category.account,create_date:"
-msgid "Create Date"
-msgstr ""
-
-msgctxt "field:product.template-product.category.account,create_uid:"
-msgid "Create User"
-msgstr ""
-
-msgctxt "field:product.template-product.category.account,id:"
-msgid "ID"
-msgstr ""
-
-msgctxt "field:product.template-product.category.account,rec_name:"
-msgid "Record Name"
-msgstr ""
-
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
-msgstr ""
-
-msgctxt "field:product.template-product.category.account,write_date:"
-msgid "Write Date"
-msgstr ""
-
-msgctxt "field:product.template-product.category.account,write_uid:"
-msgid "Write User"
 msgstr ""
 
 msgctxt "help:product.category,account_parent:"

@@ -4,206 +4,206 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr "Vaikimisi kulukonto"
+msgstr ""
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Vaikimisi tulukonto"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr "Vaikimisi kulukonto"
+msgstr ""
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr "Vaikimisi tulukonto"
+msgstr ""
 
 msgctxt "field:account.create_chart.properties,category_account_expense:"
 msgid "Default Expense Account"
-msgstr "Vaikimisi kulukonto"
+msgstr ""
 
 msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
-msgstr "Vaikimisi tulukonto"
+msgstr ""
 
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
-msgstr "Toode"
+msgstr "Produk"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr "Toote kategooria"
+msgstr "Kategori Produk"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
-msgstr "Kulukonto"
+msgstr ""
 
 msgctxt "field:product.category,account_parent:"
 msgid "Use Parent's accounts"
-msgstr "Kasuta ülemkontot"
+msgstr "Gunakan rekening Induk"
 
 msgctxt "field:product.category,account_revenue:"
 msgid "Account Revenue"
-msgstr "Tulukonto"
+msgstr "Rekening Pendapatan"
 
 msgctxt "field:product.category,accounting:"
 msgid "Accounting"
-msgstr "Raamatupidamine"
+msgstr "Akuntansi"
 
 msgctxt "field:product.category,accounts:"
 msgid "Accounts"
-msgstr "Kontod"
+msgstr ""
 
 msgctxt "field:product.category,customer_taxes:"
 msgid "Customer Taxes"
-msgstr "Kliendi maksud"
+msgstr ""
 
 msgctxt "field:product.category,customer_taxes_used:"
 msgid "Customer Taxes Used"
-msgstr "Kliendi maksud"
+msgstr ""
 
 msgctxt "field:product.category,supplier_taxes:"
 msgid "Supplier Taxes"
-msgstr "Tarnija maksud"
+msgstr ""
 
 msgctxt "field:product.category,supplier_taxes_used:"
 msgid "Supplier Taxes Used"
-msgstr "Hankija maksud"
+msgstr ""
 
 msgctxt "field:product.category,taxes_parent:"
 msgid "Use the Parent's Taxes"
-msgstr "Kasuta ülemkonto makse"
+msgstr ""
 
 msgctxt "field:product.category-customer-account.tax,category:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "field:product.category-customer-account.tax,tax:"
 msgid "Tax"
-msgstr "Maksud"
+msgstr "Pajak"
 
 msgctxt "field:product.category-supplier-account.tax,category:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "field:product.category-supplier-account.tax,tax:"
 msgid "Tax"
-msgstr "Maksud"
+msgstr "Pajak"
 
 msgctxt "field:product.category.account,account_expense:"
 msgid "Account Expense"
-msgstr "Kulukonto"
+msgstr ""
 
 msgctxt "field:product.category.account,account_revenue:"
 msgid "Account Revenue"
-msgstr "Tulukonto"
+msgstr ""
 
 msgctxt "field:product.category.account,category:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "field:product.category.account,company:"
 msgid "Company"
-msgstr "Ettevõte"
+msgstr "Perusahaan"
 
 msgctxt "field:product.product,account_category:"
 msgid "Account Category"
-msgstr "Konto kategooria"
+msgstr ""
 
 msgctxt "field:product.template,account_category:"
 msgid "Account Category"
-msgstr "Konto kategooria"
+msgstr ""
 
 msgctxt "field:product.template-product.category.account,category:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "field:product.template-product.category.account,template:"
 msgid "Template"
-msgstr "Mall"
+msgstr ""
 
 msgctxt "help:product.category,account_parent:"
 msgid "Use the accounts defined on the parent category."
-msgstr "Kasuta kontosid mis on defineeritud ülema taseme kategoorias"
+msgstr ""
 
 msgctxt "help:product.category,accounting:"
 msgid "Check to convert into accounting category."
-msgstr "Märgista et konverteerida raamatupidamise kategooriasse"
+msgstr ""
 
 msgctxt "help:product.category,customer_taxes:"
 msgid "The taxes to apply when selling products of this category."
-msgstr "Rakenduvad maksud kui müüakse selle kategooria tooteid"
+msgstr ""
 
 msgctxt "help:product.category,supplier_taxes:"
 msgid "The taxes to apply when purchasing products of this category."
-msgstr "Rakenduvad maksud kui ostetakse selle kategooria kaupu"
+msgstr ""
 
 msgctxt "help:product.category,taxes_parent:"
 msgid "Use the taxes defined on the parent category."
-msgstr "Kasuta makse mis on defineeirtud kõrgema taseme katrgooriale"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr "\"%(nime)de\" jaoks ei ole defineeritud ühtegi \"%(välja)välju\""
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
-msgstr "Toote \"%(nime)dele\" ei ole defineeritud ühtegi konto kategooriat"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr "Määratlemata kategooria"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
 msgid "User in company"
-msgstr "Kasutaja ettevõttes"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr "Mitte raamatupidamislik kategooria"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
 msgid "User in company"
-msgstr "Kasutaja ettevõttes"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"
-msgstr "Kategooria - Kliendi maksud"
+msgstr "Kategori - Pajak Pelanggan"
 
 msgctxt "model:product.category-supplier-account.tax,name:"
 msgid "Category - Supplier Tax"
-msgstr "Kategooria - Tarnija maksud"
+msgstr "Kategori - Pajak Pemasok"
 
 msgctxt "model:product.category.account,name:"
 msgid "Category Account"
-msgstr "Kategooria konto"
+msgstr ""
 
 msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
-msgstr "Vorm - konto kategooria"
+msgstr ""
 
 msgctxt "view:account.configuration:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"
-msgstr "Kategooria"
+msgstr "Kategori"
 
 msgctxt "view:product.category:"
 msgid "Accounting"
-msgstr "Raamatupidamine"
+msgstr "Akuntansi"
 
 msgctxt "view:product.category:"
 msgid "Accounts"
-msgstr "Kontod"
+msgstr ""
 
 msgctxt "view:product.category:"
 msgid "Taxes"
-msgstr "Maksud"
+msgstr ""
 
 msgctxt "view:product.template:"
 msgid "Accounting"
-msgstr "Raamatupidamine"
+msgstr "Akuntansi"
