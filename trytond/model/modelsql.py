@@ -538,11 +538,11 @@ class ModelSQL(ModelStorage):
                         '%s,%s' % (cls.__name__, id_))
                 except KeyError:
                     continue
-                sql_type = fields.Float('timestamp').sql_type().base
+                sql_type = fields.Char('timestamp').sql_type().base
                 where.append((table.id == id_)
                     & (Extract('EPOCH',
                             Coalesce(table.write_date, table.create_date)
-                            ).cast(sql_type) > timestamp))
+                            ).cast(sql_type) != timestamp))
             if where:
                 cursor.execute(*table.select(table.id, where=where, limit=1))
                 if cursor.fetchone():
