@@ -1,3 +1,5 @@
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
 * Use SQL CurrentTimestamp to fill numbered_at
 * Rename open_date into numbered_at
 
