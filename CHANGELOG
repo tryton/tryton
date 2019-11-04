@@ -1,3 +1,5 @@
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
 * Support visual context on tree view
 * Support multiselection field
 * Support dot notation on PYSON Eval
