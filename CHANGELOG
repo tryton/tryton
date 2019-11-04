@@ -1,3 +1,5 @@
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
 * New identifier button toggles webhook
 * Add fetch events cron task
 * Update checkout.html to use Stripe.js and Intent
