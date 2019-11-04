@@ -1,3 +1,5 @@
+Version 5.4.0 - 2019-11-04
+* Bug fixes (see mercurial logs for details)
 * Limit subdivision types on address
 * Add call url for mobile contact mechanisms
 * Replace country and language in address format by codes
