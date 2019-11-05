@@ -524,6 +524,8 @@ class ModelSQL(ModelStorage):
                         '%s,%s' % (cls.__name__, id_))
                 except KeyError:
                     continue
+                if timestamp is None:
+                    continue
                 sql_type = fields.Char('timestamp').sql_type().base
                 where.append((table.id == id_)
                     & (Extract('EPOCH',

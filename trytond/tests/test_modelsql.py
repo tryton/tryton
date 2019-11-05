@@ -77,6 +77,10 @@ class ModelSQLTestCase(unittest.TestCase):
         self.assertRaises(ConcurrencyException,
             ModelsqlTimestamp.delete, [record])
 
+        transaction.timestamp[str(record)] = None
+        ModelsqlTimestamp.write([record], {})
+        transaction.commit()
+
         transaction.timestamp.pop(str(record), None)
         ModelsqlTimestamp.write([record], {})
         transaction.commit()
