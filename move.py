@@ -1176,6 +1176,7 @@ class Line(ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('move', None)
         default.setdefault('reconciliation', None)
+        default.setdefault('reconciliations_delegated', [])
         return super(Line, cls).copy(lines, default=default)
 
     @classmethod
