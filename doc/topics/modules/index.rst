@@ -115,7 +115,6 @@ Here is the list of the tags:
       attributes:
 
         * ``noupdate`` to prevent the framework to update the records,
-        * ``skiptest`` to prevent import of data when running tests,
         * ``depends`` to import data only if all modules in the comma separated
           module list value are installed,
         * ``grouped`` to create records at the end with a grouped call.

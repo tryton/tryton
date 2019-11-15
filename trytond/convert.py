@@ -472,11 +472,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
             elif name == "data":
                 self.noupdate = bool(int(attributes.get("noupdate", '0')))
                 self.grouped = bool(int(attributes.get('grouped', 0)))
-                if self.pool.test and \
-                        bool(int(attributes.get("skiptest", '0'))):
-                    self.skip_data = True
-                else:
-                    self.skip_data = False
+                self.skip_data = False
                 depends = attributes.get('depends', '').split(',')
                 depends = {m.strip() for m in depends if m}
                 if not depends.issubset(self.modules):
