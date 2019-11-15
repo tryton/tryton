@@ -276,6 +276,9 @@ class ActionMixin(ModelSQL):
                 if getattr(Action, default_func, None):
                     setattr(cls, default_func,
                         partial(ActionMixin._default_action, name))
+        cls.__rpc__.update({
+                'fetch_action': RPC(cache=dict(days=1)),
+                })
 
     @staticmethod
     def _default_action(name):
@@ -405,6 +408,11 @@ class ActionMixin(ModelSQL):
         actions = cls.search(domain)
         groups = {g.id for a in actions for g in a.groups}
         return groups
+
+    @classmethod
+    def fetch_action(cls, action_id):
+        fields = list(cls._fields.keys())
+        return cls.search_read([('action', '=', action_id)], fields, limit=1)
 
 
 class ActionReport(ActionMixin, ModelSQL, ModelView):

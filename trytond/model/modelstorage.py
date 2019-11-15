@@ -508,8 +508,8 @@ class ModelStorage(Model):
         '''
         records = cls.search(domain, offset=offset, limit=limit, order=order)
 
-        if not fields_names:
-            fields_names = list(cls._fields.keys())
+        if fields_names is None:
+            fields_names = ['id']
         if 'id' not in fields_names:
             fields_names.append('id')
         rows = cls.read(list(map(int, records)), fields_names)

@@ -29,11 +29,13 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(
             all(x['id'] < y['id'] for x, y in zip(rows, rows[1:])))
 
-        rows = ModelStorage.search_read([], order=[('name', 'ASC')])
+        rows = ModelStorage.search_read(
+            [], order=[('name', 'ASC')], fields_names=['name'])
         self.assertTrue(
             all(x['name'] <= y['name'] for x, y in zip(rows, rows[1:])))
 
-        rows = ModelStorage.search_read([], order=[('name', 'DESC')])
+        rows = ModelStorage.search_read(
+            [], order=[('name', 'DESC')], fields_names=['name'])
         self.assertTrue(
             all(x['name'] >= y['name'] for x, y in zip(rows, rows[1:])))
 
