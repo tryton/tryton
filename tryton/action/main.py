@@ -55,8 +55,7 @@ class Action(object):
             action, = RPCExecute('model', 'ir.action', 'read', [act_id],
                 ['type'], context=context)
             action_type = action['type']
-        action, = RPCExecute('model', action_type, 'search_read',
-            [('action', '=', act_id)], 0, 1, None, None,
+        action, = RPCExecute('model', action_type, 'fetch_action', act_id,
             context=context)
         if keyword:
             keywords = {
