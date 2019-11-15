@@ -214,8 +214,8 @@
             });
         } else {
             Sao.rpc({
-                'method': 'model.' + type + '.search_read',
-                'params': [[['action', '=', id]], 0, 1, null, null, context]
+                'method': 'model.' + type + '.fetch_action',
+                'params': [id, context]
             }, Sao.Session.current_session).done(function(result) {
                 var action = result[0];
                 if (keyword) {
