@@ -1161,6 +1161,18 @@
         });
     });
 
+    var timedelta_tests_parse = [
+        [Sao.TimeDelta(), '  '],
+        [Sao.TimeDelta(), 'foo'],
+        [Sao.TimeDelta(1.5), '1.5d'],
+        [Sao.TimeDelta(-2), '1d -1d'],
+        [Sao.TimeDelta(0, 10, 0, 5, 1), '1:5:10:42'],
+        [Sao.TimeDelta(0, 0, 0, 0, 2), '1: 1:'],
+        [Sao.TimeDelta(0, 0, 0, 0, 0.25), ':15'],
+        [Sao.TimeDelta(0, 0, 0, 0, 1), '1h'],
+        [Sao.TimeDelta(0, 0, 0, 0, 0.25), '.25h'],
+    ];
+
     QUnit.test('timedelta.parse', function() {
         function asSeconds(timedelta) {
             if (timedelta) {
@@ -1169,12 +1181,12 @@
                 return timedelta;
             }
         }
-        timedelta_tests.forEach(function(test) {
+        timedelta_tests.concat(timedelta_tests_parse).forEach(function(test) {
             var timedelta = test[0];
             var text = test[1];
             QUnit.equal(asSeconds(Sao.common.timedelta.parse(text)),
                 asSeconds(timedelta),
-                'timedelta.format(' + JSON.stringify(timedelta) + ')');
+                'timedelta.parse(' + JSON.stringify(timedelta) + ')');
         });
     });
 
