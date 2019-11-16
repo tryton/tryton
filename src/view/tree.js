@@ -3,6 +3,18 @@
 (function() {
     'use strict';
 
+    if ('IntersectionObserver' in window) {
+        var moreObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    jQuery(entry.target).trigger('click');
+                }
+            });
+        }, {
+            rootMargin: '0px 0px 50px 0px',
+        });
+    }
+
     Sao.View.TreeXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_tree: function(node, attributes) {
             [].forEach.call(node.childNodes, function(child) {
@@ -692,6 +704,9 @@
                 more_cell.append(more_button);
                 more_row.append(more_cell);
                 this.tbody.append(more_row);
+                if (moreObserver) {
+                    moreObserver.observe(more_button[0]);
+                }
             }
         },
         redraw: function(selected, expanded) {

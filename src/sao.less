@@ -120,6 +120,13 @@
 
 .modal-body {
     overflow-x: auto;
+    max-height: calc(100vh - 200px);
+}
+
+@media screen and (max-height: 500px) {
+    .modal-body {
+        max-height: 300px;
+    }
 }
 
 .modal-lg {
