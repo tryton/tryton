@@ -30,6 +30,26 @@ def date2datetime(date):
     return datetime.datetime.combine(date, datetime.time())
 
 
+February = 2
+
+
+def normalized_delta(start, end):
+    "Returns timedelta using fixed 365 days per year"
+    assert start <= end
+    delta = end - start
+    correction = 0
+    if start.year == end.year:
+        if calendar.isleap(start.year) and start.month <= 2 and end.month > 2:
+            correction -= 1
+    else:
+        if calendar.isleap(start.year) and start.month <= February:
+            correction -= 1
+        if calendar.isleap(end.year) and end.month > February:
+            correction -= 1
+        correction -= calendar.leapdays(start.year + 1, end.year)
+    return delta + datetime.timedelta(days=correction)
+
+
 class Asset(Workflow, ModelSQL, ModelView):
     'Asset'
     __name__ = 'account.asset'
@@ -396,21 +416,30 @@ class Asset(Workflow, ModelSQL, ModelView):
             start_date = max([self.start_date
                     - relativedelta.relativedelta(days=1)]
                 + [l.date for l in self.lines])
-            first_delta = dates[0] - start_date
+            first_delta = normalized_delta(start_date, dates[0])
             if len(dates) > 1:
-                last_delta = dates[-1] - dates[-2]
+                last_delta = normalized_delta(dates[-2], dates[-1])
             else:
                 last_delta = first_delta
             if self.frequency == 'monthly':
                 _, first_ndays = calendar.monthrange(
                     dates[0].year, dates[0].month)
+                if (calendar.isleap(dates[0].year)
+                        and dates[0].month == February):
+                    first_ndays -= 1
                 _, last_ndays = calendar.monthrange(
                     dates[-1].year, dates[-1].month)
+                if (calendar.isleap(dates[-1].year)
+                        and dates[-1].month == February):
+                    last_ndays -= 1
             elif self.frequency == 'yearly':
-                first_ndays = 365 + calendar.isleap(dates[0].year)
-                last_ndays = 365 + calendar.isleap(dates[-1].year)
-            first_ratio = Decimal(first_delta.days) / Decimal(first_ndays)
-            last_ratio = Decimal(last_delta.days) / Decimal(last_ndays)
+                first_ndays = last_ndays = 365
+            first_ratio = (
+                Decimal(min(first_delta.days, first_ndays))
+                / Decimal(first_ndays))
+            last_ratio = (
+                Decimal(min(last_delta.days, last_ndays))
+                / Decimal(last_ndays))
             depreciation = amount / (
                 len(dates) - 2 + first_ratio + last_ratio)
             if date == dates[0]:

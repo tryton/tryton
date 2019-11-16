@@ -1,3 +1,5 @@
+* Use fixed year of 365 days
+
 Version 5.4.0 - 2019-11-04
 * Bug fixes (see mercurial logs for details)
 * Add depreciated amount

@@ -13,10 +13,14 @@ An Asset defines how an asset is depreciated. It is mainly defined by:
 - Value, Depreciated Amount and Residual Value.
 - Start and End Date.
 - Depreciation Method:
+
   - Linear
+
 - Frequency:
+
   - Monthly
-  - Yearly
+  - Yearly (using fixed year of 365 days)
+
 - Lines.
 
 The asset can be in one of this states:
@@ -31,7 +35,7 @@ The asset can be in one of this states:
 
 * Closed
 
-  The value of the asset has been completly depreciated.
+  The value of the asset has been completely depreciated.
 
 A wizard "Create Assets Moves" allows to post all accounting move up to a date.
 
