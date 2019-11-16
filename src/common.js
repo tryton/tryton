@@ -395,7 +395,7 @@
                         j ++) {
                     var t = subparts[j];
                     var v = subconverter[j];
-                    sec = Math.abs(Number(t)) * v;
+                    sec = Math.abs(parseFloat(t)) * v;
                     if (!isNaN(sec)) {
                         seconds += sec;
                     }
@@ -406,7 +406,7 @@
                     separator =separators[key];
                     if (part.endsWith(separator)) {
                         part = part.slice(0, -separator.length);
-                        sec = Math.abs(parseInt(part, 10)) * converter[key];
+                        sec = Math.abs(parseFloat(part)) * converter[key];
                         if (!isNaN(sec)) {
                             seconds += sec;
                         }
@@ -415,7 +415,7 @@
                     }
                 }
                 if (!found) {
-                    sec = Math.abs(Number(part));
+                    sec = Math.abs(parseFloat(part));
                     if (!isNaN(sec)) {
                         seconds += sec;
                     }
