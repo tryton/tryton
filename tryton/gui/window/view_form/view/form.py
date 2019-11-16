@@ -34,7 +34,7 @@ from .form_gtk.dictionary import DictWidget
 from .form_gtk.multiselection import MultiSelection
 from .form_gtk.pyson import PYSON
 from .form_gtk.state_widget import (Label, VBox, Image, Frame, ScrolledWindow,
-    Notebook, Alignment, Expander)
+    Notebook, Expander)
 
 _ = gettext.gettext
 
@@ -91,12 +91,7 @@ class Container(object):
             return
 
         widget.set_vexpand(bool(attributes.get('yexpand')))
-        if attributes.get('yfill'):
-            widget.set_valign(Gtk.Align.FILL)
-
         widget.set_hexpand(bool(attributes.get('xexpand', True)))
-        if attributes.get('xfill', True):
-            widget.set_valign(Gtk.Align.FILL)
 
         if attributes.get('help'):
             self.tooltips.set_tip(widget, attributes['help'])
@@ -227,7 +222,9 @@ class FormXMLViewParser(XMLViewParser):
                 int(attributes.get('width', -1)),
                 int(attributes.get('height', -1)))
 
-        self.container.add(Alignment(widget.widget, attributes), attributes)
+        widget.widget.set_halign(get_align(attributes.get('xalign', 0.5)))
+        widget.widget.set_valign(get_align(attributes.get('yalign', 0.5)))
+        self.container.add(widget.widget, attributes)
 
         if name in self._mnemonics and widget.mnemonic_widget:
             label = self._mnemonics.pop(name)
