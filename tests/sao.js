@@ -951,9 +951,8 @@
                 undefined, undefined, undefined, undefined,
                 new Sao.PYSON.Eval('foo')));
 
-        QUnit.strictEqual(new Sao.PYSON.Decoder(
-            {'foo': 'bar'}).decode(eval_).valueOf(),
-            Sao.DateTime().valueOf());
+        QUnit.ok(new Sao.PYSON.Decoder(
+            {'foo': 'bar'}).decode(eval_).isDateTime);
     });
 
     QUnit.test('PYSON TimeDelta', function() {
