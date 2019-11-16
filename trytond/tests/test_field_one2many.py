@@ -23,6 +23,31 @@ class CommonTestCaseMixin:
         self.assertEqual(target.origin, record)
 
     @with_transaction()
+    def test_save_reverse_field(self):
+        "Test save with reverse field set"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        record.targets = [target]
+
+        record.save()
+
+    @with_transaction()
+    def test_save_reverse_field_saved(self):
+        "Test save with reverse field set on saved"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        target.save()
+        record.targets = [target]
+
+        record.save()
+
+    @with_transaction()
     def test_set_reverse_field_dict(self):
         "Test reverse field is set on dict"
         One2Many = self.One2Many()

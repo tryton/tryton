@@ -1613,20 +1613,29 @@ class ModelStorage(Model):
                 to_create = []
                 to_write = []
                 for target in targets:
-                    if target.id is None or target.id < 0:
-                        if field._type == 'one2many' and field.field:
-                            # Don't store old target link
-                            setattr(target, field.field, None)
-                        to_create.append(target._save_values)
+                    if (field._type == 'one2many'
+                            and field.field
+                            and target._values):
+                        t_values = target._values.copy()
+                        # Don't look at reverse field
+                        target._values.pop(field.field, None)
                     else:
-                        if target.id in to_remove:
-                            to_remove.remove(target.id)
+                        t_values = None
+                    try:
+                        if target.id is None or target.id < 0:
+                            to_create.append(target._save_values)
                         else:
-                            to_add.append(target.id)
-                        target_values = target._save_values
-                        if target_values:
-                            to_write.append(
-                                ('write', [target.id], target_values))
+                            if target.id in to_remove:
+                                to_remove.remove(target.id)
+                            else:
+                                to_add.append(target.id)
+                            target_values = target._save_values
+                            if target_values:
+                                to_write.append(
+                                    ('write', [target.id], target_values))
+                    finally:
+                        if t_values:
+                            target._values = t_values
                 value = []
                 if to_remove:
                     value.append(('remove', to_remove))
