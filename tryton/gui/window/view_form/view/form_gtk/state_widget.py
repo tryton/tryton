@@ -98,19 +98,6 @@ class Notebook(StateMixin, Gtk.Notebook):
                     widget._readonly_set(True)
 
 
-class Alignment(Gtk.Alignment):
-
-    def __init__(self, widget, attrs):
-        super(Alignment, self).__init__()
-        self.props.xalign = float(attrs.get('xalign', 0.0))
-        self.props.yalign = float(attrs.get('yalign', 0.5))
-        self.props.xscale = float(attrs.get('xexpand', 1.0))
-        self.props.yscale = float(attrs.get('yexpand', 1.0))
-        self.add(widget)
-        widget.connect('show', lambda *a: self.show())
-        widget.connect('hide', lambda *a: self.hide())
-
-
 class Expander(StateMixin, Gtk.Expander):
 
     def __init__(self, label=None, attrs=None):
