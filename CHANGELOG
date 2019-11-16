@@ -1,3 +1,4 @@
+* Fill the reverse field in the One2Many setter
 * Drop support for skiptest attribute on xml files
 * Remove implicit field names in ModelStorage.search_read
 

@@ -138,7 +138,7 @@ def get_eval_fields(value):
     return encoder.fields
 
 
-def instanciate_values(Target, value):
+def instanciate_values(Target, value, **extra):
     from ..modelstorage import ModelStorage, cache_size
     kwargs = {}
     ids = []
@@ -148,6 +148,8 @@ def instanciate_values(Target, value):
 
     def instance(data):
         if isinstance(data, Target):
+            for k, v in extra.items():
+                setattr(data, k, v)
             return data
         elif isinstance(data, dict):
             if data.get('id', -1) >= 0:
@@ -157,10 +159,11 @@ def instanciate_values(Target, value):
                 ids.append(data['id'])
             else:
                 values = data
+            values.update(extra)
             return Target(**values)
         else:
             ids.append(data)
-            return Target(data, **kwargs)
+            return Target(data, **extra, **kwargs)
     return tuple(instance(x) for x in (value or []))
 
 

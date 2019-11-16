@@ -15,7 +15,7 @@ class ModelViewChangedValues(ModelView):
     ref_target = fields.Reference('Target Reference', [
             ('test.modelview.changed_values.target', 'Target'),
             ])
-    targets = fields.One2Many('test.modelview.changed_values.target', 'model',
+    targets = fields.One2Many('test.modelview.changed_values.target', 'parent',
         'Targets')
     m2m_targets = fields.Many2Many('test.modelview.changed_values.target',
         None, None, 'Targets')

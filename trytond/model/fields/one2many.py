@@ -254,8 +254,11 @@ class One2Many(Field):
     def __set__(self, inst, value):
         Target = self.get_target()
         ctx = instantiate_context(self, inst)
+        extra = {}
+        if self.field:
+            extra[self.field] = inst
         with Transaction().set_context(ctx):
-            records = instanciate_values(Target, value)
+            records = instanciate_values(Target, value, **extra)
         super(One2Many, self).__set__(inst, records)
 
     def convert_domain(self, domain, tables, Model):

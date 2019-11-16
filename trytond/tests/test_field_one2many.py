@@ -11,6 +11,43 @@ from trytond.tests.test_tryton import activate_module, with_transaction
 class CommonTestCaseMixin:
 
     @with_transaction()
+    def test_set_reverse_field_instance(self):
+        "Test reverse field is set on instance"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        record.targets = [target]
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
+    def test_set_reverse_field_dict(self):
+        "Test reverse field is set on dict"
+        One2Many = self.One2Many()
+
+        record = One2Many()
+        record.targets = [{}]
+        target, = record.targets
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
+    def test_set_reverse_field_id(self):
+        "Test reverse field is set on id"
+        One2Many = self.One2Many()
+        Target = self.One2ManyTarget()
+
+        record = One2Many()
+        target = Target()
+        target.save()
+        record.targets = [target.id]
+        target, = record.targets
+
+        self.assertEqual(target.origin, record)
+
+    @with_transaction()
     def test_create(self):
         "Test create one2many"
         One2Many = self.One2Many()
