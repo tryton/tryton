@@ -956,8 +956,7 @@ class Model(object):
         if loading == 'eager':
             fields = [x for x, y in self._fields.items()
                     if y['loading'] == 'eager']
-        if not self._fields:
-            fields.append('_timestamp')
+        fields.append('_timestamp')
         self._values.update(
             self._proxy.read([self.id], fields, self._context)[0])
         for field in fields:
