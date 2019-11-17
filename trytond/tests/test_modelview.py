@@ -107,6 +107,26 @@ class ModelView(unittest.TestCase):
                     },
                 })
 
+    @with_transaction()
+    def test_changed_values_reverse_field(self):
+        "Test _changed_values with reverse field set"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+        Target = pool.get('test.modelview.changed_values.target')
+
+        record = Model(id=1)
+        record.name = "Record"
+        target = Target()
+        target.name = "Target"
+        record.targets = [target]
+
+        self.assertEqual(record._changed_values, {
+                'name': "Record",
+                'targets': {
+                    'add': [(0, {'name': "Target"})],
+                    },
+                })
+
     @with_transaction(context={'_check_access': True})
     def test_button_access(self):
         'Test Button Access'

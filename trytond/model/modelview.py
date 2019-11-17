@@ -782,26 +782,38 @@ class ModelView(Model):
                 value = collections.defaultdict(list)
                 value['remove'] = [t.id for t in init_targets if t.id]
                 for i, target in enumerate(targets):
-                    if target.id in value['remove']:
-                        value['remove'].remove(target.id)
-                        if isinstance(target, ModelView):
-                            target_changed = target._changed_values
-                            if target_changed:
-                                target_changed['id'] = target.id
-                                value['update'].append(target_changed)
+                    if (field._type == 'one2many'
+                            and field.field
+                            and target._values):
+                        t_values = target._values.copy()
+                        # Don't look at reverse field
+                        target._values.pop(field.field, None)
                     else:
-                        if isinstance(target, ModelView):
-                            # Ensure initial values are returned because target
-                            # was instantiated on server side.
-                            target_init_values = target._init_values
-                            target._init_values = None
-                            try:
-                                added_values = target._changed_values
-                            finally:
-                                target._init_values = target_init_values
+                        t_values = None
+                    try:
+                        if target.id in value['remove']:
+                            value['remove'].remove(target.id)
+                            if isinstance(target, ModelView):
+                                target_changed = target._changed_values
+                                if target_changed:
+                                    target_changed['id'] = target.id
+                                    value['update'].append(target_changed)
                         else:
-                            added_values = target._default_values
-                        value['add'].append((i, added_values))
+                            if isinstance(target, ModelView):
+                                # Ensure initial values are returned because
+                                # target was instantiated on server side.
+                                target_init_values = target._init_values
+                                target._init_values = None
+                                try:
+                                    added_values = target._changed_values
+                                finally:
+                                    target._init_values = target_init_values
+                            else:
+                                added_values = target._default_values
+                            value['add'].append((i, added_values))
+                    finally:
+                        if t_values:
+                            target._values = t_values
                 if not value['remove']:
                     del value['remove']
                 if not value:
