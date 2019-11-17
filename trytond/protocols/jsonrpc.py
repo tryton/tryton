@@ -153,7 +153,9 @@ class JSONProtocol:
             else:
                 response['result'] = data
         else:
-            if isinstance(data, Exception):
+            if isinstance(data, TrytonException):
+                return BadRequest(data)
+            elif isinstance(data, Exception):
                 return InternalServerError(data)
             response = data
         return Response(json.dumps(

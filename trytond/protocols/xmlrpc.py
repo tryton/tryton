@@ -153,6 +153,8 @@ class XMLProtocol:
                     data, methodresponse=True, allow_none=True),
                 content_type='text/xml')
         else:
-            if isinstance(data, Exception):
+            if isinstance(data, TrytonException):
+                return BadRequest(data)
+            elif isinstance(data, Exception):
                 return InternalServerError(data)
             return Response(data)
