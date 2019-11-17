@@ -42,5 +42,23 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_modify_header_draft">
             <field name="text">To modify the header of sale "%(sale)s", it must be in "draft" state.</field>
         </record>
+        <record model="ir.message" id="msg_sale_reporting_company">
+            <field name="text">Company</field>
+        </record>
+        <record model="ir.message" id="msg_sale_reporting_number">
+            <field name="text">#</field>
+        </record>
+        <record model="ir.message" id="msg_sale_reporting_number_help">
+            <field name="text">Number of sales</field>
+        </record>
+        <record model="ir.message" id="msg_sale_reporting_revenue">
+            <field name="text">Revenue</field>
+        </record>
+        <record model="ir.message" id="msg_sale_reporting_revenue_trend">
+            <field name="text">Revenue Trend</field>
+        </record>
+        <record model="ir.message" id="msg_sale_reporting_currency_digits">
+            <field name="text">Currency Digits</field>
+        </record>
     </data>
 </tryton>

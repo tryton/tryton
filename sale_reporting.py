@@ -19,6 +19,7 @@ from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 from trytond.pyson import Eval, If
 from trytond.wizard import Wizard, StateTransition, StateAction
+from trytond.i18n import lazy_gettext
 
 __all__ = ['Context',
     'Customer', 'CustomerTimeseries',
@@ -37,17 +38,23 @@ def pairwise(iterable):
 
 class Abstract(ModelSQL):
 
-    company = fields.Many2One('company.company', "Company")
-    number = fields.Integer("#", help="Number of sales")
+    company = fields.Many2One(
+        'company.company', lazy_gettext("sale.msg_sale_reporting_company"))
+    number = fields.Integer(lazy_gettext("sale.msg_sale_reporting_number"),
+        help=lazy_gettext("sale.msg_sale_reporting_number_help"))
     revenue = fields.Numeric(
-        "Revenue", digits=(16, Eval('currency_digits', 2)),
+        lazy_gettext("sale.msg_sale_reporting_revenue"),
+        digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
     revenue_trend = fields.Function(
-        fields.Char("Revenue Trend"), 'get_trend')
+        fields.Char(lazy_gettext("sale.msg_sale_reporting_revenue_trend")),
+        'get_trend')
     time_series = None
 
     currency_digits = fields.Function(
-        fields.Integer("Currency Digits"), 'get_currency_digits')
+        fields.Integer(
+            lazy_gettext("sale.msg_sale_reporting_currency_digits")),
+        'get_currency_digits')
 
     @classmethod
     def table_query(cls):
