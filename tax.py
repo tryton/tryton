@@ -1140,6 +1140,8 @@ class TaxableMixin(object):
                     line.quantity, self.tax_date)
                 for tax in l_taxes:
                     taxline = self._compute_tax_line(**tax)
+                    # Base must always be rounded per line as there will be one
+                    # tax line per taxable_lines
                     if self.currency:
                         taxline['base'] = self.currency.round(taxline['base'])
                     if taxline not in taxes:

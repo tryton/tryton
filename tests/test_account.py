@@ -14,6 +14,7 @@ from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 
 from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.tests import create_currency
 
 
@@ -882,6 +883,78 @@ class AccountTestCase(ModuleTestCase):
                 Tax.reverse_compute(Decimal('222.1'),
                     [vat0, ecotax1, vat1, ecotax3, vat2]),
                 Decimal(100))
+
+    class Taxable(TaxableMixin):
+        __slots__ = ('currency', 'taxable_lines')
+
+        def __init__(self, currency=None, taxable_lines=None):
+            super().__init__()
+            self.currency = currency
+            self.taxable_lines = taxable_lines
+
+    @with_transaction()
+    def test_taxable_mixin_line(self):
+        "Test TaxableMixin with rounding on line"
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            config = Configuration(1)
+            config.tax_rounding = 'line'
+            config.save()
+
+            taxable = self.Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax], Decimal('1.001'), 1),
+                    ] * 100)
+
+            taxes = taxable._get_taxes()
+
+        tax, = taxes
+        self.assertEqual(tax['base'], Decimal('100.00'))
+        self.assertEqual(tax['amount'], Decimal('20.00'))
+
+    @with_transaction()
+    def test_taxable_mixin_document(self):
+        "Test TaxableMixin with rounding on document"
+        pool = Pool()
+        Tax = pool.get('account.tax')
+        Configuration = pool.get('account.configuration')
+        currency = create_currency('cur')
+
+        class Taxable(TaxableMixin):
+            __slots__ = ('currency', 'taxable_lines')
+
+            def __init__(self, currency=None, taxable_lines=None):
+                super().__init__()
+                self.currency = currency
+                self.taxable_lines = taxable_lines
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            config = Configuration(1)
+            config.tax_rounding = 'document'
+            config.save()
+
+            taxable = Taxable(
+                currency=currency,
+                taxable_lines=[
+                    ([tax], Decimal('1.001'), 1),
+                    ] * 100)
+
+            taxes = taxable._get_taxes()
+
+        tax, = taxes
+        self.assertEqual(tax['base'], Decimal('100.00'))
+        self.assertEqual(tax['amount'], Decimal('20.02'))
 
     @with_transaction()
     def test_tax_compute_with_children_update_unit_price(self):
