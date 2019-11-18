@@ -412,7 +412,8 @@ class ActionMixin(ModelSQL):
     @classmethod
     def fetch_action(cls, action_id):
         fields = list(cls._fields.keys())
-        return cls.search_read([('action', '=', action_id)], fields, limit=1)
+        return cls.search_read(
+            [('action', '=', action_id)], fields_names=fields, limit=1)
 
 
 class ActionReport(ActionMixin, ModelSQL, ModelView):
