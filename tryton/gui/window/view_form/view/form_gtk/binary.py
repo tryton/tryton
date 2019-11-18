@@ -88,9 +88,10 @@ class BinaryMixin(Widget):
     def select(self, widget=None):
         if not self.field:
             return
-        self._set_uri(
-            'file:///' + file_selection(
-                _('Select'), preview=self.preview, filters=self.filters))
+        filename = file_selection(
+            _('Select'), preview=self.preview, filters=self.filters)
+        if filename:
+            self._set_uri('file:///' + filename)
 
     def select_drag_data_received(
             self, widget, context, x, y, selection, info, timestamp):
