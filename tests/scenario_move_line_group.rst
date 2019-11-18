@@ -13,6 +13,7 @@ Imports::
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
+    >>> from trytond.modules.account.exceptions import CancelDelegatedWarning
 
 Install account::
 
@@ -129,3 +130,22 @@ Group lines::
     Decimal('50')
     >>> delegate_to.maturity_date == period.start_date + dt.timedelta(days=2)
     True
+
+Cancelling the delegation move::
+
+   >>> delegation_move = delegate_to.move
+   >>> cancel = Wizard('account.move.cancel', [delegation_move])
+   >>> try:
+   ...   cancel.execute('cancel')
+   ... except CancelDelegatedWarning as warning:
+   ...   _, (key, *_) = warning.args
+   ...   raise  # doctest: +IGNORE_EXCEPTION_DETAIL
+   Traceback (most recent call last):
+      ...
+   CancelDelegatedWarning: ...
+
+   >>> Warning = Model.get('res.user.warning')
+   >>> Warning(user=config.user, name=key).save()
+   >>> cancel.execute('cancel')
+   >>> Reconciliation.find([('id', '=', reconciliations[0].id)])
+   []

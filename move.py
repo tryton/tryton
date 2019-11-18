@@ -2,7 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 import datetime
-from itertools import groupby, combinations, chain
+import hashlib
+from itertools import groupby, combinations, chain, islice
 from operator import itemgetter
 from collections import defaultdict
 
@@ -26,7 +27,8 @@ from trytond.tools import reduce_ids, grouped_slice
 from trytond.config import config
 
 from .exceptions import (PostError, MoveDatesError, CancelWarning,
-    ReconciliationError, DeleteDelegatedWarning, GroupLineError)
+    ReconciliationError, DeleteDelegatedWarning, GroupLineError,
+    CancelDelegatedWarning)
 
 __all__ = ['Move', 'Reconciliation', 'Line', 'WriteOff', 'OpenJournalAsk',
     'OpenJournal', 'OpenAccount',
@@ -1545,13 +1547,19 @@ class UnreconcileLines(Wizard):
     def transition_unreconcile(self):
         pool = Pool()
         Line = pool.get('account.move.line')
-        Reconciliation = pool.get('account.move.reconciliation')
 
         lines = Line.browse(Transaction().context['active_ids'])
+        self.make_unreconciliation(lines)
+        return 'end'
+
+    @classmethod
+    def make_unreconciliation(cls, lines):
+        pool = Pool()
+        Reconciliation = pool.get('account.move.reconciliation')
+
         reconciliations = [x.reconciliation for x in lines if x.reconciliation]
         if reconciliations:
             Reconciliation.delete(reconciliations)
-        return 'end'
 
 
 class Reconcile(Wizard):
@@ -1816,9 +1824,31 @@ class CancelMoves(Wizard):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
+        Warning = pool.get('res.user.warning')
+        Unreconcile = pool.get('account.move.unreconcile_lines', type='wizard')
 
         moves = Move.browse(Transaction().context['active_ids'])
+        moves_w_delegation = {
+            m: [ml for ml in m.lines
+                if ml.reconciliation and ml.reconciliation.delegate_to]
+            for m in moves}
+        if any(dml for dml in moves_w_delegation.values()):
+            names = ', '.join(m.rec_name for m in
+                islice(moves_w_delegation.keys(), None, 5))
+            if len(moves_w_delegation) > 5:
+                names += '...'
+            key = '%s.cancel_delegated' % hashlib.md5(
+                str(list(moves_w_delegation)).encode('utf8')).hexdigest()
+            if Warning.check(key):
+                raise CancelDelegatedWarning(
+                    key, gettext(
+                        'account.msg_cancel_line_delegated', moves=names))
+
         for move in moves:
+            if moves_w_delegation.get(move):
+                # Skip further warnings
+                with Transaction().set_user(0):
+                    Unreconcile.make_unreconciliation(moves_w_delegation[move])
             default = self.default_cancel(move)
             cancel_move = move.cancel(default=default)
             to_reconcile = defaultdict(list)

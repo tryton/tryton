@@ -190,5 +190,8 @@ You may need to cancel its move "%(move)s".</field>
         <record model="ir.message" id="msg_group_line_maximum_account">
             <field name="text">You cannot group lines from more than 2 different accounts.</field>
         </record>
+        <record model="ir.message" id="msg_cancel_line_delegated">
+            <field name="text">The moves "%(moves)s" contain grouped lines, cancelling them will ungroup the lines.</field>
+        </record>
     </data>
 </tryton>

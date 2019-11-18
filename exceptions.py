@@ -81,5 +81,9 @@ class DeleteDelegatedWarning(UserWarning):
     pass
 
 
+class CancelDelegatedWarning(UserWarning):
+    pass
+
+
 class GroupLineError(UserError):
     pass
