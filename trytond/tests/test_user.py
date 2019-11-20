@@ -28,7 +28,7 @@ class UserTestCase(unittest.TestCase):
         self.addCleanup(config.set, 'session', 'authentications', methods)
 
         length = config.get('password', 'length')
-        config.set('password', 'length', 4)
+        config.set('password', 'length', '4')
         self.addCleanup(config.set, 'password', 'length', length)
 
         forbidden = config.get('password', 'forbidden', default='')
@@ -38,10 +38,10 @@ class UserTestCase(unittest.TestCase):
         self.addCleanup(config.set, 'password', 'forbidden', forbidden)
 
         entropy = config.get('password', 'entropy')
-        config.set('password', 'entropy', 0.9)
+        config.set('password', 'entropy', '0.9')
         self.addCleanup(config.set, 'password', 'entropy', entropy)
 
-        reset_from = config.get('email', 'from')
+        reset_from = config.get('email', 'from', fallback='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
