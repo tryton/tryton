@@ -9,6 +9,17 @@ from html.parser import HTMLParser
 
 from gi.repository import Gtk, Gdk, Pango
 
+
+def guess_decode(bytes, errors='strict'):
+    for encoding in [sys.getfilesystemencoding(), 'utf-8', 'utf-16', 'utf-32']:
+        try:
+            return bytes.decode(encoding)
+        except UnicodeDecodeError:
+            continue
+    else:
+        return bytes.decode('ascii', errors=errors)
+
+
 MIME = Gdk.Atom.intern('text/html', False)
 # Disable serialize/deserialize registration function because it does not work
 # on GTK-3, the "guint8 *data" is converted into a Gtk.TextIter
@@ -269,15 +280,7 @@ def serialize(register, content, start, end, data):
 
 def deserialize(register, content, iter_, text, create_tags, data):
     if not isinstance(text, str):
-        for encoding in [sys.getfilesystemencoding(),
-                'utf-8', 'utf-16', 'utf-32']:
-            try:
-                text = text.decode(encoding)
-            except UnicodeDecodeError:
-                continue
-            break
-        else:
-            text = text.decode('ascii', errors='replace')
+        text = guess_decode(text, errors='replace')
     text, tags = parse_markup(normalize_markup(text, method='xml'))
     offset = iter_.get_offset()
     content.insert(iter_, text)
