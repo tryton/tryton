@@ -22,7 +22,7 @@ class NotificationEmailTestCase(ModuleTestCase):
 
     def setUp(self):
         super(NotificationEmailTestCase, self).setUp()
-        reset_from = config.get('email', 'from')
+        reset_from = config.get('email', 'from', default='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
