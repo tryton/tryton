@@ -38,7 +38,7 @@ class Wizard(InfoBar):
         self.email = False
         self.context = None
         self.states = {}
-        self.response2state = {}
+        self.response2button = {}
         self.__processing = False
         self.__waiting_response = False
         self.session_id = None
@@ -165,10 +165,11 @@ class Wizard(InfoBar):
 
     def response(self, widget, response):
         self.__waiting_response = False
-        state = self.response2state.get(response, self.end_state)
+        button_attrs = self.response2button[response].attrs
+        state = button_attrs.get('state', self.end_state)
         self.screen.current_view.set_value()
-        if (not self.screen.current_record.validate()
-                and state != self.end_state):
+        if (button_attrs.get('validate', True)
+                and not self.screen.current_record.validate()):
             self.screen.display(set_cursor=True)
             self.message_info(
                 self.screen.invalid_message(), Gtk.MessageType.ERROR)
@@ -181,7 +182,7 @@ class Wizard(InfoBar):
         button = Button(definition)
         self.states[definition['state']] = button
         response = len(self.states)
-        self.response2state[response] = definition['state']
+        self.response2button[response] = button
         button.show()
         return button
 
