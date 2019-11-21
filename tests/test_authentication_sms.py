@@ -25,7 +25,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
 
     def setUp(self):
         super(AuthenticationSMSTestCase, self).setUp()
-        methods = config.get('session', 'authentications')
+        methods = config.get('session', 'authentications', default='')
         config.set('session', 'authentications', 'password_sms')
         self.addCleanup(config.set, 'session', 'authentications', methods)
         config.add_section('authentication_sms')
@@ -35,12 +35,12 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         self.addCleanup(config.remove_section, 'authentication_sms')
         del sms_queue[:]
 
-        length = config.get('password', 'length')
-        config.set('password', 'length', 4)
+        length = config.get('password', 'length', default='')
+        config.set('password', 'length', '4')
         self.addCleanup(config.set, 'password', 'length', length)
 
-        entropy = config.get('password', 'entropy')
-        config.set('password', 'entropy', 0.8)
+        entropy = config.get('password', 'entropy', default='')
+        config.set('password', 'entropy', '0.8')
         self.addCleanup(config.set, 'password', 'entropy', entropy)
 
     @with_transaction()
