@@ -23,24 +23,25 @@ class WebUserTestCase(ModuleTestCase):
 
     def setUp(self):
         super(WebUserTestCase, self).setUp()
-        validation_url = config.get('web', 'email_validation_url')
+        validation_url = config.get('web', 'email_validation_url', default='')
         config.set('web', 'email_validation_url', VALIDATION_URL)
         self.addCleanup(
             lambda: config.set('web', 'email_validation_url', validation_url))
-        reset_password_url = config.get('web', 'reset_password_url')
+        reset_password_url = config.get(
+            'web', 'reset_password_url', default='')
         config.set('web', 'reset_password_url', RESET_PASSWORD_URL)
         self.addCleanup(lambda: config.set(
                 'web', 'reset_password_url', reset_password_url))
-        reset_from = config.get('email', 'from')
+        reset_from = config.get('email', 'from', default='')
         config.set('email', 'from', FROM)
         self.addCleanup(lambda: config.set('email', 'from', reset_from))
 
-        length = config.get('password', 'length')
-        config.set('password', 'length', 4)
+        length = config.get('password', 'length', default='')
+        config.set('password', 'length', '4')
         self.addCleanup(config.set, 'password', 'length', length)
 
-        entropy = config.get('password', 'entropy')
-        config.set('password', 'entropy', 0.8)
+        entropy = config.get('password', 'entropy', default='')
+        config.set('password', 'entropy', '0.8')
         self.addCleanup(config.set, 'password', 'entropy', entropy)
 
     def create_user(self, email, password):
