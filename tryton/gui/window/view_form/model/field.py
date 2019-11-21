@@ -3,6 +3,7 @@
 import os
 from itertools import chain
 import tempfile
+import logging
 import locale
 from tryton.common import \
         domain_inversion, eval_domain, localize_domain, \
@@ -15,8 +16,11 @@ import decimal
 from decimal import Decimal
 import math
 from tryton.common import RPCExecute, RPCException
+from tryton.common.htmltextbuffer import guess_decode
 from tryton.pyson import PYSONDecoder
 from tryton.config import CONFIG
+
+logger = logging.getLogger(__name__)
 
 
 class Field(object):
@@ -202,6 +206,17 @@ class CharField(Field):
 
     def get(self, record):
         return super(CharField, self).get(record) or self._default
+
+    def set_client(self, record, value, force_change=False):
+        if isinstance(value, bytes):
+            try:
+                value = guess_decode(value)
+            except UnicodeDecodeError:
+                logger.warning(
+                    "The encoding can not be guessed for field '%(name)s'",
+                    {'name': self.name})
+                value = None
+        super().set_client(record, value, force_change)
 
 
 class SelectionField(Field):
