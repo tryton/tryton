@@ -127,20 +127,19 @@
             this.widget.empty();
             this.states = {};
         },
-        response: function(state) {
+        response: function(definition) {
             this.__waiting_response = false;
             this.screen.current_view.set_value();
-            return this.screen.current_record.validate().then(function(validate) {
-                if ((!validate) && state != this.end_state) {
-                    this.screen.display(true);
-                    this.info_bar.message(
-                        this.screen.invalid_message(), 'danger');
-                    return;
-                }
-                this.info_bar.message();
-                this.state = state;
-                this.process();
-            }.bind(this));
+            if (definition.validate && this.screen.current_record.validate(
+                    null, null, null, true)) {
+                this.screen.display(true);
+                this.info_bar.message(
+                    this.screen.invalid_message(), 'danger');
+                return;
+            }
+            this.info_bar.message();
+            this.state = definition.state;
+            this.process();
         },
         _get_button: function(definition) {
             var button = new Sao.common.Button(definition);
@@ -213,7 +212,7 @@
                 definition);
             this.footer.append(button.el);
             button.el.click(function() {
-                this.response(definition.state);
+                this.response(definition);
             }.bind(this));
             return button;
         },
@@ -250,7 +249,7 @@
                 if (e.which == Sao.common.ESC_KEYCODE) {
                     e.preventDefault();
                     if (this.end_state in this.states) {
-                        this.response(this.end_state);
+                        this.response(this.states[this.end_state].attributes);
                     }
                 }
             }.bind(this));
@@ -268,13 +267,13 @@
             if (definition['default']) {
                 this.content.unbind('submit');
                 this.content.submit(function(e) {
-                    this.response(definition.state);
+                    this.response(definition);
                     e.preventDefault();
                 }.bind(this));
                 button.el.attr('type', 'submit');
             } else {
                 button.el.click(function() {
-                    this.response(definition.state);
+                    this.response(definition);
                 }.bind(this));
             }
             return button;
