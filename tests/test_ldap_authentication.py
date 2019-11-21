@@ -21,7 +21,7 @@ class LDAPAuthenticationTestCase(ModuleTestCase):
 
     def setUp(self):
         super(LDAPAuthenticationTestCase, self).setUp()
-        methods = config.get('session', 'authentications')
+        methods = config.get('session', 'authentications', default='')
         config.set('session', 'authentications', 'ldap')
         self.addCleanup(config.set, 'session', 'authentications', methods)
         config.add_section(section)
