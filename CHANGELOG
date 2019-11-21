@@ -1,3 +1,4 @@
+* Add validate attribute to wizard's Button
 * Return 400 instead of 500 for Tryton exception
 * Fill the reverse field in the One2Many setter
 * Drop support for skiptest attribute on xml files

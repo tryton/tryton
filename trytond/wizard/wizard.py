@@ -23,13 +23,15 @@ class Button(object):
     Define a button on wizard.
     '''
 
-    def __init__(self, string, state, icon='', default=False, states=None):
+    def __init__(self, string, state,
+            icon='', default=False, states=None, validate=None):
         self.string = string
         self.state = state
         self.icon = icon
         self.default = bool(default)
         self.__states = None
         self.states = states or {}
+        self.validate = validate
 
     @property
     def states(self):
@@ -115,10 +117,14 @@ class StateView(State):
         encoder = PYSONEncoder()
         result = []
         for button in self.buttons:
+            validate = (button.validate
+                if button.validate is not None
+                else button.state != wizard.end_state)
             result.append({
                     'state': button.state,
                     'icon': button.icon,
                     'default': button.default,
+                    'validate': validate,
                     'string': (translations.get(translation_key(button))
                         or button.string),
                     'states': encoder.encode(button.states),

@@ -185,7 +185,7 @@ StateReport
 Button
 ======
 
-.. class:: Button(string, state[, icon[, default]])
+.. class:: Button(string, state[, icon[, default[, validate]]])
 
     A :class:`Button` is a single object containing the definition of a wizard
     button.
@@ -207,3 +207,10 @@ Instance attributes are:
 .. attribute:: Button.default
 
     A boolean to set it as default on the form.
+
+.. attribute:: Button.validate
+
+   A boolean or None.
+   If True, validation of the form will occur, if False it won't. If the value
+   is None the validation will occur only if the state of the button is not the
+   wizard ending state.
