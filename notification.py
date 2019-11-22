@@ -369,6 +369,14 @@ class EmailLog(ModelSQL, ModelView):
     trigger = fields.Many2One(
         'ir.trigger', 'Trigger', required=True, ondelete='CASCADE')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order = [
+            ('create_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
+
     def get_date(self, name):
         return self.create_date.replace(microsecond=0)
 
