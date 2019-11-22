@@ -89,6 +89,7 @@ class WizardTestCase(unittest.TestCase):
                     'icon': 'tryton-cancel',
                     'default': False,
                     'string': 'Cancel',
+                    'validate': False,
                     },
                 {
                     'state': 'next_',
@@ -96,6 +97,7 @@ class WizardTestCase(unittest.TestCase):
                     'icon': 'tryton-next',
                     'default': True,
                     'string': 'Next',
+                    'validate': True,
                     },
                 ])
         result = Wizard.execute(session_id, {
