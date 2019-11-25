@@ -53,6 +53,12 @@ if minor_version % 2:
     version = '%s.%s.dev0' % (major_version, minor_version)
     download_url = 'hg+http://hg.tryton.org/%s#egg=%s-%s' % (
         name, name, version)
+local_version = []
+for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER', 'CI_JOB_ID']:
+    if os.environ.get(build):
+        local_version.append(os.environ[build])
+if local_version:
+    version += '+' + '.'.join(local_version)
 
 if platform.python_implementation() == 'PyPy':
     pg_require = ['psycopg2cffi >= 2.5.4']
