@@ -71,7 +71,11 @@ class StatementImport(metaclass=PoolMeta):
         origin.date = transaction.date.date()
         origin.amount = transaction.amount
         origin.party = self.ofx_party(ofx_account, transaction)
-        origin.description = transaction.memo
+        if origin.party:
+            origin.description = transaction.memo
+        else:
+            origin.description = '|'.join(
+                filter(None, [transaction.payee, transaction.memo]))
         origin.information = self.ofx_information(ofx_account, transaction)
         return [origin]
 
