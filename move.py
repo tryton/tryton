@@ -1881,9 +1881,20 @@ class GroupLines(Wizard):
         Line = pool.get('account.move.line')
 
         lines = Line.browse(Transaction().context['active_ids'])
-        grouping = self.grouping(lines)
+        move, balance_line = self._group_lines(lines)
 
-        move, balance_line = self.get_move(lines, grouping)
+        return 'end'
+
+    def _group_lines(self, lines, date=None):
+        move, balance_line = self.group_lines(lines, self.start.journal, date)
+        move.description = self.start.description
+        return move, balance_line
+
+    @classmethod
+    def group_lines(cls, lines, journal, date=None):
+        grouping = cls.grouping(lines)
+
+        move, balance_line = cls.get_move(lines, grouping, journal, date)
         move.save()
 
         to_reconcile = defaultdict(list)
@@ -1897,7 +1908,7 @@ class GroupLines(Wizard):
         for lines in to_reconcile.values():
             Line.reconcile(lines, delegate_to=balance_line)
 
-        return 'end'
+        return move, balance_line
 
     @classmethod
     def grouping(cls, lines):
@@ -1943,7 +1954,8 @@ class GroupLines(Wizard):
     def allow_grouping(cls, account):
         return account.type.payable or account.type.receivable
 
-    def get_move(self, lines, grouping, date=None):
+    @classmethod
+    def get_move(cls, lines, grouping, journal, date=None):
         pool = Pool()
         Date = pool.get('ir.date')
         Move = pool.get('account.move')
@@ -1957,8 +1969,7 @@ class GroupLines(Wizard):
         move = Move()
         move.date = date
         move.period = period
-        move.journal = self.start.journal
-        move.description = self.start.description
+        move.journal = journal
 
         accounts = {a: 0 for a in grouping['accounts']}
         amount_second_currency = 0
@@ -1971,7 +1982,7 @@ class GroupLines(Wizard):
                     maturity_dates[line.account], line.maturity_date)
             else:
                 maturity_dates[line.account] = line.maturity_date
-            line = self._counterpart_line(line)
+            line = cls._counterpart_line(line)
             accounts[line.account] += line.debit - line.credit
             if line.amount_second_currency:
                 amount_second_currency += line.amount_second_currency
@@ -2008,7 +2019,8 @@ class GroupLines(Wizard):
         balance_line.maturity_date = maturity_dates[balance_line.account]
         return move, balance_line
 
-    def _counterpart_line(self, line):
+    @classmethod
+    def _counterpart_line(cls, line):
         pool = Pool()
         Line = pool.get('account.move.line')
 
