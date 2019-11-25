@@ -11,11 +11,11 @@ except ImportError:
 from trytond.config import config
 
 __all__ = ['name', 'get']
+_database_uri = config.get('database', 'uri', default='')
 
 
 def name():
-    return urllib.parse.urlparse(
-        config.get('database', 'uri', default='')).scheme
+    return urllib.parse.urlparse(_database_uri).scheme
 
 
 def get(prop):

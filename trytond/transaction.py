@@ -8,6 +8,7 @@ from sql import Flavor
 from trytond import backend
 from trytond.config import config
 
+_cache_model = config.getint('cache', 'model')
 logger = logging.getLogger(__name__)
 
 
@@ -83,8 +84,7 @@ class Transaction(object):
         keys = tuple(((key, self.context[key])
                 for key in sorted(self.cache_keys)
                 if key in self.context))
-        return self.cache.setdefault((self.user, keys),
-            LRUDict(config.getint('cache', 'model')))
+        return self.cache.setdefault((self.user, keys), LRUDict(_cache_model))
 
     def start(self, database_name, user, readonly=False, context=None,
             close=False, autocommit=False):

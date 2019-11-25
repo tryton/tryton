@@ -30,6 +30,8 @@ from .modelview import ModelView
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
+_cache_record = config.getint('cache', 'record')
+_cache_field = config.getint('cache', 'field')
 
 
 class AccessError(UserError):
@@ -77,8 +79,7 @@ def without_check_access(func):
 
 
 def cache_size():
-    return Transaction().context.get('_record_cache_size',
-        config.getint('cache', 'record'))
+    return Transaction().context.get('_record_cache_size', _cache_record)
 
 
 def is_leaf(expression):
@@ -1435,8 +1436,6 @@ class ModelStorage(Model):
             to_remove = set(x for x, y in fread_accesses.items()
                     if not y and x != name)
 
-            threshold = config.getint('cache', 'field')
-
             def not_cached(item):
                 fname, field = item
                 return (fname not in self._cache.get(self.id, {})
@@ -1454,7 +1453,7 @@ class ModelStorage(Model):
             ifields = filter(to_load,
                 filter(not_cached,
                     iter(self._fields.items())))
-            ifields = islice(ifields, 0, threshold)
+            ifields = islice(ifields, 0, _cache_field)
             ffields.update(ifields)
 
         # add datetime_field
