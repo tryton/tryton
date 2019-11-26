@@ -2,10 +2,10 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form>
-    <label name="name"/>
-    <field name="name"/>
     <label name="string"/>
     <field name="string"/>
+    <label name="name"/>
+    <field name="name"/>
     <label name="type_"/>
     <field name="type_"/>
     <label name="digits"/>

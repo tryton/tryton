@@ -4,6 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
-    <newline/>
-    <field name="attributes" colspan="4"/>
+    <field name="attributes" colspan="4" view_ids="product_attribute.attribute_view_list"/>
 </form>
