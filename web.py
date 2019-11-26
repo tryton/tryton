@@ -3,7 +3,7 @@
 
 import string
 import logging
-from urllib.parse import urlunsplit, urljoin, quote
+from urllib.parse import urljoin, quote
 
 from sql.aggregate import Count
 
@@ -12,14 +12,11 @@ from trytond.model import fields, ModelSQL, ModelView
 from trytond.pool import Pool
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
-from trytond.url import HOSTNAME
+from trytond.url import http_host
 from trytond.wsgi import Base64Converter
 
-USE_SSL = bool(config.get('ssl', 'certificate'))
 ALPHABET = string.digits + string.ascii_lowercase
-URL_BASE = config.get('web', 'shortener_base',
-    default=urlunsplit(
-        ('http' + ('s' if USE_SSL else ''), HOSTNAME, '', '', '')))
+URL_BASE = config.get('web', 'shortener_base', default=http_host())
 logger = logging.getLogger(__name__)
 
 
