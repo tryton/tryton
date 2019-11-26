@@ -3149,14 +3149,21 @@
                 'type': 'button'
             }).append(Sao.i18n.gettext('Compare')).click(function() {
                 this.close(dialog);
-                Sao.Tab.create({
-                    'model': model,
-                    'res_id': record_id,
-                    'domain': [['id', '=', record_id]],
-                    'context': context,
-                    'mode': ['form', 'tree']
+                Sao.rpc({
+                    'method': 'model.' + model + '.read',
+                    'params': [[record_id], ['rec_name'], context],
+                }, Sao.Session.current_session).then(function(result) {
+                    var name = result[0].rec_name;
+                    Sao.Tab.create({
+                        'model': model,
+                        'res_id': record_id,
+                        name: Sao.i18n.gettext("Compare: %1", name),
+                        'domain': [['id', '=', record_id]],
+                        'context': context,
+                        'mode': ['form'],
+                    });
+                    prm.reject();
                 });
-                prm.reject();
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',

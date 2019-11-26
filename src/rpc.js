@@ -77,8 +77,9 @@
                     return;
                 } else if (data.error[0] == 'ConcurrencyException') {
                     if (args.method.startsWith('model.') &&
-                            (args.method.endsWith('.write') ||
-                             args.method.endsWith('.delete'))) {
+                        (args.method.endsWith('.write') ||
+                            args.method.endsWith('.delete')) &&
+                        (args.params[0].length == 1)) {
                         var model = args.method.split('.').slice(1, -1).join('.');
                         Sao.common.concurrency.run(model, args.params[0][0],
                                 args.params.slice(-1)[0])
