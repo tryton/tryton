@@ -10,6 +10,7 @@ from trytond.model import fields
 from trytond.model.exceptions import ValidationError
 from trytond.pyson import Eval, PYSONDecoder
 from trytond.rpc import RPC
+from trytond.tools import slugify
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -82,6 +83,11 @@ class DictSchemaMixin(object):
     @staticmethod
     def default_selection_sorted():
         return True
+
+    @fields.depends('name', 'string')
+    def on_change_string(self):
+        if not self.name and self.string:
+            self.name = slugify(self.string.lower(), hyphenate='_')
 
     @classmethod
     def validate(cls, schemas):
