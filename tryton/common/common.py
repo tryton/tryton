@@ -694,7 +694,7 @@ ask = AskDialog()
 
 class ConcurrencyDialog(UniqueDialog):
 
-    def build_dialog(self, parent, resource, obj_id, context):
+    def build_dialog(self, parent):
         tooltips = Tooltips()
         dialog = Gtk.MessageDialog(
             transient_for=parent, modal=True, destroy_with_parent=True,
@@ -714,19 +714,24 @@ class ConcurrencyDialog(UniqueDialog):
         dialog.set_default_response(Gtk.ResponseType.CANCEL)
         return dialog
 
-    def __call__(self, resource, obj_id, context):
-        res = super(ConcurrencyDialog, self).__call__(resource, obj_id,
-            context)
+    def __call__(self, model, id_, context):
+        res = super(ConcurrencyDialog, self).__call__()
 
         if res == Gtk.ResponseType.OK:
             return True
         if res == Gtk.ResponseType.APPLY:
             from tryton.gui.window import Window
-            Window.create(resource,
-                res_id=obj_id,
-                domain=[('id', '=', obj_id)],
-                context=context,
-                mode=['form', 'tree'])
+            name = RPCExecute(
+                'model', model, 'read', [id_], ['rec_name'],
+                context=context)[0]['rec_name']
+            with Window(allow_similar=True):
+                Window.create(
+                    model,
+                    res_id=id_,
+                    name=_("Compare: %s", name),
+                    domain=[('id', '=', id_)],
+                    context=context,
+                    mode=['form'])
         return False
 
 
@@ -872,7 +877,10 @@ def process_exception(exception, *args, **kwargs):
                     description += '\n' + domain_parser.string(domain)
             warning(description, msg)
         elif exception.faultCode == 'ConcurrencyException':
-            if len(args) >= 6:
+            if (len(args) >= 6
+                    and args[0] == 'model'
+                    and args[2] in {'write', 'delete'}
+                    and len(args[3]) == 1):
                 if concurrency(args[1], args[3][0], args[5]):
                     if '_timestamp' in args[5]:
                         del args[5]['_timestamp']
