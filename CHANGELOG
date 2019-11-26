@@ -1,3 +1,5 @@
+* Add is_secure, host and http_host to url module
+* Add __href__ to URLMixin
 * Add validate attribute to wizard's Button
 * Return 400 instead of 500 for Tryton exception
 * Fill the reverse field in the One2Many setter

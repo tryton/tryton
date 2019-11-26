@@ -9,7 +9,7 @@ from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.model import ModelView
 from trytond.pool import Pool
-from trytond.url import HOSTNAME
+from trytond.url import http_host, HOSTNAME
 
 from .mixin import TestMixin, TestSecondMixin, NotMixin
 
@@ -37,6 +37,21 @@ class UrlTestCase(unittest.TestCase):
                 HOSTNAME, urllib.parse.quote(db_name)))
 
     @with_transaction()
+    def testModelHref(self):
+        "Test model href"
+        pool = Pool()
+        UrlObject = pool.get('test.urlobject')
+        db_name = Transaction().database.name
+
+        self.assertEqual(UrlObject.__href__,
+            '%s/#%s/model/test.urlobject' % (
+                http_host(), urllib.parse.quote(db_name)))
+
+        self.assertEqual(UrlObject(1).__href__,
+            '%s/#%s/model/test.urlobject/1' % (
+                http_host(), urllib.parse.quote(db_name)))
+
+    @with_transaction()
     def testWizardURL(self):
         "Test wizard URLs"
         pool = Pool()
@@ -46,6 +61,17 @@ class UrlTestCase(unittest.TestCase):
         self.assertEqual(UrlWizard.__url__,
             'tryton://%s/%s/wizard/test.test_wizard' % (
                 HOSTNAME, urllib.parse.quote(db_name)))
+
+    @with_transaction()
+    def testWizardHref(self):
+        "Test wizard href"
+        pool = Pool()
+        UrlWizard = pool.get('test.test_wizard', type='wizard')
+        db_name = Transaction().database.name
+
+        self.assertEqual(UrlWizard.__href__,
+            '%s/#%s/wizard/test.test_wizard' % (
+                http_host(), urllib.parse.quote(db_name)))
 
 
 class MixinTestCase(unittest.TestCase):

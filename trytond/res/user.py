@@ -51,7 +51,7 @@ from ..rpc import RPC
 from ..exceptions import LoginException, RateLimitException
 from trytond.report import Report, get_email
 from trytond.sendmail import sendmail_transactional
-from trytond.url import HOSTNAME
+from trytond.url import host, http_host
 
 __all__ = [
     'User', 'LoginAttempt', 'UserAction', 'UserGroup', 'Warning_',
@@ -973,7 +973,8 @@ class EmailResetPassword(Report):
         Lang = pool.get('ir.lang')
         context = super(EmailResetPassword, cls).get_context(records, data)
         lang = Lang.get()
-        context['hostname'] = HOSTNAME
+        context['host'] = host()
+        context['http_host'] = http_host()
         context['database'] = Transaction().database.name
         context['expire'] = lang.strftime(
             records[0].password_reset_expire,
