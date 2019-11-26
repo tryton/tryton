@@ -12,7 +12,7 @@ import sql.operators
 
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
-    strip_wildcard, lstrip_wildcard, rstrip_wildcard)
+    strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify)
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
@@ -193,6 +193,14 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_rstrip_wildcard_diferent_wildcard(self):
         self.assertEqual(rstrip_wildcard('a___', '_'), 'a')
+
+    def test_slugify(self):
+        "Test slugify"
+        self.assertEqual(slugify('unicode ♥ is ☢'), 'unicode-is')
+
+    def test_slugify_hyphenate(self):
+        "Test hyphenate in slugify"
+        self.assertEqual(slugify('foo bar', hyphenate='_'), 'foo_bar')
 
 
 class StringPartitionedTestCase(unittest.TestCase):

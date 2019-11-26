@@ -4,14 +4,16 @@
 """
 Miscelleanous tools used by tryton
 """
+import importlib
+import io
 import os
+import re
 import sys
+import types
+import unicodedata
+import warnings
 from array import array
 from itertools import islice
-import types
-import io
-import warnings
-import importlib
 
 from sql import Literal
 from sql.operators import Or
@@ -272,3 +274,15 @@ def rstrip_wildcard(string, wildcard='%', escape='\\'):
     if new_string[-1] == escape:
         return string
     return new_string
+
+
+_slugify_strip_re = re.compile(r'[^\w\s-]')
+_slugify_hyphenate_re = re.compile(r'[-\s]+')
+
+
+def slugify(value, hyphenate='-'):
+    if not isinstance(value, str):
+        value = str(value)
+    value = unicodedata.normalize('NFKD', value)
+    value = str(_slugify_strip_re.sub('', value).strip())
+    return _slugify_hyphenate_re.sub(hyphenate, value)

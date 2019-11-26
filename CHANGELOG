@@ -1,3 +1,4 @@
+* Add slugify tool
 * Add is_secure, host and http_host to url module
 * Add __href__ to URLMixin
 * Add validate attribute to wizard's Button
