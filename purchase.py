@@ -513,6 +513,19 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             return self.unit.digits
         return 2
 
+    def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if self.product:
+            lang = Lang.get()
+            return (lang.format(
+                    '%.*f', (self.unit.digits, self.quantity or 0))
+                + '%s %s @ %s' % (
+                    self.unit.symbol, self.product.rec_name,
+                    self.requisition.rec_name))
+        else:
+            return self.requisition.rec_name
+
     def _get_purchase_request_product_supplier_pattern(self):
         return {
             'company': self.requisition.company.id,
