@@ -454,8 +454,12 @@ class Move(Workflow, ModelSQL, ModelView):
                                 period=period.rec_name))
 
     def get_rec_name(self, name):
-        return ("%s%s %s"
-            % (self.quantity, self.uom.symbol, self.product.rec_name))
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return (lang.format(
+                '%.*f', (self.uom.digits, self.quantity))
+            + '%s %s' % (self.uom.symbol, self.product.rec_name))
 
     @classmethod
     def search_rec_name(cls, name, clause):
