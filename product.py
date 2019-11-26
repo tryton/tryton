@@ -246,7 +246,10 @@ class Product(
                 continue
             field = getattr(cls, attr, None)
             if not field or isinstance(field, TemplateFunction):
-                setattr(cls, attr, TemplateFunction(copy.deepcopy(tfield)))
+                tfield = copy.deepcopy(tfield)
+                if hasattr(tfield, 'field'):
+                    tfield.field = None
+                setattr(cls, attr, TemplateFunction(tfield))
                 order_method = getattr(cls, 'order_%s' % attr, None)
                 if (not order_method
                         and not isinstance(tfield, (
