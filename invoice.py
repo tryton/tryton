@@ -2030,8 +2030,13 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         return [(None, '')] + [(m.model, m.name) for m in models]
 
     def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         if self.product:
-            prefix = self.product.rec_name
+            lang = Lang.get()
+            prefix = (lang.format(
+                    '%.*f', (self.unit.digits, self.quantity or 0))
+                + '%s %s' % (self.unit.symbol, self.product.rec_name))
         elif self.account:
             prefix = self.account.rec_name
         else:
