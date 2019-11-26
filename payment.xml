@@ -224,11 +224,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="interval_number" eval="15"/>
             <field name="interval_type">minutes</field>
         </record>
-    </data>
-    <data noupdate="1">
+
         <record model="ir.action.url" id="url_checkout">
             <field name="name">Stripe Checkout</field>
-            <field name="url">https://%(hostname)s:8000/%(database)s/account_payment_stripe/checkout/%(model)s/%(id)s</field>
+            <field name="url">%(http_host)s/%(database)s/account_payment_stripe/checkout/%(model)s/%(id)s</field>
         </record>
     </data>
 </tryton>

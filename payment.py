@@ -21,7 +21,7 @@ from trytond.report import Report, get_email
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
 from trytond.transaction import Transaction
-from trytond.url import HOSTNAME
+from trytond.url import http_host
 from trytond.wizard import Wizard, StateAction
 
 from trytond.modules.account_payment.exceptions import (
@@ -99,7 +99,7 @@ class CheckoutMixin:
         Checkout = pool.get('account.payment.stripe.checkout', type='wizard')
         action = Checkout.checkout.get_action()
         return action['url'] % {
-            'hostname': HOSTNAME,
+            'http_host': http_host(),
             'database': database,
             'model': self.__class__.__name__,
             'id': self.stripe_checkout_id,
@@ -773,7 +773,7 @@ class Account(ModelSQL, ModelView):
             'identifier': self.webhook_identifier,
             'database_name': Transaction().database.name,
             }
-        return 'https://' + HOSTNAME + (
+        return http_host() + (
             urllib.parse.quote(
                 '/%(database_name)s/account_payment_stripe'
                 '/webhook/%(identifier)s'
