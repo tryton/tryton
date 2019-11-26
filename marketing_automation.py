@@ -31,7 +31,7 @@ from trytond.report import Report
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
-from trytond.url import HOSTNAME
+from trytond.url import http_host
 from trytond.wsgi import Base64Converter
 
 from .exceptions import DomainError, ConditionError, TemplateError
@@ -44,9 +44,7 @@ if not config.get(
         'fullpage')
 
 USE_SSL = bool(config.get('ssl', 'certificate'))
-URL_BASE = config.get('marketing', 'automation_base',
-    default=urlunsplit(
-        ('http' + ('s' if USE_SSL else ''), HOSTNAME, '', '', '')))
+URL_BASE = config.get('marketing', 'automation_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
 
 
