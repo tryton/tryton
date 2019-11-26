@@ -631,7 +631,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         return self.next_consumption_date
 
     def get_rec_name(self, name):
-        return '%s @ %s' % (self.service.rec_name, self.subscription.rec_name)
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return (lang.format(
+                '%.*f', (self.unit.digits, self.quantity or 0))
+            + '%s %s @ %s' % (
+                self.unit.symbol, self.service.rec_name,
+                self.subscription.rec_name))
 
     @classmethod
     def search_rec_name(cls, name, clause):
