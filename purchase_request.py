@@ -162,15 +162,20 @@ class PurchaseRequest(ModelSQL, ModelView):
         tablehandler.not_null_action('origin', action='remove')
 
     def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         if self.product:
-            rec_name = self.product.name
+            lang = Lang.get()
+            rec_name = (lang.format(
+                    '%.*f', (self.uom.digits, self.quantity))
+                + '%s %s' % (self.uom.symbol, self.product.name))
         elif self.description:
             rec_name = self.description.splitlines()[0]
         else:
             rec_name = str(self.id)
 
         if self.warehouse:
-            return "%s@%s" % (rec_name, self.warehouse.name)
+            return "%s @% s" % (rec_name, self.warehouse.name)
         else:
             return rec_name
 
