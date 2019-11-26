@@ -508,7 +508,14 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         sale_line.unit = self.unit
 
     def get_rec_name(self, name):
-        return self.product.rec_name
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        return (lang.format(
+                '%.*f', (self.unit.digits, self.quantity or 0))
+            + '%s %s @ %s' % (
+                self.unit.symbol, self.product.rec_name,
+                self.opportunity.rec_name))
 
     @classmethod
     def search_rec_name(cls, name, clause):
