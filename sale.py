@@ -1504,8 +1504,15 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         return invoice_lines
 
     def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         if self.product:
-            return '%s @ %s' % (self.product.rec_name, self.sale.rec_name)
+            lang = Lang.get()
+            return (lang.format(
+                    '%.*f', (self.unit.digits, self.quantity or 0))
+                + '%s %s @ %s' % (
+                    self.unit.symbol, self.product.rec_name,
+                    self.sale.rec_name))
         else:
             return self.sale.rec_name
 
