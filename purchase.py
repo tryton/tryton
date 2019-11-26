@@ -1537,8 +1537,15 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             return [l for l in self.invoice_lines if not l.stock_moves]
 
     def get_rec_name(self, name):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
         if self.product:
-            return '%s @ %s' % (self.product.rec_name, self.purchase.rec_name)
+            lang = Lang.get()
+            return (lang.format(
+                    '%.*f', (self.unit.digits, self.quantity or 0))
+                + '%s %s @ %s' % (
+                    self.unit.symbol, self.product.rec_name,
+                    self.purchase.rec_name))
         else:
             return self.purchase.rec_name
 
