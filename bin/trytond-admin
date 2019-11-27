@@ -11,11 +11,13 @@ if os.path.isdir(DIR):
 
 import trytond.commandline as commandline
 from trytond.config import config
-import trytond.admin as admin
 
 parser = commandline.get_parser_admin()
 options = parser.parse_args()
 config.update_etc(options.configfile)
 commandline.config_log(options)
+
+# Import after application is configured
+import trytond.admin as admin
 
 admin.run(options)
