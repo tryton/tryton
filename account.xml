@@ -4259,7 +4259,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Remuneraciones pendientes de pago</field>
             <field name="parent" ref="pgc_46"/>
             <field name="code">465</field>
-            <field name="type" ref="es_balance_otros_deudores" chart="pyme"/>
+            <field name="type" ref="es_balance_otros_acreedores" chart="pyme"/>
             <field name="type" ref="es_balance_personal" chart="normal"/>
             <field name="reconcile" eval="True"/>
         </record>
