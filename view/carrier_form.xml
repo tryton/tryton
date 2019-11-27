@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
         <separator string="UPS" colspan="4" id="ups"/>
         <label name="ups_service_type"/>
         <field name="ups_service_type"/>
+        <newline/>
         <label name="ups_label_image_format"/>
         <field name="ups_label_image_format"/>
         <label name="ups_label_height"/>
