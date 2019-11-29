@@ -320,7 +320,8 @@ class Report(URLMixin, PoolBase):
         path = os.path.join(
             dtemp, report.report_name + os.extsep + input_format)
         oext = FORMAT2EXT.get(output_format, output_format)
-        with open(path, 'wb+') as fp:
+        mode = 'w+' if isinstance(data, str) else 'wb+'
+        with open(path, mode) as fp:
             fp.write(data)
         try:
             cmd = ['soffice',
