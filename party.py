@@ -3,7 +3,7 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 
-__all__ = ['Party']
+__all__ = ['Party', 'Replace']
 
 
 class Party(metaclass=PoolMeta):
@@ -11,3 +11,13 @@ class Party(metaclass=PoolMeta):
 
     stripe_customers = fields.One2Many(
         'account.payment.stripe.customer', 'party', "Stripe Customers")
+
+
+class Replace(metaclass=PoolMeta):
+    __name__ = 'party.replace'
+
+    @classmethod
+    def fields_to_replace(cls):
+        return super().fields_to_replace() + [
+            ('account.payment.stripe.customer', 'party'),
+            ]
