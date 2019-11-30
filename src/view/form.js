@@ -1614,11 +1614,7 @@ function eval_pyson(value){
                 this.record, this.get_value(), undefined, this.factor);
         },
         get_value: function() {
-            if (this.input[0].checkValidity()) {
-                return this.input.val();
-            } else {
-                return NaN;
-            }
+            return this.input.val();
         },
         get_client_value: function() {
             var value = '';
