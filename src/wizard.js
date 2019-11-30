@@ -281,18 +281,13 @@
                 var screen;
                 if (!dialog) {
                     dialog = Sao.Tab.tabs.get_current();
-                    if (dialog) {
-                        if (dialog.screen &&
-                               dialog.screen.model_name != this.model) {
-                            is_menu = true;
-                            screen = Sao.main_menu_screen;
-                        }
-                    } else {
-                        is_menu = true;
-                        screen = Sao.main_menu_screen;
-                    }
                 }
-                if (dialog && dialog.screen) {
+                if (!dialog ||
+                    !this.model ||
+                    (Sao.main_menu_screen.model_name == this.model)) {
+                    is_menu = true;
+                    screen = Sao.main_menu_screen;
+                } else {
                     screen = dialog.screen;
                 }
                 if (screen) {
