@@ -5,6 +5,7 @@ import re
 import base64
 import requests
 import ssl
+from itertools import zip_longest
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -185,7 +186,7 @@ class CreateShippingUPS(Wizard):
             # instead of a list of one package
             ups_packages = [ups_packages]
 
-        for tryton_pkg, ups_pkg in zip(packages, ups_packages):
+        for tryton_pkg, ups_pkg in zip_longest(packages, ups_packages):
             label = fields.Binary.cast(base64.b64decode(
                     ups_pkg['ShippingLabel']['GraphicImage']))
             tryton_pkg.shipping_reference = ups_pkg['TrackingNumber']
