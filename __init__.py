@@ -23,6 +23,7 @@ def register():
         module='account_payment_stripe', type_='model')
     Pool.register(
         payment.Checkout,
+        party.Replace,
         module='account_payment_stripe', type_='wizard')
     Pool.register(
         payment.CheckoutPage,
