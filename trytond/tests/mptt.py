@@ -5,10 +5,7 @@ from sql import Null
 from sql.conditionals import Case
 
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, tree, fields
-
-__all__ = [
-    'MPTT',
-    ]
+from trytond.pool import Pool
 
 
 class MPTT(DeactivableMixin, tree(), ModelSQL, ModelView):
@@ -33,3 +30,9 @@ class MPTT(DeactivableMixin, tree(), ModelSQL, ModelView):
     @staticmethod
     def default_right():
         return 0
+
+
+def register(module):
+    Pool.register(
+        MPTT,
+        module=module, type_='model')

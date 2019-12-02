@@ -1,8 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
-
-__all__ = ['TestHistory', 'TestHistoryLine']
+from trytond.pool import Pool
 
 
 class TestHistory(ModelSQL):
@@ -23,3 +22,10 @@ class TestHistoryLine(ModelSQL):
     _history = True
     history = fields.Many2One('test.history', 'History')
     name = fields.Char('Name')
+
+
+def register(module):
+    Pool.register(
+        TestHistory,
+        TestHistoryLine,
+        module=module, type_='model')

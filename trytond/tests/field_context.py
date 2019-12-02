@@ -3,11 +3,7 @@
 
 from trytond.model import ModelSQL, fields
 from trytond.pyson import Eval
-
-__all__ = [
-    'FieldContextParent',
-    'FieldContextChild',
-    ]
+from trytond.pool import Pool
 
 
 class FieldContextParent(ModelSQL):
@@ -23,3 +19,10 @@ class FieldContextParent(ModelSQL):
 class FieldContextChild(ModelSQL):
     'Field Context Child'
     __name__ = 'test.field_context.child'
+
+
+def register(module):
+    Pool.register(
+        FieldContextParent,
+        FieldContextChild,
+        module=module, type_='model')

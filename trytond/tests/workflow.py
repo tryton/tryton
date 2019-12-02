@@ -2,10 +2,7 @@
 # repository contains the full copyright notices and license terms.
 
 from trytond.model import ModelSQL, Workflow, fields
-
-__all__ = [
-    'WorkflowedModel',
-    ]
+from trytond.pool import Pool
 
 
 class WorkflowedModel(Workflow, ModelSQL):
@@ -32,3 +29,9 @@ class WorkflowedModel(Workflow, ModelSQL):
     @Workflow.transition('running')
     def run(cls, records):
         pass
+
+
+def register(module):
+    Pool.register(
+        WorkflowedModel,
+        module=module, type_='model')

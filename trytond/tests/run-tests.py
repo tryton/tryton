@@ -9,7 +9,6 @@ import unittest
 import sys
 
 from trytond.config import config
-from trytond import backend
 
 if __name__ != '__main__':
     raise ImportError('%s can not be imported' % __name__)
@@ -35,6 +34,8 @@ opt = parser.parse_args()
 
 config.update_etc(opt.config)
 
+# Import after application is configured
+from trytond import backend
 if backend.name() == 'sqlite':
     database_name = ':memory:'
 else:

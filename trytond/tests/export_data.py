@@ -2,11 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 "Test for export_data"
 from trytond.model import ModelSQL, fields
-from trytond.pool import PoolMeta
-
-__all__ = [
-    'ExportDataTarget', 'ExportData', 'ExportDataTarget2',
-    'ExportDataRelation']
+from trytond.pool import PoolMeta, Pool
 
 
 class ExportDataTarget(ModelSQL):
@@ -54,3 +50,12 @@ class ExportDataRelation(ModelSQL):
     __name__ = 'test.export_data.relation'
     many2many = fields.Many2One('test.export_data', 'Export Data')
     target = fields.Many2One('test.export_data.target', 'Target')
+
+
+def register(module):
+    Pool.register(
+        ExportDataTarget,
+        ExportData,
+        ExportDataTarget2,
+        ExportDataRelation,
+        module=module, type_='model')
