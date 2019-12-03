@@ -1,11 +1,16 @@
 clone:
     hg:
         image: plugins/hg
+        environment:
+            - HG_SHARE_POOL=/root/.cache/hg
+        volumes:
+            - cache:/root/.cache
 
 pipeline:
     tox:
         image: ${IMAGE}
         commands:
+            - echo -e "[repositories]\nhgext.share =\n[share]\npool = /root/.hgcache\n" >> /root/.hgrc
             - pip install tox pydot
             - tox -e "${TOXENV}"
         volumes:
