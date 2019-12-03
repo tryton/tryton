@@ -1,6 +1,10 @@
 clone:
     hg:
         image: plugins/hg
+        environment:
+            - HG_SHARE_POOL=/root/.cache/hg
+        volumes:
+            - cache:/root/.cache
 
 pipeline:
     npm:
