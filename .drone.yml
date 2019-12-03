@@ -1,6 +1,10 @@
 clone:
     hg:
         image: plugins/hg
+        environment:
+            - HG_SHARE_POOL=/root/.cache/hg
+        volumes:
+            - cache:/root/.cache
 
 pipeline:
     tox:
@@ -12,6 +16,7 @@ pipeline:
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         secrets: [ ups_user_id, ups_password, ups_account_number, ups_license ]
         commands:
+            - echo -e "[repositories]\nhgext.share =\n[share]\npool = /root/.hgcache\n" >> /root/.hgrc
             - pip install tox
             - tox -e "${TOXENV}-${DATABASE}"
         volumes:
