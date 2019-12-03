@@ -132,3 +132,12 @@ class Production(metaclass=PoolMeta):
                             production=production.rec_name,
                             work=work.rec_name))
         super(Production, cls).done(productions)
+
+    @classmethod
+    def copy(cls, productions, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('works')
+        return super().copy(productions, default=default)
