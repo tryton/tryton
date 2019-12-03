@@ -17,6 +17,11 @@ try:
 except ImportError:
     html2text = None
 
+try:
+    import weasyprint
+except ImportError:
+    weasyprint = None
+
 warnings.simplefilter("ignore")
 import relatorio.reporting
 warnings.resetwarnings()
@@ -312,6 +317,11 @@ class Report(URLMixin, PoolBase):
         "converts the report data to another mimetype if necessary"
         input_format = report.template_extension
         output_format = report.extension or report.template_extension
+
+        if (weasyprint
+                and input_format in {'html', 'xhtml'}
+                and output_format == 'pdf'):
+            return output_format, weasyprint.HTML(string=data).write_pdf()
 
         if output_format in MIMETYPES:
             return output_format, data
