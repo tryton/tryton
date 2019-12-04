@@ -16,10 +16,10 @@ pipeline:
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         secrets: [ stripe_secret_key, stripe_publishable_key ]
         commands:
-            - echo "[repositories]" >> /root/.hgrc
+            - echo "[extensions]" >> /root/.hgrc
             - echo "hgext.share =" >> /root/.hgrc
             - echo "[share]" >> /root/.hgrc
-            - echo "pool = /root/.hgcache" >> /root/.hgrc
+            - echo "pool = /root/.cache/hg" >> /root/.hgrc
             - pip install tox
             - tox -e "${TOXENV}-${DATABASE}"
         volumes:
