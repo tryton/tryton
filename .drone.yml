@@ -16,10 +16,10 @@ pipeline:
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         secrets: [ ups_user_id, ups_password, ups_account_number, ups_license ]
         commands:
-            - echo "[repositories]" >> /root/.hgrc
+            - echo "[extensions]" >> /root/.hgrc
             - echo "hgext.share =" >> /root/.hgrc
             - echo "[share]" >> /root/.hgrc
-            - echo "pool = /root/.hgcache" >> /root/.hgrc
+            - echo "pool = /root/.cache/hg" >> /root/.hgrc
             - pip install tox
             - tox -e "${TOXENV}-${DATABASE}"
         volumes:
