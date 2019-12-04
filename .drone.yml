@@ -15,7 +15,10 @@ pipeline:
             - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         commands:
-            - echo -e "[repositories]\nhgext.share =\n[share]\npool = /root/.hgcache\n" >> /root/.hgrc
+            - echo "[repositories]" >> /root/.hgrc
+            - echo "hgext.share =" >> /root/.hgrc
+            - echo "[share]" >> /root/.hgrc
+            - echo "pool = /root/.hgcache" >> /root/.hgrc
             - pip install tox
             - tox -e "${TOXENV}-${DATABASE}"
         volumes:
