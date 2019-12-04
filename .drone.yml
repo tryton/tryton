@@ -10,7 +10,10 @@ pipeline:
     tox:
         image: ${IMAGE}
         commands:
-            - echo -e "[repositories]\nhgext.share =\n[share]\npool = /root/.hgcache\n" >> /root/.hgrc
+            - echo "[repositories]" >> /root/.hgrc
+            - echo "hgext.share =" >> /root/.hgrc
+            - echo "[share]" >> /root/.hgrc
+            - echo "pool = /root/.hgcache" >> /root/.hgrc
             - pip install tox pydot
             - tox -e "${TOXENV}"
         volumes:
