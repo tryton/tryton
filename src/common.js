@@ -2953,20 +2953,18 @@
 
     Sao.common.UserWarningDialog = Sao.class_(Sao.common.WarningDialog, {
         class_: 'user-warning-dialog',
-        always: false,
-        _set_always: function() {
-            this.always = jQuery(this).prop('checked');
-        },
         build_dialog: function(message, title, prm) {
             var dialog = Sao.common.UserWarningDialog._super.build_dialog.call(
                 this, message, title, prm);
-            dialog.body.append(jQuery('<div/>')
-                .append(jQuery('<input/>', {
-                    'type': 'checkbox'
-                }).change(this._set_always.bind(this)))
-                .append(jQuery('<span/>')
-                    .text(Sao.i18n.gettext('Always ignore this warning.')))
-                );
+            var always = jQuery('<input/>', {
+                'type': 'checkbox'
+            });
+            dialog.body.append(jQuery('<div/>', {
+                'class': 'checkbox',
+            }).append(jQuery('<label/>')
+                .append(always)
+                .append(Sao.i18n.gettext('Always ignore this warning.')))
+            );
             dialog.body.append(jQuery('<p/>')
                     .text(Sao.i18n.gettext('Do you want to proceed?')));
             dialog.footer.empty();
@@ -2982,7 +2980,7 @@
                 'type': 'button'
             }).append(Sao.i18n.gettext('Yes')).click(function() {
                 this.close(dialog);
-                if (this.always) {
+                if (always.prop('checked')) {
                     prm.resolve('always');
                 }
                 prm.resolve('ok');
