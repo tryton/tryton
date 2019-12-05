@@ -5,6 +5,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
+from .company import CompanyReport
 from .model import CompanyMultiValueMixin, CompanyValueMixin
 
 __all__ = ['Configuration', 'PartyConfigurationLang', 'Party', 'PartyLang',
@@ -110,3 +111,12 @@ class ContactMechanism(CompanyMultiValueMixin, metaclass=PoolMeta):
             for address in company.party.addresses:
                 if address.country:
                     yield address.country.code
+
+
+class LetterReport(CompanyReport):
+    __name__ = 'party.letter'
+
+    @classmethod
+    def execute(cls, ids, data):
+        with Transaction().set_context(address_with_party=True):
+            return super(LetterReport, cls).execute(ids, data)
