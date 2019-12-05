@@ -4,7 +4,6 @@ from decimal import Decimal
 
 from sql import Null
 
-from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
@@ -12,10 +11,6 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
-
-from .exceptions import CostError
-
-__all__ = ['Production', 'AssignFailed', 'Assign']
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']
@@ -445,52 +440,56 @@ class Production(Workflow, ModelSQL, ModelView):
                 move.save()
         self._set_move_planned_date()
 
+    @property
+    def _list_price_context(self):
+        return {
+            'company': self.company.id,
+            }
+
     @classmethod
     def set_cost(cls, productions):
         pool = Pool()
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
-        digits = Move.unit_price.digits
-        digit = Decimal(str(10 ** -digits[1]))
+        digits = Decimal(str(10 ** -Move.unit_price.digits[1]))
         moves = []
         for production in productions:
-            if not production.quantity or not production.uom:
-                continue
-            if production.company.currency.is_zero(
-                    production.cost - production.output_cost):
-                continue
-            unit_price = production.cost / Decimal(str(production.quantity))
+            sum_ = Decimal(0)
+            prices = {}
             for output in production.outputs:
-                if output.product == production.product:
-                    output.unit_price = Uom.compute_price(
-                        production.uom, unit_price, output.uom).quantize(digit)
+                product = output.product
+                with Transaction().set_context(production._list_price_context):
+                    list_price = product.list_price_used
+                product_price = (Decimal(str(output.quantity))
+                    * Uom.compute_price(
+                        product.default_uom, list_price, output.uom))
+                prices[output] = product_price
+                sum_ += product_price
+
+            if not sum_ and production.product:
+                prices.clear()
+                for output in production.outputs:
+                    if output.product == production.product:
+                        quantity = Uom.compute_qty(
+                            output.uom, output.quantity,
+                            output.product.default_uom, round=False)
+                        quantity = Decimal(str(quantity))
+                        prices[output] = quantity
+                        sum_ += quantity
+
+            for output in production.outputs:
+                if sum_:
+                    ratio = prices.get(output, 0) / sum_
+                else:
+                    ratio = Decimal(1) / len(production.outputs)
+                quantity = Decimal(str(output.quantity))
+                unit_price = (
+                    production.cost * ratio / quantity).quantize(digits)
+                if output.unit_price != unit_price:
+                    output.unit_price = unit_price
                     moves.append(output)
         Move.save(moves)
-
-    @classmethod
-    def validate(cls, productions):
-        super(Production, cls).validate(productions)
-        for production in productions:
-            production.check_cost()
-
-    @property
-    def output_cost(self):
-        cost_price = Decimal(0)
-        for output in self.outputs:
-            cost_price += (Decimal(str(output.quantity)) * output.unit_price)
-        return cost_price
-
-    def check_cost(self):
-        if self.state != 'done':
-            return
-        cost_price = self.output_cost
-        if not self.company.currency.is_zero(self.cost - cost_price):
-            raise CostError(gettext(
-                    'production.msg_uneven_costs',
-                    production=self.rec_name,
-                    costs=self.cost,
-                    outputs=cost_price))
 
     @classmethod
     def view_attributes(cls):

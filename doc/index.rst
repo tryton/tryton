@@ -58,6 +58,5 @@ The production can be in one of this states:
   All moves are cancelled.
 
 The cost of the production is computed with the sum of the cost price of all
-incoming products. If a product is selected, it will have the cost as unit
-price. The production verify that all the cost is spread on the unit price of
-output moves.
+incoming products. This cost is allocated to the output products based on the
+list price of each (the product without a list price are considered as waste).

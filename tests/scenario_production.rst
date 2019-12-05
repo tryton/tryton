@@ -172,6 +172,8 @@ Do the production::
     'done'
     >>> output.effective_date == production.effective_date
     True
+    >>> output.unit_price
+    Decimal('12.5000')
     >>> with config.set_context(locations=[storage.id]):
     ...     Product(product.id).quantity == 2
     True
