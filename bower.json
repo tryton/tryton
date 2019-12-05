@@ -22,7 +22,7 @@
     "gettext.js": "^0.5",
     "c3": "^0.6",
     "papaparse": "^5.0",
-    "fullcalendar": "^3.0",
+    "fullcalendar": "^3.1",
     "mousetrap": "^1.6",
     "bootstrap-rtl-ondemand": "^3.3.4-ondemand",
     "Sortable": "sortablejs#^1.8.4"
