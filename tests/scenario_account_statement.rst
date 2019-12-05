@@ -209,6 +209,14 @@ Validate statement::
     >>> statement.state
     'validated'
 
+Try posting a move::
+
+    >>> statement_line = statement.lines[0]
+    >>> statement_line.move.click('post')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    Traceback (most recent call last):
+        ...
+    trytond.modules.account.exceptions.PostError: ...
+
 Cancel statement::
 
     >>> statement.click('cancel')

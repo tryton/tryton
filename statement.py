@@ -629,7 +629,8 @@ class Statement(Workflow, ModelSQL, ModelView):
                             statement=statement.rec_name,
                             amount=amount,
                             origin=origin.rec_name))
-
+        # Write state to skip statement test on Move.post
+        cls.write(statements, {'state': 'posted'})
         lines = [l for s in statements for l in s.lines]
         StatementLine.post_move(lines)
 
