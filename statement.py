@@ -908,7 +908,8 @@ class Line(
     @classmethod
     def post_move(cls, lines):
         Move = Pool().get('account.move')
-        Move.post(list({l.move for l in lines if l.move}))
+        Move.post(list({l.move for l in lines
+                    if l.move and l.move.state != 'posted'}))
 
     @classmethod
     def delete_move(cls, lines):
