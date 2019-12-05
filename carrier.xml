@@ -77,7 +77,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.ui.view" id="carrier_selection_view_list">
             <field name="model">carrier.selection</field>
             <field name="type">tree</field>
-            <field name="name">selection_tree</field>
+            <field name="priority" eval="10"/>
+            <field name="name">selection_list</field>
+        </record>
+        <record model="ir.ui.view" id="carrier_selection_view_list_sequence">
+            <field name="model">carrier.selection</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="20"/>
+            <field name="name">selection_list_sequence</field>
         </record>
 
         <record model="ir.action.act_window" id="act_carrier_selection_form">
@@ -87,7 +94,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.view"
             id="act_carrier_selection_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="carrier_selection_view_list"/>
+            <field name="view" ref="carrier_selection_view_list_sequence"/>
             <field name="act_window" ref="act_carrier_selection_form"/>
         </record>
         <record model="ir.action.act_window.view"

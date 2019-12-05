@@ -24,6 +24,7 @@ class Carrier(ModelSQL, ModelView):
         ('product', 'Product Price'),
         ], 'Carrier Cost Method', required=True,
         help='Method to compute carrier cost.')
+    selections = fields.One2Many('carrier.selection', 'carrier', "Selections")
 
     @staticmethod
     def default_carrier_cost_method():
