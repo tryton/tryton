@@ -157,7 +157,8 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                 else_=Literal(True))
         else:
             active = Case(
-                ((coupon.number_of_use > 0),
+                ((coupon.number_of_use > 0)
+                    & ~Coalesce(coupon.per_party, False),
                     Count(sale_number.sale) < coupon.number_of_use),
                 else_=Literal(True))
 
