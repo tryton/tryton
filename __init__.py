@@ -2,35 +2,39 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .company import *
-from .cron import *
+from . import company
+from . import ir
 from . import party
+from . import res
+from .company import CompanyReport
+
+__all__ = ['register', 'CompanyReport']
 
 
 def register():
     Pool.register(
-        Company,
-        Employee,
-        UserEmployee,
-        User,
-        Sequence,
-        SequenceStrict,
-        Date,
-        CompanyConfigStart,
-        Cron,
-        CronCompany,
+        company.Company,
+        company.Employee,
+        company.CompanyConfigStart,
+        res.UserEmployee,
+        res.User,
+        ir.Sequence,
+        ir.SequenceStrict,
+        ir.Date,
+        ir.Rule,
+        ir.Cron,
+        ir.CronCompany,
         party.Configuration,
         party.PartyConfigurationLang,
         party.Party,
         party.PartyLang,
         party.ContactMechanism,
-        Rule,
         module='company', type_='model')
     Pool.register(
-        CompanyConfig,
+        company.CompanyConfig,
         party.PartyReplace,
         party.PartyErase,
         module='company', type_='wizard')
     Pool.register(
-        LetterReport,
+        party.LetterReport,
         module='company', type_='report')

@@ -3,9 +3,35 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="res.group" id="group_company_admin">
+            <field name="name">Company Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_company_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_company_admin"/>
+        </record>
+
+        <record model="res.group" id="group_employee_admin">
+            <field name="name">Employee Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_employee_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_employee_admin"/>
+        </record>
+
         <record model="ir.ui.icon" id="company_icon">
             <field name="name">tryton-company</field>
             <field name="path">icons/tryton-company.svg</field>
+        </record>
+
+        <menuitem name="Company" id="menu_company" sequence="2" icon="tryton-company"/>
+        <record model="ir.ui.menu-res.group" id="menu_currency_group_company_admin">
+            <field name="menu" ref="menu_company"/>
+            <field name="group" ref="group_company_admin"/>
+        </record>
+        <record model="ir.ui.menu-res.group" id="menu_currency_group_employee_admin">
+            <field name="menu" ref="menu_company"/>
+            <field name="group" ref="group_employee_admin"/>
         </record>
 
         <record model="ir.ui.view" id="company_view_form">
@@ -44,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_company_tree"/>
         </record>
 
-        <menuitem parent="party.menu_configuration" action="act_company_tree" icon="tryton-company" id="menu_company_tree"/>
+        <menuitem parent="menu_company" action="act_company_tree" id="menu_company_tree"/>
 
         <record model="ir.action.act_window" id="act_company_list">
             <field name="name">Companies</field>
@@ -62,8 +88,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="company_view_form"/>
             <field name="act_window" ref="act_company_list"/>
         </record>
-        <menuitem parent="menu_company_tree" action="act_company_list"
-            id="menu_company_list"/>
+        <menuitem parent="menu_company_tree" action="act_company_list" id="menu_company_list"/>
 
         <record model="ir.model.access" id="access_company">
             <field name="model" search="[('model', '=', 'company.company')]"/>
@@ -74,7 +99,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_company_admin">
             <field name="model" search="[('model', '=', 'company.company')]"/>
-            <field name="group" ref="party.group_party_admin"/>
+            <field name="group" ref="group_company_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
@@ -90,49 +115,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">res.user</field>
             <field name="inherit" ref="res.user_view_form_preferences"/>
             <field name="name">user_form_preferences</field>
-        </record>
-
-        <record model="ir.ui.view" id="sequence_view_form">
-            <field name="model">ir.sequence</field>
-            <field name="inherit" ref="ir.sequence_view_form"/>
-            <field name="name">sequence_form</field>
-        </record>
-        <record model="ir.ui.view" id="sequence_view_tree">
-            <field name="model">ir.sequence</field>
-            <field name="inherit" ref="ir.sequence_view_tree"/>
-            <field name="name">sequence_tree</field>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_sequence">
-            <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'ir.sequence')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_sequence1">
-            <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_sequence"/>
-        </record>
-        <record model="ir.rule" id="rule_sequence2">
-            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
-            <field name="rule_group" ref="rule_group_sequence"/>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_sequence_strict">
-            <field name="name">User in company</field>
-            <field name="model" search="[('model', '=', 'ir.sequence.strict')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_sequence_strict1">
-            <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_sequence_strict"/>
-        </record>
-        <record model="ir.rule" id="rule_sequence_strict2">
-            <field name="domain" eval="[('company', '=', None)]" pyson="1"/>
-            <field name="rule_group" ref="rule_group_sequence_strict"/>
         </record>
 
         <record model="ir.ui.view" id="company_config_start_view_form">
@@ -180,8 +162,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="employee_view_form"/>
             <field name="act_window" ref="act_employee_form"/>
         </record>
-        <menuitem parent="party.menu_configuration" action="act_employee_form"
-            id="menu_employee_form"/>
+        <menuitem parent="menu_company" action="act_employee_form" id="menu_employee_form"/>
 
         <record model="ir.model.access" id="access_employee">
             <field name="model" search="[('model', '=', 'company.employee')]"/>
@@ -192,7 +173,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.model.access" id="access_employee_admin">
             <field name="model" search="[('model', '=', 'company.employee')]"/>
-            <field name="group" ref="party.group_party_admin"/>
+            <field name="group" ref="group_employee_admin"/>
             <field name="perm_read" eval="True"/>
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
