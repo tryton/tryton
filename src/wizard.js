@@ -130,7 +130,7 @@
         response: function(definition) {
             this.__waiting_response = false;
             this.screen.current_view.set_value();
-            if (definition.validate && this.screen.current_record.validate(
+            if (definition.validate && !this.screen.current_record.validate(
                     null, null, null, true)) {
                 this.screen.display(true);
                 this.info_bar.message(
