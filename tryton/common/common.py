@@ -582,28 +582,20 @@ warning = WarningDialog()
 
 class UserWarningDialog(WarningDialog):
 
-    def __init__(self):
-        super(UserWarningDialog, self).__init__()
-        self.always = False
-
-    def _set_always(self, toggle):
-        self.always = toggle.get_active()
-
     def build_dialog(self, *args, **kwargs):
         dialog = super().build_dialog(*args, **kwargs)
-        check = gtk.CheckButton(_('Always ignore this warning.'))
-        check.connect_after('toggled', self._set_always)
-        alignment = gtk.Alignment(0, 0.5)
-        alignment.add(check)
-        dialog.vbox.pack_start(alignment, True, False)
-        label = gtk.Label(_('Do you want to proceed?'))
-        label.set_alignment(1, 0.5)
-        dialog.vbox.pack_start(label, True, True)
+        self.always = Gtk.CheckButton(label=_('Always ignore this warning.'))
+        alignment = Gtk.Alignment(xalign=0, yalign=0.5)
+        alignment.add(self.always)
+        dialog.vbox.pack_start(alignment, expand=True, fill=False, padding=0)
+        label = Gtk.Label(
+            label=_('Do you want to proceed?'), halign=Gtk.Align.END)
+        dialog.vbox.pack_start(label, expand=True, fill=True, padding=0)
         return dialog
 
     def process_response(self, response):
-        if response == gtk.RESPONSE_YES:
-            if self.always:
+        if response == Gtk.ResponseType.YES:
+            if self.always.get_active():
                 return 'always'
             return 'ok'
         return 'cancel'
