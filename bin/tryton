@@ -25,13 +25,14 @@ if hasattr(sys, 'frozen'):
             etc, 'gtk-3.0', 'gtk.immodules')
     os.environ['GI_TYPELIB_PATH'] = os.path.join(
             prefix, 'lib', 'girepository-1.0')
+    os.environ.setdefault('SSL_CERT_FILE',
+        os.path.join(etc, 'ssl', 'cert.pem'))
+    os.environ.setdefault('SSL_CERT_DIR',
+        os.path.join(etc, 'ssl', 'certs'))
+
     if sys.platform == 'win32':
         # cx_freeze >= 5 put python modules under lib directory
         sys.path.append(os.path.join(prefix, 'lib'))
-        os.environ.setdefault('SSL_CERT_FILE',
-            os.path.join(etc, 'ssl', 'cert.pem'))
-        os.environ.setdefault('SSL_CERT_DIR',
-            os.path.join(etc, 'ssl', 'certs'))
 
     # On first launch the MacOSX app launcher may append an extra unique
     # argument starting with -psn_. This must be filtered to not crash the
