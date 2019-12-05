@@ -29,6 +29,8 @@ __all__ = ['Journal', 'Group', 'Payment', 'Account', 'Customer',
     'Checkout', 'CheckoutPage']
 logger = logging.getLogger(__name__)
 
+RETRY_CODES = {'lock_timeout', 'token_in_use'}
+
 
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
@@ -382,6 +384,9 @@ class Payment(metaclass=PoolMeta):
                 logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
+                if e.code in RETRY_CODES:
+                    logger.warning(str(e))
+                    continue
                 payment.stripe_error_message = str(e)
                 if isinstance(e, stripe.error.CardError):
                     payment.stripe_error_code = e.code
@@ -467,6 +472,9 @@ class Payment(metaclass=PoolMeta):
                 logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
+                if e.code in RETRY_CODES:
+                    logger.warning(str(e))
+                    continue
                 payment.stripe_error_message = str(e)
                 payment.save()
                 cls.fail([payment])
@@ -847,10 +855,14 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                     description=customer.rec_name,
                     email=customer.party.email,
                     source=customer.stripe_token)
-            except stripe.error.RateLimitError:
-                logger.warning("Rate limit error")
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
                 continue
             except stripe.error.StripeError as e:
+                if e.code in RETRY_CODES:
+                    logger.warning(str(e))
+                    continue
                 customer.stripe_error_message = str(e)
                 if isinstance(e, stripe.error.CardError):
                     customer.stripe_error_code = e.code
@@ -888,8 +900,9 @@ class Customer(DeactivableMixin, ModelSQL, ModelView):
                     api_key=customer.stripe_account.secret_key,
                     id=customer.stripe_customer_id)
                 cu.delete()
-            except stripe.error.RateLimitError:
-                logger.warning("Rate limit error")
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
                 continue
             except Exception:
                 logger.error(
