@@ -4,6 +4,7 @@
 
 import os
 import re
+import ssl
 import sys
 import tempfile
 from subprocess import Popen, PIPE, check_call
@@ -88,8 +89,6 @@ if sys.platform == 'win32':
         'libcroco-0.6-3.dll',
         'libepoxy-0.dll',
         ])
-    include_files.append(
-        (os.path.join(sys.prefix, 'ssl'), os.path.join('etc', 'ssl')))
     lib_path = os.getenv('PATH', os.defpath).split(os.pathsep)
 else:
     lib_path = [os.path.join(sys.prefix, 'lib')]
@@ -101,6 +100,13 @@ for lib in required_libs:
     else:
         raise Exception('%s not found' % lib)
     include_files.append((path, lib))
+
+ssl_paths = ssl.get_default_verify_paths()
+include_files.append(
+    (ssl_paths.openssl_cafile, os.path.join('etc', 'ssl', 'cert.pem')))
+if os.path.exists(ssl_paths.openssl_capath):
+    include_files.append(
+        (ssl_paths.openssl_capath, os.path.join('etc', 'ssl', 'certs')))
 
 version = Popen(
     'python setup.py --version', stdout=PIPE, shell=True).stdout.read()
