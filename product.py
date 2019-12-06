@@ -110,14 +110,13 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         pool = Pool()
         Category = pool.get('product.category')
         sql_table = cls.__table__()
         category = Category.__table__()
 
-        table = TableHandler(cls, module_name)
+        table = backend.TableHandler(cls, module_name)
         category_exists = table.column_exist('category')
 
         super(Template, cls).__register__(module_name)
