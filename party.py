@@ -34,8 +34,7 @@ class PartyDunningProcedure(ModelSQL, ValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
 
         super(PartyDunningProcedure, cls).__register__(module_name)
 
