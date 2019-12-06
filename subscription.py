@@ -501,14 +501,13 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def __register__(cls, module):
         pool = Pool()
         Subscription = pool.get('sale.subscription')
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         table = cls.__table__()
         subscription = Subscription.__table__()
 
         # Migration from 4.8: start_date required
-        if TableHandler.table_exist(cls._table):
+        if backend.TableHandler.table_exist(cls._table):
             table_h = cls.__table_handler__(module)
             if table_h.column_exist('start_date'):
                 cursor.execute(*table.update(
