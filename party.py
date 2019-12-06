@@ -278,9 +278,8 @@ class PartyLang(ModelSQL, ValueMixin):
     def __register__(cls, module_name):
         pool = Pool()
         Party = pool.get('party.party')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
         table = cls.__table__()
         party = Party.__table__()
 
