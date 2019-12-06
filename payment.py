@@ -699,7 +699,6 @@ class Message(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         pool = Pool()
         Group = pool.get('account.payment.group')
@@ -707,7 +706,7 @@ class Message(Workflow, ModelSQL, ModelView):
         super(Message, cls).__register__(module_name)
 
         # Migration from 3.2
-        if TableHandler.table_exist(Group._table):
+        if backend.TableHandler.table_exist(Group._table):
             group_table = Group.__table_handler__(module_name)
             if group_table.column_exist('sepa_message'):
                 group = Group.__table__()
