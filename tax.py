@@ -800,7 +800,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
         columns = []
         amount = tax_line.amount
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             amount = TaxLine.amount.sql_cast(tax_line.amount)
         for name, clause in [
                 ('invoice_base_amount',
@@ -814,7 +814,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                 ]:
             if name not in names:
                 continue
-            if backend.name() == 'postgresql':  # FIXME
+            if backend.name == 'postgresql':  # FIXME
                 columns.append(Sum(amount, filter_=clause).as_(name))
             else:
                 columns.append(Sum(Case([clause, amount])).as_(name))
@@ -1182,13 +1182,12 @@ class TaxLine(ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         Tax = pool.get('account.tax')
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
         table = cls.__table__()
         tax = Tax.__table__()
 
         migrate_type = False
-        if TableHandler.table_exist(cls._table):
+        if backend.TableHandler.table_exist(cls._table):
             table_h = cls.__table_handler__(module_name)
             migrate_type = not table_h.column_exist('type')
 

@@ -467,7 +467,6 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
@@ -483,7 +482,7 @@ class Reconciliation(ModelSQL, ModelView):
 
         # Migration from 3.8: new date field
         if (not date_exist
-                and TableHandler.table_exist(Line._table)
+                and backend.TableHandler.table_exist(Line._table)
                 and Line.__table_handler__().column_exist('move')):
             cursor.execute(*sql_table.update(
                     [sql_table.date],
