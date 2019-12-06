@@ -412,8 +412,7 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
 
         super(ProductListPrice, cls).__register__(module_name)
 
@@ -442,13 +441,12 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
     def __register__(cls, module_name):
         pool = Pool()
         ProductCostPrice = pool.get('product.cost_price')
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         cost_price = ProductCostPrice.__table__()
         cursor = Transaction().connection.cursor()
 
-        exist = TableHandler.table_exist(cls._table)
-        cost_price_exist = TableHandler.table_exist(ProductCostPrice._table)
+        exist = backend.TableHandler.table_exist(cls._table)
+        cost_price_exist = backend.TableHandler.table_exist(ProductCostPrice._table)
 
         super(ProductCostPriceMethod, cls).__register__(module_name)
 
@@ -497,12 +495,11 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
     def __register__(cls, module_name):
         pool = Pool()
         Product = pool.get('product.product')
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         product = Product.__table__()
         cursor = Transaction().connection.cursor()
 
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
 
         super(ProductCostPrice, cls).__register__(module_name)
 
