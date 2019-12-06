@@ -69,7 +69,7 @@ class Dict(Field):
         return column
 
     def _domain_value(self, operator, value):
-        if backend.name() == 'sqlite' and isinstance(value, bool):
+        if backend.name == 'sqlite' and isinstance(value, bool):
             # json_extract returns 0 for JSON false and 1 for JSON true
             value = int(value)
         if isinstance(value, (Select, CombiningQuery)):

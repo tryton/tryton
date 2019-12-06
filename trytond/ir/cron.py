@@ -113,7 +113,6 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def run(cls, db_name):
-        DatabaseOperationalError = backend.get('DatabaseOperationalError')
         logger.info('cron started for "%s"', db_name)
         now = datetime.datetime.now()
         retry = config.getint('database', 'retry')
@@ -136,7 +135,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         transaction.commit()
                     except Exception as e:
                         transaction.rollback()
-                        if isinstance(e, DatabaseOperationalError) and count:
+                        if (isinstance(e, backend.DatabaseOperationalError)
+                                and count):
                             continue
                         logger.error('Running cron %s', cron.id, exc_info=True)
                         break

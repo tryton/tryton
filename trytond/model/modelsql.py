@@ -209,13 +209,11 @@ class ModelSQL(ModelStorage):
 
     @classmethod
     def __table_handler__(cls, module_name=None, history=False):
-        TableHandler = backend.get('TableHandler')
-        return TableHandler(cls, module_name, history=history)
+        return backend.TableHandler(cls, module_name, history=history)
 
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
-        TableHandler = backend.get('TableHandler')
         super(ModelSQL, cls).__register__(module_name)
 
         if callable(cls.table_query):
@@ -268,8 +266,8 @@ class ModelSQL(ModelStorage):
                             and not callable(ref_model.table_query)):
                         ref = ref_model._table
                         # Create foreign key table if missing
-                        if not TableHandler.table_exist(ref):
-                            TableHandler(ref_model)
+                        if not backend.TableHandler.table_exist(ref):
+                            backend.TableHandler(ref_model)
                     else:
                         ref = None
                 if field_name in ['create_uid', 'write_uid']:
@@ -338,7 +336,6 @@ class ModelSQL(ModelStorage):
     def __raise_integrity_error(
             cls, exception, values, field_names=None, transaction=None):
         pool = Pool()
-        TableHandler = backend.get('TableHandler')
         if field_names is None:
             field_names = list(cls._fields.keys())
         if transaction is None:
@@ -356,7 +353,7 @@ class ModelSQL(ModelStorage):
                         gettext('ir.msg_required_validation_record',
                             **cls.__names__(field_name)))
         for name, _, error in cls._sql_constraints:
-            if TableHandler.convert_name(name) in str(exception):
+            if backend.TableHandler.convert_name(name) in str(exception):
                 raise SQLConstraintError(gettext(error))
         # Check foreign key in last because this can raise false positive
         # if the target is created during the same transaction.
@@ -555,7 +552,6 @@ class ModelSQL(ModelStorage):
     @classmethod
     @no_table_query
     def create(cls, vlist):
-        DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         pool = Pool()
@@ -626,7 +622,7 @@ class ModelSQL(ModelStorage):
                                 [insert_values]))
                         id_new = transaction.database.lastid(cursor)
                 new_ids.append(id_new)
-            except DatabaseIntegrityError as exception:
+            except backend.DatabaseIntegrityError as exception:
                 transaction = Transaction()
                 with Transaction().new_transaction(), \
                         Transaction().set_context(_check_access=False):
@@ -929,7 +925,6 @@ class ModelSQL(ModelStorage):
     @classmethod
     @no_table_query
     def write(cls, records, values, *args):
-        DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         pool = Pool()
@@ -982,7 +977,7 @@ class ModelSQL(ModelStorage):
                 try:
                     cursor.execute(*table.update(columns, update_values,
                             where=red_sql))
-                except DatabaseIntegrityError as exception:
+                except backend.DatabaseIntegrityError as exception:
                     transaction = Transaction()
                     with Transaction().new_transaction(), \
                             Transaction().set_context(_check_access=False):
@@ -1021,7 +1016,6 @@ class ModelSQL(ModelStorage):
     @classmethod
     @no_table_query
     def delete(cls, records):
-        DatabaseIntegrityError = backend.get('DatabaseIntegrityError')
         transaction = Transaction()
         cursor = transaction.connection.cursor()
         pool = Pool()
@@ -1134,7 +1128,7 @@ class ModelSQL(ModelStorage):
 
             try:
                 cursor.execute(*table.delete(where=red_sql))
-            except DatabaseIntegrityError as exception:
+            except backend.DatabaseIntegrityError as exception:
                 transaction = Transaction()
                 with Transaction().new_transaction():
                     cls.__raise_integrity_error(

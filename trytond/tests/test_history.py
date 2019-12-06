@@ -76,7 +76,7 @@ class HistoryTestCase(unittest.TestCase):
             with self.assertRaises(AccessError):
                 History.read([history_id], ['value'])
 
-    @unittest.skipUnless(backend.name() == 'postgresql',
+    @unittest.skipUnless(backend.name == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     @with_transaction()
     def test_read_same_timestamp(self):
@@ -218,7 +218,7 @@ class HistoryTestCase(unittest.TestCase):
         history = History(history_id)
         self.assertEqual(history.value, 1)
 
-    @unittest.skipUnless(backend.name() == 'postgresql',
+    @unittest.skipUnless(backend.name == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     @with_transaction()
     def test_restore_history_same_timestamp(self):
@@ -314,7 +314,7 @@ class HistoryTestCase(unittest.TestCase):
                 self.assertEqual(records, instances)
             transaction.rollback()
 
-    @unittest.skipUnless(backend.name() == 'postgresql',
+    @unittest.skipUnless(backend.name == 'postgresql',
         'CURRENT_TIMESTAMP as transaction_timestamp is specific to postgresql')
     @with_transaction()
     def test_ordered_search_same_timestamp(self):

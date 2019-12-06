@@ -28,7 +28,7 @@ def _cast(column):
         __slots__ = ()
         _function = 'DATETIME'
 
-    if backend.name() == 'sqlite':
+    if backend.name == 'sqlite':
         column = SQLite_DateTime(column)
     return column
 
@@ -259,8 +259,7 @@ class MemoryCache(BaseCache):
         with cls._listener_lock:
             listener = cls._listener.pop(dbname, None)
         if listener:
-            Database = backend.get('Database')
-            database = Database(dbname)
+            database = backend.Database(dbname)
             conn = database.get_connection()
             try:
                 cursor = conn.cursor()
@@ -276,8 +275,7 @@ class MemoryCache(BaseCache):
 
     @classmethod
     def _listen(cls, dbname):
-        Database = backend.get('Database')
-        database = Database(dbname)
+        database = backend.Database(dbname)
         if not database.has_channel():
             raise NotImplementedError
 

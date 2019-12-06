@@ -1,3 +1,4 @@
+* Use direct access to backend classes
 * Add weasyprint support
 * Add slugify tool
 * Add is_secure, host and http_host to url module

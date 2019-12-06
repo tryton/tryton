@@ -36,7 +36,6 @@ from sql.operators import BinaryOperator
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
-from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.tools.gevent import is_gevent_monkey_patched
 
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
@@ -561,6 +560,7 @@ register_adapter(Decimal, lambda value: AsIs(str(value)))
 
 
 def convert_json(value):
+    from trytond.protocols.jsonrpc import JSONDecoder
     return json.loads(value, object_hook=JSONDecoder())
 register_default_json(loads=convert_json)
 register_default_jsonb(loads=convert_json)

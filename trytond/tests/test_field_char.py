@@ -514,11 +514,10 @@ class UnaccentedTestCase(unittest.TestCase):
 
     @classmethod
     def _clear_unaccent_cache(cls):
-        Database = backend.get('Database')
-        Database._has_unaccent.clear()
+        backend.Database._has_unaccent.clear()
 
 
-@unittest.skipUnless(backend.name() == 'postgresql',
+@unittest.skipUnless(backend.name == 'postgresql',
     "unaccent works only on postgresql")
 class FieldCharUnaccentedTestCase(UnaccentedTestCase):
     "Test Field Char with unaccented searches"

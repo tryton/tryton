@@ -42,7 +42,7 @@ class Date(Field):
         return super().sql_format(value)
 
     def sql_cast(self, expression):
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             return SQLite_Date(expression)
         return super(Date, self).sql_cast(expression)
 
@@ -80,7 +80,7 @@ class Timestamp(FormatMixin, Field):
         return super().sql_format(value)
 
     def sql_cast(self, expression):
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             return SQLite_DateTime(expression)
         return super().sql_cast(expression)
 
@@ -145,7 +145,7 @@ class Time(FormatMixin, Field):
         return value
 
     def sql_cast(self, expression):
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             return SQLite_Time(expression)
         return super(Time, self).sql_cast(expression)
 

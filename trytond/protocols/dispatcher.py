@@ -49,11 +49,9 @@ def rpc(request, database_name):
 
 
 def login(request, database_name, user, parameters, language=None):
-    Database = backend.get('Database')
-    DatabaseOperationalError = backend.get('DatabaseOperationalError')
     try:
-        Database(database_name).connect()
-    except DatabaseOperationalError:
+        backend.Database(database_name).connect()
+    except backend.DatabaseOperationalError:
         logger.error('fail to connect to %s', database_name, exc_info=True)
         abort(HTTPStatus.NOT_FOUND)
     context = {
@@ -95,9 +93,8 @@ def options(request, path):
 
 
 def db_exist(request, database_name):
-    Database = backend.get('Database')
     try:
-        Database(database_name).connect()
+        backend.Database(database_name).connect()
         return True
     except Exception:
         return False
@@ -143,8 +140,6 @@ def help_method(request, pool):
 @app.auth_required
 @with_pool
 def _dispatch(request, pool, *args, **kwargs):
-    DatabaseOperationalError = backend.get('DatabaseOperationalError')
-
     obj, method = get_object_method(request, pool)
     if method in obj.__rpc__:
         rpc = obj.__rpc__[method]
@@ -192,7 +187,7 @@ def _dispatch(request, pool, *args, **kwargs):
                     else:
                         result = [rpc.result(meth(i, *c_args, **c_kwargs))
                             for i in inst]
-            except DatabaseOperationalError:
+            except backend.DatabaseOperationalError:
                 if count and not rpc.readonly:
                     transaction.rollback()
                     continue

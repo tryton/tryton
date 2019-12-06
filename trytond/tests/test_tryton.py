@@ -86,12 +86,11 @@ def activate_module(modules):
 def restore_db_cache(name):
     result = False
     if DB_CACHE:
-        backend_name = backend.name()
-        cache_file = _db_cache_file(DB_CACHE, name, backend_name)
+        cache_file = _db_cache_file(DB_CACHE, name)
         if os.path.exists(cache_file):
-            if backend_name == 'sqlite':
+            if backend.name == 'sqlite':
                 result = _sqlite_copy(cache_file, restore=True)
-            elif backend_name == 'postgresql':
+            elif backend.name == 'postgresql':
                 result = _pg_restore(cache_file)
     if result:
         Pool(DB_NAME).init()
@@ -102,17 +101,16 @@ def backup_db_cache(name):
     if DB_CACHE:
         if not os.path.exists(DB_CACHE):
             os.makedirs(DB_CACHE)
-        backend_name = backend.name()
-        cache_file = _db_cache_file(DB_CACHE, name, backend_name)
+        cache_file = _db_cache_file(DB_CACHE, name)
         if not os.path.exists(cache_file):
-            if backend_name == 'sqlite':
+            if backend.name == 'sqlite':
                 _sqlite_copy(cache_file)
-            elif backend_name == 'postgresql':
+            elif backend.name == 'postgresql':
                 _pg_dump(cache_file)
 
 
-def _db_cache_file(path, name, backend_name):
-    return os.path.join(path, '%s-%s.dump' % (name, backend_name))
+def _db_cache_file(path, name):
+    return os.path.join(path, '%s-%s.dump' % (name, backend.name))
 
 
 def _sqlite_copy(file_, restore=False):
@@ -164,7 +162,7 @@ def _pg_restore(cache_file):
         return not subprocess.call(cmd, env=env)
     except OSError:
         cache_name, _ = os.path.splitext(os.path.basename(cache_file))
-        cache_name = backend.get('TableHandler').convert_name(cache_name)
+        cache_name = backend.TableHandler.convert_name(cache_name)
         with Transaction().start(
                 None, 0, close=True, autocommit=True) as transaction:
             transaction.database.drop(transaction.connection, DB_NAME)
@@ -182,9 +180,9 @@ def _pg_dump(cache_file):
         return not subprocess.call(cmd, env=env)
     except OSError:
         cache_name, _ = os.path.splitext(os.path.basename(cache_file))
-        cache_name = backend.get('TableHandler').convert_name(cache_name)
+        cache_name = backend.TableHandler.convert_name(cache_name)
         # Ensure any connection is left open
-        backend.get('Database')(DB_NAME).close()
+        backend.Database(DB_NAME).close()
         with Transaction().start(
                 None, 0, close=True, autocommit=True) as transaction:
             transaction.database.create(
@@ -698,15 +696,13 @@ class ModuleTestCase(unittest.TestCase):
 
 
 def db_exist(name=DB_NAME):
-    Database = backend.get('Database')
-    database = Database().connect()
+    database = backend.Database().connect()
     return name in database.list()
 
 
 def create_db(name=DB_NAME, lang='en'):
-    Database = backend.get('Database')
     if not db_exist(name):
-        database = Database()
+        database = backend.Database()
         database.connect()
         connection = database.get_connection(autocommit=True)
         try:
@@ -714,7 +710,7 @@ def create_db(name=DB_NAME, lang='en'):
         finally:
             database.put_connection(connection, True)
 
-        database = Database(name)
+        database = backend.Database(name)
         connection = database.get_connection()
         try:
             with connection.cursor() as cursor:
@@ -744,8 +740,7 @@ def create_db(name=DB_NAME, lang='en'):
 
 def drop_db(name=DB_NAME):
     if db_exist(name):
-        Database = backend.get('Database')
-        database = Database(name)
+        database = backend.Database(name)
         database.close()
 
         with Transaction().start(
@@ -774,12 +769,11 @@ doctest_checker = doctest.OutputChecker()
 
 class TestSuite(unittest.TestSuite):
     def run(self, *args, **kwargs):
-        DatabaseOperationalError = backend.get('DatabaseOperationalError')
         while True:
             try:
                 exist = db_exist()
                 break
-            except DatabaseOperationalError as err:
+            except backend.DatabaseOperationalError as err:
                 # Retry on connection error
                 sys.stderr.write(str(err))
                 time.sleep(1)

@@ -107,14 +107,14 @@ class BusTestCase(unittest.TestCase):
         "Test notify"
         notify("Test", "Message", user=1)
 
-    @unittest.skipIf(backend.name() == 'sqlite', 'SQLite has not channel')
+    @unittest.skipIf(backend.name == 'sqlite', 'SQLite has not channel')
     def test_subscribe_nothing(self):
         "Test subscribe with nothing"
         response = Bus.subscribe(DB_NAME, ['user:1'])
 
         self.assertEqual(response, {'message': None, 'channel': None})
 
-    @unittest.skipIf(backend.name() == 'sqlite', 'SQLite has not channel')
+    @unittest.skipIf(backend.name == 'sqlite', 'SQLite has not channel')
     def test_subscribe_message(self):
         "Test subscribe with message"
         Bus.subscribe(DB_NAME, ['user:1'])

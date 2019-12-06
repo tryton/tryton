@@ -321,7 +321,7 @@ class FieldMultiSelectionTestCase(unittest.TestCase):
 
 
 @unittest.skipIf(
-    backend.name() != 'postgresql', 'jsonb only supported by postgresql')
+    backend.name != 'postgresql', 'jsonb only supported by postgresql')
 class FieldMultiSelectionJSONBTestCase(FieldMultiSelectionTestCase):
 
     @classmethod
@@ -333,8 +333,7 @@ class FieldMultiSelectionJSONBTestCase(FieldMultiSelectionTestCase):
     @with_transaction()
     def setup_model(cls):
         connection = Transaction().connection
-        Database = backend.get('Database')
-        if Database().get_version(connection) < (9, 2):
+        if backend.Database().get_version(connection) < (9, 2):
             return
         pool = Pool()
         for model in ['test.multi_selection', 'test.multi_selection_required']:

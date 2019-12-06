@@ -18,7 +18,7 @@ __all__ = [
     'SequenceType', 'Sequence', 'SequenceStrict',
     ]
 
-sql_sequence = backend.get('Database').has_sequence()
+sql_sequence = backend.Database.has_sequence()
 
 
 class AffixError(ValidationError):

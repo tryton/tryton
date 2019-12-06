@@ -36,7 +36,7 @@ config.update_etc(opt.config)
 
 # Import after application is configured
 from trytond import backend
-if backend.name() == 'sqlite':
+if backend.name == 'sqlite':
     database_name = ':memory:'
 else:
     database_name = 'test_' + str(int(time.time()))

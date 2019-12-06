@@ -140,8 +140,7 @@ class LongPollingBus:
 
     @classmethod
     def _listen(cls, database):
-        Database = backend.get('Database')
-        db = Database(database)
+        db = backend.Database(database)
         if not db.has_channel():
             raise NotImplemented
 

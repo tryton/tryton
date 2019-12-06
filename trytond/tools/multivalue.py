@@ -17,8 +17,7 @@ def migrate_property(
     pool = Pool()
     Field = pool.get('ir.model.field')
     Model = pool.get('ir.model')
-    TableHandler = backend.get('TableHandler')
-    if not TableHandler.table_exist('ir_property'):
+    if not backend.TableHandler.table_exist('ir_property'):
         return
     cursor = Transaction().connection.cursor()
     field = Field.__table__()

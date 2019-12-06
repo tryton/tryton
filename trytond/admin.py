@@ -17,12 +17,11 @@ logger = logging.getLogger(__name__)
 
 
 def run(options):
-    Database = backend.get('Database')
     main_lang = config.get('database', 'language')
     init = {}
     for db_name in options.database_names:
         init[db_name] = False
-        database = Database(db_name)
+        database = backend.Database(db_name)
         database.connect()
         if options.update:
             if not database.test():
@@ -36,7 +35,7 @@ def run(options):
         if options.update:
             with Transaction().start(db_name, 0) as transaction,\
                     transaction.connection.cursor() as cursor:
-                database = Database(db_name)
+                database = backend.Database(db_name)
                 database.connect()
                 if not database.test():
                     raise Exception('"%s" is not a Tryton database.' % db_name)

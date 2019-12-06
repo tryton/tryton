@@ -139,7 +139,6 @@ def with_transaction(readonly=None, user=0, context=None):
         @wraps(func)
         def wrapper(request, pool, *args, **kwargs):
             nonlocal user, context
-            DatabaseOperationalError = backend.get('DatabaseOperationalError')
             readonly_ = readonly  # can not modify non local
             if readonly_ is None:
                 if request.method in {'POST', 'PUT', 'DELETE', 'PATCH'}:
@@ -162,7 +161,7 @@ def with_transaction(readonly=None, user=0, context=None):
                         context=context) as transaction:
                     try:
                         result = func(request, pool, *args, **kwargs)
-                    except DatabaseOperationalError:
+                    except backend.DatabaseOperationalError:
                         if count and not readonly_:
                             transaction.rollback()
                             continue

@@ -8,7 +8,6 @@ from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
-from trytond import backend
 from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
 from trytond.const import OPERATORS
 from trytond.tools.string_ import StringPartitioned, LazyString
@@ -17,8 +16,6 @@ from trytond.pool import Pool
 from trytond.cache import LRUDictTransaction
 
 from ...rpc import RPC
-
-Database = backend.get('Database')
 
 
 def domain_validate(value):

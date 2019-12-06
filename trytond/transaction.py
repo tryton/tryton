@@ -91,7 +91,6 @@ class Transaction(object):
         '''
         Start transaction
         '''
-        Database = backend.get('Database')
         assert self.user is None
         assert self.database is None
         assert self.close is None
@@ -101,10 +100,10 @@ class Transaction(object):
         # but it may be also before transactions started before
         self.started_at = self.monotonic_time()
         if not database_name:
-            database = Database().connect()
+            database = backend.Database().connect()
         else:
-            database = Database(database_name).connect()
-        Flavor.set(Database.flavor)
+            database = backend.Database(database_name).connect()
+        Flavor.set(backend.Database.flavor)
         self.connection = database.get_connection(readonly=readonly,
             autocommit=autocommit)
         self.user = user

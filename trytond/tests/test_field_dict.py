@@ -146,12 +146,11 @@ class FieldDictTestCase(unittest.TestCase):
 
     @with_transaction()
     @unittest.skipIf(
-        backend.name() != 'postgresql', 'jsonb only supported by postgresql')
+        backend.name != 'postgresql', 'jsonb only supported by postgresql')
     def test_create_jsonb(self):
         "Test create dict as jsonb"
         connection = Transaction().connection
-        Database = backend.get('Database')
-        if Database().get_version(connection) < (9, 2):
+        if backend.Database().get_version(connection) < (9, 2):
             return
 
         Dict = Pool().get('test.dict_jsonb')
@@ -194,12 +193,11 @@ class FieldDictTestCase(unittest.TestCase):
 
     @with_transaction()
     @unittest.skipIf(
-        backend.name() != 'postgresql', 'jsonb only supported by postgresql')
+        backend.name != 'postgresql', 'jsonb only supported by postgresql')
     def test_write_jsonb(self):
         "Test write dict as jsonb"
         connection = Transaction().connection
-        Database = backend.get('Database')
-        if Database().get_version(connection) < (9, 2):
+        if backend.Database().get_version(connection) < (9, 2):
             return
 
         Dict = Pool().get('test.dict_jsonb')
@@ -690,12 +688,11 @@ class FieldDictTestCase(unittest.TestCase):
 
     @with_transaction()
     @unittest.skipIf(
-        backend.name() != 'postgresql', 'jsonb only supported by postgresql')
+        backend.name != 'postgresql', 'jsonb only supported by postgresql')
     def test_search_element_jsonb(self):
         "Test search dict element on jsonb"
         connection = Transaction().connection
-        Database = backend.get('Database')
-        if Database().get_version(connection) < (9, 2):
+        if backend.Database().get_version(connection) < (9, 2):
             return
 
         pool = Pool()
@@ -750,7 +747,7 @@ class FieldDictTestCase(unittest.TestCase):
             dict_.dico_string_keys, {'a': 'A', 'type': "Type"})
 
 
-@unittest.skipUnless(backend.name() == 'postgresql',
+@unittest.skipUnless(backend.name == 'postgresql',
     "unaccent works only on postgresql")
 class FieldDictUnaccentedTestCase(UnaccentedTestCase):
     "Test Field Dict with unaccented searched"

@@ -15,13 +15,11 @@ from trytond.transaction import Transaction
 
 __all__ = ['work']
 logger = logging.getLogger(__name__)
-Database = backend.get('Database')
-DatabaseOperationalError = backend.get('DatabaseOperationalError')
 
 
 class Queue(object):
     def __init__(self, pool, mpool):
-        self.database = Database(pool.database_name).connect()
+        self.database = backend.Database(pool.database_name).connect()
         self.connection = self.database.get_connection(autocommit=True)
         self.pool = pool
         self.mpool = mpool
@@ -44,7 +42,7 @@ class TaskList(list):
 
 
 def work(options):
-    Flavor.set(Database.flavor)
+    Flavor.set(backend.Database.flavor)
     if not config.getboolean('queue', 'worker', default=False):
         return
     try:
@@ -113,7 +111,7 @@ def run_task(pool, task_id):
                         break
                     task.run()
                     break
-                except DatabaseOperationalError:
+                except backend.DatabaseOperationalError:
                     if count:
                         transaction.rollback()
                         continue

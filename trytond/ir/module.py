@@ -103,15 +103,14 @@ class Module(ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
-        TableHandler = backend.get('TableHandler')
         sql_table = cls.__table__()
         model_data_sql_table = ModelData.__table__()
         cursor = Transaction().connection.cursor()
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
+        if backend.TableHandler.table_exist(old_table):
+            backend.TableHandler.table_rename(old_table, cls._table)
 
         super(Module, cls).__register__(module_name)
 
@@ -361,12 +360,10 @@ class ModuleDependency(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module_dependency'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
+        if backend.TableHandler.table_exist(old_table):
+            backend.TableHandler.table_rename(old_table, cls._table)
 
         super(ModuleDependency, cls).__register__(module_name)
 
@@ -394,7 +391,6 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         pool = Pool()
         ModelData = pool.get('ir.model.data')
@@ -402,8 +398,8 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
 
         # Migration from 3.6: remove double module
         old_table = 'ir_module_module_config_wizard_item'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
+        if backend.TableHandler.table_exist(old_table):
+            backend.TableHandler.table_rename(old_table, cls._table)
         cursor.execute(*model_data.update(
                 columns=[model_data.model],
                 values=[cls.__name__],

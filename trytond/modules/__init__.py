@@ -350,15 +350,14 @@ def load_modules(
 
     def _load_modules(update):
         global res
-        TableHandler = backend.get('TableHandler')
         transaction = Transaction()
 
         with transaction.connection.cursor() as cursor:
             # Migration from 3.6: remove double module
             old_table = 'ir_module_module'
             new_table = 'ir_module'
-            if TableHandler.table_exist(old_table):
-                TableHandler.table_rename(old_table, new_table)
+            if backend.TableHandler.table_exist(old_table):
+                backend.TableHandler.table_rename(old_table, new_table)
 
             # Migration from 4.0: rename installed to activated
             cursor.execute(*ir_module.select(ir_module.name,

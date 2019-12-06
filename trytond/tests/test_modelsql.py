@@ -248,7 +248,7 @@ class ModelSQLTestCase(unittest.TestCase):
                             }],
                     }])
 
-    @unittest.skipIf(backend.name() == 'sqlite',
+    @unittest.skipIf(backend.name == 'sqlite',
         'SQLite not concerned because tryton don\'t set "NOT NULL"'
         'constraint: "ALTER TABLE" don\'t support NOT NULL constraint'
         'without default value')
@@ -289,7 +289,7 @@ class ModelSQLTestCase(unittest.TestCase):
         timestamp = ModelsqlTimestamp.read([record.id],
             ['_timestamp'])[0]['_timestamp']
 
-        if backend.name() == 'sqlite':
+        if backend.name == 'sqlite':
             # timestamp precision of sqlite is the second
             time.sleep(1)
 
@@ -491,14 +491,13 @@ class ModelSQLTestCase(unittest.TestCase):
         with self.assertRaises(SQLConstraintError):
             Model.create([{'value': 42}, {'value': 42}])
 
-    @unittest.skipIf(backend.name() == 'sqlite',
+    @unittest.skipIf(backend.name == 'sqlite',
         'SQLite does not have lock at table level but on file')
     @with_transaction()
     def test_lock(self):
         "Test lock"
         pool = Pool()
         Model = pool.get('test.modelsql.lock')
-        DatabaseOperationalError = backend.get('DatabaseOperationalError')
         transaction = Transaction()
         record_id = Model.create([{}])[0].id
         transaction.commit()
@@ -508,7 +507,7 @@ class ModelSQLTestCase(unittest.TestCase):
             record.lock()
             with transaction.new_transaction():
                 record = Model(record_id)
-                with self.assertRaises(DatabaseOperationalError):
+                with self.assertRaises(backend.DatabaseOperationalError):
                     record.lock()
 
 
