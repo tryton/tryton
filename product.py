@@ -164,8 +164,7 @@ class CategoryAccount(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
-        exist = TableHandler.table_exist(cls._table)
+        exist = backend.TableHandler.table_exist(cls._table)
         if exist:
             table = cls.__table_handler__(module_name)
             exist &= all(table.column_exist(c) for c in account_names)
