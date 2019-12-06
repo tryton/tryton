@@ -56,9 +56,8 @@ class Journal(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
-        table = TableHandler(cls, module_name)
+        table = backend.TableHandler(cls, module_name)
         sql_table = cls.__table__()
         journal_account = Table('account_journal_account')
 
