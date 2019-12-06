@@ -389,14 +389,13 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     def __register__(cls, module_name):
         pool = Pool()
         Account = pool.get('analytic_account.account')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
 
         # Migration from 3.4: use origin as the key for One2Many
         migration_3_4 = False
         old_table = 'analytic_account_account_selection_rel'
-        if TableHandler.table_exist(old_table):
-            TableHandler.table_rename(old_table, cls._table)
+        if backend.TableHandler.table_exist(old_table):
+            backend.TableHandler.table_rename(old_table, cls._table)
             migration_3_4 = True
 
         # Don't create table before renaming
