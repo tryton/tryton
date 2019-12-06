@@ -26,7 +26,7 @@ class Geometry(fields.Field):
 
     @property
     def _sql_type(self):
-        assert backend.name() in {'postgis'}
+        assert backend.name in {'postgis'}
         return 'GIS_%s(%s)' % (
             self._geometry_type, self.dimension)
 
