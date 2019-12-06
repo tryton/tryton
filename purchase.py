@@ -278,7 +278,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         PurchaseLine = pool.get('purchase.line')
         Move = pool.get('stock.move')
         InvoiceLine = pool.get('account.invoice.line')
-        TableHandler = backend.get('TableHandler')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
@@ -294,9 +293,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Migration from 3.2
         # state confirmed splitted into confirmed and processing
-        if (TableHandler.table_exist(PurchaseLine._table)
-                and TableHandler.table_exist(Move._table)
-                and TableHandler.table_exist(InvoiceLine._table)):
+        if (backend.TableHandler.table_exist(PurchaseLine._table)
+                and backend.TableHandler.table_exist(Move._table)
+                and backend.TableHandler.table_exist(InvoiceLine._table)):
             purchase_line = PurchaseLine.__table__()
             move = Move.__table__()
             invoice_line = InvoiceLine.__table__()
