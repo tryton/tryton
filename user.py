@@ -83,7 +83,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     reset_password_token = fields.Char('Reset Password Token', select=True)
     reset_password_token_expire = fields.Timestamp(
         'Reset Password Token Expire')
-    party = fields.Many2One('party.party', 'Party')
+    party = fields.Many2One('party.party', 'Party', ondelete='RESTRICT')
 
     @classmethod
     def __setup__(cls):
