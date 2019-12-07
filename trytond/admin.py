@@ -7,8 +7,8 @@ from getpass import getpass
 
 from sql import Table
 
-from trytond.transaction import Transaction
 from trytond import backend
+from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import config
 
