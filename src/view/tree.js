@@ -541,25 +541,51 @@
                 this.selection.hide();
             }
 
-            var row_records = function() {
-                return this.rows.map(function(row) {
-                    return row.record;
-                });
+            var group_records = function(group, root) {
+                var records = [];
+                for (var i = 0; i < group.length; i++) {
+                    var record = group[i];
+                    records.push(record);
+                    var path = root.concat([record.id]);
+                    if (Sao.common.contains(expanded, path)) {
+                        var children = record.field_get_client(
+                            this.children_field);
+                        Array.prototype.push.apply(
+                            records, group_records(children, path));
+                    }
+                }
+                return records;
+            }.bind(this);
+
+            var row_records = function(rows) {
+                var records = [];
+                for (var i = 0; i < rows.length; i++) {
+                    var row = rows[i];
+                    records.push(row.record);
+                    if (row.is_expanded()) {
+                        Array.prototype.push.apply(
+                            records, row_records(row.rows));
+                    }
+                }
+                return records;
             }.bind(this);
             var min_display_size = Math.min(
                     this.group.length, this.display_size);
-            // XXX find better check to keep focus and expanded
             if (this.children_field) {
-                this.construct();
+                if (!Sao.common.compare(
+                    group_records(this.group.slice(0, min_display_size), []),
+                    row_records(this.rows))) {
+                    this.construct();
+                }
             } else if ((min_display_size > this.rows.length) &&
                 Sao.common.compare(
                     this.group.slice(0, this.rows.length),
-                    row_records())) {
+                    row_records(this.rows))) {
                 this.construct(true);
             } else if ((min_display_size != this.rows.length) ||
                 !Sao.common.compare(
                     this.group.slice(0, this.rows.length),
-                    row_records())){
+                    row_records(this.rows))){
                 this.construct();
             }
 
