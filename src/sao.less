@@ -621,6 +621,11 @@ input.column-boolean {
     table.responsive > tfoot > tr > td:not(.invisible) {
         display: block !important;
     }
+    table.responsive > thead > tr > th.invisible,
+    table.responsive > tbody > tr > td.invisible,
+    table.responsive > tfoot > tr > td.invisible {
+        display: none;
+    }
     table.responsive {
         min-width: unset !important;
         /* Hide table headers (but not display: none; for accessiblity) */
@@ -675,7 +680,7 @@ input.column-boolean {
         }
         > tbody > tr,
         > tfoot > tr {
-            > td:before {
+            > td[data-title]:before {
                 /* Now like a table header */
                 position: absolute;
                 /* Top/left values mimic padding */
