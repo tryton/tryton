@@ -222,11 +222,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         return None
 
     def get_pyson_menu(self, name):
-        pool = Pool()
-        Action = pool.get('ir.action')
         encoder = PYSONEncoder()
-        return encoder.encode(
-            Action.get_action_values(self.menu.type, [self.menu.id])[0])
+        return encoder.encode(self.menu.get_action_value())
 
     def get_language_direction(self, name):
         pool = Pool()

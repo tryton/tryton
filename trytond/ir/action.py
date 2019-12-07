@@ -70,7 +70,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(Action, cls).__setup__()
         cls.__rpc__.update({
-                'get_action_id': RPC(),
+                'get_action_value': RPC(instantiate=1, cache=dict(days=1)),
                 })
 
     @staticmethod
@@ -117,6 +117,10 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
             to_remove = ('domain', 'context', 'search_value')
         columns.difference_update(to_remove)
         return Action.read(action_ids, list(columns))
+
+    def get_action_value(self):
+        return self.get_action_values(
+            self.type, [self.get_action_id(self.id)])[0]
 
 
 class ActionKeyword(ModelSQL, ModelView):
@@ -276,9 +280,6 @@ class ActionMixin(ModelSQL):
                 if getattr(Action, default_func, None):
                     setattr(cls, default_func,
                         partial(ActionMixin._default_action, name))
-        cls.__rpc__.update({
-                'fetch_action': RPC(cache=dict(days=1)),
-                })
 
     @staticmethod
     def _default_action(name):
@@ -730,7 +731,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(ActionActWindow, cls).__setup__()
         cls.__rpc__.update({
-                'get': RPC(),
+                'get': RPC(cache=dict(days=1)),
                 })
 
     @classmethod
@@ -901,7 +902,7 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
             action_id = ModelData.get_id(*xml_id.split('.'))
         else:
             action_id = int(xml_id)
-        return Action.get_action_values(cls.__name__, [action_id])[0]
+        return Action(action_id).get_action_value()
 
 
 class ActionActWindowView(

@@ -328,6 +328,26 @@ class ModelView(unittest.TestCase):
         self.assertTrue(rule.test(record, clicks))
 
     @with_transaction()
+    def test_button_action(self):
+        "Test button action"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button_action')
+
+        action_id = TestModel.test([])
+
+        self.assertIsInstance(action_id, int)
+
+    @with_transaction()
+    def test_button_action_return(self):
+        "Test button action update value"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.button_action')
+
+        action = TestModel.test_update([])
+
+        self.assertEqual(action['url'], 'http://www.tryton.org/')
+
+    @with_transaction()
     def test_rpc_setup(self):
         "Testing the computation of the RPC methods"
         pool = Pool()

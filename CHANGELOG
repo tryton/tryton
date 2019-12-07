@@ -1,3 +1,4 @@
+* Update button_action with returned values
 * Use direct access to backend classes
 * Add weasyprint support
 * Add slugify tool

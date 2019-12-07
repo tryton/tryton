@@ -29,4 +29,9 @@
             ]]>
         </field>
     </record>
+
+    <record model="ir.action.url" id="test_modelview_button_action">
+        <field name="name">Test Button Action</field>
+        <field name="url">http://www.example.com/</field>
+    </record>
 </tryton>

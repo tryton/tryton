@@ -159,7 +159,7 @@ class StateAction(StateTransition):
         action_id = Action.get_action_id(
             ModelData.get_id(module, fs_id))
         action = Action(action_id)
-        return Action.get_action_values(action.type, [action.id])[0]
+        return action.get_action_value()
 
 
 class StateReport(StateAction):
@@ -173,14 +173,13 @@ class StateReport(StateAction):
         'Return report definition'
         pool = Pool()
         ActionReport = pool.get('ir.action.report')
-        Action = pool.get('ir.action')
         action_reports = ActionReport.search([
                 ('report_name', '=', self.report_name),
                 ])
         assert action_reports, '%s not found' % self.report_name
         action_report = action_reports[0]
         action = action_report.action
-        return Action.get_action_values(action.type, [action.id])[0]
+        return action.get_action_value()
 
 
 class Wizard(URLMixin, PoolBase):

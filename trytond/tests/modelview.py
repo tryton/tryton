@@ -76,6 +76,28 @@ class ModelViewButtonDepends(ModelView):
         pass
 
 
+class ModelViewButtonAction(ModelView):
+    'ModelView Button Action'
+    __name__ = 'test.modelview.button_action'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons = {
+            'test': {},
+            }
+
+    @classmethod
+    @ModelView.button_action('tests.test_modelview_button_action')
+    def test(cls, records):
+        pass
+
+    @classmethod
+    @ModelView.button_action('tests.test_modelview_button_action')
+    def test_update(cls, records):
+        return {'url': 'http://www.tryton.org/'}
+
+
 class ModelViewRPC(ModelView):
     'ModelView RPC'
     __name__ = 'test.modelview.rpc'
@@ -149,6 +171,7 @@ def register(module):
         ModelViewChangedValuesStoredTarget,
         ModelViewButton,
         ModelViewButtonDepends,
+        ModelViewButtonAction,
         ModelViewRPC,
         ModelViewEmptyPage,
         ModelViewCircularDepends,

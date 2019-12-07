@@ -704,12 +704,17 @@ class ModelView(Model):
                 ModelData = pool.get('ir.model.data')
                 Action = pool.get('ir.action')
 
-                func(*args, **kwargs)
+                value = func(*args, **kwargs)
 
                 module, fs_id = action.split('.')
                 action_id = Action.get_action_id(
                     ModelData.get_id(module, fs_id))
-                return action_id
+                if value:
+                    action_value = Action(action_id).get_action_value()
+                    action_value.update(value)
+                    return action_value
+                else:
+                    return action_id
             return wrapper
         return decorator
 

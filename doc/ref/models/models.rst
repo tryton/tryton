@@ -111,7 +111,7 @@ Static methods:
 .. staticmethod:: ModelView.button_action(action)
 
     Same as :meth:`ModelView.button` but return the action id of the XML `id`
-    action.
+    action or the action value updated by the returned value of the method.
 
 .. staticmethod:: ModelView.button_change([\*fields])
 
