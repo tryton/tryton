@@ -1569,7 +1569,7 @@ class Reconcile(Wizard):
     show = StateView('account.reconcile.show',
         'account.reconcile_show_view_form', [
             Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Skip', 'next_', 'tryton-forward'),
+            Button('Skip', 'next_', 'tryton-forward', validate=False),
             Button('Reconcile', 'reconcile', 'tryton-ok', default=True),
             ])
     reconcile = StateTransition()
