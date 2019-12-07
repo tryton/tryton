@@ -649,7 +649,7 @@
                                     id: record_id,
                                     ids: record_ids
                                 };
-                                Sao.Action.exec_action(exec_action, data,
+                                Sao.Action.execute(exec_action, data,
                                     jQuery.extend({}, screen.local_context));
                             });
                         }.bind(this))

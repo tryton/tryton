@@ -93,8 +93,8 @@
                                 delete context.active_ids;
                                 delete context.active_model;
                                 delete context.action_id;
-                                Sao.Action.exec_action(action[0], action[1],
-                                    context);
+                                Sao.Action.execute(
+                                    action[0], action[1], context);
                             }.bind(this));
                         }
                     }.bind(this);
