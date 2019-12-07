@@ -5,7 +5,8 @@ try:
 except ImportError:
     pytz = None
 
-from trytond.model import ModelSQL, ModelView, fields, dualmethod
+from trytond.model import (
+    ModelSQL, ModelView, fields, dualmethod, EvalEnvironment)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -52,12 +53,33 @@ class Rule(metaclass=PoolMeta):
     __name__ = 'ir.rule'
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.domain.help += '\n- "employee" from the current user'
+
+    @classmethod
     def _get_cache_key(cls):
         key = super(Rule, cls)._get_cache_key()
         # XXX Use company from context instead of browse to prevent infinite
         # loop, but the cache is cleared when User is written.
         return key + (Transaction().context.get('company'),
             Transaction().context.get('employee'))
+
+    @classmethod
+    def _get_context(cls):
+        pool = Pool()
+        User = pool.get('res.user')
+        Employee = pool.get('company.employee')
+        context = super()._get_context()
+        # Use root to avoid infinite loop when accessing user attributes
+        with Transaction().set_user(0):
+            user = User(Transaction().user)
+        if user.employee:
+            with Transaction().set_context(
+                    _check_access=False, _datetime=None):
+                context['employee'] = EvalEnvironment(
+                    Employee(user.employee.id), Employee)
+        return context
 
 
 class Cron(metaclass=PoolMeta):
