@@ -3,18 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.rule.group" id="rule_group_line_project_invoice">
-            <field name="name">Any timesheet line</field>
-            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
-            <field name="global_p" eval="False"/>
-            <field name="default_p" eval="False"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_line_project_invoice_group_project_invoice">
-            <field name="rule_group" ref="rule_group_line_project_invoice"/>
-            <field name="group" ref="group_project_invoice"/>
-        </record>
-
         <record model="ir.action.act_window" id="act_timesheet_line_form_invoice">
             <field name="name">Timesheet Lines</field>
             <field name="res_model">timesheet.line</field>
