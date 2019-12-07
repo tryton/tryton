@@ -533,7 +533,7 @@
                     }
                 }
             }
-            expanded = expanded || [];
+            expanded = expanded || this.get_expanded_paths();
 
             if (this.selection_mode == Sao.common.SELECTION_MULTIPLE) {
                 this.selection.show();
