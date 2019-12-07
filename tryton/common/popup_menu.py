@@ -53,7 +53,7 @@ def populate(menu, model, record, title='', field=None, context=None):
                 or event.state & Gdk.ModifierType.MOD1_MASK):
             allow_similar = True
         with Window(hide_current=True, allow_similar=allow_similar):
-            Action._exec_action(action, data, rec.get_context())
+            Action.execute(action, data, context=rec.get_context())
 
     def attachment(menuitem):
         Attachment(load(record), None)

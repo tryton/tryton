@@ -130,7 +130,7 @@ class Wizard(InfoBar):
                     del context['active_ids']
                     del context['active_model']
                     del context['action_id']
-                    Action._exec_action(*action, context=context)
+                    Action.execute(*action, context=context)
 
             if self.state == self.end_state:
                 self.end(lambda *a: execute_actions())

@@ -48,22 +48,20 @@ class Action(object):
         return True
 
     @staticmethod
-    def execute(act_id, data, action_type=None, context=None, keyword=False):
-        # Must be executed synchronously to avoid double execution
-        # on double click.
-        if not action_type:
-            action, = RPCExecute('model', 'ir.action', 'read', [act_id],
-                ['type'], context=context)
-            action_type = action['type']
-        action, = RPCExecute('model', action_type, 'fetch_action', act_id,
-            context=context)
+    def execute(action, data, context=None, keyword=False):
+        if isinstance(action, int):
+            # Must be executed synchronously to avoid double execution
+            # on double click.
+            action = RPCExecute(
+                'model', 'ir.action', 'get_action_value', action,
+                context=context)
         if keyword:
             keywords = {
                 'ir.action.report': 'form_report',
                 'ir.action.wizard': 'form_action',
                 'ir.action.act_window': 'form_relate',
                 }
-            action.setdefault('keyword', keywords.get(action_type, ''))
+            action.setdefault('keyword', keywords.get(action['type'], ''))
         Action._exec_action(action, data, context=context)
 
     @staticmethod
@@ -191,7 +189,7 @@ class Action(object):
         res = selection(_('Select your action'), keyact, alwaysask=alwaysask)
         if res:
             (name, action) = res
-            Action._exec_action(action, data, context=context)
+            Action.execute(action, data, context=context)
             return (name, action)
         elif not len(keyact) and warning:
             message(_('No action defined.'))
