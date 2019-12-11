@@ -4330,6 +4330,9 @@ function eval_pyson(value){
             this.definition = parent_widget.field.keys[name];
             this.parent_widget = parent_widget;
             this.create_widget();
+            if (this.definition.help) {
+                this.el.attr('title', this.definition.help);
+            }
         },
         create_widget: function() {
             this.el = jQuery('<div/>', {
