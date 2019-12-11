@@ -138,6 +138,15 @@ class Line(ModelSQL, ModelView):
                     'line': self.rec_name,
                     })
 
+    @classmethod
+    def copy(cls, lines, default=None):
+        if default is not None:
+            default = default.copy()
+        else:
+            default = {}
+        default.setdefault('uuid')
+        return super().copy(lines, default=default)
+
     @property
     def hours(self):
         return self.duration.total_seconds() / 60 / 60
