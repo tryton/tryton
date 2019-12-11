@@ -1232,13 +1232,16 @@ def ellipsize(string, length):
     return string[:length - len(ellipsis)] + ellipsis
 
 
-def get_align(float_):
+def get_align(float_, expand=True):
     "Convert float align into Gtk.Align"
     value = float(float_)
     if value < 0.5:
         return Gtk.Align.START
     elif value == 0.5:
-        return Gtk.Align.FILL
+        if expand:
+            return Gtk.Align.FILL
+        else:
+            return Gtk.Align.CENTER
     else:
         return Gtk.Align.END
 
