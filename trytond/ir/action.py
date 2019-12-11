@@ -70,7 +70,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     def __setup__(cls):
         super(Action, cls).__setup__()
         cls.__rpc__.update({
-                'get_action_value': RPC(instantiate=1, cache=dict(days=1)),
+                'get_action_value': RPC(instantiate=0, cache=dict(days=1)),
                 })
 
     @staticmethod
