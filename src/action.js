@@ -209,7 +209,7 @@
             action = Sao.rpc({
                 'method': 'model.ir.action.get_action_value',
                 'params': [action, context],
-            }, null, false);
+            }, Sao.Session.current_session, false);
         }
         if (keyword) {
             var keywords = {
