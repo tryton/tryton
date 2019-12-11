@@ -30,6 +30,9 @@ class DictSchemaMixin(object):
     string = fields.Char(
         lazy_gettext('ir.msg_dict_schema_string'),
         translate=True, required=True)
+    help = fields.Text(
+        lazy_gettext('ir.msg_dict_schema_help'),
+        translate=True)
     type_ = fields.Selection([
             ('boolean', lazy_gettext('ir.msg_dict_schema_boolean')),
             ('integer', lazy_gettext('ir.msg_dict_schema_integer')),
@@ -139,6 +142,7 @@ class DictSchemaMixin(object):
                 'id': record.id,
                 'name': record.name,
                 'string': record.string,
+                'help': record.help,
                 'type': record.type_,
                 'domain': record.domain,
                 'sequence': getattr(record, 'sequence', record.name),

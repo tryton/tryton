@@ -60,6 +60,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_string">
             <field name="text">String</field>
         </record>
+        <record model="ir.message" id="msg_dict_schema_help">
+            <field name="text">Help</field>
+        </record>
         <record model="ir.message" id="msg_dict_schema_type">
             <field name="text">Type</field>
         </record>
