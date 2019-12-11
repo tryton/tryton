@@ -1421,14 +1421,16 @@ class ModelStorage(Model):
         try:
             if field._type not in ('many2one', 'reference'):
                 return self._cache[self.id][name]
+            else:
+                skip_eager = name in self._cache[self.id]
         except KeyError:
-            pass
+            skip_eager = False
 
         # build the list of fields we will fetch
         ffields = {
             name: field,
             }
-        if field.loading == 'eager':
+        if field.loading == 'eager' and not skip_eager:
             FieldAccess = Pool().get('ir.model.field.access')
             fread_accesses = {}
             fread_accesses.update(FieldAccess.check(self.__name__,
