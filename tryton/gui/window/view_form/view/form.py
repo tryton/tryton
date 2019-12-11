@@ -39,7 +39,25 @@ from .form_gtk.state_widget import (Label, VBox, Image, Frame, ScrolledWindow,
 _ = gettext.gettext
 
 
-class Container(object):
+class _Container(object):
+
+    def __init__(self, col=4, homogeneous=False):
+        super().__init__()
+        if col < 0:
+            col = 0
+        self.col = col
+        self.tooltips = Tooltips()
+        self.tooltips.enable()
+
+    def add_row(self):
+        raise NotImplementedError
+
+    def add_col(self):
+        raise NotImplementedError
+
+    def add(self, widget, attributes):
+        if widget and attributes.get('help'):
+            self.tooltips.set_tip(widget, attributes['help'])
 
     @staticmethod
     def constructor(col=4, homogeneous=False):
@@ -52,17 +70,16 @@ class Container(object):
         else:
             return Container(col, homogeneous)
 
+
+class Container(_Container):
+
     def __init__(self, col=4, homogeneous=False):
-        if col < 0:
-            col = 0
-        self.col = col
+        super().__init__(col=col, homogeneous=homogeneous)
         self.container = Gtk.Grid(
             column_spacing=3, row_spacing=3,
             column_homogeneous=homogeneous, row_homogeneous=homogeneous,
             border_width=3)
         self.last = (0, 0)
-        self.tooltips = Tooltips()
-        self.tooltips.enable()
 
     def add_row(self):
         height, width = self.last
@@ -73,6 +90,7 @@ class Container(object):
         self.last = (height, width + 1)
 
     def add(self, widget, attributes):
+        super().add(widget, attributes)
 
         colspan = attributes.get('colspan', 1)
         if self.col > 0:
@@ -87,22 +105,17 @@ class Container(object):
         height, width = self.last
         self.last = height, width + colspan
 
-        if not widget:
-            return
-
-        widget.set_vexpand(bool(attributes.get('yexpand')))
-        widget.set_hexpand(bool(attributes.get('xexpand', True)))
-
-        if attributes.get('help'):
-            self.tooltips.set_tip(widget, attributes['help'])
-
-        widget.show_all()
-        self.container.attach(widget, width, height, colspan, 1)
+        if widget:
+            widget.set_vexpand(bool(attributes.get('yexpand')))
+            widget.set_hexpand(bool(attributes.get('xexpand', True)))
+            widget.show_all()
+            self.container.attach(widget, width, height, colspan, 1)
 
 
-class VContainer(Container):
+class VContainer(_Container):
     def __init__(self, col=1, homogeneous=False):
-        self.col = 1
+        col = 1
+        super().__init__(col=col, homogeneous=homogeneous)
         self.container = Gtk.VBox()
         self.container.set_homogeneous(homogeneous)
 
@@ -113,16 +126,18 @@ class VContainer(Container):
         pass
 
     def add(self, widget, attributes):
-        if not widget:
-            return
-        expand = bool(int(attributes.get('yexpand', False)))
-        fill = bool(int(attributes.get('yfill', False)))
-        self.container.pack_start(widget, expand=expand, fill=fill, padding=2)
+        super().add(widget, attributes)
+        if widget:
+            expand = bool(int(attributes.get('yexpand', False)))
+            fill = bool(int(attributes.get('yfill', False)))
+            self.container.pack_start(
+                widget, expand=expand, fill=fill, padding=2)
 
 
-class HContainer(Container):
+class HContainer(_Container):
     def __init__(self, col=0, homogeneous=False):
-        self.col = 0
+        col = 0
+        super().__init__(col=col, homogeneous=homogeneous)
         self.container = Gtk.HBox()
         self.container.set_homogeneous(homogeneous)
 
@@ -133,11 +148,12 @@ class HContainer(Container):
         pass
 
     def add(self, widget, attributes):
-        if not widget:
-            return
-        expand = bool(int(attributes.get('xexpand', True)))
-        fill = bool(int(attributes.get('xfill', True)))
-        self.container.pack_start(widget, expand=expand, fill=fill, padding=1)
+        super().add(widget, attributes)
+        if widget:
+            expand = bool(int(attributes.get('xexpand', True)))
+            fill = bool(int(attributes.get('xfill', True)))
+            self.container.pack_start(
+                widget, expand=expand, fill=fill, padding=1)
 
 
 class FormXMLViewParser(XMLViewParser):
