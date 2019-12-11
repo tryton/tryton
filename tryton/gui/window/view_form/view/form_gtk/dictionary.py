@@ -37,6 +37,9 @@ class DictEntry(object):
         self.definition = parent_widget.field.keys[name]
         self.parent_widget = parent_widget
         self.widget = self.create_widget()
+        if self.definition.get('help'):
+            parent_widget.tooltips.set_tip(
+                self.widget, self.definition['help'])
 
     def create_widget(self):
         widget = Gtk.Entry()
