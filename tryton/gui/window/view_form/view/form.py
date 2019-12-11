@@ -222,8 +222,12 @@ class FormXMLViewParser(XMLViewParser):
                 int(attributes.get('width', -1)),
                 int(attributes.get('height', -1)))
 
-        widget.widget.set_halign(get_align(attributes.get('xalign', 0.5)))
-        widget.widget.set_valign(get_align(attributes.get('yalign', 0.5)))
+        widget.widget.set_halign(get_align(
+                attributes.get('xalign', 0.5),
+                bool(attributes.get('xexpand', True))))
+        widget.widget.set_valign(get_align(
+                attributes.get('yalign', 0.5),
+                bool(attributes.get('yexpand'))))
         self.container.add(widget.widget, attributes)
 
         if name in self._mnemonics and widget.mnemonic_widget:
@@ -247,8 +251,12 @@ class FormXMLViewParser(XMLViewParser):
         vbox = VBox(attrs=attributes)
         if attributes.get('string'):
             label = Label(label=attributes['string'], attrs=attributes)
-            label.set_halign(get_align(attributes.get('xalign', 0.0)))
-            label.set_valign(get_align(attributes.get('yalign', 0.5)))
+            label.set_halign(get_align(
+                    attributes.get('xalign', 0.0),
+                    bool(attributes.get('xexpand', True))))
+            label.set_valign(get_align(
+                    attributes.get('yalign', 0.5),
+                    bool(attributes.get('yexpand', False))))
             vbox.pack_start(label, expand=True, fill=True, padding=0)
             self.view.state_widgets.append(label)
         vbox.pack_start(Gtk.HSeparator(), expand=True, fill=True, padding=0)
@@ -263,11 +271,15 @@ class FormXMLViewParser(XMLViewParser):
         if CONFIG['client.modepda']:
             attributes['xalign'] = 0.0
 
-        label = Label(label=attributes.get('string', ''), attrs=attributes)
-        label.set_halign(get_align(attributes.get('xalign', 1.0)))
-        label.set_valign(get_align(attributes.get('yalign', 0.5)))
-        label.set_angle(int(attributes.get('angle', 0)))
         attributes.setdefault('xexpand', 0)
+        label = Label(label=attributes.get('string', ''), attrs=attributes)
+        label.set_halign(get_align(
+                attributes.get('xalign', 1.0),
+                bool(attributes.get('xexpand'))))
+        label.set_valign(get_align(
+                attributes.get('yalign', 0.5),
+                bool(attributes.get('yexpand'))))
+        label.set_angle(int(attributes.get('angle', 0)))
         self.view.state_widgets.append(label)
         self.container.add(label, attributes)
         if name:
