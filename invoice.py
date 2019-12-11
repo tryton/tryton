@@ -1175,6 +1175,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             default = default.copy()
         default.setdefault('number', None)
+        default.setdefault('sequence')
         default.setdefault('move', None)
         default.setdefault('cancel_move', None)
         default.setdefault('invoice_report_cache', None)
