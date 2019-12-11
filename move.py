@@ -647,14 +647,20 @@ class Move(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
 
         vlist = [x.copy() for x in vlist]
+        # Use ordered dict to optimize cache alignment
+        products, uoms = OrderedDict(), OrderedDict()
+        for vals in vlist:
+            products[vals['product']] = None
+            uoms[vals['uom']] = None
+        id2product = {p.id: p for p in Product.browse(products.keys())}
+        id2uom = {u.id: u for u in Uom.browse(uoms.keys())}
         for vals in vlist:
             assert vals.get('state', cls.default_state()
                 ) in ['draft', 'staging']
-
-            product = Product(vals['product'])
-            uom = Uom(vals['uom'])
-            internal_quantity = cls._get_internal_quantity(vals['quantity'],
-                uom, product)
+            product = id2product[vals['product']]
+            uom = id2uom[vals['uom']]
+            internal_quantity = cls._get_internal_quantity(
+                vals['quantity'], uom, product)
             vals['internal_quantity'] = internal_quantity
         moves = super(Move, cls).create(vlist)
         cls.check_period_closed(moves)
