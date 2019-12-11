@@ -520,7 +520,7 @@
   </define>
   <define name="attlist.image" combine="interleave">
     <optional>
-      <attribute a:defaultValue="0">
+      <attribute a:defaultValue="1">
         <name ns="">xexpand</name>
         <choice>
           <value>0</value>
@@ -639,7 +639,7 @@
   </define>
   <define name="attlist.separator" combine="interleave">
     <optional>
-      <attribute a:defaultValue="0">
+      <attribute a:defaultValue="1">
         <name ns="">xexpand</name>
         <choice>
           <value>0</value>
