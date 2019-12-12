@@ -659,8 +659,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 condition=((invoice.move == line.move)
                     & (invoice.account == line.account))).select(
                         invoice.id, line.id,
-                        where=(line.maturity_date != Null) & red_sql,
-                        order_by=(invoice.id, line.maturity_date)))
+                        where=red_sql,
+                        order_by=(invoice.id, line.maturity_date.nulls_last)))
             for invoice_id, line_id in cursor.fetchall():
                 lines[invoice_id].append(line_id)
         return lines
@@ -693,7 +693,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 if line.reconciliation:
                     continue
                 if (name == 'amount_to_pay_today'
-                        and line.maturity_date > today):
+                        and (not line.maturity_date
+                            or line.maturity_date > today)):
                     continue
                 if (line.second_currency
                         and line.second_currency == invoice.currency):
