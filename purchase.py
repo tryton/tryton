@@ -29,6 +29,15 @@ class Purchase(metaclass=PoolMeta):
         return number
 
     @classmethod
+    def copy(cls, purchases, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('revision', cls.default_revision())
+        return super().copy(purchases, default=default)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('draft')
     def draft(cls, purchases):
