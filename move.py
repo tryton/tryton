@@ -657,8 +657,8 @@ class Move(Workflow, ModelSQL, ModelView):
         for vals in vlist:
             assert vals.get('state', cls.default_state()
                 ) in ['draft', 'staging']
-            product = id2product[vals['product']]
-            uom = id2uom[vals['uom']]
+            product = id2product[int(vals['product'])]
+            uom = id2uom[int(vals['uom'])]
             internal_quantity = cls._get_internal_quantity(
                 vals['quantity'], uom, product)
             vals['internal_quantity'] = internal_quantity
