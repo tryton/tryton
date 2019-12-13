@@ -112,10 +112,10 @@ class AccountFrFEC(Wizard):
         convert = replace_delimiter
 
         for row in self.get_start_balance():
-            writer.writerow(list(map(convert, row)))
+            writer.writerow(map(convert, row))
         for line in self.get_lines():
             row = self.get_row(line, format_date, format_number)
-            writer.writerow(list(map(convert, row)))
+            writer.writerow(map(convert, row))
         value = fec.getvalue()
         if not isinstance(value, bytes):
             value = value.encode('utf-8')
