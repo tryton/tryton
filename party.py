@@ -51,6 +51,7 @@ class PartyErase(metaclass=PoolMeta):
 
         payments = Payment.search([
                 ('party', '=', party.id),
+                ('company', '=', company.id),
                 ('state', 'not in', ['succeeded', 'failed']),
                 ])
         if payments:
