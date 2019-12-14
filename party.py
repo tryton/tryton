@@ -28,6 +28,7 @@ class PartyErase(metaclass=PoolMeta):
 
         works = Work.search([
                 ('party', '=', party.id),
+                ('company', '=', company.id),
                 ('state', '!=', 'done'),
                 ])
         if works:
