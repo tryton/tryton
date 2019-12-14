@@ -527,7 +527,18 @@ class ModuleTestCase(unittest.TestCase):
                 if isinstance(state, StateView):
                     # Don't test defaults as they may depend on context
                     state.get_view(wizard_instance, state_name)
-                    state.get_buttons(wizard_instance, state_name)
+                    for button in state.get_buttons(
+                            wizard_instance, state_name):
+                        if button['state'] == wizard.end_state:
+                            continue
+                        self.assertIn(
+                            button['state'],
+                            wizard_instance.states.keys(),
+                            msg='Unknown button state from "%(state)s" '
+                            'on wizard "%(wizard)s' % {
+                                'state': state_name,
+                                'wizard': wizard_name,
+                                })
                 if isinstance(state, StateAction):
                     state.get_action()
 
