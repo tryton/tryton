@@ -32,6 +32,7 @@ class PartyErase(metaclass=PoolMeta):
                     ('party', '=', party.id),
                     ('shipment_party', '=', party.id),
                     ],
+                ('company', '=', company.id),
                 ('state', 'not in', ['done', 'cancel']),
                 ])
         if sales:
