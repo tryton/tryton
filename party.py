@@ -40,6 +40,7 @@ class PartyErase(metaclass=PoolMeta):
                 ]:
             shipments = Shipment.search([
                     (field, '=', party.id),
+                    ('company', '=', company.id),
                     ('state', 'not in', ['done', 'cancel']),
                     ])
             if shipments:
