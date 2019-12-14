@@ -77,7 +77,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
             fields.Boolean("Active"), 'get_active', searcher='search_active')
 
     @classmethod
-    def get_active(cls, numbers, name):
+    def _active_query(cls):
         pool = Pool()
         Coupon = pool.get('sale.promotion.coupon')
         Sale = pool.get('sale.sale')
@@ -87,7 +87,6 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
         sale = Sale.__table__()
         sale_number = Sale_Number.__table__()
         context = Transaction().context
-        cursor = Transaction().connection.cursor()
         party = context.get('party')
 
         query = (table
@@ -113,8 +112,16 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
                     Count(sale_number.sale) < coupon.number_of_use),
                 else_=Literal(True))
 
-        query = query.select(table.id, active,
+        query = query.select(
             group_by=[table.id, coupon.number_of_use, coupon.per_party])
+        return query, table, active
+
+    @classmethod
+    def get_active(cls, numbers, name):
+        cursor = Transaction().connection.cursor()
+
+        query, table, active = cls._active_query()
+        query.columns = [table.id, active]
 
         result = {}
         for sub_numbers in grouped_slice(numbers):
@@ -125,46 +132,12 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def search_active(cls, name, clause):
-        pool = Pool()
-        Coupon = pool.get('sale.promotion.coupon')
-        Sale = pool.get('sale.sale')
-        Sale_Number = pool.get('sale.sale-sale.promotion.coupon.number')
-        table = cls.__table__()
-        coupon = Coupon.__table__()
-        sale = Sale.__table__()
-        sale_number = Sale_Number.__table__()
-        context = Transaction().context
-        party = context.get('party')
-
         _, operator, value = clause
         Operator = fields.SQL_OPERATORS[operator]
 
-        query = (table
-            .join(sale_number, 'LEFT',
-                condition=table.id == sale_number.number)
-            .join(coupon, condition=table.coupon == coupon.id))
-
-        if party:
-            query = query.join(sale, 'LEFT',
-                condition=(sale_number.sale == sale.id)
-                & (sale.party == party))
-            active = Case(
-                ((coupon.number_of_use > 0) & (coupon.per_party),
-                    Count(sale.id) < coupon.number_of_use),
-                ((coupon.number_of_use > 0)
-                    & ~Coalesce(coupon.per_party, False),
-                    Count(sale_number.sale) < coupon.number_of_use),
-                else_=Literal(True))
-        else:
-            active = Case(
-                ((coupon.number_of_use > 0)
-                    & ~Coalesce(coupon.per_party, False),
-                    Count(sale_number.sale) < coupon.number_of_use),
-                else_=Literal(True))
-
-        query = query.select(table.id,
-            group_by=[table.id, coupon.number_of_use, coupon.per_party],
-            having=Operator(active, value))
+        query, table, active = cls._active_query()
+        query.columns = [table.id]
+        query.having = Operator(active, value)
         return [('id', 'in', query)]
 
     @classmethod
