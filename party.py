@@ -28,6 +28,7 @@ class PartyErase(metaclass=PoolMeta):
 
         subscriptions = Subscription.search([
                 ('party', '=', party.id),
+                ('company', '=', company.id),
                 ('state', 'not in', ['closed', 'canceled']),
                 ])
         if subscriptions:
