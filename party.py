@@ -95,6 +95,7 @@ class PartyErase(metaclass=PoolMeta):
 
         invoices = Invoice.search([
                 ('party', '=', party.id),
+                ('company', '=', company.id),
                 ('state', 'not in', ['paid', 'cancel']),
                 ])
         if invoices:
