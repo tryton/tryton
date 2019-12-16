@@ -152,7 +152,7 @@ class DictSchemaMixin(object):
 
     @classmethod
     def get_relation_fields(cls):
-        if config.get('dict', cls.__name__, default=True):
+        if not config.get('dict', cls.__name__, default=True):
             return {}
         fields = cls._relation_fields_cache.get(None)
         if fields is not None:
