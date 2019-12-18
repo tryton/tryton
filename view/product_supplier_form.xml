@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/field[@name='lead_time']" position="after">
-        <field name="weekdays" colspan="4"
-            view_ids="stock_supply_day.product_supplier_weekdayview_tree_editable"/>
+        <label name="weekdays"/>
+        <field name="weekdays" widget="multiselection" yexpand="0"/>
     </xpath>
 </data>
