@@ -540,10 +540,10 @@ class ModelView(Model):
             elif hasattr(field, 'get_target'):
                 return field.get_target().__name__
 
-        def get_views(relation, view_ids, mode):
+        def get_views(relation, widget, view_ids, mode):
             Relation = pool.get(relation)
             views = {}
-            if field._type in ['one2many', 'many2many']:
+            if widget in {'one2many', 'many2many'}:
                 # Prefetch only the first view to prevent infinite loop
                 if view_ids:
                     for view_id in view_ids:
@@ -576,7 +576,8 @@ class ModelView(Model):
                     continue
                 mode = (
                     element.attrib.pop('mode', None) or 'tree,form').split(',')
-                views = get_views(relation, view_ids, mode)
+                widget = element.attrib.get('widget', field._type)
+                views = get_views(relation, widget, view_ids, mode)
                 element.attrib['mode'] = ','.join(mode)
                 fields_attrs[fname].setdefault('views', {}).update(views)
 
