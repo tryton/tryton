@@ -1358,10 +1358,6 @@
                         td.show();
                         td.removeClass('invisible');
                     }
-                    if (!td.find('.widget,.widget-editable,.prefix,.suffix')
-                        .find(':visible').length) {
-                        td.addClass('invisible');
-                    }
                 }
             }
             this._drawed_record = this.record.identity;
