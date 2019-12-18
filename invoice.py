@@ -2509,12 +2509,17 @@ class InvoiceReport(Report):
             return result
 
     @classmethod
+    def render(cls, *args, **kwargs):
+        # Reset to default language to always have header and footer rendered
+        # in the default language
+        with Transaction().set_context(language=False):
+            return super().render(*args, **kwargs)
+
+    @classmethod
     def execute(cls, ids, data):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        with Transaction().set_context(
-                language=False,
-                address_with_party=True):
+        with Transaction().set_context(address_with_party=True):
             result = super(InvoiceReport, cls).execute(ids, data)
             if len(ids) == 1:
                 invoice, = Invoice.browse(ids)
