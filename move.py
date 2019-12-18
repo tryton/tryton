@@ -55,7 +55,7 @@ class Move(ModelSQL, ModelView):
     _rec_name = 'number'
     number = fields.Char('Number', required=True, readonly=True)
     post_number = fields.Char('Post Number', readonly=True,
-        help='Also known as Folio Number')
+        help='Also known as Folio Number.')
     company = fields.Many2One('company.company', 'Company', required=True,
         states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     period = fields.Many2One('account.period', 'Period', required=True,
@@ -460,7 +460,7 @@ class Reconciliation(ModelSQL, ModelView):
     lines = fields.One2Many('account.move.line', 'reconciliation',
             'Lines')
     date = fields.Date('Date', required=True, select=True,
-        help='Highest date of the reconciled lines')
+        help='Highest date of the reconciled lines.')
     delegate_to = fields.Many2One(
         'account.move.line', "Delegate To", ondelete="RESTRICT", select=True,
         help="The line to which the reconciliation status is delegated.")
@@ -638,14 +638,14 @@ class Line(ModelSQL, ModelView):
         searcher='search_move_field')
     amount_second_currency = fields.Numeric('Amount Second Currency',
         digits=(16, Eval('second_currency_digits', 2)),
-        help='The amount expressed in a second currency',
+        help='The amount expressed in a second currency.',
         states={
             'required': Bool(Eval('second_currency')),
             'readonly': _states['readonly'],
             },
         depends=['second_currency_digits', 'second_currency'] + _depends)
     second_currency = fields.Many2One('currency.currency', 'Second Currency',
-            help='The second currency',
+            help='The second currency.',
         domain=[
             If(~Eval('second_currency_required'),
                 (),
@@ -2050,7 +2050,7 @@ class PrintGeneralJournalStart(ModelView):
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Move', help='Show only posted move.')
 
     @staticmethod
     def default_from_date():

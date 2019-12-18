@@ -429,14 +429,14 @@ class OpenChartTaxCodeStart(ModelView):
         ('periods', 'By Periods'),
         ], 'Method', required=True)
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-        help='Leave empty for all open fiscal year',
+        help='Leave empty for all open fiscal year.',
         states={
             'invisible': Eval('method') != 'fiscalyear',
             'required': Eval('method') == 'fiscalyear',
             },
         depends=['method'])
     periods = fields.Many2Many('account.period', None, None, 'Periods',
-        help='Leave empty for all periods of all open fiscal year',
+        help='Leave empty for all periods of all open fiscal year.',
         states={
             'invisible': Eval('method') != 'periods',
             'required': Eval('method') == 'periods',
@@ -653,7 +653,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
         }
     name = fields.Char('Name', required=True, states=_states)
     description = fields.Char('Description', required=True, translate=True,
-            help="The name that will be used in reports", states=_states)
+            help="The name that will be used in reports.", states=_states)
     group = fields.Many2One('account.tax.group', 'Group',
         states={
             'invisible': Bool(Eval('parent')),
@@ -666,7 +666,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             'required': Eval('type') == 'fixed',
             'invisible': Eval('type') != 'fixed',
             'readonly': _states['readonly'],
-            }, help='In company\'s currency',
+            }, help='In company\'s currency.',
         depends=['type'])
     rate = fields.Numeric('Rate', digits=(14, 10),
         states={
@@ -686,7 +686,7 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
             },
         depends=['parent'],
         help=('If checked then the unit price for further tax computation will'
-            ' be modified by this tax'))
+            ' be modified by this tax.'))
     parent = fields.Many2One('account.tax', 'Parent', ondelete='CASCADE',
         states=_states)
     childs = fields.One2Many('account.tax', 'parent', 'Children')

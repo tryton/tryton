@@ -454,7 +454,7 @@ def AccountMixin(template=False):
                 'invisible': ~Eval('type'),
                 },
             depends=['type'],
-            help="Display only the balance in the general ledger report")
+            help="Display only the balance in the general ledger report.")
 
         deferral = fields.Function(fields.Boolean(
                 "Deferral",
@@ -775,7 +775,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                 ('parent', '=', None),
             ],
             help=('Default tax for manual encoding of move lines \n'
-                'for journal types: "expense" and "revenue"'),
+                'for journal types: "expense" and "revenue".'),
             depends=['company'])
     replaced_by = fields.Many2One(
         'account.account', "Replaced By",
@@ -1293,8 +1293,8 @@ class OpenChartAccountStart(ModelView):
     'Open Chart of Accounts'
     __name__ = 'account.open_chart.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
-            help='Leave empty for all open fiscal year')
-    posted = fields.Boolean('Posted Moves', help='Show posted moves only')
+            help='Leave empty for all open fiscal year.')
+    posted = fields.Boolean('Posted Moves', help='Show posted moves only.')
 
     @staticmethod
     def default_posted():
