@@ -98,86 +98,87 @@ def setup_journal(flavor, kind, company, account):
     return journal
 
 
+def validate_file(flavor, kind, xsd=None):
+    'Test generated files are valid'
+    pool = Pool()
+    Payment = pool.get('account.payment')
+    PaymentGroup = pool.get('account.payment.group')
+    Date = pool.get('ir.date')
+    ProcessPayment = pool.get('account.payment.process', type='wizard')
+
+    if xsd is None:
+        xsd = flavor
+
+    environment = setup_environment()
+    company = environment['company']
+    bank = environment['bank']
+    customer = environment['customer']
+    with set_company(company):
+        company_account, customer_account = setup_accounts(
+            bank, company, customer)
+        setup_mandate(company, customer, customer_account)
+        journal = setup_journal(flavor, kind, company, company_account)
+
+        payment, = Payment.create([{
+                    'company': company,
+                    'party': customer,
+                    'journal': journal,
+                    'kind': kind,
+                    'amount': Decimal('1000.0'),
+                    'state': 'approved',
+                    'description': 'PAYMENT',
+                    'date': Date.today(),
+                    }])
+
+        session_id, _, _ = ProcessPayment.create()
+        process_payment = ProcessPayment(session_id)
+        with Transaction().set_context(active_ids=[payment.id]):
+            _, data = process_payment.do_process(None)
+        group, = PaymentGroup.browse(data['res_id'])
+        message, = group.sepa_messages
+        assert message.type == 'out', message.type
+        assert message.state == 'waiting', message.state
+        sepa_string = bytes(message.message)
+        sepa_xml = etree.fromstring(sepa_string)
+        schema_file = os.path.join(os.path.dirname(__file__),
+            '%s.xsd' % xsd)
+        schema = etree.XMLSchema(etree.parse(schema_file))
+        schema.assertValid(sepa_xml)
+
+
 class AccountPaymentSepaTestCase(ModuleTestCase):
     'Test Account Payment SEPA module'
     module = 'account_payment_sepa'
 
-    def validate_file(self, flavor, kind, xsd=None):
-        'Test generated files are valid'
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        PaymentGroup = pool.get('account.payment.group')
-        Date = pool.get('ir.date')
-        ProcessPayment = pool.get('account.payment.process', type='wizard')
-
-        if xsd is None:
-            xsd = flavor
-
-        environment = setup_environment()
-        company = environment['company']
-        bank = environment['bank']
-        customer = environment['customer']
-        with set_company(company):
-            company_account, customer_account = setup_accounts(
-                bank, company, customer)
-            setup_mandate(company, customer, customer_account)
-            journal = setup_journal(flavor, kind, company, company_account)
-
-            payment, = Payment.create([{
-                        'company': company,
-                        'party': customer,
-                        'journal': journal,
-                        'kind': kind,
-                        'amount': Decimal('1000.0'),
-                        'state': 'approved',
-                        'description': 'PAYMENT',
-                        'date': Date.today(),
-                        }])
-
-            session_id, _, _ = ProcessPayment.create()
-            process_payment = ProcessPayment(session_id)
-            with Transaction().set_context(active_ids=[payment.id]):
-                _, data = process_payment.do_process(None)
-            group, = PaymentGroup.browse(data['res_id'])
-            message, = group.sepa_messages
-            self.assertEqual(message.type, 'out')
-            self.assertEqual(message.state, 'waiting')
-            sepa_string = bytes(message.message)
-            sepa_xml = etree.fromstring(sepa_string)
-            schema_file = os.path.join(os.path.dirname(__file__),
-                '%s.xsd' % xsd)
-            schema = etree.XMLSchema(etree.parse(schema_file))
-            schema.assertValid(sepa_xml)
-
     @with_transaction()
     def test_pain001_001_03(self):
         'Test pain001.001.03 xsd validation'
-        self.validate_file('pain.001.001.03', 'payable')
+        validate_file('pain.001.001.03', 'payable')
 
     @with_transaction()
     def test_pain001_001_05(self):
         'Test pain001.001.05 xsd validation'
-        self.validate_file('pain.001.001.05', 'payable')
+        validate_file('pain.001.001.05', 'payable')
 
     @with_transaction()
     def test_pain001_003_03(self):
         'Test pain001.003.03 xsd validation'
-        self.validate_file('pain.001.003.03', 'payable')
+        validate_file('pain.001.003.03', 'payable')
 
     @with_transaction()
     def test_pain008_001_02(self):
         'Test pain008.001.02 xsd validation'
-        self.validate_file('pain.008.001.02', 'receivable')
+        validate_file('pain.008.001.02', 'receivable')
 
     @with_transaction()
     def test_pain008_001_04(self):
         'Test pain008.001.04 xsd validation'
-        self.validate_file('pain.008.001.04', 'receivable')
+        validate_file('pain.008.001.04', 'receivable')
 
     @with_transaction()
     def test_pain008_003_02(self):
         'Test pain008.003.02 xsd validation'
-        self.validate_file('pain.008.003.02', 'receivable')
+        validate_file('pain.008.003.02', 'receivable')
 
     @with_transaction()
     def test_sepa_mandate_sequence(self):
