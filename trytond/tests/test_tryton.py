@@ -236,13 +236,12 @@ class ModuleTestCase(unittest.TestCase):
             # as there is a fallback to id
             if model._rec_name == 'name':
                 continue
-            assert model._rec_name in model._fields, (
-                'Wrong _rec_name "%s" for %s'
-                % (model._rec_name, mname))
+            self.assertIn(model._rec_name, model._fields,
+                msg='Wrong _rec_name "%s" for %s' % (model._rec_name, mname))
             field = model._fields[model._rec_name]
-            assert field._type in {'char', 'text'}, (
-                "Wrong '%s' type for _rec_name of %s'"
-                % (field._type, mname))
+            self.assertIn(field._type, {'char', 'text'},
+                msg="Wrong '%s' type for _rec_name of %s'" % (
+                    field._type, mname))
 
     @with_transaction()
     def test_view(self):
@@ -255,7 +254,8 @@ class ModuleTestCase(unittest.TestCase):
                 ])
         for view in views:
             if not view.inherit or view.inherit.model == view.model:
-                assert view.arch, ('missing architecture for view "%(name)s" '
+                self.assertTrue(view.arch,
+                    msg='missing architecture for view "%(name)s" '
                     'of model "%(model)s"' % {
                         'name': view.name or str(view.id),
                         'model': view.model,
@@ -267,11 +267,10 @@ class ModuleTestCase(unittest.TestCase):
             model = view.model
             Model = pool.get(model)
             res = Model.fields_view_get(view_id)
-            assert res['model'] == model
+            self.assertEqual(res['model'], model)
             tree = etree.fromstring(res['arch'])
 
             validator = etree.RelaxNG(etree=View.get_rng(res['type']))
-            # Don't use assert_ because 2to3 convert to assertTrue
             validator.assertValid(tree)
 
             tree_root = tree.getroottree().getroot()
@@ -281,12 +280,12 @@ class ModuleTestCase(unittest.TestCase):
                     for attr in ('name', 'icon'):
                         field = element.get(attr)
                         if field:
-                            assert field in res['fields'], (
-                                'Missing field: %s' % field)
+                            self.assertIn(field, res['fields'],
+                                msg='Missing field: %s' % field)
                 if element.tag == 'button':
                     button_name = element.get('name')
-                    assert button_name in Model._buttons, (
-                        "Button '%s' is not in %s._buttons"
+                    self.assertIn(button_name, Model._buttons,
+                        msg="Button '%s' is not in %s._buttons"
                         % (button_name, Model.__name__))
 
     @with_transaction()
@@ -294,8 +293,8 @@ class ModuleTestCase(unittest.TestCase):
         'Test that RPC methods are callable'
         for _, model in Pool().iterobject():
             for method_name in model.__rpc__:
-                assert callable(getattr(model, method_name, None)), (
-                    "'%s' is not callable on '%s'"
+                self.assertTrue(callable(getattr(model, method_name, None)),
+                    msg="'%s' is not callable on '%s'"
                     % (method_name, model.__name__))
 
     @with_transaction()
@@ -317,17 +316,17 @@ class ModuleTestCase(unittest.TestCase):
                 fields.discard('context')
                 fields.discard('_user')
                 depends = set(field.depends)
-                assert fields <= depends, (
-                    'Missing depends %s in "%s"."%s"' % (
+                self.assertLessEqual(fields, depends,
+                    msg='Missing depends %s in "%s"."%s"' % (
                         list(fields - depends), mname, fname))
-                assert depends <= set(model._fields), (
-                    'Unknown depends %s in "%s"."%s"' % (
+                self.assertLessEqual(depends, set(model._fields),
+                    msg='Unknown depends %s in "%s"."%s"' % (
                         list(depends - set(model._fields)), mname, fname))
             if issubclass(model, ModelView):
                 for bname, button in model._buttons.items():
                     depends = set(button.get('depends', []))
-                    assert depends <= set(model._fields), (
-                        'Unknown depends %s in button "%s"."%s"' % (
+                    self.assertLessEqual(depends, set(model._fields),
+                        msg='Unknown depends %s in button "%s"."%s"' % (
                             list(depends - set(model._fields)), mname, bname))
 
     @with_transaction()
@@ -339,14 +338,14 @@ class ModuleTestCase(unittest.TestCase):
                 if d.startswith('_parent_'):
                     relation = '.'.join(
                         prefix + [d[len('_parent_'):]])
-                    assert relation in depends, (
-                        'Missing "%s" in %s' % (relation, qualname))
+                    self.assertIn(relation, depends,
+                        msg='Missing "%s" in %s' % (relation, qualname))
                 prefix.append(d)
 
         def test_parent_empty(depend, qualname):
             if depend.startswith('_parent_'):
-                assert '.' in depend, (
-                    'Invalid empty "%s" in %s' % (depend, qualname))
+                self.assertIn('.', depend,
+                    msg='Invalid empty "%s" in %s' % (depend, qualname))
 
         def test_missing_parent(model, depend, depends, qualname):
             dfield = model._fields.get(depend)
@@ -357,8 +356,9 @@ class ModuleTestCase(unittest.TestCase):
                     if (tfield._type == 'one2many'
                             and tfield.model_name == mname
                             and tfield.field == depend):
-                        assert '_parent_%s' % depend in parent_depends, (
-                            'Missing "_parent_%s" in %s' % (depend, qualname))
+                        self.assertIn('_parent_%s' % depend, parent_depends,
+                            msg='Missing "_parent_%s" in %s' % (
+                                depend, qualname))
 
         def test_depend_exists(model, depend, qualname):
             try:
@@ -367,8 +367,8 @@ class ModuleTestCase(unittest.TestCase):
                 nested = None
             if depend.startswith('_parent_'):
                 depend = depend[len('_parent_'):]
-            assert isinstance(getattr(model, depend, None), fields.Field), (
-                'Unknonw "%s" in %s' % (depend, qualname))
+            self.assertIsInstance(getattr(model, depend, None), fields.Field,
+                msg='Unknonw "%s" in %s' % (depend, qualname))
             if nested:
                 target = getattr(model, depend).get_target()
                 test_depend_exists(target, nested, qualname)
@@ -414,8 +414,8 @@ class ModuleTestCase(unittest.TestCase):
                         if attr.startswith(prefix)]
                     if not fnames:
                         continue
-                    assert any(f in model._fields for f in fnames), (
-                        'Field method "%s"."%s" for unknown field' % (
+                    self.assertTrue(any(f in model._fields for f in fnames),
+                        msg='Field method "%s"."%s" for unknown field' % (
                             mname, attr))
 
                     if attr.startswith('default_'):
@@ -460,8 +460,8 @@ class ModuleTestCase(unittest.TestCase):
                     if k.keyword == 'tree_open'))
             if not actions_groups:
                 continue
-            assert menu_groups <= actions_groups, (
-                'Menu "%(menu_xml_id)s" actions are not accessible to '
+            self.assertLessEqual(menu_groups, actions_groups,
+                msg='Menu "%(menu_xml_id)s" actions are not accessible to '
                 '%(groups)s' % {
                     'menu_xml_id': module_menu.fs_id,
                     'groups': ','.join(g.name
@@ -480,8 +480,8 @@ class ModuleTestCase(unittest.TestCase):
                     ('group', '!=', None),
                     ])}
 
-        assert no_groups >= with_groups, (
-            'Model "%(models)s" are missing a default access' % {
+        self.assertGreaterEqual(no_groups, with_groups,
+            msg='Model "%(models)s" are missing a default access' % {
                 'models': list(with_groups - no_groups),
                 })
 
@@ -503,9 +503,9 @@ class ModuleTestCase(unittest.TestCase):
                 values = getattr(model, field.selection)()
             states = set(dict(values))
             transition_states = set(chain(*model._transitions))
-            assert transition_states <= states, (
-                ('Unknown transition states "%(states)s" '
-                    'in model "%(model)s". ') % {
+            self.assertLessEqual(transition_states, states,
+                msg='Unknown transition states "%(states)s" '
+                'in model "%(model)s". ' % {
                     'states': list(transition_states - states),
                     'model': model.__name__,
                     })
@@ -517,7 +517,8 @@ class ModuleTestCase(unittest.TestCase):
             if not isregisteredby(wizard, self.module, type_='wizard'):
                 continue
             session_id, start_state, _ = wizard.create()
-            assert start_state in wizard.states, ('Unknown start state '
+            self.assertIn(start_state, wizard.states,
+                msg='Unknown start state '
                 '"%(state)s" on wizard "%(wizard)s"' % {
                     'state': start_state,
                     'wizard': wizard_name,
@@ -560,8 +561,8 @@ class ModuleTestCase(unittest.TestCase):
                     else:
                         record = model()
                         selection_values = sel_func(record)
-                assert all(len(v) == 2 for v in selection_values), (
-                    'Invalid selection values "%(values)s" on field '
+                self.assertTrue(all(len(v) == 2 for v in selection_values),
+                    msg='Invalid selection values "%(values)s" on field '
                     '"%(field)s" of model "%(model)s"' % {
                         'values': selection_values,
                         'field': field_name,
@@ -580,8 +581,8 @@ class ModuleTestCase(unittest.TestCase):
                 for func_name in [field.getter, field.setter, field.searcher]:
                     if not func_name:
                         continue
-                    assert getattr(model, func_name, None), (
-                        "Missing method '%(func_name)s' "
+                    self.assertTrue(getattr(model, func_name, None),
+                        msg="Missing method '%(func_name)s' "
                         "on model '%(model)s' for field '%(field)s" % {
                             'func_name': func_name,
                             'model': model.__name__,
@@ -643,8 +644,8 @@ class ModuleTestCase(unittest.TestCase):
             mro = inspect.getmro(model)
             singleton_index = mro.index(ModelSingleton)
             sql_index = mro.index(ModelSQL)
-            assert singleton_index < sql_index, (
-                "ModelSingleton must appear before ModelSQL in the parent "
+            self.assertLess(singleton_index, sql_index,
+                msg="ModelSingleton must appear before ModelSQL in the parent "
                 "classes of '%s'." % mname)
 
     @with_transaction()
@@ -661,8 +662,8 @@ class ModuleTestCase(unittest.TestCase):
                         ('model.model', '=', model.__name__),
                         ])}
             buttons = set(model._buttons)
-            assert ir_buttons >= buttons, (
-                'The buttons "%(buttons)s" of Model "%(model)s" are not '
+            self.assertGreaterEqual(ir_buttons, buttons,
+                msg='The buttons "%(buttons)s" of Model "%(model)s" are not '
                 'registered in ir.model.button.' % {
                     'buttons': list(buttons - ir_buttons),
                     'model': model.__name__,
@@ -679,9 +680,9 @@ class ModuleTestCase(unittest.TestCase):
             if not issubclass(model, ModelView):
                 continue
             for button, states in model._buttons.items():
-                assert set(states).issubset(keys), (
-                    'The button "%(button)s" of Model "%(model)s" has extra '
-                    'keys "%(keys)s".' % {
+                self.assertTrue(set(states).issubset(keys),
+                    msg='The button "%(button)s" of Model "%(model)s" has '
+                    'extra keys "%(keys)s".' % {
                         'button': button,
                         'model': mname,
                         'keys': set(states) - keys,

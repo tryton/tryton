@@ -26,29 +26,29 @@ class MPTTTestCase(unittest.TestCase):
                     ('parent', '=', parent_id),
                     ], order=[('left', 'ASC')])
         for child in childs:
-            assert child.left > left, \
-                '%s: left %d <= parent left %d' % \
-                (child, child.left, left)
-            assert child.left < child.right, \
-                '%s: left %d >= right %d' % \
-                (child, child.left, child.right)
-            assert child.right < right, \
-                '%s: right %d >= parent right %d' % \
-                (child, child.right, right)
+            self.assertGreater(child.left, left,
+                msg='%s: left %d <= parent left %d' % (
+                    child, child.left, left))
+            self.assertLess(child.left, child.right,
+                msg='%s: left %d >= right %d' % (
+                    child, child.left, child.right))
+            self.assertLess(child.right, right,
+                msg='%s: right %d >= parent right %d' % (
+                    child, child.right, right))
             self.check_tree(child.id, left=child.left,
                 right=child.right)
         next_left = -1
         for child in childs:
-            assert child.left > next_left, \
-                '%s: left %d <= next left %d' % \
-                (child, child.left, next_left)
+            self.assertGreater(child.left, next_left,
+                msg='%s: left %d <= next left %d' % (
+                    child, child.left, next_left))
             next_left = child.right
         childs.reverse()
         previous_right = sys.maxsize
         for child in childs:
-            assert child.right < previous_right, \
-                '%s: right %d >= previous right %d' \
-                % (child, child.right, previous_right)
+            self.assertLess(child.right, previous_right,
+                msg='%s: right %d >= previous right %d' % (
+                    child, child.right, previous_right))
             previous_right = child.left
 
     def reparent(self, parent=None):

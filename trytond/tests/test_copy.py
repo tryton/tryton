@@ -49,7 +49,7 @@ class CopyTestCase(unittest.TestCase):
         record.save()
 
         def default_name(data):
-            assert data['id'] == record.id
+            self.assertEqual(data['id'], record.id)
             return data['name'] + " bis"
 
         record_copy, = Copy.copy([record], default={'name': default_name})
