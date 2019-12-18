@@ -15,6 +15,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
+        cls._check_modify_exclude.append('open_date')
         cls.party.datetime_field = 'open_date'
         if 'open_date' not in cls.party.depends:
             cls.party.depends.append('open_date')
