@@ -116,7 +116,6 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             'production.work.center.category', 'Work Center Category'),
         'on_change_with_work_center_category')
     work_center = fields.Many2One('production.work.center', 'Work Center',
-        required=True,
         domain=[
             If(~Eval('work_center_category'),
                 (),
@@ -124,7 +123,10 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ('warehouse', '=', Eval('warehouse', -1)),
             ],
-        depends=['work_center_category', 'company', 'warehouse'])
+        states={
+            'required': ~Eval('state').in_(['request', 'draft']),
+            },
+        depends=['work_center_category', 'company', 'warehouse', 'state'])
     cycles = fields.One2Many('production.work.cycle', 'work', 'Cycles',
         states={
             'readonly': Eval('state').in_(['request', 'done']),
@@ -142,6 +144,15 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('finished', 'Finished'),
             ('done', 'Done'),
             ], 'State', select=True, readonly=True)
+
+    @classmethod
+    def __register__(cls, module_name):
+
+        super().__register__(module_name)
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.4: Drop not null on work_center
+        table.not_null_action('work_center', 'remove')
 
     @fields.depends('operation')
     def on_change_with_work_center_category(self, name=None):
