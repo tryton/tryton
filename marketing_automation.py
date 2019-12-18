@@ -272,7 +272,7 @@ class Activity(ModelSQL, ModelView):
     condition = fields.Char("Condition",
         help="The PYSON statement that the record must match "
         "in order to execute the activity.\n"
-        'The record is represented by "self"')
+        'The record is represented by "self."')
 
     delay = fields.TimeDelta(
         "Delay",
