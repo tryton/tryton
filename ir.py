@@ -85,7 +85,7 @@ class Rule(metaclass=PoolMeta):
 class Cron(metaclass=PoolMeta):
     __name__ = "ir.cron"
     companies = fields.Many2Many('ir.cron-company.company', 'cron', 'company',
-            'Companies', help='Companies registered for this cron')
+            'Companies', help='Companies registered for this cron.')
 
     @dualmethod
     @ModelView.button
