@@ -1738,7 +1738,7 @@
             var long_string = this.fields[name].long_string;
             var relation = this.fields[name].relation;
             if (relation) {
-                return;
+                name += '/rec_name';
             }
             var node = jQuery('<li/>', {
                 'path': name,

@@ -1,3 +1,4 @@
+* Allow relation field to be selected in CSV export
 * Hide empty cell on small screen
 * Support validate attribute of wizard's Button
 * Add infinite scroll
