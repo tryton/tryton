@@ -31,6 +31,7 @@ class Invoice(metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
+        cls._check_modify_exclude.append('numbered_at')
         cls.party.datetime_field = 'numbered_at'
         if 'numbered_at' not in cls.party.depends:
             cls.party.depends.append('numbered_at')
