@@ -147,11 +147,7 @@ class WinExport(WinCSV):
 
     def _sig_sel_add(self, store, path, iter):
         name = store.get_value(iter, 1)
-        string_, long_string, relation = self.fields[name]
-        if relation:
-            return
-        num = self.model2.append()
-        self.model2.set(num, 0, long_string, 1, name)
+        self.sel_field(name)
 
     def sig_unsel(self, *args):
         store, paths = self.view2.get_selection().get_selected_rows()
@@ -270,7 +266,7 @@ class WinExport(WinCSV):
     def sel_field(self, name):
         _, long_string, relation = self.fields[name]
         if relation:
-            return
+            name += '/rec_name'
         self.model2.append((long_string, name))
 
     def response(self, dialog, response):

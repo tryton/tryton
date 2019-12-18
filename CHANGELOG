@@ -1,3 +1,4 @@
+* Allow relation field to be selected in CSV export
 * Support validate attribute of wizard's Button
 
 Version 5.4.0 - 2019-11-04
