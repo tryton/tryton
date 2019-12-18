@@ -144,5 +144,6 @@ dist = setup(name=name,
         'calendar': ['GooCalendar>=0.5'],
         },
     zip_safe=False,
+    test_suite='tryton.tests',
     **args
     )
