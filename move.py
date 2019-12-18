@@ -1022,8 +1022,7 @@ class Line(ModelSQL, ModelView):
 
         # Use LEFT JOIN to allow database optimization
         # if no joined table is used in the where clause.
-        return ((table.state != 'draft')
-            & table.move.in_(move
+        return (table.move.in_(move
                 .join(period, 'LEFT', condition=move.period == period.id)
                 .join(fiscalyear, 'LEFT',
                     condition=period.fiscalyear == fiscalyear.id)
