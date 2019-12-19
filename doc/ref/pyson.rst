@@ -84,7 +84,7 @@ string by default).
     If the ``value`` includes dots the value will be dereferenced. For
     example::
 
-    Eval('_parent_sale.number')
+        Eval('_parent_sale.number')
 
     The ``number`` value of the ``_parent_sale`` key of the evaluation context
     will be returned.
