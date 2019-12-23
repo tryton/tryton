@@ -1038,7 +1038,7 @@ class Line(ModelSQL, ModelView):
             journal_period, = journal_periods
             if journal_period.state == 'close':
                 raise AccessError(
-                    gettext('account.msg_modify_line_closed_period',
+                    gettext('account.msg_modify_line_closed_journal_period',
                         journal_period=journal_period.rec_name))
         else:
             JournalPeriod.create([{
