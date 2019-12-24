@@ -1013,7 +1013,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pattern.setdefault('fiscalyear', fiscalyear.id)
         pattern.setdefault('period', period.id)
         invoice_type = self.type
-        if (all(l.amount < 0 for l in self.lines if l.product)
+        if (all(l.amount <= 0 for l in self.lines if l.product)
                 and self.total_amount < 0):
             invoice_type += '_credit_note'
         else:
