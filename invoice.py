@@ -149,6 +149,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         states=_STATES, depends=_DEPENDS + [
             'type', 'company', 'accounting_date', 'invoice_date'],
         domain=[
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             If(Eval('type') == 'out',
                 ('type.receivable', '=', True),
@@ -1731,6 +1732,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
         # Set account domain dynamically for kind
         cls.account.domain = [
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             If(Bool(Eval('_parent_invoice')),
                 If(Eval('_parent_invoice', {}).get('type') == 'out',
