@@ -497,7 +497,7 @@ class DomainParser(object):
 
     def __init__(self, fields, context=None):
         self.fields = OrderedDict()
-        self.strings = {}
+        self.strings = OrderedDict()
         self.context = context
 
         def update_fields(fields, prefix='', string_prefix=''):
