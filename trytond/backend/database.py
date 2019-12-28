@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import namedtuple
+from sql import For
 
 DatabaseIntegrityError = None
 DatabaseOperationalError = None
@@ -163,6 +164,10 @@ class DatabaseInterface(object):
     def has_select_for(self):
         "Return if database supports FOR UPDATE/SHARE clause in SELECT."
         return False
+
+    def get_select_for_skip_locked(self):
+        "Return For class with skip locked"
+        return For
 
     def has_window_functions(self):
         "Return if database supports window functions."

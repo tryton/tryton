@@ -30,7 +30,7 @@ from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2.extras import register_default_json, register_default_jsonb
 
-from sql import Flavor, Cast
+from sql import Flavor, Cast, For
 from sql.functions import Function
 from sql.operators import BinaryOperator
 
@@ -65,6 +65,12 @@ class LoggingCursor(cursor):
         if logger.isEnabledFor(logging.DEBUG):
             logger.debug(self.mogrify(sql, args))
         cursor.execute(self, sql, args)
+
+
+class ForSkipLocked(For):
+    def __str__(self):
+        assert not self.nowait, "Can not use both NO WAIT and SKIP LOCKED"
+        return super().__str__() + (' SKIP LOCKED' if not self.nowait else '')
 
 
 class Unaccent(Function):
@@ -132,6 +138,7 @@ class Database(DatabaseInterface):
     _search_path = None
     _current_user = None
     _has_returning = None
+    _has_select_for_skip_locked = None
     _has_unaccent = {}
     flavor = Flavor(ilike=True)
 
@@ -412,6 +419,20 @@ class Database(DatabaseInterface):
 
     def has_select_for(self):
         return True
+
+    def get_select_for_skip_locked(self):
+        if self._has_select_for_skip_locked is None:
+            connection = self.get_connection()
+            try:
+                # SKIP LOCKED clause is available since PostgreSQL 9.5
+                self._has_select_for_skip_locked = (
+                    self.get_version(connection) >= (9, 5))
+            finally:
+                self.put_connection(connection)
+        if self._has_select_for_skip_locked:
+            return ForSkipLocked
+        else:
+            return For
 
     def has_window_functions(self):
         return True

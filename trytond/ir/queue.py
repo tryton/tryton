@@ -93,15 +93,20 @@ class Queue(ModelSQL):
                 order_by=[
                     queue.scheduled_at.nulls_first,
                     queue.expected_at.nulls_first]))
-        selected = With('id', query=candidates.select(
-                candidates.id,
-                where=((candidates.scheduled_at <= CurrentTimestamp())
-                    | (candidates.scheduled_at == Null))
-                & database.lock_id(candidates.id),
-                order_by=[
-                    candidates.scheduled_at.nulls_first,
-                    candidates.expected_at.nulls_first],
-                limit=1))
+        selected = queue.select(
+            queue.id,
+            where=((queue.name == name) if name else Literal(True))
+            & (queue.dequeued_at == Null)
+            & ((queue.scheduled_at <= CurrentTimestamp())
+                | (queue.scheduled_at == Null)),
+            order_by=[
+                queue.scheduled_at.nulls_first,
+                queue.expected_at.nulls_first],
+            limit=1)
+        if database.has_select_for():
+            For = database.get_select_for_skip_locked()
+            selected.for_ = For('UPDATE')
+
         next_timeout = With('seconds', query=candidates.select(
                 Min(Extract('second',
                         candidates.scheduled_at - CurrentTimestamp())
@@ -111,8 +116,8 @@ class Queue(ModelSQL):
         task_id, seconds = None, None
         if database.has_returning():
             query = queue.update([queue.dequeued_at], [CurrentTimestamp()],
-                where=queue.id == selected.select(selected.id),
-                with_=[candidates, selected, next_timeout],
+                where=queue.id.in_(selected),
+                with_=[candidates, next_timeout],
                 returning=[
                     queue.id, next_timeout.select(next_timeout.seconds)])
             cursor.execute(*query)
@@ -121,8 +126,8 @@ class Queue(ModelSQL):
                 task_id, seconds = row
         else:
             query = queue.select(queue.id,
-                where=queue.id == selected.select(selected.id),
-                with_=[candidates, selected])
+                where=queue.id.in_(selected),
+                with_=[candidates])
             cursor.execute(*query)
             row = cursor.fetchone()
             if row:

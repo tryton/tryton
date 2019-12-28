@@ -1,3 +1,4 @@
+* Replace advisory lock by SKIP LOCKED in queue pulling
 * Load WSGI middleware from configuration
 * Add help text to Dict keys
 * Update button_action with returned values
