@@ -117,7 +117,6 @@
             if (this.attributes.dtend) {
                 date_end = record.field_get_client(this.attributes.dtend);
             }
-            var allDay = true;
             var description = [];
             for (var i = 1; i < this.fields.length; i++) {
                 description.push(
@@ -126,9 +125,9 @@
             }
             description = description.join('\n');
             if (date_start) {
-                if (date_end && date_end.isDateTime) {
-                    allDay = false;
-                } else if (date_end && !date_end.isSame(date_start)  &&
+                var allDay = date_start.isDate &&
+                    (!date_end || date_end.isDate);
+                if (date_end && !date_end.isSame(date_start)  &&
                         this.screen.current_view.view_type == "calendar") {
                     // Add one day to allday event that last more than one day.
                     // http://github.com/fullcalendar/fullcalendar/issues/2909
