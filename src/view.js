@@ -34,6 +34,7 @@
                     this, this.screen.exclude_field, field_attrs)
                     .parse(xml.children()[0]);
             }
+            this.reset();
         },
         set_value: function() {
         },
@@ -54,6 +55,8 @@
         },
         get_buttons: function() {
             return [];
+        },
+        reset: function() {
         },
     });
 
