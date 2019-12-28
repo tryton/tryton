@@ -14,7 +14,10 @@ __all__ = ['Journal', 'Payment', 'Succeed', 'SucceedStart']
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
     clearing_account = fields.Many2One('account.account', 'Clearing Account',
-        domain=[('party_required', '=', False)],
+        domain=[
+            ('closed', '!=', True),
+            ('party_required', '=', False),
+            ],
         states={
             'required': Bool(Eval('clearing_journal')),
             },
@@ -57,6 +60,7 @@ class Payment(metaclass=PoolMeta):
     account = fields.Many2One(
         'account.account', "Account", ondelete='RESTRICT',
         domain=[
+            ('closed', '!=', True),
             ('company', '=', Eval('company', -1)),
             ('type.statement', 'in', ['balance', 'off-balance']),
             ['OR',
