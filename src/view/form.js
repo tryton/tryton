@@ -1488,6 +1488,7 @@ function eval_pyson(value){
             this.date.datetimepicker({
                 'locale': moment.locale(),
                 'keyBinds': null,
+                'useCurrent': false,
             });
             this.date.css('max-width', this._width);
             this.date.on('dp.change', this.focus_out.bind(this));
@@ -4385,6 +4386,7 @@ function eval_pyson(value){
                 'format': Sao.common.moment_format(this.format),
                 'locale': moment.locale(),
                 'keyBinds': null,
+                'useCurrent': false,
             });
             this.date.on('dp.change',
                     this.parent_widget.focus_out.bind(this.parent_widget));
