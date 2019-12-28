@@ -1284,7 +1284,7 @@
                 this.current_record = this.group[0];
             }
             this.set_cursor(false, false);
-            view.display();
+            return view.display();
         },
         display_previous: function() {
             var view = this.current_view;
@@ -1313,7 +1313,7 @@
                 this.current_record = this.group[0];
             }
             this.set_cursor(false, false);
-            view.display();
+            return view.display();
         },
         clear: function() {
             this.current_record = null;

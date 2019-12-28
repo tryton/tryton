@@ -762,8 +762,8 @@
                     }.bind(this));
         },
         switch_: function() {
-            return this.modified_save().done(function() {
-                this.screen.switch_view();
+            return this.modified_save().then(function() {
+                return this.screen.switch_view();
             }.bind(this));
         },
         reload: function(test_modified) {
@@ -847,16 +847,18 @@
         },
         previous: function() {
             return this.modified_save().then(function() {
-                this.screen.display_previous();
+                var prm = this.screen.display_previous();
                 this.info_bar.message();
                 // TODO activate_save
+                return prm;
             }.bind(this));
         },
         next: function() {
             return this.modified_save().then(function() {
-                this.screen.display_next();
+                var prm = this.screen.display_next();
                 this.info_bar.message();
                 // TODO activate_save
+                return prm;
             }.bind(this));
         },
         search: function() {
