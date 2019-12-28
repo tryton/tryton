@@ -101,14 +101,12 @@ class Calendar_(goocalendar.Calendar):
             else:
                 end = None
             midnight = datetime.time(0)
-            all_day = False
+            all_day = (isinstance(start, datetime.date)
+                and (not end or isinstance(end, datetime.date)))
             if not isinstance(start, datetime.datetime):
                 start = datetime.datetime.combine(start, midnight)
             if end and not isinstance(end, datetime.datetime):
                 end = datetime.datetime.combine(end, midnight)
-                all_day = True
-            elif not end:
-                all_day = True
 
             # Skip invalid event
             if end is not None and start > end:
