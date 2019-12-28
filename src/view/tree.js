@@ -217,7 +217,7 @@
             this.display_size = Sao.config.display_size;
         },
         get editable() {
-            return (Boolean(this.attributes.editable) &&
+            return (parseInt(this.attributes.editable || 0, 10) &&
                 !this.screen.attributes.readonly);
         },
         sort_model: function(e){
@@ -1809,7 +1809,7 @@
                                 } else if (event_.which == Sao.common.DOWN_KEYCODE) {
                                     next_row = this.el.next('tr');
                                 } else {
-                                    if (this.tree.attributes.editable == 'bottom') {
+                                    if (this.tree.screen.new_position == -1) {
                                         next_row = this.el.next('tr');
                                     } else {
                                         next_row = this.el.prev('tr');
@@ -1818,9 +1818,9 @@
                                 if (!next_row.length &&
                                     ((event_.which == Sao.common.RETURN_KEYCODE) ||
                                         ((event_.which == Sao.common.UP_KEYCODE) &&
-                                            (this.tree.attributes.editable == 'top')) ||
+                                            (this.tree.screen.new_position == 0)) ||
                                         ((event_.which == Sao.common.DOWN_KEYCODE) &&
-                                            (this.tree.attributes.editable == 'bottom')))) {
+                                            (this.tree.screen.new_position == -1)))) {
                                     var model = this.tree.screen.group;
                                     var access = Sao.common.MODELACCESS.get(
                                         this.tree.screen.model_name);

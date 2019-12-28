@@ -2899,6 +2899,7 @@ function eval_pyson(value){
                 mode: modes,
                 view_ids: (attributes.view_ids || '').split(','),
                 views_preload: attributes.views || {},
+                order: attributes.order,
                 row_activate: this.activate.bind(this),
                 exclude_field: attributes.relation_field || null,
                 limit: null,
@@ -3360,6 +3361,7 @@ function eval_pyson(value){
                 mode: ['tree'],
                 view_ids: (attributes.view_ids || '').split(','),
                 views_preload: attributes.views || {},
+                order: attributes.order,
                 row_activate: this.activate.bind(this),
                 limit: null
             });
