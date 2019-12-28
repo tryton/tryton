@@ -71,6 +71,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
         'product.category.account', 'category', "Accounts")
     account_expense = fields.MultiValue(fields.Many2One('account.account',
             'Account Expense', domain=[
+                ('closed', '!=', True),
                 ('type.expense', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
@@ -82,6 +83,7 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             depends=['account_parent', 'accounting']))
     account_revenue = fields.MultiValue(fields.Many2One('account.account',
             'Account Revenue', domain=[
+                ('closed', '!=', True),
                 ('type.revenue', '=', True),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
