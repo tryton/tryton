@@ -135,13 +135,25 @@
                 }).appendTo(group);
                 var access = Sao.common.MODELACCESS.get(this.screen.model_name);
 
+                var disable_during = function(callback) {
+                    return function(evt) {
+                        var button = jQuery(evt.target);
+                        button.prop('disabled', true);
+                        (callback(evt) || jQuery.when())
+                            .always(function() {
+                                button.prop('disabled', false);
+                            });
+                    };
+                };
+
                 this.but_switch = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
                     'type': 'button',
                     'aria-label': Sao.i18n.gettext('Switch')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-switch')
                 ).appendTo(buttons);
-                this.but_switch.click(this.switch_.bind(this));
+                this.but_switch.click(
+                    disable_during(this.switch_.bind(this)));
 
                 this.but_previous = jQuery('<button/>', {
                     'class': 'btn btn-default btn-sm',
@@ -149,7 +161,8 @@
                     'aria-label': Sao.i18n.gettext('Previous')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
                 ).appendTo(buttons);
-                this.but_previous.click(this.previous.bind(this));
+                this.but_previous.click(
+                    disable_during(this.previous.bind(this)));
 
                 this.label = jQuery('<span/>', {
                     'class': 'badge'
@@ -163,7 +176,7 @@
                     'aria-label': Sao.i18n.gettext('Next')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
                 ).appendTo(buttons);
-                this.but_next.click(this.next.bind(this));
+                this.but_next.click(disable_during(this.next.bind(this)));
 
                 if (this.domain) {
                     this.wid_text.show();
@@ -174,7 +187,7 @@
                         'aria-label': Sao.i18n.gettext('Add')
                     }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
                     ).appendTo(buttons);
-                    this.but_add.click(this.add.bind(this));
+                    this.but_add.click(disable_during(this.add.bind(this)));
                     this.but_add.prop('disabled', !access.read || readonly);
 
                     this.but_remove = jQuery('<button/>', {
@@ -183,7 +196,8 @@
                         'aria-label': Sao.i18n.gettext('Remove')
                     }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
                     ).appendTo(buttons);
-                    this.but_remove.click(this.remove.bind(this));
+                    this.but_remove.click(
+                        disable_during(this.remove.bind(this)));
                     this.but_remove.prop('disabled', !access.read || readonly);
                 }
 
@@ -193,7 +207,7 @@
                     'aria-label': Sao.i18n.gettext('New')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-create')
                 ).appendTo(buttons);
-                this.but_new.click(this.new_.bind(this));
+                this.but_new.click(disable_during(this.new_.bind(this)));
                 this.but_new.prop('disabled', !access.create || readonly);
 
                 this.but_del = jQuery('<button/>', {
@@ -202,7 +216,7 @@
                     'aria-label': Sao.i18n.gettext('Delete')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
                 ).appendTo(buttons);
-                this.but_del.click(this.delete_.bind(this));
+                this.but_del.click(disable_during(this.delete_.bind(this)));
                 this.but_del.prop('disabled', !access['delete'] || readonly);
 
                 this.but_undel = jQuery('<button/>', {
@@ -211,7 +225,7 @@
                     'aria-label': Sao.i18n.gettext('Undelete')
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-undo')
                 ).appendTo(buttons);
-                this.but_undel.click(this.undelete.bind(this));
+                this.but_undel.click(disable_during(this.undelete.bind(this)));
                 this.but_undel.prop('disabled', !access['delete'] || readonly);
 
                 this.screen.message_callback = this.record_label.bind(this);
@@ -308,13 +322,13 @@
             this.screen.unremove();
         },
         previous: function() {
-            this.screen.display_previous();
+            return this.screen.display_previous();
         },
         next: function() {
-            this.screen.display_next();
+            return this.screen.display_next();
         },
         switch_: function() {
-            this.screen.switch_view();
+            return this.screen.switch_view();
         },
         response: function(response_id) {
             var result;
