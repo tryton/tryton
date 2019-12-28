@@ -164,6 +164,30 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_company" action="act_employee_form" id="menu_employee_form"/>
 
+        <record model="ir.action.act_window" id="act_employee_subordinates">
+            <field name="name">Supervised by</field>
+            <field name="res_model">company.employee</field>
+            <field
+                name="domain"
+                pyson="1"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('supervisor', '=', Eval('active_id')), ('supervisor', 'in', Eval('active_ids')))]"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_subordinates_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="employee_view_tree"/>
+            <field name="act_window" ref="act_employee_subordinates"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_employee_subordinates_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="employee_view_form"/>
+            <field name="act_window" ref="act_employee_subordinates"/>
+        </record>
+        <record model="ir.action.keyword" id="act_employee_subordinates_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">company.employee,-1</field>
+            <field name="action" ref="act_employee_subordinates"/>
+        </record>
+
         <record model="ir.model.access" id="access_employee">
             <field name="model" search="[('model', '=', 'company.employee')]"/>
             <field name="perm_read" eval="True"/>

@@ -4,6 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="party" expand="1"/>
     <field name="company" expand="1"/>
+    <field name="supervisor" expand="1"/>
     <field name="start_date"/>
     <field name="end_date"/>
 </tree>

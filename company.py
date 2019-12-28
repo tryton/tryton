@@ -74,6 +74,20 @@ class Employee(ModelSQL, ModelView):
             ],
         depends=['start_date'],
         help="When the employee leaves the company.")
+    supervisor = fields.Many2One(
+        'company.employee', "Supervisor",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'],
+        help="The employee who oversees this employee.")
+    subordinates = fields.One2Many(
+        'company.employee', 'supervisor', "Subordinates",
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['company'],
+        help="The employees to be overseen by this employee.")
 
     @staticmethod
     def default_company():
