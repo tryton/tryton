@@ -1,3 +1,6 @@
+* Allow empty order clause
+* Change editable tree attribute into boolean
+* Send default order to clients
 * Replace advisory lock by SKIP LOCKED in queue pulling
 * Load WSGI middleware from configuration
 * Add help text to Dict keys

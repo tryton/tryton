@@ -54,7 +54,10 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls._order.insert(0, ('create_date', 'DESC'))
+        cls._order = [
+            ('create_date', 'DESC'),
+            ('id', 'DESC'),
+            ]
 
     @classmethod
     def __register__(cls, module_name):

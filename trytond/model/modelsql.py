@@ -188,7 +188,7 @@ class ModelSQL(ModelStorage):
             cls._sql_constraints.append(
                 ('id_positive', Check(table, table.id >= 0),
                     'ir.msg_id_positive'))
-        cls._order = [('id', 'ASC')]
+        cls._order = [('id', None)]
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
                     'history_revisions': RPC(),
@@ -1256,11 +1256,14 @@ class ModelSQL(ModelStorage):
         for oexpr, otype in order:
             fname, _, extra_expr = oexpr.partition('.')
             field = cls._fields[fname]
-            otype = otype.upper()
-            try:
-                otype, null_ordering = otype.split(' ', 1)
-            except ValueError:
-                null_ordering = None
+            if not otype:
+                otype, null_ordering = 'ASC', None
+            else:
+                otype = otype.upper()
+                try:
+                    otype, null_ordering = otype.split(' ', 1)
+                except ValueError:
+                    null_ordering = None
             Order = order_types[otype]
             NullOrdering = null_ordering_types[null_ordering]
             forder = field.convert_order(oexpr, tables, cls)

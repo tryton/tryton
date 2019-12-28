@@ -10,6 +10,7 @@ from sql import Null
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model.exceptions import ValidationError
+from trytond.pyson import PYSONEncoder
 from ..model import (
     ModelView, ModelStorage, ModelSQL, DeactivableMixin, fields,
     sequence_ordered)
@@ -880,6 +881,8 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
 
     @classmethod
     def get_pyson(cls, windows, name):
+        pool = Pool()
+        encoder = PYSONEncoder()
         pysons = {}
         field = name[6:]
         defaults = {
@@ -888,6 +891,12 @@ class ActionActWindow(ActionMixin, ModelSQL, ModelView):
             'search_value': '[]',
             }
         for window in windows:
+            if not window.order and field == 'order':
+                if window.res_model:
+                    defaults['order'] = encoder.encode(
+                        getattr(pool.get(window.res_model), '_order', 'null'))
+                else:
+                    defaults['order'] = 'null'
             pysons[window.id] = (getattr(window, field)
                 or defaults.get(field, 'null'))
         return pysons

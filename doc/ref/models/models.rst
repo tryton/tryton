@@ -443,10 +443,10 @@ Class methods:
             [ ('field name', 'ASC'), ('other field name', 'DESC'), ... ]
 
     The first element of the tuple is a field name of the model and the second
-    is the sort ordering as `ASC` for ascending or `DESC` for descending. This
-    second element may contain 'NULLS FIRST' or 'NULLS LAST' to sort null
-    values before or after non-null values. If neither is specified the default
-    behavior of the backend is used.
+    is the sort ordering as `ASC` for ascending, `DESC` for descending or empty
+    for a default order. This second element may contain 'NULLS FIRST' or
+    'NULLS LAST' to sort null values before or after non-null values. If
+    neither is specified the default behavior of the backend is used.
 
     In case the field used is a :class:`fields.Many2One`, it is also possible
     to use the dotted notation to sort on a specific field from the target

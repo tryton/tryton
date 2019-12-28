@@ -352,4 +352,7 @@ class One2Many(Field):
         if self.size is not None:
             definition['size'] = encoder.encode(self.size)
         definition['sortable'] &= hasattr(model, 'order_' + self.name)
+        definition['order'] = encoder.encode(
+            getattr(model, '_order', None)
+            if self.order is None else self.order)
         return definition

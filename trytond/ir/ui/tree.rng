@@ -27,8 +27,8 @@
       <attribute>
         <name ns="">editable</name>
         <choice>
-          <value>top</value>
-          <value>bottom</value>
+          <value>0</value>
+          <value>1</value>
         </choice>
       </attribute>
     </optional>

@@ -519,9 +519,7 @@ Each tree view must start with this tag.
 
     * ``on_write``: see form-attributes-on_write_.
 
-    * ``editable``: If it is set to ``top`` or ``bottom``, the list becomes
-      editable and the new record will be added on ``top`` or ``bottom`` of the
-      list.
+    * ``editable``: A boolean to specify if the list is editable.
 
     * ``sequence``: The name of the field that is used for sorting.  This field
       must be an integer and it will be updated to match the new sort order
