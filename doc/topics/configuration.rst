@@ -462,6 +462,21 @@ It can be overridden for specific models and fields using the names:
 
 Default: `''`
 
+wsgi middleware
+---------------
+
+The section lists the `WSGI middleware`_ class to load.
+Each middleware can be configured with a section named `wsgi <middleware>`
+containing `args` and `kwargs` options.
+
+Example::
+
+    [wsgi middleware]
+    ie = werkzeug.contrib.fixers.InternetExplorerFix
+
+    [wsgi ie]
+    kwargs={'fix_attach': False}
+
 
 .. _JSON-RPC: http://en.wikipedia.org/wiki/JSON-RPC
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
@@ -470,3 +485,4 @@ Default: `''`
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
 .. _SSL-CERT: https://docs.python.org/library/ssl.html#ssl.wrap_socket
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
+.. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview

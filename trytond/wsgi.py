@@ -35,6 +35,7 @@ from trytond.config import config
 from trytond.protocols.wrappers import Request
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.xmlrpc import XMLProtocol
+from trytond.tools import resolve
 
 __all__ = ['TrytondWSGI', 'app']
 
@@ -213,5 +214,18 @@ if config.get('web', 'root'):
 num_proxies = config.getint('web', 'num_proxies')
 if num_proxies:
     app.wsgi_app = NumProxyFix(app.wsgi_app, num_proxies)
+
+if config.has_section('wsgi middleware'):
+    for middleware in config.options('wsgi middleware'):
+        Middleware = resolve(config.get('wsgi middleware', middleware))
+        args, kwargs = (), {}
+        section = 'wsgi %s' % middleware
+        if config.has_section(section):
+            if config.has_option(section, 'args'):
+                args = eval(config.get(section, 'args'))
+            if config.has_option(section, 'kwargs'):
+                kwargs = eval(config.get(section, 'kwargs'))
+        app.wsgi_app = Middleware(app.wsgi_app, *args, **kwargs)
+
 import trytond.protocols.dispatcher
 import trytond.bus
