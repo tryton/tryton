@@ -242,9 +242,8 @@ class GenericText(Cell):
                 cell.set_property('strikethrough', record.deleted)
             cell.set_property('text', text)
 
-        editable = getattr(self.view.treeview, 'editable', False)
         states = ('invisible',)
-        if editable:
+        if self.view.editable:
             states = ('readonly', 'required', 'invisible')
 
         field.state_set(record, states=states)
@@ -257,7 +256,7 @@ class GenericText(Cell):
         if invisible and not isinstance(cell, CellRendererToggle):
             cell.set_property('text', '')
 
-        if editable:
+        if self.view.editable:
             readonly = self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False))
             if invisible:
@@ -483,7 +482,7 @@ class Binary(GenericText):
         cell.set_property('text', text)
 
         states = ('invisible',)
-        if getattr(self.view.treeview, 'editable', False):
+        if self.view.editable:
             states = ('readonly', 'required', 'invisible')
 
         field.state_set(record, states=states)

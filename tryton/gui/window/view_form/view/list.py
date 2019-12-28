@@ -438,9 +438,9 @@ class ViewTree(View):
         self.sum_widgets = []
         self.sum_box = Gtk.HBox()
         self.treeview = None
-        editable = xml.getAttribute('editable')
-        if editable and not screen.readonly:
-            self.treeview = EditableTreeView(editable, self)
+        self._editable = bool(int(xml.getAttribute('editable') or 0))
+        if self._editable:
+            self.treeview = EditableTreeView(self)
             grid_lines = Gtk.TreeViewGridLines.BOTH
         else:
             self.treeview = TreeView(self)
@@ -609,8 +609,7 @@ class ViewTree(View):
 
     @property
     def editable(self):
-        return (bool(getattr(self.treeview, 'editable', False))
-            and not self.screen.readonly)
+        return self._editable and not self.screen.readonly
 
     def get_fields(self):
         return [col.name for col in self.treeview.get_columns() if col.name]

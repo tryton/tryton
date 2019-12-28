@@ -160,6 +160,7 @@ class One2Many(Widget):
             mode=attrs.get('mode', 'tree,form').split(','),
             view_ids=attrs.get('view_ids', '').split(','),
             views_preload=attrs.get('views', {}),
+            order=attrs.get('order'),
             row_activate=self._on_activate,
             exclude_field=attrs.get('relation_field', None),
             limit=None)

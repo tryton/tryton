@@ -597,7 +597,7 @@ class Screen(SignalEvent):
         else:
             group = self.group
         record = group.new(default, rec_name=rec_name)
-        group.add(record, self.new_model_position())
+        group.add(record, self.new_position)
         if previous_view.view_type == 'calendar':
             previous_view.set_default_date(record, selected_date)
         self.current_record = record
@@ -606,12 +606,19 @@ class Screen(SignalEvent):
         GLib.idle_add(self.set_cursor, True)
         return self.current_record
 
-    def new_model_position(self):
-        position = -1
-        if (self.current_view and self.current_view.view_type == 'tree'
-                and self.current_view.attributes.get('editable') == 'top'):
-            position = 0
-        return position
+    @property
+    def new_position(self):
+        if self.order:
+            for oexpr, otype in self.order:
+                if oexpr == 'id' and otype:
+                    if otype.startswith('DESC'):
+                        return 0
+                    elif otype.startswith('ASC'):
+                        return -1
+        if self.parent:
+            return -1
+        else:
+            return 0
 
     def set_on_write(self, func_name):
         if func_name:

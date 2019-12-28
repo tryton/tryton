@@ -1,3 +1,4 @@
+* Position new record based on order
 * Allow relation field to be selected in CSV export
 * Support validate attribute of wizard's Button
 
