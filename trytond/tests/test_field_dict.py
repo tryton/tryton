@@ -36,6 +36,17 @@ class FieldDictTestCase(unittest.TestCase):
                     'type_': 'selection',
                     'selection': ('arabic: Arabic\n'
                         'hexa: Hexadecimal'),
+                    }, {
+                    'name': 'countries',
+                    'string': 'Countries',
+                    'type_': 'multiselection',
+                    'selection': (
+                        'au: Australia\n'
+                        'be: Belgium\n'
+                        'ca: Canada\n'
+                        'de: Germany\n'
+                        'es: Spain\n'
+                        'fr: France'),
                     }])
 
     def set_jsonb(self, table):
@@ -129,6 +140,18 @@ class FieldDictTestCase(unittest.TestCase):
                     }])
 
         self.assertDictEqual(dict_.dico, {'type': 'arabic'})
+
+    @with_transaction()
+    def test_create_multiselection(self):
+        "Test create dict with multi-selection"
+        Dict = Pool().get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'countries': ['fr', 'be']},
+                    }])
+
+        self.assertDictEqual(dict_.dico, {'countries': ['be', 'fr']})
 
     @with_transaction()
     def test_invalid_selection_schema(self):
@@ -235,6 +258,31 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertListEqual(dicts_foo_b, [])
 
     @with_transaction()
+    def test_search_multiselection_equals(self):
+        "Test search dict multi-selection equals"
+        pool = Pool()
+        Dict = pool.get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'countries': ['fr', 'be']},
+                    }])
+
+        france_belgium = Dict.search([
+                ('dico.countries', '=', ['be', 'fr']),
+                ])
+        belgium = Dict.search([
+                ('dico.countries', '=', ['be']),
+                ])
+        germany = Dict.search([
+                ('dico.countries', '=', ['de']),
+                ])
+
+        self.assertEqual(france_belgium, [dict_])
+        self.assertEqual(belgium, [])
+        self.assertEqual(germany, [])
+
+    @with_transaction()
     def test_search_element_equals_none(self):
         "Test search dict element equals None"
         pool = Pool()
@@ -289,6 +337,35 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertListEqual(dicts_foo, [])
         self.assertListEqual(dicts_bar, [dict_])
         self.assertListEqual(dicts_foo_b, [])
+
+    @with_transaction()
+    def test_search_multiselection_not_equals(self):
+        "Test search dict multi-selection not equals"
+        pool = Pool()
+        Dict = pool.get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'countries': ['fr', 'be']},
+                    }])
+
+        not_france_belgium = Dict.search([
+                ('dico.countries', '!=', ['be', 'fr']),
+                ])
+        not_belgium = Dict.search([
+                ('dico.countries', '!=', ['be']),
+                ])
+        not_germany = Dict.search([
+                ('dico.countries', '!=', ['de']),
+                ])
+        not_empty = Dict.search([
+                ('dico.countries', '!=', []),
+                ])
+
+        self.assertEqual(not_france_belgium, [])
+        self.assertEqual(not_belgium, [dict_])
+        self.assertEqual(not_germany, [dict_])
+        self.assertEqual(not_empty, [dict_])
 
     @with_transaction()
     def test_search_element_non_equals_none(self):
@@ -403,6 +480,38 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertListEqual(dicts_foo_b, [])
 
     @with_transaction()
+    @unittest.skipIf(
+        backend.name != 'postgresql',
+        'in use the contain check specific to postgresql')
+    def test_search_multiselection_in(self):
+        "Test search dict multi-selection with in"
+        pool = Pool()
+        Dict = pool.get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'countries': ['fr', 'be']},
+                    }])
+
+        belgium = Dict.search([
+                ('dico.countries', 'in', ['be']),
+                ])
+        germany = Dict.search([
+                ('dico.countries', 'in', ['de']),
+                ])
+        belgium_germany = Dict.search([
+                ('dico.countries', 'in', ['be', 'de']),
+                ])
+        empty = Dict.search([
+                ('dico.countries', 'in', []),
+                ])
+
+        self.assertEqual(belgium, [dict_])
+        self.assertEqual(germany, [])
+        self.assertEqual(belgium_germany, [dict_])
+        self.assertEqual(empty, [])
+
+    @with_transaction()
     def test_search_element_in_none(self):
         "Test search dict element in [None]"
         pool = Pool()
@@ -445,6 +554,38 @@ class FieldDictTestCase(unittest.TestCase):
         self.assertListEqual(dicts_bar, [dict_])
         self.assertListEqual(dicts_empty, [dict_])
         self.assertListEqual(dicts_foo_b, [])
+
+    @with_transaction()
+    @unittest.skipIf(
+        backend.name != 'postgresql',
+        'in use the contain check specific to postgresql')
+    def test_search_multiselection_not_in(self):
+        "Test search dict multi-selection with not in"
+        pool = Pool()
+        Dict = pool.get('test.dict')
+        self.create_schema()
+
+        dict_, = Dict.create([{
+                    'dico': {'countries': ['fr', 'be']},
+                    }])
+
+        not_belgium = Dict.search([
+                ('dico.countries', 'not in', ['be']),
+                ])
+        not_germany = Dict.search([
+                ('dico.countries', 'not in', ['de']),
+                ])
+        not_belgium_germany = Dict.search([
+                ('dico.countries', 'not in', ['de', 'be']),
+                ])
+        not_empty = Dict.search([
+                ('dico.countries', 'not in', []),
+                ])
+
+        self.assertEqual(not_belgium, [])
+        self.assertEqual(not_germany, [dict_])
+        self.assertEqual(not_belgium_germany, [])
+        self.assertEqual(not_empty, [dict_])
 
     @with_transaction()
     def test_search_element_not_in_none(self):

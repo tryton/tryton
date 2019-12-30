@@ -47,7 +47,14 @@ class Dict(Field):
     def sql_format(self, value):
         value = super().sql_format(value)
         if isinstance(value, dict):
-            value = dumps({k: v for k, v in value.items() if v is not None})
+            d = {}
+            for k, v in value.items():
+                if v is None:
+                    continue
+                if isinstance(v, list):
+                    v = list(sorted(set(v)))
+                d[k] = v
+            value = dumps(d)
         return value
 
     def translated(self, name=None, type_='values'):
@@ -74,6 +81,8 @@ class Dict(Field):
             value = int(value)
         if isinstance(value, (Select, CombiningQuery)):
             return value
+        if isinstance(value, (list, tuple)):
+            value = sorted(set(value))
         if operator.endswith('in'):
             return [dumps(v) for v in value]
         else:
@@ -101,33 +110,46 @@ class Dict(Field):
         table, _ = tables[None]
         name, key = name.split('.', 1)
         Operator = SQL_OPERATORS[operator]
-        column = self.sql_column(table)
-        column = self._domain_column(operator, column, key)
+        raw_column = self.sql_column(table)
+        column = self._domain_column(operator, raw_column, key)
         expression = Operator(column, self._domain_value(operator, value))
         if operator in {'=', '!='}:
             # Try to use custom operators in case there is indexes
-            raw_column = self.sql_column(table)
             try:
                 if value is None:
                     expression = database.json_key_exists(
                         raw_column, key)
                     if operator == '=':
                         expression = operators.Not(expression)
-                    return expression
-                else:
+                # we compare on multi-selection by doing an equality check and
+                # not a contain check
+                elif not isinstance(value, (list, tuple)):
                     expression = database.json_contains(
                         raw_column, dumps({key: value}))
                     if operator == '!=':
                         expression = operators.Not(expression)
                         expression &= database.json_key_exists(
                             raw_column, key)
-                    return expression
+                return expression
             except NotImplementedError:
                 pass
-        if isinstance(expression, operators.In) and not expression.right:
-            expression = Literal(False)
-        elif isinstance(expression, operators.NotIn) and not expression.right:
-            expression = Literal(True)
+        elif operator.endswith('in'):
+            # Try to use custom operators in case there is indexes
+            if not value:
+                expression = Literal(operator.startswith('not'))
+            else:
+                op = '!=' if operator.startswith('not') else '='
+                try:
+                    in_expr = Literal(False)
+                    for v in value:
+                        in_expr |= database.json_contains(
+                            self._domain_column(op, raw_column, key),
+                            dumps(v))
+                    if operator.startswith('not'):
+                        in_expr = ~in_expr
+                    expression = in_expr
+                except NotImplementedError:
+                    pass
         expression = self._domain_add_null(column, operator, value, expression)
         return expression
 

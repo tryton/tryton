@@ -42,6 +42,8 @@ class DictSchemaMixin(object):
             ('date', lazy_gettext('ir.msg_dict_schema_date')),
             ('datetime', lazy_gettext('ir.msg_dict_schema_datetime')),
             ('selection', lazy_gettext('ir.msg_dict_schema_selection')),
+            ('multiselection',
+                lazy_gettext('ir.msg_dict_schema_multiselection')),
             ], lazy_gettext('ir.msg_dict_schema_type'), required=True)
     digits = fields.Integer(
         lazy_gettext('ir.msg_dict_schema_digits'),
@@ -52,19 +54,20 @@ class DictSchemaMixin(object):
     selection = fields.Text(
         lazy_gettext('ir.msg_dict_schema_selection'),
         states={
-            'invisible': Eval('type_') != 'selection',
+            'invisible': ~Eval('type_').in_(['selection', 'multiselection']),
             }, translate=True, depends=['type_'],
         help=lazy_gettext('ir.msg_dict_schema_selection_help'))
     selection_sorted = fields.Boolean(
         lazy_gettext('ir.msg_dict_schema_selection_sorted'),
         states={
-            'invisible': Eval('type_') != 'selection',
+            'invisible': ~Eval('type_').in_(['selection', 'multiselection']),
             }, depends=['type_'],
         help=lazy_gettext('ir.msg_dict_schema_selection_sorted_help'))
     selection_json = fields.Function(fields.Char(
             lazy_gettext('ir.msg_dict_schema_selection_json'),
             states={
-                'invisible': Eval('type_') != 'selection',
+                'invisible': ~Eval('type_').in_(
+                    ['selection', 'multiselection']),
                 },
             depends=['type_']), 'get_selection_json')
 
@@ -117,7 +120,7 @@ class DictSchemaMixin(object):
     @classmethod
     def check_selection(cls, schemas):
         for schema in schemas:
-            if schema.type_ != 'selection':
+            if schema.type_ not in {'selection', 'multiselection'}:
                 continue
             try:
                 dict(json.loads(schema.get_selection_json()))
@@ -147,7 +150,7 @@ class DictSchemaMixin(object):
                 'domain': record.domain,
                 'sequence': getattr(record, 'sequence', record.name),
                 }
-            if record.type_ == 'selection':
+            if record.type_ in {'selection', 'multiselection'}:
                 with Transaction().set_context(language=Config.get_language()):
                     english_key = cls(record.id)
                     selection = OrderedDict(json.loads(

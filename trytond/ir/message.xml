@@ -90,6 +90,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_selection">
             <field name="text">Selection</field>
         </record>
+        <record model="ir.message" id="msg_dict_schema_multiselection">
+            <field name="text">MultiSelection</field>
+        </record>
         <record model="ir.message" id="msg_dict_schema_digits">
             <field name="text">Digits</field>
         </record>
