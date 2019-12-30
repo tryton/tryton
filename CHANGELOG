@@ -1,3 +1,4 @@
+* Add MultiSelection entry to Dict field
 * Position new record based on order
 * Reset display_size of TreeView when group is cleared or changed
 * Allow relation field to be selected in CSV export

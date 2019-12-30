@@ -4323,6 +4323,8 @@ function eval_pyson(value){
                     return Sao.View.Form.Dict.Boolean;
                 case 'selection':
                     return Sao.View.Form.Dict.Selection;
+                case 'multiselection':
+                    return Sao.View.Form.Dict.MultiSelection;
                 case 'integer':
                     return Sao.View.Form.Dict.Integer;
                 case 'float':
@@ -4407,10 +4409,9 @@ function eval_pyson(value){
         }
     });
 
-    Sao.View.Form.Dict.Selection = Sao.class_(Sao.View.Form.Dict.Entry, {
-        class_: 'dict-selection',
+    Sao.View.Form.Dict.SelectionEntry = Sao.class_(Sao.View.Form.Dict.Entry, {
         create_widget: function() {
-            Sao.View.Form.Dict.Selection._super.create_widget.call(this);
+            Sao.View.Form.Dict.SelectionEntry._super.create_widget.call(this);
             var select = jQuery('<select/>', {
                 'class': 'form-control input-sm mousetrap'
             });
@@ -4424,7 +4425,6 @@ function eval_pyson(value){
                     return a[1].localeCompare(b[1]);
                 });
             }
-            selection.splice(0, 0, [null, '']);
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
                     'value': JSON.stringify(e[0]),
@@ -4432,17 +4432,47 @@ function eval_pyson(value){
                 }));
             });
         },
-        get_value: function() {
-            return JSON.parse(this.input.val());
-        },
-        set_value: function(value) {
-            this.input.val(JSON.stringify(value));
-        },
         set_readonly: function(readonly) {
             this._readonly = readonly;
             this.input.prop('disabled', readonly);
         }
     });
+
+    Sao.View.Form.Dict.Selection = Sao.class_(
+        Sao.View.Form.Dict.SelectionEntry, {
+            class_: 'dict-selection',
+            create_widget: function() {
+                Sao.View.Form.Dict.Selection._super.create_widget.call(this);
+                this.input.prepend(jQuery('<option/>', {
+                    'value': JSON.stringify(null),
+                    'text': '',
+                }));
+            },
+            get_value: function() {
+                return JSON.parse(this.input.val());
+            },
+            set_value: function(value) {
+                this.input.val(JSON.stringify(value));
+            },
+        });
+
+    Sao.View.Form.Dict.MultiSelection = Sao.class_(
+        Sao.View.Form.Dict.SelectionEntry, {
+            class_: 'dict-multiselection',
+            create_widget: function() {
+                Sao.View.Form.Dict.MultiSelection._super
+                    .create_widget.call(this);
+                this.input.prop('multiple', true);
+            },
+            get_value: function() {
+                var value = this.input.val();
+                return value.map(function(e) { return JSON.parse(e); });
+            },
+            set_value: function(value) {
+                value = value.map(function(e) { return JSON.stringify(e); });
+                this.input.val(value);
+            }
+        });
 
     Sao.View.Form.Dict.Float = Sao.class_(Sao.View.Form.Dict.Entry, {
         class_: 'dict-float',
