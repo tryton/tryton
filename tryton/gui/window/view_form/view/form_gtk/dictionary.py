@@ -23,6 +23,7 @@ from tryton.common.number_entry import NumberEntry
 from tryton.common.underline import set_underline
 from tryton.common.domain_inversion import eval_domain
 from tryton.common.widget_style import widget_class
+from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.pyson import PYSONDecoder
 
 _ = gettext.gettext
@@ -159,6 +160,66 @@ class DictSelectionEntry(DictEntry):
         self.widget.set_sensitive(not readonly)
 
 
+class DictMultiSelectionEntry(DictEntry):
+    expand = False
+
+    def create_widget(self):
+        widget = Gtk.ScrolledWindow()
+        widget.set_policy(Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        widget.set_shadow_type(Gtk.ShadowType.ETCHED_IN)
+        widget.set_size_request(100, 100)
+
+        model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_STRING)
+        self.tree = TreeViewControl()
+        self.tree.set_model(model)
+        self.tree.set_search_column(1)
+        self.tree.connect(
+            'focus-out-event', lambda w, e: self.parent_widget._focus_out())
+        self.tree.set_headers_visible(False)
+        selection = self.tree.get_selection()
+        selection.set_mode(Gtk.SelectionMode.MULTIPLE)
+        selection.connect('changed', self._changed)
+        widget.add(self.tree)
+
+        self.selection = self.definition['selection']
+        if self.definition.get('sort', True):
+            self.selection.sort(key=operator.itemgetter(1))
+        for value, name in self.selection:
+            name = str(name)
+            model.append((value, name))
+
+        name_column = Gtk.TreeViewColumn()
+        name_cell = Gtk.CellRendererText()
+        name_column.pack_start(name_cell, expand=True)
+        name_column.add_attribute(name_cell, 'text', 1)
+        self.tree.append_column(name_column)
+
+        return widget
+
+    def get_value(self):
+        model, paths = self.tree.get_selection().get_selected_rows()
+        return [model[path][0] for path in paths]
+
+    def set_value(self, value):
+        value2path = {v: idx for idx, (v, _) in enumerate(self.selection)}
+        selection = self.tree.get_selection()
+        selection.handler_block_by_func(self._changed)
+        try:
+            selection.unselect_all()
+            for v in value:
+                if v in value2path:
+                    selection.select_path(value2path[v])
+        finally:
+            selection.handler_unblock_by_func(self._changed)
+
+    def _changed(self, selection):
+        GLib.idle_add(self.parent_widget._focus_out)
+
+    def set_readonly(self, readonly):
+        selection = self.tree.get_selection()
+        selection.set_select_function(lambda *a: not readonly)
+
+
 class DictIntegerEntry(DictEntry):
     expand = False
     fill = False
@@ -283,6 +344,7 @@ DICT_ENTRIES = {
     'char': DictEntry,
     'boolean': DictBooleanEntry,
     'selection': DictSelectionEntry,
+    'multiselection': DictMultiSelectionEntry,
     'datetime': DictDateTimeEntry,
     'date': DictDateEntry,
     'integer': DictIntegerEntry,
