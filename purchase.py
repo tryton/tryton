@@ -65,7 +65,7 @@ class ProductSupplierDay(ModelSQL, ModelView):
         if table_h.column_exist('weekday'):
             cursor = transaction.connection.cursor()
             update = transaction.connection.cursor()
-            cursor.execute(*day.select([day.id, day.index]))
+            cursor.execute(*day.select(day.id, day.index))
             for day_id, index in cursor:
                 update.execute(*table.update(
                         [table.day], [day_id],
