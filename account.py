@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import hashlib
 from decimal import Decimal
 
 from sql import Null
@@ -257,19 +258,24 @@ class PayLine(Wizard):
                     ('payment_amount', '!=', 0),
                     ('move_state', '=', 'posted'),
                     ])
-            for line in others:
-                warning_name = '%s:%s' % (reverse[kind], line.party)
+            for party in parties:
+                party_lines = [l for l in others if l.party == party]
+                if not party_lines:
+                    continue
+                lines = [l for l in types[kind]['lines']
+                    if l.party == party]
+                warning_name = '%s:%s:%s' % (
+                    reverse[kind], party,
+                    hashlib.md5(str(lines).encode('utf-8')).hexdigest())
                 if Warning.check(warning_name):
-                    lines = [l for l in types[kind]['lines']
-                        if l.party == line.party]
                     names = ', '.join(l.rec_name for l in lines[:5])
                     if len(lines) > 5:
                         names += '...'
                     raise GroupWarning(warning_name,
                         gettext('account_payment.msg_pay_line_group',
                             names=names,
-                            party=line.party.rec_name,
-                            line=line.rec_name))
+                            party=party.rec_name,
+                            line=party_lines[0].rec_name))
         return {}
 
     def _get_journals(self):
