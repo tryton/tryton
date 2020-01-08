@@ -51,10 +51,8 @@ Create chart of accounts::
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
     >>> stock = accounts['stock']
-    >>> stock_customer = accounts['stock_customer']
-    >>> stock_lost_found = accounts['stock_lost_found']
-    >>> stock_production = accounts['stock_production']
-    >>> stock_supplier = accounts['stock_supplier']
+    >>> stock_in = accounts['stock_expense']
+    >>> stock_out, = stock_in.duplicate()
     >>> cogs = accounts['cogs']
 
     >>> AccountJournal = Model.get('account.journal')
@@ -75,10 +73,8 @@ Create account category::
     >>> account_category.account_revenue = revenue
     >>> account_category.account_stock = stock
     >>> account_category.account_cogs = cogs
-    >>> account_category.account_stock_supplier = stock_supplier
-    >>> account_category.account_stock_customer = stock_customer
-    >>> account_category.account_stock_production = stock_production
-    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.account_stock_in = stock_in
+    >>> account_category.account_stock_out = stock_out
     >>> account_category.save()
 
 Create product::
@@ -166,11 +162,11 @@ Receive 4 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
-    >>> stock_supplier.reload()
+    >>> stock_in.reload()
     >>> stock.reload()
-    >>> stock_supplier.debit
+    >>> stock_in.debit
     Decimal('0.00')
-    >>> stock_supplier.credit
+    >>> stock_in.credit
     Decimal('20.00')
     >>> stock.reload()
     >>> stock.debit
@@ -203,8 +199,8 @@ Open supplier invoice::
     Decimal('20.00')
     >>> expense.credit
     Decimal('23.00')
-    >>> stock_supplier.reload()
-    >>> stock_supplier.debit
+    >>> stock_in.reload()
+    >>> stock_in.debit
     Decimal('20.00')
-    >>> stock_supplier.credit
+    >>> stock_in.credit
     Decimal('20.00')

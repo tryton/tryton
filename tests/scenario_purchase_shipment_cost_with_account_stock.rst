@@ -45,10 +45,8 @@ Create chart of accounts::
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
     >>> stock = accounts['stock']
-    >>> stock_customer = accounts['stock_customer']
-    >>> stock_lost_found = accounts['stock_lost_found']
-    >>> stock_production = accounts['stock_production']
-    >>> stock_supplier = accounts['stock_supplier']
+    >>> stock_in = accounts['stock_expense']
+    >>> stock_out, = stock_in.duplicate()
 
     >>> AccountJournal = Model.get('account.journal')
     >>> stock_journal, = AccountJournal.find([('code', '=', 'STO')])
@@ -67,10 +65,8 @@ Create account category::
     >>> account_category.account_expense = expense
     >>> account_category.account_revenue = revenue
     >>> account_category.account_stock = stock
-    >>> account_category.account_stock_supplier = stock_supplier
-    >>> account_category.account_stock_customer = stock_customer
-    >>> account_category.account_stock_production = stock_production
-    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.account_stock_in = stock_in
+    >>> account_category.account_stock_out = stock_out
     >>> account_category.save()
 
 Create products::
@@ -152,8 +148,8 @@ Receive a single product line::
     Decimal('8.0600')
     >>> move_average.unit_price
     Decimal('8.0600')
-    >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
+    >>> stock_in.reload()
+    >>> (stock_in.debit, stock_in.credit) == \
     ...     (Decimal('0.00'), Decimal('398.20'))
     True
     >>> expense.reload()
@@ -186,8 +182,8 @@ Receive many product lines::
     >>> [move.unit_price for move in shipment.incoming_moves] == \
     ...     [Decimal('8.3333'), Decimal('8.3333'), Decimal('8.3334')]
     True
-    >>> stock_supplier.reload()
-    >>> (stock_supplier.debit, stock_supplier.credit) == \
+    >>> stock_in.reload()
+    >>> (stock_in.debit, stock_in.credit) == \
     ...     (Decimal('0.00'), Decimal('467.20'))
     True
     >>> expense.reload()

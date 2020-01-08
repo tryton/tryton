@@ -158,7 +158,7 @@ class Move(metaclass=PoolMeta):
                 self.company.currency)
             shipment_cost_account = \
                 self.shipment.carrier.carrier_product.account_expense_used
-            account = self.product.account_stock_supplier_used
+            account = self.product.account_stock_in_used
             for move_line in move_lines:
                 if move_line.account == account:
                     move_line.credit -= shipment_cost
