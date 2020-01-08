@@ -53,54 +53,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="stock" eval="True"/>
         </record>
 
-        <record id="account_template_stock_supplier_bg" model="account.account.template">
+        <record id="account_template_stock_expense_bg" model="account.account.template">
             
-            <field name="name">Stock Supplier</field>
-            
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_bg"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="account.account_template_root_bg"/>
-        </record>
-        <record id="account_template_stock_customer_bg" model="account.account.template">
-            
-            <field name="name">Stock Customer</field>
-            
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_bg"/>
-            <field name="parent" ref="account.account_template_root_bg"/>
-        </record>
-
-        <record id="account_template_stock_production_bg" model="account.account.template">
-            
-            <field name="name">Stock Production</field>
-            
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_bg"/>
-            <field name="parent" ref="account.account_template_root_bg"/>
-        </record>
-
-        <record id="account_template_stock_lost_found_bg" model="account.account.template">
-            
-            <field name="name">Stock Lost and Found</field>
+            <field name="name">Разход на акции</field>
             
             
             

@@ -7,8 +7,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">You cannot change the cost price of a product which is associated to stock moves.
 You must use the "Modify Cost Price" wizard.</field>
         </record>
-        <record model="ir.message" id="msg_modify_cost_price_same_account">
-            <field name="text">To modify the cost price, you must change the counterpart account "%(account)s".</field>
-        </record>
     </data>
 </tryton>

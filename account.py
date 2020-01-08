@@ -1,13 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ValueMixin, fields
-from trytond.pyson import Eval, Get
 from trytond.pool import PoolMeta, Pool
-from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationStockJournal',
-    'ConfigurationCostPriceCounterpartAccount',
-    'FiscalYear', 'AccountMove']
 stock_journal = fields.Many2One(
     'account.journal', "Stock Journal", required=True)
 
@@ -15,11 +10,6 @@ stock_journal = fields.Many2One(
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
     stock_journal = fields.MultiValue(stock_journal)
-    cost_price_counterpart_account = fields.MultiValue(fields.Many2One(
-            'account.account', "Cost Price Counterpart Account",
-            domain=[
-                ('company', 'in', [Get(Eval('context', {}), 'company'), None]),
-                ]))
 
     @classmethod
     def default_stock_journal(cls, **pattern):
@@ -39,17 +29,6 @@ class ConfigurationStockJournal(ModelSQL, ValueMixin):
             return ModelData.get_id('account', 'journal_stock')
         except KeyError:
             return None
-
-
-class ConfigurationCostPriceCounterpartAccount(ModelSQL, CompanyValueMixin):
-    "Account Configuration Cost Price Counterpart Account"
-    __name__ = 'account.configuration.cost_price_counterpart_account'
-    cost_price_counterpart_account = fields.Many2One(
-        'account.account', "Cost Price Counterpart Account",
-        domain=[
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
 
 
 class FiscalYear(metaclass=PoolMeta):

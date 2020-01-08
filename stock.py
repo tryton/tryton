@@ -39,14 +39,11 @@ class Move(metaclass=PoolMeta):
         if type_.startswith('in_'):
             move_line.debit = Decimal('0.0')
             move_line.credit = amount
-            account_type = type_[3:]
+            move_line.account = self.product.account_stock_in_used
         else:
             move_line.debit = amount
             move_line.credit = Decimal('0.0')
-            account_type = type_[4:]
-
-        move_line.account = getattr(self.product,
-            'account_stock_%s_used' % account_type)
+            move_line.account = self.product.account_stock_out_used
 
         return [move_line]
 
@@ -117,7 +114,8 @@ class Move(metaclass=PoolMeta):
         type_ = self._get_account_stock_move_type()
         if not type_:
             return
-        with Transaction().set_context(date=date):
+        with Transaction().set_context(
+                company=self.company.id, date=date):
             if type_ == 'supplier_customer':
                 account_move_lines = self._get_account_stock_move_lines(
                     'in_supplier')

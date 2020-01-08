@@ -6,8 +6,6 @@ this repository contains the full copyright notices and license terms. -->
         <separator id="stock" string="Stock" colspan="4"/>
         <label name="stock_journal"/>
         <field name="stock_journal"/>
-        <label name="cost_price_counterpart_account"/>
-        <field name="cost_price_counterpart_account"/>
         <newline/>
     </xpath>
 </data>

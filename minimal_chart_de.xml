@@ -53,56 +53,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="stock" eval="True"/>
         </record>
 
-        <record id="account_template_stock_supplier_de" model="account.account.template">
+        <record id="account_template_stock_expense_de" model="account.account.template">
             
             
             
-            <field name="name">Lager Lieferant</field>
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_de"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="account.account_template_root_de"/>
-        </record>
-        <record id="account_template_stock_customer_de" model="account.account.template">
-            
-            
-            
-            <field name="name">Lager Kunde</field>
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_de"/>
-            <field name="parent" ref="account.account_template_root_de"/>
-        </record>
-
-        <record id="account_template_stock_production_de" model="account.account.template">
-            
-            
-            
-            <field name="name">Lager Produktion</field>
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_de"/>
-            <field name="parent" ref="account.account_template_root_de"/>
-        </record>
-
-        <record id="account_template_stock_lost_found_de" model="account.account.template">
-            
-            
-            
-            <field name="name">Lager Inventurdifferenz</field>
+            <field name="name">Lagerkosten</field>
             
             
             

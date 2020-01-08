@@ -53,55 +53,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="stock" eval="True"/>
         </record>
 
-        <record id="account_template_stock_supplier_ca" model="account.account.template">
+        <record id="account_template_stock_expense_ca" model="account.account.template">
             
             
-            <field name="name">Estoc proveïdor</field>
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_ca"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="account.account_template_root_ca"/>
-        </record>
-        <record id="account_template_stock_customer_ca" model="account.account.template">
-            
-            
-            <field name="name">Estoc client</field>
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_ca"/>
-            <field name="parent" ref="account.account_template_root_ca"/>
-        </record>
-
-        <record id="account_template_stock_production_ca" model="account.account.template">
-            
-            
-            <field name="name">Estoc producció</field>
-            
-            
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_ca"/>
-            <field name="parent" ref="account.account_template_root_ca"/>
-        </record>
-
-        <record id="account_template_stock_lost_found_ca" model="account.account.template">
-            
-            
-            <field name="name">Estoc perdut/trobat</field>
+            <field name="name">Despeses d'existències</field>
             
             
             

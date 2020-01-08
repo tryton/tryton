@@ -16,7 +16,6 @@ def register():
         product.Product,
         account.Configuration,
         account.ConfigurationStockJournal,
-        account.ConfigurationCostPriceCounterpartAccount,
         account.FiscalYear,
         account.AccountMove,
         product.ModifyCostPriceAsk,

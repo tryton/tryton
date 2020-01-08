@@ -3,7 +3,6 @@
 from decimal import Decimal
 
 from trytond import backend
-from trytond.i18n import gettext
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
@@ -13,14 +12,12 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.account_product.product import (
     account_used, template_property)
 from trytond.modules.product import price_digits
-from .exceptions import ModifyCostPriceError
 
 __all__ = ['Category', 'CategoryAccount', 'Template',
     'Product', 'ModifyCostPriceAsk',
     'ModifyCostPriceShowMove', 'ModifyCostPrice']
 account_names = [
-    'account_stock', 'account_stock_supplier', 'account_stock_customer',
-    'account_stock_production', 'account_stock_lost_found']
+    'account_stock', 'account_stock_in', 'account_stock_out']
 
 
 class Category(metaclass=PoolMeta):
@@ -30,6 +27,9 @@ class Category(metaclass=PoolMeta):
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
+                ('id', 'not in', [
+                        Eval('account_stock_in', -1),
+                        Eval('account_stock_out', -1)]),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -37,12 +37,14 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting']))
-    account_stock_supplier = fields.MultiValue(fields.Many2One(
-            'account.account', "Account Stock Supplier",
+            depends=['account_parent', 'accounting',
+                'account_stock_in', 'account_stock_out']))
+    account_stock_in = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock IN",
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
+                ('id', '!=', Eval('account_stock', -1)),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -50,12 +52,13 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting']))
-    account_stock_customer = fields.MultiValue(fields.Many2One(
-            'account.account', "Account Stock Customer",
+            depends=['account_parent', 'accounting', 'account_stock']))
+    account_stock_out = fields.MultiValue(fields.Many2One(
+            'account.account', "Account Stock OUT",
             domain=[
                 ('closed', '!=', True),
                 ('type.stock', '=', True),
+                ('id', '!=', Eval('account_stock', -1)),
                 ('company', '=', Eval('context', {}).get('company', -1)),
                 ],
             states={
@@ -63,33 +66,7 @@ class Category(metaclass=PoolMeta):
                     | Eval('account_parent')
                     | ~Eval('accounting', False)),
                 },
-            depends=['account_parent', 'accounting']))
-    account_stock_production = fields.MultiValue(fields.Many2One(
-            'account.account', "Account Stock Production",
-            domain=[
-                ('closed', '!=', True),
-                ('type.stock', '=', True),
-                ('company', '=', Eval('context', {}).get('company', -1)),
-                ],
-            states={
-                'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')
-                    | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
-    account_stock_lost_found = fields.MultiValue(fields.Many2One(
-            'account.account', "Account Stock Lost and Found",
-            domain=[
-                ('closed', '!=', True),
-                ('type.stock', '=', True),
-                ('company', '=', Eval('context', {}).get('company', -1)),
-                ],
-            states={
-                'invisible': (~Eval('context', {}).get('company')
-                    | Eval('account_parent')
-                    | ~Eval('accounting', False)),
-                },
-            depends=['account_parent', 'accounting']))
+            depends=['account_parent', 'accounting', 'account_stock']))
 
     @classmethod
     def multivalue_model(cls, field):
@@ -104,23 +81,13 @@ class Category(metaclass=PoolMeta):
         pass
 
     @property
-    @account_used('account_stock_supplier')
-    def account_stock_supplier_used(self):
+    @account_used('account_stock_in')
+    def account_stock_in_used(self):
         pass
 
     @property
-    @account_used('account_stock_customer')
-    def account_stock_customer_used(self):
-        pass
-
-    @property
-    @account_used('account_stock_production')
-    def account_stock_production_used(self):
-        pass
-
-    @property
-    @account_used('account_stock_lost_found')
-    def account_stock_lost_found_used(self):
+    @account_used('account_stock_out')
+    def account_stock_out_used(self):
         pass
 
 
@@ -135,8 +102,8 @@ class CategoryAccount(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    account_stock_supplier = fields.Many2One(
-        'account.account', "Account Stock Supplier",
+    account_stock_in = fields.Many2One(
+        'account.account', "Account Stock IN",
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
@@ -144,26 +111,8 @@ class CategoryAccount(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    account_stock_customer = fields.Many2One(
-        'account.account', "Account Stock Customer",
-        domain=[
-            ('closed', '!=', True),
-            ('type.stock', '=', True),
-            ('type.statement', '=', 'income'),
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
-    account_stock_production = fields.Many2One(
-        'account.account', "Account Stock Production",
-        domain=[
-            ('closed', '!=', True),
-            ('type.stock', '=', True),
-            ('type.statement', '=', 'income'),
-            ('company', '=', Eval('company', -1)),
-            ],
-        depends=['company'])
-    account_stock_lost_found = fields.Many2One(
-        'account.account', "Account Stock Lost and Found",
+    account_stock_out = fields.Many2One(
+        'account.account', "Account Stock OUT",
         domain=[
             ('closed', '!=', True),
             ('type.stock', '=', True),
@@ -178,6 +127,13 @@ class CategoryAccount(metaclass=PoolMeta):
         if exist:
             table = cls.__table_handler__(module_name)
             exist &= all(table.column_exist(c) for c in account_names)
+
+            # Migration from 5.4: rename account_stock_{supplier,customer}
+            for old, new in [
+                    ('account_stock_supplier', 'account_stock_in'),
+                    ('account_stock_customer', 'account_stock_out')]:
+                if table.column_exist(old):
+                    table.column_rename(old, new)
 
         super(CategoryAccount, cls).__register__(module_name)
 
@@ -209,37 +165,21 @@ class Template(metaclass=PoolMeta):
         pass
 
     @property
-    @account_used('account_stock_supplier', 'account_category')
-    def account_stock_supplier_used(self):
+    @account_used('account_stock_in', 'account_category')
+    def account_stock_in_used(self):
         pass
 
     @property
-    @account_used('account_stock_customer', 'account_category')
-    def account_stock_customer_used(self):
-        pass
-
-    @property
-    @account_used('account_stock_production', 'account_category')
-    def account_stock_production_used(self):
-        pass
-
-    @property
-    @account_used('account_stock_lost_found', 'account_category')
-    def account_stock_lost_found_used(self):
+    @account_used('account_stock_out', 'account_category')
+    def account_stock_out_used(self):
         pass
 
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
     account_stock_used = template_property('account_stock_used')
-    account_stock_supplier_used = template_property(
-        'account_stock_supplier_used')
-    account_stock_customer_used = template_property(
-        'account_stock_customer_used')
-    account_stock_production_used = template_property(
-        'account_stock_production_used')
-    account_stock_lost_found_used = template_property(
-        'account_stock_lost_found_used')
+    account_stock_in_used = template_property('account_stock_in_used')
+    account_stock_out_used = template_property('account_stock_out_used')
 
 
 class ModifyCostPriceAsk(ModelView):
@@ -265,17 +205,6 @@ class ModifyCostPriceShowMove(ModelView):
     amount = fields.Numeric('Amount', readonly=True,
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     currency_digits = fields.Integer('Currency Digits', readonly=True)
-    journal = fields.Many2One('account.journal', 'Journal', required=True)
-    stock_account = fields.Many2One('account.account', 'Stock Account',
-        readonly=True)
-    counterpart = fields.Many2One('account.account', 'Counterpart',
-        domain=[
-            ('company', 'in',
-                [Eval('context', {}).get('company', -1), None]),
-            ('id', '!=', Eval('stock_account')),
-            ('type.stock', '=', True),
-            ],
-        depends=['stock_account'], required=True)
     description = fields.Char('Description')
 
 
@@ -297,25 +226,21 @@ class ModifyCostPrice(Wizard):
     create_move = StateTransition()
     modify_price = StateTransition()
 
-    def default_ask_price(self, fields):
-        pool = Pool()
-        Product = pool.get('product.product')
-
-        context = Transaction().context
-        default = {}
-        product = Product(context['active_id'])
-        default['product'] = product.id
-        default['cost_price'] = getattr(
-            product, 'recompute_cost_price_%s' % product.cost_price_method)()
-        return default
-
-    @staticmethod
-    def get_product():
+    @classmethod
+    def get_product(cls):
         'Return the product instance'
         pool = Pool()
         Product = pool.get('product.product')
         context = Transaction().context
         return Product(context['active_id'])
+
+    def default_ask_price(self, fields):
+        default = {}
+        product = self.get_product()
+        default['product'] = product.id
+        default['cost_price'] = getattr(
+            product, 'recompute_cost_price_%s' % product.cost_price_method)()
+        return default
 
     @classmethod
     def get_quantity(cls):
@@ -330,48 +255,52 @@ class ModifyCostPrice(Wizard):
             product = cls.get_product()
             return product.quantity
 
+    @property
+    def company(self):
+        pool = Pool()
+        User = pool.get('res.user')
+        user = User(Transaction().user)
+        return user.company
+
+    @property
+    def difference_price(self):
+        product = self.get_product()
+        return self.ask_price.cost_price - product.cost_price
+
+    def get_amount(self):
+        return self.company.currency.round(
+            Decimal(str(self.get_quantity())) * self.difference_price)
+
     def transition_should_show_move(self):
         if self.get_quantity() != 0:
             return 'show_move'
         return 'modify_price'
 
     def default_show_move(self, fields):
-        pool = Pool()
-        User = pool.get('res.user')
-        AccountConfiguration = pool.get('account.configuration')
-
-        product = self.get_product()
-        price_diff = (self.ask_price.cost_price
-                - product.cost_price)
-        user = User(Transaction().user)
-        amount = user.company.currency.round(
-            Decimal(str(self.get_quantity())) * price_diff)
-        stock_account_id = product.account_stock_used.id
-        config = AccountConfiguration(1)
-        stock_journal_id = config.stock_journal.id
-        counterpart_id = (config.cost_price_counterpart_account.id if
-            config.cost_price_counterpart_account else None)
         return {
-            'journal': stock_journal_id,
-            'amount': amount,
-            'price_difference': price_diff,
-            'stock_account': stock_account_id,
-            'counterpart': counterpart_id,
-            'currency_digits': user.company.currency.digits,
+            'amount': self.get_amount(),
+            'price_difference': self.difference_price,
+            'currency_digits': self.company.currency.digits,
             }
 
     def get_move_lines(self):
-        Line = Pool().get('account.move.line')
-        amount = self.show_move.amount
+        pool = Pool()
+        Line = pool.get('account.move.line')
+        product = self.get_product()
+        amount = self.get_amount()
+        if amount > 0:
+            account = product.account_stock_in_used
+        else:
+            account = product.account_stock_out_used
         return [Line(
                 debit=amount if amount > 0 else 0,
                 credit=-amount if amount < 0 else 0,
-                account=self.show_move.stock_account,
+                account=product.account_stock_used,
                 ),
             Line(
                 debit=-amount if amount < 0 else 0,
                 credit=amount if amount > 0 else 0,
-                account=self.show_move.counterpart,
+                account=account,
                 ),
             ]
 
@@ -381,13 +310,15 @@ class ModifyCostPrice(Wizard):
         Period = pool.get('account.period')
         User = pool.get('res.user')
         Move = pool.get('account.move')
+        AccountConfiguration = pool.get('account.configuration')
 
+        config = AccountConfiguration(1)
         user = User(Transaction().user)
         period_id = Period.find(user.company.id)
         return Move(
             description=self.show_move.description,
             period=period_id,
-            journal=self.show_move.journal,
+            journal=config.stock_journal,
             date=Date.today(),
             origin=self.get_product(),
             lines=self.get_move_lines(),
@@ -395,18 +326,16 @@ class ModifyCostPrice(Wizard):
 
     def transition_create_move(self):
         Move = Pool().get('account.move')
-
-        if self.show_move.counterpart == self.show_move.stock_account:
-            raise ModifyCostPriceError(
-                gettext('account_stock_continental'
-                    '.msg_modify_cost_price_same_account',
-                    account=self.show_move.counterpart.rec_name))
         move = self.get_move()
         move.save()
         Move.post([move])
         return 'modify_price'
 
     def transition_modify_price(self):
-        self.ask_price.product.set_multivalue(
-            'cost_price', self.ask_price.cost_price)
+        pool = Pool()
+        Product = pool.get('product.product')
+        with Transaction().set_context(_check_access=False):
+            Product.write([self.get_product()], {
+                    'cost_price': self.ask_price.cost_price,
+                    })
         return 'end'

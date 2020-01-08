@@ -53,57 +53,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="stock" eval="True"/>
         </record>
 
-        <record id="account_template_stock_supplier_es" model="account.account.template">
+        <record id="account_template_stock_expense_es" model="account.account.template">
             
             
             
             
-            <field name="name">Stock del proveedor</field>
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_es"/>
-            <field name="reconcile" eval="True"/>
-            <field name="parent" ref="account.account_template_root_es"/>
-        </record>
-        <record id="account_template_stock_customer_es" model="account.account.template">
-            
-            
-            
-            
-            <field name="name">Stock cliente</field>
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_es"/>
-            <field name="parent" ref="account.account_template_root_es"/>
-        </record>
-
-        <record id="account_template_stock_production_es" model="account.account.template">
-            
-            
-            
-            
-            <field name="name">Stock producción</field>
-            
-            
-            
-            
-            
-            <field name="type" ref="account_type_template_stock_expense_es"/>
-            <field name="parent" ref="account.account_template_root_es"/>
-        </record>
-
-        <record id="account_template_stock_lost_found_es" model="account.account.template">
-            
-            
-            
-            
-            <field name="name">Stock perdido y encontrado</field>
+            <field name="name">Gastos de existencias</field>
             
             
             
