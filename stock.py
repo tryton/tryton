@@ -63,7 +63,7 @@ class Move(metaclass=PoolMeta):
                 Decimal(str(self.quantity)) * (unit_price - cost_price))
             if self.company.currency.is_zero(amount):
                 return lines
-            account = self.product.account_stock_supplier_used
+            account = self.product.account_stock_in_used
             for move_line in lines:
                 if move_line.account == account:
                     break

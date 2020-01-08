@@ -34,13 +34,11 @@ class InvoiceLine(metaclass=PoolMeta):
         if type_.startswith('in_'):
             move_line.debit = amount
             move_line.credit = Decimal('0.0')
-            account_type = type_[3:]
+            move_line.account = self.product.account_stock_in_used
         else:
             move_line.debit = Decimal('0.0')
             move_line.credit = amount
-            account_type = type_[4:]
-        move_line.account = getattr(self.product,
-                'account_stock_%s_used' % account_type)
+            move_line.account = self.product.account_stock_out_used
 
         result.append(move_line)
         debit, credit = move_line.debit, move_line.credit
@@ -113,7 +111,8 @@ class InvoiceLine(metaclass=PoolMeta):
             self.product, moves, abs(self.quantity), self.unit, type_)
         cost = self.invoice.company.currency.round(cost)
 
-        with Transaction().set_context(date=accounting_date):
+        with Transaction().set_context(
+                company=self.invoice.company.id, date=accounting_date):
             anglo_saxon_move_lines = self._get_anglo_saxon_move_lines(
                 cost, type_)
         result.extend(anglo_saxon_move_lines)

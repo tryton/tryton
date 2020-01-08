@@ -83,10 +83,8 @@ Create chart of accounts::
     >>> revenue = accounts['revenue']
     >>> expense = accounts['expense']
     >>> stock = accounts['stock']
-    >>> stock_customer = accounts['stock_customer']
-    >>> stock_lost_found = accounts['stock_lost_found']
-    >>> stock_production = accounts['stock_production']
-    >>> stock_supplier = accounts['stock_supplier']
+    >>> stock_in = accounts['stock_expense']
+    >>> stock_out, = stock_in.duplicate()
     >>> cogs = accounts['cogs']
 
 Create parties::
@@ -106,10 +104,8 @@ Create product category::
     >>> account_category.account_revenue = revenue
     >>> account_category.account_stock = stock
     >>> account_category.account_cogs = cogs
-    >>> account_category.account_stock_supplier = stock_supplier
-    >>> account_category.account_stock_customer = stock_customer
-    >>> account_category.account_stock_production = stock_production
-    >>> account_category.account_stock_lost_found = stock_lost_found
+    >>> account_category.account_stock_in = stock_in
+    >>> account_category.account_stock_out = stock_out
     >>> account_category.save()
 
 Create product::
@@ -176,11 +172,11 @@ Receive 9 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
-    >>> stock_supplier.reload()
+    >>> stock_in.reload()
     >>> stock.reload()
-    >>> stock_supplier.debit
+    >>> stock_in.debit
     Decimal('0.00')
-    >>> stock_supplier.credit
+    >>> stock_in.credit
     Decimal('46.00')
     >>> stock.reload()
     >>> stock.debit
@@ -217,10 +213,10 @@ Open supplier invoice::
     Decimal('44.00')
     >>> expense.credit
     Decimal('50.00')
-    >>> stock_supplier.reload()
-    >>> stock_supplier.debit
+    >>> stock_in.reload()
+    >>> stock_in.debit
     Decimal('46.00')
-    >>> stock_supplier.credit
+    >>> stock_in.credit
     Decimal('46.00')
 
 Sale 5 products::
@@ -255,10 +251,10 @@ Send 5 products::
     >>> shipment.click('done')
     >>> shipment.state
     'done'
-    >>> stock_customer.reload()
-    >>> stock_customer.debit
+    >>> stock_out.reload()
+    >>> stock_out.debit
     Decimal('28.00')
-    >>> stock_customer.credit
+    >>> stock_out.credit
     Decimal('0.00')
     >>> stock.reload()
     >>> stock.debit
@@ -283,10 +279,10 @@ Open customer invoice::
     Decimal('0.00')
     >>> revenue.credit
     Decimal('50.00')
-    >>> stock_customer.reload()
-    >>> stock_customer.debit
+    >>> stock_out.reload()
+    >>> stock_out.debit
     Decimal('28.00')
-    >>> stock_customer.credit
+    >>> stock_out.credit
     Decimal('28.00')
     >>> cogs.reload()
     >>> cogs.debit
@@ -331,7 +327,7 @@ Create customer invoice with negative quantity::
     >>> line_cogs, = (l for l in move.lines if l.account == cogs)
     >>> line_cogs.credit
     Decimal('5.00')
-    >>> line_stock, = (l for l in move.lines if l.account == stock_customer)
+    >>> line_stock, = (l for l in move.lines if l.account == stock_in)
     >>> line_stock.debit
     Decimal('5.00')
 
