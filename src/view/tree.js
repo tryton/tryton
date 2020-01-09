@@ -288,10 +288,12 @@
             if (order && (order.length == 1)) {
                 name = order[0][0];
                 direction = order[0][1];
-                icon = {
-                    'ASC': 'tryton-arrow-down',
-                    'DESC': 'tryton-arrow-up',
-                }[direction];
+                if (direction) {
+                    icon = {
+                        'ASC': 'tryton-arrow-down',
+                        'DESC': 'tryton-arrow-up',
+                    }[direction];
+                }
             }
             this.columns.forEach(function(col) {
                 var arrow = col.arrow;
