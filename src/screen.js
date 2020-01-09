@@ -1593,11 +1593,6 @@
             }
             var fields = jQuery.extend({}, view_tree.fields);
 
-            var set_selection = function(props) {
-                return function(selection) {
-                    props.selection = selection;
-                };
-            };
             for (var name in fields) {
                 var props = fields[name];
                 if ((props.type != 'selection') &&
@@ -1607,7 +1602,7 @@
                 if (props.selection instanceof Array) {
                     continue;
                 }
-                this.get_selection(props).then(set_selection(props));
+                props.selection = this.get_selection(props);
             }
 
             if ('arch' in view_tree) {
@@ -1670,23 +1665,21 @@
             return domain_parser;
         },
         get_selection: function(props) {
-            var prm;
+            var selection;
             var change_with = props.selection_change_with;
             if (!jQuery.isEmptyObject(change_with)) {
                 var values = {};
                 change_with.forEach(function(p) {
                     values[p] = null;
                 });
-                prm = this.model.execute(props.selection,
-                        [values]);
+                selection = this.model.execute(props.selection,
+                        [values], undefined, false);
             } else {
-                prm = this.model.execute(props.selection,
-                        []);
+                selection = this.model.execute(props.selection,
+                        [], undefined, false);
             }
-            return prm.then(function(selection) {
-                return selection.sort(function(a, b) {
-                    return a[1].localeCompare(b[1]);
-                });
+            return selection.sort(function(a, b) {
+                return a[1].localeCompare(b[1]);
             });
         },
         search_prev: function(search_string) {
