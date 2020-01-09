@@ -535,10 +535,11 @@ class ViewTree(View):
         order = self.screen.order
         if order and len(order) == 1:
             (name, direction), = order
-            direction = {
-                'ASC': common.IconFactory.get_pixbuf('tryton-arrow-down'),
-                'DESC': common.IconFactory.get_pixbuf('tryton-arrow-up'),
-                }[direction]
+            if direction:
+                direction = {
+                    'ASC': common.IconFactory.get_pixbuf('tryton-arrow-down'),
+                    'DESC': common.IconFactory.get_pixbuf('tryton-arrow-up'),
+                    }[direction]
         else:
             name, direction = None, None
 
