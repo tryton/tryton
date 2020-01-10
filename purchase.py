@@ -124,7 +124,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     supply_date = fields.Date(
         'Supply Date',
         states={
-            'required': Eval('state') != 'draft',
+            'required': ~Eval('state').in_(['draft', 'cancel']),
             'readonly': _states['readonly'],
             },
         depends=_depends)
