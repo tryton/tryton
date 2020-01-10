@@ -102,6 +102,10 @@ Check Statement::
     Decimal('100.00')
     >>> statement.number_of_lines
     1
+    >>> statement.start_balance
+    Decimal('400.00')
+    >>> statement.end_balance
+    Decimal('500.00')
     >>> len(statement.origins)
     1
     >>> origin, = statement.origins
