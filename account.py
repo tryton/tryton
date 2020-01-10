@@ -68,7 +68,11 @@ class StatementImport(metaclass=PoolMeta):
         if not isinstance(ofx_account.statement, ofxparse.Statement):
             self.raise_user_error('ofx_not_statement')
         statement.date = ofx_account.statement.balance_date.date()
-        statement.total_amount = ofx_account.statement.balance
+        total_amount = sum(
+            t.amount for t in ofx_account.statement.transactions)
+        statement.total_amount = total_amount
+        statement.start_balance = ofx_account.statement.balance - total_amount
+        statement.end_balance = ofx_account.statement.balance
         statement.number_of_lines = len(ofx_account.statement.transactions)
         return statement
 
