@@ -454,7 +454,8 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
         if not exist and not cost_price_exist:
             cls._migrate_property([], [], [])
         elif not exist and cost_price_exist:
-            cost_price_table = TableHandler(ProductCostPrice, module_name)
+            cost_price_table = backend.TableHandler(
+                ProductCostPrice, module_name)
             if cost_price_table.column_exist('template'):
                 columns = ['create_uid', 'create_date',
                     'write_uid', 'write_date',
