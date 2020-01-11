@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="move"/>
-    <field name="origin"/>
+    <field name="move_origin"/>
     <field name="description" expand="1"/>
     <field name="party" expand="1"/>
     <field name="maturity_date"/>
