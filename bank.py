@@ -59,11 +59,22 @@ class BankAccount(DeactivableMixin, ModelSQL, ModelView):
         help="Add the numbers which identify the bank account.")
 
     def get_rec_name(self, name):
-        return self.numbers[0].number
+        name = '%s @ %s' % (self.numbers[0].number, self.bank.rec_name)
+        if self.currency:
+            name += ' [%s]' % self.currency.code
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('numbers',) + tuple(clause[1:])]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('bank.rec_name',) + tuple(clause[1:]),
+            ('currency',) + tuple(clause[1:]),
+            ('numbers',) + tuple(clause[1:]),
+            ]
 
 
 class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
