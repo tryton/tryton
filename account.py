@@ -769,14 +769,14 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             },
         depends=['type'])
     taxes = fields.Many2Many('account.account-account.tax',
-            'account', 'tax', 'Default Taxes',
-            domain=[
-                ('company', '=', Eval('company')),
-                ('parent', '=', None),
+        'account', 'tax', 'Default Taxes',
+        domain=[
+            ('company', '=', Eval('company')),
+            ('parent', '=', None),
             ],
-            help=('Default tax for manual encoding of move lines \n'
-                'for journal types: "expense" and "revenue".'),
-            depends=['company'])
+        help="Default tax for manual encoding of move lines\n"
+        'for journal types: "expense" and "revenue".',
+        depends=['company'])
     replaced_by = fields.Many2One(
         'account.account', "Replaced By",
         domain=[('company', '=', Eval('company', -1))],
