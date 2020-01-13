@@ -168,13 +168,12 @@ class Sale(metaclass=PoolMeta):
     def quote(cls, sales):
         pool = Pool()
         Line = pool.get('sale.line')
-
-        super(Sale, cls).quote(sales)
         removed = []
         for sale in sales:
             removed.extend(sale.set_shipment_cost())
         Line.delete(removed)
         cls.save(sales)
+        super(Sale, cls).quote(sales)
 
     @classmethod
     @ModelView.button
