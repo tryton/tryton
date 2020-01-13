@@ -251,7 +251,20 @@ class ModelSQLTestCase(unittest.TestCase):
         pool = Pool()
         Model = pool.get('test.modelsql.exclude')
 
-        records = Model.create([{'value': -1}, {'value': -1}])
+        records = Model.create([{'value': 1, 'condition': False}] * 2)
+
+        self.assertEqual(len(records), 2)
+
+    @with_transaction()
+    def test_constraint_exclude_exclusion_mixed(self):
+        "Test exclude constraint exclusion mixed"
+        pool = Pool()
+        Model = pool.get('test.modelsql.exclude')
+
+        records = Model.create([
+                {'value': 1, 'condition': False},
+                {'value': 1, 'condition': True},
+                ])
 
         self.assertEqual(len(records), 2)
 
