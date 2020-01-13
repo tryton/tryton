@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Literal
 from sql.operators import Equal
 
 from trytond.model import ModelSQL, fields, Check, Unique, Exclude
@@ -111,13 +112,19 @@ class ModelExclude(ModelSQL):
     "ModelSQL with exclude constraint"
     __name__ = 'test.modelsql.exclude'
     value = fields.Integer("Value")
+    condition = fields.Boolean("Condition")
+
+    @classmethod
+    def default_condition(cls):
+        return True
 
     @classmethod
     def __setup__(cls):
         super(ModelExclude, cls).__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
-            ('exclude', Exclude(t, (t.value, Equal), where=t.value > 0),
+            ('exclude', Exclude(t, (t.value, Equal),
+                    where=t.condition == Literal(True)),
                 "Value must be unique."),
             ]
 
