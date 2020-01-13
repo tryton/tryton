@@ -2852,7 +2852,7 @@
             this.running = false;
         },
         build_dialog: function() {
-            var dialog = new Sao.Dialog('', this.class_);
+            var dialog = new Sao.Dialog('', this.class_, undefined, false);
             return dialog;
         },
         run: function() {
@@ -2873,6 +2873,12 @@
                 dialog.modal.find('input,select')
                     .filter(':visible').first().focus();
             });
+            dialog.modal.on('keydown', function(e) {
+                if (e.which == Sao.common.ESC_KEYCODE) {
+                    this.close(dialog);
+                    prm.reject();
+                }
+            }.bind(this));
             return prm;
         },
         close: function(dialog) {
