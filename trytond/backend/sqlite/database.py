@@ -2,7 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import logging
+import math
 import os
+import random
 import threading
 import time
 from decimal import Decimal
@@ -230,6 +232,10 @@ class SQLiteTrim(Trim):
         return function + '(%s, %s)' % (
             format(self.string), format(self.characters))
 
+    @property
+    def params(self):
+        return [self.string, self.characters]
+
 
 def sign(value):
     if value > 0:
@@ -254,6 +260,18 @@ def least(*args):
         return min(args)
     else:
         return None
+
+
+def cbrt(value):
+    return math.pow(value, 1 / 3)
+
+
+def div(a, b):
+    return a // b
+
+
+def trunc(value, digits):
+    return math.trunc(value * 10 ** digits) / 10 ** digits
 
 
 MAPPING = {
@@ -333,16 +351,40 @@ class Database(DatabaseInterface):
         self._conn.create_function('extract', 2, SQLiteExtract.extract)
         self._conn.create_function('date_trunc', 2, date_trunc)
         self._conn.create_function('split_part', 3, split_part)
-        self._conn.create_function('position', 2, SQLitePosition.position)
         self._conn.create_function('to_char', 2, to_char)
-        self._conn.create_function('overlay', 3, SQLiteOverlay.overlay)
-        self._conn.create_function('overlay', 4, SQLiteOverlay.overlay)
         if sqlite.sqlite_version_info < (3, 3, 14):
             self._conn.create_function('replace', 3, replace)
         self._conn.create_function('now', 0, now)
-        self._conn.create_function('sign', 1, sign)
         self._conn.create_function('greatest', -1, greatest)
         self._conn.create_function('least', -1, least)
+
+        # Mathematical functions
+        self._conn.create_function('cbrt', 1, cbrt)
+        self._conn.create_function('ceil', 1, math.ceil)
+        self._conn.create_function('degrees', 1, math.degrees)
+        self._conn.create_function('div', 2, div)
+        self._conn.create_function('exp', 1, math.exp)
+        self._conn.create_function('floor', 1, math.floor)
+        self._conn.create_function('ln', 1, math.log)
+        self._conn.create_function('log', 1, math.log10)
+        self._conn.create_function('mod', 2, math.fmod)
+        self._conn.create_function('pi', 0, lambda: math.pi)
+        self._conn.create_function('power', 2, math.pow)
+        self._conn.create_function('radians', 1, math.radians)
+        self._conn.create_function('sign', 1, sign)
+        self._conn.create_function('sqrt', 1, math.sqrt)
+        self._conn.create_function('trunc', 1, math.trunc)
+        self._conn.create_function('trunc', 2, trunc)
+
+        # Random functions
+        self._conn.create_function('random', 0, random.random)
+        self._conn.create_function('setseed', 1, random.seed)
+
+        # String functions
+        self._conn.create_function('overlay', 3, SQLiteOverlay.overlay)
+        self._conn.create_function('overlay', 4, SQLiteOverlay.overlay)
+        self._conn.create_function('position', 2, SQLitePosition.position)
+
         if (hasattr(self._conn, 'set_trace_callback')
                 and logger.isEnabledFor(logging.DEBUG)):
             self._conn.set_trace_callback(logger.debug)
