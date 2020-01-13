@@ -1570,6 +1570,17 @@ function eval_pyson(value){
         }
     });
 
+    var switch_id = function(a, b) {
+        var a_id = a.attr('id');
+        var a_labelledby = a.attr('aria-labelledby');
+        var b_id = b.attr('id');
+        var b_labelledby = b.attr('aria-labelledby');
+        a.attr('id', b_id);
+        a.attr('aria-labelledby', b_labelledby);
+        b.attr('id', a_id);
+        b.attr('aria-labelledby', a_labelledby);
+    };
+
     var integer_input = function(input) {
         var input_text = input.clone().prependTo(input.parent());
         input_text.attr('type', 'text');
@@ -1579,12 +1590,14 @@ function eval_pyson(value){
 
         input.hide().on('focusout', function() {
             if (input[0].checkValidity()) {
+                switch_id(input, input_text);
                 input.hide();
                 input_text.show();
             }
         });
         input_text.on('focusin', function() {
             if (!input.prop('readonly')) {
+                switch_id(input, input_text);
                 input_text.hide();
                 input.show();
                 window.setTimeout(function() {
@@ -1599,7 +1612,7 @@ function eval_pyson(value){
         class_: 'form-integer',
         init: function(view, attributes) {
             Sao.View.Form.Integer._super.init.call(this, view, attributes);
-            this.input_text = integer_input(this.input);
+            this.input_text = this.labelled = integer_input(this.input);
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
         },
@@ -4478,7 +4491,7 @@ function eval_pyson(value){
         class_: 'dict-float',
         create_widget: function() {
             Sao.View.Form.Dict.Float._super.create_widget.call(this);
-            this.input_text = integer_input(this.input);
+            this.input_text = this.labelled = integer_input(this.input);
         },
         get digits() {
             var record = this.parent_widget.record;
