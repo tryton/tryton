@@ -1371,9 +1371,18 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         elif self.sale.invoice_method == 'shipment':
             quantity = 0.0
             for move in self.moves:
-                if move.state == 'done':
-                    quantity += Uom.compute_qty(move.uom, move.quantity,
-                        self.unit)
+                if move.state != 'done':
+                    continue
+                qty = Uom.compute_qty(move.uom, move.quantity, self.unit)
+                # Test only against to_location
+                # as it is what matters for sale
+                dest_type = self.to_location.type
+                if (move.to_location.type == dest_type
+                        and move.from_location.type != dest_type):
+                    quantity += qty
+                elif (move.from_location.type == dest_type
+                        and move.to_location.type != dest_type):
+                    quantity -= qty
             if self.quantity < 0:
                 quantity *= -1
             return quantity
