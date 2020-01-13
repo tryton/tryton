@@ -9,9 +9,8 @@ except ImportError:
     pygal = None
 from dateutil.relativedelta import relativedelta
 from sql import Null, Literal, Column
-from sql.aggregate import Sum, Min, Count
-from sql.conditionals import Case
-from sql.functions import CurrentTimestamp, DateTrunc
+from sql.aggregate import Sum, Max, Min, Count
+from sql.functions import CurrentTimestamp, DateTrunc, Power, Ceil, Log
 
 from trytond.pool import Pool
 from trytond.model import ModelSQL, ModelView, UnionMixin, fields
@@ -385,13 +384,16 @@ class CategoryMixin(object):
 
     @classmethod
     def _column_id(cls, tables):
+        pool = Pool()
+        Category = pool.get('product.category')
+        category = Category.__table__()
         line = tables['line']
         template_category = tables['line.product.template_category']
-        # Pairing function from http://szudzik.com/ElegantPairing.pdf
-        return Min(Case(
-                (line.id < template_category.id,
-                    (template_category.id * template_category.id) + line.id),
-                else_=(line.id * line.id) + line.id + template_category.id))
+        # Get a stable number of category over time
+        # by using number one order bigger.
+        nb_category = category.select(
+            Power(10, (Ceil(Log(Max(category.id))) + Literal(1))))
+        return Min(line.id * nb_category + template_category.id)
 
     @classmethod
     def _group_by(cls, tables):
