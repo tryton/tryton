@@ -1588,6 +1588,8 @@ class ModelSQL(ModelStorage):
                                 clause &= Literal(False)
                             clause &= operator(column, value)
                         where |= clause
+                    if isinstance(sql, Exclude) and sql.where:
+                        where &= sql.where
                     cursor.execute(
                         *table.select(table.id, where=where, limit=1))
                     if cursor.fetchone():
