@@ -1198,10 +1198,12 @@ class ModelData(ModelSQL, ModelView):
         return model in models
 
     @classmethod
-    def get_id(cls, module, fs_id):
+    def get_id(cls, module, fs_id=None):
         """
         Return for an fs_id the corresponding db_id.
         """
+        if fs_id is None:
+            module, fs_id = module.split('.', 1)
         key = (module, fs_id)
         id_ = cls._get_id_cache.get(key)
         if id_ is not None:

@@ -64,6 +64,30 @@ class IrTestCase(ModuleTestCase):
         for date, format_, result in test_data:
             self.assertEqual(lang.strftime(date, format_), result)
 
+    @with_transaction()
+    def test_model_data_get_id(self):
+        "Test ModelData.get_id"
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        User = pool.get('res.user')
+
+        admin_id = ModelData.get_id('res', 'user_admin')
+        admin, = User.search([('login', '=', 'admin')])
+
+        self.assertEqual(admin_id, admin.id)
+
+    @with_transaction()
+    def test_model_data_get_id_dot(self):
+        "Test ModelData.get_id with dot"
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        User = pool.get('res.user')
+
+        admin_id = ModelData.get_id('res.user_admin')
+        admin, = User.search([('login', '=', 'admin')])
+
+        self.assertEqual(admin_id, admin.id)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(IrTestCase)
