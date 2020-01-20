@@ -247,11 +247,10 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
                         'line': line.rec_name,
                         'term': line.payment.rec_name,
                         })
-            ratio = line.ratio
-            divisor = line.divisor
-            line.on_change_ratio()
-            line.on_change_divisor()
-            if (line.divisor != divisor) or (line.ratio != ratio):
+            if (line.ratio != round(
+                        1 / line.divisor, cls.ratio.digits[1])
+                    and line.divisor != round(
+                        1 / line.ratio, cls.divisor.digits[1])):
                 cls.raise_user_error('invalid_ratio_and_divisor', {
                         'line': line.rec_name,
                         'term': line.payment.rec_name,
