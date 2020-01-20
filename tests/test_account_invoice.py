@@ -10,6 +10,7 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
+from ..exceptions import PaymentTermValidationError
 from trytond.modules.currency.tests import create_currency
 
 
@@ -97,6 +98,45 @@ class AccountInvoiceTestCase(ModuleTestCase):
                 (datetime.date(2011, 12, 1), Decimal('396.84')),
                 (datetime.date(2012, 1, 14), Decimal('396.83')),
                 ])
+
+    @with_transaction()
+    def test_payment_term_with_repeating_decimal(self):
+        "Test payment_term with repeating decimal"
+        pool = Pool()
+        PaymentTerm = pool.get('account.invoice.payment_term')
+
+        PaymentTerm.create([{
+                    'name': "Repeating Decimal",
+                    'lines': [
+                        ('create', [{
+                                    'type': 'percent',
+                                    'divisor': Decimal(3),
+                                    'ratio': Decimal('0.3333333333'),
+                                    }, {
+                                    'type': 'remainder',
+                                    }]),
+                        ],
+                    }])
+
+    @with_transaction()
+    def test_payment_term_with_invalid_ratio_divisor(self):
+        "Test payment_term with invalid ratio and divisor"
+        pool = Pool()
+        PaymentTerm = pool.get('account.invoice.payment_term')
+
+        with self.assertRaises(PaymentTermValidationError):
+            PaymentTerm.create([{
+                        'name': "Invalid ratio and divisor",
+                        'lines': [
+                            ('create', [{
+                                        'type': 'percent',
+                                        'divisor': Decimal(2),
+                                        'ratio': Decimal('0.4'),
+                                        }, {
+                                        'type': 'remainder',
+                                        }]),
+                            ],
+                        }])
 
     @with_transaction()
     def test_payment_term_with_empty_value(self):
