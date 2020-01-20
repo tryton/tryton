@@ -122,6 +122,10 @@
                     Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
                 }, dfd.reject);
                 return;
+            } else if (query.status == 429) {
+                Sao.common.message.run(
+                    Sao.i18n.gettext('Too many requests. Try again later.'),
+                    'tryton-error').always(dfd.reject);
             } else {
                 Sao.common.error.run(status_, error);
                 dfd.reject();

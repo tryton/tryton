@@ -295,6 +295,10 @@
                 } else if (data.error) {
                     if (data.error[0].startsWith('401')) {
                         return this.run({}).then(dfd.resolve, dfd.reject);
+                    } else if (data.error[0].startsWith('429')) {
+                        Sao.common.message.run(
+                            Sao.i18n.gettext('Too many requests. Try again later.'),
+                            'tryton-error').always(dfd.resolve);
                     } else if (data.error[0].startsWith('404')) {
                         dfd.reject();
                     } else if (data.error[0] != 'LoginException') {
@@ -319,6 +323,10 @@
                 if (query.status == 401) {
                     // Retry
                     this.run({}).then(dfd.resolve, dfd.reject);
+                } else if (query.status == 429) {
+                    Sao.common.message.run(
+                        Sao.i18n.gettext('Too many requests. Try again later.'),
+                        'tryton-error').always(dfd.resolve);
                 } else {
                     Sao.common.error.run(status_, error);
                     dfd.reject();
