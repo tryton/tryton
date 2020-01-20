@@ -266,7 +266,11 @@ Default: `smtp://localhost:25`
 from
 ~~~~
 
-Defines the default `From` address for emails sent by Tryton.
+Defines the default `From` address (using RFC-822_) for emails sent by Tryton.
+
+For example::
+
+    from: "Company Inc" <info@example.com>
 
 session
 -------
@@ -482,6 +486,7 @@ Example::
 .. _XML-RPC: http://en.wikipedia.org/wiki/XML-RPC
 .. _RFC-3986: http://tools.ietf.org/html/rfc3986
 .. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
+.. _RFC-822: https://tools.ietf.org/html/rfc822
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
 .. _SSL-CERT: https://docs.python.org/library/ssl.html#ssl.wrap_socket
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
