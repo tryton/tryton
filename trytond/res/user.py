@@ -622,7 +622,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         if count > config.getint('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
             raise RateLimitException()
-        Transaction().atexit(time.sleep, 2 ** count - 1)
+        Transaction().atexit(time.sleep, random.randint(0, 2 ** count - 1))
         for method in config.get(
                 'session', 'authentications', default='password').split(','):
             try:
