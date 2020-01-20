@@ -91,11 +91,11 @@ class Form(SignalEvent, TabContent):
         return (self.model == model
             and self.res_id == attributes.get('res_id')
             and self.attributes.get('domain') == attributes.get('domain')
-            and (self.attributes.get('mode') or []) == (
-                attributes.get('mode') or [])
             and self.attributes.get('view_ids') == attributes.get('view_ids')
-            and self.attributes.get('context') == attributes.get('context')
-            and self.attributes.get('limit') == attributes.get('limit')
+            and (attributes.get('view_ids')
+                or (self.attributes.get('mode') or ['tree', 'form']) == (
+                    attributes.get('mode') or ['tree', 'form']))
+            and self.screen.local_context == attributes.get('context')
             and self.attributes.get('search_value') == (
                 attributes.get('search_value')))
 
