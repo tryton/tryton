@@ -22,15 +22,17 @@ class Sale(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('quotation')
     def quote(cls, sales):
-        super(Sale, cls).quote(sales)
+        # Check before setting the number
         cls._check_stock_quantity(sales)
+        super(Sale, cls).quote(sales)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
     def confirm(cls, sales):
-        super(Sale, cls).confirm(sales)
+        # Check before queueing the process task
         cls._check_stock_quantity(sales)
+        super(Sale, cls).confirm(sales)
 
     @classmethod
     def _check_stock_quantity(cls, sales):
