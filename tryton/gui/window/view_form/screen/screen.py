@@ -257,7 +257,9 @@ class Screen(SignalEvent):
                 self.context_screen.display(set_cursor=True)
                 return False
             context = self.local_context
-            context.update(self.context_screen.get_on_change_value())
+            screen_context = self.context_screen.get_on_change_value()
+            screen_context.pop('id')
+            context.update(screen_context)
             self.new_group(context)
 
         domain = self.search_domain(search_string, True)
