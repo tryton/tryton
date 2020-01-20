@@ -147,7 +147,8 @@ class SaleLine(metaclass=PoolMeta):
                         drop_shipment = product_supplier.drop_shipment
                         break
             if drop_shipment:
-                request.customer = self.sale.party
+                request.customer = (
+                    self.sale.shipment_party or self.sale.party)
                 request.delivery_address = self.sale.shipment_address
         return request
 
