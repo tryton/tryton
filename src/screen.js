@@ -981,9 +981,10 @@
                     this.context_screen.display(true);
                     return jQuery.when();
                 }
+                var screen_context = this.context_screen.get_on_change_value();
+                delete screen_context.id;
                 this.new_group(jQuery.extend(
-                    this.local_context,
-                    this.context_screen.get_on_change_value()));
+                    this.local_context, screen_context));
             }
 
             var domain = this.search_domain(search_string, true);
