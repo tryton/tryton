@@ -25,7 +25,7 @@ Create product::
     >>> template.save()
     >>> product, = template.products
 
-The indentifiers code is compated when set::
+The identifier code is computed when set::
 
     >>> identifier = product.identifiers.new()
     >>> identifier.type = 'ean'
