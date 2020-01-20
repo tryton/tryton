@@ -893,6 +893,10 @@ def process_exception(exception, *args, **kwargs):
                     PLOCK.release()
                 if args:
                     return rpc_execute(*args)
+        elif exception.faultCode == str(int(HTTPStatus.TOO_MANY_REQUESTS)):
+            message(
+                _('Too many requests. Try again later.'),
+                msg_type=Gtk.MessageType.ERROR)
         else:
             error(exception, exception.faultString)
     else:
@@ -910,10 +914,16 @@ class Login(object):
                 if exception.faultCode == str(int(HTTPStatus.UNAUTHORIZED)):
                     parameters.clear()
                     continue
+                if (exception.faultCode
+                        == str(int(HTTPStatus.TOO_MANY_REQUESTS))):
+                    message(
+                        _('Too many requests. Try again later.'),
+                        msg_type=Gtk.MessageType.ERROR)
+                    continue
                 if exception.faultCode != 'LoginException':
                     raise
-                name, message, type = exception.args
-                value = getattr(self, 'get_%s' % type)(message)
+                name, msg, type = exception.args
+                value = getattr(self, 'get_%s' % type)(msg)
                 if value is None:
                     raise TrytonError('QueryCanceled')
                 parameters[name] = value
