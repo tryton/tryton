@@ -143,7 +143,8 @@ class SaleLine(metaclass=PoolMeta):
                     self.product, self.shipping_date,
                     **self._get_purchase_request_product_supplier_pattern())
                 if product_supplier.drop_shipment:
-                    request.customer = self.sale.party
+                    request.customer = (
+                        self.sale.shipment_party or self.sale.party)
                     request.delivery_address = self.sale.shipment_address
         return request
 
