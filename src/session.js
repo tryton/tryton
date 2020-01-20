@@ -16,18 +16,7 @@
             this.prm = jQuery.when();  // renew promise
             this.database = database;
             this.login = login;
-            if (this.database) {
-                var session_data = localStorage.getItem(
-                    'sao_session_' + database);
-                if (session_data !== null) {
-                    session_data = JSON.parse(session_data);
-                    if (!this.login || this.login == session_data.login) {
-                        this.login = session_data.login;
-                        this.user_id = session_data.user_id;
-                        this.session = session_data.session;
-                    }
-                }
-            }
+            this.restore();
             this.context = {
                 client: Sao.Bus.id,
             };
@@ -38,8 +27,9 @@
         get_auth: function() {
             return utoa(this.login + ':' + this.user_id + ':' + this.session);
         },
-        do_login: function(login, parameters) {
+        do_login: function(parameters) {
             var dfd = jQuery.Deferred();
+            var login = this.login;
             var func = function(parameters) {
                 return {
                     'method': 'common.db.login',
@@ -101,6 +91,20 @@
             return prm.then(function(context) {
                 jQuery.extend(this.context, context);
             }.bind(this));
+        },
+        restore: function() {
+            if (this.database && !this.session) {
+                var session_data = localStorage.getItem(
+                    'sao_session_' + this.database);
+                if (session_data !== null) {
+                    session_data = JSON.parse(session_data);
+                    if (!this.login || this.login == session_data.login) {
+                        this.login = session_data.login;
+                        this.user_id = session_data.user_id;
+                        this.session = session_data.session;
+                    }
+                }
+            }
         },
         store: function() {
             var session = {
@@ -189,7 +193,9 @@
             dialog.button.prop('disabled', true);
             dialog.modal.modal('hide');
             session.database = database;
-            session.do_login(login)
+            session.login = login;
+            session.restore();
+            (session.session ? jQuery.when() : session.do_login())
                 .then(function() {
                     dfd.resolve(session);
                     dialog.modal.remove();
@@ -246,7 +252,7 @@
         }
         var dfd = jQuery.Deferred();
         session.prm = dfd.promise();
-        session.do_login(session.login).then(dfd.resolve, function() {
+        session.do_login().then(dfd.resolve, function() {
             Sao.logout();
             dfd.reject();
         }).done(function () {
