@@ -204,7 +204,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
 
         if wh_to_add:
             for wh, storage in wh_to_add.items():
-                for key in quantities:
+                for key in list(quantities.keys()):
                     if key[0] == storage:
                         quantities[(wh,) + key[1:]] = quantities[key]
                         if storage in storage_to_remove:
