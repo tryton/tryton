@@ -229,13 +229,23 @@ class MultiSelectionField(Field):
     _default = None
 
     def get(self, record):
-        return super().get(record) or self._default
+        value = super().get(record)
+        if not value:
+            value = self._default
+        else:
+            value.sort()
+        return value
 
     def get_eval(self, record):
         value = super().get_eval(record)
         if value is None:
             value = []
         return value
+
+    def set_client(self, record, value, force_change=False):
+        if value:
+            value = sorted(value)
+        super().set_client(record, value, force_change=force_change)
 
 
 class DateTimeField(Field):
