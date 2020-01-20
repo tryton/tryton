@@ -166,7 +166,7 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
         super(Uom, cls).write(*args)
 
         for uom in all_uoms:
-            for i, field in ['factor', 'rate', 'category']:
+            for i, field in enumerate(['factor', 'rate', 'category']):
                 if getattr(uom, field) != old_uom[uom.id][i]:
                     raise AccessError(
                         gettext('product.msg_uom_modify_%s' % field,
