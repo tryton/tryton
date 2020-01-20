@@ -7,10 +7,14 @@ import base64
 
 from werkzeug.wrappers import Response
 from werkzeug.utils import cached_property
-from werkzeug.exceptions import BadRequest, InternalServerError
+from werkzeug.exceptions import (
+    BadRequest, InternalServerError, Conflict, Forbidden, Locked,
+    TooManyRequests)
 
 from trytond.protocols.wrappers import Request
-from trytond.exceptions import TrytonException
+from trytond.exceptions import (
+    TrytonException, UserWarning, LoginException, ConcurrencyException,
+    RateLimitException, MissingDependenciesException)
 
 
 class JSONDecoder(object):
@@ -153,7 +157,17 @@ class JSONProtocol:
             else:
                 response['result'] = data
         else:
-            if isinstance(data, TrytonException):
+            if isinstance(data, UserWarning):
+                return Conflict(data)
+            elif isinstance(data, LoginException):
+                return Forbidden(data)
+            elif isinstance(data, ConcurrencyException):
+                return Locked(data)
+            elif isinstance(data, RateLimitException):
+                return TooManyRequests(data)
+            elif isinstance(data, MissingDependenciesException):
+                return InternalServerError(data)
+            elif isinstance(data, TrytonException):
                 return BadRequest(data)
             elif isinstance(data, Exception):
                 return InternalServerError(data)
