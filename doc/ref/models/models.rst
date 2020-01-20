@@ -274,6 +274,26 @@ Class methods:
 
     Return a list of records that match the :ref:`domain <topics-domain>`.
 
+    If `offset` or `limit` are set, the result starts at the offset and has the
+    length of the limit.
+
+    The `order` is a list of tuples defining the order of the result:
+
+            [ ('field name', 'ASC'), ('other field name', 'DESC'), ... ]
+
+    The first element of the tuple is a field name of the model and the second
+    is the sort ordering as `ASC` for ascending, `DESC` for descending or empty
+    for a default order. This second element may contain 'NULLS FIRST' or
+    'NULLS LAST' to sort null values before or after non-null values. If
+    neither is specified the default behavior of the backend is used.
+
+    In case the field used is a :class:`fields.Many2One`, it is also possible
+    to use the dotted notation to sort on a specific field from the target
+    record. Or for a :class:`fields.Dict` field, the dotted notation is used to
+    sort on the key's value.
+
+    If `count` is set to `True`, then the result is the number of records.
+
 .. classmethod:: ModelStorage.search_count(domain)
 
     Return the number of records that match the :ref:`domain <topics-domain>`.
@@ -433,28 +453,7 @@ Class methods:
 
 .. classmethod:: ModelSQL.search(domain[, offset[, limit[, order[, count[, query]]]]])
 
-    Return a list of records that match the :ref:`domain <topics-domain>`.
-
-    If `offset` or `limit` are set, the result starts at the offset and has the
-    length of the limit.
-
-    The `order` is a list of tuples defining the order of the result:
-
-            [ ('field name', 'ASC'), ('other field name', 'DESC'), ... ]
-
-    The first element of the tuple is a field name of the model and the second
-    is the sort ordering as `ASC` for ascending, `DESC` for descending or empty
-    for a default order. This second element may contain 'NULLS FIRST' or
-    'NULLS LAST' to sort null values before or after non-null values. If
-    neither is specified the default behavior of the backend is used.
-
-    In case the field used is a :class:`fields.Many2One`, it is also possible
-    to use the dotted notation to sort on a specific field from the target
-    record. Or for a :class:`fields.Dict` field, the dotted notation is used to
-    sort on the key's value.
-
-    If `count` is set to `True`, then the result is the number of records.
-
+    Same as :meth:`ModelStorage.search` with the additional `query` argument.
     If `query` is set to `True`, the the result is the SQL query.
 
 .. classmethod:: ModelSQL.search_domain(domain[, active_test[, tables]])
