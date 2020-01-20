@@ -509,7 +509,8 @@ def format_value(field, value, target=None, context=None):
             digit = len(str(value * factor).rstrip('0').split('.')[1])
         except IndexError:
             digit = 0
-        return locale.format('%.*f', (digit, value * factor or 0), True)
+        return locale.localize(
+            '{0:.{1}f}'.format(value * factor or 0, digit), True)
 
     def format_selection():
         selections = dict(field['selection'])

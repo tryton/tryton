@@ -33,7 +33,7 @@ class Pie(Graph):
                 math.cos(normalisedAngle) * (self.radius + 10)
 
             label = '%s (%s%%)' % (self.labels[slice.xname],
-                    locale.format('%.2f', slice.fraction * 100))
+                locale.localize('{:.2f}'.format(slice.fraction * 100)))
             extents = cr.text_extents(label)
             labelWidth = extents[2]
             labelHeight = extents[3]
@@ -156,12 +156,13 @@ class Pie(Graph):
                         sum = common.timedelta.format(
                             datetime.timedelta(seconds=self.sum), converter)
                     else:
-                        value = locale.format('%.2f',
-                            slice.fraction * self.sum)
-                        sum = locale.format('%.2f', self.sum)
-                    label = '%s (%s%%)\n%s/%s' % (self.labels[slice.xname],
-                            locale.format('%.2f', slice.fraction * 100),
-                            value, sum)
+                        value = locale.localize(
+                            '{:.2f}'.format(slice.fraction * self.sum))
+                        sum = locale.localize('{:.2f}'.format(self.sum))
+                    label = '%s (%s%%)\n%s/%s' % (
+                        self.labels[slice.xname],
+                        locale.localize('{:.2f}'.format(slice.fraction * 100)),
+                        value, sum)
                     self.popup.set_text(label)
                     self.queue_draw()
             else:
