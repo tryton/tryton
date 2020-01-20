@@ -301,13 +301,16 @@ def format_value(field, value, target=None, context=None):
 
     def format_integer():
         factor = float(field.get('factor', 1))
-        if value or isinstance(value, (int, float)):
+        if (value
+                or (isinstance(value, (int, float))
+                    and not isinstance(value, bool))):
             return str(int(value * factor))
         return ''
 
     def format_float():
         if (not value
-                and not isinstance(value, (int, float, Decimal))):
+                and (not isinstance(value, (int, float, Decimal))
+                    or isinstance(value, bool))):
             return ''
         if isinstance(value, Decimal):
             cast = Decimal
