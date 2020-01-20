@@ -187,7 +187,7 @@ class DictIntegerEntry(DictEntry):
 
     def set_value(self, value):
         if value is not None:
-            txt_val = locale.format('%d', value, True)
+            txt_val = locale.format_string('%d', value, True)
         else:
             txt_val = ''
         self.widget.set_text(txt_val)
@@ -243,7 +243,8 @@ class DictFloatEntry(DictIntegerEntry):
     def set_value(self, value):
         digits = self.digits()
         if value is not None:
-            txt_val = locale.format('%.' + str(digits[1]) + 'f', value, True)
+            txt_val = locale.localize(
+                '{0:.{1}f}'.format(value, digits[1]), True)
         else:
             txt_val = ''
         self.widget.set_width_chars(sum(digits))
