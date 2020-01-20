@@ -93,7 +93,8 @@ class Bar(Graph):
                         label = common.timedelta.format(
                             datetime.timedelta(seconds=bar.yval), converter)
                     else:
-                        label = locale.format('%.2f', bar.yval, True)
+                        label = locale.localize(
+                            '{:.2f}'.format(bar.yval), True)
                     label += '\n'
                     label += str(self.labels[bar.xname])
                     self.popup.set_text(label)

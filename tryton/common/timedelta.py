@@ -56,7 +56,8 @@ def format(value, converter=None):
 
     for (k, _), v in zip(converter[:-3], values):
         if v:
-            text.append(locale.format('%d', v, True) + _get_separators()[k])
+            text.append(
+                locale.format_string('%d', v, True) + _get_separators()[k])
     if any(values[-3:]) or not text:
         time = '%02d:%02d' % tuple(values[-3:-1])
         if values[-1] or value:

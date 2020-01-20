@@ -201,7 +201,8 @@ class Line(Graph):
                                 yfields_timedelta[point.yname])
                         label += common.timedelta.format(point.yval, converter)
                     else:
-                        label += locale.format('%.2f', point.yval, True)
+                        label += locale.localize(
+                            '{:2f}'.format(point.yval), True)
                     label += '\n'
                     label += str(self.labels[point.xname])
                     self.popup.set_text(label)

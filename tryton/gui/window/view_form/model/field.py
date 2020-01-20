@@ -367,14 +367,14 @@ class FloatField(Field):
         value = record.value.get(self.name)
         if value is not None:
             digits = self.digits(record, factor=factor)
+            d = value * factor
+            if not isinstance(d, Decimal):
+                d = Decimal(repr(d))
             if digits:
                 p = int(digits[1])
             else:
-                d = value * factor
-                if not isinstance(d, Decimal):
-                    d = Decimal(repr(d))
                 p = -int(d.as_tuple().exponent)
-            return locale.format('%.*f', (p, value * factor), True)
+            return locale.localize('{0:.{1}f}'.format(d, p), True)
         else:
             return ''
 

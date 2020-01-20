@@ -178,7 +178,7 @@ class Graph(Gtk.DrawingArea):
         for i in range(int(self.yrange / base) + 1):
             val = int(self.minyval / base) * base + i * base
             h = (val - self.minyval) * self.yscale
-            label = locale.format('%.2f', val, True)
+            label = locale.localize('{:.2f}'.format(val), True)
             ylabels.append((h, label))
         return ylabels
 
