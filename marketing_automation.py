@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import logging
 import time
 import uuid
 from email.header import Header
@@ -46,6 +47,7 @@ if not config.get(
 USE_SSL = bool(config.get('ssl', 'certificate'))
 URL_BASE = config.get('marketing', 'automation_base', default=http_host())
 URL_OPEN = urljoin(URL_BASE, '/m/empty.gif')
+logger = logging.getLogger(__name__)
 
 
 def _formataddr(name, email):
@@ -132,7 +134,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
             else:
                 others.append(scenario)
 
-        count = {name: dict.fromkeys(map(int, scenarios), 0) for name in names}
+        count = {name: dict.fromkeys(map(int, scenarios)) for name in names}
         for sub in grouped_slice(others):
             cursor.execute(*record.select(
                     record.scenario,
@@ -148,8 +150,11 @@ class Scenario(Workflow, ModelSQL, ModelView):
         for scenario in drafts:
             Model = pool.get(scenario.model)
             domain = PYSONDecoder({}).decode(scenario.domain)
-            count['record_count'][scenario.id] = Model.search(
-                domain, count=True)
+            try:
+                count['record_count'][scenario.id] = Model.search(
+                    domain, count=True)
+            except Exception:
+                pass
         return count
 
     @classmethod
@@ -159,10 +164,13 @@ class Scenario(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def check_domain(cls, scenarios):
+        pool = Pool()
         for scenario in scenarios:
+            Model = pool.get(scenario.model)
             try:
                 value = PYSONDecoder({}).decode(scenario.domain)
                 fields.domain_validate(value)
+                Model.search(value, limit=0)
             except Exception as exception:
                 raise DomainError(
                     gettext('marketing_automation.msg_scenario_invalid_domain',
@@ -204,9 +212,15 @@ class Scenario(Workflow, ModelSQL, ModelView):
             record = Record.__table__()
             cursor = Transaction().connection.cursor()
             domain = PYSONDecoder({}).decode(scenario.domain)
+            try:
+                query = Model.search(domain, query=True, order=[])
+            except Exception:
+                logger.error(
+                    "Error when triggering scenario %d", scenario.id,
+                    exc_info=True)
+                continue
             cursor.execute(*(
-                    Model.search(domain, query=True, order=[])
-                    - record.select(
+                    query - record.select(
                         Substring(
                             record.record,
                             Position(',', record.record) + Literal(1)
