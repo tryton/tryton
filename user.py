@@ -361,7 +361,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         email = email.lower()
 
         # Prevent brute force attack
-        Transaction().atexit(time.sleep, 2 ** Attempt.count(email) - 1)
+        Transaction().atexit(
+            time.sleep, random.randint(0, 2 ** Attempt.count(email) - 1))
 
         users = cls.search([
                 ('email', '=', email),
