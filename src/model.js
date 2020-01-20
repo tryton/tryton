@@ -1685,6 +1685,8 @@
             var value = Sao.field.MultiSelection._super.get.call(this, record);
             if (jQuery.isEmptyObject(value)) {
                 value = this._default;
+            } else {
+                value.sort();
             }
             return value;
         },
@@ -1696,6 +1698,12 @@
             }
             return value;
         },
+        set_client: function(record, value, force_change) {
+            if (value) {
+                value = value.slice().sort();
+            }
+            Sao.field.MultiSelection._super.set_client(record, value, force_change);
+        }
     });
 
     Sao.field.DateTime = Sao.class_(Sao.field.Field, {
