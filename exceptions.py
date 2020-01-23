@@ -2,9 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.exceptions import UserError
+from trytond.modules.account.exceptions import AccountMissing
 
 
-class AccountError(UserError):
+class AccountError(AccountMissing):
     pass
 
 
