@@ -9,5 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             yalign="0.0" xalign="0.0" xexpand="1"/>
         <label name="with_refund"/>
         <field name="with_refund"/>
+        <label name="invoice_date"/>
+        <field name="invoice_date"/>
     </group>
 </form>

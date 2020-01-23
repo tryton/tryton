@@ -1344,11 +1344,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         InvoiceReport = Pool().get('account.invoice', type='report')
         InvoiceReport.execute([self.id], {})
 
-    def _credit(self):
+    def _credit(self, **values):
         '''
         Return values to credit invoice.
         '''
-        credit = self.__class__()
+        credit = self.__class__(**values)
 
         for field in ('company', 'party', 'invoice_address', 'currency',
                'journal', 'account', 'payment_term', 'description',
@@ -1360,12 +1360,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return credit
 
     @classmethod
-    def credit(cls, invoices, refund=False):
+    def credit(cls, invoices, refund=False, **values):
         '''
         Credit invoices and return ids of new invoices.
         Return the list of new invoice
         '''
-        new_invoices = [i._credit() for i in invoices]
+        new_invoices = [i._credit(**values) for i in invoices]
         cls.save(new_invoices)
         cls.update_taxes(new_invoices)
         if refund:
@@ -2825,6 +2825,7 @@ class PayInvoice(Wizard):
 class CreditInvoiceStart(ModelView):
     'Credit Invoice'
     __name__ = 'account.invoice.credit.start'
+    invoice_date = fields.Date("Invoice Date")
     with_refund = fields.Boolean('With Refund',
         states={
             'readonly': ~Eval('with_refund_allowed'),
@@ -2865,9 +2866,11 @@ class CreditInvoice(Wizard):
         Invoice = pool.get('account.invoice')
 
         refund = self.start.with_refund
+        invoice_date = self.start.invoice_date
         invoices = Invoice.browse(Transaction().context['active_ids'])
 
-        credit_invoices = Invoice.credit(invoices, refund=refund)
+        credit_invoices = Invoice.credit(
+            invoices, refund=refund, invoice_date=invoice_date)
 
         data = {'res_id': [i.id for i in credit_invoices]}
         if len(credit_invoices) == 1:

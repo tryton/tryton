@@ -1,3 +1,4 @@
+* Add invoice date on credit wizard
 * Take lines without maturity date as payable
 
 Version 5.4.0 - 2019-11-04

@@ -213,6 +213,7 @@ Credit invoice with refund::
 
     >>> credit = Wizard('account.invoice.credit', [invoice])
     >>> credit.form.with_refund = True
+    >>> credit.form.invoice_date = invoice.invoice_date
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
