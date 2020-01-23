@@ -90,7 +90,8 @@ The typical form is:
 
     database://username:password@host:port/
 
-Default: `sqlite://`
+Default: The value of the environment variable `TRYTOND_DATABASE_URI` or
+`sqlite://` if not set.
 
 The available databases are:
 
