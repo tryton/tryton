@@ -382,6 +382,12 @@ class FormXMLViewParser(XMLViewParser):
             widget = Frame(label=attributes.get('string'), attrs=attributes)
             widget.add(group.container)
 
+        widget.set_halign(get_align(
+                attributes.get('xalign', 0.5),
+                bool(attributes.get('xexpand', True))))
+        widget.set_valign(get_align(
+                attributes.get('yalign', 0.5),
+                bool(attributes.get('yexpand'))))
         self.view.state_widgets.append(widget)
         self.container.add(widget, attributes)
 
