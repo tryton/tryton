@@ -264,6 +264,10 @@ class FormXMLViewParser(XMLViewParser):
         self.container.add(image, attributes)
 
     def _parse_separator(self, node, attributes):
+        name = attributes.get('name')
+        if name and name == self.exclude_field:
+            self.container.add(None, attributes)
+            return
         vbox = VBox(attrs=attributes)
         if attributes.get('string'):
             label = Label(label=attributes['string'], attrs=attributes)
@@ -275,6 +279,8 @@ class FormXMLViewParser(XMLViewParser):
                     bool(attributes.get('yexpand', False))))
             vbox.pack_start(label, expand=True, fill=True, padding=0)
             self.view.state_widgets.append(label)
+            if name:
+                self._mnemonics[name] = label
         vbox.pack_start(Gtk.HSeparator(), expand=True, fill=True, padding=0)
         self.view.state_widgets.append(vbox)
         self.container.add(vbox, attributes)
