@@ -83,10 +83,10 @@ function eval_pyson(value){
 
             if (this._mnemonics[name] && widget.labelled) {
                 var label = this._mnemonics[name];
-                label.el.uniqueId();
+                label.label_el.uniqueId();
                 widget.labelled.uniqueId();
                 widget.labelled.attr('aria-labelledby', label.el.attr('id'));
-                label.el.attr('for', widget.labelled.attr('id'));
+                label.label_el.attr('for', widget.labelled.attr('id'));
             }
         },
         _parse_button: function(node, attributes) {
@@ -101,10 +101,18 @@ function eval_pyson(value){
             this.container.add(image, attributes);
         },
         _parse_separator: function(node, attributes) {
+            var name = attributes.name;
+            if (name && (name == this.exclude_field)) {
+                this.container.add(null, attributes);
+                return;
+            }
             var text = attributes.string;
             var separator = new Sao.View.Form.Separator(text, attributes);
             this.view.state_widgets.push(separator);
             this.container.add(separator, attributes);
+            if (name) {
+                this._mnemonics[name] = separator;
+            }
         },
         _parse_label: function(node, attributes) {
             var name = attributes.name;
