@@ -1,3 +1,4 @@
+* Add xalign and yalign to group
 * Add MultiSelection entry to Dict field
 * Allow empty order clause
 * Change editable tree attribute into boolean

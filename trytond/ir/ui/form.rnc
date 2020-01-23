@@ -199,9 +199,11 @@ attlist.group &= [ a:defaultValue = "1" ] attribute colspan { text }?
 attlist.group &=
   [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?
 attlist.group &= [ a:defaultValue = "1" ] attribute yfill { "0" | "1" }?
+attlist.group &= [ a:defaultValue = "0.5" ] attribute yalign { text }?
 attlist.group &=
   [ a:defaultValue = "0" ] attribute xexpand { "0" | "1" }?
 attlist.group &= [ a:defaultValue = "1" ] attribute xfill { "0" | "1" }?
+attlist.group &= [ a:defaultValue = "0.5" ] attribute xalign { text }?
 attlist.group &= [ a:defaultValue = "1" ] attribute rowspan { text }?
 attlist.group &= [ a:defaultValue = "4" ] attribute col { text }?
 attlist.group &= ( attribute name { text } | attribute id { text } )

@@ -433,6 +433,14 @@ Create a sub-table in a cell.
 
     * ``yfill``: see in common-attributes-yfill_.
 
+    * ``yalign``: see in common-attributes-yalign_.
+
+    * ``xexpand``: see in common-attributes-xexpand_.
+
+    * ``xfill``: see in common-attributes-xfill_.
+
+    * ``xalign``: see in common-attributes-xalign_.
+
     * ``colspan``: see in common-attributes-colspan_.
 
     * ``states``: see in common-attributes-states_.

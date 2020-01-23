@@ -975,6 +975,14 @@
   </define>
   <define name="attlist.group" combine="interleave">
     <optional>
+      <attribute a:defaultValue="0.5">
+        <name ns="">yalign</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
       <attribute a:defaultValue="0">
         <name ns="">xexpand</name>
         <choice>
@@ -992,6 +1000,14 @@
           <value>0</value>
           <value>1</value>
         </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.group" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="0.5">
+        <name ns="">xalign</name>
+        <text/>
       </attribute>
     </optional>
   </define>
