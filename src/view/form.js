@@ -164,6 +164,12 @@ function eval_pyson(value){
             this.view.containers.push(group);
             this.parse_child(node, group);
 
+            if (attributes.xalign === undefined) {
+                attributes.xalign = 0.5;
+            }
+            if (attributes.yalign === undefined) {
+                attributes.yalign = 0.5;
+            }
             if (attributes.name && (attributes.name == this.exclude_field)) {
                 this.container.add(null, attributes);
                 return;
@@ -485,10 +491,14 @@ function eval_pyson(value){
             if (attributes.xalign !== undefined) {
                 // TODO replace by start/end when supported
                 var align;
-                if (Sao.i18n.rtl) {
-                    align = attributes.xalign >= 0.5? 'left': 'right';
-                } else {
-                    align = attributes.xalign >= 0.5? 'right': 'left';
+                if (attributes.xalign != 0.5) {
+                    if (Sao.i18n.rtl) {
+                        align = attributes.xalign >= 0.5? 'left': 'right';
+                    } else {
+                        align = attributes.xalign >= 0.5? 'right': 'left';
+                    }
+                } else if (!xexpand) {
+                    align = 'center';
                 }
                 cell.css('text-align', align);
             }
@@ -625,7 +635,7 @@ function eval_pyson(value){
                     i += colspan;
                 });
             });
-            if (has_expand) {
+            if (has_expand && this.el.closest('td').hasClass('xexpand')) {
                 this.el.css('width', '100%');
             } else {
                 this.el.css('width', '');
