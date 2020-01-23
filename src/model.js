@@ -1702,7 +1702,8 @@
             if (value) {
                 value = value.slice().sort();
             }
-            Sao.field.MultiSelection._super.set_client(record, value, force_change);
+            Sao.field.MultiSelection._super.set_client.call(
+                this, record, value, force_change);
         }
     });
 
