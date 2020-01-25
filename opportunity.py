@@ -16,33 +16,23 @@ from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['SaleOpportunity', 'SaleOpportunityLine',
-    'SaleOpportunityEmployee', 'SaleOpportunityEmployeeContext',
-    'SaleOpportunityMonthly', 'SaleOpportunityEmployeeMonthly']
-
-STATES = [
-    ('lead', 'Lead'),
-    ('opportunity', 'Opportunity'),
-    ('converted', 'Converted'),
-    ('won', 'Won'),
-    ('cancelled', 'Cancelled'),
-    ('lost', 'Lost'),
-]
-_STATES_START = {
-    'readonly': Eval('state') != 'lead',
-    }
-_DEPENDS_START = ['state']
-_STATES_STOP = {
-    'readonly': In(Eval('state'), ['converted', 'won', 'lost', 'cancelled']),
-}
-_DEPENDS_STOP = ['state']
-
 
 class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
     __name__ = "sale.opportunity"
     _history = True
     _rec_name = 'number'
+
+    _states_start = {
+        'readonly': Eval('state') != 'lead',
+        }
+    _depends_start = ['state']
+    _states_stop = {
+        'readonly': Eval('state').in_(
+            ['converted', 'won', 'lost', 'cancelled']),
+    }
+    _depends_stop = ['state']
+
     number = fields.Char('Number', readonly=True, required=True, select=True)
     reference = fields.Char('Reference', select=True)
     party = fields.Many2One('party.party', 'Party', select=True,
@@ -53,18 +43,18 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
         select=True, depends=['party', 'state'],
-        states=_STATES_STOP)
+        states=_states_stop)
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, states=_STATES_STOP, domain=[
+        select=True, states=_states_stop, domain=[
             ('id', If(In('company', Eval('context', {})), '=', '!='),
                 Get(Eval('context', {}), 'company', 0)),
-            ], depends=_DEPENDS_STOP)
+            ], depends=_depends_stop)
     currency = fields.Function(fields.Many2One('currency.currency',
         'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
-        states=_STATES_STOP, depends=_DEPENDS_STOP + ['currency_digits'],
+        states=_states_stop, depends=_depends_stop + ['currency_digits'],
         help='Estimated revenue amount.')
     payment_term = fields.Many2One('account.invoice.payment_term',
         'Payment Term', states={
@@ -74,23 +64,30 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         depends=['state'])
     employee = fields.Many2One('company.employee', 'Employee',
         states={
-            'readonly': _STATES_STOP['readonly'],
+            'readonly': _states_stop['readonly'],
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
         },
         depends=['state', 'company'],
         domain=[('company', '=', Eval('company'))])
     start_date = fields.Date('Start Date', required=True, select=True,
-        states=_STATES_START, depends=_DEPENDS_START)
+        states=_states_start, depends=_depends_start)
     end_date = fields.Date('End Date', select=True,
-        states=_STATES_STOP, depends=_DEPENDS_STOP)
+        states=_states_stop, depends=_depends_stop)
     description = fields.Char('Description',
-        states=_STATES_STOP, depends=_DEPENDS_STOP)
-    comment = fields.Text('Comment', states=_STATES_STOP,
-        depends=_DEPENDS_STOP)
+        states=_states_stop, depends=_depends_stop)
+    comment = fields.Text('Comment', states=_states_stop,
+        depends=_depends_stop)
     lines = fields.One2Many('sale.opportunity.line', 'opportunity', 'Lines',
-        states=_STATES_STOP, depends=_DEPENDS_STOP)
-    state = fields.Selection(STATES, 'State', required=True, select=True,
-            sort=False, readonly=True)
+        states=_states_stop, depends=_depends_stop)
+    state = fields.Selection([
+            ('lead', "Lead"),
+            ('opportunity', "Opportunity"),
+            ('converted', "Converted"),
+            ('won', "Won"),
+            ('cancelled', "Cancelled"),
+            ('lost', "Lost"),
+            ], "State", required=True, select=True,
+        sort=False, readonly=True)
     conversion_probability = fields.Float('Conversion Probability',
         digits=(1, 4), required=True,
         domain=[
@@ -106,6 +103,9 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'invisible': Eval('state') != 'lost',
             }, depends=['state'])
     sales = fields.One2Many('sale.sale', 'origin', 'Sales')
+
+    del _states_start, _depends_start
+    del _states_stop, _depends_stop
 
     @classmethod
     def __register__(cls, module_name):
@@ -452,7 +452,7 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
             },
         depends=_depends)
     opportunity_state = fields.Function(
-        fields.Selection(STATES, 'Opportunity State'),
+        fields.Selection('get_opportunity_states', "Opportunity State"),
         'on_change_with_opportunity_state')
     product = fields.Many2One('product.product', 'Product', required=True,
         domain=[('salable', '=', True)], states=_states, depends=_depends)
@@ -465,6 +465,12 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_unit_digits')
 
     del _states, _depends
+
+    @classmethod
+    def get_opportunity_states(cls):
+        pool = Pool()
+        Opportunity = pool.get('sale.opportunity')
+        return Opportunity.fields_get(['state'])['state']['selection']
 
     @fields.depends('opportunity', '_parent_opportunity.state')
     def on_change_with_opportunity_state(self, name=None):
