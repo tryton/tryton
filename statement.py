@@ -23,43 +23,6 @@ from trytond.modules.company import CompanyReport
 from .exceptions import (
     StatementValidateError, StatementValidateWarning, StatementPostError)
 
-__all__ = ['Statement', 'Line', 'LineGroup',
-    'Origin', 'OriginInformation',
-    'ImportStatementStart', 'ImportStatement',
-    'ReconcileStatement',
-    'StatementReport']
-
-_STATES = {'readonly': Eval('state') != 'draft'}
-_DEPENDS = ['state']
-
-_BALANCE_STATES = _STATES.copy()
-_BALANCE_STATES.update({
-        'invisible': ~Eval('validation', '').in_(['balance']),
-        'required': Eval('validation', '').in_(['balance']),
-        })
-_BALANCE_DEPENDS = _DEPENDS + ['validation']
-
-_AMOUNT_STATES = _STATES.copy()
-_AMOUNT_STATES.update({
-        'invisible': ~Eval('validation', '').in_(['amount']),
-        'required': Eval('validation', '').in_(['amount']),
-        })
-_AMOUNT_DEPENDS = _DEPENDS + ['validation']
-
-_NUMBER_STATES = _STATES.copy()
-_NUMBER_STATES.update({
-        'invisible': ~Eval('validation', '').in_(['number_of_lines']),
-        'required': Eval('validation', '').in_(['number_of_lines']),
-        })
-_NUMBER_DEPENDS = _DEPENDS + ['validation']
-
-STATES = [
-    ('draft', 'Draft'),
-    ('validated', 'Validated'),
-    ('cancel', 'Canceled'),
-    ('posted', 'Posted'),
-    ]
-
 if config.getboolean('account_statement', 'filestore', default=False):
     file_id = 'origin_file_id'
     store_prefix = config.get(
@@ -85,13 +48,35 @@ class Unequal(object):
 class Statement(Workflow, ModelSQL, ModelView):
     'Account Statement'
     __name__ = 'account.statement'
+
+    _states = {'readonly': Eval('state') != 'draft'}
+    _depends = ['state']
+    _balance_states = _states.copy()
+    _balance_states.update({
+            'invisible': ~Eval('validation', '').in_(['balance']),
+            'required': Eval('validation', '').in_(['balance']),
+            })
+    _balance_depends = _depends + ['validation']
+    _amount_states = _states.copy()
+    _amount_states.update({
+            'invisible': ~Eval('validation', '').in_(['amount']),
+            'required': Eval('validation', '').in_(['amount']),
+            })
+    _amount_depends = _depends + ['validation']
+    _number_states = _states.copy()
+    _number_states.update({
+            'invisible': ~Eval('validation', '').in_(['number_of_lines']),
+            'required': Eval('validation', '').in_(['number_of_lines']),
+            })
+    _number_depends = _depends + ['validation']
+
     name = fields.Char('Name', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
-        select=True, states=_STATES, domain=[
+        select=True, states=_states, domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ],
-        depends=_DEPENDS)
+        depends=_depends)
     journal = fields.Many2One('account.statement.journal', 'Journal',
         required=True, select=True,
         domain=[
@@ -106,21 +91,21 @@ class Statement(Workflow, ModelSQL, ModelView):
     date = fields.Date('Date', required=True, select=True)
     start_balance = fields.Numeric('Start Balance',
         digits=(16, Eval('currency_digits', 2)),
-        states=_BALANCE_STATES, depends=_BALANCE_DEPENDS + ['currency_digits'])
+        states=_balance_states, depends=_balance_depends + ['currency_digits'])
     end_balance = fields.Numeric('End Balance',
         digits=(16, Eval('currency_digits', 2)),
-        states=_BALANCE_STATES, depends=_BALANCE_DEPENDS + ['currency_digits'])
+        states=_balance_states, depends=_balance_depends + ['currency_digits'])
     balance = fields.Function(
         fields.Numeric('Balance',
             digits=(16, Eval('currency_digits', 2)),
-            states=_BALANCE_STATES,
-            depends=_BALANCE_DEPENDS + ['currency_digits']),
+            states=_balance_states,
+            depends=_balance_depends + ['currency_digits']),
         'on_change_with_balance')
     total_amount = fields.Numeric('Total Amount',
         digits=(16, Eval('currency_digits', 2)),
-        states=_AMOUNT_STATES, depends=_AMOUNT_DEPENDS + ['currency_digits'])
+        states=_amount_states, depends=_amount_depends + ['currency_digits'])
     number_of_lines = fields.Integer('Number of Lines',
-        states=_NUMBER_STATES, depends=_NUMBER_DEPENDS)
+        states=_number_states, depends=_number_depends)
     lines = fields.One2Many('account.statement.line', 'statement',
         'Lines', states={
             'readonly': (Eval('state') != 'draft') | ~Eval('journal'),
@@ -135,11 +120,21 @@ class Statement(Workflow, ModelSQL, ModelView):
         "Origin File", readonly=True,
         file_id=file_id, store_prefix=store_prefix)
     origin_file_id = fields.Char("Origin File ID", readonly=True)
-    state = fields.Selection(STATES, 'State', readonly=True, select=True)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('validated', "Validated"),
+            ('cancel', "Canceled"),
+            ('posted', "Posted"),
+            ], "State", readonly=True, select=True)
     validation = fields.Function(fields.Char('Validation'),
         'on_change_with_validation')
     to_reconcile = fields.Function(
         fields.Boolean("To Reconcile"), 'get_to_reconcile')
+
+    del _states, _depends
+    del _balance_states, _balance_depends
+    del _amount_states, _amount_depends
+    del _number_states, _number_depends
 
     @classmethod
     def __setup__(cls):
