@@ -26,27 +26,6 @@ from trytond.modules.product import price_digits
 
 from .exceptions import PurchaseQuotationError, PartyLocationError
 
-__all__ = ['Purchase', 'PurchaseIgnoredInvoice',
-    'PurchaseRecreatedInvoice', 'PurchaseLine', 'PurchaseLineTax',
-    'PurchaseLineIgnoredMove', 'PurchaseLineRecreatedMove', 'PurchaseReport',
-    'OpenSupplier', 'HandleShipmentExceptionAsk', 'HandleShipmentException',
-    'HandleInvoiceExceptionAsk', 'HandleInvoiceException', 'ModifyHeader',
-    'get_shipments_returns', 'search_shipments_returns']
-
-_STATES = {
-    'readonly': Eval('state') != 'draft',
-    }
-_DEPENDS = ['state']
-_ZERO = Decimal(0)
-STATES = [
-    ('draft', 'Draft'),
-    ('quotation', 'Quotation'),
-    ('confirmed', 'Confirmed'),
-    ('processing', 'Processing'),
-    ('done', 'Done'),
-    ('cancel', 'Canceled'),
-    ]
-
 
 def get_shipments_returns(model_name):
     "Computes the returns or shipments"
@@ -82,6 +61,12 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     'Purchase'
     __name__ = 'purchase.purchase'
     _rec_name = 'number'
+
+    _states = {
+        'readonly': Eval('state') != 'draft',
+        }
+    _depends = ['state']
+
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -93,9 +78,16 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=['state'], select=True)
     number = fields.Char('Number', size=None, readonly=True, select=True)
     reference = fields.Char('Reference', select=True)
-    description = fields.Char('Description', size=None, states=_STATES,
-        depends=_DEPENDS)
-    state = fields.Selection(STATES, 'State', readonly=True, required=True)
+    description = fields.Char('Description', size=None, states=_states,
+        depends=_depends)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('quotation', "Quotation"),
+            ('confirmed', "Confirmed"),
+            ('processing', "Processing"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, required=True)
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -123,8 +115,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             },
         depends=['state', 'party'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
-        domain=[('type', '=', 'warehouse')], states=_STATES,
-        depends=_DEPENDS)
+        domain=[('type', '=', 'warehouse')], states=_states,
+        depends=_depends)
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         states={
             'readonly': ((Eval('state') != 'draft')
@@ -134,7 +126,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     lines = fields.One2Many('purchase.line', 'purchase', 'Lines',
-        states=_STATES, depends=_DEPENDS)
+        states=_states, depends=_depends)
     comment = fields.Text('Comment')
     untaxed_amount = fields.Function(fields.Numeric('Untaxed',
             digits=(16, Eval('currency_digits', 2)),
@@ -158,8 +150,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('manual', 'Manual'),
             ('order', 'Based On Order'),
             ('shipment', 'Based On Shipment'),
-            ], 'Invoice Method', required=True, states=_STATES,
-        depends=_DEPENDS)
+            ], 'Invoice Method', required=True, states=_states,
+        depends=_depends)
     invoice_state = fields.Selection([
             ('none', 'None'),
             ('waiting', 'Waiting'),
@@ -196,6 +188,8 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             'stock.shipment.in.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.One2Many('stock.move', 'purchase', 'Moves', readonly=True)
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -490,7 +484,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             else:
                 untaxed_amount[purchase.id] = sum(
                     (line.amount for line in purchase.lines
-                        if line.type == 'line'), _ZERO)
+                        if line.type == 'line'), Decimal(0))
                 if compute_taxes:
                     tax_amount[purchase.id] = purchase.get_tax_amount()
                     total_amount[purchase.id] = (
@@ -1078,7 +1072,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
             },
         depends=['type', 'delivery_date_edit', 'purchase_state'])
     purchase_state = fields.Function(
-        fields.Selection(STATES, 'Purchase State'),
+        fields.Selection('get_purchase_states', 'Purchase State'),
         'on_change_with_purchase_state')
 
     @classmethod
@@ -1349,6 +1343,12 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         if delivery_date and delivery_date < Date.today():
             delivery_date = None
         return delivery_date
+
+    @classmethod
+    def get_purchase_states(cls):
+        pool = Pool()
+        Purchase = pool.get('purchase.purchase')
+        return Purchase.fields_get(['state'])['state']['selection']
 
     @fields.depends('purchase', '_parent_purchase.state')
     def on_change_with_purchase_state(self, name=None):
