@@ -12,24 +12,17 @@ from trytond.wizard import Wizard, StateView, StateTransition, Button
 
 from .exceptions import InventoryValidationError, InventoryCountWarning
 
-__all__ = ['Inventory', 'InventoryLine',
-    'Count', 'CountSearch', 'CountQuantity']
-
-STATES = {
-    'readonly': Eval('state') != 'draft',
-}
-DEPENDS = ['state']
-INVENTORY_STATES = [
-    ('draft', 'Draft'),
-    ('done', 'Done'),
-    ('cancel', 'Canceled'),
-    ]
-
 
 class Inventory(Workflow, ModelSQL, ModelView):
     'Stock Inventory'
     __name__ = 'stock.inventory'
     _rec_name = 'number'
+
+    _states = {
+        'readonly': Eval('state') != 'draft',
+        }
+    _depends = ['state']
+
     number = fields.Char('Number', readonly=True,
         help="The main identifier for the inventory.")
     location = fields.Many2One(
@@ -46,21 +39,21 @@ class Inventory(Workflow, ModelSQL, ModelView):
         help="The date of the stock count.")
     lost_found = fields.Many2One(
         'stock.location', 'Lost and Found', required=True,
-        domain=[('type', '=', 'lost_found')], states=STATES, depends=DEPENDS,
+        domain=[('type', '=', 'lost_found')], states=_states, depends=_depends,
         help="Used for the balancing entries needed when the stock is "
         "corrected.")
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines',
         states={
-            'readonly': (STATES['readonly'] | ~Eval('location')
+            'readonly': (_states['readonly'] | ~Eval('location')
                 | ~Eval('date')),
             },
-        depends=['location', 'date'] + DEPENDS)
+        depends=['location', 'date'] + _depends)
     empty_quantity = fields.Selection([
             (None, ""),
             ('keep', "Keep"),
             ('empty', "Empty"),
-            ], "Empty Quantity", states=STATES, depends=DEPENDS,
+            ], "Empty Quantity", states=_states, depends=_depends,
         help="How lines without quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
@@ -68,9 +61,14 @@ class Inventory(Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         help="The company the inventory is associated with.")
-    state = fields.Selection(
-        INVENTORY_STATES, 'State', readonly=True, select=True,
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, select=True,
         help="The current state of the inventory.")
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -327,7 +325,7 @@ class InventoryLine(ModelSQL, ModelView):
         depends=_depends,
         help="The inventory the line belongs to.")
     inventory_state = fields.Function(
-        fields.Selection(INVENTORY_STATES, 'Inventory State'),
+        fields.Selection('get_inventory_states', "Inventory State"),
         'on_change_with_inventory_state')
 
     @classmethod
@@ -380,6 +378,12 @@ class InventoryLine(ModelSQL, ModelView):
         if self.product:
             self.uom = self.product.default_uom
             self.unit_digits = self.product.default_uom.digits
+
+    @classmethod
+    def get_inventory_states(cls):
+        pool = Pool()
+        Inventory = pool.get('stock.inventory')
+        return Inventory.fields_get(['state'])['state']['selection']
 
     @fields.depends('inventory', '_parent_inventory.state')
     def on_change_with_inventory_state(self, name=None):
