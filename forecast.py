@@ -20,23 +20,16 @@ from trytond.tools import reduce_ids, grouped_slice
 
 from .exceptions import ForecastValidationError
 
-__all__ = ['Forecast', 'ForecastLine', 'ForecastLineMove',
-    'ForecastCompleteAsk', 'ForecastCompleteChoose', 'ForecastComplete']
-
-STATES = {
-    'readonly': Not(Equal(Eval('state'), 'draft')),
-}
-DEPENDS = ['state']
-FORECAST_STATES = [
-    ('draft', 'Draft'),
-    ('done', 'Done'),
-    ('cancel', 'Cancel'),
-    ]
-
 
 class Forecast(Workflow, ModelSQL, ModelView):
     "Stock Forecast"
     __name__ = "stock.forecast"
+
+    _states = {
+        'readonly': Not(Equal(Eval('state'), 'draft')),
+    }
+    _depends = ['state']
+
     warehouse = fields.Many2One(
         'stock.location', 'Location', required=True,
         domain=[('type', '=', 'warehouse')], states={
@@ -46,29 +39,34 @@ class Forecast(Workflow, ModelSQL, ModelView):
         depends=['state'])
     destination = fields.Many2One(
         'stock.location', 'Destination', required=True,
-        domain=[('type', 'in', ['customer', 'production'])], states=STATES,
-        depends=DEPENDS)
+        domain=[('type', 'in', ['customer', 'production'])], states=_states,
+        depends=_depends)
     from_date = fields.Date(
         "From Date", required=True,
         domain=[('from_date', '<=', Eval('to_date'))],
-        states=STATES, depends=DEPENDS + ['to_date'])
+        states=_states, depends=_depends + ['to_date'])
     to_date = fields.Date(
         "To Date", required=True,
         domain=[('to_date', '>=', Eval('from_date'))],
-        states=STATES, depends=DEPENDS + ['from_date'])
+        states=_states, depends=_depends + ['from_date'])
     lines = fields.One2Many(
-        'stock.forecast.line', 'forecast', 'Lines', states=STATES,
-        depends=DEPENDS)
+        'stock.forecast.line', 'forecast', 'Lines', states=_states,
+        depends=_depends)
     company = fields.Many2One(
         'company.company', 'Company', required=True, states={
             'readonly': Or(Not(Equal(Eval('state'), 'draft')),
                 Bool(Eval('lines', [0]))),
             },
         depends=['state'])
-    state = fields.Selection(
-        FORECAST_STATES, 'State', readonly=True, select=True)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('done', "Done"),
+            ('cancel', "Cancel"),
+            ], "State", readonly=True, select=True)
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
+
+    del _states, _depends
 
     @classmethod
     def __setup__(cls):
@@ -293,7 +291,7 @@ class ForecastLine(ModelSQL, ModelView):
             },
         depends=['forecast_state'])
     forecast_state = fields.Function(
-        fields.Selection(FORECAST_STATES, 'Forecast State'),
+        fields.Selection('get_forecast_states', 'Forecast State'),
         'on_change_with_forecast_state')
     quantity_executed = fields.Function(fields.Float('Quantity Executed',
             digits=(16, Eval('unit_digits', 2)), depends=['unit_digits']),
@@ -348,6 +346,12 @@ class ForecastLine(ModelSQL, ModelView):
 
     def get_unit_digits(self, name):
         return self.product.default_uom.digits
+
+    @classmethod
+    def get_forecast_states(cls):
+        pool = Pool()
+        Forecast = pool.get('stock.forecast')
+        return Forecast.fields_get(['state'])['state']['selection']
 
     @fields.depends('forecast', '_parent_forecast.state')
     def on_change_with_forecast_state(self, name=None):
