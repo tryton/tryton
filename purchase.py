@@ -16,22 +16,6 @@ from trytond.tools import grouped_slice
 
 from trytond.modules.product import price_digits
 
-__all__ = ['Configuration', 'ConfigurationSequence',
-    'PurchaseRequisition', 'PurchaseRequisitionLine',
-    'PurchaseRequest', 'HandlePurchaseCancellationException',
-    'CreatePurchase', 'Purchase']
-
-
-STATES = [
-    ('draft', 'Draft'),
-    ('waiting', 'Waiting'),
-    ('rejected', 'Rejected'),
-    ('approved', 'Approved'),
-    ('processing', 'Processing'),
-    ('done', 'Done'),
-    ('cancel', 'Canceled'),
-    ]
-
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
@@ -153,7 +137,15 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     lines = fields.One2Many(
         'purchase.requisition.line', 'requisition', 'Lines',
         states=_states, depends=_depends)
-    state = fields.Selection(STATES, 'State', readonly=True, required=True)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('waiting', "Waiting"),
+            ('rejected', "Rejected"),
+            ('approved', "Approved"),
+            ('processing', "Processing"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, required=True)
 
     del _states
 
@@ -457,8 +449,8 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
             depends=_depends), 'on_change_with_amount')
     purchase_requests = fields.One2Many(
         'purchase.request', 'origin', 'Purchase Request', readonly=True)
-    purchase_requisition_state = fields.Function(
-        fields.Selection(STATES, 'Purchase Requisition State'),
+    purchase_requisition_state = fields.Function(fields.Selection(
+            'get_purchase_requisition_states', "Purchase Requisition State"),
         'on_change_with_purchase_requisition_state')
 
     del _states
@@ -480,6 +472,12 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
+
+    @classmethod
+    def get_purchase_requisition_states(cls):
+        pool = Pool()
+        Requisition = pool.get('purchase.requisition')
+        return Requisition.fields_get(['state'])['state']['selection']
 
     @fields.depends('requisition', '_parent_requisition.state')
     def on_change_with_purchase_requisition_state(self, name=None):
