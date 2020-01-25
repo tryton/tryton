@@ -22,24 +22,6 @@ from trytond.modules.product import price_digits
 from .exceptions import (
     SaleValidationError, SaleQuotationError, PartyLocationError)
 
-__all__ = ['Sale', 'SaleIgnoredInvoice', 'SaleRecreatedInvoice',
-    'SaleLine', 'SaleLineTax', 'SaleLineIgnoredMove',
-    'SaleLineRecreatedMove', 'SaleReport', 'OpenCustomer',
-    'HandleShipmentExceptionAsk', 'HandleShipmentException',
-    'HandleInvoiceExceptionAsk', 'HandleInvoiceException',
-    'ReturnSaleStart', 'ReturnSale', 'ModifyHeader',
-    'get_shipments_returns', 'search_shipments_returns']
-
-_ZERO = Decimal(0)
-STATES = [
-    ('draft', 'Draft'),
-    ('quotation', 'Quotation'),
-    ('confirmed', 'Confirmed'),
-    ('processing', 'Processing'),
-    ('done', 'Done'),
-    ('cancel', 'Canceled'),
-    ]
-
 
 def get_shipments_returns(model_name):
     "Computes the returns or shipments"
@@ -91,7 +73,14 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    state = fields.Selection(STATES, 'State', readonly=True, required=True)
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('quotation', "Quotation"),
+            ('confirmed', "Confirmed"),
+            ('processing', "Processing"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, required=True)
     sale_date = fields.Date('Sale Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -472,7 +461,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             else:
                 untaxed_amount[sale.id] = sum(
                     (line.amount for line in sale.lines
-                        if line.type == 'line'), _ZERO)
+                        if line.type == 'line'), Decimal(0))
                 if compute_taxes:
                     tax_amount[sale.id] = sale.get_tax_amount()
                     total_amount[sale.id] = (
@@ -1075,7 +1064,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 },
             depends=['type']),
         'on_change_with_shipping_date')
-    sale_state = fields.Function(fields.Selection(STATES, 'Sale State'),
+    sale_state = fields.Function(
+        fields.Selection('get_sale_states', "Sale State"),
         'on_change_with_sale_state')
 
     @classmethod
@@ -1299,6 +1289,12 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if shipping_date:
                 shipping_date = max(shipping_date, Date.today())
             return shipping_date
+
+    @classmethod
+    def get_sale_states(cls):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        return Sale.fields_get(['state'])['state']['selection']
 
     @fields.depends('sale', '_parent_sale.state')
     def on_change_with_sale_state(self, name=None):
