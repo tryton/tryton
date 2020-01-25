@@ -21,17 +21,6 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
 from trytond.modules.product import price_digits
 from .exceptions import InvoiceError
 
-__all__ = ['Subscription', 'Line', 'LineConsumption',
-    'CreateLineConsumption', 'CreateLineConsumptionStart',
-    'CreateSubscriptionInvoice', 'CreateSubscriptionInvoiceStart']
-STATES = [
-    ('draft', 'Draft'),
-    ('quotation', 'Quotation'),
-    ('running', 'Running'),
-    ('closed', 'Closed'),
-    ('canceled', 'Canceled'),
-    ]
-
 
 class Subscription(Workflow, ModelSQL, ModelView):
     "Subscription"
@@ -140,8 +129,13 @@ class Subscription(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
 
-    state = fields.Selection(
-        STATES, "State", readonly=True, required=True,
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('quotation', "Quotation"),
+            ('running', "Running"),
+            ('closed', "Closed"),
+            ('canceled', "Canceled"),
+            ], "State", readonly=True, required=True,
         help="The current state of the subscription.")
 
     @classmethod
@@ -395,7 +389,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         depends=['subscription_state'],
         help="Add the line below the subscription.")
     subscription_state = fields.Function(
-        fields.Selection(STATES, "Subscription State"),
+        fields.Selection('get_subscription_states', "Subscription State"),
         'on_change_with_subscription_state')
     subscription_start_date = fields.Function(
         fields.Date("Subscription Start Date"),
@@ -531,6 +525,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                                     table.next_consumption_date,
                                     table.end_date)), else_=Null)]))
             table_h.drop_column('consumed')
+
+    @classmethod
+    def get_subscription_states(cls):
+        pool = Pool()
+        Subscription = pool.get('sale.subscription')
+        return Subscription.fields_get(['state'])['state']['selection']
 
     @fields.depends('subscription', '_parent_subscription.state')
     def on_change_with_subscription_state(self, name=None):
