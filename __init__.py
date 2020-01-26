@@ -10,6 +10,7 @@ from . import product
 from . import inventory
 from . import configuration
 from . import party
+from . import ir
 from . import res
 
 from .move import StockMixin
@@ -41,6 +42,7 @@ def register():
         product.ProductByLocationContext,
         product.ProductQuantitiesByWarehouse,
         product.ProductQuantitiesByWarehouseContext,
+        product.RecomputeCostPriceStart,
         inventory.Inventory,
         inventory.InventoryLine,
         inventory.CountSearch,
@@ -48,6 +50,7 @@ def register():
         configuration.Configuration,
         configuration.ConfigurationSequence,
         configuration.ConfigurationLocation,
+        ir.Cron,
         res.User,
         module='stock', type_='model')
     Pool.register(

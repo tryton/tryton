@@ -1,3 +1,6 @@
+* Add cron task to recompute product cost
+* Update cost of moves when recomputing product cost
+
 Version 5.4.0 - 2019-11-04
 * Bug fixes (see mercurial logs for details)
 * Add today record in Product Quantities By Warehouse

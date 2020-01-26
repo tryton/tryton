@@ -245,6 +245,12 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['unit_price_required', 'state'])
+    unit_price_updated = fields.Boolean(
+        "Unit Price Updated", readonly=True,
+        states={
+            'invisible': Eval('state') != 'done',
+            },
+        depends=['state'])
     cost_price = fields.Numeric('Cost Price', digits=price_digits,
         readonly=True)
     currency = fields.Many2One('currency.currency', 'Currency',
@@ -269,7 +275,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned |
             set(['planned_date', 'effective_date', 'state']))
-        cls._allow_modify_closed_period = set()
+        cls._allow_modify_closed_period = {'cost_price'}
 
         t = cls.__table__()
         cls._sql_constraints += [
@@ -344,6 +350,10 @@ class Move(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @classmethod
+    def default_unit_price_updated(cls):
+        return True
 
     @staticmethod
     def default_currency():
@@ -687,6 +697,7 @@ class Move(Workflow, ModelSQL, ModelView):
         super(Move, cls).write(*args)
 
         to_write = []
+        unit_price_update = []
         actions = iter(args)
         for moves, values in zip(actions, actions):
             if any(f not in cls._allow_modify_closed_period for f in values):
@@ -700,8 +711,13 @@ class Move(Workflow, ModelSQL, ModelView):
                     to_write.extend(([move], {
                             'internal_quantity': internal_quantity,
                             }))
+                if move.state == 'done' and 'unit_price' in values:
+                    unit_price_update.append(move)
+
         if to_write:
             cls.write(*to_write)
+        if unit_price_update:
+            cls.write(unit_price_update, {'unit_price_updated': True})
 
     @classmethod
     def delete(cls, moves):

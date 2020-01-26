@@ -13,18 +13,14 @@ from sql.conditionals import Coalesce
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateTransition, StateAction
+from trytond.wizard import (
+    Wizard, StateTransition, StateAction, StateView, Button)
 from trytond.pyson import Eval, Or, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
 from .move import StockMixin
-
-__all__ = ['Template', 'Product',
-    'ProductByLocationContext',
-    'ProductQuantitiesByWarehouse', 'ProductQuantitiesByWarehouseContext',
-    'RecomputeCostPrice']
 
 
 def check_no_move(func):
@@ -102,12 +98,12 @@ class Template(metaclass=PoolMeta):
         super(Template, cls).write(*args)
 
     @classmethod
-    def recompute_cost_price(cls, templates):
+    def recompute_cost_price(cls, templates, start=None):
         pool = Pool()
         Product = pool.get('product.product')
 
         products = [p for t in templates for p in t.products]
-        Product.recompute_cost_price(products)
+        Product.recompute_cost_price(products, start=start)
 
 
 class Product(StockMixin, object, metaclass=PoolMeta):
@@ -211,16 +207,47 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         return quantities
 
     @classmethod
-    def recompute_cost_price(cls, products):
+    def recompute_cost_price_from_moves(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        products = set()
+        for move in Move.search([
+                    ('unit_price_updated', '=', True),
+                    cls._domain_moves_cost(),
+                    ],
+                order=[('effective_date', 'ASC')]):
+            if move.product not in products:
+                cls.__queue__.recompute_cost_price(
+                    [move.product], start=move.effective_date)
+                products.add(move.product)
+
+    @classmethod
+    def recompute_cost_price(cls, products, start=None):
+        pool = Pool()
+        Move = pool.get('stock.move')
         digits = cls.cost_price.digits
         costs = defaultdict(list)
         for product in products:
             if product.type == 'service':
                 continue
-            cost = getattr(product,
-                'recompute_cost_price_%s' % product.cost_price_method)()
+            cost = getattr(
+                product, 'recompute_cost_price_%s' %
+                product.cost_price_method)(start)
             cost = cost.quantize(Decimal(str(10.0 ** -digits[1])))
             costs[cost].append(product)
+
+        updated = []
+        for sub_products in grouped_slice(products):
+            domain = [
+                ('unit_price_updated', '=', True),
+                cls._domain_moves_cost(),
+                ('product', 'in', [p.id for p in sub_products]),
+                ]
+            if start:
+                domain.append(('effective_date', '>=', start))
+            updated += Move.search(domain, order=[])
+        if updated:
+            Move.write(updated, {'unit_price_updated': False})
 
         if not costs:
             return
@@ -231,45 +258,93 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             to_write.append({'cost_price': cost})
 
         # Enforce check access for account_stock*
-        with Transaction().set_context(_check_access=True):
+        with Transaction().set_context(_check_access=False):
             cls.write(*to_write)
 
-    def recompute_cost_price_fixed(self):
+    def recompute_cost_price_fixed(self, start=None):
         return self.cost_price
 
-    @property
-    def _domain_moves_cost(self):
+    @classmethod
+    def _domain_moves_cost(cls):
         "Returns the domain for moves to use in cost computation"
         context = Transaction().context
         return [
             ('company', '=', context.get('company')),
+            ('state', '=', 'done'),
             ]
 
-    def recompute_cost_price_average(self):
+    def _get_storage_quantity(self, date=None):
+        pool = Pool()
+        Location = pool.get('stock.location')
+
+        locations = Location.search([
+            ('type', '=', 'storage'),
+            ])
+        if not date:
+            date = datetime.date.today()
+        location_ids = [l.id for l in locations]
+        with Transaction().set_context(
+                locations=location_ids,
+                with_childs=False,
+                stock_date_end=date):
+            return self.__class__(self.id).quantity
+
+    def recompute_cost_price_average(self, start=None):
         pool = Pool()
         Move = pool.get('stock.move')
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
+        digits = self.__class__.cost_price.digits
 
-        moves = Move.search([
-                ('product', '=', self.id),
-                ('state', '=', 'done'),
-                self._domain_moves_cost,
-                ['OR',
-                    [
-                        ('to_location.type', '=', 'storage'),
-                        ('from_location.type', '!=', 'storage'),
-                        ],
-                    [
-                        ('from_location.type', '=', 'storage'),
-                        ('to_location.type', '!=', 'storage'),
-                        ],
+        domain = [
+            ('product', '=', self.id),
+            self._domain_moves_cost(),
+            ['OR',
+                [
+                    ('to_location.type', '=', 'storage'),
+                    ('from_location.type', '!=', 'storage'),
+                    ], [
+                    ('from_location.type', '=', 'storage'),
+                    ('to_location.type', '!=', 'storage'),
                     ],
-                ], order=[('effective_date', 'ASC'), ('id', 'ASC')])
+                ],
+            ]
+        if start:
+            domain.append(('effective_date', '>=', start))
+        moves = Move.search(
+                domain, order=[('effective_date', 'ASC'), ('id', 'ASC')])
 
         cost_price = Decimal(0)
         quantity = 0
+        if start:
+            domain.remove(('effective_date', '>=', start))
+            domain.append(('effective_date', '<', start))
+            domain.append(
+                ('from_location.type', 'in', ['supplier', 'production']))
+            prev_moves = Move.search(
+                domain,
+                order=[('effective_date', 'DESC'), ('id', 'DESC')],
+                limit=1)
+            if prev_moves:
+                move, = prev_moves
+                cost_price = move.cost_price
+                quantity = self._get_storage_quantity(
+                    date=start - datetime.timedelta(days=1))
+                quantity = Decimal(str(quantity))
+
+        current_moves = []
+        current_cost_price = cost_price
         for move in moves:
+            if (current_moves
+                    and current_moves[-1].effective_date
+                    != move.effective_date):
+                Move.write([
+                        m for m in current_moves
+                        if m.cost_price != current_cost_price],
+                    dict(cost_price=current_cost_price))
+                current_moves.clear()
+            current_moves.append(move)
+
             qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
             if move.from_location.type == 'storage':
@@ -280,16 +355,23 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                     unit_price = Currency.compute(
                         move.currency, move.unit_price,
                         move.company.currency, round=False)
-                unit_price = Uom.compute_price(move.uom, unit_price,
-                    self.default_uom)
+                unit_price = Uom.compute_price(
+                    move.uom, unit_price, self.default_uom)
                 if quantity + qty > 0 and quantity >= 0:
                     cost_price = (
                         (cost_price * quantity) + (unit_price * qty)
                         ) / (quantity + qty)
                 elif qty > 0:
                     cost_price = unit_price
+                current_cost_price = cost_price.quantize(
+                    Decimal(str(10.0 ** -digits[1])))
             quantity += qty
-        return cost_price
+
+        Move.write([
+                m for m in current_moves
+                if m.cost_price != current_cost_price],
+            dict(cost_price=current_cost_price))
+        return current_cost_price
 
 
 class ProductByLocationContext(ModelView):
@@ -530,8 +612,39 @@ class OpenProductQuantitiesByWarehouse(Wizard):
 class RecomputeCostPrice(Wizard):
     'Recompute Cost Price'
     __name__ = 'product.recompute_cost_price'
-    start_state = 'recompute'
+    start = StateView(
+        'product.recompute_cost_price.start',
+        'stock.recompute_cost_price_start_view_form', [
+            Button("Cancel", 'end'),
+            Button("Recompute", 'recompute', default=True)])
     recompute = StateTransition()
+
+    def default_start(self, fields):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        context = Transaction().context
+
+        if context['active_model'] == 'product.product':
+            products = Product.browse(context['active_ids'])
+        elif context['active_model'] == 'product.template':
+            templates = Template.browse(context['active_ids'])
+            products = sum((t.products for t in templates), ())
+
+        from_ = None
+        for sub_products in grouped_slice(products):
+            moves = Move.search([
+                    ('unit_price_updated', '=', True),
+                    Product._domain_moves_cost(),
+                    ('product', 'in', [p.id for p in sub_products]),
+                    ],
+                order=[('effective_date', 'ASC')],
+                limit=1)
+            if moves:
+                move, = moves
+                from_ = min(from_ or datetime.date.max, move.effective_date)
+        return {'from_': from_}
 
     def transition_recompute(self):
         pool = Pool()
@@ -542,8 +655,14 @@ class RecomputeCostPrice(Wizard):
 
         if context['active_model'] == 'product.product':
             products = Product.browse(context['active_ids'])
-            Product.recompute_cost_price(products)
+            Product.recompute_cost_price(products, start=self.start.from_)
         elif context['active_model'] == 'product.template':
             templates = Template.browse(context['active_ids'])
-            Template.recompute_cost_price(templates)
+            Template.recompute_cost_price(templates, start=self.start.from_)
         return 'end'
+
+
+class RecomputeCostPriceStart(ModelView):
+    "Recompute Cost Price"
+    __name__ = 'product.recompute_cost_price.start'
+    from_ = fields.Date("From")

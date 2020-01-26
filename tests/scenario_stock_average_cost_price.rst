@@ -153,6 +153,7 @@ Change Cost Price to 125, to force to write recomputed price later::
 Recompute Cost Price::
 
     >>> recompute = Wizard('product.recompute_cost_price', [product])
+    >>> recompute.execute('recompute')
     >>> product.cost_price
     Decimal('175.0000')
 
@@ -250,5 +251,6 @@ Change Cost Price to 5, to force to write recomputed price later::
 Recompute Cost Price::
 
     >>> recompute = Wizard('product.recompute_cost_price', [negative_product])
+    >>> recompute.execute('recompute')
     >>> negative_product.cost_price
     Decimal('2.0000')

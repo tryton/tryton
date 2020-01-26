@@ -32,6 +32,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="product.group_product_admin"/>
         </record>
 
+        <record model="ir.ui.view" id="recompute_cost_price_start_view_form">
+            <field name="model">product.recompute_cost_price.start</field>
+            <field name="type">form</field>
+            <field name="name">recompute_cost_price_start_form</field>
+        </record>
+
+        <record model="ir.cron" id="cron_recompute_cost_price_from_moves">
+            <field name="method">product.product|recompute_cost_price_from_moves</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
+
         <record model="ir.ui.view" id="location_quantity_view_tree">
             <field name="model">stock.location</field>
             <field name="type">tree</field>
@@ -197,6 +209,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_product_quantities_warehouse"/>
             <field name="group" ref="group_stock"/>
         </record>
-
     </data>
 </tryton>

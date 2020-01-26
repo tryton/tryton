@@ -109,6 +109,8 @@ A move can be in one of this states:
   A phantom state used to create in advance move that should not be taken for
   stock computation.
 
+A cron task runs every day and recomputes the cost price of moves if a past
+unit price has changed.
 
 Product Quantities
 ------------------
