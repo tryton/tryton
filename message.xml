@@ -4,10 +4,17 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <record model="ir.message" id="msg_product_change_default_uom">
-            <field name="text">You cannot change the default UOM of a product which is associated to stock moves.</field>
+            <field name="text">You cannot change the default UOM of a product which is associated with stock moves.</field>
         </record>
         <record model="ir.message" id="msg_product_change_type">
-            <field name="text">You cannot change the type of a product which is associated to stock moves.</field>
+            <field name="text">You cannot change the type of a product which is associated with stock moves.</field>
+        </record>
+        <record model="ir.message" id="msg_product_change_cost_price">
+            <field name="text">You cannot change the cost price of a product which is associated with stock moves.
+You must use the "Modify Cost Price" wizard.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_cost_price">
+            <field name="text">Invalid cost price "%(cost_price)s" for product "%(product)s" with exception "%(exception)s".</field>
         </record>
         <record model="ir.message" id="msg_location_invalid_type_for_moves">
             <field name="text">You cannot change the type of location "%(location)s" to "%(type)s"

@@ -280,3 +280,18 @@ quantities and real ones.
     cost price method than `fixed` is used.
     Individual moves from supplier to each locations must be used with the cost
     price as unit price.
+
+Product
+*******
+
+The cost price of a product can only be modified using the "Modify Cost Price"
+wizard once it is associated with stock moves. The wizard stores, for each
+template or product the cost price revision. This revision contains a formula
+that compute the new cost price based on the current one. E.g.  `cost_price *
+0.9` to reduce the cost price by 10%.
+The cost price revisions are applied at the beginning of the stored date when
+the cost price of a product is re-computed.
+
+.. warning::
+    If the user modifies a revision manually, they must also run the "Recompute
+    Cost Price" wizard.

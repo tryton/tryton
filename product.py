@@ -5,6 +5,8 @@ import functools
 from decimal import Decimal
 from collections import defaultdict
 
+from simpleeval import simple_eval
+
 from sql import Literal, Null, Select
 from sql.aggregate import Max
 from sql.functions import CurrentTimestamp
@@ -15,11 +17,13 @@ from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.wizard import (
     Wizard, StateTransition, StateAction, StateView, Button)
-from trytond.pyson import Eval, Or, PYSONEncoder
+from trytond.pyson import Eval, If, Bool, PYSONEncoder
+from trytond.tools import decistmt
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
+from .exceptions import ProductCostPriceError
 from .move import StockMixin
 
 
@@ -82,14 +86,11 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Template, cls).__setup__()
-        cls.cost_price.states['required'] = Or(
-            cls.cost_price.states.get('required', True),
-            Eval('type').in_(['goods', 'assets']))
-        cls.cost_price.depends.append('type')
+        super().__setup__()
         cls._modify_no_move = [
             ('default_uom', 'stock.msg_product_change_default_uom'),
             ('type', 'stock.msg_product_change_type'),
+            ('cost_price', 'stock.msg_product_change_cost_price'),
             ]
 
     @classmethod
@@ -249,15 +250,17 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         if updated:
             Move.write(updated, {'unit_price_updated': False})
 
-        if not costs:
-            return
+        if costs:
+            cls.update_cost_price(costs)
 
+    @classmethod
+    def update_cost_price(cls, costs):
+        "Update cost price of products from costs re-computation dictionary"
         to_write = []
-        for cost, records in costs.items():
-            to_write.append(records)
+        for cost, products in costs.items():
+            to_write.append(products)
             to_write.append({'cost_price': cost})
 
-        # Enforce check access for account_stock*
         with Transaction().set_context(_check_access=False):
             cls.write(*to_write)
 
@@ -294,6 +297,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         Move = pool.get('stock.move')
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
+        Revision = pool.get('product.cost_price.revision')
         digits = self.__class__.cost_price.digits
 
         domain = [
@@ -313,6 +317,8 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             domain.append(('effective_date', '>=', start))
         moves = Move.search(
                 domain, order=[('effective_date', 'ASC'), ('id', 'ASC')])
+
+        revisions = Revision.get_for_product(self)
 
         cost_price = Decimal(0)
         quantity = 0
@@ -345,6 +351,8 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                 current_moves.clear()
             current_moves.append(move)
 
+            cost_price = Revision.apply_up_to(
+                revisions, cost_price, move.effective_date)
             qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
             if move.from_location.type == 'storage':
@@ -371,7 +379,10 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                 m for m in current_moves
                 if m.cost_price != current_cost_price],
             dict(cost_price=current_cost_price))
-        return current_cost_price
+
+        for revision in revisions:
+            cost_price = revision.get_cost_price(cost_price)
+        return cost_price
 
 
 class ProductByLocationContext(ModelView):
@@ -666,3 +677,185 @@ class RecomputeCostPriceStart(ModelView):
     "Recompute Cost Price"
     __name__ = 'product.recompute_cost_price.start'
     from_ = fields.Date("From")
+
+
+class ModifyCostPrice(Wizard):
+    "Modify Cost Price"
+    __name__ = 'product.modify_cost_price'
+    start = StateView(
+        'product.modify_cost_price.start',
+        'stock.product_modify_cost_price_start_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("OK", 'modify', default=True),
+            ])
+    modify = StateTransition()
+
+    def transition_modify(self):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        Revision = pool.get('product.cost_price.revision')
+        Date = pool.get('ir.date')
+        context = Transaction().context
+        today = Date.today()
+        revisions = []
+        costs = defaultdict(list)
+        if context['active_model'] == 'product.product':
+            recompute_cost_price = Product.recompute_cost_price
+            products = records = Product.browse(context['active_ids'])
+            for product in products:
+                revision = self.get_revision(Revision)
+                revision.product = product
+                revision.template = product.template
+                revisions.append(revision)
+                if ((product.cost_price_method == 'fixed'
+                            and revision.date == today)
+                        or product.type == 'service'):
+                    cost = revision.get_cost_price(product.cost_price)
+                    costs[cost].append(product)
+                    records.remove(product)
+            Revision.save(revisions)
+            Product.recompute_cost_price(products)  # TODO start
+        elif context['active_model'] == 'product.template':
+            recompute_cost_price = Template.recompute_cost_price
+            templates = records = Template.browse(context['active_ids'])
+            for template in templates:
+                revision = self.get_revision(Revision)
+                revision.template = template
+                revisions.append(revision)
+                if ((template.cost_price_method == 'fixed'
+                            and revision.date == today)
+                        or product.type == 'service'):
+                    for product in template.products:
+                        cost = revision.get_cost_price(product.cost_price)
+                        costs[cost].append(product)
+                    records.remove(template)
+        Revision.save(revisions)
+        if costs:
+            Product.update_cost_price(costs)
+        if records:
+            recompute_cost_price(records)  # TODO start
+        return 'end'
+
+    def get_revision(self, Revision):
+        return Revision(
+            company=Transaction().context.get('company'),
+            date=self.start.date,
+            cost_price=self.start.cost_price,
+            )
+
+
+class ModifyCostPriceStart(ModelView):
+    "Modify Cost Price"
+    __name__ = 'product.modify_cost_price.start'
+    date = fields.Date("Date", required=True)
+    cost_price = fields.Char(
+        "New Cost Price", required=True,
+        help="Python expression that will be evaluated with:\n"
+        "- cost_price: the current cost price of the product")
+
+    @classmethod
+    def default_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+    @classmethod
+    def default_cost_price(cls):
+        return 'cost_price'
+
+
+class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
+    "Product Cost Price Revision"
+    __name__ = 'product.cost_price.revision'
+    template = fields.Many2One(
+        'product.template', "Product",
+        ondelete='CASCADE', select=True, required=True,
+        domain=[
+            If(Bool(Eval('product')),
+                ('products', '=', Eval('product')),
+                ()),
+            ],
+        depends=['product'])
+    product = fields.Many2One(
+        'product.product', "Variant",
+        ondelete='CASCADE', select=True,
+        domain=[
+            If(Bool(Eval('template')),
+                ('template', '=', Eval('template')),
+                ()),
+            ],
+        depends=['template'])
+    company = fields.Many2One(
+        'company.company', "Company", ondelete='CASCADE', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('date', 'DESC'))
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @fields.depends('product', '_parent_product.template')
+    def on_change_product(self):
+        if self.product:
+            self.template = self.product.template
+
+    @classmethod
+    def validate(cls, revisions):
+        super().validate(revisions)
+        for revision in revisions:
+            revision.check_cost_price()
+
+    def check_cost_price(self):
+        try:
+            if not isinstance(self.get_cost_price(Decimal(0)), Decimal):
+                raise ValueError
+        except Exception as exception:
+            raise ProductCostPriceError(
+                'stock.msg_invalid_cost_price',
+                cost_price=self.cost_price,
+                product=self.product.rec_name,
+                exception=exception) from exception
+
+    def get_cost_price(self, cost_price, **context):
+        context.setdefault('names', {})['cost_price'] = cost_price
+        context.setdefault('functions', {})['Decimal'] = Decimal
+        return simple_eval(decistmt(self.cost_price), **context)
+
+    @classmethod
+    def _get_for_product_domain(cls):
+        context = Transaction().context
+        return [
+            ('company', '=', context.get('company')),
+            ]
+
+    @classmethod
+    def get_for_product(cls, product):
+        revisions = cls.search(['OR',
+                ('product', '=', product.id),
+                [
+                    ('template', '=', product.template.id),
+                    ('product', '=', None),
+                    ],
+                ],
+            order=[('date', 'ASC'), ('id', 'ASC')])
+        return revisions
+
+    @classmethod
+    def apply_up_to(cls, revisions, cost_price, date):
+        """Apply revision to cost price up to date
+        revisions list is modified"""
+        try:
+            while True:
+                revision = revisions.pop(0)
+                if revision.date <= date:
+                    cost_price = revision.get_cost_price(cost_price)
+                else:
+                    revisions.insert(0, revision)
+                    break
+        except IndexError:
+            pass
+        return cost_price

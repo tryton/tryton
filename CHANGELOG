@@ -1,3 +1,5 @@
+* Add cost price revision
+* Add wizard to modify product cost price
 * Add cron task to recompute product cost
 * Update cost of moves when recomputing product cost
 

@@ -143,19 +143,14 @@ Check Cost Price Average is 175::
     >>> product.cost_price
     Decimal('175.0000')
 
-Change Cost Price to 125, to force to write recomputed price later::
+Reduce Cost Price by 80%, to force to write recomputed price later::
 
-    >>> product.cost_price = Decimal('125.0000')
-    >>> product.save()
+    >>> modify_cost_price = Wizard('product.modify_cost_price', [product])
+    >>> modify_cost_price.form.cost_price = 'cost_price * 0.8'
+    >>> modify_cost_price.form.date = today + datetime.timedelta(days=1)
+    >>> modify_cost_price.execute('modify')
     >>> product.cost_price
-    Decimal('125.0000')
-
-Recompute Cost Price::
-
-    >>> recompute = Wizard('product.recompute_cost_price', [product])
-    >>> recompute.execute('recompute')
-    >>> product.cost_price
-    Decimal('175.0000')
+    Decimal('140.0000')
 
 Send one product we don't have in stock::
 
@@ -240,13 +235,6 @@ Cost price should be set to last unit price::
     >>> negative_product.reload()
     >>> negative_product.cost_price
     Decimal('2.0000')
-
-Change Cost Price to 5, to force to write recomputed price later::
-
-    >>> negative_product.cost_price = Decimal('5.0000')
-    >>> negative_product.save()
-    >>> negative_product.cost_price
-    Decimal('5.0000')
 
 Recompute Cost Price::
 

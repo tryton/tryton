@@ -26,3 +26,7 @@ class InventoryCountWarning(UserWarning):
 
 class MoveOriginWarning(UserWarning):
     pass
+
+
+class ProductCostPriceError(ValidationError):
+    pass
