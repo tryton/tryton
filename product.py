@@ -3,19 +3,14 @@
 from decimal import Decimal
 
 from trytond import backend
-from trytond.model import ModelView, fields
-from trytond.wizard import Wizard, StateView, StateTransition, Button
+from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_product.product import (
     account_used, template_property)
-from trytond.modules.product import price_digits
 
-__all__ = ['Category', 'CategoryAccount', 'Template',
-    'Product', 'ModifyCostPriceAsk',
-    'ModifyCostPriceShowMove', 'ModifyCostPrice']
 account_names = [
     'account_stock', 'account_stock_in', 'account_stock_out']
 
@@ -181,161 +176,62 @@ class Product(metaclass=PoolMeta):
     account_stock_in_used = template_property('account_stock_in_used')
     account_stock_out_used = template_property('account_stock_out_used')
 
-
-class ModifyCostPriceAsk(ModelView):
-    'Modify Cost Price Ask'
-    __name__ = 'product.modify_cost_price.ask'
-    template = fields.Many2One('product.template', 'Product', readonly=True,
-        states={
-            'invisible': ~Eval('template'),
-            })
-    product = fields.Many2One('product.product', 'Variant', readonly=True,
-        states={
-            'invisible': ~Eval('product'),
-            })
-    cost_price = fields.Numeric('Cost Price', required=True,
-        digits=price_digits)
-
-
-class ModifyCostPriceShowMove(ModelView):
-    'Modify Cost Price Show Move'
-    __name__ = 'product.modify_cost_price.show_move'
-    price_difference = fields.Numeric('Price Difference', readonly=True,
-        digits=price_digits)
-    amount = fields.Numeric('Amount', readonly=True,
-        digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
-    currency_digits = fields.Integer('Currency Digits', readonly=True)
-    description = fields.Char('Description')
-
-
-class ModifyCostPrice(Wizard):
-    'Modify Cost Price'
-    __name__ = 'product.modify_cost_price'
-    start_state = 'ask_price'
-    ask_price = StateView('product.modify_cost_price.ask',
-        'account_stock_continental.modify_cost_price_ask_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('OK', 'should_show_move', 'tryton-forward', default=True),
-            ])
-    should_show_move = StateTransition()
-    show_move = StateView('product.modify_cost_price.show_move',
-        'account_stock_continental.modify_cost_price_show_move_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('OK', 'create_move', 'tryton-ok', default=True),
-            ])
-    create_move = StateTransition()
-    modify_price = StateTransition()
-
     @classmethod
-    def get_product(cls):
-        'Return the product instance'
-        pool = Pool()
-        Product = pool.get('product.product')
-        context = Transaction().context
-        return Product(context['active_id'])
-
-    def default_ask_price(self, fields):
-        default = {}
-        product = self.get_product()
-        default['product'] = product.id
-        default['cost_price'] = getattr(
-            product, 'recompute_cost_price_%s' % product.cost_price_method)()
-        return default
-
-    @classmethod
-    def get_quantity(cls):
+    def update_cost_price(cls, costs):
         pool = Pool()
         Date = pool.get('ir.date')
         Stock = pool.get('stock.location')
+        Company = pool.get('company.company')
+        Move = pool.get('account.move')
 
+        context = Transaction().context
         locations = Stock.search([('type', '=', 'storage')])
         stock_date_end = Date.today()
+        company = Company(context['company'])
+        moves = []
         with Transaction().set_context(locations=[l.id for l in locations],
                 stock_date_end=stock_date_end):
-            product = cls.get_product()
-            return product.quantity
+            for cost, products in costs.items():
+                products = cls.browse(products)
+                for product in products:
+                    difference = cost - product.cost_price
+                    quantity = product.quantity
+                    amount = company.currency.round(
+                        Decimal(str(quantity)) * difference)
+                    if amount:
+                        moves.append(product._update_cost_price_move(
+                                amount, company))
+        Move.save(moves)
+        Move.post(moves)
+        super().update_cost_price(costs)
 
-    @property
-    def company(self):
+    def _update_cost_price_move(self, amount, company):
         pool = Pool()
-        User = pool.get('res.user')
-        user = User(Transaction().user)
-        return user.company
-
-    @property
-    def difference_price(self):
-        product = self.get_product()
-        return self.ask_price.cost_price - product.cost_price
-
-    def get_amount(self):
-        return self.company.currency.round(
-            Decimal(str(self.get_quantity())) * self.difference_price)
-
-    def transition_should_show_move(self):
-        if self.get_quantity() != 0:
-            return 'show_move'
-        return 'modify_price'
-
-    def default_show_move(self, fields):
-        return {
-            'amount': self.get_amount(),
-            'price_difference': self.difference_price,
-            'currency_digits': self.company.currency.digits,
-            }
-
-    def get_move_lines(self):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        product = self.get_product()
-        amount = self.get_amount()
-        if amount > 0:
-            account = product.account_stock_in_used
-        else:
-            account = product.account_stock_out_used
-        return [Line(
-                debit=amount if amount > 0 else 0,
-                credit=-amount if amount < 0 else 0,
-                account=product.account_stock_used,
-                ),
-            Line(
-                debit=-amount if amount < 0 else 0,
-                credit=amount if amount > 0 else 0,
-                account=account,
-                ),
-            ]
-
-    def get_move(self):
-        pool = Pool()
+        AccountConfiguration = pool.get('account.configuration')
         Date = pool.get('ir.date')
         Period = pool.get('account.period')
-        User = pool.get('res.user')
         Move = pool.get('account.move')
-        AccountConfiguration = pool.get('account.configuration')
+        Line = pool.get('account.move.line')
 
         config = AccountConfiguration(1)
-        user = User(Transaction().user)
-        period_id = Period.find(user.company.id)
+        if amount > 0:
+            account = self.account_stock_in_used
+        else:
+            account = self.account_stock_out_used
         return Move(
-            description=self.show_move.description,
-            period=period_id,
+            period=Period.find(company.id),
             journal=config.stock_journal,
             date=Date.today(),
-            origin=self.get_product(),
-            lines=self.get_move_lines(),
+            origin=self,
+            lines=[Line(
+                    debit=amount if amount > 0 else 0,
+                    credit=-amount if amount < 0 else 0,
+                    account=self.account_stock_used,
+                    ),
+                Line(
+                    debit=-amount if amount < 0 else 0,
+                    credit=amount if amount > 0 else 0,
+                    account=account,
+                    ),
+                ],
             )
-
-    def transition_create_move(self):
-        Move = Pool().get('account.move')
-        move = self.get_move()
-        move.save()
-        Move.post([move])
-        return 'modify_price'
-
-    def transition_modify_price(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-        with Transaction().set_context(_check_access=False):
-            Product.write([self.get_product()], {
-                    'cost_price': self.ask_price.cost_price,
-                    })
-        return 'end'

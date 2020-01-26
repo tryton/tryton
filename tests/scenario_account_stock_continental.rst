@@ -376,10 +376,8 @@ Modify cost price::
 
     >>> Account = Model.get('account.account')
     >>> modify_price = Wizard('product.modify_cost_price', [product])
-    >>> modify_price.form.cost_price = Decimal('3.00')
-    >>> modify_price.execute('should_show_move')
-    >>> modify_price.form.description = 'Change product cost price.'
-    >>> modify_price.execute('create_move')
+    >>> modify_price.form.cost_price = '3.00'
+    >>> modify_price.execute('modify')
     >>> product.cost_price
     Decimal('3.00')
     >>> stock_out.reload()

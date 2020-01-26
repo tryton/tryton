@@ -18,9 +18,4 @@ def register():
         account.ConfigurationStockJournal,
         account.FiscalYear,
         account.AccountMove,
-        product.ModifyCostPriceAsk,
-        product.ModifyCostPriceShowMove,
         module='account_stock_continental', type_='model')
-    Pool.register(
-        product.ModifyCostPrice,
-        module='account_stock_continental', type_='wizard')
