@@ -60,3 +60,6 @@ The production can be in one of this states:
 The cost of the production is computed with the sum of the cost price of all
 incoming products. This cost is allocated to the output products based on the
 list price of each (the product without a list price are considered as waste).
+
+A cron task runs every day and updates the cost of productions if the cost
+price of the incoming products has changed.

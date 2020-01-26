@@ -305,5 +305,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">assign_failed_form</field>
         </record>
 
+        <record model="ir.cron" id="cron_set_cost_from_moves">
+            <field name="method">production|set_cost_from_moves</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
     </data>
 </tryton>

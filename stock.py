@@ -32,6 +32,12 @@ class Move(metaclass=PoolMeta):
         readonly=True, select=True, ondelete='CASCADE',
         domain=[('company', '=', Eval('company'))],
         depends=['company'])
+    production_cost_price_updated = fields.Boolean(
+        "Cost Price Updated", readonly=True,
+        states={
+            'invisible': ~Eval('production_input') & (Eval('state') == 'done'),
+            },
+        depends=['production_input', 'state'])
 
     def set_effective_date(self):
         if not self.effective_date and self.production_input:
@@ -39,3 +45,18 @@ class Move(metaclass=PoolMeta):
         if not self.effective_date and self.production_output:
             self.effective_date = self.production_output.effective_date
         super(Move, self).set_effective_date()
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cost_price_update = []
+        actions = iter(args)
+        for moves, values in zip(actions, actions):
+            for move in moves:
+                if (move.state == 'done'
+                        and move.production_input
+                        and 'cost_price' in values):
+                    cost_price_update.append(move)
+        if cost_price_update:
+            cls.write(
+                cost_price_update, {'production_cost_price_updated': True})

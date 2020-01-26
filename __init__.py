@@ -7,6 +7,7 @@ from .bom import *
 from .product import *
 from .production import *
 from .stock import *
+from . import ir
 
 
 def register():
@@ -27,6 +28,7 @@ def register():
         ProductionLeadTime,
         Location,
         Move,
+        ir.Cron,
         module='production', type_='model')
     Pool.register(
         Assign,

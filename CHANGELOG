@@ -1,3 +1,4 @@
+* Add cron task to update production cost
 * Allocate cost based on list price of each product
 
 Version 5.4.0 - 2019-11-04

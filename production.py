@@ -447,6 +447,22 @@ class Production(Workflow, ModelSQL, ModelView):
             }
 
     @classmethod
+    def set_cost_from_moves(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        productions = set()
+        moves = Move.search([
+                ('production_cost_price_updated', '=', True),
+                ('production_input', '!=', None),
+                ],
+            order=[('effective_date', 'ASC')])
+        for move in moves:
+            if move.production_input not in productions:
+                cls.__queue__.set_cost([move.production_input])
+                productions.add(move.production_input)
+        Move.write(moves, {'production_cost_price_updated': False})
+
+    @classmethod
     def set_cost(cls, productions):
         pool = Pool()
         Uom = pool.get('product.uom')
