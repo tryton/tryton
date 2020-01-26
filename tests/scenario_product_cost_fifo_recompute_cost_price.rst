@@ -110,7 +110,7 @@ Recompute cost price::
 
     >>> product.reload()
     >>> product.cost_price
-    Decimal('99.9999')
+    Decimal('99.9998')
 
 Recompute cost price from a date::
 
@@ -123,4 +123,4 @@ Recompute cost price from a date::
 
     >>> product.reload()
     >>> product.cost_price
-    Decimal('99.9999')
+    Decimal('99.9998')

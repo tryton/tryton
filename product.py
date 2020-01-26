@@ -95,6 +95,7 @@ class Product(metaclass=PoolMeta):
         Move = pool.get('stock.move')
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
+        Revision = pool.get('product.cost_price.revision')
         digits = self.__class__.cost_price.digits
 
         domain = [
@@ -115,6 +116,8 @@ class Product(metaclass=PoolMeta):
             domain.append(('effective_date', '>=', start))
         moves = Move.search(
                 domain, order=[('effective_date', 'ASC'), ('id', 'ASC')])
+
+        revisions = Revision.get_for_product(self)
 
         cost_price = Decimal(0)
         quantity = 0
@@ -197,6 +200,8 @@ class Product(metaclass=PoolMeta):
                 current_out_qty = 0
             current_moves.append(move)
 
+            cost_price = Revision.apply_up_to(
+                revisions, cost_price, move.effective_date)
             qty = Uom.compute_qty(move.uom, move.quantity, self.default_uom)
             qty = Decimal(str(qty))
             if move.from_location.type == 'storage':
@@ -237,12 +242,11 @@ class Product(metaclass=PoolMeta):
                 dict(cost_price=fifo_cost_price))
             if quantity:
                 cost_price = (
-                    ((current_cost_price * (
-                                quantity + current_out_qty))
+                    ((cost_price * (quantity + current_out_qty))
                         - (fifo_cost_price * current_out_qty))
                     / quantity)
             else:
                 cost_price = Decimal(0)
-            current_cost_price = cost_price.quantize(
-                Decimal(str(10.0 ** -digits[1])))
-        return current_cost_price
+        for revision in revisions:
+            cost_price = revision.get_cost_price(cost_price)
+        return cost_price
