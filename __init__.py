@@ -9,6 +9,7 @@ __all__ = ['register']
 
 def register():
     Pool.register(
-        product.ProductCostPrice,
+        product.Product,
+        product.CostPrice,
         product.ProductCostHistory,
         module='product_cost_history', type_='model')

@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="product"/>
-    <field name="date" widget="date"/>
-    <field name="date" widget="time" string="Time"/>
+    <field name="date"/>
     <field name="cost_price"/>
 </tree>
