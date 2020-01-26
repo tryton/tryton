@@ -714,8 +714,6 @@ class ModifyCostPrice(Wizard):
                     cost = revision.get_cost_price(product.cost_price)
                     costs[cost].append(product)
                     records.remove(product)
-            Revision.save(revisions)
-            Product.recompute_cost_price(products)  # TODO start
         elif context['active_model'] == 'product.template':
             recompute_cost_price = Template.recompute_cost_price
             templates = records = Template.browse(context['active_ids'])
@@ -734,7 +732,8 @@ class ModifyCostPrice(Wizard):
         if costs:
             Product.update_cost_price(costs)
         if records:
-            recompute_cost_price(records)  # TODO start
+            start = min((r.date for r in revisions), default=None)
+            recompute_cost_price(records, start=start)
         return 'end'
 
     def get_revision(self, Revision):
