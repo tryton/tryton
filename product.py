@@ -815,10 +815,10 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
                 raise ValueError
         except Exception as exception:
             raise ProductCostPriceError(
-                'stock.msg_invalid_cost_price',
-                cost_price=self.cost_price,
-                product=self.product.rec_name,
-                exception=exception) from exception
+                gettext('stock.msg_invalid_cost_price',
+                    cost_price=self.cost_price,
+                    product=self.product.rec_name,
+                    exception=exception)) from exception
 
     def get_cost_price(self, cost_price, **context):
         context.setdefault('names', {})['cost_price'] = cost_price
