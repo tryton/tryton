@@ -95,9 +95,9 @@ Check project duration::
 
 Do project and subproject::
 
-    >>> subproject.state = 'done'
+    >>> subproject.progress = 1
     >>> subproject.save()
-    >>> project.state = 'done'
+    >>> project.progress = 1
     >>> project.save()
 
 Check project duration::

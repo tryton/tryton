@@ -143,7 +143,7 @@ class Work(metaclass=PoolMeta):
     @staticmethod
     def _get_duration_to_invoice_effort(works):
         return dict((w.id, w.effort_duration) for w in works
-            if w.state == 'done' and not w.invoice_line and w.effort_duration)
+            if w.progress == 1 and not w.invoice_line and w.effort_duration)
 
     @staticmethod
     def _get_duration_to_invoice_progress(works):
@@ -485,7 +485,7 @@ class Work(metaclass=PoolMeta):
 
         if (not self.invoice_line
                 and self.effort_hours
-                and self.state == 'done'):
+                and self.progress == 1):
             if not self.product:
                 raise InvoicingError(
                     gettext('project_invoice.msg_missing_product',

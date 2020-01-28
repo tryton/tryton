@@ -159,12 +159,12 @@ Invoice project::
     >>> project.invoiced_amount
     Decimal('50.00')
 
-Do 75% of task and 100% of project::
+Do 75% of task and 80% of project::
 
     >>> set_user(project_user)
     >>> task.progress = 0.75
     >>> task.save()
-    >>> project.progress = 1.
+    >>> project.progress = 0.80
     >>> project.save()
 
 Check project duration::
@@ -172,7 +172,7 @@ Check project duration::
     >>> project.reload()
     >>> project.invoiced_duration == datetime.timedelta(0, 9000)
     True
-    >>> project.duration_to_invoice == datetime.timedelta(0, 8100)
+    >>> project.duration_to_invoice == datetime.timedelta(0, 7380)
     True
     >>> project.invoiced_amount
     Decimal('50.00')
@@ -181,9 +181,9 @@ Invoice again project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 17100)
+    >>> project.invoiced_duration == datetime.timedelta(0, 16380)
     True
     >>> project.duration_to_invoice
     datetime.timedelta(0)
     >>> project.invoiced_amount
-    Decimal('95.00')
+    Decimal('91.00')

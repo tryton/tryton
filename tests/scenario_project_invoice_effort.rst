@@ -137,7 +137,7 @@ Check project duration::
 
 Do 1 task::
 
-    >>> task.state = 'done'
+    >>> task.progress = 1
     >>> task.save()
 
 Check project duration::
@@ -164,9 +164,9 @@ Invoice project::
 Do project::
 
     >>> set_user(project_user)
-    >>> task_no_effort.state = 'done'
+    >>> task_no_effort.progress = 1
     >>> task_no_effort.save()
-    >>> project.state = 'done'
+    >>> project.progress = 1
     >>> project.save()
 
 Check project duration::
