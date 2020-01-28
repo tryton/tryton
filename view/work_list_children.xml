@@ -6,5 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="timesheet_duration"/>
     <field name="total_effort"/>
     <field name="type"/>
-    <field name="state"/>
+    <field name="status"/>
 </tree>

@@ -6,3 +6,7 @@ from trytond.model.exceptions import ValidationError
 
 class WorkValidationError(ValidationError):
     pass
+
+
+class WorkProgressValidationError(WorkValidationError):
+    pass

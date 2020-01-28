@@ -5,16 +5,115 @@ import datetime
 
 from sql import Null
 
+from trytond.cache import Cache
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields, sequence_ordered, tree
-from trytond.pyson import Eval
+from trytond.model import (
+    ModelView, ModelSQL, fields, sequence_ordered, tree, DeactivableMixin)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.pyson import Eval, PYSONEncoder
 from trytond.tools import reduce_ids, grouped_slice
 
-from .exceptions import WorkValidationError
+from .exceptions import WorkProgressValidationError
 
-__all__ = ['Work']
+
+class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
+    'Work Status'
+    __name__ = 'project.work.status'
+
+    _get_default_status_cache = Cache('project_work_status.get_default_status')
+    _get_window_domains_cache = Cache('project_work_status.get_window_domains')
+
+    types = fields.MultiSelection(
+        'get_types', "Types",
+        help="The type of works which can use this status.")
+    name = fields.Char("Name", required=True, translate=True)
+    progress = fields.Float(
+        "Progress",
+        domain=['OR',
+            ('progress', '=', None),
+            [
+                ('progress', '>=', 0),
+                ('progress', '<=', 1),
+                ],
+            ],
+        help="The minimum progress required for this status.")
+    default = fields.Boolean(
+        "Default",
+        help="Check to use as default status for the type.")
+    count = fields.Boolean(
+        "Count",
+        help="Check to show the number of works in this status.")
+
+    @classmethod
+    def get_types(cls):
+        pool = Pool()
+        Work = pool.get('project.work')
+        return Work.fields_get(['type'])['type']['selection']
+
+    @classmethod
+    def get_default_status(cls, type_=None):
+        if type_ is None:
+            return None
+        status = cls._get_default_status_cache.get(type_, -1)
+        if status != -1:
+            return status
+        records = cls.search([
+                ('types', 'in', type_),
+                ('default', '=', True)
+                ], limit=1)
+        if records:
+            status = records[0].id
+        else:
+            status = None
+        cls._get_default_status_cache.set(type, status)
+        return status
+
+    @classmethod
+    def create(cls, vlist):
+        cls._get_default_status_cache.clear()
+        cls._get_window_domains_cache.clear()
+        return super().create(vlist)
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._get_default_status_cache.clear()
+        cls._get_window_domains_cache.clear()
+
+    @classmethod
+    def delete(cls, status):
+        cls._get_default_status_cache.clear()
+        cls._get_window_domains_cache.clear()
+        super().delete(status)
+
+    @classmethod
+    def get_window_domains(cls, action):
+        pool = Pool()
+        Data = pool.get('ir.model.data')
+        if action.id == Data.get_id('project', 'act_project_tree'):
+            return cls._get_window_domains([x[0] for x in cls.get_types()])
+        elif action.id == Data.get_id('project', 'act_project_form'):
+            return cls._get_window_domains(['project'])
+        elif action.id == Data.get_id('project', 'act_task_form'):
+            return cls._get_window_domains(['task'])
+
+    @classmethod
+    def _get_window_domains(cls, types):
+        key = tuple(sorted(types))
+        domains = cls._get_window_domains_cache.get(key)
+        if domains is not None:
+            return domains
+        encoder = PYSONEncoder()
+        domains = []
+        for status in cls.search([('types', 'in', types)]):
+            domain = encoder.encode([('status', '=', status.id)])
+            domains.append((status.name, domain, status.count))
+        if domains:
+            domains.append(
+                (gettext('project.msg_domain_all'), '[]', False))
+        cls._get_window_domains_cache.set(key, domains)
+        return domains
 
 
 class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
@@ -94,10 +193,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
-    state = fields.Selection([
-            ('opened', 'Opened'),
-            ('done', 'Done'),
-            ], 'State', required=True, select=True)
+    status = fields.Many2One(
+        'project.work.status', "Status", required=True, select=True,
+        domain=[('types', 'in', Eval('type'))], depends=['type'])
 
     @staticmethod
     def default_type():
@@ -107,9 +205,11 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def default_company(cls):
         return Transaction().context.get('company')
 
-    @staticmethod
-    def default_state():
-        return 'opened'
+    @classmethod
+    def default_status(cls):
+        pool = Pool()
+        WorkStatus = pool.get('project.work.status')
+        return WorkStatus.get_default_status(cls.default_type())
 
     @classmethod
     def default_left(cls):
@@ -198,6 +298,25 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                         where=timesheet.id == work_id))
             table_project_work.drop_column('work')
 
+        # Migration from 5.4: replace state by status
+        table_project_work.not_null_action('state', action='remove')
+
+    @fields.depends('type', 'status')
+    def on_change_type(self):
+        pool = Pool()
+        WorkState = pool.get('project.work.status')
+        if (self.type
+                and (not self.status
+                    or self.type not in self.status.types)):
+            self.status = WorkState.get_default_status(self.type)
+
+    @fields.depends('status', 'progress')
+    def on_change_status(self):
+        if (self.status
+                and self.status.progress is not None
+                and self.status.progress > (self.progress or -1.0)):
+            self.progress = self.status.progress
+
     @classmethod
     def index_set_field(cls, name):
         index = super(Work, cls).index_set_field(name)
@@ -209,22 +328,33 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     def validate(cls, works):
         super(Work, cls).validate(works)
         for work in works:
-            work.check_state()
+            work.check_work_progress()
 
-    def check_state(self):
-        if (self.state == 'opened'
-                and (self.parent and self.parent.state == 'done')):
-            raise WorkValidationError(
-                gettext('project.msg_work_invalid_parent_state',
-                    child=self.rec_name,
+    def check_work_progress(self):
+        pool = Pool()
+        progress = -1 if self.progress is None else self.progress
+        if (self.status.progress is not None
+                and progress < self.status.progress):
+            Lang = pool.get('ir.lang')
+            lang = Lang.get()
+            raise WorkProgressValidationError(
+                gettext('project.msg_work_invalid_progress_status',
+                    work=self.rec_name,
+                    progress=lang.format('%.2f%%', self.status.progress * 100),
+                    status=self.status.rec_name))
+        if (self.status.progress == 1.0
+                and not all(c.progress == 1.0 for c in self.children)):
+            raise WorkProgressValidationError(
+                gettext('project.msg_work_children_progress',
+                    work=self.rec_name,
+                    status=self.status.rec_name))
+        if (self.parent
+                and self.parent.progress == 1.0
+                and not self.progress == 1.0):
+            raise WorkProgressValidationError(
+                gettext('project.msg_work_parent_progress',
+                    work=self.rec_name,
                     parent=self.parent.rec_name))
-        if self.state == 'done':
-            for child in self.children:
-                if child.state == 'opened':
-                    raise WorkValidationError(
-                        gettext('project.msg_work_invalid_children_state',
-                            parent=self.rec_name,
-                            child=child.rec_name))
 
     @property
     def effort_hours(self):

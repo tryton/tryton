@@ -4,5 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="rec_name" expand="1"/>
     <field name="type"/>
-    <field name="state"/>
+    <field name="status"/>
 </tree>

@@ -42,10 +42,10 @@ this repository contains the full copyright notices and license terms. -->
             <newline/>
             <separator name="comment" colspan="6"/>
             <field name="comment" colspan="6"/>
-            <group col="4" colspan="6" id="state_buttons">
-                <group col="2" colspan="2" id="state">
-                    <label name="state"/>
-                    <field name="state"/>
+            <group col="4" colspan="6" id="status_buttons">
+                <group col="2" colspan="2" id="status">
+                    <label name="status"/>
+                    <field name="status" widget="selection"/>
                 </group>
                 <group col="-1" colspan="2" id="buttons">
                 </group>
