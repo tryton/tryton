@@ -342,7 +342,7 @@ class Database(DatabaseInterface):
             db_filename = self.name + '.sqlite'
             path = os.path.join(config.get('database', 'path'), db_filename)
             if not os.path.isfile(path):
-                raise IOError('Database "%s" doesn\'t exist!' % db_filename)
+                raise IOError('Database "%s" doesn\'t exist!' % path)
         if self._conn is not None:
             return self
         self._conn = sqlite.connect(path,
