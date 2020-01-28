@@ -147,7 +147,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         assert mode in ['create', 'write', 'delete', 'time'], \
             'Invalid trigger mode'
 
-        if Transaction().user == 0 and not Transaction().context.get('user'):
+        if Transaction().context.get('_no_trigger'):
             return []
 
         key = (model_name, mode)

@@ -352,7 +352,8 @@ def load_modules(
         global res
         transaction = Transaction()
 
-        with transaction.connection.cursor() as cursor:
+        with transaction.set_context(_no_trigger=True), \
+                transaction.connection.cursor() as cursor:
             # Migration from 3.6: remove double module
             old_table = 'ir_module_module'
             new_table = 'ir_module'
