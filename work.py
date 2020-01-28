@@ -11,7 +11,7 @@ from trytond.model import (
     ModelView, ModelSQL, fields, sequence_ordered, tree, DeactivableMixin)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
-from trytond.pyson import Eval, PYSONEncoder
+from trytond.pyson import Eval, If, Bool, PYSONEncoder
 from trytond.tools import reduce_ids, grouped_slice
 
 from .exceptions import WorkProgressValidationError
@@ -195,7 +195,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         depends=['company'])
     status = fields.Many2One(
         'project.work.status', "Status", required=True, select=True,
-        domain=[('types', 'in', Eval('type'))], depends=['type'])
+        domain=[If(Bool(Eval('type')), ('types', 'in', Eval('type')), ())],
+        depends=['type'])
 
     @staticmethod
     def default_type():
