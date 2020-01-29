@@ -260,9 +260,11 @@ class Asset(Workflow, ModelSQL, ModelView):
     def default_state():
         return 'draft'
 
-    @staticmethod
-    def default_frequency():
-        return 'monthly'
+    @classmethod
+    def default_frequency(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        return Configuration(1).get_multivalue('asset_frequency', **pattern)
 
     @staticmethod
     def default_depreciation_method():

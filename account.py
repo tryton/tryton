@@ -29,6 +29,18 @@ asset_bymonth = fields.Selection([
         ('12', "December"),
         ], "Month", sort=False,
     help="The month to create the depreciation moves.")
+asset_frequency = fields.Selection('get_asset_frequencies',
+    "Asset Depreciation Frequency",
+    required=True, help="The default depreciation frequency for new assets.")
+
+
+def get_asset_selection(field_name):
+    @classmethod
+    def get_selection(cls):
+        pool = Pool()
+        Asset = pool.get('account.asset')
+        return Asset.fields_get([field_name])[field_name]['selection']
+    return get_selection
 
 
 class Configuration(metaclass=PoolMeta):
@@ -42,6 +54,9 @@ class Configuration(metaclass=PoolMeta):
                 ]))
     asset_bymonthday = fields.MultiValue(asset_bymonthday)
     asset_bymonth = fields.MultiValue(asset_bymonth)
+    asset_frequency = fields.MultiValue(asset_frequency)
+
+    get_asset_frequencies = get_asset_selection('frequency')
 
     @classmethod
     def multivalue_model(cls, field):
@@ -62,6 +77,11 @@ class Configuration(metaclass=PoolMeta):
     @classmethod
     def default_asset_bymonth(cls, **pattern):
         return cls.multivalue_model('asset_bymonth').default_asset_bymonth()
+
+    @classmethod
+    def default_asset_frequency(cls, **pattern):
+        return cls.multivalue_model(
+            'asset_frequency').default_asset_frequency()
 
 
 class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
@@ -116,6 +136,17 @@ class ConfigurationAssetDate(ModelSQL, CompanyValueMixin):
     @classmethod
     def default_asset_bymonth(cls):
         return "12"
+
+
+class ConfigurationAssetFrequency(ModelSQL, CompanyValueMixin):
+    "Account Configuration Asset Frequency"
+    __name__ = 'account.configuration.asset_frequency'
+    asset_frequency = asset_frequency
+    get_asset_frequencies = get_asset_selection('frequency')
+
+    @classmethod
+    def default_asset_frequency(cls):
+        return 'monthly'
 
 
 def AccountTypeMixin(template=False):
