@@ -12,6 +12,7 @@ from trytond.tests.test_tryton import doctest_checker
 class AccountTestCase(ModuleTestCase):
     'Test Account Es module'
     module = 'account_es'
+    extras = ['account_asset']
 
 
 def suite():
