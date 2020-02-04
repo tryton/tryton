@@ -1744,8 +1744,8 @@
                             'time'].indexOf(field.type)) {
                         if ((typeof value == 'string') && value.contains('..')) {
                             var values = value.split('..', 2);
-                            var lvalue = this.convert_value(field, values[0]);
-                            var rvalue = this.convert_value(field, values[1]);
+                            var lvalue = this.convert_value(field, values[0], this.context);
+                            var rvalue = this.convert_value(field, values[1], this.context);
                             result.push([
                                     this._clausify([field_name, '>=', lvalue]),
                                     this._clausify([field_name, '<=', rvalue])
@@ -1755,14 +1755,14 @@
                     }
                     if (value instanceof Array) {
                         value = value.map(function(v) {
-                            return this.convert_value(field, v);
+                            return this.convert_value(field, v, this.context);
                         }.bind(this));
                         if (~['many2one', 'one2many', 'many2many', 'one2one',
                             'many2many', 'one2one'].indexOf(field.type)) {
                             field_name += '.rec_name';
                         }
                     } else {
-                        value = this.convert_value(field, value);
+                        value = this.convert_value(field, value, this.context);
                     }
                     if (operator.contains('like')) {
                         value = this.likify(value);
@@ -1848,7 +1848,10 @@
             }
             return [target, value];
         },
-        convert_value: function(field, value) {
+        convert_value: function(field, value, context) {
+            if (!context) {
+                context = {};
+            }
             var convert_selection = function() {
                 if (typeof value == 'string') {
                     for (var i = 0; i < field.selection.length; i++) {
@@ -1911,14 +1914,14 @@
                 'reference': convert_selection,
                 'datetime': function() {
                     var result = Sao.common.parse_datetime(
-                            Sao.common.date_format(),
+                            Sao.common.date_format(context.date_format),
                             this.time_format(field),
                             value);
                     return result;
                 }.bind(this),
                 'date': function() {
                     return Sao.common.parse_date(
-                            Sao.common.date_format(),
+                            Sao.common.date_format(context.date_format),
                             value);
                 },
                 'time': function() {
@@ -1951,9 +1954,12 @@
                 return value;
             }
         },
-        format_value: function(field, value, target) {
+        format_value: function(field, value, target, context) {
             if (target === undefined) {
                 target = null;
+            }
+            if (!context) {
+                context = {};
             }
             var format_float = function() {
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
@@ -2023,17 +2029,17 @@
                                 value.minute() ||
                                 value.second())) {
                         return Sao.common.format_date(
-                                Sao.common.date_format(),
+                                Sao.common.date_format(context.date_format),
                                 value);
                     }
                     return Sao.common.format_datetime(
-                            Sao.common.date_format(),
+                            Sao.common.date_format(context.date_format),
                             this.time_format(field),
                             value);
                 }.bind(this),
                 'date': function() {
                     return Sao.common.format_date(
-                            Sao.common.date_format(),
+                            Sao.common.date_format(context.date_format),
                             value);
                 },
                 'time': function() {
