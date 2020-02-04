@@ -403,6 +403,9 @@
         QUnit.throws(function() {
             new Sao.PYSON.Greater(1, 'test');
         }, 'statement must be an integer or a float');
+        QUnit.throws(function() {
+            new Sao.PYSON.Greater(new Sao.PYSON.Eval('foo'), 0);
+        }, 'statement must be an integer of float');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Greater(1, 0).types(),
                 ['boolean']), 'Greater(1, 0).types()');
@@ -444,6 +447,11 @@
                 'decode(Greater(1, null))');
         QUnit.strictEqual(new Sao.PYSON.Greater(1, 0).toString(),
                 "Greater(1, 0, false)");
+
+        eval_ = new Sao.PYSON.Encoder().encode(
+            new Sao.PYSON.Greater(new Sao.PYSON.Eval('i', 0), 0));
+        QUnit.strictEqual(new Sao.PYSON.Decoder({i: 1}).decode(eval_), true,
+            "decode(Greater(Eval('i', 0)))");
     });
 
     QUnit.test('PYSON Less', function() {
