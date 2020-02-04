@@ -383,7 +383,7 @@
             for (var i = 0; i < 2; i++) {
                 var statement = statements[i];
                 if (statement instanceof Sao.PYSON.PYSON) {
-                    if (jQuery(statement).not(['number']).length) {
+                    if (jQuery(statement.types()).not(['number']).length) {
                         throw 'statement must be an integer or a float';
                     }
                 } else {
