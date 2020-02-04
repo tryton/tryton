@@ -224,6 +224,8 @@ class PYSONTestCase(unittest.TestCase):
         if not sys.flags.optimize:
             self.assertRaises(AssertionError, pyson.Greater, 'test', 0)
             self.assertRaises(AssertionError, pyson.Greater, 1, 'test')
+            self.assertRaises(
+                AssertionError, pyson.Greater, pyson.Eval('foo'), 0)
 
         self.assertEqual(pyson.Greater(1, 0).types(), set([bool]))
 
@@ -252,6 +254,10 @@ class PYSONTestCase(unittest.TestCase):
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
         self.assertEqual(repr(pyson.Greater(1, 0)), 'Greater(1, 0, False)')
+
+        eval = pyson.PYSONEncoder().encode(
+            pyson.Greater(pyson.Eval('i', 0), 0))
+        self.assertTrue(pyson.PYSONDecoder({'i': 1}).decode(eval))
 
     def test_Less(self):
         'Test pyson.Less'
