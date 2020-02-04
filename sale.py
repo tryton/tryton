@@ -945,7 +945,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     'Sale Line'
     __name__ = 'sale.line'
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
-        select=True,
+        select=True, required=True,
         states={
             'readonly': ((Eval('sale_state') != 'draft')
                 & Bool(Eval('sale'))),
