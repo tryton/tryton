@@ -10,7 +10,7 @@ import datetime
 import io
 from collections import OrderedDict
 
-from tryton.common import untimezoned_date, timezoned_date
+from tryton.common import untimezoned_date, timezoned_date, date_format
 from tryton.common.datetime_ import date_parse
 from tryton.common.timedelta import parse as timedelta_parse
 from tryton.common.timedelta import format as timedelta_format
@@ -237,7 +237,8 @@ def convert_value(field, value, context=None):
     def convert_datetime():
         if not value:
             return
-        format_ = context.get('date_format', '%x') + ' %X'
+        format_ = (
+            date_format(context.get('date_format')) + ' ' + time_format(field))
         try:
             dt = date_parse(value, format_)
             return untimezoned_date(dt)
@@ -247,7 +248,7 @@ def convert_value(field, value, context=None):
     def convert_date():
         if not value:
             return
-        format_ = context.get('date_format', '%x')
+        format_ = date_format(context.get('date_format'))
         try:
             return date_parse(value, format_).date()
         except (ValueError, TypeError):
@@ -337,7 +338,8 @@ def format_value(field, value, target=None, context=None):
     def format_datetime():
         if not value:
             return ''
-        format_ = context.get('date_format', '%x') + ' ' + time_format(field)
+        format_ = (
+            date_format(context.get('date_format')) + ' ' + time_format(field))
         if not isinstance(value, datetime.datetime):
             time = datetime.datetime.combine(value, datetime.time.min)
         else:
@@ -349,7 +351,7 @@ def format_value(field, value, target=None, context=None):
     def format_date():
         if not value:
             return ''
-        format_ = context.get('date_format', '%x')
+        format_ = date_format(context.get('date_format'))
         return value.strftime(format_)
 
     def format_time():
