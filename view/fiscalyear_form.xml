@@ -14,8 +14,7 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Periods" id="periods">
             <field name="periods" colspan="4"/>
             <group col="-1" colspan="4" id="buttons">
-                <button name="create_period"/>
-                <button name="create_period_3"/>
+                <button name="create_periods"/>
             </group>
         </page>
         <page string="Sequences" id="sequences">

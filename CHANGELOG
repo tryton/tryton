@@ -1,3 +1,5 @@
+* Allow periods to end on any day of the month
+* Use a wizard to select parameters when creating periods
 * Modularize code in GroupLines wizard
 
 Version 5.4.0 - 2019-11-04

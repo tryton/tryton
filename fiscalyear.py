@@ -6,17 +6,15 @@ from dateutil.relativedelta import relativedelta
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateView, StateAction, Button
-from trytond.pyson import Eval, If, PYSONEncoder
-from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.pyson import Eval, If, PYSONEncoder
+from trytond.rpc import RPC
+from trytond.transaction import Transaction
+from trytond.wizard import (
+    Wizard, StateView, StateTransition, StateAction, Button)
 
 from .exceptions import (FiscalYearNotFoundError, FiscalYearDatesError,
     FiscalYearSequenceError, FiscalYearCloseError, FiscalYearReOpenError)
-
-__all__ = ['FiscalYear',
-    'BalanceNonDeferralStart', 'BalanceNonDeferral',
-    'RenewFiscalYearStart', 'RenewFiscalYear']
 
 STATES = {
     'readonly': Eval('state') != 'open',
@@ -73,12 +71,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                 ('close', 'open'),
                 ))
         cls._buttons.update({
-                'create_period': {
-                    'invisible': ((Eval('state') != 'open')
-                        | Eval('periods', [0])),
-                    'depends': ['state'],
-                    },
-                'create_period_3': {
+                'create_periods': {
                     'invisible': ((Eval('state') != 'open')
                         | Eval('periods', [0])),
                     'depends': ['state'],
@@ -95,6 +88,9 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'close',
                     'depends': ['state'],
                     },
+                })
+        cls.__rpc__.update({
+                'create_period': RPC(readonly=False, instantiate=0),
                 })
 
     @staticmethod
@@ -181,8 +177,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         super(FiscalYear, cls).delete(fiscalyears)
 
     @classmethod
-    @ModelView.button
-    def create_period(cls, fiscalyears, interval=1):
+    def create_period(cls, fiscalyears, interval=1, end_day=31):
         '''
         Create periods for the fiscal years with month interval
         '''
@@ -191,9 +186,10 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
         for fiscalyear in fiscalyears:
             period_start_date = fiscalyear.start_date
             while period_start_date < fiscalyear.end_date:
-                period_end_date = period_start_date + \
-                    relativedelta(months=interval - 1) + \
-                    relativedelta(day=31)
+                month_offset = 1 if period_start_date.day < end_day else 0
+                period_end_date = (period_start_date
+                    + relativedelta(months=interval - month_offset)
+                    + relativedelta(day=end_day))
                 if period_end_date > fiscalyear.end_date:
                     period_end_date = fiscalyear.end_date
                 name = period_start_date.strftime('%Y-%m')
@@ -211,12 +207,9 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             Period.create(to_create)
 
     @classmethod
-    @ModelView.button
-    def create_period_3(cls, fiscalyears):
-        '''
-        Create periods for the fiscal years with 3 months interval
-        '''
-        cls.create_period(fiscalyears, interval=3)
+    @ModelView.button_action('account.act_create_periods')
+    def create_periods(cls, fiscalyears):
+        pass
 
     @classmethod
     def find(cls, company_id, date=None, exception=True):
@@ -476,8 +469,67 @@ class BalanceNonDeferral(Wizard):
         return action, {}
 
 
+class CreatePeriodsStart(ModelView):
+    "Create Periods Start"
+    __name__ = 'account.fiscalyear.create_periods.start'
+    frequency = fields.Selection([
+            ('monthly', "Monthly"),
+            ('quarterly', "Quarterly"),
+            ('other', "Other"),
+            ], "Frequency", sort=False, required=True)
+    interval = fields.Integer("Interval", required=True,
+        states={
+            'invisible': Eval('frequency') != 'other',
+            },
+        depends=['frequency'],
+        help="The length of each period, in months.")
+    end_day = fields.Integer("End Day", required=True,
+        help="The day of the month on which periods end.\n"
+        "Months with fewer days will end on the last day.")
+
+    @classmethod
+    def default_frequency(cls):
+        return 'monthly'
+
+    @classmethod
+    def default_end_day(cls):
+        return 31
+
+    @classmethod
+    def frequency_intervals(cls):
+        return {
+            'monthly': 1,
+            'quarterly': 3,
+            'other': None,
+            }
+
+    @fields.depends('frequency', 'interval')
+    def on_change_frequency(self):
+        if self.frequency:
+            self.interval = self.frequency_intervals()[self.frequency]
+
+
+class CreatePeriods(Wizard):
+    "Create Periods"
+    __name__ = 'account.fiscalyear.create_periods'
+    start = StateView('account.fiscalyear.create_periods.start',
+        'account.fiscalyear_create_periods_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Create", 'create_periods', 'tryton-ok', default=True),
+            ])
+    create_periods = StateTransition()
+
+    def transition_create_periods(self):
+        FiscalYear = Pool().get('account.fiscalyear')
+        fiscalyear = FiscalYear(Transaction().context['active_id'])
+        FiscalYear.create_period(
+            [fiscalyear], self.start.interval, self.start.end_day)
+        return 'end'
+
+
 def month_delta(d1, d2):
-    return (d1.year - d2.year) * 12 + d1.month - d2.month
+    month_offset = 1 if d1.day < d2.day else 0
+    return (d1.year - d2.year) * 12 + d1.month - d2.month - month_offset
 
 
 class RenewFiscalYearStart(ModelView):
@@ -577,10 +629,12 @@ class RenewFiscalYear(Wizard):
         periods = [p for p in self.start.previous_fiscalyear.periods
             if p.type == 'standard']
         months = month_delta(fiscalyear.end_date, fiscalyear.start_date) + 1
-        if len(periods) == months:
-            FiscalYear.create_period([fiscalyear])
-        elif len(periods) == months / 3:
-            FiscalYear.create_period_3([fiscalyear])
+        interval = months / len(periods)
+        end_day = max(p.end_date.day
+            for p in self.start.previous_fiscalyear.periods
+            if p.type == 'standard')
+        if interval.is_integer():
+            FiscalYear.create_period([fiscalyear], interval, end_day)
         return fiscalyear
 
     def do_create_(self, action):

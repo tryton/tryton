@@ -81,13 +81,17 @@ def create_chart(company, tax=False):
     create_chart.transition_create_properties()
 
 
-def get_fiscalyear(company, today=None):
+def get_fiscalyear(company, today=None, start_date=None, end_date=None):
     pool = Pool()
     Sequence = pool.get('ir.sequence')
     FiscalYear = pool.get('account.fiscalyear')
 
     if not today:
         today = datetime.date.today()
+    if not start_date:
+        start_date = today.replace(month=1, day=1)
+    if not end_date:
+        end_date = today.replace(month=12, day=31)
 
     sequence, = Sequence.create([{
                 'name': '%s' % today.year,
@@ -95,8 +99,8 @@ def get_fiscalyear(company, today=None):
                 'company': company.id,
                 }])
     fiscalyear = FiscalYear(name='%s' % today.year, company=company)
-    fiscalyear.start_date = today.replace(month=1, day=1)
-    fiscalyear.end_date = today.replace(month=12, day=31)
+    fiscalyear.start_date = start_date
+    fiscalyear.end_date = end_date
     fiscalyear.post_move_sequence = sequence
     return fiscalyear
 
@@ -204,6 +208,45 @@ class AccountTestCase(ModuleTestCase):
             fiscalyear.save()
             FiscalYear.create_period([fiscalyear])
             self.assertEqual(len(fiscalyear.periods), 12)
+
+    @with_transaction()
+    def test_fiscalyear_create_periods(self):
+        'Test fiscalyear create periods'
+        FiscalYear = Pool().get('account.fiscalyear')
+
+        company = create_company()
+        with set_company(company):
+            year = datetime.date.today().year
+            date = datetime.date
+            for start_date, end_date, interval, end_day, num_periods in [
+                    (date(year, 1, 1), date(year, 12, 31), 1, 31, 12),
+                    (date(year + 1, 1, 1), date(year + 1, 12, 31), 3, 31, 4),
+                    (date(year + 2, 1, 1), date(year + 2, 12, 31), 5, 31, 3),
+                    (date(year + 3, 4, 6), date(year + 4, 4, 5), 1, 5, 12),
+                    (date(year + 4, 4, 6), date(year + 5, 4, 5), 3, 5, 4),
+                    (date(year + 5, 4, 6), date(year + 6, 4, 5), 5, 5, 3),
+                    (date(year + 6, 6, 6), date(year + 6, 12, 31), 1, 29, 8),
+                    (date(year + 7, 7, 7), date(year + 7, 12, 31), 3, 29, 3),
+                    (date(year + 8, 1, 1), date(year + 9, 8, 7), 1, 29, 20),
+                    (date(year + 9, 9, 9), date(year + 10, 11, 12), 3, 29, 5),
+                    ]:
+                fiscalyear = get_fiscalyear(
+                    company, start_date, start_date, end_date)
+                fiscalyear.save()
+                FiscalYear.create_period([fiscalyear], interval, end_day)
+
+                self.assertEqual(len(fiscalyear.periods), num_periods)
+
+                self.assertEqual(fiscalyear.periods[-1].end_date, end_date)
+                self.assertTrue(all(
+                    p.end_date == p.end_date + relativedelta(day=end_day)
+                    for p in fiscalyear.periods[:-1]))
+
+                self.assertEqual(fiscalyear.periods[0].start_date, start_date)
+                self.assertTrue(all(
+                    p1.end_date + relativedelta(days=1) == p2.start_date
+                    for p1, p2 in zip(
+                        fiscalyear.periods[:-1], fiscalyear.periods[1:])))
 
     @with_transaction()
     def test_account_debit_credit(self):
