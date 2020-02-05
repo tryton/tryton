@@ -1338,7 +1338,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             invoice_line.account = self.product.account_revenue_used
             if not invoice_line.account:
                 raise AccountError(
-                    gettext('sale.msg_sale_product_missing_account_expense',
+                    gettext('sale.msg_sale_product_missing_account_revenue',
                         sale=self.sale.rec_name,
                         product=self.product.rec_name))
         else:
@@ -1346,7 +1346,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 'default_category_account_revenue')
             if not invoice_line.account:
                 raise AccountError(
-                    gettext('sale.msg_sale_missing_account_expense',
+                    gettext('sale.msg_sale_missing_account_revenue',
                         sale=self.sale.rec_name))
         invoice_line.stock_moves = self._get_invoice_line_moves()
         return [invoice_line]
