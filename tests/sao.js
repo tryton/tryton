@@ -1167,6 +1167,30 @@
                 'timedelta.format(' + JSON.stringify(timedelta) + ')');
         });
     });
+    var time_only_converter_values = [
+        [null, ''],
+        [Sao.TimeDelta(5, 0, 0, 30, 5), '125:30'],
+        [Sao.TimeDelta(0, 10, 0, 5, 2), '02:05:10'],
+        [Sao.TimeDelta(0, 0, 42, 15), '00:15:00.042000'],
+        [Sao.TimeDelta(1, 0, 42), '24:00:00.042000'],
+        [Sao.TimeDelta(0, -1), '-00:00:01'],
+        [Sao.TimeDelta(-1, 0, 0, -30, -5), '-29:30']
+        ];
+
+    var converter_time_only =  {};
+    converter_time_only.s = Sao.common.timedelta.DEFAULT_CONVERTER.s;
+    converter_time_only.m = Sao.common.timedelta.DEFAULT_CONVERTER.m;
+    converter_time_only.h = Sao.common.timedelta.DEFAULT_CONVERTER.h;
+
+    QUnit.test('timedelta.format time only converter', function() {
+        time_only_converter_values.forEach(function(test) {
+            var timedelta = test[0];
+            var text = test[1];
+            QUnit.equal(Sao.common.timedelta.format(
+                timedelta, converter_time_only), text,
+                'timedelta.format(' + JSON.stringify(timedelta) + ')');
+        });
+    });
 
     var timedelta_tests_parse = [
         [Sao.TimeDelta(), '  '],
@@ -1189,6 +1213,23 @@
             }
         }
         timedelta_tests.concat(timedelta_tests_parse).forEach(function(test) {
+            var timedelta = test[0];
+            var text = test[1];
+            QUnit.equal(asSeconds(Sao.common.timedelta.parse(text)),
+                asSeconds(timedelta),
+                'timedelta.parse(' + JSON.stringify(timedelta) + ')');
+        });
+    });
+
+    QUnit.test('timedelta.parse time only converter', function() {
+        function asSeconds(timedelta) {
+            if (timedelta) {
+                return timedelta.asSeconds();
+            } else {
+                return timedelta;
+            }
+        }
+        time_only_converter_values.forEach(function(test) {
             var timedelta = test[0];
             var text = test[1];
             QUnit.equal(asSeconds(Sao.common.timedelta.parse(text)),
