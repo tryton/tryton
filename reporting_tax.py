@@ -9,6 +9,7 @@ from sql import Cast, Null, Literal
 from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Case
 from sql.functions import Substring, Position, Extract
+from sql.operators import Exists
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -419,25 +420,46 @@ class ESVATList(ModelSQL, ModelView):
         return [(('party.es_province_code',) + tuple(clause[1:]))]
 
     @classmethod
+    def excluded_tax_codes(cls):
+        return ['111', '115']
+
+    @classmethod
     def table_query(cls):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         InvoiceTax = pool.get('account.invoice.tax')
         Tax = pool.get('account.tax')
+        TaxCode = pool.get('account.tax.code')
+        TaxCodeLine = pool.get('account.tax.code.line')
         Date = pool.get('ir.date')
         context = Transaction().context
         invoice = Invoice.__table__()
         invoice_tax = InvoiceTax.__table__()
         tax = Tax.__table__()
+        tax_code = TaxCode.__table__()
+        tax_code_line = TaxCodeLine.__table__()
+        exclude_invoice_tax = InvoiceTax.__table__()
 
         amount = invoice_tax.base + invoice_tax.amount
         month = Extract('MONTH', invoice.invoice_date)
+
+        excluded_taxes = (tax_code_line
+            .join(tax_code,
+                condition=(tax_code.id == tax_code_line.code)
+                ).select(
+                    tax_code_line.tax, distinct=True,
+                    where=tax_code.aeat_report.in_(cls.excluded_tax_codes())))
 
         where = ((invoice.company == context.get('company'))
             & (invoice.state.in_(['posted', 'paid']))
             & (tax.es_vat_list_code != Null)
             & (Extract('year', invoice.invoice_date)
-                == context.get('date', Date.today()).year))
+                == context.get('date', Date.today()).year)
+            # Use exists to exclude the full invoice when it has multiple taxes
+            & ~Exists(exclude_invoice_tax.select(
+                    exclude_invoice_tax.invoice,
+                    where=((exclude_invoice_tax.invoice == invoice_tax.invoice)
+                        & (exclude_invoice_tax.tax.in_(excluded_taxes))))))
         return (invoice_tax
             .join(invoice,
                 condition=invoice_tax.invoice == invoice.id)
