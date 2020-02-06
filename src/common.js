@@ -355,10 +355,11 @@
         }
         if (jQuery(values.slice(-3)).is(function(i, v) { return v; }) ||
                 jQuery.isEmptyObject(text)) {
-            var time = values.slice(-3, -1);
-            time = ('00' + time[0]).slice(-2) + ':' + ('00' + time[1]).slice(-2);
-            if (values.slice(-1)[0] || value) {
-                time += ':' + ('00' + values.slice(-1)[0]).slice(-2);
+            var time_values = values.slice(-3);
+            var time = time_values[0].toString().padStart(2, "0");
+            time += ":" + time_values[1].toString().padStart(2, "0");
+            if (time_values[2] || value) {
+                time += ':' + time_values[2].toString().padStart(2, "0");
             }
             text.push(time);
         }
