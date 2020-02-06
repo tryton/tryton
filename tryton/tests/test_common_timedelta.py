@@ -3,7 +3,7 @@
 import datetime as dt
 from unittest import TestCase
 
-from tryton.common.timedelta import format, parse
+from tryton.common.timedelta import format, parse, DEFAULT_CONVERTER
 
 
 class TimeDeltaTestCase(TestCase):
@@ -28,10 +28,41 @@ class TimeDeltaTestCase(TestCase):
             (dt.timedelta(days=-1, hours=-5, minutes=-30), '-1d 05:30'),
             ]
 
+    def _time_only_converter(self):
+        thousand_years = 100 * 365 * 24 * 8 * 8
+        converter = {}
+        converter['s'] = DEFAULT_CONVERTER['s']
+        converter['m'] = DEFAULT_CONVERTER['m']
+        converter['h'] = DEFAULT_CONVERTER['h']
+        converter['d'] = thousand_years
+        converter['w'] = thousand_years
+        converter['M'] = thousand_years
+        converter['Y'] = thousand_years
+        return converter
+
+    def _time_only_converter_values(self):
+        return [
+            (None, ''),
+            (dt.timedelta(), '00:00'),
+            (dt.timedelta(days=5, hours=5, minutes=30), '125:30'),
+            (dt.timedelta(hours=2, minutes=5, seconds=10), '02:05:10'),
+            (dt.timedelta(minutes=15, microseconds=42), '00:15:00.000042'),
+            (dt.timedelta(days=1, microseconds=42), '24:00:00.000042'),
+            (dt.timedelta(seconds=-1), '-00:00:01'),
+            (dt.timedelta(days=-1, hours=-5, minutes=-30), '-29:30'),
+            ]
+
     def test_format(self):
         "Test format"
         for timedelta, text in self._format_values():
             self.assertEqual(format(timedelta), text,
+                msg="format(%r)" % timedelta)
+
+    def test_format_time_only_converter(self):
+        "Test format with time only converter"
+        converter = self._time_only_converter()
+        for timedelta, text in self._time_only_converter_values():
+            self.assertEqual(format(timedelta, converter), text,
                 msg="format(%r)" % timedelta)
 
     def _parse_values(self):
@@ -51,4 +82,11 @@ class TimeDeltaTestCase(TestCase):
         "Test parse"
         for timedelta, text in self._parse_values():
             self.assertEqual(parse(text), timedelta,
+                msg="parse(%r)" % text)
+
+    def test_parse_time_only_converter(self):
+        "Test parse with time only converter"
+        converter = self._time_only_converter()
+        for timedelta, text in self._time_only_converter_values():
+            self.assertEqual(parse(text, converter), timedelta,
                 msg="parse(%r)" % text)
