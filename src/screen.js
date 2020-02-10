@@ -1573,7 +1573,7 @@
                 }
 
                 return jQuery.when.apply(jQuery, prms).then(function() {
-                    this.display().done(function() {
+                    return this.display().done(function() {
                         this.set_cursor();
                     }.bind(this));
                 }.bind(this));
