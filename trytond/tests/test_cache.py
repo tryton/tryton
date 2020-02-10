@@ -93,16 +93,15 @@ class MemoryCacheTestCase(unittest.TestCase):
         cache.set('foo', 'baz')
         self.assertEqual(cache.get('foo'), 'baz')
 
-        Transaction().set_current_transaction(transaction1)
-        self.addCleanup(transaction1.stop)
-        self.assertEqual(cache.get('foo'), 'bar')
+        with Transaction().set_current_transaction(transaction1):
+            self.assertEqual(cache.get('foo'), 'bar')
 
         transaction2.commit()
         for n in range(10):
-            if cache.get('foo') is None:
+            if cache.get('foo') == 'baz':
                 break
             self.wait_cache_sync()
-        self.assertEqual(cache.get('foo'), None)
+        self.assertEqual(cache.get('foo'), 'baz')
 
     def test_memory_cache_nested_transactions(self):
         "Test MemoryCache with nested transactions"
