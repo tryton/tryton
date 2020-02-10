@@ -70,6 +70,7 @@ class DictSchemaMixin(object):
                     ['selection', 'multiselection']),
                 },
             depends=['type_']), 'get_selection_json')
+    _relation_fields_cache = Cache('_dict_schema_mixin.get_relation_fields')
 
     @classmethod
     def __setup__(cls):
@@ -77,10 +78,6 @@ class DictSchemaMixin(object):
         cls.__rpc__.update({
                 'get_keys': RPC(instantiate=0),
                 })
-        # Do not instantiate more than one Cache
-        if not hasattr(cls, '_relation_fields_cache'):
-            cls._relation_fields_cache = Cache(
-                cls.__name__ + '.get_relation_fields')
 
     @staticmethod
     def default_digits():
@@ -167,12 +164,12 @@ class DictSchemaMixin(object):
     def get_relation_fields(cls):
         if not config.get('dict', cls.__name__, default=True):
             return {}
-        fields = cls._relation_fields_cache.get(None)
+        fields = cls._relation_fields_cache.get(cls.__name__)
         if fields is not None:
             return fields
         keys = cls.get_keys(cls.search([]))
         fields = {k['name']: k for k in keys}
-        cls._relation_fields_cache.set(None, fields)
+        cls._relation_fields_cache.set(cls.__name__, fields)
         return fields
 
     @classmethod
