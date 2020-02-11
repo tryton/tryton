@@ -77,10 +77,16 @@ class User(metaclass=PoolMeta):
         return companies
 
     def get_status_bar(self, name):
+        def same_company(record):
+            return record.company == self.company
         status = super(User, self).get_status_bar(name)
+        if (self.employee
+                and len(list(filter(same_company, self.employees))) > 1):
+            status += ' - %s' % self.employee.rec_name
         if self.company:
-            status += ' - %s [%s]' % (self.company.rec_name,
-                self.company.currency.name)
+            if len(self.companies) > 1:
+                status += ' - %s' % self.company.rec_name
+            status += ' [%s]' % self.company.currency.code
         return status
 
     @fields.depends('main_company')
