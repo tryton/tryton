@@ -13,7 +13,9 @@ class FieldContextParent(ModelSQL):
     child = fields.Many2One('test.field_context.child', 'Child',
         context={
             'name': Eval('name'),
-            })
+            'rec_name': Eval('rec_name'),
+            },
+        depends=['name'])
 
 
 class FieldContextChild(ModelSQL):
