@@ -475,7 +475,8 @@ class One2Many(Widget):
             view_ids=self.attrs.get('view_ids', '').split(','),
             views_preload=self.attrs.get('views', {}),
             new=self.but_new.get_property('sensitive'),
-            title=self.attrs.get('string'))
+            title=self.attrs.get('string'),
+            exclude_field=self.attrs.get('relation_field'))
         win.screen.search_filter(quote(text))
         win.show()
 

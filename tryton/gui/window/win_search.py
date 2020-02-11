@@ -19,7 +19,7 @@ class WinSearch(NoModal):
 
     def __init__(self, model, callback, sel_multi=True, context=None,
             domain=None, order=None, view_ids=None,
-            views_preload=None, new=True, title=''):
+            views_preload=None, new=True, title='', exclude_field=None):
         NoModal.__init__(self)
         if view_ids is None:
             view_ids = []
@@ -33,6 +33,7 @@ class WinSearch(NoModal):
         self.sel_multi = sel_multi
         self.callback = callback
         self.title = title
+        self.exclude_field = exclude_field
 
         self.win = Gtk.Dialog(
             title=_('Search'), transient_for=self.parent,
@@ -130,7 +131,8 @@ class WinSearch(NoModal):
             view_ids = self.view_ids[1:]
             screen = Screen(self.model_name, domain=self.domain,
                 context=self.context, order=self.order, mode=['form'],
-                view_ids=view_ids, views_preload=self.views_preload)
+                view_ids=view_ids, views_preload=self.views_preload,
+                exclude_field=self.exclude_field)
 
             def callback(result):
                 if result:
