@@ -413,9 +413,10 @@ class Main(Gtk.Application):
                 CONFIG['login.login'],
                 CONFIG['login.host'],
                 CONFIG['login.db'])
-        titles = [CONFIG['client.title']]
+        titles = []
         if value:
             titles.append(value)
+        titles.append(CONFIG['client.title'])
         self.header.set_title(' - '.join(titles))
         self.header.set_subtitle(login_info)
         try:
