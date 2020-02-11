@@ -381,6 +381,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             return self.currency.digits
         return 2
 
+    @fields.depends('party')
     def _get_tax_context(self):
         res = {}
         if self.party and self.party.lang:
@@ -394,7 +395,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             return self.party.lang.code
         return Config.get_language()
 
-    @fields.depends('lines', 'currency', 'party')
+    @fields.depends('lines', 'currency', methods=['_get_taxes'])
     def on_change_lines(self):
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
