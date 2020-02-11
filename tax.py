@@ -1124,6 +1124,7 @@ class TaxableMixin(object):
         for taxline in taxes.values():
             taxline['amount'] = self.currency.round(taxline['amount'])
 
+    @fields.depends(methods=['_get_tax_context', '_round_taxes'])
     def _get_taxes(self):
         pool = Pool()
         Tax = pool.get('account.tax')
