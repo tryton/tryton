@@ -1468,7 +1468,7 @@ class ModelStorage(Model):
             if field.context:
                 eval_fields = fields.get_eval_fields(field.context)
                 for context_field_name in eval_fields:
-                    if context_field_name in field.depends:
+                    if context_field_name not in field.depends:
                         continue
                     context_field = self._fields.get(context_field_name)
                     if context_field not in ffields:
