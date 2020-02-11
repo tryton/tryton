@@ -2224,7 +2224,8 @@ function eval_pyson(value){
                 'mode': ['form'],
                 'view_ids': view_ids,
                 'views_preload': this.attributes.views,
-                'readonly': this._readonly
+                'readonly': this._readonly,
+                exclude_field: this.attributes.relation_field,
             });
         },
         set_text: function(value) {
@@ -2435,7 +2436,8 @@ function eval_pyson(value){
                             views_preload: (this.attributes.views || {}),
                             new_: this.create_access,
                             search_filter: parser.quote(text),
-                            title: this.attributes.string
+                            title: this.attributes.string,
+                            exclude_field: this.attributes.relation_field,
                         });
                 return;
             }
@@ -2545,7 +2547,8 @@ function eval_pyson(value){
                                     {}),
                                 new_: this.create_access,
                                 search_filter: parser.quote(text),
-                                title: this.attributes.string
+                                title: this.attributes.string,
+                                exclude_field: this.attributes.relation_field,
                             });
                 }
             }
@@ -3118,7 +3121,8 @@ function eval_pyson(value){
                         views_preload: this.attributes.views || {},
                         new_: !this.but_new.prop('disabled'),
                         search_filter: parser.quote(text),
-                        title: this.attributes.string
+                        title: this.attributes.string,
+                        exclude_field: this.attributes.relation_field,
                     });
         },
         remove: function(event_) {
