@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 
 
 class User(metaclass=PoolMeta):
@@ -23,3 +23,13 @@ class User(metaclass=PoolMeta):
         if user.warehouse:
             preferences['warehouse'] = user.warehouse.id
         return preferences
+
+    def get_status_bar(self, name):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        status = super().get_status_bar(name)
+
+        if (self.warehouse
+                and len(Location.search([('type', '=', 'warehouse')])) > 1):
+            status += ' - %s' % self.warehouse.rec_name
+        return status
