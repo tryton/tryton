@@ -45,7 +45,6 @@ class ContactMechanism(
         DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
-    _rec_name = 'value'
 
     type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
         sort=False, depends=DEPENDS)
@@ -200,6 +199,10 @@ class ContactMechanism(
     @fields.depends('other_value', 'type', methods=['_change_value'])
     def on_change_other_value(self):
         return self._change_value(self.other_value, self.type)
+
+    def get_rec_name(self, name):
+        name = self.name or self.party.rec_name
+        return '%s <%s>' % (name, self.value_compact or self.value)
 
     @classmethod
     def search_rec_name(cls, name, clause):
