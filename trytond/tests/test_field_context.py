@@ -24,10 +24,12 @@ class FieldContextTestCase(unittest.TestCase):
         parent = Parent(name='foo', child=child)
         parent.save()
         self.assertEqual(parent.child._context['name'], 'foo')
+        self.assertEqual(parent.child._context['rec_name'], '')
 
         parent.name = 'bar'
         parent.save()
         self.assertEqual(parent.child._context['name'], 'bar')
+        self.assertEqual(parent.child._context['rec_name'], '')
 
 
 def suite():
