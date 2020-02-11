@@ -460,16 +460,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             type_names[invoice.id] = type2name[invoice.type]
         return type_names
 
-    @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
-        'accounting_date', 'invoice_date')
+    @fields.depends(methods=['_on_change_lines_taxes'])
     def on_change_lines(self):
         self._on_change_lines_taxes()
 
-    @fields.depends('lines', 'taxes', 'currency', 'party', 'type',
-        'accounting_date', 'invoice_date')
+    @fields.depends(methods=['_on_change_lines_taxes'])
     def on_change_taxes(self):
         self._on_change_lines_taxes()
 
+    @fields.depends('lines', 'taxes', 'currency',
+        'accounting_date', 'invoice_date',  # From tax_date
+        methods=['_get_taxes'])
     def _on_change_lines_taxes(self):
         pool = Pool()
         InvoiceTax = pool.get('account.invoice.tax')
@@ -832,6 +833,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def tax_date(self):
         return self.accounting_date or self.invoice_date
 
+    @fields.depends('party')
     def _get_tax_context(self):
         context = {}
         if self.party and self.party.lang:
