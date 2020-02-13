@@ -34,7 +34,7 @@ Following environment variables can be set:
 
 .. warning:: You must manage to serve the static files from the web root.
 
-.. _`logging level`: <https://docs.python.org/library/logging.html#logging-levels>`.
+.. _`logging level`: https://docs.python.org/library/logging.html#logging-levels
 
 Coroutine server
 ----------------
