@@ -322,7 +322,7 @@ class Many2One(Widget):
         if self.has_target(value):
             populate(
                 menu, self.get_model(), self.id_from_value(value),
-                '', self.field)
+                '', self.field, self.field.get_context(self.record))
         return True
 
     def _set_completion(self):
