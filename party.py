@@ -43,6 +43,15 @@ class Party(metaclass=PoolMeta):
                     values=select))
             table.drop_column('sepa_creditor_identifier')
 
+    @classmethod
+    def copy(cls, parties, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('sepa_mandates', [])
+        return super().copy(parties, default=default)
+
     def get_sepa_creditor_identifier_used(self, name):
         for identifier in self.identifiers:
             if identifier.type == 'sepa':
