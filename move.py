@@ -111,10 +111,6 @@ class StockMixin(object):
         Compute the domain to filter records which validates the domain over
         quantity field.
 
-        The context with keys:
-            stock_skip_warehouse: if set, quantities on a warehouse are no more
-                quantities of all child locations but quantities of the storage
-                zone.
         location_ids is the list of IDs of locations to take account to compute
             the stock.
         grouping defines how stock moves are grouped.
@@ -956,9 +952,6 @@ class Move(Workflow, ModelSQL, ModelView):
             forecast: if set compute the forecast quantity.
             stock_destinations: A list of location ids. If set, restrict the
                 computation to moves from and to those locations.
-            stock_skip_warehouse: if set, quantities on a warehouse are no more
-                quantities of all child locations but quantities of the storage
-                zone.
         If with_childs, it computes also for child locations.
         grouping is a tuple of Move (or Product if prefixed by 'product.')
             field names and defines how stock moves are grouped.

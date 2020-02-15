@@ -564,11 +564,18 @@ class ProductQuantitiesByWarehouseContext(ModelView):
             ('type', '=', 'warehouse'),
             ],
         help="The warehouse for which the quantities will be calculated.")
+    stock_skip_warehouse = fields.Boolean(
+        "Only storage zone",
+        help="Check to use only the quantity of the storage zone.")
 
     @classmethod
     def default_warehouse(cls):
         Location = Pool().get('stock.location')
         return Location.get_default_warehouse()
+
+    @classmethod
+    def default_stock_skip_warehouse(cls):
+        return Transaction().context.get('stock_skip_warehouse')
 
 
 class OpenProductQuantitiesByWarehouse(Wizard):

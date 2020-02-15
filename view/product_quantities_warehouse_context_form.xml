@@ -4,4 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="warehouse"/>
     <field name="warehouse"/>
+    <label name="stock_skip_warehouse"/>
+    <field name="stock_skip_warehouse"/>
 </form>

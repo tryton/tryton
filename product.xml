@@ -152,7 +152,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">stock.location</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
             <field name="context" pyson="1"
-                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"/>
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'stock_skip_warehouse': False}, {'product': Eval('active_id'), 'stock_skip_warehouse': False})"/>
             <field name="context_model">product.by_location.context</field>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_tree_view1">
@@ -189,7 +189,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">stock.location</field>
             <field name="search_value" eval="['OR', ('quantity', '!=', 0), ('forecast_quantity', '!=', 0)]" pyson="1"/>
             <field name="context" pyson="1"
-                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'with_childs': False}, {'product': Eval('active_id'), 'with_childs': False})"/>
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id'), 'with_childs': False, 'stock_skip_warehouse': False}, {'product': Eval('active_id'), 'with_childs': False, 'stock_skip_warehouse': False})"/>
             <field name="context_model">product.by_location.context</field>
         </record>
         <record model="ir.action.act_window.view" id="act_location_quantity_list_view">
