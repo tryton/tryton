@@ -47,16 +47,17 @@ class StockMixin(object):
     def _quantity_context(cls, name):
         pool = Pool()
         Date = pool.get('ir.date')
-
+        today = Date.today()
         context = Transaction().context
         new_context = {}
+        stock_date_end = context.get('stock_date_end')
         if name == 'quantity':
-            if (context.get('stock_date_end')
-                    and context['stock_date_end'] > Date.today()):
-                new_context['stock_date_end'] = Date.today()
+            new_context['forecast'] = False
+            if (stock_date_end or datetime.date.max) > today:
+                new_context['stock_date_end'] = today
         elif name == 'forecast_quantity':
             new_context['forecast'] = True
-            if not context.get('stock_date_end'):
+            if not stock_date_end:
                 new_context['stock_date_end'] = datetime.date.max
         return new_context
 
