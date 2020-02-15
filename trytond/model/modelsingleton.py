@@ -10,6 +10,12 @@ class ModelSingleton(ModelStorage):
     """
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        # Cache disable because it is used as a read by the client
+        cls.__rpc__['default_get'].cache = None
+
+    @classmethod
     def get_singleton(cls):
         '''
         Return the instance of the unique record if there is one.
