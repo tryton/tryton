@@ -692,6 +692,8 @@ class ModelSQL(ModelStorage):
 
         fields_related = defaultdict(set)
         extra_fields = set()
+        if 'write_date' not in fields_names:
+            extra_fields.add('write_date')
         for field_name in fields_names:
             if field_name == '_timestamp':
                 continue
@@ -765,6 +767,9 @@ class ModelSQL(ModelStorage):
             result = [{'id': x} for x in ids]
 
         cachable_fields = []
+        max_write_date = max(
+            (r['write_date'] for r in result if r.get('write_date')),
+            default=None)
         for column in columns:
             # Split the output name to remove SQLite type detection
             fname = column.output_name.split()[0]
@@ -775,7 +780,8 @@ class ModelSQL(ModelStorage):
                 if getattr(field, 'translate', False):
                     translations = Translation.get_ids(
                         cls.__name__ + ',' + fname, 'model',
-                        Transaction().language, ids)
+                        Transaction().language, ids,
+                        cached_after=max_write_date)
                     for row in result:
                         row[fname] = translations.get(row['id']) or row[fname]
                 if fname != 'id':

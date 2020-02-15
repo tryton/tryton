@@ -78,6 +78,9 @@ class BaseCache(object):
     def sync(cls, transaction):
         raise NotImplementedError
 
+    def sync_since(self, value):
+        raise NotImplementedError
+
     @classmethod
     def commit(cls, transaction):
         raise NotImplementedError
@@ -197,6 +200,9 @@ class MemoryCache(BaseCache):
                 inst._clear(dbname, timestamp)
         cls._clean_last = datetime.now()
 
+    def sync_since(self, value):
+        return self._clean_last > value
+
     @classmethod
     def commit(cls, transaction):
         table = Table(cls._table)
@@ -245,6 +251,7 @@ class MemoryCache(BaseCache):
                 connection.commit()
             finally:
                 database.put_connection(connection)
+            cls._clean_last = datetime.now()
         reset.clear()
 
     @classmethod
@@ -299,6 +306,7 @@ class MemoryCache(BaseCache):
                         for name in reset:
                             inst = cls._instances[name]
                             inst._clear(dbname)
+                cls._clean_last = datetime.now()
         except Exception:
             logger.error(
                 "cache listener on '%s' crashed", dbname, exc_info=True)

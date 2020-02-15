@@ -285,11 +285,13 @@ class Translation(ModelSQL, ModelView):
         return [('/form//field[@name="value"]', 'spell', Eval('lang'))]
 
     @classmethod
-    def get_ids(cls, name, ttype, lang, ids):
+    def get_ids(cls, name, ttype, lang, ids, cached_after=None):
         "Return translation for each id"
         pool = Pool()
         ModelFields = pool.get('ir.model.field')
         Model = pool.get('ir.model')
+        context = Transaction().context
+        fuzzy_translation = context.get('fuzzy_translation', False)
 
         translations, to_fetch = {}, []
         name = str(name)
@@ -326,8 +328,9 @@ class Translation(ModelSQL, ModelView):
             return translations
 
         # Don't use cache for fuzzy translation
-        if not Transaction().context.get(
-                'fuzzy_translation', False):
+        if (not fuzzy_translation
+                and (not cached_after
+                    or not cls._translation_cache.sync_since(cached_after))):
             for obj_id in ids:
                 trans = cls._translation_cache.get((name, ttype, lang, obj_id),
                     -1)
@@ -345,7 +348,7 @@ class Translation(ModelSQL, ModelView):
                 translations.update(
                     cls.get_ids(name, ttype, parent_lang, to_fetch))
 
-            if Transaction().context.get('fuzzy_translation', False):
+            if fuzzy_translation:
                 fuzzy_clause = []
             else:
                 fuzzy_clause = [('fuzzy', '=', False)]
@@ -360,7 +363,7 @@ class Translation(ModelSQL, ModelView):
                             ] + fuzzy_clause):
                     translations[translation.res_id] = translation.value
             # Don't store fuzzy translation in cache
-            if not Transaction().context.get('fuzzy_translation', False):
+            if not fuzzy_translation:
                 for res_id in to_fetch:
                     value = translations.setdefault(res_id)
                     cls._translation_cache.set(

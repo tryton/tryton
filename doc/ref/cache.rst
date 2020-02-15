@@ -39,6 +39,10 @@ Clears all the keys in the cache.
 
 Synchronize cache instances using transaction.
 
+.. method:: sync_since(value)
+
+Return `True` if the last synchronization was done before `value`.
+
 .. classmethod:: commit(transaction)
 
 Apply cache changes from transaction.
