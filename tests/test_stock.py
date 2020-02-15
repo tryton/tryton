@@ -231,17 +231,32 @@ class StockTestCase(ModuleTestCase):
                 'forecast': True,
                 }, 6),
             ]
+            today_quantity = 4
 
             def tests_product_quantity(context, quantity):
                 with transaction.set_context(locations=[storage.id]):
                     product_reloaded = Product(product.id)
                     if (not context.get('stock_date_end')
-                            or context['stock_date_end'] > today
-                            or context.get('forecast')):
-                        self.assertEqual(product_reloaded.forecast_quantity,
-                            quantity)
+                            or context['stock_date_end'] > today):
+                        self.assertEqual(
+                            product_reloaded.forecast_quantity, quantity,
+                            msg='context %r' % context)
+                        self.assertEqual(
+                            product_reloaded.quantity, today_quantity,
+                            msg='context %r' % context)
+                    elif context.get('forecast'):
+                        self.assertEqual(
+                            product_reloaded.forecast_quantity, quantity,
+                            msg='context %r' % context)
+                    elif context.get('stock_date_end') == today:
+                        self.assertEqual(product_reloaded.quantity, quantity,
+                            msg='context %r' % context)
                     else:
-                        self.assertEqual(product_reloaded.quantity, quantity)
+                        self.assertEqual(
+                            product_reloaded.forecast_quantity, quantity,
+                            msg='context %r' % context)
+                        self.assertEqual(product_reloaded.quantity, quantity,
+                            msg='context %r' % context)
 
             def tests_product_search_quantity(context, quantity):
                 with transaction.set_context(locations=[storage.id]):
