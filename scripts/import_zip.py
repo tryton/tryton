@@ -81,10 +81,12 @@ def import_(data):
     for row in pbar(list(csv.DictReader(
                     f, fieldnames=_fieldnames, delimiter='\t'))):
         country = get_country(row['country'])
-        subdivision = get_subdivision(row['country'], row['code1'])
-        zips.append(
-            Zip(country=country, subdivision=subdivision, zip=row['postal'],
-            city=row['place']))
+        for code in ['code1', 'code2', 'code3']:
+            subdivision = get_subdivision(row['country'], row[code])
+            if code == 'code1' or subdivision:
+                zips.append(
+                    Zip(country=country, subdivision=subdivision,
+                        zip=row['postal'], city=row['place']))
     Zip.save(zips)
 
 
