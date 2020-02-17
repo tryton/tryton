@@ -108,6 +108,10 @@ class Template(
             return pool.get('product.cost_price_method')
         return super(Template, cls).multivalue_model(field)
 
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        return [('products.rec_name',) + tuple(clause[1:])]
+
     @staticmethod
     def default_type():
         return 'goods'
