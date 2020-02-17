@@ -3,11 +3,13 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//notebook/page[@id='info']" position="inside">
-        <newline/>
-        <label name="sepa_return_reason_code"/>
+        <label name="sepa_mandate"/>
+        <field name="sepa_mandate"/>
+        <separator id="sepa_return_reason" string="Return Reason" colspan="4"/>
+        <label name="sepa_return_reason_code" string="Code"/>
         <field name="sepa_return_reason_code"/>
         <newline/>
-        <label name="sepa_return_reason_information"/>
+        <label name="sepa_return_reason_information" string="Information"/>
         <field name="sepa_return_reason_information" yexpand="0" colspan="3"/>
     </xpath>
 </data>

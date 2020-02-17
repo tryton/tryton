@@ -264,11 +264,20 @@ class Payment(metaclass=PoolMeta):
 
     sepa_mandate = fields.Many2One('account.payment.sepa.mandate', 'Mandate',
         ondelete='RESTRICT',
+        states={
+            'readonly': Eval('state') != 'draft',
+            'invisible': ((Eval('process_method') != 'sepa')
+                | (Eval('kind') != 'receivable')),
+            },
         domain=[
             ('party', '=', Eval('party', -1)),
             ('company', '=', Eval('company', -1)),
+            If(Eval('state') == 'draft',
+                ('state', '=', 'validated'),
+                (),
+                )
             ],
-        depends=['party', 'company'])
+        depends=['party', 'company', 'state', 'process_method', 'kind'])
     sepa_mandate_sequence_type = fields.Char('Mandate Sequence Type',
         readonly=True)
     sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
@@ -360,6 +369,14 @@ class Payment(metaclass=PoolMeta):
         if not date:
             date = Transaction().context.get('date_value')
         return super(Payment, self).create_clearing_move(date=date)
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//separator[@id="sepa_return_reason"]', 'states', {
+                    'invisible': Eval('state') != 'failed',
+                    }),
+            ]
 
 
 class Mandate(Workflow, ModelSQL, ModelView):
@@ -505,13 +522,23 @@ class Mandate(Workflow, ModelSQL, ModelView):
         return bool(self.identification)
 
     def get_rec_name(self, name):
+        name = '(%s)' % self.id
         if self.identification:
-            return self.identification
-        return '(%s)' % self.id
+            name = self.identification
+        if self.account_number:
+            name += ' @ %s' % self.account_number.rec_name
+        return name
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [tuple(('identification',)) + tuple(clause[1:])]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('identification',) + tuple(clause[1:]),
+            ('account_number',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def create(cls, vlist):
