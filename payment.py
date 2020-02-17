@@ -258,6 +258,10 @@ class Group(metaclass=PoolMeta):
         for key, grouped_payments in groupby(payments, key=keyfunc):
             yield dict(key), list(grouped_payments)
 
+    @property
+    def sepa_message_id(self):
+        return self.number
+
 
 class Payment(metaclass=PoolMeta):
     __name__ = 'account.payment'
