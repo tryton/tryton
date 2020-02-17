@@ -111,24 +111,23 @@ class CheckoutMixin:
 class Payment(CheckoutMixin, metaclass=PoolMeta):
     __name__ = 'account.payment'
 
-    stripe_journal = fields.Function(
-        fields.Boolean("Stripe Journal"), 'on_change_with_stripe_journal')
     stripe_checkout_needed = fields.Function(
         fields.Boolean("Stripe Checkout Needed"),
         'on_change_with_stripe_checkout_needed')
     stripe_charge_id = fields.Char(
         "Stripe Charge ID", readonly=True,
         states={
-            'invisible': ~Eval('stripe_journal') | ~Eval('stripe_charge_id'),
+            'invisible': ((Eval('process_method') != 'stripe')
+                | ~Eval('stripe_charge_id')),
             },
-        depends=['stripe_journal'])
+        depends=['process_method'])
     stripe_capture = fields.Boolean(
         "Stripe Capture",
         states={
-            'invisible': ~Eval('stripe_journal'),
+            'invisible': Eval('process_method') != 'stripe',
             'readonly': Eval('state') != 'draft',
             },
-        depends=['stripe_journal', 'state'])
+        depends=['process_method', 'state'])
     stripe_captured = fields.Boolean(
         "Stripe Captured", readonly=True)
     stripe_capture_needed = fields.Function(
@@ -147,18 +146,19 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     stripe_chargeable = fields.Boolean(
         "Stripe Chargeable",
         states={
-            'invisible': ~Eval('stripe_journal') | ~Eval('stripe_token'),
+            'invisible': ((Eval('process_method') != 'stripe')
+                | ~Eval('stripe_token')),
             },
-        depends=['stripe_journal', 'stripe_token'])
+        depends=['process_method', 'stripe_token'])
     stripe_capturable = fields.Boolean(
         "Stripe Capturable",
         states={
-            'invisible': (~Eval('stripe_journal')
+            'invisible': ((Eval('process_method') != 'stripe')
                 | ~Eval('stripe_payment_intent_id')
                 | ~Eval('stripe_capture_needed')),
             },
         depends=[
-            'stripe_journal', 'stripe_payment_intent_id',
+            'process_method', 'stripe_payment_intent_id',
             'stripe_capture_needed'])
     stripe_idempotency_key = fields.Char(
         "Stripe Idempotency Key", readonly=True)
@@ -189,49 +189,49 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
             ('stripe_account', '=', Eval('stripe_account', -1)),
             ],
         states={
-            'invisible': ~Eval('stripe_journal'),
+            'invisible': Eval('process_method') != 'stripe',
             'required': Bool(Eval('stripe_customer_source')),
             'readonly': (~Eval('state').in_(['draft', 'approved'])
                 | Eval('stripe_token') | Eval('stripe_payment_intent_id')),
             },
-        depends=['party', 'stripe_account', 'stripe_journal',
+        depends=['party', 'stripe_account', 'process_method',
             'stripe_customer_source', 'stripe_token',
             'stripe_payment_intent_id', 'state'])
     stripe_customer_source = fields.Char(
         "Stripe Customer Source",
         states={
-            'invisible': (~Eval('stripe_journal')
+            'invisible': ((Eval('process_method') != 'stripe')
                 | Eval('stripe_token')
                 | Eval('stripe_payment_intent_id')
                 | ~Eval('stripe_customer')),
             'readonly': ~Eval('state').in_(['draft', 'approved']),
             },
-        depends=['stripe_journal', 'stripe_token', 'stripe_payment_intent_id',
+        depends=['process_method', 'stripe_token', 'stripe_payment_intent_id',
             'stripe_customer', 'state'])
     # Use Function field with selection to avoid to query Stripe
     # to validate the value
     stripe_customer_source_selection = fields.Function(fields.Selection(
             'get_stripe_customer_sources', "Stripe Customer Source",
             states={
-                'invisible': (~Eval('stripe_journal')
+                'invisible': ((Eval('process_method') != 'stripe')
                     | Eval('stripe_token')
                     | Eval('stripe_payment_intent_id')
                     | ~Eval('stripe_customer')),
                 'readonly': ~Eval('state').in_(['draft', 'approved']),
                 },
             depends=[
-                'stripe_journal', 'stripe_token', 'stripe_customer', 'state']),
+                'process_method', 'stripe_token', 'stripe_customer', 'state']),
         'get_stripe_customer_source', setter='set_stripe_customer_source')
     stripe_customer_payment_method = fields.Char(
         "Stripe Payment Method",
         states={
-            'invisible': (~Eval('stripe_journal')
+            'invisible': ((Eval('process_method') != 'stripe')
                 | Eval('stripe_token')
                 | ~Eval('stripe_customer')),
             'readonly': (~Eval('state').in_(['draft', 'approved'])
                 | Eval('stripe_payment_intent_id')),
             },
-        depends=['stripe_journal', 'stripe_token', 'stripe_customer', 'state'])
+        depends=['process_method', 'stripe_token', 'stripe_customer', 'state'])
     # Use Function field with selection to avoid to query Stripe
     # to validate the value
     stripe_customer_payment_method_selection = fields.Function(
@@ -239,14 +239,14 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
             'get_stripe_customer_payment_methods',
             "Stripe Customer Payment Method",
             states={
-                'invisible': (~Eval('stripe_journal')
+                'invisible': ((Eval('process_method') != 'stripe')
                     | Eval('stripe_token')
                     | ~Eval('stripe_customer')),
                 'readonly': (~Eval('state').in_(['draft', 'approved'])
                     | Eval('stripe_payment_intent_id')),
                 },
             depends=[
-                'stripe_journal', 'stripe_token', 'stripe_customer', 'state']),
+                'process_method', 'stripe_token', 'stripe_customer', 'state']),
         'get_stripe_customer_payment_method',
         setter='set_stripe_customer_payment_method')
     stripe_account = fields.Function(fields.Many2One(
@@ -311,13 +311,6 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def default_stripe_idempotency_key(cls):
         return uuid.uuid4().hex
 
-    @fields.depends('journal')
-    def on_change_with_stripe_journal(self, name=None):
-        if self.journal:
-            return self.journal.process_method == 'stripe'
-        else:
-            return False
-
     @fields.depends('party')
     def on_change_party(self):
         super(Payment, self).on_change_party()
@@ -375,13 +368,13 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def set_stripe_customer_payment_method(cls, payments, name, value):
         pass
 
-    @fields.depends('stripe_journal',
+    @fields.depends('process_method',
         'stripe_token', 'stripe_payment_intent_id',
         'stripe_customer_source', 'stripe_customer_source_selection',
         'stripe_customer_payment_method',
         'stripe_customer_payment_method_selection')
     def on_change_with_stripe_checkout_needed(self, name=None):
-        return (self.stripe_journal
+        return (self.process_method == 'stripe'
             and not self.stripe_token
             and not self.stripe_payment_intent_id
             and not self.stripe_customer_source
@@ -417,7 +410,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def view_attributes(cls):
         return super().view_attributes() + [
             ('//group[@id="stripe"]', 'states', {
-                    'invisible': ~Eval('stripe_journal'),
+                    'invisible': Eval('process_method') != 'stripe',
                     }),
             ]
 
