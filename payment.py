@@ -183,6 +183,9 @@ class Payment(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         depends=['state', 'company'])
+    process_method = fields.Function(
+        fields.Selection('get_process_methods', "Process Method"),
+        'on_change_with_process_method')
     state = fields.Selection([
             ('draft', 'Draft'),
             ('approved', 'Approved'),
@@ -294,6 +297,18 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ('model', 'in', models),
                 ])
         return [(None, '')] + [(m.model, m.name) for m in models]
+
+    @fields.depends('journal')
+    def on_change_with_process_method(self, name=None):
+        if self.journal:
+            return self.journal.process_method
+
+    @classmethod
+    def get_process_methods(cls):
+        pool = Pool()
+        Journal = pool.get('account.payment.journal')
+        field_name = 'process_method'
+        return Journal.fields_get([field_name])[field_name]['selection']
 
     @classmethod
     def delete(cls, payments):
