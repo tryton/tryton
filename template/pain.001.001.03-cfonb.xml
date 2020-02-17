@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
     </py:def>
     <CstmrCdtTrfInitn>
         <GrpHdr>
-            <MsgId>${group.number[:35]}</MsgId>
+            <MsgId>${group.sepa_message_id[:35]}</MsgId>
             <CreDtTm>${datetime.datetime.now().replace(microsecond=0).isoformat()}</CreDtTm>
             <NbOfTxs>${sum(len(payments) for _, payments in group.sepa_payments)}</NbOfTxs>
             <CtrlSum>${sum(p.amount for p in group.payments)}</CtrlSum>
