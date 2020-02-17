@@ -179,6 +179,8 @@ class RichTextBox(TextBox):
             self.toolbar.set_sensitive(not value)
 
     def detect_style(self, textview, *args):
+        if not self.toolbar:
+            return
         tag_widgets = self.tag_widgets[textview]
         text_buffer = textview.get_buffer()
         try:
@@ -269,6 +271,8 @@ class RichTextBox(TextBox):
         toggle_justification(justifications, True)
 
     def insert_text_style(self, text_buffer, iter_, text, length, textview):
+        if not self.toolbar:
+            return
         # Text is already inserted so iter_ point to the end
         start = iter_.copy()
         start.backward_chars(length)
