@@ -622,7 +622,7 @@ class Account(ModelSQL, ModelView):
         return self.webhook_charge_succeeded(payload, _event='charge.pending')
 
     def webhook_charge_refunded(self, payload):
-        return self.webhook_charge_succeeded(payload, _event='charge.pending')
+        return self.webhook_charge_succeeded(payload, _event='charge.refunded')
 
     def webhook_charge_failed(self, payload):
         pool = Pool()
