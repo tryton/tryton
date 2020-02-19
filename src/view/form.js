@@ -619,10 +619,9 @@ function eval_pyson(value){
                         }
                         cell.css('width', width + '%');
                         if (0 < width) {
-                            // 25 is the percentage of offcanvas on md
                             cell.css(
                                 'max-width',
-                                ((width * parent_max_width) - 25) + 'vw');
+                                (width * parent_max_width) + 'vw');
                         }
                     } else {
                         cell.css('width', '');
