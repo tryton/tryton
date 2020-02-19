@@ -144,9 +144,12 @@ class Many2One(Widget):
         self.changed = True
         return
 
-    def get_screen(self):
+    def get_screen(self, search=False):
         domain = self.field.domain_get(self.record)
-        context = self.field.get_context(self.record)
+        if search:
+            context = self.field.get_search_context(self.record)
+        else:
+            context = self.field.get_context(self.record)
         # Remove first tree view as mode is form only
         view_ids = self.attrs.get('view_ids', '').split(',')[1:]
         return Screen(self.get_model(), domain=domain, context=context,
@@ -159,7 +162,7 @@ class Many2One(Widget):
         if not model or not common.MODELACCESS[model]['create']:
             return
         self.focus_out = False
-        screen = self.get_screen()
+        screen = self.get_screen(search=True)
 
         def callback(result):
             if result:

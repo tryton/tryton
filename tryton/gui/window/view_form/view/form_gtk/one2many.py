@@ -337,8 +337,6 @@ class One2Many(Widget):
             self._new_single()
 
     def _new_single(self):
-        ctx = {}
-        ctx.update(self.field.get_context(self.record))
         sequence = self._sequence()
 
         def update_sequence():
@@ -353,7 +351,7 @@ class One2Many(Widget):
             field_size = self.record.expr_eval(self.attrs.get('size')) or -1
             field_size -= len(self.field.get_eval(self.record)) + 1
             WinForm(self.screen, lambda a: update_sequence(), new=True,
-                many=field_size, context=ctx, title=self.attrs.get('string'))
+                many=field_size, title=self.attrs.get('string'))
 
     def _new_product(self):
         fields = self.attrs['product'].split(',')
