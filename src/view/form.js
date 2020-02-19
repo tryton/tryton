@@ -2210,9 +2210,14 @@ function eval_pyson(value){
             this.el.change(this.focus_out.bind(this));
             this._readonly = false;
         },
-        get_screen: function() {
+        get_screen: function(search) {
             var domain = this.field.get_domain(this.record);
-            var context = this.field.get_context(this.record);
+            var context;
+            if (search) {
+                context = this.field.get_search_context(this.record);
+            } else {
+                context = this.field.get_context(this.record);
+            }
             var view_ids = (this.attributes.view_ids || '').split(',');
             if (!jQuery.isEmptyObject(view_ids)) {
                 // Remove the first tree view as mode is form only
@@ -2447,7 +2452,7 @@ function eval_pyson(value){
             if (!model || ! Sao.common.MODELACCESS.get(model).create) {
                 return;
             }
-            var screen = this.get_screen();
+            var screen = this.get_screen(true);
             var callback = function(result) {
                 if (result) {
                     var rec_name_prm = screen.current_record.rec_name();
@@ -3145,8 +3150,6 @@ function eval_pyson(value){
             }.bind(this));
         },
         new_single: function() {
-            var context = jQuery.extend({},
-                    this.field.get_context(this.record));
             var sequence = this._sequence();
             var update_sequence = function() {
                 if (sequence) {
@@ -3165,7 +3168,6 @@ function eval_pyson(value){
                 var win = new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
                     many: field_size,
-                    context: context,
                     title: this.attributes.string
                 });
             }
