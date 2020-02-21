@@ -83,7 +83,7 @@ class FieldTimeTestCase(unittest.TestCase):
 
         time, = Time.create([{'time': Time.time.sql_cast(CurrentTimestamp())}])
 
-        self.assert_(time.time)
+        self.assertTrue(time.time)
 
     @with_transaction()
     def test_create_non_time(self):

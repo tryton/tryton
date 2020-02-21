@@ -41,7 +41,7 @@ To use it in your own module you just have to inherit from
         @with_transaction()
         def test_method(self):
             "Test method"
-            self.assert_(True)
+            self.assertTrue(True)
 
 
 Tests from this modules are found by the function

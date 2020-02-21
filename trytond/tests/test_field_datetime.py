@@ -85,7 +85,7 @@ class FieldDateTimeTestCase(unittest.TestCase):
                     'datetime': DateTime.datetime.sql_cast(CurrentTimestamp()),
                     }])
 
-        self.assert_(datetime.datetime)
+        self.assertTrue(datetime.datetime)
 
     @with_transaction()
     def test_create_non_datetime(self):

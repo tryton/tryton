@@ -82,7 +82,7 @@ class FieldDateTestCase(unittest.TestCase):
 
         date, = Date.create([{'date': CurrentDate()}])
 
-        self.assert_(date.date)
+        self.assertTrue(date.date)
 
     @with_transaction()
     def test_create_non_date(self):
