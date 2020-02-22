@@ -17,7 +17,12 @@ from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
 __all__ = ['Email', 'EmailAttachment', 'EmailLog']
-_EMAIL_MODELS = ['res.user', 'party.party', 'web.user', 'company.employee']
+_EMAIL_MODELS = [
+    'res.user',
+    'party.party',
+    'web.user',
+    'company.employee',
+    'commission.agent']
 
 
 def _formataddr(name, email):
@@ -154,6 +159,10 @@ class Email(ModelSQL, ModelView):
             Employee = pool.get('company.employee')
         except KeyError:
             Employee = None
+        try:
+            Agent = pool.get('commission.agent')
+        except KeyError:
+            Agent = None
         if isinstance(record, User) and record.email:
             return _formataddr(record.rec_name, record.email)
         elif Party and isinstance(record, Party):
@@ -168,6 +177,8 @@ class Email(ModelSQL, ModelView):
                 name = record.party.rec_name
             return _formataddr(name, record.email)
         elif Employee and isinstance(record, Employee):
+            return self._get_address(record.party)
+        elif Agent and isinstance(record, Agent):
             return self._get_address(record.party)
 
     def _get_addresses(self, value):
@@ -194,6 +205,10 @@ class Email(ModelSQL, ModelView):
             Employee = pool.get('company.employee')
         except KeyError:
             Employee = None
+        try:
+            Agent = pool.get('commission.agent')
+        except KeyError:
+            Agent = None
         if isinstance(record, User):
             if record.language:
                 return record.language
@@ -204,6 +219,9 @@ class Email(ModelSQL, ModelView):
             if record.party and record.party.lang:
                 return record.party.lang
         elif Employee and isinstance(record, Employee):
+            if record.party.lang:
+                return record.party.lang
+        elif Agent and isinstance(record, Agent):
             if record.party.lang:
                 return record.party.lang
         lang, = Lang.search([
