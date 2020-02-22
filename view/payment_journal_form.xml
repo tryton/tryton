@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/field[@name='sepa_receivable_flavor']" position="after">
+        <label id="empty" colspan="2"/>
+        <label name="es_sepa_request_advancement"/>
+        <field name="es_sepa_request_advancement"/>
+    </xpath>
+</data>

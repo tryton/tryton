@@ -4,6 +4,7 @@ from trytond.pool import Pool
 from . import account
 from . import party
 from . import reporting_tax
+from . import account_payment
 
 
 def register():
@@ -29,3 +30,7 @@ def register():
     Pool.register(
         reporting_tax.PrintAEAT,
         module='account_es', type_='wizard')
+    Pool.register(
+        account_payment.Journal,
+        account_payment.Group,
+        module='account_es', type_='model', depends=['account_payment_sepa'])

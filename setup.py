@@ -60,6 +60,7 @@ requires.append(get_require_version('trytond'))
 tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account_asset'),
+    get_require_version('trytond_account_payment_sepa'),
     ]
 dependency_links = []
 if minor_version % 2:
