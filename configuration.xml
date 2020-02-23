@@ -27,6 +27,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="menu" ref="menu_party_configuration"/>
             <field name="group" ref="group_party_admin"/>
         </record>
+
+        <record model="ir.model.access" id="access_party_configuration">
+            <field name="model" search="[('model', '=', 'party.configuration')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_party_configuration_party_admin">
+            <field name="model" search="[('model', '=', 'party.configuration')]"/>
+            <field name="group" ref="group_party_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
     <data noupdate="1">
         <record model="party.configuration.party_sequence"
