@@ -29,14 +29,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase"/>
         </record>
 
-        <!-- set active for 1.4 migration -->
-        <menuitem name="Configuration" parent="menu_purchase" id="menu_configuration" sequence="0" icon="tryton-settings" active="1"/>
-        <record model="ir.ui.menu-res.group"
-            id="menu_configuration_group_purchase_admin">
-            <field name="menu" ref="menu_configuration"/>
-            <field name="group" ref="group_purchase_admin"/>
-        </record>
-
         <record model="ir.action.wizard" id="wizard_shipment_handle_exception">
             <field name="name">Handle Shipment Exception</field>
             <field name="wiz_name">purchase.handle.shipment.exception</field>
