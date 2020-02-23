@@ -68,3 +68,15 @@ class PriceListLineContext(ModelView):
         pool = Pool()
         Date = pool.get('ir.date')
         return Date.today()
+
+
+class SaleContext(metaclass=PoolMeta):
+    __name__ = 'product.sale.context'
+
+    date = fields.Function(
+        fields.Date("Date"),
+        'on_change_with_date')
+
+    @fields.depends('sale_date')
+    def on_change_with_date(self, name=None):
+        return self.sale_date

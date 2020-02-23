@@ -69,4 +69,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">price_list_line_context_form</field>
         </record>
     </data>
+
+    <data depends="sale_price_list">
+        <record model="ir.ui.view" id="product_sale_context_view_form">
+            <field name="model">product.sale.context</field>
+            <field name="inherit" ref="sale.product_sale_context_view_form"/>
+            <field name="name">product_sale_context_form</field>
+        </record>
+    </data>
 </tryton>
