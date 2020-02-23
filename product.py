@@ -2,13 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.model import fields
+from trytond.model import ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.modules.product import price_digits
-
-__all__ = ['Template', 'Product']
 
 
 class Template(metaclass=PoolMeta):
@@ -146,3 +144,44 @@ class Product(metaclass=PoolMeta):
         if self.lead_time is None:
             return datetime.date.max
         return date + self.lead_time
+
+
+class SaleContext(ModelView):
+    "Product Sale Context"
+    __name__ = 'product.sale.context'
+
+    locations = fields.Many2Many(
+        'stock.location', None, None, "Warehouses",
+        domain=[('type', '=', 'warehouse')])
+    company = fields.Many2One('company.company', "Company")
+    currency = fields.Many2One('currency.currency', "Currency")
+    customer = fields.Many2One('party.party', "Customer")
+    sale_date = fields.Date("Sale Date")
+    quantity = fields.Float("Quantity")
+
+    stock_date_end = fields.Function(
+        fields.Date("Stock End Date"),
+        'on_change_with_stock_date_end')
+
+    @classmethod
+    def default_locations(cls):
+        pool = Pool()
+        Location = pool.get('stock.location')
+        return [Location.get_default_warehouse()]
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def default_currency(cls):
+        pool = Pool()
+        Company = pool.get('company.company')
+        company_id = cls.default_company()
+        if company_id:
+            company = Company(company_id)
+            return company.currency.id
+
+    @fields.depends('sale_date')
+    def on_change_with_stock_date_end(self, name=None):
+        return self.sale_date

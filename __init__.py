@@ -3,7 +3,7 @@
 
 from trytond.pool import Pool
 from .sale import *
-from .product import *
+from . import product
 from .stock import *
 from .configuration import *
 from .invoice import *
@@ -21,8 +21,9 @@ def register():
         SaleLineTax,
         SaleLineIgnoredMove,
         SaleLineRecreatedMove,
-        Template,
-        Product,
+        product.Template,
+        product.Product,
+        product.SaleContext,
         ShipmentOut,
         ShipmentOutReturn,
         HandleShipmentExceptionAsk,
