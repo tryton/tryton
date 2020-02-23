@@ -16,6 +16,7 @@ def register():
         SaleLine,
         product.Product,
         product.PriceList,
+        product.SaleContext,
         configuration.Configuration,
         configuration.ConfigurationSalePriceList,
         module='sale_price_list', type_='model')

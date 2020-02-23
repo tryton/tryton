@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond.model import fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
@@ -55,3 +56,31 @@ class PriceList(metaclass=PoolMeta):
         if self.unit == 'product_sale' and self.product.sale_uom:
             uom = self.product.sale_uom
         return uom
+
+
+class SaleContext(metaclass=PoolMeta):
+    __name__ = 'product.sale.context'
+
+    price_list = fields.Many2One('product.price_list', "Price List")
+
+    @classmethod
+    def default_price_list(cls):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        config = Configuration(1)
+        if config.sale_price_list:
+            return config.sale_price_list.id
+
+    @fields.depends('customer')
+    def on_change_customer(self):
+        pool = Pool()
+        Configuration = pool.get('sale.configuration')
+        try:
+            super().on_change_customer()
+        except AttributeError:
+            pass
+        if self.customer and self.customer.sale_price_list:
+            self.price_list = self.customer.sale_price_list
+        else:
+            config = Configuration(1)
+            self.price_list = config.sale_price_list
