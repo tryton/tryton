@@ -98,10 +98,9 @@ class Invoice(metaclass=PoolMeta):
         Commission.delete(to_delete)
         Commission.save(to_save)
 
-    def _credit(self):
-        credit = super(Invoice, self)._credit()
-        credit.agent = self.agent
-        return credit
+    def _credit(self, **values):
+        values.setdefault('agent', self.agent)
+        return super()._credit(**values)
 
 
 class InvoiceLine(metaclass=PoolMeta):
