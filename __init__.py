@@ -15,6 +15,7 @@ def register():
         commission.Plan,
         commission.PlanLines,
         commission.Agent,
+        commission.AgentSelection,
         commission.Commission,
         commission.CreateInvoiceAsk,
         invoice.Invoice,
@@ -23,6 +24,7 @@ def register():
         product.Template_Agent,
         product.Product,
         account.Journal,
+        party.Party,
         module='commission', type_='model')
     Pool.register(
         sale.Sale,

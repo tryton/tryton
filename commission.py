@@ -46,6 +46,8 @@ class Agent(ModelSQL, ModelView):
         depends=['plan'])
     pending_amount = fields.Function(fields.Numeric('Pending Amount',
             digits=price_digits), 'get_pending_amount')
+    selections = fields.One2Many(
+        'commission.agent.selection', 'agent', "Selections")
 
     @staticmethod
     def default_company():
@@ -110,6 +112,49 @@ class Agent(ModelSQL, ModelView):
             return self.party.account_payable_used
         elif self.type_ == 'principal':
             return self.party.account_receivable_used
+
+
+class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
+    "Agent Selection"
+    __name__ = 'commission.agent.selection'
+    agent = fields.Many2One('commission.agent', "Agent", required=True)
+    start_date = fields.Date(
+        "Start Date",
+        domain=[
+            If(Eval('start_date') & Eval('end_date'),
+                ('start_date', '<=', Eval('end_date')),
+                ()),
+            ],
+        depends=['end_date'])
+    end_date = fields.Date(
+        "End Date",
+        domain=[
+            If(Eval('start_date') & Eval('end_date'),
+                ('end_date', '>=', Eval('start_date')),
+                ()),
+            ],
+        depends=['start_date'])
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('party', 'ASC NULLS LAST'))
+
+    def match(self, pattern):
+        pool = Pool()
+        Date = pool.get('ir.date')
+
+        pattern = pattern.copy()
+        if 'company' in pattern:
+            pattern.pop('company')
+        date = pattern.pop('date', None) or Date.today()
+        if self.start_date and self.start_date > date:
+            return False
+        if self.end_date and self.end_date < date:
+            return False
+        return super().match(pattern)
 
 
 class Plan(ModelSQL, ModelView):

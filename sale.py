@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 
 
-from trytond.pool import PoolMeta
-from trytond.model import fields
+from trytond.pool import PoolMeta, Pool
+from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval
 
 
@@ -18,7 +18,7 @@ class Sale(metaclass=PoolMeta):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': Eval('state', '') != 'draft',
+            'readonly': ~Eval('state').in_(['draft', 'quotation']),
             },
         depends=['state', 'company'])
 
@@ -28,6 +28,45 @@ class Sale(metaclass=PoolMeta):
             invoice.agent = self.agent
             invoice.save()
         return invoice
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('quotation')
+    def quote(cls, sales):
+        cls.set_agent(sales)
+        super().quote(sales)
+
+    def _get_agent_pattern(self):
+        pattern = {}
+        pattern['date'] = self.sale_date
+        pattern['company'] = self.company.id
+        pattern['party'] = self.party.id
+        return pattern
+
+    @classmethod
+    def _get_agent_selection_domain(cls, pattern):
+        domain = []
+        if 'company' in pattern:
+            domain.append(('agent.company', '=', pattern['company']))
+        if 'party' in pattern:
+            domain.append(('party', 'in', [None, pattern['party']]))
+        return domain
+
+    @classmethod
+    def set_agent(cls, sales):
+        pool = Pool()
+        AgentSelection = pool.get('commission.agent.selection')
+
+        for sale in sales:
+            if sale.agent:
+                continue
+            pattern = sale._get_agent_pattern()
+            for selection in AgentSelection.search(
+                    cls._get_agent_selection_domain(pattern)):
+                if selection.match(pattern):
+                    sale.agent = selection.agent
+                    break
+        cls.save(sales)
 
 
 class SaleLine(metaclass=PoolMeta):
