@@ -24,25 +24,25 @@ Also when activate a children language, you must also activate all parents.
 Translation Wizards
 ===================
 
-Set Report Translations Wizard
-------------------------------
+Set Translations
+----------------
 
 The wizard adds new translations to the base language ``en``.
 
-Clean Translations Wizard
--------------------------
+Clean Translations
+------------------
 
 The wizard deletes obsolete translations from the database.
 
-Synchronize Translations Wizard
--------------------------------
+Synchronize Translations
+------------------------
 
 The wizard updates the translations of the selected language based on the
 translations of the base language ``en``. It will also remove duplicate
 translations with its direct parent.
 
-Export Translations Wizard
---------------------------
+Export Translations
+-------------------
 
 The wizard requires to select a language and a module and will export the
 translations for this selection into a PO-file.
