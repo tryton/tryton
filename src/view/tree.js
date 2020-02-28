@@ -1606,6 +1606,12 @@
             this.header = null;
             this.footers = [];
         },
+        get field_name() {
+            return this.attributes.name;
+        },
+        get model_name() {
+            return model.name;
+        },
         get_cell: function() {
             var cell = jQuery('<div/>', {
                 'class': this.class_,
