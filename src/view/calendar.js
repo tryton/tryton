@@ -112,11 +112,23 @@
         insert_event: function(record) {
             var title = this.screen.model.fields[this.fields[0]].get_client(
                 record);
-            var date_start = record.field_get_client(this.attributes.dtstart);
+            var field_start = record.model.fields[this.attributes.dtstart];
+            var date_start = field_start.get_client(record);
+            field_start.set_state(record);
             var date_end = null;
+            var field_end;
             if (this.attributes.dtend) {
-                date_end = record.field_get_client(this.attributes.dtend);
+                field_end = record.model.fields[this.attributes.dtend];
+                date_end = field_end.get_client(record);
+                field_end.set_state(record);
             }
+
+            var model_access = Sao.common.MODELACCESS.get(
+                this.screen.model_name);
+            var editable = (
+                parseInt(this.attributes.editable || 1, 10) &&
+                model_access.write);
+
             var description = [];
             for (var i = 1; i < this.fields.length; i++) {
                 description.push(
@@ -137,13 +149,17 @@
                 if (date_end && date_start > date_end) {
                     return;
                 }
+                var event_editable = (
+                    editable &&
+                    !field_start.get_state_attrs(record).readonly &&
+                    (!date_end || !field_end.get_state_attrs(record).readonly));
                 var colors = this.get_colors(record);
                 var values = {
                     title: title,
                     start: date_start,
                     end: date_end,
                     allDay: allDay,
-                    editable: true,
+                    editable: event_editable,
                     color: colors.background_color,
                     textColor: colors.text_color,
                     record: record,
@@ -264,16 +280,12 @@
                     .filter(function(e) {
                         return e;
                     }).join('\n'));
-            var model_access = Sao.common.MODELACCESS.get(
-                this.screen.model_name);
-            if (!model_access.write) {
-                event.editable = false;
-            }
         },
         day_click: function(date, jsEvent, view){
             var model_access = Sao.common.MODELACCESS.get(
                 this.screen.model_name);
-            if (model_access.create) {
+            if (parseInt(this.attributes.editable || 1, 10) &&
+                model_access.create) {
                 // Set the calendar date to the clicked date
                 this.el.fullCalendar('gotoDate', date);
                 this.screen.current_record = null;
