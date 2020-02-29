@@ -88,11 +88,7 @@ class Calendar_(goocalendar.Calendar):
             if date:  # select the day of the current record
                 self.select(date)
 
-        if self._event_store:
-            self._event_store.clear()
-        else:
-            event_store = goocalendar.EventStore()
-            self.event_store = event_store
+        event_store = goocalendar.EventStore()
 
         for record in group:
             if not record[dtstart].get(record):
@@ -120,6 +116,7 @@ class Calendar_(goocalendar.Calendar):
             event = goocalendar.Event(label, start, end, text_color=text_color,
                 bg_color=bg_color, all_day=all_day)
             event.record = record
-            self._event_store.add(event)
+            event_store.add(event)
+        self.event_store = event_store
 
         self.grab_focus(self.get_root_item())
