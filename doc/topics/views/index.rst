@@ -279,6 +279,10 @@ Display a field of the object with the value of the current record.
 
     * ``factor``: see in common-attributes-factor_.
 
+    * ``spell``: Only for Text widgets, a :ref:`PYSON statement <topics-pyson>`
+      that will be evaluated to the language code for which spell checking must
+      be done.
+
 image
 ^^^^^
 
