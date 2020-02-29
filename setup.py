@@ -141,7 +141,7 @@ dist = setup(name=name,
         'PyGObject',
         ],
     extras_require={
-        'calendar': ['GooCalendar>=0.5'],
+        'calendar': ['GooCalendar>=0.7'],
         },
     zip_safe=False,
     test_suite='tryton.tests',

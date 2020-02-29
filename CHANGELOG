@@ -1,3 +1,6 @@
+* Manage readonly dates in calendar view
+* Manage editable on calendar view
+* Manage model access on calendar view
 * Set client title at the end of header bar
 * Manage named separator as label
 * Add MultiSelection entry to Dict field

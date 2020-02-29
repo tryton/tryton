@@ -15,6 +15,8 @@ except ImportError as e:
     Calendar_ = None
     Toolbar = None
 
+from tryton.common import MODELACCESS
+
 _ = gettext.gettext
 
 
@@ -120,7 +122,10 @@ class ViewCalendar(View):
         self.record = None
 
     def on_day_activated(self, goocalendar, day):
-        self.screen.new()
+        model_access = MODELACCESS[self.screen.model_name]
+        if (bool(int(self.attributes.get('editable', 1)))
+                and model_access['create']):
+            self.screen.new()
 
     def __getitem__(self, name):
         return None
