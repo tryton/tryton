@@ -853,6 +853,7 @@ class Main(Gtk.Application):
         hbox.show_all()
         label_menu = Gtk.Label(
             label=page.name, halign=Gtk.Align.START)
+        page.widget.props.margin = 3
         self.notebook.insert_page_menu(page.widget, hbox, label_menu, page_id)
         self.notebook.set_tab_reorderable(page.widget, True)
         self.notebook.set_current_page(page_id)
