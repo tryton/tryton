@@ -38,6 +38,17 @@
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">editable</name>
+        <choice>
+          <value>0</value>
+          <value>1</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.calendar" combine="interleave">
+    <optional>
       <attribute a:defaultValue="black">
         <name ns="">color</name>
         <text/>

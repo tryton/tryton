@@ -9,6 +9,7 @@ attlist.calendar &=
   attribute mode { "day"
       | "week"
       | "month" }?
+attlist.calendar &= [a:defaultValue = "1" ] attribute editable { "0" | "1" }?
 attlist.calendar &=
    [ a:defaultValue = "black" ] attribute color { text }?
 attlist.calendar &=

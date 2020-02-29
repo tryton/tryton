@@ -830,6 +830,9 @@ Each calendar view must start with this tag.
       Available views are: `day`, `week` and `month`. The default value is 
       `month`.
 
+    * ``editable``: A boolean to specify if the calendar is editable. The
+      default value is `True`.
+
     * ``color``: An optional field name that contains the text color for the
       event. The default value is `black`.
 
