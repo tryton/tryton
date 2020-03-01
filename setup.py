@@ -81,8 +81,8 @@ setup(name=name,
     keywords='tryton purchase requisition',
     package_dir={'trytond.modules.purchase_requisition': '.'},
     packages=(
-        ['trytond.modules.purchase_requisition'] +
-        ['trytond.modules.purchase_requisition.%s' % p
+        ['trytond.modules.purchase_requisition']
+        + ['trytond.modules.purchase_requisition.%s' % p
             for p in find_packages()]
         ),
     package_data={
