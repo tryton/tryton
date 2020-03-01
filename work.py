@@ -176,7 +176,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             digits=(16, 4),
             help='Estimated total progress for this work and the sub-works.',
             states={
-                'invisible': Eval('total_progress', None) == None,
+                'invisible': (
+                    Eval('total_progress', None) == None),  # noqa: E711
                 }),
         'get_total')
     comment = fields.Text('Comment')
@@ -473,8 +474,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             total_effort = result['total_effort']
             for work in works:
                 if total_effort[work.id]:
-                    total_progress[work.id] = round(total_progress[work.id] /
-                        (total_effort[work.id].total_seconds() / 60 / 60),
+                    total_progress[work.id] = round(total_progress[work.id]
+                        / (total_effort[work.id].total_seconds() / 60 / 60),
                         digits)
                 else:
                     total_effort[work.id] = None

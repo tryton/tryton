@@ -18,6 +18,6 @@ def register():
         ir.ActWindow,
         module='project', type_='model')
     Pool.register(
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='project', type_='wizard')
