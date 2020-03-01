@@ -160,7 +160,8 @@ class User(metaclass=PoolMeta):
             user_id = Transaction().context['user']
         result = super(User, cls).read(ids, fields_names=fields_names)
         if (fields_names
-                and (('company' in fields_names
+                and ((
+                        'company' in fields_names
                         and 'company' in Transaction().context)
                     or ('employee' in fields_names
                         and 'employee' in Transaction().context))):

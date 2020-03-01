@@ -25,15 +25,15 @@ def register():
         ir.Cron,
         ir.CronCompany,
         party.Configuration,
-        party.PartyConfigurationLang,
+        party.ConfigurationLang,
         party.Party,
         party.PartyLang,
         party.ContactMechanism,
         module='company', type_='model')
     Pool.register(
         company.CompanyConfig,
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='company', type_='wizard')
     Pool.register(
         party.LetterReport,
