@@ -20,11 +20,12 @@ def register():
         depends=['account_invoice'])
     Pool.register(
         sale.Sale,
-        sale.SaleLine,
+        sale.Line,
         module='account_tax_rule_country', type_='model',
         depends=['sale'])
     Pool.register(
-        purchase.PurchaseLine,
+        purchase.Purchase,
+        purchase.Line,
         module='account_tax_rule_country', type_='model',
         depends=['purchase'])
     Pool.register(

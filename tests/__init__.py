@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account_tax_rule_country.tests.test_account_tax_rule_country import suite
+    from trytond.modules.account_tax_rule_country.tests.test_account_tax_rule_country import suite  # noqa: E501
 except ImportError:
     from .test_account_tax_rule_country import suite
 

@@ -5,8 +5,6 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval
 
-__all__ = ['Purchase', 'PurchaseLine']
-
 
 class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'
@@ -20,13 +18,13 @@ class Purchase(metaclass=PoolMeta):
             field.depends.extend(['invoice_address'])
 
 
-class PurchaseLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     @fields.depends('purchase', '_parent_purchase.warehouse',
         '_parent_purchase.invoice_address')
     def _get_tax_rule_pattern(self):
-        pattern = super(PurchaseLine, self)._get_tax_rule_pattern()
+        pattern = super()._get_tax_rule_pattern()
 
         from_country = from_subdivision = to_country = to_subdivision = None
         if self.purchase:

@@ -5,8 +5,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval
 
-__all__ = ['Sale', 'SaleLine']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -20,7 +18,7 @@ class Sale(metaclass=PoolMeta):
             field.depends.extend(['shipment_address'])
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @fields.depends('sale', '_parent_sale.warehouse',
@@ -29,7 +27,7 @@ class SaleLine(metaclass=PoolMeta):
         pool = Pool()
         Location = pool.get('stock.location')
 
-        pattern = super(SaleLine, self)._get_tax_rule_pattern()
+        pattern = super()._get_tax_rule_pattern()
 
         from_country = from_subdivision = to_country = to_subdivision = None
         if self.id is None or self.id < 0:
