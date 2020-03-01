@@ -85,8 +85,8 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
-            ('//label[@id="time_label"]', 'states', {
+        return [(
+                '//label[@id="time_label"]', 'states', {
                     'invisible': Eval('interval_type') == 'minutes',
                 }),
             ]

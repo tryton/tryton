@@ -16,7 +16,8 @@ from urllib.parse import urljoin
 
 from werkzeug.utils import redirect
 from werkzeug.wrappers import Response
-from werkzeug.exceptions import NotImplemented, BadRequest
+from werkzeug.exceptions import (
+    NotImplemented as NotImplementedException, BadRequest)
 
 from trytond import backend
 from trytond.wsgi import app
@@ -142,7 +143,7 @@ class LongPollingBus:
     def _listen(cls, database):
         db = backend.Database(database)
         if not db.has_channel():
-            raise NotImplemented
+            raise NotImplementedException
 
         logger.info("listening on channel '%s'", cls._channel)
         conn = db.get_connection()
@@ -222,7 +223,7 @@ else:
 @app.auth_required
 def subscribe(request, database_name):
     if not _allow_subscribe:
-        raise NotImplemented
+        raise NotImplementedException
     if _url_host and _url_host != request.host_url:
         response = redirect(
             urljoin(_url_host, request.path), HTTPStatus.PERMANENT_REDIRECT)

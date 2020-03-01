@@ -35,7 +35,8 @@ class ToolsTestCase(unittest.TestCase):
 
     def test_reduce_ids_one_hole(self):
         'Test reduce_ids continue list with one hole'
-        self.assertEqual(reduce_ids(self.table.id, list(range(10)) + list(range(20, 30))),
+        self.assertEqual(reduce_ids(
+                self.table.id, list(range(10)) + list(range(20, 30))),
             ((self.table.id >= 0) & (self.table.id <= 9))
             | ((self.table.id >= 20) & (self.table.id <= 29)))
 

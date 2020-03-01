@@ -55,7 +55,8 @@ def tree(parent='parent', name='name', separator=None):
                 for value in values:
                     domain.append((field, clause[1], value.strip()))
                     field = parent + '.' + field
-                if ((clause[1].endswith('like')
+                if ((
+                            clause[1].endswith('like')
                             and not clause[2].replace(
                                 '%%', '__').startswith('%'))
                         or not clause[1].endswith('like')):
@@ -68,8 +69,8 @@ def tree(parent='parent', name='name', separator=None):
                     domain.append((top_parent, operator, None))
                 if (clause[1].endswith('like')
                         and clause[2].replace('%%', '__').endswith('%')):
-                        ids = list(map(int, cls.search(domain, order=[])))
-                        domain = [(parent, 'child_of', ids)]
+                    ids = list(map(int, cls.search(domain, order=[])))
+                    domain = [(parent, 'child_of', ids)]
                 return domain
 
         @classmethod

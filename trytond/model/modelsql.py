@@ -370,7 +370,8 @@ class ModelSQL(ModelStorage):
                 target_records = Model.search([
                         ('id', '=', field.sql_format(values[field_name])),
                         ], order=[])
-                if not ((target_records
+                if not ((
+                            target_records
                             or (values[field_name] in create_records))
                         and (values[field_name] not in delete_records)):
                     error_args = cls.__names__(field_name)

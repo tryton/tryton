@@ -10,7 +10,7 @@ import warnings
 __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
-VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
+VARCHAR_SIZE_RE = re.compile(r'VARCHAR\(([0-9]+)\)')
 
 
 class TableHandler(TableHandlerInterface):
@@ -58,16 +58,16 @@ class TableHandler(TableHandlerInterface):
                     in cursor.fetchall()]
             cursor.execute(('INSERT INTO "_temp_%s" '
                     '(' + ','.join(columns) + ') '
-                    'SELECT ' + ','.join(columns) +
-                    ' FROM "%s"') % (table_name, table_name))
+                    'SELECT ' + ','.join(columns)
+                    + ' FROM "%s"') % (table_name, table_name))
             cursor.execute('DROP TABLE "%s"' % table_name)
             new_sql = sql.replace('PRIMARY KEY',
                     'PRIMARY KEY AUTOINCREMENT')
             cursor.execute(new_sql)
             cursor.execute(('INSERT INTO "%s" '
                     '(' + ','.join(columns) + ') '
-                    'SELECT ' + ','.join(columns) +
-                    ' FROM "_temp_%s"') % (table_name, table_name))
+                    'SELECT ' + ','.join(columns)
+                    + ' FROM "_temp_%s"') % (table_name, table_name))
             cursor.execute('DROP TABLE "_temp_%s"' % table_name)
         return True
 
@@ -106,11 +106,11 @@ class TableHandler(TableHandlerInterface):
                 new_column, database.sql_type(typname), field_size=size)
             columns.append(new_column)
             old_columns.append(column)
-        cursor.execute(('INSERT INTO "%s" (' +
-                ','.join('"%s"' % x for x in columns) +
-                ') SELECT ' +
-                ','.join('"%s"' % x for x in old_columns) + ' ' +
-                'FROM "%s"') % (self.table_name, temp_table))
+        cursor.execute(('INSERT INTO "%s" ('
+                + ','.join('"%s"' % x for x in columns)
+                + ') SELECT '
+                + ','.join('"%s"' % x for x in old_columns) + ' '
+                + 'FROM "%s"') % (self.table_name, temp_table))
         cursor.execute('DROP TABLE "%s"' % temp_table)
         self._update_definitions()
 
@@ -332,11 +332,11 @@ class TableHandler(TableHandlerInterface):
                 new_table._add_raw_column(
                     name, database.sql_type(typname), field_size=size)
         columns_name = list(new_table._columns.keys())
-        cursor.execute(('INSERT INTO "%s" (' +
-                        ','.join('"%s"' % c for c in columns_name) +
-                        ') SELECT ' +
-                        ','.join('"%s"' % c for c in columns_name) + ' ' +
-                        'FROM "%s"') % (self.table_name, temp_table))
+        cursor.execute(('INSERT INTO "%s" ('
+                        + ','.join('"%s"' % c for c in columns_name)
+                        + ') SELECT '
+                        + ','.join('"%s"' % c for c in columns_name) + ' '
+                        + 'FROM "%s"') % (self.table_name, temp_table))
         cursor.execute('DROP TABLE "%s"' % temp_table)
         self._update_definitions()
 

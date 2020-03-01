@@ -5,7 +5,7 @@ import os
 import logging
 from getpass import getpass
 
-from sql import Table
+from sql import Table, Literal
 
 from trytond import backend
 from trytond.transaction import Transaction
@@ -41,7 +41,7 @@ def run(options):
                     raise Exception('"%s" is not a Tryton database.' % db_name)
                 lang = Table('ir_lang')
                 cursor.execute(*lang.select(lang.code,
-                        where=lang.translatable == True))
+                        where=lang.translatable == Literal(True)))
                 lang = set([x[0] for x in cursor.fetchall()])
             lang.add(main_lang)
         else:

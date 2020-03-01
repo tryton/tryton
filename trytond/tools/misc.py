@@ -203,10 +203,10 @@ def reduce_domain(domain):
         domain = domain[1:]
     result = [operator]
     for arg in domain:
-        if (isinstance(arg, tuple) or
-                (isinstance(arg, list) and
-                    len(arg) > 2 and
-                    arg[1] in OPERATORS)):
+        if (isinstance(arg, tuple)
+                or (isinstance(arg, list)
+                    and len(arg) > 2
+                    and arg[1] in OPERATORS)):
             # clause
             result.append(arg)
         elif isinstance(arg, list) and arg:

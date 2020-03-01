@@ -5,7 +5,7 @@ import json
 import logging
 import re
 
-from sql import Null
+from sql import Null, Literal
 from sql.aggregate import Max
 from sql.conditionals import Case
 from collections import defaultdict
@@ -98,7 +98,8 @@ class Model(ModelSQL, ModelView):
             cursor.execute(*ir_model.insert(
                     [ir_model.model, ir_model.name, ir_model.info,
                         ir_model.module],
-                    [[model.__name__, model._get_name(), model.__doc__,
+                    [[
+                            model.__name__, model._get_name(), model.__doc__,
                             module_name]]))
             cursor.execute(*ir_model.select(ir_model.id,
                     where=ir_model.model == model.__name__))
@@ -282,8 +283,11 @@ class ModelField(ModelSQL, ModelView):
                             ir_model_field.field_description,
                             ir_model_field.ttype, ir_model_field.relation,
                             ir_model_field.help, ir_model_field.module],
-                        [[model_id, field_name, field.string, field._type,
-                                relation, field.help, module_name]]))
+                        [[
+                                model_id, field_name,
+                                field.string,
+                                field._type, relation,
+                                field.help, module_name]]))
             elif (model_fields[field_name]['field_description'] != field.string
                     or model_fields[field_name]['ttype'] != field._type
                     or model_fields[field_name]['relation'] != relation
@@ -293,8 +297,8 @@ class ModelField(ModelSQL, ModelView):
                             ir_model_field.ttype, ir_model_field.relation,
                             ir_model_field.help],
                         [field.string, field._type, relation, field.help],
-                        where=ir_model_field.id ==
-                        model_fields[field_name]['id']))
+                        where=(ir_model_field.id
+                            == model_fields[field_name]['id'])))
 
     @classmethod
     def clean(cls):
@@ -519,14 +523,23 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 condition=model_access.group == group.id
                 ).select(
                 ir_model.model,
-                Max(Case((model_access.perm_read == True, 1), else_=0)),
-                Max(Case((model_access.perm_write == True, 1), else_=0)),
-                Max(Case((model_access.perm_create == True, 1), else_=0)),
-                Max(Case((model_access.perm_delete == True, 1), else_=0)),
+                Max(Case(
+                        (model_access.perm_read == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (model_access.perm_write == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (model_access.perm_create == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (model_access.perm_delete == Literal(True), 1),
+                        else_=0)),
                 where=ir_model.model.in_(models)
-                & (model_access.active == True)
-                & (((user_group.user == user)
-                        & (group.active == True))
+                & (model_access.active == Literal(True))
+                & ((
+                        (user_group.user == user)
+                        & (group.active == Literal(True)))
                     | (model_access.group == Null)),
                 group_by=ir_model.model))
         access.update(dict(
@@ -700,14 +713,23 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                 ).select(
                 ir_model.model,
                 model_field.name,
-                Max(Case((field_access.perm_read == True , 1), else_=0)),
-                Max(Case((field_access.perm_write == True, 1), else_=0)),
-                Max(Case((field_access.perm_create == True, 1), else_=0)),
-                Max(Case((field_access.perm_delete == True, 1), else_=0)),
+                Max(Case(
+                        (field_access.perm_read == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (field_access.perm_write == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (field_access.perm_create == Literal(True), 1),
+                        else_=0)),
+                Max(Case(
+                        (field_access.perm_delete == Literal(True), 1),
+                        else_=0)),
                 where=ir_model.model.in_(models)
-                & (field_access.active == True)
-                & (((user_group.user == user)
-                        & (group.active == True))
+                & (field_access.active == Literal(True))
+                & ((
+                        (user_group.user == user)
+                        & (group.active == Literal(True)))
                     | (field_access.group == Null)),
                 group_by=[ir_model.model, model_field.name]))
         for m, f, r, w, c, d in cursor.fetchall():
@@ -1372,7 +1394,7 @@ class ModelGraph(Report):
 
         for model in models:
             if filter and re.search(filter, model.model):
-                    continue
+                continue
             label = '"{' + model.model + '\\n'
             if model.fields:
                 label += '|'

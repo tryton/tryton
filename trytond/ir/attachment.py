@@ -20,6 +20,7 @@ def firstline(description):
     except StopIteration:
         return ''
 
+
 if config.getboolean('attachment', 'filestore', default=True):
     file_id = 'file_id'
     store_prefix = config.get('attachment', 'store_prefix', default=None)

@@ -22,13 +22,6 @@ try:
 except ImportError:
     weasyprint = None
 
-warnings.simplefilter("ignore")
-import relatorio.reporting
-warnings.resetwarnings()
-try:
-    from relatorio.templates.opendocument import Manifest, MANIFEST
-except ImportError:
-    Manifest, MANIFEST = None, None
 from genshi.filters import Translator
 
 from trytond.i18n import gettext
@@ -37,6 +30,14 @@ from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.rpc import RPC
 from trytond.exceptions import UserError
+
+warnings.simplefilter("ignore")
+import relatorio.reporting  # noqa: E402
+warnings.resetwarnings()
+try:
+    from relatorio.templates.opendocument import Manifest, MANIFEST
+except ImportError:
+    Manifest, MANIFEST = None, None
 
 logger = logging.getLogger(__name__)
 

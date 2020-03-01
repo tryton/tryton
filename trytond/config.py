@@ -149,4 +149,5 @@ class TrytonConfigParser(configparser.ConfigParser):
                 AttributeError):
             return default
 
+
 config = TrytonConfigParser()

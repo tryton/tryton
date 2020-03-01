@@ -64,10 +64,10 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('on_exclusive',
-                Check(t, ~((t.on_time == True)
-                        & ((t.on_create == True)
-                            | (t.on_write == True)
-                            | (t.on_delete == True)))),
+                Check(t, ~((t.on_time == Literal(True))
+                        & ((t.on_create == Literal(True))
+                            | (t.on_write == Literal(True))
+                            | (t.on_delete == Literal(True))))),
                 '"On Time" and others are mutually exclusive!'),
             ]
         cls._order.insert(0, ('name', 'ASC'))

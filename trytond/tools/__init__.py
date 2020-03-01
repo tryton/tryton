@@ -1,9 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from .misc import (
+    file_open, get_smtp_server, memoize, reduce_ids, reduce_domain,
+    grouped_slice, is_instance_method, resolve, strip_wildcard,
+    lstrip_wildcard, rstrip_wildcard, slugify)
+from .decimal_ import decistmt
 
-from .misc import *
-from .decimal_ import *
+__all__ = ['file_open', 'get_smtp_server', 'memoize', 'reduce_ids',
+    'reduce_domain', 'grouped_slice', 'is_instance_method', 'resolve',
+    'strip_wildcard', 'lstrip_wildcard', 'rstrip_wildcard', 'slugify',
+    'decistmt', 'ClassProperty', 'cursor_dict']
 
 
 class ClassProperty(property):

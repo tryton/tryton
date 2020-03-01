@@ -297,7 +297,8 @@ class ModelStorage(Model):
 
         # Clean transaction cache
         for cache in list(Transaction().cache.values()):
-            for cache in (cache, list(cache.get('_language_cache', {}).values())):
+            for cache in (cache, list(
+                        cache.get('_language_cache', {}).values())):
                 if cls.__name__ in cache:
                     for record in records:
                         if record.id in cache[cls.__name__]:
@@ -647,8 +648,8 @@ class ModelStorage(Model):
                     value = getattr(value, field_name)
                 if isinstance(value, (list, tuple)):
                     first = True
-                    child_fields_names = [(x[:i + 1] == fields_tree[:i + 1] and
-                        x[i + 1:]) or [] for x in fields_names]
+                    child_fields_names = [(x[:i + 1] == fields_tree[:i + 1]
+                            and x[i + 1:]) or [] for x in fields_names]
                     if child_fields_names in done:
                         break
                     done.append(child_fields_names)
@@ -1184,7 +1185,8 @@ class ModelStorage(Model):
                 validate_domain(field)
 
                 def required_test(value, field_name, field):
-                    if ((isinstance(value,
+                    if ((
+                                isinstance(value,
                                     (type(None), bool, list, tuple, str, dict))
                                 and not value)
                             or (field._type == 'reference'
@@ -1689,7 +1691,7 @@ class ModelStorage(Model):
                     if to_write:
                         cls.write(*sum(
                                 (([r], save_values[r]) for r in to_write), ()))
-            except:
+            except Exception:
                 for record in to_create + to_write:
                     record._values = values[record]
                 raise

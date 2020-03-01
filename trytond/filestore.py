@@ -62,6 +62,7 @@ class FileStore(object):
     def _id(self, data):
         return hashlib.md5(data).hexdigest()
 
+
 if config.get('database', 'class'):
-    FileStore = resolve(config.get('database', 'class'))
+    FileStore = resolve(config.get('database', 'class'))  # noqa: F811
 filestore = FileStore()

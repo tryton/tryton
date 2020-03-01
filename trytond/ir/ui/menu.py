@@ -162,9 +162,11 @@ class UIMenu(DeactivableMixin, sequence_ordered(), tree(separator=' / '),
         with Transaction().set_context(active_test=False):
             menus = cls.browse(menus)
         action_keywords = sum((list(m.action_keywords) for m in menus), [])
-        key = lambda k: k.action.type
-        action_keywords.sort(key=key)
-        for type, action_keywords in groupby(action_keywords, key=key):
+
+        def action_type(keyword):
+            return keyword.action.type
+        action_keywords.sort(key=action_type)
+        for type, action_keywords in groupby(action_keywords, key=action_type):
             action_keywords = list(action_keywords)
             for action_keyword in action_keywords:
                 model = action_keyword.model

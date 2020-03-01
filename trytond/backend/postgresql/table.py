@@ -9,7 +9,7 @@ from trytond.backend.table import TableHandlerInterface
 __all__ = ['TableHandler']
 
 logger = logging.getLogger(__name__)
-VARCHAR_SIZE_RE = re.compile('VARCHAR\(([0-9]+)\)')
+VARCHAR_SIZE_RE = re.compile(r'VARCHAR\(([0-9]+)\)')
 
 
 class TableHandler(TableHandlerInterface):
@@ -74,9 +74,10 @@ class TableHandler(TableHandlerInterface):
                         'ALTER __id SET DEFAULT %s'
                         % (self.table_name, default))
             if self._columns['id']['default'] != default:
-                    cursor.execute('ALTER TABLE "%s" '
-                        'ALTER id SET DEFAULT %s'
-                        % (self.table_name, default))
+                cursor.execute(
+                    'ALTER TABLE "%s" '
+                    'ALTER id SET DEFAULT %s'
+                    % (self.table_name, default))
         self._update_definitions()
 
     @staticmethod

@@ -10,13 +10,10 @@ import time
 from decimal import Decimal
 from weakref import WeakKeyDictionary
 
-_FIX_ROWCOUNT = False
 try:
     from pysqlite2 import dbapi2 as sqlite
     from pysqlite2.dbapi2 import IntegrityError as DatabaseIntegrityError
     from pysqlite2.dbapi2 import OperationalError as DatabaseOperationalError
-    # pysqlite2 < 2.5 doesn't return correct rowcount
-    _FIX_ROWCOUNT = sqlite.version_info < (2, 5, 0)
 except ImportError:
     import sqlite3 as sqlite
     from sqlite3 import IntegrityError as DatabaseIntegrityError
@@ -554,12 +551,15 @@ class Database(DatabaseInterface):
             column = JSONExtract(column, '$.%s' % key)
         return NullIf(JSONQuote(column), JSONQuote(Null))
 
+
 sqlite.register_converter('NUMERIC', lambda val: Decimal(val.decode('utf-8')))
 sqlite.register_adapter(Decimal, lambda val: str(val).encode('utf-8'))
 
 
 def adapt_datetime(val):
     return val.replace(tzinfo=None).isoformat(" ")
+
+
 sqlite.register_adapter(datetime.datetime, adapt_datetime)
 sqlite.register_adapter(datetime.time, lambda val: val.isoformat())
 sqlite.register_converter('TIME',
@@ -575,6 +575,8 @@ def convert_interval(value):
     elif value <= _interval_min:
         return datetime.timedelta.min
     return datetime.timedelta(seconds=value)
+
+
 _interval_max = datetime.timedelta.max.total_seconds()
 _interval_min = datetime.timedelta.min.total_seconds()
 sqlite.register_converter('INTERVAL', convert_interval)

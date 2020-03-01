@@ -25,8 +25,8 @@ if os.environ.get('TRYTOND_COROUTINE'):
     from gevent import monkey
     monkey.patch_all()
 
-from trytond.pool import Pool
-from trytond.wsgi import app
+from trytond.pool import Pool  # noqa: E402
+from trytond.wsgi import app  # noqa: E402
 
 Pool.start()
 # TRYTOND_CONFIG it's managed by importing config

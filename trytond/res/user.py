@@ -602,7 +602,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                     (table.password_reset_expire > CurrentTimestamp(),
                         table.password_reset),
                     else_=None),
-                where=(table.login == login) & (table.active == True)))
+                where=(table.login == login)
+                & (table.active == Literal(True))))
         result = cursor.fetchone() or (None, None, None)
         cls._get_login_cache.set(login, result)
         return result

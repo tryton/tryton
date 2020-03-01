@@ -403,8 +403,8 @@ class ModuleConfigWizardItem(sequence_ordered(), ModelSQL, ModelView):
         cursor.execute(*model_data.update(
                 columns=[model_data.model],
                 values=[cls.__name__],
-                where=(model_data.model ==
-                    'ir.module.module.config_wizard.item')))
+                where=(model_data.model
+                    == 'ir.module.module.config_wizard.item')))
 
         super(ModuleConfigWizardItem, cls).__register__(module_name)
 

@@ -16,8 +16,8 @@ from .pyson import PYSONEncoder, CONTEXT
 
 logger = logging.getLogger(__name__)
 
-CDATA_START = re.compile('^\s*\<\!\[cdata\[', re.IGNORECASE)
-CDATA_END = re.compile('\]\]\>\s*$', re.IGNORECASE)
+CDATA_START = re.compile(r'^\s*\<\!\[cdata\[', re.IGNORECASE)
+CDATA_END = re.compile(r'\]\]\>\s*$', re.IGNORECASE)
 
 
 class DummyTagHandler:
@@ -279,7 +279,7 @@ class RecordTagHandler:
                 self.cdata = 'done'
 
                 value = self.values[self.current_field]
-                match = re.findall('[^%]%\((.*?)\)[ds]', value)
+                match = re.findall(r'[^%]%\((.*?)\)[ds]', value)
                 xml_ids = {}
                 for xml_id in match:
                     xml_ids[xml_id] = self.mh.get_id(xml_id)

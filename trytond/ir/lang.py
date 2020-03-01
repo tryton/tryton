@@ -2,10 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 import datetime
-import warnings
-warnings.filterwarnings('ignore', "", ImportWarning)
 from locale import CHAR_MAX
-warnings.resetwarnings()
 from ast import literal_eval
 
 from sql import Table
@@ -518,4 +515,6 @@ def get_parent_language(code):
     for sep in ['@', '_']:
         if sep in code:
             return code.rsplit(sep, 1)[0]
+
+
 _parents = {}

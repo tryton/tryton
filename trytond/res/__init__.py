@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from ..pool import Pool
 
-from .group import *
-from .user import *
+from . import group
+from . import user
 from . import ir
 from . import routes
 
@@ -12,14 +12,14 @@ __all__ = ['register', 'routes']
 
 def register():
     Pool.register(
-        Group,
-        User,
-        LoginAttempt,
-        UserAction,
-        UserGroup,
-        Warning_,
-        UserApplication,
-        UserConfigStart,
+        group.Group,
+        user.User,
+        user.LoginAttempt,
+        user.UserAction,
+        user.UserGroup,
+        user.Warning_,
+        user.UserApplication,
+        user.UserConfigStart,
         ir.UIMenuGroup,
         ir.ActionGroup,
         ir.ModelButtonGroup,
@@ -37,8 +37,8 @@ def register():
         ir.Export_Write_Group,
         module='res', type_='model')
     Pool.register(
-        UserConfig,
+        user.UserConfig,
         module="res", type_='wizard')
     Pool.register(
-        EmailResetPassword,
+        user.EmailResetPassword,
         module='res', type_='report')

@@ -227,5 +227,5 @@ if config.has_section('wsgi middleware'):
                 kwargs = eval(config.get(section, 'kwargs'))
         app.wsgi_app = Middleware(app.wsgi_app, *args, **kwargs)
 
-import trytond.protocols.dispatcher
-import trytond.bus
+import trytond.protocols.dispatcher  # noqa: E402,F401
+import trytond.bus  # noqa: E402,F401

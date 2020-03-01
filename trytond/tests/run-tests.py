@@ -35,14 +35,14 @@ opt = parser.parse_args()
 config.update_etc(opt.config)
 
 # Import after application is configured
-from trytond import backend
+from trytond import backend  # noqa: E402
 if backend.name == 'sqlite':
     database_name = ':memory:'
 else:
     database_name = 'test_' + str(int(time.time()))
 os.environ.setdefault('DB_NAME', database_name)
 
-from trytond.tests.test_tryton import all_suite, modules_suite
+from trytond.tests.test_tryton import all_suite, modules_suite  # noqa: E402
 if not opt.modules:
     suite = all_suite(opt.tests)
 else:

@@ -216,7 +216,8 @@ class Translation(ModelSQL, ModelView):
                             ir_translation.type, ir_translation.src,
                             ir_translation.value, ir_translation.module,
                             ir_translation.fuzzy, ir_translation.res_id],
-                        [[trans_name, 'en',
+                        [[
+                                trans_name, 'en',
                                 'wizard_button', button.string,
                                 '', module_name,
                                 False, -1]]))
@@ -224,8 +225,8 @@ class Translation(ModelSQL, ModelView):
                 cursor.execute(*ir_translation.update(
                         [ir_translation.src],
                         [button.string],
-                        where=ir_translation.id ==
-                        trans_buttons[trans_name]['id']))
+                        where=ir_translation.id
+                        == trans_buttons[trans_name]['id']))
 
         for state_name, state in wizard.states.items():
             if not isinstance(state, StateView):
@@ -264,7 +265,8 @@ class Translation(ModelSQL, ModelView):
         Operator = fields.SQL_OPERATORS[operator]
         return [('id', 'in', table.select(table.id,
                     where=Operator(Substring(table.name, 1,
-                            Case((Position(',', table.name) > 0,
+                            Case((
+                                    Position(',', table.name) > 0,
                                     Position(',', table.name) - 1),
                                 else_=0)), value)))]
 
@@ -1016,7 +1018,8 @@ class TranslationSet(Wizard):
                                     translation.type, translation.src,
                                     translation.value, translation.module,
                                     translation.fuzzy, translation.res_id],
-                                [[report.report_name, 'en',
+                                [[
+                                        report.report_name, 'en',
                                         'report', string,
                                         '', module,
                                         False, -1]]))
@@ -1103,8 +1106,8 @@ class TranslationSet(Wizard):
                                 [translation.src,
                                     translation.fuzzy],
                                 [string, True],
-                                where=(translation.id ==
-                                    trans_views[string_trans]['id'])))
+                                where=(translation.id
+                                    == trans_views[string_trans]['id'])))
                         del trans_views[string_trans]
                         done = True
                         break
@@ -1114,7 +1117,8 @@ class TranslationSet(Wizard):
                                 translation.type, translation.src,
                                 translation.value, translation.module,
                                 translation.fuzzy, translation.res_id],
-                            [[view.model, 'en',
+                            [[
+                                    view.model, 'en',
                                     'view', string,
                                     '', view.module,
                                     False, -1]]))

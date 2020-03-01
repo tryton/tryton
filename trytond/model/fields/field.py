@@ -29,9 +29,11 @@ def domain_validate(value):
             elif (isinstance(arg, tuple)
                 or (isinstance(arg, list)
                     and len(arg) > 2
-                    and ((isinstance(arg[1], str)
+                    and ((
+                                isinstance(arg[1], str)
                                 and arg[1] in OPERATORS)
-                        or (isinstance(arg[1], PYSON)
+                        or (
+                                isinstance(arg[1], PYSON)
                                 and arg[1].types() == set([str]))))):
                 pass
             elif isinstance(arg, list):
@@ -484,7 +486,7 @@ class FieldTranslate(Field):
                 & (translation.res_id == -1)
                 & (translation.lang == language)
                 & (translation.type == 'model')
-                & (translation.fuzzy == False))
+                & (translation.fuzzy == Literal(False)))
         elif Model.__name__ == 'ir.model.field':
             if name == 'field_description':
                 type_ = 'field'
@@ -498,14 +500,14 @@ class FieldTranslate(Field):
                     & (translation.res_id == -1)
                     & (translation.lang == language)
                     & (translation.type == type_)
-                    & (translation.fuzzy == False))
+                    & (translation.fuzzy == Literal(False)))
         else:
             return from_.join(translation, 'LEFT',
                 condition=(translation.res_id == table.id)
                 & (translation.name == '%s,%s' % (Model.__name__, name))
                 & (translation.lang == language)
                 & (translation.type == 'model')
-                & (translation.fuzzy == False))
+                & (translation.fuzzy == Literal(False)))
 
     def convert_domain(self, domain, tables, Model):
         from trytond.ir.lang import get_parent_language

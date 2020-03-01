@@ -55,7 +55,18 @@ class XMLTestCase(unittest.TestCase):
 
     def test_xml_request(self):
         req = XMLRequest.from_values(
-            data=b"<?xml version='1.0'?>\n<methodCall>\n<methodName>method</methodName>\n<params>\n<param>\n<value><string>foo</string></value>\n</param>\n<param>\n<value><string>bar</string></value>\n</param>\n</params>\n</methodCall>\n",
+            data=b"""<?xml version='1.0'?>
+            <methodCall>
+                <methodName>method</methodName>
+                <params>
+                    <param>
+                        <value><string>foo</string></value>
+                    </param>
+                    <param>
+                        <value><string>bar</string></value>
+                    </param>
+                </params>
+            </methodCall>""",
             content_type='text/xml')
         self.assertEqual(req.parsed_data, (('foo', 'bar'), 'method'))
         self.assertEqual(req.rpc_method, 'method')

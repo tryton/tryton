@@ -221,14 +221,14 @@ class Transaction(object):
             self.started_at = self.monotonic_time()
             Cache.commit(self)
             self.connection.commit()
-        except:
+        except Exception:
             self.rollback()
             raise
         else:
             try:
                 for datamanager in self._datamanagers:
                     datamanager.tpc_finish(self)
-            except:
+            except Exception:
                 logger.critical('A datamanager raised an exception in'
                     ' tpc_finish, the data might be inconsistant',
                     exc_info=True)

@@ -1,12 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-"Group"
 from itertools import chain
 from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from ..pool import Pool
 from ..tools import grouped_slice
-
-__all__ = ['Group']
 
 
 class MenuMany2Many(fields.Many2Many):

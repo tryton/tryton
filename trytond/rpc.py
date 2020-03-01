@@ -27,7 +27,8 @@ class RPC(object):
         self.readonly = readonly
         self.instantiate = instantiate
         if result is None:
-            result = lambda r: r
+            def result(r):
+                return r
         self.result = result
         self.check_access = check_access
         self.fresh_session = fresh_session

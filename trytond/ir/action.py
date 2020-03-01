@@ -290,13 +290,15 @@ class ActionMixin(ModelSQL):
 
     @classmethod
     def get_action(cls, ids, names):
+        def identical(v):
+            return v
         records = cls.browse(ids)
         result = {}
         for name in names:
             result[name] = values = {}
             for record in records:
                 value = getattr(record, 'action')
-                convert = lambda v: v
+                convert = identical
                 if value is not None:
                     value = getattr(value, name)
                     if isinstance(value, ModelStorage):
@@ -305,7 +307,7 @@ class ActionMixin(ModelSQL):
                         else:
                             convert = int
                     elif isinstance(value, (list, tuple)):
-                        convert = lambda v: [r.id for r in v]
+                        convert = partial(map, int)
                 values[record.id] = convert(value)
         return result
 

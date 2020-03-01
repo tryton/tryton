@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
 
+from sql import Literal
+
 from trytond.i18n import gettext
 from trytond.model.exceptions import ValidationError
 from ..model import ModelView, ModelSQL, fields, EvalEnvironment, Check
@@ -50,7 +52,8 @@ class RuleGroup(ModelSQL, ModelView):
         t = cls.__table__()
         cls._sql_constraints += [
             ('global_default_exclusive',
-                Check(t, (t.global_p == False) | (t.default_p == False)),
+                Check(t, (t.global_p == Literal(False))
+                    | (t.default_p == Literal(False))),
                 'Global and Default are mutually exclusive!'),
             ]
 
@@ -179,7 +182,7 @@ class Rule(ModelSQL, ModelView):
                 condition=rule_group.model == model.id
                 ).select(rule_table.id,
                 where=(model.model == model_name)
-                & (getattr(rule_group, 'perm_%s' % mode) == True)
+                & (getattr(rule_group, 'perm_%s' % mode) == Literal(True))
                 & (rule_group.id.in_(
                         rule_group_group.join(
                             user_group,
@@ -188,8 +191,8 @@ class Rule(ModelSQL, ModelView):
                             ).select(rule_group_group.rule_group,
                             where=user_group.user == user_id)
                         )
-                    | (rule_group.default_p == True)
-                    | (rule_group.global_p == True)
+                    | (rule_group.default_p == Literal(True))
+                    | (rule_group.global_p == Literal(True))
                     )))
         ids = [x for x, in cursor]
 

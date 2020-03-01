@@ -231,7 +231,8 @@ class Pool(object):
         if classes is None:
             classes = {}
             for type_ in self._pool[self.database_name]:
-                classes[type_] = list(self._pool[self.database_name][type_].values())
+                classes[type_] = list(
+                    self._pool[self.database_name][type_].values())
         for type_, lst in classes.items():
             for cls in lst:
                 cls.__setup__()

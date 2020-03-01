@@ -4,7 +4,7 @@ from collections import defaultdict
 import time
 import logging
 import os
-import urllib.request, urllib.parse, urllib.error
+import urllib.parse
 import json
 from datetime import datetime
 from decimal import Decimal
@@ -533,15 +533,15 @@ class Database(DatabaseInterface):
             increment, = cursor.fetchone()
             cursor.execute(
                 'SELECT CASE WHEN NOT is_called THEN last_value '
-                            'ELSE last_value + %s '
-                        'END '
+                'ELSE last_value + %s '
+                'END '
                 'FROM "%s"' % (self.flavor.param, name),
                 (increment,))
         else:
             cursor.execute(
                 'SELECT CASE WHEN NOT is_called THEN last_value '
-                            'ELSE last_value + increment_by '
-                       'END '
+                'ELSE last_value + increment_by '
+                'END '
                 'FROM "%s"' % name)
         return cursor.fetchone()[0]
 
@@ -583,6 +583,8 @@ register_adapter(Decimal, lambda value: AsIs(str(value)))
 def convert_json(value):
     from trytond.protocols.jsonrpc import JSONDecoder
     return json.loads(value, object_hook=JSONDecoder())
+
+
 register_default_json(loads=convert_json)
 register_default_jsonb(loads=convert_json)
 

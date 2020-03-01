@@ -81,7 +81,6 @@ def import_module(name, fullname=None):
     return module
 
 
-
 def get_module_info(name):
     "Return the content of the tryton.cfg"
     module_config = configparser.ConfigParser()
