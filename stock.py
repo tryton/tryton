@@ -10,8 +10,6 @@ from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
 
-__all__ = ['ShipmentIn', 'Move']
-
 
 class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'

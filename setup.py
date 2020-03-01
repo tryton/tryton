@@ -87,8 +87,8 @@ setup(name=name,
     keywords='tryton purchase shipment cost',
     package_dir={'trytond.modules.purchase_shipment_cost': '.'},
     packages=(
-        ['trytond.modules.purchase_shipment_cost'] +
-        ['trytond.modules.purchase_shipment_cost.%s' % p
+        ['trytond.modules.purchase_shipment_cost']
+        + ['trytond.modules.purchase_shipment_cost.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -103,7 +103,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

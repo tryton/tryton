@@ -28,7 +28,8 @@ def suite():
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     suite.addTests(doctest.DocFileSuite(
-            'scenario_purchase_shipment_cost_with_account_stock_anglo_saxon.rst',
+            'scenario_purchase_shipment_cost_'
+            'with_account_stock_anglo_saxon.rst',
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))

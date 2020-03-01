@@ -3,8 +3,6 @@
 from trytond.model import fields
 from trytond.pool import PoolMeta
 
-__all__ = ['Carrier']
-
 
 class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
