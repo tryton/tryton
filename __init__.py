@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .res import *
+from . import res
 
 
 def register():
     Pool.register(
-        User,
-        SMSCode,
+        res.User,
+        res.UserLoginSMSCode,
         module='authentication_sms', type_='model')

@@ -16,6 +16,8 @@ def send_sms(text, to, from_):
             'to': to,
             'from': from_,
             })
+
+
 sms_queue = []
 
 

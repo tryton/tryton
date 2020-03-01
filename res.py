@@ -11,7 +11,6 @@ from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.tools import resolve
 
-__all__ = ['User', 'SMSCode']
 logger = logging.getLogger(__name__)
 
 
@@ -58,7 +57,7 @@ class User(metaclass=PoolMeta):
             return cls._login_sms(login, parameters)
 
 
-class SMSCode(ModelSQL):
+class UserLoginSMSCode(ModelSQL):
     """SMS Code
 
     This class is separated from the res.user one in order to prevent locking

@@ -79,8 +79,9 @@ setup(name=name,
     keywords='tryton sms authentication two-factor 2FA',
     package_dir={'trytond.modules.authentication_sms': '.'},
     packages=(
-        ['trytond.modules.authentication_sms'] +
-        ['trytond.modules.authentication_sms.%s' % p for p in find_packages()]
+        ['trytond.modules.authentication_sms']
+        + ['trytond.modules.authentication_sms.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.authentication_sms': (info.get('xml', [])
@@ -94,7 +95,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Czech',
