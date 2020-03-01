@@ -3,8 +3,6 @@
 
 from trytond.pool import PoolMeta
 
-__all__ = ['Move']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'account.move'

@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .commission import *
-from .invoice import *
-from .account import *
+from . import commission
+from . import invoice
+from . import account
 
 
 def register():
     Pool.register(
-        Agent,
-        Commission,
-        Invoice,
-        InvoiceLine,
-        Move,
+        commission.Agent,
+        commission.Commission,
+        invoice.Invoice,
+        invoice.InvoiceLine,
+        account.Move,
         module='commission_waiting', type_='model')

@@ -1,14 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
-
-
-__all__ = ['Agent', 'Commission']
 
 
 class Agent(metaclass=PoolMeta):
