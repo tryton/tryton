@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account import *
+from . import account
 
 
 def register():
     Pool.register(
-        LandedCost,
+        account.LandedCost,
         module='account_stock_landed_cost_weight', type_='model')

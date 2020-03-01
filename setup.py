@@ -80,8 +80,8 @@ setup(name=name,
     keywords='tryton account stock valuation landed cost weight',
     package_dir={'trytond.modules.account_stock_landed_cost_weight': '.'},
     packages=(
-        ['trytond.modules.account_stock_landed_cost_weight'] +
-        ['trytond.modules.account_stock_landed_cost_weight.%s' % p
+        ['trytond.modules.account_stock_landed_cost_weight']
+        + ['trytond.modules.account_stock_landed_cost_weight.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -96,7 +96,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
@@ -134,7 +135,7 @@ setup(name=name,
     entry_points="""
     [trytond.modules]
     account_stock_landed_cost_weight = trytond.modules.account_stock_landed_cost_weight
-    """,
+    """,  # noqa: E501
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,

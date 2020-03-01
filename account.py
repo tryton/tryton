@@ -4,8 +4,6 @@ from decimal import Decimal
 
 from trytond.pool import PoolMeta
 
-__all__ = ['LandedCost']
-
 
 class LandedCost(metaclass=PoolMeta):
     __name__ = 'account.landed_cost'
