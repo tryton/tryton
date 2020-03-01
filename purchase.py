@@ -17,13 +17,6 @@ from trytond.wizard import Wizard, StateView, StateTransition, Button
 from .exceptions import PreviousQuotation
 
 
-__all__ = ['Configuration', 'ConfigurationSequence', 'Quotation',
-    'QuotationLine', 'CreatePurchaseRequestQuotationAskSuppliers',
-    'CreatePurchaseRequestQuotationSucceed', 'PurchaseRequest',
-    'CreatePurchaseRequestQuotation', 'CreatePurchase',
-    'PurchaseRequestQuotationReport']
-
-
 def process_request(func):
     @wraps(func)
     def wrapper(cls, quotations):
@@ -625,7 +618,8 @@ class CreatePurchase(Wizard):
         to_save = []
         requests = Request.browse(Transaction().context['active_ids'])
 
-        reqs = [r for r in requests if not r.purchase_line and r.quotation_lines]
+        reqs = [r for r in requests
+            if not r.purchase_line and r.quotation_lines]
         to_save = []
         for req in reqs:
             if req.best_quotation_line:
