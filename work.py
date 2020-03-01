@@ -22,9 +22,6 @@ from trytond.tools import reduce_ids, grouped_slice
 
 from .exceptions import InvoicingError
 
-
-__all__ = ['Work', 'WorkInvoicedProgress', 'OpenInvoice']
-
 INVOICE_METHODS = [
     ('manual', 'Manual'),
     ('effort', 'On Effort'),

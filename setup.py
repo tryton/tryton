@@ -79,8 +79,8 @@ setup(name=name,
     keywords='tryton project invoice',
     package_dir={'trytond.modules.project_invoice': '.'},
     packages=(
-        ['trytond.modules.project_invoice'] +
-        ['trytond.modules.project_invoice.%s' % p for p in find_packages()]
+        ['trytond.modules.project_invoice']
+        + ['trytond.modules.project_invoice.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.project_invoice': (info.get('xml', [])
@@ -94,7 +94,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

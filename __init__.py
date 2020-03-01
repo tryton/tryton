@@ -2,18 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .work import *
-from .timesheet import *
-from .invoice import *
+from . import work
+from . import timesheet
+from . import invoice
 
 
 def register():
     Pool.register(
-        Work,
-        WorkInvoicedProgress,
-        TimesheetLine,
-        InvoiceLine,
+        work.Work,
+        work.WorkInvoicedProgress,
+        timesheet.Line,
+        invoice.InvoiceLine,
         module='project_invoice', type_='model')
     Pool.register(
-        OpenInvoice,
+        work.OpenInvoice,
         module='project_invoice', type_='wizard')
