@@ -10,8 +10,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
-__all__ = ['AccountTemplate']
-
 
 class AccountTemplate(metaclass=PoolMeta):
     __name__ = 'account.account.template'

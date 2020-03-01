@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton account chart belgian',
     package_dir={'trytond.modules.account_be': '.'},
     packages=(
-        ['trytond.modules.account_be'] +
-        ['trytond.modules.account_be.%s' % p for p in find_packages()]
+        ['trytond.modules.account_be']
+        + ['trytond.modules.account_be.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.account_be': (info.get('xml', [])
@@ -92,7 +92,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Dutch',
         'Natural Language :: French',
         'Operating System :: OS Independent',
