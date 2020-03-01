@@ -299,8 +299,9 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             sub_query = sql_table.join(purchase_line,
                 condition=purchase_line.purchase == sql_table.id
                 ).join(invoice_line, 'LEFT',
-                    condition=(invoice_line.origin ==
-                        Concat(PurchaseLine.__name__ + ',', purchase_line.id))
+                    condition=(invoice_line.origin
+                        == Concat(
+                            PurchaseLine.__name__ + ',', purchase_line.id))
                     ).join(move, 'LEFT',
                         condition=(move.origin == Concat(
                                 PurchaseLine.__name__ + ',', purchase_line.id))
@@ -905,7 +906,7 @@ class PurchaseRecreatedInvoice(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
+class Line(sequence_ordered(), ModelSQL, ModelView):
     'Purchase Line'
     __name__ = 'purchase.line'
     purchase = fields.Many2One('purchase.purchase', 'Purchase',
@@ -1078,7 +1079,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        super(PurchaseLine, cls).__register__(module_name)
+        super().__register__(module_name)
         table = cls.__table_handler__(module_name)
 
         # Migration from 4.6: drop required on description
@@ -1583,7 +1584,7 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
                     gettext('purchase.msg_purchase_line_delete_cancel_draft',
                         line=line.rec_name,
                         purchase=line.purchase.rec_name))
-        super(PurchaseLine, cls).delete(lines)
+        super().delete(lines)
 
     @classmethod
     def copy(cls, lines, default=None):
@@ -1595,10 +1596,10 @@ class PurchaseLine(sequence_ordered(), ModelSQL, ModelView):
         default.setdefault('moves_ignored', None)
         default.setdefault('moves_recreated', None)
         default.setdefault('invoice_lines', None)
-        return super(PurchaseLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
 
-class PurchaseLineTax(ModelSQL):
+class LineTax(ModelSQL):
     'Purchase Line - Tax'
     __name__ = 'purchase.line-account.tax'
     _table = 'purchase_line_account_tax'
@@ -1609,7 +1610,7 @@ class PurchaseLineTax(ModelSQL):
             select=True, required=True, domain=[('parent', '=', None)])
 
 
-class PurchaseLineIgnoredMove(ModelSQL):
+class LineIgnoredMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-ignored-stock.move'
     _table = 'purchase_line_moves_ignored_rel'
@@ -1619,7 +1620,7 @@ class PurchaseLineIgnoredMove(ModelSQL):
             select=True, required=True)
 
 
-class PurchaseLineRecreatedMove(ModelSQL):
+class LineRecreatedMove(ModelSQL):
     'Purchase Line - Ignored Move'
     __name__ = 'purchase.line-recreated-stock.move'
     _table = 'purchase_line_moves_recreated_rel'

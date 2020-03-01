@@ -8,8 +8,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Invoice', 'InvoiceLine']
-
 
 def process_purchase(func):
     @wraps(func)

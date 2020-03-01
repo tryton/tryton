@@ -17,8 +17,6 @@ from trytond.modules.product import price_digits
 
 from .exceptions import PurchaseUOMWarning
 
-__all__ = ['Template', 'Product', 'ProductSupplier', 'ProductSupplierPrice']
-
 
 class Template(metaclass=PoolMeta):
     __name__ = "product.template"

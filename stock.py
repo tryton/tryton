@@ -13,8 +13,6 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['ShipmentIn', 'ShipmentInReturn', 'Move', 'Location']
-
 
 def process_purchase(moves_field):
     def _process_purchase(func):
