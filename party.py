@@ -5,8 +5,6 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Party', 'PartySaleInvoiceGroupingMethod']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'

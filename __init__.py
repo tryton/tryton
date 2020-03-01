@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .party import *
-from .sale import *
+from . import party
+from . import sale
 from . import configuration
 
 
 def register():
     Pool.register(
-        Sale,
-        Party,
-        PartySaleInvoiceGroupingMethod,
+        sale.Sale,
+        party.Party,
+        party.PartySaleInvoiceGroupingMethod,
         configuration.Configuration,
         configuration.ConfigurationSaleMethod,
         module='sale_invoice_grouping', type_='model')
