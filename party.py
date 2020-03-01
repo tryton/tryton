@@ -18,11 +18,6 @@ from trytond.tools import lstrip_wildcard
 from .exceptions import (
     InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
 
-__all__ = ['Party', 'PartyLang', 'PartyCategory', 'PartyIdentifier',
-    'CheckVIESResult', 'CheckVIES',
-    'PartyReplace', 'PartyReplaceAsk',
-    'PartyErase', 'PartyEraseAsk']
-
 STATES = {
     'readonly': ~Eval('active', True),
 }
@@ -315,7 +310,7 @@ class PartyCategory(ModelSQL):
         ondelete='CASCADE', required=True, select=True)
 
 
-class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
+class Identifier(sequence_ordered(), ModelSQL, ModelView):
     'Party Identifier'
     __name__ = 'party.identifier'
     _rec_name = 'code'
@@ -441,7 +436,7 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
         cursor = Transaction().connection.cursor()
         party = Party.__table__()
 
-        super(PartyIdentifier, cls).__register__(module_name)
+        super().__register__(module_name)
 
         party_h = Party.__table_handler__(module_name)
         if (party_h.column_exist('vat_number')
@@ -479,7 +474,7 @@ class PartyIdentifier(sequence_ordered(), ModelSQL, ModelView):
         return self.code
 
     def pre_validate(self):
-        super(PartyIdentifier, self).pre_validate()
+        super().pre_validate()
         self.check_code()
 
     @fields.depends('type', 'party', 'code')
@@ -563,7 +558,7 @@ class CheckVIES(Wizard):
             }
 
 
-class PartyReplace(Wizard):
+class Replace(Wizard):
     "Replace Party"
     __name__ = 'party.replace'
     start_state = 'ask'
@@ -654,7 +649,7 @@ class PartyReplace(Wizard):
             ]
 
 
-class PartyReplaceAsk(ModelView):
+class ReplaceAsk(ModelView):
     "Replace Party"
     __name__ = 'party.replace.ask'
     source = fields.Many2One('party.party', "Source", required=True,
@@ -678,7 +673,7 @@ class PartyReplaceAsk(ModelView):
             self.destination = self.source.replaced_by
 
 
-class PartyErase(Wizard):
+class Erase(Wizard):
     "Erase Party"
     __name__ = 'party.erase'
     start_state = 'ask'
@@ -753,8 +748,8 @@ class PartyErase(Wizard):
                                         Model.__name__ + ',%')
                                     & Model.id.sql_cast(
                                         Substring(table.resource,
-                                            Position(',', table.resource) +
-                                            Literal(1))).in_(query)))
+                                            Position(',', table.resource)
+                                            + Literal(1))).in_(query)))
         return 'end'
 
     def check_erase(self, party):
@@ -791,7 +786,7 @@ class PartyErase(Wizard):
         return [Attachment, Note]
 
 
-class PartyEraseAsk(ModelView):
+class EraseAsk(ModelView):
     "Erase Party"
     __name__ = 'party.erase.ask'
     party = fields.Many2One('party.party', "Party", required=True,

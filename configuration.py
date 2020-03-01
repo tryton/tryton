@@ -6,8 +6,6 @@ from trytond.model import MultiValueMixin, ValueMixin
 from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Configuration', 'ConfigurationSequence', 'ConfigurationLang']
-
 party_sequence = fields.Many2One('ir.sequence', 'Party Sequence',
     domain=[
         ('code', '=', 'party.party'),

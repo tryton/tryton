@@ -3,6 +3,7 @@
 'Address'
 from string import Template
 
+from sql import Literal
 from sql.conditionals import Coalesce
 from sql.functions import Substring
 from sql.operators import Concat, Equal
@@ -384,7 +385,7 @@ class SubdivisionType(DeactivableMixin, ModelSQL, ModelView):
         cls._sql_constraints = [
             ('country_code_unique',
                 Exclude(t, (t.country_code, Equal),
-                    where=t.active == True),
+                    where=t.active == Literal(True)),
                 'party.msg_address_subdivision_country_code_unique')
             ]
         cls._order.insert(0, ('country_code', 'ASC NULLS LAST'))

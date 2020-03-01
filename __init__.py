@@ -15,10 +15,10 @@ def register():
         party.Party,
         party.PartyLang,
         party.PartyCategory,
-        party.PartyIdentifier,
+        party.Identifier,
         party.CheckVIESResult,
-        party.PartyReplaceAsk,
-        party.PartyEraseAsk,
+        party.ReplaceAsk,
+        party.EraseAsk,
         address.Address,
         address.AddressFormat,
         address.SubdivisionType,
@@ -29,6 +29,6 @@ def register():
         module='party', type_='model')
     Pool.register(
         party.CheckVIES,
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='party', type_='wizard')

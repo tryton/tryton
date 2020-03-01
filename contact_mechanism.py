@@ -14,8 +14,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from .exceptions import InvalidPhoneNumber
 
-__all__ = ['ContactMechanism']
-
 STATES = {
     'readonly': ~Eval('active'),
     }

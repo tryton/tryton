@@ -7,8 +7,6 @@ from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Exclude, tree)
 from trytond.pyson import Eval
 
-__all__ = ['Category']
-
 STATES = {
     'readonly': ~Eval('active'),
 }
