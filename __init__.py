@@ -2,35 +2,35 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .configuration import *
-from .bom import *
-from .product import *
-from .production import *
-from .stock import *
+from . import configuration
+from . import bom
+from . import product
+from . import production
+from . import stock
 from . import ir
 
 
 def register():
     Pool.register(
-        Configuration,
-        ConfigurationProductionSequence,
-        BOM,
-        BOMInput,
-        BOMOutput,
-        BOMTree,
-        OpenBOMTreeStart,
-        OpenBOMTreeTree,
-        Production,
-        AssignFailed,
-        Template,
-        Product,
-        ProductBom,
-        ProductionLeadTime,
-        Location,
-        Move,
+        configuration.Configuration,
+        configuration.ConfigurationProductionSequence,
+        bom.BOM,
+        bom.BOMInput,
+        bom.BOMOutput,
+        bom.BOMTree,
+        bom.OpenBOMTreeStart,
+        bom.OpenBOMTreeTree,
+        production.Production,
+        production.AssignFailed,
+        product.Template,
+        product.Product,
+        product.ProductBom,
+        product.ProductionLeadTime,
+        stock.Location,
+        stock.Move,
         ir.Cron,
         module='production', type_='model')
     Pool.register(
-        Assign,
-        OpenBOMTree,
+        production.Assign,
+        bom.OpenBOMTree,
         module='production', type_='wizard')

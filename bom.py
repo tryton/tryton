@@ -7,10 +7,6 @@ from trytond.pyson import Eval
 from trytond.pool import Pool
 
 
-__all__ = ['BOM', 'BOMInput', 'BOMOutput', 'BOMTree', 'OpenBOMTreeStart',
-    'OpenBOMTreeTree', 'OpenBOMTree']
-
-
 class BOM(DeactivableMixin, ModelSQL, ModelView):
     "Bill of Material"
     __name__ = 'production.bom'

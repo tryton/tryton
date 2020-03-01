@@ -7,8 +7,6 @@ from trytond.model.exceptions import RecursionError
 from trytond.pyson import Eval, Get, If, Bool
 from trytond.pool import PoolMeta
 
-__all__ = ['Template', 'Product', 'ProductBom', 'ProductionLeadTime']
-
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
@@ -50,8 +48,9 @@ class Product(metaclass=PoolMeta):
             product = self
         for product_bom in self.boms:
             for input_ in product_bom.bom.inputs:
-                if (input_.product == product or
-                        input_.product.check_bom_recursion(product=product)):
+                if (input_.product == product
+                        or input_.product.check_bom_recursion(
+                            product=product)):
                     raise RecursionError(
                         gettext('production.msg_recursive_bom',
                             product=product.rec_name))
