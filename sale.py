@@ -10,12 +10,11 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.sale.sale import (
     get_shipments_returns, search_shipments_returns)
 
-__all__ = ['SaleConfig', 'SaleConfigSaleDropLocation', 'Sale', 'SaleLine']
 sale_drop_location = fields.Many2One(
     'stock.location', "Sale Drop Location", domain=[('type', '=', 'drop')])
 
 
-class SaleConfig(metaclass=PoolMeta):
+class Configuration(metaclass=PoolMeta):
     __name__ = 'sale.configuration'
 
     sale_drop_location = fields.MultiValue(sale_drop_location)
@@ -26,7 +25,7 @@ class SaleConfig(metaclass=PoolMeta):
             'sale_drop_location').default_sale_drop_location()
 
 
-class SaleConfigSaleDropLocation(ModelSQL, ValueMixin):
+class ConfigurationSaleDropLocation(ModelSQL, ValueMixin):
     "Sale Configuration Sale Drop Location"
     __name__ = 'sale.configuration.sale_drop_location'
     sale_drop_location = sale_drop_location
@@ -35,8 +34,7 @@ class SaleConfigSaleDropLocation(ModelSQL, ValueMixin):
     def __register__(cls, module_name):
         exist = backend.TableHandler.table_exist(cls._table)
 
-        super(SaleConfigSaleDropLocation, cls).__register__(
-            module_name)
+        super().__register__(module_name)
 
         if not exist:
             cls._migrate_property([], [], [])
@@ -101,12 +99,12 @@ class Sale(metaclass=PoolMeta):
         Move.save(moves)
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @property
     def supply_on_sale(self):
-        supply_on_sale = super(SaleLine, self).supply_on_sale
+        supply_on_sale = super().supply_on_sale
         return (supply_on_sale
             or (self.moves and all(m.from_location.type == 'drop'
                     for m in self.moves)))
@@ -127,7 +125,7 @@ class SaleLine(metaclass=PoolMeta):
         return True
 
     def get_move(self, shipment_type):
-        result = super(SaleLine, self).get_move(shipment_type)
+        result = super().get_move(shipment_type)
         if (shipment_type == 'out'
                 and not Transaction().context.get('_drop_shipment')):
             if self.supply_on_sale_drop_move:
@@ -135,7 +133,7 @@ class SaleLine(metaclass=PoolMeta):
         return result
 
     def get_purchase_request(self):
-        request = super(SaleLine, self).get_purchase_request()
+        request = super().get_purchase_request()
         if request and request.party:
             if self.product and self.product.type in ('goods', 'assets'):
                 product_supplier = request.find_best_product_supplier(

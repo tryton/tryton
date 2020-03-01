@@ -20,9 +20,6 @@ from trytond.modules.sale.stock import process_sale
 from trytond.modules.purchase.stock import process_purchase
 
 
-__all__ = ['Configuration', 'ConfigurationSequence', 'ShipmentDrop', 'Move']
-
-
 class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
 

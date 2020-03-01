@@ -14,15 +14,11 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.purchase.purchase import (
     get_shipments_returns, search_shipments_returns)
 
-
-__all__ = ['PurchaseRequest', 'PurchaseConfig',
-    'PurchaseConfigPurchaseDropLocation', 'Purchase', 'PurchaseLine',
-    'ProductSupplier', 'CreatePurchase', 'PurchaseHandleShipmentException']
 purchase_drop_location = fields.Many2One(
     'stock.location', "Purchase Drop Location", domain=[('type', '=', 'drop')])
 
 
-class PurchaseRequest(metaclass=PoolMeta):
+class Request(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
@@ -38,7 +34,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         depends=['customer', 'state'])
 
 
-class PurchaseConfig(metaclass=PoolMeta):
+class Configuration(metaclass=PoolMeta):
     __name__ = 'purchase.configuration'
 
     purchase_drop_location = fields.MultiValue(purchase_drop_location)
@@ -49,7 +45,7 @@ class PurchaseConfig(metaclass=PoolMeta):
             'purchase_drop_location').default_purchase_drop_location()
 
 
-class PurchaseConfigPurchaseDropLocation(ModelSQL, ValueMixin):
+class ConfigurationPurchaseDropLocation(ModelSQL, ValueMixin):
     "Purchase Configuration Purchase Drop Location"
     __name__ = 'purchase.configuration.purchase_drop_location'
     purchase_drop_location = purchase_drop_location
@@ -58,8 +54,7 @@ class PurchaseConfigPurchaseDropLocation(ModelSQL, ValueMixin):
     def __register__(cls, module_name):
         exist = backend.TableHandler.table_exist(cls._table)
 
-        super(PurchaseConfigPurchaseDropLocation, cls).__register__(
-            module_name)
+        super().__register__(module_name)
 
         if not exist:
             cls._migrate_property([], [], [])
@@ -172,11 +167,11 @@ class Purchase(metaclass=PoolMeta):
             )
 
 
-class PurchaseLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     def get_to_location(self, name):
-        result = super(PurchaseLine, self).get_to_location(name)
+        result = super().get_to_location(name)
         if self.purchase.customer:
             return self.purchase.drop_location.id
         return result
@@ -184,7 +179,7 @@ class PurchaseLine(metaclass=PoolMeta):
     def get_move(self, move_type):
         pool = Pool()
         Currency = pool.get('currency.currency')
-        move = super(PurchaseLine, self).get_move(move_type)
+        move = super().get_move(move_type)
         if move and self.purchase.customer:
             digits = move.__class__.cost_price.digits
             cost_price = Currency.compute(
@@ -213,13 +208,12 @@ class ProductSupplier(metaclass=PoolMeta):
             return self.product.supply_on_sale
 
 
-class CreatePurchase(metaclass=PoolMeta):
+class RequestCreatePurchase(metaclass=PoolMeta):
     __name__ = 'purchase.request.create_purchase'
 
     @classmethod
     def _group_purchase_key(cls, requests, request):
-        result = super(CreatePurchase, cls)._group_purchase_key(requests,
-            request)
+        result = super()._group_purchase_key(requests, request)
         result += (
             ('customer', request.customer.id if request.customer else None),
             ('delivery_address', request.delivery_address.id
@@ -228,7 +222,7 @@ class CreatePurchase(metaclass=PoolMeta):
         return result
 
 
-class PurchaseHandleShipmentException(metaclass=PoolMeta):
+class HandleShipmentException(metaclass=PoolMeta):
     __name__ = 'purchase.handle.shipment.exception'
 
     def transition_handle(self):
@@ -237,7 +231,7 @@ class PurchaseHandleShipmentException(metaclass=PoolMeta):
         Purchase = pool.get('purchase.purchase')
         Move = pool.get('stock.move')
 
-        super(PurchaseHandleShipmentException, self).transition_handle()
+        super().transition_handle()
 
         sales = set()
         moves = set()
