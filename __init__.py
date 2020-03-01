@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .allocation import *
-from .work import *
+from . import allocation
+from . import work
 
 
 def register():
     Pool.register(
-        Allocation,
-        Work,
-        PredecessorSuccessor,
+        allocation.Allocation,
+        work.Work,
+        work.PredecessorSuccessor,
         module='project_plan', type_='model')
     Pool.register(
-        Leveling,
+        work.Leveling,
         module='project_plan', type_='wizard')

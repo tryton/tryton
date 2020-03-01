@@ -11,8 +11,6 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Work', 'PredecessorSuccessor', 'Leveling']
-
 
 def intfloor(x):
     return int(round(x, 4))
@@ -258,12 +256,20 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
     def compute_dates(self):
         values = {}
-        get_early_finish = lambda work: values.get(work, {}).get(
-            'early_finish_time', work.early_finish_time)
-        get_late_start = lambda work: values.get(work, {}).get(
-            'late_start_time', work.late_start_time)
-        maxdate = lambda x, y: x and y and max(x, y) or x or y
-        mindate = lambda x, y: x and y and min(x, y) or x or y
+
+        def get_early_finish(work):
+            return values.get(work, {}).get(
+                'early_finish_time', work.early_finish_time)
+
+        def get_late_start(work):
+            return values.get(work, {}).get(
+                'late_start_time', work.late_start_time)
+
+        def maxdate(x, y):
+            return x and y and max(x, y) or x or y
+
+        def mindate(x, y):
+            return x and y and min(x, y) or x or y
 
         # propagate constraint_start_time
         constraint_start = reduce(maxdate, (pred.early_finish_time
@@ -443,8 +449,10 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
             self.write(*to_write)
 
     def reset_leveling(self):
-        get_key = lambda w: (set(p.id for p in w.predecessors),
-                             set(s.id for s in w.successors))
+        def get_key(w):
+            return (
+                set(p.id for p in w.predecessors),
+                set(s.id for s in w.successors))
 
         if not self.parent:
             return
@@ -468,14 +476,18 @@ class Work(tree(parent='successors'), metaclass=PoolMeta):
 
     def create_leveling(self):
         # define some helper functions
-        get_key = lambda w: (set(p.id for p in w.predecessors),
-                             set(s.id for s in w.successors))
-        over_alloc = lambda current_alloc, work: (
-            reduce(lambda res, alloc: (res
+        def get_key(w):
+            return (
+                set(p.id for p in w.predecessors),
+                set(s.id for s in w.successors))
+
+        def over_alloc(current_alloc, work):
+            return reduce(lambda res, alloc: (
+                    res
                     or (current_alloc[alloc.employee.id]
                         + alloc.percentage) > 100),
                 work.allocations,
-                False))
+                False)
 
         def sum_allocs(current_alloc, work):
             res = defaultdict(float)

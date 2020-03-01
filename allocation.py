@@ -3,8 +3,6 @@
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 
-__all__ = ['Allocation']
-
 
 class Allocation(ModelSQL, ModelView):
     'Allocation'
