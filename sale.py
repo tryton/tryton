@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-__all__ = ['Line']
-
 
 class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'

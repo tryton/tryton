@@ -4,8 +4,6 @@ from trytond.model import ModelView, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
 
-__all__ = ['PriceList', 'PriceListLine', 'PriceListLineContext']
-
 
 class PriceList(metaclass=PoolMeta):
     __name__ = 'product.price_list'
