@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .dunning import *
+from . import dunning
 
 
 def register():
     Pool.register(
-        Level,
+        dunning.Level,
         module='account_dunning_letter', type_='model')
     Pool.register(
-        ProcessDunning,
+        dunning.ProcessDunning,
         module='account_dunning_letter', type_='wizard')
     Pool.register(
-        Letter,
+        dunning.Letter,
         module='account_dunning_letter', type_='report')

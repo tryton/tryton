@@ -12,9 +12,6 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
 
-__all__ = ['Level', 'ProcessDunning', 'Letter']
-
-
 class Level(metaclass=PoolMeta):
     __name__ = 'account.dunning.level'
     print_on_letter = fields.Boolean('Print on Letter')
