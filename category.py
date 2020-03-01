@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, fields, tree
 
-__all__ = ['Category']
-
 
 class Category(tree(separator=' / '), ModelSQL, ModelView):
     "Product Category"

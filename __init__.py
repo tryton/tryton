@@ -2,25 +2,30 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .uom import *
-from .category import *
-from .product import *
-from .configuration import *
+from . import uom
+from . import category
+from . import product
+from . import configuration
+from .product import price_digits
+from .uom import uom_conversion_digits
+
+__all__ = [price_digits, uom_conversion_digits]
 
 
 def register():
     Pool.register(
-        UomCategory,
-        Uom,
-        Category,
-        Template,
-        Product,
-        ProductIdentifier,
-        ProductListPrice,
-        ProductCostPriceMethod,  # before ProductCostPrice for migration
-        ProductCostPrice,
-        TemplateCategory,
-        TemplateCategoryAll,
-        Configuration,
-        ConfigurationDefaultCostPriceMethod,
+        uom.UomCategory,
+        uom.Uom,
+        category.Category,
+        product.Template,
+        product.Product,
+        product.ProductIdentifier,
+        product.ProductListPrice,
+        # before ProductCostPrice for migration
+        product.ProductCostPriceMethod,
+        product.ProductCostPrice,
+        product.TemplateCategory,
+        product.TemplateCategoryAll,
+        configuration.Configuration,
+        configuration.ConfigurationDefaultCostPriceMethod,
         module='product', type_='model')

@@ -6,7 +6,6 @@ from trytond.model import (ModelView, ModelSQL, ModelSingleton,
 from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Configuration', 'ConfigurationDefaultCostPriceMethod']
 default_cost_price_method = fields.Selection(
     'get_cost_price_methods', "Default Cost Method")
 

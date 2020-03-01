@@ -25,9 +25,7 @@ from trytond.modules.company.model import (
 from .exceptions import InvalidIdentifierCode
 
 
-__all__ = ['Template', 'Product', 'price_digits', 'TemplateFunction',
-    'ProductListPrice', 'ProductCostPriceMethod', 'ProductCostPrice',
-    'TemplateCategory', 'TemplateCategoryAll', 'ProductIdentifier']
+__all__ = ['price_digits', 'TemplateFunction']
 logger = logging.getLogger(__name__)
 
 STATES = {
@@ -450,7 +448,8 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
         cursor = Transaction().connection.cursor()
 
         exist = backend.TableHandler.table_exist(cls._table)
-        cost_price_exist = backend.TableHandler.table_exist(ProductCostPrice._table)
+        cost_price_exist = backend.TableHandler.table_exist(
+            ProductCostPrice._table)
 
         super(ProductCostPriceMethod, cls).__register__(module_name)
 

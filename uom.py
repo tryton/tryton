@@ -13,7 +13,7 @@ from trytond.transaction import Transaction
 
 from .exceptions import UOMValidationError
 
-__all__ = ['UomCategory', 'Uom', 'uom_conversion_digits']
+__all__ = ['uom_conversion_digits']
 
 STATES = {
     'readonly': ~Eval('active', True),
