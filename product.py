@@ -6,9 +6,6 @@ from trytond.pool import PoolMeta
 from trytond.modules.product_classification.product import (
     classification_tree, ClassificationMixin)
 
-__all__ = ['Template',
-    'Taxon', 'Cultivar', 'CultivarGroup', 'Cultivar_CultivarGroup']
-
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'

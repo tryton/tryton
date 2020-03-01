@@ -79,8 +79,8 @@ setup(name=name,
     keywords='tryton product classification taxonomic',
     package_dir={'trytond.modules.product_classification_taxonomic': '.'},
     packages=(
-        ['trytond.modules.product_classification_taxonomic'] +
-        ['trytond.modules.product_classification_taxonomic.%s' % p
+        ['trytond.modules.product_classification_taxonomic']
+        + ['trytond.modules.product_classification_taxonomic.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -93,7 +93,8 @@ setup(name=name,
         'Environment :: Plugins',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
@@ -130,7 +131,7 @@ setup(name=name,
     entry_points="""
     [trytond.modules]
     product_classification_taxonomic = trytond.modules.product_classification_taxonomic
-    """,
+    """,  # noqa: E501
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     )
