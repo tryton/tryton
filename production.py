@@ -6,8 +6,6 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
-__all__ = ['Production', 'SplitProduction', 'SplitProductionStart']
-
 
 class Production(metaclass=PoolMeta):
     __name__ = 'production'

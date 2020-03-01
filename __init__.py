@@ -3,14 +3,14 @@
 
 from trytond.pool import Pool
 
-from .production import *
+from . import production
 
 
 def register():
     Pool.register(
-        Production,
-        SplitProductionStart,
+        production.Production,
+        production.SplitProductionStart,
         module='production_split', type_='model')
     Pool.register(
-        SplitProduction,
+        production.SplitProduction,
         module='production_split', type_='wizard')
