@@ -12,9 +12,6 @@ from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 from trytond.wizard import StateTransition
 
-__all__ = ['Configuration', 'DunningLevel', 'ProcessDunning', 'Dunning',
-    'DunningEmailLog']
-
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'

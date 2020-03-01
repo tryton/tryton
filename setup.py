@@ -79,8 +79,8 @@ setup(name=name,
     keywords='tryton account dunning email',
     package_dir={'trytond.modules.account_dunning_email': '.'},
     packages=(
-        ['trytond.modules.account_dunning_email'] +
-        ['trytond.modules.account_dunning_email.%s' % p
+        ['trytond.modules.account_dunning_email']
+        + ['trytond.modules.account_dunning_email.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -95,7 +95,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Czech',
