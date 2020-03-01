@@ -3,8 +3,6 @@
 from trytond.model import (
     ModelSQL, ModelView, DeactivableMixin, fields, sequence_ordered)
 
-__all__ = ['Routing', 'Operation', 'RoutingStep', 'Routing_BOM']
-
 
 class Routing(DeactivableMixin, ModelSQL, ModelView):
     'Routing'
@@ -15,7 +13,7 @@ class Routing(DeactivableMixin, ModelSQL, ModelView):
         'production.routing-production.bom', 'routing', 'bom', 'BOMs')
 
 
-class Operation(DeactivableMixin, ModelSQL, ModelView):
+class RoutingOperation(DeactivableMixin, ModelSQL, ModelView):
     'Operation'
     __name__ = 'production.routing.operation'
     name = fields.Char('Operation', required=True, translate=True)
