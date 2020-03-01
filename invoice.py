@@ -4,8 +4,6 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
-__all__ = ['Invoice', 'InvoiceLine']
-
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
