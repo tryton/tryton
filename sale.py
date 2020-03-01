@@ -3,8 +3,6 @@
 from trytond.model import ModelView, Workflow
 from trytond.pool import PoolMeta
 
-__all__ = ['Sale']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'

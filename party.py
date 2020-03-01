@@ -5,8 +5,6 @@ from decimal import Decimal
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Party']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
