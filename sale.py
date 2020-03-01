@@ -14,8 +14,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import DuplicateError
 
-__all__ = ['Promotion', 'PromotionCoupon', 'PromotionCouponNumber']
-
 
 class Promotion(metaclass=PoolMeta):
     __name__ = 'sale.promotion'
