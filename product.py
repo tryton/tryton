@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 
-__all__ = ['Product']
-
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

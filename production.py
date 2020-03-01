@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Production']
-
 
 class Production(metaclass=PoolMeta):
     __name__ = 'production'

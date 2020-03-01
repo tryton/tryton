@@ -5,8 +5,6 @@ from trytond.model import (ModelView, ModelSQL, MatchMixin, fields,
 from trytond.pyson import If, Eval, Bool
 from trytond.pool import PoolMeta
 
-__all__ = ['ProductLocation', 'Move', 'ShipmentIn', 'ShipmentOutReturn']
-
 
 class ProductLocation(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     '''
