@@ -14,8 +14,6 @@ from trytond.tools import reduce_ids, grouped_slice
 
 from trytond.modules.product import price_digits
 
-__all__ = ['Work']
-
 
 class Work(metaclass=PoolMeta):
     __name__ = 'project.work'

@@ -11,6 +11,6 @@ def register():
         work.Work,
         module='project_revenue', type_='model')
     Pool.register(
-        purchase.PurchaseLine,
+        purchase.Line,
         module='project_revenue', type_='model',
         depends=['purchase'])

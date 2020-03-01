@@ -4,10 +4,8 @@ from trytond.pool import PoolMeta
 from trytond.model import fields
 from trytond.pyson import Eval
 
-__all__ = ['PurchaseLine']
 
-
-class PurchaseLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     work = fields.Many2One('project.work', 'Work Effort', select=True,
