@@ -748,8 +748,8 @@ class Line(
         super(Line, cls).__setup__()
         if 'origin' not in cls.date.depends:
             cls.date.states.update({
-                    'readonly': (cls.date.states['readonly'] |
-                        Bool(Eval('origin', 0))),
+                    'readonly': (cls.date.states['readonly']
+                        | Bool(Eval('origin', 0))),
                     })
             cls.date.depends.append('origin')
         cls.account.required = True
@@ -959,6 +959,7 @@ class Line(
             amount_second_currency=amount_second_currency,
             )
 
+
 del _states, _depends
 
 
@@ -1049,8 +1050,8 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
     lines = fields.One2Many(
         'account.statement.line', 'origin', "Lines",
         states={
-            'readonly': ((Eval('statement_id', -1) < 0) |
-                ~Eval('statement_state').in_(['draft', 'validated'])),
+            'readonly': ((Eval('statement_id', -1) < 0)
+                | ~Eval('statement_state').in_(['draft', 'validated'])),
             },
         domain=[
             ('statement', '=', Eval('statement')),
@@ -1104,6 +1105,8 @@ class Origin(origin_mixin(_states, _depends), ModelSQL, ModelView):
                     table.amount - Coalesce(Sum(line.amount), 0), value),
                 group_by=table.id))
         return [('id', 'in', query)]
+
+
 del _states, _depends
 
 

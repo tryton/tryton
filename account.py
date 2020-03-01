@@ -13,8 +13,6 @@ from trytond.tools import grouped_slice, reduce_ids
 
 from trytond.modules.account.exceptions import PostError
 
-__all__ = ['Journal', 'Move']
-
 
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.journal'

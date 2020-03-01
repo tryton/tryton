@@ -21,7 +21,7 @@ def register():
         statement.ImportStatementStart,
         module='account_statement', type_='model')
     Pool.register(
-        party.PartyReplace,
+        party.Replace,
         statement.ImportStatement,
         statement.ReconcileStatement,
         module='account_statement', type_='wizard')
