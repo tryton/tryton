@@ -2,19 +2,19 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .stock import *
+from . import stock
 
 
 def register():
     Pool.register(
-        Configuration,
-        ConfigurationSequence,
-        Type,
-        Package,
-        Move,
-        ShipmentOut,
-        ShipmentInReturn,
+        stock.Configuration,
+        stock.ConfigurationSequence,
+        stock.Type,
+        stock.Package,
+        stock.Move,
+        stock.ShipmentOut,
+        stock.ShipmentInReturn,
         module='stock_package', type_='model')
     Pool.register(
-        PackageLabel,
+        stock.PackageLabel,
         module='stock_package', type_='report')

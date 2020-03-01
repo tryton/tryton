@@ -9,9 +9,6 @@ from trytond.report import Report
 
 from .exceptions import PackageError
 
-__all__ = ['Configuration', 'ConfigurationSequence', 'Package', 'Type', 'Move',
-    'ShipmentOut', 'ShipmentInReturn', 'PackageLabel']
-
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'stock.configuration'
