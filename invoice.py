@@ -9,9 +9,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import DepositError
 
-__all__ = ['Invoice', 'InvoiceLine',
-    'DepositRecall', 'DepositRecallStart']
-
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'

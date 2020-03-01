@@ -16,9 +16,6 @@ from trytond.tools import grouped_slice, reduce_ids
 from trytond.modules.party.exceptions import EraseError
 
 
-__all__ = ['Party', 'PartyErase']
-
-
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
@@ -142,7 +139,7 @@ class Party(metaclass=PoolMeta):
         return not amount or ((amount < 0) == (sign < 0))
 
 
-class PartyErase(metaclass=PoolMeta):
+class Erase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
