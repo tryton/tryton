@@ -17,8 +17,6 @@ from trytond.pyson import Eval
 
 from .exceptions import RateError
 
-__all__ = ['Currency', 'Rate']
-
 
 class Currency(DeactivableMixin, ModelSQL, ModelView):
     'Currency'
@@ -223,8 +221,8 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
         return query
 
 
-class Rate(ModelSQL, ModelView):
-    'Rate'
+class CurrencyRate(ModelSQL, ModelView):
+    "Currency Rate"
     __name__ = 'currency.currency.rate'
     date = fields.Date('Date', required=True, select=True,
         help="From when the rate applies.")
@@ -236,7 +234,7 @@ class Rate(ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(Rate, cls).__setup__()
+        super().__setup__()
         t = cls.__table__()
         cls._sql_constraints = [
             ('date_currency_uniq', Unique(t, t.date, t.currency),
