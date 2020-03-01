@@ -247,7 +247,7 @@ class Form(SignalEvent, TabContent):
         if (self.screen.current_view.view_type == 'form'
                 and revision
                 and revision < revisions[-1][0]):
-                revision = revisions[-1][0]
+            revision = revisions[-1][0]
         if revision != self.screen.context.get('_datetime'):
             self.screen.clear()
             # Update root group context that will be propagated

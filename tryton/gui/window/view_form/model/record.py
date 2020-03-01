@@ -603,8 +603,9 @@ class Record(SignalEvent):
         autocomplete = self.group.fields[fieldname].attrs['autocomplete']
         args = self._get_on_change_args(autocomplete)
         try:
-            res = RPCExecute('model', self.model_name, 'autocomplete_' +
-                fieldname, args, context=self.get_context())
+            res = RPCExecute(
+                'model', self.model_name,
+                'autocomplete_' + fieldname, args, context=self.get_context())
         except RPCException:
             # ensure res is a list
             res = []

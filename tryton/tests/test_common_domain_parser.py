@@ -365,7 +365,8 @@ class DomainParserTestCase(TestCase):
                 (untimezoned_date(dt.datetime(2002, 12, 4)),
                     dt.date(2002, 12, 4).strftime('%x')),
                 (untimezoned_date(dt.datetime(2002, 12, 4, 12, 30)),
-                    dt.datetime(2002, 12, 4, 12, 30).strftime('"%x %H:%M:%S"')),
+                    dt.datetime(2002, 12, 4, 12, 30).strftime(
+                        '"%x %H:%M:%S"')),
                 (False, ''),
                 (None, ''),
                 ):

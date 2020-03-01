@@ -14,7 +14,7 @@ except ValueError:
 
 try:
     # Import earlier otherwise there is a segmentation fault on MSYS2
-    import goocalendar
+    import goocalendar  # noqa: F401
 except ImportError:
     pass
 

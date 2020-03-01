@@ -470,8 +470,8 @@ class Screen(SignalEvent):
         self.group.destroy()
 
     def default_row_activate(self):
-        if (self.current_view.view_type == 'tree' and
-                int(self.current_view.attributes.get('keyword_open', 0))):
+        if (self.current_view.view_type == 'tree'
+                and int(self.current_view.attributes.get('keyword_open', 0))):
             return Action.exec_keyword('tree_open', {
                 'model': self.model_name,
                 'id': self.current_record.id if self.current_record else None,
@@ -491,8 +491,8 @@ class Screen(SignalEvent):
             view_id = int(view_id)
         if self.current_view:
             self.current_view.set_value()
-            if (self.current_record and
-                    self.current_record not in self.current_record.group):
+            if (self.current_record
+                    and self.current_record not in self.current_record.group):
                 self.current_record = None
             fields = self.current_view.get_fields()
             if (self.current_record and self.current_view.editable

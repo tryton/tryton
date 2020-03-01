@@ -11,7 +11,7 @@ from . import View, XMLViewParser
 try:
     from .calendar_gtk.calendar_ import Calendar_
     from .calendar_gtk.toolbar import Toolbar
-except ImportError as e:
+except ImportError:
     Calendar_ = None
     Toolbar = None
 

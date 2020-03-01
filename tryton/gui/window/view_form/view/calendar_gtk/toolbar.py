@@ -61,9 +61,9 @@ class Toolbar(Gtk.Toolbar):
             'day-selected-double-click',
             self.on_gtkcal_day_selected_double_click)
         gtkcal.set_display_options(
-            Gtk.CalendarDisplayOptions.SHOW_HEADING |
-            Gtk.CalendarDisplayOptions.SHOW_WEEK_NUMBERS |
-            Gtk.CalendarDisplayOptions.SHOW_DAY_NAMES)
+            Gtk.CalendarDisplayOptions.SHOW_HEADING
+            | Gtk.CalendarDisplayOptions.SHOW_WEEK_NUMBERS
+            | Gtk.CalendarDisplayOptions.SHOW_DAY_NAMES)
         gtkcal.set_no_show_all(True)
         self.__cal_popup.add(gtkcal)
         gtkcal.show()

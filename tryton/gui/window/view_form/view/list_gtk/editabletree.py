@@ -214,7 +214,8 @@ class EditableTreeView(TreeView):
                                 break
                         GLib.idle_add(self.set_cursor, path, col, None, True)
                         return
-                    if ((self.view.screen.pre_validate
+                    if ((
+                                self.view.screen.pre_validate
                                 and not record.pre_validate())
                             or (not self.view.screen.parent
                                 and not record.save())):

@@ -274,20 +274,6 @@ class ViewSearch(object):
 VIEW_SEARCH = ViewSearch()
 
 
-def find_in_path(name):
-    if os.name == "nt":
-        sep = ';'
-    else:
-        sep = ':'
-    path = [directory for directory in os.environ['PATH'].split(sep)
-            if os.path.isdir(directory)]
-    for directory in path:
-        val = os.path.join(directory, name)
-        if os.path.isfile(val) or os.path.islink(val):
-            return val
-    return name
-
-
 def get_toplevel_window():
     from tryton.gui.main import Main
     return Main().get_active_window()

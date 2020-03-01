@@ -75,8 +75,8 @@ class AdaptModelGroup(GenericTreeModel):
             self.row_inserted(path, iter_)
             if record.children_group(self.children_field):
                 self.row_has_child_toggled(path, iter_)
-            if (record.parent and
-                    record.group is not self.group):
+            if (record.parent
+                    and record.group is not self.group):
                 path = record.parent.get_index_path(self.group)
                 iter_ = self.get_iter(path)
                 self.row_has_child_toggled(path, iter_)

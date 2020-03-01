@@ -156,8 +156,9 @@ class PopdownMixin(object):
         if lengths:
             pop = sorted(lengths, reverse=True)
             average = sum(pop) / len(pop)
-            deviation = int(math.sqrt(sum((x - average) ** 2 for x in pop) /
-                    len(pop)))
+            deviation = int(
+                math.sqrt(sum((x - average) ** 2 for x in pop)
+                    / len(pop)))
             width = max(next((x for x in pop if x < (deviation * 4)), 10), 10)
         else:
             width = 10

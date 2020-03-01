@@ -98,8 +98,9 @@ class WinImport(WinCSV):
         if self.model1.get_value(child, 0) is None:
             prefix_field = self.model1.get_value(iter, 1)
             name, model = self.fields[prefix_field]
-            self.model_populate(self._get_fields(model), iter, prefix_field +
-                    '/', name + '/')
+            self.model_populate(
+                self._get_fields(model), iter,
+                prefix_field + '/', name + '/')
             self.model1.remove(child)
 
     def sig_autodetect(self, widget=None):

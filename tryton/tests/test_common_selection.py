@@ -15,4 +15,3 @@ class SelectionTestCase(TestCase):
         self.assertEqual(freeze_value('foo'), 'foo')
         self.assertEqual(
             freeze_value({'foo': {'bar': 42}}), (('foo', (('bar', 42),)),))
-

@@ -413,7 +413,7 @@ if __name__ == '__main__':
 <div><br/></div>
 <div align="center">Center</div>
 <div><font face="sans" size="6">Sans6<font color="#ff0000">red</font></font></div>
-<div align="center"> <b> <i><u>Title</u></i> </b></div>'''
+<div align="center"> <b> <i><u>Title</u></i> </b></div>'''  # noqa: E501
 
     win = Gtk.Window()
     win.set_title('HTMLTextBuffer')

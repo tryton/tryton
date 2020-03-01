@@ -542,7 +542,8 @@ class DomainParser(object):
         def stringable_(clause):
             if not clause:
                 return True
-            if (((clause[0] in ('AND', 'OR'))
+            if ((
+                        (clause[0] in ('AND', 'OR'))
                         or isinstance(clause[0], (list, tuple)))
                     and all(isinstance(c, (list, tuple)) for c in clause[1:])):
                 return self.stringable(clause)
@@ -626,8 +627,8 @@ class DomainParser(object):
                 else:
                     operator = ''
             formatted_value = format_value(field, value, target, self.context)
-            if (operator in OPERATORS and
-                    field['type'] in ('char', 'text', 'selection')
+            if (operator in OPERATORS
+                    and field['type'] in ('char', 'text', 'selection')
                     and value == ''):
                 formatted_value = '""'
             return '%s: %s%s' % (quote(field['string']), operator,
