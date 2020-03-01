@@ -5,26 +5,24 @@ from trytond.pool import PoolMeta, Pool
 
 from trytond.modules.party.exceptions import EraseError
 
-__all__ = ['PartyReplace', 'PartyErase']
 
-
-class PartyReplace(metaclass=PoolMeta):
+class Replace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('sale.subscription', 'party'),
             ]
 
 
-class PartyErase(metaclass=PoolMeta):
+class Erase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
         pool = Pool()
         Subscription = pool.get('sale.subscription')
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
 
         subscriptions = Subscription.search([
                 ('party', '=', party.id),

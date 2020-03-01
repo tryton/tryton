@@ -11,7 +11,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import RecurrenceRuleValidationError
 
-__all__ = ['RecurrenceRuleSet', 'RecurrenceRule']
 WEEKDAYS = {
     'MO': MO,
     'TU': TU,

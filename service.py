@@ -3,8 +3,6 @@
 from trytond.model import ModelSQL, ModelView, DeactivableMixin, fields
 from trytond.pyson import Eval
 
-__all__ = ['Service']
-
 
 class Service(DeactivableMixin, ModelSQL, ModelView):
     "Subscription Service"
