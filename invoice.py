@@ -582,7 +582,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     ).join(line, condition=move.id == line.move
                     ).select(invoice.id,
                     Coalesce(Sum(
-                            Case((line.second_currency == invoice.currency,
+                            Case((
+                                    line.second_currency == invoice.currency,
                                     line.amount_second_currency),
                                 else_=line.debit - line.credit)),
                         0).cast(type_name),
@@ -1125,7 +1126,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         return [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
             ('/tree', 'visual',
-                If(((Eval('type') == 'out')
+                If((
+                        (Eval('type') == 'out')
                         & (Eval('amount_to_pay_today', 0) > 0))
                     | ((Eval('type') == 'in')
                         & (Eval('amount_to_pay_today', 0) < 0)),
@@ -2563,7 +2565,7 @@ class PayInvoiceStart(ModelView):
     invoice_account = fields.Many2One(
         'account.account', "Invoice Account", readonly=True)
     payment_method = fields.Many2One(
-        'account.invoice.payment.method', "Payment Method",  required=True,
+        'account.invoice.payment.method', "Payment Method", required=True,
         domain=[
             ('company', '=', Eval('company')),
             ('debit_account', '!=', Eval('invoice_account')),

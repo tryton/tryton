@@ -17,9 +17,6 @@ from trytond.config import config
 
 from .exceptions import PaymentTermValidationError, PaymentTermComputeError
 
-__all__ = ['PaymentTerm', 'PaymentTermLine', 'PaymentTermLineRelativeDelta',
-    'TestPaymentTerm', 'TestPaymentTermView', 'TestPaymentTermViewResult']
-
 
 class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
     'Payment Term'
@@ -68,7 +65,7 @@ class PaymentTerm(DeactivableMixin, ModelSQL, ModelView):
             value = line.get_value(remainder, amount, currency)
             value_date = line.get_date(date)
             if value is None or not value_date:
-                    continue
+                continue
             if ((remainder - value) * sign) < Decimal('0.0'):
                 res.append((value_date, remainder))
                 break

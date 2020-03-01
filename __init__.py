@@ -2,51 +2,51 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .payment_term import *
-from .invoice import *
+from . import payment_term
+from . import invoice
 from . import party
-from .account import *
+from . import account
 from . import company
 
 
 def register():
     Pool.register(
-        PaymentTerm,
-        PaymentTermLine,
-        PaymentTermLineRelativeDelta,
-        TestPaymentTermView,
-        TestPaymentTermViewResult,
-        Invoice,
-        InvoicePaymentLine,
-        InvoiceLine,
-        InvoiceLineTax,
-        InvoiceTax,
-        PayInvoiceStart,
-        PayInvoiceAsk,
-        CreditInvoiceStart,
+        payment_term.PaymentTerm,
+        payment_term.PaymentTermLine,
+        payment_term.PaymentTermLineRelativeDelta,
+        payment_term.TestPaymentTermView,
+        payment_term.TestPaymentTermViewResult,
+        invoice.Invoice,
+        invoice.InvoicePaymentLine,
+        invoice.InvoiceLine,
+        invoice.InvoiceLineTax,
+        invoice.InvoiceTax,
+        invoice.PayInvoiceStart,
+        invoice.PayInvoiceAsk,
+        invoice.CreditInvoiceStart,
         party.Address,
         party.ContactMechanism,
         party.Party,
         party.PartyPaymentTerm,
-        InvoiceSequence,
+        account.InvoiceSequence,
         # Match pattern migration fallbacks to Fiscalyear values so Period
         # must be registered before Fiscalyear
-        Period,
-        FiscalYear,
-        Move,
-        MoveLine,
-        Reconciliation,
-        PaymentMethod,
+        account.Period,
+        account.FiscalYear,
+        account.Move,
+        account.MoveLine,
+        account.Reconciliation,
+        invoice.PaymentMethod,
         company.Company,
         module='account_invoice', type_='model')
     Pool.register(
-        TestPaymentTerm,
-        PayInvoice,
-        CreditInvoice,
-        party.PartyReplace,
-        party.PartyErase,
-        RenewFiscalYear,
+        payment_term.TestPaymentTerm,
+        invoice.PayInvoice,
+        invoice.CreditInvoice,
+        party.Replace,
+        party.Erase,
+        account.RenewFiscalYear,
         module='account_invoice', type_='wizard')
     Pool.register(
-        InvoiceReport,
+        invoice.InvoiceReport,
         module='account_invoice', type_='report')

@@ -8,8 +8,6 @@ from trytond.tools.multivalue import migrate_property
 
 from trytond.modules.party.exceptions import EraseError
 
-__all__ = ['Address', 'Party', 'PartyPaymentTerm',
-    'PartyReplace', 'PartyErase']
 customer_payment_term = fields.Many2One(
     'account.invoice.payment_term', "Customer Payment Term")
 supplier_payment_term = fields.Many2One(
@@ -74,24 +72,24 @@ class PartyPaymentTerm(ModelSQL, ValueMixin):
             parent='party', fields=fields)
 
 
-class PartyReplace(metaclass=PoolMeta):
+class Replace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('account.invoice', 'party'),
             ('account.invoice.line', 'party'),
             ]
 
 
-class PartyErase(metaclass=PoolMeta):
+class Erase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
         pool = Pool()
         Invoice = pool.get('account.invoice')
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
 
         invoices = Invoice.search([
                 ('party', '=', party.id),
