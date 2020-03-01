@@ -9,13 +9,6 @@ from trytond.pyson import Eval, Bool
 
 from .exceptions import LotUnitQuantityError
 
-__all__ = [
-    'Lot', 'Move', 'Inventory', 'InventoryCount',
-    'ShipmentIn', 'ShipmentInReturn',
-    'ShipmentOut', 'ShipmentOutReturn',
-    'Production',
-    ]
-
 
 class Lot(metaclass=PoolMeta):
     __name__ = 'stock.lot'

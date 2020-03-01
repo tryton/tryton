@@ -80,8 +80,8 @@ setup(name=name,
     keywords='tryton stock lot unit serial',
     package_dir={'trytond.modules.stock_lot_unit': '.'},
     packages=(
-        ['trytond.modules.stock_lot_unit'] +
-        ['trytond.modules.stock_lot_unit.%s' % p for p in find_packages()]
+        ['trytond.modules.stock_lot_unit']
+        + ['trytond.modules.stock_lot_unit.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.stock_lot_unit': (info.get('xml', [])
@@ -94,7 +94,8 @@ setup(name=name,
         'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
