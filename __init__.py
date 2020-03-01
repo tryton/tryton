@@ -26,6 +26,6 @@ def register():
     Pool.register(
         payment.ProcessPayment,
         account.PayLine,
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='account_payment', type_='wizard')

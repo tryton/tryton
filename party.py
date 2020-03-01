@@ -6,7 +6,6 @@ from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.party.exceptions import EraseError
 
-__all__ = ['Party', 'PartyPaymentDirectDebit', 'PartyReplace', 'PartyErase']
 payment_direct_debit = fields.Boolean(
     "Direct Debit", help="Check if supplier does direct debit.")
 
@@ -31,23 +30,23 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
     payment_direct_debit = payment_direct_debit
 
 
-class PartyReplace(metaclass=PoolMeta):
+class Replace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('account.payment', 'party'),
             ]
 
 
-class PartyErase(metaclass=PoolMeta):
+class Erase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
         pool = Pool()
         Payment = pool.get('account.payment')
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
 
         payments = Payment.search([
                 ('party', '=', party.id),

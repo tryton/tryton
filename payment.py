@@ -13,9 +13,6 @@ from trytond.pool import Pool
 
 from .exceptions import OverpayWarning
 
-__all__ = ['Journal', 'Group', 'Payment',
-    'ProcessPaymentStart', 'ProcessPayment']
-
 KINDS = [
     ('payable', 'Payable'),
     ('receivable', 'Receivable'),
@@ -105,6 +102,7 @@ class Group(ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('payments', None)
         return super(Group, cls).copy(groups, default=default)
+
 
 _STATES = {
     'readonly': Eval('state') != 'draft',

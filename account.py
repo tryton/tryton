@@ -22,10 +22,6 @@ from trytond.modules.company.model import CompanyValueMixin
 from .exceptions import BlockedWarning, GroupWarning
 from .payment import KINDS
 
-__all__ = ['MoveLine', 'PayLine', 'PayLineAskJournal',
-    'Configuration', 'ConfigurationPaymentGroupSequence',
-    'Invoice']
-
 
 class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
@@ -64,7 +60,8 @@ class MoveLine(metaclass=PoolMeta):
         super(MoveLine, cls).__setup__()
         cls._buttons.update({
                 'pay': {
-                    'invisible': ~Eval('payment_kind').in_(list(dict(KINDS).keys())),
+                    'invisible': ~Eval('payment_kind').in_(
+                        list(dict(KINDS).keys())),
                     'depends': ['payment_kind'],
                     },
                 'payment_block': {
