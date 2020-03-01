@@ -8,7 +8,6 @@ from trytond.backend.postgresql.table import TableHandler as PGTableHandler
 
 from trytond_gis.const import GIS_SQL_TYPE_RE, WGS_84
 
-__all__ = ['TableHandler']
 logger = logging.getLogger(__name__)
 
 

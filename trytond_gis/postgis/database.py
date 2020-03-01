@@ -7,12 +7,8 @@ from psycopg2.extensions import (register_adapter, new_type, register_type,
     Binary)
 
 from trytond.backend.postgresql.database import Database as PGDatabase
-from trytond.backend.postgresql.database import (
-    DatabaseIntegrityError, DatabaseOperationalError)
 
 from trytond_gis import _GeoJSON
-
-__all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 
 
 def ewkb2geojson(value, cursor):
@@ -57,5 +53,6 @@ class Database(PGDatabase):
                 register_type(GEOGRAPHY)
 
         return conn
+
 
 register_adapter(_GeoJSON, lambda value: Binary(wkb.dumps(value)))
