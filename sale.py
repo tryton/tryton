@@ -137,10 +137,12 @@ class SubscriptionLine(metaclass=PoolMeta):
                     | (other.start_date > line.start_date)
                     | (other.end_date > line.start_date)))
             | ((line.end_date != Null)
-                & (((other.end_date == Null)
+                & ((
+                        (other.end_date == Null)
                         & (other.start_date < line.end_date))
                     | ((other.end_date != Null)
-                        & (((other.end_date >= line.start_date)
+                        & ((
+                                (other.end_date >= line.start_date)
                                 & (other.end_date < line.end_date))
                             | ((other.start_date >= line.start_date)
                                 & (other.start_date < line.end_date)))))))
