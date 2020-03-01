@@ -2,22 +2,22 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .sale import *
-from .purchase import *
-from .stock import *
-from .product import *
+from . import sale
+from . import purchase
+from . import stock
+from . import product
 
 
 def register():
     Pool.register(
-        Sale,
-        SaleLine,
-        PurchaseRequest,
-        Purchase,
-        ShipmentIn,
-        Template,
-        Product,
+        sale.Sale,
+        sale.Line,
+        purchase.Request,
+        purchase.Purchase,
+        stock.ShipmentIn,
+        product.Template,
+        product.Product,
         module='sale_supply', type_='model')
     Pool.register(
-        HandlePurchaseCancellationException,
+        purchase.HandlePurchaseCancellationException,
         module='sale_supply', type_='wizard')

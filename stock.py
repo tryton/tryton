@@ -6,9 +6,6 @@ from trytond.model import ModelView, Workflow
 from trytond.pool import Pool, PoolMeta
 
 
-__all__ = ['ShipmentIn']
-
-
 class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 

@@ -7,11 +7,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest', 'Purchase',
-    'HandlePurchaseCancellationException']
 
-
-class PurchaseRequest(metaclass=PoolMeta):
+class Request(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     sale_lines = fields.One2Many(
@@ -19,7 +16,7 @@ class PurchaseRequest(metaclass=PoolMeta):
 
     @classmethod
     def _get_origin(cls):
-        return super(PurchaseRequest, cls)._get_origin() | {'sale.sale'}
+        return super()._get_origin() | {'sale.sale'}
 
     @classmethod
     def delete(cls, requests):
@@ -36,7 +33,7 @@ class PurchaseRequest(metaclass=PoolMeta):
                         'purchase_request': None,
                         })
 
-        super(PurchaseRequest, cls).delete(requests)
+        super().delete(requests)
 
         if sales:
             Sale.__queue__.process(sales)

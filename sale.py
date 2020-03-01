@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
-__all__ = ['Sale', 'SaleLine']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -57,7 +55,7 @@ class Sale(metaclass=PoolMeta):
         ShipmentOut.wait(shipments)
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     purchase_request = fields.Many2One('purchase.request', 'Purchase Request',
@@ -91,7 +89,7 @@ class SaleLine(metaclass=PoolMeta):
         else:
             default = default.copy()
         default.setdefault('purchase_request', None)
-        return super(SaleLine, cls).copy(lines, default=default)
+        return super().copy(lines, default=default)
 
     @property
     def supply_on_sale(self):
@@ -100,12 +98,13 @@ class SaleLine(metaclass=PoolMeta):
                 or not self.product
                 or self.quantity <= 0
                 or not self.product.purchasable
-                or any(m.state not in ['staging', 'cancel'] for m in self.moves)):
+                or any(m.state not in ['staging', 'cancel']
+                    for m in self.moves)):
             return False
         return self.product.supply_on_sale
 
     def get_move(self, shipment_type):
-        move = super(SaleLine, self).get_move(shipment_type)
+        move = super().get_move(shipment_type)
         if (move
                 and shipment_type == 'out'
                 and (self.supply_on_sale
