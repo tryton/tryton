@@ -103,10 +103,10 @@ class Tax(metaclass=PoolMeta):
         periods = context.get('periods', [])
         where = super(Tax, cls)._amount_where(tax_line, move_line, move)
         return ((where
-                & (tax_line.on_cash_basis == False)
+                & (tax_line.on_cash_basis == Literal(False))
                 | (tax_line.on_cash_basis == Null))
             | ((tax_line.period.in_(periods) if periods else Literal(False))
-                & (tax_line.on_cash_basis == True)))
+                & (tax_line.on_cash_basis == Literal(True))))
 
     @classmethod
     def _amount_domain(cls):
