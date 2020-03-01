@@ -7,8 +7,6 @@ from trytond.pool import PoolMeta
 
 from .common import parcel_weight
 
-__all__ = ['Sale']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'

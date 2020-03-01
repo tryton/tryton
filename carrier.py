@@ -7,8 +7,6 @@ from trytond.pyson import Eval, Bool, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Carrier', 'WeightPriceList']
-
 
 class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
