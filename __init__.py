@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .address import *
+from . import address
 
 
 def register():
     Pool.register(
-        Address,
+        address.Address,
         module='google_maps', type_='model')

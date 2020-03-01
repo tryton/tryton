@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton google maps',
     package_dir={'trytond.modules.google_maps': '.'},
     packages=(
-        ['trytond.modules.google_maps'] +
-        ['trytond.modules.google_maps.%s' % p for p in find_packages()]
+        ['trytond.modules.google_maps']
+        + ['trytond.modules.google_maps.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.google_maps': (info.get('xml', [])
@@ -93,7 +93,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
