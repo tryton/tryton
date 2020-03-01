@@ -5,8 +5,6 @@ from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['CreateInventoriesStart', 'CreateInventories']
-
 
 class CreateInventoriesStart(ModelView):
     'Create Inventories'

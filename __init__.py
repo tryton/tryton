@@ -2,13 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .inventory import *
+from . import inventory
 
 
 def register():
     Pool.register(
-        CreateInventoriesStart,
+        inventory.CreateInventoriesStart,
         module='stock_inventory_location', type_='model')
     Pool.register(
-        CreateInventories,
+        inventory.CreateInventories,
         module='stock_inventory_location', type_='wizard')
