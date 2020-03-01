@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .company import *
-from .res import *
+from . import company
+from . import res
 
 
 def register():
     Pool.register(
-        Company,
-        User,
+        company.Company,
+        res.User,
         module='company_work_time', type_='model')
