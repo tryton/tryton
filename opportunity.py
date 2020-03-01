@@ -614,17 +614,22 @@ class SaleOpportunityReportMixin:
             Max(opportunity.write_date).as_('write_date'),
             opportunity.company,
             Count(Literal(1)).as_('number'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
+            Sum(Case(
+                    (opportunity.state.in_(cls._converted_state()),
                         Literal(1)), else_=Literal(0))).as_('converted'),
-            Sum(Case((opportunity.state.in_(cls._won_state()),
+            Sum(Case(
+                    (opportunity.state.in_(cls._won_state()),
                         Literal(1)), else_=Literal(0))).as_('won'),
-            Sum(Case((opportunity.state.in_(cls._lost_state()),
+            Sum(Case(
+                    (opportunity.state.in_(cls._lost_state()),
                         Literal(1)), else_=Literal(0))).as_('lost'),
             Sum(opportunity.amount).as_('amount'),
-            Sum(Case((opportunity.state.in_(cls._converted_state()),
+            Sum(Case(
+                    (opportunity.state.in_(cls._converted_state()),
                         opportunity.amount),
                     else_=Literal(0))).as_('converted_amount'),
-            Sum(Case((opportunity.state.in_(cls._won_state()),
+            Sum(Case(
+                    (opportunity.state.in_(cls._won_state()),
                         opportunity.amount),
                     else_=Literal(0))).as_('won_amount'))
 
@@ -644,11 +649,11 @@ class SaleOpportunityEmployee(SaleOpportunityReportMixin, ModelSQL, ModelView):
             )
         where = Literal(True)
         if Transaction().context.get('start_date'):
-            where &= (opportunity.start_date >=
-                Transaction().context['start_date'])
+            where &= (opportunity.start_date
+                >= Transaction().context['start_date'])
         if Transaction().context.get('end_date'):
-            where &= (opportunity.start_date <=
-                Transaction().context['end_date'])
+            where &= (opportunity.start_date
+                <= Transaction().context['end_date'])
         query.where = where
         query.group_by = (opportunity.employee, opportunity.company)
         return query

@@ -5,8 +5,6 @@ from functools import wraps
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
-__all__ = ['Sale']
-
 
 def process_opportunity(func):
     @wraps(func)

@@ -2,35 +2,35 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .opportunity import *
-from .configuration import *
-from .sale import *
-from .party import *
-from .account import *
-from .product import *
-from .company import *
+from . import opportunity
+from . import configuration
+from . import sale
+from . import party
+from . import account
+from . import product
+from . import company
 
 
 def register():
     Pool.register(
-        SaleOpportunity,
-        SaleOpportunityLine,
-        SaleOpportunityEmployee,
-        SaleOpportunityEmployeeContext,
-        SaleOpportunityMonthly,
-        SaleOpportunityEmployeeMonthly,
-        Configuration,
-        ConfigurationSequence,
-        Sale,
-        Party,
-        Address,
-        PaymentTerm,
-        PaymentTermLine,
-        Template,
-        Product,
-        Company,
-        Employee,
+        opportunity.SaleOpportunity,
+        opportunity.SaleOpportunityLine,
+        opportunity.SaleOpportunityEmployee,
+        opportunity.SaleOpportunityEmployeeContext,
+        opportunity.SaleOpportunityMonthly,
+        opportunity.SaleOpportunityEmployeeMonthly,
+        configuration.Configuration,
+        configuration.ConfigurationSequence,
+        sale.Sale,
+        party.Party,
+        party.Address,
+        account.PaymentTerm,
+        account.PaymentTermLine,
+        product.Template,
+        product.Product,
+        company.Company,
+        company.Employee,
         module='sale_opportunity', type_='model')
     Pool.register(
-        PartyReplace,
+        party.Replace,
         module='sale_opportunity', type_='wizard')
