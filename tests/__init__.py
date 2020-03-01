@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.stock_supply_forecast.tests.test_stock_supply_forecast import suite
+    from trytond.modules.stock_supply_forecast.tests.test_stock_supply_forecast import suite  # noqa: E501
 except ImportError:
     from .test_stock_supply_forecast import suite
 

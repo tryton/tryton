@@ -2,10 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['PurchaseRequest']
 
-
-class PurchaseRequest(metaclass=PoolMeta):
+class Request(metaclass=PoolMeta):
     __name__ = 'purchase.request'
 
     @classmethod
@@ -21,5 +19,5 @@ class PurchaseRequest(metaclass=PoolMeta):
                 ('state', '=', 'done'),
                 ])
         Forecast.create_moves(forecasts)
-        super(PurchaseRequest, cls).generate_requests(*args, **kwargs)
+        super().generate_requests(*args, **kwargs)
         Forecast.delete_moves(forecasts)

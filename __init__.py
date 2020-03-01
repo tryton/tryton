@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .purchase_request import *
+from . import purchase_request
 
 
 def register():
     Pool.register(
-        PurchaseRequest,
+        purchase_request.Request,
         module='stock_supply_forecast', type_='model')
