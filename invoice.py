@@ -6,8 +6,6 @@ from trytond.pyson import Eval, If
 
 from trytond.modules.analytic_account import AnalyticMixin
 
-__all__ = ['InvoiceLine', 'AnalyticAccountEntry']
-
 
 class InvoiceLine(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'account.invoice.line'

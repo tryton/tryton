@@ -6,8 +6,6 @@ from trytond.transaction import Transaction
 
 from trytond.modules.analytic_account import AnalyticMixin
 
-__all__ = ['Asset']
-
 
 class Asset(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'account.asset'

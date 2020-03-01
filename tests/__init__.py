@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.analytic_invoice.tests.test_analytic_invoice import suite
+    from trytond.modules.analytic_invoice.tests.test_analytic_invoice import suite  # noqa: E501
 except ImportError:
     from .test_analytic_invoice import suite
 
