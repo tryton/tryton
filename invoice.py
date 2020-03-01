@@ -8,8 +8,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Invoice', 'InvoiceLine']
-
 
 def process_sale(func):
     @wraps(func)
@@ -102,21 +100,21 @@ class Invoice(metaclass=PoolMeta):
         return super(Invoice, cls).draft(invoices)
 
 
-class InvoiceLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @property
     def origin_name(self):
         pool = Pool()
         SaleLine = pool.get('sale.line')
-        name = super(InvoiceLine, self).origin_name
+        name = super().origin_name
         if isinstance(self.origin, SaleLine):
             name = self.origin.sale.rec_name
         return name
 
     @classmethod
     def _get_origin(cls):
-        models = super(InvoiceLine, cls)._get_origin()
+        models = super()._get_origin()
         models.append('sale.line')
         return models
 
@@ -128,6 +126,6 @@ class InvoiceLine(metaclass=PoolMeta):
             invoices = (l.invoice for l in cls.browse(lines)
                 if l.type == 'line' and l.invoice)
             sales = set(s for i in invoices for s in i.sales)
-        super(InvoiceLine, cls).delete(lines)
+        super().delete(lines)
         if sales:
             Sale.__queue__.process(sales)

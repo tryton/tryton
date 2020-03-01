@@ -20,14 +20,6 @@ from trytond.pyson import Eval, If
 from trytond.wizard import Wizard, StateTransition, StateAction
 from trytond.i18n import lazy_gettext
 
-__all__ = ['Context',
-    'Customer', 'CustomerTimeseries',
-    'Product', 'ProductTimeseries',
-    'Category', 'CategoryTimeseries', 'CategoryTree',
-    'Country', 'CountryTimeseries',
-    'Subdivision', 'SubdivisionTimeseries',
-    'Region', 'OpenRegion']
-
 
 def pairwise(iterable):
     a, b = tee(iterable)

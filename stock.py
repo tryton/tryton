@@ -8,8 +8,6 @@ from trytond.model.exceptions import AccessError
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['ShipmentOut', 'ShipmentOutReturn', 'Move']
-
 
 def process_sale(moves_field):
     def _process_sale(func):

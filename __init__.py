@@ -2,36 +2,36 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .sale import *
+from . import sale
 from . import product
-from .stock import *
-from .configuration import *
-from .invoice import *
+from . import stock
+from . import configuration
+from . import invoice
 from . import party
 from . import sale_reporting
 
 
 def register():
     Pool.register(
-        Move,
-        Sale,
-        SaleIgnoredInvoice,
-        SaleRecreatedInvoice,
-        SaleLine,
-        SaleLineTax,
-        SaleLineIgnoredMove,
-        SaleLineRecreatedMove,
+        stock.Move,
+        sale.Sale,
+        sale.SaleIgnoredInvoice,
+        sale.SaleRecreatedInvoice,
+        sale.SaleLine,
+        sale.SaleLineTax,
+        sale.SaleLineIgnoredMove,
+        sale.SaleLineRecreatedMove,
         product.Template,
         product.Product,
         product.SaleContext,
-        ShipmentOut,
-        ShipmentOutReturn,
-        HandleShipmentExceptionAsk,
-        HandleInvoiceExceptionAsk,
-        ReturnSaleStart,
-        Configuration,
-        ConfigurationSequence,
-        ConfigurationSaleMethod,
+        stock.ShipmentOut,
+        stock.ShipmentOutReturn,
+        sale.HandleShipmentExceptionAsk,
+        sale.HandleInvoiceExceptionAsk,
+        sale.ReturnSaleStart,
+        configuration.Configuration,
+        configuration.ConfigurationSequence,
+        configuration.ConfigurationSaleMethod,
         sale_reporting.Context,
         sale_reporting.Customer,
         sale_reporting.CustomerTimeseries,
@@ -45,19 +45,19 @@ def register():
         sale_reporting.Subdivision,
         sale_reporting.SubdivisionTimeseries,
         sale_reporting.Region,
-        Invoice,
-        InvoiceLine,
+        invoice.Invoice,
+        invoice.Line,
         module='sale', type_='model')
     Pool.register(
-        OpenCustomer,
-        HandleShipmentException,
-        HandleInvoiceException,
-        ReturnSale,
-        ModifyHeader,
-        party.PartyReplace,
-        party.PartyErase,
+        sale.OpenCustomer,
+        sale.HandleShipmentException,
+        sale.HandleInvoiceException,
+        sale.ReturnSale,
+        sale.ModifyHeader,
+        party.Replace,
+        party.Erase,
         sale_reporting.OpenRegion,
         module='sale', type_='wizard')
     Pool.register(
-        SaleReport,
+        sale.SaleReport,
         module='sale', type_='report')

@@ -9,8 +9,6 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Configuration',
-    'ConfigurationSequence', 'ConfigurationSaleMethod']
 sale_invoice_method = fields.Selection(
     'get_sale_invoice_methods', "Sale Invoice Method")
 sale_shipment_method = fields.Selection(
