@@ -5,8 +5,6 @@ from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
-__all__ = ['ProductSupplier', 'ProductSupplierDay']
-
 
 class ProductSupplier(metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'

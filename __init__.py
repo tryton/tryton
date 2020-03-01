@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .purchase import *
+from . import purchase
 
 
 def register():
     Pool.register(
-        ProductSupplier,
-        ProductSupplierDay,
+        purchase.ProductSupplier,
+        purchase.ProductSupplierDay,
         module='stock_supply_day', type_='model')
