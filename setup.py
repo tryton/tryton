@@ -79,8 +79,8 @@ setup(name=name,
     keywords='tryton sale amendment',
     package_dir={'trytond.modules.sale_amendment': '.'},
     packages=(
-        ['trytond.modules.sale_amendment'] +
-        ['trytond.modules.sale_amendment.%s' % p for p in find_packages()]
+        ['trytond.modules.sale_amendment']
+        + ['trytond.modules.sale_amendment.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.sale_amendment': (info.get('xml', [])
@@ -94,7 +94,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
