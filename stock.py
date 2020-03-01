@@ -6,8 +6,6 @@ from trytond.model import Workflow, ModelView
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Move']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
@@ -24,7 +22,8 @@ class Move(metaclass=PoolMeta):
             'wrong type'
 
         move_line = AccountMoveLine()
-        if ((type_.endswith('supplier')
+        if ((
+                    type_.endswith('supplier')
                     or type_ == 'in_production')
                 and self.product.cost_price_method != 'fixed'):
             with Transaction().set_context(date=self.effective_date):
