@@ -12,9 +12,6 @@ from trytond.tools import grouped_slice
 from .exceptions import StockQuantityError, StockQuantityWarning
 
 
-__all__ = ['Sale']
-
-
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
 

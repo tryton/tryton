@@ -82,8 +82,9 @@ setup(name=name,
     keywords='tryton sale stock',
     package_dir={'trytond.modules.sale_stock_quantity': '.'},
     packages=(
-        ['trytond.modules.sale_stock_quantity'] +
-        ['trytond.modules.sale_stock_quantity.%s' % p for p in find_packages()]
+        ['trytond.modules.sale_stock_quantity']
+        + ['trytond.modules.sale_stock_quantity.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.sale_stock_quantity': (info.get('xml', [])
@@ -98,7 +99,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
