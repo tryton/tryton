@@ -7,8 +7,6 @@ from trytond.pool import PoolMeta
 from . import luhn
 from .exceptions import SIRENValidationError
 
-__all__ = ['Party']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'

@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .party import *
-from .address import *
+from . import party
+from . import address
 
 
 def register():
     Pool.register(
-        Party,
-        Address,
+        party.Party,
+        address.Address,
         module='party_siret', type_='model')

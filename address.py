@@ -7,8 +7,6 @@ from trytond.pool import PoolMeta
 from . import luhn
 from .exceptions import SIRETValidationError
 
-__all__ = ['Address']
-
 
 class Address(metaclass=PoolMeta):
     __name__ = 'party.address'

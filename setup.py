@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton party siret siren',
     package_dir={'trytond.modules.party_siret': '.'},
     packages=(
-        ['trytond.modules.party_siret'] +
-        ['trytond.modules.party_siret.%s' % p for p in find_packages()]
+        ['trytond.modules.party_siret']
+        + ['trytond.modules.party_siret.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.party_siret': (info.get('xml', [])
@@ -93,7 +93,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
