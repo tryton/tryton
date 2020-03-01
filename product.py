@@ -16,11 +16,6 @@ from trytond.modules.company.model import (
 
 from .exceptions import AccountError, TaxError
 
-__all__ = ['Category', 'CategoryAccount',
-    'CategoryCustomerTax', 'CategorySupplierTax',
-    'Template', 'Product', 'account_used', 'template_property',
-    'TemplateAccountCategory', 'TemplateCategoryAll']
-
 
 def account_used(field_name, field_string=None):
     if field_string is None:
