@@ -10,8 +10,6 @@ from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_statement.exceptions import ImportStatementError
 
-__all__ = ['ImportStatementStart', 'ImportStatement']
-
 
 class ImportStatementStart(metaclass=PoolMeta):
     __name__ = 'account.statement.import.start'
