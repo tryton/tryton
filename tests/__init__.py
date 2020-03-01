@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.edocument_unece.tests.test_edocument_unece import suite
+    from trytond.modules.edocument_unece.tests.test_edocument_unece import suite  # noqa: E501
 except ImportError:
     from .test_edocument_unece import suite
 
