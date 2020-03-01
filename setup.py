@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton account chart german SKR03',
     package_dir={'trytond.modules.account_de_skr03': '.'},
     packages=(
-        ['trytond.modules.account_de_skr03'] +
-        ['trytond.modules.account_de_skr03.%s' % p for p in find_packages()]
+        ['trytond.modules.account_de_skr03']
+        + ['trytond.modules.account_de_skr03.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.account_de_skr03': (info.get('xml', [])
@@ -93,7 +93,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: German',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
