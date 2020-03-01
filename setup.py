@@ -79,8 +79,9 @@ setup(name=name,
     keywords='tryton email notification',
     package_dir={'trytond.modules.notification_email': '.'},
     packages=(
-        ['trytond.modules.notification_email'] +
-        ['trytond.modules.notification_email.%s' % p for p in find_packages()]
+        ['trytond.modules.notification_email']
+        + ['trytond.modules.notification_email.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.notification_email': (info.get('xml', [])
@@ -92,7 +93,8 @@ setup(name=name,
         'Environment :: Plugins',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

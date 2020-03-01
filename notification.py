@@ -16,7 +16,6 @@ from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 
-__all__ = ['Email', 'EmailAttachment', 'EmailLog']
 _EMAIL_MODELS = [
     'res.user',
     'party.party',
