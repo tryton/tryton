@@ -3,8 +3,6 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 
-__all__ = ['Party', 'Replace']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'

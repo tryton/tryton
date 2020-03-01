@@ -27,8 +27,6 @@ from trytond.wizard import Wizard, StateAction
 from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
 
-__all__ = ['Journal', 'Group', 'Payment', 'Account', 'Customer',
-    'Checkout', 'CheckoutPage']
 logger = logging.getLogger(__name__)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
