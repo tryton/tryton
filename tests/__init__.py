@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.sale_advance_payment.tests.test_sale_advance_payment import suite
+    from trytond.modules.sale_advance_payment.tests.test_sale_advance_payment import suite  # noqa: E501
 except ImportError:
     from .test_sale_advance_payment import suite
 

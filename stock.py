@@ -7,8 +7,6 @@ from trytond.pool import Pool, PoolMeta
 
 from .exceptions import ShippingBlocked
 
-__all__ = ['ShipmentOut']
-
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
