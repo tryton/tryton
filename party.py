@@ -11,8 +11,6 @@ from trytond.modules.company.model import CompanyValueMixin
 
 from .exceptions import CreditLimitError, CreditLimitWarning
 
-__all__ = ['Party', 'PartyCreditLimitAmount']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
