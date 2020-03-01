@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton product measurement',
     package_dir={'trytond.modules.product_measurements': '.'},
     packages=(
-        ['trytond.modules.product_measurements'] +
-        ['trytond.modules.product_measurements.%s' % p
+        ['trytond.modules.product_measurements']
+        + ['trytond.modules.product_measurements.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -94,7 +94,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
