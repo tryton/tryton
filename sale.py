@@ -5,10 +5,8 @@ from trytond.pool import PoolMeta, Pool
 
 from .exceptions import OverShipmentWarning
 
-__all__ = ['SaleLine']
 
-
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     def _test_under_shipment_tolerance(self, quantity):
@@ -25,7 +23,7 @@ class SaleLine(metaclass=PoolMeta):
 
     @property
     def _move_remaining_quantity(self):
-        quantity = super(SaleLine, self)._move_remaining_quantity
+        quantity = super()._move_remaining_quantity
         if self._test_under_shipment_tolerance(quantity):
             return 0
         return quantity
@@ -33,7 +31,7 @@ class SaleLine(metaclass=PoolMeta):
     def get_move(self, shipment_type):
         pool = Pool()
         Uom = pool.get('product.uom')
-        move = super(SaleLine, self).get_move(shipment_type)
+        move = super().get_move(shipment_type)
         # Compute tolerance only if there is already at least one move.
         if move and set(self.moves) - set(self.moves_recreated):
             quantity = Uom.compute_qty(

@@ -3,8 +3,6 @@
 from trytond.model import ModelView, Workflow
 from trytond.pool import PoolMeta, Pool
 
-__all__ = ['Move']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'

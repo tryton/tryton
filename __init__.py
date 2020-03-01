@@ -13,6 +13,6 @@ def register():
     Pool.register(
         configuration.Configuration,
         configuration.ConfigurationShipmentTolerance,
-        sale.SaleLine,
+        sale.Line,
         stock.Move,
         module='sale_shipment_tolerance', type_='model')

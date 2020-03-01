@@ -4,8 +4,6 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import PoolMeta, Pool
 
 
-__all__ = ['Configuration', 'ConfigurationShipmentTolerance']
-
 sale_under_shipment_tolerance = fields.Float(
     "Sale Under Shipment Tolerance",
     help="The lower quantity accepted in percentage.")
