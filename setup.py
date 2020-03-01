@@ -80,8 +80,8 @@ setup(name=name,
     keywords='tryton stock package shipping dpd',
     package_dir={'trytond.modules.stock_package_shipping_dpd': '.'},
     packages=(
-        ['trytond.modules.stock_package_shipping_dpd'] +
-        ['trytond.modules.stock_package_shipping_dpd.%s' % p
+        ['trytond.modules.stock_package_shipping_dpd']
+        + ['trytond.modules.stock_package_shipping_dpd.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -96,7 +96,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Czech',

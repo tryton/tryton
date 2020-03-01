@@ -12,8 +12,6 @@ from trytond.pool import PoolMeta
 from .configuration import get_client, LOGIN_SERVICE
 from .exceptions import DPDError
 
-__all__ = ['CredentialDPD', 'Carrier']
-
 
 class CredentialDPD(ModelSQL, ModelView, MatchMixin):
     'DPD Credential'

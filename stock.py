@@ -20,8 +20,6 @@ from trytond.modules.stock_package_shipping.exceptions import (
 from .configuration import get_client, SHIPMENT_SERVICE
 from .exceptions import DPDError
 
-__all__ = ['ShipmentOut', 'CreateShipping', 'CreateDPDShipping']
-
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
