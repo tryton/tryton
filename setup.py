@@ -80,8 +80,8 @@ setup(name=name,
     keywords='tryton purchase request',
     package_dir={'trytond.modules.purchase_request': '.'},
     packages=(
-        ['trytond.modules.purchase_request'] +
-        ['trytond.modules.purchase_request.%s' % p for p in find_packages()]
+        ['trytond.modules.purchase_request']
+        + ['trytond.modules.purchase_request.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.purchase_request': (info.get('xml', [])
@@ -95,7 +95,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

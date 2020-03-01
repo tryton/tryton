@@ -13,12 +13,6 @@ from trytond.pyson import If, In, Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['PurchaseRequest',
-    'CreatePurchaseAskParty', 'CreatePurchase',
-    'HandlePurchaseCancellationException',
-    'HandlePurchaseCancellationExceptionStart',
-    ]
-
 STATES = {
     'readonly': Eval('state') != 'draft',
     }

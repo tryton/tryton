@@ -11,8 +11,6 @@ from trytond.pyson import Eval
 
 from .exceptions import PurchaseWarehouseWarning
 
-__all__ = ['Purchase', 'PurchaseLine']
-
 
 def process_request(func):
     @wraps(func)
@@ -84,7 +82,7 @@ class Purchase(metaclass=PoolMeta):
         super(Purchase, cls).do(purchases)
 
 
-class PurchaseLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     requests = fields.One2Many(
@@ -99,6 +97,6 @@ class PurchaseLine(metaclass=PoolMeta):
         Request = pool.get('purchase.request')
         with Transaction().set_context(_check_access=False):
             requests = [r for l in cls.browse(lines) for r in l.requests]
-        super(PurchaseLine, cls).delete(lines)
+        super().delete(lines)
         with Transaction().set_context(_check_access=False):
             Request.update_state(requests)
