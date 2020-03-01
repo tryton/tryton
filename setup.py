@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton timesheet cost',
     package_dir={'trytond.modules.timesheet_cost': '.'},
     packages=(
-        ['trytond.modules.timesheet_cost'] +
-        ['trytond.modules.timesheet_cost.%s' % p for p in find_packages()]
+        ['trytond.modules.timesheet_cost']
+        + ['trytond.modules.timesheet_cost.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.timesheet_cost': (info.get('xml', [])
@@ -93,7 +93,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

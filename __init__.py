@@ -2,13 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .company import *
-from .timesheet import *
+from . import company
+from . import timesheet
 
 
 def register():
     Pool.register(
-        Employee,
-        EmployeeCostPrice,
-        TimesheetLine,
+        company.Employee,
+        company.EmployeeCostPrice,
+        timesheet.Line,
         module='timesheet_cost', type_='model')

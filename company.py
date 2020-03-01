@@ -7,7 +7,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.config import config
 
-__all__ = ['Employee', 'EmployeeCostPrice', 'price_digits']
+__all__ = ['price_digits']
 
 price_digits = (16, config.getint(
         'timesheet_cost', 'price_decimal', default=4))

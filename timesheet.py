@@ -8,10 +8,8 @@ from trytond.model import fields
 
 from .company import price_digits
 
-__all__ = ['TimesheetLine']
 
-
-class TimesheetLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'timesheet.line'
 
     cost_price = fields.Numeric('Cost Price',
@@ -28,7 +26,7 @@ class TimesheetLine(metaclass=PoolMeta):
 
         migrate_cost_price = not table_h.column_exist('cost_price')
 
-        super(TimesheetLine, cls).__register__(module_name)
+        super().__register__(module_name)
 
         # Migration from 3.6: add cost_price
         if migrate_cost_price:
@@ -55,13 +53,13 @@ class TimesheetLine(metaclass=PoolMeta):
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             values.pop('cost_price', None)
-        lines = super(TimesheetLine, cls).create(vlist)
+        lines = super().create(vlist)
         cls.sync_cost(lines)
         return lines
 
     @classmethod
     def write(cls, *args):
-        super(TimesheetLine, cls).write(*args)
+        super().write(*args)
         cls.sync_cost(sum(args[0:None:2], []))
 
     @classmethod
