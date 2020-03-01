@@ -292,6 +292,9 @@ class ActionMixin(ModelSQL):
     def get_action(cls, ids, names):
         def identical(v):
             return v
+
+        def list_int(v):
+            return list(map(int, v))
         records = cls.browse(ids)
         result = {}
         for name in names:
@@ -307,7 +310,7 @@ class ActionMixin(ModelSQL):
                         else:
                             convert = int
                     elif isinstance(value, (list, tuple)):
-                        convert = partial(map, int)
+                        convert = list_int
                 values[record.id] = convert(value)
         return result
 
