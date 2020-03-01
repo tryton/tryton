@@ -2,17 +2,17 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .forecast import *
+from . import forecast
 
 
 def register():
     Pool.register(
-        Forecast,
-        ForecastLine,
-        ForecastLineMove,
-        ForecastCompleteAsk,
-        ForecastCompleteChoose,
+        forecast.Forecast,
+        forecast.ForecastLine,
+        forecast.ForecastLineMove,
+        forecast.ForecastCompleteAsk,
+        forecast.ForecastCompleteChoose,
         module='stock_forecast', type_='model')
     Pool.register(
-        ForecastComplete,
+        forecast.ForecastComplete,
         module='stock_forecast', type_='wizard')

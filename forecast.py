@@ -381,7 +381,9 @@ class ForecastLine(ModelSQL, ModelView):
         line_move = LineMove.__table__()
 
         result = dict((x.id, 0) for x in lines)
-        key = lambda line: line.forecast.id
+
+        def key(line):
+            return line.forecast.id
         lines.sort(key=key)
         for forecast_id, lines in itertools.groupby(lines, key):
             forecast = Forecast(forecast_id)
