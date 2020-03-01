@@ -12,9 +12,6 @@ from trytond.model import (
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 
-__all__ = ['Sale', 'SaleLine',
-    'SaleExtra', 'SaleExtraLine']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -57,13 +54,13 @@ class Sale(metaclass=PoolMeta):
         self.lines = lines
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     extra = fields.Many2One('sale.extra.line', 'Extra', ondelete='RESTRICT')
 
 
-class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
+class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Sale Extra'
     __name__ = 'sale.extra'
 
@@ -114,7 +111,7 @@ class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
         sql_table = cls.__table__()
         price_list = PriceList.__table__()
 
-        super(SaleExtra, cls).__register__(module_name)
+        super().__register__(module_name)
 
         table = cls.__table_handler__(module_name)
         # Migration from 3.6: price_list not required and new company
@@ -189,7 +186,7 @@ class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
         pattern = pattern.copy()
         sale_amount = pattern.pop('sale_amount')
 
-        match = super(SaleExtra, self).match(pattern)
+        match = super().match(pattern)
 
         if self.sale_amount is not None:
             if sale_amount < self.sale_amount:
@@ -197,7 +194,7 @@ class SaleExtra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
         return match
 
 
-class SaleExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Sale Extra Line'
     __name__ = 'sale.extra.line'
 
@@ -224,7 +221,7 @@ class SaleExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
 
     @classmethod
     def __setup__(cls):
-        super(SaleExtraLine, cls).__setup__()
+        super().__setup__()
         cls._order.insert(1, ('extra', 'ASC'))
 
     @fields.depends('product')
@@ -254,7 +251,7 @@ class SaleExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         pattern = pattern.copy()
         sale_amount = pattern.pop('sale_amount')
 
-        match = super(SaleExtraLine, self).match(pattern)
+        match = super().match(pattern)
 
         if self.sale_amount is not None:
             if sale_amount < self.sale_amount:
