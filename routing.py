@@ -3,8 +3,6 @@
 from trytond.pool import PoolMeta
 from trytond.model import fields
 
-__all__ = ['Operation']
-
 
 class Operation(metaclass=PoolMeta):
     __name__ = 'production.routing.operation'
