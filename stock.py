@@ -5,8 +5,6 @@ from trytond.model import fields, Check
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Move']
-
 
 def _get_field(type_):
     if type_.startswith('in_'):

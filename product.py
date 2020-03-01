@@ -8,8 +8,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.modules.account_product.product import (
     account_used, template_property)
 
-__all__ = ['Category', 'CategoryAccount', 'Template', 'Product']
-
 
 class Category(metaclass=PoolMeta):
     __name__ = 'product.category'

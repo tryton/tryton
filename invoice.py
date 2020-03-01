@@ -9,8 +9,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import COGSWarning
 
-__all__ = ['InvoiceLine']
-
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'

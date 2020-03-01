@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 
-__all__ = ['FiscalYear']
-
 
 class FiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear'
