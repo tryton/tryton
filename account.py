@@ -20,10 +20,6 @@ OPENING_NAME = config.get(
 OPENING_NUMBER = config.get('account_fr', 'fec_opening_number', default="0")
 
 
-__all__ = ['TaxTemplate', 'TaxRuleTemplate',
-    'AccountFrFEC', 'AccountFrFECStart', 'AccountFrFECResult']
-
-
 class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
@@ -73,7 +69,8 @@ class TaxRuleTemplate(metaclass=PoolMeta):
                     ('tax_rule_ventes_intracommunautaires_19_6',
                         'tax_rule_ventes_intracommunautaires_taux_normal'),
                     ('tax_rule_ventes_intracommunautaires_7',
-                        'tax_rule_ventes_intracommunautaires_taux_intermediaire'),
+                        'tax_rule_ventes_intracommunautaires_taux'
+                        '_intermediaire'),
                     ):
                 cursor.execute(*model_data.update(
                         columns=[model_data.fs_id],
@@ -84,7 +81,7 @@ class TaxRuleTemplate(metaclass=PoolMeta):
         super(TaxRuleTemplate, cls).__register__(module_name)
 
 
-class AccountFrFEC(Wizard):
+class FrFEC(Wizard):
     'Generate FEC'
     __name__ = 'account.fr.fec'
 
@@ -325,7 +322,7 @@ class AccountFrFEC(Wizard):
         return line.move.date
 
 
-class AccountFrFECStart(ModelView):
+class FrFECStart(ModelView):
     'Generate FEC'
     __name__ = 'account.fr.fec.start'
 
@@ -349,7 +346,7 @@ class AccountFrFECStart(ModelView):
         return 'is-bic'
 
 
-class AccountFrFECResult(ModelView):
+class FrFECResult(ModelView):
     'Generate FEC'
     __name__ = 'account.fr.fec.result'
 
