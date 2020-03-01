@@ -5,8 +5,6 @@ import datetime
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
-__all__ = ['Product']
-
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

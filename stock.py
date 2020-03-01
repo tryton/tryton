@@ -10,9 +10,6 @@ from trytond.transaction import Transaction
 
 from trytond.modules.stock.exceptions import AssignError
 
-__all__ = ['Location', 'ShipmentInternal', 'ShipmentInternal_Location',
-    'ShipmentOut', 'ShipmentInReturn', 'Supply']
-
 
 class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'

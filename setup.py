@@ -81,8 +81,9 @@ setup(name=name,
     keywords='tryton stock location',
     package_dir={'trytond.modules.stock_location_move': '.'},
     packages=(
-        ['trytond.modules.stock_location_move'] +
-        ['trytond.modules.stock_location_move.%s' % p for p in find_packages()]
+        ['trytond.modules.stock_location_move']
+        + ['trytond.modules.stock_location_move.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.stock_location_move': (info.get('xml', [])
@@ -96,7 +97,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Czech',
