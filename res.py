@@ -13,8 +13,6 @@ from trytond.pool import PoolMeta
 from trytond.config import config, parse_uri
 from trytond.exceptions import LoginException
 
-__all__ = ['User']
-
 logger = logging.getLogger(__name__)
 section = 'ldap_authentication'
 

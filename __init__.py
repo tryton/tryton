@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .res import *
+from . import res
 
 
 def register():
     Pool.register(
-        User,
+        res.User,
         module='ldap_authentication', type_='model')
