@@ -24,11 +24,6 @@ from trytond.modules.account_eu.account import ECSalesList, ECSalesListContext
 
 from .exceptions import PrintError
 
-__all__ = ['AEAT111', 'AEAT115', 'AEAT303', 'PrintAEATStart', 'PrintAEAT',
-    'ESVATList', 'ESVATListContext', 'AEAT347', 'ECOperationList',
-    'ECOperationListContext', 'AEAT349']
-
-
 # XXX fix: https://genshi.edgewall.org/ticket/582
 from genshi.template.astutil import ASTCodeGenerator, ASTTransformer
 if not hasattr(ASTCodeGenerator, 'visit_NameConstant'):

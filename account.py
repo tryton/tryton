@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Bool, Eval
 
-__all__ = ['TaxCodeTemplate', 'TaxCode', 'TaxTemplate', 'Tax']
-
 
 class TaxCodeTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.code.template'

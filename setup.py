@@ -83,8 +83,8 @@ setup(name=name,
     keywords='tryton account chart spanish',
     package_dir={'trytond.modules.account_es': '.'},
     packages=(
-        ['trytond.modules.account_es'] +
-        ['trytond.modules.account_es.%s' % p for p in find_packages()]
+        ['trytond.modules.account_es']
+        + ['trytond.modules.account_es.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.account_es': (info.get('xml', [])
@@ -98,7 +98,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3',
