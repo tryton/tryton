@@ -23,14 +23,6 @@ from trytond.pool import Pool
 
 from .common import PeriodMixin, ActivePeriodMixin
 
-__all__ = ['TaxGroup', 'TaxCodeTemplate', 'TaxCode',
-    'TaxCodeLineTemplate', 'TaxCodeLine',
-    'OpenChartTaxCodeStart', 'OpenChartTaxCode',
-    'TaxTemplate', 'Tax', 'TaxLine', 'TaxRuleTemplate', 'TaxRule',
-    'TaxRuleLineTemplate', 'TaxRuleLine',
-    'OpenTaxCode',
-    'TestTax', 'TestTaxView', 'TestTaxViewResult']
-
 KINDS = [
     ('sale', 'Sale'),
     ('purchase', 'Purchase'),
@@ -1026,8 +1018,8 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                         vals = child.template._get_tax_value(tax=child)
                         invoice_account_id = (child.invoice_account.id
                             if child.invoice_account else None)
-                        if (child.template.invoice_account and
-                                invoice_account_id != template2account.get(
+                        if (child.template.invoice_account
+                                and invoice_account_id != template2account.get(
                                         child.template.invoice_account.id)):
                             vals['invoice_account'] = template2account.get(
                                 child.template.invoice_account.id)
@@ -1036,8 +1028,9 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
                             vals['invoice_account'] = None
                         credit_note_account_id = (child.credit_note_account.id
                             if child.credit_note_account else None)
-                        if (child.template.credit_note_account and
-                                credit_note_account_id != template2account.get(
+                        if (child.template.credit_note_account
+                                and credit_note_account_id
+                                != template2account.get(
                                     child.template.credit_note_account.id)):
                             vals['credit_note_account'] = template2account.get(
                                 child.template.credit_note_account.id)
@@ -1431,8 +1424,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
                     ('group.kind', 'in', ['sale', 'both']),
-                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
-                        'purchase',
+                    If(Eval('_parent_rule', {}).get('kind', 'both')
+                        == 'purchase',
                         ('group.kind', 'in', ['purchase', 'both']),
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
@@ -1452,8 +1445,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
                     ('group.kind', 'in', ['sale', 'both']),
-                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
-                        'purchase',
+                    If(Eval('_parent_rule', {}).get('kind', 'both')
+                        == 'purchase',
                         ('group.kind', 'in', ['purchase', 'both']),
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
@@ -1545,8 +1538,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
                     ('group.kind', 'in', ['sale', 'both']),
-                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
-                        'purchase',
+                    If(Eval('_parent_rule', {}).get('kind', 'both')
+                        == 'purchase',
                         ('group.kind', 'in', ['purchase', 'both']),
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
@@ -1566,8 +1559,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                 ('group', '=', None),
                 If(Eval('_parent_rule', {}).get('kind', 'both') == 'sale',
                     ('group.kind', 'in', ['sale', 'both']),
-                    If(Eval('_parent_rule', {}).get('kind', 'both') ==
-                        'purchase',
+                    If(Eval('_parent_rule', {}).get('kind', 'both')
+                        == 'purchase',
                         ('group.kind', 'in', ['purchase', 'both']),
                         ('group.kind', 'in', ['sale', 'purchase', 'both']))),
                 ],
@@ -1645,8 +1638,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
                     vals['rule'] = template2rule[line.template.rule.id]
                 if line.origin_tax:
                     if line.template.origin_tax:
-                        if (line.origin_tax.id !=
-                                template2tax[line.template.origin_tax.id]):
+                        if (line.origin_tax.id
+                                != template2tax[line.template.origin_tax.id]):
                             vals['origin_tax'] = template2tax[
                                 line.template.origin_tax.id]
                     else:

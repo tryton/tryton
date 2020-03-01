@@ -20,7 +20,6 @@ from trytond.modules.party.exceptions import EraseError
 
 from .exceptions import AccountMissing
 
-__all__ = ['Party', 'PartyAccount', 'PartyReplace', 'PartyErase']
 account_names = [
     'account_payable', 'account_receivable',
     'customer_tax_rule', 'supplier_tax_rule']

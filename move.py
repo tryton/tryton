@@ -30,15 +30,6 @@ from .exceptions import (PostError, MoveDatesError, CancelWarning,
     ReconciliationError, DeleteDelegatedWarning, GroupLineError,
     CancelDelegatedWarning)
 
-__all__ = ['Move', 'Reconciliation', 'Line', 'WriteOff', 'OpenJournalAsk',
-    'OpenJournal', 'OpenAccount',
-    'ReconcileLinesWriteOff', 'ReconcileLines',
-    'UnreconcileLines',
-    'Reconcile', 'ReconcileShow',
-    'CancelMoves', 'CancelMovesDefault',
-    'GroupLines', 'GroupLinesStart',
-    'PrintGeneralJournalStart', 'PrintGeneralJournal', 'GeneralJournal']
-
 _MOVE_STATES = {
     'readonly': Eval('state') == 'posted',
     }
@@ -85,10 +76,10 @@ class Move(ModelSQL, ModelView):
             ('account.company', '=', Eval('company', -1)),
             ],
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'],
-            context={
-                'journal': Eval('journal'),
-                'period': Eval('period'),
-                'date': Eval('date'),
+        context={
+            'journal': Eval('journal'),
+            'period': Eval('period'),
+            'date': Eval('date'),
             })
 
     @classmethod
@@ -443,7 +434,8 @@ class Move(ModelSQL, ModelView):
                 move.post_number = Sequence.get_id(
                     move.period.post_move_sequence_used.id)
 
-            keyfunc = lambda l: (l.party, l.account)
+            def keyfunc(l):
+                return l.party, l.account
             to_reconcile = [l for l in move.lines
                 if ((l.debit == l.credit == Decimal('0'))
                     and l.account.reconcile)]
@@ -586,12 +578,12 @@ class Line(ModelSQL, ModelView):
 
     debit = fields.Numeric('Debit', digits=(16, Eval('currency_digits', 2)),
         required=True, states=_states,
-        depends=['currency_digits', 'credit', 'tax_lines', 'journal'] +
-        _depends)
+        depends=['currency_digits', 'credit', 'tax_lines', 'journal']
+        + _depends)
     credit = fields.Numeric('Credit', digits=(16, Eval('currency_digits', 2)),
         required=True, states=_states,
-        depends=['currency_digits', 'debit', 'tax_lines', 'journal'] +
-        _depends)
+        depends=['currency_digits', 'debit', 'tax_lines', 'journal']
+        + _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
             ('type', '!=', None),
@@ -1375,8 +1367,8 @@ class OpenJournal(Wizard):
 
     def default_ask(self, fields):
         JournalPeriod = Pool().get('account.journal.period')
-        if (Transaction().context.get('active_model', '') ==
-                'account.journal.period'
+        if (Transaction().context.get('active_model', '')
+                == 'account.journal.period'
                 and Transaction().context.get('active_id')):
             journal_period = JournalPeriod(Transaction().context['active_id'])
             return {
@@ -1388,8 +1380,8 @@ class OpenJournal(Wizard):
     def do_open_(self, action):
         JournalPeriod = Pool().get('account.journal.period')
 
-        if (Transaction().context.get('active_model', '') ==
-                'account.journal.period'
+        if (Transaction().context.get('active_model', '')
+                == 'account.journal.period'
                 and Transaction().context.get('active_id')):
             journal_period = JournalPeriod(Transaction().context['active_id'])
             journal = journal_period.journal

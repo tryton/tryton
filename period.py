@@ -12,8 +12,6 @@ from trytond.const import OPERATORS
 from .exceptions import (PeriodNotFoundError, ClosePeriodError,
     PeriodDatesError, PeriodSequenceError)
 
-__all__ = ['Period']
-
 _STATES = {
     'readonly': Eval('state') != 'open',
 }
@@ -212,7 +210,8 @@ class Period(Workflow, ModelSQL, ModelView):
             i = 0
             while i < len(args):
                 # add test for xmlrpc and pyson that doesn't handle tuple
-                if ((isinstance(args[i], tuple)
+                if ((
+                            isinstance(args[i], tuple)
                             or (isinstance(args[i], list) and len(args[i]) > 2
                                 and args[i][1] in OPERATORS))
                         and args[i][0] in ('start_date', 'end_date')
@@ -272,8 +271,8 @@ class Period(Workflow, ModelSQL, ModelView):
             if values.get('post_move_sequence'):
                 for period in periods:
                     if (period.post_move_sequence
-                            and period.post_move_sequence.id !=
-                            values['post_move_sequence']):
+                            and period.post_move_sequence.id
+                            != values['post_move_sequence']):
                         if Move.search([
                                     ('period', '=', period.id),
                                     ('state', '=', 'posted'),

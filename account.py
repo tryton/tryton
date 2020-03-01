@@ -25,19 +25,6 @@ from trytond.pool import Pool
 from .common import PeriodMixin, ActivePeriodMixin
 from .exceptions import SecondCurrencyError, ChartWarning
 
-__all__ = ['TypeTemplate', 'Type', 'OpenType',
-    'AccountTemplate', 'AccountTemplateTaxTemplate',
-    'Account', 'AccountDeferral', 'AccountTax',
-    'OpenChartAccountStart', 'OpenChartAccount',
-    'GeneralLedgerAccount', 'GeneralLedgerAccountContext',
-    'GeneralLedgerLine', 'GeneralLedgerLineContext',
-    'GeneralLedger', 'TrialBalance',
-    'BalanceSheetContext', 'BalanceSheetComparisionContext',
-    'IncomeStatementContext',
-    'AgedBalanceContext', 'AgedBalance', 'AgedBalanceReport',
-    'CreateChartStart', 'CreateChartAccount', 'CreateChartProperties',
-    'CreateChart', 'UpdateChartStart', 'UpdateChartSucceed', 'UpdateChart']
-
 
 def inactive_records(func):
     @wraps(func)
@@ -231,8 +218,8 @@ class Type(
     parent = fields.Many2One('account.account.type', 'Parent',
         ondelete="RESTRICT",
         states={
-            'readonly': (Bool(Eval('template', -1)) &
-                ~Eval('template_override', False)),
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
             },
         domain=[
             ('company', '=', Eval('company')),
@@ -591,8 +578,8 @@ class AccountTemplate(
         if not account or account.party_required != self.party_required:
             res['party_required'] = self.party_required
         if (not account
-                or account.general_ledger_balance !=
-                self.general_ledger_balance):
+                or account.general_ledger_balance
+                != self.general_ledger_balance):
             res['general_ledger_balance'] = self.general_ledger_balance
         if not account or account.template != self:
             res['template'] = self.id
@@ -706,8 +693,8 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
     'Account'
     __name__ = 'account.account'
     _states = {
-        'readonly': (Bool(Eval('template', -1)) &
-            ~Eval('template_override', False)),
+        'readonly': (Bool(Eval('template', -1))
+            & ~Eval('template_override', False)),
         }
     company = fields.Many2One('company.company', 'Company', required=True,
             ondelete="RESTRICT")

@@ -17,10 +17,6 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Journal', 'JournalSequence',
-    'JournalCashContext',
-    'JournalPeriod']
-
 STATES = {
     'readonly': Eval('state') == 'close',
 }

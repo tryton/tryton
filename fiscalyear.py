@@ -158,8 +158,8 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             if values.get('post_move_sequence'):
                 for fiscalyear in fiscalyears:
                     if (fiscalyear.post_move_sequence
-                            and fiscalyear.post_move_sequence.id !=
-                            values['post_move_sequence']):
+                            and fiscalyear.post_move_sequence.id
+                            != values['post_move_sequence']):
                         if Move.search([
                                     ('period.fiscalyear', '=', fiscalyear.id),
                                     ('state', '=', 'posted'),

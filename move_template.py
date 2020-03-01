@@ -14,10 +14,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import decistmt
 
-__all__ = ['MoveTemplate', 'MoveTemplateKeyword',
-    'MoveLineTemplate', 'TaxLineTemplate',
-    'CreateMove', 'CreateMoveTemplate', 'CreateMoveKeywords']
-
 
 class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
     'Account Move Template'
