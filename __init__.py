@@ -2,21 +2,21 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .user import *
+from . import user
 from . import party
 
 
 def register():
     Pool.register(
-        User,
-        UserAuthenticateAttempt,
-        UserSession,
+        user.User,
+        user.UserAuthenticateAttempt,
+        user.UserSession,
         module='web_user', type_='model')
     Pool.register(
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='web_user', type_='wizard')
     Pool.register(
-        EmailValidation,
-        EmailResetPassword,
+        user.EmailValidation,
+        user.EmailResetPassword,
         module='web_user', type_='report')

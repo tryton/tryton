@@ -18,6 +18,7 @@ try:
     import html2text
 except ImportError:
     html2text = None
+from sql import Literal
 from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp
 from sql.operators import Equal
@@ -35,8 +36,6 @@ from trytond.sendmail import sendmail_transactional
 from trytond.ir.session import token_hex
 from trytond.res.user import LoginAttempt, CRYPT_CONTEXT
 
-__all__ = ['User', 'UserAuthenticateAttempt', 'UserSession',
-    'EmailValidation', 'EmailResetPassword']
 logger = logging.getLogger(__name__)
 
 
@@ -92,7 +91,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         cls._sql_constraints += [
             ('email_exclude',
                 Exclude(table, (table.email, Equal),
-                    where=table.active == True),
+                    where=table.active == Literal(True)),
                 'web_user.msg_user_email_unique'),
             ]
         cls._buttons.update({
