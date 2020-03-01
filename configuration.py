@@ -3,9 +3,6 @@
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Configuration', 'ConfigurationSaleMethod']
-
-
 sale_shipment_grouping_method = fields.Selection(
     'get_sale_shipment_grouping_methods', "Sale Shipment Grouping Method",
     help="The default shipment grouping method for new customers.")

@@ -4,8 +4,6 @@
 from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Sale']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
