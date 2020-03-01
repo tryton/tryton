@@ -11,8 +11,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
-__all__ = ['Production']
-
 
 class Production(metaclass=PoolMeta):
     __name__ = 'production'

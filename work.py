@@ -17,8 +17,6 @@ from trytond.transaction import Transaction
 from trytond.modules.product import price_digits
 from .exceptions import PickerError
 
-__all__ = ['WorkCenterCategory', 'WorkCenter', 'Work', 'WorkCycle']
-
 
 class WorkCenterCategory(ModelSQL, ModelView):
     'Work Center Category'

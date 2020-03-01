@@ -2,18 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .work import *
-from .routing import *
-from .production import *
+from . import work
+from . import routing
+from . import production
 
 
 def register():
     Pool.register(
-        WorkCenterCategory,
-        WorkCenter,
-        Work,
-        WorkCycle,
-        Operation,
-        RoutingStep,
-        Production,
+        work.WorkCenterCategory,
+        work.WorkCenter,
+        work.Work,
+        work.WorkCycle,
+        routing.Operation,
+        routing.RoutingStep,
+        production.Production,
         module='production_work', type_='model')
