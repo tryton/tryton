@@ -8,9 +8,6 @@ from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
-__all__ = ['Location', 'LocationLeadTime',
-    'Move', 'ShipmentInternal', 'Inventory', 'OrderPoint']
-
 
 class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
@@ -103,7 +100,8 @@ class Move(metaclass=PoolMeta):
                 and not self.origin
                 and self.from_location
                 and self.to_location
-                and ((self.from_location.type == 'supplier'
+                and ((
+                        self.from_location.type == 'supplier'
                         and self.to_location.type in {
                             'storage', 'production', 'customer'})
                     or (self.from_location.type in {
