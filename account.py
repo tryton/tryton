@@ -11,9 +11,6 @@ from trytond import backend
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationLandedCostSequence',
-    'LandedCost', 'LandedCost_Shipment', 'InvoiceLine']
-
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'

@@ -5,9 +5,6 @@ from trytond.model import fields
 from trytond.modules.product import price_digits
 
 
-__all__ = ['Move']
-
-
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     unit_landed_cost = fields.Numeric('Unit Landed Cost',

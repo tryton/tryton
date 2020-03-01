@@ -5,9 +5,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 
-__all__ = ['Template', 'Product']
-
-
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     landed_cost = fields.Boolean('Landed Cost', states={
