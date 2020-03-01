@@ -10,11 +10,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
-__all__ = ['Move',
-    'ShipmentIn', 'ShipmentInReturn',
-    'ShipmentOut', 'ShipmentOutReturn',
-    'Package']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
