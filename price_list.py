@@ -14,8 +14,6 @@ from trytond.pool import Pool
 
 from .exceptions import FormulaError
 
-__all__ = ['PriceList', 'PriceListLine']
-
 
 class PriceList(DeactivableMixin, ModelSQL, ModelView):
     'Price List'
