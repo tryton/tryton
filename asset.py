@@ -19,12 +19,6 @@ from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
 
-__all__ = ['Asset', 'AssetLine', 'AssetUpdateMove',
-    'CreateMovesStart', 'CreateMoves',
-    'UpdateAssetStart', 'UpdateAssetShowDepreciation', 'UpdateAsset',
-    'AssetDepreciationTable',
-    'PrintDepreciationTableStart', 'PrintDepreciationTable']
-
 
 def date2datetime(date):
     return datetime.datetime.combine(date, datetime.time())
@@ -67,7 +61,7 @@ class Asset(Workflow, ModelSQL, ModelView):
     supplier_invoice_line = fields.Many2One('account.invoice.line',
         'Supplier Invoice Line',
         domain=[
-            If(Eval('product', None) == None,
+            If(~Eval('product', None),
                 ('product', '=', -1),
                 ('product', '=', Eval('product', -1)),
                 ),
@@ -991,8 +985,9 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def update_lines(self):
-                filter_ = lambda l: (l.account.type.expense
-                    and self.start_date < l.move.date <= self.end_date)
+                def filter_(l):
+                    return (l.account.type.expense
+                        and self.start_date < l.move.date <= self.end_date)
                 return list(filter(filter_,
                     (l for m in self.asset.update_moves for l in m.lines)))
 

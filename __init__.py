@@ -33,7 +33,7 @@ def register():
         account.Journal,
         module='account_asset', type_='model')
     Pool.register(
-        purchase.PurchaseLine,
+        purchase.Line,
         module='account_asset', type_='model', depends=['purchase'])
     Pool.register(
         asset.CreateMoves,

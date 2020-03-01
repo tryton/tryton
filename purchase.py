@@ -5,14 +5,12 @@ from trytond.pool import PoolMeta
 
 from trytond.modules.account_product.exceptions import AccountError
 
-__all__ = ['PurchaseLine']
 
-
-class PurchaseLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'purchase.line'
 
     def get_invoice_line(self):
-        invoice_lines = super(PurchaseLine, self).get_invoice_line()
+        invoice_lines = super().get_invoice_line()
         if (self.product
                 and self.product.type == 'assets'
                 and self.product.depreciable):
