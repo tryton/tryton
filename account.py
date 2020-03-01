@@ -6,8 +6,6 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Invoice']
-
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'

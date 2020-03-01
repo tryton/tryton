@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 
-__all__ = ['Party', 'Address']
-
 
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
