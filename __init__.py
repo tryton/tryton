@@ -2,11 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .sale import *
+from . import sale
 
 
 def register():
     Pool.register(
-        SaleLine,
-        AnalyticAccountEntry,
+        sale.Line,
+        sale.AnalyticAccountEntry,
         module='analytic_sale', type_='model')

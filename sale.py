@@ -6,15 +6,13 @@ from trytond.pyson import Eval, If
 
 from trytond.modules.analytic_account import AnalyticMixin
 
-__all__ = ['SaleLine', 'AnalyticAccountEntry']
 
-
-class SaleLine(AnalyticMixin, metaclass=PoolMeta):
+class Line(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
     def __setup__(cls):
-        super(SaleLine, cls).__setup__()
+        super().__setup__()
         cls.analytic_accounts.domain = [
             ('company', '=', If(~Eval('_parent_sale', {}),
                     Eval('context', {}).get('company', -1),
@@ -30,7 +28,7 @@ class SaleLine(AnalyticMixin, metaclass=PoolMeta):
         pool = Pool()
         AnalyticAccountEntry = pool.get('analytic.account.entry')
 
-        invoice_lines = super(SaleLine, self).get_invoice_line()
+        invoice_lines = super().get_invoice_line()
         for invoice_line in invoice_lines:
             new_entries = AnalyticAccountEntry.copy(self.analytic_accounts,
                 default={
