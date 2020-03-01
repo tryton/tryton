@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .stock import *
+from . import stock
 
 
 def register():
     Pool.register(
-        Location,
+        stock.Location,
         module='stock_location_sequence', type_='model')

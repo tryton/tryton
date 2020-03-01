@@ -4,11 +4,8 @@ from trytond.model import sequence_ordered
 from trytond.pyson import Eval, Bool
 from trytond.pool import PoolMeta
 
-__all__ = ['Location']
-
 
 class Location(sequence_ordered(), metaclass=PoolMeta):
-    "Stock Location"
     __name__ = 'stock.location'
 
     @classmethod
