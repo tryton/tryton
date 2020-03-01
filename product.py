@@ -7,8 +7,6 @@ from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Template', 'Product']
-
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'

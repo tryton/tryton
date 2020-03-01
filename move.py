@@ -10,8 +10,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Move']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
