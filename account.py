@@ -3,7 +3,7 @@
 from decimal import Decimal
 from collections import defaultdict
 
-from sql import Column
+from sql import Column, Literal, Null
 from sql.aggregate import Sum
 from sql.conditionals import Coalesce
 
@@ -17,10 +17,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from .exceptions import AccountValidationError
-
-__all__ = ['Account', 'AccountDistribution',
-    'OpenChartAccountStart', 'OpenChartAccount',
-    'AnalyticAccountEntry', 'AnalyticMixin']
 
 
 class Account(
@@ -191,7 +187,7 @@ class Account(
                 Sum(Coalesce(line.credit, 0) - Coalesce(line.debit, 0)),
                 where=(table.type != 'view')
                 & table.id.in_(all_ids)
-                & (table.active == True) & line_query,
+                & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
         account_sum = defaultdict(Decimal)
         for account_id, value in cursor.fetchall():
@@ -245,7 +241,7 @@ class Account(
                 ).select(*columns,
                 where=(table.type != 'view')
                 & table.id.in_(ids)
-                & (table.active == True) & line_query,
+                & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
 
         for row in cursor.fetchall():
@@ -486,7 +482,7 @@ class AnalyticMixin(object):
             entry = AccountEntry.__table__()
             table = cls.__table__()
             cursor.execute(*table.select(table.id, table.analytic_accounts,
-                    where=table.analytic_accounts != None))
+                    where=table.analytic_accounts != Null))
             for line_id, selection_id in cursor.fetchall():
                 cursor.execute(*entry.update(
                         columns=[entry.origin],

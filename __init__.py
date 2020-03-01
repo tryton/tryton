@@ -2,23 +2,26 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account import *
-from .line import *
+from . import account
+from . import line
 from . import rule
+from .account import AnalyticMixin
+
+__all__ = [AnalyticMixin]
 
 
 def register():
     Pool.register(
-        Account,
-        AccountDistribution,
-        OpenChartAccountStart,
-        AnalyticAccountEntry,
-        Line,
-        Move,
-        MoveLine,
+        account.Account,
+        account.AccountDistribution,
+        account.OpenChartAccountStart,
+        account.AnalyticAccountEntry,
+        line.Line,
+        line.Move,
+        line.MoveLine,
         rule.Rule,
         module='analytic_account', type_='model')
     Pool.register(
-        OpenChartAccount,
-        OpenAccount,
+        account.OpenChartAccount,
+        line.OpenAccount,
         module='analytic_account', type_='wizard')

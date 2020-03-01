@@ -7,8 +7,6 @@ from trytond.transaction import Transaction
 
 from .account import AnalyticMixin
 
-__all__ = ['Rule']
-
 
 class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
     "Analytic Rule"

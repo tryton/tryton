@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.analytic_account.tests.test_analytic_account import suite
+    from trytond.modules.analytic_account.tests.test_analytic_account import suite  # noqa: E501
 except ImportError:
     from .test_analytic_account import suite
 
