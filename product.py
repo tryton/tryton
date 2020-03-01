@@ -4,8 +4,6 @@ from datetime import timedelta
 
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Product']
-
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'

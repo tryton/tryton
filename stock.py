@@ -9,8 +9,6 @@ from trytond.wizard import StateAction
 
 from trytond.modules.stock_supply.exceptions import SupplyWarning
 
-__all__ = ['OrderPoint', 'LocationLeadTime', 'StockSupply']
-
 
 class OrderPoint(metaclass=PoolMeta):
     __name__ = 'stock.order_point'
