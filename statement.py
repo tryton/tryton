@@ -5,8 +5,6 @@ from trytond.model import fields
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 
-__all__ = ['Statement', 'StatementLine']
-
 
 class Statement(metaclass=PoolMeta):
     __name__ = 'account.statement'

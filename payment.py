@@ -8,8 +8,6 @@ from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
-__all__ = ['Journal', 'Payment', 'Succeed', 'SucceedStart']
-
 
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
