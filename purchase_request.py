@@ -9,8 +9,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-__all__ = ['PurchaseRequest', 'PurchaseConfiguration',
-    'PurchaseConfigurationSupplyPeriod']
 supply_period = fields.TimeDelta("Supply Period")
 
 

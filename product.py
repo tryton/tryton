@@ -5,8 +5,6 @@ import datetime
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 
-__all__ = ['Product', 'ProductSupplier']
-
 
 class Product(metaclass=PoolMeta):
     __name__ = "product.product"

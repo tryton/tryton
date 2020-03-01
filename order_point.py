@@ -9,8 +9,6 @@ from trytond.transaction import Transaction
 
 from .exceptions import OrderPointValidationError
 
-__all__ = ['OrderPoint']
-
 
 class OrderPoint(ModelSQL, ModelView):
     """
@@ -53,7 +51,7 @@ class OrderPoint(ModelSQL, ModelView):
         states={
             'invisible': Not(Equal(Eval('type'), 'internal')),
             'required': ((Eval('type') == 'internal')
-                & (Eval('min_quantity', None) != None)),
+                & (Eval('min_quantity', None) != None)),  # noqa: E711
         },
         depends=['type', 'min_quantity'])
     overflowing_location = fields.Many2One(
@@ -62,7 +60,7 @@ class OrderPoint(ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'internal',
             'required': ((Eval('type') == 'internal')
-                & (Eval('max_quantity', None) != None)),
+                & (Eval('max_quantity', None) != None)),  # noqa: E711
             },
         depends=['type', 'max_quantity'])
     type = fields.Selection(

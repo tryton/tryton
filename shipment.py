@@ -6,8 +6,6 @@ from trytond.model import ModelView, ModelSQL
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-__all__ = ['ShipmentInternal']
-
 
 class ShipmentInternal(ModelSQL, ModelView):
     __name__ = 'stock.shipment.internal'

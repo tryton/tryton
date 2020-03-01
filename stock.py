@@ -8,10 +8,8 @@ from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
 
 from .exceptions import SupplyWarning
 
-__all__ = ['StockSupply', 'StockSupplyStart']
 
-
-class StockSupply(Wizard):
+class Supply(Wizard):
     "Supply Stock"
     __name__ = 'stock.supply'
     start = StateView(
@@ -109,6 +107,6 @@ class StockSupply(Wizard):
         return self.next_action('purchase')
 
 
-class StockSupplyStart(ModelView):
+class SupplyStart(ModelView):
     "Supply Stock"
     __name__ = 'stock.supply.start'

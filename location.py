@@ -7,9 +7,6 @@ from trytond.model import fields
 from trytond.pyson import Eval
 
 
-__all__ = ['Location', 'LocationLeadTime']
-
-
 class Location(metaclass=PoolMeta):
     __name__ = 'stock.location'
 
