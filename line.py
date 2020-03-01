@@ -16,10 +16,6 @@ from trytond.pool import Pool
 
 from .exceptions import DurationValidationError
 
-__all__ = ['Line', 'EnterLinesStart', 'EnterLines',
-    'HoursEmployee', 'HoursEmployeeContext',
-    'HoursEmployeeWeekly', 'HoursEmployeeMonthly']
-
 
 class Line(ModelSQL, ModelView):
     'Timesheet Line'

@@ -2,9 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import Pool
 
-from .work import *
-from .line import *
-from .user import *
+from . import work
+from . import line
+from . import user
 from . import routes
 
 __all__ = ['register', 'routes']
@@ -12,16 +12,16 @@ __all__ = ['register', 'routes']
 
 def register():
     Pool.register(
-        Work,
-        WorkContext,
-        Line,
-        EnterLinesStart,
-        HoursEmployee,
-        HoursEmployeeContext,
-        HoursEmployeeWeekly,
-        HoursEmployeeMonthly,
-        UserApplication,
+        work.Work,
+        work.WorkContext,
+        line.Line,
+        line.EnterLinesStart,
+        line.HoursEmployee,
+        line.HoursEmployeeContext,
+        line.HoursEmployeeWeekly,
+        line.HoursEmployeeMonthly,
+        user.UserApplication,
         module='timesheet', type_='model')
     Pool.register(
-        EnterLines,
+        line.EnterLines,
         module='timesheet', type_='wizard')

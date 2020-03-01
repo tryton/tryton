@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 
-__all__ = ['UserApplication']
-
 
 class UserApplication(metaclass=PoolMeta):
     __name__ = 'res.user.application'

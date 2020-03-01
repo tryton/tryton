@@ -16,8 +16,6 @@ from trytond.tools import reduce_ids, grouped_slice
 
 from .exceptions import CompanyValidationError
 
-__all__ = ['Work', 'WorkContext']
-
 
 class Work(DeactivableMixin, ModelSQL, ModelView):
     'Work'
@@ -113,7 +111,7 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
         # Migration from 4.0: remove timesheet_available
         if table_h.column_exist('timesheet_available'):
             cursor.execute(*table.delete(
-                    where=table.timesheet_available == False))
+                    where=table.timesheet_available == Literal(False)))
             table_h.drop_column('timesheet_available')
 
     @staticmethod
