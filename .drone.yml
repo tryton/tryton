@@ -26,7 +26,9 @@ pipeline:
 
 services:
     postgresql:
-        image: mdillon/postgis
+        image: postgis/postgis
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
 
 matrix:
     include:
