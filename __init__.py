@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .dashboard import *
-from .res import *
-from .ir import *
+from . import dashboard
+from . import res
+from . import ir
 
 
 def register():
     Pool.register(
-        DashboardAction,
-        User,
-        View,
+        dashboard.Action,
+        res.User,
+        ir.View,
         module='dashboard', type_='model')

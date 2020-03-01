@@ -6,8 +6,6 @@ from trytond.transaction import Transaction
 from trytond.cache import Cache
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['View']
-
 
 class View(metaclass=PoolMeta):
     __name__ = 'ir.ui.view'

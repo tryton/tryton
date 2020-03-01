@@ -3,10 +3,8 @@
 from trytond.model import ModelView, ModelSQL, fields, sequence_ordered
 from trytond.pyson import Eval
 
-__all__ = ['DashboardAction']
 
-
-class DashboardAction(sequence_ordered(), ModelSQL, ModelView):
+class Action(sequence_ordered(), ModelSQL, ModelView):
     "Dashboard Action"
     __name__ = "dashboard.action"
     user = fields.Many2One('res.user', 'User', required=True,

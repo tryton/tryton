@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton dashboard',
     package_dir={'trytond.modules.dashboard': '.'},
     packages=(
-        ['trytond.modules.dashboard'] +
-        ['trytond.modules.dashboard.%s' % p for p in find_packages()]
+        ['trytond.modules.dashboard']
+        + ['trytond.modules.dashboard.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.dashboard': (info.get('xml', [])
@@ -91,7 +91,8 @@ setup(name=name,
         'Framework :: Tryton',
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
