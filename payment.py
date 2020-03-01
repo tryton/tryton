@@ -9,9 +9,6 @@ from trytond.pool import PoolMeta
 from trytond.modules.account_payment_sepa import payment as sepa_payment
 
 
-__all__ = ['Journal', 'Group']
-
-
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
 
@@ -28,6 +25,7 @@ class Journal(metaclass=PoolMeta):
                 ]:
             if flavor not in field.selection:
                 field.selection.append(flavor)
+
 
 loader = genshi.template.TemplateLoader([
         os.path.join(os.path.dirname(__file__), 'template'),
