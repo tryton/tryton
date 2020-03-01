@@ -3,18 +3,18 @@
 
 from trytond.pool import Pool
 
-from .carrier import *
-from .stock import *
+from . import carrier
+from . import stock
 
 
 def register():
     Pool.register(
-        PackageType,
-        ShipmentOut,
-        CredentialUPS,
-        Carrier,
+        stock.PackageType,
+        stock.ShipmentOut,
+        carrier.CredentialUPS,
+        carrier.Carrier,
         module='stock_package_shipping_ups', type_='model')
     Pool.register(
-        CreateShipping,
-        CreateShippingUPS,
+        stock.CreateShipping,
+        stock.CreateShippingUPS,
         module='stock_package_shipping_ups', type_='wizard')

@@ -4,8 +4,6 @@ from trytond.model import ModelSQL, ModelView, MatchMixin, fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
-__all__ = ['CredentialUPS', 'Carrier']
-
 
 class CredentialUPS(ModelSQL, ModelView, MatchMixin):
     'UPS Credential'

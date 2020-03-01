@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.stock_package_shipping_ups.tests.test_shipping_ups import suite
+    from trytond.modules.stock_package_shipping_ups.tests.test_shipping_ups import suite  # noqa: E501
 except ImportError:
     from .test_shipping_ups import suite
 

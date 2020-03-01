@@ -19,8 +19,6 @@ from trytond.modules.stock_package_shipping.exceptions import (
     PackingValidationError)
 from .exceptions import UPSError
 
-__all__ = ['PackageType', 'ShipmentOut', 'CreateShipping', 'CreateShippingUPS']
-
 SERVER_URLS = {
     'testing': 'https://wwwcie.ups.com/json/Ship',
     'production': 'https://onlinetools.ups.com/json/Ship',
