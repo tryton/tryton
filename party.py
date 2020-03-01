@@ -6,8 +6,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.transaction import Transaction
 
-__all__ = ['RelationType', 'PartyRelation', 'PartyRelationAll', 'Party']
-
 
 class RelationType(ModelSQL, ModelView):
     'Relation Type'
@@ -19,7 +17,7 @@ class RelationType(ModelSQL, ModelView):
         help="Create automatically the reverse relation.")
 
 
-class PartyRelation(ModelSQL):
+class Relation(ModelSQL):
     'Party Relation'
     __name__ = 'party.relation'
 
@@ -43,7 +41,7 @@ class PartyRelation(ModelSQL):
             ]
 
 
-class PartyRelationAll(PartyRelation, ModelView):
+class RelationAll(Relation, ModelView):
     'Party Relation'
     __name__ = 'party.relation.all'
 
@@ -62,8 +60,8 @@ class PartyRelationAll(PartyRelation, ModelView):
         reverse_tables = {
             None: (relation, None),
             'type': {
-                None: (type, (relation.type == type.id) &
-                    (type.reverse != Null)),
+                None: (type, (relation.type == type.id)
+                    & (type.reverse != Null)),
                 },
             }
 
@@ -192,7 +190,8 @@ class PartyRelationAll(PartyRelation, ModelView):
 
         # Clean cursor cache
         for cache in list(Transaction().cache.values()):
-            for cache in (cache, list(cache.get('_language_cache', {}).values())):
+            for cache in (cache,
+                    list(cache.get('_language_cache', {}).values())):
                 if cls.__name__ in cache:
                     for record in relations:
                         for record_id in (record.id, record.reverse_id):

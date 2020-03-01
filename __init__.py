@@ -7,7 +7,7 @@ from . import party
 def register():
     Pool.register(
         party.RelationType,
-        party.PartyRelation,
-        party.PartyRelationAll,
+        party.Relation,
+        party.RelationAll,
         party.Party,
         module='party_relationship', type_='model')

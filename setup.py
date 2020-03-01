@@ -79,8 +79,9 @@ setup(name=name,
     keywords='tryton party relationship',
     package_dir={'trytond.modules.party_relationship': '.'},
     packages=(
-        ['trytond.modules.party_relationship'] +
-        ['trytond.modules.party_relationship.%s' % p for p in find_packages()]
+        ['trytond.modules.party_relationship']
+        + ['trytond.modules.party_relationship.%s' % p
+            for p in find_packages()]
         ),
     package_data={
         'trytond.modules.party_relationship': (info.get('xml', [])
@@ -93,7 +94,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
