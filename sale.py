@@ -8,8 +8,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, If
 
-__all__ = ['Sale']
-
 
 def no_payment(error):
     def decorator(func):

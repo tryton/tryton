@@ -7,8 +7,6 @@ from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_payment.exceptions import PaymentValidationError
 
-__all__ = ['Payment', 'Invoice']
-
 
 def sale_payment_confirm(func):
     @functools.wraps(func)
