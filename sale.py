@@ -16,9 +16,6 @@ from trytond.tools import decistmt
 from trytond.modules.product import price_digits
 from .exceptions import FormulaError
 
-__all__ = ['Sale', 'SaleLine',
-    'SalePromotion', 'SalePromotion_Product', 'SalePromotion_ProductCategory']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -70,7 +67,7 @@ class Sale(metaclass=PoolMeta):
             promotion.apply(self)
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     draft_unit_price = fields.Numeric('Draft Unit Price',
@@ -82,7 +79,7 @@ class SaleLine(metaclass=PoolMeta):
             ])
 
 
-class SalePromotion(
+class Promotion(
         DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Sale Promotion'
     __name__ = 'sale.promotion'
@@ -149,7 +146,7 @@ class SalePromotion(
 
     @classmethod
     def validate(cls, promotions):
-        super(SalePromotion, cls).validate(promotions)
+        super().validate(promotions)
         for promotion in promotions:
             promotion.check_formula()
 
@@ -215,7 +212,7 @@ class SalePromotion(
             pattern = pattern.copy()
             if self.quantity > pattern.pop('quantity'):
                 return False
-        return super(SalePromotion, self).match(pattern)
+        return super().match(pattern)
 
     def is_valid_sale_line(self, line):
 
@@ -278,7 +275,7 @@ class SalePromotion(
         return max(simple_eval(decistmt(self.formula), **context), Decimal(0))
 
 
-class SalePromotion_Product(ModelSQL):
+class Promotion_Product(ModelSQL):
     'Sale Promotion - Product'
     __name__ = 'sale.promotion-product.product'
 
@@ -288,7 +285,7 @@ class SalePromotion_Product(ModelSQL):
         required=True, ondelete='CASCADE')
 
 
-class SalePromotion_ProductCategory(ModelSQL):
+class Promotion_ProductCategory(ModelSQL):
     "Sale Promotion - Product Category"
     __name__ = 'sale.promotion-product.category'
 

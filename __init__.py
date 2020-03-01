@@ -2,14 +2,14 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .sale import *
+from . import sale
 
 
 def register():
     Pool.register(
-        SalePromotion,
-        SalePromotion_Product,
-        SalePromotion_ProductCategory,
-        Sale,
-        SaleLine,
+        sale.Promotion,
+        sale.Promotion_Product,
+        sale.Promotion_ProductCategory,
+        sale.Sale,
+        sale.Line,
         module='sale_promotion', type_='model')
