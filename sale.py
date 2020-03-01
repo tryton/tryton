@@ -12,8 +12,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 from trytond.modules.sale.exceptions import SaleConfirmError
 
-__all__ = ['Configuration', 'ConfigurationSaleMethod', 'Sale', 'SaleLine',
-    'ReturnSale', 'Promotion']
 sale_shipment_cost_method = fields.Selection(
         'get_sale_shipment_cost_methods', "Sale Shipment Cost Method")
 
@@ -303,12 +301,12 @@ class Sale(metaclass=PoolMeta):
         return invoice
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
     shipment_cost = fields.Numeric('Shipment Cost', digits=price_digits)
 
     def _get_invoice_line_quantity(self):
-        quantity = super(SaleLine, self)._get_invoice_line_quantity()
+        quantity = super()._get_invoice_line_quantity()
         if self.shipment_cost:
             if self.sale.shipment_cost_method == 'shipment':
                 return 0

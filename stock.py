@@ -11,8 +11,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.modules.product import price_digits
 from .exceptions import InvoiceShipmentCostError
 
-__all__ = ['ShipmentOut']
-
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'

@@ -11,7 +11,7 @@ def register():
         sale.Configuration,
         sale.ConfigurationSaleMethod,
         sale.Sale,
-        sale.SaleLine,
+        sale.Line,
         stock.ShipmentOut,
         module='sale_shipment_cost', type_='model')
     Pool.register(
