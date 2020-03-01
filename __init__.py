@@ -2,18 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .bank import *
-from .party import *
+from . import bank
+from . import party
 
 
 def register():
     Pool.register(
-        Bank,
-        BankAccount,
-        BankAccountNumber,
-        BankAccountParty,
-        Party,
+        bank.Bank,
+        bank.Account,
+        bank.AccountNumber,
+        bank.AccountParty,
+        party.Party,
         module='bank', type_='model')
     Pool.register(
-        PartyReplace,
+        party.Replace,
         module='bank', type_='wizard')

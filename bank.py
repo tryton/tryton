@@ -11,9 +11,6 @@ from trytond.model import (
 from .exceptions import IBANValidationError, InvalidBIC
 
 
-__all__ = ['Bank', 'BankAccount', 'BankAccountNumber', 'BankAccountParty']
-
-
 class Bank(ModelSQL, ModelView):
     'Bank'
     __name__ = 'bank'
@@ -46,7 +43,7 @@ class Bank(ModelSQL, ModelView):
             raise InvalidBIC(gettext('bank.msg_invalid_bic', bic=self.bic))
 
 
-class BankAccount(DeactivableMixin, ModelSQL, ModelView):
+class Account(DeactivableMixin, ModelSQL, ModelView):
     'Bank Account'
     __name__ = 'bank.account'
     bank = fields.Many2One('bank', 'Bank', required=True,
@@ -77,7 +74,7 @@ class BankAccount(DeactivableMixin, ModelSQL, ModelView):
             ]
 
 
-class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
+class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     'Bank Account Number'
     __name__ = 'bank.account.number'
     _rec_name = 'number'
@@ -93,7 +90,7 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __setup__(cls):
-        super(BankAccountNumber, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('account', 'ASC'))
 
     @classmethod
@@ -134,7 +131,7 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
             if values.get('type') == 'iban' and 'number' in values:
                 values['number'] = iban.format(values['number'])
                 values['number_compact'] = iban.compact(values['number'])
-        return super(BankAccountNumber, cls).create(vlist)
+        return super().create(vlist)
 
     @classmethod
     def write(cls, *args):
@@ -147,7 +144,7 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
                 values['number_compact'] = iban.compact(values['number'])
             args.extend((numbers, values))
 
-        super(BankAccountNumber, cls).write(*args)
+        super().write(*args)
 
         to_write = []
         for number in sum(args[::2], []):
@@ -165,7 +162,7 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('type', 'number')
     def pre_validate(self):
-        super(BankAccountNumber, self).pre_validate()
+        super().pre_validate()
         if (self.type == 'iban' and self.number
                 and not iban.is_valid(self.number)):
             raise IBANValidationError(
@@ -173,7 +170,7 @@ class BankAccountNumber(sequence_ordered(), ModelSQL, ModelView):
                     number=self.number))
 
 
-class BankAccountParty(ModelSQL):
+class AccountParty(ModelSQL):
     'Bank Account - Party'
     __name__ = 'bank.account-party.party'
     account = fields.Many2One('bank.account', 'Account',
