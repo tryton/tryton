@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account_dunning.tests.test_account_dunning import suite
+    from trytond.modules.account_dunning.tests.test_account_dunning import suite  # noqa: E501
 except ImportError:
     from .test_account_dunning import suite
 

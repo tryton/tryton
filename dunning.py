@@ -13,10 +13,6 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
     Button
 from trytond.pool import Pool
 
-__all__ = ['Procedure', 'Level', 'Dunning',
-    'CreateDunningStart', 'CreateDunning',
-    'ProcessDunningStart', 'ProcessDunning']
-
 
 class Procedure(ModelSQL, ModelView):
     'Account Dunning Procedure'
@@ -66,6 +62,7 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
     def test(self, line, date):
         if self.overdue is not None:
             return (date - line.maturity_date) >= self.overdue
+
 
 _STATES = {
     'readonly': Eval('state') != 'draft',

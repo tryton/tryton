@@ -5,7 +5,6 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 
-__all__ = ['Party', 'PartyDunningProcedure']
 dunning_procedure = fields.Many2One(
     'account.dunning.procedure', "Dunning Procedure")
 

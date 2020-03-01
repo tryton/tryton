@@ -2,25 +2,25 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .dunning import *
-from .party import *
-from .account import *
+from . import dunning
+from . import party
+from . import account
 
 
 def register():
     Pool.register(
-        Procedure,
-        Level,
-        Dunning,
-        CreateDunningStart,
-        ProcessDunningStart,
-        Party,
-        PartyDunningProcedure,
-        Configuration,
-        ConfigurationDefaultDunningProcedure,
-        MoveLine,
+        dunning.Procedure,
+        dunning.Level,
+        dunning.Dunning,
+        dunning.CreateDunningStart,
+        dunning.ProcessDunningStart,
+        party.Party,
+        party.PartyDunningProcedure,
+        account.Configuration,
+        account.ConfigurationDefaultDunningProcedure,
+        account.MoveLine,
         module='account_dunning', type_='model')
     Pool.register(
-        CreateDunning,
-        ProcessDunning,
+        dunning.CreateDunning,
+        dunning.ProcessDunning,
         module='account_dunning', type_='wizard')
