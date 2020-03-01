@@ -45,7 +45,7 @@ class Line(metaclass=PoolMeta):
         product_customers = list(self.product.product_customer_used(
                     **self._get_product_customer_pattern()))
         if len(product_customers) == 1:
-                self.product_customer, = product_customers
+            self.product_customer, = product_customers
         elif (self.product_customer
                 and self.product_customer not in product_customers):
             self.product_customer = None
