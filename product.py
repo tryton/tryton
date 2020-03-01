@@ -715,7 +715,8 @@ class ModifyCostPrice(Wizard):
                 revision.product = product
                 revision.template = product.template
                 revisions.append(revision)
-                if ((product.cost_price_method == 'fixed'
+                if ((
+                            product.cost_price_method == 'fixed'
                             and revision.date == today)
                         or product.type == 'service'):
                     cost = revision.get_cost_price(product.cost_price)
@@ -728,7 +729,8 @@ class ModifyCostPrice(Wizard):
                 revision = self.get_revision(Revision)
                 revision.template = template
                 revisions.append(revision)
-                if ((template.cost_price_method == 'fixed'
+                if ((
+                            template.cost_price_method == 'fixed'
                             and revision.date == today)
                         or product.type == 'service'):
                     for product in template.products:

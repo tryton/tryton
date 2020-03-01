@@ -63,8 +63,8 @@ def register():
         product.RecomputeCostPrice,
         product.ModifyCostPrice,
         inventory.Count,
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='stock', type_='wizard')
     Pool.register(
         shipment.DeliveryNote,

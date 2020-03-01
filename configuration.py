@@ -9,7 +9,6 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Configuration', 'ConfigurationSequence', 'ConfigurationLocation']
 sequences = ['shipment_in_sequence', 'shipment_in_return_sequence',
     'shipment_out_sequence', 'shipment_out_return_sequence',
     'shipment_internal_sequence', 'inventory_sequence']

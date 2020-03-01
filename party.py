@@ -5,15 +5,13 @@ from trytond.pool import PoolMeta, Pool
 
 from trytond.modules.party.exceptions import EraseError
 
-__all__ = ['PartyReplace', 'PartyErase']
 
-
-class PartyReplace(metaclass=PoolMeta):
+class Replace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod
     def fields_to_replace(cls):
-        return super(PartyReplace, cls).fields_to_replace() + [
+        return super().fields_to_replace() + [
             ('stock.shipment.in', 'supplier'),
             ('stock.shipment.in.return', 'supplier'),
             ('stock.shipment.out', 'customer'),
@@ -21,7 +19,7 @@ class PartyReplace(metaclass=PoolMeta):
             ]
 
 
-class PartyErase(metaclass=PoolMeta):
+class Erase(metaclass=PoolMeta):
     __name__ = 'party.erase'
 
     def check_erase_company(self, party, company):
@@ -30,7 +28,7 @@ class PartyErase(metaclass=PoolMeta):
         ShipmentInReturn = pool.get('stock.shipment.in.return')
         ShipmentOut = pool.get('stock.shipment.out')
         ShipmentOutReturn = pool.get('stock.shipment.out.return')
-        super(PartyErase, self).check_erase_company(party, company)
+        super().check_erase_company(party, company)
 
         for Shipment, field in [
                 (ShipmentIn, 'supplier'),

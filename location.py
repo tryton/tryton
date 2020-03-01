@@ -18,9 +18,6 @@ from trytond.tools.multivalue import migrate_property
 
 from .exceptions import LocationValidationError
 
-__all__ = ['Location', 'Party', 'PartyLocation', 'ProductsByLocationsContext',
-    'LocationLeadTime']
-
 STATES = {
     'readonly': ~Eval('active'),
 }

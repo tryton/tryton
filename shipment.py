@@ -16,17 +16,6 @@ from trytond.pyson import Eval, If, Id, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['ShipmentIn', 'ShipmentInReturn',
-    'ShipmentOut', 'ShipmentOutReturn',
-    'AssignShipmentOutAssignFailed', 'AssignShipmentOut',
-    'ShipmentInternal',
-    'Address',
-    'AssignShipmentInternalAssignFailed', 'AssignShipmentInternal',
-    'AssignShipmentInReturnAssignFailed', 'AssignShipmentInReturn',
-    'DeliveryNote', 'PickingList',
-    'SupplierRestockingList', 'CustomerReturnRestockingList',
-    'InteralShipmentReport']
-
 
 def set_employee(field):
     def decorator(func):
@@ -2022,8 +2011,8 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'ship': {
-                    'invisible': ((Eval('state') != 'assigned') |
-                        ~Eval('transit_location')),
+                    'invisible': ((Eval('state') != 'assigned')
+                        | ~Eval('transit_location')),
                     'depends': ['state', 'transit_location'],
                     },
                 'done': {

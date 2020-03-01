@@ -13,8 +13,6 @@ from trytond.tools import grouped_slice
 
 from .exceptions import PeriodCloseError
 
-__all__ = ['Period', 'Cache']
-
 
 class Period(Workflow, ModelSQL, ModelView):
     'Stock Period'
