@@ -3,8 +3,6 @@
 
 from trytond.pool import PoolMeta
 
-__all__ = ['InvoiceLine']
-
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'

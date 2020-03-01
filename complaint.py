@@ -12,9 +12,6 @@ from trytond.transaction import Transaction
 
 from trytond.modules.product import price_digits
 
-__all__ = ['Type', 'Complaint', 'Action',
-    'Action_SaleLine', 'Action_InvoiceLine']
-
 
 class Type(ModelSQL, ModelView):
     'Customer Complaint Type'

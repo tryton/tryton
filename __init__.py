@@ -2,20 +2,20 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .complaint import *
-from .sale import *
-from .account import *
+from . import complaint
+from . import sale
+from . import account
 
 
 def register():
     Pool.register(
-        Type,
-        Complaint,
-        Action,
-        Action_SaleLine,
-        Action_InvoiceLine,
-        Configuration,
-        ConfigurationSequence,
-        Sale,
-        InvoiceLine,
+        complaint.Type,
+        complaint.Complaint,
+        complaint.Action,
+        complaint.Action_SaleLine,
+        complaint.Action_InvoiceLine,
+        sale.Configuration,
+        sale.ConfigurationSequence,
+        sale.Sale,
+        account.InvoiceLine,
         module='sale_complaint', type_='model')
