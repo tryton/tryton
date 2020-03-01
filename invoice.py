@@ -9,8 +9,6 @@ from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
-__all__ = ['Invoice', 'InvoiceLine']
-
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'

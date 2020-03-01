@@ -7,9 +7,6 @@ from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval
 
 
-__all__ = ['Sale', 'SaleLine']
-
-
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     agent = fields.Many2One('commission.agent', 'Commission Agent',
@@ -69,7 +66,7 @@ class Sale(metaclass=PoolMeta):
         cls.save(sales)
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
     principal = fields.Many2One('commission.agent', 'Commission Principal',
         domain=[
@@ -78,7 +75,7 @@ class SaleLine(metaclass=PoolMeta):
             ])
 
     def get_invoice_line(self):
-        lines = super(SaleLine, self).get_invoice_line()
+        lines = super().get_invoice_line()
         if self.principal:
             for line in lines:
                 if line.product == self.product:
@@ -87,7 +84,7 @@ class SaleLine(metaclass=PoolMeta):
 
     @fields.depends('product', 'principal')
     def on_change_product(self):
-        super(SaleLine, self).on_change_product()
+        super().on_change_product()
         if self.product:
             if self.product.principals:
                 if self.principal not in self.product.principals:
@@ -97,7 +94,7 @@ class SaleLine(metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return super(SaleLine, cls).view_attributes() + [
+        return super().view_attributes() + [
             ('//page[@id="commissions"]', 'states', {
                     'invisible': Eval('type') != 'line',
                     })]

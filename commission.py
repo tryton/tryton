@@ -24,9 +24,6 @@ from trytond.modules.product import price_digits
 
 from .exceptions import FormulaError
 
-__all__ = ['Agent', 'Plan', 'PlanLines', 'Commission',
-    'CreateInvoice', 'CreateInvoiceAsk']
-
 
 class Agent(ModelSQL, ModelView):
     'Commission Agent'
@@ -363,20 +360,23 @@ class Commission(ModelSQL, ModelView):
         pool = Pool()
         Invoice = pool.get('account.invoice')
 
-        key = lambda c: c._group_to_invoice_key()
-        commissions.sort(key=key)
+        def invoice_key(c):
+            return c._group_to_invoice_key()
+
+        def line_key(c):
+            return c._group_to_invoice_line_key()
+        commissions.sort(key=invoice_key)
         invoices = []
         to_write = []
-        for key, commissions in groupby(commissions, key=key):
+        for key, commissions in groupby(commissions, key=invoice_key):
             commissions = list(commissions)
             key = dict(key)
             invoice = cls._get_invoice(key)
             invoice.save()
             invoices.append(invoice)
 
-            key = lambda c: c._group_to_invoice_line_key()
-            commissions.sort(key=key)
-            for key, commissions in groupby(commissions, key=key):
+            commissions.sort(key=line_key)
+            for key, commissions in groupby(commissions, key=line_key):
                 commissions = [c for c in commissions if not c.invoice_line]
                 key = dict(key)
                 invoice_line = cls._get_invoice_line(key, invoice, commissions)

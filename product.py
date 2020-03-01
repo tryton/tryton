@@ -5,9 +5,6 @@ from trytond.pool import PoolMeta
 from trytond.model import ModelSQL, fields
 
 
-__all__ = ['Template', 'Template_Agent', 'Product']
-
-
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     principals = fields.Many2Many('product.template-commission.agent',

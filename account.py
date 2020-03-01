@@ -2,8 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.pool import PoolMeta
 
-__all__ = ['Journal']
-
 
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.journal'

@@ -28,11 +28,11 @@ def register():
         module='commission', type_='model')
     Pool.register(
         sale.Sale,
-        sale.SaleLine,
+        sale.Line,
         module='commission', type_='model',
         depends=['sale'])
     Pool.register(
         commission.CreateInvoice,
-        party.PartyReplace,
-        party.PartyErase,
+        party.Replace,
+        party.Erase,
         module='commission', type_='wizard')
