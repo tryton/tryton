@@ -6,10 +6,6 @@ from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['Move', 'SplitMoveStart', 'SplitMove',
-    'ShipmentInReturn', 'ShipmentOut', 'ShipmentInternal',
-    'SplitShipment', 'SplitShipmentStart']
-
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
