@@ -78,8 +78,8 @@ setup(name=name,
     keywords='tryton product classification',
     package_dir={'trytond.modules.product_classification': '.'},
     packages=(
-        ['trytond.modules.product_classification'] +
-        ['trytond.modules.product_classification.%s' % p
+        ['trytond.modules.product_classification']
+        + ['trytond.modules.product_classification.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -91,7 +91,8 @@ setup(name=name,
         'Environment :: Plugins',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',

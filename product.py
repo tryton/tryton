@@ -5,9 +5,6 @@ from trytond.model import (ModelStorage, ModelView, DeactivableMixin, fields,
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
-__all__ = ['ClassificationMixin', 'classification_tree',
-    'Template', 'Product', 'ClassificationDummy', 'ClassificationTreeDummy']
-
 
 class ClassificationMixin(DeactivableMixin):
     __slots__ = ()
