@@ -2,17 +2,17 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .product import *
-from .stock import *
+from . import product
+from . import stock
 
 
 def register():
     Pool.register(
-        Template,
-        Product,
-        Configuration,
-        ConfigurationLotShelfLife,
-        Lot,
-        Move,
-        Period,
+        product.Template,
+        product.Product,
+        stock.Configuration,
+        stock.ConfigurationLotShelfLife,
+        stock.Lot,
+        stock.Move,
+        stock.Period,
         module='stock_lot_sled', type_='model')

@@ -6,8 +6,6 @@ from trytond.pyson import Eval
 
 from .stock import DATE_STATE
 
-__all__ = ['Template', 'Product']
-
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'

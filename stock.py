@@ -16,9 +16,6 @@ from trytond.tools import grouped_slice
 from trytond.modules.stock.exceptions import PeriodCloseError
 from .exceptions import LotExpiredError, LotExpiredWarning
 
-__all__ = ['Configuration', 'ConfigurationLotShelfLife',
-    'Lot', 'Move', 'Period']
-
 DATE_STATE = [
     ('none', 'None'),
     ('optional', 'Optional'),
@@ -327,10 +324,10 @@ class Move(metaclass=PoolMeta):
                         if add_join(sub_query.from_, lot):
                             # only lot expiring during the period
                             clause = (
-                                (lot.shelf_life_expiration_date >=
-                                    stock_date_start)
-                                & (lot.shelf_life_expiration_date <
-                                    stock_date_end))
+                                (lot.shelf_life_expiration_date
+                                    >= stock_date_start)
+                                & (lot.shelf_life_expiration_date
+                                    < stock_date_end))
                             if sub_query.where:
                                 sub_query.where &= clause
                             else:
