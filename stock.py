@@ -5,10 +5,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 
-__all__ = ['StockMove']
-
-
-class StockMove(metaclass=PoolMeta):
+class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     invoice_lines = fields.Many2Many('account.invoice.line-stock.move',
         'stock_move', 'invoice_line', 'Invoice Lines')
@@ -32,4 +29,4 @@ class StockMove(metaclass=PoolMeta):
             default = default.copy()
         if not Transaction().context.get('_stock_move_split'):
             default.setdefault('invoice_lines', None)
-        return super(StockMove, cls).copy(moves, default=default)
+        return super().copy(moves, default=default)

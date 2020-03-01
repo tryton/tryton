@@ -2,13 +2,13 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account import *
-from .stock import *
+from . import account
+from . import stock
 
 
 def register():
     Pool.register(
-        InvoiceLineStockMove,
-        InvoiceLine,
-        StockMove,
+        account.InvoiceLineStockMove,
+        account.InvoiceLine,
+        stock.Move,
         module='account_invoice_stock', type_='model')

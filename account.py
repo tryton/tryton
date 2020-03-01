@@ -5,9 +5,6 @@ from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 
-__all__ = ['InvoiceLineStockMove', 'InvoiceLine']
-
-
 class InvoiceLineStockMove(ModelSQL):
     'Invoice Line - Stock Move'
     __name__ = 'account.invoice.line-stock.move'
