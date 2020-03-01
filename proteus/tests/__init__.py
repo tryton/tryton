@@ -10,7 +10,8 @@ import proteus.config
 
 os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite:///:memory:')
 os.environ.setdefault('DB_NAME', ':memory:')
-from trytond.tests.test_tryton import doctest_setup, doctest_teardown
+from trytond.tests.test_tryton import (
+    doctest_setup, doctest_teardown)  # noqa: E402
 
 here = os.path.dirname(__file__)
 readme = os.path.normpath(os.path.join(here, '..', '..', 'README'))
@@ -45,6 +46,7 @@ def main():
     suite = test_suite()
     runner = unittest.TextTestRunner()
     return runner.run(suite)
+
 
 if __name__ == '__main__':
     sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(

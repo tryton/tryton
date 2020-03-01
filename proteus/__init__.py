@@ -785,8 +785,8 @@ class Model(object):
 
     def __eq__(self, other):
         if isinstance(other, Model):
-            return ((self.__class__.__name__, self.id) ==
-                (other.__class__.__name__, other.id))
+            return ((self.__class__.__name__, self.id)
+                == (other.__class__.__name__, other.id))
         return NotImplemented
 
     def __ne__(self, other):
