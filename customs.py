@@ -12,8 +12,6 @@ from trytond.pool import Pool
 
 from trytond.modules.product import price_digits
 
-__all__ = ['TariffCode', 'DutyRate']
-
 # Use 2 chars numbering to allow string comparison
 MONTHS = [
     (None, ''),

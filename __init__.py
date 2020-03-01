@@ -2,16 +2,16 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .customs import *
-from .product import *
+from . import customs
+from . import product
 
 
 def register():
     Pool.register(
-        TariffCode,
-        DutyRate,
-        Category,
-        Template,
-        Product_TariffCode,
-        Product,
+        customs.TariffCode,
+        customs.DutyRate,
+        product.Category,
+        product.Template,
+        product.Product_TariffCode,
+        product.Product,
         module='customs', type_='model')

@@ -7,8 +7,6 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond import backend
 
-__all__ = ['Category', 'Template', 'Product_TariffCode', 'Product']
-
 
 class Category(metaclass=PoolMeta):
     __name__ = 'product.category'
@@ -103,8 +101,8 @@ class Template(metaclass=PoolMeta):
     tariff_codes = fields.One2Many('product-customs.tariff.code',
         'product', 'Tariff Codes', order=[('sequence', 'ASC'), ('id', 'ASC')],
         states={
-            'invisible': ((Eval('type') == 'service') |
-                Eval('tariff_codes_category', False)),
+            'invisible': ((Eval('type') == 'service')
+                | Eval('tariff_codes_category', False)),
             },
         depends=['type', 'tariff_codes_category'])
 
