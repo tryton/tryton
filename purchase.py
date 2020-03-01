@@ -4,9 +4,6 @@ from trytond.model import ModelSQL, fields
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-__all__ = ['Purchase', 'PurchaseIgnoredInvoiceLine',
-    'HandleInvoiceException']
-
 
 class Purchase(metaclass=PoolMeta):
     __name__ = 'purchase.purchase'

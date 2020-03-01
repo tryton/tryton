@@ -80,8 +80,8 @@ setup(name=name,
     keywords='tryton purchase standalone invoice line',
     package_dir={'trytond.modules.purchase_invoice_line_standalone': '.'},
     packages=(
-        ['trytond.modules.purchase_invoice_line_standalone'] +
-        ['trytond.modules.purchase_invoice_line_standalone.%s' % p
+        ['trytond.modules.purchase_invoice_line_standalone']
+        + ['trytond.modules.purchase_invoice_line_standalone.%s' % p
             for p in find_packages()]
         ),
     package_data={
@@ -96,7 +96,8 @@ setup(name=name,
         'Intended Audience :: Developers',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
