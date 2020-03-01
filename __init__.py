@@ -2,12 +2,12 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .country import *
+from . import country
 
 
 def register():
     Pool.register(
-        Country,
-        Subdivision,
-        Zip,
+        country.Country,
+        country.Subdivision,
+        country.Zip,
         module='country', type_='model')

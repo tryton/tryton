@@ -6,8 +6,6 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.tools import lstrip_wildcard
 
-__all__ = ['Country', 'Subdivision', 'Zip']
-
 
 class Country(DeactivableMixin, ModelSQL, ModelView):
     'Country'

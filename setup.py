@@ -79,8 +79,8 @@ setup(name=name,
     keywords='tryton country',
     package_dir={'trytond.modules.country': '.'},
     packages=(
-        ['trytond.modules.country'] +
-        ['trytond.modules.country.%s' % p for p in find_packages()]
+        ['trytond.modules.country']
+        + ['trytond.modules.country.%s' % p for p in find_packages()]
         ),
     package_data={
         'trytond.modules.country': (info.get('xml', [])
@@ -95,7 +95,8 @@ setup(name=name,
         'Intended Audience :: Financial and Insurance Industry',
         'Intended Audience :: Legal Industry',
         'Intended Audience :: Manufacturing',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+        'License :: OSI Approved :: '
+        'GNU General Public License v3 or later (GPLv3+)',
         'Natural Language :: Bulgarian',
         'Natural Language :: Catalan',
         'Natural Language :: Chinese (Simplified)',
@@ -139,7 +140,7 @@ setup(name=name,
     [console_scripts]
     trytond_import_countries = trytond.modules.country.scripts.import_countries:run [data]
     trytond_import_zip = trytond.modules.country.scripts.import_zip:run [GeoNames]
-    """,
+    """,  # noqa: E501
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
