@@ -5,8 +5,6 @@ from decimal import Decimal
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-__all__ = ['ShipmentIn', 'ShipmentOut']
-
 
 def _percentage_amount(lines, company):
     pool = Pool()

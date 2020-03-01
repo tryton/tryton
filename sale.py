@@ -4,8 +4,6 @@ from decimal import Decimal
 
 from trytond.pool import PoolMeta
 
-__all__ = ['Sale']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
