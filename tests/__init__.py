@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.account_payment_sepa.tests.test_account_payment_sepa import (
+    from trytond.modules.account_payment_sepa.tests.test_account_payment_sepa import (  # noqa: E501
         suite, validate_file)
 except ImportError:
     from .test_account_payment_sepa import suite, validate_file

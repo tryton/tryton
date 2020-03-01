@@ -748,7 +748,8 @@ class Message(Workflow, ModelSQL, ModelView):
                     cursor.execute(*table.insert(
                             [table.message, table.type, table.company,
                                 table.origin, table.state],
-                            [[message, 'out', company_id,
+                            [[
+                                    message, 'out', company_id,
                                     'account.payment.group,%s' % group_id,
                                     'done']]))
                 group_table.drop_column('sepa_message')

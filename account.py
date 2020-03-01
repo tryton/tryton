@@ -7,8 +7,6 @@ from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
-__all__ = ['Configuration', 'ConfigurationSepaMandateSequence']
-
 
 class Configuration(metaclass=PoolMeta):
     __name__ = 'account.configuration'
