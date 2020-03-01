@@ -8,8 +8,6 @@ from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Party', 'PartySalePriceList']
-
 
 class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party'

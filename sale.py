@@ -4,8 +4,6 @@ from trytond.model import fields
 from trytond.pyson import Eval, Not, Equal, Or, Bool
 from trytond.pool import PoolMeta, Pool
 
-__all__ = ['Sale', 'SaleLine']
-
 
 class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
@@ -39,18 +37,18 @@ class Sale(metaclass=PoolMeta):
             self.price_list = config.sale_price_list
 
 
-class SaleLine(metaclass=PoolMeta):
+class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @classmethod
     def __setup__(cls):
-        super(SaleLine, cls).__setup__()
+        super().__setup__()
         cls.product.context['price_list'] = Eval(
             '_parent_sale', {}).get('price_list')
 
     @fields.depends('sale', '_parent_sale.price_list', '_parent_sale.company')
     def _get_context_sale_price(self):
-        context = super(SaleLine, self)._get_context_sale_price()
+        context = super()._get_context_sale_price()
         if self.sale:
             if getattr(self.sale, 'price_list', None):
                 context['price_list'] = self.sale.price_list.id

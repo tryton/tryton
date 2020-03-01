@@ -2,18 +2,18 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .party import *
-from .sale import *
+from . import party
+from . import sale
 from . import product
 from . import configuration
 
 
 def register():
     Pool.register(
-        Party,
-        PartySalePriceList,
-        Sale,
-        SaleLine,
+        party.Party,
+        party.PartySalePriceList,
+        sale.Sale,
+        sale.Line,
         product.Product,
         product.PriceList,
         product.SaleContext,
