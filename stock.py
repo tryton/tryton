@@ -11,8 +11,6 @@ from trytond.wizard import Wizard, StateTransition
 
 from .exceptions import PackWarning
 
-__all__ = ['PackageType', 'Package', 'ShipmentOut', 'CreateShipping']
-
 
 class PackageType(metaclass=PoolMeta):
     __name__ = 'stock.package.type'
