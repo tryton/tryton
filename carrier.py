@@ -7,8 +7,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import Cache
 
-__all__ = ['Carrier', 'CarrierSelection']
-
 
 class Carrier(ModelSQL, ModelView):
     'Carrier'
@@ -76,7 +74,7 @@ class Carrier(ModelSQL, ModelView):
         CarrierSelection._get_carriers_cache.clear()
 
 
-class CarrierSelection(
+class Selection(
         DeactivableMixin, sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     'Carrier Selection'
     __name__ = 'carrier.selection'
@@ -95,18 +93,18 @@ class CarrierSelection(
 
     @classmethod
     def create(cls, *args, **kwargs):
-        selections = super(CarrierSelection, cls).create(*args, **kwargs)
+        selections = super().create(*args, **kwargs)
         cls._get_carriers_cache.clear()
         return selections
 
     @classmethod
     def write(cls, *args, **kwargs):
-        super(CarrierSelection, cls).write(*args, **kwargs)
+        super().write(*args, **kwargs)
         cls._get_carriers_cache.clear()
 
     @classmethod
     def delete(cls, *args, **kwargs):
-        super(CarrierSelection, cls).delete(*args, **kwargs)
+        super().delete(*args, **kwargs)
         cls._get_carriers_cache.clear()
 
     @classmethod

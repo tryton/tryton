@@ -2,15 +2,15 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .carrier import *
-from .party import PartyReplace
+from . import carrier
+from . import party
 
 
 def register():
     Pool.register(
-        Carrier,
-        CarrierSelection,
+        carrier.Carrier,
+        carrier.Selection,
         module='carrier', type_='model')
     Pool.register(
-        PartyReplace,
+        party.Replace,
         module='carrier', type_='wizard')
