@@ -19,7 +19,6 @@ BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
 class Production(Workflow, ModelSQL, ModelView):
     "Production"
     __name__ = 'production'
-    _rec_name = 'number'
 
     number = fields.Char('Number', select=True, readonly=True)
     reference = fields.Char('Reference', select=1,
@@ -212,6 +211,27 @@ class Production(Workflow, ModelSQL, ModelView):
                 'assign_try': {},
                 'assign_force': {},
                 })
+
+    def get_rec_name(self, name):
+        items = []
+        if self.number:
+            items.append(self.number)
+        if self.reference:
+            items.append('[%s]' % self.reference)
+        if not items:
+            items.append('(%s)' % self.id)
+        return ' '.join(items)
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        return [bool_op,
+            ('number',) + tuple(clause[1:]),
+            ('reference',) + tuple(clause[1:]),
+            ]
 
     @classmethod
     def __register__(cls, module_name):
