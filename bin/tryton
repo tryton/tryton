@@ -32,7 +32,10 @@ if hasattr(sys, 'frozen'):
 
     if sys.platform == 'win32':
         # cx_freeze >= 5 put python modules under lib directory
+        # and dependencies of gdk-pixbuf loaders
         sys.path.append(os.path.join(prefix, 'lib'))
+        sys.path.append(os.path.join(
+                prefix, 'lib', 'gdk-pixbuf-2.0', '2.10.0', 'loaders'))
 
     # On first launch the MacOSX app launcher may append an extra unique
     # argument starting with -psn_. This must be filtered to not crash the
