@@ -130,9 +130,11 @@ class Template(
         return Configuration(1).get_multivalue(
             'default_cost_price_method', **pattern)
 
-    @staticmethod
-    def default_products():
-        if Transaction().user == 0:
+    @classmethod
+    def default_products(cls):
+        transaction = Transaction()
+        if (transaction.user == 0
+                or not transaction.context.get('default_products', True)):
             return []
         return [{}]
 
@@ -206,7 +208,7 @@ class Product(
     _order_name = 'rec_name'
     template = fields.Many2One('product.template', 'Product Template',
         required=True, ondelete='CASCADE', select=True, states=STATES,
-        depends=DEPENDS)
+        depends=DEPENDS, search_context={'default_products': False})
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     code = fields.Char("Code", size=None, select=True,

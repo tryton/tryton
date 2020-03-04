@@ -1,3 +1,4 @@
+* Skip default products when template is created from product
 * Search also on variant name when searching on template record name
 
 Version 5.4.0 - 2019-11-04
