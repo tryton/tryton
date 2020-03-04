@@ -253,6 +253,13 @@ class Product(
                 tfield = copy.deepcopy(tfield)
                 if hasattr(tfield, 'field'):
                     tfield.field = None
+                invisible_state = ~Eval('template')
+                if 'invisible' in tfield.states:
+                    tfield.states['invisible'] |= invisible_state
+                else:
+                    tfield.states['invisible'] = invisible_state
+                if 'template' not in tfield.depends:
+                    tfield.depends.append('template')
                 setattr(cls, attr, TemplateFunction(tfield))
                 order_method = getattr(cls, 'order_%s' % attr, None)
                 if (not order_method
