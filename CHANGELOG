@@ -1,3 +1,4 @@
+* Show lines to pay on invoice form
 * Add invoice date on credit wizard
 * Take lines without maturity date as payable
 
