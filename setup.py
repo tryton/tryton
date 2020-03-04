@@ -49,6 +49,8 @@ if minor_version % 2:
             name[8:], name, version))
 
 requires = ['ofxparse']
+# Fix lxml dependency of ofxparse against wrong definition of 4.4.0 version
+requires.append('lxml >=2.0, < 4.4; python_version == "3.4"')
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
