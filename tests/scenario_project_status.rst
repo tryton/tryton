@@ -56,12 +56,13 @@ Try to complete project without task::
         ...
     WorkProgressValidationError: ...
 
+    >>> task, = project.children
     >>> task.progress = 1
-    >>> task.save()
     >>> project.save()
 
 Try to re-open task without project::
 
+    >>> task = Work(task.id)
     >>> task.progress = 0.5
     >>> task.save()  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
@@ -81,5 +82,6 @@ Change progress with updating status::
 
 Re-open task::
 
+    >>> task = Work(task.id)
     >>> task.progress = 0.5
     >>> task.save()
