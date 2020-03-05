@@ -108,11 +108,6 @@ SQLite
 
 The only possible URI is: `sqlite://`
 
-MySQL
-*****
-
-Same as for PostgreSQL.
-
 path
 ~~~~
 
