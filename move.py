@@ -1860,8 +1860,9 @@ class GroupLines(Wizard):
             if line.account.reconcile:
                 to_reconcile[line.account].append(line)
 
-        balance_line.move = move
-        balance_line.save()
+        if balance_line:
+            balance_line.move = move
+            balance_line.save()
 
         for lines in to_reconcile.values():
             Line.reconcile(lines, delegate_to=balance_line)
@@ -1974,7 +1975,7 @@ class GroupLines(Wizard):
                 balance_line.second_currency = grouping['second_currency']
                 balance_line.amount_second_currency = (
                     -amount_second_currency)
-        balance_line.maturity_date = maturity_dates[balance_line.account]
+            balance_line.maturity_date = maturity_dates[balance_line.account]
         return move, balance_line
 
     def _counterpart_line(self, line):
