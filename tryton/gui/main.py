@@ -133,7 +133,6 @@ class Main(Gtk.Application):
         section.append_submenu(_("Form"), form)
         form.append(_("Save Width/Height"), 'app.save-width-height')
         form.append(_("Save Tree State"), 'app.save-tree-state')
-        form.append(_("Fast Tabbing"), 'app.fast-tabbing')
         form.append(_("Spell Checking"), 'app.spell-checking')
 
         section.append(_("PDA Mode"), 'app.mode-pda')
