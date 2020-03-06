@@ -1,3 +1,5 @@
+* Use same __str__ as trytond instances
+
 Version 5.4.0 - 2019-11-04
 * Bug fixes (see mercurial logs for details)
 * Support dot notation on PYSON Eval

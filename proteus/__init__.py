@@ -57,7 +57,8 @@ class _EvalEnvironment(dict):
     def __str__(self):
         return str(self.parent)
 
-    __repr__ = __str__
+    def __repr__(self):
+        return repr(self.parent)
 
     def __contains__(self, item):
         if item == 'id':
@@ -772,8 +773,7 @@ class Model(object):
                 del models[name]
 
     def __str__(self):
-        return '<%s(%d)>' % (self.__class__.__name__, self.id)
-    __str__.__doc__ = object.__str__.__doc__
+        return '%s,%d' % (self.__class__.__name__, self.id)
 
     def __repr__(self):
         if self._config == proteus.config.get_config():
@@ -781,7 +781,6 @@ class Model(object):
                     self.id)
         return "proteus.Model.get('%s', %s)(%d)" % (self.__class__.__name__,
                 repr(self._config), self.id)
-    __repr__.__doc__ = object.__repr__.__doc__
 
     def __eq__(self, other):
         if isinstance(other, Model):
