@@ -125,39 +125,33 @@ Create a Project::
     >>> project.save()
     >>> task, task_no_effort = project.children
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0)
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
     >>> project.invoiced_amount
     Decimal('0')
+    >>> project.amount_to_invoice
+    Decimal('0.00')
 
 Do 1 task::
 
     >>> task.progress = 1
     >>> task.save()
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0)
-    >>> project.duration_to_invoice == datetime.timedelta(0, 18000)
-    True
     >>> project.invoiced_amount
     Decimal('0')
+    >>> project.amount_to_invoice
+    Decimal('100.00')
 
 Invoice project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
-    True
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -169,13 +163,11 @@ Do project::
     >>> project.progress = 1
     >>> project.save()
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
-    True
-    >>> project.duration_to_invoice == datetime.timedelta(0, 3600)
-    True
+    >>> project.amount_to_invoice
+    Decimal('20.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -183,9 +175,7 @@ Invoice again project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 21600)
-    True
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('120.00')

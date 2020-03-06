@@ -83,13 +83,11 @@ Create a Project with multiple customers::
     >>> project.save()
     >>> subproject, = project.children
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0)
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('0')
 
@@ -100,23 +98,19 @@ Do project and subproject::
     >>> project.progress = 1
     >>> project.save()
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0)
-    >>> project.duration_to_invoice == datetime.timedelta(0, 21600)
-    True
+    >>> project.amount_to_invoice
+    Decimal('120.00')
     >>> project.invoiced_amount
     Decimal('0')
 
 Invoice project::
 
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 21600)
-    True
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('120.00')
 

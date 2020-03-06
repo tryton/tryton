@@ -9,6 +9,7 @@ import datetime
 
 from sql import Null
 from sql.aggregate import Sum
+from sql.functions import Extract
 from sql.operators import Concat
 
 from trytond.i18n import gettext
@@ -22,158 +23,25 @@ from trytond.tools import reduce_ids, grouped_slice
 
 from .exceptions import InvoicingError
 
-INVOICE_METHODS = [
-    ('manual', 'Manual'),
-    ('effort', 'On Effort'),
-    ('progress', 'On Progress'),
-    ('timesheet', 'On Timesheet'),
-    ]
 
-
-class Work(metaclass=PoolMeta):
-    __name__ = 'project.work'
-    project_invoice_method = fields.Selection(INVOICE_METHODS,
-        'Invoice Method',
-        states={
-            'readonly': Bool(Eval('invoiced_duration')),
-            'required': Eval('type') == 'project',
-            'invisible': Eval('type') != 'project',
-            },
-        depends=['invoiced_duration', 'type'])
-    invoice_method = fields.Function(fields.Selection(INVOICE_METHODS,
-            'Invoice Method'), 'on_change_with_invoice_method')
-    invoiced_duration = fields.Function(fields.TimeDelta('Invoiced Duration',
-            'company_work_time',
-            states={
-                'invisible': Eval('invoice_method') == 'manual',
-                },
-            depends=['invoice_method']), 'get_total')
-    duration_to_invoice = fields.Function(fields.TimeDelta(
-            'Duration to Invoice', 'company_work_time',
-            states={
-                'invisible': Eval('invoice_method') == 'manual',
-                },
-            depends=['invoice_method']), 'get_total')
-    invoiced_amount = fields.Function(fields.Numeric('Invoiced Amount',
-            digits=(16, Eval('currency_digits', 2)),
-            states={
-                'invisible': Eval('invoice_method') == 'manual',
-                },
-            depends=['currency_digits', 'invoice_method']),
-        'get_total')
-    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
-        readonly=True)
-    invoiced_progress = fields.One2Many('project.work.invoiced_progress',
-        'work', 'Invoiced Progress', readonly=True)
+class Effort:
 
     @classmethod
     def __setup__(cls):
-        super(Work, cls).__setup__()
-        cls._buttons.update({
-                'invoice': {
-                    'invisible': ((Eval('type') != 'project')
-                        | (Eval('project_invoice_method', 'manual')
-                            == 'manual')),
-                    'readonly': ~Eval('duration_to_invoice'),
-                    'depends': ['type', 'project_invoice_method',
-                        'duration_to_invoice']
-                    },
-                })
-
-    @staticmethod
-    def default_project_invoice_method():
-        return 'manual'
+        super().__setup__()
+        cls.project_invoice_method.selection.append(
+            ('effort', "On Effort"))
 
     @classmethod
-    def copy(cls, records, default=None):
-        if default is None:
-            default = {}
-        else:
-            default = default.copy()
-        default.setdefault('invoice_line', None)
-        return super(Work, cls).copy(records, default=default)
-
-    @fields.depends('type', 'project_invoice_method',
-        'parent', '_parent_parent.invoice_method')
-    def on_change_with_invoice_method(self, name=None):
-        if self.type == 'project':
-            return self.project_invoice_method
-        elif self.parent:
-            return self.parent.invoice_method
-        else:
-            return 'manual'
-
-    @staticmethod
-    def default_invoiced_duration():
-        return datetime.timedelta()
-
-    @staticmethod
-    def _get_invoiced_duration_manual(works):
-        return {}
-
-    @staticmethod
-    def _get_invoiced_duration_effort(works):
-        return dict((w.id, w.effort_duration) for w in works
-            if w.invoice_line and w.effort_duration)
-
-    @staticmethod
-    def _get_invoiced_duration_progress(works):
-        durations = {}
+    def _get_quantity_to_invoice_effort(cls, works):
+        quantities = {}
         for work in works:
-            durations[work.id] = sum((p.effort_duration
-                    for p in work.invoiced_progress if p.effort_duration),
-                datetime.timedelta())
-        return durations
+            if work.progress == 1 and not work.invoice_line:
+                quantities[work.id] = work.effort_hours
+        return quantities
 
     @classmethod
-    def _get_invoiced_duration_timesheet(cls, works):
-        return cls._get_duration_timesheet(works, True)
-
-    @staticmethod
-    def default_duration_to_invoice():
-        return datetime.timedelta()
-
-    @staticmethod
-    def _get_duration_to_invoice_manual(works):
-        return {}
-
-    @staticmethod
-    def _get_duration_to_invoice_effort(works):
-        return dict((w.id, w.effort_duration) for w in works
-            if w.progress == 1 and not w.invoice_line and w.effort_duration)
-
-    @staticmethod
-    def _get_duration_to_invoice_progress(works):
-        durations = {}
-        for work in works:
-            if work.progress is None or work.effort_duration is None:
-                continue
-            effort_to_invoice = datetime.timedelta(
-                hours=work.effort_hours * work.progress)
-            effort_invoiced = sum(
-                (p.effort_duration
-                    for p in work.invoiced_progress),
-                datetime.timedelta())
-            if effort_to_invoice > effort_invoiced:
-                durations[work.id] = effort_to_invoice - effort_invoiced
-            else:
-                durations[work.id] = datetime.timedelta()
-        return durations
-
-    @classmethod
-    def _get_duration_to_invoice_timesheet(cls, works):
-        return cls._get_duration_timesheet(works, False)
-
-    @staticmethod
-    def default_invoiced_amount():
-        return Decimal(0)
-
-    @staticmethod
-    def _get_invoiced_amount_manual(works):
-        return {}
-
-    @staticmethod
-    def _get_invoiced_amount_effort(works):
+    def _get_invoiced_amount_effort(cls, works):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
         Currency = pool.get('currency.currency')
@@ -197,6 +65,61 @@ class Work(metaclass=PoolMeta):
                 amounts[work.id] = Decimal(0)
         return amounts
 
+    def get_origins_to_invoice(self):
+        try:
+            origins = super().get_origins_to_invoice()
+        except AttributeError:
+            origins = []
+        if self.invoice_method == 'effort':
+            origins.append(self)
+        return origins
+
+
+class Progress:
+
+    invoiced_progress = fields.One2Many('project.work.invoiced_progress',
+        'work', 'Invoiced Progress', readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.project_invoice_method.selection.append(
+            ('progress', 'On Progress'))
+
+    @classmethod
+    def _get_quantity_to_invoice_progress(cls, works):
+        pool = Pool()
+        Progress = pool.get('project.work.invoiced_progress')
+
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        progress = Progress.__table__()
+
+        invoiced_progress = {}
+        quantities = {}
+        for sub_works in grouped_slice(works):
+            sub_works = list(sub_works)
+            where = reduce_ids(table.id, [x.id for x in sub_works])
+            cursor.execute(*table.join(progress,
+                    condition=progress.work == table.id
+                    ).select(table.id, Sum(progress.progress),
+                    where=where,
+                    group_by=table.id))
+            invoiced_progress.update(dict(cursor.fetchall()))
+
+            for work in sub_works:
+                delta = (
+                    (work.progress or 0)
+                    - invoiced_progress.get(work.id, 0.0))
+                if delta > 0:
+                    quantities[work.id] = delta * work.effort_hours
+        return quantities
+
+    @property
+    def progress_to_invoice(self):
+        if self.quantity_to_invoice:
+            return self.quantity_to_invoice / self.effort_hours
+
     @classmethod
     def _get_invoiced_amount_progress(cls, works):
         pool = Pool()
@@ -213,26 +136,22 @@ class Work(metaclass=PoolMeta):
 
         amounts = defaultdict(Decimal)
         work2currency = {}
-        work_ids = [w.id for w in works]
-        for sub_ids in grouped_slice(work_ids):
+        ids2work = dict((w.id, w) for w in works)
+        for sub_ids in grouped_slice(ids2work.keys()):
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.join(progress,
                     condition=progress.work == table.id
                     ).join(invoice_line,
                     condition=progress.invoice_line == invoice_line.id
                     ).select(table.id,
-                    Sum(progress.effort_duration * invoice_line.unit_price),
+                    Sum(progress.progress * invoice_line.unit_price),
                     where=where,
                     group_by=table.id))
             for work_id, amount in cursor.fetchall():
-                if isinstance(amount, datetime.timedelta):
-                    amount = amount.total_seconds()
-                # Amount computed in second instead of hours
-                if amount is not None:
-                    amount /= 60 * 60
-                else:
-                    amount = 0
-                amounts[work_id] = amount
+                if not isinstance(amount, Decimal):
+                    amount = Decimal(str(amount))
+                amounts[work_id] = (
+                    amount * Decimal(str(ids2work[work_id].effort_hours)))
 
             cursor.execute(*table.join(company,
                     condition=table.company == company.id
@@ -247,6 +166,57 @@ class Work(metaclass=PoolMeta):
             currency = id2currency[work2currency[work.id]]
             amounts[work.id] = currency.round(Decimal(amounts[work.id]))
         return amounts
+
+    def get_origins_to_invoice(self):
+        pool = Pool()
+        InvoicedProgress = pool.get('project.work.invoiced_progress')
+        try:
+            origins = super().get_origins_to_invoice()
+        except AttributeError:
+            origins = []
+        if self.invoice_method == 'progress':
+            invoiced_progress = InvoicedProgress(
+                work=self, progress=self.progress_to_invoice)
+            origins.append(invoiced_progress)
+        return origins
+
+
+class Timesheet:
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.project_invoice_method.selection.append(
+            ('timesheet', 'On Timesheet'))
+
+    @classmethod
+    def _get_quantity_to_invoice_timesheet(cls, works):
+        pool = Pool()
+        TimesheetLine = pool.get('timesheet.line')
+        cursor = Transaction().connection.cursor()
+        line = TimesheetLine.__table__()
+
+        durations = defaultdict(datetime.timedelta)
+        twork2work = {tw.id: w.id for w in works for tw in w.timesheet_works}
+        for sub_ids in grouped_slice(twork2work.keys()):
+            red_sql = reduce_ids(line.work, sub_ids)
+            cursor.execute(*line.select(line.work, Sum(line.duration),
+                    where=red_sql & (line.invoice_line == Null),
+                    group_by=line.work))
+            for twork_id, duration in cursor.fetchall():
+                if duration:
+                    # SQLite uses float for SUM
+                    if not isinstance(duration, datetime.timedelta):
+                        duration = datetime.timedelta(seconds=duration)
+                    durations[twork2work[twork_id]] += duration
+
+        quantities = {}
+        for work in works:
+            duration = durations[work.id]
+            if work.list_price:
+                hours = duration.total_seconds() / 60 / 60
+                quantities[work.id] = hours
+        return quantities
 
     @classmethod
     def _get_invoiced_amount_timesheet(cls, works):
@@ -301,52 +271,131 @@ class Work(metaclass=PoolMeta):
             amounts[work.id] = currency.round(Decimal(str(amount)))
         return amounts
 
-    @staticmethod
-    def _get_duration_timesheet(works, invoiced):
-        pool = Pool()
-        TimesheetLine = pool.get('timesheet.line')
-        cursor = Transaction().connection.cursor()
-        line = TimesheetLine.__table__()
+    def get_origins_to_invoice(self):
+        try:
+            origins = super().get_origins_to_invoice()
+        except AttributeError:
+            origins = []
+        if self.invoice_method == 'timesheet':
+            origins.extend(
+                l for tw in self.timesheet_works
+                for l in tw.timesheet_lines
+                if not l.invoice_line)
+        return origins
 
-        durations = defaultdict(datetime.timedelta)
-        twork2work = {tw.id: w.id for w in works for tw in w.timesheet_works}
-        for sub_ids in grouped_slice(twork2work.keys()):
-            red_sql = reduce_ids(line.work, sub_ids)
-            if invoiced:
-                where = line.invoice_line != Null
-            else:
-                where = line.invoice_line == Null
-            cursor.execute(*line.select(line.work, Sum(line.duration),
-                    where=red_sql & where,
-                    group_by=line.work))
-            for twork_id, duration in cursor.fetchall():
-                if duration:
-                    # SQLite uses float for SUM
-                    if not isinstance(duration, datetime.timedelta):
-                        duration = datetime.timedelta(seconds=duration)
-                    durations[twork2work[twork_id]] += duration
-        return durations
+
+class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
+    __name__ = 'project.work'
+    project_invoice_method = fields.Selection([
+            ('manual', "Manual"),
+            ], "Invoice Method",
+        states={
+            'readonly': Bool(Eval('invoiced_amount')),
+            'required': Eval('type') == 'project',
+            'invisible': Eval('type') != 'project',
+            },
+        depends=['invoiced_amount', 'type'])
+    invoice_method = fields.Function(fields.Selection(
+            'get_invoice_methods', "Invoice Method"),
+        'on_change_with_invoice_method')
+    quantity_to_invoice = fields.Function(
+        fields.Float("Quantity to Invoice"), '_get_invoice_values')
+    amount_to_invoice = fields.Function(fields.Numeric("Amount to Invoice",
+            digits=(16, Eval('currency_digits', 2)),
+            states={
+                'invisible': Eval('invoice_method') == 'manual',
+                },
+            depends=['currency_digits', 'invoice_method']),
+        'get_total')
+    invoiced_amount = fields.Function(fields.Numeric('Invoiced Amount',
+            digits=(16, Eval('currency_digits', 2)),
+            states={
+                'invisible': Eval('invoice_method') == 'manual',
+                },
+            depends=['currency_digits', 'invoice_method']),
+        'get_total')
+    invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
+        readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super(Work, cls).__setup__()
+        cls._buttons.update({
+                'invoice': {
+                    'invisible': ((Eval('type') != 'project')
+                        | (Eval('project_invoice_method', 'manual')
+                            == 'manual')),
+                    'readonly': ~Eval('amount_to_invoice'),
+                    'depends': [
+                        'type', 'project_invoice_method', 'amount_to_invoice'],
+                    },
+                })
+
+    @staticmethod
+    def default_project_invoice_method():
+        return 'manual'
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('invoice_line', None)
+        return super(Work, cls).copy(records, default=default)
+
+    @classmethod
+    def get_invoice_methods(cls):
+        field = 'project_invoice_method'
+        return cls.fields_get(field)[field]['selection']
+
+    @fields.depends('type', 'project_invoice_method',
+        'parent', '_parent_parent.invoice_method')
+    def on_change_with_invoice_method(self, name=None):
+        if self.type == 'project':
+            return self.project_invoice_method
+        elif self.parent:
+            return self.parent.invoice_method
+        else:
+            return 'manual'
+
+    @classmethod
+    def default_quantity_to_invoice(cls):
+        return 0
+
+    @classmethod
+    def _get_quantity_to_invoice_manual(cls, works):
+        return {}
+
+    @classmethod
+    def _get_amount_to_invoice(cls, works):
+        amounts = {}
+        for work in works:
+            amounts[work.id] = work.company.currency.round(
+                (work.invoice_unit_price or 0)
+                * Decimal(str(work.quantity_to_invoice)))
+        return amounts
+
+    @classmethod
+    def default_invoiced_amount(cls):
+        return Decimal(0)
+
+    @classmethod
+    def _get_invoiced_amount_manual(cls, works):
+        return {}
 
     @classmethod
     def _get_invoice_values(cls, works, name):
         default = getattr(cls, 'default_%s' % name)
-        durations = dict.fromkeys((w.id for w in works), default())
+        amounts = dict.fromkeys((w.id for w in works), default())
         method2works = defaultdict(list)
         for work in works:
             method2works[work.invoice_method].append(work)
         for method, m_works in method2works.items():
             method = getattr(cls, '_get_%s_%s' % (name, method))
             # Re-browse for cache alignment
-            durations.update(method(cls.browse(m_works)))
-        return durations
-
-    @classmethod
-    def _get_invoiced_duration(cls, works):
-        return cls._get_invoice_values(works, 'invoiced_duration')
-
-    @classmethod
-    def _get_duration_to_invoice(cls, works):
-        return cls._get_invoice_values(works, 'duration_to_invoice')
+            amounts.update(method(cls.browse(m_works)))
+        return amounts
 
     @classmethod
     def _get_invoiced_amount(cls, works):
@@ -362,7 +411,8 @@ class Work(metaclass=PoolMeta):
         uninvoiced = works[:]
         while uninvoiced:
             work = uninvoiced.pop(0)
-            invoice_lines, uninvoiced_children = work._get_lines_to_invoice()
+            invoice_lines, uninvoiced_children = (
+                work._get_all_lines_to_invoice())
             uninvoiced.extend(uninvoiced_children)
             if not invoice_lines:
                 continue
@@ -376,10 +426,10 @@ class Work(metaclass=PoolMeta):
                 invoice_line = work._get_invoice_line(key, invoice, lines)
                 invoice_line.invoice = invoice.id
                 invoice_line.save()
-                origins = {}
+                origins = defaultdict(list)
                 for line in lines:
-                    origin = line['origin']
-                    origins.setdefault(origin.__class__, []).append(origin)
+                    for origin in line['origins']:
+                        origins[origin.__class__].append(origin)
                 # TODO: remove when _check_access ignores record rule
                 with Transaction().set_user(0):
                     for klass, records in origins.items():
@@ -470,123 +520,60 @@ class Work(metaclass=PoolMeta):
         invoice_line.taxes = taxes
         return invoice_line
 
-    def _get_lines_to_invoice_manual(self):
-        return []
-
-    def _get_lines_to_invoice_effort(self):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Uom = pool.get('product.uom')
-
-        hour = Uom(ModelData.get_id('product', 'uom_hour'))
-
-        if (not self.invoice_line
-                and self.effort_hours
-                and self.progress == 1):
-            if not self.product:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_product',
-                        work=self.rec_name))
-            elif self.list_price is None:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_list_price',
-                        work=self.rec_name))
-            return [{
-                    'product': self.product,
-                    'quantity': self.effort_hours,
-                    'unit': hour,
-                    'unit_price': self.list_price,
-                    'origin': self,
-                    'description': self.name,
-                    }]
-        return []
-
-    def _get_lines_to_invoice_progress(self):
-        pool = Pool()
-        InvoicedProgress = pool.get('project.work.invoiced_progress')
-        ModelData = pool.get('ir.model.data')
-        Uom = pool.get('product.uom')
-
-        hour = Uom(ModelData.get_id('product', 'uom_hour'))
-
-        if self.progress is None or self.effort_duration is None:
-            return []
-
-        invoiced_progress = sum(x.effort_hours for x in self.invoiced_progress)
-        quantity = self.effort_hours * self.progress - invoiced_progress
-        if self.product:
-            quantity = Uom.compute_qty(
-                hour, quantity, self.product.default_uom)
-        if quantity > 0:
-            if not self.product:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_product',
-                        work=self.rec_name))
-            elif self.list_price is None:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_list_price',
-                        work=self.rec_name))
-            invoiced_progress = InvoicedProgress(work=self,
-                effort_duration=datetime.timedelta(hours=quantity))
-            return [{
-                    'product': self.product,
-                    'quantity': quantity,
-                    'unit': hour,
-                    'unit_price': self.list_price,
-                    'origin': invoiced_progress,
-                    'description': self.name,
-                    }]
-        return []
-
-    def _get_lines_to_invoice_timesheet(self):
-        pool = Pool()
-        ModelData = pool.get('ir.model.data')
-        Uom = pool.get('product.uom')
-
-        hour = Uom(ModelData.get_id('product', 'uom_hour'))
-        if (self.timesheet_works
-                and any(tw.timesheet_lines for tw in self.timesheet_works)):
-            if not self.product:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_product',
-                        work=self.rec_name))
-            elif self.list_price is None:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_list_price',
-                        work=self.rec_name))
-            return [{
-                    'product': self.product,
-                    'quantity': l.hours,
-                    'unit': hour,
-                    'unit_price': self.list_price,
-                    'origin': l,
-                    'description': self.name,
-                    }
-                for tw in self.timesheet_works
-                for l in tw.timesheet_lines
-                if not l.invoice_line]
-        return []
-
     def _test_group_invoice(self):
         return (self.company, self.party)
 
-    def _get_lines_to_invoice(self, test=None):
+    def _get_all_lines_to_invoice(self, test=None):
         "Return lines for work and children"
         lines = []
         if test is None:
             test = self._test_group_invoice()
         uninvoiced_children = []
-        lines += getattr(self, '_get_lines_to_invoice_%s' %
-            self.invoice_method)()
+        lines += self._get_lines_to_invoice()
         for children in self.children:
             if children.type == 'project':
                 if test != children._test_group_invoice():
                     uninvoiced_children.append(children)
                     continue
-            child_lines, uninvoiced = children._get_lines_to_invoice(test=test)
+            child_lines, uninvoiced = children._get_all_lines_to_invoice(
+                test=test)
             lines.extend(child_lines)
             uninvoiced_children.extend(uninvoiced)
         return lines, uninvoiced_children
+
+    def _get_lines_to_invoice(self):
+        if self.quantity_to_invoice:
+            if not self.product:
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_product',
+                        work=self.rec_name))
+            elif self.invoice_unit_price is None:
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_list_price',
+                        work=self.rec_name))
+            return [{
+                    'product': self.product,
+                    'quantity': self.quantity_to_invoice,
+                    'unit': self.unit_to_invoice,
+                    'unit_price': self.invoice_unit_price,
+                    'origins': self.get_origins_to_invoice(),
+                    'description': self.name,
+                    }]
+        return []
+
+    @property
+    def invoice_unit_price(self):
+        return self.list_price
+
+    @property
+    def unit_to_invoice(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+        return Uom(ModelData.get_id('product', 'uom_hour'))
+
+    def get_origins_to_invoice(self):
+        return super().get_origins_to_invoice()
 
 
 class WorkInvoicedProgress(ModelView, ModelSQL):
@@ -594,15 +581,35 @@ class WorkInvoicedProgress(ModelView, ModelSQL):
     __name__ = 'project.work.invoiced_progress'
     work = fields.Many2One('project.work', 'Work', ondelete='RESTRICT',
         select=True)
-    effort_duration = fields.TimeDelta('Effort', 'company_work_time')
+    progress = fields.Float('Progress', required=True,
+        domain=[
+            ('progress', '>=', 0),
+            ])
     invoice_line = fields.Many2One('account.invoice.line', 'Invoice Line',
         ondelete='CASCADE')
 
-    @property
-    def effort_hours(self):
-        if not self.effort_duration:
-            return 0
-        return self.effort_duration.total_seconds() / 60 / 60
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
+        pool = Pool()
+        Work = pool.get('project.work')
+        work = Work.__table__()
+
+        created_progress = not table.column_exist('progress')
+        effort_exist = table.column_exist('effort_duration')
+
+        super().__register__(module_name)
+
+        # Migration from 5.0: Effort renamed into to progress
+        if created_progress and effort_exist:
+            # Don't use UPDATE FROM because SQLite does not support it.
+            value = work.select(
+                (Extract('EPOCH', sql_table.effort_duration)
+                    / Extract('EPOCH', work.effort_duration)),
+                where=work.id == sql_table.work)
+            cursor.execute(*sql_table.update([sql_table.progress], [value]))
 
 
 class OpenInvoice(Wizard):

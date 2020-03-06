@@ -3,6 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="work" expand="2"/>
-    <field name="effort_duration"/>
+    <field name="progress" factor="100">
+        <suffix string="%" name="progress"/>
+    </field>
     <field name="invoice_line" expand="1"/>
 </tree>

@@ -143,13 +143,11 @@ Create timesheets::
     >>> line.work, = project.timesheet_works
     >>> line.save()
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration
-    datetime.timedelta(0)
-    >>> project.duration_to_invoice == datetime.timedelta(0, 18000)
-    True
+    >>> project.amount_to_invoice
+    Decimal('100.00')
     >>> project.invoiced_amount
     Decimal('0.00')
 
@@ -157,10 +155,8 @@ Invoice project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
-    True
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -174,13 +170,11 @@ Create more timesheets::
     >>> line.work, = task.timesheet_works
     >>> line.save()
 
-Check project duration::
+Check project amounts::
 
     >>> project.reload()
-    >>> project.invoiced_duration == datetime.timedelta(0, 18000)
-    True
-    >>> project.duration_to_invoice == datetime.timedelta(0, 14400)
-    True
+    >>> project.amount_to_invoice
+    Decimal('80.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -188,9 +182,7 @@ Invoice again project::
 
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
-    >>> project.invoiced_duration == datetime.timedelta(0, 32400)
-    True
-    >>> project.duration_to_invoice
-    datetime.timedelta(0)
+    >>> project.amount_to_invoice
+    Decimal('0.00')
     >>> project.invoiced_amount
     Decimal('180.00')
