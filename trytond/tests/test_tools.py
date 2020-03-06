@@ -313,9 +313,8 @@ class DomainInversionTestCase(unittest.TestCase):
 
     def test_or_inversion(self):
         domain = ['OR', ['x', '=', 3], ['y', '>', 5], ['z', '=', 'abc']]
-        self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
-        self.assertEqual(
-            domain_inversion(domain, 'x', {'y': 4}), [['x', '=', 3]])
+        self.assertEqual(domain_inversion(domain, 'x'), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 4}), True)
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': 4, 'z': 'ab'}),
             [['x', '=', 3]])
@@ -332,22 +331,22 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertTrue(domain_inversion(domain, 'z'))
 
         domain = ['OR', ['x.id', '>', 5], ['y', '<', 3]]
-        self.assertEqual(domain_inversion(domain, 'y'), [['y', '<', 3]])
+        self.assertEqual(domain_inversion(domain, 'y'), True)
         self.assertEqual(
-            domain_inversion(domain, 'y', {'z': 4}), [['y', '<', 3]])
+            domain_inversion(domain, 'y', {'z': 4}), True)
         self.assertTrue(domain_inversion(domain, 'y', {'x': 3}))
 
         domain = ['OR', ['length', '>', 5], ['language.code', '=', 'de_DE']]
         self.assertEqual(
             domain_inversion(domain, 'length', {'length': 0, 'name': 'n'}),
-            [['length', '>', 5]])
+            True)
 
     def test_orand_inversion(self):
         domain = ['OR', [['x', '=', 3], ['y', '>', 5], ['z', '=', 'abc']],
             [['x', '=', 4]], [['y', '>', 6]]]
         self.assertTrue(domain_inversion(domain, 'x'))
         self.assertEqual(
-            domain_inversion(domain, 'x', {'y': 4}), [[['x', '=', 4]]])
+            domain_inversion(domain, 'x', {'y': 4}), True)
         self.assertTrue(domain_inversion(domain, 'x', {'z': 'abc', 'y': 7}))
         self.assertTrue(domain_inversion(domain, 'x', {'y': 7}))
         self.assertTrue(domain_inversion(domain, 'x', {'z': 'ab'}))
