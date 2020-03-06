@@ -1941,11 +1941,11 @@ class GroupLines(Wizard):
                     maturity_dates[line.account], line.maturity_date)
             else:
                 maturity_dates[line.account] = line.maturity_date
-            line = self._counterpart_line(line)
-            accounts[line.account] += line.debit - line.credit
-            if line.amount_second_currency:
-                amount_second_currency += line.amount_second_currency
-            counterpart_lines.append(line)
+            cline = self._counterpart_line(line)
+            accounts[cline.account] += cline.debit - cline.credit
+            if cline.amount_second_currency:
+                amount_second_currency += cline.amount_second_currency
+            counterpart_lines.append(cline)
         move.lines = counterpart_lines
 
         balance_line = None
