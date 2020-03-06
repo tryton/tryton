@@ -2187,11 +2187,10 @@
 
         var domain = ['OR', ['x', '=', 3], ['y', '>', 5], ['z', '=', 'abc']];
         var context;
-        QUnit.ok(compare(domain_inversion(domain, 'x'), [['x', '=', 3]]),
+        QUnit.ok(compare(domain_inversion(domain, 'x'), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\')');
         context = {y: 4};
-        QUnit.ok(compare(domain_inversion(domain, 'x', context),
-                [['x', '=', 3]]),
+        QUnit.ok(compare(domain_inversion(domain, 'x', context), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\', ' +
                 JSON.stringify(context) + ')');
         context = {y: 4, z: 'ab'};
@@ -2228,12 +2227,10 @@
             'domain_inversion(' + JSON.stringify(domain) + ', \'z\')');
 
         domain = ['OR', ['x.id', '>', 5], ['y', '<', 3]];
-        QUnit.ok(compare(domain_inversion(domain, 'y'),
-                [['y', '<', 3]]),
+        QUnit.ok(compare(domain_inversion(domain, 'y'), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'y\',)');
         context = {z: 4};
-        QUnit.ok(compare(domain_inversion(domain, 'y', context),
-                [['y', '<', 3]]),
+        QUnit.ok(compare(domain_inversion(domain, 'y', context), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'y\', ' +
                 JSON.stringify(context) + ')');
         context = {x: 3};
@@ -2243,8 +2240,7 @@
 
         domain = ['OR', ['length', '>', 5], ['language.code', '=', 'de_DE']];
         context = {length: 0, name: 'n'};
-        QUnit.ok(compare(domain_inversion(domain, 'length', context),
-                [['length', '>', 5]]),
+        QUnit.ok(compare(domain_inversion(domain, 'length', context), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'length\', ' +
                 JSON.stringify(context) + ')');
     });
@@ -2261,8 +2257,7 @@
         QUnit.strictEqual(domain_inversion(domain, 'x'), true,
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\')');
         context = {y: 4};
-        QUnit.ok(compare(domain_inversion(domain, 'x', context),
-                [[['x', '=', 4]]]),
+        QUnit.ok(compare(domain_inversion(domain, 'x', context), true),
             'domain_inversion(' + JSON.stringify(domain) + ', \'x\', ' +
                 JSON.stringify(context) + ')');
         context = {z: 'abc', y: 7};

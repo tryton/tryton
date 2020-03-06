@@ -2589,11 +2589,10 @@
         inverse: function(symbol, context) {
             var DomainInversion = Sao.common.DomainInversion;
             var result = [];
-            if (!~this.variables.indexOf(symbol) &&
-                !jQuery.isEmptyObject(this.variables.filter(function(e) {
-                    return !(e in context);
+            if (!jQuery.isEmptyObject(this.variables.filter(function(e) {
+                    return (!(e in context)) && (e != symbol);
                 }))) {
-                // In this case we don't know anything about this OR part, we
+                // In this case we don't know enough about this OR part, we
                 // consider it to be True (because people will have the
                 // constraint on this part later).
                 return true;
