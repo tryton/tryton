@@ -377,6 +377,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         'Return inventory move for the incoming move'
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
         if incoming_move.quantity <= 0.0:
             return None
         move = Move()
@@ -386,9 +387,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
-        # Product will be considered in stock only when the inventory
-        # move will be made:
-        move.planned_date = None
+        move.planned_date = max(self._move_planned_date[1], Date.today())
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
@@ -1716,6 +1715,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         'Return inventory move for the incoming move'
         pool = Pool()
         Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
         if incoming_move.quantity <= 0.0:
             return
         move = Move()
@@ -1725,9 +1725,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
-        # Product will be considered in stock only when the inventory
-        # move will be made:
-        move.planned_date = None
+        move.planned_date = max(self._get_move_planned_date[1], Date.today())
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
