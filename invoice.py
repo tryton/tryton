@@ -1047,17 +1047,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pattern.setdefault('company', self.company.id)
         pattern.setdefault('fiscalyear', fiscalyear.id)
         pattern.setdefault('period', period.id)
-        invoice_type = self.type
-        if (all(l.amount <= 0 for l in self.lines if l.product)
-                and self.total_amount < 0):
-            invoice_type += '_credit_note'
-        else:
-            invoice_type += '_invoice'
 
         for invoice_sequence in fiscalyear.invoice_sequences:
             if invoice_sequence.match(pattern):
                 sequence = getattr(
-                    invoice_sequence, '%s_sequence' % invoice_type)
+                    invoice_sequence, self._sequence_field)
                 break
         else:
             raise InvoiceNumberError(
@@ -1066,6 +1060,17 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     fiscalyear=fiscalyear.rec_name))
         with Transaction().set_context(date=accounting_date):
             return Sequence.get_id(sequence.id), sequence
+
+    @property
+    def _sequence_field(self):
+        "Returns the field name of invoice_sequence to use"
+        field = self.type
+        if (all(l.amount <= 0 for l in self.lines if l.product)
+                and self.total_amount < 0):
+            field += '_credit_note'
+        else:
+            field += '_invoice'
+        return field + '_sequence'
 
     @classmethod
     def tax_identifier_types(cls):
