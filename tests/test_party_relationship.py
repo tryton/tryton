@@ -4,6 +4,7 @@ import unittest
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as tryton_suite
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 
 
 class TestCase(ModuleTestCase):
@@ -172,6 +173,118 @@ class TestCase(ModuleTestCase):
 
         RelationAll.delete([reverse_relation])
         self.assertEqual(RelationAll.search([]), [])
+
+    @with_transaction()
+    def test_party_distance(self):
+        "Test party distance"
+        pool = Pool()
+        Party = pool.get('party.party')
+        RelationType = pool.get('party.relation.type')
+        Relation = pool.get('party.relation')
+
+        usages = RelationType.usages.selection
+        self.addCleanup(setattr, RelationType.usages, 'selection', usages)
+        RelationType.usages.selection = usages + [('test', "Test")]
+
+        relation, reverse = RelationType.create([{
+                    'name': 'Relation',
+                    }, {
+                    'name': 'Reverse',
+                    }])
+        relation.reverse = reverse
+        relation.save()
+        reverse.reverse = relation
+        reverse.save()
+
+        A, B, C, D = Party.create([{
+                    'name': 'A',
+                    }, {
+                    'name': 'B',
+                    }, {
+                    'name': 'C',
+                    }, {
+                    'name': 'D'
+                    }])
+        Relation.create([{
+                    'from_': A.id,
+                    'to': C.id,
+                    'type': relation.id,
+                    }, {
+                    'from_': C.id,
+                    'to': D.id,
+                    'type': relation.id,
+                    }])
+
+        parties = Party.search([])
+        self.assertEqual([p.distance for p in parties], [None] * 4)
+
+        with Transaction().set_context(related_party=A.id):
+            parties = Party.search([])
+            self.assertEqual(
+                [(p.name, p.distance) for p in parties],
+                [('A', 0), ('C', 1), ('D', 2), ('B', None)])
+
+        another_relation, = RelationType.create([{
+                    'name': 'Another Relation',
+                    'usages': ['test'],
+                    }])
+        Relation.create([{
+                    'from_': A.id,
+                    'to': B.id,
+                    'type': another_relation.id,
+                    }])
+
+        with Transaction().set_context(
+                related_party=A.id, relation_usages=['test']):
+            parties = Party.search([])
+            self.assertEqual(
+                [(p.name, p.distance) for p in parties],
+                [('A', 0), ('B', 1), ('C', None), ('D', None)])
+
+        with Transaction().set_context(related_party=A.id):
+            parties = Party.search([])
+            self.assertEqual(
+                [(p.name, p.distance) for p in parties],
+                [('A', 0), ('B', 1), ('C', 1), ('D', 2)])
+
+    @with_transaction()
+    def test_contact_mechanism_distance(self):
+        "Test relation distance"
+        pool = Pool()
+        Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
+        RelationType = pool.get('party.relation.type')
+        Relation = pool.get('party.relation')
+
+        relation, = RelationType.create([{
+                    'name': 'Relation',
+                    }])
+
+        A, B, C = Party.create([{
+                    'name': "A",
+                    'contact_mechanisms': [
+                        ('create', [{'value': "A", 'type': 'other'}])],
+                    }, {
+                    'name': "B",
+                    'contact_mechanisms': [
+                        ('create', [{'value': "B", 'type': 'other'}])],
+                    }, {
+                    'name': "C",
+                    'contact_mechanisms': [
+                        ('create', [{'value': "C", 'type': 'other'}])],
+                    }])
+
+        Relation.create([{
+                    'from_': A.id,
+                    'to': C.id,
+                    'type': relation.id,
+                    }])
+
+        with Transaction().set_context(related_party=A.id):
+            contact_mechanisms = ContactMechanism.search([])
+            self.assertEqual(
+                [c.value for c in contact_mechanisms],
+                ['A', 'C', 'B'])
 
 
 def suite():

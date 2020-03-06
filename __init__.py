@@ -10,4 +10,5 @@ def register():
         party.Relation,
         party.RelationAll,
         party.Party,
+        party.ContactMechanism,
         module='party_relationship', type_='model')

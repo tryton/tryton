@@ -1,10 +1,18 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from sql import Union, As, Column, Null
+import json
+from functools import partial
 
+from sql import Union, As, Column, Null, Literal, With, Select
+from sql.aggregate import Min
+
+from trytond.config import config
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.transaction import Transaction
+
+dumps = partial(json.dumps, separators=(',', ':'), sort_keys=True)
+default_depth = config.getint('party_relationship', 'depth', default=7)
 
 
 class RelationType(ModelSQL, ModelView):
@@ -15,6 +23,18 @@ class RelationType(ModelSQL, ModelView):
         help="The main identifier of the relation type.")
     reverse = fields.Many2One('party.relation.type', 'Reverse Relation',
         help="Create automatically the reverse relation.")
+    usages = fields.MultiSelection([], "Usages")
+
+    @classmethod
+    def view_attributes(cls):
+        attributes = super().view_attributes()
+        if not cls.usages.selection:
+            attributes.extend([
+                    ('//separator[@name="usages"]',
+                        'states', {'invisible': True}),
+                    ('//field[@name="usages"]', 'invisible', 1),
+                    ])
+        return attributes
 
 
 class Relation(ModelSQL):
@@ -205,3 +225,109 @@ class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
     relations = fields.One2Many('party.relation.all', 'from_', 'Relations')
+    distance = fields.Function(fields.Integer('Distance'), 'get_distance')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('distance', 'ASC NULLS LAST'))
+
+    @classmethod
+    def _distance_query(cls, usages=None, party=None, depth=None):
+        pool = Pool()
+        RelationAll = pool.get('party.relation.all')
+        RelationType = pool.get('party.relation.type')
+
+        transaction = Transaction()
+        context = transaction.context
+        database = transaction.database
+
+        if usages is None:
+            usages = context.get('relation_usages', [])
+        if party is None:
+            party = context.get('related_party')
+        if depth is None:
+            depth = context.get('depth', default_depth)
+
+        if not party:
+            return
+
+        all_relations = RelationAll.__table__()
+
+        if usages:
+            relation_type = RelationType.__table__()
+            try:
+                usages_clause = database.json_any_keys_exist(
+                    relation_type.usages, list(usages))
+            except NotImplementedError:
+                usages_clause = Literal(False)
+                for usage in usages:
+                    usages_clause |= relation_type.usages.like(
+                        '%' + dumps(usage) + '%')
+            relations = (all_relations
+                .join(relation_type,
+                    condition=all_relations.type == relation_type.id)
+                .select(
+                    all_relations.from_, all_relations.to,
+                    where=usages_clause))
+        else:
+            relations = all_relations
+
+        distance = With('from_', 'to', 'distance', recursive=True)
+        distance.query = relations.select(
+            Column(relations, 'from_'),
+            relations.to,
+            Literal(1).as_('distance'),
+            where=Column(relations, 'from_') == party)
+        distance.query |= (distance
+            .join(relations,
+                condition=distance.to == Column(relations, 'from_'))
+            .select(
+                distance.from_,
+                relations.to,
+                (distance.distance + Literal(1)).as_('distance'),
+                where=(relations.to != party)
+                & (distance.distance < depth)))
+        distance.query.all_ = True
+
+        return (distance
+            .select(
+                distance.to, Min(distance.distance).as_('distance'),
+                group_by=[distance.to], with_=[distance])
+            | Select([Literal(party).as_('to'), Literal(0).as_('distance')]))
+
+    @classmethod
+    def order_distance(cls, tables):
+        party, _ = tables[None]
+        key = 'distance'
+        if key not in tables:
+            query = cls._distance_query()
+            if not query:
+                return []
+            join = party.join(query, type_='LEFT',
+                condition=query.to == party.id)
+            tables[key] = {
+                None: (join.right, join.condition),
+                }
+        else:
+            query, _ = tables[key][None]
+        return [query.distance]
+
+    @classmethod
+    def get_distance(cls, parties, name):
+        distances = {p.id: None for p in parties}
+        query = cls._distance_query()
+        if query:
+            cursor = Transaction().connection.cursor()
+            cursor.execute(*query)
+            distances.update(cursor)
+        return distances
+
+
+class ContactMechanism(metaclass=PoolMeta):
+    __name__ = 'party.contact_mechanism'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('party.distance', 'ASC NULLS LAST'))

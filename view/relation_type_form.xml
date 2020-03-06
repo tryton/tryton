@@ -6,5 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="reverse"/>
     <field name="reverse"/>
+    <separator name="usages" colspan="4"/>
+    <field name="usages" colspan="4"/>
 </form>
 
