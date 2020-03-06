@@ -294,9 +294,9 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
 
         domain = []
-        self.assertTrue(domain_inversion(domain, 'x'))
-        self.assertTrue(domain_inversion(domain, 'x', {'x': 5}))
-        self.assertTrue(domain_inversion(domain, 'z', {'x': 7}))
+        self.assertEqual(domain_inversion(domain, 'x'), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'x': 5}), True)
+        self.assertEqual(domain_inversion(domain, 'z', {'x': 7}), True)
 
         domain = [['x.id', '>', 5]]
         self.assertEqual(domain_inversion(domain, 'x'), [['x.id', '>', 5]])
@@ -304,13 +304,13 @@ class DomainInversionTestCase(unittest.TestCase):
     def test_and_inversion(self):
         domain = [['x', '=', 3], ['y', '>', 5]]
         self.assertEqual(domain_inversion(domain, 'x'), [['x', '=', 3]])
-        self.assertFalse(domain_inversion(domain, 'x', {'y': 4}))
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 4}), False)
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': 6}), [['x', '=', 3]])
 
         domain = [['x', '=', 3], ['y', '=', 5]]
-        self.assertTrue(domain_inversion(domain, 'z'))
-        self.assertTrue(domain_inversion(domain, 'z', {'x': 2, 'y': 7}))
+        self.assertEqual(domain_inversion(domain, 'z'), True)
+        self.assertEqual(domain_inversion(domain, 'z', {'x': 2, 'y': 7}), True)
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': None}), [['x', '=', 3]])
 
@@ -327,23 +327,24 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': 4, 'z': 'ab'}),
             [['x', '=', 3]])
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 7}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 7, 'z': 'b'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'abc'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 4, 'z': 'abc'}))
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 7}), True)
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 7, 'z': 'b'}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'z': 'abc'}), True)
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 4, 'z': 'abc'}), True)
 
         domain = ['OR', ['x', '=', 3], ['y', '=', 5]]
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': None}), [['x', '=', 3]])
 
         domain = ['OR', ['x', '=', 3], ['y', '>', 5]]
-        self.assertTrue(domain_inversion(domain, 'z'))
+        self.assertEqual(domain_inversion(domain, 'z'), True)
 
         domain = ['OR', ['x.id', '>', 5], ['y', '<', 3]]
         self.assertEqual(domain_inversion(domain, 'y'), True)
-        self.assertEqual(
-            domain_inversion(domain, 'y', {'z': 4}), True)
-        self.assertTrue(domain_inversion(domain, 'y', {'x': 3}))
+        self.assertEqual(domain_inversion(domain, 'y', {'z': 4}), True)
+        self.assertEqual(domain_inversion(domain, 'y', {'x': 3}), True)
 
         domain = ['OR', ['length', '>', 5], ['language.code', '=', 'de_DE']]
         self.assertEqual(
@@ -353,19 +354,20 @@ class DomainInversionTestCase(unittest.TestCase):
     def test_orand_inversion(self):
         domain = ['OR', [['x', '=', 3], ['y', '>', 5], ['z', '=', 'abc']],
             [['x', '=', 4]], [['y', '>', 6]]]
-        self.assertTrue(domain_inversion(domain, 'x'))
+        self.assertEqual(domain_inversion(domain, 'x'), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 4}), True)
         self.assertEqual(
-            domain_inversion(domain, 'x', {'y': 4}), True)
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'abc', 'y': 7}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 7}))
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'ab'}))
+            domain_inversion(domain, 'x', {'z': 'abc', 'y': 7}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 7}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'z': 'ab'}), True)
 
     def test_andor_inversion(self):
         domain = [['OR', ['x', '=', 4], ['y', '>', 6]], ['z', '=', 3]]
         self.assertEqual(domain_inversion(domain, 'z'), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5}), [['z', '=', 3]])
-        self.assertFalse(domain_inversion(domain, 'z', {'x': 5, 'y': 5}))
+        self.assertEqual(
+            domain_inversion(domain, 'z', {'x': 5, 'y': 5}), False)
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5, 'y': 7}), [['z', '=', 3]])
 
@@ -374,7 +376,7 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(domain_inversion(domain, 'z'), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5}), [['z', '=', 3]])
-        self.assertFalse(domain_inversion(domain, 'z', {'y': 5}))
+        self.assertEqual(domain_inversion(domain, 'z', {'y': 5}), False)
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 4, 'y': 7}), [['z', '=', 3]])
 
@@ -387,16 +389,19 @@ class DomainInversionTestCase(unittest.TestCase):
         domain = ['OR', ['OR', ['x', '=', 3], ['y', '>', 5]],
             ['OR', ['x', '=', 2], ['z', '=', 'abc']],
             ['OR', ['y', '=', 8], ['z', '=', 'y']]]
-        self.assertTrue(domain_inversion(domain, 'x'))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 4}))
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'ab'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 7}))
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'abc'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'z': 'y'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 8}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 8, 'z': 'b'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 4, 'z': 'y'}))
-        self.assertTrue(domain_inversion(domain, 'x', {'y': 7, 'z': 'abc'}))
+        self.assertEqual(domain_inversion(domain, 'x'), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 4}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'z': 'ab'}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 7}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'z': 'abc'}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'z': 'y'}), True)
+        self.assertEqual(domain_inversion(domain, 'x', {'y': 8}), True)
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 8, 'z': 'b'}), True)
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 4, 'z': 'y'}), True)
+        self.assertEqual(
+            domain_inversion(domain, 'x', {'y': 7, 'z': 'abc'}), True)
         self.assertEqual(
             domain_inversion(domain, 'x', {'y': 4, 'z': 'b'}),
             ['OR', [['x', '=', 3]], [['x', '=', 2]]])
