@@ -133,7 +133,7 @@
                 Sao.Action.exec_report(params);
                 return;
             case 'ir.action.url':
-                window.open(action.url, '_blank');
+                window.open(action.url, '_blank', 'noreferrer,noopener');
                 return;
         }
     };

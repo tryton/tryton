@@ -3860,7 +3860,7 @@ function eval_pyson(value){
             });
             Sao.common.selection(Sao.i18n.gettext("Choose a language"), options)
             .done(function(language) {
-                window.open(this.uri(language), '_blank');
+                window.open(this.uri(language), '_blank', 'noreferrer,noopener');
             }.bind(this));
         },
     });
