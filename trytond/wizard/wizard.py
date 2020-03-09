@@ -230,18 +230,19 @@ class Wizard(URLMixin, PoolBase):
         if Transaction().user == 0:
             return
 
-        model = context.get('active_model')
-        if model:
-            ModelAccess.check(model, 'read')
-        groups = set(User.get_groups())
-        wizard_groups = ActionWizard.get_groups(cls.__name__,
-            action_id=context.get('action_id'))
-        if wizard_groups:
-            if not groups & wizard_groups:
-                raise UserError('Calling wizard %s is not allowed!'
-                    % cls.__name__)
-        elif model:
-            ModelAccess.check(model, 'write')
+        with Transaction().set_context(_check_access=True):
+            model = context.get('active_model')
+            if model:
+                ModelAccess.check(model, 'read')
+            groups = set(User.get_groups())
+            wizard_groups = ActionWizard.get_groups(cls.__name__,
+                action_id=context.get('action_id'))
+            if wizard_groups:
+                if not groups & wizard_groups:
+                    raise UserError('Calling wizard %s is not allowed!'
+                        % cls.__name__)
+            elif model:
+                ModelAccess.check(model, 'write')
 
     @classmethod
     def create(cls):
