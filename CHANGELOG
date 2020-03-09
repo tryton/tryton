@@ -1,3 +1,5 @@
+Version 5.2.12 - 2020-03-09
+* Bug fixes (see mercurial logs for details)
 * Add noreferrer noopener to external URL (issue9089)
 
 Version 5.2.11 - 2020-02-02
