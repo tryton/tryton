@@ -1,3 +1,4 @@
+* Add noreferrer noopener to external URL (issue9089)
 * Manage readonly dates in calendar view
 * Manage editable on calendar view
 * Manage named separator as label

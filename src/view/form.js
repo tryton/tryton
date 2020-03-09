@@ -3915,7 +3915,8 @@ function eval_pyson(value){
             Sao.View.Form.URL._super.init.call(this, view, attributes);
             this.button = jQuery('<a/>', {
                 'class': 'btn btn-default',
-                'target': '_new'
+                'target': '_blank',
+                'rel': 'noreferrer noopener',
             }).appendTo(jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).appendTo(this.group));
@@ -3997,6 +3998,7 @@ function eval_pyson(value){
             this.button = jQuery('<a/>', {
                 'class': 'btn btn-lnk',
                 'target': '_blank',
+                'rel': 'noreferrer noopener',
             }).text(attributes.string).appendTo(this.el);
             if (attributes.translate) {
                 var button = jQuery('<button/>', {
