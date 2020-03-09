@@ -3838,7 +3838,8 @@ function eval_pyson(value){
                     this, field_name, model, attributes);
             this.button = jQuery('<a/>', {
                 'class': 'btn btn-default',
-                'target': '_new'
+                'target': '_blank',
+                'rel': 'noreferrer noopener',
             }).appendTo(jQuery('<span/>', {
                 'class': 'input-group-btn'
             }).appendTo(this.group));

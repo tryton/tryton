@@ -3135,7 +3135,8 @@
                     .append(jQuery('<a/>', {
                         'class': 'btn btn-link',
                         href: Sao.config.roundup.url,
-                        target: '_blank'
+                        target: '_blank',
+                        rel: 'noreferrer noopener',
                     }).text(Sao.i18n.gettext('Report Bug')))));
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
