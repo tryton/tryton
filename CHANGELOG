@@ -1,3 +1,5 @@
+* Enable check_access context when checking wizard access (issue9108)
+
 Version 5.0.18 - 2020-02-02
 * Bug fixes (see mercurial logs for details)
 
