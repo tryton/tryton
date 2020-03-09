@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 import unittest
+
+from trytond.model.exceptions import AccessError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -105,6 +107,25 @@ class WizardTestCase(unittest.TestCase):
                     'name': 'Test Update',
                     }}, 'next_')
         self.assertEqual(len(result['actions']), 1)
+
+    @with_transaction()
+    def test_execute_without_access(self):
+        "Execute wizard without model access"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard', type='wizard')
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+        model, = Model.search([('model', '=', 'test.access')])
+        ModelAccess.create([{
+                    'model': model.id,
+                    'perm_write': False,
+                    }])
+
+        session_id, start_state, end_state = Wizard.create()
+
+        with self.assertRaises(AccessError):
+            with Transaction().set_context(active_model='test.access'):
+                Wizard.execute(session_id, {}, start_state)
 
 
 def suite():
