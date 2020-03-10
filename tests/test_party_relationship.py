@@ -1,6 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unittest
+
+try:
+    from pysqlite2 import dbapi2 as sqlite
+except ImportError:
+    import sqlite3 as sqlite
+
+from trytond import backend
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as tryton_suite
 from trytond.pool import Pool
@@ -174,6 +181,9 @@ class TestCase(ModuleTestCase):
         RelationAll.delete([reverse_relation])
         self.assertEqual(RelationAll.search([]), [])
 
+    @unittest.skipIf(
+        backend.name == 'sqlite' and sqlite.sqlite_version_info <= (3, 16, 12),
+        "Executing distance query prevents complete rollback")
     @with_transaction()
     def test_party_distance(self):
         "Test party distance"
