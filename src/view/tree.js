@@ -1582,7 +1582,7 @@
             this.suffixes = [];
             this.header = null;
             this.footers = [];
-            this.field_name = this.attribute.name;
+            this.field_name = this.attributes.name;
             this.model_name = model.name;
         },
         get_cell: function() {
