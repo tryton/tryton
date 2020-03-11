@@ -79,10 +79,11 @@ Create purchase user::
     >>> purchase_user.name = 'Purchase'
     >>> purchase_user.login = 'purchase'
     >>> purchase_user.main_company = company
-    >>> purchase_group, = Group.find([
-    ...     ('name', '=', 'Purchase')
+    >>> purchase_groups = Group.find(['OR',
+    ...     ('name', '=', "Purchase"),
+    ...     ('name', '=', "Purchase Request"),
     ...     ])
-    >>> purchase_user.groups.append(purchase_group)
+    >>> purchase_user.groups.extend(purchase_groups)
     >>> purchase_user.save()
 
 Create account category::
