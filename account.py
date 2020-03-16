@@ -299,7 +299,8 @@ class FrFEC(Wizard):
             format_number(line.debit or 0),
             format_number(line.credit or 0),
             reconciliation.rec_name if reconciliation else '',
-            format_date(reconciliation.create_date) if reconciliation else '',
+            format_date(reconciliation.create_date.date())
+            if reconciliation else '',
             format_date(line.move.post_date),
             format_number(line.amount_second_currency)
             if line.amount_second_currency else '',

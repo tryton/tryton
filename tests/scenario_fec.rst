@@ -110,6 +110,49 @@ With an empty line::
     ...         }, config.context)
     >>> move.click('post')
 
+With reconciliation::
+
+    >>> move = Move()
+    >>> move.period = period
+    >>> move.journal = journal_revenue
+    >>> move.date = period.start_date
+    >>> line = move.lines.new()
+    >>> line.account = revenue
+    >>> line.credit = Decimal(42)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.debit = Decimal(42)
+    >>> line.party = party
+    >>> move.save()
+    >>> reconcile1, = [l for l in move.lines if l.account == receivable]
+    >>> Move.write([move.id], {
+    ...         'post_date': period.start_date,
+    ...         'post_number': '2',
+    ...         }, config.context)
+    >>> move.click('post')
+    >>> move = Move()
+    >>> move.period = period
+    >>> move.journal = journal_cash
+    >>> move.date = period.start_date
+    >>> line = move.lines.new()
+    >>> line.account = cash
+    >>> line.debit = Decimal(42)
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.credit = Decimal(42)
+    >>> line.party = party
+    >>> move.save()
+    >>> Move.write([move.id], {
+    ...         'post_date': period.start_date,
+    ...         'post_number': '3',
+    ...         }, config.context)
+    >>> move.click('post')
+    >>> reconcile2, = [l for l in move.lines if l.account == receivable]
+    >>> reconcile_lines = Wizard('account.move.reconcile_lines',
+    ...     [reconcile1, reconcile2])
+    >>> reconcile_lines.state == 'end'
+    True
+
 Balance non-deferral::
 
     >>> Sequence = Model.get('ir.sequence')
@@ -152,7 +195,12 @@ Generate FEC::
     >>> FEC.form.filename
     >>> file = os.path.join(os.path.dirname(__file__), 'FEC.csv')
     >>> with io.open(file, mode='rb') as fp:
-    ...     FEC.form.file.decode('utf-8') == fp.read().decode('utf-8')
+    ...     template = fp.read().decode('utf-8')
+    >>> current_date = datetime.date.today().strftime('%Y%m%d')
+    >>> template = template.format(
+    ...         current_date=current_date,
+    ...         )
+    >>> FEC.form.file.decode('utf-8') == template
     True
 
 Generate FEC for previous fiscal year::
