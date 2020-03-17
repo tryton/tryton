@@ -103,7 +103,7 @@ class Queue(ModelSQL):
                     candidates.expected_at.nulls_first],
                 limit=1))
         next_timeout = With('seconds', query=candidates.select(
-                Min(Extract('second',
+                Min(Extract('EPOCH',
                         candidates.scheduled_at - CurrentTimestamp())
                     ),
                 where=candidates.scheduled_at >= CurrentTimestamp()))
