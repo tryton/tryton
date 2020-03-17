@@ -642,7 +642,9 @@ function eval_pyson(value){
                     i += colspan;
                 });
             });
-            if (has_expand && this.el.closest('td').hasClass('xexpand')) {
+            if (has_expand &&
+                (!this.el.closest('td').length ||
+                    this.el.closest('td').hasClass('xexpand'))) {
                 this.el.css('width', '100%');
             } else {
                 this.el.css('width', '');
