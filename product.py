@@ -12,10 +12,9 @@ class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     producible = fields.Boolean(
         "Producible", states={
-            'readonly': ~Eval('active', True),
             'invisible': Eval('type') == 'service',
             },
-        depends=['active', 'type'])
+        depends=['type'])
 
 
 class Product(metaclass=PoolMeta):

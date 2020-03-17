@@ -10,13 +10,12 @@ class Location(metaclass=PoolMeta):
     production_location = fields.Many2One('stock.location', 'Production',
         states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             'required': Eval('type') == 'warehouse',
             },
         domain=[
             ('type', '=', 'production'),
             ],
-        depends=['type', 'active'])
+        depends=['type'])
 
 
 class Move(metaclass=PoolMeta):
