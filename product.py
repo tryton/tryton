@@ -11,23 +11,23 @@ from trytond.modules.product import price_digits
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
-    salable = fields.Boolean('Salable', states={
-            'readonly': ~Eval('active', True),
-            }, depends=['active'])
-    sale_uom = fields.Many2One('product.uom', 'Sale UOM', states={
-            'readonly': ~Eval('active', True),
+    salable = fields.Boolean("Salable")
+    sale_uom = fields.Many2One(
+        'product.uom', "Sale UOM",
+        states={
             'invisible': ~Eval('salable', False),
             'required': Eval('salable', False),
             },
         domain=[
             ('category', '=', Eval('default_uom_category')),
             ],
-        depends=['active', 'salable', 'default_uom_category'])
-    lead_time = fields.TimeDelta('Lead Time', states={
-            'readonly': ~Eval('active', True),
+        depends=['salable', 'default_uom_category'])
+    lead_time = fields.TimeDelta(
+        "Lead Time",
+        states={
             'invisible': ~Eval('salable', False),
             },
-        depends=['active', 'salable'])
+        depends=['salable'])
 
     @classmethod
     def __register__(cls, module_name):
