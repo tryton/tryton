@@ -21,11 +21,29 @@ class Location(metaclass=PoolMeta):
         help="The party invoiced when consignment stock is used.")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.lost_found_location.states['invisible'] &= (
+            ~Eval('type').in_(['supplier', 'customer']))
+
+    @classmethod
     def _parent_domain(cls):
         domain = super(Location, cls)._parent_domain()
         domain['supplier'].append('storage')
         domain['storage'].append('customer')
         return domain
+
+    @property
+    def lost_found_used(self):
+        lost_found = super().lost_found_used
+        if not lost_found and not self.warehouse and self.type == 'storage':
+            location = self.parent
+            while location:
+                if location.type in {'supplier', 'storage'}:
+                    lost_found = location.lost_found_location
+                    break
+                location = location.parent
+        return lost_found
 
 
 class LocationLeadTime(metaclass=PoolMeta):
