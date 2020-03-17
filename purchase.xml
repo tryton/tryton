@@ -209,6 +209,16 @@ this repository contains the full copyright notices and license terms.
             <field name="group" ref="group_purchase_requisition_approval"/>
         </record>
 
+        <record model="ir.model.button" id="requisition_process_button">
+            <field name="name">process</field>
+            <field name="string">Process</field>
+            <field name="model" search="[('model', '=', 'purchase.requisition')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="requisition_process_button_group_purchase_requisition_approval">
+            <field name="button" ref="requisition_process_button"/>
+            <field name="group" ref="group_purchase_requisition_approval"/>
+        </record>
+
         <record model="ir.model.button" id="requisition_reject_button">
             <field name="name">reject</field>
             <field name="string">Reject</field>

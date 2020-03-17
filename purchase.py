@@ -189,6 +189,13 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     'invisible': Eval('state') != 'waiting',
                     'depends': ['state'],
                     },
+                'process': {
+                    'invisible': ~Eval('state').in_(
+                        ['approved', 'processing']),
+                    'icon': If(Eval('state') == 'approved',
+                        'tryton-forward', 'tryton-refresh'),
+                    'depends': ['state'],
+                    },
                 'reject': {
                     'invisible': Eval('state') != 'waiting',
                     'depends': ['state'],
@@ -382,6 +389,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @ModelView.button
     def process(cls, requisitions):
         done = []
         process = []

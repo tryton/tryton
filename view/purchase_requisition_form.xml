@@ -38,5 +38,6 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft"/>
         <button name="wait" icon="tryton-forward"/>
         <button name="approve" icon="tryton-ok"/>
+        <button name="process"/>
     </group>
 </form>
