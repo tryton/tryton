@@ -18,11 +18,6 @@ from trytond.tools.multivalue import migrate_property
 
 from .exceptions import LocationValidationError
 
-STATES = {
-    'readonly': ~Eval('active'),
-}
-DEPENDS = ['active']
-
 
 class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     "Stock Location"
@@ -30,17 +25,16 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     _default_warehouse_cache = Cache('stock.location.default_warehouse',
         context=False)
 
-    name = fields.Char("Name", size=None, required=True, states=STATES,
-        depends=DEPENDS, translate=True)
-    code = fields.Char("Code", size=None, states=STATES, depends=DEPENDS,
-        select=True,
+    name = fields.Char("Name", size=None, required=True, translate=True)
+    code = fields.Char(
+        "Code", size=None, select=True,
         help="The internal identifier used for the location.")
-    address = fields.Many2One("party.address", "Address",
+    address = fields.Many2One(
+        'party.address', "Address",
         states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             },
-        depends=['type', 'active'])
+        depends=['type'])
     type = fields.Selection([
         ('supplier', 'Supplier'),
         ('customer', 'Customer'),
@@ -50,7 +44,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         ('production', 'Production'),
         ('drop', 'Drop'),
         ('view', 'View'),
-        ], 'Location type', states=STATES, depends=DEPENDS)
+        ], "Location type")
     type_string = type.translated('type')
     parent = fields.Many2One("stock.location", "Parent", select=True,
         left="left", right="right",
@@ -72,7 +66,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     input_location = fields.Many2One(
         "stock.location", "Input", states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             'required': Eval('type') == 'warehouse',
             },
         domain=[
@@ -82,12 +75,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 ('parent', '=', None),
                 ],
             ],
-        depends=['type', 'active', 'id'],
+        depends=['type', 'id'],
         help="Where incoming stock is received.")
     output_location = fields.Many2One(
         "stock.location", "Output", states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             'required': Eval('type') == 'warehouse',
         },
         domain=[
@@ -95,12 +87,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
-        depends=['type', 'active', 'id'],
+        depends=['type', 'id'],
         help="Where outgoing stock is sent from.")
     storage_location = fields.Many2One(
         "stock.location", "Storage", states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             'required': Eval('type') == 'warehouse',
         },
         domain=[
@@ -108,18 +99,17 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ['OR',
                 ('parent', 'child_of', [Eval('id')]),
                 ('parent', '=', None)]],
-        depends=['type', 'active', 'id'],
+        depends=['type', 'id'],
         help="The top level location where stock is stored.")
     picking_location = fields.Many2One(
         'stock.location', 'Picking', states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             },
         domain=[
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('storage_location', -1)]),
             ],
-        depends=['type', 'active', 'storage_location'],
+        depends=['type', 'storage_location'],
         help="Where stock is picked from.\n"
         "Leave empty to use the storage location.")
     quantity = fields.Function(
