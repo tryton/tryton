@@ -128,7 +128,7 @@ class User(metaclass=PoolMeta):
     @classmethod
     def _login_ldap(cls, login, parameters):
         if 'password' not in parameters:
-            msg = cls.fields_get(['password'])['password']['string']
+            msg = gettext('res.msg_user_password', login=login)
             raise LoginException('password', msg, type='password')
         password = parameters['password']
         try:
