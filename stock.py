@@ -245,11 +245,10 @@ class Location(metaclass=PoolMeta):
         'stock.location', 'Supplier Return',
         states={
             'invisible': Eval('type') != 'warehouse',
-            'readonly': ~Eval('active'),
             },
         domain=[
             ('type', '=', 'storage'),
             ('parent', 'child_of', [Eval('id', -1)]),
             ],
-        depends=['type', 'active', 'id'],
+        depends=['type', 'id'],
         help='If empty the Storage location is used.')

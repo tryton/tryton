@@ -20,24 +20,20 @@ from .exceptions import PurchaseUOMWarning
 
 class Template(metaclass=PoolMeta):
     __name__ = "product.template"
-    purchasable = fields.Boolean('Purchasable', states={
-            'readonly': ~Eval('active', True),
-            }, depends=['active'])
+    purchasable = fields.Boolean("Purchasable")
     product_suppliers = fields.One2Many(
         'purchase.product_supplier', 'template', "Suppliers",
         states={
-            'readonly': ~Eval('active', True),
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
             },
-        depends=['active', 'purchasable'])
+        depends=['purchasable'])
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
-            'readonly': ~Eval('active'),
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
             },
         domain=[('category', '=', Eval('default_uom_category'))],
-        depends=['active', 'purchasable', 'default_uom_category'])
+        depends=['purchasable', 'default_uom_category'])
 
     @fields.depends('default_uom', 'purchase_uom', 'purchasable')
     def on_change_default_uom(self):
@@ -99,11 +95,10 @@ class Product(metaclass=PoolMeta):
             ('template', '=', Eval('template')),
             ],
         states={
-            'readonly': ~Eval('active', True),
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
             },
-        depends=['template', 'active', 'purchasable'])
+        depends=['template', 'purchasable'])
     purchase_price_uom = fields.Function(fields.Numeric(
             "Purchase Price", digits=price_digits), 'get_purchase_price_uom')
 
