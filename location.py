@@ -112,6 +112,18 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         depends=['type', 'storage_location'],
         help="Where stock is picked from.\n"
         "Leave empty to use the storage location.")
+    lost_found_location = fields.Many2One(
+        'stock.location', "Lost and Found",
+        states={
+            'invisible': Eval('type') != 'warehouse',
+            'readonly': ~Eval('active'),
+            },
+        domain=[
+            ('type', '=', 'lost_found'),
+            ],
+        depends=['type', 'active'],
+        help="Used, by inventories, when correcting stock levels "
+        "in the warehouse.")
     quantity = fields.Function(
         fields.Float('Quantity',
         help="The amount of stock in the location."),
@@ -303,6 +315,11 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                 warehouse = None
             cls._default_warehouse_cache.set(None, warehouse)
         return warehouse
+
+    @property
+    def lost_found_used(self):
+        if self.warehouse:
+            return self.warehouse.lost_found_location
 
     @classmethod
     def search_rec_name(cls, name, clause):

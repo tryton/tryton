@@ -18,13 +18,14 @@ virtually stored. The following location types are defined:
 
 * Warehouse
 
-  Warehouses are meta-locations which define input, storage, picking and output
-  locations. These locations are all of type Storage. Input and Output are
-  locations where incoming an outgoing product are temporally stored awaiting
-  transportation. The storage location is often the biggest location where
-  products are stored for middle or long periods of time. The picking location
-  is optionally where the products are picked by the customer shipment
-  otherwise the storage location is used.
+  Warehouses are meta-locations which define input, storage, picking, output
+  and lost and found locations. These locations are all of type Storage. Input
+  and Output are locations where incoming an outgoing product are temporally
+  stored awaiting transportation. The storage location is often the biggest
+  location where products are stored for middle or long periods of time. The
+  picking location is optionally where the products are picked by the customer
+  shipment otherwise the storage location is used. The lost and found location
+  is the location used by inventories when correcting stock levels.
 
 * Customer
 
@@ -261,9 +262,8 @@ of moves. It can be in one of these states:
 Inventory
 *********
 
-Inventories allow to control and update stock levels. They are mainly
-composed of two locations (a Storage location and a Lost And Found
-location), and a list of inventory lines.
+Inventories allow to control and update stock levels. They are mainly composed
+of the inventoried storage location and a list of inventory lines.
 Inventory lines consist of a product and it's default unit of measure, an
 expected quantity and the real quantity (the real products on the shelves).
 

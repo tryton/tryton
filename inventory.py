@@ -37,11 +37,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         help="The date of the stock count.")
-    lost_found = fields.Many2One(
-        'stock.location', 'Lost and Found', required=True,
-        domain=[('type', '=', 'lost_found')], states=_states, depends=_depends,
-        help="Used for the balancing entries needed when the stock is "
-        "corrected.")
     lines = fields.One2Many(
         'stock.inventory.line', 'inventory', 'Lines',
         states={
@@ -106,6 +101,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table.index_action('create_date', action='add')
 
+        # Migration from 5.4: remove lost_found
+        table.not_null_action('lost_found', 'remove')
+
     @staticmethod
     def default_state():
         return 'draft'
@@ -118,13 +116,6 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
-
-    @classmethod
-    def default_lost_found(cls):
-        Location = Pool().get('stock.location')
-        locations = Location.search(cls.lost_found.domain)
-        if len(locations) == 1:
-            return locations[0].id
 
     @classmethod
     def view_attributes(cls):
@@ -446,7 +437,12 @@ class InventoryLine(ModelSQL, ModelView):
         if delta_qty == 0.0:
             return
         from_location = self.inventory.location
-        to_location = self.inventory.lost_found
+        to_location = self.inventory.location.lost_found_used
+        if not to_location:
+            raise InventoryValidationError(
+                gettext('stock.msg_inventory_location_missing_lost_found',
+                    inventory=self.inventory.rec_name,
+                    location=self.inventory.location.rec_name))
         if delta_qty < 0:
             (from_location, to_location, delta_qty) = \
                 (to_location, from_location, -delta_qty)

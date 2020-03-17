@@ -28,6 +28,7 @@ Get stock locations::
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
+    >>> lost_found_loc, = Location.find([('type', '=', 'lost_found')])
 
 Create products::
 
@@ -170,7 +171,7 @@ Confirm the inventory::
     >>> move, = line_p1.moves
     >>> move.quantity
     1.0
-    >>> move.from_location == inventory.lost_found
+    >>> move.from_location == lost_found_loc
     True
     >>> move.to_location == inventory.location
     True
@@ -230,7 +231,7 @@ Add quantity of consumable product::
     >>> move, = line.moves
     >>> move.quantity
     5.0
-    >>> move.from_location == inventory.lost_found
+    >>> move.from_location == lost_found_loc
     True
     >>> move.to_location == inventory.location
     True

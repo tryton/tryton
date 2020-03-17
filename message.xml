@@ -41,6 +41,9 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_inventory_missing_empty_quantity">
             <field name="text">To confirm the inventory "%(inventory)s" you must select an option for empty quantity.</field>
         </record>
+        <record model="ir.message" id="msg_inventory_location_missing_lost_found">
+            <field name="text">To confirm the inventory "%(inventory)s" you must set a lost and found on a parent of location "%(location)s".</field>
+        </record>
         <record model="ir.message" id="msg_inventory_line_unique">
             <field name="text">Inventory line "%(line)s" is not unique on inventory "%(inventory)s".</field>
         </record>

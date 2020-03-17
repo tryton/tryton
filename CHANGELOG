@@ -1,3 +1,4 @@
+* Define one lost and found location per warehouse
 * Show warehouse in user status if not unique
 * Add cost price revision
 * Add wizard to modify product cost price

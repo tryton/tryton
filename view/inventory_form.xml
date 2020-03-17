@@ -6,15 +6,17 @@ this repository contains the full copyright notices and license terms. -->
     <field name="location"/>
     <label name="number"/>
     <field name="number"/>
+
     <label name="date"/>
     <field name="date"/>
-    <label name="lost_found"/>
-    <field name="lost_found"/>
     <label name="company"/>
     <field name="company"/>
+
     <label name="empty_quantity"/>
     <field name="empty_quantity"/>
+
     <field name="lines" colspan="4"/>
+
     <label name="state"/>
     <field name="state"/>
     <group colspan="2" col="-1" id="buttons">

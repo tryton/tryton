@@ -194,6 +194,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="code">STO</field>
             <field name="type">storage</field>
         </record>
+        <record model="stock.location" id="location_lost_found">
+            <field name="name">Lost and Found</field>
+            <field name="type">lost_found</field>
+        </record>
         <record model="stock.location" id="location_warehouse">
             <field name="name">Warehouse</field>
             <field name="code">WH</field>
@@ -201,6 +205,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="input_location" ref="location_input"/>
             <field name="output_location" ref="location_output"/>
             <field name="storage_location" ref="location_storage"/>
+            <field name="lost_found_location" ref="location_lost_found"/>
         </record>
         <record model="stock.location" id="location_supplier">
             <field name="name">Supplier</field>
@@ -211,10 +216,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Customer</field>
             <field name="code">CUS</field>
             <field name="type">customer</field>
-        </record>
-        <record model="stock.location" id="location_lost_found">
-            <field name="name">Lost and Found</field>
-            <field name="type">lost_found</field>
         </record>
         <record model="stock.location" id="location_transit">
             <field name="name">Transit</field>

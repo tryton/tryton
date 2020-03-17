@@ -28,6 +28,7 @@ Get stock locations::
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
+    >>> lost_found_loc, = Location.find([('type', '=', 'lost_found')])
 
 Create product::
 
@@ -83,5 +84,5 @@ Creating an inventory with empty quantities creates and empty move::
     1.0
     >>> move.from_location == inventory.location
     True
-    >>> move.to_location == inventory.lost_found
+    >>> move.to_location == lost_found_loc
     True
