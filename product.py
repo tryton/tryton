@@ -3,7 +3,6 @@
 from trytond.model import (ModelStorage, ModelView, DeactivableMixin, fields,
     tree)
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
 
 
 class ClassificationMixin(DeactivableMixin):
@@ -34,11 +33,7 @@ class Template(metaclass=PoolMeta):
         selection='get_classification',
         domain=[
             ('selectable', '=', True),
-            ],
-        states={
-            'readonly': ~Eval('active', True),
-            },
-        depends=['active'])
+            ])
 
     @classmethod
     def _get_classification(cls):
