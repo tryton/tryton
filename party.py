@@ -18,17 +18,13 @@ from trytond.tools import lstrip_wildcard
 from .exceptions import (
     InvalidIdentifierCode, VIESUnavailable, SimilarityWarning, EraseError)
 
-STATES = {
-    'readonly': ~Eval('active', True),
-}
-DEPENDS = ['active']
-
 
 class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     "Party"
     __name__ = 'party.party'
 
-    name = fields.Char('Name', select=True, states=STATES, depends=DEPENDS,
+    name = fields.Char(
+        "Name", select=True,
         help="The main identifier of the party.")
     code = fields.Char('Code', required=True, select=True,
         states={
@@ -39,23 +35,22 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     lang = fields.MultiValue(
-        fields.Many2One('ir.lang', "Language", states=STATES, depends=DEPENDS,
+        fields.Many2One('ir.lang', "Language",
             help="Used to translate communications with the party."))
     langs = fields.One2Many(
         'party.party.lang', 'party', "Languages")
-    identifiers = fields.One2Many('party.identifier', 'party', 'Identifiers',
-        states=STATES, depends=DEPENDS,
+    identifiers = fields.One2Many(
+        'party.identifier', 'party', "Identifiers",
         help="Add other identifiers of the party.")
     tax_identifier = fields.Function(fields.Many2One(
             'party.identifier', 'Tax Identifier',
             help="The identifier used for tax report."),
         'get_tax_identifier', searcher='search_tax_identifier')
-    addresses = fields.One2Many('party.address', 'party',
-        'Addresses', states=STATES, depends=DEPENDS)
-    contact_mechanisms = fields.One2Many('party.contact_mechanism', 'party',
-        'Contact Mechanisms', states=STATES, depends=DEPENDS)
-    categories = fields.Many2Many('party.party-party.category',
-        'party', 'category', 'Categories', states=STATES, depends=DEPENDS,
+    addresses = fields.One2Many('party.address', 'party', "Addresses")
+    contact_mechanisms = fields.One2Many(
+        'party.contact_mechanism', 'party', "Contact Mechanisms")
+    categories = fields.Many2Many(
+        'party.party-party.category', 'party', 'category', "Categories",
         help="The categories the party belongs to.")
     replaced_by = fields.Many2One('party.party', "Replaced By", readonly=True,
         states={

@@ -20,29 +20,23 @@ from trytond.transaction import Transaction
 from trytond.cache import Cache
 from .exceptions import InvalidFormat
 
-STATES = {
-    'readonly': ~Eval('active'),
-    }
-DEPENDS = ['active']
-
 
 class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "Address"
     __name__ = 'party.address'
     party = fields.Many2One('party.party', 'Party', required=True,
         ondelete='CASCADE', select=True, states={
-            'readonly': If(~Eval('active'), True, Eval('id', 0) > 0),
+            'readonly': Eval('id', 0) > 0,
             },
-        depends=['active', 'id'])
+        depends=['id'])
     party_name = fields.Char(
-        "Party Name", states=STATES, depends=DEPENDS,
+        "Party Name",
         help="If filled, replace the name of the party for address formatting")
-    name = fields.Char("Building Name", states=STATES, depends=DEPENDS)
-    street = fields.Text("Street", states=STATES, depends=DEPENDS)
-    zip = fields.Char('Zip', states=STATES, depends=DEPENDS)
-    city = fields.Char('City', states=STATES, depends=DEPENDS)
-    country = fields.Many2One('country.country', 'Country',
-        states=STATES, depends=DEPENDS)
+    name = fields.Char("Building Name")
+    street = fields.Text("Street")
+    zip = fields.Char("Zip")
+    city = fields.Char("City")
+    country = fields.Many2One('country.country', "Country")
     subdivision_types = fields.Function(
         fields.MultiSelection(
             'get_subdivision_types', "Subdivision Types"),
@@ -56,8 +50,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                 ()
                 ),
             ],
-        states=STATES,
-        depends=['active', 'country', 'subdivision_types'])
+        depends=['country', 'subdivision_types'])
     full_address = fields.Function(fields.Text('Full Address'),
             'get_full_address')
 

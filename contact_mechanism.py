@@ -14,11 +14,6 @@ from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from .exceptions import InvalidPhoneNumber
 
-STATES = {
-    'readonly': ~Eval('active'),
-    }
-DEPENDS = ['active']
-
 _TYPES = [
     ('phone', 'Phone'),
     ('mobile', 'Mobile'),
@@ -44,45 +39,41 @@ class ContactMechanism(
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
 
-    type = fields.Selection(_TYPES, 'Type', required=True, states=STATES,
-        sort=False, depends=DEPENDS)
-    value = fields.Char('Value', select=True, states=STATES, depends=DEPENDS
+    type = fields.Selection(_TYPES, "Type", required=True, sort=False)
+    value = fields.Char("Value", select=True,
         # Add all function fields to ensure to always fill them via on_change
-        + ['email', 'website', 'skype', 'sip', 'other_value', 'value_compact'])
+        depends=[
+            'email', 'website', 'skype', 'sip', 'other_value',
+            'value_compact'])
     value_compact = fields.Char('Value Compact', readonly=True)
-    name = fields.Char("Name", states=STATES, depends=DEPENDS)
-    comment = fields.Text('Comment', states=STATES, depends=DEPENDS)
-    party = fields.Many2One('party.party', 'Party', required=True,
-        ondelete='CASCADE', states=STATES, select=True, depends=DEPENDS)
+    name = fields.Char("Name")
+    comment = fields.Text("Comment")
+    party = fields.Many2One(
+        'party.party', "Party", required=True, ondelete='CASCADE', select=True)
     email = fields.Function(fields.Char('E-Mail', states={
         'invisible': Eval('type') != 'email',
         'required': Eval('type') == 'email',
-        'readonly': ~Eval('active', True),
-        }, depends=['value', 'type', 'active']),
+        }, depends=['value', 'type']),
         'get_value', setter='set_value')
     website = fields.Function(fields.Char('Website', states={
         'invisible': Eval('type') != 'website',
         'required': Eval('type') == 'website',
-        'readonly': ~Eval('active', True),
-        }, depends=['value', 'type', 'active']),
+        }, depends=['value', 'type']),
         'get_value', setter='set_value')
     skype = fields.Function(fields.Char('Skype', states={
         'invisible': Eval('type') != 'skype',
         'required': Eval('type') == 'skype',
-        'readonly': ~Eval('active', True),
-        }, depends=['value', 'type', 'active']),
+        }, depends=['value', 'type']),
         'get_value', setter='set_value')
     sip = fields.Function(fields.Char('SIP', states={
         'invisible': Eval('type') != 'sip',
         'required': Eval('type') == 'sip',
-        'readonly': ~Eval('active', True),
-        }, depends=['value', 'type', 'active']),
+        }, depends=['value', 'type']),
         'get_value', setter='set_value')
     other_value = fields.Function(fields.Char('Value', states={
         'invisible': Eval('type').in_(['email', 'website', 'skype', 'sip']),
         'required': ~Eval('type').in_(['email', 'website']),
-        'readonly': ~Eval('active', True),
-        }, depends=['value', 'type', 'active']),
+        }, depends=['value', 'type']),
         'get_value', setter='set_value')
     url = fields.Function(fields.Char('URL', states={
                 'invisible': ~Eval('url'),

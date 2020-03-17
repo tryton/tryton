@@ -5,25 +5,19 @@ from sql.operators import Equal
 
 from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, Exclude, tree)
-from trytond.pyson import Eval
-
-STATES = {
-    'readonly': ~Eval('active'),
-}
-DEPENDS = ['active']
 
 
 class Category(DeactivableMixin, tree(separator=' / '), ModelSQL, ModelView):
     "Category"
     __name__ = 'party.category'
-    name = fields.Char('Name', required=True, states=STATES, translate=True,
-        depends=DEPENDS,
+    name = fields.Char(
+        "Name", required=True, translate=True,
         help="The main identifier of the category.")
-    parent = fields.Many2One('party.category', 'Parent',
-        select=True, states=STATES, depends=DEPENDS,
+    parent = fields.Many2One(
+        'party.category', "Parent", select=True,
         help="Add the category below the parent.")
-    childs = fields.One2Many('party.category', 'parent',
-       'Children', states=STATES, depends=DEPENDS,
+    childs = fields.One2Many(
+        'party.category', 'parent', "Children",
         help="Add children below the category.")
 
     @classmethod
