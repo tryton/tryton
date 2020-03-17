@@ -105,6 +105,19 @@ class Invoice(metaclass=PoolMeta):
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
+    @fields.depends('origin')
+    def on_change_with_product_uom_category(self, name=None):
+        pool = Pool()
+        PurchaseLine = pool.get('purchase.line')
+        category = super().on_change_with_product_uom_category(name=name)
+        # Enforce the same unit category as they are used to compute the
+        # remaining quantity to invoice and the quantity to receive.
+        # Use getattr as reference field can have negative id
+        if (isinstance(self.origin, PurchaseLine)
+                and getattr(self.origin, 'unit', None)):
+            category = self.origin.unit.category.id
+        return category
+
     @property
     def origin_name(self):
         pool = Pool()
