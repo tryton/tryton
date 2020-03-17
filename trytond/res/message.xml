@@ -24,5 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_user_delete_forbidden">
             <field name="text">For logging purposes users cannot be deleted, instead they should be deactivated.</field>
         </record>
+        <record model="ir.message" id="msg_user_password">
+            <field name="text">Password for %(login)s</field>
+        </record>
     </data>
 </tryton>

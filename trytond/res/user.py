@@ -640,7 +640,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def _login_password(cls, login, parameters):
         if 'password' not in parameters:
-            msg = cls.fields_get(['password'])['password']['string']
+            msg = gettext('res.msg_user_password', login=login)
             raise LoginException('password', msg, type='password')
         user_id, password_hash, password_reset = cls._get_login(login)
         if user_id and password_hash:
