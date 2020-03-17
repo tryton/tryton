@@ -94,17 +94,15 @@ class CategoryAccount(metaclass=PoolMeta):
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
     depreciable = fields.Boolean('Depreciable', states={
-            'readonly': ~Eval('active', True),
             'invisible': Eval('type', '') != 'assets',
-            }, depends=['active', 'type'])
+            }, depends=['type'])
     depreciation_duration = fields.Integer(
         "Depreciation Duration",
         states={
-            'readonly': ~Eval('active', True),
             'invisible': (~Eval('depreciable')
                 | (Eval('type', '') != 'assets')),
             },
-        depends=['active', 'depreciable', 'type'],
+        depends=['depreciable', 'type'],
         help='In months')
 
     @property
