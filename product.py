@@ -7,10 +7,11 @@ from trytond.pyson import Eval
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
-    landed_cost = fields.Boolean('Landed Cost', states={
-            'readonly': ~Eval('active', True),
+    landed_cost = fields.Boolean(
+        "Landed Cost",
+        states={
             'invisible': Eval('type') != 'service',
-            }, depends=['active', 'type'])
+            }, depends=['type'])
 
 
 class Product(metaclass=PoolMeta):
