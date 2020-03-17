@@ -593,8 +593,8 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
                     logger.warning(str(e))
                     continue
                 payment.stripe_error_message = str(e)
-                if isinstance(e, stripe.error.CardError):
-                    payment.stripe_error_code = e.code
+                payment.stripe_error_code = e.code
+                if isinstance(e, stripe.error.StripeErrorWithParamCode):
                     payment.stripe_error_param = e.param
                 payment.save()
                 cls.fail([payment])
@@ -1262,8 +1262,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     logger.warning(str(e))
                     continue
                 customer.stripe_error_message = str(e)
-                if isinstance(e, stripe.error.CardError):
-                    customer.stripe_error_code = e.code
+                customer.stripe_error_code = e.code
+                if isinstance(e, stripe.error.StripeErrorWithParamCode):
                     customer.stripe_error_param = e.param
                 customer.stripe_token = None
             except Exception:
