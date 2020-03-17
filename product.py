@@ -108,10 +108,9 @@ class Template(SaleSecondaryMixin, metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.sale_secondary_uom.states = {
-            'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
             }
-        cls.sale_secondary_uom.depends += ['active', 'salable']
+        cls.sale_secondary_uom.depends.append('salable')
 
 
 class Product(metaclass=PoolMeta):
