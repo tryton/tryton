@@ -75,10 +75,9 @@ class Template(metaclass=PoolMeta):
     product_customers = fields.One2Many(
         'sale.product_customer', 'template', "Customers",
         states={
-            'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
             },
-        depends=['active', 'salable'])
+        depends=['salable'])
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
@@ -94,10 +93,9 @@ class Product(metaclass=PoolMeta):
             ('template', '=', Eval('template')),
             ],
         states={
-            'readonly': ~Eval('active', True),
             'invisible': ~Eval('salable', False),
             },
-        depends=['template', 'active', 'salable'])
+        depends=['template', 'salable'])
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
