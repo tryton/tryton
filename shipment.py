@@ -387,7 +387,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
-        move.planned_date = max(self._move_planned_date[1], Date.today())
+        move.planned_date = max(
+            filter(None, [self._move_planned_date[1], Date.today()]))
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
@@ -1725,7 +1726,8 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         move.from_location = incoming_move.to_location
         move.to_location = self.warehouse_storage
         move.state = Move.default_state()
-        move.planned_date = max(self._get_move_planned_date[1], Date.today())
+        move.planned_date = max(
+            filter(None, [self._get_move_planned_date()[1], Date.today()]))
         move.company = incoming_move.company
         move.origin = incoming_move
         return move
