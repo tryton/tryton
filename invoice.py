@@ -1659,11 +1659,16 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         'on_change_with_unit_digits')
     product = fields.Many2One('product.product', 'Product',
         ondelete='RESTRICT',
+        domain=[
+            If(Bool(Eval('product_uom_category')),
+                ('default_uom_category', '=', Eval('product_uom_category')),
+                ()),
+            ],
         states={
             'invisible': Eval('type') != 'line',
             'readonly': _states['readonly'],
             },
-        depends=['type'] + _depends)
+        depends=['type', 'product_uom_category'] + _depends)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
