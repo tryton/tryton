@@ -191,7 +191,7 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends('key')
     def get_selections(self):
-        if self.key and self.key.type == 'selection':
+        if self.key and self.key.type_ == 'selection':
             return json.loads(self.key.selection_json)
         return [(None, '')]
 
