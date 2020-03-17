@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, fields
+from trytond.model import ModelSQL, ModelStorage as ModelStorage_, fields
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -72,6 +72,24 @@ class ModelStorageRelationDomain2Target(ModelSQL):
         'test.modelstorage.relation_domain.target', "Relation 2")
 
 
+class ModelStorageEvalEnvironment(ModelStorage_):
+    "Model for EvalEnvironment"
+    __name__ = 'test.modelstorage.eval_environment'
+    char = fields.Char("Name")
+    reference = fields.Reference(
+        "Reference", [
+            ('test.modelstorage.eval_environment', "Reference"),
+            ])
+    multiselection = fields.MultiSelection([
+            ('value1', "Value1"),
+            ('value2', "Value2"),
+            ], "MultiSelection")
+    many2one = fields.Many2One(
+        'test.modelstorage.eval_environment', "Many2One")
+    one2many = fields.One2Many(
+        'test.modelstorage.eval_environment', 'many2one', "One2Many")
+
+
 def register(module):
     Pool.register(
         ModelStorage,
@@ -82,4 +100,5 @@ def register(module):
         ModelStorageRelationDomainTarget,
         ModelStorageRelationDomain2,
         ModelStorageRelationDomain2Target,
+        ModelStorageEvalEnvironment,
         module=module, type_='model')

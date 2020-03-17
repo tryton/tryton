@@ -3,6 +3,7 @@
 
 import unittest
 
+from trytond.model import EvalEnvironment
 from trytond.model.exceptions import (
     RequiredValidationError, DomainValidationError)
 from trytond.pool import Pool
@@ -447,5 +448,84 @@ class ModelStorageTestCase(unittest.TestCase):
         Model.delete([record])
 
 
+class EvalEnvironmentTestCase(unittest.TestCase):
+    "Test EvalEnvironment"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    @with_transaction()
+    def test_char_field(self):
+        "Test eval simple field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(char="Test")
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(env.get('char'), "Test")
+
+    @with_transaction()
+    def test_reference_field(self):
+        "Test eval reference field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(reference=Model(id=1))
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(
+            env.get('reference'), 'test.modelstorage.eval_environment,1')
+
+    @with_transaction()
+    def test_many2one_field(self):
+        "Test eval many2one field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(many2one=Model(id=1))
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(env.get('many2one'), 1)
+
+    @with_transaction()
+    def test_one2many_field(self):
+        "Test eval one2many field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(one2many=[Model(id=1), Model(id=2)])
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(env.get('one2many'), [1, 2])
+
+    @with_transaction()
+    def test_multiselection_field(self):
+        "Test eval multiselection field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(multiselection=['value1', 'value2'])
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(env.get('multiselection'), ['value1', 'value2'])
+
+    @with_transaction()
+    def test_parent_field(self):
+        "Test eval parent field"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.eval_environment')
+
+        record = Model(many2one=Model(char="Test"))
+        env = EvalEnvironment(record, Model)
+
+        self.assertEqual(env.get('_parent_many2one').get('char'), "Test")
+
+
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(ModelStorageTestCase)
+    suite_ = unittest.TestSuite()
+    loader = unittest.TestLoader()
+    suite_.addTests(loader.loadTestsFromTestCase(ModelStorageTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(EvalEnvironmentTestCase))
+    return suite_
