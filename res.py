@@ -48,6 +48,7 @@ class User(metaclass=PoolMeta):
             if SMSCode.check(user_id, code):
                 return user_id
         msg = SMSCode.fields_get(['code'])['code']['string']
+        msg = gettext('authentication_sms.msg_user_sms_code', login=login)
         raise LoginException('sms_code', msg, type='char')
 
     @classmethod
