@@ -14,23 +14,21 @@ class Location(metaclass=PoolMeta):
         'Provisioning Location',
         states={
             'invisible': Eval('type') != 'storage',
-            'readonly': ~Eval('active'),
             },
         domain=[
             ('type', 'in', ['storage', 'view']),
             ],
-        depends=['type', 'active'],
+        depends=['type'],
         help='Leave empty for no default provisioning.')
     overflowing_location = fields.Many2One('stock.location',
         'Overflowing Location',
         states={
             'invisible': Eval('type') != 'storage',
-            'readonly': ~Eval('active'),
             },
         domain=[
             ('type', 'in', ['storage', 'view']),
             ],
-        depends=['type', 'active'],
+        depends=['type'],
         help='Leave empty for no default overflowing.')
 
 
