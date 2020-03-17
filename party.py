@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from . import luhn
 from .exceptions import SIRENValidationError
@@ -11,9 +10,7 @@ from .exceptions import SIRENValidationError
 class Party(metaclass=PoolMeta):
     __name__ = 'party.party'
 
-    siren = fields.Char('SIREN', select=True, states={
-            'readonly': ~Eval('active', True),
-            }, size=9, depends=['active'])
+    siren = fields.Char("SIREN", select=True, size=9)
 
     @classmethod
     def validate(cls, parties):

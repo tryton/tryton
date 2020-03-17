@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
 from trytond.model import fields
-from trytond.pyson import Eval
 from trytond.pool import PoolMeta
 from . import luhn
 from .exceptions import SIRETValidationError
@@ -11,9 +10,7 @@ from .exceptions import SIRETValidationError
 class Address(metaclass=PoolMeta):
     __name__ = 'party.address'
 
-    siret_nic = fields.Char('SIRET NIC', select=True, states={
-            'readonly': ~Eval('active', True),
-            }, size=5, depends=['active'])
+    siret_nic = fields.Char("SIRET NIC", select=True, size=5)
     siret = fields.Function(fields.Char('SIRET'), 'get_siret')
 
     def get_siret(self, name):
