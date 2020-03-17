@@ -184,14 +184,9 @@ class PayLineStart(ModelView):
     "Pay Line"
     __name__ = 'account.move.line.pay.start'
     date = fields.Date(
-        "Date", required=True,
-        help="When the payments are scheduled to happen.")
-
-    @classmethod
-    def default_date(cls):
-        pool = Pool()
-        Date = pool.get('ir.date')
-        return Date.today()
+        "Date",
+        help="When the payments are scheduled to happen.\n"
+        "Leave empty to use the lines' maturity dates.")
 
 
 class PayLineAskJournal(ModelView):
@@ -339,16 +334,19 @@ class PayLine(Wizard):
         else:
             kind = 'payable'
         journal = journals[self._get_journal_key(line)]
-
-        return Payment(
+        payment = Payment(
             company=line.move.company,
             journal=journal,
             party=line.party,
             kind=kind,
             amount=line.payment_amount,
             line=line,
-            date=self.start.date,
             )
+        date = self.start.date or line.maturity_date
+        # Use default value when empty
+        if date:
+            payment.date = date
+        return payment
 
     def do_pay(self, action):
         pool = Pool()
