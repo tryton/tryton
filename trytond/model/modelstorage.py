@@ -1720,7 +1720,8 @@ class EvalEnvironment(dict):
                 if self._model._fields[item]._type == 'reference':
                     return str(value)
                 return value.id
-            elif isinstance(value, (list, tuple)):
+            elif (isinstance(value, (list, tuple))
+                    and value and isinstance(value[0], Model)):
                 return [r.id for r in value]
             else:
                 return value
