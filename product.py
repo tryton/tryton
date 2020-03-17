@@ -28,10 +28,6 @@ from .exceptions import InvalidIdentifierCode
 __all__ = ['price_digits', 'TemplateFunction']
 logger = logging.getLogger(__name__)
 
-STATES = {
-    'readonly': ~Eval('active', True),
-    }
-DEPENDS = ['active']
 TYPES = [
     ('goods', 'Goods'),
     ('assets', 'Assets'),
@@ -49,41 +45,36 @@ class Template(
         DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     "Product Template"
     __name__ = "product.template"
-    name = fields.Char('Name', size=None, required=True, translate=True,
-        select=True, states=STATES, depends=DEPENDS)
-    type = fields.Selection(TYPES, 'Type', required=True, states=STATES,
-        depends=DEPENDS)
+    name = fields.Char(
+        "Name", size=None, required=True, translate=True, select=True)
+    type = fields.Selection(TYPES, "Type", required=True)
     consumable = fields.Boolean('Consumable',
         states={
-            'readonly': ~Eval('active', True),
             'invisible': Eval('type', 'goods') != 'goods',
             },
-        depends=['active', 'type'])
+        depends=['type'])
     list_price = fields.MultiValue(fields.Numeric(
-            "List Price", required=True, digits=price_digits,
-            states=STATES, depends=DEPENDS))
+            "List Price", required=True, digits=price_digits))
     list_prices = fields.One2Many(
         'product.list_price', 'template', "List Prices")
     cost_price = fields.Function(fields.Numeric(
             "Cost Price", digits=price_digits), 'get_cost_price')
     cost_price_method = fields.MultiValue(fields.Selection(
-            COST_PRICE_METHODS, "Cost Price Method", required=True,
-            states=STATES, depends=DEPENDS))
+            COST_PRICE_METHODS, "Cost Price Method", required=True))
     cost_price_methods = fields.One2Many(
         'product.cost_price_method', 'template', "Cost Price Methods")
-    default_uom = fields.Many2One('product.uom', 'Default UOM', required=True,
-        states=STATES, depends=DEPENDS)
+    default_uom = fields.Many2One('product.uom', "Default UOM", required=True)
     default_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Default UOM Category'),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
-    categories = fields.Many2Many('product.template-product.category',
-        'template', 'category', 'Categories', states=STATES, depends=DEPENDS)
+    categories = fields.Many2Many(
+        'product.template-product.category', 'template', 'category',
+        "Categories")
     categories_all = fields.Many2Many(
         'product.template-product.category.all',
         'template', 'category', "Categories", readonly=True)
-    products = fields.One2Many('product.product', 'template', 'Variants',
-        states=STATES, depends=DEPENDS)
+    products = fields.One2Many('product.product', 'template', "Variants")
 
     @classmethod
     def __register__(cls, module_name):
@@ -206,26 +197,26 @@ class Product(
     "Product Variant"
     __name__ = "product.product"
     _order_name = 'rec_name'
-    template = fields.Many2One('product.template', 'Product Template',
-        required=True, ondelete='CASCADE', select=True, states=STATES,
-        depends=DEPENDS, search_context={'default_products': False})
+    template = fields.Many2One(
+        'product.template', "Product Template",
+        required=True, ondelete='CASCADE', select=True,
+        search_context={'default_products': False})
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
-    code = fields.Char("Code", size=None, select=True,
+    code = fields.Char(
+        "Code", size=None, select=True,
         states={
-            'readonly': STATES['readonly'] | Eval('code_readonly', False),
+            'readonly': Eval('code_readonly', False),
             },
-        depends=DEPENDS + ['code_readonly'])
-    identifiers = fields.One2Many('product.identifier', 'product',
-        "Identifiers", states=STATES, depends=DEPENDS,
+        depends=['code_readonly'])
+    identifiers = fields.One2Many(
+        'product.identifier', 'product', "Identifiers",
         help="Add other identifiers to the variant.")
     cost_price = fields.MultiValue(fields.Numeric(
-            "Cost Price", required=True, digits=price_digits,
-            states=STATES, depends=DEPENDS))
+            "Cost Price", required=True, digits=price_digits))
     cost_prices = fields.One2Many(
         'product.cost_price', 'product', "Cost Prices")
-    description = fields.Text("Description", translate=True, states=STATES,
-        depends=DEPENDS)
+    description = fields.Text("Description", translate=True)
     list_price_uom = fields.Function(fields.Numeric('List Price',
         digits=price_digits), 'get_price_uom')
     cost_price_uom = fields.Function(fields.Numeric('Cost Price',

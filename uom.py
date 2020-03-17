@@ -15,11 +15,6 @@ from .exceptions import UOMValidationError
 
 __all__ = ['uom_conversion_digits']
 
-STATES = {
-    'readonly': ~Eval('active', True),
-    }
-DEPENDS = ['active']
-
 uom_conversion_digits = (
     config.getint('product', 'uom_conversion_decimal', default=12),) * 2
 
@@ -39,28 +34,24 @@ class UomCategory(ModelSQL, ModelView):
 class Uom(DeactivableMixin, ModelSQL, ModelView):
     'Unit of measure'
     __name__ = 'product.uom'
-    name = fields.Char('Name', size=None, required=True, states=STATES,
-        translate=True, depends=DEPENDS)
-    symbol = fields.Char('Symbol', size=10, required=True, states=STATES,
-        translate=True, depends=DEPENDS)
-    category = fields.Many2One('product.uom.category', 'Category',
-        required=True, ondelete='RESTRICT', states=STATES, depends=DEPENDS)
+    name = fields.Char("Name", size=None, required=True, translate=True)
+    symbol = fields.Char("Symbol", size=10, required=True, translate=True)
+    category = fields.Many2One(
+        'product.uom.category', "Category", required=True, ondelete='RESTRICT')
     rate = fields.Float(
         "Rate", digits=uom_conversion_digits, required=True,
-        states=STATES, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             '1 (base unit) = coef (this unit)'))
     factor = fields.Float(
         "Factor", digits=uom_conversion_digits, required=True,
-        states=STATES, depends=DEPENDS,
         help=('The coefficient for the formula:\n'
             'coef (base unit) = 1 (this unit)'))
-    rounding = fields.Float('Rounding Precision',
-        digits=(12, Eval('digits', 12)),
-        required=True, states=STATES, depends=DEPENDS + ['digits'],
+    rounding = fields.Float(
+        "Rounding Precision", digits=(12, Eval('digits', 12)), required=True,
         domain=[
             ('rounding', '>', 0),
-            ])
+            ],
+        depends=['digits'])
     digits = fields.Integer('Display Digits', required=True)
 
     @classmethod
