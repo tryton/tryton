@@ -108,7 +108,7 @@ class Queue(ModelSQL):
             selected.for_ = For('UPDATE')
 
         next_timeout = With('seconds', query=candidates.select(
-                Min(Extract('second',
+                Min(Extract('EPOCH',
                         candidates.scheduled_at - CurrentTimestamp())
                     ),
                 where=candidates.scheduled_at >= CurrentTimestamp()))
