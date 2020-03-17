@@ -821,7 +821,8 @@ DeactivableMixin
 
 .. class:: DeactivableMixin
 
-A mixin_ to add soft deletion to the model.
+A mixin_ to add soft deletion to the model. It renders all the fields as
+read-only when the record is inactive.
 
 Class attributes are:
 

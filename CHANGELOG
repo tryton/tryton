@@ -1,3 +1,4 @@
+* Set all fields readonly for inactive record
 * Enable check_access context when checking wizard access (issue9108)
 * Add editable on calendar view
 * Add xalign and yalign to group
