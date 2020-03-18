@@ -219,7 +219,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="account.tax.template" id="iva_sop_intracomunitario">
             <field name="name">IVA Intracomunitario (operaciones corrientes)</field>
-            <field name="description">>IVA Intracomunitario</field>
+            <field name="description">IVA Intracomunitario</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_purchase"/>
             <field name="type">none</field>
