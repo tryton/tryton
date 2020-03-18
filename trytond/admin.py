@@ -11,6 +11,7 @@ from trytond import backend
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.config import config
+from trytond.sendmail import send_test_email
 
 __all__ = ['run']
 logger = logging.getLogger(__name__)
@@ -113,6 +114,8 @@ def run(options):
             admin.save()
             if options.reset_password:
                 User.reset_password([admin])
+            if options.test_email:
+                send_test_email(options.test_email)
             if options.hostname is not None:
                 configuration.hostname = options.hostname or None
             configuration.save()

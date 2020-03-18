@@ -237,6 +237,8 @@ The path to the certificate.
 email
 -----
 
+.. note:: Email settings can be tested with the `trytond-admin` command
+
 uri
 ~~~
 

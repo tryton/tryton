@@ -4,6 +4,7 @@ import logging
 import smtplib
 from email.message import Message
 from email.utils import formatdate
+from email.mime.text import MIMEText
 from urllib.parse import parse_qs, unquote_plus
 
 from .config import config, parse_uri
@@ -43,6 +44,15 @@ def sendmail(from_addr, to_addrs, msg, server=None):
             logger.warning('fail to send email to %s', senderrs)
     if quit:
         server.quit()
+
+
+def send_test_email(to_addrs, server=None):
+    from_ = config.get('email', 'from')
+    msg = MIMEText('Success!\nYour email settings work correctly.')
+    msg['From'] = from_
+    msg['To'] = to_addrs
+    msg['Subject'] = 'Tryton test email'
+    sendmail(config.get('email', 'from'), to_addrs, msg, server=server)
 
 
 def get_smtp_server(uri=None):

@@ -75,6 +75,8 @@ def get_parser_admin():
         action='store_true', help="set the admin password")
     parser.add_argument("--reset-password", dest='reset_password',
         action='store_true', help="reset the admin password")
+    parser.add_argument("--test-email", dest='test_email',
+        help="Send a test email to the specified address.")
     parser.add_argument("-m", "--update-modules-list", action="store_true",
         dest="update_modules_list", help="Update list of tryton modules")
     parser.add_argument("-l", "--language", dest="languages", nargs='+',
