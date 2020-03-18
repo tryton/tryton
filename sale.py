@@ -186,7 +186,8 @@ class Sale(metaclass=PoolMeta):
     @Workflow.transition('cancel')
     def cancel(cls, sales):
         for sale in sales:
-            sale.coupons = []
+            if sale.coupons:
+                sale.coupons = []
         cls.save(sales)
         super(Sale, cls).cancel(sales)
 
