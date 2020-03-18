@@ -21,9 +21,17 @@ Create a template::
     >>> template.name = "Product"
     >>> template.default_uom = unit
     >>> template.list_price = Decimal('42.0000')
+    >>> template.code = "PROD"
     >>> template.save()
     >>> len(template.products)
     1
+    >>> product, = template.products
+    >>> product.code
+    'PROD'
+    >>> product.suffix_code = "001"
+    >>> product.save()
+    >>> product.code
+    'PROD001'
 
 Create a variant::
 
@@ -34,6 +42,16 @@ Create a variant::
     'Product'
     >>> product.list_price
     Decimal('42.0000')
+    >>> product.suffix_code = "002"
     >>> product.save()
     >>> product.list_price
     Decimal('42.0000')
+    >>> product.code
+    'PROD002'
+
+Change template code::
+
+    >>> template.code = "PRD"
+    >>> template.save()
+    >>> sorted([p.code for p in template.products])
+    ['PRD001', 'PRD002']

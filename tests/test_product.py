@@ -395,14 +395,14 @@ class ProductTestCase(ModuleTestCase):
             'type': 'assets',
             'list_price': Decimal('10'),
             'default_uom': uom.id,
-            'products': [('create', [{'code': 'AA'}])],
+            'products': [('create', [{'suffix_code': 'AA'}])],
             }
         values2 = {
             'name': 'Product B',
             'type': 'goods',
             'list_price': Decimal('10'),
             'default_uom': uom.id,
-            'products': [('create', [{'code': 'BB'}])],
+            'products': [('create', [{'suffix_code': 'BB'}])],
             }
 
         template1, template2 = Template.create([values1, values2])

@@ -2,9 +2,11 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='name']" position="after">
-        <label name="code"/>
-        <field name="code"/>
+    <xpath expr="/form/field[@name='code']" position="replace">
+        <group col="-1" name="code" string="">
+            <field name="prefix_code"/>
+            <field name="suffix_code"/>
+        </group>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/label[@name='type']"
         position="before">

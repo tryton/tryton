@@ -4,9 +4,11 @@ this repository contains the full copyright notices and license terms. -->
 <form col="6">
   <label name="name"/>
   <field name="name" xexpand="1"/>
+  <label name="code"/>
+  <field name="code"/>
   <label name="active"/>
   <field name="active" xexpand="0" width="100"/>
-  <newline/>
+
   <notebook colspan="6">
       <page string="General" id="general">
           <label name="type"/>

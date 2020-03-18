@@ -6,7 +6,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="template"/>
     <newline/>
     <label name="code"/>
-    <field name="code"/>
+    <group col="-1" name="code" string="">
+        <field name="prefix_code"/>
+        <field name="suffix_code"/>
+    </group>
     <label name="active"/>
     <field name="active" xexpand="0" width="100"/>
     <label name="cost_price"/>

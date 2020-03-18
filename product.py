@@ -47,6 +47,7 @@ class Template(
     __name__ = "product.template"
     name = fields.Char(
         "Name", size=None, required=True, translate=True, select=True)
+    code = fields.Char("Code", select=True)
     type = fields.Selection(TYPES, "Type", required=True)
     consumable = fields.Boolean('Consumable',
         states={
@@ -97,6 +98,12 @@ class Template(
             return pool.get('product.cost_price_method')
         return super(Template, cls).multivalue_model(field)
 
+    def get_rec_name(self, name):
+        if self.code:
+            return '[' + self.code + ']' + self.name
+        else:
+            return self.name
+
     @classmethod
     def search_rec_name(cls, name, clause):
         return [('products.rec_name',) + tuple(clause[1:])]
@@ -146,10 +153,24 @@ class Template(
 
     @classmethod
     def create(cls, vlist):
+        pool = Pool()
+        Product = pool.get('product.product')
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             values.setdefault('products', None)
-        return super(Template, cls).create(vlist)
+        templates = super(Template, cls).create(vlist)
+        products = sum((t.products for t in templates), ())
+        Product.sync_code(products)
+        return templates
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Product = pool.get('product.product')
+        super().write(*args)
+        templates = sum(args[0:None:2], [])
+        products = sum((t.products for t in templates), ())
+        Product.sync_code(products)
 
     @classmethod
     def search_global(cls, text):
@@ -203,12 +224,19 @@ class Product(
         search_context={'default_products': False})
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
-    code = fields.Char(
-        "Code", size=None, select=True,
+    prefix_code = fields.Function(fields.Char(
+            "Prefix Code",
+            states={
+                'invisible': ~Eval('prefix_code'),
+                }),
+        'on_change_with_prefix_code')
+    suffix_code = fields.Char(
+        "Suffix Code",
         states={
             'readonly': Eval('code_readonly', False),
             },
         depends=['code_readonly'])
+    code = fields.Char("Code", readonly=True, select=True)
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
         help="Add other identifiers to the variant.")
@@ -264,6 +292,22 @@ class Product(
                     getattr(cls, attr).setter = '_set_template_function'
 
     @classmethod
+    def __register__(cls, module):
+        table = cls.__table__()
+        table_h = cls.__table_handler__(module)
+        fill_suffix_code = (
+            table_h.column_exist('code')
+            and not table_h.column_exist('suffix_code'))
+        super().__register__(module)
+        cursor = Transaction().connection.cursor()
+
+        # Migration from 5.4: split code into prefix/suffix
+        if fill_suffix_code:
+            cursor.execute(*table.update(
+                    [table.suffix_code],
+                    [table.code]))
+
+    @classmethod
     def _set_template_function(cls, products, name, value):
         # Prevent NotImplementedError for One2Many
         pass
@@ -287,6 +331,11 @@ class Product(
             return [r.id for r in value]
         else:
             return value
+
+    @fields.depends('template', '_parent_template.code')
+    def on_change_with_prefix_code(self, name=None):
+        if self.template:
+            return self.template.code
 
     @classmethod
     def multivalue_model(cls, field):
@@ -337,6 +386,7 @@ class Product(
             ('code', clause[1], code_value) + tuple(clause[3:]),
             ('identifiers.code', clause[1], code_value) + tuple(clause[3:]),
             ('template.name',) + tuple(clause[1:]),
+            ('template.code',) + tuple(clause[1:]),
             ]
 
     @staticmethod
@@ -374,7 +424,7 @@ class Product(
         return self.default_code_readonly()
 
     @classmethod
-    def _new_code(cls):
+    def _new_suffix_code(cls):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
         Configuration = pool.get('product.configuration')
@@ -387,9 +437,17 @@ class Product(
     def create(cls, vlist):
         vlist = [x.copy() for x in vlist]
         for values in vlist:
-            if not values.get('code'):
-                values['code'] = cls._new_code()
-        return super().create(vlist)
+            if not values.get('suffix_code'):
+                values['suffix_code'] = cls._new_suffix_code()
+        products = super().create(vlist)
+        cls.sync_code(products)
+        return products
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        products = sum(args[0:None:2], [])
+        cls.sync_code(products)
 
     @classmethod
     def copy(cls, products, default=None):
@@ -397,12 +455,24 @@ class Product(
             default = {}
         else:
             default = default.copy()
+        default.setdefault('suffix_code', None)
         default.setdefault('code', None)
         return super().copy(products, default=default)
 
     @property
     def list_price_used(self):
         return self.template.get_multivalue('list_price')
+
+    @classmethod
+    def sync_code(cls, products):
+        for product in products:
+            code = ''.join(filter(None, [
+                        product.prefix_code, product.suffix_code]))
+            if not code:
+                code = None
+            if code != product.code:
+                product.code = code
+        cls.save(products)
 
 
 class ProductListPrice(ModelSQL, CompanyValueMixin):

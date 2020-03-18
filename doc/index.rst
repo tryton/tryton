@@ -42,6 +42,7 @@ Template and Product.
 The Product Template model contains the following fields: 
 
 - Name.
+- Code, a common prefix for all products.
 - Type, whose value can be *Goods*, *Assets*, *Service*.
 - Category.
 - List Price, the default sale price expressed in the List Price UOM.
