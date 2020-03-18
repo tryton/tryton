@@ -8,8 +8,8 @@ If the party is checked for Chorus Pro, all posted customer invoices are queued 
 A cron job will send them every 15 minutes by default using the credential from
 the accounting configuration.
 
-Configuation
-************
+Configuration
+*************
 
 The account_fr_chorus module uses the section `account_fr_chorus` to retrieve
 the path of the SSL certificates.
