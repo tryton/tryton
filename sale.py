@@ -76,10 +76,11 @@ class Sale(metaclass=PoolMeta):
     __name__ = 'sale.sale'
     carrier = fields.Many2One('carrier', 'Carrier',
         domain=[
-            ('carrier_product.salable', '=', True),
-            If(Eval('state') == 'draft',
-                ('id', 'in', Eval('available_carriers', [])),
-                ()),
+            If(Eval('state') == 'draft', [
+                    ('carrier_product.salable', '=', True),
+                    ('id', 'in', Eval('available_carriers', [])),
+                    ],
+                []),
             ],
         states={
             'readonly': Eval('state') != 'draft',
