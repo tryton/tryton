@@ -24,5 +24,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invalid_code">
             <field name="text">The %(type)s "%(code)s" for product "%(product)s" is not valid.</field>
         </record>
+        <record model="ir.message" id="msg_product_code_unique">
+            <field name="text">Code of active product must be unique.</field>
+        </record>
     </data>
 </tryton>

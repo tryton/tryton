@@ -61,10 +61,10 @@ The Product Template model contains the following fields:
 - Active, allow to disable a product.
 
 
-The Product model extend the Product Template with two fields: Code
-and Description. If a sequence is set on product configuration the code will
-be readonly and will be filled in using the sequence. It's also possible to 
-define a list of identifiers on product. An identifier is composed by a type 
+The Product model extends the Product Template with two fields: Code (aka SKU_)
+and Description. If a sequence is set on product configuration the code will be
+read-only and will be filled in using the sequence. It's also possible to
+define a list of identifiers on product. An identifier is composed by a type
 and a code. The following types are available:
 
     * International Article Number (EAN)
@@ -73,6 +73,8 @@ and a code. The following types are available:
     * International Standard Identifier for Libraries (ISIL)
     * International Securities Identification Number (ISIN)
     * International Standard Music Number (ISMN)
+
+.. _SKU: https://en.wikipedia.org/wiki/Stock_keeping_unit
 
 Configuration
 *************

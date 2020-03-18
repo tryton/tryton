@@ -7,12 +7,13 @@ from importlib import import_module
 
 import stdnum
 import stdnum.exceptions
-from sql import Null, Column
+from sql import Null, Column, Literal
+from sql.operators import Equal
 
 from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, sequence_ordered,
-    fields)
+    Exclude, fields)
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
@@ -235,7 +236,8 @@ class Product(
         states={
             'readonly': Eval('code_readonly', False),
             },
-        depends=['code_readonly'])
+        depends=['code_readonly'],
+        help="The unique identifier for the product (aka SKU).")
     code = fields.Char("Code", readonly=True, select=True)
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
@@ -260,6 +262,14 @@ class Product(
         cls._no_template_field.update(['products'])
 
         super(Product, cls).__setup__()
+
+        t = cls.__table__()
+        cls._sql_constraints = [
+            ('code_exclude', Exclude(t, (t.code, Equal),
+                    where=(t.active == Literal(True))
+                    & (t.code != '')),
+                'product.msg_product_code_unique'),
+            ]
 
         for attr in dir(Template):
             tfield = getattr(Template, attr)
