@@ -1,3 +1,4 @@
+* Show the move resulting from the GroupLines wizard
 * Allow periods to end on any day of the month
 * Use a wizard to select parameters when creating periods
 * Modularize code in GroupLines wizard

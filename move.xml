@@ -427,5 +427,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.move.general_journal</field>
             <field name="report">account/general_journal.fodt</field>
         </record>
+        <record model="ir.action.act_window" id="act_move_form_grouping">
+            <field name="name">Grouped Account Move</field>
+            <field name="res_model">account.move</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_move_form_grouping_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_move_form_grouping"/>
+        </record>
     </data>
 </tryton>

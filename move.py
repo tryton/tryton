@@ -1864,16 +1864,16 @@ class GroupLines(Wizard):
             Button("Cancel", 'end', 'tryton-cancel'),
             Button("Group", 'group', 'tryton-ok', default=True),
             ])
-    group = StateTransition()
+    group = StateAction('account.act_move_form_grouping')
 
-    def transition_group(self):
+    def do_group(self, action):
         pool = Pool()
         Line = pool.get('account.move.line')
 
         lines = Line.browse(Transaction().context['active_ids'])
         move, balance_line = self._group_lines(lines)
-
-        return 'end'
+        action['res_id'] = [move.id]
+        return action, {}
 
     def _group_lines(self, lines, date=None):
         move, balance_line = self.group_lines(lines, self.start.journal, date)
