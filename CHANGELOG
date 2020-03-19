@@ -1,3 +1,4 @@
+* Add support for Python 3.8
 * Use same __str__ as trytond instances
 
 Version 5.4.0 - 2019-11-04
