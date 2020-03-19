@@ -1,3 +1,4 @@
+* Add support for Python 3.8
 * Manage readonly dates in calendar view
 * Manage editable on calendar view
 * Manage model access on calendar view
