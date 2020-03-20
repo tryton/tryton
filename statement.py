@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
+
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
 from trytond.pyson import Eval, If, Bool
@@ -17,8 +19,8 @@ class Statement(metaclass=PoolMeta):
 
         moves = super(Statement, cls).create_move(statements)
 
-        to_success = set()
-        to_fail = set()
+        to_success = defaultdict(set)
+        to_fail = defaultdict(set)
         for move, statement, lines in moves:
             for line in lines:
                 if line.payment:
@@ -30,15 +32,19 @@ class Statement(metaclass=PoolMeta):
                 else:
                     continue
                 if (kind == 'receivable') == (line.amount >= 0):
-                    to_success.update(payments)
+                    to_success[line.date].update(payments)
                 else:
-                    to_fail.update(payments)
+                    to_fail[line.date].update(payments)
         # The failing should be done last because success is usually not a
         # definitive state
         if to_success:
-            Payment.succeed(Payment.browse(to_success))
+            for date, payments in to_success.items():
+                with Transaction().set_context(clearing_date=date):
+                    Payment.succeed(Payment.browse(payments))
         if to_fail:
-            Payment.fail(Payment.browse(to_fail))
+            for date, payments in to_fail.items():
+                with Transaction().set_context(clearing_date=date):
+                    Payment.fail(Payment.browse(payments))
 
         for move, statement, lines in moves:
             assert len({l.payment for l in lines}) == 1
