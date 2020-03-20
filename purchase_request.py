@@ -34,7 +34,9 @@ class PurchaseRequest(ModelSQL, ModelView):
     uom = fields.Many2One('product.uom', 'UOM', select=True,
         ondelete='RESTRICT',
         domain=[
-            ('category', '=', Eval('product_uom_category')),
+            If(Bool(Eval('product_uom_category')),
+                ('category', '=', Eval('product_uom_category')),
+                ('category', '!=', -1)),
             ],
         states={
             'required': Bool(Eval('product')),
