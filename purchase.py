@@ -468,7 +468,9 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         super().__setup__()
         unit_categories = cls._unit_categories()
         cls.unit.domain = [
-            ('category', 'in', [Eval(c) for c in unit_categories]),
+            If(Bool(Eval('product_uom_category')),
+                ('category', 'in', [Eval(c) for c in unit_categories]),
+                ('category', '!=', -1)),
             ]
         cls.unit.depends.extend(unit_categories)
 
