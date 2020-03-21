@@ -14,6 +14,9 @@ Accounting
     `Belgian </projects/modules-account-be/en/latest>`_
         Belgian accounting.
 
+    `Cash Rounding </projects/modules-account-cash-rounding/en/latest>`_
+        Round cash amounts.
+
     `Credit Limit </projects/modules-account-credit-limit/en/latest>`_
         Manages credit limit of parties.
 
