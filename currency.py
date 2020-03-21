@@ -141,11 +141,15 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
 
     def round(self, amount, rounding=ROUND_HALF_EVEN):
         'Round the amount depending of the currency'
+        return self._round(amount, self.rounding, rounding)
+
+    @classmethod
+    def _round(cls, amount, factor, rounding):
         with localcontext() as ctx:
-            ctx.prec = max(ctx.prec, (amount / self.rounding).adjusted() + 1)
-            # Divide and multiple by rounding for case rounding is not 10En
-            result = (amount / self.rounding).quantize(Decimal('1.'),
-                    rounding=rounding) * self.rounding
+            ctx.prec = max(ctx.prec, (amount / factor).adjusted() + 1)
+            # Divide and multiple by factor for case factor is not 10En
+            result = (amount / factor).quantize(Decimal('1.'),
+                    rounding=rounding) * factor
         return Decimal(result)
 
     def is_zero(self, amount):
