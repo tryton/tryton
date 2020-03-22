@@ -38,6 +38,7 @@ class ContactMechanism(
         DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     "Contact Mechanism"
     __name__ = 'party.contact_mechanism'
+    _rec_name = 'value'
 
     type = fields.Selection(_TYPES, "Type", required=True, sort=False)
     value = fields.Char("Value", select=True,
