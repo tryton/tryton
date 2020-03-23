@@ -703,7 +703,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def get_consumption(self, date):
         pool = Pool()
         Consumption = pool.get('sale.subscription.line.consumption')
-        if date < (self.end_date or datetime.date.max):
+        end_date = self.end_date or self.subscription.end_date
+        if date < (end_date or datetime.date.max):
             return Consumption(line=self, quantity=self.quantity, date=date)
 
     def compute_next_consumption_date(self):
