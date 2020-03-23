@@ -180,7 +180,7 @@ Close subscription::
     >>> line_consumption_create.execute('create_')
 
     >>> len(LineConsumption.find([]))
-    32
+    31
 
     >>> subscription.reload()
     >>> line, = subscription.lines
@@ -195,4 +195,4 @@ Create final subscription invoice::
     >>> create_invoice.execute('create_')
 
     >>> len(Invoice.find([]))
-    2
+    1
