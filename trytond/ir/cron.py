@@ -139,7 +139,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                         if isinstance(e, DatabaseOperationalError) and count:
                             continue
                         logger.error('Running cron %s', cron.id, exc_info=True)
-                        break
+                    break
         while transaction.tasks:
             task_id = transaction.tasks.pop()
             run_task(db_name, task_id)
