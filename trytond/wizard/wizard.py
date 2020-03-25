@@ -227,7 +227,7 @@ class Wizard(URLMixin, PoolBase):
 
         with Transaction().set_context(_check_access=True):
             model = context.get('active_model')
-            if model:
+            if model and model != 'ir.ui.menu':
                 ModelAccess.check(model, 'read')
             groups = set(User.get_groups())
             wizard_groups = ActionWizard.get_groups(cls.__name__,
@@ -236,7 +236,7 @@ class Wizard(URLMixin, PoolBase):
                 if not groups & wizard_groups:
                     raise UserError('Calling wizard %s is not allowed!'
                         % cls.__name__)
-            elif model:
+            elif model and model != 'ir.ui.menu':
                 ModelAccess.check(model, 'write')
 
     @classmethod
