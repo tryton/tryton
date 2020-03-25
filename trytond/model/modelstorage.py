@@ -7,15 +7,14 @@ import csv
 
 from decimal import Decimal
 from itertools import islice, chain
-from functools import wraps
+from functools import lru_cache, wraps
 from operator import itemgetter
 from collections import defaultdict
 
 from trytond.exceptions import UserError
 from trytond.model import Model
 from trytond.model import fields
-from trytond.tools import reduce_domain, memoize, is_instance_method, \
-    grouped_slice
+from trytond.tools import reduce_domain, is_instance_method, grouped_slice
 from trytond.tools.domain_inversion import (
     domain_inversion, parse as domain_parse)
 from trytond.pyson import PYSONEncoder, PYSONDecoder, PYSON
@@ -696,7 +695,7 @@ class ModelStorage(Model):
         '''
         pool = Pool()
 
-        @memoize(1000)
+        @lru_cache(maxsize=1000)
         def get_many2one(relation, value):
             if not value:
                 return None
@@ -718,7 +717,7 @@ class ModelStorage(Model):
                 res = res[0].id
             return res
 
-        @memoize(1000)
+        @lru_cache(maxsize=1000)
         def get_many2many(relation, value):
             if not value:
                 return None
@@ -748,7 +747,7 @@ class ModelStorage(Model):
         def get_one2one(relation, value):
             return ('add', get_many2one(relation, value))
 
-        @memoize(1000)
+        @lru_cache(maxsize=1000)
         def get_reference(value, field):
             if not value:
                 return None
@@ -758,7 +757,7 @@ class ModelStorage(Model):
                 raise ImportDataError(
                     gettext('ir.msg_reference_syntax_error',
                         value=value,
-                        field='/'.join(field)))
+                        field=field))
             Relation = pool.get(relation)
             res = Relation.search([
                 ('rec_name', '=', value),
@@ -777,7 +776,7 @@ class ModelStorage(Model):
                 res = '%s,%s' % (relation, res[0].id)
             return res
 
-        @memoize(1000)
+        @lru_cache(maxsize=1000)
         def get_by_id(value, field, ftype):
             if not value:
                 return None
@@ -792,7 +791,7 @@ class ModelStorage(Model):
                     raise ImportDataError(
                         gettext('ir.msg_reference_syntax_error',
                             value=value,
-                            field='/'.join(field)))
+                            field=field))
                 value = [value]
             else:
                 value = [value]
@@ -804,7 +803,7 @@ class ModelStorage(Model):
                     raise ImportDataError(
                         gettext('ir.msg_xml_id_syntax_error',
                             value=word,
-                            field='/'.join(field)))
+                            field=field))
                 db_id = ModelData.get_id(module, xml_id)
                 res_ids.append(db_id)
             if ftype == 'many2many' and res_ids:
@@ -838,7 +837,8 @@ class ModelStorage(Model):
                 value = line[i]
                 if is_prefix_len and field[-1].endswith(':id'):
                     ftype = fields_def[field[-1][:-3]]['type']
-                    row[field[0][:-3]] = get_by_id(value, field, ftype)
+                    row[field[0][:-3]] = get_by_id(
+                        value, '/'.join(field), ftype)
                 elif is_prefix_len and ':lang=' in field[-1]:
                     field_name, lang = field[-1].split(':lang=')
                     translate.setdefault(lang, {})[field_name] = value or False
@@ -904,7 +904,7 @@ class ModelStorage(Model):
                     elif field_type == 'one2one':
                         res = get_one2one(this_field_def['relation'], value)
                     elif field_type == 'reference':
-                        res = get_reference(value, field)
+                        res = get_reference(value, '/'.join(field))
                     else:
                         res = value or None
                     row[field[-1]] = res
