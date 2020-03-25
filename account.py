@@ -332,6 +332,8 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
 
         if not account:
             return
+        if not party:
+            party = origin.party
         if account.party_required and not party:
             return
         if not account.party_required:
