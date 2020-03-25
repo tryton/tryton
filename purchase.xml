@@ -124,6 +124,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">purchase.request,-1</field>
             <field name="action" ref="wizard_create_quotation"/>
         </record>
+        <record model="ir.action-res.group" id="wizard_create_quotation_group_purchase_request">
+            <field name="action" ref="wizard_create_quotation"/>
+            <field name="group" ref="purchase_request.group_purchase_request"/>
+        </record>
 
         <record model="ir.rule.group" id="rule_group_request_quotation">
             <field name="name">User in company</field>
