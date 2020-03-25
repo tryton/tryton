@@ -17,8 +17,9 @@ class Move(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         quantity = 0
         for invoice_line in self.invoice_lines:
-            quantity += Uom.compute_qty(invoice_line.unit,
-                invoice_line.quantity, self.uom)
+            if invoice_line.invoice_state != 'cancel':
+                quantity += Uom.compute_qty(
+                    invoice_line.unit, invoice_line.quantity, self.uom)
         return quantity
 
     @classmethod

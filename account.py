@@ -31,8 +31,9 @@ class InvoiceLine(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         quantity = 0
         for stock_move in self.stock_moves:
-            quantity += Uom.compute_qty(stock_move.uom, stock_move.quantity,
-                self.unit)
+            if stock_move.state != 'cancel':
+                quantity += Uom.compute_qty(
+                    stock_move.uom, stock_move.quantity, self.unit)
         return quantity
 
     @classmethod
