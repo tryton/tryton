@@ -219,7 +219,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
 
     def compute_next_invoice_date(self):
         start_date = self.invoice_start_date or self.start_date
-        date = self.next_invoice_date or self.start_date
+        date = self.next_invoice_date or start_date
         rruleset = self.invoice_recurrence.rruleset(start_date)
         dt = datetime.datetime.combine(date, datetime.time())
         inc = (start_date == date) and not self.next_invoice_date
