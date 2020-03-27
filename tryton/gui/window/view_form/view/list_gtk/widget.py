@@ -636,8 +636,9 @@ class Image(GenericText):
         if renderer is None:
             renderer = Gtk.CellRendererPixbuf
         super(Image, self).__init__(view, attrs, renderer)
-        self.renderer.set_fixed_size(self.attrs.get('width', -1),
-            self.attrs.get('height', -1))
+        self.height = int(attrs.get('height', 100))
+        self.width = int(attrs.get('width', 300))
+        self.renderer.set_fixed_size(self.width, self.height)
 
     @realized
     @CellCache.cache
@@ -650,10 +651,8 @@ class Image(GenericText):
             else:
                 value = field.get_data(record)
         pixbuf = data2pixbuf(value)
-        width = self.attrs.get('width', -1)
-        height = self.attrs.get('height', -1)
-        if pixbuf and (width != -1 or height != -1):
-            pixbuf = common.resize_pixbuf(pixbuf, width, height)
+        if pixbuf:
+            pixbuf = common.resize_pixbuf(pixbuf, self.width, self.height)
         cell.set_property('pixbuf', pixbuf)
         self._set_visual(cell, record)
 
