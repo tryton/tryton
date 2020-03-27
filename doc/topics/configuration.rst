@@ -48,7 +48,8 @@ Default `localhost:8000`
 hostname
 ~~~~~~~~
 
-Defines the hostname.
+Defines the hostname to use when generating a URL when there is no request
+context available, for example during a cron job.
 
 root
 ~~~~
