@@ -906,8 +906,8 @@ class ViewTree(View):
     def __getitem__(self, name):
         return None
 
-    def save_width_height(self):
-        if not CONFIG['client.save_width_height']:
+    def save_width(self):
+        if not CONFIG['client.save_tree_width']:
             return
         fields = {}
         last_col = None
@@ -934,7 +934,7 @@ class ViewTree(View):
             self.screen.tree_column_width[model_name].update(fields)
 
     def destroy(self):
-        self.save_width_height()
+        self.save_width()
         self.treeview.destroy()
 
     def __sig_switch(self, treeview, path, column):

@@ -46,7 +46,7 @@ class ConfigManager(object):
             'client.title': 'Tryton',
             'client.modepda': False,
             'client.toolbar': 'default',
-            'client.save_width_height': True,
+            'client.save_tree_width': True,
             'client.save_tree_state': True,
             'client.spellcheck': False,
             'client.lang': locale.getdefaultlocale()[0],

@@ -76,7 +76,7 @@ class Main(Gtk.Application):
 
         for name, key in [
                 ('mode-pda', 'client.modepda'),
-                ('save-width-height', 'client.save_width_height'),
+                ('save-tree-width', 'client.save_tree_width'),
                 ('save-tree-state', 'client.save_tree_state'),
                 ('spell-checking', 'client.spellcheck'),
                 ('check-version', 'client.check_version'),
@@ -151,7 +151,7 @@ class Main(Gtk.Application):
 
         form = Gio.Menu.new()
         section.append_submenu(_("Form"), form)
-        form.append(_("Save Width/Height"), 'app.save-width-height')
+        form.append(_("Save Column Width"), 'app.save-tree-width')
         form.append(_("Save Tree State"), 'app.save-tree-state')
         form.append(_("Spell Checking"), 'app.spell-checking')
 

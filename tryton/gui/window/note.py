@@ -23,7 +23,7 @@ class Note(WinForm):
         screen.search_filter()
 
     def destroy(self):
-        self.prev_view.save_width_height()
+        self.prev_view.save_width()
         super(Note, self).destroy()
 
     def callback(self, result):

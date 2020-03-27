@@ -157,10 +157,12 @@ class Screen(SignalEvent):
             return self._domain_parser[view_id]
 
         if view_id not in self.fields_view_tree:
+            context = self.context
+            context['view_tree_width'] = CONFIG['client.save_tree_width']
             try:
                 self.fields_view_tree[view_id] = view_tree = RPCExecute(
                     'model', self.model_name, 'fields_view_get', False, 'tree',
-                    context=self.context)
+                    context=context)
             except RPCException:
                 view_tree = {
                     'fields': {},
@@ -548,9 +550,12 @@ class Screen(SignalEvent):
         elif not view_id and view_type in self.views_preload:
             view = self.views_preload[view_type]
         else:
+            context = self.context
+            context['view_tree_width'] = CONFIG['client.save_tree_width']
             try:
-                view = RPCExecute('model', self.model_name, 'fields_view_get',
-                    view_id, view_type, context=self.context)
+                view = RPCExecute(
+                    'model', self.model_name, 'fields_view_get', view_id,
+                    view_type, context=context)
             except RPCException:
                 return
         return self.add_view(view)
