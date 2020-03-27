@@ -48,6 +48,7 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('preferences', None)
         action.connect('activate', lambda *a: self.preferences())
         self.add_action(action)
+        self.set_accels_for_action('app.preferences', ['<Primary>,'])
 
         action = Gio.SimpleAction.new('menu-search', None)
         action.connect(
@@ -595,6 +596,7 @@ class Main(Gtk.Application):
         section.add(group)
 
         for action, title in [
+                ('app.preferences', _("Preferences")),
                 ('app.menu-search', _("Search menu")),
                 ('app.menu-toggle', _("Toggle menu")),
                 ('app.tab-previous', _("Previous tab"), ),
