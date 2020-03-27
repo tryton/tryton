@@ -648,24 +648,31 @@
                 } else if (!column.col.hasClass('draggable-handle') &&
                     !column.col.hasClass('selection-state') &&
                     !column.col.hasClass('favorite')) {
-                    var width = {
-                        'integer': 6,
-                        'biginteger': 6,
-                        'float': 8,
-                        'numeric': 8,
-                        'selection': 9,
-                        'one2many': 5,
-                        'many2many': 5,
-                        'boolean': 2,
-                        'binary': 20,
-                    }[column.attributes.widget] || 10;
-                    var factor = 1;
-                    if (column.attributes.expand) {
-                        factor += parseInt(column.attributes.expand, 10);
+                    var width, c_width;
+                    if (column.width) {
+                        width = c_width = column.width;
+                    } else {
+                        width = {
+                            'integer': 6,
+                            'biginteger': 6,
+                            'float': 8,
+                            'numeric': 8,
+                            'selection': 9,
+                            'one2many': 5,
+                            'many2many': 5,
+                            'boolean': 2,
+                            'binary': 20,
+                        }[column.attributes.widget] || 10;
+                        var factor = 1;
+                        if (column.attributes.expand) {
+                            factor += parseInt(column.attributes.expand, 10);
+                        }
+                        c_width = width * 100 * factor  + '%';
+                        width *= 10;
                     }
-                    column.col.css('width', width * 100 * factor  + '%');
+                    column.col.css('width', c_width);
+                    min_width += width;
                     column.col.show();
-                    min_width += width * 10;
                 }
             }.bind(this));
             this.table.css('min-width', min_width + 'px');
@@ -2296,10 +2303,15 @@
         class_: 'column-image',
         get_cell: function() {
             var cell = jQuery('<img/>', {
-                'class': this.class_,
+                'class': this.class_ + ' center-block',
                 'tabindex': 0
             });
-            cell.css('width', '100%');
+            this.height = parseInt(this.attributes.height || 100, 10);
+            this.width = parseInt(this.attributes.width || 300, 10);
+            cell.css('max-height', this.height);
+            cell.css('max-width', this.width);
+            cell.css('height', 'auto');
+            cell.css('width', 'auto');
             return cell;
         },
         render: function(record, cell) {
