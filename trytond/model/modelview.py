@@ -463,7 +463,7 @@ class ModelView(Model):
             for page in tree.xpath('//page[not(descendant::*)]'):
                 page.getparent().remove(page)
 
-        if type == 'tree':
+        if type == 'tree' and Transaction().context.get('view_tree_width'):
             ViewTreeWidth = pool.get('ir.ui.view_tree_width')
             viewtreewidth_ids = ViewTreeWidth.search([
                 ('model', '=', cls.__name__),
