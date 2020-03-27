@@ -48,7 +48,7 @@ class Main(Gtk.Application):
         action = Gio.SimpleAction.new('preferences', None)
         action.connect('activate', lambda *a: self.preferences())
         self.add_action(action)
-        self.set_accels_for_action('app.preferences', ['<Primary>,'])
+        self.set_accels_for_action('app.preferences', ['<Primary>comma'])
 
         action = Gio.SimpleAction.new('menu-search', None)
         action.connect(
