@@ -119,6 +119,25 @@ class Main(Gtk.Application):
         self.add_action(action)
         self.set_accels_for_action('app.quit', ['<Primary>q'])
 
+    def do_activate(self):
+        if self.window:
+            self.window.present()
+            return
+
+        self.window = Gtk.ApplicationWindow(application=self, title="Tryton")
+        self.window.set_default_size(960, 720)
+        self.window.maximize()
+        self.window.set_position(Gtk.WindowPosition.CENTER)
+        self.window.set_resizable(True)
+        self.window.set_icon(TRYTON_ICON)
+        self.window.connect("destroy", self.on_quit)
+        self.window.connect("delete_event", self.on_quit)
+
+        self.header = Gtk.HeaderBar.new()
+        self.header.set_show_close_button(True)
+        self.window.set_titlebar(self.header)
+        self.set_title()
+
         menu = Gio.Menu.new()
         menu.append(_("Preferences..."), 'app.preferences')
 
@@ -148,30 +167,9 @@ class Main(Gtk.Application):
         section.append(_("About..."), 'app.about')
         menu.append_section(_("Help"), section)
 
-        section = Gio.Menu.new()
-        section.append(_("Quit"), 'app.quit')
-        menu.append_section(None, section)
-
-        self.set_app_menu(menu)
-
-    def do_activate(self):
-        if self.window:
-            self.window.present()
-            return
-
-        self.window = Gtk.ApplicationWindow(application=self, title="Tryton")
-        self.window.set_default_size(960, 720)
-        self.window.maximize()
-        self.window.set_position(Gtk.WindowPosition.CENTER)
-        self.window.set_resizable(True)
-        self.window.set_icon(TRYTON_ICON)
-        self.window.connect("destroy", self.on_quit)
-        self.window.connect("delete_event", self.on_quit)
-
-        self.header = Gtk.HeaderBar.new()
-        self.header.set_show_close_button(True)
-        self.window.set_titlebar(self.header)
-        self.set_title()
+        primary_menu = Gtk.MenuButton.new()
+        primary_menu.set_menu_model(menu)
+        self.header.pack_end(primary_menu)
 
         menu = Gtk.Button.new()
         menu.set_relief(Gtk.ReliefStyle.NONE)
