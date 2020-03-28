@@ -93,6 +93,14 @@ class CopyMany2ManyReferenceRelation(ModelSQL):
         'Many2ManyReference Target')
 
 
+class CopyBinary(ModelSQL):
+    "Copy Binary"
+    __name__ = 'test.copy.binary'
+    binary = fields.Binary("Binary")
+    binary_id = fields.Binary("Binary with ID", file_id='file_id')
+    file_id = fields.Char("Binary ID")
+
+
 def register(module):
     Pool.register(
         Copy,
@@ -106,4 +114,5 @@ def register(module):
         CopyMany2ManyReference,
         CopyMany2ManyReferenceTarget,
         CopyMany2ManyReferenceRelation,
+        CopyBinary,
         module=module, type_='model')

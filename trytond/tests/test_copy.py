@@ -3,6 +3,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from trytond.model import fields
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
 
@@ -168,6 +169,31 @@ class CopyTestCase(unittest.TestCase):
             [record], default={'many2many': [target.id]})
 
         self.assertSequenceEqual(record_copy.many2many, [target])
+
+    @with_transaction()
+    def test_binary(self):
+        "Test copy binary"
+        pool = Pool()
+        Binary = pool.get('test.copy.binary')
+        record = Binary(binary=fields.Binary.cast(b'data'))
+        record.save()
+
+        record_copy, = Binary.copy([record])
+
+        self.assertEqual(record_copy.binary, record.binary)
+
+    @with_transaction()
+    def test_binary_file_id(self):
+        "Test copy binary with file_id"
+        pool = Pool()
+        Binary = pool.get('test.copy.binary')
+        record = Binary(binary_id=fields.Binary.cast(b'data'))
+        record.save()
+
+        record_copy, = Binary.copy([record])
+
+        self.assertEqual(record_copy.file_id, record.file_id)
+        self.assertEqual(record_copy.binary_id, record.binary_id)
 
 
 def suite():

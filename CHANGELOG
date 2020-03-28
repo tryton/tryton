@@ -1,3 +1,4 @@
+* Do not copy Binary content with file_id
 * Replace memoize with functools.lru_cache
 * Add support for Python 3.8
 * Set all fields readonly for inactive record
