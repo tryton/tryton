@@ -43,6 +43,7 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> hour, = ProductUom.find([('name', '=', 'Hour')])
+    >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
 
     >>> template = ProductTemplate()
@@ -52,6 +53,14 @@ Create product::
     >>> template.list_price = Decimal('20')
     >>> template.save()
     >>> product, = template.products
+
+    >>> template = ProductTemplate()
+    >>> template.name = 'Service'
+    >>> template.default_uom = unit
+    >>> template.type = 'service'
+    >>> template.list_price = Decimal('80')
+    >>> template.save()
+    >>> package, = template.products
 
 Create a Project::
 
@@ -77,17 +86,20 @@ Create a Project::
     >>> task_no_effort.name = "Task 2"
     >>> task_no_effort.type = 'task'
     >>> task_no_effort.effort_duration = None
+    >>> task_no_effort.product = package
+    >>> task_no_effort.list_price
+    Decimal('80.0000')
     >>> project.save()
     >>> task, task_no_effort = project.children
 
 Check project revenue and cost::
 
     >>> project.revenue
-    Decimal('120.00')
+    Decimal('200.00')
     >>> task.revenue
     Decimal('100.00')
     >>> task_no_effort.revenue
-    Decimal('0')
+    Decimal('80.00')
     >>> project.cost
     Decimal('0.00')
     >>> task.cost
@@ -114,11 +126,11 @@ Cost should take in account timesheet lines::
     >>> project.reload()
     >>> task, task_no_effort = project.children
     >>> project.revenue
-    Decimal('120.00')
+    Decimal('200.00')
     >>> task.revenue
     Decimal('100.00')
     >>> task_no_effort.revenue
-    Decimal('0')
+    Decimal('80.00')
     >>> project.cost
     Decimal('50.00')
     >>> task.cost

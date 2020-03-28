@@ -7,7 +7,7 @@ from sql.aggregate import Sum
 from sql.operators import Concat
 
 from trytond.model import fields
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
@@ -20,7 +20,6 @@ class Work(metaclass=PoolMeta):
     product = fields.Many2One('product.product', 'Product',
         domain=[
             ('type', '=', 'service'),
-            ('default_uom_category', '=', Id('product', 'uom_cat_time')),
             ])
     list_price = fields.Numeric('List Price', digits=price_digits)
     revenue = fields.Function(fields.Numeric('Revenue',
@@ -153,13 +152,16 @@ class Work(metaclass=PoolMeta):
 
     @classmethod
     def _get_revenue(cls, works):
-        revenues = {}
+        revenues = dict.fromkeys(map(int, works), Decimal(0))
         for work in works:
-            if work.list_price:
-                revenues[work.id] = work.company.currency.round(
+            if not work.list_price:
+                continue
+            if work.price_list_hour:
+                revenue = work.company.currency.round(
                     work.list_price * Decimal(str(work.effort_hours)))
             else:
-                revenues[work.id] = Decimal(0)
+                revenue = work.list_price
+            revenues[work.id] = work.company.currency.round(revenue)
         return revenues
 
     @fields.depends('company')
@@ -188,9 +190,12 @@ class Work(metaclass=PoolMeta):
         if not self.product:
             return
 
-        hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
-        self.list_price = Uom.compute_price(self.product.default_uom,
-            self.product.list_price, hour_uom)
+        if self.price_list_hour:
+            hour_uom = Uom(ModelData.get_id('product', 'uom_hour'))
+            self.list_price = Uom.compute_price(
+                self.product.default_uom, self.product.list_price, hour_uom)
+        else:
+            self.list_price = self.product.list_price
 
         if self.company:
             user = User(Transaction().user)
@@ -202,3 +207,13 @@ class Work(metaclass=PoolMeta):
         digits = self.__class__.list_price.digits
         self.list_price = self.list_price.quantize(
             Decimal(str(10.0 ** -digits[1])))
+
+    @property
+    def price_list_hour(self):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Category = pool.get('product.uom.category')
+        if not self.product:
+            return
+        time = Category(ModelData.get_id('product', 'uom_cat_time'))
+        return self.product.default_uom_category == time
