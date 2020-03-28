@@ -13,6 +13,6 @@ class Sale(metaclass=PoolMeta):
     def confirm(cls, sales):
         for sale in sales:
             if sale.shipment_method == 'order':
-                sale.party.check_credit_limit(sale.untaxed_amount,
-                    origin=str(sale))
+                party = sale.invoice_party or sale.party
+                party.check_credit_limit(sale.untaxed_amount, origin=str(sale))
         super(Sale, cls).confirm(sales)
