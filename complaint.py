@@ -450,8 +450,6 @@ class Action(ModelSQL, ModelView):
             for invoice_line in invoice_lines:
                 credit_line = invoice_line._credit()
                 credit_lines.append(credit_line)
-                # Remove product as it is not a return
-                credit_line.product = None
                 credit_line.origin = self.complaint
             if isinstance(self.complaint.origin, Line):
                 if self.quantity is not None:
