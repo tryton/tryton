@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 
 class InvoiceLineStockMove(ModelSQL):
@@ -17,12 +17,29 @@ class InvoiceLineStockMove(ModelSQL):
 
 class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
-    stock_moves = fields.Many2Many('account.invoice.line-stock.move',
-        'invoice_line', 'stock_move', 'Stock Moves',
+    stock_moves = fields.Many2Many(
+        'account.invoice.line-stock.move', 'invoice_line', 'stock_move',
+        "Stock Moves",
+        domain=[
+            ('product.default_uom_category',
+                '=', Eval('product_uom_category', -1)),
+            If((Eval('_parent_invoice', {}).get('type') == 'out')
+                | (Eval('invoice_type') == 'out'),
+                ['OR',
+                    ('to_location.type', '=', 'customer'),
+                    ('from_location.type', '=', 'customer'),
+                    ],
+                ['OR',
+                    ('from_location.type', '=', 'supplier'),
+                    ('to_location.type', '=', 'supplier'),
+                    ]),
+            ],
         states={
-            'invisible': Eval('type') != 'line',
+            'invisible': (
+                (Eval('type') != 'line')
+                | ~Eval('product')),
             },
-        depends=['type'])
+        depends=['type', 'product_uom_category', 'invoice', 'invoice_type'])
 
     @property
     def moved_quantity(self):
