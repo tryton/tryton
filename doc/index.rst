@@ -11,6 +11,7 @@ Depending on the state, fields of the record become mandatory. Here is the
 extensive list of the fields, most of them are optional:
 
 - Party: The customer.
+- Contact: The contact who placed the order.
 - Address: The main address of the customer.
 - Description: The description of the lead/opportunity.
 - Number: The internal reference of the lead/opportunity (will be generated

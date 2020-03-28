@@ -40,6 +40,12 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
             }, depends=['state'])
+    contact = fields.Many2One(
+        'party.contact_mechanism', "Contact",
+        search_context={
+            'related_party': Eval('party'),
+            },
+        depends=['party'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
         select=True, depends=['party', 'state'],
@@ -283,6 +289,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         return Sale(
             description=self.description,
             party=self.party,
+            contact=self.contact,
             payment_term=self.payment_term,
             company=self.company,
             invoice_address=self.address,
