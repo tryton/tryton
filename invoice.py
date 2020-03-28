@@ -68,19 +68,20 @@ class InvoiceCorrect(Wizard):
         Line = pool.get('account.invoice.line')
 
         invoice = Invoice(Transaction().context['active_id'])
-        correction, = Invoice.copy([invoice], default={
-                'lines': [],
-                })
-        # Copy each line one by one to get negative and positive lines
-        # following each other
-        for line in self.start.lines:
-            Line.copy([line], default={
-                    'invoice': correction.id,
-                    'quantity': -line.quantity,
+        with Transaction().set_context(_account_invoice_correction=True):
+            correction, = Invoice.copy([invoice], default={
+                    'lines': [],
                     })
-            Line.copy([line], default={
-                    'invoice': correction.id,
-                    })
+            # Copy each line one by one to get negative and positive lines
+            # following each other
+            for line in self.start.lines:
+                Line.copy([line], default={
+                        'invoice': correction.id,
+                        'quantity': -line.quantity,
+                        })
+                Line.copy([line], default={
+                        'invoice': correction.id,
+                        })
         Invoice.update_taxes([correction])
         data = {'res_id': [correction.id]}
         return action, data
