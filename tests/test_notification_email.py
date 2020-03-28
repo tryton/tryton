@@ -64,6 +64,15 @@ class NotificationEmailTestCase(ModuleTestCase):
         notification_email.content = report
         notification_email.save()
 
+    def run_tasks(self):
+        pool = Pool()
+        Queue = pool.get('ir.queue')
+        transaction = Transaction()
+        self.assertTrue(transaction.tasks)
+        while transaction.tasks:
+            task = Queue(transaction.tasks.pop())
+            task.run()
+
     @unittest.skipIf(
         (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
     @with_transaction()
@@ -99,6 +108,7 @@ class NotificationEmailTestCase(ModuleTestCase):
                 notification_module, 'sendmail_transactional') as sendmail, \
                 patch.object(notification_module, 'SMTPDataManager'):
             User.create([{'name': "Michael Scott", 'login': "msc"}])
+            self.run_tasks()
             sendmail.assert_called_once_with(
                 FROM, ['user@example.com'], ANY,
                 datamanager=ANY)
@@ -212,6 +222,7 @@ class NotificationEmailTestCase(ModuleTestCase):
                 notification_module, 'sendmail_transactional') as sendmail, \
                 patch.object(notification_module, 'SMTPDataManager'):
             User.create([{'name': "Michael Scott", 'login': "msc"}])
+            self.run_tasks()
             sendmail.assert_called_once_with(
                 FROM, ['fallback@example.com'], ANY,
                 datamanager=ANY)
