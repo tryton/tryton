@@ -5,6 +5,7 @@ import time
 from sql import Literal, Null, Select
 from sql.aggregate import Count, Max
 from sql.functions import CurrentTimestamp
+from sql.operators import Concat
 
 from trytond.model.exceptions import ValidationError
 from trytond.i18n import gettext
@@ -55,8 +56,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         help='Set a minimum time delay between call to "Action Function" '
         'for the same record.\n'
         'empty for no delay.')
-    action_model = fields.Many2One('ir.model', 'Action Model', required=True)
-    action_function = fields.Char('Action Function', required=True)
+    action = fields.Selection([], "Action", required=True)
     _get_triggers_cache = Cache('ir_trigger.get_triggers')
 
     @classmethod
@@ -81,6 +81,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
         super(Trigger, cls).__register__(module_name)
 
+        table_h = cls.__table_handler__(module_name)
+
         # Migration from 3.4:
         # change minimum_delay into timedelta minimum_time_delay
         if table.column_exist('minimum_delay'):
@@ -94,6 +96,21 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         [delay],
                         where=sql_table.id == id_))
             table.drop_column('minimum_delay')
+
+        # Migration from 5.4: merge action
+        if (table_h.column_exist('action_model')
+                and table_h.column_exist('action_function')):
+            pool = Pool()
+            Model = pool.get('ir.model')
+            model = Model.__table__()
+            action_model = model.select(
+                model.model, where=model.id == sql_table.action_model)
+            cursor.execute(*sql_table.update(
+                    [sql_table.action],
+                    [Concat(action_model, Concat(
+                                '|', sql_table.action_function))]))
+            table_h.drop_column('action_model')
+            table_h.drop_column('action_function')
 
     @classmethod
     def validate(cls, triggers):
@@ -187,7 +204,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         TriggerLog = pool.get('ir.trigger.log')
         Model = pool.get(self.model.model)
-        ActionModel = pool.get(self.action_model.model)
+        model, method = self.action.split('|')
+        ActionModel = pool.get(model)
         cursor = Transaction().connection.cursor()
         trigger_log = TriggerLog.__table__()
 
@@ -255,7 +273,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
 
         records = Model.browse(ids)
         if records:
-            getattr(ActionModel, self.action_function)(records, self)
+            getattr(ActionModel, method)(records, self)
         if self.limit_number or self.minimum_time_delay:
             to_create = []
             for record in records:

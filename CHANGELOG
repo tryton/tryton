@@ -1,3 +1,4 @@
+* Simplify trigger action
 * Run trigger in the queue
 * Do not copy Binary content with file_id
 * Replace memoize with functools.lru_cache
