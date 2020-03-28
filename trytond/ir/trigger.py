@@ -229,7 +229,8 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
         if self.minimum_time_delay:
             new_ids = []
             # Use now from the transaction to compare with create_date
-            cursor.execute(*Select([CurrentTimestamp()]))
+            timestamp_cast = self.__class__.create_date.sql_cast
+            cursor.execute(*Select([timestamp_cast(CurrentTimestamp())]))
             now, = cursor.fetchone()
             if isinstance(now, str):
                 now = cast_datetime(now)
