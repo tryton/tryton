@@ -73,6 +73,7 @@ An Account is defined by these fields:
 - Parent Account
 - Currency
 - Type: The Account Type of the account.
+- Debit Type: The Account Type of the account when debit > credit.
 - Start and End Date: The period for which the account can be used.
 - Replaced By: the account to use after end date.
 - Second currency: Force all moves for the account to have this

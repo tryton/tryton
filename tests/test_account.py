@@ -455,6 +455,78 @@ class AccountTestCase(ModuleTestCase):
                     cash_cur.amount_second_currency, Decimal(50))
 
     @with_transaction()
+    def test_account_type_amount(self):
+        "Test account type amount"
+        pool = Pool()
+        Party = pool.get('party.party')
+        FiscalYear = pool.get('account.fiscalyear')
+        Journal = pool.get('account.journal')
+        Account = pool.get('account.account')
+        Move = pool.get('account.move')
+        Type = pool.get('account.account.type')
+
+        party = Party(name='Party')
+        party.save()
+
+        company = create_company()
+        with set_company(company):
+            fiscalyear = get_fiscalyear(company)
+            fiscalyear.save()
+            FiscalYear.create_period([fiscalyear])
+            period = fiscalyear.periods[0]
+            create_chart(company)
+
+            journal_revenue, = Journal.search([
+                    ('code', '=', 'REV'),
+                    ])
+            revenue, = Account.search([
+                    ('type.revenue', '=', True),
+                    ])
+            receivable, = Account.search([
+                    ('type.receivable', '=', True),
+                    ])
+
+            Move.create([{
+                        'period': period.id,
+                        'journal': journal_revenue.id,
+                        'date': period.start_date,
+                        'lines': [
+                            ('create', [{
+                                        'account': revenue.id,
+                                        'credit': Decimal(100),
+                                        }, {
+                                        'account': receivable.id,
+                                        'debit': Decimal(100),
+                                        'party': party.id,
+                                        }]),
+                            ],
+                        }])
+
+            with Transaction().set_context(fiscalyear=fiscalyear.id):
+                revenue_type = Type(revenue.type)
+                receivable_type = Type(receivable.type)
+
+            # Test type amount
+            self.assertEqual(revenue_type.amount, Decimal(100))
+            self.assertEqual(receivable_type.amount, Decimal(100))
+
+            # Set a debit type on receivable
+            with Transaction().set_context(fiscalyear=fiscalyear.id):
+                debit_receivable_type, = Type.copy([receivable_type])
+            receivable.debit_type = debit_receivable_type
+            receivable.save()
+            self.assertEqual(receivable_type.amount, Decimal(0))
+            self.assertEqual(debit_receivable_type.amount, Decimal(100))
+
+            # Set a debit type on revenue
+            with Transaction().set_context(fiscalyear=fiscalyear.id):
+                debit_revenue_type, = Type.copy([revenue_type])
+            revenue.debit_type = debit_revenue_type
+            revenue.save()
+            self.assertEqual(revenue_type.amount, Decimal(100))
+            self.assertEqual(debit_revenue_type.amount, Decimal(0))
+
+    @with_transaction()
     def test_move_post(self):
         "Test posting move"
         pool = Pool()

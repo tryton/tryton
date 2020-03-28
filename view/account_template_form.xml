@@ -10,7 +10,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="parent"/>
 
     <label name="type"/>
-    <field name="type"/>
+    <group id="types" col="-1">
+        <field name="type"/>
+        <label name="debit_type"/>
+        <field name="debit_type"/>
+    </group>
     <label name="closed"/>
     <field name="closed"/>
     <label name="general_ledger_balance"/>

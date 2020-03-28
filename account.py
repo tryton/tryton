@@ -295,8 +295,18 @@ class Type(
             accounts = Account.search([
                     ('type', 'in', [t.id for t in childs]),
                     ])
+            debit_accounts = Account.search([
+                    ('type', '!=', None),
+                    ('debit_type', 'in', [t.id for t in childs]),
+                    ])
         for account in accounts:
-            type_sum[account.type.id] += (account.credit - account.debit)
+            balance = account.credit - account.debit
+            if not account.debit_type or balance > 0:
+                type_sum[account.type.id] += balance
+        for account in debit_accounts:
+            balance = account.credit - account.debit
+            if balance < 0:
+                type_sum[account.debit_type.id] += balance
 
         for type_ in types:
             childs = cls.search([
@@ -531,6 +541,8 @@ class AccountTemplate(
     __name__ = 'account.account.template'
     type = fields.Many2One(
         'account.account.type.template', "Type", ondelete="RESTRICT")
+    debit_type = fields.Many2One(
+        'account.account.type.template', "Debit Type", ondelete="RESTRICT")
     parent = fields.Many2One('account.account.template', 'Parent', select=True,
             ondelete="RESTRICT")
     childs = fields.One2Many('account.account.template', 'parent', 'Children')
@@ -620,6 +632,11 @@ class AccountTemplate(
                         vals['type'] = template2type.get(template.type.id)
                     else:
                         vals['type'] = None
+                    if template.debit_type:
+                        vals['debit_type'] = template2type.get(
+                            template.debit_type.id)
+                    else:
+                        vals['debit_type'] = None
                     values.append(vals)
                     created.append(template)
 
@@ -724,6 +741,17 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
             ('company', '=', Eval('company')),
             ],
         depends=['company'])
+    debit_type = fields.Many2One(
+        'account.account.type', "Debit Type", ondelete='RESTRICT',
+        states={
+            'readonly': _states['readonly'],
+            'invisible': ~Eval('type'),
+            },
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company', 'type'],
+        help="The type used if not empty and debit > credit.")
     parent = fields.Many2One(
         'account.account', 'Parent', select=True,
         left="left", right="right", ondelete="RESTRICT", states=_states)
@@ -993,7 +1021,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
         return values
 
     __on_change_parent_fields = ['name', 'code', 'company', 'type',
-        'reconcile', 'deferral', 'party_required',
+        'debit_type', 'reconcile', 'deferral', 'party_required',
         'general_ledger_balance', 'taxes']
 
     @fields.depends('parent', *(__on_change_parent_fields
@@ -1109,6 +1137,15 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                             template_type = None
                         if current_type != template_type:
                             vals['type'] = template_type
+                        current_debit_type = (
+                            child.debit_type.id if child.debit_type else None)
+                        if child.template.debit_type:
+                            template_debit_type = template2type.get(
+                                child.template.debit_type.id)
+                        else:
+                            template_debit_type = None
+                        if current_debit_type != template_debit_type:
+                            vals['debit_type'] = template_debit_type
                         if vals:
                             values.append([child])
                             values.append(vals)
@@ -1323,6 +1360,7 @@ class GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
     code = fields.Char('Code')
     company = fields.Many2One('company.company', 'Company')
     type = fields.Many2One('account.account.type', 'Type')
+    debit_type = fields.Many2One('account.account.type', 'Debit Type')
     start_debit = fields.Function(fields.Numeric('Start Debit',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
@@ -2049,12 +2087,14 @@ class AgedBalance(ModelSQL, ModelView):
         reconciliation = Reconciliation.__table__()
         account = Account.__table__()
         type_ = Type.__table__()
+        debit_type = Type.__table__()
 
         company_id = context.get('company')
         date = context.get('date')
         with Transaction().set_context(date=None):
             line_query, _ = MoveLine.query_get(line)
         kind = cls.get_kind(type_)
+        debit_kind = cls.get_kind(debit_type)
         columns = [
             line.party.as_('id'),
             Literal(0).as_('create_uid'),
@@ -2090,11 +2130,13 @@ class AgedBalance(ModelSQL, ModelView):
         return line.join(move, condition=line.move == move.id
             ).join(account, condition=line.account == account.id
             ).join(type_, condition=account.type == type_.id
+            ).join(debit_type, 'LEFT',
+                condition=account.debit_type == debit_type.id
             ).join(reconciliation, 'LEFT',
                 condition=reconciliation.id == line.reconciliation
             ).select(*columns,
                 where=(line.party != Null)
-                & kind
+                & (kind | debit_kind)
                 & ((line.reconciliation == Null)
                     | (reconciliation.date > date))
                 & (move.date <= date)
