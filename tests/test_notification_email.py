@@ -38,9 +38,6 @@ class NotificationEmailTestCase(ModuleTestCase):
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
-        action_model, = Model.search([
-                ('model', '=', 'notification.email'),
-                ])
 
         action = Action(name="Notification Email", type='ir.action.report')
         action.save()
@@ -91,17 +88,13 @@ class NotificationEmailTestCase(ModuleTestCase):
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
-        action_model, = Model.search([
-                ('model', '=', 'notification.email'),
-                ])
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
                     'on_create': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
-                    'action_model': action_model.id,
-                    'action_function': 'trigger',
+                    'action': 'notification.email|trigger',
                     }])
 
         with patch.object(
@@ -140,9 +133,6 @@ class NotificationEmailTestCase(ModuleTestCase):
         self._setup_notification()
         model, = Model.search([
                 ('model', '=', User.__name__),
-                ])
-        action_model, = Model.search([
-                ('model', '=', 'notification.email'),
                 ])
         en, = Language.search([('code', '=', 'en')])
 
@@ -205,17 +195,13 @@ class NotificationEmailTestCase(ModuleTestCase):
         model, = Model.search([
                 ('model', '=', User.__name__),
                 ])
-        action_model, = Model.search([
-                ('model', '=', 'notification.email'),
-                ])
         Trigger.create([{
                     'name': 'Test creation',
                     'model': model.id,
                     'on_create': True,
                     'condition': 'true',
                     'notification_email': notification_email.id,
-                    'action_model': action_model.id,
-                    'action_function': 'trigger',
+                    'action': 'notification.email|trigger',
                     }])
 
         with patch.object(

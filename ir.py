@@ -8,25 +8,27 @@ from trytond.pyson import Eval
 class Trigger(metaclass=PoolMeta):
     __name__ = 'ir.trigger'
 
-    _required = ((Eval('action_function') == 'trigger')
-        & (Eval('action_model_name') == 'notification.email'))
-
     notification_email = fields.Many2One(
         'notification.email', "Email Notification", readonly=True,
         states={
-            'required': _required,
-            'invisible': ~_required,
+            'required': Eval('notification_email_required', False),
+            'invisible': ~Eval('notification_email_required', False),
             },
-        depends=['action_function', 'action_model_name'])
-    action_model_name = fields.Function(
-        fields.Char("Action Model Name"), 'on_change_with_action_model_name')
+        depends=['notification_email_required'])
+    notification_email_required = fields.Function(
+        fields.Boolean("Notification Email Required"),
+        'on_change_with_notification_email_required')
 
-    del _required
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.action.selection.append(
+            ('notification.email|trigger', "Email Notification"),
+            )
 
-    @fields.depends('action_model')
-    def on_change_with_action_model_name(self, name=None):
-        if self.action_model:
-            return self.action_model.model
+    @fields.depends('action')
+    def on_change_with_notification_email_required(self, name=None):
+        return self.action == 'notification.email|trigger'
 
     @fields.depends('notification_email', '_parent_notification_email.model')
     def on_change_notification_email(self):
@@ -41,8 +43,4 @@ class Trigger(metaclass=PoolMeta):
                 pass
             else:
                 self.model = trigger_model
-            notification_model, = Model.search([
-                    ('model', '=', 'notification.email'),
-                    ])
-            self.action_model = notification_model
-            self.action_function = 'trigger'
+            self.action = 'notification.email|trigger'
