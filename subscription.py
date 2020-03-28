@@ -60,16 +60,28 @@ class Subscription(Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         help="The party who subscribes.")
+    contact = fields.Many2One(
+        'party.contact_mechanism', "Contact",
+        search_context={
+            'related_party': Eval('party'),
+            })
+    invoice_party = fields.Many2One('party.party', "Invoice Party",
+        states={
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('lines', [0])),
+            },
+        depends=['state'])
     invoice_address = fields.Many2One(
         'party.address', "Invoice Address",
         domain=[
-            ('party', '=', Eval('party')),
+            ('party', '=', If(Bool(Eval('invoice_party',)),
+                    Eval('invoice_party'), Eval('party'))),
             ],
         states={
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft']),
             },
-        depends=['party', 'state'])
+        depends=['party', 'invoice_party', 'state'])
     payment_term = fields.Many2One(
         'account.invoice.payment_term', "Payment Term",
         states={
@@ -196,12 +208,22 @@ class Subscription(Workflow, ModelSQL, ModelView):
     def default_state(cls):
         return 'draft'
 
-    @fields.depends('party')
+    @fields.depends('party', 'invoice_party')
     def on_change_party(self):
-        self.invoice_address = None
+        if not self.invoice_party:
+            self.invoice_address = None
         if self.party:
-            self.invoice_address = self.party.address_get(type='invoice')
+            if not self.invoice_party:
+                self.invoice_address = self.party.address_get(type='invoice')
             self.payment_term = self.party.customer_payment_term
+
+    @fields.depends('party', 'invoice_party')
+    def on_change_invoice_party(self):
+        if self.invoice_party:
+            self.invoice_address = self.invoice_party.address_get(
+                type='invoice')
+        elif self.party:
+            self.invoice_address = self.party.address_get(type='invoice')
 
     @classmethod
     def set_number(cls, subscriptions):
@@ -362,13 +384,14 @@ class Subscription(Workflow, ModelSQL, ModelView):
     def _get_invoice(self):
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        party = self.invoice_party or self.party
         invoice = Invoice(
             company=self.company,
             type='out',
-            party=self.party,
+            party=party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_receivable_used,
+            account=party.account_receivable_used,
             )
         invoice.on_change_type()
         invoice.payment_term = self.payment_term

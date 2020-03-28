@@ -12,6 +12,8 @@ The invoice is generated based on the consumption of each services. Here is the
 extensive list of the fields:
 
 - Party: The customer.
+- Contact: The contact who placed the order.
+- Invoice Party: An optional different party to invoice.
 - Invoice Address: The invoice address of the customer.
 - Number: The internal reference of the subscription.
 - Reference: The optional external reference of the subscription.
