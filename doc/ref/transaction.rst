@@ -35,6 +35,8 @@ commited.
 
 .. attribute:: Transaction.delete
 
+.. attribute:: Transaction.trigger_records
+
 .. attribute:: Transaction.timestamp
 
 .. attribute:: Transaction.started_at

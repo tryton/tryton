@@ -23,6 +23,18 @@ class TriggerTestCase(unittest.TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
+    def setUp(self):
+        TRIGGER_LOGS.clear()
+
+    def run_tasks(self):
+        pool = Pool()
+        Queue = pool.get('ir.queue')
+        transaction = Transaction()
+        self.assertTrue(transaction.tasks)
+        while transaction.tasks:
+            task = Queue(transaction.tasks.pop())
+            task.run()
+
     @with_transaction()
     def test_constraints(self):
         'Test constraints'
@@ -99,6 +111,7 @@ class TriggerTestCase(unittest.TestCase):
                     'name': 'Test',
                     }])
 
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -113,6 +126,7 @@ class TriggerTestCase(unittest.TestCase):
         triggered, = Triggered.create([{
                     'name': 'Bar',
                     }])
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -120,6 +134,7 @@ class TriggerTestCase(unittest.TestCase):
         triggered, = Triggered.create([{
                     'name': 'Foo',
                     }])
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [])
 
         # With limit number
@@ -130,6 +145,7 @@ class TriggerTestCase(unittest.TestCase):
         triggered, = Triggered.create([{
                     'name': 'Test',
                     }])
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -141,6 +157,7 @@ class TriggerTestCase(unittest.TestCase):
         triggered, = Triggered.create([{
                     'name': 'Test',
                     }])
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -148,11 +165,12 @@ class TriggerTestCase(unittest.TestCase):
         Trigger._get_triggers_cache.clear()
 
     @with_transaction()
-    def test0030on_write(self):
+    def test_on_write(self):
         'Test on_write'
         pool = Pool()
         Model = pool.get('ir.model')
         Trigger = pool.get('ir.trigger')
+        TriggerLog = pool.get('ir.trigger.log')
         Triggered = pool.get('test.triggered')
 
         model, = Model.search([
@@ -178,6 +196,7 @@ class TriggerTestCase(unittest.TestCase):
         Triggered.write([triggered], {
                 'name': 'Foo',
                 })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [])
 
         # Trigger with condition
@@ -191,6 +210,7 @@ class TriggerTestCase(unittest.TestCase):
         Triggered.write([triggered], {
                 'name': 'Bar',
                 })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -198,12 +218,14 @@ class TriggerTestCase(unittest.TestCase):
         Triggered.write([triggered], {
                 'name': 'Bar',
                 })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [])
 
         # Different change in condition
         Triggered.write([triggered], {
                 'name': 'Foo',
                 })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [])
 
         # With limit number
@@ -225,6 +247,7 @@ class TriggerTestCase(unittest.TestCase):
         Triggered.write([triggered], {
                 'name': 'Bar',
                 })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -240,6 +263,7 @@ class TriggerTestCase(unittest.TestCase):
             Triggered.write([triggered], {
                     'name': name,
                     })
+        self.run_tasks()
         self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
@@ -251,22 +275,33 @@ class TriggerTestCase(unittest.TestCase):
                     }])
         for name in ('Bar', 'Foo'):
             Triggered.write([triggered], {
-                    'name': name,
-                    })
-        time.sleep(1.2)
+                'name': name,
+                })
+            self.run_tasks()
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
+        TRIGGER_LOGS.pop()
+        Transaction().trigger_records.clear()
+
+        # Make time pass by moving back in time the log creation
+        trigger_log = TriggerLog.__table__()
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*trigger_log.update(
+                [trigger_log.create_date],
+                [datetime.datetime.now() - datetime.timedelta(days=1)],
+                where=trigger_log.record_id == triggered.id))
+
         Triggered.write([triggered], {
                 'name': 'Bar',
                 })
-        self.assertEqual(TRIGGER_LOGS,
-            [([triggered], trigger), ([triggered], trigger)])
-        TRIGGER_LOGS.pop()
+        self.run_tasks()
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Restart the cache on the get_triggers method of ir.trigger
         Trigger._get_triggers_cache.clear()
 
     @with_transaction()
-    def test0040on_delete(self):
+    def test_on_delete(self):
         'Test on_delete'
         pool = Pool()
         Model = pool.get('ir.model')
@@ -389,7 +424,7 @@ class TriggerTestCase(unittest.TestCase):
                     'name': 'Test',
                     }])
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Trigger with condition
@@ -404,7 +439,7 @@ class TriggerTestCase(unittest.TestCase):
                 'name': 'Bar',
                 })
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Non matching condition
@@ -412,7 +447,7 @@ class TriggerTestCase(unittest.TestCase):
                 'name': 'Foo',
                 })
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [])
+        self.assertEqual(TRIGGER_LOGS, [])
 
         # With limit number
         Trigger.write([trigger], {
@@ -421,7 +456,7 @@ class TriggerTestCase(unittest.TestCase):
                 })
         Trigger.trigger_time()
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
 
         # Delete trigger logs of limit number test
@@ -436,7 +471,7 @@ class TriggerTestCase(unittest.TestCase):
                 })
         Trigger.trigger_time()
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger)])
+        self.assertEqual(TRIGGER_LOGS, [([triggered], trigger)])
         TRIGGER_LOGS.pop()
         Transaction().delete = {}
 
@@ -449,10 +484,18 @@ class TriggerTestCase(unittest.TestCase):
                 'minimum_time_delay': datetime.timedelta(seconds=1),
                 })
         Trigger.trigger_time()
-        time.sleep(1.2)
+
+        # Make time pass by moving back in time the log creation
+        trigger_log = TriggerLog.__table__()
+        cursor = Transaction().connection.cursor()
+        cursor.execute(*trigger_log.update(
+                [trigger_log.create_date],
+                [datetime.datetime.now() - datetime.timedelta(days=1)],
+                where=trigger_log.record_id == triggered.id))
+
         Trigger.trigger_time()
-        self.assertTrue(TRIGGER_LOGS == [([triggered], trigger),
-                ([triggered], trigger)])
+        self.assertEqual(
+            TRIGGER_LOGS, [([triggered], trigger), ([triggered], trigger)])
         TRIGGER_LOGS.pop()
         TRIGGER_LOGS.pop()
         Transaction().delete = {}

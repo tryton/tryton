@@ -166,12 +166,7 @@ class ModelStorage(Model):
         if not triggers:
             return
         for trigger in triggers:
-            triggers = []
-            for record in records:
-                if Trigger.eval(trigger, record):
-                    triggers.append(record)
-            if triggers:
-                Trigger.trigger_action(triggers, trigger)
+            trigger.queue_trigger_action(records)
 
     @classmethod
     def read(cls, ids, fields_names):
@@ -251,14 +246,8 @@ class ModelStorage(Model):
         Trigger write actions.
         eligibles is a dictionary of the lists of eligible records by triggers
         '''
-        Trigger = Pool().get('ir.trigger')
         for trigger, records in eligibles.items():
-            triggered = []
-            for record in records:
-                if Trigger.eval(trigger, record):
-                    triggered.append(record)
-            if triggered:
-                Trigger.trigger_action(triggered, trigger)
+            trigger.queue_trigger_action(records)
 
     @classmethod
     def index_set_field(cls, name):
@@ -314,12 +303,8 @@ class ModelStorage(Model):
         if not triggers:
             return
         for trigger in triggers:
-            triggered = []
-            for record in records:
-                if Trigger.eval(trigger, record):
-                    triggered.append(record)
-            if triggered:
-                Trigger.trigger_action(triggered, trigger)
+            # Do not queue because records will be deleted
+            trigger.trigger_action(records)
 
     @classmethod
     def copy(cls, records, default=None):

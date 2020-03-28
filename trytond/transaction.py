@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import logging
 import time
+from collections import defaultdict
 from threading import local
 from sql import Flavor
 
@@ -54,6 +55,7 @@ class Transaction(object):
     create_records = None
     delete_records = None
     delete = None  # TODO check to merge with delete_records
+    trigger_records = None
     timestamp = None
     started_at = None
 
@@ -114,6 +116,7 @@ class Transaction(object):
         self.create_records = {}
         self.delete_records = {}
         self.delete = {}
+        self.trigger_records = defaultdict(set)
         self.timestamp = {}
         self.counter = 0
         self._datamanagers = []
@@ -157,6 +160,7 @@ class Transaction(object):
                     self.create_records = None
                     self.delete_records = None
                     self.delete = None
+                    self.trigger_records = None
                     self.timestamp = None
                     self._datamanagers = []
 

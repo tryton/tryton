@@ -5,7 +5,8 @@ Triggers
 ========
 
 Triggers allow to define methods of :class:`trytond.model.model.Model` that are
-called when one of those events happen to a record:
+called at the end of the transaction when one of those events happen to a
+record:
 
 * On Creation
 * On Modification
