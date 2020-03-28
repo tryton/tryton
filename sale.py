@@ -10,7 +10,8 @@ class Sale(metaclass=PoolMeta):
 
     @property
     def invoice_grouping_method(self):
-        return self.party.sale_invoice_grouping_method
+        party = self.invoice_party or self.party
+        return party.sale_invoice_grouping_method
 
     @property
     def _invoice_grouping_fields(self):
