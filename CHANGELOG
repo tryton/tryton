@@ -1,3 +1,4 @@
+* Keep stock moves when crediting an invoice
 * Limit links between invoice line and stock moves
 
 Version 5.4.0 - 2019-11-04

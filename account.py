@@ -3,6 +3,7 @@
 from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
+from trytond.transaction import Transaction
 
 
 class InvoiceLineStockMove(ModelSQL):
@@ -59,5 +60,11 @@ class InvoiceLine(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
-        default.setdefault('stock_moves', None)
+        if not Transaction().context.get('_account_invoice_correction'):
+            default.setdefault('stock_moves', None)
         return super(InvoiceLine, cls).copy(lines, default=default)
+
+    def _credit(self):
+        line = super()._credit()
+        line.stock_moves = self.stock_moves
+        return line
