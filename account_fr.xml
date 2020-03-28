@@ -5140,30 +5140,30 @@
         <record model="account.account.template" id="443">
             <field name="name">Opérations particulières avec l'État, les collectivités publiques, les organismes internationaux</field>
             <field name="code">443</field>
-            <!-- TODO if credit dettes_fiscales_sociales -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="44"/>
         </record>
         <record model="account.account.template" id="4431">
             <field name="name">Créances sur l'État résultant de la suppression de la règle du décalage d'un mois en matière de T.V.A.</field>
             <field name="code">4431</field>
-            <!-- TODO if credit dettes_fiscales_sociales -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="443"/>
         </record>
         <record model="account.account.template" id="4438">
             <field name="name">Intérêts courus sur créances figurant au compte 4431</field>
             <field name="code">4438</field>
-            <!-- TODO if credit dettes_fiscales_sociales -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="443"/>
         </record>
         <record model="account.account.template" id="444">
             <field name="name">État - Impôts sur les bénéfices</field>
             <field name="code">444</field>
-            <!-- TODO if debit creances_autres -->
             <field name="type" ref="dettes_fiscales_sociales"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="44"/>
         </record>
         <record model="account.account.template" id="445">
@@ -5342,60 +5342,60 @@
         <record model="account.account.template" id="451">
             <field name="name">Groupe</field>
             <field name="code">451</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="45"/>
         </record>
         <record model="account.account.template" id="455">
             <field name="name">Associés - Comptes courants</field>
             <field name="code">455</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="45"/>
         </record>
         <record model="account.account.template" id="4551">
             <field name="name">Principal</field>
             <field name="code">4551</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="455"/>
         </record>
         <record model="account.account.template" id="4558">
             <field name="name">Intérêts courus</field>
             <field name="code">4558</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="455"/>
         </record>
         <record model="account.account.template" id="456">
             <field name="name">Associés - Opérations sur le capital</field>
             <field name="code">456</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="45"/>
         </record>
         <record model="account.account.template" id="4561">
             <field name="name">Associés - Comptes d'apport en société</field>
             <field name="code">4561</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="456"/>
         </record>
         <record model="account.account.template" id="45611">
             <field name="name">Apports en nature</field>
             <field name="code">45611</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="4561"/>
         </record>
         <record model="account.account.template" id="45615">
             <field name="name">Apports en numéraire</field>
             <field name="code">45615</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="4561"/>
         </record>
         <record model="account.account.template" id="4562">
@@ -5420,29 +5420,29 @@
         <record model="account.account.template" id="4563">
             <field name="name">Associés - Versements reçus sur augmentation de capital</field>
             <field name="code">4563</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="456"/>
         </record>
         <record model="account.account.template" id="4564">
             <field name="name">Associés - Versements anticipés</field>
             <field name="code">4564</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="456"/>
         </record>
         <record model="account.account.template" id="4566">
             <field name="name">Actionnaires défaillants</field>
             <field name="code">4566</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="456"/>
         </record>
         <record model="account.account.template" id="4567">
             <field name="name">Associés - Capital à rembourser</field>
             <field name="code">4567</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="456"/>
         </record>
         <record model="account.account.template" id="457">
@@ -5454,23 +5454,23 @@
         <record model="account.account.template" id="458">
             <field name="name">Associés - Opérations faites en commun et en G.I.E.</field>
             <field name="code">458</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="45"/>
         </record>
         <record model="account.account.template" id="4581">
             <field name="name">Opérations courantes</field>
             <field name="code">4581</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="458"/>
         </record>
         <record model="account.account.template" id="4588">
             <field name="name">Intérêts courus</field>
             <field name="code">4588</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="parent" ref="458"/>
         </record>
         <record model="account.account.template" id="46">
@@ -5499,8 +5499,8 @@
         <record model="account.account.template" id="467">
             <field name="name">Autres comptes débiteurs ou créditeurs</field>
             <field name="code">467</field>
-            <!-- TODO if credit emprunts_dettes_financieres_diverses -->
-            <field name="type" ref="creances_autres"/>
+            <field name="type" ref="emprunts_dettes_financieres_diverses"/>
+            <field name="debit_type" ref="creances_autres"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="46"/>
         </record>
@@ -5881,30 +5881,30 @@
         <record model="account.account.template" id="fr_pcg_cash">
             <field name="name">Banques</field>
             <field name="code">512</field>
-            <!-- TODO if credit emprunts_dettes_etablissements_credit -->
-            <field name="type" ref="disponibilites"/>
+            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="debit_type" ref="disponibilites"/>
             <field name="closed" eval="True"/>
             <field name="parent" ref="51"/>
         </record>
         <record model="account.account.template" id="5121">
             <field name="name">Comptes en monnaie nationale</field>
             <field name="code">5121</field>
-            <!-- TODO if credit emprunts_dettes_etablissements_credit -->
-            <field name="type" ref="disponibilites"/>
+            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="debit_type" ref="disponibilites"/>
             <field name="parent" ref="fr_pcg_cash"/>
         </record>
         <record model="account.account.template" id="5124">
             <field name="name">Comptes en devises</field>
             <field name="code">5124</field>
-            <!-- TODO if credit emprunts_dettes_etablissements_credit -->
-            <field name="type" ref="disponibilites"/>
+            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="debit_type" ref="disponibilites"/>
             <field name="parent" ref="fr_pcg_cash"/>
         </record>
         <record model="account.account.template" id="514">
             <field name="name">Chèques postaux</field>
             <field name="code">514</field>
-            <!-- TODO if credit emprunts_dettes_etablissements_credit -->
-            <field name="type" ref="disponibilites"/>
+            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="debit_type" ref="disponibilites"/>
             <field name="parent" ref="51"/>
         </record>
         <record model="account.account.template" id="515">
@@ -5922,8 +5922,8 @@
         <record model="account.account.template" id="517">
             <field name="name">Autres organismes financiers</field>
             <field name="code">517</field>
-            <!-- TODO if credit emprunts_dettes_etablissements_credit -->
-            <field name="type" ref="disponibilites"/>
+            <field name="type" ref="emprunts_dettes_etablissements_credit"/>
+            <field name="debit_type" ref="disponibilites"/>
             <field name="parent" ref="51"/>
         </record>
         <record model="account.account.template" id="518">
@@ -5971,8 +5971,8 @@
         <record model="account.account.template" id="52">
             <field name="name">Instruments de trésorerie</field>
             <field name="code">52</field>
-            <!-- TODO if debit actif_circulant_instruments_tresorerie -->
-            <!-- TODO if credit dettes_instruments_tresorerie -->
+            <field name="type" ref="actif_circulant_instruments_tresorerie"/>
+            <field name="debit_type" ref="dettes_instruments_tresorerie"/>
             <field name="parent" ref="5"/>
         </record>
         <record model="account.account.template" id="53">
