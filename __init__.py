@@ -17,6 +17,7 @@ def register():
         party.Party,
         module='account_deposit', type_='model')
     Pool.register(
+        account.Reconcile,
         invoice.DepositRecall,
         party.Erase,
         module='account_deposit', type_='wizard')
