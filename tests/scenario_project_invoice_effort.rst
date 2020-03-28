@@ -87,10 +87,11 @@ Create account category::
     >>> account_category.account_revenue = revenue
     >>> account_category.save()
 
-Create product::
+Create products::
 
     >>> ProductUom = Model.get('product.uom')
     >>> hour, = ProductUom.find([('name', '=', 'Hour')])
+    >>> unit, = ProductUom.find([('name', '=', 'Unit')])
     >>> ProductTemplate = Model.get('product.template')
 
     >>> template = ProductTemplate()
@@ -101,6 +102,15 @@ Create product::
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
+
+    >>> template = ProductTemplate()
+    >>> template.name = 'Service Fixed'
+    >>> template.default_uom = unit
+    >>> template.type = 'service'
+    >>> template.list_price = Decimal('50')
+    >>> template.account_category = account_category
+    >>> template.save()
+    >>> product_fixed, = template.products
 
 Create a Project::
 
@@ -122,8 +132,13 @@ Create a Project::
     >>> task_no_effort.name = "Task 2"
     >>> task_no_effort.type = 'task'
     >>> task_no_effort.effort_duration = None
+    >>> task_fixed = project.children.new()
+    >>> task_fixed.name = "Task 2"
+    >>> task_fixed.type = 'task'
+    >>> task_fixed.effort_duration = datetime.timedelta(hours=2)
+    >>> task_fixed.product = product_fixed
     >>> project.save()
-    >>> task, task_no_effort = project.children
+    >>> task, task_no_effort, task_fixed = project.children
 
 Check project amounts::
 
@@ -160,6 +175,8 @@ Do project::
     >>> set_user(project_user)
     >>> task_no_effort.progress = 1
     >>> task_no_effort.save()
+    >>> task_fixed.progress = 1
+    >>> task_fixed.save()
     >>> project.progress = 1
     >>> project.save()
 
@@ -167,7 +184,7 @@ Check project amounts::
 
     >>> project.reload()
     >>> project.amount_to_invoice
-    Decimal('20.00')
+    Decimal('70.00')
     >>> project.invoiced_amount
     Decimal('100.00')
 
@@ -178,4 +195,4 @@ Invoice again project::
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
-    Decimal('120.00')
+    Decimal('170.00')

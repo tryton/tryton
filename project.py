@@ -15,7 +15,7 @@ from sql.operators import Concat
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval, Bool, PYSONEncoder
+from trytond.pyson import Eval, Bool, If, Id, PYSONEncoder
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateAction
@@ -36,8 +36,14 @@ class Effort:
     def _get_quantity_to_invoice_effort(cls, works):
         quantities = {}
         for work in works:
-            if work.progress == 1 and not work.invoice_line:
-                quantities[work.id] = work.effort_hours
+            if (work.progress == 1
+                    and work.list_price
+                    and not work.invoice_line):
+                if work.price_list_hour:
+                    quantity = work.effort_hours
+                else:
+                    quantity = 1
+                quantities[work.id] = work.unit_to_invoice.round(quantity)
         return quantities
 
     @classmethod
@@ -58,9 +64,14 @@ class Effort:
                 invoice_line = id2invoice_lines[work.invoice_line.id]
                 invoice_currency = (invoice_line.invoice.currency
                     if invoice_line.invoice else invoice_line.currency)
-                amounts[work.id] = Currency.compute(invoice_currency,
-                    Decimal(str(work.effort_hours)) * invoice_line.unit_price,
-                    currency)
+                if work.price_list_hour:
+                    amount = (
+                        Decimal(str(work.effort_hours))
+                        * invoice_line.unit_price)
+                else:
+                    amount = invoice_line.unit_price
+                amounts[work.id] = Currency.compute(
+                    invoice_currency, amount, currency)
             else:
                 amounts[work.id] = Decimal(0)
         return amounts
@@ -112,13 +123,19 @@ class Progress:
                     (work.progress or 0)
                     - invoiced_progress.get(work.id, 0.0))
                 if delta > 0:
-                    quantities[work.id] = delta * work.effort_hours
+                    quantity = delta
+                    if work.price_list_hour:
+                        quantity *= work.effort_hours
+                    quantities[work.id] = work.unit_to_invoice.round(quantity)
         return quantities
 
     @property
     def progress_to_invoice(self):
         if self.quantity_to_invoice:
-            return self.quantity_to_invoice / self.effort_hours
+            if self.price_list_hour:
+                return self.quantity_to_invoice / self.effort_hours
+            else:
+                return self.quantity_to_invoice
 
     @classmethod
     def _get_invoiced_amount_progress(cls, works):
@@ -150,8 +167,10 @@ class Progress:
             for work_id, amount in cursor.fetchall():
                 if not isinstance(amount, Decimal):
                     amount = Decimal(str(amount))
-                amounts[work_id] = (
-                    amount * Decimal(str(ids2work[work_id].effort_hours)))
+                work = ids2work[work_id]
+                if work.price_list_hour:
+                    amount *= Decimal(str(work.effort_hours))
+                amounts[work_id] = amount
 
             cursor.execute(*table.join(company,
                     condition=table.company == company.id
@@ -188,6 +207,14 @@ class Timesheet:
         super().__setup__()
         cls.project_invoice_method.selection.append(
             ('timesheet', 'On Timesheet'))
+        cls.product.domain = [
+            cls.product.domain,
+            If(Eval('invoice_method') == 'timesheet',
+                ('default_uom_category', '=', Id('product', 'uom_cat_time')),
+                ()),
+            ]
+        if 'invoice_method' not in cls.product.depends:
+            cls.product.depends.append('invoice_method')
 
     @classmethod
     def _get_quantity_to_invoice_timesheet(cls, works):
@@ -215,7 +242,7 @@ class Timesheet:
             duration = durations[work.id]
             if work.list_price:
                 hours = duration.total_seconds() / 60 / 60
-                quantities[work.id] = hours
+                quantities[work.id] = work.unit_to_invoice.round(hours)
         return quantities
 
     @classmethod
@@ -481,7 +508,8 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         "Return a invoice line for the lines"
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
-        Uom = pool.get('product.uom')
+        AccountConfiguration = pool.get('account.configuration')
+        account_config = AccountConfiguration(1)
 
         quantity = sum(l['quantity'] for l in lines)
         product = key['product']
@@ -489,24 +517,32 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         invoice_line = InvoiceLine()
         invoice_line.type = 'line'
         invoice_line.description = key['description']
-        invoice_line.account = product.account_revenue_used
-        if (key['unit']
-                and key['unit'].category == product.default_uom.category):
-            invoice_line.product = product
-            invoice_line.unit_price = Uom.compute_price(
-                key['unit'], key['unit_price'], product.default_uom)
-            invoice_line.quantity = Uom.compute_qty(
-                key['unit'], quantity, product.default_uom)
-            invoice_line.unit = product.default_uom
+        if product:
+            invoice_line.account = product.account_revenue_used
+            if not invoice_line.account:
+                raise InvoicingError(
+                    gettext(
+                        'project_invoice.msg_product_missing_account_revenue',
+                        work=self.rec_name,
+                        product=product.rec_name))
         else:
-            invoice_line.unit_price = key['unit_price']
-            invoice_line.quantity = quantity
-            invoice_line.unit = key['unit']
+            invoice_line.account = account_config.get_multivalue(
+                'default_category_account_revenue')
+            if not invoice_line.account:
+                raise InvoicingError(
+                    gettext('project_invoice.msg_missing_account_revenue',
+                        work=self.rec_name))
+        invoice_line.product = product
+        invoice_line.unit_price = key['unit_price']
+        invoice_line.quantity = quantity
+        invoice_line.unit = key['unit']
 
         taxes = []
         pattern = invoice_line._get_tax_rule_pattern()
         party = invoice.party
-        for tax in product.customer_taxes_used:
+        original_taxes = (
+            product.customer_taxes_used if product else invoice.account.taxes)
+        for tax in original_taxes:
             if party.customer_tax_rule:
                 tax_ids = party.customer_tax_rule.apply(tax, pattern)
                 if tax_ids:
@@ -543,11 +579,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
 
     def _get_lines_to_invoice(self):
         if self.quantity_to_invoice:
-            if not self.product:
-                raise InvoicingError(
-                    gettext('project_invoice.msg_missing_product',
-                        work=self.rec_name))
-            elif self.invoice_unit_price is None:
+            if self.invoice_unit_price is None:
                 raise InvoicingError(
                     gettext('project_invoice.msg_missing_list_price',
                         work=self.rec_name))
@@ -570,7 +602,10 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         pool = Pool()
         ModelData = pool.get('ir.model.data')
         Uom = pool.get('product.uom')
-        return Uom(ModelData.get_id('product', 'uom_hour'))
+        if self.price_list_hour:
+            return Uom(ModelData.get_id('product', 'uom_hour'))
+        elif self.product:
+            return self.product.default_uom
 
     def get_origins_to_invoice(self):
         return super().get_origins_to_invoice()

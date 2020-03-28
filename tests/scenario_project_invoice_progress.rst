@@ -91,6 +91,10 @@ Create product::
 
     >>> ProductUom = Model.get('product.uom')
     >>> hour, = ProductUom.find([('name', '=', 'Hour')])
+    >>> unit, = ProductUom.find([('name', '=', 'Unit')])
+    >>> unit.rounding = 0.01
+    >>> unit.digits = 2
+    >>> unit.save()
     >>> ProductTemplate = Model.get('product.template')
 
     >>> template = ProductTemplate()
@@ -101,6 +105,15 @@ Create product::
     >>> template.account_category = account_category
     >>> template.save()
     >>> product, = template.products
+
+    >>> template = ProductTemplate()
+    >>> template.name = 'Service Fixed'
+    >>> template.default_uom = unit
+    >>> template.type = 'service'
+    >>> template.list_price = Decimal('50')
+    >>> template.account_category = account_category
+    >>> template.save()
+    >>> product_fixed, = template.products
 
 Create a Project::
 
@@ -114,14 +127,18 @@ Create a Project::
     >>> project.project_invoice_method = 'progress'
     >>> project.product = product
     >>> project.effort_duration = datetime.timedelta(hours=1)
-    >>> task = ProjectWork()
+    >>> task = project.children.new()
     >>> task.name = 'Task 1'
     >>> task.type = 'task'
     >>> task.product = product
     >>> task.effort_duration = datetime.timedelta(hours=5)
-    >>> project.children.append(task)
+    >>> task_fixed = project.children.new()
+    >>> task_fixed.name = 'Task 2'
+    >>> task_fixed.type = 'task'
+    >>> task_fixed.product = product
+    >>> task_fixed.product = product_fixed
     >>> project.save()
-    >>> task, = project.children
+    >>> task, task_fixed = project.children
 
 Check project amounts::
 
@@ -135,12 +152,14 @@ Do 50% of task::
 
     >>> task.progress = 0.5
     >>> task.save()
+    >>> task_fixed.progress = 0.5
+    >>> task_fixed.save()
 
 Check project amounts::
 
     >>> project.reload()
     >>> project.amount_to_invoice
-    Decimal('50.00')
+    Decimal('75.00')
     >>> project.invoiced_amount
     Decimal('0.00')
 
@@ -151,13 +170,15 @@ Invoice project::
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
-    Decimal('50.00')
+    Decimal('75.00')
 
-Do 75% of task and 80% of project::
+Do 75% and 90% of tasks and 80% of project::
 
     >>> set_user(project_user)
     >>> task.progress = 0.75
     >>> task.save()
+    >>> task_fixed.progress = 0.9
+    >>> task_fixed.save()
     >>> project.progress = 0.80
     >>> project.save()
 
@@ -165,9 +186,9 @@ Check project amounts::
 
     >>> project.reload()
     >>> project.amount_to_invoice
-    Decimal('41.00')
+    Decimal('61.00')
     >>> project.invoiced_amount
-    Decimal('50.00')
+    Decimal('75.00')
 
 Invoice again project::
 
@@ -176,4 +197,4 @@ Invoice again project::
     >>> project.amount_to_invoice
     Decimal('0.00')
     >>> project.invoiced_amount
-    Decimal('91.00')
+    Decimal('136.00')

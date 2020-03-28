@@ -1,3 +1,4 @@
+* Manage invoicing of non-time based products
 * Base invoicing on quantity and price
 * Remove duration fields
 
