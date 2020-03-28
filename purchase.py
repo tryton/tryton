@@ -107,13 +107,28 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         select=True, depends=['state'])
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
+    contact = fields.Many2One(
+        'party.contact_mechanism', "Contact",
+        search_context={
+            'related_party': Eval('party'),
+            },
+        depends=['party'])
+    invoice_party = fields.Many2One('party.party', "Invoice Party",
+        states={
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('lines', [0])),
+            },
+        depends=['state'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-        domain=[('party', '=', Eval('party'))],
+        domain=[
+            ('party', '=', If(Bool(Eval('invoice_party')),
+                    Eval('invoice_party'), Eval('party'))),
+            ],
         states={
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
             },
-        depends=['state', 'party'])
+        depends=['party', 'invoice_party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')], states=_states,
         depends=_depends)
@@ -368,26 +383,30 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'payment_term', 'lines')
+    @fields.depends('party', 'invoice_party', 'payment_term', 'lines')
     def on_change_party(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
         cursor = Transaction().connection.cursor()
         table = self.__table__()
-        self.invoice_address = None
+        if not self.invoice_party:
+            self.invoice_address = None
         self.payment_term = self.default_payment_term()
         if not self.lines:
             self.currency = self.default_currency()
             self.currency_digits = self.default_currency_digits()
-        self.invoice_address = None
         if self.party:
-            self.invoice_address = self.party.address_get(type='invoice')
+            if not self.invoice_party:
+                self.invoice_address = self.party.address_get(type='invoice')
             if self.party.supplier_payment_term:
                 self.payment_term = self.party.supplier_payment_term
 
             if not self.lines:
+                invoice_party = (
+                    self.invoice_party.id if self.invoice_party else None)
                 subquery = table.select(table.currency,
-                    where=table.party == self.party.id,
+                    where=(table.party == self.party.id)
+                    & (table.invoice_party == invoice_party),
                     order_by=table.id,
                     limit=10)
                 cursor.execute(*subquery.select(subquery.currency,
@@ -398,6 +417,14 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
                     currency_id, = row
                     self.currency = Currency(currency_id)
                     self.currency_digits = self.currency.digits
+
+    @fields.depends('party', 'invoice_party')
+    def on_change_invoice_party(self):
+        if self.invoice_party:
+            self.invoice_address = self.invoice_party.address_get(
+                type='invoice')
+        elif self.party:
+            self.invoice_address = self.party.address_get(type='invoice')
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):
@@ -702,15 +729,16 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             journal, = journals
         else:
             journal = None
+        party = self.invoice_party or self.party
 
         return Invoice(
             company=self.company,
             type='in',
             journal=journal,
-            party=self.party,
+            party=party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_payable_used,
+            account=party.account_payable_used,
             payment_term=self.payment_term,
             )
 
@@ -1169,7 +1197,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 self.purchase.company.id if self.purchase.company else -1),
             }
 
-    @fields.depends('product', 'unit', 'purchase', '_parent_purchase.party',
+    @fields.depends('product', 'unit', 'purchase',
+        '_parent_purchase.party', '_parent_purchase.invoice_party',
         'product_supplier', methods=['compute_taxes', 'compute_unit_price',
             '_get_product_supplier_pattern'])
     def on_change_product(self):
@@ -1177,8 +1206,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
 
         party = None
-        if self.purchase and self.purchase.party:
-            party = self.purchase.party
+        if self.purchase:
+            party = self.purchase.invoice_party or self.purchase.party
 
         # Set taxes before unit_price to have taxes in context of purchase
         # price

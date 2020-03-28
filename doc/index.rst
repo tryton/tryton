@@ -13,6 +13,8 @@ product and a quantity. Here is the extensive list of the fields, most
 of them are optional or completed with sensible default values:
 
 - Party: The supplier.
+- Contact: The contact who received the order.
+- Invoice Party: An optional different party that sends the invoice.
 - Invoice Address: The invoice address of the supplier.
 - Supplier Reference: Allow to keep track of the supplier reference
   for this order.

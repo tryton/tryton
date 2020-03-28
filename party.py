@@ -41,6 +41,7 @@ class PartyReplace(metaclass=PoolMeta):
         return super(PartyReplace, cls).fields_to_replace() + [
             ('purchase.product_supplier', 'party'),
             ('purchase.purchase', 'party'),
+            ('purchase.purchase', 'invoice_party'),
             ]
 
 

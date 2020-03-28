@@ -4,10 +4,15 @@ this repository contains the full copyright notices and license terms. -->
 <form col="6">
     <label name="party"/>
     <field name="party"/>
-    <label name="invoice_address"/>
-    <field name="invoice_address"/>
+    <label name="contact"/>
+    <field name="contact"/>
     <label name="number"/>
     <field name="number"/>
+    <label name="invoice_party"/>
+    <field name="invoice_party"/>
+    <label name="invoice_address"/>
+    <field name="invoice_address"/>
+    <newline/>
     <label name="description"/>
     <field name="description" colspan="3"/>
     <label name="reference"/>
