@@ -1606,7 +1606,7 @@ class Reconcile(Wizard):
                     )))
         return [a for a, in cursor.fetchall()]
 
-    def get_parties(self, account):
+    def get_parties(self, account, _balanced=False):
         'Return a list party to reconcile for the account'
         pool = Pool()
         Line = pool.get('account.move.line')
@@ -1620,18 +1620,22 @@ class Reconcile(Wizard):
             return list({l.party for l in lines if l.account == account})
 
         balance = line.debit - line.credit
+        if _balanced:
+            having = Sum(balance) == 0
+        else:
+            having = ((
+                    Sum(Case((balance > 0, 1), else_=0)) > 0)
+                & (Sum(Case((balance < 0, 1), else_=0)) > 0)
+                | Case((account.type.receivable, Sum(balance) < 0),
+                    else_=False)
+                | Case((account.type.payable, Sum(balance) > 0),
+                    else_=False)
+                )
         cursor.execute(*line.select(line.party,
                 where=(line.reconciliation == Null)
                 & (line.account == account.id),
                 group_by=line.party,
-                having=((
-                        Sum(Case((balance > 0, 1), else_=0)) > 0)
-                    & (Sum(Case((balance < 0, 1), else_=0)) > 0)
-                    | Case((account.type.receivable, Sum(balance) < 0),
-                        else_=False)
-                    | Case((account.type.payable, Sum(balance) > 0),
-                        else_=False)
-                    )))
+                having=having))
         return [p for p, in cursor.fetchall()]
 
     def transition_next_(self):
