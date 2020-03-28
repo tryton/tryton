@@ -101,11 +101,27 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=['state'])
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
+    contact = fields.Many2One(
+        'party.contact_mechanism', "Contact",
+        search_context={
+            'related_party': Eval('party'),
+            },
+        depends=['party'])
+    invoice_party = fields.Many2One('party.party', "Invoice Party",
+        states={
+            'readonly': ((Eval('state') != 'draft')
+                | Eval('lines', [0])),
+            },
+        depends=['state'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
-        domain=[('party', '=', Eval('party'))], states={
+        domain=[
+            ('party', '=', If(Bool(Eval('invoice_party')),
+                    Eval('invoice_party'), Eval('party'))),
+            ],
+        states={
             'readonly': Eval('state') != 'draft',
             'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
-            }, depends=['state', 'party'])
+            }, depends=['party', 'invoice_party', 'state'])
     shipment_party = fields.Many2One('party.party', 'Shipment Party',
         states={
             'readonly': (Eval('state') != 'draft'),
@@ -354,18 +370,28 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     def default_shipment_state():
         return 'none'
 
-    @fields.depends('party', 'shipment_party', 'payment_term')
+    @fields.depends('party', 'invoice_party', 'shipment_party', 'payment_term')
     def on_change_party(self):
-        self.invoice_address = None
+        if not self.invoice_party:
+            self.invoice_address = None
         if not self.shipment_party:
             self.shipment_address = None
         self.payment_term = self.default_payment_term()
         if self.party:
-            self.invoice_address = self.party.address_get(type='invoice')
+            if not self.invoice_party:
+                self.invoice_address = self.party.address_get(type='invoice')
             if not self.shipment_party:
                 self.shipment_address = self.party.address_get(type='delivery')
             if self.party.customer_payment_term:
                 self.payment_term = self.party.customer_payment_term
+
+    @fields.depends('party', 'invoice_party')
+    def on_change_invoice_party(self):
+        if self.invoice_party:
+            self.invoice_address = self.invoice_party.address_get(
+                type='invoice')
+        elif self.party:
+            self.invoice_address = self.party.address_get(type='invoice')
 
     @fields.depends('party', 'shipment_party')
     def on_change_shipment_party(self):
@@ -715,13 +741,14 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         'Return invoice'
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        party = self.invoice_party or self.party
         invoice = Invoice(
             company=self.company,
             type='out',
-            party=self.party,
+            party=party,
             invoice_address=self.invoice_address,
             currency=self.currency,
-            account=self.party.account_receivable_used,
+            account=party.account_receivable_used,
             )
         invoice.on_change_type()
         invoice.payment_term = self.payment_term
@@ -773,10 +800,9 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     def _get_shipment_sale(self, Shipment, key):
         values = {
-            'customer': (self.shipment_party.id if self.shipment_party
-                else self.party.id),
-            'delivery_address': self.shipment_address.id,
-            'company': self.company.id,
+            'customer': self.shipment_party or self.party,
+            'delivery_address': self.shipment_address,
+            'company': self.company,
             }
         values.update(dict(key))
         return Shipment(**values)
@@ -1150,7 +1176,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
-    @fields.depends('product', 'unit', 'sale', '_parent_sale.party',
+    @fields.depends('product', 'unit', 'sale',
+        '_parent_sale.party', '_parent_sale.invoice_party',
         methods=['compute_taxes', 'compute_unit_price',
             'on_change_with_amount'])
     def on_change_product(self):
@@ -1158,8 +1185,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             return
 
         party = None
-        if self.sale and self.sale.party:
-            party = self.sale.party
+        if self.sale:
+            party = self.sale.invoice_party or self.sale.party
 
         # Set taxes before unit_price to have taxes in context of sale price
         self.taxes = self.compute_taxes(party)

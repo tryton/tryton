@@ -13,6 +13,7 @@ class Replace(metaclass=PoolMeta):
     def fields_to_replace(cls):
         return super().fields_to_replace() + [
             ('sale.sale', 'party'),
+            ('sale.sale', 'invoice_party'),
             ('sale.sale', 'shipment_party'),
             ]
 

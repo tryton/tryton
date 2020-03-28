@@ -13,6 +13,8 @@ quantity. Here is the extensive list of the fields, most of them are
 optional or completed with sensible default values:
 
 - Party: The customer.
+- Contact: The contact who placed the order.
+- Invoice Party: An optional different party to invoice.
 - Invoice Address: The invoice address of the customer.
 - Shipment Party: An optional different party where the shipment will be sent.
 - Shipment Address: The address where the shipment will be sent.
