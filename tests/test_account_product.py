@@ -39,27 +39,35 @@ class AccountProductTestCase(ModuleTestCase):
 
             # raise when empty
             template = ProductTemplate(
-                name='test account used',
+                name='Product',
                 list_price=Decimal(10),
                 default_uom=unit.id,
                 products=[],
                 )
             template.save()
 
-            with self.assertRaises(UserError):
+            with self.assertRaisesRegex(
+                    UserError, 'Account Category.*Product'):
                 template.account_expense_used
 
             # with account on category
-            category = ProductCategory(name='test account used',
-                account_expense=account_expense, accounting=True)
+            category = ProductCategory(
+                name='Category', accounting=True)
             category.save()
             template.account_category = category
             template.save()
 
+            with self.assertRaisesRegex(
+                    UserError, 'Account Expense.*Product'):
+                template.account_expense_used
+
+            category.account_expense = account_expense
+            category.save()
+
             self.assertEqual(template.account_expense_used, account_expense)
 
             # with account on grant category
-            parent_category = ProductCategory(name='parent account used',
+            parent_category = ProductCategory(name='Parent Category',
                 account_expense=account_expense, accounting=True)
             parent_category.save()
             category.account_expense = None
@@ -72,11 +80,11 @@ class AccountProductTestCase(ModuleTestCase):
 
             # raise only at direct usage
             categories = ProductCategory.create([{
-                        'name': 'test with account',
+                        'name': 'Category 1',
                         'accounting': True,
                         'account_expense': account_expense.id,
                         }, {
-                        'name': 'test without account',
+                        'name': 'Category 2',
                         'accounting': True,
                         'account_expense': None,
                         }])
@@ -84,7 +92,8 @@ class AccountProductTestCase(ModuleTestCase):
             self.assertEqual(categories[0].account_expense_used.id,
                 account_expense.id)
 
-            with self.assertRaises(UserError):
+            with self.assertRaisesRegex(
+                    UserError, 'Account Expense.*Category 2'):
                 categories[1].account_expense_used
 
 

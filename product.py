@@ -18,9 +18,6 @@ from .exceptions import AccountError, TaxError
 
 
 def account_used(field_name, field_string=None):
-    if field_string is None:
-        field_string = field_name
-
     def decorator(func):
         @wraps(func)
         def wrapper(self):
@@ -29,8 +26,15 @@ def account_used(field_name, field_string=None):
                 account = self.get_account(field_name + '_used')
             # Allow empty values on on_change
             if not account and not Transaction().readonly:
+                Model = self.__class__
+                field = field_name
+                if field_string:
+                    if getattr(self, field_string, None):
+                        Model = getattr(self, field_string).__class__
+                    else:
+                        field = field_string
                 field = (
-                    self.fields_get([field_string])[field_string]['string'])
+                    Model.fields_get([field])[field]['string'])
                 raise AccountError(
                     gettext('account_product.msg_missing_account',
                         field=field,
