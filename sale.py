@@ -6,7 +6,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Bool
 
 
 def no_payment(error):
@@ -31,13 +31,15 @@ class Sale(metaclass=PoolMeta):
                 ('kind', '=', 'receivable'),
                 ('kind', '=', 'payable'),
                 ),
-            ('party', '=', Eval('party')),
+            ('party', '=', If(Bool(Eval('invoice_party')),
+                    Eval('invoice_party'), Eval('party'))),
             ('currency', '=', Eval('currency')),
             ],
         states={
             'readonly': Eval('state') != 'quotation',
             },
-        depends=['company', 'total_amount', 'party', 'currency', 'state'])
+        depends=['company', 'total_amount', 'party', 'invoice_party',
+            'currency', 'state'])
 
     @classmethod
     @ModelView.button
