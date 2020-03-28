@@ -12,6 +12,8 @@ from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, sequence_ordered)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
+
 from .exceptions import InvalidPhoneNumber
 
 _TYPES = [
@@ -89,6 +91,10 @@ class ContactMechanism(
     @staticmethod
     def default_type():
         return 'phone'
+
+    @classmethod
+    def default_party(cls):
+        return Transaction().context.get('related_party')
 
     @classmethod
     def get_value(cls, mechanisms, names):
