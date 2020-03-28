@@ -281,6 +281,8 @@ class Complaint(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def process(cls, complaints):
+        pool = Pool()
+        Action = pool.get('sale.complaint.action')
         results = defaultdict(list)
         actions = defaultdict(list)
         for complaint in complaints:
