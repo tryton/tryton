@@ -115,9 +115,9 @@ class Production(metaclass=PoolMeta):
                             quantity, date, company)
                         req.planned_start_date = (
                             req.on_change_with_planned_start_date())
-                        req.save()
-                        req.set_moves()
                         requests.append(req)
+        cls.save(requests)
+        cls.set_moves(requests)
         return requests
 
     @classmethod
