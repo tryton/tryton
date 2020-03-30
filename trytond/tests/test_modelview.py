@@ -461,6 +461,29 @@ class ModelView(unittest.TestCase):
 
         self.assertEqual(len(buttons), 0)
 
+    @with_transaction()
+    def test_view_attributes(self):
+        "Testing view attributes are applied on view"
+        pool = Pool()
+        ViewAttributes = pool.get('test.modelview.view_attributes')
+
+        arch = ViewAttributes.fields_view_get(view_type='form')['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        field, = tree.xpath('//field[@name="foo"]')
+
+        self.assertTrue(field.attrib.get('visual'))
+
+    @with_transaction()
+    def test_view_attributes_depends(self):
+        "Testing view attributes depends are included on fields"
+        pool = Pool()
+        ViewAttributes = pool.get('test.modelview.view_attributes_depends')
+
+        fields = ViewAttributes.fields_view_get(view_type='form')['fields']
+
+        self.assertIn('bar', fields)
+
 
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase

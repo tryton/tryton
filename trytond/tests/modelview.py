@@ -3,6 +3,7 @@
 
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
+from trytond.pyson import If, Eval
 
 
 class ModelViewChangedValues(ModelView):
@@ -164,6 +165,35 @@ class ModelViewCircularDepends(ModelView):
     foobar = fields.Char("Char", depends=['foo'])
 
 
+class ModelViewViewAttributes(ModelView):
+    'ModelView View Attributes'
+    __name__ = 'test.modelview.view_attributes'
+
+    foo = fields.Char("Char")
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//field[@name="foo"]',
+                'visual', If(Eval('foo') == 'foo', 'danger', '')),
+            ]
+
+
+class ModelViewViewAttributesDepends(ModelView):
+    'ModelView View Attributes Depends'
+    __name__ = 'test.modelview.view_attributes_depends'
+
+    foo = fields.Char("Char")
+    bar = fields.Char("Char")
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//field[@name="foo"]',
+                'visual', If(Eval('bar') == 'foo', 'danger', ''), ['bar']),
+            ]
+
+
 def register(module):
     Pool.register(
         ModelViewChangedValues,
@@ -175,4 +205,6 @@ def register(module):
         ModelViewRPC,
         ModelViewEmptyPage,
         ModelViewCircularDepends,
+        ModelViewViewAttributes,
+        ModelViewViewAttributesDepends,
         module=module, type_='model')

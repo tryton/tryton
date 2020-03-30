@@ -1,3 +1,4 @@
+* Add depends fields on view_attributes
 * Simplify trigger action
 * Run trigger in the queue
 * Do not copy Binary content with file_id

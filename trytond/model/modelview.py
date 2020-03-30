@@ -403,9 +403,16 @@ class ModelView(Model):
         FieldAccess = pool.get('ir.model.field.access')
 
         encoder = PYSONEncoder()
-        for xpath, attribute, value in cls.view_attributes():
-            for element in tree.xpath(xpath):
+        view_depends = []
+        for xpath, attribute, value, *extra in cls.view_attributes():
+            depends = []
+            if extra:
+                depends, = extra
+            nodes = tree.xpath(xpath)
+            for element in nodes:
                 element.set(attribute, encoder.encode(value))
+            if nodes and depends:
+                view_depends.extend(depends)
 
         fields_width = {}
         tree_root = tree.getroottree().getroot()
@@ -492,6 +499,10 @@ class ModelView(Model):
             else:
                 continue
             for depend in field.depends:
+                fields_def.setdefault(depend, {'name': depend})
+
+        for depend in view_depends:
+            if depend not in fields_to_remove:
                 fields_def.setdefault(depend, {'name': depend})
 
         arch = etree.tostring(

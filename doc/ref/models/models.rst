@@ -151,9 +151,10 @@ Class methods:
 
 .. classmethod:: ModelView.view_attributes()
 
-    Returns a list of XPath, attribute and value.
+    Returns a list of XPath, attribute, value and an optional depends list.
     Each element from the XPath will get the attribute set with the JSON
-    encoded value.
+    encoded value. If the depends list is set its fields are added to the
+    view if the xpath matches at least one element.
 
 ============
 ModelStorage
