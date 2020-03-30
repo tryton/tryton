@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from sql import Null
 
-from trytond.model import ModelView, ModelSQL, Workflow, fields
+from trytond.model import ModelView, ModelSQL, Workflow, fields, dualmethod
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
@@ -423,42 +423,50 @@ class Production(Workflow, ModelSQL, ModelView):
             cost += Decimal(str(quantity)) * product.cost_price
         return cost
 
-    def set_moves(self):
-        storage_location = self.warehouse.storage_location
-        location = self.location
-        company = self.company
+    @dualmethod
+    def set_moves(cls, productions):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        to_save = []
+        for production in productions:
+            storage_location = production.warehouse.storage_location
+            location = production.location
+            company = production.company
 
-        if not self.bom:
-            if self.product:
-                move = self._move(location, storage_location, company,
-                    self.product, self.uom, self.quantity)
+            if not production.bom:
+                if production.product:
+                    move = production._move(
+                        location, storage_location, company,
+                        production.product, production.uom,
+                        production.quantity)
+                    if move:
+                        move.production_output = production
+                        move.unit_price = Decimal(0)
+                        to_save.append(move)
+                continue
+
+            factor = production.bom.compute_factor(
+                production.product, production.quantity, production.uom)
+            for input_ in production.bom.inputs:
+                quantity = input_.compute_quantity(factor)
+                product = input_.product
+                move = production._move(storage_location, location, company,
+                    product, input_.uom, quantity)
                 if move:
-                    move.production_output = self
+                    move.production_input = production
+                    to_save.append(move)
+
+            for output in production.bom.outputs:
+                quantity = output.compute_quantity(factor)
+                product = output.product
+                move = production._move(location, storage_location, company,
+                    product, output.uom, quantity)
+                if move:
+                    move.production_output = production
                     move.unit_price = Decimal(0)
-                    move.save()
-            self._set_move_planned_date()
-            return
-
-        factor = self.bom.compute_factor(self.product, self.quantity, self.uom)
-        for input_ in self.bom.inputs:
-            quantity = input_.compute_quantity(factor)
-            product = input_.product
-            move = self._move(storage_location, location, company,
-                product, input_.uom, quantity)
-            if move:
-                move.production_input = self
-                move.save()
-
-        for output in self.bom.outputs:
-            quantity = output.compute_quantity(factor)
-            product = output.product
-            move = self._move(location, storage_location, company,
-                product, output.uom, quantity)
-            if move:
-                move.production_output = self
-                move.unit_price = Decimal(0)
-                move.save()
-        self._set_move_planned_date()
+                    to_save.append(move)
+        Move.save(to_save)
+        cls._set_move_planned_date(productions)
 
     @property
     def _list_price_context(self):
@@ -568,20 +576,31 @@ class Production(Workflow, ModelSQL, ModelView):
         "Return the planned dates for input and output moves"
         return self.planned_start_date, self.planned_date
 
-    def _set_move_planned_date(self):
+    @dualmethod
+    def _set_move_planned_date(cls, productions):
         "Set planned date of moves for the shipments"
         pool = Pool()
         Move = pool.get('stock.move')
-        dates = self._get_move_planned_date()
-        input_date, output_date = dates
-        Move.write([m for m in self.inputs
-                if m.state not in ('assigned', 'done', 'cancel')], {
-                'planned_date': input_date,
-                })
-        Move.write([m for m in self.outputs
-                if m.state not in ('assigned', 'done', 'cancel')], {
-                'planned_date': output_date,
-                })
+        to_write = []
+        for production in productions:
+            dates = production._get_move_planned_date()
+            input_date, output_date = dates
+            inputs = [m for m in production.inputs
+                    if m.state not in ('assigned', 'done', 'cancel')]
+            if inputs:
+                to_write.append(inputs)
+                to_write.append({
+                        'planned_date': input_date,
+                        })
+            outputs = [m for m in production.outputs
+                    if m.state not in ('assigned', 'done', 'cancel')]
+            if outputs:
+                to_write.append(outputs)
+                to_write.append({
+                        'planned_date': output_date,
+                        })
+        if to_write:
+            Move.write(*to_write)
 
     @classmethod
     @ModelView.button

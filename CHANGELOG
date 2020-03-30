@@ -1,3 +1,4 @@
+* Convert set_moves into dualmethod
 * Add reference to production record name
 * Add cron task to update production cost
 * Allocate cost based on list price of each product
