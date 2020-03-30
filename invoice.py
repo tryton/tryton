@@ -2286,6 +2286,12 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     def default_manual():
         return True
 
+    @classmethod
+    def default_invoice_state(cls):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        return Invoice.default_state()
+
     @fields.depends('invoice', '_parent_invoice.state')
     def on_change_with_invoice_state(self, name=None):
         if self.invoice:
