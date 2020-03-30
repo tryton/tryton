@@ -1,3 +1,4 @@
+* Use greatest end date of lines for closed date
 * Add contact and invoice party on subscription
 * Allow invoices to be created in advance
 

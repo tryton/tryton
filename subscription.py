@@ -314,7 +314,11 @@ class Subscription(Workflow, ModelSQL, ModelView):
     @classmethod
     @Workflow.transition('closed')
     def close(cls, subscriptions):
-        pass
+        for subscription in subscriptions:
+            if not subscription.end_date and subscription.lines:
+                subscription.end_date = max(
+                    l.end_date for l in subscription.lines)
+        cls.save(subscriptions)
 
     @classmethod
     def generate_invoice(cls, date=None):

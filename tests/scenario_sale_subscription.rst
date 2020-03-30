@@ -168,7 +168,8 @@ Close subscription::
     >>> subscription.click('draft')
     >>> subscription.state
     'draft'
-    >>> subscription.end_date = datetime.date(2016, 1, 31)
+    >>> line, = subscription.lines
+    >>> line.end_date = datetime.date(2016, 1, 31)
     >>> subscription.click('quote')
     >>> subscription.click('run')
     >>> subscription.state
