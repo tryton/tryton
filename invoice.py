@@ -2313,6 +2313,12 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         return True
 
     @classmethod
+    def default_invoice_state(cls):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        return Invoice.default_state()
+
+    @classmethod
     def get_invoice_states(cls):
         pool = Pool()
         Invoice = pool.get('account.invoice')
