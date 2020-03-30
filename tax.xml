@@ -235,15 +235,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="pgc_4700"/>
             <field name="credit_note_account" ref="pgc_4700"/>
         </record>
-        <record model="account.tax.template" id="irpf_1_purchase">
-            <field name="name">Retención IRPF 1%</field>
-            <field name="description">Retención IRPF 1%</field>
-            <field name="account" ref="pgc_0"/>
-            <field name="type">percentage</field>
-            <field name="rate" eval="Decimal('-0.01')"/>
-            <field name="invoice_account" ref="pgc_4751"/>
-            <field name="credit_note_account" ref="pgc_4751"/>
-        </record>
         <record model="account.tax.template" id="irpf_2_purchase">
             <field name="name">Retención IRPF 2%</field>
             <field name="description">Retención IRPF 2%</field>
@@ -252,6 +243,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.02')"/>
             <field name="invoice_account" ref="pgc_4751"/>
             <field name="credit_note_account" ref="pgc_4751"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_7_purchase">
             <field name="name">Retención IRPF 7%</field>
@@ -261,6 +253,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.07')"/>
             <field name="invoice_account" ref="pgc_4751"/>
             <field name="credit_note_account" ref="pgc_4751"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_15_purchase">
             <field name="name">Retención IRPF 15%</field>
@@ -270,6 +263,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.15')"/>
             <field name="invoice_account" ref="pgc_4751"/>
             <field name="credit_note_account" ref="pgc_4751"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_19_purchase_rent">
             <field name="name">Retenciones IRPF Arrendamientos 19%</field>
@@ -279,6 +273,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.19')"/>
             <field name="invoice_account" ref="pgc_4751"/>
             <field name="credit_note_account" ref="pgc_4751"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_1_sale">
             <field name="name">Retenciones a cuenta IRPF 1%</field>
@@ -288,6 +283,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.01')"/>
             <field name="invoice_account" ref="pgc_473"/>
             <field name="credit_note_account" ref="pgc_473"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_2_sale">
             <field name="name">Retenciones a cuenta IRPF 2%</field>
@@ -297,6 +293,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.02')"/>
             <field name="invoice_account" ref="pgc_473"/>
             <field name="credit_note_account" ref="pgc_473"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_7_sale">
             <field name="name">Retenciones a cuenta IRPF 7%</field>
@@ -306,6 +303,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.07')"/>
             <field name="invoice_account" ref="pgc_473"/>
             <field name="credit_note_account" ref="pgc_473"/>
+            <field name="sequence" eval="20"/>
         </record>
         <record model="account.tax.template" id="irpf_15_sale">
             <field name="name">Retenciones a cuenta IRPF 15%</field>
@@ -315,6 +313,31 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('-0.15')"/>
             <field name="invoice_account" ref="pgc_473"/>
             <field name="credit_note_account" ref="pgc_473"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record model="account.tax.template" id="iva_reagp_12">
+            <field name="name">IVA 12% Regimen especial agrícola y forestal</field>
+            <field name="description">IVA 12% REAGYP</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.12')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+            <field name="update_unit_price" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.tax.template" id="iva_reagp_105">
+            <field name="name">IVA 10.5% Regimen especial ganadería y pesca</field>
+            <field name="description">IVA 10.5% REAGYP</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.105')"/>
+            <field name="invoice_account" ref="pgc_472"/>
+            <field name="credit_note_account" ref="pgc_472"/>
+            <field name="update_unit_price" eval="True"/>
+            <field name="sequence" eval="10"/>
         </record>
     </data>
     <data grouped="1">
@@ -1287,20 +1310,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_report">111</field>
             <field name="account" ref="pgc_0"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_1_purchase-invoice">
-            <field name="code" ref="vat_code_irpf_purchase_base"/>
-            <field name="tax" ref="irpf_1_purchase"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_1_purchase-credit">
-            <field name="code" ref="vat_code_irpf_purchase_base"/>
-            <field name="tax" ref="irpf_1_purchase"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
         <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_base-irpf_2_purchase-invoice">
             <field name="code" ref="vat_code_irpf_purchase_base"/>
             <field name="tax" ref="irpf_2_purchase"/>
@@ -1350,20 +1359,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="aeat_report">111</field>
             <field name="parent" ref="vat_code_irpf_purchase"/>
             <field name="account" ref="pgc_0"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_1_purchase-invoice">
-            <field name="code" ref="vat_code_irpf_purchase_tax"/>
-            <field name="tax" ref="irpf_1_purchase"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_1_purchase-credit">
-            <field name="code" ref="vat_code_irpf_purchase_tax"/>
-            <field name="tax" ref="irpf_1_purchase"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
         </record>
         <record model="account.tax.code.line.template" id="vat_code_irpf_purchase_tax-irpf_2_purchase-invoice">
             <field name="code" ref="vat_code_irpf_purchase_tax"/>
@@ -1583,6 +1578,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
+
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_reagp-iva_reagp_12-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_reagp"/>
+            <field name="tax" ref="iva_reagp_12"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_reagp-iva_reagp_12-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_reagp"/>
+            <field name="tax" ref="iva_reagp_12"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_reagp-iva_reagp_105-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_reagp"/>
+            <field name="tax" ref="iva_reagp_105"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_reagp-iva_reagp_105-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_reagp"/>
+            <field name="tax" ref="iva_reagp_105"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
     </data>
     <data grouped="1">
         <record model="account.tax.rule.template" id="fp_recargo">
@@ -1610,16 +1634,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="pgc_0"/>
             <field name="kind">purchase</field>
         </record>
-        <record model="account.tax.rule.template" id="fp_irpf2_purchase">
-            <field name="name">Retención IRPF 2%</field>
-            <field name="account" ref="pgc_0"/>
-            <field name="kind">purchase</field>
-        </record>
-        <record model="account.tax.rule.template" id="fp_irpf1_purchase">
-            <field name="name">Retención IRPF 1%</field>
-            <field name="account" ref="pgc_0"/>
-            <field name="kind">purchase</field>
-        </record>
         <record model="account.tax.rule.template" id="fp_intra_purchase">
             <field name="name">Compras Intracomunitarias</field>
             <field name="account" ref="pgc_0"/>
@@ -1640,20 +1654,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="pgc_0"/>
             <field name="kind">sale</field>
         </record>
-        <record model="account.tax.rule.template" id="fp_irpf2_sale">
-            <field name="name">Retención IRPF 2%</field>
-            <field name="account" ref="pgc_0"/>
-            <field name="kind">sale</field>
-        </record>
-        <record model="account.tax.rule.template" id="fp_irpf1_sale">
-            <field name="name">Retención IRPF 1%</field>
-            <field name="account" ref="pgc_0"/>
-            <field name="kind">sale</field>
-        </record>
         <record model="account.tax.rule.template" id="fp_extra_sale">
             <field name="name">Ventas Extracomunitarias</field>
             <field name="account" ref="pgc_0"/>
             <field name="kind">sale</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_regp">
+            <field name="name">Régimen especial ganadería y pesca</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.rule.template" id="fp_reaf">
+            <field name="name">Régimen especial agrícola y forestal</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">purchase</field>
         </record>
     </data>
     <data grouped="1">
@@ -1710,16 +1724,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="irpf_7_purchase"/>
         </record>
 
-        <record model="account.tax.rule.line.template" id="fp_line_irpf2_purchase">
-            <field name="rule" ref="fp_irpf2_purchase"/>
-            <field name="tax" ref="irpf_2_purchase"/>
-        </record>
-
-        <record model="account.tax.rule.line.template" id="fp_line_irpf1_purchase">
-            <field name="rule" ref="fp_irpf1_purchase"/>
-            <field name="tax" ref="irpf_1_purchase"/>
-        </record>
-
         <record model="account.tax.rule.line.template" id="fp_line_irpf15_sale">
             <field name="rule" ref="fp_irpf15_sale"/>
             <field name="tax" ref="irpf_15_sale"/>
@@ -1754,21 +1758,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="irpf_7_sale"/>
         </record>
 
-        <record model="account.tax.rule.line.template" id="fp_line_irpf2_sale">
-            <field name="rule" ref="fp_irpf2_sale"/>
-            <field name="tax" ref="irpf_2_sale"/>
-        </record>
-
-        <record model="account.tax.rule.line.template"
-                id="fp_line_irpf1_sale">
-            <field name="rule" ref="fp_irpf1_sale"/>
-            <field name="tax" ref="irpf_1_sale"/>
-        </record>
-
         <record model="account.tax.rule.line.template" id="fptt_extra_sale">
             <field name="rule" ref="fp_extra_sale"/>
             <field name="tax" ref="iva_rep_exportaciones"/>
             <field name="group" ref="tax_group_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_reaf_iva">
+            <field name="rule" ref="fp_reaf"/>
+            <field name="tax" ref="iva_reagp_12"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fp_reaf_irpf">
+            <field name="rule" ref="fp_reaf"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="sequence" eval="20"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fp_regp_iva">
+            <field name="rule" ref="fp_regp"/>
+            <field name="tax" ref="iva_reagp_105"/>
+            <field name="group" ref="tax_group_purchase"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record model="account.tax.rule.line.template" id="fp_regp_irpf">
+            <field name="rule" ref="fp_regp"/>
+            <field name="tax" ref="irpf_2_purchase"/>
+            <field name="sequence" eval="20"/>
         </record>
     </data>
 </tryton>
