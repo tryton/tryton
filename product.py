@@ -384,6 +384,15 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             cost_price = revision.get_cost_price(cost_price)
         return cost_price
 
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('/tree/field[@name="quantity"]',
+                'visual', If(Eval('quantity', 0) < 0, 'danger', '')),
+            ('/tree/field[@name="forecast_quantity"]',
+                'visual', If(Eval('forecast_quantity', 0) < 0, 'warning', '')),
+            ]
+
 
 class ProductByLocationContext(ModelView):
     'Product by Location'

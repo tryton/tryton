@@ -552,6 +552,21 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             res.append(new_location)
         return res
 
+    @classmethod
+    def view_attributes(cls):
+        storage_types = Eval('type').in_(['storage', 'warehouse', 'view'])
+        return super().view_attributes() + [
+            ('/tree/field[@name="quantity"]',
+                'visual', If(
+                    storage_types & (Eval('quantity', 0) < 0), 'danger', ''),
+                ['type']),
+            ('/tree/field[@name="forecast_quantity"]',
+                'visual', If(
+                    storage_types & (Eval('forecast_quantity', 0) < 0),
+                    'warning', ''),
+                ['type']),
+            ]
+
 
 supplier_location = fields.Many2One(
     'stock.location', "Supplier Location", domain=[('type', '=', 'supplier')],
