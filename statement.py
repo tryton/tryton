@@ -119,7 +119,7 @@ class StatementLine(metaclass=PoolMeta):
             if not self.party:
                 self.party = self.payment.party
             clearing_account = self.payment.journal.clearing_account
-            if not self.account and clearing_account:
+            if clearing_account and self.account != clearing_account:
                 self.account = clearing_account
             if self.statement and self.statement.journal:
                 with Transaction().set_context(date=self.payment.date):
@@ -134,7 +134,7 @@ class StatementLine(metaclass=PoolMeta):
         if self.payment_group:
             self.party = None
             clearing_account = self.payment_group.journal.clearing_account
-            if not self.account and clearing_account:
+            if clearing_account and self.account != clearing_account:
                 self.account = clearing_account
 
     @fields.depends('party', 'payment')
