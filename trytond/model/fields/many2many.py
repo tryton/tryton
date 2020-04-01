@@ -125,7 +125,7 @@ class Many2Many(Field):
         else:
             order = self.order
 
-        Relation = Pool().get(self.relation_name)
+        Relation = self.get_relation()
         origin_field = Relation._fields[self.origin]
 
         relations = []
@@ -158,8 +158,7 @@ class Many2Many(Field):
             (``add``, ``<ids>``),
             (``copy``, ``<ids>``, ``[{<field name>: value}, ...]``)
         '''
-        pool = Pool()
-        Relation = pool.get(self.relation_name)
+        Relation = self.get_relation()
         Target = self.get_target()
         origin_field = Relation._fields[self.origin]
         relation_to_create = []
@@ -269,9 +268,13 @@ class Many2Many(Field):
         if relation_to_create:
             Relation.create(relation_to_create)
 
+    def get_relation(self):
+        "Return the relation model"
+        return Pool().get(self.relation_name)
+
     def get_target(self):
         'Return the target model'
-        Relation = Pool().get(self.relation_name)
+        Relation = self.get_relation()
         if not self.target:
             return Relation
         return Relation._fields[self.target].get_target()
@@ -324,7 +327,7 @@ class Many2Many(Field):
         pool = Pool()
         Rule = pool.get('ir.rule')
         Target = self.get_target()
-        Relation = pool.get(self.relation_name)
+        Relation = self.get_relation()
         transaction = Transaction()
         table, _ = tables[None]
         name, operator, value = domain[:3]

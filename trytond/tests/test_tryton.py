@@ -440,6 +440,49 @@ class ModuleTestCase(unittest.TestCase):
                         getattr(record, attr)()
 
     @with_transaction()
+    def test_field_relation_target(self):
+        "Test field relation and target"
+        pool = Pool()
+        for mname, model in pool.iterobject():
+            if not isregisteredby(model, self.module):
+                continue
+            for fname, field in model._fields.items():
+                if isinstance(field, fields.One2Many):
+                    Relation = field.get_target()
+                    rfield = field.field
+                elif isinstance(field, fields.Many2Many):
+                    Relation = field.get_relation()
+                    rfield = field.origin
+                else:
+                    continue
+                if rfield:
+                    self.assertIn(rfield, Relation._fields,
+                        msg=('Missing relation field "%s" on "%s" '
+                            'for "%s"."%s"') % (
+                            rfield, Relation.__name__, mname, fname))
+                    reverse_field = Relation._fields[rfield]
+                    self.assertIn(
+                        reverse_field._type, [
+                            'reference', 'many2one', 'one2one'],
+                        msg=('Wrong type for relation field "%s" on "%s" '
+                            'for "%s"."%s"') % (
+                            rfield, Relation.__name__, mname, fname))
+                    if (reverse_field._type == 'many2one'
+                            and issubclass(model, ModelSQL)
+                            # Do not test table_query models
+                            # as they can manipulate their id
+                            and not callable(model.table_query)):
+                        self.assertEqual(
+                            reverse_field.model_name, model.__name__,
+                            msg=('Wrong model for relation field "%s" on "%s" '
+                                'for "%s"."%s"') % (
+                                rfield, Relation.__name__, mname, fname))
+                Target = field.get_target()
+                self.assertTrue(
+                    Target,
+                    msg='Missing target for "%s"."%s"' % (mname, fname))
+
+    @with_transaction()
     def test_menu_action(self):
         'Test that menu actions are accessible to menu\'s group'
         pool = Pool()

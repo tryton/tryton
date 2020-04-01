@@ -817,6 +817,10 @@ This field accepts as written value a list of tuples like the :class:`One2Many`.
 
 Instance methods:
 
+.. method:: Many2Many.get_relation()
+
+    Return the relation :class:`~trytond.model.Model`.
+
 .. method:: Many2Many.get_target()
 
     Return the target :class:`~trytond.model.Model`.
@@ -850,6 +854,10 @@ A one-to-one relation field.
     Same as :attr:`One2Many.filter`
 
 Instance methods:
+
+.. method:: Many2Many.get_target()
+
+    Return the target :class:`~trytond.model.Model`.
 
 .. method:: One2One.get_target()
 

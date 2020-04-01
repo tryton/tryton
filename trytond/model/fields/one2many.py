@@ -119,9 +119,8 @@ class One2Many(Field):
         '''
         Return target records ordered.
         '''
-        pool = Pool()
-        Relation = pool.get(self.model_name)
-        field = Relation._fields[self.field]
+        Target = self.get_target()
+        field = Target._fields[self.field]
         res = {}
         for i in ids:
             res[i] = []
@@ -135,7 +134,7 @@ class One2Many(Field):
                 clause = [(self.field, 'in', list(sub_ids))]
             if self.filter:
                 clause.append(self.filter)
-            targets.append(Relation.search(clause, order=self.order))
+            targets.append(Target.search(clause, order=self.order))
         targets = list(chain(*targets))
 
         for target in targets:
