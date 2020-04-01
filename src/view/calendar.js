@@ -66,6 +66,13 @@
                 eventClick: this.view.event_click.bind(this.view),
                 dayClick: this.view.day_click.bind(this.view),
             });
+
+            if (attributes.height !== undefined) {
+                this.view.el.css('min-height', attributes.height + 'px');
+            }
+            if (attributes.width !== undefined) {
+                this.view.el.css('min-width', attributes.width + 'px');
+            }
         },
         _parse_field: function(node, attributes) {
             this.view.fields.push(attributes.name);
