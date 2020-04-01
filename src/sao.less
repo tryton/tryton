@@ -28,6 +28,9 @@
     border-radius: 0 @panel-border-radius @panel-border-radius 0;
     border-width: 1px;
     margin-top: 5px;
+    .treeview {
+        height: auto;
+    }
 }
 [dir="rtl"] #menu {
     border-right: none;
@@ -225,6 +228,7 @@ img.icon {
     -moz-user-select: none;
     -webkit-user-select: none;
     overflow-x: auto;
+    height: calc(100vh - 300px);
 
     > table.tree {
         width: 100%;
@@ -261,6 +265,11 @@ img.icon {
                 text-align: right;
                 text-align: end;
             }
+        }
+        > thead > tr:first-child th {
+            background-color: @body-bg;
+            position: sticky;
+            top: 0;
         }
         > tbody > tr > td {
             cursor: pointer;
@@ -480,7 +489,8 @@ img.icon {
     }
     .form-one2many-content, .form-many2many-content {
         .treeview, .list-form {
-            min-height: 100px;
+            height: auto;
+            min-height: 150px;
             max-height: 300px;
         }
     }
@@ -604,6 +614,9 @@ input.column-boolean {
 }
 
 @media screen and (max-width: @screen-xs-max) {
+    .treeview {
+        height: calc(100vh - 370px);
+    }
     .dict-label {
         text-align: left;
         text-align: start;
