@@ -6,6 +6,7 @@ Imports::
 
     >>> import os
     >>> import datetime
+    >>> import time
     >>> from decimal import Decimal
     >>> import stripe
     >>> from proteus import Model, Wizard
@@ -116,6 +117,7 @@ Process off-session the payment::
     >>> payment.state
     'processing'
 
+    >>> time.sleep(1)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
@@ -130,6 +132,7 @@ Refund the payment::
     >>> charge, = payment_intent.charges
     >>> refund = stripe.Refund.create(charge=charge)
 
+    >>> time.sleep(1)
     >>> cron_fetch_events.click('run_once')
     >>> payment.reload()
     >>> payment.state
