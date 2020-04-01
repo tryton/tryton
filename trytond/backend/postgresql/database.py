@@ -46,6 +46,7 @@ os.environ['PGTZ'] = os.environ.get('TZ', '')
 _timeout = config.getint('database', 'timeout')
 _minconn = config.getint('database', 'minconn', default=1)
 _maxconn = config.getint('database', 'maxconn', default=64)
+_default_name = config.get('database', 'default_name', default='template1')
 
 
 def unescape_quote(s):
@@ -151,7 +152,7 @@ class Database(DatabaseInterface):
         'TIMESTAMP': SQLType('TIMESTAMP', 'TIMESTAMP(6)'),
         }
 
-    def __new__(cls, name='template1'):
+    def __new__(cls, name=_default_name):
         with cls._lock:
             now = datetime.now()
             databases = cls._databases[os.getpid()]
@@ -163,7 +164,7 @@ class Database(DatabaseInterface):
             if name in databases:
                 inst = databases[name]
             else:
-                if name == 'template1':
+                if name == _default_name:
                     minconn = 0
                 else:
                     minconn = _minconn
@@ -176,7 +177,7 @@ class Database(DatabaseInterface):
             inst._last_use = datetime.now()
             return inst
 
-    def __init__(self, name='template1'):
+    def __init__(self, name=_default_name):
         super(Database, self).__init__(name)
 
     @classmethod

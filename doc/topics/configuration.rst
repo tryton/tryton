@@ -139,6 +139,12 @@ table for translations.
 
 Default: `en`
 
+default_name
+~~~~~~~~~~~~
+
+The name of the database to use for operations without a database name.
+Default: `template1` for PostgreSQL, `:memory:` for SQLite.
+
 request
 -------
 

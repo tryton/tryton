@@ -30,6 +30,8 @@ from trytond.transaction import Transaction
 __all__ = ['Database', 'DatabaseIntegrityError', 'DatabaseOperationalError']
 logger = logging.getLogger(__name__)
 
+_default_name = config.get('database', 'default_name', default=':memory:')
+
 
 class SQLiteExtract(Function):
     __slots__ = ()
@@ -321,13 +323,13 @@ class Database(DatabaseInterface):
         'BOOL': SQLType('BOOLEAN', 'BOOLEAN'),
         }
 
-    def __new__(cls, name=':memory:'):
+    def __new__(cls, name=_default_name):
         if (name == ':memory:'
                 and getattr(cls._local, 'memory_database', None)):
             return cls._local.memory_database
         return DatabaseInterface.__new__(cls, name=name)
 
-    def __init__(self, name=':memory:'):
+    def __init__(self, name=_default_name):
         super(Database, self).__init__(name=name)
         if name == ':memory:':
             Database._local.memory_database = self
