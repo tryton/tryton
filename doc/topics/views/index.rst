@@ -843,6 +843,10 @@ Each calendar view must start with this tag.
     * ``background_color``: An optional field name that contains the background
       color for the event. The default value is `lightblue`.
 
+    * ``width``: The minimum width the calendar should request, use -1 to unset.
+
+    * ``height``: The minimum height the calendar should request, use -1 to unset.
+
 field
 ^^^^^
 

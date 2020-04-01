@@ -14,6 +14,10 @@ attlist.calendar &=
    [ a:defaultValue = "black" ] attribute color { text }?
 attlist.calendar &=
    [ a:defaultValue = "lightblue" ] attribute background_color { text }?
+attlist.calendar &=
+  attribute width { text }?
+attlist.calendar &=
+  attribute height { text }?
 field = element field { attlist.field, empty }
 attlist.field &= attribute name { text }
 data = element data { attlist.data, xpath* }

@@ -1,3 +1,4 @@
+* Add width and height attributes on calendar view
 * Add default database name configuration
 * Add retry option to report convert
 * Add depends fields on view_attributes
