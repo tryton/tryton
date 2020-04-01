@@ -1,3 +1,4 @@
+* Add retry option to report convert
 * Add depends fields on view_attributes
 * Simplify trigger action
 * Run trigger in the queue

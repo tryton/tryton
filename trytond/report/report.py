@@ -5,6 +5,7 @@ import os
 import logging
 import subprocess
 import tempfile
+import time
 import warnings
 import zipfile
 import operator
@@ -314,7 +315,7 @@ class Report(URLMixin, PoolBase):
         return data
 
     @classmethod
-    def convert(cls, report, data, timeout=5 * 60):
+    def convert(cls, report, data, timeout=5 * 60, retry=5):
         "converts the report data to another mimetype if necessary"
         input_format = report.template_extension
         output_format = report.extension or report.template_extension
@@ -339,10 +340,13 @@ class Report(URLMixin, PoolBase):
                 '--headless', '--nolockcheck', '--nodefault', '--norestore',
                 '--convert-to', oext, '--outdir', dtemp, path]
             output = os.path.splitext(path)[0] + os.extsep + oext
-            subprocess.check_call(cmd, timeout=timeout)
-            if os.path.exists(output):
-                with open(output, 'rb') as fp:
-                    return oext, fp.read()
+            for count in range(retry, -1, -1):
+                if count != retry:
+                    time.sleep(0.02 * (retry - count))
+                subprocess.check_call(cmd, timeout=timeout)
+                if os.path.exists(output):
+                    with open(output, 'rb') as fp:
+                        return oext, fp.read()
             else:
                 logger.error(
                     'fail to convert %s to %s', report.report_name, oext)
