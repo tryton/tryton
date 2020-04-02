@@ -5,7 +5,7 @@ from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
 
-__all__ = ['StockMove']
+__all__ = ['StockMove', 'ShipmentOut']
 
 
 class StockMove(metaclass=PoolMeta):
@@ -33,3 +33,13 @@ class StockMove(metaclass=PoolMeta):
         if not Transaction().context.get('_stock_move_split'):
             default.setdefault('invoice_lines', None)
         return super(StockMove, cls).copy(moves, default=default)
+
+
+class ShipmentOut(metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
+
+    def _sync_outgoing_move(self, template=None):
+        move = super()._sync_outgoing_move(template=template)
+        if template and template.invoice_lines:
+            move.invoice_lines = list(template.invoice_lines)
+        return move
