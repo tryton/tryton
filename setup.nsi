@@ -132,6 +132,7 @@ SectionIn 1 2 RO
 
     ;Write the uninstall keys for Windows
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${BITS}-${SERIES}" "DisplayName" "Tryton ${BITS} ${VERSION} (remove only)"
+    WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${BITS}-${SERIES}" "DisplayIcon" "$INSTDIR\tryton.exe,1"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${BITS}-${SERIES}" "UninstallString" "$INSTDIR\uninstall.exe"
     WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\tryton-${BITS}-${SERIES}" "InstallLocation" "$INSTDIR"
 
