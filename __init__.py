@@ -11,4 +11,5 @@ def register():
         account.InvoiceLineStockMove,
         account.InvoiceLine,
         stock.Move,
+        stock.ShipmentOut,
         module='account_invoice_stock', type_='model')
