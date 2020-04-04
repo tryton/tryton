@@ -1,3 +1,6 @@
+Version 5.4.1 - 2020-04-04
+* Bug fixes (see mercurial logs for details)
+
 Version 5.4.0 - 2019-11-04
 * Bug fixes (see mercurial logs for details)
 * Replace XML data by import script
