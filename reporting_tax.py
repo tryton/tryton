@@ -429,6 +429,7 @@ class ESVATList(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         context = Transaction().context
         invoice = Invoice.__table__()
+        cancel_invoice = Invoice.__table__()
         invoice_tax = InvoiceTax.__table__()
         tax = Tax.__table__()
         tax_code = TaxCode.__table__()
@@ -450,6 +451,9 @@ class ESVATList(ModelSQL, ModelView):
             & (tax.es_vat_list_code != Null)
             & (Extract('year', invoice.invoice_date)
                 == context.get('date', Date.today()).year)
+            & ~Exists(cancel_invoice.select(
+                    cancel_invoice.cancel_move, distinct=True,
+                    where=(cancel_invoice.cancel_move == invoice.move)))
             # Use exists to exclude the full invoice when it has multiple taxes
             & ~Exists(exclude_invoice_tax.select(
                     exclude_invoice_tax.invoice,
