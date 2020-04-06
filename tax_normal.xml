@@ -1286,7 +1286,7 @@ this repository contains the full copyright notices and license terms. -->
         <record id="vat_code_iva_exportaciones-iva_rep_exportaciones-credit_normal" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_exportaciones_normal"/>
             <field name="tax" ref="iva_rep_exportaciones_normal"/>
-            <field name="operator">+</field>
+            <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
