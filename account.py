@@ -417,6 +417,7 @@ def AccountMixin(template=False):
 
     class Mixin:
         __slots__ = ()
+        _order_name = 'rec_name'
         name = fields.Char('Name', required=True, select=True)
         code = fields.Char('Code', select=True)
 
@@ -523,6 +524,11 @@ def AccountMixin(template=False):
                 ('code',) + tuple(clause[1:]),
                 (cls._rec_name,) + tuple(clause[1:]),
                 ]
+
+        @staticmethod
+        def order_rec_name(tables):
+            table, _ = tables[None]
+            return [table.code, table.name]
 
     if not template:
         for fname in dir(Mixin):
