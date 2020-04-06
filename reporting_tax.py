@@ -9,6 +9,7 @@ from sql import Cast, Null, Literal
 from sql.aggregate import Count, Max, Min, Sum
 from sql.conditionals import Case
 from sql.functions import Substring, Position, Extract
+from sql.operators import Exists
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -427,6 +428,7 @@ class ESVATList(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         context = Transaction().context
         invoice = Invoice.__table__()
+        cancel_invoice = Invoice.__table__()
         invoice_tax = InvoiceTax.__table__()
         tax = Tax.__table__()
 
@@ -437,7 +439,10 @@ class ESVATList(ModelSQL, ModelView):
             & (invoice.state.in_(['posted', 'paid']))
             & (tax.es_vat_list_code != Null)
             & (Extract('year', invoice.invoice_date)
-                == context.get('date', Date.today()).year))
+                == context.get('date', Date.today()).year)
+            & ~Exists(cancel_invoice.select(
+                    cancel_invoice.cancel_move, distinct=True,
+                    where=(cancel_invoice.cancel_move == invoice.move))))
         return (invoice_tax
             .join(invoice,
                 condition=invoice_tax.invoice == invoice.id)
