@@ -3,6 +3,7 @@
 
 from trytond.pool import Pool
 from . import order_point
+from . import ir
 from . import product
 from . import purchase_request
 from . import shipment
@@ -22,6 +23,7 @@ def register():
         location.Location,
         location.LocationLeadTime,
         stock.SupplyStart,
+        ir.Cron,
         module='stock_supply', type_='model')
     Pool.register(
         stock.Supply,

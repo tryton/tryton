@@ -178,3 +178,18 @@ Execute internal supply::
     'Provisioning Location'
     >>> move.to_location.name
     'Second Storage'
+
+Create stock_supply cron and execute it::
+
+    >>> Cron = Model.get('ir.cron')
+    >>> admin_user, = User.find([('login', '=', 'admin')])
+    >>> set_user(admin_user)
+    >>> shipment.delete()
+    >>> cron = Cron(method='stock.order_point|supply_stock')
+    >>> cron.interval_number = 1
+    >>> cron.interval_type = 'months'
+    >>> cron.click('run_once')
+    >>> shipment, = ShipmentInternal.find(
+    ...     [('to_location', '=', sec_storage_loc.id)])
+    >>> shipment.state
+    'request'

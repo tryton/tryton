@@ -4,6 +4,7 @@ from sql import Null
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
+from trytond.pool import Pool
 from trytond.pyson import If, Equal, Eval, Not, In
 from trytond.transaction import Transaction
 
@@ -249,3 +250,11 @@ class OrderPoint(ModelSQL, ModelView):
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @classmethod
+    def supply_stock(cls):
+        pool = Pool()
+        StockSupply = pool.get('stock.supply', type='wizard')
+        session_id, _, _ = StockSupply.create()
+        StockSupply.execute(session_id, {}, 'create_')
+        StockSupply.delete(session_id)
