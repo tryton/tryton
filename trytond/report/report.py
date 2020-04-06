@@ -28,6 +28,7 @@ from genshi.filters import Translator
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
+from trytond.tools import slugify
 from trytond.url import URLMixin
 from trytond.rpc import RPC
 from trytond.exceptions import UserError
@@ -193,8 +194,8 @@ class Report(URLMixin, PoolBase):
                 for record in records:
                     oext, rcontent = cls._execute(
                         [record], data, action_report)
-                    rfilename = '%s-%s.%s' % (
-                        record.id, record.rec_name, oext)
+                    filename = slugify('%s-%s' % (record.id, record.rec_name))
+                    rfilename = '%s.%s' % (filename, oext)
                     content_zip.writestr(rfilename, rcontent)
             content = content.getvalue()
             oext = 'zip'
