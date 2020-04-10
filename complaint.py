@@ -319,8 +319,9 @@ class Action(ModelSQL, ModelView):
         }
     _depends = ['result']
     _line_states = {
-        'invisible': Eval('_parent_complaint', {}
-            ).get('origin_model', 'sale.line') != 'sale.line',
+        'invisible': ~Eval('_parent_complaint', {}
+            ).get('origin_model', 'sale.line').in_(
+            ['sale.line', 'account.invoice.line']),
         'readonly': _states['readonly'],
         }
     _line_depends = _depends
@@ -375,14 +376,17 @@ class Action(ModelSQL, ModelView):
     @fields.depends('complaint',
         '_parent_complaint.origin_model', '_parent_complaint.origin')
     def on_change_with_unit(self, name=None):
-        if self.complaint and self.complaint.origin_model == 'sale.line':
+        if (self.complaint
+                and self.complaint.origin_model in {
+                    'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.id
 
     @fields.depends('complaint')
     def get_unit_digits(self, name=None):
-        if self.complaint.origin_model == 'sale.line':
+        if (self.complaint
+                and self.complaint.origin_model in {
+                    'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.digits
-        return 2
 
     @classmethod
     def _get_result(cls):
