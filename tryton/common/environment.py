@@ -52,3 +52,9 @@ class EvalEnvironment(dict):
             return item in self.parent.get_eval()
         else:
             return item in self.parent.group.fields
+
+    def keys(self):
+        if self.eval_type == 'eval':
+            return self.parent.get_eval().keys()
+        else:
+            return self.parent.group.fields.keys()
