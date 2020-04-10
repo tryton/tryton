@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 import os
+import inspect
 import logging
 import subprocess
 import tempfile
@@ -363,7 +364,7 @@ def get_email(report, record, languages):
     pool = Pool()
     ActionReport = pool.get('ir.action.report')
     report_id = None
-    if isinstance(report, Report):
+    if inspect.isclass(report) and issubclass(report, Report):
         Report_ = report
     else:
         if isinstance(report, ActionReport):
