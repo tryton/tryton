@@ -315,9 +315,10 @@ class Action(ModelSQL, ModelView):
     __name__ = 'sale.complaint.action'
 
     _states = {
-        'readonly': Bool(Eval('result')),
+        'readonly': ((Eval('complaint_state') != 'draft')
+            | Bool(Eval('result'))),
         }
-    _depends = ['result']
+    _depends = ['complaint_state', 'result']
     _line_states = {
         'invisible': ~Eval('_parent_complaint', {}
             ).get('origin_model', 'sale.line').in_(
@@ -331,7 +332,7 @@ class Action(ModelSQL, ModelView):
     action = fields.Selection([
             ('sale_return', 'Create Sale Return'),
             ('credit_note', 'Create Credit Note'),
-            ], 'Action')
+            ], 'Action', states=_states)
 
     sale_lines = fields.Many2Many('sale.complaint.action-sale.line',
         'action', 'line', 'Sale Lines',
@@ -373,6 +374,10 @@ class Action(ModelSQL, ModelView):
 
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
+    complaint_state = fields.Function(
+        fields.Selection('get_complaint_states', "Complaint State"),
+        'on_change_with_complaint_state')
+
     @fields.depends('complaint',
         '_parent_complaint.origin_model', '_parent_complaint.origin')
     def on_change_with_unit(self, name=None):
@@ -387,6 +392,17 @@ class Action(ModelSQL, ModelView):
                 and self.complaint.origin_model in {
                     'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.digits
+
+    @classmethod
+    def get_complaint_states(cls):
+        pool = Pool()
+        Complaint = pool.get('sale.complaint')
+        return Complaint.fields_get(['state'])['state']['selection']
+
+    @fields.depends('complaint', '_parent_complaint.state')
+    def on_change_with_complaint_state(self, name=None):
+        if self.complaint:
+            return self.complaint.state
 
     @classmethod
     def _get_result(cls):
