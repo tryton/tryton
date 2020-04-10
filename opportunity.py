@@ -16,6 +16,8 @@ from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.modules.company.model import employee_field, set_employee
+
 
 class SaleOpportunity(Workflow, ModelSQL, ModelView):
     'Sale Opportunity'
@@ -85,15 +87,6 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         depends=_depends_stop)
     lines = fields.One2Many('sale.opportunity.line', 'opportunity', 'Lines',
         states=_states_stop, depends=_depends_stop)
-    state = fields.Selection([
-            ('lead', "Lead"),
-            ('opportunity', "Opportunity"),
-            ('converted', "Converted"),
-            ('won', "Won"),
-            ('cancelled', "Cancelled"),
-            ('lost', "Lost"),
-            ], "State", required=True, select=True,
-        sort=False, readonly=True)
     conversion_probability = fields.Float('Conversion Probability',
         digits=(1, 4), required=True,
         domain=[
@@ -109,6 +102,18 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             'invisible': Eval('state') != 'lost',
             }, depends=['state'])
     sales = fields.One2Many('sale.sale', 'origin', 'Sales')
+
+    converted_by = employee_field(
+        "Converted By", states=['converted', 'won', 'lost', 'cancelled'])
+    state = fields.Selection([
+            ('lead', "Lead"),
+            ('opportunity', "Opportunity"),
+            ('converted', "Converted"),
+            ('won', "Won"),
+            ('cancelled', "Cancelled"),
+            ('lost', "Lost"),
+            ], "State", required=True, select=True,
+        sort=False, readonly=True)
 
     del _states_start, _depends_start
     del _states_stop, _depends_stop
@@ -338,6 +343,7 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('converted')
+    @set_employee('converted_by')
     def convert(cls, opportunities):
         pool = Pool()
         Sale = pool.get('sale.sale')
