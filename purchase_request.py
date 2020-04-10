@@ -13,6 +13,9 @@ from trytond.pyson import If, In, Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
+
 STATES = {
     'readonly': Eval('state') != 'draft',
     }
@@ -78,6 +81,9 @@ class PurchaseRequest(ModelSQL, ModelView):
             ])
     origin = fields.Reference('Origin', selection='get_origin', readonly=True)
     exception_ignored = fields.Boolean('Ignored Exception')
+
+    purchased_by = employee_field(
+        "Purchased By", states=['purchased', 'done', 'cancel', 'exception'])
     state = fields.Selection([
             ('purchased', "Purchased"),
             ('done', "Done"),
@@ -230,6 +236,16 @@ class PurchaseRequest(ModelSQL, ModelView):
             if state != request.state:
                 request.state = state
         cls.save(requests)
+
+    @classmethod
+    @set_employee('purchased_by')
+    def set_purchased(cls, requests):
+        cls.update_state(requests)
+
+    @classmethod
+    @reset_employee('purchased_by')
+    def reset_purchased(cls, requests):
+        cls.update_state(requests)
 
     def get_warehouse_required(self, name):
         return self.product and self.product.type in ('goods', 'assets')
@@ -454,7 +470,7 @@ class CreatePurchase(Wizard):
                 lines.append(line)
         Purchase.save(purchases)
         Line.save(lines)
-        Request.update_state(requests)
+        Request.set_purchased(requests)
         return 'end'
 
     @classmethod
@@ -498,7 +514,7 @@ class HandlePurchaseCancellationException(Wizard):
         requests = PurchaseRequest.browse(Transaction().context['active_ids'])
         for request in requests:
             request.purchase_line = None
-        PurchaseRequest.update_state(requests)
+        PurchaseRequest.reset_purchased(requests)
         return 'end'
 
     def transition_cancel_request(self):

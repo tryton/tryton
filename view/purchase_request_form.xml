@@ -30,6 +30,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="purchase_date"/>
             <label name="supply_date"/>
             <field name="supply_date"/>
+            <label name="purchased_by"/>
+            <field name="purchased_by"/>
             <label name="purchase"/>
             <field name="purchase"/>
             <label name="stock_level"/>
