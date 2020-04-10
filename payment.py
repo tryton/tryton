@@ -28,6 +28,8 @@ from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
 
 logger = logging.getLogger(__name__)
+stripe.max_network_retries = config.getint(
+    'account_payment_stripe', 'max_network_retries', default=3)
 
 RETRY_CODES = {'lock_timeout', 'token_in_use'}
 

@@ -68,3 +68,6 @@ retrieve some parameters:
 
 - `sources_cache`: defines the duration in seconds the sources are kept in the
   cache. The default value is `15 * 60`.
+
+- `max_network_retries`: defines the maximum number of retries the Stripe
+  library may perform. The default value is `3`.
