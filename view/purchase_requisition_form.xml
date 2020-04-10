@@ -28,6 +28,11 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="other_info">
             <label name="company"/>
             <field name="company"/>
+            <newline/>
+            <label name="approved_by"/>
+            <field name="approved_by"/>
+            <label name="rejected_by"/>
+            <field name="rejected_by"/>
         </page>
     </notebook>
     <label name="state"/>

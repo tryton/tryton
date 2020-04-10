@@ -14,6 +14,8 @@ from trytond.wizard import Wizard
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
 
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
 from trytond.modules.product import price_digits
 
 
@@ -137,6 +139,11 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     lines = fields.One2Many(
         'purchase.requisition.line', 'requisition', 'Lines',
         states=_states, depends=_depends)
+
+    approved_by = employee_field(
+        "Approved By", states=['approved', 'processing', 'done', 'cancel'])
+    rejected_by = employee_field(
+        "Rejected By", states=['rejected', 'processing', 'done', 'cancel'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('waiting', "Waiting"),
@@ -349,6 +356,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('approved_by', 'rejected_by')
     def draft(cls, requisitions):
         pass
 
@@ -362,12 +370,14 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('rejected')
+    @set_employee('rejected_by')
     def reject(cls, requisitions):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('approved')
+    @set_employee('approved_by')
     def approve(cls, requisitions):
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
