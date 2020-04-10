@@ -2515,11 +2515,13 @@
             var screen_domain = domains[0];
             var attr_domain = domains[1];
             var inversion = new Sao.common.DomainInversion();
+            screen_domain = inversion.filter_leaf(
+                screen_domain, this.name, model);
             screen_domain = inversion.prepare_reference_domain(
                 screen_domain, this.name);
-            return inversion.concat([inversion.localize_domain(
-                        inversion.filter_leaf(screen_domain, this.name, model),
-                        undefined, true), attr_domain]);
+            return inversion.concat([
+                inversion.localize_domain(screen_domain, undefined, true),
+                attr_domain]);
         },
         get_models: function(record) {
             var domains = this.get_domains(record);
