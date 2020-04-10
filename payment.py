@@ -183,7 +183,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         depends=['state', 'company'])
     process_method = fields.Function(
         fields.Selection('get_process_methods', "Process Method"),
-        'on_change_with_process_method')
+        'on_change_with_process_method', searcher='search_process_method')
     state = fields.Selection([
             ('draft', 'Draft'),
             ('approved', 'Approved'),
@@ -300,6 +300,10 @@ class Payment(Workflow, ModelSQL, ModelView):
     def on_change_with_process_method(self, name=None):
         if self.journal:
             return self.journal.process_method
+
+    @classmethod
+    def search_process_method(cls, name, clause):
+        return [('journal.' + clause[0],) + tuple(clause[1:])]
 
     @classmethod
     def get_process_methods(cls):
