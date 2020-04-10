@@ -283,46 +283,54 @@ Capture lower amount::
     >>> bool(payment.stripe_captured)
     True
 
-Simulate charge.refunded event with partial amount::
+Refund some amount::
 
-    >>> StripeAccount.webhook([stripe_account], {
-    ...         'type': 'charge.refunded',
-    ...         'data': {
-    ...             'object': {
-    ...                 'id': payment.stripe_charge_id,
-    ...                 'object': 'charge',
-    ...                 'amount': 4200,
-    ...                 'amount_refunded': 4000,
-    ...                 'captured': True,
-    ...                 'status': 'succeeded',
-    ...                 },
-    ...             },
-    ...         }, {})
-    [True]
+    >>> Refund = Model.get('account.payment.stripe.refund')
+    >>> refund = Refund()
+    >>> refund.payment = payment
+    >>> refund.amount = Decimal('38')
+    >>> refund.click('approve')
+    >>> cron_refund_create, = Cron.find([
+    ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
+    ...     ])
+    >>> cron_refund_create.click('run_once')
+    >>> cron_fetch_events.click('run_once')
+
     >>> payment.reload()
     >>> payment.amount
     Decimal('2.00')
     >>> payment.state
     'succeeded'
+    >>> refund.reload()
+    >>> refund.state
+    'succeeded'
 
 Simulate charge.refunded event with full amount::
 
-    >>> StripeAccount.webhook([stripe_account], {
-    ...         'type': 'charge.refunded',
-    ...         'data': {
-    ...             'object': {
-    ...                 'id': payment.stripe_charge_id,
-    ...                 'object': 'charge',
-    ...                 'amount': 4200,
-    ...                 'amount_refunded': 4200,
-    ...                 'captured': True,
-    ...                 'status': 'succeeded',
-    ...                 },
-    ...             },
-    ...         }, {})
-    [True]
+    >>> refund = Refund()
+    >>> refund.payment = payment
+    >>> refund.amount = Decimal('2')
+    >>> refund.click('approve')
+    >>> cron_refund_create.click('run_once')
+    >>> cron_fetch_events.click('run_once')
+
     >>> payment.reload()
     >>> payment.amount
     Decimal('0.00')
     >>> payment.state
+    'failed'
+    >>> refund.reload()
+    >>> refund.state
+    'succeeded'
+
+Try to refund more::
+
+    >>> refund = Refund()
+    >>> refund.payment = payment
+    >>> refund.amount = Decimal('10')
+    >>> refund.click('approve')
+    >>> cron_refund_create.click('run_once')
+    >>> cron_fetch_events.click('run_once')
+    >>> refund.reload()
+    >>> refund.state
     'failed'

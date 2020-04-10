@@ -253,6 +253,15 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     stripe_amount = fields.Function(
         fields.Integer("Stripe Amount"),
         'get_stripe_amount', setter='set_stripe_amount')
+    stripe_refunds = fields.One2Many(
+        'account.payment.stripe.refund', 'payment', "Refunds",
+        states={
+            'invisible': ((Eval('process_method') != 'stripe')
+                | (~Eval('stripe_charge_id')
+                    & ~Eval('stripe_payment_intent_id'))),
+            },
+        depends=[
+            'process_method', 'stripe_charge_id', 'stripe_payment_intent_id'])
 
     @classmethod
     def __setup__(cls):
@@ -725,6 +734,221 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         pass
 
 
+class Refund(Workflow, ModelSQL, ModelView):
+    "Stripe Payment Refund"
+    __name__ = 'account.payment.stripe.refund'
+
+    payment = fields.Many2One(
+        'account.payment', "Payment", required=True,
+        domain=[
+            ('process_method', '=', 'stripe'),
+            ['OR',
+                ('stripe_charge_id', '!=', None),
+                ('stripe_payment_intent_id', '!=', None),
+                ],
+            ],
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
+    amount = fields.Numeric(
+        "Amount", required=True, digits=(16, Eval('currency_digits', 2)),
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['currency_digits', 'state'])
+    stripe_amount = fields.Function(
+        fields.Integer("Stripe Amount"), 'get_stripe_amount')
+    reason = fields.Selection([
+            (None, ""),
+            ('duplicate', "Duplicate"),
+            ('fraudulent', "Fraudulent"),
+            ('requested_by_customer', "Requested by Customer"),
+            ], "Reason",
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('approved', "Approved"),
+            ('processing', "Processing"),
+            ('succeeded', "Succeeded"),
+            ('failed', "Failed"),
+            ], "State", readonly=True, select=True)
+
+    stripe_idempotency_key = fields.Char(
+        "Stripe Idempotency Key", readonly=True)
+    stripe_refund_id = fields.Char("Stripe Refund ID", readonly=True)
+    stripe_error_message = fields.Char("Stripe Error Message", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_error_message'),
+            })
+    stripe_error_code = fields.Char("Stripe Error Code", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_error_code'),
+            })
+    stripe_error_param = fields.Char("Stripe Error Param", readonly=True,
+        states={
+            'invisible': ~Eval('stripe_error_param'),
+            })
+
+    currency_digits = fields.Function(
+        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._transitions |= set((
+                ('draft', 'approved'),
+                ('approved', 'processing'),
+                ('processing', 'succeeded'),
+                ('processing', 'failed'),
+                ('approved', 'draft'),
+                ))
+        cls._buttons.update({
+                'draft': {
+                    'invisible': Eval('state') != 'approved',
+                    'icon': 'tryton-back',
+                    'depends': ['state'],
+                    },
+                'approve': {
+                    'invisible': Eval('state') != 'draft',
+                    'icon': 'tryton-forward',
+                    'depends': ['state'],
+                    },
+                })
+
+    def get_stripe_amount(self, name):
+        return int(self.amount * 10 ** self.currency_digits)
+
+    @classmethod
+    def default_stripe_idempotency_key(cls):
+        return uuid.uuid4().hex
+
+    @fields.depends('payment', '_parent_payment.currency_digits')
+    def on_change_with_currency_digits(self, name=None):
+        if self.payment:
+            return self.payment.currency_digits
+
+    @classmethod
+    def default_state(cls):
+        return 'draft'
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            values.setdefault(
+                'stripe_idempotency_key',
+                cls.default_stripe_idempotency_key())
+        return super().create(vlist)
+
+    @classmethod
+    def copy(cls, refunds, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('stripe_refund_id')
+        default.setdefault('stripe_idempotency_key')
+        default.setdefault('stripe_error_message')
+        default.setdefault('stripe_error_code')
+        default.setdefault('stripe_error_param')
+        return super().copy(refunds, default=default)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('draft')
+    def draft(cls, refunds):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('approved')
+    def approve(cls, refunds):
+        pass
+
+    @classmethod
+    @Workflow.transition('processing')
+    def process(cls, refunds):
+        pass
+
+    @classmethod
+    @Workflow.transition('succeeded')
+    def succeed(cls, refunds):
+        pass
+
+    @classmethod
+    @Workflow.transition('failed')
+    def fail(cls, refunds):
+        pass
+
+    @classmethod
+    def stripe_create(cls, refunds=None):
+        """Create stripe refund
+
+        The transaction is committed after each refund.
+        """
+        if not refunds:
+            refunds = cls.search([('state', '=', 'approved')])
+        for refund in refunds:
+            # Use clear cache after a commit
+            refund = cls(refund.id)
+            if refund.stripe_refund_id:
+                continue
+            refund.lock()
+            try:
+                rf = stripe.Refund.create(
+                    api_key=refund.payment.journal.stripe_account.secret_key,
+                    **refund._refund_parameters())
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
+                continue
+            except stripe.error.StripeError as e:
+                if e.code in RETRY_CODES:
+                    logger.warning(str(e))
+                    continue
+                refund.stripe_error_message = str(e)
+                refund.stripe_error_code = e.code
+                if isinstance(e, stripe.error.StripeErrorWithParamCode):
+                    refund.stripe_error_param = e.param
+                cls.process([refund])
+                cls.fail([refund])
+            except Exception:
+                logger.error(
+                    "Error when creating refund %d", refund.id,
+                    exc_info=True)
+                continue
+            else:
+                refund.stripe_refund_id = rf.id
+                cls.process([refund])
+                if rf.status == 'succeeded':
+                    cls.succeed([refund])
+                elif rf.status in {'failed', 'canceled'}:
+                    refund.stripe_error_code = rf['failure_reason']
+                    cls.fail([refund])
+            refund.save()
+            Transaction().commit()
+
+    def _refund_parameters(self):
+        idempotency_key = None
+        if self.stripe_idempotency_key:
+            idempotency_key = 'refund-%s' % self.stripe_idempotency_key
+        params = {
+            'amount': self.stripe_amount,
+            'reason': self.reason,
+            'idempotency_key': idempotency_key,
+            }
+        payment = self.payment
+        if payment.stripe_charge_id:
+            params['charge'] = payment.stripe_charge_id
+        elif payment.stripe_payment_intent_id:
+            params['payment_intent'] = payment.stripe_payment_intent_id
+        return params
+
+
 class Account(ModelSQL, ModelView):
     "Stripe Account"
     __name__ = 'account.payment.stripe.account'
@@ -820,6 +1044,8 @@ class Account(ModelSQL, ModelView):
             return self.webhook_charge_pending(data)
         elif type_ == 'charge.refunded':
             return self.webhook_charge_refunded(data)
+        elif type_ == 'charge.refund.updated':
+            return self.webhook_charge_refund_updated(data)
         elif type_ == 'charge.dispute.created':
             return self.webhook_charge_dispute_created(data)
         elif type_ == 'charge.dispute.closed':
@@ -888,6 +1114,30 @@ class Account(ModelSQL, ModelView):
 
     def webhook_charge_refunded(self, payload):
         return self.webhook_charge_succeeded(payload, _event='charge.refunded')
+
+    def webhook_charge_refund_updated(self, payload):
+        pool = Pool()
+        Refund = pool.get('account.payment.stripe.refund')
+
+        rf = payload['object']
+        refunds = Refund.search([
+                ('stripe_refund_id', '=', rf['id']),
+                ])
+        if not refunds:
+            logger.error("charge.refund.updated: No refund '%s'", rf['id'])
+        for refund in refunds:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=refund.payment.company.id):
+                refund = Refund(refund.id)
+                if rf.status == 'pending':
+                    Refund.processing([refund])
+                elif rf.status == 'succeeded':
+                    Refund.succeed([refund])
+                elif rf.status in {'failed', 'canceled'}:
+                    refund.stripe_error_code = rf['failure_reason']
+                    Refund.fail([refund])
+                refund.save()
+        return bool(refunds)
 
     def webhook_charge_failed(self, payload, _event='charge.failed'):
         pool = Pool()

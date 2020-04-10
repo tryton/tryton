@@ -14,6 +14,7 @@ __all__ = ['register', 'routes']
 def register():
     Pool.register(
         payment.Account,
+        payment.Refund,
         payment.Customer,
         payment.Journal,
         payment.Group,

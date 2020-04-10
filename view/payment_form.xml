@@ -43,4 +43,9 @@ this repository contains the full copyright notices and license terms. -->
         <label name="stripe_dispute_reason"/>
         <field name="stripe_dispute_reason"/>
     </xpath>
+    <xpath expr="//page[@id='description']" position="after">
+        <page name="stripe_refunds" col="1">
+            <field name="stripe_refunds"/>
+        </page>
+    </xpath>
 </data>

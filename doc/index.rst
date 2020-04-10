@@ -55,6 +55,8 @@ the amount in a second step.
 
 If the payment is disputed, it will be updated at the closure of the dispute.
 
+It is possible to partially or completely refund a payment.
+
 .. _source: https://stripe.com/docs/sources
 .. _`payment method`: https://stripe.com/docs/payments/payment-methods
 

@@ -12,6 +12,8 @@ class Cron(metaclass=PoolMeta):
         cls.method.selection.extend([
                 ('account.payment|stripe_charge', "Charge Stripe Payments"),
                 ('account.payment|stripe_capture_', "Capture Stripe Payments"),
+                ('account.payment.stripe.refund|stripe_create',
+                    "Create Stripe Refund"),
                 ('account.payment.stripe.customer|stripe_create',
                     "Create Stripe Customer"),
                 ('account.payment.stripe.customer|stripe_intent_update',

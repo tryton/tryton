@@ -127,10 +127,15 @@ Process off-session the payment::
 
 Refund the payment::
 
-    >>> payment_intent = stripe.PaymentIntent.retrieve(
-    ...     payment.stripe_payment_intent_id)
-    >>> charge, = payment_intent.charges
-    >>> refund = stripe.Refund.create(charge=charge)
+    >>> Refund = Model.get('account.payment.stripe.refund')
+    >>> refund = Refund()
+    >>> refund.payment = payment
+    >>> refund.amount = payment.amount
+    >>> refund.click('approve')
+    >>> cron_refund_create, = Cron.find([
+    ...     ('method', '=', 'account.payment.stripe.refund|stripe_create'),
+    ...     ])
+    >>> cron_refund_create.click('run_once')
 
     >>> time.sleep(1)
     >>> cron_fetch_events.click('run_once')
