@@ -1,3 +1,4 @@
+* Add methods to set/reset employee fields
 * Do not show company in user status if unique
 * Show employee in user status if not unique
 * Add supervisor and subordinates of employee
