@@ -447,6 +447,8 @@ class Database(DatabaseInterface):
                 try:
                     database = Database(db_name).connect()
                 except Exception:
+                    logger.debug(
+                        'Test failed for "%s"', db_name, exc_info=True)
                     continue
                 if database.test(hostname=hostname):
                     res.append(db_name)

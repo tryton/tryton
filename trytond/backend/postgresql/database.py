@@ -28,6 +28,7 @@ except ImportError:
     PYDATE, PYDATETIME, PYTIME, PYINTERVAL = None, None, None, None
 from psycopg2 import IntegrityError as DatabaseIntegrityError
 from psycopg2 import OperationalError as DatabaseOperationalError
+from psycopg2 import ProgrammingError
 from psycopg2.extras import register_default_json, register_default_jsonb
 
 from sql import Flavor, Cast, For
@@ -169,10 +170,16 @@ class Database(DatabaseInterface):
                 else:
                     minconn = _minconn
                 inst = DatabaseInterface.__new__(cls, name=name)
-                logger.info('connect to "%s"', name)
-                inst._connpool = ThreadedConnectionPool(
-                    minconn, _maxconn, **cls._connection_params(name),
-                    cursor_factory=LoggingCursor)
+                try:
+                    inst._connpool = ThreadedConnectionPool(
+                        minconn, _maxconn, **cls._connection_params(name),
+                        cursor_factory=LoggingCursor)
+                except Exception:
+                    logger.error(
+                        'connection to "%s" failed', name, exc_info=True)
+                    raise
+                else:
+                    logger.info('connection to "%s" succeeded', name)
                 databases[name] = inst
             inst._last_use = datetime.now()
             return inst
@@ -210,6 +217,10 @@ class Database(DatabaseInterface):
                     time.sleep(1)
                     continue
                 raise
+            except Exception:
+                logger.error(
+                    'connection to "%s" failed', self.name, exc_info=True)
+                raise
         if autocommit:
             conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         else:
@@ -224,7 +235,7 @@ class Database(DatabaseInterface):
 
     def close(self):
         with self._lock:
-            logger.info('disconnect from "%s"', self.name)
+            logger.info('disconnection from "%s"', self.name)
             self._connpool.closeall()
             self._databases[os.getpid()].pop(self.name)
 
@@ -268,6 +279,8 @@ class Database(DatabaseInterface):
                         if self._test(conn, hostname=hostname):
                             res.append(db_name)
                 except Exception:
+                    logger.debug(
+                        'Test failed for "%s"', db_name, exc_info=True)
                     continue
         finally:
             self.put_connection(connection)
@@ -310,14 +323,15 @@ class Database(DatabaseInterface):
             self.put_connection(connection)
 
     def test(self, hostname=None):
-        connection = self.get_connection()
         try:
-            is_tryton_database = self._test(connection, hostname=hostname)
+            connection = self.get_connection()
         except Exception:
-            is_tryton_database = False
+            logger.debug('Test failed for "%s"', self.name, exc_info=True)
+            return False
+        try:
+            return self._test(connection, hostname=hostname)
         finally:
             self.put_connection(connection)
-        return is_tryton_database
 
     @classmethod
     def _test(cls, connection, hostname=None):
@@ -330,11 +344,14 @@ class Database(DatabaseInterface):
         if len(cursor.fetchall()) != len(tables):
             return False
         if hostname:
-            cursor.execute(
-                'SELECT hostname FROM ir_configuration')
-            hostnames = {h for h, in cursor.fetchall() if h}
-            if hostnames and hostname not in hostnames:
-                return False
+            try:
+                cursor.execute(
+                    'SELECT hostname FROM ir_configuration')
+                hostnames = {h for h, in cursor.fetchall() if h}
+                if hostnames and hostname not in hostnames:
+                    return False
+            except ProgrammingError:
+                pass
         return True
 
     def nextid(self, connection, table):
