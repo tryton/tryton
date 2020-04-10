@@ -40,6 +40,11 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="other">
             <label name="company"/>
             <field name="company"/>
+            <newline/>
+            <label name="quoted_by"/>
+            <field name="quoted_by"/>
+            <label name="run_by"/>
+            <field name="run_by"/>
         </page>
     </notebook>
     <label name="state"/>

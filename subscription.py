@@ -18,6 +18,8 @@ from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
         Button
 
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
 from trytond.modules.product import price_digits
 from .exceptions import InvoiceError
 
@@ -141,6 +143,10 @@ class Subscription(Workflow, ModelSQL, ModelView):
             },
         depends=['state'])
 
+    quoted_by = employee_field(
+        "Quoted By", states=['quotation', 'running', 'closed', 'canceled'])
+    run_by = employee_field(
+        "Run By", states=['running', 'closed', 'canceled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('quotation', "Quotation"),
@@ -273,18 +279,21 @@ class Subscription(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('quoted_by', 'run_by')
     def draft(cls, subscriptions):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
+    @set_employee('quoted_by')
     def quote(cls, subscriptions):
         cls.set_number(subscriptions)
 
     @classmethod
     @ModelView.button
     @Workflow.transition('running')
+    @set_employee('run_by')
     def run(cls, subscriptions):
         pool = Pool()
         Line = pool.get('sale.subscription.line')
