@@ -16,37 +16,7 @@ from trytond.pyson import Eval, If, Id, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-
-def set_employee(field):
-    def decorator(func):
-        @functools.wraps(func)
-        def wrapper(cls, shipments, *args, **kwargs):
-            pool = Pool()
-            User = pool.get('res.user')
-            user = User(Transaction().user)
-
-            result = func(cls, shipments, *args, **kwargs)
-            employee = user.employee
-            if employee:
-                company = employee.company
-                cls.write(
-                    [s for s in shipments
-                        if not getattr(s, field) and s.company == company], {
-                        field: employee.id,
-                        })
-            return result
-        return wrapper
-    return decorator
-
-
-def employee_field(string):
-    return fields.Many2One(
-        'company.employee', string,
-        domain=[('company', '=', Eval('company', -1))],
-        states={
-            'readonly': Eval('state').in_(['done', 'cancel']),
-            },
-        depends=['company', 'state'])
+from trytond.modules.company.model import employee_field, set_employee
 
 
 class ShipmentMixin:
