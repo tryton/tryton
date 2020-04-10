@@ -1234,40 +1234,51 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     best = result
         return best
 
-    def pay_invoice(self, amount, payment_method, date, description,
-            amount_second_currency=None, second_currency=None):
+    def pay_invoice(self, amount, payment_method, date, description=None,
+            amount_second_currency=None, second_currency=None, overpayment=0):
         '''
         Adds a payment of amount to an invoice using the journal, date and
         description.
-        Returns the payment line.
+        If overpayment is set, then only the amount minus the overpayment is
+        used to pay off the invoice.
+        Returns the payment lines.
         '''
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
         Period = pool.get('account.period')
 
-        line1 = Line(account=self.account)
-        line2 = Line()
-        lines = [line1, line2]
+        pay_line = Line(account=self.account)
+        counterpart_line = Line()
+        lines = [pay_line, counterpart_line]
 
-        if amount >= 0:
+        pay_amount = amount - overpayment
+        if pay_amount >= 0:
             if self.type == 'out':
-                line1.debit, line1.credit = 0, amount
+                pay_line.debit, pay_line.credit = 0, pay_amount
             else:
-                line1.debit, line1.credit = amount, 0
+                pay_line.debit, pay_line.credit = pay_amount, 0
         else:
             if self.type == 'out':
-                line1.debit, line1.credit = -amount, 0
+                pay_line.debit, pay_line.credit = -pay_amount, 0
             else:
-                line1.debit, line1.credit = 0, -amount
+                pay_line.debit, pay_line.credit = 0, -pay_amount
+        if overpayment:
+            overpayment_line = Line(account=self.account)
+            lines.insert(1, overpayment_line)
+            overpayment_line.debit = (
+                abs(overpayment) if pay_line.debit else 0)
+            overpayment_line.credit = (
+                abs(overpayment) if pay_line.credit else 0)
 
-        line2.debit, line2.credit = line1.credit, line1.debit
-        if line2.debit:
+        counterpart_line.debit = abs(amount) if pay_line.credit else 0
+        counterpart_line.credit = abs(amount) if pay_line.debit else 0
+        if counterpart_line.debit:
             payment_acccount = 'debit_account'
         else:
             payment_acccount = 'credit_account'
-        line2.account = getattr(payment_method, payment_acccount).current(
-            date=date)
+        counterpart_line.account = getattr(
+            payment_method, payment_acccount).current(date=date)
 
         for line in lines:
             if line.account.party_required:
@@ -1286,11 +1297,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         move.save()
         Move.post([move])
 
-        for line in move.lines:
-            if line.account == self.account:
-                self.add_payment_lines({self: [line]})
-                return line
-        raise Exception('Missing account')
+        payment_lines = [l for l in move.lines if l.account == self.account]
+        payment_line = [l for l in payment_lines
+            if (l.debit, l.credit) == (pay_line.debit, pay_line.credit)][0]
+        self.add_payment_lines({self: [payment_line]})
+        return payment_lines
 
     @classmethod
     def add_payment_lines(cls, payments):
@@ -2610,9 +2621,10 @@ class PayInvoiceAsk(ModelView):
     'Pay Invoice'
     __name__ = 'account.invoice.pay.ask'
     type = fields.Selection([
-        ('writeoff', 'Write-Off'),
-        ('partial', 'Partial Payment'),
-        ], 'Type', required=True)
+            ('writeoff', "Write-Off"),
+            ('partial', "Partial Payment"),
+            ('overpayment', "Overpayment"),
+            ], 'Type', required=True)
     writeoff = fields.Many2One(
         'account.move.reconcile.write_off', "Write Off",
         domain=[
@@ -2813,40 +2825,42 @@ class PayInvoice(Wizard):
             amount_second_currency = self.start.amount
             second_currency = self.start.currency
 
+        overpayment = 0
         if (0 <= invoice.amount_to_pay < amount_invoice
-                or amount_invoice < invoice.amount_to_pay <= 0
-                and self.ask.type != 'writeoff'):
-            lang = Lang.get()
-            raise PayInvoiceError(
-                gettext('account_invoice'
-                    '.msg_invoice_pay_amount_greater_amount_to_pay',
-                    invoice=invoice.rec_name,
-                    amount_to_pay=lang.currency(
-                        invoice.amount_to_pay, invoice.currency)))
+                or amount_invoice < invoice.amount_to_pay <= 0):
+            if self.ask.type == 'partial':
+                lang = Lang.get()
+                raise PayInvoiceError(
+                    gettext('account_invoice'
+                        '.msg_invoice_pay_amount_greater_amount_to_pay',
+                        invoice=invoice.rec_name,
+                        amount_to_pay=lang.currency(
+                            invoice.amount_to_pay, invoice.currency)))
+            else:
+                overpayment = amount_invoice - invoice.amount_to_pay
 
-        line = None
+        lines = []
         if not invoice.company.currency.is_zero(amount):
-            line = invoice.pay_invoice(amount,
+            lines = invoice.pay_invoice(amount,
                 self.start.payment_method, self.start.date,
                 self.start.description, amount_second_currency,
-                second_currency)
+                second_currency, overpayment)
 
-        if remainder != Decimal('0.0'):
-            if self.ask.type == 'writeoff':
-                lines = [l for l in self.ask.lines] + \
-                    [l for l in invoice.payment_lines
-                        if not l.reconciliation]
-                if line and line not in lines:
-                    # Add new payment line if payment_lines was cached before
-                    # its creation
-                    lines += [line]
-                if lines:
-                    MoveLine.reconcile(lines,
+        if remainder:
+            if self.ask.type != 'partial':
+                to_reconcile = {l for l in self.ask.lines}
+                to_reconcile.update(
+                    l for l in invoice.payment_lines
+                    if not l.reconciliation)
+                if self.ask.type == 'writeoff':
+                    to_reconcile.update(lines)
+                if to_reconcile:
+                    MoveLine.reconcile(
+                        to_reconcile,
                         writeoff=self.ask.writeoff,
                         date=self.start.date)
         else:
-            if line:
-                reconcile_lines += [line]
+            reconcile_lines += lines
             if reconcile_lines:
                 MoveLine.reconcile(reconcile_lines)
         return 'end'
