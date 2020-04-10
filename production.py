@@ -10,6 +10,7 @@ from trytond.pyson import Eval, Bool, If, Id
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
+from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
@@ -136,6 +137,10 @@ class Production(Workflow, ModelSQL, ModelView):
                 | ~Eval('warehouse') | ~Eval('location')),
             },
         depends=['warehouse', 'location', 'company'])
+
+    assigned_by = employee_field("Assigned By")
+    run_by = employee_field("Run By")
+    done_by = employee_field("Done By")
     state = fields.Selection([
             ('request', 'Request'),
             ('draft', 'Draft'),
@@ -631,12 +636,14 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @Workflow.transition('assigned')
+    @set_employee('assigned_by')
     def assign(cls, productions):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('running')
+    @set_employee('run_by')
     def run(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
@@ -649,6 +656,7 @@ class Production(Workflow, ModelSQL, ModelView):
     @classmethod
     @ModelView.button
     @Workflow.transition('done')
+    @set_employee('done_by')
     def done(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
