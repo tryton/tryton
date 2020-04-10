@@ -9,7 +9,7 @@ Imports::
     >>> from decimal import Decimal
     >>> from operator import attrgetter
     >>> from proteus import Model, Wizard, Report
-    >>> from trytond.tests.tools import activate_modules
+    >>> from trytond.tests.tools import activate_modules, set_user
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
@@ -26,6 +26,21 @@ Create company::
 
     >>> _ = create_company()
     >>> company = get_company()
+
+Set employee::
+
+    >>> User = Model.get('res.user')
+    >>> Party = Model.get('party.party')
+    >>> Employee = Model.get('company.employee')
+    >>> employee_party = Party(name="Employee")
+    >>> employee_party.save()
+    >>> employee = Employee(party=employee_party)
+    >>> employee.save()
+    >>> user = User(config.user)
+    >>> user.employees.append(employee)
+    >>> user.employee = employee
+    >>> user.save()
+    >>> set_user(user.id)
 
 Create fiscal year::
 
@@ -155,9 +170,13 @@ Purchase 5 products::
     >>> purchase.click('quote')
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
+    >>> purchase.quoted_by == employee
+    True
     >>> purchase.click('confirm')
     >>> purchase.untaxed_amount, purchase.tax_amount, purchase.total_amount
     (Decimal('25.00'), Decimal('2.50'), Decimal('27.50'))
+    >>> purchase.confirmed_by == employee
+    True
     >>> purchase.state
     'processing'
     >>> purchase.shipment_state

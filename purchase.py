@@ -22,6 +22,8 @@ from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
 from trytond.modules.product import price_digits
 
 from .exceptions import PurchaseQuotationError, PartyLocationError
@@ -80,14 +82,6 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     reference = fields.Char('Reference', select=True)
     description = fields.Char('Description', size=None, states=_states,
         depends=_depends)
-    state = fields.Selection([
-            ('draft', "Draft"),
-            ('quotation', "Quotation"),
-            ('confirmed', "Confirmed"),
-            ('processing', "Processing"),
-            ('done', "Done"),
-            ('cancel', "Canceled"),
-            ], "State", readonly=True, required=True)
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -203,6 +197,21 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
             'stock.shipment.in.return', None, None, "Shipment Returns"),
         'get_shipment_returns', searcher='search_shipment_returns')
     moves = fields.One2Many('stock.move', 'purchase', 'Moves', readonly=True)
+
+    quoted_by = employee_field(
+        "Quoted By",
+        states=['quotation', 'confirmed', 'processing', 'done', 'cancel'])
+    confirmed_by = employee_field(
+        "Confirmed By",
+        states=['confirmed', 'processing', 'done', 'cancel'])
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('quotation', "Quotation"),
+            ('confirmed', "Confirmed"),
+            ('processing', "Processing"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, required=True)
 
     del _states, _depends
 
@@ -836,12 +845,14 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('quoted_by', 'confirmed_by')
     def draft(cls, purchases):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
+    @set_employee('quoted_by')
     def quote(cls, purchases):
         for purchase in purchases:
             purchase.check_for_quotation()
@@ -850,6 +861,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
+    @set_employee('confirmed_by')
     def confirm(cls, purchases):
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
