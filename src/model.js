@@ -2525,7 +2525,7 @@
             var domains = this.get_domains(record);
             var inversion = new Sao.common.DomainInversion();
             return inversion.extract_reference_models(
-                inversion.concat(domains[0], domains[1]),
+                inversion.concat([domains[0], domains[1]]),
                 this.name);
         },
         _is_empty: function(record) {
