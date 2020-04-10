@@ -1445,11 +1445,13 @@ class ModelStorage(Model):
             ifields = islice(ifields, 0, threshold)
             ffields.update(ifields)
 
+        require_context_field = False
         # add datetime_field
         for field in list(ffields.values()):
             if hasattr(field, 'datetime_field') and field.datetime_field:
                 datetime_field = self._fields[field.datetime_field]
                 ffields[field.datetime_field] = datetime_field
+                require_context_field = True
 
         # add depends of field with context
         for field in list(ffields.values()):
@@ -1459,12 +1461,14 @@ class ModelStorage(Model):
                     if context_field_name not in field.depends:
                         continue
                     context_field = self._fields.get(context_field_name)
+                    require_context_field = True
                     if context_field not in ffields:
                         ffields[context_field_name] = context_field
 
         def filter_(id_):
-            return (name not in self._cache.get(id_, {})
-                and name not in self._local_cache.get(id_, {}))
+            return (id_ == self.id  # Ensure the value is read
+                or (name not in self._cache.get(id_, {})
+                    and name not in self._local_cache.get(id_, {})))
 
         def unique(ids):
             s = set()
@@ -1532,7 +1536,8 @@ class ModelStorage(Model):
                 self._transaction.set_user(self._user), \
                 self._transaction.reset_context(), \
                 self._transaction.set_context(self._context):
-            if self.id in self._cache and name in self._cache[self.id]:
+            if (self.id in self._cache and name in self._cache[self.id]
+                    and not require_context_field):
                 # Use values from cache
                 ids = islice(chain(islice(self._ids, index, None),
                         islice(self._ids, 0, max(index - 1, 0))),
