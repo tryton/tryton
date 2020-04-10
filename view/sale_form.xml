@@ -64,6 +64,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_method"/>
             <label name="shipment_method"/>
             <field name="shipment_method"/>
+            <label name="quoted_by"/>
+            <field name="quoted_by"/>
+            <label name="confirmed_by"/>
+            <field name="confirmed_by"/>
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>

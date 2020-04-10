@@ -18,7 +18,10 @@ from trytond.pool import Pool
 
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
+from trytond.modules.company.model import (
+    employee_field, set_employee, reset_employee)
 from trytond.modules.product import price_digits
+
 from .exceptions import (
     SaleValidationError, SaleQuotationError, PartyLocationError)
 
@@ -73,14 +76,6 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    state = fields.Selection([
-            ('draft', "Draft"),
-            ('quotation', "Quotation"),
-            ('confirmed', "Confirmed"),
-            ('processing', "Processing"),
-            ('done', "Done"),
-            ('cancel', "Canceled"),
-            ], "State", readonly=True, required=True)
     sale_date = fields.Date('Sale Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
@@ -228,6 +223,21 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+
+    quoted_by = employee_field(
+        "Quoted By",
+        states=['quotation', 'confirmed', 'processing', 'done', 'cancel'])
+    confirmed_by = employee_field(
+        "Confirmed By",
+        states=['confirmed', 'processing', 'done', 'cancel'])
+    state = fields.Selection([
+            ('draft', "Draft"),
+            ('quotation', "Quotation"),
+            ('confirmed', "Confirmed"),
+            ('processing', "Processing"),
+            ('done', "Done"),
+            ('cancel', "Canceled"),
+            ], "State", readonly=True, required=True)
 
     @classmethod
     def __setup__(cls):
@@ -871,12 +881,14 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('draft')
+    @reset_employee('quoted_by', 'confirmed_by')
     def draft(cls, sales):
         pass
 
     @classmethod
     @ModelView.button
     @Workflow.transition('quotation')
+    @set_employee('quoted_by')
     def quote(cls, sales):
         for sale in sales:
             sale.check_for_quotation()
@@ -885,6 +897,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     @ModelView.button
     @Workflow.transition('confirmed')
+    @set_employee('confirmed_by')
     def confirm(cls, sales):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
