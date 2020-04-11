@@ -230,7 +230,7 @@ class AmendmentLine(ModelSQL, ModelView):
             },
         depends=['state', 'action', 'party'])
     shipment_party = fields.Many2One(
-        'party.address', "Shipment Party",
+        'party.party', "Shipment Party",
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'party',
