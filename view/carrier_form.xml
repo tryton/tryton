@@ -4,7 +4,8 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="party"/>
     <field name="party"/>
-    <newline/>
+    <label name="active"/>
+    <field name="active"/>
     <label name="carrier_product"/>
     <field name="carrier_product"/>
     <label name="carrier_cost_method"/>

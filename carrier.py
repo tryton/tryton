@@ -8,7 +8,7 @@ from trytond.pool import Pool
 from trytond.cache import Cache
 
 
-class Carrier(ModelSQL, ModelView):
+class Carrier(DeactivableMixin, ModelSQL, ModelView):
     'Carrier'
     __name__ = 'carrier'
     party = fields.Many2One('party.party', 'Party', required=True,
