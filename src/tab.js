@@ -1279,11 +1279,7 @@
             this.modified_save().then(function() {
                 new Sao.Window.Export(
                     this.title.text(), this.screen,
-                    this.screen.current_view.selected_records.map(function(r) {
-                        return r.id;
-                    }),
-                    this.screen.current_view.get_fields(),
-                    this.screen.context);
+                    this.screen.current_view.get_fields());
             }.bind(this));
         },
         do_export: function(export_) {

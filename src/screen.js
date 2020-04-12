@@ -999,14 +999,7 @@
             }
 
             var domain = this.search_domain(search_string, true);
-            if (this.context_domain) {
-                var decoder = new Sao.PYSON.Decoder(this.context);
-                domain = ['AND', domain, decoder.decode(this.context_domain)];
-            }
-            var tab_domain = this.screen_container.get_tab_domain();
-            if (!jQuery.isEmptyObject(tab_domain)) {
-                domain = ['AND', domain, tab_domain];
-            }
+
             var context = this.context;
             if (this.screen_container.but_active.hasClass('active')) {
                 context.active_test = false;
@@ -1058,8 +1051,9 @@
                     }.bind(this));
                 }.bind(this));
         },
-        search_domain: function(search_string, set_text) {
+        search_domain: function(search_string, set_text, with_tab) {
             set_text = set_text || false;
+            with_tab = with_tab === undefined ? true : with_tab;
             var domain = [];
 
             // Test first parent to avoid calling unnecessary domain_parser
@@ -1104,11 +1098,21 @@
                     domain = this.current_view.current_domain();
                 }
             }
+            if (this.context_domain) {
+                var decoder = new Sao.PYSON.Decoder(this.context);
+                domain = ['AND', domain, decoder.decode(this.context_domain)];
+            }
+            if (with_tab) {
+                var tab_domain = this.screen_container.get_tab_domain();
+                if (!jQuery.isEmptyObject(tab_domain)) {
+                    domain = ['AND', domain, tab_domain];
+                }
+            }
             return domain;
         },
         count_tab_domain: function() {
             var screen_domain = this.search_domain(
-                this.screen_container.get_text());
+                this.screen_container.get_text(), false, false);
             this.screen_container.tab_domain.forEach(function(tab_domain, i) {
                 if (tab_domain[2]) {
                     var domain = ['AND', tab_domain[1], screen_domain];

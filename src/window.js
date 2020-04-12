@@ -1003,31 +1003,27 @@
                 .appendTo(column_fields_selected.find('.panel'));
 
             this.chooser_form = jQuery('<div/>', {
-                'class': 'row form-inline'
+                'class': 'form-inline'
             }).appendTo(this.dialog.body);
 
             var row_csv_param = jQuery('<div/>', {
-                'class': 'row'
-            }).appendTo(this.dialog.body);
-
-            var expander_icon = jQuery('<span/>', {
-                'class': 'caret',
-            }).css('cursor', 'pointer').html('&nbsp;');
+            }).on('click', function(){
+                this.expander_csv.collapse('toggle');
+            }.bind(this)).appendTo(this.dialog.body);
 
             var csv_param_label = jQuery('<label/>', {
                 'text': Sao.i18n.gettext('CSV Parameters')
-            }).css('cursor', 'pointer');
+            }).css('cursor', 'pointer')
+            .appendTo(row_csv_param);
 
-            jQuery('<div/>', {
-                'class': 'col-md-12'
-            }).append(csv_param_label).append(expander_icon)
-            .on('click', function(){
-                this.expander_csv.collapse('toggle');
-            }.bind(this)).appendTo(row_csv_param);
+            var expander_icon = jQuery('<span/>', {
+                'class': 'caret',
+            }).css('cursor', 'pointer').html('&nbsp;')
+            .appendTo(row_csv_param);
 
             this.expander_csv = jQuery('<div/>', {
                 'id': 'expander_csv',
-                'class': 'collapse col-md-12 form-inline'
+                'class': 'collapse form-inline'
             }).appendTo(row_csv_param);
 
             var delimiter_label = jQuery('<label/>', {
@@ -1413,12 +1409,10 @@
     });
 
     Sao.Window.Export = Sao.class_(Sao.Window.CSV, {
-        init: function(name, screen, ids, names, context) {
+        init: function(name, screen, names) {
             this.name = name;
-            this.ids = ids;
             this.screen = screen;
             this.session = Sao.Session.current_session;
-            this.context = context;
             Sao.Window.Export._super.init.call(this,
                 Sao.i18n.gettext('CSV Export: %1',name));
             var fields = this.screen.model.fields;
@@ -1446,6 +1440,15 @@
             }.bind(this)).append(' '+Sao.i18n.gettext('Save Export'))
             .appendTo(this.column_buttons);
 
+            this.button_url = jQuery('<a/>', {
+                'class': 'btn btn-default btn-block',
+                'target': '_blank',
+                'rel': 'noreferrer noopener',
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-public')
+            ).append(' ' + Sao.i18n.gettext("URL Export"))
+            .appendTo(this.column_buttons);
+            this.dialog.body.on('change click', this.set_url.bind(this));
+
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
@@ -1468,6 +1471,44 @@
                 'class': 'list-unstyled predef-exports panel-body'
             }).css('cursor', 'pointer')
             .appendTo(predefined_exports_column);
+
+            this.selected_records = jQuery('<select/>', {
+                'class': 'form-control',
+                'id': 'input-records',
+            }).append(jQuery('<option/>', {
+                'val': true,
+            }).html(Sao.i18n.gettext("Selected Records")))
+                .append(jQuery('<option/>', {
+                    'val': false,
+                }).html(Sao.i18n.gettext("Listed Records")));
+
+            this.ignore_search_limit = jQuery('<input/>', {
+                'type': 'checkbox',
+            });
+
+            this.selected_records.change(function() {
+                this.ignore_search_limit.parents('.form-group').first().toggle(
+                    !JSON.parse(this.selected_records.val()));
+            }.bind(this));
+
+            jQuery('<div/>', {
+                'class': 'form-group',
+            }).appendTo(this.chooser_form)
+            .append(jQuery('<label/>', {
+                'text': Sao.i18n.gettext("Export:"),
+                'class': 'control-label',
+                'for': 'input-records',
+            })).append(this.selected_records);
+
+            jQuery('<div/>', {
+                'class': 'form-group',
+            }).appendTo(this.chooser_form)
+            .append(jQuery('<div/>', {
+                'class': 'checkbox',
+            }).append(jQuery('<label/>', {
+                'text': ' ' + Sao.i18n.gettext("Ignore search limit")
+            }).prepend(this.ignore_search_limit)))
+            .hide();
 
             this.el_csv_locale = jQuery('<input/>', {
                 'type': 'checkbox',
@@ -1492,6 +1533,11 @@
                 'text': ' '+Sao.i18n.gettext('Add Field Names')
             }).prepend(this.el_add_field_names)).appendTo(this.expander_csv);
             this.expander_csv.append(' ');
+
+            this.set_url();
+        },
+        get context() {
+            return this.screen.context;
         },
         view_populate: function(parent_node, parent_view) {
             var names = Object.keys(parent_node).sort(function(a, b) {
@@ -1775,11 +1821,39 @@
                     fields.push(field.getAttribute('path'));
                     fields2.push(field.innerText);
                 });
-                Sao.rpc({
-                    'method': 'model.' + this.screen.model_name +
-                        '.export_data',
-                    'params': [this.ids, fields, this.context]
-                }, this.session).then(function(data) {
+
+                var prm;
+                if (JSON.parse(this.selected_records.val())) {
+                    var ids = this.screen.current_view.selected_records.map(function(r) {
+                        return r.id;
+                    });
+                    prm = Sao.rpc({
+                        'method': (
+                            'model.' + this.screen.model_name +
+                            '.export_data'),
+                        'params': [ids, fields, this.context]
+                    }, this.session);
+                } else {
+                    var domain = this.screen.search_domain(
+                        this.screen.screen_container.get_text());
+                    var offset, limit;
+                    if (this.ignore_search_limit.prop('checked')) {
+                        offset = 0;
+                        limit = null;
+                    } else {
+                        offset = this.screen.offset;
+                        limit = this.screen.limit;
+                    }
+                    prm = Sao.rpc({
+                        'method': (
+                            'model.' + this.screen.model_name +
+                            '.export_data_domain'),
+                        'params': [
+                            domain, fields, offset, limit, this.screen.order,
+                            this.context],
+                    }, this.session);
+                }
+                prm.then(function(data) {
                     this.export_csv(fields2, data).then(function() {
                         this.destroy();
                     }.bind(this));
@@ -1807,6 +1881,58 @@
             return Sao.common.message.run(
                 Sao.i18n.ngettext('%1 record saved', '%1 records saved',
                     data.length));
+        },
+        set_url: function() {
+            var path = [this.session.database, 'data', this.screen.model_name];
+            var query_string = [];
+            var domain;
+            if (JSON.parse(this.selected_records.val())) {
+                domain = this.screen.current_view.selected_records.map(function(r) {
+                    return r.id;
+                });
+            } else {
+                domain = this.screen.search_domain(
+                    this.screen.screen_container.get_text());
+                if (!this.ignore_search_limit.prop('checked')) {
+                    query_string.push(['s', this.screen.limit.toString()]);
+                    query_string.push(
+                        ['p', Math.floor(
+                            this.screen.offset / this.screen.limit).toString()]);
+                }
+                if (this.screen.order) {
+                    this.screen.order.forEach(function(expr) {
+                        query_string.push(['o', expr.map(function(e) {
+                            return e;
+                        }).join(',')]);
+                    });
+                }
+            }
+            query_string.splice(
+                0, 0, ['d', JSON.stringify(Sao.rpc.prepareObject(domain))]);
+
+            this.fields_selected.children('li').each(function(i, field) {
+                query_string.push(['f', field.getAttribute('path')]);
+            });
+
+            var encoding = this.el_csv_encoding.val();
+            if (encoding) {
+                query_string.push(['enc', encoding]);
+            }
+
+            query_string.push(['dl', this.el_csv_delimiter.val()]);
+            query_string.push(['qc', this.el_csv_quotechar.val()]);
+
+            if (!this.el_add_field_names.is(':checked')) {
+                query_string.push(['h', '0']);
+            }
+            if (this.el_csv_locale.prop('checked')) {
+                query_string.push(['loc', '1']);
+            }
+
+            query_string = query_string.map(function(param) {
+                return param.map(encodeURIComponent).join('=');
+            }).join('&');
+            this.button_url.attr('href', '/' + path.join('/') + '?' + query_string);
         },
     });
 

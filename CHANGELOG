@@ -1,3 +1,5 @@
+* Add URL for the current export
+* Add option to export listed records
 * Set treeview header sticky on top
 * Add noreferrer noopener to external URL (issue9089)
 * Manage readonly dates in calendar view
