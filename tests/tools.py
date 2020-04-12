@@ -35,16 +35,19 @@ def create_fiscalyear(company=None, today=None, config=None):
     return fiscalyear
 
 
-def create_chart(company=None, config=None):
+def create_chart(
+        company=None, chart='account.account_template_root_en', config=None):
     "Create chart of accounts"
     AccountTemplate = Model.get('account.account.template', config=config)
     ModelData = Model.get('ir.model.data')
 
     if not company:
         company = get_company()
+
+    module, xml_id = chart.split('.')
     data, = ModelData.find([
-            ('module', '=', 'account'),
-            ('fs_id', '=', 'account_template_root_en'),
+            ('module', '=', module),
+            ('fs_id', '=', xml_id),
             ], limit=1)
 
     account_template = AccountTemplate(data.db_id)
@@ -71,30 +74,28 @@ def get_accounts(company=None, config=None):
         company = get_company()
 
     accounts = {}
-    accounts['receivable'], = Account.find([
-            ('type.receivable', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    accounts['payable'], = Account.find([
-            ('type.payable', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    accounts['revenue'], = Account.find([
-            ('type.revenue', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    accounts['expense'], = Account.find([
-            ('type.expense', '=', True),
-            ('company', '=', company.id),
-            ], limit=1)
-    accounts['cash'], = Account.find([
-            ('company', '=', company.id),
-            ('name', '=', 'Main Cash'),
-            ], limit=1)
-    accounts['tax'], = Account.find([
-            ('company', '=', company.id),
-            ('name', '=', 'Main Tax'),
-            ], limit=1)
+    for type in ['receivable', 'payable', 'revenue', 'expense']:
+        try:
+            accounts[type], = Account.find([
+                    ('type.%s' % type, '=', True),
+                    ('company', '=', company.id),
+                    ], limit=1)
+        except ValueError:
+            pass
+    try:
+        accounts['cash'], = Account.find([
+                ('company', '=', company.id),
+                ('name', '=', 'Main Cash'),
+                ], limit=1)
+    except ValueError:
+        pass
+    try:
+        accounts['tax'], = Account.find([
+                ('company', '=', company.id),
+                ('name', '=', 'Main Tax'),
+                ], limit=1)
+    except ValueError:
+        pass
     return accounts
 
 

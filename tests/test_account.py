@@ -18,7 +18,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.currency.tests import create_currency
 
 
-def create_chart(company, tax=False):
+def create_chart(company, tax=False, chart='account.account_template_root_en'):
     pool = Pool()
     AccountTemplate = pool.get('account.account.template')
     TaxTemplate = pool.get('account.tax.template')
@@ -27,8 +27,8 @@ def create_chart(company, tax=False):
     CreateChart = pool.get('account.create_chart', type='wizard')
     Account = pool.get('account.account')
 
-    template = AccountTemplate(ModelData.get_id(
-            'account', 'account_template_root_en'))
+    module, xml_id = chart.split('.')
+    template = AccountTemplate(ModelData.get_id(module, xml_id))
     if tax:
         tax_account = AccountTemplate(ModelData.get_id(
                 'account', 'account_template_tax_en'))
@@ -70,11 +70,11 @@ def create_chart(company, tax=False):
     receivable, = Account.search([
             ('type.receivable', '=', True),
             ('company', '=', company.id),
-            ])
+            ], limit=1)
     payable, = Account.search([
             ('type.payable', '=', True),
             ('company', '=', company.id),
-            ])
+            ], limit=1)
     create_chart.properties.company = company
     create_chart.properties.account_receivable = receivable
     create_chart.properties.account_payable = payable
