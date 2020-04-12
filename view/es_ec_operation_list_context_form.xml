@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="company"/>
     <field name="company"/>
     <newline/>
-    <label name="fiscalyear"/>
-    <field name="fiscalyear"/>
-    <label name="period"/>
-    <field name="period"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
 </form>

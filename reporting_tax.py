@@ -1,7 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import unicodedata
+
 from collections import defaultdict
+from dateutil.relativedelta import relativedelta
 from decimal import Decimal
 from operator import attrgetter
 
@@ -15,7 +17,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.model.modelsql import convert_from
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.report import Report
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, StateReport, \
@@ -570,10 +572,11 @@ class ECOperationList(ECSalesList):
 
         sales = super().table_query()
 
-        where = ((invoice.company == context.get('company'))
-            & (period.fiscalyear == context.get('fiscalyear')))
-        if context.get('period'):
-            where &= (period.id == context.get('period'))
+        where = invoice.company == context.get('company')
+        if context.get('start_date'):
+            where &= (move.date >= context.get('start_date'))
+        if context.get('end_date'):
+            where &= (move.date <= context.get('end_date'))
         where &= ((tax.es_ec_purchases_list_code != Null)
             & (tax.es_ec_purchases_list_code != ''))
         where &= invoice.type == 'in'
@@ -610,6 +613,35 @@ class ECOperationListContext(ECSalesListContext):
     "EC Operation List Context"
     __name__ = 'account.reporting.es_ec_operation_list.context'
 
+    start_date = fields.Date("Start Date",
+        domain=[
+            If(Eval('end_date'),
+                ('start_date', '<=', Eval('end_date')),
+                (),
+                ),
+            ],
+        depends=['end_date'])
+    end_date = fields.Date("End Date",
+        domain=[
+            If(Eval('start_date'),
+                ('end_date', '>=', Eval('start_date')),
+                (),
+                ),
+            ],
+        depends=['start_date'])
+
+    @classmethod
+    def default_start_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today() - relativedelta(months=1, day=1)
+
+    @classmethod
+    def default_end_date(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today() - relativedelta(months=1, day=31)
+
 
 class AEAT349(Report):
     __name__ = 'account.reporting.aeat349'
@@ -617,27 +649,23 @@ class AEAT349(Report):
     @classmethod
     def get_context(cls, records, data):
         pool = Pool()
-        Period = pool.get('account.period')
-        Fiscalyear = pool.get('account.fiscalyear')
+        Company = pool.get('company.company')
         t_context = Transaction().context
 
         context = super().get_context(records, data)
 
-        fiscalyear = Fiscalyear(t_context['fiscalyear'])
-        context['year'] = str(fiscalyear.start_date.year)
-        context['company'] = fiscalyear.company
+        context['company'] = Company(t_context['company'])
         context['records_amount'] = sum(
             (r.amount for r in records), Decimal(0))
 
-        period_id = t_context.get('period')
-        if not period_id:
-            # Yearly
-            context['period'] = '0A'
-            context['period_number'] = '99'
-        else:
-            period = Period(period_id)
-            start_month = period.start_date.month
-            end_month = period.end_date.month
+        start_date = t_context.get('start_date')
+        end_date = t_context.get('end_date')
+        if start_date or end_date:
+            date = start_date or end_date
+            context['year'] = str(date.year)
+        if start_date and end_date:
+            start_month = start_date.month
+            end_month = end_date.month
             if end_month - start_month > 0:
                 context['period'] = str(end_month // 3) + 'T'
                 context['period_number'] = str(20 + (end_month // 3))

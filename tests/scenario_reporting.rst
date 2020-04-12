@@ -218,7 +218,8 @@ Generate aeat reports::
     >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
     >>> context = {
     ...     'company': company.id,
-    ...     'fiscalyear': fiscalyear.id,
+    ...     'start_date': period.start_date,
+    ...     'end_date': period.end_date,
     ...     }
     >>> with config.set_context(context):
     ...     records = ECOperationList.find([])
