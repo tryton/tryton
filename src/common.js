@@ -2551,6 +2551,9 @@
                 if (part instanceof DomainInversion.And) {
                     var part_inversion = part.inverse(symbol, context);
                     var evaluated = typeof part_inversion == 'boolean';
+                    if (!~part.variables.indexOf(symbol)) {
+                        continue;
+                    }
                     if (!evaluated) {
                         result.push(part_inversion);
                     } else if (part_inversion) {
@@ -2602,7 +2605,7 @@
                 if (part instanceof DomainInversion.And) {
                     var part_inversion = part.inverse(symbol, context);
                     var evaluated = typeof part_inversion == 'boolean';
-                    if (!~this.variables.indexOf(symbol)) {
+                    if (!~part.variables.indexOf(symbol)) {
                         if (evaluated && part_inversion) {
                             return true;
                         }
