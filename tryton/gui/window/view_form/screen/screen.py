@@ -265,12 +265,6 @@ class Screen(SignalEvent):
             self.new_group(context)
 
         domain = self.search_domain(search_string, True)
-        if self.context_domain:
-            decoder = PYSONDecoder(self.context)
-            domain = ['AND', domain, decoder.decode(self.context_domain)]
-        tab_domain = self.screen_container.get_tab_domain()
-        if tab_domain:
-            domain = ['AND', domain, tab_domain]
 
         context = self.context
         if self.screen_container.but_active.get_active():
@@ -308,7 +302,7 @@ class Screen(SignalEvent):
         self.count_tab_domain()
         return bool(ids)
 
-    def search_domain(self, search_string=None, set_text=False):
+    def search_domain(self, search_string=None, set_text=False, with_tab=True):
         domain = []
         # Test first parent to avoid calling unnecessary domain_parser
         if not self.parent and self.domain_parser:
@@ -339,6 +333,13 @@ class Screen(SignalEvent):
                 domain = ['AND', domain, self.current_view.current_domain()]
             else:
                 domain = self.current_view.current_domain()
+        if self.context_domain:
+            decoder = PYSONDecoder(self.context)
+            domain = ['AND', domain, decoder.decode(self.context_domain)]
+        if with_tab:
+            tab_domain = self.screen_container.get_tab_domain()
+            if tab_domain:
+                domain = ['AND', domain, tab_domain]
         return domain
 
     def count_tab_domain(self):
@@ -348,7 +349,8 @@ class Screen(SignalEvent):
             except RPCException:
                 count = None
             self.screen_container.set_tab_counter(count, idx)
-        screen_domain = self.search_domain(self.screen_container.get_text())
+        screen_domain = self.search_domain(
+            self.screen_container.get_text(), with_tab=False)
         for idx, (name, domain, count) in enumerate(
                 self.screen_container.tab_domain):
             if not count:

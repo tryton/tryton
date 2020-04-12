@@ -1,3 +1,5 @@
+* Add URL for the current export
+* Add option to export listed records
 * Retire App Menu
 * Add support for Python 3.8
 * Manage readonly dates in calendar view

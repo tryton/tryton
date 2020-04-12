@@ -320,10 +320,7 @@ class Form(SignalEvent, TabContent):
     def sig_export(self, widget=None):
         if not self.modified_save():
             return
-        export = WinExport(
-            self.title.get_text(), self.model,
-            [r.id for r in self.screen.selected_records],
-            context=self.screen.context)
+        export = WinExport(self.title.get_text(), self.screen)
         for name in self.screen.current_view.get_fields():
             type = self.screen.group.fields[name].attrs['type']
             if type == 'selection':
