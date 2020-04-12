@@ -356,7 +356,8 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(domain_inversion(domain, 'z'), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5}), [['z', '=', 3]])
-        self.assertFalse(domain_inversion(domain, 'z', {'x': 5, 'y': 5}))
+        self.assertEqual(
+            domain_inversion(domain, 'z', {'x': 5, 'y': 5}), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5, 'y': 7}), [['z', '=', 3]])
 
@@ -365,7 +366,8 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(domain_inversion(domain, 'z'), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 5}), [['z', '=', 3]])
-        self.assertFalse(domain_inversion(domain, 'z', {'y': 5}))
+        self.assertEqual(
+            domain_inversion(domain, 'z', {'y': 5}), [['z', '=', 3]])
         self.assertEqual(
             domain_inversion(domain, 'z', {'x': 4, 'y': 7}), [['z', '=', 3]])
 
