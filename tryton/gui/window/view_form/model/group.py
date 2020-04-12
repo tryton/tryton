@@ -314,16 +314,17 @@ class Group(SignalEvent, list):
             record.signal_connect(self, 'record-changed', self._record_changed)
             record.signal_connect(self, 'record-modified',
                 self._record_modified)
-        if position == -1:
-            self.append(record)
-        else:
-            self.insert(position, record)
+        if record not in self:
+            if position == -1:
+                self.append(record)
+            else:
+                self.insert(position, record)
         for record_rm in self.record_removed:
             if record_rm.id == record.id:
-                self.record_removed.remove(record)
+                self.record_removed.remove(record_rm)
         for record_del in self.record_deleted:
             if record_del.id == record.id:
-                self.record_deleted.remove(record)
+                self.record_deleted.remove(record_del)
         self.current_idx = position
         record.modified_fields.setdefault('id')
         record.signal('record-modified')

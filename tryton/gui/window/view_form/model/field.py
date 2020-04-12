@@ -748,30 +748,38 @@ class O2MField(Field):
             else:
                 fields = {}
 
-        to_remove = []
-        for record2 in record.value[self.name]:
-            if not record2.id:
-                to_remove.append(record2)
+        group = record.value[self.name]
+        if value and value.get('delete'):
+            for record_id in value['delete']:
+                record2 = group.get(record_id)
+                if record2 is not None:
+                    group.remove(
+                        record2, remove=False, signal=False,
+                        force_remove=False)
         if value and value.get('remove'):
             for record_id in value['remove']:
-                record2 = record.value[self.name].get(record_id)
+                record2 = group.get(record_id)
                 if record2 is not None:
-                    to_remove.append(record2)
-        for record2 in to_remove:
-            record.value[self.name].remove(record2, signal=False,
-                force_remove=False)
+                    group.remove(
+                        record2, remove=True, signal=False,
+                        force_remove=False)
 
         if value and (value.get('add') or value.get('update', [])):
             record.value[self.name].add_fields(fields)
             for index, vals in value.get('add', []):
-                new_record = record.value[self.name].new(default=False)
-                record.value[self.name].add(new_record, index, signal=False)
+                new_record = None
+                id_ = vals.pop('id', None)
+                if id_ is not None:
+                    new_record = group.get(id_)
+                if not new_record:
+                    new_record = group.new(obj_id=id_, default=False)
+                group.add(new_record, index, signal=False)
                 new_record.set_on_change(vals)
 
             for vals in value.get('update', []):
                 if 'id' not in vals:
                     continue
-                record2 = record.value[self.name].get(vals['id'])
+                record2 = group.get(vals['id'])
                 if record2 is not None:
                     record2.set_on_change(vals)
 
