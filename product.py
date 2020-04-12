@@ -52,6 +52,6 @@ class PriceList(metaclass=PoolMeta):
 
     def get_uom(self, product):
         uom = super().get_uom(product)
-        if self.unit == 'product_sale' and self.product.sale_uom:
-            uom = self.product.sale_uom
+        if self.unit == 'product_sale' and product.sale_uom:
+            uom = product.sale_uom
         return uom
