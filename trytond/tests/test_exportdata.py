@@ -364,7 +364,7 @@ class ExportDataTestCase(unittest.TestCase):
     def test_domain(self):
         "Test export data with domain"
         pool = Pool()
-        ExportData = pool.get('text.export_data')
+        ExportData = pool.get('test.export_data')
 
         ExportData.create([{
                     'boolean': True,
