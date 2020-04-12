@@ -360,6 +360,23 @@ class ExportDataTestCase(unittest.TestCase):
             ExportData.export_data([export1], ['reference.translated']),
             [["Target"]])
 
+    @with_transaction()
+    def test_domain(self):
+        "Test export data with domain"
+        pool = Pool()
+        ExportData = pool.get('text.export_data')
+
+        ExportData.create([{
+                    'boolean': True,
+                    }, {
+                    'boolean': False,
+                    }])
+
+        self.assertEqual(
+            ExportData.export_data_domain(
+                [('boolean', '=', True)], ['boolean']),
+            [[True]])
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(ExportDataTestCase)

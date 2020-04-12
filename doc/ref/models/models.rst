@@ -326,6 +326,11 @@ Class methods:
     Descriptor on fields are available by appending ``.`` and the name of the
     method on the field that returns the descriptor.
 
+.. classmethod:: ModelStorage.export_data_domain(domain, fields_names[, offset[, limit[, order]]])
+
+    Call :meth:`search` and :meth`export_data` together.
+    Useful for the client to reduce the number of calls and the data transfered.
+
 .. classmethod:: ModelStorage.import_data(fields_names, data)
 
     Create or update records for all values in ``data``.

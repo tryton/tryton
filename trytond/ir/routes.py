@@ -1,5 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import csv
+import datetime as dt
+import json
+import io
+from numbers import Number
 try:
     from http import HTTPStatus
 except ImportError:
@@ -12,7 +17,9 @@ from werkzeug.wrappers import Response
 from trytond.i18n import gettext
 from trytond.config import config
 from trytond.wsgi import app
+from trytond.protocols.jsonrpc import JSONDecoder
 from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.tools import slugify
 from trytond.transaction import Transaction
 
 SOURCE = config.get(
@@ -161,3 +168,88 @@ TEMPLATE = '''<!DOCTYPE html>
     </form>
 </body>
 </html>'''
+
+
+@app.route('/<database_name>/data/<model>', methods={'GET'})
+@app.auth_required
+@with_pool
+@with_transaction(user='request', context=dict(_check_access=True))
+def data(request, pool, model):
+    User = pool.get('res.user')
+    Lang = pool.get('ir.lang')
+    try:
+        Model = pool.get(model)
+    except KeyError:
+        abort(HTTPStatus.NOT_FOUND)
+    transaction = Transaction()
+    context = User(transaction.user).get_preferences(context_only=True)
+    language = request.args.get('l')
+    if language:
+        context['language'] = language
+    try:
+        domain = json.loads(
+            request.args.get('d', '[]'), object_hook=JSONDecoder())
+    except json.JSONDecodeError:
+        abort(HTTPStatus.BAD_REQUEST)
+    limit = None
+    offset = 0
+    if 's' in request.args:
+        try:
+            limit = int(request.args.get('s'))
+            if 'p' in request.args:
+                offset = int(request.args.get('p')) * limit
+        except ValueError:
+            abort(HTTPStatus.BAD_REQUEST)
+    if 'o' in request.args:
+        order = [(o.split(',', 1) + [''])[:2]
+            for o in request.args.getlist('o')]
+    else:
+        order = None
+    fields_names = request.args.getlist('f')
+    encoding = request.args.get('enc', 'UTF-8')
+    delimiter = request.args.get('dl', ',')
+    quotechar = request.args.get('qc', '"')
+    try:
+        header = bool(int(request.args.get('h', True)))
+        locale_format = bool(int(request.args.get('loc', False)))
+    except ValueError:
+        abort(HTTPStatus.BAD_REQUEST)
+
+    with transaction.set_context(**context):
+        lang = Lang.get(transaction.language)
+
+        def format_(row):
+            for i, value in enumerate(row):
+                if locale_format:
+                    if isinstance(value, Number):
+                        value = lang.format('%.12g', value)
+                    elif isinstance(value, (dt.date, dt.datetime)):
+                        value = lang.strftime(value)
+                elif isinstance(value, bool):
+                    value = int(value)
+                row[i] = value
+            return row
+
+        try:
+            if domain and isinstance(domain[0], (int, float)):
+                rows = Model.export_data(domain, fields_names)
+            else:
+                rows = Model.export_data_domain(
+                    domain, fields_names,
+                    limit=limit, offset=offset, order=order)
+        except (ValueError, KeyError):
+            abort(HTTPStatus.BAD_REQUEST)
+        data = io.StringIO(newline='')
+        writer = csv.writer(data, delimiter=delimiter, quotechar=quotechar)
+        if header:
+            writer.writerow(fields_names)
+        for row in rows:
+            writer.writerow(format_(row))
+        data = data.getvalue().encode(encoding)
+        filename = slugify(Model.__names__()['model']) + '.csv'
+        filename = filename.encode('latin-1', 'ignore')
+        response = Response(data, mimetype='text/csv; charset=' + encoding)
+        response.headers.add(
+            'Content-Disposition', 'attachment', filename=filename)
+        response.headers.add('Content-Length', len(data))
+        return response

@@ -124,6 +124,7 @@ class ModelStorage(Model):
                     'search_count': RPC(),
                     'search_read': RPC(),
                     'resources': RPC(instantiate=0, unique=False),
+                    'export_data_domain': RPC(),
                     'export_data': RPC(instantiate=0, unique=False),
                     'import_data': RPC(readonly=False),
                     })
@@ -675,6 +676,12 @@ class ModelStorage(Model):
         for record in records:
             data += cls.__export_row(record, fields_names)
         return data
+
+    @classmethod
+    def export_data_domain(
+            cls, domain, fields_names, offset=0, limit=None, order=None):
+        records = cls.search(domain, limit=limit, offset=offset, order=order)
+        return cls.export_data(records, fields_names)
 
     @classmethod
     def import_data(cls, fields_names, data):

@@ -45,16 +45,18 @@ DB_CACHE = os.environ.get('DB_CACHE')
 Pool.test = True
 
 
-def activate_module(modules):
+def activate_module(modules, lang='en'):
     '''
     Activate modules for the tested database
     '''
     if isinstance(modules, str):
         modules = [modules]
     name = '-'.join(modules)
+    if lang != 'en':
+        name += '--' + lang
     if not db_exist(DB_NAME) and restore_db_cache(name):
         return
-    create_db()
+    create_db(lang=lang)
     with Transaction().start(DB_NAME, 1, close=True) as transaction:
         pool = Pool()
         Module = pool.get('ir.module')
