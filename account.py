@@ -66,10 +66,15 @@ class ECSalesList(ModelSQL, ModelView):
         move = Move.__table__()
         period = Period.__table__()
         tax = Tax.__table__()
-        where = ((invoice.company == context.get('company'))
-            & (period.fiscalyear == context.get('fiscalyear')))
+        where = invoice.company == context.get('company')
+        if context.get('fiscalyear'):
+            where &= (period.fiscalyear == context.get('fiscalyear'))
         if context.get('period'):
             where &= (period.id == context.get('period'))
+        if context.get('start_date'):
+            where &= (move.date >= context.get('start_date'))
+        if context.get('end_date'):
+            where &= (move.date <= context.get('end_date'))
         where &= ((tax.ec_sales_list_code != Null)
             & (tax.ec_sales_list_code != ''))
         where &= invoice.type == 'out'
