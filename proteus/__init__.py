@@ -594,11 +594,12 @@ class ModelList(list):
         raise NotImplementedError
     insert.__doc__ = list.insert.__doc__
 
-    def pop(self, index=-1):
+    def pop(self, index=-1, _changed=True):
         self.record_removed.add(self[index])
         self[index]._group = None
         res = super(ModelList, self).pop(index)
-        self._changed()
+        if _changed:
+            self._changed()
         return res
     pop.__doc__ = list.pop.__doc__
 
@@ -1057,30 +1058,39 @@ class Model(object):
     def _on_change_set(self, field, value):
         if (self._fields[field]['type'] in ('one2many', 'many2many')
                 and not isinstance(value, (list, tuple))):
-            to_remove = []
-            if value and value.get('remove'):
-                for record_id in value['remove']:
+            if value and value.get('delete'):
+                for record_id in value['delete']:
                     for record in getattr(self, field):
                         if record.id == record_id:
-                            to_remove.append(record)
-            for record in to_remove:
-                # remove without signal
-                getattr(self, field).remove(record, _changed=False)
+                            getattr(self, field).remove(record, _changed=False)
+            if value and value.get('remove'):
+                for record_id in value['remove']:
+                    for i, record in enumerate(getattr(self, field)):
+                        if record.id == record_id:
+                            getattr(self, field).pop(i, _changed=False)
             if value and (value.get('add') or value.get('update')):
                 for index, vals in value.get('add', []):
                     group = getattr(self, field)
                     Relation = Model.get(
                         self._fields[field]['relation'], self._config)
                     config = Relation._config
+                    id_ = vals.pop('id', None)
                     with config.reset_context(), \
                             config.set_context(self._context):
-                        record = Relation(_group=group, _default=False)
-                    record._set_on_change(vals)
-                    # append without signal
-                    if index == -1:
-                        list.append(group, record)
+                        record = Relation(id=id_, _group=group, _default=False)
+                    try:
+                        idx = group.index(record)
+                    except ValueError:
+                        # append without signal
+                        if index == -1:
+                            list.append(group, record)
+                        else:
+                            list.insert(group, index, record)
                     else:
-                        list.insert(group, index, record)
+                        record = group[idx]
+                        group.record_removed.discard(record)
+                        group.record_deleted.discard(record)
+                    record._set_on_change(vals)
                 for vals in value.get('update', []):
                     if 'id' not in vals:
                         continue
