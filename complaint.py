@@ -149,23 +149,31 @@ class Complaint(Workflow, ModelSQL, ModelView):
     def _origin_domains(cls):
         return {
             'sale.sale': [
-                ('party', '=', Eval('customer')),
+                If(Eval('customer'),
+                    ('party', '=', Eval('customer')),
+                    ()),
                 ('company', '=', Eval('company')),
                 ('state', 'in', ['confirmed', 'processing', 'done']),
                 ],
             'sale.line': [
-                ('sale.party', '=', Eval('customer')),
+                If(Eval('customer'),
+                    ('sale.party', '=', Eval('customer')),
+                    ()),
                 ('sale.company', '=', Eval('company')),
                 ('sale.state', 'in', ['confirmed', 'processing', 'done']),
                 ],
             'account.invoice': [
-                ('party', '=', Eval('customer')),
+                If(Eval('customer'),
+                    ('party', '=', Eval('customer')),
+                    ()),
                 ('company', '=', Eval('company')),
                 ('type', '=', 'out'),
                 ('state', 'in', ['posted', 'paid']),
                 ],
             'account.invoice.line': [
-                ('invoice.party', '=', Eval('customer')),
+                If(Eval('customer'),
+                    ('invoice.party', '=', Eval('customer')),
+                    ()),
                 ('invoice.company', '=', Eval('company')),
                 ('invoice.type', '=', 'out'),
                 ('invoice.state', 'in', ['posted', 'paid']),
@@ -203,6 +211,23 @@ class Complaint(Workflow, ModelSQL, ModelView):
             return [('', ''), (origin.model, origin.name)]
         else:
             return []
+
+    @fields.depends('origin', 'customer')
+    def on_change_origin(self):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        SaleLine = pool.get('sale.line')
+        Invoice = pool.get('account.invoice')
+        InvoiceLine = pool.get('account.invoice.line')
+        if not self.customer and self.origin and self.origin.id >= 0:
+            if isinstance(self.origin, Sale):
+                self.customer = self.origin.party
+            elif isinstance(self.origin, SaleLine):
+                self.customer = self.origin.sale.party
+            elif isinstance(self.origin, Invoice):
+                self.customer = self.origin.party
+            elif isinstance(self.origin, InvoiceLine) and self.origin.invoice:
+                self.customer = self.origin.invoice.party
 
     @fields.depends('origin')
     def on_change_with_origin_id(self, name=None):
