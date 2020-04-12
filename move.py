@@ -2046,7 +2046,7 @@ class PrintGeneralJournalStart(ModelView):
     from_date = fields.Date('From Date', required=True)
     to_date = fields.Date('To Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move.')
+    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
 
     @staticmethod
     def default_from_date():

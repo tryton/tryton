@@ -1324,7 +1324,7 @@ class OpenChartAccountStart(ModelView):
     __name__ = 'account.open_chart.start'
     fiscalyear = fields.Many2One('account.fiscalyear', 'Fiscal Year',
             help='Leave empty for all open fiscal year.')
-    posted = fields.Boolean('Posted Moves', help='Show posted moves only.')
+    posted = fields.Boolean('Posted Moves', help="Only include posted moves.")
 
     @staticmethod
     def default_posted():
@@ -1604,7 +1604,7 @@ class GeneralLedgerAccountContext(ModelView):
             ],
         depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Move', help="Only included posted moves.")
 
     @classmethod
     def default_fiscalyear(cls):
@@ -1825,7 +1825,7 @@ class BalanceSheetContext(ModelView):
     __name__ = 'account.balance_sheet.context'
     date = fields.Date('Date', required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
 
     @staticmethod
     def default_date():
@@ -1906,7 +1906,7 @@ class IncomeStatementContext(ModelView):
             ],
         depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
     comparison = fields.Boolean('Comparison')
     fiscalyear_cmp = fields.Many2One('account.fiscalyear', 'Fiscal Year',
         states={
@@ -2014,7 +2014,7 @@ class AgedBalanceContext(ModelView):
             ('month', 'Months'),
             ], "Unit", required=True)
     company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help='Show only posted move')
+    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
 
     @classmethod
     def default_type(cls):
