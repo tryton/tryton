@@ -1,3 +1,4 @@
+* Delete cancelled moves when a production is reset to draft
 * Add employee on productions for some states
 * Convert set_moves into dualmethod
 * Add reference to production record name

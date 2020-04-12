@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
+from itertools import chain
 
 from sql import Null
 
@@ -622,8 +623,16 @@ class Production(Workflow, ModelSQL, ModelView):
     def draft(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.draft([m for p in productions
-                for m in p.inputs + p.outputs])
+
+        to_draft, to_delete = [], []
+        for production in productions:
+            for move in chain(production.inputs, production.outputs):
+                if move.state != 'cancel':
+                    to_draft.append(move)
+                else:
+                    to_delete.append(move)
+        Move.draft(to_draft)
+        Move.delete(to_delete)
 
     @classmethod
     @ModelView.button
