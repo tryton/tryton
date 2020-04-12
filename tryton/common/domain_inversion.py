@@ -340,6 +340,8 @@ class And(object):
             if isinstance(part, And):
                 part_inversion = part.inverse(symbol, context)
                 evaluated = isinstance(part_inversion, bool)
+                if symbol not in part.variables:
+                    continue
                 if not evaluated:
                     result.append(part_inversion)
                 elif part_inversion:
