@@ -1608,11 +1608,11 @@ class ModelStorage(Model):
                 if self.id is not None and self.id >= 0:
                     _values, self._values = self._values, None
                     try:
-                        to_remove = [t.id for t in getattr(self, fname)]
+                        previous = [t.id for t in getattr(self, fname)]
                     finally:
                         self._values = _values
                 else:
-                    to_remove = []
+                    previous = []
                 to_add = []
                 to_create = []
                 to_write = []
@@ -1629,8 +1629,8 @@ class ModelStorage(Model):
                         if target.id is None or target.id < 0:
                             to_create.append(target._save_values)
                         else:
-                            if target.id in to_remove:
-                                to_remove.remove(target.id)
+                            if target.id in previous:
+                                previous.remove(target.id)
                             else:
                                 to_add.append(target.id)
                             target_values = target._save_values
@@ -1641,8 +1641,26 @@ class ModelStorage(Model):
                         if t_values:
                             target._values = t_values
                 value = []
-                if to_remove:
-                    value.append(('remove', to_remove))
+                if previous:
+                    to_delete, to_remove = [], []
+                    deleted = removed = None
+                    if self._deleted:
+                        deleted = self._deleted[fname]
+                    if self._removed:
+                        removed = self._removed[fname]
+                    for id_ in previous:
+                        if deleted and id_ in deleted:
+                            to_delete.append(id_)
+                        elif removed and id_ in removed:
+                            to_remove.append(id_)
+                        elif field._type == 'one2many':
+                            to_delete.append(id_)
+                        else:
+                            to_remove.append(id_)
+                    if to_delete:
+                        value.append(('delete', to_delete))
+                    if to_remove:
+                        value.append(('remove', to_remove))
                 if to_add:
                     value.append(('add', to_add))
                 if to_create:
@@ -1698,6 +1716,8 @@ class ModelStorage(Model):
                 raise
             for record in to_create + to_write:
                 record._init_values = None
+                record._deleted = None
+                record._removed = None
             records = latter
 
 

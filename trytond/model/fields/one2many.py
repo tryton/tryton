@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from itertools import chain
 from sql import Cast, Literal
 from sql.functions import Substring, Position
@@ -259,6 +260,15 @@ class One2Many(Field):
         with Transaction().set_context(ctx):
             records = instanciate_values(Target, value, **extra)
         super(One2Many, self).__set__(inst, records)
+
+    def remove(self, inst, records):
+        records = set(records)
+        if inst._removed is None:
+            inst._removed = defaultdict(set)
+        inst._removed[self.name].update(map(int, records))
+        setattr(
+            inst, self.name,
+            [r for r in getattr(inst, self.name) if r not in records])
 
     def convert_domain(self, domain, tables, Model):
         from ..modelsql import convert_from

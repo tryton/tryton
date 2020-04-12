@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from itertools import chain
 
 from sql import Cast, Literal, Null
@@ -285,6 +286,15 @@ class Many2Many(Field):
         with Transaction().set_context(ctx):
             records = instanciate_values(Target, value)
         super(Many2Many, self).__set__(inst, records)
+
+    def delete(self, inst, records):
+        records = set(records)
+        if inst._deleted is None:
+            inst._deleted = defaultdict(set)
+        inst._deleted[self.name].update(map(int, records))
+        setattr(
+            inst, self.name,
+            [r for r in getattr(inst, self.name) if r not in records])
 
     def convert_domain_tree(self, domain, tables):
         Target = self.get_target()

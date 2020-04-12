@@ -18,6 +18,28 @@ class ModelStorageRequired(ModelSQL):
     name = fields.Char('Name', required=True)
 
 
+class ModelStorageSave2Many(ModelSQL):
+    "Model Storage to test save with xxx2many"
+    __name__ = 'test.modelstorage.save2many'
+    targets = fields.One2Many(
+        'test.modelstorage.save2many.target', 'parent', "Targets")
+    m2m_targets = fields.Many2Many(
+        'test.modelstorage.save2many.relation', 'parent', 'target', "Targets")
+
+
+class ModelStorageSave2ManyTarget(ModelSQL):
+    "Model Storage to test save with xxx2many"
+    __name__ = 'test.modelstorage.save2many.target'
+    parent = fields.Many2One('test.modelstorage.save2many', "Parent")
+
+
+class ModelStorageSave2ManyRelation(ModelSQL):
+    "Model Storage to test save with xxx2many"
+    __name__ = 'test.modelstorage.save2many.relation'
+    parent = fields.Many2One('test.modelstorage.save2many', "Parent")
+    target = fields.Many2One('test.modelstorage.save2many.target', "Target")
+
+
 class ModelStorageContext(ModelSQL):
     'Model Storage to test Context'
     __name__ = 'test.modelstorage.context'
@@ -94,6 +116,9 @@ def register(module):
     Pool.register(
         ModelStorage,
         ModelStorageRequired,
+        ModelStorageSave2Many,
+        ModelStorageSave2ManyTarget,
+        ModelStorageSave2ManyRelation,
         ModelStorageContext,
         ModelStoragePYSONDomain,
         ModelStorageRelationDomain,

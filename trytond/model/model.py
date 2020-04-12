@@ -29,7 +29,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
     """
     Define a model in Tryton.
     """
-    __slots__ = ('_id', '_values', '_init_values')
+    __slots__ = ('_id', '_values', '_init_values', '_removed', '_deleted')
     _rec_name = 'name'
 
     id = fields.Integer(lazy_gettext('ir.msg_ID'), readonly=True)
@@ -246,6 +246,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         if id is not None:
             id = int(id)
         self._id = id
+        self._deleted = self._removed = None
         if kwargs:
             self._values = {}
             parent_values = defaultdict(dict)

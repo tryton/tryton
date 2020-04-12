@@ -757,6 +757,12 @@ This field accepts as written value a list of tuples like this:
 
     Same as :attr:`Many2One.search_context`
 
+Instance methods:
+
+.. method:: One2Many.remove(instance, records)
+
+    Remove the target records from the instance instead of deleting them.
+
 Many2Many
 ---------
 
@@ -815,6 +821,15 @@ This field accepts as written value a list of tuples like the :class:`One2Many`.
 
     Same as :attr:`One2Many.filter`
 
+.. attribute:: Many2Many.search_order
+
+    Same as :attr:`Many2One.search_order`
+
+.. attribute:: Many2Many.search_context
+
+    Same as :attr:`Many2One.search_context`
+
+
 Instance methods:
 
 .. method:: Many2Many.get_relation()
@@ -825,13 +840,9 @@ Instance methods:
 
     Return the target :class:`~trytond.model.Model`.
 
-.. attribute:: Many2Many.search_order
+.. method:: Many2Many.delete(instance, records):
 
-    Same as :attr:`Many2One.search_order`
-
-.. attribute:: Many2Many.search_context
-
-    Same as :attr:`Many2One.search_context`
+    Delete the target records from the instance instead of removing them.
 
 One2One
 -------

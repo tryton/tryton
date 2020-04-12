@@ -141,6 +141,113 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertEqual(foo.name, 'foo')
         self.assertIsNone(bar.name)
 
+    @with_transaction()
+    def test_save_one2many_create(self):
+        "Test save one2many create"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        record = ModelStorage()
+        record.targets = [Target()]
+        record.save()
+
+        self.assertTrue(record.id)
+        self.assertEqual(len(record.targets), 1)
+
+    @with_transaction()
+    def test_save_one2many_add(self):
+        "Test save one2many add"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        target = Target()
+        target.save()
+        record = ModelStorage()
+        record.targets = [target]
+        record.save()
+
+        self.assertTrue(record.id)
+        self.assertEqual(len(record.targets), 1)
+        self.assertEqual(len(Target.search([])), 1)
+
+    @with_transaction()
+    def test_save_one2many_delete(self):
+        "Test save one2many delete"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        record, = ModelStorage.create([{'targets': [('create', [{}])]}])
+        record.targets = []
+        record.save()
+
+        self.assertEqual(len(record.targets), 0)
+        self.assertEqual(Target.search([], count=True), 0)
+
+    @with_transaction()
+    def test_save_one2many_remove(self):
+        "Test save one2many remove"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        record, = ModelStorage.create([{'targets': [('create', [{}])]}])
+        ModelStorage.targets.remove(record, record.targets)
+        record.save()
+
+        self.assertEqual(len(record.targets), 0)
+        self.assertEqual(Target.search([], count=True), 1)
+
+    @with_transaction()
+    def test_save_many2many_add(self):
+        "Test save many2many add"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        target = Target()
+        target.save()
+        record = ModelStorage()
+        record.m2m_targets = [target]
+        record.save()
+
+        self.assertTrue(record.id)
+        self.assertEqual(len(record.m2m_targets), 1)
+        self.assertEqual(len(Target.search([])), 1)
+
+    @with_transaction()
+    def test_save_many2many_delete(self):
+        "Test save many2many delete"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        record, = ModelStorage.create([{'m2m_targets': [('create', [{}])]}])
+        ModelStorage.m2m_targets.delete(record, record.m2m_targets)
+        record.save()
+
+        self.assertEqual(len(record.targets), 0)
+        self.assertEqual(Target.search([], count=True), 0)
+
+    @with_transaction()
+    def test_save_many2many_remove(self):
+        "Test save one2many remove"
+        pool = Pool()
+        ModelStorage = pool.get('test.modelstorage.save2many')
+        Target = pool.get('test.modelstorage.save2many.target')
+
+        target = Target()
+        target.save()
+        record, = ModelStorage.create([
+                {'m2m_targets': [('add', [target.id])]}])
+        record.m2m_targets = []
+        record.save()
+
+        self.assertEqual(len(record.m2m_targets), 0)
+        self.assertEqual(Target.search([], count=True), 1)
+
     @with_transaction(context={'_check_access': True})
     def test_model_translations(self):
         'Test any user can translate fields and duplicate its records'

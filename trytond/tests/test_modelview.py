@@ -40,7 +40,7 @@ class ModelView(unittest.TestCase):
                 'ref_target': 'test.modelview.changed_values.target,2',
                 'targets': {
                     'add': [
-                        (0, {'name': 'bar'}),
+                        (0, {'id': None, 'name': 'bar'}),
                         ],
                     },
                 })
@@ -59,9 +59,12 @@ class ModelView(unittest.TestCase):
         self.assertEqual(record._changed_values, {
                 'targets': {
                     'update': [{'id': 1, 'name': 'bar'}],
-                    'remove': [2],
+                    'delete': [2],
                     },
-                'm2m_targets': [9, 10],
+                'm2m_targets': {
+                    'remove': [5, 6, 7],
+                    'add': [(0, {'id': 9}), (1, {'id': 10})],
+                    },
                 })
 
         # change only one2many record
@@ -86,6 +89,40 @@ class ModelView(unittest.TestCase):
         self.assertEqual(record._changed_values, {
                 'targets': {
                     'update': [{'id': 1, 'name': 'foo'}],
+                    },
+                })
+
+    @with_transaction()
+    def test_changed_values_removed(self):
+        "Test removed"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+        Target = pool.get('test.modelview.changed_values.target')
+
+        target = Target(1)
+        record = Model(targets=[target])
+        Model.targets.remove(record, [target])
+
+        self.assertEqual(record._changed_values, {
+                'targets': {
+                    'remove': [1],
+                    },
+                })
+
+    @with_transaction()
+    def test_changed_values_deleted(self):
+        "Test deleted"
+        pool = Pool()
+        Model = pool.get('test.modelview.changed_values')
+        Target = pool.get('test.modelview.changed_values.target')
+
+        target = Target(1)
+        record = Model(m2m_targets=[target])
+        Model.m2m_targets.delete(record, [target])
+
+        self.assertEqual(record._changed_values, {
+                'm2m_targets': {
+                    'delete': [1],
                     },
                 })
 
@@ -123,7 +160,7 @@ class ModelView(unittest.TestCase):
         self.assertEqual(record._changed_values, {
                 'name': "Record",
                 'targets': {
-                    'add': [(0, {'name': "Target"})],
+                    'add': [(0, {'id': None, 'name': "Target"})],
                     },
                 })
 

@@ -793,11 +793,12 @@ class ModelView(Model):
                         value = str(value)
                     else:
                         value = value.id
-            elif field._type == 'one2many':
+            elif field._type in ['one2many', 'many2many']:
                 targets = value
-                init_targets = list(init_values.get(fname, targets))
+                init_targets = list(init_values.get(
+                        fname, targets if field._type == 'one2many' else []))
                 value = collections.defaultdict(list)
-                value['remove'] = [t.id for t in init_targets if t.id]
+                previous = [t.id for t in init_targets if t.id]
                 for i, target in enumerate(targets):
                     if (field._type == 'one2many'
                             and field.field
@@ -808,8 +809,8 @@ class ModelView(Model):
                     else:
                         t_values = None
                     try:
-                        if target.id in value['remove']:
-                            value['remove'].remove(target.id)
+                        if target.id in previous:
+                            previous.remove(target.id)
                             if isinstance(target, ModelView):
                                 target_changed = target._changed_values
                                 if target_changed:
@@ -827,16 +828,33 @@ class ModelView(Model):
                                     target._init_values = target_init_values
                             else:
                                 added_values = target._default_values
+                            added_values['id'] = target.id
                             value['add'].append((i, added_values))
                     finally:
                         if t_values:
                             target._values = t_values
-                if not value['remove']:
-                    del value['remove']
+                if previous:
+                    to_delete, to_remove = [], []
+                    deleted = removed = None
+                    if self._deleted:
+                        deleted = self._deleted[fname]
+                    if self._removed:
+                        removed = self._removed[fname]
+                    for id_ in previous:
+                        if deleted and id_ in deleted:
+                            to_delete.append(id_)
+                        elif removed and id_ in removed:
+                            to_remove.append(id_)
+                        elif field._type == 'one2many':
+                            to_delete.append(id_)
+                        else:
+                            to_remove.append(id_)
+                    if to_delete:
+                        value['delete'] = to_delete
+                    if to_remove:
+                        value['remove'] = to_remove
                 if not value:
                     continue
                 value = dict(value)
-            elif field._type == 'many2many':
-                value = [r.id for r in value]
             changed[fname] = value
         return changed
