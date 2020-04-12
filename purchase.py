@@ -1903,3 +1903,36 @@ class ModifyHeader(Wizard):
         Line.save(purchase.lines)
 
         return 'end'
+
+
+class ReturnPurchaseStart(ModelView):
+    "Return Purchase"
+    __name__ = 'purchase.return_purchase.start'
+
+
+class ReturnPurchase(Wizard):
+    "Return Purchase"
+    __name__ = 'purchase.return_purchase'
+    start = StateView('purchase.return_purchase.start',
+        'purchase.return_purchase_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Return", 'return_', 'tryton-ok', default=True),
+            ])
+    return_ = StateAction('purchase.act_purchase_form')
+
+    def do_return_(self, action):
+        Purchase = Pool().get('purchase.purchase')
+
+        purchases = Purchase.browse(Transaction().context['active_ids'])
+        return_purchases = Purchase.copy(purchases)
+        for return_purchase, purchase in zip(return_purchases, purchases):
+            for line in return_purchase.lines:
+                if line.type == 'line':
+                    line.quantity *= -1
+            return_purchase.lines = return_purchase.lines  # Force saving
+        Purchase.save(return_purchases)
+
+        data = {'res_id': [s.id for s in return_purchases]}
+        if len(return_purchases) == 1:
+            action['views'].reverse()
+        return action, data

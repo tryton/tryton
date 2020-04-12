@@ -515,6 +515,22 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">template_tree</field>
         </record>
 
+        <record model="ir.ui.view" id="return_purchase_start_view_form">
+            <field name="model">purchase.return_purchase.start</field>
+            <field name="type">form</field>
+            <field name="name">return_purchase_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_return_purchase">
+            <field name="name">Return Purchase</field>
+            <field name="wiz_name">purchase.return_purchase</field>
+            <field name="model">purchase.purchase</field>
+        </record>
+        <record model="ir.action.keyword" id="act_wizard_return_purchase_keyword">
+            <field name="keyword">form_action</field>
+            <field name="model">purchase.purchase,-1</field>
+            <field name="action" ref="wizard_return_purchase"/>
+        </record>
+
         <record model="ir.action.wizard" id="act_open_supplier">
             <field name="name">Parties associated to Purchases</field>
             <field name="wiz_name">purchase.open_supplier</field>

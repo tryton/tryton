@@ -36,6 +36,7 @@ def register():
         stock.Location,
         party.Party,
         party.CustomerCode,
+        purchase.ReturnPurchaseStart,
         module='purchase', type_='model')
     Pool.register(
         purchase.PurchaseReport,
@@ -47,4 +48,5 @@ def register():
         party.PartyReplace,
         party.PartyErase,
         purchase.ModifyHeader,
+        purchase.ReturnPurchase,
         module='purchase', type_='wizard')
