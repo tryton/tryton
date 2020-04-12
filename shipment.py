@@ -288,23 +288,30 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Set planned date of moves for the shipments
         '''
         Move = Pool().get('stock.move')
+        to_write = []
         for shipment in shipments:
             dates = shipment._move_planned_date
             incoming_date, inventory_date = dates
             # Update planned_date only for later to not be too optimistic if
             # the shipment is not directly received.
-            Move.write([m for m in shipment.incoming_moves
-                    if (m.state not in ('assigned', 'done', 'cancel')
-                        and ((m.planned_date or datetime.date.max)
-                            < (incoming_date or datetime.date.max)))], {
-                    'planned_date': incoming_date,
-                    })
-            Move.write([m for m in shipment.inventory_moves
-                    if (m.state not in ('assigned', 'done', 'cancel')
-                        and ((m.planned_date or datetime.date.max)
-                            < (inventory_date or datetime.date.max)))], {
-                    'planned_date': inventory_date,
-                    })
+            incoming_moves_to_write = [m for m in shipment.incoming_moves
+                if (m.state not in ('assigned', 'done', 'cancel')
+                    and ((m.planned_date or datetime.date.max)
+                        < (incoming_date or datetime.date.max)))]
+            if incoming_moves_to_write:
+                to_write.extend((incoming_moves_to_write, {
+                            'planned_date': incoming_date,
+                            }))
+            inventory_moves_to_write = [m for m in shipment.inventory_moves
+                if (m.state not in ('assigned', 'done', 'cancel')
+                    and ((m.planned_date or datetime.date.max)
+                        < (inventory_date or datetime.date.max)))]
+            if inventory_moves_to_write:
+                to_write.extend((inventory_moves_to_write, {
+                            'planned_date': inventory_date,
+                            }))
+        if to_write:
+            Move.write(*to_write)
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
@@ -378,7 +385,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 if move:
                     moves.append(move)
             shipment.moves = moves
-            shipment.save()
+        cls.save(shipments)
 
     @classmethod
     def delete(cls, shipments):
@@ -622,12 +629,17 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Set planned date of moves for the shipments
         '''
         Move = Pool().get('stock.move')
+        to_write = []
         for shipment in shipments:
-            Move.write([m for m in shipment.moves
+            moves = [m for m in shipment.moves
                     if (m.state not in ('assigned', 'done', 'cancel')
-                        and m.planned_date != shipment._move_planned_date)], {
-                    'planned_date': shipment._move_planned_date,
-                    })
+                        and m.planned_date != shipment._move_planned_date)]
+            if moves:
+                to_write.extend((moves, {
+                            'planned_date': shipment._move_planned_date,
+                            }))
+        if to_write:
+            Move.write(*to_write)
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
@@ -1572,19 +1584,26 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Set planned date of moves for the shipments
         '''
         Move = Pool().get('stock.move')
+        to_write = []
         for shipment in shipments:
             dates = shipment._get_move_planned_date()
             incoming_date, inventory_date = dates
-            Move.write([x for x in shipment.incoming_moves
-                    if (x.state not in ('assigned', 'done', 'cancel')
-                        and x.planned_date != incoming_date)], {
-                    'planned_date': incoming_date,
-                    })
-            Move.write([x for x in shipment.inventory_moves
-                    if (x.state not in ('assigned', 'done', 'cancel')
-                        and x.planned_date != inventory_date)], {
-                    'planned_date': inventory_date,
-                    })
+            incoming_moves_to_write = [x for x in shipment.incoming_moves
+                if (x.state not in ('assigned', 'done', 'cancel')
+                    and x.planned_date != incoming_date)]
+            if incoming_moves_to_write:
+                to_write.extend((incoming_moves_to_write, {
+                            'planned_date': incoming_date,
+                            }))
+            inventory_moves_to_write = [x for x in shipment.inventory_moves
+                if (x.state not in ('assigned', 'done', 'cancel')
+                    and x.planned_date != inventory_date)]
+            if inventory_moves_to_write:
+                to_write.extend((inventory_moves_to_write, {
+                            'planned_date': inventory_date,
+                            }))
+        if to_write:
+            Move.write(*to_write)
 
     def get_origins(self, name):
         return ', '.join(set(filter(None,
@@ -1717,7 +1736,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 if move:
                     moves.append(move)
             shipment.moves = moves
-            shipment.save()
+        cls.save(shipments)
 
 
 class AssignShipmentOutAssignFailed(ModelView):
