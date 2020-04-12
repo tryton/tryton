@@ -11,7 +11,8 @@ Imports::
     >>> from trytond.tools import file_open
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
-    >>> from trytond.modules.account.tests.tools import create_fiscalyear
+    >>> from trytond.modules.account.tests.tools import (
+    ...     create_chart, get_accounts, create_fiscalyear)
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
@@ -38,30 +39,10 @@ Create fiscal year::
 
 Create chart of accounts::
 
-    >>> AccountTemplate = Model.get('account.account.template')
-    >>> Account = Model.get('account.account')
-    >>> ModelData = Model.get('ir.model.data')
-    >>> data, = ModelData.find([
-    ...        ('module', '=', 'account_es'),
-    ...        ('fs_id', '=', 'pgc_0_pyme'),
-    ...        ], limit=1)
-    >>> account_template = AccountTemplate(data.db_id)
-    >>> create_chart = Wizard('account.create_chart')
-    >>> create_chart.execute('account')
-    >>> create_chart.form.account_template = account_template
-    >>> create_chart.form.company = company
-    >>> create_chart.execute('create_account')
-    >>> accounts = {}
-    >>> for kind in ['receivable', 'payable', 'revenue', 'expense']:
-    ...     accounts[kind], = Account.find([
-    ...        ('type.%s' % kind , '=', True),
-    ...        ('company', '=', company.id),
-    ...        ], limit=1)
+    >>> _ = create_chart(company, 'account_es.pgc_0_pyme')
+    >>> accounts = get_accounts(company)
     >>> expense = accounts['expense']
     >>> revenue = accounts['revenue']
-    >>> create_chart.form.account_receivable = accounts['receivable']
-    >>> create_chart.form.account_payable = accounts['payable']
-    >>> create_chart.execute('create_properties')
 
 Create parties::
 
