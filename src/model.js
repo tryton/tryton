@@ -148,7 +148,9 @@
             if (record.group != this) {
                 record.group = this;
             }
-            this.splice(position, 0, record);
+            if (this.indexOf(record) < 0) {
+                this.splice(position, 0, record);
+            }
             for (var record_rm in this.record_removed) {
                 if (record_rm.id == record.id) {
                     this.record_removed.splice(
@@ -2230,32 +2232,39 @@
                 }
             }
 
-            var to_remove = [];
             var group = record._values[this.name];
-            group.forEach(function(record2) {
-                if (!record2.id) {
-                    to_remove.push(record2);
-                }
-            });
+            if (value.delete) {
+                value.delete.forEach(function(record_id) {
+                    var record2 = group.get(record_id);
+                    if (record2) {
+                        group.remove(record2, false, true, false);
+                    }
+                }.bind(this));
+            }
             if (value.remove) {
                 value.remove.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
-                        to_remove.push(record2);
+                        group.remove(record2, true, true, false);
                     }
                 }.bind(this));
             }
-            to_remove.forEach(function(record2) {
-                group.remove(record2, false, true, false);
-            }.bind(this));
 
             if (value.add || value.update) {
                 group.add_fields(fields);
                 if (value.add) {
                     value.add.forEach(function(vals) {
+                        var new_record;
                         var index = vals[0];
                         var data = vals[1];
-                        var new_record = group.new_(false);
+                        var id_ = data.id;
+                        delete data.id;
+                        if (id_) {
+                            new_record = group.get(id_);
+                        }
+                        if (!new_record) {
+                            new_record = group.new_(false, id_);
+                        }
                         group.add(new_record, index, false);
                         new_record.set_on_change(data);
                     });
