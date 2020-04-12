@@ -189,6 +189,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             'language_direction',
             'groups',
         ]
+        cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
     def __register__(cls, module_name):

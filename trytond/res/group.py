@@ -49,6 +49,7 @@ class Group(DeactivableMixin, ModelSQL, ModelView):
             ('name_uniq', Unique(table, table.name),
                 'The name of the group must be unique!')
         ]
+        cls._order.insert(0, ('name', 'ASC'))
 
     @classmethod
     def copy(cls, groups, default=None):
