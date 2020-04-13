@@ -71,16 +71,12 @@ this repository contains the full copyright notices and license terms. -->
             <separator name="comment" colspan="4"/>
             <field name="comment" colspan="4"/>
         </page>
-        <page name="invoices">
-            <field name="invoices" colspan="4" mode="tree"/>
-        </page>
-        <page name="shipments">
-            <field name="moves" colspan="4" view_ids="sale.move_view_list_shipment" mode="tree"/>
-            <field name="shipments" colspan="4" mode="tree"/>
-            <field name="shipment_returns" colspan="4" mode="tree"/>
-        </page>
     </notebook>
-    <label id="empty" colspan="3"/>
+    <group id="links" col="-1" colspan="3">
+        <link icon="tryton-shipment-out" name="sale.act_shipment_form"/>
+        <link icon="tryton-account" name="sale.act_invoice_form"/>
+        <link icon="tryton-shipment-in" name="sale.act_return_form"/>
+    </group>
     <group col="-1" colspan="3" id="buttons">
         <button name="cancel" icon="tryton-cancel"/>
         <button name="modify_header" icon="tryton-launch"/>

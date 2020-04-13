@@ -9,6 +9,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
                 pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancel'])]" pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_sale_keyword1">
@@ -21,6 +22,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_sale_form2"/>
             <field name="group" ref="group_sale"/>
         </record>
-
     </data>
 </tryton>
