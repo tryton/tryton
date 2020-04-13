@@ -7,4 +7,10 @@ this repository contains the full copyright notices and license terms. -->
         <label name="producible"/>
         <field name="producible" xexpand="0" width="25"/>
     </xpath>
+    <xpath expr="/form/notebook" position="inside">
+        <page string="Production" id="production">
+            <label name="producible"/>
+            <field name="producible"/>
+        </page>
+    </xpath>
 </data>

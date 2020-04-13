@@ -151,6 +151,12 @@ class Production(Workflow, ModelSQL, ModelView):
             ('done', 'Done'),
             ('cancel', 'Canceled'),
             ], 'State', readonly=True)
+    origin = fields.Reference(
+        "Origin", selection='get_origin', select=True,
+        states={
+            'readonly': ~Eval('state').in_(['request', 'draft']),
+            },
+        depends=['state'])
 
     @classmethod
     def __setup__(cls):
@@ -292,6 +298,20 @@ class Production(Workflow, ModelSQL, ModelView):
                     else:
                         return self.planned_date
         return self.planned_date
+
+    @classmethod
+    def _get_origin(cls):
+        'Return list of Model names for origin Reference'
+        return set()
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        models = cls._get_origin()
+        models = Model.search([
+                ('model', 'in', models),
+                ])
+        return [(None, '')] + [(m.model, m.name) for m in models]
 
     def _move(self, from_location, to_location, company, product, uom,
             quantity):

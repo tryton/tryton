@@ -26,7 +26,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="other">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
+            <label name="origin"/>
+            <field name="origin"/>
             <label name="warehouse"/>
             <field name="warehouse"/>
             <label name="location"/>
