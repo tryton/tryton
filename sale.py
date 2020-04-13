@@ -16,6 +16,8 @@ from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.ir.attachment import AttachmentCopyMixin
+from trytond.ir.note import NoteCopyMixin
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.company.model import (
@@ -56,7 +58,9 @@ def search_shipments_returns(model_name):
     return classmethod(method)
 
 
-class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
+class Sale(
+        Workflow, ModelSQL, ModelView, TaxableMixin,
+        AttachmentCopyMixin, NoteCopyMixin):
     'Sale'
     __name__ = 'sale.sale'
     _rec_name = 'number'
@@ -679,6 +683,14 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         return attributes
 
     @classmethod
+    def get_resources_to_copy(cls, name):
+        return {
+            'stock.shipment.out',
+            'stock.shipment.out.return',
+            'account.invoice',
+            }
+
+    @classmethod
     def copy(cls, sales, default=None):
         if default is None:
             default = {}
@@ -785,6 +797,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
         invoice.save()
 
         Invoice.update_taxes([invoice])
+        self.copy_resources_to(invoice)
         return invoice
 
     def _group_shipment_key(self, moves, move):
@@ -848,6 +861,7 @@ class Sale(Workflow, ModelSQL, ModelView, TaxableMixin):
             shipment.moves = (list(getattr(shipment, 'moves', []))
                 + [x[1] for x in grouped_moves])
             shipment.save()
+            self.copy_resources_to(shipment)
             shipments.append(shipment)
         if shipment_type == 'out':
             Shipment.wait(shipments)
