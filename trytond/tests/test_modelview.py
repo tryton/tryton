@@ -385,6 +385,41 @@ class ModelView(unittest.TestCase):
         self.assertEqual(action['url'], 'http://www.tryton.org/')
 
     @with_transaction()
+    def test_link(self):
+        "Test link in view"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.link')
+
+        arch = TestModel.fields_view_get()['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        link, = tree.xpath('//link')
+
+        self.assertTrue(link.attrib['id'])
+        self.assertIsInstance(int(link.attrib['id']), int)
+
+    @with_transaction()
+    def test_link_without_read_access(self):
+        "Test link in view without read access"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.link')
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+
+        model, = Model.search([('model', '=', 'test.modelview.link.target')])
+        access = ModelAccess(model=model, group=None, perm_read=False)
+        access.save()
+
+        arch = TestModel.fields_view_get()['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        links = tree.xpath('//link')
+        labels = tree.xpath('//label')
+
+        self.assertFalse(links)
+        self.assertTrue(labels)
+
+    @with_transaction()
     def test_rpc_setup(self):
         "Testing the computation of the RPC methods"
         pool = Pool()

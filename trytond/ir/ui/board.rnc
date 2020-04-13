@@ -7,6 +7,7 @@ board =
      | separator
      | label
      | newline
+     | link
      | notebook
      | group
      | hpaned
@@ -58,6 +59,13 @@ attlist.label &= [ a:defaultValue = "1" ] attribute colspan { text }?
 attlist.label &= attribute help { text }?
 newline = element newline { attlist.newline, empty }
 attlist.newline &= attribute id { text }
+link = element link { attlist.link, empty }
+attlist.link &= attribute name { text }
+attlist.link &= attribute id { text }?
+attlist.link &= [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.link &= attribute states { text }?
+attlist.link &= attribute icon { text }?
+attlist.link &= [ a:defaultValue = "show" ] attribute empty { "show" | "hide" }?
 notebook = element notebook { attlist.notebook, page* }
 attlist.notebook &= [ a:defaultValue = "4" ] attribute colspan { text }?
 page =
@@ -67,6 +75,7 @@ page =
      | separator
      | label
      | newline
+     | link
      | notebook
      | group
      | hpaned
@@ -85,6 +94,7 @@ group =
      | separator
      | label
      | newline
+     | link
      | notebook
      | group
      | hpaned
@@ -120,6 +130,7 @@ child =
      | separator
      | label
      | newline
+     | link
      | notebook
      | group
      | hpaned
@@ -137,6 +148,7 @@ xpath = element xpath { attlist.xpath,
     | separator
     | label
     | newline
+    | link
     | notebook
     | group
     | hpaned

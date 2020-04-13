@@ -99,6 +99,16 @@ class ModelViewButtonAction(ModelView):
         return {'url': 'http://www.tryton.org/'}
 
 
+class ModelViewLink(ModelView):
+    "ModelView Link"
+    __name__ = 'test.modelview.link'
+
+
+class ModelViewLinkTarget(ModelSQL):
+    "ModelView Link Target"
+    __name__ = 'test.modelview.link.target'
+
+
 class ModelViewRPC(ModelView):
     'ModelView RPC'
     __name__ = 'test.modelview.rpc'
@@ -202,6 +212,8 @@ def register(module):
         ModelViewButton,
         ModelViewButtonDepends,
         ModelViewButtonAction,
+        ModelViewLink,
+        ModelViewLinkTarget,
         ModelViewRPC,
         ModelViewEmptyPage,
         ModelViewCircularDepends,

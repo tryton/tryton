@@ -526,6 +526,7 @@ class ModelView(Model):
         ModelAccess = pool.get('ir.model.access')
         Button = pool.get('ir.model.button')
         User = pool.get('res.user')
+        ActionWindow = pool.get('ir.action.act_window')
 
         if fields_width is None:
             fields_width = {}
@@ -636,6 +637,21 @@ class ModelView(Model):
 
             for depend in states.get('depends', []):
                 fields_attrs.setdefault(depend, {})
+
+        if element.tag == 'link':
+            link_name = element.attrib['name']
+            action_id = ModelData.get_id(*link_name.split('.'))
+            action = ActionWindow(action_id)
+            if (not action.res_model
+                    or not ModelAccess.check(
+                        action.res_model, 'read', raise_exception=False)):
+                element.tag = 'label'
+                colspan = element.attrib.get('colspan')
+                element.attrib.clear()
+                if colspan is not None:
+                    element.attrib['colspan'] = colspan
+            else:
+                element.attrib['id'] = str(action.action.id)
 
         # translate view
         if Transaction().language != 'en':

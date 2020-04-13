@@ -9,6 +9,7 @@ form =
      | separator
      | newline
      | button
+     | link
      | notebook
      | group
      | hpaned
@@ -152,6 +153,13 @@ attlist.button &=
 attlist.button &= [ a:defaultValue = "0" ] attribute rule { "0" | "1" }?
 attlist.button &= attribute change { text }?
 attlist.button &= attribute type { "class" | "instance" }?
+link = element link { attlist.link, empty }
+attlist.link &= attribute name { text }
+attlist.link &= attribute id { text }?
+attlist.link &= [ a:defaultValue = "1" ] attribute colspan { text }?
+attlist.link &= attribute states { text }?
+attlist.link &= attribute icon { text }?
+attlist.link &= [ a:defaultValue = "show" ] attribute empty { "show" | "hide" }?
 notebook = element notebook { attlist.notebook, page* }
 attlist.notebook &= [ a:defaultValue = "4" ] attribute colspan { text }?
 attlist.notebook &= [ a:defaultValue = "1" ] attribute yexpand { "0" | "1" }?
@@ -189,6 +197,7 @@ group =
      | separator
      | newline
      | button
+     | link
      | notebook
      | group
      | hpaned
@@ -228,6 +237,7 @@ child =
      | separator
      | newline
      | button
+     | link
      | notebook
      | group
      | hpaned
@@ -246,6 +256,7 @@ xpath = element xpath { attlist.xpath,
     | separator
     | newline
     | button
+    | link
     | notebook
     | group
     | hpaned

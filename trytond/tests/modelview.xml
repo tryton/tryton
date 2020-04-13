@@ -35,6 +35,23 @@
         <field name="url">http://www.example.com/</field>
     </record>
 
+    <record model="ir.ui.view" id="test_modelview_link">
+        <field name="model">test.modelview.link</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <link name="tests.test_modelview_link_action"/>
+            </form>
+            ]]>
+        </field>
+    </record>
+
+    <record model="ir.action.act_window" id="test_modelview_link_action">
+        <field name="name">Link</field>
+        <field name="res_model">test.modelview.link.target</field>
+    </record>
+
     <record model="ir.ui.view" id="test_modelview_view_attributes">
         <field name="model">test.modelview.view_attributes</field>
         <field name="type">form</field>

@@ -13,6 +13,7 @@
           <ref name="separator"/>
           <ref name="newline"/>
           <ref name="button"/>
+          <ref name="link"/>
           <ref name="notebook"/>
           <ref name="group"/>
           <ref name="hpaned"/>
@@ -780,6 +781,62 @@
       </attribute>
     </optional>
   </define>
+  <define name="link">
+    <element>
+      <name ns="">link</name>
+      <ref name="attlist.link"/>
+      <empty/>
+    </element>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <attribute>
+      <name ns="">name</name>
+      <text/>
+    </attribute>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">id</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="1">
+        <name ns="">colspan</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">states</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">icon</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.link" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="show">
+        <name ns="">empty</name>
+        <choice>
+          <value>show</value>
+          <value>hide</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
   <define name="notebook">
     <element>
       <name ns="">notebook</name>
@@ -927,6 +984,7 @@
           <ref name="separator"/>
           <ref name="newline"/>
           <ref name="button"/>
+          <ref name="link"/>
           <ref name="notebook"/>
           <ref name="group"/>
           <ref name="hpaned"/>
@@ -1121,6 +1179,7 @@
           <ref name="separator"/>
           <ref name="newline"/>
           <ref name="button"/>
+          <ref name="link"/>
           <ref name="notebook"/>
           <ref name="group"/>
           <ref name="hpaned"/>
@@ -1159,6 +1218,7 @@
           <ref name="separator"/>
           <ref name="newline"/>
           <ref name="button"/>
+          <ref name="link"/>
           <ref name="notebook"/>
           <ref name="group"/>
           <ref name="hpaned"/>

@@ -384,6 +384,24 @@ Display a button.
     value of the ``string``, ``confirm`` and ``help`` attributes can be can be
     defined.
 
+.. _form-link:
+
+link
+^^^^
+
+Display an `ir.action.act_window` as a button with a counter or one counter per
+tab. When clicked it opens the window.
+
+    * ``name``: The XML id of `ir.action.act_window`.
+
+    * ``colspan``: see in common-attributes-colspan_.
+
+    * ``states``: see in common-attributes-states_.
+
+    * ``icon``: The name of the icon to display.
+
+    * ``empty``: If set to `hide` the button is not displayed if the counter is
+      zero. The default is ``show``.
 
 notebook
 ^^^^^^^^
