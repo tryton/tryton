@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="sale_opportunity">
+            <field name="name">tryton-sale-opportunity</field>
+            <field name="path">icons/tryton-sale-opportunity.svg</field>
+        </record>
+
         <record model="res.group" id="group_opportunity">
             <field name="name">Sale Opportunity</field>
         </record>
