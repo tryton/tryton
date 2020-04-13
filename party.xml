@@ -15,6 +15,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('customer', '=', Eval('active_id')), ('customer', 'in', Eval('active_ids')))]"
                 pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancel'])]" pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_purchase_keyword1">
@@ -34,6 +35,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('supplier', '=', Eval('active_id')), ('supplier', 'in', Eval('active_ids')))]"
                 pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancel'])]" pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_purchase_keyword2">
