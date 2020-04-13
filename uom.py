@@ -57,7 +57,7 @@ class Uom(DeactivableMixin, ModelSQL, ModelView):
             ('rounding', '>', 0),
             ],
         depends=['digits'],
-        help+        help="The accuracy to which values are rounded.")
+        help="The accuracy to which values are rounded.")
     digits = fields.Integer(
         "Display Digits", required=True,
         help="The number of digits to display after the decimal separator.")
