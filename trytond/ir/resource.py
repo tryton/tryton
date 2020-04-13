@@ -2,18 +2,28 @@
 # this repository contains the full copyright notices and license terms.
 from sql.conditionals import Coalesce
 
-from ..model import ModelSQL, ModelView, fields
+from trytond.i18n import lazy_gettext
+from ..model import ModelStorage, ModelView, fields
 from ..pool import Pool
 from ..transaction import Transaction
 from ..pyson import Eval
 
-__all__ = ['ResourceMixin']
+__all__ = ['ResourceMixin', 'resource_copy']
 
 
-class ResourceMixin(ModelSQL, ModelView):
+class ResourceMixin(ModelStorage, ModelView):
 
     resource = fields.Reference('Resource', selection='get_models',
         required=True, select=True)
+    copy_to_resources = fields.MultiSelection(
+        'get_copy_to_resources', "Copy to Resources",
+        states={
+            'invisible': ~Eval('copy_to_resources_visible'),
+            },
+        depends=['copy_to_resources_visible'])
+    copy_to_resources_visible = fields.Function(
+        fields.Boolean("Copy to Resources Visible"),
+        'on_change_with_copy_to_resources_visible')
     last_user = fields.Function(fields.Char('Last User',
             states={
                 'invisible': ~Eval('last_user'),
@@ -42,6 +52,24 @@ class ResourceMixin(ModelSQL, ModelView):
         models = Model.search([])
         access = ModelAccess.get_access([m.model for m in models])
         return [(m.model, m.name) for m in models if access[m.model]['read']]
+
+    @fields.depends('resource')
+    def get_copy_to_resources(self):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        resources = []
+        if isinstance(self.resource, ResourceCopyMixin):
+            models = self.resource.get_resources_to_copy(self.__name__)
+            if models:
+                models = Model.search([
+                        ('model', 'in', models),
+                        ])
+                resources.extend((m.model, m.name) for m in models)
+        return resources
+
+    @fields.depends(methods=['get_copy_to_resources'])
+    def on_change_with_copy_to_resources_visible(self, name=None):
+        return bool(self.get_copy_to_resources())
 
     def get_last_user(self, name):
         return (self.write_uid.rec_name if self.write_uid
@@ -103,3 +131,49 @@ class ResourceMixin(ModelSQL, ModelView):
         records = super(ResourceMixin, cls).create(vlist)
         cls.check_access([r.id for r in records], mode='create')
         return records
+
+
+class ResourceCopyMixin(ModelStorage):
+
+    @classmethod
+    def get_resources_to_copy(cls, name):
+        return set()
+
+
+def resource_copy(resource, name, string):
+
+    class _ResourceCopyMixin(ResourceCopyMixin):
+
+        @classmethod
+        def copy(cls, records, default=None):
+            if default is None:
+                default = {}
+            else:
+                default = default.copy()
+            default.setdefault(name, None)
+            return super().copy(records, default=default)
+
+        def copy_resources_to(self, target):
+            pool = Pool()
+            Resource = pool.get(resource)
+
+            try:
+                super().copy_resources_to(target)
+            except AttributeError:
+                pass
+
+            to_copy = []
+            for record in getattr(self, name):
+                if (record.copy_to_resources
+                        and target.__name__ in record.copy_to_resources):
+                    to_copy.append(record)
+            if to_copy:
+                return Resource.copy(to_copy, default={
+                        'resource': str(target),
+                        'copy_to_resources': None,
+                        })
+
+    setattr(_ResourceCopyMixin, name, fields.One2Many(
+            resource, 'resource', string,
+            help=lazy_gettext('ir.msg_resource_copy_help')))
+    return _ResourceCopyMixin

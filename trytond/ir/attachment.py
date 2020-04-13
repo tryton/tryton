@@ -3,15 +3,14 @@
 from sql import Null
 from sql.operators import Concat
 
+from trytond.i18n import lazy_gettext
 from ..model import ModelView, ModelSQL, fields
 from ..transaction import Transaction
 from ..pyson import Eval
-from .resource import ResourceMixin
+from .resource import ResourceMixin, resource_copy
 from ..config import config
 
-__all__ = [
-    'Attachment',
-    ]
+__all__ = ['AttachmentCopyMixin']
 
 
 def firstline(description):
@@ -102,3 +101,10 @@ class Attachment(ResourceMixin, ModelSQL, ModelView):
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
+
+
+class AttachmentCopyMixin(
+        resource_copy(
+            'ir.attachment', 'attachments',
+            lazy_gettext('ir.msg_attachments'))):
+    pass

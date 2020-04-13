@@ -5,14 +5,15 @@ from textwrap import TextWrapper
 from sql import Null
 from sql.conditionals import Case
 
+from trytond.i18n import lazy_gettext
 from ..model import ModelView, ModelSQL, ModelStorage, fields
 from ..pool import Pool
 from ..transaction import Transaction
 from ..tools import grouped_slice, reduce_ids
 from ..pyson import Eval
-from .resource import ResourceMixin
+from .resource import ResourceMixin, resource_copy
 
-__all__ = ['Note', 'NoteRead']
+__all__ = ['NoteCopyMixin']
 
 
 class Note(ResourceMixin, ModelSQL, ModelView):
@@ -115,3 +116,8 @@ class NoteRead(ModelSQL):
         ondelete='CASCADE')
     user = fields.Many2One('res.user', 'User', required=True,
         ondelete='CASCADE')
+
+
+class NoteCopyMixin(
+        resource_copy('ir.note', 'notes', lazy_gettext('ir.msg_notes'))):
+    pass

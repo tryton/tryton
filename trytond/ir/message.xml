@@ -302,5 +302,14 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_timedelta_s">
             <field name="text">s</field>
         </record>
+        <record model="ir.message" id="msg_resource_copy_help">
+            <field name="text">The resources to which this record must be copied.</field>
+        </record>
+        <record model="ir.message" id="msg_attachments">
+            <field name="text">Attachments</field>
+        </record>
+        <record model="ir.message" id="msg_notes">
+            <field name="text">Notes</field>
+        </record>
     </data>
 </tryton>

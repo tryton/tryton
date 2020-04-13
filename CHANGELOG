@@ -1,3 +1,4 @@
+* Allow copying attachments and notes to created records
 * Add link button on form
 * Support explicit delete and remove for saving and on_change xxx2Many
 * Add export_data_domain to ModelStorage

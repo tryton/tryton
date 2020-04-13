@@ -16,6 +16,8 @@ this repository contains the full copyright notices and license terms. -->
         <field name="type"/>
         <label name="link"/>
         <field name="link" widget="url"/>
+        <label name="copy_to_resources"/>
+        <field name="copy_to_resources" yexpand="0"/>
     </group>
     <field name="data" widget="image" readonly="1"/>
     <notebook>
