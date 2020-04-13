@@ -137,6 +137,39 @@ Create a complaint to return the sale::
     >>> sum(l.quantity for l in return_sale.lines)
     -5.0
 
+Create a complaint to return partially the sale::
+
+    >>> Complaint = Model.get('sale.complaint')
+    >>> complaint = Complaint()
+    >>> complaint.customer = customer
+    >>> complaint.type = sale_type
+    >>> complaint.origin = sale
+    >>> action = complaint.actions.new()
+    >>> action.action = 'sale_return'
+    >>> sale_line = action.sale_lines.new()
+    >>> sale_line.line = sale.lines[0]
+    >>> sale_line.quantity = 1
+    >>> sale_line.unit_price = Decimal('5')
+    >>> sale_line = action.sale_lines.new()
+    >>> sale_line.line = sale.lines[1]
+    >>> complaint.save()
+    >>> complaint.state
+    'draft'
+    >>> complaint.click('wait')
+    >>> complaint.state
+    'waiting'
+    >>> complaint.click('approve')
+    >>> complaint.state
+    'done'
+    >>> action, = complaint.actions
+    >>> return_sale = action.result
+    >>> len(return_sale.lines)
+    2
+    >>> sum(l.quantity for l in return_sale.lines)
+    -3.0
+    >>> return_sale.total_amount
+    Decimal('-25.00')
+
 Create a complaint to return a sale line::
 
     >>> complaint = Complaint()
@@ -176,6 +209,33 @@ Create a complaint to credit the invoice::
     2
     >>> sum(l.quantity for l in credit_note.lines)
     -5.0
+
+Create a complaint to credit partially the invoice::
+
+    >>> complaint = Complaint()
+    >>> complaint.customer = customer
+    >>> complaint.type = invoice_type
+    >>> complaint.origin = invoice
+    >>> action = complaint.actions.new()
+    >>> action.action = 'credit_note'
+    >>> invoice_line = action.invoice_lines.new()
+    >>> invoice_line.line = invoice.lines[0]
+    >>> invoice_line.quantity = 1
+    >>> invoice_line.unit_price = Decimal('5')
+    >>> complaint.click('wait')
+    >>> complaint.click('approve')
+    >>> complaint.state
+    'done'
+    >>> action, = complaint.actions
+    >>> credit_note = action.result
+    >>> credit_note.type
+    'out'
+    >>> len(credit_note.lines)
+    1
+    >>> sum(l.quantity for l in credit_note.lines)
+    -1.0
+    >>> credit_note.total_amount
+    Decimal('-5.00')
 
 Create a complaint to credit a invoice line::
 

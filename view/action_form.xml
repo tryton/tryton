@@ -8,8 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="action"/>
     <label name="result"/>
     <field name="result"/>
-    <field name="sale_lines" colspan="4"/>
-    <field name="invoice_lines" colspan="4"/>
+    <field name="sale_lines" colspan="4" product="line"/>
+    <field name="invoice_lines" colspan="4" product="line"/>
     <group colspan="4" col="6" id="line">
         <label name="quantity"/>
         <field name="quantity"/>

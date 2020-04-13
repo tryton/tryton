@@ -359,9 +359,8 @@ class Action(ModelSQL, ModelView):
             ('credit_note', 'Create Credit Note'),
             ], 'Action', states=_states)
 
-    sale_lines = fields.Many2Many('sale.complaint.action-sale.line',
-        'action', 'line', 'Sale Lines',
-        domain=[('sale', '=', Eval('_parent_complaint', {}).get('origin_id'))],
+    sale_lines = fields.One2Many(
+        'sale.complaint.action-sale.line', 'action', "Sale Lines",
         states={
             'invisible': Eval('_parent_complaint', {}
                 ).get('origin_model', 'sale.sale') != 'sale.sale',
@@ -370,11 +369,9 @@ class Action(ModelSQL, ModelView):
         depends=_depends,
         help='Leave empty for all lines.')
 
-    invoice_lines = fields.Many2Many(
-        'sale.complaint.action-account.invoice.line', 'action', 'line',
-        'Invoice Lines',
-        domain=[('invoice', '=', Eval('_parent_complaint', {}
-                    ).get('origin_id'))],
+    invoice_lines = fields.One2Many(
+        'sale.complaint.action-account.invoice.line', 'action',
+        "Invoice Lines",
         states={
             'invisible': Eval('_parent_complaint', {}
                 ).get('origin_model', 'account.invoice.line'
@@ -391,8 +388,8 @@ class Action(ModelSQL, ModelView):
     unit = fields.Function(fields.Many2One('product.uom', 'Unit',
             states=_line_states, depends=_line_depends),
         'on_change_with_unit')
-    unit_digits = fields.Function(fields.Integer('Unit Digits'),
-        'get_unit_digits')
+    unit_digits = fields.Function(
+        fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
     unit_price = fields.Numeric('Unit Price', digits=price_digits,
         states=_line_states, depends=_line_depends,
         help='Leave empty for the same price.')
@@ -411,8 +408,9 @@ class Action(ModelSQL, ModelView):
                     'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.id
 
-    @fields.depends('complaint')
-    def get_unit_digits(self, name=None):
+    @fields.depends('complaint',
+        '_parent_complaint.origin_model', '_parent_complaint.origin')
+    def on_change_with_unit_digits(self, name=None):
         if (self.complaint
                 and self.complaint.origin_model in {
                     'sale.line', 'account.invoice.line'}):
@@ -456,7 +454,18 @@ class Action(ModelSQL, ModelView):
             default = {}
             if isinstance(self.complaint.origin, Sale):
                 sale = self.complaint.origin
-                sale_lines = self.sale_lines or sale.lines
+                if self.sale_lines:
+                    sale_lines = [l.line for l in self.sale_lines]
+                    line2qty = {l.line.id: l.quantity
+                        if l.quantity is not None else l.line.quantity
+                        for l in self.sale_lines}
+                    line2price = {l.line.id: l.unit_price
+                        if l.unit_price is not None else l.line.unit_price
+                        for l in self.sale_lines}
+                    default['quantity'] = lambda o: line2qty.get(o['id'])
+                    default['unit_price'] = lambda o: line2price.get(o['id'])
+                else:
+                    sale_lines = sale.lines
             elif isinstance(self.complaint.origin, Line):
                 sale_line = self.complaint.origin
                 sale = sale_line.sale
@@ -483,24 +492,35 @@ class Action(ModelSQL, ModelView):
         Line = pool.get('account.invoice.line')
 
         if isinstance(self.complaint.origin, (Invoice, Line)):
+            line2qty = line2price = {}
             if isinstance(self.complaint.origin, Invoice):
                 invoice = self.complaint.origin
-                invoice_lines = self.invoice_lines or invoice.lines
+                if self.invoice_lines:
+                    invoice_lines = [l.line for l in self.invoice_lines]
+                    line2qty = {l.line: l.quantity
+                        for l in self.invoice_lines}
+                    line2price = {l.line: l.unit_price
+                        for l in self.invoice_lines}
+                else:
+                    invoice_lines = invoice.lines
             elif isinstance(self.complaint.origin, Line):
                 invoice_line = self.complaint.origin
                 invoice = invoice_line.invoice
                 invoice_lines = [invoice_line]
+                if self.quantity is not None:
+                    line2qty = {invoice_line: self.quantity}
+                if self.unit_price is not None:
+                    line2price = {invoice_line: self.unit_price}
             credit_note = invoice._credit()
             credit_lines = []
             for invoice_line in invoice_lines:
                 credit_line = invoice_line._credit()
                 credit_lines.append(credit_line)
                 credit_line.origin = self.complaint
-            if isinstance(self.complaint.origin, Line):
-                if self.quantity is not None:
-                    credit_lines[0].quantity = -self.quantity
-                if self.unit_price is not None:
-                    credit_lines[0].unit_price = self.unit_price
+                if invoice_line in line2qty:
+                    credit_line.quantity = -line2qty[invoice_line]
+                if invoice_line in line2price:
+                    credit_line.unit_price = line2price[invoice_line]
             credit_note.lines = credit_lines
             credit_note.taxes = None
             credit_note.save()
@@ -519,21 +539,103 @@ class Action(ModelSQL, ModelView):
         super(Action, cls).delete(actions)
 
 
-class Action_SaleLine(ModelSQL):
+class _Action_Line:
+
+    _states = {
+        'readonly': (
+            (Eval('complaint_state') != 'draft')
+            | Bool(Eval('_parent_action.result', True))),
+        }
+    _depends = ['complaint_state']
+
+    action = fields.Many2One('sale.complaint.action', 'Action',
+        ondelete='CASCADE', select=True, required=True)
+    quantity = fields.Float(
+        "Quantity",
+        digits=(16, Eval('unit_digits', 2)),
+        states=_states,
+        depends=_depends + ['unit_digits'])
+    unit = fields.Function(
+        fields.Many2One('product.uom', "Unit"), 'on_change_with_unit')
+    unit_digits = fields.Function(
+        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+    unit_price = fields.Numeric(
+        "Unit Price", digits=price_digits, states=_states, depends=_depends,
+        help='Leave empty for the same price.')
+
+    complaint_state = fields.Function(
+        fields.Selection('get_complaint_states', "Complaint State"),
+        'on_change_with_complaint_state')
+    complaint_origin_id = fields.Function(
+        fields.Integer("Complaint Origin ID"),
+        'on_change_with_complaint_origin_id')
+
+    def on_change_with_unit(self, name=None):
+        raise NotImplementedError
+
+    def on_change_with_unit_digits(self, name=None):
+        raise NotImplementedError
+
+    @classmethod
+    def get_complaint_states(cls):
+        pool = Pool()
+        Complaint = pool.get('sale.complaint')
+        return Complaint.fields_get(['state'])['state']['selection']
+
+    @fields.depends('action', '_parent_action.complaint',
+        '_parent_action._parent_complaint.state')
+    def on_change_with_complaint_state(self, name=None):
+        if self.action and self.action.complaint:
+            return self.action.complaint.state
+
+    @fields.depends('action', '_parent_action.complaint',
+        '_parent_action._parent_complaint.origin_id')
+    def on_change_with_complaint_origin_id(self, name=None):
+        if self.action and self.action.complaint:
+            return self.action.complaint.origin_id
+
+
+class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
     'Customer Complaint Action - Sale Line'
     __name__ = 'sale.complaint.action-sale.line'
 
-    action = fields.Many2One('sale.complaint.action', 'Action',
-        ondelete='CASCADE', select=True, required=True)
-    line = fields.Many2One('sale.line', 'Sale Line', ondelete='RESTRICT',
-        required=True)
+    line = fields.Many2One(
+        'sale.line', "Sale Line",
+        ondelete='RESTRICT', required=True,
+        domain=[
+            ('sale', '=', Eval('complaint_origin_id', -1)),
+            ],
+        depends=['complaint_origin_id'])
+
+    @fields.depends('line')
+    def on_change_with_unit(self, name=None):
+        if self.line:
+            return self.line.unit.id
+
+    @fields.depends('line')
+    def on_change_with_unit_digits(self, name=None):
+        if self.line:
+            return self.line.unit.digits
 
 
-class Action_InvoiceLine(ModelSQL):
+class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
     'Customer Complaint Action - Invoice Line'
     __name__ = 'sale.complaint.action-account.invoice.line'
 
-    action = fields.Many2One('sale.complaint.action', 'Action',
-        ondelete='CASCADE', select=True, required=True)
-    line = fields.Many2One('account.invoice.line', 'Invoice Line',
-        ondelete='RESTRICT', required=True)
+    line = fields.Many2One(
+        'account.invoice.line', 'Invoice Line',
+        ondelete='RESTRICT', required=True,
+        domain=[
+            ('invoice', '=', Eval('complaint_origin_id', -1)),
+            ],
+        depends=['complaint_origin_id'])
+
+    @fields.depends('line')
+    def on_change_with_unit(self, name=None):
+        if self.line:
+            return self.line.unit.id
+
+    @fields.depends('line')
+    def on_change_with_unit_digits(self, name=None):
+        if self.line:
+            return self.line.unit.digits
