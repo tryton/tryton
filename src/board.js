@@ -34,6 +34,7 @@
 
             this.context = context;
             this.actions = [];
+            this.state_widgets = [];
             this.el = jQuery('<div/>', {
                 'class': 'board'
             });
@@ -46,8 +47,12 @@
             this.actions_prms = jQuery.when.apply(jQuery, actions_prms);
         },
         reload: function() {
-            for (var i = 0; i < this.actions.length; i++) {
+            var i;
+            for (i = 0; i < this.actions.length; i++) {
                 this.actions[i].display();
+            }
+            for (i = 0; i < this.state_widgets.length; i++) {
+                this.state_widgets[i].set_state(null);
             }
         }
     });

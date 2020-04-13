@@ -95,6 +95,11 @@ function eval_pyson(value){
             this.view.state_widgets.push(button);
             this.container.add(button, attributes);
         },
+        _parse_link: function(node, attributes) {
+            var link = new Sao.View.Form.Link(attributes);
+            this.view.state_widgets.push(link);
+            this.container.add(link, attributes);
+        },
         _parse_image: function(node, attributes) {
             var image = new Sao.View.Form.Image_(attributes);
             this.view.state_widgets.push(image);
@@ -882,6 +887,156 @@ function eval_pyson(value){
                 this.collapsible.collapse('hide');
             }
         }
+    });
+
+    Sao.View.Form.Link = Sao.class_(Sao.View.Form.StateWidget, {
+        class_: 'form-link',
+        init: function(attributes) {
+            Sao.View.Form.Link._super.init.call(this, attributes);
+            this.el = jQuery('<button/>', {
+                'class': this.class_ + ' btn btn-link',
+            });
+            if (attributes.icon) {
+                var img = jQuery('<img/>', {
+                    'class': 'icon',
+                }).prependTo(this.el);
+                Sao.common.ICONFACTORY.get_icon_url(attributes.icon)
+                    .done(function(url) {
+                        img.attr('src', url);
+                    });
+            }
+            this.label = jQuery('<div/>').appendTo(this.el);
+            this._current = null;
+        },
+        get action_id() {
+            return parseInt(this.attributes.id, 10);
+        },
+        set_state: function(record) {
+            Sao.View.Form.Link._super.set_state.call(this, record);
+            if (this.el.css('display') == 'none') {
+                return;
+            }
+            var data = {},
+                context = {},
+                pyson_ctx = {};
+            if (record) {
+                data = {
+                    model: record.model.name,
+                    id: record.id,
+                    ids: [record.id],
+                };
+                context = record.get_context();
+                pyson_ctx = {
+                    active_model: record.model.name,
+                    active_id: record.id,
+                    active_ids: [record.id],
+                };
+                this._current = record.id;
+            } else {
+                this._current = null;
+            }
+            pyson_ctx.context = context;
+            this.el.off('click');
+            this.el.click([data, context], this.clicked.bind(this));
+            var action = Sao.rpc({
+                'method': 'model.ir.action.get_action_value',
+                'params': [this.action_id, context],
+            }, Sao.Session.current_session, false);
+            this.label.text(action.rec_name);
+
+            var decoder = new Sao.PYSON.Decoder(pyson_ctx);
+            var domain = decoder.decode(action.pyson_domain);
+            if (action.pyson_search_value) {
+                domain = [domain, decoder.decode(action.pyson_search_value)];
+            }
+            var tab_domains = action.domains
+                .filter(function(d) {
+                    return d[2];
+                }).map(function(d) {
+                    var name = d[0],
+                        domain = d[1];
+                    return [name, decoder.decode(domain)];
+                });
+            var counter;
+            if (record && record.links_counts[this.action_id]) {
+                counter = record.links_counts[this.action_id];
+                this.set_label(action.rec_name, tab_domains, counter);
+            } else {
+                if (tab_domains.length) {
+                    counter = tab_domains.map(function() {
+                        return 0;
+                    });
+                } else {
+                    counter = [0];
+                }
+                if (record) {
+                    record.links_counts[this.action_id] = counter;
+                }
+                var current = this._current;
+                if (tab_domains.length) {
+                    tab_domains.map(function(d, i) {
+                        var tab_domain = d[1];
+                        Sao.rpc({
+                            'method': (
+                                'model.' + action.res_model + '.search_count'),
+                            'params': [
+                                ['AND', domain, tab_domain], context],
+                        }, Sao.Session.current_session).then(function(value) {
+                            this._set_count(
+                                value, i, current, counter,
+                                action.rec_name, tab_domains);
+                        }.bind(this));
+                    }, this);
+                } else {
+                    Sao.rpc({
+                        'method': (
+                            'model.' + action.res_model + '.search_count'),
+                        'params': [domain, context],
+                    }, Sao.Session.current_session).then(function(value) {
+                        this._set_count(
+                            value, 0, current, counter,
+                            action.rec_name, tab_domains);
+                    }.bind(this));
+                }
+            }
+        },
+        _set_count: function(value, idx, current, counter, name, domains) {
+            if (current != this._current) {
+                return;
+            }
+            counter[idx] = value;
+            this.set_label(name, domains, counter);
+        },
+        set_label: function(name, domains, counter) {
+            this.label.text(name);
+            if (domains.length) {
+                domains.map(function(d, i) {
+                    var name = d[0];
+                    this.label.append(name + ' ');
+                    jQuery('<span/>', {
+                        'class': 'badge',
+                    }).text(counter[i]).appendTo(this.label);
+                }, this);
+            } else {
+                this.label.append(' ');
+                jQuery('<span/>', {
+                    'class': 'badge',
+                }).text(counter[0]).appendTo(this.label);
+            }
+            if (this.attributes.empty === 'hide') {
+                var non_empty = counter.filter(function(number) {
+                    return number != 0;
+                });
+                if (non_empty.length) {
+                    this.el.show();
+                } else {
+                    this.el.hide();
+                }
+            }
+        },
+        clicked: function(evt) {
+            Sao.Action.execute(this.action_id, evt.data[0], evt.data[1], true);
+        },
     });
 
     Sao.View.Form.Image_ = Sao.class_(Sao.View.Form.StateWidget, {

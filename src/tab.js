@@ -1351,6 +1351,7 @@
                         action = this.board.actions[i];
                         action.screen.tab = this;
                     }
+                    this.board.reload();
                 }.bind(this));
                 this.content.append(this.board.el);
             }.bind(this));
