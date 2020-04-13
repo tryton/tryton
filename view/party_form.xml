@@ -31,5 +31,6 @@ this repository contains the full copyright notices and license terms. -->
                 view_ids="party.identifier_list_sequence"/>
         </page>
     </notebook>
+    <group id="links" col="-1" colspan="6">
+    </group>
 </form>
-
