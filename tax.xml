@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data grouped="1">
         <record model="account.tax.template" id="iva_rep_21">
-            <field name="name">IVA 21%</field>
+            <field name="name">IVA 21% (bienes)</field>
             <field name="description">IVA 21%</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_sale"/>
@@ -14,11 +14,33 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_477"/>
             <field name="es_vat_list_code">B</field>
         </record>
+        <record model="account.tax.template" id="iva_rep_21_servicios">
+            <field name="name">IVA 21% (servicios)</field>
+            <field name="description">IVA 21%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale_service"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+            <field name="es_vat_list_code">B</field>
+        </record>
         <record model="account.tax.template" id="iva_rep_10">
-            <field name="name">IVA 10%</field>
+            <field name="name">IVA 10% (bienes)</field>
             <field name="description">IVA 10%</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')"/>
+            <field name="invoice_account" ref="pgc_477"/>
+            <field name="credit_note_account" ref="pgc_477"/>
+            <field name="es_vat_list_code">B</field>
+        </record>
+        <record model="account.tax.template" id="iva_rep_10_servicios">
+            <field name="name">IVA 10% (servicios)</field>
+            <field name="description">IVA 10%</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.1')"/>
             <field name="invoice_account" ref="pgc_477"/>
@@ -37,10 +59,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_ex">
-            <field name="name">IVA Exento</field>
+            <field name="name">IVA Exento (bienes)</field>
             <field name="description">IVA Exento</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_sale"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+        </record>
+        <record model="account.tax.template" id="iva_rep_ex_servicios">
+            <field name="name">IVA Exento (servicios)</field>
+            <field name="description">IVA Exento</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4750"/>
@@ -77,7 +109,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_477"/>
         </record>
         <record model="account.tax.template" id="iva_rep_exportaciones">
-            <field name="name">IVA Exportaciones</field>
+            <field name="name">IVA Exportaciones (bienes)</field>
             <field name="description">IVA Exportaciones</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_sale"/>
@@ -87,8 +119,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_4750"/>
             <field name="legal_notice">Factura exenta en virtud del artículo 21 de la ley 37/1992 del impuesto Sobre el Valor Añadido.</field>
         </record>
+        <record model="account.tax.template" id="iva_rep_exportaciones_servicios">
+            <field name="name">IVA Exportaciones (servicios)</field>
+            <field name="description">IVA Exportaciones</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="group" ref="tax_group_sale_service"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4750"/>
+            <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="legal_notice">Factura exenta en virtud del artículo 21 de la ley 37/1992 del impuesto Sobre el Valor Añadido.</field>
+        </record>
         <record model="account.tax.template" id="iva_rep_intracomunitario_bienes">
-            <field name="name">IVA Intracomunitario (Bienes)</field>
+            <field name="name">IVA Intracomunitario (bienes)</field>
             <field name="description">IVA Intracomunitario</field>
             <field name="account" ref="pgc_0"/>
             <field name="group" ref="tax_group_sale"/>
@@ -100,10 +143,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="ec_sales_list_code">E</field>
         </record>
         <record model="account.tax.template" id="iva_rep_intracomunitario_servicios">
-            <field name="name">IVA Intracomunitario (Servicios)</field>
+            <field name="name">IVA Intracomunitario (servicios)</field>
             <field name="description">IVA Intracomunitario</field>
             <field name="account" ref="pgc_0"/>
-            <field name="group" ref="tax_group_sale"/>
+            <field name="group" ref="tax_group_sale_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4750"/>
@@ -448,6 +491,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_red-iva_rep_10_servicios-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_red"/>
+            <field name="tax" ref="iva_rep_10_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_red-iva_rep_10_servicios-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_red"/>
+            <field name="tax" ref="iva_rep_10_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_base_normal">
             <field name="name">IVA normal</field>
             <field name="code">07</field>
@@ -465,6 +522,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_normal-iva_rep_21-credit">
             <field name="code" ref="vat_code_iva_devengado_base_normal"/>
             <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_normal-iva_rep_21_servicios-invoice">
+            <field name="code" ref="vat_code_iva_devengado_base_normal"/>
+            <field name="tax" ref="iva_rep_21_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_base_normal-iva_rep_21_servicios-credit">
+            <field name="code" ref="vat_code_iva_devengado_base_normal"/>
+            <field name="tax" ref="iva_rep_21_servicios"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
@@ -639,6 +710,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_red-iva_rep_10_servicios-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_red"/>
+            <field name="tax" ref="iva_rep_10_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_red-iva_rep_10_servicios-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_red"/>
+            <field name="tax" ref="iva_rep_10_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
         <record model="account.tax.code.template" id="vat_code_iva_devengado_tax_normal">
             <field name="name">IVA normal</field>
             <field name="code">09</field>
@@ -656,6 +741,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_normal-iva_rep_21-credit">
             <field name="code" ref="vat_code_iva_devengado_tax_normal"/>
             <field name="tax" ref="iva_rep_21"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_normal-iva_rep_21_servicios-invoice">
+            <field name="code" ref="vat_code_iva_devengado_tax_normal"/>
+            <field name="tax" ref="iva_rep_21_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_devengado_tax_normal-iva_rep_21_servicios-credit">
+            <field name="code" ref="vat_code_iva_devengado_tax_normal"/>
+            <field name="tax" ref="iva_rep_21_servicios"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
@@ -1290,6 +1389,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_exportaciones-iva_rep_exportaciones_servicios-invoice">
+            <field name="code" ref="vat_code_iva_exportaciones"/>
+            <field name="tax" ref="iva_rep_exportaciones_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_exportaciones-iva_rep_exportaciones_servicios-credit">
+            <field name="code" ref="vat_code_iva_exportaciones"/>
+            <field name="tax" ref="iva_rep_exportaciones_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
         <record model="account.tax.code.template" id="vat_code_iva_no_sujetas">
             <field name="name">Operaciones no sujetas o con inversión del sujeto pasivo que originen derecho a deducción</field>
             <field name="code">61</field>
@@ -1654,6 +1767,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="pgc_0"/>
             <field name="kind">sale</field>
         </record>
+        <record model="account.tax.rule.template" id="fp_intra_sale">
+            <field name="name">Ventas Intracomunitarias</field>
+            <field name="account" ref="pgc_0"/>
+            <field name="kind">sale</field>
+        </record>
         <record model="account.tax.rule.template" id="fp_extra_sale">
             <field name="name">Ventas Extracomunitarias</field>
             <field name="account" ref="pgc_0"/>
@@ -1708,6 +1826,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="iva_rep_ex"/>
             <field name="group" ref="tax_group_sale"/>
         </record>
+        <record model="account.tax.rule.line.template" id="fptt_exento_sale_service">
+            <field name="rule" ref="fp_exento"/>
+            <field name="tax" ref="iva_rep_ex_servicios"/>
+            <field name="group" ref="tax_group_sale_service"/>
+        </record>
 
         <record model="account.tax.rule.line.template" id="fp_line_irpf_19_purchase_rent">
             <field name="rule" ref="fp_irpf_purchase_rent"/>
@@ -1758,10 +1881,28 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="irpf_7_sale"/>
         </record>
 
+        <record model="account.tax.rule.line.template" id="fptt_intra_sale">
+            <field name="rule" ref="fp_intra_sale"/>
+            <field name="tax" ref="iva_rep_intracomunitario_bienes"/>
+            <field name="group" ref="tax_group_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_intra_sale_service">
+            <field name="rule" ref="fp_intra_sale"/>
+            <field name="tax" ref="iva_rep_intracomunitario_servicios"/>
+            <field name="group" ref="tax_group_sale_service"/>
+        </record>
+
         <record model="account.tax.rule.line.template" id="fptt_extra_sale">
             <field name="rule" ref="fp_extra_sale"/>
             <field name="tax" ref="iva_rep_exportaciones"/>
             <field name="group" ref="tax_group_sale"/>
+        </record>
+
+        <record model="account.tax.rule.line.template" id="fptt_extra_sale_service">
+            <field name="rule" ref="fp_extra_sale"/>
+            <field name="tax" ref="iva_rep_exportaciones_servicios"/>
+            <field name="group" ref="tax_group_sale_service"/>
         </record>
 
         <record model="account.tax.rule.line.template" id="fp_reaf_iva">
