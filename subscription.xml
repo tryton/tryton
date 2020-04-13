@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="sale_subscription">
+            <field name="name">tryton-sale-subscription</field>
+            <field name="path">icons/tryton-sale-subscription.svg</field>
+        </record>
+
         <record model="ir.ui.view" id="subscription_view_form">
             <field name="model">sale.subscription</field>
             <field name="type">form</field>
@@ -76,6 +81,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids', [])))]"
                 pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['closed', 'canceled'])]" pyson="1"/>
         </record>
         <record model="ir.action.keyword"
             id="act_subscription_party_relate_keyword1">
