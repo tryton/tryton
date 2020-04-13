@@ -1545,7 +1545,10 @@ class TranslationExportResult(ModelView):
     "Export translation"
     __name__ = 'ir.translation.export.result'
 
-    file = fields.Binary('File', readonly=True)
+    language = fields.Many2One('ir.lang', 'Language', readonly=True)
+    module = fields.Many2One('ir.module', 'Module', readonly=True)
+    file = fields.Binary('File', readonly=True, filename='filename')
+    filename = fields.Char('Filename')
 
 
 class TranslationExport(Wizard):
@@ -1575,7 +1578,10 @@ class TranslationExport(Wizard):
         cast = self.result.__class__.file.cast
         self.result.file = False  # No need to store it in session
         return {
+            'module': self.start.module.id,
+            'language': self.start.language.id,
             'file': cast(file_) if file_ else None,
+            'filename': '%s.po' % self.start.language.code,
             }
 
 
