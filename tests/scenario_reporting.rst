@@ -90,7 +90,7 @@ Create account category::
     >>> Tax = Model.get('account.tax')
     >>> customer_tax, = Tax.find([
     ...     ('company', '=', company.id),
-    ...     ('name', '=', 'IVA 21%'),
+    ...     ('name', '=', 'IVA 21% (bienes)'),
     ...     ])
     >>> supplier_tax, = Tax.find([
     ...     ('company', '=', company.id),
