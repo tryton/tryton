@@ -4,7 +4,7 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page/field[@name='shipping_date']"
         position="after">
-        <label name="purchase_request_state"/>
-        <field name="purchase_request_state"/>
+        <label name="supply_state"/>
+        <field name="supply_state"/>
     </xpath>
 </data>

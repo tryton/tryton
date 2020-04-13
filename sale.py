@@ -11,7 +11,7 @@ class Sale(metaclass=PoolMeta):
     def is_done(self):
         done = super(Sale, self).is_done()
         if done:
-            if any(l.purchase_request_state in ('', 'requested')
+            if any(l.supply_state in {'', 'requested'}
                     for l in self.lines if l.supply_on_sale):
                 return False
         return done
@@ -22,30 +22,36 @@ class Sale(metaclass=PoolMeta):
             # information about requests during the shipments creation
             # like the supplier
             self.create_purchase_requests()
-            self.create_move_from_purchase_requests()
+            self.create_move_from_supply()
         shipments = super(Sale, self).create_shipment(shipment_type)
         return shipments
 
     def create_purchase_requests(self):
-        'Create the purchase requests for the sale'
+        pool = Pool()
+        PurchaseRequest = pool.get('purchase.request')
+        Line = pool.get('sale.line')
+        requests = []
+        lines = []
         for line in self.lines:
             request = line.get_purchase_request()
             if not request:
                 continue
-            request.save()
+            requests.append(request)
             assert not line.purchase_request
             line.purchase_request = request
-            line.save()
+            lines.append(line)
+        PurchaseRequest.save(requests)
+        Line.save(lines)
 
-    def create_move_from_purchase_requests(self):
-        'Set to draft move linked to purchase requests'
+    def create_move_from_supply(self):
+        'Set to draft move linked to supply'
         pool = Pool()
         Move = pool.get('stock.move')
         ShipmentOut = pool.get('stock.shipment.out')
 
         moves = []
         for line in self.lines:
-            if line.purchase_request_state in ['purchased', 'cancel']:
+            if line.supply_state in {'supplied', 'cancelled'}:
                 for move in line.moves:
                     if move.state == 'staging':
                         moves.append(move)
@@ -60,25 +66,29 @@ class Line(metaclass=PoolMeta):
 
     purchase_request = fields.Many2One('purchase.request', 'Purchase Request',
         ondelete='SET NULL', readonly=True)
-    purchase_request_state = fields.Function(fields.Selection([
-                ('', ''),
-                ('requested', 'Requested'),
-                ('purchased', 'Purchased'),
-                ('cancel', 'Cancel'),
-                ], 'Purchase Request State',
+    supply_state = fields.Function(fields.Selection([
+                ('', ""),
+                ('requested', "Requested"),
+                ('supplied', "Supplied"),
+                ('cancelled', "Cancelled"),
+                ], "Supply State",
             states={
-                'invisible': ~Eval('purchase_request_state'),
-                }), 'get_purchase_request_state')
+                'invisible': ~Eval('supply_state'),
+                }), 'get_supply_state')
 
-    def get_purchase_request_state(self, name):
+    @property
+    def has_supply(self):
+        return bool(self.purchase_request)
+
+    def get_supply_state(self, name):
         if self.purchase_request is not None:
             purchase_line = self.purchase_request.purchase_line
             if purchase_line is not None:
                 purchase = purchase_line.purchase
                 if purchase.state == 'cancel':
-                    return 'cancel'
+                    return 'cancelled'
                 elif purchase.state in ('processing', 'done'):
-                    return 'purchased'
+                    return 'supplied'
             return 'requested'
         return ''
 
@@ -97,7 +107,6 @@ class Line(metaclass=PoolMeta):
         if (self.type != 'line'
                 or not self.product
                 or self.quantity <= 0
-                or not self.product.purchasable
                 or any(m.state not in ['staging', 'cancel']
                     for m in self.moves)):
             return False
@@ -107,9 +116,8 @@ class Line(metaclass=PoolMeta):
         move = super().get_move(shipment_type)
         if (move
                 and shipment_type == 'out'
-                and (self.supply_on_sale
-                    or self.purchase_request)):
-            if self.purchase_request_state in ('', 'requested'):
+                and (self.supply_on_sale or self.has_supply)):
+            if self.supply_state in {'', 'requested'}:
                 move.state = 'staging'
         return move
 
@@ -124,7 +132,9 @@ class Line(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         Request = pool.get('purchase.request')
 
-        if not self.supply_on_sale or self.purchase_request:
+        if (not self.supply_on_sale
+                or self.purchase_request
+                or not self.product.purchasable):
             return
 
         # Ensure to create the request for the maximum paid
@@ -170,7 +180,7 @@ class Line(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
-        if self.purchase_request_state != 'purchased':
+        if self.supply_state != 'supplied':
             return
         moves = set()
         for move in self.moves:
