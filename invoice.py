@@ -21,7 +21,8 @@ class Invoice(metaclass=PoolMeta):
             'invisible': Eval('type') == 'in',
             'readonly': Eval('state', '') != 'draft',
             },
-        depends=['type', 'company', 'state'])
+        depends=['type', 'company', 'state'],
+        help="The agent who receives a commission for the invoice.")
 
     @classmethod
     @ModelView.button
@@ -113,7 +114,8 @@ class InvoiceLine(metaclass=PoolMeta):
             'invisible': If(Bool(Eval('_parent_invoice')),
                 Eval('_parent_invoice', {}).get('type') == 'in',
                 Eval('invoice_type') == 'in'),
-            }, depends=['invoice_type', 'company'])
+            }, depends=['invoice_type', 'company'],
+        help="The principal who pays a commission for the invoice line.")
     commissions = fields.One2Many('commission', 'origin', 'Commissions',
         readonly=True,
         states={

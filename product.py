@@ -11,7 +11,8 @@ class Template(metaclass=PoolMeta):
         'template', 'agent', 'Commission Principals',
         domain=[
             ('type_', '=', 'principal'),
-            ])
+            ],
+        help="The principals who pay a commission when the product is sold.")
 
     @property
     def principal(self):

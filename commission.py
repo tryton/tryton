@@ -28,13 +28,15 @@ from .exceptions import FormulaError
 class Agent(ModelSQL, ModelView):
     'Commission Agent'
     __name__ = 'commission.agent'
-    party = fields.Many2One('party.party', 'Party', required=True)
+    party = fields.Many2One('party.party', "Party", required=True,
+        help="The party for whom the commission is calculated.")
     type_ = fields.Selection([
             ('agent', 'Agent Of'),
             ('principal', 'Principal Of'),
             ], 'Type')
     company = fields.Many2One('company.company', 'Company', required=True)
-    plan = fields.Many2One('commission.plan', 'Plan')
+    plan = fields.Many2One('commission.plan', "Plan",
+        help="The plan used to calculate the commission.")
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'required': Bool(Eval('plan')),
@@ -122,7 +124,8 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
                 ('start_date', '<=', Eval('end_date')),
                 ()),
             ],
-        depends=['end_date'])
+        depends=['end_date'],
+        help="The first date that the agent will be considered for selection.")
     end_date = fields.Date(
         "End Date",
         domain=[
@@ -130,7 +133,8 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
                 ('end_date', '>=', Eval('start_date')),
                 ()),
             ],
-        depends=['start_date'])
+        depends=['start_date'],
+        help="The last date that the agent will be considered for selection.")
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', select=True)
 
@@ -165,13 +169,16 @@ class Plan(ModelSQL, ModelView):
             ('default_uom', '=', Id('product', 'uom_unit')),
             ('template.type', '=', 'service'),
             ('template.default_uom', '=', Id('product', 'uom_unit')),
-            ])
+            ],
+        help="The product that is used on the invoice lines.")
     commission_method = fields.Selection([
             ('posting', 'On Posting'),
             ('payment', 'On Payment'),
             ], 'Commission Method',
-        help='When the commission is due.')
-    lines = fields.One2Many('commission.plan.line', 'plan', 'Lines')
+        help="When the commission is due.")
+    lines = fields.One2Many('commission.plan.line', 'plan', "Lines",
+        help="The formulas used to calculate the commission for different "
+        "criteria.")
 
     @staticmethod
     def default_commission_method():
@@ -211,13 +218,18 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'Commission Plan Line'
     __name__ = 'commission.plan.line'
     plan = fields.Many2One('commission.plan', 'Plan', required=True,
-        ondelete='CASCADE')
+        ondelete='CASCADE',
+        help="The plan to which the line belongs.")
     category = fields.Many2One(
-        'product.category', "Category", ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product', ondelete='CASCADE')
+        'product.category', "Category", ondelete='CASCADE',
+        help="Apply only to products in the category.")
+    product = fields.Many2One('product.product', "Product", ondelete='CASCADE',
+        help="Apply only to the product.")
     formula = fields.Char('Formula', required=True,
-        help=('Python expression that will be evaluated with:\n'
-            '- amount: the original amount'))
+        help="The python expression used to calculate the amount of "
+        "commission for the line.\n"
+        "It is evaluated with:\n"
+        "- amount: the original amount")
 
     @staticmethod
     def default_formula():
@@ -265,13 +277,16 @@ class Commission(ModelSQL, ModelView):
         }
     _readonly_depends = ['invoice_line']
     origin = fields.Reference('Origin', selection='get_origin', select=True,
-        readonly=True)
+        readonly=True,
+        help="The source of the commission.")
     date = fields.Date('Date', select=True, states=_readonly_states,
-        depends=_readonly_depends)
+        depends=_readonly_depends,
+        help="When the commission is due.")
     agent = fields.Many2One('commission.agent', 'Agent', required=True,
         states=_readonly_states, depends=_readonly_depends)
     product = fields.Many2One('product.product', 'Product', required=True,
-        states=_readonly_states, depends=_readonly_depends)
+        states=_readonly_states, depends=_readonly_depends,
+        help="The product that is used on the invoice line.")
     amount = fields.Numeric('Amount', required=True, digits=price_digits,
         domain=[('amount', '!=', 0)],
         states=_readonly_states, depends=_readonly_depends)
@@ -288,7 +303,10 @@ class Commission(ModelSQL, ModelView):
                 ('invoiced', 'Invoiced'),
                 ('paid', 'Paid'),
                 ('cancel', 'Canceled'),
-                ], 'Invoice State'), 'get_invoice_state')
+                ], "Invoice State",
+            help="The current state of the invoice "
+            "that the commission appears on."),
+        'get_invoice_state')
 
     @classmethod
     def __setup__(cls):
@@ -502,18 +520,21 @@ class CreateInvoiceAsk(ModelView):
             If(Eval('to') & Eval('from_'), [('from_', '<=', Eval('to'))],
                 []),
             ],
-        depends=['to'])
+        depends=['to'],
+        help="Limit to commissions from this date.")
     to = fields.Date('To',
         domain=[
             If(Eval('from_') & Eval('to'), [('to', '>=', Eval('from_'))],
                 []),
             ],
-        depends=['from_'])
+        depends=['from_'],
+        help="Limit to commissions to this date.")
     type_ = fields.Selection([
             ('in', 'Incoming'),
             ('out', 'Outgoing'),
             ('both', 'Both'),
-            ], 'Type')
+            ], 'Type',
+        help="Limit to commissions of this type.")
 
     @staticmethod
     def default_type_():
