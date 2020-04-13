@@ -178,11 +178,14 @@ class Move(metaclass=PoolMeta):
     def _get_anglo_saxon_move(cls, moves, quantity, type_):
         pool = Pool()
         Currency = pool.get('currency.currency')
+        Uom = pool.get('product.uom')
         for move, qty, cost_price in super(Move, cls)._get_anglo_saxon_move(
                 moves, quantity, type_):
             if (type_.startswith('in_')
                     and move.unit_shipment_cost):
+                shipment_cost = Uom.compute_price(move.uom,
+                    move.unit_shipment_cost, move.product.default_uom)
                 shipment_cost = Currency.compute(move.currency,
-                    move.unit_shipment_cost, move.company.currency)
+                    shipment_cost, move.company.currency)
                 cost_price -= shipment_cost
             yield move, qty, cost_price
