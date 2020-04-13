@@ -16,10 +16,14 @@ from trytond.pyson import Eval, In, If, Get, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.ir.attachment import AttachmentCopyMixin
+from trytond.ir.note import NoteCopyMixin
 from trytond.modules.company.model import employee_field, set_employee
 
 
-class SaleOpportunity(Workflow, ModelSQL, ModelView):
+class SaleOpportunity(
+        Workflow, ModelSQL, ModelView,
+        AttachmentCopyMixin, NoteCopyMixin):
     'Sale Opportunity'
     __name__ = "sale.opportunity"
     _history = True
@@ -244,6 +248,12 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
             ]
 
     @classmethod
+    def get_resources_to_copy(cls, name):
+        return {
+            'sale.sale',
+            }
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Sequence = pool.get('ir.sequence')
@@ -349,6 +359,8 @@ class SaleOpportunity(Workflow, ModelSQL, ModelView):
         Sale = pool.get('sale.sale')
         sales = [o.create_sale() for o in opportunities if not o.sales]
         Sale.save(sales)
+        for sale in sales:
+            sale.origin.copy_resources_to(sale)
 
     @property
     def is_forecast(self):
