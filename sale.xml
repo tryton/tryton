@@ -3,6 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="complaint_icon">
+            <field name="name">tryton-sale-complaint</field>
+            <field name="path">icons/tryton-sale-complaint.svg</field>
+        </record>
+
         <record model="ir.ui.view" id="configuration_view_form">
             <field name="model">sale.configuration</field>
             <field name="inherit" ref="sale.sale_configuration_view_form"/>
@@ -27,6 +32,12 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence" id="sequence_complaint">
             <field name="name">Customer Complaint</field>
             <field name="code">sale.complaint</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_view_form">
+            <field name="model">sale.sale</field>
+            <field name="inherit" ref="sale.sale_view_form"/>
+            <field name="name">sale_form</field>
         </record>
     </data>
 </tryton>
