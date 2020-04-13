@@ -67,3 +67,6 @@ Sale
 
     `Supply Drop Shipment </projects/modules-sale-supply-drop-shipment/en/latest>`_
         Supplies with drop shipment.
+
+    `Supply Production </projects/modules-sale-supply-production/en/latest>`_
+        Supplies with production.
