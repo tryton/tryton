@@ -26,6 +26,11 @@ class Production(metaclass=PoolMeta):
     __name__ = 'production'
 
     @classmethod
+    def _get_origin(cls):
+        origins = super()._get_origin()
+        return origins | {'stock.order_point'}
+
+    @classmethod
     def generate_requests(cls, clean=True, warehouses=None):
         """
         For each product compute the production request that must be created
@@ -47,6 +52,7 @@ class Production(metaclass=PoolMeta):
         if clean:
             reqs = cls.search([
                     ('state', '=', 'request'),
+                    ('origin', 'like', 'stock.order_point,%'),
                     ])
             cls.delete(reqs)
 
@@ -111,8 +117,10 @@ class Production(metaclass=PoolMeta):
                     if product.id not in shortages:
                         continue
                     for date, quantity in shortages[product.id]:
+                        order_point = product2ops.get(
+                            (warehouse.id, product.id))
                         req = cls.compute_request(product, warehouse,
-                            quantity, date, company)
+                            quantity, date, company, order_point)
                         req.planned_start_date = (
                             req.on_change_with_planned_start_date())
                         requests.append(req)
@@ -121,7 +129,9 @@ class Production(metaclass=PoolMeta):
         return requests
 
     @classmethod
-    def compute_request(cls, product, warehouse, quantity, date, company):
+    def compute_request(
+            cls, product, warehouse, quantity, date, company,
+            order_point=None):
         """
         Return the value of the production request.
         """
@@ -134,6 +144,10 @@ class Production(metaclass=PoolMeta):
             date -= datetime.timedelta(1)
         uom = product.default_uom
         quantity = uom.ceil(quantity)
+        if order_point:
+            origin = str(order_point)
+        else:
+            origin = 'stock.order_point,-1'
         return cls(
             planned_date=date,
             company=company,
@@ -144,6 +158,7 @@ class Production(metaclass=PoolMeta):
             uom=uom,
             quantity=quantity,
             state='request',
+            origin=origin,
             )
 
     @classmethod
