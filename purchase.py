@@ -20,6 +20,8 @@ from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
+from trytond.ir.attachment import AttachmentCopyMixin
+from trytond.ir.note import NoteCopyMixin
 from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.company.model import (
@@ -59,7 +61,9 @@ def search_shipments_returns(model_name):
     return classmethod(method)
 
 
-class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
+class Purchase(
+        Workflow, ModelSQL, ModelView, TaxableMixin,
+        AttachmentCopyMixin, NoteCopyMixin):
     'Purchase'
     __name__ = 'purchase.purchase'
     _rec_name = 'number'
@@ -670,6 +674,13 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return attributes
 
     @classmethod
+    def get_resources_to_copy(cls, name):
+        return {
+            'stock.shipment.in.return',
+            'account.invoice',
+            }
+
+    @classmethod
     def copy(cls, purchases, default=None):
         if default is None:
             default = {}
@@ -773,6 +784,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         invoice.save()
 
         Invoice.update_taxes([invoice])
+        self.copy_resources_to(invoice)
         return invoice
 
     def create_move(self, move_type):
@@ -814,6 +826,7 @@ class Purchase(Workflow, ModelSQL, ModelView, TaxableMixin):
         return_shipment = self._get_return_shipment()
         return_shipment.moves = return_moves
         return_shipment.save()
+        self.copy_resources_to(return_shipment)
         ShipmentInReturn.wait([return_shipment])
         return return_shipment
 
