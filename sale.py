@@ -116,7 +116,7 @@ class Line(metaclass=PoolMeta):
             return False
         if self.purchase_request and not self.purchase_request.customer:
             return False
-        if self.purchase_request_state == 'cancel':
+        if self.supply_state == 'cancelled':
             return False
         if self.purchase_request:
             purchase_line = self.purchase_request.purchase_line
