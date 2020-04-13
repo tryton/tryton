@@ -7,7 +7,8 @@ from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
 
 default_cost_price_method = fields.Selection(
-    'get_cost_price_methods', "Default Cost Method")
+    'get_cost_price_methods', "Default Cost Method",
+    help="The default cost price method for new products.")
 
 
 @classmethod

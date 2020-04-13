@@ -54,29 +54,43 @@ class Template(
         states={
             'invisible': Eval('type', 'goods') != 'goods',
             },
-        depends=['type'])
+        depends=['type'],
+        help="Check to allow stock moves to be assigned "
+        "regardless of stock level.")
     list_price = fields.MultiValue(fields.Numeric(
-            "List Price", required=True, digits=price_digits))
+            "List Price", required=True, digits=price_digits,
+            help="The standard price the product is sold at."))
     list_prices = fields.One2Many(
         'product.list_price', 'template', "List Prices")
     cost_price = fields.Function(fields.Numeric(
-            "Cost Price", digits=price_digits), 'get_cost_price')
+            "Cost Price", digits=price_digits,
+            help="The amount it costs to purchase or make the product, "
+            "or carry out the service."),
+        'get_cost_price')
     cost_price_method = fields.MultiValue(fields.Selection(
-            COST_PRICE_METHODS, "Cost Price Method", required=True))
+            COST_PRICE_METHODS, "Cost Price Method", required=True,
+            help="The method used to calculate the cost price."))
     cost_price_methods = fields.One2Many(
         'product.cost_price_method', 'template', "Cost Price Methods")
-    default_uom = fields.Many2One('product.uom', "Default UOM", required=True)
+    default_uom = fields.Many2One('product.uom', "Default UOM", required=True,
+        help="The standard unit of measure for the product.\n"
+        "Used internally when calculating the stock levels of goods "
+        "and assets.")
     default_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Default UOM Category'),
         'on_change_with_default_uom_category',
         searcher='search_default_uom_category')
     categories = fields.Many2Many(
         'product.template-product.category', 'template', 'category',
-        "Categories")
+        "Categories",
+        help="The categories that the product is in.\n"
+        "Used to group similar products together.")
     categories_all = fields.Many2Many(
         'product.template-product.category.all',
         'template', 'category', "Categories", readonly=True)
-    products = fields.One2Many('product.product', 'template', "Variants")
+    products = fields.One2Many(
+        'product.product', 'template', "Variants",
+        help="The different variants the product comes in.")
 
     @classmethod
     def __register__(cls, module_name):
@@ -222,7 +236,9 @@ class Product(
     template = fields.Many2One(
         'product.template', "Product Template",
         required=True, ondelete='CASCADE', select=True,
-        search_context={'default_products': False})
+        search_context={'default_products': False},
+        help="The product that defines the common properties "
+        "inherited by the variant.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
         'get_code_readonly')
     prefix_code = fields.Function(fields.Char(
@@ -238,12 +254,15 @@ class Product(
             },
         depends=['code_readonly'],
         help="The unique identifier for the product (aka SKU).")
-    code = fields.Char("Code", readonly=True, select=True)
+    code = fields.Char("Code", readonly=True, select=True,
+        help="A unique identifier for the variant.")
     identifiers = fields.One2Many(
         'product.identifier', 'product', "Identifiers",
-        help="Add other identifiers to the variant.")
+        help="Other identifiers associated with the variant.")
     cost_price = fields.MultiValue(fields.Numeric(
-            "Cost Price", required=True, digits=price_digits))
+            "Cost Price", required=True, digits=price_digits,
+            help="The amount it costs to purchase or make the variant, "
+            "or carry out the service."))
     cost_prices = fields.One2Many(
         'product.cost_price', 'product', "Cost Prices")
     description = fields.Text("Description", translate=True)
@@ -648,7 +667,7 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
     _rec_name = 'code'
     product = fields.Many2One('product.product', "Product", ondelete='CASCADE',
         required=True, select=True,
-        help="The product identified by this identifier.")
+        help="The product identified by the code.")
     type = fields.Selection([
             (None, ''),
             ('ean', "International Article Number"),

@@ -20,10 +20,10 @@ uom_conversion_digits = (
 
 
 class UomCategory(ModelSQL, ModelView):
-    'Product uom category'
+    "Unit of Measure Category"
     __name__ = 'product.uom.category'
     name = fields.Char('Name', required=True, translate=True)
-    uoms = fields.One2Many('product.uom', 'category', 'Unit of Measures')
+    uoms = fields.One2Many('product.uom', 'category', "Units of Measure")
 
     @classmethod
     def __setup__(cls):
@@ -32,27 +32,35 @@ class UomCategory(ModelSQL, ModelView):
 
 
 class Uom(DeactivableMixin, ModelSQL, ModelView):
-    'Unit of measure'
+    "Unit of Measure"
     __name__ = 'product.uom'
     name = fields.Char("Name", size=None, required=True, translate=True)
-    symbol = fields.Char("Symbol", size=10, required=True, translate=True)
+    symbol = fields.Char(
+        "Symbol", size=10, required=True, translate=True,
+        help="The symbol that represents the unit of measure.")
     category = fields.Many2One(
-        'product.uom.category', "Category", required=True, ondelete='RESTRICT')
+        'product.uom.category', "Category", required=True, ondelete='RESTRICT',
+        help="The category that contains the unit of measure.\n"
+        "Conversions between different units of measure can be done if they "
+        "are in the same category.")
     rate = fields.Float(
         "Rate", digits=uom_conversion_digits, required=True,
-        help=('The coefficient for the formula:\n'
-            '1 (base unit) = coef (this unit)'))
+        help="The coefficient for the formula:\n"
+        "1 (base unit) = coef (this unit)")
     factor = fields.Float(
         "Factor", digits=uom_conversion_digits, required=True,
-        help=('The coefficient for the formula:\n'
-            'coef (base unit) = 1 (this unit)'))
+        help="The coefficient for the formula:\n"
+        "coefficient (base unit) = 1 (this unit)")
     rounding = fields.Float(
         "Rounding Precision", digits=(12, Eval('digits', 12)), required=True,
         domain=[
             ('rounding', '>', 0),
             ],
-        depends=['digits'])
-    digits = fields.Integer('Display Digits', required=True)
+        depends=['digits'],
+        help+        help="The accuracy to which values are rounded.")
+    digits = fields.Integer(
+        "Display Digits", required=True,
+        help="The number of digits to display after the decimal separator.")
 
     @classmethod
     def __setup__(cls):
