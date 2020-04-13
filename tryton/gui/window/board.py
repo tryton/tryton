@@ -40,6 +40,7 @@ class Board(SignalEvent, TabContent):
             self.name = name
 
         self.create_tabcontent()
+        self.board.reload()
 
     def get_toolbars(self):
         return {}

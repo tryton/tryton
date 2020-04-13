@@ -38,6 +38,7 @@ class ViewBoard(object):
     def __init__(self, xml, context=None):
         self.context = context
         self.actions = []
+        self.state_widgets = []
         self.xml_parser(self, None, {}).parse(xml)
         self.widget.show_all()
         self._active_changed(None)
@@ -48,6 +49,8 @@ class ViewBoard(object):
     def reload(self):
         for action in self.actions:
             action.display()
+        for state_widget in self.state_widgets:
+            state_widget.state_set(None)
 
     def _active_changed(self, event_action, *args):
         for action in self.actions:

@@ -30,6 +30,7 @@ class Record(SignalEvent):
         self._timestamp = None
         self.resources = None
         self.button_clicks = {}
+        self.links_counts = {}
         self.next = {}  # Used in Group list
         self.value = {}
         self.autocompletion = {}
@@ -292,6 +293,7 @@ class Record(SignalEvent):
         self.modified_fields.clear()
         self._timestamp = None
         self.button_clicks.clear()
+        self.links_counts.clear()
 
     def get_timestamp(self):
         result = {self.model_name + ',' + str(self.id): self._timestamp}

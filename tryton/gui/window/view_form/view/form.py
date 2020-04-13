@@ -34,7 +34,7 @@ from .form_gtk.dictionary import DictWidget
 from .form_gtk.multiselection import MultiSelection
 from .form_gtk.pyson import PYSON
 from .form_gtk.state_widget import (Label, VBox, Image, Frame, ScrolledWindow,
-    Notebook, Expander)
+    Notebook, Expander, Link)
 
 _ = gettext.gettext
 
@@ -257,6 +257,11 @@ class FormXMLViewParser(XMLViewParser):
         button.connect('clicked', self.view.button_clicked)
         self.view.state_widgets.append(button)
         self.container.add(button, attributes)
+
+    def _parse_link(self, node, attributes):
+        link = Link(attrs=attributes)
+        self.view.state_widgets.append(link)
+        self.container.add(link, attributes)
 
     def _parse_image(self, node, attributes):
         image = Image(attrs=attributes)
