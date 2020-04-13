@@ -166,6 +166,26 @@ def is_module_to_install(module, update):
     return False
 
 
+def load_translations(pool, node, languages):
+    module = node.name
+    localedir = '%s/%s' % (node.info['directory'], 'locale')
+    lang2filenames = defaultdict(list)
+    for filename in itertools.chain(
+            iglob('%s/*.po' % localedir),
+            iglob('%s/override/*.po' % localedir)):
+        filename = filename.replace('/', os.sep)
+        lang = os.path.splitext(os.path.basename(filename))[0]
+        if lang not in languages:
+            continue
+        lang2filenames[lang].append(filename)
+    base_path_position = len(node.info['directory']) + 1
+    for language, files in lang2filenames.items():
+        filenames = [f[base_path_position:] for f in files]
+        logger.info('%s:loading %s', module, ','.join(filenames))
+        Translation = pool.get('ir.translation')
+        Translation.translation_import(language, module, files)
+
+
 def load_module_graph(graph, pool, update=None, lang=None):
     from trytond.ir.lang import get_parent_language
 
@@ -233,22 +253,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
                 modules_todo.append((module, list(tryton_parser.to_delete)))
 
-                localedir = '%s/%s' % (node.info['directory'], 'locale')
-                lang2filenames = defaultdict(list)
-                for filename in itertools.chain(
-                        iglob('%s/*.po' % localedir),
-                        iglob('%s/override/*.po' % localedir)):
-                    filename = filename.replace('/', os.sep)
-                    lang2 = os.path.splitext(os.path.basename(filename))[0]
-                    if lang2 not in lang:
-                        continue
-                    lang2filenames[lang2].append(filename)
-                base_path_position = len(node.info['directory']) + 1
-                for language, files in lang2filenames.items():
-                    filenames = [f[base_path_position:] for f in files]
-                    logger.info('%s:loading %s', module, ','.join(filenames))
-                    Translation = pool.get('ir.translation')
-                    Translation.translation_import(language, module, files)
+                load_translations(pool, node, lang)
 
                 if package_state == 'to remove':
                     continue

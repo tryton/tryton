@@ -495,5 +495,34 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem name="Languages" parent="ir.menu_localization"
             action="act_lang_form" id="menu_lang_form"/>
+
+        <record model="ir.model.button" id="lang_load_translations_button">
+            <field name="name">load_translations</field>
+            <field name="string">Load translations</field>
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+            <field name="confirm">Are you sure you want to load languages' translations?</field>
+        </record>
+        <record model="ir.model.button" id="lang_unload_translations_button">
+            <field name="name">unload_translations</field>
+            <field name="string">Unload translations</field>
+            <field name="confirm">Are you sure you want to remove languages' translations?</field>
+            <field name="model" search="[('model', '=', 'ir.lang')]"/>
+        </record>
+
+        <record model="ir.ui.view" id="lang_config_start_view_form">
+            <field name="model">ir.lang.config.start</field>
+            <field name="type">form</field>
+            <field name="name">lang_config_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_lang_config">
+            <field name="name">Configure Languages</field>
+            <field name="wiz_name">ir.lang.config</field>
+            <field name="window" eval="True"/>
+        </record>
+
+        <record model="ir.module.config_wizard.item" id="config_wizard_item_lang">
+            <field name="action" ref="act_lang_config"/>
+        </record>
     </data>
 </tryton>

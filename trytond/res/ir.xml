@@ -560,6 +560,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="ir.act_translation_export"/>
             <field name="group" ref="group_admin"/>
         </record>
+        <record model="ir.action-res.group" id="act_lang_config">
+            <field name="action" ref="ir.act_lang_config"/>
+            <field name="group" ref="group_admin"/>
+        </record>
 
         <record model="ir.ui.menu-res.group" id="menu_administration_group_admin">
             <field name="menu" ref="ir.menu_administration"/>

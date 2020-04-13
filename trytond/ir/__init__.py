@@ -71,6 +71,7 @@ def register():
         note.NoteRead,
         cron.Cron,
         lang.Lang,
+        lang.LangConfigStart,
         export.Export,
         export.ExportLine,
         rule.RuleGroup,
@@ -105,6 +106,7 @@ def register():
         module.ModuleConfigWizard,
         module.ModuleActivateUpgrade,
         module.ModuleConfig,
+        lang.LangConfig,
         module='ir', type_='wizard')
     Pool.register(
         model.ModelGraph,
