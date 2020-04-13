@@ -14,9 +14,7 @@ this repository contains the full copyright notices and license terms. -->
         <label name="drop_location"/>
         <field name="drop_location"/>
     </xpath>
-    <xpath
-        expr="/form/notebook/page[@name='shipments']/field[@name='shipments']"
-        position="after">
-        <field name="drop_shipments" colspan="4"/>
+    <xpath expr="//group[@id='links']" position="inside">
+        <link icon="tryton-shipment-in" name="sale_supply_drop_shipment.act_purchase_drop_shipment_form"/>
     </xpath>
 </data>
