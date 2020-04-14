@@ -10,6 +10,7 @@ except ImportError:
 from dateutil.relativedelta import relativedelta
 from sql import Null, Literal, Column
 from sql.aggregate import Sum, Max, Min, Count
+from sql.conditionals import Coalesce
 from sql.functions import CurrentTimestamp, DateTrunc, Power, Ceil, Log
 
 from trytond.pool import Pool
@@ -95,8 +96,9 @@ class Abstract(ModelSQL):
         currency_company = tables['currency_company']
         currency_sale = tables['currency_sale']
 
+        quantity = Coalesce(line.actual_quantity, line.quantity)
         revenue = cls.revenue.sql_cast(
-            Sum(line.quantity * line.unit_price
+            Sum(quantity * line.unit_price
                 * currency_company.rate / currency_sale.rate))
         return [
             cls._column_id(tables).as_('id'),

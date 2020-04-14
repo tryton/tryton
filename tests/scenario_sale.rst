@@ -200,6 +200,11 @@ Invoice line must be linked to stock move::
     >>> stock_move2.invoice_lines == [invoice_line2]
     True
 
+Check actual quantity::
+
+    >>> all(l.quantity == l.actual_quantity for l in sale.lines)
+    True
+
 Post invoice and check no new invoices::
 
 
