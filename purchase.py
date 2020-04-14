@@ -909,6 +909,9 @@ class Purchase(
     @classmethod
     @ModelView.button
     def process(cls, purchases):
+        pool = Pool()
+        Line = pool.get('purchase.line')
+        lines = []
         process, done = [], []
         cls.lock(purchases)
         for purchase in purchases:
@@ -921,6 +924,11 @@ class Purchase(
             if return_moves:
                 purchase.create_return_shipment(return_moves)
             purchase.set_shipment_state()
+
+            for line in purchase.lines:
+                line.set_actual_quantity()
+                lines.append(line)
+
             if purchase.is_done():
                 if purchase.state != 'done':
                     if purchase.state == 'confirmed':
@@ -928,6 +936,7 @@ class Purchase(
                     done.append(purchase)
             elif purchase.state != 'processing':
                 process.append(purchase)
+        Line.save(lines)
         if process:
             cls.proceed(process)
         if done:
@@ -987,6 +996,12 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('purchase_state') != 'draft',
             },
         depends=['unit_digits', 'type', 'purchase_state'])
+    actual_quantity = fields.Float(
+        "Actual Quantity", digits=(16, Eval('unit_digits', 2)), readonly=True,
+        states={
+            'invisible': Eval('type') != 'line',
+            },
+        depends=['unit_digits', 'type'])
     unit = fields.Many2One('product.uom', 'Unit',
         ondelete='RESTRICT',
         states={
@@ -1599,6 +1614,26 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return [l for l in self.invoice_lines]
         else:
             return [l for l in self.invoice_lines if not l.stock_moves]
+
+    def set_actual_quantity(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        if self.type != 'line':
+            return
+        moved_quantity = 0
+        for move in self.moves:
+            if move.state != 'cancel':
+                moved_quantity += Uom.compute_qty(
+                    move.uom, move.quantity, self.unit)
+        if self.quantity < 0:
+            moved_quantity *= -1
+        invoiced_quantity = 0
+        for invoice_line in self.invoice_lines:
+            if (not invoice_line.invoice
+                    or invoice_line.invoice.state != 'cancel'):
+                invoiced_quantity += Uom.compute_qty(
+                    invoice_line.unit, invoice_line.quantity, self.unit)
+        self.actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
 
     def get_rec_name(self, name):
         pool = Pool()
