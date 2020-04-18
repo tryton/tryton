@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
+from trytond.pyson import Eval
 from trytond.transaction import Transaction
 
 from trytond.modules.analytic_account import AnalyticMixin
@@ -11,6 +12,14 @@ __all__ = ['Asset']
 
 class Asset(AnalyticMixin, metaclass=PoolMeta):
     __name__ = 'account.asset'
+
+    @classmethod
+    def __setup__(cls):
+        super(Asset, cls).__setup__()
+        cls.analytic_accounts.domain = [
+            ('company', '=', Eval('company', -1)),
+            ]
+        cls.analytic_accounts.depends.append('company')
 
     @fields.depends('supplier_invoice_line', 'analytic_accounts')
     def on_change_supplier_invoice_line(self):
