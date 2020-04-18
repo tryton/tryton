@@ -1750,6 +1750,7 @@ class TestTaxView(ModelView, TaxableMixin):
         result = []
         if all([self.tax_date, self.unit_price, self.quantity, self.currency]):
             for taxline in self._get_taxes():
+                del taxline['manual']
                 result.append(Result(**taxline))
         self.result = result
         return self._changed_values.get('result', [])
