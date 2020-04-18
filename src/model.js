@@ -1435,7 +1435,7 @@
             record._changed[this.name] = true;
         },
         set_on_change: function(record, value) {
-            record._values[this.name] = value;
+            this.set(record, value);
             record._changed[this.name] = true;
         },
         changed: function(record) {
