@@ -16,7 +16,7 @@ from sql.functions import CurrentTimestamp, Function
 from trytond import backend
 from trytond.config import config
 from trytond.transaction import Transaction
-from trytond.tools import resolve
+from trytond.tools import resolve, grouped_slice
 
 __all__ = ['BaseCache', 'Cache', 'LRUDict']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
@@ -207,9 +207,12 @@ class MemoryCache(BaseCache):
         dbname = database.name
         if not _clear_timeout and transaction.database.has_channel():
             with transaction.connection.cursor() as cursor:
-                cursor.execute(
-                    'NOTIFY "%s", %%s' % cls._channel,
-                    (json.dumps(list(reset), separators=(',', ':')),))
+                # The count computed as
+                # 8000 (max notify size) / 64 (max name data len)
+                for sub_reset in grouped_slice(reset, 125):
+                    cursor.execute(
+                        'NOTIFY "%s", %%s' % cls._channel,
+                        (json.dumps(list(sub_reset), separators=(',', ':')),))
         else:
             connection = database.get_connection(
                 readonly=False, autocommit=True)
