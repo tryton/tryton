@@ -684,6 +684,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         for report in reports:
             if report.report:
                 default['report_content'] = None
+                default['report'] = None
             default['report_name'] = report.report_name
             new_reports.extend(super(ActionReport, cls).copy([report],
                     default=default))
