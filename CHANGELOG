@@ -1,3 +1,5 @@
+* Use move line date by default when created by rule engine
+
 Version 5.4.0 - 2019-11-04
 * Bug fixes (see mercurial logs for details)
 

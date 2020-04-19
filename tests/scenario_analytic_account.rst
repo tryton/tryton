@@ -138,3 +138,5 @@ Check analytic lines are created on posting::
     True
     >>> analytic_line.credit
     Decimal('73')
+    >>> analytic_line.date == analytic_line.move_line.date
+    True
