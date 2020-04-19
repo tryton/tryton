@@ -306,7 +306,10 @@ class Report(URLMixin, PoolBase):
         mimetype = MIMETYPES[report.template_extension]
         rel_report = relatorio.reporting.Report(path, mimetype,
                 ReportFactory(), relatorio.reporting.MIMETemplateLoader())
-        cls._add_translation_hook(rel_report, report_context)
+        if report.translatable:
+            cls._add_translation_hook(rel_report, report_context)
+        else:
+            report_context['set_lang'] = lambda language: None
 
         data = rel_report(**report_context).render()
         if hasattr(data, 'getvalue'):
