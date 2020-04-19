@@ -181,9 +181,12 @@
             }
             return record;
         };
-        array.remove = function(record, remove, modified, force_remove) {
+        array.remove = function(record, remove, modified, force_remove, signal) {
             if (modified === undefined) {
                 modified = true;
+            }
+            if (signal === undefined) {
+                signal = true;
             }
             var idx = this.indexOf(record);
             if (record.id >= 0) {
@@ -210,7 +213,9 @@
             if ((record.id < 0) || force_remove) {
                 this._remove(record);
             }
-            record.group.changed();
+            if (signal) {
+                record.group.changed();
+            }
         };
         array._remove = function(record) {
             var idx = this.indexOf(record);
@@ -2059,7 +2064,7 @@
                 for (var i = 0, len = group.length; i < len; i++) {
                     var old_record = group[i];
                     if (!~value.indexOf(old_record.id)) {
-                        group.remove(old_record, true);
+                        group.remove(old_record, true, true, false, false);
                     }
                 }
                 group.load(value, modified);
@@ -2239,7 +2244,7 @@
                 value.delete.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
-                        group.remove(record2, false, true, false);
+                        group.remove(record2, false, true, false, false);
                     }
                 }.bind(this));
             }
@@ -2247,7 +2252,7 @@
                 value.remove.forEach(function(record_id) {
                     var record2 = group.get(record_id);
                     if (record2) {
-                        group.remove(record2, true, true, false);
+                        group.remove(record2, true, true, false, false);
                     }
                 }.bind(this));
             }
