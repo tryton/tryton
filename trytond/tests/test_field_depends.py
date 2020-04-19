@@ -3,10 +3,16 @@
 import unittest
 
 from trytond.model import ModelView, fields
+from trytond.pyson import Eval
+from trytond.tests.test_tryton import activate_module, with_transaction
 
 
 class FieldDependsTestCase(unittest.TestCase):
     'Test Field Depends'
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
 
     def test_empty_depends(self):
         'Test depends are set if empty'
@@ -142,6 +148,27 @@ class FieldDependsTestCase(unittest.TestCase):
         Model.__setup__()
 
         self.assertEqual(Model.name.on_change, {'foo', 'bar'})
+
+    @with_transaction()
+    def test_field_context(self):
+        "Tests depends on field with context"
+
+        class Model(ModelView):
+            name = fields.Char("Name")
+            foo = fields.Char(
+                "Foo", context={'bar': Eval('bar')}, depends=['bar'])
+            bar = fields.Char("Bar")
+
+            @fields.depends('foo')
+            def on_change_name(self):
+                return
+
+        Model.__setup__()
+        Model.__post_setup__()
+
+        self.assertEqual(
+            set(Model.name.definition(Model, 'en')['on_change']),
+            {'foo', 'bar', 'id'})
 
 
 def suite():

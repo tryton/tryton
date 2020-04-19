@@ -453,6 +453,15 @@ class Field(object):
                 if not model.__rpc__[method_name].cache:
                     changes.append('id')
 
+                for name in changes:
+                    field = model._fields.get(name)
+                    if field and field.context:
+                        eval_fields = get_eval_fields(field.context)
+                        for context_field_name in eval_fields:
+                            if (context_field_name in field.depends
+                                    and context_field_name not in changes):
+                                changes.append(context_field_name)
+
         name = '%s,%s' % (model.__name__, self.name)
         for attr, ttype in [('string', 'field'), ('help', 'help')]:
             definition[attr] = ''
