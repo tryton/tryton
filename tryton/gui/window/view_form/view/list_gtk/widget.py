@@ -873,7 +873,8 @@ class M2O(GenericText):
             self.open_remote(record, create=False, changed=True,
                 text=entry.get_text(), callback=callback)
         elif index == 1:
-            self.open_remote(record, create=True, callback=callback)
+            self.open_remote(record, create=True,
+                text=entry.get_text(), callback=callback)
         else:
             entry.handler_unblock(entry.editing_done_id)
 
