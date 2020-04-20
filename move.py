@@ -1972,10 +1972,10 @@ class GroupLines(Wizard):
 
         counterpart_lines = []
         for line in lines:
-            if maturity_dates[line.account]:
+            if maturity_dates[line.account] and line.maturity_date:
                 maturity_dates[line.account] = min(
                     maturity_dates[line.account], line.maturity_date)
-            else:
+            elif line.maturity_date:
                 maturity_dates[line.account] = line.maturity_date
             cline = cls._counterpart_line(line)
             accounts[cline.account] += cline.debit - cline.credit
