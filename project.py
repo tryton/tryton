@@ -43,7 +43,9 @@ class Effort:
                     quantity = work.effort_hours
                 else:
                     quantity = 1
-                quantities[work.id] = work.unit_to_invoice.round(quantity)
+                if work.unit_to_invoice:
+                    quantity = work.unit_to_invoice.round(quantity)
+                quantities[work.id] = quantity
         return quantities
 
     @classmethod
@@ -126,7 +128,9 @@ class Progress:
                     quantity = delta
                     if work.price_list_hour:
                         quantity *= work.effort_hours
-                    quantities[work.id] = work.unit_to_invoice.round(quantity)
+                    if work.unit_to_invoice:
+                        quantity = work.unit_to_invoice.round(quantity)
+                    quantities[work.id] = quantity
         return quantities
 
     @property
@@ -242,7 +246,9 @@ class Timesheet:
             duration = durations[work.id]
             if work.list_price:
                 hours = duration.total_seconds() / 60 / 60
-                quantities[work.id] = work.unit_to_invoice.round(hours)
+                if work.unit_to_invoice:
+                    hours = work.unit_to_invoice.round(hours)
+                quantities[work.id] = hours
         return quantities
 
     @classmethod
