@@ -112,7 +112,8 @@ class Progress:
         quantities = {}
         for sub_works in grouped_slice(works):
             sub_works = list(sub_works)
-            where = reduce_ids(table.id, [x.id for x in sub_works])
+            where = reduce_ids(
+                table.id, [x.id for x in sub_works if x.list_price])
             cursor.execute(*table.join(progress,
                     condition=progress.work == table.id
                     ).select(table.id, Sum(progress.progress),
@@ -124,7 +125,7 @@ class Progress:
                 delta = (
                     (work.progress or 0)
                     - invoiced_progress.get(work.id, 0.0))
-                if delta > 0:
+                if work.list_price and delta > 0:
                     quantity = delta
                     if work.price_list_hour:
                         quantity *= work.effort_hours
