@@ -16,6 +16,13 @@ class Template(metaclass=PoolMeta):
             },
         depends=['type'])
 
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ('//page[@id="production"]', 'states', {
+                    'invisible': ~Eval('producible'),
+                    })]
+
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -62,13 +69,6 @@ class Product(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('boms', None)
         return super(Product, cls).copy(products, default=default)
-
-    @classmethod
-    def view_attributes(cls):
-        return super(Product, cls).view_attributes() + [
-            ('//page[@id="production"]', 'states', {
-                    'invisible': ~Eval('producible'),
-                    })]
 
 
 class ProductBom(sequence_ordered(), ModelSQL, ModelView):
