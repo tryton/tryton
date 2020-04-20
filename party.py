@@ -3,8 +3,6 @@
 from sql import Null, Literal
 from sql.functions import CurrentTimestamp
 
-import stdnum.eu.at_02 as sepa
-import stdnum.exceptions
 
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
@@ -12,7 +10,6 @@ from trytond.model import fields
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
 
-from trytond.modules.party.exceptions import InvalidIdentifierCode
 from .exceptions import PartyIdentificationdError
 
 
@@ -57,7 +54,7 @@ class Party(metaclass=PoolMeta):
 
     def get_sepa_creditor_identifier_used(self, name):
         for identifier in self.identifiers:
-            if identifier.type == 'sepa':
+            if identifier.type == 'eu_at_02':
                 return identifier.code
 
     def get_sepa_identifier(self, name):
@@ -86,34 +83,16 @@ class PartyIdentifier(metaclass=PoolMeta):
         depends=['type'])
 
     @classmethod
-    def __setup__(cls):
-        super(PartyIdentifier, cls).__setup__()
-        cls.type.selection.append(('sepa', 'SEPA Creditor Identifier'))
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+        super().__register__(module_name)
 
-    @fields.depends('party', '_parent_party.identifiers')
-    def check_code(self):
-        super(PartyIdentifier, self).check_code()
-        if self.type == 'sepa':
-            if not sepa.is_valid(self.code):
-                # Called from pre_validate so party may not be saved yet
-                if self.party and self.party.id > 0:
-                    party = self.party.rec_name
-                else:
-                    party = ''
-                raise InvalidIdentifierCode(
-                    gettext('account_payment_sepa.msg_party_invalid_sepa',
-                        code=self.code,
-                        party=party))
-
-    @fields.depends('type', 'code')
-    def on_change_with_code(self):
-        code = super(PartyIdentifier, self).on_change_with_code()
-        if self.type == 'sepa':
-            try:
-                return sepa.compact(self.code)
-            except stdnum.exceptions.ValidationError:
-                pass
-        return code
+        # Migration from 5.4: sepa identifier merged into eu_at_02
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.type],
+                values=['eu_at_02'],
+                where=sql_table.type == 'sepa'))
 
     @property
     def sepa_identifier(self):
@@ -121,7 +100,7 @@ class PartyIdentifier(metaclass=PoolMeta):
             'Type': 'OrgId',
             'Id': self.code,
             }
-        if self.type == 'sepa':
+        if self.type == 'eu_at_02':
             identifier['Type'] = 'PrvtId'
             identifier['SchmeNm'] = {'Prtry': 'SEPA'}
         elif self.type == 'be_vat':

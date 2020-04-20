@@ -54,7 +54,7 @@ else:
 
 INITIATOR_IDS = [
     (None, ''),
-    ('sepa', "SEPA Creditor Identifier"),
+    ('eu_at_02', "SEPA Creditor Identifier"),
     ('be_vat', "Belgian Enterprise Number"),
     ('es_nif', "Spanish VAT Number"),
     ]
@@ -131,6 +131,20 @@ class Journal(metaclass=PoolMeta):
         sepa_method = ('sepa', 'SEPA')
         if sepa_method not in cls.process_method.selection:
             cls.process_method.selection.append(sepa_method)
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+        super().__register__(module_name)
+
+        # Migration from 5.4: sepa identifier merged into eu_at_02
+        for name in {'payable', 'receivable'}:
+            column = getattr(sql_table, 'sepa_%s_initiator_id' % name)
+            cursor.execute(*sql_table.update(
+                    columns=[column],
+                    values=['eu_at_02'],
+                    where=column == 'sepa'))
 
     @classmethod
     def default_company_party(cls):

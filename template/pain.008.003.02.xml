@@ -49,7 +49,7 @@ this repository contains the full copyright notices and license terms. -->
             <!-- UltmtCdtr -->
             <ChrgBr>SLEV</ChrgBr>
             <CdtrSchmeId>
-                ${PartyIdentification(group.company.party, id='sepa', with_name=False, with_address=False)}
+                ${PartyIdentification(group.company.party, id='eu_at_02', with_name=False, with_address=False)}
             </CdtrSchmeId>
             <DrctDbtTxInf py:for="payment in payments">
                 <PmtId>

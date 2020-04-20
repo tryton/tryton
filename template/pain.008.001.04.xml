@@ -56,7 +56,7 @@ this repository contains the full copyright notices and license terms. -->
             <!-- ChrgsAcct -->
             <!-- ChrgsAcctAgt -->
             <CdtrSchmeId>
-                ${PartyIdentification(group.company.party, id='sepa')}
+                ${PartyIdentification(group.company.party, id='eu_at_02')}
             </CdtrSchmeId>
             <DrctDbtTxInf py:for="payment in payments">
                 <PmtId>
