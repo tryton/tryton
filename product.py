@@ -121,7 +121,20 @@ class Template(
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        return [('products.rec_name',) + tuple(clause[1:])]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
+        else:
+            bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
+        return [bool_op,
+            ('name',) + tuple(clause[1:]),
+            ('code', clause[1], code_value) + tuple(clause[3:]),
+            ('products.code', clause[1], code_value) + tuple(clause[3:]),
+            ('products.identifiers.code', clause[1], code_value)
+            + tuple(clause[3:]),
+            ]
 
     @staticmethod
     def default_type():
@@ -415,7 +428,7 @@ class Product(
             ('code', clause[1], code_value) + tuple(clause[3:]),
             ('identifiers.code', clause[1], code_value) + tuple(clause[3:]),
             ('template.name',) + tuple(clause[1:]),
-            ('template.code',) + tuple(clause[1:]),
+            ('template.code', clause[1], code_value) + tuple(clause[3:]),
             ]
 
     @staticmethod
