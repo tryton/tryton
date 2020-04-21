@@ -3,6 +3,7 @@
 import unittest
 
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 from trytond.tests.test_tryton import activate_module, with_transaction
 
 
@@ -53,6 +54,30 @@ class ResourceTestCase(unittest.TestCase):
         other_notes = Note.search([('resource', '=', str(other))])
         self.assertFalse(other_notes)
         self.assertFalse(copies)
+
+    @with_transaction()
+    def test_note_write(self):
+        "Test note write behaviour"
+        pool = Pool()
+        Note = pool.get('ir.note')
+        Resource = pool.get('test.resource')
+        User = pool.get('res.user')
+
+        user = User(login='test')
+        user.save()
+        record = Resource()
+        record.save()
+        note = Note(resource=record, message="Message")
+        note.save()
+        write_date = note.write_date
+
+        with Transaction().set_user(user.id):
+            user_note = Note(note.id)
+            user_note.unread = False
+            user_note.save()
+
+        note = Note(note.id)
+        self.assertEqual(user_note.write_date, write_date)
 
 
 def suite():
