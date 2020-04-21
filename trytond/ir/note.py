@@ -101,11 +101,13 @@ class Note(ResourceMixin, ModelSQL, ModelView):
     @classmethod
     def write(cls, notes, values, *args):
         # Avoid changing write meta data if only unread is set
-        if args or values.keys() != ['unread']:
+        if args or set(values.keys()) != {'unread'}:
             super(Note, cls).write(notes, values, *args)
         else:
             # Check access write and clean cache
-            ModelStorage.write(notes, values)
+            # Use __func__ to directly access ModelStorage's write method and
+            # pass it the right class
+            ModelStorage.write.__func__(cls, notes, values)
             cls.set_unread(notes, 'unread', values['unread'])
 
 
