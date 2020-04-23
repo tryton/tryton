@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
-from decimal import Decimal
 from itertools import groupby
 
 from sql import operators, Literal, Null
@@ -20,7 +19,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from .exceptions import InvoiceError
 
 
@@ -636,8 +635,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             self.unit_price = Product.get_sale_price(
                 [product], self.quantity or 0)[product.id]
             if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+                self.unit_price = round_price(self.unit_price)
 
         self.consumption_recurrence = self.service.consumption_recurrence
         self.consumption_delay = self.service.consumption_delay
