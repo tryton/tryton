@@ -8,7 +8,7 @@ from trytond.pyson import Eval, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 
 class ShipmentIn(metaclass=PoolMeta):
@@ -91,8 +91,8 @@ class ShipmentIn(metaclass=PoolMeta):
                 move_cost = cost / Decimal(len(moves))
             else:
                 move_cost = cost * quantity * unit_prices[move.id] / sum_value
-            unit_shipment_cost = (move_cost / quantity).quantize(exp,
-                rounding=ROUND_DOWN)
+            unit_shipment_cost = round_price(
+                move_cost / quantity, rounding=ROUND_DOWN)
             costs.append({
                     'unit_shipment_cost': unit_shipment_cost,
                     'difference': move_cost - (unit_shipment_cost * quantity),
@@ -114,8 +114,8 @@ class ShipmentIn(metaclass=PoolMeta):
             unit_shipment_cost = Currency.compute(
                 self.company.currency, cost['unit_shipment_cost'],
                 move.currency, round=False)
-            unit_shipment_cost = unit_shipment_cost.quantize(
-                exp, rounding=ROUND_HALF_EVEN)
+            unit_shipment_cost = round_price(
+                unit_shipment_cost, rounding=ROUND_HALF_EVEN)
             move.unit_price += unit_shipment_cost
             move.unit_shipment_cost = unit_shipment_cost
         Move.save(moves)
