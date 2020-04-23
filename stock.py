@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 
 class Move(metaclass=PoolMeta):
@@ -80,10 +78,11 @@ class Move(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         if (self.unit_price and self.uom and self.secondary_unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
-            return Uom.compute_price(
+            unit_price = Uom.compute_price(
                 self.uom, self.unit_price, self.secondary_unit,
                 factor=self.secondary_uom_factor, rate=self.secondary_uom_rate
-                ).quantize(Decimal(1) / 10 ** price_digits[1])
+                )
+            return round_price(unit_price)
         else:
             return None
 
@@ -95,8 +94,8 @@ class Move(metaclass=PoolMeta):
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             self.unit_price = Uom.compute_price(
                 self.secondary_unit, self.secondary_unit_price, self.uom,
-                factor=self.secondary_uom_rate, rate=self.secondary_uom_factor
-                ).quantize(Decimal(1) / 10 ** price_digits[1])
+                factor=self.secondary_uom_rate, rate=self.secondary_uom_factor)
+            self.unit_price = round_price(self.unit_price)
 
     @fields.depends(methods=[
             'on_change_secondary_quantity', 'on_change_secondary_unit_price'])
