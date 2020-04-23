@@ -13,7 +13,7 @@ from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.tools import decistmt
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from .exceptions import FormulaError
 
 
@@ -248,8 +248,7 @@ class Promotion(
         # Apply promotion only if all unit prices decrease
         if all(l.unit_price >= p for l, p in new_prices.items()):
             for line, unit_price in new_prices.items():
-                line.unit_price = unit_price.quantize(
-                    Decimal(1) / 10 ** line.__class__.unit_price.digits[1])
+                line.unit_price = round_price(unit_price)
                 line.promotion = self
             sale.lines = sale.lines  # Trigger the change
 
