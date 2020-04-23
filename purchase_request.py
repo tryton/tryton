@@ -15,6 +15,7 @@ from trytond.pool import Pool
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
+from trytond.modules.product import round_price
 
 STATES = {
     'readonly': Eval('state') != 'draft',
@@ -479,8 +480,7 @@ class CreatePurchase(Wizard):
         Line = pool.get('purchase.line')
 
         line = Line()
-        line.unit_price = Decimal(0).quantize(
-            Decimal(1) / 10 ** Line.unit_price.digits[1])
+        line.unit_price = round_price(Decimal(0))
         for f, v in key:
             setattr(line, f, v)
         line.quantity = sum(r.quantity for r in requests)
