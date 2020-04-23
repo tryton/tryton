@@ -1,12 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
 from functools import wraps
 
 from trytond.model import ModelView, Workflow, fields
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
+
+from trytond.modules.product import round_price
 
 
 class Location(metaclass=PoolMeta):
@@ -211,8 +212,7 @@ class Move(metaclass=PoolMeta):
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_purchase_price(
                 [line.product], line.quantity)[line.product.id]
-            line.unit_price = line.unit_price.quantize(
-                Decimal(1) / 10 ** line.__class__.unit_price.digits[1])
+            line.unit_price = round_price(line.unit_price)
         return line
 
     def _get_customer_invoice_line_consignment(self):
@@ -256,8 +256,7 @@ class Move(metaclass=PoolMeta):
                 taxes=[t.id for t in line.taxes]):
             line.unit_price = Product.get_sale_price(
                 [line.product], line.quantity)[line.product.id]
-            line.unit_price = line.unit_price.quantize(
-                Decimal(1) / 10 ** line.__class__.unit_price.digits[1])
+            line.unit_price = round_price(line.unit_price)
         return line
 
     @classmethod
