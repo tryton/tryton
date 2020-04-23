@@ -1,3 +1,4 @@
+* Add round_price
 * Make product code unique
 * Add code to template as variant prefix code
 * Hide product fields inherited from template when empty

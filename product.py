@@ -26,7 +26,7 @@ from trytond.modules.company.model import (
 from .exceptions import InvalidIdentifierCode
 
 
-__all__ = ['price_digits', 'TemplateFunction']
+__all__ = ['price_digits', 'round_price', 'TemplateFunction']
 logger = logging.getLogger(__name__)
 
 TYPES = [
@@ -40,6 +40,12 @@ COST_PRICE_METHODS = [
     ]
 
 price_digits = (16, config.getint('product', 'price_decimal', default=4))
+
+
+def round_price(value, rounding=None):
+    "Round price using the price digits"
+    return value.quantize(
+        Decimal(1) / 10 ** price_digits[1], rounding=rounding)
 
 
 class Template(

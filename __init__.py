@@ -6,10 +6,10 @@ from . import uom
 from . import category
 from . import product
 from . import configuration
-from .product import price_digits
+from .product import price_digits, round_price
 from .uom import uom_conversion_digits
 
-__all__ = [price_digits, uom_conversion_digits]
+__all__ = [price_digits, round_price, uom_conversion_digits]
 
 
 def register():
