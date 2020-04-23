@@ -17,6 +17,7 @@ from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, cursor_dict
 
 from trytond.modules.sale.stock import process_sale
+from trytond.modules.product import round_price
 from trytond.modules.purchase.stock import process_purchase
 
 
@@ -402,7 +403,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
 
         to_save = []
-        cost_exp = Decimal(str(10.0 ** -Move.cost_price.digits[1]))
         for shipment in shipments:
             product_qty = defaultdict(int)
             product_cost = defaultdict(int)
@@ -454,7 +454,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             for product, cost in product_cost.items():
                 qty = Decimal(str(s_product_qty[product]))
                 if qty:
-                    product_cost[product] = (cost / qty).quantize(cost_exp)
+                    product_cost[product] = round_price(cost / qty)
             for c_move in list(shipment.customer_moves) + to_save:
                 if c_move.id is not None and c_move.state == 'cancel':
                     continue
