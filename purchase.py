@@ -26,7 +26,7 @@ from trytond.modules.account.tax import TaxableMixin
 from trytond.modules.account_product.exceptions import AccountError
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 from .exceptions import PurchaseQuotationError, PartyLocationError
 
@@ -1301,8 +1301,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
             if unit_price:
-                unit_price = unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+                unit_price = round_price(unit_price)
             return unit_price
 
     @fields.depends('product', 'product_supplier',
@@ -1333,8 +1332,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             self.unit_price = Product.get_purchase_price([self.product],
                 abs(self.quantity or 0))[self.product.id]
             if self.unit_price:
-                self.unit_price = self.unit_price.quantize(
-                    Decimal(1) / 10 ** self.__class__.unit_price.digits[1])
+                self.unit_price = round_price(self.unit_price)
 
     @fields.depends(methods=['on_change_quantity'])
     def on_change_unit(self):
