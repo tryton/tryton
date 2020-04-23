@@ -10,6 +10,7 @@ from trytond.transaction import Transaction
 from trytond import backend
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
+from trytond.modules.product import round_price
 
 
 class Configuration(metaclass=PoolMeta):
@@ -240,8 +241,8 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         for move in moves:
             quantity = Decimal(str(move.quantity))
             move_cost = cost * factors[move.id]
-            unit_landed_cost = (move_cost / quantity).quantize(exp,
-                rounding=ROUND_DOWN)
+            unit_landed_cost = round_price(
+                move_cost / quantity, rounding=ROUND_DOWN)
             costs.append({
                     'unit_landed_cost': unit_landed_cost,
                     'difference': move_cost - (unit_landed_cost * quantity),
@@ -263,8 +264,8 @@ class LandedCost(Workflow, ModelSQL, ModelView):
             unit_landed_cost = Currency.compute(
                 currency, cost['unit_landed_cost'],
                 move.currency, round=False)
-            unit_landed_cost = unit_landed_cost.quantize(
-                exp, rounding=ROUND_HALF_EVEN)
+            unit_landed_cost = round_price(
+                unit_landed_cost, rounding=ROUND_HALF_EVEN)
             if move.unit_landed_cost is None:
                 move.unit_landed_cost = 0
             move.unit_price += unit_landed_cost
