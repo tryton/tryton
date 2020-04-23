@@ -12,7 +12,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import reduce_ids, grouped_slice
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 
 class Work(metaclass=PoolMeta):
@@ -204,9 +204,7 @@ class Work(metaclass=PoolMeta):
                     self.list_price = Currency.compute(user.company.currency,
                         self.list_price, self.company.currency, round=False)
 
-        digits = self.__class__.list_price.digits
-        self.list_price = self.list_price.quantize(
-            Decimal(str(10.0 ** -digits[1])))
+        self.list_price = round_price(self.list_price)
 
     @property
     def price_list_hour(self):
