@@ -21,7 +21,7 @@ class Role(ModelSQL, ModelView):
         super().write(*args)
 
         users = User.search([
-                ('roles', 'in', [r.id for r in roles]),
+                ('roles.role', 'in', [r.id for r in roles]),
                 ])
         User.sync_roles(users)
 
