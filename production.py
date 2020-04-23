@@ -1,13 +1,14 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import hashlib
-from decimal import Decimal
 from itertools import groupby
 
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
+
+from trytond.modules.product import round_price
 
 from .exceptions import PurchaseWarning
 
@@ -123,8 +124,7 @@ class Production(metaclass=PoolMeta):
                 cost += Currency.compute(
                     line.purchase.currency, line.amount,
                     self.company.currency, round=False)
-        digits = self.__class__.cost.digits
-        return cost.quantize(Decimal(str(10 ** -digits[1])))
+        return round_price(cost)
 
     @classmethod
     @ModelView.button
