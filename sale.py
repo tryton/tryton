@@ -1,12 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, If
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 
 class Line(metaclass=PoolMeta):
@@ -102,10 +100,10 @@ class Line(metaclass=PoolMeta):
         Uom = pool.get('product.uom')
         if (self.unit_price is not None and self.unit and self.secondary_unit
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
-            return Uom.compute_price(
+            unit_price = Uom.compute_price(
                 self.unit, self.unit_price, self.secondary_unit,
-                factor=self.secondary_uom_factor, rate=self.secondary_uom_rate
-                ).quantize(Decimal(1) / 10 ** price_digits[1])
+                factor=self.secondary_uom_factor, rate=self.secondary_uom_rate)
+            return round_price(unit_price)
         else:
             return None
 
@@ -120,8 +118,8 @@ class Line(metaclass=PoolMeta):
                 and (self.secondary_uom_factor or self.secondary_uom_rate)):
             self.unit_price = Uom.compute_price(
                 self.secondary_unit, self.secondary_unit_price, self.unit,
-                factor=self.secondary_uom_rate, rate=self.secondary_uom_factor
-                ).quantize(Decimal(1) / 10 ** price_digits[1])
+                factor=self.secondary_uom_rate, rate=self.secondary_uom_factor)
+            self.unit_price = round_price(self.unit_price)
             self.amount = self.on_change_with_amount()
 
     @fields.depends(methods=[
