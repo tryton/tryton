@@ -20,7 +20,7 @@ from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 from .exceptions import FormulaError
 
@@ -122,14 +122,12 @@ class Agent(ModelSQL, ModelView):
                 group_by=commission.agent)
             cursor.execute(*query)
             amounts.update(dict(cursor.fetchall()))
-        digits = cls.pending_amount.digits
-        exp = Decimal(str(10.0 ** -digits[1]))
         for agent_id, amount in amounts.items():
             if amount:
                 # SQLite uses float for SUM
                 if not isinstance(amount, Decimal):
                     amount = Decimal(str(amount))
-                amounts[agent_id] = amount.quantize(exp)
+                amounts[agent_id] = round_price(amount)
         return amounts
 
     @property

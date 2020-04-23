@@ -1,13 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-
-from decimal import Decimal
-
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice
+
+from trytond.modules.product import round_price
 
 
 class Invoice(metaclass=PoolMeta):
@@ -156,8 +155,7 @@ class InvoiceLine(metaclass=PoolMeta):
                     self.amount, agent.currency, round=False)
             amount = self._get_commission_amount(amount, plan)
             if amount:
-                digits = Commission.amount.digits
-                amount = amount.quantize(Decimal(str(10.0 ** -digits[1])))
+                amount = round_price(amount)
             if not amount:
                 continue
 
