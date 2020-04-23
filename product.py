@@ -23,6 +23,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
+from trytond.modules.product import round_price
+
 from .exceptions import ProductCostPriceError
 from .move import StockMixin
 
@@ -226,7 +228,6 @@ class Product(StockMixin, object, metaclass=PoolMeta):
     def recompute_cost_price(cls, products, start=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        digits = cls.cost_price.digits
         costs = defaultdict(list)
         for product in products:
             if product.type == 'service':
@@ -234,7 +235,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             cost = getattr(
                 product, 'recompute_cost_price_%s' %
                 product.cost_price_method)(start)
-            cost = cost.quantize(Decimal(str(10.0 ** -digits[1])))
+            cost = round_price(cost)
             costs[cost].append(product)
 
         updated = []
@@ -298,7 +299,6 @@ class Product(StockMixin, object, metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
         Revision = pool.get('product.cost_price.revision')
-        digits = self.__class__.cost_price.digits
 
         domain = [
             ('product', '=', self.id),
@@ -371,8 +371,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
                         ) / (quantity + qty)
                 elif qty > 0:
                     cost_price = unit_price
-                current_cost_price = cost_price.quantize(
-                    Decimal(str(10.0 ** -digits[1])))
+                current_cost_price = round_price(cost_price)
             quantity += qty
 
         Move.write([

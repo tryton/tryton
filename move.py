@@ -19,7 +19,7 @@ from trytond.tools import reduce_ids
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 from .exceptions import MoveOriginWarning
 
@@ -477,7 +477,6 @@ class Move(Workflow, ModelSQL, ModelView):
         """
         pool = Pool()
         Uom = pool.get('product.uom')
-        Product = pool.get('product.product')
         Currency = pool.get('currency.currency')
 
         if direction == 'in':
@@ -505,10 +504,7 @@ class Move(Workflow, ModelSQL, ModelView):
             new_cost_price = unit_price
         elif direction == 'out':
             new_cost_price = cost_price
-
-        digits = Product.cost_price.digits
-        return new_cost_price.quantize(
-            Decimal(str(10.0 ** -digits[1])))
+        return round_price(new_cost_price)
 
     @staticmethod
     def _get_internal_quantity(quantity, uom, product):
