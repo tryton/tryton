@@ -12,7 +12,7 @@ from trytond.pool import Pool
 from trytond.transaction import Transaction
 
 from trytond.modules.company.model import employee_field, set_employee
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']
@@ -426,9 +426,7 @@ class Production(Workflow, ModelSQL, ModelView):
             else:
                 cost_price = input_.product.cost_price
             cost += (Decimal(str(input_.internal_quantity)) * cost_price)
-
-        digits = self.__class__.cost.digits
-        return cost.quantize(Decimal(str(10 ** -digits[1])))
+        return round_price(cost)
 
     @fields.depends('inputs')
     def on_change_with_cost(self):
@@ -522,7 +520,6 @@ class Production(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         Move = pool.get('stock.move')
 
-        digits = Decimal(str(10 ** -Move.unit_price.digits[1]))
         moves = []
         for production in productions:
             sum_ = Decimal(0)
@@ -554,8 +551,7 @@ class Production(Workflow, ModelSQL, ModelView):
                 else:
                     ratio = Decimal(1) / len(production.outputs)
                 quantity = Decimal(str(output.quantity))
-                unit_price = (
-                    production.cost * ratio / quantity).quantize(digits)
+                unit_price = round_price(production.cost * ratio / quantity)
                 if output.unit_price != unit_price:
                     output.unit_price = unit_price
                     moves.append(output)
