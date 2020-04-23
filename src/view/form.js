@@ -537,7 +537,7 @@ function eval_pyson(value){
             var has_expand = false;
             var i, j;
 
-            var parent_max_width = 1;
+            var parent_max_width = 0.9;
             this.el.parents('td').each(function() {
                 var width = this.style.width;
                 if (width.endsWith('%')) {
