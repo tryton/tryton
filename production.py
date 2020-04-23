@@ -11,6 +11,8 @@ from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
+from trytond.modules.product import round_price
+
 
 class Production(metaclass=PoolMeta):
     __name__ = 'production'
@@ -60,8 +62,7 @@ class Production(metaclass=PoolMeta):
                 cycle_cost = Decimal(cycle_cost)
             cost += cycle_cost
 
-        digits = self.__class__.cost.digits
-        return cost.quantize(Decimal(str(10 ** -digits[1])))
+        return round_price(cost)
 
     @classmethod
     @ModelView.button

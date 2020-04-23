@@ -14,7 +14,7 @@ from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from .exceptions import PickerError
 
 
@@ -314,7 +314,6 @@ class WorkCycle(Workflow, ModelSQL, ModelView):
             if center.cost_method == 'cycle':
                 self.cost = center.cost_price
             elif center.cost_method == 'hour':
-                digits = self.__class__.cost.digits
                 hours = self.duration.total_seconds() / (60 * 60)
                 self.cost = center.cost_price * Decimal(str(hours))
-                self.cost = self.cost.quantize(Decimal(str(10 ** -digits[1])))
+                self.cost = round_price(self.cost)
