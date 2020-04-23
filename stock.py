@@ -511,26 +511,29 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             requests += PurchaseRequest.search([
                     ('purchase_line', 'in', list(sub_lines)),
                     ])
-        pline2request = {r.purchase_line: r for r in requests}
+        pline2requests = defaultdict(list)
+        for request in requests:
+            pline2requests[request.purchase_line].append(request)
         sale_lines = SaleLine.search([
                 ('purchase_request', 'in', [r.id for r in requests]),
                 ])
-        request2sline = {sl.purchase_request: sl for sl in sale_lines}
+        request2slines = defaultdict(list)
+        for sale_line in sale_lines:
+            request2slines[sale_line.purchase_request].append(sale_line)
 
         to_save = []
         for shipment in shipments:
             for move in shipment.supplier_moves:
                 if not move.origin:
                     continue
-                sale_line = request2sline.get(pline2request.get(move.origin))
-                if not sale_line:
-                    continue
-                for move in sale_line.moves:
-                    if (move.state not in ('cancel', 'done')
-                            and not move.shipment
-                            and move.from_location.type == 'drop'):
-                        move.shipment = shipment
-                        to_save.append(move)
+                for request in pline2requests[move.origin]:
+                    for sale_line in request2slines[request]:
+                        for move in sale_line.moves:
+                            if (move.state not in ('cancel', 'done')
+                                    and not move.shipment
+                                    and move.from_location.type == 'drop'):
+                                move.shipment = shipment
+                                to_save.append(move)
         Move.save(to_save)
         cls._synchronize_moves(shipments)
 
