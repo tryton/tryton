@@ -7,6 +7,8 @@ from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
+from trytond.modules.product import round_price
+
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
@@ -94,7 +96,6 @@ class Product(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
         Revision = pool.get('product.cost_price.revision')
-        digits = self.__class__.cost_price.digits
 
         domain = [
             ('product', '=', self.id),
@@ -159,8 +160,7 @@ class Product(metaclass=PoolMeta):
                     move.uom, unit_price, move.product.default_uom)
                 cost_price += unit_price * Decimal(str(move_qty))
             if consumed_qty:
-                return (cost_price / Decimal(str(consumed_qty))).quantize(
-                    Decimal(str(10.0 ** -digits[1])))
+                return round_price(cost_price / Decimal(str(consumed_qty)))
 
         current_moves = []
         current_out_qty = 0
@@ -192,8 +192,7 @@ class Product(metaclass=PoolMeta):
                             / quantity)
                     else:
                         cost_price = Decimal(0)
-                    current_cost_price = cost_price.quantize(
-                        Decimal(str(10.0 ** -digits[1])))
+                    current_cost_price = round_price(cost_price)
                 current_moves.clear()
                 current_out_qty = 0
             current_moves.append(move)
@@ -217,8 +216,7 @@ class Product(metaclass=PoolMeta):
                         ) / (quantity + qty)
                 elif qty > 0:
                     cost_price = unit_price
-                current_cost_price = cost_price.quantize(
-                    Decimal(str(10.0 ** -digits[1])))
+                current_cost_price = round_price(cost_price)
             else:
                 current_out_qty += -qty
             quantity += qty

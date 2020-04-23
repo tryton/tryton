@@ -10,6 +10,8 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 
+from trytond.modules.product import round_price
+
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
@@ -110,9 +112,7 @@ class Move(metaclass=PoolMeta):
         self.unit_price = unit_price
 
         if cost_price:
-            digits = self.__class__.cost_price.digits
-            cost_price = cost_price.quantize(
-                Decimal(str(10.0 ** -digits[1])))
+            cost_price = round_price(cost_price)
         else:
             cost_price = average_cost_price
         return cost_price, average_cost_price
