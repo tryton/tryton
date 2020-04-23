@@ -6884,7 +6884,7 @@
             <field name="parent" ref="635"/>
         </record>
         <record model="account.account.template" id="63511">
-            <field name="name">Taxe professionnelle</field>
+            <field name="name">Contribution économique territoriale</field>
             <field name="code">63511</field>
             <field name="type" ref="impots_taxes"/>
             <field name="parent" ref="6351"/>
