@@ -1,14 +1,12 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from trytond.i18n import gettext
 from trytond.model import fields
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from .exceptions import InvoiceShipmentCostError
 
 
@@ -56,8 +54,7 @@ class ShipmentOut(metaclass=PoolMeta):
             return
         with Transaction().set_context(self._get_carrier_context()):
             cost, currency_id = self.carrier.get_sale_price()
-        self.cost = cost.quantize(
-            Decimal(1) / 10 ** self.__class__.cost.digits[1])
+        self.cost = round_price(cost)
         self.cost_currency = currency_id
 
     def _get_cost_tax_rule_pattern(self):
@@ -91,8 +88,7 @@ class ShipmentOut(metaclass=PoolMeta):
             with Transaction().set_context(date=invoice.currency_date):
                 cost = Currency.compute(self.cost_currency, cost,
                     invoice.currency, round=False)
-        invoice_line.unit_price = cost.quantize(
-            Decimal(1) / 10 ** InvoiceLine.unit_price.digits[1])
+        invoice_line.unit_price = round_price(cost)
 
         taxes = []
         pattern = self._get_cost_tax_rule_pattern()

@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
@@ -9,7 +7,7 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval, If
 from trytond.pool import Pool, PoolMeta
 
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 from trytond.modules.sale.exceptions import SaleConfirmError
 
 sale_shipment_cost_method = fields.Selection(
@@ -242,8 +240,7 @@ class Sale(metaclass=PoolMeta):
             if last_line.sequence is not None:
                 sequence = last_line.sequence + 1
 
-        shipment_cost = cost.quantize(
-            Decimal(1) / 10 ** SaleLine.shipment_cost.digits[1])
+        shipment_cost = round_price(cost)
         cost_line = SaleLine(
             sale=self,
             sequence=sequence,
@@ -254,8 +251,7 @@ class Sale(metaclass=PoolMeta):
             shipment_cost=shipment_cost,
             )
         cost_line.on_change_product()
-        cost_line.unit_price = cost.quantize(
-            Decimal(1) / 10 ** SaleLine.unit_price.digits[1])
+        cost_line.unit_price = round_price(cost)
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 
@@ -269,8 +265,7 @@ class Sale(metaclass=PoolMeta):
                 with Transaction().set_context(
                         shipment.get_carrier_context()):
                     cost, currency_id = self.carrier.get_sale_price()
-                cost = cost.quantize(
-                    Decimal(1) / 10 ** Shipment.cost.digits[1])
+                cost = round_price(cost)
                 Shipment.write([shipment], {
                         'carrier': self.carrier.id,
                         'cost': cost,
