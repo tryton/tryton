@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from decimal import Decimal
-
 from sql import Column, Literal, Window
 from sql.aggregate import Max
 from sql.conditionals import Coalesce
@@ -10,6 +8,8 @@ from sql.functions import CurrentTimestamp, LastValue
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+
+from trytond.modules.product import round_price
 
 
 def convert_from(table, tables):
@@ -48,8 +48,7 @@ class Product(metaclass=PoolMeta):
                 ], limit=1, order=[('date', 'DESC')])
         if records:
             record, = records
-            return record.cost_price.quantize(
-                Decimal(str(10. ** -self.__class__.cost_price.digits[1])))
+            return round_price(record.cost_price)
 
 
 class CostPrice(metaclass=PoolMeta):
