@@ -477,6 +477,7 @@ class Invoice(metaclass=PoolMeta):
                     if line.reconciliation:
                         continue
                     if (name == 'amount_to_pay_today'
+                            and line.maturity_date
                             and line.maturity_date > today):
                         continue
                     payment_amount = Decimal(0)
