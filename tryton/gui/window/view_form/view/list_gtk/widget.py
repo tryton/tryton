@@ -24,7 +24,8 @@ from tryton.common.cellrendererclickablepixbuf import \
     CellRendererClickablePixbuf
 from tryton.common import data2pixbuf
 from tryton.common.completion import get_completion, update_completion
-from tryton.common.selection import SelectionMixin, PopdownMixin
+from tryton.common.selection import (
+    SelectionMixin, PopdownMixin, selection_shortcuts)
 from tryton.common.datetime_ import CellRendererDate, CellRendererTime
 from tryton.common.domain_parser import quote
 from tryton.config import CONFIG
@@ -971,6 +972,8 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
         record, field = self._get_record_field_from_path(path)
+
+        selection_shortcuts(editable)
 
         def set_value(*a):
             return self.set_value(editable, record, field)
