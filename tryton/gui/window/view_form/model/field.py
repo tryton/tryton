@@ -864,7 +864,7 @@ class ReferenceField(Field):
                         pass
                 if '%s,%s' % (ref_model, ref_id) == self.get(record):
                     rec_name = record.value.get(
-                        self.name + '.', {}).get('rec_name', '')
+                        self.name + '.', {}).get('rec_name') or ''
                 else:
                     rec_name = ''
             record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
@@ -899,7 +899,7 @@ class ReferenceField(Field):
         elif ref_model:
             rec_name = ''
         else:
-            rec_name = str(ref_id)
+            rec_name = str(ref_id) if ref_id is not None else ''
         record.value[self.name] = ref_model, ref_id
         record.value.setdefault(self.name + '.', {})['rec_name'] = rec_name
 
