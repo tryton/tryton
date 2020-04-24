@@ -310,9 +310,11 @@ class EditableTreeView(TreeView):
             text = entry.props.value
         elif isinstance(entry, Gtk.ComboBox):
             model = entry.get_model()
-            text = model.get_value(
-                entry.get_active_iter(),
-                entry.props.entry_text_column)
+            iter_ = entry.get_active_iter()
+            if iter_:
+                text = model.get_value(iter_, entry.props.entry_text_column)
+            else:
+                text = ''
         else:
             text = entry.get_text()
         self.on_quit_cell(record, column, renderer, text)
