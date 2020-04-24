@@ -357,8 +357,9 @@ class AmendmentLine(ModelSQL, ModelView):
             self.quantity = self.line.quantity
             self.unit = self.line.unit
             self.unit_price = self.line.unit_price
+            self.description = self.line.description
         else:
-            self.product = self.product_supplier = None
+            self.product = self.product_supplier = self.description = None
             self.quantity = self.unit = self.unit_price = None
 
     @fields.depends('party')
