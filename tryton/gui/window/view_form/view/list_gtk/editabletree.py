@@ -153,7 +153,8 @@ class EditableTreeView(TreeView):
         return True
 
     def on_keypressed(self, entry, event, renderer):
-        path, column = self.get_cursor()
+        path = self.get_cursor()[0]
+        column = self.get_column_from_renderer(renderer)
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
         self.display_counter += 1  # Force a display
@@ -297,9 +298,10 @@ class EditableTreeView(TreeView):
         return new_path
 
     def on_editing_done(self, entry, renderer):
-        path, column = self.get_cursor()
+        path = self.get_cursor()[0]
         if not path:
             return True
+        column = self.get_column_from_renderer(renderer)
         model = self.get_model()
         record = model.get_value(model.get_iter(path), 0)
         if isinstance(entry, (Date, Time)):
@@ -315,3 +317,9 @@ class EditableTreeView(TreeView):
         else:
             text = entry.get_text()
         self.on_quit_cell(record, column, renderer, text)
+
+    def get_column_from_renderer(self, renderer):
+        for column in self.get_columns():
+            for cell in column.get_cells():
+                if cell == renderer:
+                    return column
