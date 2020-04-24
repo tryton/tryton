@@ -375,8 +375,10 @@ class AmendmentLine(ModelSQL, ModelView):
             self.quantity = self.line.quantity
             self.unit = self.line.unit
             self.unit_price = self.line.unit_price
+            self.description = self.line.description
         else:
             self.product = self.quantity = self.unit = self.unit_price = None
+            self.description = None
 
     @fields.depends('party', 'shipment_party')
     def on_change_party(self):
