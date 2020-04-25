@@ -1679,7 +1679,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'invisible': Eval('type') != 'line',
             'readonly': _states['readonly'],
             },
-        depends=['type', 'product_uom_category'] + _depends)
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['type', 'product_uom_category', 'company'] + _depends)
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
