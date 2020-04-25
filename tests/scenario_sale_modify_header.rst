@@ -31,11 +31,14 @@ Create tax and tax rule::
 
     >>> tax = create_tax(Decimal('.10'))
     >>> tax.save()
+    >>> other_tax = create_tax(Decimal('.05'))
+    >>> other_tax.save()
 
     >>> TaxRule = Model.get('account.tax.rule')
     >>> foreign = TaxRule(name='Foreign Customers', company=company)
-    >>> no_tax = foreign.lines.new()
-    >>> no_tax.origin_tax = tax
+    >>> foreign_tax = foreign.lines.new()
+    >>> foreign_tax.origin_tax = tax
+    >>> foreign_tax.tax = other_tax
     >>> foreign.save()
 
 Create account categories::
@@ -92,4 +95,4 @@ Change the party::
     >>> sale.party.name
     'Another Customer'
     >>> sale.untaxed_amount, sale.tax_amount, sale.total_amount
-    (Decimal('30.00'), Decimal('0'), Decimal('30.00'))
+    (Decimal('30.00'), Decimal('1.50'), Decimal('31.50'))

@@ -1069,15 +1069,14 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'stock_skip_warehouse': True,
             # From _get_context_sale_price
-            'company': Eval(
-                '_parent_sale', {}).get('company', None),
+            'company': Eval('company', None),
             'currency': Eval('_parent_sale', {}).get('currency'),
             'customer': Eval('_parent_sale', {}).get('party'),
             'sale_date': Eval('_parent_sale', {}).get('sale_date'),
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
-            }, depends=['type', 'sale_state'])
+            }, depends=['type', 'sale_state', 'company'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
@@ -1136,6 +1135,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     sale_state = fields.Function(
         fields.Selection('get_sale_states', "Sale State"),
         'on_change_with_sale_state')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     @classmethod
     def __register__(cls, module_name):
@@ -1199,7 +1201,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends(
         'sale', '_parent_sale.currency', '_parent_sale.party',
-        '_parent_sale.sale_date', '_parent_sale.company',
+        '_parent_sale.sale_date', 'company',
         'unit', 'product', 'taxes')
     def _get_context_sale_price(self):
         context = {}
@@ -1209,8 +1211,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if self.sale.party:
                 context['customer'] = self.sale.party.id
             context['sale_date'] = self.sale.sale_date
-            if self.sale.company:
-                context['company'] = self.sale.company.id
+        if self.company:
+            context['company'] = self.company.id
         if self.unit:
             context['uom'] = self.unit.id
         elif self.product:
@@ -1369,6 +1371,11 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_sale_state(self, name=None):
         if self.sale:
             return self.sale.state
+
+    @fields.depends('sale', '_parent_sale.company')
+    def on_change_with_company(self, name=None):
+        if self.sale and self.sale.company:
+            return self.sale.company.id
 
     def get_invoice_line(self):
         'Return a list of invoice lines for sale line'
