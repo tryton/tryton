@@ -13,6 +13,7 @@ from trytond.transaction import Transaction
 from trytond.error import WarningErrorMixin
 from trytond.url import URLMixin
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
+from trytond.model import ModelSQL
 from trytond.model.fields import states_validate
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
@@ -239,7 +240,10 @@ class Wizard(WarningErrorMixin, URLMixin, PoolBase):
                     raise UserError('Calling wizard %s is not allowed!'
                         % cls.__name__)
             elif model and model != 'ir.ui.menu':
-                ModelAccess.check(model, 'write')
+                Model = pool.get(model)
+                if (not callable(getattr(Model, 'table_query', None))
+                        or Model.write.__func__ != ModelSQL.write.__func__):
+                    ModelAccess.check(model, 'write')
 
     @classmethod
     def create(cls):
