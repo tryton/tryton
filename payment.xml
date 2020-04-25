@@ -3,6 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="payment_icon">
+            <field name="name">tryton-payment</field>
+            <field name="path">icons/tryton-payment.svg</field>
+        </record>
 
         <record model="res.group" id="group_payment">
             <field name="name">Payment</field>
