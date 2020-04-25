@@ -8,10 +8,13 @@ from trytond.config import config
 from trytond.exceptions import LoginException
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
+from trytond.pyson import Eval
 from trytond.tools import resolve
 
 __all__ = ['User', 'SMSCode']
 logger = logging.getLogger(__name__)
+_has_password_sms = 'password_sms' in config.get(
+    'session', 'authentications', default='password').split(',')
 
 
 def send_sms(text, to):
@@ -33,6 +36,11 @@ class User(metaclass=PoolMeta):
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._preferences_fields.append('mobile')
+        cls._buttons['reset_password']['invisible'] &= (
+            ~Eval('email', True) | (not _has_password_sms))
+        cls.password.states['invisible'] &= not _has_password_sms
+        cls.password_reset.states['invisible'] &= not _has_password_sms
+        cls.password_reset_expire.states['invisible'] &= not _has_password_sms
 
     @classmethod
     def _login_sms(cls, login, parameters):
