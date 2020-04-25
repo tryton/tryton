@@ -1038,15 +1038,15 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                 'purchase_date'),
             'stock_skip_warehouse': True,
             # From _get_context_purchase_price
-            'company': Eval(
-                '_parent_purchase', {}).get('company', None),
+            'company': Eval('company', None),
             'currency': Eval('_parent_purchase', {}).get('currency'),
             'supplier': Eval('_parent_purchase', {}).get('party'),
             'purchase_date': Eval('_parent_purchase', {}).get('purchase_date'),
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
-            }, depends=['type', 'purchase_state', 'product_supplier'])
+            },
+        depends=['type', 'purchase_state', 'product_supplier', 'company'])
     product_supplier = fields.Many2One(
         'purchase.product_supplier', "Supplier's Product",
         ondelete='RESTRICT',
@@ -1144,6 +1144,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     purchase_state = fields.Function(
         fields.Selection('get_purchase_states', 'Purchase State'),
         'on_change_with_purchase_state')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     @classmethod
     def __register__(cls, module_name):
@@ -1207,7 +1210,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @fields.depends(
         'purchase', '_parent_purchase.currency', '_parent_purchase.party',
-        '_parent_purchase.purchase_date', '_parent_purchase.company',
+        '_parent_purchase.purchase_date', 'company',
         'unit', 'product', 'product_supplier', 'taxes')
     def _get_context_purchase_price(self):
         context = {}
@@ -1217,8 +1220,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             if self.purchase.party:
                 context['supplier'] = self.purchase.party.id
             context['purchase_date'] = self.purchase.purchase_date
-            if self.purchase.company:
-                context['company'] = self.purchase.company.id
+            if self.company:
+                context['company'] = self.company.id
         if self.unit:
             context['uom'] = self.unit.id
         elif self.product:
@@ -1228,13 +1231,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         context['taxes'] = [t.id for t in self.taxes or []]
         return context
 
-    @fields.depends('purchase',
-        '_parent_purchase.party', '_parent_purchase.company')
+    @fields.depends('purchase', 'company', '_parent_purchase.party',)
     def _get_product_supplier_pattern(self):
         return {
             'party': self.purchase.party.id if self.purchase.party else -1,
-            'company': (
-                self.purchase.company.id if self.purchase.company else -1),
+            'company': (self.company.id if self.company else -1),
             }
 
     @fields.depends('product', 'unit', 'purchase',
@@ -1423,6 +1424,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_purchase_state(self, name=None):
         if self.purchase:
             return self.purchase.state
+
+    @fields.depends('purchase', '_parent_purchase.company')
+    def on_change_with_company(self, name=None):
+        if self.purchase and self.purchase.company:
+            return self.purchase.company.id
 
     def get_invoice_line(self):
         'Return a list of invoice line for purchase line'
