@@ -53,7 +53,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         states={
             'readonly': (Eval('lines', [0]) | (Eval('state') != 'draft')),
             },
-        depends=['state'],
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['state', 'company'],
         domain=[
             ('type', '=', 'assets'),
             ('depreciable', '=', True),
