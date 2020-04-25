@@ -432,13 +432,19 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     subscription_end_date = fields.Function(
         fields.Date("Subscription End Date"),
         'on_change_with_subscription_end_date')
+    company = fields.Function(
+        fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
 
     service = fields.Many2One(
         'sale.subscription.service', "Service", required=True,
         states={
             'readonly': Eval('subscription_state') != 'draft',
             },
-        depends=['subscription_state'])
+        context={
+            'company': Eval('company', None),
+            },
+        depends=['subscription_state', 'company'])
     description = fields.Text("Description",
         states={
             'readonly': Eval('subscription_state') != 'draft',
@@ -582,6 +588,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.subscription:
             return self.subscription.end_date
 
+    @fields.depends('subscription', '_parent_subscription.company')
+    def on_change_with_company(self, name=None):
+        if self.subscription and self.subscription.company:
+            return self.subscription.company.id
+
     @fields.depends('subscription', 'start_date', 'end_date',
         '_parent_subscription.start_date', '_parent_subscription.end_date')
     def on_change_subscription(self):
@@ -641,7 +652,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         self.consumption_delay = self.service.consumption_delay
 
     @fields.depends('subscription', '_parent_subscription.currency',
-        '_parent_subscription.party', 'start_date', 'unit', 'service')
+        '_parent_subscription.party', 'start_date', 'unit', 'service',
+        'company')
     def _get_context_sale_price(self):
         context = {}
         if self.subscription:
@@ -655,6 +667,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             context['uom'] = self.unit.id
         elif self.service:
             context['uom'] = self.service.sale_uom.id
+        if self.company:
+            context['company'] = self.company.id
         # TODO tax
         return context
 
