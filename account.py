@@ -256,6 +256,15 @@ class Type(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             ]
 
     @classmethod
+    def copy(cls, types, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('template', None)
+        return super().copy(types, default=default)
+
+    @classmethod
     def delete(cls, types):
         types = cls.search([
                 ('parent', 'child_of', [t.id for t in types]),
