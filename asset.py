@@ -996,7 +996,8 @@ class AssetDepreciationTable(CompanyReport):
 
             @cached_property
             def start_fixed_value(self):
-                if self.start_date < self.asset.start_date:
+                if (self.start_date < self.asset.start_date
+                        or not self.asset_lines):
                     return 0
                 value = self.asset_lines[0].acquired_value
                 date = self.asset_lines[0].date
