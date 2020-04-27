@@ -1,6 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import datetime as dt
 import logging
+import random
 import select
 import signal
 import time
@@ -114,5 +116,16 @@ def run_task(pool, task_id):
                         continue
                     raise
         logger.info('task "%d" done', task_id)
+    except backend.DatabaseOperationalError:
+        try:
+            with Transaction().start(pool.database_name, 0) as transaction:
+                task = Queue(task_id)
+                scheduled_at = dt.datetime.now()
+                scheduled_at += dt.timedelta(
+                    seconds=random.randint(0, 2 ** retry))
+                Queue.push(task.name, task.data, scheduled_at=scheduled_at)
+        except Exception:
+            logger.critical(
+                'rescheduling task "%d" failed', task_id, exc_info=True)
     except Exception:
         logger.critical('task "%d" failed', task_id, exc_info=True)
