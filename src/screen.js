@@ -1377,6 +1377,9 @@
                 prm = this.switch_view('form', undefined, false);
             }
             return prm.then(function() {
+                if (!this.current_view.editable) {
+                    return;
+                }
                 var group;
                 if (this.current_record) {
                     group = this.current_record.group;
