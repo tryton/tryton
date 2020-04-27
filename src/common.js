@@ -3334,6 +3334,7 @@
                     .css('max-height', '');
                 this.input.closest('.modal-body').css('overflow', '');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', '');
+                this.input.closest('.content-box').css('overflow-y', '');
                 Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
             this.dropdown.on('show.bs.dropdown', function() {
@@ -3342,6 +3343,7 @@
                     .css('max-height', 'none');
                 this.input.closest('.modal-body').css('overflow', 'visible');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', 'visible');
+                this.input.closest('.content-box').css('overflow-y', 'visible');
                 Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
         },
