@@ -85,3 +85,10 @@ Re-open task::
     >>> task = Work(task.id)
     >>> task.progress = 0.5
     >>> task.save()
+
+Copy the project::
+
+    >>> project_copy, = project.duplicate()
+    >>> project_copy.status == open
+    True
+    >>> project_copy.progress

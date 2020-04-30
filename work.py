@@ -502,11 +502,16 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
 
     @classmethod
     def copy(cls, project_works, default=None):
+        pool = Pool()
+        WorkStatus = pool.get('project.work.status')
         if default is None:
             default = {}
         else:
             default = default.copy()
         default.setdefault('children', None)
+        default.setdefault('progress', None)
+        default.setdefault(
+            'status', lambda data: WorkStatus.get_default_status(data['type']))
         return super().copy(project_works, default=default)
 
     @classmethod
