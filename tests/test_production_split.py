@@ -38,6 +38,8 @@ class ProductionSplitTestCase(ModuleTestCase):
                 production = Production()
                 production.quantity = quantity
                 production.uom = unit
+                production.outputs = []
+                production.inputs = []
 
                 productions = production.split(
                     quantity_split, unit, count=count)
