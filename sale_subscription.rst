@@ -1,7 +1,7 @@
 .. _index-sale_subscription:
 
-Sale Suscription
-================
+Sale Subscription
+=================
 
 .. glossary::
 
