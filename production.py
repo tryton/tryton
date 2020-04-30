@@ -37,11 +37,13 @@ class Production(metaclass=PoolMeta):
         """
         pool = Pool()
         Uom = pool.get('product.uom')
+        Move = pool.get('stock.move')
 
         productions = [self]
         remainder = Uom.compute_qty(self.uom, self.quantity, uom)
         if remainder <= quantity:
             return productions
+        Move.delete(self.inputs + self.outputs)
         self.quantity = quantity
         self.uom = uom
         self.save()
@@ -53,8 +55,6 @@ class Production(metaclass=PoolMeta):
             productions.extend(self.copy([self], {
                         'quantity': quantity,
                         'uom': uom.id,
-                        'inputs': None,
-                        'outputs': None,
                         }))
             remainder -= quantity
             remainder = uom.round(remainder)
