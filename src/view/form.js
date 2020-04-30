@@ -1823,10 +1823,14 @@ function eval_pyson(value){
             }
             return value;
         },
+        get width() {
+            return 8;
+        },
         display: function() {
             Sao.View.Form.Integer._super.display.call(this);
             var field = this.field;
             var value = '';
+            this.el.css('width', this.width + 'ch');
             if (field) {
                 value = field.get_client(this.record, this.factor);
             }
@@ -1850,12 +1854,29 @@ function eval_pyson(value){
 
     Sao.View.Form.Float = Sao.class_(Sao.View.Form.Integer, {
         class_: 'form-float',
+        get digits() {
+            var record = this.record,
+                field = this.field;
+            if (record && field) {
+                return field.digits(record, this.factor);
+            }
+        },
+        get width() {
+            var digits = this.digits;
+            if (digits) {
+                return digits.reduce(function(acc, cur) {
+                    return acc + cur;
+                });
+            } else {
+                return 18;
+            }
+        },
         display: function() {
             var record = this.record;
             var field = this.field;
             var step = 'any';
             if (record) {
-                var digits = field.digits(record, this.factor);
+                var digits = this.digits;
                 if (digits) {
                     step = Math.pow(10, -digits[1]).toFixed(digits[1]);
                 }
