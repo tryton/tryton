@@ -48,8 +48,7 @@ class Integer(Widget):
 
     def display(self):
         super().display()
-        if self.record:
-            self.entry.set_width_chars(self.width)
+        self.entry.set_width_chars(self.width)
         value = self.get_client_value()
         self.entry.set_text(value)
         reset_position(self.entry)
