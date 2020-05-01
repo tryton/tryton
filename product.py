@@ -85,6 +85,31 @@ class Template(metaclass=PoolMeta):
                             name, gettext('purchase.msg_change_purchase_uom'))
         super(Template, cls).write(*args)
 
+    @classmethod
+    def copy(cls, templates, default=None):
+        pool = Pool()
+        ProductSupplier = pool.get('purchase.product_supplier')
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+
+        copy_suppliers = 'product_suppliers' not in default
+        default.setdefault('product_suppliers', None)
+        new_templates = super().copy(templates, default)
+        if copy_suppliers:
+            old2new = {}
+            to_copy = []
+            for template, new_template in zip(templates, new_templates):
+                to_copy.extend(
+                    ps for ps in template.product_suppliers if not ps.product)
+                old2new[template.id] = new_template.id
+            if to_copy:
+                ProductSupplier.copy(to_copy, {
+                        'template': lambda d: old2new[d['template']],
+                        })
+        return new_templates
+
 
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
@@ -180,6 +205,35 @@ class Product(metaclass=PoolMeta):
                     prices[product.id] = Currency.compute(default_currency,
                         prices[product.id], currency, round=False)
         return prices
+
+    @classmethod
+    def copy(cls, products, default=None):
+        pool = Pool()
+        ProductSupplier = pool.get('purchase.product_supplier')
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+
+        copy_suppliers = 'product_suppliers' not in default
+        if 'template' in default:
+            default.setdefault('product_suppliers', None)
+        new_products = super().copy(products, default)
+        if 'template' in default and copy_suppliers:
+            template2new = {}
+            product2new = {}
+            to_copy = []
+            for product, new_product in zip(products, new_products):
+                if product.product_suppliers:
+                    to_copy.extend(product.product_suppliers)
+                    template2new[product.template.id] = new_product.template.id
+                    product2new[product.id] = new_product.id
+            if to_copy:
+                ProductSupplier.copy(to_copy, {
+                        'product': lambda d: product2new[d['product']],
+                        'template': lambda d: template2new[d['template']],
+                        })
+        return new_products
 
 
 class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
