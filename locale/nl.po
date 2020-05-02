@@ -87,6 +87,9 @@ msgstr "Tab snelkoppelingen"
 msgid "Unable to reach the server."
 msgstr "Kan geen verbinding maken met server."
 
+msgid "Too many requests. Try again later."
+msgstr "Te veel verzoeken. Probeer het later nog eens."
+
 msgid "Login"
 msgstr "Inlognaam"
 
@@ -464,6 +467,9 @@ msgstr "\"Overschrijven\" om de huidige versie te bewaren."
 msgid "Compare"
 msgstr "Vergelijken"
 
+msgid "Compare: %1"
+msgstr "Vergelijk:% 1"
+
 msgid "Write Anyway"
 msgstr "Overschrijven"
 
@@ -551,11 +557,26 @@ msgstr "Exporteer CSV: %1"
 msgid "Save Export"
 msgstr "Export opslaan"
 
+msgid "URL Export"
+msgstr "URL Exporteren"
+
 msgid "Delete Export"
 msgstr "Export verwijderen"
 
 msgid "Predefined Exports"
 msgstr "Vooraf gedefinieerde exports"
+
+msgid "Selected Records"
+msgstr "Geselecteerde records"
+
+msgid "Listed Records"
+msgstr "Vermelde records"
+
+msgid "Export:"
+msgstr "Exporteer:"
+
+msgid "Ignore search limit"
+msgstr "Zoeklimiet negeren"
 
 msgid "Use locale format"
 msgstr "Gebruik lokaal formaat"

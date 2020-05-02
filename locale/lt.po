@@ -89,6 +89,9 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Login"
 msgstr "Prisijungti"
 
@@ -173,10 +176,10 @@ msgid "Records removed."
 msgstr "Įrašai ištrinti."
 
 msgid "Records not removed."
-msgstr "Įrašai nebuvo ištrinti!"
+msgstr "Įrašai nebuvo ištrinti."
 
 msgid "You have to select one record."
-msgstr "Pasirinkite bent vieną įrašą!"
+msgstr "Pasirinkite bent vieną įrašą."
 
 msgid "ID:"
 msgstr "ID:"
@@ -189,13 +192,11 @@ msgstr "Sukūręs naudotojas"
 msgid "Created at:"
 msgstr "Sukūrimo data"
 
-#, fuzzy
 msgid "Edited by:"
-msgstr "Sukūręs naudotojas"
+msgstr "Pakeitęs naudotojas:"
 
-#, fuzzy
 msgid "Edited at:"
-msgstr "Pakeitęs naudotojas"
+msgstr "Keitimo data:"
 
 msgid "Model: "
 msgstr ""
@@ -304,7 +305,7 @@ msgid "You need to save the record before adding translations."
 msgstr "Išsaugokite įrašą prieš pridedant vertimą."
 
 msgid "No other language available."
-msgstr ""
+msgstr "Nėra kitų kalbų."
 
 msgid "Show"
 msgstr ""
@@ -392,7 +393,7 @@ msgid "Select your action"
 msgstr "Pasirinkite veiksmą"
 
 msgid "No action defined."
-msgstr "Nėra apibrėžtų veiksmų!"
+msgstr "Nėra apibrėžtų veiksmų."
 
 msgid "Your selection:"
 msgstr "Jūsų pasirinkimas:"
@@ -472,11 +473,15 @@ msgstr ""
 msgid "Compare"
 msgstr "Palyginti"
 
+#, fuzzy
+msgid "Compare: %1"
+msgstr "Palyginti"
+
 msgid "Write Anyway"
 msgstr "Rašyti visvien"
 
 msgid "Application Error"
-msgstr "Programos klaida!"
+msgstr "Programos klaida"
 
 msgid "Report Bug"
 msgstr "Pranešti apie klaidą"
@@ -539,7 +544,7 @@ msgid "Lines to Skip:"
 msgstr "Praleisti eilutes:"
 
 msgid "You must select an import file first."
-msgstr ""
+msgstr "Jūs pirmiausiai turite pasirinkti importo failą."
 
 msgid "An error occured in loading the file."
 msgstr ""
@@ -559,10 +564,25 @@ msgstr ""
 msgid "Save Export"
 msgstr ""
 
+msgid "URL Export"
+msgstr ""
+
 msgid "Delete Export"
 msgstr ""
 
 msgid "Predefined Exports"
+msgstr ""
+
+msgid "Selected Records"
+msgstr "Pasirinkti įrašai"
+
+msgid "Listed Records"
+msgstr "Rodomi įrašai"
+
+msgid "Export:"
+msgstr ""
+
+msgid "Ignore search limit"
 msgstr ""
 
 msgid "Use locale format"
@@ -590,4 +610,4 @@ msgid "Wizard"
 msgstr "Vedlys"
 
 msgid "Translate view"
-msgstr ""
+msgstr "Išversti rodinį"

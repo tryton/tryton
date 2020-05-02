@@ -93,6 +93,9 @@ msgstr "Vahelehe otseteed"
 msgid "Unable to reach the server."
 msgstr "Serverit ei leita."
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Login"
 msgstr "Logi sisse"
 
@@ -480,6 +483,10 @@ msgstr "\"Salvesta ikkagi\", et salvestada viimased muudatused."
 msgid "Compare"
 msgstr "Võrdle"
 
+#, fuzzy
+msgid "Compare: %1"
+msgstr "Võrdle"
+
 msgid "Write Anyway"
 msgstr "Salvesta ikkagi"
 
@@ -569,11 +576,30 @@ msgstr "CSV eksport: %1"
 msgid "Save Export"
 msgstr "Salvesta eksport"
 
+#, fuzzy
+msgid "URL Export"
+msgstr "Eksport"
+
 msgid "Delete Export"
 msgstr "Kustuta eksport"
 
 msgid "Predefined Exports"
 msgstr "Salvestatud ekspordid"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "Järgmine kirje"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "Järgmine kirje"
+
+#, fuzzy
+msgid "Export:"
+msgstr "Eksport"
+
+msgid "Ignore search limit"
+msgstr ""
 
 msgid "Use locale format"
 msgstr "Kasuta piirkonna formaati"

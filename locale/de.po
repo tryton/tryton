@@ -101,6 +101,9 @@ msgstr "Registerkarten Tastenkombinationen"
 msgid "Unable to reach the server."
 msgstr "Kann nicht zum Server verbinden."
 
+msgid "Too many requests. Try again later."
+msgstr "Zu viele Anfragen. Bitte versuchen Sie es später erneut."
+
 msgid "Login"
 msgstr "Log-in"
 
@@ -484,6 +487,9 @@ msgstr ""
 msgid "Compare"
 msgstr "Vergleichen"
 
+msgid "Compare: %1"
+msgstr "Vergleichen: %s"
+
 msgid "Write Anyway"
 msgstr "Überschreiben"
 
@@ -527,7 +533,7 @@ msgid "Fields Selected"
 msgstr "Ausgewählte Felder"
 
 msgid "CSV Parameters"
-msgstr "CSV Parameter"
+msgstr "CSV-Parameter"
 
 msgid "Delimiter:"
 msgstr "Feldtrenner:"
@@ -571,11 +577,26 @@ msgstr "CSV-Export: %1"
 msgid "Save Export"
 msgstr "Exportkonfiguration speichern"
 
+msgid "URL Export"
+msgstr "URL-Export"
+
 msgid "Delete Export"
 msgstr "Exportkonfiguration löschen"
 
 msgid "Predefined Exports"
 msgstr "Vordefinierte Exporte"
+
+msgid "Selected Records"
+msgstr "Ausgewählte Datensätze"
+
+msgid "Listed Records"
+msgstr "Angezeigte Datensätze"
+
+msgid "Export:"
+msgstr "Export:"
+
+msgid "Ignore search limit"
+msgstr "Suchlimit ignorieren"
 
 msgid "Use locale format"
 msgstr "Lokales Format verwenden"
@@ -599,7 +620,7 @@ msgid "Override %1 definition?"
 msgstr "Definition von %1 nicht berücksichtigen?"
 
 msgid "Wizard"
-msgstr "Wizard"
+msgstr "Assistent"
 
 msgid "Translate view"
 msgstr "Aktuelle Sicht übersetzen"

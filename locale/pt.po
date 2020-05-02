@@ -103,6 +103,9 @@ msgstr "Atalhos para abas"
 msgid "Unable to reach the server."
 msgstr "Não foi possível se conectar ao servidor."
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Login"
 msgstr "Entrar"
 
@@ -159,7 +162,7 @@ msgid "Launch action"
 msgstr "Iniciar ação"
 
 msgid "Open related records"
-msgstr "Abrir registros relacionados"
+msgstr "Abrir registos relacionados"
 
 msgid "Print report"
 msgstr "Imprimir relatório"
@@ -168,14 +171,14 @@ msgid ""
 "This record has been modified\n"
 "do you want to save it?"
 msgstr ""
-"Este registro foi modificado\n"
+"Este registo foi modificado\n"
 "você deseja gravá-lo?"
 
 msgid "Record saved."
-msgstr "Registro gravado."
+msgstr "Registo gravado."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "Trabalhando agora no(s) registro(s) duplicado(s)"
+msgstr "Trabalhando agora no(s) registo(s) duplicado(s)"
 
 msgid "Are you sure to remove this record?"
 msgstr "Você tem certeza que deseja apagar este registro?"
@@ -184,13 +187,13 @@ msgid "Are you sure to remove those records?"
 msgstr "Você tem certeza que deseja apagar estes registros?"
 
 msgid "Records removed."
-msgstr "Registros apagados."
+msgstr "Registos apagados."
 
 msgid "Records not removed."
 msgstr "Registros não apagados."
 
 msgid "You have to select one record."
-msgstr "Você precisa selecionar um registro."
+msgstr "Você precisa selecionar um registo."
 
 msgid "ID:"
 msgstr "ID:"
@@ -493,6 +496,10 @@ msgstr "\"Forçar Escrita\" para gravar sua versão atual."
 msgid "Compare"
 msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
 
+#, fuzzy
+msgid "Compare: %1"
+msgstr "\"Escrever mesmo assim\" para gravar sua versão atual."
+
 msgid "Write Anyway"
 msgstr "Forçar Escrita"
 
@@ -582,11 +589,30 @@ msgstr "Exportar CSV: %1"
 msgid "Save Export"
 msgstr "Gravar Exportação"
 
+#, fuzzy
+msgid "URL Export"
+msgstr "Exportar"
+
 msgid "Delete Export"
 msgstr "Apagar Exportação"
 
 msgid "Predefined Exports"
 msgstr "Exportações Pre-definidas"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "Próximo registro"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "Próximo registro"
+
+#, fuzzy
+msgid "Export:"
+msgstr "Exportar"
+
+msgid "Ignore search limit"
+msgstr ""
 
 msgid "Use locale format"
 msgstr ""

@@ -103,8 +103,11 @@ msgstr "Atajos de las pestañas"
 msgid "Unable to reach the server."
 msgstr "No es posible conectar con el servidor."
 
+msgid "Too many requests. Try again later."
+msgstr "Demasiadas peticiones. Inténtelo de nuevo más tarde."
+
 msgid "Login"
-msgstr "Usuario"
+msgstr "Acceder"
 
 msgid "User name"
 msgstr "Nombre de usuario"
@@ -480,6 +483,9 @@ msgstr "\"Guardar de todas formas\" para guardar sus cambios."
 msgid "Compare"
 msgstr "Comparar"
 
+msgid "Compare: %1"
+msgstr "Comparar: %1"
+
 msgid "Write Anyway"
 msgstr "Guardar de todas formas"
 
@@ -567,11 +573,26 @@ msgstr "Exportación CSV: %1"
 msgid "Save Export"
 msgstr "Guardar exportación"
 
+msgid "URL Export"
+msgstr "URL exportación"
+
 msgid "Delete Export"
 msgstr "Eliminar exportación"
 
 msgid "Predefined Exports"
 msgstr "Exportaciones predefinidas"
+
+msgid "Selected Records"
+msgstr "Registros seleccionados"
+
+msgid "Listed Records"
+msgstr "Registros listados"
+
+msgid "Export:"
+msgstr "Exportar:"
+
+msgid "Ignore search limit"
+msgstr "Ignorar límite de búsqueda"
 
 msgid "Use locale format"
 msgstr "Usar formato local"

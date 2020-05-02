@@ -100,6 +100,9 @@ msgstr "کلید های میانبر برگه"
 msgid "Unable to reach the server."
 msgstr "امکان دسترسی به سرور وجود ندارد."
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Login"
 msgstr "ورود"
 
@@ -490,6 +493,10 @@ msgstr "\"نوشتن بهرحال\" برای ذخیره نسخه فعلی خود
 msgid "Compare"
 msgstr "مقایسه"
 
+#, fuzzy
+msgid "Compare: %1"
+msgstr "مقایسه"
+
 msgid "Write Anyway"
 msgstr "نوشتن بهرحال"
 
@@ -579,11 +586,30 @@ msgstr "صادرکردن (CSV) : 1%"
 msgid "Save Export"
 msgstr "ذخیره استخراج"
 
+#, fuzzy
+msgid "URL Export"
+msgstr "صادر کردن"
+
 msgid "Delete Export"
 msgstr "حذف استخراج"
 
 msgid "Predefined Exports"
 msgstr "استخراج از پیش تعریف شده"
+
+#, fuzzy
+msgid "Selected Records"
+msgstr "پرونده بعدی"
+
+#, fuzzy
+msgid "Listed Records"
+msgstr "پرونده بعدی"
+
+#, fuzzy
+msgid "Export:"
+msgstr "صادر کردن"
+
+msgid "Ignore search limit"
+msgstr ""
 
 msgid "Use locale format"
 msgstr ""

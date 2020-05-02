@@ -103,8 +103,11 @@ msgstr "Dreceres de la pestanya"
 msgid "Unable to reach the server."
 msgstr "No s'ha pogut connectar amb el servidor."
 
+msgid "Too many requests. Try again later."
+msgstr "Massa peticions. Proveu-ho de nou més tard."
+
 msgid "Login"
-msgstr "Usuari"
+msgstr "Accedeix"
 
 msgid "User name"
 msgstr "Nom d'usuari"
@@ -480,6 +483,9 @@ msgstr "\"Desa de totes formes\" per desar els vostres canvis."
 msgid "Compare"
 msgstr "Compara"
 
+msgid "Compare: %1"
+msgstr "Compara: %1"
+
 msgid "Write Anyway"
 msgstr "Desa de totes formes"
 
@@ -567,11 +573,26 @@ msgstr "Exportació CSV: %1"
 msgid "Save Export"
 msgstr "Desa l'exportació"
 
+msgid "URL Export"
+msgstr "URL Exportació"
+
 msgid "Delete Export"
 msgstr "Elimina l'exportació"
 
 msgid "Predefined Exports"
 msgstr "Exportacions predefinides"
+
+msgid "Selected Records"
+msgstr "Registres seleccionats"
+
+msgid "Listed Records"
+msgstr "Registres seleccionats"
+
+msgid "Export:"
+msgstr "Exportar:"
+
+msgid "Ignore search limit"
+msgstr "Ignora límit de cerca"
 
 msgid "Use locale format"
 msgstr "Utilitza format local"

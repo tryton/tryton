@@ -103,6 +103,9 @@ msgstr "Raccourcis d'onglet"
 msgid "Unable to reach the server."
 msgstr "Impossible de joindre le serveur."
 
+msgid "Too many requests. Try again later."
+msgstr "Trop de demandes. Réessayez plus tard."
+
 msgid "Login"
 msgstr "Connexion"
 
@@ -483,6 +486,9 @@ msgstr "« Écraser » pour sauver vos modifications."
 msgid "Compare"
 msgstr "Comparer"
 
+msgid "Compare: %1"
+msgstr "Comparer : %1"
+
 msgid "Write Anyway"
 msgstr "Écraser"
 
@@ -570,11 +576,26 @@ msgstr "Export CSV: %1"
 msgid "Save Export"
 msgstr "Sauver l'exportation"
 
+msgid "URL Export"
+msgstr "URL d'exportation"
+
 msgid "Delete Export"
 msgstr "Supprimer l'exportation"
 
 msgid "Predefined Exports"
 msgstr "Exportations prédéfinies"
+
+msgid "Selected Records"
+msgstr "Enregistrements sélectionnés"
+
+msgid "Listed Records"
+msgstr "Enregistrements listés"
+
+msgid "Export:"
+msgstr "Exporter :"
+
+msgid "Ignore search limit"
+msgstr "Ignorer la limite de recherche"
 
 msgid "Use locale format"
 msgstr "Utiliser le format local"

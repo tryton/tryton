@@ -10,7 +10,7 @@ msgid "Favorites"
 msgstr "Preferiti"
 
 msgid "Manage..."
-msgstr ""
+msgstr "Gestisci..."
 
 msgid "Logout"
 msgstr "Esci"
@@ -28,7 +28,7 @@ msgid "Switch"
 msgstr "Scambia"
 
 msgid "Reload/Undo"
-msgstr "ricarica / ripristina"
+msgstr "Ricarica/Ripristina"
 
 msgid "Duplicate"
 msgstr "Duplica"
@@ -61,10 +61,10 @@ msgid "Print"
 msgstr "Stampa"
 
 msgid "Previous tab"
-msgstr ""
+msgstr "Scheda precedente"
 
 msgid "Next tab"
-msgstr ""
+msgstr "Scheda successiva"
 
 msgid "Global search"
 msgstr ""
@@ -86,6 +86,9 @@ msgstr ""
 
 msgid "Unable to reach the server."
 msgstr "server non raggiungibile"
+
+msgid "Too many requests. Try again later."
+msgstr "Troppe richieste. Riprovare più tardi."
 
 msgid "Login"
 msgstr "Login"
@@ -124,7 +127,7 @@ msgid "Add an attachment to the record"
 msgstr "aggiungere un allegato al record"
 
 msgid "Add a note to the record"
-msgstr "aggiungere nota al record"
+msgstr "Aggiungi  un appunto sul record"
 
 msgid "Export"
 msgstr "Esporta"
@@ -151,13 +154,15 @@ msgstr "Stampa rapporto"
 msgid ""
 "This record has been modified\n"
 "do you want to save it?"
-msgstr "questo record è stato modificato, intendi salvarlo?"
+msgstr ""
+"Questo record è stato modificato\n"
+"intendi salvarlo?"
 
 msgid "Record saved."
-msgstr "record salvato"
+msgstr "Record salvato."
 
 msgid "Working now on the duplicated record(s)."
-msgstr "stai ora lavorando nel record duplicato"
+msgstr "Stai ora lavorando nel record duplicato."
 
 msgid "Are you sure to remove this record?"
 msgstr "sei sicuro di rimuovere questo record?"
@@ -166,38 +171,34 @@ msgid "Are you sure to remove those records?"
 msgstr "sei sicuro di rimuovere questi record?"
 
 msgid "Records removed."
-msgstr "record rimossi"
+msgstr "Record rimossi."
 
 msgid "Records not removed."
-msgstr "record non rimossi"
+msgstr "Record non rimossi."
 
 msgid "You have to select one record."
-msgstr "va selezionato un record"
+msgstr "Devi selezionare un record."
 
 msgid "ID:"
 msgstr "ID:"
 
-#, fuzzy
 msgid "Created by:"
-msgstr "Crea..."
+msgstr "Creato da:"
 
-#, fuzzy
 msgid "Created at:"
-msgstr "creato il "
+msgstr "Creato il:"
 
-#, fuzzy
 msgid "Edited by:"
-msgstr "Crea..."
+msgstr "Modificato da:"
 
-#, fuzzy
 msgid "Edited at:"
-msgstr "Data di modifica "
+msgstr "Modifica il:"
 
 msgid "Model: "
 msgstr "Modello: "
 
 msgid "Add..."
-msgstr ""
+msgstr "Inserisci..."
 
 #, fuzzy
 msgid "Attachment (%1)"
@@ -391,10 +392,10 @@ msgid "%1 (%2)"
 msgstr "%1 (%2)"
 
 msgid "Select your action"
-msgstr "selezionare l azione"
+msgstr "Seleziona l'azione"
 
 msgid "No action defined."
-msgstr "nessuna azione definita"
+msgstr "Nessuna azione definita."
 
 msgid "Your selection:"
 msgstr "la tua selezione"
@@ -457,31 +458,34 @@ msgid "Write Concurrency Warning: "
 msgstr "scrivi avviso di concorrenza: "
 
 msgid "This record has been modified while you were editing it."
-msgstr "il record è stato modificato durante la scrittura"
+msgstr "Questo record è stato modificato mentre lo stavi compilando."
 
 msgid "Choose:"
-msgstr "scegliere:"
+msgstr "Scegli:"
 
 msgid "\"Cancel\" to cancel saving;"
-msgstr "\"cancel\" per annullare il salvataggio;"
+msgstr "\"Annulla\" per annullare il salvataggio;"
 
 msgid "\"Compare\" to see the modified version;"
-msgstr "\"compare\" per vedere la versione modificata;"
+msgstr "\"Confronta\" per vedere la versione modificata;"
 
 msgid "\"Write Anyway\" to save your current version."
-msgstr "\"write anyway\" per salvare la versione corrente"
+msgstr "\"Scrivi comunque\" per salvare la versione corrente"
 
 msgid "Compare"
-msgstr "Confrontare"
+msgstr "Confronta"
+
+msgid "Compare: %1"
+msgstr "Confronta: %1"
 
 msgid "Write Anyway"
-msgstr "forza modifica"
+msgstr "Scrivi comunque"
 
 msgid "Application Error"
-msgstr "errore dell'applicazione"
+msgstr "Errore dell'applicazione"
 
 msgid "Report Bug"
-msgstr "Segnala un errore"
+msgstr "Segnala l'errore"
 
 msgid "Processing..."
 msgstr ""
@@ -493,9 +497,8 @@ msgid "Create..."
 msgstr "Crea..."
 
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
-#, fuzzy
 msgid "..."
 msgstr "..."
 
@@ -564,14 +567,31 @@ msgstr ""
 msgid "Save Export"
 msgstr "salvare esportazione"
 
+#, fuzzy
+msgid "URL Export"
+msgstr "Esporta"
+
 msgid "Delete Export"
 msgstr "eliminare esportazione"
 
 msgid "Predefined Exports"
 msgstr "esportazioni predefinite"
 
+msgid "Selected Records"
+msgstr "Record selezionati"
+
+msgid "Listed Records"
+msgstr "Record elencati"
+
+#, fuzzy
+msgid "Export:"
+msgstr "Esporta"
+
+msgid "Ignore search limit"
+msgstr "Ignora limite di ricerca"
+
 msgid "Use locale format"
-msgstr ""
+msgstr "Usa il formato locale"
 
 msgid "Add Field Names"
 msgstr "inserire nomi campo"

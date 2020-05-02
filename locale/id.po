@@ -87,6 +87,9 @@ msgstr ""
 msgid "Unable to reach the server."
 msgstr ""
 
+msgid "Too many requests. Try again later."
+msgstr ""
+
 msgid "Login"
 msgstr ""
 
@@ -462,6 +465,9 @@ msgstr ""
 msgid "Compare"
 msgstr "Bandingkan"
 
+msgid "Compare: %1"
+msgstr "Bandingkan: %1"
+
 msgid "Write Anyway"
 msgstr ""
 
@@ -549,10 +555,25 @@ msgstr ""
 msgid "Save Export"
 msgstr ""
 
+msgid "URL Export"
+msgstr ""
+
 msgid "Delete Export"
 msgstr ""
 
 msgid "Predefined Exports"
+msgstr ""
+
+msgid "Selected Records"
+msgstr ""
+
+msgid "Listed Records"
+msgstr ""
+
+msgid "Export:"
+msgstr ""
+
+msgid "Ignore search limit"
 msgstr ""
 
 msgid "Use locale format"
