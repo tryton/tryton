@@ -57,7 +57,7 @@ msgstr "Propósito"
 msgctxt ""
 "model:account.statement.origin.information,string:information_r_reason"
 msgid "Return Reason"
-msgstr "Motivo retorno"
+msgstr "Motivo de devolución"
 
 msgctxt ""
 "model:account.statement.origin.information,string:information_r_transaction"
