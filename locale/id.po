@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.service-stock.lot.asset,service:"
 msgid "Service"
-msgstr ""
+msgstr "Jasa"
 
 msgctxt "field:stock.lot,subscribed:"
 msgid "Subscribed"
