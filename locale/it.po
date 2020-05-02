@@ -95,14 +95,14 @@ msgctxt "field:account.payment,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
 msgstr ""
 
-msgctxt "field:account.payment,stripe_journal:"
-msgid "Stripe Journal"
-msgstr ""
-
 #, fuzzy
 msgctxt "field:account.payment,stripe_payment_intent_id:"
 msgid "Stripe Payment Intent"
 msgstr "Charge Stripe Payments"
+
+msgctxt "field:account.payment,stripe_refunds:"
+msgid "Refunds"
+msgstr ""
 
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
@@ -118,7 +118,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.account,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:account.payment.stripe.account,publishable_key:"
 msgid "Publishable Key"
@@ -188,6 +188,55 @@ msgid "Stripe Token"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:account.payment.stripe.refund,amount:"
+msgid "Amount"
+msgstr "Stripe Accounts"
+
+msgctxt "field:account.payment.stripe.refund,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,payment:"
+msgid "Payment"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,reason:"
+msgid "Reason"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,state:"
+msgid "State"
+msgstr "Stato"
+
+#, fuzzy
+msgctxt "field:account.payment.stripe.refund,stripe_amount:"
+msgid "Stripe Amount"
+msgstr "Stripe Accounts"
+
+#, fuzzy
+msgctxt "field:account.payment.stripe.refund,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Stripe Customers"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.stripe.refund,stripe_idempotency_key:"
+msgid "Stripe Idempotency Key"
+msgstr "Stripe Checkout"
+
+#, fuzzy
+msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
+msgid "Stripe Refund ID"
+msgstr "Stripe Checkout"
+
+#, fuzzy
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "Stripe Customers"
@@ -214,6 +263,11 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Stripe Customers"
 
+#, fuzzy
+msgctxt "model:account.payment.stripe.refund,name:"
+msgid "Stripe Payment Refund"
+msgstr "Charge Stripe Payments"
+
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
 msgstr "Stripe Accounts"
@@ -221,6 +275,11 @@ msgstr "Stripe Accounts"
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Stripe Customers"
 msgstr "Stripe Customers"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_refund_form"
+msgid "Stripe Refunds"
+msgstr "Stripe Accounts"
 
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
@@ -238,6 +297,33 @@ msgstr "Stripe Checkout"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
+msgid "All"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
+msgid "Approved"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
+msgid "Failed"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
+msgid "Processing"
+msgstr ""
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
+msgid "Succeeded"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
@@ -270,6 +356,18 @@ msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
 
+msgctxt "model:ir.model.button,string:refund_approve_button"
+msgid "Approve"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:refund_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_refund"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
 msgstr "Stripe Accounts"
@@ -277,6 +375,11 @@ msgstr "Stripe Accounts"
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Stripe Customers"
 msgstr "Stripe Customers"
+
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_refund_form"
+msgid "Stripe Refunds"
+msgstr "Stripe Accounts"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Credit or debit card"
@@ -312,6 +415,39 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
 msgstr ""
 
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Duplicate"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Fraudulent"
+msgstr ""
+
+#, fuzzy
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Requested by Customer"
+msgstr "Delete Stripe Customer"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Approved"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Failed"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Processing"
+msgstr ""
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Succeeded"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Capture Stripe Payments"
@@ -325,6 +461,11 @@ msgstr "Charge Stripe Payments"
 #, fuzzy
 msgctxt "selection:ir.cron,method:"
 msgid "Create Stripe Customer"
+msgstr "Create Stripe Customer"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Refund"
 msgstr "Create Stripe Customer"
 
 #, fuzzy

@@ -86,13 +86,13 @@ msgctxt "field:account.payment,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
 msgstr "Clé d'idempotence Stripe"
 
-msgctxt "field:account.payment,stripe_journal:"
-msgid "Stripe Journal"
-msgstr "Journal Stripe"
-
 msgctxt "field:account.payment,stripe_payment_intent_id:"
 msgid "Stripe Payment Intent"
 msgstr "Intention de paiement Stripe"
+
+msgctxt "field:account.payment,stripe_refunds:"
+msgid "Refunds"
+msgstr "Remboursements"
 
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
@@ -174,6 +174,50 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Jeton Stripe"
 
+msgctxt "field:account.payment.stripe.refund,amount:"
+msgid "Amount"
+msgstr "Montant"
+
+msgctxt "field:account.payment.stripe.refund,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.payment.stripe.refund,payment:"
+msgid "Payment"
+msgstr "Paiement"
+
+msgctxt "field:account.payment.stripe.refund,reason:"
+msgid "Reason"
+msgstr "Raison"
+
+msgctxt "field:account.payment.stripe.refund,state:"
+msgid "State"
+msgstr "État"
+
+msgctxt "field:account.payment.stripe.refund,stripe_amount:"
+msgid "Stripe Amount"
+msgstr "Montant Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Code d'erreur Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr "Message d'erreur Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr "Paramètre d'erreur Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_idempotency_key:"
+msgid "Stripe Idempotency Key"
+msgstr "Clé d'idempotence Stripe"
+
+msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
+msgid "Stripe Refund ID"
+msgstr "ID de remboursement Stripe"
+
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "Clients Stripe"
@@ -198,6 +242,10 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Client Stripe"
 
+msgctxt "model:account.payment.stripe.refund,name:"
+msgid "Stripe Payment Refund"
+msgstr "Remboursement de paiement Stripe"
+
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
 msgstr "Comptes Stripe"
@@ -205,6 +253,10 @@ msgstr "Comptes Stripe"
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Stripe Customers"
 msgstr "Clients Stripe"
+
+msgctxt "model:ir.action,name:act_refund_form"
+msgid "Stripe Refunds"
+msgstr "Remboursements Stripe"
 
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
@@ -221,6 +273,33 @@ msgstr "Paiement Stripe"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Paiement Stripe"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
+msgid "All"
+msgstr "Tous"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
+msgid "Approved"
+msgstr "Approuvés"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
+msgid "Draft"
+msgstr "Brouillons"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
+msgid "Failed"
+msgstr "Échoués"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
+msgid "Processing"
+msgstr "En traitements"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Réussis"
 
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
@@ -257,6 +336,18 @@ msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr "Paiement Stripe"
 
+msgctxt "model:ir.model.button,string:refund_approve_button"
+msgid "Approve"
+msgstr "Approuver"
+
+msgctxt "model:ir.model.button,string:refund_draft_button"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "model:ir.rule.group,name:rule_group_refund"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
 msgstr "Comptes Stripe"
@@ -264,6 +355,10 @@ msgstr "Comptes Stripe"
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Stripe Customers"
 msgstr "Clients Stripe"
+
+msgctxt "model:ir.ui.menu,name:menu_refund_form"
+msgid "Stripe Refunds"
+msgstr "Remboursements Stripe"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Credit or debit card"
@@ -297,6 +392,38 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
 msgstr "Stripe"
 
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Duplicate"
+msgstr "Doublon"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Fraudulent"
+msgstr "Frauduleux"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Requested by Customer"
+msgstr "Demandé par le client"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Approved"
+msgstr "Approuvé"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Draft"
+msgstr "Brouillon"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Failed"
+msgstr "Échoué"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Processing"
+msgstr "En traitements"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Succeeded"
+msgstr "Réussi"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Capture Stripe Payments"
 msgstr "Imputer les paiements Stripe"
@@ -308,6 +435,10 @@ msgstr "Imputer les paiements Stripe"
 msgctxt "selection:ir.cron,method:"
 msgid "Create Stripe Customer"
 msgstr "Création des clients Stripe"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Refund"
+msgstr "Créer les remboursements Stripe"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Delete Stripe Customer"

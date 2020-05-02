@@ -86,13 +86,13 @@ msgctxt "field:account.payment,stripe_idempotency_key:"
 msgid "Stripe Idempotency Key"
 msgstr "Stipe idempotency sleutel"
 
-msgctxt "field:account.payment,stripe_journal:"
-msgid "Stripe Journal"
-msgstr "Stripe journaal"
-
 msgctxt "field:account.payment,stripe_payment_intent_id:"
 msgid "Stripe Payment Intent"
 msgstr "Stripe betalingsintentie"
+
+msgctxt "field:account.payment,stripe_refunds:"
+msgid "Refunds"
+msgstr "Terugbetalingen"
 
 msgctxt "field:account.payment,stripe_token:"
 msgid "Stripe Token"
@@ -174,6 +174,50 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Stripe Token"
 
+msgctxt "field:account.payment.stripe.refund,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.payment.stripe.refund,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.payment.stripe.refund,payment:"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "field:account.payment.stripe.refund,reason:"
+msgid "Reason"
+msgstr "Reden"
+
+msgctxt "field:account.payment.stripe.refund,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.payment.stripe.refund,stripe_amount:"
+msgid "Stripe Amount"
+msgstr "Stripe bedrag"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_code:"
+msgid "Stripe Error Code"
+msgstr "Stripe foutcode"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_message:"
+msgid "Stripe Error Message"
+msgstr "Stripe foutmelding"
+
+msgctxt "field:account.payment.stripe.refund,stripe_error_param:"
+msgid "Stripe Error Param"
+msgstr "Stripe fout parameters"
+
+msgctxt "field:account.payment.stripe.refund,stripe_idempotency_key:"
+msgid "Stripe Idempotency Key"
+msgstr "Stipe idempotency sleutel"
+
+msgctxt "field:account.payment.stripe.refund,stripe_refund_id:"
+msgid "Stripe Refund ID"
+msgstr "Stripe terugbetalings-ID"
+
 msgctxt "field:party.party,stripe_customers:"
 msgid "Stripe Customers"
 msgstr "Stripe klanten"
@@ -198,6 +242,10 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Stripe klanten"
 
+msgctxt "model:account.payment.stripe.refund,name:"
+msgid "Stripe Payment Refund"
+msgstr "Stripe terugbetaling"
+
 msgctxt "model:ir.action,name:act_account_form"
 msgid "Stripe Accounts"
 msgstr "Stripe rekeningen"
@@ -205,6 +253,10 @@ msgstr "Stripe rekeningen"
 msgctxt "model:ir.action,name:act_customer_form"
 msgid "Stripe Customers"
 msgstr "Stripe klanten"
+
+msgctxt "model:ir.action,name:act_refund_form"
+msgid "Stripe Refunds"
+msgstr "Stripe Terugbetalingen"
 
 msgctxt "model:ir.action,name:report_checkout"
 msgid "Stripe Checkout"
@@ -221,6 +273,33 @@ msgstr "Stripe afrekenen"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Stripe afrekenen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
+msgid "Processing"
+msgstr "Verwerken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Geslaagd"
 
 msgctxt "model:ir.message,text:msg_no_stripe_token"
 msgid ""
@@ -256,6 +335,18 @@ msgctxt "model:ir.model.button,string:payment_stripe_checkout_button"
 msgid "Stripe Checkout"
 msgstr "Stripe afrekenen"
 
+msgctxt "model:ir.model.button,string:refund_approve_button"
+msgid "Approve"
+msgstr "Goedkeuren"
+
+msgctxt "model:ir.model.button,string:refund_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.rule.group,name:rule_group_refund"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
 msgctxt "model:ir.ui.menu,name:menu_account_form"
 msgid "Stripe Accounts"
 msgstr "Stripe rekeningen"
@@ -263,6 +354,10 @@ msgstr "Stripe rekeningen"
 msgctxt "model:ir.ui.menu,name:menu_customer_form"
 msgid "Stripe Customers"
 msgstr "Stripe klanten"
+
+msgctxt "model:ir.ui.menu,name:menu_refund_form"
+msgid "Stripe Refunds"
+msgstr "Stripe Terugbetalingen"
 
 msgctxt "report:account.payment.stripe.checkout:"
 msgid "Credit or debit card"
@@ -296,6 +391,38 @@ msgctxt "selection:account.payment.journal,process_method:"
 msgid "Stripe"
 msgstr "Stripe"
 
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Duplicate"
+msgstr "Duplicaat"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Fraudulent"
+msgstr "Frauduleus"
+
+msgctxt "selection:account.payment.stripe.refund,reason:"
+msgid "Requested by Customer"
+msgstr "Gevraagd door klant"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Processing"
+msgstr "Verwerken"
+
+msgctxt "selection:account.payment.stripe.refund,state:"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Capture Stripe Payments"
 msgstr "Leg Stripe betalingen vast"
@@ -307,6 +434,10 @@ msgstr "verreken de Stripe betalingen"
 msgctxt "selection:ir.cron,method:"
 msgid "Create Stripe Customer"
 msgstr "Maak een stripe-klant aan"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Stripe Refund"
+msgstr "Maak Stripe terugbetaling"
 
 msgctxt "selection:ir.cron,method:"
 msgid "Delete Stripe Customer"
