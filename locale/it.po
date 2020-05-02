@@ -29,10 +29,9 @@ msgctxt "field:stock.package,moves:"
 msgid "Moves"
 msgstr "Movimenti"
 
-#, fuzzy
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 msgctxt "field:stock.package,shipment:"
 msgid "Shipment"
@@ -40,14 +39,13 @@ msgstr ""
 
 msgctxt "field:stock.package,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 #, fuzzy
 msgctxt "field:stock.package,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:stock.package.type,name:"
 msgid "Name"
 msgstr "Nome"

@@ -24,7 +24,7 @@ msgstr "Kode"
 
 msgctxt "field:stock.package,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:stock.package,parent:"
 msgid "Parent"
