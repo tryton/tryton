@@ -332,6 +332,10 @@ msgid ""
 "deactivated."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr ""
+
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Send by email a new temporary password to the user"
@@ -537,10 +541,6 @@ msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "You must set a new one from the user's preferences."
-msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "https://"
 msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"

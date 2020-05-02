@@ -327,6 +327,15 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Ime okna"
 
+#, fuzzy
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Vir"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
 msgstr "Podatki"
@@ -558,6 +567,11 @@ msgstr "Ločevalec tisočic"
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Prevedljivo"
+
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Languages"
 
 #, fuzzy
 msgctxt "field:ir.message,text:"
@@ -837,6 +851,15 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Stanje"
 
+#, fuzzy
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Vir"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Zadnja sprememba"
@@ -1103,6 +1126,21 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Datoteka"
 
+#, fuzzy
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Datoteka"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Jezik"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Jezik"
@@ -1115,13 +1153,10 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Jezik"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr "Funkcija ukrepa"
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr "Model ukrepa"
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Ukrep"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1538,6 +1573,11 @@ msgstr "Exports"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Icons"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Configure Modules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
@@ -2032,6 +2072,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Hungarian"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
@@ -2079,6 +2123,11 @@ msgstr ""
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinese Simplified"
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Module Configuration"
 
 #, fuzzy
 msgctxt "model:ir.message,name:"
@@ -2132,6 +2181,11 @@ msgstr "Aktivno"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Attachments"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
@@ -2197,6 +2251,11 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Pomoč"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2208,6 +2267,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Izbor"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_name"
@@ -2337,6 +2401,11 @@ msgid ""
 "activated."
 msgstr "Modula, ki je ali bo aktiviran, ni mogoče odstraniti"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Notes"
+
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2378,6 +2447,10 @@ msgstr "Neveljavna definicija epošte na izpisu \"%s\"."
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
 msgstr ""
 
 #, fuzzy
@@ -2527,6 +2600,14 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Dostop do modelov"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr ""
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Model gumba"
@@ -2534,6 +2615,16 @@ msgstr "Model gumba"
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Run Once"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Čiščenje prevodov"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Čiščenje prevodov"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -3187,6 +3278,10 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Enkratni zagon"
 
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr ""
+
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Datumski format"
@@ -3319,6 +3414,15 @@ msgstr "Sinhroniziram prevode?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Nastavitev končana."
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Prekliči"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr ""
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"

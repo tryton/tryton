@@ -326,6 +326,15 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Vediklio pavadinimas"
 
+#, fuzzy
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Resursas"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
 msgstr "Duomenys"
@@ -549,6 +558,11 @@ msgstr "Tūkstančių skirtukas"
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Verčiamas"
+
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Kalbos"
 
 msgctxt "field:ir.message,text:"
 msgid "Text"
@@ -826,6 +840,15 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Būsena"
 
+#, fuzzy
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Resursas"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Paskutinis taisymas"
@@ -1090,6 +1113,21 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Failas"
 
+#, fuzzy
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Failas"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Kalba"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Modulis"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Kalba"
@@ -1102,13 +1140,10 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Kalba"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr "Veiksmo funkcija"
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr "Veiksmo modelis"
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Veiksmas"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1488,6 +1523,11 @@ msgstr "Eksportai"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Ikonos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Derinti modulius"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1929,6 +1969,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Vengrų"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italų"
@@ -1968,6 +2012,11 @@ msgstr "Turkų"
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Kiniečių supaprastinta"
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Modulių derinimas"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2012,6 +2061,11 @@ msgstr "Veiksni"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Priedai"
 
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
@@ -2073,6 +2127,11 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Pagalba"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2084,6 +2143,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Parinktis"
 
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
@@ -2196,6 +2260,11 @@ msgid ""
 "activated."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Pastabos"
+
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2235,6 +2304,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
@@ -2371,6 +2444,14 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Models Access"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr ""
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Modelio mygtukas"
@@ -2378,6 +2459,16 @@ msgstr "Modelio mygtukas"
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Vienkartinis vykdymas"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Išvalyti vertimą"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Išvalyti vertimą"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -2626,11 +2717,11 @@ msgstr "Meniu"
 
 msgctxt "model:ir.ui.menu,name:menu_message_form"
 msgid "Messages"
-msgstr "Žinuės"
+msgstr "Žinutės"
 
 msgctxt "model:ir.ui.menu,name:menu_model_access_form"
 msgid "Models Access"
-msgstr ""
+msgstr "Modelių prieigos teisės"
 
 msgctxt "model:ir.ui.menu,name:menu_model_button_form"
 msgid "Buttons"
@@ -2988,6 +3079,10 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Vienkartinis vykdymas"
 
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr ""
+
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Datos formatas"
@@ -3118,6 +3213,15 @@ msgstr "Sinchronizuoti vertimus?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Pritaikyta sėkmingai!"
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr ""
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"

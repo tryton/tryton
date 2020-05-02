@@ -357,6 +357,15 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Име на помощник"
 
+#, fuzzy
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Ресурс"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
 msgstr "Данни"
@@ -589,6 +598,11 @@ msgstr "Разделител за хиляди"
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "За превод"
+
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Languages"
 
 #, fuzzy
 msgctxt "field:ir.message,text:"
@@ -881,6 +895,15 @@ msgid "State"
 msgstr "Състояние"
 
 #, fuzzy
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Ресурс"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Последна промяна"
@@ -1152,6 +1175,21 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Файл"
 
+#, fuzzy
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Файл"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Език"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Модул"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Език"
@@ -1164,13 +1202,10 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Език"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr "Функция на действие"
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr "Модел на действие"
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Действие"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1597,6 +1632,11 @@ msgstr "Exports"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Icons"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Configure Modules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
@@ -2081,6 +2121,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Български"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italian"
@@ -2122,6 +2166,11 @@ msgstr ""
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinese Simplified"
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Module Configuration"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2168,6 +2217,11 @@ msgstr "Активен"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Attachments"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
@@ -2233,6 +2287,11 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Помощ"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2244,6 +2303,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Избор"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_name"
@@ -2364,6 +2428,11 @@ msgid ""
 "activated."
 msgstr "Не може да изтривате модул който инсталиран или ще бъде инсталиран"
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Бележки"
+
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2404,6 +2473,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
@@ -2541,6 +2614,14 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Модел на достъпа"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr ""
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Битон от модел"
@@ -2548,6 +2629,16 @@ msgstr "Битон от модел"
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Run Once"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Начало на изчистване на преводи"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Начало на изчистване на преводи"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -3212,6 +3303,10 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Run Once"
 
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr ""
+
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Форматиране на дата"
@@ -3355,6 +3450,15 @@ msgstr "Синхронизиране на преводите"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Отказ"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
 msgstr ""
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"

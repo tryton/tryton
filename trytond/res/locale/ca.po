@@ -319,6 +319,10 @@ msgstr ""
 "Per motius de registres els usuaris no es poden eliminar, en el seu lloc els"
 " podeu de desactivar."
 
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr "Contrasenya per %(login)s"
+
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Envia per correu electrònic una nova contrasenya temporal al usuari"
@@ -493,7 +497,7 @@ msgstr "Alerta usuari"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ", has been reset."
-msgstr ", ha estat restablert."
+msgstr ", ha estat restablerta."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
@@ -520,10 +524,6 @@ msgid "You must set a new one from the user's preferences."
 msgstr ""
 "Heu d'establir una nova contrasenya des de les preferències del vostre "
 "usuari."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "https://"
-msgstr "https://"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "to"

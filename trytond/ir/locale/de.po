@@ -72,7 +72,7 @@ msgstr "Schlüsselwörter"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
-msgstr "Begrenzung"
+msgstr "Limit"
 
 msgctxt "field:ir.action.act_window,name:"
 msgid "Name"
@@ -324,7 +324,15 @@ msgstr "Separates Fenster"
 
 msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
-msgstr "Wizard Name"
+msgstr "Assistentenname"
+
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Kopieren zu Ressourcen"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Kopieren zu Ressourcen Sichtbar"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -550,6 +558,10 @@ msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Übersetzbar"
 
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Sprachen"
+
 msgctxt "field:ir.message,text:"
 msgid "Text"
 msgstr "Text"
@@ -652,11 +664,11 @@ msgstr "Anzahl"
 
 msgctxt "field:ir.model.button-button.reset,button_ruled:"
 msgid "Button Ruled"
-msgstr "Knopfregel"
+msgstr "Gesteuerter Button"
 
 msgctxt "field:ir.model.button.click,button:"
 msgid "Button"
-msgstr "Knopf"
+msgstr "Button"
 
 msgctxt "field:ir.model.button.click,record_id:"
 msgid "Record ID"
@@ -664,7 +676,7 @@ msgstr "Datensatz ID"
 
 msgctxt "field:ir.model.button.rule,button:"
 msgid "Button"
-msgstr "Knopf"
+msgstr "Button"
 
 msgctxt "field:ir.model.button.rule,condition:"
 msgid "Condition"
@@ -825,6 +837,14 @@ msgstr "Name"
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Status"
+
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Kopieren zu Ressourcen"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr "Kopieren zu Ressourcen Sichtbar"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
@@ -1090,6 +1110,18 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Datei"
 
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Dateiname"
+
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Sprache"
+
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Sprache"
@@ -1102,13 +1134,9 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Sprache"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr "Aktionsfunktion"
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr "Aktion Modell"
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Aktion"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1350,7 +1378,7 @@ msgstr "Deaktivieren um Übersetzungen dieses Berichts zu verhindern."
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
-msgstr "Wizard in separatem Fenster ausführen."
+msgstr "Assistent in separatem Fenster ausführen."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -1492,7 +1520,7 @@ msgstr "URLs"
 
 msgctxt "model:ir.action,name:act_action_wizard_form"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Assistenten"
 
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
@@ -1513,6 +1541,10 @@ msgstr "Exporte"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Symbole"
+
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Sprachen konfigurieren"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1715,7 +1747,7 @@ msgstr "Aktion URL"
 
 msgctxt "model:ir.action.wizard,name:"
 msgid "Action wizard"
-msgstr "Aktion Wizard"
+msgstr "Aktion Assistent"
 
 msgctxt "model:ir.attachment,name:"
 msgid "Attachment"
@@ -1957,6 +1989,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Ungarisch"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr "Indonesisch"
+
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italienisch"
@@ -1997,6 +2033,10 @@ msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinesisch (Vereinfacht)"
 
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Spracheinstellungen Start"
+
 msgctxt "model:ir.message,name:"
 msgid "Message"
 msgstr "Nachricht"
@@ -2033,7 +2073,7 @@ msgstr "Ungültige Sicht \"%(view)s\" für Aktion \"%(action)s\"."
 
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
-msgstr "Falsches Wizard-Modell in Schlüsselwort-Aktion \"%(name)s\"."
+msgstr "Falsches Assistentenmodell in Schlüsselwort-Aktion \"%(name)s\"."
 
 msgctxt "model:ir.message,text:msg_active"
 msgid "Active"
@@ -2042,6 +2082,10 @@ msgstr "Aktiv"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr "Deaktivieren um die zukünftige Nutzung zu verhindern."
+
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Anhänge"
 
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
@@ -2103,6 +2147,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr "Fließkommazahl"
 
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Hilfe"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr "Ganzzahl"
@@ -2114,6 +2162,10 @@ msgstr "Ungültiger Wertebereich (Domain) in Schema \"%(schema)s\"."
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "Ungültige Auswahl in Schema \"%(schema)s\"."
+
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Mehrfachauswahl"
 
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
@@ -2217,7 +2269,7 @@ msgid ""
 "The condition \"%(condition)s\" is not a valid PYSON expression for button "
 "rule \"%(rule)s\"."
 msgstr ""
-"Die Bedingung \"%(condition)s\" für Knopfregel \"%(rule)s\" ist kein "
+"Die Bedingung \"%(condition)s\" für Button-Regel \"%(rule)s\" ist kein "
 "gültiger PYSON-Ausdruck."
 
 msgctxt "model:ir.message,text:msg_module_deactivate_dependency"
@@ -2233,6 +2285,10 @@ msgid ""
 msgstr ""
 "Ein bereits aktiviertes oder für die Aktivierung vorgemerktes Modul kann "
 "nicht entfernt werden."
+
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Notizen"
 
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
@@ -2277,6 +2333,10 @@ msgstr "Ungültige Definition für E-Mail in Bericht \"%(name)s\"."
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "Für das Feld \"%(field)s\" von \"%(model)s\" ist ein Wert erforderlich."
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
+msgstr "Die Ressourcen zu denen dieser Datensatz kopiert werden muss."
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
@@ -2421,13 +2481,29 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Modell Zugriff"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr "Übersetzungen der Sprachen laden?"
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr "Übersetzungen der Sprachen wirklich entfernen?"
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
-msgstr "Modell Knopf"
+msgstr "Modell Button"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Einmalig ausführen"
+
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Übersetzungen laden"
+
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Übersetzungen löschen"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -2463,15 +2539,15 @@ msgstr "Anzeigen"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
-msgstr "Knopf Zurücksetzen"
+msgstr "Button Zurücksetzen"
 
 msgctxt "model:ir.model.button.click,name:"
 msgid "Model Button Click"
-msgstr "Knopfmodell Klick"
+msgstr "Modell Button Klick"
 
 msgctxt "model:ir.model.button.rule,name:"
 msgid "Model Button Rule"
-msgstr "Knopfmodell Regel"
+msgstr "Modell Button Regel"
 
 msgctxt "model:ir.model.data,name:"
 msgid "Model data"
@@ -2503,19 +2579,19 @@ msgstr "Modulaktivierung/-aktualisierung Start"
 
 msgctxt "model:ir.module.config_wizard.done,name:"
 msgid "Module Config Wizard Done"
-msgstr "Modulkonfigurationswizard Erledigt"
+msgstr "Modulkonfigurationsassistent Erledigt"
 
 msgctxt "model:ir.module.config_wizard.first,name:"
 msgid "Module Config Wizard First"
-msgstr "Modulkonfigurationswizard Erster Schritt"
+msgstr "Modulkonfigurationsassistent Erster Schritt"
 
 msgctxt "model:ir.module.config_wizard.item,name:"
 msgid "Config wizard to run after activating a module"
-msgstr "Konfigurationswizard nach Modulaktivierung"
+msgstr "Konfigurationsassistent nach Modulaktivierung"
 
 msgctxt "model:ir.module.config_wizard.other,name:"
 msgid "Module Config Wizard Other"
-msgstr "Modulkonfigurationswizard Weiterer Schritt"
+msgstr "Modulkonfigurationsassistent Weiterer Schritt"
 
 msgctxt "model:ir.module.dependency,name:"
 msgid "Module dependency"
@@ -2555,11 +2631,11 @@ msgstr "Nummernkreistyp"
 
 msgctxt "model:ir.session,name:"
 msgid "Session"
-msgstr "Sitzung"
+msgstr "Session"
 
 msgctxt "model:ir.session.wizard,name:"
 msgid "Session Wizard"
-msgstr "Sitzung Wizard"
+msgstr "Session Assistent"
 
 msgctxt "model:ir.translation,name:"
 msgid "Translation"
@@ -2632,7 +2708,7 @@ msgstr "URLs"
 
 msgctxt "model:ir.ui.menu,name:menu_action_wizard"
 msgid "Wizards"
-msgstr "Wizards"
+msgstr "Assistenten"
 
 msgctxt "model:ir.ui.menu,name:menu_administration"
 msgid "Administration"
@@ -2644,7 +2720,7 @@ msgstr "Anhänge"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr "Wizardelemente konfigurieren"
+msgstr "Konfigurationsassistenten-Elemente"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
@@ -2973,7 +3049,7 @@ msgstr "Sicht"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Wizard Button"
-msgstr "Wizardknopf"
+msgstr "Assistenten-Button"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Board"
@@ -3038,6 +3114,10 @@ msgstr "Alle"
 msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Einmalig ausführen"
+
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr "Es können nun zusätzliche Übersetzungen in das System geladen werden."
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
@@ -3173,6 +3253,14 @@ msgstr "Übersetzungen aktualisieren?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "Aktualisierung erfolgreich!"
+
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr "Laden"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"

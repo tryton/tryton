@@ -368,6 +368,14 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr ""
 
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr ""
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -612,6 +620,11 @@ msgstr "ໝາຍຂັ້ນຫົວພັນ"
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "ພາສາ"
 
 msgctxt "field:ir.message,text:"
 msgid "Text"
@@ -922,6 +935,14 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "ສະຖານະ"
 
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr ""
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr ""
@@ -1207,6 +1228,20 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr ""
 
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "ພາສາ"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Modules"
+
 #, fuzzy
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
@@ -1222,13 +1257,10 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "ພາສາ"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr ""
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr ""
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "ການປະຕິບັດ"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1637,6 +1669,11 @@ msgstr "Exports"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "ໄອຄັອນ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Configure Modules"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lang_form"
@@ -2099,6 +2136,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Hungarian"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italian"
@@ -2138,6 +2179,11 @@ msgstr ""
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinese Simplified"
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Module Configuration"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2184,6 +2230,11 @@ msgstr "ໃຊ້ຢູ່"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "ເອກະສານຄັດຕິດ"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_base_config_record"
@@ -2247,6 +2298,10 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2258,6 +2313,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Scheduled Actions"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_name"
@@ -2375,6 +2435,11 @@ msgid ""
 "activated."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "ໝາຍເຫດ"
+
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2415,6 +2480,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
@@ -2554,6 +2623,14 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Models Access"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr ""
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr ""
@@ -2561,6 +2638,16 @@ msgstr ""
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Run Once"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "ລ້າງການແປ"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "ລ້າງການແປ"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -3223,6 +3310,10 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Run Once"
 
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr ""
+
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr ""
@@ -3363,6 +3454,15 @@ msgstr "Synchronize Translations"
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
 msgstr ""
 
 #, fuzzy

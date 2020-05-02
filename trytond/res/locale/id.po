@@ -10,7 +10,6 @@ msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "Kelompok"
 
-#, fuzzy
 msgctxt "field:ir.export,groups:"
 msgid "Groups"
 msgstr "Kelompok"
@@ -23,7 +22,6 @@ msgctxt "field:ir.export-res.group,export:"
 msgid "Export"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.export-res.group,group:"
 msgid "Group"
 msgstr "Kelompok"
@@ -32,7 +30,6 @@ msgctxt "field:ir.export-write-res.group,export:"
 msgid "Export"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:ir.export-write-res.group,group:"
 msgid "Group"
 msgstr "Kelompok"
@@ -79,7 +76,7 @@ msgstr ""
 
 msgctxt "field:ir.sequence.type-res.group,sequence_type:"
 msgid "Sequence Type"
-msgstr ""
+msgstr "Jenis Urutan"
 
 msgctxt "field:ir.ui.menu-res.group,group:"
 msgid "Group"
@@ -119,7 +116,7 @@ msgstr ""
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "field:res.user,applications:"
 msgid "Applications"
@@ -143,7 +140,7 @@ msgstr ""
 
 msgctxt "field:res.user,login:"
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 msgctxt "field:res.user,menu:"
 msgid "Menu Action"
@@ -163,7 +160,7 @@ msgstr ""
 
 msgctxt "field:res.user,password_reset:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "field:res.user,password_reset_expire:"
 msgid "Reset Password Expire"
@@ -275,7 +272,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "model:ir.action-res.group,name:"
 msgid "Action - Group"
@@ -319,6 +316,10 @@ msgid ""
 "deactivated."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr ""
+
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Kirim melalui email kata sandi baru sementara ke pengguna"
@@ -333,7 +334,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:user_reset_password_button"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
@@ -341,27 +342,27 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_act_window"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_keyword"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_report"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_url"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_action_wizard"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_export_any"
 msgid "Any export"
@@ -371,19 +372,17 @@ msgctxt "model:ir.rule.group,name:rule_group_export_line_any"
 msgid "Any export"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_export_line_read"
 msgid "User in groups"
-msgstr "Pengguna - Kelompok"
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_export_line_write"
 msgid "User in modification groups"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.rule.group,name:rule_group_export_read"
 msgid "User in groups"
-msgstr "Pengguna - Kelompok"
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_export_write"
 msgid "User in modification groups"
@@ -391,15 +390,15 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_menu"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in groups"
-msgstr ""
+msgstr "Pengguna dalam kelompok"
 
 msgctxt "model:ir.rule.group,name:rule_group_session"
 msgid "Own session"
@@ -495,11 +494,11 @@ msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
 msgid ", has been reset."
-msgstr ""
+msgstr ", sudah diatur ulang."
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "The password for your account,"
@@ -520,10 +519,6 @@ msgstr ""
 msgctxt "report:res.user.email_reset_password:"
 msgid "You must set a new one from the user's preferences."
 msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "https://"
-msgstr "https://"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "to"
@@ -547,27 +542,27 @@ msgstr ""
 
 msgctxt "view:res.group:"
 msgid "Access Permissions"
-msgstr ""
+msgstr "Izin Akses"
 
 msgctxt "view:res.group:"
 msgid "Members"
-msgstr ""
+msgstr "Anggota"
 
 msgctxt "view:res.user.config.start:"
 msgid "Be careful that the login must be unique."
-msgstr ""
+msgstr "Hati-hati karena login harus unik."
 
 msgctxt "view:res.user.config.start:"
 msgid "You can now add some users into the system."
-msgstr ""
+msgstr "Anda sekarang dapat menambahkan beberapa pengguna ke dalam sistem."
 
 msgctxt "view:res.user:"
 msgid "Access Permissions"
-msgstr ""
+msgstr "Izin Akses"
 
 msgctxt "view:res.user:"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "view:res.user:"
 msgid "Group Membership"

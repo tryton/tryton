@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:ir.action,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Kelompok"
 
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
@@ -72,7 +72,7 @@ msgstr "Kata kunci"
 
 msgctxt "field:ir.action.act_window,limit:"
 msgid "Limit"
-msgstr ""
+msgstr "Batasan"
 
 msgctxt "field:ir.action.act_window,name:"
 msgid "Name"
@@ -108,7 +108,7 @@ msgstr "Kriteria Pencarian"
 
 msgctxt "field:ir.action.act_window,type:"
 msgid "Type"
-msgstr ""
+msgstr "Jenis"
 
 msgctxt "field:ir.action.act_window,usage:"
 msgid "Usage"
@@ -192,11 +192,11 @@ msgstr "Kata kunci"
 
 msgctxt "field:ir.action.report,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.action.report,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
@@ -212,11 +212,11 @@ msgstr ""
 
 msgctxt "field:ir.action.report,report_content:"
 msgid "Content"
-msgstr ""
+msgstr "Kandungan"
 
 msgctxt "field:ir.action.report,report_content_custom:"
 msgid "Content"
-msgstr ""
+msgstr "Kandungan"
 
 msgctxt "field:ir.action.report,report_content_html:"
 msgid "Content HTML"
@@ -292,7 +292,7 @@ msgstr "Email"
 
 msgctxt "field:ir.action.wizard,groups:"
 msgid "Groups"
-msgstr ""
+msgstr "Kelompok"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -304,7 +304,7 @@ msgstr "Kata kunci"
 
 msgctxt "field:ir.action.wizard,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.action.wizard,name:"
 msgid "Name"
@@ -325,6 +325,15 @@ msgstr "Jendela"
 msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Nama wisaya"
+
+#, fuzzy
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Sumber daya"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -500,11 +509,11 @@ msgstr "Pemisah Ribuan"
 
 msgctxt "field:ir.lang,n_cs_precedes:"
 msgid "Negative Currency Symbol Precedes"
-msgstr ""
+msgstr "Simbol Mata Uang Negatif Mendahului"
 
 msgctxt "field:ir.lang,n_sep_by_space:"
 msgid "Negative Separate by Space"
-msgstr ""
+msgstr "Negatif Dipisahkan oleh Spasi"
 
 msgctxt "field:ir.lang,n_sign_posn:"
 msgid "Negative Sign Position"
@@ -520,11 +529,11 @@ msgstr "Tanda Negatif"
 
 msgctxt "field:ir.lang,p_cs_precedes:"
 msgid "Positive Currency Symbol Precedes"
-msgstr ""
+msgstr "Simbol Mata Uang Positif Mendahului"
 
 msgctxt "field:ir.lang,p_sep_by_space:"
 msgid "Positive Separate by Space"
-msgstr ""
+msgstr "Positif Dipisahkan oleh Spasi"
 
 msgctxt "field:ir.lang,p_sign_posn:"
 msgid "Positive Sign Position"
@@ -550,6 +559,11 @@ msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Dapat diterjemahkan"
 
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Bahasa"
+
 msgctxt "field:ir.message,text:"
 msgid "Text"
 msgstr "Teks"
@@ -568,15 +582,15 @@ msgstr "Informasi"
 
 msgctxt "field:ir.model,model:"
 msgid "Model Name"
-msgstr ""
+msgstr "Nama Model"
 
 msgctxt "field:ir.model,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.model,name:"
 msgid "Model Description"
-msgstr ""
+msgstr "Deskripsi Model"
 
 msgctxt "field:ir.model.access,description:"
 msgid "Description"
@@ -588,7 +602,7 @@ msgstr "Kelompok"
 
 msgctxt "field:ir.model.access,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.model.access,perm_create:"
 msgid "Create Access"
@@ -624,7 +638,7 @@ msgstr "Bantuan"
 
 msgctxt "field:ir.model.button,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.model.button,name:"
 msgid "Name"
@@ -692,15 +706,15 @@ msgstr ""
 
 msgctxt "field:ir.model.data,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.model.data,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.model.data,noupdate:"
 msgid "No Update"
-msgstr ""
+msgstr "Tidak Ada Pembaharuan"
 
 msgctxt "field:ir.model.data,out_of_sync:"
 msgid "Out of Sync"
@@ -720,11 +734,11 @@ msgstr "Bantuan"
 
 msgctxt "field:ir.model.field,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.model.field,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.model.field,name:"
 msgid "Name"
@@ -816,7 +830,7 @@ msgstr ""
 
 msgctxt "field:ir.module.dependency,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.module.dependency,name:"
 msgid "Name"
@@ -825,6 +839,15 @@ msgstr "Nama"
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Negara"
+
+#, fuzzy
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Sumber daya"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
@@ -908,7 +931,7 @@ msgstr ""
 
 msgctxt "field:ir.rule.group,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.rule.group,name:"
 msgid "Name"
@@ -1056,11 +1079,11 @@ msgstr "Bahasa"
 
 msgctxt "field:ir.translation,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.translation,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.translation,name:"
 msgid "Field Name"
@@ -1090,25 +1113,37 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Berkas"
 
+#, fuzzy
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Berkas"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Bahasa"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Modul"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Bahasa"
 
 msgctxt "field:ir.translation.export.start,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Bahasa"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr ""
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr ""
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Tindakan"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1124,7 +1159,7 @@ msgstr ""
 
 msgctxt "field:ir.trigger,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.trigger,name:"
 msgid "Name"
@@ -1160,7 +1195,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.icon,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.ui.icon,name:"
 msgid "Name"
@@ -1236,11 +1271,11 @@ msgstr ""
 
 msgctxt "field:ir.ui.view,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.ui.view,module:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "field:ir.ui.view,name:"
 msgid "Name"
@@ -1260,7 +1295,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_search,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.ui.view_search,name:"
 msgid "Name"
@@ -1280,7 +1315,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_state,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.ui.view_tree_state,nodes:"
 msgid "Expanded Nodes"
@@ -1300,7 +1335,7 @@ msgstr ""
 
 msgctxt "field:ir.ui.view_tree_width,model:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "field:ir.ui.view_tree_width,user:"
 msgid "User"
@@ -1454,7 +1489,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_action_form"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "model:ir.action,name:act_action_report_form"
 msgid "Reports"
@@ -1470,7 +1505,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_attachment_form"
 msgid "Attachments"
-msgstr ""
+msgstr "Lampiran"
 
 msgctxt "model:ir.action,name:act_config_wizard_item_form"
 msgid "Config Wizard Items"
@@ -1487,6 +1522,11 @@ msgstr ""
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Bahasa"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1928,6 +1968,10 @@ msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Hongaria"
 
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
+
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
 msgstr "Italia"
@@ -1967,6 +2011,11 @@ msgstr "Turki"
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Konfigurasi"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2011,6 +2060,11 @@ msgstr "Aktif"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Lampiran"
 
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
@@ -2068,6 +2122,11 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Bantuan"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2079,6 +2138,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Pilihan"
 
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
@@ -2187,6 +2251,11 @@ msgid ""
 "activated."
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Catatan"
+
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2223,6 +2292,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
@@ -2345,10 +2418,18 @@ msgstr "Kesalahan sintaks untuk id XML: \"%(value)r\" di dalam \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "model:ir.model.access,name:"
 msgid "Model access"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
 msgstr ""
 
 msgctxt "model:ir.model.button,name:"
@@ -2358,6 +2439,16 @@ msgstr ""
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Terjemahan"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Terjemahan"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -2421,7 +2512,7 @@ msgstr ""
 
 msgctxt "model:ir.module,name:"
 msgid "Module"
-msgstr ""
+msgstr "Modul"
 
 msgctxt "model:ir.module.activate_upgrade.done,name:"
 msgid "Module Activate Upgrade Done"
@@ -2541,11 +2632,11 @@ msgstr "UI menu"
 
 msgctxt "model:ir.ui.menu,name:menu_act_action"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "model:ir.ui.menu,name:menu_action"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "model:ir.ui.menu,name:menu_action_act_window"
 msgid "Window Actions"
@@ -2573,11 +2664,11 @@ msgstr "Lampiran"
 
 msgctxt "model:ir.ui.menu,name:menu_config_wizard_item_form"
 msgid "Config Wizard Items"
-msgstr ""
+msgstr "Butir Wisaya Konfigurasi"
 
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
-msgstr ""
+msgstr "Tindakan Terjadwal"
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
@@ -2593,7 +2684,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
-msgstr ""
+msgstr "Bahasa"
 
 msgctxt "model:ir.ui.menu,name:menu_localization"
 msgid "Localization"
@@ -2885,7 +2976,7 @@ msgstr "Bantuan"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "selection:ir.translation,type:"
 msgid "Report"
@@ -2965,6 +3056,10 @@ msgstr ""
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
+msgstr ""
+
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
 msgstr ""
 
 msgctxt "view:ir.lang:"
@@ -3096,6 +3191,15 @@ msgstr ""
 
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
+msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Batal"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
 msgstr ""
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"

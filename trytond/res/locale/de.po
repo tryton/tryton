@@ -36,7 +36,7 @@ msgstr "Gruppe"
 
 msgctxt "field:ir.model.button-res.group,button:"
 msgid "Button"
-msgstr "Knopf"
+msgstr "Button"
 
 msgctxt "field:ir.model.button-res.group,group:"
 msgid "Group"
@@ -88,7 +88,7 @@ msgstr "Menü"
 
 msgctxt "field:res.group,buttons:"
 msgid "Buttons"
-msgstr "Knopf"
+msgstr "Buttons"
 
 msgctxt "field:res.group,field_access:"
 msgid "Access Field"
@@ -320,6 +320,10 @@ msgstr ""
 "Aus Dokumentationsgründen können Benutzer nicht gelöscht werden. Sie sollten"
 " stattdessen deaktiviert werden."
 
+msgctxt "model:ir.message,text:msg_user_password"
+msgid "Password for %(login)s"
+msgstr "Passwort für %(login)s"
+
 msgctxt "model:ir.model.button,help:user_reset_password_button"
 msgid "Send by email a new temporary password to the user"
 msgstr "Neues temporäres Passwort als E-Mail an Benutzer senden"
@@ -338,7 +342,7 @@ msgstr "Passwort zurücksetzen"
 
 msgctxt "model:ir.model.button-res.group,name:"
 msgid "Model Button - Group"
-msgstr "Modell Knopf - Gruppe"
+msgstr "Modell Button - Gruppe"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in groups"
@@ -519,10 +523,6 @@ msgstr "Sie können sich mit diesem temporären Passwort anmelden"
 msgctxt "report:res.user.email_reset_password:"
 msgid "You must set a new one from the user's preferences."
 msgstr "Sie müssen ein neues in den Benutzer-Einstellungen eingeben."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "https://"
-msgstr "https://"
 
 msgctxt "report:res.user.email_reset_password:"
 msgid "to"

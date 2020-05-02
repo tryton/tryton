@@ -220,7 +220,7 @@ msgstr "Conteúdo"
 
 msgctxt "field:ir.action.report,report_content_html:"
 msgid "Content HTML"
-msgstr ""
+msgstr "Conteúdo HTML"
 
 msgctxt "field:ir.action.report,report_content_name:"
 msgid "Content Name"
@@ -326,6 +326,15 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Nome do assistente"
 
+#, fuzzy
+msgctxt "field:ir.attachment,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Recurso"
+
+msgctxt "field:ir.attachment,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
 msgstr "Dados"
@@ -426,11 +435,11 @@ msgstr "Intervalo numérico"
 
 msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
-msgstr ""
+msgstr "Tipo de Intervalo"
 
 msgctxt "field:ir.cron,method:"
 msgid "Method"
-msgstr ""
+msgstr "Método"
 
 #, fuzzy
 msgctxt "field:ir.cron,minute:"
@@ -443,7 +452,7 @@ msgstr "Próxima chamada"
 
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
-msgstr ""
+msgstr "Dia da Semana"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -552,6 +561,11 @@ msgstr "Separador de milhar"
 msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Traduzível"
+
+#, fuzzy
+msgctxt "field:ir.lang.config.start,languages:"
+msgid "Languages"
+msgstr "Idiomas"
 
 msgctxt "field:ir.message,text:"
 msgid "Text"
@@ -829,6 +843,15 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Estado"
 
+#, fuzzy
+msgctxt "field:ir.note,copy_to_resources:"
+msgid "Copy to Resources"
+msgstr "Recurso"
+
+msgctxt "field:ir.note,copy_to_resources_visible:"
+msgid "Copy to Resources Visible"
+msgstr ""
+
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
 msgstr "Última modificação"
@@ -1093,6 +1116,21 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Arquivo"
 
+#, fuzzy
+msgctxt "field:ir.translation.export.result,filename:"
+msgid "Filename"
+msgstr "Arquivo"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,language:"
+msgid "Language"
+msgstr "Idioma"
+
+#, fuzzy
+msgctxt "field:ir.translation.export.result,module:"
+msgid "Module"
+msgstr "Módulo"
+
 msgctxt "field:ir.translation.export.start,language:"
 msgid "Language"
 msgstr "Idioma"
@@ -1105,13 +1143,10 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Idioma"
 
-msgctxt "field:ir.trigger,action_function:"
-msgid "Action Function"
-msgstr "Função de ação"
-
-msgctxt "field:ir.trigger,action_model:"
-msgid "Action Model"
-msgstr "Modelo de ação"
+#, fuzzy
+msgctxt "field:ir.trigger,action:"
+msgid "Action"
+msgstr "Ação"
 
 msgctxt "field:ir.trigger,condition:"
 msgid "Condition"
@@ -1521,6 +1556,11 @@ msgstr "Exportações"
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Ícones"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_lang_config"
+msgid "Configure Languages"
+msgstr "Configurar módulos"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1944,7 +1984,7 @@ msgstr "Espanhol (América Latina)"
 
 msgctxt "model:ir.lang,name:lang_et"
 msgid "Estonian"
-msgstr ""
+msgstr "Estoniano"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
@@ -1962,6 +2002,10 @@ msgstr "Francês"
 msgctxt "model:ir.lang,name:lang_hu"
 msgid "Hungarian"
 msgstr "Húngaro"
+
+msgctxt "model:ir.lang,name:lang_id"
+msgid "Indonesian"
+msgstr ""
 
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
@@ -1997,11 +2041,16 @@ msgstr "Esloveno"
 
 msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
-msgstr ""
+msgstr "Turco"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chinês Simplificado"
+
+#, fuzzy
+msgctxt "model:ir.lang.config.start,name:"
+msgid "Language Configuration Start"
+msgstr "Configuração do Módulo"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2051,6 +2100,11 @@ msgstr "Ativo"
 msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr "Desmarque para não usar futuramente."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_attachments"
+msgid "Attachments"
+msgstr "Anexos"
 
 msgctxt "model:ir.message,text:msg_base_config_record"
 msgid "This record is part of the base configuration."
@@ -2114,6 +2168,11 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_help"
+msgid "Help"
+msgstr "Ajuda"
+
 msgctxt "model:ir.message,text:msg_dict_schema_integer"
 msgid "Integer"
 msgstr ""
@@ -2126,6 +2185,11 @@ msgstr "Domínio inválido no schema \"%(schema)s\"."
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
 msgstr "Domínio inválido no schema \"%(schema)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
+msgid "MultiSelection"
+msgstr "Seleção"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_name"
@@ -2251,6 +2315,11 @@ msgid ""
 msgstr "Você não pode remover um módulo que está ativado ou que será ativado."
 
 #, fuzzy
+msgctxt "model:ir.message,text:msg_notes"
+msgid "Notes"
+msgstr "Notas"
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_read_error"
 msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
@@ -2291,6 +2360,10 @@ msgstr "E-mail inválido no relatório\"%s\"."
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
 msgstr "É necessário um valor para o campo \"%(field)s\" em \"%(model)s\"."
+
+msgctxt "model:ir.message,text:msg_resource_copy_help"
+msgid "The resources to which this record must be copied."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
@@ -2434,6 +2507,14 @@ msgctxt "model:ir.model.access,name:"
 msgid "Model access"
 msgstr "Acesso ao modelo"
 
+msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
+msgid "Are you sure you want to load languages' translations?"
+msgstr ""
+
+msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
+msgid "Are you sure you want to remove languages' translations?"
+msgstr ""
+
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
 msgstr "Botão do modelo"
@@ -2441,6 +2522,16 @@ msgstr "Botão do modelo"
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
 msgstr "Run Once"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_load_translations_button"
+msgid "Load translations"
+msgstr "Limpar tradução"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:lang_unload_translations_button"
+msgid "Unload translations"
+msgstr "Limpar tradução"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
@@ -3050,6 +3141,10 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Executar uma vez"
 
+msgctxt "view:ir.lang.config.start:"
+msgid "You can now load aditional translations to the system."
+msgstr ""
+
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
 msgstr "Formato de data"
@@ -3185,6 +3280,15 @@ msgstr "Sincronizar traduções?"
 msgctxt "view:ir.translation.set.succeed:"
 msgid "Set Succeed!"
 msgstr "As traduções foram realizadas corretamente."
+
+#, fuzzy
+msgctxt "wizard_button:ir.lang.config,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:ir.lang.config,start,load:"
+msgid "Load"
+msgstr ""
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"
