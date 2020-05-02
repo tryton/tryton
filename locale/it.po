@@ -57,10 +57,9 @@ msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
 msgstr "Chiusura"
 
-#, fuzzy
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgctxt "wizard_button:account.fr.fec,start,generate:"
 msgid "Generate"
