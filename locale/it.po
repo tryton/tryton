@@ -37,7 +37,6 @@ msgctxt "wizard_button:stock.inventory.create,start,create_:"
 msgid "Create"
 msgstr "Creazione"
 
-#, fuzzy
 msgctxt "wizard_button:stock.inventory.create,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
