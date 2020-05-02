@@ -183,18 +183,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "پیش‌نویس"
 
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "انجام شد"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "بر اساس داده های گذشته سطر پیش بینی را اضافه کنید."

@@ -60,7 +60,7 @@ msgstr ""
 
 msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
@@ -84,7 +84,7 @@ msgstr ""
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "UOM"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
@@ -178,18 +178,6 @@ msgid "Done"
 msgstr ""
 
 msgctxt "selection:stock.forecast,state:"
-msgid "Draft"
-msgstr "Rancangan"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr ""
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Rancangan"
 

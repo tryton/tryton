@@ -183,18 +183,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Brouillon"
 
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Annulée"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Terminée"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "Brouillon"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "Ajouter la ligne des prévisions fondées sur des données historiques."
@@ -209,7 +197,7 @@ msgstr "Choix des produits"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
-msgstr "Achever"
+msgstr "Compléter"
 
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
@@ -221,7 +209,7 @@ msgstr "Choix des dates"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
-msgstr "Achevé"
+msgstr "Compléter"
 
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"

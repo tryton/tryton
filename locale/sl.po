@@ -189,18 +189,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "V pripravi"
 
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Preklicano"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Zaključeno"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "V pripravi"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "Dodaj postavko napovedi na osnovi preteklih podatkov."

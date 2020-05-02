@@ -25,7 +25,6 @@ msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
 msgstr "Righe"
 
-#, fuzzy
 msgctxt "field:stock.forecast,state:"
 msgid "State"
 msgstr "Stato"
@@ -73,7 +72,6 @@ msgctxt "field:stock.forecast.line,moves:"
 msgid "Moves"
 msgstr "Movimenti"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,product:"
 msgid "Product"
 msgstr "Prodotto"
@@ -83,7 +81,6 @@ msgctxt "field:stock.forecast.line,product_uom_category:"
 msgid "Product Uom Category"
 msgstr "Categoria unità di misura prodotto"
 
-#, fuzzy
 msgctxt "field:stock.forecast.line,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -99,7 +96,7 @@ msgstr "Posizioni Unità"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "UdM"
 
 msgctxt "field:stock.forecast.line-stock.move,line:"
 msgid "Forecast Line"
@@ -150,7 +147,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:forecast_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:forecast_confirm_button"
 msgid "Confirm"
@@ -191,10 +188,9 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:stock.forecast,state:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "selection:stock.forecast,state:"
@@ -203,21 +199,6 @@ msgstr "Fatto"
 
 #, fuzzy
 msgctxt "selection:stock.forecast,state:"
-msgid "Draft"
-msgstr "Bozza"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Cancella"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Fatto"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Bozza"
 
@@ -238,10 +219,9 @@ msgctxt "wizard_button:stock.forecast.complete,ask,complete:"
 msgid "Complete"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,ask,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,ask:"
@@ -252,7 +232,6 @@ msgctxt "wizard_button:stock.forecast.complete,choose,complete:"
 msgid "Complete"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.forecast.complete,choose,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"

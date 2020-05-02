@@ -80,7 +80,7 @@ msgstr "Quantitats executades"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -180,18 +180,6 @@ msgid "Done"
 msgstr "Finalitzada"
 
 msgctxt "selection:stock.forecast,state:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Cancel·lat"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Finalitzat"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Esborrany"
 

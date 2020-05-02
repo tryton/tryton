@@ -183,18 +183,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Concept"
 
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Geannuleerd"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Klaar"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "Concept"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "prognosesregel toevoegen op basis van gegevens uit het verleden."

@@ -190,21 +190,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "Черновик"
 
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Отменить"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Выполнено"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "Черновик"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr "Добавить строчку прогноза основанного на предыдущих данных."

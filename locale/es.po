@@ -80,7 +80,7 @@ msgstr "Cantidades ejecutadas"
 
 msgctxt "field:stock.forecast.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:stock.forecast.line,uom:"
 msgid "UOM"
@@ -180,18 +180,6 @@ msgid "Done"
 msgstr "Finalizada"
 
 msgctxt "selection:stock.forecast,state:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "Cancelado"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "Finalizado"
-
-msgctxt "selection:stock.forecast.line,forecast_state:"
 msgid "Draft"
 msgstr "Borrador"
 

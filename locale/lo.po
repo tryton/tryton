@@ -206,21 +206,6 @@ msgctxt "selection:stock.forecast,state:"
 msgid "Draft"
 msgstr "ຮ່າງກຽມ"
 
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Cancel"
-msgstr "ຍົກເລີກ"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "selection:stock.forecast.line,forecast_state:"
-msgid "Draft"
-msgstr "ຮ່າງກຽມ"
-
 msgctxt "view:stock.forecast:"
 msgid "Add forecast line based on past data."
 msgstr ""
