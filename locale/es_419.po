@@ -10,6 +10,10 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr ""
 
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr ""
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr ""
@@ -36,6 +40,10 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
+msgstr ""
+
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
 msgstr ""
 
 msgctxt "field:purchase.requisition,state:"
@@ -101,7 +109,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr ""
 
 msgctxt "field:purchase.requisition.line,unit_price:"
 msgid "Unit Price"
@@ -158,6 +166,10 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
 msgstr ""
 
 msgctxt "model:ir.model.button,string:requisition_reject_button"
@@ -237,34 +249,6 @@ msgid "Rejected"
 msgstr ""
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr ""
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr ""
 

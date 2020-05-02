@@ -10,6 +10,10 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Secuencia de petición de compra"
 
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Aprobada por"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -37,6 +41,10 @@ msgstr "Líneas"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Número"
+
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Rechazada por"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -158,6 +166,10 @@ msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
 msgstr "Borrador"
 
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Procesar"
+
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
 msgstr "Rechazar"
@@ -235,34 +247,6 @@ msgid "Rejected"
 msgstr "Rechazada"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr "En espera"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr "Aprobado"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr "Cancelada"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr "Finalizada"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr "En proceso"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr "Rechazada"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr "En espera"
 

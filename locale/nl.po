@@ -10,6 +10,10 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Volgorde van inkoopaanvragen"
 
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Goedgekeurd door"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -37,6 +41,10 @@ msgstr "Regels"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Afgewezen door"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -160,6 +168,10 @@ msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
 msgstr "Concept"
 
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Uitvoeren"
+
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
 msgstr "afwijzen"
@@ -237,34 +249,6 @@ msgid "Rejected"
 msgstr "Verworpen"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr "In afwachting"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr "Goedgekeurd"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr "Geannuleerd"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr "Klaar"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr "Concept"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr "Verwerking"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr "Verworpen"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr "In afwachting"
 

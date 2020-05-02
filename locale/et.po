@@ -10,6 +10,11 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Hanke päringu jada"
 
+#, fuzzy
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Kinnitatud"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -37,6 +42,11 @@ msgstr "Read"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Number"
+
+#, fuzzy
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Tagasi lükatud"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -159,6 +169,11 @@ msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
 msgstr "Mustand"
 
+#, fuzzy
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Töötlen"
+
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
 msgstr "Lükka tagasi"
@@ -236,34 +251,6 @@ msgid "Rejected"
 msgstr "Tagasi lükatud"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr "Ootel"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr "Kinnitatud"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr "Tühistatud"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr "Tehtud"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr "Töötlen"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr "Tagasi lükatud"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr "Ootel"
 

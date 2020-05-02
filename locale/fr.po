@@ -10,6 +10,10 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Séquence de demande d'achat d'employé"
 
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Approuvée par"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Société"
@@ -37,6 +41,10 @@ msgstr "Lignes"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Numéro"
+
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Rejetée par"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -162,6 +170,10 @@ msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
 msgstr "Brouillon"
 
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Traiter"
+
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
 msgstr "Rejeter"
@@ -232,41 +244,13 @@ msgstr "Brouillon"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Processing"
-msgstr "Traitement"
+msgstr "En traitement"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Rejected"
 msgstr "Rejetée"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr "En attente"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr "Approuvée"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr "Annulée"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr "Terminée"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr "Brouillon"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr "Traitement"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr "Rejetée"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr "En attente"
 

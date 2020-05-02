@@ -11,6 +11,11 @@ msgctxt "field:purchase.configuration.sequence,purchase_requisition_sequence:"
 msgid "Purchase Requisition Sequence"
 msgstr "Sequenza richiesta fornitura"
 
+#, fuzzy
+msgctxt "field:purchase.requisition,approved_by:"
+msgid "Approved By"
+msgstr "Approvato"
+
 msgctxt "field:purchase.requisition,company:"
 msgid "Company"
 msgstr "Azienda"
@@ -38,6 +43,11 @@ msgstr "righe"
 msgctxt "field:purchase.requisition,number:"
 msgid "Number"
 msgstr "Numero"
+
+#, fuzzy
+msgctxt "field:purchase.requisition,rejected_by:"
+msgid "Rejected By"
+msgstr "Rifiutato"
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
@@ -70,7 +80,7 @@ msgstr "Descrizione"
 
 msgctxt "field:purchase.requisition.line,product:"
 msgid "Product"
-msgstr "prodotto"
+msgstr "Prodotto"
 
 #, fuzzy
 msgctxt "field:purchase.requisition.line,product_uom_category:"
@@ -163,11 +173,16 @@ msgstr "Approve"
 
 msgctxt "model:ir.model.button,string:requisition_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:requisition_draft_button"
 msgid "Draft"
 msgstr "Draft"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:requisition_process_button"
+msgid "Process"
+msgstr "Processing"
 
 msgctxt "model:ir.model.button,string:requisition_reject_button"
 msgid "Reject"
@@ -251,34 +266,6 @@ msgid "Rejected"
 msgstr "Rifiutato"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Waiting"
-msgstr "In attesa"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Approved"
-msgstr "Approved"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Canceled"
-msgstr "Annullato"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Done"
-msgstr "Eseguito"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Draft"
-msgstr "Bozza"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Processing"
-msgstr "In elaborazione"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
-msgid "Rejected"
-msgstr "Rifiutato"
-
-msgctxt "selection:purchase.requisition.line,purchase_requisition_state:"
 msgid "Waiting"
 msgstr "In attesa"
 
