@@ -28,7 +28,7 @@ msgstr "Kata sandi"
 
 msgctxt "field:account.credential.chorus,chorus_service:"
 msgid "Service"
-msgstr ""
+msgstr "Jasa"
 
 msgctxt "field:account.credential.chorus,company:"
 msgid "Company"

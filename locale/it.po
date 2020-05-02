@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.chorus,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:account.invoice.chorus,syntax:"
 msgid "Syntax"
