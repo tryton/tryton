@@ -8,7 +8,7 @@ msgstr "Percentuale"
 
 msgctxt "help:carrier,percentage:"
 msgid "The percentage applied on the amount to compute the cost."
-msgstr ""
+msgstr "La percentuale applicata sull'importo per calcolare il costo."
 
 msgctxt "selection:carrier,carrier_cost_method:"
 msgid "Percentage"
