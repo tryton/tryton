@@ -42,7 +42,7 @@ msgstr "Data di registrazione"
 
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
-msgstr "Consegne"
+msgstr "Spedizioni"
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
@@ -109,7 +109,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:landed_cost_draft_button"
 msgid "Draft"
