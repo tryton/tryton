@@ -28,7 +28,7 @@ msgstr "Relaties"
 
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr "relatie voor belastingidentificatie Party Tax Identifier)"
+msgstr "relatie tax identificatie"
 
 msgctxt "field:account.ec_sales_list.context,company:"
 msgid "Company"

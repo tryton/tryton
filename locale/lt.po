@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.ec_sales_list,amount:"
 msgid "Amount"
-msgstr ""
+msgstr "Suma"
 
 msgctxt "field:account.ec_sales_list,code:"
 msgid "Code"
-msgstr ""
+msgstr "Kodas"
 
 msgctxt "field:account.ec_sales_list,company_tax_identifier:"
 msgid "Company Tax Identifier"
@@ -24,7 +24,7 @@ msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.ec_sales_list,party:"
 msgid "Party"
-msgstr ""
+msgstr "Kontrahentas"
 
 msgctxt "field:account.ec_sales_list,party_tax_identifier:"
 msgid "Party Tax Identifier"
@@ -36,43 +36,40 @@ msgstr "Organizacija"
 
 msgctxt "field:account.ec_sales_list.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Finansiniai metai"
 
 msgctxt "field:account.ec_sales_list.context,period:"
 msgid "Period"
-msgstr ""
+msgstr "Periodas"
 
 msgctxt "field:account.tax,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr ""
+msgstr "ES pardavimų sąrašo kodas"
 
 msgctxt "field:account.tax.template,ec_sales_list_code:"
 msgid "EC Sales List Code"
-msgstr ""
+msgstr "ES pardavimų sąrašo kodas"
 
-#, fuzzy
 msgctxt "model:account.ec_sales_list,name:"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "ES pardavimų sąrašas"
 
 msgctxt "model:account.ec_sales_list.context,name:"
 msgid "EC Sales List Context"
-msgstr ""
+msgstr "ES pardavimų sąrašo kontekstas"
 
 msgctxt "model:ir.action,name:act_ec_sales_list_form"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "ES pardavimų sąrašas"
 
 msgctxt "model:ir.ui.menu,name:menu_ec_sales_list"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "ES pardavimų sąrašas"
 
-#, fuzzy
 msgctxt "view:account.tax.template:"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "ES pardavimų sąrašas"
 
-#, fuzzy
 msgctxt "view:account.tax:"
 msgid "EC Sales List"
-msgstr "EC Sales List"
+msgstr "ES pardavimų sąrašas"
