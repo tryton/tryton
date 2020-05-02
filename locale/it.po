@@ -16,71 +16,92 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Azienda"
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr "Contatto"
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
-#, fuzzy
 msgctxt "field:sale.subscription,description:"
 msgid "Description"
-msgstr "Subscription"
+msgstr "Descrizione"
 
 msgctxt "field:sale.subscription,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data fine"
 
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
+msgstr "Indirizzo di fatturazione"
+
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
 msgstr ""
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
-msgstr ""
+msgstr "Ricorrenza della fattura"
 
 msgctxt "field:sale.subscription,invoice_start_date:"
 msgid "Invoice Start Date"
-msgstr ""
+msgstr "Data inizio fatturazione"
 
 msgctxt "field:sale.subscription,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Righe"
 
 msgctxt "field:sale.subscription,next_invoice_date:"
 msgid "Next Invoice Date"
-msgstr ""
+msgstr "Data fatturazione successiva"
 
 msgctxt "field:sale.subscription,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:sale.subscription,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
 msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Termine di pagamento"
+
+#, fuzzy
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
 
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
+msgstr "Riferimento"
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
 msgstr ""
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data inizio"
 
 msgctxt "field:sale.subscription,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
+
+#, fuzzy
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Azienda"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
-msgstr "Consumptions"
+msgstr "Consumato fino"
 
 msgctxt "field:sale.subscription.line,consumption_delay:"
 msgid "Consumption Delay"
@@ -90,14 +111,13 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
-msgstr "Subscription"
+msgstr "Descrizione"
 
 msgctxt "field:sale.subscription.line,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data fine"
 
 msgctxt "field:sale.subscription.line,next_consumption_date:"
 msgid "Next Consumption Date"
@@ -109,11 +129,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "field:sale.subscription.line,service:"
 msgid "Service"
-msgstr ""
+msgstr "Servizio"
 
 msgctxt "field:sale.subscription.line,service_unit_category:"
 msgid "Service Unit Category"
@@ -121,7 +141,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,start_date:"
 msgid "Start Date"
-msgstr ""
+msgstr "Data inizio"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,subscription:"
@@ -145,7 +165,7 @@ msgstr "Subscription Services"
 
 msgctxt "field:sale.subscription.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unità"
 
 msgctxt "field:sale.subscription.line,unit_digits:"
 msgid "Unit Digits"
@@ -165,11 +185,11 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line.consumption,line:"
 msgid "Line"
-msgstr ""
+msgstr "Riga"
 
 msgctxt "field:sale.subscription.line.consumption,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "field:sale.subscription.line.consumption,unit_digits:"
 msgid "Unit Digits"
@@ -225,7 +245,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.recurrence.rule.set,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:sale.subscription.recurrence.rule.set,rules:"
 msgid "Rules"
@@ -241,7 +261,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.service,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "help:sale.subscription,company:"
 msgid "Make the subscription belong to the company."
@@ -354,7 +374,7 @@ msgstr "Draft"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_quotation"
 msgid "Quotation"
-msgstr "Quotation"
+msgstr "Preventivo"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_subscription_form_domain_running"
@@ -390,7 +410,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:subscription_draft_button"
 msgid "Draft"
@@ -506,30 +526,6 @@ msgctxt "selection:sale.subscription,state:"
 msgid "Running"
 msgstr "Running"
 
-#, fuzzy
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr "Cancel"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr "Draft"
-
-#, fuzzy
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr "Quotation"
-
-#, fuzzy
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Running"
-msgstr "Running"
-
 msgctxt "selection:sale.subscription.recurrence.rule,freq:"
 msgid "Daily"
 msgstr ""
@@ -573,17 +569,15 @@ msgctxt "wizard_button:sale.subscription.create_invoice,start,create_:"
 msgid "Create"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:sale.subscription.create_invoice,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt ""
 "wizard_button:sale.subscription.line.consumption.create,start,create_:"
 msgid "Create"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:sale.subscription.line.consumption.create,start,end:"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"

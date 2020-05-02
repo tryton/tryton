@@ -14,6 +14,10 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -29,6 +33,11 @@ msgstr "Lõppkuupäev"
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
 msgstr "Arve aadress"
+
+#, fuzzy
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
+msgstr "Arve alguskuupäev"
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
@@ -58,9 +67,18 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr "Maksetingimus"
 
+#, fuzzy
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr "Päring"
+
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
 msgstr "Viide"
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
@@ -73,6 +91,11 @@ msgstr "Staatus"
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Kuupäev"
+
+#, fuzzy
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
 
 #, fuzzy
 msgctxt "field:sale.subscription.line,consumed_until:"
@@ -483,26 +506,6 @@ msgid "Quotation"
 msgstr "Päring"
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Running"
-msgstr "Töös"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr "Tühistatud"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr "Suletud"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr "Päring"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
 msgstr "Töös"
 

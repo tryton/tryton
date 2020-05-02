@@ -14,6 +14,10 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr "Mata uang"
@@ -28,7 +32,12 @@ msgstr "Tanggal Akhir"
 
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Alamat Faktur"
+
+#, fuzzy
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tanggal Faktur Berikutnya"
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
@@ -58,9 +67,17 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr ""
+
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
 msgstr "Referensi"
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
@@ -73,6 +90,11 @@ msgstr ""
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Tanggal"
+
+#, fuzzy
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Perusahaan"
 
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
@@ -108,7 +130,7 @@ msgstr ""
 
 msgctxt "field:sale.subscription.line,service:"
 msgid "Service"
-msgstr ""
+msgstr "Jasa"
 
 msgctxt "field:sale.subscription.line,service_unit_category:"
 msgid "Service Unit Category"
@@ -480,26 +502,6 @@ msgid "Quotation"
 msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Running"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
 msgstr ""
 

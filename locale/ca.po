@@ -14,6 +14,10 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr "Contacte"
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -29,6 +33,10 @@ msgstr "Data final"
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
 msgstr "Adreça de facturació"
+
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tercer de la factura"
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
@@ -58,9 +66,17 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr "Termini de pagament"
 
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr "Pressupostada per"
+
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
 msgstr "Referència"
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
+msgstr "Executat per"
 
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
@@ -73,6 +89,10 @@ msgstr "Estat"
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Data"
+
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
@@ -487,26 +507,6 @@ msgid "Quotation"
 msgstr "Pressupost"
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Running"
-msgstr "En execució"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr "Cancel·lat"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr "Tancat"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr "Pressupost"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
 msgstr "En execució"
 

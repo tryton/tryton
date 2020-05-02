@@ -14,6 +14,10 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr "Kontakt"
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr "Währung"
@@ -29,6 +33,10 @@ msgstr "Enddatum"
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
 msgstr "Rechnungsadresse"
+
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
+msgstr "Rechnungsempfänger"
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
 msgid "Invoice Recurrence"
@@ -58,13 +66,21 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr "Zahlungsbedingung"
 
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr "Angeboten von"
+
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
 msgstr "Referenz"
 
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
+msgstr "Ausgeführt von"
+
 msgctxt "field:sale.subscription,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:sale.subscription,state:"
 msgid "State"
@@ -73,6 +89,10 @@ msgstr "Status"
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Datum"
+
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
+msgstr "Unternehmen"
 
 msgctxt "field:sale.subscription.line,consumed_until:"
 msgid "Consumed until"
@@ -140,7 +160,7 @@ msgstr "Einheit"
 
 msgctxt "field:sale.subscription.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen der Einheit"
+msgstr "Nachkommastellen"
 
 msgctxt "field:sale.subscription.line,unit_price:"
 msgid "Unit Price"
@@ -164,7 +184,7 @@ msgstr "Menge"
 
 msgctxt "field:sale.subscription.line.consumption,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen der Einheit"
+msgstr "Nachkommastellen"
 
 msgctxt "field:sale.subscription.line.consumption.create.start,date:"
 msgid "Date"
@@ -491,26 +511,6 @@ msgid "Quotation"
 msgstr "Angebot"
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Running"
-msgstr "In Ausführung"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr "Annulliert"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr "Geschlossen"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr "Entwurf"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr "Angebot"
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
 msgstr "In Ausführung"
 

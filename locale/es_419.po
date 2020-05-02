@@ -14,6 +14,10 @@ msgctxt "field:sale.subscription,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:sale.subscription,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.subscription,currency:"
 msgid "Currency"
 msgstr ""
@@ -28,6 +32,10 @@ msgstr ""
 
 msgctxt "field:sale.subscription,invoice_address:"
 msgid "Invoice Address"
+msgstr ""
+
+msgctxt "field:sale.subscription,invoice_party:"
+msgid "Invoice Party"
 msgstr ""
 
 msgctxt "field:sale.subscription,invoice_recurrence:"
@@ -58,8 +66,16 @@ msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
 msgstr ""
 
+msgctxt "field:sale.subscription,quoted_by:"
+msgid "Quoted By"
+msgstr ""
+
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
+msgstr ""
+
+msgctxt "field:sale.subscription,run_by:"
+msgid "Run By"
 msgstr ""
 
 msgctxt "field:sale.subscription,start_date:"
@@ -72,6 +88,10 @@ msgstr ""
 
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
+msgstr ""
+
+msgctxt "field:sale.subscription.line,company:"
+msgid "Company"
 msgstr ""
 
 msgctxt "field:sale.subscription.line,consumed_until:"
@@ -480,26 +500,6 @@ msgid "Quotation"
 msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Running"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Canceled"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Closed"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Draft"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
-msgid "Quotation"
-msgstr ""
-
-msgctxt "selection:sale.subscription.line,subscription_state:"
 msgid "Running"
 msgstr ""
 
