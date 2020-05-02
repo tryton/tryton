@@ -21,7 +21,6 @@ msgctxt "field:production.routing,boms:"
 msgid "BOMs"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.routing,name:"
 msgid "Name"
 msgstr "Nome"
