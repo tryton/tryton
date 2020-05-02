@@ -20,4 +20,4 @@ msgstr "dimensione conti analitici"
 
 msgctxt "view:account.invoice.line:"
 msgid "Analytic"
-msgstr ""
+msgstr "Analitico"
