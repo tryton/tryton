@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr "Relacje"
@@ -37,6 +41,10 @@ msgstr "Nazwa"
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
 msgstr "Odwrotna relacja"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
+msgstr ""
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."

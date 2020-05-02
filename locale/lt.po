@@ -2,50 +2,57 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
 msgctxt "field:party.party,relations:"
 msgid "Relations"
-msgstr ""
+msgstr "Sąryšis"
 
 msgctxt "field:party.relation,from_:"
 msgid "From"
-msgstr ""
+msgstr "Nuo"
 
 msgctxt "field:party.relation,to:"
 msgid "To"
-msgstr ""
+msgstr "Į"
 
 msgctxt "field:party.relation,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
 msgctxt "field:party.relation.all,from_:"
 msgid "From"
-msgstr ""
+msgstr "Nuo"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr ""
+msgstr "Į"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
-msgstr ""
+msgstr "Tipas"
 
-#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
-msgstr "Namu"
+msgstr "Pavadinimas"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
+msgstr "Atvirkštinis sąryšis"
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
 msgstr ""
 
 msgctxt "help:party.relation.type,name:"
 msgid "The main identifier of the relation type."
-msgstr ""
+msgstr "Pagrindinis sąryšio tipo identifikatorius."
 
 msgctxt "help:party.relation.type,reverse:"
 msgid "Create automatically the reverse relation."
-msgstr ""
+msgstr "Automatiškai sukurti atvirkštinį sąryšį."
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
@@ -53,7 +60,7 @@ msgstr "Kontrahentų ryšiai"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Sąryšių tipai"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
@@ -61,7 +68,7 @@ msgstr "Kontrahento ryšiai"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
-msgstr "Relation Types"
+msgstr "Sąryšių tipai"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
@@ -71,11 +78,10 @@ msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
 msgstr "Kontrahento ryšiai"
 
-#, fuzzy
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"
-msgstr "Relation Types"
+msgstr "Sąryšio tipas"
 
 msgctxt "view:party.party:"
 msgid "Relations"
-msgstr ""
+msgstr "Sąryšiai"

@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:party.party,distance:"
+msgid "Distance"
+msgstr ""
+
 msgctxt "field:party.party,relations:"
 msgid "Relations"
 msgstr ""
@@ -32,13 +36,16 @@ msgctxt "field:party.relation.all,type:"
 msgid "Type"
 msgstr "Tipo"
 
-#, fuzzy
 msgctxt "field:party.relation.type,name:"
 msgid "Name"
 msgstr "Nome"
 
 msgctxt "field:party.relation.type,reverse:"
 msgid "Reverse Relation"
+msgstr ""
+
+msgctxt "field:party.relation.type,usages:"
+msgid "Usages"
 msgstr ""
 
 msgctxt "help:party.relation.type,name:"
