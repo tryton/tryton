@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.configuration,default_category_account_expense:"
 msgid "Default Account Expense"
-msgstr ""
+msgstr "Numatytoji išlaidų koresponduojanti sąskaita"
 
 msgctxt "field:account.configuration,default_category_account_revenue:"
 msgid "Default Account Revenue"
-msgstr ""
+msgstr "Numatytoji pajamų koresponduojanti sąskaita"
 
 msgctxt ""
 "field:account.configuration.default_account,default_category_account_expense:"

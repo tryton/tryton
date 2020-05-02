@@ -28,14 +28,13 @@ msgctxt "field:account.create_chart.properties,category_account_revenue:"
 msgid "Default Revenue Account"
 msgstr "Conto di ricavo predefinito"
 
-#, fuzzy
 msgctxt "field:analytic_account.rule,product:"
 msgid "Product"
 msgstr "Prodotto"
 
 msgctxt "field:analytic_account.rule,product_category:"
 msgid "Product Category"
-msgstr ""
+msgstr "Categoria Prodotto"
 
 msgctxt "field:product.category,account_expense:"
 msgid "Account Expense"
@@ -158,19 +157,19 @@ msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
-msgstr ""
+msgstr "Qualsiasi categoria"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_customer_taxes"
 msgid "User in company"
-msgstr ""
+msgstr "Utente in azienda"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_default"
 msgid "Not accounting category"
-msgstr ""
+msgstr "Categoria non contabile"
 
 msgctxt "model:ir.rule.group,name:rule_group_category_supplier_taxes"
 msgid "User in company"
-msgstr ""
+msgstr "Utente in azienda"
 
 msgctxt "model:product.category-customer-account.tax,name:"
 msgid "Category - Customer Tax"

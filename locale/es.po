@@ -147,12 +147,12 @@ msgstr "Usar los impuestos definidos en la categoría padre."
 
 msgctxt "model:ir.message,text:msg_missing_account"
 msgid "There is no \"%(field)s\" defined for \"%(name)s\"."
-msgstr "No se ha definido el \"%(field)s\" para \"%(name)s\""
+msgstr "No se ha definido el \"%(field)s\" para \"%(name)s\"."
 
 msgctxt "model:ir.message,text:msg_missing_taxes"
 msgid "There is no account category defined on product \"%(name)s\"."
 msgstr ""
-"No existe ninguna categoría contable definida para el producto \"%(name)s\""
+"No existe ninguna categoría contable definida para el producto \"%(name)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_category_accounting"
 msgid "Any category"
