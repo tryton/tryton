@@ -46,8 +46,9 @@ msgctxt "field:project.work,right:"
 msgid "Right"
 msgstr "Desno"
 
-msgctxt "field:project.work,state:"
-msgid "State"
+#, fuzzy
+msgctxt "field:project.work,status:"
+msgid "Status"
 msgstr "Stanje"
 
 msgctxt "field:project.work,timesheet_available:"
@@ -82,6 +83,29 @@ msgctxt "field:project.work,type:"
 msgid "Type"
 msgstr "Tip"
 
+msgctxt "field:project.work.status,count:"
+msgid "Count"
+msgstr ""
+
+msgctxt "field:project.work.status,default:"
+msgid "Default"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:project.work.status,name:"
+msgid "Name"
+msgstr "Naziv"
+
+#, fuzzy
+msgctxt "field:project.work.status,progress:"
+msgid "Progress"
+msgstr "Napredek"
+
+#, fuzzy
+msgctxt "field:project.work.status,types:"
+msgid "Types"
+msgstr "Tip"
+
 #, fuzzy
 msgctxt "help:project.work,effort_duration:"
 msgid "Estimated Effort for this work."
@@ -106,6 +130,22 @@ msgstr "Skupen čas, porabljen za to nalogo in podnaloge"
 msgctxt "help:project.work,total_progress:"
 msgid "Estimated total progress for this work and the sub-works."
 msgstr "Skupen napredek za to nalogo in podnaloge"
+
+msgctxt "help:project.work.status,count:"
+msgid "Check to show the number of works in this status."
+msgstr ""
+
+msgctxt "help:project.work.status,default:"
+msgid "Check to use as default status for the type."
+msgstr ""
+
+msgctxt "help:project.work.status,progress:"
+msgid "The minimum progress required for this status."
+msgstr ""
+
+msgctxt "help:project.work.status,types:"
+msgid "The type of works which can use this status."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_open_child_work"
@@ -137,40 +177,18 @@ msgctxt "model:ir.action,name:act_work_list"
 msgid "Works Efforts"
 msgstr "Works Efforts"
 
+msgctxt "model:ir.action,name:act_work_status"
+msgid "Work Status"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:act_work_tree"
 msgid "Works Efforts"
 msgstr "Works Efforts"
 
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_project_form_done"
-msgid "Done"
-msgstr "Done"
-
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_project_form_opened"
-msgid "Opened"
-msgstr "Opened"
-
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_project_tree_done"
-msgid "Done"
-msgstr "Done"
-
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_project_tree_opened"
-msgid "Opened"
-msgstr "Opened"
-
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_task_form_done"
-msgid "Done"
-msgstr "Done"
-
-#, fuzzy
-msgctxt "model:ir.action.act_window.domain,name:act_task_form_opened"
-msgid "Opened"
-msgstr "Opened"
+msgctxt "model:ir.message,text:msg_domain_all"
+msgid "All"
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_party_opened_project"
 msgid ""
@@ -178,12 +196,18 @@ msgid ""
 "company \"%(company)s\"."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_work_invalid_children_state"
-msgid "To close work \"%(parent)s\", you must close its child \"%(child)s\"."
+msgctxt "model:ir.message,text:msg_work_children_progress"
+msgid "To complete work \"%(work)s\" you must complete also all its children."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_work_invalid_parent_state"
-msgid "To open work \"%(child)s\", you must open its parent \"%(parent)s\"."
+msgctxt "model:ir.message,text:msg_work_invalid_progress_status"
+msgid ""
+"To set work \"%(work)s\" in \"%(status)s\" status, you must increase its "
+"progress up to at least %(progress)s."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_work_parent_progress"
+msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
 msgstr ""
 
 #, fuzzy
@@ -216,6 +240,10 @@ msgctxt "model:ir.ui.menu,name:menu_work_list"
 msgid "Works Efforts"
 msgstr "Works Efforts"
 
+msgctxt "model:ir.ui.menu,name:menu_work_status"
+msgid "Work Status"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_work_tree"
 msgid "Works Efforts"
@@ -225,18 +253,24 @@ msgctxt "model:project.work,name:"
 msgid "Work Effort"
 msgstr "Ocena naloge"
 
+msgctxt "model:project.work.status,name:"
+msgid "Work Status"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:project.work.status,name:work_done_status"
+msgid "Done"
+msgstr "Done"
+
+#, fuzzy
+msgctxt "model:project.work.status,name:work_open_status"
+msgid "Open"
+msgstr "Opened"
+
 #, fuzzy
 msgctxt "model:res.group,name:group_project_admin"
 msgid "Project Administration"
 msgstr "Project Administration"
-
-msgctxt "selection:project.work,state:"
-msgid "Done"
-msgstr "Zaključeno"
-
-msgctxt "selection:project.work,state:"
-msgid "Opened"
-msgstr "Odprto"
 
 msgctxt "selection:project.work,type:"
 msgid "Project"
@@ -245,6 +279,11 @@ msgstr "Projekt"
 msgctxt "selection:project.work,type:"
 msgid "Task"
 msgstr "Naloga"
+
+#, fuzzy
+msgctxt "view:project.work.status:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:project.work:"
 msgid "%"
