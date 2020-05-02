@@ -22,6 +22,11 @@ msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Редове от фактура"
 
+#, fuzzy
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Редове от фактура"
+
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
 msgstr ""

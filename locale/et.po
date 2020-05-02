@@ -18,6 +18,11 @@ msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
 
+#, fuzzy
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Arve read"
+
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
 msgstr "Arve rida - lao liikumine"

@@ -18,6 +18,10 @@ msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
 
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Rechnungstypen"
+
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
 msgstr "Rechnungsposition - Lagerbewegung"

@@ -18,9 +18,13 @@ msgctxt "field:stock.move,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
 
+msgctxt "field:stock.move,invoice_types:"
+msgid "Invoice Types"
+msgstr "Jenis Faktur"
+
 msgctxt "model:account.invoice.line-stock.move,name:"
 msgid "Invoice Line - Stock Move"
-msgstr ""
+msgstr "Baris Faktur - Perpindahan Stok"
 
 msgctxt "view:account.invoice.line:"
 msgid "Stock"
