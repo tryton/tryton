@@ -120,7 +120,7 @@ msgstr "inizio timesheet"
 
 msgctxt "field:timesheet.work,work:"
 msgid "Work"
-msgstr "lavoro"
+msgstr "Lavoro"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
@@ -277,10 +277,9 @@ msgctxt "model:ir.rule.group,name:rule_group_work_admin"
 msgid "Any work"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Configurazione"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"

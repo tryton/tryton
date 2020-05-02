@@ -16,7 +16,7 @@ msgstr "Enddatum"
 
 msgctxt "field:timesheet.hours_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:timesheet.hours_employee_monthly,duration:"
 msgid "Duration"
