@@ -2,22 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.configuration,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
-msgstr "Conta de Contrapartida de Preço de Custo"
-
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Diário de Estoque"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
-msgstr "Conta de Contrapartida de Preço de Custo"
 
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
@@ -31,130 +18,33 @@ msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr "Conta de Estoque"
 
-msgctxt "field:product.category,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr "Conta de Estoque do Cliente"
+#, fuzzy
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Conta de Estoque"
 
-msgctxt "field:product.category,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Conta de Estoque de Achados e Perdidos"
-
-msgctxt "field:product.category,account_stock_production:"
-msgid "Account Stock Production"
-msgstr "Conta de Estoque de Produção"
-
-msgctxt "field:product.category,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr "Conta de Estoque de Fornecedor"
+#, fuzzy
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Conta de Estoque"
 
 msgctxt "field:product.category.account,account_stock:"
 msgid "Account Stock"
 msgstr "Conta de Estoque"
 
-msgctxt "field:product.category.account,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr "Conta de Estoque do Cliente"
-
-msgctxt "field:product.category.account,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Conta de Estoque de Achados e Perdidos"
-
-msgctxt "field:product.category.account,account_stock_production:"
-msgid "Account Stock Production"
-msgstr "Conta de Estoque de Produção"
-
-msgctxt "field:product.category.account,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr "Conta de Estoque do Fornecedor"
-
 #, fuzzy
-msgctxt "field:product.modify_cost_price.ask,cost_price:"
-msgid "Cost Price"
-msgstr "Preço de custo"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.ask,product:"
-msgid "Variant"
-msgstr "Variante"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.ask,template:"
-msgid "Product"
-msgstr "Produto"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,amount:"
-msgid "Amount"
-msgstr "Quantidade"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,counterpart:"
-msgid "Counterpart"
-msgstr "Contrapartida"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,currency_digits:"
-msgid "Currency Digits"
-msgstr "Dígitos da moeda"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,description:"
-msgid "Description"
-msgstr "Descrição"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,journal:"
-msgid "Journal"
-msgstr "Diário"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,price_difference:"
-msgid "Price Difference"
-msgstr "Diferença de Preço"
-
-#, fuzzy
-msgctxt "field:product.modify_cost_price.show_move,stock_account:"
-msgid "Stock Account"
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
 msgstr "Conta de Estoque"
 
-msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
-msgid "Account Configuration Cost Price Counterpart Account"
-msgstr ""
-"Configurações de Contabilidade Preço de Custo da Conta de Contrapartida"
+#, fuzzy
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Conta de Estoque"
 
 msgctxt "model:account.configuration.stock_journal,name:"
 msgid "Account Configuration Stock Journal"
 msgstr "Configurações de Contabilidade Diário de Estoque"
-
-#, fuzzy
-msgctxt "model:ir.action,name:wizard_modify_cost_price"
-msgid "Modify Cost Price"
-msgstr "Preço de custo"
-
-msgctxt "model:ir.message,text:msg_modify_cost_price_same_account"
-msgid ""
-"To modify the cost price, you must change the counterpart account "
-"\"%(account)s\"."
-msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.message,text:msg_product_change_cost_price"
-msgid ""
-"You cannot change the cost price of a product which is associated to stock moves.\n"
-"You must use the \"Modify Cost Price\" wizard."
-msgstr ""
-"Você não pode trocar o preço de custo de um produto que está associado a movimentações do estoque.\n"
-"Você deve usar o assistente \"Atualizar Preço de Custo\"."
-
-#, fuzzy
-msgctxt "model:product.modify_cost_price.ask,name:"
-msgid "Modify Cost Price Ask"
-msgstr "Solicitar Atualização de Preço de Custo"
-
-#, fuzzy
-msgctxt "model:product.modify_cost_price.show_move,name:"
-msgid "Modify Cost Price Show Move"
-msgstr "Atualizar Preço de Custo - Mostrar Lançamento"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
@@ -171,23 +61,3 @@ msgstr "Estoque"
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Conta de Estoque"
-
-#, fuzzy
-msgctxt "wizard_button:product.modify_cost_price,ask_price,end:"
-msgid "Cancel"
-msgstr "Cancelar"
-
-#, fuzzy
-msgctxt "wizard_button:product.modify_cost_price,ask_price,should_show_move:"
-msgid "OK"
-msgstr "OK"
-
-#, fuzzy
-msgctxt "wizard_button:product.modify_cost_price,show_move,create_move:"
-msgid "OK"
-msgstr "OK"
-
-#, fuzzy
-msgctxt "wizard_button:product.modify_cost_price,show_move,end:"
-msgid "Cancel"
-msgstr "Cancelar"

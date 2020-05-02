@@ -2,22 +2,9 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.configuration,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
-msgstr "Compte contrapartida preu de cost"
-
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
 msgstr "Diari d'existències"
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
-msgid "Company"
-msgstr "Empresa"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
-msgstr "Compte contrapartida preu de cost"
 
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
 msgid "Stock Journal"
@@ -31,117 +18,29 @@ msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr "Compte d'existències"
 
-msgctxt "field:product.category,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr "Compte d'existències de client"
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Compte d'existències d'entrada"
 
-msgctxt "field:product.category,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Compte d'existències de perdut-trobat"
-
-msgctxt "field:product.category,account_stock_production:"
-msgid "Account Stock Production"
-msgstr "Compte d'existències de producció"
-
-msgctxt "field:product.category,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr "Compte d'existències de proveïdor"
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Compte d'existències de sortida"
 
 msgctxt "field:product.category.account,account_stock:"
 msgid "Account Stock"
 msgstr "Compte d'existències"
 
-msgctxt "field:product.category.account,account_stock_customer:"
-msgid "Account Stock Customer"
-msgstr "Compte d'existències de client"
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
+msgstr "Compte d'existències d'entrada"
 
-msgctxt "field:product.category.account,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr "Compte d'existències de perdut-trobat"
-
-msgctxt "field:product.category.account,account_stock_production:"
-msgid "Account Stock Production"
-msgstr "Compte d'existències de producció"
-
-msgctxt "field:product.category.account,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr "Compte d'existències de proveïdor"
-
-msgctxt "field:product.modify_cost_price.ask,cost_price:"
-msgid "Cost Price"
-msgstr "Preu de cost"
-
-msgctxt "field:product.modify_cost_price.ask,product:"
-msgid "Variant"
-msgstr "Variant"
-
-msgctxt "field:product.modify_cost_price.ask,template:"
-msgid "Product"
-msgstr "Producte"
-
-msgctxt "field:product.modify_cost_price.show_move,amount:"
-msgid "Amount"
-msgstr "Import"
-
-msgctxt "field:product.modify_cost_price.show_move,counterpart:"
-msgid "Counterpart"
-msgstr "Contrapartida"
-
-msgctxt "field:product.modify_cost_price.show_move,currency_digits:"
-msgid "Currency Digits"
-msgstr "Decimals de la moneda"
-
-msgctxt "field:product.modify_cost_price.show_move,description:"
-msgid "Description"
-msgstr "Descripció"
-
-msgctxt "field:product.modify_cost_price.show_move,journal:"
-msgid "Journal"
-msgstr "Diari"
-
-msgctxt "field:product.modify_cost_price.show_move,price_difference:"
-msgid "Price Difference"
-msgstr "Diferència de preu"
-
-msgctxt "field:product.modify_cost_price.show_move,stock_account:"
-msgid "Stock Account"
-msgstr "Compte d'existències"
-
-msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
-msgid "Account Configuration Cost Price Counterpart Account"
-msgstr "Configuració del compte contrapartida de preu de cost"
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
+msgstr "Compte d'existències de sortida"
 
 msgctxt "model:account.configuration.stock_journal,name:"
 msgid "Account Configuration Stock Journal"
 msgstr "Configuració del diari d'existències"
-
-msgctxt "model:ir.action,name:wizard_modify_cost_price"
-msgid "Modify Cost Price"
-msgstr "Preu de cost"
-
-msgctxt "model:ir.message,text:msg_modify_cost_price_same_account"
-msgid ""
-"To modify the cost price, you must change the counterpart account "
-"\"%(account)s\"."
-msgstr ""
-"Per actualitzar el preu de cost heu de canviar el compte contrapartida "
-"\"%(account)s\"."
-
-msgctxt "model:ir.message,text:msg_product_change_cost_price"
-msgid ""
-"You cannot change the cost price of a product which is associated to stock moves.\n"
-"You must use the \"Modify Cost Price\" wizard."
-msgstr ""
-"No podeu canviar el preu de cost d'un producte que està associat amb moviments d'existències.\n"
-"Per actualitzar-lo heu d'utilitzar l'assistent \"Actualitza preu de cost\"."
-
-msgctxt "model:product.modify_cost_price.ask,name:"
-msgid "Modify Cost Price Ask"
-msgstr "Actualitzar preu de cost"
-
-msgctxt "model:product.modify_cost_price.show_move,name:"
-msgid "Modify Cost Price Show Move"
-msgstr "Mostra assentament d'actualització del preu de cost"
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
 msgid "Continental"
@@ -158,19 +57,3 @@ msgstr "Logística"
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr "Comptabilització de l'existències"
-
-msgctxt "wizard_button:product.modify_cost_price,ask_price,end:"
-msgid "Cancel"
-msgstr "Cancel·la"
-
-msgctxt "wizard_button:product.modify_cost_price,ask_price,should_show_move:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:product.modify_cost_price,show_move,create_move:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:product.modify_cost_price,show_move,end:"
-msgid "Cancel"
-msgstr "Cancel·la"

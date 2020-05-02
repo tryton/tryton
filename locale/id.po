@@ -2,21 +2,8 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.configuration,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
-msgstr ""
-
 msgctxt "field:account.configuration,stock_journal:"
 msgid "Stock Journal"
-msgstr ""
-
-msgctxt "field:account.configuration.cost_price_counterpart_account,company:"
-msgid "Company"
-msgstr "Perusahaan"
-
-msgctxt ""
-"field:account.configuration.cost_price_counterpart_account,cost_price_counterpart_account:"
-msgid "Cost Price Counterpart Account"
 msgstr ""
 
 msgctxt "field:account.configuration.stock_journal,stock_journal:"
@@ -31,112 +18,28 @@ msgctxt "field:product.category,account_stock:"
 msgid "Account Stock"
 msgstr ""
 
-msgctxt "field:product.category,account_stock_customer:"
-msgid "Account Stock Customer"
+msgctxt "field:product.category,account_stock_in:"
+msgid "Account Stock IN"
 msgstr ""
 
-msgctxt "field:product.category,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr ""
-
-msgctxt "field:product.category,account_stock_production:"
-msgid "Account Stock Production"
-msgstr ""
-
-msgctxt "field:product.category,account_stock_supplier:"
-msgid "Account Stock Supplier"
+msgctxt "field:product.category,account_stock_out:"
+msgid "Account Stock OUT"
 msgstr ""
 
 msgctxt "field:product.category.account,account_stock:"
 msgid "Account Stock"
 msgstr ""
 
-msgctxt "field:product.category.account,account_stock_customer:"
-msgid "Account Stock Customer"
+msgctxt "field:product.category.account,account_stock_in:"
+msgid "Account Stock IN"
 msgstr ""
 
-msgctxt "field:product.category.account,account_stock_lost_found:"
-msgid "Account Stock Lost and Found"
-msgstr ""
-
-msgctxt "field:product.category.account,account_stock_production:"
-msgid "Account Stock Production"
-msgstr ""
-
-msgctxt "field:product.category.account,account_stock_supplier:"
-msgid "Account Stock Supplier"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.ask,cost_price:"
-msgid "Cost Price"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.ask,product:"
-msgid "Variant"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.ask,template:"
-msgid "Product"
-msgstr "Produk"
-
-msgctxt "field:product.modify_cost_price.show_move,amount:"
-msgid "Amount"
-msgstr "Jumlah"
-
-msgctxt "field:product.modify_cost_price.show_move,counterpart:"
-msgid "Counterpart"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.show_move,currency_digits:"
-msgid "Currency Digits"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.show_move,description:"
-msgid "Description"
-msgstr "Deskripsi"
-
-msgctxt "field:product.modify_cost_price.show_move,journal:"
-msgid "Journal"
-msgstr "Jurnal"
-
-msgctxt "field:product.modify_cost_price.show_move,price_difference:"
-msgid "Price Difference"
-msgstr ""
-
-msgctxt "field:product.modify_cost_price.show_move,stock_account:"
-msgid "Stock Account"
-msgstr ""
-
-msgctxt "model:account.configuration.cost_price_counterpart_account,name:"
-msgid "Account Configuration Cost Price Counterpart Account"
+msgctxt "field:product.category.account,account_stock_out:"
+msgid "Account Stock OUT"
 msgstr ""
 
 msgctxt "model:account.configuration.stock_journal,name:"
 msgid "Account Configuration Stock Journal"
-msgstr ""
-
-msgctxt "model:ir.action,name:wizard_modify_cost_price"
-msgid "Modify Cost Price"
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_modify_cost_price_same_account"
-msgid ""
-"To modify the cost price, you must change the counterpart account "
-"\"%(account)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_product_change_cost_price"
-msgid ""
-"You cannot change the cost price of a product which is associated to stock moves.\n"
-"You must use the \"Modify Cost Price\" wizard."
-msgstr ""
-
-msgctxt "model:product.modify_cost_price.ask,name:"
-msgid "Modify Cost Price Ask"
-msgstr ""
-
-msgctxt "model:product.modify_cost_price.show_move,name:"
-msgid "Modify Cost Price Show Move"
 msgstr ""
 
 msgctxt "selection:account.fiscalyear,account_stock_method:"
@@ -154,19 +57,3 @@ msgstr "Persediaan"
 msgctxt "view:account.fiscalyear:"
 msgid "Account Stock"
 msgstr ""
-
-msgctxt "wizard_button:product.modify_cost_price,ask_price,end:"
-msgid "Cancel"
-msgstr "Batal"
-
-msgctxt "wizard_button:product.modify_cost_price,ask_price,should_show_move:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:product.modify_cost_price,show_move,create_move:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:product.modify_cost_price,show_move,end:"
-msgid "Cancel"
-msgstr "Batal"
