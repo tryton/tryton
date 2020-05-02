@@ -26,9 +26,18 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Družba"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Verjetnost pretvorbe"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Pretvorjeno"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -516,30 +525,6 @@ msgid "Opportunity"
 msgstr "Priložnost"
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "Dobljeno"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Preklicano"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "Pretvorjeno"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "Sled"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Zapravljeno"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "Priložnost"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Dobljeno"
 

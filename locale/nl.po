@@ -26,9 +26,17 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr "Contact"
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Conversie waarschijnlijkheid"
+
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Geconverteerd door"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -494,30 +502,6 @@ msgid "Opportunity"
 msgstr "Opportunitieiten"
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "Gewonnen"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Geannuleerd"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "geconverteerd"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "Geinteresseerden"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Verloren"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "Opportunitieiten"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Gewonnen"
 

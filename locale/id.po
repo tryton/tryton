@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:sale.opportunity,address:"
 msgid "Address"
-msgstr ""
+msgstr "Alamat"
 
 msgctxt "field:sale.opportunity,amount:"
 msgid "Amount"
@@ -26,9 +26,18 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Dibuat oleh"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -494,30 +503,6 @@ msgid "Opportunity"
 msgstr ""
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr ""
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr ""
 

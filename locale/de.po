@@ -26,9 +26,17 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr "Kontakt"
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Umwandlungswahrscheinlichkeit"
+
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Umgewandelt von"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -80,7 +88,7 @@ msgstr "Verkäufe"
 
 msgctxt "field:sale.opportunity,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
@@ -176,7 +184,7 @@ msgstr "Enddatum"
 
 msgctxt "field:sale.opportunity_employee.context,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:sale.opportunity_employee_monthly,amount:"
 msgid "Amount"
@@ -496,30 +504,6 @@ msgid "Opportunity"
 msgstr "Verkaufschance"
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "Gewonnen"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Annulliert"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "Umgewandelt"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "Interessent"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Verlust"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "Verkaufschance"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Gewonnen"
 

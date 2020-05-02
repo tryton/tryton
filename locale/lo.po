@@ -30,9 +30,18 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Converted"
 
 #, fuzzy
 msgctxt "field:sale.opportunity,currency:"
@@ -562,36 +571,6 @@ msgstr "Opportunities"
 
 #, fuzzy
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "ວອນ ເກົາຫຼີໃຕ້"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Cancelled"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "Converted"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "Leads"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Lost"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "Opportunities"
-
-#, fuzzy
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "ວອນ ເກົາຫຼີໃຕ້"
 

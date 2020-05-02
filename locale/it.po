@@ -27,9 +27,18 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Azienda"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Probabilita di conversion"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "convertito"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -403,7 +412,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:opportunity_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:opportunity_convert_button"
 msgid "Convert to Sale"
@@ -517,30 +526,6 @@ msgid "Opportunity"
 msgstr "opportunity"
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "conseguito"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Annullato"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "convertito"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "lead"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Perso"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "opportunity"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "conseguito"
 

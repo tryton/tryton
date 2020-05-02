@@ -26,9 +26,18 @@ msgctxt "field:sale.opportunity,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+msgctxt "field:sale.opportunity,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:sale.opportunity,conversion_probability:"
 msgid "Conversion Probability"
 msgstr "Pöördumise tõenäosus"
+
+#, fuzzy
+msgctxt "field:sale.opportunity,converted_by:"
+msgid "Converted By"
+msgstr "Muudetud"
 
 msgctxt "field:sale.opportunity,currency:"
 msgid "Currency"
@@ -499,30 +508,6 @@ msgid "Opportunity"
 msgstr "Võimalus"
 
 msgctxt "selection:sale.opportunity,state:"
-msgid "Won"
-msgstr "Võidetud"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Cancelled"
-msgstr "Tühistatud"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Converted"
-msgstr "Muudetud"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lead"
-msgstr "Potentsiaal"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Lost"
-msgstr "Kaotatud"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
-msgid "Opportunity"
-msgstr "Võimalus"
-
-msgctxt "selection:sale.opportunity.line,opportunity_state:"
 msgid "Won"
 msgstr "Võidetud"
 
