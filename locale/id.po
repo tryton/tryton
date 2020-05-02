@@ -24,7 +24,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:carrier.credential.ups,license:"
 msgid "License"
-msgstr ""
+msgstr "Lisensi"
 
 msgctxt "field:carrier.credential.ups,password:"
 msgid "Password"
@@ -32,7 +32,7 @@ msgstr "Kata sandi"
 
 msgctxt "field:carrier.credential.ups,server:"
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 msgctxt "field:carrier.credential.ups,use_metric:"
 msgid "Use Metric"
