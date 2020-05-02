@@ -141,7 +141,7 @@ msgstr "Olek"
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""
 "The PYSON statement that the record must match in order to execute the activity.\n"
-"The record is represented by \"self\""
+"The record is represented by \"self\"."
 msgstr ""
 
 msgctxt "help:marketing.automation.activity,delay:"

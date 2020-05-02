@@ -4,51 +4,51 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:marketing.automation.activity,action:"
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 msgctxt "field:marketing.automation.activity,children:"
 msgid "Children"
-msgstr ""
+msgstr "Figlio"
 
 msgctxt "field:marketing.automation.activity,condition:"
 msgid "Condition"
-msgstr ""
+msgstr "Condizione"
 
 msgctxt "field:marketing.automation.activity,delay:"
 msgid "Delay"
-msgstr ""
+msgstr "Ritardo"
 
 msgctxt "field:marketing.automation.activity,email_clicked:"
 msgid "E-Mails Clicked"
-msgstr ""
+msgstr "E-mail cliccate"
 
 msgctxt "field:marketing.automation.activity,email_from:"
 msgid "From"
-msgstr ""
+msgstr "Da"
 
 msgctxt "field:marketing.automation.activity,email_opened:"
 msgid "E-Mails Opened"
-msgstr ""
+msgstr "E-mail aperte"
 
 msgctxt "field:marketing.automation.activity,email_template:"
 msgid "E-Mail Template"
-msgstr ""
+msgstr "Modello E-mail"
 
 msgctxt "field:marketing.automation.activity,email_title:"
 msgid "E-Mail Title"
-msgstr ""
+msgstr "Titolo E-mail"
 
 msgctxt "field:marketing.automation.activity,event:"
 msgid "Event"
-msgstr ""
+msgstr "Evento"
 
 msgctxt "field:marketing.automation.activity,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:marketing.automation.activity,negative:"
 msgid "Negative"
-msgstr ""
+msgstr "Negativo"
 
 msgctxt "field:marketing.automation.activity,on:"
 msgid "On"
@@ -56,7 +56,7 @@ msgstr ""
 
 msgctxt "field:marketing.automation.activity,parent:"
 msgid "Parent"
-msgstr ""
+msgstr "Padre"
 
 msgctxt "field:marketing.automation.activity,parent_action:"
 msgid "Parent Action"
@@ -68,7 +68,7 @@ msgstr ""
 
 msgctxt "field:marketing.automation.record,blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Bloccato"
 
 msgctxt "field:marketing.automation.record,record:"
 msgid "Record"
@@ -76,15 +76,15 @@ msgstr ""
 
 msgctxt "field:marketing.automation.record,scenario:"
 msgid "Scenario"
-msgstr ""
+msgstr "Scenario"
 
 msgctxt "field:marketing.automation.record,uuid:"
 msgid "UUID"
-msgstr ""
+msgstr "UUID"
 
 msgctxt "field:marketing.automation.record.activity,activity:"
 msgid "Activity"
-msgstr ""
+msgstr "Attività"
 
 msgctxt "field:marketing.automation.record.activity,activity_action:"
 msgid "Activity Action"
@@ -92,7 +92,7 @@ msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,at:"
 msgid "At"
-msgstr ""
+msgstr "A"
 
 msgctxt "field:marketing.automation.record.activity,email_clicked:"
 msgid "E-Mail Clicked"
@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,email_opened:"
 msgid "E-Mail Opened"
-msgstr ""
+msgstr "E-mail aperte"
 
 msgctxt "field:marketing.automation.record.activity,record:"
 msgid "Record"
@@ -108,23 +108,23 @@ msgstr ""
 
 msgctxt "field:marketing.automation.record.activity,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:marketing.automation.scenario,activities:"
 msgid "Activities"
-msgstr ""
+msgstr "Attività"
 
 msgctxt "field:marketing.automation.scenario,domain:"
 msgid "Domain"
-msgstr ""
+msgstr "Dominio"
 
 msgctxt "field:marketing.automation.scenario,model:"
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 msgctxt "field:marketing.automation.scenario,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:marketing.automation.scenario,record_count:"
 msgid "Records"
@@ -136,21 +136,21 @@ msgstr ""
 
 msgctxt "field:marketing.automation.scenario,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "help:marketing.automation.activity,condition:"
 msgid ""
 "The PYSON statement that the record must match in order to execute the activity.\n"
-"The record is represented by \"self\""
+"The record is represented by \"self\"."
 msgstr ""
 
 msgctxt "help:marketing.automation.activity,delay:"
 msgid "After how much time the action should be executed."
-msgstr ""
+msgstr "Dopo quanto tempo l'azione dovrebbe essere eseguita."
 
 msgctxt "help:marketing.automation.activity,email_from:"
 msgid "Leave empty to use the value defined in the configuration file."
-msgstr ""
+msgstr "Lasciare vuoto per il valore definito nel file di configurazione."
 
 msgctxt "help:marketing.automation.activity,email_template:"
 msgid ""
@@ -163,6 +163,8 @@ msgid ""
 "Check to execute the activity if the event has not happened by the end of "
 "the delay."
 msgstr ""
+"Spunta per eseguire l'attività se l'evento non si è verificato entro la fine"
+" del ritardo."
 
 msgctxt "help:marketing.automation.scenario,domain:"
 msgid "A PYSON domain used to filter records valid for this scenario."
@@ -170,7 +172,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_activity_tree"
 msgid "Activities"
-msgstr ""
+msgstr "Attività"
 
 msgctxt "model:ir.action,name:act_record_activity_form"
 msgid "Record Activities"
@@ -182,40 +184,40 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_scenario_form"
 msgid "Scenarios"
-msgstr ""
+msgstr "Scenari"
 
 msgctxt "model:ir.action,name:report_unsubscribe"
 msgid "Marketing Automation Unsubscribe"
-msgstr ""
+msgstr "Automazione Marketing disiscrivi"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_record_activity_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_record_activity_form_domain_cancelled"
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_record_activity_form_domain_done"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_record_activity_form_domain_waiting"
 msgid "Waiting"
-msgstr ""
+msgstr "In attesa"
 
 msgctxt "model:ir.action.act_window.domain,name:act_scenario_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_scenario_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_scenario_form_domain_running"
@@ -225,7 +227,7 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_scenario_form_domain_stopped"
 msgid "Stopped"
-msgstr ""
+msgstr "Fermato"
 
 msgctxt "model:ir.message,text:msg_activity_invalid_condition"
 msgid ""
@@ -265,7 +267,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:scenario_draft_button"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt "model:ir.model.button,string:scenario_run_button"
 msgid "Run"
@@ -277,7 +279,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_scenario_form"
 msgid "Scenarios"
-msgstr ""
+msgstr "Scenari"
 
 msgctxt "model:marketing.automation.activity,name:"
 msgid "Marketing Activity"
@@ -297,7 +299,7 @@ msgstr ""
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Annulla l'iscrizione"
 
 msgctxt "report:marketing.automation.unsubscribe:"
 msgid ""
@@ -322,7 +324,7 @@ msgstr ""
 
 msgctxt "selection:marketing.automation.activity,action:"
 msgid "Send E-Mail"
-msgstr ""
+msgstr "Invia E-mail"
 
 msgctxt "selection:marketing.automation.activity,event:"
 msgid "E-Mail Clicked"
@@ -350,27 +352,27 @@ msgstr ""
 
 msgctxt "selection:marketing.automation.activity,parent:"
 msgid "Activity"
-msgstr ""
+msgstr "Attività"
 
 msgctxt "selection:marketing.automation.activity,parent:"
 msgid "Scenario"
-msgstr ""
+msgstr "Scenario"
 
 msgctxt "selection:marketing.automation.record.activity,state:"
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 msgctxt "selection:marketing.automation.record.activity,state:"
 msgid "Done"
-msgstr ""
+msgstr "Fatto"
 
 msgctxt "selection:marketing.automation.record.activity,state:"
 msgid "Waiting"
-msgstr ""
+msgstr "In attesa"
 
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Running"
@@ -378,19 +380,19 @@ msgstr ""
 
 msgctxt "selection:marketing.automation.scenario,state:"
 msgid "Stopped"
-msgstr ""
+msgstr "Fermato"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "After"
-msgstr ""
+msgstr "Dopo"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "Edit"
-msgstr ""
+msgstr "Modifica"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "If"
-msgstr ""
+msgstr "Se"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "On"
@@ -398,12 +400,12 @@ msgstr ""
 
 msgctxt "view:marketing.automation.activity:"
 msgid "Template:"
-msgstr ""
+msgstr "Modello:"
 
 msgctxt "view:marketing.automation.activity:"
 msgid "Title:"
-msgstr ""
+msgstr "Titolo:"
 
 msgctxt "view:marketing.automation.record.activity:"
 msgid "Time"
-msgstr ""
+msgstr "Tempo"
