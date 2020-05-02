@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:production.routing,supplier_service:"
 msgid "Service"
-msgstr ""
+msgstr "Jasa"
 
 msgctxt "field:production.routing,supplier_service_supplier:"
 msgid "Supplier's Service"
