@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:account.dunning.fee.dunning_level,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:account.dunning.level,fee:"
 msgid "Fee"
