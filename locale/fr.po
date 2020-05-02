@@ -28,7 +28,7 @@ msgstr "Fin réelle"
 
 msgctxt "field:project.work,actual_finish_time:"
 msgid "Actual Finish Time"
-msgstr "Fin réelle"
+msgstr "Heure de fin réelle"
 
 msgctxt "field:project.work,actual_start_date:"
 msgid "Actual Start"
@@ -36,7 +36,7 @@ msgstr "Début réel"
 
 msgctxt "field:project.work,actual_start_time:"
 msgid "Actual Start Time"
-msgstr "Début réel"
+msgstr "Heure de début réelle"
 
 msgctxt "field:project.work,allocations:"
 msgid "Allocations"
@@ -60,7 +60,7 @@ msgstr "Début imposé"
 
 msgctxt "field:project.work,constraint_start_time:"
 msgid "Constraint Start Time"
-msgstr "Début imposé"
+msgstr "Heure de début imposée"
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
@@ -72,15 +72,15 @@ msgstr "Fin au plus tôt"
 
 msgctxt "field:project.work,early_finish_time:"
 msgid "Early Finish Time"
-msgstr "Fin au plus tôt"
+msgstr "Heure de fin au plus tôt"
 
 msgctxt "field:project.work,early_start_date:"
 msgid "Early Start"
-msgstr "Départ au plus tôt"
+msgstr "Début au plus tôt"
 
 msgctxt "field:project.work,early_start_time:"
 msgid "Early Start Time"
-msgstr "Départ au plus tôt"
+msgstr "Heure de début au plus tôt"
 
 msgctxt "field:project.work,late_finish_date:"
 msgid "Late Finish"
@@ -88,7 +88,7 @@ msgstr "Fin au plus tard"
 
 msgctxt "field:project.work,late_finish_time:"
 msgid "Late Finish Time"
-msgstr "Fin au plus tard"
+msgstr "Heure de fin au plus tard"
 
 msgctxt "field:project.work,late_start_date:"
 msgid "Late Start"
@@ -96,7 +96,7 @@ msgstr "Début au plus tard"
 
 msgctxt "field:project.work,late_start_time:"
 msgid "Late Start Time"
-msgstr "Au plus tard"
+msgstr "Heure de début au plus tard"
 
 msgctxt "field:project.work,leveling_delay:"
 msgid "Leveling Delay"

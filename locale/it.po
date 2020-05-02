@@ -2,19 +2,17 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-#, fuzzy
 msgctxt "field:project.allocation,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:project.allocation,percentage:"
 msgid "Percentage"
 msgstr "Percentuale"
 
 msgctxt "field:project.allocation,work:"
 msgid "Work"
-msgstr ""
+msgstr "Lavoro"
 
 msgctxt "field:project.predecessor_successor,predecessor:"
 msgid "Predecessor"
@@ -66,7 +64,7 @@ msgstr ""
 
 msgctxt "field:project.work,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
 msgctxt "field:project.work,early_finish_date:"
 msgid "Early Finish"
