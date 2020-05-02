@@ -25,7 +25,7 @@ msgstr ""
 
 msgctxt "field:purchase.purchase,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Alamat Pengiriman"
 
 msgctxt "field:purchase.purchase,drop_location:"
 msgid "Drop Location"
@@ -41,7 +41,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Alamat Pengiriman"
 
 msgctxt "field:sale.configuration,sale_drop_location:"
 msgid "Sale Drop Location"
@@ -93,7 +93,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,delivery_address:"
 msgid "Delivery Address"
-msgstr ""
+msgstr "Alamat Pengiriman"
 
 msgctxt "field:stock.shipment.drop,effective_date:"
 msgid "Effective Date"
@@ -101,7 +101,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.drop,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "field:stock.shipment.drop,planned_date:"
 msgid "Planned Date"

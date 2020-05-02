@@ -133,7 +133,7 @@ msgstr "Drop Shipments"
 
 msgctxt "model:ir.action,name:act_purchase_shipments_relate"
 msgid "Purchases"
-msgstr "Purchases"
+msgstr "Acquisti"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_sale_drop_shipment_form"
@@ -196,7 +196,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:shipment_drop_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:shipment_drop_done_button"
 msgid "Done"
