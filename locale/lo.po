@@ -47,6 +47,11 @@ msgctxt "field:account.account,debit:"
 msgid "Debit"
 msgstr "ໜີ້"
 
+#, fuzzy
+msgctxt "field:account.account,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
 msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
@@ -185,6 +190,11 @@ msgstr "Close"
 msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.account.template,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
@@ -601,6 +611,20 @@ msgid "Period"
 msgstr "ໄລຍະ"
 
 #, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
+msgid "End Day"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
+msgid "Frequency"
+msgstr "ລຳດັບ"
+
+msgctxt "field:account.fiscalyear.create_periods.start,interval:"
+msgid "Interval"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.fiscalyear.renew.start,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
@@ -650,6 +674,11 @@ msgstr "ເລກເສດສະກຸນເງິນ"
 
 msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,debit_type:"
+msgid "Debit Type"
 msgstr "ໜີ້"
 
 msgctxt "field:account.general_ledger.account,end_balance:"
@@ -1979,8 +2008,13 @@ msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
 
+msgctxt "help:account.account,debit_type:"
+msgid "The type used if not empty and debit > credit."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:account.account,general_ledger_balance:"
-msgid "Display only the balance in the general ledger report"
+msgid "Display only the balance in the general ledger report."
 msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 #, fuzzy
@@ -1996,10 +2030,11 @@ msgid ""
 "to have this secondary currency."
 msgstr "ບັງຄັບການເຄື່ອນໄຫວທັງໝົດສໍາລັບບັນຊີນີ້ ໃຫ້ມີສະກຸນເງິນທີສອງ."
 
+#, fuzzy
 msgctxt "help:account.account,taxes:"
 msgid ""
-"Default tax for manual encoding of move lines \n"
-"for journal types: \"expense\" and \"revenue\""
+"Default tax for manual encoding of move lines\n"
+"for journal types: \"expense\" and \"revenue\"."
 msgstr "ພາສີສຳລັບປ້ອນດ້ວຍມື ສຳລັບລາຍການປະເພດບັນຊີປະຈຳວັນ: \"ລາຍຈ່າຍ\" ແລະ \"ລາຍຮັບ\""
 
 msgctxt "help:account.account,template_override:"
@@ -2010,8 +2045,9 @@ msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.account.template,general_ledger_balance:"
-msgid "Display only the balance in the general ledger report"
+msgid "Display only the balance in the general ledger report."
 msgstr "ສະແດງແຕ່ດຸນດ່ຽງເທົ່ານັ້ນໃນບົດສະຫຼຸບບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 #, fuzzy
@@ -2025,17 +2061,19 @@ msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.aged_balance.context,posted:"
-msgid "Show only posted move"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
 #, fuzzy
 msgctxt "help:account.balance_sheet.comparision.context,posted:"
-msgid "Show only posted move"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.balance_sheet.context,posted:"
-msgid "Show only posted move"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
 msgctxt "help:account.configuration,default_customer_tax_rule:"
@@ -2046,6 +2084,16 @@ msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
 msgstr ""
 
+msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
+msgid ""
+"The day of the month on which periods end.\n"
+"Months with fewer days will end on the last day."
+msgstr ""
+
+msgctxt "help:account.fiscalyear.create_periods.start,interval:"
+msgid "The length of each period, in months."
+msgstr ""
+
 msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Used as reference for fiscalyear configuration."
 msgstr ""
@@ -2054,24 +2102,29 @@ msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.general_ledger.account.context,posted:"
-msgid "Show only posted move"
+msgid "Only included posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.general_ledger.line.context,posted:"
-msgid "Show only posted move"
+msgid "Only included posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.income_statement.context,posted:"
-msgid "Show only posted move"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.move,post_number:"
-msgid "Also known as Folio Number"
+msgid "Also known as Folio Number."
 msgstr "ນອກຈາກນັ້ນຍັງຮູ້ຈັກໃນນາມ ເລກປະຈຳເອກະສານນັ້ນໆ"
 
+#, fuzzy
 msgctxt "help:account.move.line,amount_second_currency:"
-msgid "The amount expressed in a second currency"
+msgid "The amount expressed in a second currency."
 msgstr "ມູນຄ່າເປັນສະກຸນເງິນທີສອງ"
 
 msgctxt "help:account.move.line,maturity_date:"
@@ -2082,8 +2135,9 @@ msgstr ""
 "ຊ່ອງຂໍ້ມູນນີ້ໃຊ້ສຳລັບລາຍການ ໜີ້ຕ້ອງສົ່ງ ແລະ "
 "ໜີ້ຕ້ອງຮັບທ່ານສາມາດໃສ່ວັນທີເສັ້ນຕາຍສຳລັບການຈ່າຍ"
 
+#, fuzzy
 msgctxt "help:account.move.line,second_currency:"
-msgid "The second currency"
+msgid "The second currency."
 msgstr "ສະກຸນເງິນທີສອງ"
 
 msgctxt "help:account.move.line.template,amount:"
@@ -2099,12 +2153,14 @@ msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.move.print_general_journal.start,posted:"
-msgid "Show only posted move"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.move.reconciliation,date:"
-msgid "Highest date of the reconciled lines"
+msgid "Highest date of the reconciled lines."
 msgstr "ວັນທີສູງສຸດຂອງລາຍການກວດສອບຍອດ"
 
 msgctxt "help:account.move.reconciliation,delegate_to:"
@@ -2121,30 +2177,35 @@ msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr "ຄຳສັບລະຫັດທີ່ເອົາມາໃຊ້ແທນ ໄດ້ລະບຸບອກໄວ້ດ້ວຍ ວົງປີກກາ ('{' and '}')"
 
+#, fuzzy
 msgctxt "help:account.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year"
+msgid "Leave empty for all open fiscal year."
 msgstr "ປະເປົ່າສຳລັບປີການບັນຊີທີ່ໄຂຢູ່ທັງໝົດ"
 
+#, fuzzy
 msgctxt "help:account.open_chart.start,posted:"
-msgid "Show posted moves only"
+msgid "Only include posted moves."
 msgstr "ສະແດງບັນຊີເຄື່ອນໄຫວທີ່ປະກາດແລ້ວເທົ່ານັ້ນ"
 
+#, fuzzy
 msgctxt "help:account.tax,amount:"
-msgid "In company's currency"
+msgid "In company's currency."
 msgstr "ຕາມສະກຸນເງິນຂອງ"
 
+#, fuzzy
 msgctxt "help:account.tax,description:"
-msgid "The name that will be used in reports"
+msgid "The name that will be used in reports."
 msgstr "ແມ່ນຊື່ທີ່ຈະໃຊ້ໃນໃບສະຫຼຸຸບລາຍງານ"
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
 "If checked then the unit price for further tax computation will be modified "
-"by this tax"
+"by this tax."
 msgstr "ຖ້າໝາຍເອົາແລ້ວຫົວໜ່ວຍລາຄາສຳລັບການຄິດໄລ່ພາສີຈະຖືກແກ້ໄຂດ້ວຍພາສີນີ້"
 
 msgctxt "help:account.tax.code,template_override:"
@@ -2155,12 +2216,14 @@ msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
 msgstr ""
 
+#, fuzzy
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
-msgid "Leave empty for all open fiscal year"
+msgid "Leave empty for all open fiscal year."
 msgstr "ປະເປົ່າສຳລັບປີການບັນຊີທີ່ໄຂຢູ່ທັງໝົດ"
 
+#, fuzzy
 msgctxt "help:account.tax.code.open_chart.start,periods:"
-msgid "Leave empty for all periods of all open fiscal year"
+msgid "Leave empty for all periods of all open fiscal year."
 msgstr "ປະເປົ່າ ສຳລັບທຸກໄລຍະ ຂອງ ປີການບັນຊີທີ່ໄຂຢູ່"
 
 msgctxt "help:account.tax.line.template,amount:"
@@ -2285,6 +2348,11 @@ msgstr "ປີການບັນຊີ"
 msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr "ດຸນບໍ່ລໍຖ້າຕັດບັນຊີ"
+
+#, fuzzy
+msgctxt "model:account.fiscalyear.create_periods.start,name:"
+msgid "Create Periods Start"
+msgstr "Create Monthly Periods"
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
@@ -2567,6 +2635,11 @@ msgid "Account Configuration"
 msgstr "Account Configuration"
 
 #, fuzzy
+msgctxt "model:ir.action,name:act_create_periods"
+msgid "Create Periods"
+msgstr "Create Monthly Periods"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
 msgstr "Fiscal Years"
@@ -2619,6 +2692,11 @@ msgstr "Journals - Periods"
 msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Account Moves"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_move_form_grouping"
+msgid "Grouped Account Move"
+msgstr "ບັນຊີເຄື່ອນຍ້າຍ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_move_from_template"
@@ -2828,6 +2906,12 @@ msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_cancel_line_delegated"
+msgid ""
+"The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
+"the lines."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
@@ -3142,12 +3226,9 @@ msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
 msgstr "Close"
 
-msgctxt "model:ir.model.button,string:fiscalyear_create_period_3_button"
-msgid "Create 3 Monthly Periods"
-msgstr "Create 3 Monthly Periods"
-
-msgctxt "model:ir.model.button,string:fiscalyear_create_period_button"
-msgid "Create Monthly Periods"
+#, fuzzy
+msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
+msgid "Create Periods"
 msgstr "Create Monthly Periods"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
@@ -3865,6 +3946,20 @@ msgctxt "selection:account.fiscalyear,state:"
 msgid "Open"
 msgstr "ໄຂ"
 
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Monthly"
+msgstr "ເດືອນ"
+
+#, fuzzy
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Other"
+msgstr "ຂໍ້ມູນອື່ນໆ"
+
+msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
+msgid "Quarterly"
+msgstr ""
+
 msgctxt "selection:account.general_ledger.line,state:"
 msgid "Draft"
 msgstr "ຮ່າງກຽມ"
@@ -4157,6 +4252,15 @@ msgstr ""
 "ບັດນີທ່ານສາມາດສ້າງຜັງບັນຊີສຳລັບສຳນັກງານຂອງທ່ານ "
 "ໂດຍເລືອກເອົາຕາມຜັງຮ່າງແບບບັນຊີ"
 
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "every"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.fiscalyear.create_periods.start:"
+msgid "months"
+msgstr "ເດືອນ"
+
 msgctxt "view:account.fiscalyear:"
 msgid "Periods"
 msgstr "ໄລຍະ"
@@ -4280,6 +4384,17 @@ msgid "OK"
 msgstr "ຕົກລົງ"
 
 msgctxt "wizard_button:account.fiscalyear.balance_non_deferral,start,end:"
+msgid "Cancel"
+msgstr "ຍົກເລີກ"
+
+#, fuzzy
+msgctxt ""
+"wizard_button:account.fiscalyear.create_periods,start,create_periods:"
+msgid "Create"
+msgstr "ສ້າງ"
+
+#, fuzzy
+msgctxt "wizard_button:account.fiscalyear.create_periods,start,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
 
