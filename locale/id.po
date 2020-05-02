@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:web.shortened_url.access,url:"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 msgctxt "model:ir.action,name:act_shortened_url"
 msgid "Shortened URLs"
