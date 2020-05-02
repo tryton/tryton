@@ -30,11 +30,11 @@ msgstr "Il luogo \"%(location)s\" è già stata assegnata da \"%(assigned_by)s\"
 
 msgctxt "model:ir.rule.group,name:rule_group_location_movable"
 msgid "Movable location"
-msgstr ""
+msgstr "Luogo mobile"
 
 msgctxt "model:ir.rule.group,name:rule_group_location_movable_admin"
 msgid "Any location"
-msgstr ""
+msgstr "Qualsiasi luogo"
 
 msgctxt "model:res.group,name:group_stock_location_movable"
 msgid "Stock Location Movable"

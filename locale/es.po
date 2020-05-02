@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:stock.location,assigned_by:"
 msgid "Assigned by"
-msgstr "Asignado por"
+msgstr "Reservador por"
 
 msgctxt "field:stock.location,movable:"
 msgid "Movable"
