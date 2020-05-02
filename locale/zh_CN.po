@@ -34,38 +34,33 @@ msgctxt "field:party.address,subdivision:"
 msgid "Subdivision"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "field:party.address,subdivision_types:"
 msgid "Subdivision Types"
-msgstr "行政区划"
+msgstr "行政区划类型"
 
 msgctxt "field:party.address,zip:"
 msgid "Zip"
 msgstr "邮政编码"
 
-#, fuzzy
 msgctxt "field:party.address.format,country_code:"
 msgid "Country Code"
-msgstr "国家"
+msgstr "国家代码"
 
 msgctxt "field:party.address.format,format_:"
 msgid "Format"
 msgstr "格式"
 
-#, fuzzy
 msgctxt "field:party.address.format,language_code:"
 msgid "Language Code"
-msgstr "语言"
+msgstr "语言代码"
 
-#, fuzzy
 msgctxt "field:party.address.subdivision_type,country_code:"
 msgid "Country Code"
-msgstr "国家"
+msgstr "国家代码"
 
-#, fuzzy
 msgctxt "field:party.address.subdivision_type,types:"
 msgid "Subdivision Types"
-msgstr "行政区划"
+msgstr "行政区划类型"
 
 msgctxt "field:party.category,childs:"
 msgid "Children"
@@ -369,10 +364,9 @@ msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
 msgstr "地址格式"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_address_subdivision_type_form"
 msgid "Address Subdivision Types"
-msgstr "行政区划"
+msgstr "地址细分类型"
 
 msgctxt "model:ir.action,name:act_category_list"
 msgid "Categories"
@@ -418,10 +412,9 @@ msgctxt "model:ir.message,text:msg_address_change_party"
 msgid "You cannot change the party of address \"%(address)s\"."
 msgstr "不能改变参与对象地址  \"%(address)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_address_subdivision_country_code_unique"
 msgid "The country code on subdivision type must be unique."
-msgstr "参与对象代码不能重复."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_category_name_unique"
 msgid "The name of party category must be unique by parent."
@@ -481,10 +474,9 @@ msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"
 msgstr "地址格式"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_address_subdivision_type_form"
 msgid "Address Subdivision Types"
-msgstr "行政区划"
+msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_category_list"
 msgid "Categories"
@@ -522,10 +514,9 @@ msgctxt "model:party.address.format,name:"
 msgid "Address Format"
 msgstr "地址格式"
 
-#, fuzzy
 msgctxt "model:party.address.subdivision_type,name:"
 msgid "Address Subdivision Type"
-msgstr "行政区划"
+msgstr ""
 
 msgctxt "model:party.category,name:"
 msgid "Category"

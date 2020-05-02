@@ -950,7 +950,7 @@ msgstr "Identificador fiscal Esloveno"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Company Tax"
-msgstr "Número de empresa Espanyol (CIF)"
+msgstr "Número de empresa Español (CIF)"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Foreigner Number"

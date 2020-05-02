@@ -54,7 +54,6 @@ msgctxt "field:party.address.format,language_code:"
 msgid "Language Code"
 msgstr "Kode Bahasa"
 
-#, fuzzy
 msgctxt "field:party.address.subdivision_type,country_code:"
 msgid "Country Code"
 msgstr "Kode Negara"
@@ -113,7 +112,7 @@ msgstr "Nama"
 
 msgctxt "field:party.contact_mechanism,other_value:"
 msgid "Value"
-msgstr ""
+msgstr "Nilai"
 
 msgctxt "field:party.contact_mechanism,party:"
 msgid "Party"
@@ -137,7 +136,7 @@ msgstr "URL"
 
 msgctxt "field:party.contact_mechanism,value:"
 msgid "Value"
-msgstr ""
+msgstr "Nilai"
 
 msgctxt "field:party.contact_mechanism,value_compact:"
 msgid "Value Compact"
@@ -145,7 +144,7 @@ msgstr ""
 
 msgctxt "field:party.contact_mechanism,website:"
 msgid "Website"
-msgstr ""
+msgstr "Website"
 
 msgctxt "field:party.erase.ask,party:"
 msgid "Party"
@@ -257,7 +256,7 @@ msgstr "Sumber"
 
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
-msgstr ""
+msgstr "Jika diisi, ganti nama pihak untuk pemformatan alamat"
 
 msgctxt "help:party.address.format,format_:"
 msgid ""
@@ -295,7 +294,7 @@ msgstr ""
 
 msgctxt "help:party.category,parent:"
 msgid "Add the category below the parent."
-msgstr ""
+msgstr "Tambahkan kategori di bawah induk."
 
 msgctxt "help:party.configuration,party_lang:"
 msgid "The default language for new parties."
@@ -315,7 +314,7 @@ msgstr ""
 
 msgctxt "help:party.erase.ask,party:"
 msgid "The party to be erased."
-msgstr ""
+msgstr "Pihak yang akan dihapus."
 
 msgctxt "help:party.identifier,party:"
 msgid "The party identified by this record."
@@ -359,7 +358,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_address_form"
 msgid "Addresses"
-msgstr ""
+msgstr "Alamat"
 
 msgctxt "model:ir.action,name:act_address_format_form"
 msgid "Address Formats"
@@ -469,7 +468,7 @@ msgstr "Pihak"
 
 msgctxt "model:ir.ui.menu,name:menu_address_form"
 msgid "Addresses"
-msgstr ""
+msgstr "Alamat"
 
 msgctxt "model:ir.ui.menu,name:menu_address_format_form"
 msgid "Address Formats"

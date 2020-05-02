@@ -77,7 +77,7 @@ msgstr "Nome"
 
 msgctxt "field:party.category,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 msgctxt "field:party.check_vies.result,parties_failed:"
 msgid "Parties Failed"
@@ -112,7 +112,6 @@ msgctxt "field:party.contact_mechanism,email:"
 msgid "E-Mail"
 msgstr "E-mail"
 
-#, fuzzy
 msgctxt "field:party.contact_mechanism,name:"
 msgid "Name"
 msgstr "Nome"
@@ -1056,7 +1055,6 @@ msgctxt "wizard_button:party.check_vies,result,end:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:party.erase,ask,end:"
 msgid "Cancel"
 msgstr "Annulla"

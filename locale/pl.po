@@ -634,11 +634,11 @@ msgstr "Strona WWW"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Albanian VAT Number"
-msgstr ""
+msgstr "Nr VAT w Albanii"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Argentinian Tax Number"
-msgstr ""
+msgstr "Nr podatkowy w Argentynie"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Australian Business Number"
@@ -914,15 +914,15 @@ msgstr ""
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish National Identification Number"
-msgstr ""
+msgstr "Numer PESEL"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish Register of Economic Units"
-msgstr ""
+msgstr "Numer REGON"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish VAT Number"
-msgstr ""
+msgstr "Numer VAT"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Portuguese VAT Number"
