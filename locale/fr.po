@@ -2,13 +2,13 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.trigger,action_model_name:"
-msgid "Action Model Name"
-msgstr "Nom du modèle d'action"
-
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "Notification par e-mail"
+
+msgctxt "field:ir.trigger,notification_email_required:"
+msgid "Notification Email Required"
+msgstr "E-mail de notification requis"
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
@@ -160,6 +160,10 @@ msgstr "Attachement d'e-mail de notification"
 msgctxt "model:notification.email.log,name:"
 msgid "Notitification Email Log"
 msgstr "Journal d'e-mail de notification"
+
+msgctxt "selection:ir.trigger,action:"
+msgid "Email Notification"
+msgstr "Notification par e-mail"
 
 msgctxt "view:notification.email.log:"
 msgid "Time"

@@ -2,13 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.trigger,action_model_name:"
-msgid "Action Model Name"
-msgstr "Toimingu mudeli nimi"
-
 msgctxt "field:ir.trigger,notification_email:"
 msgid "Email Notification"
 msgstr "E-kirja teatis"
+
+#, fuzzy
+msgctxt "field:ir.trigger,notification_email_required:"
+msgid "Notification Email Required"
+msgstr "E-kirja teavitused"
 
 msgctxt "field:notification.email,attachments:"
 msgid "Attachments"
@@ -157,6 +158,11 @@ msgstr "E-kirja teavituse manus"
 msgctxt "model:notification.email.log,name:"
 msgid "Notitification Email Log"
 msgstr "Teavituskirja logi"
+
+#, fuzzy
+msgctxt "selection:ir.trigger,action:"
+msgid "Email Notification"
+msgstr "E-kirja teatis"
 
 msgctxt "view:notification.email.log:"
 msgid "Time"
