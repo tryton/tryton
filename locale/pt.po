@@ -40,7 +40,9 @@ msgstr "A porcentagem da quantidade mínima a ser aceita como enviado."
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_over_shipment"
-msgid "The sale line \"%(line)s\" exceeds the over shipment tolerance."
+msgid ""
+"The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "
+"shipped > %(maximal)s )."
 msgstr "A Linha de Venda \"%s\" excedeu a tolerância de carregamento da remessa."
 
 msgctxt "model:sale.configuration.shipment_tolerance,name:"

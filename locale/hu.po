@@ -39,7 +39,9 @@ msgid "The lower quantity accepted in percentage."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_over_shipment"
-msgid "The sale line \"%(line)s\" exceeds the over shipment tolerance."
+msgid ""
+"The sale line \"%(line)s\" exceeds the over shipment tolerance (%(shipped)s "
+"shipped > %(maximal)s )."
 msgstr ""
 
 msgctxt "model:sale.configuration.shipment_tolerance,name:"
