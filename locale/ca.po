@@ -74,9 +74,29 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Pla"
 
+msgctxt "field:commission.agent,selections:"
+msgid "Selections"
+msgstr "Seleccions"
+
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Tipus"
+
+msgctxt "field:commission.agent.selection,agent:"
+msgid "Agent"
+msgstr "Agent"
+
+msgctxt "field:commission.agent.selection,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
+msgctxt "field:commission.agent.selection,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:commission.agent.selection,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
@@ -122,6 +142,10 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Producte"
 
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr "Agents"
+
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "Comissió principals"
@@ -146,17 +170,109 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Agent comissió"
 
+msgctxt "help:account.invoice,agent:"
+msgid "The agent who receives a commission for the invoice."
+msgstr "El agent que rep la comissió de la factura."
+
+msgctxt "help:account.invoice.line,principal:"
+msgid "The principal who pays a commission for the invoice line."
+msgstr "El principal que paga la comissió per la linia de factura."
+
+msgctxt "help:commission,date:"
+msgid "When the commission is due."
+msgstr "Quan la venç comissió."
+
+msgctxt "help:commission,invoice_state:"
+msgid "The current state of the invoice that the commission appears on."
+msgstr "El estat de la factura on apareix la comissió."
+
+msgctxt "help:commission,origin:"
+msgid "The source of the commission."
+msgstr "El origen de la comissió."
+
+msgctxt "help:commission,product:"
+msgid "The product that is used on the invoice line."
+msgstr "El producte que s'utilitza la línia de factura."
+
+msgctxt "help:commission.agent,party:"
+msgid "The party for whom the commission is calculated."
+msgstr "El tercer per al qual es calcula la comissió."
+
+msgctxt "help:commission.agent,plan:"
+msgid "The plan used to calculate the commission."
+msgstr "El pla utilitzat per calcular la comissió."
+
+msgctxt "help:commission.agent.selection,end_date:"
+msgid "The last date that the agent will be considered for selection."
+msgstr "La última data que en que es seleccionarà l'agent."
+
+msgctxt "help:commission.agent.selection,start_date:"
+msgid "The first date that the agent will be considered for selection."
+msgstr "La data a partir de la que es seleccionarà l'agent."
+
+msgctxt "help:commission.create_invoice.ask,from_:"
+msgid "Limit to commissions from this date."
+msgstr "Limita les comissions a partir d'aquesta data."
+
+msgctxt "help:commission.create_invoice.ask,to:"
+msgid "Limit to commissions to this date."
+msgstr "Limita les comissions fins aquesta data."
+
+msgctxt "help:commission.create_invoice.ask,type_:"
+msgid "Limit to commissions of this type."
+msgstr "Limita les comissións d'aquest tipus."
+
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due."
 msgstr "Quan la venç comissió."
 
+msgctxt "help:commission.plan,commission_product:"
+msgid "The product that is used on the invoice lines."
+msgstr "El producte que s'utilitza a les linies de factura."
+
+msgctxt "help:commission.plan,lines:"
+msgid "The formulas used to calculate the commission for different criteria."
+msgstr ""
+"Les formules utilitzades per calcular les comissions segons els diferents "
+"criteris."
+
+msgctxt "help:commission.plan.line,category:"
+msgid "Apply only to products in the category."
+msgstr "Aplica només als productes de la categoria."
+
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
-"Python expression that will be evaluated with:\n"
+"The python expression used to calculate the amount of commission for the line.\n"
+"It is evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
-"Expressió Python que s'avaluarà amb:\n"
+"L'expressió Python que s'utilitza per calcular l'import de la comissió per la línia:\n"
+"S'avaluarà amb:\n"
 "- amount: L'import original"
+
+msgctxt "help:commission.plan.line,plan:"
+msgid "The plan to which the line belongs."
+msgstr "El pla al que pertany la línia."
+
+msgctxt "help:commission.plan.line,product:"
+msgid "Apply only to the product."
+msgstr "Aplica només per aquest producte."
+
+msgctxt "help:product.product,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr "Els principals que paguen la comissió quan es ven el producte."
+
+msgctxt "help:product.template,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr "Els principals que paguen la comissió quan es ven el producte."
+
+msgctxt "help:sale.line,principal:"
+msgid "The principal who pays a commission for the line."
+msgstr "El principal que paga una comisió per la línia."
+
+msgctxt "help:sale.sale,agent:"
+msgid "The agent who receives a commission for the sale."
+msgstr "El agent que reb la comisió per la venda."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
@@ -169,6 +285,10 @@ msgstr "Comissió"
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
 msgstr "Agent comissió"
+
+msgctxt "model:commission.agent.selection,name:"
+msgid "Agent Selection"
+msgstr "Selecció de l'Agent"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
@@ -185,6 +305,10 @@ msgstr "Línia de pla comissió"
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr "Agents"
+
+msgctxt "model:ir.action,name:act_agent_selections"
+msgid "Selections"
+msgstr "Seleccions"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
@@ -319,6 +443,14 @@ msgid "On Posting"
 msgstr "Al comptabilitzar"
 
 msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "Comissions"
+
+msgctxt "view:commission.agent.selection:"
+msgid "Criteria"
+msgstr "Criteri"
+
+msgctxt "view:party.party:"
 msgid "Commissions"
 msgstr "Comissions"
 

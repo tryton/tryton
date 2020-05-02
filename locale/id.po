@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "field:account.invoice.line,from_commissions:"
 msgid "From Commissions"
@@ -40,7 +40,7 @@ msgstr "Baris Faktur"
 
 msgctxt "field:commission,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "Status Faktur"
 
 msgctxt "field:commission,origin:"
 msgid "Origin"
@@ -74,9 +74,32 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr ""
 
+msgctxt "field:commission.agent,selections:"
+msgid "Selections"
+msgstr ""
+
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr ""
+
+msgctxt "field:commission.agent.selection,agent:"
+msgid "Agent"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,end_date:"
+msgid "End Date"
+msgstr "Tanggal"
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,party:"
+msgid "Party"
+msgstr "Pihak"
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,start_date:"
+msgid "Start Date"
+msgstr "Tanggal Penulisan"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
@@ -92,7 +115,7 @@ msgstr ""
 
 msgctxt "field:commission.plan,commission_method:"
 msgid "Commission Method"
-msgstr ""
+msgstr "Metode Komisi"
 
 msgctxt "field:commission.plan,commission_product:"
 msgid "Commission Product"
@@ -122,6 +145,10 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Produk"
 
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr ""
+
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr ""
@@ -146,26 +173,119 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr ""
 
+msgctxt "help:account.invoice,agent:"
+msgid "The agent who receives a commission for the invoice."
+msgstr ""
+
+msgctxt "help:account.invoice.line,principal:"
+msgid "The principal who pays a commission for the invoice line."
+msgstr ""
+
+msgctxt "help:commission,date:"
+msgid "When the commission is due."
+msgstr ""
+
+msgctxt "help:commission,invoice_state:"
+msgid "The current state of the invoice that the commission appears on."
+msgstr ""
+
+msgctxt "help:commission,origin:"
+msgid "The source of the commission."
+msgstr ""
+
+msgctxt "help:commission,product:"
+msgid "The product that is used on the invoice line."
+msgstr ""
+
+msgctxt "help:commission.agent,party:"
+msgid "The party for whom the commission is calculated."
+msgstr ""
+
+msgctxt "help:commission.agent,plan:"
+msgid "The plan used to calculate the commission."
+msgstr ""
+
+msgctxt "help:commission.agent.selection,end_date:"
+msgid "The last date that the agent will be considered for selection."
+msgstr ""
+
+msgctxt "help:commission.agent.selection,start_date:"
+msgid "The first date that the agent will be considered for selection."
+msgstr ""
+
+msgctxt "help:commission.create_invoice.ask,from_:"
+msgid "Limit to commissions from this date."
+msgstr ""
+
+msgctxt "help:commission.create_invoice.ask,to:"
+msgid "Limit to commissions to this date."
+msgstr ""
+
+msgctxt "help:commission.create_invoice.ask,type_:"
+msgid "Limit to commissions of this type."
+msgstr ""
+
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due."
 msgstr ""
 
+msgctxt "help:commission.plan,commission_product:"
+msgid "The product that is used on the invoice lines."
+msgstr ""
+
+msgctxt "help:commission.plan,lines:"
+msgid "The formulas used to calculate the commission for different criteria."
+msgstr ""
+
+msgctxt "help:commission.plan.line,category:"
+msgid "Apply only to products in the category."
+msgstr ""
+
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
-"Python expression that will be evaluated with:\n"
+"The python expression used to calculate the amount of commission for the line.\n"
+"It is evaluated with:\n"
 "- amount: the original amount"
+msgstr ""
+
+msgctxt "help:commission.plan.line,plan:"
+msgid "The plan to which the line belongs."
+msgstr ""
+
+msgctxt "help:commission.plan.line,product:"
+msgid "Apply only to the product."
+msgstr ""
+
+msgctxt "help:product.product,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+
+msgctxt "help:product.template,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+
+msgctxt "help:sale.line,principal:"
+msgid "The principal who pays a commission for the line."
+msgstr ""
+
+msgctxt "help:sale.sale,agent:"
+msgid "The agent who receives a commission for the sale."
 msgstr ""
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:commission,name:"
 msgid "Commission"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
+msgstr ""
+
+msgctxt "model:commission.agent.selection,name:"
+msgid "Agent Selection"
 msgstr ""
 
 msgctxt "model:commission.create_invoice.ask,name:"
@@ -184,17 +304,21 @@ msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_agent_selections"
+msgid "Selections"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:ir.action,name:act_commission_form2"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:ir.action,name:act_commission_from_relate"
 msgid "From Commissions"
@@ -202,7 +326,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_commission_relate"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:ir.action,name:act_plan_form"
 msgid "Commission Plans"
@@ -230,7 +354,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:ir.ui.menu,name:menu_commission_create_invoice"
 msgid "Create Commission Invoices"
@@ -238,7 +362,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
@@ -254,7 +378,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_commission"
 msgid "Commission"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "model:res.group,name:group_commission_admin"
 msgid "Commission Administration"
@@ -262,7 +386,7 @@ msgstr ""
 
 msgctxt "selection:account.journal,type:"
 msgid "Commission"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Canceled"
@@ -314,15 +438,24 @@ msgstr ""
 
 msgctxt "view:account.invoice.line:"
 msgid "Commissions"
+msgstr "Komisi"
+
+msgctxt "view:commission.agent.selection:"
+msgid "Criteria"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:party.party:"
+msgid "Commissions"
+msgstr "Komisi"
 
 msgctxt "view:product.template:"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "view:sale.line:"
 msgid "Commissions"
-msgstr ""
+msgstr "Komisi"
 
 msgctxt "wizard_button:commission.create_invoice,ask,create_:"
 msgid "OK"

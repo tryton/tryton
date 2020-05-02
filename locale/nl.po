@@ -74,9 +74,29 @@ msgctxt "field:commission.agent,plan:"
 msgid "Plan"
 msgstr "Plan"
 
+msgctxt "field:commission.agent,selections:"
+msgid "Selections"
+msgstr "Selecties"
+
 msgctxt "field:commission.agent,type_:"
 msgid "Type"
 msgstr "Type"
+
+msgctxt "field:commission.agent.selection,agent:"
+msgid "Agent"
+msgstr "Vertegenwoordiger"
+
+msgctxt "field:commission.agent.selection,end_date:"
+msgid "End Date"
+msgstr "Einddatum"
+
+msgctxt "field:commission.agent.selection,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:commission.agent.selection,start_date:"
+msgid "Start Date"
+msgstr "Startdatum"
 
 msgctxt "field:commission.create_invoice.ask,from_:"
 msgid "From"
@@ -122,6 +142,10 @@ msgctxt "field:commission.plan.line,product:"
 msgid "Product"
 msgstr "Product"
 
+msgctxt "field:party.party,agents:"
+msgid "Agents"
+msgstr "Vertegenwoordigers"
+
 msgctxt "field:product.product,principals:"
 msgid "Commission Principals"
 msgstr "comissie debiteuren (schuldenaar)"
@@ -146,17 +170,111 @@ msgctxt "field:sale.sale,agent:"
 msgid "Commission Agent"
 msgstr "Agent van de Commissie"
 
+msgctxt "help:account.invoice,agent:"
+msgid "The agent who receives a commission for the invoice."
+msgstr "De agent die een commissie ontvangt voor de factuur."
+
+msgctxt "help:account.invoice.line,principal:"
+msgid "The principal who pays a commission for the invoice line."
+msgstr "De opdrachtgever die een commissie betaalt voor de factuurregel."
+
+msgctxt "help:commission,date:"
+msgid "When the commission is due."
+msgstr "Wanneer de commissie verschuldigd is."
+
+msgctxt "help:commission,invoice_state:"
+msgid "The current state of the invoice that the commission appears on."
+msgstr "De huidige staat van de factuur waarop de commissie verschijnt."
+
+msgctxt "help:commission,origin:"
+msgid "The source of the commission."
+msgstr "De bron van de commissie."
+
+msgctxt "help:commission,product:"
+msgid "The product that is used on the invoice line."
+msgstr "Het product dat wordt gebruikt op de factuurregel."
+
+msgctxt "help:commission.agent,party:"
+msgid "The party for whom the commission is calculated."
+msgstr "De relatie voor wie de commissie wordt berekend."
+
+msgctxt "help:commission.agent,plan:"
+msgid "The plan used to calculate the commission."
+msgstr "Het plan gebruikt om de commissie te berekenen."
+
+msgctxt "help:commission.agent.selection,end_date:"
+msgid "The last date that the agent will be considered for selection."
+msgstr "De laatste datum waarop de agent in aanmerking komt voor selectie."
+
+msgctxt "help:commission.agent.selection,start_date:"
+msgid "The first date that the agent will be considered for selection."
+msgstr "De eerste datum waarop de agent in aanmerking komt voor selectie."
+
+msgctxt "help:commission.create_invoice.ask,from_:"
+msgid "Limit to commissions from this date."
+msgstr "Beperk tot commissies vanaf deze datum."
+
+msgctxt "help:commission.create_invoice.ask,to:"
+msgid "Limit to commissions to this date."
+msgstr "Beperk tot commissies tot deze datum."
+
+msgctxt "help:commission.create_invoice.ask,type_:"
+msgid "Limit to commissions of this type."
+msgstr "Beperk tot commissies van dit type."
+
 msgctxt "help:commission.plan,commission_method:"
 msgid "When the commission is due."
 msgstr "Wanneer de commissie verschuldigd is."
 
+msgctxt "help:commission.plan,commission_product:"
+msgid "The product that is used on the invoice lines."
+msgstr "Het product dat wordt gebruikt op de factuurregel."
+
+msgctxt "help:commission.plan,lines:"
+msgid "The formulas used to calculate the commission for different criteria."
+msgstr ""
+"De formules die gebruikt worden om de commissie te berekenen voor "
+"verschillende criteria."
+
+msgctxt "help:commission.plan.line,category:"
+msgid "Apply only to products in the category."
+msgstr "Alleen van toepassing op producten van deze categorie."
+
 msgctxt "help:commission.plan.line,formula:"
 msgid ""
-"Python expression that will be evaluated with:\n"
+"The python expression used to calculate the amount of commission for the line.\n"
+"It is evaluated with:\n"
 "- amount: the original amount"
 msgstr ""
-"Python-expressie die wordt geëvalueerd met:\n"
+"De python-uitdrukking die wordt gebruikt om het bedrag van de commissie voor de lijn te berekenen.\n"
+"Het wordt geëvalueerd met:\n"
 "- bedrag: het oorspronkelijke bedrag"
+
+msgctxt "help:commission.plan.line,plan:"
+msgid "The plan to which the line belongs."
+msgstr "Het plan waartoe de lijn behoort."
+
+msgctxt "help:commission.plan.line,product:"
+msgid "Apply only to the product."
+msgstr "Alleen van toepassing op dit product."
+
+msgctxt "help:product.product,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"De opdrachtgever die een commissie betalen bij verkoop van het product."
+
+msgctxt "help:product.template,principals:"
+msgid "The principals who pay a commission when the product is sold."
+msgstr ""
+"De opdrachtgever die een commissie betaalt bij de verkoop van het product."
+
+msgctxt "help:sale.line,principal:"
+msgid "The principal who pays a commission for the line."
+msgstr "De opdrachtgever die de commissie betaalt voor de lijn."
+
+msgctxt "help:sale.sale,agent:"
+msgid "The agent who receives a commission for the sale."
+msgstr "De agent die een commissie ontvangt voor de verkoop."
 
 msgctxt "model:account.journal,name:journal_commission"
 msgid "Commission"
@@ -169,6 +287,10 @@ msgstr "commissie"
 msgctxt "model:commission.agent,name:"
 msgid "Commission Agent"
 msgstr "Commissie vertegenwoordiger"
+
+msgctxt "model:commission.agent.selection,name:"
+msgid "Agent Selection"
+msgstr "Selectie van de vertegenwoordiger"
 
 msgctxt "model:commission.create_invoice.ask,name:"
 msgid "Create Commission Invoice"
@@ -185,6 +307,10 @@ msgstr "Commissie plan lijn"
 msgctxt "model:ir.action,name:act_agent_form"
 msgid "Agents"
 msgstr "Vertegenwoordigers"
+
+msgctxt "model:ir.action,name:act_agent_selections"
+msgid "Selections"
+msgstr "Selecties"
 
 msgctxt "model:ir.action,name:act_commission_create_invoice"
 msgid "Create Commission Invoices"
@@ -319,6 +445,14 @@ msgid "On Posting"
 msgstr "Bij het boeken"
 
 msgctxt "view:account.invoice.line:"
+msgid "Commissions"
+msgstr "commissies"
+
+msgctxt "view:commission.agent.selection:"
+msgid "Criteria"
+msgstr "criteria"
+
+msgctxt "view:party.party:"
 msgid "Commissions"
 msgstr "commissies"
 
