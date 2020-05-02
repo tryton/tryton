@@ -17,19 +17,16 @@ msgstr "Lot"
 
 msgctxt "field:stock.lot,forecast_quantity:"
 msgid "Forecast Quantity"
-msgstr ""
+msgstr "Quantità prevista"
 
-#, fuzzy
 msgctxt "field:stock.lot,number:"
 msgid "Number"
 msgstr "Numero"
 
-#, fuzzy
 msgctxt "field:stock.lot,product:"
 msgid "Product"
 msgstr "Prodotto"
 
-#, fuzzy
 msgctxt "field:stock.lot,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -70,7 +67,6 @@ msgctxt "field:stock.period.cache.lot,period:"
 msgid "Period"
 msgstr "Periodo"
 
-#, fuzzy
 msgctxt "field:stock.period.cache.lot,product:"
 msgid "Product"
 msgstr "Prodotto"

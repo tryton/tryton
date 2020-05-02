@@ -32,11 +32,11 @@ msgstr ""
 
 msgctxt "field:stock.lots_by_location.context,forecast_date:"
 msgid "At Date"
-msgstr ""
+msgstr "Pada Tanggal"
 
 msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
-msgstr ""
+msgstr "Pada Tanggal"
 
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -91,7 +91,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "model:ir.message,text:msg_change_product"
 msgid "You cannot change the product of a stock lot which has stock moves."
