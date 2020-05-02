@@ -44,7 +44,7 @@ msgstr "Dígitos unidad secundaria"
 
 msgctxt "field:purchase.line,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr "Precio unidad secundario"
+msgstr "Precio unitario secundario"
 
 msgctxt "field:purchase.line,secondary_uom_factor:"
 msgid "Secondary UOM Factor"
@@ -141,7 +141,7 @@ msgstr "Cantidad:"
 
 msgctxt "view:purchase.line:"
 msgid "Unit Price:"
-msgstr "Precio unidad:"
+msgstr "Precio unitario:"
 
 msgctxt "view:purchase.line:"
 msgid "Unit:"
