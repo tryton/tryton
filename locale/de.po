@@ -32,7 +32,7 @@ msgstr "Verkaufsbetrag"
 
 msgctxt "field:sale.extra,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:sale.extra.line,extra:"
 msgid "Extra"
