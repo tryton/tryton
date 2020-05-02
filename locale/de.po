@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.account.type,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Anlage"
+msgstr "Anlagevermögen"
 
 msgctxt "field:account.account.type.template,fixed_asset:"
 msgid "Fixed Asset"
-msgstr "Anlage"
+msgstr "Anlagevermögen"
 
 msgctxt "field:account.asset,account_journal:"
 msgid "Journal"
@@ -48,7 +48,7 @@ msgstr "Enddatum"
 
 msgctxt "field:account.asset,frequency:"
 msgid "Frequency"
-msgstr "Häufigkeit"
+msgstr "Buchungsfrequenz"
 
 msgctxt "field:account.asset,lines:"
 msgid "Lines"
@@ -96,7 +96,7 @@ msgstr "Einheit"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen Maßeinheit"
+msgstr "Nachkommastellen"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -206,6 +206,10 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Tag des Monats"
 
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Abschreibungsbuchungsfrequenz"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Nummernkreis Anlage"
@@ -219,6 +223,14 @@ msgid "Day of the Month"
 msgstr "Tag des Monats"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Unternehmen"
+
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Abschreibungsbuchungsfrequenz"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
@@ -299,6 +311,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "Die Standardabschreibungsbuchungsfrequenz für neue Anlagen."
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "Der Monat in dem die Abschreibungen verbucht werden."
@@ -306,6 +322,10 @@ msgstr "Der Monat in dem die Abschreibungen verbucht werden."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "Der Tag des Monats an dem die Abschreibungen verbucht werden."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "Die Standardabschreibungsbuchungsfrequenz für neue Anlagen."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -346,6 +366,10 @@ msgstr "Aktualisierung Anlage Start"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Einstellungen Buchhaltung Anlagen Datum"
+
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Einstellungen Buchhaltung Abschreibungsbuchungsfrequenz"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -706,6 +730,10 @@ msgstr "Anlage"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Buchungen Anlagevermögen"
+
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Abschreibungsbuchungsfrequenz"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

@@ -206,6 +206,10 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Dia del mes"
 
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Freqüència d'amortització d'actius"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Seqüència de referència d'actiu"
@@ -219,6 +223,14 @@ msgid "Day of the Month"
 msgstr "Dia del mes"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Freqüència d'amortització del actiu"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Empresa"
 
@@ -298,6 +310,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "El dia de mes en que es crearan els assentaments d'amortització."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "La freqüència d'amortització per defecte pels nous actius."
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "El mes en que es crearan els assentaments d'amortització."
@@ -305,6 +321,10 @@ msgstr "El mes en que es crearan els assentaments d'amortització."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "El dia del mes en que es crearan els assentaments d'amortització."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "La freqüència d'amortització per defecte pels nous actius."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -345,6 +365,10 @@ msgstr "Actualitza actius - Inici"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Configuració de les dates dels actius"
+
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Configuració de la freqüència dels actius"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -703,6 +727,10 @@ msgstr "Actiu"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Assentament d'actiu"
+
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Freqüència d'amortització"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

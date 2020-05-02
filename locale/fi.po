@@ -210,6 +210,11 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Print Depreciation Table"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
@@ -223,6 +228,15 @@ msgid "Day of the Month"
 msgstr ""
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Print Depreciation Table"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr ""
 
@@ -301,12 +315,20 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr ""
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr ""
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
 msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
@@ -348,6 +370,10 @@ msgstr ""
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
+msgstr ""
+
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
 msgstr ""
 
 msgctxt "model:account.configuration.asset_sequence,name:"
@@ -714,6 +740,11 @@ msgstr "Asset"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Depreciation Table"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

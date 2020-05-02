@@ -206,6 +206,10 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Dag van de maand"
 
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Afschrijvingsfrequentie activa"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Volgorde van activa"
@@ -219,6 +223,14 @@ msgid "Day of the Month"
 msgstr "Dag van de maand"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Afschrijvingsfrequentie activa"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
@@ -298,6 +310,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "De dag van de maand om de afschrijvingsbewegingen te maken."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "De standaardafschrijvingsfrequentie voor nieuwe activa."
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "De maand om de afschrijvingsbewegingen te maken."
@@ -305,6 +321,10 @@ msgstr "De maand om de afschrijvingsbewegingen te maken."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "De dag van de maand om de afschrijvingsbewegingen te maken."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "De standaardafschrijvingsfrequentie voor nieuwe activa."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -345,6 +365,10 @@ msgstr "Start activa bijwerken"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Rekening configuratie Activa datum"
+
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Accountconfiguratie Activafrequentie"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -703,6 +727,10 @@ msgstr "Activa"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Activa boeking"
+
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Afschrijvingsfrequentie"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

@@ -209,6 +209,11 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Amortizacijska tabela sredstev - Začetek"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Štetje sredstev"
@@ -223,6 +228,16 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Amortizacijska tabela sredstev - Začetek"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Družba"
 
@@ -302,12 +317,20 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr ""
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr ""
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
 msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
@@ -349,6 +372,11 @@ msgstr "Popravek sredstev"
 #, fuzzy
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
+msgstr "Konfiguracija štetja sredstev"
+
+#, fuzzy
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
 msgstr "Konfiguracija štetja sredstev"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
@@ -722,6 +750,11 @@ msgstr "Sredstvo"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Amortizacijski konto"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

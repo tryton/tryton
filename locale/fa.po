@@ -209,6 +209,11 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "روز از ماه"
 
+#, fuzzy
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "جدول شروع استهلاک دارایی"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "توالی مرجع دارایی"
@@ -222,6 +227,16 @@ msgid "Day of the Month"
 msgstr "روز از ماه"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "جدول شروع استهلاک دارایی"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "شرکت"
 
@@ -300,6 +315,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "روز ماه برای ایجاد حرکت های استهلاک."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "ماه برای ایجاد حرکت های استهلاک."
@@ -307,6 +326,10 @@ msgstr "ماه برای ایجاد حرکت های استهلاک."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "روز ماه برای ایجاد حرکت های استهلاک."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -346,6 +369,11 @@ msgstr "شروع به روزرسانی دارایی"
 
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
+msgstr "پیکربندی حساب توالی دارایی"
+
+#, fuzzy
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
 msgstr "پیکربندی حساب توالی دارایی"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
@@ -706,6 +734,11 @@ msgstr "دارایی"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "حرکت دارایی"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "حساب استهلاک و اسقاط"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

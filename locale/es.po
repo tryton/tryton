@@ -96,7 +96,7 @@ msgstr "Unidad"
 
 msgctxt "field:account.asset,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:account.asset,update_moves:"
 msgid "Update Moves"
@@ -206,6 +206,10 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Día del mes"
 
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Frecuencia de depreciación del activo"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Secuencia de referencia de activo"
@@ -219,6 +223,14 @@ msgid "Day of the Month"
 msgstr "Día del mes"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Frecuencia de depreciación del activo"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Empresa"
 
@@ -298,6 +310,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "El día del mes en que se van a crear los asientos de amortización."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "La frecuencia de depreciación por defecto para los nuevos activos."
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "El mes en que se van a crear los asientos de amortización."
@@ -305,6 +321,10 @@ msgstr "El mes en que se van a crear los asientos de amortización."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "El día del mes en que se van a crear los asientos de amortización."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr "La frecuencia de depreciación por defecto para los nuevos activos."
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -345,6 +365,10 @@ msgstr "Actualizar activo - Inicio"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Configuración de la fechas de los activos"
+
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Configuración de la frecuencia de activos"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -703,6 +727,10 @@ msgstr "Activo"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Asientos de activo"
+
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Frecuencia de depreciación"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

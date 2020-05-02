@@ -209,6 +209,11 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Dia do Mês"
 
+#, fuzzy
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Tabela de Depreciação - Início"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Sequência de Referência do Ativo"
@@ -222,6 +227,16 @@ msgid "Day of the Month"
 msgstr "Dia do Mês"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Tabela de Depreciação - Início"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Empresa"
 
@@ -301,6 +316,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "O dia do mês para criação de movimentos de depreciação."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "O mês para criação dos movimentos de depreciação."
@@ -308,6 +327,10 @@ msgstr "O mês para criação dos movimentos de depreciação."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "O dia do mês para criação de movimentos de depreciação."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -348,6 +371,11 @@ msgstr "Atualiza Ativos - Início"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Configuração de Contas da Data do Ativo"
+
+#, fuzzy
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Configuração de Contas Sequência de Ativo"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -705,6 +733,11 @@ msgstr "Ativo"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Movimentação de Ativo"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Conta de Depreciação"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

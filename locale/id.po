@@ -30,15 +30,13 @@ msgctxt "field:account.asset,customer_invoice_line:"
 msgid "Customer Invoice Line"
 msgstr "Baris Faktur Pelanggan"
 
-#, fuzzy
 msgctxt "field:account.asset,depreciated_amount:"
 msgid "Depreciated Amount"
-msgstr "Akun Penyusutan"
+msgstr "Jumlah Penyusutan"
 
-#, fuzzy
 msgctxt "field:account.asset,depreciating_value:"
 msgid "Depreciating Value"
-msgstr "Penyusutan"
+msgstr "Nilai Penyusutan"
 
 msgctxt "field:account.asset,depreciation_method:"
 msgid "Depreciation Method"
@@ -208,6 +206,10 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr ""
 
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Frekuensi Penyusutan Aset"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr ""
@@ -221,6 +223,14 @@ msgid "Day of the Month"
 msgstr ""
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Frekuensi Penyusutan Aset"
+
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
@@ -298,12 +308,20 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr ""
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr ""
 
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
+msgstr ""
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
 msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
@@ -346,6 +364,10 @@ msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr ""
 
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr ""
+
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
 msgstr ""
@@ -356,11 +378,11 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Aktiva"
 
 msgctxt "model:ir.action,name:report_depreciation_table"
 msgid "Depreciation Table"
-msgstr ""
+msgstr "Tabel Penyusutan"
 
 msgctxt "model:ir.action,name:wizard_create_moves"
 msgid "Create Assets Moves"
@@ -452,11 +474,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_asset"
 msgid "Assets"
-msgstr ""
+msgstr "Aktiva"
 
 msgctxt "model:ir.ui.menu,name:menu_asset_form"
 msgid "Assets"
-msgstr ""
+msgstr "Aktiva"
 
 msgctxt "model:ir.ui.menu,name:menu_create_depreciation_table"
 msgid "Print Depreciation Table"
@@ -500,7 +522,7 @@ msgstr ""
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Assets"
-msgstr ""
+msgstr "Aktiva"
 
 msgctxt "report:account.asset.depreciation_table:"
 msgid "Closing Value"
@@ -697,6 +719,10 @@ msgstr ""
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr ""
+
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Frekuensi Penyusutan"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"

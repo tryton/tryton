@@ -209,6 +209,11 @@ msgctxt "field:account.configuration,asset_bymonthday:"
 msgid "Day of the Month"
 msgstr "Päev kalendrikuus"
 
+#, fuzzy
+msgctxt "field:account.configuration,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Vara kulumiarvestuste tabeli algus"
+
 msgctxt "field:account.configuration,asset_sequence:"
 msgid "Asset Reference Sequence"
 msgstr "Vara viite järjestus"
@@ -222,6 +227,16 @@ msgid "Day of the Month"
 msgstr "Päev kalendrikuus"
 
 msgctxt "field:account.configuration.asset_date,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,asset_frequency:"
+msgid "Asset Depreciation Frequency"
+msgstr "Vara kulumiarvestuste tabeli algus"
+
+#, fuzzy
+msgctxt "field:account.configuration.asset_frequency,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
@@ -301,6 +316,10 @@ msgctxt "help:account.configuration,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "Päev kalendrikuus, millesse luua kulumi kanded."
 
+msgctxt "help:account.configuration,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
+
 msgctxt "help:account.configuration.asset_date,asset_bymonth:"
 msgid "The month to create the depreciation moves."
 msgstr "Kuu, millesse luua kulumi kanded."
@@ -308,6 +327,10 @@ msgstr "Kuu, millesse luua kulumi kanded."
 msgctxt "help:account.configuration.asset_date,asset_bymonthday:"
 msgid "The day of the month to create the depreciation moves."
 msgstr "Kalendrikuu päev, millal luuakse kulumi kanded."
+
+msgctxt "help:account.configuration.asset_frequency,asset_frequency:"
+msgid "The default depreciation frequency for new assets."
+msgstr ""
 
 msgctxt "help:product.product,depreciation_duration:"
 msgid "In months"
@@ -348,6 +371,11 @@ msgstr "Uuenda vara alusta"
 msgctxt "model:account.configuration.asset_date,name:"
 msgid "Account Configuration Asset Date"
 msgstr "Konto kinnitus vara kuupäev"
+
+#, fuzzy
+msgctxt "model:account.configuration.asset_frequency,name:"
+msgid "Account Configuration Asset Frequency"
+msgstr "Konto seadistuse varade jada"
 
 msgctxt "model:account.configuration.asset_sequence,name:"
 msgid "Account Configuration Asset Sequence"
@@ -706,6 +734,11 @@ msgstr "Vara"
 msgctxt "view:account.configuration:"
 msgid "Asset Move"
 msgstr "Vara kanne"
+
+#, fuzzy
+msgctxt "view:account.configuration:"
+msgid "Depreciation Frequency"
+msgstr "Kulumi konto"
 
 msgctxt "view:account.configuration:"
 msgid "Sequence"
