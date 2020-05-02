@@ -19,23 +19,23 @@ msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
 msgstr "Purchase Requests"
 
-msgctxt "field:sale.line,purchase_request_state:"
-msgid "Purchase Request State"
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
-msgstr "Purchase Requests"
+msgstr "采购申请"
 
 #, fuzzy
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Cancel"
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
 msgstr "取消"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Purchased"
+msgctxt "selection:sale.line,supply_state:"
+msgid "Requested"
 msgstr ""
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Requested"
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
 msgstr ""

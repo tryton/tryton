@@ -18,23 +18,26 @@ msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
 msgstr "ຕ້ອງການສັ່ງຊື້"
 
-msgctxt "field:sale.line,purchase_request_state:"
-msgid "Purchase Request State"
-msgstr "ສະຖານະຕ້ອງການສັ່ງຊື້"
+#, fuzzy
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "ສະໜອງການຂາຍ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Cancel"
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
 msgstr "ຍົກເລີກ"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Purchased"
-msgstr "ສັ່ງຊື້ແລ້ວ"
-
-msgctxt "selection:sale.line,purchase_request_state:"
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
 msgid "Requested"
 msgstr "ສັ່ງແລ້ວ"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr ""

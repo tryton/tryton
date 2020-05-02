@@ -21,23 +21,26 @@ msgctxt "field:sale.line,purchase_request:"
 msgid "Purchase Request"
 msgstr "Satınalma Talebi"
 
-msgctxt "field:sale.line,purchase_request_state:"
-msgid "Purchase Request State"
-msgstr "Satınalma Talebi Durumu"
+#, fuzzy
+msgctxt "field:sale.line,supply_state:"
+msgid "Supply State"
+msgstr "Satış Tedariği"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr "Purchase Requests"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Cancel"
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
+msgid "Cancelled"
 msgstr "Vazgeç"
 
-msgctxt "selection:sale.line,purchase_request_state:"
-msgid "Purchased"
-msgstr "Satınalınan"
-
-msgctxt "selection:sale.line,purchase_request_state:"
+#, fuzzy
+msgctxt "selection:sale.line,supply_state:"
 msgid "Requested"
 msgstr "Talep Edilen"
+
+msgctxt "selection:sale.line,supply_state:"
+msgid "Supplied"
+msgstr ""
