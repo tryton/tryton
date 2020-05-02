@@ -20,7 +20,7 @@ msgstr "Data"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Date:"
-msgstr "Data"
+msgstr "Data:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Description"
@@ -28,15 +28,15 @@ msgstr "Descrizione"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Due Date"
-msgstr "Scadenza"
+msgstr "Data Scadenza"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Fees:"
-msgstr "Spese"
+msgstr "Tariffe:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Pagamenti parziali ricevuti"
+msgstr "Pagamenti in attesa ricevuti"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
@@ -44,4 +44,4 @@ msgstr "Riferimento"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reminder Notice"
-msgstr "Avviso promemoria"
+msgstr "Avviso di promemoria"
