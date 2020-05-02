@@ -8,19 +8,19 @@ msgstr ""
 
 msgctxt "field:account.tax,unece_code:"
 msgid "UNECE Code"
-msgstr ""
+msgstr "Codice UNECE"
 
 msgctxt "field:account.tax.template,unece_category_code:"
 msgid "UNECE Category Code"
-msgstr ""
+msgstr "Codice categoria UNECE"
 
 msgctxt "field:account.tax.template,unece_code:"
 msgid "UNECE Code"
-msgstr ""
+msgstr "Codice UNECE"
 
 msgctxt "field:product.uom,unece_code:"
 msgid "UNECE Code"
-msgstr ""
+msgstr "Codice UNECE"
 
 msgctxt "help:account.tax,unece_category_code:"
 msgid "Standard code of the United Nations Economic Commission for Europe."
@@ -40,15 +40,15 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Duty paid by supplier"
-msgstr ""
+msgstr "Oneri doganali pagati dal fornitore"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Exempt for resale"
-msgstr ""
+msgstr "Esente dalla rivendita"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Exempt from tax"
-msgstr ""
+msgstr "Esente da tasse"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Free export item, tax not charged"
@@ -56,23 +56,23 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Higher rate"
-msgstr ""
+msgstr "Tasso più alto"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Lower rate"
-msgstr ""
+msgstr "Tasso più basso"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Mixed tax rate"
-msgstr ""
+msgstr "Aliquota fiscale mista"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Services outside scope of tax"
-msgstr ""
+msgstr "Servizi al di fuori dell'ambito fiscale"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Standard rate"
-msgstr ""
+msgstr "Tariffa standard"
 
 msgctxt "selection:account.tax,unece_category_code:"
 msgid "Tax for production, services and importation in Ceuta and Melilla"
@@ -144,11 +144,11 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Car tax"
-msgstr ""
+msgstr "Imposta sull'automobile"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Coffee tax"
-msgstr ""
+msgstr "Imposta sul caffè"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Commodity specific tax"
@@ -160,7 +160,7 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Customs duty"
-msgstr ""
+msgstr "Dazi doganali"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Energy fee"
@@ -168,11 +168,11 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Environmental tax"
-msgstr ""
+msgstr "Tassa ambientale"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Excise duty"
-msgstr ""
+msgstr "Accise"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Federal excise tax"
@@ -200,11 +200,11 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Import tax"
-msgstr ""
+msgstr "Tassa di importazione"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Individual tax"
-msgstr ""
+msgstr "Imposta individuale"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Insurance tax"
@@ -224,11 +224,11 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Lust tax"
-msgstr ""
+msgstr "Imposta sulla lussuria"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Mineral oil tax"
-msgstr ""
+msgstr "Tassa su olio minerale"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Miscellaneous cash deposit"
@@ -240,7 +240,7 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Other taxes"
-msgstr ""
+msgstr "Altre tasse"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Paper consortium tax (Italy)"
@@ -288,7 +288,7 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Special tax"
-msgstr ""
+msgstr "Tassa speciale"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Stamp duty (Imposta di Bollo)"
@@ -300,7 +300,7 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Surtax"
-msgstr ""
+msgstr "Sovrattassa"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Suspended duty"
@@ -308,11 +308,11 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Tax on replacement part"
-msgstr ""
+msgstr "Tassa su parti di ricambio"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Tobacco tax"
-msgstr ""
+msgstr "Tassa sul tabacco"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Tonnage taxes"
@@ -320,7 +320,7 @@ msgstr ""
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 msgctxt "selection:account.tax,unece_code:"
 msgid "Turnover tax"
@@ -336,8 +336,8 @@ msgstr ""
 
 msgctxt "view:account.tax.template:"
 msgid "UNECE"
-msgstr ""
+msgstr "UNECE"
 
 msgctxt "view:account.tax:"
 msgid "UNECE"
-msgstr ""
+msgstr "UNECE"
