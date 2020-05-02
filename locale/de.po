@@ -64,7 +64,7 @@ msgstr "Kostenmethode"
 
 msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
-msgstr "Kostenpreis"
+msgstr "Einstandspreis"
 
 msgctxt "field:production.work.center,name:"
 msgid "Name"

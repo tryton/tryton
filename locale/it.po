@@ -34,7 +34,6 @@ msgctxt "field:production.work,production:"
 msgid "Production"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.work,state:"
 msgid "State"
 msgstr "Stato"
@@ -75,21 +74,18 @@ msgctxt "field:production.work.center,cost_price:"
 msgid "Cost Price"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.work.center,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:production.work.center,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 msgctxt "field:production.work.center,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.work.center.category,name:"
 msgid "Name"
 msgstr "Nome"
@@ -100,17 +96,15 @@ msgstr ""
 
 msgctxt "field:production.work.cycle,duration:"
 msgid "Duration"
-msgstr ""
+msgstr "Durata"
 
-#, fuzzy
 msgctxt "field:production.work.cycle,state:"
 msgid "State"
 msgstr "Stato"
 
-#, fuzzy
 msgctxt "field:production.work.cycle,work:"
 msgid "Work"
-msgstr "Works"
+msgstr "Lavoro"
 
 msgctxt "model:ir.action,name:act_work_center_category_list"
 msgid "Work Center Categories"
@@ -169,7 +163,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:work_cycle_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:work_cycle_do_button"
 msgid "Do"
