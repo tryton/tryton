@@ -97,15 +97,15 @@ msgstr "Pihak"
 
 msgctxt "field:account.payment.sepa.mandate,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "field:account.payment.sepa.mandate,scheme:"
 msgid "Scheme"
-msgstr ""
+msgstr "Skema"
 
 msgctxt "field:account.payment.sepa.mandate,sequence_type_rcur:"
 msgid "Always use RCUR"
-msgstr ""
+msgstr "Selalu gunakan RCUR"
 
 msgctxt "field:account.payment.sepa.mandate,signature_date:"
 msgid "Signature Date"
@@ -248,12 +248,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_party_invalid_sepa"
-msgid ""
-"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
-"valid."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_party_no_id"
@@ -546,10 +540,6 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "OUT"
 
-msgctxt "selection:party.identifier,type:"
-msgid "SEPA Creditor Identifier"
-msgstr ""
-
 msgctxt "view:account.configuration:"
 msgid "SEPA"
 msgstr "SEPA"
@@ -557,3 +547,16 @@ msgstr "SEPA"
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
+
+msgctxt "view:account.payment:"
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Information"
+msgstr "Lokasi"
+
+msgctxt "view:account.payment:"
+msgid "Return Reason"
+msgstr ""

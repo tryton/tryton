@@ -255,14 +255,6 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr "SEPA mandaadi identifikaator peab olema ettevõtete lõikes unikaalne"
 
-msgctxt "model:ir.message,text:msg_party_invalid_sepa"
-msgid ""
-"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
-"valid."
-msgstr ""
-"SEPA kreeditori identifikaator \"%(koodid)\" osapoolele \"%(osapooltele)\" "
-"ei kehti"
-
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
@@ -558,10 +550,6 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr "Väljas"
 
-msgctxt "selection:party.identifier,type:"
-msgid "SEPA Creditor Identifier"
-msgstr "SEPA kreeditori identifikaator"
-
 msgctxt "view:account.configuration:"
 msgid "SEPA"
 msgstr "SEPA"
@@ -569,3 +557,17 @@ msgstr "SEPA"
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
 msgstr "SEPA"
+
+msgctxt "view:account.payment:"
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Information"
+msgstr "Identifikatsioon"
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Return Reason"
+msgstr "Tagastamise põhjuse kood"

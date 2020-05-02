@@ -274,12 +274,6 @@ msgctxt "model:ir.message,text:msg_mandate_unique_id"
 msgid "SEPA mandate identification must be unique by company."
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_party_invalid_sepa"
-msgid ""
-"The SEPA creditor identifier \"%(code)s\" for party \"%(party)s\" is not "
-"valid."
-msgstr ""
-
 msgctxt "model:ir.message,text:msg_party_no_id"
 msgid "The party \"%(party)s\" is missing a \"%(type)s\" identifier."
 msgstr ""
@@ -587,14 +581,23 @@ msgctxt "selection:account.payment.sepa.message,type:"
 msgid "OUT"
 msgstr ""
 
-msgctxt "selection:party.identifier,type:"
-msgid "SEPA Creditor Identifier"
-msgstr ""
-
 msgctxt "view:account.configuration:"
 msgid "SEPA"
 msgstr ""
 
 msgctxt "view:account.payment.journal:"
 msgid "SEPA"
+msgstr ""
+
+msgctxt "view:account.payment:"
+msgid "Code"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment:"
+msgid "Information"
+msgstr "Местоположение"
+
+msgctxt "view:account.payment:"
+msgid "Return Reason"
 msgstr ""
