@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr "Precio unidad borrador"
+msgstr "Precio unitario borrador"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
@@ -52,7 +52,7 @@ msgstr "Unidad"
 
 msgctxt "field:sale.promotion,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:sale.promotion-product.category,category:"
 msgid "Category"

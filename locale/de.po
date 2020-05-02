@@ -44,7 +44,7 @@ msgstr "Menge"
 
 msgctxt "field:sale.promotion,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:sale.promotion,unit:"
 msgid "Unit"

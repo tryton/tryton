@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.line,draft_unit_price:"
 msgid "Draft Unit Price"
-msgstr "Preu unitat esborrany"
+msgstr "Preu unitari esborrany"
 
 msgctxt "field:sale.line,promotion:"
 msgid "Promotion"
@@ -76,7 +76,7 @@ msgid ""
 "- unit_price: the original unit_price"
 msgstr ""
 "Expressió Python que s'avaluarà amb:\n"
-"- unit_price: El preu per unitat original"
+"- unit_price: El preu unitari original"
 
 msgctxt "model:ir.action,name:act_promotion_form"
 msgid "Promotions"
