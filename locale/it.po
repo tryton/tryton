@@ -6,7 +6,6 @@ msgctxt "field:stock.move.split.start,count:"
 msgid "Counts"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.move.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -83,20 +82,18 @@ msgctxt "view:stock.shipment.split.start:"
 msgid "Choose move to send in new shipment:"
 msgstr ""
 
-#, fuzzy
 msgctxt "wizard_button:stock.move.split,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "wizard_button:stock.move.split,start,split:"
 msgid "Split"
 msgstr "Split"
 
-#, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "wizard_button:stock.shipment.split,start,split:"

@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:stock.shipment.split.start,moves:"
 msgid "Moves"
-msgstr ""
+msgstr "Perpindahan"
 
 msgctxt "help:stock.move.split.start,count:"
 msgid "The limit number of moves."
