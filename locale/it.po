@@ -6,7 +6,6 @@ msgctxt "field:production.split.start,count:"
 msgid "Count"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:production.split.start,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -41,10 +40,9 @@ msgctxt "model:production.split.start,name:"
 msgid "Split Production"
 msgstr "Split Production"
 
-#, fuzzy
 msgctxt "wizard_button:production.split,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "wizard_button:production.split,start,split:"
