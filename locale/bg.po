@@ -25,6 +25,11 @@ msgid "Sale Price List"
 msgstr "Ценова листа при продажба"
 
 #, fuzzy
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "Ценова листа"
+
+#, fuzzy
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
 msgstr "Ценова листа при продажба"

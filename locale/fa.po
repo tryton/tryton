@@ -22,6 +22,11 @@ msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
 msgstr "لیست قیمت فروش"
 
+#, fuzzy
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "لیست قیمت"
+
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
 msgstr "لیست قیمت فروش"

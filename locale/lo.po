@@ -24,6 +24,11 @@ msgctxt "field:party.party.sale_price_list,sale_price_list:"
 msgid "Sale Price List"
 msgstr "ລາຍການລາຄາຂາຍ"
 
+#, fuzzy
+msgctxt "field:product.sale.context,price_list:"
+msgid "Price List"
+msgstr "ລາຍການລາຄາ"
+
 msgctxt "field:sale.configuration,sale_price_list:"
 msgid "Sale Price List"
 msgstr "ລາຍການລາຄາຂາຍ"
