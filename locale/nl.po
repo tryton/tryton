@@ -26,6 +26,34 @@ msgctxt "field:product.product,sale_uom:"
 msgid "Sale UOM"
 msgstr "Maateenheid verkoop"
 
+msgctxt "field:product.sale.context,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:product.sale.context,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:product.sale.context,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt "field:product.sale.context,locations:"
+msgid "Warehouses"
+msgstr "Magazijnen"
+
+msgctxt "field:product.sale.context,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
+msgctxt "field:product.sale.context,sale_date:"
+msgid "Sale Date"
+msgstr "Verkoopsdatum"
+
+msgctxt "field:product.sale.context,stock_date_end:"
+msgid "Stock End Date"
+msgstr "Einddatum voorraad"
+
 msgctxt "field:product.template,lead_time:"
 msgid "Lead Time"
 msgstr "Doorlooptijd"
@@ -86,9 +114,17 @@ msgctxt "field:sale.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Boekingen opnieuw aanmaken"
 
+msgctxt "field:sale.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Werkelijke hoeveelheid"
+
 msgctxt "field:sale.line,amount:"
 msgid "Amount"
 msgstr "Bedrag"
+
+msgctxt "field:sale.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
 
 msgctxt "field:sale.line,description:"
 msgid "Description"
@@ -206,26 +242,6 @@ msgctxt "field:sale.reporting.category,category:"
 msgid "Category"
 msgstr "Categorie"
 
-msgctxt "field:sale.reporting.category,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.category,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.reporting.category,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.category,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.category,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
 msgctxt "field:sale.reporting.category,time_series:"
 msgid "Time Series"
 msgstr "Tijdreeksen"
@@ -234,29 +250,9 @@ msgctxt "field:sale.reporting.category.time_series,category:"
 msgid "Category"
 msgstr "Categorie"
 
-msgctxt "field:sale.reporting.category.time_series,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.category.time_series,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:sale.reporting.category.time_series,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:sale.reporting.category.time_series,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.category.time_series,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.category.time_series,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
 
 msgctxt "field:sale.reporting.category.tree,children:"
 msgid "Children"
@@ -298,57 +294,17 @@ msgctxt "field:sale.reporting.context,warehouse:"
 msgid "Warehouse"
 msgstr "Magazijn"
 
-msgctxt "field:sale.reporting.country,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
 msgctxt "field:sale.reporting.country,country:"
 msgid "Country"
 msgstr "Land"
-
-msgctxt "field:sale.reporting.country,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.reporting.country,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.country,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.country,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
 
 msgctxt "field:sale.reporting.country,time_series:"
 msgid "Time Series"
 msgstr "Tijdreeksen"
 
-msgctxt "field:sale.reporting.country.subdivision,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
 msgctxt "field:sale.reporting.country.subdivision,country:"
 msgid "Country"
 msgstr "Land"
-
-msgctxt "field:sale.reporting.country.subdivision,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.reporting.country.subdivision,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.country.subdivision,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.country.subdivision,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
 
 msgctxt "field:sale.reporting.country.subdivision,subdivision:"
 msgid "Subdivision"
@@ -358,102 +314,33 @@ msgctxt "field:sale.reporting.country.subdivision,time_series:"
 msgid "Time Series"
 msgstr "Tijdreeksen"
 
-msgctxt "field:sale.reporting.country.subdivision.time_series,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,country:"
 msgid "Country"
 msgstr "Land"
-
-msgctxt ""
-"field:sale.reporting.country.subdivision.time_series,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:sale.reporting.country.subdivision.time_series,date:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "field:sale.reporting.country.subdivision.time_series,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.country.subdivision.time_series,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
 msgctxt "field:sale.reporting.country.subdivision.time_series,subdivision:"
 msgid "Subdivision"
 msgstr "Onderverdeling"
-
-msgctxt "field:sale.reporting.country.time_series,company:"
-msgid "Company"
-msgstr "Bedrijf"
 
 msgctxt "field:sale.reporting.country.time_series,country:"
 msgid "Country"
 msgstr "Land"
 
-msgctxt "field:sale.reporting.country.time_series,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:sale.reporting.country.time_series,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:sale.reporting.country.time_series,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.country.time_series,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.country.time_series,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
-msgctxt "field:sale.reporting.customer,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.customer,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:sale.reporting.customer,customer:"
 msgid "Customer"
 msgstr "Klanten"
 
-msgctxt "field:sale.reporting.customer,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.customer,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.customer,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
 msgctxt "field:sale.reporting.customer,time_series:"
 msgid "Time Series"
 msgstr "Tijdreeksen"
-
-msgctxt "field:sale.reporting.customer.time_series,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.customer.time_series,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
 
 msgctxt "field:sale.reporting.customer.time_series,customer:"
 msgid "Customer"
@@ -463,89 +350,25 @@ msgctxt "field:sale.reporting.customer.time_series,date:"
 msgid "Date"
 msgstr "Datum"
 
-msgctxt "field:sale.reporting.customer.time_series,number:"
-msgid "#"
-msgstr "#"
-
-msgctxt "field:sale.reporting.customer.time_series,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.customer.time_series,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
-msgctxt "field:sale.reporting.product,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.product,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.reporting.product,number:"
-msgid "#"
-msgstr "#"
-
 msgctxt "field:sale.reporting.product,product:"
 msgid "Product"
 msgstr "Product"
-
-msgctxt "field:sale.reporting.product,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.product,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
 
 msgctxt "field:sale.reporting.product,time_series:"
 msgid "Time Series"
 msgstr "Tijdreeksen"
 
-msgctxt "field:sale.reporting.product.time_series,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.product.time_series,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
 msgctxt "field:sale.reporting.product.time_series,date:"
 msgid "Date"
 msgstr "Datum"
-
-msgctxt "field:sale.reporting.product.time_series,number:"
-msgid "#"
-msgstr "#"
 
 msgctxt "field:sale.reporting.product.time_series,product:"
 msgid "Product"
 msgstr "Product"
 
-msgctxt "field:sale.reporting.product.time_series,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.product.time_series,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
 msgctxt "field:sale.reporting.region,children:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
-
-msgctxt "field:sale.reporting.region,company:"
-msgid "Company"
-msgstr "Bedrijf"
-
-msgctxt "field:sale.reporting.region,currency_digits:"
-msgid "Currency Digits"
-msgstr "Valuta decimalen"
-
-msgctxt "field:sale.reporting.region,number:"
-msgid "#"
-msgstr "#"
 
 msgctxt "field:sale.reporting.region,parent:"
 msgid "Parent"
@@ -555,14 +378,6 @@ msgctxt "field:sale.reporting.region,region:"
 msgid "Region"
 msgstr "Regio"
 
-msgctxt "field:sale.reporting.region,revenue:"
-msgid "Revenue"
-msgstr "Omzet"
-
-msgctxt "field:sale.reporting.region,revenue_trend:"
-msgid "Revenue Trend"
-msgstr "Inkomsten trend"
-
 msgctxt "field:sale.sale,comment:"
 msgid "Comment"
 msgstr "Opmerking"
@@ -570,6 +385,14 @@ msgstr "Opmerking"
 msgctxt "field:sale.sale,company:"
 msgid "Company"
 msgstr "Bedrijf"
+
+msgctxt "field:sale.sale,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Bevestigd door"
+
+msgctxt "field:sale.sale,contact:"
+msgid "Contact"
+msgstr "Contact"
 
 msgctxt "field:sale.sale,currency:"
 msgid "Currency"
@@ -590,6 +413,10 @@ msgstr "Factuuradres"
 msgctxt "field:sale.sale,invoice_method:"
 msgid "Invoice Method"
 msgstr "Factuur afhandeling"
+
+msgctxt "field:sale.sale,invoice_party:"
+msgid "Invoice Party"
+msgstr "Factuur relatie (Invoice Party)"
 
 msgctxt "field:sale.sale,invoice_state:"
 msgid "Invoice State"
@@ -634,6 +461,10 @@ msgstr "Taal relatie"
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
 msgstr "Betalingstermijn"
+
+msgctxt "field:sale.sale,quoted_by:"
+msgid "Quoted By"
+msgstr "Offerte gemaakt door"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -738,50 +569,6 @@ msgstr ""
 "De geselecteerde facturen worden opnieuw aangemaakt. De rest wordt "
 "genegeerd."
 
-msgctxt "help:sale.reporting.category,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.category.time_series,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.country,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.country.subdivision,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.country.subdivision.time_series,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.country.time_series,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.customer,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.customer.time_series,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.product,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.product.time_series,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
-msgctxt "help:sale.reporting.region,number:"
-msgid "Number of sales"
-msgstr "Aantal verkopen"
-
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
 msgstr "Facturen"
@@ -789,6 +576,10 @@ msgstr "Facturen"
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
 msgstr "Relaties gekoppeld aan de verkoop"
+
+msgctxt "model:ir.action,name:act_product"
+msgid "Salable Products"
+msgstr "Verkoopbare producten"
 
 msgctxt "model:ir.action,name:act_reporting_category"
 msgid "Sales per Category"
@@ -849,6 +640,10 @@ msgstr "Verkoop"
 msgctxt "model:ir.action,name:act_sale_invoice_relate"
 msgid "Sales"
 msgstr "Verkoop"
+
+msgctxt "model:ir.action,name:act_sale_move_relate"
+msgid "Moves"
+msgstr "Boekingen"
 
 msgctxt "model:ir.action,name:act_sale_shipment_returns_relate"
 msgid "Sales"
@@ -960,7 +755,7 @@ msgstr ""
 "Om lijn \"%(line)s\" te verwijderen, moet u deze annuleren of terug zetten  "
 "naar concept verkoop \"%(sale)s\"."
 
-msgctxt "model:ir.message,text:msg_sale_missing_account_expense"
+msgctxt "model:ir.message,text:msg_sale_missing_account_revenue"
 msgid "To invoice sale \"%(sale)s\" you must configure a default account revenue."
 msgstr ""
 "Om verkoop \"%(sale)s\"\" te factureren, moet u een "
@@ -980,13 +775,37 @@ msgstr ""
 "U kunt boeking \"%(move)s\" niet terug zetten naar concept omdat deze is "
 "gegenereerd door een verkoop."
 
-msgctxt "model:ir.message,text:msg_sale_product_missing_account_expense"
+msgctxt "model:ir.message,text:msg_sale_product_missing_account_revenue"
 msgid ""
 "To invoice sale \"%(sale)s\" you must define an account revenue for product "
 "\"%(product)s\"."
 msgstr ""
 "Om de factuur voor de verkoop \"%(sale)s\" te genereren, moet u eerst een "
-"omzetaccount configureren voor het artikel  \"%(product)s\"."
+"omzetaccount configureren voor het artikel \"%(product)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_reporting_company"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number"
+msgid "#"
+msgstr "#"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_number_help"
+msgid "Number of sales"
+msgstr "Aantal verkopen"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue"
+msgid "Revenue"
+msgstr "Omzet"
+
+msgctxt "model:ir.message,text:msg_sale_reporting_revenue_trend"
+msgid "Revenue Trend"
+msgstr "Inkomsten trend"
 
 msgctxt ""
 "model:ir.message,text:msg_sale_shipment_address_required_for_quotation"
@@ -1053,6 +872,10 @@ msgctxt "model:ir.ui.menu,name:menu_customer"
 msgid "Parties associated to Sales"
 msgstr "Relaties gekoppeld aan verkoop"
 
+msgctxt "model:ir.ui.menu,name:menu_product"
+msgid "Salable Products"
+msgstr "Verkoopbare producten"
+
 msgctxt "model:ir.ui.menu,name:menu_reporting"
 msgid "Reporting"
 msgstr "Rapporten"
@@ -1072,6 +895,10 @@ msgstr "Verkoops instellingen"
 msgctxt "model:ir.ui.menu,name:menu_sale_form"
 msgid "Sales"
 msgstr "Verkopen"
+
+msgctxt "model:product.sale.context,name:"
+msgid "Product Sale Context"
+msgstr "Productverkoopcontext"
 
 msgctxt "model:res.group,name:group_sale"
 msgid "Sales"
@@ -1252,30 +1079,6 @@ msgstr "Genegeerd"
 msgctxt "selection:account.invoice,sale_exception_state:"
 msgid "Recreated"
 msgstr "Opnieuw aangemaakt"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Canceled"
-msgstr "Geannuleerd"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Confirmed"
-msgstr "Bevestigd"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Done"
-msgstr "Klaar"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Draft"
-msgstr "Concept"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Processing"
-msgstr "Verwerking"
-
-msgctxt "selection:sale.line,sale_state:"
-msgid "Quotation"
-msgstr "Offerte"
 
 msgctxt "selection:sale.line,type:"
 msgid "Comment"
