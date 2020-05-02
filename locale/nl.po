@@ -21,7 +21,3 @@ msgstr "Productkostengeschiedenis"
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
 msgstr "Geschiedenis van productkosten"
-
-msgctxt "view:product.product.cost_history:"
-msgid "Time"
-msgstr "Tijd"

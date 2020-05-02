@@ -11,7 +11,6 @@ msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
 msgstr "Data"
 
-#, fuzzy
 msgctxt "field:product.product.cost_history,product:"
 msgid "Product"
 msgstr "Prodotto"
@@ -22,8 +21,4 @@ msgstr "Product Cost History"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr ""
-
-msgctxt "view:product.product.cost_history:"
-msgid "Time"
 msgstr ""

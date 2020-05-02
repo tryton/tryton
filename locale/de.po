@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.product.cost_history,cost_price:"
 msgid "Cost Price"
-msgstr "Kostenpreis"
+msgstr "Einstandspreis"
 
 msgctxt "field:product.product.cost_history,date:"
 msgid "Date"
@@ -20,8 +20,4 @@ msgstr "Historie Kostenpreis"
 
 msgctxt "model:product.product.cost_history,name:"
 msgid "History of Product Cost"
-msgstr "Historie Kostenpreis Artikel"
-
-msgctxt "view:product.product.cost_history:"
-msgid "Time"
-msgstr "Zeit"
+msgstr "Historie Einstandspreis Artikel"
