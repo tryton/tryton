@@ -185,6 +185,11 @@ msgctxt "model:stock.supply.start,name:"
 msgid "Supply Stock"
 msgstr "Abastecer Estoque"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Interno"

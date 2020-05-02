@@ -169,6 +169,10 @@ msgctxt "model:stock.supply.start,name:"
 msgid "Supply Stock"
 msgstr "Approvisionner le stock"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "Approvisionner le stock"
+
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Interne"

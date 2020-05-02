@@ -167,6 +167,10 @@ msgctxt "model:stock.supply.start,name:"
 msgid "Supply Stock"
 msgstr "voorraad levering"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "voorraad levering"
+
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Intern"

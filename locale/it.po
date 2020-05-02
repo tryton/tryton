@@ -44,7 +44,6 @@ msgctxt "field:stock.order_point,overflowing_location:"
 msgid "Overflowing Location"
 msgstr ""
 
-#, fuzzy
 msgctxt "field:stock.order_point,product:"
 msgid "Product"
 msgstr "Prodotto"
@@ -174,6 +173,11 @@ msgid "Supply Stock"
 msgstr "Supply Stock"
 
 #, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Supply Stock"
+msgstr "Supply Stock"
+
+#, fuzzy
 msgctxt "selection:stock.order_point,type:"
 msgid "Internal"
 msgstr "Internal"
@@ -201,7 +205,6 @@ msgctxt "wizard_button:stock.supply,start,create_:"
 msgid "Create"
 msgstr "Creazione"
 
-#, fuzzy
 msgctxt "wizard_button:stock.supply,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
