@@ -90,9 +90,10 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Valuta"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "Tečaj"
+msgid "Currency Rate"
+msgstr "Trenutni tečaj"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_currency_form"

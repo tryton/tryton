@@ -68,7 +68,7 @@ msgstr "Pridėti kintamus valiutos kursus."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr "Minimali suma, kuri gali būti parodoma šia valiuta"
+msgstr "Minimali suma, kuri gali būti parodoma šia valiuta."
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
@@ -90,9 +90,10 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Valiuta"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "Kursas"
+msgid "Currency Rate"
+msgstr "Valiutos kursas"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"

@@ -91,7 +91,7 @@ msgid "Currency"
 msgstr "Moneda"
 
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
+msgid "Currency Rate"
 msgstr "Taxa de canvi"
 
 msgctxt "model:ir.action,name:act_currency_form"

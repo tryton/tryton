@@ -91,8 +91,8 @@ msgid "Currency"
 msgstr "Währung"
 
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "Kurs"
+msgid "Currency Rate"
+msgstr "Währungskurs"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"

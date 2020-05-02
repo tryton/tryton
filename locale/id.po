@@ -8,7 +8,7 @@ msgstr "Kode"
 
 msgctxt "field:currency.currency,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Digit"
 
 msgctxt "field:currency.currency,name:"
 msgid "Name"
@@ -16,23 +16,23 @@ msgstr "Nama"
 
 msgctxt "field:currency.currency,numeric_code:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Kode Numerik"
 
 msgctxt "field:currency.currency,rate:"
 msgid "Current rate"
-msgstr ""
+msgstr "Kurs sekarang"
 
 msgctxt "field:currency.currency,rates:"
 msgid "Rates"
-msgstr ""
+msgstr "Kurs"
 
 msgctxt "field:currency.currency,rounding:"
 msgid "Rounding factor"
-msgstr ""
+msgstr "Faktor pembulatan"
 
 msgctxt "field:currency.currency,symbol:"
 msgid "Symbol"
-msgstr ""
+msgstr "Simbol"
 
 msgctxt "field:currency.currency.rate,currency:"
 msgid "Currency"
@@ -44,7 +44,7 @@ msgstr "Tanggal"
 
 msgctxt "field:currency.currency.rate,rate:"
 msgid "Rate"
-msgstr ""
+msgstr "Kurs"
 
 msgctxt "help:currency.currency,code:"
 msgid "The 3 chars ISO currency code."
@@ -90,9 +90,10 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Mata uang"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr ""
+msgid "Currency Rate"
+msgstr "Kurs sekarang"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"

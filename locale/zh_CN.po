@@ -90,13 +90,14 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "货币"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "汇率"
+msgid "Currency Rate"
+msgstr "当日汇率"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
-msgstr "Currencies"
+msgstr "货币"
 
 msgctxt "model:ir.message,text:msg_currency_rate_positive"
 msgid "A currency rate must be positive."

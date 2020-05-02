@@ -90,9 +90,10 @@ msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "واحد پول"
 
+#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "نرخ"
+msgid "Currency Rate"
+msgstr "نرخ کنونی"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"

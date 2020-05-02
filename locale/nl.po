@@ -92,8 +92,8 @@ msgid "Currency"
 msgstr "Valuta"
 
 msgctxt "model:currency.currency.rate,name:"
-msgid "Rate"
-msgstr "Koers"
+msgid "Currency Rate"
+msgstr "Wisselkoers"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
