@@ -56,7 +56,7 @@ msgstr "Banko sąskaitos"
 
 msgctxt "help:bank,bic:"
 msgid "Bank/Business Identifier Code."
-msgstr "Banko BIC"
+msgstr "Banko BIC."
 
 msgctxt "help:bank.account,bank:"
 msgid "The bank where the account is open."

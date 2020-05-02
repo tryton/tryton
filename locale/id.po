@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:bank.account,owners:"
 msgid "Owners"
-msgstr ""
+msgstr "Pemilik"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
@@ -112,7 +112,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_banking"
 msgid "Banking"
-msgstr ""
+msgstr "Perbankan"
 
 msgctxt "model:res.group,name:group_bank_admin"
 msgid "Bank Administration"
