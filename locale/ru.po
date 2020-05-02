@@ -16,6 +16,11 @@ msgid "Party"
 msgstr "Организации"
 
 #, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "Carrier Selection"
+
+#, fuzzy
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "Carrier"

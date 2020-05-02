@@ -14,6 +14,11 @@ msgctxt "field:carrier,party:"
 msgid "Party"
 msgstr "ພາກສ່ວນ"
 
+#, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "ການເລືອກຜູ້ໃຫ້ບໍລິການ"
+
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "ຜູ້ໃຫ້ບໍລິການ"

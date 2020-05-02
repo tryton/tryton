@@ -14,6 +14,11 @@ msgctxt "field:carrier,party:"
 msgid "Party"
 msgstr "نهاد/سازمان"
 
+#, fuzzy
+msgctxt "field:carrier,selections:"
+msgid "Selections"
+msgstr "انتخاب حمل ونقل"
+
 msgctxt "field:carrier.selection,carrier:"
 msgid "Carrier"
 msgstr "پست"
