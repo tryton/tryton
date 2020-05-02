@@ -6,45 +6,38 @@ msgctxt "field:country.country,code3:"
 msgid "3-letters Code"
 msgstr "3-字母代码"
 
-#, fuzzy
 msgctxt "field:country.country,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "编码"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
 msgstr "数字代码"
 
-#, fuzzy
 msgctxt "field:country.country,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "名称"
 
 msgctxt "field:country.country,subdivisions:"
 msgid "Subdivisions"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "field:country.subdivision,code:"
 msgid "Code"
-msgstr "语言编码"
+msgstr "编码"
 
-#, fuzzy
 msgctxt "field:country.subdivision,country:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "国家"
 
-#, fuzzy
 msgctxt "field:country.subdivision,name:"
 msgid "Name"
-msgstr "纳木"
+msgstr "名称"
 
-#, fuzzy
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
 msgstr "上级"
 
-#, fuzzy
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
 msgstr "类型"
@@ -53,16 +46,14 @@ msgctxt "field:country.zip,city:"
 msgid "City"
 msgstr "城市"
 
-#, fuzzy
 msgctxt "field:country.zip,country:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "国家"
 
 msgctxt "field:country.zip,subdivision:"
 msgid "Subdivision"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
 msgstr "Zip"
@@ -111,23 +102,21 @@ msgctxt "help:country.zip,subdivision:"
 msgid "The subdivision where the zip is."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:country.country,name:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "国家"
 
 msgctxt "model:country.subdivision,name:"
 msgid "Subdivision"
 msgstr "行政区划"
 
-#, fuzzy
 msgctxt "model:country.zip,name:"
 msgid "Zip"
 msgstr "Zip"
 
 msgctxt "model:ir.action,name:act_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr "国家"
 
 msgctxt "model:ir.action,name:act_zip_form"
 msgid "Zip"
@@ -135,20 +124,19 @@ msgstr "Zip"
 
 msgctxt "model:ir.ui.menu,name:menu_country_form"
 msgid "Countries"
-msgstr "Countries"
+msgstr "国家"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Administration"
 msgstr "管理员"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Region"
-msgstr ""
+msgstr "行政区"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative Territory"
-msgstr ""
+msgstr "行政区域"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Administrative area"
@@ -162,7 +150,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Arctic Region"
 msgstr "北极地区"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Area"
 msgstr "阿尔塔州"
@@ -279,24 +266,21 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Council area"
 msgstr "议会区"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Country"
-msgstr "考文垂郡"
+msgstr "国家"
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "County"
-msgstr "考文垂郡"
+msgstr "国家"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Department"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Dependency"
-msgstr "模块依赖关系"
+msgstr "隶属关系"
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Development region"
@@ -438,10 +422,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Overseas territorial collectivity"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Parish"
-msgstr "巴黎省"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Popularates"
@@ -463,10 +446,9 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Quarter"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "Rayon"
-msgstr "罗勇府"
+msgstr ""
 
 msgctxt "selection:country.subdivision,type:"
 msgid "Region"
@@ -516,7 +498,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
 msgstr "状态"

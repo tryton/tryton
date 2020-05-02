@@ -12,7 +12,7 @@ msgstr "Kode"
 
 msgctxt "field:country.country,code_numeric:"
 msgid "Numeric Code"
-msgstr ""
+msgstr "Kode Angka"
 
 msgctxt "field:country.country,name:"
 msgid "Name"
@@ -40,7 +40,7 @@ msgstr "Induk"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
-msgstr ""
+msgstr "Jenis"
 
 msgctxt "field:country.zip,city:"
 msgid "City"
@@ -56,19 +56,19 @@ msgstr ""
 
 msgctxt "field:country.zip,zip:"
 msgid "Zip"
-msgstr ""
+msgstr "Kode Pos"
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
-msgstr ""
+msgstr "3 karakter kode negara ISO."
 
 msgctxt "help:country.country,code:"
 msgid "The 2 chars ISO country code."
-msgstr ""
+msgstr "2 karakter kode negara ISO."
 
 msgctxt "help:country.country,code_numeric:"
 msgid "The ISO numeric country code."
-msgstr ""
+msgstr "Kode negara numerik ISO."
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."

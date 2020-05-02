@@ -35,10 +35,9 @@ msgctxt "field:country.subdivision,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:country.subdivision,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 msgctxt "field:country.subdivision,type:"
 msgid "Type"
@@ -75,7 +74,7 @@ msgstr ""
 
 msgctxt "help:country.country,name:"
 msgid "The main identifier of the country."
-msgstr ""
+msgstr "L'identificatore principale del paese."
 
 msgctxt "help:country.subdivision,code:"
 msgid "The ISO code of the subdivision."
@@ -509,7 +508,6 @@ msgctxt "selection:country.subdivision,type:"
 msgid "Special zone"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:country.subdivision,type:"
 msgid "State"
 msgstr "Stato"

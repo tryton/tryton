@@ -60,11 +60,11 @@ msgstr "Pašto kodas"
 
 msgctxt "help:country.country,code3:"
 msgid "The 3 chars ISO country code."
-msgstr "3 raidžių šalies ISO kodas"
+msgstr "3 raidžių šalies ISO kodas."
 
 msgctxt "help:country.country,code:"
 msgid "The 2 chars ISO country code."
-msgstr "2 raidžių ISO kodas"
+msgstr "2 raidžių ISO kodas."
 
 msgctxt "help:country.country,code_numeric:"
 msgid "The ISO numeric country code."
