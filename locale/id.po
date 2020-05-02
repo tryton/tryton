@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.complaint,actions:"
 msgid "Actions"
-msgstr ""
+msgstr "Tindakan"
 
 msgctxt "field:sale.complaint,address:"
 msgid "Address"
-msgstr ""
+msgstr "Alamat"
 
 msgctxt "field:sale.complaint,company:"
 msgid "Company"
@@ -66,6 +66,11 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Keluhan"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Keluhan"
+
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Baris Faktur"
@@ -98,17 +103,70 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Tindakan"
 
+#, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID Asal"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Keluhan"
+
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Baris Faktur"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr ""
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Tindakan"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID Asal"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Keluhan"
+
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Baris Penjualan"
+
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr ""
+
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr ""
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -139,6 +197,16 @@ msgid "Leave empty for all lines."
 msgstr "Biarkan kosong untuk semua baris."
 
 msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Biarkan kosong untuk harga yang sama."
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Biarkan kosong untuk harga yang sama."
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Biarkan kosong untuk harga yang sama."
 
@@ -212,6 +280,16 @@ msgstr ""
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in complaint's company"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Pengguna di dalam perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "Pengguna di dalam perusahaan"
 
 msgctxt "model:ir.rule.group,name:rule_group_complaint"
 msgid "User in company"

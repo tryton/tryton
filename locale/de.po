@@ -66,6 +66,10 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reklamation"
 
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Reklamationsstatus"
+
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Rechnungspositionen"
@@ -98,17 +102,66 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Aktion"
 
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Reklamation Herkunfts-ID"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Reklamationsstatus"
+
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Rechnungsposition"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Einzelpreis"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Aktion"
 
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Reklamation Herkunfts-ID"
+
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Reklamationsstatus"
+
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Verkaufsposition"
+
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Einzelpreis"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -142,6 +195,14 @@ msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Leer lassen für gleichen Preis."
 
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Leer lassen für gleichen Preis."
+
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Leer lassen für gleichen Preis."
+
 msgctxt "model:ir.action,name:act_complaint_form"
 msgid "Complaints"
 msgstr "Reklamationen"
@@ -165,7 +226,7 @@ msgstr "Alle"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_approved"
 msgid "Approved"
-msgstr "Bestätigt"
+msgstr "Genehmigt"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_complaint_form_domain_draft"
@@ -191,7 +252,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:complaint_approve_button"
 msgid "Approve"
-msgstr "Bestätigen"
+msgstr "Genehmigen"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
@@ -214,6 +275,14 @@ msgid "Wait"
 msgstr "Warten"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Benutzer in Unternehmen der Reklamation"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Benutzer in Unternehmen der Reklamation"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
 msgid "User in complaint's company"
 msgstr "Benutzer in Unternehmen der Reklamation"
 
@@ -263,7 +332,7 @@ msgstr "Reklamationstyp"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Approved"
-msgstr "Bestätigt"
+msgstr "Genehmigt"
 
 msgctxt "selection:sale.complaint,state:"
 msgid "Cancelled"

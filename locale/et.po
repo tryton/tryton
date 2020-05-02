@@ -66,6 +66,11 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Kaebus"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Arve read"
@@ -98,17 +103,78 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Toiming"
 
+#, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Päritolu ID"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Arve rida"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Toiming"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Päritolu ID"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Kaebus"
+
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Müügi rida"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Ühik"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Ühiku numbriväärtus"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Ühiku hind"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -143,6 +209,16 @@ msgstr "Kõikide ridade jaoks jäta tühjaks"
 
 #, fuzzy
 msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Sama hinna jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Sama hinna jaoks jäta tühjaks"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Sama hinna jaoks jäta tühjaks"
 
@@ -216,6 +292,16 @@ msgid "Wait"
 msgstr "Oota"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Kliendikaebuse ettevõte"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Kliendikaebuse ettevõte"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
 msgid "User in complaint's company"
 msgstr "Kliendikaebuse ettevõte"
 

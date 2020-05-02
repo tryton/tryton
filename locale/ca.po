@@ -66,6 +66,10 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "Reclamació"
 
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Estat reclamació"
+
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Línies de factura"
@@ -92,23 +96,72 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:sale.complaint.action,unit_price:"
 msgid "Unit Price"
-msgstr "Preu de la unitat"
+msgstr "Preu unitari"
 
 msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Acció"
 
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Identificador de l'origen de la reclamació"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Estat reclamació"
+
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Línia de factura"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Acció"
 
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Identificador de l'origen de la reclamació"
+
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Estat reclamació"
+
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Línia de venda"
+
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Quantitat"
+
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Unitat"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Dígits de la unitat"
+
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Preu unitari"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -139,6 +192,14 @@ msgid "Leave empty for all lines."
 msgstr "Deixeu-lo buit per totes les línies."
 
 msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Deixeu-lo buit pel mateix preu."
+
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "Deixeu-lo buit pel mateix preu."
+
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Deixeu-lo buit pel mateix preu."
 
@@ -212,6 +273,14 @@ msgid "Wait"
 msgstr "En espera"
 
 msgctxt "model:ir.rule.group,name:rule_group_action"
+msgid "User in complaint's company"
+msgstr "Usuari a l'empresa de la reclamació"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Usuari a l'empresa de la reclamació"
+
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
 msgid "User in complaint's company"
 msgstr "Usuari a l'empresa de la reclamació"
 

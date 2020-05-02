@@ -66,6 +66,11 @@ msgctxt "field:sale.complaint.action,complaint:"
 msgid "Complaint"
 msgstr "reclamo"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "reclamo"
+
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Righe fattura"
@@ -98,17 +103,76 @@ msgctxt "field:sale.complaint.action-account.invoice.line,action:"
 msgid "Action"
 msgstr "Azione"
 
+#, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID origine"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "reclamo"
+
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Riga fattura"
+
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Quantità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Unità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Posizioni Unità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Prezzo unitario"
 
 msgctxt "field:sale.complaint.action-sale.line,action:"
 msgid "Action"
 msgstr "Azione"
 
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "ID origine"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "reclamo"
+
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "riga vendita"
+
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Quantità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Unità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Posizioni Unità"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Prezzo unitario"
 
 msgctxt "field:sale.complaint.type,name:"
 msgid "Name"
@@ -144,6 +208,16 @@ msgstr "lasciare vuoto per tutte le righe"
 
 #, fuzzy
 msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "lasciare vuoto per stesso prezzo"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr "lasciare vuoto per stesso prezzo"
+
+#, fuzzy
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "lasciare vuoto per stesso prezzo"
 
@@ -204,7 +278,7 @@ msgstr "Approve"
 
 msgctxt "model:ir.model.button,string:complaint_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:complaint_do_button"
 msgid "Process"
@@ -225,6 +299,16 @@ msgstr "Wait"
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in complaint's company"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "azione reclamo da cliente"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "azione reclamo da cliente"
 
 msgctxt "model:ir.rule.group,name:rule_group_complaint"
 msgid "User in company"

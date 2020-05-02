@@ -81,6 +81,11 @@ msgid "Complaint"
 msgstr "Complaints"
 
 #, fuzzy
+msgctxt "field:sale.complaint.action,complaint_state:"
+msgid "Complaint State"
+msgstr "Complaints"
+
+#, fuzzy
 msgctxt "field:sale.complaint.action,invoice_lines:"
 msgid "Invoice Lines"
 msgstr "Редове от фактура"
@@ -120,9 +125,40 @@ msgid "Action"
 msgstr "Действие"
 
 #, fuzzy
+msgctxt ""
+"field:sale.complaint.action-account.invoice.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Complaints"
+
+#, fuzzy
 msgctxt "field:sale.complaint.action-account.invoice.line,line:"
 msgid "Invoice Line"
 msgstr "Ред от фактура"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit:"
+msgid "Unit"
+msgstr "Единица"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Unit Price"
+msgstr "Единична цена"
 
 #, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,action:"
@@ -130,9 +166,39 @@ msgid "Action"
 msgstr "Действие"
 
 #, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_origin_id:"
+msgid "Complaint Origin ID"
+msgstr "Complaints"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,complaint_state:"
+msgid "Complaint State"
+msgstr "Complaints"
+
+#, fuzzy
 msgctxt "field:sale.complaint.action-sale.line,line:"
 msgid "Sale Line"
 msgstr "Ред от продажба"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,quantity:"
+msgid "Quantity"
+msgstr "Количество"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit:"
+msgid "Unit"
+msgstr "Единица"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_digits:"
+msgid "Unit Digits"
+msgstr "Десетични единици"
+
+#, fuzzy
+msgctxt "field:sale.complaint.action-sale.line,unit_price:"
+msgid "Unit Price"
+msgstr "Единична цена"
 
 #, fuzzy
 msgctxt "field:sale.complaint.type,name:"
@@ -165,6 +231,14 @@ msgid "Leave empty for all lines."
 msgstr ""
 
 msgctxt "help:sale.complaint.action,unit_price:"
+msgid "Leave empty for the same price."
+msgstr ""
+
+msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
+msgid "Leave empty for the same price."
+msgstr ""
+
+msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr ""
 
@@ -242,6 +316,16 @@ msgstr "Wait"
 msgctxt "model:ir.rule.group,name:rule_group_action"
 msgid "User in complaint's company"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_invoice_line"
+msgid "User in complaint's company"
+msgstr "Customer Complaint"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_action_sale_line"
+msgid "User in complaint's company"
+msgstr "Customer Complaint"
 
 msgctxt "model:ir.rule.group,name:rule_group_complaint"
 msgid "User in company"
