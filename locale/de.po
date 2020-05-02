@@ -20,7 +20,7 @@ msgstr "Einheit"
 
 msgctxt "field:stock.lot,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen der Einheit"
+msgstr "Nachkommastellen"
 
 msgctxt "field:stock.lot,unit_quantity:"
 msgid "Quantity"

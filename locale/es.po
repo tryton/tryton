@@ -20,7 +20,7 @@ msgstr "Unidad"
 
 msgctxt "field:stock.lot,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:stock.lot,unit_quantity:"
 msgid "Quantity"

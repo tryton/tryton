@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:stock.lot,unit_quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "help:product.product,lot_unit:"
 msgid "The default unit for lot."
