@@ -121,7 +121,7 @@ msgstr "Einheit"
 
 msgctxt "field:purchase.request.quotation.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Nachkommastellen der Einheit"
+msgstr "Nachkommastellen"
 
 msgctxt "field:purchase.request.quotation.line,unit_price:"
 msgid "Unit Price"
@@ -174,7 +174,7 @@ msgstr "Angebotsanfrage erstellen"
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_all"
 msgid "All"
-msgstr "All"
+msgstr "Alle"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_request_quotation_form_view1_domain_draft"

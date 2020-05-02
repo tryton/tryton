@@ -121,7 +121,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.request.quotation.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Dígitos de unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:purchase.request.quotation.line,unit_price:"
 msgid "Unit Price"
