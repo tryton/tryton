@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "help:account.tax.rule.line,to_country:"
 msgid "Apply only to addresses of this country."
-msgstr ""
+msgstr "Applicare solo agli indirizzi di questo paese."
 
 msgctxt "help:account.tax.rule.line,to_subdivision:"
 msgid "Apply only to addresses in this subdivision."
@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "help:account.tax.rule.line.template,from_country:"
 msgid "Apply only to addresses of this country."
-msgstr ""
+msgstr "Applicare solo agli indirizzi di questo paese."
 
 msgctxt "help:account.tax.rule.line.template,from_subdivision:"
 msgid "Apply only to addresses in this subdivision."
