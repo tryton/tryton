@@ -217,6 +217,11 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "خط پرداخت"
 
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "تاریخ صورت حساب"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "با بازپرداخت"
@@ -1107,34 +1112,6 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "تامین کننده"
 
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "لغو شده"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr "پرداخت شده"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "ارسال شده"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "تایید شده"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "مشتری"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier"
-msgstr "تامین کننده"
-
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
 msgstr "اظهار نظر"
@@ -1150,6 +1127,11 @@ msgstr "زیرمجموع"
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "عنوان"
+
+#, fuzzy
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "پرداخت"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1174,26 +1156,6 @@ msgstr "درصد مجموع"
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "باقيمانده"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "لغو شده"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr "پرداخت شده"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "ارسال شده"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "تایید شده"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

@@ -216,6 +216,11 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Tasumise rida"
 
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Arve kuupäev"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "Hüvitusega"
@@ -1098,34 +1103,6 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "Hankija"
 
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "Tühistatud"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr "Makstud"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "Postitatud"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "Kontrollitud"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "Klient"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier"
-msgstr "Hankija"
-
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
 msgstr "Kommentaar"
@@ -1141,6 +1118,11 @@ msgstr "Vahesumma"
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "Pealkiri"
+
+#, fuzzy
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Tasumine"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1165,26 +1147,6 @@ msgstr "Protsent kogusummale"
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Meeldetuletus"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "Tühistatud"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr "Tasutud"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "Postitatud"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "Kontrollitud"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

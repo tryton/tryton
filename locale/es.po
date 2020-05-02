@@ -214,6 +214,10 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Línea de pago"
 
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Fecha de factura"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "Con devolución"
@@ -304,11 +308,11 @@ msgstr "Unidad"
 
 msgctxt "field:account.invoice.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "Precio unidad"
+msgstr "Precio unitario"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
@@ -826,9 +830,9 @@ msgid ""
 " \"%(date)s\" because the sequence \"%(sequence)s\" has already been used "
 "for invoice \"%(after_invoice)s\"."
 msgstr ""
-"Para numberar la factura \"%(invoice)s\" debéis seleccionar una fecha "
-"efectiva posterior a \"%(date)s\" porqué la secuencia \"%(sequence)s\" ya se"
-" ha utilizado para la factura \"%(after_invoice)s\"."
+"Para numerar la factura \"%(invoice)s\"  debe seleccionar una fecha efectiva"
+" posterior a \"%(date)s\" porqué la secuencia \"%(sequence)s\" ya se ha "
+"utilizado para la factura \"%(after_invoice)s\"."
 
 msgctxt "model:ir.message,text:msg_invoice_pay_amount_greater_amount_to_pay"
 msgid ""
@@ -1070,7 +1074,7 @@ msgstr "Total:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr "Precio unidad"
+msgstr "Precio unitario"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
@@ -1097,34 +1101,6 @@ msgid "Customer"
 msgstr "Cliente"
 
 msgctxt "selection:account.invoice,type:"
-msgid "Supplier"
-msgstr "Proveedor"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "Cancelada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr "Pagada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "Contabilizada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "Validada"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "Cliente"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
 msgstr "Proveedor"
 
@@ -1143,6 +1119,10 @@ msgstr "Subtotal"
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "Título"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Pago con exceso"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1167,26 +1147,6 @@ msgstr "Porcentaje sobre total"
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Remanente"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "Cancelada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr "Pagada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "Contabilizada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "Validada"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

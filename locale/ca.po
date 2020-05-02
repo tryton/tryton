@@ -214,6 +214,10 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Línia de pagament"
 
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Data factura"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "Amb devolució"
@@ -308,7 +312,7 @@ msgstr "Dígits de la unitat"
 
 msgctxt "field:account.invoice.line,unit_price:"
 msgid "Unit Price"
-msgstr "Preu unitat"
+msgstr "Preu unitari"
 
 msgctxt "field:account.invoice.line-account.tax,line:"
 msgid "Invoice Line"
@@ -1072,7 +1076,7 @@ msgstr "Total:"
 
 msgctxt "report:account.invoice:"
 msgid "Unit Price"
-msgstr "Preu unitat"
+msgstr "Preu unitari"
 
 msgctxt "selection:account.invoice,state:"
 msgid "Cancelled"
@@ -1099,34 +1103,6 @@ msgid "Customer"
 msgstr "Client"
 
 msgctxt "selection:account.invoice,type:"
-msgid "Supplier"
-msgstr "Proveïdor"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "Cancel·lada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr "Pagada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "Comptabilitzada"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "Validada"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "Client"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
 msgid "Supplier"
 msgstr "Proveïdor"
 
@@ -1145,6 +1121,10 @@ msgstr "Subtotal"
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "Títol"
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Pagament amb excés"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1169,26 +1149,6 @@ msgstr "Percentatge sobre total"
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Romanent"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "Cancel·lada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr "Pagada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "Comptabilitzada"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "Validada"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

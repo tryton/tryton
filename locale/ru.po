@@ -225,6 +225,11 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr "Строка оплаты"
 
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Дата инвойса"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr "С возмещением"
@@ -1147,41 +1152,6 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "Поставщик"
 
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "Отменено"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Черновик"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr "Оплачен"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "Проведен"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "Утвержденный"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "Заказчик"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier"
-msgstr "Поставщик"
-
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
 msgstr "Комментарии"
@@ -1197,6 +1167,11 @@ msgstr "Подитог"
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr "Заголовок"
+
+#, fuzzy
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Оплата"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1221,31 +1196,6 @@ msgstr "Процент от общей суммы"
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Остаток"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "Отменено"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Черновик"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr "Оплачен"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "Проведен"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "Утвержденный"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

@@ -222,6 +222,11 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Invoice"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr ""
@@ -725,7 +730,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr "Invoices"
+msgstr "发票"
 
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
@@ -1122,38 +1127,6 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr ""
 
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr "取消"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Draft"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr "Posted"
-
-#, fuzzy
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr "Validate"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr ""
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier"
-msgstr ""
-
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
 msgstr ""
@@ -1168,6 +1141,10 @@ msgstr ""
 
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
+msgstr ""
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
 msgstr ""
 
 msgctxt "selection:account.invoice.pay.ask,type:"
@@ -1193,30 +1170,6 @@ msgstr ""
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr ""
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr "取消"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Draft"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr "Posted"
-
-#, fuzzy
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
-msgstr "Validate"
 
 msgctxt "view:account.invoice.credit.start:"
 msgid "Are you sure to credit those/this invoice(s)?"

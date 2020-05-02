@@ -28,7 +28,7 @@ msgstr ""
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
-msgstr ""
+msgstr "Urutan Faktur Pelanggan"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,period:"
 msgid "Period"
@@ -76,7 +76,7 @@ msgstr "Mata uang"
 
 msgctxt "field:account.invoice,currency_date:"
 msgid "Currency Date"
-msgstr ""
+msgstr "Tanggal Mata Uang"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
@@ -214,6 +214,10 @@ msgctxt "field:account.invoice-account.move.line,line:"
 msgid "Payment Line"
 msgstr ""
 
+msgctxt "field:account.invoice.credit.start,invoice_date:"
+msgid "Invoice Date"
+msgstr "Tanggal Faktur"
+
 msgctxt "field:account.invoice.credit.start,with_refund:"
 msgid "With Refund"
 msgstr ""
@@ -252,7 +256,7 @@ msgstr "Faktur"
 
 msgctxt "field:account.invoice.line,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "Status Faktur"
 
 msgctxt "field:account.invoice.line,invoice_taxes:"
 msgid "Invoice Taxes"
@@ -556,7 +560,7 @@ msgstr "Faktur"
 
 msgctxt "field:account.invoice.tax,invoice_state:"
 msgid "Invoice State"
-msgstr ""
+msgstr "Status Faktur"
 
 msgctxt "field:account.invoice.tax,legal_notice:"
 msgid "Legal Notice"
@@ -1071,34 +1075,6 @@ msgctxt "selection:account.invoice,type:"
 msgid "Supplier"
 msgstr "Pemasok"
 
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Cancelled"
-msgstr ""
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Draft"
-msgstr "Rancangan"
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Paid"
-msgstr ""
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Posted"
-msgstr ""
-
-msgctxt "selection:account.invoice.line,invoice_state:"
-msgid "Validated"
-msgstr ""
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Customer"
-msgstr "Pelanggan"
-
-msgctxt "selection:account.invoice.line,invoice_type:"
-msgid "Supplier"
-msgstr "Pemasok"
-
 msgctxt "selection:account.invoice.line,type:"
 msgid "Comment"
 msgstr "Komentar"
@@ -1114,6 +1090,10 @@ msgstr ""
 msgctxt "selection:account.invoice.line,type:"
 msgid "Title"
 msgstr ""
+
+msgctxt "selection:account.invoice.pay.ask,type:"
+msgid "Overpayment"
+msgstr "Kelebihan Pembayaran"
 
 msgctxt "selection:account.invoice.pay.ask,type:"
 msgid "Partial Payment"
@@ -1137,26 +1117,6 @@ msgstr ""
 
 msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
-msgstr ""
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Cancelled"
-msgstr ""
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Draft"
-msgstr "Rancangan"
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Paid"
-msgstr ""
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Posted"
-msgstr ""
-
-msgctxt "selection:account.invoice.tax,invoice_state:"
-msgid "Validated"
 msgstr ""
 
 msgctxt "view:account.invoice.credit.start:"
