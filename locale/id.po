@@ -25,11 +25,11 @@ msgstr ""
 
 msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Diblokir"
 
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Debit Langsung"
 
 msgctxt "field:account.move.line,payment_kind:"
 msgid "Payment Kind"
@@ -37,7 +37,7 @@ msgstr ""
 
 msgctxt "field:account.move.line,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "field:account.move.line.pay.ask_journal,company:"
 msgid "Company"
@@ -107,6 +107,11 @@ msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr "Pihak"
 
+#, fuzzy
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "Proses"
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr ""
@@ -129,7 +134,7 @@ msgstr "Nomor"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "field:account.payment.journal,company:"
 msgid "Company"
@@ -149,7 +154,7 @@ msgstr ""
 
 msgctxt "field:party.party,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Debit Langsung"
 
 msgctxt "field:party.party,payment_direct_debits:"
 msgid "Direct Debits"
@@ -165,7 +170,7 @@ msgstr "Pihak"
 
 msgctxt "field:party.party.payment_direct_debit,payment_direct_debit:"
 msgid "Direct Debit"
-msgstr ""
+msgstr "Debit Langsung"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
@@ -176,7 +181,9 @@ msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
-msgid "When the payments are scheduled to happen."
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
@@ -225,15 +232,15 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:ir.action,name:act_payment_form_group_open"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:ir.action,name:act_payment_form_line_relate"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:ir.action,name:act_payment_group_form"
 msgid "Payment Groups"
@@ -363,11 +370,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payment_configuration"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_form"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_group_form"
 msgid "Payment Groups"
@@ -379,7 +386,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_payments"
 msgid "Payments"
-msgstr ""
+msgstr "Pembayaran"
 
 msgctxt "model:party.party.payment_direct_debit,name:"
 msgid "Party Payment Direct Debit"

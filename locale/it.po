@@ -109,6 +109,11 @@ msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr "Controparti"
 
+#, fuzzy
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr "Metodo di processo"
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr "Stato"
@@ -179,7 +184,9 @@ msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
-msgid "When the payments are scheduled to happen."
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
@@ -501,7 +508,6 @@ msgctxt "wizard_button:account.move.line.pay,ask_journal,next_:"
 msgid "Pay"
 msgstr "Pagare"
 
-#, fuzzy
 msgctxt "wizard_button:account.move.line.pay,start,end:"
 msgid "Cancel"
 msgstr "Annulla"
@@ -513,7 +519,7 @@ msgstr "Pagare"
 
 msgctxt "wizard_button:account.payment.process,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgctxt "wizard_button:account.payment.process,start,process:"
 msgid "Process"

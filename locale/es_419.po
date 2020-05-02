@@ -107,6 +107,10 @@ msgctxt "field:account.payment,party:"
 msgid "Party"
 msgstr ""
 
+msgctxt "field:account.payment,process_method:"
+msgid "Process Method"
+msgstr ""
+
 msgctxt "field:account.payment,state:"
 msgid "State"
 msgstr ""
@@ -176,7 +180,9 @@ msgid "Check if the line will be paid by direct debit."
 msgstr ""
 
 msgctxt "help:account.move.line.pay.start,date:"
-msgid "When the payments are scheduled to happen."
+msgid ""
+"When the payments are scheduled to happen.\n"
+"Leave empty to use the lines' maturity dates."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
