@@ -22,7 +22,6 @@ msgctxt "field:product.attribute.set,attributes:"
 msgid "Attributes"
 msgstr "Attributes"
 
-#, fuzzy
 msgctxt "field:product.attribute.set,name:"
 msgid "Name"
 msgstr "Nome"
