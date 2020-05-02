@@ -58,6 +58,10 @@ msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "Riga ordine di acquisto"
 
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Acquistato da"
+
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Quantità"
@@ -76,7 +80,7 @@ msgstr "Data di fornitura prevista"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
-msgstr "UDM"
+msgstr "UdM"
 
 msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"
@@ -193,7 +197,7 @@ msgstr "Purchase Request"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"
@@ -225,7 +229,7 @@ msgstr "Informazioni sulla fornitura"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 msgctxt "wizard_button:purchase.request.create_purchase,ask_party,start:"
 msgid "Continue"
@@ -239,7 +243,7 @@ msgstr "Cancella Richiesta"
 msgctxt ""
 "wizard_button:purchase.request.handle.purchase.cancellation,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt ""

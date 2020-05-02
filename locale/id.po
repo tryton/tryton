@@ -58,6 +58,11 @@ msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "Baris Pembelian"
 
+#, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Pembelian"
+
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr ""
@@ -76,7 +81,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
-msgstr ""
+msgstr "UOM"
 
 msgctxt "field:purchase.request,uom_digits:"
 msgid "UOM Digits"

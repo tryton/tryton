@@ -66,6 +66,11 @@ msgid "Purchase Line"
 msgstr "Ред от покупка"
 
 #, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Поръчан"
+
+#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Количество"

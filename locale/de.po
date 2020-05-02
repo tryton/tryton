@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.line,requests:"
 msgid "Requests"
-msgstr "Anfragen"
+msgstr "Bestellvorschläge"
 
 msgctxt "field:purchase.request,company:"
 msgid "Company"
@@ -57,6 +57,10 @@ msgstr "Bestes Einkaufsdatum"
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "Einkaufsposition"
+
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Einkauf erstellt von"
 
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"

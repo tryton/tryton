@@ -58,6 +58,11 @@ msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "Wiersz zakupu"
 
+#, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Zakupiono"
+
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Ilość"

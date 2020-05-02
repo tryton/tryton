@@ -65,6 +65,11 @@ msgid "Purchase Line"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "ສັ່ງຊື້"
+
+#, fuzzy
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"

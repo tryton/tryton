@@ -58,6 +58,10 @@ msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
 msgstr "aankooplijn"
 
+msgctxt "field:purchase.request,purchased_by:"
+msgid "Purchased By"
+msgstr "Gekocht door"
+
 msgctxt "field:purchase.request,quantity:"
 msgid "Quantity"
 msgstr "Hoeveelheid"
