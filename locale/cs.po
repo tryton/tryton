@@ -21,3 +21,15 @@ msgstr ""
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Quantity:"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Unit Price:"
+msgstr ""
+
+msgctxt "view:stock.move:"
+msgid "Unit:"
+msgstr ""

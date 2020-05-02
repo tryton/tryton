@@ -21,3 +21,15 @@ msgstr "Nachkommastellen Zweitmaßeinheit"
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Zweiteinzelpreis"
+
+msgctxt "view:stock.move:"
+msgid "Quantity:"
+msgstr "Menge:"
+
+msgctxt "view:stock.move:"
+msgid "Unit Price:"
+msgstr "Einzelpreis:"
+
+msgctxt "view:stock.move:"
+msgid "Unit:"
+msgstr "Einheit:"

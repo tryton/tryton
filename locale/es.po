@@ -20,4 +20,16 @@ msgstr "Dígitos unidad secundaria"
 
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
-msgstr "Precio unidad secundario"
+msgstr "Precio unitario secundario"
+
+msgctxt "view:stock.move:"
+msgid "Quantity:"
+msgstr "Cantidad:"
+
+msgctxt "view:stock.move:"
+msgid "Unit Price:"
+msgstr "Precio unitario:"
+
+msgctxt "view:stock.move:"
+msgid "Unit:"
+msgstr "Unidad:"

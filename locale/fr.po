@@ -21,3 +21,15 @@ msgstr "Décimales de l'unité secondaire"
 msgctxt "field:stock.move,secondary_unit_price:"
 msgid "Secondary Unit Price"
 msgstr "Prix unitaire secondaire"
+
+msgctxt "view:stock.move:"
+msgid "Quantity:"
+msgstr "Quantité :"
+
+msgctxt "view:stock.move:"
+msgid "Unit Price:"
+msgstr "Prix unitaire :"
+
+msgctxt "view:stock.move:"
+msgid "Unit:"
+msgstr "Unité :"
