@@ -38,6 +38,40 @@ msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr "در تاریخ"
 
+#, fuzzy
+msgctxt "field:product.cost_price.revision,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,cost_price:"
+msgid "New Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+msgctxt "field:product.cost_price.revision,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,template:"
+msgid "Product"
+msgstr "محصول"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,cost_price:"
+msgid "New Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,date:"
+msgid "Date"
+msgstr "تاریخ"
+
 msgctxt "field:product.product,cost_value:"
 msgid "Cost Value"
 msgstr "مقدار هزینه"
@@ -49,6 +83,10 @@ msgstr "مقدار پیش بینی شده"
 msgctxt "field:product.product,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
+
+msgctxt "field:product.recompute_cost_price.start,from_:"
+msgid "From"
+msgstr ""
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
@@ -146,10 +184,6 @@ msgstr "سطرها"
 msgctxt "field:stock.inventory,location:"
 msgid "Location"
 msgstr "مکان"
-
-msgctxt "field:stock.inventory,lost_found:"
-msgid "Lost and Found"
-msgstr "گمشده ها و یافته ها"
 
 msgctxt "field:stock.inventory,number:"
 msgid "Number"
@@ -254,6 +288,11 @@ msgstr "ورودی"
 msgctxt "field:stock.location,left:"
 msgid "Left"
 msgstr "چپ"
+
+#, fuzzy
+msgctxt "field:stock.location,lost_found_location:"
+msgid "Lost and Found"
+msgstr "گمشده ها و یافته ها"
 
 msgctxt "field:stock.location,name:"
 msgid "Name"
@@ -375,6 +414,11 @@ msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
 msgstr "قیمت واحد مورد نیاز"
 
+#, fuzzy
+msgctxt "field:stock.move,unit_price_updated:"
+msgid "Unit Price Updated"
+msgstr "قیمت واحد"
+
 msgctxt "field:stock.move,uom:"
 msgid "Uom"
 msgstr "واحد اندازی گیری"
@@ -418,6 +462,12 @@ msgstr "تاریخ"
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "مقدار/تعداد"
+
+#, fuzzy
+msgctxt ""
+"field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr "منطقه ذخیره سازی"
 
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
@@ -817,6 +867,18 @@ msgstr ""
 "* مقدار خالی محاسبه شده تا آنجا که امکان دارد.\n"
 "* یک تاریخ در گذشته مقادیر تاریخی را ارائه می دهد."
 
+msgctxt "help:product.cost_price.revision,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
+msgctxt "help:product.modify_cost_price.start,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
 msgctxt "help:product.product,cost_value:"
 msgid "The value of the stock in the location."
 msgstr "ارزش محصولات در محل."
@@ -899,11 +961,6 @@ msgctxt "help:stock.inventory,location:"
 msgid "The location inventoried."
 msgstr "محل انبار شده است."
 
-msgctxt "help:stock.inventory,lost_found:"
-msgid "Used for the balancing entries needed when the stock is corrected."
-msgstr ""
-"مورد استفاده برای تراز ورودی های مورد نیاز زمانی که اموال اصلاح شده است."
-
 msgctxt "help:stock.inventory,number:"
 msgid "The main identifier for the inventory."
 msgstr "شناسه اصلی موجودی."
@@ -967,6 +1024,11 @@ msgstr "مقدار اموال که انتظار می رود در محل باشد
 msgctxt "help:stock.location,input_location:"
 msgid "Where incoming stock is received."
 msgstr "جایی که اموال ورودی دریافت شده است."
+
+#, fuzzy
+msgctxt "help:stock.location,lost_found_location:"
+msgid "Used, by inventories, when correcting stock levels in the warehouse."
+msgstr "جابجایی که سهام را به انبار می آورد."
 
 msgctxt "help:stock.location,output_location:"
 msgid "Where outgoing stock is sent from."
@@ -1055,6 +1117,11 @@ msgstr "زمانی که دوره اموال به پایان می رسد."
 msgctxt "help:stock.period,state:"
 msgid "The current state of the stock period."
 msgstr "وضعیت جاری دوره اموال."
+
+msgctxt ""
+"help:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
+msgstr ""
 
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
 msgid "The warehouse for which the quantities will be calculated."
@@ -1347,6 +1414,11 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "دوره ها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_cost_price_revision"
+msgid "Cost Price Revision"
+msgstr "ارزش بها"
+
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
 msgstr "مقادیر محصول توسط انبار"
@@ -1415,6 +1487,11 @@ msgstr "شمردن"
 msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
 msgid "Stock Moves"
 msgstr "جابجایی موجودی"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_product_modify_cost_price"
+msgid "Modify Cost Price"
+msgstr "ارزش بها"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
@@ -1573,6 +1650,12 @@ msgstr ""
 "شما نمی توانید نهاد/سازمان :\"%(party)s\"را حذف کنید در حالی که آنها محموله "
 "در حال انتظار با شرکت :\"%(company)s\" دارد."
 
+msgctxt "model:ir.message,text:msg_invalid_cost_price"
+msgid ""
+"Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "هیچ سطرایجاد شده ای برای \"%(search)s\"پیدا نشد ."
@@ -1596,6 +1679,15 @@ msgstr "مقدار سطر موجودی باید مثبت باشد."
 msgctxt "model:ir.message,text:msg_inventory_line_unique"
 msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
 msgstr "سطرموجودی :\"%(line)s\" در موجودی :\"%(inventory)s\" منحصر بفرد نیست."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
+msgid ""
+"To confirm the inventory \"%(inventory)s\" you must set a lost and found on "
+"a parent of location \"%(location)s\"."
+msgstr ""
+"برای تایید موجودی :\"%(inventory)s\" شما باید یک گزینه برای مقدار خالی را "
+"انتخاب کنید."
 
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
 msgid ""
@@ -1682,17 +1774,29 @@ msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
 msgstr "شما نمیتوانید دوره هایی با یک تاریخ در آینده یا امروز تعطیل کنید."
 
+#, fuzzy
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated with stock moves.\n"
+"You must use the \"Modify Cost Price\" wizard."
+msgstr ""
+"برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید نوع آن را "
+"تغییر دهید."
+
+#, fuzzy
 msgctxt "model:ir.message,text:msg_product_change_default_uom"
 msgid ""
-"You cannot change the default UOM of a product which is associated to stock "
-"moves."
+"You cannot change the default UOM of a product which is associated with "
+"stock moves."
 msgstr ""
 "برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید واحد "
 "مقدارپیش فرض را تغییر دهید."
 
+#, fuzzy
 msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
-"You cannot change the type of a product which is associated to stock moves."
+"You cannot change the type of a product which is associated with stock "
+"moves."
 msgstr ""
 "برای یك محصول که به جابجایی موجودی مرتبط شده است، شما نمی توانید نوع آن را "
 "تغییر دهید."
@@ -2020,6 +2124,20 @@ msgstr "مکان نهاد/سازمان"
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
 msgstr "محصول توسط محل"
+
+msgctxt "model:product.cost_price.revision,name:"
+msgid "Product Cost Price Revision"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:product.modify_cost_price.start,name:"
+msgid "Modify Cost Price"
+msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,name:"
+msgid "Recompute Cost Price"
+msgstr "محاسبه مجدد ارزش بها"
 
 msgctxt "model:res.group,name:group_stock"
 msgid "Stock"
@@ -2385,6 +2503,11 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "انبار :"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Recompute Cost Price from Moves"
+msgstr "محاسبه مجدد ارزش بها"
+
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
 msgstr "خالی"
@@ -2408,18 +2531,6 @@ msgstr "پیش‌نویس"
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Product"
 msgstr "محصول"
-
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Canceled"
-msgstr "لغو شده"
-
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Done"
-msgstr "انجام شد"
-
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Draft"
-msgstr "پیش‌نویس"
 
 msgctxt "selection:stock.location,type:"
 msgid "Customer"
@@ -2652,6 +2763,26 @@ msgstr "سایر اطلاعات"
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr "جابجایی های خروجی"
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,modify:"
+msgid "OK"
+msgstr "قبول"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,recompute:"
+msgid "Recompute"
+msgstr "محاسبه مجدد ارزش بها"
 
 msgctxt "wizard_button:stock.inventory.count,quantity,add:"
 msgid "Add"

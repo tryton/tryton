@@ -39,6 +39,40 @@ msgctxt "field:product.by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:product.cost_price.revision,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,cost_price:"
+msgid "New Cost Price"
+msgstr "ລາຄາຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+msgctxt "field:product.cost_price.revision,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:product.cost_price.revision,template:"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,cost_price:"
+msgid "New Cost Price"
+msgstr "ລາຄາຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:product.modify_cost_price.start,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
 msgctxt "field:product.product,cost_value:"
 msgid "Cost Value"
 msgstr ""
@@ -51,6 +85,10 @@ msgstr ""
 msgctxt "field:product.product,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
+
+msgctxt "field:product.recompute_cost_price.start,from_:"
+msgid "From"
+msgstr ""
 
 msgctxt "field:product.template,cost_value:"
 msgid "Cost Value"
@@ -154,11 +192,6 @@ msgstr "ຮ່ວງ"
 msgctxt "field:stock.inventory,location:"
 msgid "Location"
 msgstr "ບ່ອນຢູ່"
-
-#, fuzzy
-msgctxt "field:stock.inventory,lost_found:"
-msgid "Lost and Found"
-msgstr "ລໍຮັບຈ່າຍ"
 
 #, fuzzy
 msgctxt "field:stock.inventory,number:"
@@ -274,6 +307,11 @@ msgstr ""
 msgctxt "field:stock.location,left:"
 msgid "Left"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.location,lost_found_location:"
+msgid "Lost and Found"
+msgstr "ລໍຮັບຈ່າຍ"
 
 #, fuzzy
 msgctxt "field:stock.location,name:"
@@ -414,6 +452,11 @@ msgid "Unit Price Required"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:stock.move,unit_price_updated:"
+msgid "Unit Price Updated"
+msgstr "ລາຄາຫົວໜ່ວຍ"
+
+#, fuzzy
 msgctxt "field:stock.move,uom:"
 msgid "Uom"
 msgstr "ຫົວໜ່ວຍ"
@@ -461,6 +504,12 @@ msgstr "ວັນທີ"
 msgctxt "field:stock.product_quantities_warehouse,quantity:"
 msgid "Quantity"
 msgstr "ຈຳນວນ"
+
+#, fuzzy
+msgctxt ""
+"field:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Only storage zone"
+msgstr "Storage Zone"
 
 #, fuzzy
 msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
@@ -900,6 +949,18 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+msgctxt "help:product.cost_price.revision,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
+msgctxt "help:product.modify_cost_price.start,cost_price:"
+msgid ""
+"Python expression that will be evaluated with:\n"
+"- cost_price: the current cost price of the product"
+msgstr ""
+
 msgctxt "help:product.product,cost_value:"
 msgid "The value of the stock in the location."
 msgstr ""
@@ -978,10 +1039,6 @@ msgctxt "help:stock.inventory,location:"
 msgid "The location inventoried."
 msgstr ""
 
-msgctxt "help:stock.inventory,lost_found:"
-msgid "Used for the balancing entries needed when the stock is corrected."
-msgstr ""
-
 msgctxt "help:stock.inventory,number:"
 msgid "The main identifier for the inventory."
 msgstr ""
@@ -1044,6 +1101,10 @@ msgstr ""
 
 msgctxt "help:stock.location,input_location:"
 msgid "Where incoming stock is received."
+msgstr ""
+
+msgctxt "help:stock.location,lost_found_location:"
+msgid "Used, by inventories, when correcting stock levels in the warehouse."
 msgstr ""
 
 msgctxt "help:stock.location,output_location:"
@@ -1130,6 +1191,11 @@ msgstr ""
 
 msgctxt "help:stock.period,state:"
 msgid "The current state of the stock period."
+msgstr ""
+
+msgctxt ""
+"help:stock.product_quantities_warehouse.context,stock_skip_warehouse:"
+msgid "Check to use only the quantity of the storage zone."
 msgstr ""
 
 msgctxt "help:stock.product_quantities_warehouse.context,warehouse:"
@@ -1425,6 +1491,11 @@ msgctxt "model:ir.action,name:act_period_list"
 msgid "Periods"
 msgstr "Periods"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_cost_price_revision"
+msgid "Cost Price Revision"
+msgstr "ລາຄາຄິດໄລ່"
+
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
 msgstr "Product Quantities By Warehouse"
@@ -1503,6 +1574,11 @@ msgstr ""
 msgctxt "model:ir.action,name:wizard_open_product_quantities_by_warehouse"
 msgid "Stock Moves"
 msgstr "ເຄື່ອນຍ້າຍສາງ"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_product_modify_cost_price"
+msgid "Modify Cost Price"
+msgstr "ລາຄາຄິດໄລ່"
 
 msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
@@ -1678,6 +1754,12 @@ msgid ""
 "company \"%(company)s\"."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_invalid_cost_price"
+msgid ""
+"Invalid cost price \"%(cost_price)s\" for product \"%(product)s\" with "
+"exception \"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr ""
@@ -1698,6 +1780,12 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_inventory_line_unique"
 msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
+msgid ""
+"To confirm the inventory \"%(inventory)s\" you must set a lost and found on "
+"a parent of location \"%(location)s\"."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_inventory_missing_empty_quantity"
@@ -1768,15 +1856,22 @@ msgctxt "model:ir.message,text:msg_period_close_date"
 msgid "You cannot close periods with a date in the future or today."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_product_change_cost_price"
+msgid ""
+"You cannot change the cost price of a product which is associated with stock moves.\n"
+"You must use the \"Modify Cost Price\" wizard."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_product_change_default_uom"
 msgid ""
-"You cannot change the default UOM of a product which is associated to stock "
-"moves."
+"You cannot change the default UOM of a product which is associated with "
+"stock moves."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_product_change_type"
 msgid ""
-"You cannot change the type of a product which is associated to stock moves."
+"You cannot change the type of a product which is associated with stock "
+"moves."
 msgstr ""
 
 msgctxt "model:ir.message,text:msg_shipment_delete_cancel"
@@ -2127,6 +2222,20 @@ msgstr ""
 msgctxt "model:product.by_location.context,name:"
 msgid "Product by Location"
 msgstr "ຜະລິດຕະພັນຕາມບ່ອນຢູ່"
+
+msgctxt "model:product.cost_price.revision,name:"
+msgid "Product Cost Price Revision"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:product.modify_cost_price.start,name:"
+msgid "Modify Cost Price"
+msgstr "ລາຄາຄິດໄລ່"
+
+#, fuzzy
+msgctxt "model:product.recompute_cost_price.start,name:"
+msgid "Recompute Cost Price"
+msgstr "Recompute Cost Price"
 
 #, fuzzy
 msgctxt "model:res.group,name:group_stock"
@@ -2537,6 +2646,11 @@ msgctxt "report:stock.shipment.out.return.restocking_list:"
 msgid "Warehouse:"
 msgstr "Warehouse"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Recompute Cost Price from Moves"
+msgstr "Recompute Cost Price"
+
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
 msgstr ""
@@ -2563,21 +2677,6 @@ msgstr "ຊົ່ວຄາວ"
 msgctxt "selection:stock.inventory.count.search,search:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
-
-#, fuzzy
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Canceled"
-msgstr "ຍົກເລີກແລ້ວ"
-
-#, fuzzy
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "selection:stock.inventory.line,inventory_state:"
-msgid "Draft"
-msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt "selection:stock.location,type:"
@@ -2843,6 +2942,26 @@ msgstr ""
 msgctxt "view:stock.shipment.out:"
 msgid "Outgoing Moves"
 msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.modify_cost_price,start,modify:"
+msgid "OK"
+msgstr "ຕົກລົງ"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:product.recompute_cost_price,start,recompute:"
+msgid "Recompute"
+msgstr "Recompute Cost Price"
 
 msgctxt "wizard_button:stock.inventory.count,quantity,add:"
 msgid "Add"
