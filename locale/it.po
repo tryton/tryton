@@ -4,33 +4,32 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.invoice.correct.start,invoice:"
 msgid "Invoice"
-msgstr ""
+msgstr "Fattura"
 
 msgctxt "field:account.invoice.correct.start,lines:"
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Righe Fattura"
 
 msgctxt "model:account.invoice.correct.start,name:"
 msgid "Correct Invoice"
-msgstr ""
+msgstr "Correggi Fattura"
 
 msgctxt "model:ir.action,name:wizard_invoice_correct"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Corretto"
 
 msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Corretto"
 
 msgctxt "view:account.invoice.correct.start:"
 msgid "Choose lines to correct"
-msgstr ""
+msgstr "Scegli le righe da correggere"
 
-#, fuzzy
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"
-msgstr "Correct"
+msgstr "Corretto"
 
 msgctxt "wizard_button:account.invoice.correct,start,end:"
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
