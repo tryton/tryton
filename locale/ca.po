@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.payment.journal,es_sepa_bank_account_country_code:"
+msgid "Bank Account Country Code"
+msgstr "Codi país compte bancari"
+
+msgctxt "field:account.payment.journal,es_sepa_request_advancement:"
+msgid "Request Advancement"
+msgstr "Sol·licitar avançament"
+
 msgctxt "field:account.reporting.aeat.start,periods:"
 msgid "Periods"
 msgstr "Períodes"
@@ -42,6 +50,10 @@ msgctxt "field:account.reporting.es_ec_operation_list.context,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.reporting.es_ec_operation_list.context,end_date:"
+msgid "End Date"
+msgstr "Data final"
+
 msgctxt "field:account.reporting.es_ec_operation_list.context,fiscalyear:"
 msgid "Fiscal Year"
 msgstr "Exercici fiscal"
@@ -49,6 +61,10 @@ msgstr "Exercici fiscal"
 msgctxt "field:account.reporting.es_ec_operation_list.context,period:"
 msgid "Period"
 msgstr "Període"
+
+msgctxt "field:account.reporting.es_ec_operation_list.context,start_date:"
+msgid "Start Date"
+msgstr "Data inicial"
 
 msgctxt "field:account.reporting.vat_list_es,amount:"
 msgid "Amount"
@@ -133,6 +149,10 @@ msgstr "Codi resum operacions terceres persones"
 msgctxt "field:party.party,es_province_code:"
 msgid "Spanish Province Code"
 msgstr "Codi de província espanyol"
+
+msgctxt "help:account.payment.journal,es_sepa_request_advancement:"
+msgid "Check to receive payments before the payment date."
+msgstr "Marqueu per rebre els pagaments abans de la data de pagament."
 
 msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
