@@ -78,7 +78,7 @@ msgid ""
 msgstr ""
 "Ein Pythonausdruck, der ausgewertet wird mit:\n"
 "- unit_price: Originaler Einzelpreis des Artikels\n"
-"- cost_price: Der Kostenpreis des Artikels"
+"- cost_price: Der Einstandspreis des Artikels"
 
 msgctxt "help:product.price_list.line,price_list:"
 msgid "The price list to which the line belongs."

@@ -11,7 +11,6 @@ msgctxt "field:product.price_list,lines:"
 msgid "Lines"
 msgstr "Righe"
 
-#, fuzzy
 msgctxt "field:product.price_list,name:"
 msgid "Name"
 msgstr "Nome"
@@ -37,12 +36,10 @@ msgctxt "field:product.price_list.line,price_list:"
 msgid "Price List"
 msgstr "Price Lists"
 
-#, fuzzy
 msgctxt "field:product.price_list.line,product:"
 msgid "Product"
 msgstr "Prodotto"
 
-#, fuzzy
 msgctxt "field:product.price_list.line,quantity:"
 msgid "Quantity"
 msgstr "Quantità"

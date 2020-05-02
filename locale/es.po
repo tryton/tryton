@@ -76,7 +76,7 @@ msgid ""
 "- cost_price: the cost price of the product"
 msgstr ""
 "Expresión de Python que se evaluará como:\n"
-"- unit_price: El precio por unidad original\n"
+"- unit_price: El precio unitario original\n"
 "- cost_price: El precio de coste del producto"
 
 msgctxt "help:product.price_list.line,price_list:"
