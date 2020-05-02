@@ -72,7 +72,7 @@ msgstr "Log E-mail"
 
 msgctxt "model:ir.action,name:report_email"
 msgid "Dunning Email"
-msgstr "Dunning Email"
+msgstr "Email di sollecito"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Amount"
@@ -100,7 +100,7 @@ msgstr "Tariffe:"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Pending Payments Received"
-msgstr "Pagamenti in sospeso ricevuti"
+msgstr "Pagamenti in attesa ricevuti"
 
 msgctxt "report:account.dunning.letter:"
 msgid "Reference"
