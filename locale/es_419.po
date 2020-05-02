@@ -26,6 +26,10 @@ msgctxt "field:product.template,producible:"
 msgid "Producible"
 msgstr ""
 
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr ""
+
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr ""
@@ -36,6 +40,10 @@ msgstr ""
 
 msgctxt "field:production,cost:"
 msgid "Cost"
+msgstr ""
+
+msgctxt "field:production,done_by:"
+msgid "Done By"
 msgstr ""
 
 msgctxt "field:production,effective_date:"
@@ -56,6 +64,10 @@ msgstr ""
 
 msgctxt "field:production,number:"
 msgid "Number"
+msgstr ""
+
+msgctxt "field:production,origin:"
+msgid "Origin"
 msgstr ""
 
 msgctxt "field:production,outputs:"
@@ -80,6 +92,10 @@ msgstr ""
 
 msgctxt "field:production,reference:"
 msgid "Reference"
+msgstr ""
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
 msgstr ""
 
 msgctxt "field:production,state:"
@@ -247,6 +263,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr ""
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr ""
@@ -333,12 +353,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -469,6 +483,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr ""
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr ""
@@ -498,7 +516,7 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr ""
 
-msgctxt "view:product.product:"
+msgctxt "view:product.template:"
 msgid "Production"
 msgstr ""
 

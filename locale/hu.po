@@ -30,6 +30,11 @@ msgid "Producible"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Assigned"
+
+#, fuzzy
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "BOM"
@@ -43,6 +48,11 @@ msgstr "Társaság"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Költség"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -65,6 +75,10 @@ msgstr "Raktár hely"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "Szám"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -90,6 +104,10 @@ msgstr "Mennyiség"
 
 msgctxt "field:production,reference:"
 msgid "Reference"
+msgstr ""
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
 msgstr ""
 
 #, fuzzy
@@ -292,6 +310,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Termelés"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr ""
@@ -382,12 +404,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -530,6 +546,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Termelés"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -566,7 +586,7 @@ msgid "Waiting"
 msgstr "Waiting"
 
 #, fuzzy
-msgctxt "view:product.product:"
+msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Termelés"
 

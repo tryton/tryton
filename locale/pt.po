@@ -26,6 +26,11 @@ msgctxt "field:product.template,producible:"
 msgid "Producible"
 msgstr "Produzível"
 
+#, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Atribuído"
+
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "Lista de materiais"
@@ -37,6 +42,11 @@ msgstr "Empresa"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Custo"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -57,6 +67,10 @@ msgstr "Localização"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "Número"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -81,6 +95,10 @@ msgstr "Quantidade"
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "Referência"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
@@ -247,6 +265,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Produção"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr "Entrada da produção"
@@ -334,15 +356,6 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr ""
-
-#, fuzzy
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
-msgstr ""
-"Os custos das saídas (%(outputs)s) de produção \"%(production)s\" não "
-"coincidem com o custo da produção (%(costs)s)."
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
@@ -472,6 +485,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Produção"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Atribuído"
@@ -500,7 +517,8 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Espera"
 
-msgctxt "view:product.product:"
+#, fuzzy
+msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Produção"
 

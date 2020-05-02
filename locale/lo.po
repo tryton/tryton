@@ -29,6 +29,11 @@ msgid "Producible"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Assigned"
+
+#, fuzzy
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "BOM"
@@ -40,6 +45,11 @@ msgstr "ຫ້ອງການ/ສຳນັກງານ"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -60,6 +70,10 @@ msgstr "ສະຖານທີ່"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "ເລກທີ"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -84,6 +98,10 @@ msgstr "ຈຳນວນ"
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "ເອກະສານອ້າງອີງ"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
@@ -277,6 +295,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr ""
@@ -369,12 +391,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -517,6 +533,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 #, fuzzy
 msgctxt "selection:production,state:"
 msgid "Assigned"
@@ -553,7 +573,7 @@ msgid "Waiting"
 msgstr "Waiting"
 
 #, fuzzy
-msgctxt "view:product.product:"
+msgctxt "view:product.template:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 

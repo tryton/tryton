@@ -26,6 +26,11 @@ msgctxt "field:product.template,producible:"
 msgid "Producible"
 msgstr "Toodetav"
 
+#, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Omistatud"
+
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "Retsept"
@@ -37,6 +42,11 @@ msgstr "Ettevõte"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Hind"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Tehtud"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -57,6 +67,10 @@ msgstr "Asukoht"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "Number"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -81,6 +95,10 @@ msgstr "Kogus"
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "Viide"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
@@ -247,6 +265,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Tootmine"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr "Tootmise sisend"
@@ -333,12 +355,6 @@ msgstr "Toode võib retseptis olla ainult ühekordselt."
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -469,6 +485,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Tootmine"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Omistatud"
@@ -497,7 +517,8 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "Ootel"
 
-msgctxt "view:product.product:"
+#, fuzzy
+msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Tootmine"
 

@@ -26,6 +26,11 @@ msgctxt "field:product.template,producible:"
 msgid "Producible"
 msgstr "قابل توليد"
 
+#, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "تخصیص داده شده"
+
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "BOM"
@@ -37,6 +42,11 @@ msgstr "شرکت"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "هزینه"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -57,6 +67,10 @@ msgstr "مکان"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "شماره"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -81,6 +95,10 @@ msgstr "مقدار/تعداد"
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "مرجع"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
@@ -247,6 +265,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "تهیه کننده"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr "تولیدات ورودی"
@@ -334,14 +356,6 @@ msgstr "محصولات فقط می تواند یک بار در هر BOM ظاهر
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
 msgstr "شما نمیتوانید یک BOM بازگشتی برای محصول :\"%(product)s\" ایجاد کنید."
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
-msgstr ""
-"هزینه های خروجی : \"%(outputs)s\" از تولید : \"%(production)s\"، با هزینه "
-"تولید : \"%(costs)s\" مطابقت ندارد."
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
 msgid "Are you sure you want to complete the production?"
@@ -471,6 +485,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "تولید"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "تخصیص داده شده"
@@ -499,9 +517,10 @@ msgctxt "selection:production,state:"
 msgid "Waiting"
 msgstr "در انتظار"
 
-msgctxt "view:product.product:"
+#, fuzzy
+msgctxt "view:product.template:"
 msgid "Production"
-msgstr "تولید"
+msgstr "تهیه کننده"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"

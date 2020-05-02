@@ -27,6 +27,11 @@ msgid "Producible"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:production,assigned_by:"
+msgid "Assigned By"
+msgstr "Назначен"
+
+#, fuzzy
 msgctxt "field:production,bom:"
 msgid "BOM"
 msgstr "Спецификация"
@@ -38,6 +43,11 @@ msgstr "Фирма"
 msgctxt "field:production,cost:"
 msgid "Cost"
 msgstr "Цена"
+
+#, fuzzy
+msgctxt "field:production,done_by:"
+msgid "Done By"
+msgstr "Done"
 
 msgctxt "field:production,effective_date:"
 msgid "Effective Date"
@@ -59,6 +69,10 @@ msgstr "Местонахождение"
 msgctxt "field:production,number:"
 msgid "Number"
 msgstr "Номер"
+
+msgctxt "field:production,origin:"
+msgid "Origin"
+msgstr ""
 
 msgctxt "field:production,outputs:"
 msgid "Outputs"
@@ -83,6 +97,10 @@ msgstr "Количество"
 msgctxt "field:production,reference:"
 msgid "Reference"
 msgstr "Препратка"
+
+msgctxt "field:production,run_by:"
+msgid "Run By"
+msgstr ""
 
 msgctxt "field:production,state:"
 msgid "State"
@@ -254,6 +272,10 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Производство"
 
+msgctxt "field:stock.move,production_cost_price_updated:"
+msgid "Cost Price Updated"
+msgstr ""
+
 msgctxt "field:stock.move,production_input:"
 msgid "Production Input"
 msgstr "Вход на производство"
@@ -353,12 +375,6 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_recursive_bom"
 msgid "You cannot create a recursive BOM for product \"%(product)s\"."
-msgstr ""
-
-msgctxt "model:ir.message,text:msg_uneven_costs"
-msgid ""
-"The costs of the outputs \"%(outputs)s\" of production \"%(production)s\" do"
-" not match the cost of the production \"%(costs)s\"."
 msgstr ""
 
 msgctxt "model:ir.model.button,confirm:production_done_button"
@@ -500,6 +516,10 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Production"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Set Cost from Moves"
+msgstr ""
+
 msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Назначен"
@@ -529,9 +549,9 @@ msgid "Waiting"
 msgstr "Очакване"
 
 #, fuzzy
-msgctxt "view:product.product:"
+msgctxt "view:product.template:"
 msgid "Production"
-msgstr "Управление на производство"
+msgstr "Производство"
 
 msgctxt "view:production.assign.failed:"
 msgid "Unable to assign those products:"
