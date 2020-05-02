@@ -50,6 +50,14 @@ msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "入职日期"
 
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "公司"
@@ -102,7 +110,6 @@ msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "雇员"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "用户"
@@ -151,9 +158,26 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr "雇员加入公司的时候."
 
+#, fuzzy
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "代表雇员的参与对象."
+
+#, fuzzy
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "代表雇员的参与对象."
+
+#, fuzzy
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
 msgstr "在这个 cron 注册的公司"
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
@@ -193,23 +217,27 @@ msgstr "雇员"
 
 msgctxt "model:ir.action,name:act_company_config"
 msgid "Configure Company"
-msgstr "Configure Company"
+msgstr "设置公司"
 
 msgctxt "model:ir.action,name:act_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "model:ir.action,name:act_company_tree"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "雇员"
+
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
 
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
-msgstr "Letter"
+msgstr "信"
 
 msgctxt "model:ir.cron-company.company,name:"
 msgid "Cron - Company"
@@ -223,17 +251,30 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
 msgstr "公司中的用户"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "公司"
+
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "model:ir.ui.menu,name:menu_company_tree"
 msgid "Companies"
-msgstr "Companies"
+msgstr "公司"
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
-msgstr "Employees"
+msgstr "雇员"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -267,22 +308,18 @@ msgctxt "view:company.company:"
 msgid "Reports"
 msgstr "报告"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
 msgstr "添加"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
 msgstr "取消"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
 msgstr "确定"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
 msgstr "取消"

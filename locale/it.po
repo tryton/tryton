@@ -6,7 +6,6 @@ msgctxt "field:company.company,childs:"
 msgid "Children"
 msgstr "Figlio"
 
-#, fuzzy
 msgctxt "field:company.company,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -27,10 +26,9 @@ msgctxt "field:company.company,parent:"
 msgid "Parent"
 msgstr "Padre"
 
-#, fuzzy
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -42,16 +40,23 @@ msgstr "Azienda"
 
 msgctxt "field:company.employee,end_date:"
 msgid "End Date"
-msgstr ""
+msgstr "Data fine"
 
-#, fuzzy
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "Controparti"
+msgstr "Controparte"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
+msgstr "Data inizio"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
 msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr "Supervisore"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -61,7 +66,6 @@ msgctxt "field:ir.cron-company.company,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:ir.cron-company.company,cron:"
 msgid "Cron"
 msgstr "Cron"
@@ -82,7 +86,6 @@ msgctxt "field:party.party.lang,company:"
 msgid "Company"
 msgstr "Azienda"
 
-#, fuzzy
 msgctxt "field:res.user,companies:"
 msgid "Companies"
 msgstr "Aziende"
@@ -107,7 +110,6 @@ msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
 msgstr "Dipendente"
 
-#, fuzzy
 msgctxt "field:res.user-company.employee,user:"
 msgid "User"
 msgstr "Utente"
@@ -118,7 +120,7 @@ msgstr ""
 
 msgctxt "help:company.company,currency:"
 msgid "The main currency for the company."
-msgstr ""
+msgstr "La valuta principale per l'azienda."
 
 msgctxt "help:company.company,employees:"
 msgid "Add employees to the company."
@@ -156,9 +158,24 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr ""
 
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr ""
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr ""
+
+#, fuzzy
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
 msgstr "Aziende registrate per questo cron"
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
@@ -216,6 +233,10 @@ msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "Employees"
 
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
@@ -234,6 +255,11 @@ msgid "User in company"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Azienda"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "Companies"
@@ -247,6 +273,14 @@ msgstr "Companies"
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "Employees"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -286,17 +320,15 @@ msgctxt "wizard_button:company.company.config,company,add:"
 msgid "Add"
 msgstr "Inserisci"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,company,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"
 
 #, fuzzy
 msgctxt "wizard_button:company.company.config,start,company:"
 msgid "OK"
 msgstr "OK"
 
-#, fuzzy
 msgctxt "wizard_button:company.company.config,start,end:"
 msgid "Cancel"
-msgstr "Cancella"
+msgstr "Annulla"

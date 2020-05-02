@@ -50,6 +50,14 @@ msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr ""
 
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr ""
@@ -150,8 +158,22 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr ""
 
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr ""
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr ""
+
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
+msgstr ""
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
 msgstr ""
 
 msgctxt "help:ir.sequence,company:"
@@ -206,6 +228,10 @@ msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr ""
@@ -222,6 +248,10 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
 msgstr ""
 
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr ""
@@ -232,6 +262,14 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
+msgstr ""
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
 msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"

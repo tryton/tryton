@@ -50,6 +50,14 @@ msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "Začetni datum"
 
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "Družbe"
@@ -150,9 +158,26 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr "Datum, ko zaposlenec vstopi v družbo."
 
+#, fuzzy
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Partner, ki predstavlja zaposlenca."
+
+#, fuzzy
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Partner, ki predstavlja zaposlenca."
+
+#, fuzzy
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
 msgstr "Družbe, registrirana na ta razporejevalnik"
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
@@ -210,6 +235,10 @@ msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "Employees"
 
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
 #, fuzzy
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
@@ -228,6 +257,11 @@ msgid "User in company"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Družba"
+
+#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "Companies"
@@ -241,6 +275,14 @@ msgstr "Companies"
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "Employees"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"

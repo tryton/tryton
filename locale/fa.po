@@ -50,6 +50,14 @@ msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
 
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr ""
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr ""
+
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
 msgstr "شرکت ها"
@@ -150,9 +158,26 @@ msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr "هنگامی که کارمند به شرکت می پیوندد."
 
+#, fuzzy
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "نهاد/سازمان که نماینده کارمند است."
+
+#, fuzzy
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "نهاد/سازمان که نماینده کارمند است."
+
+#, fuzzy
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
 msgstr "شرکت های ثبت شده برای این برنامه وظیفه"
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
+msgstr ""
 
 msgctxt "help:ir.sequence,company:"
 msgid "Restrict the sequence usage to the company."
@@ -206,6 +231,10 @@ msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "کارمندان"
 
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr "حروف"
@@ -222,6 +251,11 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
 msgstr ""
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "شرکت"
+
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "شرکت ها"
@@ -233,6 +267,14 @@ msgstr "شرکت ها"
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "کارمندان"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"

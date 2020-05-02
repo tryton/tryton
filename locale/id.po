@@ -12,15 +12,15 @@ msgstr "Mata uang"
 
 msgctxt "field:company.company,employees:"
 msgid "Employees"
-msgstr ""
+msgstr "Pegawai-pegawai"
 
 msgctxt "field:company.company,footer:"
 msgid "Footer"
-msgstr ""
+msgstr "Kaki"
 
 msgctxt "field:company.company,header:"
 msgid "Header"
-msgstr ""
+msgstr "Tajuk"
 
 msgctxt "field:company.company,parent:"
 msgid "Parent"
@@ -32,7 +32,7 @@ msgstr "Pihak"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
-msgstr ""
+msgstr "Zona waktu"
 
 msgctxt "field:company.employee,company:"
 msgid "Company"
@@ -49,6 +49,14 @@ msgstr "Pihak"
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
 msgstr "Tanggal Awal"
+
+msgctxt "field:company.employee,subordinates:"
+msgid "Subordinates"
+msgstr "Bawahan"
+
+msgctxt "field:company.employee,supervisor:"
+msgid "Supervisor"
+msgstr "Pengawas"
 
 msgctxt "field:ir.cron,companies:"
 msgid "Companies"
@@ -84,7 +92,7 @@ msgstr "Perusahaan-perusahaan"
 
 msgctxt "field:res.user,company:"
 msgid "Current Company"
-msgstr ""
+msgstr "Perusahaan saat ini"
 
 msgctxt "field:res.user,employee:"
 msgid "Current Employee"
@@ -92,11 +100,11 @@ msgstr ""
 
 msgctxt "field:res.user,employees:"
 msgid "Employees"
-msgstr ""
+msgstr "Pegawai-pegawai"
 
 msgctxt "field:res.user,main_company:"
 msgid "Main Company"
-msgstr ""
+msgstr "Perusahaan Induk"
 
 msgctxt "field:res.user-company.employee,employee:"
 msgid "Employee"
@@ -120,11 +128,11 @@ msgstr "Tambahkan pegawai ke perusahaan."
 
 msgctxt "help:company.company,footer:"
 msgid "The text to display on report footers."
-msgstr ""
+msgstr "Teks yang ditampilkan pada kaki laporan."
 
 msgctxt "help:company.company,header:"
 msgid "The text to display on report headers."
-msgstr ""
+msgstr "Teks yang ditampilkan pada tajuk laporan."
 
 msgctxt "help:company.company,parent:"
 msgid "Add the company below the parent."
@@ -140,18 +148,32 @@ msgstr ""
 
 msgctxt "help:company.employee,end_date:"
 msgid "When the employee leaves the company."
-msgstr ""
+msgstr "Saat pegawai meninggalkan perusahaan."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr ""
+msgstr "Pihak yang mewakili pegawai."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
-msgstr ""
+msgstr "Saat pegawai bergabung dengan perusahaan."
+
+msgctxt "help:company.employee,subordinates:"
+msgid "The employees to be overseen by this employee."
+msgstr "Karyawan yang akan diawasi oleh karyawan ini."
+
+msgctxt "help:company.employee,supervisor:"
+msgid "The employee who oversees this employee."
+msgstr "Karyawan yang mengawasi karyawan ini."
 
 msgctxt "help:ir.cron,companies:"
-msgid "Companies registered for this cron"
+msgid "Companies registered for this cron."
+msgstr ""
+
+msgctxt "help:ir.rule,domain:"
+msgid ""
+"\n"
+"- \"employee\" from the current user"
 msgstr ""
 
 msgctxt "help:ir.sequence,company:"
@@ -176,7 +198,7 @@ msgstr ""
 
 msgctxt "help:res.user,main_company:"
 msgid "Grant access to the company and its children."
-msgstr ""
+msgstr "Berikan akses ke perusahaan dan cabang-cabangnya."
 
 msgctxt "model:company.company,name:"
 msgid "Company"
@@ -206,6 +228,10 @@ msgctxt "model:ir.action,name:act_employee_form"
 msgid "Employees"
 msgstr "Pegawai-pegawai"
 
+msgctxt "model:ir.action,name:act_employee_subordinates"
+msgid "Supervised by"
+msgstr ""
+
 msgctxt "model:ir.action,name:report_letter"
 msgid "Letter"
 msgstr ""
@@ -222,6 +248,10 @@ msgctxt "model:ir.rule.group,name:rule_group_sequence_strict"
 msgid "User in company"
 msgstr "Pengguna di dalam perusahaan"
 
+msgctxt "model:ir.ui.menu,name:menu_company"
+msgid "Company"
+msgstr "Perusahaan"
+
 msgctxt "model:ir.ui.menu,name:menu_company_list"
 msgid "Companies"
 msgstr "Perusahaan-perusahaan"
@@ -233,6 +263,14 @@ msgstr "Perusahaan-perusahaan"
 msgctxt "model:ir.ui.menu,name:menu_employee_form"
 msgid "Employees"
 msgstr "Pegawai-pegawai"
+
+msgctxt "model:res.group,name:group_company_admin"
+msgid "Company Administration"
+msgstr ""
+
+msgctxt "model:res.group,name:group_employee_admin"
+msgid "Employee Administration"
+msgstr ""
 
 msgctxt "model:res.user-company.employee,name:"
 msgid "User - Employee"
@@ -248,7 +286,7 @@ msgstr "Tanggal:"
 
 msgctxt "report:party.letter:"
 msgid "Dear Madams and Sirs,"
-msgstr ""
+msgstr "Nyonya dan Tuan Yth,"
 
 msgctxt "report:party.letter:"
 msgid "Subject:"
@@ -256,7 +294,7 @@ msgstr "Subject:"
 
 msgctxt "view:company.company.config.start:"
 msgid "You can now add your company into the system."
-msgstr ""
+msgstr "Anda sekarang dapat menambahkan perusahaan Anda ke dalam sistem."
 
 msgctxt "view:company.company:"
 msgid "Company"
