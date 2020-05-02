@@ -18,6 +18,11 @@ msgctxt "field:purchase.purchase-ignored-account.invoice.line,purchase:"
 msgid "Purchase"
 msgstr "خرید"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_invoice_line_relate"
+msgid "Invoice Lines"
+msgstr "خطوط صورتحساب"
+
 msgctxt "model:purchase.purchase-ignored-account.invoice.line,name:"
 msgid "Purchase - Ignored Invoice Line"
 msgstr "خرید - خط صورتحساب نادیده گرفته شده"
