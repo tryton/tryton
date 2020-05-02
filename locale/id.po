@@ -8,15 +8,15 @@ msgstr ""
 
 msgctxt "field:purchase.amendment,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:purchase.amendment,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:purchase.amendment,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Pembelian"
 
 msgctxt "field:purchase.amendment,state:"
 msgid "State"
@@ -32,27 +32,27 @@ msgstr ""
 
 msgctxt "field:purchase.amendment.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Deskripsi"
 
 msgctxt "field:purchase.amendment.line,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Alamat Faktur"
 
 msgctxt "field:purchase.amendment.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Baris"
 
 msgctxt "field:purchase.amendment.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Pihak"
 
 msgctxt "field:purchase.amendment.line,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Jangka waktu pembayaran"
 
 msgctxt "field:purchase.amendment.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Produk"
 
 msgctxt "field:purchase.amendment.line,product_supplier:"
 msgid "Supplier's Product"

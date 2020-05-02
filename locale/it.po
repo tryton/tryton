@@ -4,59 +4,59 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.amendment,date:"
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 msgctxt "field:purchase.amendment,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 msgctxt "field:purchase.amendment,lines:"
 msgid "Lines"
-msgstr ""
+msgstr "Righe"
 
 msgctxt "field:purchase.amendment,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Acquisto"
 
 msgctxt "field:purchase.amendment,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:purchase.amendment.line,action:"
 msgid "Action"
-msgstr ""
+msgstr "Azione"
 
 msgctxt "field:purchase.amendment.line,amendment:"
 msgid "Amendment"
-msgstr ""
+msgstr "Modifiche"
 
 msgctxt "field:purchase.amendment.line,description:"
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 msgctxt "field:purchase.amendment.line,invoice_address:"
 msgid "Invoice Address"
-msgstr ""
+msgstr "Indirizzo di fatturazione"
 
 msgctxt "field:purchase.amendment.line,line:"
 msgid "Line"
-msgstr ""
+msgstr "Riga"
 
 msgctxt "field:purchase.amendment.line,party:"
 msgid "Party"
-msgstr ""
+msgstr "Controparte"
 
 msgctxt "field:purchase.amendment.line,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Termine di pagamento"
 
 msgctxt "field:purchase.amendment.line,product:"
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 msgctxt "field:purchase.amendment.line,product_supplier:"
 msgid "Supplier's Product"
-msgstr ""
+msgstr "Prodotto del fornitore"
 
 msgctxt "field:purchase.amendment.line,product_uom_category:"
 msgid "Product UoM Category"
@@ -64,35 +64,35 @@ msgstr ""
 
 msgctxt "field:purchase.amendment.line,purchase:"
 msgid "Purchase"
-msgstr ""
+msgstr "Acquisto"
 
 msgctxt "field:purchase.amendment.line,quantity:"
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 msgctxt "field:purchase.amendment.line,state:"
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 msgctxt "field:purchase.amendment.line,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Unità"
 
 msgctxt "field:purchase.amendment.line,unit_digits:"
 msgid "Unit Digits"
-msgstr ""
+msgstr "Cifre unità"
 
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
-msgstr ""
+msgstr "Prezzo Unitario"
 
 msgctxt "field:purchase.amendment.line,warehouse:"
 msgid "Warehouse"
-msgstr ""
+msgstr "Magazzino"
 
 msgctxt "field:purchase.purchase,amendments:"
 msgid "Amendments"
-msgstr ""
+msgstr "Modifiche"
 
 msgctxt "model:ir.action,name:act_purchase_amendment_form"
 msgid "Purchase Amendments"
@@ -101,12 +101,12 @@ msgstr ""
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_all"
 msgid "All"
-msgstr ""
+msgstr "Tutti"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_draft"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_amendment_form_domain_validated"
@@ -147,7 +147,7 @@ msgstr ""
 
 msgctxt "selection:purchase.amendment,state:"
 msgid "Draft"
-msgstr ""
+msgstr "Bozza"
 
 msgctxt "selection:purchase.amendment,state:"
 msgid "Validated"
@@ -163,12 +163,12 @@ msgstr ""
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Payment Term"
-msgstr ""
+msgstr "Modifica il termine di pagamento"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Change Warehouse"
-msgstr ""
+msgstr "Cambia magazzino"
 
 msgctxt "selection:purchase.amendment.line,action:"
 msgid "Recompute Taxes"
-msgstr ""
+msgstr "Ricalcola le tasse"

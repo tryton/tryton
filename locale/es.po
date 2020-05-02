@@ -80,7 +80,7 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.amendment.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:purchase.amendment.line,unit_price:"
 msgid "Unit Price"
