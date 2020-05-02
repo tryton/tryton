@@ -367,6 +367,12 @@ msgctxt "model:ir.message,text:msg_line_amount_non_zero"
 msgid "Statement line amount cannot be zero."
 msgstr "L'import de la línia d'extracte no pot ser zero."
 
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+"Per contabilitzar l'assentament \"%(move)s\" heu de comptabilitzat "
+"l'extracte \"%(statement)s\"."
+
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr "Per eliminar el extracte \"%(statement)s\" primer l'heu de cancel·lar."

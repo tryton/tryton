@@ -368,6 +368,12 @@ msgctxt "model:ir.message,text:msg_line_amount_non_zero"
 msgid "Statement line amount cannot be zero."
 msgstr "Het bedrag van (het rekening uittreksel) kan niet nul zijn."
 
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+"Om de beweging \"%(move)s\" te boeken moet je eerst het statement "
+"\"%(statement)s\" boeken."
+
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""

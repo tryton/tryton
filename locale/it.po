@@ -236,7 +236,6 @@ msgctxt "field:account.statement.origin,lines:"
 msgid "Lines"
 msgstr "Righe"
 
-#, fuzzy
 msgctxt "field:account.statement.origin,number:"
 msgid "Number"
 msgstr "Numero"
@@ -309,10 +308,9 @@ msgctxt "model:ir.action,name:act_move_lines_form"
 msgid "Move Lines"
 msgstr "Move Lines"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_moves_form"
 msgid "Moves"
-msgstr "Moves"
+msgstr "Movimenti"
 
 msgctxt "model:ir.action,name:act_reconcile"
 msgid "Reconcile Statements"
@@ -393,6 +391,10 @@ msgctxt "model:ir.message,text:msg_line_amount_non_zero"
 msgid "Statement line amount cannot be zero."
 msgstr ""
 
+msgctxt "model:ir.message,text:msg_post_statement_move"
+msgid "To post the move \"%(move)s\" you must post the statement \"%(statement)s\"."
+msgstr ""
+
 msgctxt "model:ir.message,text:msg_statement_delete_cancel"
 msgid "To delete statement \"%(statement)s\" you must cancel it."
 msgstr ""
@@ -435,7 +437,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:statement_cancel_button"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annulla"
 
 msgctxt "model:ir.model.button,string:statement_draft_button"
 msgid "Draft"
@@ -605,7 +607,6 @@ msgctxt "view:account.statement:"
 msgid "Statement Lines"
 msgstr "Righe situazione"
 
-#, fuzzy
 msgctxt "wizard_button:account.statement.import,start,end:"
 msgid "Cancel"
 msgstr "Annulla"
