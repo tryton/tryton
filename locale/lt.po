@@ -122,7 +122,7 @@ msgstr "Advance Payment Terms"
 
 msgctxt "help:sale.advance_payment_term.line,account:"
 msgid "Used for the line of advance payment invoice."
-msgstr "Naudojama išankstinio mokėjimo sąskaitos faktūros eilutei"
+msgstr "Naudojama išankstinio mokėjimo sąskaitos faktūros eilutei."
 
 msgctxt "help:sale.advance_payment_term.line,block_shipping:"
 msgid "Check to prevent the packing of the shipment before advance payment."

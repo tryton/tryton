@@ -44,7 +44,7 @@ msgstr "Baris Faktur"
 
 msgctxt "field:sale.advance_payment.condition,sale:"
 msgid "Sale"
-msgstr ""
+msgstr "Penjualan"
 
 msgctxt "field:sale.advance_payment.condition,sale_company:"
 msgid "Company"
