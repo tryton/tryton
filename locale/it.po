@@ -7,7 +7,6 @@ msgctxt "field:product.cultivar,groups:"
 msgid "Groups"
 msgstr "Gruppi"
 
-#, fuzzy
 msgctxt "field:product.cultivar,name:"
 msgid "Name"
 msgstr "Nome"
@@ -37,7 +36,6 @@ msgctxt "field:product.cultivar.group,cultivars:"
 msgid "Cultivars"
 msgstr "Cultivars"
 
-#, fuzzy
 msgctxt "field:product.cultivar.group,name:"
 msgid "Name"
 msgstr "Nome"
@@ -47,15 +45,13 @@ msgctxt "field:product.taxon,childs:"
 msgid "Children"
 msgstr "Figlio"
 
-#, fuzzy
 msgctxt "field:product.taxon,name:"
 msgid "Name"
 msgstr "Nome"
 
-#, fuzzy
 msgctxt "field:product.taxon,parent:"
 msgid "Parent"
-msgstr "Parte"
+msgstr "Padre"
 
 #, fuzzy
 msgctxt "field:product.taxon,rank:"
