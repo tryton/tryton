@@ -12,4 +12,4 @@ msgstr "dimensione conti analitici"
 
 msgctxt "view:purchase.line:"
 msgid "Analytic"
-msgstr ""
+msgstr "Analitico"
