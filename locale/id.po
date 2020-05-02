@@ -16,7 +16,7 @@ msgstr "Kata sandi"
 
 msgctxt "field:carrier.credential.dpd,server:"
 msgid "Server"
-msgstr ""
+msgstr "Server"
 
 msgctxt "field:carrier.credential.dpd,token:"
 msgid "Token"
