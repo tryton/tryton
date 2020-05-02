@@ -6,6 +6,11 @@ msgctxt "field:sale.sale,payments:"
 msgid "Payments"
 msgstr "Pagamentos"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_payments_relate"
+msgid "Payments"
+msgstr "Pagamentos"
+
 msgctxt "model:ir.message,text:msg_payment_sale_cancel"
 msgid ""
 "You cannot use sale \"%(sale)s\" on payment \"%(payment)s\" because it is a "
