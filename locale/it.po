@@ -8,7 +8,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon,name:"
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 msgctxt "field:sale.promotion.coupon,number_of_use:"
 msgid "Number of Use"
@@ -36,7 +36,7 @@ msgstr ""
 
 msgctxt "field:sale.promotion.coupon.number,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:sale.sale,coupons:"
 msgid "Coupons"
@@ -44,7 +44,7 @@ msgstr ""
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,number:"
 msgid "Number"
-msgstr ""
+msgstr "Numero"
 
 msgctxt "field:sale.sale-sale.promotion.coupon.number,sale:"
 msgid "Sale"
