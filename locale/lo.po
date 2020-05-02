@@ -15,6 +15,11 @@ msgid "Date"
 msgstr "ວັນທີ"
 
 #, fuzzy
+msgctxt "field:product.sale.context,date:"
+msgid "Date"
+msgstr "ວັນທີ"
+
+#, fuzzy
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"
 msgstr "Lines"

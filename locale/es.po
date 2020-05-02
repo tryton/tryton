@@ -14,6 +14,10 @@ msgctxt "field:product.price_list.line.context,date:"
 msgid "Date"
 msgstr "Fecha"
 
+msgctxt "field:product.sale.context,date:"
+msgid "Date"
+msgstr "Fecha"
+
 msgctxt "model:ir.action,name:act_price_list_line_form"
 msgid "Lines"
 msgstr "Líneas"
