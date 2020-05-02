@@ -8,7 +8,7 @@ Imports::
     >>> from proteus import Model
     >>> from trytond.tests.tools import activate_modules
 
-Install party::
+Install product::
 
     >>> config = activate_modules('product')
 
