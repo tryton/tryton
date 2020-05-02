@@ -24,7 +24,7 @@ msgstr "Enddatum"
 
 msgctxt "field:customs.duty.rate,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:customs.duty.rate,tariff_code:"
 msgid "Tariff Code"
