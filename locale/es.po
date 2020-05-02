@@ -232,7 +232,7 @@ msgid ""
 "100%%."
 msgstr ""
 "Para grabar la cuenta \"%(account)s\" la suma de sus distribuciones debe ser"
-" 100%."
+" 100%%."
 
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."

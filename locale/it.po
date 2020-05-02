@@ -234,10 +234,9 @@ msgstr ""
 "Per salvare il conto \"%(account)s\" la somma delle loro distribuzioni deve "
 "essere 100%%."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
-msgstr "E' consentito solo un conto per radice ed origine analitica"
+msgstr "È consentito solo un conto per radice ed origine analitica."
 
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
@@ -267,10 +266,9 @@ msgctxt "model:ir.ui.menu,name:menu_rule_form"
 msgid "Analytic Rules"
 msgstr "Regole analitiche"
 
-#, fuzzy
 msgctxt "model:res.group,name:group_analytic_admin"
 msgid "Analytic Administration"
-msgstr "Analytic Administration"
+msgstr "Amministrazione analitica"
 
 msgctxt "selection:account.move.line,analytic_state:"
 msgid "Draft"

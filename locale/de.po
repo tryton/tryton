@@ -140,7 +140,7 @@ msgstr "Enddatum"
 
 msgctxt "field:analytic_account.open_chart.start,start_date:"
 msgid "Start Date"
-msgstr "Anfangsdatum"
+msgstr "Startdatum"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"

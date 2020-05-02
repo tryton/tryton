@@ -231,7 +231,7 @@ msgid ""
 "To save account \"%(account)s\" the sum of their distributions must be "
 "100%%."
 msgstr ""
-"La suma de la distribució del compte \"%(account)s\" ha de ser 100% per "
+"La suma de la distribució del compte \"%(account)s\" ha de ser 100%% per "
 "poder-lo guardar."
 
 msgctxt "model:ir.message,text:msg_root_origin_unique"
