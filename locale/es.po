@@ -99,9 +99,17 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Recrear movimientos"
 
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Cantidad actual"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Importe"
+
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -193,11 +201,11 @@ msgstr "Unidad"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimales de la unidad"
+msgstr "Dígitos de la unidad"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
-msgstr "Precio unidad"
+msgstr "Precio unitario"
 
 msgctxt "field:purchase.line-account.tax,line:"
 msgid "Purchase Line"
@@ -269,7 +277,7 @@ msgstr "Cantidad"
 
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
-msgstr "Precio unidad"
+msgstr "Precio unitario"
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -278,6 +286,14 @@ msgstr "Comentario"
 msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmada por"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr "Contacto"
 
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
@@ -302,6 +318,10 @@ msgstr "Dirección de facturación"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Método de facturación"
+
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tercero de la factura"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -346,6 +366,10 @@ msgstr "Plazo de pago"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Fecha de compra"
+
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Presupuestada por"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -501,6 +525,10 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Compras"
 
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Movimientos"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Compras"
@@ -528,6 +556,10 @@ msgstr "Gestionar excepción de factura"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modificar cabecera"
+
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Devolver la compra"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -778,6 +810,10 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Compra - Factura recreada"
 
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Devolver la compra"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Compras"
@@ -852,7 +888,7 @@ msgstr "Total:"
 
 msgctxt "report:purchase.purchase:"
 msgid "Unit Price"
-msgstr "Precio unidad"
+msgstr "Precio unitario"
 
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Ignored"
@@ -861,30 +897,6 @@ msgstr "Ignorado"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Recreada"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Cancelada"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Confirmada"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "Finalizada"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Borrador"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "En proceso"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Presupuesto"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1018,6 +1030,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr "¿Estas seguro que quieres devolver estos pedidos de compra?"
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1041,3 +1057,11 @@ msgstr "Cancelar"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Modificar"
+
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Devolver"

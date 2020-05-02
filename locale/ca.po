@@ -99,9 +99,17 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Refer moviments"
 
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Quantitat actual"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Import"
+
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Empresa"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -193,7 +201,7 @@ msgstr "Unitat"
 
 msgctxt "field:purchase.line,unit_digits:"
 msgid "Unit Digits"
-msgstr "Decimals de la unitat"
+msgstr "Dígits de la unitat"
 
 msgctxt "field:purchase.line,unit_price:"
 msgid "Unit Price"
@@ -279,6 +287,14 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmada per"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr "Contacte"
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Moneda"
@@ -302,6 +318,10 @@ msgstr "Adreça de facturació"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Mètode de facturació"
+
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Tercer de la factura"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -346,6 +366,10 @@ msgstr "Termini de pagament"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Data compra"
+
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Pressupostada per"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -498,6 +522,10 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Compres"
 
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Moviments"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Compres"
@@ -525,6 +553,10 @@ msgstr "Gestiona l'excepció de factura"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modificar capçalera"
+
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Retorna la compra"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -775,6 +807,10 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Compra - Factura recreada"
 
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Retorna la compra"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Compres"
@@ -858,30 +894,6 @@ msgstr "Ignorat"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Recreada"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Cancel·lat"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Confirmat"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "Finalitzat"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Esborrany"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "En procés"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Pressupost"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1015,6 +1027,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Compra"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr "Esteu segurs que voleu retornar aquestes comandes de compra?"
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Cancel·la"
@@ -1038,3 +1054,11 @@ msgstr "Cancel·la"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Modifica"
+
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Retorna"

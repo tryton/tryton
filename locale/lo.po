@@ -106,9 +106,19 @@ msgid "Recreate Moves"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "ຈຳນວນ"
+
+#, fuzzy
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -312,6 +322,15 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmed"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "ສະກຸນເງິນ"
@@ -338,6 +357,11 @@ msgstr "ທີ່ຢູ່"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "ໃບເກັບເງິນ"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -388,6 +412,11 @@ msgstr "ວິທີການຈ່າຍ"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "ວັນທີຈັດຊື້"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -550,6 +579,11 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "ການຈັດຊື້"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "ຕັດບັນຊີສາງ"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Purchases"
@@ -578,6 +612,11 @@ msgstr "Handle Invoice Exception"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modify Header"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "ສັ່ງຊື້"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -825,6 +864,11 @@ msgid "Purchase - Recreated Invoice"
 msgstr "ຊື້ - ສ້າງໃບເກັບເງິນໃໝ່"
 
 #, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "ສັ່ງຊື້"
+
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "ສັ່ງຊື້"
@@ -917,36 +961,6 @@ msgstr "ບໍ່ແຕະຕ້ອງ"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "ສ້າງຂຶ້ນໃໝ່"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "ຍົກເລີກແລ້ວ"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Confirm"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "ແລ້ວໆ"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "ຮ່າງກຽມ"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "ກຳລັງດຳເນີນການ"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Quotation"
 
 #, fuzzy
 msgctxt "selection:purchase.line,type:"
@@ -1099,6 +1113,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "ສັ່ງຊື້"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr ""
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "ຍົກເລີກ"
@@ -1125,3 +1143,13 @@ msgstr "ຍົກເລີກ"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Returns"

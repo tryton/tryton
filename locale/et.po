@@ -101,9 +101,19 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Taasloo liikumised"
 
+#, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Kogus"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Kogus"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Ettevõte"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -281,6 +291,15 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Kinnitatud"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Valuuta"
@@ -304,6 +323,11 @@ msgstr "Arve aadress"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Arve meetod"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Arve olek"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -348,6 +372,10 @@ msgstr "Maksetingimus"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Ostu kuupäev"
+
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr ""
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -498,6 +526,11 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Ostud"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Liikumised"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Ostud"
@@ -525,6 +558,11 @@ msgstr "Käsitle arve erandit"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Muuda päist"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Ost"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -755,6 +793,11 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Ost - taasloodud arved"
 
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Ost"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Ost"
@@ -838,30 +881,6 @@ msgstr "Tühistatud"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Taasloodud"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Tühistatud"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Kinnitatud"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "Tehtud"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Mustand"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "Käitluses"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Pakkumine"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -997,6 +1016,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Ost"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr ""
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Tühista"
@@ -1020,3 +1043,13 @@ msgstr "Tühista"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Muuda"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Tühista"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Tagastused"

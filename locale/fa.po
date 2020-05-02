@@ -101,9 +101,19 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "ایجاد دوباره جابجایی ها"
 
+#, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "مقدار/تعداد"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "مقدار"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "شرکت"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -282,6 +292,15 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "تایید شده"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "واحد پول"
@@ -305,6 +324,11 @@ msgstr "آدرس صورتحساب"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "سبک صورتحساب"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "وضعیت صورت حساب"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -349,6 +373,11 @@ msgstr "شرایط پرداخت"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "تاریخ خرید"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -504,6 +533,11 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "خریدها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "جابجایی ها"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Purchases"
@@ -531,6 +565,11 @@ msgstr "رسیدگی به صورتحساب های اعتراضی"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modify Header"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "خرید"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -779,6 +818,11 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "خرید - صورتحساب دوباره ایجاد شده"
 
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "خرید"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "خرید"
@@ -862,30 +906,6 @@ msgstr "نادیده گرفته شده"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "دوباره ایجاد شده"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "لغو شده"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "تایید شده"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "انجام شد"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "پیش‌نویس"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "در حال پردازش"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "نقل قول"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1021,6 +1041,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "خرید"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr ""
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "انصراف"
@@ -1044,3 +1068,13 @@ msgstr "انصراف"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "تغییر"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "برگشتی ها"

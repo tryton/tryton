@@ -101,9 +101,19 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Atkurti operacijas"
 
+#, fuzzy
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Kiekis"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Suma"
+
+#, fuzzy
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Organizacija"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -281,6 +291,15 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Patvirtinti"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Valiuta"
@@ -304,6 +323,11 @@ msgstr "Juridinis adresas"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Sąskaita faktūra išrašoma"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Sąskaitos faktūros būsena"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -348,6 +372,11 @@ msgstr "Mokėjimo sąlyga"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Pirkimo data"
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Pasiūlymas"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -499,6 +528,11 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Pirkimai"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Operacijos"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Pirkimai"
@@ -526,6 +560,11 @@ msgstr "Tvarkyti sąskaitos faktūros išimtinę situaciją"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Taisyti antraštės duomenis"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Pirkimas"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -756,6 +795,11 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Pirkimai - atkurtos sąskaitos faktūros"
 
+#, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Pirkimas"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Pirkimas"
@@ -840,30 +884,6 @@ msgstr "Ignoruota"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Atkurta"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Anuliuota"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Patvirtinta"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "Pabaigta"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Juodraštis"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "Vykdoma"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Pasiūlymas"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1000,6 +1020,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Pirkimas"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr ""
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Atsisakyti"
@@ -1023,3 +1047,13 @@ msgstr "Atsisakyti"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Taisyti"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Atsisakyti"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Grąžinimai"

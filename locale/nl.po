@@ -99,9 +99,17 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr "Boekingen opnieuw aanmaken"
 
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr "Werkelijke hoeveelheid"
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
 msgstr "Bedrag"
+
+msgctxt "field:purchase.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -279,6 +287,14 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Bevestigd door"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr "Contact"
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr "Valuta"
@@ -302,6 +318,10 @@ msgstr "Factuuradres"
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr "Factuur afhandeling"
+
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Factuur relatie (Invoice Party)"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -346,6 +366,10 @@ msgstr "Betalingsvoorwaarden"
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr "Aankoopdatum"
+
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Offerte gemaakt door"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -503,6 +527,10 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Inkoop"
 
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr "Boekingen"
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Aankopen"
@@ -530,6 +558,10 @@ msgstr "Uitzondering factuur afhandeling"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Wijzig koptekst"
+
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Aankoop retourneren"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -780,6 +812,10 @@ msgctxt "model:purchase.purchase-recreated-account.invoice,name:"
 msgid "Purchase - Recreated Invoice"
 msgstr "Aankoop - opnieuw aangemaakte factuur(recreated invoice)"
 
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Aankoop retourneren"
+
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Inkoop"
@@ -863,30 +899,6 @@ msgstr "Genegeerd"
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr "Opnieuw aangemaakt"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Geannuleerd"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Bevestigd"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr "Klaar"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Concept"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "Verwerking"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Offerte"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1020,6 +1032,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Inkoop"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr "Weet u zeker dat u deze aanko(o)p(en) wilt retourneren?"
+
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
 msgstr "Annuleren"
@@ -1043,3 +1059,11 @@ msgstr "Annuleren"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr "Wijzigen"
+
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Annuleren"
+
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Retours"

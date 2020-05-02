@@ -100,8 +100,16 @@ msgctxt "field:purchase.handle.shipment.exception.ask,recreate_moves:"
 msgid "Recreate Moves"
 msgstr ""
 
+msgctxt "field:purchase.line,actual_quantity:"
+msgid "Actual Quantity"
+msgstr ""
+
 msgctxt "field:purchase.line,amount:"
 msgid "Amount"
+msgstr ""
+
+msgctxt "field:purchase.line,company:"
+msgid "Company"
 msgstr ""
 
 msgctxt "field:purchase.line,delivery_date:"
@@ -282,6 +290,15 @@ msgctxt "field:purchase.purchase,company:"
 msgid "Company"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:purchase.purchase,confirmed_by:"
+msgid "Confirmed By"
+msgstr "Confirmed"
+
+msgctxt "field:purchase.purchase,contact:"
+msgid "Contact"
+msgstr ""
+
 msgctxt "field:purchase.purchase,currency:"
 msgid "Currency"
 msgstr ""
@@ -305,6 +322,11 @@ msgstr ""
 msgctxt "field:purchase.purchase,invoice_method:"
 msgid "Invoice Method"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,invoice_party:"
+msgid "Invoice Party"
+msgstr "Invoices"
 
 msgctxt "field:purchase.purchase,invoice_state:"
 msgid "Invoice State"
@@ -350,6 +372,11 @@ msgstr ""
 msgctxt "field:purchase.purchase,purchase_date:"
 msgid "Purchase Date"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.purchase,quoted_by:"
+msgid "Quoted By"
+msgstr "Quote"
 
 msgctxt "field:purchase.purchase,reference:"
 msgid "Reference"
@@ -505,6 +532,10 @@ msgctxt "model:ir.action,name:act_purchase_invoice_relate"
 msgid "Purchases"
 msgstr "Purchases"
 
+msgctxt "model:ir.action,name:act_purchase_move_relate"
+msgid "Moves"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_purchase_shipment_returns_relate"
 msgid "Purchases"
 msgstr "Purchases"
@@ -533,6 +564,11 @@ msgstr "Handle Invoice Exception"
 msgctxt "model:ir.action,name:wizard_modify_header"
 msgid "Modify Header"
 msgstr "Modify Header"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_return_purchase"
+msgid "Return Purchase"
+msgstr "Purchases"
 
 msgctxt "model:ir.action,name:wizard_shipment_handle_exception"
 msgid "Handle Shipment Exception"
@@ -773,6 +809,11 @@ msgid "Purchase - Recreated Invoice"
 msgstr ""
 
 #, fuzzy
+msgctxt "model:purchase.return_purchase.start,name:"
+msgid "Return Purchase"
+msgstr "Purchases"
+
+#, fuzzy
 msgctxt "model:res.group,name:group_purchase"
 msgid "Purchase"
 msgstr "Purchase"
@@ -857,35 +898,6 @@ msgstr ""
 msgctxt "selection:account.invoice,purchase_exception_state:"
 msgid "Recreated"
 msgstr ""
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Canceled"
-msgstr "Cancel"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Confirmed"
-msgstr "Confirm"
-
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Done"
-msgstr ""
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Draft"
-msgstr "Draft"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Processing"
-msgstr "Processing"
-
-#, fuzzy
-msgctxt "selection:purchase.line,purchase_state:"
-msgid "Quotation"
-msgstr "Quotation"
 
 msgctxt "selection:purchase.line,type:"
 msgid "Comment"
@@ -1026,6 +1038,10 @@ msgctxt "view:purchase.purchase:"
 msgid "Purchase"
 msgstr "Purchases"
 
+msgctxt "view:purchase.return_purchase.start:"
+msgid "Are you sure to return those/this purchase(s)?"
+msgstr ""
+
 #, fuzzy
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
 msgid "Cancel"
@@ -1052,3 +1068,13 @@ msgstr "Cancel"
 msgctxt "wizard_button:purchase.modify_header,start,modify:"
 msgid "Modify"
 msgstr ""
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,end:"
+msgid "Cancel"
+msgstr "Cancel"
+
+#, fuzzy
+msgctxt "wizard_button:purchase.return_purchase,start,return_:"
+msgid "Return"
+msgstr "Returns"
