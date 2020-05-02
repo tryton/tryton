@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.be.vat_customer,company_tax_identifier:"
 msgid "Company Tax Identifier"
-msgstr ""
+msgstr "Identificatore fiscale della azienda"
 
 msgctxt "field:account.be.vat_customer,currency:"
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 msgctxt "field:account.be.vat_customer,currency_digits:"
 msgid "Currency Digits"
@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer,party_tax_identifier:"
 msgid "Party Tax Identifier"
-msgstr ""
+msgstr "Identificatore fiscale della controparte"
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
-msgstr ""
+msgstr "IVA"
 
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
@@ -32,16 +32,17 @@ msgstr "Azienda"
 
 msgctxt "field:account.be.vat_customer.context,fiscalyear:"
 msgid "Fiscal Year"
-msgstr ""
+msgstr "Esercizio"
 
 #, fuzzy
 msgctxt "model:account.be.vat_customer,name:"
 msgid "Belgium VAT Customer"
-msgstr "Belgium VAT Customer"
+msgstr "Cliente IVA Belgio"
 
+#, fuzzy
 msgctxt "model:account.be.vat_customer.context,name:"
 msgid "Belgium VAT Customer Context"
-msgstr ""
+msgstr "Contesto cliente IVA del Belgio"
 
 msgctxt "model:ir.action,name:act_vat_customer_form"
 msgid "Belgium VAT Customer"
