@@ -169,9 +169,10 @@ class Account(
         return 2
 
     @fields.depends('parent', 'type',
-        '_parent_parent.root', '_parent_parent.type')
+        '_parent_parent.id', '_parent_parent.root', '_parent_parent.type')
     def on_change_parent(self):
-        if self.parent and self.type != 'root':
+        if (self.parent and self.parent.id is not None and self.parent.id > 0
+                and self.type != 'root'):
             if self.parent.type == 'root':
                 self.root = self.parent
             else:
