@@ -119,6 +119,7 @@ setup(name='tryton',
         'build_exe': {
             'no_compress': True,
             'include_files': include_files,
+            'excludes': ['tkinter'],
             'silent': True,
             'packages': ['gi'],
             'include_msvcr': True,
