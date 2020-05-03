@@ -125,6 +125,19 @@ class Function(Field):
                         'ir.msg_setter_function_missing',
                         **Model.__names__(self.name)))
 
+    def __get__(self, inst, cls):
+        try:
+            return super().__get__(inst, cls)
+        except AttributeError:
+            if not self.getter.startswith('on_change_with'):
+                raise
+            value = getattr(inst, self.getter)(self.name)
+            # Use temporary instance to not modify instance values
+            temp_inst = cls()
+            # Set the value to have proper type
+            self.__set__(temp_inst, value)
+            return super().__get__(temp_inst, cls)
+
     def __set__(self, inst, value):
         self._field.__set__(inst, value)
 

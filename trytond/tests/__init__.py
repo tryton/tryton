@@ -19,6 +19,7 @@ def register():
     from . import field_datetime
     from . import field_dict
     from . import field_float
+    from . import field_function
     from . import field_integer
     from . import field_many2many
     from . import field_many2one
@@ -58,6 +59,7 @@ def register():
     field_datetime.register('tests')
     field_dict.register('tests')
     field_float.register('tests')
+    field_function.register('tests')
     field_integer.register('tests')
     field_many2many.register('tests')
     field_many2one.register('tests')
