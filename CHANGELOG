@@ -1,3 +1,5 @@
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
 * Merge sepa identifier into eu_at_02
 * Allow to customize message_id
 * Include bank account number on mandate rec_name
