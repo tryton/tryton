@@ -5,6 +5,14 @@ var Sao = {};
 (function() {
     'use strict';
 
+    // Restore htmlPrefilter of jQuery < 3.5
+    // To be removed when
+    // https://github.com/fullcalendar/fullcalendar/pull/5391 is merged
+    var rxhtmlTag = /<(?!area|br|col|embed|hr|img|input|link|meta|param)(([a-z][^\/\0>\x20\t\r\n\f]*)[^>]*)\/>/gi;
+    jQuery.htmlPrefilter = function( html ) {
+        return html.replace( rxhtmlTag, "<$1></$2>" );
+    };
+
     // Browser compatibility: polyfill
     if (!('contains' in String.prototype)) {
         String.prototype.contains = function(str, startIndex) {
