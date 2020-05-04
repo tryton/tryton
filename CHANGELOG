@@ -1,3 +1,5 @@
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
 * Add actual quantity on line
 * Add return wizard
 * Add employee on purchases for some states
