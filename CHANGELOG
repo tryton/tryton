@@ -1,3 +1,5 @@
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
 * Add employee on subscriptions for some states
 * Use greatest end date of lines for closed date
 * Add contact and invoice party on subscription
