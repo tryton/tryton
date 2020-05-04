@@ -1,3 +1,5 @@
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
 * Add sale service tax group
 * Use date filter in Spanish EC Operation list
 * Add Regimen especial agricultura, ganaderia y pesca tax rules
