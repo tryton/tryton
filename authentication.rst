@@ -5,8 +5,8 @@ Authentication
 
 .. glossary::
 
-    `SMS </projects/modules-authentication-sms/en/latest>`_
+    `SMS </projects/modules-authentication-sms/en/5.6>`_
         Authentication per SMS.
 
-    `LDAP </projects/modules-ldap-authentication/en/latest>`_
+    `LDAP </projects/modules-ldap-authentication/en/5.6>`_
         Authentication per LDAP.

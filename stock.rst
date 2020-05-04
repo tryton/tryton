@@ -5,65 +5,65 @@ Stock
 
 .. glossary::
 
-    `Stock </projects/modules-stock/en/latest>`_
+    `Stock </projects/modules-stock/en/5.6>`_
         Fundamentals to manage warehouses.
 
-    `Consignemt </projects/modules-stock-consignment/en/latest>`_
+    `Consignemt </projects/modules-stock-consignment/en/5.6>`_
         Manages consignment stock from supplier or at customer warehouse.
 
-    `Forecast </projects/modules-stock-forecast/en/latest>`_
+    `Forecast </projects/modules-stock-forecast/en/5.6>`_
         Forecast the stock levels.
 
-    `Inventory Location </projects/modules-stock-inventory-location/en/latest>`_
+    `Inventory Location </projects/modules-stock-inventory-location/en/5.6>`_
         Creates inventories for many locations.
 
-    `Location Move </projects/modules-stock-location-move/en/latest>`_
+    `Location Move </projects/modules-stock-location-move/en/5.6>`_
         Makes location movable.
 
-    `Location Sequence </projects/modules-stock-location-sequence/en/latest>`_
+    `Location Sequence </projects/modules-stock-location-sequence/en/5.6>`_
         Orders locations.
 
-    `Lot </projects/modules-stock-lot/en/latest>`_
+    `Lot </projects/modules-stock-lot/en/5.6>`_
         Track products with lot.
 
-    `Lot Shelf Life Expiration Date </projects/modules-stock-lot-sled/en/latest>`_
+    `Lot Shelf Life Expiration Date </projects/modules-stock-lot-sled/en/5.6>`_
         Manages expiration dates.
 
-    `Lot Unit </projects/modules-stock-lot-unit/en/latest>`_
+    `Lot Unit </projects/modules-stock-lot-unit/en/5.6>`_
         Defines unit and quantity per lot.
 
-    `Package </projects/modules-stock-package/en/latest>`_
+    `Package </projects/modules-stock-package/en/5.6>`_
         Store packaging on shipments.
 
-    `Package Shipping </projects/modules-stock-package-shipping/en/latest>`_
+    `Package Shipping </projects/modules-stock-package-shipping/en/5.6>`_
         Fundamentals to interact with shipping services.
 
-    `Package Shipping DPD </projects/modules-stock-package-shipping-dpd/en/latest>`_
+    `Package Shipping DPD </projects/modules-stock-package-shipping-dpd/en/5.6>`_
         Connects with DPD shipping service.
 
-    `Package Shipping UPS </projects/modules-stock-package-shipping-ups/en/latest>`_
+    `Package Shipping UPS </projects/modules-stock-package-shipping-ups/en/5.6>`_
         Connects with UPS shipping service.
 
-    `Product Location </projects/modules-stock-product-location/en/latest>`_
+    `Product Location </projects/modules-stock-product-location/en/5.6>`_
         Defines preferred locations for products.
 
-    `Secondary Unit </projects/modules-stock-secondary-unit/en/latest>`_
+    `Secondary Unit </projects/modules-stock-secondary-unit/en/5.6>`_
         Adds a secondary unit of measure.
 
-    `Shipment Measurements </projects/modules-stock-shipment-measurements/en/latest>`_
+    `Shipment Measurements </projects/modules-stock-shipment-measurements/en/5.6>`_
         Adds measurements to shipments.
 
-    `Split </projects/modules-stock-split/en/latest>`_
+    `Split </projects/modules-stock-split/en/5.6>`_
         Splits moves and shipments.
 
-    `Supply </projects/modules-stock-supply/en/latest>`_
+    `Supply </projects/modules-stock-supply/en/5.6>`_
         Supplies warehouses.
 
-    `Supply Forecast </projects/modules-stock-supply-forecast/en/latest>`_
+    `Supply Forecast </projects/modules-stock-supply-forecast/en/5.6>`_
         Uses forecast to supply warehouses.
 
-    `Supply Day </projects/modules-stock-supply-day/en/latest>`_
+    `Supply Day </projects/modules-stock-supply-day/en/5.6>`_
         Compute supply date per week day.
 
-    `Supply Production </projects/modules-stock-supply-production/en/latest>`_
+    `Supply Production </projects/modules-stock-supply-production/en/5.6>`_
         Supplies warehouses with production orders.

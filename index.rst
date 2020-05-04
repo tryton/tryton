@@ -7,13 +7,13 @@ Main
 
 .. glossary::
 
-    `Server </projects/server/en/latest>`_
+    `Server </projects/server/en/5.6>`_
         The main application.
 
-    `Desktop Client </projects/client-desktop/en/latest>`_
+    `Desktop Client </projects/client-desktop/en/5.6>`_
         The application to connect to the server.
 
-    `Scripting Client </projects/client-library/en/latest>`_
+    `Scripting Client </projects/client-library/en/5.6>`_
         The library to access models, wizards and reports like a client.
 
 Backend
@@ -21,7 +21,7 @@ Backend
 
 .. glossary::
 
-    `GIS </projects/backend-gis/en/latest>`_
+    `GIS </projects/backend-gis/en/5.6>`_
         Adds GIS support.
 
 Modules
@@ -66,7 +66,7 @@ Modules
         Tracks time spend.
 
 
-    `Banking </projects/modules-bank/en/latest>`_
+    `Banking </projects/modules-bank/en/5.6>`_
         Adds bank and account.
 
     :ref:`Company <index-company>`
@@ -75,19 +75,19 @@ Modules
     :ref:`Carrier <index-carrier>`
         To ship.
 
-    `Country </projects/modules-country/en/latest>`_
+    `Country </projects/modules-country/en/5.6>`_
         ISO 3166 list of countries and subdivisions.
 
-    `Currency </projects/modules-currency/en/latest>`_
+    `Currency </projects/modules-currency/en/5.6>`_
         ISO 4217 list of currencies.
 
-    `Customs </projects/modules-customs/en/latest>`_
+    `Customs </projects/modules-customs/en/5.6>`_
         Defines customs duty per tariff code.
 
-    `Dashboard </projects/modules-dashboard/en/latest>`_
+    `Dashboard </projects/modules-dashboard/en/5.6>`_
         Customized dashboard.
 
-    `Google Maps </projects/modules-google-maps/en/latest>`_
+    `Google Maps </projects/modules-google-maps/en/5.6>`_
         Links address to Google map.
 
     :ref:`Party <index-party>`
@@ -100,10 +100,10 @@ Modules
     :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
 
-    `Notification Email </projects/modules-notification-email/en/latest>`_
+    `Notification Email </projects/modules-notification-email/en/5.6>`_
         Sends email.
 
-    `User Role </projects/modules-user-role/en/latest>`_
+    `User Role </projects/modules-user-role/en/5.6>`_
         Manage user groups with roles.
 
     :ref:`Web <index-web>`

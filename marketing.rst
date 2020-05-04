@@ -5,8 +5,8 @@ Marketing
 
 .. glossary::
 
-    `Marketing </projects/modules-marketing/en/latest>`_
+    `Marketing </projects/modules-marketing/en/5.6>`_
         Fundamentals for marketing.
 
-    `Automation </projects/modules-marketing-automation/en/latest>`_
+    `Automation </projects/modules-marketing-automation/en/5.6>`_
         Uses scenario.
