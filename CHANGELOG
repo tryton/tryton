@@ -1,3 +1,5 @@
+Version 5.6.0 - 2020-05-04
+* Bug fixes (see mercurial logs for details)
 * Add employee on requests for some states
 * Allow setting unit on request without product
 
