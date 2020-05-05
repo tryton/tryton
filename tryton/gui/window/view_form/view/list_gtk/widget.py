@@ -346,6 +346,10 @@ class Boolean(GenericText):
 
     def _sig_toggled(self, renderer, path):
         record, field = self._get_record_field_from_path(path)
+        if (self.view.record and self.view.record != record
+                and not self.view.record.validate(self.view.get_fields())):
+            renderer.stop_emission_by_name('toggled')
+            return True
         if not self.attrs.get('readonly',
                 field.get_state_attrs(record).get('readonly', False)):
             value = record[self.attrs['name']].get_client(record)
