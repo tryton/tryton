@@ -31,7 +31,7 @@ def _formataddr(name, email):
 
 
 class Email(ModelSQL, ModelView):
-    "Email Notitification"
+    "Email Notification"
     __name__ = 'notification.email'
 
     from_ = fields.Char(
@@ -377,7 +377,7 @@ class EmailAttachment(ModelSQL):
 
 
 class EmailLog(ModelSQL, ModelView):
-    "Notitification Email Log"
+    "Notification Email Log"
     __name__ = 'notification.email.log'
     date = fields.Function(fields.DateTime('Date'), 'get_date')
     recipients = fields.Char("Recipients")
