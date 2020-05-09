@@ -1588,10 +1588,12 @@ function eval_pyson(value){
             this.date.on('dp.hide', function() {
                 this.date.closest('.treeview').css('overflow', '');
                 this.date.closest('.modal-body').css('overflow', '');
+                this.date.closest('.form-group_').css('overflow', 'auto');
             }.bind(this));
             this.date.on('dp.show', function() {
                 this.date.closest('.treeview').css('overflow', 'visible');
                 this.date.closest('.modal-body').css('overflow', 'visible');
+                this.date.closest('.form-group_').css('overflow', 'visible');
             }.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
