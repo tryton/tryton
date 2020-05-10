@@ -266,20 +266,21 @@ class Sale(metaclass=PoolMeta):
                         shipment.get_carrier_context()):
                     cost, currency_id = self.carrier.get_sale_price()
                 cost = round_price(cost)
-                Shipment.write([shipment], {
-                        'carrier': self.carrier.id,
-                        'cost': cost,
-                        'cost_currency': currency_id,
-                        })
+                shipment.carrier = self.carrier
+                shipment.cost = cost
+                shipment.cost_currency = currency_id
+        Shipment.save(shipments)
         return shipments
 
     def create_invoice(self):
         pool = Pool()
         Invoice = pool.get('account.invoice')
+        InvoiceLine = pool.get('account.invoice.line')
         Shipment = pool.get('stock.shipment.out')
 
         invoice = super(Sale, self).create_invoice()
         if invoice and self.shipment_cost_method == 'shipment':
+            invoice_lines = []
             for shipment in self.shipments:
                 if (shipment.state == 'done'
                         and shipment.carrier
@@ -289,10 +290,10 @@ class Sale(metaclass=PoolMeta):
                     if not invoice_line:
                         continue
                     invoice_line.invoice = invoice
-                    invoice_line.save()
-                    Shipment.write([shipment], {
-                            'cost_invoice_line': invoice_line.id,
-                            })
+                    invoice_lines.append(invoice_line)
+                    shipment.cost_invoice_line = invoice_line
+            InvoiceLine.save(invoice_lines)
+            Shipment.save(self.shipments)
             Invoice.update_taxes([invoice])
         return invoice
 
