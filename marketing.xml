@@ -13,7 +13,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.ui.icon" id="marketing_icon">
             <field name="name">tryton-marketing</field>
-            <field name="path">icons/marketing.svg</field>
+            <field name="path">icons/tryton-marketing.svg</field>
         </record>
 
         <menuitem name="Marketing" id="menu_marketing" sequence="6" icon="tryton-marketing"/>
