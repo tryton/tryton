@@ -18,7 +18,6 @@ _has_password_sms = 'password_sms' in config.get(
 
 
 def send_sms(text, to):
-    assert len(text) <= 160, text
     if config.has_option('authentication_sms', 'function'):
         func = resolve(config.get('authentication_sms', 'function'))
         if func:
