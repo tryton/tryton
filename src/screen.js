@@ -1891,7 +1891,11 @@
                                 ids.push(record.id);
                             }
                             return record.model.execute(attributes.name,
-                                [ids], context).then(process_action.bind(this));
+                                [ids], context)
+                                .then(process_action.bind(this))
+                                .fail(function() {
+                                    return this.reload(ids, true);
+                                }.bind(this));
                         }.bind(this));
                     }
                 }.bind(this));
