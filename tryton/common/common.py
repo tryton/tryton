@@ -3,6 +3,7 @@
 
 import gettext
 import os
+import platform
 import subprocess
 import tempfile
 import re
@@ -790,7 +791,8 @@ def check_version(box, version=__version__):
     filename = 'tryton-%s.tar.gz' % version
     if hasattr(sys, 'frozen'):
         if sys.platform == 'win32':
-            filename = 'tryton-setup-%s.exe' % version
+            bits = platform.architecture()[0]
+            filename = 'tryton-%s-%s.exe' % (bits, version)
         elif sys.platform == 'darwin':
             filename = 'tryton-%s.dmg' % version
     url = list(urllib.parse.urlparse(CONFIG['download.url']))
