@@ -291,6 +291,15 @@ class ModuleTestCase(unittest.TestCase):
                         % (button_name, Model.__name__))
 
     @with_transaction()
+    def test_icon(self):
+        "Test icons of the module"
+        pool = Pool()
+        Icon = pool.get('ir.ui.icon')
+        icons = Icon.search([('module', '=', self.module)])
+        for icon in icons:
+            self.assertTrue(icon.icon)
+
+    @with_transaction()
     def test_rpc_callable(self):
         'Test that RPC methods are callable'
         for _, model in Pool().iterobject():
