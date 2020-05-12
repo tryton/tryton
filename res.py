@@ -153,12 +153,12 @@ class User(metaclass=PoolMeta):
         return res
 
     @classmethod
-    def read(cls, ids, fields_names=None):
+    def read(cls, ids, fields_names):
         Company = Pool().get('company.company')
         user_id = Transaction().user
         if user_id == 0 and 'user' in Transaction().context:
             user_id = Transaction().context['user']
-        result = super(User, cls).read(ids, fields_names=fields_names)
+        result = super(User, cls).read(ids, fields_names)
         if (fields_names
                 and ((
                         'company' in fields_names
