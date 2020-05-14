@@ -444,6 +444,8 @@ class ShipmentIn(Workflow, ModelSQL, ModelView):
     def receive(cls, shipments):
         Move = Pool().get('stock.move')
         Move.do([m for s in shipments for m in s.incoming_moves])
+        Move.delete([m for s in shipments for m in s.inventory_moves
+            if m.state in ('draft', 'cancel')])
         cls.create_inventory_moves(shipments)
         # Set received state to allow done transition
         cls.write(shipments, {'state': 'received'})
