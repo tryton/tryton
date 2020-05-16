@@ -116,7 +116,7 @@ def run_task(pool, task_id):
                         continue
                     raise
         logger.info('task "%d" done', task_id)
-    except backend.DatabaseOperationalError:
+    except DatabaseOperationalError:
         try:
             with Transaction().start(pool.database_name, 0) as transaction:
                 task = Queue(task_id)
