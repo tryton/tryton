@@ -29,6 +29,7 @@
             if (!this.view.widgets[name]) {
                 this.view.widgets[name] = [];
             }
+            column.tree = this.view;
             this.view.widgets[name].push(column);
 
             var prefixes = [], suffixes = [];
@@ -1969,6 +1970,7 @@
             this.type = 'field';
             this.model = model;
             this.field = model.fields[attributes.name];
+            this.tree = null;
             this.attributes = attributes;
             this.prefixes = [];
             this.suffixes = [];
@@ -2043,13 +2045,42 @@
         get_cell: function() {
             return jQuery('<input/>', {
                 'type': 'checkbox',
-                'disabled': true,
                 'class': this.class_,
                 'tabindex': 0
             });
         },
         update_text: function(cell, record) {
             cell.prop('checked', this.field.get(record));
+        },
+        render: function(record, cell) {
+            var new_cell = !cell;
+            cell = Sao.View.Tree.BooleanColumn._super.render.call(
+                this, record, cell);
+            var disabled = true;
+            if (this.tree.editable) {
+                if (new_cell) {
+                    cell.on('click', null,
+                        {record: record, cell:cell},
+                        this.clicked.bind(this));
+                }
+                var state_attrs = this.field.get_state_attrs(record);
+                disabled = this.attributes.readonly || state_attrs.readonly;
+            }
+            cell.prop('disabled', disabled);
+            return cell;
+        },
+        clicked: function(evt) {
+            var record = evt.data.record;
+            var cell = evt.data.cell;
+            var current_record = this.tree.screen.current_record;
+            var fields = this.tree.get_fields();
+            if (!current_record || current_record.validate(
+                fields, false, false, true)) {
+                var value = cell.prop('checked');
+                this.field.set_client(record, value);
+            } else {
+                evt.preventDefault();
+            }
         }
     });
 
