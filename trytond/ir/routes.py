@@ -191,6 +191,15 @@ def data(request, pool, model):
             request.args.get('d', '[]'), object_hook=JSONDecoder())
     except json.JSONDecodeError:
         abort(HTTPStatus.BAD_REQUEST)
+    try:
+        ctx = json.loads(
+            request.args.get('c', '{}'), object_hook=JSONDecoder())
+    except json.JSONDecoder:
+        abort(HTTPStatus.BAD_REQUEST)
+    for key in list(ctx.keys()):
+        if key.startswith('_') and key != '_datetime':
+            del ctx[key]
+    context.update(ctx)
     limit = None
     offset = 0
     if 's' in request.args:
