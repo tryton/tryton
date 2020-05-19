@@ -54,6 +54,12 @@
         pyson_datetime.start = null;
         var array = ["create_date", '>=', date];
         var pyson_array = ["create_date", '>=', pyson_date];
+        var statement = new Sao.PYSON.Equal(date, date);
+        var pyson_statement = {
+            '__class__': 'Equal',
+            's1': pyson_date,
+            's2': pyson_date,
+        };
         QUnit.strictEqual(encoder.encode(), 'null', "encode()");
         QUnit.strictEqual(encoder.encode(none), 'null', "encode(none)");
         QUnit.strictEqual(encoder.encode(null), 'null', "encode()");
@@ -63,6 +69,8 @@
             JSON.stringify(pyson_datetime), "encode(datetime)");
         QUnit.strictEqual(encoder.encode(array),
             JSON.stringify(pyson_array), "encode(array)");
+        QUnit.strictEqual(encoder.encode(statement),
+            JSON.stringify(pyson_statement), "encode(statement)");
     });
 
     QUnit.test('PYSON.Eval', function() {
