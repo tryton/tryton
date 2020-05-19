@@ -101,6 +101,7 @@ class Preference(NoModal):
                     RPCExecute('model', 'res.user', 'set_preferences', vals)
                 except RPCException:
                     return
+                rpc.context_reset()
         self.parent.present()
         self.destroy()
         self.callback()
