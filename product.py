@@ -850,11 +850,14 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
 
     @classmethod
     def get_for_product(cls, product):
-        revisions = cls.search(['OR',
-                ('product', '=', product.id),
-                [
-                    ('template', '=', product.template.id),
-                    ('product', '=', None),
+        revisions = cls.search([
+                cls._get_for_product_domain(),
+                ['OR',
+                    ('product', '=', product.id),
+                    [
+                        ('template', '=', product.template.id),
+                        ('product', '=', None),
+                        ],
                     ],
                 ],
             order=[('date', 'ASC'), ('id', 'ASC')])
