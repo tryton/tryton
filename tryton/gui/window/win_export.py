@@ -446,6 +446,10 @@ class WinExport(WinCSV):
                     query_string.append(('o', ','.join(filter(None, expr))))
         query_string.insert(0, ('d', json.dumps(
                     domain, cls=JSONEncoder, separators=(',', ':'))))
+        if self.screen.local_context:
+            query_string.append(('c', json.dumps(
+                        self.screen.local_context,
+                        cls=JSONEncoder, separators=(',', ':'))))
 
         iter_ = self.model2.get_iter_first()
         while iter_:
