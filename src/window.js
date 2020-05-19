@@ -1909,6 +1909,11 @@
             }
             query_string.splice(
                 0, 0, ['d', JSON.stringify(Sao.rpc.prepareObject(domain))]);
+            if (!jQuery.isEmptyObject(this.screen.local_context)) {
+                query_string.push(
+                    ['c', JSON.stringify(Sao.rpc.prepareObject(
+                        this.screen.local_context))]);
+            }
 
             this.fields_selected.children('li').each(function(i, field) {
                 query_string.push(['f', field.getAttribute('path')]);
