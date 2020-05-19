@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="active" xexpand="0" width="100"/>
     <label name="cost_price"/>
     <field name="cost_price"/>
-    <field name="identifiers" colspan="4" pre_validate="1"/>
+    <field name="identifiers" colspan="4" pre_validate="1" view_ids="product.identifier_view_list_sequence"/>
     <separator name="description" colspan="4"/>
     <field name="description" colspan="4"/>
 </form>
