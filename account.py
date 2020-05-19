@@ -2128,17 +2128,16 @@ class AgedBalance(ModelSQL, ModelView):
         term_values = sorted(
             list(terms.values()), key=lambda x: ((x is not None), x or 0))
 
+        line_date = Coalesce(line.maturity_date, move.date)
         for name, value in terms.items():
             if value is None or factor is None or date is None:
                 columns.append(Literal(None).as_(name))
                 continue
-            cond = line.maturity_date <= (date - value * factor)
+            cond = line_date <= (date - value * factor)
             idx = term_values.index(value)
             if idx + 1 < len(terms):
-                cond &= line.maturity_date > (
+                cond &= line_date > (
                     date - (term_values[idx + 1] or 0) * factor)
-            else:
-                cond |= line.maturity_date == Null
             columns.append(
                 Sum(Case((cond, line.debit - line.credit), else_=0)).as_(name))
 
