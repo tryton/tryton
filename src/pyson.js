@@ -70,6 +70,12 @@
                             value.seconds(),
                             value.milliseconds() * 1000).pyson();
                     }
+                } else if ((value instanceof Object) &&
+                    !(value instanceof Sao.PYSON.PYSON)) {
+                    value = jQuery.extend({}, value);
+                    for (var p in value) {
+                        this.prepare(value[p], p, value);
+                    }
                 }
             }
             if (parent) {
@@ -82,12 +88,12 @@
             pyson = this.prepare(pyson);
             return JSON.stringify(pyson, function(k, v) {
                 if (v instanceof Sao.PYSON.PYSON) {
-                    return v.pyson();
+                    return this.prepare(v.pyson());
                 } else if (v === null || v === undefined) {
                     return null;
                 }
                 return v;
-            });
+            }.bind(this));
         }
     });
 
