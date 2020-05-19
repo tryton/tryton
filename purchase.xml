@@ -153,6 +153,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_purchase_form"/>
         </record>
         <record model="ir.action.act_window.domain"
+            id="act_purchase_form_domain_exception">
+            <field name="name">Exception</field>
+            <field name="sequence" eval="50"/>
+            <field name="domain"
+                eval="['OR', ('invoice_state', '=', 'exception'), ('shipment_state', '=', 'exception')]"
+                pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_purchase_form"/>
+        </record>
+        <record model="ir.action.act_window.domain"
             id="act_purchase_form_domain_all">
             <field name="name">All</field>
             <field name="sequence" eval="9999"/>
