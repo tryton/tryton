@@ -111,7 +111,10 @@ class Sale(
             'readonly': ((Eval('state') != 'draft')
                 | Eval('lines', [0])),
             },
-        depends=['state'])
+        search_context={
+            'related_party': Eval('party'),
+            },
+        depends=['state', 'party'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[
             ('party', '=', If(Bool(Eval('invoice_party')),
@@ -125,7 +128,10 @@ class Sale(
         states={
             'readonly': (Eval('state') != 'draft'),
             },
-        depends=['state'])
+        search_context={
+            'related_party': Eval('party'),
+            },
+        depends=['state', 'party'])
     shipment_address = fields.Many2One('party.address', 'Shipment Address',
         domain=[
             ('party', '=', If(Bool(Eval('shipment_party')),
