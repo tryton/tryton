@@ -30,7 +30,7 @@ class Purchase(metaclass=PoolMeta):
                     limit=1))
             row = cursor.fetchone()
             if row:
-                selfcash_rounding, = row
+                self.cash_rounding, = row
 
     @fields.depends(methods=['on_change_lines'])
     def on_change_cash_rounding(self):
