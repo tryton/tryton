@@ -15,7 +15,7 @@ from trytond.i18n import gettext
 from trytond.model import Workflow, Model, ModelView, ModelSQL, fields, Check
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If, Bool
-from trytond.tools import reduce_ids
+from trytond.tools import reduce_ids, grouped_slice
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -785,10 +785,6 @@ class Move(Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
-        Period = pool.get('stock.period')
-        transaction = Transaction()
-        database = transaction.database
-        connection = transaction.connection
 
         if not moves:
             return True
@@ -805,34 +801,9 @@ class Move(Workflow, ModelSQL, ModelView):
         companies = {m.company for m in moves}
         stock_date_end = Date.today()
 
-        if database.has_select_for():
-            for company in companies:
-                table = cls.__table__()
-                query = table.select(Literal(1),
-                    where=(table.to_location.in_(location_ids)
-                        | table.from_location.in_(location_ids))
-                    & table.product.in_(product_ids)
-                    & (table.company == company.id),
-                    for_=For('UPDATE', nowait=True))
-
-                PeriodCache = Period.get_cache(grouping)
-                if PeriodCache:
-                    periods = Period.search([
-                            ('date', '<', stock_date_end),
-                            ('company', '=', company.id),
-                            ('state', '=', 'closed'),
-                            ], order=[('date', 'DESC')], limit=1)
-                    if periods:
-                        period, = periods
-                        query.where &= Coalesce(
-                            table.effective_date,
-                            table.planned_date,
-                            datetime.date.max) > period.date
-
-                with connection.cursor() as cursor:
-                    cursor.execute(*query)
-        else:
-            database.lock(connection, cls._table)
+        cls._assign_try_lock(
+            product_ids, location_ids, [c.id for c in companies],
+            stock_date_end, grouping)
 
         pblc = {}
         for company in companies:
@@ -929,6 +900,51 @@ class Move(Workflow, ModelSQL, ModelView):
         if to_assign:
             cls.assign(to_assign)
         return success
+
+    @classmethod
+    def _assign_try_lock(
+            cls, product_ids, location_ids, company_ids, date, grouping):
+        """Lock the database to prevent concurrent assignation"""
+        pool = Pool()
+        Period = pool.get('stock.period')
+        transaction = Transaction()
+        database = transaction.database
+        connection = transaction.connection
+
+        if database.has_select_for():
+            count = database.IN_MAX // 2
+            PeriodCache = Period.get_cache(grouping)
+            with connection.cursor() as cursor:
+                for company_id in company_ids:
+                    period = None
+                    if PeriodCache:
+                        periods = Period.search([
+                                ('date', '<', date),
+                                ('company', '=', company_id),
+                                ('state', '=', 'closed'),
+                                ], order=[('date', 'DESC')], limit=1)
+                        if periods:
+                            period, = periods
+                    for sub_location_ids in grouped_slice(location_ids, count):
+                        sub_location_ids = list(sub_location_ids)
+                        table = cls.__table__()
+                        query = table.select(Literal(1),
+                            where=(reduce_ids(
+                                    table.to_location, sub_location_ids)
+                                | reduce_ids(
+                                    table.from_location, sub_location_ids))
+                            & table.product.in_(product_ids)
+                            & (table.company == company_id),
+                            for_=For('UPDATE', nowait=True))
+
+                        if period:
+                            query.where &= Coalesce(
+                                table.effective_date,
+                                table.planned_date,
+                                datetime.date.max) > period.date
+                        cursor.execute(*query)
+        else:
+            database.lock(connection, cls._table)
 
     @classmethod
     def compute_quantities_query(cls, location_ids, with_childs=False,
