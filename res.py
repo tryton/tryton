@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
+from trytond.transaction import Transaction
 
 
 class User(metaclass=PoolMeta):
@@ -33,3 +34,18 @@ class User(metaclass=PoolMeta):
                 and len(Location.search([('type', '=', 'warehouse')])) > 1):
             status += ' - %s' % self.warehouse.rec_name
         return status
+
+    @classmethod
+    def read(cls, ids, fields_names):
+        context = Transaction().context
+        user_id = Transaction().user
+        if user_id == 0 and 'user' in Transaction().context:
+            user_id = Transaction().context['user']
+        result = super().read(ids, fields_names)
+        if ('warehouse' in fields_names
+                and context.get('warehouse')
+                and user_id in ids):
+            for values in result:
+                if values['id'] == user_id:
+                    values['warehouse'] = context['warehouse']
+        return result
