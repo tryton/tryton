@@ -55,14 +55,15 @@ Check attendance sheet::
 
     >>> Sheet = Model.get('attendance.sheet')
     >>> sheet, = Sheet.find([])
-    >>> sheet.duration
-    datetime.timedelta(0, 28800)
+    >>> sheet.duration == dt.timedelta(hours=8)
+    True
     >>> sheet.date
     datetime.date(2020, 4, 1)
     >>> len(sheet.lines)
     3
-    >>> sum([l.duration for l in sheet.lines], dt.timedelta())
-    datetime.timedelta(0, 28800)
+    >>> (sum([l.duration for l in sheet.lines], dt.timedelta()) ==
+    ...     dt.timedelta(hours=8))
+    True
 
 Fill attendance over 1 day::
 
@@ -72,8 +73,8 @@ Fill attendance over 1 day::
 Check attendance sheet::
 
     >>> sheet, = Sheet.find([('date', '=', dt.date(2020, 4, 2))])
-    >>> sheet.duration
-    datetime.timedelta(0, 36000)
+    >>> sheet.duration == dt.timedelta(hours=10)
+    True
 
 Add attendance for other employee::
 
@@ -83,5 +84,5 @@ Add attendance for other employee::
 Check attendance sheet::
 
     >>> sheet, = Sheet.find([('employee', '=', employee2.id)])
-    >>> sheet.duration
-    datetime.timedelta(0, 21600)
+    >>> sheet.duration == dt.timedelta(hours=6)
+    True
