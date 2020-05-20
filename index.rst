@@ -35,6 +35,9 @@ Modules
     :ref:`Analytic Accounting <index-analytic-accounting>`
         Analyze your accounts.
 
+    `Attendance </projects/modules-attendance/en/latest>`_
+        Track presences.
+
     :ref:`Commission <index-commission>`
         Commission sale's agents.
 
