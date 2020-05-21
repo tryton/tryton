@@ -3,7 +3,8 @@
 import datetime
 import os
 import unittest
-from unittest.mock import patch, ANY
+from contextlib import contextmanager
+from unittest.mock import patch, ANY, Mock
 
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
@@ -13,6 +14,16 @@ from trytond.res.user import PasswordError
 from trytond.transaction import Transaction
 
 FROM = 'tryton@example.com'
+
+
+@contextmanager
+def set_authentications(methods):
+    saved_methods = config.get('session', 'authentications')
+    config.set('session', 'authentications', methods)
+    try:
+        yield
+    finally:
+        config.set('session', 'authentications', saved_methods)
 
 
 class UserTestCase(unittest.TestCase):
@@ -204,6 +215,34 @@ class UserTestCase(unittest.TestCase):
         self.assertFalse(User.get_login('user', {
                     'password': user.password_reset,
                     }))
+
+    @with_transaction()
+    def test_authentications(self):
+        "Test authentications"
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(login='user')
+        user.save()
+
+        User._login_always = Mock(return_value=user.id)
+        User._login_different = Mock(return_value=user.id + 1)
+        User._login_never = Mock(return_value=None)
+
+        for methods, result in (
+                ('never,never', None),
+                ('never,always', user.id),
+                ('always,never', user.id),
+                ('always,always', user.id),
+                ('never+never', None),
+                ('never+always', None),
+                ('always+never', None),
+                ('always+always', user.id),
+                ('always+different', None),
+                ):
+            with self.subTest(methods=methods, result=result):
+                with set_authentications(methods):
+                    self.assertEqual(User.get_login('user', {}), result)
 
 
 def suite():

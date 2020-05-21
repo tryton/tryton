@@ -283,11 +283,19 @@ session
 authentications
 ~~~~~~~~~~~~~~~
 
-A comma separated list of login methods to use to authenticate the user.
-By default, Tryton supports only the `password` method which compare the
-password entered by the user against a stored hash. But other modules can
-define new methods (please refers to their documentation).
-The methods are tested following the order of the list.
+A comma separated list of the authentication methods to try when attempting to
+verify a user's identity. Each method is tried in turn, following the order of
+the list, until one succeeds. In order to allow `multi-factor authentication`_,
+individual methods can be combined together using a plus (`+`) symbol.
+
+Example::
+
+    authentications = password+sms,ldap
+
+By default, Tryton only supports the `password` method.  This method compares
+the password entered by the user against a stored hash of the user's password.
+Other modules can define additional authentication methods, please refer to
+their documentation for more information.
 
 Default: `password`
 
@@ -496,3 +504,4 @@ Example::
 .. _SSL-CERT: https://docs.python.org/library/ssl.html#ssl.wrap_socket
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview
+.. _`multi-factor authentication`: https://en.wikipedia.org/wiki/Multi-factor_authentication

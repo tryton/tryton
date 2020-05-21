@@ -11,6 +11,7 @@ import datetime
 import logging
 import uuid
 import mmap
+import re
 try:
     import secrets
 except ImportError:
@@ -59,8 +60,8 @@ __all__ = [
     'UserConfigStart', 'UserConfig',
     ]
 logger = logging.getLogger(__name__)
-_has_password = 'password' in config.get(
-    'session', 'authentications', default='password').split(',')
+_has_password = 'password' in re.split('[,+]', config.get(
+    'session', 'authentications', default='password'))
 
 passlib_path = config.get('password', 'passlib')
 if passlib_path:
@@ -625,17 +626,21 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             LoginAttempt.add(login)
             raise RateLimitException()
         Transaction().atexit(time.sleep, random.randint(0, 2 ** count - 1))
-        for method in config.get(
+        for methods in config.get(
                 'session', 'authentications', default='password').split(','):
-            try:
-                func = getattr(cls, '_login_%s' % method)
-            except AttributeError:
-                logger.info('Missing login method: %s', method)
-                continue
-            user_id = func(login, parameters)
-            if user_id:
+            user_ids = set()
+            for method in methods.split('+'):
+                try:
+                    func = getattr(cls, '_login_%s' % method)
+                except AttributeError:
+                    logger.info('Missing login method: %s', method)
+                    break
+                user_ids.add(func(login, parameters))
+                if len(user_ids) != 1 or not all(user_ids):
+                    break
+            if len(user_ids) == 1 and all(user_ids):
                 LoginAttempt.remove(login)
-                return user_id
+                return user_ids.pop()
         LoginAttempt.add(login)
 
     @classmethod
