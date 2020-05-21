@@ -39,7 +39,7 @@
                 }).join(Sao.i18n.gettext(', '));
 
                 if (data.ids.length > max_records) {
-                    name_suffix += Sao.i18n.gettext(',\u2026');
+                    name_suffix += Sao.i18n.gettext(',...');
                 }
                 return Sao.i18n.gettext('%1 (%2)', name, name_suffix);
             });
