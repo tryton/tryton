@@ -13,8 +13,6 @@ from trytond.pyson import Eval
 from trytond.tools import resolve
 
 logger = logging.getLogger(__name__)
-_has_password_sms = 'password_sms' in config.get(
-    'session', 'authentications', default='password').split(',')
 
 
 def send_sms(text, to):
@@ -35,11 +33,6 @@ class User(metaclass=PoolMeta):
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._preferences_fields.append('mobile')
-        cls._buttons['reset_password']['invisible'] &= (
-            ~Eval('email', True) | (not _has_password_sms))
-        cls.password.states['invisible'] &= not _has_password_sms
-        cls.password_reset.states['invisible'] &= not _has_password_sms
-        cls.password_reset_expire.states['invisible'] &= not _has_password_sms
 
     @classmethod
     def _login_sms(cls, login, parameters):
@@ -57,12 +50,6 @@ class User(metaclass=PoolMeta):
         msg = SMSCode.fields_get(['code'])['code']['string']
         msg = gettext('authentication_sms.msg_user_sms_code', login=login)
         raise LoginException('sms_code', msg, type='char')
-
-    @classmethod
-    def _login_password_sms(cls, login, parameters):
-        user_id = cls._login_password(login, parameters)
-        if user_id:
-            return cls._login_sms(login, parameters)
 
 
 class UserLoginSMSCode(ModelSQL):

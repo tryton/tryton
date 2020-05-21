@@ -28,7 +28,7 @@ class AuthenticationSMSTestCase(ModuleTestCase):
     def setUp(self):
         super(AuthenticationSMSTestCase, self).setUp()
         methods = config.get('session', 'authentications', default='')
-        config.set('session', 'authentications', 'password_sms')
+        config.set('session', 'authentications', 'sms')
         self.addCleanup(config.set, 'session', 'authentications', methods)
         config.add_section('authentication_sms')
         config.set(
@@ -36,14 +36,6 @@ class AuthenticationSMSTestCase(ModuleTestCase):
             'trytond.modules.authentication_sms.tests.send_sms')
         self.addCleanup(config.remove_section, 'authentication_sms')
         del sms_queue[:]
-
-        length = config.get('password', 'length', default='')
-        config.set('password', 'length', '4')
-        self.addCleanup(config.set, 'password', 'length', length)
-
-        entropy = config.get('password', 'entropy', default='')
-        config.set('password', 'entropy', '0.8')
-        self.addCleanup(config.set, 'password', 'entropy', entropy)
 
     @with_transaction()
     def test_sms_code_default_code(self):
@@ -107,19 +99,11 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         User = pool.get('res.user')
         SMSCode = pool.get('res.user.login.sms_code')
 
-        user = User(
-            name='sms', login='sms', password='secret', mobile='+123456789')
+        user = User(name='sms', login='sms', mobile='+123456789')
         user.save()
 
         with self.assertRaises(LoginException) as cm:
             User.get_login('sms', {})
-        self.assertEqual(cm.exception.name, 'password')
-        self.assertEqual(cm.exception.type, 'password')
-
-        with self.assertRaises(LoginException) as cm:
-            User.get_login('sms', {
-                    'password': 'secret',
-                    })
         self.assertEqual(cm.exception.name, 'sms_code')
         self.assertEqual(cm.exception.type, 'char')
 
@@ -127,7 +111,6 @@ class AuthenticationSMSTestCase(ModuleTestCase):
         sms_code = record.code
 
         user_id = User.get_login('sms', {
-                'password': 'secret',
                 'sms_code': sms_code,
                 })
         self.assertEqual(user_id, user.id)
