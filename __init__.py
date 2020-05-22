@@ -9,6 +9,7 @@ from . import production
 
 def register():
     Pool.register(
+        product.Template,
         product.Product,
         location.ProductLocation,
         location.Move,
