@@ -1,8 +1,10 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import functools
+from decimal import Decimal
 
 from trytond.i18n import gettext
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.account_payment.exceptions import PaymentValidationError
@@ -31,6 +33,25 @@ class Payment(metaclass=PoolMeta):
     @classmethod
     def _get_origin(cls):
         return super(Payment, cls)._get_origin() + ['sale.sale']
+
+    @fields.depends('origin')
+    def on_change_origin(self):
+        pool = Pool()
+        Sale = pool.get('sale.sale')
+        try:
+            super().on_change_origin()
+        except AttributeError:
+            pass
+        if self.origin and isinstance(self.origin, Sale):
+            sale = self.origin
+            self.party = sale.invoice_party or sale.party
+            sale_amount = sale.total_amount
+            self.kind = 'receivable' if sale_amount > 0 else 'payable'
+            payment_amount = sum(
+                (p.amount for p in sale.payments if p.state != 'failed'),
+                Decimal(0))
+            self.amount = abs(sale_amount) - payment_amount
+            self.currency = self.origin.currency
 
     @classmethod
     def validate(cls, payments):
