@@ -207,11 +207,13 @@ class ProductSupplier(metaclass=PoolMeta):
         fields.Boolean("Drop Shipment Available"),
         'on_change_with_drop_shipment_available')
 
-    @fields.depends('product',
-        '_parent_product.type', '_parent_product.supply_on_sale')
+    @fields.depends('product', 'template',
+        '_parent_product.type', '_parent_product.supply_on_sale',
+        '_parent_template.type', '_parent_template.supply_on_sale')
     def on_change_with_drop_shipment_available(self, name=None):
-        if self.product and self.product.type in {'goods', 'assets'}:
-            return self.product.supply_on_sale
+        product = self.product or self.template
+        if product and product.type in {'goods', 'assets'}:
+            return product.supply_on_sale
 
 
 class CreatePurchase(metaclass=PoolMeta):
