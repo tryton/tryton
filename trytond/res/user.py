@@ -901,6 +901,8 @@ class UserApplication(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+        # Do not cache default_key as it depends on time
+        cls.__rpc__['default_get'].cache = None
 
     @classmethod
     def default_key(cls):
@@ -945,6 +947,11 @@ class UserApplication(Workflow, ModelSQL, ModelView):
     def create(cls, vlist):
         pool = Pool()
         User = pool.get('res.user')
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            # Ensure we get a different key for each record
+            # default methods are called only once
+            values.setdefault('key', cls.default_key())
         applications = super(UserApplication, cls).create(vlist)
         User._get_preferences_cache.clear()
         return applications
