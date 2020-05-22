@@ -99,8 +99,8 @@ def run_task(pool, task_id):
         pool = Pool(pool)
     Queue = pool.get('ir.queue')
     logger.info('task "%d" started', task_id)
+    retry = config.getint('database', 'retry')
     try:
-        retry = config.getint('database', 'retry')
         for count in range(retry, -1, -1):
             if count != retry:
                 time.sleep(0.02 * (retry - count))
@@ -120,6 +120,9 @@ def run_task(pool, task_id):
                     raise
         logger.info('task "%d" done', task_id)
     except backend.DatabaseOperationalError:
+        logger.info('task "%d" failed, retrying', task_id, exc_info=True)
+        if not config.getboolean('queue', 'worker', default=False):
+            time.sleep(0.02 * retry)
         try:
             with Transaction().start(pool.database_name, 0) as transaction:
                 task = Queue(task_id)
