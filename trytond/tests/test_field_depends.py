@@ -170,6 +170,34 @@ class FieldDependsTestCase(unittest.TestCase):
             set(Model.name.definition(Model, 'en')['on_change']),
             {'foo', 'bar', 'id'})
 
+    def test_property_depends(self):
+        "Tests depends on a property"
+
+        class Model(ModelView):
+            "ModelView Property Depends"
+            __name__ = 'test.modelview.property_depends'
+
+            foo = fields.Char("Foo")
+            bar = fields.Char("Bar")
+
+            @property
+            @fields.depends('foo')
+            def len_foo(self):
+                return len(self.foo)
+
+            @len_foo.setter
+            @fields.depends('bar')
+            def len_foo(self, value):
+                pass
+
+            @fields.depends(methods=['len_foo'])
+            def on_change_bar(self):
+                pass
+
+        Model.__setup__()
+
+        self.assertEqual(Model.bar.on_change, {'foo', 'bar'})
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(FieldDependsTestCase)

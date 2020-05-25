@@ -1,3 +1,4 @@
+* Add support for properties to fields.depends
 * Allow combining authentication methods together
 * Add context to export CSV route
 

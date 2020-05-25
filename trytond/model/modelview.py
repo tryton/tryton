@@ -150,7 +150,11 @@ class ModelView(Model):
                 if not parent_meth:
                     continue
                 for attr in ['depends', 'depend_methods', 'change']:
-                    parent_value = getattr(parent_meth, attr, None)
+                    if isinstance(parent_meth, property):
+                        parent_value = getattr(parent_meth.fget, attr, set())
+                        parent_value |= getattr(parent_meth.fset, attr, set())
+                    else:
+                        parent_value = getattr(parent_meth, attr, set())
                     if parent_value:
                         methods[attr][name] |= parent_value
 
@@ -174,8 +178,9 @@ class ModelView(Model):
             meth_done = set()
             while meth_names:
                 meth_name = meth_names.pop()
-                assert callable(getattr(cls, meth_name)), \
-                    "%s.%s not callable" % (cls, meth_name)
+                method = getattr(cls, meth_name)
+                assert callable(method) or isinstance(method, property), \
+                    "%s.%s not callable or property" % (cls, meth_name)
                 set_methods(meth_name)
                 setattr(field, attribute,
                     getattr(field, attribute) | methods['depends'][meth_name])
