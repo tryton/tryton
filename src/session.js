@@ -140,7 +140,7 @@
         }).append(jQuery('<label/>', {
             'class': 'control-label',
             'for': 'database'
-        }).append(Sao.i18n.gettext('Database')))
+        }).text(Sao.i18n.gettext('Database')))
         .append(dialog.database_select)
         .append(dialog.database_input)
         ).append(jQuery('<div/>', {
@@ -148,13 +148,13 @@
         }).append(jQuery('<label/>', {
             'class': 'control-label',
             'for': 'login'
-        }).append(Sao.i18n.gettext('User name')))
+        }).text(Sao.i18n.gettext('User name')))
         .append(dialog.login_input)
         );
         dialog.button = jQuery('<button/>', {
             'class': 'btn btn-primary',
             'type': 'submit'
-        }).append(' ' + Sao.i18n.gettext("Login")).appendTo(dialog.footer);
+        }).text(' ' + Sao.i18n.gettext("Login")).appendTo(dialog.footer);
         return dialog;
     };
 

@@ -1,3 +1,4 @@
+* Escape external strings (issue9351)
 * Add context to export URL
 * Allow changes to editable tree checkboxes without first selecting the line
 

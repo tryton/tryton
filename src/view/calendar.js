@@ -279,7 +279,7 @@
                    this.screen.view_name == 'calendar') {
                 element.find('.fc-time').remove();
             }
-            element.append(event.description);
+            element.text(event.description);
             element.css('white-space', 'pre')
                 .css('overflow', 'hidden')
                 .css('text-overflow', 'ellipsis')
