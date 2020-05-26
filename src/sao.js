@@ -677,7 +677,7 @@ var Sao = {};
         }).click(function(evt) {
             evt.preventDefault();
             Sao.preferences();
-        }).append(preferences.status_bar));
+        }).text(preferences.status_bar));
         var title = Sao.i18n.gettext("Logout");
         jQuery('#user-logout').append(jQuery('<a/>', {
             'href': '#',
@@ -866,7 +866,7 @@ var Sao = {};
         add_title: function(title) {
             this.header.append(jQuery('<h4/>', {
                 'class': 'modal-title'
-            }).append(title));
+            }).text(title));
         }
     });
 
@@ -1102,18 +1102,18 @@ var Sao = {};
         var global_shortcuts_dl = jQuery('<dl/>', {
             'class': 'dl-horizontal col-md-6'
         }).append(jQuery('<h5/>')
-                  .append(Sao.i18n.gettext('Global shortcuts')))
+            .text(Sao.i18n.gettext('Global shortcuts')))
             .appendTo(row);
         var tab_shortcuts_dl = jQuery('<dl/>', {
             'class': 'dl-horizontal col-md-6'
         }).append(jQuery('<h5/>')
-            .append(Sao.i18n.gettext('Tab shortcuts')))
-        .appendTo(row);
+            .text(Sao.i18n.gettext('Tab shortcuts')))
+            .appendTo(row);
 
         shortcuts_defs().forEach(function(definition) {
-            var dt = jQuery('<dt/>').append(definition.label);
+            var dt = jQuery('<dt/>').text(definition.label);
             var dd = jQuery('<dd/>').append(jQuery('<kbd>')
-                .append(definition.shortcut));
+                .text(definition.shortcut));
             var dest_dl;
             if (definition.id) {
                 dest_dl = tab_shortcuts_dl;

@@ -170,7 +170,7 @@
             this.header.append(jQuery('<h4/>', {
                 'class': 'model-title',
                 'title': this.name,
-            }).append(Sao.common.ellipsize(this.name, 80)));
+            }).text(Sao.common.ellipsize(this.name, 80)));
             this.widget.append(this.screen.screen_container.el);
         }
     });
