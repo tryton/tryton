@@ -472,7 +472,7 @@
                 var more_button = jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append(Sao.i18n.gettext('More')
+                }).text(Sao.i18n.gettext('More')
                     ).click(function() {
                     this.display_size += Sao.config.display_size;
                     this.display();

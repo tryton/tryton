@@ -728,7 +728,7 @@ function eval_pyson(value){
                     'href': '#' + tab_id
                 })
                 .append(img)
-                .append(text))
+                .text(text))
                 .appendTo(this.nav);
             pane.html(tab).appendTo(this.panes);
             if (!this.selected) {
@@ -823,7 +823,7 @@ function eval_pyson(value){
                 'class': 'caret',
             })));
             if (attributes.string) {
-                link.append(attributes.string);
+                link.text(attributes.string);
             }
         },
         add: function(widget) {
@@ -1008,13 +1008,13 @@ function eval_pyson(value){
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.close(dialog);
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('OK')).click(this.write
+            }).text(Sao.i18n.gettext('OK')).click(this.write
                     .bind(this, widget, dialog))
                     .appendTo(dialog.footer);
             dialog.content.submit(function(evt) {
@@ -1884,7 +1884,7 @@ function eval_pyson(value){
                 return function(option) {
                     dropdown.append(jQuery('<li/>').append(jQuery('<a/>', {
                         'href': '#'
-                    }).append(option).click(function(evt) {
+                    }).text(option).click(function(evt) {
                         evt.preventDefault();
                         document.execCommand(properties.command, false, option);
                     })));

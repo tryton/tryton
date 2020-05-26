@@ -255,7 +255,7 @@
                    this.screen.view_name == 'calendar') {
                 element.find('.fc-time').remove();
             }
-            element.append(event.description);
+            element.text(event.description);
             element.css('white-space', 'pre');
             var model_access = Sao.common.MODELACCESS.get(
             	this.screen.model_name);
