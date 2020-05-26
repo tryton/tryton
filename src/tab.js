@@ -140,7 +140,7 @@
                         'tabindex': -1
                     }).append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
                         'aria-hidden': 'true',
-                    })).append(' ' + item.label).appendTo(menuitem);
+                    })).text(' ' + item.label).appendTo(menuitem);
                     this.menu_buttons[item.id] = menuitem;
                     link.click(function(evt) {
                         evt.preventDefault();
@@ -389,7 +389,7 @@
             'aria-hidden': true
         }).append('&times;')).append(jQuery('<span/>', {
             'class': 'sr-only'
-        }).append(Sao.i18n.gettext('Close'))).click(function(evt) {
+        }).text(Sao.i18n.gettext('Close'))).click(function(evt) {
             evt.preventDefault();
             tab.close();
         }))
@@ -559,7 +559,7 @@
                                     'role': 'menuitem',
                                     'href': '#',
                                     'tabindex': -1
-                                }).append(
+                                }).text(
                                     button.attributes.string || ''))
                             .click(function(evt) {
                                 evt.preventDefault();
@@ -598,7 +598,7 @@
                                     'role': 'menuitem',
                                     'href': '#',
                                     'tabindex': -1,
-                                }).append(name))
+                                }).text(name))
                             .click(function(evt) {
                                 evt.preventDefault();
                                 var ids = screen.current_view.selected_records
@@ -625,7 +625,7 @@
                             'role': 'menuitem',
                             'href': '#',
                             'tabindex': -1
-                        }).append(action.name))
+                        }).text(action.name))
                         .click(function(evt) {
                             evt.preventDefault();
                             var prm = jQuery.when();
@@ -671,7 +671,7 @@
                                 'role': 'menuitem',
                                 'href': '#',
                                 'tabindex': -1,
-                            }).append(export_.name))
+                            }).text(export_.name))
                             .click(function(evt) {
                                 evt.preventDefault();
                                 this.do_export(export_);
@@ -1039,7 +1039,7 @@
                             'role': 'menuitem',
                             'href': '#',
                             'tabindex': -1,
-                        }).append(name).appendTo(jQuery('<li/>', {
+                        }).text(name).appendTo(jQuery('<li/>', {
                             'role': 'presentation',
                         }).appendTo(menu));
                         if (typeof callback == 'string') {
@@ -1074,14 +1074,14 @@
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1,
-                    }).append(Sao.i18n.gettext('Add...'))));
+                    }).text(Sao.i18n.gettext('Add...'))));
                     menu.append(jQuery('<li/>', {
                         'role': 'presentation',
                     }).append(jQuery('<a/>', {
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1,
-                    }).append(Sao.i18n.gettext('Manage...'))
+                    }).text(Sao.i18n.gettext('Manage...'))
                         .click(function(evt) {
                             evt.preventDefault();
                             window_();

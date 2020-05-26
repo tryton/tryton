@@ -30,7 +30,7 @@
             this.filter_button = jQuery('<button/>', {
                 type: 'button',
                 'class': 'btn btn-default'
-            }).append(Sao.i18n.gettext('Filters'));
+            }).text(Sao.i18n.gettext('Filters'));
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {
                 'class': 'form-control mousetrap',
@@ -111,7 +111,7 @@
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1
-                    }).append(name)
+                    }).text(name)
                         .click(domain, this.bookmark_activate.bind(this)))
                     .appendTo(dropdown_bookmark);
                 }
@@ -203,7 +203,7 @@
                         role: 'tab',
                         'data-toggle': 'tab',
                         'href': '#' + i
-                    }).append(name + ' ').append(counter)).appendTo(nav);
+                    }).text(name + ' ').append(counter)).appendTo(nav);
                     this.tab_counter.push(counter);
                 }.bind(this));
                 nav.find('a:first').tab('show');
@@ -544,7 +544,7 @@
                 jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     type: 'submit'
-                }).append(Sao.i18n.gettext('Find'))
+                }).text(Sao.i18n.gettext('Find'))
                 .click(search).appendTo(dialog.footer);
             }
             this.search_modal.modal('show');
