@@ -87,7 +87,7 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-link',
                     'type': 'button'
-                }).append(button_text).click(function() {
+                }).text(button_text).click(function() {
                     this.response('RESPONSE_CANCEL');
                 }.bind(this)));
             }
@@ -96,7 +96,7 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append(Sao.i18n.gettext('New')).click(function() {
+                }).text(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)));
             }
@@ -105,12 +105,12 @@
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit'
-                }).append(Sao.i18n.gettext('Save')));
+                }).text(Sao.i18n.gettext('Save')));
             } else {
                 dialog.footer.append(jQuery('<button/>', {
                     'class': 'btn btn-primary',
                     'type': 'submit'
-                }).append(Sao.i18n.gettext('OK')));
+                }).text(Sao.i18n.gettext('OK')));
             }
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
@@ -573,27 +573,27 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-default',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Find')).click(function() {
+            }).text(Sao.i18n.gettext('Find')).click(function() {
                 this.response('RESPONSE_APPLY');
             }.bind(this)).appendTo(dialog.footer);
             if (kwargs.new_ && Sao.common.MODELACCESS.get(model).create) {
                 jQuery('<button/>', {
                     'class': 'btn btn-default',
                     'type': 'button'
-                }).append(Sao.i18n.gettext('New')).click(function() {
+                }).text(Sao.i18n.gettext('New')).click(function() {
                     this.response('RESPONSE_ACCEPT');
                 }.bind(this)).appendTo(dialog.footer);
             }
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+            }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -694,13 +694,13 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+            }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -777,13 +777,13 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(function() {
+            }).text(Sao.i18n.gettext('Cancel')).click(function() {
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(dialog.footer);
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
+            }).text(Sao.i18n.gettext('OK')).appendTo(dialog.footer);
             dialog.content.submit(function(e) {
                 this.response('RESPONSE_OK');
                 e.preventDefault();
@@ -890,14 +890,14 @@
             jQuery('<button/>', {
                 'class': 'btn btn-link',
                 'type': 'button'
-            }).append(Sao.i18n.gettext('Cancel')).click(function(){
+            }).text(Sao.i18n.gettext('Cancel')).click(function(){
                 this.response('RESPONSE_CANCEL');
             }.bind(this)).appendTo(this.dialog.footer);
 
             jQuery('<button/>', {
                 'class': 'btn btn-primary',
                 'type': 'submit'
-            }).append(Sao.i18n.gettext('OK')).click(function(e){
+            }).text(Sao.i18n.gettext('OK')).click(function(e){
                 this.response('RESPONSE_OK');
                 e.preventDefault();
             }.bind(this)).appendTo(this.dialog.footer);
@@ -937,7 +937,7 @@
                 this.fields_all.find('.bg-primary').each(function(i, el_field) {
                     this.sig_sel_add(el_field);
                 }.bind(this));
-            }.bind(this)).append(' '+Sao.i18n.gettext('Add'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Add'))
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
@@ -947,7 +947,7 @@
             ).click(function(){
                 // sig_unsel
                 this.fields_selected.children('li.bg-primary').remove();
-            }.bind(this)).append(' '+Sao.i18n.gettext('Remove'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Remove'))
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
@@ -956,7 +956,7 @@
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
             ).click(function(){
                 this.fields_selected.empty();
-            }.bind(this)).append(' '+Sao.i18n.gettext('Clear'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Clear'))
             .appendTo(this.column_buttons);
 
             jQuery('<hr>').appendTo(this.column_buttons);
@@ -1119,7 +1119,7 @@
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search')
             ).click(function(){
                 this.autodetect();
-            }.bind(this)).append(' '+Sao.i18n.gettext('Auto-Detect'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Auto-Detect'))
             .appendTo(this.column_buttons);
 
             var chooser_label = jQuery('<label/>', {
@@ -1434,7 +1434,7 @@
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
             ).click(function(){
                 this.addreplace_predef();
-            }.bind(this)).append(' '+Sao.i18n.gettext('Save Export'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Save Export'))
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
@@ -1443,7 +1443,7 @@
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
             ).click(function(){
                 this.remove_predef();
-            }.bind(this)).append(' '+Sao.i18n.gettext('Delete Export'))
+            }.bind(this)).text(' ' + Sao.i18n.gettext('Delete Export'))
             .appendTo(this.column_buttons);
 
             var predefined_exports_column = jQuery('<div/>', {
