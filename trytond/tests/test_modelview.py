@@ -420,6 +420,32 @@ class ModelView(unittest.TestCase):
         self.assertTrue(labels)
 
     @with_transaction()
+    def test_link_without_action_access(self):
+        "Test link in view without action access"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.link')
+        ActionWindow = pool.get('ir.action.act_window')
+        Group = pool.get('res.group')
+        ActionGroup = pool.get('ir.action-res.group')
+
+        group = Group(name="Group")
+        group.save()
+        action_window, = ActionWindow.search(
+            [('res_model', '=', 'test.modelview.link.target')])
+        ActionGroup(
+            action=action_window.action,
+            group=group).save()
+
+        arch = TestModel.fields_view_get()['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        links = tree.xpath('//link')
+        labels = tree.xpath('//label')
+
+        self.assertFalse(links)
+        self.assertTrue(labels)
+
+    @with_transaction()
     def test_rpc_setup(self):
         "Testing the computation of the RPC methods"
         pool = Pool()
