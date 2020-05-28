@@ -158,8 +158,13 @@ class Pool(object):
             # Clean the _pool before loading modules
             for type in self.classes.keys():
                 self._pool[self.database_name][type] = {}
-            restart = not load_modules(self.database_name, self, update=update,
-                    lang=lang, activatedeps=activatedeps)
+            try:
+                restart = not load_modules(
+                    self.database_name, self, update=update, lang=lang,
+                    activatedeps=activatedeps)
+            except Exception:
+                del self._pool[self.database_name]
+                raise
             if restart:
                 self.init()
 

@@ -396,6 +396,9 @@ def load_modules(
 
             load_module_graph(graph, pool, update, lang)
 
+            Configuration = pool.get('ir.configuration')
+            Configuration(1).check()
+
             if update:
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=(ir_module.state == 'to remove')))
