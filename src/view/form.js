@@ -1605,7 +1605,8 @@ function eval_pyson(value){
         get modified() {
             if (this.record && this.field) {
                 var value = this.get_client_value();
-                return value != this.get_value();
+                return (JSON.stringify(this.field.convert(value)) !=
+                    JSON.stringify(this.field.convert(this.get_value())));
             }
             return false;
         },
