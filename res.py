@@ -9,7 +9,6 @@ from trytond.exceptions import LoginException
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval
 from trytond.tools import resolve
 
 logger = logging.getLogger(__name__)
