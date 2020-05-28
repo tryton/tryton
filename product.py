@@ -18,12 +18,12 @@ from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
-from trytond.config import config
 from trytond.tools import lstrip_wildcard
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 from .exceptions import InvalidIdentifierCode
+from .ir import price_decimal
 
 
 __all__ = ['price_digits', 'round_price', 'TemplateFunction']
@@ -39,7 +39,7 @@ COST_PRICE_METHODS = [
     ('average', 'Average'),
     ]
 
-price_digits = (16, config.getint('product', 'price_decimal', default=4))
+price_digits = (16, price_decimal)
 
 
 def round_price(value, rounding=None):

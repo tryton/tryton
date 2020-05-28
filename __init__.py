@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
+from . import ir
 from . import uom
 from . import category
 from . import product
@@ -14,6 +15,7 @@ __all__ = [price_digits, round_price, uom_conversion_digits]
 
 def register():
     Pool.register(
+        ir.Configuration,
         uom.UomCategory,
         uom.Uom,
         category.Category,
