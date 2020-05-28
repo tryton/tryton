@@ -3856,17 +3856,9 @@ function eval_pyson(value){
             }, !field.get_size);
         },
         open: function() {
-            var params = {};
-            var filename_field = this.filename_field;
-            if (filename_field) {
-                var filename = filename_field.get_client(this.record);
-                // Valid mimetype will make the browser directly open the file
-                params.mimetype = Sao.common.guess_mimetype(filename);
-            }
-            this.save_as(params);
+            this.save_as();
         },
-        save_as: function(params) {
-            var mimetype = params.mimetype || 'application/octet-binary';
+        save_as: function() {
             var field = this.field;
             var record = this.record;
             var prm;
