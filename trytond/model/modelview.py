@@ -641,8 +641,12 @@ class ModelView(Model):
         if element.tag == 'link':
             link_name = element.attrib['name']
             action_id = ModelData.get_id(*link_name.split('.'))
-            action = ActionWindow(action_id)
-            if (not action.res_model
+            try:
+                action, = ActionWindow.search([('id', '=', action_id)])
+            except ValueError:
+                action = None
+            if (not action
+                    or not action.res_model
                     or not ModelAccess.check(
                         action.res_model, 'read', raise_exception=False)):
                 element.tag = 'label'
