@@ -27,6 +27,9 @@ Backend
 Modules
 -------
 
+Operational
+^^^^^^^^^^^
+
 .. glossary::
 
     :ref:`Financial Accounting <index-accounting>`
@@ -68,6 +71,10 @@ Modules
     :ref:`Timesheet <index-timesheet>`
         Tracks time spend.
 
+Referential
+^^^^^^^^^^^
+
+.. glossary::
 
     `Banking </projects/modules-bank/en/latest>`_
         Adds bank and account.
@@ -99,6 +106,10 @@ Modules
     :ref:`Product <index-product>`
         Manages products.
 
+Administration
+^^^^^^^^^^^^^^
+
+.. glossary::
 
     :ref:`Authentication <index-authentication>`
         Extends authentication mechanism.
