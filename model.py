@@ -46,7 +46,7 @@ class CompanyValueMixin(ValueMixin):
 
 def employee_field(string, states=None, company='company'):
     if states is None:
-        states = ['done', 'cancel']
+        states = ['done', 'cancel', 'cancelled']
     return fields.Many2One(
         'company.employee', string,
         domain=[('company', '=', Eval(company, -1))],
