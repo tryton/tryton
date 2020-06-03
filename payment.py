@@ -1315,7 +1315,7 @@ class Account(ModelSQL, ModelView):
                 ])
         if not payments:
             logger.error(
-                "payment_intent.succeeded: No payment '%s'",
+                "payment_intent.amount_capturable_updated: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
@@ -1340,7 +1340,7 @@ class Account(ModelSQL, ModelView):
                 ])
         if not payments:
             logger.error(
-                "payment_intent.succeeded: No payment '%s'",
+                "payment_intent.payment_failed: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
             # TODO: remove when https://bugs.tryton.org/issue4080
