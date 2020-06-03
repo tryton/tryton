@@ -3379,7 +3379,7 @@
             if (this.format) {
                 return this.format(content);
             }
-            return content;
+            return jQuery('<span/>').text(content);
         },
         _format_action: function(content) {
             if (this.format_action) {
@@ -3416,7 +3416,7 @@
                     'class': 'completion'
                 }).append(jQuery('<a/>', {
                     'href': '#'
-                }).text(this._format(value)))
+                }).append(this._format(value)))
                 .click(function(evt) {
                     evt.preventDefault();
                     if (this.match_selected) {
