@@ -46,7 +46,7 @@ Done
     - Move quantities are bigger or equal to the minimal quantity set
       on the forecast line.
 
-Cancel
+Cancelled
 
  On a cancelled forecast all existing moves are cancelled and the form
  is readonly.

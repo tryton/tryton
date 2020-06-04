@@ -61,7 +61,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', "Draft"),
             ('done', "Done"),
-            ('cancel', "Cancel"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, select=True)
     active = fields.Function(fields.Boolean('Active'),
         'get_active', searcher='search_active')
@@ -75,9 +75,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
         cls._order.insert(1, ('warehouse', 'ASC'))
         cls._transitions |= set((
                 ('draft', 'done'),
-                ('draft', 'cancel'),
+                ('draft', 'cancelled'),
                 ('done', 'draft'),
-                ('cancel', 'draft'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -101,6 +101,9 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+
         super(Forecast, cls).__register__(module_name)
 
         # Add index on create_date
@@ -109,6 +112,11 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
         # Migration from 5.0: remove check_from_to_date
         table.drop_constraint('check_from_to_date')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -197,7 +205,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(forecasts)
         for forecast in forecasts:
-            if forecast.state != 'cancel':
+            if forecast.state != 'cancelled':
                 raise AccessError(
                     gettext('stock_forecast.msg_forecast_delete_cancel',
                         forecast=forecast.rec_name))
@@ -217,7 +225,7 @@ class Forecast(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, forecasts):
         pass
 
