@@ -28,5 +28,5 @@ Requisition
 
 - Total: The total amount.
 - State: The state of the purchase requisition. May take one of the following
-  values: Draft, Waiting, Rejected, Processing, Done, Canceled.
+  values: Draft, Waiting, Rejected, Processing, Done, Cancelled.
 - Company: The company which issue the purchase requisition.

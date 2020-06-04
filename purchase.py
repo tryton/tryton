@@ -110,7 +110,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     supply_date = fields.Date(
         'Supply Date',
         states={
-            'required': ~Eval('state').in_(['draft', 'cancel']),
+            'required': ~Eval('state').in_(['draft', 'cancelled']),
             'readonly': _states['readonly'],
             },
         depends=_depends)
@@ -141,9 +141,9 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         states=_states, depends=_depends)
 
     approved_by = employee_field(
-        "Approved By", states=['approved', 'processing', 'done', 'cancel'])
+        "Approved By", states=['approved', 'processing', 'done', 'cancelled'])
     rejected_by = employee_field(
-        "Rejected By", states=['rejected', 'processing', 'done', 'cancel'])
+        "Rejected By", states=['rejected', 'processing', 'done', 'cancelled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('waiting', "Waiting"),
@@ -151,7 +151,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             ('approved', "Approved"),
             ('processing', "Processing"),
             ('done', "Done"),
-            ('cancel', "Canceled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True)
 
     del _states
@@ -160,9 +160,9 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     def __setup__(cls):
         super(PurchaseRequisition, cls).__setup__()
         cls._transitions |= set((
-                ('cancel', 'draft'),
+                ('cancelled', 'draft'),
                 ('rejected', 'draft'),
-                ('draft', 'cancel'),
+                ('draft', 'cancelled'),
                 ('draft', 'waiting'),
                 ('waiting', 'draft'),
                 ('waiting', 'rejected'),
@@ -179,8 +179,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
-                        ['cancel', 'waiting', 'approved', 'rejected']),
-                    'icon': If(Eval('state').in_(['cancel', 'rejected']),
+                        ['cancelled', 'waiting', 'approved', 'rejected']),
+                    'icon': If(Eval('state').in_(['cancelled', 'rejected']),
                         'tryton-undo',
                         'tryton-back'),
                     'depends': ['state'],
@@ -210,7 +210,19 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
                 })
         # The states where amounts are cached
         cls._states_cached = ['approved', 'done', 'rejected',
-            'processing', 'cancel']
+            'processing', 'cancelled']
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'cancel'))
 
     @classmethod
     def default_state(cls):
@@ -300,7 +312,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual',
+                If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
@@ -322,7 +335,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(requisitions)
         for requisition in requisitions:
-            if requisition.state != 'cancel':
+            if requisition.state != 'cancelled':
                 raise AccessError(
                     gettext('purchase_requisition.msg_delete_cancel',
                         requisition=requisition.rec_name))
@@ -349,7 +362,7 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, requisitions):
         cls.store_cache(requisitions)
 

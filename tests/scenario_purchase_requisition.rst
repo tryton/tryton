@@ -342,7 +342,7 @@ Create purchase requisition then cancel::
     >>> requisition_line.quantity = 4.0
     >>> requisition.click('cancel')
     >>> requisition.state
-    'cancel'
+    'cancelled'
 
 Create purchase requisition, wait then reject::
 
