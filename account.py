@@ -115,7 +115,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', 'Draft'),
             ('posted', 'Posted'),
-            ('cancel', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'State', readonly=True)
 
     @classmethod
@@ -128,8 +128,8 @@ class LandedCost(Workflow, ModelSQL, ModelView):
             ]
         cls._transitions |= set((
                 ('draft', 'posted'),
-                ('draft', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -137,7 +137,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': Eval('state') != 'cancel',
+                    'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
                 'post': {
@@ -148,13 +148,20 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table_h = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table_h.column_exist('code'):
             table_h.column_rename('code', 'number')
 
         super(LandedCost, cls).__register__(module_name)
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_company():
@@ -170,7 +177,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, landed_costs):
         pass
 
