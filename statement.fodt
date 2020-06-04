@@ -474,8 +474,8 @@
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;statement.state == &apos;draft&apos;&quot;&gt;</text:placeholder></text:p>
    <text:p text:style-name="P13"><text:span text:style-name="T1">Draft </text:span>Statement</text:p>
    <text:p text:style-name="Standard"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;statement.state == &apos;canceled&apos;&quot;&gt;</text:placeholder></text:p>
-   <text:p text:style-name="P13"><text:span text:style-name="T1">Canceled </text:span>Statement</text:p>
+   <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;when test=&quot;statement.state == &apos;cancelled&apos;&quot;&gt;</text:placeholder></text:p>
+   <text:p text:style-name="P13"><text:span text:style-name="T1">Cancelled </text:span>Statement</text:p>
    <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;/when&gt;</text:placeholder></text:p>
    <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;otherwise&gt;</text:placeholder></text:p>
    <text:p text:style-name="P12">Statement</text:p>

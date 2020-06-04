@@ -123,7 +123,7 @@ class Statement(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', "Draft"),
             ('validated', "Validated"),
-            ('cancel', "Canceled"),
+            ('cancelled', "Cancelled"),
             ('posted', "Posted"),
             ], "State", readonly=True, select=True)
     validation = fields.Function(fields.Char('Validation'),
@@ -142,14 +142,14 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
                 ('draft', 'validated'),
-                ('draft', 'cancel'),
+                ('draft', 'cancelled'),
                 ('validated', 'posted'),
-                ('validated', 'cancel'),
-                ('cancel', 'draft'),
+                ('validated', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'draft': {
-                    'invisible': Eval('state') != 'cancel',
+                    'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
                 'validate_statement': {
@@ -165,7 +165,7 @@ class Statement(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 'reconcile': {
-                    'invisible': Eval('state').in_(['draft', 'cancel']),
+                    'invisible': Eval('state').in_(['draft', 'cancelled']),
                     'readonly': ~Eval('to_reconcile'),
                     'depends': ['state', 'to_reconcile'],
                     },
@@ -192,6 +192,11 @@ class Statement(Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update([sql_table.name],
                 [sql_table.id.cast(cls.name.sql_type().base)],
                 where=sql_table.name == Null))
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_company():
@@ -412,7 +417,7 @@ class Statement(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
@@ -420,7 +425,7 @@ class Statement(Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(statements)
         for statement in statements:
-            if statement.state != 'cancel':
+            if statement.state != 'cancelled':
                 raise AccessError(
                     gettext('account_statement.msg_statement_delete_cancel',
                         statement=statement.rec_name))
@@ -631,7 +636,7 @@ class Statement(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, statements):
         StatementLine = Pool().get('account.statement.line')
 

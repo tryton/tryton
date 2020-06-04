@@ -29,9 +29,9 @@ The statement can be in one of this states:
 
   The statement is posted which means all the moves have been posted.
 
-* Canceled
+* Cancelled
 
-  The statement is canceled which means all the moves previously created have
+  The statement is cancelled which means all the moves previously created have
   been deleted.
 
 Line

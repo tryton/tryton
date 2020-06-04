@@ -221,7 +221,7 @@ Cancel statement::
 
     >>> statement.click('cancel')
     >>> statement.state
-    'cancel'
+    'cancelled'
     >>> [l.move for l in statement.lines if l.move]
     []
 
