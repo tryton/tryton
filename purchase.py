@@ -146,7 +146,7 @@ class Quotation(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['cancelled', 'sent']),
-                    'icon': If(Eval('state') == 'cancel',
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo',
                         'tryton-back'),
                     },
