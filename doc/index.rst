@@ -56,7 +56,7 @@ The mandate can be in one of this states:
 * Draft
 * Requested
 * Validated
-* Canceled
+* Cancelled
 
 Message
 *******
@@ -68,7 +68,7 @@ The message can be in one of this states:
 * Draft
 * Waiting
 * Done
-* Canceled
+* Cancelled
 
 Bank to Customer Debit Credit Notification (camt.054)
 -----------------------------------------------------

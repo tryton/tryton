@@ -209,10 +209,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain" eval="[('state', '=', 'done')]" pyson="1"/>
             <field name="act_window" ref="act_message_form"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_message_form_domain_canceled">
-            <field name="name">Canceled</field>
+        <record model="ir.action.act_window.domain" id="act_message_form_domain_cancelled">
+            <field name="name">Cancelled</field>
             <field name="sequence" eval="40"/>
-            <field name="domain" eval="[('state', '=', 'canceled')]" pyson="1"/>
+            <field name="domain" eval="[('state', '=', 'cancelled')]" pyson="1"/>
             <field name="act_window" ref="act_message_form"/>
         </record>
         <record model="ir.action.act_window.domain" id="act_message_form_domain_all">

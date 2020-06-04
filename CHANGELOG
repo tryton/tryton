@@ -1,3 +1,5 @@
+* Rename mandate and message states from canceled to cancelled
+
 Version 5.6.0 - 2020-05-04
 * Bug fixes (see mercurial logs for details)
 * Merge sepa identifier into eu_at_02

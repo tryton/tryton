@@ -403,13 +403,13 @@ class Mandate(Workflow, ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party', required=True, select=True,
         states={
             'readonly': Eval('state').in_(
-                ['requested', 'validated', 'canceled']),
+                ['requested', 'validated', 'cancelled']),
             },
         depends=['state'])
     account_number = fields.Many2One('bank.account.number', 'Account Number',
         ondelete='RESTRICT',
         states={
-            'readonly': Eval('state').in_(['validated', 'canceled']),
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
             'required': Eval('state') == 'validated',
             },
         domain=[
@@ -440,7 +440,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('one-off', 'One-off'),
             ], 'Type',
         states={
-            'readonly': Eval('state').in_(['validated', 'canceled']),
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
             },
         depends=['state'])
     sequence_type_rcur = fields.Boolean(
@@ -454,13 +454,13 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('B2B', 'Business to Business'),
             ], 'Scheme', required=True,
         states={
-            'readonly': Eval('state').in_(['validated', 'canceled']),
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
             },
         depends=['state'])
     scheme_string = scheme.translated('scheme')
     signature_date = fields.Date('Signature Date',
         states={
-            'readonly': Eval('state').in_(['validated', 'canceled']),
+            'readonly': Eval('state').in_(['validated', 'cancelled']),
             'required': Eval('state') == 'validated',
             },
         depends=['state'])
@@ -468,7 +468,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('draft', 'Draft'),
             ('requested', 'Requested'),
             ('validated', 'Validated'),
-            ('canceled', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'State', readonly=True)
     payments = fields.One2Many('account.payment', 'sepa_mandate', 'Payments')
     has_payments = fields.Function(fields.Boolean('Has Payments'),
@@ -480,8 +480,8 @@ class Mandate(Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'requested'),
                 ('requested', 'validated'),
-                ('validated', 'canceled'),
-                ('requested', 'canceled'),
+                ('validated', 'cancelled'),
+                ('requested', 'cancelled'),
                 ('requested', 'draft'),
                 ))
         cls._buttons.update({
@@ -508,6 +508,18 @@ class Mandate(Workflow, ModelSQL, ModelView):
             ('identification_unique', Unique(t, t.company, t.identification),
                 'account_payment_sepa.msg_mandate_unique_id'),
             ]
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration from 5.6: rename state canceled to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'canceled'))
 
     @staticmethod
     def default_company():
@@ -658,18 +670,18 @@ class Mandate(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('canceled')
+    @Workflow.transition('cancelled')
     def cancel(cls, mandates):
-        # TODO must be automaticaly canceled 13 months after last collection
+        # TODO must be automaticaly cancelled 13 months after last collection
         pass
 
     @classmethod
     def delete(cls, mandates):
         for mandate in mandates:
-            if mandate.state not in ('draft', 'canceled'):
+            if mandate.state not in ('draft', 'cancelled'):
                 raise AccessError(
                     gettext('account_payment_sepa'
-                        '.msg_mandate_delete_draft_canceled',
+                        '.msg_mandate_delete_draft_cancelled',
                         mandate=mandate.rec_name))
         super(Mandate, cls).delete(mandates)
 
@@ -710,7 +722,7 @@ class Message(Workflow, ModelSQL, ModelView):
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
             ('done', 'Done'),
-            ('canceled', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'State', readonly=True, select=True)
 
     @classmethod
@@ -720,8 +732,8 @@ class Message(Workflow, ModelSQL, ModelView):
             ('draft', 'waiting'),
             ('waiting', 'done'),
             ('waiting', 'draft'),
-            ('draft', 'canceled'),
-            ('waiting', 'canceled'),
+            ('draft', 'cancelled'),
+            ('waiting', 'cancelled'),
             }
         cls._buttons.update({
                 'cancel': {
@@ -744,9 +756,10 @@ class Message(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
         pool = Pool()
         Group = pool.get('account.payment.group')
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
 
         super(Message, cls).__register__(module_name)
 
@@ -755,7 +768,6 @@ class Message(Workflow, ModelSQL, ModelView):
             group_table = Group.__table_handler__(module_name)
             if group_table.column_exist('sepa_message'):
                 group = Group.__table__()
-                table = cls.__table__()
                 cursor.execute(*group.select(
                         group.id, group.sepa_message, group.company))
                 for group_id, message, company_id in cursor.fetchall():
@@ -767,6 +779,11 @@ class Message(Workflow, ModelSQL, ModelView):
                                     'account.payment.group,%s' % group_id,
                                     'done']]))
                 group_table.drop_column('sepa_message')
+
+        # Migration from 5.6: rename state canceled to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'canceled'))
 
     @staticmethod
     def default_type():
@@ -824,7 +841,7 @@ class Message(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('canceled')
+    @Workflow.transition('cancelled')
     def cancel(cls, messages):
         pass
 

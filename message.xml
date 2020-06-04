@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_mandate_unique_id">
             <field name="text">SEPA mandate identification must be unique by company.</field>
         </record>
-        <record model="ir.message" id="msg_mandate_delete_draft_canceled">
+        <record model="ir.message" id="msg_mandate_delete_draft_cancelled">
             <field name="text">To delete mandate "%(mandate)s" you must cancel it or reset its state to draft.</field>
         </record>
         <record model="ir.message" id="msg_party_no_id">
