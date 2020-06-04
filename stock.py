@@ -152,7 +152,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         'Supplier Moves',
         filter=[('to_location.type', '=', 'drop')],
         states={
-            'readonly': Eval('state').in_(['shipped', 'done', 'cancel']),
+            'readonly': Eval('state').in_(['shipped', 'done', 'cancelled']),
             },
         depends=['state', 'supplier'])
     customer_moves = fields.One2Many('stock.move', 'shipment',
@@ -168,7 +168,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             ('waiting', 'Waiting'),
             ('shipped', 'Shipped'),
             ('done', 'Done'),
-            ('cancel', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'State', readonly=True)
 
     @classmethod
@@ -179,6 +179,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         PurchaseRequest = pool.get('purchase.request')
         SaleLine = pool.get('sale.line')
         Location = pool.get('stock.location')
+        table = cls.__table__()
         move = Move.__table__()
         purchase_line = PurchaseLine.__table__()
         purchase_request = PurchaseRequest.__table__()
@@ -238,28 +239,33 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                             drop_shipment_location, customer_location],
                         where=(move.id == move_id)))
 
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'cancel'))
+
     @classmethod
     def __setup__(cls):
         super(ShipmentDrop, cls).__setup__()
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'shipped'),
-                ('draft', 'cancel'),
-                ('waiting', 'cancel'),
+                ('draft', 'cancelled'),
+                ('waiting', 'cancelled'),
                 ('waiting', 'draft'),
-                ('cancel', 'draft'),
+                ('cancelled', 'draft'),
                 ('shipped', 'done'),
-                ('shipped', 'cancel'),
+                ('shipped', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['cancel', 'draft',
+                    'invisible': ~Eval('state').in_(['cancelled', 'draft',
                             'waiting']),
-                    'icon': If(Eval('state') == 'cancel',
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo', 'tryton-back'),
                     'depends': ['state'],
                     },
@@ -356,7 +362,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('sale_supply_drop_shipment'
                         '.msg_drop_shipment_delete_cancel') % {
@@ -367,7 +373,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @process_sale('customer_moves')
     @process_purchase('supplier_moves')
     def cancel(cls, shipments):

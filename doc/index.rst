@@ -33,6 +33,6 @@ The drop shipment can be in one of this states:
 
   All moves are in state Done.
 
-* Cancel
+* Cancelled
 
   All moves are cancelled.
