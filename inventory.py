@@ -59,7 +59,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('draft', "Draft"),
             ('done', "Done"),
-            ('cancel', "Canceled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, select=True,
         help="The current state of the inventory.")
 
@@ -71,15 +71,15 @@ class Inventory(Workflow, ModelSQL, ModelView):
         cls._order.insert(0, ('date', 'DESC'))
         cls._transitions |= set((
                 ('draft', 'done'),
-                ('draft', 'cancel'),
+                ('draft', 'cancelled'),
                 ))
         cls._buttons.update({
                 'confirm': {
-                    'invisible': Eval('state').in_(['done', 'cancel']),
+                    'invisible': Eval('state').in_(['done', 'cancelled']),
                     'depends': ['state'],
                     },
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'complete_lines': {
@@ -96,13 +96,20 @@ class Inventory(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         super(Inventory, cls).__register__(module_name)
 
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Add index on create_date
         table.index_action('create_date', action='add')
 
         # Migration from 5.4: remove lost_found
         table.not_null_action('lost_found', 'remove')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -120,7 +127,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
@@ -128,7 +135,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(inventories)
         for inventory in inventories:
-            if inventory.state != 'cancel':
+            if inventory.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_inventory_delete_cancel',
                         inventory=inventory.rec_name))
@@ -159,7 +166,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, inventories):
         Line = Pool().get("stock.inventory.line")
         Line.cancel_move([l for i in inventories for l in i.lines])
@@ -482,7 +489,7 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def delete(cls, lines):
         for line in lines:
-            if line.inventory_state not in {'cancel', 'draft'}:
+            if line.inventory_state not in {'cancelled', 'draft'}:
                 raise AccessError(
                     gettext('stock.msg_inventory_line_delete_cancel',
                         line=line.rec_name,

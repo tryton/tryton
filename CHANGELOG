@@ -1,3 +1,4 @@
+* Rename inventory state from cancel to cancelled
 * Override warehouse with context value for current user
 
 Version 5.6.0 - 2020-05-04
