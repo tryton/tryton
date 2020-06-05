@@ -956,31 +956,34 @@
             var button_add = jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-add')
+            }).text(' ' + Sao.i18n.gettext('Add')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-add')
             ).click(function(){
                 this.fields_all.find('.bg-primary').each(function(i, el_field) {
                     this.sig_sel_add(el_field);
                 }.bind(this));
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Add'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
+            }).text(' ' + Sao.i18n.gettext('Remove')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-remove')
             ).click(function(){
                 // sig_unsel
                 this.fields_selected.children('li.bg-primary').remove();
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Remove'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
+            }).text(' ' + Sao.i18n.gettext('Clear')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-clear')
             ).click(function(){
                 this.fields_selected.empty();
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Clear'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             jQuery('<hr>').appendTo(this.column_buttons);
@@ -1141,10 +1144,11 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-search')
+            }).text(' ' + Sao.i18n.gettext('Auto-Detect')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-search')
             ).click(function(){
                 this.autodetect();
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Auto-Detect'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             var chooser_label = jQuery('<label/>', {
@@ -1434,28 +1438,31 @@
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-save')
+            }).text(' ' + Sao.i18n.gettext('Save Export')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-save')
             ).click(function(){
                 this.addreplace_predef();
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Save Export'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             this.button_url = jQuery('<a/>', {
                 'class': 'btn btn-default btn-block',
                 'target': '_blank',
                 'rel': 'noreferrer noopener',
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-public')
-            ).text(' ' + Sao.i18n.gettext("URL Export"))
+            }).text(' ' + Sao.i18n.gettext("URL Export")).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-public')
+            )
             .appendTo(this.column_buttons);
             this.dialog.body.on('change click', this.set_url.bind(this));
 
             jQuery('<button/>', {
                 'class': 'btn btn-default btn-block',
                 'type': 'button'
-            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
+            }).text(' ' + Sao.i18n.gettext('Delete Export')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-delete')
             ).click(function(){
                 this.remove_predef();
-            }.bind(this)).text(' ' + Sao.i18n.gettext('Delete Export'))
+            }.bind(this))
             .appendTo(this.column_buttons);
 
             var predefined_exports_column = jQuery('<div/>', {

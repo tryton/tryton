@@ -138,9 +138,10 @@
                         'role': 'menuitem',
                         'href': '#',
                         'tabindex': -1
-                    }).append(Sao.common.ICONFACTORY.get_icon_img(item.icon, {
-                        'aria-hidden': 'true',
-                    })).text(' ' + item.label).appendTo(menuitem);
+                    }).text(' ' + item.label).prepend(
+                        Sao.common.ICONFACTORY.get_icon_img(item.icon, {
+                            'aria-hidden': 'true',
+                        })).appendTo(menuitem);
                     this.menu_buttons[item.id] = menuitem;
                     link.click(function(evt) {
                         evt.preventDefault();
