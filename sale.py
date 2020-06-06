@@ -183,7 +183,7 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, sales):
         for sale in sales:
             if sale.coupons:
