@@ -143,7 +143,7 @@ Cancel the sale::
 
     >>> sale.click('cancel')
     >>> sale.state
-    'cancel'
+    'cancelled'
 
 Attempt to add a second payment to the cancelled sale::
 

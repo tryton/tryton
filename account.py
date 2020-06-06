@@ -72,7 +72,7 @@ class Payment(metaclass=PoolMeta):
                 gettext('sale_payment.msg_payment_sale_draft',
                     sale=self.origin.rec_name,
                     payment=self.rec_name))
-        elif self.state == 'draft' and self.origin.state == 'cancel':
+        elif self.state == 'draft' and self.origin.state == 'cancelled':
             raise PaymentValidationError(
                 gettext('sale_payment.msg_payment_sale_cancel',
                     sale=self.origin.rec_name,

@@ -43,7 +43,7 @@ class Sale(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @no_payment('sale_payment.msg_sale_cancel_payment')
     def cancel(cls, sales):
         super(Sale, cls).cancel(sales)
