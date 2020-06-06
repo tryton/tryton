@@ -573,7 +573,7 @@ class Purchase(
         skip_ids.update(x.id for x in self.invoices_recreated)
         invoices = [i for i in self.invoices if i.id not in skip_ids]
         if invoices:
-            if any(i.state == 'cancel' for i in invoices):
+            if any(i.state == 'cancelled' for i in invoices):
                 return 'exception'
             elif all(i.state == 'paid' for i in invoices):
                 return 'paid'
@@ -1644,7 +1644,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         invoiced_quantity = 0
         for invoice_line in self.invoice_lines:
             if (not invoice_line.invoice
-                    or invoice_line.invoice.state != 'cancel'):
+                    or invoice_line.invoice.state != 'cancelled'):
                 invoiced_quantity += Uom.compute_qty(
                     invoice_line.unit, invoice_line.quantity, self.unit)
         self.actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
@@ -1876,7 +1876,7 @@ class HandleInvoiceException(Wizard):
         skip.update(purchase.invoices_recreated)
         invoices = []
         for invoice in purchase.invoices:
-            if invoice.state == 'cancel' and invoice not in skip:
+            if invoice.state == 'cancelled' and invoice not in skip:
                 invoices.append(invoice.id)
         return {
             'recreate_invoices': invoices,
