@@ -34,5 +34,10 @@ db_names = os.environ.get('TRYTOND_DATABASE_NAMES')
 if db_names:
     # Read with csv so database name can include special chars
     reader = csv.reader(StringIO(db_names))
+    threads = []
     for name in next(reader):
-        threading.Thread(target=Pool(name).init).start()
+        thread = threading.Thread(target=Pool(name).init)
+        thread.start()
+        threads.append(thread)
+    for thread in threads:
+        thread.join()

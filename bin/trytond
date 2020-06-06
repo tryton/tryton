@@ -31,8 +31,13 @@ from trytond.pool import Pool
 from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
+    threads = []
     for name in options.database_names:
-        threading.Thread(target=Pool(name).init).start()
+        thread = threading.Thread(target=Pool(name).init)
+        thread.start()
+        threads.append(thread)
+    for thread in threads:
+        thread.join()
     hostname, port = split_netloc(config.get('web', 'listen'))
     certificate = config.get('ssl', 'certificate')
     privatekey = config.get('ssl', 'privatekey')
