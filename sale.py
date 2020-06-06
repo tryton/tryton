@@ -83,7 +83,8 @@ class Sale(
     sale_date = fields.Date('Sale Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            'required': ~Eval('state').in_(
+                ['draft', 'quotation', 'cancelled']),
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
@@ -122,7 +123,8 @@ class Sale(
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            'required': ~Eval('state').in_(
+                ['draft', 'quotation', 'cancelled']),
             }, depends=['party', 'invoice_party', 'state'])
     shipment_party = fields.Many2One('party.party', 'Shipment Party',
         states={
@@ -139,7 +141,8 @@ class Sale(
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            'required': ~Eval('state').in_(
+                ['draft', 'quotation', 'cancelled']),
             },
         depends=['party', 'shipment_party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
@@ -236,17 +239,17 @@ class Sale(
 
     quoted_by = employee_field(
         "Quoted By",
-        states=['quotation', 'confirmed', 'processing', 'done', 'cancel'])
+        states=['quotation', 'confirmed', 'processing', 'done', 'cancelled'])
     confirmed_by = employee_field(
         "Confirmed By",
-        states=['confirmed', 'processing', 'done', 'cancel'])
+        states=['confirmed', 'processing', 'done', 'cancelled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('quotation', "Quotation"),
             ('confirmed', "Confirmed"),
             ('processing', "Processing"),
             ('done', "Done"),
-            ('cancel', "Canceled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True)
 
     @classmethod
@@ -264,10 +267,10 @@ class Sale(
                 ('processing', 'processing'),
                 ('processing', 'done'),
                 ('done', 'processing'),
-                ('draft', 'cancel'),
-                ('quotation', 'cancel'),
+                ('draft', 'cancelled'),
+                ('quotation', 'cancelled'),
                 ('quotation', 'draft'),
-                ('cancel', 'draft'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -276,8 +279,8 @@ class Sale(
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
-                        ['cancel', 'quotation', 'confirmed']),
-                    'icon': If(Eval('state') == 'cancel',
+                        ['cancelled', 'quotation', 'confirmed']),
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo',
                         'tryton-back'),
                     'depends': ['state'],
@@ -300,12 +303,12 @@ class Sale(
                     },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
-                        | (Eval('state') == 'cancel')),
+                        | (Eval('state') == 'cancelled')),
                     'depends': ['state', 'invoice_state'],
                     },
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
-                        | (Eval('state') == 'cancel')),
+                        | (Eval('state') == 'cancelled')),
                     'depends': ['state', 'shipment_state'],
                     },
                 'modify_header': {
@@ -315,11 +318,13 @@ class Sale(
                     },
                 })
         # The states where amounts are cached
-        cls._states_cached = ['confirmed', 'processing', 'done', 'cancel']
+        cls._states_cached = ['confirmed', 'processing', 'done', 'cancelled']
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename reference into number
         if (table.column_exist('reference')
@@ -334,6 +339,11 @@ class Sale(
 
         # Add index on create_date
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @classmethod
     def default_payment_term(cls):
@@ -670,7 +680,7 @@ class Sale(
     def view_attributes(cls):
         attributes = [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ('/tree/field[@name="invoice_state"]', 'visual',
                 If(Eval('invoice_state') == 'exception', 'danger', '')),
             ('/tree/field[@name="shipment_state"]', 'visual',
@@ -886,7 +896,7 @@ class Sale(
         # Cancel before delete
         cls.cancel(sales)
         for sale in sales:
-            if sale.state != 'cancel':
+            if sale.state != 'cancelled':
                 raise AccessError(
                     gettext('sale.msg_sale_delete_cancel',
                         sale=sale.rec_name))
@@ -894,7 +904,7 @@ class Sale(
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, sales):
         cls.store_cache(sales)
 
@@ -1639,7 +1649,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def delete(cls, lines):
         for line in lines:
-            if line.sale_state not in {'cancel', 'draft'}:
+            if line.sale_state not in {'cancelled', 'draft'}:
                 raise AccessError(
                     gettext('sale.msg_sale_line_delete_cancel_draft',
                         line=line.rec_name,

@@ -32,7 +32,7 @@ class Erase(metaclass=PoolMeta):
                     ('shipment_party', '=', party.id),
                     ],
                 ('company', '=', company.id),
-                ('state', 'not in', ['done', 'cancel']),
+                ('state', 'not in', ['done', 'cancelled']),
                 ])
         if sales:
             raise EraseError(
