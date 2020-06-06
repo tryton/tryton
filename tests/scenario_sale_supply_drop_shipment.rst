@@ -303,7 +303,7 @@ the sale::
     ...     [purchase_request])
     >>> handle_exception.execute('cancel_request')
     >>> purchase_request.state
-    'cancel'
+    'cancelled'
 
 The sale is then in exception::
 
