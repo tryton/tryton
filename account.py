@@ -249,7 +249,7 @@ class Invoice(metaclass=PoolMeta):
         amount = sum(l.debit - l.credit for l in self.lines_to_pay)
         if self.state == 'paid':
             ratio = 1
-        elif self.state == 'cancel':
+        elif self.state == 'cancelled':
             ratio = 0
         else:
             payment_amount = sum(
@@ -284,7 +284,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         super(Invoice, cls).cancel(invoices)
         cls._update_tax_cash_basis(invoices)
