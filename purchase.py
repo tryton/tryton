@@ -431,7 +431,8 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
             cls.do(done)
 
     def is_done(self):
-        return all(r.purchase and r.purchase.state in {'cancel', 'confirmed'}
+        return all(
+            r.purchase and r.purchase.state in {'cancelled', 'confirmed'}
             for l in self.lines for r in l.purchase_requests)
 
 
@@ -702,7 +703,7 @@ class Purchase(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, purchases):
         super(Purchase, cls).cancel(purchases)
         cls._process_requisition(purchases)

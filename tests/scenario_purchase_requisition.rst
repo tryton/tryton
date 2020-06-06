@@ -227,7 +227,7 @@ Cancel the purchase order::
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
     >>> purchase.click('cancel')
     >>> purchase.state
-    'cancel'
+    'cancelled'
     >>> pr.reload()
     >>> pr.state
     'exception'
