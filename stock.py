@@ -71,7 +71,7 @@ class ShipmentIn(metaclass=PoolMeta):
         cost = Currency.compute(self.cost_currency, self.cost,
             self.company.currency, round=False)
         moves = [m for m in self.incoming_moves
-            if m.state not in ('done', 'cancel')]
+            if m.state not in ('done', 'cancelled')]
 
         sum_value = 0
         unit_prices = {}
