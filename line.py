@@ -179,6 +179,12 @@ class MoveLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(MoveLine, cls).__setup__()
+        cls._buttons.update({
+            'apply_analytic_rules': {
+                'invisible': Eval('analytic_state') != 'draft',
+                'depends': ['analytic_state'],
+                },
+            })
         cls._check_modify_exclude |= {'analytic_lines', 'analytic_state'}
 
     @classmethod
@@ -270,6 +276,13 @@ class MoveLine(ModelSQL, ModelView):
                     break
             else:
                 line.analytic_state = 'valid'
+
+    @classmethod
+    @ModelView.button
+    def apply_analytic_rules(cls, lines):
+        cls.apply_rule(lines)
+        cls.set_analytic_state(lines)
+        cls.save(lines)
 
 
 class OpenAccount(Wizard):

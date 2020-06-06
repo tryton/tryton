@@ -12,4 +12,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="debit" sum="Debit"/>
     <field name="credit" sum="Credit"/>
     <field name="analytic_state"/>
+    <button name="apply_analytic_rules"/>
 </tree>

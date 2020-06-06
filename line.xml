@@ -95,5 +95,10 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="account.menu_processing"
             action="act_move_line_form_completion" id="menu_completion"/>
 
+        <record model="ir.model.button" id="line_apply_analytic_rules_button">
+            <field name="name">apply_analytic_rules</field>
+            <field name="string">Apply Analytic Rules</field>
+            <field name="model" search="[('model', '=', 'account.move.line')]"/>
+        </record>
     </data>
 </tryton>
