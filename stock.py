@@ -35,7 +35,7 @@ class ShipmentOut(metaclass=PoolMeta):
         SaleLine = Pool().get('sale.line')
         for shipment in shipments:
             for move in shipment.outgoing_moves:
-                if (move.state == 'cancel'
+                if (move.state == 'cancelled'
                         and isinstance(move.origin, SaleLine)):
                     raise AccessError(
                         gettext('sale.msg_sale_move_reset_draft',
@@ -68,7 +68,7 @@ class ShipmentOutReturn(metaclass=PoolMeta):
         SaleLine = Pool().get('sale.line')
         for shipment in shipments:
             for move in shipment.incoming_moves:
-                if (move.state == 'cancel'
+                if (move.state == 'cancelled'
                         and isinstance(move.origin, SaleLine)):
                     raise AccessError(
                         gettext('sale.msg_sale_move_reset_draft',
@@ -164,7 +164,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @process_sale_move
     def cancel(cls, moves):
         super(Move, cls).cancel(moves)
