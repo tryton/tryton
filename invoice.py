@@ -70,7 +70,7 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
         Commission = pool.get('commission')

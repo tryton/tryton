@@ -327,7 +327,7 @@ class Commission(ModelSQL, ModelView):
                 ('', ''),
                 ('invoiced', 'Invoiced'),
                 ('paid', 'Paid'),
-                ('cancel', 'Canceled'),
+                ('cancelled', 'Cancelled'),
                 ], "Invoice State",
             help="The current state of the invoice "
             "that the commission appears on."),
@@ -381,11 +381,8 @@ class Commission(ModelSQL, ModelView):
         if self.invoice_line:
             state = 'invoiced'
             invoice = self.invoice_line.invoice
-            if invoice:
-                if invoice.state == 'paid':
-                    state = 'paid'
-                elif invoice.state == 'cancel':
-                    state = 'cancel'
+            if invoice and invoice.state in {'paid', 'cancelled'}:
+                state = invoice.state
         return state
 
     @classmethod
