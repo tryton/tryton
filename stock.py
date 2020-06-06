@@ -145,7 +145,7 @@ class Package(tree(), ModelSQL, ModelView):
     @fields.depends('shipment')
     def on_change_with_state(self, name=None):
         if (self.shipment
-                and self.shipment.state in {'packed', 'done', 'cancel'}):
+                and self.shipment.state in {'packed', 'done', 'cancelled'}):
             return 'closed'
         return 'open'
 
@@ -177,13 +177,13 @@ class PackageMixin(object):
     __slots__ = ()
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         states={
-            'readonly': Eval('state').in_(['packed', 'done', 'cancel']),
+            'readonly': Eval('state').in_(['packed', 'done', 'cancelled']),
             })
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
             domain=[('parent', '=', None)],
             states={
-                'readonly': Eval('state').in_(['packed', 'done', 'cancel']),
+                'readonly': Eval('state').in_(['packed', 'done', 'cancelled']),
                 }), 'get_root_packages', setter='set_root_packages')
 
     def get_root_packages(self, name):
