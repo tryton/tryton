@@ -15,7 +15,8 @@ class Move(metaclass=PoolMeta):
             digits=(16, Eval('secondary_unit_digits', 2)),
             states={
                 'invisible': ~Eval('secondary_unit'),
-                'readonly': Eval('state').in_(['cancel', 'assigned', 'done']),
+                'readonly': Eval('state').in_(
+                    ['cancelled', 'assigned', 'done']),
                 },
             depends=['secondary_unit_digits', 'secondary_unit', 'state']),
         'on_change_with_secondary_quantity', setter='set_secondary')
