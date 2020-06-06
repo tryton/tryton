@@ -303,7 +303,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             # Update planned_date only for later to not be too optimistic if
             # the shipment is not directly received.
             incoming_moves_to_write = [m for m in shipment.incoming_moves
-                if (m.state not in ('assigned', 'done', 'cancel')
+                if (m.state not in ('assigned', 'done', 'cancelled')
                     and ((m.planned_date or datetime.date.max)
                         < (incoming_date or datetime.date.max)))]
             if incoming_moves_to_write:
@@ -311,7 +311,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                             'planned_date': incoming_date,
                             }))
             inventory_moves_to_write = [m for m in shipment.inventory_moves
-                if (m.state not in ('assigned', 'done', 'cancel')
+                if (m.state not in ('assigned', 'done', 'cancelled')
                     and ((m.planned_date or datetime.date.max)
                         < (inventory_date or datetime.date.max)))]
             if inventory_moves_to_write:
@@ -424,7 +424,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move.draft([m for s in shipments for m in s.incoming_moves
                 if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancel')])
+                if m.state in ('draft', 'cancelled')])
 
     @classmethod
     @ModelView.button
@@ -434,7 +434,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         Move.do([m for s in shipments for m in s.incoming_moves])
         Move.delete([m for s in shipments for m in s.inventory_moves
-            if m.state in ('draft', 'cancel')])
+            if m.state in ('draft', 'cancelled')])
         cls.create_inventory_moves(shipments)
         # Set received state to allow done transition
         cls.write(shipments, {'state': 'received'})
@@ -649,7 +649,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         to_write = []
         for shipment in shipments:
             moves = [m for m in shipment.moves
-                    if (m.state not in ('assigned', 'done', 'cancel')
+                    if (m.state not in ('assigned', 'done', 'cancelled')
                         and m.planned_date != shipment._move_planned_date)]
             if moves:
                 to_write.extend((moves, {
@@ -1095,7 +1095,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
         Move.draft([m for s in shipments for m in s.inventory_moves])
         Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancel')])
+                if m.state in ('draft', 'cancelled')])
 
         to_create = []
         for shipment in shipments:
@@ -1103,7 +1103,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 # Do not create inventory moves
                 continue
             for move in shipment.outgoing_moves:
-                if move.state in ('cancel', 'done'):
+                if move.state in ('cancelled', 'done'):
                     continue
                 to_create.append(shipment._get_inventory_move(move))
         if to_create:
@@ -1178,7 +1178,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
 
         def active(move):
-            return move.state != 'cancel'
+            return move.state != 'cancelled'
 
         moves = []
         for shipment in shipments:
@@ -1260,7 +1260,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             outgoing_date, inventory_date = shipment._move_planned_date
             out_moves_to_write = [x for x in shipment.outgoing_moves
-                    if (x.state not in ('assigned', 'done', 'cancel')
+                    if (x.state not in ('assigned', 'done', 'cancelled')
                         and x.planned_date != outgoing_date)]
             if out_moves_to_write:
                 to_write.extend((out_moves_to_write, {
@@ -1268,7 +1268,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
                         }))
 
             inv_moves_to_write = [x for x in shipment.inventory_moves
-                    if (x.state not in ('assigned', 'done', 'cancel')
+                    if (x.state not in ('assigned', 'done', 'cancelled')
                         and x.planned_date != inventory_date)]
             if inv_moves_to_write:
                 to_write.extend((inv_moves_to_write, {
@@ -1620,14 +1620,14 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             dates = shipment._get_move_planned_date()
             incoming_date, inventory_date = dates
             incoming_moves_to_write = [x for x in shipment.incoming_moves
-                if (x.state not in ('assigned', 'done', 'cancel')
+                if (x.state not in ('assigned', 'done', 'cancelled')
                     and x.planned_date != incoming_date)]
             if incoming_moves_to_write:
                 to_write.extend((incoming_moves_to_write, {
                             'planned_date': incoming_date,
                             }))
             inventory_moves_to_write = [x for x in shipment.inventory_moves
-                if (x.state not in ('assigned', 'done', 'cancel')
+                if (x.state not in ('assigned', 'done', 'cancelled')
                     and x.planned_date != inventory_date)]
             if inventory_moves_to_write:
                 to_write.extend((inventory_moves_to_write, {
@@ -1694,7 +1694,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move.draft([m for s in shipments for m in s.incoming_moves
                 if m.state != 'staging'])
         Move.delete([m for s in shipments for m in s.inventory_moves
-                if m.state in ('draft', 'cancel')])
+                if m.state in ('draft', 'cancelled')])
 
     @classmethod
     @ModelView.button
@@ -2231,7 +2231,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Uom = pool.get('product.uom')
 
         def active(move):
-            return move.state != 'cancel'
+            return move.state != 'cancelled'
 
         moves = []
         for shipment in shipments:

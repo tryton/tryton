@@ -24,14 +24,14 @@ from trytond.modules.product import price_digits, round_price
 from .exceptions import MoveOriginWarning
 
 STATES = {
-    'readonly': Eval('state').in_(['cancel', 'assigned', 'done']),
+    'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
 }
 DEPENDS = ['state']
 LOCATION_DOMAIN = [
-    If(Eval('state').in_(['staging', 'draft', 'cancel']),
+    If(Eval('state').in_(['staging', 'draft', 'cancelled']),
         ('type', 'not in', ['warehouse']),
         ('type', 'not in', ['warehouse', 'view'])),
-    If(~Eval('state').in_(['done', 'cancel']),
+    If(~Eval('state').in_(['done', 'cancelled']),
         ('active', '=', True),
         ()),
     ]
@@ -168,7 +168,7 @@ class Move(Workflow, ModelSQL, ModelView):
         'on_change_with_product_uom_category')
     uom = fields.Many2One("product.uom", "Uom", required=True,
         states={
-            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
+            'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | Eval('unit_price')),
             },
         domain=[
@@ -202,7 +202,7 @@ class Move(Workflow, ModelSQL, ModelView):
         depends=['state'],
         help="The source of the stock move.")
     planned_date = fields.Date("Planned Date", states={
-            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
+            'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | Eval('shipment'))
             }, depends=['state', 'shipment'],
         select=True,
@@ -210,7 +210,7 @@ class Move(Workflow, ModelSQL, ModelView):
     effective_date = fields.Date("Effective Date", select=True,
         states={
             'required': Eval('state') == 'done',
-            'readonly': (Eval('state').in_(['cancel', 'done'])
+            'readonly': (Eval('state').in_(['cancelled', 'done'])
                 | Eval('shipment')),
             },
         depends=['state', 'shipment'],
@@ -220,7 +220,7 @@ class Move(Workflow, ModelSQL, ModelView):
         ('draft', 'Draft'),
         ('assigned', 'Assigned'),
         ('done', 'Done'),
-        ('cancel', 'Canceled'),
+        ('cancelled', 'Cancelled'),
         ], 'State', select=True, readonly=True,
         help="The current state of the stock move.")
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -286,13 +286,13 @@ class Move(Workflow, ModelSQL, ModelView):
         cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
                 ('staging', 'draft'),
-                ('staging', 'cancel'),
+                ('staging', 'cancelled'),
                 ('draft', 'assigned'),
                 ('draft', 'done'),
-                ('draft', 'cancel'),
+                ('draft', 'cancelled'),
                 ('assigned', 'draft'),
                 ('assigned', 'done'),
-                ('assigned', 'cancel'),
+                ('assigned', 'cancelled'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -320,6 +320,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
 
         super(Move, cls).__register__(module_name)
@@ -333,6 +334,11 @@ class Move(Workflow, ModelSQL, ModelView):
                 Coalesce(sql_table.effective_date,
                     sql_table.planned_date,
                     datetime.date.max)], action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_planned_date():
@@ -525,7 +531,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
@@ -637,7 +643,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, moves):
         pass
 
@@ -680,7 +686,7 @@ class Move(Workflow, ModelSQL, ModelView):
                                 move=move.rec_name))
             if cls._deny_modify_done_cancel & vals_set:
                 for move in moves:
-                    if move.state in ('done', 'cancel'):
+                    if move.state in ('done', 'cancelled'):
                         raise AccessError(
                             gettext('stock.msg_move_modify_%s' % move.state,
                                 move=move.rec_name))
@@ -713,7 +719,7 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def delete(cls, moves):
         for move in moves:
-            if move.state not in {'staging', 'draft', 'cancel'}:
+            if move.state not in {'staging', 'draft', 'cancelled'}:
                 raise AccessError(
                     gettext('stock.msg_move_delete_draft_cancel',
                         move=move.rec_name))

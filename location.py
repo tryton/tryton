@@ -257,7 +257,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             for sub_ids in grouped_slice(list(empty)):
                 sub_ids = list(sub_ids)
                 moves = Move.search([
-                        ('state', 'not in', ['done', 'cancel']),
+                        ('state', 'not in', ['done', 'cancelled']),
                         ['OR',
                             ('from_location', 'in', sub_ids),
                             ('to_location', 'in', sub_ids),

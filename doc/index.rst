@@ -99,7 +99,7 @@ A move can be in one of this states:
 
   The move is in state Done when the real movement is made.
 
-* Cancel
+* Cancelled
 
   A cancelled move will be ignored by the system. Only Draft or
   Assigned move can be cancelled. To revert a move in state Done, an
