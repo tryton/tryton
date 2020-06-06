@@ -107,7 +107,7 @@ class Line(metaclass=PoolMeta):
         if (self.type != 'line'
                 or not self.product
                 or self.quantity <= 0
-                or any(m.state not in ['staging', 'cancel']
+                or any(m.state not in ['staging', 'cancelled']
                     for m in self.moves)):
             return False
         return self.product.supply_on_sale
