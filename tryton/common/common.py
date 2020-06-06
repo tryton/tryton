@@ -1081,11 +1081,9 @@ def RPCContextReload(callback=None):
             pass
         if callback:
             callback()
-    # Use RPCProgress to not send rpc.CONTEXT
-    context = RPCProgress(
-        'execute',
-        ('model', 'res.user', 'get_preferences', True, {})).run(
-            True, update if callback else None)
+    context = RPCExecute(
+        'model', 'res.user', 'get_preferences', True,
+        callback=update if callback else None)
     if not callback:
         rpc.context_reset()
         rpc.CONTEXT.update(context)
