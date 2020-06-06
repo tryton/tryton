@@ -49,7 +49,7 @@ class Purchase(metaclass=PoolMeta):
         skips = set(x.id for x in self.invoice_lines_ignored)
         invoice_lines = [l for l in self.invoice_lines if l.id not in skips]
         if invoice_lines:
-            if any(l.invoice and l.invoice.state == 'cancel'
+            if any(l.invoice and l.invoice.state == 'cancelled'
                     for l in invoice_lines):
                 return 'exception'
             elif (state == 'paid'
@@ -92,7 +92,7 @@ class HandleInvoiceException(metaclass=PoolMeta):
         invoice_lines = []
         for invoice_line in purchase.invoice_lines:
             if (invoice_line.invoice
-                    and invoice_line.invoice.state == 'cancel'):
+                    and invoice_line.invoice.state == 'cancelled'):
                 invoice_lines.append(invoice_line.id)
         if invoice_lines:
             Purchase.write([purchase], {
