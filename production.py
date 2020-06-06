@@ -31,7 +31,7 @@ class Production(metaclass=PoolMeta):
     works = fields.One2Many('production.work', 'production', 'Works',
         states={
             'readonly': Eval('state').in_(
-                ['request', 'draft', 'done', 'cancel']),
+                ['request', 'draft', 'done', 'cancelled']),
             },
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -76,7 +76,7 @@ class Production(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, productions):
         pool = Pool()
         Work = pool.get('production.work')
