@@ -282,7 +282,7 @@ class Move(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @unset_origin_consignment
     def cancel(cls, moves):
         super(Move, cls).cancel(moves)
