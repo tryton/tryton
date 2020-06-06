@@ -257,12 +257,12 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
 
     def _get_advance_amount(self):
         return sum(l.amount for l in self.invoice_lines
-            if l.invoice.state != 'cancel')
+            if l.invoice.state != 'cancelled')
 
     def _get_ignored_amount(self):
         skips = {l for i in self.sale.invoices_recreated for l in i.lines}
         return sum(l.amount for l in self.invoice_lines
-            if l.invoice.state == 'cancel' and l not in skips)
+            if l.invoice.state == 'cancelled' and l not in skips)
 
     def get_completed(self, name):
         advance_amount = 0
@@ -354,7 +354,7 @@ class Sale(metaclass=PoolMeta):
         invoices = [i
             for i in self.advance_payment_invoices if i.id not in skip_ids]
         if invoices:
-            if any(i.state == 'cancel' for i in invoices):
+            if any(i.state == 'cancelled' for i in invoices):
                 return 'exception'
             elif all(i.state == 'paid' for i in invoices):
                 return state
@@ -483,6 +483,6 @@ class HandleInvoiceException(metaclass=PoolMeta):
         skips = set(sale.invoices_ignored)
         skips.update(sale.invoices_recreated)
         for invoice in sale.advance_payment_invoices:
-            if invoice.state == 'cancel' and invoice not in skips:
+            if invoice.state == 'cancelled' and invoice not in skips:
                 invoices.append(invoice.id)
         return default
