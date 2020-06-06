@@ -1,3 +1,5 @@
+* Keep context in sessionStorage
+* Use existing context for get_preferences
 * Escape external strings (issue9351)
 * Add context to export URL
 * Allow changes to editable tree checkboxes without first selecting the line

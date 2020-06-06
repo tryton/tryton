@@ -586,6 +586,7 @@ var Sao = {};
             jQuery('#user-logout').empty();
             jQuery('#menu').empty();
             new Sao.Window.Preferences(function() {
+                Sao.Session.current_session.reset_context();
                 Sao.get_preferences().then(function(preferences) {
                     Sao.menu(preferences);
                     Sao.user_menu(preferences);

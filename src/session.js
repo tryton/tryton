@@ -17,9 +17,8 @@
             this.database = database;
             this.login = login;
             this.restore();
-            this.context = {
-                client: Sao.Bus.id,
-            };
+            this.context = {};
+            this.restore_context();
             if (!Sao.Session.current_session) {
                 Sao.Session.current_session = this;
             }
@@ -82,15 +81,33 @@
         reload_context: function() {
             var args = {
                 'method': 'model.res.user.get_preferences',
-                'params': [true, {}]
+                'params': [true, this.context]
             };
-            this.context = {
-                client: Sao.Bus.id,
-            };
+            this.reset_context();
             var prm = Sao.rpc(args, this);
             return prm.then(function(context) {
                 jQuery.extend(this.context, context);
+                this.store_context();
             }.bind(this));
+        },
+        reset_context: function() {
+            this.context = {
+                client: Sao.Bus.id,
+            };
+        },
+        restore_context: function() {
+            this.reset_context();
+            var context = sessionStorage.getItem('sao_context_' + this.database);
+            if (context !== null) {
+                jQuery.extend(
+                    this.context, Sao.rpc.convertJSONObject(JSON.parse(context)));
+            }
+        },
+        store_context: function() {
+            var context = jQuery.extend({}, this.context);
+            delete context.client;
+            context = JSON.stringify(Sao.rpc.prepareObject(context));
+            sessionStorage.setItem('sao_context_' + this.database, context);
         },
         restore: function() {
             if (this.database && !this.session) {
