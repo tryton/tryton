@@ -404,7 +404,7 @@ class SaleOpportunity(
 
     @staticmethod
     def _sale_lost_states():
-        return ['cancel']
+        return ['cancelled']
 
     def is_won(self):
         sale_won_states = self._sale_won_states()

@@ -183,7 +183,7 @@ Cancel second quotation::
     >>> set_user(sale_user)
     >>> second_sale.click('cancel')
     >>> second_sale.state
-    'cancel'
+    'cancelled'
 
 Check opportunity amount updated::
 
