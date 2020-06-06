@@ -44,8 +44,8 @@ class Line(metaclass=PoolMeta):
         state = super().get_supply_state(name)
         if self.productions:
             states = {p.state for p in self.productions}
-            if states <= {'running', 'done', 'cancel'}:
-                if states == {'cancel'}:
+            if states <= {'running', 'done', 'cancelled'}:
+                if states == {'cancelled'}:
                     state = 'cancelled'
                 else:
                     state = 'supplied'

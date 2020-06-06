@@ -44,7 +44,7 @@ class Production(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @process_sale_supply
     def cancel(cls, productions):
         super().cancel(productions)
@@ -56,7 +56,7 @@ class Production(metaclass=PoolMeta):
         pool = Pool()
         SaleLine = pool.get('sale.line')
         for production in productions:
-            if (production.state == 'cancel'
+            if (production.state == 'cancelled'
                     and isinstance(production.origin, SaleLine)):
                 raise AccessError(
                     gettext('sale_supply_production'
