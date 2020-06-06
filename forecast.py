@@ -411,7 +411,7 @@ class ForecastLine(ModelSQL, ModelView):
                         & (location_from.right <= forecast.warehouse.right)
                         & (location_to.left >= forecast.destination.left)
                         & (location_to.right <= forecast.destination.right)
-                        & (move.state != 'cancel')
+                        & (move.state != 'cancelled')
                         & (Coalesce(move.effective_date, move.planned_date)
                             >= forecast.from_date)
                         & (Coalesce(move.effective_date, move.planned_date)
