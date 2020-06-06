@@ -73,7 +73,7 @@ class ShipmentIn(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @process_purchase('incoming_moves')
     def cancel(cls, shipments):
         super(ShipmentIn, cls).cancel(shipments)
