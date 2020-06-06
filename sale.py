@@ -85,7 +85,7 @@ class Line(metaclass=PoolMeta):
             purchase_line = self.purchase_request.purchase_line
             if purchase_line is not None:
                 purchase = purchase_line.purchase
-                if purchase.state == 'cancel':
+                if purchase.state == 'cancelled':
                     return 'cancelled'
                 elif purchase.state in ('processing', 'done'):
                     return 'supplied'
