@@ -92,7 +92,7 @@ class Package(tree(), ModelSQL, ModelView):
         domain=[
             ('shipment', '=', Eval('shipment')),
             ('to_location.type', 'in', ['customer', 'supplier']),
-            ('state', '!=', 'cancel'),
+            ('state', '!=', 'cancelled'),
             ],
         add_remove=[
             ('package', '=', None),
@@ -232,7 +232,7 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
 
     @property
     def packages_moves(self):
-        return (m for m in self.outgoing_moves if m.state != 'cancel')
+        return (m for m in self.outgoing_moves if m.state != 'cancelled')
 
 
 class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
@@ -247,7 +247,7 @@ class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
 
     @property
     def packages_moves(self):
-        return (m for m in self.moves if m.state != 'cancel')
+        return (m for m in self.moves if m.state != 'cancelled')
 
 
 class PackageLabel(Report):
