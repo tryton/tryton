@@ -92,7 +92,7 @@ class Invoice(metaclass=PoolMeta):
     @Workflow.transition('draft')
     def draft(cls, invoices):
         for invoice in invoices:
-            if invoice.sales and invoice.state == 'cancel':
+            if invoice.sales and invoice.state == 'cancelled':
                 raise AccessError(
                     gettext('sale.msg_sale_invoice_reset_draft',
                         invoice=invoice.rec_name))
