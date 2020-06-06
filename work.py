@@ -123,7 +123,7 @@ class Work(metaclass=PoolMeta):
                     ).join(invoice,
                     condition=invoice_line.invoice == invoice.id
                     ).select(invoice_line.id, table.id,
-                    where=where & ~invoice.state.in_(['draft', 'cancel'])))
+                    where=where & ~invoice.state.in_(['draft', 'cancelled'])))
             iline2work.update(cursor.fetchall())
 
             cursor.execute(*table.join(company,
