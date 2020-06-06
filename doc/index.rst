@@ -39,7 +39,7 @@ extensive list of the fields:
     - End Date: An optional earlier end date than the subscription.
 
 - States: The state of the subscription. May take one of the following values:
-  Draft, Quotation, Running, Closed, Canceled.
+  Draft, Quotation, Running, Closed, Cancelled.
 - Company: The company which issue the sale order.
 
 A running subscription can be modified by going back to draft and edit. Some

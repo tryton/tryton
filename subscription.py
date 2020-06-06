@@ -146,15 +146,15 @@ class Subscription(Workflow, ModelSQL, ModelView):
         depends=['state'])
 
     quoted_by = employee_field(
-        "Quoted By", states=['quotation', 'running', 'closed', 'canceled'])
+        "Quoted By", states=['quotation', 'running', 'closed', 'cancelled'])
     run_by = employee_field(
-        "Run By", states=['running', 'closed', 'canceled'])
+        "Run By", states=['running', 'closed', 'cancelled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('quotation', "Quotation"),
             ('running', "Running"),
             ('closed', "Closed"),
-            ('canceled', "Canceled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True,
         help="The current state of the subscription.")
 
@@ -166,14 +166,14 @@ class Subscription(Workflow, ModelSQL, ModelView):
             ('id', 'DESC'),
             ]
         cls._transitions |= set((
-                ('draft', 'canceled'),
+                ('draft', 'cancelled'),
                 ('draft', 'quotation'),
-                ('quotation', 'canceled'),
+                ('quotation', 'cancelled'),
                 ('quotation', 'draft'),
                 ('quotation', 'running'),
                 ('running', 'draft'),
                 ('running', 'closed'),
-                ('canceled', 'draft'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -183,7 +183,7 @@ class Subscription(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': Eval('state').in_(['draft', 'closed']),
-                    'icon': If(Eval('state') == 'canceled',
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo', 'tryton-back'),
                     'depends': ['state'],
                     },
@@ -199,6 +199,18 @@ class Subscription(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration from 5.6: rename state canceled to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'canceled'))
 
     @classmethod
     def default_company(cls):
@@ -269,12 +281,13 @@ class Subscription(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'canceled', 'muted', '')),
+            ('/tree', 'visual',
+                If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('canceled')
+    @Workflow.transition('cancelled')
     def cancel(cls, subscriptions):
         pass
 

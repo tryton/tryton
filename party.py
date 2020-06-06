@@ -27,7 +27,7 @@ class Erase(metaclass=PoolMeta):
         subscriptions = Subscription.search([
                 ('party', '=', party.id),
                 ('company', '=', company.id),
-                ('state', 'not in', ['closed', 'canceled']),
+                ('state', 'not in', ['closed', 'cancelled']),
                 ])
         if subscriptions:
             raise EraseError(
