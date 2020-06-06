@@ -50,7 +50,7 @@ class Subscription(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('canceled')
+    @Workflow.transition('cancelled')
     def cancel(cls, subscriptions):
         pool = Pool()
         SubscriptionLine = pool.get('sale.subscription.line')
