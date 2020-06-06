@@ -222,6 +222,11 @@ class TrytondConfig(Config):
         super(TrytondConfig, self).__init__()
         if not database:
             database = os.environ.get('TRYTOND_DATABASE_URI')
+        elif (os.environ.get('TRYTOND_DATABASE_URI')
+                and not urllib.parse.urlparse(database).scheme):
+            url = urllib.parse.urlparse(os.environ['TRYTOND_DATABASE_URI'])
+            os.environ['TRYTOND_DATABASE_URI'] = urllib.parse.urlunparse(
+                url._replace(path=database))
         else:
             os.environ['TRYTOND_DATABASE_URI'] = database
         if not config_file:
