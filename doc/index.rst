@@ -8,7 +8,7 @@ Invoice
 
 There are 4 types of invoice: *Invoice*, *Supplier Invoice*, *Credit Note* and
 *Supplier Credit Note*. An invoice can be in *Draft*, *Validated*, *Posted*,
-*Paid* or *Canceled*.
+*Paid* or *Cancelled*.
 
 - Company: The company for which the invoice is created.
 - Tax Identifier: The tax identifier that will be printed on the invoice

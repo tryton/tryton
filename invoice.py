@@ -81,11 +81,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('validated', "Validated"),
             ('posted', "Posted"),
             ('paid', "Paid"),
-            ('cancel', "Cancelled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True)
     invoice_date = fields.Date('Invoice Date',
         states={
-            'readonly': Eval('state').in_(['posted', 'paid', 'cancel']),
+            'readonly': Eval('state').in_(['posted', 'paid', 'cancelled']),
             'required': Eval('state').in_(
                 If(Eval('type') == 'in',
                     ['validated', 'posted', 'paid'],
@@ -241,10 +241,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('posted', 'paid'),
                 ('validated', 'draft'),
                 ('paid', 'posted'),
-                ('draft', 'cancel'),
-                ('validated', 'cancel'),
-                ('posted', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('validated', 'cancelled'),
+                ('posted', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -252,10 +252,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'depends': ['allow_cancel'],
                     },
                 'draft': {
-                    'invisible': (~Eval('state').in_(['cancel', 'validated'])
-                        | ((Eval('state') == 'cancel')
+                    'invisible': (
+                        ~Eval('state').in_(['cancelled', 'validated'])
+                        | ((Eval('state') == 'cancelled')
                             & Eval('cancel_move', -1))),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-undo',
+                    'icon': If(Eval('state') == 'cancelled', 'tryton-undo',
                         'tryton-back'),
                     'depends': ['state'],
                     },
@@ -348,6 +349,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         # Add index on create_date
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_type():
@@ -854,7 +860,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         to_delete = []
         to_write = []
         for invoice in invoices:
-            if invoice.state in ('posted', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancelled'):
                 continue
             computed_taxes = invoice._compute_taxes()
             if not invoice.taxes:
@@ -1086,7 +1092,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @property
     def is_modifiable(self):
         return not (self.state in {'posted', 'paid'}
-            or (self.state == 'cancel'
+            or (self.state == 'cancelled'
                 and (self.move or self.cancel_move or self.number)))
 
     @classmethod
@@ -1137,7 +1143,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     | ((Eval('type') == 'in')
                         & (Eval('amount_to_pay_today', 0) < 0)),
                     'danger',
-                    If(Eval('state') == 'cancel', 'muted', ''))),
+                    If(Eval('state') == 'cancelled', 'muted', ''))),
             ]
 
     @classmethod
@@ -1146,7 +1152,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         # Cancel before delete
         cls.cancel(invoices)
         for invoice in invoices:
-            if invoice.state != 'cancel':
+            if invoice.state != 'cancelled':
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_delete_cancel',
                         invoice=invoice.rec_name))
@@ -1478,7 +1484,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, invoices):
         pool = Pool()
         Move = pool.get('account.move')
@@ -1510,7 +1516,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             Move.post(cancel_moves)
         # Write state before reconcile to prevent invoice to go to paid state
         cls.write(invoices, {
-                'state': 'cancel',
+                'state': 'cancelled',
                 })
 
         for invoice in invoices:
@@ -2130,7 +2136,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             if vals.get('invoice'):
                 invoice_ids.append(vals.get('invoice'))
         for invoice in Invoice.browse(invoice_ids):
-            if invoice.state in ('posted', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancelled'):
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_line_create',
                         invoice=invoice.rec_name))
@@ -2421,7 +2427,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
             if vals.get('invoice'):
                 invoice_ids.append(vals['invoice'])
         for invoice in Invoice.browse(invoice_ids):
-            if invoice.state in ('posted', 'paid', 'cancel'):
+            if invoice.state in ('posted', 'paid', 'cancelled'):
                 raise AccessError(
                     gettext('account_invoice.msg_invoice_tax_create',
                         invoice=invoice.rec_name))

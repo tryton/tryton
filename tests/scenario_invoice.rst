@@ -217,7 +217,7 @@ Credit invoice with refund::
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
-    'cancel'
+    'cancelled'
     >>> invoice.reconciled == today
     True
     >>> receivable.reload()
