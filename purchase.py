@@ -89,7 +89,8 @@ class Purchase(
     purchase_date = fields.Date('Purchase Date',
         states={
             'readonly': ~Eval('state').in_(['draft', 'quotation']),
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            'required': ~Eval('state').in_(
+                ['draft', 'quotation', 'cancelled']),
             },
         depends=['state'])
     payment_term = fields.Many2One('account.invoice.payment_term',
@@ -127,7 +128,8 @@ class Purchase(
             ],
         states={
             'readonly': Eval('state') != 'draft',
-            'required': ~Eval('state').in_(['draft', 'quotation', 'cancel']),
+            'required': ~Eval('state').in_(
+                ['draft', 'quotation', 'cancelled']),
             },
         depends=['party', 'invoice_party', 'state'])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
@@ -187,7 +189,7 @@ class Purchase(
         "Delivery Date",
         states={
             'readonly': Eval('state').in_([
-                    'processing', 'done', 'cancel']),
+                    'processing', 'done', 'cancelled']),
             },
         depends=['state'],
         help="The default delivery date for each line.")
@@ -207,17 +209,17 @@ class Purchase(
 
     quoted_by = employee_field(
         "Quoted By",
-        states=['quotation', 'confirmed', 'processing', 'done', 'cancel'])
+        states=['quotation', 'confirmed', 'processing', 'done', 'cancelled'])
     confirmed_by = employee_field(
         "Confirmed By",
-        states=['confirmed', 'processing', 'done', 'cancel'])
+        states=['confirmed', 'processing', 'done', 'cancelled'])
     state = fields.Selection([
             ('draft', "Draft"),
             ('quotation', "Quotation"),
             ('confirmed', "Confirmed"),
             ('processing', "Processing"),
             ('done', "Done"),
-            ('cancel', "Canceled"),
+            ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True)
 
     del _states, _depends
@@ -237,10 +239,10 @@ class Purchase(
                 ('processing', 'processing'),
                 ('processing', 'done'),
                 ('done', 'processing'),
-                ('draft', 'cancel'),
-                ('quotation', 'cancel'),
+                ('draft', 'cancelled'),
+                ('quotation', 'cancelled'),
                 ('quotation', 'draft'),
-                ('cancel', 'draft'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -249,8 +251,8 @@ class Purchase(
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
-                        ['cancel', 'quotation', 'confirmed']),
-                    'icon': If(Eval('state') == 'cancel', 'tryton-undo',
+                        ['cancelled', 'quotation', 'confirmed']),
+                    'icon': If(Eval('state') == 'cancelled', 'tryton-undo',
                         'tryton-back'),
                     'depends': ['state'],
                     },
@@ -280,12 +282,12 @@ class Purchase(
                     },
                 'handle_invoice_exception': {
                     'invisible': ((Eval('invoice_state') != 'exception')
-                        | (Eval('state') == 'cancel')),
+                        | (Eval('state') == 'cancelled')),
                     'depends': ['state', 'invoice_state'],
                     },
                 'handle_shipment_exception': {
                     'invisible': ((Eval('shipment_state') != 'exception')
-                        | (Eval('state') == 'cancel')),
+                        | (Eval('state') == 'cancelled')),
                     'depends': ['state', 'shipment_state'],
                     },
                 'modify_header': {
@@ -295,7 +297,7 @@ class Purchase(
                     },
                 })
         # The states where amounts are cached
-        cls._states_cached = ['confirmed', 'done', 'cancel']
+        cls._states_cached = ['confirmed', 'done', 'cancelled']
 
     @classmethod
     def __register__(cls, module_name):
@@ -347,6 +349,11 @@ class Purchase(
 
         # Add index on create_date
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @classmethod
     def default_payment_term(cls):
@@ -658,7 +665,7 @@ class Purchase(
     def view_attributes(cls):
         attributes = [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ('/tree/field[@name="invoice_state"]', 'visual',
                 If(Eval('invoice_state') == 'exception', 'danger', '')),
             ('/tree/field[@name="shipment_state"]', 'visual',
@@ -846,7 +853,7 @@ class Purchase(
         # Cancel before delete
         cls.cancel(purchases)
         for purchase in purchases:
-            if purchase.state != 'cancel':
+            if purchase.state != 'cancelled':
                 raise AccessError(
                     gettext('purchase.msg_purchase_delete_cancel',
                         purchase=purchase.rec_name))
@@ -854,7 +861,7 @@ class Purchase(
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, purchases):
         cls.store_cache(purchases)
 
@@ -1131,7 +1138,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         states={
             'invisible': Eval('type') != 'line',
             'readonly': Eval('purchase_state').in_([
-                    'processing', 'done', 'cancel']),
+                    'processing', 'done', 'cancelled']),
             },
         depends=['type', 'purchase_state'],
         help="Check to edit the delivery date.")
@@ -1141,7 +1148,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'invisible': ((Eval('type') != 'line')
                 | ~Eval('delivery_date_edit', False)),
             'readonly': Eval('purchase_state').in_([
-                    'processing', 'done', 'cancel']),
+                    'processing', 'done', 'cancelled']),
             },
         depends=['type', 'delivery_date_edit', 'purchase_state'])
     purchase_state = fields.Function(
@@ -1675,7 +1682,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def delete(cls, lines):
         for line in lines:
-            if line.purchase_state not in {'cancel', 'draft'}:
+            if line.purchase_state not in {'cancelled', 'draft'}:
                 raise AccessError(
                     gettext('purchase.msg_purchase_line_delete_cancel_draft',
                         line=line.rec_name,

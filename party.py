@@ -56,7 +56,7 @@ class PartyErase(metaclass=PoolMeta):
         purchases = Purchase.search([
                 ('party', '=', party.id),
                 ('company', '=', company.id),
-                ('state', 'not in', ['done', 'cancel']),
+                ('state', 'not in', ['done', 'cancelled']),
                 ])
         if purchases:
             raise EraseError(
