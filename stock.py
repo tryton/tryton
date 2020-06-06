@@ -112,7 +112,7 @@ class Move(metaclass=PoolMeta):
             ('product', '=', Eval('product')),
             ],
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state', 'product'])
 
