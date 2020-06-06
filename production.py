@@ -35,7 +35,7 @@ class Production(Workflow, ModelSQL, ModelView):
         depends=['state'])
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'])
     planned_start_date = fields.Date('Planned Start Date',
@@ -46,7 +46,7 @@ class Production(Workflow, ModelSQL, ModelView):
         depends=['state', 'planned_date'])
     effective_start_date = fields.Date('Effective Start Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'running', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'running', 'done']),
             },
         depends=['state'])
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -134,7 +134,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ('company', '=', Eval('company', -1)),
             ],
         states={
-            'readonly': (Eval('state').in_(['done', 'cancel'])
+            'readonly': (Eval('state').in_(['done', 'cancelled'])
                 | ~Eval('warehouse') | ~Eval('location')),
             },
         depends=['warehouse', 'location', 'company'])
@@ -149,7 +149,7 @@ class Production(Workflow, ModelSQL, ModelView):
             ('assigned', 'Assigned'),
             ('running', 'Running'),
             ('done', 'Done'),
-            ('cancel', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ], 'State', readonly=True)
     origin = fields.Reference(
         "Origin", selection='get_origin', select=True,
@@ -171,11 +171,11 @@ class Production(Workflow, ModelSQL, ModelView):
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'draft'),
-                ('request', 'cancel'),
-                ('draft', 'cancel'),
-                ('waiting', 'cancel'),
-                ('assigned', 'cancel'),
-                ('cancel', 'draft'),
+                ('request', 'cancelled'),
+                ('draft', 'cancelled'),
+                ('waiting', 'cancelled'),
+                ('assigned', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
@@ -185,8 +185,8 @@ class Production(Workflow, ModelSQL, ModelView):
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(['request', 'waiting',
-                            'cancel']),
-                    'icon': If(Eval('state') == 'cancel',
+                            'cancelled']),
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-clear',
                         If(Eval('state') == 'request',
                             'tryton-forward',
@@ -263,6 +263,11 @@ class Production(Workflow, ModelSQL, ModelView):
                 [table.planned_date],
                 where=(table.planned_start_date == Null)
                 & (table.planned_date != Null)))
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*table.update(
+                [table.state], ['cancelled'],
+                where=table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -560,7 +565,7 @@ class Production(Workflow, ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod
@@ -626,7 +631,7 @@ class Production(Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')

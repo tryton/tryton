@@ -53,7 +53,7 @@ The production can be in one of this states:
 
   The output moves are in state done.
 
-* Cancel
+* Cancelled
 
   All moves are cancelled.
 
