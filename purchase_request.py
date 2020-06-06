@@ -163,7 +163,7 @@ class PurchaseRequest(metaclass=PoolMeta):
 
         requests = Request.search([
                 ('purchase_line.moves', '=', None),
-                ('purchase_line.purchase.state', '!=', 'cancel'),
+                ('purchase_line.purchase.state', '!=', 'cancelled'),
                 ('origin', 'like', 'stock.order_point,%'),
                 ])
         # Fetch data from existing requests
