@@ -120,7 +120,7 @@ class Production(metaclass=PoolMeta):
         Currency = pool.get('currency.currency')
         cost = super(Production, self).get_cost(name)
         for line in self.purchase_lines:
-            if line.purchase.state != 'cancel':
+            if line.purchase.state != 'cancelled':
                 cost += Currency.compute(
                     line.purchase.currency, line.amount,
                     self.company.currency, round=False)
@@ -134,7 +134,7 @@ class Production(metaclass=PoolMeta):
         PurchaseLine = pool.get('purchase.line')
         super(Production, cls).draft(productions)
         PurchaseLine.delete([l for p in productions for l in p.purchase_lines
-                if l.purchase_state in {'draft', 'cancel'}])
+                if l.purchase_state in {'draft', 'cancelled'}])
 
     @classmethod
     @ModelView.button
@@ -144,7 +144,7 @@ class Production(metaclass=PoolMeta):
         PurchaseLine = pool.get('purchase.line')
         super(Production, cls).cancel(productions)
         PurchaseLine.delete([l for p in productions for l in p.purchase_lines
-                if l.purchase_state in {'draft', 'cancel'}])
+                if l.purchase_state in {'draft', 'cancelled'}])
 
     @classmethod
     @ModelView.button
