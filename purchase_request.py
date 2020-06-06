@@ -84,12 +84,12 @@ class PurchaseRequest(ModelSQL, ModelView):
     exception_ignored = fields.Boolean('Ignored Exception')
 
     purchased_by = employee_field(
-        "Purchased By", states=['purchased', 'done', 'cancel', 'exception'])
+        "Purchased By", states=['purchased', 'done', 'cancelled', 'exception'])
     state = fields.Selection([
             ('purchased', "Purchased"),
             ('done', "Done"),
             ('draft', "Draft"),
-            ('cancel', "Cancel"),
+            ('cancelled', "Cancelled"),
             ('exception', "Exception"),
             ], "State", required=True, readonly=True, select=True)
 
@@ -164,6 +164,11 @@ class PurchaseRequest(ModelSQL, ModelView):
         # Migration from 4.4: remove required on origin
         tablehandler.not_null_action('origin', action='remove')
 
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*request.update(
+                [request.state], ['cancelled'],
+                where=request.state == 'cancel'))
+
     def get_rec_name(self, name):
         pool = Pool()
         Lang = pool.get('ir.lang')
@@ -223,7 +228,7 @@ class PurchaseRequest(ModelSQL, ModelView):
                     and not self.exception_ignored):
                 return 'exception'
             elif self.purchase_line.purchase.state == 'cancel':
-                return 'cancel'
+                return 'cancelled'
             elif self.purchase_line.purchase.state == 'done':
                 return 'done'
             else:
@@ -285,7 +290,7 @@ class PurchaseRequest(ModelSQL, ModelView):
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
     @classmethod

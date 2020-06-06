@@ -28,9 +28,9 @@ can be in one of these states:
   A purchase request is in state Done if it is linked to a Purchase
   which is in state Done.
 
-* Cancel
+* Cancelled
 
-  A purchase request is in state Cancel if it is linked to a Purchase
+  A purchase request is Cancelled if it is linked to a Purchase
   which is cancelled.
 
 A wizard allows to create purchases based on a selection of draft purchase

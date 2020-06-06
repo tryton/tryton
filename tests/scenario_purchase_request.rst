@@ -209,7 +209,7 @@ Handle again the exception::
     ...     'purchase.request.handle.purchase.cancellation', [pr])
     >>> handle_exception.execute('cancel_request')
     >>> pr.state
-    'cancel'
+    'cancelled'
 
 Re-create the purchase request::
 
