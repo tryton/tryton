@@ -236,6 +236,17 @@ class Sale(
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+    shipping_date = fields.Date(
+        "Shipping Date",
+        domain=[If(Bool(Eval('sale_date')) & Bool(Eval('shipping_date')),
+                ('shipping_date', '>=', Eval('sale_date')),
+                ()),
+            ],
+        states={
+            'readonly': Eval('state').in_(['processing', 'done', 'cancelled']),
+            },
+        depends=['state', 'sale_date'],
+        help="When the shipping of goods should start.")
 
     quoted_by = employee_field(
         "Quoted By",
@@ -1359,7 +1370,7 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 return self.warehouse.input_location.id
 
     @fields.depends('product', 'quantity', 'moves', 'sale',
-        '_parent_sale.sale_date')
+        '_parent_sale.sale_date', methods=['shipping_planned_date'])
     def on_change_with_shipping_date(self, name=None):
         pool = Pool()
         Date = pool.get('ir.date')
@@ -1373,9 +1384,16 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             shipping_date = self.product.compute_shipping_date(date=date)
             if shipping_date == datetime.date.max:
                 shipping_date = None
+            elif self.shipping_planned_date:
+                shipping_date = max(shipping_date, self.shipping_planned_date)
             if shipping_date:
                 shipping_date = max(shipping_date, Date.today())
             return shipping_date
+
+    @property
+    @fields.depends('sale', '_parent_sale.shipping_date')
+    def shipping_planned_date(self):
+        return self.sale.shipping_date if self.sale else None
 
     @classmethod
     def get_sale_states(cls):

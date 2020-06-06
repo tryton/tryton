@@ -64,6 +64,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_method"/>
             <label name="shipment_method"/>
             <field name="shipment_method"/>
+            <label name="shipping_date"/>
+            <field name="shipping_date"/>
+            <newline/>
             <label name="quoted_by"/>
             <field name="quoted_by"/>
             <label name="confirmed_by"/>
