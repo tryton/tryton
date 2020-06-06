@@ -60,7 +60,7 @@ class Location(metaclass=PoolMeta):
         today = Date.today()
         shipments = ShipmentInternal.search([
                 ('locations', '!=', None),
-                ('state', 'not in', ['cancel', 'done']),
+                ('state', 'not in', ['cancelled', 'done']),
                 ['OR', [
                         ('planned_date', '<=', date),
                         ('planned_date', '>=', today),
@@ -207,7 +207,7 @@ class ShipmentInternal(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @clear_location_assignation
     def cancel(cls, shipments):
         super(ShipmentInternal, cls).cancel(shipments)
