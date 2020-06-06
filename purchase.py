@@ -1201,7 +1201,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         skip_ids = set(x.id for x in self.moves_ignored
             + self.moves_recreated)
         for move in self.moves:
-            if move.state == 'cancel' \
+            if move.state == 'cancelled' \
                     and move.id not in skip_ids:
                 return True
         return False
@@ -1404,7 +1404,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.moves:
             dates = filter(
                 None, (m.effective_date or m.planned_date for m in self.moves
-                    if m.state != 'cancel'))
+                    if m.state != 'cancelled'))
             return min(dates, default=None)
         delivery_date = None
         if self.delivery_date_edit:
@@ -1636,7 +1636,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
         moved_quantity = 0
         for move in self.moves:
-            if move.state != 'cancel':
+            if move.state != 'cancelled':
                 moved_quantity += Uom.compute_qty(
                     move.uom, move.quantity, self.unit)
         if self.quantity < 0:
@@ -1806,7 +1806,7 @@ class HandleShipmentException(Wizard):
         for line in purchase.lines:
             skip = set(line.moves_ignored + line.moves_recreated)
             for move in line.moves:
-                if move.state == 'cancel' and move not in skip:
+                if move.state == 'cancelled' and move not in skip:
                     moves.append(move.id)
         return {
             'recreate_moves': moves,
