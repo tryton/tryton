@@ -321,7 +321,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         for shipment in shipments:
             planned_date = shipment._get_move_planned_date()
             to_write.extend(([m for m in shipment.moves
-                        if m.state not in ('assigned', 'done', 'cancel')], {
+                        if m.state not in ('assigned', 'done', 'cancelled')
+                        ], {
                         'planned_date': planned_date,
                         }))
         if to_write:
@@ -394,7 +395,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         SaleLine = pool.get('sale.line')
         for shipment in shipments:
             for move in shipment.moves:
-                if (move.state == 'cancel'
+                if (move.state == 'cancelled'
                         and isinstance(move.origin, (PurchaseLine, SaleLine))):
                     raise AccessError(
                         gettext('sale_supply_drop_shipment.msg_reset_move',
@@ -414,7 +415,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             product_cost = defaultdict(int)
 
             for c_move in shipment.customer_moves:
-                if c_move.state == 'cancel':
+                if c_move.state == 'cancelled':
                     continue
                 product_qty[c_move.product] += UoM.compute_qty(
                     c_move.uom, c_move.quantity, c_move.product.default_uom,
@@ -422,7 +423,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
             s_product_qty = defaultdict(int)
             for s_move in shipment.supplier_moves:
-                if s_move.state == 'cancel':
+                if s_move.state == 'cancelled':
                     continue
                 if s_move.cost_price:
                     internal_quantity = Decimal(str(s_move.internal_quantity))
@@ -462,7 +463,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 if qty:
                     product_cost[product] = round_price(cost / qty)
             for c_move in list(shipment.customer_moves) + to_save:
-                if c_move.id is not None and c_move.state == 'cancel':
+                if c_move.id is not None and c_move.state == 'cancelled':
                     continue
                 c_move.cost_price = product_cost[c_move.product]
                 if c_move.id is None:
@@ -531,7 +532,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 for request in pline2requests[move.origin]:
                     for sale_line in request2slines[request]:
                         for move in sale_line.moves:
-                            if (move.state not in ('cancel', 'done')
+                            if (move.state not in ('cancelled', 'done')
                                     and not move.shipment
                                     and move.from_location.type == 'drop'):
                                 move.shipment = shipment
