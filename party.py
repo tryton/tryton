@@ -39,7 +39,7 @@ class Erase(metaclass=PoolMeta):
             shipments = Shipment.search([
                     (field, '=', party.id),
                     ('company', '=', company.id),
-                    ('state', 'not in', ['done', 'cancel']),
+                    ('state', 'not in', ['done', 'cancelled']),
                     ])
             if shipments:
                 raise EraseError(

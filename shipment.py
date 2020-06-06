@@ -24,7 +24,7 @@ class ShipmentMixin:
     @classmethod
     def view_attributes(cls):
         return [
-            ('/tree', 'visual', If(Eval('state') == 'cancel', 'muted', '')),
+            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
 
@@ -34,7 +34,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'],
         help="When the stock was actually received.")
@@ -77,7 +77,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     warehouse = fields.Many2One('stock.location', "Warehouse",
         required=True, domain=[('type', '=', 'warehouse')],
         states={
-            'readonly': (Eval('state').in_(['cancel', 'done'])
+            'readonly': (Eval('state').in_(['cancelled', 'done'])
                 | Eval('incoming_moves', [0]) | Eval('inventory_moves', [0])),
             }, depends=['state'],
         help="Where the stock is received.")
@@ -107,7 +107,8 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': (Eval('state').in_(['received', 'done', 'cancel'])
+                'readonly': (
+                    Eval('state').in_(['received', 'done', 'cancelled'])
                     | ~Eval('warehouse') | ~Eval('supplier')),
                 },
             depends=['state', 'warehouse', 'supplier_location',
@@ -118,14 +119,14 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'Inventory Moves',
             domain=[
                 ('from_location', '=', Eval('warehouse_input')),
-                If(~Eval('state').in_(['done', 'cancel']),
+                If(~Eval('state').in_(['done', 'cancelled']),
                     ('to_location', 'child_of',
                         [Eval('warehouse_storage', -1)], 'parent'),
                     (),),
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': Eval('state').in_(['draft', 'done', 'cancel']),
+                'readonly': Eval('state').in_(['draft', 'done', 'cancelled']),
                 'invisible': (
                     Eval('warehouse_input') == Eval('warehouse_storage')),
                 },
@@ -144,7 +145,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Canceled'),
+        ('cancelled', 'Cancelled'),
         ('received', 'Received'),
         ], 'State', readonly=True,
         help="The current state of the shipment.")
@@ -156,17 +157,17 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
-                ('draft', 'cancel'),
-                ('received', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('received', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': Eval('state') != 'cancel',
+                    'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
                 'receive': {
@@ -181,7 +182,9 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -192,6 +195,11 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_planned_date():
@@ -393,7 +401,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
@@ -402,7 +410,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments
@@ -455,7 +463,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'],
         help="When the stock was actually returned.")
@@ -520,7 +528,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     ('from_location', '=', Eval('from_location')),
                     ('to_location', '=', Eval('to_location')),
                     ],
-                If(~Eval('state').in_(['done', 'cancel']), [
+                If(~Eval('state').in_(['done', 'cancelled']), [
                         ('from_location', 'child_of',
                             [Eval('from_location', -1)], 'parent'),
                         ('to_location', 'child_of',
@@ -536,7 +544,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     done_by = employee_field("Done By")
     state = fields.Selection([
         ('draft', 'Draft'),
-        ('cancel', 'Canceled'),
+        ('cancelled', 'Cancelled'),
         ('assigned', 'Assigned'),
         ('waiting', 'Waiting'),
         ('done', 'Done'),
@@ -553,19 +561,19 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('waiting', 'draft'),
                 ('assigned', 'done'),
                 ('assigned', 'waiting'),
-                ('draft', 'cancel'),
-                ('waiting', 'cancel'),
-                ('assigned', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('waiting', 'cancelled'),
+                ('assigned', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['waiting', 'cancel']),
-                    'icon': If(Eval('state') == 'cancel',
+                    'invisible': ~Eval('state').in_(['waiting', 'cancelled']),
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo',
                         If(Eval('state') == 'waiting',
                             'tryton-back',
@@ -592,7 +600,9 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -603,6 +613,11 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -674,7 +689,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
@@ -739,7 +754,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments for m in s.moves])
@@ -786,7 +801,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'],
         help="When the stock was actually sent.")
@@ -846,7 +861,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': ((Eval('state').in_(
-                            ['waiting', 'packed', 'done', 'cancel']))
+                            ['waiting', 'packed', 'done', 'cancelled']))
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'warehouse_output',
@@ -865,7 +880,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': Eval('state').in_(
-                    ['draft', 'assigned', 'packed', 'done', 'cancel']),
+                    ['draft', 'assigned', 'packed', 'done', 'cancelled']),
                 'invisible': (
                     Eval('warehouse_storage') == Eval('warehouse_output')),
                 },
@@ -885,7 +900,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Canceled'),
+        ('cancelled', 'Cancelled'),
         ('assigned', 'Assigned'),
         ('packed', 'Packed'),
         ('waiting', 'Waiting'),
@@ -905,20 +920,20 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
                 ('waiting', 'draft'),
-                ('draft', 'cancel'),
-                ('waiting', 'cancel'),
-                ('assigned', 'cancel'),
-                ('packed', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('waiting', 'cancelled'),
+                ('assigned', 'cancelled'),
+                ('packed', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': ~Eval('state').in_(['waiting', 'cancel']),
-                    'icon': If(Eval('state') == 'cancel',
+                    'invisible': ~Eval('state').in_(['waiting', 'cancelled']),
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo',
                         If(Eval('state') == 'waiting',
                             'tryton-back',
@@ -957,7 +972,9 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -967,6 +984,11 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
         # Add index on create_date
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -1215,7 +1237,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments
@@ -1296,7 +1318,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
@@ -1347,7 +1369,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'],
         help="When the stock was returned.")
@@ -1427,7 +1449,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': Eval('state').in_(['draft', 'cancel', 'done']),
+                'readonly': Eval('state').in_(['draft', 'cancelled', 'done']),
                 'invisible': (
                     Eval('warehouse_input') == Eval('warehouse_storage')),
                 },
@@ -1446,7 +1468,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Done'),
-        ('cancel', 'Canceled'),
+        ('cancelled', 'Cancelled'),
         ('received', 'Received'),
         ], 'State', readonly=True,
         help="The current state of the shipment.")
@@ -1459,17 +1481,17 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('draft', 'received'),
                 ('received', 'done'),
                 ('received', 'draft'),
-                ('draft', 'cancel'),
-                ('received', 'cancel'),
-                ('cancel', 'draft'),
+                ('draft', 'cancelled'),
+                ('received', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state').in_(['cancel', 'done']),
+                    'invisible': Eval('state').in_(['cancelled', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
-                    'invisible': Eval('state') != 'cancel',
+                    'invisible': Eval('state') != 'cancelled',
                     'depends': ['state'],
                     },
                 'receive': {
@@ -1484,7 +1506,9 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
+        sql_table = cls.__table__()
 
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
@@ -1495,6 +1519,11 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -1650,7 +1679,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Cance before delete
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
@@ -1697,7 +1726,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments
@@ -1796,7 +1825,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     _rec_name = 'number'
     effective_date = fields.Date('Effective Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'done']),
             },
         depends=['state'],
         help="When the shipment was actually completed.")
@@ -1807,7 +1836,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         help="When the shipment is expected to be completed.")
     effective_start_date = fields.Date('Effective Start Date',
         states={
-            'readonly': Eval('state').in_(['cancel', 'shipped', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'shipped', 'done']),
             },
         depends=['state'],
         help="When the stock was actually sent.")
@@ -1859,7 +1888,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         'on_change_with_transit_location')
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
-            'readonly': (Eval('state').in_(['cancel', 'assigned', 'done'])
+            'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
                 | ~Eval('from_location') | ~Eval('to_location')),
             'invisible': (Bool(Eval('transit_location'))
                 & ~Eval('state').in_(['request', 'draft'])),
@@ -1869,7 +1898,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     ('from_location', '=', Eval('from_location')),
                     ('to_location', '=', Eval('to_location')),
                     ],
-                If(~Eval('state').in_(['done', 'cancel']),
+                If(~Eval('state').in_(['done', 'cancelled']),
                     If(~Eval('transit_location'),
                         [
                             ('from_location', 'child_of',
@@ -1911,7 +1940,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ],
             states={
                 'readonly': Eval('state').in_(
-                    ['assigned', 'shipped', 'done', 'cancel']),
+                    ['assigned', 'shipped', 'done', 'cancelled']),
                 'invisible': (~Eval('transit_location')
                     | Eval('state').in_(['request', 'draft'])),
                 },
@@ -1922,7 +1951,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     incoming_moves = fields.Function(fields.One2Many('stock.move', 'shipment',
             'Incoming Moves',
             domain=[
-                If(~Eval('state').in_(['done', 'cancel']), [
+                If(~Eval('state').in_(['done', 'cancelled']), [
                         If(~Eval('transit_location'),
                             ('from_location', 'child_of',
                                 [Eval('from_location', -1)], 'parent'),
@@ -1933,7 +1962,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     []),
                 ],
             states={
-                'readonly': Eval('state').in_(['done', 'cancel']),
+                'readonly': Eval('state').in_(['done', 'cancelled']),
                 'invisible': (~Eval('transit_location')
                     | Eval('state').in_(['request', 'draft'])),
                 },
@@ -1947,7 +1976,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     state = fields.Selection([
             ('request', 'Request'),
             ('draft', 'Draft'),
-            ('cancel', 'Canceled'),
+            ('cancelled', 'Cancelled'),
             ('waiting', 'Waiting'),
             ('assigned', 'Assigned'),
             ('shipped', 'Shipped'),
@@ -1969,22 +1998,22 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 ('shipped', 'done'),
                 ('waiting', 'draft'),
                 ('assigned', 'waiting'),
-                ('request', 'cancel'),
-                ('draft', 'cancel'),
-                ('waiting', 'cancel'),
-                ('assigned', 'cancel'),
-                ('cancel', 'draft'),
+                ('request', 'cancelled'),
+                ('draft', 'cancelled'),
+                ('waiting', 'cancelled'),
+                ('assigned', 'cancelled'),
+                ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
                     'invisible': Eval('state').in_(
-                        ['cancel', 'shipped', 'done']),
+                        ['cancelled', 'shipped', 'done']),
                     'depends': ['state'],
                     },
                 'draft': {
                     'invisible': ~Eval('state').in_(
-                        ['cancel', 'request', 'waiting']),
-                    'icon': If(Eval('state') == 'cancel',
+                        ['cancelled', 'request', 'waiting']),
+                    'icon': If(Eval('state') == 'cancelled',
                         'tryton-undo',
                         If(Eval('state') == 'request',
                             'tryton-forward',
@@ -2044,6 +2073,11 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Add index on create_date
         table = cls.__table_handler__(module_name)
         table.index_action('create_date', action='add')
+
+        # Migration from 5.6: rename state cancel to cancelled
+        cursor.execute(*sql_table.update(
+                [sql_table.state], ['cancelled'],
+                where=sql_table.state == 'cancel'))
 
     @staticmethod
     def default_state():
@@ -2126,7 +2160,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         # Cancel before delete
         cls.cancel(shipments)
         for shipment in shipments:
-            if shipment.state != 'cancel':
+            if shipment.state != 'cancelled':
                 raise AccessError(
                     gettext('stock.msg_shipment_delete_cancel',
                         shipment=shipment.rec_name))
@@ -2337,7 +2371,7 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     def cancel(cls, shipments):
         Move = Pool().get('stock.move')
         Move.cancel([m for s in shipments for m in s.moves])

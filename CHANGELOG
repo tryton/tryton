@@ -1,3 +1,4 @@
+* Rename shipment states from cancel to cancelled
 * Rename inventory state from cancel to cancelled
 * Override warehouse with context value for current user
 

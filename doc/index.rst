@@ -168,7 +168,7 @@ The supplier shipment can be in one of this states:
 
   Inventory and incoming moves are in state Done.
 
-* Cancel
+* Cancelled
 
   All moves are cancelled.
 
@@ -222,10 +222,10 @@ The customer shipment can be in one of this states:
   The shipment is Done when the outgoing moves have been made,
   e.g. when a truck left the warehouse.
 
-* Cancel
+* Cancelled
 
   A shipment which is not yet completed (not in state Done) can be
-  cancelled at any time. This also cancel all the moves.
+  cancelled at any time. This also cancels all the moves.
 
 
 Internal Shipment
@@ -252,10 +252,10 @@ of moves. It can be in one of these states:
 
   The shipment is Done when the moves have been made.
 
-* Cancel
+* Cancelled
 
   A shipment which is not yet completed (not in state Done) can be
-  cancelled at any time. This also cancel all the moves.
+  cancelled at any time. This also cancels all the moves.
 
 
 
