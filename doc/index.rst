@@ -21,7 +21,7 @@ can be in one of these states:
 * Purchased
 
   A Purchased request is a request that is linked to a purchase which
-  is not in state Done or Cancel.
+  is not Done or Cancelled.
 
 * Done
 

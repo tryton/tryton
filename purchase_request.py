@@ -224,10 +224,10 @@ class PurchaseRequest(ModelSQL, ModelView):
 
     def get_state(self):
         if self.purchase_line:
-            if (self.purchase_line.purchase.state == 'cancel'
+            if (self.purchase_line.purchase.state == 'cancelled'
                     and not self.exception_ignored):
                 return 'exception'
-            elif self.purchase_line.purchase.state == 'cancel':
+            elif self.purchase_line.purchase.state == 'cancelled':
                 return 'cancelled'
             elif self.purchase_line.purchase.state == 'done':
                 return 'done'

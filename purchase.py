@@ -70,7 +70,7 @@ class Purchase(metaclass=PoolMeta):
 
     @classmethod
     @ModelView.button
-    @Workflow.transition('cancel')
+    @Workflow.transition('cancelled')
     @process_request
     def cancel(cls, purchases):
         super(Purchase, cls).cancel(purchases)
