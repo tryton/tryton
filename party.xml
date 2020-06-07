@@ -48,7 +48,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[If(Eval('active_ids', []) == [Eval('active_id')], ('party', '=', Eval('active_id')), ('party', 'in', Eval('active_ids')))]"
                 pyson="1"/>
-            <field name="search_value" eval="[('state', 'not in', ['paid', 'cancel'])]" pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['paid', 'cancelled'])]" pyson="1"/>
         </record>
         <record model="ir.action.keyword"
                 id="act_open_invoice_keyword1">
