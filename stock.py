@@ -27,7 +27,7 @@ class Move(metaclass=PoolMeta):
             ],
         states={
             'invisible': ~Eval('product_secondary_uom_category'),
-            'readonly': Eval('state').in_(['cancel', 'assigned', 'done']),
+            'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
             },
         depends=['product_secondary_uom_category', 'state'])
     secondary_unit_price = fields.Function(
