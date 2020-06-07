@@ -5,6 +5,7 @@
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Sale(metaclass=PoolMeta):
@@ -39,6 +40,10 @@ class Sale(metaclass=PoolMeta):
         pattern['date'] = self.sale_date
         pattern['company'] = self.company.id
         pattern['party'] = self.party.id
+        if self.quoted_by:
+            pattern['employee'] = self.quoted_by.id
+        else:
+            pattern['employee'] = Transaction().context.get('employee')
         return pattern
 
     @classmethod
@@ -48,6 +53,8 @@ class Sale(metaclass=PoolMeta):
             domain.append(('agent.company', '=', pattern['company']))
         if 'party' in pattern:
             domain.append(('party', 'in', [None, pattern['party']]))
+        if 'employee' in pattern:
+            domain.append(('employee', 'in', [None, pattern['employee']]))
         return domain
 
     @classmethod

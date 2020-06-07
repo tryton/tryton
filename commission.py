@@ -162,11 +162,25 @@ class AgentSelection(sequence_ordered(), MatchMixin, ModelSQL, ModelView):
         help="The last date that the agent will be considered for selection.")
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', select=True)
+    company = fields.Function(fields.Many2One('company.company', "Company"),
+        'on_change_with_company')
+    employee = fields.Many2One(
+        'company.employee', "Employee", select=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls._order.insert(0, ('party', 'ASC NULLS LAST'))
+        cls._order.insert(1, ('employee', 'ASC NULLS LAST'))
+
+    @fields.depends('agent', '_parent_agent.company')
+    def on_change_with_company(self, name=None):
+        if self.agent:
+            return self.agent.company.id
 
     def match(self, pattern):
         pool = Pool()

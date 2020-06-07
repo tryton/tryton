@@ -13,4 +13,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="end_date"/>
     <label name="party"/>
     <field name="party"/>
+    <label name="employee"/>
+    <field name="employee"/>
 </form>
