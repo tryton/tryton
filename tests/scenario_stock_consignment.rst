@@ -275,7 +275,7 @@ Cancel supplier consignment stock::
     True
     >>> shipment.click('cancel')
     >>> shipment.state
-    'cancel'
+    'cancelled'
     >>> move, = shipment.moves
     >>> bool(move.origin)
     False
