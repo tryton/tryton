@@ -110,7 +110,7 @@ Refund the invoice::
     >>> credit.execute('credit')
     >>> invoice.reload()
     >>> invoice.state
-    'cancel'
+    'cancelled'
 
 VAT List is empty::
 
@@ -139,7 +139,7 @@ Cancel the invoice and check VAT List is empty::
 
     >>> invoice.click('cancel')
     >>> invoice.state
-    'cancel'
+    'cancelled'
     >>> with config.set_context(context):
     ...     vat_list_records = VatList.find([])
     >>> len(vat_list_records)
