@@ -255,7 +255,7 @@ class PurchaseRequest(metaclass=PoolMeta):
         Request = pool.get('purchase.request')
 
         supplier, purchase_date = cls.find_best_supplier(product,
-            shortage_date, **supplier_pattern)
+            shortage_date)
 
         uom = product.purchase_uom or product.default_uom
         target_quantity = order_point.target_quantity if order_point else 0.0
