@@ -367,6 +367,33 @@ class ModelStorageTestCase(unittest.TestCase):
         self.assertTrue(cm.exception.domain[1]['value'])
 
     @with_transaction()
+    def test_relation_pyson_domain(self):
+        "Test valid relation with PYSON"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{'value': 'valid'}])
+
+        record, = Model.create(
+            [{'relation_pyson': target.id, 'relation_valid': True}])
+
+    @with_transaction()
+    def test_relation_pyson_domain_invalid(self):
+        "Test valid relation with PYSON"
+        pool = Pool()
+        Model = pool.get('test.modelstorage.relation_domain')
+        Target = pool.get('test.modelstorage.relation_domain.target')
+
+        target, = Target.create([{'value': 'valid'}])
+
+        with self.assertRaises(DomainValidationError) as cm:
+            Model.create(
+                [{'relation_pyson': target.id, 'relation_valid': False}])
+        self.assertEqual(cm.exception.domain[0], [['value', '!=', 'valid']])
+        self.assertTrue(cm.exception.domain[1], 'value')
+
+    @with_transaction()
     def test_relation2_domain_invalid(self):
         "Test invalid relation domain with 2 level"
         pool = Pool()

@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelSQL, ModelStorage as ModelStorage_, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -69,6 +69,15 @@ class ModelStorageRelationDomain(ModelSQL):
         domain=[
             ('value', '=', 'valid'),
             ])
+    relation_valid = fields.Boolean("Relation Valid")
+    relation_pyson = fields.Many2One(
+        'test.modelstorage.relation_domain.target', "Value",
+        domain=[
+            If(Eval('relation_valid', True),
+                ('value', '=', 'valid'),
+                ('value', '!=', 'valid')),
+            ],
+        depends=['relation_valid'])
 
 
 class ModelStorageRelationDomainTarget(ModelSQL):
