@@ -138,38 +138,9 @@ class Main(Gtk.Application):
         self.window.set_titlebar(self.header)
         self.set_title()
 
-        menu = Gio.Menu.new()
-        menu.append(_("Preferences..."), 'app.preferences')
-
-        section = Gio.Menu.new()
-        toolbar = Gio.Menu.new()
-        section.append_submenu(_("Toolbar"), toolbar)
-        toolbar.append(_("Default"), 'app.toolbar::default')
-        toolbar.append(_("Text and Icons"), 'app.toolbar::both')
-        toolbar.append(_("Text"), 'app.toolbar::text')
-        toolbar.append(_("Icons"), 'app.toolbar::icons')
-
-        form = Gio.Menu.new()
-        section.append_submenu(_("Form"), form)
-        form.append(_("Save Column Width"), 'app.save-tree-width')
-        form.append(_("Save Tree State"), 'app.save-tree-state')
-        form.append(_("Spell Checking"), 'app.spell-checking')
-
-        section.append(_("PDA Mode"), 'app.mode-pda')
-        section.append(_("Search Limit..."), 'app.search-limit')
-        section.append(_("Email..."), 'app.email')
-        section.append(_("Check Version"), 'app.check-version')
-
-        menu.append_section(_("Options"), section)
-
-        section = Gio.Menu.new()
-        section.append(_("Keyboard Shortcuts..."), 'app.shortcuts')
-        section.append(_("About..."), 'app.about')
-        menu.append_section(_("Help"), section)
-
-        primary_menu = Gtk.MenuButton.new()
-        primary_menu.set_menu_model(menu)
-        self.header.pack_end(primary_menu)
+        self.primary_menu = Gtk.MenuButton.new()
+        self.primary_menu.set_menu_model(self._get_primary_menu())
+        self.header.pack_end(self.primary_menu)
 
         menu = Gtk.Button.new()
         menu.set_relief(Gtk.ReliefStyle.NONE)
@@ -304,6 +275,37 @@ class Main(Gtk.Application):
             pass
         rpc.logout()
         self.quit()
+
+    def _get_primary_menu(self):
+        menu = Gio.Menu.new()
+        menu.append(_("Preferences..."), 'app.preferences')
+
+        section = Gio.Menu.new()
+        toolbar = Gio.Menu.new()
+        section.append_submenu(_("Toolbar"), toolbar)
+        toolbar.append(_("Default"), 'app.toolbar::default')
+        toolbar.append(_("Text and Icons"), 'app.toolbar::both')
+        toolbar.append(_("Text"), 'app.toolbar::text')
+        toolbar.append(_("Icons"), 'app.toolbar::icons')
+
+        form = Gio.Menu.new()
+        section.append_submenu(_("Form"), form)
+        form.append(_("Save Column Width"), 'app.save-tree-width')
+        form.append(_("Save Tree State"), 'app.save-tree-state')
+        form.append(_("Spell Checking"), 'app.spell-checking')
+
+        section.append(_("PDA Mode"), 'app.mode-pda')
+        section.append(_("Search Limit..."), 'app.search-limit')
+        section.append(_("Email..."), 'app.email')
+        section.append(_("Check Version"), 'app.check-version')
+
+        menu.append_section(_("Options"), section)
+
+        section = Gio.Menu.new()
+        section.append(_("Keyboard Shortcuts..."), 'app.shortcuts')
+        section.append(_("About..."), 'app.about')
+        menu.append_section(_("Help"), section)
+        return menu
 
     def set_global_search(self):
         self.global_search_entry = Gtk.Entry.new()
@@ -535,6 +537,7 @@ class Main(Gtk.Application):
             translate.setlang(prefs['language'], prefs.get('locale'))
             if CONFIG['client.lang'] != prefs['language']:
                 self.favorite_unset()
+                self.primary_menu.set_menu_model(self._get_primary_menu())
             CONFIG['client.lang'] = prefs['language']
         # Set placeholder after language is set to get correct translation
         self.global_search_entry.set_placeholder_text(_("Action"))
