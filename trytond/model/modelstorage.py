@@ -1136,8 +1136,7 @@ class ModelStorage(Model):
                         invalid_record = invalid_records.pop()
                         domain = field.domain
                         if is_pyson(domain):
-                            domain = _record_eval_pyson(
-                                invalid_record, domain)
+                            domain = _record_eval_pyson(records[0], domain)
                         msg = gettext(
                             'ir.msg_domain_validation_record',
                             **cls.__names__(field.name))
