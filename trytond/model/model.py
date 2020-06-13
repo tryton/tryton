@@ -2,8 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 import copy
+import collections.abc
+import sys
 from collections import defaultdict
 from functools import total_ordering
+from itertools import chain
 
 from trytond.i18n import lazy_gettext
 from trytond.model import fields
@@ -71,6 +74,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                 continue
             if isinstance(getattr(cls, attr), fields.Field):
                 cls._fields[attr] = getattr(cls, attr)
+        cls._record = record(cls.__name__ + '._record', cls._fields.keys())
 
         # Set _defaults
         cls._defaults = {}
@@ -248,7 +252,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         self._id = id
         self._deleted = self._removed = None
         if kwargs:
-            self._values = {}
+            self._values = self._record()
             parent_values = defaultdict(dict)
             has_context = {}
             for name, value in kwargs.items():
@@ -268,7 +272,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             # to ensure it was evaluated with all the fields
             for name, value in has_context.items():
                 setattr(self, name, value)
-            self._init_values = self._values.copy()
+            self._init_values = self._values._copy()
         else:
             self._values = None
             self._init_values = None
@@ -328,7 +332,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
         """
         values = {}
         if self._values:
-            for fname, value in self._values.items():
+            for fname, value in self._values._items():
                 field = self._fields[fname]
                 if field._type in ('many2one', 'one2one', 'reference'):
                     if value:
@@ -343,3 +347,124 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
                         value = [r.id for r in value]
                 values[fname] = value
         return values
+
+
+def record(name, field_names):
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+    def _getitem(self, field):
+        try:
+            return getattr(self, field)
+        except AttributeError:
+            raise KeyError(field)
+
+    def _setitem(self, field, value):
+        try:
+            return setattr(self, field, value)
+        except AttributeError:
+            raise KeyError(field)
+
+    def _contains(self, field):
+        try:
+            getattr(self, field)
+            return True
+        except AttributeError:
+            return False
+
+    def _clear(self):
+        for fname in self.__slots__:
+            try:
+                delattr(self, fname)
+            except AttributeError:
+                pass
+
+    def _copy(self):
+        return copy.copy(self)
+
+    def _get(self, field, default=None):
+        if field not in self.__slots__:
+            raise KeyError(field)
+        return getattr(self, field, default)
+
+    def _keys(self):
+        for fname in self.__slots__:
+            if hasattr(self, fname):
+                yield fname
+
+    def _items(self):
+        for fname in self.__slots__:
+            try:
+                yield fname, getattr(self, fname)
+            except AttributeError:
+                pass
+
+    _undefined = object()
+
+    def _pop(self, field, value=_undefined):
+        if field not in self.__slots__:
+            raise KeyError(field)
+        if value != _undefined:
+            value = getattr(self, field, value)
+        else:
+            try:
+                value = getattr(self, field)
+            except AttributeError:
+                raise KeyError(field)
+        try:
+            delattr(self, field)
+        except AttributeError:
+            pass
+        return value
+
+    def _popitem(self, field, value=_undefined):
+        return (field, self._pop(field, value=value))
+
+    def _setdefault(self, field, default=None):
+        try:
+            return getattr(self, field)
+        except AttributeError:
+            setattr(self, field, default)
+            return default
+
+    def _update(self, _other=None, **kwargs):
+        if isinstance(_other, collections.abc.Mapping):
+            _other = _other.items()
+        elif _other is None:
+            _other = []
+        chained = chain(_other, kwargs.items())
+        for key, value in chained:
+            setattr(self, key, value)
+
+    def _values(self):
+        for fname in self.__slots__:
+            try:
+                yield getattr(self, fname)
+            except AttributeError:
+                pass
+
+    field_names = set(field_names)
+    for fname in field_names:
+        if fname.startswith('_'):
+            raise ValueError(
+                "Field names cannot start with an underscore: %r" % name)
+    field_names = tuple(map(sys.intern, field_names))
+    type_dict = {
+        '__slots__': field_names,
+        '__init__': __init__,
+        '__getitem__': _getitem,
+        '__setitem__': _setitem,
+        '__contains__': _contains,
+        '_clear': _clear,
+        '_copy': _copy,
+        '_get': _get,
+        '_keys': _keys,
+        '_items': _items,
+        '_pop': _pop,
+        '_popitem': _popitem,
+        '_setdefault': _setdefault,
+        '_update': _update,
+        '_values': _values,
+        }
+    return type(name, (), type_dict)

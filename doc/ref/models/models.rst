@@ -36,6 +36,17 @@ Class attributes are:
     It returns a queue caller for the model. The called method will be pushed
     into the queue.
 
+.. attribute:: Model._fields
+    It contains a dictionary with the field name as key and its
+    :class:`~trytond.model.field` instance as value.
+
+.. attribute:: Model._record
+    It stores the record class to store internaly the values of the instances.
+
+.. attribute:: Model._defaults
+    It contains a dictionary with the field name as key and its default method
+    as value.
+
 Class methods:
 
 .. classmethod:: Model.__setup__()

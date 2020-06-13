@@ -384,8 +384,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
                 for user in all_users:
-                    if user.id in cache[cls.__name__]:
-                        cache[cls.__name__][user.id].clear()
+                    cache[cls.__name__].pop(user.id, None)
         # Restart the cache for domain_get method
         pool = Pool()
         pool.get('ir.rule')._domain_get_cache.clear()

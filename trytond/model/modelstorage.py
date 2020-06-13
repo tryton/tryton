@@ -211,16 +211,14 @@ class ModelStorage(Model):
 
         # Clean local cache
         for record in all_records:
-            local_cache = record._local_cache.get(record.id)
-            if local_cache:
-                local_cache.clear()
+            record._local_cache.pop(record.id, None)
 
         # Clean transaction cache
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
+                cache_cls = cache[cls.__name__]
                 for record in all_records:
-                    if record.id in cache[cls.__name__]:
-                        cache[cls.__name__][record.id].clear()
+                    cache_cls.pop(record.id, None)
 
     @classmethod
     @without_check_access
@@ -597,7 +595,7 @@ class ModelStorage(Model):
         '''
         transaction = Transaction()
         ids = list(map(int, ids))
-        local_cache = LRUDictTransaction(cache_size())
+        local_cache = LRUDictTransaction(cache_size(), cls._record)
         transaction_cache = transaction.get_cache()
         return [cls(x, _ids=ids,
                 _local_cache=local_cache,
@@ -1385,7 +1383,7 @@ class ModelStorage(Model):
             assert isinstance(_local_cache, LRUDictTransaction)
             self._local_cache = _local_cache
         else:
-            self._local_cache = LRUDictTransaction(cache_size())
+            self._local_cache = LRUDictTransaction(cache_size(), self._record)
 
         super(ModelStorage, self).__init__(id, **kwargs)
 
@@ -1393,17 +1391,22 @@ class ModelStorage(Model):
     def _cache(self):
         cache = self._transaction_cache
         if self.__name__ not in cache:
-            cache[self.__name__] = LRUDict(cache_size())
+            cache[self.__name__] = LRUDict(cache_size(), self._record)
         return cache[self.__name__]
 
     def __getattr__(self, name):
         try:
             return super(ModelStorage, self).__getattr__(name)
         except AttributeError:
-            if self.id is None or self.id < 0:
+            if self.id is None or self.id < 0 or name.startswith('_'):
                 raise
 
         self._local_cache.refresh()
+
+        try:
+            return self._local_cache[self.id][name]
+        except KeyError:
+            pass
 
         # fetch the definition of the field
         try:
@@ -1412,12 +1415,12 @@ class ModelStorage(Model):
             raise AttributeError('"%s" has no attribute "%s"' % (self, name))
 
         try:
-            return self._local_cache[self.id][name]
-        except KeyError:
-            pass
-        try:
             if field._type not in ('many2one', 'reference'):
-                return self._cache[self.id][name]
+                # fill local cache for quicker access later
+                value \
+                        = self._local_cache[self.id][name] \
+                        = self._cache[self.id][name]
+                return value
             else:
                 skip_eager = name in self._cache[self.id]
         except KeyError:
@@ -1437,8 +1440,10 @@ class ModelStorage(Model):
 
             def not_cached(item):
                 fname, field = item
-                return (fname not in self._cache.get(self.id, {})
-                    and fname not in self._local_cache.get(self.id, {}))
+                return ((self.id not in self._cache
+                        or fname not in self._cache[self.id])
+                    and (self.id not in self._local_cache
+                        or fname not in self._local_cache[self.id]))
 
             def to_load(item):
                 fname, field = item
@@ -1477,8 +1482,11 @@ class ModelStorage(Model):
 
         def filter_(id_):
             return (id_ == self.id  # Ensure the value is read
-                or (name not in self._cache.get(id_, {})
-                    and name not in self._local_cache.get(id_, {})))
+                or ((
+                        id_ not in self._cache
+                        or name not in self._cache[id_])
+                    and (id_ not in self._local_cache
+                        or name not in self._local_cache[id_])))
 
         def unique(ids):
             s = set()
@@ -1527,7 +1535,7 @@ class ModelStorage(Model):
                 kwargs = {}
                 key = (Model, freeze(ctx))
                 kwargs['_local_cache'] = model2cache.setdefault(key,
-                    LRUDictTransaction(cache_size()))
+                    LRUDictTransaction(cache_size(), Model._record))
                 kwargs['_ids'] = ids = model2ids.setdefault(key, [])
                 kwargs['_transaction_cache'] = transaction.get_cache()
                 kwargs['_transaction'] = transaction
@@ -1560,28 +1568,23 @@ class ModelStorage(Model):
                 read_data = self.read(list(ids), list(ffields.keys()))
             # create browse records for 'remote' models
             for data in read_data:
+                id_ = data['id']
                 for fname, field in ffields.items():
                     fvalue = data[fname]
-                    if field._type in ('many2one', 'one2one', 'one2many',
-                            'many2many', 'reference'):
+                    if field._type in {
+                            'many2one', 'one2one', 'one2many', 'many2many',
+                            'reference'}:
                         fvalue = instantiate(field, data[fname], data)
-                    if data['id'] == self.id and fname == name:
+                    if id_ == self.id and fname == name:
                         value = fvalue
-                    if (field._type not in ('many2one', 'one2one', 'one2many',
-                                'many2many', 'reference', 'binary')
-                            and not isinstance(field, fields.Function)):
-                        continue
-                    if data['id'] not in self._local_cache:
-                        self._local_cache[data['id']] = {}
-                    self._local_cache[data['id']][fname] = fvalue
-                    if (field._type not in ('many2one', 'reference')
+                    self._local_cache[id_][fname] = fvalue
+                    if (field._type in {
+                                'one2one', 'one2many', 'many2many', 'binary'}
                             or field.context
                             or getattr(field, 'datetime_field', None)
                             or isinstance(field, fields.Function)):
                         del data[fname]
-                if data['id'] not in self._cache:
-                    self._cache[data['id']] = {}
-                self._cache[data['id']].update(data)
+                self._cache[id_]._update(data)
         return value
 
     @property
@@ -1589,7 +1592,7 @@ class ModelStorage(Model):
         values = {}
         if not self._values:
             return values
-        for fname, value in self._values.items():
+        for fname, value in self._values._items():
             field = self._fields[fname]
             if isinstance(field, fields.Function) and not field.setter:
                 continue
@@ -1619,9 +1622,9 @@ class ModelStorage(Model):
                     if (field._type == 'one2many'
                             and field.field
                             and target._values):
-                        t_values = target._values.copy()
+                        t_values = target._values._copy()
                         # Don't look at reverse field
-                        target._values.pop(field.field, None)
+                        target._values._pop(field.field, None)
                     else:
                         t_values = None
                     try:

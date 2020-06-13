@@ -5,7 +5,7 @@ import time
 import unittest
 
 from trytond import backend, cache as cache_mod
-from trytond.cache import freeze, MemoryCache
+from trytond.cache import freeze, MemoryCache, LRUDict, LRUDictTransaction
 from trytond.tests.test_tryton import with_transaction, activate_module
 from trytond.tests.test_tryton import DB_NAME, USER
 from trytond.transaction import Transaction
@@ -175,12 +175,94 @@ class MemoryCacheChannelTestCase(MemoryCacheTestCase):
         super().test_memory_cache_sync()
 
 
+class LRUDictTestCase(unittest.TestCase):
+    "Test LRUDict"
+
+    def test_setitem(self):
+        lru_dict = LRUDict(1)
+
+        lru_dict['foo'] = 'foo'
+        self.assertEqual(len(lru_dict), 1)
+
+        lru_dict['bar'] = 'bar'
+        self.assertEqual(len(lru_dict), 1)
+        self.assertEqual(lru_dict, {'bar': 'bar'})
+
+    def test_update(self):
+        lru_dict = LRUDict(1)
+
+        lru_dict['foo'] = 'foo'
+        self.assertEqual(len(lru_dict), 1)
+
+        lru_dict.update(bar='bar', baz='baz')
+        self.assertEqual(len(lru_dict), 1)
+        self.assertEqual(lru_dict, {'baz': 'baz'})
+
+    def test_setdefault(self):
+        lru_dict = LRUDict(1)
+
+        lru_dict['foo'] = 'foo'
+        self.assertEqual(len(lru_dict), 1)
+
+        lru_dict.setdefault('bar', 'value')
+        self.assertEqual(len(lru_dict), 1)
+        self.assertEqual(lru_dict, {'bar': 'value'})
+
+    def test_default_factory(self):
+        lru_dict = LRUDict(1, default_factory=list)
+
+        self.assertEqual(lru_dict['foo'], [])
+
+        lru_dict['bar'].append('bar')
+        self.assertEqual(lru_dict, {'bar': ['bar']})
+
+
+class LRUDictTransactionTestCase(unittest.TestCase):
+    "Test LRUDictTransaction"
+
+    @with_transaction()
+    def test_init(self):
+        "Test init set to transaction counter"
+        lru_dict = LRUDictTransaction(48)
+
+        self.assertEqual(lru_dict.counter, Transaction().counter)
+
+    @with_transaction()
+    def test_clear(self):
+        "Test clear reset counter"
+        lru_dict = LRUDictTransaction(48)
+
+        Transaction().counter += 1
+        lru_dict.clear()
+
+        self.assertEqual(lru_dict.counter, Transaction().counter)
+
+    @with_transaction()
+    def test_refresh(self):
+        "Test refresh"
+        lru_dict = LRUDictTransaction(48)
+
+        lru_dict['foo'] = 'foo'
+        lru_dict.refresh()
+
+        self.assertEqual(lru_dict, {'foo': 'foo'})
+
+        Transaction().counter += 1
+        lru_dict.refresh()
+
+        self.assertEqual(lru_dict, {})
+        self.assertEqual(lru_dict.counter, Transaction().counter)
+
+
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
     suite = unittest.TestSuite()
     for testcase in [
             CacheTestCase,
             MemoryCacheTestCase,
-            MemoryCacheChannelTestCase]:
+            MemoryCacheChannelTestCase,
+            LRUDictTestCase,
+            LRUDictTransactionTestCase,
+            ]:
         suite.addTests(func(testcase))
     return suite

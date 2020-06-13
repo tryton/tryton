@@ -3,6 +3,7 @@
 
 import unittest
 
+from trytond.model.model import record
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -219,9 +220,159 @@ class ModelTranslationTestCase(unittest.TestCase):
         self.assertEqual(other['string'], "Nom")
 
 
+class RecordTestCase(unittest.TestCase):
+    "Test record"
+
+    def test_creation(self):
+        "Test record creation"
+        Record = record('model', ['foo', 'bar'])
+
+        self.assertEqual(Record.__name__, 'model')
+        self.assertEqual(set(Record.__slots__), {'foo', 'bar'})
+
+    def test_init(self):
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+
+        self.assertEqual(rec.foo, 'foo')
+
+    def test_getitem(self):
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+
+        self.assertEqual(rec['foo'], 'foo')
+
+    def test_setitem(self):
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+
+        rec['foo'] = 'foo'
+        self.assertEqual(rec['foo'], 'foo')
+
+    def test_contains(self):
+        "Test record contains"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+
+        self.assertTrue('foo' in rec)
+        self.assertFalse('bar' in rec)
+
+    def test_clear(self):
+        "Test record clear"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo', bar='bar')
+
+        rec._clear()
+
+        with self.assertRaises(AttributeError):
+            rec.foo
+        with self.assertRaises(AttributeError):
+            rec.bar
+
+    def test_copy(self):
+        "Test copy record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+        copy = rec._copy()
+
+        self.assertEqual(copy.foo, 'baz')
+        self.assertNotEqual(rec, copy)
+        self.assertIsInstance(copy, Record)
+
+    def test_get(self):
+        "Test get field from record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        self.assertEqual(rec._get('foo'), 'baz')
+        self.assertEqual(rec._get('bar'), None)
+        self.assertEqual(rec._get('bar', 42), 42)
+        with self.assertRaises(KeyError):
+            rec._get('baz')
+
+    def test_keys(self):
+        "Test record keys"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        self.assertEqual(list(rec._keys()), ['foo'])
+
+    def test_items(self):
+        "Test record items"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        self.assertEqual(list(rec._items()), [('foo', 'baz')])
+
+    def test_pop(self):
+        "Test pop field from record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        value = rec._pop('foo')
+        self.assertEqual(value, 'baz')
+        with self.assertRaises(AttributeError):
+            rec.foo
+
+        with self.assertRaises(KeyError):
+            rec._pop('baz')
+
+    def test_popitem(self):
+        "Test popitem field from record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        value = rec._popitem('foo')
+        self.assertEqual(value, ('foo', 'baz'))
+
+    def test_setdefault(self):
+        "Test set default field on record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+
+        self.assertEqual(rec._setdefault('bar', 'bar'), 'bar')
+        self.assertEqual(rec.bar, 'bar')
+        self.assertEqual(rec._setdefault('foo', 'baz'), 'foo')
+        self.assertEqual(rec.foo, 'foo')
+
+    def test_update(self):
+        "Test update record"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='foo')
+        rec._update(foo='bar', bar='baz')
+
+        self.assertEqual(rec.foo, 'bar')
+        self.assertEqual(rec.bar, 'baz')
+
+    def test_values(self):
+        "Test record values"
+        Record = record('model', ['foo', 'bar'])
+
+        rec = Record(foo='baz')
+
+        self.assertEqual(list(rec._values()), [('baz')])
+
+
 def suite():
+    func = unittest.TestLoader().loadTestsFromTestCase
     suite_ = unittest.TestSuite()
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(ModelTestCase))
-    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            ModelTranslationTestCase))
+    for testcase in [
+            ModelTestCase,
+            ModelTranslationTestCase,
+            RecordTestCase,
+            ]:
+        suite_.addTests(func(testcase))
     return suite_

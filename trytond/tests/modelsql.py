@@ -76,6 +76,12 @@ class ModelSQLOne2ManyTarget(ModelSQL):
     origin = fields.Many2One('test.modelsql.one2many', "Origin")
 
 
+class ModelSQLSearch(ModelSQL):
+    "ModelSQL Search"
+    __name__ = 'test.modelsql.search'
+    name = fields.Char("Name")
+
+
 class NullOrder(ModelSQL):
     "Null Order"
     __name__ = 'test.modelsql.null_order'
@@ -153,6 +159,7 @@ def register(module):
         ModelSQLFieldSet,
         ModelSQLOne2Many,
         ModelSQLOne2ManyTarget,
+        ModelSQLSearch,
         NullOrder,
         ModelTranslation,
         ModelCheck,

@@ -82,7 +82,7 @@ class ModelView(unittest.TestCase):
 
         # no initial value
         record = Model()
-        record._values = {}
+        record._values = record._record()
         target = Target(id=1)
         record._values['targets'] = [target]
         target.name = 'foo'

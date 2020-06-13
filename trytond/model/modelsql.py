@@ -794,10 +794,8 @@ class ModelSQL(ModelStorage):
 
         if getter_fields and cachable_fields:
             cache = transaction.get_cache().setdefault(
-                cls.__name__, LRUDict(cache_size()))
+                cls.__name__, LRUDict(cache_size(), cls._record))
             for row in result:
-                if row['id'] not in cache:
-                    cache[row['id']] = {}
                 for fname in cachable_fields:
                     cache[row['id']][fname] = row[fname]
 
@@ -1319,7 +1317,7 @@ class ModelSQL(ModelStorage):
         rows = list(cursor_dict(cursor, transaction.database.IN_MAX))
         cache = transaction.get_cache()
         if cls.__name__ not in cache:
-            cache[cls.__name__] = LRUDict(cache_size())
+            cache[cls.__name__] = LRUDict(cache_size(), cls._record)
         delete_records = transaction.delete_records.setdefault(cls.__name__,
             set())
 
@@ -1375,7 +1373,6 @@ class ModelSQL(ModelStorage):
                     keys = list(data.keys())
                     for k in keys[:]:
                         if k in ('_timestamp', '_datetime', '__id'):
-                            keys.remove(k)
                             continue
                         field = cls._fields[k]
                         if not getattr(field, 'datetime_field', None):
@@ -1383,7 +1380,7 @@ class ModelSQL(ModelStorage):
                             continue
                 for k in keys:
                     del data[k]
-                cache[cls.__name__].setdefault(data['id'], {}).update(data)
+                cache[cls.__name__][data['id']]._update(data)
 
         if len(rows) >= transaction.database.IN_MAX:
             if (cls._history

@@ -142,7 +142,8 @@ def instanciate_values(Target, value, **extra):
     kwargs = {}
     ids = []
     if issubclass(Target, ModelStorage):
-        kwargs['_local_cache'] = LRUDictTransaction(cache_size())
+        kwargs['_local_cache'] = LRUDictTransaction(
+            cache_size(), Target._record)
         kwargs['_ids'] = ids
 
     def instance(data):
@@ -338,7 +339,7 @@ class Field(object):
     def __set__(self, inst, value):
         assert self.name is not None
         if inst._values is None:
-            inst._values = {}
+            inst._values = inst._record()
         inst._values[self.name] = value
 
     def sql_format(self, value):

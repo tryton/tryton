@@ -742,6 +742,20 @@ class ModelSQLTranslationTestCase(unittest.TestCase):
         self.assertEqual(record.name, "Foo")
         self.assertEqual(other.name, "Baz")
 
+    @with_transaction()
+    def test_search_fill_transaction_cache(self):
+        "Test search fill the transaction cache"
+        pool = Pool()
+        Model = pool.get('test.modelsql.search')
+        Model.create([{'name': "Foo"}])
+
+        record, = Model.search([])
+        cache = Transaction().get_cache()[Model.__name__]
+
+        self.assertIn(record.id, cache)
+        self.assertEqual(cache[record.id]['name'], "Foo")
+        self.assertNotIn('_timestamp', cache[record.id])
+
 
 def suite():
     suite_ = unittest.TestSuite()

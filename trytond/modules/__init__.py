@@ -274,6 +274,8 @@ def load_module_graph(graph, pool, update=None, lang=None):
             # Avoid clearing cache to prevent dead lock on ir.cache table
             Cache.rollback(transaction)
             transaction.commit()
+            # Clear transaction cache to update default_factory
+            transaction.cache.clear()
 
         if not update:
             pool.setup()

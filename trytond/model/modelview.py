@@ -795,10 +795,10 @@ class ModelView(Model):
         """
         from .modelstorage import ModelStorage
         changed = {}
-        init_values = self._init_values or {}
+        init_values = self._init_values or self._record()
         if not self._values:
             return changed
-        for fname, value in self._values.items():
+        for fname, value in self._values._items():
             field = self._fields[fname]
             # Always test key presence in case value is None
             if (fname in init_values
@@ -820,7 +820,7 @@ class ModelView(Model):
                         value = value.id
             elif field._type in ['one2many', 'many2many']:
                 targets = value
-                init_targets = list(init_values.get(
+                init_targets = list(init_values._get(
                         fname, targets if field._type == 'one2many' else []))
                 value = collections.defaultdict(list)
                 previous = [t.id for t in init_targets if t.id]
@@ -828,9 +828,9 @@ class ModelView(Model):
                     if (field._type == 'one2many'
                             and field.field
                             and target._values):
-                        t_values = target._values.copy()
+                        t_values = target._values._copy()
                         # Don't look at reverse field
-                        target._values.pop(field.field, None)
+                        target._values._pop(field.field, None)
                     else:
                         t_values = None
                     try:

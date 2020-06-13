@@ -18,7 +18,7 @@ from trytond.config import config
 from trytond.transaction import Transaction
 from trytond.tools import resolve, grouped_slice
 
-__all__ = ['BaseCache', 'Cache', 'LRUDict']
+__all__ = ['BaseCache', 'Cache', 'LRUDict', 'LRUDictTransaction']
 _clear_timeout = config.getint('cache', 'clean_timeout', default=5 * 60)
 logger = logging.getLogger(__name__)
 
@@ -331,18 +331,27 @@ class LRUDict(OrderedDict):
     """
     Dictionary with a size limit.
     If size limit is reached, it will remove the first added items.
+    The default_factory provides the same behavior as in standard
+    collections.defaultdict.
     """
     __slots__ = ('size_limit',)
 
-    def __init__(self, size_limit, *args, **kwargs):
+    def __init__(self, size_limit, default_factory=None, *args, **kwargs):
         assert size_limit > 0
         self.size_limit = size_limit
         super(LRUDict, self).__init__(*args, **kwargs)
+        self.default_factory = default_factory
         self._check_size_limit()
 
     def __setitem__(self, key, value):
         super(LRUDict, self).__setitem__(key, value)
         self._check_size_limit()
+
+    def __missing__(self, key):
+        if self.default_factory is None:
+            raise KeyError(key)
+        self[key] = value = self.default_factory()
+        return value
 
     def update(self, *args, **kwargs):
         super(LRUDict, self).update(*args, **kwargs)
@@ -360,7 +369,7 @@ class LRUDict(OrderedDict):
 
 class LRUDictTransaction(LRUDict):
     """
-    Dictionary with a size limit. (see LRUDict)
+    Dictionary with a size limit and default_factory. (see LRUDict)
     It is refreshed when transaction counter is changed.
     """
     __slots__ = ('transaction', 'counter')

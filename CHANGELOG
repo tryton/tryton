@@ -1,3 +1,4 @@
+* Use custom class to store record data
 * Add configuration check
 * Add support for properties to fields.depends
 * Allow combining authentication methods together
