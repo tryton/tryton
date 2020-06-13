@@ -163,17 +163,15 @@ class RelationAll(Relation, ModelView):
         # Clean local cache
         for record in all_records:
             for record_id in (record.id, record.reverse_id):
-                local_cache = record._local_cache.get(record_id)
-                if local_cache:
-                    local_cache.clear()
+                record._local_cache.pop(record_id, None)
 
         # Clean cursor cache
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:
+                cache_cls = cache[cls.__name__]
                 for record in all_records:
                     for record_id in (record.id, record.reverse_id):
-                        if record_id in cache[cls.__name__]:
-                            cache[cls.__name__][record_id].clear()
+                        cache_cls.pop(record_id, None)
 
         actions = iter(args)
         args = []
@@ -213,10 +211,10 @@ class RelationAll(Relation, ModelView):
             for cache in (cache,
                     list(cache.get('_language_cache', {}).values())):
                 if cls.__name__ in cache:
+                    cache_cls = cache[cls.__name__]
                     for record in relations:
                         for record_id in (record.id, record.reverse_id):
-                            if record_id in cache[cls.__name__]:
-                                del cache[cls.__name__][record_id]
+                            cache_cls.pop(record_id, None)
 
         Relation.delete(cls.convert_instances(relations))
 
