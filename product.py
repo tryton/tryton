@@ -52,6 +52,7 @@ class Template(
         DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
     "Product Template"
     __name__ = "product.template"
+    _order_name = 'rec_name'
     name = fields.Char(
         "Name", size=None, required=True, translate=True, select=True)
     code = fields.Char("Code", select=True)
@@ -111,6 +112,11 @@ class Template(
                 cls._table)
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('rec_name', 'ASC'))
+
+    @classmethod
     def multivalue_model(cls, field):
         pool = Pool()
         if field == 'list_price':
@@ -118,6 +124,11 @@ class Template(
         elif field == 'cost_price_method':
             return pool.get('product.cost_price_method')
         return super(Template, cls).multivalue_model(field)
+
+    @classmethod
+    def order_rec_name(cls, tables):
+        table, _ = tables[None]
+        return [table.code, table.name]
 
     def get_rec_name(self, name):
         if self.code:
@@ -300,6 +311,7 @@ class Product(
         cls._no_template_field.update(['products'])
 
         super(Product, cls).__setup__()
+        cls._order.insert(0, ('rec_name', 'ASC'))
 
         t = cls.__table__()
         cls._sql_constraints = [
