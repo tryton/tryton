@@ -1,12 +1,17 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
+from decimal import Decimal
 from itertools import groupby
+
+from sql.aggregate import Sum, Count
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
+from trytond.tools import reduce_ids, grouped_slice, cursor_dict
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
@@ -65,6 +70,28 @@ class Group(ModelSQL, ModelView):
     kind = fields.Selection(KINDS, 'Kind', required=True, readonly=True)
     payments = fields.One2Many('account.payment', 'group', 'Payments',
         readonly=True)
+    currency_digits = fields.Function(fields.Integer("Currency Digits"),
+        'on_change_with_currency_digits')
+    payment_count = fields.Function(fields.Integer(
+            "Payment Count",
+            help="The number of payments in the group."),
+        'get_payment_aggregated')
+    payment_amount = fields.Function(fields.Numeric(
+            "Payment Total Amount",
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits'],
+            help="The sum of all payment amounts."),
+        'get_payment_aggregated')
+    payment_amount_succeeded = fields.Function(fields.Numeric(
+            "Payment Succeeded",
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits'],
+            help="The sum of the amounts of the successful payments."),
+        'get_payment_aggregated')
+    payment_complete = fields.Function(fields.Boolean(
+            "Payment Complete",
+            help="All the payments in the group are complete."),
+        'get_payment_aggregated', searcher='search_complete')
 
     @classmethod
     def __register__(cls, module_name):
@@ -102,6 +129,100 @@ class Group(ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('payments', None)
         return super(Group, cls).copy(groups, default=default)
+
+    @classmethod
+    def _get_complete_states(cls):
+        return ['succeeded', 'failed']
+
+    @classmethod
+    def get_payment_aggregated(cls, groups, names):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        cursor = Transaction().connection.cursor()
+
+        payment = Payment.__table__()
+
+        # initialize result and columns
+        result = defaultdict(defaultdict)
+        columns = [
+            payment.group.as_('group_id'),
+            Count(payment.group).as_('payment_count'),
+            Sum(payment.amount).as_('payment_amount'),
+            Sum(payment.amount,
+                filter_=(payment.state == 'succeeded'),
+                ).as_('payment_amount_succeeded'),
+            Count(payment.group,
+                filter_=(~payment.state.in_(cls._get_complete_states())),
+                ).as_('payment_not_complete'),
+            ]
+
+        for sub_ids in grouped_slice(groups):
+            cursor.execute(*payment.select(*columns,
+                where=reduce_ids(payment.group, sub_ids),
+                group_by=payment.group),
+                )
+
+            for row in cursor_dict(cursor):
+                group_id = row['group_id']
+
+                result['payment_count'][group_id] = row['payment_count']
+                result['payment_complete'][group_id] = \
+                    not row['payment_not_complete']
+
+                amount = row['payment_amount']
+                succeeded = row['payment_amount_succeeded']
+
+                if amount is not None:
+                    # SQLite uses float for SUM
+                    if not isinstance(amount, Decimal):
+                        amount = Decimal(str(amount))
+                    amount = cls(group_id).company.currency.round(amount)
+                result['payment_amount'][group_id] = amount
+
+                if succeeded is not None:
+                    # SQLite uses float for SUM
+                    if not isinstance(succeeded, Decimal):
+                        succeeded = Decimal(str(succeeded))
+                    succeeded = cls(group_id).company.currency.round(succeeded)
+                result['payment_amount_succeeded'][group_id] = succeeded
+
+        for key in list(result.keys()):
+            if key not in names:
+                del result[key]
+
+        return result
+
+    @classmethod
+    def search_complete(cls, name, clause):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+        payment = Payment.__table__()
+
+        query_not_completed = payment.select(payment.group,
+            where=~payment.state.in_(cls._get_complete_states()),
+            group_by=payment.group)
+
+        operators = {
+            '=': 'not in',
+            '!=': 'in',
+            }
+        reverse = {
+            '=': 'in',
+            '!=': 'not in',
+            }
+
+        if clause[1] in operators:
+            if clause[2]:
+                return [('id', operators[clause[1]], query_not_completed)]
+            else:
+                return [('id', reverse[clause[1]], query_not_completed)]
+        else:
+            return []
+
+    @fields.depends('journal')
+    def on_change_with_currency_digits(self, name=None):
+        if self.journal:
+            return self.journal.currency.digits
 
 
 _STATES = {

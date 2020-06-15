@@ -91,6 +91,37 @@ Partially pay line::
     >>> line.payment_amount
     Decimal('30.00')
 
+Check the properties of the payment group::
+
+    >>> group = payment.group
+    >>> group.payment_count
+    1
+    >>> group.payment_amount
+    Decimal('20.00')
+    >>> group.payment_amount_succeeded
+    >>> group.payment_complete
+    False
+
+Success the payment and recheck the payment group::
+
+    >>> payment.click('succeed')
+    >>> payment.state
+    'succeeded'
+    >>> group.reload()
+    >>> group.payment_amount_succeeded
+    Decimal('20.00')
+    >>> group.payment_complete
+    True
+
+Search for the completed payment::
+
+    >>> PaymentGroup = Model.get('account.payment.group')
+    >>> group, = PaymentGroup.find([('payment_complete', '=', 'True')])
+    >>> group.payment_complete
+    True
+    >>> group.id == payment.group.id
+    True
+
 Partially fail to pay the remaining::
 
     >>> pay_line = Wizard('account.move.line.pay', [line])
@@ -109,6 +140,9 @@ Partially fail to pay the remaining::
     >>> payment.click('fail')
     >>> payment.state
     'failed'
+    >>> payment.group.payment_complete
+    True
+    >>> payment.group.payment_amount_succeeded
     >>> line.reload()
     >>> line.payment_amount
     Decimal('30.00')

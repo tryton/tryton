@@ -5,4 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="number"/>
     <field name="journal"/>
     <field name="kind"/>
+    <field name="payment_count"/>
+    <field name="payment_amount"/>
+    <field name="payment_amount_succeeded"/>
+    <field name="payment_complete"/>
 </tree>
