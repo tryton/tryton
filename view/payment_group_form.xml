@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="kind"/>
     <field name="kind"/>
     <separator id="payments" string="Payments Info" colspan="4"/>
-    <label name="payment_count" str+    <label name="payment_count" string="Count"/>
+    <label name="payment_count" string="Count"/>
     <field name="payment_count"/>
     <label name="payment_amount" string="Total Amount"/>
     <field name="payment_amount"/>
