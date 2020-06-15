@@ -371,7 +371,7 @@ class Fs2bdAccessor:
                             cache, cache.get('_language_cache', {}).values()):
                         if (model_name in cache
                                 and model.id in cache[model_name]):
-                            cache[model_name][model.id] = {}
+                            del cache[model_name][model.id]
             self.browserecord[module][model_name][model.id] = model
 
     def fetch_new_module(self, module):
