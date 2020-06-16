@@ -12,7 +12,6 @@ except ImportError:
     from http import client as HTTPStatus
 
 from werkzeug.wrappers import Request as _Request, Response
-from werkzeug.utils import cached_property
 from werkzeug.http import wsgi_to_bytes, bytes_to_wsgi
 from werkzeug.datastructures import Authorization
 from werkzeug.exceptions import abort, HTTPException
@@ -20,6 +19,7 @@ from werkzeug.exceptions import abort, HTTPException
 from trytond import security, backend
 from trytond.exceptions import RateLimitException
 from trytond.pool import Pool
+from trytond.tools import cached_property
 from trytond.transaction import Transaction
 from trytond.config import config
 
