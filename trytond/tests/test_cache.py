@@ -195,7 +195,8 @@ class LRUDictTestCase(unittest.TestCase):
         lru_dict['foo'] = 'foo'
         self.assertEqual(len(lru_dict), 1)
 
-        lru_dict.update(bar='bar', baz='baz')
+        lru_dict.update(bar='bar')
+        lru_dict.update(baz='baz')
         self.assertEqual(len(lru_dict), 1)
         self.assertEqual(lru_dict, {'baz': 'baz'})
 
