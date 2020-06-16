@@ -6,13 +6,13 @@ from decimal import Decimal
 from dateutil import relativedelta
 from dateutil import rrule
 from itertools import groupby
-from cached_property import cached_property
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelSQL, ModelView, fields, Unique
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
+from trytond.tools import cached_property
 from trytond.transaction import Transaction
 from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
     Button)
