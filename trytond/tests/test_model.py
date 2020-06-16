@@ -31,6 +31,30 @@ class ModelTestCase(unittest.TestCase):
             repr(record), "Pool().get('test.model')(%s)" % record.id)
 
     @with_transaction()
+    def test_hash_with_id(self):
+        "Test hash with id"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record1 = Model(id=1)
+        record1bis = Model(id=1)
+        record2 = Model(id=2)
+
+        self.assertEqual(hash(record1), hash(record1bis))
+        self.assertNotEqual(hash(record1), hash(record2))
+
+    @with_transaction()
+    def test_hash_without_id(self):
+        "Test hash without id"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record1 = Model()
+        record2 = Model()
+
+        self.assertNotEqual(hash(record1), hash(record2))
+
+    @with_transaction()
     def test_init_parent(self):
         "Test __init__ with _parent_"
         pool = Pool()
