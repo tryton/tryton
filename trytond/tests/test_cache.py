@@ -136,6 +136,7 @@ class MemoryCacheTestCase(unittest.TestCase):
         self.addCleanup(transaction2.stop)
         cache.clear()
         transaction2.commit()
+        self.wait_cache_sync()
 
         # Set value from old transaction
         Transaction().set_current_transaction(transaction1)
