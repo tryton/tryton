@@ -5,11 +5,11 @@ import os
 
 import genshi
 import genshi.template
-from cached_property import cached_property
 
 from trytond.model import Model
 from trytond.pool import Pool
 from trytond.rpc import RPC
+from trytond.tools import cached_property
 from trytond.transaction import Transaction
 
 # XXX fix: https://genshi.edgewall.org/ticket/582
