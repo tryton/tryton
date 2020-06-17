@@ -1010,14 +1010,14 @@
             }).appendTo(this.dialog.body);
 
             var row_csv_param = jQuery('<div/>', {
-            }).on('click', function(){
-                this.expander_csv.collapse('toggle');
-            }.bind(this)).appendTo(this.dialog.body);
+            }).appendTo(this.dialog.body);
 
             var csv_param_label = jQuery('<label/>', {
                 'text': Sao.i18n.gettext('CSV Parameters')
             }).css('cursor', 'pointer')
-            .appendTo(row_csv_param);
+            .on('click', function(){
+                this.expander_csv.collapse('toggle');
+            }.bind(this)).appendTo(row_csv_param);
 
             var expander_icon = jQuery('<span/>', {
                 'class': 'caret',
