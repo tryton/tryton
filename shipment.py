@@ -2152,7 +2152,14 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
             if values.get('number') is None:
                 values['number'] = Sequence.get_id(
                         config.shipment_internal_sequence.id)
-        return super(ShipmentInternal, cls).create(vlist)
+        shipments = super().create(vlist)
+        cls._set_move_planned_date(shipments)
+        return shipments
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._set_move_planned_date(sum(args[::2], []))
 
     @classmethod
     def delete(cls, shipments):
@@ -2399,6 +2406,43 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
         Move = Pool().get('stock.move')
         Move.assign([m for s in shipments for m in s.outgoing_moves])
         cls.assign(shipments)
+
+    @property
+    def _move_planned_date(self):
+        '''
+        Return the planned date for incoming moves and inventory_moves
+        '''
+        return self.planned_start_date, self.planned_date
+
+    @classmethod
+    def _set_move_planned_date(cls, shipments):
+        '''
+        Set planned date of moves for the shipments
+        '''
+        Move = Pool().get('stock.move')
+        to_write = []
+        for shipment in shipments:
+            dates = shipment._move_planned_date
+            outgoing_date, incoming_date = dates
+            outgoing_moves = [m for m in shipment.outgoing_moves
+                if (m.state not in ('assigned', 'done', 'cancelled')
+                    and m.planned_date != outgoing_date)]
+            if outgoing_moves:
+                to_write.append(outgoing_moves)
+                to_write.append({
+                        'planned_date': outgoing_date,
+                        })
+            if shipment.transit_location:
+                incoming_moves = [m for m in shipment.incoming_moves
+                    if (m.state not in ('assigned', 'done', 'cancelled')
+                        and m.planned_date != incoming_date)]
+                if incoming_moves:
+                    to_write.append(incoming_moves)
+                    to_write.append({
+                            'planned_date': incoming_date,
+                            })
+        if to_write:
+            Move.write(*to_write)
 
 
 class Address(metaclass=PoolMeta):
