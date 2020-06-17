@@ -85,7 +85,7 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
-        cls._check_modify_exclude = []
+        cls._check_modify_exclude = ['lines']
         cls._order.insert(0, ('date', 'DESC'))
         cls._order.insert(1, ('number', 'DESC'))
         cls._buttons.update({
