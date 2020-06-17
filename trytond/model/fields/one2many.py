@@ -173,6 +173,14 @@ class One2Many(Field):
             else:
                 return record_id
 
+        def target_value(record):
+            if record is None:
+                return None
+            if field._type == 'reference':
+                return str(record)
+            else:
+                return record.id
+
         def create(ids, vlist):
             for record_id in ids:
                 value = field_value(record_id)
@@ -195,9 +203,13 @@ class One2Many(Field):
                 return
             targets = Target.browse(target_ids)
             for record_id in ids:
-                to_write.extend((targets, {
-                            self.field: field_value(record_id),
-                            }))
+                fvalue = field_value(record_id)
+                to_update = [t for t in targets
+                    if target_value(getattr(t, self.field)) != fvalue]
+                if to_update:
+                    to_write.extend((to_update, {
+                                self.field: fvalue,
+                                }))
 
         def remove(ids, target_ids):
             target_ids = list(map(int, target_ids))

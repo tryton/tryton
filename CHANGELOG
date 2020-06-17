@@ -1,5 +1,6 @@
 * Add cached_property in tools
 * Use custom class to store record data
+* Do not write to existing targets on xxx2Many add
 * Add configuration check
 * Add support for properties to fields.depends
 * Allow combining authentication methods together

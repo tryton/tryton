@@ -370,6 +370,23 @@ class CommonTestCaseMixin:
         self.assertTupleEqual(one2many.targets, (target2,))
         self.assertListEqual(targets, [target2])
 
+    @with_transaction()
+    def test_write_not_readd(self):
+        "Test write one2many do not re-add existing"
+        One2Many = self.One2Many()
+        one2many, = One2Many.create([{
+                    'targets': [('create', [{}])],
+                    }])
+
+        target, = one2many.targets
+
+        One2Many.write([one2many], {
+                    'targets': [('add', {target.id})],
+                    })
+
+        target, = one2many.targets
+        self.assertIsNone(target.write_date)
+
 
 class FieldOne2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
     "Test Field One2Many"

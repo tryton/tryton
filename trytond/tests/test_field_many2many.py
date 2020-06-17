@@ -309,6 +309,25 @@ class CommonTestCaseMixin:
         self.assertTupleEqual(many2many.targets, (target2,))
         self.assertListEqual(targets, [target2])
 
+    @with_transaction()
+    def test_write_not_readd(self):
+        "Test write many2many do not re-add existing"
+        pool = Pool()
+        Many2Many = self.Many2Many()
+        Relation = pool.get(Many2Many.targets.relation_name)
+        many2many, = Many2Many.create([{
+                    'targets': [('create', [{}])],
+                    }])
+
+        target, = many2many.targets
+
+        Many2Many.write([many2many], {
+                    'targets': [('add', {target.id})],
+                    })
+
+        relation, = Relation.search([])
+        self.assertIsNone(relation.write_date)
+
 
 class FieldMany2ManyTestCase(unittest.TestCase, CommonTestCaseMixin):
     "Test Field Many2Many"
