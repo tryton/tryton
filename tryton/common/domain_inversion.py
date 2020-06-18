@@ -95,6 +95,9 @@ def eval_leaf(part, context, boolop=operator.and_):
         # evaluation context is deemed suffisant
         return bool(context.get(field.split('.')[0]))
     context_field = context.get(field)
+    if (operand not in {'=', '!='}
+            and (context_field is None or value is None)):
+        return
     if isinstance(context_field, datetime.date) and not value:
         if isinstance(context_field, datetime.datetime):
             value = datetime.datetime.min
@@ -205,8 +208,8 @@ def eval_domain(domain, context, boolop=operator.and_):
     elif domain[0] == 'OR':
         return eval_domain(domain[1:], context, operator.or_)
     else:
-        return boolop(eval_domain(domain[0], context),
-            eval_domain(domain[1:], context, boolop))
+        return boolop(bool(eval_domain(domain[0], context)),
+            bool(eval_domain(domain[1:], context, boolop)))
 
 
 def localize_domain(domain, field_name=None, strip_target=False):
