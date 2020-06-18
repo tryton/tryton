@@ -8,6 +8,7 @@ from gi.repository import GLib, Gtk
 from tryton.gui.window.view_form.screen import Screen
 import tryton.rpc as rpc
 import tryton.common as common
+from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
 from tryton.signal_event import SignalEvent
 from tryton.gui.window.win_form import WinForm
@@ -23,7 +24,6 @@ class Action(SignalEvent):
             context = {}
         super(Action, self).__init__()
         self.name = attrs['name']
-        self.context = context.copy()
 
         try:
             self.action = RPCExecute('model', 'ir.action.act_window', 'get',
@@ -32,34 +32,39 @@ class Action(SignalEvent):
             raise
 
         view_ids = []
-        self.action['view_mode'] = None
+        view_mode = None
         if self.action.get('views', []):
             view_ids = [x[0] for x in self.action['views']]
-            self.action['view_mode'] = [x[1] for x in self.action['views']]
+            view_mode = [x[1] for x in self.action['views']]
         elif self.action.get('view_id', False):
             view_ids = [self.action['view_id'][0]]
 
-        if 'view_mode' in attrs:
-            self.action['view_mode'] = attrs['view_mode']
-
         self.action.setdefault('pyson_domain', '[]')
-        self.context.update(rpc.CONTEXT)
-        self.context['_user'] = rpc._USER
-        self.context.update(PYSONDecoder(self.context).decode(
-            self.action.get('pyson_context', '{}')))
+        ctx = {}
+        ctx.update(rpc.CONTEXT)
+        ctx['_user'] = rpc._USER
+        decoder = PYSONDecoder(ctx)
+        action_ctx = context.copy()
+        action_ctx.update(
+            decoder.decode(self.action.get('pyson_context') or '{}'))
+        ctx.update(action_ctx)
 
-        eval_ctx = self.context.copy()
-        self.context.update(PYSONDecoder(eval_ctx).decode(
-            self.action.get('pyson_context', '{}')))
+        ctx['context'] = ctx
+        decoder = PYSONDecoder(ctx)
+        self.domain = decoder.decode(self.action['pyson_domain'])
+        order = decoder.decode(self.action['pyson_order'])
+        search_value = decoder.decode(
+            self.action['pyson_search_value'] or '[]')
+        tab_domain = [(n, decoder.decode(d), c)
+            for n, d, c in self.action['domains']]
 
+        limit = self.action.get('limit')
+        if limit is None:
+            limit = CONFIG['client.limit']
+
+        self.context = ctx
         self.domain = []
         self.update_domain([])
-
-        search_context = self.context.copy()
-        search_context['context'] = self.context
-        search_context['_user'] = rpc._USER
-        search_value = PYSONDecoder(search_context).decode(
-            self.action['pyson_search_value'] or '[]')
 
         self.widget = Gtk.Frame()
         self.widget.set_border_width(0)
@@ -73,9 +78,17 @@ class Action(SignalEvent):
         self.widget.show_all()
 
         self.screen = Screen(self.action['res_model'],
-            mode=self.action['view_mode'], context=self.context,
-            view_ids=view_ids, domain=self.domain,
-            search_value=search_value, row_activate=self.row_activate)
+            view_ids=view_ids,
+            domain=self.domain,
+            context=action_ctx,
+            order=order,
+            mode=view_mode,
+            limit=limit,
+            search_value=search_value,
+            tab_domain=tab_domain,
+            context_model=self.action['context_model'],
+            context_domain=self.action['context_domain'],
+            row_activate=self.row_activate)
         vbox.pack_start(
             self.screen.widget, expand=True, fill=True, padding=0)
         self.screen.signal_connect(self, 'record-message',
@@ -111,7 +124,7 @@ class Action(SignalEvent):
                     self.screen.current_record.save()
                 else:
                     self.screen.current_record.cancel()
-            WinForm(self.screen, callback)
+            WinForm(self.screen, callback, title=self.title.get_text())
 
     def set_value(self, mode, model_field):
         self.screen.current_view.set_value()
