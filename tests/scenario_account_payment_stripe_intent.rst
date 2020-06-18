@@ -142,3 +142,31 @@ Refund the payment::
     >>> payment.reload()
     >>> payment.state
     'failed'
+
+Cancel payment intent::
+
+    >>> payment = Payment()
+    >>> payment.journal = payment_journal
+    >>> payment.kind = 'receivable'
+    >>> payment.party = party
+    >>> payment.amount = Decimal('42')
+    >>> payment.description = 'Testing canceled'
+    >>> payment.stripe_customer = customer
+    >>> payment.stripe_customer_payment_method = payment_method.id
+    >>> payment.stripe_capture = False
+    >>> payment.click('approve')
+    >>> payment.state
+    'approved'
+
+    >>> process_payment = Wizard('account.payment.process', [payment])
+    >>> process_payment.execute('process')
+    >>> payment.state
+    'processing'
+
+    >>> _ = stripe.PaymentIntent.cancel(payment.stripe_payment_intent_id)
+
+    >>> time.sleep(1)
+    >>> cron_fetch_events.click('run_once')
+    >>> payment.reload()
+    >>> payment.state
+    'failed'

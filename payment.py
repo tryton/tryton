@@ -1065,6 +1065,8 @@ class Account(ModelSQL, ModelView):
             return self.webhook_payment_intent_amount_capturable_updated(data)
         elif type_ == 'payment_intent.payment_failed':
             return self.webhook_payment_intent_payment_failed(data)
+        elif type_ == 'payment_intent.canceled':
+            return self.webhook_payment_intent_canceled(data)
         return None
 
     def webhook_charge_succeeded(self, payload, _event='charge.succeeded'):
@@ -1358,6 +1360,25 @@ class Account(ModelSQL, ModelView):
                     payment._send_email_checkout()
                 else:
                     Payment.fail([payment])
+        return bool(payments)
+
+    def webhook_payment_intent_canceled(self, payload):
+        pool = Pool()
+        Payment = pool.get('account.payment')
+
+        payment_intent = payload['object']
+        payments = Payment.search([
+                ('stripe_payment_intent_id', '=', payment_intent['id']),
+                ])
+        if not payments:
+            logger.error(
+                "payment_intent.canceled: No payment '%s'",
+                payment_intent['id'])
+        for payment in payments:
+            # TODO: remove when https://bugs.tryton.org/issue4080
+            with Transaction().set_context(company=payment.company.id):
+                payment = Payment(payment.id)
+                Payment.fail([payment])
         return bool(payments)
 
     @classmethod
