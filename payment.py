@@ -531,7 +531,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         return params
 
     @classmethod
-    def stripe_charge(cls, payments=None):
+    def stripe_charge(cls, payments=None, off_session=True):
         """Charge stripe payments
 
         The transaction is committed after each payment charge.
@@ -562,7 +562,8 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         def create_payment_intent(payment):
             try:
                 payment_intent = stripe.PaymentIntent.create(
-                    **payment._payment_intent_parameters(off_session=True))
+                    **payment._payment_intent_parameters(
+                        off_session=off_session))
             except stripe.error.CardError as e:
                 error = e.json_body.get('error', {})
                 payment_intent = error.get('payment_intent')
