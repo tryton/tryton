@@ -30,7 +30,7 @@ class Product(metaclass=PoolMeta):
                 self._domain_moves_cost,
                 ('fifo_quantity_available', '>', 0),
                 ('to_location.type', '=', 'storage'),
-                ('from_location.type', 'in', ['supplier', 'production']),
+                ('from_location.type', '!=', 'storage'),
                 ('to_location.type', '=', 'storage'),
                 ], order=[('effective_date', 'DESC'), ('id', 'DESC')])
 
