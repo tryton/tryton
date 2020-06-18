@@ -520,13 +520,13 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertFalse(eval_domain(domain, {'x': 4}))
 
         domain = [['x', '>', None]]
-        self.assertTrue(eval_domain(domain, {'x': dt.date.today()}))
-        self.assertTrue(eval_domain(domain, {'x': dt.datetime.now()}))
+        self.assertFalse(eval_domain(domain, {'x': dt.date.today()}))
+        self.assertFalse(eval_domain(domain, {'x': dt.datetime.now()}))
 
         domain = [['x', '<', dt.date.today()]]
-        self.assertTrue(eval_domain(domain, {'x': None}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
         domain = [['x', '<', dt.datetime.now()]]
-        self.assertTrue(eval_domain(domain, {'x': None}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
 
         domain = [['x', 'in', [3, 5]]]
         self.assertTrue(eval_domain(domain, {'x': 3}))
