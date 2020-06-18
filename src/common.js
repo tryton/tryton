@@ -2186,6 +2186,13 @@
                 return Boolean(context[field.split('.')[0]]);
             }
             var context_field = context[field];
+            if (!~['=', '!='].indexOf(operand) &&
+                ((context_field === null) ||
+                    (context_field === undefined) ||
+                    (value === null) ||
+                    (value === undefined))) {
+                return;
+            }
             if ((context_field && context_field._isAMomentObject) && !value) {
                 if (context_field.isDateTime) {
                     value = Sao.DateTime.min;
@@ -2271,8 +2278,9 @@
             } else if (domain[0] == 'OR') {
                 return this.eval_domain(domain.slice(1), context, this.or);
             } else {
-                return boolop(this.eval_domain(domain[0], context),
-                        this.eval_domain(domain.slice(1), context, boolop));
+                return boolop(Boolean(this.eval_domain(domain[0], context)),
+                    Boolean(this.eval_domain(domain.slice(1), context, boolop))
+                );
             }
         },
         localize_domain: function(domain, field_name, strip_target) {
