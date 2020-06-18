@@ -51,13 +51,15 @@ class Move(metaclass=PoolMeta):
         to_save = []
         for move, move_qty in fifo_moves:
             consumed_qty += move_qty
-
-            with Transaction().set_context(date=move.effective_date):
-                move_unit_price = Currency.compute(
-                    move.currency, move.unit_price,
-                    self.company.currency, round=False)
-            move_unit_price = Uom.compute_price(move.uom, move_unit_price,
-                    move.product.default_uom)
+            if move.from_location.type in {'supplier', 'production'}:
+                with Transaction().set_context(date=move.effective_date):
+                    move_unit_price = Currency.compute(
+                        move.currency, move.unit_price,
+                        self.company.currency, round=False)
+                move_unit_price = Uom.compute_price(
+                    move.uom, move_unit_price, move.product.default_uom)
+            else:
+                move_unit_price = move.cost_price or 0
             cost_price += move_unit_price * Decimal(str(move_qty))
 
             move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
