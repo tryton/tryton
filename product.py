@@ -31,7 +31,7 @@ class Product(metaclass=PoolMeta):
         domain = [
             ('product', '=', self.id),
             self._domain_moves_cost(),
-            ('from_location.type', 'in', ['supplier', 'production']),
+            ('from_location.type', '!=', 'storage'),
             ('to_location.type', '=', 'storage'),
             ]
         if not date:
@@ -137,11 +137,10 @@ class Product(metaclass=PoolMeta):
                 quantity = Decimal(str(quantity))
 
         def in_move(move):
-            return (move.from_location.type in ['supplier', 'production']
-                    or move.to_location.type == 'supplier')
+            return move.to_location.type == 'storage'
 
         def out_move(move):
-            return not in_move(move)
+            return move.from_location.type == 'storage'
 
         def compute_fifo_cost_price(quantity, date):
             fifo_moves = self.get_fifo_move(
@@ -152,12 +151,15 @@ class Product(metaclass=PoolMeta):
             consumed_qty = 0
             for move, move_qty in fifo_moves:
                 consumed_qty += move_qty
-                with Transaction().set_context(date=move.effective_date):
-                    unit_price = Currency.compute(
-                        move.currency, move.unit_price,
-                        move.company.currency, round=False)
-                unit_price = Uom.compute_price(
-                    move.uom, unit_price, move.product.default_uom)
+                if move.from_location.type in {'supplier', 'production'}:
+                    with Transaction().set_context(date=move.effective_date):
+                        unit_price = Currency.compute(
+                            move.currency, move.unit_price,
+                            move.company.currency, round=False)
+                    unit_price = Uom.compute_price(
+                        move.uom, unit_price, move.product.default_uom)
+                else:
+                    unit_price = move.cost_price or 0
                 cost_price += unit_price * Decimal(str(move_qty))
             if consumed_qty:
                 return round_price(cost_price / Decimal(str(consumed_qty)))
@@ -204,12 +206,15 @@ class Product(metaclass=PoolMeta):
             if move.from_location.type == 'storage':
                 qty *= -1
             if in_move(move):
-                with Transaction().set_context(date=move.effective_date):
-                    unit_price = Currency.compute(
-                        move.currency, move.unit_price,
-                        move.company.currency, round=False)
-                unit_price = Uom.compute_price(
-                    move.uom, unit_price, self.default_uom)
+                if move.from_location.type in {'supplier', 'production'}:
+                    with Transaction().set_context(date=move.effective_date):
+                        unit_price = Currency.compute(
+                            move.currency, move.unit_price,
+                            move.company.currency, round=False)
+                    unit_price = Uom.compute_price(
+                        move.uom, unit_price, self.default_uom)
+                else:
+                    unit_price = cost_price
                 if quantity + qty > 0 and quantity >= 0:
                     cost_price = (
                         (cost_price * quantity) + (unit_price * qty)
@@ -217,7 +222,7 @@ class Product(metaclass=PoolMeta):
                 elif qty > 0:
                     cost_price = unit_price
                 current_cost_price = round_price(cost_price)
-            else:
+            elif out_move(move):
                 current_out_qty += -qty
             quantity += qty
 
