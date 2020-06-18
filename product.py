@@ -50,7 +50,7 @@ class Product(metaclass=PoolMeta):
             moves = Move.search([
                 ('product', '=', product.id),
                 ('state', '=', 'done'),
-                ('from_location.type', 'in', ['supplier', 'production']),
+                ('from_location.type', '!=', 'storage'),
                 ('to_location.type', '=', 'storage'),
                 ], offset=offset, limit=limit,
                 order=[('effective_date', 'DESC'), ('id', 'DESC')])
