@@ -45,6 +45,7 @@ Get stock locations::
     >>> supplier_loc, = Location.find([('code', '=', 'SUP')])
     >>> storage_loc, = Location.find([('code', '=', 'STO')])
     >>> customer_loc, = Location.find([('code', '=', 'CUS')])
+    >>> lost_found, = Location.find([('name', '=', "Lost and Found")])
 
 Create some moves::
 
@@ -62,6 +63,12 @@ Create some moves::
     ...     from_location=supplier_loc,
     ...     to_location=storage_loc,
     ...     unit_price=Decimal('120'),
+    ...     effective_date=today - dt.timedelta(days=1)).click('do')
+    >>> StockMove(
+    ...     product=product,
+    ...     quantity=1,
+    ...     from_location=lost_found,
+    ...     to_location=storage_loc,
     ...     effective_date=today - dt.timedelta(days=1)).click('do')
     >>> StockMove(
     ...     product=product,
@@ -88,17 +95,16 @@ Create some moves::
     ...     product=product,
     ...     quantity=1,
     ...     from_location=storage_loc,
-    ...     to_location=customer_loc,
-    ...     unit_price=Decimal('300'),
+    ...     to_location=lost_found,
     ...     effective_date=today).click('do')
 
 
     >>> [m.cost_price for m in StockMove.find([])]
-    [Decimal('100.0000'), Decimal('110.0000'), Decimal('105.0000'), Decimal('110.0000'), Decimal('113.3333'), Decimal('100.0000')]
+    [Decimal('100.0000'), Decimal('116.6666'), Decimal('106.6666'), Decimal('110.0000'), Decimal('113.3333'), Decimal('113.3333'), Decimal('100.0000')]
 
     >>> product.reload()
     >>> product.cost_price
-    Decimal('100.0000')
+    Decimal('99.9998')
 
 Recompute cost price::
 
@@ -106,11 +112,11 @@ Recompute cost price::
     >>> recompute.execute('recompute')
 
     >>> [m.cost_price for m in StockMove.find([])]
-    [Decimal('106.6667'), Decimal('106.6667'), Decimal('105.0000'), Decimal('110.0000'), Decimal('113.3333'), Decimal('100.0000')]
+    [Decimal('111.1111'), Decimal('111.1111'), Decimal('106.6666'), Decimal('110.0000'), Decimal('113.3333'), Decimal('113.3333'), Decimal('100.0000')]
 
     >>> product.reload()
     >>> product.cost_price
-    Decimal('99.9998')
+    Decimal('100.0000')
 
 Recompute cost price from a date::
 
@@ -119,8 +125,8 @@ Recompute cost price from a date::
     >>> recompute.execute('recompute')
 
     >>> [m.cost_price for m in StockMove.find([])]
-    [Decimal('106.6667'), Decimal('106.6667'), Decimal('105.0000'), Decimal('110.0000'), Decimal('113.3333'), Decimal('100.0000')]
+    [Decimal('111.1111'), Decimal('111.1111'), Decimal('106.6666'), Decimal('110.0000'), Decimal('113.3333'), Decimal('113.3333'), Decimal('100.0000')]
 
     >>> product.reload()
     >>> product.cost_price
-    Decimal('99.9998')
+    Decimal('100.0000')
