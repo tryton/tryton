@@ -291,6 +291,11 @@ class GenericText(Cell):
         if callback:
             callback()
 
+    def set_editable(self, record):
+        if not record or not self.editable:
+            return
+        self.editable.set_text(self.get_textual_value(record))
+
     def editing_started(self, cell, editable, path):
         def remove(editable):
             self.editable = None
@@ -968,6 +973,14 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def value_from_text(self, record, text, callback=None):
         if callback:
             callback()
+
+    def set_editable(self, record):
+        if not record or not self.editable:
+            return
+        field = record[self.attrs['name']]
+        value = self.get_value(record, field)
+        self.update_selection(record, field)
+        self.set_popdown_value(self.editable, value)
 
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
