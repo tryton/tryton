@@ -201,17 +201,14 @@ class Product(metaclass=PoolMeta):
         new_products = super().copy(products, default)
         if 'template' in default and copy_suppliers:
             template2new = {}
-            product2new = {}
             to_copy = []
             for product, new_product in zip(products, new_products):
                 if product.product_suppliers:
                     to_copy.extend(product.product_suppliers)
                     template2new[product.template.id] = new_product.template.id
-                    product2new[product.id] = new_product.id
             if to_copy:
                 ProductSupplier.copy(to_copy, {
-                        'product': lambda d: product2new[d['product']],
-                        'template': lambda d: template2new[d['template']],
+                        'product': lambda d: template2new[d['product']],
                         })
         return new_products
 
