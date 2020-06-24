@@ -9,3 +9,9 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     unit_landed_cost = fields.Numeric('Unit Landed Cost',
         digits=price_digits, readonly=True)
+
+    def _compute_unit_price(self):
+        unit_price = super()._compute_unit_price()
+        if self.unit_landed_cost:
+            unit_price += self.unit_landed_cost
+        return unit_price
