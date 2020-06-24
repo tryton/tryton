@@ -8,6 +8,7 @@ from . import stock
 
 def register():
     Pool.register(
+        account.Invoice,
         account.InvoiceLineStockMove,
         account.InvoiceLine,
         stock.Move,

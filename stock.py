@@ -1,9 +1,13 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from decimal import Decimal
+
+from trytond.model import ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.pyson import Eval
+
+from trytond.modules.product import round_price
 
 
 class Move(metaclass=PoolMeta):
@@ -14,6 +18,7 @@ class Move(metaclass=PoolMeta):
         domain=[
             ('product.default_uom_category',
                 '=', Eval('product_uom_category', -1)),
+            ('type', '=', 'line'),
             ['OR',
                 ('invoice.type', 'in', Eval('invoice_types', [])),
                 ('invoice_type', 'in', Eval('invoice_types', [])),
@@ -62,6 +67,40 @@ class Move(metaclass=PoolMeta):
         if not Transaction().context.get('_stock_move_split'):
             default.setdefault('invoice_lines', None)
         return super().copy(moves, default=default)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, moves):
+        super().do(moves)
+        cls.update_unit_price(moves)
+
+    @classmethod
+    def update_unit_price(cls, moves):
+        for move in moves:
+            if move.state == 'done':
+                unit_price = move._compute_unit_price()
+                if unit_price != move.unit_price:
+                    move.unit_price = unit_price
+        cls.save(moves)
+
+    def _compute_unit_price(self):
+        pool = Pool()
+        UoM = pool.get('product.uom')
+        Currency = pool.get('currency.currency')
+        amount, quantity = 0, 0
+        for line in self.invoice_lines:
+            if line.invoice and line.invoice.state in {'posted', 'paid'}:
+                with Transaction().set_context(date=self.effective_date):
+                    amount += Currency.compute(
+                        line.invoice.currency, line.amount, self.currency)
+                quantity += UoM.compute_qty(
+                    line.unit, line.quantity, self.uom)
+        if not quantity:
+            unit_price = self.unit_price
+        else:
+            unit_price = round_price(amount / Decimal(str(quantity)))
+        return unit_price
 
 
 class ShipmentOut(metaclass=PoolMeta):
