@@ -236,20 +236,19 @@ class Promotion(
             return True
 
     def apply(self, sale):
-        new_prices = {}
+        applied = False
         for line in sale.lines:
             if line.type != 'line':
                 continue
             if not self.is_valid_sale_line(line):
                 continue
             context = self.get_context_formula(line)
-            new_prices[line] = self.get_unit_price(**context)
-
-        # Apply promotion only if all unit prices decrease
-        if all(l.unit_price >= p for l, p in new_prices.items()):
-            for line, unit_price in new_prices.items():
-                line.unit_price = round_price(unit_price)
+            new_price = self.get_unit_price(**context)
+            if line.unit_price >= new_price:
+                line.unit_price = round_price(new_price)
                 line.promotion = self
+                applied = True
+        if applied:
             sale.lines = sale.lines  # Trigger the change
 
     def get_context_formula(self, sale_line):
