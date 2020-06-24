@@ -2914,16 +2914,20 @@ class CreditInvoice(Wizard):
                 default['with_refund'] = False
         return default
 
+    @property
+    def _credit_options(self):
+        return dict(
+            refund=self.start.with_refund,
+            invoice_date=self.start.invoice_date,
+            )
+
     def do_credit(self, action):
         pool = Pool()
         Invoice = pool.get('account.invoice')
 
-        refund = self.start.with_refund
-        invoice_date = self.start.invoice_date
         invoices = Invoice.browse(Transaction().context['active_ids'])
 
-        credit_invoices = Invoice.credit(
-            invoices, refund=refund, invoice_date=invoice_date)
+        credit_invoices = Invoice.credit(invoices, **self._credit_options)
 
         data = {'res_id': [i.id for i in credit_invoices]}
         if len(credit_invoices) == 1:
