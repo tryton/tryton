@@ -198,3 +198,25 @@ class InvoiceLine(metaclass=PoolMeta):
         default.setdefault('commissions', None)
         default.setdefault('from_commissions', None)
         return super(InvoiceLine, cls).copy(lines, default=default)
+
+
+class CreditInvoiceStart(metaclass=PoolMeta):
+    __name__ = 'account.invoice.credit.start'
+    with_agent = fields.Boolean(
+        "With Agent",
+        help="Check to keep the original invoice's agent.")
+
+    @classmethod
+    def default_with_agent(cls):
+        return True
+
+
+class CreditInvoice(metaclass=PoolMeta):
+    __name__ = 'account.invoice.credit'
+
+    @property
+    def _credit_options(self):
+        options = super()._credit_options
+        if not self.start.with_agent:
+            options['agent'] = None
+        return options

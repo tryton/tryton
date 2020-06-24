@@ -20,6 +20,7 @@ def register():
         commission.CreateInvoiceAsk,
         invoice.Invoice,
         invoice.InvoiceLine,
+        invoice.CreditInvoiceStart,
         product.Template,
         product.Template_Agent,
         product.Product,
@@ -33,6 +34,7 @@ def register():
         depends=['sale'])
     Pool.register(
         commission.CreateInvoice,
+        invoice.CreditInvoice,
         party.Replace,
         party.Erase,
         module='commission', type_='wizard')
