@@ -52,6 +52,7 @@ class View(ModelSQL, ModelView):
                 ('type', '!=', None)),
             ],
         depends=['inherit'])
+    type_string = type.translated('type')
     data = fields.Text('Data')
     name = fields.Char('Name', states={
             'invisible': ~(Eval('module') & Eval('name')),
@@ -90,6 +91,11 @@ class View(ModelSQL, ModelView):
     @staticmethod
     def default_module():
         return Transaction().context.get('module') or ''
+
+    def get_rec_name(self, name):
+        return '%s (%s)' % (
+            self.model,
+            self.inherit.rec_name if self.inherit else self.type_string)
 
     @classmethod
     @ModelView.button_action('ir.act_view_show')
