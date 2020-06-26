@@ -1,7 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-import copy
-
 from trytond.model import ModelSQL, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
@@ -122,34 +120,6 @@ class User(metaclass=PoolMeta):
         if user.company:
             res['company'] = user.company.id
             res['company.rec_name'] = user.company.rec_name
-        return res
-
-    @classmethod
-    def get_preferences_fields_view(cls):
-        pool = Pool()
-        Company = pool.get('company.company')
-
-        res = super(User, cls).get_preferences_fields_view()
-        res = copy.deepcopy(res)
-
-        def convert2selection(definition, name):
-            del definition[name]['relation']
-            definition[name]['type'] = 'selection'
-            selection = []
-            definition[name]['selection'] = selection
-            return selection
-
-        if 'company' in res['fields']:
-            selection = convert2selection(res['fields'], 'company')
-            selection.append((None, ''))
-            user = cls(Transaction().user)
-            if user.main_company:
-                companies = Company.search([
-                        ('parent', 'child_of', [user.main_company.id],
-                            'parent'),
-                        ])
-                for company in companies:
-                    selection.append((company.id, company.rec_name))
         return res
 
     @classmethod
