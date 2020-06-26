@@ -128,7 +128,7 @@ def run_task(pool, task_id):
                 task = Queue(task_id)
                 scheduled_at = dt.datetime.now()
                 scheduled_at += dt.timedelta(
-                    seconds=random.randint(0, 2 ** retry))
+                    seconds=random.randint(0, 2 * retry))
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
             logger.critical(
