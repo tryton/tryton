@@ -217,6 +217,7 @@ class View(ModelSQL, ModelView):
 class ShowViewStart(ModelView):
     'Show view'
     __name__ = 'ir.ui.view.show.start'
+    __no_slots__ = True
 
 
 class ShowView(Wizard):
