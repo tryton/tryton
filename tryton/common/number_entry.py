@@ -58,8 +58,8 @@ class NumberEntry(Gtk.Entry, Gtk.Editable):
         if (value and self.__digits is not None
                 and round(value, self.__digits) != value):
             return position
-        buffer_.insert_text(position, new_text, length)
-        return position + length
+        buffer_.insert_text(position, new_text, len(new_text))
+        return position + len(new_text)
 
     def __key_press_event(self, event):
         for name in ['KP_Decimal', 'KP_Separator']:
