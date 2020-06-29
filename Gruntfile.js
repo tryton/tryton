@@ -23,7 +23,8 @@ module.exports = function(grunt) {
       'src/wizard.js',
       'src/board.js',
       'src/bus.js',
-      'src/plugins.js'
+      'src/plugins.js',
+      'src/html_sanitizer.js'
   ];
 
   // Project configuration.
