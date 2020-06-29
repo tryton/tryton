@@ -2800,6 +2800,25 @@
             ["Active: False", "Active: True"]));
     });
 
+    QUnit.test('HTML Sanitization', function() {
+        var examples = [
+            ["Test", "Test"],
+            ["<b>Test</b>", "<b>Test</b>"],
+            ["<div><b>Test</b></div>", "<div><b>Test</b></div>"],
+            ["<script>window.alert('insecure')</script>", ""],
+            ["<b><script>window.alert('insecure')</script>Test</b>",
+                "<b>Test</b>"],
+            ['<div align="left">Test</div>', '<div align="left">Test</div>'],
+            ['<font href="test" size="1">Test</font>',
+                '<font size="1">Test</font>'],
+        ];
+        for (var i = 0; i < examples.length; i++) {
+            var input = examples[i][0], output = examples[i][1];
+            QUnit.strictEqual(Sao.HtmlSanitizer.sanitize(input), output,
+                'Sao.HtmlSanitizer.sanitize(' + input + ')');
+        }
+    });
+
         /*
     QUnit.test('CRUD', function() {
         var run_tests = function() {
