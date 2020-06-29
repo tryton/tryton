@@ -2261,7 +2261,7 @@ function eval_pyson(value){
                     this.input.attr('spellcheck', 'true');
                 }
             }
-            this.input.html(value);
+            this.input.html(Sao.HtmlSanitizer.sanitize(value || ''));
         },
         focus: function() {
             this.input.focus();
@@ -2279,7 +2279,8 @@ function eval_pyson(value){
             this.field.set_client(this.record, value);
         },
         _normalize_markup: function(content) {
-            var el = jQuery('<div/>').html(content || '');
+            var el = jQuery('<div/>').html(
+                Sao.HtmlSanitizer.sanitize(content || ''));
             this._normalize(el);
             return el.html();
         },
