@@ -1092,7 +1092,7 @@
             for(var i=0; i<this.encodings.length; i++) {
                 jQuery('<option/>', {
                     'val': this.encodings[i]
-                }).html(this.encodings[i]).appendTo(this.el_csv_encoding);
+                }).append(this.encodings[i]).appendTo(this.el_csv_encoding);
             }
 
             var enc = 'utf-8';
@@ -1194,7 +1194,7 @@
             var field = el_field.attr('field');
             var node = jQuery('<li/>', {
                 'field': field,
-            }).html(el_field.attr('name')).click(function(e) {
+            }).text(el_field.attr('name')).click(function(e) {
                 if (e.ctrlKey) {
                     node.toggleClass('bg-primary');
                 } else {
@@ -1218,7 +1218,7 @@
                 var node = jQuery('<li/>', {
                     'field': parent_node[field].field,
                     'name': parent_node[field].name
-                }).html(name).click(function(e) {
+                }).text(name).click(function(e) {
                     if(e.ctrlKey) {
                         node.toggleClass('bg-primary');
                     } else {
@@ -1342,7 +1342,7 @@
             }
             var node = jQuery('<li/>', {
                 'field': field
-            }).html(name).click(function(){
+            }).text(name).click(function(){
                 node.addClass('bg-primary')
                     .siblings().removeClass('bg-primary');
             }).appendTo(this.fields_selected);
@@ -1484,10 +1484,10 @@
                 'id': 'input-records',
             }).append(jQuery('<option/>', {
                 'val': true,
-            }).html(Sao.i18n.gettext("Selected Records")))
+            }).text(Sao.i18n.gettext("Selected Records")))
                 .append(jQuery('<option/>', {
                     'val': false,
-                }).html(Sao.i18n.gettext("Listed Records")));
+                }).text(Sao.i18n.gettext("Listed Records")));
 
             this.ignore_search_limit = jQuery('<input/>', {
                 'type': 'checkbox',
@@ -1560,7 +1560,7 @@
                 var path = parent_node[name].path;
                 var node = jQuery('<li/>', {
                     'path': path
-                }).html(parent_node[name].string).click(function(e) {
+                }).text(parent_node[name].string).click(function(e) {
                     if(e.ctrlKey) {
                         node.toggleClass('bg-primary');
                     } else {
@@ -1811,7 +1811,7 @@
             }
             var node = jQuery('<li/>', {
                 'path': name,
-            }).html(long_string).click(function(e) {
+            }).text(long_string).click(function(e) {
                 if(e.ctrlKey) {
                     node.toggleClass('bg-primary');
                 } else {

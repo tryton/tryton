@@ -780,7 +780,7 @@ function eval_pyson(value){
                 .append(img)
                 .text(text))
                 .appendTo(this.nav);
-            pane.html(tab).appendTo(this.panes);
+            pane.append(tab).appendTo(this.panes);
             if (!this.selected) {
                 // Can not use .tab('show')
                 page.addClass('active');

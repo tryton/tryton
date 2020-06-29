@@ -137,9 +137,9 @@
                         params);
 
                 if (attributes.string) {
-                    this.title.html(attributes.string);
+                    this.title.text(attributes.string);
                 } else {
-                    this.title.html(this.action.name);
+                    this.title.text(this.action.name);
                 }
                 this.screen.switch_view().done(function() {
                     this.body.append(this.screen.screen_container.el);

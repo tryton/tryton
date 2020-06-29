@@ -1337,7 +1337,7 @@
                             if (item.length) {
                                 prefix.render(this.record, item);
                             } else {
-                                prefix_el.html(prefix.render(this.record));
+                                prefix_el.empty().append(prefix.render(this.record));
                             }
                         }
                     }
@@ -1346,7 +1346,7 @@
                     if (item.length) {
                         column.render(this.record, item);
                     } else {
-                        widget.html(column.render(this.record));
+                        widget.empty().append(column.render(this.record));
                     }
                     if (column.suffixes) {
                         for (var k = 0; k < column.suffixes.length; k++) {
@@ -1356,7 +1356,7 @@
                             if (item.length) {
                                 suffix.render(this.record, item);
                             } else {
-                                suffix_el.html(suffix.render(this.record));
+                                suffix_el.empty().append(suffix.render(this.record));
                             }
                         }
                     }
@@ -1693,7 +1693,7 @@
             this.tree.columns.forEach(function(col, idx) {
                 var td = this._get_column_td(idx);
                 var static_el = this.get_static_el(td);
-                static_el.html(col.render(this.record)).show();
+                static_el.empty().append(col.render(this.record)).show();
                 this.get_editable_el(td)
                     .empty()
                     .data('widget', null)

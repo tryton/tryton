@@ -406,7 +406,7 @@
             role: 'tabpanel',
             'class': 'tab-pane',
             id: tab.id
-        }).html(tab.el)
+        }).append(tab.el)
         .appendTo(tabcontent);
         tab_link.tab('show');
         tabs.trigger('ready');
@@ -1358,7 +1358,7 @@
             }.bind(this));
             this.create_tabcontent();
             this.set_name(this.name);
-            this.title.html(this.name_el.text());
+            this.title.text(this.name_el.text());
         },
         compare: function(attributes) {
             if (!attributes) {
@@ -1398,7 +1398,7 @@
             this.set_name(wizard.name);
             wizard.tab = this;
             this.create_tabcontent();
-            this.title.html(this.name_el.text());
+            this.title.text(this.name_el.text());
             this.el.append(wizard.form);
         },
         create_toolbar: function() {

@@ -1,3 +1,4 @@
+* Escape external string (issue9394)
 * Keep context in sessionStorage
 * Use existing context for get_preferences
 * Escape external strings (issue9351)
