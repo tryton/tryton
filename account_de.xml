@@ -2845,6 +2845,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type" ref="type_1580"/>
             <field name="parent" ref="view_balance_1580"/>
         </record>
+        <record model="account.account.template" id="account_1589">
+            <field name="name">Abziehbare Vorsteuer aus innergemeinschaftlichem Erwerb 16%</field>
+            <field name="code">1589</field>
+            <field name="type" ref="type_1580"/>
+            <field name="parent" ref="view_balance_1580"/>
+        </record>
         <record model="account.account.template" id="account_0090">
             <field name="name">Geschäftsbauten</field>
             <field name="code">0090</field>
@@ -4016,7 +4022,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="view_income_1060"/>
         </record>
         <record model="account.account.template" id="account_1773">
-            <field name="name">Umsatzsteuer aus EG-Erwerb 16%</field>
+            <field name="name">Umsatzsteuer 5%</field>
             <field name="code">1773</field>
             <field name="type" ref="type_2535"/>
             <field name="parent" ref="view_balance_2535"/>
@@ -6004,7 +6010,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="view_balance_2535"/>
         </record>
         <record model="account.account.template" id="account_1786">
-            <field name="name">Umsatzsteuer nach § 13b UStG 16%</field>
+            <field name="name">Umsatzsteuer aus innergemeinschaftlichem Erwerb 16%</field>
             <field name="code">1786</field>
             <field name="type" ref="type_2535"/>
             <field name="parent" ref="view_balance_2535"/>
@@ -6466,7 +6472,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="view_income_1250"/>
         </record>
         <record model="account.account.template" id="account_1568">
-            <field name="name">Aufzuteil. Vorsteuer §§13a/13b USt 16%</field>
+            <field name="name">Abziehbare Vorsteuer 5%</field>
             <field name="code">1568</field>
             <field name="type" ref="type_1580"/>
             <field name="parent" ref="view_balance_1580"/>
