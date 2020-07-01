@@ -65,7 +65,7 @@ def update_completion(entry, record, field, model, domain=None):
                 CONFIG['client.limit'], order, ['rec_name'], context=context,
                 process_exception=False, callback=callback)
         except Exception:
-            logging.warn(
+            logger.warning(
                 _("Unable to search for completion of %s") % model,
                 exc_info=True)
         return False
