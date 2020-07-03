@@ -107,11 +107,10 @@ class Move(metaclass=PoolMeta):
                 'cost_price', **self._cost_price_pattern)
 
         # Compute average cost price
-        unit_price = self.unit_price
-        self.unit_price = Uom.compute_price(
-            self.product.default_uom, cost_price, self.uom)
+        self.unit_price_company, unit_price_company = (
+            cost_price, self.unit_price_company)
         average_cost_price = self._compute_product_cost_price('out')
-        self.unit_price = unit_price
+        self.unit_price_company = unit_price_company
 
         if cost_price:
             cost_price = round_price(cost_price)

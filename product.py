@@ -152,12 +152,7 @@ class Product(metaclass=PoolMeta):
             for move, move_qty in fifo_moves:
                 consumed_qty += move_qty
                 if move.from_location.type in {'supplier', 'production'}:
-                    with Transaction().set_context(date=move.effective_date):
-                        unit_price = Currency.compute(
-                            move.currency, move.unit_price,
-                            move.company.currency, round=False)
-                    unit_price = Uom.compute_price(
-                        move.uom, unit_price, move.product.default_uom)
+                    unit_price = move.unit_price_company
                 else:
                     unit_price = move.cost_price or 0
                 cost_price += unit_price * Decimal(str(move_qty))
