@@ -1,3 +1,4 @@
+* Enforce filling cost price of move
 * Rename move state from cancel to cancelled
 * Rename shipment states from cancel to cancelled
 * Rename inventory state from cancel to cancelled

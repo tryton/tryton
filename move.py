@@ -246,8 +246,15 @@ class Move(Workflow, ModelSQL, ModelView):
             'invisible': Eval('state') != 'done',
             },
         depends=['state'])
-    cost_price = fields.Numeric('Cost Price', digits=price_digits,
-        readonly=True)
+    cost_price = fields.Numeric(
+        "Cost Price", digits=price_digits, readonly=True,
+        states={
+            'invisible': ~Eval('cost_price_required'),
+            'required': (
+                (Eval('state') == 'done')
+                & Eval('cost_price_required', False)),
+            },
+        depends=['cost_price_required'])
     currency = fields.Many2One('currency.currency', 'Currency',
         states={
             'invisible': ~Eval('unit_price_required'),
@@ -259,6 +266,9 @@ class Move(Workflow, ModelSQL, ModelView):
     unit_price_required = fields.Function(
         fields.Boolean('Unit Price Required'),
         'on_change_with_unit_price_required')
+    cost_price_required = fields.Function(
+        fields.Boolean("Cost Price Required"),
+        'on_change_with_cost_price_required')
     assignation_required = fields.Function(
         fields.Boolean('Assignation Required'),
         'on_change_with_assignation_required')
@@ -401,6 +411,13 @@ class Move(Workflow, ModelSQL, ModelView):
         if from_type == 'storage' and to_type == 'supplier':
             return True
         return False
+
+    @fields.depends('from_location', 'to_location')
+    def on_change_with_cost_price_required(self, name=None):
+        from_type = self.from_location.type if self.from_location else None
+        to_type = self.to_location.type if self.to_location else None
+        return ((from_type != 'storage' and to_type == 'storage')
+            or (from_type == 'storage' and to_type != 'storage'))
 
     @fields.depends('from_location')
     def on_change_with_assignation_required(self, name=None):
@@ -590,7 +607,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         cost_values.append(
                             (move.product, cost_price,
                                 move._cost_price_pattern))
-                    if move.cost_price is None:
+                    if move.cost_price_required and move.cost_price is None:
                         if cost_price is None:
                             cost_price = move.product.get_multivalue(
                                 'cost_price', **move._cost_price_pattern)
