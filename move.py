@@ -134,7 +134,7 @@ class Move(metaclass=PoolMeta):
                 and self.product.cost_price_method == 'fifo'):
             fifo_cost_price, cost_price = (
                 self._update_fifo_out_product_cost_price())
-            if self.cost_price is None:
+            if self.cost_price_required and self.cost_price is None:
                 self.cost_price = fifo_cost_price
         return cost_price
 
