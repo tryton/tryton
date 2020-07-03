@@ -240,6 +240,14 @@ class Move(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['unit_price_required', 'state'])
+    unit_price_company = fields.Function(
+        fields.Numeric("Unit Price", digits=price_digits,
+            states={
+                'invisible': ~Eval('unit_price_required'),
+                },
+            depends=['unit_price_required'],
+            help="Unit price in company currency."),
+        'get_unit_price_company')
     unit_price_updated = fields.Boolean(
         "Unit Price Updated", readonly=True,
         states={
@@ -397,6 +405,28 @@ class Move(Workflow, ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom_category.id
 
+    @classmethod
+    def get_unit_price_company(cls, moves, name):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
+        Uom = pool.get('product.uom')
+        Date = pool.get('ir.date')
+        today = Date.today()
+        prices = {}
+        for move in moves:
+            if move.unit_price is not None:
+                date = move.effective_date or move.planned_date or today
+                with Transaction().set_context(date=date):
+                    unit_price = Currency.compute(
+                        move.currency, move.unit_price,
+                        move.company.currency, round=False)
+                    unit_price = Uom.compute_price(
+                        move.uom, unit_price, move.product.default_uom)
+                    prices[move.id] = round_price(unit_price)
+            else:
+                prices[move.id] = None
+        return prices
+
     @fields.depends('from_location', 'to_location')
     def on_change_with_unit_price_required(self, name=None):
         from_type = self.from_location.type if self.from_location else None
@@ -500,7 +530,6 @@ class Move(Workflow, ModelSQL, ModelView):
         """
         pool = Pool()
         Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
 
         if direction == 'in':
             quantity = self.quantity
@@ -510,21 +539,14 @@ class Move(Workflow, ModelSQL, ModelView):
 
         qty = Decimal(str(qty))
         product_qty = Decimal(str(self.product.quantity))
-        # convert wrt currency
-        with Transaction().set_context(date=self.effective_date):
-            unit_price = Currency.compute(self.currency, self.unit_price,
-                self.company.currency, round=False)
-        # convert wrt to the uom
-        unit_price = Uom.compute_price(self.uom, unit_price,
-            self.product.default_uom)
         cost_price = self.product.get_multivalue(
             'cost_price', **self._cost_price_pattern)
         if product_qty + qty > 0 and product_qty >= 0:
             new_cost_price = (
-                (cost_price * product_qty) + (unit_price * qty)
+                (cost_price * product_qty) + (self.unit_price_company * qty)
                 ) / (product_qty + qty)
         elif direction == 'in':
-            new_cost_price = unit_price
+            new_cost_price = self.unit_price_company
         elif direction == 'out':
             new_cost_price = cost_price
         return round_price(new_cost_price)
