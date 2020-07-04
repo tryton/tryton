@@ -1590,8 +1590,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         move.to_location = self.to_location
         move.state = 'draft'
         move.company = self.purchase.company
-        move.unit_price = self.unit_price
-        move.currency = self.purchase.currency
+        if move.on_change_with_unit_price_required():
+            move.unit_price = self.unit_price
+            move.currency = self.purchase.currency
         if self.moves:
             # backorder can not be planned but delivery date could be used
             # if set in the future
