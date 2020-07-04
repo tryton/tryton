@@ -7,10 +7,10 @@ from collections import defaultdict
 
 from simpleeval import simple_eval
 
-from sql import Literal, Null, Select
-from sql.aggregate import Max
+from sql import Literal, Select, Window, With
+from sql.aggregate import Max, Sum
 from sql.functions import CurrentTimestamp
-from sql.conditionals import Coalesce
+from sql.conditionals import Coalesce, Case
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -435,6 +435,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
 
     date = _Date('Date')
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
+    company = fields.Many2One('company.company', "Company")
 
     del _Date
 
@@ -443,8 +444,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         super(ProductQuantitiesByWarehouse, cls).__setup__()
         cls._order.insert(0, ('date', 'ASC'))
 
-    @staticmethod
-    def table_query():
+    @classmethod
+    def table_query(cls):
         pool = Pool()
         Move = pool.get('stock.move')
         Location = pool.get('stock.location')
@@ -462,10 +463,17 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         else:
             product_clause = move.product == context.get('product', -1)
 
-        warehouse_id = context.get('warehouse', -1)
-        warehouse_query = Location.search([
-                ('parent', 'child_of', [warehouse_id]),
-                ], query=True, order=[])
+        if 'warehouse' in context:
+            warehouse = Location(context.get('warehouse'))
+            if context.get('stock_skip_warehouse'):
+                location_id = warehouse.storage_location.id
+            else:
+                location_id = warehouse.id
+        else:
+            location_id = -1
+        warehouse = With('id', query=Location.search([
+                    ('parent', 'child_of', [location_id]),
+                    ], query=True, order=[]))
         date_column = Coalesce(move.effective_date, move.planned_date)
         return (from_.select(
                 Max(move.id).as_('id'),
@@ -474,12 +482,21 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 Literal(None).as_('write_uid'),
                 Literal(None).as_('write_date'),
                 date_column.as_('date'),
+                move.company.as_('company'),
                 where=product_clause
-                & (move.from_location.in_(warehouse_query)
-                    | move.to_location.in_(warehouse_query))
-                & (Coalesce(move.effective_date, move.planned_date) != Null)
-                & (date_column != today),
-                group_by=(date_column, move.product))
+                & (
+                    (move.from_location.in_(
+                            warehouse.select(warehouse.id))
+                        & ~move.to_location.in_(
+                            warehouse.select(warehouse.id)))
+                    | (~move.from_location.in_(
+                            warehouse.select(warehouse.id))
+                        & move.to_location.in_(
+                            warehouse.select(warehouse.id))))
+                & ((date_column < today) & (move.state == 'done')
+                    | (date_column >= today)),
+                group_by=(date_column, move.product, move.company),
+                with_=warehouse)
             | Select([
                     Literal(0).as_('id'),
                     Literal(0).as_('create_uid'),
@@ -487,6 +504,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     Literal(None).as_('write_uid'),
                     Literal(None).as_('write_date'),
                     Literal(today).as_('date'),
+                    Literal(context.get('company', -1)).as_('company'),
                     ]))
 
     @classmethod
@@ -540,10 +558,8 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
     @classmethod
     def get_rec_name(cls, records, name):
         pool = Pool()
-        Lang = pool.get('ir.lang')
         Product = pool.get('product.product')
         Template = pool.get('product.template')
-        Location = pool.get('stock.location')
         context = Transaction().context
 
         if context.get('product_template'):
@@ -552,16 +568,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             name = Product(context['product']).rec_name
         else:
             name = ''
-        if context.get('warehouse'):
-            warehouse_name = Location(context['warehouse']).rec_name
-        else:
-            warehouse_name = '-'
-        lang = Lang.get()
-        names = {}
-        for record in records:
-            names[record.id] = '%s (%s) @ %s' % (
-                name, warehouse_name, lang.strftime(record.date))
-        return names
+        return dict.fromkeys(map(int, records), name)
 
 
 class ProductQuantitiesByWarehouseContext(ModelView):
@@ -590,49 +597,192 @@ class OpenProductQuantitiesByWarehouse(Wizard):
     "Open Product Quantities By Warehouse"
     __name__ = 'stock.product_quantities_warehouse.open'
     start_state = 'open_'
-    open_ = StateAction('stock.act_move_form')
+    open_ = StateAction('stock.act_product_quantities_warehouse_move')
 
     def do_open_(self, action):
         pool = Pool()
-        Date = pool.get('ir.date')
         ProductQuantitiesByWarehouse = pool.get(
             'stock.product_quantities_warehouse')
         context = Transaction().context
-        today = Date.today()
 
         record = ProductQuantitiesByWarehouse(context['active_id'])
-        warehouse_id = context.get('warehouse', -1)
-        domain = [
-            ['OR',
-                [
-                    ('from_location', 'child_of', [warehouse_id], 'parent'),
-                    ('to_location', 'not child_of', [warehouse_id], 'parent'),
-                    ],
-                [
-                    ('to_location', 'child_of', [warehouse_id], 'parent'),
-                    ('from_location', 'not child_of',
-                        [warehouse_id], 'parent'),
-                    ],
-                ],
-            ['OR',
-                ('effective_date', '=', record.date),
-                [
-                    ('effective_date', '=', None),
-                    ('planned_date', '=', record.date),
-                    ],
-                ],
-            ]
-        if record.date < today:
-            domain.append(('state', '=', 'done'))
-        if context.get('product_template'):
-            domain.append(
-                ('product.template', '=', context['product_template']))
-        else:
-            domain.append(('product', '=', context.get('product', -1)))
-        action['pyson_domain'] = PYSONEncoder().encode(domain)
-        action['pyson_search_value'] = None
+        domain = [('date', '>=', record.date)]
+        action['pyson_search_value'] = PYSONEncoder().encode(domain)
         action['name'] += ' (' + record.rec_name + ')'
         return action, {}
+
+
+class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
+    "Product Quantities By Warehouse Moves"
+    __name__ = 'stock.product_quantities_warehouse.move'
+
+    date = fields.Date("Date")
+    move = fields.Many2One('stock.move', "Move")
+    origin = fields.Reference("Origin", selection='get_origin')
+    quantity = fields.Float("Quantity")
+    cumulative_quantity_start = fields.Function(
+        fields.Float("Cumulative Quantity Start"), 'get_cumulative_quantity')
+    cumulative_quantity_delta = fields.Float("Cumulative Quantity Delta")
+    cumulative_quantity_end = fields.Function(
+        fields.Float("Cumulative Quantity End"), 'get_cumulative_quantity')
+    company = fields.Many2One('company.company', "Company")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('date', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Product = pool.get('product.product')
+        move = from_ = Move.__table__()
+        transaction = Transaction()
+        context = transaction.context
+        database = transaction.database
+        today = Date.today()
+
+        if context.get('product_template') is not None:
+            product = Product.__table__()
+            from_ = move.join(product, condition=move.product == product.id)
+            product_clause = product.template == context['product_template']
+        else:
+            product_clause = move.product == context.get('product', -1)
+
+        if 'warehouse' in context:
+            warehouse = Location(context.get('warehouse'))
+            if context.get('stock_skip_warehouse'):
+                location_id = warehouse.storage_location.id
+            else:
+                location_id = warehouse.id
+        else:
+            location_id = -1
+        warehouse = With('id', query=Location.search([
+                    ('parent', 'child_of', [location_id]),
+                    ], query=True, order=[]))
+        date_column = Coalesce(move.effective_date, move.planned_date)
+        quantity = Case(
+            (move.to_location.in_(warehouse.select(warehouse.id)),
+                move.internal_quantity),
+            else_=-move.internal_quantity)
+        if database.has_window_functions():
+            cumulative_quantity_delta = Sum(
+                quantity,
+                window=Window([date_column], order_by=[move.id.asc]))
+        else:
+            cumulative_quantity_delta = Literal(0)
+        return (from_.select(
+                move.id.as_('id'),
+                Literal(0).as_('create_uid'),
+                CurrentTimestamp().as_('create_date'),
+                Literal(None).as_('write_uid'),
+                Literal(None).as_('write_date'),
+                date_column.as_('date'),
+                move.id.as_('move'),
+                move.origin.as_('origin'),
+                quantity.as_('quantity'),
+                cumulative_quantity_delta.as_('cumulative_quantity_delta'),
+                move.company.as_('company'),
+                where=product_clause
+                & (
+                    (move.from_location.in_(
+                            warehouse.select(warehouse.id))
+                        & ~move.to_location.in_(
+                            warehouse.select(warehouse.id)))
+                    | (~move.from_location.in_(
+                            warehouse.select(warehouse.id))
+                        & move.to_location.in_(
+                            warehouse.select(warehouse.id))))
+                & ((date_column < today) & (move.state == 'done')
+                    | (date_column >= today)),
+                with_=warehouse))
+
+    @classmethod
+    def get_origin(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return Move.get_origin()
+
+    @classmethod
+    def get_cumulative_quantity(cls, records, names):
+        pool = Pool()
+        Product = pool.get('product.product')
+        transaction = Transaction()
+        database = transaction.database
+        trans_context = transaction.context
+
+        def valid_context(name):
+            return (trans_context.get(name) is not None
+                and isinstance(trans_context[name], int))
+
+        if not any(map(valid_context, ['product', 'product_template'])):
+            return {r.id: None for r in records}
+
+        if trans_context.get('product') is not None:
+            grouping = ('product',)
+            grouping_filter = ([trans_context['product']],)
+            key = trans_context['product']
+        else:
+            grouping = ('product.template',)
+            grouping_filter = ([trans_context.get('product_template')],)
+            key = trans_context['product_template']
+        warehouse_id = trans_context.get('warehouse')
+
+        def cast_date(date):
+            if isinstance(date, str):
+                date = datetime.date(*map(int, date.split('-', 2)))
+            return date
+
+        dates = sorted({cast_date(r.date) for r in records})
+        quantities = {}
+        date_start = None
+        for date in dates:
+            try:
+                context = {
+                    'stock_date_start': date_start,
+                    'stock_date_end': date - datetime.timedelta(days=1),
+                    'forecast': True,
+                    }
+            except OverflowError:
+                pass
+            with Transaction().set_context(**context):
+                quantities[date] = Product.products_by_location(
+                    [warehouse_id],
+                    grouping=grouping,
+                    grouping_filter=grouping_filter,
+                    with_childs=True).get((warehouse_id, key), 0)
+            date_start = date
+        cumulate = 0
+        for date in dates:
+            cumulate += quantities[date]
+            quantities[date] = cumulate
+
+        result = {}
+        if database.has_window_functions():
+            if 'cumulative_quantity_start' in names:
+                result['cumulative_quantity_start'] = {
+                    r.id: (
+                        quantities[cast_date(r.date)]
+                        + r.cumulative_quantity_delta
+                        - r.quantity)
+                    for r in records}
+            if 'cumulative_quantity_end' in names:
+                result['cumulative_quantity_end'] = {
+                    r.id: (
+                        quantities[cast_date(r.date)]
+                        + r.cumulative_quantity_delta)
+                    for r in records}
+        else:
+            values = {r.id: quantities[cast_date(r.date)] for r in records}
+            for name in names:
+                result[name] = values
+        return result
+
+    def get_rec_name(self, name):
+        return self.move.rec_name
 
 
 class RecomputeCostPrice(Wizard):

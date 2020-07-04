@@ -8,6 +8,7 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from proteus import Model, Wizard, Report
+    >>> from trytond import backend
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -58,17 +59,38 @@ Fill warehouse::
    >>> move.unit_price = Decimal('10')
    >>> move.click('do')
 
-Empty warehouse::
+Forecast some moves::
 
    >>> move = Move()
    >>> move.product = product
    >>> move.from_location = storage_loc
    >>> move.to_location = customer_loc
    >>> move.uom = unit
-   >>> move.quantity = 4
+   >>> move.quantity = 6
    >>> move.planned_date = tomorrow
    >>> move.unit_price = Decimal('20')
    >>> move.save()
+
+   >>> move = Move()
+   >>> move.product = product
+   >>> move.from_location = supplier_loc
+   >>> move.to_location = storage_loc
+   >>> move.uom = unit
+   >>> move.quantity = 5
+   >>> move.planned_date = tomorrow
+   >>> move.unit_price = Decimal('10')
+   >>> move.save()
+
+   >>> move = Move()
+   >>> move.product = product
+   >>> move.from_location = storage_loc
+   >>> move.to_location = customer_loc
+   >>> move.uom = unit
+   >>> move.quantity = 3
+   >>> move.planned_date = tomorrow
+   >>> move.unit_price = Decimal('20')
+   >>> move.save()
+
 
 Check Product Quantities by Warehouse::
 
@@ -81,3 +103,28 @@ Check Product Quantities by Warehouse::
    >>> [(r.date, r.quantity) for r in records] == [
    ...      (yesterday, 10), (today, 10), (tomorrow, 6)]
    True
+
+Check Product Quantities by Warehouse Moves::
+
+    >>> ProductQuantitiesByWarehouseMove = Model.get(
+    ...     'stock.product_quantities_warehouse.move')
+    >>> with config.set_context(
+    ...      product_template=template.id, warehouse=warehouse_loc.id):
+    ...   records = ProductQuantitiesByWarehouseMove.find([])
+    >>> len(records)
+    4
+    >>> if backend.name != 'sqlite':
+    ...     [(str(r.date), r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
+    ...         for r in records] == [
+    ...     (str(yesterday), 0, 10, 10),
+    ...     (str(tomorrow), 10, -6, 4),
+    ...     (str(tomorrow), 4, 5, 9),
+    ...     (str(tomorrow), 9, -3, 6)]
+    ... else:
+    ...     [(str(r.date), r.cumulative_quantity_start, r.quantity, r.cumulative_quantity_end)
+    ...         for r in records] == [
+    ...     (str(yesterday), 0, 10, 0),
+    ...     (str(tomorrow), 10, -6, 10),
+    ...     (str(tomorrow), 10, 5, 10),
+    ...     (str(tomorrow), 10, -3, 10)]
+    True

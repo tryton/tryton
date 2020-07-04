@@ -42,6 +42,7 @@ def register():
         product.ProductByLocationContext,
         product.ProductQuantitiesByWarehouse,
         product.ProductQuantitiesByWarehouseContext,
+        product.ProductQuantitiesByWarehouseMove,
         product.RecomputeCostPriceStart,
         product.CostPriceRevision,
         product.ModifyCostPriceStart,

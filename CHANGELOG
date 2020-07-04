@@ -1,3 +1,5 @@
+* Add access rules to product quantities by warehouse
+* Add moves for product quantities by warehouse
 * Enforce filling cost price of move
 * Rename move state from cancel to cancelled
 * Rename shipment states from cancel to cancelled
