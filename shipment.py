@@ -1113,7 +1113,7 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
         'Return inventory move for the outgoing move'
         pool = Pool()
         Move = pool.get('stock.move')
-        return Move(
+        inventory_move = Move(
             from_location=self.warehouse_storage,
             to_location=move.from_location,
             product=move.product,
@@ -1122,11 +1122,13 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
             shipment=self,
             planned_date=move.planned_date,
             company=move.company,
-            currency=move.currency,
-            unit_price=move.unit_price,
             origin=move,
             state='staging' if move.state == 'staging' else 'draft',
             )
+        if inventory_move.on_change_with_unit_price_required():
+            inventory_move.unit_price = move.unit_price
+            inventory_move.currency = move.currency
+        return inventory_move
 
     @classmethod
     @Workflow.transition('assigned')
@@ -1164,11 +1166,13 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
             )
         if template:
             move.origin = template.origin
-            move.currency = template.currency
-            move.unit_price = template.unit_price
-        else:
-            move.currency = self.company.currency
-            move.unit_price = 0
+        if move.on_change_with_unit_price_required():
+            if template:
+                move.unit_price = template.unit_price
+                move.currency = template.currency
+            else:
+                move.unit_price = 0
+                move.currency = self.company.currency
         return move
 
     @classmethod
@@ -2224,11 +2228,13 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
             )
         if template:
             move.origin = template.origin
-            move.currency = template.currency
-            move.unit_price = template.unit_price
-        else:
-            move.currency = self.company.currency
-            move.unit_price = 0
+        if move.on_change_with_unit_price_required():
+            if template:
+                move.unit_price = template.unit_price
+                move.currency = template.currency
+            else:
+                move.unit_price = 0
+                move.currency = self.company.currency
         return move
 
     @classmethod

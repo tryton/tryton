@@ -66,6 +66,8 @@ Create Shipment Out Return::
     >>> move.quantity = 1
     >>> move.from_location = customer_loc
     >>> move.to_location = storage1
+    >>> move.unit_price = Decimal('20')
+    >>> move.currency = company.currency
     >>> shipment.save()
 
     >>> len(shipment.incoming_moves)
