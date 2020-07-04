@@ -168,6 +168,68 @@ class NotificationEmailTestCase(ModuleTestCase):
             attachment.get_content_type(), 'text/plain')
         self.assertEqual(attachment.get_filename(), "Attachment.txt")
 
+    @with_transaction()
+    def test_notification_email_subject(self):
+        "Test email notificiation with subject"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        User = pool.get('res.user')
+        NotificationEmail = pool.get('notification.email')
+        Language = pool.get('ir.lang')
+
+        self._setup_notification()
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        en, = Language.search([('code', '=', 'en')])
+
+        notification_email, = NotificationEmail.search([])
+        notification_email.subject = 'Notification for ${record.name}'
+        notification_email.save()
+
+        user, = User.create([{'name': "Michael Scott", 'login': "msc"}])
+
+        msg = notification_email.get_email(
+            user, FROM, ['Administrator <user@example.com>'], [], [], [en])
+
+        self.assertEqual(msg['Subject'], 'Notification for Michael Scott')
+
+    @with_transaction()
+    def test_notification_email_translated_subject(self):
+        "Test email notificiation with translated subject"
+        pool = Pool()
+        Model = pool.get('ir.model')
+        User = pool.get('res.user')
+        NotificationEmail = pool.get('notification.email')
+        Language = pool.get('ir.lang')
+
+        self._setup_notification()
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        es, = Language.search([('code', '=', 'es')])
+        Language.load_translations([es])
+
+        notification_email, = NotificationEmail.search([])
+        notification_email.subject = 'Notification for ${record.name}'
+        notification_email.save()
+
+        with Transaction().set_context(lang='es'):
+            notification_email, = NotificationEmail.search([])
+            notification_email.subject = 'Notificación para ${record.name}'
+            notification_email.save()
+
+        user, = User.create([{
+                    'name': "Michael Scott",
+                    'login': "msc",
+                    'language': es.id,
+                    }])
+
+        msg = notification_email.get_email(
+            user, FROM, ['Administrator <user@example.com>'], [], [], [es])
+
+        self.assertEqual(msg['Subject'], 'Notificación para Michael Scott')
+
     @unittest.skipIf(
         (3, 5, 0) <= sys.version_info < (3, 5, 2), "python bug #25195")
     @with_transaction()

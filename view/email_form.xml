@@ -6,6 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="from_"/>
     <label name="content"/>
     <field name="content"/>
+    <label name="subject"/>
+    <field name="subject" colspan="3"/>
     <label name="recipients"/>
     <field name="recipients"/>
     <label name="fallback_recipients"/>

@@ -8,13 +8,17 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import formataddr, getaddresses
 
+from genshi.template import TextTemplate
+
 from trytond.config import config
+from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
+from .exceptions import TemplateError
 
 _EMAIL_MODELS = [
     'res.user',
@@ -37,6 +41,11 @@ class Email(ModelSQL, ModelView):
     from_ = fields.Char(
         "From",
         help="Leave empty for the value defined in the configuration file.")
+    subject = fields.Char(
+        "Subject", translate=True,
+        help="The Genshi syntax can be used "
+        "with 'record' in the evaluation context.\n"
+        "If empty the report name will be used.")
     recipients = fields.Many2One(
         'ir.model.field', "Recipients",
         domain=[
@@ -240,11 +249,17 @@ class Email(ModelSQL, ModelView):
 
         # TODO order languages to get default as last one for title
         content, title = get_email(self.content, record, languages)
+        language = list(languages)[-1]
+        if self.subject:
+            with Transaction().set_context(language=language.code):
+                notification = self.__class__(self.id)
+                title = (TextTemplate(notification.subject)
+                    .generate(record=record)
+                    .render())
 
         if self.attachments:
             msg = MIMEMultipart('mixed')
             msg.attach(content)
-            language = list(languages)[-1]
             for report in self.attachments:
                 msg.attach(Attachment.get_mime(report, record, language.code))
         else:
@@ -328,6 +343,24 @@ class Email(ModelSQL, ModelView):
                         record, trigger, msg, bcc=', '.join(bcc)))
         if logs:
             Log.create(logs)
+
+    @classmethod
+    def validate(cls, notifications):
+        super().validate(notifications)
+        for notification in notifications:
+            notification.check_subject()
+
+    def check_subject(self):
+        if not self.subject:
+            return
+        try:
+            TextTemplate(self.subject)
+        except Exception as exception:
+            raise TemplateError(
+                gettext('notification_email.'
+                    'msg_notification_invalid_subject',
+                    notification=self.rec_name,
+                    exception=exception)) from exception
 
 
 class EmailAttachment(ModelSQL):
