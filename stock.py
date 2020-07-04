@@ -501,8 +501,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             shipment=self,
             planned_date=self.planned_date,
             company=move.company,
-            currency=move.company.currency,
-            unit_price=move.unit_price,
             )
 
     @classmethod
