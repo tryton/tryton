@@ -19,7 +19,7 @@ except ImportError:
 from sql import Literal
 from sql.aggregate import Count
 from sql.functions import Substring, Position
-from genshi.template import MarkupTemplate
+from genshi.template import MarkupTemplate, TextTemplate
 from genshi.core import START, END, QName, Attrs
 
 from trytond.config import config
@@ -315,7 +315,10 @@ class Activity(ModelSQL, ModelView):
             'invisible': Eval('action') != 'send_email',
             'required': Eval('action') == 'send_email',
             },
-        depends=['action'])
+        depends=['action'],
+        help="The subject of the email.\n"
+        "The Genshi syntax can be used "
+        "with 'record' in the evaluation context.")
     email_template = fields.Text(
         "E-Mail Template",
         translate=True,
@@ -445,6 +448,7 @@ class Activity(ModelSQL, ModelView):
         super().validate(activities)
         for activity in activities:
             activity.check_condition()
+            activity.check_email_title()
             activity.check_email_template()
 
     def check_condition(self):
@@ -468,6 +472,18 @@ class Activity(ModelSQL, ModelView):
             raise TemplateError(
                 gettext('marketing_automation'
                     '.msg_activity_invalid_email_template',
+                    activity=self.rec_name,
+                    exception=exception)) from exception
+
+    def check_email_title(self):
+        if not self.email_title:
+            return
+        try:
+            TextTemplate(self.email_title)
+        except Exception as exception:
+            raise TemplateError(
+                gettext('marketing_automation'
+                    '.msg_activity_invalid_email_title',
                     activity=self.rec_name,
                     exception=exception)) from exception
 
@@ -569,6 +585,9 @@ class Activity(ModelSQL, ModelView):
                     yield END, QName('img'), pos
                 yield kind, data, pos
 
+        title = (TextTemplate(translated.email_title)
+            .generate(record=record.record)
+            .render())
         template = MarkupTemplate(translated.email_template)
         content = (template
             .generate(record=record.record)
@@ -578,7 +597,7 @@ class Activity(ModelSQL, ModelView):
         msg = MIMEMultipart('alternative')
         msg['From'] = self.email_from or config.get('email', 'from')
         msg['To'] = to
-        msg['Subject'] = Header(translated.email_title, 'utf-8')
+        msg['Subject'] = Header(title, 'utf-8')
         if html2text:
             converter = html2text.HTML2Text()
             part = MIMEText(
