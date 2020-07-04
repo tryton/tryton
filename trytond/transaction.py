@@ -6,7 +6,6 @@ from collections import defaultdict
 from threading import local
 from sql import Flavor
 
-from trytond import backend
 from trytond.config import config
 
 _cache_model = config.getint('cache', 'model')
@@ -93,6 +92,7 @@ class Transaction(object):
         '''
         Start transaction
         '''
+        from trytond import backend
         assert self.user is None
         assert self.database is None
         assert self.close is None

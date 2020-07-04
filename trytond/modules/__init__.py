@@ -14,11 +14,9 @@ from sql import Table
 from sql.functions import CurrentTimestamp
 
 import trytond.tools as tools
-from trytond.cache import Cache
 from trytond.config import config
 from trytond.exceptions import MissingDependenciesException
 from trytond.transaction import Transaction
-from trytond import backend
 import trytond.convert as convert
 
 logger = logging.getLogger(__name__)
@@ -187,6 +185,8 @@ def load_translations(pool, node, languages):
 
 
 def load_module_graph(graph, pool, update=None, lang=None):
+    # Prevent to import backend when importing module
+    from trytond.cache import Cache
     from trytond.ir.lang import get_parent_language
 
     if lang is None:
@@ -348,6 +348,8 @@ def register_classes():
 
 def load_modules(
         database_name, pool, update=None, lang=None, activatedeps=False):
+    # Do not import backend when importing module
+    from trytond import backend
     res = True
     if update:
         update = update[:]
