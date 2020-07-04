@@ -2,10 +2,11 @@
 # this repository contains the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import country
 
 
 def register():
+    # Prevent to import backend when importing scripts
+    from . import country
     Pool.register(
         country.Country,
         country.Subdivision,
