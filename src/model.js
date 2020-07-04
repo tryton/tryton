@@ -2400,6 +2400,9 @@
         set_state: function(record, states) {
             this._set_default_value(record);
             Sao.field.One2Many._super.set_state.call(this, record, states);
+        },
+        _is_empty: function(record) {
+            return jQuery.isEmptyObject(this.get_eval(record));
         }
     });
 
