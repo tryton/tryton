@@ -86,11 +86,14 @@ class Action(object):
             if not data.get('ids') or not data.get('model'):
                 return name
             max_records = 5
+            ids = list(filter(lambda id: id >= 0, data['ids']))[:max_records]
+            if not ids:
+                return name
             rec_names = RPCExecute('model', data['model'],
-                'read', data['ids'][:max_records], ['rec_name'],
+                'read', ids, ['rec_name'],
                 context=context)
             name_suffix = _(', ').join([x['rec_name'] for x in rec_names])
-            if len(data['ids']) > max_records:
+            if len(data['ids']) > len(ids):
                 name_suffix += _(',\u2026')
             return _('%s (%s)') % (name, name_suffix)
 
