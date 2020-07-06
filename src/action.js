@@ -29,7 +29,12 @@
                 return jQuery.when(name);
             }
             var max_records = 5;
-            var ids = data.ids.slice(0, max_records);
+            var ids = data.ids.filter(function(id){
+                return id >= 0;
+            }).slice(0, max_records);
+            if (!ids.length) {
+                return jQuery.when(name);
+            }
             return Sao.rpc({
                 'method': 'model.' + data.model + '.read',
                 'params': [ids, ['rec_name'], context]
@@ -38,7 +43,7 @@
                     return record.rec_name;
                 }).join(Sao.i18n.gettext(', '));
 
-                if (data.ids.length > max_records) {
+                if (data.ids.length > ids.length) {
                     name_suffix += Sao.i18n.gettext(',\u2026');
                 }
                 return Sao.i18n.gettext('%1 (%2)', name, name_suffix);
