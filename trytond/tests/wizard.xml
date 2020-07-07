@@ -15,5 +15,11 @@ this repository contains the full copyright notices and license terms. -->
                 ]]>
             </field>
         </record>
+
+        <record model="ir.action.wizard" id="test_wizard">
+            <field name="name">Test Wizard</field>
+            <field name="wiz_name">test.test_wizard</field>
+            <field name="model">test.access</field>
+        </record>
     </data>
 </tryton>

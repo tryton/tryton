@@ -8,15 +8,17 @@ __all__ = ['Wizard',
 import json
 import copy
 
+from trytond.i18n import gettext
 from trytond.pool import Pool, PoolBase
 from trytond.transaction import Transaction
 from trytond.url import URLMixin
 from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
 from trytond.model import ModelSQL
+from trytond.model.exceptions import AccessError
 from trytond.model.fields import states_validate
 from trytond.pyson import PYSONEncoder
 from trytond.rpc import RPC
-from trytond.exceptions import UserError
+from trytond.tools import cached_property
 
 
 class Button(object):
@@ -233,20 +235,37 @@ class Wizard(URLMixin, PoolBase):
 
         with Transaction().set_context(_check_access=True):
             model = context.get('active_model')
+            if model:
+                Model = pool.get(model)
             if model and model != 'ir.ui.menu':
                 ModelAccess.check(model, 'read')
+            models = ActionWizard.get_models(
+                cls.__name__, action_id=context.get('action_id'))
+            if model and models and model not in models:
+                raise AccessError(gettext(
+                        'ir.msg_access_wizard_model_error',
+                        wizard=cls.__name__,
+                        model=model))
             groups = set(User.get_groups())
             wizard_groups = ActionWizard.get_groups(cls.__name__,
                 action_id=context.get('action_id'))
             if wizard_groups:
                 if not groups & wizard_groups:
-                    raise UserError('Calling wizard %s is not allowed!'
-                        % cls.__name__)
+                    raise AccessError(gettext(
+                            'ir.msg_access_wizard_error',
+                            name=cls.__name__))
             elif model and model != 'ir.ui.menu':
-                Model = pool.get(model)
                 if (not callable(getattr(Model, 'table_query', None))
                         or Model.write.__func__ != ModelSQL.write.__func__):
                     ModelAccess.check(model, 'write')
+
+            if model:
+                ids = context.get('active_ids') or []
+                id_ = context.get('active_id')
+                if id_ not in ids:
+                    ids.append(id_)
+                # Check read access
+                Model.read(ids, ['id'])
 
     @classmethod
     def create(cls):
@@ -354,3 +373,22 @@ class Wizard(URLMixin, PoolBase):
             Session.write([session], {
                     'data': data,
                     })
+
+    @cached_property
+    def model(self):
+        pool = Pool()
+        context = Transaction().context
+        if context.get('active_model'):
+            return pool.get(context['active_model'])
+
+    @cached_property
+    def record(self):
+        context = Transaction().context
+        if context.get('active_id'):
+            return self.model(context['active_id'])
+
+    @cached_property
+    def records(self):
+        context = Transaction().context
+        if context.get('active_ids'):
+            return self.model.browse(context['active_ids'])

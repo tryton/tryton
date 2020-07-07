@@ -311,5 +311,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_notes">
             <field name="text">Notes</field>
         </record>
+
+        <record model="ir.message" id="msg_access_wizard_error">
+            <field name="text">You are not allowed to execute wizard "%(wizard)s".</field>
+        </record>
+        <record model="ir.message" id="msg_access_wizard_model_error">
+            <field name="text">You are not allowed to execute wizard "%(wizard)s" on "%(model)s".</field>
+        </record>
+
     </data>
 </tryton>

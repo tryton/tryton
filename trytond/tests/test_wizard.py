@@ -127,6 +127,32 @@ class WizardTestCase(unittest.TestCase):
             with Transaction().set_context(active_model='test.access'):
                 Wizard.execute(session_id, {}, start_state)
 
+    @with_transaction()
+    def test_execute_without_read_access(self):
+        "Execute wizard without read access"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard', type='wizard')
+
+        session_id, start_state, end_state = Wizard.create()
+
+        with self.assertRaises(AccessError):
+            with Transaction().set_context(
+                    active_model='test.access', active_id=1):
+                Wizard.execute(session_id, {}, start_state)
+
+    @with_transaction()
+    def test_execute_wrong_model(self):
+        "Execute wizard on wrong model"
+        pool = Pool()
+        Wizard = pool.get('test.test_wizard', type='wizard')
+
+        session_id, start_state, end_state = Wizard.create()
+
+        with self.assertRaises(AccessError):
+            with Transaction().set_context(
+                    active_model='test.test_wizard.start'):
+                Wizard.execute(session_id, {}, start_state)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(WizardTestCase)

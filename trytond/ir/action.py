@@ -1046,6 +1046,17 @@ class ActionWizard(ActionMixin, ModelSQL, ModelView):
     def default_type():
         return 'ir.action.wizard'
 
+    @classmethod
+    def get_models(cls, name, action_id=None):
+        # TODO add cache
+        domain = [
+            (cls._action_name, '=', name),
+            ]
+        if action_id:
+            domain.append(('id', '=', action_id))
+        actions = cls.search(domain)
+        return {a.model for a in actions if a.model}
+
 
 class ActionURL(ActionMixin, ModelSQL, ModelView):
     "Action URL"

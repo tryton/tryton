@@ -45,6 +45,21 @@ Class attributes are:
     It contains a dictionary with state name as key and :class:`State` as
     value.
 
+.. attribute:: model
+
+    It contains the :class:`~trytond.model.Model` class on which the wizard is
+    executed.
+
+.. attribute:: record
+
+    It contains the :class:`~trytond.model.Model` instance on which the wizard
+    is executed.
+
+.. attribute:: records
+
+    It contains the list of :class:`~trytond.model.Model` instances on which
+    the wizard is executed.
+
 Class methods are:
 
 .. classmethod:: Wizard.__setup__()

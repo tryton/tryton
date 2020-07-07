@@ -1,3 +1,5 @@
+* Add model, record and records attributes on Wizard
+* Check read access of wizard records
 * Add cached_property in tools
 * Use custom class to store record data
 * Do not write to existing targets on xxx2Many add

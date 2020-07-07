@@ -950,11 +950,10 @@ class TranslationSet(Wizard):
         pool = Pool()
         Report = pool.get('ir.action.report')
         Translation = pool.get('ir.translation')
-        context = Transaction().context
 
-        if context.get('active_model') == Report.__name__:
-            reports = Report.browse(context.get('active_ids', []))
-        elif context.get('active_model', 'ir.ui.menu') == 'ir.ui.menu':
+        if self.model == Report:
+            reports = self.records
+        elif not self.model or self.model.__name__ == 'ir.ui.menu':
             with Transaction().set_context(active_test=False):
                 reports = Report.search([('translatable', '=', True)])
         else:
@@ -1045,11 +1044,10 @@ class TranslationSet(Wizard):
         pool = Pool()
         View = pool.get('ir.ui.view')
         Translation = pool.get('ir.translation')
-        context = Transaction().context
 
-        if context.get('active_model') == View.__name__:
-            views = View.browse(context.get('active_ids', []))
-        elif context.get('active_model', 'ir.ui.menu') == 'ir.ui.menu':
+        if self.model == View:
+            views = self.records
+        elif not self.model or self.model.__name__ == 'ir.ui.menu':
             with Transaction().set_context(active_test=False):
                 views = View.search([])
         else:
@@ -1357,19 +1355,18 @@ class TranslationUpdate(Wizard):
         Translation = pool.get('ir.translation')
         Report = pool.get('ir.action.report')
         View = pool.get('ir.ui.view')
-        context = Transaction().context
         cursor = Transaction().connection.cursor()
         cursor_update = Transaction().connection.cursor()
         translation = Translation.__table__()
         lang = self.start.language.code
         parent_lang = get_parent(lang)
 
-        if context.get('active_model') == Report.__name__:
-            reports = Report.browse(context.get('active_ids', []))
+        if self.model == Report:
+            reports = self.records
             source_clause = ((translation.type == 'report')
                 & translation.name.in_([r.report_name for r in reports]))
-        elif context.get('active_model') == View.__name__:
-            views = View.browse(context.get('active_ids', []))
+        elif self.model == View:
+            views = self.records
             source_clause = ((translation.type == 'view')
                 & translation.name.in_([v.model for v in views]))
         else:
@@ -1420,7 +1417,7 @@ class TranslationUpdate(Wizard):
                         & (translation.module == row['module'])
                         & (translation.lang == lang)))
 
-        if context.get('active_model') in {Report.__name__, View.__name__}:
+        if self.model in {Report, View}:
             return
 
         columns = [translation.name.as_('name'),
@@ -1592,11 +1589,8 @@ class TranslationReport(Wizard):
     open_ = StateAction('ir.act_translation_report')
 
     def do_open_(self, action):
-        pool = Pool()
-        Report = pool.get('ir.action.report')
         context = Transaction().context
-        assert context['active_model'] == Report.__name__
-        reports = Report.browse(context['active_ids'])
+        reports = self.records
         action['pyson_domain'] = PYSONEncoder().encode([
                 ('type', '=', 'report'),
                 ('name', 'in', [r.report_name for r in reports]),
