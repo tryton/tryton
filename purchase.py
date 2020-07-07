@@ -458,12 +458,9 @@ class CreatePurchaseRequestQuotation(Wizard):
 
     def transition_start(self):
         pool = Pool()
-        Request = pool.get('purchase.request')
         Warning = pool.get('res.user.warning')
 
-        requests = Request.browse(Transaction().context['active_ids'])
-
-        reqs = [r for r in requests if r.state in {'draft', 'quotation'}]
+        reqs = [r for r in self.records if r.state in {'draft', 'quotation'}]
         if reqs:
             for r in reqs:
                 if r.state == 'quotation':
@@ -476,12 +473,8 @@ class CreatePurchaseRequestQuotation(Wizard):
         return 'end'
 
     def default_ask_suppliers(self, fields):
-        pool = Pool()
-        Request = pool.get('purchase.request')
-
-        requests = Request.browse(Transaction().context['active_ids'])
-
-        reqs = [r for r in requests
+        reqs = [
+            r for r in self.records
             if r.party and r.state in ['draft', 'quotation']]
         return {
             'suppliers': [r.party.id for r in reqs],
@@ -502,13 +495,10 @@ class CreatePurchaseRequestQuotation(Wizard):
         pool = Pool()
         Quotation = pool.get('purchase.request.quotation')
         QuotationLine = pool.get('purchase.request.quotation.line')
-        Request = pool.get('purchase.request')
         quotations = []
         lines = []
 
-        requests = Request.browse(Transaction().context['active_ids'])
-
-        reqs = [r for r in requests if r.state in ['draft', 'quotation']]
+        reqs = [r for r in self.records if r.state in ['draft', 'quotation']]
         for supplier in self.ask_suppliers.suppliers:
             quotation = Quotation()
             quotation.supplier = supplier
@@ -527,7 +517,7 @@ class CreatePurchaseRequestQuotation(Wizard):
         QuotationLine.save(lines)
         Quotation.save(quotations)
 
-        Request.update_state(reqs)
+        self.model.update_state(reqs)
         self.succeed.number_quotations = len(quotations)
         return 'succeed'
 
@@ -612,20 +602,15 @@ class CreatePurchase(Wizard):
         super(CreatePurchase, cls).__setup__()
 
     def transition_start(self):
-        pool = Pool()
-        Request = pool.get('purchase.request')
-
         to_save = []
-        requests = Request.browse(Transaction().context['active_ids'])
-
-        reqs = [r for r in requests
+        reqs = [r for r in self.records
             if not r.purchase_line and r.quotation_lines]
         to_save = []
         for req in reqs:
             if req.best_quotation_line:
                 to_save.append(self.apply_quotation(req))
         if to_save:
-            Request.save(to_save)
+            self.model.save(to_save)
         state = super(CreatePurchase, self).transition_start()
         return state
 
