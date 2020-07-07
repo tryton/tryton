@@ -41,12 +41,8 @@ class CreateShipping(metaclass=PoolMeta):
         'stock_package_shipping_dpd.act_create_shipping_dpd_wizard')
 
     def transition_start(self):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-
-        shipment = ShipmentOut(Transaction().context['active_id'])
         next_state = super(CreateShipping, self).transition_start()
-        if shipment.carrier.shipping_service == 'dpd':
+        if self.record.carrier.shipping_service == 'dpd':
             next_state = 'dpd'
         return next_state
 
@@ -67,10 +63,9 @@ class CreateDPDShipping(Wizard):
 
     def transition_start(self):
         pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
         Package = pool.get('stock.package')
 
-        shipment = ShipmentOut(Transaction().context['active_id'])
+        shipment = self.record
         if shipment.reference:
             raise AccessError(
                 gettext('stock_package_shipping_dpd'
