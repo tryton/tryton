@@ -1783,11 +1783,8 @@ class HandleShipmentException(Wizard):
     handle = StateTransition()
 
     def default_ask(self, fields):
-        Sale = Pool().get('sale.sale')
-        sale = Sale(Transaction().context.get('active_id'))
-
         moves = []
-        for line in sale.lines:
+        for line in self.record.lines:
             skips = set(line.moves_ignored)
             skips.update(line.moves_recreated)
             for move in line.moves:
@@ -1800,12 +1797,9 @@ class HandleShipmentException(Wizard):
 
     def transition_handle(self):
         pool = Pool()
-        Sale = pool.get('sale.sale')
         SaleLine = pool.get('sale.line')
 
-        sale = Sale(Transaction().context['active_id'])
-
-        for line in sale.lines:
+        for line in self.record.lines:
             moves_ignored = []
             moves_recreated = []
             skips = set(line.moves_ignored)
@@ -1822,7 +1816,7 @@ class HandleShipmentException(Wizard):
                     'moves_ignored': [('add', moves_ignored)],
                     'moves_recreated': [('add', moves_recreated)],
                     })
-        Sale.__queue__.process([sale])
+        self.model.__queue__.process([self.record])
         return 'end'
 
 
@@ -1851,13 +1845,10 @@ class HandleInvoiceException(Wizard):
     handle = StateTransition()
 
     def default_ask(self, fields):
-        Sale = Pool().get('sale.sale')
-
-        sale = Sale(Transaction().context['active_id'])
-        skips = set(sale.invoices_ignored)
-        skips.update(sale.invoices_recreated)
+        skips = set(self.record.invoices_ignored)
+        skips.update(self.record.invoices_recreated)
         invoices = []
-        for invoice in sale.invoices:
+        for invoice in self.record.invoices:
             if invoice.state == 'cancelled' and invoice not in skips:
                 invoices.append(invoice.id)
         return {
@@ -1866,10 +1857,6 @@ class HandleInvoiceException(Wizard):
             }
 
     def transition_handle(self):
-        Sale = Pool().get('sale.sale')
-
-        sale = Sale(Transaction().context['active_id'])
-
         invoices_ignored = []
         invoices_recreated = []
         for invoice in self.ask.domain_invoices:
@@ -1878,11 +1865,11 @@ class HandleInvoiceException(Wizard):
             else:
                 invoices_ignored.append(invoice.id)
 
-        Sale.write([sale], {
+        self.model.write([self.record], {
                 'invoices_ignored': [('add', invoices_ignored)],
                 'invoices_recreated': [('add', invoices_recreated)],
                 })
-        Sale.__queue__.process([sale])
+        self.model.__queue__.process([self.record])
         return 'end'
 
 
@@ -1902,17 +1889,15 @@ class ReturnSale(Wizard):
     return_ = StateAction('sale.act_sale_form')
 
     def do_return_(self, action):
-        Sale = Pool().get('sale.sale')
-
-        sales = Sale.browse(Transaction().context['active_ids'])
-        return_sales = Sale.copy(sales)
+        sales = self.records
+        return_sales = self.model.copy(sales)
         for return_sale, sale in zip(return_sales, sales):
             return_sale.origin = sale
             for line in return_sale.lines:
                 if line.type == 'line':
                     line.quantity *= -1
             return_sale.lines = return_sale.lines  # Force saving
-        Sale.save(return_sales)
+        self.model.save(return_sales)
 
         data = {'res_id': [s.id for s in return_sales]}
         if len(return_sales) == 1:
@@ -1938,15 +1923,11 @@ class ModifyHeader(Wizard):
     modify = StateTransition()
 
     def get_sale(self):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-
-        sale = Sale(Transaction().context['active_id'])
-        if sale.state != 'draft':
+        if self.record.state != 'draft':
             raise AccessError(
                 gettext('sale.msg_sale_modify_header_draft',
-                    sale=sale.rec_name))
-        return sale
+                    sale=self.record.rec_name))
+        return self.record
 
     def default_start(self, fields):
         sale = self.get_sale()
@@ -1971,7 +1952,7 @@ class ModifyHeader(Wizard):
         Line = pool.get('sale.line')
 
         sale = self.get_sale()
-        sale.__class__.write([sale], self.start._save_values)
+        self.model.write([sale], self.start._save_values)
 
         # Call on_change after the save to ensure parent sale
         # has the modified values

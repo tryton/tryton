@@ -673,21 +673,16 @@ class OpenRegion(Wizard):
 
     def transition_start(self):
         pool = Pool()
-        Region = pool.get('sale.reporting.region')
         Country = pool.get('sale.reporting.country')
         Subdivision = pool.get('sale.reporting.country.subdivision')
-        region = Region(Transaction().context['active_id'])
-        record = Region.union_unshard(region.id)
+        record = self.model.union_unshard(self.record.id)
         if isinstance(record, Country):
             return 'country'
         elif isinstance(record, Subdivision):
             return 'subdivision'
 
     def _do_action(self, action):
-        pool = Pool()
-        Region = pool.get('sale.reporting.region')
-        region = Region(Transaction().context['active_id'])
-        record = Region.union_unshard(region.id)
+        record = self.model.union_unshard(self.record.id)
         data = {
             'id': record.id,
             'ids': [record.id],
