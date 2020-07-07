@@ -349,8 +349,5 @@ class ProcessDunning(Wizard):
             return 'end'
 
     def transition_process(self):
-        pool = Pool()
-        Dunning = pool.get('account.dunning')
-        dunnings = Dunning.browse(Transaction().context['active_ids'])
-        Dunning.process(dunnings)
+        self.model.process(self.records)
         return self.next_state('process')
