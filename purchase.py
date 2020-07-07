@@ -84,19 +84,16 @@ class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'purchase.handle.invoice.exception'
 
     def transition_handle(self):
-        Purchase = Pool().get('purchase.purchase')
-
         state = super(HandleInvoiceException, self).transition_handle()
 
-        purchase = Purchase(Transaction().context['active_id'])
         invoice_lines = []
-        for invoice_line in purchase.invoice_lines:
+        for invoice_line in self.record.invoice_lines:
             if (invoice_line.invoice
                     and invoice_line.invoice.state == 'cancelled'):
                 invoice_lines.append(invoice_line.id)
         if invoice_lines:
-            Purchase.write([purchase], {
+            self.model.write([self.record], {
                     'invoice_lines_ignored': [('add', invoice_lines)],
                     })
-        Purchase.__queue__.process([purchase])
+        self.model.__queue__.process([self.record])
         return state
