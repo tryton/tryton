@@ -514,12 +514,9 @@ class CheckVIES(Wizard):
             ])
 
     def transition_check(self):
-        Party = Pool().get('party.party')
-
         parties_succeed = []
         parties_failed = []
-        parties = Party.browse(Transaction().context.get('active_ids'))
-        for party in parties:
+        for party in self.records:
             for identifier in party.identifiers:
                 if identifier.type != 'eu_vat':
                     continue
