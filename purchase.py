@@ -1799,12 +1799,8 @@ class HandleShipmentException(Wizard):
     handle = StateTransition()
 
     def default_ask(self, fields):
-        Purchase = Pool().get('purchase.purchase')
-
-        purchase = Purchase(Transaction().context['active_id'])
-
         moves = []
-        for line in purchase.lines:
+        for line in self.record.lines:
             skip = set(line.moves_ignored + line.moves_recreated)
             for move in line.moves:
                 if move.state == 'cancelled' and move not in skip:
@@ -1816,14 +1812,11 @@ class HandleShipmentException(Wizard):
 
     def transition_handle(self):
         pool = Pool()
-        Purchase = pool.get('purchase.purchase')
         PurchaseLine = pool.get('purchase.line')
         to_recreate = self.ask.recreate_moves
         domain_moves = self.ask.domain_moves
 
-        purchase = Purchase(Transaction().context['active_id'])
-
-        for line in purchase.lines:
+        for line in self.record.lines:
             moves_ignored = []
             moves_recreated = []
             skip = set(line.moves_ignored)
@@ -1841,7 +1834,7 @@ class HandleShipmentException(Wizard):
                 'moves_recreated': [('add', moves_recreated)],
                 })
 
-        Purchase.__queue__.process([purchase])
+        self.model.__queue__.process([self.record])
         return 'end'
 
 
@@ -1870,13 +1863,10 @@ class HandleInvoiceException(Wizard):
     handle = StateTransition()
 
     def default_ask(self, fields):
-        Purchase = Pool().get('purchase.purchase')
-
-        purchase = Purchase(Transaction().context['active_id'])
-        skip = set(purchase.invoices_ignored)
-        skip.update(purchase.invoices_recreated)
+        skip = set(self.record.invoices_ignored)
+        skip.update(self.record.invoices_recreated)
         invoices = []
-        for invoice in purchase.invoices:
+        for invoice in self.record.invoices:
             if invoice.state == 'cancelled' and invoice not in skip:
                 invoices.append(invoice.id)
         return {
@@ -1885,10 +1875,6 @@ class HandleInvoiceException(Wizard):
             }
 
     def transition_handle(self):
-        Purchase = Pool().get('purchase.purchase')
-
-        purchase = Purchase(Transaction().context['active_id'])
-
         invoices_ignored = []
         invoices_recreated = []
         for invoice in self.ask.domain_invoices:
@@ -1897,12 +1883,12 @@ class HandleInvoiceException(Wizard):
             else:
                 invoices_ignored.append(invoice.id)
 
-        Purchase.write([purchase], {
+        self.model.write([self.record], {
             'invoices_ignored': [('add', invoices_ignored)],
             'invoices_recreated': [('add', invoices_recreated)],
             })
 
-        Purchase.__queue__.process([purchase])
+        self.model.__queue__.process([self.record])
         return 'end'
 
 
@@ -1924,15 +1910,11 @@ class ModifyHeader(Wizard):
     modify = StateTransition()
 
     def get_purchase(self):
-        pool = Pool()
-        Purchase = pool.get('purchase.purchase')
-
-        purchase = Purchase(Transaction().context['active_id'])
-        if purchase.state != 'draft':
+        if self.record.state != 'draft':
             raise AccessError(
                 gettext('purchase.msg_purchase_modify_header_draft',
-                    purchase=purchase.rec_name))
-        return purchase
+                    purchase=self.record.rec_name))
+        return self.record
 
     def default_start(self, fields):
         purchase = self.get_purchase()
@@ -1984,10 +1966,8 @@ class ReturnPurchase(Wizard):
     return_ = StateAction('purchase.act_purchase_form')
 
     def do_return_(self, action):
-        Purchase = Pool().get('purchase.purchase')
-
-        purchases = Purchase.browse(Transaction().context['active_ids'])
-        return_purchases = Purchase.copy(purchases)
+        purchases = self.records
+        return_purchases = self.model.copy(purchases)
         for return_purchase, purchase in zip(return_purchases, purchases):
             for line in return_purchase.lines:
                 if line.type == 'line':
