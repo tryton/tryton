@@ -473,13 +473,10 @@ class HandleInvoiceException(metaclass=PoolMeta):
     __name__ = 'sale.handle.invoice.exception'
 
     def default_ask(self, fields):
-        pool = Pool()
-        Sale = pool.get('sale.sale')
-
         default = super(HandleInvoiceException, self).default_ask(fields)
         invoices = default['domain_invoices']
 
-        sale = Sale(Transaction().context['active_id'])
+        sale = self.record
         skips = set(sale.invoices_ignored)
         skips.update(sale.invoices_recreated)
         for invoice in sale.advance_payment_invoices:
