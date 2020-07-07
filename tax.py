@@ -1670,11 +1670,9 @@ class OpenTaxCode(Wizard):
 
     def do_open_(self, action):
         pool = Pool()
-        TaxCode = pool.get('account.tax.code')
         Tax = pool.get('account.tax')
-        tax_code = TaxCode(Transaction().context['active_id'])
-        if tax_code.lines:
-            domain = ['OR'] + [l._line_domain for l in tax_code.lines]
+        if self.record.lines:
+            domain = ['OR'] + [l._line_domain for l in self.record.lines]
         else:
             domain = ('id', '=', None)
         action['pyson_domain'] = PYSONEncoder().encode([
@@ -1693,10 +1691,11 @@ class TestTax(Wizard):
         [Button('Close', 'end', 'tryton-close', default=True)])
 
     def default_test(self, fields):
-        context = Transaction().context
         default = {}
-        if context['active_model'] == 'account.tax':
-            default['taxes'] = context['active_ids']
+        if (self.model
+                and self.model.__name__ == 'account.tax'
+                and self.records):
+            default['taxes'] = list(map(int, self.records))
         return default
 
 

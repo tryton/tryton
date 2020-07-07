@@ -1359,33 +1359,30 @@ class OpenJournal(Wizard):
     open_ = StateAction('account.act_move_line_form')
 
     def transition_start(self):
-        if (Transaction().context.get('active_model', '')
-                == 'account.journal.period'
-                and Transaction().context.get('active_id')):
+        if (self.model
+                and self.model.__name__ == 'account.journal.period'
+                and self.record):
             return 'open_'
         return 'ask'
 
     def default_ask(self, fields):
-        JournalPeriod = Pool().get('account.journal.period')
-        if (Transaction().context.get('active_model', '')
-                == 'account.journal.period'
-                and Transaction().context.get('active_id')):
-            journal_period = JournalPeriod(Transaction().context['active_id'])
+        if (self.model
+                and self.model.__name__ == 'account.journal.period'
+                and self.record):
             return {
-                'journal': journal_period.journal.id,
-                'period': journal_period.period.id,
+                'journal': self.record.journal.id,
+                'period': self.record.period.id,
                 }
         return {}
 
     def do_open_(self, action):
         JournalPeriod = Pool().get('account.journal.period')
 
-        if (Transaction().context.get('active_model', '')
-                == 'account.journal.period'
-                and Transaction().context.get('active_id')):
-            journal_period = JournalPeriod(Transaction().context['active_id'])
-            journal = journal_period.journal
-            period = journal_period.period
+        if (self.model
+                and self.model.__name__ == 'account.journal.period'
+                and self.record):
+            journal = self.record.journal
+            period = self.record.period
         else:
             journal = self.ask.journal
             period = self.ask.period
@@ -1436,7 +1433,7 @@ class OpenAccount(Wizard):
 
         action['pyson_domain'] = [
             ('period', 'in', [p.id for p in periods]),
-            ('account', '=', Transaction().context['active_id']),
+            ('account', '=', self.record.id if self.record else None),
             ('state', '=', 'valid'),
             ]
         if Transaction().context.get('posted'):
@@ -1492,11 +1489,9 @@ class ReconcileLines(Wizard):
 
     def get_writeoff(self):
         "Return writeoff amount and company"
-        Line = Pool().get('account.move.line')
-
         company = None
         amount = Decimal('0.0')
-        for line in Line.browse(Transaction().context['active_ids']):
+        for line in self.records:
             amount += line.debit - line.credit
             if not company:
                 company = line.account.company
@@ -1518,13 +1513,11 @@ class ReconcileLines(Wizard):
             }
 
     def transition_reconcile(self):
-        Line = Pool().get('account.move.line')
-
-        writeoff = getattr(self.writeoff, 'writeoff', None)
-        date = getattr(self.writeoff, 'date', None)
-        description = getattr(self.writeoff, 'description', None)
-        Line.reconcile(Line.browse(Transaction().context['active_ids']),
-            writeoff=writeoff, date=date, description=description)
+        self.model.reconcile(
+            self.records,
+            writeoff=getattr(self.writeoff, 'writeoff', None),
+            date=getattr(self.writeoff, 'date', None),
+            description=getattr(self.writeoff, 'description', None))
         return 'end'
 
 
@@ -1535,11 +1528,7 @@ class UnreconcileLines(Wizard):
     unreconcile = StateTransition()
 
     def transition_unreconcile(self):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-
-        lines = Line.browse(Transaction().context['active_ids'])
-        self.make_unreconciliation(lines)
+        self.make_unreconciliation(self.records)
         return 'end'
 
     @classmethod
@@ -1578,10 +1567,8 @@ class Reconcile(Wizard):
         cursor = Transaction().connection.cursor()
         account_rule = Rule.query_get(Account.__name__)
 
-        context = Transaction().context
-        if context['active_model'] == Line.__name__:
-            lines = [l for l in Line.browse(context['active_ids'])
-                if not l.reconciliation]
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
             return list({l.account for l in lines if l.account.reconcile})
 
         balance = line.debit - line.credit
@@ -1613,10 +1600,8 @@ class Reconcile(Wizard):
         line = Line.__table__()
         cursor = Transaction().connection.cursor()
 
-        context = Transaction().context
-        if context['active_model'] == Line.__name__:
-            lines = [l for l in Line.browse(context['active_ids'])
-                if not l.reconciliation]
+        if self.model and self.model.__name__ == 'account.move.line':
+            lines = [l for l in self.records if not l.reconciliation]
             return list({l.party for l in lines if l.account == account})
 
         balance = line.debit - line.credit
@@ -1699,11 +1684,9 @@ class Reconcile(Wizard):
 
     def _default_lines(self):
         'Return the larger list of lines which can be reconciled'
-        pool = Pool()
-        Line = pool.get('account.move.line')
-        context = Transaction().context
-        if context['active_model'] == Line.__name__:
-            requested = {l for l in Line.browse(context['active_ids'])
+        if self.model and self.model.__name__ == 'account.move.line':
+            requested = {
+                l for l in self.records
                 if l.account == self.show.account
                 and l.party == self.show.party}
         else:
@@ -1816,12 +1799,11 @@ class CancelMoves(Wizard):
 
     def transition_cancel(self):
         pool = Pool()
-        Move = pool.get('account.move')
         Line = pool.get('account.move.line')
         Warning = pool.get('res.user.warning')
         Unreconcile = pool.get('account.move.unreconcile_lines', type='wizard')
 
-        moves = Move.browse(Transaction().context['active_ids'])
+        moves = self.records
         moves_w_delegation = {
             m: [ml for ml in m.lines
                 if ml.reconciliation and ml.reconciliation.delegate_to]
@@ -1871,11 +1853,7 @@ class GroupLines(Wizard):
     group = StateAction('account.act_move_form_grouping')
 
     def do_group(self, action):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-
-        lines = Line.browse(Transaction().context['active_ids'])
-        move, balance_line = self._group_lines(lines)
+        move, balance_line = self._group_lines(self.records)
         action['res_id'] = [move.id]
         return action, {}
 

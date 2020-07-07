@@ -520,10 +520,8 @@ class CreatePeriods(Wizard):
     create_periods = StateTransition()
 
     def transition_create_periods(self):
-        FiscalYear = Pool().get('account.fiscalyear')
-        fiscalyear = FiscalYear(Transaction().context['active_id'])
-        FiscalYear.create_period(
-            [fiscalyear], self.start.interval, self.start.end_day)
+        self.model.create_period(
+            [self.record], self.start.interval, self.start.end_day)
         return 'end'
 
 

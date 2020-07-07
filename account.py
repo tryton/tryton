@@ -399,9 +399,7 @@ class OpenType(Wizard):
 
     def open_action(self, action):
         pool = Pool()
-        Type = pool.get('account.account.type')
-        type = Type(Transaction().context['active_id'])
-        action['name'] = '%s (%s)' % (action['name'], type.rec_name)
+        action['name'] = '%s (%s)' % (action['name'], self.record.rec_name)
         trans_context = Transaction().context
         context = {
             'active_id': trans_context.get('active_id'),

@@ -303,10 +303,9 @@ class CreateMove(Wizard):
 
     def transition_start(self):
         context = Transaction().context
-        model = context.get('active_model')
         action_id = context.get('action_id')
         period = context.get('period')
-        if model == 'account.move.line':
+        if self.model and self.model.__name__ == 'account.move.line':
             # Template id is used as action
             self.template.template = action_id
             self.template.period = period
@@ -315,8 +314,7 @@ class CreateMove(Wizard):
             return 'template'
 
     def transition_create_(self):
-        model = Transaction().context.get('active_model')
-        if model == 'account.move.line':
+        if self.model and self.model.__name__ == 'account.move.line':
             self.create_move()
             return 'end'
         else:
@@ -328,8 +326,7 @@ class CreateMove(Wizard):
         return action, {}
 
     def end(self):
-        model = Transaction().context.get('active_model')
-        if model == 'account.move.line':
+        if self.model and self.model.__name__ == 'account.move.line':
             return 'reload'
 
 
