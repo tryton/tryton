@@ -3,7 +3,6 @@
 from trytond.model import ModelView, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
 
@@ -81,20 +80,14 @@ class SplitProduction(Wizard):
     split = StateTransition()
 
     def default_start(self, fields):
-        pool = Pool()
-        Production = pool.get('production')
-        default = {}
-        production = Production(Transaction().context['active_id'])
-        default['uom'] = production.uom.id
-        default['unit_digits'] = production.unit_digits
-        default['uom_category'] = production.uom.category.id
-        return default
+        return {
+            'uom': self.record.uom.id,
+            'unit_digits': self.record.unit_digits,
+            'uom_category': self.record.uom.category.id,
+            }
 
     def transition_split(self):
-        pool = Pool()
-        Production = pool.get('production')
-        production = Production(Transaction().context['active_id'])
-        production.split(
+        self.record.split(
             self.start.quantity, self.start.uom, count=self.start.count)
         return 'end'
 
