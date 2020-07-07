@@ -563,25 +563,21 @@ class ForecastComplete(Wizard):
         """
         Forecast dates shifted by one year.
         """
-        Forecast = Pool().get('stock.forecast')
-        forecast = Forecast(Transaction().context['active_id'])
-
-        res = {}
+        default = {}
         for field in ("to_date", "from_date"):
-            res[field] = getattr(forecast, field) - relativedelta(years=1)
-        return res
+            default[field] = (
+                getattr(self.record, field) - relativedelta(years=1))
+        return default
 
     def _get_product_quantity(self):
         pool = Pool()
-        Forecast = pool.get('stock.forecast')
         Product = pool.get('product.product')
-        forecast = Forecast(Transaction().context['active_id'])
 
         with Transaction().set_context(
-                stock_destinations=[forecast.destination.id],
+                stock_destinations=[self.record.destination.id],
                 stock_date_start=self.ask.from_date,
                 stock_date_end=self.ask.to_date):
-            return Product.products_by_location([forecast.warehouse.id],
+            return Product.products_by_location([self.record.warehouse.id],
                 with_childs=True)
 
     def default_choose(self, fields):
@@ -600,11 +596,10 @@ class ForecastComplete(Wizard):
 
     def transition_complete(self):
         pool = Pool()
-        Forecast = pool.get('stock.forecast')
         ForecastLine = pool.get('stock.forecast.line')
         Product = pool.get('product.product')
 
-        forecast = Forecast(Transaction().context['active_id'])
+        forecast = self.record
         prod2line = {}
         forecast_lines = ForecastLine.search([
                 ('forecast', '=', forecast.id),

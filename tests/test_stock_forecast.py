@@ -303,7 +303,8 @@ class StockForecastTestCase(ModuleTestCase):
                         'company': company.id,
                         }])
 
-            with Transaction().set_context(active_id=forecast.id):
+            with Transaction().set_context(
+                    active_model=Forecast.__name__, active_id=forecast.id):
                 session_id, _, _ = ForecastComplete.create()
                 forecast_complete = ForecastComplete(session_id)
                 forecast_complete.ask.from_date = (
