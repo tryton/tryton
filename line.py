@@ -293,7 +293,7 @@ class OpenAccount(Wizard):
 
     def do_open_(self, action):
         action['pyson_domain'] = [
-            ('account', '=', Transaction().context['active_id']),
+            ('account', '=', self.record.id if self.record else None),
             ]
         if Transaction().context.get('start_date'):
             action['pyson_domain'].append(
