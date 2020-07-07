@@ -661,10 +661,8 @@ class OpenInvoice(Wizard):
     open_ = StateAction('account_invoice.act_invoice_form')
 
     def do_open_(self, action):
-        pool = Pool()
-        Work = pool.get('project.work')
-        works = Work.search([
-                ('parent', 'child_of', Transaction().context['active_ids']),
+        works = self.model.search([
+                ('parent', 'child_of', map(int, self.records)),
                 ])
         invoice_ids = set()
         for work in works:
