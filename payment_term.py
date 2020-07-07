@@ -351,10 +351,10 @@ class TestPaymentTerm(Wizard):
         [Button('Close', 'end', 'tryton-close', default=True)])
 
     def default_test(self, fields):
-        context = Transaction().context
         default = {}
-        if context['active_model'] == 'account.invoice.payment_term':
-            default['payment_term'] = context['active_id']
+        if (self.model
+                and self.model.__name__ == 'account.invoice.payment_term'):
+            default['payment_term'] = self.record.id if self.record else None
         return default
 
 

@@ -2737,9 +2737,8 @@ class PayInvoice(Wizard):
         return invoice.get_reconcile_lines_for_amount(amount)
 
     def default_start(self, fields):
-        Invoice = Pool().get('account.invoice')
         default = {}
-        invoice = Invoice(Transaction().context['active_id'])
+        invoice = self.record
         default['company'] = invoice.company.id
         default['currency'] = invoice.currency.id
         default['currency_digits'] = invoice.currency.digits
@@ -2750,10 +2749,9 @@ class PayInvoice(Wizard):
 
     def transition_choice(self):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
 
-        invoice = Invoice(Transaction().context['active_id'])
+        invoice = self.record
 
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
@@ -2768,11 +2766,10 @@ class PayInvoice(Wizard):
 
     def default_ask(self, fields):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
 
         default = {}
-        invoice = Invoice(Transaction().context['active_id'])
+        invoice = self.record
         default['lines_to_pay'] = [x.id for x in invoice.lines_to_pay
                 if not x.reconciliation]
 
@@ -2812,12 +2809,11 @@ class PayInvoice(Wizard):
 
     def transition_pay(self):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         Currency = pool.get('currency.currency')
         MoveLine = pool.get('account.move.line')
         Lang = pool.get('ir.lang')
 
-        invoice = Invoice(Transaction().context['active_id'])
+        invoice = self.record
 
         with Transaction().set_context(date=self.start.date):
             amount = Currency.compute(self.start.currency,
@@ -2900,12 +2896,11 @@ class CreditInvoice(Wizard):
     credit = StateAction('account_invoice.act_invoice_form')
 
     def default_start(self, fields):
-        Invoice = Pool().get('account.invoice')
         default = {
             'with_refund': True,
             'with_refund_allowed': True,
             }
-        for invoice in Invoice.browse(Transaction().context['active_ids']):
+        for invoice in self.records:
             if invoice.state != 'posted' or invoice.type == 'in':
                 default['with_refund'] = False
                 default['with_refund_allowed'] = False
@@ -2922,12 +2917,8 @@ class CreditInvoice(Wizard):
             )
 
     def do_credit(self, action):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-
-        invoices = Invoice.browse(Transaction().context['active_ids'])
-
-        credit_invoices = Invoice.credit(invoices, **self._credit_options)
+        credit_invoices = self.model.credit(
+            self.records, **self._credit_options)
 
         data = {'res_id': [i.id for i in credit_invoices]}
         if len(credit_invoices) == 1:
