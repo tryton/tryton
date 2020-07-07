@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
 from trytond.wizard import Wizard, StateView, Button
-from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond.pool import Pool
 
@@ -244,9 +243,8 @@ class OpenBOMTree(Wizard):
             ])
 
     def default_start(self, fields):
-        Product = Pool().get('product.product')
         defaults = {}
-        product = Product(Transaction().context['active_id'])
+        product = self.record
         defaults['category'] = product.default_uom.category.id
         if getattr(self.start, 'uom', None):
             defaults['uom'] = self.start.uom.id
