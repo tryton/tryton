@@ -64,10 +64,10 @@ class InvoiceCorrect(Wizard):
 
     def do_correct(self, action):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
+        Invoice = self.model
         Line = pool.get('account.invoice.line')
 
-        invoice = Invoice(Transaction().context['active_id'])
+        invoice = self.record
         with Transaction().set_context(_account_invoice_correction=True):
             correction, = Invoice.copy([invoice], default={
                     'lines': [],
