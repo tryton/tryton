@@ -99,12 +99,8 @@ class CreateShipping(metaclass=PoolMeta):
         'stock_package_shipping_ups.act_create_shipping_ups_wizard')
 
     def transition_start(self):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-
-        shipment = ShipmentOut(Transaction().context['active_id'])
         next_state = super(CreateShipping, self).transition_start()
-        if shipment.carrier.shipping_service == 'ups':
+        if self.record.carrier.shipping_service == 'ups':
             next_state = 'ups'
         return next_state
 
@@ -125,10 +121,9 @@ class CreateShippingUPS(Wizard):
 
     def transition_start(self):
         pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
         Package = pool.get('stock.package')
 
-        shipment = ShipmentOut(Transaction().context['active_id'])
+        shipment = self.record
         if shipment.reference:
             raise AccessError(
                 gettext('stock_package_shipping_ups'
