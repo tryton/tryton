@@ -227,7 +227,6 @@ class HandleShipmentException(metaclass=PoolMeta):
     def transition_handle(self):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        Purchase = pool.get('purchase.purchase')
         Move = pool.get('stock.move')
 
         super().transition_handle()
@@ -236,9 +235,8 @@ class HandleShipmentException(metaclass=PoolMeta):
         moves = set()
         to_recreate = set(self.ask.recreate_moves)
         domain_moves = set(self.ask.domain_moves)
-        purchase = Purchase(Transaction().context['active_id'])
 
-        for line in purchase.lines:
+        for line in self.record.lines:
             if not set(line.moves) & domain_moves:
                 continue
             if not any(m in to_recreate for m in line.moves):
