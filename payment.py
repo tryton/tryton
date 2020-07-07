@@ -263,12 +263,8 @@ class Succeed(Wizard):
     succeed = StateTransition()
 
     def transition_succeed(self):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        payments = Payment.browse(Transaction().context['active_ids'])
-
         with Transaction().set_context(clearing_date=self.start.date):
-            Payment.succeed(payments)
+            self.model.succeed(self.records)
         return 'end'
 
 
