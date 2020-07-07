@@ -817,18 +817,14 @@ class UpdateAsset(Wizard):
     create_lines = StateTransition()
 
     def default_start(self, fields):
-        Asset = Pool().get('account.asset')
-        asset = Asset(Transaction().context['active_id'])
         return {
-            'value': asset.value,
-            'residual_value': asset.residual_value,
-            'end_date': asset.end_date,
+            'value': self.record.value,
+            'residual_value': self.record.residual_value,
+            'end_date': self.record.end_date,
             }
 
     def transition_update_asset(self):
-        Asset = Pool().get('account.asset')
-        asset = Asset(Transaction().context['active_id'])
-        if self.start.value != asset.value:
+        if self.start.value != self.record.value:
             return 'show_move'
         return 'create_lines'
 
@@ -848,15 +844,15 @@ class UpdateAsset(Wizard):
         return min(next_dates)
 
     def default_show_move(self, fields):
-        Asset = Pool().get('account.asset')
-        asset = Asset(Transaction().context['active_id'])
         return {
-            'amount': self.start.value - asset.value,
+            'amount': self.start.value - self.record.value,
             'date': datetime.date.today(),
-            'depreciation_account': asset.product.account_depreciation_used.id,
-            'counterpart_account': asset.product.account_expense_used.id,
-            'latest_move_date': self.get_latest_move_date(asset),
-            'next_depreciation_date': self.get_next_depreciation_date(asset),
+            'depreciation_account': (
+                self.record.product.account_depreciation_used.id),
+            'counterpart_account': self.record.product.account_expense_used.id,
+            'latest_move_date': self.get_latest_move_date(self.record),
+            'next_depreciation_date': self.get_next_depreciation_date(
+                self.record),
             }
 
     def get_move(self, asset):
@@ -889,32 +885,27 @@ class UpdateAsset(Wizard):
     def transition_create_move(self):
         pool = Pool()
         Move = pool.get('account.move')
-        Asset = pool.get('account.asset')
 
-        asset = Asset(Transaction().context['active_id'])
         latest_move_date = self.show_move.latest_move_date
         next_date = self.show_move.next_depreciation_date
         if not (latest_move_date < self.show_move.date < next_date):
             raise ValueError('The update move date is invalid')
-        move = self.get_move(asset)
-        move.lines = self.get_move_lines(asset)
+        move = self.get_move(self.record)
+        move.lines = self.get_move_lines(self.record)
         move.save()
-        Asset.write([asset], {
+        self.model.write([self.record], {
                 'update_moves': [('add', [move.id])],
                 })
         Move.post([move])
         return 'create_lines'
 
     def transition_create_lines(self):
-        Asset = Pool().get('account.asset')
-
-        asset = Asset(Transaction().context['active_id'])
-        Asset.write([asset], {
+        self.model.write([self.record], {
                 'value': self.start.value,
                 'residual_value': self.start.residual_value,
                 'end_date': self.start.end_date,
                 })
-        Asset.create_lines([asset])
+        self.model.create_lines([self.record])
         return 'end'
 
 
