@@ -600,15 +600,9 @@ class OpenProductQuantitiesByWarehouse(Wizard):
     open_ = StateAction('stock.act_product_quantities_warehouse_move')
 
     def do_open_(self, action):
-        pool = Pool()
-        ProductQuantitiesByWarehouse = pool.get(
-            'stock.product_quantities_warehouse')
-        context = Transaction().context
-
-        record = ProductQuantitiesByWarehouse(context['active_id'])
-        domain = [('date', '>=', record.date)]
+        domain = [('date', '>=', self.record.date)]
         action['pyson_search_value'] = PYSONEncoder().encode(domain)
-        action['name'] += ' (' + record.rec_name + ')'
+        action['name'] += ' (' + self.record.rec_name + ')'
         return action, {}
 
 
@@ -799,14 +793,14 @@ class RecomputeCostPrice(Wizard):
         pool = Pool()
         Move = pool.get('stock.move')
         Product = pool.get('product.product')
-        Template = pool.get('product.template')
-        context = Transaction().context
 
-        if context['active_model'] == 'product.product':
-            products = Product.browse(context['active_ids'])
-        elif context['active_model'] == 'product.template':
-            templates = Template.browse(context['active_ids'])
+        if self.model.__name__ == 'product.product':
+            products = self.records
+        elif self.model.__name__ == 'product.template':
+            templates = self.records
             products = sum((t.products for t in templates), ())
+        else:
+            products = []
 
         from_ = None
         for sub_products in grouped_slice(products):
@@ -823,18 +817,7 @@ class RecomputeCostPrice(Wizard):
         return {'from_': from_}
 
     def transition_recompute(self):
-        pool = Pool()
-        Product = pool.get('product.product')
-        Template = pool.get('product.template')
-
-        context = Transaction().context
-
-        if context['active_model'] == 'product.product':
-            products = Product.browse(context['active_ids'])
-            Product.recompute_cost_price(products, start=self.start.from_)
-        elif context['active_model'] == 'product.template':
-            templates = Template.browse(context['active_ids'])
-            Template.recompute_cost_price(templates, start=self.start.from_)
+        self.model.recompute_cost_price(self.records, start=self.start.from_)
         return 'end'
 
 
@@ -858,16 +841,13 @@ class ModifyCostPrice(Wizard):
     def transition_modify(self):
         pool = Pool()
         Product = pool.get('product.product')
-        Template = pool.get('product.template')
         Revision = pool.get('product.cost_price.revision')
         Date = pool.get('ir.date')
-        context = Transaction().context
         today = Date.today()
         revisions = []
         costs = defaultdict(list)
-        if context['active_model'] == 'product.product':
-            recompute_cost_price = Product.recompute_cost_price
-            products = records = Product.browse(context['active_ids'])
+        if self.model.__name__ == 'product.product':
+            products = records = list(self.records)
             for product in products:
                 revision = self.get_revision(Revision)
                 revision.product = product
@@ -880,9 +860,8 @@ class ModifyCostPrice(Wizard):
                     cost = revision.get_cost_price(product.cost_price)
                     costs[cost].append(product)
                     records.remove(product)
-        elif context['active_model'] == 'product.template':
-            recompute_cost_price = Template.recompute_cost_price
-            templates = records = Template.browse(context['active_ids'])
+        elif self.model.__name__ == 'product.template':
+            templates = records = list(self.records)
             for template in templates:
                 revision = self.get_revision(Revision)
                 revision.template = template
@@ -900,7 +879,7 @@ class ModifyCostPrice(Wizard):
             Product.update_cost_price(costs)
         if records:
             start = min((r.date for r in revisions), default=None)
-            recompute_cost_price(records, start=start)
+            self.model.recompute_cost_price(records, start=start)
         return 'end'
 
     def get_revision(self, Revision):

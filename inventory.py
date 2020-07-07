@@ -518,21 +518,19 @@ class Count(Wizard):
 
     def default_quantity(self, fields):
         pool = Pool()
-        Inventory = pool.get('stock.inventory')
         InventoryLine = pool.get('stock.inventory.line')
         Warning = pool.get('res.user.warning')
-        context = Transaction().context
-        inventory = Inventory(context['active_id'])
         values = {}
-        lines = InventoryLine.search(self.get_line_domain(inventory), limit=1)
+        lines = InventoryLine.search(
+            self.get_line_domain(self.record), limit=1)
         if not lines:
             warning_name = '%s.%s.count_create' % (
-                inventory, self.search.search)
+                self.record, self.search.search)
             if Warning.check(warning_name):
                 raise InventoryCountWarning(warning_name,
                     gettext('stock.msg_inventory_count_create_line',
                         search=self.search.search.rec_name))
-            line, = InventoryLine.create([self.get_line_values(inventory)])
+            line, = InventoryLine.create([self.get_line_values(self.record)])
         else:
             line, = lines
         values['line'] = line.id
