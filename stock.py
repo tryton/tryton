@@ -253,9 +253,7 @@ class InventoryCount(metaclass=PoolMeta):
     def default_quantity(self, fields):
         pool = Pool()
         Product = pool.get('product.product')
-        Inventory = pool.get('stock.inventory')
-        context = Transaction().context
-        inventory = Inventory(context['active_id'])
+        inventory = self.record
         if isinstance(self.search.search, Product):
             product = self.search.search
             if product.lot_is_required(
