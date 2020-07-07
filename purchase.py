@@ -642,15 +642,13 @@ class HandlePurchaseCancellationException(metaclass=PoolMeta):
 
     def transition_reset(self):
         pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
         Requisition = pool.get('purchase.requisition')
         RequisitionLine = pool.get('purchase.requisition.line')
 
         state = super(
             HandlePurchaseCancellationException, self).transition_reset()
 
-        request_ids = Transaction().context['active_ids']
-        requests = PurchaseRequest.browse(request_ids)
+        requests = self.records
         requisition_ids = list({r.origin.requisition.id for r in requests
                 if isinstance(r.origin, RequisitionLine)})
         Requisition.process(Requisition.browse(requisition_ids))
