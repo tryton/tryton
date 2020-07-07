@@ -511,7 +511,7 @@ class ProcessPayment(Wizard):
         pool = Pool()
         Payment = pool.get('account.payment')
         Warning = pool.get('res.user.warning')
-        payments = Payment.browse(Transaction().context['active_ids'])
+        payments = self.records
 
         for payment in payments:
             if payment.line and payment.line.payment_amount < 0:

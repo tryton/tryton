@@ -234,7 +234,7 @@ class PayLine(Wizard):
                 'lines': list(),
                 }
             for kind in reverse.keys()}
-        lines = Line.browse(Transaction().context['active_ids'])
+        lines = self.records
         for line in lines:
             for kind in types:
                 if getattr(line.account.type, kind):
@@ -291,10 +291,7 @@ class PayLine(Wizard):
             return (company, currency)
 
     def _missing_journal(self):
-        pool = Pool()
-        Line = pool.get('account.move.line')
-
-        lines = Line.browse(Transaction().context['active_ids'])
+        lines = self.records
         journals = self._get_journals()
 
         for line in lines:
@@ -350,11 +347,10 @@ class PayLine(Wizard):
 
     def do_pay(self, action):
         pool = Pool()
-        Line = pool.get('account.move.line')
         Payment = pool.get('account.payment')
         Warning = pool.get('res.user.warning')
 
-        lines = Line.browse(Transaction().context['active_ids'])
+        lines = self.records
         journals = self._get_journals()
 
         payments = []
