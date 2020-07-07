@@ -1735,20 +1735,7 @@ class Checkout(Wizard):
     checkout = StateAction('account_payment_stripe.url_checkout')
 
     def do_checkout(self, action):
-        pool = Pool()
-        Payment = pool.get('account.payment')
-        Customer = pool.get('account.payment.stripe.customer')
-        context = Transaction().context
-        active_model = context['active_model']
-        active_id = context['active_id']
-        if active_model == Payment.__name__:
-            Model = Payment
-        elif active_model == Customer.__name__:
-            Model = Customer
-        else:
-            raise ValueError("Invalid active_model: %s" % active_model)
-        record = Model(active_id)
-        action['url'] = record.stripe_checkout_url
+        action['url'] = self.record.stripe_checkout_url
         return action, {}
 
 
