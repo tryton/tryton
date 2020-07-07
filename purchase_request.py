@@ -368,9 +368,7 @@ class CreatePurchase(Wizard):
             ])
 
     def default_ask_party(self, fields):
-        Request = Pool().get('purchase.request')
-        requests = Request.browse(Transaction().context['active_ids'])
-        for request in requests:
+        for request in self.records:
             if request.purchase_line:
                 continue
             if not request.party:
@@ -414,7 +412,7 @@ class CreatePurchase(Wizard):
         Line = pool.get('purchase.line')
         Date = pool.get('ir.date')
 
-        requests = Request.browse(Transaction().context['active_ids'])
+        requests = self.records
 
         if (getattr(self.ask_party, 'party', None)
                 and getattr(self.ask_party, 'company', None)):
@@ -513,23 +511,15 @@ class HandlePurchaseCancellationException(Wizard):
     cancel_request = StateTransition()
 
     def transition_reset(self):
-        pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-
-        requests = PurchaseRequest.browse(Transaction().context['active_ids'])
-        for request in requests:
+        for request in self.records:
             request.purchase_line = None
-        PurchaseRequest.reset_purchased(requests)
+        self.model.reset_purchased(self.records)
         return 'end'
 
     def transition_cancel_request(self):
-        pool = Pool()
-        PurchaseRequest = pool.get('purchase.request')
-
-        requests = PurchaseRequest.browse(Transaction().context['active_ids'])
-        for request in requests:
+        for request in self.records:
             request.exception_ignored = True
-        PurchaseRequest.update_state(requests)
+        self.model.update_state(self.records)
         return 'end'
 
 
