@@ -651,6 +651,5 @@ class Leveling(Wizard):
     leveling = StateTransition()
 
     def transition_leveling(self):
-        Work = Pool().get('project.work')
-        Work(Transaction().context['active_id']).create_leveling()
+        self.record.create_leveling()
         return 'end'
