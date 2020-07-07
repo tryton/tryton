@@ -127,19 +127,12 @@ class DepositRecall(Wizard):
     recall = StateTransition()
 
     def default_start(self, fields):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-        invoice = Invoice(Transaction().context['active_id'])
-
         return {
-            'company': invoice.company.id,
+            'company': self.record.company.id,
             }
 
     def transition_recall(self):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-        invoice = Invoice(Transaction().context['active_id'])
-        invoice.call_deposit(self.start.account, self.start.description)
+        self.record.call_deposit(self.start.account, self.start.description)
         return 'end'
 
 
