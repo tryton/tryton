@@ -27,9 +27,7 @@ class ProcessDunning(metaclass=PoolMeta):
         cls._actions.append('print_letter')
 
     def do_print_letter(self, action):
-        pool = Pool()
-        Dunning = pool.get('account.dunning')
-        dunnings = Dunning.browse(Transaction().context['active_ids'])
+        dunnings = self.records
         ids = [d.id for d in dunnings
             if d.state == 'waiting'
             and not d.blocked
