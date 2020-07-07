@@ -204,9 +204,7 @@ class CreateShipping(Wizard):
     start = StateTransition()
 
     def transition_start(self):
-        pool = Pool()
-        ShipmentOut = pool.get('stock.shipment.out')
-        shipment = ShipmentOut(Transaction().context['active_id'])
-        method_name = 'validate_packing_%' % shipment.carrier.shipping_service
-        getattr(shipment, method_name)()
+        shipping_service = self.record.carrier.shipping_service
+        method_name = 'validate_packing_%' % shipping_service
+        getattr(self.record, method_name)()
         return 'end'
