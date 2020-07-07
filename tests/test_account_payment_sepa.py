@@ -132,7 +132,8 @@ def validate_file(flavor, kind, xsd=None):
 
         session_id, _, _ = ProcessPayment.create()
         process_payment = ProcessPayment(session_id)
-        with Transaction().set_context(active_ids=[payment.id]):
+        with Transaction().set_context(
+                active_model=Payment.__name__, active_ids=[payment.id]):
             _, data = process_payment.do_process(None)
         group, = PaymentGroup.browse(data['res_id'])
         message, = group.sepa_messages
@@ -312,7 +313,8 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
 
             session_id, _, _ = ProcessPayment.create()
             process_payment = ProcessPayment(session_id)
-            with Transaction().set_context(active_ids=[payment.id]):
+            with Transaction().set_context(
+                    active_model=Payment.__name__, active_ids=[payment.id]):
                 _, data = process_payment.do_process(None)
 
             self.assertEqual(payment.sepa_mandate_sequence_type, 'FRST')
@@ -341,7 +343,8 @@ class AccountPaymentSepaTestCase(ModuleTestCase):
             session_id, _, _ = ProcessPayment.create()
             process_payment = ProcessPayment(session_id)
             payment_ids = [p.id for p in payments]
-            with Transaction().set_context(active_ids=payment_ids):
+            with Transaction().set_context(
+                    active_model=Payment.__name__, active_ids=payment_ids):
                 _, data = process_payment.do_process(None)
 
             for payment in payments:
