@@ -88,14 +88,12 @@ class ProcessDunning(metaclass=PoolMeta):
 
     def transition_send_email(self):
         pool = Pool()
-        Dunning = pool.get('account.dunning')
         Log = pool.get('account.dunning.email.log')
         datamanager = SMTPDataManager()
         if not pool.test:
             Transaction().join(datamanager)
-        dunnings = Dunning.browse(Transaction().context['active_ids'])
         logs = []
-        for dunning in dunnings:
+        for dunning in self.records:
             if dunning.level.send_email:
                 log = dunning.send_email(datamanager=datamanager)
                 if log:
