@@ -89,7 +89,7 @@ class HandlePurchaseCancellationException(metaclass=PoolMeta):
         next_state = super(HandlePurchaseCancellationException,
             self).transition_cancel_request()
         moves = []
-        for sub_ids in grouped_slice(Transaction().context['active_ids']):
+        for sub_ids in grouped_slice(list(map(int, self.records))):
             sale_lines = SaleLine.search([
                     ('purchase_request', 'in', sub_ids),
                     ])
