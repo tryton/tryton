@@ -108,20 +108,15 @@ class SplitMove(Wizard):
     split = StateTransition()
 
     def default_start(self, fields):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        default = {}
-        move = Move(Transaction().context['active_id'])
-        default['uom'] = move.uom.id
-        default['unit_digits'] = move.unit_digits
-        default['uom_category'] = move.uom.category.id
-        return default
+        return {
+            'uom': self.record.uom.id,
+            'unit_digits': self.record.unit_digits,
+            'uom_category': self.record.uom.category.id,
+            }
 
     def transition_split(self):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        move = Move(Transaction().context['active_id'])
-        move.split(self.start.quantity, self.start.uom, self.start.count)
+        self.record.split(
+            self.start.quantity, self.start.uom, self.start.count)
         return 'end'
 
 
@@ -166,17 +161,6 @@ class SplitShipment(Wizard):
             ])
     split = StateTransition()
 
-    def get_shipment(self):
-        pool = Pool()
-        context = Transaction().context
-        if context['active_model'] in {
-                'stock.shipment.in.return',
-                'stock.shipment.out',
-                'stock.shipment.internal',
-                }:
-            Shipment = pool.get(context['active_model'])
-            return Shipment(context['active_id'])
-
     def get_moves(self, shipment):
         if shipment.__name__ == 'stock.shipment.out':
             return shipment.outgoing_moves
@@ -187,8 +171,7 @@ class SplitShipment(Wizard):
             return shipment.moves
 
     def default_start(self, fields):
-        shipment = self.get_shipment()
-        moves = self.get_moves(shipment)
+        moves = self.get_moves(self.record)
         move_ids = [m.id for m in moves if m.state == 'draft']
         return {
             'domain_moves': move_ids,
@@ -197,8 +180,8 @@ class SplitShipment(Wizard):
     def transition_split(self):
         pool = Pool()
         Move = pool.get('stock.move')
-        shipment = self.get_shipment()
-        Shipment = shipment.__class__
+        shipment = self.record
+        Shipment = self.model
         if shipment.state != 'draft':
             raise ValueError("Wrong shipment state")
         if not set(self.start.moves).issubset(self.start.domain_moves):
