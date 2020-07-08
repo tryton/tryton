@@ -49,7 +49,7 @@
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute a:defaultValue="black">
+      <attribute>
         <name ns="">color</name>
         <text/>
       </attribute>
@@ -57,7 +57,7 @@
   </define>
   <define name="attlist.calendar" combine="interleave">
     <optional>
-      <attribute a:defaultValue="lightblue">
+      <attribute>
         <name ns="">background_color</name>
         <text/>
       </attribute>

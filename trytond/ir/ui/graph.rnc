@@ -4,9 +4,8 @@ graph = element graph { attlist.graph, x*, y* }
 attlist.graph &=
   [ a:defaultValue = "vbar" ]
   attribute type { "vbar" | "hbar" | "line" | "pie" }?
-attlist.graph &=
-  [ a:defaultValue = "#f5f5f5" ] attribute background { text }?
-attlist.graph &= [ a:defaultValue = "blue" ] attribute color { text }?
+attlist.graph &= attribute background { text }?
+attlist.graph &= attribute color { text }?
 attlist.graph &=
   [ a:defaultValue = "1" ] attribute legend { "0" | "1" }?
 x = element x { attlist.x, field }

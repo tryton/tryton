@@ -28,7 +28,7 @@
   </define>
   <define name="attlist.graph" combine="interleave">
     <optional>
-      <attribute a:defaultValue="#f5f5f5">
+      <attribute>
         <name ns="">background</name>
         <text/>
       </attribute>
@@ -36,7 +36,7 @@
   </define>
   <define name="attlist.graph" combine="interleave">
     <optional>
-      <attribute a:defaultValue="blue">
+      <attribute>
         <name ns="">color</name>
         <text/>
       </attribute>

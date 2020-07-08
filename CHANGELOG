@@ -1,3 +1,4 @@
+* Remove default colors on graph and calendar
 * Add model, record and records attributes on Wizard
 * Check read access of wizard records
 * Add cached_property in tools

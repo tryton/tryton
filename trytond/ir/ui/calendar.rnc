@@ -10,10 +10,8 @@ attlist.calendar &=
       | "week"
       | "month" }?
 attlist.calendar &= [a:defaultValue = "1" ] attribute editable { "0" | "1" }?
-attlist.calendar &=
-   [ a:defaultValue = "black" ] attribute color { text }?
-attlist.calendar &=
-   [ a:defaultValue = "lightblue" ] attribute background_color { text }?
+attlist.calendar &= attribute color { text }?
+attlist.calendar &= attribute background_color { text }?
 attlist.calendar &=
   attribute width { text }?
 attlist.calendar &=
