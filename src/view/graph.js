@@ -84,9 +84,10 @@
             var fields2load = [this.xfield.name];
             for (i = 0, len = this.yfields.length; i < len; i++) {
                 yfield = this.yfields[i];
-                data.columns.push([yfield.name]);
-                data.names[yfield.name] = yfield.string;
-                key2columns[yfield.key || yfield.name] = i + 1;
+                key = yfield.key || yfield.name;
+                data.columns.push([key]);
+                data.names[key] = yfield.string;
+                key2columns[key] = i + 1;
                 fields2load.push(yfield.name);
             }
 
@@ -207,17 +208,28 @@
                     }
                 };
             }
-            var colors = {};
-            for (var i = 0; i < this.yfields.length; i++) {
-                var field = this.yfields[i];
-                if (field.color) {
-                    colors[field.name] = field.color;
+            var color = this.view.attributes.color || Sao.config.graph_color;
+            var rgb = Sao.common.hex2rgb(
+                Sao.common.COLOR_SCHEMES[color] || color);
+            var maxcolor = Math.max.apply(null, rgb);
+            var keys = [];
+            var i, yfield;
+            for (i = 0; i < this.yfields.length; i++) {
+                yfield = this.yfields[i];
+                keys.push(yfield.key || yfield.name);
+            }
+            var colors = Sao.common.generateColorscheme(
+                color, keys, maxcolor / (keys.length || 1));
+            for (i = 0; i < this.yfields.length; i++) {
+                yfield = this.yfields[i];
+                if (yfield.color) {
+                    colors[yfield.key || yfield.name] = field.color;
                 }
             }
             c3_config.data.color = function(color, column) {
                 // column is an object when called for legend
-                var name = column.id || column;
-                return colors[name] || color;
+                var key = column.id || column;
+                return colors[key] || color;
             };
             return c3_config;
         },

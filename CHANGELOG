@@ -1,3 +1,4 @@
+* Allow configuration of default colors for graph and calendar
 * Sanitize RichtText fields content (issue9405)
 * Escape external string (issue9394)
 * Keep context in sessionStorage

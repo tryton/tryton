@@ -97,12 +97,12 @@
         },
         get_colors: function(record) {
             var colors = {};
-            colors.text_color = 'black';
+            colors.text_color = Sao.config.calendar_colors[0];
             if (this.attributes.color) {
                 colors.text_color = record.field_get(
                     this.attributes.color);
             }
-            colors.background_color = 'lightblue';
+            colors.background_color = Sao.config.calendar_colors[1];
             if (this.attributes.background_color) {
                 colors.background_color = record.field_get(
                     this.attributes.background_color);

@@ -3673,4 +3673,100 @@
             });
     };
 
+    Sao.common.COLOR_SCHEMES = {
+        'red': '#cf1d1d',
+        'green': '#3fb41b',
+        'blue': '#224565',
+        'grey': '#444444',
+        'black': '#000000',
+        'darkcyan': '#305755',
+    };
+
+    Sao.common.hex2rgb = function(hexstring, digits) {
+        digits = digits || 2;
+        var top = parseInt('f'.repeat(digits), 16);
+        var r = parseInt(
+            hexstring.substring(1, digits + 1), 16);
+        var g = parseInt(
+            hexstring.substring(digits + 1, digits * 2 + 1), 16);
+        var b = parseInt(
+            hexstring.substring(digits * 2 + 1, digits * 3 + 1), 16);
+        return [r / top, g / top, b / top];
+    };
+
+    Sao.common.rgb2hex = function(rgb, digits) {
+        digits = digits || 2;
+        var top = parseInt('f'.repeat(digits), 16);
+        return '#' + rgb
+            .map(function(i) { return Math.round(i * top).toString(16); })
+            .join('');
+    };
+
+    Sao.common.rgb2hsv = function(rgb) {
+        var r = rgb[0],
+            g = rgb[1],
+            b = rgb[2];
+        var maxc = Math.max.apply(null, rgb);
+        var minc = Math.min.apply(null, rgb);
+        var v = maxc;
+        if (minc == maxc) return [0, 0, v];
+        var s = (maxc - minc) / maxc;
+        var rc = (maxc - r) / (maxc - minc);
+        var gc = (maxc - g) / (maxc - minc);
+        var bc = (maxc - b) / (maxc - minc);
+        var h;
+        if (r == maxc) {
+            h = bc - gc;
+        } else if (g == maxc) {
+            h = 2 + rc - bc;
+        } else {
+            h = 4 + gc - rc;
+        }
+        h = (h / 6) % 1;
+        return [h, s, v];
+    };
+
+    Sao.common.hsv2rgb = function(hsv) {
+        var h = hsv[0],
+            s = hsv[1],
+            v = hsv[2];
+        if (s == 0) return [v, v, v];
+        var i = Math.trunc(h * 6);
+        var f = (h * 6) - i;
+        var p = v * (1 - s);
+        var q = v * (1 - s * f);
+        var t = v * (1 - s * (1 - f));
+        i = i % 6;
+
+        if (i == 0) return [v, t, p];
+        else if (i == 1) return [q, v, p];
+        else if (i == 2) return [p, v, t];
+        else if (i == 3) return [p, q, v];
+        else if (i == 4) return [t, p, v];
+        else if (i == 5) return [v, p, q];
+    };
+
+    Sao.common.generateColorscheme = function(masterColor, keys, light) {
+        if (light === undefined) {
+            light = 0.1;
+        }
+        var rgb = Sao.common.hex2rgb(
+            Sao.common.COLOR_SCHEMES[masterColor] || masterColor);
+        var hsv = Sao.common.rgb2hsv(rgb);
+        var h = hsv[0],
+            s = hsv[1],
+            v = hsv[2];
+        if (keys.length) {
+            light = Math.min(light, (1 - v) / keys.length);
+        }
+        var golden_angle = 0.618033988749895;
+        var colors = {};
+        for (var i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            colors[key] = Sao.common.rgb2hex(Sao.common.hsv2rgb(
+                [(h + golden_angle * i) % 1, s, (v + light * i) % 1]));
+        }
+        return colors;
+    };
+
 }());
