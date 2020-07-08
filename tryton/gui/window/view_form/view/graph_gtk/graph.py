@@ -14,6 +14,7 @@ from gi.repository import Gdk, Gtk
 import tryton.rpc as rpc
 from tryton.action import Action
 from tryton.common import hex2rgb, generateColorscheme, COLOR_SCHEMES
+from tryton.config import CONFIG
 from tryton.gui.window import Window
 from tryton.pyson import PYSONDecoder
 
@@ -460,7 +461,7 @@ class Graph(Gtk.DrawingArea):
 
     def setColorScheme(self):
         keys = self._getDatasKeys()
-        color = self.attrs.get('color', 'blue')
+        color = self.attrs.get('color', CONFIG['graph.color'])
         r, g, b = hex2rgb(COLOR_SCHEMES.get(color, color))
         maxcolor = max(max(r, g), b)
         self.colorScheme = generateColorscheme(color, keys,

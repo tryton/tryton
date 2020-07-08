@@ -6,6 +6,9 @@ import goocalendar
 from .dates_period import DatesPeriod
 
 from tryton.common import MODELACCESS
+from tryton.config import CONFIG
+
+_colors = CONFIG['calendar.colors'].split(',')
 
 
 class Calendar_(goocalendar.Calendar):
@@ -14,6 +17,9 @@ class Calendar_(goocalendar.Calendar):
     def __init__(self, attrs, view, fields, event_store=None):
         super(Calendar_, self).__init__(
             event_store, attrs.get('mode', 'month'))
+        self.props.selected_border_color = _colors[1]
+        if hasattr(self.props, 'selected_text_color'):
+            self.props.selected_text_color = _colors[0]
         self.attrs = attrs
         self.view_calendar = view
         self.fields = fields
@@ -69,10 +75,10 @@ class Calendar_(goocalendar.Calendar):
         return domain
 
     def get_colors(self, record):
-        text_color = None
+        text_color = _colors[0]
         if self.attrs.get('color'):
             text_color = record[self.attrs['color']].get(record)
-        bg_color = 'lightblue'
+        bg_color = _colors[1]
         if self.attrs.get('background_color'):
             bg_color = record[self.attrs['background_color']].get(
                 record)
