@@ -2717,6 +2717,7 @@
         'tryton-open',
         'tryton-print',
         'tryton-public',
+        'tryton-question',
         'tryton-refresh',
         'tryton-remove',
         'tryton-save',
