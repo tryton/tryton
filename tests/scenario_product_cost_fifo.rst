@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
 
-Install product_cost_fifo Module::
+Activate modules::
 
     >>> config = activate_modules('product_cost_fifo')
 
