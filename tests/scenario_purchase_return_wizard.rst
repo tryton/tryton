@@ -18,7 +18,7 @@ Imports::
     >>> today = datetime.date.today()
 
 
-Install purchase::
+Activate modules::
 
     >>> config = activate_modules('purchase')
 
