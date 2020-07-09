@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts, create_tax, create_tax_code
 
-Install account::
+Activate modules::
 
     >>> config = activate_modules('account')
 

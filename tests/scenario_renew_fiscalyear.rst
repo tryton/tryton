@@ -15,7 +15,7 @@ Imports::
     >>> today = datetime.date.today()
     >>> end_year = today + relativedelta(month=12, day=31)
 
-Install account::
+Activate modules::
 
     >>> config = activate_modules('account')
 

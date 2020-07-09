@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account.exceptions import CancelDelegatedWarning
 
-Install account::
+Activate modules::
 
     >>> config = activate_modules('account')
 

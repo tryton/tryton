@@ -16,7 +16,7 @@ Imports::
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> today = datetime.date.today()
 
-Install account::
+Activate modules::
 
     >>> config = activate_modules('account')
 
