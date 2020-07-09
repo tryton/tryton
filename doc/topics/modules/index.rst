@@ -38,7 +38,7 @@ contain `tryton` section with this following name:
      *may* depend.
 
    * ``xml``: The one per line list of the XML files of the module. They will
-     be loaded in the given order at the installation or update of the module.
+     be loaded in the given order when the module is activated or updated.
 
 Here is an example::
 
@@ -116,7 +116,7 @@ Here is the list of the tags:
 
         * ``noupdate`` to prevent the framework to update the records,
         * ``depends`` to import data only if all modules in the comma separated
-          module list value are installed,
+          module list value are activated,
         * ``grouped`` to create records at the end with a grouped call.
 
     * ``record``: Create a record of the model defined by the attribute
@@ -149,7 +149,7 @@ Here is the list of the tags:
           string.
 
         * ``depends``: set value only if all modules in the comma separated
-          module list value are installed.
+          module list value are activated.
 
         .. note::
             Field content is considered as a string. So for fields that require
