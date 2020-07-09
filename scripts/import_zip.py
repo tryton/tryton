@@ -109,14 +109,12 @@ def do_import(codes):
 
 def run():
     parser = ArgumentParser()
-    parser.add_argument('-d', '--database', dest='database')
+    parser.add_argument('-d', '--database', dest='database', required=True)
     parser.add_argument('-c', '--config', dest='config_file',
         help='the trytond config file')
     parser.add_argument('codes', nargs='+')
 
     args = parser.parse_args()
-    if not args.database:
-        parser.error('Missing database')
     main(args.database, args.codes, args.config_file)
 
 
