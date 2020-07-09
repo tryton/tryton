@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
 
-Install purchase_shipment_cost::
+Activate modules::
 
     >>> config = activate_modules('purchase_shipment_cost')
 

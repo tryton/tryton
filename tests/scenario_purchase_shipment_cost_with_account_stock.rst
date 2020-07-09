@@ -19,7 +19,7 @@ Imports::
     ...     add_stock_accounts
     >>> today = datetime.date.today()
 
-Install purchase_shipment_cost and account_stock_continental::
+Activate modules::
 
     >>> config = activate_modules([
     ...         'purchase_shipment_cost',
