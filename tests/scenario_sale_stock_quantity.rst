@@ -16,7 +16,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install sale_stock_quantity and stock_supply::
+Activate modules::
 
     >>> config = activate_modules(['sale_stock_quantity', 'stock_supply'])
 
