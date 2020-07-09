@@ -141,7 +141,7 @@ class Move(metaclass=PoolMeta):
     unit_shipment_cost = fields.Numeric('Unit Shipment Cost',
         digits=price_digits, readonly=True)
 
-    # Split the shipment cost if account_stock_continental is installed
+    # Split the shipment cost if account_stock_continental is activated
     def _get_account_stock_move_lines(self, type_):
         pool = Pool()
         AccountMoveLine = pool.get('account.move.line')
@@ -171,7 +171,7 @@ class Move(metaclass=PoolMeta):
                 raise AssertionError('missing account_stock_supplier')
         return move_lines
 
-    # Remove shipment cost if account_stock_anglo_saxon is installed
+    # Remove shipment cost if account_stock_anglo_saxon is activated
     @classmethod
     def _get_anglo_saxon_move(cls, moves, quantity, type_):
         pool = Pool()
