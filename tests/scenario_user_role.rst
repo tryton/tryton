@@ -8,7 +8,7 @@ Imports::
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
 
-Install user_role::
+Activate modules::
 
     >>> config = activate_modules('user_role')
 
