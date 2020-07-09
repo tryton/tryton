@@ -17,7 +17,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install account_statement and account_invoice::
+Activate modules::
 
     >>> config = activate_modules(['account_statement', 'account_invoice'])
 

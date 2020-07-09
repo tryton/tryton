@@ -16,7 +16,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences
     >>> today = datetime.date.today()
 
-Install account_statement::
+Activate modules::
 
     >>> config = activate_modules('account_statement')
 
