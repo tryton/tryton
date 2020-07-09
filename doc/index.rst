@@ -16,7 +16,7 @@ Configuration to connect to a sqlite memory database using trytond as module.
 
     >>> config = config.set_trytond('sqlite:///:memory:')
 
-Installing a module
+Activating a module
 ~~~~~~~~~~~~~~~~~~~
 
 Find the module, call the activate button and run the upgrade wizard.
