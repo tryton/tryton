@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
 
-Install production_work Module::
+Activate modules::
 
     >>> config = activate_modules('production_work')
 
