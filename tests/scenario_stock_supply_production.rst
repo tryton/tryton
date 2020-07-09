@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
-Install stock_supply_production Module::
+Activate modules::
 
     >>> config = activate_modules('stock_supply_production')
 
