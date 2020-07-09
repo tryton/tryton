@@ -14,7 +14,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> today = datetime.date.today()
 
-Install account_statement_rule::
+Activate modules::
 
     >>> config = activate_modules('account_statement_rule')
 
