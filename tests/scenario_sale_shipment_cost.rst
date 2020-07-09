@@ -17,7 +17,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install sale_shipment_cost, sale and account_invoice::
+Activate modules::
 
     >>> config = activate_modules([
     ...         'sale_shipment_cost',
