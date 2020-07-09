@@ -16,7 +16,7 @@ Imports::
     >>> yesterday = today - relativedelta(days=1)
     >>> before_yesterday = yesterday - relativedelta(days=1)
 
-Install production Module::
+Activate modules::
 
     >>> config = activate_modules('production')
 

@@ -10,7 +10,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
-Install production Module::
+Activate modules::
 
     >>> config = activate_modules('production')
 
