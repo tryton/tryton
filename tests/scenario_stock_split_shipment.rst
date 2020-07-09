@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
-Install stock_split Module::
+Activate modules::
 
     >>> config = activate_modules('stock_split')
 
