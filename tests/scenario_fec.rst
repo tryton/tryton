@@ -19,7 +19,7 @@ Imports::
 
     >>> today = datetime.date(2018, 1, 1)
 
-Install account_fr::
+Activate modules::
 
     >>> config = activate_modules('account_fr')
 
