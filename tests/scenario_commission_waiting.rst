@@ -17,7 +17,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install commission_waiting::
+Activate modules::
 
     >>> config = activate_modules('commission_waiting')
 
