@@ -12,7 +12,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
 
-Install stock_product_location Module::
+Activate modules::
 
     >>> config = activate_modules('stock_product_location')
 

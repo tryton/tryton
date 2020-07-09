@@ -10,7 +10,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company
 
-Install stock_product_location and production Modules::
+Activate modules::
 
     >>> _ = activate_modules(['stock_product_location', 'production'])
 
