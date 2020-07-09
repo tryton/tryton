@@ -115,7 +115,9 @@ class CellCache(list):
 
 
 class Cell(object):
-    pass
+
+    def set_editable(self, record):
+        pass
 
 
 class Affix(Cell):
