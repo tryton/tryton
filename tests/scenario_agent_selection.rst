@@ -16,7 +16,7 @@ Imports::
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
-Install commission::
+Activate modules::
 
     >>> config = activate_modules(['commission', 'sale'])
 
