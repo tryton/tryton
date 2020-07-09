@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
 
-Install sale_secondary_unit::
+Activate modules::
 
     >>> config = activate_modules(
     ...     ['sale_secondary_unit',
