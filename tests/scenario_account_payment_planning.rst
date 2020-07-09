@@ -16,7 +16,7 @@ Imports::
     >>> tomorrow = today + datetime.timedelta(days=1)
     >>> next_week = today + datetime.timedelta(weeks=1)
 
-Install account_payment::
+Activate modules::
 
     >>> config = activate_modules('account_payment')
 

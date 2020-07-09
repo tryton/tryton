@@ -13,7 +13,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> tomorrow = datetime.date.today() + datetime.timedelta(days=1)
 
-Install account_payment::
+Activate modules::
 
     >>> config = activate_modules('account_payment')
 
