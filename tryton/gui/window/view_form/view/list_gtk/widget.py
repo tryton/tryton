@@ -133,6 +133,9 @@ class Cell(object):
         field = record[self.attrs['name']]
         return record, field
 
+    def set_editable(self, record):
+        pass
+
 
 class Affix(Cell):
     expand = False
