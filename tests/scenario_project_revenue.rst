@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
-Install project_invoice::
+Activate modules::
 
     >>> config = activate_modules('project_revenue')
 
