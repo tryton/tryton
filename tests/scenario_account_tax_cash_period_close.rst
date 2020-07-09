@@ -14,7 +14,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
 
-Install account_tax_cash::
+Activate modules::
 
     >>> config = activate_modules('account_tax_cash')
 
