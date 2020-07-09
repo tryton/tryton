@@ -13,7 +13,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts, create_tax
 
-Install stock_consignment::
+Activate modules::
 
     >>> config = activate_modules('stock_consignment')
 
