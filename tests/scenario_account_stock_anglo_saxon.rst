@@ -21,7 +21,7 @@ Imports::
     ...     add_cogs_accounts
     >>> today = datetime.date.today()
 
-Install account_stock_continental, sale and purchase::
+Activate modules::
 
     >>> config = activate_modules([
     ...         'account_stock_anglo_saxon',
