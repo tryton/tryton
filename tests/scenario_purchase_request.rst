@@ -15,7 +15,7 @@ Imports::
     ...     get_accounts)
     >>> today = datetime.date.today()
 
-Install stock_supply Module::
+Activate modules::
 
     >>> config = activate_modules(['purchase_request', 'stock_supply'])
 
