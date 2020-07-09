@@ -16,7 +16,7 @@ Patch sendmail_transactional::
     >>> from trytond.modules.marketing_automation import marketing_automation
     >>> marketing_automation.sendmail_transactional = smtp_calls = MagicMock()
 
-Install marketing_automation::
+Activate modules::
 
     >>> config = activate_modules(['marketing_automation', 'party'])
 
