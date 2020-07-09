@@ -17,7 +17,7 @@ Imports::
     ...     create_payment_term
     >>> today = datetime.date.today()
 
-Install sale_extra::
+Activate modules::
 
     >>> config = activate_modules('sale_extra')
 
