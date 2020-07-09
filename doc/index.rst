@@ -6,7 +6,7 @@ The module also comes with a sheet that shows for each employee the total
 duration per day in the company and the detail of the time of entrance and
 exit.
 
-If the timesheet module is installed it also shows the time the employee has
+If the timesheet module is activated it also shows the time the employee has
 spent on timesheets for that day.
 
 Period
