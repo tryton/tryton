@@ -15,7 +15,7 @@ Imports::
     ...     get_accounts
     >>> today = datetime.date.today()
 
-Install project_invoice::
+Activate modules::
 
     >>> config = activate_modules('project_invoice')
 

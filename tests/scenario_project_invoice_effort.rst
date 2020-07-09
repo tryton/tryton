@@ -17,7 +17,7 @@ Imports::
     ...     create_payment_term
     >>> today = datetime.date.today()
 
-Install project_invoice::
+Activate modules::
 
     >>> config = activate_modules('project_invoice')
 
