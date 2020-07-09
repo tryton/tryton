@@ -18,7 +18,7 @@ Imports::
     >>> today = dt.date.today()
     >>> next_year = today + relativedelta(years=1)
 
-Install account_invoice::
+Activate modules::
 
     >>> config = activate_modules('account_invoice')
 

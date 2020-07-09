@@ -20,7 +20,7 @@ Imports::
     >>> today = datetime.date.today()
     >>> tomorrow = today + relativedelta(days=1)
 
-Install account_invoice::
+Activate modules::
 
     >>> config = activate_modules('account_invoice')
 
