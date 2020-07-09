@@ -14,7 +14,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
-Install account_statement_aeb43::
+Activate modules::
 
     >>> config = activate_modules('account_statement_aeb43')
 
