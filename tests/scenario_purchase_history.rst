@@ -9,7 +9,7 @@ Imports::
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
 
-Install purchase_history::
+Activate modules::
 
     >>> config = activate_modules('purchase_history')
 
