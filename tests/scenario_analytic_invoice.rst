@@ -17,7 +17,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install analytic_invoice::
+Activate modules::
 
     >>> config = activate_modules('analytic_invoice')
 

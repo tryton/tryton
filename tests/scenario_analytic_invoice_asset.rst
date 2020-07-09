@@ -20,7 +20,7 @@ Imports::
     ...     import add_asset_accounts
     >>> today = datetime.date.today()
 
-Install analytic_invoice and account_asset::
+Activate modules::
 
     >>> config = activate_modules(['analytic_invoice', 'account_asset'])
 
