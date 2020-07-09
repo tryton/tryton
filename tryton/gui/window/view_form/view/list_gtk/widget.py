@@ -148,6 +148,9 @@ class Cell(object):
             cell.set_property('foreground', foreground)
             cell.set_property('foreground-set', bool(foreground))
 
+    def set_editable(self, record):
+        pass
+
 
 class Affix(Cell):
     expand = False
