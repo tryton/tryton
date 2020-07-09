@@ -42,7 +42,7 @@ class Work(metaclass=PoolMeta):
         except KeyError:
             pass
         else:
-            # Add purchase lines if purchase is installed
+            # Add purchase lines if purchase is activated
             cls.purchase_lines = fields.One2Many('purchase.line', 'work',
                 'Purchase Lines', domain=[
                     ('purchase.company', '=', Eval('company', -1)),
