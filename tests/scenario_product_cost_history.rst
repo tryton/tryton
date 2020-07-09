@@ -15,7 +15,7 @@ Imports::
     >>> today = dt.date.today()
     >>> now = dt.datetime.now()
 
-Install product_cost_history Module::
+Activate modules::
 
     >>> config = activate_modules('product_cost_history')
 
