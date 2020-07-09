@@ -51,7 +51,7 @@ for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER', 'CI_JOB_ID']:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = ['python-sql >= 0.4', 'python-stdnum >= 1.8']
+requires = ['python-sql >= 0.4', 'python-stdnum >= 1.13']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))

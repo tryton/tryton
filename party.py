@@ -119,15 +119,17 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
 
     @classmethod
     def tax_identifier_types(cls):
-        return ['al_nipt', 'ar_cuit', 'be_vat', 'bg_vat', 'ch_vat', 'cl_rut',
-            'co_rut', 'cu_vat', 'cz_dic', 'de_vat', 'do_rnc', 'dk_cvr',
-            'ec_ruc', 'ee_kmkr', 'es_cif', 'es_nie', 'es_nif', 'eu_vat',
-            'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat', 'hu_anum', 'ie_vat',
-            'is_vsk', 'it_iva', 'lt_pvm', 'lu_tva', 'lv_pvn', 'mc_tva',
-            'mt_vat', 'mx_rfc', 'nl_btw', 'no_mva', 'pl_nip', 'pt_nif',
-            'ro_cf', 'rs_pib', 'ru_inn', 'se_vat', 'si_ddv', 'sk_dph',
-            'sm_coe', 'us_atin', 'us_ein', 'us_itin', 'us_ptin', 'us_ssn',
-            'us_tin']
+        return [
+            'ad_nrt', 'al_nipt', 'ar_cuit', 'be_vat', 'bg_vat', 'ch_vat',
+            'cl_rut', 'co_rut', 'cu_vat', 'cz_dic', 'de_vat', 'do_rnc',
+            'dk_cvr', 'ec_ruc', 'ee_kmkr', 'es_cif', 'es_nie', 'es_nif',
+            'eu_vat', 'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat', 'gt_nit',
+            'hu_anum', 'ie_vat', 'is_vsk', 'it_iva', 'jp_cn', 'lt_pvm',
+            'lu_tva', 'lv_pvn', 'mc_tva', 'md_idno', 'mt_vat', 'mx_rfc',
+            'nl_btw', 'no_mva', 'nz_ird', 'pe_ruc', 'pl_nip', 'pt_nif',
+            'py_ruc', 'ro_cf', 'rs_pib', 'ru_inn', 'se_vat', 'si_ddv',
+            'sk_dph', 'sm_coe', 'us_atin', 'us_ein', 'us_itin', 'us_ptin',
+            'us_ssn', 'us_tin', 'uy_ruc', 've_rif', 'za_tin']
 
     def get_tax_identifier(self, name):
         types = self.tax_identifier_types()
@@ -314,6 +316,7 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
         help="The party identified by this record.")
     type = fields.Selection([
             (None, ''),
+            ('ad_nrt', "Andorra Tax Number"),
             ('al_nipt', "Albanian VAT Number"),
             ('ar_cuit', "Argentinian Tax Number"),
             ('at_businessid', "Austrian Company Register"),
@@ -336,6 +339,9 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('cn_rit', "Chinese Resident Identity Card Number"),
             ('co_nit', "Colombian Identity Code"),
             ('co_rut', "Colombian Business Tax Number"),
+            ('cr_cpf', "Costa Rica Physical Person ID Number"),
+            ('cr_cr', "Costa Rica Foreigners ID Number"),
+            ('cu_ni', "Cuban Identity Card Number"),
             ('cy_vat', "Cypriot VAT Number"),
             ('cz_dic', "Czech VAT Number"),
             ('cz_rc', "Czech National Identifier"),
@@ -373,6 +379,7 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('gb_upn', "English Unique Pupil Number"),
             ('gb_vat', "United Kingdom (and Isle of Man) VAT Number"),
             ('gr_vat', "Greek VAT Number"),
+            ('gt_nit', "Guatemala Tax Number"),
             ('hr_oib', "Croatian Identification Number"),
             ('hu_anum', "Hungarian VAT Number"),
             ('ie_pps', "Irish Personal Number"),
@@ -384,10 +391,12 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('is_vsk', "Icelandic VAT Number"),
             ('it_codicefiscale', "Italian Tax Code for Individuals"),
             ('it_iva', "Italian VAT Number"),
+            ('jp_cn', "Japanese Corporate Number"),
             ('lt_pvm', "Lithuanian VAT Number"),
             ('lu_tva', "Luxembourgian VAT Number"),
             ('lv_pvn', "Latvian VAT Number"),
             ('mc_tva', "Monacan VAT Number"),
+            ('md_idno', "Moldavian Company Identification Number"),
             ('mt_vat', "Maltese VAT Number"),
             ('mu_nid', "Mauritian National Identifier"),
             ('mx_rfc', "Mexican Tax Number"),
@@ -399,10 +408,14 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('nl_onderwijsnummer', "Dutch student identification number"),
             ('no_mva', "Norwegian VAT Number"),
             ('no_orgnr', "Norwegian Organisation Number"),
+            ('nz_ird', "New Zealand Inland Revenue Department Number"),
+            ('pe_cui', "Peruvian Identity Number"),
+            ('pe_ruc', "Peruvian Company Tax Number"),
             ('pl_nip', "Polish VAT Number"),
             ('pl_pesel', "Polish National Identification Number"),
             ('pl_regon', "Polish Register of Economic Units"),
             ('pt_nif', "Portuguese VAT Number"),
+            ('py_ruc', "Paraguay Tax Number"),
             ('ro_cf', "Romanian VAT Number"),
             ('ro_cnp', "Romanian Numerical Personal Code"),
             ('rs_pib', "Serbian Tax Identification"),
@@ -420,6 +433,10 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('us_ptin', "U.S. Preparer Tax Identification Number"),
             ('us_ssn', "U.S. Social Security Number"),
             ('us_tin', "U.S. Taxpayer Identification Number"),
+            ('uy_ruc', "Uruguay Tax Number"),
+            ('ve_rif', "Venezuelan VAT Number"),
+            ('za_idnr', "South African Identity Document Number"),
+            ('za_tin', "South African Tax Identification Number"),
             ], 'Type')
     type_string = type.translated('type')
     code = fields.Char('Code', required=True)
