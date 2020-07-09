@@ -9,7 +9,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.currency.tests.tools import get_currency
 
-Install currency::
+Activate modules::
 
     >>> config = activate_modules('currency')
 

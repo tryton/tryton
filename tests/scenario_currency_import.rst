@@ -8,7 +8,7 @@ Imports::
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.currency.scripts import import_currencies
 
-Install currency::
+Activate modules::
 
     >>> config = activate_modules('currency')
 
