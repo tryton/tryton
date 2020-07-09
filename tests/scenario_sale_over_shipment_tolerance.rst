@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
 
-Install sale_shipment_tolerance::
+Activate modules::
 
     >>> config = activate_modules('sale_shipment_tolerance')
 
