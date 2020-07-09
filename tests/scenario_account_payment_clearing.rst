@@ -19,7 +19,7 @@ Imports::
     >>> yesterday = today - relativedelta(days=1)
     >>> first = today  + relativedelta(day=1)
 
-Install account_payment_clearing and account_statement::
+Activate modules::
 
     >>> config = activate_modules(['account_payment_clearing', 'account_statement'])
 
