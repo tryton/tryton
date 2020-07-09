@@ -14,7 +14,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences
 
-Install sale_amendment::
+Activate modules::
 
     >>> config = activate_modules('sale_amendment')
 
