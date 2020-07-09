@@ -18,7 +18,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install purchase_invoice_line_standalone::
+Activate modules::
 
     >>> current_config = activate_modules('purchase_invoice_line_standalone')
 
