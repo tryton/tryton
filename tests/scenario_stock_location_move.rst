@@ -13,7 +13,7 @@ Imports::
     >>> today = datetime.date.today()
     >>> tomorrow = today + datetime.timedelta(1)
 
-Install stock_location_move::
+Activate modules::
 
     >>> config = activate_modules('stock_location_move')
 

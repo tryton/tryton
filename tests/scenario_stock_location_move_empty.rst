@@ -15,7 +15,7 @@ Imports::
     >>> yesterday = today - datetime.timedelta(1)
     >>> tomorrow = today + datetime.timedelta(1)
 
-Install stock_location_move::
+Activate modules::
 
     >>> config = activate_modules('stock_location_move')
 
