@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
 
-Install account_cash_rounding and purchase::
+Activate modules::
 
     >>> config = activate_modules(['account_cash_rounding', 'purchase'])
 
