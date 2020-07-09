@@ -19,7 +19,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install stock_package_shipping_ups and sale::
+Activate modules::
 
     >>> config = activate_modules(['stock_package_shipping_ups', 'sale'])
 
