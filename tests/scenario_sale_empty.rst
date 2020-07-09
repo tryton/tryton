@@ -11,7 +11,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart
 
-Install sale::
+Activate modules::
 
     >>> config = activate_modules('sale')
 
