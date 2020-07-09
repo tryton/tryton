@@ -15,7 +15,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
 
-Install sale_promotion::
+Activate modules::
 
     >>> config = activate_modules('sale_promotion')
 
