@@ -19,7 +19,7 @@ Imports::
     ...     import add_asset_accounts
     >>> today = datetime.date.today()
 
-Install account_asset::
+Activate modules::
 
     >>> config = activate_modules('account_asset')
 
