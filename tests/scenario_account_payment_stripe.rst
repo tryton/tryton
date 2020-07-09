@@ -16,7 +16,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_fiscalyear, \
     ...     create_chart, get_accounts
 
-Install account_payment_stripe::
+Activate modules::
 
     >>> config = activate_modules('account_payment_stripe')
 
