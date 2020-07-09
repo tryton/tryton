@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> today = datetime.date.today()
 
-Install account_dunning::
+Activate modules::
 
     >>> config = activate_modules('account_dunning')
 
