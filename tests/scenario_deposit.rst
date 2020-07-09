@@ -19,7 +19,7 @@ Imports::
     ...     add_deposit_accounts
     >>> today = datetime.date.today()
 
-Install account_deposit::
+Activate modules::
 
     >>> config = activate_modules('account_deposit')
 
