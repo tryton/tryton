@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> today = datetime.date.today()
 
-Install stock_lot_unit Module::
+Activate modules::
 
     >>> config = activate_modules('stock_lot_unit')
 
