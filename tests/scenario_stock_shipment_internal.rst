@@ -15,7 +15,7 @@ Imports::
     >>> yesterday = today - relativedelta(days=1)
     >>> tomorrow = today + relativedelta(days=1)
 
-Install stock Module::
+Activate modules::
 
     >>> config = activate_modules('stock')
 

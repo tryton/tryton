@@ -14,7 +14,7 @@ Imports::
     >>> today = datetime.date.today()
     >>> yesterday = today - relativedelta(days=1)
 
-Install stock Module::
+Activate modules::
 
     >>> config = activate_modules('stock')
 

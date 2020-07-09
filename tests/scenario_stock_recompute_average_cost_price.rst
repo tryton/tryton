@@ -13,7 +13,7 @@ Imports::
     ...     get_company
     >>> today = dt.date.today()
 
-Install stock Module::
+Activate modules::
 
     >>> config = activate_modules('stock')
 
