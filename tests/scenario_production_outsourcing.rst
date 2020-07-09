@@ -12,7 +12,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
 
-Install production_outsourcing::
+Activate modules::
 
     >>> config = activate_modules('production_outsourcing')
 
