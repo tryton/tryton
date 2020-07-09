@@ -17,7 +17,7 @@ Imports::
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
 
-Install carrier_percentage, purchase_shipment_cost and sale_shipment_cost::
+Activate modules::
 
     >>> config = activate_modules([
     ...         'carrier_percentage',
