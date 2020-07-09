@@ -15,7 +15,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> today = datetime.date.today()
 
-Install analytic_account::
+Activate modules::
 
     >>> config = activate_modules('analytic_account')
 
