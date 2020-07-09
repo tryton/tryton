@@ -109,7 +109,7 @@ Tabbed Main Frame
 This part of the client contains all the related contents and
 functions provided by the :term:`Tryton server` :term:`modules`.
 All aspects inside the *main frame* depend at least on the individual set
-of installed modules.
+of activated modules.
 
 The main frame provides a `tabbed document interface`__ to arrange different
 views side by side. New :term:`tabs` are opened by special :term:`actions`,
@@ -128,7 +128,7 @@ __ TDI_
 Menu
 ++++
 The *menu* does not contain fixed menu items.
-All of them are dynamically provided by the actual set of the installed
+All of them are dynamically provided by the actual set of the activated
 :term:`modules` depending on the access rules of the current user. If a menu
 item is clicked, the appropriate action will open in a new tab.
 
