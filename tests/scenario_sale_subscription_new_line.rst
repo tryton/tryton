@@ -14,7 +14,7 @@ Imports::
     >>> from trytond.modules.account.tests.tools import create_chart, \
     ...     get_accounts
 
-Install sale_subscription::
+Activate modules::
 
     >>> config = activate_modules('sale_subscription')
 
