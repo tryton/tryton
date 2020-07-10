@@ -2342,12 +2342,12 @@ function eval_pyson(value){
             el.find('div[contenteditable]').prop('contenteditable', !value);
         },
         translate_widget_set: function(el, value) {
-            el.find('div[contenteditable]').html(value);
+            el.find('div[contenteditable]').html(
+                Sao.HtmlSanitizer.sanitize(value || ''));
         },
         translate_widget_get: function(el) {
-            var input = el.find('div[contenteditable]');
-            this._normalize(input);
-            return input.html();
+            return this._normalize_markup(
+                el.find('div[contenteditable]').html());
         }
     });
 
