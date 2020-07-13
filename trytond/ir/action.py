@@ -107,17 +107,24 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
                     return action.action.id
 
     @classmethod
-    def get_action_values(cls, type_, action_ids):
+    def get_action_values(cls, type_, action_ids, columns=None):
         Action = Pool().get(type_)
-        columns = set(Action._fields.keys())
-        columns.add('icon.rec_name')
-        to_remove = ()
+        if columns is None:
+            columns = []
+        columns += ['id', 'name', 'type', 'icon.rec_name']
         if type_ == 'ir.action.report':
-            to_remove = ('report_content_custom', 'report_content')
+            columns += ['report_name', 'direct_print', 'email']
         elif type_ == 'ir.action.act_window':
-            to_remove = ('domain', 'context', 'search_value')
-        columns.difference_update(to_remove)
-        return Action.read(action_ids, list(columns))
+            columns += [
+                'views', 'domains', 'res_model', 'limit',
+                'context_model', 'context_domain',
+                'pyson_domain', 'pyson_context', 'pyson_order',
+                'pyson_search_value']
+        elif type_ == 'ir.action.wizard':
+            columns += ['wiz_name', 'window', 'email']
+        elif type_ == 'ir.action.url':
+            columns += ['url']
+        return Action.read(action_ids, columns)
 
     def get_action_value(self):
         return self.get_action_values(
