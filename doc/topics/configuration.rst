@@ -226,10 +226,9 @@ For example::
 ssl
 ---
 
-Activates SSL_ on all network protocols.
+Activates SSL_ on the web interface.
 
-.. note:: SSL_ is activated by defining privatekey.
-        Please refer to SSL-CERT_ on how to use private keys and certficates.
+.. note:: It is recommended to delegate the SSL support to a proxy.
 
 privatekey
 ~~~~~~~~~~
@@ -501,7 +500,6 @@ Example::
 .. _SMTP-URL: http://tools.ietf.org/html/draft-earhart-url-smtp-00
 .. _RFC-822: https://tools.ietf.org/html/rfc822
 .. _SSL: http://en.wikipedia.org/wiki/Secure_Sockets_Layer
-.. _SSL-CERT: https://docs.python.org/library/ssl.html#ssl.wrap_socket
 .. _STARTTLS: http://en.wikipedia.org/wiki/STARTTLS
 .. _WSGI middleware: https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface#Specification_overview
 .. _`multi-factor authentication`: https://en.wikipedia.org/wiki/Multi-factor_authentication
