@@ -475,7 +475,12 @@ class TaxTemplate(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
     __name__ = 'account.tax.template'
     name = fields.Char('Name', required=True)
     description = fields.Char('Description', required=True)
-    group = fields.Many2One('account.tax.group', 'Group')
+    group = fields.Many2One(
+        'account.tax.group', 'Group',
+        states={
+            'invisible': Bool(Eval('parent')),
+            },
+        depends=['parent'])
     start_date = fields.Date('Starting Date')
     end_date = fields.Date('Ending Date')
     amount = fields.Numeric('Amount', digits=(16, 8),
