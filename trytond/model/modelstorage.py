@@ -1339,9 +1339,10 @@ class ModelStorage(Model):
         # add datetime_field
         for field in list(ffields.values()):
             if hasattr(field, 'datetime_field') and field.datetime_field:
-                datetime_field = self._fields[field.datetime_field]
-                ffields[field.datetime_field] = datetime_field
                 require_context_field = True
+                if field.datetime_field not in ffields:
+                    datetime_field = self._fields[field.datetime_field]
+                    ffields[field.datetime_field] = datetime_field
 
         # add depends of field with context
         for field in list(ffields.values()):
@@ -1350,9 +1351,9 @@ class ModelStorage(Model):
                 for context_field_name in eval_fields:
                     if context_field_name not in field.depends:
                         continue
-                    context_field = self._fields.get(context_field_name)
                     require_context_field = True
-                    if context_field not in ffields:
+                    if context_field_name not in ffields:
+                        context_field = self._fields.get(context_field_name)
                         ffields[context_field_name] = context_field
 
         def filter_(id_):
@@ -1440,6 +1441,7 @@ class ModelStorage(Model):
                 read_data = self.read(list(ids), list(ffields.keys()))
             # create browse records for 'remote' models
             for data in read_data:
+                to_delete = set()
                 for fname, field in ffields.items():
                     fvalue = data[fname]
                     if field._type in ('many2one', 'one2one', 'one2many',
@@ -1458,10 +1460,11 @@ class ModelStorage(Model):
                             or field.context
                             or getattr(field, 'datetime_field', None)
                             or isinstance(field, fields.Function)):
-                        del data[fname]
+                        to_delete.add(fname)
                 if data['id'] not in self._cache:
                     self._cache[data['id']] = {}
-                self._cache[data['id']].update(data)
+                self._cache[data['id']].update(
+                    **{k: v for k, v in data.items() if k not in to_delete})
         return value
 
     @property
