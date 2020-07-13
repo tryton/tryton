@@ -188,7 +188,7 @@ class Product(metaclass=PoolMeta):
                                 - (fifo_cost_price * current_out_qty))
                             / quantity)
                     else:
-                        cost_price = Decimal(0)
+                        cost_price = current_cost_price
                     current_cost_price = round_price(cost_price)
                 current_moves.clear()
                 current_out_qty = 0
@@ -241,8 +241,6 @@ class Product(metaclass=PoolMeta):
                     ((cost_price * (quantity + current_out_qty))
                         - (fifo_cost_price * current_out_qty))
                     / quantity)
-            else:
-                cost_price = Decimal(0)
         for revision in revisions:
             cost_price = revision.get_cost_price(cost_price)
         return cost_price
