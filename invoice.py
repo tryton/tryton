@@ -1186,6 +1186,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         default.setdefault('move', None)
         default.setdefault('cancel_move', None)
         default.setdefault('invoice_report_cache', None)
+        default.setdefault('invoice_report_cache_id', None)
         default.setdefault('invoice_report_format', None)
         default.setdefault('payment_lines', None)
         default.setdefault('invoice_date', None)
