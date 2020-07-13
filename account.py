@@ -103,10 +103,9 @@ class FrFEC(Wizard):
         format_date = self.get_format_date()
         format_number = self.get_format_number()
 
-        def replace_delimiter(c):
+        def convert(c):
             delimiter = writer.dialect.delimiter
-            return (c or '').replace(delimiter, ' ')
-        convert = replace_delimiter
+            return (c or '').replace(delimiter, ' ').replace('\n', ' ')
 
         for row in self.get_start_balance():
             writer.writerow(map(convert, row))
