@@ -185,17 +185,6 @@ class Transport(xmlrpc.client.SafeTransport):
 
         ssl_ctx = ssl.create_default_context(cafile=self.__ca_certs)
 
-        class HTTPSConnection(http.client.HTTPSConnection):
-
-            def connect(self):
-                sock = socket.create_connection((self.host, self.port),
-                    self.timeout)
-                if self._tunnel_host:
-                    self.sock = sock
-                    self._tunnel()
-                self.sock = ssl_ctx.wrap_socket(
-                    sock, server_hostname=self.host)
-
         def http_connection():
             self._connection = host, http.client.HTTPConnection(host,
                 timeout=CONNECT_TIMEOUT)
@@ -205,8 +194,8 @@ class Transport(xmlrpc.client.SafeTransport):
             sock.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
 
         def https_connection(allow_http=False):
-            self._connection = host, HTTPSConnection(host,
-                timeout=CONNECT_TIMEOUT)
+            self._connection = host, http.client.HTTPSConnection(host,
+                timeout=CONNECT_TIMEOUT, context=ssl_ctx)
             try:
                 self._connection[1].connect()
                 sock = self._connection[1].sock
