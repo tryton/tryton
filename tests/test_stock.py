@@ -1219,6 +1219,76 @@ class StockTestCase(ModuleTestCase):
         self.assertTrue(Move.assign_try([]))
 
     @with_transaction()
+    def test_assign_try_modified_move(self):
+        "Test Move assign_try with modified move"
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+
+        uom, = Uom.search([('name', '=', 'Meter')])
+        template = Template(
+            name='Test Move.assign_try',
+            type='goods',
+            list_price=Decimal(1),
+            default_uom=uom,
+            )
+        template.save()
+        product = Product(template=template.id)
+        product.save()
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        storage2, = Location.copy([storage])
+        customer, = Location.search([('code', '=', 'CUS')])
+
+        company = create_company()
+        with set_company(company):
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 1,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+            Move.do([move])
+
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 2,
+                        'from_location': storage2.id,
+                        'to_location': customer.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+
+            # Assign from a different location
+            move.from_location = storage
+            self.assertFalse(Move.assign_try([move]))
+
+            move, = Move.search([
+                    ('to_location', '=', customer.id),
+                    ('state', '=', 'assigned'),
+                    ])
+            self.assertEqual(move.from_location, storage)
+            self.assertEqual(move.quantity, 1)
+
+            move, = Move.search([
+                    ('to_location', '=', customer.id),
+                    ('state', '=', 'draft'),
+                    ])
+            # Remaining move has the original location
+            self.assertEqual(move.from_location, storage2)
+            self.assertEqual(move.quantity, 1)
+
+    @with_transaction()
     def test_products_by_location_assign(self):
         "Test products by location for assignation"
         pool = Pool()
