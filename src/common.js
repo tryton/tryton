@@ -3138,7 +3138,7 @@
                 ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title(Sao.i18n.gettext('Concurrency Exception'));
             dialog.body.append(jQuery('<div/>', {
-                'class': 'alert alert-warning',
+                'class': 'alert alert-info',
                 role: 'alert'
             }).append(jQuery('<p/>')
                 .append(Sao.common.ICONFACTORY.get_icon_img('tryton-info', {
@@ -3208,7 +3208,7 @@
                 ).removeClass('modal-sm').addClass('modal-lg');
             dialog.add_title(Sao.i18n.gettext('Application Error'));
             dialog.body.append(jQuery('<div/>', {
-                'class': 'alert alert-warning',
+                'class': 'alert alert-danger',
                 role: 'alert'
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-error', {
                 'aria-hidden': true,
