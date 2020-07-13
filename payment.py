@@ -988,7 +988,7 @@ class Account(ModelSQL, ModelView):
                 payment.save()
                 if source['status'] == 'lost':
                     Payment.fail([payment])
-                    if payment.stripe_amount != source['amount']:
+                    if payment.stripe_amount > source['amount']:
                         payment.stripe_amount -= source['amount']
                         payment.save()
                         Payment.succeed([payment])
