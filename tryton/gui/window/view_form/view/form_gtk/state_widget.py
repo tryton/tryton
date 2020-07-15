@@ -162,7 +162,7 @@ class Link(StateMixin, Gtk.Button):
         action = common.RPCExecute(
             'model', 'ir.action', 'get_action_value', self.action_id,
             context=context)
-        self.set_label(action['rec_name'])
+        self.set_label(action['name'])
 
         decoder = PYSONDecoder(pyson_ctx)
         domain = decoder.decode(action['pyson_domain'])
@@ -171,10 +171,10 @@ class Link(StateMixin, Gtk.Button):
         tab_domains = [(n, decoder.decode(d))
             for n, d, c in action['domains'] if c]
         if tab_domains:
-            label = ('%s\n' % action['rec_name']) + '\n'.join(
+            label = ('%s\n' % action['name']) + '\n'.join(
                 '%s (%%d)' % n for n, _ in tab_domains)
         else:
-            label = '%s (%%d)' % action['rec_name']
+            label = '%s (%%d)' % action['name']
         if record and self.action_id in record.links_counts:
             counter = record.links_counts[self.action_id]
             self._set_label_counter(label, counter)
