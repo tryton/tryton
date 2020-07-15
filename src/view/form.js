@@ -942,7 +942,7 @@ function eval_pyson(value){
                 'method': 'model.ir.action.get_action_value',
                 'params': [this.action_id, context],
             }, Sao.Session.current_session, false);
-            this.label.text(action.rec_name);
+            this.label.text(action.name);
 
             var decoder = new Sao.PYSON.Decoder(pyson_ctx);
             var domain = decoder.decode(action.pyson_domain);
@@ -960,7 +960,7 @@ function eval_pyson(value){
             var counter;
             if (record && record.links_counts[this.action_id]) {
                 counter = record.links_counts[this.action_id];
-                this.set_label(action.rec_name, tab_domains, counter);
+                this.set_label(action.name, tab_domains, counter);
             } else {
                 if (tab_domains.length) {
                     counter = tab_domains.map(function() {
@@ -984,7 +984,7 @@ function eval_pyson(value){
                         }, Sao.Session.current_session).then(function(value) {
                             this._set_count(
                                 value, i, current, counter,
-                                action.rec_name, tab_domains);
+                                action.name, tab_domains);
                         }.bind(this));
                     }, this);
                 } else {
@@ -995,7 +995,7 @@ function eval_pyson(value){
                     }, Sao.Session.current_session).then(function(value) {
                         this._set_count(
                             value, 0, current, counter,
-                            action.rec_name, tab_domains);
+                            action.name, tab_domains);
                     }.bind(this));
                 }
             }
