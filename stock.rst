@@ -8,7 +8,7 @@ Stock
     `Stock </projects/modules-stock/en/latest>`_
         Fundamentals to manage warehouses.
 
-    `Consignemt </projects/modules-stock-consignment/en/latest>`_
+    `Consignment </projects/modules-stock-consignment/en/latest>`_
         Manages consignment stock from supplier or at customer warehouse.
 
     `Forecast </projects/modules-stock-forecast/en/latest>`_
