@@ -13,6 +13,7 @@ import types
 import unicodedata
 import warnings
 from array import array
+from functools import wraps
 from itertools import islice
 
 from sql import Literal
@@ -223,3 +224,14 @@ def slugify(value, hyphenate='-'):
     value = unicodedata.normalize('NFKD', value)
     value = str(_slugify_strip_re.sub('', value).strip())
     return _slugify_hyphenate_re.sub(hyphenate, value)
+
+
+def sortable_values(func):
+    "Decorator that makes list of couple values sortable"
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        result = list(func(*args, **kwargs))
+        for i, (name, value) in enumerate(list(result)):
+            result[i] = (name, value is None, value)
+        return result
+    return wrapper

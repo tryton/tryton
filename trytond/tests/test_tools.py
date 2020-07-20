@@ -12,7 +12,7 @@ import sql.operators
 
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
-    strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify)
+    strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify, sortable_values)
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
@@ -731,6 +731,25 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertEqual(
             extract_reference_models(domain, 'x'), {'model_A', 'model_B'})
         self.assertEqual(extract_reference_models(domain, 'y'), set())
+
+    def test_sortable_values(self):
+        def key(values):
+            return values
+
+        values = [
+            (('a', 1), ('b', None)),
+            (('a', 1), ('b', 3)),
+            (('a', 1), ('b', 2)),
+            ]
+
+        with self.assertRaises(TypeError):
+            sorted(values, key=key)
+        self.assertEqual(
+            sorted(values, key=sortable_values(key)), [
+                (('a', 1), ('b', 2)),
+                (('a', 1), ('b', 3)),
+                (('a', 1), ('b', None)),
+                ])
 
 
 def suite():
