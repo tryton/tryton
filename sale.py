@@ -14,6 +14,7 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
 from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
+from trytond.tools import sortable_values
 from trytond.pool import Pool
 
 from trytond.ir.attachment import AttachmentCopyMixin
@@ -880,7 +881,7 @@ class Sale(
             keyfunc = partial(self._group_return_key, list(moves.values()))
             Shipment = pool.get('stock.shipment.out.return')
         moves = moves.items()
-        moves = sorted(moves, key=keyfunc)
+        moves = sorted(moves, key=sortable_values(keyfunc))
 
         shipments = []
         for key, grouped_moves in groupby(moves, key=keyfunc):
