@@ -11,6 +11,7 @@ from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
+from trytond.tools import sortable_values
 
 from .exceptions import ClosePeriodWarning
 
@@ -160,7 +161,8 @@ class TaxLine(metaclass=PoolMeta):
         if not lines:
             return
         to_save = []
-        lines = cls.browse(sorted(lines, key=cls.group_cash_basis_key))
+        lines = cls.browse(sorted(
+                lines, key=sortable_values(cls.group_cash_basis_key)))
         for key, lines in groupby(lines, key=cls.group_cash_basis_key):
             key = dict(key)
             if not key['on_cash_basis']:
