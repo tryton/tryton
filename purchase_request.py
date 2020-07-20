@@ -10,6 +10,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import If, In, Eval, Bool
+from trytond.tools import sortable_values
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -446,7 +447,7 @@ class CreatePurchase(Wizard):
         requests = [r for r in requests if not r.purchase_line]
 
         keyfunc = partial(self._group_purchase_key, requests)
-        requests = sorted(requests, key=keyfunc)
+        requests = sorted(requests, key=sortable_values(keyfunc))
 
         purchases = []
         lines = []
