@@ -17,5 +17,5 @@ Purchase
     `Requisition </projects/modules-purchase-requisition/en/5.0>`_
         Requires purchase by employees.
 
-    `Shipment Cost </projects/modules-shipment-cost/en/5.0>`_
+    `Shipment Cost </projects/modules-purchase-shipment-cost/en/5.0>`_
         Computes shipment cost.
