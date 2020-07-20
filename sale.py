@@ -4,6 +4,7 @@ from functools import partial
 from itertools import groupby
 
 from trytond.pool import PoolMeta
+from trytond.tools import sortable_values
 
 from .common import parcel_weight
 
@@ -28,7 +29,7 @@ class Sale(metaclass=PoolMeta):
 
         lines = [l for l in self.lines or [] if l.quantity and l.quantity > 0]
         keyfunc = partial(self._group_parcel_key, lines)
-        lines = sorted(lines, key=keyfunc)
+        lines = sorted(lines, key=sortable_values(keyfunc))
 
         for key, parcel in groupby(lines, key=keyfunc):
             weights.append(parcel_weight(
