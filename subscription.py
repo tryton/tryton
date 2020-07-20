@@ -14,6 +14,7 @@ from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, If, Bool
 from trytond.transaction import Transaction
+from trytond.tools import sortable_values
 from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
         Button
 
@@ -866,7 +867,8 @@ class LineConsumption(ModelSQL, ModelView):
         InvoiceLine = pool.get('account.invoice.line')
 
         lines, grouped_consumptions = [], []
-        consumptions = sorted(consumptions, key=cls._group_invoice_key)
+        consumptions = sorted(
+            consumptions, key=sortable_values(cls._group_invoice_key))
         for key, sub_consumptions in groupby(
                 consumptions, key=cls._group_invoice_key):
             sub_consumptions = list(sub_consumptions)
