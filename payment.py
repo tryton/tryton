@@ -19,7 +19,7 @@ from trytond.model import (ModelSQL, ModelView, Workflow, fields, dualmethod,
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
-from trytond.tools import reduce_ids, grouped_slice
+from trytond.tools import reduce_ids, grouped_slice, sortable_values
 from trytond import backend
 
 from trytond.modules.account_payment.exceptions import ProcessError
@@ -268,7 +268,8 @@ class Group(metaclass=PoolMeta):
         Payment = pool.get('account.payment')
         keyfunc = self.sepa_group_payment_key
         # re-browse to align cache
-        payments = Payment.browse(sorted(self.payments, key=keyfunc))
+        payments = Payment.browse(sorted(
+                self.payments, key=sortable_values(keyfunc)))
         for key, grouped_payments in groupby(payments, key=keyfunc):
             yield dict(key), list(grouped_payments)
 
