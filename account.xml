@@ -364,7 +364,7 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('company', -1))]"
                 pyson="1"/>
             <field name="domain"
-                eval="[['OR', ('type', 'child_of', Eval('active_id'), 'parent'), ('debit_type', 'child_of', Eval('active_id'), 'parent')], ('type', '!=', None)]"
+                eval="[['OR', ('type', 'child_of', Eval('active_id'), 'parent'), ('debit_type', 'child_of', Eval('active_id'), 'parent')], ('type', '!=', None), ('closed', '!=', True)]"
                 pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_account_list2_view1">
