@@ -29,5 +29,5 @@ Purchase
     `Secondary Unit </projects/modules-purchase-secondary-unit/en/latest>`_
         Adds a secondary unit of measure.
 
-    `Shipment Cost </projects/modules-shipment-cost/en/latest>`_
+    `Shipment Cost </projects/modules-purchase-shipment-cost/en/latest>`_
         Computes shipment cost.
