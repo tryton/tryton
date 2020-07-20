@@ -13,6 +13,7 @@ from trytond.pyson import Eval, If
 from trytond.rpc import RPC
 from trytond.tools import reduce_ids, grouped_slice, cursor_dict
 from trytond.transaction import Transaction
+from trytond.tools import sortable_values
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pool import Pool
 
@@ -522,7 +523,8 @@ class ProcessPayment(Wizard):
                             line=payment.line.rec_name))
 
         groups = []
-        payments = sorted(payments, key=self._group_payment_key)
+        payments = sorted(
+            payments, key=sortable_values(self._group_payment_key))
         for key, grouped_payments in groupby(payments,
                 key=self._group_payment_key):
             def group():
