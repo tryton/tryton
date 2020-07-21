@@ -3200,7 +3200,7 @@ function eval_pyson(value){
                         if (sequence) {
                             screen.group.set_sequence(sequence);
                         }
-                    };
+                    }.bind(this);
 
                     search_set();
                 }.bind(this));
