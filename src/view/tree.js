@@ -15,6 +15,38 @@
         });
     }
 
+    function set_treeview_height(el) {
+        var height = '';
+        if (!el.parents('.form').length &&
+            !el.parents('#menu')) {
+            var padding = ' ';
+            el.parents('.panel-body').each(function(i, panel) {
+                panel = jQuery(panel);
+                padding += '- ' + panel.css('padding-top');
+                padding += ' - ' + panel.css('padding-bottom');
+            });
+            var box_shadow = ' ';
+            el.parents('.panel').each(function(i, panel) {
+                panel = jQuery(panel);
+                var lengths = panel.css('box-shadow').match(/\d+px/g);
+                if (lengths.length) {
+                    lengths = lengths.map(function(length) {
+                        return length.replace('px', '');
+                    });
+                    box_shadow += '- ' + Math.max.apply(null, lengths) + 'px';
+                }
+            });
+            var y = el[0].getBoundingClientRect().y;
+            height = 'calc(100vh - ' + y + 'px' + padding + box_shadow + ')';
+        }
+        el.css('height', height);
+    }
+    jQuery(window).resize(function() {
+        jQuery('.treeview').each(function(i, el) {
+            set_treeview_height(jQuery(el));
+        });
+    });
+
     Sao.View.TreeXMLViewParser = Sao.class_(Sao.View.XMLViewParser, {
         _parse_tree: function(node, attributes) {
             [].forEach.call(node.childNodes, function(child) {
@@ -514,6 +546,8 @@
             return buttons;
         },
         display: function(selected, expanded) {
+            set_treeview_height(this.treeview);
+
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();
