@@ -1,3 +1,4 @@
+* Add option to ensure emails are sent
 * Allow keyword action for all models
 * Add sortable_values in tools
 * Remove default colors on graph and calendar

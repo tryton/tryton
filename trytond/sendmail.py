@@ -25,9 +25,9 @@ def sendmail_transactional(
     datamanager.put(from_addr, to_addrs, msg)
 
 
-def sendmail(from_addr, to_addrs, msg, server=None):
+def sendmail(from_addr, to_addrs, msg, server=None, strict=False):
     if server is None:
-        server = get_smtp_server()
+        server = get_smtp_server(strict=strict)
         if not server:
             return
         quit = True
@@ -38,6 +38,8 @@ def sendmail(from_addr, to_addrs, msg, server=None):
     try:
         senderrs = server.sendmail(from_addr, to_addrs, msg.as_string())
     except Exception:
+        if strict:
+            raise
         logger.error('fail to send email', exc_info=True)
     else:
         if senderrs:
@@ -52,10 +54,11 @@ def send_test_email(to_addrs, server=None):
     msg['From'] = from_
     msg['To'] = to_addrs
     msg['Subject'] = 'Tryton test email'
-    sendmail(config.get('email', 'from'), to_addrs, msg, server=server)
+    sendmail(
+        config.get('email', 'from'), to_addrs, msg, server=server, strict=True)
 
 
-def get_smtp_server(uri=None):
+def get_smtp_server(uri=None, strict=False):
     if uri is None:
         uri = config.get('email', 'uri')
     uri = parse_uri(uri)
@@ -71,6 +74,8 @@ def get_smtp_server(uri=None):
     try:
         server = connector(uri.hostname, uri.port, **extra)
     except Exception:
+        if strict:
+            raise
         logger.error('fail to connect to %s', uri, exc_info=True)
         return
 
@@ -86,8 +91,9 @@ def get_smtp_server(uri=None):
 
 class SMTPDataManager(object):
 
-    def __init__(self, uri=None):
+    def __init__(self, uri=None, strict=False):
         self.uri = uri
+        self.strict = strict
         self.queue = []
         self._server = None
 
@@ -98,7 +104,7 @@ class SMTPDataManager(object):
     def __eq__(self, other):
         if not isinstance(other, SMTPDataManager):
             return NotImplemented
-        return self.uri == other.uri
+        return (self.uri == other.uri) and (self.strict == other.strict)
 
     def abort(self, trans):
         self._finish()
@@ -111,7 +117,7 @@ class SMTPDataManager(object):
 
     def tpc_vote(self, trans):
         if self._server is None:
-            self._server = get_smtp_server(self.uri)
+            self._server = get_smtp_server(self.uri, strict=self.strict)
 
     def tpc_finish(self, trans):
         if self._server is not None:
