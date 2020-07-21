@@ -221,11 +221,17 @@ class Database(DatabaseInterface):
                 logger.error(
                     'connection to "%s" failed', self.name, exc_info=True)
                 raise
+        # We do not use set_session because psycopg2 < 2.7 and psycopg2cffi
+        # change the default_transaction_* attributes which breaks external
+        # pooling at the transaction level.
         if autocommit:
             conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         else:
             conn.set_isolation_level(ISOLATION_LEVEL_REPEATABLE_READ)
-        if readonly:
+        # psycopg2cffi does not have the readonly property
+        if hasattr(conn, 'readonly'):
+            conn.readonly = readonly
+        elif not autocommit:
             cursor = conn.cursor()
             cursor.execute('SET TRANSACTION READ ONLY')
         return conn
