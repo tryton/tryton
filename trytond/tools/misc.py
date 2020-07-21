@@ -214,6 +214,12 @@ def rstrip_wildcard(string, wildcard='%', escape='\\'):
     return new_string
 
 
+def escape_wildcard(string, wildcards='%_', escape='\\'):
+    for wildcard in escape + wildcards:
+        string = string.replace(wildcard, escape + wildcard)
+    return string
+
+
 _slugify_strip_re = re.compile(r'[^\w\s-]')
 _slugify_hyphenate_re = re.compile(r'[-\s]+')
 

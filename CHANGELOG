@@ -1,3 +1,4 @@
+* Add escape_wildcard in tools
 * Add option to ensure emails are sent
 * Allow keyword action for all models
 * Add sortable_values in tools
