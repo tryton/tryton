@@ -2,12 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from ..model import Model
-from ..rpc import RPC
-
-__all__ = [
-    'Date',
-    ]
+from trytond.model import Model
+from trytond.rpc import RPC
 
 
 class Date(Model):

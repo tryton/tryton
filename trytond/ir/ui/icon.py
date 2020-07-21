@@ -8,10 +8,6 @@ from trytond.tools import file_open
 from trytond.transaction import Transaction
 from trytond.rpc import RPC
 
-__all__ = [
-    'Icon',
-    ]
-
 
 class Icon(sequence_ordered(), ModelSQL, ModelView):
     'Icon'

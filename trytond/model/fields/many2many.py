@@ -7,12 +7,12 @@ from sql import Cast, Literal, Null
 from sql.functions import Substring, Position
 from sql.conditionals import Coalesce
 
+from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 from .field import (Field, size_validate, instanciate_values, domain_validate,
     search_order_validate, context_validate, instantiate_context)
-from ...pool import Pool
-from ...tools import grouped_slice
-from ...transaction import Transaction
 
 
 class Many2Many(Field):

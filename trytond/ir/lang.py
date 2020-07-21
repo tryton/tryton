@@ -7,15 +7,15 @@ from ast import literal_eval
 
 from sql import Table
 
-from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
-from ..modules import create_graph, load_translations
-from ..cache import Cache
-from ..transaction import Transaction
-from ..pool import Pool
-from ..pyson import Eval
-from ..exceptions import UserError
-from ..i18n import gettext
-from ..wizard import Wizard, StateView, Button, StateTransition
+from trytond.cache import Cache
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
+from trytond.modules import create_graph, load_translations
+from trytond.pool import Pool
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
+from trytond.wizard import Wizard, StateView, Button, StateTransition
 
 Transaction.cache_keys.add('translate_name')
 

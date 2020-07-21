@@ -9,10 +9,10 @@ import re
 from collections import defaultdict
 from decimal import Decimal
 
-from . import __version__
-from .tools import grouped_slice
-from .transaction import Transaction
-from .pyson import PYSONEncoder, CONTEXT
+from trytond import __version__
+from trytond.pyson import PYSONEncoder, CONTEXT
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 

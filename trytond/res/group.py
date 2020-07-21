@@ -1,9 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
-from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
-from ..pool import Pool
-from ..tools import grouped_slice
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
+from trytond.pool import Pool
+from trytond.tools import grouped_slice
 
 
 class MenuMany2Many(fields.Many2Many):

@@ -8,14 +8,13 @@ from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
-from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
+from trytond.cache import LRUDictTransaction
 from trytond.const import OPERATORS
+from trytond.pool import Pool
+from trytond.pyson import PYSON, PYSONEncoder, PYSONDecoder, Eval
+from trytond.rpc import RPC
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.transaction import Transaction
-from trytond.pool import Pool
-from trytond.cache import LRUDictTransaction
-
-from ...rpc import RPC
 
 
 def domain_validate(value):

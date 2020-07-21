@@ -5,12 +5,13 @@ import time
 from dateutil.relativedelta import relativedelta
 import logging
 
-from ..model import ModelView, ModelSQL, DeactivableMixin, fields, dualmethod
-from ..transaction import Transaction
-from ..pool import Pool
 from trytond import backend
 from trytond.config import config
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, dualmethod)
+from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 from trytond.worker import run_task
 
 logger = logging.getLogger(__name__)

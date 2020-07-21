@@ -37,28 +37,23 @@ try:
 except ImportError:
     bcrypt = None
 
+from trytond.cache import Cache
+from trytond.config import config
+from trytond.exceptions import LoginException, RateLimitException
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
-from ..model import (
+from trytond.model import (
     ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
-from ..wizard import Wizard, StateView, Button, StateTransition
-from ..tools import grouped_slice
-from ..transaction import Transaction
-from ..cache import Cache
-from ..pool import Pool
-from ..config import config
-from ..pyson import PYSONEncoder, Eval, Bool
-from ..rpc import RPC
-from ..exceptions import LoginException, RateLimitException
+from trytond.pool import Pool
+from trytond.pyson import PYSONEncoder, Eval, Bool
 from trytond.report import Report, get_email
+from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
+from trytond.tools import grouped_slice
+from trytond.transaction import Transaction
 from trytond.url import host, http_host
+from trytond.wizard import Wizard, StateView, Button, StateTransition
 
-__all__ = [
-    'User', 'LoginAttempt', 'UserAction', 'UserGroup', 'Warning_',
-    'UserApplication', 'EmailResetPassword',
-    'UserConfigStart', 'UserConfig',
-    ]
 logger = logging.getLogger(__name__)
 _has_password = 'password' in re.split('[,+]', config.get(
     'session', 'authentications', default='password'))

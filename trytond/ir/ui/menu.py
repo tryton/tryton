@@ -9,10 +9,6 @@ from trytond.tools import grouped_slice
 from trytond.pool import Pool
 from trytond.rpc import RPC
 
-__all__ = [
-    'UIMenu', 'UIMenuFavorite',
-    ]
-
 
 def one_in(i, j):
     """Check the presence of an element of setA in setB

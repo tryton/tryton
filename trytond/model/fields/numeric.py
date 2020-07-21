@@ -3,7 +3,7 @@
 from decimal import Decimal
 from sql import Cast, Literal, Select, CombiningQuery, As
 
-from ... import backend
+from trytond import backend
 from .float import Float
 
 

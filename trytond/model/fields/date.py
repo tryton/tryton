@@ -4,8 +4,8 @@ import datetime
 
 from sql.functions import Function
 
+from trytond import backend
 from trytond.pyson import PYSONEncoder
-from ... import backend
 from .field import Field
 
 

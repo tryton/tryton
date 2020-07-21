@@ -7,20 +7,16 @@ from sql.aggregate import Count, Max
 from sql.functions import CurrentTimestamp
 from sql.operators import Concat
 
-from trytond.model.exceptions import ValidationError
+from trytond.cache import Cache
 from trytond.i18n import gettext
-from ..model import (
+from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, EvalEnvironment, Check)
-from ..pyson import Eval, PYSONDecoder
-from ..tools import grouped_slice
-from ..tools import reduce_ids
-from ..transaction import Transaction
-from ..cache import Cache
-from ..pool import Pool
-
-__all__ = [
-    'Trigger', 'TriggerLog',
-    ]
+from trytond.model.exceptions import ValidationError
+from trytond.pool import Pool
+from trytond.pyson import Eval, PYSONDecoder
+from trytond.tools import grouped_slice
+from trytond.tools import reduce_ids
+from trytond.transaction import Transaction
 
 
 class ConditionError(ValidationError):

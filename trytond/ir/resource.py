@@ -3,10 +3,10 @@
 from sql.conditionals import Coalesce
 
 from trytond.i18n import lazy_gettext
-from ..model import ModelStorage, ModelView, fields
-from ..pool import Pool
-from ..transaction import Transaction
-from ..pyson import Eval
+from trytond.model import ModelStorage, ModelView, fields
+from trytond.pool import Pool
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['ResourceMixin', 'resource_copy']
 

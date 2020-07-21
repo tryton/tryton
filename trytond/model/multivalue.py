@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the toplevel of this
 # repository contains the full copyright notices and license terms.
-from ..pool import Pool
+from trytond.pool import Pool
 from .model import Model
 from .match import MatchMixin
 

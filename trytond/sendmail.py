@@ -7,8 +7,8 @@ from email.utils import formatdate
 from email.mime.text import MIMEText
 from urllib.parse import parse_qs, unquote_plus
 
-from .config import config, parse_uri
-from .transaction import Transaction
+from trytond.config import config, parse_uri
+from trytond.transaction import Transaction
 
 __all__ = ['sendmail_transactional', 'sendmail', 'SMTPDataManager']
 logger = logging.getLogger(__name__)

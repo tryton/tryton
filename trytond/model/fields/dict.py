@@ -6,11 +6,11 @@ import json
 from sql import operators, Literal, Select, CombiningQuery, Cast, Null
 
 from trytond import backend
+from trytond.pool import Pool
+from trytond.protocols.jsonrpc import JSONDecoder, JSONEncoder
+from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from .field import Field, SQL_OPERATORS
-from ...protocols.jsonrpc import JSONDecoder, JSONEncoder
-from ...pool import Pool
-from ...tools import grouped_slice
 
 # Use canonical form
 dumps = partial(

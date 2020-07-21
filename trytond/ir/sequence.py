@@ -5,18 +5,14 @@ import time
 
 from sql import Literal, For
 
+from trytond import backend
 from trytond.exceptions import UserError
+from trytond.i18n import gettext
+from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
 from trytond.model.exceptions import ValidationError
-from ..model import ModelView, ModelSQL, DeactivableMixin, fields, Check
-from ..pyson import Eval, And
-from ..transaction import Transaction
-from ..pool import Pool
-from ..i18n import gettext
-from .. import backend
-
-__all__ = [
-    'SequenceType', 'Sequence', 'SequenceStrict',
-    ]
+from trytond.pool import Pool
+from trytond.pyson import Eval, And
+from trytond.transaction import Transaction
 
 sql_sequence = backend.Database.has_sequence()
 

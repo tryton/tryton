@@ -2,9 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
+from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from .field import Field, FieldTranslate, size_validate
-from ...rpc import RPC
 
 
 class Char(FieldTranslate):

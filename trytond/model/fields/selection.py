@@ -5,11 +5,11 @@ import warnings
 from sql.conditionals import Case
 
 from trytond.pool import Pool
-from ...transaction import Transaction
-from ...tools import is_instance_method
+from trytond.rpc import RPC
+from trytond.tools import is_instance_method
 from trytond.tools.string_ import LazyString
+from trytond.transaction import Transaction
 from .field import Field
-from ...rpc import RPC
 
 
 class SelectionMixin(Field):

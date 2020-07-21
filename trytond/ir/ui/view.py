@@ -17,11 +17,6 @@ from trytond.pool import Pool
 from trytond.cache import Cache
 from trytond.rpc import RPC
 
-__all__ = [
-    'View', 'ShowViewStart', 'ShowView',
-    'ViewTreeWidth', 'ViewTreeState', 'ViewSearch',
-    ]
-
 logger = logging.getLogger(__name__)
 
 

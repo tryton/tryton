@@ -5,13 +5,13 @@ import warnings
 from sql import Cast, Literal, Query, Expression
 from sql.functions import Substring, Position
 
+from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder
+from trytond.rpc import RPC
+from trytond.transaction import Transaction
+from .selection import SelectionMixin
 from .field import (Field, search_order_validate, context_validate,
     with_inactive_records, instantiate_context)
-from .selection import SelectionMixin
-from ...transaction import Transaction
-from ...pool import Pool
-from ...rpc import RPC
 
 
 class Reference(SelectionMixin, Field):

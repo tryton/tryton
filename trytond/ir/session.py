@@ -15,10 +15,6 @@ except ImportError:
 from trytond.model import ModelSQL, fields
 from trytond.config import config
 
-__all__ = [
-    'Session', 'SessionWizard',
-    ]
-
 
 class Session(ModelSQL):
     "Session"

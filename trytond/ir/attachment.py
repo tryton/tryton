@@ -3,12 +3,12 @@
 from sql import Null
 from sql.operators import Concat
 
+from trytond.config import config
 from trytond.i18n import lazy_gettext
-from ..model import ModelView, ModelSQL, fields
-from ..transaction import Transaction
-from ..pyson import Eval
+from trytond.model import ModelView, ModelSQL, fields
+from trytond.pyson import Eval
+from trytond.transaction import Transaction
 from .resource import ResourceMixin, resource_copy
-from ..config import config
 
 __all__ = ['AttachmentCopyMixin']
 

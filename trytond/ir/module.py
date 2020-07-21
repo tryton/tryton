@@ -18,14 +18,6 @@ from trytond.transaction import Transaction
 from trytond.pyson import Eval
 from trytond.rpc import RPC
 
-__all__ = [
-    'Module', 'ModuleDependency', 'ModuleConfigWizardItem',
-    'ModuleConfigWizardFirst', 'ModuleConfigWizardOther',
-    'ModuleConfigWizardDone', 'ModuleConfigWizard',
-    'ModuleActivateUpgradeStart', 'ModuleActivateUpgradeDone',
-    'ModuleActivateUpgrade', 'ModuleConfig',
-    ]
-
 
 class DeactivateDependencyError(UserError):
     pass

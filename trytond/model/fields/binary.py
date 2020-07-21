@@ -2,10 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 from sql import Column, Null
 
+from trytond.filestore import filestore
+from trytond.tools import grouped_slice, reduce_ids
+from trytond.transaction import Transaction
 from .field import Field
-from ...transaction import Transaction
-from ...tools import grouped_slice, reduce_ids
-from ...filestore import filestore
 
 
 class Binary(Field):
