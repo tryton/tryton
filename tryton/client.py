@@ -33,7 +33,6 @@ def main():
         font-style: italic;
     }
     .window-title, .wizard-title {
-        background-color: white;
         font-size: large;
         font-weight: bold;
     }
