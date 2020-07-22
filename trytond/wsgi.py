@@ -60,9 +60,10 @@ class TrytondWSGI(object):
         self.protocols = [JSONProtocol, XMLProtocol]
         self.error_handlers = []
 
-    def route(self, string, methods=None):
+    def route(self, string, methods=None, defaults=None):
         def decorator(func):
-            self.url_map.add(Rule(string, endpoint=func, methods=methods))
+            self.url_map.add(Rule(
+                    string, endpoint=func, methods=methods, defaults=defaults))
             return func
         return decorator
 
