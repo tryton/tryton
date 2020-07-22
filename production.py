@@ -123,6 +123,8 @@ class Production(metaclass=PoolMeta):
     @ModelView.button
     @Workflow.transition('done')
     def done(cls, productions):
+        pool = Pool()
+        Work = pool.get('production.work')
         for production in productions:
             for work in production.works:
                 if work.state != 'finished':
@@ -131,6 +133,7 @@ class Production(metaclass=PoolMeta):
                             production=production.rec_name,
                             work=work.rec_name))
         super(Production, cls).done(productions)
+        Work.set_state([w for p in productions for w in p.works])
 
     @classmethod
     def copy(cls, productions, default=None):
