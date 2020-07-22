@@ -253,3 +253,8 @@ Do the production::
     >>> production.state
     'done'
 
+Work is now done::
+
+    >>> work2.reload()
+    >>> work2.state
+    'done'
