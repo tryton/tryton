@@ -2375,6 +2375,7 @@ class UpdateChart(Wizard):
     @inactive_records
     def transition_update(self):
         pool = Pool()
+        Account = pool.get('account.account')
         TaxCode = pool.get('account.tax.code')
         TaxCodeTemplate = pool.get('account.tax.code.template')
         TaxCodeLine = pool.get('account.tax.code.line')
@@ -2387,7 +2388,8 @@ class UpdateChart(Wizard):
         TaxRuleLineTemplate = \
             pool.get('account.tax.rule.line.template')
 
-        account = self.start.account
+        # re-browse to have inactive context
+        account = Account(self.start.account.id)
         company = account.company
 
         # Update account types
