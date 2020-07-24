@@ -237,7 +237,7 @@ class Group(SignalEvent, list):
                 return []
         return list({}.fromkeys(res))
 
-    def load(self, ids, modified=False):
+    def load(self, ids, modified=False, position=-1):
         if not ids:
             return True
 
@@ -249,7 +249,11 @@ class Group(SignalEvent, list):
             new_record = self.get(id)
             if not new_record:
                 new_record = Record(self.model_name, id, group=self)
-                self.append(new_record)
+                if position == -1:
+                    self.append(new_record)
+                else:
+                    self.insert(position, new_record)
+                    position += 1
                 new_record.signal_connect(self, 'record-changed',
                     self._record_changed)
                 new_record.signal_connect(self, 'record-modified',

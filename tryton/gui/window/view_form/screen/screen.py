@@ -782,7 +782,7 @@ class Screen(SignalEvent):
                 context=self.context)
         except RPCException:
             return False
-        self.load(new_ids)
+        self.load(new_ids, position=self.new_position)
         return True
 
     def set_tree_state(self):
@@ -887,10 +887,10 @@ class Screen(SignalEvent):
             domain, cls=JSONEncoder, separators=(',', ':'))
         return json_domain
 
-    def load(self, ids, set_cursor=True, modified=False):
+    def load(self, ids, set_cursor=True, modified=False, position=-1):
         self.tree_states.clear()
         self.tree_states_done.clear()
-        self.group.load(ids, modified=modified)
+        self.group.load(ids, modified=modified, position=position)
         self.current_view.reset()
         if ids and self.current_view.view_type != 'calendar':
             self.display(ids[0])

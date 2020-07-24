@@ -1,3 +1,4 @@
+* Position copied records based on order
 * Allow configuration of default colors for graph and calendar
 * Use existing context for get_preferences
 * Add context to export URL
