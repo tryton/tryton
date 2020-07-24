@@ -13,12 +13,14 @@ def _percentage_amount(lines, company):
 
     amount = 0
     for line in lines or []:
-        unit_price = getattr(line, 'unit_price',
-            Move.default_unit_price() if hasattr(Move, 'default_unit_price')
-            else Decimal(0))
-        currency = getattr(line, 'currency',
-            Move.default_currency() if hasattr(Move, 'default_currency')
-            else None)
+        unit_price = getattr(line, 'unit_price', None)
+        currency = getattr(line, 'currency', None)
+        if unit_price is None and isinstance(line.origin, Move):
+            unit_price = line.origin.unit_price
+            currency = line.origin.currency
+        if unit_price is None:
+            unit_price = Decimal(0)
+            currency = None
         if currency:
             unit_price = Currency.compute(currency, unit_price,
                 company.currency, round=False)
