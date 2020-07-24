@@ -207,6 +207,15 @@ class Template(
         Product.sync_code(products)
 
     @classmethod
+    def copy(cls, templates, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('code', None)
+        return super().copy(templates, default=default)
+
+    @classmethod
     def search_global(cls, text):
         for record, rec_name, icon in super(Template, cls).search_global(text):
             icon = icon or 'tryton-product'
