@@ -1542,6 +1542,34 @@ class AccountTestCase(ModuleTestCase):
                 for record in Model.search([]):
                     self.assertNotEqual(record.name, new_name)
 
+    @with_transaction()
+    def test_update_inactive(self):
+        "Test update chart of accounts with inactive account"
+        pool = Pool()
+        Account = pool.get('account.account')
+        UpdateChart = pool.get('account.update_chart', type='wizard')
+
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            root, = Account.search([('parent', '=', None)])
+
+            cash, = Account.search([('name', '=', 'Main Cash')])
+            cash.template_override = True
+            cash.end_date = datetime.date.min
+            cash.save()
+            self.assertFalse(cash.active)
+
+            session_id, _, _ = UpdateChart.create()
+            update_chart = UpdateChart(session_id)
+            update_chart.start.account = root
+            update_chart.transition_update()
+
+            with Transaction().set_context(active_test=False):
+                self.assertEqual(
+                    Account.search([('name', '=', 'Main Cash')], count=True),
+                    1)
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
