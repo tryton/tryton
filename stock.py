@@ -205,6 +205,6 @@ class CreateShipping(Wizard):
 
     def transition_start(self):
         shipping_service = self.record.carrier.shipping_service
-        method_name = 'validate_packing_%' % shipping_service
+        method_name = 'validate_packing_%s' % shipping_service
         getattr(self.record, method_name)()
         return 'end'
