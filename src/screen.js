@@ -1591,7 +1591,7 @@
             var records = this.current_view.selected_records;
             this.model.copy(records, this.context)
                 .then(function(new_ids) {
-                this.group.load(new_ids);
+                this.group.load(new_ids, false, this.new_position);
                 if (!jQuery.isEmptyObject(new_ids)) {
                     this.current_record = this.group.get(new_ids[0]);
                 }

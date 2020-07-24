@@ -79,7 +79,10 @@
                 this.__readonly = value;
             }
         });
-        array.load = function(ids, modified) {
+        array.load = function(ids, modified, position) {
+            if ((position === undefined) || (position == -1)) {
+                position = this.length;
+            }
             var new_records = [];
             var i, len;
             for (i = 0, len = ids.length; i < len; i++) {
@@ -88,7 +91,8 @@
                 if (!new_record) {
                     new_record = new Sao.Record(this.model, id);
                     new_record.group = this;
-                    this.push(new_record);
+                    this.splice(position, 0, new_record);
+                    position += 1;
                 }
                 new_records.push(new_record);
             }
