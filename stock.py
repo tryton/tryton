@@ -207,6 +207,6 @@ class CreateShipping(Wizard):
         pool = Pool()
         ShipmentOut = pool.get('stock.shipment.out')
         shipment = ShipmentOut(Transaction().context['active_id'])
-        method_name = 'validate_packing_%' % shipment.carrier.shipping_service
+        method_name = 'validate_packing_%s' % shipment.carrier.shipping_service
         getattr(shipment, method_name)()
         return 'end'
