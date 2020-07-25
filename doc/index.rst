@@ -7,8 +7,8 @@ or payable Account Move Lines.
 Payment
 *******
 
-A Payment defines an amount to pay to a party or to receive from a party. It is
-mainly defined by:
+A Payment defines the attempt to pay an amount to a party or to receive an
+amount from a party. It is mainly defined by:
 
 - Journal.
 - Kind:
