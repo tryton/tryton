@@ -218,8 +218,14 @@ class MoveLine(ModelSQL, ModelView):
     @property
     def must_have_analytic(self):
         "If the line must have analytic lines set"
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
         if self.account.type:
-            return self.account.type.statement == 'income'
+            return self.account.type.statement == 'income' and not (
+                # ignore balance move of non-deferral account
+                self.journal.type == 'situation'
+                and self.period.type == 'adjustment'
+                and isinstance(self.move.origin, FiscalYear))
 
     @classmethod
     def apply_rule(cls, lines):

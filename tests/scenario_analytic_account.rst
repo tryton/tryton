@@ -140,3 +140,47 @@ Check analytic lines are created on posting::
     Decimal('73')
     >>> analytic_line.date == analytic_line.move_line.date
     True
+
+Prepare to balance non-deferral accounts::
+
+    >>> Sequence = Model.get('ir.sequence')
+    >>> Period = Model.get('account.period')
+    >>> AccountType = Model.get('account.account.type')
+    >>> Account = Model.get('account.account')
+    >>> journal_sequence, = Sequence.find([('code', '=', 'account.journal')])
+    >>> journal_closing = Journal()
+    >>> journal_closing.code = 'CLO'
+    >>> journal_closing.type = 'situation'
+    >>> journal_closing.name = "Closing"
+    >>> journal_closing.sequence = journal_sequence
+    >>> journal_closing.save()
+    >>> period_closing = Period()
+    >>> period_closing.name = "Closing"
+    >>> period_closing.type = 'adjustment'
+    >>> period_closing.fiscalyear = fiscalyear
+    >>> period_closing.start_date = fiscalyear.end_date
+    >>> period_closing.end_date = fiscalyear.end_date
+    >>> period_closing.save()
+    >>> equity, = AccountType.find([('name', '=', 'Equity')])
+    >>> account_pl = Account()
+    >>> account_pl.name = 'P&L'
+    >>> account_pl.type = equity
+    >>> account_pl.parent = revenue.parent
+    >>> account_pl.save()
+
+Balance non-deferral accounts::
+
+    >>> balance_non_deferral = Wizard('account.fiscalyear.balance_non_deferral')
+    >>> balance_non_deferral.form.fiscalyear = fiscalyear
+    >>> balance_non_deferral.form.journal = journal_closing
+    >>> balance_non_deferral.form.period = period_closing
+    >>> balance_non_deferral.form.credit_account = account_pl
+    >>> balance_non_deferral.form.debit_account = account_pl
+    >>> balance_non_deferral.execute('balance')
+    >>> move, = Move.find([
+    ...     ('state', '=', 'draft'),
+    ...     ('journal', '=', journal_closing.id),
+    ...     ])
+    >>> move.click('post')
+    >>> [l for l in move.lines if l.analytic_lines]
+    []
