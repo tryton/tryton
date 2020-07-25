@@ -1,3 +1,4 @@
+* Add option to run cron once
 * Add defaults option to route
 * Add escape_wildcard in tools
 * Add option to ensure emails are sent

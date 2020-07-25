@@ -12,7 +12,7 @@ if os.path.isdir(DIR):
 import trytond.commandline as commandline
 from trytond.config import config
 
-parser = commandline.get_parser_daemon()
+parser = commandline.get_parser_cron()
 options = parser.parse_args()
 config.update_etc(options.configfile)
 commandline.config_log(options)

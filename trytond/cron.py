@@ -35,4 +35,8 @@ def run(options):
             logger.info('start thread for "%s"', db_name)
             thread.start()
             threads[db_name] = thread
+        if options.once:
+            break
         time.sleep(60)
+    for thread in threads.values():
+        thread.join()

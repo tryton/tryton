@@ -60,6 +60,13 @@ def get_parser_worker():
     return parser
 
 
+def get_parser_cron():
+    parser = get_parser_daemon()
+    parser.add_argument("-1", "--once", dest='once', action='store_true',
+        help="run pending tasks and halt")
+    return parser
+
+
 def get_parser_admin():
     parser = get_parser()
 

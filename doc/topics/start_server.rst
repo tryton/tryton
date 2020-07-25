@@ -54,6 +54,8 @@ run the cron server with this command line::
 
 The server will wake up every minutes and preform the scheduled actions defined
 in the `database`.
+You can also launch the command every few minutes from a scheduler with the
+option `--once`.
 
 Worker service
 ==============
