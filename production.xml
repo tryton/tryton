@@ -40,12 +40,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_production_admin"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_assign">
-            <field name="name">Assign Production</field>
-            <field name="wiz_name">production.assign</field>
-            <field name="model">production</field>
-        </record>
-
         <record model="ir.ui.view" id="production_view_list">
             <field name="model">production</field>
             <field name="type">tree</field>
@@ -299,10 +293,10 @@ this repository contains the full copyright notices and license terms. -->
                 search="[('model', '=', 'production')]"/>
         </record>
 
-        <record model="ir.ui.view" id="assign_failed_view_form">
-            <field name="model">production.assign.failed</field>
-            <field name="type">form</field>
-            <field name="name">assign_failed_form</field>
+        <record model="ir.action.wizard" id="wizard_production_assign">
+            <field name="name">Assign Production</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">production</field>
         </record>
 
         <record model="ir.cron" id="cron_set_cost_from_moves">

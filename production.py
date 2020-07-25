@@ -6,19 +6,19 @@ from itertools import chain
 from sql import Null
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, dualmethod
-from trytond.wizard import Wizard, StateTransition, StateView, Button
-from trytond.pyson import Eval, Bool, If, Id
+from trytond.pyson import Eval, Bool, If
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 
 from trytond.modules.company.model import employee_field, set_employee
 from trytond.modules.product import price_digits, round_price
+from trytond.modules.stock.shipment import ShipmentAssignMixin
 
 BOM_CHANGES = ['bom', 'product', 'quantity', 'uom', 'warehouse', 'location',
     'company', 'inputs', 'outputs']
 
 
-class Production(Workflow, ModelSQL, ModelView):
+class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Production"
     __name__ = 'production'
 
@@ -563,12 +563,6 @@ class Production(Workflow, ModelSQL, ModelView):
         Move.save(moves)
 
     @classmethod
-    def view_attributes(cls):
-        return [
-            ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
-            ]
-
-    @classmethod
     def create(cls, vlist):
         Sequence = Pool().get('ir.sequence')
         Config = Pool().get('production.configuration')
@@ -668,7 +662,9 @@ class Production(Workflow, ModelSQL, ModelView):
     @Workflow.transition('assigned')
     @set_employee('assigned_by')
     def assign(cls, productions):
-        pass
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.assign([m for p in productions for m in p.assign_moves])
 
     @classmethod
     @ModelView.button
@@ -698,79 +694,22 @@ class Production(Workflow, ModelSQL, ModelView):
                 })
 
     @classmethod
-    @ModelView.button_action('production.wizard_assign')
+    @ModelView.button_action('production.wizard_production_assign')
     def assign_wizard(cls, productions):
         pass
 
-    @classmethod
+    @property
+    def assign_moves(self):
+        return self.inputs
+
+    @dualmethod
     @ModelView.button
     def assign_try(cls, productions):
         pool = Pool()
         Move = pool.get('stock.move')
-        if Move.assign_try([m for p in productions
-                    for m in p.inputs]):
+        if Move.assign_try(
+                [m for p in productions for m in p.assign_moves]):
             cls.assign(productions)
             return True
         else:
             return False
-
-    @classmethod
-    @ModelView.button
-    def assign_force(cls, productions):
-        pool = Pool()
-        Move = pool.get('stock.move')
-        Move.assign([m for p in productions for m in p.inputs])
-        cls.assign(productions)
-
-
-class AssignFailed(ModelView):
-    'Assign Production'
-    __name__ = 'production.assign.failed'
-
-    moves = fields.Many2Many('stock.move', None, None, 'Moves', readonly=True)
-
-    @staticmethod
-    def default_moves():
-        pool = Pool()
-        Production = pool.get('production')
-        production_id = Transaction().context.get('active_id')
-        if not production_id:
-            return []
-        production = Production(production_id)
-        return [m.id for m in production.inputs if m.state == 'draft']
-
-
-class Assign(Wizard):
-    'Assign Production'
-    __name__ = 'production.assign'
-
-    start = StateTransition()
-    failed = StateView('production.assign.failed',
-        'production.assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-forward',
-                states={
-                    'invisible': ~Id('stock',
-                        'group_stock_force_assignment').in_(
-                        Eval('context', {}).get('groups', [])),
-                    }),
-            Button('OK', 'end', 'tryton-ok', True),
-            ])
-    force = StateTransition()
-
-    def transition_start(self):
-        pool = Pool()
-        Production = pool.get('production')
-
-        if Production.assign_try(
-                [Production(Transaction().context['active_id'])]):
-            return 'end'
-        else:
-            return 'failed'
-
-    def transition_force(self):
-        pool = Pool()
-        Production = pool.get('production')
-
-        Production.assign_force(
-            [Production(Transaction().context['active_id'])])
-        return 'end'

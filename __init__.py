@@ -21,7 +21,6 @@ def register():
         bom.OpenBOMTreeStart,
         bom.OpenBOMTreeTree,
         production.Production,
-        production.AssignFailed,
         product.Template,
         product.Product,
         product.ProductBom,
@@ -31,6 +30,5 @@ def register():
         ir.Cron,
         module='production', type_='model')
     Pool.register(
-        production.Assign,
         bom.OpenBOMTree,
         module='production', type_='wizard')
