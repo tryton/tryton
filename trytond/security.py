@@ -126,7 +126,7 @@ def check_timeout(dbname, user, session, context=None):
 
 def reset(dbname, session, context):
     try:
-        with Transaction().start(dbname, 0, context=context):
+        with Transaction().start(dbname, 0, context=context, autocommit=True):
             pool = _get_pool(dbname)
             Session = pool.get('ir.session')
             Session.reset(session)
