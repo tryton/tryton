@@ -8,7 +8,7 @@ from functools import partial
 from sql import Null
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import Workflow, ModelView, ModelSQL, fields, dualmethod
 from trytond.model.exceptions import AccessError
 from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
@@ -26,6 +26,43 @@ class ShipmentMixin:
         return [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
+
+
+class ShipmentAssignMixin(ShipmentMixin):
+
+    @classmethod
+    def assign_wizard(cls, shipments):
+        raise NotImplementedError
+
+    @property
+    def assign_moves(self):
+        raise NotImplementedError
+
+    @dualmethod
+    @ModelView.button
+    def assign_try(cls, shipments):
+        raise NotImplementedError
+
+    @dualmethod
+    def assign_reset(cls, shipments):
+        cls.wait(shipments)
+
+    @dualmethod
+    @ModelView.button
+    def assign_force(cls, shipments):
+        cls.assign(shipments)
+
+    @dualmethod
+    def assign_ignore(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.write([
+                m for s in shipments for m in s.assign_moves
+                if m.assignation_required
+                and m.state in {'staging', 'draft'}], {
+                'quantity': 0,
+                })
+        cls.assign(shipments)
 
 
 class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
@@ -457,7 +494,7 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                 })
 
 
-class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
+class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Supplier Return Shipment"
     __name__ = 'stock.shipment.in.return'
     _rec_name = 'number'
@@ -736,7 +773,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @set_employee('assigned_by')
     def assign(cls, shipments):
         Move = Pool().get('stock.move')
-        Move.assign([m for s in shipments for m in s.moves])
+        Move.assign([m for s in shipments for m in s.assign_moves])
 
     @classmethod
     @ModelView.button
@@ -764,7 +801,11 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def assign_wizard(cls, shipments):
         pass
 
-    @classmethod
+    @property
+    def assign_moves(self):
+        return self.moves
+
+    @dualmethod
     @ModelView.button
     def assign_try(cls, shipments, with_childs=None):
         pool = Pool()
@@ -772,7 +813,7 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         to_assign = defaultdict(list)
         for shipment in shipments:
             location_type = shipment.from_location.type
-            for move in shipment.moves:
+            for move in shipment.assign_moves:
                 if move.assignation_required:
                     to_assign[location_type].append(move)
         success = True
@@ -789,13 +830,8 @@ class ShipmentInReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             cls.assign(shipments)
         return success
 
-    @classmethod
-    @ModelView.button
-    def assign_force(cls, shipments):
-        cls.assign(shipments)
 
-
-class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
+class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Customer Shipment"
     __name__ = 'stock.shipment.out'
     _rec_name = 'number'
@@ -1134,6 +1170,9 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @Workflow.transition('assigned')
     @set_employee('assigned_by')
     def assign(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.assign([m for s in shipments for m in s.assign_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=False)
 
     @classmethod
@@ -1347,24 +1386,22 @@ class ShipmentOut(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def assign_wizard(cls, shipments):
         pass
 
-    @classmethod
+    @property
+    def assign_moves(self):
+        return self.inventory_moves
+
+    @dualmethod
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
-        to_assign = [m for s in shipments for m in s.inventory_moves
+        to_assign = [
+            m for s in shipments for m in s.assign_moves
             if m.assignation_required]
         if Move.assign_try(to_assign):
             cls.assign(shipments)
             return True
         else:
             return False
-
-    @classmethod
-    @ModelView.button
-    def assign_force(cls, shipments):
-        Move = Pool().get('stock.move')
-        Move.assign([m for s in shipments for m in s.inventory_moves])
-        cls.assign(shipments)
 
 
 class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
@@ -1774,56 +1811,7 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cls.save(shipments)
 
 
-class AssignShipmentOutAssignFailed(ModelView):
-    'Assign Customer Shipment'
-    __name__ = 'stock.shipment.out.assign.failed'
-    inventory_moves = fields.Many2Many('stock.move', None, None,
-        'Inventory Moves', readonly=True,
-        help="The inventory moves that were not assigned.")
-
-    @staticmethod
-    def default_inventory_moves():
-        ShipmentOut = Pool().get('stock.shipment.out')
-        shipment_id = Transaction().context.get('active_id')
-        if not shipment_id:
-            return []
-        shipment = ShipmentOut(shipment_id)
-        return [x.id for x in shipment.inventory_moves if x.state == 'draft']
-
-
-class AssignShipmentOut(Wizard):
-    'Assign Customer Shipment'
-    __name__ = 'stock.shipment.out.assign'
-    start = StateTransition()
-    failed = StateView('stock.shipment.out.assign.failed',
-        'stock.shipment_out_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-forward',
-                states={
-                    'invisible': ~Id('stock',
-                        'group_stock_force_assignment').in_(
-                        Eval('context', {}).get('groups', [])),
-                    }),
-            Button('OK', 'end', 'tryton-ok', True),
-            ])
-    force = StateTransition()
-
-    def transition_start(self):
-        pool = Pool()
-        Shipment = pool.get('stock.shipment.out')
-
-        if Shipment.assign_try([Shipment(Transaction().context['active_id'])]):
-            return 'end'
-        else:
-            return 'failed'
-
-    def transition_force(self):
-        Shipment = Pool().get('stock.shipment.out')
-
-        Shipment.assign_force([Shipment(Transaction().context['active_id'])])
-        return 'end'
-
-
-class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
+class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Internal Shipment"
     __name__ = 'stock.shipment.internal'
     _rec_name = 'number'
@@ -2353,7 +2341,9 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @Workflow.transition('assigned')
     @set_employee('assigned_by')
     def assign(cls, shipments):
-        pass
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.assign([m for s in shipments for m in s.assign_moves])
 
     @classmethod
     @ModelView.button
@@ -2394,24 +2384,22 @@ class ShipmentInternal(ShipmentMixin, Workflow, ModelSQL, ModelView):
     def assign_wizard(cls, shipments):
         pass
 
-    @classmethod
+    @property
+    def assign_moves(self):
+        return self.outgoing_moves
+
+    @dualmethod
     @ModelView.button
     def assign_try(cls, shipments):
         Move = Pool().get('stock.move')
-        to_assign = [m for s in shipments for m in s.outgoing_moves
+        to_assign = [
+            m for s in shipments for m in s.assign_moves
             if m.assignation_required]
         if not to_assign or Move.assign_try(to_assign):
             cls.assign(shipments)
             return True
         else:
             return False
-
-    @classmethod
-    @ModelView.button
-    def assign_force(cls, shipments):
-        Move = Pool().get('stock.move')
-        Move.assign([m for s in shipments for m in s.outgoing_moves])
-        cls.assign(shipments)
 
     @property
     def _move_planned_date(self):
@@ -2457,102 +2445,60 @@ class Address(metaclass=PoolMeta):
         help="Check to send deliveries to the address.")
 
 
-class AssignShipmentInternalAssignFailed(ModelView):
-    'Assign Shipment Internal'
-    __name__ = 'stock.shipment.internal.assign.failed'
-    moves = fields.Many2Many('stock.move', None, None, 'Moves',
-        readonly=True,
-        help="The moves that were not assigned.")
-
-    @staticmethod
-    def default_moves():
-        ShipmentInternal = Pool().get('stock.shipment.internal')
-        shipment_id = Transaction().context.get('active_id')
-        if not shipment_id:
-            return []
-        shipment = ShipmentInternal(shipment_id)
-        return [x.id for x in shipment.outgoing_moves if x.state == 'draft']
-
-
-class AssignShipmentInternal(Wizard):
-    'Assign Shipment Internal'
-    __name__ = 'stock.shipment.internal.assign'
+class Assign(Wizard):
+    "Assign Shipment"
+    __name__ = 'stock.shipment.assign'
     start = StateTransition()
-    failed = StateView('stock.shipment.internal.assign.failed',
-        'stock.shipment_internal_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-forward',
-                states={
-                    'invisible': ~Id('stock',
-                        'group_stock_force_assignment').in_(
-                        Eval('context', {}).get('groups', [])),
-                    }),
-            Button('OK', 'end', 'tryton-ok', True),
-            ])
-    force = StateTransition()
-
-    def transition_start(self):
-        pool = Pool()
-        Shipment = pool.get('stock.shipment.internal')
-
-        if Shipment.assign_try([Shipment(Transaction().context['active_id'])]):
-            return 'end'
-        else:
-            return 'failed'
-
-    def transition_force(self):
-        Shipment = Pool().get('stock.shipment.internal')
-
-        Shipment.assign_force([Shipment(Transaction().context['active_id'])])
-        return 'end'
-
-
-class AssignShipmentInReturnAssignFailed(ModelView):
-    'Assign Supplier Return Shipment'
-    __name__ = 'stock.shipment.in.return.assign.failed'
-    moves = fields.Many2Many('stock.move', None, None, 'Moves',
-            readonly=True,
-            help="The moves that were not assigned.")
-
-    @staticmethod
-    def default_moves():
-        ShipmentInternal = Pool().get('stock.shipment.in.return')
-        shipment_id = Transaction().context.get('active_id')
-        if not shipment_id:
-            return []
-        shipment = ShipmentInternal(shipment_id)
-        return [x.id for x in shipment.moves if x.state == 'draft']
-
-
-class AssignShipmentInReturn(Wizard):
-    'Assign Supplier Return Shipment'
-    __name__ = 'stock.shipment.in.return.assign'
-    start = StateTransition()
-    failed = StateView('stock.shipment.in.return.assign.failed',
-        'stock.shipment_in_return_assign_failed_view_form', [
-            Button('Force Assign', 'force', 'tryton-forward',
+    partial = StateView(
+        'stock.shipment.assign.partial',
+        'stock.shipment_assign_partial_view_form', [
+            Button("Cancel", 'cancel', 'tryton-cancel'),
+            Button("Wait", 'end', 'tryton-ok', True),
+            Button("Ignore", 'ignore', 'tryton-forward'),
+            Button("Force", 'force', 'tryton-forward',
                 states={
                     'invisible': ~Id('stock',
                         'group_stock_force_assignment').in_(
                         Eval('context', {}).get('groups', [])),
                 }),
-            Button('OK', 'end', 'tryton-ok', True),
             ])
+    cancel = StateTransition()
     force = StateTransition()
+    ignore = StateTransition()
 
     def transition_start(self):
-        pool = Pool()
-        Shipment = pool.get('stock.shipment.in.return')
-
-        if Shipment.assign_try([Shipment(Transaction().context['active_id'])]):
+        if self.record.assign_try():
             return 'end'
         else:
-            return 'failed'
+            return 'partial'
+
+    def default_partial(self, fields):
+        values = {}
+        if 'moves' in fields:
+            values['moves'] = [
+                m.id for m in self.record.assign_moves
+                if m.state in {'staging', 'draft'}]
+        return values
+
+    def transition_cancel(self):
+        self.record.assign_reset()
+        return 'end'
 
     def transition_force(self):
-        Shipment = Pool().get('stock.shipment.in.return')
-
-        Shipment.assign_force([Shipment(Transaction().context['active_id'])])
+        self.record.assign_force()
         return 'end'
+
+    def transition_ignore(self):
+        self.record.assign_ignore()
+        return 'end'
+
+
+class AssignPartial(ModelView):
+    "Assign Shipment"
+    __name__ = 'stock.shipment.assign.partial'
+    moves = fields.Many2Many(
+        'stock.move', None, None, "Moves", readonly=True,
+        help="The moves that were not assigned.")
 
 
 class DeliveryNote(CompanyReport):

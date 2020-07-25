@@ -132,8 +132,10 @@ Make 1 unit of the product available::
 
 Assign the shipment now::
 
-    >>> shipment_out.click('assign_try')
-    False
+    >>> shipment_assign = Wizard('stock.shipment.assign', [shipment_out])
+    >>> len(shipment_assign.form.moves)
+    1
+    >>> shipment_assign.execute('end')
     >>> shipment_out.reload()
     >>> len(shipment_out.outgoing_moves)
     2
@@ -152,14 +154,12 @@ Assign the shipment now::
     >>> len(set(planned_dates))
     1
 
-Delete the draft move, assign and pack shipment::
+Ignore non assigned moves and pack shipment::
 
-    >>> for move in shipment_out.inventory_moves:
-    ...     if move.state == 'draft':
-    ...         break
-    >>> shipment_out.inventory_moves.remove(move)
-    >>> shipment_out.click('assign_try')
-    True
+    >>> shipment_assign = Wizard('stock.shipment.assign', [shipment_out])
+    >>> shipment_assign.execute('ignore')
+    >>> sorted([m.quantity for m in shipment_out.inventory_moves])
+    [0.0, 1.0]
     >>> shipment_out.assigned_by == employee
     True
     >>> shipment_out.packed_by
@@ -174,7 +174,7 @@ Delete the draft move, assign and pack shipment::
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)
-    1
+    2
     >>> shipment_out.inventory_moves[0].state
     'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \
@@ -199,7 +199,7 @@ Set the state as Done::
     >>> len(shipment_out.outgoing_moves)
     2
     >>> len(shipment_out.inventory_moves)
-    1
+    2
     >>> shipment_out.inventory_moves[0].state
     'done'
     >>> sum([m.quantity for m in shipment_out.inventory_moves]) == \

@@ -54,12 +54,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_stock" sequence="20"
             action="act_shipment_in_form" id="menu_shipment_in_form"/>
 
-        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
-            <field name="name">Assign Purchase Return Shipment</field>
-            <field name="wiz_name">stock.shipment.in.return.assign</field>
-            <field name="model">stock.shipment.in.return</field>
-        </record>
-
         <record model="ir.ui.view" id="shipment_in_return_view_form">
             <field name="model">stock.shipment.in.return</field>
             <field name="type">form</field>
@@ -121,18 +115,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_shipment_in_form" sequence="10"
             action="act_shipment_in_return_form"
             id="menu_shipment_in_return_form"/>
-
-        <record model="ir.ui.view" id="shipment_in_return_assign_failed_view_form">
-            <field name="model">stock.shipment.in.return.assign.failed</field>
-            <field name="type">form</field>
-            <field name="name">shipment_in_return_assign_failed_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="wizard_shipment_out_assign">
-            <field name="name">Assign Customer Shipment</field>
-            <field name="wiz_name">stock.shipment.out.assign</field>
-            <field name="model">stock.shipment.out</field>
-        </record>
 
         <record model="ir.ui.view" id="shipment_out_view_form">
             <field name="model">stock.shipment.out</field>
@@ -198,18 +180,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <menuitem parent="menu_stock" sequence="30"
             action="act_shipment_out_form" id="menu_shipment_out_form"/>
-
-        <record model="ir.ui.view" id="shipment_out_assign_failed_view_form">
-            <field name="model">stock.shipment.out.assign.failed</field>
-            <field name="type">form</field>
-            <field name="name">shipment_out_assign_failed_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
-            <field name="name">Assign Shipment Internal</field>
-            <field name="wiz_name">stock.shipment.internal.assign</field>
-            <field name="model">stock.shipment.internal</field>
-        </record>
 
         <record model="ir.ui.view" id="shipment_internal_view_form">
             <field name="model">stock.shipment.internal</field>
@@ -287,12 +257,6 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem parent="menu_stock" sequence="35"
                   action="act_shipment_internal_form"
                   id="menu_shipment_internal_form"/>
-
-        <record model="ir.ui.view" id="shipment_internal_assign_failed_view_form">
-            <field name="model">stock.shipment.internal.assign.failed</field>
-            <field name="type">form</field>
-            <field name="name">shipment_internal_assign_failed_form</field>
-        </record>
 
         <record model="ir.ui.view" id="shipment_out_return_view_form">
             <field name="model">stock.shipment.out.return</field>
@@ -1069,5 +1033,28 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_shipment_internal"/>
         </record>
+
+        <record model="ir.ui.view" id="shipment_assign_partial_view_form">
+            <field name="model">stock.shipment.assign.partial</field>
+            <field name="type">form</field>
+            <field name="name">shipment_assign_partial_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_shipment_in_return_assign">
+            <field name="name">Assign Supplier Return Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.in.return</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_out_assign">
+            <field name="name">Assign Customer Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.out</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_shipment_internal_assign">
+            <field name="name">Assign Internal Shipment</field>
+            <field name="wiz_name">stock.shipment.assign</field>
+            <field name="model">stock.shipment.internal</field>
+        </record>
+
     </data>
 </tryton>

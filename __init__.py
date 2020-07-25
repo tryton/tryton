@@ -30,11 +30,9 @@ def register():
         shipment.ShipmentInReturn,
         shipment.ShipmentOut,
         shipment.ShipmentOutReturn,
-        shipment.AssignShipmentOutAssignFailed,
         shipment.ShipmentInternal,
+        shipment.AssignPartial,
         shipment.Address,
-        shipment.AssignShipmentInternalAssignFailed,
-        shipment.AssignShipmentInReturnAssignFailed,
         period.Period,
         period.Cache,
         product.Template,
@@ -57,9 +55,7 @@ def register():
         res.User,
         module='stock', type_='model')
     Pool.register(
-        shipment.AssignShipmentOut,
-        shipment.AssignShipmentInternal,
-        shipment.AssignShipmentInReturn,
+        shipment.Assign,
         product.OpenProductQuantitiesByWarehouse,
         product.RecomputeCostPrice,
         product.ModifyCostPrice,
