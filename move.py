@@ -1593,7 +1593,7 @@ class Reconcile(Wizard):
                     )))
         return [a for a, in cursor.fetchall()]
 
-    def get_parties(self, account, _balanced=False):
+    def get_parties(self, account, _balanced=False, party=None):
         'Return a list party to reconcile for the account'
         pool = Pool()
         Line = pool.get('account.move.line')
@@ -1616,9 +1616,12 @@ class Reconcile(Wizard):
                 | Case((account.type.payable, Sum(balance) > 0),
                     else_=False)
                 )
+        where = ((line.reconciliation == Null)
+            & (line.account == account.id))
+        if party:
+            where &= (line.party == party.id)
         cursor.execute(*line.select(line.party,
-                where=(line.reconciliation == Null)
-                & (line.account == account.id),
+                where=where,
                 group_by=line.party,
                 having=having))
         return [p for p, in cursor.fetchall()]
@@ -1724,6 +1727,9 @@ class Reconcile(Wizard):
                 date=self.show.date,
                 writeoff=self.show.write_off,
                 description=self.show.description)
+
+        if self.get_parties(self.show.account, party=self.show.party):
+            return 'show'
         return 'next_'
 
 
