@@ -277,6 +277,40 @@ class NotificationEmailTestCase(ModuleTestCase):
             _, _, msg = sendmail.call_args[0]
             self.assertEqual(msg['To'], 'Fallback <fallback@example.com>')
 
+    @with_transaction()
+    def test_notification_email_no_recipient(self):
+        "Test email notification no recipient"
+        pool = Pool()
+        User = pool.get('res.user')
+        Trigger = pool.get('ir.trigger')
+        Model = pool.get('ir.model')
+        NotificationEmail = pool.get('notification.email')
+        User = pool.get('res.user')
+
+        self._setup_notification()
+        notification_email, = NotificationEmail.search([])
+        notification_email.recipients = None
+        notification_email.save()
+
+        model, = Model.search([
+                ('model', '=', User.__name__),
+                ])
+        Trigger.create([{
+                    'name': 'Test creation',
+                    'model': model.id,
+                    'on_create': True,
+                    'condition': 'true',
+                    'notification_email': notification_email.id,
+                    'action': 'notification.email|trigger',
+                    }])
+
+        with patch.object(
+                notification_module, 'get_email') as get_email, \
+                patch.object(notification_module, 'SMTPDataManager'):
+            User.create([{'name': "Michael Scott", 'login': "msc"}])
+            self.run_tasks()
+            get_email.assert_not_called()
+
 
 def suite():
     suite = test_suite()
