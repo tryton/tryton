@@ -288,9 +288,9 @@ class Email(ModelSQL, ModelView):
                     self._get_languages(self.fallback_recipients_hidden))
                 bcc = self._get_addresses(self.fallback_recipients_hidden)
 
-            msg = self.get_email(record, from_, to, cc, bcc, languagues)
             to_addrs = [e for _, e in getaddresses(to + cc + bcc)]
             if to_addrs:
+                msg = self.get_email(record, from_, to, cc, bcc, languagues)
                 sendmail_transactional(
                     from_, to_addrs, msg, datamanager=datamanager)
                 logs.append(self.get_log(
