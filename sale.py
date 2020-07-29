@@ -214,9 +214,6 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         return super(AdvancePaymentCondition, cls).copy(conditions, default)
 
     def create_invoice(self):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
-
         invoice = self.sale._get_invoice_sale()
         invoice.invoice_date = self.sale.sale_date
         if self.invoice_delay:
@@ -229,7 +226,7 @@ class AdvancePaymentCondition(ModelSQL, ModelView):
         invoice.lines = invoice_lines
         invoice.save()
 
-        Invoice.update_taxes([invoice])
+        invoice.update_taxes()
         return invoice
 
     def get_invoice_advance_payment_lines(self, invoice):
@@ -390,7 +387,6 @@ class Sale(metaclass=PoolMeta):
 
     def create_invoice(self):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
 
         invoice = super(Sale, self).create_invoice()
@@ -405,7 +401,7 @@ class Sale(metaclass=PoolMeta):
                     for line in recall_lines:
                         line.invoice = invoice
                     InvoiceLine.save(recall_lines)
-                    Invoice.update_taxes([invoice])
+                    invoice.update_taxes()
 
         return invoice
 
