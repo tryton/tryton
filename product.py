@@ -143,9 +143,7 @@ class Product(metaclass=PoolMeta):
             return move.from_location.type == 'storage'
 
         def compute_fifo_cost_price(quantity, date):
-            fifo_moves = self.get_fifo_move(
-                float(quantity),
-                date=current_moves[-1].effective_date)
+            fifo_moves = self.get_fifo_move(float(quantity), date=date)
 
             cost_price = Decimal(0)
             consumed_qty = 0
@@ -159,6 +157,11 @@ class Product(metaclass=PoolMeta):
             if consumed_qty:
                 return round_price(cost_price / Decimal(str(consumed_qty)))
 
+        # For each day, process the incoming moves first
+        # in order to keep quantity positive where possible
+        # We do not re-browse because we expect only small changes
+        moves = sorted(moves, key=lambda m: (
+                m.effective_date, out_move(m), m.id))
         current_moves = []
         current_out_qty = 0
         current_cost_price = cost_price
@@ -181,7 +184,7 @@ class Product(metaclass=PoolMeta):
                             m for m in out_moves
                             if m.cost_price != fifo_cost_price],
                         dict(cost_price=fifo_cost_price))
-                    if quantity:
+                    if quantity > 0 and quantity + current_out_qty >= 0:
                         cost_price = (
                             ((current_cost_price * (
                                         quantity + current_out_qty))
