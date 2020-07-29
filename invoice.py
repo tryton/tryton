@@ -82,6 +82,6 @@ class InvoiceCorrect(Wizard):
                 Line.copy([line], default={
                         'invoice': correction.id,
                         })
-        Invoice.update_taxes([correction])
+        correction.update_taxes()
         data = {'res_id': [correction.id]}
         return action, data
