@@ -274,7 +274,6 @@ class Sale(metaclass=PoolMeta):
 
     def create_invoice(self):
         pool = Pool()
-        Invoice = pool.get('account.invoice')
         InvoiceLine = pool.get('account.invoice.line')
         Shipment = pool.get('stock.shipment.out')
 
@@ -294,7 +293,7 @@ class Sale(metaclass=PoolMeta):
                     shipment.cost_invoice_line = invoice_line
             InvoiceLine.save(invoice_lines)
             Shipment.save(self.shipments)
-            Invoice.update_taxes([invoice])
+            invoice.update_taxes()
         return invoice
 
 
