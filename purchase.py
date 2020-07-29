@@ -774,8 +774,6 @@ class Purchase(
 
     def create_invoice(self):
         'Create an invoice for the purchase and return it'
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
 
         if self.invoice_method == 'manual':
             return
@@ -793,7 +791,7 @@ class Purchase(
         invoice.lines = invoice_lines
         invoice.save()
 
-        Invoice.update_taxes([invoice])
+        invoice.update_taxes()
         self.copy_resources_to(invoice)
         return invoice
 
