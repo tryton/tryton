@@ -11,7 +11,7 @@ from sql.functions import Round
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields, \
-    sequence_ordered, Unique, DeactivableMixin
+    sequence_ordered, Unique, DeactivableMixin, dualmethod
 from trytond.model.exceptions import AccessError
 from trytond.report import Report
 from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
@@ -853,7 +853,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             tax['invoice'] = self.id
         return taxes
 
-    @classmethod
+    @dualmethod
     def update_taxes(cls, invoices, exception=False):
         Tax = Pool().get('account.invoice.tax')
         to_create = []
@@ -934,7 +934,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
         if self.move:
             return self.move
-        self.update_taxes([self], exception=True)
+        self.update_taxes(exception=True)
         move_lines = []
         for line in self.lines:
             move_lines += line.get_move_lines()

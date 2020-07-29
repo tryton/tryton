@@ -1,3 +1,4 @@
+* Convert Invoice.update_taxes into dualmethod
 * Rename invoice state from cancel to cancelled
 
 Version 5.6.0 - 2020-05-04
