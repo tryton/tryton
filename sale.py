@@ -806,8 +806,6 @@ class Sale(
 
     def create_invoice(self):
         'Create and return an invoice'
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
         if self.invoice_method == 'manual':
             return
 
@@ -824,7 +822,7 @@ class Sale(
         invoice.lines = invoice_lines
         invoice.save()
 
-        Invoice.update_taxes([invoice])
+        invoice.update_taxes()
         self.copy_resources_to(invoice)
         return invoice
 
