@@ -524,7 +524,7 @@ class Action(ModelSQL, ModelView):
             credit_note.lines = credit_lines
             credit_note.taxes = None
             credit_note.save()
-            Invoice.update_taxes([credit_note])
+            credit_note.update_taxes()
         else:
             return
         return credit_note
