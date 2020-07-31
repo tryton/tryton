@@ -18,7 +18,7 @@
     function set_treeview_height(el) {
         var height = '';
         if (!el.parents('.form').length &&
-            !el.parents('#menu')) {
+            !el.parents('#menu').length) {
             var padding = ' ';
             el.parents('.panel-body').each(function(i, panel) {
                 panel = jQuery(panel);
