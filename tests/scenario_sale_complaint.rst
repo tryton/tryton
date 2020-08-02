@@ -222,6 +222,9 @@ Create a complaint to credit partially the invoice::
     >>> invoice_line.line = invoice.lines[0]
     >>> invoice_line.quantity = 1
     >>> invoice_line.unit_price = Decimal('5')
+    >>> invoice_line = action.invoice_lines.new()
+    >>> invoice_line.line = invoice.lines[1]
+    >>> invoice_line.quantity = 1
     >>> complaint.click('wait')
     >>> complaint.click('approve')
     >>> complaint.state
@@ -231,11 +234,11 @@ Create a complaint to credit partially the invoice::
     >>> credit_note.type
     'out'
     >>> len(credit_note.lines)
-    1
+    2
     >>> sum(l.quantity for l in credit_note.lines)
-    -1.0
+    -2.0
     >>> credit_note.total_amount
-    Decimal('-5.00')
+    Decimal('-15.00')
 
 Create a complaint to credit a invoice line::
 
