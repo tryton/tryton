@@ -82,7 +82,7 @@ class User(metaclass=PoolMeta):
                 and len(list(filter(same_company, self.employees))) > 1):
             status += ' - %s' % self.employee.rec_name
         if self.company:
-            if len(self.companies) > 1:
+            if self.main_company.childs:
                 status += ' - %s' % self.company.rec_name
             status += ' [%s]' % self.company.currency.code
         return status
