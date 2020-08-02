@@ -781,7 +781,7 @@
                 }).prependTo(this.el);
                 this.icon.hide();
             }
-            this.el.addClass('btn btn-default ' + size || '');
+            this.el.addClass('btn btn-default ' + (size || ''));
             this.el.attr('type', 'button');
             this.icon.attr('aria-hidden', true);
             this.set_icon(attributes.icon);
