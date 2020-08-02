@@ -498,9 +498,11 @@ class Action(ModelSQL, ModelView):
                 if self.invoice_lines:
                     invoice_lines = [l.line for l in self.invoice_lines]
                     line2qty = {l.line: l.quantity
-                        for l in self.invoice_lines}
+                        for l in self.invoice_lines
+                        if l.quantity is not None}
                     line2price = {l.line: l.unit_price
-                        for l in self.invoice_lines}
+                        for l in self.invoice_lines
+                        if l.unit_price is not None}
                 else:
                     invoice_lines = invoice.lines
             elif isinstance(self.complaint.origin, Line):
