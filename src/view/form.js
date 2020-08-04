@@ -895,6 +895,7 @@ function eval_pyson(value){
             Sao.View.Form.Link._super.init.call(this, attributes);
             this.el = jQuery('<button/>', {
                 'class': this.class_ + ' btn btn-link',
+                'name': attributes.name,
             });
             if (attributes.icon) {
                 var img = jQuery('<img/>', {
@@ -1420,7 +1421,8 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(this.group);
             if (!jQuery.isEmptyObject(attributes.autocomplete)) {
                 this.datalist = jQuery('<datalist/>').appendTo(this.el);
@@ -1513,7 +1515,8 @@ function eval_pyson(value){
         translate_widget: function() {
             return jQuery('<input/>', {
                 'class': 'form-control',
-                'readonly': 'readonly'
+                'readonly': 'readonly',
+                'name': this.attributes.name,
             });
         }
     });
@@ -1572,7 +1575,8 @@ function eval_pyson(value){
                 }).appendTo(this.date));
             this.input = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(this.date);
             this.date.datetimepicker({
                 'locale': moment.locale(),
@@ -1714,7 +1718,8 @@ function eval_pyson(value){
             });
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(this.el);
             this.el.change(this.focus_out.bind(this));
         },
@@ -1897,7 +1902,8 @@ function eval_pyson(value){
                 'class': this.class_
             });
             this.select = this.labelled = jQuery('<select/>', {
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             });
             this.el.append(this.select);
             this.select.change(this.focus_out.bind(this));
@@ -1995,7 +2001,8 @@ function eval_pyson(value){
             });
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'checkbox',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
             this.input.click(function() {
@@ -2035,7 +2042,8 @@ function eval_pyson(value){
                 'class': this.class_
             });
             this.input = this.labelled = jQuery('<textarea/>', {
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(this.el);
             this.input.change(this.focus_out.bind(this));
             if (this.attributes.translate) {
@@ -2363,7 +2371,8 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.entry = this.labelled = jQuery('<input/>', {
                 'type': 'input',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(group);
             this.but_primary = jQuery('<img/>', {
                 'class': 'icon',
@@ -3039,7 +3048,8 @@ function eval_pyson(value){
             if (attributes.add_remove) {
                 this.wid_text = jQuery('<input/>', {
                     type: 'text',
-                    'class': 'form-control input-sm'
+                    'class': 'form-control input-sm',
+                    'name': attributes.name,
                 }).appendTo(group);
                 // TODO add completion
                 //
@@ -3546,7 +3556,8 @@ function eval_pyson(value){
             }).appendTo(toolbar);
             this.entry = jQuery('<input/>', {
                 type: 'text',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': attributes.name,
             }).appendTo(group);
             // Use keydown to not receive focus-in TAB
             this.entry.on('keydown', this.key_press.bind(this));
@@ -3903,7 +3914,8 @@ function eval_pyson(value){
             this.size = jQuery('<input/>', {
                 type: 'input',
                 'class': 'form-control input-sm',
-                'readonly': true
+                'readonly': true,
+                'name': attributes.name,
             }).appendTo(group);
 
             if (this.filename && attributes.filename_visible) {
@@ -4309,6 +4321,7 @@ function eval_pyson(value){
                 'type': 'text',
                 'class': 'form-control input-sm',
                 'placeholder': Sao.i18n.gettext('Search'),
+                'name': attributes.name,
             }).appendTo(group);
 
             // TODO completion
@@ -4583,7 +4596,8 @@ function eval_pyson(value){
             }).appendTo(this.el);
             this.input = this.labelled = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': this.name,
             }).appendTo(group);
             this.button = jQuery('<button/>', {
                 'class': 'btn btn-default',
@@ -4637,7 +4651,8 @@ function eval_pyson(value){
         create_widget: function() {
             Sao.View.Form.Dict.SelectionEntry._super.create_widget.call(this);
             var select = jQuery('<select/>', {
-                'class': 'form-control input-sm mousetrap'
+                'class': 'form-control input-sm mousetrap',
+                'name': this.name,
             });
             select.change(
                     this.parent_widget.focus_out.bind(this.parent_widget));

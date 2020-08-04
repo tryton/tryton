@@ -766,6 +766,7 @@
             } else {
                 this.el = jQuery('<button/>', {
                     title: attributes.string || '',
+                    name: attributes.name || '',
                 });
                 this.el.text(attributes.string || '');
                 if (this.attributes.rule) {

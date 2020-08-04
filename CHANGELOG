@@ -1,3 +1,4 @@
+* Set field's name as input's name attribute
 * Position copied records based on order
 * Sanitize translated RichtText fields content (issue9453)
 * Allow configuration of default colors for graph and calendar
