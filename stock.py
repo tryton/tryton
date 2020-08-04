@@ -2,8 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
 
+from trytond.model import fields
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 
 
 def _percentage_amount(lines, company):
@@ -31,33 +31,30 @@ def _percentage_amount(lines, company):
 class ShipmentIn(metaclass=PoolMeta):
     __name__ = 'stock.shipment.in'
 
+    @fields.depends('carrier', 'incoming_moves', 'company')
     def _get_carrier_context(self):
-        Company = Pool().get('company.company')
         context = super(ShipmentIn, self)._get_carrier_context()
-        if not self.carrier:
+        if not self.carrier or not self.company:
             return context
-        context = context.copy()
         if self.carrier.carrier_cost_method != 'percentage':
             return context
-        company = Company(Transaction().context['company'])
-        context['amount'] = _percentage_amount(self.incoming_moves, company)
-        context['currency'] = company.currency.id
+        context['amount'] = _percentage_amount(
+            self.incoming_moves, self.company)
+        context['currency'] = self.company.currency.id
         return context
 
 
 class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
 
+    @fields.depends('carrier', 'inventory_moves', 'company')
     def _get_carrier_context(self):
-        Company = Pool().get('company.company')
-
         context = super(ShipmentOut, self)._get_carrier_context()
-        if not self.carrier:
+        if not self.carrier or not self.company:
             return context
-        context = context.copy()
         if self.carrier.carrier_cost_method != 'percentage':
             return context
-        company = Company(Transaction().context['company'])
-        context['amount'] = _percentage_amount(self.inventory_moves, company)
-        context['currency'] = company.currency.id
+        context['amount'] = _percentage_amount(
+            self.inventory_moves, self.company)
+        context['currency'] = self.company.currency.id
         return context
