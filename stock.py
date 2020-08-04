@@ -43,7 +43,7 @@ class ShipmentIn(metaclass=PoolMeta):
     def on_change_carrier(self):
         self.on_change_incoming_moves()
 
-    @fields.depends('carrier', 'incoming_moves')
+    @fields.depends('carrier', methods=['_get_carrier_context'])
     def on_change_incoming_moves(self):
         try:
             super(ShipmentIn, self).on_change_incoming_moves()
