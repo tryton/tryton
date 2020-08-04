@@ -3,6 +3,7 @@
 from itertools import groupby
 from functools import partial
 
+from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.tools import sortable_values
 
@@ -18,13 +19,14 @@ class ShipmentIn(metaclass=PoolMeta):
         """
         return ()
 
+    @fields.depends('carrier', 'incoming_moves',
+        methods=['_group_parcel_key'])
     def _get_carrier_context(self):
         context = super(ShipmentIn, self)._get_carrier_context()
         if not self.carrier:
             return context
         if self.carrier.carrier_cost_method != 'weight':
             return context
-        context = context.copy()
         weights = []
         context['weights'] = weights
 
@@ -46,13 +48,14 @@ class ShipmentOut(metaclass=PoolMeta):
         """
         return ()
 
+    @fields.depends('carrier', 'inventory_moves',
+        methods=['_group_parcel_key'])
     def _get_carrier_context(self):
         context = super(ShipmentOut, self)._get_carrier_context()
         if not self.carrier:
             return context
         if self.carrier.carrier_cost_method != 'weight':
             return context
-        context = context.copy()
         weights = []
         context['weights'] = weights
 
