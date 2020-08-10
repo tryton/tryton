@@ -353,6 +353,11 @@ class WizardDialog(Wizard, NoModal):
             current_view.scroll.set_policy(
                 Gtk.PolicyType.NEVER, Gtk.PolicyType.NEVER)
         self.show()
+        self.scrolledwindow.set_policy(
+            Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
+        if current_view.scroll:
+            current_view.scroll.set_policy(
+                Gtk.PolicyType.NEVER, Gtk.PolicyType.AUTOMATIC)
 
     def destroy(self, action=None):
         super(WizardDialog, self).destroy(action=action)
