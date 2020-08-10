@@ -1566,7 +1566,10 @@ class ModelStorage(Model):
                     for i in ids
                     if i in self._cache and name in self._cache[i]]
             else:
-                read_data = self.read(list(ids), list(ffields.keys()))
+                # Order data read to update cache in the same order
+                index = {i: n for n, i in enumerate(ids)}
+                read_data = self.read(list(index.keys()), list(ffields.keys()))
+                read_data.sort(key=lambda r: index[r['id']])
             # create browse records for 'remote' models
             for data in read_data:
                 id_ = data['id']
