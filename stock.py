@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
 from functools import wraps
 
 from trytond.i18n import gettext
@@ -7,6 +8,8 @@ from trytond.model import Workflow, ModelView, fields
 from trytond.model.exceptions import AccessError
 from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
+
+from trytond.modules.product import round_price
 
 
 def process_sale(moves_field):
@@ -152,6 +155,33 @@ class Move(metaclass=PoolMeta):
                 and getattr(self.origin, 'unit', None)):
             category = self.origin.unit.category.id
         return category
+
+    def get_cost_price(self, product_cost_price=None):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+        Sale = pool.get('sale.sale')
+        # For return sale's move use the cost price of the original sale
+        if (isinstance(self.origin, SaleLine)
+                and self.origin.quantity < 0
+                and self.from_location.type != 'storage'
+                and self.to_location.type == 'storage'
+                and isinstance(self.origin.origin, Sale)):
+            sale = self.origin.origin
+            cost = Decimal(0)
+            qty = Decimal(0)
+            for move in sale.moves:
+                if (move.state == 'done'
+                        and move.from_location.type == 'storage'
+                        and move.to_location.type == 'customer'
+                        and move.product == self.product):
+                    move_quantity = Decimal(str(move.internal_quantity))
+                    cost_price = move.get_cost_price(
+                        product_cost_price=move.cost_price)
+                    qty += move_quantity
+                    cost += cost_price * move_quantity
+            if qty:
+                product_cost_price = round_price(cost / qty)
+        return super().get_cost_price(product_cost_price=product_cost_price)
 
     @property
     def origin_name(self):

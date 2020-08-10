@@ -1,3 +1,4 @@
+* Use original cost price for returned move
 * Add shipping date
 * Rename sale state from cancel to cancelled
 * Add window tab for exception states
