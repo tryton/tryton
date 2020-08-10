@@ -68,7 +68,6 @@ class Move(metaclass=PoolMeta):
         '''
         pool = Pool()
         Uom = pool.get('product.uom')
-        Currency = pool.get('currency.currency')
 
         total_qty = Uom.compute_qty(self.uom, self.quantity,
             self.product.default_uom, round=False)
@@ -81,16 +80,7 @@ class Move(metaclass=PoolMeta):
         to_save = []
         for move, move_qty in fifo_moves:
             consumed_qty += move_qty
-            if move.from_location.type in {'supplier', 'production'}:
-                with Transaction().set_context(date=move.effective_date):
-                    move_unit_price = Currency.compute(
-                        move.currency, move.unit_price,
-                        self.company.currency, round=False)
-                move_unit_price = Uom.compute_price(
-                    move.uom, move_unit_price, move.product.default_uom)
-            else:
-                move_unit_price = move.cost_price or 0
-            cost_price += move_unit_price * Decimal(str(move_qty))
+            cost_price += move.get_cost_price() * Decimal(str(move_qty))
 
             move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
                     move.uom, round=False)
@@ -107,10 +97,8 @@ class Move(metaclass=PoolMeta):
                 'cost_price', **self._cost_price_pattern)
 
         # Compute average cost price
-        self.unit_price_company, unit_price_company = (
-            cost_price, self.unit_price_company)
-        average_cost_price = self._compute_product_cost_price('out')
-        self.unit_price_company = unit_price_company
+        average_cost_price = self._compute_product_cost_price(
+            'out', product_cost_price=cost_price)
 
         if cost_price:
             cost_price = round_price(cost_price)
@@ -120,7 +108,7 @@ class Move(metaclass=PoolMeta):
 
     def _do(self):
         cost_price = super(Move, self)._do()
-        if (self.from_location.type in ('supplier', 'production')
+        if (self.from_location.type != 'storage'
                 and self.to_location.type == 'storage'
                 and self.product.cost_price_method == 'fifo'):
             cost_price = self._compute_product_cost_price('in')

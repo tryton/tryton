@@ -4,7 +4,6 @@ import datetime as dt
 from decimal import Decimal
 
 from trytond.config import config
-from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 from trytond.modules.product import round_price
@@ -93,7 +92,6 @@ class Product(metaclass=PoolMeta):
     def recompute_cost_price_fifo(self, start=None):
         pool = Pool()
         Move = pool.get('stock.move')
-        Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
         Revision = pool.get('product.cost_price.revision')
 
@@ -149,11 +147,7 @@ class Product(metaclass=PoolMeta):
             consumed_qty = 0
             for move, move_qty in fifo_moves:
                 consumed_qty += move_qty
-                if move.from_location.type in {'supplier', 'production'}:
-                    unit_price = move.unit_price_company
-                else:
-                    unit_price = move.cost_price or 0
-                cost_price += unit_price * Decimal(str(move_qty))
+                cost_price += move.get_cost_price() * Decimal(str(move_qty))
             if consumed_qty:
                 return round_price(cost_price / Decimal(str(consumed_qty)))
 
@@ -204,15 +198,7 @@ class Product(metaclass=PoolMeta):
             if move.from_location.type == 'storage':
                 qty *= -1
             if in_move(move):
-                if move.from_location.type in {'supplier', 'production'}:
-                    with Transaction().set_context(date=move.effective_date):
-                        unit_price = Currency.compute(
-                            move.currency, move.unit_price,
-                            move.company.currency, round=False)
-                    unit_price = Uom.compute_price(
-                        move.uom, unit_price, self.default_uom)
-                else:
-                    unit_price = cost_price
+                unit_price = move.get_cost_price(product_cost_price=cost_price)
                 if quantity + qty > 0 and quantity >= 0:
                     cost_price = (
                         (cost_price * quantity) + (unit_price * qty)
