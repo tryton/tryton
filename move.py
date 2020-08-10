@@ -525,7 +525,7 @@ class Move(Workflow, ModelSQL, ModelView):
     def search_rec_name(cls, name, clause):
         return [('product.rec_name',) + tuple(clause[1:])]
 
-    def _compute_product_cost_price(self, direction):
+    def _compute_product_cost_price(self, direction, product_cost_price=None):
         """
         Update the cost price on the given product.
         The direction must be "in" if incoming and "out" if outgoing.
@@ -541,14 +541,15 @@ class Move(Workflow, ModelSQL, ModelView):
 
         qty = Decimal(str(qty))
         product_qty = Decimal(str(self.product.quantity))
+        unit_price = self.get_cost_price(product_cost_price=product_cost_price)
         cost_price = self.product.get_multivalue(
             'cost_price', **self._cost_price_pattern)
         if product_qty + qty > 0 and product_qty >= 0:
             new_cost_price = (
-                (cost_price * product_qty) + (self.unit_price_company * qty)
+                (cost_price * product_qty) + (unit_price * qty)
                 ) / (product_qty + qty)
         elif direction == 'in':
-            new_cost_price = self.unit_price_company
+            new_cost_price = unit_price
         elif direction == 'out':
             new_cost_price = cost_price
         return round_price(new_cost_price)
@@ -656,6 +657,20 @@ class Move(Workflow, ModelSQL, ModelView):
         return (
             ('company', self.company.id),
             )
+
+    def get_cost_price(self, product_cost_price=None):
+        "Return the cost price of the move for computation"
+        with Transaction().set_context(date=self.effective_date):
+            if (self.from_location.type in {'supplier', 'production'}
+                    or self.to_location.type == 'supplier'):
+                return self.unit_price_company
+            elif product_cost_price is not None:
+                return product_cost_price
+            elif self.cost_price is not None:
+                return self.cost_price
+            else:
+                return self.product.get_multivalue(
+                    'cost_price', **self._cost_price_pattern)
 
     @classmethod
     def _cost_price_context(cls, moves):

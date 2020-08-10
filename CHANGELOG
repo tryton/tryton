@@ -1,3 +1,4 @@
+* Factorize the cost price of move for cost computation
 * Fill grouping values when assigning move
 * Use a single assign wizard for all shipments
 * Add access rules to product quantities by warehouse
