@@ -220,6 +220,102 @@ class StockLotTestCase(ModuleTestCase):
                 self.assertEqual(lot_cache.internal_quantity,
                     quantities[(lot_cache.location, lot_cache.lot)])
 
+    @with_transaction
+    def test_assign_try_with_lot(self):
+        "Test Move assign_try with lot"
+        pool = Pool()
+        Template = pool.get('product.template')
+        Product = pool.get('product.product')
+        Uom = pool.get('product.uom')
+        Location = pool.get('stock.location')
+        Move = pool.get('stock.move')
+        Lot = pool.get('stock.lot')
+
+        uom, = Uom.search([('name', '=', 'Meter')])
+        template = Template(
+            name="Product",
+            type='goods',
+            list_price=Decimal(1),
+            default_uom=uom,
+            )
+        template.save()
+        product = Product(template=template.id)
+        product.save()
+
+        supplier, = Location.search([('code', '=', 'SUP')])
+        storage, = Location.search([('code', '=', 'STO')])
+        customer, = Location.search([('code', '=', 'CUS')])
+
+        company = create_company()
+        with set_company(company):
+            lot1, lot2 = Lot.create([{
+                        'number': "1",
+                        'product': product.id,
+                        }, {
+                        'number': "2",
+                        'product': product.id,
+                        }])
+            moves = Move.create([{
+                        'product': product.id,
+                        'lot': lot1.id,
+                        'uom': uom.id,
+                        'quantity': 2,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }, {
+                        'product': product.id,
+                        'lot': lot2.id,
+                        'uom': uom.id,
+                        'quantity': 3,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }, {
+                        'product': product.id,
+                        'lot': None,
+                        'uom': uom.id,
+                        'quantity': 3,
+                        'from_location': supplier.id,
+                        'to_location': storage.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+            Move.do(moves)
+
+            move, = Move.create([{
+                        'product': product.id,
+                        'uom': uom.id,
+                        'quantity': 10,
+                        'from_location': storage.id,
+                        'to_location': customer.id,
+                        'company': company.id,
+                        'unit_price': Decimal(1),
+                        'currency': company.currency.id,
+                        }])
+
+            self.assertFalse(
+                Move.assign_try([move], grouping=('product', 'lot')))
+            moves = Move.search([
+                    ('product', '=', product.id),
+                    ('from_location', '=', storage.id),
+                    ('to_location', '=', customer.id),
+                    ('company', '=', company.id),
+                    ])
+            self.assertEqual(len(moves), 4)
+            self.assertEqual({
+                    (m.lot, m.quantity, m.state) for m in moves}, {
+                    (lot1, 2, 'assigned'),
+                    (lot2, 3, 'assigned'),
+                    (None, 1, 'assigned'),
+                    (None, 4, 'draft'),
+                    })
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
