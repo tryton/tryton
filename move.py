@@ -796,27 +796,27 @@ class Move(Workflow, ModelSQL, ModelView):
                     gettext('stock.msg_move_no_origin',
                         moves=names))
 
-    def pick_product(self, location_quantities):
+    def pick_product(self, quantities):
         """
-        Pick the product across the location. Naive (fast) implementation.
-        Return a list of tuple (location, quantity) for quantities that can be
+        Pick the product across the keys. Naive (fast) implementation.
+        Return a list of tuple (key, quantity) for quantities that can be
         picked.
         """
         to_pick = []
         needed_qty = self.quantity
-        for location, available_qty in location_quantities.items():
+        for key, available_qty in quantities:
             # Ignore available_qty when too small
             if available_qty < self.uom.rounding:
                 continue
             if needed_qty <= available_qty:
-                to_pick.append((location, needed_qty))
+                to_pick.append((key, needed_qty))
                 return to_pick
             else:
-                to_pick.append((location, available_qty))
+                to_pick.append((key, available_qty))
                 needed_qty -= available_qty
         # Force assignation for consumables:
         if self.product.consumable and self.from_location.type != 'view':
-            to_pick.append((self.from_location, needed_qty))
+            to_pick.append(((self.from_location,), needed_qty))
             return to_pick
         return to_pick
 
@@ -863,14 +863,29 @@ class Move(Workflow, ModelSQL, ModelView):
                     grouping=grouping,
                     grouping_filter=(product_ids,))
 
-        def get_key(move, location):
-            key = (location.id,)
+        def get_key(move, location_id):
+            key = (location_id,)
             for field in grouping:
                 value = getattr(move, field)
                 if isinstance(value, Model):
                     value = value.id
                 key += (value,)
             return key
+
+        def get_values(key, location_name):
+            yield location_name, key[0]
+            for field, value in zip(grouping, key[1:]):
+                if value is not None and '.' not in field:
+                    yield field, value
+
+        def match(key, pattern):
+            for k, p in zip(key, pattern):
+                if p is None or k == p:
+                    continue
+                else:
+                    return False
+            else:
+                return True
 
         child_locations = {}
         to_write = []
@@ -883,7 +898,6 @@ class Move(Workflow, ModelSQL, ModelView):
                 continue
             pbl = pblc[move.company.id]
             # Keep location order for pick_product
-            location_qties = OrderedDict()
             if with_childs:
                 childs = child_locations.get(move.from_location)
                 if childs is None:
@@ -894,19 +908,26 @@ class Move(Workflow, ModelSQL, ModelView):
                     child_locations[move.from_location] = childs
             else:
                 childs = [move.from_location]
-            for location in childs:
-                key = get_key(move, location)
-                if key in pbl:
-                    location_qties[location] = Uom.compute_qty(
-                        move.product.default_uom, pbl[key], move.uom,
-                        round=False)
-            # Prevent to pick from the destination location
-            location_qties.pop(move.to_location, None)
+            # Prevent picking from the destination location
             try:
-                # Try first to pick from source location
-                location_qties.move_to_end(move.from_location, last=False)
-            except KeyError:
+                childs.remove(move.to_location)
+            except ValueError:
                 pass
+            # Try first to pick from source location
+            childs.remove(move.from_location)
+            childs.insert(0, move.from_location)
+            index = {l.id: i for i, l in enumerate(childs)}
+            location_qties = []
+            pbl_items = pbl.items()
+            pbl_items = filter(lambda x: x[0][0] in index, pbl_items)
+            pbl_items = sorted(pbl_items, key=lambda x: index[x[0][0]])
+            for key, qty in pbl_items:
+                move_key = get_key(move, key[0])
+                if match(key, move_key):
+                    qty = Uom.compute_qty(
+                        move.product.default_uom, qty, move.uom,
+                        round=False)
+                    location_qties.append((key, qty))
 
             to_pick = move.pick_product(location_qties)
 
@@ -924,11 +945,9 @@ class Move(Workflow, ModelSQL, ModelView):
                 to_write.extend([[move], values])
             else:
                 first = True
-            for from_location, qty in to_pick:
-                values = {
-                    'from_location': from_location.id,
-                    'quantity': move.uom.round(qty),
-                    }
+            for key, qty in to_pick:
+                values = dict(get_values(key, 'from_location'))
+                values['quantity'] = move.uom.round(qty)
                 if first:
                     to_write.extend([[move], values])
                     to_assign.append(move)
@@ -940,8 +959,7 @@ class Move(Workflow, ModelSQL, ModelView):
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                         move.product.default_uom, round=False)
 
-                from_key = get_key(move, from_location)
-                pbl[from_key] = pbl.get(from_key, 0.0) - qty_default_uom
+                pbl[key] = pbl.get(key, 0.0) - qty_default_uom
         if to_write:
             cls.write(*to_write)
         if to_assign:

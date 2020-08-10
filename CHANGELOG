@@ -1,3 +1,4 @@
+* Fill grouping values when assigning move
 * Use a single assign wizard for all shipments
 * Add access rules to product quantities by warehouse
 * Add moves for product quantities by warehouse
