@@ -408,7 +408,6 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         pool = Pool()
         UoM = pool.get('product.uom')
         Move = pool.get('stock.move')
-        Currency = pool.get('currency.currency')
 
         to_save = []
         for shipment in shipments:
@@ -427,14 +426,8 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                 if s_move.state == 'cancelled':
                     continue
                 internal_quantity = Decimal(str(s_move.internal_quantity))
-                with Transaction().set_context(date=s_move.effective_date):
-                    unit_price = Currency.compute(
-                        s_move.currency, s_move.unit_price,
-                        s_move.company.currency, round=False)
-                unit_price = UoM.compute_price(
-                    s_move.uom, unit_price, s_move.product.default_uom)
                 product_cost[s_move.product] += (
-                    unit_price * internal_quantity)
+                    s_move.get_cost_price() * internal_quantity)
 
                 quantity = UoM.compute_qty(
                     s_move.uom, s_move.quantity, s_move.product.default_uom,
