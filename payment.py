@@ -22,7 +22,8 @@ from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional
 from trytond.transaction import Transaction
 from trytond.url import http_host
-from trytond.wizard import Wizard, StateAction
+from trytond.wizard import (
+    Wizard, StateAction, StateView, StateTransition, Button)
 
 from trytond.modules.account_payment.exceptions import (
     ProcessError, PaymentValidationError)
@@ -1449,6 +1450,10 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                     'invisible': ~Eval('stripe_checkout_needed', False),
                     'depends': ['stripe_checkout_needed'],
                     },
+                'detach_source': {
+                    'invisible': ~Eval('stripe_customer_id'),
+                    'depends': ['stripe_customer_id'],
+                    },
                 })
 
     def get_stripe_checkout_needed(self, name):
@@ -1628,6 +1633,30 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 name = '****' + source.sepa_debit.last4
         return name
 
+    @classmethod
+    @ModelView.button_action(
+        'account_payment_stripe.wizard_customer_source_detach')
+    def detach_source(cls, customers):
+        pass
+
+    def delete_source(self, source):
+        try:
+            if source in dict(self.payment_methods()):
+                stripe.PaymentMethod.detach(
+                    source,
+                    api_key=self.stripe_account.secret_key)
+            else:
+                stripe.Customer.delete_source(
+                    self.stripe_customer_id,
+                    source,
+                    api_key=self.stripe_account.secret_key)
+        except (stripe.error.RateLimitError,
+                stripe.error.APIConnectionError) as e:
+            logger.warning(str(e))
+            raise
+        self._sources_cache.clear()
+        self._payment_methods_cache.clear()
+
     def payment_methods(self):
         methods = self._payment_methods_cache.get(self.id)
         if methods is not None:
@@ -1742,3 +1771,44 @@ class Checkout(Wizard):
 class CheckoutPage(Report):
     "Stripe Checkout"
     __name__ = 'account.payment.stripe.checkout'
+
+
+class CustomerSourceDetach(Wizard):
+    "Detach Customer Source"
+    __name__ = 'account.payment.stripe.customer.source.detach'
+    start_state = 'ask'
+    ask = StateView(
+        'account.payment.stripe.customer.source.detach.ask',
+        'account_payment_stripe.customer_source_detach_ask_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Detach", 'detach', 'tryton-ok', default=True),
+            ])
+    detach = StateTransition()
+
+    def default_ask(self, fields):
+        default = {}
+        if 'customer' in fields:
+            default['customer'] = self.record.id
+        return default
+
+    def transition_detach(self):
+        self.record.delete_source(self.ask.source)
+        return 'end'
+
+
+class CustomerSourceDetachAsk(ModelView):
+    "Detach Customer Source"
+    __name__ = 'account.payment.stripe.customer.source.detach.ask'
+
+    customer = fields.Many2One(
+        'account.payment.stripe.customer', "Customer", readonly=True)
+    source = fields.Selection('get_sources', "Source", required=True)
+
+    @fields.depends('customer')
+    def get_sources(self):
+        sources = [('', '')]
+        if self.customer:
+            sources.extend(
+                dict(set(self.customer.sources())
+                    | set(self.customer.payment_methods())).items())
+        return sources

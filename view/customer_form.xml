@@ -11,7 +11,10 @@ this repository contains the full copyright notices and license terms. -->
     <newline/>
     <label name="stripe_customer_id"/>
     <field name="stripe_customer_id"/>
-    <button name="stripe_checkout" colspan="2"/>
+    <group id="buttons" col="-1" colspan="4">
+        <button name="stripe_checkout"/>
+        <button name="detach_source"/>
+    </group>
     <label name="stripe_error_message"/>
     <field name="stripe_error_message"/>
     <newline/>

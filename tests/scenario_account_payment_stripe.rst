@@ -219,6 +219,19 @@ Make payment with customer::
     >>> payment.state
     'succeeded'
 
+Detach source::
+
+    >>> detach = Wizard(
+    ...     'account.payment.stripe.customer.source.detach', [stripe_customer])
+    >>> detach.form.source = source_id
+    >>> detach.execute('detach')
+
+    >>> cus = stripe.Customer.retrieve(stripe_customer.stripe_customer_id)
+    >>> len(cus.sources)
+    0
+    >>> len(stripe.PaymentMethod.list(customer=cus.id, type='card'))
+    0
+
 Delete customer::
 
     >>> stripe_customer.delete()

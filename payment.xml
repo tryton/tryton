@@ -302,6 +302,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model"
                 search="[('model', '=', 'account.payment.stripe.customer')]"/>
         </record>
+        <record model="ir.model.button" id="customer_source_detach_button">
+            <field name="name">detach_source</field>
+            <field name="string">Detach Source</field>
+            <field name="model" search="[('model', '=', 'account.payment.stripe.customer')]"/>
+        </record>
 
         <record model="ir.action.wizard" id="wizard_checkout">
             <field name="name">Stripe Checkout</field>
@@ -323,6 +328,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="report_name">account.payment.stripe.email_checkout</field>
             <field name="report">account_payment_stripe/email_checkout.html</field>
             <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_customer_source_detach">
+            <field name="name">Detach Source</field>
+            <field name="wiz_name">account.payment.stripe.customer.source.detach</field>
+            <field name="model">account.payment.stripe.customer</field>
+        </record>
+
+        <record model="ir.ui.view" id="customer_source_detach_ask_view_form">
+            <field name="model">account.payment.stripe.customer.source.detach.ask</field>
+            <field name="type">form</field>
+            <field name="name">customer_source_detach_ask_form</field>
         </record>
 
         <record model="ir.cron" id="cron_charge">
