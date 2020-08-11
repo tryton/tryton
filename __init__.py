@@ -7,8 +7,8 @@ from . import ir
 
 def register():
     Pool.register(
+        ir.Trigger,
         notification.Email,
         notification.EmailAttachment,
         notification.EmailLog,
-        ir.Trigger,
         module='notification_email', type_='model')
