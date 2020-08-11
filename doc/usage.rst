@@ -427,6 +427,8 @@ increases if lower case or decreases if upper case:
     - `i`: by one minute
     - `s`: by one second
 
+The `=` key sets the widget value to the current date and time.
+
 Search Widget
 ^^^^^^^^^^^^^
 
