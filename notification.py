@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
 from email.utils import formataddr, getaddresses
 
+from sql.operators import Concat
 from genshi.template import TextTemplate
 
 from trytond.config import config
@@ -19,6 +20,8 @@ from trytond.report import get_email
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.transaction import Transaction
 from .exceptions import TemplateError
+
+from trytond.ir.resource import ResourceAccessMixin
 
 _EMAIL_MODELS = [
     'res.user',
@@ -277,6 +280,8 @@ class Email(ModelSQL, ModelView):
             'recipients': msg['To'],
             'recipients_secondary': msg['Cc'],
             'recipients_hidden': bcc,
+            'resource': str(record),
+            'notification': trigger.notification_email.id,
             'trigger': trigger.id,
             }
 
@@ -409,15 +414,17 @@ class EmailAttachment(ModelSQL):
         return msg
 
 
-class EmailLog(ModelSQL, ModelView):
+class EmailLog(ResourceAccessMixin, ModelSQL, ModelView):
     "Notification Email Log"
     __name__ = 'notification.email.log'
     date = fields.Function(fields.DateTime('Date'), 'get_date')
     recipients = fields.Char("Recipients")
     recipients_secondary = fields.Char("Secondary Recipients")
     recipients_hidden = fields.Char("Hidden Recipients")
-    trigger = fields.Many2One(
-        'ir.trigger', 'Trigger', required=True, ondelete='CASCADE')
+    notification = fields.Many2One(
+        'notification.email', "Notification",
+        required=True, ondelete='RESTRICT')
+    trigger = fields.Many2One('ir.trigger', "Trigger")
 
     @classmethod
     def __setup__(cls):
@@ -426,6 +433,35 @@ class EmailLog(ModelSQL, ModelView):
             ('create_date', 'DESC'),
             ('id', 'DESC'),
             ]
+
+    @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        Trigger = pool.get('ir.trigger')
+        model = Model.__table__()
+        trigger = Trigger.__table__()
+        table = cls.__table__()
+        super().__register__(module_name)
+
+        table_h = cls.__table_handler__(module_name)
+        cursor = Transaction().connection.cursor()
+
+        # Migration from 5.6:
+        # fill notification and resource
+        # remove required on trigger
+        notification = trigger.select(
+            trigger.notification_email,
+            where=trigger.id == table.trigger)
+        resource = (trigger
+            .join(model, condition=trigger.model == model.id)
+            .select(
+                Concat(model.model, ',-1'),
+                where=trigger.id == table.trigger))
+        cursor.execute(*table.update(
+                [table.notification, table.resource],
+                [notification, resource]))
+        table_h.not_null_action('trigger', 'remove')
 
     def get_date(self, name):
         return self.create_date.replace(microsecond=0)
