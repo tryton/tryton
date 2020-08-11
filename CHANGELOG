@@ -1,3 +1,4 @@
+* Add cron task to clean old queue tasks
 * Add option to run cron once
 * Add defaults option to route
 * Add escape_wildcard in tools

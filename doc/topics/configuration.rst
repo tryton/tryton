@@ -211,6 +211,13 @@ the end of the requests.
 
 Default: `False`
 
+clean_days
+~~~~~~~~~~
+
+The number of days after which processed tasks are removed.
+
+Default: `30`
+
 table
 -----
 

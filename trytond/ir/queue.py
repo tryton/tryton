@@ -13,6 +13,7 @@ from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
 has_worker = config.getboolean('queue', 'worker', default=False)
+clean_days = config.getint('queue', 'clean_days', default=30)
 
 
 class Queue(ModelSQL):
@@ -176,6 +177,17 @@ class Queue(ModelSQL):
             self.dequeued_at = datetime.datetime.now()
         self.finished_at = datetime.datetime.now()
         self.save()
+
+    @classmethod
+    def clean(cls, date=None):
+        if date is None:
+            date = (
+                datetime.datetime.now() - datetime.timedelta(days=clean_days))
+        tasks = cls.search(['OR',
+                ('dequeued_at', '<', date),
+                ('finished_at', '<', date),
+                ])
+        cls.delete(tasks)
 
     @classmethod
     def caller(cls, model):

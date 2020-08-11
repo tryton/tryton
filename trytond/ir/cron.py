@@ -55,6 +55,7 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
     next_call = fields.DateTime("Next Call", select=True)
     method = fields.Selection([
             ('ir.trigger|trigger_time', "Run On Time Triggers"),
+            ('ir.queue|clean', "Clean Task Queue"),
             ], "Method", required=True)
 
     @classmethod
