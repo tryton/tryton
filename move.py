@@ -848,6 +848,7 @@ class Move(Workflow, ModelSQL, ModelView):
         Date = pool.get('ir.date')
         Location = pool.get('stock.location')
 
+        moves = [m for m in moves if m.state in {'draft', 'staging'}]
         if not moves:
             return True
 
