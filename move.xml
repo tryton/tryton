@@ -136,5 +136,40 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'stock.move')]"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_product_moves">
+            <field name="name">Stock Moves</field>
+            <field name="res_model">stock.move</field>
+            <field
+                name="domain"
+                eval="[If(Eval('active_ids', []) == [Eval('active_id')], (If(Eval('active_model') == 'product.template', 'product.template', 'product'), '=', Eval('active_id', -1)), (If(Eval('active_model') == 'product.template', 'product.template', 'product'), 'in', Eval('active_ids', [])))]"
+                pyson="1"/>
+            <field name="order" eval="[('effective_date', 'DESC NULLS FIRST')]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_moves_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="move_view_tree"/>
+            <field name="act_window" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_product_moves_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="move_view_form"/>
+            <field name="act_window" ref="act_product_moves"/>
+        </record>
+
+        <record model="ir.action.keyword" id="act_product_moves_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.product,-1</field>
+            <field name="action" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action.keyword" id="act_product_moves_keyword2">
+            <field name="keyword">form_relate</field>
+            <field name="model">product.template,-1</field>
+            <field name="action" ref="act_product_moves"/>
+        </record>
+        <record model="ir.action-res.group" id="act_product_moves-group_stock">
+            <field name="action" ref="act_product_moves"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
     </data>
 </tryton>
