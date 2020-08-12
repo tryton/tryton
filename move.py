@@ -157,7 +157,8 @@ class Move(Workflow, ModelSQL, ModelView):
         select=True, states=STATES,
         domain=[
             ('type', '!=', 'service'),
-            If(Bool(Eval('product_uom_category')),
+            If(Bool(Eval('product_uom_category'))
+                & ~Eval('state').in_(['done', 'cancelled']),
                 ('default_uom_category', '=', Eval('product_uom_category')),
                 ())
             ],
@@ -172,7 +173,9 @@ class Move(Workflow, ModelSQL, ModelView):
                 | Eval('unit_price')),
             },
         domain=[
-            ('category', '=', Eval('product_uom_category')),
+            If(~Eval('state').in_(['done', 'cancelled']),
+                ('category', '=', Eval('product_uom_category')),
+                ()),
             ],
         depends=['state', 'unit_price', 'product_uom_category'],
         help="The unit in which the quantity is specified.")
