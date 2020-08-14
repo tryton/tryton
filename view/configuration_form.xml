@@ -4,6 +4,9 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="default_cost_price_method"/>
     <field name="default_cost_price_method"/>
+    <separator id="sequences" string="Sequences" colspan="4"/>
+    <label name="template_sequence"/>
+    <field name="template_sequence"/>
     <label name="product_sequence"/>
     <field name="product_sequence"/>
 </form>

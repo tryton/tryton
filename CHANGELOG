@@ -1,3 +1,4 @@
+* Allow the product template code to be set from a sequence
 * Set code column first in template tree view
 * Add default order on product and template
 * Check price_decimal configuration

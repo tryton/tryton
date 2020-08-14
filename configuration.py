@@ -26,11 +26,16 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
 
     default_cost_price_method = fields.MultiValue(default_cost_price_method)
     get_cost_price_methods = get_cost_price_methods
-    product_sequence = fields.Many2One('ir.sequence', 'Product Sequence',
+    product_sequence = fields.Many2One('ir.sequence', "Variant Sequence",
         domain=[
             ('code', '=', 'product.product'),
             ],
-        help="Used to generate the product code.")
+        help="Used to generate the last part of the product code.")
+    template_sequence = fields.Many2One('ir.sequence', "Product Sequence",
+        domain=[
+            ('code', '=', 'product.template'),
+            ],
+        help="Used to generate the first part of the product code.")
 
     @classmethod
     def default_default_cost_price_method(cls, **pattern):

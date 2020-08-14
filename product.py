@@ -55,7 +55,14 @@ class Template(
     _order_name = 'rec_name'
     name = fields.Char(
         "Name", size=None, required=True, translate=True, select=True)
-    code = fields.Char("Code", select=True)
+    code_readonly = fields.Function(
+        fields.Boolean("Code Readonly"), 'get_code_readonly')
+    code = fields.Char(
+        "Code", select=True,
+        states={
+            'readonly': Eval('code_readonly', False),
+            },
+        depends=['code_readonly'])
     type = fields.Selection(TYPES, "Type", required=True)
     consumable = fields.Boolean('Consumable',
         states={
@@ -181,6 +188,16 @@ class Template(
             return []
         return [{}]
 
+    @classmethod
+    def default_code_readonly(cls):
+        pool = Pool()
+        Configuration = pool.get('product.configuration')
+        config = Configuration(1)
+        return bool(config.template_sequence)
+
+    def get_code_readonly(self, name):
+        return self.default_code_readonly()
+
     @fields.depends('type', 'cost_price_method')
     def on_change_type(self):
         if self.type == 'service':
@@ -197,12 +214,24 @@ class Template(
             + tuple(clause[1:])]
 
     @classmethod
+    def _new_code(cls):
+        pool = Pool()
+        Sequence = pool.get('ir.sequence')
+        Configuration = pool.get('product.configuration')
+        config = Configuration(1)
+        sequence = config.template_sequence
+        if sequence:
+            return Sequence.get_id(sequence.id)
+
+    @classmethod
     def create(cls, vlist):
         pool = Pool()
         Product = pool.get('product.product')
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             values.setdefault('products', None)
+            if not values.get('code'):
+                values['code'] = cls._new_code()
         templates = super(Template, cls).create(vlist)
         products = sum((t.products for t in templates), ())
         Product.sync_code(products)

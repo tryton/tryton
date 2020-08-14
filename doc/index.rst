@@ -39,10 +39,11 @@ Product Template and Product
 The product concept in Tryton is composed of two models: Product
 Template and Product.
 
-The Product Template model contains the following fields: 
+The Product Template model contains the following fields:
 
 - Name.
-- Code, a common prefix for all products.
+- Code, a common prefix for all products. If a sequence is set on product
+  configuration the code will be read-only and filled using the sequence.
 - Type, whose value can be *Goods*, *Assets*, *Service*.
 - Category.
 - List Price, the default sale price expressed in the List Price UOM.

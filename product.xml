@@ -221,7 +221,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_product">
-            <field name="name">Product</field>
+            <field name="name">Variant</field>
             <field name="code">product.product</field>
         </record>
         <record model="ir.sequence.type-res.group"
@@ -232,6 +232,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type-res.group"
             id="sequence_type_product_group_product_admin">
             <field name="sequence_type" ref="sequence_type_product"/>
+            <field name="group" ref="group_product_admin"/>
+        </record>
+        <record model="ir.sequence.type" id="sequence_type_template">
+            <field name="name">Product</field>
+            <field name="code">product.template</field>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_template_group_admin">
+            <field name="sequence_type" ref="sequence_type_template"/>
+            <field name="group" ref="res.group_admin"/>
+        </record>
+        <record model="ir.sequence.type-res.group"
+            id="sequence_type_template_group_template_admin">
+            <field name="sequence_type" ref="sequence_type_template"/>
             <field name="group" ref="group_product_admin"/>
         </record>
 
