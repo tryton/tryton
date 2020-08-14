@@ -20,10 +20,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="warehouse"/>
     <notebook colspan="4">
         <page name="inventory_moves">
-            <field name="inventory_moves" colspan="4"/>
+            <field name="inventory_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page string="Outgoing Moves" id="outgoing_moves">
-            <field name="outgoing_moves" colspan="4"/>
+            <field name="outgoing_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page string="Other Info" id="other">
             <label name="assigned_by"/>

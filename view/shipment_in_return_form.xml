@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="effective_date"/>
     <notebook colspan="4">
         <page name="moves">
-            <field name="moves"  colspan="4"/>
+            <field name="moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page string="Other Info" id="other">
             <label name="assigned_by"/>

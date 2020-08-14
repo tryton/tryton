@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
                 view_ids="stock.move_view_list_shipment_in"/>
         </page>
         <page name="inventory_moves">
-            <field name="inventory_moves" colspan="4"/>
+            <field name="inventory_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page string="Other Info" id="other">
             <label name="received_by"/>

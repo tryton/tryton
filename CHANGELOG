@@ -1,3 +1,4 @@
+* Use simplified view for moves list on shipments
 * Add a relate from product to its moves
 * Factorize the cost price of move for cost computation
 * Fill grouping values when assigning move
