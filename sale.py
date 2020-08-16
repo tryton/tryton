@@ -1090,19 +1090,21 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('sale_state') != 'draft',
             },
         context={
+            'company': Eval('company', None),
+            },
+        search_context={
             'locations': If(Bool(Eval('_parent_sale', {}).get('warehouse')),
                 [Eval('_parent_sale', {}).get('warehouse', 0)], []),
             'stock_date_end': Eval('_parent_sale', {}).get('sale_date'),
             'stock_skip_warehouse': True,
-            # From _get_context_sale_price
-            'company': Eval('company', None),
             'currency': Eval('_parent_sale', {}).get('currency'),
             'customer': Eval('_parent_sale', {}).get('party'),
             'sale_date': Eval('_parent_sale', {}).get('sale_date'),
             'uom': Eval('unit'),
             'taxes': Eval('taxes', []),
             'quantity': Eval('quantity'),
-            }, depends=['type', 'sale_state', 'company'])
+            },
+        depends=['type', 'sale_state', 'company'])
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),
         'on_change_with_product_uom_category')
