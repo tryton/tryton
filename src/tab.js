@@ -993,10 +993,10 @@
                 ['copy', access.create],
                 ['import', access.create],
                 ].forEach(function(e) {
-                    var button = e[0];
+                    var name = e[0];
                     var access = e[1];
-                    if (this.buttons[button]) {
-                        this.buttons[button].toggleClass('disabled', !access);
+                    if (this.buttons[name]) {
+                        this.buttons[name].toggleClass('disabled', !access);
                     }
                     if (this.menu_buttons[name]) {
                         this.menu_buttons[name]
@@ -1324,6 +1324,9 @@
             }.bind(this));
         },
         import: function(){
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name).create) {
+                return;
+            }
             new Sao.Window.Import(this.title.text(), this.screen);
         },
         get_url: function() {
