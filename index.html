@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
-<html style="overflow: auto;" lang="en">
+<html style="overflow: auto;" lang="en" theme="default">
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -23,9 +23,6 @@ this repository contains the full copyright notices and license terms. -->
         <script type="text/javascript" src="bower_components/mousetrap/mousetrap.min.js"></script>
         <script type="text/javascript" src="bower_components/Sortable/Sortable.js"></script>
 
-        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="bower_components/bootstrap-rtl-ondemand/dist/css/bootstrap-rtl-ondemand.min.css">
-        <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css">
         <link rel="stylesheet" href="bower_components/c3/c3.min.css">
         <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
 
@@ -42,7 +39,7 @@ this repository contains the full copyright notices and license terms. -->
         <link rel="stylesheet" type="text/css" href="custom.css" media="screen"/>
         </head>
         <body>
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0px;">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0px;">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed"
@@ -50,7 +47,12 @@ this repository contains the full copyright notices and license terms. -->
                         <span class="caret"></span>
                     </button>
                     <a class="navbar-brand" href="javascript:void(0)" data-toggle="offcanvas">
-                        <img class="icon" style="display:inline;" src="images/tryton-menu.svg"></img>
+                        <span class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                            </svg>
+                        </span>
                         <span id="title">Tryton</span>
                     </a>
                 </div>
@@ -59,9 +61,20 @@ this repository contains the full copyright notices and license terms. -->
                     </form>
                     <ul class="nav navbar-nav navbar-right flip">
                         <li id="user-preferences"></li>
-                        <li id="user-logout"></li>
+                        <li id="user-logout">
+                            <a href="#">
+                                <span class="icon hidden-xs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"/>
+                                    </svg>
+                                </span>
+                                <span class="visible-xs">
+                                </span>
+                            </a>
+                        </li>
                     </ul>
-                    <ul id="tablist" class="nav navbar-nav nav-tabs nav-tabs-justified" role="tablist">
+                    <ul id="tablist" class="nav navbar-nav nav-pills" role="tablist">
                     </ul>
                 </div>
             </div>

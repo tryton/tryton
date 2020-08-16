@@ -1,5 +1,76 @@
-@import "variables";
-@import "mixins";
+/* This file is part of Tryton.  The COPYRIGHT file at the top level of
+   this repository contains the full copyright notices and license terms. */
+@import "bootstrap";
+@import "bootstrap-rtl";
+@import "bootstrap-datetimepicker-build";
+@import "sao-variables";
+html[theme="default"] {
+    @import "theme";
+}
+
+// Fix double rtl prefix
+.float-rtl-grid-columns(@class, @rtl-prefix) {
+  .col(@index) { // initial
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) { // general
+    @item: ~".col-@{class}-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
+    @{list} {
+      float: right;
+    }
+  }
+  .col(1); // kickstart it
+}
+
+
+.navbar-inverse {
+    .close {
+        color: @navbar-inverse-link-color;
+
+        &:hover,
+        &:focus {
+            color: @navbar-inverse-link-hover-color;
+            background-color: @navbar-inverse-link-hover-bg;
+        }
+    }
+    .active .close {
+        &,
+        &:hover,
+        &:focus {
+            color: @navbar-inverse-link-active-color;
+            background-color: @navbar-inverse-link-active-bg;
+        }
+    }
+}
+
+.navbar {
+    .icon {
+        display: inline-block;
+        height: unit(@line-height-base, em);
+        vertical-align: middle;
+    }
+}
+
+.btn-primary {
+    .icon {
+        filter: brightness(0) invert(1);
+    }
+}
+
+.panel-heading {
+    a {
+        color: inherit;
+    }
+}
+
+.modal-header {
+    background-color: @brand-primary;
+    color: #fff;
+}
 
 #tablist > li > a {
     > span {
@@ -73,8 +144,8 @@
     white-space: nowrap;
 }
 
-.list-group-item-variant(selected; @state-info-bg; @state-info-text);
-.table-row-variant(selected; @state-info-bg);
+.list-group-item-variant(selected; @state-selected-bg; @state-selected-text);
+.table-row-variant(selected; @state-selected-bg);
 /* Duplicate bootstrap variant to have precedence over selected */
 .table-row-variant(success; @state-success-bg);
 .table-row-variant(warning; @state-warning-bg);
@@ -400,7 +471,7 @@ img.icon {
         display: inline-table;
     }
     table.form-container > tbody > tr > td {
-        padding: 1px;
+        padding: 2px;
     }
     table.form-hcontainer > tbody > tr > td {
         padding-top: 0px;
@@ -523,6 +594,7 @@ img.icon {
     label {
         font-weight: normal;
         display: inline;
+        padding: 0 5px;
         &.required {
             font-weight: bold;
         }
@@ -534,7 +606,7 @@ img.icon {
         margin-bottom: 15px;
     }
     .panel-heading {
-        padding: 1px 1px;
+        padding: 2px 2px;
     }
     fieldset.form-group_ {
         overflow: auto;
@@ -571,12 +643,6 @@ img.icon {
 }
 input.column-boolean {
     .center-block();
-}
-
-.form-boolean, .dict-boolean, .editabletree-boolean {
-    input[type=checkbox] {
-        width: initial;
-    }
 }
 
 .dict-label {
@@ -756,6 +822,8 @@ input.column-boolean {
     transform: translateX(-50%);
     z-index: 1000;
     min-width: 50%;
+    text-align: center;
+    font-size: @font-size-large;
 }
 
 img.global-search-icon {
@@ -767,3 +835,7 @@ img.favorite-icon {
     width: 1em;
     height: 1em;
 }
+
+@import "input-icon";
+@import "offcanvas";
+@import (optional) "custom.less";

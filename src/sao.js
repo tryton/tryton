@@ -281,9 +281,9 @@ var Sao = {};
     Sao.config.display_size = 20;
     Sao.config.bug_url = 'https://bugs.tryton.org/';
     Sao.config.title = 'Tryton';
-    Sao.config.icon_colors = '#3465a4,#555753,#cc0000'.split(',');
-    Sao.config.calendar_colors = '#fff,#3465a4'.split(',');
-    Sao.config.graph_color = '#3465a4';
+    Sao.config.icon_colors = '#267f82,#3e4950,#e78e42'.split(',');
+    Sao.config.calendar_colors = '#fff,#267f82'.split(',');
+    Sao.config.graph_color = '#267f82';
     Sao.config.bus_timeout = 10 * 60 * 1000;
 
     Sao.i18n = i18n();
@@ -350,10 +350,6 @@ var Sao = {};
                         Sao.Action.execute(action_id, {}, null, {});
                     });
                     Sao.set_title();
-                    Sao.common.ICONFACTORY.get_icon_url('tryton-menu')
-                        .then(function(url) {
-                            jQuery('.navbar-brand > img').attr('src', url);
-                        });
                     var new_lang = preferences.language != Sao.i18n.getLocale();
                     var prm = jQuery.Deferred();
                     Sao.i18n.setlang(preferences.language).always(function() {
@@ -572,7 +568,6 @@ var Sao = {};
         var session = Sao.Session.current_session;
         Sao.Tab.tabs.close(true).done(function() {
             jQuery('#user-preferences').empty();
-            jQuery('#user-logout').empty();
             jQuery('#user-favorites').empty();
             jQuery('#global-search').empty();
             jQuery('#menu').empty();
@@ -585,7 +580,6 @@ var Sao = {};
         Sao.Tab.tabs.close(true).done(function() {
             jQuery('#user-preferences').empty();
             jQuery('#user-favorites').empty();
-            jQuery('#user-logout').empty();
             jQuery('#menu').empty();
             new Sao.Window.Preferences(function() {
                 Sao.Session.current_session.reset_context();
@@ -665,7 +659,6 @@ var Sao = {};
     Sao.user_menu = function(preferences) {
         jQuery('#user-preferences').empty();
         jQuery('#user-favorites').empty();
-        jQuery('#user-logout').empty();
         jQuery('#user-preferences').append(jQuery('<a/>', {
             'href': '#',
             'title': preferences.status_bar,
@@ -674,17 +667,12 @@ var Sao = {};
             Sao.preferences();
         }).text(preferences.status_bar));
         var title = Sao.i18n.gettext("Logout");
-        jQuery('#user-logout').append(jQuery('<a/>', {
-            'href': '#',
-            'title': title,
-            'aria-label': title,
-        }).click(Sao.logout).append(
-            Sao.common.ICONFACTORY.get_icon_img('tryton-exit', {
-            'class': 'icon hidden-xs',
-            'aria-hidden': true,
-        })).append(jQuery('<span/>', {
-            'class': 'visible-xs',
-        }).text(title)));
+        jQuery('#user-logout > a')
+            .attr('title', title)
+            .attr('aria-label', title)
+            .off()
+            .click(Sao.logout)
+            .find('span:not(.icon)').text(title);
     };
 
     Sao.main_menu_row_activate = function() {

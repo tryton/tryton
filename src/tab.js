@@ -164,7 +164,7 @@
                 'class': 'toolbar panel-heading',
                 'role': 'toolbar'
             }).append(jQuery('<div/>', {
-                'class': 'container-fluid'
+                'class': 'container-fluid navbar-inverse'
             }).append(jQuery('<div/>', {
                 'class': 'dropdown navbar-header navbar-left flip'
             }).append(jQuery('<a/>', {
@@ -1204,6 +1204,7 @@
                     color = '';
                 }
                 badge.css('background-color', color);
+                badge.css('color', '#fff');
                 badge.text(text);
                 button.attr('title', title);
                 button.prop('disabled', disabled);

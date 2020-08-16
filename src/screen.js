@@ -29,7 +29,7 @@
             this.el.append(this.filter_box);
             this.filter_button = jQuery('<button/>', {
                 type: 'button',
-                'class': 'btn btn-default'
+                'class': 'btn btn-link'
             }).text(Sao.i18n.gettext('Filters'));
             this.filter_button.click(this.search_box.bind(this));
             this.search_entry = jQuery('<input/>', {

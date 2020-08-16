@@ -695,7 +695,7 @@
                             'selection': 9,
                             'one2many': 5,
                             'many2many': 5,
-                            'boolean': 2,
+                            'boolean': 3,
                             'binary': 20,
                         }[column.attributes.widget] || 10;
                         var factor = 1;

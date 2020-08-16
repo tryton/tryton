@@ -100,19 +100,32 @@ module.exports = function(grunt) {
     less: {
         dev: {
             options: {
-                paths: ['src', 'bower_components/bootstrap/less']
+                paths: [
+                    'src',
+                    'bower_components',
+                    'bower_components/bootstrap',
+                    'bower_components/bootstrap/less',
+                    'bower_components/bootstrap-rtl-ondemand/less',
+                    'bower_components/eonasdan-bootstrap-datetimepicker/src/less',
+                ]
             },
             files: {
-                'dist/<%= pkg.name %>.css': 'src/*.less'
+                'dist/<%= pkg.name %>.css': 'src/sao.less'
             }
         },
         'default': {
             options: {
-                paths: ['src', 'bower_components/bootstrap/less'],
+                paths: [
+                    'src',
+                    'bower_components',
+                    'bower_components/bootstrap/less',
+                    'bower_components/bootstrap-rtl-ondemand/less',
+                    'bower_components/eonasdan-bootstrap-datetimepicker/src/less',
+                ],
                 yuicompress: true
             },
             files: {
-                'dist/<%= pkg.name %>.min.css': 'src/*.less'
+                'dist/<%= pkg.name %>.min.css': 'src/sao.less'
             }
         }
     },
