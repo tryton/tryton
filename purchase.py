@@ -1038,6 +1038,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'required': Bool(Eval('product_supplier')),
             },
         context={
+            'company': Eval('company', None),
+            },
+        search_context={
             'locations': If(Bool(Eval('_parent_purchase', {}).get(
                         'warehouse')),
                 [Eval('_parent_purchase', {}).get('warehouse', None)],
@@ -1045,8 +1048,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'stock_date_end': Eval('_parent_purchase', {}).get(
                 'purchase_date'),
             'stock_skip_warehouse': True,
-            # From _get_context_purchase_price
-            'company': Eval('company', None),
             'currency': Eval('_parent_purchase', {}).get('currency'),
             'supplier': Eval('_parent_purchase', {}).get('party'),
             'purchase_date': Eval('_parent_purchase', {}).get('purchase_date'),
