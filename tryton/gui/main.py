@@ -155,7 +155,7 @@ class Main(Gtk.Application):
                 'tryton-bookmarks', Gtk.IconSize.BUTTON))
         self.menu_favorite = Gtk.Menu.new()
         favorite.set_popup(self.menu_favorite)
-        favorite.connect('clicked', self.favorite_set)
+        favorite.connect('button-press-event', self.favorite_set)
         self.header.pack_start(favorite)
 
         self.set_global_search()
@@ -433,7 +433,7 @@ class Main(Gtk.Application):
 
     def favorite_set(self, *args):
         if self.menu_favorite.get_children():
-            return True
+            return
 
         def _action_favorite(widget, id_):
             event = Gtk.get_current_event()
@@ -466,7 +466,6 @@ class Main(Gtk.Application):
         manage_favorites.connect('activate', _manage_favorites)
         self.menu_favorite.add(manage_favorites)
         self.menu_favorite.show_all()
-        return True
 
     def favorite_unset(self):
         for child in self.menu_favorite.get_children():
