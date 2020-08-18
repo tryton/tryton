@@ -262,7 +262,7 @@ class Wizard(URLMixin, PoolBase):
             if model:
                 ids = context.get('active_ids') or []
                 id_ = context.get('active_id')
-                if id_ not in ids:
+                if id_ not in ids and id_ is not None:
                     ids.append(id_)
                 # Check read access
                 Model.read(ids, ['id'])
