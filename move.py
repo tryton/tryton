@@ -126,3 +126,12 @@ class Move(metaclass=PoolMeta):
         if fifo_moves:
             cls.raise_user_error('del_move_fifo', (fifo_moves[0].rec_name,))
         super(Move, cls).delete(moves)
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('fifo_quantity', cls.default_fifo_quantity())
+        return super().copy(moves, default=default)
