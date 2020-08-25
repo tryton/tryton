@@ -155,3 +155,12 @@ class Move(metaclass=PoolMeta):
                 gettext('product_cost_fifo.msg_move_delete_fifo',
                     move=fifo_moves[0].rec_name))
         super(Move, cls).delete(moves)
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('fifo_quantity', cls.default_fifo_quantity())
+        return super().copy(moves, default=default)
