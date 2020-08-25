@@ -2360,9 +2360,23 @@ class CreateChart(Wizard):
         return 'properties'
 
     def default_properties(self, fields):
-        return {
+        defaults = {
             'company': self.account.company.id,
             }
+
+        receivable_accounts = Account.search([
+                ('type.receivable', '=', True),
+                ], limit=2)
+        payable_accounts = Account.search([
+                ('type.payable', '=', True),
+                ], limit=2)
+
+        if len(receivable_accounts) == 1:
+            defaults['account_receivable'] = receivable_accounts[0].id
+        if len(payable_accounts) == 1:
+            defaults['account_payable'] = payable_accounts[0].id
+
+        return defaults
 
     def transition_create_properties(self):
         pool = Pool()
@@ -2403,6 +2417,15 @@ class UpdateChart(Wizard):
         'account.update_chart_succeed_view_form', [
             Button('OK', 'end', 'tryton-ok', default=True),
             ])
+
+    def default_start(self, fields):
+        defaults = {}
+        charts = Account.search([
+                ('parent', '=', None),
+                ], limit=2)
+        if len(charts) == 1:
+            defaults['account'] = charts[0].id
+        return defaults
 
     @inactive_records
     def transition_update(self):
