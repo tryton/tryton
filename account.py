@@ -45,6 +45,23 @@ class CreateChart(metaclass=PoolMeta):
             config.save()
         return state
 
+    def default_properties(self, fields):
+        pool = Pool()
+        Account = pool.get('account.account')
+
+        defaults = super(CreateChart, self).default_properties(fields)
+        expense_accounts = Account.search([
+                ('type.expense', '=', True),
+                ], limit=2)
+        revenue_accounts = Account.search([
+                ('type.revenue', '=', True),
+                ], limit=2)
+        if len(expense_accounts) == 1:
+            defaults['category_account_expense'] = expense_accounts[0].id
+        if len(revenue_accounts) == 1:
+            defaults['category_account_revenue'] = revenue_accounts[0].id
+        return defaults
+
 
 class MoveLine(metaclass=PoolMeta):
     __name__ = 'account.move.line'
