@@ -325,7 +325,9 @@ class Payment(Workflow, ModelSQL, ModelView):
                 ('processing', 'failed'),
                 ('approved', 'draft'),
                 ('succeeded', 'failed'),
+                ('succeeded', 'processing'),
                 ('failed', 'succeeded'),
+                ('failed', 'processing'),
                 ))
         cls._buttons.update({
                 'draft': {
@@ -456,7 +458,6 @@ class Payment(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
-    @Workflow.transition('processing')
     def process(cls, payments, group):
         pool = Pool()
         Group = pool.get('account.payment.group')
@@ -465,12 +466,20 @@ class Payment(Workflow, ModelSQL, ModelView):
             cls.write(payments, {
                     'group': group.id,
                     })
+            # Set state before calling process method
+            # as it may set a different state directly
+            cls.proceed(payments)
             process_method = getattr(Group,
                 'process_%s' % group.journal.process_method, None)
             if process_method:
                 process_method(group)
                 group.save()
             return group
+
+    @classmethod
+    @Workflow.transition('processing')
+    def proceed(cls, payments):
+        assert all(p.group for p in payments)
 
     @classmethod
     @ModelView.button
