@@ -231,7 +231,7 @@ class Database(DatabaseInterface):
         # psycopg2cffi does not have the readonly property
         if hasattr(conn, 'readonly'):
             conn.readonly = readonly
-        elif not autocommit:
+        elif not autocommit and readonly:
             cursor = conn.cursor()
             cursor.execute('SET TRANSACTION READ ONLY')
         return conn
