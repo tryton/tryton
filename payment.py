@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from functools import wraps
 
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
@@ -52,6 +53,50 @@ class Journal(metaclass=PoolMeta):
                         ('company', '=', Transaction().context.get('company')),
                         ]))
         Move.post(moves)
+
+
+def cancel_clearing_move(func):
+    @wraps(func)
+    def wrapper(cls, payments, *args, **kwargs):
+        pool = Pool()
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        Reconciliation = pool.get('account.move.reconciliation')
+
+        func(cls, payments, *args, **kwargs)
+
+        to_delete = []
+        to_reconcile = defaultdict(lambda: defaultdict(list))
+        to_unreconcile = []
+        for payment in payments:
+            if payment.clearing_move:
+                if payment.clearing_move.state == 'draft':
+                    to_delete.append(payment.clearing_move)
+                    for line in payment.clearing_move.lines:
+                        if line.reconciliation:
+                            to_unreconcile.append(line.reconciliation)
+                else:
+                    cancel_move = payment.clearing_move.cancel()
+                    for line in (payment.clearing_move.lines
+                            + cancel_move.lines):
+                        if line.reconciliation:
+                            to_unreconcile.append(line.reconciliation)
+                        if line.account.reconcile:
+                            to_reconcile[payment.party][line.account].append(
+                                line)
+
+        # Remove clearing_move before delete
+        # in case reconciliation triggers use it.
+        cls.write(payments, {'clearing_move': None})
+
+        if to_unreconcile:
+            Reconciliation.delete(to_unreconcile)
+        if to_delete:
+            Move.delete(to_delete)
+        for party in to_reconcile:
+            for lines in to_reconcile[party].values():
+                Line.reconcile(lines)
+    return wrapper
 
 
 class Payment(metaclass=PoolMeta):
@@ -200,47 +245,17 @@ class Payment(metaclass=PoolMeta):
         return move
 
     @classmethod
+    @Workflow.transition('processing')
+    @cancel_clearing_move
+    def proceed(cls, payments):
+        super().proceed(payments)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('failed')
+    @cancel_clearing_move
     def fail(cls, payments):
-        pool = Pool()
-        Move = pool.get('account.move')
-        Line = pool.get('account.move.line')
-        Reconciliation = pool.get('account.move.reconciliation')
-
         super(Payment, cls).fail(payments)
-
-        to_delete = []
-        to_reconcile = defaultdict(lambda: defaultdict(list))
-        to_unreconcile = []
-        for payment in payments:
-            if payment.clearing_move:
-                if payment.clearing_move.state == 'draft':
-                    to_delete.append(payment.clearing_move)
-                    for line in payment.clearing_move.lines:
-                        if line.reconciliation:
-                            to_unreconcile.append(line.reconciliation)
-                else:
-                    cancel_move = payment.clearing_move.cancel()
-                    for line in (payment.clearing_move.lines
-                            + cancel_move.lines):
-                        if line.reconciliation:
-                            to_unreconcile.append(line.reconciliation)
-                        if line.account.reconcile:
-                            to_reconcile[payment.party][line.account].append(
-                                line)
-
-        # Remove clearing_move before delete in case reconciliation triggers
-        # would use it.
-        cls.write(payments, {'clearing_move': None})
-
-        if to_unreconcile:
-            Reconciliation.delete(to_unreconcile)
-        if to_delete:
-            Move.delete(to_delete)
-        for party in to_reconcile:
-            for lines in to_reconcile[party].values():
-                Line.reconcile(lines)
 
     @classmethod
     def copy(cls, payments, default=None):
