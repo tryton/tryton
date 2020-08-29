@@ -89,14 +89,13 @@
                 'aria-expanded': false,
                 'aria-label': Sao.i18n.gettext("Bookmarks"),
                 'title': Sao.i18n.gettext("Bookmarks"),
-                'id': 'bookmarks'
             }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-bookmark', {
                 'aria-hidden': true,
-            }));
+            })).uniqueId();
             var dropdown_bookmark = jQuery('<ul/>', {
                 'class': 'dropdown-menu dropdown-menu-right',
                 'role': 'menu',
-                'aria-labelledby': 'bookmarks'
+                'aria-labelledby': this.but_bookmark.attr('id'),
             });
             this.but_bookmark.click(function() {
                 dropdown_bookmark.empty();
