@@ -77,9 +77,10 @@ class TrytondWSGI(object):
         if request.user_id:
             return wrapped(*args, **kwargs)
         else:
-            response = Response(
-                None, http.client.UNAUTHORIZED,
-                {'WWW-Authenticate': 'Basic realm="Tryton"'})
+            headers = {}
+            if request.headers.get('X-Requested-With') != 'XMLHttpRequest':
+                headers['WWW-Authenticate'] = 'Basic realm="Tryton"'
+            response = Response(None, http.client.UNAUTHORIZED, headers)
             abort(http.client.UNAUTHORIZED, response=response)
 
     def check_request_size(self, request, size=None):
