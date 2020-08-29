@@ -1097,7 +1097,7 @@ class Account(ModelSQL, ModelView):
             with Transaction().set_context(company=payment.company.id):
                 payment = Payment(payment.id)
                 if payment.state == 'succeeded':
-                    Payment.fail([payment])
+                    Payment.proceed([payment])
                 payment.stripe_captured = charge['captured']
                 payment.stripe_amount = (
                     charge['amount'] - charge['amount_refunded'])
@@ -1298,7 +1298,7 @@ class Account(ModelSQL, ModelView):
             with Transaction().set_context(company=payment.company.id):
                 payment = Payment(payment.id)
                 if payment.state == 'succeeded':
-                    Payment.fail([payment])
+                    Payment.proceed([payment])
                 payment.stripe_captured = bool(
                     payment_intent['amount_received'])
                 payment.stripe_amount = payment_intent['amount_received']
@@ -1326,7 +1326,7 @@ class Account(ModelSQL, ModelView):
             with Transaction().set_context(company=payment.company.id):
                 payment = Payment(payment.id)
                 if payment.state == 'succeeded':
-                    Payment.fail([payment])
+                    Payment.proceed([payment])
                 payment.stripe_capturable = bool(
                     payment_intent['amount_capturable'])
                 if payment.stripe_amount > payment_intent['amount_capturable']:
