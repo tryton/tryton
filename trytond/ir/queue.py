@@ -194,7 +194,7 @@ class _Method(object):
 
     def __call__(self, instances, *args, **kwargs):
         transaction = Transaction()
-        context = transaction.context
+        context = transaction.context.copy()
         name = context.pop('queue_name', 'default')
         now = datetime.datetime.now()
         scheduled_at = context.pop('queue_scheduled_at', None)
