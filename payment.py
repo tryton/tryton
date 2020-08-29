@@ -301,17 +301,19 @@ class Payment(metaclass=PoolMeta):
         readonly=True)
     sepa_return_reason_code = fields.Char('Return Reason Code', readonly=True,
         states={
-            'invisible': (~Eval('sepa_return_reason_code')
-                & (Eval('state') != 'failed')),
+            'invisible': ((Eval('process_method') != 'sepa')
+                | (~Eval('sepa_return_reason_code')
+                    & (Eval('state') != 'failed'))),
             },
-        depends=['state'])
+        depends=['process_method', 'state'])
     sepa_return_reason_information = fields.Text('Return Reason Information',
         readonly=True,
         states={
-            'invisible': (~Eval('sepa_return_reason_information')
-                & (Eval('state') != 'failed')),
+            'invisible': ((Eval('process_method') != 'sepa')
+                | (~Eval('sepa_return_reason_information')
+                    & (Eval('state') != 'failed'))),
             },
-        depends=['state'])
+        depends=['process_method', 'state'])
     sepa_end_to_end_id = fields.Function(fields.Char('SEPA End To End ID'),
         'get_sepa_end_to_end_id', searcher='search_end_to_end_id')
     sepa_instruction_id = fields.Function(fields.Char('SEPA Instruction ID'),
@@ -393,7 +395,8 @@ class Payment(metaclass=PoolMeta):
     def view_attributes(cls):
         return super().view_attributes() + [
             ('//separator[@id="sepa_return_reason"]', 'states', {
-                    'invisible': Eval('state') != 'failed',
+                    'invisible': ((Eval('process_method') != 'sepa')
+                        | (Eval('state') != 'failed')),
                     }),
             ]
 
