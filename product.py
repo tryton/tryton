@@ -167,7 +167,11 @@ class SaleContext(ModelView):
     def default_locations(cls):
         pool = Pool()
         Location = pool.get('stock.location')
-        return [Location.get_default_warehouse()]
+        locations = []
+        warehouse = Location.get_default_warehouse()
+        if warehouse:
+            locations.append(warehouse)
+        return locations
 
     @classmethod
     def default_company(cls):
