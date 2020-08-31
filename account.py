@@ -47,7 +47,7 @@ class AccountType(AccountTypeMixin(), metaclass=PoolMeta):
 class Reconcile(metaclass=PoolMeta):
     __name__ = 'account.reconcile'
 
-    def get_parties(self, account, _balanced=False):
+    def get_parties(self, account, _balanced=False, party=None):
         if account.type.deposit:
             _balanced = True
-        return super().get_parties(account, _balanced=_balanced)
+        return super().get_parties(account, _balanced=_balanced, party=party)
