@@ -470,7 +470,7 @@ class Purchase(
             context['language'] = self.party.lang.code
         return context
 
-    @fields.depends('lines', 'currency', methods=['_get_taxes'])
+    @fields.depends('lines', 'currency', methods=['get_tax_amount'])
     def on_change_lines(self):
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
@@ -479,8 +479,7 @@ class Purchase(
         if self.lines:
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
-            taxes = self._get_taxes()
-            self.tax_amount = sum(t['amount'] for t in taxes.values())
+            self.tax_amount = self.get_tax_amount()
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
             self.tax_amount = self.currency.round(self.tax_amount)
@@ -506,6 +505,7 @@ class Purchase(
                     if value is not None else default_value,)
         return taxable_lines
 
+    @fields.depends(methods=['_get_taxes'])
     def get_tax_amount(self):
         taxes = iter(self._get_taxes().values())
         return sum((tax['amount'] for tax in taxes), Decimal(0))
