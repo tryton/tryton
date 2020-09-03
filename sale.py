@@ -463,7 +463,7 @@ class Sale(
             return self.party.lang.code
         return Config.get_language()
 
-    @fields.depends('lines', 'currency', methods=['_get_taxes'])
+    @fields.depends('lines', 'currency', methods=['get_tax_amount'])
     def on_change_lines(self):
         self.untaxed_amount = Decimal('0.0')
         self.tax_amount = Decimal('0.0')
@@ -473,8 +473,7 @@ class Sale(
         if self.lines:
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
-            taxes = self._get_taxes()
-            self.tax_amount = sum(v['amount'] for v in taxes.values())
+            self.tax_amount = self.get_tax_amount()
         if self.currency:
             self.untaxed_amount = self.currency.round(self.untaxed_amount)
             self.tax_amount = self.currency.round(self.tax_amount)
@@ -500,6 +499,7 @@ class Sale(
                     if value is not None else default_value,)
         return taxable_lines
 
+    @fields.depends(methods=['_get_taxes'])
     def get_tax_amount(self):
         return sum(
             (v['amount'] for v in self._get_taxes().values()), Decimal(0))
