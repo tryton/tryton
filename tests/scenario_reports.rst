@@ -84,6 +84,8 @@ Create a moves::
 Print some reports::
 
     >>> GeneralLedgerAccount = Model.get('account.general_ledger.account')
+    >>> GeneralLedgerAccountParty = Model.get(
+    ...     'account.general_ledger.account.party')
     >>> gl_accounts = GeneralLedgerAccount.find([])
     >>> _ = [(l.balance, l.party_required) for gl in gl_accounts
     ...     for l in gl.lines]
@@ -100,8 +102,12 @@ Print some reports::
     ...     }
     >>> with config.set_context(context):
     ...     gl_revenue, = GeneralLedgerAccount.find([
-    ...           ('name', '=', revenue.name),
+    ...           ('account', '=', revenue.id),
     ...           ])
+    ...     glp_receivable, = GeneralLedgerAccountParty.find([
+    ...             ('account', '=', receivable.id),
+    ...             ('party', '=', party.id),
+    ...             ])
     >>> gl_revenue.start_balance
     Decimal('0.00')
     >>> gl_revenue.credit
@@ -110,6 +116,14 @@ Print some reports::
     Decimal('0.00')
     >>> gl_revenue.end_balance
     Decimal('-10.00')
+    >>> glp_receivable.start_balance
+    Decimal('0.00')
+    >>> glp_receivable.credit
+    Decimal('10.00')
+    >>> glp_receivable.debit
+    Decimal('10.00')
+    >>> glp_receivable.end_balance
+    Decimal('0.00')
 
     >>> context = {
     ...     'company': company.id,
@@ -119,8 +133,12 @@ Print some reports::
     ...     }
     >>> with config.set_context(context):
     ...     gl_revenue, = GeneralLedgerAccount.find([
-    ...           ('name', '=', revenue.name),
+    ...           ('account', '=', revenue.id),
     ...           ])
+    ...     glp_receivable, = GeneralLedgerAccountParty.find([
+    ...             ('account', '=', receivable.id),
+    ...             ('party', '=', party.id),
+    ...             ])
     >>> gl_revenue.start_balance
     Decimal('0.00')
     >>> gl_revenue.credit
@@ -129,6 +147,14 @@ Print some reports::
     Decimal('0.00')
     >>> gl_revenue.end_balance
     Decimal('-10.00')
+    >>> glp_receivable.start_balance
+    Decimal('0.00')
+    >>> glp_receivable.credit
+    Decimal('10.00')
+    >>> glp_receivable.debit
+    Decimal('10.00')
+    >>> glp_receivable.end_balance
+    Decimal('0.00')
 
     >>> context = {
     ...     'company': company.id,
@@ -137,7 +163,7 @@ Print some reports::
     ...     }
     >>> with config.set_context(context):
     ...     gl_revenue, = GeneralLedgerAccount.find([
-    ...           ('name', '=', revenue.name),
+    ...           ('account', '=', revenue.id),
     ...           ])
     >>> gl_revenue.start_balance
     Decimal('-10.00')
