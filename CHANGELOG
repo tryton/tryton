@@ -1,3 +1,4 @@
+* Allow defining the tax date on taxable lines
 * Add General Ledger per account and party
 * Add start/end date to tax rule line
 * Test for lines to reconcile before showing the next account

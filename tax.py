@@ -1068,7 +1068,8 @@ class _TaxKey(dict):
         return hash(self._key())
 
 
-_TaxableLine = namedtuple('_TaxableLine', ('taxes', 'unit_price', 'quantity'))
+_TaxableLine = namedtuple(
+    '_TaxableLine', ('taxes', 'unit_price', 'quantity', 'tax_date'))
 
 
 class TaxableMixin(object):
@@ -1080,6 +1081,7 @@ class TaxableMixin(object):
             - the first element is the taxes applicable
             - the second element is the line unit price
             - the third element is the line quantity
+            - the forth element is the optional tax date
         """
         return []
 
@@ -1136,7 +1138,7 @@ class TaxableMixin(object):
                 for params in self.taxable_lines]
             for line in taxable_lines:
                 l_taxes = Tax.compute(Tax.browse(line.taxes), line.unit_price,
-                    line.quantity, self.tax_date)
+                    line.quantity, line.tax_date or self.tax_date)
                 for tax in l_taxes:
                     taxline = self._compute_tax_line(**tax)
                     # Base must always be rounded per line as there will be one
@@ -1757,7 +1759,7 @@ class TestTaxView(ModelView, TaxableMixin):
 
     @property
     def taxable_lines(self):
-        return [(self.taxes, self.unit_price, self.quantity)]
+        return [(self.taxes, self.unit_price, self.quantity, self.tax_date)]
 
     @fields.depends(
         'tax_date', 'taxes', 'unit_price', 'quantity', 'currency', 'result')
