@@ -489,14 +489,12 @@ class Sale(
         for line in self.lines:
             if getattr(line, 'type', None) != 'line':
                 continue
-            taxable_lines.append(tuple())
-            for attribute, default_value in (
-                    ('taxes', []),
-                    ('unit_price', Decimal(0)),
-                    ('quantity', 0.0)):
-                value = getattr(line, attribute, None)
-                taxable_lines[-1] += (value
-                    if value is not None else default_value,)
+            taxable_lines.append((
+                    getattr(line, 'taxes', None) or [],
+                    getattr(line, 'unit_price', None) or Decimal(0),
+                    getattr(line, 'quantity', None) or 0,
+                    None,
+                    ))
         return taxable_lines
 
     @fields.depends(methods=['_get_taxes'])
