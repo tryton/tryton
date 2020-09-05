@@ -110,8 +110,12 @@ class TrytondWSGI(object):
             self.check_request_size(request, max_request_size)
             return endpoint(request, **request.view_args)
         except HTTPException as e:
+            logger.debug(
+                "Exception when processing %s", request, exc_info=True)
             return e
         except Exception as e:
+            logger.debug(
+                "Exception when processing %s", request, exc_info=True)
             tb_s = ''.join(traceback.format_exception(*sys.exc_info()))
             for path in sys.path:
                 tb_s = tb_s.replace(path, '')
@@ -139,7 +143,7 @@ class TrytondWSGI(object):
                     break
             else:
                 if isinstance(data, Exception):
-                    response = InternalServerError(data)
+                    response = InternalServerError(original_exception=data)
                 else:
                     response = Response(data)
         return response
