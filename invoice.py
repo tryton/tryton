@@ -1945,11 +1945,19 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 taxes.append(tax.id)
         return taxes
 
+    @fields.depends('invoice',
+        '_parent_invoice.accounting_date', '_parent_invoice.invoice_date')
     def _get_tax_rule_pattern(self):
         '''
         Get tax rule pattern
         '''
-        return {}
+        if self.invoice:
+            date = self.invoice.accounting_date or self.invoice.invoice_date
+        else:
+            date = None
+        return {
+            'date': date,
+            }
 
     @fields.depends('product', 'unit', '_parent_invoice.type',
         '_parent_invoice.party', 'party', 'invoice', 'invoice_type',
