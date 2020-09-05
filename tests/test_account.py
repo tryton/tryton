@@ -1287,6 +1287,70 @@ class AccountTestCase(ModuleTestCase):
             self.assertListEqual(tax_rule.apply(tax, {}), [target_tax.id])
 
     @with_transaction()
+    def test_tax_rule_start_date(self):
+        "Test tax rule start date"
+        pool = Pool()
+        TaxRule = pool.get('account.tax.rule')
+        Tax = pool.get('account.tax')
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        yesterday = today - datetime.timedelta(days=1)
+        tomorrow = today + datetime.timedelta(days=1)
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            target_tax, = Tax.copy([tax])
+
+            tax_rule, = TaxRule.create([{
+                        'name': "Test",
+                        'kind': 'both',
+                        'lines': [('create', [{
+                                        'start_date': today,
+                                        'tax': target_tax.id,
+                                        }])],
+                        }])
+
+            self.assertListEqual(tax_rule.apply(tax, {}), [target_tax.id])
+            self.assertListEqual(
+                tax_rule.apply(tax, {'date': yesterday}), [tax.id])
+            self.assertListEqual(
+                tax_rule.apply(tax, {'date': tomorrow}), [target_tax.id])
+
+    @with_transaction()
+    def test_tax_rule_end_date(self):
+        "Test tax rule end date"
+        pool = Pool()
+        TaxRule = pool.get('account.tax.rule')
+        Tax = pool.get('account.tax')
+        Date = pool.get('ir.date')
+
+        today = Date.today()
+        yesterday = today - datetime.timedelta(days=1)
+        tomorrow = today + datetime.timedelta(days=1)
+        company = create_company()
+        with set_company(company):
+            create_chart(company, tax=True)
+            tax, = Tax.search([])
+            target_tax, = Tax.copy([tax])
+
+            tax_rule, = TaxRule.create([{
+                        'name': "Test",
+                        'kind': 'both',
+                        'lines': [('create', [{
+                                        'end_date': today,
+                                        'tax': target_tax.id,
+                                        }])],
+                        }])
+
+            self.assertListEqual(tax_rule.apply(tax, {}), [target_tax.id])
+            self.assertListEqual(
+                tax_rule.apply(tax, {'date': yesterday}), [target_tax.id])
+            self.assertListEqual(
+                tax_rule.apply(tax, {'date': tomorrow}), [tax.id])
+
+    @with_transaction()
     def test_tax_rule_keep_origin(self):
         "Test tax rule keeps origin"
         pool = Pool()

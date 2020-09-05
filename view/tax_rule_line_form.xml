@@ -6,6 +6,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="rule"/>
     <label name="template_override"/>
     <field name="template_override"/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
     <label name="group"/>
     <field name="group"/>
     <label name="origin_tax"/>

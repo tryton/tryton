@@ -1418,6 +1418,8 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     __name__ = 'account.tax.rule.line.template'
     rule = fields.Many2One('account.tax.rule.template', 'Rule', required=True,
             ondelete='CASCADE')
+    start_date = fields.Date("Starting Date")
+    end_date = fields.Date("Ending Date")
     group = fields.Many2One('account.tax.group', 'Tax Group',
         ondelete='RESTRICT')
     origin_tax = fields.Many2One('account.tax.template', 'Original Tax',
@@ -1469,6 +1471,10 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
         Set values for tax rule line creation.
         '''
         res = {}
+        if not rule_line or rule_line.start_date != self.start_date:
+            res['start_date'] = self.start_date
+        if not rule_line or rule_line.end_date != self.end_date:
+            res['end_date'] = self.end_date
         if not rule_line or rule_line.group != self.group:
             res['group'] = self.group.id if self.group else None
         if not rule_line or rule_line.sequence != self.sequence:
@@ -1532,6 +1538,8 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         }
     rule = fields.Many2One('account.tax.rule', 'Rule', required=True,
             select=True, ondelete='CASCADE', states=_states)
+    start_date = fields.Date("Starting Date")
+    end_date = fields.Date("Ending Date")
     group = fields.Many2One('account.tax.group', 'Tax Group',
         ondelete='RESTRICT', states=_states)
     origin_tax = fields.Many2One('account.tax', 'Original Tax',
@@ -1597,9 +1605,19 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         return super(TaxRuleLine, cls).copy(lines, default=default)
 
     def match(self, pattern):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        with Transaction().set_context(company=self.rule.company.id):
+            today = Date.today()
+        pattern = pattern.copy()
         if 'group' in pattern and not self.group:
             if pattern['group']:
                 return False
+        date = pattern.pop('date', None) or today
+        if self.start_date and date < self.start_date:
+            return False
+        if self.end_date and date > self.end_date:
+            return False
         return super(TaxRuleLine, self).match(pattern)
 
     def get_taxes(self, origin_tax):

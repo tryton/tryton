@@ -5,6 +5,10 @@ this repository contains the full copyright notices and license terms. -->
     <label name="rule"/>
     <field name="rule"/>
     <newline/>
+    <label name="start_date"/>
+    <field name="start_date"/>
+    <label name="end_date"/>
+    <field name="end_date"/>
     <label name="group"/>
     <field name="group"/>
     <label name="origin_tax"/>
