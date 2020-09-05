@@ -302,11 +302,15 @@ class Greater(PYSON):
         super(Greater, self).__init__()
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
-                assert i.types().issubset({int, float, type(None)}), \
-                    'statement must be an integer or a float'
+                assert i.types().issubset({
+                        int, float, type(None),
+                        datetime.datetime, datetime.date}), \
+                    'statement must be an integer, float, date or datetime'
             else:
-                assert isinstance(i, (int, float, type(None))), \
-                    'statement must be an integer or a float'
+                assert isinstance(i, (
+                        int, float, type(None),
+                        datetime.datetime, datetime.date)), \
+                    'statement must be an integer, float, date or datetime'
         if isinstance(equal, PYSON):
             if equal.types() != {bool}:
                 equal = Bool(equal)
@@ -338,11 +342,19 @@ class Greater(PYSON):
                 dct[i] = 0.0
             if not isinstance(dct[i], (int, float)):
                 dct = dct.copy()
-                dct[i] = float(dct[i])
+                stmt = dct[i]
+                if isinstance(stmt, datetime.datetime):
+                    stmt = stmt.timestamp()
+                elif isinstance(stmt, datetime.date):
+                    time = datetime.time(0, 0)
+                    stmt = datetime.datetime.combine(stmt, time).timestamp()
+                dct[i] = float(stmt)
         return dct
 
     @staticmethod
     def eval(dct, context):
+        if dct['s1'] is None or dct['s2'] is None:
+            return False
         dct = Greater._convert(dct)
         if dct['e']:
             return dct['s1'] >= dct['s2']
@@ -359,6 +371,8 @@ class Less(Greater):
 
     @staticmethod
     def eval(dct, context):
+        if dct['s1'] is None or dct['s2'] is None:
+            return False
         dct = Less._convert(dct)
         if dct['e']:
             return dct['s1'] <= dct['s2']

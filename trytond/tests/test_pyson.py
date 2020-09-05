@@ -226,6 +226,10 @@ class PYSONTestCase(unittest.TestCase):
             self.assertRaises(AssertionError, pyson.Greater, 1, 'test')
             self.assertRaises(
                 AssertionError, pyson.Greater, pyson.Eval('foo'), 0)
+            self.assertRaises(AssertionError, pyson.Greater,
+                'test', pyson.DateTime())
+            self.assertRaises(AssertionError, pyson.Greater,
+                pyson.DateTime(), 'test')
 
         self.assertEqual(pyson.Greater(1, 0).types(), set([bool]))
 
@@ -251,9 +255,53 @@ class PYSONTestCase(unittest.TestCase):
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.Greater(1, None))
-        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         self.assertEqual(repr(pyson.Greater(1, 0)), 'Greater(1, 0, False)')
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                datetime.date(2020, 1, 2)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 1),
+                datetime.date(2020, 1, 1)))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                datetime.date(2020, 1, 1), True))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.Date(2020, 1, 1),
+                datetime.date(2020, 1, 1)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.Date(2020, 1, 1),
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 1)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 1),
+                pyson.Date(2020, 1, 1), True))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                pyson.Date(2020, 1, 1), True))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Greater(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(
             pyson.Greater(pyson.Eval('i', 0), 0))
@@ -271,6 +319,10 @@ class PYSONTestCase(unittest.TestCase):
         if not sys.flags.optimize:
             self.assertRaises(AssertionError, pyson.Less, 'test', 1)
             self.assertRaises(AssertionError, pyson.Less, 0, 'test')
+            self.assertRaises(AssertionError, pyson.Less,
+                'test', pyson.DateTime())
+            self.assertRaises(AssertionError, pyson.Less,
+                pyson.DateTime(), 'test')
 
         self.assertEqual(pyson.Less(0, 1).types(), set([bool]))
 
@@ -293,12 +345,46 @@ class PYSONTestCase(unittest.TestCase):
         self.assertTrue(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.Less(None, 1))
-        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         eval = pyson.PYSONEncoder().encode(pyson.Less(1, None))
         self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
         self.assertEqual(repr(pyson.Less(0, 1)), 'Less(0, 1, False)')
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                datetime.date(2020, 1, 1)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                datetime.date(2020, 1, 2), True))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0)))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.Date(2020, 1, 1),
+                datetime.date(2020, 1, 2)))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.Date(2020, 1, 1),
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 1)))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0),
+                pyson.Date(2020, 1, 1), True))
+        self.assertTrue(pyson.PYSONDecoder().decode(eval))
+
+        eval = pyson.PYSONEncoder().encode(pyson.Less(
+                pyson.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))
+        self.assertFalse(pyson.PYSONDecoder().decode(eval))
 
     def test_If(self):
         'Test pyson.If'

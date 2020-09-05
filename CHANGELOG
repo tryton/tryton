@@ -1,3 +1,4 @@
+* Support PYSON comparison of date and datetime
 * Add cron task to clean old queue tasks
 * Add option to run cron once
 * Add defaults option to route
