@@ -389,12 +389,16 @@
             for (var i = 0; i < 2; i++) {
                 var statement = statements[i];
                 if (statement instanceof Sao.PYSON.PYSON) {
-                    if (jQuery(statement.types()).not(['number']).length) {
-                        throw 'statement must be an integer or a float';
+                    if ( (!(statement instanceof Sao.PYSON.DateTime ||
+                        statement instanceof Sao.PYSON.Date)) &&
+                        (jQuery(statement.types()).not(['number']).length) ) {
+                        throw 'statement must be an integer, float, ' +
+                            'date or datetime';
                     }
                 } else {
                     if (!~['number', 'object'].indexOf(typeof statement)) {
-                        throw 'statement must be an integer or a float';
+                        throw 'statement must be an integer, float, ' +
+                            'date or datetime';
                     }
                 }
             }
@@ -431,12 +435,24 @@
 
     Sao.PYSON.Greater._convert = function(value) {
         value = jQuery.extend({}, value);
-        value.s1 = Number(value.s1);
-        value.s2 = Number(value.s2);
+        var values = [value.s1, value.s2];
+        for (var i=0; i < 2; i++) {
+            if (values[i] instanceof moment) {
+                values[i] = values[i].unix();
+            }
+            else {
+                values[i] = Number(values[i]);
+            }
+        }
+        value.s1 = values[0];
+        value.s2 = values[1];
         return value;
     };
 
     Sao.PYSON.Greater.eval_ = function(value, context) {
+        if (value.s1 == null || value.s2 == null) {
+            return false;
+        }
         value = Sao.PYSON.Greater._convert(value);
         if (value.e) {
             return value.s1 >= value.s2;
@@ -462,6 +478,9 @@
     Sao.PYSON.Less._convert = Sao.PYSON.Greater._convert;
 
     Sao.PYSON.Less.eval_ = function(value, context) {
+        if (value.s1 == null || value.s2 == null) {
+            return false;
+        }
         value = Sao.PYSON.Less._convert(value);
         if (value.e) {
             return value.s1 <= value.s2;

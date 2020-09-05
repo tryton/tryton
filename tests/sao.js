@@ -407,13 +407,19 @@
 
         QUnit.throws(function() {
             new Sao.PYSON.Greater('test', 0);
-        }, 'statement must be an integer or a float');
+        }, 'statement must be an integer, float, date or datetime');
         QUnit.throws(function() {
             new Sao.PYSON.Greater(1, 'test');
-        }, 'statement must be an integer or a float');
+        }, 'statement must be an integer, float, date or datetime');
         QUnit.throws(function() {
             new Sao.PYSON.Greater(new Sao.PYSON.Eval('foo'), 0);
-        }, 'statement must be an integer of float');
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Greater(Sao.PYSON.DateTime(), 'test');
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Greater('test', Date());
+        }, 'statement must be an integer, float, date or datetime');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Greater(1, 0).types(),
                 ['boolean']), 'Greater(1, 0).types()');
@@ -451,10 +457,63 @@
                 'decode(Greater(null, 1))');
 
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(1, null));
-        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 'decode(Greater(1, null))');
         QUnit.strictEqual(new Sao.PYSON.Greater(1, 0).toString(),
                 "Greater(1, 0, false)");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            Sao.Date(2020, 0, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'Date(2020, 0, 2)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            Sao.Date(2020, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'Date(2020, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            Sao.Date(2020, 0, 1), true));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'Date(2020, 0, 1), true))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0, 0)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.Date(2020, 1, 1),
+            Sao.Date(2020, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.Date(2020, 1, 1), Date(2020, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.Date(2020, 1, 1),
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Greater(PYSON.Date(2020, 1, 1), ' +
+            'PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1),
+            new Sao.PYSON.Date(2020, 1, 1), true));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1), ' +
+            'PYSON.Date(2020, 1, 1), true))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Greater(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Greater(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
             new Sao.PYSON.Greater(new Sao.PYSON.Eval('i', 0), 0));
@@ -471,10 +530,22 @@
 
         QUnit.throws(function() {
             new Sao.PYSON.Less('test', 0);
-        }, 'statement must be an integer or a float');
+        }, 'statement must be an integer, float, date or datetime');
         QUnit.throws(function() {
             new Sao.PYSON.Less(1, 'test');
-        }, 'statement must be an integer or a float');
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Less(1, 'test');
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Less(new Sao.PYSON.Eval('foo'), 0);
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Less(Sao.PYSON.DateTime(), 'test');
+        }, 'statement must be an integer, float, date or datetime');
+        QUnit.throws(function() {
+            new Sao.PYSON.Less('test', Date());
+        }, 'statement must be an integer, float, date or datetime');
 
         QUnit.ok(Sao.common.compare(new Sao.PYSON.Less(1, 0).types(),
                 ['boolean']), 'Less(1, 0).types()');
@@ -508,7 +579,7 @@
                 'decode(Less(1, 1, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(null, 1));
-        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 'decode(Less(null, 1))');
 
         eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(1, null));
@@ -516,6 +587,53 @@
                 'decode(Less(1, null))');
         QUnit.strictEqual(new Sao.PYSON.Less(0, 1).toString(),
                 "Less(0, 1, false)");
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            Sao.Date(2020, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Less(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'Date(2020, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            Sao.Date(2020, 0, 2), true));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Less(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'Date(2020, 0, 2), true))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Less(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.Date(2020, 1, 1),
+            Sao.Date(2020, 0, 2)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Less(PYSON.Date(2020, 1, 1), Date(2020, 0, 2)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.Date(2020, 1, 1),
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 1)));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Less(PYSON.Date(2020, 1, 1), ' +
+            'PYSON.DateTime(2020, 1, 1, 0, 0, 1)))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0),
+            new Sao.PYSON.Date(2020, 0, 1), true));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
+            'decode(Less(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), ' +
+            'PYSON.Date(2020, 1, 1), true))');
+
+        eval_ = new Sao.PYSON.Encoder().encode(new Sao.PYSON.Less(
+            new Sao.PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000));
+        QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
+            'decode(Less(PYSON.DateTime(2020, 1, 1, 0, 0, 0, 0), 90000))');
+
     });
 
     QUnit.test('PYSON If', function() {

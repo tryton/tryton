@@ -1,3 +1,4 @@
+* Support PYSON comparison of date and datetime
 * Customize bootstrap default style
 * Set field's name as input's name attribute
 * Position copied records based on order
