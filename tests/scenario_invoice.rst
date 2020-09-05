@@ -220,6 +220,12 @@ Credit invoice with refund::
     'cancelled'
     >>> invoice.reconciled == today
     True
+    >>> credit_note, = Invoice.find([
+    ...     ('type', '=', 'out'), ('id', '!=', invoice.id)])
+    >>> credit_note.state
+    'paid'
+    >>> all(line.taxes_date == today for line in credit_note.lines)
+    True
     >>> receivable.reload()
     >>> receivable.debit
     Decimal('240.00')

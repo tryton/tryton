@@ -23,6 +23,10 @@ this repository contains the full copyright notices and license terms. -->
             <label name="amount"/>
             <field name="amount"/>
             <field name="taxes" colspan="4"/>
+            <label name="taxes_date"/>
+            <field name="taxes_date"/>
+            <newline/>
+
             <label name="origin"/>
             <field name="origin" colspan="3"/>
         </page>

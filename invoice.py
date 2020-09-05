@@ -820,20 +820,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @property
     def taxable_lines(self):
         taxable_lines = []
-        # In case we're called from an on_change we have to use some sensible
-        # defaults
         for line in self.lines:
-            if getattr(line, 'type', None) != 'line':
-                continue
-            taxable_lines.append(tuple())
-            for attribute, default_value in [
-                    ('taxes', []),
-                    ('unit_price', Decimal(0)),
-                    ('quantity', 0.),
-                    ]:
-                value = getattr(line, attribute, None)
-                taxable_lines[-1] += (
-                    value if value is not None else default_value,)
+            if getattr(line, 'type', None) == 'line':
+                taxable_lines.extend(line.taxable_lines)
         return taxable_lines
 
     @property
@@ -1744,6 +1733,15 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'readonly': _states['readonly'] | ~Bool(Eval('account')),
             },
         depends=['type', 'invoice_type', 'company', 'account'] + _depends)
+    taxes_date = fields.Date(
+        "Taxes Date",
+        states={
+            'invisible': Eval('type') != 'line',
+            'readonly': _states['readonly'],
+            },
+        depends=['type'] + _depends,
+        help="The date at which the taxes are computed.\n"
+        "Leave empty for the accounting date.")
     invoice_taxes = fields.Function(fields.Many2Many('account.invoice.tax',
         None, None, 'Invoice Taxes'), 'get_invoice_taxes')
     origin = fields.Reference('Origin', selection='get_origin', select=True,
@@ -1920,11 +1918,18 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @property
     def taxable_lines(self):
-        return [(self.taxes, self.unit_price, self.quantity)]
+        # In case we're called from an on_change we have to use some sensible
+        # defaults
+        return [(
+                getattr(self, 'taxes', None) or [],
+                getattr(self, 'unit_price', None) or Decimal(0),
+                getattr(self, 'quantity', None) or 0,
+                getattr(self, 'tax_date', None),
+                )]
 
     @property
     def tax_date(self):
-        return self.invoice.tax_date
+        return self.taxes_date or self.invoice.tax_date
 
     def _get_tax_context(self):
         if self.invoice:
@@ -2254,6 +2259,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         for field in ('sequence', 'type', 'invoice_type', 'unit_price',
                 'description', 'unit', 'product', 'account'):
             setattr(line, field, getattr(self, field))
+        line.taxes_date = self.tax_date
         line.taxes = self.taxes
         return line
 
