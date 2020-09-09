@@ -130,7 +130,7 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     @classmethod
     def tax_identifier_types(cls):
         return ['al_nipt', 'ar_cuit', 'be_vat', 'bg_vat', 'ch_vat', 'cl_rut',
-            'co_rut', 'cu_vat', 'cz_dic', 'de_vat', 'do_rnc', 'dk_cvr',
+            'co_rut', 'cz_dic', 'de_vat', 'do_rnc', 'dk_cvr',
             'ec_ruc', 'ee_kmkr', 'es_cif', 'es_nie', 'es_nif', 'eu_vat',
             'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat', 'hu_anum', 'ie_vat',
             'is_vsk', 'it_iva', 'lt_pvm', 'lu_tva', 'lv_pvn', 'mc_tva',
