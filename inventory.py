@@ -10,20 +10,10 @@ class CreateInventoriesStart(ModelView):
     'Create Inventories'
     __name__ = 'stock.inventory.create.start'
     date = fields.Date('Date', required=True)
-    lost_found = fields.Many2One(
-        'stock.location', 'Lost and Found', required=True,
-        domain=[('type', '=', 'lost_found')])
     company = fields.Many2One('company.company', 'Company', required=True,
             select=True)
     locations = fields.Many2Many('stock.location', None, None,
             'Locations', required=True, domain=[('type', '=', 'storage')])
-
-    @classmethod
-    def default_lost_found(cls):
-        Location = Pool().get('stock.location')
-        locations = Location.search(cls.lost_found.domain)
-        if len(locations) == 1:
-            return locations[0].id
 
     @staticmethod
     def default_company():
@@ -48,7 +38,6 @@ class CreateInventories(Wizard):
             to_create.append({
                         'location': location.id,
                         'date': self.start.date,
-                        'lost_found': self.start.lost_found.id,
                         'company': self.start.company.id,
                         })
         if to_create:
