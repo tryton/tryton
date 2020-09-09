@@ -414,6 +414,16 @@ class PartyTestCase(ModuleTestCase):
 
         self.assertEqual(contact, contact2)
 
+    @with_transaction()
+    def test_tax_identifier_types(self):
+        "Ensure tax identifier types are in identifier types"
+        pool = Pool()
+        Party = pool.get('party.party')
+        Identifier = pool.get('party.identifier')
+        self.assertFalse(
+            set(Party.tax_identifier_types())
+            - set(dict(Identifier.type.selection).keys()))
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()
