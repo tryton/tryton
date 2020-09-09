@@ -281,14 +281,14 @@ class Module(ModelSQL, ModelView):
         module_names = get_module_list()
 
         modules = cls.search([])
-        name2module = dict((m.name, m) for m in modules)
+        name2id = dict((m.name, m.id) for m in modules)
         cls.delete([m for m in modules
                 if m.state != 'activated' and m.name not in module_names])
 
         # iterate through activated modules and mark them as being so
         for name in module_names:
-            if name in name2module:
-                module = name2module[name]
+            if name in name2id:
+                module = cls(name2id[name])
                 tryton = get_module_info(name)
                 cls._update_dependencies(module, tryton.get('depends', []))
                 continue
