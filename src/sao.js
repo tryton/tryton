@@ -168,7 +168,7 @@ var Sao = {};
 
     Sao.Decimal = Number;
 
-    Sao.Date = function(year, month, day) {
+    Sao.Date = function(year, month, day, utc) {
         var date;
         if (month === undefined) {
             date = moment(year);
@@ -176,6 +176,9 @@ var Sao = {};
         }
         else {
             date = moment();
+        }
+        if (utc) {
+            date.utc();
         }
         date.year(year);
         date.month(month);

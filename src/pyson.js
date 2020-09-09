@@ -745,10 +745,10 @@
     Sao.PYSON.Date.eval_ = function(value, context) {
         var date = value.start;
         if (date && date.isDateTime) {
-            date = Sao.Date(date.year(), date.month(), date.date());
+            date = Sao.Date(date.year(), date.month(), date.date(), true);
         }
         if (!date || !date.isDate) {
-            date = Sao.Date();
+            date = Sao.Date(undefined, undefined, undefined, true);
         }
         if (value.y) date.year(value.y);
         if (value.M) date.month(value.M - 1);
