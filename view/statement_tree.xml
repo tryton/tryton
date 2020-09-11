@@ -6,4 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name" expand="2"/>
     <field name="date"/>
     <field name="state"/>
+    <button name="post" tree_invisible="1"/>
 </tree>
