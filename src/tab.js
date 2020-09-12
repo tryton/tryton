@@ -1304,19 +1304,21 @@
                             return Sao.Window.Export.format_row(row);
                         });
                         var delimiter = ',';
-                        var encoding = 'utf-8';
                         if (navigator.platform &&
                             navigator.platform.slice(0, 3) == 'Win') {
                             delimiter = ';';
-                            encoding = 'cp1252';
                         }
                         var csv = Papa.unparse(unparse_obj, {
                             quoteChar: '"',
                             delimiter: delimiter,
                         });
+                        if (navigator.platform &&
+                            navigator.platform.slice(0, 3) == 'Win') {
+                            csv = Sao.BOM_UTF8 + csv;
+                        }
                         Sao.common.download_file(
                             csv, export_.name + '.csv',
-                            {'type': 'text/csv;charset=' + encoding});
+                            {'type': 'text/csv;charset=utf-8'});
                     });
             }.bind(this));
         },

@@ -336,6 +336,8 @@ var Sao = {};
     };
     Sao.i18n.locale = {};
 
+    Sao.BOM_UTF8 = '\uFEFF';
+
     Sao.get_preferences = function() {
         var session = Sao.Session.current_session;
         return session.reload_context().then(function() {
