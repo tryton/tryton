@@ -1028,6 +1028,203 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="root"/>
         </record>
 
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_taux_normal">
+            <field name="name">T.V.A. Achat hors communauté de services Taux Normal</field>
+            <field name="description">T.V.A. Taux Normal</field>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_20">
+            <field name="name">T.V.A. Achat hors communauté de services 20%</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_taux_normal"/>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_20_1">
+            <field name="name">T.V.A. Achat hors communauté de services 20% (1)</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_20"/>
+            <field name="rate" eval="Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_20_2">
+            <field name="name">T.V.A. Achat hors communauté de services 20% (2)</field>
+            <field name="description">T.V.A. 20%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_20"/>
+            <field name="rate" eval="-Decimal('.20')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_19_6">
+            <field name="name">T.V.A. Achat hors communauté de services 19,6%</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_taux_normal"/>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_19_6_1">
+            <field name="name">T.V.A. Achat hors communauté de services 19,6% (1)</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_19_6"/>
+            <field name="rate" eval="Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_19_6_2">
+            <field name="name">T.V.A. Achat hors communauté de services 19,6% (2)</field>
+            <field name="description">T.V.A. 19,6%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_19_6"/>
+            <field name="rate" eval="-Decimal('.196')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_taux_intermediaire">
+            <field name="name">T.V.A. Achat hors communauté de services Taux Intermédiaire</field>
+            <field name="description">T.V.A. Taux Intermédiaire</field>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="rate" eval="None"/>
+            <field name="type">none</field>
+            <field name="invoice_account" eval="None"/>
+            <field name="credit_note_account" eval="None"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_10">
+            <field name="name">T.V.A. Achat hors communauté de services 10%</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_taux_intermediaire"/>
+            <field name="start_date" eval="datetime.date(2014, 1, 1)"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_10_1">
+            <field name="name">T.V.A. Achat hors communauté de services 10% (1)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_10"/>
+            <field name="rate" eval="Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_10_2">
+            <field name="name">T.V.A. Achat hors communauté de services 10% (2)</field>
+            <field name="description">T.V.A. 10%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_10"/>
+            <field name="rate" eval="-Decimal('.10')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_7">
+            <field name="name">T.V.A. Achat hors_communaute de services 7%</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_taux_intermediaire"/>
+            <field name="end_date" eval="datetime.date(2013, 12, 31)"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_7_1">
+            <field name="name">T.V.A. Achat hors communauté de services 7% (1)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_7"/>
+            <field name="rate" eval="Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_7_2">
+            <field name="name">T.V.A. Achat hors communauté de services 7% (2)</field>
+            <field name="description">T.V.A. 7%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_7"/>
+            <field name="rate" eval="-Decimal('.07')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_5_5">
+            <field name="name">T.V.A. Achat hors communauté de services 5,5%</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_5_5_1">
+            <field name="name">T.V.A. Achat hors communauté de services 5,5% (1)</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_5_5"/>
+            <field name="rate" eval="Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_5_5_2">
+            <field name="name">T.V.A. Achat hors communauté de services 5,5% (2)</field>
+            <field name="description">T.V.A. 5,5%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_5_5"/>
+            <field name="rate" eval="-Decimal('.055')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_2_1">
+            <field name="name">T.V.A. Achat hors communauté de services 2,1%</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="type">none</field>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_2_1_1">
+            <field name="name">T.V.A. Achat hors communauté de services 2,1% (1)</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_2_1"/>
+            <field name="rate" eval="Decimal('.021')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="44566"/>
+            <field name="credit_note_account" ref="44566"/>
+            <field name="account" ref="root"/>
+        </record>
+        <record model="account.tax.template" id="tva_achat_hors_communaute_services_2_1_2">
+            <field name="name">T.V.A. Achat hors communauté de services 2,1% (2)</field>
+            <field name="description">T.V.A. 2,1%</field>
+            <field name="parent" ref="tva_achat_hors_communaute_services_2_1"/>
+            <field name="rate" eval="-Decimal('.021')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="4452"/>
+            <field name="credit_note_account" ref="4452"/>
+            <field name="account" ref="root"/>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_fr">
             <field name="name">Plan de codes de taxe (French)</field>
@@ -1074,13 +1271,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="tax_code_0032-tva_vente_services_hors_communaute">
-            <field name="code" ref="tax_code_0032"/>
-            <field name="tax" ref="tva_vente_services_hors_communaute"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
 
         <record model="account.tax.code.template" id="tax_code_0033">
             <field name="name">Autres opérations non imposables</field>
@@ -1091,6 +1281,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0033-tva_vente_intracommunautaire_services_0">
             <field name="code" ref="tax_code_0033"/>
             <field name="tax" ref="tva_vente_intracommunautaire_services_0"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0033-tva_vente_services_hors_communaute">
+            <field name="code" ref="tax_code_0033"/>
+            <field name="tax" ref="tva_vente_services_hors_communaute"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
@@ -1188,14 +1385,21 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0206b-tva_achat_intracommunautaire_biens_19_6_1">
             <field name="code" ref="tax_code_0206b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_biens_19_6_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
         <record model="account.tax.code.line.template" id="tax_code_0206b-tva_achat_intracommunautaire_services_19_6_1">
             <field name="code" ref="tax_code_0206b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_19_6_1"/>
-            <field name="operator">-</field>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0206b-tva_achat_hors_communaute_services_19_6_1">
+            <field name="code" ref="tax_code_0206b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_19_6_1"/>
+            <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
@@ -1234,6 +1438,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0207b-tva_achat_hors_communaute_services_20_1">
+            <field name="code" ref="tax_code_0207b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_20_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0105b">
             <field name="name">Taux réduit 5,5% (base)</field>
@@ -1265,6 +1476,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0105b-tva_achat_intracommunautaire_services_5_5_1">
             <field name="code" ref="tax_code_0105b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_5_5_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0105b-tva_achat_hors_communaute_services_5_5_1">
+            <field name="code" ref="tax_code_0105b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_5_5_1"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
@@ -1339,6 +1557,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_hors_communaute_services_10_1">
+            <field name="code" ref="tax_code_0151b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0151b-tva_achat_hors_communaute_services_7_1">
+            <field name="code" ref="tax_code_0151b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_7_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0201b">
             <field name="name">Taux normal 8,5% (base)</field>
@@ -1349,6 +1581,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0201b-tva_vente_biens_8_5">
             <field name="code" ref="tax_code_0201b"/>
             <field name="tax" ref="tva_vente_biens_8_5"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0201b-tva_vente_services_8_5">
+            <field name="code" ref="tax_code_0201b"/>
+            <field name="tax" ref="tva_vente_services_8_5"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
@@ -1398,6 +1637,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0100b-tva_achat_intracommunautaire_services_2_1_1">
             <field name="code" ref="tax_code_0100b"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_2_1_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0100b-tva_achat_hors_communaute_services_2_1_1">
+            <field name="code" ref="tax_code_0100b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1_1"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
@@ -1654,6 +1900,90 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_imposables_base"/>
             <field name="account" ref="root"/>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_20_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_20_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_20_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_20_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_19_6_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_19_6_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_19_6_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_19_6_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_10_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_10_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_7_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_7_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_7_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_7_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_5_5_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_5_5_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_5_5_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_5_5_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_2_1_1_1">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0981b-tva_achat_hors_communaute_services_2_1_1_2">
+            <field name="code" ref="tax_code_0981b"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1_1"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0031b">
             <field name="name">Acquisitions intracommunautaires (base)</field>
@@ -1898,6 +2228,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0206-tva_achat_hors_communaute_services_19_6_1">
+            <field name="code" ref="tax_code_0206"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_19_6_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0207">
             <field name="name">Taux normal 20%</field>
@@ -1929,6 +2266,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0207-tva_achat_intracommunautaire_services_20_1">
             <field name="code" ref="tax_code_0207"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_20_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0207-tva_achat_hors_communaute_services_20_1">
+            <field name="code" ref="tax_code_0207"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_20_1"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
@@ -2038,6 +2382,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0151-tva_achat_hors_communaute_services_10_1">
+            <field name="code" ref="tax_code_0151"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0151-tva_achat_hors_communaute_services_7_1">
+            <field name="code" ref="tax_code_0151"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_7_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0201">
             <field name="name">Taux normal 8,5%</field>
@@ -2104,6 +2462,13 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="tax_code_0100-tva_achat_intracommunautaire_services_2_1_1">
             <field name="code" ref="tax_code_0100"/>
             <field name="tax" ref="tva_achat_intracommunautaire_services_2_1_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0100-tva_achat_hors_communaute_services_2_1_1">
+            <field name="code" ref="tax_code_0100"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1_1"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
@@ -2672,6 +3037,48 @@ this repository contains the full copyright notices and license terms. -->
             <field name="parent" ref="tax_code_II"/>
             <field name="account" ref="root"/>
         </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_20_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_20_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_19_6_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_19_6_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_10_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_10_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_7_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_7_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_5_5_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_5_5_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="tax_code_0702-tva_achat_hors_communaute_services_2_1_1">
+            <field name="code" ref="tax_code_0702"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
 
         <record model="account.tax.code.template" id="tax_code_0703">
             <field name="name">TVA déductible sur immobilisations</field>
@@ -3177,11 +3584,43 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule" ref="tax_rule_achats_hors_communaute"/>
             <field name="group" ref="group_tva_achat_biens"/>
         </record>
-        <record model="account.tax.rule.line.template"
+        <record
+            model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_services_tx_normal">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_taux_normal"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_taux_normal"/>
+        </record>
+        <record
+            model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_services_tx_intermediaire">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_taux_intermediaire"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_taux_intermediaire"/>
+        </record>
+        <record
+            model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_services_tx_5_5">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_5_5"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_5_5"/>
+        </record>
+        <record
+            model="account.tax.rule.line.template"
+            id="tax_rule_achats_hors_communaute_services_tx_2_1">
+            <field name="rule" ref="tax_rule_achats_hors_communaute"/>
+            <field name="group" ref="group_tva_achat_services"/>
+            <field name="origin_tax" ref="tva_achat_services_2_1"/>
+            <field name="tax" ref="tva_achat_hors_communaute_services_2_1"/>
+        </record>
+        <record
+            model="account.tax.rule.line.template"
             id="tax_rule_achats_hors_communaute_2">
             <field name="rule" ref="tax_rule_achats_hors_communaute"/>
             <field name="group" ref="group_tva_achat_services"/>
         </record>
-
     </data>
 </tryton>
