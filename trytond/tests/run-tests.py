@@ -13,7 +13,7 @@ from trytond.config import config
 if __name__ != '__main__':
     raise ImportError('%s can not be imported' % __name__)
 
-logging.basicConfig(level=logging.ERROR)
+logging.disable()
 parser = argparse.ArgumentParser()
 parser.add_argument("-c", "--config", dest="config",
     help="specify config file")
