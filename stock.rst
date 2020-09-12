@@ -8,6 +8,9 @@ Stock
     `Stock </projects/modules-stock/en/latest>`_
         Fundamentals to manage warehouses.
 
+    `Assign Manual </projects/modules-stock-assign-manual/en/latest>`_
+        Manually decide where to pick products.
+
     `Consignment </projects/modules-stock-consignment/en/latest>`_
         Manages consignment stock from supplier or at customer warehouse.
 
