@@ -19,6 +19,10 @@
         var height = '';
         if (!el.parents('.form').length &&
             !el.parents('#menu').length) {
+            var vh = '100vh';
+            if (el.parents('.modal-body').length) {
+                vh = el.parents('.modal-body').css('max-height');
+            }
             var padding = ' ';
             el.parents('.panel-body').each(function(i, panel) {
                 panel = jQuery(panel);
@@ -37,7 +41,7 @@
                 }
             });
             var y = el[0].getBoundingClientRect().y;
-            height = 'calc(100vh - ' + y + 'px' + padding + box_shadow + ')';
+            height = 'calc(' + vh + ' - ' + y + 'px' + padding + box_shadow + ')';
         }
         el.css('height', height);
     }
