@@ -54,6 +54,7 @@ class Pool(object):
     _pool = {}
     test = False
     _instances = {}
+    _modules = None
 
     def __new__(cls, database_name=None):
         if database_name is None:
@@ -155,6 +156,7 @@ class Pool(object):
                 return
             logger.info('init pool for "%s"', self.database_name)
             self._pool.setdefault(self.database_name, {})
+            self._modules = []
             # Clean the _pool before loading modules
             for type in self.classes.keys():
                 self._pool[self.database_name][type] = {}
@@ -164,6 +166,7 @@ class Pool(object):
                     activatedeps=activatedeps)
             except Exception:
                 del self._pool[self.database_name]
+                self._modules = None
                 raise
             if restart:
                 self.init()
@@ -186,10 +189,12 @@ class Pool(object):
             if type == 'report':
                 from trytond.report import Report
                 # Keyword argument 'type' conflicts with builtin function
-                cls = builtins.type(str(name), (Report,), {})
+                cls = builtins.type(name, (Report,), {'__slots__': ()})
                 cls.__setup__()
+                cls.__post_setup__()
                 self.add(cls, type)
-                return cls
+                self.setup_mixin(self._modules, type='report', name=name)
+                return self.get(name, type=type)
             raise
 
     def add(self, cls, type='model'):
@@ -229,6 +234,7 @@ class Pool(object):
                 assert issubclass(cls, PoolBase), cls
                 self.add(cls, type=type_)
                 classes[type_].append(cls)
+        self._modules.append(module)
         return classes
 
     def setup(self, classes=None):
@@ -244,18 +250,25 @@ class Pool(object):
             for cls in lst:
                 cls.__post_setup__()
 
-    def setup_mixin(self, modules):
+    def setup_mixin(self, modules, type=None, name=None):
         logger.info('setup mixin for "%s"', self.database_name)
+        if type is not None:
+            types = [type]
+        else:
+            types = self.classes.keys()
         for module in modules:
             if module not in self.classes_mixin:
                 continue
-            for type_ in self.classes.keys():
-                for _, cls in self.iterobject(type=type_):
+            for type_ in types:
+                for kname, cls in self.iterobject(type=type_):
+                    if name is not None and kname != name:
+                        continue
                     for parent, mixin in self.classes_mixin[module]:
                         if (not issubclass(cls, parent)
                                 or issubclass(cls, mixin)):
                             continue
-                        cls = type(cls.__name__, (mixin, cls), {})
+                        cls = builtins.type(
+                            cls.__name__, (mixin, cls), {'__slots__': ()})
                         self.add(cls, type=type_)
 
 
