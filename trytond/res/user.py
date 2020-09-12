@@ -326,7 +326,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         Session = Pool().get('ir.session')
         now = datetime.datetime.now()
         timeout = datetime.timedelta(
-            seconds=config.getint('session', 'timeout'))
+            seconds=config.getint('session', 'max_age'))
         result = dict((u.id, 0) for u in users)
         with Transaction().set_user(0):
             for sub_ids in grouped_slice(users):
