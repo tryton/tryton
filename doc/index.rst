@@ -75,14 +75,11 @@ due.
 Configuration
 *************
 
-The marketing_automation modules uses parameters from the section:
-
-- `[email]`:
-
-    - `from`: The default `From` for the email.
+The marketing_automation module uses parameters from the section:
 
 - `[marketing]`:
 
+    - `email_from`: The default `From` for the email.
     - `automation_base`: The base URL without a path for the unsubscribe URL
       and the empty image.
       The default value is created using the configuration `[web]` `hostname`.

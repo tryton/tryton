@@ -595,7 +595,9 @@ class Activity(ModelSQL, ModelView):
             .render())
 
         msg = MIMEMultipart('alternative')
-        msg['From'] = self.email_from or config.get('email', 'from')
+        msg['From'] = (self.email_from
+            or config.get('marketing', 'email_from')
+            or config.get('email', 'from'))
         msg['To'] = to
         msg['Subject'] = Header(title, 'utf-8')
         if html2text:
