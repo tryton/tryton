@@ -636,56 +636,51 @@
         Sao.ScreenContainer.BetweenDates, {
         build_entry: function(placeholder, el) {
                 var entry = jQuery('<div/>', {
-                    'class': 'input-group input-group-sm'
+                    'class': 'input-group input-group-sm',
+                    'data-target-input': 'nearest',
                 }).appendTo(el);
+                entry.uniqueId();
                 jQuery('<span/>', {
                     'class': 'input-group-btn'
                 }).append(jQuery('<button/>', {
-                    'class': 'datepickerbutton btn btn-default',
+                    'class': 'btn btn-default',
                     type: 'button',
                     'tabindex': -1,
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
+                    'data-target': '#' + entry.attr('id'),
+                    'data-toggle': 'datetimepicker',
                 }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                 )).appendTo(entry);
                 jQuery('<input/>', {
-                    'class': 'form-control input-sm',
+                    'class': ('form-control input-sm datetimepicker-input ' +
+                        'mousetrap'),
                     type: 'text',
                     placeholder: placeholder,
+                    'data-target': '#' + entry.attr('id'),
                 }).appendTo(entry);
                 entry.datetimepicker({
-                    'locale': moment.locale(),
+                    'locale': Sao.common.moment_format(this.format),
                     'keyBinds': null,
-                });
-                entry.data('DateTimePicker').format(this.format);
-                // We must set the overflow of the modal-body
-                // containing the input to visible to prevent vertical scrollbar
-                // inherited from the auto overflow-x
-                // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
-                entry.on('dp.hide', function() {
-                    entry.closest('.modal-body').css('overflow', '');
-                });
-                entry.on('dp.show', function() {
-                    entry.closest('.modal-body').css('overflow', 'visible');
+                    'useCurrent': false,
                 });
 
                 var mousetrap = new Mousetrap(el[0]);
 
                 mousetrap.bind('enter', function(e, combo) {
-                    entry.data('DateTimePicker').date();
+                    entry.datetimepicker('date');
                 });
                 mousetrap.bind('=', function(e, combo) {
                     e.preventDefault();
-                    entry.data('DateTimePicker').date(moment());
+                    entry.datetimepicker('date', moment());
                 });
 
                 Sao.common.DATE_OPERATORS.forEach(function(operator) {
                     mousetrap.bind(operator[0], function(e, combo) {
                         e.preventDefault();
-                        var dp = entry.data('DateTimePicker');
-                        var date = dp.date();
+                        var date = entry.datetimepicker('date');
                         date.add(operator[1]);
-                        dp.date(date);
+                        entry.datetimepicker('date', date);
                     });
                 });
                 return entry;

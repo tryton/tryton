@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                     'bower_components/bootstrap',
                     'bower_components/bootstrap/less',
                     'bower_components/bootstrap-rtl-ondemand/less',
-                    'bower_components/eonasdan-bootstrap-datetimepicker/src/less',
+                    'bower_components/tempusdominus-bootstrap-3/src/less/',
                 ]
             },
             files: {

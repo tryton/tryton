@@ -1566,16 +1566,21 @@ function eval_pyson(value){
             this.date = this.labelled = jQuery('<div/>', {
                 'class': ('input-group input-group-sm ' +
                     'input-icon input-icon-primary'),
+                'data-target-input': 'nearest',
             }).appendTo(this.el);
+            this.date.uniqueId();
             Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                 .appendTo(jQuery('<div/>', {
-                    'class': 'datepickerbutton icon-input icon-primary',
+                    'class': 'icon-input icon-primary',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
+                    'data-target': '#' + this.date.attr('id'),
+                    'data-toggle': 'datetimepicker',
                 }).appendTo(this.date));
             this.input = jQuery('<input/>', {
                 'type': 'text',
-                'class': 'form-control input-sm mousetrap',
+                'class': 'form-control input-sm datetimepicker-input mousetrap',
+                'data-target': '#' + this.date.attr('id'),
                 'name': attributes.name,
             }).appendTo(this.date);
             this.date.datetimepicker({
@@ -1584,32 +1589,18 @@ function eval_pyson(value){
                 'useCurrent': false,
             });
             this.date.css('max-width', this._width);
-            this.date.on('dp.change', this.focus_out.bind(this));
-            // We must set the overflow of the treeview and modal-body
-            // containing the input to visible to prevent vertical scrollbar
-            // inherited from the auto overflow-x
-            // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
-            this.date.on('dp.hide', function() {
-                this.date.closest('.treeview').css('overflow', '');
-                this.date.closest('.modal-body').css('overflow', '');
-                this.date.closest('.form-group_').css('overflow', 'auto');
-            }.bind(this));
-            this.date.on('dp.show', function() {
-                this.date.closest('.treeview').css('overflow', 'visible');
-                this.date.closest('.modal-body').css('overflow', 'visible');
-                this.date.closest('.form-group_').css('overflow', 'visible');
-            }.bind(this));
+            this.date.on('change.datetimepicker', this.focus_out.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
             mousetrap.bind('enter', function(e, combo) {
                 if (!this.date.find('input').prop('readonly')) {
-                    this.date.data('DateTimePicker').date();
+                    this.date.datetimepicker('date');
                 }
             }.bind(this));
             mousetrap.bind('=', function(e, combo) {
                 if (!this.date.find('input').prop('readonly')) {
                     e.preventDefault();
-                    this.date.data('DateTimePicker').date(moment());
+                    this.date.datetimepicker('date', moment());
                 }
             }.bind(this));
 
@@ -1619,10 +1610,9 @@ function eval_pyson(value){
                         return;
                     }
                     e.preventDefault();
-                    var dp = this.date.data('DateTimePicker');
-                    var date = dp.date();
+                    var date = this.date.datetimepicker('date');
                     date.add(operator[1]);
-                    dp.date(date);
+                    this.date.datetimepicker('date', date);
                 }.bind(this));
             }.bind(this));
         },
@@ -1630,7 +1620,7 @@ function eval_pyson(value){
             return this.field.date_format(this.record);
         },
         get_value: function() {
-            var value = this.date.data('DateTimePicker').date();
+            var value = this.date.datetimepicker('date');
             if (value) {
                 value.isDate = true;
             }
@@ -1640,8 +1630,8 @@ function eval_pyson(value){
             var record = this.record;
             var field = this.field;
             if (record && field) {
-                this.date.data('DateTimePicker').format(
-                    Sao.common.moment_format(this.get_format()));
+                this.date.datetimepicker(
+                    'format', Sao.common.moment_format(this.get_format()));
             }
             Sao.View.Form.Date._super.display.call(this);
             var value;
@@ -1650,11 +1640,11 @@ function eval_pyson(value){
             } else {
                 value = null;
             }
-            this.date.off('dp.change');
+            this.date.off('change.datetimepicker');
             try {
-                this.date.data('DateTimePicker').date(value);
+                this.date.datetimepicker('date', value);
             } finally {
-                this.date.on('dp.change', this.focus_out.bind(this));
+                this.date.on('change.datetimepicker', this.focus_out.bind(this));
             }
         },
         focus: function() {
@@ -1686,7 +1676,7 @@ function eval_pyson(value){
             return field.date_format(record) + ' ' + field.time_format(record);
         },
         get_value: function() {
-            var value = this.date.data('DateTimePicker').date();
+            var value = this.date.datetimepicker('date');
             if (value) {
                 value.isDateTime = true;
             }
@@ -1701,7 +1691,7 @@ function eval_pyson(value){
             return this.field.time_format(this.record);
         },
         get_value: function() {
-            var value = this.date.data('DateTimePicker').date();
+            var value = this.date.datetimepicker('date');
             if (value) {
                 value.isTime = true;
             }
@@ -4788,64 +4778,57 @@ function eval_pyson(value){
             Sao.View.Form.Dict.Date._super.create_widget.call(this);
             this.date = this.input.parent();
             this.date.addClass('input-icon input-icon-primary');
+            this.date.attr('data-target-input', 'nearest');
+            this.date.uniqueId();
             Sao.common.ICONFACTORY.get_icon_img('tryton-date')
                 .appendTo(jQuery('<div/>', {
-                    'class': 'datepickerbutton icon-input icon-primary',
+                    'class': 'icon-input icon-primary',
                     'aria-label': Sao.i18n.gettext("Open the calendar"),
                     'title': Sao.i18n.gettext("Open the calendar"),
+                    'data-target': '#' + this.date.attr('id'),
+                    'data-toggle': 'datetimepicker',
                 }).prependTo(this.date));
+            this.input.addClass('datetimepicker-input');
+            this.input.data('target', '#' + this.date.attr('id'));
             this.date.datetimepicker({
                 'format': Sao.common.moment_format(this.format),
                 'locale': moment.locale(),
                 'keyBinds': null,
                 'useCurrent': false,
             });
-            this.date.on('dp.change',
+            this.date.on('change.datetimepicker',
                     this.parent_widget.focus_out.bind(this.parent_widget));
-            // We must set the overflow of the treeview and modal-body
-            // containing the input to visible to prevent vertical scrollbar
-            // inherited from the auto overflow-x
-            // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
-            this.date.on('dp.hide', function() {
-                this.date.closest('.treeview').css('overflow', '');
-                this.date.closest('.modal-body').css('overflow', '');
-            }.bind(this));
-            this.date.on('dp.show', function() {
-                this.date.closest('.treeview').css('overflow', 'visible');
-                this.date.closest('.modal-body').css('overflow', 'visible');
-            }.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
             mousetrap.bind(['enter', '='], function(e, combo) {
                 if (e.which != Sao.common.RETURN_KEYCODE) {
                     e.preventDefault();
                 }
-                this.date.data('DateTimePicker').date(moment());
+                this.date.datetimepicker('date', moment());
             }.bind(this));
 
             Sao.common.DATE_OPERATORS.forEach(function(operator) {
                 mousetrap.bind(operator[0], function(e, combo) {
                     e.preventDefault();
-                    var dp = this.date.data('DateTimePicker');
-                    var date = dp.date();
+                    var date = this.date.datetimepicker('date');
                     date.add(operator[1]);
-                    dp.date(date);
+                    this.date.datetimepicker('date', date);
                 }.bind(this));
             }.bind(this));
         },
         get_value: function() {
-            var value = this.date.data('DateTimePicker').date();
+            var value = this.date.datetimepicker('date');
             if (value) {
                 value.isDate = true;
             }
             return value;
         },
         set_value: function(value) {
-            this.date.off('dp.change');
+            this.date.off('change.datetimepicker');
             try {
-                this.date.data('DateTimePicker').date(value);
+                this.date.datetimepicker('date', value);
             } finally {
-                this.date.on('dp.change',
+                this.date.on('change.datetimepicker',
                     this.parent_widget.focus_out.bind(this.parent_widget));
             }
         }
@@ -4855,7 +4838,7 @@ function eval_pyson(value){
         class_: 'dict-datetime',
         format: '%x %X',
         get_value: function() {
-            var value = this.date.data('DateTimePicker').date();
+            var value = this.date.datetimepicker('date');
             if (value) {
                 value.isDateTime = true;
             }

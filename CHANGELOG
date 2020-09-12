@@ -1,3 +1,4 @@
+* Use tempusdominus and Popper for date time picker
 * Support PYSON comparison of date and datetime
 * Customize bootstrap default style
 * Set field's name as input's name attribute

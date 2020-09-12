@@ -2559,6 +2559,11 @@
         init: function(view, attributes) {
             Sao.View.EditableTree.Date._super.init.call(
                 this, view, attributes);
+            // XXX: click event does not work in editable
+            // so we manage it ourselves to toggle the picker.
+            this.date.find('.icon-input').removeAttr('data-toggle').click(function() {
+                this.date.datetimepicker('toggle');
+            }.bind(this));
             Sao.View.EditableTree.editable_mixin(this);
         }
     });

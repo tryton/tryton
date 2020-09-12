@@ -2,7 +2,7 @@
    this repository contains the full copyright notices and license terms. */
 @import "bootstrap";
 @import "bootstrap-rtl";
-@import "bootstrap-datetimepicker-build";
+@import "_tempusdominus-bootstrap-3";
 @import "sao-variables";
 html[theme="default"] {
     @import "theme";
@@ -679,6 +679,10 @@ input.column-boolean {
             white-space: nowrap;
         }
     }
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    z-index: 2000;
 }
 
 @media screen and (max-width: @screen-xs-max) {
