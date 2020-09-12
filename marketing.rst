@@ -10,3 +10,6 @@ Marketing
 
     `Automation </projects/modules-marketing-automation/en/latest>`_
         Uses scenario.
+
+    `E-mail </projects/modules-marketing-email/en/latest>`_
+        Manage mailing lists.
