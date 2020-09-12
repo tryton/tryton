@@ -7,7 +7,7 @@ from functools import partial
 
 from sql import Null
 
-from trytond.cache import Cache
+from trytond.cache import Cache, MemoryCache
 from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import (
@@ -544,6 +544,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         help='Python dictonary where keys define "to" "cc" "subject"\n'
         "Example: {'to': 'test@example.com', 'cc': 'user@example.com'}")
     pyson_email = fields.Function(fields.Char('PySON Email'), 'get_pyson')
+    _template_cache = MemoryCache('ir.action.report.template', context=False)
 
     @classmethod
     def __register__(cls, module_name):
@@ -706,7 +707,14 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
                 args.extend((reports, values))
             reports, values = args[:2]
             args = args[2:]
+        cls._template_cache.clear()
         super(ActionReport, cls).write(reports, values, *args)
+
+    def get_template_cached(self):
+        return self._template_cache.get(self.id)
+
+    def set_template_cached(self, template):
+        self._template_cache.set(self.id, template)
 
 
 class ActionActWindow(ActionMixin, ModelSQL, ModelView):

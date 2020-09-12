@@ -72,6 +72,8 @@ class Translation(ModelSQL, ModelView):
     overriding_module = fields.Char('Overriding Module', readonly=True)
     _translation_cache = Cache('ir.translation', size_limit=10240,
         context=False)
+    _translation_report_cache = Cache(
+        'ir.translation.get_report', context=False)
     _get_language_cache = Cache('ir.translation.get_language')
 
     @classmethod
@@ -573,6 +575,29 @@ class Translation(ModelSQL, ModelView):
         return res
 
     @classmethod
+    def get_report(cls, report_name, text):
+        language = Transaction().language
+        key = (report_name, language)
+        if cls._translation_report_cache.get(key) is None:
+            cache = {}
+            code = language
+            while code:
+                translations = cls.search([
+                        ('lang', '=', code),
+                        ('type', '=', 'report'),
+                        ('name', '=', report_name),
+                        ('value', '!=', ''),
+                        ('value', '!=', None),
+                        ('fuzzy', '=', False),
+                        ('res_id', '=', -1),
+                        ], order=[('module', 'DESC')])
+                for translation in translations:
+                    cache.setdefault(translation.src, translation.value)
+                code = get_parent(code)
+            cls._translation_report_cache.set(key, cache)
+        return cls._translation_report_cache.get(key, {}).get(text, text)
+
+    @classmethod
     def delete(cls, translations):
         pool = Pool()
         Message = pool.get('ir.message')
@@ -582,6 +607,7 @@ class Translation(ModelSQL, ModelView):
         Model._get_name_cache.clear()
         ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
+        cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return super(Translation, cls).delete(translations)
 
@@ -595,6 +621,7 @@ class Translation(ModelSQL, ModelView):
         Model._get_name_cache.clear()
         ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
+        cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
         vlist = [x.copy() for x in vlist]
 
@@ -614,6 +641,7 @@ class Translation(ModelSQL, ModelView):
         Model._get_name_cache.clear()
         ModelField._get_name_cache.clear()
         cls._translation_cache.clear()
+        cls._translation_report_cache.clear()
         ModelView._fields_view_get_cache.clear()
         return super(Translation, cls).write(*args)
 

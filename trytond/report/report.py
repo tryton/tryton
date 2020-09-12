@@ -98,42 +98,12 @@ class ReportFactory:
 
 class TranslateFactory:
 
-    def __init__(self, report_name, language, translation):
+    def __init__(self, report_name, translation):
         self.report_name = report_name
-        self.language = language
         self.translation = translation
-        self.cache = {}
 
     def __call__(self, text):
-        from trytond.ir.lang import get_parent_language
-        if self.language not in self.cache:
-            cache = self.cache[self.language] = {}
-            code = self.language
-            while code:
-                # Order to get empty module/custom report first
-                translations = self.translation.search([
-                    ('lang', '=', code),
-                    ('type', '=', 'report'),
-                    ('name', '=', self.report_name),
-                    ('value', '!=', ''),
-                    ('value', '!=', None),
-                    ('fuzzy', '=', False),
-                    ('res_id', '=', -1),
-                    ], order=[('module', 'DESC')])
-                for translation in translations:
-                    cache.setdefault(translation.src, translation.value)
-                code = get_parent_language(code)
-        return self.cache[self.language].get(text, text)
-
-    def set_language(self, language=None):
-        pool = Pool()
-        Config = pool.get('ir.configuration')
-        Lang = pool.get('ir.lang')
-        if isinstance(language, Lang):
-            language = language.code
-        if not language:
-            language = Config.get_language()
-        self.language = language
+        return self.translation.get_report(self.report_name, text)
 
 
 class Report(URLMixin, PoolBase):
@@ -208,8 +178,11 @@ class Report(URLMixin, PoolBase):
 
     @classmethod
     def _execute(cls, records, data, action):
-        report_context = cls.get_context(records, data)
-        return cls.convert(action, cls.render(action, report_context))
+        # Ensure to restore original context
+        # set_lang may modify it
+        with Transaction().set_context(Transaction().context):
+            report_context = cls.get_context(records, data)
+            return cls.convert(action, cls.render(action, report_context))
 
     @classmethod
     def _get_records(cls, ids, model, data):
@@ -257,6 +230,7 @@ class Report(URLMixin, PoolBase):
     def get_context(cls, records, data):
         pool = Pool()
         User = pool.get('res.user')
+        Lang = pool.get('ir.lang')
 
         report_context = {}
         report_context['data'] = data
@@ -270,53 +244,41 @@ class Report(URLMixin, PoolBase):
         report_context['format_number'] = cls.format_number
         report_context['datetime'] = datetime
 
+        def set_lang(language=None):
+            if isinstance(language, Lang):
+                language = language.code
+            Transaction().set_context(language=language)
+        report_context['set_lang'] = set_lang
+
         return report_context
 
     @classmethod
-    def _prepare_template_file(cls, report):
-        # Convert to str as value from DB is not supported by StringIO
-        report_content = (bytes(report.report_content) if report.report_content
-            else None)
-        if not report_content:
-            raise Exception('Error', 'Missing report file!')
-
-        fd, path = tempfile.mkstemp(
-            suffix=(os.extsep + report.template_extension),
-            prefix='trytond_')
-        with open(path, 'wb') as f:
-            f.write(report_content)
-        return fd, path
-
-    @classmethod
-    def _add_translation_hook(cls, relatorio_report, context):
-        pool = Pool()
-        Translation = pool.get('ir.translation')
-
-        translate = TranslateFactory(cls.__name__, Transaction().language,
-            Translation)
-        context['set_lang'] = lambda language: translate.set_language(language)
-        translator = Translator(lambda text: translate(text))
-        relatorio_report.filters.insert(0, translator)
+    def _callback_loader(cls, report, template):
+        if report.translatable:
+            pool = Pool()
+            Translation = pool.get('ir.translation')
+            translate = TranslateFactory(cls.__name__, Translation)
+            translator = Translator(lambda text: translate(text))
+            # Do not use Translator.setup to add filter at the end
+            # after set_lang evaluation
+            template.filters.append(translator)
+            if hasattr(template, 'add_directives'):
+                template.add_directives(Translator.NAMESPACE, translator)
 
     @classmethod
     def render(cls, report, report_context):
         "calls the underlying templating engine to renders the report"
-        fd, path = cls._prepare_template_file(report)
-
-        mimetype = MIMETYPES[report.template_extension]
-        rel_report = relatorio.reporting.Report(path, mimetype,
-                ReportFactory(), relatorio.reporting.MIMETemplateLoader())
-        if report.translatable:
-            cls._add_translation_hook(rel_report, report_context)
-        else:
-            report_context['set_lang'] = lambda language: None
-
-        data = rel_report(**report_context).render()
+        template = report.get_template_cached()
+        if template is None:
+            mimetype = MIMETYPES[report.template_extension]
+            loader = relatorio.reporting.MIMETemplateLoader()
+            klass = loader.factories[loader.get_type(mimetype)]
+            template = klass(BytesIO(report.report_content))
+            cls._callback_loader(report, template)
+            report.set_template_cached(template)
+        data = template.generate(**report_context).render()
         if hasattr(data, 'getvalue'):
             data = data.getvalue()
-        os.close(fd)
-        os.remove(path)
-
         return data
 
     @classmethod
