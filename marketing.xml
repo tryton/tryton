@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.icon" id="mail_icon">
+            <field name="name">tryton-marketing-mail</field>
+            <field name="path">icons/tryton-marketing-mail.svg</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_view_form">
+            <field name="model">marketing.email</field>
+            <field name="type">form</field>
+            <field name="name">email_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_view_list">
+            <field name="model">marketing.email</field>
+            <field name="type">tree</field>
+            <field name="name">email_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_relate_list">
+            <field name="name">E-mails</field>
+            <field name="res_model">marketing.email</field>
+            <field name="domain" eval="[('list_', '=', Eval('active_id'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_email_relate_list_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.email.list,-1</field>
+            <field name="action" ref="act_email_relate_list"/>
+        </record>
+
+        <record model="ir.model.access" id="access_email">
+            <field name="model" search="[('model', '=', 'marketing.email')]"/>
+            <field name="perm_read" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_marketing_email">
+            <field name="model" search="[('model', '=', 'marketing.email')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.ui.view" id="email_list_view_form">
+            <field name="model">marketing.email.list</field>
+            <field name="type">form</field>
+            <field name="name">email_list_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_list_view_list">
+            <field name="model">marketing.email.list</field>
+            <field name="type">tree</field>
+            <field name="name">email_list_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_list_form">
+            <field name="name">Mailing Lists</field>
+            <field name="res_model">marketing.email.list</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_list_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_list_view_list"/>
+            <field name="act_window" ref="act_email_list_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_list_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_list_view_form"/>
+            <field name="act_window" ref="act_email_list_form"/>
+        </record>
+        <menuitem parent="marketing.menu_marketing" action="act_email_list_form" id="menu_email_list_form"/>
+
+        <record model="ir.model.access" id="access_email_list">
+            <field name="model" search="[('model', '=', 'marketing.email.list')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_list_marketing_email">
+            <field name="model" search="[('model', '=', 'marketing.email.list')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.report" id="report_email_subscribe">
+            <field name="name">Subscribe Request</field>
+            <field name="model">marketing.email</field>
+            <field name="report_name">marketing.email.subscribe</field>
+            <field name="report">marketing_email/email_subscribe.html</field>
+            <field name="template_extension">html</field>
+        </record>
+        <record model="ir.action.report" id="report_email_unsubscribe">
+            <field name="name">Unsubscribe Request</field>
+            <field name="model">marketing.email</field>
+            <field name="report_name">marketing.email.unsubscribe</field>
+            <field name="report">marketing_email/email_unsubscribe.html</field>
+            <field name="template_extension">html</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_message_view_form">
+            <field name="model">marketing.email.message</field>
+            <field name="type">form</field>
+            <field name="name">email_message_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="email_message_view_list">
+            <field name="model">marketing.email.message</field>
+            <field name="type">tree</field>
+            <field name="name">email_message_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_email_message_form">
+            <field name="name">Messages</field>
+            <field name="res_model">marketing.email.message</field>
+            <field name="domain" eval="[('list_', '=', Eval('active_id'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_message_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="email_message_view_list"/>
+            <field name="act_window" ref="act_email_message_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_email_message_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="email_message_view_form"/>
+            <field name="act_window" ref="act_email_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_email_message_form_draft">
+            <field name="name">Draft</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain" eval="[('state', '=', 'draft')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_email_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_email_message_form_sending">
+            <field name="name">Sending</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain" eval="[('state', '=', 'sending')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_email_message_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_email_message_form_all">
+            <field name="name">All</field>
+            <field name="sequence" eval="9999"/>
+            <field name="domain"/>
+            <field name="act_window" ref="act_email_message_form"/>
+        </record>
+        <record model="ir.action.keyword" id="act_email_message_form_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">marketing.email.list,-1</field>
+            <field name="action" ref="act_email_message_form"/>
+        </record>
+
+        <record model="ir.model.button" id="message_draft_button">
+            <field name="name">draft</field>
+            <field name="string">Draft</field>
+            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="message_send_button">
+            <field name="name">send</field>
+            <field name="string">Send</field>
+            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+        </record>
+
+        <record model="ir.model.button" id="message_send_test_button">
+            <field name="name">send_test</field>
+            <field name="string">Send Test</field>
+            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+        </record>
+
+        <record model="ir.model.access" id="access_email_message">
+            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_email_message_marketing_email">
+            <field name="model" search="[('model', '=', 'marketing.email.message')]"/>
+            <field name="group" ref="marketing.group_marketing"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_send_test">
+            <field name="name">Send Test</field>
+            <field name="wiz_name">marketing.email.send_test</field>
+            <field name="model">marketing.email.message</field>
+        </record>
+
+        <record model="ir.ui.view" id="send_test_view_form">
+            <field name="model">marketing.email.send_test</field>
+            <field name="type">form</field>
+            <field name="name">send_test_form</field>
+        </record>
+
+        <record model="ir.cron" id="cron_send_messages">
+            <field name="method">marketing.email.message|process</field>
+            <field name="interval_number" eval="15"/>
+            <field name="interval_type">minutes</field>
+        </record>
+    </data>
+</tryton>
