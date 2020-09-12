@@ -1147,36 +1147,38 @@ var Sao = {};
         .next('.modal-backdrop.in').removeClass('hidden');
     }
 
-    // XXX: use Popper to place popup
-    // cherry picked from tempusdominus-core.js
-    $.fn.datetimepicker.prototype.constructor.Constructor.prototype._place = function _place(e) {
-        var self = (e && e.data && e.data.picker) || this;
-        if (self._options.sideBySide) {
-            self._element.append(self.widget);
-            return;
-        }
-        if (self._options.widgetParent) {
-            self._options.widgetParent.append(self.widget);
-        } else if (self._element.is('input')) {
-            self._element.after(self.widget).parent();
-        } else {
-            self._element.children().first().after(self.widget);
-        }
+    if ($.fn.datetimepicker) {
+        // XXX: use Popper to place popup
+        // cherry picked from tempusdominus-core.js
+        $.fn.datetimepicker.prototype.constructor.Constructor.prototype._place = function _place(e) {
+            var self = (e && e.data && e.data.picker) || this;
+            if (self._options.sideBySide) {
+                self._element.append(self.widget);
+                return;
+            }
+            if (self._options.widgetParent) {
+                self._options.widgetParent.append(self.widget);
+            } else if (self._element.is('input')) {
+                self._element.after(self.widget).parent();
+            } else {
+                self._element.children().first().after(self.widget);
+            }
 
-        var reference = self.component[0];
+            var reference = self.component[0];
 
-        if (!reference) {
-            reference = self._element;
-        }
+            if (!reference) {
+                reference = self._element;
+            }
 
-        // ReSharper disable once ConstructorCallNotUsed
-        new Popper(reference, self.widget[0], {
-            placement: 'bottom-start'
-        });
-    };
+            // ReSharper disable once ConstructorCallNotUsed
+            new Popper(reference, self.widget[0], {
+                placement: 'bottom-start'
+            });
+        };
 
-    // XXX: Ensure to always return a date
-    $.fn.datetimepicker.prototype.constructor.Constructor.prototype._getLastPickedDate = function _getLastPickedDate() {
-        return this._dates[this._getLastPickedDateIndex()] || this.getMoment();
-    };
+        // XXX: Ensure to always return a date
+        $.fn.datetimepicker.prototype.constructor.Constructor.prototype._getLastPickedDate = function _getLastPickedDate() {
+            return this._dates[this._getLastPickedDateIndex()] || this.getMoment();
+        };
+    }
 }());
