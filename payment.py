@@ -7,7 +7,8 @@ from itertools import groupby
 from sql.aggregate import Sum, Count
 
 from trytond.i18n import gettext
-from trytond.model import Workflow, ModelView, ModelSQL, fields
+from trytond.model import (
+    Workflow, ModelView, ModelSQL, DeactivableMixin, fields)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If
 from trytond.rpc import RPC
@@ -25,7 +26,7 @@ KINDS = [
     ]
 
 
-class Journal(ModelSQL, ModelView):
+class Journal(DeactivableMixin, ModelSQL, ModelView):
     'Payment Journal'
     __name__ = 'account.payment.journal'
     name = fields.Char('Name', required=True)
