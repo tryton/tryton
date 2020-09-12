@@ -29,7 +29,6 @@ class TriggerTestCase(unittest.TestCase):
         pool = Pool()
         Queue = pool.get('ir.queue')
         transaction = Transaction()
-        self.assertTrue(transaction.tasks)
         while transaction.tasks:
             task = Queue(transaction.tasks.pop())
             task.run()
