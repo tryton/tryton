@@ -49,6 +49,19 @@ class IrTestCase(ModuleTestCase):
         Model.global_search('User', 10)
 
     @with_transaction()
+    def test_lang_format(self):
+        "Test Lang.format"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        test_data = [
+            ('%i', 42, False, False, [], "42"),
+            ]
+        for percent, value, grouping, monetary, add, result in test_data:
+            self.assertEqual(
+                lang.format(percent, value, grouping, monetary, *add), result)
+
+    @with_transaction()
     def test_lang_strftime(self):
         "Test Lang.strftime"
         pool = Pool()
