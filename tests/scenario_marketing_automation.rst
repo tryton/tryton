@@ -7,6 +7,7 @@ Imports::
     >>> import re
     >>> from proteus import Model, Wizard
     >>> from proteus.config import get_config
+    >>> from trytond.pyson import Eval, PYSONEncoder
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.tools import file_open
 
@@ -45,6 +46,8 @@ Create the running scenario::
     >>> root_activity.parent = scenario
     >>> root_activity.action = 'send_email'
     >>> root_activity.email_title = "Hello"
+    >>> root_activity.condition = PYSONEncoder().encode(
+    ...     Eval('self', {}).get('active'))
     >>> with file_open('marketing_automation/tests/email.html', mode='r') as fp:
     ...     root_activity.email_template = fp.read()
     >>> root_activity.save()
