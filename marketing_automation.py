@@ -239,7 +239,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
             for record in records:
                 for activity in scenario.activities:
                     if (activity.condition
-                            and not record.match(activity.condition)):
+                            and not record.eval(activity.condition)):
                         continue
                     record_activities.append(
                         RecordActivity.get(record, activity))
