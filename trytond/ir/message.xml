@@ -311,13 +311,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_notes">
             <field name="text">Notes</field>
         </record>
-
         <record model="ir.message" id="msg_access_wizard_error">
             <field name="text">You are not allowed to execute wizard "%(wizard)s".</field>
         </record>
         <record model="ir.message" id="msg_access_wizard_model_error">
             <field name="text">You are not allowed to execute wizard "%(wizard)s" on "%(model)s".</field>
         </record>
-
+        <record model="ir.message" id="msg_email_template_invalid_subject">
+            <field name="text">Invalid subject in e-mail template "%(template)s" with exception "%(exception)s"</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_body">
+            <field name="text">Invalid body in e-mail template "%(template)s" with exception "%(exception)s"</field>
+        </record>
     </data>
 </tryton>

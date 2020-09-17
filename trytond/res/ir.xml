@@ -1034,5 +1034,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_admin"/>
         </record>
 
+        <record model="ir.model.access" id="access_ir_email_template">
+            <field name="model" search="[('model', '=', 'ir.email.template')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_ir_email_template_admin">
+            <field name="model" search="[('model', '=', 'ir.email.template')]"/>
+            <field name="group" ref="group_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
     </data>
 </tryton>

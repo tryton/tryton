@@ -107,7 +107,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
             columns = []
         columns += ['id', 'name', 'type', 'icon.rec_name']
         if type_ == 'ir.action.report':
-            columns += ['report_name', 'direct_print', 'email']
+            columns += ['report_name', 'direct_print']
         elif type_ == 'ir.action.act_window':
             columns += [
                 'views', 'domains', 'res_model', 'limit',
@@ -115,7 +115,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
                 'pyson_domain', 'pyson_context', 'pyson_order',
                 'pyson_search_value']
         elif type_ == 'ir.action.wizard':
-            columns += ['wiz_name', 'window', 'email']
+            columns += ['wiz_name', 'window']
         elif type_ == 'ir.action.url':
             columns += ['url']
         return Action.read(action_ids, columns)
@@ -540,10 +540,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
         string='Extension', help='Leave empty for the same as template, '
         'see LibreOffice documentation for compatible format.')
     module = fields.Char('Module', readonly=True, select=True)
-    email = fields.Char('Email',
-        help='Python dictonary where keys define "to" "cc" "subject"\n'
-        "Example: {'to': 'test@example.com', 'cc': 'user@example.com'}")
-    pyson_email = fields.Function(fields.Char('PySON Email'), 'get_pyson')
     _template_cache = MemoryCache('ir.action.report.template', context=False)
 
     @classmethod
@@ -596,31 +592,6 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     def default_module():
         return Transaction().context.get('module') or ''
 
-    @classmethod
-    def validate(cls, reports):
-        super(ActionReport, cls).validate(reports)
-        cls.check_email(reports)
-
-    @classmethod
-    def check_email(cls, reports):
-        "Check email"
-        for report in reports:
-            if report.email:
-                try:
-                    value = PYSONDecoder().decode(report.email)
-                except Exception:
-                    value = None
-                if isinstance(value, dict):
-                    inkeys = set(value)
-                    if not inkeys <= EMAIL_REFKEYS:
-                        raise EmailError(
-                            gettext('ir.msg_report_invalid_email',
-                                name=report.rec_name))
-                else:
-                    raise EmailError(
-                        gettext('ir.msg_report_invalid_email',
-                            name=report.rec_name))
-
     def get_is_custom(self, name):
         return bool(self.report_content_custom)
 
@@ -670,9 +641,7 @@ class ActionReport(ActionMixin, ModelSQL, ModelView):
     def get_pyson(cls, reports, name):
         pysons = {}
         field = name[6:]
-        defaults = {
-            'email': '{}',
-            }
+        defaults = {}
         for report in reports:
             pysons[report.id] = (getattr(report, field)
                 or defaults.get(field, 'null'))
@@ -1051,7 +1020,6 @@ class ActionWizard(ActionMixin, ModelSQL, ModelView):
     action = fields.Many2One('ir.action', 'Action', required=True,
             ondelete='CASCADE')
     model = fields.Char('Model')
-    email = fields.Char('Email')
     window = fields.Boolean('Window', help='Run wizard in a new window.')
 
     @staticmethod

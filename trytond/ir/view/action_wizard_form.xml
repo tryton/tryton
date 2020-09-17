@@ -15,8 +15,6 @@ this repository contains the full copyright notices and license terms. -->
             <label name="icon"/>
             <field name="icon"/>
             <newline/>
-            <label name="email"/>
-            <field name="email" colspan="3"/>
             <label name="window"/>
             <field name="window"/>
         </page>

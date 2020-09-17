@@ -34,8 +34,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="template_extension"/>
             <label name="extension"/>
             <field name="extension"/>
-            <label name="email"/>
-            <field name="email" colspan="3" widget="pyson"/>
         </page>
         <page name="keywords">
             <field name="keywords" colspan="4"/>

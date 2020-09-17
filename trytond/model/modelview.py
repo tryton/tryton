@@ -377,6 +377,7 @@ class ModelView(Model):
         pool = Pool()
         Action = pool.get('ir.action.keyword')
         Export = pool.get('ir.export')
+        Email = pool.get('ir.email.template')
         key = cls.__name__
         result = cls._view_toolbar_get_cache.get(key)
         if result:
@@ -387,11 +388,15 @@ class ModelView(Model):
         exports = Export.search_read(
             [('resource', '=', cls.__name__)],
             fields_names=['name', 'export_fields.name'])
+        emails = Email.search_read(
+            [('model.model', '=', cls.__name__)],
+            fields_names=['name'])
         result = {
             'print': prints,
             'action': actions,
             'relate': relates,
             'exports': exports,
+            'emails': emails,
             }
         cls._view_toolbar_get_cache.set(key, result)
         return result

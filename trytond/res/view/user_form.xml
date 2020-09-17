@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="password" widget="password"/>
             <button name="reset_password" colspan="2" />
             <separator name="signature" colspan="4"/>
-            <field name="signature" colspan="4"/>
+            <field name="signature" colspan="4" widget="richtext"/>
         </page>
         <page string="Actions" id="actions">
             <label name="menu"/>

@@ -1,3 +1,5 @@
+* Add e-mail template
+* Send e-mail on behalf of user
 * Register mixins to generic Report class
 * Cache in memory the report template instances
 * Support Genshi's MsgDirective in report

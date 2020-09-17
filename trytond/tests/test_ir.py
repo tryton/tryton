@@ -3,7 +3,9 @@
 from dateutil.relativedelta import relativedelta
 import datetime
 import unittest
+from unittest.mock import patch, ANY
 
+from trytond.config import config
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from .test_tryton import ModuleTestCase, with_transaction
@@ -100,6 +102,122 @@ class IrTestCase(ModuleTestCase):
         admin, = User.search([('login', '=', 'admin')])
 
         self.assertEqual(admin_id, admin.id)
+
+    @with_transaction()
+    def test_email_send(self):
+        "Test sending email"
+        pool = Pool()
+        Email = pool.get('ir.email')
+        Report = pool.get('ir.action.report')
+        Attachment = pool.get('ir.attachment')
+
+        report = Report(
+            name="Test Email",
+            model='res.user',
+            report_name='tests.email_send',
+            report_content=b'report',
+            template_extension='txt',
+            )
+        report.save()
+
+        with patch('trytond.ir.email_.sendmail_transactional') as sendmail:
+            email = Email.send(
+                to='"John Doe" <john@example.com>, Jane <jane@example.com>',
+                cc='User <user@example.com>',
+                bcc='me@example.com',
+                subject="Email subject",
+                body='<p>Hello</p>',
+                attachments=[('file.txt', b'data')],
+                record=('res.user', 1),
+                reports=[report.id])
+
+            attachments = Attachment.search([
+                    ('resource', '=', str(email)),
+                    ])
+
+        addresses = [
+            'john@example.com',
+            'jane@example.com',
+            'user@example.com',
+            'me@example.com']
+        sendmail.assert_called_once_with(
+            config.get('email', 'from'), addresses, ANY, datamanager=ANY)
+        self.assertEqual(
+            email.recipients,
+            '"John Doe" <john@example.com>, Jane <jane@example.com>')
+        self.assertEqual(email.recipients_secondary, 'User <user@example.com>')
+        self.assertEqual(email.recipients_hidden, 'me@example.com')
+        self.assertEqual(
+            [a.address for a in email.addresses],
+            addresses)
+        self.assertEqual(email.subject, "Email subject")
+        self.assertEqual(email.body, '<p>Hello</p>')
+        self.assertEqual(len(attachments), 2)
+        self.assertEqual(
+            {a.name for a in attachments}, {'file.txt', 'Test Email.txt'})
+        self.assertEqual(
+            {a.data for a in attachments}, {b'data', b'report'})
+
+    @with_transaction()
+    def test_email_template_get(self):
+        "Test email template get"
+        pool = Pool()
+        Template = pool.get('ir.email.template')
+        IrModel = pool.get('ir.model')
+        IrModelField = pool.get('ir.model.field')
+        User = pool.get('res.user')
+
+        admin = User(1)
+        admin.email = 'admin@example.com'
+        admin.save()
+        model, = IrModel.search([('model', '=', 'res.user')])
+        field, = IrModelField.search([
+                ('model', '=', model.id),
+                ('name', '=', 'id'),
+                ])
+
+        template = Template(
+            model=model,
+            name="Test",
+            recipients=field,
+            subject="Subject: ${record.login}",
+            body="<p>Hello, ${record.name}</p>")
+        template.save()
+
+        values = template.get(admin)
+
+        self.assertEqual(
+            values, {
+                'to': ['Administrator <admin@example.com>'],
+                'subject': "Subject: admin",
+                'body': '<p>Hello, Administrator</p>',
+                })
+
+    @with_transaction()
+    def test_email_template_get_default(self):
+        "Test email template get default"
+        pool = Pool()
+        Template = pool.get('ir.email.template')
+        IrModel = pool.get('ir.model')
+        IrModelField = pool.get('ir.model.field')
+        User = pool.get('res.user')
+
+        admin = User(1)
+        admin.email = 'admin@example.com'
+        admin.save()
+        model, = IrModel.search([('model', '=', 'res.user')])
+        field, = IrModelField.search([
+                ('model', '=', model.id),
+                ('name', '=', 'id'),
+                ])
+
+        values = Template.get_default(User.__name__, admin.id)
+
+        self.assertEqual(
+            values, {
+                'to': ['Administrator <admin@example.com>'],
+                'subject': "User: Administrator",
+                })
 
 
 def suite():

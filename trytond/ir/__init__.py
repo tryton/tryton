@@ -21,6 +21,7 @@ from . import session
 from . import queue
 from . import calendar_
 from . import message
+from . import email_
 from . import routes
 
 __all__ = ['register', 'routes']
@@ -94,6 +95,10 @@ def register():
         calendar_.Month,
         calendar_.Day,
         message.Message,
+        email_.Email,
+        email_.EmailAddress,
+        email_.EmailTemplate,
+        email_.EmailTemplate_Report,
         module='ir', type_='model')
     Pool.register(
         translation.TranslationSet,
