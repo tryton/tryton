@@ -3455,6 +3455,7 @@ function eval_pyson(value){
                 views_preload: attributes.views || {},
                 order: attributes.order,
                 row_activate: this.activate.bind(this),
+                readonly: true,
                 limit: null
             });
             this.screen.message_callback = this.record_label.bind(this);
