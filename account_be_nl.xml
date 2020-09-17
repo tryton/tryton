@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
+    <data language="nl">
 
         <record id="be_nl" model="account.account.type.template">
             
@@ -1336,7 +1336,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="nl">
 
         <record id="0_nl" model="account.account.template">
             
@@ -1395,7 +1395,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="nl">
 
         <record id="00_nl" model="account.account.template">
             
@@ -2032,7 +2032,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="nl">
 
         <record id="000_nl" model="account.account.template">
             
@@ -4523,7 +4523,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="nl">
 
         <record id="0110_nl" model="account.account.template">
             

@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
+    <data language="fr">
 
         <record id="be_fr" model="account.account.type.template">
             <field name="name">Plan de types de compte (Belgique)</field>
@@ -1336,7 +1336,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="fr">
 
         <record id="0_fr" model="account.account.template">
             <field name="name">Droits &amp; engagements hors bilan</field>
@@ -1395,7 +1395,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="fr">
 
         <record id="00_fr" model="account.account.template">
             <field name="name">Garanties constituees par des tiers pour compte de l'entreprise</field>
@@ -2032,7 +2032,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="fr">
 
         <record id="000_fr" model="account.account.template">
             <field name="name">Créanciers, bénéficiaires de garanties de tiers</field>
@@ -4523,7 +4523,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
     </data>
-    <data grouped="1">
+    <data grouped="1" language="fr">
 
         <record id="0110_fr" model="account.account.template">
             <field name="name">Effets cédés par l'entreprise sous endos</field>

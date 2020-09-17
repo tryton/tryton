@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
+    <data language="fr">
 
         <record id="group_tva_vente_biens_fr" model="account.tax.group">
             <field name="name">T.V.A. Vente de biens</field>

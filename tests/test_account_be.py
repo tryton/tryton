@@ -8,6 +8,7 @@ from trytond.tests.test_tryton import ModuleTestCase
 class AccountBETestCase(ModuleTestCase):
     'Test Account BE module'
     module = 'account_be'
+    language = 'fr'
 
 
 def suite():
