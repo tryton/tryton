@@ -6,7 +6,7 @@ from email.header import Header
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.nonmultipart import MIMENonMultipart
-from email.utils import formataddr, getaddresses
+from email.utils import getaddresses
 
 from sql.operators import Concat
 from genshi.template import TextTemplate
@@ -22,19 +22,6 @@ from trytond.transaction import Transaction
 from .exceptions import TemplateError
 
 from trytond.ir.resource import ResourceAccessMixin
-
-_EMAIL_MODELS = [
-    'res.user',
-    'party.party',
-    'web.user',
-    'company.employee',
-    'commission.agent']
-
-
-def _formataddr(name, email):
-    if name:
-        name = str(Header(name, 'utf-8'))
-    return formataddr((name, email))
 
 
 class Email(ModelSQL, ModelView):
@@ -53,7 +40,6 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the recipient(s).")
@@ -71,7 +57,6 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Secondary Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the secondary recipient(s).")
@@ -89,7 +74,6 @@ class Email(ModelSQL, ModelView):
         'ir.model.field', "Hidden Recipients",
         domain=[
             ('model.model', '=', Eval('model')),
-            ('relation', 'in', _EMAIL_MODELS),
             ],
         depends=['model'],
         help="The field that contains the hidden recipient(s).")
@@ -130,6 +114,25 @@ class Email(ModelSQL, ModelView):
     model = fields.Function(
         fields.Char("Model"), 'on_change_with_model', searcher='search_model')
 
+    @classmethod
+    def __setup__(cls):
+        pool = Pool()
+        EmailTemplate = pool.get('ir.email.template')
+        super().__setup__()
+        for field in [
+                'recipients',
+                'recipients_secondary',
+                'recipients_hidden',
+                ]:
+            field = getattr(cls, field)
+            field.domain.append(['OR',
+                    ('relation', 'in', EmailTemplate.email_models()),
+                    [
+                        ('model.model', 'in', EmailTemplate.email_models()),
+                        ('name', '=', 'id'),
+                        ],
+                    ])
+
     def get_rec_name(self, name):
         return self.content.rec_name
 
@@ -155,96 +158,16 @@ class Email(ModelSQL, ModelView):
     def search_model(cls, name, clause):
         return [('content.model',) + tuple(clause[1:])]
 
-    def _get_address(self, record):
-        pool = Pool()
-        User = pool.get('res.user')
-        try:
-            Party = pool.get('party.party')
-        except KeyError:
-            Party = None
-        try:
-            WebUser = pool.get('web.user')
-        except KeyError:
-            WebUser = None
-        try:
-            Employee = pool.get('company.employee')
-        except KeyError:
-            Employee = None
-        try:
-            Agent = pool.get('commission.agent')
-        except KeyError:
-            Agent = None
-        if isinstance(record, User) and record.email:
-            return _formataddr(record.rec_name, record.email)
-        elif Party and isinstance(record, Party):
-            contact = record.contact_mechanism_get(
-                'email', usage=self.contact_mechanism)
-            if contact and contact.email:
-                return _formataddr(
-                    contact.name or record.rec_name, contact.email)
-        elif WebUser and isinstance(record, WebUser):
-            name = None
-            if record.party:
-                name = record.party.rec_name
-            return _formataddr(name, record.email)
-        elif Employee and isinstance(record, Employee):
-            return self._get_address(record.party)
-        elif Agent and isinstance(record, Agent):
-            return self._get_address(record.party)
-
     def _get_addresses(self, value):
-        if isinstance(value, (list, tuple)):
-            addresses = (self._get_address(v) for v in value)
-        else:
-            addresses = [self._get_address(value)]
-        return [a for a in addresses if a]
-
-    def _get_language(self, record):
         pool = Pool()
-        Configuration = pool.get('ir.configuration')
-        User = pool.get('res.user')
-        Lang = pool.get('ir.lang')
-        try:
-            Party = pool.get('party.party')
-        except KeyError:
-            Party = None
-        try:
-            WebUser = pool.get('web.user')
-        except KeyError:
-            WebUser = None
-        try:
-            Employee = pool.get('company.employee')
-        except KeyError:
-            Employee = None
-        try:
-            Agent = pool.get('commission.agent')
-        except KeyError:
-            Agent = None
-        if isinstance(record, User):
-            if record.language:
-                return record.language
-        elif Party and isinstance(record, Party):
-            if record.lang:
-                return record.lang
-        elif WebUser and isinstance(record, WebUser):
-            if record.party and record.party.lang:
-                return record.party.lang
-        elif Employee and isinstance(record, Employee):
-            if record.party.lang:
-                return record.party.lang
-        elif Agent and isinstance(record, Agent):
-            if record.party.lang:
-                return record.party.lang
-        lang, = Lang.search([
-                ('code', '=', Configuration.get_language()),
-                ], limit=1)
-        return lang
+        EmailTemplate = pool.get('ir.email.template')
+        with Transaction().set_context(usage=self.contact_mechanism):
+            return EmailTemplate.get_addresses(value)
 
     def _get_languages(self, value):
-        if isinstance(value, (list, tuple)):
-            return {self._get_language(v) for v in value}
-        else:
-            return {self._get_language(value)}
+        pool = Pool()
+        EmailTemplate = pool.get('ir.email.template')
+        return EmailTemplate.get_languages(value)
 
     def get_email(self, record, from_, to, cc, bcc, languages):
         pool = Pool()
