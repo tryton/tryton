@@ -91,6 +91,11 @@
                     id: 'print',
                     icon: 'tryton-print',
                     label: Sao.i18n.gettext('Print'),
+                }, {
+                    id: 'email',
+                    icon: 'tryton-email',
+                    label: Sao.i18n.gettext('E-Mail...'),
+                    tooltip: Sao.i18n.gettext('Send an e-mail using the record'),
                 }, null, {
                     id: 'export',
                     icon: 'tryton-export',
@@ -522,7 +527,7 @@
                         'role': 'menu',
                         'aria-labelledby': menu_action[0]
                     }))
-                    .appendTo(toolbar.find('.btn-toolbar > .btn-group').last());
+                    .insertBefore(toolbar.find('button#email'));
                     buttons[menu_action[0]] = button;
                     var dropdown = button
                         .on('show.bs.dropdown', function() {
@@ -643,8 +648,6 @@
                                 .selected_records.map(function(record) {
                                     return record.id;
                                 });
-                                exec_action = Sao.Action.evaluate(exec_action,
-                                    menu_action[0], screen.current_record);
                                 var data = {
                                     model: screen.model_name,
                                     id: record_id,
@@ -1172,6 +1175,38 @@
             new Sao.Window.Note(record, function() {
                 this.refresh_resources(true);
             }.bind(this));
+        },
+        email: function() {
+            function is_report(action) {
+                return action.type == 'ir.action.report';
+            }
+            if (!this.buttons.email.hasClass('disabled')) {
+                var record = this.screen.current_record;
+                if (!record || (record.id < 0)) {
+                    return;
+                }
+                var title = this.title.text();
+                this.screen.model.execute(
+                    'view_toolbar_get', [], this.screen.context)
+                    .then(function(toolbars) {
+                        var prints = toolbars.print.filter(is_report);
+                        var emails = {};
+                        for (var i = 0; i < toolbars.emails.length; i++) {
+                            var email = toolbars.emails[i];
+                            emails[email.name] = email.id;
+                        }
+                        record.rec_name().then(function(rec_name) {
+                            function email(template) {
+                                new Sao.Window.Email(
+                                    title + ': ' + rec_name, record,
+                                    prints, template);
+                            }
+                            Sao.common.selection(
+                                Sao.i18n.gettext("Template"), emails, true)
+                                .then(email, email);
+                        });
+                    });
+            }
         },
         refresh_resources: function(reload) {
             var record = this.screen.current_record;

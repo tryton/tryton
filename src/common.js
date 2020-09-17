@@ -133,7 +133,7 @@
 
         keys.forEach(function(k, i) {
             jQuery('<div/>', {
-                'class': 'checkbox'
+                'class': 'radio'
             }).append(jQuery('<label/>')
                 .text(' ' + k)
                 .prepend(jQuery('<input/>', {
@@ -150,7 +150,7 @@
             'type': 'button'
         }).text(Sao.i18n.gettext('Cancel')).click(function() {
             dialog.modal.modal('hide');
-            prm.fail();
+            prm.reject();
         }).appendTo(dialog.footer);
         jQuery('<button/>', {
             'class': 'btn btn-primary',
@@ -2723,6 +2723,7 @@
         'tryton-remove',
         'tryton-save',
         'tryton-search',
+        'tryton-send',
         'tryton-star-border',
         'tryton-star',
         'tryton-switch',
@@ -3435,7 +3436,9 @@
                     this.input.focus();
                 }.bind(this)).prependTo(this.menu);
             }, this);
-            if (!this.input.val()) {
+            if (!this.input.val() || (
+                !this.menu.find('li.completion').length &&
+                !this.menu.find('li.action').length)) {
                 if (this.dropdown.hasClass('open')) {
                     this.menu.dropdown('toggle');
                 }
@@ -3768,6 +3771,144 @@
                 [(h + golden_angle * i) % 1, s, (v + light * i) % 1]));
         }
         return colors;
+    };
+
+    Sao.common.richtext_toolbar = function() {
+        var toolbar = jQuery('<div/>', {
+            'class': 'btn-toolbar',
+            'role': 'toolbar',
+        });
+
+        var button_apply_command = function(evt) {
+            document.execCommand(evt.data);
+        };
+
+        var add_buttons = function(buttons) {
+            var group = jQuery('<div/>', {
+                'class': 'btn-group',
+                'role': 'group'
+            }).appendTo(toolbar);
+            for (var i in buttons) {
+                var properties = buttons[i];
+                var button = jQuery('<button/>', {
+                    'class': 'btn btn-default',
+                    'type': 'button'
+                }).append(Sao.common.ICONFACTORY.get_icon_img(
+                    'tryton-format-' + properties.icon)
+                ).appendTo(group);
+                button.click(properties.command, button_apply_command);
+            }
+        };
+
+        add_buttons([
+            {
+                'icon': 'bold',
+                'command': 'bold'
+            }, {
+                'icon': 'italic',
+                'command': 'italic'
+            }, {
+                'icon': 'underline',
+                'command': 'underline'
+            }]);
+
+        var selections = [
+            {
+                'heading': Sao.i18n.gettext('Font'),
+                'options': ['Normal', 'Serif', 'Sans', 'Monospace'],  // XXX
+                'command': 'fontname'
+            }, {
+                'heading': Sao.i18n.gettext('Size'),
+                'options': [1, 2, 3, 4, 5, 6, 7],
+                'command': 'fontsize'
+            }];
+        var add_option = function(dropdown, properties) {
+            return function(option) {
+                dropdown.append(jQuery('<li/>').append(jQuery('<a/>', {
+                    'href': '#'
+                }).text(option).click(function(evt) {
+                    evt.preventDefault();
+                    document.execCommand(properties.command, false, option);
+                })));
+            };
+        };
+        for (var i in selections) {
+            var properties = selections[i];
+            var group = jQuery('<div/>', {
+                'class': 'btn-group',
+                'role': 'group'
+            }).appendTo(toolbar);
+            var button = jQuery('<button/>', {
+                'class': 'btn btn-default dropdown-toggle',
+                'type': 'button',
+                'data-toggle': 'dropdown',
+                'aria-expanded': false,
+                'aria-haspopup': true
+            }).append(properties.heading)
+                .append(jQuery('<span/>', {
+                    'class': 'caret'
+                })).appendTo(group);
+            var dropdown = jQuery('<ul/>', {
+                'class': 'dropdown-menu'
+            }).appendTo(group);
+            properties.options.forEach(add_option(dropdown, properties));
+        }
+
+        add_buttons([
+            {
+                'icon': 'align-left',
+                'command': Sao.i18n.rtl? 'justifyRight' : 'justifyLeft',
+            }, {
+                'icon': 'align-center',
+                'command': 'justifyCenter'
+            }, {
+                'icon': 'align-right',
+                'command': Sao.i18n.rtl? 'justifyLeft': 'justifyRight',
+            }, {
+                'icon': 'align-justify',
+                'command': 'justifyFull'
+            }]);
+
+        // TODO backColor
+        [['foreColor', '#000000']].forEach(
+            function(e) {
+                var command = e[0];
+                var color = e[1];
+                jQuery('<input/>', {
+                    'class': 'btn btn-default',
+                    'type': 'color'
+                }).appendTo(toolbar)
+                    .change(function() {
+                        document.execCommand(command, false, jQuery(this).val());
+                    }).focusin(function() {
+                        document.execCommand(command, false, jQuery(this).val());
+                    }).val(color);
+            });
+        return toolbar;
+    };
+
+    Sao.common.richtext_normalize = function(html) {
+        var el = jQuery('<div/>').html(html);
+        // TODO order attributes
+        el.find('div').each(function(i, el) {
+            el = jQuery(el);
+            // Not all browsers respect the styleWithCSS
+            if (el.css('text-align')) {
+                // Remove browser specific prefix
+                var align = el.css('text-align').split('-').pop();
+                el.attr('align', align);
+                el.css('text-align', '');
+            }
+            // Some browsers set start as default align
+            if (el.attr('align') == 'start') {
+                if (Sao.i18n.rtl) {
+                    el.attr('align', 'right');
+                } else {
+                    el.attr('align', 'left');
+                }
+            }
+        });
+        return el.html();
     };
 
 }());

@@ -488,8 +488,6 @@ var Sao = {};
             try {
                 attributes.data = loads(params.data || '{}');
                 attributes.direct_print = loads(params.direct_print || 'false');
-                attributes.email_print = loads(params.email_print || 'false');
-                attributes.email = loads(params.email || 'null');
                 attributes.name = loads(params.name || '""');
                 attributes.window = loads(params.window || 'false');
                 attributes.context = loads(params.context || '{}');
@@ -512,8 +510,6 @@ var Sao = {};
             try {
                 attributes.data = loads(params.data || '{}');
                 attributes.direct_print = loads(params.direct_print || 'false');
-                attributes.email_print = loads(params.email_print || 'false');
-                attributes.email = loads(params.email || 'null');
                 attributes.context = loads(params.context || '{}');
             } catch (e) {
                 return;
@@ -1014,6 +1010,10 @@ var Sao = {};
                 shortcut: 'ctrl+p',
                 label: Sao.i18n.gettext('Print'),
                 id: 'print',
+            }, {
+                shortcut: 'ctrl+shift+e',
+                label: Sao.i18n.gettext('E-Mail'),
+                id: 'email',
             }, {
                 shortcut: 'alt+shift+tab',
                 label: Sao.i18n.gettext('Previous tab'),

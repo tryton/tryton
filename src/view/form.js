@@ -2100,7 +2100,10 @@ function eval_pyson(value){
                 'class': this.class_ + ' panel panel-default'
             });
             if (parseInt(attributes.toolbar || '1', 10)) {
-                this.toolbar = this.get_toolbar().appendTo(this.el);
+                this.toolbar = Sao.common.richtext_toolbar().appendTo(
+                    jQuery('<div/>', {
+                        'class': 'panel-heading',
+                    }).appendTo(this.el));
             }
             this.input = this.labelled = jQuery('<div/>', {
                 'class': 'richtext mousetrap',
@@ -2121,122 +2124,6 @@ function eval_pyson(value){
                     Sao.common.ICONFACTORY.get_icon_img('tryton-translate'));
                 button.click(this.translate.bind(this));
             }
-        },
-        get_toolbar: function() {
-            var i, properties, button;
-            var toolbar = jQuery('<div/>', {
-                'class': 'btn-toolbar',
-                'role': 'toolbar'
-            }).appendTo(jQuery('<div/>', {
-                'class': 'panel-heading'
-            }));
-
-            var button_apply_command = function(evt) {
-                document.execCommand(evt.data);
-            };
-
-            var add_buttons = function(buttons) {
-                var group = jQuery('<div/>', {
-                    'class': 'btn-group',
-                    'role': 'group'
-                }).appendTo(toolbar);
-                for (i in buttons) {
-                    properties = buttons[i];
-                    button = jQuery('<button/>', {
-                        'class': 'btn btn-default',
-                        'type': 'button'
-                    }).append(Sao.common.ICONFACTORY.get_icon_img(
-                        'tryton-format-' + properties.icon)
-                    ).appendTo(group);
-                    button.click(properties.command, button_apply_command);
-                }
-            };
-
-            add_buttons([
-                    {
-                        'icon': 'bold',
-                        'command': 'bold'
-                    }, {
-                        'icon': 'italic',
-                        'command': 'italic'
-                    }, {
-                        'icon': 'underline',
-                        'command': 'underline'
-                    }]);
-
-            var selections = [
-            {
-                'heading': Sao.i18n.gettext('Font'),
-                'options': ['Normal', 'Serif', 'Sans', 'Monospace'],  // XXX
-                'command': 'fontname'
-            }, {
-                'heading': Sao.i18n.gettext('Size'),
-                'options': [1, 2, 3, 4, 5, 6, 7],
-                'command': 'fontsize'
-            }];
-            var add_option = function(dropdown, properties) {
-                return function(option) {
-                    dropdown.append(jQuery('<li/>').append(jQuery('<a/>', {
-                        'href': '#'
-                    }).text(option).click(function(evt) {
-                        evt.preventDefault();
-                        document.execCommand(properties.command, false, option);
-                    })));
-                };
-            };
-            for (i in selections) {
-                properties = selections[i];
-                var group = jQuery('<div/>', {
-                    'class': 'btn-group',
-                    'role': 'group'
-                }).appendTo(toolbar);
-                button = jQuery('<button/>', {
-                    'class': 'btn btn-default dropdown-toggle',
-                    'type': 'button',
-                    'data-toggle': 'dropdown',
-                    'aria-expanded': false,
-                    'aria-haspopup': true
-                }).append(properties.heading)
-                .append(jQuery('<span/>', {
-                    'class': 'caret'
-                })).appendTo(group);
-                var dropdown = jQuery('<ul/>', {
-                    'class': 'dropdown-menu'
-                }).appendTo(group);
-                properties.options.forEach(add_option(dropdown, properties));
-            }
-
-            add_buttons([
-                    {
-                        'icon': 'align-left',
-                        'command': Sao.i18n.rtl? 'justifyRight' : 'justifyLeft',
-                    }, {
-                        'icon': 'align-center',
-                        'command': 'justifyCenter'
-                    }, {
-                        'icon': 'align-right',
-                        'command': Sao.i18n.rtl? 'justifyLeft': 'justifyRight',
-                    }, {
-                        'icon': 'align-justify',
-                        'command': 'justifyFull'
-                    }]);
-
-            // TODO backColor
-            [['foreColor', '#000000']].forEach(
-                    function(e) {
-                        var command = e[0];
-                        var color = e[1];
-                        jQuery('<input/>', {
-                            'class': 'btn btn-default',
-                            'type': 'color'
-                        }).appendTo(toolbar)
-                        .change(function() {
-                            document.execCommand(command, false, jQuery(this).val());
-                        }).focusin(function() {
-                            document.execCommand(command, false, jQuery(this).val());
-                        }).val(color);
-            });
-            return toolbar;
         },
         focus_out: function() {
             // Let browser set the next focus before testing
@@ -2277,31 +2164,8 @@ function eval_pyson(value){
             this.field.set_client(this.record, value);
         },
         _normalize_markup: function(content) {
-            var el = jQuery('<div/>').html(
+            return Sao.common.richtext_normalize(
                 Sao.HtmlSanitizer.sanitize(content || ''));
-            this._normalize(el);
-            return el.html();
-        },
-        _normalize: function(el) {
-            // TODO order attributes
-            el.find('div').each(function(i, el) {
-                el = jQuery(el);
-                // Not all browsers respect the styleWithCSS
-                if (el.css('text-align')) {
-                    // Remove browser specific prefix
-                    var align = el.css('text-align').split('-').pop();
-                    el.attr('align', align);
-                    el.css('text-align', '');
-                }
-                // Some browsers set start as default align
-                if (el.attr('align') == 'start') {
-                    if (Sao.i18n.rtl) {
-                        el.attr('align', 'right');
-                    } else {
-                        el.attr('align', 'left');
-                    }
-                }
-            });
         },
         get modified() {
             if (this.record && this.field) {
@@ -2323,7 +2187,10 @@ function eval_pyson(value){
                 'class': this.class_ + ' panel panel-default',
             });
             if (parseInt(this.attributes.toolbar || '1', 10)) {
-                this.get_toolbar().appendTo(widget);
+                Sao.common.richtext_toolbar().appendTo(
+                    jQuery('<div/>', {
+                        'class': 'panel-heading',
+                    }).appendTo(this.el));
             }
             var input = jQuery('<div/>', {
                 'class': 'richtext mousetrap',

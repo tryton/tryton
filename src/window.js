@@ -1972,4 +1972,246 @@
         return row;
     };
 
+    Sao.Window.EmailEntry = Sao.class_(Sao.common.InputCompletion, {
+        init: function(el, session) {
+            this.session = session;
+            Sao.Window.EmailEntry._super.init.call(
+                this, el,
+                this._email_source,
+                this._email_match_selected,
+                this._email_format);
+        },
+        _email_match_selected: function(value) {
+            this.input.val(value[2]);
+        },
+        _email_source: function(text) {
+            if (this.input[0].selectionStart < this.input.val().length) {
+                return jQuery.when([]);
+            }
+            return Sao.rpc({
+                'method': 'model.ir.email.complete',
+                'params': [text, Sao.config.limit, {}],
+            }, this.session);
+        },
+        _email_format: function(value) {
+            return value[1];
+        },
+    });
+
+    Sao.Window.Email = Sao.class_(Object, {
+        init: function(name, record, prints, template) {
+            this.record = record;
+            this.dialog = new Sao.Dialog(
+                Sao.i18n.gettext('E-mail %1', name), 'email', 'lg');
+            this.el = this.dialog.modal;
+            this.dialog.content.addClass('form-horizontal');
+
+            var body = this.dialog.body;
+            function add_group(name, label, required) {
+                var group = jQuery('<div/>', {
+                    'class': 'form-group',
+                }).appendTo(body);
+                jQuery('<label/>', {
+                    'class': 'control-label col-sm-1',
+                    'text': label,
+                    'for': 'email-' + name,
+                }).appendTo(group);
+                var input = jQuery('<input/>', {
+                    'type': 'text',
+                    'class':'form-control input-sm',
+                    'id': 'email-' + name,
+                }).appendTo(jQuery('<div/>', {
+                    'class': 'col-sm-11',
+                }).appendTo(group));
+                if (required) {
+                    input.attr('required', true);
+                }
+                return input;
+            }
+
+            this.to = add_group('to', Sao.i18n.gettext('To:'), true);
+            this.cc = add_group('cc', Sao.i18n.gettext('Cc:'));
+            this.bcc = add_group('bcc', Sao.i18n.gettext('Bcc:'));
+            [this.to, this.cc, this.bcc].forEach(function(input) {
+                new Sao.Window.EmailEntry(input, this.record.model.session);
+            }.bind(this));
+            this.subject = add_group(
+                'subject', Sao.i18n.gettext('Subject:'), true);
+
+            var panel = jQuery('<div/>', {
+                'class': 'panel panel-default',
+            }).appendTo(body
+            ).append(jQuery('<div/>', {
+                'class': 'panel-heading',
+            }).append(Sao.common.richtext_toolbar()));
+            this.body = jQuery('<div>', {
+                'class': 'email-richtext form-control input-sm mousetrap',
+                'contenteditable': true,
+                'spellcheck': true,
+                'id': 'email-body',
+            }).appendTo(jQuery('<div/>', {
+                'class': 'panel-body',
+            }).appendTo(panel));
+
+            var print_frame = jQuery('<div/>', {
+                'class': 'col-md-6',
+            }).appendTo(body);
+            jQuery('<label/>', {
+                'text': Sao.i18n.gettext("Reports"),
+            }).appendTo(print_frame);
+            this.print_actions = {};
+            for (var i = 0; i < prints.length; i++) {
+                var print = prints[i];
+                var print_check = jQuery('<input/>', {
+                    'type': 'checkbox',
+                });
+                jQuery('<div/>', {
+                    'class': 'checkbox',
+                }).append(jQuery('<label/>'
+                ).text(Sao.i18n.gettext(print.name)
+                ).prepend(print_check)).appendTo(print_frame);
+                this.print_actions[print.id] = print_check;
+            }
+
+            this.files = jQuery('<div/>', {
+                'class': 'col-md-6',
+            }).appendTo(body);
+            jQuery('<label/>', {
+                'text': Sao.i18n.gettext("Attachments"),
+            }).appendTo(this.files);
+            this._add_file_button();
+
+            jQuery('<button/>', {
+                'class': 'btn btn-link',
+                'type': 'button',
+            }).text(' ' + Sao.i18n.gettext('Cancel')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-cancel')
+            ).click(function() {
+                this.response('RESPONSE_CANCEL');
+            }.bind(this)).appendTo(this.dialog.footer);
+
+            jQuery('<button/>', {
+                'class': 'btn btn-primary',
+                'type': 'submit',
+            }).text(' ' + Sao.i18n.gettext('Send')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-send')
+            ).appendTo(this.dialog.footer);
+            this.dialog.content.submit(function(e) {
+                e.preventDefault();
+                this.response('RESPONSE_OK');
+            }.bind(this));
+
+            this._fill_with(template);
+
+            this.el.modal('show');
+            this.el.on('hidden.bs.modal', function() {
+                jQuery(this).remove();
+            });
+        },
+        _add_file_button: function() {
+            var row = jQuery('<div/>').appendTo(this.files);
+            var file = jQuery('<input/>', {
+                'type': 'file',
+            }).appendTo(row);
+            var button = jQuery('<a/>', {
+                'class': 'close',
+                'title': Sao.i18n.gettext("Remove attachment"),
+            }).append(jQuery('<span/>', {
+                'aria-hidden': true,
+                'text': 'x',
+            })).append(jQuery('<span/>', {
+                'class': 'sr-only',
+            }).text(Sao.i18n.gettext("Remove")));
+            button.hide();
+            button.appendTo(row);
+
+            file.on('change', function() {
+                button.show();
+                this._add_file_button();
+            }.bind(this));
+            button.click(function() {
+                row.remove();
+            });
+        },
+        get_files: function() {
+            var prms = [];
+            var files = [];
+            this.files.find('input[type=file]').each(function(i, input) {
+                if (input.files.length) {
+                    var dfd = jQuery.Deferred();
+                    prms.push(dfd);
+                    Sao.common.get_file_data(
+                        input.files[0], function(data, filename) {
+                            files.push([filename, data]);
+                            dfd.resolve();
+                        });
+                }
+            });
+            return jQuery.when.apply(jQuery, prms).then(function() {
+                return files;
+            });
+        },
+        _fill_with: function(template) {
+            var prm;
+            if (template) {
+                prm = Sao.rpc({
+                    'method': 'model.ir.email.template.get',
+                    'params': [template, this.record.id, {}],
+                }, this.record.model.session);
+            } else {
+                prm = Sao.rpc({
+                    'method': 'model.ir.email.template.get_default',
+                    'params': [this.record.model.name, this.record.id, {}],
+                }, this.record.model.session);
+            }
+            prm.then(function(values) {
+                this.to.val((values.to || []).join(', '));
+                this.cc.val((values.cc || []).join(', '));
+                this.bcc.val((values.bcc || []).join(', '));
+                this.subject.val(values.subject || '');
+                this.body.html(Sao.HtmlSanitizer.sanitize(values.body || ''));
+                var print_ids = (values.reports || []);
+                for (var print_id in this.print_actions) {
+                    var check = this.print_actions[print_id];
+                    check.prop(
+                        'checked', ~print_ids.indexOf(parseInt(print_id, 10)));
+                }
+            }.bind(this));
+        },
+        response: function(response_id) {
+            if (response_id == 'RESPONSE_OK') {
+                var to = this.to.val();
+                var cc = this.cc.val();
+                var bcc = this.bcc.val();
+                var subject = this.subject.val();
+                var body = Sao.common.richtext_normalize(this.body.html());
+                var reports = [];
+                for (var id in this.print_actions) {
+                    var check = this.print_actions[id];
+                    if (check.prop('checked')) {
+                        reports.push(id);
+                    }
+                }
+                var record = this.record;
+                this.get_files().then(function(attachments) {
+                    return Sao.rpc({
+                        'method': 'model.ir.email.send',
+                        'params': [
+                            to, cc, bcc, subject, body,
+                            attachments,
+                            [record.model.name, record.id],
+                            reports, {}],
+                    }, record.model.session);
+                }).then(function() {
+                    this.destroy();
+                }.bind(this));
+            } else {
+                this.destroy();
+            }
+        },
+        destroy: function() {
+            this.el.modal('hide');
+        },
+    });
+
 }());

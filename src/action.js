@@ -132,8 +132,6 @@
                 params.name = action.report_name;
                 params.data = data;
                 params.direct_print = action.direct_print;
-                params.email_print = action.email_print;
-                params.email = action.email;
                 params.context = context;
                 Sao.Action.exec_report(params);
                 return;
@@ -183,15 +181,10 @@
         if (!attributes.context) {
             attributes.context = {};
         }
-        if (!attributes.email) {
-            attributes.email = {};
-        }
         var data = jQuery.extend({}, attributes.data);
         var context = jQuery.extend({}, Sao.Session.current_session.context);
         jQuery.extend(context, attributes.context);
         context.direct_print = attributes.direct_print;
-        context.email_print = attributes.email_print;
-        context.email = attributes.email;
 
         var prm = Sao.rpc({
             'method': 'report.' + attributes.name + '.execute',
