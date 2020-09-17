@@ -1,3 +1,5 @@
+* Support e-mail template
+* Send e-mail via the server
 * Support PYSON comparison of date and datetime
 * Position copied records based on order
 * Allow configuration of default colors for graph and calendar

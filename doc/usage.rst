@@ -197,30 +197,6 @@ PDA Mode:
 Search Limit:
   Open a dialog to set up the maximum number of records displayed on a list.
 
-.. _Menu-Options-Email:
-
-Email:
-  Open a dialog to set up an email reader.
-
-  * Command Line: The command line calling the email reader.
-  * Placeholders:
-
-    - ``${to}``: the destination email address
-    - ``${cc}``: the carbon copy email address
-    - ``${subject}``: the subject of the email
-    - ``${body}``: the body of the email
-    - ``${attachment}``: the attachment of the email
-
-  * Examples:
-
-    - Thunderbird 2 on Linux:
-      ``thunderbird -compose "to='${to}',cc='${cc}',subject='${subject}',body='${body}',attachment='file://${attachment}'"``
-
-    - Thunderbird 2 on Windows XP SP3:
-      ``"C:\\Program Files\\Mozilla Thunderbird\\thunderbird.exe" -compose to="${to}",cc="${cc}",subject="${subject}",body="${body}",attachment="${attachment}"``
-
-.. note:: The path of *Program Files* may vary dependent on the localization of your Windows version.
-
 .. _Menu-Options-Check_Version:
 
 Check Version:
@@ -343,7 +319,7 @@ Report...:
 .. _Toolbar-Email:
 
 E-Mail...:
-  Shows all email reports for the actual view, model and record.
+  Open an editor to send an email related to the actual record.
 
 .. _Toolbar-Print:
 

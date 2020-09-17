@@ -5,10 +5,12 @@ import gettext
 from gi.repository import Gtk, Gdk
 
 from tryton.common import RPCExecute, RPCException
+from tryton.common.common import selection
 from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui.window import Window
 from tryton.gui.window.attachment import Attachment
+from tryton.gui.window.email_ import Email
 from tryton.gui.window.note import Note
 
 _ = gettext.gettext
@@ -41,7 +43,6 @@ def populate(menu, model, record, title='', field=None, context=None):
 
     def activate(menuitem, action, atype):
         rec = load(record)
-        action = Action.evaluate(action, atype, rec)
         data = {
             'model': model,
             'id': rec.id,
@@ -60,6 +61,20 @@ def populate(menu, model, record, title='', field=None, context=None):
 
     def note(menuitem):
         Note(load(record), None)
+
+    def is_report(action):
+        return action['type'] == 'ir.action.report'
+
+    def email(menuitem, toolbar):
+        rec = load(record)
+        prints = filter(is_report, toolbar['print'])
+        emails = {e['name']: e['id'] for e in toolbar['emails']}
+        template = selection(_("Template"), emails, alwaysask=True)
+        if template:
+            template = template[1]
+        Email(
+            '%s: %s' % (title, rec.rec_name()), rec, prints,
+            template=template)
 
     def edit(menuitem):
         with Window(hide_current=True, allow_similar=True):
@@ -103,7 +118,6 @@ def populate(menu, model, record, title='', field=None, context=None):
                 ('action', 'tryton-launch', _('Actions...'), None),
                 ('relate', 'tryton-link', _('Relate...'), None),
                 ('print', 'tryton-open', _('Report...'), 'open'),
-                ('print', 'tryton-email', _('E-Mail...'), 'email'),
                 ('print', 'tryton-print', _('Print...'), 'print'),
                 ):
             if len(action_menu):
@@ -121,8 +135,10 @@ def populate(menu, model, record, title='', field=None, context=None):
                 submenu.append(item)
                 if flavor == 'print':
                     action['direct_print'] = True
-                elif flavor == 'email':
-                    action['email_print'] = True
                 item.connect('activate', activate, action, atype)
             menu.show_all()
+
+        email_item = Gtk.MenuItem(label=_('E-Mail...'))
+        action_menu.append(email_item)
+        email_item.connect('activate', email, toolbar)
     menu.show_all()

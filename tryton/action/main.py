@@ -5,7 +5,7 @@ import webbrowser
 
 import tryton.rpc as rpc
 from tryton.common import RPCProgress, RPCExecute, RPCException
-from tryton.common import message, selection, file_write, file_open, mailto
+from tryton.common import message, selection, file_write, file_open
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
 
@@ -15,18 +15,13 @@ _ = gettext.gettext
 class Action(object):
 
     @staticmethod
-    def exec_report(name, data, direct_print=False, email_print=False,
-            email=None, context=None):
+    def exec_report(name, data, direct_print=False, context=None):
         if context is None:
             context = {}
-        if email is None:
-            email = {}
         data = data.copy()
         ctx = rpc.CONTEXT.copy()
         ctx.update(context)
         ctx['direct_print'] = direct_print
-        ctx['email_print'] = email_print
-        ctx['email'] = email
         args = ('report', name, 'execute', data.get('ids', []), data, ctx)
         try:
             res = RPCProgress('execute', args).run()
@@ -39,12 +34,7 @@ class Action(object):
             print_p = True
 
         fp_name = file_write((name, type), data)
-        if email_print:
-            mailto(to=email.get('to'), cc=email.get('cc'),
-                subject=email.get('subject'), body=email.get('body'),
-                attachment=fp_name)
-        else:
-            file_open(fp_name, type, print_p=print_p)
+        file_open(fp_name, type, print_p=print_p)
         return True
 
     @staticmethod
@@ -159,16 +149,15 @@ class Action(object):
                 name = add_name_suffix(name, context)
             Window.create_wizard(action['wiz_name'], data,
                 direct_print=action.get('direct_print', False),
-                email_print=action.get('email_print', False),
-                email=action.get('email'), name=name,
+                name=name,
                 context=context, icon=(action.get('icon.rec_name') or ''),
                 window=action.get('window', False))
 
         elif action['type'] == 'ir.action.report':
-            Action.exec_report(action['report_name'], data,
-                    direct_print=action.get('direct_print', False),
-                    email_print=action.get('email_print', False),
-                    email=action.get('email'), context=context)
+            Action.exec_report(
+                action['report_name'], data,
+                direct_print=action.get('direct_print', False),
+                context=context)
 
         elif action['type'] == 'ir.action.url':
             if action['url']:
@@ -197,19 +186,3 @@ class Action(object):
         elif not len(keyact) and warning:
             message(_('No action defined.'))
         return False
-
-    @staticmethod
-    def evaluate(action, atype, record):
-        '''
-        Evaluate the action with the record.
-        '''
-        action = action.copy()
-        email = {}
-        if 'pyson_email' in action:
-            email = record.expr_eval(action['pyson_email'])
-            if not email:
-                email = {}
-        if 'subject' not in email:
-            email['subject'] = action['name'].replace('_', '')
-        action['email'] = email
-        return action

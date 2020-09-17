@@ -134,15 +134,16 @@ class TabContent(InfoBar):
                 icon_name='tryton-open',
                 accel_path='<tryton>/Form/Report'),
             ToolbarItem(
-                id='print_email',
-                label=_("_E-Mail..."),
-                icon_name='tryton-email',
-                accel_path='<tryton>/Form/Email'),
-            ToolbarItem(
                 id='print',
                 label=_("_Print..."),
                 icon_name='tryton-print',
                 accel_path='<tryton>/Form/Print'),
+            ToolbarItem(
+                id='email',
+                label=_("_E-Mail..."),
+                tooltip=_("Send an e-mail using the record"),
+                icon_name='tryton-email',
+                accel_path='<tryton>/Form/Email'),
             None,
             ToolbarItem(
                 id='export',

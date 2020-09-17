@@ -14,6 +14,7 @@ from tryton.gui.window.view_form.screen import Screen
 from tryton.action import Action
 from tryton.gui import Main
 from tryton.gui.window import Window
+from tryton.gui.window.email_ import Email
 from tryton.gui.window.win_export import WinExport
 from tryton.gui.window.win_import import WinImport
 from tryton.gui.window.attachment import Attachment
@@ -23,6 +24,7 @@ from tryton.signal_event import SignalEvent
 from tryton.common import message, sur, sur_3b, timezoned_date
 import tryton.common as common
 from tryton.common import RPCExecute, RPCException
+from tryton.common.common import selection as selection_
 from tryton.common.underline import set_underline
 from tryton import plugins
 
@@ -437,9 +439,24 @@ class Form(SignalEvent, TabContent):
         if self.buttons['open'].props.sensitive:
             self.buttons['open'].props.active = True
 
-    def sig_print_email(self, widget):
+    def sig_email(self, widget):
+        def is_report(action):
+            return action['type'] == 'ir.action.report'
+
         if self.buttons['email'].props.sensitive:
-            self.buttons['email'].props.active = True
+            record = self.screen.current_record
+            if not record or record.id < 0:
+                return
+            toolbars = self.get_toolbars()
+            title = self.title.get_text()
+            prints = filter(is_report, toolbars['print'])
+            emails = {e['name']: e['id'] for e in toolbars['emails']}
+            template = selection_(_("Template"), emails, alwaysask=True)
+            if template:
+                template = template[1]
+            Email(
+                '%s: %s' % (title, record.rec_name()), record, prints,
+                template=template)
 
     def sig_relate(self, widget):
         if self.buttons['relate'].props.sensitive:
@@ -487,7 +504,7 @@ class Form(SignalEvent, TabContent):
             can_be_sensitive = getattr(button, '_can_be_sensitive', True)
             if button_id in {'print', 'relate', 'email', 'open'}:
                 action_type = button_id
-                if button_id in {'email', 'open'}:
+                if button_id == 'open':
                     action_type = 'print'
                 can_be_sensitive |= any(
                     b.attrs.get('keyword', 'action') == action_type
@@ -540,7 +557,6 @@ class Form(SignalEvent, TabContent):
         record_id = (self.screen.current_record.id
             if self.screen.current_record else None)
         record_ids = [r.id for r in self.screen.selected_records]
-        action = Action.evaluate(action, atype, self.screen.current_record)
         data = {
             'model': self.screen.model_name,
             'id': record_id,
@@ -567,11 +583,11 @@ class Form(SignalEvent, TabContent):
         attach_btn.connect('drag_data_received',
             self.attach_drag_data_received)
 
+        pos = gtktoolbar.get_item_index(self.buttons['email'])
         iconstock = {
             'print': 'tryton-print',
             'action': 'tryton-launch',
             'relate': 'tryton-link',
-            'email': 'tryton-email',
             'open': 'tryton-open',
         }
         for action_type, special_action, action_name, tooltip in (
@@ -579,9 +595,8 @@ class Form(SignalEvent, TabContent):
                 ('relate', 'relate', _('Relate'), _('Open related records')),
                 (None,) * 4,
                 ('print', 'open', _('Report'), _('Open report')),
-                ('print', 'email', _('E-Mail'), _('E-Mail report')),
                 ('print', 'print', _('Print'), _('Print report')),
-        ):
+                ):
             if action_type is not None:
                 tbutton = Gtk.ToggleToolButton()
                 tbutton.set_icon_widget(common.IconFactory.get_image(
@@ -598,7 +613,8 @@ class Form(SignalEvent, TabContent):
                         tbutton._menu.get_children())
             else:
                 tbutton = Gtk.SeparatorToolItem()
-            gtktoolbar.insert(tbutton, -1)
+            gtktoolbar.insert(tbutton, pos)
+            pos += 1
 
         exports = toolbars['exports']
         if exports:
@@ -613,7 +629,9 @@ class Form(SignalEvent, TabContent):
                 menuitem.connect('activate', self.do_export, export)
                 menu.add(menuitem)
 
-        gtktoolbar.insert(Gtk.SeparatorToolItem(), -1)
+        last_item = gtktoolbar.get_nth_item(gtktoolbar.get_n_items() - 1)
+        if not isinstance(last_item, Gtk.SeparatorToolItem):
+            gtktoolbar.insert(Gtk.SeparatorToolItem(), -1)
 
         url_button = Gtk.ToggleToolButton()
         url_button.set_icon_widget(
@@ -644,8 +662,6 @@ class Form(SignalEvent, TabContent):
             new_action = action.copy()
             if special_action == 'print':
                 new_action['direct_print'] = True
-            elif special_action == 'email':
-                new_action['email_print'] = True
             menuitem = Gtk.MenuItem(label=set_underline(action['name']))
             menuitem.set_use_underline(True)
             menuitem.connect('activate', self._popup_menu_selected, widget,

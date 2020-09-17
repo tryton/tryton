@@ -100,10 +100,6 @@ class Main(Gtk.Application):
         action.connect('activate', lambda *a: self.edit_limit())
         self.add_action(action)
 
-        action = Gio.SimpleAction.new('email', None)
-        action.connect('activate', lambda *a: self.edit_email())
-        self.add_action(action)
-
         self._shortcuts = None
         action = Gio.SimpleAction.new('shortcuts', None)
         action.connect('activate', lambda *a: self.shortcuts())
@@ -197,6 +193,9 @@ class Main(Gtk.Application):
             '<tryton>/Form/Actions', Gdk.KEY_E, Gdk.ModifierType.CONTROL_MASK)
         Gtk.AccelMap.add_entry(
             '<tryton>/Form/Report', Gdk.KEY_P, Gdk.ModifierType.CONTROL_MASK)
+        Gtk.AccelMap.add_entry(
+            '<tryton>/Form/Email', Gdk.KEY_E,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
         Gtk.AccelMap.add_entry(
             '<tryton>/Form/Search', Gdk.KEY_F, Gdk.ModifierType.CONTROL_MASK)
 
@@ -296,7 +295,6 @@ class Main(Gtk.Application):
 
         section.append(_("PDA Mode"), 'app.mode-pda')
         section.append(_("Search Limit..."), 'app.search-limit')
-        section.append(_("Email..."), 'app.email')
         section.append(_("Check Version"), 'app.check-version')
 
         menu.append_section(_("Options"), section)
@@ -490,10 +488,6 @@ class Main(Gtk.Application):
     def edit_limit(self):
         from tryton.gui.window.limit import Limit
         Limit().run()
-
-    def edit_email(self):
-        from tryton.gui.window.email_ import Email
-        Email().run()
 
     def win_next(self):
         page = self.notebook.get_current_page()
@@ -1010,8 +1004,6 @@ class Main(Gtk.Application):
                 data = json.loads(params.get('data', '{}'),
                     object_hook=object_hook)
                 direct_print = json.loads(params.get('direct_print', 'false'))
-                email_print = json.loads(params.get('email_print', 'false'))
-                email = json.loads(params.get('email', 'null'))
                 name = json.loads(params.get('name', '""'))
                 window = json.loads(params.get('window', 'false'))
                 context = json.loads(params.get('context', '{}'),
@@ -1019,8 +1011,8 @@ class Main(Gtk.Application):
             except ValueError:
                 return
             try:
-                Window.create_wizard(wizard, data, direct_print=direct_print,
-                    email_print=email_print, email=email, name=name,
+                Window.create_wizard(
+                    wizard, data, direct_print=direct_print, name=name,
                     context=context, window=window)
             except Exception:
                 # Prevent crashing the client
@@ -1032,15 +1024,13 @@ class Main(Gtk.Application):
             try:
                 data = json.loads(params.get('data'), object_hook=object_hook)
                 direct_print = json.loads(params.get('direct_print', 'false'))
-                email_print = json.loads(params.get('email_print', 'false'))
-                email = json.loads(params.get('email', 'null'))
                 context = json.loads(params.get('context', '{}'),
                     object_hook=object_hook)
             except ValueError:
                 return
             try:
-                Action.exec_report(report, data, direct_print=direct_print,
-                    email_print=email_print, email=email, context=context)
+                Action.exec_report(
+                    report, data, direct_print=direct_print, context=context)
             except Exception:
                 # Prevent crashing the client
                 return

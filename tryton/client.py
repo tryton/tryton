@@ -20,7 +20,7 @@ def main():
     .readonly entry, .readonly text {
         background-color: @insensitive_bg_color;
     }
-    .required entry, .required text {
+    .required entry, entry.required, .required text, text.required {
         border-color: darker(@unfocused_borders);
     }
     .invalid entry, entry.invalid, .invalid text, text.invalid {
