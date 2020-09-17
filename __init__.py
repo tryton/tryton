@@ -8,6 +8,7 @@ from . import invoice
 from . import sale
 from . import product
 from . import party
+from . import ir
 
 
 def register():
@@ -26,6 +27,7 @@ def register():
         product.Product,
         account.Journal,
         party.Party,
+        ir.EmailTemplate,
         module='commission', type_='model')
     Pool.register(
         sale.Sale,
