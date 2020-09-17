@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from . import user
 from . import party
+from . import ir
 
 
 def register():
@@ -11,6 +12,8 @@ def register():
         user.User,
         user.UserAuthenticateAttempt,
         user.UserSession,
+        ir.Email,
+        ir.EmailTemplate,
         module='web_user', type_='model')
     Pool.register(
         party.Replace,
