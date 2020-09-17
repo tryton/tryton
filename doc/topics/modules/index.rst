@@ -118,6 +118,7 @@ Here is the list of the tags:
         * ``depends`` to import data only if all modules in the comma separated
           module list value are activated,
         * ``grouped`` to create records at the end with a grouped call.
+        * ``language`` to import data only if the language is translatable.
 
     * ``record``: Create a record of the model defined by the attribute
       ``model`` in the database. The ``id`` attribute can be used to refer to

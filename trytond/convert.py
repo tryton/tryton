@@ -410,7 +410,7 @@ class Fs2bdAccessor:
 
 class TrytondXmlHandler(sax.handler.ContentHandler):
 
-    def __init__(self, pool, module, module_state, modules):
+    def __init__(self, pool, module, module_state, modules, languages):
         "Register known taghandlers, and managed tags."
         sax.handler.ContentHandler.__init__(self)
 
@@ -427,6 +427,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
         self.grouped_model_data = []
         self.skip_data = False
         self.modules = modules
+        self.languages = languages
 
         # Tag handlders are used to delegate the processing
         self.taghandlerlist = {
@@ -476,6 +477,9 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                 depends = attributes.get('depends', '').split(',')
                 depends = {m.strip() for m in depends if m}
                 if not depends.issubset(self.modules):
+                    self.skip_data = True
+                if (attributes.get('language')
+                        and attributes.get('language') not in self.languages):
                     self.skip_data = True
 
             elif name == "tryton":

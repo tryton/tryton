@@ -214,6 +214,7 @@ class ModuleTestCase(unittest.TestCase):
     'Trytond Test Case'
     module = None
     extras = None
+    language = 'en'
 
     @classmethod
     def setUpClass(cls):
@@ -221,7 +222,7 @@ class ModuleTestCase(unittest.TestCase):
         modules = [cls.module]
         if cls.extras:
             modules.extend(cls.extras)
-        activate_module(modules)
+        activate_module(modules, lang=cls.language)
         super(ModuleTestCase, cls).setUpClass()
 
     @classmethod

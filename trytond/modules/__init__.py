@@ -242,7 +242,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
 
                 # Instanciate a new parser for the module
                 tryton_parser = convert.TrytondXmlHandler(
-                    pool, module, package_state, modules)
+                    pool, module, package_state, modules, lang)
 
                 for filename in node.info.get('xml', []):
                     filename = filename.replace('/', os.sep)

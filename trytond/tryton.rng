@@ -55,6 +55,14 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.data" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">language</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="record">
     <element>
       <name ns="">record</name>
