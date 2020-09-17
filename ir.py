@@ -112,3 +112,29 @@ class CronCompany(ModelSQL):
             required=True, select=True)
     company = fields.Many2One('company.company', 'Company', ondelete='CASCADE',
             required=True, select=True)
+
+
+class EmailTemplate(metaclass=PoolMeta):
+    __name__ = 'ir.email.template'
+
+    @classmethod
+    def email_models(cls):
+        return super().email_models() + ['company.employee']
+
+    @classmethod
+    def _get_address(cls, record):
+        pool = Pool()
+        Employee = pool.get('company.employee')
+        address = super()._get_address(record)
+        if isinstance(record, Employee):
+            address = cls._get_address(record.party)
+        return address
+
+    @classmethod
+    def _get_language(cls, record):
+        pool = Pool()
+        Employee = pool.get('company.employee')
+        language = super()._get_language(record)
+        if isinstance(record, Employee):
+            language = cls._get_language(record.party)
+        return language

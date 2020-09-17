@@ -24,6 +24,7 @@ def register():
         ir.Rule,
         ir.Cron,
         ir.CronCompany,
+        ir.EmailTemplate,
         party.Configuration,
         party.ConfigurationLang,
         party.Party,
