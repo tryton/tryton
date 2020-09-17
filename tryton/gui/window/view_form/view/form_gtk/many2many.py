@@ -91,6 +91,7 @@ class Many2Many(Widget):
             mode=['tree'], views_preload=attrs.get('views', {}),
             order=attrs.get('order'),
             row_activate=self._on_activate,
+            readonly=True,
             limit=None)
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
