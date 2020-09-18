@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from lxml import etree
 from functools import wraps
-import copy
 import collections
 
 from trytond.exceptions import UserError
@@ -529,7 +528,7 @@ class ModelView(Model):
 
     @classmethod
     def __view_look_dom(cls, element, type, fields_width=None,
-            fields_attrs=None):
+            _fields_attrs=None):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ModelData = pool.get('ir.model.data')
@@ -540,10 +539,10 @@ class ModelView(Model):
 
         if fields_width is None:
             fields_width = {}
-        if not fields_attrs:
+        if _fields_attrs is None:
             fields_attrs = {}
         else:
-            fields_attrs = copy.deepcopy(fields_attrs)
+            fields_attrs = _fields_attrs
 
         def set_view_ids(element):
             view_ids = []
@@ -686,7 +685,7 @@ class ModelView(Model):
 
         for field in element:
             fields_attrs = cls.__view_look_dom(field, type,
-                fields_width=fields_width, fields_attrs=fields_attrs)
+                fields_width=fields_width, _fields_attrs=fields_attrs)
         return fields_attrs
 
     @staticmethod
