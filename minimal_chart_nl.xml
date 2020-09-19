@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
+    <data language="nl">
 
         <record id="account_type_template_asset_current_inventories_nl" model="account.account.type.template">
             
