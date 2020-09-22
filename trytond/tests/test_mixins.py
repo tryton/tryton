@@ -151,6 +151,6 @@ class DeactivableMixinTestCase(unittest.TestCase):
 def suite():
     func = unittest.TestLoader().loadTestsFromTestCase
     suite = unittest.TestSuite()
-    for testcase in [UrlTestCase, MixinTestCase]:
+    for testcase in [UrlTestCase, MixinTestCase, DeactivableMixinTestCase]:
         suite.addTests(func(testcase))
     return suite
