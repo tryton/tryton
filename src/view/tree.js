@@ -289,6 +289,7 @@
                 name = order[0][0];
                 direction = order[0][1];
                 if (direction) {
+                    direction = direction.trim().split(' ', 1)[0];
                     icon = {
                         'ASC': 'tryton-arrow-down',
                         'DESC': 'tryton-arrow-up',
