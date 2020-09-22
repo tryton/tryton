@@ -536,6 +536,7 @@ class ViewTree(View):
         if order and len(order) == 1:
             (name, direction), = order
             if direction:
+                direction = direction.split(None, 1)[0]
                 direction = {
                     'ASC': common.IconFactory.get_pixbuf('tryton-arrow-down'),
                     'DESC': common.IconFactory.get_pixbuf('tryton-arrow-up'),
