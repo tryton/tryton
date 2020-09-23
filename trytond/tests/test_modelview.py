@@ -419,6 +419,27 @@ class ModelView(unittest.TestCase):
         self.assertFalse(links)
         self.assertTrue(labels)
 
+    @unittest.skipUnless(hasattr(etree, 'RelaxNG'), "etree is missing RelaxNG")
+    @with_transaction()
+    def test_link_label_valid_view(self):
+        "Test that replacing link by label results in a valid view"
+        pool = Pool()
+        TestModel = pool.get('test.modelview.link')
+        Model = pool.get('ir.model')
+        ModelAccess = pool.get('ir.model.access')
+        UIView = pool.get('ir.ui.view')
+
+        model, = Model.search([('model', '=', 'test.modelview.link.target')])
+        access = ModelAccess(model=model, group=None, perm_read=False)
+        access.save()
+
+        arch = TestModel.fields_view_get()['arch']
+        parser = etree.XMLParser()
+        tree = etree.fromstring(arch, parser=parser)
+        validator = etree.RelaxNG(etree=UIView.get_rng('form'))
+
+        self.assertTrue(validator.validate(tree))
+
     @with_transaction()
     def test_link_without_action_access(self):
         "Test link in view without action access"

@@ -660,7 +660,9 @@ class ModelView(Model):
                         action.res_model, 'read', raise_exception=False)):
                 element.tag = 'label'
                 colspan = element.attrib.get('colspan')
+                link_name = element.attrib['name']
                 element.attrib.clear()
+                element.attrib['id'] = link_name
                 if colspan is not None:
                     element.attrib['colspan'] = colspan
             else:
