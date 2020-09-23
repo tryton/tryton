@@ -551,6 +551,8 @@
             this._loaded = {};
             this.fields = {};
             this._timestamp = null;
+            this._write = true;
+            this._delete = true;
             this.resources = null;
             this.button_clicks = {};
             this.links_counts = {};
@@ -685,6 +687,8 @@
                 fnames_to_fetch.push('rec_name');
             }
             fnames_to_fetch.push('_timestamp');
+            fnames_to_fetch.push('_write');
+            fnames_to_fetch.push('_delete');
 
             var context = jQuery.extend({}, this.get_context());
             if (loading == 'eager') {
@@ -811,6 +815,10 @@
                     if (!this._timestamp) {
                         this._timestamp = value;
                     }
+                    continue;
+                }
+                if (name == '_write' || name == '_delete') {
+                    this[name] = value;
                     continue;
                 }
                 if (!(name in this.model.fields)) {
@@ -1342,7 +1350,13 @@
             return Boolean(~this.group.record_removed.indexOf(this));
         },
         get readonly() {
-            return this.deleted || this.removed || this.exception;
+            return (this.deleted ||
+                this.removed ||
+                this.exception ||
+                !this._write);
+        },
+        get deletable() {
+            return this._delete;
         },
         get identity() {
             return JSON.stringify(

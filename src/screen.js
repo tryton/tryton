@@ -813,6 +813,17 @@
             // switch_view to avoid unnecessary call to fields_view_get by
             // domain_parser.
         },
+        get readonly() {
+            var readonly_records = this.selected_records.some(function(r) {
+                return r.readonly;
+            });
+            return this.attributes.readonly || readonly_records;
+        },
+        get deletable() {
+            return this.selected_records.every(function(r) {
+                return r.deletable;
+            });
+        },
         load_next_view: function() {
             if (!jQuery.isEmptyObject(this.view_to_load)) {
                 var view_id;
@@ -1181,7 +1192,7 @@
                 context = this.context;
             }
             var group = new Sao.Group(this.model, context, []);
-            group.readonly = this.attributes.readonly || false;
+            group.readonly = this.attributes.readonly;
             this.set_group(group);
         },
         get current_record() {
@@ -1327,6 +1338,12 @@
             }
             this.set_cursor(false, false);
             return view.display();
+        },
+        get selected_records() {
+            if (this.current_view) {
+                return this.current_view.selected_records;
+            }
+            return [];
         },
         clear: function() {
             this.current_record = null;
@@ -1902,7 +1919,9 @@
                     this.new_();
                 }
             } else if (action == 'delete') {
-                if (access['delete']) {
+                if (access['delete'] && (
+                        this.current_record ? this.current_record.deletable :
+                        true)) {
                     this.remove(!this.group.parent, false, !this.group.parent);
                 }
             } else if (action == 'remove') {

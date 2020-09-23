@@ -3034,6 +3034,7 @@ function eval_pyson(value){
                 o2m_size = null;
                 size_limit = false;
             }
+            var deletable = this.screen.deletable;
             var create = this.attributes.create;
             if (create === undefined) {
                 create = true;
@@ -3046,7 +3047,7 @@ function eval_pyson(value){
                 delete_ = true;
             }
             this.but_del.prop('disabled', this._readonly || !delete_ ||
-                !access['delete'] || !this._position);
+                !access['delete'] || !this._position || !deletable);
             this.but_undel.prop('disabled', this._readonly || size_limit ||
                  !this._position);
             this.but_open.prop('disabled', !access.read || !this._position);
@@ -3186,7 +3187,8 @@ function eval_pyson(value){
         },
         remove: function(event_) {
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            if (!access.write || !access.read) {
+            var writable = !this.screen.readonly;
+            if (!access.write || !access.read || !writable) {
                 return;
             }
             this.screen.remove(false, true, false);
@@ -3301,7 +3303,8 @@ function eval_pyson(value){
             return this.edit();
         },
         delete_: function(event_) {
-            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete']) {
+            if (!Sao.common.MODELACCESS.get(this.screen.model_name)['delete'] ||
+                !this.screen.deletable) {
                 return;
             }
             this.screen.remove(false, false, false);

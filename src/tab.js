@@ -1288,6 +1288,12 @@
                 }.bind(this));
                 this.buttons.switch_.prop('disabled',
                     this.attributes.view_ids > 1);
+
+                this.menu_buttons.delete_.toggleClass(
+                    'disabled', !this.screen.deletable);
+                this.menu_buttons.save.toggleClass(
+                    'disabled', this.screen.readonly);
+
                 var msg = name + ' / ' + data[1];
                 if (data[1] < data[2]) {
                     msg += Sao.i18n.gettext(' of ') + data[2];

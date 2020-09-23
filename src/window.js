@@ -303,7 +303,8 @@
         record_label: function(data) {
             var name = '_';
             var access = Sao.common.MODELACCESS.get(this.screen.model_name);
-            var readonly = this.screen.group.readonly;
+            var deletable = this.screen.deletable;
+            var readonly = this.screen.group.readonly || this.screen.readonly;
             if (data[0] >= 1) {
                 name = data[0];
                 if (this.domain) {
@@ -311,7 +312,7 @@
                 }
                 this.but_next.prop('disabled', data[0] >= data[1]);
                 this.but_previous.prop('disabled', data[0] <= 1);
-                if (access.delete && !readonly) {
+                if (access.delete && !readonly && deletable) {
                     this.but_del.prop('disabled', false);
                     this.but_undel.prop('disabled', false);
                 }
