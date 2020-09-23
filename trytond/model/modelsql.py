@@ -696,7 +696,7 @@ class ModelSQL(ModelStorage):
         if 'write_date' not in fields_names:
             extra_fields.add('write_date')
         for field_name in fields_names:
-            if field_name == '_timestamp':
+            if field_name in {'_timestamp', '_write', '_delete'}:
                 continue
             if '.' in field_name:
                 field_name, field_related = field_name.split('.', 1)
@@ -732,6 +732,26 @@ class ModelSQL(ModelStorage):
             field = cls._fields.get(f)
             if field and field.sql_type():
                 columns.append(field.sql_column(table).as_(f))
+            elif f in {'_write', '_delete'}:
+                if not callable(cls.table_query):
+                    rule_domain = Rule.domain_get(
+                        cls.__name__, mode=f.lstrip('_'))
+                    if rule_domain:
+                        rule_tables = {None: (table, None)}
+                        rule_tables, rule_expression = cls.search_domain(
+                            rule_domain, tables=rule_tables)
+                        if len(rule_tables) > 1:
+                            # The expression uses another table
+                            rule_tables, rule_expression = cls.search_domain(
+                                rule_domain)
+                            rule_from = convert_from(None, rule_tables)
+                            rule_table, _ = rule_tables[None]
+                            rule_where = rule_table.id == table.id
+                            rule_expression = rule_from.select(
+                                        rule_expression, where=rule_where)
+                        columns.append(rule_expression.as_(f))
+                    else:
+                        columns.append(Literal(True).as_(f))
             elif f == '_timestamp' and not callable(cls.table_query):
                 sql_type = fields.Char('timestamp').sql_type().base
                 columns.append(Extract('EPOCH',
@@ -774,7 +794,7 @@ class ModelSQL(ModelStorage):
         for column in columns:
             # Split the output name to remove SQLite type detection
             fname = column.output_name.split()[0]
-            if fname == '_timestamp':
+            if fname.startswith('_'):
                 continue
             field = cls._fields[fname]
             if not hasattr(field, 'get'):

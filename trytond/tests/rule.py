@@ -8,9 +8,17 @@ class TestRule(ModelSQL):
     "Test Rule"
     __name__ = 'test.rule'
     field = fields.Char("Field")
+    relation = fields.Many2One('test.rule.relation', "Relation")
+
+
+class TestRuleRelation(ModelSQL):
+    "Test Rule Relation"
+    __name__ = 'test.rule.relation'
+    field = fields.Char("Field")
 
 
 def register(module):
     Pool.register(
         TestRule,
+        TestRuleRelation,
         module=module, type_='model')

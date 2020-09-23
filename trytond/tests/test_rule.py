@@ -379,6 +379,250 @@ class ModelRuleTestCase(unittest.TestCase):
 
         self.assertListEqual(TestRule.search([]), [])
 
+    @with_transaction()
+    def test_write_field_no_rule(self):
+        "Test _write field when there's no rule"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        writable, = TestRule.create([{'field': 'foo'}])
+
+        value, = TestRule.read([writable.id], ['_write'])
+        self.assertEqual(value['_write'], True)
+
+    @with_transaction()
+    def test_write_field_rule_True(self):
+        "Test _write field when there's a rule - True"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': True,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        writable, = TestRule.create([{'field': 'bar'}])
+
+        value, = TestRule.read([writable.id], ['_write'])
+        self.assertEqual(value['_write'], True)
+
+    @with_transaction()
+    def test_write_field_rule_False(self):
+        "Test _write field when there's a rule - False"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': True,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        non_writable, = TestRule.create([{'field': 'foo'}])
+
+        value, = TestRule.read([non_writable.id], ['_write'])
+        self.assertEqual(value['_write'], False)
+
+    @with_transaction()
+    def test_write_field_relation_rule_True(self):
+        "Test _write field when there's a rule with a relation - True"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleRelation = pool.get('test.rule.relation')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': True,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('relation.field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        relation, = TestRuleRelation.create([{'field': 'bar'}])
+        writable, = TestRule.create([{'relation': relation}])
+
+        value, = TestRule.read([writable.id], ['_write'])
+        self.assertEqual(value['_write'], True)
+
+    @with_transaction()
+    def test_write_field_relation_rule_False(self):
+        "Test _write field when there's a rule with a relation - False"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleRelation = pool.get('test.rule.relation')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': True,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('relation.field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        relation, = TestRuleRelation.create([{'field': 'foo'}])
+        non_writable, = TestRule.create([{'relation': relation}])
+
+        value, = TestRule.read([non_writable.id], ['_write'])
+        self.assertEqual(value['_write'], False)
+
+    @with_transaction()
+    def test_delete_field_no_rule(self):
+        "Test _delete field when there's no rule"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        deletable, = TestRule.create([{'field': 'foo'}])
+
+        value, = TestRule.read([deletable.id], ['_delete'])
+        self.assertEqual(value['_delete'], True)
+
+    @with_transaction()
+    def test_delete_field_rule_True(self):
+        "Test _delete field when there's a rule - True"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        deletable, = TestRule.create([{'field': 'bar'}])
+
+        value, = TestRule.read([deletable.id], ['_delete'])
+        self.assertEqual(value['_delete'], True)
+
+    @with_transaction()
+    def test_delete_field_rule_False(self):
+        "Test _delete field when there's a rule - False"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        non_deletable, = TestRule.create([{'field': 'foo'}])
+
+        value, = TestRule.read([non_deletable.id], ['_delete'])
+        self.assertEqual(value['_delete'], False)
+
+    @with_transaction()
+    def test_delete_field_relation_rule_True(self):
+        "Test _delete field when there's a rule with a relation - True"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleRelation = pool.get('test.rule.relation')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('relation.field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        relation, = TestRuleRelation.create([{'field': 'bar'}])
+        deletable, = TestRule.create([{'relation': relation}])
+
+        value, = TestRule.read([deletable.id], ['_delete'])
+        self.assertEqual(value['_delete'], True)
+
+    @with_transaction()
+    def test_delete_field_relation_rule_False(self):
+        "Test _delete field when there's a rule with a relation - False"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleRelation = pool.get('test.rule.relation')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': True,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('relation.field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        relation, = TestRuleRelation.create([{'field': 'foo'}])
+        non_deletable, = TestRule.create([{'relation': relation}])
+
+        value, = TestRule.read([non_deletable.id], ['_delete'])
+        self.assertEqual(value['_delete'], False)
+
 
 def suite():
     suite_ = unittest.TestSuite()

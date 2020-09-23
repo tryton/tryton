@@ -1,3 +1,4 @@
+* Add deletable and writable state from ir.rule to read
 * Add language attribute to data tag
 * Add e-mail template
 * Send e-mail on behalf of user
