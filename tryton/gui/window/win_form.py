@@ -322,6 +322,9 @@ class WinForm(NoModal, InfoBar):
     def _sig_label(self, screen, signal_data):
         name = '_'
         access = common.MODELACCESS[screen.model_name]
+        deletable = True
+        if screen.current_record:
+            deletable = screen.current_record.deletable
         readonly = screen.group.readonly
         if signal_data[0] >= 1:
             name = str(signal_data[0])
@@ -335,7 +338,7 @@ class WinForm(NoModal, InfoBar):
                 self.but_pre.set_sensitive(True)
             else:
                 self.but_pre.set_sensitive(False)
-            if access['delete'] and not readonly:
+            if access['delete'] and not readonly and deletable:
                 self.but_del.set_sensitive(True)
                 self.but_undel.set_sensitive(True)
         else:

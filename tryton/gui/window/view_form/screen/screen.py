@@ -142,6 +142,19 @@ class Screen(SignalEvent):
     def __repr__(self):
         return '<Screen %s at %s>' % (self.model_name, id(self))
 
+    @property
+    def readonly(self):
+        return (self.__readonly
+            or any(r.readonly for r in self.selected_records))
+
+    @readonly.setter
+    def readonly(self, value):
+        self.__readonly = value
+
+    @property
+    def deletable(self):
+        return all(r.deletable for r in self.selected_records)
+
     def search_active(self, active=True):
         if active and not self.parent:
             self.screen_container.set_screen(self)
@@ -413,7 +426,7 @@ class Screen(SignalEvent):
     def new_group(self, context=None):
         context = context if context is not None else self.context
         self.group = Group(self.model_name, {}, domain=self.domain,
-            context=context, readonly=self.readonly)
+            context=context, readonly=self.__readonly)
 
     def _group_cleared(self, group, signal):
         for view in self.views:
@@ -1104,7 +1117,7 @@ class Screen(SignalEvent):
 
     @property
     def selected_records(self):
-        return self.current_view.selected_records
+        return self.current_view.selected_records if self.current_view else []
 
     def clear(self):
         self.current_record = None
@@ -1196,7 +1209,9 @@ class Screen(SignalEvent):
             if access['create']:
                 self.new()
         elif action == 'delete':
-            if access['delete']:
+            if (access['delete']
+                    and (self.current_record.deletable
+                        if self.current_record else True)):
                 self.remove(delete=not self.parent,
                     force_remove=not self.parent)
         elif action == 'remove':

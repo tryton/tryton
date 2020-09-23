@@ -302,7 +302,8 @@ class Form(SignalEvent, TabContent):
                     self.menu_buttons[name].props.sensitive = False
 
     def sig_remove(self, widget=None):
-        if not common.MODELACCESS[self.model]['delete']:
+        if (not common.MODELACCESS[self.model]['delete']
+                or not self.screen.deletable):
             return
         if self.screen.current_view.view_type == 'form':
             msg = _('Are you sure to remove this record?')
@@ -379,7 +380,8 @@ class Form(SignalEvent, TabContent):
             # Called from button so we must save the tree state
             self.screen.save_tree_state()
         if not (common.MODELACCESS[self.model]['write']
-                or common.MODELACCESS[self.model]['create']):
+                or common.MODELACCESS[self.model]['create']
+                or self.screen.writable):
             return
         if self.screen.save_current():
             self.message_info(_('Record saved.'), Gtk.MessageType.INFO)
@@ -423,6 +425,7 @@ class Form(SignalEvent, TabContent):
                     break
         self.screen.display(set_cursor=set_cursor)
         self.message_info()
+        self.set_buttons_sensitive()
         self.activate_save()
         self.screen.count_tab_domain()
         return True
@@ -509,10 +512,17 @@ class Form(SignalEvent, TabContent):
                 can_be_sensitive |= any(
                     b.attrs.get('keyword', 'action') == action_type
                     for b in screen.get_buttons())
+            elif button_id == 'save':
+                can_be_sensitive &= not self.screen.readonly
             button.props.sensitive = (bool(signal_data[0])
                 and can_be_sensitive)
         button_switch = self.buttons['switch']
         button_switch.props.sensitive = self.screen.number_of_views > 1
+
+        menu_delete = self.menu_buttons['remove']
+        menu_delete.props.sensitive = self.screen.deletable
+        menu_save = self.menu_buttons['save']
+        menu_save.props.sensitive = not self.screen.readonly
 
         msg = name + ' / ' + str(signal_data[1])
         if signal_data[1] < signal_data[2]:

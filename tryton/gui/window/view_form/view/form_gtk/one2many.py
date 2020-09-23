@@ -268,6 +268,7 @@ class One2Many(Widget):
         if isinstance(self._position, int):
             first = self._position <= 1
             last = self._position >= self._length
+        deletable = self.screen.deletable
 
         self.but_new.set_sensitive(bool(
                 not self._readonly
@@ -277,6 +278,7 @@ class One2Many(Widget):
         self.but_del.set_sensitive(bool(
                 not self._readonly
                 and self.attrs.get('delete', True)
+                and deletable
                 and self._position
                 and access['delete']))
         self.but_undel.set_sensitive(bool(
@@ -427,11 +429,13 @@ class One2Many(Widget):
 
     def _sig_remove(self, widget, remove=False):
         access = common.MODELACCESS[self.screen.model_name]
+        writable = not self.screen.readonly
+        deletable = self.screen.deletable
         if remove:
-            if not access['write'] or not access['read']:
+            if not access['write'] or not writable or not access['read']:
                 return
         else:
-            if not access['delete']:
+            if not access['delete'] or not deletable:
                 return
         self.screen.remove(remove=remove)
 

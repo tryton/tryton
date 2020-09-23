@@ -28,6 +28,8 @@ class Record(SignalEvent):
         self.state_attrs = {}
         self.modified_fields = {}
         self._timestamp = None
+        self._write = True
+        self._delete = True
         self.resources = None
         self.button_clicks = {}
         self.links_counts = {}
@@ -73,7 +75,7 @@ class Record(SignalEvent):
                     in ('many2one', 'one2one', 'reference')))
             if 'rec_name' not in fnames:
                 fnames.append('rec_name')
-            fnames.append('_timestamp')
+            fnames.extend(['_timestamp', '_write', '_delete'])
 
             record_context = self.get_context()
             if loading == 'eager':
@@ -226,9 +228,16 @@ class Record(SignalEvent):
     deleted = property(get_deleted)
 
     def get_readonly(self):
-        return self.deleted or self.removed or self.exception
+        return (self.deleted
+            or self.removed
+            or self.exception
+            or not self._write)
 
     readonly = property(get_readonly)
+
+    @property
+    def deletable(self):
+        return self._delete
 
     def fields_get(self):
         return self.group.fields
@@ -435,6 +444,9 @@ class Record(SignalEvent):
                 # Always keep the older timestamp
                 if not self._timestamp:
                     self._timestamp = value
+                continue
+            if fieldname in {'_write', '_delete'}:
+                setattr(self, fieldname, value)
                 continue
             if fieldname not in self.group.fields:
                 if fieldname == 'rec_name':
