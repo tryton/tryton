@@ -677,7 +677,7 @@
       <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;(format_number(quotation_line.quantity, quotation.supplier.lang, digits=quotation_line.unit_digits) + (quotation_line.unit and (&apos; &apos; + quotation_line.unit.symbol) or &apos;&apos;)) or &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau1.A3" office:value-type="string">
-      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;format_number(quotation_line.unit_price, quotation.supplier.lang, digits=quotation_line.__class__.unit_price.digits[1], monetary=quotation_line.currency) if quotation_line.unit_price else &quot;&quot;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;format_currency(quotation_line.unit_price, quotation.supplier.lang, quotation_line.currency, digits=quotation_line.__class__.unit_price.digits[1]) if quotation_line.unit_price else &quot;&quot;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau1.A2" office:value-type="string">
       <text:p text:style-name="P16"><text:placeholder text:placeholder-type="text">&lt;format_date(quotation_line.supply_date, quotation.supplier.lang) if quotation_line.supply_date else &apos;&apos;&gt;</text:placeholder></text:p>
