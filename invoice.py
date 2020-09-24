@@ -2584,15 +2584,8 @@ class InvoiceReport(Report):
 
     @classmethod
     def execute(cls, ids, data):
-        pool = Pool()
-        Invoice = pool.get('account.invoice')
         with Transaction().set_context(address_with_party=True):
-            result = super(InvoiceReport, cls).execute(ids, data)
-            if len(ids) == 1:
-                invoice, = Invoice.browse(ids)
-                if invoice.number:
-                    result = result[:3] + (result[3] + ' - ' + invoice.number,)
-            return result
+            return super().execute(ids, data)
 
     @classmethod
     def get_context(cls, records, data):
