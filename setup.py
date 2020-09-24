@@ -149,7 +149,7 @@ setup(name=name,
         'python-sql >= 0.5',
         'werkzeug',
         'wrapt',
-        'passlib',
+        'passlib >= 1.7.0',
         ],
     extras_require={
         'PostgreSQL': pg_require,
