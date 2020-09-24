@@ -302,20 +302,22 @@
             if (current_text) {
                 var current_domain = this.screen.domain_parser.parse(
                         current_text);
-                this.but_star.prop('disabled', !current_text);
                 var star = this.get_star();
                 var bookmarks = this.bookmarks();
                 for (var i=0; i < bookmarks.length; i++) {
                     var id = bookmarks[i][0];
                     var name = bookmarks[i][1];
                     var domain = bookmarks[i][2];
+                    var access = bookmarks[i][3];
                     var text = this.screen.domain_parser.string(domain);
                     if ((text === current_text) ||
                             (Sao.common.compare(domain, current_domain))) {
                         this.set_star(true);
+                        this.but_star.prop('disabled', !access);
                         return id;
                     }
                 }
+                this.but_star.prop('disabled', !current_text);
             }
             this.set_star(false);
         },

@@ -525,7 +525,7 @@
                 if (this.searches[model] === undefined) {
                     this.searches[model] = [];
                 }
-                this.searches[model].push([id, name, domain]);
+                this.searches[model].push([id, name, domain, true]);
             }.bind(this));
         },
         remove: function(model, id) {
