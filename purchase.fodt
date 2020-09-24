@@ -658,7 +658,7 @@
       <text:p text:style-name="P12"><text:placeholder text:placeholder-type="text">&lt;(format_number(line.quantity, purchase.party.lang, digits=line.unit_digits) + (line.unit and (&apos; &apos; + line.unit.symbol) or &apos;&apos;)) or &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D5" office:value-type="string">
-      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_number(line.unit_price, purchase.party.lang, digits=line.__class__.unit_price.digits[1], monetary=purchase.currency)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P13"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.unit_price, purchase.party.lang, purchase.currency, digits=line.__class__.unit_price.digits[1])&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D5" office:value-type="string">
       <text:p text:style-name="P14"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;tax in line.taxes&quot;&gt;</text:placeholder></text:p>
