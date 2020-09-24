@@ -87,7 +87,7 @@ Testing the report::
     >>> ext
     'odt'
     >>> name
-    'Restocking List'
+    'Restocking List-1'
 
 Create Shipment Out::
 
@@ -123,14 +123,14 @@ Testing the reports::
     >>> ext
     'odt'
     >>> name
-    'Delivery Note'
+    'Delivery Note-1'
 
     >>> picking_list = Report('stock.shipment.out.picking_list')
     >>> ext, _, _, name = picking_list.execute([shipment_out], {})
     >>> ext
     'odt'
     >>> name
-    'Picking List'
+    'Picking List-1'
 
 Create an internal shipment::
 
@@ -162,5 +162,5 @@ Testing the report::
     >>> ext
     'odt'
     >>> name
-    'Internal Shipment'
+    'Internal Shipment-1'
 
