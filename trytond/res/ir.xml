@@ -836,6 +836,24 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_view_search"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_view_search_common">
+            <field name="name">Common view search</field>
+            <field name="model" search="[('model', '=', 'ir.ui.view_search')]"/>
+            <field name="global_p" eval="False"/>
+            <field name="default_p" eval="True"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.rule" id="rule_group_view_search_common1">
+            <field
+                name="domain"
+                eval="[('user', '=', None)]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_view_search_common"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_view_search_admin">
             <field name="name">Any view search</field>
             <field name="model"

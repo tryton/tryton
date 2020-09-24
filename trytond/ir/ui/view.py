@@ -383,8 +383,7 @@ class ViewSearch(ModelSQL, ModelView):
     name = fields.Char('Name', required=True)
     model = fields.Char('Model', required=True)
     domain = fields.Char('Domain', help="The PYSON domain.")
-    user = fields.Many2One('res.user', 'User', required=True,
-        ondelete='CASCADE')
+    user = fields.Many2One('res.user', 'User', ondelete='CASCADE')
 
     @classmethod
     def __setup__(cls):
@@ -393,20 +392,29 @@ class ViewSearch(ModelSQL, ModelView):
                 'get_search': RPC(),
                 })
 
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 5.6: remove user required
+        table_h.not_null_action('user', 'remove')
+
     @staticmethod
     def default_user():
         return Transaction().user
 
     @classmethod
-    def get_search(cls, user_id=None):
-        if user_id is None:
-            user_id = Transaction().user
+    def get_search(cls):
         decoder = PYSONDecoder()
-        searches = cls.search([
-                ('user', '=', user_id),
-                ], order=[('model', 'ASC'), ('name', 'ASC')])
+        searches = cls.search_read(
+            [], order=[('model', 'ASC'), ('name', 'ASC')],
+            fields_names=['id', 'name', 'model', 'domain', '_delete'])
         result = {}
         for search in searches:
-            result.setdefault(search.model, []).append(
-                (search.id, search.name, decoder.decode(search.domain)))
+            result.setdefault(search['model'], []).append((
+                    search['id'],
+                    search['name'],
+                    decoder.decode(search['domain']),
+                    search['_delete']))
         return result
