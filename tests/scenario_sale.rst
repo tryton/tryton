@@ -221,7 +221,7 @@ Testing the report::
     >>> ext
     'odt'
     >>> name
-    'Sale'
+    'Sale-1'
 
 Sale 5 products with an invoice method 'on shipment'::
 
