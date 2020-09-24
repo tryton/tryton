@@ -107,7 +107,8 @@ class NotificationEmailTestCase(ModuleTestCase):
                 datamanager=ANY)
             _, _, msg = sendmail.call_args[0]
             self.assertEqual(msg['From'], FROM)
-            self.assertEqual(msg['Subject'], 'Notification Email')
+            self.assertEqual(
+                msg['Subject'], 'Notification Email-Michael Scott')
             self.assertEqual(msg['To'], 'Administrator <user@example.com>')
             self.assertEqual(msg['Auto-Submitted'], 'auto-generated')
             self.assertEqual(msg.get_content_type(), 'multipart/alternative')
@@ -154,7 +155,8 @@ class NotificationEmailTestCase(ModuleTestCase):
             user, FROM, ['Administrator <user@example.com>'], [], [], [en])
 
         self.assertEqual(msg['From'], FROM)
-        self.assertEqual(msg['Subject'], 'Notification Email')
+        self.assertEqual(
+            msg['Subject'], 'Notification Email-Michael Scott')
         self.assertEqual(msg['To'], 'Administrator <user@example.com>')
         self.assertEqual(msg.get_content_type(), 'multipart/mixed')
         self.assertEqual(
@@ -166,7 +168,8 @@ class NotificationEmailTestCase(ModuleTestCase):
             b'attachment for Michael Scott')
         self.assertEqual(
             attachment.get_content_type(), 'text/plain')
-        self.assertEqual(attachment.get_filename(), "Attachment.txt")
+        self.assertEqual(
+            attachment.get_filename(), "Attachment-Michael Scott.txt")
 
     @with_transaction()
     def test_notification_email_subject(self):
