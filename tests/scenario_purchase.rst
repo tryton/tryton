@@ -316,7 +316,7 @@ Create the report::
     >>> ext
     'odt'
     >>> name
-    'Purchase'
+    'Purchase-2'
 
 Create a Return::
 
