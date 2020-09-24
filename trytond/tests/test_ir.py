@@ -154,7 +154,8 @@ class IrTestCase(ModuleTestCase):
         self.assertEqual(email.body, '<p>Hello</p>')
         self.assertEqual(len(attachments), 2)
         self.assertEqual(
-            {a.name for a in attachments}, {'file.txt', 'Test Email.txt'})
+            {a.name for a in attachments},
+            {'file.txt', 'Test Email-Administrator.txt'})
         self.assertEqual(
             {a.data for a in attachments}, {b'data', b'report'})
 
