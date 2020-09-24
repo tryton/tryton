@@ -161,7 +161,7 @@ Create the report::
     >>> ext
     'odt'
     >>> name
-    'Purchase Request Quotation'
+    'Purchase Request Quotation-1'
 
 Suppliers will answer to quotation with their best unit price::
 
