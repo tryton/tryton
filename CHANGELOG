@@ -1,3 +1,4 @@
+* Add record name in report filename
 * Add deletable and writable state from ir.rule to read
 * Add language attribute to data tag
 * Add e-mail template

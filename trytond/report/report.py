@@ -174,7 +174,12 @@ class Report(URLMixin, PoolBase):
             oext, content = cls._execute(records, data, action_report)
         if not isinstance(content, str):
             content = bytearray(content) if bytes == str else bytes(content)
-        return (oext, content, action_report.direct_print, action_report.name)
+
+        suffix = '-'.join(r.rec_name for r in records[:5])
+        if len(records) > 5:
+            suffix += '__' + str(len(records[5:]))
+        report_name = '%s-%s' % (action_report.name, suffix)
+        return (oext, content, action_report.direct_print, report_name)
 
     @classmethod
     def _execute(cls, records, data, action):
