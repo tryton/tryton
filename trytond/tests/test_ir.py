@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from dateutil.relativedelta import relativedelta
 import datetime
 import unittest
-from unittest.mock import patch, ANY
+from decimal import Decimal
+from unittest.mock import Mock, patch, ANY
+
+from dateutil.relativedelta import relativedelta
 
 from trytond.config import config
 from trytond.pool import Pool
@@ -49,6 +51,24 @@ class IrTestCase(ModuleTestCase):
         pool = Pool()
         Model = pool.get('ir.model')
         Model.global_search('User', 10)
+
+    @with_transaction()
+    def test_lang_currency(self):
+        "Test Lang.currency"
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get('en')
+        currency = Mock()
+        currency.digits = 2
+        currency.symbol = '$'
+        test_data = [
+            (Decimal('10.50'), True, False, None, '$10.50'),
+            (Decimal('10.50'), True, False, 4, '$10.5000'),
+            ]
+        for value, symbol, grouping, digits, result in test_data:
+            self.assertEqual(
+                lang.currency(value, currency, symbol, grouping, digits),
+                result)
 
     @with_transaction()
     def test_lang_format(self):

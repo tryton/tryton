@@ -459,14 +459,16 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
                 formatted = _strip_padding(formatted, seps)
         return formatted
 
-    def currency(self, val, currency, symbol=True, grouping=False):
+    def currency(
+            self, val, currency, symbol=True, grouping=False, digits=None):
         """
         Formats val according to the currency settings in lang.
         """
         # Code from currency in locale.py
 
         # check for illegal values
-        digits = currency.digits
+        if digits is None:
+            digits = currency.digits
         if digits == 127:
             raise ValueError("Currency formatting is not possible using "
                              "the 'C' locale.")

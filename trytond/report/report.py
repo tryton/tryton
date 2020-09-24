@@ -383,13 +383,14 @@ class Report(URLMixin, PoolBase):
         return text
 
     @classmethod
-    def format_currency(cls, value, lang, currency, symbol=True,
-            grouping=True):
+    def format_currency(
+            cls, value, lang, currency, symbol=True, grouping=True,
+            digits=None):
         pool = Pool()
         Lang = pool.get('ir.lang')
         if lang is None:
             lang = Lang.get()
-        return lang.currency(value, currency, symbol, grouping)
+        return lang.currency(value, currency, symbol, grouping, digits=digits)
 
     @classmethod
     def format_number(cls, value, lang, digits=2, grouping=True,

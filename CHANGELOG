@@ -1,3 +1,4 @@
+* Allow overriding digits in Lang.currency and Report.format_currency
 * Add record name in report filename
 * Add deletable and writable state from ir.rule to read
 * Add language attribute to data tag
