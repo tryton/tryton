@@ -178,7 +178,7 @@ class Report(URLMixin, PoolBase):
         suffix = '-'.join(r.rec_name for r in records[:5])
         if len(records) > 5:
             suffix += '__' + str(len(records[5:]))
-        report_name = '%s-%s' % (action_report.name, suffix)
+        report_name = '-'.join(filter(None, [action_report.name, suffix]))
         return (oext, content, action_report.direct_print, report_name)
 
     @classmethod
