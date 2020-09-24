@@ -259,7 +259,7 @@ class ViewSearch(object):
                         }])
         except RPCException:
             return
-        self.searches.setdefault(model, []).append((id_, name, domain))
+        self.searches.setdefault(model, []).append((id_, name, domain, True))
 
     def remove(self, model, id_):
         try:

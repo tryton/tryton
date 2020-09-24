@@ -242,7 +242,7 @@ class ScreenContainer(object):
                     widget_allocation.x, widget_allocation.y)
                 return (x, y + widget_allocation.height, False)
 
-            for id_, name, domain in self.bookmarks():
+            for id_, name, domain, access in self.bookmarks():
                 menuitem = Gtk.MenuItem(label=name)
                 menuitem.connect('activate', self.bookmark_activate, domain)
                 menu.add(menuitem)
@@ -407,9 +407,10 @@ class ScreenContainer(object):
         self.bookmark_match()
 
     def bookmarks(self):
-        for id_, name, domain in common.VIEW_SEARCH[self.screen.model_name]:
+        for id_, name, domain, access in common.VIEW_SEARCH[
+                self.screen.model_name]:
             if self.screen.domain_parser.stringable(domain):
-                yield id_, name, domain
+                yield id_, name, domain, access
 
     def bookmark_activate(self, menuitem, domain):
         self.set_text(self.screen.domain_parser.string(domain))
@@ -419,11 +420,7 @@ class ScreenContainer(object):
         current_text = self.get_text()
         if current_text:
             current_domain = self.screen.domain_parser.parse(current_text)
-            self.search_entry.set_icon_activatable(
-                Gtk.EntryIconPosition.SECONDARY, bool(current_text))
-            self.search_entry.set_icon_sensitive(
-                Gtk.EntryIconPosition.SECONDARY, bool(current_text))
-            for id_, name, domain in self.bookmarks():
+            for id_, name, domain, access in self.bookmarks():
                 text = self.screen.domain_parser.string(domain)
                 domain = self.screen.domain_parser.parse(text)
                 if (text == current_text
@@ -435,7 +432,15 @@ class ScreenContainer(object):
                     self.search_entry.set_icon_tooltip_text(
                         Gtk.EntryIconPosition.SECONDARY,
                         _('Remove this bookmark'))
+                    self.search_entry.set_icon_activatable(
+                        Gtk.EntryIconPosition.SECONDARY, access)
+                    self.search_entry.set_icon_sensitive(
+                        Gtk.EntryIconPosition.SECONDARY, access)
                     return id_
+            self.search_entry.set_icon_activatable(
+                Gtk.EntryIconPosition.SECONDARY, bool(current_text))
+            self.search_entry.set_icon_sensitive(
+                Gtk.EntryIconPosition.SECONDARY, bool(current_text))
         self.search_entry.set_icon_from_pixbuf(
             Gtk.EntryIconPosition.SECONDARY,
             common.IconFactory.get_pixbuf(
