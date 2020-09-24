@@ -112,7 +112,7 @@
                 var aggregate = jQuery('<label/>', {
                     'class': 'value',
                 });
-                this.view.sum_widgets[name] = [sum, aggregate];
+                this.view.sum_widgets.set(column, [sum, aggregate]);
             }
         },
         _parse_button: function(node, attributes) {
@@ -129,7 +129,7 @@
         display_size: Sao.config.display_size,
         init: function(view_id, screen, xml, children_field) {
             this.children_field = children_field;
-            this.sum_widgets = {};
+            this.sum_widgets = new Map();
             this.columns = [];
             this.selection_mode = (screen.attributes.selection_mode ||
                 Sao.common.SELECTION_MULTIPLE);
@@ -186,7 +186,7 @@
 
             this.tfoot = null;
             var sum_row;
-            if (!jQuery.isEmptyObject(this.sum_widgets)) {
+            if (this.sum_widgets.size) {
                 sum_row = jQuery('<tr/>');
                 sum_row.append(jQuery('<th/>'));
                 this.tfoot = jQuery('<tfoot/>');
@@ -229,14 +229,14 @@
                 column.col = col;
 
                 column.footers = [];
-                if (!jQuery.isEmptyObject(this.sum_widgets)) {
+                if (this.sum_widgets.size) {
                     var field_name = column.attributes.name;
                     var total_cell = jQuery('<th/>', {
                         'class': column.class_,
                     });
-                    if (field_name in this.sum_widgets) {
-                        var sum_label = this.sum_widgets[field_name][0];
-                        var sum_value = this.sum_widgets[field_name][1];
+                    if (this.sum_widgets.has(column)) {
+                        var sum_label = this.sum_widgets.get(column)[0];
+                        var sum_value = this.sum_widgets.get(column)[1];
                         total_cell.append(sum_label);
                         total_cell.append(sum_value);
                         total_cell.attr('data-title', sum_label.text());
@@ -801,15 +801,12 @@
             // TODO update_children
         },
         update_sum: function() {
-            for (var name in this.sum_widgets) {
-                if (!this.sum_widgets.hasOwnProperty(name)) {
-                    continue;
-                }
-
+            this.sum_widgets.forEach(function(sum_widget, column) {
+                var name = column.attributes.name;
                 var selected_records = this.selected_records;
                 var aggregate = '-';
-                var sum_label = this.sum_widgets[name][0];
-                var sum_value = this.sum_widgets[name][1];
+                var sum_label = sum_widget[0];
+                var sum_value = sum_widget[1];
                 var sum_ = null;
                 var selected_sum = null;
                 var loaded = true;
@@ -874,7 +871,7 @@
                 sum_value.text(aggregate);
                 sum_value.parent().attr(
                     'title', sum_label.text() + ' ' + sum_value.text());
-            }
+            }.bind(this));
         },
         get selected_records() {
             if (this.selection_mode == Sao.common.SELECTION_NONE) {
