@@ -1557,11 +1557,7 @@
 
                 items.forEach(function(item) {
                     var path = prefix_field + item.name;
-                    var long_string = item.string;
-
-                    if (prefix_field) {
-                        long_string = prefix_name + item.string;
-                    }
+                    var long_string = prefix_name + item.string;
 
                     var node = {
                         path: path,
@@ -1584,7 +1580,7 @@
             if(jQuery.isEmptyObject(node.children)) {
                 this.get_fields(node.relation).done(function(fields) {
                     this.model_populate(fields, node.children,
-                        node.path + '/', node.string + '/');
+                        node.path + '/', node.long_string + '/');
                     dfd.resolve(this);
                 }.bind(this));
             } else {
