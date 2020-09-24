@@ -709,7 +709,7 @@
       <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;(format_number(line.quantity, invoice.party.lang, digits=line.unit_digits) + (line.unit and (&apos; &apos; + line.unit.symbol) or &apos;&apos;)) or &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D5" office:value-type="string">
-      <text:p text:style-name="P11"><text:placeholder text:placeholder-type="text">&lt;format_number(line.unit_price, invoice.party.lang, digits=line.__class__.unit_price.digits[1], monetary=invoice.currency)&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P11"><text:placeholder text:placeholder-type="text">&lt;format_currency(line.unit_price, invoice.party.lang, invoice.currency, digits=line.__class__.unit_price.digits[1])&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.D5" office:value-type="string">
       <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;&apos;,&apos;.join(&apos;[&apos; + &apos;%s&apos; % x.sequence_number + &apos;]&apos; for x in line.invoice_taxes)&gt;</text:placeholder></text:p>
