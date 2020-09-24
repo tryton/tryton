@@ -112,14 +112,11 @@ class WinExport(WinCSV):
 
             for name, field, string_ in items:
                 path = prefix_field + name
-                long_string = string_
-                if prefix_field:
-                    long_string = prefix_name + string_
                 node = self.model1.insert(parent_node, 0,
                     [string_, path])
+                string_ = prefix_name + string_
 
-                self.fields[path] = (string_, long_string,
-                    field.get('relation'))
+                self.fields[path] = (string_, field.get('relation'))
                 # Insert relation only to real field
                 if '.' not in name:
                     if field.get('relation'):
@@ -136,7 +133,7 @@ class WinExport(WinCSV):
         child = self.model1.iter_children(iter)
         if self.model1.get_value(child, 0) is None:
             prefix_field = self.model1.get_value(iter, 1)
-            string_, long_string, relation = self.fields[prefix_field]
+            string_, relation = self.fields[prefix_field]
             self.model_populate(self._get_fields(relation), iter,
                 prefix_field + '/', string_ + '/')
             self.model1.remove(child)
@@ -147,11 +144,11 @@ class WinExport(WinCSV):
 
     def _sig_sel_add(self, store, path, iter):
         name = store.get_value(iter, 1)
-        string_, long_string, relation = self.fields[name]
+        string_, relation = self.fields[name]
         if relation:
             return
         num = self.model2.append()
-        self.model2.set(num, 0, long_string, 1, name)
+        self.model2.set(num, 0, string_, 1, name)
 
     def sig_unsel(self, *args):
         store, paths = self.view2.get_selection().get_selected_rows()
@@ -268,10 +265,10 @@ class WinExport(WinCSV):
             self.sel_field(name)
 
     def sel_field(self, name):
-        _, long_string, relation = self.fields[name]
+        string_, relation = self.fields[name]
         if relation:
             return
-        self.model2.append((long_string, name))
+        self.model2.append((string_, name))
 
     def response(self, dialog, response):
         if response == Gtk.ResponseType.OK:
