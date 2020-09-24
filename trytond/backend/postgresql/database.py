@@ -262,10 +262,13 @@ class Database(DatabaseInterface):
             res = []
             for db_name, in cursor:
                 try:
-                    with connect(**self._connection_params(db_name)
-                            ) as conn:
-                        if self._test(conn, hostname=hostname):
-                            res.append(db_name)
+                    conn = connect(**self._connection_params(db_name))
+                    try:
+                        with conn:
+                            if self._test(conn, hostname=hostname):
+                                res.append(db_name)
+                    finally:
+                        conn.close()
                 except Exception:
                     continue
         finally:
