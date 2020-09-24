@@ -212,8 +212,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/347.txt') as f:
     ...     content == f.read()
     True
-    >>> name
-    'AEAT Model 347'
+    >>> name.startswith('AEAT Model 347')
+    True
 
     >>> ECOperationList = Model.get('account.reporting.es_ec_operation_list')
     >>> context = {
@@ -230,5 +230,5 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/349.txt') as f:
     ...     content == f.read()
     True
-    >>> name
-    'AEAT Model 349'
+    >>> name.startswith('AEAT Model 349')
+    True
