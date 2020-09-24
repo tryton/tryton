@@ -1630,11 +1630,7 @@
 
                 items.forEach(function(item) {
                     var path = prefix_field + item.name;
-                    var long_string = item.string;
-
-                    if (prefix_field) {
-                        long_string = prefix_name + item.string;
-                    }
+                    var long_string = prefix_name + item.string;
 
                     var node = {
                         path: path,
@@ -1656,7 +1652,7 @@
             if (jQuery.isEmptyObject(node.children)) {
                 this.model_populate(
                     this._get_fields(node.relation), node.children,
-                    node.path + '/', node.string + '/');
+                    node.path + '/', node.long_string + '/');
             }
         },
         sig_sel_add: function(el_field) {
