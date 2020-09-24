@@ -29,6 +29,18 @@
         types: function() {
             throw 'NotImplementedError';
         },
+        get: function(k, d) {
+            if (d === undefined) {
+                d = '';
+            }
+            return Sao.PYSON.Get(this, k, d);
+        },
+        in_: function(obj) {
+            return Sao.PYSON.In(this, obj);
+        },
+        contains: function(k) {
+            return Sao.PYSON.In(k, this);
+        },
         toString: function() {
             var klass = this.pyson().__class__;
             var args = this.__string_params__().map(Sao.PYSON.toString);
