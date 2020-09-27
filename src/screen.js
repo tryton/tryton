@@ -1559,8 +1559,10 @@
             var path = top_record.get_path(this.group);
             return prm.then(function() {
                 records.forEach(function(record) {
-                    record.group.remove(record, remove, true, force_remove);
+                    record.group.remove(record, remove, true, force_remove, false);
                 });
+                // trigger changed only once
+                records[0].group.changed();
                 var prms = [];
                 if (delete_) {
                     records.forEach(function(record) {
