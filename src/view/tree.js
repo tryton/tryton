@@ -109,7 +109,7 @@
                 var sum = jQuery('<label/>', {
                     'text': label,
                 });
-                var aggregate = jQuery('<label/>', {
+                var aggregate = jQuery('<span/>', {
                     'class': 'value',
                 });
                 this.view.sum_widgets.set(column, [sum, aggregate]);
@@ -239,7 +239,6 @@
                         var sum_value = this.sum_widgets.get(column)[1];
                         total_cell.append(sum_label);
                         total_cell.append(sum_value);
-                        total_cell.attr('data-title', sum_label.text());
                     }
                     sum_row.append(total_cell);
                     column.footers.push(total_cell);

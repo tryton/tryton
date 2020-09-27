@@ -346,6 +346,15 @@ img.icon {
             top: 0;
             z-index: 100;
         }
+        > tfoot > tr th {
+            background-color: @body-bg;
+            bottom: 0;
+            position: sticky;
+            z-index: 100;
+            & > label {
+                display: none;
+            }
+        }
         > tbody > tr > td {
             cursor: pointer;
             > * {
@@ -763,9 +772,22 @@ input.column-boolean {
         }
 
         tfoot {
-            > tr > td:empty,
-            > tr > td > label {
-                display: none !important;
+            background-color: @body-bg;
+            border: 1px solid @table-border-color;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            > tr {
+                & > td:empty,
+                > td > label {
+                    display: none !important;
+                }
+                & th {
+                    border: none;
+                    & > label {
+                        display: inline !important;
+                    }
+                }
             }
         }
     }
@@ -776,13 +798,13 @@ input.column-boolean {
     }
     table.responsive-header {
         > tbody > tr {
-            border: 1px solid #ccc;
+            border: 1px solid @table-border-color;
         }
         > tbody > tr > td,
         > tfoot > tr > td {
             /* Behave like a "row" */
             border: none;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid @table-border-color;
             position: relative;
         }
         > tbody > tr,
