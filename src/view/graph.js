@@ -112,7 +112,7 @@
                     var x = record.field_get_client(this.xfield.name);
                     // c3 does not support moment
                     if (x && (x.isDate || x.isDateTime)) {
-                        x = x.toDate();
+                        x = x.toString();
                     }
                     data.columns[0][index + 1] = x;
                     this._add_id(x, record.id);
@@ -191,18 +191,21 @@
             c3_config.data.x = 'labels';
             c3_config.data.onclick = this.action.bind(this);
 
-            var type = this.xfield.type;
+            var type = this.view.screen.model.fields[this.xfield.name]
+                .description.type;
             if ((type == 'date') || (type == 'datetime')) {
                 var format_func, date_format, time_format;
                 date_format = Sao.common.date_format(
                     this.view.screen.context().date_format);
                 time_format = '%X';
                 if (type == 'datetime') {
+                    c3_config.data.xFormat = '%Y-%m-%d %H:%M:%S';
                     format_func = function(dt) {
                         return Sao.common.format_datetime(date_format,
                                 time_format, moment(dt));
                     };
                 } else {
+                    c3_config.data.xFormat = '%Y-%m-%d';
                     format_func = function(dt) {
                         return Sao.common.format_date(date_format, moment(dt));
                     };
@@ -289,7 +292,8 @@
             delete config.axis;
             delete config.data.x;
             var format_func;
-            var type = this.xfield.type;
+            var type = this.view.screen.model.fields[this.xfield.name]
+                .description.type;
             if ((type == 'date') || (type == 'datetime')) {
                 var date_format = Sao.common.date_format(
                     this.view.screen.context().date_format);

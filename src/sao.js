@@ -160,6 +160,27 @@ var Sao = {};
 
     Sao.Decimal = Number;
 
+    var _moment_to_string = moment.prototype.toString;
+    moment.prototype.toString = function() {
+        if (this.isDate) {
+            return this.format('YYYY-MM-DD');
+        } else if (this.isDateTime) {
+            if (this.milliseconds()) {
+                return this.format('YYYY-MM-DD HH:mm:ss.SSSSSS');
+            } else {
+                return this.format('YYYY-MM-DD HH:mm:ss');
+            }
+        } else if (this.isTime) {
+            if (this.milliseconds()) {
+                return this.format('HH:mm:ss.SSSSSS');
+            } else {
+                return this.format('HH:mm:ss');
+            }
+        } else {
+            return _moment_to_string.call(this);
+        }
+    };
+
     Sao.Date = function(year, month, day) {
         var date;
         if (month === undefined) {
@@ -174,9 +195,6 @@ var Sao = {};
         date.date(day);
         date.set({hour: 0, minute: 0, second: 0, millisecond: 0});
         date.isDate = true;
-        date.toString = function() {
-            return this.format('YYYY-MM-DD');
-        };
         return date;
     };
 
@@ -223,13 +241,6 @@ var Sao = {};
             datetime.milliseconds(millisecond);
         }
         datetime.isDateTime = true;
-        datetime.toString = function() {
-            if (this.milliseconds()) {
-                return this.format('YYYY-MM-DD HH:mm:ss.SSSSSS');
-            } else {
-                return this.format('YYYY-MM-DD HH:mm:ss');
-            }
-        };
         datetime.local();
         return datetime;
     };
