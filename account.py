@@ -196,8 +196,9 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         cost = Decimal(0)
 
         for line in self.invoice_lines:
-            cost += Currency.compute(line.invoice.currency, line.amount,
-                currency, round=False)
+            with Transaction().set_context(date=line.invoice.currency_date):
+                cost += Currency.compute(
+                    line.invoice.currency, line.amount, currency, round=False)
         return cost
 
     def allocate_cost_by_value(self):
@@ -215,8 +216,9 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         sum_value = 0
         unit_prices = {}
         for move in moves:
-            unit_price = Currency.compute(move.currency, move.unit_price,
-                currency, round=False)
+            with Transaction().set_context(date=move.effective_date):
+                unit_price = Currency.compute(
+                    move.currency, move.unit_price, currency, round=False)
             unit_prices[move.id] = unit_price
             sum_value += unit_price * Decimal(str(move.quantity))
 
@@ -268,9 +270,10 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
         for cost in costs:
             move = cost['move']
-            unit_landed_cost = Currency.compute(
-                currency, cost['unit_landed_cost'],
-                move.currency, round=False)
+            with Transaction().set_context(date=move.effective_date):
+                unit_landed_cost = Currency.compute(
+                    currency, cost['unit_landed_cost'],
+                    move.currency, round=False)
             unit_landed_cost = round_price(
                 unit_landed_cost, rounding=ROUND_HALF_EVEN)
             if move.unit_landed_cost is None:
