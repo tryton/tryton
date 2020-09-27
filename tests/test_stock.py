@@ -104,6 +104,7 @@ class StockTestCase(ModuleTestCase):
         supplier, = Location.search([('code', '=', 'SUP')])
         customer, = Location.search([('code', '=', 'CUS')])
         storage, = Location.search([('code', '=', 'STO')])
+        storage_empty, = Location.copy([storage])
         company = create_company()
         currency = company.currency
         with set_company(company):
@@ -234,85 +235,83 @@ class StockTestCase(ModuleTestCase):
             today_quantity = 4
 
             def tests_product_quantity(context, quantity):
-                with transaction.set_context(locations=[storage.id]):
-                    product_reloaded = Product(product.id)
-                    if (not context.get('stock_date_end')
-                            or context['stock_date_end'] > today):
-                        self.assertEqual(
-                            product_reloaded.forecast_quantity, quantity,
-                            msg='context %r' % context)
-                        self.assertEqual(
-                            product_reloaded.quantity, today_quantity,
-                            msg='context %r' % context)
-                    elif context.get('forecast'):
-                        self.assertEqual(
-                            product_reloaded.forecast_quantity, quantity,
-                            msg='context %r' % context)
-                    elif context.get('stock_date_end') == today:
-                        self.assertEqual(product_reloaded.quantity, quantity,
-                            msg='context %r' % context)
-                    else:
-                        self.assertEqual(
-                            product_reloaded.forecast_quantity, quantity,
-                            msg='context %r' % context)
-                        self.assertEqual(product_reloaded.quantity, quantity,
-                            msg='context %r' % context)
+                product_reloaded = Product(product.id)
+                if (not context.get('stock_date_end')
+                        or context['stock_date_end'] > today):
+                    self.assertEqual(
+                        product_reloaded.forecast_quantity, quantity,
+                        msg='context %r' % context)
+                    self.assertEqual(
+                        product_reloaded.quantity, today_quantity,
+                        msg='context %r' % context)
+                elif context.get('forecast'):
+                    self.assertEqual(
+                        product_reloaded.forecast_quantity, quantity,
+                        msg='context %r' % context)
+                elif context.get('stock_date_end') == today:
+                    self.assertEqual(product_reloaded.quantity, quantity,
+                        msg='context %r' % context)
+                else:
+                    self.assertEqual(
+                        product_reloaded.forecast_quantity, quantity,
+                        msg='context %r' % context)
+                    self.assertEqual(product_reloaded.quantity, quantity,
+                        msg='context %r' % context)
 
             def tests_product_search_quantity(context, quantity):
-                with transaction.set_context(locations=[storage.id]):
-                    if (not context.get('stock_date_end')
-                            or context['stock_date_end'] > today
-                            or context.get('forecast')):
-                        fname = 'forecast_quantity'
-                    else:
-                        fname = 'quantity'
-                    found_products = Product.search([
-                            (fname, '=', quantity),
-                            ])
-                    self.assertIn(product, found_products)
+                if (not context.get('stock_date_end')
+                        or context['stock_date_end'] > today
+                        or context.get('forecast')):
+                    fname = 'forecast_quantity'
+                else:
+                    fname = 'quantity'
+                found_products = Product.search([
+                        (fname, '=', quantity),
+                        ])
+                self.assertIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, '!=', quantity),
-                            ])
-                    self.assertNotIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '!=', quantity),
+                        ])
+                self.assertNotIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, 'in', (quantity, quantity + 1)),
-                            ])
-                    self.assertIn(product, found_products)
+                found_products = Product.search([
+                        (fname, 'in', (quantity, quantity + 1)),
+                        ])
+                self.assertIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, 'not in', (quantity, quantity + 1)),
-                            ])
-                    self.assertNotIn(product, found_products)
+                found_products = Product.search([
+                        (fname, 'not in', (quantity, quantity + 1)),
+                        ])
+                self.assertNotIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, '<', quantity),
-                            ])
-                    self.assertNotIn(product, found_products)
-                    found_products = Product.search([
-                            (fname, '<', quantity + 1),
-                            ])
-                    self.assertIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '<', quantity),
+                        ])
+                self.assertNotIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '<', quantity + 1),
+                        ])
+                self.assertIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, '>', quantity),
-                            ])
-                    self.assertNotIn(product, found_products)
-                    found_products = Product.search([
-                            (fname, '>', quantity - 1),
-                            ])
-                    self.assertIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '>', quantity),
+                        ])
+                self.assertNotIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '>', quantity - 1),
+                        ])
+                self.assertIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, '>=', quantity),
-                            ])
-                    self.assertIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '>=', quantity),
+                        ])
+                self.assertIn(product, found_products)
 
-                    found_products = Product.search([
-                            (fname, '<=', quantity),
-                            ])
-                    self.assertIn(product, found_products)
+                found_products = Product.search([
+                        (fname, '<=', quantity),
+                        ])
+                self.assertIn(product, found_products)
 
             def test_products_by_location():
                 for context, quantity in tests:
@@ -322,8 +321,16 @@ class StockTestCase(ModuleTestCase):
                         else:
                             self.assertEqual(products_by_location(),
                                     {(storage.id, product.id): quantity})
-                            tests_product_quantity(context, quantity)
-                            tests_product_search_quantity(context, quantity)
+                            with transaction.set_context(
+                                    locations=[storage.id]):
+                                tests_product_quantity(context, quantity)
+                                tests_product_search_quantity(
+                                    context, quantity)
+                            with transaction.set_context(
+                                    locations=[storage.id, storage_empty.id]):
+                                tests_product_quantity(context, quantity)
+                                tests_product_search_quantity(
+                                    context, quantity)
 
             test_products_by_location()
 

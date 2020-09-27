@@ -118,17 +118,34 @@ class StockMixin(object):
         """
         pool = Pool()
         Product = pool.get('product.product')
+        Move = pool.get('stock.move')
 
         if not location_ids or not domain:
             return []
         with_childs = Transaction().context.get(
             'with_childs', len(location_ids) == 1)
+        _, operator_, operand = domain
 
         with Transaction().set_context(cls._quantity_context(name)):
+            if (len(location_ids) == 1
+                    and not Transaction().context.get('stock_skip_warehouse')):
+                # We can use the compute quantities query if the request is for
+                # a single location because all the locations are children and
+                # so we can do a SUM.
+                Operator = fields.SQL_OPERATORS[operator_]
+                query = Move.compute_quantities_query(
+                    location_ids, with_childs, grouping=grouping)
+                col_id = Column(query, grouping[position])
+                quantity = Sum(query.quantity)
+                group_by = [Column(query, key).as_(key) for key in grouping]
+                return [('id', 'in', query.select(
+                            col_id,
+                            group_by=group_by,
+                            having=Operator(quantity, operand)))]
+
             pbl = Product.products_by_location(
                 location_ids, with_childs=with_childs, grouping=grouping)
 
-        _, operator_, operand = domain
         operator_ = {
             '=': operator.eq,
             '>=': operator.ge,
