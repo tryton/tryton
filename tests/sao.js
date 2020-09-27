@@ -2800,6 +2800,27 @@
             ["Active: False", "Active: True"]));
     });
 
+    QUnit.test('Date.toString', function() {
+        QUnit.strictEqual(Sao.Date(2020, 8, 11).toString(), '2020-09-11');
+    });
+
+    QUnit.test('DateTime.toString', function() {
+        QUnit.strictEqual(
+            Sao.DateTime(2020, 8, 11, 10, 30, 42).toString(),
+            '2020-09-11 10:30:42');
+
+        QUnit.strictEqual(
+            Sao.DateTime(2020, 8, 11, 10, 30, 42, 123).toString(),
+            '2020-09-11 10:30:42.123000');
+    });
+
+    QUnit.test('Time.toString', function() {
+        QUnit.strictEqual(Sao.Time(10, 30, 42).toString(), '10:30:42');
+
+        QUnit.strictEqual(
+            Sao.Time(10, 30, 42, 123).toString(), '10:30:42.123000');
+    });
+
     QUnit.test('HTML Sanitization', function() {
         var examples = [
             ["Test", "Test"],
