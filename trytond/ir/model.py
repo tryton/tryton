@@ -72,6 +72,7 @@ class Model(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'list_models': RPC(),
                 'list_history': RPC(),
+                'get_names': RPC(),
                 'global_search': RPC(),
                 })
 
@@ -141,6 +142,12 @@ class Model(ModelSQL, ModelView):
         'Return a list of all models with history'
         return [name for name, model in Pool().iterobject()
             if getattr(model, '_history', False)]
+
+    @classmethod
+    def get_names(cls):
+        "Return a dictionary mapping models to names"
+        models = cls.search([])
+        return {m.model: m.name for m in models}
 
     @classmethod
     def global_search(cls, text, limit, menu='ir.ui.menu'):
