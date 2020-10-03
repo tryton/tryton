@@ -3346,6 +3346,7 @@
                 this.input.closest('.modal-body').css('overflow', '');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', '');
                 this.input.closest('.content-box').css('overflow-y', '');
+                this.input.closest('fieldset.form-group_').css('overflow', '');
                 Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
             this.dropdown.on('show.bs.dropdown', function() {
@@ -3355,6 +3356,7 @@
                 this.input.closest('.modal-body').css('overflow', 'visible');
                 this.input.closest('.navbar-collapse.in').css('overflow-y', 'visible');
                 this.input.closest('.content-box').css('overflow-y', 'visible');
+                this.input.closest('fieldset.form-group_').css('overflow', 'visible');
                 Sao.common.scrollIntoViewIfNeeded(this.input);
             }.bind(this));
         },
