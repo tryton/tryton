@@ -4,12 +4,9 @@ Stock Inventories Scenario
 
 Imports::
 
-    >>> import datetime as dt
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
-    >>> from trytond.modules.company.tests.tools import create_company, \
-    ...     get_company
-    >>> today = dt.date.today()
+    >>> from trytond.modules.company.tests.tools import create_company
 
 Activate modules::
 
@@ -29,7 +26,7 @@ Get stock locations::
 Create inventories::
 
     >>> create = Wizard('stock.inventory.create')
-    >>> create.form.date = today
+    >>> create.form.empty_quantity = 'keep'
     >>> create.form.locations.extend(Location.find([('code', '=', 'STO')]))
     >>> create.execute('create_')
 
@@ -38,3 +35,5 @@ Create inventories::
     2
     >>> {i.location for i in inventories} == {storage_loc, storage_loc2}
     True
+    >>> inventories[0].empty_quantity
+    'keep'
