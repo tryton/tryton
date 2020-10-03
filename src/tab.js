@@ -465,7 +465,11 @@
 
             this.view_prm = this.screen.switch_view().done(function() {
                 this.screen.count_tab_domain();
-                this.set_name(attributes.name || '');
+                var name = attributes.name;
+                if (!name) {
+                    name = Sao.common.MODELNAME.get(model_name);
+                }
+                this.set_name(name);
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     if (!jQuery.isArray(attributes.res_id)) {
@@ -1370,7 +1374,7 @@
             new Sao.Window.Import(this.title.text(), this.screen);
         },
         get_url: function() {
-            return this.screen.get_url(this.attributes.name);
+            return this.screen.get_url(this.name);
         },
     });
 
@@ -1383,7 +1387,11 @@
             this.view_id = (attributes.view_ids.length > 0 ?
                     attributes.view_ids[0] : null);
             this.context = attributes.context;
-            this.name = attributes.name || '';
+            var name = attributes.name;
+            if (!name) {
+                name = Sao.common.MODELNAME.get(this.model);
+            }
+            this.name = name;
             this.dialogs = [];
             this.board = null;
             UIView = new Sao.Model('ir.ui.view');

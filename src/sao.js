@@ -376,6 +376,7 @@ var Sao = {};
                     });
                     Sao.i18n.set_direction(preferences.language_direction);
                     Sao.i18n.locale = preferences.locale;
+                    Sao.common.MODELNAME.clear();
                     return prm;
                 });
             });

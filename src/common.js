@@ -496,6 +496,28 @@
     });
     Sao.common.MODELHISTORY = new Sao.common.ModelHistory();
 
+    Sao.common.ModelName = Sao.class_(Object, {
+        init: function() {
+            this._names = {};
+        },
+        load_names: function() {
+            this._names = Sao.rpc({
+                'method':'model.ir.model.get_names',
+                'params': [{}],
+            }, Sao.Session.current_session, false);
+        },
+        get: function(model) {
+            if (jQuery.isEmptyObject(this._names)) {
+                this.load_names();
+            }
+            return this._names[model] || '';
+        },
+        clear: function() {
+            this._names = {};
+        },
+    });
+    Sao.common.MODELNAME = new Sao.common.ModelName();
+
     Sao.common.ViewSearch = Sao.class_(Object, {
         init: function() {
             this.encoder = new Sao.PYSON.Encoder();

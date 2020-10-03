@@ -94,6 +94,9 @@
             this.save_current = kwargs.save_current;
             var title_prm = jQuery.when(kwargs.title || '');
             title_prm.then(function(title) {
+                if (!title) {
+                    title = Sao.common.MODELNAME.get(this.screen.model_name);
+                }
                 this.title = title;
             }.bind(this));
 
@@ -638,7 +641,11 @@
             this.views_preload = views_preload;
             this.sel_multi = kwargs.sel_multi;
             this.callback = callback;
-            this.title = kwargs.title || '';
+            var title = kwargs.title;
+            if (!title) {
+                title = Sao.common.MODELNAME.get(model);
+            }
+            this.title = title;
             this.exclude_field = kwargs.exclude_field || null;
             var dialog = new Sao.Dialog(Sao.i18n.gettext(
                 'Search %1', this.title), '', 'lg');
