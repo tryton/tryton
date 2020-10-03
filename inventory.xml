@@ -26,5 +26,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">inventory_create_start_form</field>
         </record>
+
+        <record model="ir.ui.view" id="inventory_view_list">
+            <field name="model">stock.inventory</field>
+            <field name="inherit" ref="stock.inventory_view_tree"/>
+            <field name="name">inventory_list</field>
+        </record>
     </data>
 </tryton>
