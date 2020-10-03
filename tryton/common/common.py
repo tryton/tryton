@@ -228,6 +228,28 @@ class ModelHistory(object):
 MODELHISTORY = ModelHistory()
 
 
+class ModelName:
+    _names = {}
+
+    def load_names(self):
+        try:
+            self._names = rpc.execute(
+                'model', 'ir.model', 'get_names', rpc.CONTEXT)
+        except TrytonServerError:
+            pass
+
+    def get(self, model):
+        if not self._names:
+            self.load_names()
+        return self._names.get(model, '')
+
+    def clear(self):
+        return self._names.clear()
+
+
+MODELNAME = ModelName()
+
+
 class ViewSearch(object):
     searches = {}
 

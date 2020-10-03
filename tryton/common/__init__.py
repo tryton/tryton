@@ -1,7 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from .common import (
-    IconFactory, MODELACCESS, MODELHISTORY, VIEW_SEARCH,
+    IconFactory, MODELACCESS, MODELHISTORY, MODELNAME, VIEW_SEARCH,
     get_toplevel_window, get_sensible_widget, selection, file_selection,
     slugify, file_write, file_open, mailto, message, warning, userwarning, sur,
     sur_3b, ask, concurrency, error, to_xml, process_exception, Login, Logout,
@@ -18,7 +18,7 @@ from .environment import EvalEnvironment
 from . import timedelta
 
 __all__ = [
-    IconFactory, MODELACCESS, MODELHISTORY, VIEW_SEARCH,
+    IconFactory, MODELACCESS, MODELHISTORY, MODELNAME, VIEW_SEARCH,
     get_toplevel_window, get_sensible_widget, selection, file_selection,
     slugify, file_write, file_open, mailto, message, warning, userwarning, sur,
     sur_3b, ask, concurrency, error, to_xml, process_exception, Login, Logout,

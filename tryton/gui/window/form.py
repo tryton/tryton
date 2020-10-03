@@ -48,6 +48,8 @@ class Form(SignalEvent, TabContent):
         self.screen = Screen(self.model, **attributes)
         self.screen.widget.show()
 
+        if not name:
+            name = common.MODELNAME.get(model)
         self.name = name
 
         self.create_tabcontent()

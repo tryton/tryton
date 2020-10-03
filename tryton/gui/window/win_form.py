@@ -6,7 +6,7 @@ from gi.repository import Gdk, Gtk, Pango
 
 from .infobar import InfoBar
 import tryton.common as common
-from tryton.common import TRYTON_ICON
+from tryton.common import TRYTON_ICON, MODELNAME
 from tryton.common.domain_parser import quote
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
@@ -30,6 +30,8 @@ class WinForm(NoModal, InfoBar):
         self.domain = domain
         self.context = context
         self.save_current = save_current
+        if not title:
+            title = MODELNAME.get(screen.model_name)
         self.title = title
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True

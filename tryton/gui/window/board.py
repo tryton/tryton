@@ -7,7 +7,7 @@ import xml.dom.minidom
 from tryton.signal_event import SignalEvent
 from tryton.gui import Main
 from tryton.gui.window.view_board import ViewBoard
-from tryton.common import RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException, MODELNAME
 
 from .tabcontent import TabContent
 
@@ -35,9 +35,8 @@ class Board(SignalEvent, TabContent):
         self.model = model
         self.dialogs = []
         if not name:
-            self.name = self.board.name
-        else:
-            self.name = name
+            name = MODELNAME.get(model)
+        self.name = name
 
         self.create_tabcontent()
         self.board.reload()

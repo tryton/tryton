@@ -32,6 +32,8 @@ class WinSearch(NoModal):
         self.views_preload = views_preload
         self.sel_multi = sel_multi
         self.callback = callback
+        if not title:
+            title = common.MODELNAME.get(model)
         self.title = title
         self.exclude_field = exclude_field
 

@@ -532,6 +532,7 @@ class Main(Gtk.Application):
                 self.favorite_unset()
                 self.primary_menu.set_menu_model(self._get_primary_menu())
             CONFIG['client.lang'] = prefs['language']
+        common.MODELNAME.clear()
         # Set placeholder after language is set to get correct translation
         self.global_search_entry.set_placeholder_text(_("Action"))
         CONFIG.save()
