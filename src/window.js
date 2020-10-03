@@ -61,7 +61,7 @@
                 'role': 'alert'
             }).append(jQuery('<button/>', {
                 'type': 'button',
-                'class': 'close',
+                'class': 'close stretched-link',
                 'aria-label': Sao.i18n.gettext('Close')
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
