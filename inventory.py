@@ -49,7 +49,7 @@ class Inventory(Workflow, ModelSQL, ModelView):
             ('keep', "Keep"),
             ('empty', "Empty"),
             ], "Empty Quantity", states=_states, depends=_depends,
-        help="How lines without quantity are handled.")
+        help="How lines without a quantity are handled.")
     company = fields.Many2One('company.company', 'Company', required=True,
         states={
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
@@ -322,6 +322,14 @@ class InventoryLine(ModelSQL, ModelView):
             },
         depends=_depends,
         help="The inventory the line belongs to.")
+    inventory_location = fields.Function(
+        fields.Many2One('stock.location', "Location"),
+        'on_change_with_inventory_location',
+        searcher='search_inventory_location')
+    inventory_date = fields.Function(
+        fields.Date("Date"),
+        'on_change_with_inventory_date',
+        searcher='search_inventory_date')
     inventory_state = fields.Function(
         fields.Selection('get_inventory_states', "Inventory State"),
         'on_change_with_inventory_state')
@@ -376,6 +384,25 @@ class InventoryLine(ModelSQL, ModelView):
         if self.product:
             self.uom = self.product.default_uom
             self.unit_digits = self.product.default_uom.digits
+
+    @fields.depends('inventory', '_parent_inventory.location')
+    def on_change_with_inventory_location(self, name=None):
+        if self.inventory and self.inventory.location:
+            return self.inventory.location.id
+
+    @classmethod
+    def search_inventory_location(cls, name, clause):
+        nested = clause[0].lstrip(name)
+        return [('inventory.' + name + nested,) + tuple(clause[1:])]
+
+    @fields.depends('inventory', '_parent_inventory.date')
+    def on_change_with_inventory_date(self, name=None):
+        if self.inventory:
+            return self.inventory.date
+
+    @classmethod
+    def search_inventory_date(cls, name, clause):
+        return [('inventory.date',) + tuple(clause[1:])]
 
     @classmethod
     def get_inventory_states(cls):

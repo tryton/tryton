@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
     <label name="empty_quantity"/>
     <field name="empty_quantity"/>
 
-    <field name="lines" colspan="4"/>
+    <field name="lines" colspan="4" view_ids="stock.inventory_line_view_list_simple"/>
 
     <label name="state"/>
     <field name="state"/>
