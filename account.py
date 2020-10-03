@@ -2611,6 +2611,9 @@ class CreateChart(Wizard):
         return 'properties'
 
     def default_properties(self, fields):
+        pool = Pool()
+        Account = pool.get('account.account')
+
         defaults = {
             'company': self.account.company.id,
             }
