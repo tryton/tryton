@@ -2673,6 +2673,9 @@ class UpdateChart(Wizard):
             ])
 
     def default_start(self, fields):
+        pool = Pool()
+        Account = pool.get('account.account')
+
         defaults = {}
         charts = Account.search([
                 ('parent', '=', None),
