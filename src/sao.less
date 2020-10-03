@@ -839,11 +839,28 @@ input.column-boolean {
     }
 }
 
+@keyframes blink {
+    50% {
+        color: transparent;
+    }
+}
+
 #processing {
     position: fixed;
     top: 0px;
     width: 100%;
     z-index: 2000;
+
+    .dot {
+        animation: 1s blink infinite;
+
+        &:nth-child(2) {
+            animation-delay: 250ms;
+        }
+        &:nth-child(3) {
+            animation-delay: 500ms;
+        }
+    }
 }
 
 .scrollbar {

@@ -3269,10 +3269,16 @@
                 'id': 'processing',
                 'class': 'text-center'
             });
-            this.el.append(jQuery('<span/>', {
+            var label = jQuery('<span/>', {
                 'class': 'label label-info',
-                'text': Sao.i18n.gettext('Processing...')
-            }));
+                'text': Sao.i18n.gettext('Processing'),
+            }).appendTo(this.el);
+            for (var i = 0; i < 3; i ++) {
+                label.append(jQuery('<span/>', {
+                    'class': 'dot',
+                    'text': '.',
+                }));
+            }
             this.el.hide();
             jQuery(function() {
                 this.el.appendTo('body');
