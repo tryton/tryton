@@ -95,6 +95,12 @@ class IrTestCase(ModuleTestCase):
             (datetime.datetime(2018, 11, 1, 14, 30), '%a %d %b %Y %I:%M %p',
                 "Thu 01 Nov 2018 02:30 PM"),
             (datetime.date(2018, 11, 1), '%x', "11/01/2018"),
+            (datetime.datetime(2018, 11, 1, 14, 30, 12),
+                '%x %X', "11/01/2018 14:30:12"),
+            (datetime.datetime(2018, 11, 1, 14, 30, 12),
+                '%H:%M:%S', "14:30:12"),
+            (datetime.datetime(2018, 11, 1, 14, 30, 12), None,
+                "11/01/2018 14:30:12"),
             ]
         for date, format_, result in test_data:
             self.assertEqual(lang.strftime(date, format_), result)

@@ -520,7 +520,10 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         Day = pool.get('ir.calendar.day')
         if format is None:
             format = self.date
+            if isinstance(value, datetime.datetime):
+                format += ' %H:%M:%S'
         format = format.replace('%x', self.date)
+        format = format.replace('%X', '%H:%M:%S')
         if isinstance(value, datetime.date):
             for f, i, klass in (('%A', 6, Day), ('%B', 1, Month)):
                 for field, f in [('name', f), ('abbreviation', f.lower())]:

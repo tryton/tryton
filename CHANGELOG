@@ -1,3 +1,4 @@
+* Add format_datetime to Report
 * Allow sharing view searches
 * Allow overriding digits in Lang.currency and Report.format_currency
 * Add record name in report filename

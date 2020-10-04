@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 import datetime
+
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.report.report import Report
 
@@ -12,6 +13,21 @@ class ReportTestCase(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         activate_module('tests')
+
+    @with_transaction()
+    def test_format_datetime(self):
+        "Test format datetime"
+        self.assertEqual(Report.format_datetime(
+                datetime.datetime(2020, 7, 8, 13, 30, 00)),
+            '07/08/2020 13:30:00')
+
+    @with_transaction()
+    def test_format_datetime_custom_format(self):
+        "Test format datetime custom format"
+        self.assertEqual(Report.format_datetime(
+                datetime.datetime(2020, 7, 8, 13, 30, 00),
+                format='%d %b %Y %I:%M %p'),
+            "08 Jul 2020 01:30 PM"),
 
 
 def create_test_format_timedelta(i, in_, out):

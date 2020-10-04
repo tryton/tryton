@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import dateutil.tz
 import os
 import inspect
 import logging
@@ -244,6 +245,7 @@ class Report(URLMixin, PoolBase):
         report_context['records'] = records
         report_context['record'] = records[0] if records else None
         report_context['format_date'] = cls.format_date
+        report_context['format_datetime'] = cls.format_datetime
         report_context['format_timedelta'] = cls.format_timedelta
         report_context['format_currency'] = cls.format_currency
         report_context['format_number'] = cls.format_number
@@ -338,6 +340,20 @@ class Report(URLMixin, PoolBase):
         if lang is None:
             lang = Lang.get()
         return lang.strftime(value, format=format)
+
+    @classmethod
+    def format_datetime(cls, value, lang=None, format=None, timezone=None):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        if lang is None:
+            lang = Lang.get()
+        if value.tzinfo is None:
+            value = value.replace(tzinfo=dateutil.tz.tzutc())
+        if timezone:
+            if isinstance(timezone, str):
+                timezone = dateutil.tz.gettz(timezone)
+            value = value.astimezone(timezone)
+        return lang.strftime(value, format)
 
     @classmethod
     def format_timedelta(cls, value, converter=None, lang=None):
