@@ -21,7 +21,7 @@ from trytond.pool import Pool
 
 from trytond.modules.product import price_digits, round_price
 
-from .exceptions import MoveOriginWarning
+from .exceptions import MoveOriginWarning, MoveFutureWarning
 
 STATES = {
     'readonly': Eval('state').in_(['cancelled', 'assigned', 'done']),
@@ -616,6 +616,29 @@ class Move(Workflow, ModelSQL, ModelView):
     def do(cls, moves):
         pool = Pool()
         Product = pool.get('product.product')
+        Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
+        today_cache = {}
+
+        def in_future(move):
+            if move.company not in today_cache:
+                with Transaction().set_context(company=move.company.id):
+                    today_cache[move.company] = Date.today()
+            today = today_cache[move.company]
+            if move.effective_date and move.effective_date > today:
+                return move
+        future_moves = list(filter(in_future, moves))
+        if future_moves:
+            names = ', '.join(m.rec_name for m in future_moves[:5])
+            if len(future_moves) > 5:
+                names += '...'
+            warning_name = (
+                    '%s.effective_date_future' % hashlib.md5(
+                        str(future_moves).encode('utf-8')).hexdigest())
+            if Warning.check(warning_name):
+                raise MoveFutureWarning(warning_name,
+                    gettext('stock.msg_effective_date_in_the_future',
+                        moves=names))
 
         def set_cost_values(cost_values):
             Value = Product.multivalue_model('cost_price')

@@ -1,3 +1,4 @@
+* Add warning to prevent move in the future
 * Add relate to open inventory lines
 * Use simplified view for moves list on shipments
 * Add a relate from product to its moves

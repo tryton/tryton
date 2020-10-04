@@ -28,5 +28,9 @@ class MoveOriginWarning(UserWarning):
     pass
 
 
+class MoveFutureWarning(UserWarning):
+    pass
+
+
 class ProductCostPriceError(ValidationError):
     pass
