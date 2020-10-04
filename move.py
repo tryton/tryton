@@ -1441,6 +1441,8 @@ class OpenAccount(Wizard):
         if Transaction().context.get('date'):
             action['pyson_domain'].append(('move.date', '<=',
                     Transaction().context['date']))
+        if self.record:
+            action['name'] += ' (%s)' % self.record.rec_name
         action['pyson_domain'] = PYSONEncoder().encode(action['pyson_domain'])
         action['pyson_context'] = PYSONEncoder().encode({
             'fiscalyear': Transaction().context.get('fiscalyear'),
