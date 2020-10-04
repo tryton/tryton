@@ -1636,7 +1636,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                     or invoice_line.invoice.state != 'cancelled'):
                 invoiced_quantity += Uom.compute_qty(
                     invoice_line.unit, invoice_line.quantity, self.unit)
-        self.actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
+        actual_quantity = max(moved_quantity, invoiced_quantity, key=abs)
+        if self.actual_quantity != actual_quantity:
+            self.actual_quantity = actual_quantity
 
     def get_rec_name(self, name):
         pool = Pool()
