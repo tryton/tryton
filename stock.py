@@ -90,18 +90,6 @@ class ShipmentAssignManual(Wizard):
     skip = StateTransition()
     assign = StateTransition()
 
-    # TODO: move on Wizard
-    @cached_property
-    def model(self):
-        pool = Pool()
-        context = Transaction().context
-        return pool.get(context['active_model'])
-
-    @cached_property
-    def record(self):
-        context = Transaction().context
-        return self.model(context['active_id'])
-
     def transition_next_(self):
 
         def next_move():
