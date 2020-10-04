@@ -8,7 +8,6 @@ from trytond.model import Model, ModelStorage, ModelView, fields
 from trytond.model.exceptions import ValidationError
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.tools import cached_property
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 
