@@ -14,8 +14,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="kind">sale</field>
         </record>
         <record model="account.tax.group" id="tax_group_purchase">
-            <field name="name">Compras</field>
-            <field name="code">Compras</field>
+            <field name="name">Compras de bienes</field>
+            <field name="code">Compras de bienes</field>
+            <field name="kind">purchase</field>
+        </record>
+        <record model="account.tax.group" id="tax_group_purchase_service">
+            <field name="name">Compras de servicios</field>
+            <field name="code">Compras de servicios</field>
             <field name="kind">purchase</field>
         </record>
         <record model="account.tax.group" id="tax_group_purchase_investment">

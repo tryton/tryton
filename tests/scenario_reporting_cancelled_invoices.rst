@@ -53,7 +53,8 @@ Create account category::
     >>> Tax = Model.get('account.tax')
     >>> supplier_tax, = Tax.find([
     ...     ('company', '=', company.id),
-    ...     ('name', '=', 'IVA 21% (operaciones corrientes)'),
+    ...     ('group.kind', '=', 'purchase'),
+    ...     ('name', '=', 'IVA 21% (bienes)'),
     ...     ])
     >>> ProductCategory = Model.get('product.category')
     >>> account_category = ProductCategory(name="Account Category")

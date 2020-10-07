@@ -155,7 +155,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="ec_sales_list_code">S</field>
         </record>
         <record id="iva_sop_21_pyme" model="account.tax.template">
-            <field name="name">IVA 21% (operaciones corrientes)</field>
+            <field name="name">IVA 21% (bienes)</field>
             <field name="description">IVA 21%</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
@@ -165,8 +165,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_472_pyme"/>
             <field name="es_vat_list_code">A</field>
         </record>
+        <record id="iva_sop_21_servicios_pyme" model="account.tax.template">
+            <field name="name">IVA 21% (servicios)</field>
+            <field name="description">IVA 21%</field>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472_pyme"/>
+            <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
+        </record>
         <record id="iva_sop_10_pyme" model="account.tax.template">
-            <field name="name">IVA 10% (operaciones corrientes)</field>
+            <field name="name">IVA 10% (bienes)</field>
             <field name="description">IVA 10%</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
@@ -176,8 +187,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_472_pyme"/>
             <field name="es_vat_list_code">A</field>
         </record>
+        <record id="iva_sop_10_servicios_pyme" model="account.tax.template">
+            <field name="name">IVA 10% (servicios)</field>
+            <field name="description">IVA 10%</field>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.1')"/>
+            <field name="invoice_account" ref="pgc_472_pyme"/>
+            <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_vat_list_code">A</field>
+        </record>
         <record id="iva_sop_4_pyme" model="account.tax.template">
-            <field name="name">IVA 4% (operaciones corrientes)</field>
+            <field name="name">IVA 4% (bienes)</field>
             <field name="description">IVA 4%</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
@@ -188,10 +210,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="es_vat_list_code">A</field>
         </record>
         <record id="iva_sop_ex_pyme" model="account.tax.template">
-            <field name="name">IVA Exento (operaciones corrientes)</field>
+            <field name="name">IVA Exento (bienes)</field>
             <field name="description">IVA Exento</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700_pyme"/>
+            <field name="credit_note_account" ref="pgc_4700_pyme"/>
+        </record>
+        <record id="iva_sop_ex_servicios_pyme" model="account.tax.template">
+            <field name="name">IVA Exento (servicios)</field>
+            <field name="description">IVA Exento</field>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4700_pyme"/>
@@ -241,10 +273,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_4700_pyme"/>
         </record>
         <record id="iva_sop_importacion_pyme" model="account.tax.template">
-            <field name="name">IVA Importaciones (operaciones corrientes)</field>
+            <field name="name">IVA Importaciones (bienes)</field>
             <field name="description">Importaciones</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.0')"/>
+            <field name="invoice_account" ref="pgc_4700_pyme"/>
+            <field name="credit_note_account" ref="pgc_4700_pyme"/>
+        </record>
+        <record id="iva_sop_importacion_servicios_pyme" model="account.tax.template">
+            <field name="name">IVA Importaciones (servicios)</field>
+            <field name="description">Importaciones</field>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4700_pyme"/>
@@ -261,10 +303,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_4700_pyme"/>
         </record>
         <record id="iva_sop_intracomunitario_pyme" model="account.tax.template">
-            <field name="name">IVA Intracomunitario (operaciones corrientes)</field>
+            <field name="name">IVA Intracomunitario (bienes)</field>
             <field name="description">IVA Intracomunitario</field>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
+            <field name="type">none</field>
+            <field name="invoice_account" ref="pgc_4700_pyme"/>
+            <field name="credit_note_account" ref="pgc_4700_pyme"/>
+        </record>
+        <record id="iva_sop_intracomunitario_servicios_pyme" model="account.tax.template">
+            <field name="name">IVA Intracomunitario (servicios)</field>
+            <field name="description">IVA Intracomunitario</field>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
             <field name="type">none</field>
             <field name="invoice_account" ref="pgc_4700_pyme"/>
             <field name="credit_note_account" ref="pgc_4700_pyme"/>
@@ -385,7 +436,7 @@ this repository contains the full copyright notices and license terms. -->
     </data>
     <data grouped="1">
         <record id="iva_sop_intracomunitario_1_pyme" model="account.tax.template">
-            <field name="name">IVA Intracomunitario. Operaciones corrientes (1)</field>
+            <field name="name">IVA Intracomunitario. Bienes (1)</field>
             <field name="description">IVA Intracomunitario (1)</field>
             <field name="parent" ref="iva_sop_intracomunitario_pyme"/>
             <field name="account" ref="pgc_0_pyme"/>
@@ -397,11 +448,34 @@ this repository contains the full copyright notices and license terms. -->
             <field name="es_ec_purchases_list_code">A</field>
         </record>
         <record id="iva_sop_intracomunitario_2_pyme" model="account.tax.template">
-            <field name="name">IVA Intracomunitario. Operaciones corrientes (2)</field>
+            <field name="name">IVA Intracomunitario. Bienes (2)</field>
             <field name="description">IVA Intracomunitario (2)</field>
             <field name="parent" ref="iva_sop_intracomunitario_pyme"/>
             <field name="account" ref="pgc_0_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('-0.21')"/>
+            <field name="invoice_account" ref="pgc_477_pyme"/>
+            <field name="credit_note_account" ref="pgc_477_pyme"/>
+        </record>
+        <record id="iva_sop_intracomunitario_servicios_1_pyme" model="account.tax.template">
+            <field name="name">IVA Intracomunitario. Servicios (1)</field>
+            <field name="description">IVA Intracomunitario (1)</field>
+            <field name="parent" ref="iva_sop_intracomunitario_servicios_pyme"/>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+            <field name="type">percentage</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="invoice_account" ref="pgc_472_pyme"/>
+            <field name="credit_note_account" ref="pgc_472_pyme"/>
+            <field name="es_ec_purchases_list_code">I</field>
+        </record>
+        <record id="iva_sop_intracomunitario_servicios_2_pyme" model="account.tax.template">
+            <field name="name">IVA Intracomunitario. Servicios (2)</field>
+            <field name="description">IVA Intracomunitario (2)</field>
+            <field name="parent" ref="iva_sop_intracomunitario_servicios_pyme"/>
+            <field name="account" ref="pgc_0_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
             <field name="type">percentage</field>
             <field name="rate" eval="Decimal('-0.21')"/>
             <field name="invoice_account" ref="pgc_477_pyme"/>
@@ -571,6 +645,20 @@ this repository contains the full copyright notices and license terms. -->
         <record id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario_inv-credit_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_devengado_base_intracomunitario_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_inv_2_pyme"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario_servicios-invoice_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_2_pyme"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="vat_code_iva_devengado_base_intracomunitario-iva_sop_intracomunitario_servicios-credit_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_devengado_base_intracomunitario_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_2_pyme"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
@@ -913,6 +1001,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
+        <record id="vat_code_iva_deducible_base_corrientes-iva_sop_21_servicios-invoice_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
+            <field name="tax" ref="iva_sop_21_servicios_pyme"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_corrientes-iva_sop_21_servicios-credit_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
+            <field name="tax" ref="iva_sop_21_servicios_pyme"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
         <record id="vat_code_iva_deducible_base_corrientes-iva_sop_10-invoice_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
             <field name="tax" ref="iva_sop_10_pyme"/>
@@ -923,6 +1025,20 @@ this repository contains the full copyright notices and license terms. -->
         <record id="vat_code_iva_deducible_base_corrientes-iva_sop_10-credit_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
             <field name="tax" ref="iva_sop_10_pyme"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_corrientes-iva_sop_10_servicios-invoice_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
+            <field name="tax" ref="iva_sop_10_servicios_pyme"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_corrientes-iva_sop_10_servicios-credit_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_corrientes_pyme"/>
+            <field name="tax" ref="iva_sop_10_servicios_pyme"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
@@ -1027,6 +1143,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
+        <record id="vat_code_iva_deducible_base_importacion-iva_sop_importacion_servicios-invoice_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion_pyme"/>
+            <field name="tax" ref="iva_sop_importacion_servicios_pyme"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_importacion-iva_sop_importacion_servicios-credit_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_importacion_pyme"/>
+            <field name="tax" ref="iva_sop_importacion_servicios_pyme"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
         <record id="vat_code_iva_deducible_base_importacion_inversion_pyme" model="account.tax.code.template">
             <field name="name">Importaciones de bienes de inversión</field>
             <field name="code">34</field>
@@ -1065,6 +1195,20 @@ this repository contains the full copyright notices and license terms. -->
         <record id="vat_code_iva_deducible_base_intracomunitario-iva_sop_intracomunitario-credit_pyme" model="account.tax.code.line.template">
             <field name="code" ref="vat_code_iva_deducible_base_intracomunitario_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_1_pyme"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_intracomunitario-iva_sop_intracomunitario_servicios-invoice_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_1_pyme"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record id="vat_code_iva_deducible_base_intracomunitario-iva_sop_intracomunitario_servicios-credit_pyme" model="account.tax.code.line.template">
+            <field name="code" ref="vat_code_iva_deducible_base_intracomunitario_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_1_pyme"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
@@ -1816,6 +1960,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="tax" ref="iva_sop_ex_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
         </record>
+        <record id="fptt_exento_purchase_service_pyme" model="account.tax.rule.line.template">
+            <field name="rule" ref="fp_exento_pyme"/>
+            <field name="tax" ref="iva_sop_ex_servicios_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+        </record>
         <record id="fptt_exento_purchase_investment_pyme" model="account.tax.rule.line.template">
             <field name="rule" ref="fp_exento_pyme"/>
             <field name="tax" ref="iva_sop_ex_inv_pyme"/>
@@ -1858,6 +2007,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="tax_group_purchase"/>
         </record>
 
+        <record id="fptt_intra_purchase_service_pyme" model="account.tax.rule.line.template">
+            <field name="rule" ref="fp_intra_purchase_pyme"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
+        </record>
+
         <record id="fptt_intra_purchase_investment_pyme" model="account.tax.rule.line.template">
             <field name="rule" ref="fp_intra_purchase_pyme"/>
             <field name="tax" ref="iva_sop_intracomunitario_inv_pyme"/>
@@ -1868,6 +2023,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule" ref="fp_extra_purchase_pyme"/>
             <field name="tax" ref="iva_sop_importacion_pyme"/>
             <field name="group" ref="tax_group_purchase"/>
+        </record>
+
+        <record id="fptt_extra_purchase_service_pyme" model="account.tax.rule.line.template">
+            <field name="rule" ref="fp_intra_purchase_pyme"/>
+            <field name="tax" ref="iva_sop_importacion_servicios_pyme"/>
+            <field name="group" ref="tax_group_purchase_service"/>
         </record>
 
         <record id="fptt_extra_purchase_investment_pyme" model="account.tax.rule.line.template">
