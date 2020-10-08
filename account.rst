@@ -71,6 +71,9 @@ Accounting
     `Payment </projects/modules-account-payment/en/latest>`_
         Manages payments.
 
+    `Payment Braintree </projects/modules-account-payment-braintree/en/latest>`_
+        Receives payment from Braintree.
+
     `Payment Clearing </projects/modules-account-payment-clearing/en/latest>`_
         Uses clearing account for payments.
 
