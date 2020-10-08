@@ -309,6 +309,8 @@ class OpenAccount(Wizard):
             action['pyson_domain'].append(
                 ('date', '<=', Transaction().context['end_date'])
                 )
+        if self.record:
+            action['name'] += ' (%s)' % self.record.rec_name
         action['pyson_domain'] = PYSONEncoder().encode(action['pyson_domain'])
         return action, {}
 
