@@ -770,7 +770,7 @@
                 });
                 var more_cell = jQuery('<td/>');
                 var more_button = jQuery('<button/>', {
-                    'class': 'btn btn-default',
+                    'class': 'btn btn-default btn-block',
                     'type': 'button'
                 }).text(Sao.i18n.gettext('More')
                     ).click(function() {
