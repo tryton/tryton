@@ -61,9 +61,7 @@ class ModelSingleton(ModelStorage):
         super(ModelSingleton, cls).write(*args)
         # Clean local cache of original records
         for record in sum(actions[0:None:2], []):
-            local_cache = record._local_cache.get(record.id)
-            if local_cache:
-                local_cache.clear()
+            record._local_cache.pop(record.id, None)
         # Clean transaction cache of all ids
         for cache in Transaction().cache.values():
             if cls.__name__ in cache:

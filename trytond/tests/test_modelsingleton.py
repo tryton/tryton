@@ -136,12 +136,16 @@ class ModelSingletonTestCase(unittest.TestCase):
         Singleton = pool.get('test.singleton')
 
         singleton, = Singleton.create([{'name': 'foo'}])
+        singleton.name  # Fill the cache
         singleton2 = Singleton(singleton.id + 1)  # Use a different id
         singleton2.name  # Fill the cache
         Singleton.write([singleton], {'name': 'bar'})
         singleton2 = Singleton(singleton2.id)  # Clear local cache
 
         self.assertEqual(singleton2.name, 'bar')
+
+        Singleton.delete([singleton])
+        self.assertEqual(singleton2.name, 'test')
 
 
 def suite():
