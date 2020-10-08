@@ -17,6 +17,7 @@ from functools import wraps
 from itertools import islice
 
 from sql import Literal
+from sql.conditionals import Case
 from sql.operators import Or
 
 from trytond.const import OPERATORS
@@ -241,3 +242,11 @@ def sortable_values(func):
             result[i] = (name, value is None, value)
         return result
     return wrapper
+
+
+def sql_pairing(x, y):
+    """Return SQL expression to pair x and y
+    Pairing function from http://szudzik.com/ElegantPairing.pdf"""
+    return Case(
+        (x < y, (y * y) + x),
+        else_=(x * x) + x + y)
