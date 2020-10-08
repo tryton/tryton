@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<form>
+    <label name="name"/>
+    <field name="name"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="environment"/>
+    <field name="environment" colspan="3"/>
+    <label name="merchant_id"/>
+    <field name="merchant_id" colspan="3"/>
+    <label name="public_key"/>
+    <field name="public_key" colspan="3"/>
+    <label name="private_key"/>
+    <field name="private_key" colspan="3"/>
+    <label name="webhook_endpoint"/>
+    <field name="webhook_endpoint" colspan="2"/>
+    <button name="new_identifier"/>
+    <label name="sandbox_settle_transaction"/>
+    <field name="sandbox_settle_transaction"/>
+</form>
