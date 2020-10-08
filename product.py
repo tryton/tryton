@@ -289,8 +289,6 @@ class TemplateFunction(fields.Function):
                 tables['template'] = {
                     None: (template, product.template == template.id),
                     }
-            else:
-                template = tables['template']
             return getattr(Template, name).convert_order(
                 name, tables['template'], Template)
         return order
