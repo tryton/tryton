@@ -278,9 +278,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         for user in users:
             # Use getattr to allow to use non User instances
             for test, message in [
-                    (getattr(user, 'name', ''), 'msg_password_name'),
-                    (getattr(user, 'login', ''), 'msg_password_login'),
-                    (getattr(user, 'email', ''), 'msg_password_email'),
+                    (getattr(user, 'name', ''), 'res.msg_password_name'),
+                    (getattr(user, 'login', ''), 'res.msg_password_login'),
+                    (getattr(user, 'email', ''), 'res.msg_password_email'),
                     ]:
                 if test and password.lower() == test.lower():
                     raise PasswordError(gettext(message))
