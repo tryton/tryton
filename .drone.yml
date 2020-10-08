@@ -12,8 +12,9 @@ pipeline:
         environment:
             - CFLAGS=-O0
             - DB_CACHE=/cache
-            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE DPD_USER_ID DPD_PASSWORD
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
+        secrets: [ dpd_user_id, dpd_password ]
         commands:
             - echo "[extensions]" >> /root/.hgrc
             - echo "hgext.share =" >> /root/.hgrc
