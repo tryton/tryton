@@ -94,6 +94,8 @@ class Asset(Workflow, ModelSQL, ModelView):
             },
         depends=['state'],
         required=True)
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     quantity = fields.Float('Quantity',
@@ -301,9 +303,14 @@ class Asset(Workflow, ModelSQL, ModelView):
             return Decimal(0)
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency.id
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
     @fields.depends('supplier_invoice_line', 'unit')
@@ -718,6 +725,8 @@ class AssetLine(ModelSQL, ModelView):
         'Accumulated Depreciation', readonly=True,
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     move = fields.Many2One('account.move', 'Account Move', readonly=True)
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
 
@@ -725,6 +734,11 @@ class AssetLine(ModelSQL, ModelView):
     def __setup__(cls):
         super(AssetLine, cls).__setup__()
         cls._order.insert(0, ('date', 'ASC'))
+
+    @fields.depends('asset', '_parent_asset.currency')
+    def on_change_with_currency(self, name=None):
+        if self.asset:
+            return self.asset.currency.id
 
     @fields.depends('asset', '_parent_asset.currency_digits')
     def on_change_with_currency_digits(self, name=None):

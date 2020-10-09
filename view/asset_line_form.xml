@@ -8,16 +8,16 @@
     <field name="date"/>
     <newline/>
     <label name="acquired_value"/>
-    <field name="acquired_value"/>
+    <field name="acquired_value" symbol="currency"/>
     <label name="depreciable_basis"/>
-    <field name="depreciable_basis"/>
+    <field name="depreciable_basis" symbol="currency"/>
     <newline/>
     <label name="actual_value"/>
-    <field name="actual_value"/>
+    <field name="actual_value" symbol="currency"/>
     <label name="depreciation"/>
-    <field name="depreciation"/>
+    <field name="depreciation" symbol="currency"/>
     <label name="accumulated_depreciation"/>
-    <field name="accumulated_depreciation"/>
+    <field name="accumulated_depreciation" symbol="currency"/>
     <label name="move"/>
     <field name="move"/>
 </form>

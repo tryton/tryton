@@ -4,8 +4,8 @@
 <tree>
     <field name="asset" expand="2"/>
     <field name="date"/>
-    <field name="actual_value" expand="1"/>
-    <field name="depreciation" expand="1"/>
-    <field name="accumulated_depreciation" expand="1"/>
+    <field name="actual_value" expand="1" symbol="currency"/>
+    <field name="depreciation" expand="1" symbol="currency"/>
+    <field name="accumulated_depreciation" expand="1" symbol="currency"/>
     <field name="move" expand="1"/>
 </tree>
