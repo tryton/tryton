@@ -6,9 +6,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="account"/>
     <newline/>
     <label name="debit"/>
-    <field name="debit"/>
+    <field name="debit" symbol="currency"/>
     <label name="credit"/>
-    <field name="credit"/>
+    <field name="credit" symbol="currency"/>
     <label name="origin"/>
     <field name="origin" colspan="3"/>
     <label name="description"/>

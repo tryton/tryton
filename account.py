@@ -230,7 +230,8 @@ class Type(
             ('company', '=', Eval('company')),
         ],
         depends=['company'])
-
+    currency = fields.Function(fields.Many2One(
+        'currency.currency', 'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
     amount = fields.Function(fields.Numeric('Amount',
@@ -265,6 +266,9 @@ class Type(
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    def get_currency(self, name):
+        return self.company.currency.id
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
@@ -1591,6 +1595,8 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']),
         'get_account', searcher='search_account')
+    currency = fields.Function(fields.Many2One(
+        'currency.currency', 'Currency'), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_currency_digits')
 
@@ -1752,6 +1758,9 @@ class _GeneralLedgerAccount(ActivePeriodMixin, ModelSQL, ModelView):
         ids = [a.id for a in accounts
             if operator_(getattr(a, name), operand)]
         return [('id', 'in', ids)]
+
+    def get_currency(self, name):
+        return self.company.currency.id
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
@@ -1938,6 +1947,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         ('posted', 'Posted'),
         ], 'State')
     state_string = state.translated('state')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_currency_digits')
 
@@ -1996,6 +2007,9 @@ class GeneralLedgerLine(ModelSQL, ModelView):
 
     def get_party_required(self, name):
         return self.account.party_required
+
+    def get_currency(self, name):
+        return self.company.currency.id
 
     def get_currency_digits(self, name):
         return self.company.currency.digits
@@ -2328,6 +2342,8 @@ class AgedBalance(ModelSQL, ModelView):
     balance = fields.Numeric('Balance',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'get_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'get_currency_digits')
 
@@ -2438,6 +2454,9 @@ class AgedBalance(ModelSQL, ModelView):
             return account_type.receivable
         else:
             return Literal(False)
+
+    def get_currency(self, name):
+        return self.company.currency.id
 
     def get_currency_digits(self, name):
         return self.company.currency.digits

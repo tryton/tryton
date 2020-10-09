@@ -3,6 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree keyword_open="1">
     <field name="name" expand="1"/>
-    <field name="amount"/>
-    <field name="amount_cmp" string="Comparison"/>
+    <field name="amount" symbol="currency"/>
+    <field name="amount_cmp" string="Comparison" symbol="currency"/>
 </tree>

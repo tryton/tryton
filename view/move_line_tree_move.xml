@@ -5,8 +5,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="move"/>
     <field name="account" expand="1"/>
     <field name="party" expand="1"/>
-    <field name="debit" sum="Debit"/>
-    <field name="credit" sum="Credit"/>
+    <field name="debit" sum="Debit" symbol="currency"/>
+    <field name="credit" sum="Credit" symbol="currency"/>
     <field name="tax_lines"/>
     <field name="description" expand="1"/>
     <field name="reconciliation"/>

@@ -11,9 +11,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="period"/>
     <field name="period"/>
     <label name="debit"/>
-    <field name="debit"/>
+    <field name="debit" symbol="currency"/>
     <label name="credit"/>
-    <field name="credit"/>
+    <field name="credit" symbol="currency"/>
     <label name="move_origin"/>
     <field name="move_origin"/>
     <label name="origin"/>

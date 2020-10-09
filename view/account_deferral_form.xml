@@ -9,11 +9,11 @@ this repository contains the full copyright notices and license terms. -->
     <field name="fiscalyear"/>
     <newline/>
     <label name="debit"/>
-    <field name="debit"/>
+    <field name="debit" symbol="currency"/>
     <label name="credit"/>
-    <field name="credit"/>
+    <field name="credit" symbol="currency"/>
     <label name="amount_second_currency"/>
-    <field name="amount_second_currency"/>
+    <field name="amount_second_currency" symbol="second_currency"/>
     <label name="second_currency"/>
     <field name="second_currency"/>
 </form>

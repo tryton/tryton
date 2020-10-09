@@ -680,6 +680,8 @@ class Line(ModelSQL, ModelView):
         ('posted', 'Posted'),
         ], 'Move State'), 'on_change_with_move_state',
         searcher='search_move_field')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'on_change_with_currency_digits')
     second_currency_digits = fields.Function(fields.Integer(
@@ -789,6 +791,11 @@ class Line(ModelSQL, ModelView):
     @staticmethod
     def default_credit():
         return Decimal(0)
+
+    @fields.depends('account')
+    def on_change_with_currency(self, name=None):
+        if self.account:
+            return self.account.currency.id
 
     @fields.depends('account')
     def on_change_with_currency_digits(self, name=None):

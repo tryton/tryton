@@ -135,6 +135,8 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         'account.tax.code', 'Parent', select=True, states=_states)
     lines = fields.One2Many('account.tax.code.line', 'code', "Lines")
     childs = fields.One2Many('account.tax.code', 'parent', 'Children')
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     amount = fields.Function(fields.Numeric(
@@ -170,9 +172,14 @@ class TaxCode(ActivePeriodMixin, tree(), ModelSQL, ModelView):
         return False
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency.id
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
     @classmethod
