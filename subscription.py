@@ -499,7 +499,8 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('subscription_state') != 'draft',
             },
         depends=['subscription_state'])
-
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     consumption_recurrence = fields.Many2One(
         'sale.subscription.recurrence.rule.set', "Consumption Recurrence",
         states={
@@ -628,6 +629,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         if self.unit:
             return self.unit.digits
         return 2
+
+    @fields.depends('subscription', '_parent_subscription.currency')
+    def on_change_with_currency(self, name=None):
+        if self.subscription:
+            return self.subscription.currency.id
 
     @fields.depends('service')
     def on_change_with_service_unit_category(self, name=None):

@@ -7,9 +7,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description" expand="1"/>
     <field name="consumption_recurrence"/>
     <field name="consumption_delay"/>
-    <field name="quantity"/>
-    <field name="unit"/>
-    <field name="unit_price"/>
+    <field name="quantity" symbol="unit"/>
+    <field name="unit_price" symbol="currency"/>
     <field name="start_date"/>
     <field name="end_date"/>
 </tree>

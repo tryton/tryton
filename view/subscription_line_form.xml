@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="service"/>
             <field name="service"/>
             <label name="unit_price"/>
-            <field name="unit_price"/>
+            <field name="unit_price" symbol="currency"/>
 
             <label name="description"/>
             <field name="description" colspan="3" yexpand="0"/>
