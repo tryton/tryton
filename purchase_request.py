@@ -58,6 +58,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         readonly=True)
     purchase_date = fields.Date('Best Purchase Date', readonly=True)
     supply_date = fields.Date('Expected Supply Date', readonly=True)
+    default_uom = fields.Function(fields.Many2One(
+            'product.uom', "Default UOM"), 'on_change_with_default_uom')
     default_uom_digits = fields.Function(fields.Integer('Default UOM Digits'),
         'on_change_with_default_uom_digits')
     stock_level = fields.Float('Stock at Supply Date', readonly=True,
@@ -267,6 +269,11 @@ class PurchaseRequest(ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
+
+    @fields.depends('product')
+    def on_change_with_default_uom(self, name=None):
+        if self.product:
+            return self.product.default_uom.id
 
     @fields.depends('product')
     def on_change_with_default_uom_digits(self, name=None):

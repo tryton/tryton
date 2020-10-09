@@ -3,12 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="product" expand="2"/>
-    <field name="quantity"/>
-    <field name="uom"/>
+    <field name="quantity" symbol="uom"/>
     <field name="warehouse" expand="1"/>
     <field name="party" expand="2"/>
     <field name="purchase_date"/>
-    <field name="stock_level"/>
+    <field name="stock_level" symbol="default_uom"/>
     <field name="company" expand="1"/>
     <field name="state"/>
 </tree>

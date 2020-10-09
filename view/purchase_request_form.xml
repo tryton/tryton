@@ -35,7 +35,7 @@ this repository contains the full copyright notices and license terms. -->
             <label name="purchase"/>
             <field name="purchase"/>
             <label name="stock_level"/>
-            <field name="stock_level"/>
+            <field name="stock_level" symbol="default_uom"/>
             <label name="origin"/>
             <field name="origin"/>
         </page>
