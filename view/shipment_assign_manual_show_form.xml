@@ -7,5 +7,5 @@ this repository contains the full copyright notices and license terms. -->
     <label name="place"/>
     <field name="place"/>
     <label name="quantity"/>
-    <field name="quantity"/>
+    <field name="quantity" symbol="unit"/>
 </form>

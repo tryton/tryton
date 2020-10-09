@@ -112,6 +112,8 @@ class ShipmentAssignManual(Wizard):
             defaults['skipped'] = [m.id for m in self.show.skipped]
         if 'move' in fields:
             defaults['move'] = self.show.move.id
+        if 'unit' in fields:
+            defaults['unit'] = self.show.move.uom.id
         if 'unit_digits' in fields:
             defaults['unit_digits'] = self.show.move.unit_digits
         if 'move_quantity' in fields:
@@ -148,6 +150,7 @@ class ShipmentAssignManualShow(ModelView):
         depends=['unit_digits', 'move_quantity'],
         help="The maximum quantity to assign from the place.\n"
         "Leave empty for the full quantity of the move.")
+    unit = fields.Many2One('product.uom', "Unit", readonly=True)
     unit_digits = fields.Integer("Unit Digits", readonly=True)
     move_quantity = fields.Float("Move Quantity", readonly=True)
     place = fields.Selection('get_places', "Place", required=True, sort=False)
