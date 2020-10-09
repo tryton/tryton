@@ -512,7 +512,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if self.currency:
                 return self.currency.is_zero(amount)
             else:
-                return amount != Decimal('0.0')
+                return amount == Decimal('0.0')
 
         tax_keys = []
         taxes = list(self.taxes or [])
