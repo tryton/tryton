@@ -1154,6 +1154,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
+    currency = fields.Function(
+        fields.Many2One('currency.currency', 'Currency'),
+        'on_change_with_currency')
 
     @classmethod
     def __register__(cls, module_name):
@@ -1436,6 +1439,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_company(self, name=None):
         if self.purchase and self.purchase.company:
             return self.purchase.company.id
+
+    @fields.depends('purchase', '_parent_purchase.currency')
+    def on_change_with_currency(self, name=None):
+        if self.purchase and self.purchase.currency:
+            return self.purchase.currency.id
 
     def get_invoice_line(self):
         'Return a list of invoice line for purchase line'

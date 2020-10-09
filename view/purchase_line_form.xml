@@ -20,9 +20,9 @@ this repository contains the full copyright notices and license terms. -->
             <label name="unit"/>
             <field name="unit"/>
             <label name="unit_price"/>
-            <field name="unit_price"/>
+            <field name="unit_price" symbol="currency"/>
             <label name="amount"/>
-            <field name="amount"/>
+            <field name="amount" symbol="currency"/>
             <label id="delivery_date" string="Delivery Date:"/>
             <group id="delivery_date" col="-1">
                 <field name="delivery_date" xexpand="0"/>

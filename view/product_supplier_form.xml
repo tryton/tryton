@@ -21,4 +21,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="currency"/>
     <field name="prices" colspan="4"
         view_ids="purchase.product_supplier_price_view_list_sequence"/>
+    <field name="uom" colspan="4" invisible="1"/>
 </form>

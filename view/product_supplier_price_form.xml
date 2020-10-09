@@ -7,8 +7,8 @@ this repository contains the full copyright notices and license terms. -->
     <label name="sequence"/>
     <field name="sequence"/>
     <label name="quantity"/>
-    <field name="quantity"/>
+    <field name="quantity" symbol="uom"/>
     <newline/>
     <label name="unit_price"/>
-    <field name="unit_price"/>
+    <field name="unit_price" symbol="currency"/>
 </form>

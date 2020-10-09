@@ -271,6 +271,8 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     lead_time = fields.TimeDelta('Lead Time')
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
+    uom = fields.Function(
+        fields.Many2One('product.uom', "UOM"), 'on_change_with_uom')
 
     @classmethod
     def __register__(cls, module_name):
@@ -360,12 +362,16 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             ]
         return domain
 
-    @property
-    def uom(self):
+    @fields.depends(
+        'product', '_parent_product.purchase_uom',
+        'template', '_parent_template.purchase_uom')
+    def on_change_with_uom(self, name=None):
         if self.product:
-            return self.product.purchase_uom
-        else:
-            return self.template.purchase_uom
+            if self.product.purchase_uom:
+                return self.product.purchase_uom.id
+        elif self.template:
+            if self.template.purchase_uom:
+                return self.template.purchase_uom.id
 
     def compute_supply_date(self, date=None):
         '''
@@ -412,6 +418,13 @@ class ProductSupplierPrice(
     unit_price = fields.Numeric('Unit Price', required=True,
         digits=price_digits)
 
+    uom = fields.Function(fields.Many2One('product.uom', 'UOM',
+        help="The unit in which the quantity is specified."),
+        'on_change_with_uom')
+    currency = fields.Function(
+        fields.Many2One('currency.currency', 'Currency'),
+        'on_change_with_currency')
+
     @classmethod
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
@@ -430,6 +443,16 @@ class ProductSupplierPrice(
     @staticmethod
     def default_quantity():
         return 0.0
+
+    @fields.depends('product_supplier', '_parent_product_supplier.product')
+    def on_change_with_uom(self, name=None):
+        if self.product_supplier and self.product_supplier.uom:
+            return self.product_supplier.uom.id
+
+    @fields.depends('product_supplier', '_parent_product_supplier.currency')
+    def on_change_with_currency(self, name=None):
+        if self.product_supplier and self.product_supplier.currency:
+            return self.product_supplier.currency.id
 
     @staticmethod
     def get_pattern():
