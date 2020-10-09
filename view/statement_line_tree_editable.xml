@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="statement" expand="1"/>
     <field name="number"/>
     <field name="date"/>
-    <field name="amount" sum="Amount"/>
+    <field name="amount" sum="Amount" symbol="currency"/>
     <field name="party" expand="1"/>
     <field name="invoice" expand="1"/>
     <field name="account" expand="1"/>

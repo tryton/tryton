@@ -86,6 +86,8 @@ class Statement(Workflow, ModelSQL, ModelView):
             'readonly': (Eval('state') != 'draft') | Eval('lines', [0]),
             },
         depends=['state', 'company'])
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     date = fields.Date('Date', required=True, select=True)
@@ -235,6 +237,11 @@ class Statement(Workflow, ModelSQL, ModelView):
 
         statement, = statements
         self.start_balance = statement.end_balance
+
+    @fields.depends('journal')
+    def on_change_with_currency(self, name=None):
+        if self.journal:
+            return self.journal.currency.id
 
     @fields.depends('journal')
     def on_change_with_currency_digits(self, name=None):
@@ -667,9 +674,12 @@ def origin_mixin(_states, _depends):
             "Date", required=True, states=_states, depends=_depends)
         amount = fields.Numeric(
             "Amount", required=True,
-            digits=(16, Eval('_parent_statement', {})
-                .get('currency_digits', 2)),
-            states=_states, depends=_depends)
+            digits=(16, Eval('currency_digits', 2)),
+            states=_states, depends=_depends + ['currency_digits'])
+        currency = fields.Function(fields.Many2One(
+                'currency.currency', "Currency"), 'on_change_with_currency')
+        currency_digits = fields.Function(fields.Integer(
+                "Currency Digits"), 'on_change_with_currency_digits')
         party = fields.Many2One(
             'party.party', "Party", states=_states, depends=_depends)
         account = fields.Many2One(
@@ -705,6 +715,16 @@ def origin_mixin(_states, _depends):
         @classmethod
         def search_company(cls, name, clause):
             return [('statement.' + clause[0],) + tuple(clause[1:])]
+
+        @fields.depends('statement', '_parent_statement.journal')
+        def on_change_with_currency(self, name=None):
+            if self.statement and self.statement.journal:
+                return self.statement.journal.currency.id
+
+        @fields.depends('statement', '_parent_statement.journal')
+        def on_change_with_currency_digits(self, name=None):
+            if self.statement and self.statement.journal:
+                return self.statement.journal.currency.digits
 
     return Mixin
 
