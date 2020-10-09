@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tree editable="1">
     <field name="product" expand="1"/>
-    <field name="expected_quantity"/>
-    <field name="quantity"/>
-    <field name="uom"/>
+    <field name="expected_quantity" symbol="uom"/>
+    <field name="quantity" symbol="uom"/>
 </tree>

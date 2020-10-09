@@ -6,7 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="inventory_location" expand="1"/>
     <field name="inventory_date"/>
     <field name="product" expand="2"/>
-    <field name="expected_quantity"/>
-    <field name="quantity"/>
-    <field name="uom"/>
+    <field name="expected_quantity" symbol="uom"/>
+    <field name="quantity" symbol="uom"/>
 </tree>

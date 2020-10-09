@@ -3,6 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="product" expand="1"/>
-    <field name="quantity"/>
-    <field name="uom"/>
+    <field name="quantity" symbol="uom"/>
 </tree>
