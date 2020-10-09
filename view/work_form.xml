@@ -10,11 +10,11 @@ this repository contains the full copyright notices and license terms. -->
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/field[@name='total_effort']" position="after">
         <label name="amount_to_invoice"/>
-        <field name="amount_to_invoice"/>
+        <field name="amount_to_invoice" symbol="currency"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/field[@name='revenue']" position="after">
         <label name="invoiced_amount"/>
-        <field name="invoiced_amount"/>
+        <field name="invoiced_amount" symbol="currency"/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/group/group[@id='buttons']"
         position="inside">
