@@ -15,9 +15,9 @@ this repository contains the full copyright notices and license terms. -->
     <label name="manual"/>
     <field name="manual"/>
     <label name="base"/>
-    <field name="base"/>
+    <field name="base" symbol="currency"/>
     <label name="amount"/>
-    <field name="amount"/>
+    <field name="amount" symbol="currency"/>
     <separator name="legal_notice" colspan="4"/>
     <field name="legal_notice" colspan="4"/>
 </form>

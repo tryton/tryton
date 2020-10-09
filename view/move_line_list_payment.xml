@@ -3,9 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
-    <field name="debit" sum="Debit"/>
-    <field name="credit" sum="Credit"/>
-    <field name="amount_second_currency"
-        sum="Amount Second Currency"/>
-    <field name="second_currency"/>
+    <field name="debit" sum="Debit" symbol="currency"/>
+    <field name="credit" sum="Credit" symbol="currency"/>
+    <field name="amount_second_currency" sum="Amount Second Currency" symbol="second_currency"/>
 </tree>

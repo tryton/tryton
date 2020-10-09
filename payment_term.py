@@ -394,7 +394,9 @@ class TestPaymentTermView(ModelView):
             for date, amount in self.payment_term.compute(
                     self.amount, self.currency, self.date):
                 result.append(Result(
-                        date=date, amount=amount,
+                        date=date,
+                        amount=amount,
+                        currency=self.currency,
                         currency_digits=self.currency.digits))
         self.result = result
         return self._changed_values.get('result', [])
@@ -406,4 +408,5 @@ class TestPaymentTermViewResult(ModelView):
     date = fields.Date('Date', readonly=True)
     amount = fields.Numeric('Amount', readonly=True,
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
+    currency = fields.Many2One('currency.currency', "Currency")
     currency_digits = fields.Integer('Currency Digits')

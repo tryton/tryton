@@ -6,6 +6,5 @@ this repository contains the full copyright notices and license terms. -->
     <field name="ratio" factor="100">
         <suffix string="%" name="ratio"/>
     </field>
-    <field name="amount"/>
-    <field name="currency"/>
+    <field name="amount" symbol="currency"/>
 </tree>

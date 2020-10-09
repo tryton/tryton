@@ -3,8 +3,8 @@
 this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="description" expand="1"/>
-    <field name="base"/>
-    <field name="amount"/>
+    <field name="base" symbol="currency"/>
+    <field name="amount" symbol="currency"/>
     <field name="sequence" tree_invisible="1"/>
     <field name="manual" tree_invisible="1"/>
     <field name="account" tree_invisible="1"/>

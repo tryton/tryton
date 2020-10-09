@@ -3,5 +3,5 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
-    <field name="amount"/>
+    <field name="amount" symbol="currency"/>
 </tree>

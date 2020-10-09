@@ -2310,6 +2310,8 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
         digits=(16, Eval('_parent_invoice', {}).get('currency_digits', 2)),
         states=_states,
         depends=['tax', 'base', 'manual'] + _depends)
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     manual = fields.Boolean('Manual', states=_states, depends=_depends)
     tax = fields.Many2One('account.tax', 'Tax',
         ondelete='RESTRICT',
@@ -2363,6 +2365,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_invoice_state(self, name=None):
         if self.invoice:
             return self.invoice.state
+
+    @fields.depends('invoice', '_parent_invoice.currency')
+    def on_change_with_currency(self, name=None):
+        if self.invoice:
+            return self.invoice.currency.id
 
     @fields.depends('tax', 'invoice', '_parent_invoice.party', 'base')
     def on_change_tax(self):

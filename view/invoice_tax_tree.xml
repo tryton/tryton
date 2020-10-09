@@ -7,6 +7,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description" expand="1"/>
     <field name="account" expand="1"/>
     <field name="manual"/>
-    <field name="base"/>
-    <field name="amount"/>
+    <field name="base" symbol="currency"/>
+    <field name="amount" symbol="currency"/>
 </tree>
