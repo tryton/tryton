@@ -9,8 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="employee" expand="1"/>
     <field name="description" expand="1"/>
     <field name="party" expand="1"/>
-    <field name="amount"/>
-    <field name="currency"/>
+    <field name="amount" symbol="currency"/>
     <field name="state"/>
     <field name="conversion_probability" factor="100">
         <suffix name="conversion_probability" string="%"/>

@@ -4,6 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree sequence="sequence">
     <field name="opportunity" expand="1"/>
     <field name="product" expand="1"/>
-    <field name="quantity"/>
-    <field name="unit"/>
+    <field name="quantity" symbol="unit"/>
 </tree>

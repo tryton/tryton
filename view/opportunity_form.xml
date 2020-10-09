@@ -19,10 +19,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="reference"/>
 
     <label name="amount"/>
-    <group col="2" id="amount_currency">
-        <field name="amount"/>
-        <field name="currency"/>
-    </group>
+    <field name="amount" symbol="currency"/>
     <label name="conversion_probability"/>
     <group id="conversion_probability">
         <field name="conversion_probability" factor="100" xexpand="0"/>

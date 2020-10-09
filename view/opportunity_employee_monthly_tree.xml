@@ -15,10 +15,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="winning_rate" factor="100">
         <suffix string="%" name="winning_rate"/>
     </field>
-    <field name="amount"/>
-    <field name="converted_amount"/>
-    <field name="won_amount"/>
-    <field name="currency"/>
+    <field name="amount" symbol="currency"/>
+    <field name="converted_amount" symbol="currency"/>
+    <field name="won_amount" symbol="currency"/>
     <field name="conversion_amount_rate" factor="100">
         <suffix string="%" name="conversion_amount_rate"/>
     </field>
