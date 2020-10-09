@@ -903,6 +903,8 @@ class Line(
             if line.invoice in invoice_payments:
                 Invoice.add_payment_lines(invoice_payments)
                 invoice_payments.clear()
+                MoveLine.reconcile(*to_reconcile)
+                to_reconcile.clear()
 
             reconcile_lines = line.invoice.get_reconcile_lines_for_amount(
                 move_line.credit - move_line.debit)
