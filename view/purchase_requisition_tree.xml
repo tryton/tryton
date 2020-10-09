@@ -6,7 +6,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="supply_date"/>
     <field name="employee" expand="2"/>
     <field name="warehouse" expand="1"/>
-    <field name="total_amount"/>
-    <field name="currency"/>
+    <field name="total_amount" symbol="currency"/>
     <field name="state"/>
 </tree>

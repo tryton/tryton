@@ -17,9 +17,9 @@ this repository contains the full copyright notices and license terms. -->
             <label name="unit"/>
             <field name="unit"/>
             <label name="unit_price"/>
-            <field name="unit_price"/>
+            <field name="unit_price" symbol="currency"/>
             <label name="amount"/>
-            <field name="amount"/>
+            <field name="amount" symbol="currency"/>
             <separator name="description" colspan="4"/>
             <field name="description" colspan="4"/>
         </page>

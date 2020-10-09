@@ -474,6 +474,8 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         fields.Integer('Unit Digits'), 'on_change_with_unit_digits')
     unit_price = fields.Numeric(
         'Unit Price', digits=price_digits, states=_states, depends=_depends)
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     amount = fields.Function(
         fields.Numeric('Amount',
             digits=(
@@ -506,6 +508,11 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     def on_change_with_product_uom_category(self, name=None):
         if self.product:
             return self.product.default_uom_category.id
+
+    @fields.depends('requisition', '_parent_requisition.currency')
+    def on_change_with_currency(self, name=None):
+        if self.requisition:
+            return self.requisition.currency.id
 
     @classmethod
     def get_purchase_requisition_states(cls):
