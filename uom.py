@@ -6,7 +6,8 @@ from math import ceil, floor, log10
 
 from trytond.config import config
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
+from trytond.model import (
+    ModelView, ModelSQL, DeactivableMixin, fields, Check, SymbolMixin)
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -31,7 +32,7 @@ class UomCategory(ModelSQL, ModelView):
         cls._order.insert(0, ('name', 'ASC'))
 
 
-class Uom(DeactivableMixin, ModelSQL, ModelView):
+class Uom(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
     "Unit of Measure"
     __name__ = 'product.uom'
     name = fields.Char("Name", size=None, required=True, translate=True)
