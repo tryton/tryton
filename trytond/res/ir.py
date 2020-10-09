@@ -74,6 +74,58 @@ class ActionGroup(ModelSQL):
         Pool().get('ir.rule')._domain_get_cache.clear()
 
 
+class Action(metaclass=PoolMeta):
+    __name__ = 'ir.action'
+
+    groups = fields.Many2Many(
+        'ir.action-res.group', 'action', 'group', "Groups")
+
+
+class ActionMixin(metaclass=PoolMeta):
+
+    @classmethod
+    def get_groups(cls, name, action_id=None):
+        # TODO add cache
+        domain = [
+            (cls._action_name, '=', name),
+            ]
+        if action_id:
+            domain.append(('id', '=', action_id))
+        actions = cls.search(domain)
+        groups = {g.id for a in actions for g in a.groups}
+        return groups
+
+
+class ActionReport(ActionMixin):
+    __name__ = 'ir.action.report'
+
+
+class ActionActWindow(ActionMixin):
+    __name__ = 'ir.action.act_window'
+
+
+class ActionWizard(ActionMixin):
+    __name__ = 'ir.action.wizard'
+
+
+class ActionURL(ActionMixin):
+    __name__ = 'ir.action.url'
+
+
+class ActionKeyword(metaclass=PoolMeta):
+    __name__ = 'ir.action.keyword'
+
+    groups = fields.Function(fields.One2Many('res.group', None, 'Groups'),
+        'get_groups', searcher='search_groups')
+
+    def get_groups(self, name):
+        return [g.id for g in self.action.groups]
+
+    @classmethod
+    def search_groups(cls, name, clause):
+        return [('action.' + clause[0],) + tuple(clause[1:])]
+
+
 class ModelButtonGroup(DeactivableMixin, ModelSQL):
     "Model Button - Group"
     __name__ = 'ir.model.button-res.group'
