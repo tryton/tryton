@@ -288,7 +288,7 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'])
+        depends=['company'], ondelete='RESTRICT')
     account_receivable = fields.Many2One(
         'account.account', "Account Receivable",
         domain=[
@@ -296,21 +296,21 @@ class PartyAccount(ModelSQL, CompanyValueMixin):
             ('party_required', '=', True),
             ('company', '=', Eval('company', -1)),
             ],
-        depends=['company'])
+        depends=['company'], ondelete='RESTRICT')
     customer_tax_rule = fields.Many2One(
         'account.tax.rule', "Customer Tax Rule",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['sale', 'both']),
             ],
-        depends=['company'])
+        depends=['company'], ondelete='RESTRICT')
     supplier_tax_rule = fields.Many2One(
         'account.tax.rule', "Supplier Tax Rule",
         domain=[
             ('company', '=', Eval('company', -1)),
             ('kind', 'in', ['purchase', 'both']),
             ],
-        depends=['company'])
+        depends=['company'], ondelete='RESTRICT')
 
     @classmethod
     def __register__(cls, module_name):
