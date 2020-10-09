@@ -9,7 +9,7 @@ from sql.functions import NthValue
 
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check)
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Check, SymbolMixin)
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -18,7 +18,7 @@ from trytond.pyson import Eval
 from .exceptions import RateError
 
 
-class Currency(DeactivableMixin, ModelSQL, ModelView):
+class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
     'Currency'
     __name__ = 'currency.currency'
     name = fields.Char('Name', required=True, translate=True,
@@ -223,6 +223,16 @@ class Currency(DeactivableMixin, ModelSQL, ModelView):
                 end_date.as_('end_date'),
                 ))
         return query
+
+    def get_symbol(self, sign, symbol=None):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        lang = Lang.get()
+        symbol, position = super().get_symbol(sign, symbol=symbol)
+        if ((sign < 0 and lang.n_cs_precedes)
+                or (sign >= 0 and lang.p_cs_precedes)):
+            position = 0
+        return symbol, position
 
 
 class CurrencyRate(ModelSQL, ModelView):
