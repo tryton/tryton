@@ -1832,6 +1832,27 @@
             var shift = Math.round(Math.log(Math.abs(factor)) / Math.LN10);
             return [digits[0] + shift, digits[1] - shift];
         },
+        get_symbol: function(record, symbol) {
+            if (record && (symbol in record.model.fields)) {
+                var value = this.get(record) || 0;
+                var sign = 1;
+                if (value < 0) {
+                    sign = -1;
+                } else if (value === 0) {
+                    sign = 0;
+                }
+                var symbol_field = record.model.fields[symbol];
+                var symbol_name = symbol_field.description.relation;
+                var symbol_id = symbol_field.get(record);
+                if (symbol_name && (symbol_id !== null) && (symbol_id >= 0)) {
+                    return Sao.rpc({
+                        'method': 'model.' + symbol_name + '.get_symbol',
+                        'params': [symbol_id, sign, record.get_context()],
+                    }, record.model.session, false) || ['', 1];
+                }
+            }
+            return ['', 1];
+        },
         check_required: function(record) {
             var state_attrs = this.get_state_attrs(record);
             if (state_attrs.required == 1) {

@@ -1,3 +1,4 @@
+* Manage symbol widget
 * Fallback to model name as title
 * Set treeview footer sticky on bottom
 * Add get, in_ and contains methods to PYSON

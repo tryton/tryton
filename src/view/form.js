@@ -1784,6 +1784,14 @@ function eval_pyson(value){
         init: function(view, attributes) {
             Sao.View.Form.Integer._super.init.call(this, view, attributes);
             this.input_text = this.labelled = integer_input(this.input);
+            if (this.attributes.symbol) {
+                this.symbol_start = jQuery('<span/>', {
+                    'class': 'input-group-addon symbol symbol-start'
+                }).prependTo(this.group);
+                this.symbol_end = jQuery('<span/>', {
+                    'class': 'input-group-addon symbol symbol-end'
+                }).appendTo(this.group);
+            }
             this.group.css('width', '');
             this.factor = Number(attributes.factor || 1);
         },
@@ -1825,12 +1833,34 @@ function eval_pyson(value){
             return 8;
         },
         display: function() {
+            var set_symbol = function(el, text) {
+                if (text) {
+                    el.text(text);
+                    el.show();
+                } else {
+                    el.text('');
+                    el.hide();
+                }
+            };
             Sao.View.Form.Integer._super.display.call(this);
-            var field = this.field;
+            var field = this.field,
+                record = this.record;
             var value = '';
             this.el.css('width', this.width + 'ch');
             if (field) {
-                value = field.get_client(this.record, this.factor);
+                value = field.get_client(record, this.factor);
+            }
+            if (field && this.attributes.symbol) {
+                var result = field.get_symbol(record, this.attributes.symbol);
+                var symbol = result[0],
+                    position = result[1];
+                if (position < 0.5) {
+                    set_symbol(this.symbol_start, symbol);
+                    set_symbol(this.symbol_end, '');
+                } else {
+                    set_symbol(this.symbol_start, '');
+                    set_symbol(this.symbol_end, symbol);
+                }
             }
             this.input_text.val(value);
             this.input_text.attr('maxlength', this.input.attr('maxlength'));

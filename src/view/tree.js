@@ -77,6 +77,12 @@
             if ('icon' in attributes) {
                 column.prefixes.push(new Sao.View.Tree.Affix(attributes));
             }
+            if ('symbol' in attributes) {
+                column.prefixes.push(
+                    new Sao.View.Tree.Symbol(attributes, 0));
+                column.suffixes.push(
+                    new Sao.View.Tree.Symbol(attributes, 1));
+            }
             var affix, affix_attributes;
             var affixes = node.childNodes;
             for (var i = 0; i < affixes.length; i++) {
@@ -702,6 +708,9 @@
                             'boolean': 3,
                             'binary': 20,
                         }[column.attributes.widget] || 10;
+                        if (column.attributes.symbol) {
+                            width += 2;
+                        }
                         var factor = 1;
                         if (column.attributes.expand) {
                             factor += parseInt(column.attributes.expand, 10);
@@ -1997,6 +2006,51 @@
         clicked: function(event) {
             event.stopPropagation();  // prevent edition
         }
+    });
+
+    Sao.View.Tree.Symbol = Sao.class_(Object, {
+        class_: 'column-symbol',
+        init: function(attributes, position) {
+            this.attributes = attributes;
+            this.position = position;
+        },
+        get_cell: function() {
+            var cell = jQuery('<span/>', {
+                'class': this.class_,
+                'tabindex': 0
+            });
+            return cell;
+        },
+        render: function(record, cell) {
+            if (!cell) {
+                cell = this.get_cell();
+            }
+            var render = function() {
+                var field = record.model.fields[this.attributes.name];
+                var invisible = field.get_state_attrs(record).invisible;
+                if (invisible) {
+                    cell.text('');
+                    cell.hide();
+                    return;
+                }
+                var result = field.get_symbol(record, this.attributes.symbol);
+                var symbol = result[0],
+                    position = result[1];
+                if (Math.round(position) === this.position) {
+                    cell.text(symbol);
+                    cell.show();
+                } else {
+                    cell.text('');
+                    cell.hide();
+                }
+            }.bind(this);
+            if (!record.is_loaded(this.attributes.name)) {
+                record.load(this.attributes.name).done(render);
+            } else {
+                render();
+            }
+            return cell;
+        },
     });
 
     Sao.View.Tree.CharColumn = Sao.class_(Object, {

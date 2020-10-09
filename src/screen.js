@@ -1671,6 +1671,10 @@
                                 }
                             });
                         }
+                        var symbol = node.getAttribute('symbol');
+                        if (symbol && !(symbol in dom_fields)) {
+                            dom_fields[symbol] = fields[symbol];
+                        }
                     }
                 });
                 fields = dom_fields;
