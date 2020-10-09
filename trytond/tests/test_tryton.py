@@ -239,7 +239,7 @@ class ModuleTestCase(unittest.TestCase):
             # as there is a fallback to id
             if model._rec_name == 'name':
                 continue
-            self.assertIn(model._rec_name, model._fields,
+            self.assertIn(model._rec_name, model._fields.keys(),
                 msg='Wrong _rec_name "%s" for %s' % (model._rec_name, mname))
             field = model._fields[model._rec_name]
             self.assertIn(field._type, {'char', 'text'},
@@ -283,11 +283,12 @@ class ModuleTestCase(unittest.TestCase):
                     for attr in ['name', 'icon', 'symbol']:
                         field = element.get(attr)
                         if field:
-                            self.assertIn(field, res['fields'],
-                                msg='Missing field: %s' % field)
+                            self.assertIn(field, res['fields'].keys(),
+                                msg='Missing field: %s in %s' % (
+                                    field, Model.__name__))
                 if element.tag == 'button':
                     button_name = element.get('name')
-                    self.assertIn(button_name, Model._buttons,
+                    self.assertIn(button_name, Model._buttons.keys(),
                         msg="Button '%s' is not in %s._buttons"
                         % (button_name, Model.__name__))
 
@@ -468,7 +469,7 @@ class ModuleTestCase(unittest.TestCase):
                 else:
                     continue
                 if rfield:
-                    self.assertIn(rfield, Relation._fields,
+                    self.assertIn(rfield, Relation._fields.keys(),
                         msg=('Missing relation field "%s" on "%s" '
                             'for "%s"."%s"') % (
                             rfield, Relation.__name__, mname, fname))
@@ -572,7 +573,7 @@ class ModuleTestCase(unittest.TestCase):
             if not isregisteredby(wizard, self.module, type_='wizard'):
                 continue
             session_id, start_state, _ = wizard.create()
-            self.assertIn(start_state, wizard.states,
+            self.assertIn(start_state, wizard.states.keys(),
                 msg='Unknown start state '
                 '"%(state)s" on wizard "%(wizard)s"' % {
                     'state': start_state,
