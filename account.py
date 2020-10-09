@@ -36,6 +36,9 @@ class MoveLine(metaclass=PoolMeta):
             depends=['payment_kind', 'second_currency_digits',
                 'currency_digits']), 'get_payment_amount',
         searcher='search_payment_amount')
+    payment_currency = fields.Function(fields.Many2One(
+            'currency.currency', "Payment Currency"),
+        'get_payment_currency')
     payments = fields.One2Many('account.payment', 'line', 'Payments',
         readonly=True,
         states={
@@ -131,6 +134,12 @@ class MoveLine(metaclass=PoolMeta):
                 having=Operator(amount, value)
                 ))
         return [('id', 'in', query)]
+
+    def get_payment_currency(self, name):
+        if self.second_currency:
+            return self.second_currency.id
+        elif self.currency:
+            return self.currency.id
 
     def get_payment_kind(self, name):
         if (self.account.type.receivable
