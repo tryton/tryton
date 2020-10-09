@@ -207,6 +207,35 @@ class Affix(Cell):
             webbrowser.open(value, new=2)
 
 
+class Symbol(Cell):
+    expand = False
+
+    def __init__(self, view, attrs, position):
+        super().__init__()
+        self.attrs = attrs
+        self.symbol = attrs.get('symbol')
+        self.position = position
+        self.renderer = Gtk.CellRendererText()
+        self.view = view
+
+    @realized
+    @CellCache.cache
+    def setter(self, column, cell, store, iter_, user_data=None):
+        record, field = self._get_record_field_from_iter(iter_, store)
+        invisible = field.get_state_attrs(record).get('invisible', False)
+        if invisible:
+            cell.set_property('text', '')
+            cell.set_property('visible', not invisible)
+            return
+        symbol, position = field.get_symbol(record, self.symbol)
+        if round(position) == self.position:
+            cell.set_property('text', symbol)
+            cell.set_property('visible', True)
+        else:
+            cell.set_property('text', '')
+            cell.set_property('visible', False)
+
+
 class GenericText(Cell):
     align = 0
     editable = None
@@ -328,6 +357,22 @@ class Int(GenericText):
             renderer = CellRendererInteger
         super(Int, self).__init__(view, attrs, renderer=renderer)
         self.factor = float(attrs.get('factor', 1))
+        self.symbol = attrs.get('symbol')
+        if self.symbol:
+            self.renderer_prefix = Symbol(view, attrs, 0)
+            self.renderer_suffix = Symbol(view, attrs, 1)
+
+    @property
+    def prefixes(self):
+        if self.symbol:
+            return [self.renderer_prefix]
+        return []
+
+    @property
+    def suffixes(self):
+        if self.symbol:
+            return [self.renderer_suffix]
+        return []
 
     def get_textual_value(self, record):
         if not record:

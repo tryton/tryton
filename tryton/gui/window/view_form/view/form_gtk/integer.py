@@ -18,8 +18,17 @@ class Integer(Widget):
         self.entry.connect('activate', self.sig_activate)
         self.entry.connect('focus-out-event', lambda *a: self._focus_out())
         self.entry.connect('key-press-event', self.send_modified)
+        self.symbol = attrs.get('symbol')
+        if self.symbol:
+            self.symbol_start = Gtk.Entry(editable=False)
+            self.widget.pack_start(
+                self.symbol_start, expand=False, fill=False, padding=1)
         self.widget.pack_start(self.entry, expand=False, fill=False, padding=0)
         self.factor = float(attrs.get('factor', 1))
+        if self.symbol:
+            self.symbol_end = Gtk.Entry(editable=False)
+            self.widget.pack_start(
+                self.symbol_end, expand=False, fill=False, padding=1)
 
     @property
     def modified(self):
@@ -47,8 +56,24 @@ class Integer(Widget):
         return 8
 
     def display(self):
+        def set_symbol(entry, text):
+            if text:
+                entry.set_text(text)
+                entry.set_width_chars(len(text) + 1)
+                entry.show()
+            else:
+                entry.set_text('')
+                entry.hide()
         super().display()
         self.entry.set_width_chars(self.width)
+        if self.field and self.symbol:
+            symbol, position = self.field.get_symbol(self.record, self.symbol)
+            if position < 0.5:
+                set_symbol(self.symbol_start, symbol)
+                set_symbol(self.symbol_end, '')
+            else:
+                set_symbol(self.symbol_start, '')
+                set_symbol(self.symbol_end, symbol)
         value = self.get_client_value()
         self.entry.set_text(value)
         reset_position(self.entry)

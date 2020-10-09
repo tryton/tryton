@@ -414,6 +414,8 @@ class TreeXMLViewParser(XMLViewParser):
                 width = int(attributes['width'])
             elif field_attrs:
                 width = default_width.get(field_attrs['type'], 100)
+                if attributes.get('symbol'):
+                    width += 20
             else:
                 width = 80
         column.width = width

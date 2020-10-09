@@ -355,6 +355,28 @@ class FloatField(Field):
         shift = int(round(math.log(abs(factor), 10)))
         return (digits[0] + shift, digits[1] - shift)
 
+    def get_symbol(self, record, symbol):
+        if record and symbol in record.group.fields:
+            value = self.get(record) or 0
+            sign = 1
+            if value < 0:
+                sign = -1
+            elif value == 0:
+                sign = 0
+            symbol_field = record.group.fields[symbol]
+            symbol_name = symbol_field.attrs.get('relation')
+            symbol_id = symbol_field.get(record)
+            if symbol_name and symbol_id is not None and symbol_id >= 0:
+                try:
+                    return RPCExecute(
+                        'model', symbol_name, 'get_symbol', symbol_id, sign,
+                        context=record.get_context())
+                except RPCException:
+                    logger.warn(
+                        "Fail to fetch symbol for %s,%s",
+                        symbol_name, symbol_id)
+        return '', 1
+
     def convert(self, value):
         try:
             return locale.atof(value)

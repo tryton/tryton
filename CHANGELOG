@@ -1,3 +1,4 @@
+* Manage symbol widget
 * Fallback to model name as title
 * Manage deletable and writable state
 * Support e-mail template

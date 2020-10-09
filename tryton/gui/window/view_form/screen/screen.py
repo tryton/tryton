@@ -209,6 +209,9 @@ class Screen(SignalEvent):
                 for attr in ['string', 'factor']:
                     if attributes.get(attr):
                         ofields[name][attr] = attributes[attr]
+                symbol = attributes.get('symbol')
+                if symbol and symbol not in ofields:
+                    ofields[symbol] = fields[symbol]
             fields = ofields
 
         if 'active' in view_tree['fields']:
