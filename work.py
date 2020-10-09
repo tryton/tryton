@@ -28,6 +28,8 @@ class Work(metaclass=PoolMeta):
     cost = fields.Function(fields.Numeric('Cost',
             digits=(16, Eval('currency_digits', 2)),
             depends=['currency_digits']), 'get_total')
+    currency = fields.Function(fields.Many2One('currency.currency',
+        'Currency'), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
 
@@ -165,9 +167,14 @@ class Work(metaclass=PoolMeta):
         return revenues
 
     @fields.depends('company')
-    def on_change_with_currency_digits(self, name=None):
+    def on_change_with_currency(self, name=None):
         if self.company:
-            return self.company.currency.digits
+            return self.company.currency.id
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
         return 2
 
     @staticmethod

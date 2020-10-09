@@ -7,15 +7,15 @@ this repository contains the full copyright notices and license terms. -->
         <label name="product"/>
         <field name="product"/>
         <label name="list_price"/>
-        <field name="list_price"/>
+        <field name="list_price" symbol="currency"/>
         <newline/>
     </xpath>
     <xpath expr="/form/notebook/page[@id='general']/field[@name='total_effort']"
         position="after">
         <newline/>
         <label name="cost"/>
-        <field name="cost"/>
+        <field name="cost" symbol="currency"/>
         <label name="revenue"/>
-        <field name="revenue"/>
+        <field name="revenue" symbol="currency"/>
     </xpath>
 </data>
