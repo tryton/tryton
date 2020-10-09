@@ -17,14 +17,12 @@ this repository contains the full copyright notices and license terms. -->
     <field name="overflowing_location"/>
     <separator string="Product Info" colspan="6" id="info"/>
     <label name="product"/>
-    <field name="product"/>
-    <label name="unit"/>
-    <field name="unit"/>
-    <newline/>
+    <field name="product" colspan="5"/>
+
     <label name="min_quantity"/>
-    <field name="min_quantity"/>
+    <field name="min_quantity" symbol="unit"/>
     <label name="target_quantity"/>
-    <field name="target_quantity"/>
+    <field name="target_quantity" symbol="unit"/>
     <label name="max_quantity"/>
-    <field name="max_quantity"/>
+    <field name="max_quantity" symbol="unit"/>
 </form>
