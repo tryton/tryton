@@ -3,7 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='uom']" position="after">
-        <field name="secondary_quantity"/>
-        <field name="secondary_unit"/>
+        <field name="secondary_quantity" symbol="secondary_unit"/>
     </xpath>
 </data>

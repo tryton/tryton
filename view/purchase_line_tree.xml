@@ -3,8 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="//field[@name='unit_price']" position="after">
-        <field name="secondary_quantity"/>
-        <field name="secondary_unit"/>
-        <field name="secondary_unit_price"/>
+        <field name="secondary_quantity" symbol="secondary_unit"/>
+        <field name="secondary_unit_price" symbol="currency"/>
     </xpath>
 </data>
