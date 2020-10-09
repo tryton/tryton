@@ -57,6 +57,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sale_reporting_revenue_trend">
             <field name="text">Revenue Trend</field>
         </record>
+        <record model="ir.message" id="msg_sale_reporting_currency">
+            <field name="text">Currency</field>
+        </record>
         <record model="ir.message" id="msg_sale_reporting_currency_digits">
             <field name="text">Currency Digits</field>
         </record>

@@ -43,6 +43,10 @@ class Abstract(ModelSQL):
         'get_trend')
     time_series = None
 
+    currency = fields.Function(fields.Many2One(
+            'currency.currency',
+            lazy_gettext("sale.msg_sale_reporting_currency")),
+        'get_currency')
     currency_digits = fields.Function(
         fields.Integer(
             lazy_gettext("sale.msg_sale_reporting_currency_digits")),
@@ -170,6 +174,9 @@ class Abstract(ModelSQL):
             chart.add('', [getattr(ts, name) if ts else 0
                     for ts in self.time_series_all])
             return chart.render_sparktext()
+
+    def get_currency(self, name):
+        return self.company.currency.id
 
     def get_currency_digits(self, name):
         return self.company.currency.digits

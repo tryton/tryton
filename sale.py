@@ -1118,6 +1118,9 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                 'invisible': ~Eval('type').in_(['line', 'subtotal']),
                 },
             depends=['type', 'sale_state']), 'get_amount')
+    currency = fields.Function(
+        fields.Many2One('currency.currency', 'Currency'),
+        'on_change_with_currency')
     description = fields.Text('Description', size=None,
         states={
             'readonly': Eval('sale_state') != 'draft',
@@ -1388,6 +1391,11 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
             if shipping_date:
                 shipping_date = max(shipping_date, Date.today())
             return shipping_date
+
+    @fields.depends('sale', '_parent_sale.currency')
+    def on_change_with_currency(self, name=None):
+        if self.sale:
+            return self.sale.currency.id
 
     @property
     @fields.depends('sale', '_parent_sale.shipping_date')

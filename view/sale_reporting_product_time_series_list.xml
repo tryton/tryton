@@ -4,5 +4,5 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="date"/>
     <field name="number"/>
-    <field name="revenue"/>
+    <field name="revenue" symbol="currency"/>
 </tree>

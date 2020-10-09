@@ -48,11 +48,11 @@ this repository contains the full copyright notices and license terms. -->
             </group>
             <group col="2" colspan="2" id="amount" yfill="1">
                 <label name="untaxed_amount" xalign="1.0" xexpand="1"/>
-                <field name="untaxed_amount" xalign="1.0" xexpand="0"/>
+                <field name="untaxed_amount" symbol="currency" xalign="1.0" xexpand="0"/>
                 <label name="tax_amount" xalign="1.0" xexpand="1"/>
-                <field name="tax_amount" xalign="1.0" xexpand="0"/>
+                <field name="tax_amount" symbol="currency" xalign="1.0" xexpand="0"/>
                 <label name="total_amount" xalign="1.0" xexpand="1"/>
-                <field name="total_amount" xalign="1.0" xexpand="0"/>
+                <field name="total_amount" symbol="currency" xalign="1.0" xexpand="0"/>
             </group>
         </page>
         <page string="Other Info" id="other">
