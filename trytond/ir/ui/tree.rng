@@ -256,6 +256,14 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">symbol</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="prefix">
     <element>
       <name ns="">prefix</name>

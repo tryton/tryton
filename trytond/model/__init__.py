@@ -9,6 +9,7 @@ from .workflow import Workflow
 from .dictschema import DictSchemaMixin
 from .match import MatchMixin
 from .union import UnionMixin
+from .symbol import SymbolMixin
 from .multivalue import MultiValueMixin, ValueMixin
 from .descriptors import dualmethod
 from .order import sequence_ordered
@@ -18,5 +19,5 @@ from .tree import tree
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
-    'MultiValueMixin', 'ValueMixin',
+    'MultiValueMixin', 'ValueMixin', 'SymbolMixin',
     'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree']

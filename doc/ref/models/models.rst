@@ -762,6 +762,23 @@ Class methods:
 
     Return the SQL table and columns to use for the UNION for the model name.
 
+===========
+SymbolMixin
+===========
+
+.. class:: SymbolMixin
+
+A mixin_ to manage the display of symbols on the client side.
+
+Instance methods:
+
+.. method:: SymbolMixin.get_symbol(sign, [symbol])
+
+    Return a symbol and its position.
+    The position indicates whether the symbol should appear before (0) or after
+    (1) the value. If no symbol parameter is supplied then the mixin uses the
+    value of attribute named `symbol`.
+
 ================
 sequence_ordered
 ================

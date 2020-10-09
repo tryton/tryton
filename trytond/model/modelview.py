@@ -578,7 +578,7 @@ class ModelView(Model):
                         break
             return views
 
-        for attr in ('name', 'icon'):
+        for attr in ('name', 'icon', 'symbol'):
             if not element.get(attr):
                 continue
             fields_attrs.setdefault(element.get(attr), {})

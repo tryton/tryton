@@ -162,6 +162,10 @@ List of attributes shared by many form elements:
       :class:`trytond.model.fields.Numeric` to display on the widget. The
       default value is 1.
 
+    .. _common-attributes-symbol:
+
+    * ``symbol``: Only on numerical fields, the name of field which provides
+      the symbol to display.
 
 form
 ^^^^
@@ -282,6 +286,8 @@ Display a field of the object with the value of the current record.
     * ``spell``: Only for Text widgets, a :ref:`PYSON statement <topics-pyson>`
       that will be evaluated to the language code for which spell checking must
       be done.
+
+    * ``symbol``: see in common-attributes-symbol_.
 
 image
 ^^^^^
@@ -600,6 +606,8 @@ field
     * ``completion``: see in common-attributes-completion_.
 
     * ``factor``: see in common-attributes-factor_.
+
+    * ``symbol``: see in common-attributes-symbol_.
 
 prefix or suffix
 ^^^^^^^^^^^^^^^^

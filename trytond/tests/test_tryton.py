@@ -280,7 +280,7 @@ class ModuleTestCase(unittest.TestCase):
 
             for element in tree_root.iter():
                 if element.tag in ('field', 'label', 'separator', 'group'):
-                    for attr in ('name', 'icon'):
+                    for attr in ['name', 'icon', 'symbol']:
                         field = element.get(attr)
                         if field:
                             self.assertIn(field, res['fields'],

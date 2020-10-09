@@ -476,6 +476,14 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">symbol</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="image">
     <element>
       <name ns="">image</name>
