@@ -1,8 +1,9 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import fields
+from trytond.model import Model, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 
 class Sale(metaclass=PoolMeta):
@@ -169,7 +170,7 @@ class Line(metaclass=PoolMeta):
             origin=self.sale,
             )
 
-    def assign_supplied(self, location_quantities):
+    def assign_supplied(self, quantities, grouping=('product',)):
         '''
         Assign supplied move
 
@@ -182,20 +183,50 @@ class Line(metaclass=PoolMeta):
 
         if self.supply_state != 'supplied':
             return
+
+        def get_key(move, location_id):
+            key = (location_id,)
+            for field in grouping:
+                value = getattr(move, field)
+                if isinstance(value, Model):
+                    value = value.id
+                key += (value,)
+            return key
+
+        def get_values(key, location_name):
+            yield location_name, key[0]
+            for field, value in zip(grouping, key[1:]):
+                if value is not None and '.' not in field:
+                    yield field, value
+
+        def match(key, pattern):
+            for k, p in zip(key, pattern):
+                if p is None or k == p:
+                    continue
+                else:
+                    return False
+            else:
+                return True
+
         moves = set()
         for move in self.moves:
             for inv_move in move.shipment.inventory_moves:
                 if inv_move.product.id == self.product.id:
                     moves.add(inv_move)
+        to_write = []
+        to_assign = []
         for move in moves:
             if move.state != 'draft':
                 continue
-            location_qties_converted = {}
-            for location_id, quantity in location_quantities.items():
-                location_qties_converted[location_id] = (
-                    Uom.compute_qty(move.product.default_uom,
-                        quantity, move.uom, round=False))
-            to_pick = move.pick_product(location_qties_converted)
+            qties_converted = []
+            for key, quantity in quantities.items():
+                move_key = get_key(move, key[0])
+                if match(key, move_key):
+                    qty = Uom.compute_qty(
+                        move.product.default_uom, quantity, move.uom,
+                        round=False)
+                    qties_converted.append((key, qty))
+            to_pick = move.pick_product(qties_converted)
 
             picked_qties = sum(qty for _, qty in to_pick)
             if picked_qties < move.quantity:
@@ -205,18 +236,22 @@ class Line(metaclass=PoolMeta):
                         })
             else:
                 first = True
-            for from_location, qty in to_pick:
-                values = {
-                    'from_location': from_location.id,
-                    'quantity': qty,
-                    }
+            for key, qty in to_pick:
+                values = dict(get_values(key, 'from_location'))
+                values['quantity'] = move.uom.round(qty)
                 if first:
-                    Move.write([move], values)
-                    Move.assign([move])
+                    to_write.extend([[move], values])
+                    to_assign.append(move)
+                    first = False
                 else:
-                    Move.assign(Move.copy([move], default=values))
+                    with Transaction().set_context(_stock_move_split=True):
+                        to_assign.extend(Move.copy([move], default=values))
 
                 qty_default_uom = Uom.compute_qty(move.uom, qty,
                     move.product.default_uom, round=False)
 
-                location_quantities[from_location] -= qty_default_uom
+                quantities[key] -= qty_default_uom
+        if to_write:
+            Move.write(*to_write)
+        if to_assign:
+            Move.assign(to_assign)
