@@ -31,11 +31,12 @@ function eval_pyson(value){
             var container = new Sao.View.Form.Container(
                 Number(node.getAttribute('col') || 4));
             this.view.containers.push(container);
-            this.view.el.append(container.el);
             this.parse_child(node, container);
             if (this._containers.length > 0) {
                 throw 'AssertionError';
             }
+            // Append after parsing child to minimize browser reflow
+            this.view.el.append(container.el);
         },
         parse_child: function(node, container) {
             if (container) {
