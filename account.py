@@ -129,11 +129,12 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'posted'),
                 ('draft', 'cancelled'),
+                ('posted', 'cancelled'),
                 ('cancelled', 'draft'),
                 ))
         cls._buttons.update({
                 'cancel': {
-                    'invisible': Eval('state') != 'draft',
+                    'invisible': Eval('state') == 'cancelled',
                     'depends': ['state'],
                     },
                 'draft': {
@@ -179,7 +180,14 @@ class LandedCost(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, landed_costs):
-        pass
+        for landed_cost in landed_costs:
+            if landed_cost.state == 'posted':
+                getattr(landed_cost, 'unallocate_cost_by_%s' %
+                    landed_cost.allocation_method)()
+        cls.write(landed_costs, {
+                'posted_date': None,
+                'state': 'cancelled',
+                })
 
     @classmethod
     @ModelView.button
@@ -203,6 +211,9 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
     def allocate_cost_by_value(self):
         self._allocate_cost(self._get_value_factors())
+
+    def unallocate_cost_by_value(self):
+        self._allocate_cost(self._get_value_factors(), sign=-1)
 
     def _get_value_factors(self):
         "Return the factor for each move based on value"
@@ -232,11 +243,12 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                 factors[move.id] = quantity * unit_prices[move.id] / sum_value
         return factors
 
-    def _allocate_cost(self, factors):
+    def _allocate_cost(self, factors, sign=1):
         "Allocate cost on moves using factors"
         pool = Pool()
         Move = pool.get('stock.move')
         Currency = pool.get('currency.currency')
+        assert sign in {1, -1}
 
         cost = self.cost
         currency = self.company.currency
@@ -278,8 +290,8 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                 unit_landed_cost, rounding=ROUND_HALF_EVEN)
             if move.unit_landed_cost is None:
                 move.unit_landed_cost = 0
-            move.unit_price += unit_landed_cost
-            move.unit_landed_cost += unit_landed_cost
+            move.unit_price += unit_landed_cost * sign
+            move.unit_landed_cost += unit_landed_cost * sign
         Move.save(moves)
 
     @classmethod

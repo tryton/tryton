@@ -155,6 +155,8 @@ Add landed cost::
     >>> landed_cost.click('post')
     >>> landed_cost.state
     'posted'
+    >>> bool(landed_cost.posted_date)
+    True
 
 Check move unit price is 101::
 
@@ -168,3 +170,14 @@ Landed cost is cleared when duplicated invoice::
     >>> landed_cost.reload()
     >>> len(landed_cost.invoice_lines)
     1
+
+Cancel landed cost reset unit price::
+
+    >>> landed_cost.click('cancel')
+    >>> landed_cost.state
+    'cancelled'
+    >>> landed_cost.posted_date
+
+    >>> move.reload()
+    >>> move.unit_price
+    Decimal('100.0000')

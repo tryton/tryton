@@ -127,7 +127,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button" id="landed_cost_post_button">
             <field name="name">post</field>
             <field name="string">Post</field>
-            <field name="confirm">Are you sure you want to post the landed cost?</field>
+            <field name="confirm" eval="None"/>
             <field name="model"
                 search="[('model', '=', 'account.landed_cost')]"/>
         </record>
