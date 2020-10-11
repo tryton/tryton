@@ -31,7 +31,7 @@ this repository contains the full copyright notices and license terms. -->
 
     <label name="lost_found_location"/>
     <field name="lost_found_location"/>
-    <newline/>
+    <field name="waste_locations" colspan="4"/>
 
     <field name="childs" colspan="4"/>
 </form>

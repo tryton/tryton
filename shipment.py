@@ -157,9 +157,13 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             domain=[
                 ('from_location', '=', Eval('warehouse_input')),
                 If(~Eval('state').in_(['done', 'cancelled']),
-                    ('to_location', 'child_of',
-                        [Eval('warehouse_storage', -1)], 'parent'),
-                    (),),
+                    ['OR',
+                        ('to_location', 'child_of',
+                            [Eval('warehouse_storage', -1)], 'parent'),
+                        ('to_location.waste_warehouses', '=',
+                            Eval('warehouse')),
+                        ],
+                    [],),
                 ('company', '=', Eval('company')),
                 ],
             states={
@@ -1484,9 +1488,13 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             domain=[
                 ('from_location', '=', Eval('warehouse_input')),
                 If(Eval('state').in_(['received']),
-                    ('to_location', 'child_of',
-                        [Eval('warehouse_storage', -1)], 'parent'),
-                    ()),
+                    ['OR',
+                        ('to_location', 'child_of',
+                            [Eval('warehouse_storage', -1)], 'parent'),
+                        ('to_location.waste_warehouses', '=',
+                            Eval('warehouse')),
+                        ],
+                    []),
                 ('company', '=', Eval('company')),
                 ],
             states={

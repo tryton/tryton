@@ -21,6 +21,7 @@ __all__ = ['StockMixin', 'register']
 def register():
     Pool.register(
         location.Location,
+        location.WarehouseWasteLocation,
         location.Party,
         location.PartyLocation,
         location.ProductsByLocationsContext,

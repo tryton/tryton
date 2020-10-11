@@ -19,6 +19,18 @@ from trytond.tools.multivalue import migrate_property
 from .exceptions import LocationValidationError
 
 
+class WarehouseWasteLocation(ModelSQL):
+    "Warehouse Waste Location"
+    __name__ = 'stock.location.waste'
+
+    warehouse = fields.Many2One(
+        'stock.location', "Warehouse", required=True, ondelete='CASCADE',
+        domain=[('type', '=', 'warehouse')])
+    location = fields.Many2One(
+        'stock.location', "Waste Location", required=True, ondelete='CASCADE',
+        domain=[('type', '=', 'lost_found')])
+
+
 class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
     "Stock Location"
     __name__ = 'stock.location'
@@ -124,6 +136,26 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         depends=['type', 'active'],
         help="Used, by inventories, when correcting stock levels "
         "in the warehouse.")
+    waste_locations = fields.Many2Many(
+        'stock.location.waste', 'warehouse', 'location', "Waste Locations",
+        states={
+            'invisible': Eval('type') != 'warehouse',
+            },
+        domain=[
+            ('type', '=', 'lost_found'),
+            ],
+        depends=['type'],
+        help="The locations used for waste products from the warehouse.")
+    waste_warehouses = fields.Many2Many(
+        'stock.location.waste', 'location', 'warehouse', "Waste Warehouses",
+        states={
+            'invisible': Eval('type') != 'lost_found',
+            },
+        domain=[
+            ('type', '=', 'warehouse'),
+            ],
+        depends=['type'],
+        help="The warehouses that use the location for waste products.")
     quantity = fields.Function(
         fields.Float('Quantity',
         help="The amount of stock in the location."),
