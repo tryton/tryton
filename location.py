@@ -333,6 +333,20 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ]
 
     @classmethod
+    def _get_quantity_grouping(cls):
+        context = Transaction().context
+        grouping, grouping_filter, key = (), (), []
+        if context.get('product') is not None:
+            grouping = ('product',)
+            grouping_filter = ([context['product']],)
+            key = (context['product'],)
+        elif context.get('product_template') is not None:
+            grouping = ('product.template',)
+            grouping_filter = ([context['product_template']],)
+            key = (context['product_template'],)
+        return grouping, grouping_filter, key
+
+    @classmethod
     def get_quantity(cls, locations, name):
         pool = Pool()
         Product = pool.get('product.product')
@@ -342,9 +356,6 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         def valid_context(name):
             return (trans_context.get(name) is not None
                 and isinstance(trans_context[name], int))
-
-        if not any(map(valid_context, ['product', 'product_template'])):
-            return {l.id: None for l in locations}
 
         context = {}
         if (name == 'quantity'
@@ -357,14 +368,10 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             if not trans_context.get('stock_date_end'):
                 context['stock_date_end'] = datetime.date.max
 
-        if trans_context.get('product') is not None:
-            grouping = ('product',)
-            grouping_filter = ([trans_context['product']],)
-            key = trans_context['product']
-        else:
-            grouping = ('product.template',)
-            grouping_filter = ([trans_context['product_template']],)
-            key = trans_context['product_template']
+        grouping, grouping_filter, key = cls._get_quantity_grouping()
+        if not grouping:
+            return {loc.id: None for loc in locations}
+
         pbl = {}
         for sub_locations in grouped_slice(locations):
             location_ids = [l.id for l in sub_locations]
@@ -375,7 +382,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
                         grouping_filter=grouping_filter,
                         with_childs=trans_context.get('with_childs', True)))
 
-        return dict((loc.id, pbl.get((loc.id, key), 0)) for loc in locations)
+        return dict((loc.id, pbl.get((loc.id,) + key, 0)) for loc in locations)
 
     @classmethod
     def search_quantity(cls, name, domain):
