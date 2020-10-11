@@ -1964,10 +1964,15 @@
                         Sao.common.moment_format('%X'));
                 } else if (val.isDate) {
                     val = val.format(Sao.common.date_format());
+                } else if (val.isTimeDelta) {
+                    val = Sao.common.timedelta.format(
+                        val, {'s': 1, 'm': 60, 'h': 60 * 60});
                 } else if (!isNaN(Number(val))) {
                     val = val.toLocaleString(
                         Sao.i18n.BC47(Sao.i18n.getlang()));
                 }
+            } else if (val.isTimeDelta) {
+                val = val.asSeconds();
             } else if (typeof(val) == 'boolean') {
                 val += 0;
             }
