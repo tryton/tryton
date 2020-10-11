@@ -481,12 +481,15 @@ class ScreenContainer(object):
     def switch_page_after(self, notebook, page, page_num):
         self.do_search()
         notebook.grab_focus()
-        self.screen.count_tab_domain()
+        self.screen.count_tab_domain(True)
+
+    def get_tab_index(self):
+        if not self.notebook:
+            return -1
+        return self.notebook.get_current_page()
 
     def get_tab_domain(self):
-        if not self.notebook:
-            return []
-        idx = self.notebook.get_current_page()
+        idx = self.get_tab_index()
         if idx < 0:
             return []
         return self.tab_domain[idx][1]

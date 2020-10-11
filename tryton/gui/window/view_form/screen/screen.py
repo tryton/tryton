@@ -358,7 +358,7 @@ class Screen(SignalEvent):
                 domain = ['AND', domain, tab_domain]
         return domain
 
-    def count_tab_domain(self):
+    def count_tab_domain(self, current=False):
         def set_tab_counter(count, idx):
             try:
                 count = count()
@@ -367,9 +367,10 @@ class Screen(SignalEvent):
             self.screen_container.set_tab_counter(count, idx)
         screen_domain = self.search_domain(
             self.screen_container.get_text(), with_tab=False)
+        index = self.screen_container.get_tab_index()
         for idx, (name, domain, count) in enumerate(
                 self.screen_container.tab_domain):
-            if not count:
+            if not count or (current and idx != index):
                 continue
             domain = ['AND', domain, screen_domain]
             set_tab_counter(lambda: None, idx)

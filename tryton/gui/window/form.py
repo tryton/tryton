@@ -317,7 +317,7 @@ class Form(SignalEvent, TabContent):
                     _('Records not removed.'), Gtk.MessageType.ERROR)
             else:
                 self.message_info(_('Records removed.'), Gtk.MessageType.INFO)
-                self.screen.count_tab_domain()
+                self.screen.count_tab_domain(True)
 
     def sig_import(self, widget=None):
         WinImport(self.title.get_text(), self.model, self.screen.context)
@@ -375,7 +375,7 @@ class Form(SignalEvent, TabContent):
         if self.screen.copy():
             self.message_info(_('Working now on the duplicated record(s).'),
                 Gtk.MessageType.INFO)
-            self.screen.count_tab_domain()
+            self.screen.count_tab_domain(True)
 
     def sig_save(self, widget=None):
         if widget:
@@ -387,7 +387,7 @@ class Form(SignalEvent, TabContent):
             return
         if self.screen.save_current():
             self.message_info(_('Record saved.'), Gtk.MessageType.INFO)
-            self.screen.count_tab_domain()
+            self.screen.count_tab_domain(True)
             return True
         else:
             self.message_info(
