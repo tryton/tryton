@@ -558,6 +558,7 @@
         display: function(selected, expanded) {
             set_treeview_height(this.treeview);
 
+            var tbody = this.tbody;
             var current_record = this.record;
             if (jQuery.isEmptyObject(selected)) {
                 selected = this.get_selected_paths();
@@ -740,13 +741,47 @@
             }
 
             this.update_arrow();
-            return this.redraw(selected, expanded).done(
+            return this.redraw(selected, expanded).then(function() {
+                var tbody = this.table.children('tbody');
+                if (!tbody.length) {
+                    this.table.append(this.tbody);
+                } else if (tbody !== this.tbody) {
+                    tbody.replaceWith(this.tbody);
+                }
+                this.tbody.append(this.rows.filter(function(row) {
+                    return !row.el.parent().length;
+                }).map(function(row) {
+                    return row.el;
+                }));
+                if (this.display_size < this.group.length) {
+                    var more_row = jQuery('<tr/>', {
+                        'class': 'more-row',
+                    });
+                    var more_cell = jQuery('<td/>');
+                    var more_button = jQuery('<button/>', {
+                        'class': 'btn btn-default btn-block',
+                        'type': 'button'
+                    }).text(Sao.i18n.gettext('More')
+                    ).click(function() {
+                        this.display_size += Sao.config.display_size;
+                        this.display();
+                    }.bind(this));
+                    more_cell.append(more_button);
+                    more_row.append(more_cell);
+                    this.tbody.append(more_row);
+                    if (moreObserver) {
+                        moreObserver.observe(more_button[0]);
+                    }
+                }
+            }.bind(this)).done(
                 Sao.common.debounce(this.update_sum.bind(this), 250));
         },
         construct: function(extend) {
-            var tbody = this.tbody;
             if (!extend) {
                 this.rows = [];
+                // The new tbody is added to the DOM
+                // after the rows have been rendered
+                // to minimize browser reflow
                 this.tbody = jQuery('<tbody/>');
                 if (this.draggable) {
                     this._add_drag_n_drop();
@@ -755,7 +790,8 @@
             } else {
                 this.tbody.find('tr.more-row').remove();
             }
-            var start = this.rows.length;
+            // The rows are added to tbody after being rendered
+            // to minimize browser reflow
             var add_row = function(record, pos, group) {
                 var RowBuilder;
                 if (this.editable) {
@@ -763,36 +799,10 @@
                 } else {
                     RowBuilder = Sao.View.Tree.Row;
                 }
-                var tree_row = new RowBuilder(this, record, this.rows.length);
-                this.rows.push(tree_row);
-                tree_row.construct();
+                this.rows.push(new RowBuilder(this, record, this.rows.length));
             };
-            this.group.slice(start, this.display_size).forEach(
+            this.group.slice(this.rows.length, this.display_size).forEach(
                     add_row.bind(this));
-            if (!extend) {
-                tbody.replaceWith(this.tbody);
-            }
-
-            if (this.display_size < this.group.length) {
-                var more_row = jQuery('<tr/>', {
-                    'class': 'more-row',
-                });
-                var more_cell = jQuery('<td/>');
-                var more_button = jQuery('<button/>', {
-                    'class': 'btn btn-default btn-block',
-                    'type': 'button'
-                }).text(Sao.i18n.gettext('More')
-                    ).click(function() {
-                    this.display_size += Sao.config.display_size;
-                    this.display();
-                }.bind(this));
-                more_cell.append(more_button);
-                more_row.append(more_cell);
-                this.tbody.append(more_row);
-                if (moreObserver) {
-                    moreObserver.observe(more_button[0]);
-                }
-            }
         },
         redraw: function(selected, expanded) {
             return redraw_async(this.rows, selected, expanded);
@@ -1176,6 +1186,7 @@
             this._drawed_record = null;
             this.el = jQuery('<tr/>');
             this.el.on('click', this.select_row.bind(this));
+            this._construct();
         },
         get group_position() {
             if (this._group_position === null) {
@@ -1206,26 +1217,14 @@
         is_expanded: function() {
             return this.tree.expanded.has(this);
         },
-        get_last_child: function() {
-            if (!this.children_field || !this.is_expanded() ||
-                    jQuery.isEmptyObject(this.rows)) {
-                return this;
-            }
-            return this.rows[this.rows.length - 1].get_last_child();
-        },
         get_id_path: function() {
             if (!this.parent_) {
                 return [this.record.id];
             }
             return this.parent_.get_id_path().concat([this.record.id]);
         },
-        construct: function() {
-            var el_node = this.el[0];
-            while (el_node.firstChild) {
-                el_node.removeChild(el_node.firstChild);
-            }
-
-            var td, drag_img;
+        _construct: function() {
+            var td;
             this.tree.el.uniqueId();
             if (this.tree.draggable) {
                 td = jQuery('<td/>', {
@@ -1320,12 +1319,6 @@
                 }
 
                 this.el.append(td);
-            }
-            if (this.parent_) {
-                var last_child = this.parent_.get_last_child();
-                last_child.el.after(this.el);
-            } else {
-                this.tree.tbody.append(this.el);
             }
         },
         _get_column_td: function(column_index, row) {
@@ -1501,13 +1494,19 @@
                     var children = this.record.field_get_client(
                         this.children_field);
                     children.forEach(function(record, pos, group) {
-                        var tree_row = new this.Class(
-                            this.tree, record, pos, this);
-                        tree_row.construct(selected, expanded);
-                        this.rows.push(tree_row);
+                        // The rows are added to the tbody after being rendered
+                        // to minimize browser reflow
+                        this.rows.push(new this.Class(
+                            this.tree, record, pos, this));
                     }.bind(this));
                 }
-                redraw_async(this.rows, selected, expanded);
+                redraw_async(this.rows, selected, expanded).then(function() {
+                    this.el.after(this.rows.filter(function(row) {
+                        return !row.el.parent().length;
+                    }).map(function(row) {
+                        return row.el;
+                    }));
+                }.bind(this));
             }.bind(this));
         },
         switch_row: function() {
