@@ -15,6 +15,8 @@ def register():
         account.ConfigurationLandedCostSequence,
         account.LandedCost,
         account.LandedCost_Shipment,
+        account.LandedCost_ProductCategory,
+        account.LandedCost_Product,
         account.InvoiceLine,
         stock.Move,
         module='account_stock_landed_cost', type_='model')

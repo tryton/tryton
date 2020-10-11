@@ -12,6 +12,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="company"/>
     <field name="invoice_lines" colspan="4"/>
     <field name="shipments" colspan="4"/>
+
+    <field name="categories" colspan="2"/>
+    <field name="products" colspan="2"/>
+
     <label name="state"/>
     <field name="state"/>
     <group col="-1" colspan="2" id="buttons">

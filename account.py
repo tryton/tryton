@@ -3,7 +3,8 @@
 from decimal import Decimal, ROUND_DOWN, ROUND_HALF_EVEN
 from operator import itemgetter
 
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.i18n import gettext
+from trytond.model import ModelSQL, ModelView, Workflow, MatchMixin, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 from trytond.transaction import Transaction
@@ -11,6 +12,15 @@ from trytond import backend
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import round_price
+
+from .exceptions import NoMoveWarning, FilterUnusedWarning
+
+
+def _parents(records):
+    for record in records:
+        while record:
+            yield record
+            record = record.parent
 
 
 class Configuration(metaclass=PoolMeta):
@@ -69,7 +79,7 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
             return None
 
 
-class LandedCost(Workflow, ModelSQL, ModelView):
+class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     'Landed Cost'
     __name__ = 'account.landed_cost'
     _rec_name = 'number'
@@ -111,6 +121,24 @@ class LandedCost(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
+
+    categories = fields.Many2Many(
+        'account.landed_cost-product.category', 'landed_cost', 'category',
+        "Categories",
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'],
+        help="Apply only to products of these categories.")
+    products = fields.Many2Many(
+        'account.landed_cost-product.product', 'landed_cost', 'product',
+        "Products",
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'],
+        help="Apply only to these products.")
+
     posted_date = fields.Date('Posted Date', readonly=True)
     state = fields.Selection([
             ('draft', 'Draft'),
@@ -209,6 +237,57 @@ class LandedCost(Workflow, ModelSQL, ModelView):
                     line.invoice.currency, line.amount, currency, round=False)
         return cost
 
+    def stock_moves(self):
+        moves = []
+        for shipment in self.shipments:
+            for move in shipment.incoming_moves:
+                if move.state == 'cancelled':
+                    continue
+                if self._stock_move_filter(move):
+                    moves.append(move)
+        return moves
+
+    def _stock_move_filter(self, move):
+        if not self.categories and not self.products:
+            return True
+        result = False
+        if self.categories:
+            result |= bool(
+                set(self.categories)
+                & set(_parents(move.product.categories_all)))
+        if self.products:
+            result |= bool(move.product in self.products)
+        return result
+
+    def _stock_move_filter_unused(self, moves):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+
+        categories = {
+            c for m in moves for c in _parents(m.product.categories_all)}
+        for category in self.categories:
+            if category not in categories:
+                key = '%s - %s' % (self, category)
+                if Warning.check(key):
+                    raise FilterUnusedWarning(
+                        key,
+                        gettext('account_stock_landed_cost'
+                            '.msg_landed_cost_unused_category',
+                            landed_cost=self.rec_name,
+                            category=category.rec_name))
+
+        products = {m.product for m in moves}
+        for product in self.products:
+            if product not in products:
+                key = '%s - %s' % (self, product)
+                if Warning.check(key):
+                    raise FilterUnusedWarning(
+                        key,
+                        gettext('account_stock_landed_cost'
+                            '.msg_landed_cost_unused_product',
+                            landed_cost=self.rec_name,
+                            product=product.rec_name))
+
     def allocate_cost_by_value(self):
         self._allocate_cost(self._get_value_factors())
 
@@ -221,8 +300,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
         Currency = pool.get('currency.currency')
 
         currency = self.company.currency
-        moves = [m for s in self.shipments for m in s.incoming_moves
-            if m.state != 'cancelled']
+        moves = self.stock_moves()
 
         sum_value = 0
         unit_prices = {}
@@ -252,8 +330,7 @@ class LandedCost(Workflow, ModelSQL, ModelView):
 
         cost = self.cost
         currency = self.company.currency
-        moves = [m for s in self.shipments for m in s.incoming_moves
-            if m.state != 'cancelled' and m.quantity]
+        moves = [m for m in self.stock_moves() if m.quantity]
 
         costs = []
         digit = Move.unit_price.digits[1]
@@ -300,8 +377,19 @@ class LandedCost(Workflow, ModelSQL, ModelView):
     def post(cls, landed_costs):
         pool = Pool()
         Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
 
         for landed_cost in landed_costs:
+            stock_moves = landed_cost.stock_moves()
+            if not stock_moves:
+                key = '%s post no move' % landed_cost
+                if Warning.check(key):
+                    raise NoMoveWarning(
+                        key,
+                        gettext('account_stock_landed_cost'
+                            '.msg_landed_cost_post_no_stock_move',
+                            landed_cost=landed_cost.rec_name))
+            landed_cost._stock_move_filter_unused(stock_moves)
             getattr(landed_cost, 'allocate_cost_by_%s' %
                 landed_cost.allocation_method)()
         cls.write(landed_costs, {
@@ -330,6 +418,24 @@ class LandedCost_Shipment(ModelSQL):
         required=True, select=True)
     shipment = fields.Many2One('stock.shipment.in', 'Shipment',
         required=True)
+
+
+class LandedCost_ProductCategory(ModelSQL):
+    "Landed Cost - Product Category"
+    __name__ = 'account.landed_cost-product.category'
+    landed_cost = fields.Many2One(
+        'account.landed_cost', 'Landed Cost', required=True, select=True)
+    category = fields.Many2One(
+        'product.category', "Category", required=True)
+
+
+class LandedCost_Product(ModelSQL):
+    "Landed Cost - Product"
+    __name__ = 'account.landed_cost-product.product'
+    landed_cost = fields.Many2One(
+        'account.landed_cost', "Landed Cost", required=True, select=True)
+    product = fields.Many2One(
+        'product.product', "Product", required=True)
 
 
 class InvoiceLine(metaclass=PoolMeta):
