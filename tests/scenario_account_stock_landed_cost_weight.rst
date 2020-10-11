@@ -175,3 +175,13 @@ Check move unit price is 101::
 
     >>> sorted([m.unit_price for m in shipment.incoming_moves])
     [Decimal('51.0000'), Decimal('102.0000')]
+
+Cancel landed cost reset unit price::
+
+    >>> landed_cost.click('cancel')
+    >>> landed_cost.state
+    'cancelled'
+
+    >>> shipment.reload()
+    >>> sorted([m.unit_price for m in shipment.incoming_moves])
+    [Decimal('50.0000'), Decimal('100.0000')]

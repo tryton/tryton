@@ -16,6 +16,9 @@ class LandedCost(metaclass=PoolMeta):
     def allocate_cost_by_weight(self):
         self._allocate_cost(self._get_weight_factors())
 
+    def unallocate_cost_by_weight(self):
+        self._allocate_cost(self._get_weight_factors(), sign=-1)
+
     def _get_weight_factors(self):
         "Return the factor for each move based on weight"
         moves = [m for s in self.shipments for m in s.incoming_moves
