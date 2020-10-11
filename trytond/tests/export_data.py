@@ -22,6 +22,7 @@ class ExportData(ModelSQL):
     text = fields.Text('Text')
     date = fields.Date('Date')
     datetime = fields.DateTime('DateTime')
+    timedelta = fields.TimeDelta('TimeDelta')
     selection = fields.Selection([
             (None, ''),
             ('select1', 'Select 1'),

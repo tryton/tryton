@@ -174,7 +174,14 @@ class TimeDelta(Field):
 
     def sql_format(self, value):
         if isinstance(value, (int, float)):
-            raise TypeError("TimeDelta requires a timedelta")
+            value = datetime.timedelta(seconds=value)
+        elif isinstance(value, str):
+            if not value.find(':'):
+                raise ValueError(
+                    "TimeDelta requires a string '%H:%M:%S.%f' or '%H:%M'")
+            hours, minutes, seconds = (value.split(":") + ['00'])[:3]
+            value = datetime.timedelta(
+                hours=int(hours), minutes=int(minutes), seconds=float(seconds))
         return super().sql_format(value)
 
     @classmethod

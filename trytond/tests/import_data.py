@@ -71,6 +71,12 @@ class ImportDataDateTime(ModelSQL):
     datetime = fields.DateTime('DateTime')
 
 
+class ImportDataTimeDelta(ModelSQL):
+    "Import Data TimeDelta"
+    __name__ = 'test.import_data.timedelta'
+    timedelta = fields.TimeDelta('TimeDelta')
+
+
 class ImportDataSelection(ModelSQL):
     "Import Data Selection"
     __name__ = 'test.import_data.selection'
@@ -163,6 +169,7 @@ def register(module):
         ImportDataText,
         ImportDataDate,
         ImportDataDateTime,
+        ImportDataTimeDelta,
         ImportDataSelection,
         ImportDataMany2OneTarget,
         ImportDataMany2One,

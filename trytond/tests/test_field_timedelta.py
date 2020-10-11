@@ -53,11 +53,37 @@ class FieldTimeDeltaTestCase(unittest.TestCase):
         self.assertEqual(timedelta.timedelta, default_timedelta)
 
     @with_transaction()
-    def test_create_non_timedelta(self):
-        "Test create timedelta with non timedelta"
+    def test_create_string(self):
+        "Test create timedelta with timedelta string"
         TimeDelta = Pool().get('test.timedelta')
 
-        with self.assertRaises(TypeError):
+        timedelta, = TimeDelta.create([{
+                    'timedelta': '1:20:30.5',
+                    }])
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(hours=1, minutes=20, seconds=30.5))
+
+    @with_transaction()
+    def test_create_string_simplet(self):
+        "Test create timedelta with simple timedelta string"
+        TimeDelta = Pool().get('test.timedelta')
+
+        timedelta, = TimeDelta.create([{
+                    'timedelta': '1:20',
+                    }])
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(hours=1, minutes=20))
+
+    @with_transaction()
+    def test_create_invalid_string(self):
+        "Test create timedelta with invalid timedelta string"
+        TimeDelta = Pool().get('test.timedelta')
+
+        with self.assertRaises(ValueError):
             TimeDelta.create([{
                         'timedelta': 'non timedelta',
                         }])
@@ -67,10 +93,22 @@ class FieldTimeDeltaTestCase(unittest.TestCase):
         "Test create timedelta with integer"
         TimeDelta = Pool().get('test.timedelta')
 
-        with self.assertRaises(TypeError):
-            TimeDelta.create([{
-                        'timedelta': 42,
-                        }])
+        timedelta, = TimeDelta.create([{
+                    'timedelta': 42,
+                    }])
+
+        self.assertEqual(timedelta.timedelta, datetime.timedelta(seconds=42))
+
+    @with_transaction()
+    def test_create_float(self):
+        "Test create timedelta with float"
+        TimeDelta = Pool().get('test.timedelta')
+
+        timedelta, = TimeDelta.create([{
+                    'timedelta': 42.5,
+                    }])
+
+        self.assertEqual(timedelta.timedelta, datetime.timedelta(seconds=42.5))
 
     @with_transaction()
     def test_create_required_with_value(self):
@@ -362,30 +400,81 @@ class FieldTimeDeltaTestCase(unittest.TestCase):
         self.assertEqual(timedelta.timedelta, minute)
 
     @with_transaction()
-    def test_write_non_timedelta(self):
-        "Test write timedelta with non timedelta"
+    def test_write_string(self):
+        "Test write timedelta with timedelta string"
         TimeDelta = Pool().get('test.timedelta')
         timedelta, = TimeDelta.create([{
                     'timedelta': hour,
                     }])
 
-        with self.assertRaises(TypeError):
+        TimeDelta.write([timedelta], {
+                'timedelta': '1:20:30.5',
+                })
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(hours=1, minutes=20, seconds=30.5))
+
+    @with_transaction()
+    def test_write_string_simple(self):
+        "Test write timedelta with simple timedelta string"
+        TimeDelta = Pool().get('test.timedelta')
+        timedelta, = TimeDelta.create([{
+                    'timedelta': hour,
+                    }])
+
+        TimeDelta.write([timedelta], {
+                'timedelta': '1:20',
+                })
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(hours=1, minutes=20))
+
+    @with_transaction()
+    def test_write_invalid_string(self):
+        "Test write timedelta with invalid timedelta string"
+        TimeDelta = Pool().get('test.timedelta')
+        timedelta, = TimeDelta.create([{
+                    'timedelta': hour,
+                    }])
+
+        with self.assertRaises(ValueError):
             TimeDelta.write([timedelta], {
                     'timedelta': 'non timedelta',
                     })
 
     @with_transaction()
-    def test_write_integer(self):
+    def test_write_interger(self):
         "Test write timedelta with integer"
         TimeDelta = Pool().get('test.timedelta')
         timedelta, = TimeDelta.create([{
                     'timedelta': hour,
                     }])
 
-        with self.assertRaises(TypeError):
-            TimeDelta.write([timedelta], {
-                    'timedelta': 42,
-                    })
+        TimeDelta.write([timedelta], {
+                'timedelta': 42,
+                })
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(seconds=42))
+
+    @with_transaction()
+    def test_write_float(self):
+        "Test write timedelta with float"
+        TimeDelta = Pool().get('test.timedelta')
+        timedelta, = TimeDelta.create([{
+                    'timedelta': hour,
+                    }])
+
+        TimeDelta.write([timedelta], {
+                'timedelta': 42.5,
+                })
+
+        self.assertEqual(
+            timedelta.timedelta,
+            datetime.timedelta(seconds=42.5))
 
 
 def suite():

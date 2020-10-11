@@ -891,6 +891,20 @@ class ModelStorage(Model):
                                 value, '%Y-%m-%d %H:%M:%S')
                         else:
                             res = None
+                    elif field_type == 'timedelta':
+                        if isinstance(value, datetime.timedelta):
+                            res = value
+                        elif value:
+                            try:
+                                res = float(value)
+                            except ValueError:
+                                hours, minutes, seconds = (
+                                    value.split(':') + ['00'])[:3]
+                                res = datetime.timedelta(
+                                    hours=int(hours), minutes=int(minutes),
+                                    seconds=float(seconds))
+                        else:
+                            res = None
                     elif field_type == 'many2one':
                         res = get_many2one(this_field_def['relation'], value)
                     elif field_type == 'many2many':

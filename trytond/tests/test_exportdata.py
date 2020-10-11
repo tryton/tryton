@@ -198,6 +198,33 @@ class ExportDataTestCase(unittest.TestCase):
             [[datetime.datetime(2010, 1, 1, 12, 0, 0)], ['']])
 
     @with_transaction()
+    def test_timedelta(self):
+        'Test export_data timedelta'
+        pool = Pool()
+        ExportData = pool.get('test.export_data')
+
+        export1, = ExportData.create([{
+                    'timedelta': datetime.timedelta(
+                        hours=1, minutes=20, seconds=30.45),
+                    }])
+        self.assertEqual(
+            ExportData.export_data([export1], ['timedelta']),
+            [[datetime.timedelta(hours=1, minutes=20, seconds=30.45)]])
+
+        export2, = ExportData.create([{
+                    'timedelta': None,
+                    }])
+        self.assertEqual(
+            ExportData.export_data([export2], ['timedelta']),
+            [['']])
+
+        self.assertEqual(
+            ExportData.export_data([export1, export2], ['timedelta']), [
+                [datetime.timedelta(hours=1, minutes=20, seconds=30.45)],
+                [''],
+                ])
+
+    @with_transaction()
     def test_selection(self):
         'Test export_data selection'
         pool = Pool()

@@ -353,6 +353,37 @@ class ImportDataTestCase(unittest.TestCase):
             ['datetime'], [['foo']])
 
     @with_transaction()
+    def test_timedelta(self):
+        'Test timedelta'
+        pool = Pool()
+        Timedelta = pool.get('test.import_data.timedelta')
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [['00:00']]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [['0:00:00']]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [['01:00:00']]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [['36:00:00']]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [['0:00:00.0001']]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [[datetime.timedelta(
+                weeks=2, days=3, hours=8, minutes=50, seconds=30.45)]]), 1)
+
+        self.assertEqual(Timedelta.import_data(['timedelta'],
+            [[30.45]]), 1)
+
+        self.assertRaises(ValueError, Timedelta.import_data,
+            ['timedelta'], [['foo']])
+
+    @with_transaction()
     def test_selection(self):
         'Test selection'
         pool = Pool()
