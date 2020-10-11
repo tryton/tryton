@@ -9,6 +9,7 @@ from dateutil.relativedelta import relativedelta
 
 from trytond.config import config
 from trytond.pool import Pool
+from trytond.pyson import Eval, If, PYSONEncoder
 from trytond.transaction import Transaction
 from .test_tryton import ModuleTestCase, with_transaction
 
@@ -244,6 +245,44 @@ class IrTestCase(ModuleTestCase):
             values, {
                 'to': ['Administrator <admin@example.com>'],
                 'subject': "User: Administrator",
+                })
+
+    @with_transaction()
+    def test_email_template_get_pyson(self):
+        "Test email template get with pyson"
+        pool = Pool()
+        Template = pool.get('ir.email.template')
+        IrModel = pool.get('ir.model')
+        IrModelField = pool.get('ir.model.field')
+        User = pool.get('res.user')
+
+        admin = User(1)
+        admin.email = 'admin@example.com'
+        admin.save()
+        model, = IrModel.search([('model', '=', 'res.user')])
+        field, = IrModelField.search([
+                ('model', '=', model.id),
+                ('name', '=', 'id'),
+                ])
+
+        template = Template(
+            model=model,
+            name="Test",
+            recipients_pyson=PYSONEncoder().encode(
+                [Eval('self.email')]),
+            recipients_secondary_pyson=PYSONEncoder().encode(
+                If(Eval('self.email'),
+                    ['fallback@example.com'],
+                    [])),
+            )
+        template.save()
+
+        values = template.get(admin)
+
+        self.assertEqual(
+            values, {
+                'to': ['admin@example.com'],
+                'cc': ['fallback@example.com'],
                 })
 
 

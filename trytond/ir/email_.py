@@ -19,10 +19,10 @@ from genshi.template import TextTemplate
 
 from trytond.i18n import gettext
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields, EvalEnvironment
 from trytond.model.exceptions import ValidationError, AccessError
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Bool, PYSONDecoder
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import escape_wildcard
@@ -255,22 +255,55 @@ class EmailTemplate(ModelSQL, ModelView):
         domain=[
             ('model', '=', Eval('model')),
             ],
-        depends=['model'],
+        states={
+            'invisible': Bool(Eval('recipients_pyson')),
+            },
+        depends=['model', 'recipients_pyson'],
         help="The field that contains the recipient(s).")
+    recipients_pyson = fields.Char(
+        "Recipients",
+        states={
+            'invisible': Bool(Eval('recipients')),
+            },
+        depends=['recipients'],
+        help="A PYSON expression that generates a list of recipients"
+        'with the record represented by "self".')
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
         domain=[
             ('model', '=', Eval('model')),
             ],
-        depends=['model'],
+        states={
+            'invisible': Bool(Eval('recipients_secondary_pyson')),
+            },
+        depends=['model', 'recipients_secondary_pyson'],
         help="The field that contains the secondary recipient(s).")
+    recipients_secondary_pyson = fields.Char(
+        "Secondary Recipients",
+        states={
+            'invisible': Bool(Eval('recipients_secondary')),
+            },
+        depends=['recipients_secondary'],
+        help="A PYSON expression that generates a list of secondary recipients"
+        'with the record represented by "self".')
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
             ('model', '=', Eval('model')),
             ],
-        depends=['model'],
+        states={
+            'invisible': Bool(Eval('recipients_hidden_pyson')),
+            },
+        depends=['model', 'recipients_hidden_pyson'],
         help="The field that contains the secondary recipient(s).")
+    recipients_hidden_pyson = fields.Char(
+        "Hidden Recipients",
+        states={
+            'invisible': Bool(Eval('recipients_hidden')),
+            },
+        depends=['recipients_hidden'],
+        help="A PYSON expression that generates a list of hidden recipients"
+        'with the record represented by "self".')
     subject = fields.Char("Subject", translate=True)
     body = fields.Text("Body", translate=True)
     reports = fields.Many2Many(
@@ -316,6 +349,7 @@ class EmailTemplate(ModelSQL, ModelView):
         for template in templates:
             template.check_subject()
             template.check_body()
+            template.check_fields_pyson()
 
     def check_subject(self):
         if not self.subject:
@@ -339,27 +373,57 @@ class EmailTemplate(ModelSQL, ModelView):
                     template=self.rec_name,
                     exception=exception)) from exception
 
+    def check_fields_pyson(self):
+        encoder = PYSONDecoder(noeval=True)
+        for field in [
+                'recipients_pyson',
+                'recipients_secondary_pyson',
+                'recipients_hidden_pyson',
+                ]:
+            value = getattr(self, field)
+            if not value:
+                continue
+            try:
+                pyson = encoder.decode(value)
+            except Exception as exception:
+                raise EmailTemplateError(
+                    gettext('ir.msg_email_template_invalid_field_pyson',
+                        template=self.rec_name,
+                        field=self.__names__(field)['field'],
+                        exception=exception)) from exception
+            if not isinstance(pyson, list) and pyson.types() != {list}:
+                raise EmailTemplateError(
+                    gettext('ir.msg_email_template_invalid_field_pyson_type',
+                        template=self.rec_name,
+                        field=self.__names__(field)['field'],
+                        ))
+
     def get(self, record):
         pool = Pool()
         Model = pool.get(self.model.model)
         record = Model(int(record))
 
         values = {}
-        for field, key in [
+        for attr, key in [
                 ('recipients', 'to'),
                 ('recipients_secondary', 'cc'),
                 ('recipients_hidden', 'bcc'),
                 ]:
-            field = getattr(self, field)
-            if not field:
-                continue
+            field = getattr(self, attr)
             try:
-                if field.name == 'id':
-                    value = record
+                if field:
+                    if field.name == 'id':
+                        value = record
+                    else:
+                        value = getattr(record, field.name, None)
+                    if value:
+                        values[key] = self.get_addresses(value)
                 else:
-                    value = getattr(record, field.name, None)
-                if value:
-                    values[key] = self.get_addresses(value)
+                    value = getattr(self, attr + '_pyson')
+                    if value:
+                        value = self.eval(record, value)
+                        if value:
+                            values[key] = self.get_addresses(value)
             except AccessError:
                 continue
 
@@ -380,6 +444,13 @@ class EmailTemplate(ModelSQL, ModelView):
         if self.reports:
             values['reports'] = [r.id for r in self.reports]
         return values
+
+    def eval(self, record, pyson):
+        'Evaluate the pyson with the record'
+        env = {}
+        env['context'] = Transaction().context
+        env['self'] = EvalEnvironment(record, record.__class__)
+        return PYSONDecoder(env).decode(pyson)
 
     @classmethod
     def _get_default_exclude(cls, record):
@@ -441,7 +512,9 @@ class EmailTemplate(ModelSQL, ModelView):
     def _get_address(cls, record):
         pool = Pool()
         User = pool.get('res.user')
-        if isinstance(record, User) and record.email:
+        if isinstance(record, str):
+            return (None, record)
+        elif isinstance(record, User) and record.email:
             return (record.name, record.email)
 
     @classmethod

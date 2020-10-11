@@ -323,5 +323,11 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_email_template_invalid_body">
             <field name="text">Invalid body in e-mail template "%(template)s" with exception "%(exception)s"</field>
         </record>
+        <record model="ir.message" id="msg_email_template_invalid_field_pyson">
+            <field name="text">Invalid PYSON %(field)s in e-mail template "%(template)s" with exception "%(exception)s".</field>
+        </record>
+        <record model="ir.message" id="msg_email_template_invalid_field_pyson_type">
+            <field name="text">The PYSON %(field)s in e-mail template "%(template)s" must generate a list.</field>
+        </record>
     </data>
 </tryton>
