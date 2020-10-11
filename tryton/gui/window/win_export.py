@@ -390,6 +390,11 @@ class WinExport(WinCSV):
                     val = val.strftime(common.date_format() + ' %X')
                 elif isinstance(val, datetime.date):
                     val = val.strftime(common.date_format())
+                elif isinstance(val, datetime.timedelta):
+                    val = common.timedelta.format(
+                        val, {'s': 1, 'm': 60, 'h': 60 * 60})
+            elif isinstance(val, datetime.timedelta):
+                val = val.total_seconds()
             elif isinstance(val, bool):
                 val = int(val)
             row.append(val)
