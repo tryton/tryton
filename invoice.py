@@ -116,7 +116,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_states, depends=_depends)
+        states=_states,
+        domain=[
+            If(Eval('type') == 'out',
+                ('type', '=', 'revenue'),
+                ('type', '=', 'expense'))
+            ],
+        depends=_depends + ['type'])
     move = fields.Many2One('account.move', 'Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),

@@ -1,3 +1,4 @@
+* Add domain to invoice's journal
 * Add optional taxes date on invoice line
 * Convert Invoice.update_taxes into dualmethod
 * Rename invoice state from cancel to cancelled
