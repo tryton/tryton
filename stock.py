@@ -105,6 +105,52 @@ class LotByLocationContext(ModelView):
         return self.forecast_date
 
 
+class LotByWarehouseContext(LotByLocationContext):
+    "Lot by Warehouse"
+    __name__ = 'stock.lots_by_warehouse.context'
+    warehouse = fields.Many2One(
+        'stock.location', "Warehouse", required=True,
+        domain=[
+            ('type', '=', 'warehouse'),
+            ],
+        )
+    locations = fields.Function(
+        fields.Many2Many('stock.location', None, None, "Locations"),
+        'on_change_with_locations')
+
+    @classmethod
+    def default_warehouse(cls):
+        return Pool().get('stock.location').get_default_warehouse()
+
+    @fields.depends('warehouse')
+    def on_change_with_locations(self, name=None):
+        locations = []
+        if self.warehouse:
+            locations.append(self.warehouse.id)
+        return locations
+
+
+class Location(metaclass=PoolMeta):
+    __name__ = 'stock.location'
+
+    @classmethod
+    def _get_quantity_grouping(cls):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        context = Transaction().context
+        grouping, grouping_filter, key = super()._get_quantity_grouping()
+        if context.get('lot') is not None:
+            try:
+                lot, = Lot.search([('id', '=', context['lot'])])
+            except ValueError:
+                pass
+            else:
+                grouping = ('product', 'lot',)
+                grouping_filter = ([lot.product.id], [lot.id])
+                key = (lot.product.id, lot.id)
+        return grouping, grouping_filter, key
+
+
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     lot = fields.Many2One('stock.lot', 'Lot',
