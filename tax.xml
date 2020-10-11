@@ -2,7 +2,7 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data grouped="1">
+    <data>
         <record model="account.tax.template" id="iva_rep_21">
             <field name="name">IVA 21% (bienes)</field>
             <field name="description">IVA 21%</field>
@@ -87,6 +87,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.052')"/>
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
+            <field name="es_reported_with" ref="iva_rep_21"/>
         </record>
         <record model="account.tax.template" id="iva_rep_re_14">
             <field name="name">Recargo Equivalencia 1.4%</field>
@@ -97,6 +98,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.014')"/>
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
+            <field name="es_reported_with" ref="iva_rep_10"/>
         </record>
         <record model="account.tax.template" id="iva_rep_re_05">
             <field name="name">Recargo Equivalencia 0.5%</field>
@@ -107,6 +109,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.005')"/>
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
+            <field name="es_reported_with" ref="iva_rep_4"/>
         </record>
         <record model="account.tax.template" id="iva_rep_exportaciones">
             <field name="name">IVA Exportaciones (bienes)</field>
@@ -433,8 +436,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="update_unit_price" eval="True"/>
             <field name="sequence" eval="10"/>
         </record>
-    </data>
-    <data grouped="1">
         <record model="account.tax.template" id="iva_sop_intracomunitario_1">
             <field name="name">IVA Intracomunitario. Bienes (1)</field>
             <field name="description">IVA Intracomunitario (1)</field>
@@ -504,8 +505,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
         </record>
-    </data>
-    <data>
         <record model="account.tax.code.template" id="vat_code_iva">
             <field name="name">Impuesto sobre el Valor Añadido - Autoliquidación</field>
             <field name="code">AEAT303</field>
@@ -1864,8 +1863,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
-    </data>
-    <data grouped="1">
         <record model="account.tax.rule.template" id="fp_recargo">
             <field name="name">Recargo de Equivalencia</field>
             <field name="account" ref="pgc_0"/>
@@ -1931,8 +1928,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="account" ref="pgc_0"/>
             <field name="kind">purchase</field>
         </record>
-    </data>
-    <data grouped="1">
         <record model="account.tax.rule.line.template" id="fptt_recargo_4_2">
             <field name="rule" ref="fp_recargo"/>
             <field name="origin_tax" ref="iva_rep_4"/>
