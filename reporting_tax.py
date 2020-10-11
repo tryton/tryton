@@ -8,9 +8,9 @@ from decimal import Decimal
 from operator import attrgetter
 
 from sql import Cast, Null, Literal
-from sql.aggregate import Count, Max, Min, Sum
+from sql.aggregate import Count, Min, Sum
 from sql.conditionals import Case
-from sql.functions import Substring, Position, Extract
+from sql.functions import Substring, Position, Extract, CurrentTimestamp
 from sql.operators import Exists
 
 from trytond.i18n import gettext
@@ -423,22 +423,29 @@ class ESVATList(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         pool = Pool()
+        Company = pool.get('company.company')
         Invoice = pool.get('account.invoice')
         InvoiceTax = pool.get('account.invoice.tax')
+        Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
         Tax = pool.get('account.tax')
         TaxCode = pool.get('account.tax.code')
         TaxCodeLine = pool.get('account.tax.code.line')
         Date = pool.get('ir.date')
         context = Transaction().context
+        company = Company.__table__()
         invoice = Invoice.__table__()
         cancel_invoice = Invoice.__table__()
-        invoice_tax = InvoiceTax.__table__()
+        move = Move.__table__()
+        line = Line.__table__()
+        tax_line = TaxLine.__table__()
         tax = Tax.__table__()
         tax_code = TaxCode.__table__()
         tax_code_line = TaxCodeLine.__table__()
         exclude_invoice_tax = InvoiceTax.__table__()
 
-        amount = invoice_tax.base + invoice_tax.amount
+        amount = tax_line.amount
         month = Extract('MONTH', invoice.invoice_date)
 
         excluded_taxes = (tax_code_line
@@ -459,18 +466,20 @@ class ESVATList(ModelSQL, ModelView):
             # Use exists to exclude the full invoice when it has multiple taxes
             & ~Exists(exclude_invoice_tax.select(
                     exclude_invoice_tax.invoice,
-                    where=((exclude_invoice_tax.invoice == invoice_tax.invoice)
+                    where=((exclude_invoice_tax.invoice == invoice.id)
                         & (exclude_invoice_tax.tax.in_(excluded_taxes))))))
-        return (invoice_tax
-            .join(invoice,
-                condition=invoice_tax.invoice == invoice.id)
-            .join(tax, condition=invoice_tax.tax == tax.id)
+        return (tax_line
+            .join(tax, condition=tax_line.tax == tax.id)
+            .join(line, condition=tax_line.move_line == line.id)
+            .join(move, condition=line.move == move.id)
+            .join(invoice, condition=invoice.move == move.id)
+            .join(company, condition=company.id == invoice.company)
             .select(
-                Max(invoice_tax.id).as_('id'),
+                Min(tax_line.id).as_('id'),
                 Literal(0).as_('create_uid'),
-                Min(invoice_tax.create_date).as_('create_date'),
-                Literal(0).as_('write_uid'),
-                Max(invoice_tax.write_date).as_('write_date'),
+                CurrentTimestamp().as_('create_date'),
+                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
+                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
@@ -487,14 +496,14 @@ class ESVATList(ModelSQL, ModelView):
                 Sum(amount, filter_=(
                         (month > Literal(9)) & (month <= Literal(12)))).as_(
                     'fourth_period_amount'),
-                invoice.currency.as_('currency'),
+                company.currency.as_('currency'),
                 where=where,
                 group_by=[
                     invoice.tax_identifier,
                     invoice.type,
                     invoice.party,
                     invoice.party_tax_identifier,
-                    invoice.currency,
+                    company.currency,
                     tax.es_vat_list_code,
                     ]))
 
@@ -558,15 +567,19 @@ class ECOperationList(ECSalesList):
     @classmethod
     def table_query(cls):
         pool = Pool()
+        Company = pool.get('company.company')
         Invoice = pool.get('account.invoice')
-        InvoiceTax = pool.get('account.invoice.tax')
         Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
         Period = pool.get('account.period')
         Tax = pool.get('account.tax')
         context = Transaction().context
+        company = Company.__table__()
         invoice = Invoice.__table__()
-        invoice_tax = InvoiceTax.__table__()
         move = Move.__table__()
+        line = Line.__table__()
+        tax_line = TaxLine.__table__()
         period = Period.__table__()
         tax = Tax.__table__()
 
@@ -579,32 +592,34 @@ class ECOperationList(ECSalesList):
             where &= (move.date <= context.get('end_date'))
         where &= ((tax.es_ec_purchases_list_code != Null)
             & (tax.es_ec_purchases_list_code != ''))
+        where &= tax_line.type == 'base'
         where &= invoice.type == 'in'
-        purchases = (invoice_tax
-            .join(invoice,
-                condition=invoice_tax.invoice == invoice.id)
-            .join(tax, condition=invoice_tax.tax == tax.id)
-            .join(move, condition=invoice.move == move.id)
+        purchases = (tax_line
+            .join(tax, condition=tax_line.tax == tax.id)
+            .join(line, condition=tax_line.move_line == line.id)
+            .join(move, condition=line.move == move.id)
             .join(period, condition=move.period == period.id)
+            .join(invoice, condition=invoice.move == move.id)
+            .join(company, condition=company.id == invoice.company)
             .select(
-                Max(invoice_tax.id).as_('id'),
+                Min(tax_line.id).as_('id'),
                 Literal(0).as_('create_uid'),
-                Min(invoice_tax.create_date).as_('create_date'),
-                Literal(0).as_('write_uid'),
-                Max(invoice_tax.write_date).as_('write_date'),
+                CurrentTimestamp().as_('create_date'),
+                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
+                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
                 tax.es_ec_purchases_list_code.as_('code'),
-                Sum(invoice_tax.base).as_('amount'),
-                invoice.currency.as_('currency'),
+                Sum(tax_line.amount).as_('amount'),
+                company.currency.as_('currency'),
                 where=where,
                 group_by=[
                     invoice.tax_identifier,
                     invoice.party,
                     invoice.party_tax_identifier,
                     tax.es_ec_purchases_list_code,
-                    invoice.currency,
+                    company.currency,
                     ]))
         return sales | purchases
 
