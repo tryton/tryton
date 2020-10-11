@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from decimal import Decimal
 from itertools import chain
 
@@ -529,7 +530,36 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         for production in productions:
             sum_ = Decimal(0)
             prices = {}
+            cost = production.cost
+
+            input_quantities = defaultdict(Decimal)
+            input_costs = defaultdict(Decimal)
+            for input_ in production.inputs:
+                if input_.cost_price is not None:
+                    cost_price = input_.cost_price
+                else:
+                    cost_price = input_.product.cost_price
+                input_quantities[input_.product] += (
+                    Decimal(str(input_.internal_quantity)))
+                input_costs[input_.product] += (
+                    Decimal(str(input_.internal_quantity)) * cost_price)
+            outputs = []
             for output in production.outputs:
+                product = output.product
+                if input_quantities.get(output.product):
+                    cost_price = (
+                        input_costs[product] / input_quantities[product])
+                    unit_price = round_price(Uom.compute_price(
+                            product.default_uom, cost_price, output.uom))
+                    if output.unit_price != unit_price:
+                        output.unit_price = unit_price
+                        moves.append(output)
+                    cost -= min(
+                        unit_price * Decimal(str(output.quantity)), cost)
+                else:
+                    outputs.append(output)
+
+            for output in outputs:
                 product = output.product
                 with Transaction().set_context(production._list_price_context):
                     list_price = product.list_price_used
@@ -541,7 +571,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
             if not sum_ and production.product:
                 prices.clear()
-                for output in production.outputs:
+                for output in outputs:
                     if output.product == production.product:
                         quantity = Uom.compute_qty(
                             output.uom, output.quantity,
@@ -550,13 +580,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                         prices[output] = quantity
                         sum_ += quantity
 
-            for output in production.outputs:
+            for output in outputs:
                 if sum_:
                     ratio = prices.get(output, 0) / sum_
                 else:
-                    ratio = Decimal(1) / len(production.outputs)
+                    ratio = Decimal(1) / len(outputs)
                 quantity = Decimal(str(output.quantity))
-                unit_price = round_price(production.cost * ratio / quantity)
+                unit_price = round_price(cost * ratio / quantity)
                 if output.unit_price != unit_price:
                     output.unit_price = unit_price
                     moves.append(output)

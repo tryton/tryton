@@ -51,13 +51,13 @@ Create Bill of Material::
     >>> bom = BOM(name='product')
     >>> input = bom.inputs.new()
     >>> input.product = component
-    >>> input.quantity = 2
+    >>> input.quantity = 3
     >>> output = bom.outputs.new()
     >>> output.product = product
     >>> output.quantity = 1
     >>> bom.save()
 
-Make a production::
+Make a production with 2 unused component::
 
     >>> Production = Model.get('production')
     >>> production = Production()
@@ -67,15 +67,20 @@ Make a production::
     >>> production.click('wait')
     >>> production.click('assign_force')
     >>> production.click('run')
+    >>> output = production.outputs.new()
+    >>> output.product = component
+    >>> output.quantity = 2
+    >>> output.unit_price = Decimal(0)
+    >>> output.from_location = production.location
+    >>> output.to_location = production.warehouse.storage_location
     >>> production.click('done')
 
 Check output price::
 
     >>> production.cost
-    Decimal('20.0000')
-    >>> output, = production.outputs
-    >>> output.unit_price
-    Decimal('10.0000')
+    Decimal('30.0000')
+    >>> sorted([o.unit_price for o in production.outputs])
+    [Decimal('5.0000'), Decimal('10.0000')]
 
 
 Change cost of input::
@@ -97,9 +102,9 @@ Launch cron task::
     >>> cron_set_cost.companies.append(Company(company.id))
     >>> cron_set_cost.click('run_once')
 
-    >>> output.reload()
-    >>> output.unit_price
-    Decimal('12.0000')
-    >>> input.reload()
+    >>> production.reload()
+    >>> sorted([o.unit_price for o in production.outputs])
+    [Decimal('6.0000'), Decimal('12.0000')]
+    >>> input, = production.inputs
     >>> bool(input.production_cost_price_updated)
     False

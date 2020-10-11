@@ -1,3 +1,4 @@
+* Keep cost of unused input products
 * Use the shipment assign wizard for production
 * Rename production state from cancel to cancelled
 
