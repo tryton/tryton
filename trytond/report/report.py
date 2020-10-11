@@ -87,16 +87,6 @@ TIMEDELTA_DEFAULT_CONVERTER['M'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 30
 TIMEDELTA_DEFAULT_CONVERTER['Y'] = TIMEDELTA_DEFAULT_CONVERTER['d'] * 365
 
 
-class ReportFactory:
-
-    def __call__(self, records, **kwargs):
-        data = {}
-        data['objects'] = records  # XXX To remove
-        data['records'] = records
-        data.update(kwargs)
-        return data
-
-
 class TranslateFactory:
 
     def __init__(self, report_name, translation):
