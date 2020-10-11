@@ -21,9 +21,7 @@ class LandedCost(metaclass=PoolMeta):
 
     def _get_weight_factors(self):
         "Return the factor for each move based on weight"
-        moves = [m for s in self.shipments for m in s.incoming_moves
-            if m.state != 'cancelled']
-
+        moves = self.stock_moves()
         sum_weight = Decimal(0)
         weights = {}
         for move in moves:
