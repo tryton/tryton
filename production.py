@@ -131,7 +131,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         domain=[
             ('shipment', '=', None),
             ('from_location', '=', Eval('location')),
-            ('to_location', 'child_of', [Eval('warehouse')], 'parent'),
+            ['OR',
+                ('to_location', 'child_of', [Eval('warehouse')], 'parent'),
+                ('to_location.waste_warehouses', '=', Eval('warehouse')),
+                ],
             ('company', '=', Eval('company', -1)),
             ],
         states={
@@ -545,6 +548,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     Decimal(str(input_.internal_quantity)) * cost_price)
             outputs = []
             for output in production.outputs:
+                if output.to_location.type == 'lost_found':
+                    continue
                 product = output.product
                 if input_quantities.get(output.product):
                     cost_price = (
