@@ -1,7 +1,8 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from sql import Literal, Null
-from sql.aggregate import Max, Min, Sum
+from sql.aggregate import Min, Sum
+from sql.functions import CurrentTimestamp
 
 from trytond.model import ModelSQL, ModelView, fields
 from trytond.pool import PoolMeta, Pool
@@ -55,15 +56,19 @@ class ECSalesList(ModelSQL, ModelView):
     @classmethod
     def table_query(cls):
         pool = Pool()
+        Company = pool.get('company.company')
         Invoice = pool.get('account.invoice')
-        InvoiceTax = pool.get('account.invoice.tax')
         Move = pool.get('account.move')
+        Line = pool.get('account.move.line')
+        TaxLine = pool.get('account.tax.line')
         Period = pool.get('account.period')
         Tax = pool.get('account.tax')
         context = Transaction().context
+        company = Company.__table__()
         invoice = Invoice.__table__()
-        invoice_tax = InvoiceTax.__table__()
         move = Move.__table__()
+        line = Line.__table__()
+        tax_line = TaxLine.__table__()
         period = Period.__table__()
         tax = Tax.__table__()
         where = invoice.company == context.get('company')
@@ -77,32 +82,34 @@ class ECSalesList(ModelSQL, ModelView):
             where &= (move.date <= context.get('end_date'))
         where &= ((tax.ec_sales_list_code != Null)
             & (tax.ec_sales_list_code != ''))
+        where &= tax_line.type == 'base'
         where &= invoice.type == 'out'
-        return (invoice_tax
-            .join(invoice,
-                condition=invoice_tax.invoice == invoice.id)
-            .join(tax, condition=invoice_tax.tax == tax.id)
-            .join(move, condition=invoice.move == move.id)
+        return (tax_line
+            .join(tax, condition=tax_line.tax == tax.id)
+            .join(line, condition=tax_line.move_line == line.id)
+            .join(move, condition=line.move == move.id)
             .join(period, condition=move.period == period.id)
+            .join(invoice, condition=invoice.move == move.id)
+            .join(company, condition=company.id == invoice.company)
             .select(
-                Max(invoice_tax.id).as_('id'),
+                Min(tax_line.id).as_('id'),
                 Literal(0).as_('create_uid'),
-                Min(invoice_tax.create_date).as_('create_date'),
-                Literal(0).as_('write_uid'),
-                Max(invoice_tax.write_date).as_('write_date'),
+                CurrentTimestamp().as_('create_date'),
+                cls.write_uid.sql_cast(Literal(Null)).as_('write_uid'),
+                cls.write_date.sql_cast(Literal(Null)).as_('write_date'),
                 invoice.tax_identifier.as_('company_tax_identifier'),
                 invoice.party.as_('party'),
                 invoice.party_tax_identifier.as_('party_tax_identifier'),
                 tax.ec_sales_list_code.as_('code'),
-                Sum(invoice_tax.base).as_('amount'),
-                invoice.currency.as_('currency'),
+                Sum(tax_line.amount).as_('amount'),
+                company.currency.as_('currency'),
                 where=where,
                 group_by=[
                     invoice.tax_identifier,
                     invoice.party,
                     invoice.party_tax_identifier,
                     tax.ec_sales_list_code,
-                    invoice.currency,
+                    company.currency,
                     ]))
 
 
