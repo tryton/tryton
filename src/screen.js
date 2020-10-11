@@ -211,7 +211,7 @@
                     e.preventDefault();
                     jQuery(this).tab('show');
                     self.do_search();
-                    self.screen.count_tab_domain();
+                    self.screen.count_tab_domain(true);
                 });
             } else {
                 this.tab = null;
@@ -342,12 +342,21 @@
             this.but_active.attr('aria-label', tooltip);
             this.but_active.attr('title', tooltip);
         },
+        get_tab_index: function() {
+            if (!this.tab) {
+                return -1;
+            }
+            return this.tab.find('li').index(this.tab.find('li.active'));
+        },
         get_tab_domain: function() {
             if (!this.tab) {
                 return [];
             }
-            var i = this.tab.find('li').index(this.tab.find('li.active'));
-            return this.tab_domain[i][1];
+            var idx = this.get_tab_index();
+            if (idx < 0) {
+                return [];
+            }
+            return this.tab_domain[idx][1];
         },
         set_tab_counter: function(count, idx) {
             if (jQuery.isEmptyObject(this.tab_counter) || !this.tab) {
@@ -1117,11 +1126,15 @@
             }
             return domain;
         },
-        count_tab_domain: function() {
+        count_tab_domain: function(current) {
+            if (current === undefined) {
+                current = false;
+            }
             var screen_domain = this.search_domain(
                 this.screen_container.get_text(), false, false);
+            var index = this.screen_container.get_tab_index();
             this.screen_container.tab_domain.forEach(function(tab_domain, i) {
-                if (tab_domain[2]) {
+                if (tab_domain[2] && (!current || (i == index))) {
                     var domain = ['AND', tab_domain[1], screen_domain];
                     this.screen_container.set_tab_counter(null, i);
                     this.group.model.execute(
