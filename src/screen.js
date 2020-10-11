@@ -2035,6 +2035,10 @@
             store = (store === undefined) ? true : store;
             var i, len, view, widgets, wi, wlen;
             var parent_ = this.group.parent ? this.group.parent.id : null;
+            var clear_cache = function() {
+                Sao.Session.current_session.cache.clear(
+                    'model.ir.ui.view_tree_state.get');
+            };
             for (i = 0, len = this.views.length; i < len; i++) {
                 view = this.views[i];
                 if (view.view_type == 'form') {
@@ -2074,15 +2078,13 @@
                                 this.get_tree_domain(parent_),
                                 view.children_field,
                                 JSON.stringify(paths),
-                                JSON.stringify(selected_paths)], {});
+                                JSON.stringify(selected_paths)], {})
+                            .then(clear_cache);
                         prms.push(prm);
                     }
                 }
             }
-            return jQuery.when.apply(jQuery, prms).then(function() {
-                Sao.Session.current_session.cache.clear(
-                    'model.ir.ui.view_tree_state.get');
-            });
+            return jQuery.when.apply(jQuery, prms);
         },
         get_tree_domain: function(parent_) {
             var domain;
