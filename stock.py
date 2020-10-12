@@ -177,13 +177,13 @@ class PackageMixin(object):
     __slots__ = ()
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
         states={
-            'readonly': Eval('state').in_(['packed', 'done', 'cancelled']),
+            'readonly': Eval('state') != 'picked',
             })
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
             domain=[('parent', '=', None)],
             states={
-                'readonly': Eval('state').in_(['packed', 'done', 'cancelled']),
+                'readonly': Eval('state') != 'picked',
                 }), 'get_root_packages', setter='set_root_packages')
 
     def get_root_packages(self, name):

@@ -80,6 +80,7 @@ Pack shipment::
 
     >>> shipment_out.click('wait')
     >>> shipment_out.click('assign_force')
+    >>> shipment_out.click('pick')
 
 Package products::
 
