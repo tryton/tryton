@@ -366,18 +366,14 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         if not (self.bom and self.product and self.uom):
             return
 
-        if self.warehouse:
-            storage_location = self.warehouse.storage_location
-        else:
-            storage_location = None
-
         factor = self.bom.compute_factor(self.product, self.quantity or 0,
             self.uom)
         inputs = []
         for input_ in self.bom.inputs:
             quantity = input_.compute_quantity(factor)
-            move = self._explode_move_values(storage_location, self.location,
-                self.company, input_, quantity)
+            move = self._explode_move_values(
+                self.picking_location, self.location, self.company,
+                input_, quantity)
             if move:
                 inputs.append(move)
                 quantity = Uom.compute_qty(input_.uom, quantity,
@@ -387,8 +383,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         outputs = []
         for output in self.bom.outputs:
             quantity = output.compute_quantity(factor)
-            move = self._explode_move_values(self.location, storage_location,
-                self.company, output, quantity)
+            move = self._explode_move_values(
+                self.location, self.output_location, self.company, output,
+                quantity)
             if move:
                 move.unit_price = Decimal(0)
                 outputs.append(move)
@@ -475,14 +472,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         to_save = []
         for production in productions:
-            storage_location = production.warehouse.storage_location
             location = production.location
             company = production.company
 
             if not production.bom:
                 if production.product:
                     move = production._move(
-                        location, storage_location, company,
+                        location, production.output_location, company,
                         production.product, production.uom,
                         production.quantity)
                     if move:
@@ -496,8 +492,9 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             for input_ in production.bom.inputs:
                 quantity = input_.compute_quantity(factor)
                 product = input_.product
-                move = production._move(storage_location, location, company,
-                    product, input_.uom, quantity)
+                move = production._move(
+                    production.picking_location, location, company, product,
+                    input_.uom, quantity)
                 if move:
                     move.production_input = production
                     to_save.append(move)
@@ -505,8 +502,8 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             for output in production.bom.outputs:
                 quantity = output.compute_quantity(factor)
                 product = output.product
-                move = production._move(location, storage_location, company,
-                    product, output.uom, quantity)
+                move = production._move(location, production.output_location,
+                    company, product, output.uom, quantity)
                 if move:
                     move.production_output = production
                     move.unit_price = Decimal(0)
@@ -780,3 +777,15 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             production.planned_start_date = date
             production.on_change_planned_start_date()
         cls.save(productions)
+
+    @property
+    def picking_location(self):
+        if self.warehouse:
+            return (self.warehouse.production_picking_location
+                or self.warehouse.storage_location)
+
+    @property
+    def output_location(self):
+        if self.warehouse:
+            return (self.warehouse.production_output_location
+                or self.warehouse.storage_location)

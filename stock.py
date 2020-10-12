@@ -16,6 +16,30 @@ class Location(metaclass=PoolMeta):
             ('type', '=', 'production'),
             ],
         depends=['type'])
+    production_picking_location = fields.Many2One(
+        'stock.location', "Production Picking",
+        states={
+            'invisible': Eval('type') != 'warehouse',
+            },
+        domain=[
+            ('type', '=', 'storage'),
+            ('parent', 'child_of', [Eval('id')]),
+            ],
+        depends=['type', 'id'],
+        help="Where the production components are picked from.\n"
+        "Leave empty to use the warehouse storage location.")
+    production_output_location = fields.Many2One(
+        'stock.location', "Proudction Output",
+        states={
+            'invisible': Eval('type') != 'warehouse',
+            },
+        domain=[
+            ('type', '=', 'storage'),
+            ('parent', 'child_of', [Eval('id')]),
+            ],
+        depends=['type', 'id'],
+        help="Where the produced goods are stored.\n"
+        "Leave empty to use the warehouse storage location.")
 
 
 class Move(metaclass=PoolMeta):

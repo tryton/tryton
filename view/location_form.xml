@@ -7,5 +7,9 @@ this repository contains the full copyright notices and license terms. -->
         <label name="production_location"/>
         <field name="production_location"/>
         <newline/>
+        <label name="production_picking_location"/>
+        <field name="production_picking_location"/>
+        <label name="production_output_location"/>
+        <field name="production_output_location"/>
     </xpath>
 </data>

@@ -19,13 +19,15 @@ two lists of moves:
 
 * Inputs
 
-  The moves between the storage location and the production location (as
-  defined on the warehouse) for products used for production.
+  The moves between the production picking location, or the storage location
+  if product picking location is empty, and the production location
+  (as defined on the warehouse) for products used for production.
 
 * Outputs
 
-  The moves between the production location and the storage location for
-  products produced.
+  The moves between the production location and the production output
+  location, or the storage location if production output is empty, for produced
+  products.
 
 The production can be in one of this states:
 
