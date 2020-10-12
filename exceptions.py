@@ -32,5 +32,9 @@ class MoveFutureWarning(UserWarning):
     pass
 
 
+class InventoryFutureWarning(UserWarning):
+    pass
+
+
 class ProductCostPriceError(ValidationError):
     pass

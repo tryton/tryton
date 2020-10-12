@@ -627,7 +627,7 @@ class Move(Workflow, ModelSQL, ModelView):
             today = today_cache[move.company]
             if move.effective_date and move.effective_date > today:
                 return move
-        future_moves = list(filter(in_future, moves))
+        future_moves = sorted(filter(in_future, moves))
         if future_moves:
             names = ', '.join(m.rec_name for m in future_moves[:5])
             if len(future_moves) > 5:
@@ -637,7 +637,7 @@ class Move(Workflow, ModelSQL, ModelView):
                         str(future_moves).encode('utf-8')).hexdigest())
             if Warning.check(warning_name):
                 raise MoveFutureWarning(warning_name,
-                    gettext('stock.msg_effective_date_in_the_future',
+                    gettext('stock.msg_move_effective_date_in_the_future',
                         moves=names))
 
         def set_cost_values(cost_values):
@@ -842,7 +842,7 @@ class Move(Workflow, ModelSQL, ModelView):
             return ((move.from_location.type in types)
                 ^ (move.to_location.type in types)
                 and not move.origin)
-        moves = list(filter(no_origin, moves))
+        moves = sorted(filter(no_origin, moves))
         if moves:
             names = ', '.join(m.rec_name for m in moves[:5])
             if len(moves) > 5:

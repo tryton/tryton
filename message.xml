@@ -86,8 +86,11 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_move_from_to_location">
             <field name="text">The source and destination of stock move must be different.</field>
         </record>
-        <record model="ir.message" id="msg_effective_date_in_the_future">
+        <record model="ir.message" id="msg_move_effective_date_in_the_future">
             <field name="text">The moves "%(moves)s" have effective dates in the future.</field>
+        </record>
+        <record model="ir.message" id="msg_inventory_date_in_the_future">
+            <field name="text">The inventories "%(inventories)s" have dates in the future.</field>
         </record>
     </data>
 </tryton>

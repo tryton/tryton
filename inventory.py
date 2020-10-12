@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import hashlib
+
 from sql import Null
 
 from trytond.i18n import gettext
@@ -10,7 +12,8 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
-from .exceptions import InventoryValidationError, InventoryCountWarning
+from .exceptions import (
+    InventoryValidationError, InventoryCountWarning, InventoryFutureWarning)
 
 
 class Inventory(Workflow, ModelSQL, ModelView):
@@ -145,7 +148,32 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def confirm(cls, inventories):
-        Move = Pool().get('stock.move')
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
+        today_cache = {}
+
+        def in_future(inventory):
+            if inventory.company not in today_cache:
+                with Transaction().set_context(company=inventory.company.id):
+                    today_cache[inventory.company] = Date.today()
+            today = today_cache[inventory.company]
+            if inventory.date > today:
+                return inventory
+        future_inventories = sorted(filter(in_future, inventories))
+        if future_inventories:
+            names = ', '.join(i.rec_name for i in future_inventories[:5])
+            if len(future_inventories) > 5:
+                names + '...'
+            warning_name = (
+                '%s.date_future' % hashlib.md5(
+                    str(future_inventories).encode('utf-8')).hexdigest())
+            if Warning.check(warning_name):
+                raise InventoryFutureWarning(warning_name,
+                    gettext('stock.msg_inventory_date_in_the_future',
+                        inventories=names))
+
         moves = []
         for inventory in inventories:
             keys = set()
@@ -162,7 +190,9 @@ class Inventory(Workflow, ModelSQL, ModelView):
                     moves.append(move)
         if moves:
             Move.save(moves)
-            Move.do(moves)
+            # Skip MoveFutureWarning as it is newly created moves
+            with Transaction().set_user(0):
+                Move.do(moves)
 
     @classmethod
     @ModelView.button
