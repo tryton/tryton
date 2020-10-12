@@ -24,6 +24,10 @@ class Invoice(metaclass=PoolMeta):
         help="The agent who receives a commission for the invoice.")
 
     @classmethod
+    def _journal_types(cls, invoice_type):
+        return super()._journal_types(invoice_type) + ['commission']
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('posted')
     def post(cls, invoices):
