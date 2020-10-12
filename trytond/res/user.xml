@@ -2,13 +2,14 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <tryton>
-    <data>
+    <data noupdate="1">
         <record model="res.user" id="user_admin">
             <field name="login">admin</field>
             <field name="name">Administrator</field>
-            <field name="signature">Administrator</field>
             <field name="menu" ref="ir.act_menu_tree"/>
         </record>
+    </data>
+    <data>
         <record model="res.user-res.group" id="user_admin_group_admin">
             <field name="user" ref="user_admin"/>
             <field name="group" ref="group_admin"/>

@@ -189,6 +189,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        model_data = ModelData.__table__()
         cursor = Transaction().connection.cursor()
         super(User, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)
@@ -206,6 +209,13 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
         # Migration from 4.2: Remove required on name
         table.not_null_action('name', action='remove')
+
+        # Migration from 5.6: Set noupdate to admin
+        cursor.execute(*model_data.update(
+                [model_data.noupdate], [True],
+                where=(model_data.model == cls.__name__)
+                & (model_data.module == 'res')
+                & (model_data.fs_id == 'user_admin')))
 
     @staticmethod
     def default_menu():
@@ -458,7 +468,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                             getattr(user, field).rec_name
             elif cls._fields[field]._type in ('one2many', 'many2many'):
                 res[field] = [x.id for x in getattr(user, field)]
-                if field == 'actions' and user.login == 'admin':
+                admin_id = ModelData.get_id('res.user_admin')
+                if field == 'actions' and user.id == admin_id:
                     config_wizard_id = ModelData.get_id('ir',
                         'act_module_config_wizard')
                     action_id = Action.get_action_id(config_wizard_id)
