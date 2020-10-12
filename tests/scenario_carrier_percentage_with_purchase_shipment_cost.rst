@@ -184,6 +184,9 @@ Send products::
     >>> shipment.click('assign_force')
     >>> shipment.state
     'assigned'
+    >>> shipment.click('pick')
+    >>> shipment.state
+    'picked'
     >>> shipment.click('pack')
     >>> shipment.state
     'packed'
