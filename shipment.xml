@@ -626,7 +626,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.model.button" id="shipment_out_pack_button">
             <field name="name">pack</field>
-            <field name="string">Make shipment</field>
+            <field name="string">Pack</field>
             <field name="model"
                 search="[('model', '=', 'stock.shipment.out')]"/>
         </record>
