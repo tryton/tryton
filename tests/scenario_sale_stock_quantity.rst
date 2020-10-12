@@ -14,6 +14,7 @@ Imports::
     ...     create_chart, get_accounts
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
+    >>> from trytond.modules.stock.exceptions import MoveFutureWarning
     >>> today = datetime.date.today()
 
 Activate modules::
@@ -160,6 +161,10 @@ Make an inventory of 3 products in 2 days::
     >>> inventory_line = inventory.lines.new(product=product)
     >>> inventory_line.quantity = 3.0
     >>> inventory_line.expected_quantity = 5.0
+    >>> try:
+    ...     inventory.click('confirm')
+    ... except MoveFutureWarning as e:
+    ...     Model.get('res.user.warning')(user=config.user, name=e.name).save()
     >>> inventory.click('confirm')
     >>> inventory.state
     'done'
