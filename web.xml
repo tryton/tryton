@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="shop_view_form">
+            <field name="model">web.shop</field>
+            <field name="inherit" ref="web_shop.shop_view_form"/>
+            <field name="name">shop_form</field>
+        </record>
+    </data>
+</tryton>
