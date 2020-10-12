@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data grouped="1">
+        <record model="ir.message" id="msg_identifier_record_unique">
+            <field name="text">The Vue Storefront identifier must be unique for each record.</field>
+        </record>
+        <record model="ir.message" id="msg_vsf_identifier">
+            <field name="text">Vue Storefront Identifier</field>
+        </record>
+        <record model="ir.message" id="msg_login_wrong">
+            <field name="text">You did not sign in correctly or your account is temporarily disabled.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_tax_identifier">
+            <field name="text">The number "%(code)s" is not a valid tax identifier.</field>
+        </record>
+        <record model="ir.message" id="msg_unknown_country_code">
+            <field name="text">The country code "%(code)s" is not known.</field>
+        </record>
+        <record model="ir.message" id="msg_subtotal">
+            <field name="text">Subtotal</field>
+        </record>
+        <record model="ir.message" id="msg_tax">
+            <field name="text">Tax</field>
+        </record>
+        <record model="ir.message" id="msg_grand_total">
+            <field name="text">Grand Total</field>
+        </record>
+        <record model="ir.message" id="msg_shipping">
+            <field name="text">Shipping</field>
+        </record>
+    </data>
+</tryton>
