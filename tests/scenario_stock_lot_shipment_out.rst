@@ -96,9 +96,9 @@ Assign the shipment::
     >>> len(shipment_out.outgoing_moves)
     1
 
-Try to pack without lot::
+Try to pick without lot::
 
-    >>> shipment_out.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment_out.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     RequiredValidationError: ...
@@ -112,11 +112,11 @@ Set 2 lots::
     ...     move.lot = lot
     >>> shipment_out.save()
 
-Pack the shipment::
+Pick the shipment::
 
-    >>> shipment_out.click('pack')
+    >>> shipment_out.click('pick')
     >>> shipment_out.state
-    'packed'
+    'picked'
     >>> len(shipment_out.outgoing_moves)
     3
     >>> sorted([m.quantity for m in shipment_out.outgoing_moves])
