@@ -116,13 +116,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_states,
-        domain=[
-            If(Eval('type') == 'out',
-                ('type', '=', 'revenue'),
-                ('type', '=', 'expense'))
-            ],
-        depends=_depends + ['type'])
+        states=_states, depends=_depends)
     move = fields.Many2One('account.move', 'Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -235,6 +229,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ('number', 'DESC'),
             ('id', 'DESC'),
             ]
+        cls.journal.domain = [
+            If(Eval('type') == 'out',
+                ('type', 'in', cls._journal_types('out')),
+                ('type', 'in', cls._journal_types('in'))),
+            ]
+        cls.journal.depends += ['type']
         cls.tax_identifier.domain = [
             ('party', '=', Eval('company_party', -1)),
             ('type', 'in', cls.tax_identifier_types()),
@@ -434,6 +434,13 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ], limit=1)
         if journals:
             self.journal, = journals
+
+    @classmethod
+    def _journal_types(cls, invoice_type):
+        if invoice_type == 'out':
+            return ['revenue']
+        else:
+            return ['expense']
 
     @fields.depends('party')
     def on_change_party(self):
