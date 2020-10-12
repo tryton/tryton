@@ -263,6 +263,7 @@ class Sale(
             ('done', "Done"),
             ('cancelled', "Cancelled"),
             ], "State", readonly=True, required=True)
+    state_string = state.translated('state')
 
     @classmethod
     def __setup__(cls):
