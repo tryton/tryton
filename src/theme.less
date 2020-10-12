@@ -20,11 +20,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-@input-border-radius: 0;
-@input-border-radius-large: 0;
-@input-border-radius-small: 0;
-@input-bg-disabled: transparent;
-
 .navbar {
     border: none;
     .box-shadow(0 1px 2px rgba(0,0,0,.3));
@@ -93,6 +88,16 @@ THE SOFTWARE.
     }
 }
 
+.form-control {
+    border: transparent;
+
+    &[disabled],
+    &[readonly],
+    fieldset[disabled] & {
+        background-color: transparent;
+    }
+}
+
 textarea,
 textarea.form-control,
 input.form-control,
@@ -138,6 +143,20 @@ input[type=number],
 .input-group-sm > .form-control,
 .input-group-sm > .input-group-addon {
     padding: 0 5px;
+}
+
+.input-group-addon {
+    background-color: transparent;
+    border: transparent;
+    border-radius: 0;
+
+    &.input-sm {
+        border-radius: 0;
+    }
+
+    &.input-lg {
+        border-radius: 0;
+    }
 }
 
 select,
