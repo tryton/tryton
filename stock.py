@@ -582,7 +582,8 @@ class Move(metaclass=PoolMeta):
         if isinstance(self.origin, SaleLine):
             return self.origin.sale.party.id
         elif isinstance(self.origin, PurchaseLine):
-            return self.origin.purchase.customer.id
+            if self.origin.purchase.customer:
+                return self.origin.purchase.customer.id
 
     @classmethod
     def search_customer_drop(cls, name, clause):
