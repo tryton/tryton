@@ -83,6 +83,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     reset_password_token_expire = fields.Timestamp(
         'Reset Password Token Expire')
     party = fields.Many2One('party.party', 'Party', ondelete='RESTRICT')
+    secondary_parties = fields.Many2Many(
+        'web.user-party.party.secondary', 'user', 'party', "Secondary Parties")
 
     @classmethod
     def __setup__(cls):
@@ -391,6 +393,16 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                     ('code', '=', Transaction().language),
                     ])
         return languages
+
+
+class User_PartySecondary(ModelSQL):
+    "Web User - Secondary Party"
+    __name__ = 'web.user-party.party.secondary'
+
+    user = fields.Many2One(
+        'web.user', "User", required=True, select=True, ondelete='CASCADE')
+    party = fields.Many2One(
+        'party.party', "Party", required=True, ondelete='CASCADE')
 
 
 class UserAuthenticateAttempt(LoginAttempt):

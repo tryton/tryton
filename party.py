@@ -10,6 +10,7 @@ class Replace(metaclass=PoolMeta):
     def fields_to_replace(cls):
         return super().fields_to_replace() + [
             ('web.user', 'party'),
+            ('web.user-party.party.secondary', 'party'),
             ]
 
 

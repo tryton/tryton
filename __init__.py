@@ -10,6 +10,7 @@ from . import ir
 def register():
     Pool.register(
         user.User,
+        user.User_PartySecondary,
         user.UserAuthenticateAttempt,
         user.UserSession,
         ir.Email,

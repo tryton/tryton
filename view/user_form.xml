@@ -15,4 +15,5 @@ this repository contains the full copyright notices and license terms. -->
     <label name="email_valid"/>
     <field name="email_valid"/>
     <button name="validate_email" colspan="2"/>
+    <field name="secondary_parties" colspan="4"/>
 </form>
