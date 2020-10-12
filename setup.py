@@ -62,7 +62,11 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [
     get_require_version('proteus'),
-    get_require_version('trytond_product_attribute')]
+    get_require_version('trytond_product_attribute'),
+    get_require_version('trytond_sale_promotion_coupon'),
+    get_require_version('trytond_sale_shipment_cost'),
+    get_require_version('trytond_carrier'),
+    ]
 dependency_links = []
 if minor_version % 2:
     dependency_links.append('https://trydevpi.tryton.org/')
