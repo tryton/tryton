@@ -134,6 +134,9 @@ class CompanyConfig(Wizard):
                 })
         return 'end'
 
+    def end(self):
+        return 'reload context'
+
 
 class CompanyReport(Report):
 

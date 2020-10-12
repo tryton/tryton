@@ -114,12 +114,6 @@ class User(metaclass=PoolMeta):
                 res['main_company'] = user.main_company.id
                 res['main_company.rec_name'] = user.main_company.rec_name
             res['employees'] = [e.id for e in user.employees]
-        if user.employee:
-            res['employee'] = user.employee.id
-            res['employee.rec_name'] = user.employee.rec_name
-        if user.company:
-            res['company'] = user.company.id
-            res['company.rec_name'] = user.company.rec_name
         return res
 
     @classmethod
