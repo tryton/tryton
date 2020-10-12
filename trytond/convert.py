@@ -772,6 +772,7 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
                             'db_id': record.id,
                             'values': self.ModelData.dump_values(values),
                             'fs_values': self.ModelData.dump_values(fs_values),
+                            'noupdate': self.noupdate,
                             }))
 
         # reset_browsercord to keep cache memory low
