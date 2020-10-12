@@ -83,7 +83,7 @@ Prevent over ship 13 products::
     >>> move.quantity = 13
     >>> shipment.click('wait')
     >>> shipment.click('assign_force')
-    >>> shipment.click('pack')  # doctest: +IGNORE_EXCEPTION_DETAIL
+    >>> shipment.click('pick')  # doctest: +IGNORE_EXCEPTION_DETAIL
     Traceback (most recent call last):
         ...
     OverShipmentWarning: ...
@@ -96,6 +96,7 @@ Over ship 12 products::
     >>> move.quantity = 12
     >>> shipment.click('wait')
     >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
 

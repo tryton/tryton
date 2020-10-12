@@ -81,6 +81,7 @@ Under ship 5 products::
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 5
     >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
 
@@ -91,6 +92,7 @@ Under ship 4 products::
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
     >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
     >>> shipment.click('done')
 
