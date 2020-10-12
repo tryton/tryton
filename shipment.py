@@ -950,7 +950,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     origins = fields.Function(fields.Char('Origins'), 'get_origins')
     number = fields.Char('Number', size=None, select=True, readonly=True,
         help="The main identifier for the shipment.")
-    assigned_by = employee_field("Assigned By")
+    picked_by = employee_field("Picked By")
     packed_by = employee_field("Packed By")
     done_by = employee_field("Done By")
     state = fields.Selection([
@@ -958,6 +958,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         ('done', 'Done'),
         ('cancelled', 'Cancelled'),
         ('assigned', 'Assigned'),
+        ('picked', 'Picked'),
         ('packed', 'Packed'),
         ('waiting', 'Waiting'),
         ], 'State', readonly=True,
@@ -970,8 +971,9 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
-                ('waiting', 'packed'),
-                ('assigned', 'packed'),
+                ('waiting', 'picked'),
+                ('assigned', 'picked'),
+                ('picked', 'packed'),
                 ('packed', 'done'),
                 ('assigned', 'waiting'),
                 ('waiting', 'waiting'),
@@ -979,6 +981,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('draft', 'cancelled'),
                 ('waiting', 'cancelled'),
                 ('assigned', 'cancelled'),
+                ('picked', 'cancelled'),
                 ('packed', 'cancelled'),
                 ('cancelled', 'draft'),
                 ))
@@ -1006,13 +1009,17 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             'tryton-forward')),
                     'depends': ['state'],
                     },
-                'pack': {
+                'pick': {
                     'invisible': If(Eval('warehouse_storage')
                         == Eval('warehouse_output'),
                         ~Eval('state').in_(['assigned', 'waiting']),
                         Eval('state') != 'assigned'),
                     'depends': ['state', 'warehouse_storage',
                         'warehouse_output'],
+                    },
+                'pack': {
+                    'invisible': Eval('state') != 'picked',
+                    'depends': ['state'],
                     },
                 'done': {
                     'invisible': Eval('state') != 'packed',
@@ -1035,6 +1042,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         # Migration from 3.8: rename code into number
         if table.column_exist('code'):
             table.column_rename('code', 'number')
+
+        # Migration from 5.6: rename assigned_by into picked_by
+        if table.column_exist('assigned_by'):
+            table.column_rename('assigned_by', 'picked_by')
 
         super(ShipmentOut, cls).__register__(module_name)
 
@@ -1188,12 +1199,22 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     @Workflow.transition('assigned')
-    @set_employee('assigned_by')
     def assign(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
         Move.assign([m for s in shipments for m in s.assign_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=False)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('picked')
+    @set_employee('picked_by')
+    def pick(cls, shipments):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        Move.do([m for s in shipments for m in s.inventory_moves])
+        cls._sync_inventory_to_outgoing(shipments, quantity=True)
+        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
     @classmethod
     @ModelView.button
@@ -1370,7 +1391,7 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         default.setdefault('inventory_moves', None)
         default.setdefault('outgoing_moves', None)
         default.setdefault('number', None)
-        default.setdefault('assigned_by', None)
+        default.setdefault('picked_by', None)
         default.setdefault('packed_by', None)
         default.setdefault('done_by', None)
         return super(ShipmentOut, cls).copy(shipments, default=default)

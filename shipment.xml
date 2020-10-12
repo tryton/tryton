@@ -165,9 +165,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
+        <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_picked">
+            <field name="name">Picked</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain" eval="[('state', '=', 'picked')]" pyson="1"/>
+            <field name="count" eval="True"/>
+            <field name="act_window" ref="act_shipment_out_form"/>
+        </record>
         <record model="ir.action.act_window.domain" id="act_shipment_out_form_domain_packed">
             <field name="name">Packed</field>
-            <field name="sequence" eval="40"/>
+            <field name="sequence" eval="50"/>
             <field name="domain" eval="[('state', '=', 'packed')]" pyson="1"/>
             <field name="count" eval="True"/>
             <field name="act_window" ref="act_shipment_out_form"/>
@@ -621,6 +628,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.model.button-res.group"
             id="shipment_out_wait_button_group_stock">
             <field name="button" ref="shipment_out_wait_button"/>
+            <field name="group" ref="group_stock"/>
+        </record>
+
+        <record model="ir.model.button" id="shipment_out_pick_button">
+            <field name="name">pick</field>
+            <field name="string">Pick</field>
+            <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
+        </record>
+        <record model="ir.model.button-res.group"
+            id="shipment_out_pick_button_group_stock">
+            <field name="button" ref="shipment_out_pick_button"/>
             <field name="group" ref="group_stock"/>
         </record>
 

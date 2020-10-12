@@ -80,7 +80,9 @@ Set the shipment state to waiting::
     0
 
 Assign the shipment::
-
+    >>> shipment_out.click('pick')
+    >>> shipment_out.state
+    'picked'
     >>> shipment_out.click('pack')
     >>> shipment_out.state
     'packed'

@@ -97,7 +97,7 @@ Add two shipment lines of same product::
     ...     move.unit_price = Decimal('1')
     ...     move.currency = company.currency
     >>> shipment_out.save()
-    >>> shipment_out.assigned_by
+    >>> shipment_out.picked_by
     >>> shipment_out.packed_by
     >>> shipment_out.done_by
 
@@ -160,7 +160,12 @@ Ignore non assigned moves and pack shipment::
     >>> shipment_assign.execute('ignore')
     >>> sorted([m.quantity for m in shipment_out.inventory_moves])
     [0.0, 1.0]
-    >>> shipment_out.assigned_by == employee
+    >>> shipment_out.picked_by
+    >>> shipment_out.packed_by
+    >>> shipment_out.done_by
+
+    >>> shipment_out.click('pick')
+    >>> shipment_out.picked_by == employee
     True
     >>> shipment_out.packed_by
     >>> shipment_out.done_by
@@ -245,6 +250,7 @@ Finish the shipment::
 
     >>> shipment_out.click('assign_try')
     True
+    >>> shipment_out.click('pick')
     >>> shipment_out.click('pack')
     >>> shipment_out.click('done')
     >>> shipment_out.state

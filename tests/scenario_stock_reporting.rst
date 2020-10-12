@@ -113,6 +113,7 @@ Add two shipment lines of same product and go through the workflow::
     >>> shipment_out.click('wait')
     >>> shipment_out.click('assign_try')
     True
+    >>> shipment_out.click('pick')
     >>> shipment_out.click('pack')
     >>> shipment_out.click('done')
 

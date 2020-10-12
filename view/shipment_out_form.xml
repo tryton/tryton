@@ -26,8 +26,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="outgoing_moves" colspan="4" view_ids="stock.move_view_list_shipment"/>
         </page>
         <page string="Other Info" id="other">
-            <label name="assigned_by"/>
-            <field name="assigned_by"/>
+            <label name="picked_by"/>
+            <field name="picked_by"/>
             <label name="packed_by"/>
             <field name="packed_by"/>
             <label name="done_by"/>
@@ -41,6 +41,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="draft"/>
         <button name="wait"/>
         <button name="assign_wizard" icon="tryton-forward"/>
+        <button name="pick" icon="tryton-forward"/>
         <button name="pack" icon="tryton-forward"/>
         <button name="done" icon="tryton-ok"/>
     </group>
