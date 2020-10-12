@@ -1093,11 +1093,6 @@ class TaxableMixin(object):
         return []
 
     @property
-    def currency(self):
-        "The currency used by the taxable object"
-        return None
-
-    @property
     def tax_date(self):
         "Date to use when computing the tax"
         pool = Pool()
