@@ -63,3 +63,10 @@ list price of each (the product without a list price are considered as waste).
 
 A cron task runs every day and updates the cost of productions if the cost
 price of the incoming products has changed.
+
+
+Rescheduling Production
+----------------------
+
+It is possible to setup a cron task to reschedule the productions that are
+planned to start in the past. By default they are rescheduled to today.

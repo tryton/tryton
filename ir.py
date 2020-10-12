@@ -11,4 +11,5 @@ class Cron(metaclass=PoolMeta):
         super().__setup__()
         cls.method.selection.extend([
                 ('production|set_cost_from_moves', "Set Cost from Moves"),
+                ('production|reschedule', "Reschedule Productions"),
                 ])

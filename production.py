@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from collections import defaultdict
+from datetime import timedelta
 from decimal import Decimal
 from itertools import chain
 
@@ -294,19 +295,31 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('planned_date', 'product', 'bom')
-    def on_change_with_planned_start_date(self, pattern=None):
-        if self.planned_date and self.product:
-            if pattern is None:
-                pattern = {}
+    @fields.depends('product', 'bom')
+    def compute_lead_time(self, pattern=None):
+        if pattern is None:
+            pattern = {}
+        if self.product:
             pattern.setdefault('bom', self.bom.id if self.bom else None)
             for line in self.product.lead_times:
                 if line.match(pattern):
-                    if line.lead_time:
-                        return self.planned_date - line.lead_time
-                    else:
-                        return self.planned_date
+                    return line.lead_time or timedelta()
+        return timedelta()
+
+    @fields.depends('planned_date', methods=['compute_lead_time'])
+    def on_change_with_planned_start_date(self, pattern=None):
+        if self.planned_date and self.product:
+            return self.planned_date - self.compute_lead_time()
         return self.planned_date
+
+    @fields.depends(
+        'planned_date', 'planned_start_date', methods=['compute_lead_time'])
+    def on_change_planned_start_date(self, pattern=None):
+        if self.planned_start_date and self.product:
+            planned_date = self.planned_start_date + self.compute_lead_time()
+            if (not self.planned_date
+                    or self.planned_date < planned_date):
+                self.planned_date = planned_date
 
     @classmethod
     def _get_origin(cls):
@@ -748,3 +761,22 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             return True
         else:
             return False
+
+    @classmethod
+    def _get_reschedule_domain(cls, date):
+        return [
+            ('state', '=', 'waiting'),
+            ('planned_start_date', '<', date),
+            ]
+
+    @classmethod
+    def reschedule(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
+        productions = cls.search(cls._get_reschedule_domain(date))
+        for production in productions:
+            production.planned_start_date = date
+            production.on_change_planned_start_date()
+        cls.save(productions)

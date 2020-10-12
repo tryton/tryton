@@ -210,12 +210,24 @@ Make a production with a bom of zero quantity::
     >>> bom_output.quantity = 0.0
     >>> bom.save()
     >>> production = Production()
-    >>> production.effective_date = yesterday
     >>> production.product = product
     >>> production.bom = bom
+    >>> production.planned_start_date = yesterday
     >>> production.quantity = 2
     >>> [i.quantity for i in production.inputs]
     [0.0, 0.0]
     >>> output, = production.outputs
     >>> output.quantity
     0.0
+
+Reschedule productions::
+
+    >>> production.click('wait')
+    >>> Cron = Model.get('ir.cron')
+    >>> cron = Cron(method='production|reschedule')
+    >>> cron.interval_number = 1
+    >>> cron.interval_type = 'months'
+    >>> cron.click('run_once')
+    >>> production.reload()
+    >>> production.planned_start_date == today
+    True
