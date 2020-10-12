@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//field[@name='secondary_parties']" position="before">
+        <label name="invoice_address"/>
+        <field name="invoice_address"/>
+        <label name="shipment_address"/>
+        <field name="shipment_address"/>
+    </xpath>
+</data>
