@@ -173,6 +173,15 @@ class Line(TaxableMixin, metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     @property
+    def taxable_lines(self):
+        return [(
+                getattr(self, 'taxes', None) or [],
+                getattr(self, 'unit_price', None) or Decimal(0),
+                getattr(self, 'quantity', None) or 0,
+                None,
+                )]
+
+    @property
     def vsf_tax_amount(self):
         return sum(
             (v['amount'] for v in self._get_taxes().values()), Decimal(0))
