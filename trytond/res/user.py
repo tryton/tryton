@@ -452,7 +452,6 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                     else:
                         res['language'] = Config.get_language()
                 else:
-                    res[field] = None
                     if getattr(user, field):
                         res[field] = getattr(user, field).id
                         res[field + '.rec_name'] = \
