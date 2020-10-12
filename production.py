@@ -4,7 +4,7 @@ from collections import defaultdict
 from functools import wraps
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, Workflow
+from trytond.model import Model, ModelView, Workflow
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.tools import grouped_slice
@@ -76,14 +76,40 @@ class Production(metaclass=PoolMeta):
     @Workflow.transition('done')
     @process_sale_supply
     def done(cls, productions):
-        pool = Pool()
-        SaleLine = pool.get('sale.line')
         super().done(productions)
 
         for production in productions:
-            pbl = defaultdict(lambda: defaultdict(int))
-            for move in production.outputs:
-                pbl[move.product][move.to_location] += move.internal_quantity
-            if isinstance(production.origin, SaleLine):
-                sale_line = production.origin
-                sale_line.assign_supplied(pbl[sale_line.product])
+            production.assign_supplied()
+
+    def assign_supplied(self, grouping=('product',), filter_=None):
+        pool = Pool()
+        SaleLine = pool.get('sale.line')
+
+        if isinstance(self.origin, SaleLine):
+            sale_line = self.origin
+        else:
+            return
+
+        def filter_func(move):
+            if filter_ is None:
+                return True
+            for fieldname, values in filter_:
+                value = getattr(move, fieldname)
+                if isinstance(value, Model):
+                    value = value.id
+                if value not in values:
+                    return False
+
+        def get_key(move):
+            key = (move.to_location.id,)
+            for field in grouping:
+                value = getattr(move, field)
+                if isinstance(value, Model):
+                    value = value.id
+                key += (value,)
+            return key
+
+        pbl = defaultdict(lambda: defaultdict(int))
+        for move in filter(filter_func, self.outputs):
+            pbl[move.product][get_key(move)] += move.internal_quantity
+        sale_line.assign_supplied(pbl[sale_line.product], grouping=grouping)
