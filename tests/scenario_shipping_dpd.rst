@@ -203,6 +203,7 @@ Create the packs and ship the shipment::
     >>> shipment, = sale.shipments
     >>> shipment.click('assign_try')
     True
+    >>> shipment.click('pick')
     >>> pack = shipment.packages.new()
     >>> pack.type = box
     >>> pack_move, = pack.moves.find([])
