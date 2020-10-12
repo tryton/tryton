@@ -250,6 +250,7 @@ not create a new purchase request::
     'done'
     >>> shipment.click('assign_try')
     True
+    >>> shipment.click('pick')
     >>> shipment.click('pack')
 
     >>> set_user(admin_user)
