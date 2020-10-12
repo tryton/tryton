@@ -214,17 +214,16 @@ Run works::
     >>> work2.reload()
     >>> work2.state
     'draft'
-    >>> cycle2 = work2.cycles.new()
-    >>> cycle2.click('run')
-    >>> cycle2.state
-    'running'
+    >>> work2.click('start')
+    >>> cycle2, = [c for c in work2.active_cycles]
     >>> cycle2.duration = datetime.timedelta(hours=1)
-    >>> cycle2.click('do')
-    >>> cycle2.state
-    'done'
-    >>> work2.reload()
+    >>> cycle2.save()
+    >>> work2.click('stop')
     >>> work2.state
     'finished'
+    >>> cycle2.reload()
+    >>> cycle2.state
+    'done'
 
 Add an extra work::
 

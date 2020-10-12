@@ -130,6 +130,12 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('state').in_(['request', 'done']),
             },
         depends=['state'])
+    active_cycles = fields.One2Many(
+        'production.work.cycle', 'work', "Active Cycles",
+        readonly=True,
+        filter=[
+            ('state', '=', 'running'),
+            ])
     company = fields.Many2One('company.company', 'Company', required=True,
         select=True)
     warehouse = fields.Function(fields.Many2One('stock.location', 'Warehouse'),
@@ -142,6 +148,21 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
             ('finished', 'Finished'),
             ('done', 'Done'),
             ], 'State', select=True, readonly=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'start': {
+                    'invisible': Bool(Eval('active_cycles', [])),
+                    'readonly': Eval('state').in_(['request', 'done']),
+                    'depends': ['active_cycles'],
+                    },
+                'stop': {
+                    'invisible': ~Bool(Eval('active_cycles', [])),
+                    'depends': ['active_cycles'],
+                    },
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -169,6 +190,27 @@ class Work(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def default_state(cls):
         return 'request'
+
+    @classmethod
+    @ModelView.button
+    def start(cls, works):
+        pool = Pool()
+        Cycle = pool.get('production.work.cycle')
+        cycles = [Cycle(work=w) for w in works]
+        Cycle.save(cycles)
+        Cycle.run(cycles)
+
+    @classmethod
+    @ModelView.button
+    def stop(cls, works):
+        pool = Pool()
+        Cycle = pool.get('production.work.cycle')
+
+        to_do = []
+        for work in works:
+            for cycle in work.active_cycles:
+                to_do.append(cycle)
+        Cycle.do(to_do)
 
     @property
     def _state(self):

@@ -240,6 +240,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.model.button" id="work_start_button">
+            <field name="name">start</field>
+            <field name="string">Start</field>
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+        </record>
+
+        <record model="ir.model.button" id="work_stop_button">
+            <field name="name">stop</field>
+            <field name="string">Stop</field>
+            <field name="model" search="[('model', '=', 'production.work')]"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_work">
             <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'production.work')]"/>
