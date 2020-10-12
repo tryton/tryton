@@ -245,6 +245,9 @@ Send 5 products::
     True
     >>> shipment.state
     'assigned'
+    >>> shipment.click('pick')
+    >>> shipment.state
+    'picked'
     >>> shipment.click('pack')
     >>> shipment.state
     'packed'
