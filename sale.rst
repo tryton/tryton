@@ -20,6 +20,9 @@ Sale
     `Credit Limit </projects/modules-sale-credit-limit/en/latest>`_
         Adds sales to the credit limit.
 
+    `Discount </projects/modules-sale-discount/en/latest>`_
+        Adds discount on lines.
+
     `Extra </projects/modules-sale-extra/en/latest>`_
         Add extra lines.
 
