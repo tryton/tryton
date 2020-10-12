@@ -197,3 +197,17 @@ Duplicate Internal Shipment::
     >>> shipment_copy, = shipment.duplicate()
     >>> len(shipment_copy.moves)
     1
+
+Reschedule shipment::
+
+    >>> shipment_copy.planned_date = yesterday
+    >>> shipment_copy.click('wait')
+    >>> set_user(1)
+    >>> Cron = Model.get('ir.cron')
+    >>> cron = Cron(method='stock.shipment.internal|reschedule')
+    >>> cron.interval_number = 1
+    >>> cron.interval_type = 'months'
+    >>> cron.click('run_once')
+    >>> shipment_copy.reload()
+    >>> shipment_copy.planned_date == today
+    True

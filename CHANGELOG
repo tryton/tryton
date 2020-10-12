@@ -1,3 +1,4 @@
+* Add cron task to reschedule past shipments
 * Allow lost and found on inventory moves of shipments
 * Add waste locations on warehouses
 * Add warning to prevent move in the future

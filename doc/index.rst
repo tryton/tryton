@@ -230,6 +230,13 @@ The customer shipment can be in one of this states:
   cancelled at any time. This also cancels all the moves.
 
 
+Rescheduling Customer Shipments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to setup a cron task to reschedule customer shipments that are
+planned for the past. By default they are rescheduled to today.
+
+
 Internal Shipment
 -----------------
 
@@ -259,6 +266,12 @@ of moves. It can be in one of these states:
   A shipment which is not yet completed (not in state Done) can be
   cancelled at any time. This also cancels all the moves.
 
+
+Rescheduling Internal Shipments
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It is possible to setup a cron task to reschedule internal shipments that are
+planned for the past. By default they are rescheduled to today.
 
 
 Inventory

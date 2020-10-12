@@ -834,6 +834,22 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             cls.assign(shipments)
         return success
 
+    @classmethod
+    def _get_reschedule_domain(cls, date):
+        return [
+            ('state', '=', 'waiting'),
+            ('planned_date', '<', date),
+            ]
+
+    @classmethod
+    def reschedule(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
+        shipments = cls.search(cls._get_reschedule_domain(date))
+        cls.write(shipments, {'planned_date': date})
+
 
 class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     "Customer Shipment"
@@ -1406,6 +1422,22 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             return True
         else:
             return False
+
+    @classmethod
+    def _get_reschedule_domain(cls, date):
+        return [
+            ('state', '=', 'waiting'),
+            ('planned_date', '<', date),
+            ]
+
+    @classmethod
+    def reschedule(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
+        shipments = cls.search(cls._get_reschedule_domain(date))
+        cls.write(shipments, {'planned_date': date})
 
 
 class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
@@ -2445,6 +2477,26 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                             })
         if to_write:
             Move.write(*to_write)
+
+    @classmethod
+    def _get_reschedule_domain(cls, date):
+        return [
+            ('state', '=', 'waiting'),
+            ('planned_date', '<', date),
+            ]
+
+    @classmethod
+    def reschedule(cls, date=None):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        if date is None:
+            date = Date.today()
+        shipments = cls.search(cls._get_reschedule_domain(date))
+        for shipment in shipments:
+            shipment.planned_date = date
+            shipment.planned_start_date = (
+                shipment.on_change_with_planned_start_date())
+        cls.save(shipments)
 
 
 class Address(metaclass=PoolMeta):
