@@ -4,8 +4,6 @@ import os
 import configparser
 import urllib.parse
 import logging
-import sys
-from functools import wraps
 
 __all__ = ['config', 'get_hostname', 'get_port', 'split_netloc',
     'parse_listen', 'parse_uri']
@@ -37,16 +35,6 @@ def parse_listen(value):
 
 def parse_uri(uri):
     return urllib.parse.urlparse(uri)
-
-
-def before_modules(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if 'trytond.modules' in sys.modules:
-            raise RuntimeError(
-                "%s called after trytond.modules is imported" % func.__name__)
-        return func(*args, **kwargs)
-    return wrapper
 
 
 class TrytonConfigParser(configparser.ConfigParser):
@@ -101,7 +89,6 @@ class TrytonConfigParser(configparser.ConfigParser):
         self.update_environ()
         self.update_etc()
 
-    @before_modules
     def update_environ(self):
         for key, value in os.environ.items():
             if not key.startswith('TRYTOND_'):
@@ -114,7 +101,6 @@ class TrytonConfigParser(configparser.ConfigParser):
                 self.add_section(section)
             self.set(section, option, value)
 
-    @before_modules
     def update_etc(self, configfile=os.environ.get('TRYTOND_CONFIG')):
         if isinstance(configfile, str):
             configfile = [configfile]
