@@ -187,30 +187,28 @@ class Sale(metaclass=PoolMeta):
     def _get_carrier_context(self):
         return {}
 
-    def set_shipment_cost(self):
+    def compute_shipment_cost(self):
         pool = Pool()
         Date = pool.get('ir.date')
         Currency = pool.get('currency.currency')
-
-        cost, currency_id = 0, None
-        if (self.carrier
-                and any(l.quantity >= 0 for l in self.lines
-                    if l.type == 'line'
-                    and l.product and l.product.type != 'service')):
+        stockable = any(
+            line.quantity >= 0 for line in self.lines
+            if line.type == 'line'
+            and line.product and line.product.type != 'service')
+        if self.carrier and stockable:
             with Transaction().set_context(self._get_carrier_context()):
                 cost, currency_id = self.carrier.get_sale_price()
-
-        cost_line = None
-        products = [line.product for line in self.lines or []
-                if getattr(line, 'product', None)]
-        stockable = any(product.type in ('goods', 'assets')
-            for product in products)
-        if cost and currency_id and stockable:
             today = Date.today()
             date = self.sale_date or today
             with Transaction().set_context(date=date):
-                cost = Currency.compute(Currency(currency_id), cost,
-                    self.currency, round=False)
+                return Currency.compute(
+                    Currency(currency_id), cost, self.currency, round=False)
+        return 0
+
+    def set_shipment_cost(self):
+        cost_line = None
+        cost = self.compute_shipment_cost()
+        if cost:
             cost_line = self.get_shipment_cost_line(cost)
 
         removed = []
