@@ -298,6 +298,11 @@ class Customer(CustomerMixin, Abstract, ModelView):
         'sale.reporting.customer.time_series', 'customer', "Time Series")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('customer', 'ASC'))
+
+    @classmethod
     def _column_id(cls, tables):
         sale = tables['line.sale']
         return sale.party
@@ -340,6 +345,11 @@ class Product(ProductMixin, Abstract, ModelView):
 
     time_series = fields.One2Many(
         'sale.reporting.product.time_series', 'product', "Time Series")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('product', 'ASC'))
 
     @classmethod
     def _column_id(cls, tables):
@@ -421,6 +431,11 @@ class Category(CategoryMixin, Abstract, ModelView):
         'sale.reporting.category.time_series', 'category', "Time Series")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('category', 'ASC'))
+
+    @classmethod
     def _column_id(cls, tables):
         template_category = tables['line.product.template_category']
         return template_category.category
@@ -447,6 +462,11 @@ class CategoryTree(ModelSQL, ModelView):
         fields.Integer("Currency Digits"), 'get_currency_digits')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('name', 'ASC'))
+
+    @classmethod
     def table_query(cls):
         pool = Pool()
         Category = pool.get('product.category')
@@ -458,6 +478,19 @@ class CategoryTree(ModelSQL, ModelView):
         Category = pool.get('product.category')
         categories = Category.browse(categories)
         return {c.id: c.name for c in categories}
+
+    @classmethod
+    def order_name(cls, tables):
+        pool = Pool()
+        Category = pool.get('product.category')
+        table, _ = tables[None]
+        if 'category' not in tables:
+            category = Category.__table__()
+            tables['category'] = {
+                None: (category, table.id == category.id),
+                }
+        return Category.name.convert_order(
+                'name', tables['category'], Category)
 
     def time_series_all(self):
         return []
@@ -569,6 +602,11 @@ class Country(CountryMixin, Abstract):
         'sale.reporting.country.time_series', 'country', "Time Series")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('country', 'ASC'))
+
+    @classmethod
     def _column_id(cls, tables):
         address = tables['line.sale.shipment_address']
         return address.country
@@ -613,6 +651,11 @@ class Subdivision(SubdivisionMixin, Abstract):
     time_series = fields.One2Many(
         'sale.reporting.country.subdivision.time_series', 'subdivision',
         "Time Series")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('subdivision', 'ASC'))
 
     @classmethod
     def _column_id(cls, tables):

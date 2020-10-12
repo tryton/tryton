@@ -103,6 +103,7 @@ this repository contains the full copyright notices and license terms. -->
                 name="domain"
                 eval="[('customer', '=', Eval('active_id', -1))]"
                 pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_customer_time_series_list_view1">
             <field name="sequence" eval="10"/>
@@ -228,6 +229,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('product', '=', Eval('active_id', -1))]"
                 pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_product_time_series_list_view1">
             <field name="sequence" eval="10"/>
@@ -360,6 +362,7 @@ this repository contains the full copyright notices and license terms. -->
                 name="domain"
                 eval="[('category', '=', Eval('active_id', -1))]"
                 pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_category_time_series_list_view1">
             <field name="sequence" eval="10"/>
@@ -465,6 +468,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"
                 eval="[('country', '=', Eval('active_id', -1))]"
                 pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_country_time_series_view1">
             <field name="sequence" eval="10"/>
@@ -524,6 +528,7 @@ this repository contains the full copyright notices and license terms. -->
                 name="domain"
                 eval="[('subdivision', '=', Eval('active_id', -1))]"
                 pyson="1"/>
+            <field name="order" eval="[('date', 'DESC')]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_reporting_country_subdivision_time_series_view1">
             <field name="sequence" eval="10"/>
