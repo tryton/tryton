@@ -26,7 +26,7 @@ class SaleSecondaryMixin:
             },
         depends=['sale_secondary_uom'],
         help="The coefficient for the formula:\n"
-        "coefficient (sale unit) = 1 (secondary unit)")
+        "1 (sale unit) = coefficient (secondary unit)")
     sale_secondary_uom_rate = fields.Float(
         "Sale Secondary UOM Rate", digits=uom_conversion_digits,
         states={
@@ -35,7 +35,7 @@ class SaleSecondaryMixin:
             },
         depends=['sale_secondary_uom'],
         help="The coefficient for the formula:\n"
-        "1 (sale unit) = coefficient (secondary unit)")
+        "coefficient (sale unit) = 1 (secondary unit)")
 
     @fields.depends('sale_secondary_uom_factor')
     def on_change_sale_secondary_uom_factor(self):
