@@ -209,7 +209,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def check_password(cls, password, hash_):
         if not hash_:
-            return False
+            return False, None
         try:
             return CRYPT_CONTEXT.verify_and_update(password, hash_)
         except ValueError:
