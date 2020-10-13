@@ -211,10 +211,7 @@ class WebVueStorefrontTestCase(ModuleTestCase):
                         })
 
             self.assertFalse(result)
-            try:
-                reset_password.assert_called_once()
-            except AttributeError:
-                reset_password.assert_called()
+            reset_password.assert_called_once_with(ANY)
 
     @with_transaction(user=0)
     def test_user_change_password(self):
