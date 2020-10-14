@@ -555,6 +555,32 @@ class ModelSQLTranslationTestCase(unittest.TestCase):
 
         Transaction().commit()
 
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        cls.restore_language()
+
+    @classmethod
+    @with_transaction()
+    def restore_language(cls):
+        pool = Pool()
+        Language = pool.get('ir.lang')
+        Configuration = pool.get('ir.configuration')
+
+        english, = Language.search([('code', '=', 'en')])
+        english.translatable = True
+        english.save()
+
+        config = Configuration(1)
+        config.language = 'en'
+        config.save()
+
+        Language.write(Language.search([('code', '!=', 'en')]), {
+                'translatable': False,
+                })
+
+        Transaction().commit()
+
     @with_transaction()
     def test_create_default_language(self):
         "Test create default language"
