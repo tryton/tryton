@@ -34,7 +34,7 @@ class Line(metaclass=PoolMeta):
     __name__ = 'sale.line'
 
     productions = fields.One2Many(
-        'production', 'origin', "Production", readonly=True)
+        'production', 'origin', "Productions", readonly=True)
 
     @property
     def has_supply(self):
