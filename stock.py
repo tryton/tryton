@@ -29,7 +29,7 @@ class Location(metaclass=PoolMeta):
         help="Where the production components are picked from.\n"
         "Leave empty to use the warehouse storage location.")
     production_output_location = fields.Many2One(
-        'stock.location', "Proudction Output",
+        'stock.location', "Production Output",
         states={
             'invisible': Eval('type') != 'warehouse',
             },
