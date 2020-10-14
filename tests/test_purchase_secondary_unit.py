@@ -14,6 +14,7 @@ from trytond.tests.test_tryton import doctest_checker
 class PurchaseSecondaryUnitTestCase(ModuleTestCase):
     'Test Purchase Secondary Unit module'
     module = 'purchase_secondary_unit'
+    extras = ['account_invoice_secondary_unit', 'stock_secondary_unit']
 
 
 def suite():
