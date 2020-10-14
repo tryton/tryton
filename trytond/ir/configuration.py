@@ -31,3 +31,19 @@ class Configuration(ModelSingleton, ModelSQL):
     def check(self):
         "Check configuration coherence on pool initialisation"
         pass
+
+    @classmethod
+    def create(cls, vlist):
+        records = super().create(vlist)
+        cls._get_language_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        cls._get_language_cache.clear()
+
+    @classmethod
+    def delete(cls, records):
+        super().delete(records)
+        cls._get_language_cache.clear()
