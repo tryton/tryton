@@ -214,11 +214,7 @@ class Sale(metaclass=PoolMeta):
         removed = []
         lines = list(self.lines or [])
         for line in self.lines:
-            if line.type != 'line' or not line.shipment_cost:
-                continue
-            if cost_line and line.shipment_cost == cost:
-                cost_line = None
-            else:
+            if line.type == 'line' and line.shipment_cost:
                 lines.remove(line)
                 removed.append(line)
         if cost_line:
