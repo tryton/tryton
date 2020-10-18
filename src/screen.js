@@ -1157,9 +1157,11 @@
             }
             group.screens.push(this);
             this.tree_states_done = [];
-            this.order = null;
             this.group = group;
             this.model = group.model;
+            if (this.group.parent) {
+                this.order = null;
+            }
             if (group && group.length) {
                 this.current_record = group[0];
             } else {
