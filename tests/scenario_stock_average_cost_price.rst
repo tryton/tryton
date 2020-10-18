@@ -152,6 +152,17 @@ Reduce Cost Price by 80%, to force to write recomputed price later::
     >>> product.cost_price
     Decimal('140.0000')
 
+Increase Cost Price by 10% using Template wizard::
+
+    >>> modify_cost_price = Wizard(
+    ...     'product.modify_cost_price', [product.template])
+    >>> modify_cost_price.form.cost_price = 'cost_price * 1.1'
+    >>> modify_cost_price.form.date = today + datetime.timedelta(days=1)
+    >>> modify_cost_price.execute('modify')
+    >>> product.reload()
+    >>> product.cost_price
+    Decimal('154.0000')
+
 Send one product we don't have in stock::
 
     >>> outgoing_move = StockMove()
