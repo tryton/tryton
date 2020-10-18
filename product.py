@@ -34,18 +34,21 @@ class Product(metaclass=PoolMeta):
                 and context.get('_datetime')
                 and self.type in ['goods', 'assets']):
             cost_price = self.get_cost_price_at(
-                context['_datetime'].date())
+                context['_datetime'].date(), **pattern)
             if cost_price is not None:
                 return cost_price
         return super().get_multivalue(name, **pattern)
 
-    def get_cost_price_at(self, date):
+    def get_cost_price_at(self, date, **pattern):
         pool = Pool()
         CostHistory = pool.get('product.product.cost_history')
-        records = CostHistory.search([
-                ('date', '<=', date),
-                ('product', '=', self.id),
-                ], limit=1, order=[('date', 'DESC')])
+        company = pattern.get(
+            'company', Transaction().context.get('company'))
+        with Transaction().set_context(company=company):
+            records = CostHistory.search([
+                    ('date', '<=', date),
+                    ('product', '=', self.id),
+                    ], limit=1, order=[('date', 'DESC')])
         if records:
             record, = records
             return round_price(record.cost_price)
@@ -134,7 +137,8 @@ class ProductCostHistory(ModelSQL, ModelView):
                 price_date.as_('date'),
                 history.product.as_('product'),
                 cost_price.as_('cost_price'),
-                where=~template.type.in_(['goods', 'assets'])))
+                where=~template.type.in_(['goods', 'assets'])
+                & cls._non_moves_clause(history)))
 
         query |= price_history.select(
             Max(price_history.id).as_('id'),
@@ -147,6 +151,10 @@ class ProductCostHistory(ModelSQL, ModelView):
             Max(price_history.cost_price).as_('cost_price'),
             group_by=[price_history.date, price_history.product])
         return query
+
+    @classmethod
+    def _non_moves_clause(cls, history_table):
+        return history_table.company == Transaction().context.get('company')
 
     def get_rec_name(self, name):
         return str(self.date)
