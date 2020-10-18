@@ -404,12 +404,12 @@ class Screen(SignalEvent):
                 fields[name] = field.attrs
                 fields_views[name] = field.views
         self.tree_states_done.clear()
-        self.order = None
         self.__group = group
         self.parent = group.parent
         self.parent_name = group.parent_name
         if self.parent:
             self.filter_widget = None
+            self.order = None
         if len(group):
             self.current_record = group[0]
         else:
