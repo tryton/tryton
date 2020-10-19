@@ -288,13 +288,9 @@ class AEAT303(AEATReport):
 
         amount_to_compensate = Decimal(0)
         fiscalyear = periods[0].fiscalyear
-        start_periods = Period.search([
-                ('fiscalyear', '=', fiscalyear.id),
-                ('end_date', '<=', start_date),
-                ])
         with transaction.set_context({
                     'fiscalyear': fiscalyear.id,
-                    'periods': [p.id for p in start_periods],
+                    'to_date': end_date,
                     }):
             for account in Account.search([
                         ('company', '=', fiscalyear.company.id),
