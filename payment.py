@@ -169,7 +169,7 @@ class Payment(metaclass=PoolMeta):
             local_amount = self.amount
 
         move = Move(journal=self.journal.clearing_journal, origin=self,
-            date=date, period=period)
+            date=date, period=period, company=self.company)
         line = Line()
         if self.kind == 'payable':
             line.debit, line.credit = local_amount, 0
