@@ -143,7 +143,10 @@ class TrytondWSGI(object):
                     break
             else:
                 if isinstance(data, Exception):
-                    response = InternalServerError(original_exception=data)
+                    try:
+                        response = InternalServerError(original_exception=data)
+                    except TypeError:
+                        response = InternalServerError(data)
                 else:
                     response = Response(data)
         return response
