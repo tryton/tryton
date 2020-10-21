@@ -1269,6 +1269,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_21_servicios-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_21_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_21_servicios-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_21_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10-invoice">
             <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
             <field name="tax" ref="iva_sop_10"/>
@@ -1279,6 +1293,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
             <field name="tax" ref="iva_sop_10"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10_servicios-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_10_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_corrientes-iva_sop_10_servicios-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_corrientes"/>
+            <field name="tax" ref="iva_sop_10_servicios"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
@@ -1382,6 +1410,20 @@ this repository contains the full copyright notices and license terms. -->
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion-iva_sop_importacion_servicios-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion"/>
+            <field name="tax" ref="iva_sop_importacion_servicios"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_importacion-iva_sop_importacion_servicios-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_importacion"/>
+            <field name="tax" ref="iva_sop_importacion_servicios"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
         <record model="account.tax.code.template" id="vat_code_iva_deducible_tax_importacion_inversion">
             <field name="name">Por cuotas soportadas en las importaciones de bienes de inversión</field>
             <field name="code">35</field>
@@ -1420,6 +1462,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario-iva_sop_intracomunitario-credit">
             <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario"/>
             <field name="tax" ref="iva_sop_intracomunitario_1"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario-iva_sop_intracomunitario_servicios-invoice">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_1"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template" id="vat_code_iva_deducible_tax_intracomunitario-iva_sop_intracomunitario_servicios-credit">
+            <field name="code" ref="vat_code_iva_deducible_tax_intracomunitario"/>
+            <field name="tax" ref="iva_sop_intracomunitario_servicios_1"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
