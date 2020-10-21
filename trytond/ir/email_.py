@@ -266,7 +266,7 @@ class EmailTemplate(ModelSQL, ModelView):
             'invisible': Bool(Eval('recipients')),
             },
         depends=['recipients'],
-        help="A PYSON expression that generates a list of recipients"
+        help="A PYSON expression that generates a list of recipients "
         'with the record represented by "self".')
     recipients_secondary = fields.Many2One(
         'ir.model.field', "Secondary Recipients",
@@ -284,7 +284,7 @@ class EmailTemplate(ModelSQL, ModelView):
             'invisible': Bool(Eval('recipients_secondary')),
             },
         depends=['recipients_secondary'],
-        help="A PYSON expression that generates a list of secondary recipients"
+        help="A PYSON expression that generates a list of secondary recipients "
         'with the record represented by "self".')
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
@@ -302,7 +302,7 @@ class EmailTemplate(ModelSQL, ModelView):
             'invisible': Bool(Eval('recipients_hidden')),
             },
         depends=['recipients_hidden'],
-        help="A PYSON expression that generates a list of hidden recipients"
+        help="A PYSON expression that generates a list of hidden recipients "
         'with the record represented by "self".')
     subject = fields.Char("Subject", translate=True)
     body = fields.Text("Body", translate=True)
