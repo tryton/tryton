@@ -732,6 +732,8 @@ class ModelSQL(ModelStorage):
             field = cls._fields.get(f)
             if field and field.sql_type():
                 columns.append(field.sql_column(table).as_(f))
+                if backend.name == 'sqlite':
+                    columns[-1].output_name += ' [%s]' % field.sql_type().base
             elif f in {'_write', '_delete'}:
                 if not callable(cls.table_query):
                     rule_domain = Rule.domain_get(

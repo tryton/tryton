@@ -56,7 +56,7 @@ class UnionMixin:
             if name == 'id' or hasattr(field, 'set'):
                 continue
             column = cls.union_column(name, field, table, Model)
-            columns.append(Cast(column, field.sql_type().base).as_(name))
+            columns.append(field.sql_cast(column).as_(name))
         return table, columns
 
     @classmethod
