@@ -459,6 +459,7 @@ class Payment(Workflow, ModelSQL, ModelView):
         pass
 
     @classmethod
+    @Workflow.transition('processing')
     def process(cls, payments, group):
         pool = Pool()
         Group = pool.get('account.payment.group')
