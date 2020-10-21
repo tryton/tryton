@@ -116,7 +116,7 @@ class CellCache(list):
 
 class Cell(object):
 
-    def set_editable(self, record):
+    def set_editable(self):
         pass
 
 
@@ -264,15 +264,19 @@ class GenericText(Cell):
         if callback:
             callback()
 
-    def set_editable(self, record):
-        if not record or not self.editable:
+    def set_editable(self):
+        if not self.editable:
             return
+        store = self.view.treeview.get_model()
+        record = store.get_value(store.get_iter(self.editable_path), 0)
         self.editable.set_text(self.get_textual_value(record))
 
     def editing_started(self, cell, editable, path):
         def remove(editable):
             self.editable = None
+            self.editable_path = None
         self.editable = editable
+        self.editable_path = path
         editable.connect('remove-widget', remove)
         return False
 
@@ -840,9 +844,11 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         if callback:
             callback()
 
-    def set_editable(self, record):
-        if not record or not self.editable:
+    def set_editable(self):
+        if not self.editable:
             return
+        store = self.view.treeview.get_model()
+        record = store.get_value(store.get_iter(self.editable_path), 0)
         field = record[self.attrs['name']]
         value = field.get(record)
         self.update_selection(record, field)
