@@ -89,7 +89,10 @@ def _set_value(record, field):
     if field.startswith('_parent_'):
         field = field[8:]  # Strip '_parent_'
     if not hasattr(record, field):
-        setattr(record, field, None)
+        default = None
+        if hasattr(record, '_defaults') and field in record._defaults:
+            default = record._defaults[field]()
+        setattr(record, field, default)
     elif nested:
         parent = getattr(record, field)
         if parent:
