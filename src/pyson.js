@@ -297,7 +297,7 @@
             return ['boolean'];
         },
         __string_params__: function() {
-            return this._statements;
+            return [this._statements];
         }
     });
 
