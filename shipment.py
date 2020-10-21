@@ -1214,7 +1214,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Move.do([m for s in shipments for m in s.inventory_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=True)
-        Move.assign([m for s in shipments for m in s.outgoing_moves])
 
     @classmethod
     @ModelView.button
@@ -1223,8 +1222,6 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def pack(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
-        Move.do([m for s in shipments for m in s.inventory_moves])
-        cls._sync_inventory_to_outgoing(shipments, quantity=True)
         Move.assign([m for s in shipments for m in s.outgoing_moves])
 
     def _sync_move_key(self, move):
