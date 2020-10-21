@@ -153,10 +153,10 @@ Check sale reporting per customer::
     >>> len(time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.customer.id, str(r.date), r.number, r.revenue)
+    ...     sorted((r.customer.id, r.date, r.number, r.revenue)
     ...         for r in time_series) == sorted(
-    ...     [(customer1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...     (customer2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     [(customer1.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (customer2.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
 
 Check sale reporting per product::
@@ -176,11 +176,11 @@ Check sale reporting per product::
     >>> len(time_series)
     3
     >>> with config.set_context(context=context):
-    ...     sorted((r.product.id, str(r.date), r.number, r.revenue)
+    ...     sorted((r.product.id, r.date, r.number, r.revenue)
     ...         for r in time_series) == sorted(
-    ...     [(product1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...     (product2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...     (product1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     [(product1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
+    ...     (product2.id, sale1.sale_date.replace(day=1), 1, Decimal('10')),
+    ...     (product1.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
 
 Check sale reporting per categories::
@@ -204,15 +204,15 @@ Check sale reporting per categories::
     >>> len(time_series)
     7
     >>> with config.set_context(context=context):
-    ...     sorted((r.category.id, str(r.date), r.number, r.revenue)
+    ...     sorted((r.category.id, r.date, r.number, r.revenue)
     ...         for r in time_series) == sorted(
-    ...     [(category_child1.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...     (category_root2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('20')),
-    ...     (category_child2.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...     (category_child1.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...     (category_root2.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10')),
-    ...     (account_category.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...     (account_category.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     [(category_child1.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
+    ...     (category_root2.id, sale1.sale_date.replace(day=1), 1, Decimal('20')),
+    ...     (category_child2.id, sale1.sale_date.replace(day=1), 1, Decimal('10')),
+    ...     (category_child1.id, sale2.sale_date.replace(day=1), 1, Decimal('10')),
+    ...     (category_root2.id, sale2.sale_date.replace(day=1), 1, Decimal('10')),
+    ...     (account_category.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (account_category.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
     >>> len(tree)
     5
@@ -246,16 +246,16 @@ Check sale reporting per regions::
     >>> len(country_time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.country.id, str(r.date), r.number, r.revenue)
+    ...     sorted((r.country.id, r.date, r.number, r.revenue)
     ...         for r in country_time_series) == sorted(
-    ...     [(country_us.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...     (country_us.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     [(country_us.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (country_us.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
     >>> len(subdivision_time_series)
     2
     >>> with config.set_context(context=context):
-    ...     sorted((r.subdivision.id, str(r.date), r.number, r.revenue)
+    ...     sorted((r.subdivision.id, r.date, r.number, r.revenue)
     ...         for r in subdivision_time_series) == sorted(
-    ...     [(california.id, str(sale1.sale_date.replace(day=1)), 1, Decimal('30')),
-    ...     (new_york.id, str(sale2.sale_date.replace(day=1)), 1, Decimal('10'))])
+    ...     [(california.id, sale1.sale_date.replace(day=1), 1, Decimal('30')),
+    ...     (new_york.id, sale2.sale_date.replace(day=1), 1, Decimal('10'))])
     True
