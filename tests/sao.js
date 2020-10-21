@@ -251,7 +251,7 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
                 'decode(And([false, false, true]))');
         QUnit.strictEqual(new Sao.PYSON.And([false, true, true]).toString(),
-                "And(false, true, true)");
+                "And([false, true, true])");
     });
 
     QUnit.test('PYSON Or', function() {
@@ -319,7 +319,7 @@
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
                 'decode(Or([false, false, true]))');
         QUnit.strictEqual(new Sao.PYSON.Or([false, true, true]).toString(),
-                "Or(false, true, true)");
+                "Or([false, true, true])");
     });
 
     QUnit.test('PYSON Equal', function() {
