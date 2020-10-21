@@ -88,7 +88,31 @@ class ModelView(unittest.TestCase):
         target.name = 'foo'
         self.assertEqual(record._changed_values, {
                 'targets': {
-                    'update': [{'id': 1, 'name': 'foo'}],
+                    'add': [(0, {'id': 1, 'name': 'foo'})],
+                    },
+                })
+
+    @with_transaction()
+    def test_changed_values_stored(self):
+        "Test stored changed values"
+        pool = Pool()
+        Model = pool.get('test.modelview.stored.changed_values')
+        Target = pool.get('test.modelview.stored.changed_values.target')
+
+        record = Model()
+        record.targets = [Target(name="foo"), Target(name="bar")]
+        record.save()
+        target1, target2 = record.targets
+
+        record = Model(record.id)
+        target1.name = "test"
+        record.targets = [target1, Target(name="baz")]
+
+        self.assertEqual(record._changed_values, {
+                'targets': {
+                    'delete': [target2.id],
+                    'update': [{'id': target1.id, 'name': "test"}],
+                    'add': [(1, {'id': None, 'name': "baz"})],
                     },
                 })
 

@@ -35,6 +35,20 @@ class ModelViewChangedValuesStoredTarget(ModelSQL):
     name = fields.Char("Name")
 
 
+class ModelViewStoredChangedValues(ModelSQL, ModelView):
+    "ModelView Stored Changed Values Stored"
+    __name__ = 'test.modelview.stored.changed_values'
+    targets = fields.One2Many(
+        'test.modelview.stored.changed_values.target', 'parent', "Targets")
+
+
+class ModelViewStoredChangedValuesTarget(ModelSQL, ModelView):
+    "ModelSQL Stored Changed Values Target"
+    __name__ = 'test.modelview.stored.changed_values.target'
+    name = fields.Char("Name")
+    parent = fields.Many2One('test.modelview.stored.changed_values', "Parent")
+
+
 class ModelViewButton(ModelView):
     'ModelView Button'
     __name__ = 'test.modelview.button'
@@ -209,6 +223,8 @@ def register(module):
         ModelViewChangedValues,
         ModelViewChangedValuesTarget,
         ModelViewChangedValuesStoredTarget,
+        ModelViewStoredChangedValues,
+        ModelViewStoredChangedValuesTarget,
         ModelViewButton,
         ModelViewButtonDepends,
         ModelViewButtonAction,
