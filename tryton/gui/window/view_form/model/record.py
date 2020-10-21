@@ -478,7 +478,8 @@ class Record(SignalEvent):
                         fields.ReferenceField)):
                 related = fieldname + '.'
                 self.value[related] = values.get(related) or {}
-            self.group.fields[fieldname].set_on_change(self, value)
+            # Load fieldname before setting value
+            self[fieldname].set_on_change(self, value)
 
     def reload(self, fields=None):
         if self.id < 0:
@@ -603,7 +604,8 @@ class Record(SignalEvent):
                     context=self.get_context())
             except RPCException:
                 return
-            self.group.fields[fieldname].set_on_change(self, result)
+            # Load fieldname before setting value
+            self[fieldname].set_on_change(self, result)
 
     def autocomplete_with(self, field_name):
         for fieldname, fieldinfo in self.group.fields.items():
