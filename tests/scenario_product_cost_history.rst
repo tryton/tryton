@@ -104,10 +104,10 @@ Check cost history::
     >>> [c.cost_price for c in ProductCostHistory.find([], order=order)] == [
     ...     Decimal('100.0000'), Decimal('120.0000'), Decimal('110.0000')]
     True
-    >>> [str(c.date) for c in ProductCostHistory.find([], order=order)] == [
-    ...     str(today - dt.timedelta(days=2)),
-    ...     str(today - dt.timedelta(days=1)),
-    ...     str(today)]
+    >>> [c.date for c in ProductCostHistory.find([], order=order)] == [
+    ...     today - dt.timedelta(days=2),
+    ...     today - dt.timedelta(days=1),
+    ...     today]
     True
 
 Check cost price history on product::
