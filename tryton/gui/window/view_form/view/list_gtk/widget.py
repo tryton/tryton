@@ -148,7 +148,7 @@ class Cell(object):
             cell.set_property('foreground', foreground)
             cell.set_property('foreground-set', bool(foreground))
 
-    def set_editable(self, record):
+    def set_editable(self):
         pass
 
 
@@ -294,15 +294,18 @@ class GenericText(Cell):
         if callback:
             callback()
 
-    def set_editable(self, record):
-        if not record or not self.editable:
+    def set_editable(self):
+        if not self.editable:
             return
+        record, field = self._get_record_field_from_path(self.editable_path)
         self.editable.set_text(self.get_textual_value(record))
 
     def editing_started(self, cell, editable, path):
         def remove(editable):
             self.editable = None
+            self.editable_path = None
         self.editable = editable
+        self.editable_path = path
         editable.connect('remove-widget', remove)
         return False
 
@@ -977,10 +980,10 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
         if callback:
             callback()
 
-    def set_editable(self, record):
-        if not record or not self.editable:
+    def set_editable(self):
+        if not self.editable:
             return
-        field = record[self.attrs['name']]
+        record, field = self._get_record_field_from_path(self.editable_path)
         value = self.get_value(record, field)
         self.update_selection(record, field)
         self.set_popdown_value(self.editable, value)
@@ -988,6 +991,10 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
     def editing_started(self, cell, editable, path):
         super(Selection, self).editing_started(cell, editable, path)
         record, field = self._get_record_field_from_path(path)
+        # Combobox does not emit remove-widget when focus is changed
+        self.editable.connect(
+            'editing-done',
+            lambda *a: self.editable.emit('remove-widget'))
 
         def set_value(*a):
             return self.set_value(editable, record, field)
