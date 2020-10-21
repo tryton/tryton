@@ -95,6 +95,9 @@ class Move(metaclass=PoolMeta):
             move_qty = Uom.compute_qty(self.product.default_uom, move_qty,
                     move.uom, round=False)
             move.fifo_quantity = (move.fifo_quantity or 0.0) + move_qty
+            # Due to float, the fifo quantity result can exceed the quantity.
+            assert move.quantity >= move.fifo_quantity - move.uom.rounding
+            move.fifo_quantity = min(move.fifo_quantity, move.quantity)
             to_save.append(move)
         if to_save:
             # TODO save in do method when product change
