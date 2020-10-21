@@ -622,11 +622,14 @@
         is_loaded: function(name) {
             return ((this.id < 0) || (name in this._loaded));
         },
-        load: function(name) {
+        load: function(name, async) {
             var fname;
             var prm;
+            if (async === undefined) {
+                async = true;
+            }
             if (this.is_loaded(name)) {
-                return jQuery.when();
+                return async? jQuery.when() : this.model.fields[name];
             }
             if (this.group.prm.state() == 'pending') {
                 return this.group.prm.then(function() {
@@ -751,9 +754,9 @@
                     context[this.model.name + '.' + fname] = 'size';
                 }
             }
-            prm = this.model.execute('read', [Object.keys(id2record).map(
+            var result = this.model.execute('read', [Object.keys(id2record).map(
                         function (e) { return parseInt(e, 10); }),
-                    fnames_to_fetch], context);
+                    fnames_to_fetch], context, async);
             var succeed = function(values, exception) {
                 if (exception === undefined) exception = false;
                 var id2value = {};
@@ -794,8 +797,17 @@
                 }
                 return succeed(failed_values, true);
             };
-            this.group.prm = prm.then(succeed, failed);
-            return this.group.prm;
+            if (async) {
+                this.group.prm = result.then(succeed, failed);
+                return this.group.prm;
+            } else {
+                if (result) {
+                    succeed(result);
+                } else {
+                    failed();
+                }
+                return this.model.fields[name];
+            }
         },
         set: function(values, validate) {
             if (validate === undefined) {
@@ -1130,7 +1142,7 @@
                 } catch (e) {
                     return;
                 }
-                this.model.fields[fieldname].set_on_change(this, result);
+                this.load(fieldname, false).set_on_change(this, result);
             }
         },
         set_on_change: function(values) {
@@ -1147,7 +1159,7 @@
                     var related = fieldname + '.';
                     this._values[related] = values[related] || {};
                 }
-                this.model.fields[fieldname].set_on_change(this, value);
+                this.load(fieldname, false).set_on_change(this, value);
             }
         },
         autocomplete_with: function(fieldname) {
