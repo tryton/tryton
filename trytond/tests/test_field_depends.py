@@ -27,6 +27,24 @@ class FieldDependsTestCase(unittest.TestCase):
 
         self.assertIsNone(record.name)
 
+    def test_empty_depends_default(self):
+        "Test depends are set with default value if empty"
+
+        class Model(object):
+            @fields.depends('name')
+            def dependant(self):
+                pass
+
+            @classmethod
+            def default_name(cls):
+                return "foo"
+        Model._defaults = {'name': Model.default_name}
+        record = Model()
+
+        record.dependant()
+
+        self.assertEqual(record.name, "foo")
+
     def test_set_depends(self):
         'Test depends are not modified if set'
 
