@@ -218,9 +218,11 @@ Returns a date time object which represents the values of variables named by
 the *arguments* explained below.
 Missing values of arguments named by  ``year``, ``month``, ``day``, ``hour``,
 ``minute``, ``second``, ``microseconds`` take their defaults from ``start`` or
-the actual date and time.
+the actual date and time in `UTC`_.
 When values of arguments named by ``delta_*`` are given, these are added  to
 the appropriate attributes in a date and time preserving manner.
+
+.. _`UTC`: https://en.wikipedia.org/wiki/Coordinated_Universal_Time
 
 Arguments:
 
