@@ -610,7 +610,7 @@ class DateTime(Date):
 
     @staticmethod
     def eval(dct, context):
-        return datetime.datetime.now() + relativedelta(
+        return datetime.datetime.utcnow() + relativedelta(
             year=dct['y'],
             month=dct['M'],
             day=dct['d'],
