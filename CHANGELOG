@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Support import of timedelta data
 * Add symbol widget
 * Add sql_pairing tool
