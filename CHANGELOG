@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add wizard to delete customer source
 * Add webhook for payment intent canceled
 
