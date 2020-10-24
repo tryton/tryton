@@ -843,9 +843,10 @@ class RecordActivity(Workflow, ModelSQL, ModelView):
         cls._cancel_opposite(record_activities)
 
         now = datetime.datetime.now()
+        smtpd_datamanager = Transaction().join(SMTPDataManager())
         for record_activity in record_activities:
             record_activity.activity.execute(
-                record_activity, smtpd_datamanager=SMTPDataManager(), **kwargs)
+                record_activity, smtpd_datamanager=smtpd_datamanager, **kwargs)
             record_activity.at = now
             record_activity.state = 'done'
         cls.save(record_activities)
