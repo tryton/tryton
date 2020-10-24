@@ -1,3 +1,4 @@
+* Report credit note on modification tax codes
 * Remove support for Python 3.5
 * Compute ES VAT List and EC Operation List in company currency
 * Link recargo tax with its related VAT taxes
