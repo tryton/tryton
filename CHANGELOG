@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Allow defining the tax date on taxable lines
 * Add General Ledger per account and party
 * Add start/end date to tax rule line
