@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Ignore balance of non-deferral move
 * Add a button to manually reapply rule engine
 
