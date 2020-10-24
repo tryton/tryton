@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add stock move filter per category and product
 * Allow posted landed cost to be cancelled
 * Add landed cost relate from supplier shipment
