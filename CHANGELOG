@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Rename purchase state from cancel to cancelled
 * Add window tab for exception states
 
