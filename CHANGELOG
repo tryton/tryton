@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add with agent option to credit invoice
 * Add employee on agent selection
 
