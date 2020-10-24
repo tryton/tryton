@@ -142,6 +142,7 @@
             if ((position === undefined) || (position == -1)) {
                 position = this.length;
             }
+            position = Math.min(position, this.length);
             if (changed === undefined) {
                 changed = true;
             }
