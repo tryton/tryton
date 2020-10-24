@@ -404,6 +404,7 @@ class WinForm(NoModal, InfoBar):
         if (self.screen.current_record
                 and not readonly
                 and response_id in cancel_responses):
+            added = 'id' in self.screen.current_record.modified_fields
             if (self.screen.current_record.id < 0
                     or self.save_current):
                 self.screen.cancel_current(self._initial_value)
@@ -411,6 +412,8 @@ class WinForm(NoModal, InfoBar):
                 self.screen.current_record.cancel()
                 self.screen.current_record.reload()
                 self.screen.current_record.signal('record-changed')
+            if added:
+                self.screen.current_record.modified_fields.setdefault('id')
             result = False
         else:
             result = response_id not in cancel_responses
