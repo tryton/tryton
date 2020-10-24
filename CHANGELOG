@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add relate to locations quantity
 * Add lots by warehouse relate
 
