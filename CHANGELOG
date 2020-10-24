@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add taxes for service purchase outside Europe
 * Add base for service sale inside Europe to code 0206
 * Register service sales outside Europe in code 0033
