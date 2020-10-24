@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Format timedelta in CSV export
 * Manage symbol widget
 * Fallback to model name as title
