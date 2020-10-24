@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add picked step to customer shipment workflow
 * Add cron task to reschedule past shipments
 * Allow lost and found on inventory moves of shipments
