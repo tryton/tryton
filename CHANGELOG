@@ -1,3 +1,4 @@
+* Remove support for Python 3.5
 * Add resource relate on notification log
 * Add optional subject to notifications
 
