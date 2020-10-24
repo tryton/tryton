@@ -51,7 +51,7 @@ def user_application(request, pool):
         return key
     elif request.method == 'DELETE':
         count = LoginAttempt.count(login)
-        if count > config.get('session', 'max_attempt', default=5):
+        if count > config.getint('session', 'max_attempt', default=5):
             LoginAttempt.add(login)
             abort(429)
         Transaction().atexit(time.sleep, 2 ** count - 1)
