@@ -91,6 +91,7 @@ class Group(SignalEvent, list):
 
     def insert(self, pos, record):
         assert record.group is self
+        pos = min(pos, len(self))
         if pos >= 1:
             self.__getitem__(pos - 1).next[id(self)] = record
         if pos < self.__len__():
