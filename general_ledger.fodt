@@ -894,7 +894,7 @@
       <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;line.description or &apos;&apos;&gt;</text:placeholder><text:line-break/><text:placeholder text:placeholder-type="text">&lt;line.move_description or &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table3.G11" office:value-type="string">
-      <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;line.origin.rec_name if line.origin and line.origin.id &gt;= 0 else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;getattr(line.origin, &apos;rec_name&apos;, &apos;&apos;)&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table3.H11" office:value-type="string">
       <text:p text:style-name="P10"><text:placeholder text:placeholder-type="text">&lt;line.state_string&gt;</text:placeholder></text:p>
