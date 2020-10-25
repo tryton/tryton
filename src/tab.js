@@ -1412,7 +1412,8 @@
             var prm = jQuery.when();
             if ((wizard.state !== wizard.end_state) &&
                 (wizard.end_state in wizard.states)) {
-                prm = wizard.response(wizard.end_state);
+                prm = wizard.response(
+                    wizard.states[wizard.end_state].attributes);
             }
             var dfd = jQuery.Deferred();
             prm.always(function() {
