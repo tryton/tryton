@@ -26,6 +26,14 @@ module.exports = function(grunt) {
       'src/plugins.js',
       'src/html_sanitizer.js'
   ];
+  var less_paths = [
+      'src',
+      'bower_components',
+      'bower_components/bootstrap',
+      'bower_components/bootstrap/less',
+      'bower_components/bootstrap-rtl-ondemand/less',
+      'bower_components/tempusdominus-bootstrap-3/src/less/'
+  ];
 
   // Project configuration.
   grunt.initConfig({
@@ -100,14 +108,7 @@ module.exports = function(grunt) {
     less: {
         dev: {
             options: {
-                paths: [
-                    'src',
-                    'bower_components',
-                    'bower_components/bootstrap',
-                    'bower_components/bootstrap/less',
-                    'bower_components/bootstrap-rtl-ondemand/less',
-                    'bower_components/tempusdominus-bootstrap-3/src/less/',
-                ]
+                paths: less_paths,
             },
             files: {
                 'dist/<%= pkg.name %>.css': 'src/sao.less'
@@ -115,13 +116,7 @@ module.exports = function(grunt) {
         },
         'default': {
             options: {
-                paths: [
-                    'src',
-                    'bower_components',
-                    'bower_components/bootstrap/less',
-                    'bower_components/bootstrap-rtl-ondemand/less',
-                    'bower_components/eonasdan-bootstrap-datetimepicker/src/less',
-                ],
+                paths: less_paths,
                 yuicompress: true
             },
             files: {
