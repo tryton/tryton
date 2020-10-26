@@ -496,7 +496,7 @@ class ViewForm(View):
             for w in widgets)
 
     def get_buttons(self):
-        return [b for b in self.state_widgets if isinstance(b, gtk.Button)]
+        return [b for b in self.state_widgets if isinstance(b, Button)]
 
     def reset(self):
         record = self.screen.current_record
