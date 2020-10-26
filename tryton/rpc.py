@@ -3,7 +3,6 @@
 import http.client
 import logging
 import socket
-import ssl
 import os
 try:
     from http import HTTPStatus
@@ -67,7 +66,7 @@ def server_version(host, port):
         result = connection.common.server.version()
         logging.getLogger(__name__).debug(repr(result))
         return result
-    except (Fault, socket.error, ssl.SSLError, ssl.CertificateError) as e:
+    except Exception as e:
         logging.getLogger(__name__).error(e)
         return None
 
