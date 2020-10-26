@@ -70,6 +70,21 @@ class TreeMixinTestCase(unittest.TestCase):
         self.assertEqual(records, [parent])
 
     @with_transaction()
+    def test_search_rec_name_equals_none(self):
+        "Test search_rec_name equals"
+        pool = Pool()
+        Tree = pool.get('test.tree')
+
+        parent = Tree(name="parent")
+        parent.save()
+        record = Tree(name="record", parent=parent)
+        record.save()
+
+        records = Tree.search([('rec_name', '=', None)])
+
+        self.assertEqual(records, [])
+
+    @with_transaction()
     def test_search_rec_name_non_equals(self):
         "Test search_rec_name non equals"
         pool = Pool()
@@ -98,6 +113,51 @@ class TreeMixinTestCase(unittest.TestCase):
         records = Tree.search([('rec_name', '!=', 'parent')])
 
         self.assertEqual(records, [record])
+
+    @with_transaction()
+    def test_search_rec_name_non_equals_none(self):
+        "Test search_rec_name equals"
+        pool = Pool()
+        Tree = pool.get('test.tree')
+
+        parent = Tree(name="parent")
+        parent.save()
+        record = Tree(name="record", parent=parent)
+        record.save()
+
+        records = Tree.search([('rec_name', '!=', None)])
+
+        self.assertEqual(records, [parent, record])
+
+    @with_transaction()
+    def test_search_rec_name_in(self):
+        "Test search_rec_name in"
+        pool = Pool()
+        Tree = pool.get('test.tree')
+
+        parent = Tree(name="parent")
+        parent.save()
+        record = Tree(name="record", parent=parent)
+        record.save()
+
+        records = Tree.search([('rec_name', 'in', ['parent / record'])])
+
+        self.assertEqual(records, [record])
+
+    @with_transaction()
+    def test_search_rec_name_in_toplevel(self):
+        "Test search_rec_name in top-level"
+        pool = Pool()
+        Tree = pool.get('test.tree')
+
+        parent = Tree(name="parent")
+        parent.save()
+        record = Tree(name="record", parent=parent)
+        record.save()
+
+        records = Tree.search([('rec_name', 'in', ['parent'])])
+
+        self.assertEqual(records, [parent])
 
     @with_transaction()
     def test_search_rec_name_like(self):

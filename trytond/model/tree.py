@@ -30,38 +30,41 @@ def tree(parent='parent', name='name', separator=None):
 
             @classmethod
             def search_rec_name(cls, _, clause):
-                if isinstance(clause[2], str):
-                    values = list(reversed(clause[2].split(separator)))
-                else:
-                    values = [[]]
-                    for value in clause[2]:
-                        if value is None:
-                            values[0].append(value)
-                            continue
-                        for i, v in range(reversed(value.split(separator))):
-                            while len(values) <= i:
-                                values.append([])
-                            values[i].append(v)
                 domain = []
-                field = name
-                for value in values:
-                    domain.append((field, clause[1], value.strip()))
-                    field = parent + '.' + field
-                if ((clause[1].endswith('like')
-                            and not clause[2].replace(
-                                '%%', '__').startswith('%'))
-                        or not clause[1].endswith('like')):
-                    if clause[1].startswith('not') or clause[1] == '!=':
-                        operator = '!='
-                        domain.insert(0, 'OR')
-                    else:
-                        operator = '='
-                    top_parent = '.'.join((parent,) * len(values))
-                    domain.append((top_parent, operator, None))
-                if (clause[1].endswith('like')
-                        and clause[2].replace('%%', '__').endswith('%')):
+                if isinstance(clause[2], str):
+                    field = name
+                    values = list(reversed(clause[2].split(separator)))
+                    for value in values:
+                        domain.append((field, clause[1], value.strip()))
+                        field = parent + '.' + field
+                    if ((
+                                clause[1].endswith('like')
+                                and not clause[2].replace(
+                                    '%%', '__').startswith('%'))
+                            or not clause[1].endswith('like')):
+                        if clause[1].startswith('not') or clause[1] == '!=':
+                            operator = '!='
+                            domain.insert(0, 'OR')
+                        else:
+                            operator = '='
+                        top_parent = '.'.join((parent,) * len(values))
+                        domain.append((top_parent, operator, None))
+                    if (clause[1].endswith('like')
+                            and clause[2].replace('%%', '__').endswith('%')):
                         ids = list(map(int, cls.search(domain, order=[])))
                         domain = [(parent, 'child_of', ids)]
+                elif clause[2] is None:
+                    domain.append((name, clause[1], clause[2]))
+                else:
+                    if clause[1].startswith('not'):
+                        operator = '!='
+                        domain.append('AND')
+                    else:
+                        operator = '='
+                        domain.append('OR')
+                    for value in clause[2]:
+                        domain.append(cls.search_rec_name(
+                                name, (clause[0], operator, value)))
                 return domain
 
         @classmethod
