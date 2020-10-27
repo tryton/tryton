@@ -177,7 +177,7 @@ Ignore non assigned moves and pack shipment::
     >>> all(m.state == 'assigned' for m in shipment_out.outgoing_moves)
     True
     >>> len(shipment_out.outgoing_moves)
-    2
+    1
     >>> len(shipment_out.inventory_moves)
     2
     >>> shipment_out.inventory_moves[0].state
@@ -195,14 +195,14 @@ Set the state as Done::
     True
     >>> planned_dates = [m.planned_date for m in
     ...     shipment_out.outgoing_moves]
-    >>> planned_dates == [today, today]
+    >>> planned_dates == [today]
     True
     >>> effective_dates = [m.effective_date for m in
     ...     shipment_out.outgoing_moves]
     >>> len(set(effective_dates))
     1
     >>> len(shipment_out.outgoing_moves)
-    2
+    1
     >>> len(shipment_out.inventory_moves)
     2
     >>> shipment_out.inventory_moves[0].state
