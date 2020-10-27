@@ -455,16 +455,17 @@
                     !readonly &&
                     this.screen.current_record) {
                 result = false;
-                var added = this.screen.current_record._changed.id;
-                if ((this.screen.current_record.id < 0) || this.save_current) {
+                var record = this.screen.current_record;
+                var added = record._changed.id;
+                if ((record.id < 0) || this.save_current) {
                     cancel_prm = this.screen.cancel_current(
                         this._initial_value);
-                } else if (this.screen.current_record.has_changed()) {
-                    this.screen.current_record.cancel();
-                    cancel_prm = this.screen.current_record.reload();
+                } else if (record.has_changed()) {
+                    record.cancel();
+                    cancel_prm = record.reload();
                 }
                 if (added) {
-                    this.screen.current_record._changed.id = added;
+                    record._changed.id = added;
                 }
             } else {
                 result = response_id != 'RESPONSE_CANCEL';
