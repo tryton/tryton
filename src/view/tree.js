@@ -1516,6 +1516,7 @@
             record.load(this.attributes.name).done(function() {
                 var value;
                 var field = record.model.fields[this.attributes.name];
+                field.set_state(record, ['invisible']);
                 var invisible = field.get_state_attrs(record).invisible;
                 if (invisible) {
                     cell.hide();
