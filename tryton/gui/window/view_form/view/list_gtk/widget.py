@@ -209,6 +209,7 @@ class Affix(Cell):
 class GenericText(Cell):
     align = 0
     editable = None
+    editing = None
 
     def __init__(self, view, attrs, renderer=None):
         super(GenericText, self).__init__()
@@ -295,17 +296,17 @@ class GenericText(Cell):
             callback()
 
     def set_editable(self):
-        if not self.editable:
+        if not self.editable or not self.editing:
             return
-        record, field = self._get_record_field_from_path(self.editable_path)
+        record, field = self.editing
         self.editable.set_text(self.get_textual_value(record))
 
     def editing_started(self, cell, editable, path):
         def remove(editable):
             self.editable = None
-            self.editable_path = None
+            self.editing = None
         self.editable = editable
-        self.editable_path = path
+        self.editing = self._get_record_field_from_path(path)
         editable.connect('remove-widget', remove)
         return False
 
@@ -981,9 +982,9 @@ class Selection(GenericText, SelectionMixin, PopdownMixin):
             callback()
 
     def set_editable(self):
-        if not self.editable:
+        if not self.editable and not self.editing:
             return
-        record, field = self._get_record_field_from_path(self.editable_path)
+        record, field = self.editing
         value = self.get_value(record, field)
         self.update_selection(record, field)
         self.set_popdown_value(self.editable, value)
