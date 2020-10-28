@@ -222,6 +222,7 @@ class Symbol(Cell):
     @CellCache.cache
     def setter(self, column, cell, store, iter_, user_data=None):
         record, field = self._get_record_field_from_iter(iter_, store)
+        field.state_set(record, states=('invisible',))
         invisible = field.get_state_attrs(record).get('invisible', False)
         if invisible:
             cell.set_property('text', '')
