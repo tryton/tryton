@@ -2027,6 +2027,7 @@
             }
             var render = function() {
                 var field = record.model.fields[this.attributes.name];
+                field.set_state(record, ['invisible']);
                 var invisible = field.get_state_attrs(record).invisible;
                 if (invisible) {
                     cell.text('');
