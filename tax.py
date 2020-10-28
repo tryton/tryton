@@ -383,9 +383,27 @@ class TaxCodeLine(ModelSQL, ModelView):
             ('type', '=', self.amount),
             ]
         if self.type == 'invoice':
-            domain.append(('amount', '>', 0))
+            domain.append(['OR',
+                    [('amount', '>', 0), ['OR',
+                            ('move_line.debit', '>', 0),
+                            ('move_line.credit', '>', 0),
+                            ]],
+                    [('amount', '<', 0), ['OR',
+                            ('move_line.debit', '<', 0),
+                            ('move_line.credit', '<', 0),
+                            ]],
+                    ])
         elif self.type == 'credit':
-            domain.append(('amount', '<', 0))
+            domain.append(['OR',
+                    [('amount', '<', 0), ['OR',
+                            ('move_line.debit', '>', 0),
+                            ('move_line.credit', '>', 0),
+                            ]],
+                    [('amount', '>', 0), ['OR',
+                            ('move_line.debit', '<', 0),
+                            ('move_line.credit', '<', 0),
+                            ]],
+                    ])
         return domain
 
     @classmethod
@@ -792,17 +810,29 @@ class Tax(sequence_ordered(), ModelSQL, ModelView, DeactivableMixin):
 
         columns = []
         amount = tax_line.amount
+        debit = move_line.debit
+        credit = move_line.credit
         if backend.name == 'sqlite':
             amount = TaxLine.amount.sql_cast(tax_line.amount)
+            debit = MoveLine.debit.sql_cast(debit)
+            credit = MoveLine.credit.sql_cast(credit)
+        is_invoice = (
+            ((amount > 0) & ((debit > 0) | (credit > 0)))
+            | ((amount < 0) & ((debit < 0) | (credit < 0)))
+            )
+        is_credit = (
+            ((amount < 0) & ((debit > 0) | (credit > 0)))
+            | ((amount > 0) & ((debit < 0) | (credit < 0)))
+            )
         for name, clause in [
                 ('invoice_base_amount',
-                    (amount > 0) & (tax_line.type == 'base')),
+                    is_invoice & (tax_line.type == 'base')),
                 ('invoice_tax_amount',
-                    (amount > 0) & (tax_line.type == 'tax')),
+                    is_invoice & (tax_line.type == 'tax')),
                 ('credit_base_amount',
-                    (amount < 0) & (tax_line.type == 'base')),
+                    is_credit & (tax_line.type == 'base')),
                 ('credit_tax_amount',
-                    (amount < 0) & (tax_line.type == 'tax')),
+                    is_credit & (tax_line.type == 'tax')),
                 ]:
             if name not in names:
                 continue
