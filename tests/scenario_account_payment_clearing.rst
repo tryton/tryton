@@ -40,6 +40,7 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
+    >>> expense = accounts['expense']
     >>> payable = accounts['payable']
     >>> cash = accounts['cash']
 
@@ -52,7 +53,7 @@ Create chart of accounts::
     >>> bank_clearing.save()
 
     >>> Journal = Model.get('account.journal')
-    >>> expense, = Journal.find([('code', '=', 'EXP')])
+    >>> expense_journal, = Journal.find([('code', '=', 'EXP')])
     >>> revenue_journal, = Journal.find([('code', '=', 'REV')])
 
 Create payment journal::
@@ -76,7 +77,7 @@ Create payable move::
 
     >>> Move = Model.get('account.move')
     >>> move = Move()
-    >>> move.journal = expense
+    >>> move.journal = expense_journal
     >>> line = move.lines.new(account=payable, party=supplier,
     ...     credit=Decimal('50.00'))
     >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
@@ -326,13 +327,13 @@ Create a payment journal in Euro::
     >>> euro = get_currency('EUR')
     >>> euro_payment_journal = PaymentJournal(
     ...     name='Euro Payments', process_method='manual', currency=euro,
-    ...     clearing_journal=expense, clearing_account=bank_clearing)
+    ...     clearing_journal=expense_journal, clearing_account=bank_clearing)
     >>> euro_payment_journal.save()
 
 Create a payable move::
 
     >>> move = Move()
-    >>> move.journal = expense
+    >>> move.journal = expense_journal
     >>> line = move.lines.new(
     ...     account=payable, party=supplier, credit=Decimal('20.00'),
     ...     amount_second_currency=Decimal('-40.00'), second_currency=euro)
@@ -415,7 +416,7 @@ Validate Statement with processing payment
 Create a payable move::
 
     >>> move = Move()
-    >>> move.journal = expense
+    >>> move.journal = expense_journal
     >>> line = move.lines.new(account=payable, party=supplier,
     ...     credit=Decimal('50.00'))
     >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
