@@ -32,9 +32,10 @@ Create chart of accounts::
     >>> _ = create_chart(company)
     >>> accounts = get_accounts(company)
     >>> payable = accounts['payable']
+    >>> expense = accounts['expense']
 
     >>> Journal = Model.get('account.journal')
-    >>> expense, = Journal.find([('code', '=', 'EXP')])
+    >>> expense_journal, = Journal.find([('code', '=', 'EXP')])
 
 Create payment journal::
 
@@ -55,7 +56,7 @@ Create payable move::
 
     >>> Move = Model.get('account.move')
     >>> move = Move()
-    >>> move.journal = expense
+    >>> move.journal = expense_journal
     >>> line = move.lines.new(account=payable, party=supplier,
     ...     credit=Decimal('50.00'))
     >>> line = move.lines.new(account=expense, debit=Decimal('50.00'))
