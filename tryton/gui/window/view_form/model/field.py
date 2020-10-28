@@ -684,7 +684,7 @@ class O2MField(Field):
             for old_record in group:
                 if old_record.id not in value:
                     group.remove(old_record, remove=True, signal=False)
-            group.load(value, modified=modified)
+            group.load(value, modified=modified or default)
         else:
             for vals in value:
                 new_record = record.value[self.name].new(default=False)
