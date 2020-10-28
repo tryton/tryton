@@ -312,7 +312,7 @@ class Period(Workflow, ModelSQL, ModelView):
             raise ClosePeriodError(
                 gettext('account.msg_close_period_non_posted_moves',
                     period=unposted_move.period.rec_name,
-                    move=unposted_move.rec_name))
+                    moves=unposted_move.rec_name))
         journal_periods = JournalPeriod.search([
             ('period', 'in', [p.id for p in periods]),
             ])
