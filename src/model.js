@@ -2119,7 +2119,7 @@
                         group.remove(old_record, true, true, false, false);
                     }
                 }
-                group.load(value, modified);
+                group.load(value, modified || default_);
             } else {
                 value.forEach(function(vals) {
                     var new_record = group.new_(false);
