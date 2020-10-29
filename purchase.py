@@ -1234,7 +1234,9 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends('purchase', 'company', '_parent_purchase.party',)
     def _get_product_supplier_pattern(self):
         return {
-            'party': self.purchase.party.id if self.purchase.party else -1,
+            'party': (
+                self.purchase.party.id
+                if self.purchase and self.purchase.party else -1),
             'company': (self.company.id if self.company else -1),
             }
 
