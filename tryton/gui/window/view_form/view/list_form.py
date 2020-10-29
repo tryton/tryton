@@ -136,9 +136,12 @@ class ViewListForm(View):
 
     @common.idle_add
     def _select_show_row(self, index):
+        # translate_coordinates requires that both widgets are realized
+        if not self.listbox.get_realized():
+            return
         self.listbox.unselect_all()
         row = self.listbox.get_row_at_index(index)
-        if not row:
+        if not row or not row.get_realized():
             return
         self.listbox.select_row(row)
         y_position = row.translate_coordinates(self.listbox, 0, 0)[1]
