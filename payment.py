@@ -364,7 +364,7 @@ class Payment(metaclass=PoolMeta):
         if self.description:
             return self.description
         elif self.line and self.line.move_origin:
-            return self.line.move_origin.rec_name
+            return getattr(self.line.move_origin, 'rec_name', '')
 
     @property
     def sepa_bank_account_number(self):
