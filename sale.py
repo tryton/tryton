@@ -33,7 +33,8 @@ class Line(metaclass=PoolMeta):
     @fields.depends('sale', '_parent_sale.party')
     def _get_product_customer_pattern(self):
         return {
-            'party': self.sale.party.id if self.sale.party else -1,
+            'party': (
+                self.sale.party.id if self.sale and self.sale.party else -1),
             }
 
     @fields.depends('product', 'product_customer',
