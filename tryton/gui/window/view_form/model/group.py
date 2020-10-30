@@ -187,6 +187,7 @@ class Group(SignalEvent, list):
         ctx['_timestamp'] = {}
         for rec in records:
             ctx['_timestamp'].update(rec.get_timestamp())
+            rec.destroy()
         record_ids = set(r.id for r in records)
         reload_ids = set(root_group.on_write_ids(list(record_ids)))
         reload_ids -= record_ids
