@@ -265,6 +265,7 @@
             context._timestamp = {};
             records.forEach(function(record) {
                 jQuery.extend(context._timestamp, record.get_timestamp());
+                record.destroy();
             });
             var record_ids = records.map(function(record) {
                 return record.id;
@@ -554,6 +555,7 @@
             this.state_attrs = {};
             this.autocompletion = {};
             this.exception = false;
+            this.destroyed = false;
         },
         has_changed: function() {
             return !jQuery.isEmptyObject(this._changed);
@@ -620,7 +622,7 @@
         load: function(name) {
             var fname;
             var prm;
-            if (this.is_loaded(name)) {
+            if (this.destroyed || this.is_loaded(name)) {
                 return jQuery.when();
             }
             if (this.group.prm.state() == 'pending') {
@@ -689,7 +691,9 @@
                         10);
 
                 var filter_group = function(record) {
-                    return !(name in record._loaded) && (record.id >= 0);
+                    return (!record.destroyed &&
+                        (record.id >= 0) &&
+                        !(name in record._loaded));
                 };
                 var filter_parent_group = function(record) {
                     return (filter_group(record) &&
@@ -1401,6 +1405,16 @@
                 this.button_clicks[name] = clicks;
                 return clicks;
             }.bind(this));
+        },
+        destroy: function() {
+            var vals = Object.values(this._values);
+            for (var i=0; i < vals.length; i++) {
+                var val = vals[i];
+                if (val.hasOwnProperty('destroy')) {
+                    val.destroy();
+                }
+            }
+            this.destroyed = true;
         }
     });
 
