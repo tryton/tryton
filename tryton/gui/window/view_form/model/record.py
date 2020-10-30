@@ -38,7 +38,7 @@ class Record(SignalEvent):
         self.destroyed = False
 
     def __getitem__(self, name):
-        if name not in self._loaded and self.id >= 0:
+        if not self.destroyed and self.id >= 0 and name not in self._loaded:
             id2record = {
                 self.id: self,
                 }
@@ -80,7 +80,9 @@ class Record(SignalEvent):
                 limit = int(CONFIG['client.limit'] / len(fnames))
 
                 def filter_group(record):
-                    return name not in record._loaded and record.id >= 0
+                    return (not record.destroyed
+                        and record.id >= 0
+                        and name not in record._loaded)
 
                 def filter_parent_group(record):
                     return (filter_group(record)
