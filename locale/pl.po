@@ -96,11 +96,11 @@ msgstr "Banki"
 
 msgctxt "model:ir.message,text:msg_invalid_bic"
 msgid "The BIC \"%(bic)s\" is not valid."
-msgstr ""
+msgstr "Kod BIC \"%(bic)s\" jest niepoprawny."
 
 msgctxt "model:ir.message,text:msg_invalid_iban"
 msgid "IBAN number \"%(number)s\" is not valid."
-msgstr ""
+msgstr "Numer IBAN \"%(number)s\" jest niepoprawny."
 
 msgctxt "model:ir.ui.menu,name:menu_bank_account_form"
 msgid "Accounts"
@@ -126,7 +126,6 @@ msgctxt "selection:bank.account.number,type:"
 msgid "Other"
 msgstr "Inne"
 
-#, fuzzy
 msgctxt "view:bank.account:"
 msgid "Number"
 msgstr "Numer"

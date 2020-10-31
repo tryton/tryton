@@ -28,7 +28,7 @@ msgstr "Pemilik"
 
 msgctxt "field:bank.account-party.party,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:bank.account-party.party,owner:"
 msgid "Owner"
@@ -36,7 +36,7 @@ msgstr "Pemilik"
 
 msgctxt "field:bank.account.number,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:bank.account.number,number:"
 msgid "Number"
