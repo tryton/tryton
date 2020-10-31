@@ -244,7 +244,7 @@ msgid "Drop Shipment"
 msgstr "Direktlieferung"
 
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:stock.shipment.drop,state:"

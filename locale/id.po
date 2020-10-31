@@ -113,7 +113,7 @@ msgstr "Referensi"
 
 msgctxt "field:stock.shipment.drop,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:stock.shipment.drop,supplier:"
 msgid "Supplier"
@@ -236,9 +236,10 @@ msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:stock.shipment.drop,state:"
 msgid "Done"

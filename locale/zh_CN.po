@@ -245,7 +245,7 @@ msgstr "Drop Shipment"
 
 #, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "取消"
 
 #, fuzzy

@@ -247,8 +247,9 @@ msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr "Drop Shipment"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Anulowano"
 
 msgctxt "selection:stock.shipment.drop,state:"

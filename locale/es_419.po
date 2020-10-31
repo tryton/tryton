@@ -240,7 +240,7 @@ msgid "Drop Shipment"
 msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr ""
 
 msgctxt "selection:stock.shipment.drop,state:"

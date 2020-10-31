@@ -240,8 +240,9 @@ msgctxt "model:stock.shipment.drop,name:"
 msgid "Drop Shipment"
 msgstr "دراپ شیپینگ"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.drop,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.drop,state:"
