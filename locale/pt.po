@@ -6,6 +6,11 @@ msgctxt "field:project.work,cost:"
 msgid "Cost"
 msgstr "Custo"
 
+#, fuzzy
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "Dígitos da Moeda"
+
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
 msgstr "Dígitos da Moeda"

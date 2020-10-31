@@ -6,6 +6,11 @@ msgctxt "field:project.work,cost:"
 msgid "Cost"
 msgstr "ລາຄາ"
 
+#, fuzzy
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນ"

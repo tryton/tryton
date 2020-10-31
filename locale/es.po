@@ -6,6 +6,10 @@ msgctxt "field:project.work,cost:"
 msgid "Cost"
 msgstr "Coste"
 
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimales de la moneda"

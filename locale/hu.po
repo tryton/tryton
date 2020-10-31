@@ -7,6 +7,10 @@ msgctxt "field:project.work,cost:"
 msgid "Cost"
 msgstr "Költség"
 
+msgctxt "field:project.work,currency:"
+msgid "Currency"
+msgstr ""
+
 msgctxt "field:project.work,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
