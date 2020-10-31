@@ -96,7 +96,7 @@ msgid ""
 "\"%(warehouse)s\"."
 msgstr ""
 "Om zending \"%(shipment)s\" te valideren, moet u een adres in het magazijn "
-"\"%(warehouse)s\"  instellen."
+"\"%(warehouse)s\" instellen."
 
 msgctxt "model:ir.ui.menu,name:menu_ups_credential_form"
 msgid "UPS Credentials"
