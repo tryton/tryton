@@ -88,7 +88,7 @@ msgstr ""
 
 msgctxt "field:account.statement.rule.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.statement.rule.line,amount:"
 msgid "Amount"
