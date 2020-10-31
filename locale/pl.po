@@ -68,7 +68,7 @@ msgstr "Dodaj płynny kurs walutowy dla waluty."
 
 msgctxt "help:currency.currency,rounding:"
 msgid "The minimum amount which can be represented in this currency."
-msgstr ""
+msgstr "Minimalna kwota, jaką można przedstawić w tej walucie."
 
 msgctxt "help:currency.currency,symbol:"
 msgid "The symbol used for currency formating."
@@ -80,20 +80,19 @@ msgstr "Waluta, dla której kurs ma zastosowanie."
 
 msgctxt "help:currency.currency.rate,date:"
 msgid "From when the rate applies."
-msgstr ""
+msgstr "Od kiedy obowiązuje kurs."
 
 msgctxt "help:currency.currency.rate,rate:"
 msgid "The floating exchange rate used to convert the currency."
-msgstr ""
+msgstr "Płynny kurs wymiany używany do przeliczania waluty."
 
 msgctxt "model:currency.currency,name:"
 msgid "Currency"
 msgstr "Waluta"
 
-#, fuzzy
 msgctxt "model:currency.currency.rate,name:"
 msgid "Currency Rate"
-msgstr "Aktualny kurs"
+msgstr "Kurs waluty"
 
 msgctxt "model:ir.action,name:act_currency_form"
 msgid "Currencies"
@@ -101,14 +100,12 @@ msgstr "Waluty"
 
 msgctxt "model:ir.message,text:msg_currency_rate_positive"
 msgid "A currency rate must be positive."
-msgstr ""
+msgstr "Kurs waluty musi być dodatni."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_currency_unique_rate_date"
 msgid "A currency can only have one rate by date."
 msgstr "Dopuszczalny jest tylko jeden dzienny kurs waluty."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_no_rate"
 msgid "No rate found for currency \"%(currency)s\" on \"%(date)s\"."
 msgstr "Brak kursu waluty \"%(currency)s\" z dnia \"%(date)s\"."
