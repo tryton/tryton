@@ -27,6 +27,10 @@ msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "geblokkeerd"
 
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Betalingsvaluta"
+
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Automatische incasso"
@@ -119,6 +123,10 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "Bedrijf"
 
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
 msgstr "Dagboek"
@@ -130,6 +138,22 @@ msgstr "Soort"
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Betaling Totaalbedrag"
+
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Betaling geslaagd"
+
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Betaling voltooid"
+
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Aantal betalingen"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -173,7 +197,7 @@ msgstr "Automatische incasso"
 
 msgctxt "help:account.invoice,payment_direct_debit:"
 msgid "Check if the invoice is paid by direct debit."
-msgstr "Vink aan als  de factuur per automatische incasso wordt betaald."
+msgstr "Vink aan als de factuur per automatische incasso wordt betaald."
 
 msgctxt "help:account.move.line,payment_direct_debit:"
 msgid "Check if the line will be paid by direct debit."
@@ -186,6 +210,22 @@ msgid ""
 msgstr ""
 "Wanneer de uitvoering van de betalingen gepland is.\n"
 "Laat dit leeg om de vervaldatum te gebruiken ."
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr "De som van alle betalingsbedragen."
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr "De som van de bedragen van de succesvolle betalingen."
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr "Alle betalingen in de groep zijn voltooid."
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr "Het aantal betalingen in de groep."
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
@@ -316,7 +356,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_payment_delete_draft"
 msgid "To delete payment \"%(payment)s\" you must reset it to draft state."
 msgstr ""
-"Om betaling \"%(payment)s\"  te verwijderen, moet u het terugzetten naar de "
+"Om betaling \"%(payment)s\" te verwijderen, moet u het terugzetten naar de "
 "conceptstatus."
 
 msgctxt "model:ir.message,text:msg_payment_overpay"
@@ -464,6 +504,26 @@ msgstr "Groepsvolgorde"
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Betaling"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr "Voltooien"
+
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "tellen"
+
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Betalings Info"
+
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Totaal bedrag"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"

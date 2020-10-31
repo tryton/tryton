@@ -27,6 +27,10 @@ msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "Bloqueado"
 
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Moneda de pago"
+
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Domiciliación bancaria"
@@ -119,6 +123,10 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
 msgstr "Diario"
@@ -130,6 +138,22 @@ msgstr "Tipo"
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
 msgstr "Número"
+
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Importe total pagos"
+
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Pagos con éxito"
+
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Pagos completados"
+
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Número de pagos"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -186,6 +210,22 @@ msgid ""
 msgstr ""
 "Cuándo está previsto realizar los pagos.\n"
 "Dejar en blanco para usar la fecha de vencimiento de los efectos."
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr "La suma de los importes de los pagos."
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr "La suma de los importes de los pagos con exito."
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr "Todos los pagos del grupo han sido completados."
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr "El número de pagos en el grupo."
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
@@ -461,6 +501,26 @@ msgstr "Secuencia de grupo"
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Pago"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr "Completo"
+
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "Número"
+
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Información de pagos"
+
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Con éxito"
+
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Importe total"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"

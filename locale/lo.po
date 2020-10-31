@@ -27,6 +27,11 @@ msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "ກັ້ນໄວ້"
 
+#, fuzzy
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "ມູນຄ່າການຈ່າຍ"
+
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "ການຫັກບັນຊີທະນາຄານ"
@@ -121,6 +126,11 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
+#, fuzzy
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະຸກນເງິນ"
+
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
 msgstr "ບັນຊີປະຈໍາວັນ"
@@ -132,6 +142,26 @@ msgstr "ຊະນິດ"
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
 msgstr "ເລກທີ"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "ມູນຄ່າການຈ່າຍ"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Succeeded"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "ໝວດການຈ່າຍ"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "ມູນຄ່າການຈ່າຍ"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -185,6 +215,22 @@ msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
 "When the payments are scheduled to happen.\n"
 "Leave empty to use the lines' maturity dates."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
@@ -484,6 +530,30 @@ msgstr "ລຳດັບໝວດ"
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "ການຈ່າຍ"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "ມູນຄ່າ"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "ການຊໍາລະເງິນ"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Succeeded"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "ມູນຄ່າ"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"

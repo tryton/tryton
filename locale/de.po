@@ -27,6 +27,10 @@ msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr "Gesperrt"
 
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Währung Zahlung"
+
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr "Lastschrifteinzug"
@@ -119,6 +123,10 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
 msgstr "Journal"
@@ -130,6 +138,22 @@ msgstr "Art"
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
 msgstr "Nummer"
+
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Gesamtbetrag Zahlung"
+
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Zahlung erfolgreich"
+
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Zahlungslauf vollständig"
+
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Anzahl Zahlungen"
 
 msgctxt "field:account.payment.group,payments:"
 msgid "Payments"
@@ -186,6 +210,22 @@ msgid ""
 msgstr ""
 "Das Datum an dem die Ausführung der Zahlungen geplant ist.\n"
 "Leer lassen, um das Fälligkeitsdatum der Buchungszeilen zu verwenden."
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr "Die Summe aller Zahlbeträge."
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr "Die Summe aller Beträge von erfolgreichen Zahlungen."
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr "Alle Zahlungen im Zahlungslauf sind vollständig."
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
+msgstr "Die Anzahl der Zahlungen im Zahlungslauf."
 
 msgctxt "help:party.party,payment_direct_debit:"
 msgid "Check if supplier does direct debit."
@@ -464,6 +504,26 @@ msgstr "Nummernkreis Zahlungslauf"
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Zahlung"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr "Vollständig"
+
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr "Anzahl"
+
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Zahlungsinformationen"
+
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Erfolgreich"
+
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr "Gesamtbetrag"
 
 msgctxt "view:account.payment.process.start:"
 msgid "Process Payments?"

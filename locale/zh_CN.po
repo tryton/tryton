@@ -27,6 +27,11 @@ msgctxt "field:account.move.line,payment_blocked:"
 msgid "Blocked"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.move.line,payment_currency:"
+msgid "Payment Currency"
+msgstr "Payment Journals"
+
 msgctxt "field:account.move.line,payment_direct_debit:"
 msgid "Direct Debit"
 msgstr ""
@@ -126,6 +131,10 @@ msgctxt "field:account.payment.group,company:"
 msgid "Company"
 msgstr ""
 
+msgctxt "field:account.payment.group,currency_digits:"
+msgid "Currency Digits"
+msgstr ""
+
 msgctxt "field:account.payment.group,journal:"
 msgid "Journal"
 msgstr ""
@@ -137,6 +146,26 @@ msgstr ""
 msgctxt "field:account.payment.group,number:"
 msgid "Number"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount:"
+msgid "Payment Total Amount"
+msgstr "Payment Journals"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_amount_succeeded:"
+msgid "Payment Succeeded"
+msgstr "Succeeded"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_complete:"
+msgid "Payment Complete"
+msgstr "Payment Groups"
+
+#, fuzzy
+msgctxt "field:account.payment.group,payment_count:"
+msgid "Payment Count"
+msgstr "Payment Journals"
 
 #, fuzzy
 msgctxt "field:account.payment.group,payments:"
@@ -192,6 +221,22 @@ msgctxt "help:account.move.line.pay.start,date:"
 msgid ""
 "When the payments are scheduled to happen.\n"
 "Leave empty to use the lines' maturity dates."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount:"
+msgid "The sum of all payment amounts."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_amount_succeeded:"
+msgid "The sum of the amounts of the successful payments."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_complete:"
+msgid "All the payments in the group are complete."
+msgstr ""
+
+msgctxt "help:account.payment.group,payment_count:"
+msgid "The number of payments in the group."
 msgstr ""
 
 msgctxt "help:party.party,payment_direct_debit:"
@@ -484,6 +529,28 @@ msgstr ""
 msgctxt "view:account.configuration:"
 msgid "Payment"
 msgstr "Payment"
+
+msgctxt "view:account.payment.group:"
+msgid "Complete"
+msgstr ""
+
+msgctxt "view:account.payment.group:"
+msgid "Count"
+msgstr ""
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Payments Info"
+msgstr "Payments"
+
+#, fuzzy
+msgctxt "view:account.payment.group:"
+msgid "Succeeded"
+msgstr "Succeeded"
+
+msgctxt "view:account.payment.group:"
+msgid "Total Amount"
+msgstr ""
 
 #, fuzzy
 msgctxt "view:account.payment.process.start:"
