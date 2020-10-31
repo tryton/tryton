@@ -1,0 +1,229 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:attendance.line,at:"
+msgid "At"
+msgstr ""
+
+msgctxt "field:attendance.line,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:attendance.line,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:attendance.line,employee:"
+msgid "Employee"
+msgstr ""
+
+msgctxt "field:attendance.line,type:"
+msgid "Type"
+msgstr ""
+
+msgctxt "field:attendance.period,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:attendance.period,ends_at:"
+msgid "Ends at"
+msgstr ""
+
+msgctxt "field:attendance.period,state:"
+msgid "State"
+msgstr ""
+
+msgctxt "field:attendance.sheet,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:attendance.sheet,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:attendance.sheet,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:attendance.sheet,employee:"
+msgid "Employee"
+msgstr ""
+
+msgctxt "field:attendance.sheet,lines:"
+msgid "Lines"
+msgstr ""
+
+msgctxt "field:attendance.sheet,timesheet_duration:"
+msgid "Timesheet Duration"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,company:"
+msgid "Company"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,date:"
+msgid "Date"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,duration:"
+msgid "Duration"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,employee:"
+msgid "Employee"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,from_:"
+msgid "From"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,sheet:"
+msgid "Sheet"
+msgstr ""
+
+msgctxt "field:attendance.sheet.line,to:"
+msgid "To"
+msgstr ""
+
+msgctxt "help:attendance.line,company:"
+msgid "The company which the employee attended."
+msgstr ""
+
+msgctxt "help:attendance.period,company:"
+msgid "The company the period is associated with."
+msgstr ""
+
+msgctxt "help:attendance.period,state:"
+msgid "The current state of the attendance period."
+msgstr ""
+
+msgctxt "model:attendance.line,name:"
+msgid "Attendance Line"
+msgstr ""
+
+msgctxt "model:attendance.period,name:"
+msgid "Attendance Period"
+msgstr ""
+
+msgctxt "model:attendance.sheet,name:"
+msgid "Attendance Sheet"
+msgstr ""
+
+msgctxt "model:attendance.sheet.line,name:"
+msgid "Attendance SheetLine"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_attendance"
+msgid "Attendances"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_period_list"
+msgid "Attendance Periods"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_sheet"
+msgid "Attendance Sheet"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_close_period_previous_open"
+msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_delete_period_close"
+msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
+msgid ""
+"To change period \"%(period)s\" you must first change \"%(other_period)s\" "
+"to draft."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_modify_period_close"
+msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance"
+msgid "Own attendance"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
+msgid "Any attendance"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet"
+msgid "Own attendance sheet"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
+msgid "Any attendance sheet"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
+msgid "Own attendance sheet line"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
+msgid "Any attendance sheet line"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_attendance"
+msgid "Attendances"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_main_attendance"
+msgid "Attendance"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_period_list"
+msgid "Attendance Periods"
+msgstr ""
+
+msgctxt "model:ir.ui.menu,name:menu_sheet"
+msgid "Attendance Sheet"
+msgstr ""
+
+msgctxt "model:res.group,name:group_attendance_admin"
+msgid "Attendance Administration"
+msgstr ""
+
+msgctxt "selection:attendance.line,type:"
+msgid "In"
+msgstr ""
+
+msgctxt "selection:attendance.line,type:"
+msgid "Out"
+msgstr ""
+
+msgctxt "selection:attendance.period,state:"
+msgid "Closed"
+msgstr ""
+
+msgctxt "selection:attendance.period,state:"
+msgid "Draft"
+msgstr ""
+
+msgctxt "view:attendance.line:"
+msgid "Date"
+msgstr ""
+
+msgctxt "view:attendance.line:"
+msgid "Time"
+msgstr ""
+
+msgctxt "view:attendance.period:"
+msgid "Time"
+msgstr ""

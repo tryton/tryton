@@ -1,0 +1,237 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:attendance.line,at:"
+msgid "At"
+msgstr "Om"
+
+msgctxt "field:attendance.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:attendance.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.line,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:attendance.line,type:"
+msgid "Type"
+msgstr "Type"
+
+msgctxt "field:attendance.period,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:attendance.period,ends_at:"
+msgid "Ends at"
+msgstr "Eindigt op"
+
+msgctxt "field:attendance.period,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:attendance.sheet,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:attendance.sheet,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.sheet,duration:"
+msgid "Duration"
+msgstr "duur"
+
+msgctxt "field:attendance.sheet,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:attendance.sheet,lines:"
+msgid "Lines"
+msgstr "Regels"
+
+msgctxt "field:attendance.sheet,timesheet_duration:"
+msgid "Timesheet Duration"
+msgstr "Urenstaatduur"
+
+msgctxt "field:attendance.sheet.line,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt "field:attendance.sheet.line,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:attendance.sheet.line,duration:"
+msgid "Duration"
+msgstr "duur"
+
+msgctxt "field:attendance.sheet.line,employee:"
+msgid "Employee"
+msgstr "Werknemer"
+
+msgctxt "field:attendance.sheet.line,from_:"
+msgid "From"
+msgstr "Van"
+
+msgctxt "field:attendance.sheet.line,sheet:"
+msgid "Sheet"
+msgstr "Fiche"
+
+msgctxt "field:attendance.sheet.line,to:"
+msgid "To"
+msgstr "Tot"
+
+msgctxt "help:attendance.line,company:"
+msgid "The company which the employee attended."
+msgstr "Het bedrijf waar de werknemer aanwezig was."
+
+msgctxt "help:attendance.period,company:"
+msgid "The company the period is associated with."
+msgstr "Het bedrijf waaraan de periode is gekoppeld."
+
+msgctxt "help:attendance.period,state:"
+msgid "The current state of the attendance period."
+msgstr "De huidige staat van de aanwezigheidsperiode."
+
+msgctxt "model:attendance.line,name:"
+msgid "Attendance Line"
+msgstr "Aanwezigheidslijn"
+
+msgctxt "model:attendance.period,name:"
+msgid "Attendance Period"
+msgstr "Aanwezigheidsperiode"
+
+msgctxt "model:attendance.sheet,name:"
+msgid "Attendance Sheet"
+msgstr "Aanwezigheids fiche"
+
+msgctxt "model:attendance.sheet.line,name:"
+msgid "Attendance SheetLine"
+msgstr "Lijn aanwezigheids- fiche"
+
+msgctxt "model:ir.action,name:act_attendance"
+msgid "Attendances"
+msgstr "Aanwezigen"
+
+msgctxt "model:ir.action,name:act_period_list"
+msgid "Attendance Periods"
+msgstr "Aanwezigheidsperiode"
+
+msgctxt "model:ir.action,name:act_sheet"
+msgid "Attendance Sheet"
+msgstr "Aanwezigheids fiche"
+
+msgctxt "model:ir.message,text:msg_close_period_previous_open"
+msgid "To close period \"%(period)s\" you must first close \"%(other_period)s\"."
+msgstr ""
+"Om periode \"%(period)s\" te sluiten, moet je eerst \"% other_period)s\" "
+"sluiten."
+
+msgctxt "model:ir.message,text:msg_delete_period_close"
+msgid "To delete attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Om aanwezigheid \"%(attendance)s\" te verwijderen, moet u periode "
+"\"%(period)s\" opnieuw openen."
+
+msgctxt "model:ir.message,text:msg_draft_period_previous_closed"
+msgid ""
+"To change period \"%(period)s\" you must first change \"%(other_period)s\" "
+"to draft."
+msgstr ""
+"Om periode \"%(period)s\" te sluiten, moet je eerst \"% other_period)s\" "
+"terug in concept zetten."
+
+msgctxt "model:ir.message,text:msg_modify_period_close"
+msgid "To modify attendance \"%(attendance)s\" you must reopen period \"%(period)s\"."
+msgstr ""
+"Om aanwezigheid \"%(attendance)s\" te wijzigen, moet u periode "
+"\"%(period)s\" opnieuw openen."
+
+msgctxt "model:ir.model.button,string:period_close_button"
+msgid "Close"
+msgstr "Sluiten"
+
+msgctxt "model:ir.model.button,string:period_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance"
+msgid "Own attendance"
+msgstr "Eigen aanwezigheden"
+
+msgctxt "model:ir.rule.group,name:rule_group_attendance_admin"
+msgid "Any attendance"
+msgstr "Elke aanwezigheid"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet"
+msgid "Own attendance sheet"
+msgstr "Eigen aanwezigheids-fiche"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_admin"
+msgid "Any attendance sheet"
+msgstr "elke aanwezigheids-fiche"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line"
+msgid "Own attendance sheet line"
+msgstr "Eigen aanwezigheids-fiche lijn"
+
+msgctxt "model:ir.rule.group,name:rule_group_sheet_line_admin"
+msgid "Any attendance sheet line"
+msgstr "Elke aanwezigheids-fiche lijn"
+
+msgctxt "model:ir.ui.menu,name:menu_attendance"
+msgid "Attendances"
+msgstr "Aanwezigheden"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Instellingen"
+
+msgctxt "model:ir.ui.menu,name:menu_main_attendance"
+msgid "Attendance"
+msgstr "Aanwezigheden"
+
+msgctxt "model:ir.ui.menu,name:menu_period_list"
+msgid "Attendance Periods"
+msgstr "Aanwezigheidsperiode"
+
+msgctxt "model:ir.ui.menu,name:menu_sheet"
+msgid "Attendance Sheet"
+msgstr "Aanwezigheids fiche"
+
+msgctxt "model:res.group,name:group_attendance_admin"
+msgid "Attendance Administration"
+msgstr "Aanwezigheidsadministratie"
+
+msgctxt "selection:attendance.line,type:"
+msgid "In"
+msgstr "In"
+
+msgctxt "selection:attendance.line,type:"
+msgid "Out"
+msgstr "Uit"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Closed"
+msgstr "Afgesloten"
+
+msgctxt "selection:attendance.period,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "view:attendance.line:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "view:attendance.line:"
+msgid "Time"
+msgstr "Tijd"
+
+msgctxt "view:attendance.period:"
+msgid "Time"
+msgstr "Tijd"
