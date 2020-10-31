@@ -180,6 +180,15 @@ msgid "Stripe Token"
 msgstr "Token Stripe"
 
 #, fuzzy
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
+msgid "Customer"
+msgstr "Cliente Stripe"
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
+msgid "Source"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Conta"
@@ -255,6 +264,11 @@ msgid "Stripe Customer"
 msgstr "Cliente Stripe"
 
 #, fuzzy
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
+msgid "Detach Customer Source"
+msgstr "Origem do Cliente Stripe"
+
+#, fuzzy
 msgctxt "model:account.payment.stripe.refund,name:"
 msgid "Stripe Payment Refund"
 msgstr "Charge Stripe Payments"
@@ -293,6 +307,10 @@ msgstr "Stripe Checkout"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Stripe Checkout"
+
+msgctxt "model:ir.action,name:wizard_customer_source_detach"
+msgid "Detach Source"
+msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
@@ -339,6 +357,10 @@ msgstr ""
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "New URL"
+
+msgctxt "model:ir.model.button,string:customer_source_detach_button"
+msgid "Detach Source"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
@@ -400,10 +422,18 @@ msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Authorization needed"
 msgstr ""
 
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr ""
+
 #, fuzzy
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Checkout"
 msgstr "Stripe Checkout"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "You need to authorize the payment"
@@ -528,4 +558,13 @@ msgstr "Stripe"
 
 msgctxt "view:account.payment:"
 msgid "Token:"
+msgstr ""
+
+msgctxt ""
+"wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
+msgid "Detach"
+msgstr ""
+
+msgctxt "wizard_button:account.payment.stripe.customer.source.detach,ask,end:"
+msgid "Cancel"
 msgstr ""

@@ -100,7 +100,7 @@ msgstr ""
 
 msgctxt "field:account.payment.journal,stripe_account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.payment.stripe.account,last_event:"
 msgid "Last Event"
@@ -140,7 +140,7 @@ msgstr "Pihak"
 
 msgctxt "field:account.payment.stripe.customer,stripe_account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.payment.stripe.customer,stripe_checkout_id:"
 msgid "Stripe Checkout ID"
@@ -174,10 +174,17 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr ""
 
-#, fuzzy
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
+msgid "Customer"
+msgstr ""
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
+msgid "Source"
+msgstr ""
+
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
-msgstr "Rekening"
+msgstr "Jumlah"
 
 msgctxt "field:account.payment.stripe.refund,currency_digits:"
 msgid "Currency Digits"
@@ -193,7 +200,7 @@ msgstr ""
 
 msgctxt "field:account.payment.stripe.refund,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:account.payment.stripe.refund,stripe_amount:"
 msgid "Stripe Amount"
@@ -243,6 +250,10 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr ""
 
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
+msgid "Detach Customer Source"
+msgstr ""
+
 msgctxt "model:account.payment.stripe.refund,name:"
 msgid "Stripe Payment Refund"
 msgstr ""
@@ -273,6 +284,10 @@ msgstr ""
 
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
+msgstr ""
+
+msgctxt "model:ir.action,name:wizard_customer_source_detach"
+msgid "Detach Source"
 msgstr ""
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
@@ -319,6 +334,10 @@ msgstr ""
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "URL Baru"
+
+msgctxt "model:ir.model.button,string:customer_source_detach_button"
+msgid "Detach Source"
+msgstr ""
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
@@ -377,7 +396,15 @@ msgid "Authorization needed"
 msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "Tombol tidak berfungsi? Lekatkan ini pada browser Anda:"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Checkout"
+msgstr ""
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "If you didn't make this request, you can ignore this email."
 msgstr ""
 
 msgctxt "report:account.payment.stripe.email_checkout:"
@@ -490,4 +517,13 @@ msgstr ""
 
 msgctxt "view:account.payment:"
 msgid "Token:"
+msgstr ""
+
+msgctxt ""
+"wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
+msgid "Detach"
+msgstr ""
+
+msgctxt "wizard_button:account.payment.stripe.customer.source.detach,ask,end:"
+msgid "Cancel"
 msgstr ""

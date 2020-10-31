@@ -174,6 +174,14 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Token Stripe"
 
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
+msgid "Customer"
+msgstr "Client"
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
+msgid "Source"
+msgstr "Origen"
+
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Import"
@@ -242,6 +250,10 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Client Stripe"
 
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
+msgid "Detach Customer Source"
+msgstr "Separa l'origen del client"
+
 msgctxt "model:account.payment.stripe.refund,name:"
 msgid "Stripe Payment Refund"
 msgstr "Devolució de pagament de Stripe"
@@ -273,6 +285,10 @@ msgstr "Procés de pagament de Stripe"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Procés de pagament de Stripe"
+
+msgctxt "model:ir.action,name:wizard_customer_source_detach"
+msgid "Detach Source"
+msgstr "Separa origen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
@@ -318,12 +334,16 @@ msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
 msgid ""
 "This action will make the previous URL unusable. Do you want to continue?"
 msgstr ""
-"Aquesta acció provarà que la URL anterior deixi de funcionar. Voleu "
+"Aquesta acció provocarà que la URL anterior deixi de funcionar. Voleu "
 "continuar?"
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
 msgstr "Nova URL"
+
+msgctxt "model:ir.model.button,string:customer_source_detach_button"
+msgid "Detach Source"
+msgstr "Separa origen"
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
@@ -382,8 +402,16 @@ msgid "Authorization needed"
 msgstr "Es necessita autorització"
 
 msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Empega això al teu navegador:"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Checkout"
 msgstr "Pagament"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "Si no heu fet aquesta petició, podeu ignorar aquest correu."
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "You need to authorize the payment"
@@ -483,7 +511,7 @@ msgstr "Intent de pagament:"
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr "Mètode de pagament:"
+msgstr "Métode de pagament:"
 
 msgctxt "view:account.payment:"
 msgid "Source:"
@@ -496,3 +524,12 @@ msgstr "Stripe"
 msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr "Token:"
+
+msgctxt ""
+"wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
+msgid "Detach"
+msgstr "Separa"
+
+msgctxt "wizard_button:account.payment.stripe.customer.source.detach,ask,end:"
+msgid "Cancel"
+msgstr "Cancel·la"

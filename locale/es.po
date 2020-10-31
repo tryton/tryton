@@ -174,6 +174,14 @@ msgctxt "field:account.payment.stripe.customer,stripe_token:"
 msgid "Stripe Token"
 msgstr "Token Stripe"
 
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,customer:"
+msgid "Customer"
+msgstr "Cliente"
+
+msgctxt "field:account.payment.stripe.customer.source.detach.ask,source:"
+msgid "Source"
+msgstr "Origen"
+
 msgctxt "field:account.payment.stripe.refund,amount:"
 msgid "Amount"
 msgstr "Importe"
@@ -242,6 +250,10 @@ msgctxt "model:account.payment.stripe.customer,name:"
 msgid "Stripe Customer"
 msgstr "Cliente Stripe"
 
+msgctxt "model:account.payment.stripe.customer.source.detach.ask,name:"
+msgid "Detach Customer Source"
+msgstr "Separa el origen del cliente"
+
 msgctxt "model:account.payment.stripe.refund,name:"
 msgid "Stripe Payment Refund"
 msgstr "Devolución de pago de Stripe"
@@ -273,6 +285,10 @@ msgstr "Proceso de pago de Stripe"
 msgctxt "model:ir.action,name:wizard_checkout"
 msgid "Stripe Checkout"
 msgstr "Proceso de pago de Stripe"
+
+msgctxt "model:ir.action,name:wizard_customer_source_detach"
+msgid "Detach Source"
+msgstr "Separar el origen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
 msgid "All"
@@ -323,7 +339,11 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:account_new_identifier_button"
 msgid "New URL"
-msgstr "Nova URL"
+msgstr "Nueva URL"
+
+msgctxt "model:ir.model.button,string:customer_source_detach_button"
+msgid "Detach Source"
+msgstr "Separa el origen"
 
 msgctxt "model:ir.model.button,string:customer_stripe_checkout_button"
 msgid "Add Card"
@@ -382,8 +402,16 @@ msgid "Authorization needed"
 msgstr "Se requiere autorización"
 
 msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "¿El botón no funciona? Pega esto en tu navegador:"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "Checkout"
 msgstr "Pago"
+
+msgctxt "report:account.payment.stripe.email_checkout:"
+msgid "If you didn't make this request, you can ignore this email."
+msgstr "Si no hiciste esta petición puedes ignorar este correo electrónico."
 
 msgctxt "report:account.payment.stripe.email_checkout:"
 msgid "You need to authorize the payment"
@@ -483,7 +511,7 @@ msgstr "Intento de pago:"
 
 msgctxt "view:account.payment:"
 msgid "Payment Method:"
-msgstr "Metodo de pago:"
+msgstr "Método de pago:"
 
 msgctxt "view:account.payment:"
 msgid "Source:"
@@ -496,3 +524,12 @@ msgstr "Stripe"
 msgctxt "view:account.payment:"
 msgid "Token:"
 msgstr "Token:"
+
+msgctxt ""
+"wizard_button:account.payment.stripe.customer.source.detach,ask,detach:"
+msgid "Detach"
+msgstr "Separa"
+
+msgctxt "wizard_button:account.payment.stripe.customer.source.detach,ask,end:"
+msgid "Cancel"
+msgstr "Cancelar"
