@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "field:stock.forecast,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:stock.forecast,lines:"
 msgid "Lines"
@@ -24,7 +24,7 @@ msgstr "Baris"
 
 msgctxt "field:stock.forecast,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:stock.forecast,to_date:"
 msgid "To Date"
@@ -36,7 +36,7 @@ msgstr "Lokasi"
 
 msgctxt "field:stock.forecast.complete.ask,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:stock.forecast.complete.ask,to_date:"
 msgid "To Date"
@@ -169,8 +169,9 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Batal"
 
 msgctxt "selection:stock.forecast,state:"

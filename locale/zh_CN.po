@@ -179,7 +179,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:stock.forecast,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "取消"
 
 #, fuzzy

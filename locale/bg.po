@@ -176,8 +176,9 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr "Ред от прогноза - Движение"
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Отказ"
 
 msgctxt "selection:stock.forecast,state:"

@@ -171,8 +171,9 @@ msgctxt "model:stock.forecast.line-stock.move,name:"
 msgid "ForecastLine - Move"
 msgstr "سطر پیش بینی - جابجایی"
 
+#, fuzzy
 msgctxt "selection:stock.forecast,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "انصراف"
 
 msgctxt "selection:stock.forecast,state:"

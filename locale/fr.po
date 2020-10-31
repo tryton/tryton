@@ -172,8 +172,8 @@ msgid "ForecastLine - Move"
 msgstr "Ligne de prévision - Mouvement"
 
 msgctxt "selection:stock.forecast,state:"
-msgid "Cancel"
-msgstr "Annulé"
+msgid "Cancelled"
+msgstr "Annulée"
 
 msgctxt "selection:stock.forecast,state:"
 msgid "Done"
