@@ -231,8 +231,8 @@ msgstr "All"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
-msgid "Canceled"
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
 msgstr "Canceled"
 
 #, fuzzy
@@ -257,7 +257,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Receivable with Mandate"
 
-msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
 "draft."
@@ -522,8 +522,9 @@ msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Core"
 msgstr "Osnovna"
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Preklicano"
 
 msgctxt "selection:account.payment.sepa.mandate,state:"
@@ -546,8 +547,9 @@ msgctxt "selection:account.payment.sepa.mandate,type:"
 msgid "Recurrent"
 msgstr "Periodično"
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Preklicano"
 
 msgctxt "selection:account.payment.sepa.message,state:"

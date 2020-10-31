@@ -218,8 +218,8 @@ msgid "All"
 msgstr "Alle"
 
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
-msgid "Canceled"
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
@@ -240,7 +240,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Forderungen per Mandat (Lastschrift)"
 
-msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
 "draft."
@@ -503,7 +503,7 @@ msgid "Core"
 msgstr "B2C-Schema (SEPA CORE)"
 
 msgctxt "selection:account.payment.sepa.mandate,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:account.payment.sepa.mandate,state:"
@@ -527,7 +527,7 @@ msgid "Recurrent"
 msgstr "Wiederkehrend"
 
 msgctxt "selection:account.payment.sepa.message,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:account.payment.sepa.message,state:"

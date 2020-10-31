@@ -232,8 +232,8 @@ msgstr "全部"
 
 #, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
-msgid "Canceled"
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
 msgstr "取消"
 
 #, fuzzy
@@ -255,7 +255,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr "Receivable with Mandate"
 
-msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
 "draft."
@@ -516,7 +516,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "取消"
 
 #, fuzzy
@@ -544,7 +544,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "取消"
 
 #, fuzzy

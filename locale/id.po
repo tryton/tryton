@@ -217,10 +217,11 @@ msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_all"
 msgid "All"
 msgstr ""
 
+#, fuzzy
 msgctxt ""
-"model:ir.action.act_window.domain,name:act_message_form_domain_canceled"
-msgid "Canceled"
-msgstr ""
+"model:ir.action.act_window.domain,name:act_message_form_domain_cancelled"
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "model:ir.action.act_window.domain,name:act_message_form_domain_done"
 msgid "Done"
@@ -240,7 +241,7 @@ msgctxt ""
 msgid "Receivable with Mandate"
 msgstr ""
 
-msgctxt "model:ir.message,text:msg_mandate_delete_draft_canceled"
+msgctxt "model:ir.message,text:msg_mandate_delete_draft_cancelled"
 msgid ""
 "To delete mandate \"%(mandate)s\" you must cancel it or reset its state to "
 "draft."
@@ -492,9 +493,10 @@ msgctxt "selection:account.payment.sepa.mandate,scheme:"
 msgid "Core"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.mandate,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:account.payment.sepa.mandate,state:"
 msgid "Draft"
@@ -516,9 +518,10 @@ msgctxt "selection:account.payment.sepa.mandate,type:"
 msgid "Recurrent"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:account.payment.sepa.message,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:account.payment.sepa.message,state:"
 msgid "Done"
@@ -550,13 +553,12 @@ msgstr "SEPA"
 
 msgctxt "view:account.payment:"
 msgid "Code"
-msgstr ""
+msgstr "Kode"
 
-#, fuzzy
 msgctxt "view:account.payment:"
 msgid "Information"
-msgstr "Lokasi"
+msgstr "Informasi"
 
 msgctxt "view:account.payment:"
 msgid "Return Reason"
-msgstr ""
+msgstr "Alasan Pengembalian"
