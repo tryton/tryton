@@ -38,6 +38,22 @@ msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr "A la fecha"
 
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "Ubicaciones"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr "A la fecha"
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr "Almacén"
+
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
 msgstr "Lote"
@@ -84,13 +100,35 @@ msgstr ""
 "* Un valor vacío es una fecha infinita en el futuro.\n"
 "* Una fecha en el pasado proporcionará valores históricos."
 
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+"Permite calcular las cantidades previstas para esta fecha.\n"
+"* Un valor vacío es una fecha infinita en el futuro.\n"
+"* Una fecha en el pasado proporcionará valores históricos."
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr "Cantidad por ubicaciones (listado)"
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr "Cantidad por ubicaciones"
+
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lotes"
 
 msgctxt "model:ir.action,name:act_lots_by_locations"
-msgid "Lot"
-msgstr "Lote"
+msgid "Lots"
+msgstr "Lotes"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse"
+msgid "Lots By Warehouse"
+msgstr "Lotes por almacén"
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -121,6 +159,10 @@ msgstr "Lote"
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
 msgstr "Lote por ubicación"
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
+msgstr "Lote por almacén"
 
 msgctxt "model:stock.period.cache.lot,name:"
 msgid "Stock Period Cache per Lot"

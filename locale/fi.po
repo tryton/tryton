@@ -39,6 +39,23 @@ msgctxt "field:stock.lots_by_location.context,stock_date_end:"
 msgid "At Date"
 msgstr ""
 
+msgctxt "field:stock.lots_by_warehouse.context,forecast_date:"
+msgid "At Date"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.lots_by_warehouse.context,locations:"
+msgid "Locations"
+msgstr "Production"
+
+msgctxt "field:stock.lots_by_warehouse.context,stock_date_end:"
+msgid "At Date"
+msgstr ""
+
+msgctxt "field:stock.lots_by_warehouse.context,warehouse:"
+msgid "Warehouse"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:stock.move,lot:"
 msgid "Lot"
@@ -84,13 +101,33 @@ msgid ""
 "* A date in the past will provide historical values."
 msgstr ""
 
+msgctxt "help:stock.lots_by_warehouse.context,forecast_date:"
+msgid ""
+"Allow to compute expected stock quantities for this date.\n"
+"* An empty value is an infinite date in the future.\n"
+"* A date in the past will provide historical values."
+msgstr ""
+
+msgctxt "model:ir.action,name:act_location_quantity_list"
+msgid "Locations List Quantity"
+msgstr ""
+
+msgctxt "model:ir.action,name:act_location_quantity_tree"
+msgid "Locations Tree Quantity"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_lot_form"
 msgid "Lots"
 msgstr "Lots"
 
+#, fuzzy
 msgctxt "model:ir.action,name:act_lots_by_locations"
-msgid "Lot"
-msgstr "Lot"
+msgid "Lots"
+msgstr "Lots"
+
+msgctxt "model:ir.action,name:act_lots_by_warehouse"
+msgid "Lots By Warehouse"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_move_form_relate_lot"
 msgid "Moves"
@@ -118,6 +155,10 @@ msgstr ""
 
 msgctxt "model:stock.lots_by_location.context,name:"
 msgid "Lot by Location"
+msgstr ""
+
+msgctxt "model:stock.lots_by_warehouse.context,name:"
+msgid "Lot by Warehouse"
 msgstr ""
 
 msgctxt "model:stock.period.cache.lot,name:"
