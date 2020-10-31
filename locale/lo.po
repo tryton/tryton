@@ -6,11 +6,21 @@ msgctxt "field:product.product,locations:"
 msgid "Default Locations"
 msgstr "ບ່ອນເກັບມ້ຽນເດີມ"
 
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "ບ່ອນເກັບມ້ຽນເດີມ"
+
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
 msgstr "ບ່ອນເກັບມ້ຽນ"
 
 msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 

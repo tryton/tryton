@@ -6,11 +6,19 @@ msgctxt "field:product.product,locations:"
 msgid "Default Locations"
 msgstr "Ubicaciones por defecto"
 
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Ubicaciones por defecto"
+
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
 msgstr "Ubicación interna"
 
 msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "field:stock.product.location,template:"
 msgid "Product"
 msgstr "Producto"
 

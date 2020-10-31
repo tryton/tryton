@@ -6,11 +6,21 @@ msgctxt "field:product.product,locations:"
 msgid "Default Locations"
 msgstr "Alapértelmezett raktár hely"
 
+#, fuzzy
+msgctxt "field:product.template,locations:"
+msgid "Default Locations"
+msgstr "Alapértelmezett raktár hely"
+
 msgctxt "field:stock.product.location,location:"
 msgid "Storage Location"
 msgstr "Raktár helye"
 
 msgctxt "field:stock.product.location,product:"
+msgid "Variant"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product.location,template:"
 msgid "Product"
 msgstr "Termék"
 
