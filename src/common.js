@@ -107,7 +107,7 @@
         }
         var prm = jQuery.Deferred();
         if (jQuery.isEmptyObject(values)) {
-            prm.fail();
+            prm.reject();
             return prm;
         }
         var keys = Object.keys(values).sort();
