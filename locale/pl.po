@@ -34,10 +34,9 @@ msgctxt "field:product.template,classification:"
 msgid "Classification"
 msgstr "Klasyfikacja"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_classification"
 msgid "Classifications"
-msgstr "Classifications"
+msgstr "Klasyfikacje"
 
 msgctxt "model:product.classification.dummy,name:"
 msgid "Dummy Product Classification"
