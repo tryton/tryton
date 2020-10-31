@@ -24,7 +24,7 @@ msgstr ""
 
 msgctxt "field:res.user.role,from_date:"
 msgid "From Date"
-msgstr "Dari tanggal"
+msgstr "Dari Tanggal"
 
 msgctxt "field:res.user.role,role:"
 msgid "Role"
