@@ -185,7 +185,7 @@ msgid "Template - Account Category"
 msgstr ""
 
 msgctxt "view:account.configuration:"
-msgid "Category"
+msgid "Product"
 msgstr ""
 
 msgctxt "view:account.create_chart.properties:"

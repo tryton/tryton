@@ -188,9 +188,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
-msgid "Category"
-msgstr "Kategorija"
+msgid "Product"
+msgstr "Izdelek"
 
 #, fuzzy
 msgctxt "view:account.create_chart.properties:"

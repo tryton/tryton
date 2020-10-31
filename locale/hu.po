@@ -192,8 +192,8 @@ msgstr ""
 
 #, fuzzy
 msgctxt "view:account.configuration:"
-msgid "Category"
-msgstr "Kategória"
+msgid "Product"
+msgstr "Termék"
 
 #, fuzzy
 msgctxt "view:account.create_chart.properties:"

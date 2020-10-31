@@ -185,9 +185,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr "الگوی - دسته بندی حساب"
 
+#, fuzzy
 msgctxt "view:account.configuration:"
-msgid "Category"
-msgstr "دسته‌بندی‌"
+msgid "Product"
+msgstr "محصول"
 
 msgctxt "view:account.create_chart.properties:"
 msgid "Category"

@@ -194,9 +194,10 @@ msgctxt "model:product.template-product.category.account,name:"
 msgid "Template - Account Category"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.configuration:"
-msgid "Category"
-msgstr "ໝວດ"
+msgid "Product"
+msgstr "ຜະລິດຕະພັນ"
 
 #, fuzzy
 msgctxt "view:account.create_chart.properties:"
