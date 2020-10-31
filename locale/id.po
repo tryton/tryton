@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:analytic.account.entry,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:analytic.account.entry,company:"
 msgid "Company"
@@ -92,7 +92,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.account.distribution,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:analytic_account.account.distribution,parent:"
 msgid "Parent"
@@ -108,7 +108,7 @@ msgstr ""
 
 msgctxt "field:analytic_account.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:analytic_account.line,company:"
 msgid "Company"
@@ -144,7 +144,7 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:analytic_account.rule,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:analytic_account.rule,analytic_accounts:"
 msgid "Analytic Accounts"
@@ -234,6 +234,10 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
+msgstr ""
+
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
 msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_rule"

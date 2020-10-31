@@ -239,6 +239,10 @@ msgid "Only one account is allowed by analytic root and origin."
 msgstr ""
 "Sólo se puede seleccionar una cuenta por cada origen y raíz analítica."
 
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Aplicar reglas analíticas"
+
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
 msgstr "Usuario en la empresa"

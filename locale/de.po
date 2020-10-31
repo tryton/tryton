@@ -238,6 +238,10 @@ msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
 msgstr "Es ist nur ein Konto per Kostenstelle und Ursprung möglich."
 
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Kostenstelle Regeln anwenden"
+
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
 msgstr "Benutzer im Unternehmen"

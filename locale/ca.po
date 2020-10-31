@@ -238,6 +238,10 @@ msgctxt "model:ir.message,text:msg_root_origin_unique"
 msgid "Only one account is allowed by analytic root and origin."
 msgstr "Només es pot seleccionar un compte per cada origen i arrel analítica."
 
+msgctxt "model:ir.model.button,string:line_apply_analytic_rules_button"
+msgid "Apply Analytic Rules"
+msgstr "Aplica regles analítiques"
+
 msgctxt "model:ir.rule.group,name:rule_group_rule"
 msgid "User in company"
 msgstr "Usuari a l'empresa"
