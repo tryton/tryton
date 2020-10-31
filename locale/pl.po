@@ -6,30 +6,30 @@ msgctxt "field:stock.move,fifo_quantity:"
 msgid "FIFO Quantity"
 msgstr "Ilość FIFO"
 
-#, fuzzy
 msgctxt "field:stock.move,fifo_quantity_available:"
 msgid "FIFO Quantity Available"
-msgstr "Ilość FIFO"
+msgstr "Dostępna ilość wg FIFO"
 
 msgctxt "help:stock.move,fifo_quantity:"
 msgid "Quantity used by FIFO."
-msgstr ""
+msgstr "Ilość wykorzystana w FIFO."
 
 msgctxt "help:stock.move,fifo_quantity_available:"
 msgid "Quantity available for FIFO"
-msgstr ""
+msgstr "Ilość dostępna dla FIFO"
 
 msgctxt "model:ir.message,text:msg_move_delete_fifo"
 msgid ""
 "You cannot delete move \"%(move)s\" because it is used for FIFO cost price "
 "calculation."
 msgstr ""
+"Nie można usunąć przesunięcia„% (move) s”, ponieważ jest używane do "
+"obliczania kosztu własnego wg FIFO."
 
 msgctxt "model:ir.message,text:msg_move_fifo_quantity_greater"
 msgid "The FIFO quantity on move cannot be greater than its quantity."
-msgstr ""
+msgstr "Przesuwana ilość wg FIFO nie może być większa niż jej ilość."
 
-#, fuzzy
 msgctxt "selection:product.product,cost_price_method:"
 msgid "FIFO"
 msgstr "FIFO"
