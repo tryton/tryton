@@ -97,7 +97,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_move_lot_expired"
 msgid "You cannot process move \"%(move)s\" because its lot \"%(lot)s\" has expired."
 msgstr ""
-"U kan de boeking  \"%(move)s\" niet verwerken omdat het lot \"%(lot)s "
+"U kan de boeking \"%(move)s\" niet verwerken omdat het lot \"%(lot)s "
 "vervallen is."
 
 msgctxt "model:ir.message,text:msg_period_close_sled"
