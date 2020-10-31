@@ -80,7 +80,7 @@ msgstr "Zahlungsbedingung"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
-msgstr "Belegnummer"
+msgstr "Referenz"
 
 msgctxt "field:sale.opportunity,sales:"
 msgid "Sales"

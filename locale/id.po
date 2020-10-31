@@ -77,7 +77,7 @@ msgstr "Pihak"
 
 msgctxt "field:sale.opportunity,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Masa Pembayaran"
 
 msgctxt "field:sale.opportunity,reference:"
 msgid "Reference"
@@ -93,7 +93,7 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:sale.opportunity,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.opportunity.line,opportunity:"
 msgid "Opportunity"
