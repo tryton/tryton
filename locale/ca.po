@@ -126,6 +126,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Codi resum espanyol compres intracomunitàries"
 
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Reportat amb"
+
 msgctxt "field:account.tax,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr "Codi resum operacions terceres persones"
@@ -141,6 +145,10 @@ msgstr "Informe AEAT"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Codi resum espanyol compres intracomunitàries"
+
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Reportat amb"
 
 msgctxt "field:account.tax.template,es_vat_list_code:"
 msgid "Spanish VAT List Code"
@@ -264,12 +272,12 @@ msgid "Model 303"
 msgstr "Model 303"
 
 msgctxt "view:account.tax.template:"
-msgid "Spanish VAT List"
-msgstr "Resum operacions terceres persones"
+msgid "Spanish VAT"
+msgstr "IVA Espanyol"
 
 msgctxt "view:account.tax:"
-msgid "Spanish VAT List"
-msgstr "Resum operacions terceres persones"
+msgid "Spanish VAT"
+msgstr "IVA Espanyol"
 
 msgctxt "wizard_button:account.reporting.aeat,start,choice:"
 msgid "Print"

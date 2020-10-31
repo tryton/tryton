@@ -126,6 +126,11 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Laporan"
+
 msgctxt "field:account.tax,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr ""
@@ -141,6 +146,11 @@ msgstr ""
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Laporan"
 
 msgctxt "field:account.tax.template,es_vat_list_code:"
 msgid "Spanish VAT List Code"
@@ -263,11 +273,11 @@ msgid "Model 303"
 msgstr ""
 
 msgctxt "view:account.tax.template:"
-msgid "Spanish VAT List"
+msgid "Spanish VAT"
 msgstr ""
 
 msgctxt "view:account.tax:"
-msgid "Spanish VAT List"
+msgid "Spanish VAT"
 msgstr ""
 
 msgctxt "wizard_button:account.reporting.aeat,start,choice:"

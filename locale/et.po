@@ -128,6 +128,11 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Hispaania EC ostu nimekirja kood"
 
+#, fuzzy
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Aruanne"
+
 msgctxt "field:account.tax,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr "Hispaania KM nimekirja kood"
@@ -143,6 +148,11 @@ msgstr "AETA aruanne"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Hispaania EC ostu nimekirja kood"
+
+#, fuzzy
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Aruanne"
 
 msgctxt "field:account.tax.template,es_vat_list_code:"
 msgid "Spanish VAT List Code"
@@ -264,12 +274,14 @@ msgctxt "selection:account.tax.code.template,aeat_report:"
 msgid "Model 303"
 msgstr "Mudel 303"
 
+#, fuzzy
 msgctxt "view:account.tax.template:"
-msgid "Spanish VAT List"
+msgid "Spanish VAT"
 msgstr "Hispaania KM nimekiri"
 
+#, fuzzy
 msgctxt "view:account.tax:"
-msgid "Spanish VAT List"
+msgid "Spanish VAT"
 msgstr "Hispaania KM nimekiri"
 
 msgctxt "wizard_button:account.reporting.aeat,start,choice:"

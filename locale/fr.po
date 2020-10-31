@@ -126,6 +126,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Code de la liste des achats CE espagnoles"
 
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Rapportée avec"
+
 msgctxt "field:account.tax,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr "Liste de code TVA espagnole"
@@ -141,6 +145,10 @@ msgstr "Rapport AEAT"
 msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Code de la liste d'achat CE espagnole"
+
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Rapporté avec"
 
 msgctxt "field:account.tax.template,es_vat_list_code:"
 msgid "Spanish VAT List Code"
@@ -265,12 +273,12 @@ msgid "Model 303"
 msgstr "Modèle 303"
 
 msgctxt "view:account.tax.template:"
-msgid "Spanish VAT List"
-msgstr "Liste TVA espagnole"
+msgid "Spanish VAT"
+msgstr "TVA espagnole"
 
 msgctxt "view:account.tax:"
-msgid "Spanish VAT List"
-msgstr "Liste TVA espagnole"
+msgid "Spanish VAT"
+msgstr "TVA espagnole"
 
 msgctxt "wizard_button:account.reporting.aeat,start,choice:"
 msgid "Print"

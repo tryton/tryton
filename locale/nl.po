@@ -126,6 +126,10 @@ msgctxt "field:account.tax,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchases List Code"
 msgstr "Spaanse EC-aankooplijstcode"
 
+msgctxt "field:account.tax,es_reported_with:"
+msgid "Reported with"
+msgstr "Gemeld met"
+
 msgctxt "field:account.tax,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr "Spaanse btw-lijstcode"
@@ -142,6 +146,10 @@ msgctxt "field:account.tax.template,es_ec_purchases_list_code:"
 msgid "Spanish EC Purchase List Code"
 msgstr "Spaanse EC-aankooplijstcode"
 
+msgctxt "field:account.tax.template,es_reported_with:"
+msgid "Reported With"
+msgstr "Gemeld met"
+
 msgctxt "field:account.tax.template,es_vat_list_code:"
 msgid "Spanish VAT List Code"
 msgstr "Spaanse btw-lijstcode"
@@ -156,7 +164,7 @@ msgstr "Vink aan om betalingen te ontvangen vóór de betaaldatum."
 
 msgctxt "help:party.party,es_province_code:"
 msgid "Set 99 for non Spanish parties."
-msgstr "Kies  99 voor niet-Spaanse relaties."
+msgstr "Kies 99 voor niet-Spaanse relaties."
 
 msgctxt "model:account.reporting.aeat.start,name:"
 msgid "Print AEAT Start"
@@ -265,12 +273,12 @@ msgid "Model 303"
 msgstr "Model 303"
 
 msgctxt "view:account.tax.template:"
-msgid "Spanish VAT List"
-msgstr "Spaanse BTW-lijst"
+msgid "Spanish VAT"
+msgstr "Spaanse BTW"
 
 msgctxt "view:account.tax:"
-msgid "Spanish VAT List"
-msgstr "Spaanse BTW-lijst"
+msgid "Spanish VAT"
+msgstr "Spaanse BTW"
 
 msgctxt "wizard_button:account.reporting.aeat,start,choice:"
 msgid "Print"
