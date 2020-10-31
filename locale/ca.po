@@ -14,6 +14,10 @@ msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
 msgstr "Categoria centre de treball"
 
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr "Cicles actius"
+
 msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Empresa"
@@ -165,6 +169,14 @@ msgstr "Finalitza"
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
 msgstr "Executa"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr "Inicia"
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr "Atura"
 
 msgctxt "model:ir.rule.group,name:rule_group_work"
 msgid "User in company"

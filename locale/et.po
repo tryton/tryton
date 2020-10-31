@@ -14,6 +14,11 @@ msgctxt "field:production.routing.operation,work_center_category:"
 msgid "Work Center Category"
 msgstr "Töökoha kategooria"
 
+#, fuzzy
+msgctxt "field:production.work,active_cycles:"
+msgid "Active Cycles"
+msgstr "Tsüklis"
+
 msgctxt "field:production.work,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -159,6 +164,14 @@ msgstr "Teha"
 msgctxt "model:ir.model.button,string:work_cycle_run_button"
 msgid "Run"
 msgstr "Käivita"
+
+msgctxt "model:ir.model.button,string:work_start_button"
+msgid "Start"
+msgstr ""
+
+msgctxt "model:ir.model.button,string:work_stop_button"
+msgid "Stop"
+msgstr ""
 
 msgctxt "model:ir.rule.group,name:rule_group_work"
 msgid "User in company"
