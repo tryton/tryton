@@ -20,11 +20,11 @@ msgstr ""
 
 msgctxt "field:account.be.vat_customer,turnover:"
 msgid "Turnover"
-msgstr ""
+msgstr "Pergantian"
 
 msgctxt "field:account.be.vat_customer,vat:"
 msgid "VAT"
-msgstr "VAT"
+msgstr "PPN"
 
 msgctxt "field:account.be.vat_customer.context,company:"
 msgid "Company"
