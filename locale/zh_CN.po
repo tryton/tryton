@@ -28,7 +28,7 @@ msgstr "上级公司"
 
 msgctxt "field:company.company,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:company.company,timezone:"
 msgid "Timezone"
@@ -44,7 +44,7 @@ msgstr "离职日期"
 
 msgctxt "field:company.employee,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:company.employee,start_date:"
 msgid "Start Date"
@@ -152,21 +152,19 @@ msgstr "当员工离开公司的时间."
 
 msgctxt "help:company.employee,party:"
 msgid "The party which represents the employee."
-msgstr "代表雇员的参与对象."
+msgstr "代表雇员的参与者."
 
 msgctxt "help:company.employee,start_date:"
 msgid "When the employee joins the company."
 msgstr "雇员加入公司的时候."
 
-#, fuzzy
 msgctxt "help:company.employee,subordinates:"
 msgid "The employees to be overseen by this employee."
-msgstr "代表雇员的参与对象."
+msgstr "代表雇员的参与者."
 
-#, fuzzy
 msgctxt "help:company.employee,supervisor:"
 msgid "The employee who oversees this employee."
-msgstr "代表雇员的参与对象."
+msgstr "代表雇员的参与者."
 
 #, fuzzy
 msgctxt "help:ir.cron,companies:"
