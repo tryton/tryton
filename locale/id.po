@@ -30,7 +30,7 @@ msgstr ""
 
 msgctxt "field:account.configuration.cash_rounding_account,company:"
 msgid "Company"
-msgstr ""
+msgstr "Perusahaan"
 
 msgctxt "field:account.invoice,cash_rounding:"
 msgid "Cash Rounding"
