@@ -26,6 +26,11 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Кол-во цифр валюты"
+
+#, fuzzy
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
@@ -156,6 +161,11 @@ msgstr ""
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Активы"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Кол-во цифр валюты"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

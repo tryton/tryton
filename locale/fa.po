@@ -22,6 +22,11 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "رقم های واحد پول"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -135,6 +140,11 @@ msgstr "مقدار واقعی"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "دارایی"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "رقم های واحد پول"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

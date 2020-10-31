@@ -22,6 +22,11 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Valiutos skaitmenų skaičius"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valiutos skaitmenų skaičius"
@@ -137,6 +142,11 @@ msgstr ""
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Asset"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Valiutos skaitmenų skaičius"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

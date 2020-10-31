@@ -22,6 +22,10 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Währung"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Nachkommastellen Währung"
@@ -133,6 +137,10 @@ msgstr "Buchwert"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Anlage"
+
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Währung"
 
 msgctxt "field:account.asset.line,currency_digits:"
 msgid "Currency Digits"
@@ -405,7 +413,7 @@ msgstr "Alle"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_closed"
 msgid "Closed"
-msgstr "Abgeschlossen"
+msgstr "Geschlossen"
 
 msgctxt "model:ir.action.act_window.domain,name:act_asset_form_domain_draft"
 msgid "Draft"

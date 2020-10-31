@@ -22,6 +22,10 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Devise"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
@@ -133,6 +137,10 @@ msgstr "Valeur réelle"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Actif"
+
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.asset.line,currency_digits:"
 msgid "Currency Digits"

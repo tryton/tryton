@@ -22,6 +22,11 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Valuuta numbrikohtade arv"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbrikohtade arv"
@@ -135,6 +140,11 @@ msgstr "Tegelik väärtus"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Põhivara"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Valuuta numbrikohtade arv"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

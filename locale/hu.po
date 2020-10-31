@@ -24,6 +24,11 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Társaság"
 
+#, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Tizedes vessző utáni számjegy"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -147,6 +152,11 @@ msgstr ""
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Eszköz"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Tizedes vessző utáni számjegy"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

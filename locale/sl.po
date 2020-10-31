@@ -22,6 +22,11 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Decimalke"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimalke"
@@ -135,6 +140,11 @@ msgstr "Dejanska vrednost"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Sredstvo"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Decimalke"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"

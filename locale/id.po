@@ -22,6 +22,10 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr ""
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -132,6 +136,10 @@ msgstr "Nilai sebenarnya"
 
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
+msgstr ""
+
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
 msgstr ""
 
 msgctxt "field:account.asset.line,currency_digits:"
@@ -446,7 +454,7 @@ msgstr ""
 
 msgctxt "model:ir.model.button,string:asset_close_button"
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 msgctxt "model:ir.model.button,string:asset_create_lines_button"
 msgid "Create Lines"

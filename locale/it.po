@@ -22,6 +22,10 @@ msgctxt "field:account.asset,company:"
 msgid "Company"
 msgstr "Azienda"
 
+msgctxt "field:account.asset,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:account.asset,currency_digits:"
 msgid "Currency Digits"
 msgstr "Posizioni valuta"
@@ -135,6 +139,11 @@ msgstr "Valore attuale"
 msgctxt "field:account.asset.line,asset:"
 msgid "Asset"
 msgstr "Immobilizzazione"
+
+#, fuzzy
+msgctxt "field:account.asset.line,currency:"
+msgid "Currency"
+msgstr "Posizioni valuta"
 
 #, fuzzy
 msgctxt "field:account.asset.line,currency_digits:"
