@@ -319,11 +319,11 @@ msgstr "Klacht van klant actie"
 
 msgctxt "model:sale.complaint.action-account.invoice.line,name:"
 msgid "Customer Complaint Action - Invoice Line"
-msgstr "klachten klant actie  - factuurregel"
+msgstr "klachten klant actie - factuurregel"
 
 msgctxt "model:sale.complaint.action-sale.line,name:"
 msgid "Customer Complaint Action - Sale Line"
-msgstr "klachten klant actie  - verkoopregel"
+msgstr "klachten klant actie - verkoopregel"
 
 msgctxt "model:sale.complaint.type,name:"
 msgid "Customer Complaint Type"

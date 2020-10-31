@@ -52,11 +52,11 @@ msgstr "Referensi"
 
 msgctxt "field:sale.complaint,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.complaint,type:"
 msgid "Type"
-msgstr ""
+msgstr "Jenis"
 
 msgctxt "field:sale.complaint.action,action:"
 msgid "Action"
@@ -200,12 +200,10 @@ msgctxt "help:sale.complaint.action,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Biarkan kosong untuk harga yang sama."
 
-#, fuzzy
 msgctxt "help:sale.complaint.action-account.invoice.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Biarkan kosong untuk harga yang sama."
 
-#, fuzzy
 msgctxt "help:sale.complaint.action-sale.line,unit_price:"
 msgid "Leave empty for the same price."
 msgstr "Biarkan kosong untuk harga yang sama."
