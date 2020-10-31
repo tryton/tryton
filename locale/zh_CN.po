@@ -16,7 +16,7 @@ msgstr "电子邮件有效"
 
 msgctxt "field:web.user,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:web.user,password:"
 msgid "Password"
@@ -33,6 +33,20 @@ msgstr "重置密码令牌"
 msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "重置密码令牌过期"
+
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "用户"
 
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
@@ -89,6 +103,11 @@ msgstr "Web 用户"
 msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr "Web 用户"
+
+#, fuzzy
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "web 用户会话"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"

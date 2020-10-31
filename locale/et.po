@@ -34,6 +34,20 @@ msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr ""
 
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Osapool"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Kasutaja"
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "IP-aadress"
@@ -88,6 +102,10 @@ msgstr ""
 
 msgctxt "model:web.user,name:"
 msgid "Web User"
+msgstr ""
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
 msgstr ""
 
 msgctxt "model:web.user.authenticate.attempt,name:"

@@ -34,6 +34,18 @@ msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "Expiration du jeton de réinitialisation du mot de passe"
 
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr "Tiers secondaires"
+
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Utilisateur"
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Adresse IP"
@@ -89,6 +101,10 @@ msgstr "Utilisateurs web"
 msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr "Utilisateur web"
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "Utilisateur Web - Tiers secondaire"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"

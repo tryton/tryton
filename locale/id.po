@@ -34,6 +34,20 @@ msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr ""
 
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Pihak"
+
+#, fuzzy
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Pengguna"
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "Alamat IP"
@@ -90,6 +104,10 @@ msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr ""
 
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr ""
+
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
 msgstr ""
@@ -100,35 +118,35 @@ msgstr ""
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Tombol tidak berfungsi? Lekatkan ini pada browser Anda:"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "If you didn't make this request, you can ignore this email."
-msgstr ""
+msgstr "Jika bukan Anda yang membuat permintaan ini, abaikan email ini."
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "report:web.user.email_reset_password:"
 msgid "We received a request to reset the password for your account,"
-msgstr ""
+msgstr "Kami menerima permintaan untuk mengatur ulang kata sandi akun Anda,"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Button is not working? Paste this into your browser:"
-msgstr ""
+msgstr "Tombol tidak berfungsi? Lekatkan ini pada browser Anda:"
 
 msgctxt "report:web.user.email_validation:"
 msgid "Email Validation"
-msgstr ""
+msgstr "Validasi Email"
 
 msgctxt "report:web.user.email_validation:"
 msgid "If you received this email by mistake, just ignore it."
-msgstr ""
+msgstr "Jika Anda menerima email ini karena kesalahan, abaikan saja."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Just one more step.."
-msgstr ""
+msgstr "Tinggal satu langkah lagi..."
 
 msgctxt "report:web.user.email_validation:"
 msgid "Validate"
@@ -136,7 +154,7 @@ msgstr ""
 
 msgctxt "view:web.user:"
 msgid "Reset Password"
-msgstr ""
+msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "view:web.user:"
 msgid "Validate E-mail"

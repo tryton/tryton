@@ -34,6 +34,18 @@ msgctxt "field:web.user,reset_password_token_expire:"
 msgid "Reset Password Token Expire"
 msgstr "Reset wachtwoord token verlopen"
 
+msgctxt "field:web.user,secondary_parties:"
+msgid "Secondary Parties"
+msgstr "Secundaire Relaties"
+
+msgctxt "field:web.user-party.party.secondary,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt "field:web.user-party.party.secondary,user:"
+msgid "User"
+msgstr "Gebruiker"
+
 msgctxt "field:web.user.authenticate.attempt,ip_address:"
 msgid "IP Address"
 msgstr "IP Adres"
@@ -89,6 +101,10 @@ msgstr "Webgebruikers"
 msgctxt "model:web.user,name:"
 msgid "Web User"
 msgstr "Web gebruiker"
+
+msgctxt "model:web.user-party.party.secondary,name:"
+msgid "Web User - Secondary Party"
+msgstr "Webgebruiker -Secundaire Relatie"
 
 msgctxt "model:web.user.authenticate.attempt,name:"
 msgid "Web User Authenticate Attempt"
