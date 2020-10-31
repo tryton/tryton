@@ -226,6 +226,14 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr "Inventaris"
 
+msgctxt "field:stock.inventory.line,inventory_date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:stock.inventory.line,inventory_location:"
+msgid "Location"
+msgstr "Plaats"
+
 msgctxt "field:stock.inventory.line,inventory_state:"
 msgid "Inventory State"
 msgstr "Voorraadstatus"
@@ -322,6 +330,14 @@ msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
 msgstr "Magazijn"
 
+msgctxt "field:stock.location,waste_locations:"
+msgid "Waste Locations"
+msgstr "Afvallocaties"
+
+msgctxt "field:stock.location,waste_warehouses:"
+msgid "Waste Warehouses"
+msgstr "Afvalmagazijnen"
+
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "Doorlooptijd"
@@ -334,6 +350,14 @@ msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
 msgstr "Magazijn naar"
 
+msgctxt "field:stock.location.waste,location:"
+msgid "Waste Location"
+msgstr "Afvallocatie"
+
+msgctxt "field:stock.location.waste,warehouse:"
+msgid "Warehouse"
+msgstr "Magazijn"
+
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
 msgstr "Vereiste toewijzing"
@@ -345,6 +369,10 @@ msgstr "Bedrijf"
 msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
 msgstr "Kostprijs"
+
+msgctxt "field:stock.move,cost_price_required:"
+msgid "Cost Price Required"
+msgstr "Kostprijs vereist"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
@@ -402,6 +430,10 @@ msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
 msgstr "Eenheidsprijs"
 
+msgctxt "field:stock.move,unit_price_company:"
+msgid "Unit Price"
+msgstr "Eenheidsprijs"
+
 msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
 msgstr "Eenheidsprijs vereist"
@@ -446,6 +478,10 @@ msgctxt "field:stock.period.cache,product:"
 msgid "Product"
 msgstr "Product"
 
+msgctxt "field:stock.product_quantities_warehouse,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "Datum"
@@ -463,6 +499,41 @@ msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
 msgstr "Magazijn"
 
+msgctxt "field:stock.product_quantities_warehouse.move,company:"
+msgid "Company"
+msgstr "Bedrijf"
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_delta:"
+msgid "Cumulative Quantity Delta"
+msgstr "Cumulatieve hoeveelheid Delta"
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_end:"
+msgid "Cumulative Quantity End"
+msgstr "Cumulatieve Hoeveelheid Einde"
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_start:"
+msgid "Cumulative Quantity Start"
+msgstr "Cumulatieve hoeveelheid Start"
+
+msgctxt "field:stock.product_quantities_warehouse.move,date:"
+msgid "Date"
+msgstr "Datum"
+
+msgctxt "field:stock.product_quantities_warehouse.move,move:"
+msgid "Move"
+msgstr "Boeking"
+
+msgctxt "field:stock.product_quantities_warehouse.move,origin:"
+msgid "Origin"
+msgstr "Oorsprong"
+
+msgctxt "field:stock.product_quantities_warehouse.move,quantity:"
+msgid "Quantity"
+msgstr "Hoeveelheid"
+
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
 msgstr "Op datum van"
@@ -470,6 +541,10 @@ msgstr "Op datum van"
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "Op datum van"
+
+msgctxt "field:stock.shipment.assign.partial,moves:"
+msgid "Moves"
+msgstr "Boekingen"
 
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
@@ -599,10 +674,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "Naar locatie"
 
-msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
-msgid "Moves"
-msgstr "Boekingen"
-
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "Ontvangen door"
@@ -671,14 +742,6 @@ msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
 msgstr "Doorvoerlocatie"
 
-msgctxt "field:stock.shipment.internal.assign.failed,moves:"
-msgid "Moves"
-msgstr "Boekingen"
-
-msgctxt "field:stock.shipment.out,assigned_by:"
-msgid "Assigned By"
-msgstr "Toegewezen door"
-
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
 msgstr "Bedrijf"
@@ -727,6 +790,10 @@ msgctxt "field:stock.shipment.out,packed_by:"
 msgid "Packed By"
 msgstr "Verpakt door"
 
+msgctxt "field:stock.shipment.out,picked_by:"
+msgid "Picked By"
+msgstr "Verzameld door"
+
 msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
 msgstr "Geplande datum"
@@ -750,10 +817,6 @@ msgstr "Magazijnoutput"
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "Magazijn opslag"
-
-msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
-msgid "Inventory Moves"
-msgstr "Voorraadbewegingen"
 
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
@@ -964,7 +1027,7 @@ msgid "The date of the stock count."
 msgstr "De datum van de voorraad telling."
 
 msgctxt "help:stock.inventory,empty_quantity:"
-msgid "How lines without quantity are handled."
+msgid "How lines without a quantity are handled."
 msgstr "Hoe lijnen zonder hoeveelheid worden afgehandeld."
 
 msgctxt "help:stock.inventory,location:"
@@ -985,7 +1048,7 @@ msgstr "De hoeveelheid die moet worden toegevoegd aan de bestaande telling."
 
 msgctxt "help:stock.inventory.count.quantity,total_quantity:"
 msgid "The total amount of the line counted so far."
-msgstr "Het totale bedrag van de lijnen die tot nu toe  geteld zijn."
+msgstr "Het totale bedrag van de lijnen die tot nu toe geteld zijn."
 
 msgctxt "help:stock.inventory.count.quantity,uom:"
 msgid "The unit in which the quantities are specified."
@@ -1069,6 +1132,14 @@ msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "De locatie van het hoogste niveau waar de voorraad is opgeslagen."
 
+msgctxt "help:stock.location,waste_locations:"
+msgid "The locations used for waste products from the warehouse."
+msgstr "De locaties die worden gebruikt voor afvalproducten uit het magazijn."
+
+msgctxt "help:stock.location,waste_warehouses:"
+msgid "The warehouses that use the location for waste products."
+msgstr "De magazijnen die de locatie gebruiken voor afvalproducten."
+
 msgctxt "help:stock.location.lead_time,lead_time:"
 msgid "The time it takes to move stock between the warehouses."
 msgstr ""
@@ -1119,6 +1190,10 @@ msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Waar de voorraad naartoe wordt verplaatst."
 
+msgctxt "help:stock.move,unit_price_company:"
+msgid "Unit price in company currency."
+msgstr "Eenheidsprijs in bedrijfsvaluta."
+
 msgctxt "help:stock.move,uom:"
 msgid "The unit in which the quantity is specified."
 msgstr "De eenheid waarin de hoeveelheid is opgegeven."
@@ -1153,6 +1228,10 @@ msgstr ""
 "De datum waarvoor de voorraadhoeveelheid wordt berekend.\n"
 "* Een lege waarde berekent zo ver mogelijk vooruit.\n"
 "* Een datum in het verleden geeft historische waarden."
+
+msgctxt "help:stock.shipment.assign.partial,moves:"
+msgid "The moves that were not assigned."
+msgstr "De bewegingen die niet zijn toegewezen."
 
 msgctxt "help:stock.shipment.in,company:"
 msgid "The company the shipment is associated with."
@@ -1242,10 +1321,6 @@ msgctxt "help:stock.shipment.in.return,to_location:"
 msgid "Where the stock is moved to."
 msgstr "Waar de voorraad naartoe wordt verplaatst."
 
-msgctxt "help:stock.shipment.in.return.assign.failed,moves:"
-msgid "The moves that were not assigned."
-msgstr "De bewegingen die niet zijn toegewezen."
-
 msgctxt "help:stock.shipment.internal,company:"
 msgid "The company the shipment is associated with."
 msgstr "Het bedrijf waaraan de verzending is gekoppeld."
@@ -1304,10 +1379,6 @@ msgid ""
 msgstr ""
 "Waar de voorraad zich bevindt terwijl deze onderweg is tussen de magazijnen."
 
-msgctxt "help:stock.shipment.internal.assign.failed,moves:"
-msgid "The moves that were not assigned."
-msgstr "De bewegingen die niet zijn toegewezen."
-
 msgctxt "help:stock.shipment.out,company:"
 msgid "The company the shipment is associated with."
 msgstr "Het bedrijf waaraan de verzending is gekoppeld."
@@ -1351,10 +1422,6 @@ msgstr "De huidige status van de zending."
 msgctxt "help:stock.shipment.out,warehouse:"
 msgid "Where the stock is sent from."
 msgstr "Waar de voorraad vandaan wordt verzonden."
-
-msgctxt "help:stock.shipment.out.assign.failed,inventory_moves:"
-msgid "The inventory moves that were not assigned."
-msgstr "De inventarisbewegingen die niet waren toegewezen."
 
 msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
@@ -1404,6 +1471,10 @@ msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "voorraden"
 
+msgctxt "model:ir.action,name:act_inventory_line_relate"
+msgid "Inventory Lines"
+msgstr "Voorraadregels"
+
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "locaties"
@@ -1436,9 +1507,17 @@ msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
 msgstr "Revisie kostprijs"
 
+msgctxt "model:ir.action,name:act_product_moves"
+msgid "Stock Moves"
+msgstr "Voorraadbeweging"
+
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
 msgstr "Producthoeveelheden per magazijn"
+
+msgctxt "model:ir.action,name:act_product_quantities_warehouse_move"
+msgid "Stock Moves By Warehouse"
+msgstr "voorraad bewegingen per magazijn"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
 msgid "Products"
@@ -1450,7 +1529,7 @@ msgstr "Leverancierszendingen"
 
 msgctxt "model:ir.action,name:act_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retourzending  leverancier"
+msgstr "Retourzending leverancier"
 
 msgctxt "model:ir.action,name:act_shipment_internal_form"
 msgid "Internal Shipments"
@@ -1513,12 +1592,12 @@ msgid "Recompute Cost Price"
 msgstr "Kostprijs herberekenen"
 
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
-msgid "Assign Purchase Return Shipment"
-msgstr "Wijs inkoop retourzending toe"
+msgid "Assign Supplier Return Shipment"
+msgstr "Wijs retourzending leverancier toe"
 
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
-msgid "Assign Shipment Internal"
-msgstr "interne Zending toewijzen"
+msgid "Assign Internal Shipment"
+msgstr "wijs Interne verzending toe"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
@@ -1638,6 +1717,11 @@ msgid "Packed"
 msgstr "verpakt"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_picked"
+msgid "Picked"
+msgstr "verzameld"
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
 msgstr "In afwachting"
@@ -1675,19 +1759,22 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
-msgstr "Geen bestaande regel gevonden voor  \"%(search)s\"."
+msgstr "Geen bestaande regel gevonden voor \"%(search)s\"."
+
+msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
+msgid "The inventories \"%(inventories)s\" have dates in the future."
+msgstr "De voorraden \"%(inventories)s\" hebben data in de toekomst."
 
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
-msgstr ""
-"Om de inventaris  \"%(inventory)s\" te verwijderen, moet u deze annuleren."
+msgstr "Om de inventaris \"%(inventory)s\" te verwijderen, moet u deze annuleren."
 
 msgctxt "model:ir.message,text:msg_inventory_line_delete_cancel"
 msgid ""
 "To delete inventory line \"%(line)s\" you must cancel inventory "
 "\"%(inventory)s\"."
 msgstr ""
-"Om inventarisregel \"%(line)s\"  te verwijderen, moet u de inventaris "
+"Om inventarisregel \"%(line)s\" te verwijderen, moet u de inventaris "
 "\"%(inventory)s\" annuleren."
 
 msgctxt "model:ir.message,text:msg_inventory_line_quantity_positive"
@@ -1696,7 +1783,7 @@ msgstr "Voorraadregelhoeveelheid moet positief zijn."
 
 msgctxt "model:ir.message,text:msg_inventory_line_unique"
 msgid "Inventory line \"%(line)s\" is not unique on inventory \"%(inventory)s\"."
-msgstr "Voorraadregel  \"%(line)s\"is niet uniek op voorraad \"%(inventory)s\"."
+msgstr "Voorraadregel \"%(line)s\"is niet uniek op voorraad \"%(inventory)s\"."
 
 msgctxt "model:ir.message,text:msg_inventory_location_missing_lost_found"
 msgid ""
@@ -1711,7 +1798,7 @@ msgid ""
 "To confirm the inventory \"%(inventory)s\" you must select an option for "
 "empty quantity."
 msgstr ""
-"Om de inventaris \"%(inventory)s\"  te bevestigen, moet u een optie voor de "
+"Om de inventaris \"%(inventory)s\" te bevestigen, moet u een optie voor de "
 "lege hoeveelheid selecteren."
 
 msgctxt "model:ir.message,text:msg_location_child_of_warehouse"
@@ -1731,8 +1818,8 @@ msgid ""
 "You cannot change the type of location \"%(location)s\" to \"%(type)s\"\n"
 "because the type does not support moves and location has existing moves."
 msgstr ""
-"U kunt het type van locatie \"%(location)s\"  niet wijzigen in \"%(type)s\n"
-"omdat het type geen bewegingen ondersteunt en de bestaande locatie  bewegingen heeft."
+"U kunt het type van locatie \"%(location)s\" niet wijzigen in \"%(type)s\n"
+"omdat het type geen bewegingen ondersteunt en de bestaande locatie bewegingen heeft."
 
 msgctxt "model:ir.message,text:msg_move_delete_draft_cancel"
 msgid ""
@@ -1742,13 +1829,17 @@ msgstr ""
 "Als u voorraad bewegingen \"%(move)s\" wilt verwijderen, moet u deze "
 "annuleren of de status opnieuw instellen op concept."
 
+msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
+msgid "The moves \"%(moves)s\" have effective dates in the future."
+msgstr "De bewegingen \"%(moves)s\" hebben een ingangsdatums in de toekomst."
+
 msgctxt "model:ir.message,text:msg_move_from_to_location"
 msgid "The source and destination of stock move must be different."
 msgstr "De bron en bestemming van voorraadbeweging moeten verschillend zijn."
 
 msgctxt "model:ir.message,text:msg_move_internal_quantity_positive"
 msgid "Internal move quantity must be positive."
-msgstr "De hoeveelheid van  interne verplaatsing moet positief zijn."
+msgstr "De hoeveelheid van interne verplaatsing moet positief zijn."
 
 msgctxt "model:ir.message,text:msg_move_modify_assigned"
 msgid "To modify stock move \"%(move)s\" you must reset its state to draft."
@@ -1971,8 +2062,12 @@ msgid "Draft"
 msgstr "Concept"
 
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
-msgid "Make shipment"
-msgstr "Verzending maken"
+msgid "Pack"
+msgstr "verpak"
+
+msgctxt "model:ir.model.button,string:shipment_out_pick_button"
+msgid "Pick"
+msgstr "verzamelen"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
@@ -1995,6 +2090,15 @@ msgid "Wait"
 msgstr "wachten"
 
 msgctxt "model:ir.rule.group,name:rule_group_move"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.rule.group,name:rule_group_product_quantities_warehouse"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_product_quantities_warehouse_move"
 msgid "User in company"
 msgstr "Gebruiker in het bedrijf"
 
@@ -2028,7 +2132,7 @@ msgstr "Zending leverancier"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Retourzending  leverancier"
+msgstr "Retourzending leverancier"
 
 msgctxt "model:ir.sequence,name:sequence_shipment_internal"
 msgid "Internal Shipment"
@@ -2052,7 +2156,7 @@ msgstr "Zending leverancier"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_in_return"
 msgid "Supplier Return Shipment"
-msgstr "Retourzending  leverancier"
+msgstr "Retourzending leverancier"
 
 msgctxt "model:ir.sequence.type,name:sequence_type_shipment_internal"
 msgid "Internal Shipment"
@@ -2108,7 +2212,7 @@ msgstr "Leverancierszendingen"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_in_return_form"
 msgid "Supplier Return Shipments"
-msgstr "Retourzending  leverancier"
+msgstr "Retourzending leverancier"
 
 msgctxt "model:ir.ui.menu,name:menu_shipment_internal_form"
 msgid "Internal Shipments"
@@ -2230,6 +2334,10 @@ msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
 msgstr "Locatie doorlooptijd"
 
+msgctxt "model:stock.location.waste,name:"
+msgid "Warehouse Waste Location"
+msgstr "Magazijnafvallocatie"
+
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
 msgstr "Voorraadbeweging"
@@ -2250,9 +2358,17 @@ msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
 msgstr "Producthoeveelheden per magazijn"
 
+msgctxt "model:stock.product_quantities_warehouse.move,name:"
+msgid "Product Quantities By Warehouse Moves"
+msgstr "Producthoeveelheden per magazijnbewegingen"
+
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
 msgstr "Producten per locatie"
+
+msgctxt "model:stock.shipment.assign.partial,name:"
+msgid "Assign Shipment"
+msgstr "Zending toewijzen"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
@@ -2260,27 +2376,15 @@ msgstr "Zending leverancier"
 
 msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
-msgstr "Retourzending  leverancier"
-
-msgctxt "model:stock.shipment.in.return.assign.failed,name:"
-msgid "Assign Supplier Return Shipment"
-msgstr "Wijs retourzending leverancier toe"
+msgstr "Retourzending leverancier"
 
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
 msgstr "Interne verzending"
 
-msgctxt "model:stock.shipment.internal.assign.failed,name:"
-msgid "Assign Shipment Internal"
-msgstr "interne Zending toewijzen"
-
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
 msgstr "Klant zending"
-
-msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Customer Shipment"
-msgstr "Klantverzending toewijzen"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
@@ -2518,6 +2622,18 @@ msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr "Kostprijs berekenen van bewegingen"
 
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Customer Shipments"
+msgstr "Klantzendingen opnieuw inplannen"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Internal Shipments"
+msgstr "Interne zendingen opnieuw plannen"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Supplier Return Shipments"
+msgstr "Plan retourzendingen van leveranciers opnieuw"
+
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
 msgstr "Leeg"
@@ -2527,7 +2643,7 @@ msgid "Keep"
 msgstr "Houden"
 
 msgctxt "selection:stock.inventory,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.inventory,state:"
@@ -2579,7 +2695,7 @@ msgid "Assigned"
 msgstr "toegewezen"
 
 msgctxt "selection:stock.move,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.move,state:"
@@ -2603,7 +2719,7 @@ msgid "Draft"
 msgstr "Concept"
 
 msgctxt "selection:stock.shipment.in,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.in,state:"
@@ -2623,7 +2739,7 @@ msgid "Assigned"
 msgstr "toegewezen"
 
 msgctxt "selection:stock.shipment.in.return,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.in.return,state:"
@@ -2643,7 +2759,7 @@ msgid "Assigned"
 msgstr "toegewezen"
 
 msgctxt "selection:stock.shipment.internal,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.internal,state:"
@@ -2671,7 +2787,7 @@ msgid "Assigned"
 msgstr "toegewezen"
 
 msgctxt "selection:stock.shipment.out,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.out,state:"
@@ -2687,11 +2803,15 @@ msgid "Packed"
 msgstr "verpakt"
 
 msgctxt "selection:stock.shipment.out,state:"
+msgid "Picked"
+msgstr "verzameld"
+
+msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
 msgstr "In afwachting"
 
 msgctxt "selection:stock.shipment.out.return,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:stock.shipment.out.return,state:"
@@ -2726,20 +2846,8 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "Leveringen"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "Annuleren"
-
-msgctxt "view:stock.move:"
-msgid "Do"
-msgstr "uitvoeren"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "Terug naar concept"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to assign those products:"
+msgctxt "view:stock.shipment.assign.partial:"
+msgid "Unable to assign these products:"
 msgstr "Kan deze producten niet toewijzen:"
 
 msgctxt "view:stock.shipment.in.return:"
@@ -2750,17 +2858,9 @@ msgctxt "view:stock.shipment.in:"
 msgid "Other Info"
 msgstr "Overige informatie"
 
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Kan deze producten niet toewijzen:"
-
 msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
 msgstr "Overige informatie"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Kan deze producten niet toewijzen:"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
@@ -2806,26 +2906,18 @@ msgctxt "wizard_button:stock.inventory.count,search,quantity:"
 msgid "Select"
 msgstr "Selecteer"
 
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "OK"
-msgstr "Ok"
+msgctxt "wizard_button:stock.shipment.assign,partial,cancel:"
+msgid "Cancel"
+msgstr "Annuleer"
 
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forceer toewijzing"
+msgctxt "wizard_button:stock.shipment.assign,partial,end:"
+msgid "Wait"
+msgstr "Wachten"
 
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "OK"
-msgstr "Ok"
+msgctxt "wizard_button:stock.shipment.assign,partial,force:"
+msgid "Force"
+msgstr "Dwingen"
 
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forceer toewijzing"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "OK"
-msgstr "Ok"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Forceer toewijzing"
+msgctxt "wizard_button:stock.shipment.assign,partial,ignore:"
+msgid "Ignore"
+msgstr "Negeren"

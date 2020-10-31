@@ -233,6 +233,16 @@ msgctxt "field:stock.inventory.line,inventory:"
 msgid "Inventory"
 msgstr "دفتر دارایی"
 
+#, fuzzy
+msgctxt "field:stock.inventory.line,inventory_date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.inventory.line,inventory_location:"
+msgid "Location"
+msgstr "مکان"
+
 msgctxt "field:stock.inventory.line,inventory_state:"
 msgid "Inventory State"
 msgstr "وضعیت دفتر دارایی"
@@ -330,6 +340,16 @@ msgctxt "field:stock.location,warehouse:"
 msgid "Warehouse"
 msgstr "انبار"
 
+#, fuzzy
+msgctxt "field:stock.location,waste_locations:"
+msgid "Waste Locations"
+msgstr "مکان حمل و نقل"
+
+#, fuzzy
+msgctxt "field:stock.location,waste_warehouses:"
+msgid "Waste Warehouses"
+msgstr "انبار"
+
 msgctxt "field:stock.location.lead_time,lead_time:"
 msgid "Lead Time"
 msgstr "زمان پیشبرد"
@@ -342,6 +362,16 @@ msgctxt "field:stock.location.lead_time,warehouse_to:"
 msgid "Warehouse To"
 msgstr "به انبار"
 
+#, fuzzy
+msgctxt "field:stock.location.waste,location:"
+msgid "Waste Location"
+msgstr "مکان حمل و نقل"
+
+#, fuzzy
+msgctxt "field:stock.location.waste,warehouse:"
+msgid "Warehouse"
+msgstr "انبار"
+
 msgctxt "field:stock.move,assignation_required:"
 msgid "Assignation Required"
 msgstr "تخصیص ضروری است"
@@ -353,6 +383,11 @@ msgstr "شرکت"
 msgctxt "field:stock.move,cost_price:"
 msgid "Cost Price"
 msgstr "ارزش بها"
+
+#, fuzzy
+msgctxt "field:stock.move,cost_price_required:"
+msgid "Cost Price Required"
+msgstr "قیمت واحد مورد نیاز"
 
 msgctxt "field:stock.move,currency:"
 msgid "Currency"
@@ -410,6 +445,11 @@ msgctxt "field:stock.move,unit_price:"
 msgid "Unit Price"
 msgstr "قیمت واحد"
 
+#, fuzzy
+msgctxt "field:stock.move,unit_price_company:"
+msgid "Unit Price"
+msgstr "قیمت واحد"
+
 msgctxt "field:stock.move,unit_price_required:"
 msgid "Unit Price Required"
 msgstr "قیمت واحد مورد نیاز"
@@ -455,6 +495,11 @@ msgctxt "field:stock.period.cache,product:"
 msgid "Product"
 msgstr "محصول"
 
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse,company:"
+msgid "Company"
+msgstr "شرکت"
+
 msgctxt "field:stock.product_quantities_warehouse,date:"
 msgid "Date"
 msgstr "تاریخ"
@@ -473,6 +518,46 @@ msgctxt "field:stock.product_quantities_warehouse.context,warehouse:"
 msgid "Warehouse"
 msgstr "انبار"
 
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,company:"
+msgid "Company"
+msgstr "شرکت"
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_delta:"
+msgid "Cumulative Quantity Delta"
+msgstr ""
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_end:"
+msgid "Cumulative Quantity End"
+msgstr ""
+
+msgctxt ""
+"field:stock.product_quantities_warehouse.move,cumulative_quantity_start:"
+msgid "Cumulative Quantity Start"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,date:"
+msgid "Date"
+msgstr "تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,move:"
+msgid "Move"
+msgstr "جابجایی ها"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,origin:"
+msgid "Origin"
+msgstr "مبداء"
+
+#, fuzzy
+msgctxt "field:stock.product_quantities_warehouse.move,quantity:"
+msgid "Quantity"
+msgstr "مقدار/تعداد"
+
 msgctxt "field:stock.products_by_locations.context,forecast_date:"
 msgid "At Date"
 msgstr "در تاریخ"
@@ -480,6 +565,11 @@ msgstr "در تاریخ"
 msgctxt "field:stock.products_by_locations.context,stock_date_end:"
 msgid "At Date"
 msgstr "در تاریخ"
+
+#, fuzzy
+msgctxt "field:stock.shipment.assign.partial,moves:"
+msgid "Moves"
+msgstr "جابجایی ها"
 
 msgctxt "field:stock.shipment.in,company:"
 msgid "Company"
@@ -609,10 +699,6 @@ msgctxt "field:stock.shipment.in.return,to_location:"
 msgid "To Location"
 msgstr "به مکان"
 
-msgctxt "field:stock.shipment.in.return.assign.failed,moves:"
-msgid "Moves"
-msgstr "جابجایی ها"
-
 msgctxt "field:stock.shipment.internal,assigned_by:"
 msgid "Received By"
 msgstr "دریافت شده توسط"
@@ -681,14 +767,6 @@ msgctxt "field:stock.shipment.internal,transit_location:"
 msgid "Transit Location"
 msgstr "مکان حمل و نقل"
 
-msgctxt "field:stock.shipment.internal.assign.failed,moves:"
-msgid "Moves"
-msgstr "جابجایی ها"
-
-msgctxt "field:stock.shipment.out,assigned_by:"
-msgid "Assigned By"
-msgstr "اختصاص داده شده توسط"
-
 msgctxt "field:stock.shipment.out,company:"
 msgid "Company"
 msgstr "شرکت"
@@ -737,6 +815,11 @@ msgctxt "field:stock.shipment.out,packed_by:"
 msgid "Packed By"
 msgstr "بسته بندی شده توسط"
 
+#, fuzzy
+msgctxt "field:stock.shipment.out,picked_by:"
+msgid "Picked By"
+msgstr "بسته بندی شده توسط"
+
 msgctxt "field:stock.shipment.out,planned_date:"
 msgid "Planned Date"
 msgstr "تاریخ برنامه ریزی شده"
@@ -760,10 +843,6 @@ msgstr "انبار خروجی"
 msgctxt "field:stock.shipment.out,warehouse_storage:"
 msgid "Warehouse Storage"
 msgstr "انبار ذخیره سازی"
-
-msgctxt "field:stock.shipment.out.assign.failed,inventory_moves:"
-msgid "Inventory Moves"
-msgstr "دفتر دارایی جابجایی ها"
 
 msgctxt "field:stock.shipment.out.return,company:"
 msgid "Company"
@@ -953,8 +1032,9 @@ msgctxt "help:stock.inventory,date:"
 msgid "The date of the stock count."
 msgstr "تاریخ شمارش اموال."
 
+#, fuzzy
 msgctxt "help:stock.inventory,empty_quantity:"
-msgid "How lines without quantity are handled."
+msgid "How lines without a quantity are handled."
 msgstr "چگونه سطرهای بدون مقدار مورد استفاده قرار می گیرند."
 
 msgctxt "help:stock.inventory,location:"
@@ -1054,6 +1134,17 @@ msgctxt "help:stock.location,storage_location:"
 msgid "The top level location where stock is stored."
 msgstr "سطح بالای محل ذخیره سازی اموال."
 
+#, fuzzy
+msgctxt "help:stock.location,waste_locations:"
+msgid "The locations used for waste products from the warehouse."
+msgstr ""
+"محل پیش فرض مورد استفاده برای محصولات است که در حال حمل بین انبارها است."
+
+#, fuzzy
+msgctxt "help:stock.location,waste_warehouses:"
+msgid "The warehouses that use the location for waste products."
+msgstr "جابجایی هایی که سهام را خارج می کند."
+
 msgctxt "help:stock.location.lead_time,lead_time:"
 msgid "The time it takes to move stock between the warehouses."
 msgstr "زمان لازم برای جابجایی اموال بین انبارها است."
@@ -1102,6 +1193,10 @@ msgctxt "help:stock.move,to_location:"
 msgid "Where the stock is moved to."
 msgstr "جایی که اموال به آن جابجا شده است."
 
+msgctxt "help:stock.move,unit_price_company:"
+msgid "Unit price in company currency."
+msgstr ""
+
 msgctxt "help:stock.move,uom:"
 msgid "The unit in which the quantity is specified."
 msgstr "واحد که مقدار آن مشخص شده است."
@@ -1136,6 +1231,11 @@ msgstr ""
 "تاریخی که مقدار اموال محاسبه می شود.\n"
 "* مقدار خالی محاسبه شده تا آنجا که امکان دارد.\n"
 "* یک تاریخ در گذشته مقادیر تاریخی را ارائه می دهد."
+
+#, fuzzy
+msgctxt "help:stock.shipment.assign.partial,moves:"
+msgid "The moves that were not assigned."
+msgstr "جابجایی هایی که اختصاصی نبودند."
 
 msgctxt "help:stock.shipment.in,company:"
 msgid "The company the shipment is associated with."
@@ -1225,10 +1325,6 @@ msgctxt "help:stock.shipment.in.return,to_location:"
 msgid "Where the stock is moved to."
 msgstr "جایی که اموال به ان جابجا شده است."
 
-msgctxt "help:stock.shipment.in.return.assign.failed,moves:"
-msgid "The moves that were not assigned."
-msgstr "جابجایی هایی که اختصاصی نبودند."
-
 msgctxt "help:stock.shipment.internal,company:"
 msgid "The company the shipment is associated with."
 msgstr "شرکت حمل و نقل مرتبط با آن."
@@ -1286,10 +1382,6 @@ msgid ""
 "Where the stock is located while it is in transit between the warehouses."
 msgstr "جایی که اموال موجود است، در حالی که در حال حمل و نقل بین انبارها است."
 
-msgctxt "help:stock.shipment.internal.assign.failed,moves:"
-msgid "The moves that were not assigned."
-msgstr "جابجایی هایی که اختصاص داده نشدند."
-
 msgctxt "help:stock.shipment.out,company:"
 msgid "The company the shipment is associated with."
 msgstr "شرکت حمل و نقل با آن مرتبط است."
@@ -1333,10 +1425,6 @@ msgstr "وضعیت فعلی حمل و نقل."
 msgctxt "help:stock.shipment.out,warehouse:"
 msgid "Where the stock is sent from."
 msgstr "جایی که اموال از آن فرستاده شده."
-
-msgctxt "help:stock.shipment.out.assign.failed,inventory_moves:"
-msgid "The inventory moves that were not assigned."
-msgstr "جابجایی های موجودی که تعیین نشده بود."
 
 msgctxt "help:stock.shipment.out.return,company:"
 msgid "The company the shipment is associated with."
@@ -1386,6 +1474,11 @@ msgctxt "model:ir.action,name:act_inventory_form"
 msgid "Inventories"
 msgstr "فهرست موجودی"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_inventory_line_relate"
+msgid "Inventory Lines"
+msgstr "فهرست موجودی"
+
 msgctxt "model:ir.action,name:act_location_form"
 msgid "Locations"
 msgstr "مکان ها"
@@ -1419,8 +1512,18 @@ msgctxt "model:ir.action,name:act_product_cost_price_revision"
 msgid "Cost Price Revision"
 msgstr "ارزش بها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_moves"
+msgid "Stock Moves"
+msgstr "جابجایی موجودی"
+
 msgctxt "model:ir.action,name:act_product_quantities_warehouse"
 msgid "Product Quantities By Warehouse"
+msgstr "مقادیر محصول توسط انبار"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_product_quantities_warehouse_move"
+msgid "Stock Moves By Warehouse"
 msgstr "مقادیر محصول توسط انبار"
 
 msgctxt "model:ir.action,name:act_products_by_locations"
@@ -1497,13 +1600,15 @@ msgctxt "model:ir.action,name:wizard_recompute_cost_price"
 msgid "Recompute Cost Price"
 msgstr "محاسبه مجدد ارزش بها"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_in_return_assign"
-msgid "Assign Purchase Return Shipment"
-msgstr "تخصیص حمل و نقل خرید برگشتی"
+msgid "Assign Supplier Return Shipment"
+msgstr "تخصیص محموله برگشتی به تامین کننده"
 
+#, fuzzy
 msgctxt "model:ir.action,name:wizard_shipment_internal_assign"
-msgid "Assign Shipment Internal"
-msgstr "تخصیص حمل محموله داخلی"
+msgid "Assign Internal Shipment"
+msgstr "حمل و نقل داخلی"
 
 msgctxt "model:ir.action,name:wizard_shipment_out_assign"
 msgid "Assign Customer Shipment"
@@ -1622,6 +1727,12 @@ msgctxt ""
 msgid "Packed"
 msgstr "بسته بندي شده"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_shipment_out_form_domain_picked"
+msgid "Picked"
+msgstr "بسته بندي شده"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_shipment_out_form_domain_waiting"
 msgid "Waiting"
@@ -1659,6 +1770,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_inventory_count_create_line"
 msgid "No existing line found for \"%(search)s\"."
 msgstr "هیچ سطرایجاد شده ای برای \"%(search)s\"پیدا نشد ."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_inventory_date_in_the_future"
+msgid "The inventories \"%(inventories)s\" have dates in the future."
+msgstr "برای حذف موجودی :\"%(inventory)s\" شما باید آن را لغو کنید."
 
 msgctxt "model:ir.message,text:msg_inventory_delete_cancel"
 msgid "To delete inventory \"%(inventory)s\" you must cancel it."
@@ -1724,6 +1840,10 @@ msgid ""
 msgstr ""
 "برای حذف جابجایی اموال :\"%(move)s\"شما باید آن را لغو یا به حالت پیش نویس "
 "بازنشانی کنید."
+
+msgctxt "model:ir.message,text:msg_move_effective_date_in_the_future"
+msgid "The moves \"%(moves)s\" have effective dates in the future."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_move_from_to_location"
 msgid "The source and destination of stock move must be different."
@@ -1957,9 +2077,15 @@ msgctxt "model:ir.model.button,string:shipment_out_draft_button"
 msgid "Draft"
 msgstr "Draft"
 
+#, fuzzy
 msgctxt "model:ir.model.button,string:shipment_out_pack_button"
-msgid "Make shipment"
-msgstr "Make shipment"
+msgid "Pack"
+msgstr "بسته بندي شده"
+
+#, fuzzy
+msgctxt "model:ir.model.button,string:shipment_out_pick_button"
+msgid "Pick"
+msgstr "چیدن"
 
 msgctxt "model:ir.model.button,string:shipment_out_return_cancel_button"
 msgid "Cancel"
@@ -1982,6 +2108,15 @@ msgid "Wait"
 msgstr "Wait"
 
 msgctxt "model:ir.rule.group,name:rule_group_move"
+msgid "User in company"
+msgstr ""
+
+msgctxt "model:ir.rule.group,name:rule_group_product_quantities_warehouse"
+msgid "User in company"
+msgstr ""
+
+msgctxt ""
+"model:ir.rule.group,name:rule_group_product_quantities_warehouse_move"
 msgid "User in company"
 msgstr ""
 
@@ -2219,6 +2354,11 @@ msgctxt "model:stock.location.lead_time,name:"
 msgid "Location Lead Time"
 msgstr "مکان آماده سازی"
 
+#, fuzzy
+msgctxt "model:stock.location.waste,name:"
+msgid "Warehouse Waste Location"
+msgstr "مکان حمل و نقل"
+
 msgctxt "model:stock.move,name:"
 msgid "Stock Move"
 msgstr "جابجایی موجودی"
@@ -2239,9 +2379,19 @@ msgctxt "model:stock.product_quantities_warehouse.context,name:"
 msgid "Product Quantities By Warehouse"
 msgstr "مقادیر محصول توسط انبار"
 
+#, fuzzy
+msgctxt "model:stock.product_quantities_warehouse.move,name:"
+msgid "Product Quantities By Warehouse Moves"
+msgstr "مقادیر محصول توسط انبار"
+
 msgctxt "model:stock.products_by_locations.context,name:"
 msgid "Products by Locations"
 msgstr "محصولات توسط مکان ها"
+
+#, fuzzy
+msgctxt "model:stock.shipment.assign.partial,name:"
+msgid "Assign Shipment"
+msgstr "تخصیص حمل محموله داخلی"
 
 msgctxt "model:stock.shipment.in,name:"
 msgid "Supplier Shipment"
@@ -2251,25 +2401,13 @@ msgctxt "model:stock.shipment.in.return,name:"
 msgid "Supplier Return Shipment"
 msgstr "محموله برگشتی به تامین کننده"
 
-msgctxt "model:stock.shipment.in.return.assign.failed,name:"
-msgid "Assign Supplier Return Shipment"
-msgstr "تخصیص محموله برگشتی به تامین کننده"
-
 msgctxt "model:stock.shipment.internal,name:"
 msgid "Internal Shipment"
 msgstr "محموله داخلی"
 
-msgctxt "model:stock.shipment.internal.assign.failed,name:"
-msgid "Assign Shipment Internal"
-msgstr "تخصیص محموله داخلی"
-
 msgctxt "model:stock.shipment.out,name:"
 msgid "Customer Shipment"
 msgstr "محموله مشتری"
-
-msgctxt "model:stock.shipment.out.assign.failed,name:"
-msgid "Assign Customer Shipment"
-msgstr "تخصیص حمل و نقل مشتری"
 
 msgctxt "model:stock.shipment.out.return,name:"
 msgid "Customer Return Shipment"
@@ -2508,6 +2646,21 @@ msgctxt "selection:ir.cron,method:"
 msgid "Recompute Cost Price from Moves"
 msgstr "محاسبه مجدد ارزش بها"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Customer Shipments"
+msgstr "محموله های مشتری"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Internal Shipments"
+msgstr "محموله های داخلی"
+
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Supplier Return Shipments"
+msgstr "محموله برگشتی به تامین کننده"
+
 msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Empty"
 msgstr "خالی"
@@ -2516,8 +2669,9 @@ msgctxt "selection:stock.inventory,empty_quantity:"
 msgid "Keep"
 msgstr "نگه داشتن"
 
+#, fuzzy
 msgctxt "selection:stock.inventory,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.inventory,state:"
@@ -2568,8 +2722,9 @@ msgctxt "selection:stock.move,state:"
 msgid "Assigned"
 msgstr "تخصیص داده شده"
 
+#, fuzzy
 msgctxt "selection:stock.move,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.move,state:"
@@ -2592,8 +2747,9 @@ msgctxt "selection:stock.period,state:"
 msgid "Draft"
 msgstr "پیش‌نویس"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.in,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.in,state:"
@@ -2612,8 +2768,9 @@ msgctxt "selection:stock.shipment.in.return,state:"
 msgid "Assigned"
 msgstr "تخصیص داده شده"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.in.return,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.in.return,state:"
@@ -2632,8 +2789,9 @@ msgctxt "selection:stock.shipment.internal,state:"
 msgid "Assigned"
 msgstr "تخصیص داده شده"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.internal,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.internal,state:"
@@ -2660,8 +2818,9 @@ msgctxt "selection:stock.shipment.out,state:"
 msgid "Assigned"
 msgstr "تخصیص داده شده"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.out,state:"
@@ -2676,12 +2835,18 @@ msgctxt "selection:stock.shipment.out,state:"
 msgid "Packed"
 msgstr "بسته بندی شده"
 
+#, fuzzy
+msgctxt "selection:stock.shipment.out,state:"
+msgid "Picked"
+msgstr "بسته بندی شده"
+
 msgctxt "selection:stock.shipment.out,state:"
 msgid "Waiting"
 msgstr "در انتظار"
 
+#, fuzzy
 msgctxt "selection:stock.shipment.out.return,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:stock.shipment.out.return,state:"
@@ -2716,20 +2881,9 @@ msgctxt "view:stock.configuration:"
 msgid "Shipments"
 msgstr "محموله ها"
 
-msgctxt "view:stock.move:"
-msgid "Cancel"
-msgstr "انصراف"
-
-msgctxt "view:stock.move:"
-msgid "Do"
-msgstr "انجام"
-
-msgctxt "view:stock.move:"
-msgid "Reset to Draft"
-msgstr "بازنشانی به پیش نویس"
-
-msgctxt "view:stock.shipment.in.return.assign.failed:"
-msgid "Unable to assign those products:"
+#, fuzzy
+msgctxt "view:stock.shipment.assign.partial:"
+msgid "Unable to assign these products:"
 msgstr "این محصولات قابل اختصاص دادن نیستند :"
 
 msgctxt "view:stock.shipment.in.return:"
@@ -2740,17 +2894,9 @@ msgctxt "view:stock.shipment.in:"
 msgid "Other Info"
 msgstr "سایر اطلاعات"
 
-msgctxt "view:stock.shipment.internal.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "این محصولات قابل اختصاص دادن نیستند :"
-
 msgctxt "view:stock.shipment.internal:"
 msgid "Other Info"
 msgstr "سایر اطلاعات"
-
-msgctxt "view:stock.shipment.out.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "این محصولات قابل اختصاص دادن نیستند :"
 
 msgctxt "view:stock.shipment.out.return:"
 msgid "Other Info"
@@ -2800,26 +2946,20 @@ msgctxt "wizard_button:stock.inventory.count,search,quantity:"
 msgid "Select"
 msgstr "انتخاب"
 
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,end:"
-msgid "OK"
-msgstr "قبول"
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.assign,partial,cancel:"
+msgid "Cancel"
+msgstr "Cancel"
 
-msgctxt "wizard_button:stock.shipment.in.return.assign,failed,force:"
-msgid "Force Assign"
-msgstr "تخصیص زوری"
+#, fuzzy
+msgctxt "wizard_button:stock.shipment.assign,partial,end:"
+msgid "Wait"
+msgstr "Wait"
 
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,end:"
-msgid "OK"
-msgstr "قبول"
+msgctxt "wizard_button:stock.shipment.assign,partial,force:"
+msgid "Force"
+msgstr ""
 
-msgctxt "wizard_button:stock.shipment.internal.assign,failed,force:"
-msgid "Force Assign"
-msgstr "تخصیص زوری"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,end:"
-msgid "OK"
-msgstr "قبول"
-
-msgctxt "wizard_button:stock.shipment.out.assign,failed,force:"
-msgid "Force Assign"
-msgstr "تخصیص زوری"
+msgctxt "wizard_button:stock.shipment.assign,partial,ignore:"
+msgid "Ignore"
+msgstr ""
