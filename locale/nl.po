@@ -64,7 +64,7 @@ msgid ""
 "warehouse \"%(warehouse)s\"."
 msgstr ""
 "Om zending \"%(shipment)s\" te valideren, moet u een adres in het magazijn "
-"\"%(warehouse)s\"  instellen."
+"\"%(warehouse)s\" instellen."
 
 msgctxt "model:ir.ui.menu,name:menu_dpd_credential_form"
 msgid "DPD Credentials"
