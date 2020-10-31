@@ -4,7 +4,7 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:purchase.amendment,date:"
 msgid "Date"
-msgstr ""
+msgstr "Tanggal"
 
 msgctxt "field:purchase.amendment,description:"
 msgid "Description"
@@ -48,7 +48,7 @@ msgstr "Pihak"
 
 msgctxt "field:purchase.amendment.line,payment_term:"
 msgid "Payment Term"
-msgstr "Jangka waktu pembayaran"
+msgstr "Masa Pembayaran"
 
 msgctxt "field:purchase.amendment.line,product:"
 msgid "Product"
