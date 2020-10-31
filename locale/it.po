@@ -23,8 +23,8 @@ msgid "Correct"
 msgstr "Corretto"
 
 msgctxt "view:account.invoice.correct.start:"
-msgid "Choose lines to correct"
-msgstr "Scegli le righe da correggere"
+msgid "Choose lines to correct:"
+msgstr "Scegli le righe da correggere:"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
 msgid "Correct"

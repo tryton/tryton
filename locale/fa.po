@@ -22,8 +22,9 @@ msgctxt "model:ir.model.button,string:invoice_correct_button"
 msgid "Correct"
 msgstr "Correct"
 
+#, fuzzy
 msgctxt "view:account.invoice.correct.start:"
-msgid "Choose lines to correct"
+msgid "Choose lines to correct:"
 msgstr "انتخاب خطوط برای اصلاح"
 
 msgctxt "wizard_button:account.invoice.correct,start,correct:"
