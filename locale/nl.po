@@ -96,7 +96,7 @@ msgstr "De naam van de stad voor de postcode."
 
 msgctxt "help:country.zip,country:"
 msgid "The country where the zip is."
-msgstr "Het land waarin  de postcode is."
+msgstr "Het land waarin de postcode is."
 
 msgctxt "help:country.zip,subdivision:"
 msgid "The subdivision where the zip is."
