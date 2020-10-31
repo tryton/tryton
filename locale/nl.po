@@ -73,7 +73,7 @@ msgstr "Pakketetiketten"
 msgctxt "model:ir.message,text:msg_package_mismatch"
 msgid "To process shipment \"%(shipment)s\", you must pack all its moves."
 msgstr ""
-"Om verzending  \"%(shipment)s\" te verwerken, moet u alle bewegingen "
+"Om verzending \"%(shipment)s\" te verwerken, moet u alle bewegingen "
 "inpakken."
 
 msgctxt "model:ir.sequence,name:sequence_package"
