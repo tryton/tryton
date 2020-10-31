@@ -4,8 +4,8 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:sale.sale,revision:"
 msgid "Revision"
-msgstr ""
+msgstr "Wersja"
 
 msgctxt "view:sale.sale:"
 msgid "/"
-msgstr ""
+msgstr "/"
