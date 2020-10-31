@@ -6,6 +6,10 @@ msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr ""
 
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr ""
+
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
 msgstr "Komisi"
@@ -87,6 +91,15 @@ msgid "Agent"
 msgstr ""
 
 #, fuzzy
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr ""
+
+#, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
 msgid "End Date"
 msgstr "Tanggal"
@@ -163,7 +176,7 @@ msgstr ""
 
 msgctxt "field:product.template-commission.agent,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:sale.line,principal:"
 msgid "Commission Principal"
@@ -175,6 +188,10 @@ msgstr ""
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
 msgstr ""
 
 msgctxt "help:account.invoice.line,principal:"
@@ -388,9 +405,10 @@ msgctxt "selection:account.journal,type:"
 msgid "Commission"
 msgstr "Komisi"
 
+#, fuzzy
 msgctxt "selection:commission,invoice_state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:commission,invoice_state:"
 msgid "Invoiced"

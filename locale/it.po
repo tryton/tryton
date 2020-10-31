@@ -6,6 +6,11 @@ msgctxt "field:account.invoice,agent:"
 msgid "Commission Agent"
 msgstr "agente provvigioni"
 
+#, fuzzy
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr "Agente"
+
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
 msgstr "provvigioni"
@@ -87,6 +92,15 @@ msgstr "Tipo"
 msgctxt "field:commission.agent.selection,agent:"
 msgid "Agent"
 msgstr "Agente"
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Azienda"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
@@ -178,6 +192,10 @@ msgstr "agente"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
 msgstr ""
 
 msgctxt "help:account.invoice.line,principal:"
@@ -420,8 +438,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Commission"
 msgstr "Commission"
 
+#, fuzzy
 msgctxt "selection:commission,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "annullato"
 
 msgctxt "selection:commission,invoice_state:"

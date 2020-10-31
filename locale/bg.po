@@ -8,6 +8,11 @@ msgid "Commission Agent"
 msgstr "Commission Plans"
 
 #, fuzzy
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr "Agents"
+
+#, fuzzy
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
 msgstr "Commissions"
@@ -103,6 +108,15 @@ msgstr "Вид"
 msgctxt "field:commission.agent.selection,agent:"
 msgid "Agent"
 msgstr "Agents"
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Фирма"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
@@ -203,6 +217,10 @@ msgstr "Commission Plans"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
 msgstr ""
 
 msgctxt "help:account.invoice.line,principal:"
@@ -432,7 +450,7 @@ msgstr "Commission"
 
 #, fuzzy
 msgctxt "selection:commission,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Отказан"
 
 #, fuzzy

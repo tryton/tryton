@@ -8,6 +8,11 @@ msgid "Commission Agent"
 msgstr "Commission Plans"
 
 #, fuzzy
+msgctxt "field:account.invoice.credit.start,with_agent:"
+msgid "With Agent"
+msgstr "Agents"
+
+#, fuzzy
 msgctxt "field:account.invoice.line,commissions:"
 msgid "Commissions"
 msgstr "Commissions"
@@ -90,6 +95,15 @@ msgstr "Typ"
 msgctxt "field:commission.agent.selection,agent:"
 msgid "Agent"
 msgstr "Agents"
+
+#, fuzzy
+msgctxt "field:commission.agent.selection,company:"
+msgid "Company"
+msgstr "Firma"
+
+msgctxt "field:commission.agent.selection,employee:"
+msgid "Employee"
+msgstr ""
 
 #, fuzzy
 msgctxt "field:commission.agent.selection,end_date:"
@@ -183,6 +197,10 @@ msgstr "Commission Plans"
 
 msgctxt "help:account.invoice,agent:"
 msgid "The agent who receives a commission for the invoice."
+msgstr ""
+
+msgctxt "help:account.invoice.credit.start,with_agent:"
+msgid "Check to keep the original invoice's agent."
 msgstr ""
 
 msgctxt "help:account.invoice.line,principal:"
@@ -396,10 +414,9 @@ msgctxt "model:ir.ui.menu,name:menu_commission_form"
 msgid "Commissions"
 msgstr "Commissions"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_plan_form"
@@ -426,7 +443,7 @@ msgstr "Commission"
 
 #, fuzzy
 msgctxt "selection:commission,invoice_state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Anuluj"
 
 #, fuzzy
