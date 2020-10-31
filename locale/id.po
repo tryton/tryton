@@ -52,7 +52,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:open_invoice"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.message,text:msg_delete_invoiced_line"
 msgid "You cannot delete an invoiced line."
@@ -110,4 +110,4 @@ msgstr ""
 
 msgctxt "view:project.work.invoiced_progress:"
 msgid "%"
-msgstr ""
+msgstr "%"
