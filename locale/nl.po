@@ -57,7 +57,7 @@ msgid ""
 "The productions \"%(productions)s\" cannot be processed as they have pending"
 " purchases."
 msgstr ""
-"De productie  \"%(productions)s\"kan niet verwerkt worden om dat er nog "
+"De productie \"%(productions)s\"kan niet verwerkt worden om dat er nog "
 "aankopen hangende zijn."
 
 msgctxt "view:production.routing:"
