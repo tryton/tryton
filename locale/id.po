@@ -124,7 +124,7 @@ msgstr "Kerja"
 
 msgctxt "field:timesheet.work.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:timesheet.work.context,to_date:"
 msgid "To Date"

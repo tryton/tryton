@@ -275,10 +275,9 @@ msgctxt "model:ir.rule.group,name:rule_group_work_admin"
 msgid "Any work"
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_hours_employee"

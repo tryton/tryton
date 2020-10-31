@@ -228,7 +228,7 @@ msgstr "Werken"
 
 msgctxt "model:ir.message,text:msg_line_duration_positive"
 msgid "The duration of line \"%(line)s\" must be positive."
-msgstr "De duur van regel  \"%(line)s\" moet positief zijn."
+msgstr "De duur van regel \"%(line)s\" moet positief zijn."
 
 msgctxt "model:ir.message,text:msg_line_uuid_unique"
 msgid "The UUID of timesheet line must be unique."
@@ -237,7 +237,7 @@ msgstr "De UUID van de urenstaatregel moet uniek zijn."
 msgctxt "model:ir.message,text:msg_work_company_different_origin"
 msgid "The companies associated with work \"%(work)s\" and its origin differ."
 msgstr ""
-"De bedrijven geassocieerd met werk \"%(work)s\"  en de oorsprong ervan "
+"De bedrijven geassocieerd met werk \"%(work)s\" en de oorsprong ervan "
 "verschillen."
 
 msgctxt "model:ir.message,text:msg_work_origin_unique_company"
