@@ -1,0 +1,203 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:product.attribute,web_shops:"
+msgid "Web Shops"
+msgstr "Tendes web"
+
+msgctxt "field:product.category,web_shops:"
+msgid "Web Shops"
+msgstr "Tendes web"
+
+msgctxt "field:product.product,web_shops:"
+msgid "Web Shops"
+msgstr "Tendes web"
+
+msgctxt "field:sale.sale,web_id:"
+msgid "Web ID"
+msgstr "ID Web"
+
+msgctxt "field:sale.sale,web_shop:"
+msgid "Web Shop"
+msgstr "Tenda Web"
+
+msgctxt "field:web.shop,attributes:"
+msgid "Attributes"
+msgstr "Atributs"
+
+msgctxt "field:web.shop,attributes_removed:"
+msgid "Attributes Removed"
+msgstr "Atributes eliminats"
+
+msgctxt "field:web.shop,categories:"
+msgid "Categories"
+msgstr "Categories"
+
+msgctxt "field:web.shop,categories_removed:"
+msgid "Categories Removed"
+msgstr "Categories eliminades"
+
+msgctxt "field:web.shop,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:web.shop,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:web.shop,guest_party:"
+msgid "Guest Party"
+msgstr "Tercer Invitat"
+
+msgctxt "field:web.shop,language:"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "field:web.shop,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:web.shop,products:"
+msgid "Products"
+msgstr "Productes"
+
+msgctxt "field:web.shop,products_removed:"
+msgid "Products Removed"
+msgstr "Productes eliminats"
+
+msgctxt "field:web.shop,type:"
+msgid "Type"
+msgstr "Tipus"
+
+msgctxt "field:web.shop,warehouses:"
+msgid "Warehouses"
+msgstr "Magatzems"
+
+msgctxt "field:web.shop-product.attribute,attribute:"
+msgid "Attribute"
+msgstr "Atribut"
+
+msgctxt "field:web.shop-product.attribute,shop:"
+msgid "Shop"
+msgstr "Tenda"
+
+msgctxt "field:web.shop-product.category,category:"
+msgid "Category"
+msgstr "Categoria"
+
+msgctxt "field:web.shop-product.category,shop:"
+msgid "Shop"
+msgstr "Tenda"
+
+msgctxt "field:web.shop-product.product,product:"
+msgid "Product"
+msgstr "Producte"
+
+msgctxt "field:web.shop-product.product,shop:"
+msgid "Shop"
+msgstr "Tenda"
+
+msgctxt "field:web.shop-stock.location,shop:"
+msgid "Shop"
+msgstr "Tenda"
+
+msgctxt "field:web.shop-stock.location,warehouse:"
+msgid "Warehouse"
+msgstr "Magatzem"
+
+msgctxt "field:web.user,invoice_address:"
+msgid "Invoice Address"
+msgstr "Adreça de facturació"
+
+msgctxt "field:web.user,shipment_address:"
+msgid "Shipment Address"
+msgstr "Adreça d'enviament"
+
+msgctxt "help:product.attribute,web_shops:"
+msgid "The list of web shops on which the attribute is published."
+msgstr "La llista de tendes online on s'ha publicat l'atribut."
+
+msgctxt "help:product.category,web_shops:"
+msgid "The list of web shops on which the category is published."
+msgstr "La llista de tendes on esta publicada la categoria."
+
+msgctxt "help:product.product,web_shops:"
+msgid "The list of web shops on which the product is published."
+msgstr "La llista de tendes on esta publicat el producte."
+
+msgctxt "help:web.shop,attributes:"
+msgid "The list of attributes to publish."
+msgstr "La llista d'atributs a publicar."
+
+msgctxt "help:web.shop,attributes_removed:"
+msgid "The list of attributes to unpublish."
+msgstr "La llista d'atributs a despublicar."
+
+msgctxt "help:web.shop,categories:"
+msgid "The list of categories to publish."
+msgstr "La llsita de categories a publicar."
+
+msgctxt "help:web.shop,categories_removed:"
+msgid "The list of categories to unpublish."
+msgstr "La llsita de categories a despublicar."
+
+msgctxt "help:web.shop,products:"
+msgid "The list of products to publish."
+msgstr "La llsita de productes a publicar."
+
+msgctxt "help:web.shop,products_removed:"
+msgid "The list of products to unpublish."
+msgstr "La llsita de productes a despublicar."
+
+msgctxt "help:web.shop,type:"
+msgid "The front-end used for the web shop."
+msgstr "El front-end utiltizat per aquesta tenda."
+
+msgctxt "model:ir.action,name:act_shop"
+msgid "Web Shops"
+msgstr "Tendes web"
+
+msgctxt "model:ir.message,text:msg_sale_invalid_party"
+msgid ""
+"To process the sale \"%(sale)s\" you must select another party instead of "
+"the guest \"%(party)s\"."
+msgstr ""
+"Per a processar la venda \"%(sale)s\" heu de seleccionar un tercer diferent "
+"del invitat \"%(party)s\"."
+
+msgctxt "model:ir.message,text:msg_sale_web_id_unique"
+msgid "The web ID on the sale must be unique."
+msgstr "El ID de la tenda web ha de ser únic."
+
+msgctxt "model:ir.message,text:msg_shop_name_unique"
+msgid "The web shop name must be unique."
+msgstr "El nom de la tenda ha de ser únic."
+
+msgctxt "model:ir.ui.menu,name:menu_shop"
+msgid "Web Shops"
+msgstr "Tendes web"
+
+msgctxt "model:web.shop,name:"
+msgid "Web Shop"
+msgstr "Tenda Web"
+
+msgctxt "model:web.shop-product.attribute,name:"
+msgid "Web Shop - Attribute"
+msgstr "Tenda Web - Atribut"
+
+msgctxt "model:web.shop-product.category,name:"
+msgid "Web Shop - Product Category"
+msgstr "Tenda web - Categoria de producte"
+
+msgctxt "model:web.shop-product.product,name:"
+msgid "Web Shop - Product"
+msgstr "Tenda web - Producte"
+
+msgctxt "model:web.shop-stock.location,name:"
+msgid "Web Shop - Warehouse"
+msgstr "Tenda web - Magatzem"
+
+msgctxt "view:web.shop:"
+msgid "Products"
+msgstr "Productes"
