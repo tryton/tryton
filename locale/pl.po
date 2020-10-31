@@ -36,47 +36,43 @@ msgstr "Zestaw atrybutów"
 
 msgctxt "help:product.attribute,sets:"
 msgid "Add sets to the attribute."
-msgstr ""
+msgstr "Dodaj zestawy do atrybutu."
 
 msgctxt "help:product.attribute.set,attributes:"
 msgid "Add attributes to the set."
-msgstr ""
+msgstr "Dodaj atrybuty do zestawu."
 
 msgctxt "help:product.attribute.set,name:"
 msgid "The main identifier of product attribute set."
-msgstr ""
+msgstr "Podstawowy identyfikator zestawu atrybutów produktu."
 
 msgctxt "help:product.product,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "Wybierz zestaw atrybutów, które chcesz zastosować do wariantów."
 
 msgctxt "help:product.product,attributes:"
 msgid "Add attributes to the variant."
-msgstr ""
+msgstr "Dodaj atrybuty do wariantu."
 
 msgctxt "help:product.template,attribute_set:"
 msgid "Select a set of attributes to apply on the variants."
-msgstr ""
+msgstr "Wybierz zestaw atrybutów, które chcesz zastosować do wariantów."
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_form"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atrybuty"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_attribute_set_form"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Zestawy atrybutów"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute"
 msgid "Attributes"
-msgstr "Attributes"
+msgstr "Atrybuty"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_attribute_set"
 msgid "Attribute Sets"
-msgstr "Attribute Sets"
+msgstr "Zestawy atrybutów"
 
 msgctxt "model:product.attribute,name:"
 msgid "Product Attribute"
