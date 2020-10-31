@@ -56,7 +56,7 @@ msgstr "自动创建逆向关系."
 
 msgctxt "model:ir.action,name:act_relation_all"
 msgid "Party Relations"
-msgstr "参与对象关系"
+msgstr "参与者关系"
 
 msgctxt "model:ir.action,name:act_relation_type"
 msgid "Relation Types"
@@ -64,7 +64,7 @@ msgstr "关系类型"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_all"
 msgid "Party Relations"
-msgstr "参与对象关系"
+msgstr "参与者关系"
 
 msgctxt "model:ir.ui.menu,name:menu_relation_type"
 msgid "Relation Types"
@@ -72,11 +72,11 @@ msgstr "关系类型"
 
 msgctxt "model:party.relation,name:"
 msgid "Party Relation"
-msgstr "参与对象关系"
+msgstr "参与者关系"
 
 msgctxt "model:party.relation.all,name:"
 msgid "Party Relation"
-msgstr "参与对象关系"
+msgstr "参与者关系"
 
 msgctxt "model:party.relation.type,name:"
 msgid "Relation Type"

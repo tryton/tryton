@@ -28,7 +28,7 @@ msgstr "de"
 
 msgctxt "field:party.relation.all,to:"
 msgid "To"
-msgstr "de"
+msgstr "À"
 
 msgctxt "field:party.relation.all,type:"
 msgid "Type"
