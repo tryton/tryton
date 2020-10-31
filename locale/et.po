@@ -175,6 +175,96 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "Sekundaarse valuuta numbrikohtade arv"
 
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Valuutasumma"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Suletud"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "Kood"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "Osapool"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "Teine valuuta"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Sekundaarse valuuta numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "Tüüp"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "Alamkontod"
@@ -263,6 +353,11 @@ msgstr "Alamjaotus"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -355,6 +450,11 @@ msgstr "Saldo"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -622,13 +722,14 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "Alguskuupäev"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "Konto"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "Aktiivne"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "Kood"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -637,6 +738,11 @@ msgstr "Ettevõte"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -674,10 +780,6 @@ msgstr "Pearaamatu kontode saldod"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Read"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "Nimetus"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -727,6 +829,86 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "Kuni kuupäevani"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "Konto"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "Aktiivne"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Numbrikohtade arv"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "Deebet"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "Lõppsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "Kreeditsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "Lõppkuupäev"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "Deebetsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "Osapool"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "Algsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "Kreedit algsaldo"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "Alguskuupäev"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "Deebet algsaldo"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "Konto"
@@ -742,6 +924,11 @@ msgstr "Ettevõte"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -1010,6 +1197,11 @@ msgstr "Sekundaarse valuuta väärtus"
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Kreedit"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1471,6 +1663,11 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtuse arv"
@@ -1679,6 +1876,11 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "Kirjuta vorm üle"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "Maksugrupp"
@@ -1695,6 +1897,11 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Reegel"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "Asendusmaks"
@@ -1706,6 +1913,11 @@ msgstr "Vorm"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "Kirjuta vorm üle"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "Lõppemise kuupäev"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1722,6 +1934,11 @@ msgstr "Algne maks"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Reegel"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "Alguskuupäev"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2193,6 +2410,11 @@ msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "Konto viivitus"
 
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "Võlgade konto"
+
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "Konto mall"
@@ -2278,6 +2500,11 @@ msgstr "Pearaamatukonto"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr "Pearaamatu konto sisu"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "Pearaamatukonto"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2543,6 +2770,16 @@ msgstr "Sule majandusaasta"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "Pearaamat - kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "Pearaamat - kontod"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "Pearaamatukonto"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -3144,6 +3381,11 @@ msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
 msgstr "Kasutaja ettevõttes"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
+msgid "User in company"
+msgstr "Kasutaja ettevõttes"
+
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
 msgstr "Kasutaja ettevõttes"
@@ -3470,10 +3712,6 @@ msgstr ":"
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "Saldo"
-
-msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "Kood"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
@@ -4121,8 +4359,8 @@ msgid "General Information"
 msgstr "Üldinformatsioon"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
-msgstr "Kontoplaani uuendamine õnnestus!"
+msgid "Chart of accounts updated successfully."
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Account"

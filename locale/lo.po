@@ -178,6 +178,96 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນທີສອງ"
 
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "ດຸນດ່ຽງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Close"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "ລະຫັດ"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "ຊື່"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "ສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນທີສອງ"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "ປະເພດ"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "ລູກຮ່ວງ"
@@ -269,6 +359,11 @@ msgstr "ລູກຮ່ວງ"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -371,6 +466,11 @@ msgstr "ດຸນດ່ຽງ"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ / ອົງກອນ"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -652,13 +752,14 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "ວັນທີເລີ່ມ"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "ໃຊ້ຢູ່"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "ລະຫັດ"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -667,6 +768,11 @@ msgstr "ສຳນັກງານ / ອົງກອນ"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -705,10 +811,6 @@ msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "ລາຍການ"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "ຊື່"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -762,6 +864,86 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "ເຖິງວັນທີ"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "ບັນຊີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "ໃຊ້ຢູ່"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "ສຳນັກງານ/ຫ້ອງການ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "ໜີ້"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "ຍອດຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "ຍອດມີຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "ຍອດໜີ້ຍົກໄປ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "ພາກສ່ວນ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "ຍອດຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "ຍອດມີຍົກມາ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "ວັນທີເລີ່ມ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "ຍອດໜີ້ຍົກມາ"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "ບັນຊີ"
@@ -777,6 +959,11 @@ msgstr "ສຳນັກງານ / ອົງກອນ"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -1055,6 +1242,11 @@ msgstr "ມູນຄ່າສະກຸນເງິນທີສອງ"
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "ມີ"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1529,6 +1721,11 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "ສຳນັກງານ/ຫ້ອງການ"
 
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະຸກນເງິນ"
@@ -1756,6 +1953,11 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "ໝວດພາສີ"
@@ -1772,6 +1974,11 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "ສູດຄິດໄລ່"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "ພາສີທົດແທນ"
@@ -1783,6 +1990,11 @@ msgstr "ຮ່າງແບບ"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "ວັນທີສິ້ນສຸດ"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1799,6 +2011,11 @@ msgstr "ອັດຕາພາສີເດີມ"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "ສູດຄິດໄລ່"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "ເລີ່ມວັນທີ"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2279,6 +2496,11 @@ msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "ບັນຊີເຍື້ອນຊໍາລະ"
 
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "ບັນຊີໜີ້ຕ້ອງສົ່ງ"
+
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "ຮ່າງແບບບັນຊີ"
@@ -2365,6 +2587,11 @@ msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr "ບໍລິບົດບັນຊີແຍກປະເພດທົ່ວໄປ"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2653,6 +2880,16 @@ msgstr "ອັດປີການບັນຊີ"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "ດຸນບັນຊີແຍກປະເພດທົ່ວໄປ"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
@@ -3275,6 +3512,10 @@ msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
 msgstr ""
@@ -3658,10 +3899,6 @@ msgstr ":"
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "ດຸນດ່ຽງ"
-
-msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "ລະຫັດ"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
@@ -4340,8 +4577,8 @@ msgid "General Information"
 msgstr "ຂໍ້ມູນທົ່ວໄປ"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
-msgstr "ປັບປຸງຜັງບັນຊີ ສຳເລັດ"
+msgid "Chart of accounts updated successfully."
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Account"

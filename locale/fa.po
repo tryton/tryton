@@ -176,6 +176,96 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "رقم های پول دوم"
 
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "مقدار ارز دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "تراز"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "بسته"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "کد"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "نام"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "واحد پول دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "رقم های پول دوم"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "نوع"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "زیر مجموعه"
@@ -265,6 +355,11 @@ msgstr "زیر مجموعه"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -367,6 +462,11 @@ msgstr "تراز"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -634,13 +734,14 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "تاریخ شروع"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "حساب"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "فعال"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "کد"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -649,6 +750,11 @@ msgstr "شرکت"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -686,10 +792,6 @@ msgstr "تراز دفتر کل"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "سطرها"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "نام"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -739,6 +841,86 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "تا تاریخ"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "حساب"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "فعال"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "بدهی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "تراز پایانی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "پایان بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "تاریخ پایان"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "پایان بدهی"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "نهاد/سازمان"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "تراز شروع"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "شروع بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "تاریخ شروع"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "شروع بدهی"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "حساب"
@@ -754,6 +936,11 @@ msgstr "شرکت"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -1022,6 +1209,11 @@ msgstr "مقدار ارز دوم"
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "بستانکاری"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1485,6 +1677,11 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -1693,6 +1890,11 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "بازنویسی الگو"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "گروه مالیات"
@@ -1709,6 +1911,11 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "قانون"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "مالیات جایگزین"
@@ -1720,6 +1927,11 @@ msgstr "الگو"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "بازنویسی الگو"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "تاریخ پایان"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1736,6 +1948,11 @@ msgstr "مالیات اصلی"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "قانون"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "تاریخ شروع"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2213,6 +2430,11 @@ msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "حساب بازپرداخت"
 
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "حساب پرداختی"
+
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "الگوی حساب"
@@ -2298,6 +2520,11 @@ msgstr "حساب دفتر کل"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr "مفاد حساب دفتر کل"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "حساب دفتر کل"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2563,6 +2790,16 @@ msgstr "بستن سال مالی"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "دفتر کل - حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "دفتر کل - حساب ها"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "حساب دفتر کل"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -3188,6 +3425,10 @@ msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
 msgstr ""
@@ -3512,10 +3753,6 @@ msgstr ":"
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "تراز"
-
-msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "کد"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
@@ -4167,8 +4404,8 @@ msgid "General Information"
 msgstr "اطلاعات عمومی"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
-msgstr "نمودارحساب ها با موفّقیّت بروزرسانی شد!"
+msgid "Chart of accounts updated successfully."
+msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Account"

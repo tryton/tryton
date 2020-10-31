@@ -174,6 +174,78 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "Décimales de la seconde devise"
 
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Montant en devise secondaire"
+
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "Balance"
+
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Clôturé"
+
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "Code"
+
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "Crédit"
+
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "Débit"
+
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "Type en débit"
+
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "Devise secondaire"
+
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Décimales de la seconde devise"
+
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "Type"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "Enfants"
@@ -261,6 +333,10 @@ msgstr "Enfants"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "Société"
+
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -353,6 +429,10 @@ msgstr "Balance"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "Société"
+
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -613,13 +693,13 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "Date de début"
 
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "Compte"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "Actif"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "Code"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -628,6 +708,10 @@ msgstr "Société"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Crédit"
+
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -664,10 +748,6 @@ msgstr "Balance du grand livre"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Lignes"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "Nom"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -717,6 +797,70 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "Date de fin"
 
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "Compte"
+
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "Actif"
+
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "Société"
+
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "Crédit"
+
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "Débit"
+
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "Balance finale"
+
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "Crédit final"
+
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "Date de fin"
+
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "Débit final"
+
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "Tiers"
+
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "Balance de départ"
+
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "Crédit de départ"
+
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "Date de début"
+
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "Débit de départ"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "Compte"
@@ -732,6 +876,10 @@ msgstr "Société"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "Crédit"
+
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -1000,6 +1148,10 @@ msgstr "Montant en devise secondaire"
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Crédit"
+
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "Devise"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1461,6 +1613,10 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "Devise"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
@@ -1669,6 +1825,10 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "Surcharger le modèle"
 
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "Date de fin"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "Groupe de taxe"
@@ -1685,6 +1845,10 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Règle"
 
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "Date de début"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "Taxe de substitution"
@@ -1696,6 +1860,10 @@ msgstr "Modèle"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "Surcharger le modèle"
+
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "Date de fin"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1712,6 +1880,10 @@ msgstr "Taxe d'origine"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Règle"
+
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "Date de début"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -2168,6 +2340,10 @@ msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "Compte de report"
 
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "Compte tiers"
+
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "Modèle de compte"
@@ -2251,6 +2427,10 @@ msgstr "Compte du grand livre"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr "Contexte des comptes du grand livre"
+
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "Compte tiers du grand livre"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2515,6 +2695,14 @@ msgstr "Clôturer les années fiscales"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "Grand livre - Comptes"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "Grand livre - Comptes tiers"
+
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "Ouvrir compte tiers du grand livre"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -3128,7 +3316,7 @@ msgstr "Poster"
 
 msgctxt "model:ir.model.button,string:period_close_button"
 msgid "Close"
-msgstr "Clôturer"
+msgstr "Fermer"
 
 msgctxt "model:ir.model.button,string:period_lock_button"
 msgid "Lock"
@@ -3155,6 +3343,10 @@ msgid "User in company"
 msgstr "Utilisateur dans la société"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
+msgid "User in company"
+msgstr "Utilisateur dans la société"
+
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
 msgid "User in company"
 msgstr "Utilisateur dans la société"
 
@@ -3477,15 +3669,11 @@ msgstr "/"
 
 msgctxt "report:account.general_ledger:"
 msgid ":"
-msgstr " : "
+msgstr ":"
 
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr "Balance"
-
-msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "Code"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
@@ -4132,8 +4320,8 @@ msgid "General Information"
 msgstr "Information générale"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
-msgstr "Mise à jour du plan comptable réussie !"
+msgid "Chart of accounts updated successfully."
+msgstr "Plan comptable mis à jour avec succès."
 
 msgctxt "view:party.party:"
 msgid "Account"

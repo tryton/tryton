@@ -85,7 +85,7 @@ msgstr "上级"
 
 msgctxt "field:account.account,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "要求的参与者"
 
 msgctxt "field:account.account,reconcile:"
 msgid "Reconcile"
@@ -175,6 +175,96 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "第二货币有效数字"
 
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "第二货币金额"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "结余"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "已关闭"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "编码"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "货币有效数字"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "借方"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "借方"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "停用日期"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "名称"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "第二货币"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "第二货币有效数字"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "类型"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "子项"
@@ -214,7 +304,7 @@ msgstr "上级"
 
 msgctxt "field:account.account.template,party_required:"
 msgid "Party Required"
-msgstr "需要的参与对象"
+msgstr "需要的参与者"
 
 msgctxt "field:account.account.template,reconcile:"
 msgid "Reconcile"
@@ -263,6 +353,11 @@ msgstr "子项"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -356,13 +451,18 @@ msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "公司"
 
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "货币"
+
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
 msgstr "货币有效数字"
 
 msgctxt "field:account.aged_balance,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.aged_balance,term0:"
 msgid "Now"
@@ -617,13 +717,14 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "开始日期"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "账户"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "启用"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "编码"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -632,6 +733,11 @@ msgstr "公司"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -669,10 +775,6 @@ msgstr "总帐余额"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "项"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "名称"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -722,6 +824,86 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "到日期"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "账户"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "启用"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "货币"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "货币有效数字"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "借方"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "期末余额"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "期末借款"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "停用日期"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "期末借记"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "参与者"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "起始余额"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "起始借款"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "启用日期"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "起始借记"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "账户"
@@ -737,6 +919,11 @@ msgstr "公司"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "贷方"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -768,11 +955,11 @@ msgstr "起源"
 
 msgctxt "field:account.general_ledger.line,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.general_ledger.line,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "要求的参与者"
 
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
@@ -796,7 +983,7 @@ msgstr "从日期"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
-msgstr "按参与对象累计"
+msgstr "按参与者累计"
 
 msgctxt "field:account.general_ledger.line.context,posted:"
 msgid "Posted Move"
@@ -1006,6 +1193,11 @@ msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "贷方"
 
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "货币"
+
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
 msgstr "货币有效数字"
@@ -1052,11 +1244,11 @@ msgstr ""
 
 msgctxt "field:account.move.line,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.move.line,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "要求的参与者"
 
 msgctxt "field:account.move.line,period:"
 msgid "Period"
@@ -1120,11 +1312,11 @@ msgstr "操作"
 
 msgctxt "field:account.move.line.template,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.move.line.template,party_required:"
 msgid "Party Required"
-msgstr "要求的参与对象"
+msgstr "要求的参与者"
 
 msgctxt "field:account.move.line.template,taxes:"
 msgid "Taxes"
@@ -1344,11 +1536,11 @@ msgstr "列表"
 
 msgctxt "field:account.reconcile.show,parties:"
 msgid "Parties"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.reconcile.show,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:account.reconcile.show,write_off:"
 msgid "Write Off"
@@ -1465,6 +1657,11 @@ msgstr "编码"
 msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "公司"
+
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
@@ -1674,6 +1871,11 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "替换模版"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "结束日期"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr ""
@@ -1690,6 +1892,11 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "规则"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "替代税"
@@ -1701,6 +1908,11 @@ msgstr "模板"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "覆盖模版"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "结束日期"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1717,6 +1929,11 @@ msgstr "原税"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "规则"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "开始日期"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -1908,7 +2125,7 @@ msgstr "客户税规则"
 
 msgctxt "field:party.party.account,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:party.party.account,supplier_tax_rule:"
 msgid "Supplier Tax Rule"
@@ -2165,6 +2382,11 @@ msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "账户延期"
 
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "付款账户"
+
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
 msgstr "账户模板"
@@ -2249,6 +2471,11 @@ msgstr "总分类账户"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "总分类账户"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2538,6 +2765,16 @@ msgstr "Close Fiscal Years"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "General Ledger - Accounts"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "总分类账户"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -3096,6 +3333,10 @@ msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
+msgid "User in company"
+msgstr ""
+
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
 msgstr ""
@@ -3429,11 +3670,6 @@ msgstr ":"
 msgctxt "report:account.general_ledger:"
 msgid "Balance"
 msgstr ""
-
-#, fuzzy
-msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "语言编码"
 
 msgctxt "report:account.general_ledger:"
 msgid "Company:"
@@ -4126,7 +4362,7 @@ msgid "General Information"
 msgstr ""
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
+msgid "Chart of accounts updated successfully."
 msgstr ""
 
 #, fuzzy

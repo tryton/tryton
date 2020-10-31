@@ -46,10 +46,9 @@ msgctxt "field:account.account,debit:"
 msgid "Debit"
 msgstr "Debetas"
 
-#, fuzzy
 msgctxt "field:account.account,debit_type:"
 msgid "Debit Type"
-msgstr "Debetas"
+msgstr "Debeto tipas"
 
 msgctxt "field:account.account,deferral:"
 msgid "Deferral"
@@ -175,6 +174,96 @@ msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr "Antrosios valiutos skaitmenų skaičius"
 
+#, fuzzy
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+#, fuzzy
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "Veiksni"
+
+#, fuzzy
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Koresponduojančios sąskaitos antroji valiuta"
+
+#, fuzzy
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "Balansas"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Uždaryta"
+
+#, fuzzy
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "Kodas"
+
+#, fuzzy
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "Kreditas"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "Debetas"
+
+#, fuzzy
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "Debeto tipas"
+
+#, fuzzy
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "Pabaigos data"
+
+#, fuzzy
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "Pavadinimas"
+
+#, fuzzy
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "Antroji valiuta"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Antrosios valiutos skaitmenų skaičius"
+
+#, fuzzy
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "Pradžios data"
+
+#, fuzzy
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "Tipas"
+
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
 msgstr "Dukterinės"
@@ -187,10 +276,9 @@ msgctxt "field:account.account.template,code:"
 msgid "Code"
 msgstr "Kodas"
 
-#, fuzzy
 msgctxt "field:account.account.template,debit_type:"
 msgid "Debit Type"
-msgstr "Debetas"
+msgstr "Debeto tipas"
 
 msgctxt "field:account.account.template,deferral:"
 msgid "Deferral"
@@ -263,6 +351,11 @@ msgstr "Dukteriniai"
 msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
@@ -355,6 +448,11 @@ msgstr "Balansas"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -452,15 +550,13 @@ msgctxt "field:account.configuration,default_account_receivable:"
 msgid "Default Account Receivable"
 msgstr "Numatytoji sąskaita gautinoms sumoms"
 
-#, fuzzy
 msgctxt "field:account.configuration,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "Mokesčių pirkėjui taisyklė"
+msgstr "Numatytoji mokesčių pirkėjui taisyklė"
 
-#, fuzzy
 msgctxt "field:account.configuration,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "Tiekėjo mokesčių taisyklė"
+msgstr "Numatytoji tiekėjo mokesčių taisyklė"
 
 msgctxt "field:account.configuration,tax_rounding:"
 msgid "Tax Rounding"
@@ -479,22 +575,19 @@ msgctxt ""
 msgid "Default Account Receivable"
 msgstr "Numatytoji koresponduojanti sąskaita gautinoms sumoms"
 
-#, fuzzy
 msgctxt "field:account.configuration.default_tax_rule,company:"
 msgid "Company"
 msgstr "Organizacija"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_customer_tax_rule:"
 msgid "Default Customer Tax Rule"
-msgstr "Mokesčių pirkėjui taisyklė"
+msgstr "Numatytoji mokesčių pirkėjui taisyklė"
 
-#, fuzzy
 msgctxt ""
 "field:account.configuration.default_tax_rule,default_supplier_tax_rule:"
 msgid "Default Supplier Tax Rule"
-msgstr "Tiekėjo mokesčių taisyklė"
+msgstr "Numatytoji tiekėjo mokesčių taisyklė"
 
 msgctxt "field:account.configuration.tax_rounding,company:"
 msgid "Company"
@@ -584,19 +677,17 @@ msgctxt "field:account.fiscalyear.balance_non_deferral.start,period:"
 msgid "Period"
 msgstr "Periodas"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.create_periods.start,end_day:"
 msgid "End Day"
 msgstr "Pabaigos data"
 
-#, fuzzy
 msgctxt "field:account.fiscalyear.create_periods.start,frequency:"
 msgid "Frequency"
-msgstr "Numeruotė"
+msgstr "Dažnis"
 
 msgctxt "field:account.fiscalyear.create_periods.start,interval:"
 msgid "Interval"
-msgstr ""
+msgstr "Intervalas"
 
 msgctxt "field:account.fiscalyear.renew.start,company:"
 msgid "Company"
@@ -622,13 +713,14 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "Pradžios data"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "Veiksni"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "Kodas"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -638,6 +730,11 @@ msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Kreditas"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valiutos skaitmenų po kablelio skaičius"
@@ -646,10 +743,9 @@ msgctxt "field:account.general_ledger.account,debit:"
 msgid "Debit"
 msgstr "Debetas"
 
-#, fuzzy
 msgctxt "field:account.general_ledger.account,debit_type:"
 msgid "Debit Type"
-msgstr "Debetas"
+msgstr "Debeto tipas"
 
 msgctxt "field:account.general_ledger.account,end_balance:"
 msgid "End Balance"
@@ -674,10 +770,6 @@ msgstr "Didžiosios knygos balansas"
 msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Eilutės"
-
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "Pavadinimas"
 
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
@@ -727,6 +819,86 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "Pabaigos data"
 
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "Koresponduojanti sąskaita"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "Veiksni"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "Kreditas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų po kablelio skaičius"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "Debetas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "Galinis balansas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "Galutinis kreditas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "Pabaigos data"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "Galutinis debetas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "Kontrahentas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "Pradinis balansas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "Pradinis kreditas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "Pradžios data"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "Pradinis debetas"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
 msgstr "Koresponduojanti sąskaita"
@@ -742,6 +914,11 @@ msgstr "Organizacija"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "Kreditas"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -1010,6 +1187,11 @@ msgstr "Sąskaitos antroji valiuta"
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Kreditas"
+
+#, fuzzy
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1471,6 +1653,11 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valiutos skaitmenų po kablelio skaičius"
@@ -1679,6 +1866,11 @@ msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr "Perrašyti šabloną"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "Pabaigos data"
+
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
 msgstr "Mokesčių grupė"
@@ -1695,6 +1887,11 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr "Taisyklė"
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "Pradžios data"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr "Pakeičiantysis mokestis"
@@ -1706,6 +1903,11 @@ msgstr "Šablonas"
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr "Perrašyti šabloną"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "Pabaigos data"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1722,6 +1924,11 @@ msgstr "Pradinis mokestis"
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr "Taisyklė"
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "Pradžios data"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -1922,6 +2129,7 @@ msgstr "Tiekėjo mokesčių taisyklė"
 msgctxt "help:account.account,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
+"Pažymėkite, kad išvengti operacijų šioje koresponduojančioje sąskaitoje."
 
 msgctxt "help:account.account,debit_type:"
 msgid "The type used if not empty and debit > credit."
@@ -1929,166 +2137,176 @@ msgstr ""
 
 msgctxt "help:account.account,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Didžiosios knygos ataskaitoje rodyti tik balansą."
 
 msgctxt "help:account.account,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
-msgstr ""
+msgstr "Leisti šios koresponduojančios sąskaitos eilučių suderinimą."
 
 msgctxt "help:account.account,second_currency:"
 msgid ""
 "Force all moves for this account \n"
 "to have this secondary currency."
 msgstr ""
+"Visoms operacijoms šioje koresponduojančioje \n"
+"sąskaitoje priskirti šią papildomą valiutą."
 
 msgctxt "help:account.account,taxes:"
 msgid ""
 "Default tax for manual encoding of move lines\n"
 "for journal types: \"expense\" and \"revenue\"."
 msgstr ""
+"Numatytieji mokesčiai, kuriant operacijų eilutes \n"
+"\"išlaidų\" ir \"pajamų\" tipo žurnalams rankiniu būdu."
 
 msgctxt "help:account.account,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.account.template,closed:"
 msgid "Check to prevent posting move on the account."
 msgstr ""
+"Pažymėkite, kad išvengti operacijų šioje koresponduojančioje sąskaitoje."
 
 msgctxt "help:account.account.template,general_ledger_balance:"
 msgid "Display only the balance in the general ledger report."
-msgstr ""
+msgstr "Didžiosios knygos ataskaitoje rodyti tik balansą."
 
 msgctxt "help:account.account.template,reconcile:"
 msgid "Allow move lines of this account to be reconciled."
-msgstr ""
+msgstr "Leisti šios koresponduojančios sąskaitos eilučių suderinimą."
 
 msgctxt "help:account.account.type,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.aged_balance.context,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.balance_sheet.comparision.context,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.balance_sheet.context,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.configuration,default_customer_tax_rule:"
 msgid "Default customer tax rule for new parties."
-msgstr ""
+msgstr "Numatytoji mokesčių pirkėjui taisyklė naujiems kontrahentams."
 
 msgctxt "help:account.configuration,default_supplier_tax_rule:"
 msgid "Default supplier tax rule for new parties."
-msgstr ""
+msgstr "Numatytoji tiekėjo mokesčių taisyklė naujiems kontrahentams."
 
 msgctxt "help:account.fiscalyear.create_periods.start,end_day:"
 msgid ""
 "The day of the month on which periods end.\n"
 "Months with fewer days will end on the last day."
 msgstr ""
+"Periodo pabaigos mėnesio diena.\n"
+"Trumpesni mėnesiai baigsis paskutinę mėnesio dieną."
 
 msgctxt "help:account.fiscalyear.create_periods.start,interval:"
 msgid "The length of each period, in months."
-msgstr ""
+msgstr "Periodo trukmė mėnesiais."
 
 msgctxt "help:account.fiscalyear.renew.start,previous_fiscalyear:"
 msgid "Used as reference for fiscalyear configuration."
-msgstr ""
+msgstr "Naudojama kaip fiskalinių metų konfigūracijos nuoroda."
 
 msgctxt "help:account.fiscalyear.renew.start,reset_sequences:"
 msgid "If checked, new sequences will be created."
-msgstr ""
+msgstr "Jei pažymėta, bus sukurtos naujos numeruotės."
 
 msgctxt "help:account.general_ledger.account.context,posted:"
 msgid "Only included posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.general_ledger.line.context,posted:"
 msgid "Only included posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.income_statement.context,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.move,post_number:"
 msgid "Also known as Folio Number."
-msgstr ""
+msgstr "Dar žinomas kaip Folio numeris."
 
-#, fuzzy
 msgctxt "help:account.move.line,amount_second_currency:"
 msgid "The amount expressed in a second currency."
-msgstr "Antroji valiuta"
+msgstr "Suma antrąja valiuta."
 
 msgctxt "help:account.move.line,maturity_date:"
 msgid ""
 "This field is used for payable and receivable lines. \n"
 "You can put the limit date for the payment."
 msgstr ""
+"Šis laukas naudojamas mokėtinoms ir gautinoms eilutėms.\n"
+"Jūs galite įvesti datą, iki kurios turi būti atliktas mokėjimas."
 
-#, fuzzy
 msgctxt "help:account.move.line,second_currency:"
 msgid "The second currency."
-msgstr "Antroji valiuta"
+msgstr "Antroji valiuta."
 
 msgctxt "help:account.move.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr ""
+msgstr "Išraiška Python kalba, kuri turi būti atlikta su raktiniais žodžiais."
 
 msgctxt "help:account.move.line.template,description:"
 msgid "Keywords values substitutions are identified by braces ('{' and '}')."
 msgstr ""
+"Pakeičiamieji raktiniai žodžiai atpažįstami pagal riestinius skliaustus ('{'"
+" and '}')."
 
 msgctxt "help:account.move.line.template,party:"
 msgid "The name of the 'Party' keyword."
-msgstr ""
+msgstr "'Kontrahento' pavadinimo raktinis žodis."
 
 msgctxt "help:account.move.print_general_journal.start,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
 msgctxt "help:account.move.reconciliation,date:"
 msgid "Highest date of the reconciled lines."
-msgstr ""
+msgstr "Vėliausia suderinamų eilučių data."
 
 msgctxt "help:account.move.reconciliation,delegate_to:"
 msgid "The line to which the reconciliation status is delegated."
-msgstr ""
+msgstr "Eilutė, su kuria vyksta sudengimas."
 
 msgctxt "help:account.move.template,date:"
 msgid "Leave empty for today."
-msgstr ""
+msgstr "Palikite tuščią šiandienai."
 
 msgctxt "help:account.move.template,description:"
 msgid "Keyword values substitutions are identified by braces ('{' and '}')."
 msgstr ""
+"Raktažodžių verčių pakaitos yra atpažįstamos pagal riestinius skliaustus "
+"('{' and '}')."
 
 msgctxt "help:account.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr ""
+msgstr "Palikite tuščią visiems atviriems finansiniams metams."
 
 msgctxt "help:account.open_chart.start,posted:"
 msgid "Only include posted moves."
-msgstr ""
+msgstr "Rodyti tik įtrauktas į apskaitą operacijas."
 
-#, fuzzy
 msgctxt "help:account.tax,amount:"
 msgid "In company's currency."
-msgstr "Organizacijos valiuta"
+msgstr "Suma organizacijos valiuta."
 
 msgctxt "help:account.tax,description:"
 msgid "The name that will be used in reports."
-msgstr ""
+msgstr "Pavadinimas, kuris bus naudojamas ataskaitose."
 
 msgctxt "help:account.tax,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.tax,update_unit_price:"
 msgid ""
@@ -2098,27 +2316,27 @@ msgstr ""
 
 msgctxt "help:account.tax.code,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.tax.code.line,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.tax.code.open_chart.start,fiscalyear:"
 msgid "Leave empty for all open fiscal year."
-msgstr ""
+msgstr "Palikite tuščią visiems atviriems finansiniams metams."
 
 msgctxt "help:account.tax.code.open_chart.start,periods:"
 msgid "Leave empty for all periods of all open fiscal year."
-msgstr ""
+msgstr "Palikite tuščią visų atvirų finansinių metų visiems periodams."
 
 msgctxt "help:account.tax.line.template,amount:"
 msgid "A python expression that will be evaluated with the keywords."
-msgstr ""
+msgstr "Išraiška Python kalba, kuri turi būti atlikta su raktiniais žodžiais."
 
 msgctxt "help:account.tax.rule,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.tax.rule.line,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -2131,7 +2349,7 @@ msgstr ""
 
 msgctxt "help:account.tax.rule.line,template_override:"
 msgid "Check to override template definition"
-msgstr ""
+msgstr "Pažymėkite, kad perrašyti duomenis iš šablono"
 
 msgctxt "help:account.tax.rule.line.template,keep_origin:"
 msgid "Check to append the original tax to substituted tax."
@@ -2145,11 +2363,11 @@ msgstr ""
 
 msgctxt "help:party.party,customer_tax_rule:"
 msgid "Apply this rule on taxes when party is customer."
-msgstr ""
+msgstr "Taikyti šią mokesčių taisyklę, kai kontrahentas yra pirkėjas."
 
 msgctxt "help:party.party,supplier_tax_rule:"
 msgid "Apply this rule on taxes when party is supplier."
-msgstr ""
+msgstr "Taikyti šią mokesčių taisyklę kai kontrahentas yra tiekėjas."
 
 msgctxt "model:account.account,name:"
 msgid "Account"
@@ -2162,6 +2380,11 @@ msgstr "Koresponduojanti sąskaita - mokesčiai"
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr "Koresponduojanti sąskaita ateinantiems laikotarpiams"
+
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "Mokėtinų sumų koresponduojanti sąskaita"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
@@ -2204,11 +2427,9 @@ msgid "Account Configuration Default Account"
 msgstr ""
 "Koresponduojančių sąskaitų valdymas - numatytoji koresponduojanti sąskaita"
 
-#, fuzzy
 msgctxt "model:account.configuration.default_tax_rule,name:"
 msgid "Account Configuration Default Tax Rule"
-msgstr ""
-"Koresponduojančių sąskaitų valdymas - numatytoji koresponduojanti sąskaita"
+msgstr "Koresponduojančios sąskaitos numatytoji mokesčių taisyklė"
 
 msgctxt "model:account.configuration.tax_rounding,name:"
 msgid "Account Configuration Tax Rounding"
@@ -2234,10 +2455,9 @@ msgctxt "model:account.fiscalyear.balance_non_deferral.start,name:"
 msgid "Balance Non-Deferral"
 msgstr "Metinis pajamų ir išlaidų koresponduojančių sąskaitų uždarymas"
 
-#, fuzzy
 msgctxt "model:account.fiscalyear.create_periods.start,name:"
 msgid "Create Periods Start"
-msgstr "Sukurti mėnesio periodą"
+msgstr "Pradėti periodų kūrimą"
 
 msgctxt "model:account.fiscalyear.renew.start,name:"
 msgid "Renew Fiscal Year Start"
@@ -2250,6 +2470,11 @@ msgstr "Didžiosios knygos koresponduojanti sąskaita"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr "Didžiosios knygos koresponduojančios sąskaitos kontekstas"
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "Didžiosios knygos koresponduojanti sąskaita"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2499,10 +2724,9 @@ msgctxt "model:ir.action,name:act_configuration_form"
 msgid "Account Configuration"
 msgstr "Koresponduojančių sąskaitų valdymas"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_create_periods"
 msgid "Create Periods"
-msgstr "Sukurti mėnesio periodą"
+msgstr "Sukurti periodus"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
@@ -2515,6 +2739,16 @@ msgstr "Uždaryti finansinius metus"
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr "Didžioji knyga - koresponduojančios sąskaitos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "Didžioji knyga - koresponduojančios sąskaitos"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "Didžiosios knygos koresponduojanti sąskaita"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -2548,10 +2782,9 @@ msgctxt "model:ir.action,name:act_move_form"
 msgid "Account Moves"
 msgstr "Operacijos koresponduojančiose sąskaitose"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_move_form_grouping"
 msgid "Grouped Account Move"
-msgstr "Koresponduojančios sąskaitos operacija"
+msgstr "Apjungta koresponduojančios sąskaitos operacija"
 
 msgctxt "model:ir.action,name:act_move_from_template"
 msgid "Account Move"
@@ -2714,61 +2947,79 @@ msgstr "Gautina"
 
 msgctxt "model:ir.message,text:msg_account_chart_exists"
 msgid "A chart of accounts already exists for company \"%(company)s\"."
-msgstr ""
+msgstr "Organizacija \"%(company)s\" jau turi sąskaitų planą."
 
 msgctxt "model:ir.message,text:msg_account_invalid_deferral_second_currency"
 msgid "To set a second currency for account \"%(account)s\", it must be deferral."
 msgstr ""
+"Norint nustatyti antrąją valiutą koresponduojančiai sąskaitai "
+"\"%(account)s\", pastaroji turi būti perkeliama."
 
 msgctxt "model:ir.message,text:msg_account_invalid_type_second_currency"
 msgid ""
 "To set a second currency for account \"%(account)s\", it must not have a "
 "type \"payable\", \"revenue\", \"receivable\" nor \"expense\"."
 msgstr ""
+"Norint nustatyti antrąją valiutą koresponduojančiai sąskaitai "
+"\"%(account)s\", pastaroji turi būti vieno iš šių tipų: \"mokėtinos\", "
+"\"pajamos\", \"gautinos\" ar \"išlaidos\"."
 
 msgctxt "model:ir.message,text:msg_cancel_line_delegated"
 msgid ""
 "The moves \"%(moves)s\" contain grouped lines, cancelling them will ungroup "
 "the lines."
 msgstr ""
+"Operacijoje \"%(moves)s\" yra apjungtų eilučių, panaikinus operaciją jos bus"
+" išgrupuotos."
 
 msgctxt "model:ir.message,text:msg_change_fiscalyear_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence on fiscal year \"%(fiscalyear)s\" "
 "because it contains posted moves."
 msgstr ""
+"Negalima keisti finansinių metų \"%(fiscalyear)s\" įtraukimo į apskaitą "
+"numeruotės, nes jau yra įtrauktų į apskaitą numeruočių."
 
 msgctxt "model:ir.message,text:msg_change_period_post_move_sequence"
 msgid ""
 "You cannot change the post move sequence in period \"%(period)s\" because it"
 " has posted moves."
 msgstr ""
+"Negalima keisti periodo \"%(period)s\" įtraukimo į apskaitą numeruotės, nes "
+"jau yra įtrauktų į apskaitą operacijų."
 
 msgctxt "model:ir.message,text:msg_close_fiscalyear_account_balance_not_zero"
 msgid ""
 "To close the fiscal year, the balance of account \"%(account)s\" must be "
 "zero."
 msgstr ""
+"Finansinių metų uždarymui koresponduojančios sąskaitos \"%(account)s\" "
+"balansas turi būti lygus nuliui."
 
 msgctxt "model:ir.message,text:msg_close_fiscalyear_earlier"
 msgid ""
 "To close fiscal year \"%(fiscalyear)s\", you must close all earlier fiscal "
 "years."
 msgstr ""
+"Finansinių metų \"%(fiscalyear)s\" uždarymui reikia uždaryti visus "
+"ankstesnius finansinius metus."
 
 msgctxt "model:ir.message,text:msg_close_period_non_posted_moves"
 msgid "To close period \"%(period)s\" you must post the moves \"%(moves)s\"."
 msgstr ""
+"Periodo \"%(period)s\" uždarymui reikia įtraukti į apskaitą operacijas "
+"\"%(moves)s\"."
 
 msgctxt "model:ir.message,text:msg_create_journal_period_closed_period"
 msgid "You cannot create a journal-period in closed period \"%(period)s\"."
-msgstr ""
+msgstr "Negalima sukurti žurnalo uždarytam periodui \"%(period)s\"."
 
 msgctxt "model:ir.message,text:msg_create_period_closed_fiscalyear"
 msgid ""
 "You cannot create a period in fiscal year \"%(fiscalyear)s\" because it is "
 "closed."
 msgstr ""
+"Negalima sukurti periodo uždarytiems finansiniams metams \"%(fiscalyear)s\"."
 
 msgctxt "model:ir.message,text:msg_deferral_unique"
 msgid "Deferral must be unique by account and fiscal year."
@@ -2798,35 +3049,37 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_group_line"
 msgid "Line \"%(line)s\" can not be grouped."
-msgstr ""
+msgstr "Eilutė \"%(line)s\" negali būti apjungiama."
 
 msgctxt "model:ir.message,text:msg_group_line_many_parties"
 msgid "You cannot group lines with different parties."
-msgstr ""
+msgstr "Negalima apjungti eilučių su skirtingais kontrahentais."
 
 msgctxt "model:ir.message,text:msg_group_line_maximum_account"
 msgid "You cannot group lines from more than 2 different accounts."
 msgstr ""
+"Negalima apjungti eilučių iš daugiau nei dviejų skirtingų koresponduojančių "
+"sąskaitų."
 
 msgctxt "model:ir.message,text:msg_group_line_same_company"
 msgid "You cannot group lines of different companies."
-msgstr ""
+msgstr "Negalima apjungti kelių skirtingų organizacijų eilučių."
 
 msgctxt "model:ir.message,text:msg_group_line_same_second_currency"
 msgid "You cannot group lines of different second currencies."
-msgstr ""
+msgstr "Negalima apjungti eilučių su skirtingomis antrosiomis valiutomis."
 
 msgctxt "model:ir.message,text:msg_group_line_single"
 msgid "You cannot group a single line."
-msgstr ""
+msgstr "Negalima apjungti vienos eilutės."
 
 msgctxt "model:ir.message,text:msg_journal_period_unique"
 msgid "You can create only one journal per period."
-msgstr ""
+msgstr "Negalima sukurti tik vieno žurnalo periodui."
 
 msgctxt "model:ir.message,text:msg_line_already_reconciled"
 msgid "You cannot reconcile already reconciled line \"%(line)s\"."
-msgstr ""
+msgstr "Eilutė \"%(line)s\" jau sudengta."
 
 msgctxt "model:ir.message,text:msg_line_closed_account"
 msgid ""
@@ -2836,7 +3089,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_line_debit_credit"
 msgid "You cannot set both debit and credit on the line."
-msgstr ""
+msgstr "Negalima vienoje eilutėje pasirinkti debetą ir kreditą vienu metu."
 
 msgctxt "model:ir.message,text:msg_line_party_required"
 msgid ""
@@ -2866,167 +3119,209 @@ msgctxt "model:ir.message,text:msg_modify_delete_period_moves"
 msgid ""
 "You cannot modify or delete period \"%(period)s\" because it contains moves."
 msgstr ""
+"Negalima keisti ar pašalinti periodą \"%(period)s\", nes jo metu jau "
+"atliktos operacijos."
 
 msgctxt "model:ir.message,text:msg_modify_line_closed_journal_period"
 msgid ""
 "You cannot add/modify/delete lines on closed journal-period "
 "\"%(journal_period)s\"."
 msgstr ""
+"Negalima sukurti, keisti ar ištrinti eilučių, kai žurnalo periodas "
+"\"%(journal_period)s\" yra uždarytas."
 
 msgctxt "model:ir.message,text:msg_modify_line_posted_move"
 msgid "You cannot modify line \"%(line)s\" from posted move \"%(move)s\"."
 msgstr ""
+"Negalima keisti įtrauktos į apskaitą operacijos \"%(move)s\" eilutės "
+"\"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_line_reconciled"
 msgid "You cannot modify reconciled line \"%(line)s\"."
-msgstr ""
+msgstr "Negalima keisti sudengtos eilutės \"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_posted_moved"
 msgid "You cannot modify posted move \"%(move)s\"."
-msgstr ""
+msgstr "Negalima keisti įtrauktos į apskaitą operacijos \"%(move)s\"."
 
 msgctxt "model:ir.message,text:msg_modify_tax_line_closed_period"
 msgid "You cannot add/modify/delete tax lines in closed period \"%(period)s\"."
 msgstr ""
+"Negalima sukurti, keisti ar ištrinti mokesčių eilučių, kai periodas "
+"\"%(period)s\" yra uždarytas."
 
 msgctxt "model:ir.message,text:msg_move_cancel_closed_period"
 msgid ""
 "The period of move \"%(move)s\" is closed.\n"
 "Use the current period to cancel the move?"
 msgstr ""
+"Operacijos \"%(move)s\" periodas yra uždarytas.\n"
+"Ar naudoti dabartinį periodą, kad panaikinti šią operaciją?"
 
 msgctxt "model:ir.message,text:msg_move_date_outside_period"
 msgid ""
 "The date of move \"%(move)s\" is outside the period, you must change the "
 "date or the period."
 msgstr ""
+"Operacijos \"%(move)s\" data yra už periodo ribų, jūs turite pakeisti datą "
+"arba periodą."
 
 msgctxt "model:ir.message,text:msg_no_fiscalyear_date"
 msgid "To continue, you must create a fiscal year for the date \"%(date)s\"."
-msgstr ""
+msgstr "Norint tęsti, reikia datai \"%(date)s\" sukurti finansinius metus."
 
 msgctxt "model:ir.message,text:msg_no_period_date"
 msgid "To continue, you must create a period for the date \"%(date)s\"."
-msgstr ""
+msgstr "Norint tęsti, reikia datai \"%(date)s\" sukurti periodą."
 
 msgctxt "model:ir.message,text:msg_open_journal_period_closed_period"
 msgid ""
 "You cannot reopen journal-period \"%(journal_period)s\" in closed period "
 "\"%(period)s\"."
 msgstr ""
+"Negalima atverti periodo žurnalo \"%(journal_period)s\", nes periodas "
+"\"%(period)s\" yra uždarytas."
 
 msgctxt "model:ir.message,text:msg_open_period_closed_fiscalyear"
 msgid ""
 "You cannot reopen period \"%(period)s\" because its fiscal year "
 "\"%(fiscalyear)s\" is closed."
 msgstr ""
+"Negalima atverti periodo žurnalo \"%(journal_period)s\", nes finansiniai "
+"metai \"%(fiscalyear)s\" yra uždaryti."
 
 msgctxt "model:ir.message,text:msg_party_missing_payable_account"
 msgid "To continue, you must define a payable account for party \"%(party)s\"."
 msgstr ""
+"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" mokėtinų sumų "
+"koresponduojančią sąskaitą."
 
 msgctxt "model:ir.message,text:msg_party_missing_receivable_account"
 msgid "To continue, you must define a receivable account for party \"%(party)s\"."
 msgstr ""
+"Norint tęsti, reikia nurodyti kontrahento \"%(party)s\" gautinų sumų "
+"koresponduojančią sąskaitą."
 
 msgctxt "model:ir.message,text:msg_period_fiscalyear_dates"
 msgid ""
 "The dates for period \"%(period)s\" must be between the dates of its fiscal "
 "year \"%(fiscalyear)s\"."
 msgstr ""
+"Periodo \"%(period)s\" datos turi priklausyti finansiniams metams "
+"\"%(fiscalyear)s\"."
 
 msgctxt "model:ir.message,text:msg_period_overlap"
 msgid ""
 "The periods \"%(first)s\" and \"%(second)s\" overlap, you must use different"
 " dates."
 msgstr ""
+"Periodai \"%(first)s\" ir \"%(second)s\" persidengia, reikia nurodyti kitas "
+"datas."
 
 msgctxt "model:ir.message,text:msg_period_same_sequence"
 msgid ""
 "You cannot use the same post move sequence for the periods \"%(first)s\" and"
 " \"%(second)s\" because they are from different fiscal years."
 msgstr ""
+"Negalima naudoti tą pačią operacijų įtraukimo į apskaitą numeruotės "
+"periodams \"%(first)s\" ir \"%(second)s\", nes jie priklauso skirtingiems "
+"finansiniams metams."
 
 msgctxt "model:ir.message,text:msg_post_empty_move"
 msgid "To post move \"%(move)s\", you must fill in its lines."
 msgstr ""
+"Norint įtraukti į apskaitą operaciją \"%(move)s\", reikia užpildyti jos "
+"eilutes."
 
 msgctxt "model:ir.message,text:msg_post_unbalanced_move"
 msgid ""
 "To post move \"%(move)s\", you must balance all its lines debits and "
 "credits."
 msgstr ""
+"Norint įtraukti į apskaitą operaciją \"%(move)s\", reikia kad jos eilučių "
+"debetas ir kreditas būtų lygūs."
 
 msgctxt "model:ir.message,text:msg_reconciliation_account_not_reconcile"
 msgid ""
 "To reconcile line \"%(line)s\", you must set its account \"%(account)s\" as "
 "reconcilable."
 msgstr ""
+"Norint sudengti eilutę \"%(line)s\", turite jos koresponduojančioje "
+"sąskaitoje \"%(account)s\" nurodyti, kad ši sąskaita yra sudengiama."
 
 msgctxt "model:ir.message,text:msg_reconciliation_delete_delegated"
 msgid ""
 "The reconciliation \"%(reconciliation)s\" is delegated to the line \"%(line)s\".\n"
 "You may need to cancel its move \"%(move)s\"."
 msgstr ""
+"Sudengimas \"%(reconciliation)s\" yra nukreiptas į eilutę \"%(line)s\".\n"
+"Gali prisireikti panaikinti operaciją \"%(move)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_different_accounts"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its account "
 "\"%(account1)s\" is different from \"%(account2)s\"."
 msgstr ""
+"Negalima sudengti eilutės \"%(line)s\" su kitomis, nes jos koresponduojanti "
+"sąskaita \"%(account1)s\" skiriasi nuo \"%(account2)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_different_parties"
 msgid ""
 "You cannot reconcile line \"%(line)s\" with others because its party "
 "\"%(party1)s\" is different from \"%(party2)s\"."
 msgstr ""
+"Negalima sudengti eilutės \"%(line)s\" su kitomis, nes jos kontrahentas "
+"\"%(party1)s\" skiriasi nuo \"%(party2)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_line_not_valid"
 msgid "You cannot reconcile non-valid line \"%(line)s\"."
-msgstr ""
+msgstr "Negalima sudengti nepatikrintos eilutės \"%(line)s\"."
 
 msgctxt "model:ir.message,text:msg_reconciliation_unbalanced"
 msgid ""
 "To reconcile lines, they must have the same debit \"%(debit)s\" and credit "
 "\"%(credit)s\"."
 msgstr ""
+"Norint sudengti eilutes, jos turi turėti tą patį debetą \"%(debit)s\" ir "
+"kreditą \"%(credit)s\"."
 
 msgctxt "model:ir.message,text:msg_reopen_fiscalyear_later"
 msgid ""
 "To reopen fiscal year \"%(fiscalyear)s\", you must reopen all later fiscal "
 "years."
 msgstr ""
+"Norint iš naujo atverti finansinius metus \"%(fiscalyear)s\", reikia iš "
+"pradžių atverti visus vėlesnius finansinius metus."
 
 msgctxt "model:ir.message,text:msg_tax_update_unit_price_with_parent"
 msgid "You cannot set \"Update Unit Price\" on child tax \"%(tax)s\"."
 msgstr ""
+"Negalima vykdyti vieneto kainos atnaujinimo dukteriniams mokesčiams "
+"\"%(tax)s\"."
 
 msgctxt "model:ir.message,text:msg_write_deferral"
 msgid "You cannot modify any account deferrals."
-msgstr ""
+msgstr "Negalima taisyti jokių perkeliamų koresponduojančių sąskaitų."
 
 msgctxt "model:ir.message,text:msg_write_reconciliation"
 msgid "You cannot modify any reconciliation."
-msgstr ""
+msgstr "Negalima keisti jokių sudengimų."
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:fiscalyear_lock_button"
 msgid "Are you sure you want to lock the fiscal year?"
-msgstr "Are you sure to lock the fiscal year?"
+msgstr "Ar tikrai norite užrakinti finansinius metus?"
 
-#, fuzzy
 msgctxt "model:ir.model.button,confirm:period_lock_button"
 msgid "Are you sure you want to lock the period?"
-msgstr "Are you sure to lock the period?"
+msgstr "Ar tikrai norite užrakinti periodą?"
 
 msgctxt "model:ir.model.button,string:fiscalyear_close_button"
 msgid "Close"
 msgstr "Užverti"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:fiscalyear_create_periods_button"
 msgid "Create Periods"
-msgstr "Sukurti mėnesio periodą"
+msgstr "Sukurti periodą"
 
 msgctxt "model:ir.model.button,string:fiscalyear_lock_button"
 msgid "Lock"
@@ -3069,6 +3364,11 @@ msgid "User in company"
 msgstr "Organizacijos naudotojas"
 
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
+msgid "User in company"
+msgstr "Organizacijos naudotojas"
+
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
 msgid "User in company"
 msgstr "Organizacijos naudotojas"
 
@@ -3400,10 +3700,6 @@ msgid "Balance"
 msgstr "Balansas"
 
 msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "Kodas"
-
-msgctxt "report:account.general_ledger:"
 msgid "Company:"
 msgstr "Organizacija:"
 
@@ -3421,7 +3717,7 @@ msgstr "Debetas"
 
 msgctxt "report:account.general_ledger:"
 msgid "Descr."
-msgstr "Aprašymas"
+msgstr "Apraš."
 
 #, fuzzy
 msgctxt "report:account.general_ledger:"
@@ -4081,7 +4377,7 @@ msgid "General Information"
 msgstr "Pagrindinė informacija"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
+msgid "Chart of accounts updated successfully."
 msgstr ""
 
 #, fuzzy

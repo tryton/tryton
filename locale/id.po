@@ -36,11 +36,11 @@ msgstr "Kredit"
 
 msgctxt "field:account.account,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.account,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Digit Mata Uang"
 
 msgctxt "field:account.account,debit:"
 msgid "Debit"
@@ -56,7 +56,7 @@ msgstr "Penangguhan"
 
 msgctxt "field:account.account,deferrals:"
 msgid "Deferrals"
-msgstr ""
+msgstr "Penangguhan"
 
 msgctxt "field:account.account,end_date:"
 msgid "End Date"
@@ -100,7 +100,7 @@ msgstr "Kanan"
 
 msgctxt "field:account.account,second_currency:"
 msgid "Secondary Currency"
-msgstr ""
+msgstr "Mata Uang Sekunder"
 
 msgctxt "field:account.account,second_currency_digits:"
 msgid "Second Currency Digits"
@@ -116,7 +116,7 @@ msgstr ""
 
 msgctxt "field:account.account,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.account,template_override:"
 msgid "Override Template"
@@ -128,7 +128,7 @@ msgstr "Jenis"
 
 msgctxt "field:account.account-account.tax,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.account-account.tax,tax:"
 msgid "Tax"
@@ -136,7 +136,7 @@ msgstr "Pajak"
 
 msgctxt "field:account.account.deferral,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.account.deferral,amount_second_currency:"
 msgid "Amount Second Currency"
@@ -168,11 +168,86 @@ msgstr "Tahun Fiskal"
 
 msgctxt "field:account.account.deferral,second_currency:"
 msgid "Second Currency"
-msgstr ""
+msgstr "Mata Uang Kedua"
 
 msgctxt "field:account.account.deferral,second_currency_digits:"
 msgid "Second Currency Digits"
 msgstr ""
+
+msgctxt "field:account.account.party,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.account.party,active:"
+msgid "Active"
+msgstr "Aktif"
+
+msgctxt "field:account.account.party,amount_second_currency:"
+msgid "Amount Second Currency"
+msgstr "Jumlah Mata Uang Kedua"
+
+msgctxt "field:account.account.party,balance:"
+msgid "Balance"
+msgstr "Saldo"
+
+#, fuzzy
+msgctxt "field:account.account.party,closed:"
+msgid "Closed"
+msgstr "Tutup"
+
+msgctxt "field:account.account.party,code:"
+msgid "Code"
+msgstr "Kode"
+
+msgctxt "field:account.account.party,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.account.party,credit:"
+msgid "Credit"
+msgstr "Kredit"
+
+#, fuzzy
+msgctxt "field:account.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "field:account.account.party,debit:"
+msgid "Debit"
+msgstr "Debit"
+
+msgctxt "field:account.account.party,debit_type:"
+msgid "Debit Type"
+msgstr "Jenis Debit"
+
+msgctxt "field:account.account.party,end_date:"
+msgid "End Date"
+msgstr "Tanggal Akhir"
+
+msgctxt "field:account.account.party,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:account.account.party,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.account.party,second_currency:"
+msgid "Secondary Currency"
+msgstr "Mata Uang Sekunder"
+
+#, fuzzy
+msgctxt "field:account.account.party,second_currency_digits:"
+msgid "Second Currency Digits"
+msgstr "Mata Uang Kedua"
+
+msgctxt "field:account.account.party,start_date:"
+msgid "Start Date"
+msgstr "Tanggal Awal"
+
+msgctxt "field:account.account.party,type:"
+msgid "Type"
+msgstr "Jenis"
 
 msgctxt "field:account.account.template,childs:"
 msgid "Children"
@@ -262,6 +337,10 @@ msgctxt "field:account.account.type,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:account.account.type,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
 msgctxt "field:account.account.type,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -292,7 +371,7 @@ msgstr "Pendapatan"
 
 msgctxt "field:account.account.type,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "field:account.account.type,stock:"
 msgid "Stock"
@@ -300,7 +379,7 @@ msgstr "Persediaan"
 
 msgctxt "field:account.account.type,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.account.type,template_override:"
 msgid "Override Template"
@@ -340,7 +419,7 @@ msgstr "Pendapatan"
 
 msgctxt "field:account.account.type.template,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "field:account.account.type.template,stock:"
 msgid "Stock"
@@ -353,6 +432,10 @@ msgstr "Saldo"
 msgctxt "field:account.aged_balance,company:"
 msgid "Company"
 msgstr "Perusahaan"
+
+msgctxt "field:account.aged_balance,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
 
 msgctxt "field:account.aged_balance,currency_digits:"
 msgid "Currency Digits"
@@ -551,7 +634,7 @@ msgstr "Tanggal Berawal"
 
 msgctxt "field:account.fiscalyear,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.fiscalyear.balance_non_deferral.start,company:"
 msgid "Company"
@@ -614,13 +697,13 @@ msgctxt "field:account.fiscalyear.renew.start,start_date:"
 msgid "Start Date"
 msgstr "Tanggal Awal"
 
+msgctxt "field:account.general_ledger.account,account:"
+msgid "Account"
+msgstr "Akun"
+
 msgctxt "field:account.general_ledger.account,active:"
 msgid "Active"
 msgstr "Aktif"
-
-msgctxt "field:account.general_ledger.account,code:"
-msgid "Code"
-msgstr "Kode"
 
 msgctxt "field:account.general_ledger.account,company:"
 msgid "Company"
@@ -629,6 +712,10 @@ msgstr "Perusahaan"
 msgctxt "field:account.general_ledger.account,credit:"
 msgid "Credit"
 msgstr "Kredit"
+
+msgctxt "field:account.general_ledger.account,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
 
 msgctxt "field:account.general_ledger.account,currency_digits:"
 msgid "Currency Digits"
@@ -666,10 +753,6 @@ msgctxt "field:account.general_ledger.account,lines:"
 msgid "Lines"
 msgstr "Baris"
 
-msgctxt "field:account.general_ledger.account,name:"
-msgid "Name"
-msgstr "Nama"
-
 msgctxt "field:account.general_ledger.account,start_balance:"
 msgid "Start Balance"
 msgstr "Saldo Awal"
@@ -704,7 +787,7 @@ msgstr "Tahun Fiskal"
 
 msgctxt "field:account.general_ledger.account.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:account.general_ledger.account.context,posted:"
 msgid "Posted Move"
@@ -718,9 +801,76 @@ msgctxt "field:account.general_ledger.account.context,to_date:"
 msgid "To Date"
 msgstr "Ke Tanggal"
 
+msgctxt "field:account.general_ledger.account.party,account:"
+msgid "Account"
+msgstr "Akun"
+
+msgctxt "field:account.general_ledger.account.party,active:"
+msgid "Active"
+msgstr "Aktif"
+
+msgctxt "field:account.general_ledger.account.party,company:"
+msgid "Company"
+msgstr "Perusahaan"
+
+msgctxt "field:account.general_ledger.account.party,credit:"
+msgid "Credit"
+msgstr "Kredit"
+
+msgctxt "field:account.general_ledger.account.party,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
+
+msgctxt "field:account.general_ledger.account.party,debit:"
+msgid "Debit"
+msgstr "Debit"
+
+msgctxt "field:account.general_ledger.account.party,end_balance:"
+msgid "End Balance"
+msgstr "Saldo Akhir"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_credit:"
+msgid "End Credit"
+msgstr "Kredit Akhir"
+
+msgctxt "field:account.general_ledger.account.party,end_date:"
+msgid "End Date"
+msgstr "Tanggal Akhir"
+
+#, fuzzy
+msgctxt "field:account.general_ledger.account.party,end_debit:"
+msgid "End Debit"
+msgstr "Debit Akhir"
+
+msgctxt "field:account.general_ledger.account.party,party:"
+msgid "Party"
+msgstr "Pihak"
+
+msgctxt "field:account.general_ledger.account.party,start_balance:"
+msgid "Start Balance"
+msgstr "Saldo Awal"
+
+msgctxt "field:account.general_ledger.account.party,start_credit:"
+msgid "Start Credit"
+msgstr "Kredit Awal"
+
+msgctxt "field:account.general_ledger.account.party,start_date:"
+msgid "Start Date"
+msgstr "Tanggal Awal"
+
+msgctxt "field:account.general_ledger.account.party,start_debit:"
+msgid "Start Debit"
+msgstr "Debit Awal"
+
 msgctxt "field:account.general_ledger.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.general_ledger.line,balance:"
 msgid "Balance"
@@ -733,6 +883,10 @@ msgstr "Perusahaan"
 msgctxt "field:account.general_ledger.line,credit:"
 msgid "Credit"
 msgstr "Kredit"
+
+msgctxt "field:account.general_ledger.line,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
 
 msgctxt "field:account.general_ledger.line,currency_digits:"
 msgid "Currency Digits"
@@ -772,7 +926,7 @@ msgstr "Pihak yang Dibutuhkan"
 
 msgctxt "field:account.general_ledger.line,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.general_ledger.line.context,company:"
 msgid "Company"
@@ -788,7 +942,7 @@ msgstr "Tahun Fiskal"
 
 msgctxt "field:account.general_ledger.line.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:account.general_ledger.line.context,party_cumulate:"
 msgid "Cumulate per Party"
@@ -832,11 +986,11 @@ msgstr "Tahun Fiskal"
 
 msgctxt "field:account.income_statement.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:account.income_statement.context,from_date_cmp:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:account.income_statement.context,posted:"
 msgid "Posted Move"
@@ -916,7 +1070,7 @@ msgstr "Periode"
 
 msgctxt "field:account.journal.period,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.journal.sequence,company:"
 msgid "Company"
@@ -972,7 +1126,7 @@ msgstr ""
 
 msgctxt "field:account.move,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.move.cancel.default,description:"
 msgid "Description"
@@ -980,7 +1134,7 @@ msgstr "Deskripsi"
 
 msgctxt "field:account.move.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.move.line,amount:"
 msgid "Amount"
@@ -1001,6 +1155,10 @@ msgstr ""
 msgctxt "field:account.move.line,credit:"
 msgid "Credit"
 msgstr "Kredit"
+
+msgctxt "field:account.move.line,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
 
 msgctxt "field:account.move.line,currency_digits:"
 msgid "Currency Digits"
@@ -1080,7 +1238,7 @@ msgstr ""
 
 msgctxt "field:account.move.line,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.move.line,tax_lines:"
 msgid "Tax Lines"
@@ -1096,7 +1254,7 @@ msgstr "Jurnal"
 
 msgctxt "field:account.move.line.template,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.move.line.template,amount:"
 msgid "Amount"
@@ -1140,7 +1298,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:account.move.print_general_journal.start,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:account.move.print_general_journal.start,posted:"
 msgid "Posted Move"
@@ -1244,11 +1402,11 @@ msgstr "Periode"
 
 msgctxt "field:account.move.template.create.template,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.move.template.keyword,digits:"
 msgid "Digits"
-msgstr ""
+msgstr "Digit"
 
 msgctxt "field:account.move.template.keyword,move:"
 msgid "Move"
@@ -1308,7 +1466,7 @@ msgstr "Tanggal Berawal"
 
 msgctxt "field:account.period,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:account.period,type:"
 msgid "Type"
@@ -1316,15 +1474,15 @@ msgstr "Jenis"
 
 msgctxt "field:account.reconcile.show,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.reconcile.show,accounts:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.reconcile.show,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Digit Mata Uang"
 
 msgctxt "field:account.reconcile.show,date:"
 msgid "Date"
@@ -1428,7 +1586,7 @@ msgstr "Tanggal Berawal"
 
 msgctxt "field:account.tax,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.tax,template_override:"
 msgid "Override Template"
@@ -1462,6 +1620,10 @@ msgctxt "field:account.tax.code,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+msgctxt "field:account.tax.code,currency:"
+msgid "Currency"
+msgstr "Mata Uang"
+
 msgctxt "field:account.tax.code,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -1492,7 +1654,7 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:account.tax.code,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.tax.code,template_override:"
 msgid "Override Template"
@@ -1516,7 +1678,7 @@ msgstr "Pajak"
 
 msgctxt "field:account.tax.code.line,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.tax.code.line,template_override:"
 msgid "Override Template"
@@ -1664,11 +1826,16 @@ msgstr "Nama"
 
 msgctxt "field:account.tax.rule,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.tax.rule,template_override:"
 msgid "Override Template"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line,end_date:"
+msgid "Ending Date"
+msgstr "Tanggal Berakhir"
 
 msgctxt "field:account.tax.rule.line,group:"
 msgid "Tax Group"
@@ -1686,17 +1853,27 @@ msgctxt "field:account.tax.rule.line,rule:"
 msgid "Rule"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.tax.rule.line,start_date:"
+msgid "Starting Date"
+msgstr "Tanggal Berawal"
+
 msgctxt "field:account.tax.rule.line,tax:"
 msgid "Substitution Tax"
 msgstr ""
 
 msgctxt "field:account.tax.rule.line,template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "field:account.tax.rule.line,template_override:"
 msgid "Override Template"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,end_date:"
+msgid "Ending Date"
+msgstr "Tanggal Berakhir"
 
 msgctxt "field:account.tax.rule.line.template,group:"
 msgid "Tax Group"
@@ -1713,6 +1890,11 @@ msgstr ""
 msgctxt "field:account.tax.rule.line.template,rule:"
 msgid "Rule"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.tax.rule.line.template,start_date:"
+msgid "Starting Date"
+msgstr "Tanggal Berawal"
 
 msgctxt "field:account.tax.rule.line.template,tax:"
 msgid "Substitution Tax"
@@ -1796,7 +1978,7 @@ msgstr "Perbarui Harga Satuan"
 
 msgctxt "field:account.tax.test,currency:"
 msgid "Currency"
-msgstr "Mata uang"
+msgstr "Mata Uang"
 
 msgctxt "field:account.tax.test,quantity:"
 msgid "Quantity"
@@ -1820,7 +2002,7 @@ msgstr ""
 
 msgctxt "field:account.tax.test.result,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.tax.test.result,amount:"
 msgid "Amount"
@@ -2141,7 +2323,7 @@ msgstr ""
 
 msgctxt "model:account.account,name:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "model:account.account-account.tax,name:"
 msgid "Account - Tax"
@@ -2150,6 +2332,11 @@ msgstr ""
 msgctxt "model:account.account.deferral,name:"
 msgid "Account Deferral"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.account.party,name:"
+msgid "Account Party"
+msgstr "Akun utang"
 
 msgctxt "model:account.account.template,name:"
 msgid "Account Template"
@@ -2234,6 +2421,11 @@ msgstr "Akun Buku Besar"
 msgctxt "model:account.general_ledger.account.context,name:"
 msgid "General Ledger Account Context"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:account.general_ledger.account.party,name:"
+msgid "General Ledger Account Party"
+msgstr "Akun Buku Besar"
 
 msgctxt "model:account.general_ledger.line,name:"
 msgid "General Ledger Line"
@@ -2489,7 +2681,7 @@ msgstr "Periode Pembuatan"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "model:ir.action,name:act_fiscalyear_form_close"
 msgid "Close Fiscal Years"
@@ -2498,6 +2690,16 @@ msgstr ""
 msgctxt "model:ir.action,name:act_general_ledger_account_form"
 msgid "General Ledger - Accounts"
 msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_form"
+msgid "General Ledger - Account Parties"
+msgstr "Akun Buku Besar"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_general_ledger_account_party_open"
+msgid "Open General Ledger Account Parties"
+msgstr "Akun Buku Besar"
 
 msgctxt "model:ir.action,name:act_general_ledger_line_form"
 msgid "General Ledger - Lines"
@@ -3056,6 +3258,10 @@ msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account"
 msgid "User in company"
 msgstr "Pengguna di dalam perusahaan"
 
+msgctxt "model:ir.rule.group,name:rule_group_general_ledger_account_party"
+msgid "User in company"
+msgstr "Pengguna di dalam perusahaan"
+
 msgctxt "model:ir.rule.group,name:rule_group_general_ledger_line"
 msgid "User in company"
 msgstr "Pengguna di dalam perusahaan"
@@ -3143,7 +3349,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_charts"
 msgid "Charts"
-msgstr ""
+msgstr "Bagan-bagan"
 
 msgctxt "model:ir.ui.menu,name:menu_close_fiscalyear"
 msgid "Close Fiscal Years"
@@ -3171,11 +3377,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_configuration"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "model:ir.ui.menu,name:menu_fiscalyear_form"
 msgid "Fiscal Years"
-msgstr ""
+msgstr "Tahun Fiskal"
 
 msgctxt "model:ir.ui.menu,name:menu_general_account_configuration"
 msgid "General Account"
@@ -3319,7 +3525,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_account"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "model:res.group,name:group_account_admin"
 msgid "Account Administration"
@@ -3382,10 +3588,6 @@ msgid "Balance"
 msgstr "Saldo"
 
 msgctxt "report:account.general_ledger:"
-msgid "Code"
-msgstr "Kode"
-
-msgctxt "report:account.general_ledger:"
 msgid "Company:"
 msgstr "Perusahaan:"
 
@@ -3439,7 +3641,7 @@ msgstr "Tanggal Cetak:"
 
 msgctxt "report:account.general_ledger:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "report:account.general_ledger:"
 msgid "To"
@@ -3463,7 +3665,7 @@ msgstr "/"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "report:account.move.general_journal:"
 msgid "Company:"
@@ -3531,7 +3733,7 @@ msgstr "/"
 
 msgctxt "report:account.trial_balance:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "report:account.trial_balance:"
 msgid "Company:"
@@ -3563,7 +3765,7 @@ msgstr "Dari Periode:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Print Date:"
-msgstr ""
+msgstr "Tanggal Cetak:"
 
 msgctxt "report:account.trial_balance:"
 msgid "Start Balance"
@@ -3591,11 +3793,11 @@ msgstr ""
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Balance"
-msgstr "Saldo"
+msgstr "Neraca"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Income"
-msgstr "Penghasilan"
+msgstr "Laba Rugi"
 
 msgctxt "selection:account.account.type,statement:"
 msgid "Off-Balance"
@@ -3603,11 +3805,11 @@ msgstr ""
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Balance"
-msgstr "Saldo"
+msgstr "Neraca"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Income"
-msgstr "Penghasilan"
+msgstr "Laba Rugi"
 
 msgctxt "selection:account.account.type.template,statement:"
 msgid "Off-Balance"
@@ -3665,10 +3867,9 @@ msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Monthly"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Other"
-msgstr "Info Lain"
+msgstr "Lainnya"
 
 msgctxt "selection:account.fiscalyear.create_periods.start,frequency:"
 msgid "Quarterly"
@@ -3776,7 +3977,7 @@ msgstr "Buka"
 
 msgctxt "selection:account.period,type:"
 msgid "Adjustment"
-msgstr ""
+msgstr "Penyesuaian"
 
 msgctxt "selection:account.period,type:"
 msgid "Standard"
@@ -4010,7 +4211,7 @@ msgstr "Info Lain"
 
 msgctxt "view:account.move.template:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "view:account.tax.template:"
 msgid "%"
@@ -4029,12 +4230,12 @@ msgid "General Information"
 msgstr "Informasi Umum"
 
 msgctxt "view:account.update_chart.succeed:"
-msgid "Update Chart of Accounts Succeed!"
+msgid "Chart of accounts updated successfully."
 msgstr ""
 
 msgctxt "view:party.party:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "view:party.party:"
 msgid "Accounting"
