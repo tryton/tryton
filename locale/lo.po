@@ -12,6 +12,11 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "ເລກເສດສະກຸນເງິນ"
@@ -134,6 +139,16 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
+
+#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "ວັນທີ:"
@@ -236,6 +251,16 @@ msgstr "ມູນຄ່າ"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "ເລກເສດສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,date:"
@@ -528,7 +553,7 @@ msgstr "ມູນຄ່າ"
 
 #, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy
@@ -583,7 +608,7 @@ msgstr "Statement"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy

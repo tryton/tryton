@@ -10,6 +10,11 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -126,6 +131,16 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "تاریخ"
@@ -209,6 +224,16 @@ msgstr "مقدار"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "شرکت"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "رقم های واحد پول"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -501,8 +526,9 @@ msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "مقدار"
 
+#, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "report:account.statement:"
@@ -545,8 +571,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Statement"
 msgstr "بیانیه"
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:account.statement,state:"

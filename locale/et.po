@@ -10,6 +10,11 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtuse arv"
@@ -126,6 +131,16 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Kuupäev"
@@ -209,6 +224,16 @@ msgstr "Väärtus"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuuta numbriväärtuse arv"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -484,8 +509,9 @@ msgctxt "report:account.statement:"
 msgid "Amount"
 msgstr "Summa"
 
+#, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Tühistatud"
 
 msgctxt "report:account.statement:"
@@ -528,8 +554,9 @@ msgctxt "selection:account.journal,type:"
 msgid "Statement"
 msgstr "Aruanne"
 
+#, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Tühistatud"
 
 msgctxt "selection:account.statement,state:"

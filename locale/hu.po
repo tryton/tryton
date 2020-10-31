@@ -11,6 +11,11 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Társaság"
 
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -141,6 +146,16 @@ msgid "Company"
 msgstr "Társaság"
 
 #, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Pénznem"
+
+#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Dátum"
@@ -237,6 +252,16 @@ msgstr ""
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Társaság"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Pénznem"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,date:"
@@ -526,7 +551,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Mégse"
 
 #, fuzzy
@@ -579,7 +604,7 @@ msgstr "Statement"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Mégse"
 
 #, fuzzy

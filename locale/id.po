@@ -4,11 +4,16 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:account.statement,balance:"
 msgid "Balance"
-msgstr "Saldo"
+msgstr "Neraca"
 
 msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Mata uang"
 
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
@@ -84,7 +89,7 @@ msgstr ""
 
 msgctxt "field:account.statement.journal,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.statement.journal,bank_account:"
 msgid "Bank Account"
@@ -116,7 +121,7 @@ msgstr ""
 
 msgctxt "field:account.statement.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.statement.line,amount:"
 msgid "Amount"
@@ -125,6 +130,16 @@ msgstr "Jumlah"
 msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
 
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
@@ -156,7 +171,7 @@ msgstr "Pihak"
 
 msgctxt "field:account.statement.line,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "field:account.statement.line,statement_state:"
 msgid "Statement State"
@@ -196,11 +211,11 @@ msgstr "Pihak"
 
 msgctxt "field:account.statement.line.group,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "field:account.statement.origin,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.statement.origin,amount:"
 msgid "Amount"
@@ -209,6 +224,16 @@ msgstr "Jumlah"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Mata uang"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -240,7 +265,7 @@ msgstr ""
 
 msgctxt "field:account.statement.origin,statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "field:account.statement.origin,statement_id:"
 msgid "Statement ID"
@@ -320,7 +345,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:report_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "model:ir.action,name:wizard_statement_import"
 msgid "Import Statement"
@@ -474,7 +499,7 @@ msgstr ""
 
 msgctxt "model:res.group,name:group_statement"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "report:account.statement:"
 msgid "#"
@@ -485,8 +510,8 @@ msgid "Amount"
 msgstr "Jumlah"
 
 msgctxt "report:account.statement:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Dibatalkan"
 
 msgctxt "report:account.statement:"
 msgid "Date"
@@ -518,7 +543,7 @@ msgstr "Pihak"
 
 msgctxt "report:account.statement:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "report:account.statement:"
 msgid "Total"
@@ -526,11 +551,11 @@ msgstr "Total"
 
 msgctxt "selection:account.journal,type:"
 msgid "Statement"
-msgstr ""
+msgstr "Pernyataan"
 
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Dibatalkan"
 
 msgctxt "selection:account.statement,state:"
 msgid "Draft"

@@ -13,6 +13,11 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+#, fuzzy
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
@@ -148,6 +153,16 @@ msgid "Company"
 msgstr "Учет.орг."
 
 #, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
+
+#, fuzzy
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Дата"
@@ -250,6 +265,16 @@ msgstr "Сумма"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Учет.орг."
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Валюты"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Кол-во цифр валюты"
 
 #, fuzzy
 msgctxt "field:account.statement.origin,date:"
@@ -542,7 +567,7 @@ msgstr "Сумма"
 
 #, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Отменено"
 
 #, fuzzy
@@ -597,7 +622,7 @@ msgstr "Statement"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Отменено"
 
 #, fuzzy

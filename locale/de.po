@@ -10,6 +10,10 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Währung"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Nachkommastellen Währung"
@@ -126,6 +130,14 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Unternehmen"
 
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Datum"
@@ -209,6 +221,14 @@ msgstr "Betrag"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Unternehmen"
+
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Währung"
+
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Nachkommastellen Währung"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -508,7 +528,7 @@ msgid "Amount"
 msgstr "Betrag"
 
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "report:account.statement:"
@@ -552,7 +572,7 @@ msgid "Statement"
 msgstr "Kontoauszug"
 
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:account.statement,state:"

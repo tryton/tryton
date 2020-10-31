@@ -10,6 +10,11 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valiutos skaitmenų skaičius"
@@ -130,6 +135,16 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr ""
@@ -217,6 +232,16 @@ msgstr ""
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Organizacija"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
+#, fuzzy
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valiutos skaitmenų skaičius"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -434,11 +459,11 @@ msgstr "Post"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
-msgstr "Reconcile"
+msgstr "Sudengti"
 
 msgctxt "model:ir.model.button,string:statement_validate_button"
 msgid "Validate"
-msgstr "Validate"
+msgstr "Patvirtinti"
 
 msgctxt "model:ir.rule.group,name:rule_group_line_group"
 msgid "User in statement's company"
@@ -499,7 +524,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel"
 
 msgctxt "report:account.statement:"
@@ -547,7 +572,7 @@ msgstr "Statement"
 
 #, fuzzy
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel"
 
 #, fuzzy

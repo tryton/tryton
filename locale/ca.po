@@ -10,6 +10,10 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Decimals de la moneda"
@@ -126,6 +130,14 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Empresa"
 
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Data"
@@ -209,6 +221,14 @@ msgstr "Import"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Empresa"
+
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimals de la moneda"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -498,7 +518,7 @@ msgid "Amount"
 msgstr "Import"
 
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel·lat"
 
 msgctxt "report:account.statement:"
@@ -542,7 +562,7 @@ msgid "Statement"
 msgstr "Extracte"
 
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel·lat"
 
 msgctxt "selection:account.statement,state:"

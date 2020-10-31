@@ -10,6 +10,10 @@ msgctxt "field:account.statement,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:account.statement,currency:"
+msgid "Currency"
+msgstr "Devise"
+
 msgctxt "field:account.statement,currency_digits:"
 msgid "Currency Digits"
 msgstr "Décimales de la devise"
@@ -126,6 +130,14 @@ msgctxt "field:account.statement.line,company:"
 msgid "Company"
 msgstr "Société"
 
+msgctxt "field:account.statement.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.line,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
+
 msgctxt "field:account.statement.line,date:"
 msgid "Date"
 msgstr "Date"
@@ -209,6 +221,14 @@ msgstr "Montant"
 msgctxt "field:account.statement.origin,company:"
 msgid "Company"
 msgstr "Société"
+
+msgctxt "field:account.statement.origin,currency:"
+msgid "Currency"
+msgstr "Devise"
+
+msgctxt "field:account.statement.origin,currency_digits:"
+msgid "Currency Digits"
+msgstr "Décimales de la devise"
 
 msgctxt "field:account.statement.origin,date:"
 msgid "Date"
@@ -433,7 +453,7 @@ msgstr "Brouillon"
 
 msgctxt "model:ir.model.button,string:statement_post_button"
 msgid "Post"
-msgstr "Post"
+msgstr "Poster"
 
 msgctxt "model:ir.model.button,string:statement_reconcile_button"
 msgid "Reconcile"
@@ -500,7 +520,7 @@ msgid "Amount"
 msgstr "Montant"
 
 msgctxt "report:account.statement:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulé"
 
 msgctxt "report:account.statement:"
@@ -544,7 +564,7 @@ msgid "Statement"
 msgstr "Relevé"
 
 msgctxt "selection:account.statement,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulé"
 
 msgctxt "selection:account.statement,state:"
