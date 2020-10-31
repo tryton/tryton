@@ -26,10 +26,9 @@ msgctxt "model:ir.action,name:act_purchase_request_form"
 msgid "Purchase Requests"
 msgstr ""
 
-#, fuzzy
 msgctxt "selection:sale.line,supply_state:"
 msgid "Cancelled"
-msgstr "Batal"
+msgstr "Dibatalkan"
 
 msgctxt "selection:sale.line,supply_state:"
 msgid "Requested"
