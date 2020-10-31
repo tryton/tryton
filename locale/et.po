@@ -134,6 +134,11 @@ msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "Ettevõte"
 
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Kirjeldus"
@@ -509,6 +514,11 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "Tarned"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "Tarne kuupäev"
+
 msgctxt "field:sale.sale,state:"
 msgid "State"
 msgstr "Olek"
@@ -575,6 +585,10 @@ msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr "Valitud arved taasluuakse. Teisi ignoreeritakse."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -703,6 +717,12 @@ msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
 msgid "Draft"
 msgstr "Mustand"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Erand"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
@@ -778,6 +798,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "Ettevõte"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Valuuta"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1159,8 +1184,9 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr "Ootel"
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Tühistatud"
 
 msgctxt "selection:sale.sale,state:"
@@ -1199,12 +1225,14 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Kliendid"
 
+#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Vali arved taasloomiseks"
 
+#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Vali kanne taasloomiseks"
 
 msgctxt "view:sale.line:"
@@ -1220,7 +1248,7 @@ msgid "Taxes"
 msgstr "Maksud"
 
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr ""
 
 msgctxt "view:sale.sale:"

@@ -138,6 +138,11 @@ msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
 
 #, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
+
+#, fuzzy
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "ເນື້ອໃນລາຍການ"
@@ -553,6 +558,10 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "Shipments"
 
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:sale.sale,state:"
 msgid "State"
@@ -628,6 +637,10 @@ msgstr ""
 msgctxt "help:sale.handle.invoice.exception.ask,recreate_invoices:"
 msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
+msgstr ""
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
 msgstr ""
 
 #, fuzzy
@@ -768,6 +781,12 @@ msgstr "ຮ່າງກຽມ"
 
 #, fuzzy
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "ສະຖານະຍົກເວັ້ນ"
+
+#, fuzzy
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
 msgstr "ກຳລັງດຳເນີນການ"
@@ -840,6 +859,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "ຫ້ອງການ/ສຳນັກງານ"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "ສະກຸນເງິນ"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1251,7 +1275,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy
@@ -1299,11 +1323,11 @@ msgid "Customers"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr ""
 
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr ""
 
 #, fuzzy
@@ -1322,7 +1346,7 @@ msgid "Taxes"
 msgstr "ອາກອນ"
 
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr ""
 
 #, fuzzy

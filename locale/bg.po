@@ -139,6 +139,11 @@ msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "Фирма"
 
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Валута"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Описание"
@@ -530,6 +535,11 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "Изпращания"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "Състояние на пратка"
+
 msgctxt "field:sale.sale,state:"
 msgid "State"
 msgstr "Състояние"
@@ -597,6 +607,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 "Избраните фактури ще бъдат наново създадени. Останалите ще бъдат игнорирани."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_invoice_form"
@@ -742,6 +756,12 @@ msgstr "Проект"
 
 #, fuzzy
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Грешка"
+
+#, fuzzy
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
 msgstr "Обработване"
@@ -815,6 +835,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "Фирма"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Валута"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1204,8 +1229,9 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr "Изчакващ"
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Отказан"
 
 msgctxt "selection:sale.sale,state:"
@@ -1245,12 +1271,14 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Клиенти"
 
+#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Избор на фактури за ново създаване"
 
+#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Избор на движение за ново създаване"
 
 msgctxt "view:sale.line:"
@@ -1266,7 +1294,7 @@ msgid "Taxes"
 msgstr "Данъци"
 
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr ""
 
 msgctxt "view:sale.sale:"

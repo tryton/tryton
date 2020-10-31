@@ -132,6 +132,11 @@ msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "Perusahaan"
 
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Deskripsi"
@@ -286,7 +291,7 @@ msgstr "Perusahaan"
 
 msgctxt "field:sale.reporting.context,from_date:"
 msgid "From Date"
-msgstr ""
+msgstr "Dari Tanggal"
 
 msgctxt "field:sale.reporting.context,period:"
 msgid "Period"
@@ -432,11 +437,11 @@ msgstr "Status Faktur"
 
 msgctxt "field:sale.sale,invoices:"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "field:sale.sale,invoices_ignored:"
 msgid "Ignored Invoices"
-msgstr ""
+msgstr "Faktur-faktur yang Diabaikan"
 
 msgctxt "field:sale.sale,invoices_recreated:"
 msgid "Recreated Invoices"
@@ -468,11 +473,11 @@ msgstr ""
 
 msgctxt "field:sale.sale,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Masa Pembayaran"
 
 msgctxt "field:sale.sale,quoted_by:"
 msgid "Quoted By"
-msgstr ""
+msgstr "Dikutip Oleh"
 
 msgctxt "field:sale.sale,reference:"
 msgid "Reference"
@@ -506,9 +511,13 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr ""
 
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr ""
+
 msgctxt "field:sale.sale,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.sale,tax_amount:"
 msgid "Tax"
@@ -573,9 +582,13 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
+
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.action,name:act_open_customer"
 msgid "Parties associated to Sales"
@@ -701,6 +714,11 @@ msgid "Draft"
 msgstr "Rancangan"
 
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr ""
+
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
 msgstr ""
@@ -772,6 +790,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "Perusahaan"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Mata uang"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1149,9 +1172,10 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:sale.sale,state:"
 msgid "Confirmed"
@@ -1190,11 +1214,11 @@ msgid "Customers"
 msgstr ""
 
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr ""
 
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr ""
 
 msgctxt "view:sale.line:"
@@ -1210,7 +1234,7 @@ msgid "Taxes"
 msgstr ""
 
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr ""
 
 msgctxt "view:sale.sale:"

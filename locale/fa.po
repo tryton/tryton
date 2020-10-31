@@ -134,6 +134,11 @@ msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "شرکت"
 
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "شرح"
@@ -509,6 +514,11 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "محموله ها"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "تاریخ ارسال"
+
 msgctxt "field:sale.sale,state:"
 msgid "State"
 msgstr "وضعیت"
@@ -578,6 +588,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 "صورتحساب های انتخاب شده دوباره ایجاد خواهند شد، مابقی نادیده گرفته میشوند."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -706,6 +720,12 @@ msgctxt "model:ir.action.act_window.domain,name:act_sale_form_domain_draft"
 msgid "Draft"
 msgstr "پیش‌نویس"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "اعتراض"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
@@ -799,6 +819,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "شرکت"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "واحد پول"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1184,8 +1209,9 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr "در انتظار"
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:sale.sale,state:"
@@ -1224,12 +1250,14 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "مشتریان"
 
+#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "انتخاب صورتحساب ها برای ایجاد دوباره"
 
+#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "انتخاب جابجایی برای ایجاد دوباره"
 
 msgctxt "view:sale.line:"
@@ -1244,8 +1272,9 @@ msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "مالیات ها"
 
+#, fuzzy
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr "آیا شما برای برگشت این فروش(ها) اطمینان دارید؟"
 
 msgctxt "view:sale.sale:"

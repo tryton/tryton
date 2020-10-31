@@ -136,6 +136,11 @@ msgctxt "field:sale.line,company:"
 msgid "Company"
 msgstr "Azienda"
 
+#, fuzzy
+msgctxt "field:sale.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:sale.line,description:"
 msgid "Description"
 msgstr "Descrizione"
@@ -520,6 +525,11 @@ msgctxt "field:sale.sale,shipments:"
 msgid "Shipments"
 msgstr "Spedizioni"
 
+#, fuzzy
+msgctxt "field:sale.sale,shipping_date:"
+msgid "Shipping Date"
+msgstr "data di spedizione"
+
 msgctxt "field:sale.sale,state:"
 msgid "State"
 msgstr "Stato"
@@ -589,6 +599,10 @@ msgid ""
 "The selected invoices will be recreated. The other ones will be ignored."
 msgstr ""
 "Le fatture selezionate verranno ricreate. Le altre verranno tralasciate."
+
+msgctxt "help:sale.sale,shipping_date:"
+msgid "When the shipping of goods should start."
+msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
@@ -732,6 +746,12 @@ msgstr "Draft"
 
 #, fuzzy
 msgctxt ""
+"model:ir.action.act_window.domain,name:act_sale_form_domain_exception"
+msgid "Exception"
+msgstr "Eccezione"
+
+#, fuzzy
+msgctxt ""
 "model:ir.action.act_window.domain,name:act_sale_form_domain_processing"
 msgid "Processing"
 msgstr "Processing"
@@ -805,6 +825,11 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_sale_reporting_company"
 msgid "Company"
 msgstr "Azienda"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_sale_reporting_currency"
+msgid "Currency"
+msgstr "Valuta"
 
 #, fuzzy
 msgctxt "model:ir.message,text:msg_sale_reporting_currency_digits"
@@ -1190,8 +1215,9 @@ msgctxt "selection:sale.sale,shipment_state:"
 msgid "Waiting"
 msgstr "In attesa"
 
+#, fuzzy
 msgctxt "selection:sale.sale,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annullato"
 
 msgctxt "selection:sale.sale,state:"
@@ -1230,12 +1256,14 @@ msgctxt "view:product.template:"
 msgid "Customers"
 msgstr "Clienti"
 
+#, fuzzy
 msgctxt "view:sale.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Selezionare le fatture da ricreare"
 
+#, fuzzy
 msgctxt "view:sale.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Selezionare i movimenti da ricreare"
 
 msgctxt "view:sale.line:"
@@ -1250,8 +1278,9 @@ msgctxt "view:sale.line:"
 msgid "Taxes"
 msgstr "Imposte"
 
+#, fuzzy
 msgctxt "view:sale.return_sale.start:"
-msgid "Are you sure to return those/this sale(s)?"
+msgid "Are you sure to return these/this sale(s)?"
 msgstr "Confermi il reso su queste/questa vendite/a?"
 
 msgctxt "view:sale.sale:"
