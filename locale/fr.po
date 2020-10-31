@@ -28,7 +28,7 @@ msgstr "Destinataires cachés"
 
 msgctxt "field:account.dunning.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
-msgstr "Destinataires secondaire"
+msgstr "Destinataires secondaires"
 
 msgctxt "field:account.dunning.level,email_contact_mechanism:"
 msgid "Contact Mechanism"

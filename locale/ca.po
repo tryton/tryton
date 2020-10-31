@@ -60,7 +60,8 @@ msgstr ""
 
 msgctxt "help:account.dunning.level,email_from:"
 msgid "Leave empty for the value defined in the configuration file."
-msgstr "Deixeu-ho en blanc per utilitzar el valor definit a la configuració."
+msgstr ""
+"Deixeu en blanc per a utilitzar el valor definit al fitxer de configuració."
 
 msgctxt "model:account.dunning.email.log,name:"
 msgid "Dunning Email Log"
