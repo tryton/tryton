@@ -72,6 +72,11 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
+#, fuzzy
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "شرح"
@@ -230,8 +235,9 @@ msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
 msgstr "تصویب شده"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:purchase.requisition,state:"

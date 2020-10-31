@@ -70,6 +70,10 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Import"
 
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Descripció"
@@ -227,7 +231,7 @@ msgid "Approved"
 msgstr "Aprovada"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel·lada"
 
 msgctxt "selection:purchase.requisition,state:"

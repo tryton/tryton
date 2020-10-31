@@ -48,7 +48,7 @@ msgstr ""
 
 msgctxt "field:purchase.requisition,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:purchase.requisition,supply_date:"
 msgid "Supply Date"
@@ -69,6 +69,11 @@ msgstr "Gudang"
 msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Jumlah"
+
+#, fuzzy
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
 
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
@@ -226,9 +231,10 @@ msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Batal"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Done"

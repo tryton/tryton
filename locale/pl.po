@@ -74,6 +74,11 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Opis"
@@ -237,8 +242,9 @@ msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
 msgstr "Zatwierdzono"
 
+#, fuzzy
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Anulowano"
 
 msgctxt "selection:purchase.requisition,state:"

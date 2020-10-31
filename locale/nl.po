@@ -70,6 +70,10 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Bedrag"
 
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -148,7 +152,7 @@ msgstr "In afwachting"
 
 msgctxt "model:ir.message,text:msg_delete_cancel"
 msgid "To delete requisition \"%(requisition)s\" you must cancel it."
-msgstr "Om aanvraag \"%(requisition)s\"  te verwijderen, moet u deze annuleren."
+msgstr "Om aanvraag \"%(requisition)s\" te verwijderen, moet u deze annuleren."
 
 msgctxt "model:ir.message,text:msg_warehouse_required"
 msgid "A warehouse must be defined for requisition \"%(requisition)s\"."
@@ -229,7 +233,7 @@ msgid "Approved"
 msgstr "Goedgekeurd"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:purchase.requisition,state:"

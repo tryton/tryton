@@ -70,6 +70,10 @@ msgctxt "field:purchase.requisition.line,amount:"
 msgid "Amount"
 msgstr "Betrag"
 
+msgctxt "field:purchase.requisition.line,currency:"
+msgid "Currency"
+msgstr "Währung"
+
 msgctxt "field:purchase.requisition.line,description:"
 msgid "Description"
 msgstr "Beschreibung"
@@ -224,14 +228,14 @@ msgstr "Bestellanforderung"
 
 msgctxt "model:res.group,name:group_purchase_requisition_approval"
 msgid "Purchase Requisition Approval"
-msgstr "Genehmigung Bestellanforderung"
+msgstr "Bestellanforderung genehmigen"
 
 msgctxt "selection:purchase.requisition,state:"
 msgid "Approved"
 msgstr "Genehmigt"
 
 msgctxt "selection:purchase.requisition,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:purchase.requisition,state:"
