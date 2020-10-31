@@ -18,6 +18,11 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "UDM Calculada"
 
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Dígitos Decimais Padrões da UDM"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Dígitos Decimais Padrões da UDM"
@@ -201,8 +206,9 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "Purchase Request"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Cancelar"
 
 msgctxt "selection:purchase.request,state:"

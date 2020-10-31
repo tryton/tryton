@@ -18,6 +18,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr ""
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
@@ -69,7 +73,7 @@ msgstr ""
 
 msgctxt "field:purchase.request,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
@@ -189,8 +193,9 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Batal"
 
 msgctxt "selection:purchase.request,state:"

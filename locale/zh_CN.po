@@ -18,6 +18,11 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "计算计量单位"
 
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "默认计量单位有效数字"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "默认计量单位有效数字"
@@ -36,7 +41,7 @@ msgstr "起源"
 
 msgctxt "field:purchase.request,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:purchase.request,product:"
 msgid "Product"
@@ -191,8 +196,9 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "采购申请"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "取消"
 
 msgctxt "selection:purchase.request,state:"

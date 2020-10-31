@@ -19,6 +19,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr ""
 
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr ""
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr ""
@@ -213,7 +217,7 @@ msgstr "Запрос на покупку"
 
 #, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Отменить"
 
 #, fuzzy

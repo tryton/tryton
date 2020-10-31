@@ -18,6 +18,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Berechnete Maßeinheit"
 
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Standardeinheit"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Standardmaßeinheit Nachkommastellen"
@@ -52,7 +56,7 @@ msgstr "Einkauf"
 
 msgctxt "field:purchase.request,purchase_date:"
 msgid "Best Purchase Date"
-msgstr "Bestes Einkaufsdatum"
+msgstr "Optimales Bestelldatum"
 
 msgctxt "field:purchase.request,purchase_line:"
 msgid "Purchase Line"
@@ -72,11 +76,11 @@ msgstr "Status"
 
 msgctxt "field:purchase.request,stock_level:"
 msgid "Stock at Supply Date"
-msgstr "Bestand bei Beschaffungsdatum"
+msgstr "Lagerbestand zum Anlieferungstermin"
 
 msgctxt "field:purchase.request,supply_date:"
 msgid "Expected Supply Date"
-msgstr "Erwartetes Beschaffungsdatum"
+msgstr "Voraussichtliches Anlieferungsdatum"
 
 msgctxt "field:purchase.request,uom:"
 msgid "UOM"
@@ -196,7 +200,7 @@ msgid "Purchase Request"
 msgstr "Bestellvorschlag"
 
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:purchase.request,state:"

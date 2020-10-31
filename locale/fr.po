@@ -18,6 +18,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "UDM calculée"
 
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "UDM par défaut"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Décimales d'UDM par défaut"
@@ -196,8 +200,8 @@ msgid "Purchase Request"
 msgstr "Demande d'achat"
 
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
-msgstr "Annuler"
+msgid "Cancelled"
+msgstr "Annulée"
 
 msgctxt "selection:purchase.request,state:"
 msgid "Done"

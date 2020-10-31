@@ -18,6 +18,11 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "واحد اندازی گیری محاسبه شده"
 
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "ارقام واحد اندازه گیری پیش فرض"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "ارقام واحد اندازه گیری پیش فرض"
@@ -195,8 +200,9 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "درخواست خرید"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "انصراف"
 
 msgctxt "selection:purchase.request,state:"

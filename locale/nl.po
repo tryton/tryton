@@ -18,6 +18,10 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Berekende maateenheid"
 
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Standaard maateenheid"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "standaard maateenheid decimalen"
@@ -151,7 +155,7 @@ msgid ""
 "different to warehouse \"%(request_warehouse)s\" on linked purchase request "
 "\"%(request)s\"."
 msgstr ""
-"Magazijn \"%(purchase_warehouse)s\" bij aankoop  \"%(purchase)s\"verschilt "
+"Magazijn \"%(purchase_warehouse)s\" bij aankoop \"%(purchase)s\"verschilt "
 "van magazijn \"%(request_warehouse)s\" bij gekoppeld inkoopverzoek "
 "\"%(request)s\"."
 
@@ -196,7 +200,7 @@ msgid "Purchase Request"
 msgstr "Aankoopverzoek"
 
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Annuleer"
 
 msgctxt "selection:purchase.request,state:"

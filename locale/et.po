@@ -18,6 +18,11 @@ msgctxt "field:purchase.request,computed_uom:"
 msgid "Computed UOM"
 msgstr "Arvutatud ühik"
 
+#, fuzzy
+msgctxt "field:purchase.request,default_uom:"
+msgid "Default UOM"
+msgstr "Vaikimisi mõõtühiku numbriväärtus"
+
 msgctxt "field:purchase.request,default_uom_digits:"
 msgid "Default UOM Digits"
 msgstr "Vaikimisi mõõtühiku numbriväärtus"
@@ -189,8 +194,9 @@ msgctxt "model:res.group,name:group_purchase_request"
 msgid "Purchase Request"
 msgstr "Hankesoov"
 
+#, fuzzy
 msgctxt "selection:purchase.request,state:"
-msgid "Cancel"
+msgid "Cancelled"
 msgstr "Tühista"
 
 msgctxt "selection:purchase.request,state:"
