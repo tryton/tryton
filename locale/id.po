@@ -292,15 +292,15 @@ msgstr "Kategori"
 
 msgctxt "selection:product-customs.tariff.code,product:"
 msgid "Template"
-msgstr ""
+msgstr "Templat"
 
 msgctxt "view:customs.duty.rate:"
 msgid "Computation"
-msgstr ""
+msgstr "Perhitungan"
 
 msgctxt "view:customs.tariff.code:"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
 msgctxt "view:customs.tariff.code:"
 msgid "To"
