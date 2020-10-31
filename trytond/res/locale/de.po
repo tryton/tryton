@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "Aktion"
@@ -9,6 +13,26 @@ msgstr "Aktion"
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "Gruppe"
+
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Gruppen"
+
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Gruppen"
 
 msgctxt "field:ir.export,groups:"
 msgid "Groups"
@@ -436,6 +460,10 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr "Beliebige Suchansicht"
 
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr "Allgemeine Filterlesezeichen"
+
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr "Gruppenregel - Gruppe"
@@ -497,40 +525,26 @@ msgid "User Warning"
 msgstr "Benutzer Warnung"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid ", has been reset."
-msgstr ", wurde zurückgesetzt."
-
-msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password for your account,"
-msgstr "Das Passwort für Ihr Konto,"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
+"Das Passwort für Ihr Konto, [1:%(login)s], wurde zurückgesetzt.[2:]\n"
+"                Sie müssen ein neues über die Benutzereinstellungen vergeben.[3:]\n"
+"                Sie können sich mit diesem temporären Passwort [4:%(password)s] verbinden mit[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at"
-msgstr "Das Passwort wird ablaufen am"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "UTC"
-msgstr "UTC"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You can connect with this temporary password"
-msgstr "Sie können sich mit diesem temporären Passwort anmelden"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You must set a new one from the user's preferences."
-msgstr "Sie müssen ein neues in den Benutzer-Einstellungen eingeben."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "to"
-msgstr "an"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "tryton://"
-msgstr "tryton://"
+msgid "The password will expire at [1:%(datetime)s UTC]."
+msgstr "Das Passwort wird um [1:%(datetime)s UTC] ablaufen."
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

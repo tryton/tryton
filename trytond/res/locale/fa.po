@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "اقدام"
@@ -9,6 +14,31 @@ msgstr "اقدام"
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "گروه"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "گروه ها"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "گروه ها"
 
 #, fuzzy
 msgctxt "field:ir.export,groups:"
@@ -443,6 +473,10 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr ""
+
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr "گروه قانون - گروه"
@@ -504,40 +538,22 @@ msgid "User Warning"
 msgstr "هشدار کاربر"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid ", has been reset."
-msgstr "، تنظیم مجدد شد."
-
-msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "بازنشانی کلمه عبور"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password for your account,"
-msgstr "کلمه عبورحساب کاربری شما،"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at"
+msgid "The password will expire at [1:%(datetime)s UTC]."
 msgstr "کلمه عبور شما منقضی میشود در"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "UTC"
-msgstr "UTC"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You can connect with this temporary password"
-msgstr "شما می توانید با این کلمه عبور موقت ارتباط برقرار کنید"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You must set a new one from the user's preferences."
-msgstr "شما باید یک تزئین جدید برای ظاهرمحیط کاربری خود تنظیم کنید."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "to"
-msgstr "به"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "tryton://"
-msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

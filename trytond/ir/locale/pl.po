@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Grupy"
-
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -57,10 +53,6 @@ msgstr "Wartość domeny"
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
 msgstr "Domeny"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Grupy"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
@@ -146,10 +138,6 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "Akcja"
 
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Grupy"
-
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "Słowo kluczowe"
@@ -166,17 +154,9 @@ msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
 msgstr "Druk bezpośredni"
 
-msgctxt "field:ir.action.report,email:"
-msgid "Email"
-msgstr "E-mail"
-
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
 msgstr "Rozszerzenie"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Grupy"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
@@ -201,10 +181,6 @@ msgstr "Moduł"
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Nazwa"
-
-msgctxt "field:ir.action.report,pyson_email:"
-msgid "PySON Email"
-msgstr "E-mail PySON"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -254,10 +230,6 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "Akcja"
 
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Grupy"
-
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "Ikona"
@@ -285,14 +257,6 @@ msgstr "Użycie"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "Akcja"
-
-msgctxt "field:ir.action.wizard,email:"
-msgid "Email"
-msgstr "E-mail"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Grupy"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -326,14 +290,13 @@ msgctxt "field:ir.action.wizard,wiz_name:"
 msgid "Wizard name"
 msgstr "Nazwa kreatora"
 
-#, fuzzy
 msgctxt "field:ir.attachment,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Zasób"
+msgstr "Skopiuj do zasobów"
 
 msgctxt "field:ir.attachment,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Kopiuj do widocznych zasobów"
 
 msgctxt "field:ir.attachment,data:"
 msgid "Data"
@@ -433,7 +396,7 @@ msgstr "Interwał"
 
 msgctxt "field:ir.cron,interval_type:"
 msgid "Interval Type"
-msgstr ""
+msgstr "Typ interwału"
 
 msgctxt "field:ir.cron,method:"
 msgid "Method"
@@ -450,6 +413,106 @@ msgstr "Kolejne wywołanie"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Dzień tygodnia"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr "Adresy"
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "W"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr "Treść"
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Zasób"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr "Temat"
+
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Użytkownik"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr "Adres"
+
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "E-mail"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr "Treść"
+
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Model"
+
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Nazwa modelu"
+
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Nazwa"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr "Ukryci odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr "Odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr "Dodatkowi odbiorcy"
+
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Raporty"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr "Temat"
+
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Raport"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Szablon"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -541,7 +604,7 @@ msgstr "Pozycja znaku dodatniego"
 
 msgctxt "field:ir.lang,parent:"
 msgid "Parent Code"
-msgstr ""
+msgstr "Kod elementu nadrzędnego"
 
 msgctxt "field:ir.lang,pm:"
 msgid "PM"
@@ -559,7 +622,6 @@ msgctxt "field:ir.lang,translatable:"
 msgid "Translatable"
 msgstr "Przetłumaczalny"
 
-#, fuzzy
 msgctxt "field:ir.lang.config.start,languages:"
 msgid "Languages"
 msgstr "Języki"
@@ -840,14 +902,13 @@ msgctxt "field:ir.module.dependency,state:"
 msgid "State"
 msgstr "Stan"
 
-#, fuzzy
 msgctxt "field:ir.note,copy_to_resources:"
 msgid "Copy to Resources"
-msgstr "Zasób"
+msgstr "Skopiuj do zasobów"
 
 msgctxt "field:ir.note,copy_to_resources_visible:"
 msgid "Copy to Resources Visible"
-msgstr ""
+msgstr "Kopiuj do widocznych zasobów"
 
 msgctxt "field:ir.note,last_modification:"
 msgid "Last Modification"
@@ -887,19 +948,19 @@ msgstr "Dane"
 
 msgctxt "field:ir.queue,dequeued_at:"
 msgid "Dequeued at"
-msgstr ""
+msgstr "Usunięto z kolejki o"
 
 msgctxt "field:ir.queue,enqueued_at:"
 msgid "Enqueued at"
-msgstr ""
+msgstr "Dodano do kolejki o"
 
 msgctxt "field:ir.queue,expected_at:"
 msgid "Expected at"
-msgstr ""
+msgstr "Oczekiwany o"
 
 msgctxt "field:ir.queue,finished_at:"
 msgid "Finished at"
-msgstr ""
+msgstr "Ukończony o"
 
 msgctxt "field:ir.queue,name:"
 msgid "Name"
@@ -907,7 +968,7 @@ msgstr "Nazwa"
 
 msgctxt "field:ir.queue,scheduled_at:"
 msgid "Scheduled at"
-msgstr ""
+msgstr "Zaplanowany na"
 
 msgctxt "field:ir.rule,domain:"
 msgid "Domain"
@@ -1113,17 +1174,14 @@ msgctxt "field:ir.translation.export.result,file:"
 msgid "File"
 msgstr "Plik"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,filename:"
 msgid "Filename"
-msgstr "Plik"
+msgstr "Nazwa pliku"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,language:"
 msgid "Language"
 msgstr "Język"
 
-#, fuzzy
 msgctxt "field:ir.translation.export.result,module:"
 msgid "Module"
 msgstr "Moduł"
@@ -1140,7 +1198,6 @@ msgctxt "field:ir.translation.update.start,language:"
 msgid "Language"
 msgstr "Język"
 
-#, fuzzy
 msgctxt "field:ir.trigger,action:"
 msgid "Action"
 msgstr "Akcja"
@@ -1357,14 +1414,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
 msgstr "Domyślne kryteria wyszukiwania dla widoku listy."
 
-msgctxt "help:ir.action.report,email:"
-msgid ""
-"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
-"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-msgstr ""
-"Słownik pythonowy z kluczami \"to\" \"cc\" \"subject\"\n"
-"Przykład: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
@@ -1385,13 +1434,49 @@ msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
 msgstr "Uruchom kreatora w nowym oknie."
 
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "Pole zawierające odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Pole zawierające dodatkowego odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę ukrytych odbiorców reprezentujących rekord "
+"przez „self”."
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę odbiorców z rekordem reprezentowanym przez "
+"„self”."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "Pole zawierające dodatkowego odbiorcę(ów)."
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Wyrażenie PYSON generujące listę dodatkowych odbiorców z rekordem "
+"reprezentowanym przez „self”."
+
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 msgstr "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
 
 msgctxt "help:ir.lang,parent:"
 msgid "Code of the exceptional parent"
-msgstr ""
+msgstr "Kod elementu nadrzędnego powodującego wyjątek"
 
 msgctxt "help:ir.model,module:"
 msgid "Module in which this model is defined."
@@ -1465,6 +1550,8 @@ msgstr ""
 msgctxt "help:ir.rule.group,name:"
 msgid "Displayed to users when access error is raised for this rule."
 msgstr ""
+"Wyświetlane użytkownikom, gdy dla tej reguły zostanie zgłoszony błąd "
+"dostępu."
 
 msgctxt "help:ir.rule.group,rules:"
 msgid "The rule is satisfied if at least one test is True."
@@ -1535,6 +1622,18 @@ msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
 msgstr "Zaplanowane akcje"
 
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "E-mail"
+
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mails"
+msgstr "E-maile"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr "Szablony e-maili"
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr "Wyeksportowania"
@@ -1543,10 +1642,9 @@ msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
 msgstr "Ikony"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_lang_config"
 msgid "Configure Languages"
-msgstr "Skonfiguruj moduły"
+msgstr "Skonfiguruj języki"
 
 msgctxt "model:ir.action,name:act_lang_form"
 msgid "Languages"
@@ -1928,6 +2026,22 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Data"
 
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "E-mail"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr "Adres e-mail"
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr "Szablon e-maili"
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr "Szablon e-maili - Raport"
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Eksport"
@@ -1970,7 +2084,7 @@ msgstr "Hiszpański (Ameryka Łacińska)"
 
 msgctxt "model:ir.lang,name:lang_et"
 msgid "Estonian"
-msgstr ""
+msgstr "Estoński"
 
 msgctxt "model:ir.lang,name:lang_fa"
 msgid "Persian"
@@ -1978,7 +2092,7 @@ msgstr "Perski"
 
 msgctxt "model:ir.lang,name:lang_fi"
 msgid "Finnish"
-msgstr ""
+msgstr "Fiński"
 
 msgctxt "model:ir.lang,name:lang_fr"
 msgid "French"
@@ -1990,7 +2104,7 @@ msgstr "Węgierski"
 
 msgctxt "model:ir.lang,name:lang_id"
 msgid "Indonesian"
-msgstr ""
+msgstr "Indonezyjski"
 
 msgctxt "model:ir.lang,name:lang_it"
 msgid "Italian"
@@ -2014,7 +2128,7 @@ msgstr "Polski"
 
 msgctxt "model:ir.lang,name:lang_pt"
 msgid "Portuguese"
-msgstr ""
+msgstr "Portugalski"
 
 msgctxt "model:ir.lang,name:lang_ru"
 msgid "Russian"
@@ -2026,16 +2140,15 @@ msgstr "Słoweński"
 
 msgctxt "model:ir.lang,name:lang_tr"
 msgid "Turkish"
-msgstr ""
+msgstr "Turecki"
 
 msgctxt "model:ir.lang,name:lang_zh_CN"
 msgid "Chinese Simplified"
 msgstr "Chiński uproszczony"
 
-#, fuzzy
 msgctxt "model:ir.lang.config.start,name:"
 msgid "Language Configuration Start"
-msgstr "Konfiguracja modułu"
+msgstr "Rozpoczęcie konfiguracji języka"
 
 msgctxt "model:ir.message,name:"
 msgid "Message"
@@ -2048,14 +2161,26 @@ msgstr "ID"
 msgctxt "model:ir.message,text:msg_access_button_error"
 msgid "Calling button \"%(button)s on \"%(model)s\" is not allowed."
 msgstr ""
+"Uruchomienie przycisku \"%(button)s\" w modelu \"%(model)s\" jest "
+"niedozwolone."
 
 msgctxt "model:ir.message,text:msg_access_rule_error"
 msgid "You are not allowed to access \"%(model)s\"."
-msgstr ""
+msgstr "Nie masz dostępu do \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
+msgstr "Nie masz dostępu do \"%(model)s.%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
 msgstr ""
+"Nie masz uprawnień do uruchomienia kreatora \"%(wizard)s\" w modelu "
+"\"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
@@ -2071,10 +2196,9 @@ msgctxt "model:ir.message,text:msg_action_invalid_views"
 msgid "Invalid view \"%(view)s\" for action \"%(action)s\"."
 msgstr "Nieprawidłowy widok \"%(view)s\" dla akcji \"%(action)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_action_wrong_wizard_model"
 msgid "Wrong wizard model in keyword action \"%(name)s\"."
-msgstr "Nieprawidłowy model kreatora w akcji \"%s\" dot. słów kluczowych."
+msgstr "Nieprawidłowy model kreatora w akcji \"%(name)s\" dot. słów kluczowych."
 
 msgctxt "model:ir.message,text:msg_active"
 msgid "Active"
@@ -2084,7 +2208,6 @@ msgctxt "model:ir.message,text:msg_active_help"
 msgid "Uncheck to exclude from future use."
 msgstr "Odznacz, aby nie używać w przyszłości."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_attachments"
 msgid "Attachments"
 msgstr "Załączniki"
@@ -2098,6 +2221,8 @@ msgid ""
 "You are not allowed to create records of \"%(model)s\" because they fail on at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
+"Nie masz uprawnień do utworzenia rekordów w \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
+"%(rules)s"
 
 msgctxt "model:ir.message,text:msg_created_at"
 msgid "Created at"
@@ -2112,6 +2237,8 @@ msgid ""
 "You are not allowed to delete records \"%(ids)s\" of \"%(model)s\" because of at lease one of those rules:\n"
 "%(rules)s"
 msgstr ""
+"Nie masz uprawnień do usunięcia rekordów \"%(ids)s\" z modelu \"%(model)s\" z powodu niezgodności przynajmniej jednej z reguł:\n"
+"%(rules)s"
 
 msgctxt "model:ir.message,text:msg_delete_xml_record"
 msgid "You are not allowed to delete this record."
@@ -2145,7 +2272,6 @@ msgctxt "model:ir.message,text:msg_dict_schema_float"
 msgid "Float"
 msgstr "Float"
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_help"
 msgid "Help"
 msgstr "Pomoc"
@@ -2156,16 +2282,15 @@ msgstr "Integer"
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_domain"
 msgid "Invalid domain in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Nieprawidłowa domena w schemacie \"%(schema)s\"."
 
 msgctxt "model:ir.message,text:msg_dict_schema_invalid_selection"
 msgid "Invalid selection in schema \"%(schema)s\"."
-msgstr ""
+msgstr "Nieprawidłowe zaznaczenie w schemacie \"%(schema)s\"."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_dict_schema_multiselection"
 msgid "MultiSelection"
-msgstr "Zaznaczenie"
+msgstr "Wielokrotne zaznaczenie"
 
 msgctxt "model:ir.message,text:msg_dict_schema_name"
 msgid "Name"
@@ -2181,7 +2306,7 @@ msgstr "Zaznaczenie"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_help"
 msgid "A couple of key and label separated by \":\" per line."
-msgstr ""
+msgstr "Para klucza i etykiety rozdzielone w linii przez \":\"."
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_json"
 msgid "Selection JSON"
@@ -2193,7 +2318,7 @@ msgstr "Zaznaczenie posortowane"
 
 msgctxt "model:ir.message,text:msg_dict_schema_selection_sorted_help"
 msgid "If the selection must be sorted on label."
-msgstr ""
+msgstr "Aktywuj, jeśli zaznaczenie ma być posortowane według etykiety."
 
 msgctxt "model:ir.message,text:msg_dict_schema_string"
 msgid "String"
@@ -2208,6 +2333,8 @@ msgid ""
 "The number of digits in the value \"%(value)s\" for field \"%(field)s\" in "
 "\"%(model)s\" exceeds the limit of \"%(digits)i\"."
 msgstr ""
+"Liczba cyfr w wartości \"%(value)s\" w polu \"%(field)s\" modelu "
+"\"%(model)s\" przekroczyła limit \"%(digits)i\"."
 
 msgctxt "model:ir.message,text:msg_domain_validation_record"
 msgid ""
@@ -2225,11 +2352,43 @@ msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Zmodyfikował"
 
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowa treść w szablonie e-mail \"%(template)s\" generująca wyjątek "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowe wyrażenie PYSON %(field)s w szablonie e-mail \"%(template)s\" "
+"generujące wyjątek \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr "PYSON %(field)s w szablonie e-mail \"%(template)s\" musi generować listę."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Nieprawidłowy temat w szablonie e-mail \"%(template)s\" generujący wyjątek "
+"\"%(exception)s\"."
+
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
 "The records could not be deleted because they are used by field "
 "\"%(field)s\" of \"%(model)s\"."
 msgstr ""
+"Rekordy nie mogą zostać usunięte ponieważ są używane w polu \"%(field)s\" "
+"modelu \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_foreign_model_missing"
 msgid "The value \"%(value)s\" for field \"%(field)s\" in \"%(model)s\" does not exist."
@@ -2237,7 +2396,7 @@ msgstr "Wartość \"%(value)s\" pola \"%(field)s\" w modelu \"%(model)s\" nie is
 
 msgctxt "model:ir.message,text:msg_html_editor_save_fail"
 msgid "Failed to save, please retry."
-msgstr ""
+msgstr "Problem z zapisem, spróbuj ponownie."
 
 msgctxt "model:ir.message,text:msg_id_positive"
 msgid "ID must be positive."
@@ -2279,7 +2438,6 @@ msgid ""
 "activated."
 msgstr "Nie możesz usunąć modułu, który jest aktywny lub będzie aktywny."
 
-#, fuzzy
 msgctxt "model:ir.message,text:msg_notes"
 msgid "Notes"
 msgstr "Notatki"
@@ -2289,12 +2447,16 @@ msgid ""
 "You are trying to read records \"%(ids)s\" of \"%(model)s\" that don't exist"
 " anymore."
 msgstr ""
+"Próbujesz odczytać rekordy \"%(ids)s\" modelu \"%(model)s\", które już nie "
+"istnieją."
 
 msgctxt "model:ir.message,text:msg_read_rule_error"
 msgid ""
 "You are not allowed to read records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
+"Nie masz uprawnień do odczytu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednej z reguł:\n"
+"%(rules)s"
 
 msgctxt "model:ir.message,text:msg_record_name"
 msgid "Record Name"
@@ -2311,11 +2473,11 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_reference_syntax_error"
 msgid "Syntax error for reference: \"%(value)r\" in \"%(field)s\"."
-msgstr ""
+msgstr "Błąd składni dla referencji: \"%(value)r\" w \"%(field)s\"."
 
 msgctxt "model:ir.message,text:msg_relation_not_found"
 msgid "Relation not found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgstr "Brak relacji: \"%(value)r\" w \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_report_invalid_email"
 msgid "Invalid email definition for report \"%(name)s\"."
@@ -2323,11 +2485,11 @@ msgstr "Nieprawidłowe określenie e-maila w raporcie \"%s\"."
 
 msgctxt "model:ir.message,text:msg_required_validation_record"
 msgid "A value is required for field \"%(field)s\" in \"%(model)s\"."
-msgstr ""
+msgstr "W polu \"%(fields)s\" w modelu \"%(model)s\" wymagana jest wartość."
 
 msgctxt "model:ir.message,text:msg_resource_copy_help"
 msgid "The resources to which this record must be copied."
-msgstr ""
+msgstr "Zasoby, do których należy skopiować ten rekord."
 
 msgctxt "model:ir.message,text:msg_rule_invalid_domain"
 msgid "Invalid domain in rule \"%(name)s\"."
@@ -2367,13 +2529,15 @@ msgstr "Brakująca sekwencja."
 
 msgctxt "model:ir.message,text:msg_setter_function_missing"
 msgid "Missing setter function for field \"%(field)s\" in \"%(model)s\"."
-msgstr ""
+msgstr "Brakująca funkcja setter dla pola \"%(field)s\" w \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_size_validation_record"
 msgid ""
 "The value for field \"%(field)s\" in \"%(model)s\" is too long (%(size)i > "
 "%(max_size)i)."
 msgstr ""
+"Wartość pola \"%(field)s\" w \"%(model)s\" jest zbyt długa (%(size)i > "
+"%(max_size)i)."
 
 msgctxt "model:ir.message,text:msg_time_format_validation_record"
 msgid ""
@@ -2413,7 +2577,7 @@ msgstr "t"
 
 msgctxt "model:ir.message,text:msg_too_many_relations_found"
 msgid "Too many relations found: \"%(value)r\" in \"%(model)s\"."
-msgstr ""
+msgstr "Znaleziono zbyt wiele relacji: \"%(value)r\" w \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_translation_overridden"
 msgid ""
@@ -2440,12 +2604,16 @@ msgid ""
 "You are trying to write to records \"%(ids)s\" of \"%(model)s\" that don't "
 "exist anymore."
 msgstr ""
+"Próbujesz zapisać rekordy \"%(ids)s\" z modelu \"%(model)s\", które już nie "
+"istnieją."
 
 msgctxt "model:ir.message,text:msg_write_rule_error"
 msgid ""
 "You are not allowed to write to records \"%(ids)s\" of \"%(model)s\" because of at least one of these rules:\n"
 "%(rules)s"
 msgstr ""
+"Nie masz uprawnień do zapisu rekordów \"%(ids)s\" modelu \"%(model)s\" z powodu przynajmniej jednego z reguł:\n"
+"%(rules)s"
 
 msgctxt "model:ir.message,text:msg_write_xml_record"
 msgid "You are not allowed to modify this record."
@@ -2453,7 +2621,7 @@ msgstr "Nie masz uprawnień do modyfikacji tego rekordu."
 
 msgctxt "model:ir.message,text:msg_xml_id_syntax_error"
 msgid "Syntax error for XML id: \"%(value)r\" in \"%(field)s\"."
-msgstr ""
+msgstr "Błąd składni w XML id: \"%(value)r\" w \"%(field)s\"."
 
 msgctxt "model:ir.model,name:"
 msgid "Model"
@@ -2465,11 +2633,11 @@ msgstr "Dostęp do modelu"
 
 msgctxt "model:ir.model.button,confirm:lang_load_translations_button"
 msgid "Are you sure you want to load languages' translations?"
-msgstr ""
+msgstr "Czy na pewno chcesz przesłać tłumaczenia językowe?"
 
 msgctxt "model:ir.model.button,confirm:lang_unload_translations_button"
 msgid "Are you sure you want to remove languages' translations?"
-msgstr ""
+msgstr "Czy na pewno chcesz usunąć tłumaczenia językowe?"
 
 msgctxt "model:ir.model.button,name:"
 msgid "Model Button"
@@ -2477,49 +2645,47 @@ msgstr "Przycisk modelu"
 
 msgctxt "model:ir.model.button,string:cron_run_once_button"
 msgid "Run Once"
-msgstr "Run Once"
+msgstr "Uruchom jednokrotnie"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_load_translations_button"
 msgid "Load translations"
-msgstr "Oczyść tłumaczenie"
+msgstr "Prześlij tłumaczenia"
 
-#, fuzzy
 msgctxt "model:ir.model.button,string:lang_unload_translations_button"
 msgid "Unload translations"
-msgstr "Oczyść tłumaczenie"
+msgstr "Usuń tłumaczenia"
 
 msgctxt "model:ir.model.button,string:model_data_sync_button"
 msgid "Sync"
-msgstr "Sync"
+msgstr "Synchronizacja"
 
 msgctxt "model:ir.model.button,string:module_activate_button"
 msgid "Mark for Activation"
-msgstr "Mark for Activation"
+msgstr "Zaznacz, aby aktywować"
 
 msgctxt "model:ir.model.button,string:module_activate_cancel_button"
 msgid "Cancel Activation"
-msgstr "Cancel Activation"
+msgstr "Anuluj aktywację"
 
 msgctxt "model:ir.model.button,string:module_deactivate_button"
 msgid "Mark for Deactivation (beta)"
-msgstr "Mark for Deactivation (beta)"
+msgstr "Zaznacz do dezaktywacji (beta)"
 
 msgctxt "model:ir.model.button,string:module_deactivate_cancel_button"
 msgid "Cancel Deactivation"
-msgstr "Cancel Deactivation"
+msgstr "Anuluj dezaktywację"
 
 msgctxt "model:ir.model.button,string:module_upgrade_button"
 msgid "Mark for Upgrade"
-msgstr "Mark for Upgrade"
+msgstr "Zaznacz, aby aktualizować"
 
 msgctxt "model:ir.model.button,string:module_upgrade_cancel_button"
 msgid "Cancel Upgrade"
-msgstr "Cancel Upgrade"
+msgstr "Anuluj aktualizację"
 
 msgctxt "model:ir.model.button,string:view_show_button"
 msgid "Show"
-msgstr "Show"
+msgstr "Pokaż"
 
 msgctxt "model:ir.model.button-button.reset,name:"
 msgid "Model Button Reset"
@@ -2708,6 +2874,14 @@ msgstr "Elementy kreatora konfiguracji"
 msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
 msgstr "Zaplanowane akcje"
+
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "E-mails"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "Szablony e-maili"
 
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
@@ -2918,8 +3092,12 @@ msgid "Weeks"
 msgstr "Tygodnie"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "Wyczyść kolejkę zadań"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
-msgstr ""
+msgstr "Wyzwalacze uruchamiane o określonym czasie"
 
 msgctxt "selection:ir.lang,direction:"
 msgid "Left-to-right"
@@ -3051,7 +3229,7 @@ msgstr "Wykres"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "List Form"
-msgstr ""
+msgstr "Formularz listy"
 
 msgctxt "selection:ir.ui.view,type:"
 msgid "Tree"
@@ -3063,7 +3241,7 @@ msgstr "Ogólne"
 
 msgctxt "view:ir.action.report:"
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 msgctxt "view:ir.action.report:"
 msgid "General"
@@ -3087,19 +3265,31 @@ msgstr "Czas ostatniej modyfikacji"
 
 msgctxt "view:ir.cron:"
 msgid "At"
-msgstr ""
+msgstr "O"
 
 msgctxt "view:ir.cron:"
 msgid "Every"
-msgstr ""
+msgstr "Każdy"
 
 msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Uruchom jednorazowo"
 
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr "Ukryci odbiorcy:"
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr "Odbiorcy:"
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr "Dodatkowi odbiorcy:"
+
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load aditional translations to the system."
-msgstr ""
+msgstr "Możesz przesłać teraz do systemu dodatkowe tłumaczenia."
 
 msgctxt "view:ir.lang:"
 msgid "Date Formatting"
@@ -3226,25 +3416,24 @@ msgid "Clean Translations?"
 msgstr "Oczyścić tłumaczenia?"
 
 msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations Succeed!"
-msgstr "Oczyszczenie tłumaczeń udane!"
+msgid "Translations cleaned successfully."
+msgstr "Tłumaczenia zostały pomyślnie wyczyszczone."
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Zsynchronizować tłumaczenia?"
 
 msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Succeed!"
-msgstr "Ustawienie udane!"
+msgid "Translations set successfully."
+msgstr "Tłumaczenia zostały pomyślnie zdefiniowane."
 
-#, fuzzy
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"
 msgstr "Anuluj"
 
 msgctxt "wizard_button:ir.lang.config,start,load:"
 msgid "Load"
-msgstr ""
+msgstr "Prześlij"
 
 msgctxt "wizard_button:ir.model.print_model_graph,start,end:"
 msgid "Cancel"

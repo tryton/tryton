@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Icono"
@@ -57,10 +53,6 @@ msgstr "Valor del dominio"
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
 msgstr "Dominios"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Grupos"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
@@ -146,10 +138,6 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "Acción"
 
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "Acción de teclado"
@@ -166,17 +154,9 @@ msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
 msgstr "Impresión directa"
 
-msgctxt "field:ir.action.report,email:"
-msgid "Email"
-msgstr "Email"
-
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
 msgstr "Extensión"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Grupos"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
@@ -201,10 +181,6 @@ msgstr "Módulo"
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Nombre"
-
-msgctxt "field:ir.action.report,pyson_email:"
-msgid "PySON Email"
-msgstr "Email PySON"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -254,10 +230,6 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "Acción"
 
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Grupos"
-
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "Icono"
@@ -285,14 +257,6 @@ msgstr "Uso"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "Acción"
-
-msgctxt "field:ir.action.wizard,email:"
-msgid "Email"
-msgstr "Email"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Grupos"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -449,6 +413,106 @@ msgstr "Siguiente llamada"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Día de la semana"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr "Direcciones"
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "El"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr "Mensaje"
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinatarios ocultos"
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinatarios secundarios"
+
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Recurso"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr "Asunto"
+
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr "Dirección"
+
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "Correo electrónico"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr "Mensaje"
+
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Nombre del modelo"
+
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr "Destinatarios ocultos"
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr "Destinatarios ocultos"
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr "Destinatarios secundarios"
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr "Destinatarios secundarios"
+
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Informes"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr "Asunto"
+
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Informe"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Plantilla"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -1350,14 +1414,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
 msgstr "Criterio de búsqueda por defecto en la vista de lista."
 
-msgctxt "help:ir.action.report,email:"
-msgid ""
-"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
-"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-msgstr ""
-"Diccionario de Python donde las claves definen \"to\" \"cc\" \"subject\".\n"
-"Ejemplo: {'to': 'test@ejemplo.com', 'cc': 'usuario@ejemplo.com'}"
-
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
@@ -1377,6 +1433,42 @@ msgstr "Desmarcar para deshabilitar las traducciones de este informe."
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
 msgstr "Ejecuta el asistente en una nueva ventana."
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr "El campo que contiene el/los destinatario/s."
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "El campo que contiene el/los destinatario/s secundario/s."
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Una expresión PYSON que genera una lista de destinatarios ocultos con el "
+"registro repesendatodo por \"self\"."
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+"Una expresión PYSON que genera una lista de destinatarios con el registro "
+"representado por \"self\"."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr "El campo que contiene el/los destinatario/s secundario/s."
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"Una expresión PYSON que genera una lista de destinatarios secundarios con el"
+" registro representado por \"self\"."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -1528,6 +1620,18 @@ msgstr "Asistente de configuración"
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
 msgstr "Acciones planificadas"
+
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "Correos electrónicos"
+
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mails"
+msgstr "Correos electrónicos"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr "Plantillas de correo electrónico"
 
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
@@ -1921,6 +2025,22 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Fecha"
 
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "Correo electrónico"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr "Dirección de correo electrónico"
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr "Plantilla de correo electrónico"
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr "Plantilla de correo electrónico - Informe"
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Exportar"
@@ -2048,6 +2168,16 @@ msgstr "No tiene permisos para acceder a \"%(model)s\"."
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "No tiene permisos para acceder a \"%(model)s.%(field)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "No tiene permisos para ejecutar el asistente \"%(wizard)s\"."
+
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr ""
+"No tiene permisos para ejecutar el asistente \"%(wizard)s\" en el modelo "
+"\"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
@@ -2219,6 +2349,38 @@ msgstr "Editado el"
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Editado por"
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Mensaje invalido en la plantilla de correo electrònico \"%(template)s\" con "
+"la excepción \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Expresión PYSON incorrecta \"%(field)s\" en la plantilla de correo "
+"electrónico \"%(template)s\" con la excepción \"%(exception)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr ""
+"La expresión PYSON \"%(field)s\" en la plantilla de correo electrónico "
+"\"%(template)s\" debe generar una lista."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+"Asunto invalido en la plantilla de correo electrònico \"%(template)s\" con "
+"la excepción \"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -2715,6 +2877,14 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
 msgstr "Acciones planificadas"
 
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "Correos electrónicos"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "Plantillas de correo electrónico"
+
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "Exportaciones"
@@ -2924,6 +3094,10 @@ msgid "Weeks"
 msgstr "Semanas"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "Limpia la cola de tareas"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Ejecutar disparadores de tiempo"
 
@@ -3103,6 +3277,18 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Ejecutar una vez"
 
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr "Destinatarios ocultos:"
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr "Destinatarios:"
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr "Destinatarios secundarios:"
+
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load aditional translations to the system."
 msgstr "Ahora puede cargar traducciones adicionales al sistema."
@@ -3230,16 +3416,16 @@ msgid "Clean Translations?"
 msgstr "¿Limpiar las traducciones?"
 
 msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations Succeed!"
-msgstr "La limpieza de las traducciones se ha realizado correctamente!"
+msgid "Translations cleaned successfully."
+msgstr "Las traducciones se han limpiado correctamente."
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "¿Sincronizar las traducciones?"
 
 msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Succeed!"
-msgstr "Las traducciones se han definido correctamente!"
+msgid "Translations set successfully."
+msgstr "Las traducciones se han establecido correctamente."
 
 msgctxt "wizard_button:ir.lang.config,start,end:"
 msgid "Cancel"

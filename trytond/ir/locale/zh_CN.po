@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -57,10 +53,6 @@ msgstr "域配置"
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
 msgstr "域配置"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "用户组"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
@@ -146,10 +138,6 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "动作"
 
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "关键词"
@@ -166,17 +154,9 @@ msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
 msgstr "直接打印"
 
-msgctxt "field:ir.action.report,email:"
-msgid "Email"
-msgstr "电子邮箱"
-
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
 msgstr "扩展"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "用户组"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
@@ -201,10 +181,6 @@ msgstr "模块"
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "名称"
-
-msgctxt "field:ir.action.report,pyson_email:"
-msgid "PySON Email"
-msgstr "PySON 邮箱"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -254,10 +230,6 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "动作"
 
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "用户组"
-
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "图标"
@@ -285,14 +257,6 @@ msgstr "用法"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "动作"
-
-msgctxt "field:ir.action.wizard,email:"
-msgid "Email"
-msgstr "电子邮箱"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "用户组"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -450,6 +414,116 @@ msgstr "下次调用"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "星期几"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "在"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr ""
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "附件文档资源"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "用户"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "电子邮箱"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "模型名称"
+
+#, fuzzy
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "报告"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "报告"
+
+#, fuzzy
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "模版扩展"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -1357,14 +1431,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
 msgstr "列表视图默认搜索表达式."
 
-msgctxt "help:ir.action.report,email:"
-msgid ""
-"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
-"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-msgstr ""
-"定义键 \"to\" \"cc\" \"subject\"的python dictionary\n"
-"如: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
@@ -1382,6 +1448,45 @@ msgstr "取消选中以禁用此报告的翻译。"
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
 msgstr "打开新窗口运行向导."
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"一个 PYSON 表达式将会和一条记录一起执行，这条记录用 “self” 表示.\n"
+" 符合条件则触发该动作."
+
+#, fuzzy
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+"一个 PYSON 表达式将会和一条记录一起执行，这条记录用 “self” 表示.\n"
+" 符合条件则触发该动作."
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+#, fuzzy
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
+"一个 PYSON 表达式将会和一条记录一起执行，这条记录用 “self” 表示.\n"
+" 符合条件则触发该动作."
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -1528,6 +1633,20 @@ msgstr "配置向导项"
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
 msgstr "预定动作"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "电子邮箱"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mails"
+msgstr "电子邮箱"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
@@ -1922,6 +2041,23 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "日期"
 
+#, fuzzy
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "电子邮箱"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr ""
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr ""
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr ""
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "导出"
@@ -2050,6 +2186,16 @@ msgstr "你无权访问 \"%(model)s\"."
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "你无权访问 \"%(model)s.%(field)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "你无权访问 \"%(model)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr "你无权访问 \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
@@ -2217,6 +2363,33 @@ msgstr "编辑于"
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "编辑人"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "动作\"%(action)s\"的条件\"%(context)s\"设置无效."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "动作\"%(action)s\"的条件\"%(context)s\"设置无效."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "动作\"%(action)s\"的条件\"%(context)s\"设置无效."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -2692,6 +2865,15 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
 msgstr "预定动作"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "电子邮箱"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "导出"
@@ -2900,6 +3082,11 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "周"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "翻译清理成功!"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "通过时间触发器触发运行"
@@ -3080,6 +3267,18 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "仅运行一次"
 
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load aditional translations to the system."
 msgstr ""
@@ -3204,16 +3403,17 @@ msgid "Clean Translations?"
 msgstr "清理翻译 ?"
 
 msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations Succeed!"
-msgstr "翻译清理成功!"
+msgid "Translations cleaned successfully."
+msgstr ""
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "使翻译生效？"
 
+#, fuzzy
 msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Succeed!"
-msgstr "保存成功！"
+msgid "Translations set successfully."
+msgstr "翻译字符串必须唯一！"
 
 #, fuzzy
 msgctxt "wizard_button:ir.lang.config,start,end:"

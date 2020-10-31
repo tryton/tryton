@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Grupid"
-
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -57,10 +53,6 @@ msgstr "Domeeni väärtus"
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
 msgstr "Domeenid"
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
-msgstr "Grupid"
 
 msgctxt "field:ir.action.act_window,icon:"
 msgid "Icon"
@@ -146,10 +138,6 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "Toiming"
 
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr "Grupid"
-
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "Märksõna"
@@ -166,17 +154,9 @@ msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
 msgstr "Otsetrükk"
 
-msgctxt "field:ir.action.report,email:"
-msgid "Email"
-msgstr "E-kiri"
-
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
 msgstr "Laiendus"
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
-msgstr "Grupid"
 
 msgctxt "field:ir.action.report,icon:"
 msgid "Icon"
@@ -201,10 +181,6 @@ msgstr "Moodul"
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Nimi"
-
-msgctxt "field:ir.action.report,pyson_email:"
-msgid "PySON Email"
-msgstr "PySON e-kiri"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -254,10 +230,6 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "Toiming"
 
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr "Grupid"
-
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr "Ikoon"
@@ -285,14 +257,6 @@ msgstr "Kasutatavus"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "Toiming"
-
-msgctxt "field:ir.action.wizard,email:"
-msgid "Email"
-msgstr "E-kiri"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Grupid"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -450,6 +414,116 @@ msgstr "Järgmine kutsung"
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr "Nädalapäev"
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr "Kuupäeval"
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr ""
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Ressurss"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Kasutaja"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "E-kiri"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Mudel"
+
+#, fuzzy
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Mudeli nimi"
+
+#, fuzzy
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Nimetus"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Aruanded"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Aruanne"
+
+#, fuzzy
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Malli laiendus"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -1359,12 +1433,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
 msgstr "Nimekirja vaate vaikimisi otsingutingimus"
 
-msgctxt "help:ir.action.report,email:"
-msgid ""
-"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
-"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-msgstr ""
-
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
@@ -1383,6 +1451,36 @@ msgstr "Eemalda märgistus, et eemaldada kirje tõlkimine"
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
 msgstr "Käivita viisard uues aknas"
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
+msgstr ""
 
 msgctxt "help:ir.lang,code:"
 msgid "RFC 4646 tag: http://tools.ietf.org/html/rfc4646"
@@ -1526,6 +1624,20 @@ msgstr "Seadistusnõustaja elemendid"
 msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
 msgstr "Ajatatud tegevused"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "E-kiri"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mails"
+msgstr "E-kiri"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr ""
 
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
@@ -1920,6 +2032,23 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Kuupäev"
 
+#, fuzzy
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "E-kiri"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr ""
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr ""
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr ""
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr "Eksport"
@@ -2050,6 +2179,16 @@ msgstr "Puudub ligipääs mudelile (mudelitele)."
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "Puudub ligipääs mudeli(te) välja(de)le"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "Puudub ligipääs mudelile (mudelitele)."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr "Puudub ligipääs mudelile (mudelitele)."
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
@@ -2230,6 +2369,33 @@ msgstr "Oosatud kuupäev"
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Muuda"
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr ""
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr "Toimingu \"%(action)s\" jaoks keelatud kontekst \"%(context)s\"."
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -2718,6 +2884,15 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
 msgstr "Ajatatud tegevused"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "E-kiri"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
 msgstr "Ekspordid"
@@ -2926,6 +3101,11 @@ msgctxt "selection:ir.cron,interval_type:"
 msgid "Weeks"
 msgstr "Nädalad"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr "Tõlgete tühistamine õnnestus!"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr "Käivita päästikud määratud ajal"
@@ -3106,6 +3286,18 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr "Käivita korra"
 
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load aditional translations to the system."
 msgstr ""
@@ -3231,16 +3423,16 @@ msgid "Clean Translations?"
 msgstr "Eemaldada tõlked?"
 
 msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations Succeed!"
-msgstr "Tõlgete tühistamine õnnestus!"
+msgid "Translations cleaned successfully."
+msgstr ""
 
 msgctxt "view:ir.translation.set.start:"
 msgid "Synchronize Translations?"
 msgstr "Sünkroonida tõlked?"
 
 msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Succeed!"
-msgstr "Seadistus õnnestus!"
+msgid "Translations set successfully."
+msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:ir.lang.config,start,end:"

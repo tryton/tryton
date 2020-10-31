@@ -2,12 +2,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "Tindakan"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Kelompok"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
 msgstr "Kelompok"
 
 msgctxt "field:ir.export,groups:"
@@ -112,7 +142,7 @@ msgstr ""
 
 msgctxt "field:res.group,users:"
 msgid "Users"
-msgstr ""
+msgstr "Pengguna"
 
 msgctxt "field:res.user,actions:"
 msgid "Actions"
@@ -212,7 +242,7 @@ msgstr "Kunci"
 
 msgctxt "field:res.user.application,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:res.user.application,user:"
 msgid "User"
@@ -268,7 +298,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_user_form"
 msgid "Users"
-msgstr ""
+msgstr "Pengguna"
 
 msgctxt "model:ir.action,name:report_email_reset_password"
 msgid "Reset Password"
@@ -432,6 +462,10 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr ""
+
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr ""
@@ -446,11 +480,11 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_res"
 msgid "Users"
-msgstr ""
+msgstr "Pengguna"
 
 msgctxt "model:ir.ui.menu,name:menu_user_form"
 msgid "Users"
-msgstr ""
+msgstr "Pengguna"
 
 msgctxt "model:ir.ui.menu-res.group,name:"
 msgid "UI Menu - Group"
@@ -493,40 +527,21 @@ msgid "User Warning"
 msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
-msgid ", has been reset."
-msgstr ", sudah diatur ulang."
-
-msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Atur Ulang Kata Sandi"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password for your account,"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
 msgstr ""
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at"
+msgid "The password will expire at [1:%(datetime)s UTC]."
 msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "UTC"
-msgstr "UTC"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You can connect with this temporary password"
-msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You must set a new one from the user's preferences."
-msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "to"
-msgstr ""
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "tryton://"
-msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

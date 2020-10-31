@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "Ação"
@@ -9,6 +14,31 @@ msgstr "Ação"
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
 msgstr "Grupo"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "Grupos"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
+msgstr "Grupos"
 
 #, fuzzy
 msgctxt "field:ir.export,groups:"
@@ -443,6 +473,10 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr ""
 
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr ""
+
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr "Regra Grupo - Grupo"
@@ -504,40 +538,22 @@ msgid "User Warning"
 msgstr "Alerta de Usuário"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid ", has been reset."
-msgstr ", foi redefinida."
-
-msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "Redefinir senha"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password for your account,"
-msgstr "A senha para sua conta,"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at"
+msgid "The password will expire at [1:%(datetime)s UTC]."
 msgstr "A senha irá expirar em"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "UTC"
-msgstr "UTC"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You can connect with this temporary password"
-msgstr "Você pode corrigir com esta senha temporária"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You must set a new one from the user's preferences."
-msgstr "Você precisa definir uma nova senha nas preferências do usuário."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "to"
-msgstr "para"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "tryton://"
-msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

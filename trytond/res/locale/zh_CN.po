@@ -2,12 +2,42 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.action,groups:"
+msgid "Groups"
+msgstr "用户组"
+
 msgctxt "field:ir.action-res.group,action:"
 msgid "Action"
 msgstr "操作"
 
 msgctxt "field:ir.action-res.group,group:"
 msgid "Group"
+msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.action.act_window,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.action.keyword,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.action.report,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.action.url,groups:"
+msgid "Groups"
+msgstr "用户组"
+
+#, fuzzy
+msgctxt "field:ir.action.wizard,groups:"
+msgid "Groups"
 msgstr "用户组"
 
 msgctxt "field:ir.export,groups:"
@@ -432,6 +462,11 @@ msgctxt "model:ir.rule.group,name:rule_group_view_search_admin"
 msgid "Any view search"
 msgstr "任意的视图搜索"
 
+#, fuzzy
+msgctxt "model:ir.rule.group,name:rule_group_view_search_common"
+msgid "Common view search"
+msgstr "自己的视图搜索"
+
 msgctxt "model:ir.rule.group-res.group,name:"
 msgid "Rule Group - Group"
 msgstr "规则组 - 用户组"
@@ -493,40 +528,22 @@ msgid "User Warning"
 msgstr "用户警告"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid ", has been reset."
-msgstr ", 哟经被重置."
-
-msgctxt "report:res.user.email_reset_password:"
 msgid "Reset Password"
 msgstr "重置密码"
 
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password for your account,"
-msgstr "你的账号的密码,"
+msgid ""
+"The password for your account, [1:%(login)s], has been reset.[2:]\n"
+"                You must set a new one from the user's preferences.[3:]\n"
+"                You can connect with this temporary password [4:%(password)s] to[5:]\n"
+"                [6:tryton://%(host)s/%(database)s][7:]\n"
+"                [8:%(host)s/#%(database)s]"
+msgstr ""
 
+#, fuzzy
 msgctxt "report:res.user.email_reset_password:"
-msgid "The password will expire at"
+msgid "The password will expire at [1:%(datetime)s UTC]."
 msgstr "密码过期时间是"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "UTC"
-msgstr "UTC"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You can connect with this temporary password"
-msgstr "您可以使用此临时密码连接"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "You must set a new one from the user's preferences."
-msgstr "必须从用户首选项中设置一个新的."
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "to"
-msgstr "to"
-
-msgctxt "report:res.user.email_reset_password:"
-msgid "tryton://"
-msgstr "tryton://"
 
 msgctxt "selection:res.user.application,state:"
 msgid "Cancelled"

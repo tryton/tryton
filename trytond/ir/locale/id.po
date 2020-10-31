@@ -2,10 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:ir.action,groups:"
-msgid "Groups"
-msgstr "Kelompok"
-
 msgctxt "field:ir.action,icon:"
 msgid "Icon"
 msgstr ""
@@ -56,10 +52,6 @@ msgstr ""
 
 msgctxt "field:ir.action.act_window,domains:"
 msgid "Domains"
-msgstr ""
-
-msgctxt "field:ir.action.act_window,groups:"
-msgid "Groups"
 msgstr ""
 
 msgctxt "field:ir.action.act_window,icon:"
@@ -146,10 +138,6 @@ msgctxt "field:ir.action.keyword,action:"
 msgid "Action"
 msgstr "Tindakan"
 
-msgctxt "field:ir.action.keyword,groups:"
-msgid "Groups"
-msgstr ""
-
 msgctxt "field:ir.action.keyword,keyword:"
 msgid "Keyword"
 msgstr "Kata kunci"
@@ -166,16 +154,8 @@ msgctxt "field:ir.action.report,direct_print:"
 msgid "Direct Print"
 msgstr "Cetak Langsung"
 
-msgctxt "field:ir.action.report,email:"
-msgid "Email"
-msgstr "Email"
-
 msgctxt "field:ir.action.report,extension:"
 msgid "Extension"
-msgstr ""
-
-msgctxt "field:ir.action.report,groups:"
-msgid "Groups"
 msgstr ""
 
 msgctxt "field:ir.action.report,icon:"
@@ -201,10 +181,6 @@ msgstr "Modul"
 msgctxt "field:ir.action.report,name:"
 msgid "Name"
 msgstr "Nama"
-
-msgctxt "field:ir.action.report,pyson_email:"
-msgid "PySON Email"
-msgstr "Email PySON"
 
 msgctxt "field:ir.action.report,report:"
 msgid "Path"
@@ -254,10 +230,6 @@ msgctxt "field:ir.action.url,action:"
 msgid "Action"
 msgstr "Tindakan"
 
-msgctxt "field:ir.action.url,groups:"
-msgid "Groups"
-msgstr ""
-
 msgctxt "field:ir.action.url,icon:"
 msgid "Icon"
 msgstr ""
@@ -285,14 +257,6 @@ msgstr "Penggunaan"
 msgctxt "field:ir.action.wizard,action:"
 msgid "Action"
 msgstr "Tindakan"
-
-msgctxt "field:ir.action.wizard,email:"
-msgid "Email"
-msgstr "Email"
-
-msgctxt "field:ir.action.wizard,groups:"
-msgid "Groups"
-msgstr "Kelompok"
 
 msgctxt "field:ir.action.wizard,icon:"
 msgid "Icon"
@@ -450,6 +414,114 @@ msgstr ""
 msgctxt "field:ir.cron,weekday:"
 msgid "Day of Week"
 msgstr ""
+
+msgctxt "field:ir.email,addresses:"
+msgid "Addresses"
+msgstr ""
+
+msgctxt "field:ir.email,at:"
+msgid "At"
+msgstr ""
+
+msgctxt "field:ir.email,body:"
+msgid "Body"
+msgstr ""
+
+msgctxt "field:ir.email,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,resource:"
+msgid "Resource"
+msgstr "Sumber daya"
+
+msgctxt "field:ir.email,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email,user:"
+msgid "User"
+msgstr "Pengguna"
+
+msgctxt "field:ir.email.address,address:"
+msgid "Address"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.address,email:"
+msgid "E-mail"
+msgstr "Email"
+
+msgctxt "field:ir.email.template,body:"
+msgid "Body"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,model:"
+msgid "Model"
+msgstr "Model"
+
+#, fuzzy
+msgctxt "field:ir.email.template,model_name:"
+msgid "Model Name"
+msgstr "Nama Model"
+
+#, fuzzy
+msgctxt "field:ir.email.template,name:"
+msgid "Name"
+msgstr "Nama"
+
+msgctxt "field:ir.email.template,recipients:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_hidden_pyson:"
+msgid "Hidden Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_pyson:"
+msgid "Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary:"
+msgid "Secondary Recipients"
+msgstr ""
+
+msgctxt "field:ir.email.template,recipients_secondary_pyson:"
+msgid "Secondary Recipients"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template,reports:"
+msgid "Reports"
+msgstr "Laporan"
+
+msgctxt "field:ir.email.template,subject:"
+msgid "Subject"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:ir.email.template-ir.action.report,report:"
+msgid "Report"
+msgstr "Laporan"
+
+msgctxt "field:ir.email.template-ir.action.report,template:"
+msgid "Template"
+msgstr "Templat"
 
 msgctxt "field:ir.export,export_fields:"
 msgid "Fields"
@@ -806,7 +878,7 @@ msgstr ""
 
 msgctxt "field:ir.module,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 msgctxt "field:ir.module,version:"
 msgid "Version"
@@ -838,7 +910,7 @@ msgstr "Nama"
 
 msgctxt "field:ir.module.dependency,state:"
 msgid "State"
-msgstr "Negara"
+msgstr "Status"
 
 #, fuzzy
 msgctxt "field:ir.note,copy_to_resources:"
@@ -1357,12 +1429,6 @@ msgctxt "help:ir.action.act_window,search_value:"
 msgid "Default search criteria for the list view."
 msgstr ""
 
-msgctxt "help:ir.action.report,email:"
-msgid ""
-"Python dictonary where keys define \"to\" \"cc\" \"subject\"\n"
-"Example: {'to': 'test@example.com', 'cc': 'user@example.com'}"
-msgstr ""
-
 msgctxt "help:ir.action.report,extension:"
 msgid ""
 "Leave empty for the same as template, see LibreOffice documentation for "
@@ -1379,6 +1445,36 @@ msgstr ""
 
 msgctxt "help:ir.action.wizard,window:"
 msgid "Run wizard in a new window."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients:"
+msgid "The field that contains the recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_hidden:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_hidden_pyson:"
+msgid ""
+"A PYSON expression that generates a list of hidden recipients with the "
+"record represented by \"self\"."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_pyson:"
+msgid ""
+"A PYSON expression that generates a list of recipients with the record "
+"represented by \"self\"."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_secondary:"
+msgid "The field that contains the secondary recipient(s)."
+msgstr ""
+
+msgctxt "help:ir.email.template,recipients_secondary_pyson:"
+msgid ""
+"A PYSON expression that generates a list of secondary recipients with the "
+"record represented by \"self\"."
 msgstr ""
 
 msgctxt "help:ir.lang,code:"
@@ -1515,13 +1611,27 @@ msgctxt "model:ir.action,name:act_cron_form"
 msgid "Scheduled Actions"
 msgstr "Tindakan Terjadwal"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form"
+msgid "E-mails"
+msgstr "Email"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_email_form_relate"
+msgid "E-mails"
+msgstr "Email"
+
+msgctxt "model:ir.action,name:act_email_template_form"
+msgid "E-mail Templates"
+msgstr ""
+
 msgctxt "model:ir.action,name:act_export_form"
 msgid "Exports"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_icon_form"
 msgid "Icons"
-msgstr ""
+msgstr "Ikon"
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_lang_config"
@@ -1908,6 +2018,23 @@ msgctxt "model:ir.date,name:"
 msgid "Date"
 msgstr "Tanggal"
 
+#, fuzzy
+msgctxt "model:ir.email,name:"
+msgid "Email"
+msgstr "Email"
+
+msgctxt "model:ir.email.address,name:"
+msgid "Email Address"
+msgstr ""
+
+msgctxt "model:ir.email.template,name:"
+msgid "Email Template"
+msgstr ""
+
+msgctxt "model:ir.email.template-ir.action.report,name:"
+msgid "Email Template - Report"
+msgstr ""
+
 msgctxt "model:ir.export,name:"
 msgid "Export"
 msgstr ""
@@ -2036,6 +2163,16 @@ msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
 msgctxt "model:ir.message,text:msg_access_rule_field_error"
 msgid "You are not allowed to access \"%(model)s.%(field)s\"."
 msgstr "Anda tidak diizinkan mengakses \"%(model)s.%(field)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\"."
+msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
+
+#, fuzzy
+msgctxt "model:ir.message,text:msg_access_wizard_model_error"
+msgid "You are not allowed to execute wizard \"%(wizard)s\" on \"%(model)s\"."
+msgstr "Anda tidak diizinkan mengakses \"%(model)s\"."
 
 msgctxt "model:ir.message,text:msg_action_invalid_context"
 msgid "Invalid context \"%(context)s\" for action \"%(action)s\"."
@@ -2199,6 +2336,30 @@ msgstr "Disunting pada"
 msgctxt "model:ir.message,text:msg_edited_by"
 msgid "Edited by"
 msgstr "Disunting oleh"
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_body"
+msgid ""
+"Invalid body in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson"
+msgid ""
+"Invalid PYSON %(field)s in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_field_pyson_type"
+msgid ""
+"The PYSON %(field)s in e-mail template \"%(template)s\" must generate a "
+"list."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_email_template_invalid_subject"
+msgid ""
+"Invalid subject in e-mail template \"%(template)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
 
 msgctxt "model:ir.message,text:msg_foreign_model_exist"
 msgid ""
@@ -2670,17 +2831,26 @@ msgctxt "model:ir.ui.menu,name:menu_cron_form"
 msgid "Scheduled Actions"
 msgstr "Tindakan Terjadwal"
 
+#, fuzzy
+msgctxt "model:ir.ui.menu,name:menu_email_form"
+msgid "E-mails"
+msgstr "Email"
+
+msgctxt "model:ir.ui.menu,name:menu_email_template_form"
+msgid "E-mail Templates"
+msgstr "Templat E-mail"
+
 msgctxt "model:ir.ui.menu,name:menu_export_form"
 msgid "Exports"
-msgstr ""
+msgstr "Ekspor"
 
 msgctxt "model:ir.ui.menu,name:menu_icon_form"
 msgid "Icons"
-msgstr ""
+msgstr "Ikon"
 
 msgctxt "model:ir.ui.menu,name:menu_ir_sequence_type"
 msgid "Sequence Types"
-msgstr ""
+msgstr "Jenis Urutan"
 
 msgctxt "model:ir.ui.menu,name:menu_lang_form"
 msgid "Languages"
@@ -2879,6 +3049,10 @@ msgid "Weeks"
 msgstr ""
 
 msgctxt "selection:ir.cron,method:"
+msgid "Clean Task Queue"
+msgstr ""
+
+msgctxt "selection:ir.cron,method:"
 msgid "Run On Time Triggers"
 msgstr ""
 
@@ -3058,6 +3232,18 @@ msgctxt "view:ir.cron:"
 msgid "Run Once"
 msgstr ""
 
+msgctxt "view:ir.email.template:"
+msgid "Hidden Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Recipients:"
+msgstr ""
+
+msgctxt "view:ir.email.template:"
+msgid "Secondary Recipients:"
+msgstr ""
+
 msgctxt "view:ir.lang.config.start:"
 msgid "You can now load aditional translations to the system."
 msgstr ""
@@ -3182,7 +3368,7 @@ msgid "Clean Translations?"
 msgstr ""
 
 msgctxt "view:ir.translation.clean.succeed:"
-msgid "Clean Translations Succeed!"
+msgid "Translations cleaned successfully."
 msgstr ""
 
 msgctxt "view:ir.translation.set.start:"
@@ -3190,7 +3376,7 @@ msgid "Synchronize Translations?"
 msgstr ""
 
 msgctxt "view:ir.translation.set.succeed:"
-msgid "Set Succeed!"
+msgid "Translations set successfully."
 msgstr ""
 
 #, fuzzy
