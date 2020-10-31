@@ -23,6 +23,10 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr "Jaotamise meetod"
 
+msgctxt "field:account.landed_cost,categories:"
+msgid "Categories"
+msgstr ""
+
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "Ettevõte"
@@ -39,6 +43,10 @@ msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr "Postituse kuupäev"
 
+msgctxt "field:account.landed_cost,products:"
+msgid "Products"
+msgstr ""
+
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
 msgstr "Tarned"
@@ -46,6 +54,24 @@ msgstr "Tarned"
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
 msgstr "Olek"
+
+msgctxt "field:account.landed_cost-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.category,landed_cost:"
+msgid "Landed Cost"
+msgstr "Distributsioonikulu"
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Distributsioonikulu"
+
+msgctxt "field:account.landed_cost-product.product,product:"
+msgid "Product"
+msgstr ""
 
 msgctxt "field:account.landed_cost-stock.shipment.in,landed_cost:"
 msgid "Landed Cost"
@@ -67,6 +93,14 @@ msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
 msgstr "Ühiku distributsioonikulu"
 
+msgctxt "help:account.landed_cost,categories:"
+msgid "Apply only to products of these categories."
+msgstr ""
+
+msgctxt "help:account.landed_cost,products:"
+msgid "Apply only to these products."
+msgstr ""
+
 msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr "Konto seadistused - distributsioonikulu jada"
@@ -75,11 +109,25 @@ msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
 msgstr "Distributsioonikulu"
 
+msgctxt "model:account.landed_cost-product.category,name:"
+msgid "Landed Cost - Product Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.landed_cost-product.product,name:"
+msgid "Landed Cost - Product"
+msgstr "Distributsioonikulu - transport"
+
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
 msgstr "Distributsioonikulu - transport"
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Distributsioonikulud"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
 msgid "Landed Costs"
 msgstr "Distributsioonikulud"
 
@@ -98,9 +146,17 @@ msgctxt ""
 msgid "Posted"
 msgstr "Poistitatud"
 
-msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
-msgid "Are you sure you want to post the landed cost?"
-msgstr "Oled kindel et tahad postitada distributsioonikulu?"
+msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
+msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
+msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
+msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
 msgid "Cancel"
@@ -134,8 +190,9 @@ msgctxt "selection:account.landed_cost,allocation_method:"
 msgid "By Value"
 msgstr "Väärtuse järgi"
 
+#, fuzzy
 msgctxt "selection:account.landed_cost,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Tühistatud"
 
 msgctxt "selection:account.landed_cost,state:"

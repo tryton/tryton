@@ -24,6 +24,10 @@ msgctxt "field:account.landed_cost,allocation_method:"
 msgid "Allocation Method"
 msgstr ""
 
+msgctxt "field:account.landed_cost,categories:"
+msgid "Categories"
+msgstr ""
+
 msgctxt "field:account.landed_cost,company:"
 msgid "Company"
 msgstr "Organizacija"
@@ -40,12 +44,34 @@ msgctxt "field:account.landed_cost,posted_date:"
 msgid "Posted Date"
 msgstr ""
 
+msgctxt "field:account.landed_cost,products:"
+msgid "Products"
+msgstr ""
+
 msgctxt "field:account.landed_cost,shipments:"
 msgid "Shipments"
 msgstr ""
 
 msgctxt "field:account.landed_cost,state:"
 msgid "State"
+msgstr ""
+
+msgctxt "field:account.landed_cost-product.category,category:"
+msgid "Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.category,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+#, fuzzy
+msgctxt "field:account.landed_cost-product.product,landed_cost:"
+msgid "Landed Cost"
+msgstr "Landed Cost"
+
+msgctxt "field:account.landed_cost-product.product,product:"
+msgid "Product"
 msgstr ""
 
 #, fuzzy
@@ -71,6 +97,14 @@ msgctxt "field:stock.move,unit_landed_cost:"
 msgid "Unit Landed Cost"
 msgstr ""
 
+msgctxt "help:account.landed_cost,categories:"
+msgid "Apply only to products of these categories."
+msgstr ""
+
+msgctxt "help:account.landed_cost,products:"
+msgid "Apply only to these products."
+msgstr ""
+
 msgctxt "model:account.configuration.landed_cost_sequence,name:"
 msgid "Account Configuration Landed Cost Sequence"
 msgstr ""
@@ -80,11 +114,25 @@ msgctxt "model:account.landed_cost,name:"
 msgid "Landed Cost"
 msgstr "Landed Cost"
 
+msgctxt "model:account.landed_cost-product.category,name:"
+msgid "Landed Cost - Product Category"
+msgstr ""
+
+#, fuzzy
+msgctxt "model:account.landed_cost-product.product,name:"
+msgid "Landed Cost - Product"
+msgstr "Landed Cost"
+
 msgctxt "model:account.landed_cost-stock.shipment.in,name:"
 msgid "Landed Cost - Shipment"
 msgstr ""
 
 msgctxt "model:ir.action,name:act_landed_cost_form"
+msgid "Landed Costs"
+msgstr "Landed Costs"
+
+#, fuzzy
+msgctxt "model:ir.action,name:act_landed_cost_form_shipment"
 msgid "Landed Costs"
 msgstr "Landed Costs"
 
@@ -103,8 +151,16 @@ msgctxt ""
 msgid "Posted"
 msgstr "Posted"
 
-msgctxt "model:ir.model.button,confirm:landed_cost_post_button"
-msgid "Are you sure you want to post the landed cost?"
+msgctxt "model:ir.message,text:msg_landed_cost_post_no_stock_move"
+msgid "The posted landed cost \"%(landed_cost)s\" has no stock move."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_category"
+msgid "The category \"%(category)s\" on landed cost \"%(landed_cost)s\" is not used."
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_landed_cost_unused_product"
+msgid "The product \"%(product)s\" on landed cost \"%(landed_cost)s\" is not used."
 msgstr ""
 
 msgctxt "model:ir.model.button,string:landed_cost_cancel_button"
@@ -141,7 +197,7 @@ msgstr ""
 
 #, fuzzy
 msgctxt "selection:account.landed_cost,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel"
 
 #, fuzzy
