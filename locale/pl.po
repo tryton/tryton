@@ -204,10 +204,9 @@ msgctxt "model:ir.message,text:msg_work_parent_progress"
 msgid "To re-open work \"%(work)s\" you must re-open also its parent \"%(parent)s\"."
 msgstr ""
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_configuration"
 msgid "Configuration"
-msgstr "Configuration"
+msgstr "Konfiguracja"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_project"
