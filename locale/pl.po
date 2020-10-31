@@ -54,45 +54,37 @@ msgctxt "field:product.taxon,selectable:"
 msgid "Selectable"
 msgstr "Do wyboru"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_form"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Odmiany"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_cultivar_group_form"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Grupy odmian"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_form"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksony"
 
-#, fuzzy
 msgctxt "model:ir.action,name:act_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksony"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar"
 msgid "Cultivars"
-msgstr "Cultivars"
+msgstr "Odmiany"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_cultivar_group"
 msgid "Cultivar Groups"
-msgstr "Cultivar Groups"
+msgstr "Grupy odmian"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksony"
 
-#, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_taxon_tree"
 msgid "Taxons"
-msgstr "Taxons"
+msgstr "Taksony"
 
 msgctxt "model:product.cultivar,name:"
 msgid "Cultivar"
@@ -132,7 +124,7 @@ msgstr "Formularz"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Genus"
-msgstr "Genus"
+msgstr "Rodzaj"
 
 msgctxt "selection:product.taxon,rank:"
 msgid "Kingdom"
