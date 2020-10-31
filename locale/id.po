@@ -25,7 +25,7 @@ msgstr ""
 
 msgctxt "field:account.dunning,blocked:"
 msgid "Blocked"
-msgstr ""
+msgstr "Diblokir"
 
 msgctxt "field:account.dunning,company:"
 msgid "Company"
