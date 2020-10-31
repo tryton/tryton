@@ -54,6 +54,10 @@ msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr ""
 
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr ""
+
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
 msgstr ""
@@ -74,6 +78,10 @@ msgctxt "field:notification.email.log,date:"
 msgid "Date"
 msgstr ""
 
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr ""
+
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
 msgstr ""
@@ -84,6 +92,10 @@ msgstr ""
 
 msgctxt "field:notification.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
+msgstr ""
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
 msgstr ""
 
 msgctxt "field:notification.email.log,trigger:"
@@ -130,6 +142,12 @@ msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr ""
 
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
 msgstr ""
@@ -142,12 +160,22 @@ msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
 msgstr ""
 
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr ""
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr ""
 
 msgctxt "model:notification.email,name:"
-msgid "Email Notitification"
+msgid "Email Notification"
 msgstr ""
 
 msgctxt "model:notification.email.attachment,name:"
@@ -155,7 +183,7 @@ msgid "Email Notification Attachment"
 msgstr ""
 
 msgctxt "model:notification.email.log,name:"
-msgid "Notitification Email Log"
+msgid "Notification Email Log"
 msgstr ""
 
 msgctxt "selection:ir.trigger,action:"

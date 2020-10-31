@@ -54,6 +54,10 @@ msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "Destinatari secondari"
 
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr "Oggetto"
+
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
 msgstr "Trigger"
@@ -74,6 +78,10 @@ msgctxt "field:notification.email.log,date:"
 msgid "Date"
 msgstr "Data"
 
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr "Notifica"
+
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
 msgstr "Destinatari"
@@ -85,6 +93,10 @@ msgstr "Destinatari nascosti"
 msgctxt "field:notification.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "Destinatari secondari"
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
+msgstr "Risorsa"
 
 msgctxt "field:notification.email.log,trigger:"
 msgid "Trigger"
@@ -137,6 +149,12 @@ msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr "Campo che contiene i destinatari secondari."
 
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
 msgstr "Aggiungi un trigger per la notifica."
@@ -149,20 +167,32 @@ msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
 msgstr "Logs"
 
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr "E-mail di notifica"
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "Email di notifica"
 
+#, fuzzy
 msgctxt "model:notification.email,name:"
-msgid "Email Notitification"
-msgstr "E-mail di notofica"
+msgid "Email Notification"
+msgstr "Notifica email"
 
 msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
 msgstr "Allegato E-mail di notifica"
 
+#, fuzzy
 msgctxt "model:notification.email.log,name:"
-msgid "Notitification Email Log"
+msgid "Notification Email Log"
 msgstr "Log E-mail di notifica"
 
 msgctxt "selection:ir.trigger,action:"

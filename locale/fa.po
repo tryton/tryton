@@ -55,6 +55,10 @@ msgctxt "field:notification.email,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "گیرندگان ثانویه"
 
+msgctxt "field:notification.email,subject:"
+msgid "Subject"
+msgstr ""
+
 msgctxt "field:notification.email,triggers:"
 msgid "Triggers"
 msgstr "ماشه ها"
@@ -75,6 +79,11 @@ msgctxt "field:notification.email.log,date:"
 msgid "Date"
 msgstr "تاریخ"
 
+#, fuzzy
+msgctxt "field:notification.email.log,notification:"
+msgid "Notification"
+msgstr "اطلاعیه"
+
 msgctxt "field:notification.email.log,recipients:"
 msgid "Recipients"
 msgstr "گیرندگان"
@@ -86,6 +95,10 @@ msgstr "گیرنده گان پنهان"
 msgctxt "field:notification.email.log,recipients_secondary:"
 msgid "Secondary Recipients"
 msgstr "گیرندگان ثانویه"
+
+msgctxt "field:notification.email.log,resource:"
+msgid "Resource"
+msgstr ""
 
 msgctxt "field:notification.email.log,trigger:"
 msgid "Trigger"
@@ -133,6 +146,12 @@ msgctxt "help:notification.email,recipients_secondary:"
 msgid "The field that contains the secondary recipient(s)."
 msgstr "فیلد حاوی گیرنده (ها) ثانویه."
 
+msgctxt "help:notification.email,subject:"
+msgid ""
+"The Genshi syntax can be used with 'record' in the evaluation context.\n"
+"If empty the report name will be used."
+msgstr ""
+
 msgctxt "help:notification.email,triggers:"
 msgid "Add a trigger for the notification."
 msgstr "یک ماشه برای اعلان اضافه کنید."
@@ -145,20 +164,33 @@ msgctxt "model:ir.action,name:act_notification_email_log"
 msgid "Logs"
 msgstr "گزارش ها"
 
+#, fuzzy
+msgctxt "model:ir.action,name:act_notification_email_log_relate"
+msgid "Notification E-Mails"
+msgstr "ایمیل‌های اطلاعیه"
+
+msgctxt "model:ir.message,text:msg_notification_invalid_subject"
+msgid ""
+"Invalid e-mail subject in notification \"%(notification)s\" with exception "
+"\"%(exception)s\"."
+msgstr ""
+
 msgctxt "model:ir.ui.menu,name:menu_email_form"
 msgid "Notification Emails"
 msgstr "ایمیل‌های اطلاعیه"
 
+#, fuzzy
 msgctxt "model:notification.email,name:"
-msgid "Email Notitification"
+msgid "Email Notification"
 msgstr "ایمیل اطلاعیه"
 
 msgctxt "model:notification.email.attachment,name:"
 msgid "Email Notification Attachment"
 msgstr "پیوست ایمیل اطلاعیه"
 
+#, fuzzy
 msgctxt "model:notification.email.log,name:"
-msgid "Notitification Email Log"
+msgid "Notification Email Log"
 msgstr "گزارش ایمیل اطلاعیه"
 
 #, fuzzy
