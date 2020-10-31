@@ -76,6 +76,9 @@ msgstr "Relacionado"
 msgid "Print"
 msgstr "Imprimir"
 
+msgid "E-Mail"
+msgstr "Correo electrónico"
+
 msgid "Previous tab"
 msgstr "Pestaña anterior"
 
@@ -144,6 +147,12 @@ msgstr "Añadir un adjunto al registro"
 
 msgid "Add a note to the record"
 msgstr "Añadir una nota al registro"
+
+msgid "E-Mail..."
+msgstr "Correo electrónico..."
+
+msgid "Send an e-mail using the record"
+msgstr "Enviar un correo electrónico usando el registro"
 
 msgid "Export"
 msgstr "Exportar"
@@ -215,6 +224,9 @@ msgstr "Modelo: "
 
 msgid "Add..."
 msgstr "Añadir..."
+
+msgid "Template"
+msgstr "Plantilla"
 
 msgid "Attachment (%1)"
 msgstr "Adjuntos (%1)"
@@ -324,12 +336,6 @@ msgstr "Mostrar"
 msgid "Hide"
 msgstr "Ocultar"
 
-msgid "Font"
-msgstr "Tipo de letra"
-
-msgid "Size"
-msgstr "Tamaño"
-
 msgid "Open the record"
 msgstr "Abrir el registro"
 
@@ -393,8 +399,8 @@ msgstr "Día"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -495,8 +501,8 @@ msgstr "Error de aplicación"
 msgid "Report Bug"
 msgstr "Informar del error"
 
-msgid "Processing..."
-msgstr "Procesando…"
+msgid "Processing"
+msgstr "Procesando"
 
 msgid "Search..."
 msgstr "Buscar…"
@@ -509,6 +515,12 @@ msgstr "Descargar"
 
 msgid "..."
 msgstr "..."
+
+msgid "Font"
+msgstr "Tipo de letra"
+
+msgid "Size"
+msgstr "Tamaño"
 
 msgid "Attachments (%1)"
 msgstr "Adjuntos (%1)"
@@ -537,9 +549,6 @@ msgstr "Separador:"
 msgid "Quote Char:"
 msgstr "Delimitador del texto:"
 
-msgid "Encoding:"
-msgstr "Codificación:"
-
 msgid "CSV Import: %1"
 msgstr "Importación CSV: %1"
 
@@ -548,6 +557,9 @@ msgstr "Detectar automáticamente"
 
 msgid "File to Import"
 msgstr "Fichero a importar"
+
+msgid "Encoding:"
+msgstr "Codificación:"
 
 msgid "Lines to Skip:"
 msgstr "Líneas a omitir:"
@@ -614,6 +626,48 @@ msgstr "¿Cuál es el nombre de esta exportación?"
 
 msgid "Override %1 definition?"
 msgstr "Queréis sobrescribir la definición de %1?"
+
+msgid "E-mail %1"
+msgstr "Correo electrónico %1"
+
+msgid "To:"
+msgstr "A:"
+
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "CCo:"
+
+msgid "Subject:"
+msgstr "Asunto:"
+
+msgid "Reports"
+msgstr "Informes"
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-19 22:39+0000\n"
+"PO-Revision-Date: 2020-10-19 22:42+0000\n"
+"Last-Translator: Sergi Almacellas Abellana <sergi@koolpi.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.2.2\n"
+
+msgid "Attachments"
+msgstr "Adjuntos"
+
+msgid "Send"
+msgstr "Enviar"
+
+msgid "Remove attachment"
+msgstr "Eliminar adjunto"
 
 msgid "Wizard"
 msgstr "Asistente"

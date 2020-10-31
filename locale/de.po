@@ -74,6 +74,9 @@ msgstr "Beziehung"
 msgid "Print"
 msgstr "Drucken"
 
+msgid "E-Mail"
+msgstr "E-Mail"
+
 msgid "Previous tab"
 msgstr "Vorherige Registerkarte"
 
@@ -142,6 +145,12 @@ msgstr "Einen Anhang zum Datensatz hinzufügen"
 
 msgid "Add a note to the record"
 msgstr "Eine Notiz zu einem Datensatz hinzufügen"
+
+msgid "E-Mail..."
+msgstr "E-Mail..."
+
+msgid "Send an e-mail using the record"
+msgstr "Eine E-Mail basierend auf diesem Datensatz versenden"
 
 msgid "Export"
 msgstr "Export"
@@ -213,6 +222,9 @@ msgstr "Modell: "
 
 msgid "Add..."
 msgstr "Hinzufügen..."
+
+msgid "Template"
+msgstr "Vorlage"
 
 msgid "Attachment (%1)"
 msgstr "Anhänge (%1)"
@@ -324,12 +336,6 @@ msgstr "Anzeigen"
 msgid "Hide"
 msgstr "Ausblenden"
 
-msgid "Font"
-msgstr "Schriftart"
-
-msgid "Size"
-msgstr "Größe"
-
 msgid "Open the record"
 msgstr "Datensatz öffnen"
 
@@ -393,8 +399,8 @@ msgstr "Tag"
 msgid ", "
 msgstr ", "
 
-msgid ",…"
-msgstr ",…"
+msgid ",..."
+msgstr ",..."
 
 msgid "%1 (%2)"
 msgstr "%1 (%2)"
@@ -499,7 +505,7 @@ msgstr "Anwendungsfehler"
 msgid "Report Bug"
 msgstr "Fehler melden"
 
-msgid "Processing..."
+msgid "Processing"
 msgstr "Verarbeitung läuft…"
 
 msgid "Search..."
@@ -513,6 +519,12 @@ msgstr "Herunterladen"
 
 msgid "..."
 msgstr "..."
+
+msgid "Font"
+msgstr "Schriftart"
+
+msgid "Size"
+msgstr "Größe"
 
 msgid "Attachments (%1)"
 msgstr "Anhänge (%1)"
@@ -541,9 +553,6 @@ msgstr "Feldtrenner:"
 msgid "Quote Char:"
 msgstr "Anführungszeichen:"
 
-msgid "Encoding:"
-msgstr "Zeichenkodierung:"
-
 msgid "CSV Import: %1"
 msgstr "CSV-Import: %1"
 
@@ -552,6 +561,9 @@ msgstr "Automatische Erkennung"
 
 msgid "File to Import"
 msgstr "Zu importierende Datei"
+
+msgid "Encoding:"
+msgstr "Zeichenkodierung:"
 
 msgid "Lines to Skip:"
 msgstr "Zu überspringende Zeilen:"
@@ -618,6 +630,48 @@ msgstr "Wie soll der Name des Exports lauten?"
 
 msgid "Override %1 definition?"
 msgstr "Definition von %1 nicht berücksichtigen?"
+
+msgid "E-mail %1"
+msgstr "E-Mail %1"
+
+msgid "To:"
+msgstr "An:"
+
+msgid "Cc:"
+msgstr "Cc:"
+
+msgid "Bcc:"
+msgstr "Bcc:"
+
+msgid "Subject:"
+msgstr "Betreff:"
+
+msgid "Reports"
+msgstr "Berichte"
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-19 18:28+0000\n"
+"PO-Revision-Date: 2020-10-22 02:59+0000\n"
+"Last-Translator: Korbinian Preisler <timitos@virtual-things.biz>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.2.2\n"
+
+msgid "Attachments"
+msgstr "Anhänge"
+
+msgid "Send"
+msgstr "Senden"
+
+msgid "Remove attachment"
+msgstr "Anhang entfernen"
 
 msgid "Wizard"
 msgstr "Assistent"
