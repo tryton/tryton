@@ -118,10 +118,6 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Warenlager"
 
-msgctxt "field:production.assign.failed,moves:"
-msgid "Moves"
-msgstr "Lagerbewegungen"
-
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Eingänge"
@@ -263,6 +259,14 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Produktion"
 
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Produktion Ausgänge"
+
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Produktion Kommissionierung"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr "Einstandspreis aktualisiert"
@@ -274,6 +278,22 @@ msgstr "Produktion Eingänge"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Produktion Ausgänge"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Wo die produzierten Waren gelagert werden.\n"
+"Leer lassen, um die Lagerzone des Warenlagers zu verwenden."
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Woher die Produktkomponenten kommissioniert werden.\n"
+"Leer lassen, um die Lagerzone des Warenlagers zu verwenden."
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
@@ -299,13 +319,13 @@ msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
 msgstr "Produktionsaufträge"
 
-msgctxt "model:ir.action,name:wizard_assign"
-msgid "Assign Production"
-msgstr "Artikel reservieren"
-
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Stücklistenbaum"
+
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Produktionsaufträge reservieren"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
@@ -432,10 +452,6 @@ msgctxt "model:production,name:"
 msgid "Production"
 msgstr "Produktion"
 
-msgctxt "model:production.assign.failed,name:"
-msgid "Assign Production"
-msgstr "Artikel reservieren fehlgeschlagen"
-
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
 msgstr "Stückliste"
@@ -485,6 +501,10 @@ msgid "Production"
 msgstr "Produktion"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Produktionsaufträge neu planen"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
 msgstr "Einstandpreis auf Lagerbewegungen setzen"
 
@@ -493,7 +513,7 @@ msgid "Assigned"
 msgstr "Reserviert"
 
 msgctxt "selection:production,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Annulliert"
 
 msgctxt "selection:production,state:"
@@ -520,10 +540,6 @@ msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Produktion"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Folgende Artikel können mangels Lagerbestand nicht reserviert werden:"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Positionen"
@@ -535,14 +551,6 @@ msgstr "Positionen"
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Sonstiges"
-
-msgctxt "wizard_button:production.assign,failed,end:"
-msgid "OK"
-msgstr "OK"
-
-msgctxt "wizard_button:production.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Reservierung erzwingen"
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"

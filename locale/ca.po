@@ -118,10 +118,6 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Magatzem"
 
-msgctxt "field:production.assign.failed,moves:"
-msgid "Moves"
-msgstr "Moviments"
-
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Entrades"
@@ -263,6 +259,14 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Producció"
 
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Sortida de la producció"
+
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Recollida de la producció"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr "Preu de cost actualitzat"
@@ -274,6 +278,22 @@ msgstr "Entrada de la producció"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Sortida de la producció"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"On s'emagatzemen els productes produïts.\n"
+"Deixeu en blanc per utilitzar la zona d'emmagatzematge del magatzem."
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+"Des d'on es recullen els components de la producció.\n"
+"Deixeu-ho en blanc per utitlizar la zona d'emagatzematge del magatzem."
 
 msgctxt "model:ir.action,name:act_bom_form"
 msgid "BOM"
@@ -299,13 +319,13 @@ msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
 msgstr "Produccions"
 
-msgctxt "model:ir.action,name:wizard_assign"
-msgid "Assign Production"
-msgstr "Reserva la producció"
-
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "Arbre de la llista de materials"
+
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Reserva la producció"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
@@ -431,10 +451,6 @@ msgctxt "model:production,name:"
 msgid "Production"
 msgstr "Producció"
 
-msgctxt "model:production.assign.failed,name:"
-msgid "Assign Production"
-msgstr "Reserva la producció"
-
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
 msgstr "Llista de materials"
@@ -484,6 +500,10 @@ msgid "Production"
 msgstr "Producció"
 
 msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Replanifica les produccions"
+
+msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
 msgstr "Estableix cost a partir dels moviments"
 
@@ -492,7 +512,7 @@ msgid "Assigned"
 msgstr "Reservada"
 
 msgctxt "selection:production,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancel·lada"
 
 msgctxt "selection:production,state:"
@@ -519,10 +539,6 @@ msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Producció"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "No es poden reservar aquests productes:"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Línies"
@@ -534,14 +550,6 @@ msgstr "Línies"
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Informació addicional"
-
-msgctxt "wizard_button:production.assign,failed,end:"
-msgid "OK"
-msgstr "D'acord"
-
-msgctxt "wizard_button:production.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Força reserva"
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"

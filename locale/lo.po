@@ -123,10 +123,6 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr ""
 
-msgctxt "field:production.assign.failed,moves:"
-msgid "Moves"
-msgstr "ຕັດບັນຊີສາງ"
-
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr ""
@@ -295,6 +291,16 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "ຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "ຜະລິດຕະພັນ"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr ""
@@ -305,6 +311,18 @@ msgstr ""
 
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
+msgstr ""
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
 msgstr ""
 
 msgctxt "model:ir.action,name:act_bom_form"
@@ -333,13 +351,14 @@ msgctxt "model:ir.action,name:act_production_list"
 msgid "Productions"
 msgstr "ຜະລິດຕະພັນ"
 
-msgctxt "model:ir.action,name:wizard_assign"
-msgid "Assign Production"
-msgstr "Assign Production"
-
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "BOM Tree"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Assign Production"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
@@ -476,11 +495,6 @@ msgctxt "model:production,name:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
-#, fuzzy
-msgctxt "model:production.assign.failed,name:"
-msgid "Assign Production"
-msgstr "Assign Production"
-
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
 msgstr ""
@@ -533,6 +547,11 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "ຜະລິດຕະພັນ"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
 msgstr ""
@@ -544,7 +563,7 @@ msgstr "Assign"
 
 #, fuzzy
 msgctxt "selection:production,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "ຍົກເລີກແລ້ວ"
 
 #, fuzzy
@@ -577,10 +596,6 @@ msgctxt "view:product.template:"
 msgid "Production"
 msgstr "ຜະລິດຕະພັນ"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr ""
-
 #, fuzzy
 msgctxt "view:production.bom:"
 msgid "Lines"
@@ -595,15 +610,6 @@ msgstr "ຮ່ວງ"
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "ຂໍ້ມູນອື່ນໆ"
-
-#, fuzzy
-msgctxt "wizard_button:production.assign,failed,end:"
-msgid "OK"
-msgstr "ຕົກລົງ"
-
-msgctxt "wizard_button:production.assign,failed,force:"
-msgid "Force Assign"
-msgstr ""
 
 #, fuzzy
 msgctxt "wizard_button:production.bom.tree.open,start,end:"

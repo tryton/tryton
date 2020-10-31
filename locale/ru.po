@@ -121,10 +121,6 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Товарный склад"
 
-msgctxt "field:production.assign.failed,moves:"
-msgid "Moves"
-msgstr "Перемещения"
-
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Исходные"
@@ -270,6 +266,16 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Производство"
 
+#, fuzzy
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Готовая продукция производства"
+
+#, fuzzy
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Производство"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr ""
@@ -281,6 +287,18 @@ msgstr "Исходные для производства"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Готовая продукция производства"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_bom_form"
@@ -313,14 +331,14 @@ msgid "Productions"
 msgstr "Productions"
 
 #, fuzzy
-msgctxt "model:ir.action,name:wizard_assign"
-msgid "Assign Production"
-msgstr "Assign Production"
-
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "BOM Tree"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Assign Production"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_product_in_bom_output_domain_input"
@@ -460,10 +478,6 @@ msgctxt "model:production,name:"
 msgid "Production"
 msgstr "Производство"
 
-msgctxt "model:production.assign.failed,name:"
-msgid "Assign Production"
-msgstr "Назначить производство"
-
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
 msgstr "Спецификация"
@@ -515,6 +529,11 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Production"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Производства"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
 msgstr ""
@@ -523,8 +542,9 @@ msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Переданный"
 
+#, fuzzy
 msgctxt "selection:production,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Отменено"
 
 msgctxt "selection:production,state:"
@@ -552,10 +572,6 @@ msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Производство"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Не удалось назначить эти продукты:"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Строки"
@@ -567,14 +583,6 @@ msgstr "Строки"
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Другая информация"
-
-msgctxt "wizard_button:production.assign,failed,end:"
-msgid "OK"
-msgstr "Ок"
-
-msgctxt "wizard_button:production.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Принудительно назначить"
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"

@@ -120,10 +120,6 @@ msgctxt "field:production,warehouse:"
 msgid "Warehouse"
 msgstr "Skladišče"
 
-msgctxt "field:production.assign.failed,moves:"
-msgid "Moves"
-msgstr "Promet"
-
 msgctxt "field:production.bom,inputs:"
 msgid "Inputs"
 msgstr "Vhodi"
@@ -265,6 +261,16 @@ msgctxt "field:stock.location,production_location:"
 msgid "Production"
 msgstr "Proizvodnja"
 
+#, fuzzy
+msgctxt "field:stock.location,production_output_location:"
+msgid "Production Output"
+msgstr "Izhod proizvodnega naloga"
+
+#, fuzzy
+msgctxt "field:stock.location,production_picking_location:"
+msgid "Production Picking"
+msgstr "Proizvodnja"
+
 msgctxt "field:stock.move,production_cost_price_updated:"
 msgid "Cost Price Updated"
 msgstr ""
@@ -276,6 +282,18 @@ msgstr "Vhod proizvodnega naloga"
 msgctxt "field:stock.move,production_output:"
 msgid "Production Output"
 msgstr "Izhod proizvodnega naloga"
+
+msgctxt "help:stock.location,production_output_location:"
+msgid ""
+"Where the produced goods are stored.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
+
+msgctxt "help:stock.location,production_picking_location:"
+msgid ""
+"Where the production components are picked from.\n"
+"Leave empty to use the warehouse storage location."
+msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.action,name:act_bom_form"
@@ -308,14 +326,14 @@ msgid "Productions"
 msgstr "Productions"
 
 #, fuzzy
-msgctxt "model:ir.action,name:wizard_assign"
-msgid "Assign Production"
-msgstr "Assign Production"
-
-#, fuzzy
 msgctxt "model:ir.action,name:wizard_bom_tree_open"
 msgid "BOM Tree"
 msgstr "BOM Tree"
+
+#, fuzzy
+msgctxt "model:ir.action,name:wizard_production_assign"
+msgid "Assign Production"
+msgstr "Assign Production"
 
 #, fuzzy
 msgctxt ""
@@ -457,10 +475,6 @@ msgctxt "model:production,name:"
 msgid "Production"
 msgstr "Proizvodni nalog"
 
-msgctxt "model:production.assign.failed,name:"
-msgid "Assign Production"
-msgstr "Dodelitev proizvodnega naloga"
-
 msgctxt "model:production.bom,name:"
 msgid "Bill of Material"
 msgstr "Kosovnica"
@@ -512,6 +526,11 @@ msgctxt "model:stock.location,name:location_production"
 msgid "Production"
 msgstr "Production"
 
+#, fuzzy
+msgctxt "selection:ir.cron,method:"
+msgid "Reschedule Productions"
+msgstr "Productions"
+
 msgctxt "selection:ir.cron,method:"
 msgid "Set Cost from Moves"
 msgstr ""
@@ -520,8 +539,9 @@ msgctxt "selection:production,state:"
 msgid "Assigned"
 msgstr "Dodeljeno"
 
+#, fuzzy
 msgctxt "selection:production,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Preklicano"
 
 msgctxt "selection:production,state:"
@@ -549,10 +569,6 @@ msgctxt "view:product.template:"
 msgid "Production"
 msgstr "Proizvodnja"
 
-msgctxt "view:production.assign.failed:"
-msgid "Unable to assign those products:"
-msgstr "Dodelitev ni možna za naslednje izdelke:"
-
 msgctxt "view:production.bom:"
 msgid "Lines"
 msgstr "Postavke"
@@ -564,14 +580,6 @@ msgstr "Postavke"
 msgctxt "view:production:"
 msgid "Other Info"
 msgstr "Drugo"
-
-msgctxt "wizard_button:production.assign,failed,end:"
-msgid "OK"
-msgstr "V redu"
-
-msgctxt "wizard_button:production.assign,failed,force:"
-msgid "Force Assign"
-msgstr "Rezervacija"
 
 msgctxt "wizard_button:production.bom.tree.open,start,end:"
 msgid "Cancel"
