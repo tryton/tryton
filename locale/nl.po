@@ -106,6 +106,10 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr "wederkerend verbruik"
 
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
 msgstr "Omschrijving"
@@ -276,7 +280,7 @@ msgstr "De huidige status van het abonnement."
 
 msgctxt "help:sale.subscription.line,subscription:"
 msgid "Add the line below the subscription."
-msgstr "Voeg de onderstaande regel  toeaan  het abonnement."
+msgstr "Voeg de onderstaande regel toeaan het abonnement."
 
 msgctxt "help:sale.subscription.recurrence.rule,bymonth:"
 msgid "A comma separated list of integers."
@@ -389,7 +393,7 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_consumption_modify_invoiced"
 msgid "You cannot modify invoiced consumption \"%(consumption)s\"."
-msgstr "U kunt het gefactureerde verbruik  \"%(consumption)s\" niet wijzigen."
+msgstr "U kunt het gefactureerde verbruik \"%(consumption)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_erase_party_pending_subscription"
 msgid ""
@@ -404,7 +408,7 @@ msgid ""
 "Invalid \"%(field)s\" \"%(value)s\" in recurence rule "
 "\"%(recurrence_rule)s\" with exception \"%(exception)s\"."
 msgstr ""
-"\"%(field)s\" \"%(value)s\" in herhalingsregel  \"%(recurrence_rule)s\" "
+"\"%(field)s\" \"%(value)s\" in herhalingsregel \"%(recurrence_rule)s\" "
 "is/zijn ongeldig met fout \"%(exception)s\"."
 
 msgctxt "model:ir.model.button,string:subscription_cancel_button"
@@ -492,7 +496,7 @@ msgid "Generate Subscription Line Consumptions"
 msgstr "Consumpties voor abonnementsregels genereren"
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Geannuleerd"
 
 msgctxt "selection:sale.subscription,state:"

@@ -110,6 +110,11 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Waluta"
+
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
 msgstr "Opis"
@@ -503,8 +508,9 @@ msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Line Consumptions"
 msgstr "Generate Subscription Line Consumptions"
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Anulowano"
 
 msgctxt "selection:sale.subscription,state:"

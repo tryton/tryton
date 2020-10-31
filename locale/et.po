@@ -110,6 +110,11 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr "Kasutuse kordus"
 
+#, fuzzy
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
 msgstr "Selgitus"
@@ -489,8 +494,9 @@ msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Line Consumptions"
 msgstr ""
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Tühistatud"
 
 msgctxt "selection:sale.subscription,state:"

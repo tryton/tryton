@@ -110,6 +110,11 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr "باز تکرار مصرف"
 
+#, fuzzy
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
 msgstr "شرح"
@@ -496,8 +501,9 @@ msgctxt "selection:ir.cron,method:"
 msgid "Generate Subscription Line Consumptions"
 msgstr "تولید سطر مصرفی ها در اشتراک"
 
+#, fuzzy
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "لغو شده"
 
 msgctxt "selection:sale.subscription,state:"

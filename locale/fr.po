@@ -106,6 +106,10 @@ msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr "Récurrence de consommation"
 
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Devise"
+
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
 msgstr "Description"
@@ -494,8 +498,8 @@ msgid "Generate Subscription Line Consumptions"
 msgstr "Générer les lignes de consommation d'abonnements"
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
-msgstr "Annulé"
+msgid "Cancelled"
+msgstr "Annulée"
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Closed"

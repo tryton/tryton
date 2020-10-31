@@ -65,11 +65,11 @@ msgstr "Pihak"
 
 msgctxt "field:sale.subscription,payment_term:"
 msgid "Payment Term"
-msgstr ""
+msgstr "Masa Pembayaran"
 
 msgctxt "field:sale.subscription,quoted_by:"
 msgid "Quoted By"
-msgstr ""
+msgstr "Dikutip Oleh"
 
 msgctxt "field:sale.subscription,reference:"
 msgid "Reference"
@@ -85,13 +85,12 @@ msgstr "Tanggal Awal"
 
 msgctxt "field:sale.subscription,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:sale.subscription.create_invoice.start,date:"
 msgid "Date"
 msgstr "Tanggal"
 
-#, fuzzy
 msgctxt "field:sale.subscription.line,company:"
 msgid "Company"
 msgstr "Perusahaan"
@@ -107,6 +106,11 @@ msgstr ""
 msgctxt "field:sale.subscription.line,consumption_recurrence:"
 msgid "Consumption Recurrence"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:sale.subscription.line,currency:"
+msgid "Currency"
+msgstr "Mata uang"
 
 msgctxt "field:sale.subscription.line,description:"
 msgid "Description"
@@ -334,7 +338,7 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_subscription_invoice_relate"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.action,name:act_subscription_line_consumption_form"
 msgid "Consumptions"
@@ -486,8 +490,8 @@ msgid "Generate Subscription Line Consumptions"
 msgstr ""
 
 msgctxt "selection:sale.subscription,state:"
-msgid "Canceled"
-msgstr ""
+msgid "Cancelled"
+msgstr "Dibatalkan"
 
 msgctxt "selection:sale.subscription,state:"
 msgid "Closed"
