@@ -20,7 +20,7 @@ msgstr "Z podatkiem"
 
 msgctxt "field:product.price_list,unit:"
 msgid "Unit"
-msgstr ""
+msgstr "Jednostka"
 
 msgctxt "field:product.price_list.line,category:"
 msgid "Category"

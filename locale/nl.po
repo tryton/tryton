@@ -101,7 +101,7 @@ msgid ""
 "Invalid formula \"%(formula)s\" in price list line \"%(line)s\" with "
 "exception \"%(exception)s\"."
 msgstr ""
-"Ongeldige formule \"%(formula)s\" in prijslijstlijn \"%(line)s\"  met "
+"Ongeldige formule \"%(formula)s\" in prijslijstlijn \"%(line)s\" met "
 "uitzondering \"%(exception)s\"."
 
 msgctxt "model:ir.rule.group,name:rule_group_product_list"
