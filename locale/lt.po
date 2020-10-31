@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontaktai"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Miestas"
@@ -256,6 +261,10 @@ msgstr "Paskirties vieta"
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Šaltinis"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
 
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
@@ -609,6 +618,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Albanian VAT Number"
 msgstr "Albanijos PVM kodas"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Vokietijos mokesčių mokėtojo kodas"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Argentinian Tax Number"
 msgstr "Argentinos mokesčių mokėtojo kodas"
@@ -681,9 +695,24 @@ msgctxt "selection:party.identifier,type:"
 msgid "Colombian Identity Code"
 msgstr "Kolumbijos identifikacijos kodas"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Ispanijos užsieniečio kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Estijos asmens kodas"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Croatian Identification Number"
 msgstr "Kroatijos identifikavimo kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Kinijos rezidento identifikacijos kortelės numeris"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Cypriot VAT Number"
@@ -809,6 +838,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Greek VAT Number"
 msgstr "Graikijos PVM kodas"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Vokietijos mokesčių mokėtojo kodas"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Hungarian VAT Number"
 msgstr "Vengrijos PVM kodas"
@@ -845,6 +879,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Italian VAT Number"
 msgstr "Italijos PVM kodas"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Ispanijos užsieniečio kodas"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Latvian VAT Number"
 msgstr "Latvijos PVM kodas"
@@ -873,9 +912,18 @@ msgctxt "selection:party.identifier,type:"
 msgid "Mexican Tax Number"
 msgstr "Meksikos mokesčių mokėtojo kodas"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Kroatijos identifikavimo kodas"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Monacan VAT Number"
 msgstr "Monako PVM kodas"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr ""
 
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian Organisation Number"
@@ -884,6 +932,21 @@ msgstr "Norvegijos organizacijos kodas"
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian VAT Number"
 msgstr "Norvegijos PVM kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Vokietijos mokesčių mokėtojo kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Australijos įmonės kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Kroatijos identifikavimo kodas"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish National Identification Number"
@@ -936,6 +999,16 @@ msgstr "Slovakijos PVM kodas"
 msgctxt "selection:party.identifier,type:"
 msgid "Slovenian VAT Number"
 msgstr "Slovėnijos PVM kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Kroatijos identifikavimo kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Prancūzijos mokesčių mokėtojo kodas"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Company Tax"
@@ -1008,6 +1081,16 @@ msgstr "Jungtinės Karalystės (ir Meno salos) PVM kodas"
 msgctxt "selection:party.identifier,type:"
 msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "Jungtinės Karalystės nacionalinės sveikatos tarnybos paciento numeris"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Vokietijos mokesčių mokėtojo kodas"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Europos PVM kodas"
 
 msgctxt "view:party.party:"
 msgid "General"

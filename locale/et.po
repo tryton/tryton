@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontakteerumisviis"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Linn"
@@ -258,6 +263,10 @@ msgstr "Sihtkoht"
 msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Lähtekoht"
+
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
 
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
@@ -613,6 +622,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Albanian VAT Number"
 msgstr "Albaania KMKR"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Saksamaa maksu number"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Argentinian Tax Number"
 msgstr "Argentiina KMKR"
@@ -685,9 +699,24 @@ msgctxt "selection:party.identifier,type:"
 msgid "Colombian Identity Code"
 msgstr "Kolumbia isikukood"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Hispaania võõramaalase number"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Eesti isikukood"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Croatian Identification Number"
 msgstr "Horvaatia tunnusnumber"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Hiina residendi tunnuskaardi number"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Cypriot VAT Number"
@@ -813,6 +842,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Greek VAT Number"
 msgstr "Kreeka KM number"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Saksamaa maksu number"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Hungarian VAT Number"
 msgstr "Ungari KM number"
@@ -849,6 +883,11 @@ msgctxt "selection:party.identifier,type:"
 msgid "Italian VAT Number"
 msgstr "Itaalia KMKR"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Hispaania võõramaalase number"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Latvian VAT Number"
 msgstr "Läti KMKR"
@@ -877,9 +916,18 @@ msgctxt "selection:party.identifier,type:"
 msgid "Mexican Tax Number"
 msgstr "Mehhiko KM number"
 
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Horvaatia tunnusnumber"
+
 msgctxt "selection:party.identifier,type:"
 msgid "Monacan VAT Number"
 msgstr "Monaco Km number"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr ""
 
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian Organisation Number"
@@ -888,6 +936,21 @@ msgstr "Norra RegNr."
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian VAT Number"
 msgstr "Norra KM number"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Saksamaa maksu number"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Austraalia ettevõtte number"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Horvaatia tunnusnumber"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish National Identification Number"
@@ -940,6 +1003,16 @@ msgstr "Slovakkia KM number"
 msgctxt "selection:party.identifier,type:"
 msgid "Slovenian VAT Number"
 msgstr "Sloveenia KMKR"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Horvaatia tunnusnumber"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Prantsuse KMKR"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Company Tax"
@@ -1013,6 +1086,16 @@ msgstr "Ühendkuningriigi (ja Mani saare) KMKR"
 msgctxt "selection:party.identifier,type:"
 msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "Ühendkuningriigi rahvuslik tervise teenuste patsiendi tunnus"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Saksamaa maksu number"
+
+#, fuzzy
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Euroopa KMKR"
 
 msgctxt "view:party.party:"
 msgid "General"

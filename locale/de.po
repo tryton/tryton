@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Kontaktinformation"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Stadt"
@@ -254,6 +258,12 @@ msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Quelle"
 
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Legt fest welche E-Mail-Adresse von den Kontaktmöglichkeiten der Partei "
+"genutzt werden soll."
+
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr ""
@@ -277,6 +287,7 @@ msgstr ""
 "Verfügbare Variablen (auch in Großbuchstaben):\n"
 "- ${party_name}\n"
 "- ${name}\n"
+"- ${attn}\n"
 "- ${street}\n"
 "- ${zip}\n"
 "- ${city}\n"
@@ -630,6 +641,10 @@ msgid "Albanian VAT Number"
 msgstr "Albanische Umsatzsteuernummer (TVSH)"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Andorranische Steuernummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Argentinian Tax Number"
 msgstr "Argentinische Steuernummer"
 
@@ -702,8 +717,20 @@ msgid "Colombian Identity Code"
 msgstr "Kolumbianische Identitätsnummer (NIT)"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Costa-ricanische Ausländernummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Costa-ricanische Personalausweisnummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Croatian Identification Number"
 msgstr "Kroatische persönliche Identifikationsnummer (OIB)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Kubanische Personalausweisnummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Cypriot VAT Number"
@@ -831,6 +858,10 @@ msgid "Greek VAT Number"
 msgstr "Griechische Umsatzsteuer-Identifikationsnummer (FPA, ΦΠΑ, ΑΦΜ)"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Guatemaltekische Steuernummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Hungarian VAT Number"
 msgstr "Ungarische Umsatzsteuer-Identifikationsnummer (ANUM)"
 
@@ -868,6 +899,10 @@ msgid "Italian VAT Number"
 msgstr "Italienische Umsatzsteuer-Identifikationsnummer (Partita IVA)"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Japanische Unternehmensnummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Latvian VAT Number"
 msgstr "Lettische Umsatzsteuer-Identifikationsnummer (PVN)"
 
@@ -896,8 +931,16 @@ msgid "Mexican Tax Number"
 msgstr "Mexikanische Steuernummer (RFC)"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Moldavische Unternehmensnummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Monacan VAT Number"
 msgstr "Monegassische Umsatzsteuer-Identifikationsnummer (n° TVA)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Neuseeländische Steuernummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian Organisation Number"
@@ -906,6 +949,18 @@ msgstr "Norwegische Organisationsnummer (Orgnr)"
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian VAT Number"
 msgstr "Norwegische Umsatzsteuer-Identifikationsnummer (MVA)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Paraguayanisch Steuernummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Peruanische Unternehmenssteuernummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Peruanische Identifikationsnummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish National Identification Number"
@@ -958,6 +1013,14 @@ msgstr "Slowakische Umsatzsteuer-Identifikationsnummer (IČ DPH)"
 msgctxt "selection:party.identifier,type:"
 msgid "Slovenian VAT Number"
 msgstr "Slowenische Umsatzsteuer-Identifikationsnummer (ID za DDV)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Südafrikanische Personalausweisnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Südafrikanische Steueridentifikationsnummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Company Tax"
@@ -1030,6 +1093,14 @@ msgstr "Britische (und Isle of Man) Umsatzsteuer-Identifikationsnummer (VAT)"
 msgctxt "selection:party.identifier,type:"
 msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "Britische nationale Patientennummer des Gesundheitssystems (NHS)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Uru­gu­a­yische Steuernummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Venezolanische Umsatzsteuernummer"
 
 msgctxt "view:party.party:"
 msgid "General"

@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.email.template,contact_mechanism:"
+msgid "Contact Mechanism"
+msgstr "Contactmogelijkheid"
+
 msgctxt "field:party.address,city:"
 msgid "City"
 msgstr "Stad"
@@ -254,6 +258,12 @@ msgctxt "field:party.replace.ask,source:"
 msgid "Source"
 msgstr "Bron"
 
+msgctxt "help:ir.email.template,contact_mechanism:"
+msgid "Define which email address to use from the party's contact mechanisms."
+msgstr ""
+"Bepaal welke e-mail u wilt gebruiken van de contactmechanismen van de "
+"relatie."
+
 msgctxt "help:party.address,party_name:"
 msgid "If filled, replace the name of the party for address formatting"
 msgstr ""
@@ -430,7 +440,7 @@ msgstr ""
 msgctxt "model:ir.message,text:msg_different_name"
 msgid "Parties have different names: \"%(source_name)s\" vs \"%(destination_name)s\"."
 msgstr ""
-"De Relaties  hebben verschillende namen: %(source_name)s\" vs "
+"De Relaties hebben verschillende namen: %(source_name)s\" vs "
 "\"%(destination_name)s\"."
 
 msgctxt "model:ir.message,text:msg_different_tax_identifier"
@@ -443,16 +453,15 @@ msgstr ""
 
 msgctxt "model:ir.message,text:msg_erase_active_party"
 msgid "Party \"%(party)s\" cannot be erased because they are still active."
-msgstr ""
-"De relatie  \"%(party)s\"  kan niet gewist worden  omdat ze nog  actief is."
+msgstr "De relatie \"%(party)s\" kan niet gewist worden omdat ze nog actief is."
 
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for party \"%(party)s\" is not valid."
-msgstr "Het  %(type)s \"%(code)s\" voor relatie \"%(party)s\" is niet geldig."
+msgstr "Het %(type)s \"%(code)s\" voor relatie \"%(party)s\" is niet geldig."
 
 msgctxt "model:ir.message,text:msg_invalid_format"
 msgid "Invalid format \"%(format)s\" with exception \"%(exception)s\"."
-msgstr "Ongeldige notatie  \"%(format)s\"met foutmelding\"%(exception)s\"."
+msgstr "Ongeldige notatie \"%(format)s\"met foutmelding\"%(exception)s\"."
 
 msgctxt "model:ir.message,text:msg_invalid_phone_number"
 msgid "The phone number \"%(phone)s\" for party \"%(party)s\" is not valid."
@@ -460,7 +469,7 @@ msgstr "Het telefoonnummer \"%(phone)s\" voor relatie \"%(party)s\" is niet geld
 
 msgctxt "model:ir.message,text:msg_party_code_unique"
 msgid "The code on party must be unique."
-msgstr "De code voor relatie  moet uniek zijn."
+msgstr "De code voor relatie moet uniek zijn."
 
 msgctxt "model:ir.message,text:msg_vies_unavailable"
 msgid "The VIES service is unavailable, try again later."
@@ -532,7 +541,7 @@ msgstr "Categorie"
 
 msgctxt "model:party.check_vies.result,name:"
 msgid "Check VIES"
-msgstr "controleer  VIES"
+msgstr "controleer VIES"
 
 msgctxt "model:party.configuration,name:"
 msgid "Party Configuration"
@@ -623,6 +632,10 @@ msgid "Albanian VAT Number"
 msgstr "Albanees BTW-nummer"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Andorra Tax Number"
+msgstr "Andorrees belastingnummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Argentinian Tax Number"
 msgstr "Argentijns belastingnummer"
 
@@ -695,8 +708,20 @@ msgid "Colombian Identity Code"
 msgstr "Colombiaanse identiteitscode"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Foreigners ID Number"
+msgstr "Costa Ricaans vreemdelingennummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Costa Rica Physical Person ID Number"
+msgstr "Costa Ricaans Persoonlijk ID-nummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Croatian Identification Number"
 msgstr "Kroatisch identificatienummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Cuban Identity Card Number"
+msgstr "Cubaans identiteitskaartnummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Cypriot VAT Number"
@@ -823,6 +848,10 @@ msgid "Greek VAT Number"
 msgstr "Grieks BTW-nummer"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Guatemala Tax Number"
+msgstr "Belastingnummer van Guatemala"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Hungarian VAT Number"
 msgstr "Hongaars BTW-nummer"
 
@@ -859,6 +888,10 @@ msgid "Italian VAT Number"
 msgstr "Italiaans BTW-nummer"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Japanese Corporate Number"
+msgstr "Japans bedrijfsnummer"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Latvian VAT Number"
 msgstr "Letlands BTW-nummer"
 
@@ -887,8 +920,16 @@ msgid "Mexican Tax Number"
 msgstr "Mexicaans belastingnummer"
 
 msgctxt "selection:party.identifier,type:"
+msgid "Moldavian Company Identification Number"
+msgstr "Identificatienummer van het Moldavische bedrijf"
+
+msgctxt "selection:party.identifier,type:"
 msgid "Monacan VAT Number"
 msgstr "Monegasque btw-identificatienummer (nr. TVA)"
+
+msgctxt "selection:party.identifier,type:"
+msgid "New Zealand Inland Revenue Department Number"
+msgstr "Nummer van de belastingdienst van Nieuw-Zeeland"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian Organisation Number"
@@ -897,6 +938,18 @@ msgstr "Noors organisatienummer"
 msgctxt "selection:party.identifier,type:"
 msgid "Norwegian VAT Number"
 msgstr "Noors BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Paraguay Tax Number"
+msgstr "Belastingnummer van Paraguay"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Company Tax Number"
+msgstr "Peruviaans vennootschapsbelastingnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Peruvian Identity Number"
+msgstr "Peruviaans identificatienummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Polish National Identification Number"
@@ -912,7 +965,7 @@ msgstr "Pools BTW-nummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Portuguese VAT Number"
-msgstr "Portugees  BTW-nummer"
+msgstr "Portugees BTW-nummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Romanian Numerical Personal Code"
@@ -940,7 +993,7 @@ msgstr "Servische belastingidentificatie"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Slovak Birth Number"
-msgstr "Slowaaks geboortegetal  (RČ)"
+msgstr "Slowaaks geboortegetal (RČ)"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Slovak VAT Number"
@@ -949,6 +1002,14 @@ msgstr "Slowaaks BTW-nummer"
 msgctxt "selection:party.identifier,type:"
 msgid "Slovenian VAT Number"
 msgstr "Sloveens BTW-nummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Identity Document Number"
+msgstr "Zuid-Afrikaans identiteitsdocumentnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "South African Tax Identification Number"
+msgstr "Zuid-Afrikaans belastingidentificatienummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "Spanish Company Tax"
@@ -1000,7 +1061,7 @@ msgstr "Amerikaans werkgeversidentificatienummer"
 
 msgctxt "selection:party.identifier,type:"
 msgid "U.S. Individual Taxpayer Identification Number"
-msgstr "Amerikaans identificatienummer individuele belastingbetaler  (ITIN)"
+msgstr "Amerikaans identificatienummer individuele belastingbetaler (ITIN)"
 
 msgctxt "selection:party.identifier,type:"
 msgid "U.S. Preparer Tax Identification Number"
@@ -1021,6 +1082,14 @@ msgstr "BTW-nummer van het Verenigd Koninkrijk (en Isle of Man)"
 msgctxt "selection:party.identifier,type:"
 msgid "United Kingdom National Health Service Patient Identifier"
 msgstr "UK National Healthcare System (NHS) Patiëntnummer"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Uruguay Tax Number"
+msgstr "Belastingnummer in Uruguay"
+
+msgctxt "selection:party.identifier,type:"
+msgid "Venezuelan VAT Number"
+msgstr "Venezolaans btw-nummer"
 
 msgctxt "view:party.party:"
 msgid "General"
