@@ -115,6 +115,11 @@ msgctxt "field:purchase.line,company:"
 msgid "Company"
 msgstr "Organizacija"
 
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
 msgstr "Pristatymo data"
@@ -271,6 +276,15 @@ msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Prekė"
 
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "Valiuta"
+
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
 msgstr "Tiekėjas"
@@ -282,6 +296,10 @@ msgstr "Kiekis"
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Kaina"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -487,6 +505,10 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "Minimalus kiekis"
 
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr ""
@@ -583,6 +605,12 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Juodraštis"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "Išimtis"
 
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
@@ -945,8 +973,9 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr "Laukianti apmokėjimo"
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Anuliuota"
 
 msgctxt "selection:purchase.purchase,state:"
@@ -986,13 +1015,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Tiekėjai"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Pasirinkite sąskaitas faktūras atkūrimui"
 
 #, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Pasirinkite sąskaitas faktūras atkūrimui"
 
 #, fuzzy
@@ -1021,7 +1051,7 @@ msgid "Purchase"
 msgstr "Pirkimas"
 
 msgctxt "view:purchase.return_purchase.start:"
-msgid "Are you sure to return those/this purchase(s)?"
+msgid "Are you sure to return these/this purchase(s)?"
 msgstr ""
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"

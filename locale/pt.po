@@ -115,6 +115,11 @@ msgctxt "field:purchase.line,company:"
 msgid "Company"
 msgstr "Empresa"
 
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
 msgstr "Data de entrega"
@@ -272,6 +277,15 @@ msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Produto"
 
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "Moeda"
+
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
 msgstr "Fornecedor"
@@ -283,6 +297,10 @@ msgstr "Quantidade"
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Preço unitário"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -490,6 +508,10 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "Quantidade mínima"
 
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr "A data de entrega padrão para cada linha."
@@ -602,6 +624,12 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "Exceção"
 
 #, fuzzy
 msgctxt ""
@@ -982,8 +1010,9 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr "Espera"
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Cancelado"
 
 msgctxt "selection:purchase.purchase,state:"
@@ -1023,12 +1052,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Fornecedores"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Escolha as faturas a recriar"
 
+#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Escolha a movimentação a recriar"
 
 #, fuzzy
@@ -1057,7 +1088,7 @@ msgid "Purchase"
 msgstr "Compra"
 
 msgctxt "view:purchase.return_purchase.start:"
-msgid "Are you sure to return those/this purchase(s)?"
+msgid "Are you sure to return these/this purchase(s)?"
 msgstr ""
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"

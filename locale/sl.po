@@ -115,6 +115,11 @@ msgctxt "field:purchase.line,company:"
 msgid "Company"
 msgstr "Družba"
 
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
 msgstr "Datum dostave"
@@ -272,6 +277,15 @@ msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "Izdelek"
 
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
 msgstr "Dobavitelj"
@@ -283,6 +297,10 @@ msgstr "Količina"
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "Cena"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -488,6 +506,10 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "Minimalna količina"
 
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr "Privzet datum dostave za postavko."
@@ -600,6 +622,12 @@ msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_draft"
 msgid "Draft"
 msgstr "Draft"
+
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "Pridržano"
 
 #, fuzzy
 msgctxt ""
@@ -980,8 +1008,9 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr "Čakajoče"
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "Preklicano"
 
 msgctxt "selection:purchase.purchase,state:"
@@ -1021,12 +1050,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "Dobavitelji"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "Izbor računov za ponovno izdelavo"
 
+#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "Izbor prometa za ponovno izdelavo"
 
 #, fuzzy
@@ -1055,7 +1086,7 @@ msgid "Purchase"
 msgstr "Nabavni nalog"
 
 msgctxt "view:purchase.return_purchase.start:"
-msgid "Are you sure to return those/this purchase(s)?"
+msgid "Are you sure to return these/this purchase(s)?"
 msgstr ""
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"

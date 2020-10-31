@@ -28,7 +28,7 @@ msgstr "客户代码"
 
 msgctxt "field:party.party.customer_code,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:product.product,product_suppliers:"
 msgid "Suppliers"
@@ -112,6 +112,11 @@ msgstr "合计"
 msgctxt "field:purchase.line,company:"
 msgid "Company"
 msgstr "公司"
+
+#, fuzzy
+msgctxt "field:purchase.line,currency:"
+msgid "Currency"
+msgstr "货币"
 
 msgctxt "field:purchase.line,delivery_date:"
 msgid "Delivery Date"
@@ -269,6 +274,15 @@ msgctxt "field:purchase.product_supplier,template:"
 msgid "Product"
 msgstr "产品"
 
+msgctxt "field:purchase.product_supplier,uom:"
+msgid "UOM"
+msgstr ""
+
+#, fuzzy
+msgctxt "field:purchase.product_supplier.price,currency:"
+msgid "Currency"
+msgstr "货币"
+
 msgctxt "field:purchase.product_supplier.price,product_supplier:"
 msgid "Supplier"
 msgstr "供货商"
@@ -280,6 +294,10 @@ msgstr "数量"
 msgctxt "field:purchase.product_supplier.price,unit_price:"
 msgid "Unit Price"
 msgstr "单价"
+
+msgctxt "field:purchase.product_supplier.price,uom:"
+msgid "UOM"
+msgstr ""
 
 msgctxt "field:purchase.purchase,comment:"
 msgid "Comment"
@@ -357,11 +375,11 @@ msgstr "采购编号"
 
 msgctxt "field:purchase.purchase,party:"
 msgid "Party"
-msgstr "参与对象"
+msgstr "参与者"
 
 msgctxt "field:purchase.purchase,party_lang:"
 msgid "Party Language"
-msgstr "参与对象的语言"
+msgstr "参与者的语言"
 
 msgctxt "field:purchase.purchase,payment_term:"
 msgid "Payment Term"
@@ -486,6 +504,10 @@ msgctxt "help:purchase.product_supplier.price,quantity:"
 msgid "Minimal quantity."
 msgstr "最小数量."
 
+msgctxt "help:purchase.product_supplier.price,uom:"
+msgid "The unit in which the quantity is specified."
+msgstr ""
+
 msgctxt "help:purchase.purchase,delivery_date:"
 msgid "The default delivery date for each line."
 msgstr "默认交货日期."
@@ -500,7 +522,7 @@ msgstr "发票"
 
 msgctxt "model:ir.action,name:act_open_supplier"
 msgid "Parties associated to Purchases"
-msgstr "与采购相关的各个参与对象."
+msgstr "与采购相关的各个参与者"
 
 msgctxt "model:ir.action,name:act_product_supplier_form"
 msgid "Product Suppliers"
@@ -582,6 +604,12 @@ msgctxt ""
 msgid "Draft"
 msgstr "草案"
 
+#, fuzzy
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_purchase_form_domain_exception"
+msgid "Exception"
+msgstr "异常"
+
 msgctxt ""
 "model:ir.action.act_window.domain,name:act_purchase_form_domain_processing"
 msgid "Processing"
@@ -602,7 +630,7 @@ msgctxt "model:ir.message,text:msg_erase_party_pending_purchase"
 msgid ""
 "You cannot erase party \"%(party)s\" while they have pending purchases with "
 "company \"%(company)s\"."
-msgstr "你不能删除参与对象 \"%(party)s\" ， 因为它与公司 \"%(company)s\" 有未完成的采购."
+msgstr "你不能删除参与者 \"%(party)s\" ， 因为它与公司 \"%(company)s\" 有未完成的采购."
 
 msgctxt "model:ir.message,text:msg_purchase_delete_cancel"
 msgid "To delete purchase \"%(purchase)s\" you must cancel it."
@@ -648,7 +676,7 @@ msgctxt "model:ir.message,text:msg_purchase_supplier_location_required"
 msgid ""
 "To process purchase \"%(purchase)s\" you must set a supplier location on "
 "party \"%(party)s\"."
-msgstr "要处理采购 \"%(purchase)s\" ， 你必须设置参与对象\"%(party)s\"对应的供应商位置 ."
+msgstr "要处理采购 \"%(purchase)s\" ， 你必须设置参与者\"%(party)s\"对应的供应商位置 ."
 
 msgctxt "model:ir.message,text:msg_warehouse_required_for_quotation"
 msgid ""
@@ -731,7 +759,7 @@ msgstr "报告中"
 
 msgctxt "model:ir.ui.menu,name:menu_supplier"
 msgid "Parties associated to Purchases"
-msgstr "与采购相关的各个参与对象."
+msgstr "与采购相关的各个参与者"
 
 msgctxt "model:party.party.customer_code,name:"
 msgid "Party Customer Code"
@@ -943,8 +971,9 @@ msgctxt "selection:purchase.purchase,shipment_state:"
 msgid "Waiting"
 msgstr "正在等待"
 
+#, fuzzy
 msgctxt "selection:purchase.purchase,state:"
-msgid "Canceled"
+msgid "Cancelled"
 msgstr "已取消"
 
 msgctxt "selection:purchase.purchase,state:"
@@ -983,12 +1012,14 @@ msgctxt "view:product.template:"
 msgid "Suppliers"
 msgstr "供应商"
 
+#, fuzzy
 msgctxt "view:purchase.handle.invoice.exception.ask:"
-msgid "Choose invoices to recreate"
+msgid "Choose invoices to recreate:"
 msgstr "选择要重新创建的发票"
 
+#, fuzzy
 msgctxt "view:purchase.handle.shipment.exception.ask:"
-msgid "Choose move to recreate"
+msgid "Choose move to recreate:"
 msgstr "选择要重新创建的移动"
 
 msgctxt "view:purchase.line:"
@@ -1016,7 +1047,7 @@ msgid "Purchase"
 msgstr "采购"
 
 msgctxt "view:purchase.return_purchase.start:"
-msgid "Are you sure to return those/this purchase(s)?"
+msgid "Are you sure to return these/this purchase(s)?"
 msgstr ""
 
 msgctxt "wizard_button:purchase.handle.invoice.exception,ask,end:"
