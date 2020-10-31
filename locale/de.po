@@ -1,0 +1,100 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:stock.shipment.assign.manual.show,move:"
+msgid "Move"
+msgstr "Bewegung"
+
+msgctxt "field:stock.shipment.assign.manual.show,move_quantity:"
+msgid "Move Quantity"
+msgstr "Menge Lagerbewegung"
+
+msgctxt "field:stock.shipment.assign.manual.show,place:"
+msgid "Place"
+msgstr "Platz"
+
+msgctxt "field:stock.shipment.assign.manual.show,quantity:"
+msgid "Quantity"
+msgstr "Menge"
+
+msgctxt "field:stock.shipment.assign.manual.show,skipped:"
+msgid "Skipped"
+msgstr "Übersprungen"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit:"
+msgid "Unit"
+msgstr "Einheit"
+
+msgctxt "field:stock.shipment.assign.manual.show,unit_digits:"
+msgid "Unit Digits"
+msgstr "Nachkommastellen"
+
+msgctxt "help:stock.shipment.assign.manual.show,quantity:"
+msgid ""
+"The maximum quantity to assign from the place.\n"
+"Leave empty for the full quantity of the move."
+msgstr ""
+"Die maximale Menge, die von diesem Platz reserviert werden kann.\n"
+"Leer lassen für die gesamte Menge der Lagerbewegung."
+
+msgctxt "model:ir.action,name:wizard_production_assign_manual"
+msgid "Manual Assign Production"
+msgstr "Manuelle Reservierung Produktion"
+
+msgctxt "model:ir.action,name:wizard_shipment_in_return_assign_manual"
+msgid "Manual Assign Supplier Return Shipment"
+msgstr "Manuelle Reservierung Warenrückgabe (an Lieferanten)"
+
+msgctxt "model:ir.action,name:wizard_shipment_internal_assign_manual"
+msgid "Manual Assign Internal Shipment"
+msgstr "Manuelle Reservierung Interne Lieferung"
+
+msgctxt "model:ir.action,name:wizard_shipment_out_assign_manual"
+msgid "Manual Assign Customer Shipment"
+msgstr "Manuelle Reservierung Warenausgangslieferungen"
+
+msgctxt "model:ir.message,text:msg_assign_failed"
+msgid "Failed to assign of %(move)s from %(place)s, please retry."
+msgstr ""
+"Die Reservierung für Lagerbewegung %(move)s von Platz %(place)s ist "
+"fehlgeschlagen. Bitte nochmal versuchen."
+
+msgctxt "model:ir.message,text:msg_invalid_quantity"
+msgid "The quantity must be between 0 and %(quantity)s."
+msgstr "Die Menge muss zwischen 0 und %(quantity)s liegen."
+
+msgctxt "model:ir.model.button,string:production_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_in_return_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_internal_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt ""
+"model:ir.model.button,string:shipment_out_assign_manual_wizard_button"
+msgid "Manual Assign"
+msgstr "Manuelle Reservierung"
+
+msgctxt "model:stock.shipment.assign.manual.show,name:"
+msgid "Manual Assign Shipment"
+msgstr "Manuelle Reservierung Lieferung"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,assign:"
+msgid "Assign"
+msgstr "Reservieren"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,end:"
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgctxt "wizard_button:stock.shipment.assign.manual,show,skip:"
+msgid "Skip"
+msgstr "Überspringen"
