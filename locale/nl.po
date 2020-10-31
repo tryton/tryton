@@ -8,7 +8,7 @@ msgid ""
 "\"%(line)s\" is lower than its quantity (%(quantity)s%(unit)s)."
 msgstr ""
 "De voorspelde hoeveelheid ((%(forecast_quantity)s%(default_uom)s) voor regel"
-" \"%(line)s\" is kleiner dan de hoeveelheid  (%(quantity)s%(unit)s)."
+" \"%(line)s\" is kleiner dan de hoeveelheid (%(quantity)s%(unit)s)."
 
 msgctxt "model:res.group,name:group_sale_stock_quantity"
 msgid "Sale Stock Quantity"
