@@ -1,0 +1,236 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:marketing.email,email:"
+msgid "E-mail"
+msgstr "Correu electrònic"
+
+msgctxt "field:marketing.email,email_token:"
+msgid "E-mail Token"
+msgstr "Token del correu electrònic"
+
+msgctxt "field:marketing.email,list_:"
+msgid "List"
+msgstr "Llista"
+
+msgctxt "field:marketing.email,party:"
+msgid "Party"
+msgstr "Tercer"
+
+msgctxt "field:marketing.email,web_user:"
+msgid "Web User"
+msgstr "Usuari web"
+
+msgctxt "field:marketing.email.list,active:"
+msgid "Active"
+msgstr "Actiu"
+
+msgctxt "field:marketing.email.list,emails:"
+msgid "Emails"
+msgstr "Correus electrònics"
+
+msgctxt "field:marketing.email.list,language:"
+msgid "Language"
+msgstr "Idioma"
+
+msgctxt "field:marketing.email.list,name:"
+msgid "Name"
+msgstr "Nom"
+
+msgctxt "field:marketing.email.message,content:"
+msgid "Content"
+msgstr "Contingut"
+
+msgctxt "field:marketing.email.message,from_:"
+msgid "From"
+msgstr "De"
+
+msgctxt "field:marketing.email.message,list_:"
+msgid "List"
+msgstr "Llista"
+
+msgctxt "field:marketing.email.message,state:"
+msgid "State"
+msgstr "Estat"
+
+msgctxt "field:marketing.email.message,title:"
+msgid "Title"
+msgstr "Títol"
+
+msgctxt "field:marketing.email.message,urls:"
+msgid "URLs"
+msgstr "URLs"
+
+msgctxt "field:marketing.email.send_test,email:"
+msgid "E-Mail"
+msgstr "Correu electrònic"
+
+msgctxt "field:marketing.email.send_test,list_:"
+msgid "List"
+msgstr "Llista"
+
+msgctxt "field:marketing.email.send_test,message:"
+msgid "Message"
+msgstr "Missatge"
+
+msgctxt "help:marketing.email.message,from_:"
+msgid "Leave empty for the value defined in the configuration file."
+msgstr ""
+"Deixeu en blanc per a utilitzar el valor definit al fitxer de configuració."
+
+msgctxt "model:ir.action,name:act_email_list_form"
+msgid "Mailing Lists"
+msgstr "Llistes de correu electrònic"
+
+msgctxt "model:ir.action,name:act_email_message_form"
+msgid "Messages"
+msgstr "Missatges"
+
+msgctxt "model:ir.action,name:act_email_relate_list"
+msgid "E-mails"
+msgstr "Correus electrònics"
+
+msgctxt "model:ir.action,name:report_email_subscribe"
+msgid "Subscribe Request"
+msgstr "Sol·licitud de subscripció"
+
+msgctxt "model:ir.action,name:report_email_unsubscribe"
+msgid "Unsubscribe Request"
+msgstr "Sol·licitud de cancel·lació de subscripció"
+
+msgctxt "model:ir.action,name:wizard_send_test"
+msgid "Send Test"
+msgstr "Envia prova"
+
+msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_all"
+msgid "All"
+msgstr "Tot"
+
+msgctxt "model:ir.action.act_window.domain,name:act_email_message_form_draft"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_email_message_form_sending"
+msgid "Sending"
+msgstr "Enviant"
+
+msgctxt "model:ir.message,text:msg_email_list_unique"
+msgid "Email addresses can only be subscribed once to each list."
+msgstr ""
+"Les direccions de correu només es poden subscriure una vegada a cada llista."
+
+msgctxt "model:ir.message,text:msg_message_invalid_content"
+msgid "Invalid content in message \"%(message)s\" with exception \"%(exception)s\"."
+msgstr ""
+"Contingut invàlid al missatge \"%(message)s\" amb l'excepció "
+"\"%(exception)s\"."
+
+msgctxt "model:ir.model.button,string:message_draft_button"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "model:ir.model.button,string:message_send_button"
+msgid "Send"
+msgstr "Envia"
+
+msgctxt "model:ir.model.button,string:message_send_test_button"
+msgid "Send Test"
+msgstr "Envia prova"
+
+msgctxt "model:ir.ui.menu,name:menu_email_list_form"
+msgid "Mailing Lists"
+msgstr "Llistes de correu electrònic"
+
+msgctxt "model:marketing.email,name:"
+msgid "Marketing E-mail"
+msgstr "Correus electrònics de marketing"
+
+msgctxt "model:marketing.email.list,name:"
+msgid "Marketing Mailing List"
+msgstr "Llista de correus de marketing"
+
+msgctxt "model:marketing.email.message,name:"
+msgid "Marketing E-mail Message"
+msgstr "Missatge de correu electrónic de marketing"
+
+msgctxt "model:marketing.email.send_test,name:"
+msgid "Send Test E-mail"
+msgstr "Envia correu electrònic de prova"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Empega això al teu navegador:"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Si heu rebut aquest correu per error, ignoreu-lo."
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Just one more step..."
+msgstr "Només un pas més..."
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Subscribe to"
+msgstr "Subscriures a"
+
+msgctxt "report:marketing.email.subscribe:"
+msgid "Subscription Request"
+msgstr "Sol·licitud de subscripció"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Button is not working? Paste this into your browser:"
+msgstr "El botó no funciona? Empega això al teu navegador:"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "If you received this email by mistake, just ignore it."
+msgstr "Si heu rebut aquest correu per error, ignoreu-lo."
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Just one more step..."
+msgstr "Només un pas més..."
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Request to Unsubscribe"
+msgstr "Sol·licitud de cancel·lacio de subscripció"
+
+msgctxt "report:marketing.email.unsubscribe:"
+msgid "Unsubscribe from"
+msgstr "Cancela la subscripció a"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send Marketing Messages"
+msgstr "Envia correus de marketing"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Draft"
+msgstr "Esborrany"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Sending"
+msgstr "Enviant"
+
+msgctxt "selection:marketing.email.message,state:"
+msgid "Sent"
+msgstr "Enviat"
+
+msgctxt "view:marketing.email.message:"
+msgid "Edit"
+msgstr "Edita"
+
+msgctxt "view:marketing.email.message:"
+msgid "To:"
+msgstr "A:"
+
+msgctxt "view:marketing.email.send_test:"
+msgid "To:"
+msgstr "A:"
+
+msgctxt "wizard_button:marketing.email.send_test,start,end:"
+msgid "Cancel"
+msgstr "Cancel·la"
+
+msgctxt "wizard_button:marketing.email.send_test,start,send:"
+msgid "Send"
+msgstr "Envia"
