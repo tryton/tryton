@@ -50,7 +50,7 @@ msgstr ""
 
 msgctxt "wizard_button:account.fr.fec,result,end:"
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
 
 msgctxt "wizard_button:account.fr.fec,start,end:"
 msgid "Cancel"
