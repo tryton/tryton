@@ -12,7 +12,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment.condition,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:sale.advance_payment.condition,amount:"
 msgid "Amount"
@@ -64,7 +64,7 @@ msgstr "Nama"
 
 msgctxt "field:sale.advance_payment_term.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:sale.advance_payment_term.line,accounts:"
 msgid "Accounts"
@@ -96,7 +96,7 @@ msgstr ""
 
 msgctxt "field:sale.advance_payment_term.line.account,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:sale.advance_payment_term.line.account,company:"
 msgid "Company"
