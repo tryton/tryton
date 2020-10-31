@@ -1,0 +1,438 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.payment,braintree_account:"
+msgid "Braintree Account"
+msgstr "Braintree-account"
+
+msgctxt "field:account.payment,braintree_checkout_id:"
+msgid "Braintree Checkout ID"
+msgstr "Braintree Checkout-ID"
+
+msgctxt "field:account.payment,braintree_client_token:"
+msgid "Braintree Client Token"
+msgstr "Braintree Client-token"
+
+msgctxt "field:account.payment,braintree_customer:"
+msgid "Braintree Customer"
+msgstr "Braintree klant"
+
+msgctxt "field:account.payment,braintree_customer_method:"
+msgid "Braintree Customer Method"
+msgstr "Braintree klantmethode"
+
+msgctxt "field:account.payment,braintree_customer_method_selection:"
+msgid "Braintree Customer Method"
+msgstr "Braintree klantmethode"
+
+msgctxt "field:account.payment,braintree_device_data:"
+msgid "Braintree Device Data"
+msgstr "Braintree-apparaatgegevens"
+
+msgctxt "field:account.payment,braintree_dispute_reason:"
+msgid "Braintree Dispute Reason"
+msgstr "Braintree reden van geschil"
+
+msgctxt "field:account.payment,braintree_dispute_status:"
+msgid "Braintree Dispute Status"
+msgstr "Braintree-geschilstatus"
+
+msgctxt "field:account.payment,braintree_error_message:"
+msgid "Braintree Error Message"
+msgstr "Braintree-foutbericht"
+
+msgctxt "field:account.payment,braintree_nonce:"
+msgid "Braintree Nonce"
+msgstr "Braintree Nonce"
+
+msgctxt "field:account.payment,braintree_payment_settled:"
+msgid "Braintree Payment Settled"
+msgstr "Braintree-betaling verrekend"
+
+msgctxt "field:account.payment,braintree_refunds:"
+msgid "Refunds"
+msgstr "Terugbetalingen"
+
+msgctxt "field:account.payment,braintree_settle_payment:"
+msgid "Braintree Settle Payment"
+msgstr "Braintree regel de betaling"
+
+msgctxt "field:account.payment,braintree_settlement_needed:"
+msgid "Braintree Settlement Needed"
+msgstr "Braintree-schikking nodig"
+
+msgctxt "field:account.payment,braintree_transaction_id:"
+msgid "Braintree Transaction ID"
+msgstr "Transactie-ID van Braintree"
+
+msgctxt "field:account.payment.braintree.account,currency:"
+msgid "Currency"
+msgstr "Valuta"
+
+msgctxt "field:account.payment.braintree.account,environment:"
+msgid "Environment"
+msgstr "Omgeving"
+
+msgctxt "field:account.payment.braintree.account,merchant_id:"
+msgid "Merchant ID"
+msgstr "Verkoper-ID"
+
+msgctxt "field:account.payment.braintree.account,name:"
+msgid "Name"
+msgstr "Naam"
+
+msgctxt "field:account.payment.braintree.account,private_key:"
+msgid "Private Key"
+msgstr "Private sleutel"
+
+msgctxt "field:account.payment.braintree.account,public_key:"
+msgid "Public Key"
+msgstr "Publieke sleutel"
+
+msgctxt "field:account.payment.braintree.account,sandbox_settle_transaction:"
+msgid "Automatic Settlement"
+msgstr "Automatische afwikkeling"
+
+msgctxt "field:account.payment.braintree.account,webhook_endpoint:"
+msgid "Webhook Endpoint"
+msgstr "Webhook eindpunt"
+
+msgctxt "field:account.payment.braintree.account,webhook_identifier:"
+msgid "Webhook Identifier"
+msgstr "Webhook ID"
+
+msgctxt "field:account.payment.braintree.customer,braintree_account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:account.payment.braintree.customer,braintree_checkout_id:"
+msgid "Braintree Checkout ID"
+msgstr "Braintree Checkout-ID"
+
+msgctxt "field:account.payment.braintree.customer,braintree_client_token:"
+msgid "Braintree Client Token"
+msgstr "Braintree Client-token"
+
+msgctxt "field:account.payment.braintree.customer,braintree_customer_id:"
+msgid "Braintree Customer ID"
+msgstr "Braintree klant-ID"
+
+msgctxt "field:account.payment.braintree.customer,braintree_device_data:"
+msgid "Braintree Device Data"
+msgstr "Braintree-apparaatgegevens"
+
+msgctxt "field:account.payment.braintree.customer,braintree_error_message:"
+msgid "Braintree Error Message"
+msgstr "Braintree-foutbericht"
+
+msgctxt "field:account.payment.braintree.customer,braintree_nonce:"
+msgid "Braintree Nonce"
+msgstr "Braintree Nonce"
+
+msgctxt "field:account.payment.braintree.customer,party:"
+msgid "Party"
+msgstr "Relatie"
+
+msgctxt ""
+"field:account.payment.braintree.customer.payment_method.delete.ask,customer:"
+msgid "Customer"
+msgstr "Klant"
+
+msgctxt ""
+"field:account.payment.braintree.customer.payment_method.delete.ask,payment_method:"
+msgid "Payment Method"
+msgstr "Betalingsmethode"
+
+msgctxt "field:account.payment.braintree.refund,amount:"
+msgid "Amount"
+msgstr "Bedrag"
+
+msgctxt "field:account.payment.braintree.refund,braintree_error_message:"
+msgid "Braintree Error Message"
+msgstr "Braintree-foutbericht"
+
+msgctxt "field:account.payment.braintree.refund,braintree_transaction_id:"
+msgid "Braintree Transaction ID"
+msgstr "Transactie-ID van Braintree"
+
+msgctxt "field:account.payment.braintree.refund,currency_digits:"
+msgid "Currency Digits"
+msgstr "Valuta decimalen"
+
+msgctxt "field:account.payment.braintree.refund,payment:"
+msgid "Payment"
+msgstr "Betaling"
+
+msgctxt "field:account.payment.braintree.refund,state:"
+msgid "State"
+msgstr "Status"
+
+msgctxt "field:account.payment.journal,braintree_account:"
+msgid "Account"
+msgstr "Rekening"
+
+msgctxt "field:party.party,braintree_customers:"
+msgid "Braintree Customers"
+msgstr "Braintree klant"
+
+msgctxt "help:account.payment.braintree.account,webhook_endpoint:"
+msgid "The URL to be called by Braintree."
+msgstr "De URL die door Braintree moet worden aangeroepen."
+
+msgctxt "model:account.payment.braintree.account,name:"
+msgid "Braintree Account"
+msgstr "Braintree-account"
+
+msgctxt "model:account.payment.braintree.customer,name:"
+msgid "Braintree Customer"
+msgstr "Braintree klant"
+
+msgctxt ""
+"model:account.payment.braintree.customer.payment_method.delete.ask,name:"
+msgid "Delete Customer Payment Method"
+msgstr "Verwijder klantbetaalmethode"
+
+msgctxt "model:account.payment.braintree.refund,name:"
+msgid "Braintree Payment Refund"
+msgstr "Braintree betaling restitutie"
+
+msgctxt "model:ir.action,name:act_account_form"
+msgid "Braintree Accounts"
+msgstr "Braintree-account"
+
+msgctxt "model:ir.action,name:act_customer_form"
+msgid "Braintree Customers"
+msgstr "Braintree klant"
+
+msgctxt "model:ir.action,name:act_refund_form"
+msgid "Braintree Refunds"
+msgstr "Braintree-restituties"
+
+msgctxt "model:ir.action,name:report_checkout"
+msgid "Braintree Checkout"
+msgstr "Braintree Checkout"
+
+msgctxt "model:ir.action,name:url_checkout"
+msgid "Braintree Checkout"
+msgstr "Braintree Checkout"
+
+msgctxt "model:ir.action,name:wizard_checkout"
+msgid "Braintree Checkout"
+msgstr "Braintree Checkout"
+
+msgctxt "model:ir.action,name:wizard_customer_payment_method_delete"
+msgid "Delete Payment Method"
+msgstr "Betaalmethode verwijderen"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_all"
+msgid "All"
+msgstr "Alle"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_approved"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_draft"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.action.act_window.domain,name:act_refund_form_domain_failed"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_processing"
+msgid "Processing"
+msgstr "Verwerken"
+
+msgctxt ""
+"model:ir.action.act_window.domain,name:act_refund_form_domain_suceeded"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "model:ir.message,text:msg_braintree_receivable"
+msgid "To pay \"%(payment)s\", you cannot use a Braintree journal \"%(journal)s\"."
+msgstr ""
+"Om \"%(payment)s te betalen, kunt u geen Braintree-dagboek \"%(journal)s\" "
+"gebruiken."
+
+msgctxt "model:ir.message,text:msg_no_braintree_nonce"
+msgid ""
+"To process payment \"%(payment)s\" you must set a Braintree nonce or "
+"customer."
+msgstr ""
+"Om de betaling \"%(payment)s\" te verwerken, moet u een Braintree nonce of "
+"klant instellen."
+
+msgctxt "model:ir.model.button,confirm:account_new_identifier_button"
+msgid ""
+"This action will make the previous URL unusable. Do you want to continue?"
+msgstr "Door deze actie wordt de vorige URL onbruikbaar. Wil je doorgaan?"
+
+msgctxt "model:ir.model.button,string:account_new_identifier_button"
+msgid "New URL"
+msgstr "Nieuwe URL"
+
+msgctxt "model:ir.model.button,string:customer_braintree_checkout_button"
+msgid "Add Card"
+msgstr "Voeg een kaart toe"
+
+msgctxt "model:ir.model.button,string:customer_payment_method_delete_button"
+msgid "Delete Payment Method"
+msgstr "Betaalmethode verwijderen"
+
+msgctxt "model:ir.model.button,string:payment_braintree_checkout_button"
+msgid "Braintree Checkout"
+msgstr "Braintree Checkout"
+
+msgctxt "model:ir.model.button,string:payment_braintree_pull_button"
+msgid "Braintree Pull"
+msgstr "Braintree Pull"
+
+msgctxt "model:ir.model.button,string:payment_braintree_settle_payment_button"
+msgid "Braintree Settle Payment"
+msgstr "Braintree regel de betaling"
+
+msgctxt "model:ir.model.button,string:refund_approve_button"
+msgid "Approve"
+msgstr "Goedkeuren"
+
+msgctxt "model:ir.model.button,string:refund_draft_button"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "model:ir.rule.group,name:rule_group_refund"
+msgid "User in company"
+msgstr "Gebruiker in het bedrijf"
+
+msgctxt "model:ir.ui.menu,name:menu_account_form"
+msgid "Braintree Accounts"
+msgstr "Braintree-accounts"
+
+msgctxt "model:ir.ui.menu,name:menu_customer_form"
+msgid "Braintree Customers"
+msgstr "Braintree klanten"
+
+msgctxt "model:ir.ui.menu,name:menu_refund_form"
+msgid "Braintree Refunds"
+msgstr "Braintree-restituties"
+
+msgctxt "report:account.payment.braintree.checkout:"
+msgid "Braintree Checkout"
+msgstr "Braintree Checkout"
+
+msgctxt "report:account.payment.braintree.checkout:"
+msgid "Pay"
+msgstr "Betalen"
+
+msgctxt "report:account.payment.braintree.checkout:"
+msgid "Register card"
+msgstr "Kaart registreren"
+
+msgctxt "selection:account.payment.braintree.account,environment:"
+msgid "Production"
+msgstr "Productie"
+
+msgctxt "selection:account.payment.braintree.account,environment:"
+msgid "Sandbox"
+msgstr "Sandbox"
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Approved"
+msgstr "Goedgekeurd"
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Draft"
+msgstr "Concept"
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Failed"
+msgstr "mislukt"
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Processing"
+msgstr "Verwerking"
+
+msgctxt "selection:account.payment.braintree.refund,state:"
+msgid "Succeeded"
+msgstr "Geslaagd"
+
+msgctxt "selection:account.payment.journal,process_method:"
+msgid "Braintree"
+msgstr "Braintree"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Create Braintree Customer"
+msgstr "Creëer een Braintree-klant"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Delete Braintree Customer"
+msgstr "Verwijder een Braintree-klant"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Pull Braintree Payment"
+msgstr "Pull Braintree Betaling"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Pull Braintree Refund"
+msgstr "Pull Braintree restitutie"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Refund Braintree Payment"
+msgstr "terugbetaling Braintree betaling"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Transact Braintree Payment"
+msgstr "Transacteer Braintree-betaling"
+
+msgctxt "view:account.payment.journal:"
+msgid "Braintree"
+msgstr "Braintree"
+
+msgctxt "view:account.payment:"
+msgid "Braintree"
+msgstr "Braintree"
+
+msgctxt "view:account.payment:"
+msgid "Client Token:"
+msgstr "Klanttoken:"
+
+msgctxt "view:account.payment:"
+msgid "Customer:"
+msgstr "Klant:"
+
+msgctxt "view:account.payment:"
+msgid "Device Data:"
+msgstr "Apparaatgegevens:"
+
+msgctxt "view:account.payment:"
+msgid "Nonce:"
+msgstr "Nonce:"
+
+msgctxt "view:account.payment:"
+msgid "Payment Method:"
+msgstr "Betalingsmethode:"
+
+msgctxt "view:account.payment:"
+msgid "Settle:"
+msgstr "Regelen:"
+
+msgctxt "view:account.payment:"
+msgid "Settled:"
+msgstr "Geregeld:"
+
+msgctxt "view:account.payment:"
+msgid "Transaction ID:"
+msgstr "Transactie ID:"
+
+msgctxt ""
+"wizard_button:account.payment.braintree.customer.payment_method.delete,ask,delete_:"
+msgid "Delete"
+msgstr "Verwijderen"
+
+msgctxt ""
+"wizard_button:account.payment.braintree.customer.payment_method.delete,ask,end:"
+msgid "Cancel"
+msgstr "Annuleren"
