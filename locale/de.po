@@ -328,7 +328,7 @@ msgstr "Sonstiges"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Quotation"
-msgstr "Angebot"
+msgstr "Angebotsanfrage"
 
 msgctxt "view:purchase.request.quotation:"
 msgid "Receive"

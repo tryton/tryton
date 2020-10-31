@@ -49,7 +49,7 @@ msgstr "Revisi"
 
 msgctxt "field:purchase.request.quotation,state:"
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 msgctxt "field:purchase.request.quotation,supplier:"
 msgid "Supplier"
@@ -359,4 +359,4 @@ msgstr "Batal"
 
 msgctxt "wizard_button:purchase.request.quotation.create,succeed,end:"
 msgid "Close"
-msgstr ""
+msgstr "Tutup"
