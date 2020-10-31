@@ -302,6 +302,11 @@ msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "مالیات ها"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "مالیات ها"
+
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
 msgstr "نوع"
@@ -534,6 +539,11 @@ msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr "مقدار"
 
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "واحد پول"
+
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr "رقم های واحد پول"
@@ -553,6 +563,11 @@ msgstr "مقدار"
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "پایه"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "واحد پول"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -630,6 +645,12 @@ msgstr "نحوه پرداخت تامین کننده"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "اگر درست باشد، صورتحساب های فعلی پرداخت خواهد شد."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
@@ -1157,8 +1178,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "باقيمانده"
 
+#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
+msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "آیا شما برای خرید(اعتباری) این صورتحساب(ها) اطمینان دارید؟"
 
 msgctxt "view:account.invoice.line:"

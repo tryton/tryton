@@ -16,7 +16,7 @@ msgstr "Tahun Fiskal"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_credit_note_sequence:"
 msgid "Supplier Credit Note Sequence"
-msgstr ""
+msgstr "Urutan Nota Kredit Pemasok"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,in_invoice_sequence:"
 msgid "Supplier Invoice Sequence"
@@ -24,7 +24,7 @@ msgstr "Urutan Faktur Pemasok"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_credit_note_sequence:"
 msgid "Customer Credit Note Sequence"
-msgstr ""
+msgstr "Urutan Nota Kredit Pelanggan"
 
 msgctxt "field:account.fiscalyear.invoice_sequence,out_invoice_sequence:"
 msgid "Customer Invoice Sequence"
@@ -36,7 +36,7 @@ msgstr "Periode"
 
 msgctxt "field:account.invoice,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.invoice,accounting_date:"
 msgid "Accounting Date"
@@ -80,7 +80,7 @@ msgstr "Tanggal Mata Uang"
 
 msgctxt "field:account.invoice,currency_digits:"
 msgid "Currency Digits"
-msgstr ""
+msgstr "Digit Mata Uang"
 
 msgctxt "field:account.invoice,description:"
 msgid "Description"
@@ -104,7 +104,7 @@ msgstr ""
 
 msgctxt "field:account.invoice,invoice_report_format:"
 msgid "Invoice Report Format"
-msgstr ""
+msgstr "Format Laporan Faktur"
 
 msgctxt "field:account.invoice,journal:"
 msgid "Journal"
@@ -144,7 +144,7 @@ msgstr ""
 
 msgctxt "field:account.invoice,payment_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Baris Pembayaran"
 
 msgctxt "field:account.invoice,payment_term:"
 msgid "Payment Term"
@@ -156,7 +156,7 @@ msgstr ""
 
 msgctxt "field:account.invoice,reconciliation_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Baris Pembayaran"
 
 msgctxt "field:account.invoice,reference:"
 msgid "Reference"
@@ -176,7 +176,7 @@ msgstr "Pajak"
 
 msgctxt "field:account.invoice,tax_identifier:"
 msgid "Tax Identifier"
-msgstr ""
+msgstr "Nomor Pokok Wajib Pajak (NPWP)"
 
 msgctxt "field:account.invoice,taxes:"
 msgid "Tax Lines"
@@ -228,7 +228,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.invoice.line,amount:"
 msgid "Amount"
@@ -296,6 +296,10 @@ msgstr ""
 
 msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
+msgstr ""
+
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
 msgstr ""
 
 msgctxt "field:account.invoice.line,type:"
@@ -368,7 +372,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.pay.ask,payment_lines:"
 msgid "Payment Lines"
-msgstr ""
+msgstr "Baris Pembayaran"
 
 msgctxt "field:account.invoice.pay.ask,type:"
 msgid "Type"
@@ -484,7 +488,7 @@ msgstr ""
 
 msgctxt "field:account.invoice.payment_term.line.delta,line:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Baris Masa Pembayaran"
 
 msgctxt "field:account.invoice.payment_term.line.delta,month:"
 msgid "Month"
@@ -530,6 +534,11 @@ msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr "Jumlah"
 
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Mata uang"
+
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -540,7 +549,7 @@ msgstr "Tanggal"
 
 msgctxt "field:account.invoice.tax,account:"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Akun"
 
 msgctxt "field:account.invoice.tax,amount:"
 msgid "Amount"
@@ -549,6 +558,11 @@ msgstr "Jumlah"
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Mata uang"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -626,6 +640,12 @@ msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr ""
 
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
+
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
 msgstr ""
@@ -640,11 +660,11 @@ msgstr "Faktur"
 
 msgctxt "model:account.invoice-account.move.line,name:"
 msgid "Invoice - Payment Line"
-msgstr ""
+msgstr "Faktur - Baris Pembayaran"
 
 msgctxt "model:account.invoice.credit.start,name:"
 msgid "Credit Invoice"
-msgstr ""
+msgstr "Faktur Kredit"
 
 msgctxt "model:account.invoice.line,name:"
 msgid "Invoice Line"
@@ -668,11 +688,11 @@ msgstr "Metode pembayaran"
 
 msgctxt "model:account.invoice.payment_term,name:"
 msgid "Payment Term"
-msgstr "Jangka waktu pembayaran"
+msgstr "Masa Pembayaran"
 
 msgctxt "model:account.invoice.payment_term.line,name:"
 msgid "Payment Term Line"
-msgstr ""
+msgstr "Baris Masa Pembayaran"
 
 msgctxt "model:account.invoice.payment_term.line.delta,name:"
 msgid "Payment Term Line Relative Delta"
@@ -692,19 +712,19 @@ msgstr ""
 
 msgctxt "model:ir.action,name:act_invoice_form"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.action,name:act_invoice_form2"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.action,name:act_invoice_in_form"
 msgid "Supplier Invoices"
-msgstr ""
+msgstr "Faktur Pemasok"
 
 msgctxt "model:ir.action,name:act_invoice_out_form"
 msgid "Customer Invoices"
-msgstr ""
+msgstr "Faktur Pelanggan"
 
 msgctxt "model:ir.action,name:act_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -945,7 +965,7 @@ msgstr ""
 
 msgctxt "model:ir.ui.menu,name:menu_invoices"
 msgid "Invoices"
-msgstr ""
+msgstr "Faktur-faktur"
 
 msgctxt "model:ir.ui.menu,name:menu_payment_method_form"
 msgid "Invoice Payment Methods"
@@ -1120,7 +1140,7 @@ msgid "Remainder"
 msgstr ""
 
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
+msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Apakah anda yakin akan mengkreditkan faktur ini?"
 
 msgctxt "view:account.invoice.line:"
@@ -1149,7 +1169,7 @@ msgstr "Pembayaran"
 
 msgctxt "view:account.invoice:"
 msgid "Tax Identifier:"
-msgstr ""
+msgstr "NPWP:"
 
 msgctxt "view:account.move.line:"
 msgid "Amount Second Currency"

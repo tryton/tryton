@@ -311,6 +311,11 @@ msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Налоги"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "Налоги"
+
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
 msgstr "Тип"
@@ -559,6 +564,11 @@ msgid "Amount"
 msgstr "Сумма"
 
 #, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Валюта"
+
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr "Кол-во цифр валюты"
@@ -579,6 +589,11 @@ msgstr "Сумма"
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "База"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Валюта"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -663,6 +678,12 @@ msgstr "Правило оплаты поставщика"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Если истинно, то текущий инвойс будет оплачен."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
@@ -1197,8 +1218,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Остаток"
 
+#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
+msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Вы уверены, что хотите выставить Сторно для этих инвойсов?"
 
 msgctxt "view:account.invoice.line:"

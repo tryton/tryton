@@ -325,6 +325,10 @@ msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr ""
 
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr ""
+
 #, fuzzy
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
@@ -581,6 +585,11 @@ msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr ""
 
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Pénznem"
+
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr ""
@@ -602,6 +611,11 @@ msgstr ""
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr ""
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Pénznem"
 
 #, fuzzy
 msgctxt "field:account.invoice.tax,description:"
@@ -684,6 +698,12 @@ msgstr ""
 
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
+msgstr ""
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
 msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
@@ -1205,9 +1225,10 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr ""
 
+#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
-msgstr ""
+msgid "Are you sure to credit these/this invoice(s)?"
+msgstr "Are you sure to cancel the invoice?"
 
 msgctxt "view:account.invoice.line:"
 msgid "General"

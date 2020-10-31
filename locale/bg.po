@@ -312,6 +312,11 @@ msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Данъци"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "Данъци"
+
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
 msgstr "Вид"
@@ -560,6 +565,11 @@ msgid "Amount"
 msgstr "Сума"
 
 #, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Валута"
+
+#, fuzzy
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr "Цифри за валута"
@@ -580,6 +590,11 @@ msgstr "Сума"
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "Основа"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Валута"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -664,6 +679,12 @@ msgstr "Условие за плащане на доставчик"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Ако е истина текущата(те) сметка(и) ще бъдат платена(и)."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
@@ -1186,8 +1207,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Напомняне"
 
+#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
+msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Сигурни ли сте че искате да кредитирате тази/тези фактура/фактури?"
 
 msgctxt "view:account.invoice.line:"

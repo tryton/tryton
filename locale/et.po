@@ -301,6 +301,11 @@ msgctxt "field:account.invoice.line,taxes:"
 msgid "Taxes"
 msgstr "Maksud"
 
+#, fuzzy
+msgctxt "field:account.invoice.line,taxes_date:"
+msgid "Taxes Date"
+msgstr "Maksud"
+
 msgctxt "field:account.invoice.line,type:"
 msgid "Type"
 msgstr "Tüüp"
@@ -533,6 +538,11 @@ msgctxt "field:account.invoice.payment_term.test.result,amount:"
 msgid "Amount"
 msgstr "Väärtus"
 
+#, fuzzy
+msgctxt "field:account.invoice.payment_term.test.result,currency:"
+msgid "Currency"
+msgstr "Valuuta"
+
 msgctxt "field:account.invoice.payment_term.test.result,currency_digits:"
 msgid "Currency Digits"
 msgstr "Valuuta numbriväärtuse arv"
@@ -552,6 +562,11 @@ msgstr "Väärtus"
 msgctxt "field:account.invoice.tax,base:"
 msgid "Base"
 msgstr "Baas"
+
+#, fuzzy
+msgctxt "field:account.invoice.tax,currency:"
+msgid "Currency"
+msgstr "Valuuta"
 
 msgctxt "field:account.invoice.tax,description:"
 msgid "Description"
@@ -629,6 +644,12 @@ msgstr "Hankija maksetingimus"
 msgctxt "help:account.invoice.credit.start,with_refund:"
 msgid "If true, the current invoice(s) will be cancelled."
 msgstr "Kui vastab tõele, siis antud arve(d) tühistatakse."
+
+msgctxt "help:account.invoice.line,taxes_date:"
+msgid ""
+"The date at which the taxes are computed.\n"
+"Leave empty for the accounting date."
+msgstr ""
 
 msgctxt "help:company.company,cancel_invoice_out:"
 msgid "Allow cancelling move of customer invoice."
@@ -1148,8 +1169,9 @@ msgctxt "selection:account.invoice.payment_term.line,type:"
 msgid "Remainder"
 msgstr "Meeldetuletus"
 
+#, fuzzy
 msgctxt "view:account.invoice.credit.start:"
-msgid "Are you sure to credit those/this invoice(s)?"
+msgid "Are you sure to credit these/this invoice(s)?"
 msgstr "Oled kindel et soovid seda/neid arve(id) krediteerida?"
 
 msgctxt "view:account.invoice.line:"
