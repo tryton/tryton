@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Вид продукта"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Подчиненные"
@@ -20,6 +25,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Шаблон продукта"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Шаблон продукта"
 
@@ -196,6 +206,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Код"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Потребляемый"
@@ -312,7 +326,11 @@ msgid "The default cost price method for new products."
 msgstr ""
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr ""
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr ""
 
 msgctxt ""
@@ -520,6 +538,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Разновидности"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Продукция"
 
@@ -1047,6 +1070,11 @@ msgstr "Услуги"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Подчиненные"
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Шаблон продукта"
 
 msgctxt "view:product.template:"
 msgid "General"

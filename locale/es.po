@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Decimales del precio del producto"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Hijos"
@@ -19,6 +23,10 @@ msgid "Default Cost Method"
 msgstr "Método de coste por defecto"
 
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Secuencia de la variante"
+
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Secuencia del producto"
 
@@ -141,7 +149,7 @@ msgstr "Precio de venta"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr "Precio de venta"
+msgstr "Precios de venta"
 
 msgctxt "field:product.product,name:"
 msgid "Name"
@@ -175,6 +183,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Código"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "Código solo lectura"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Consumible"
@@ -205,7 +217,7 @@ msgstr "Precio de venta"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr "Precio de venta"
+msgstr "Precios de venta"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -284,8 +296,12 @@ msgid "The default cost price method for new products."
 msgstr "El método de coste por defecto para los nuevos productos."
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
-msgstr "Utilizado para generar el código del producto."
+msgid "Used to generate the last part of the product code."
+msgstr "Utilizado para generar la parte final del código del producto."
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
+msgstr "Utilizado para generar la parte inicial del código del producto."
 
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -501,6 +517,10 @@ msgid "Rate and factor can not be both equal to zero."
 msgstr "El ratio i el factor no pueden ser a la vez zero."
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Producto"
 
@@ -943,6 +963,10 @@ msgstr "Servicios"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Hijos"
+
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Secuencias"
 
 msgctxt "view:product.template:"
 msgid "General"

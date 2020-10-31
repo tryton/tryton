@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr ""
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr ""
@@ -20,6 +24,11 @@ msgstr "Método de costo por defecto"
 
 #, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Configuración de producto"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Configuración de producto"
 
@@ -187,6 +196,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr ""
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr ""
@@ -299,7 +312,11 @@ msgid "The default cost price method for new products."
 msgstr ""
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr ""
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr ""
 
 msgctxt ""
@@ -497,9 +514,15 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variantes"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
-msgstr ""
+msgstr "Configuración de producto"
 
 #, fuzzy
 msgctxt "model:ir.ui.menu,name:menu_category_list"
@@ -948,6 +971,11 @@ msgstr "Servicio"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr ""
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Configuración de producto"
 
 msgctxt "view:product.template:"
 msgid "General"

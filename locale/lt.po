@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Prekės savikaina"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Dukterinės"
@@ -20,6 +25,11 @@ msgstr "Numatytasis savikainos metodas"
 
 #, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Numeruotė"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Numeruotė"
 
@@ -177,6 +187,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Kodas"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Vartojamoji"
@@ -287,7 +301,11 @@ msgid "The default cost price method for new products."
 msgstr ""
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr ""
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr ""
 
 msgctxt ""
@@ -490,6 +508,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variantai"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Prekė"
 
@@ -934,6 +957,11 @@ msgstr "Paslaugos"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Dukterinė"
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Numeruotė"
 
 msgctxt "view:product.template:"
 msgid "General"

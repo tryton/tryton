@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "ຜະລິດຕະພັນຍ່ອຍ"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "ໝວດຍ່ອຍ"
@@ -20,6 +25,11 @@ msgstr "ວິທີຄິດໄລ່ລາຄາເດີມ"
 
 #, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "ຮ່າງແບບຜະລິດຕະພັນ"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "ຮ່າງແບບຜະລິດຕະພັນ"
 
@@ -190,6 +200,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "ລະຫັດ"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "ວັດຖຸສິ້ນເປືອງ"
@@ -303,7 +317,11 @@ msgid "The default cost price method for new products."
 msgstr ""
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr ""
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr ""
 
 msgctxt ""
@@ -512,6 +530,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "ຜະລິດຕະພັນຍ່ອຍ"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "ຜະລິດຕະພັນ"
 
@@ -1037,6 +1060,11 @@ msgstr "ບໍລິການ"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "ໝວດຍ່ອຍ"
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "ຮ່າງແບບຜະລິດຕະພັນ"
 
 msgctxt "view:product.template:"
 msgid "General"

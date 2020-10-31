@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Decimals del preu de cost del producte"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Fills"
@@ -19,6 +23,10 @@ msgid "Default Cost Method"
 msgstr "Mètode de cost per defecte"
 
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Seqüencia de la variant"
+
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Seqüencia del producte"
 
@@ -89,7 +97,7 @@ msgstr "Codi"
 
 msgctxt "field:product.product,code_readonly:"
 msgid "Code Readonly"
-msgstr "Code només lectura"
+msgstr "Codi només lectura"
 
 msgctxt "field:product.product,consumable:"
 msgid "Consumable"
@@ -141,7 +149,7 @@ msgstr "Preu de venda"
 
 msgctxt "field:product.product,list_prices:"
 msgid "List Prices"
-msgstr "Preu de venda"
+msgstr "Preus de venda"
 
 msgctxt "field:product.product,name:"
 msgid "Name"
@@ -175,6 +183,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Codi"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code només lectura"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Consumible"
@@ -205,7 +217,7 @@ msgstr "Preu de venda"
 
 msgctxt "field:product.template,list_prices:"
 msgid "List Prices"
-msgstr "Preu de venda"
+msgstr "Preus de venda"
 
 msgctxt "field:product.template,name:"
 msgid "Name"
@@ -284,8 +296,12 @@ msgid "The default cost price method for new products."
 msgstr "El mètode de cost per defecte per als nous productes."
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
-msgstr "Utilitzada per generar el codi del producte."
+msgid "Used to generate the last part of the product code."
+msgstr "Utilitzada per generar la part final del codi del producte."
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
+msgstr "Utilitzada per generar la part inicial del codi del producte."
 
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -501,6 +517,10 @@ msgid "Rate and factor can not be both equal to zero."
 msgstr "El rati i el factor no poden ser els dos igual a zero."
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Producte"
 
@@ -943,6 +963,10 @@ msgstr "Serveis"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Fills"
+
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Seqüències"
 
 msgctxt "view:product.template:"
 msgid "General"

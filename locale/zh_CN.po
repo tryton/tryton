@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "产品成本价"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "子类别"
@@ -18,7 +23,13 @@ msgctxt "field:product.configuration,default_cost_price_method:"
 msgid "Default Cost Method"
 msgstr "默认的成本法"
 
+#, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "产品序列"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "产品序列"
 
@@ -176,6 +187,11 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "代码"
 
+#, fuzzy
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "代码（只读）"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "消耗品"
@@ -285,8 +301,14 @@ msgctxt "help:product.configuration,default_cost_price_method:"
 msgid "The default cost price method for new products."
 msgstr ""
 
+#, fuzzy
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr "用于生成产品代码"
+
+#, fuzzy
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr "用于生成产品代码"
 
 msgctxt ""
@@ -488,7 +510,13 @@ msgctxt "model:ir.message,text:msg_uom_no_zero_factor_rate"
 msgid "Rate and factor can not be both equal to zero."
 msgstr ""
 
+#, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "变体"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "产品"
 
@@ -933,6 +961,11 @@ msgstr "服务"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "子类别"
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "产品序列"
 
 msgctxt "view:product.template:"
 msgid "General"

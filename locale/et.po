@@ -2,6 +2,11 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+#, fuzzy
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Toote omahind"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Alam"
@@ -20,6 +25,11 @@ msgstr "Vaikimisi kulumeetod"
 
 #, fuzzy
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Kauba mall"
+
+#, fuzzy
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Kauba mall"
 
@@ -180,6 +190,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Kood"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr ""
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Tarvikud"
@@ -290,7 +304,11 @@ msgid "The default cost price method for new products."
 msgstr ""
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
+msgid "Used to generate the last part of the product code."
+msgstr ""
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
 msgstr ""
 
 msgctxt ""
@@ -485,6 +503,11 @@ msgstr ""
 
 #, fuzzy
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variandid"
+
+#, fuzzy
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Toode"
 
@@ -931,6 +954,11 @@ msgstr "Teenus"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Alam"
+
+#, fuzzy
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Kauba mall"
 
 msgctxt "view:product.template:"
 msgid "General"

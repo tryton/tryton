@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Productprijs decimaal (kostprijs?)"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
@@ -19,6 +23,10 @@ msgid "Default Cost Method"
 msgstr "Standaard kostenmethode"
 
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Variantsequentie"
+
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Productvolgorde"
 
@@ -175,6 +183,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code Alleen lezen"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "verbruiksartikelen"
@@ -284,8 +296,12 @@ msgid "The default cost price method for new products."
 msgstr "De standaard kostprijsmethode voor nieuwe producten."
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
-msgstr "Gebruikt om de productcode te genereren."
+msgid "Used to generate the last part of the product code."
+msgstr "Wordt gebruikt om het laatste deel van de productcode te genereren."
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
+msgstr "Wordt gebruikt om het eerste deel van de productcode te genereren."
 
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -481,7 +497,7 @@ msgstr "Onverenigbare factor en tarief op standaard maateenheid \"%(uom)s\"."
 
 msgctxt "model:ir.message,text:msg_uom_modify_category"
 msgid "You cannot modify the category of UOM \"%(uom)s\"."
-msgstr "U kunt de standaardmaateenheidscategorie  \"%(uom)s\" niet wijzigen."
+msgstr "U kunt de standaardmaateenheidscategorie \"%(uom)s\" niet wijzigen."
 
 msgctxt "model:ir.message,text:msg_uom_modify_factor"
 msgid "You cannot modify the factor of UOM \"%(uom)s\"."
@@ -492,8 +508,8 @@ msgid ""
 "If the UOM is still not used, you can delete it otherwise you can deactivate"
 " it and create a new one."
 msgstr ""
-"Als de maateenheid nog  niet wordt gebruikt, kunt u deze verwijderen, anders"
-" kunt u deze deactiveren en een nieuwe maken."
+"Als de maateenheid nog niet wordt gebruikt, kunt u deze verwijderen, anders "
+"kunt u deze deactiveren en een nieuwe maken."
 
 msgctxt "model:ir.message,text:msg_uom_modify_rate"
 msgid "You cannot modify the rate of UOM \"%(uom)s\"."
@@ -504,6 +520,10 @@ msgid "Rate and factor can not be both equal to zero."
 msgstr "De waarde en factor kunnen niet beiden gelijk zijn aan nul."
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variant"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Product"
 
@@ -946,6 +966,10 @@ msgstr "Service"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Onderliggende niveaus"
+
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Reeksen"
 
 msgctxt "view:product.template:"
 msgid "General"

@@ -2,6 +2,10 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:ir.configuration,product_price_decimal:"
+msgid "Product Price Decimal"
+msgstr "Nachkommastellen Artikelpreis"
+
 msgctxt "field:product.category,childs:"
 msgid "Children"
 msgstr "Untergeordnet (Kategorien)"
@@ -19,6 +23,10 @@ msgid "Default Cost Method"
 msgstr "Standardbestandsbewertungsmethode"
 
 msgctxt "field:product.configuration,product_sequence:"
+msgid "Variant Sequence"
+msgstr "Nummernkreis Variante"
+
+msgctxt "field:product.configuration,template_sequence:"
 msgid "Product Sequence"
 msgstr "Nummernkreis Artikel"
 
@@ -175,6 +183,10 @@ msgctxt "field:product.template,code:"
 msgid "Code"
 msgstr "Code"
 
+msgctxt "field:product.template,code_readonly:"
+msgid "Code Readonly"
+msgstr "Code ist nur lesbar"
+
 msgctxt "field:product.template,consumable:"
 msgid "Consumable"
 msgstr "Verbrauchsmaterial"
@@ -284,8 +296,12 @@ msgid "The default cost price method for new products."
 msgstr "Die Standardbestandsbewertungsmethode für neue Artikel."
 
 msgctxt "help:product.configuration,product_sequence:"
-msgid "Used to generate the product code."
-msgstr "Wird zum Generieren von Artikelnummern genutzt."
+msgid "Used to generate the last part of the product code."
+msgstr "Wird zum Generieren des hinteren Teils der Artikelnummer genutzt."
+
+msgctxt "help:product.configuration,template_sequence:"
+msgid "Used to generate the first part of the product code."
+msgstr "Wird zum Generieren des vorderen Teils der Artikelnummer genutzt."
 
 msgctxt ""
 "help:product.configuration.default_cost_price_method,default_cost_price_method:"
@@ -470,8 +486,8 @@ msgstr "Maßeinheiten"
 msgctxt "model:ir.message,text:msg_invalid_code"
 msgid "The %(type)s \"%(code)s\" for product \"%(product)s\" is not valid."
 msgstr ""
-"Der \"%(code)s\" für den Identifikator  %(type)s von Artikel \"%(product)s\""
-" ist ungültig."
+"Der \"%(code)s\" für den Identifikator %(type)s von Artikel \"%(product)s\" "
+"ist ungültig."
 
 msgctxt "model:ir.message,text:msg_product_code_unique"
 msgid "Code of active product must be unique."
@@ -507,6 +523,10 @@ msgid "Rate and factor can not be both equal to zero."
 msgstr "Faktor und Kehrwert können nicht beide Null sein."
 
 msgctxt "model:ir.sequence.type,name:sequence_type_product"
+msgid "Variant"
+msgstr "Variante"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_template"
 msgid "Product"
 msgstr "Artikel"
 
@@ -949,6 +969,10 @@ msgstr "Dienstleistung"
 msgctxt "view:product.category:"
 msgid "Children"
 msgstr "Untergeordnet (Kategorien)"
+
+msgctxt "view:product.configuration:"
+msgid "Sequences"
+msgstr "Nummernkreise"
 
 msgctxt "view:product.template:"
 msgid "General"
