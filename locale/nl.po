@@ -4,11 +4,11 @@ msgstr "Content-Type: text/plain; charset=utf-8\n"
 
 msgctxt "field:product.category,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr "rekening  « kosten van verkochte goederen »"
+msgstr "rekening « kosten van verkochte goederen »"
 
 msgctxt "field:product.category.account,account_cogs:"
 msgid "Account Cost of Goods Sold"
-msgstr "rekening  « kosten van verkochte goederen »"
+msgstr "rekening « kosten van verkochte goederen »"
 
 msgctxt "field:stock.move,in_anglo_saxon_quantity:"
 msgid "Input Anglo-Saxon Quantity"
