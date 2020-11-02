@@ -82,6 +82,9 @@ Purchase product::
     >>> purchase = Purchase()
     >>> purchase.party = supplier
     >>> line = purchase.lines.new()
+    >>> line.type = 'comment'
+    >>> line.description = 'Comment'
+    >>> line = purchase.lines.new()
     >>> line.product = product
     >>> line.quantity = 10
 
@@ -119,7 +122,7 @@ Confirm purchase::
 Check secondary unit on invoice::
 
     >>> invoice, = purchase.invoices
-    >>> line, = invoice.lines
+    >>> _, line = invoice.lines
     >>> line.secondary_unit == kg
     True
     >>> line.secondary_quantity
