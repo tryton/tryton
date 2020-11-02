@@ -1,3 +1,5 @@
+Version 5.8.0 - 2020-11-02
+* Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
 * Add ad, gt, jp, md, nz, pe, py, uy, ve and za tax identifiers
 
