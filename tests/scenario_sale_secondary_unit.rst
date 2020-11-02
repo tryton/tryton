@@ -72,6 +72,9 @@ Sale product::
     >>> sale = Sale()
     >>> sale.party = customer
     >>> line = sale.lines.new()
+    >>> line.type = 'comment'
+    >>> line.description = 'Comment'
+    >>> line = sale.lines.new()
     >>> line.product = product
     >>> line.quantity = 10
 
@@ -106,7 +109,7 @@ Confirm sale::
 Check secondary unit on invoice::
 
     >>> invoice, = sale.invoices
-    >>> line, = invoice.lines
+    >>> _, line = invoice.lines
     >>> line.secondary_unit == kg
     True
     >>> line.secondary_quantity
