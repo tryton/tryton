@@ -1406,7 +1406,7 @@
             var vals = Object.values(this._values);
             for (var i=0; i < vals.length; i++) {
                 var val = vals[i];
-                if (val.hasOwnProperty('destroy')) {
+                if (val && val.hasOwnProperty('destroy')) {
                     val.destroy();
                 }
             }
