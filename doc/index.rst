@@ -2,7 +2,7 @@ Web Vue Storefront Module
 #########################
 
 The web_shop_vue_storefront module provides the back-end to integrate with `Vue
-Storefront 1.x`_.
+Storefront`_ 1.x.
 
 .. _`Vue Storefront`: https://www.vuestorefront.io/
 
