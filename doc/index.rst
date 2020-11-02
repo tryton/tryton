@@ -68,7 +68,7 @@ price of the incoming products has changed.
 
 
 Rescheduling Production
-----------------------
+-----------------------
 
 It is possible to setup a cron task to reschedule the productions that are
 planned to start in the past. By default they are rescheduled to today.
