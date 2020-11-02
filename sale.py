@@ -171,6 +171,8 @@ class Line(metaclass=PoolMeta):
         lines = super().get_invoice_line()
         if hasattr(InvoiceLine, 'secondary_unit'):
             for line in lines:
+                if line.type != 'line':
+                    continue
                 if line.unit == self.unit:
                     line.secondary_unit = self.secondary_unit
         return lines
