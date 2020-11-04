@@ -49,6 +49,7 @@ required_gi_namespaces = [
     'Gio-2.0',
     'GooCanvas-2.0',
     'Gtk-3.0',
+    'HarfBuzz-0.0',
     'Pango-1.0',
     'PangoCairo-1.0',
     'PangoFT2-1.0',
