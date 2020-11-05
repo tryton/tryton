@@ -151,7 +151,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The number of digits in the value "%(value)s" for field "%(field)s" in "%(model)s" exceeds the limit of "%(digits)i".</field>
         </record>
         <record model="ir.message" id="msg_forbidden_char_validation_record">
-            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" contains some invalid chars "%(chars)".</field>
+            <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" contains some invalid chars "%(chars)s".</field>
         </record>
         <record model="ir.message" id="msg_selection_validation_record">
             <field name="text">The value "%(value)s" for field "%(field)s" in "%(model)s" is not one of the allowed options.</field>
