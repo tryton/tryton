@@ -3,7 +3,8 @@
 
 from .modelstorage import (AccessError, ImportDataError, ValidationError,
     DomainValidationError, RequiredValidationError, SizeValidationError,
-    DigitsValidationError, SelectionValidationError, TimeFormatValidationError)
+    DigitsValidationError, ForbiddenCharValidationError,
+    SelectionValidationError, TimeFormatValidationError)
 from .modelsql import ForeignKeyError, SQLConstraintError
 from .modelview import AccessButtonError
 from .tree import RecursionError
@@ -18,6 +19,7 @@ __all__ = [
     RecursionError,
     RequiredValidationError,
     SQLConstraintError,
+    ForbiddenCharValidationError,
     SelectionValidationError,
     SizeValidationError,
     TimeFormatValidationError,

@@ -6,7 +6,8 @@ import unittest
 from sql import Literal
 
 from trytond import backend
-from trytond.model.exceptions import RequiredValidationError
+from trytond.model.exceptions import (
+    RequiredValidationError, ForbiddenCharValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.transaction import Transaction
@@ -408,6 +409,16 @@ class FieldCharTestCase(unittest.TestCase, CommonTestCaseMixin):
         with self.assertRaises(Exception):
             Char.create([{
                         'char': "foobar",
+                        }])
+
+    @with_transaction()
+    def test_create_invalid_char(self):
+        "Test create char with invalid char"
+        Char = Pool().get('test.char')
+
+        with self.assertRaises(ForbiddenCharValidationError):
+            Char.create([{
+                        'char': "foo\nbar",
                         }])
 
     @with_transaction()

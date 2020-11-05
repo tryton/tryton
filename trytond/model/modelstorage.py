@@ -61,6 +61,10 @@ class DigitsValidationError(ValidationError):
     pass
 
 
+class ForbiddenCharValidationError(ValidationError):
+    pass
+
+
 class SelectionValidationError(ValidationError):
     pass
 
@@ -1270,6 +1274,20 @@ class ModelStorage(Model):
                         for record in records:
                             digits_test(getattr(record, field_name),
                                 field.digits, field_name)
+
+                if hasattr(field, 'forbidden_chars'):
+                    for record in records:
+                        value = getattr(record, field_name)
+                        if value and any(
+                                c in value for c in field.forbidden_chars):
+                            error_args = cls.__names__(field_name)
+                            error_args['value'] = value
+                            error_args['chars'] = ','.join(
+                                repr(c) for c in field.forbidden_chars
+                                if c in value)
+                            raise ForbiddenCharValidationError(gettext(
+                                    'ir.msg_forbidden_char_validation_record',
+                                    **error_args))
 
                 # validate selection
                 if hasattr(field, 'selection') and field.selection:

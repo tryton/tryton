@@ -9,3 +9,4 @@ class Text(Char):
     '''
     _type = 'text'
     _sql_type = 'TEXT'
+    forbidden_chars = ''

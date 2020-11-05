@@ -13,6 +13,7 @@ class Char(FieldTranslate):
     '''
     _type = 'char'
     _py_type = str
+    forbidden_chars = '\t\n\r\x0b\x0c'
 
     def __init__(self, string='', size=None, help='', required=False,
             readonly=False, domain=None, states=None, translate=False,
