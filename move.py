@@ -1676,6 +1676,7 @@ class Reconcile(Wizard):
         defaults = {}
         defaults['accounts'] = [a.id for a in self.show.accounts]
         defaults['account'] = self.show.account.id
+        defaults['company'] = self.show.account.company.id
         defaults['parties'] = [p.id for p in self.show.parties]
         defaults['party'] = self.show.party.id if self.show.party else None
         defaults['currency_digits'] = self.show.account.company.currency.digits
@@ -1746,6 +1747,7 @@ class Reconcile(Wizard):
 class ReconcileShow(ModelView):
     'Reconcile'
     __name__ = 'account.reconcile.show'
+    company = fields.Many2One('company.company', "Company", readonly=True)
     accounts = fields.Many2Many('account.account', None, None, 'Account',
         readonly=True)
     account = fields.Many2One('account.account', 'Account', readonly=True)
@@ -1775,7 +1777,10 @@ class ReconcileShow(ModelView):
         'on_change_with_currency_digits')
     write_off = fields.Many2One(
         'account.move.reconcile.write_off', "Write Off",
-        states=_write_off_states, depends=_write_off_depends)
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        states=_write_off_states, depends=_write_off_depends + ['company'])
     date = fields.Date('Date',
         states=_write_off_states, depends=_write_off_depends)
     description = fields.Char('Description',
@@ -1790,10 +1795,10 @@ class ReconcileShow(ModelView):
         amount = sum(((l.debit - l.credit) for l in self.lines), Decimal(0))
         return amount.quantize(exp)
 
-    @fields.depends('account')
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
-        if self.account:
-            return self.account.company.currency.digits
+        if self.company:
+            return self.company.currency.digits
 
 
 class CancelMoves(Wizard):
