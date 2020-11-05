@@ -5,6 +5,7 @@ from collections import defaultdict
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import DeactivableMixin
 from trytond.model.exceptions import AccessError
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool
@@ -13,7 +14,7 @@ from trytond.transaction import Transaction
 from trytond.modules.product import price_digits
 
 
-class Type(ModelSQL, ModelView):
+class Type(DeactivableMixin, ModelSQL, ModelView):
     'Customer Complaint Type'
     __name__ = 'sale.complaint.type'
 
