@@ -13,7 +13,7 @@ class Email(metaclass=PoolMeta):
         User = pool.get('web.user')
         yield from super()._match(name, email)
         domain = ['OR']
-        for field in ['party.name', 'value']:
+        for field in ['party.name', 'email']:
             for value in [name, email]:
                 if value and len(value) >= 3:
                     domain.append(
