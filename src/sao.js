@@ -1194,5 +1194,12 @@ var Sao = {};
         $.fn.datetimepicker.prototype.constructor.Constructor.prototype._getLastPickedDate = function _getLastPickedDate() {
             return this._dates[this._getLastPickedDateIndex()] || this.getMoment();
         };
+
+        // XXX: Add fallback index
+        var setValue = $.fn.datetimepicker.prototype.constructor.Constructor.prototype._setValue;
+        $.fn.datetimepicker.prototype.constructor.Constructor.prototype._setValue = function _setValue(targetMoment, index) {
+            index = index || 0;
+            return setValue.call(this, targetMoment, index);
+        };
     }
 }());
