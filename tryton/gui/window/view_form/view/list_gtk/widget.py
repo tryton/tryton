@@ -837,23 +837,21 @@ class M2O(GenericText):
             search=access['read'],
             create=self.attrs.get('create', True) and access['create'])
         completion.connect('match-selected', self._completion_match_selected,
-            path, model)
+            record, field, model)
         completion.connect('action-activated',
-            self._completion_action_activated, path)
+            self._completion_action_activated, record, field)
         entry.set_completion(completion)
-        entry.connect('key-press-event', self._key_press, path)
-        entry.connect('changed', self._update_completion, path)
+        entry.connect('key-press-event', self._key_press, record, field)
+        entry.connect('changed', self._update_completion, record, field)
 
-    def _key_press(self, entry, event, path):
-        record, field = self._get_record_field_from_path(path)
+    def _key_press(self, entry, event, record, field):
         if (self.has_target(field.get(record))
                 and event.keyval in [Gdk.KEY_Delete, Gdk.KEY_BackSpace]):
             entry.set_text('')
         return False
 
     def _completion_match_selected(
-            self, completion, model, iter_, path, model_name):
-        record, field = self._get_record_field_from_path(path)
+            self, completion, model, iter_, record, field, model_name):
         rec_name, record_id = model.get(iter_, 0, 1)
         field.set_client(
             record, self.value_from_id(model_name, record_id, rec_name))
@@ -864,8 +862,7 @@ class M2O(GenericText):
         completion_model.search_text = rec_name
         return True
 
-    def _update_completion(self, entry, path):
-        record, field = self._get_record_field_from_path(path)
+    def _update_completion(self, entry, record, field):
         value = field.get(record)
         if self.has_target(value):
             id_ = self.id_from_value(value)
@@ -874,8 +871,7 @@ class M2O(GenericText):
         model = self.get_model(record, field)
         update_completion(entry, record, field, model)
 
-    def _completion_action_activated(self, completion, index, path):
-        record, field = self._get_record_field_from_path(path)
+    def _completion_action_activated(self, completion, index, record, field):
         entry = completion.get_entry()
         entry.handler_block(entry.editing_done_id)
 
