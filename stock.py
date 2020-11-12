@@ -259,7 +259,7 @@ class InventoryCount(metaclass=PoolMeta):
         if isinstance(self.search.search, Product):
             product = self.search.search
             if product.lot_is_required(
-                    inventory.location, inventory.lost_found):
+                    inventory.location, inventory.location.lost_found_used):
                 raise RequiredValidationError(
                     gettext('stock_lot.msg_only_lot',
                         product=product.rec_name))
