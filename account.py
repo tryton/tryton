@@ -957,7 +957,8 @@ class PaymentBraintreeCustomer(
         'account_payment_braintree_customer.payment_methods',
         duration=config.getint(
             'account_payment_braintree', 'payment_methods_cache',
-            default=15 * 60))
+            default=15 * 60),
+        context=False)
 
     @classmethod
     def __setup__(cls):
