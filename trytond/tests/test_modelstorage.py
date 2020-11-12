@@ -120,9 +120,6 @@ class ModelStorageTestCase(unittest.TestCase):
         with self.assertRaises(RequiredValidationError):
             ModelStorage.save([foo, bar])
 
-        self.assertIsNone(foo.name)
-        self.assertEqual(bar.name, 'bar')
-
     @with_transaction()
     def test_fail_saving_mixed_context2(self):
         'Test fail saving with mixed context '
@@ -138,8 +135,6 @@ class ModelStorageTestCase(unittest.TestCase):
         foo.name = 'foo'
         with self.assertRaises(RequiredValidationError):
             ModelStorage.save([foo, bar])
-        self.assertEqual(foo.name, 'foo')
-        self.assertIsNone(bar.name)
 
     @with_transaction()
     def test_save_one2many_create(self):
