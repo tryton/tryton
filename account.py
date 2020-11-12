@@ -2283,8 +2283,10 @@ class AgedBalanceContext(ModelView):
         depends=['term2'])
     unit = fields.Selection([
             ('day', 'Days'),
+            ('week', "Weeks"),
             ('month', 'Months'),
-            ], "Unit", required=True)
+            ('year', "Years"),
+            ], "Unit", required=True, sort=False)
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help="Only include posted moves.")
 
@@ -2300,21 +2302,36 @@ class AgedBalanceContext(ModelView):
     def default_date(cls):
         return Pool().get('ir.date').today()
 
-    @staticmethod
-    def default_term1():
-        return 30
+    @classmethod
+    def default_term1(cls):
+        return cls._default_terms(cls.default_unit())[0]
 
-    @staticmethod
-    def default_term2():
-        return 60
+    @classmethod
+    def default_term2(cls):
+        return cls._default_terms(cls.default_unit())[1]
 
-    @staticmethod
-    def default_term3():
-        return 90
+    @classmethod
+    def default_term3(cls):
+        return cls._default_terms(cls.default_unit())[2]
 
-    @staticmethod
-    def default_unit():
+    @classmethod
+    def default_unit(cls):
         return 'day'
+
+    @fields.depends('unit')
+    def on_change_unit(self):
+        self.term1, self.term2, self.term3 = self._default_terms(self.unit)
+
+    @classmethod
+    def _default_terms(cls, unit):
+        terms = None, None, None
+        if unit == 'day':
+            terms = 30, 60, 90
+        elif unit == 'week':
+            terms = 4, 8, 12
+        elif unit in {'month', 'year'}:
+            terms = 1, 2, 3
+        return terms
 
     @staticmethod
     def default_company():
@@ -2436,11 +2453,12 @@ class AgedBalance(ModelSQL, ModelView):
     @classmethod
     def get_unit_factor(cls):
         context = Transaction().context
-        unit = context.get('unit', 'day')
-        if unit == 'month':
-            return datetime.timedelta(days=30)
-        elif unit == 'day':
-            return datetime.timedelta(days=1)
+        return {
+            'year': relativedelta(years=1),
+            'month': relativedelta(months=1),
+            'week': relativedelta(weeks=1),
+            'day': relativedelta(days=1)
+            }.get(context.get('unit', 'day'))
 
     @classmethod
     def get_kind(cls, account_type):
