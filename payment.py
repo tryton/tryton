@@ -1436,11 +1436,13 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
     _sources_cache = Cache(
         'account_payment_stripe_customer.sources',
         duration=config.getint(
-            'account_payment_stripe', 'sources_cache', default=15 * 60))
+            'account_payment_stripe', 'sources_cache', default=15 * 60),
+        context=False)
     _payment_methods_cache = Cache(
         'account_payment_stripe_customer.payment_methods',
         duration=config.getint(
-            'account_payment_stripe', 'payment_methods', default=15 * 60))
+            'account_payment_stripe', 'payment_methods', default=15 * 60),
+        context=False)
 
     @classmethod
     def __setup__(cls):
