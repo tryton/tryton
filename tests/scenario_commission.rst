@@ -16,6 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     set_fiscalyear_invoice_sequences, create_payment_term
     >>> today = datetime.date.today()
+    >>> tomorrow = today + relativedelta(days=1)
 
 Activate modules::
 
@@ -81,6 +82,19 @@ Create payment term::
     >>> payment_term = create_payment_term()
     >>> payment_term.save()
 
+Create payment method::
+
+    >>> Journal = Model.get('account.journal')
+    >>> PaymentMethod = Model.get('account.invoice.payment.method')
+    >>> Sequence = Model.get('ir.sequence')
+    >>> journal_cash, = Journal.find([('type', '=', 'cash')])
+    >>> payment_method = PaymentMethod()
+    >>> payment_method.name = 'Cash'
+    >>> payment_method.journal = journal_cash
+    >>> payment_method.credit_account = accounts['cash']
+    >>> payment_method.debit_account = accounts['cash']
+    >>> payment_method.save()
+
 Create agent::
 
     >>> Agent = Model.get('commission.agent')
@@ -124,6 +138,7 @@ Create invoice::
     >>> invoice.party = customer
     >>> invoice.payment_term = payment_term
     >>> invoice.agent = agent
+    >>> invoice.invoice_date
     >>> line = invoice.lines.new()
     >>> line.product = product
     >>> line.quantity = 1
@@ -140,6 +155,8 @@ Post invoice::
     [Decimal('10.0000'), Decimal('10.0000')]
     >>> [c.invoice_state for c in line.commissions]
     ['', '']
+    >>> [c.date for c in line.commissions]
+    [None, None]
 
 Pending amount for agent::
 
@@ -152,6 +169,18 @@ Pending amount for principal::
     >>> principal.reload()
     >>> principal.pending_amount
     Decimal('10.0000')
+
+Pay invoice::
+
+    >>> pay = Wizard('account.invoice.pay', [invoice])
+    >>> pay.form.payment_method = payment_method
+    >>> pay.form.date = tomorrow
+    >>> pay.execute('choice')
+    >>> pay.state
+    'end'
+    >>> Commission = Model.get('commission')
+    >>> [c.date == tomorrow for c in Commission.find([])]
+    [True, True]
 
 Create commission invoices::
 
@@ -178,7 +207,6 @@ Create commission invoices::
     >>> invoice.total_amount
     Decimal('10.00')
 
-    >>> Commission = Model.get('commission')
     >>> commissions = Commission.find([])
     >>> [c.invoice_state for c in commissions]
     ['invoiced', 'invoiced']

@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from collections import defaultdict
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.pyson import Eval, If, Bool
@@ -62,15 +63,23 @@ class Invoice(metaclass=PoolMeta):
 
         super(Invoice, cls).paid(invoices)
 
+        date2commissions = defaultdict(list)
         for sub_invoices in grouped_slice(invoices):
             ids = [i.id for i in sub_invoices]
-            commissions = Commission.search([
-                    ('date', '=', None),
-                    ('origin.invoice', 'in', ids, 'account.invoice.line'),
-                    ])
-            Commission.write(commissions, {
-                    'date': today,
-                    })
+            for commission in Commission.search([
+                        ('date', '=', None),
+                        ('origin.invoice', 'in', ids, 'account.invoice.line'),
+                        ]):
+                date = commission.origin.invoice.reconciled or today
+                date2commissions[date].append(commission)
+        to_write = []
+        for date, commissions in date2commissions.items():
+            to_write.append(commissions)
+            to_write.append({
+                'date': date,
+                })
+        if to_write:
+            Commission.write(*to_write)
 
     @classmethod
     @ModelView.button
@@ -166,7 +175,7 @@ class InvoiceLine(metaclass=PoolMeta):
             commission = Commission()
             commission.origin = self
             if plan.commission_method == 'posting':
-                commission.date = today
+                commission.date = self.invoice.invoice_date or today
             commission.agent = agent
             commission.product = plan.commission_product
             commission.amount = amount
