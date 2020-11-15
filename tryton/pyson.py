@@ -747,4 +747,6 @@ CONTEXT = {
     'DateTime': DateTime,
     'TimeDelta': TimeDelta,
     'Len': Len,
+    'true': True,
+    'false': False,
 }
