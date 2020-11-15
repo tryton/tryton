@@ -10,8 +10,8 @@ import proteus.config
 
 os.environ.setdefault('TRYTOND_DATABASE_URI', 'sqlite:///:memory:')
 os.environ.setdefault('DB_NAME', ':memory:')
-from trytond.tests.test_tryton import (
-    doctest_setup, doctest_teardown)  # noqa: E402
+from trytond.tests.test_tryton import (  # noqa: E402
+    doctest_setup, doctest_teardown)
 
 here = os.path.dirname(__file__)
 readme = os.path.normpath(os.path.join(here, '..', '..', 'README'))
