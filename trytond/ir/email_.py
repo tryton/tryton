@@ -284,8 +284,8 @@ class EmailTemplate(ModelSQL, ModelView):
             'invisible': Bool(Eval('recipients_secondary')),
             },
         depends=['recipients_secondary'],
-        help="A PYSON expression that generates a list of secondary recipients "
-        'with the record represented by "self".')
+        help="A PYSON expression that generates a list "
+        'of secondary recipients with the record represented by "self".')
     recipients_hidden = fields.Many2One(
         'ir.model.field', "Hidden Recipients",
         domain=[
