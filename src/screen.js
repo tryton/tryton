@@ -675,6 +675,12 @@
                     'keyBinds': null,
                     'useCurrent': false,
                 });
+                entry.on('datetimepicker.hide', function() {
+                    Sao.common.set_overflow(entry, 'hide');
+                });
+                entry.on('datetimepicker.show', function() {
+                    Sao.common.set_overflow(entry, 'show');
+                });
 
                 var mousetrap = new Mousetrap(el[0]);
 

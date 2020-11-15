@@ -1591,6 +1591,12 @@ function eval_pyson(value){
             });
             this.date.css('max-width', this._width);
             this.date.on('change.datetimepicker', this.focus_out.bind(this));
+            this.date.on('datetimepicker.hide', function() {
+                Sao.common.set_overflow(this.date, 'hide');
+            }.bind(this));
+            this.date.on('datetimepicker.show', function() {
+                Sao.common.set_overflow(this.date, 'show');
+            }.bind(this));
             var mousetrap = new Mousetrap(this.el[0]);
 
             mousetrap.bind('enter', function(e, combo) {

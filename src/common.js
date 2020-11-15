@@ -3303,6 +3303,30 @@
     });
     Sao.common.processing = new Sao.common.Processing();
 
+    Sao.common.set_overflow = function set_overflow(el, state) {
+        // We must set the overflow of the treeview and modal-body
+        // containing the input to visible to prevent vertical scrollbar
+        // inherited from the auto overflow-x
+        // Idem when in navbar collapse for the overflow-y
+        // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
+        var overflow, height;
+        if (state == 'hide') {
+            overflow = '';
+            height = '';
+        } else {
+            overflow = 'visible';
+            height = 'none';
+        }
+        el.closest('.treeview')
+            .css('overflow', overflow)
+            .css('max-height', height);
+        el.closest('.modal-body').css('overflow', overflow);
+        el.closest('.navbar-collapse.in').css('overflow-y', overflow);
+        el.closest('.content-box').css('overflow-y', overflow);
+        el.closest('fieldset.form-group_').css('overflow', overflow);
+        Sao.common.scrollIntoViewIfNeeded(el);
+    };
+
     Sao.common.InputCompletion = Sao.class_(Object, {
         init: function(el, source, match_selected, format) {
             if (!el.is('input')) {
@@ -3361,31 +3385,12 @@
                     this.menu.dropdown('toggle');
                 }
             }.bind(this));
-            // We must set the overflow of the treeview and modal-body
-            // containing the input to visible to prevent vertical scrollbar
-            // inherited from the auto overflow-x
-            // Idem when in navbar collapse for the overflow-y
-            // (see http://www.w3.org/TR/css-overflow-3/#overflow-properties)
             this.dropdown.on('hide.bs.dropdown', function() {
                 this.input.focus();
-                this.input.closest('.treeview')
-                    .css('overflow', '')
-                    .css('max-height', '');
-                this.input.closest('.modal-body').css('overflow', '');
-                this.input.closest('.navbar-collapse.in').css('overflow-y', '');
-                this.input.closest('.content-box').css('overflow-y', '');
-                this.input.closest('fieldset.form-group_').css('overflow', '');
-                Sao.common.scrollIntoViewIfNeeded(this.input);
+                Sao.common.set_overflow(this.input, 'hide');
             }.bind(this));
             this.dropdown.on('show.bs.dropdown', function() {
-                this.input.closest('.treeview')
-                    .css('overflow', 'visible')
-                    .css('max-height', 'none');
-                this.input.closest('.modal-body').css('overflow', 'visible');
-                this.input.closest('.navbar-collapse.in').css('overflow-y', 'visible');
-                this.input.closest('.content-box').css('overflow-y', 'visible');
-                this.input.closest('fieldset.form-group_').css('overflow', 'visible');
-                Sao.common.scrollIntoViewIfNeeded(this.input);
+                Sao.common.set_overflow(this.input, 'show');
             }.bind(this));
         },
         set_actions: function(actions, action_activated) {
