@@ -229,18 +229,13 @@ class EmailUnsubscribe(Report):
         return context
 
 
-class EmailList(ModelSQL, ModelView):
+class EmailList(DeactivableMixin, ModelSQL, ModelView):
     "Marketing Mailing List"
     __name__ = 'marketing.email.list'
 
     name = fields.Char("Name", required=True)
-    active = fields.Boolean("Active", select=True)
     language = fields.Many2One('ir.lang', "Language", required=True)
     emails = fields.One2Many('marketing.email', 'list_', "Emails")
-
-    @classmethod
-    def default_active(cls):
-        return True
 
     @staticmethod
     def default_language():
