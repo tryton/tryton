@@ -5,7 +5,6 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, Workflow, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 
 from .exceptions import DepositError
 
