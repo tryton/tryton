@@ -1,6 +1,6 @@
-===============================
-Project Invoice Effort Scenario
-===============================
+=========================================
+Project Invoice Multiple Parties Scenario
+=========================================
 
 Imports::
 
