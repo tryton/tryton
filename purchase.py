@@ -6,7 +6,6 @@ from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.model.exceptions import RequiredValidationError
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
-from trytond.transaction import Transaction
 from trytond.tools.multivalue import migrate_property
 
 from trytond.modules.product import round_price
