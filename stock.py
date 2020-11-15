@@ -89,7 +89,13 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     "Drop Shipment"
     __name__ = 'stock.shipment.drop'
 
-    effective_date = fields.Date('Effective Date', readonly=True)
+    effective_date = fields.Date(
+        "Effective Date",
+        states={
+            'readonly': Eval('state').in_(['cancelled', 'done']),
+            },
+        depends=['state'],
+        help="When the stock was actually sent.")
     planned_date = fields.Date('Planned Date', states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
@@ -556,7 +562,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
         Move.do([m for s in shipments for m in s.customer_moves])
-        cls.write(shipments, {
+        cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
                 })
 
