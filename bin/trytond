@@ -47,13 +47,14 @@ with commandline.pidfile(options):
             ssl_context=load_ssl_context(certificate, privatekey))
     else:
         ssl_args = {}
-    for module in get_module_list():
-        info = get_module_info(module)
-        for ext in ['xml',
-                'fodt', 'odt', 'fodp', 'odp', 'fods', 'ods', 'fodg', 'odg',
-                'txt', 'html', 'xhtml']:
-            path = os.path.join(info['directory'], '**', '*.' + ext)
-            extra_files.extend(glob.glob(path, recursive=True))
+    if options.dev and not options.coroutine:
+        for module in get_module_list():
+            info = get_module_info(module)
+            for ext in ['xml',
+                    'fodt', 'odt', 'fodp', 'odp', 'fods', 'ods', 'fodg', 'odg',
+                    'txt', 'html', 'xhtml']:
+                path = os.path.join(info['directory'], '**', '*.' + ext)
+                extra_files.extend(glob.glob(path, recursive=True))
 
     if options.coroutine:
         from gevent.pywsgi import WSGIServer
