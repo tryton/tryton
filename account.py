@@ -211,7 +211,7 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
 
     def _match_range(self, origin, information):
         low = getattr(self, '%s_low' % self.key_type)
-        high = getattr(self, '%_high' % self.key_type)
+        high = getattr(self, '%s_high' % self.key_type)
         amount = information.get(self.key.name)
         if amount is None:
             return False
