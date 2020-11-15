@@ -302,8 +302,8 @@ class Greater(PYSON):
         super(Greater, self).__init__()
         for i in (statement1, statement2):
             if isinstance(i, PYSON):
-                assert i.types().issubset(
-                    {int, float, type(None),
+                assert i.types().issubset({
+                        int, float, type(None),
                         datetime.datetime, datetime.date}), \
                     'statement must be an integer, float, date or datetime'
             else:
@@ -747,4 +747,6 @@ CONTEXT = {
     'DateTime': DateTime,
     'TimeDelta': TimeDelta,
     'Len': Len,
+    'true': True,
+    'false': False,
 }
