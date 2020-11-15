@@ -838,6 +838,14 @@ class PYSONTestCase(unittest.TestCase):
                 ]:
             self.assertEqual(pyson.PYSONDecoder(ctx).decode(eval), result)
 
+    def test_eval_true(self):
+        "Test PYSON.eval JS true"
+        self.assertEqual(eval('true', pyson.CONTEXT), True)
+
+    def test_eval_false(self):
+        "Test PYSON.eval JS false"
+        self.assertEqual(eval('false', pyson.CONTEXT), False)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(PYSONTestCase)

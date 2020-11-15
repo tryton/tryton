@@ -1,3 +1,4 @@
+* Unify PYSON string format
 * Forbid all white spaces except space in Char field
 
 Version 5.8.0 - 2020-11-02
