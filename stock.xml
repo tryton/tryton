@@ -3,6 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.icon" id="stock_shipment_drop">
+            <field name="name">tryton-shipment-drop</field>
+            <field name="path">icons/tryton-shipment-drop.svg</field>
+        </record>
 
         <record model="ir.ui.view" id="stock_configuration_view_form">
             <field name="model">stock.configuration</field>
@@ -202,6 +206,24 @@ this repository contains the full copyright notices and license terms. -->
                 eval="[('company', '=', Eval('user', {}).get('company', None))]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_shipment_drop"/>
+        </record>
+
+        <record model="ir.action.act_window" id="act_shipment_drop_relate_party">
+            <field name="name">Drop Shipments</field>
+            <field name="res_model">stock.shipment.drop</field>
+            <field name="domain"
+                eval="['OR', ('customer', 'in', Eval('active_ids')), ('supplier', 'in', Eval('active_ids'))]"
+                pyson="1"/>
+            <field name="search_value" eval="[('state', 'not in', ['done', 'cancelled'])]" pyson="1"/>
+        </record>
+        <record model="ir.action.keyword" id="act_shipment_drop_relate_party_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_shipment_drop_relate_party"/>
+        </record>
+        <record model="ir.action-res.group" id="act_shipment_drop_relate_party-group_stock">
+            <field name="action" ref="act_shipment_drop_relate_party"/>
+            <field name="group" ref="stock.group_stock"/>
         </record>
 
         <record model="ir.action.act_window" id="act_sale_shipments_relate">
