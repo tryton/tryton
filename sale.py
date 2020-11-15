@@ -470,7 +470,6 @@ class Sale(
         self.tax_amount = Decimal('0.0')
         self.total_amount = Decimal('0.0')
 
-        taxes = {}
         if self.lines:
             for line in self.lines:
                 self.untaxed_amount += getattr(line, 'amount', None) or 0
