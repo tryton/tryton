@@ -4,7 +4,10 @@
     'use strict';
 
     Sao.PYSON = {};
-    Sao.PYSON.eval = {};
+    Sao.PYSON.eval = {
+        True: true,
+        False: false,
+    };
     Sao.PYSON.toString = function(value) {
         if (value instanceof Sao.PYSON.PYSON) {
             return value.toString();
@@ -263,13 +266,11 @@
 
 
     Sao.PYSON.eval.And = function(statements) {
-        return new Sao.PYSON.And(statements);
+        return Sao.PYSON.And.new_(statements);
     };
     Sao.PYSON.And = Sao.class_(Sao.PYSON.PYSON, {
-        init: function(statements) {
-            if (statements === undefined) {
-                statements = [];
-            }
+        init: function() {
+            var statements = jQuery.extend([], arguments);
             Sao.PYSON.And._super.init.call(this);
             for (var i = 0, len = statements.length; i < len; i++) {
                 var statement = statements[i];
@@ -297,7 +298,7 @@
             return ['boolean'];
         },
         __string_params__: function() {
-            return [this._statements];
+            return this._statements;
         }
     });
 
@@ -310,12 +311,12 @@
         return result;
     };
     Sao.PYSON.And.init_from_object = function(obj) {
-        return new Sao.PYSON.And(obj.s);
+        return Sao.PYSON.And.new_(obj.s);
     };
 
 
     Sao.PYSON.eval.Or = function(statements) {
-        return new Sao.PYSON.Or(statements);
+        return Sao.PYSON.Or.new_(statements);
     };
     Sao.PYSON.Or = Sao.class_(Sao.PYSON.And, {
         pyson: function() {
@@ -334,7 +335,7 @@
         return result;
     };
     Sao.PYSON.Or.init_from_object= function(obj) {
-        return new Sao.PYSON.Or(obj.s);
+        return new Sao.PYSON.Or.new_(obj.s);
     };
 
     Sao.PYSON.eval.Equal = function(statement1, statement2) {

@@ -189,139 +189,133 @@
     });
 
     QUnit.test('PYSON And', function() {
-        var value = new Sao.PYSON.And([true, false]).pyson();
-        QUnit.strictEqual(value.__class__, 'And', 'And([true, false]).pyson()');
+        var value = new Sao.PYSON.And(true, false).pyson();
+        QUnit.strictEqual(value.__class__, 'And', 'And(true, false).pyson()');
         QUnit.ok(Sao.common.compare(value.s, [true, false]),
             'And([true, false]).pyson()');
 
         QUnit.throws(function() {
-            new Sao.PYSON.And([true]);
-        }, 'must have at least 2 statements', 'And([true])');
-        QUnit.throws(function() {
-            new Sao.PYSON.And([]);
-        }, 'must have at least 2 statements', 'And([])');
+            new Sao.PYSON.And(true);
+        }, 'must have at least 2 statements', 'And(true)');
         QUnit.throws(function() {
             new Sao.PYSON.And();
         }, 'must have at least 2 statements', 'And()');
 
-        QUnit.ok(Sao.common.compare(new Sao.PYSON.And([true, false]).types(),
-                    ['boolean']), 'And([true, false]).types()');
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.And(true, false).types(),
+                    ['boolean']), 'And(true, false).types()');
 
         var eval_;
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([true, true]));
+                new Sao.PYSON.And(true, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(And([true, true]))');
+                'decode(And(true, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([true, true, true]));
+                new Sao.PYSON.And(true, true, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(And([true, true, true]))');
+                'decode(And(true, true, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([true, false]));
+                new Sao.PYSON.And(true, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([true, false]))');
+                'decode(And(true, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([false, true]));
+                new Sao.PYSON.And(false, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([false, true]))');
+                'decode(And(false, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([false, false]));
+                new Sao.PYSON.And(false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([false, false]))');
+                'decode(And(false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([false, false, false]));
+                new Sao.PYSON.And(false, false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([false, false, false]))');
+                'decode(And(false, false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([true, false, false]));
+                new Sao.PYSON.And(true, false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([true, false, false]))');
+                'decode(And(true, false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([false, true, false]));
+                new Sao.PYSON.And(false, true, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([false, true, false]))');
+                'decode(And(false, true, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.And([false, false, true]));
+                new Sao.PYSON.And(false, false, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(And([false, false, true]))');
-        QUnit.strictEqual(new Sao.PYSON.And([false, true, true]).toString(),
-                "And([false, true, true])");
+                'decode(And(false, false, true))');
+        QUnit.strictEqual(new Sao.PYSON.And(false, true, true).toString(),
+                "And(false, true, true)");
     });
 
     QUnit.test('PYSON Or', function() {
-        var value = new Sao.PYSON.Or([true, false]).pyson();
-        QUnit.strictEqual(value.__class__, 'Or', 'Or([true, false]).pyson()');
+        var value = new Sao.PYSON.Or(true, false).pyson();
+        QUnit.strictEqual(value.__class__, 'Or', 'Or(true, false).pyson()');
         QUnit.ok(Sao.common.compare(value.s, [true, false]),
-            'Or([true, false]).pyson()');
+            'Or(true, false).pyson()');
 
         QUnit.throws(function() {
-            new Sao.PYSON.Or([true]);
-        }, 'must have at least 2 statements', 'Or([true])');
-        QUnit.throws(function() {
-            new Sao.PYSON.Or([]);
-        }, 'must have at least 2 statements', 'Or([])');
+            new Sao.PYSON.Or(true);
+        }, 'must have at least 2 statements', 'Or(true)');
         QUnit.throws(function() {
             new Sao.PYSON.Or();
-        }, 'must have at least 2 statements', 'Or([])');
+        }, 'must have at least 2 statements', 'Or()');
 
-        QUnit.ok(Sao.common.compare(new Sao.PYSON.Or([true, false]).types(),
-                    ['boolean']), 'Or([true, false]).types()');
+        QUnit.ok(Sao.common.compare(new Sao.PYSON.Or(true, false).types(),
+                    ['boolean']), 'Or(true, false).types()');
 
         var eval_;
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([true, true]));
+                new Sao.PYSON.Or(true, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([true, true]))');
+                'decode(Or(true, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([true, true, true]));
+                new Sao.PYSON.Or(true, true, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([true, true, true]))');
+                'decode(Or(true, true, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([true, false]));
+                new Sao.PYSON.Or(true, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([true, false]))');
+                'decode(Or(true, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([false, true]));
+                new Sao.PYSON.Or(false, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([false, true]))');
+                'decode(Or(false, true))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([false, false]));
+                new Sao.PYSON.Or(false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(Or([false, false]))');
+                'decode(Or(false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([false, false, false]));
+                new Sao.PYSON.Or(false, false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), false,
-                'decode(Or([false, false, false]))');
+                'decode(Or(false, false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([true, false, false]));
+                new Sao.PYSON.Or(true, false, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([true, false, false]))');
+                'decode(Or(true, false, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([false, true, false]));
+                new Sao.PYSON.Or(false, true, false));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([false, true, false]))');
+                'decode(Or(false, true, false))');
 
         eval_ = new Sao.PYSON.Encoder().encode(
-                new Sao.PYSON.Or([false, false, true]));
+                new Sao.PYSON.Or(false, false, true));
         QUnit.strictEqual(new Sao.PYSON.Decoder().decode(eval_), true,
-                'decode(Or([false, false, true]))');
-        QUnit.strictEqual(new Sao.PYSON.Or([false, true, true]).toString(),
-                "Or([false, true, true])");
+                'decode(Or(false, false, true))');
+        QUnit.strictEqual(new Sao.PYSON.Or(false, true, true).toString(),
+                "Or(false, true, true)");
     });
 
     QUnit.test('PYSON Equal', function() {
@@ -1231,6 +1225,11 @@
                 new Sao.PYSON.Decoder(ctx).decode(eval_), result,
                 "decode(" + JSON.stringify(ctx) + ")");
         });
+    });
+
+    QUnit.test('PYSON eval', function() {
+        QUnit.strictEqual(eval_pyson('True'), true, "eval_pyson('True')");
+        QUnit.strictEqual(eval_pyson('False'), false, "eval_pyson('False')");
     });
 
     QUnit.test('DomainParser.group_operator', function() {

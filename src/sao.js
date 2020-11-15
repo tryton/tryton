@@ -163,6 +163,15 @@ var Sao = {};
                     Object.getOwnPropertyDescriptor(props, name));
             }
         }
+
+        // Method to create new instance with a list of arguments
+        function F(args) {
+            return ClassConstructor.apply(this, args);
+        }
+        F.prototype = ClassConstructor.prototype;
+        ClassConstructor.new_ = function(args) {
+            return new F(args);
+        };
         return ClassConstructor;
     };
 
