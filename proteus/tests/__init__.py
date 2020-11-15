@@ -14,7 +14,7 @@ from trytond.tests.test_tryton import (  # noqa: E402
     doctest_setup, doctest_teardown)
 
 here = os.path.dirname(__file__)
-readme = os.path.normpath(os.path.join(here, '..', '..', 'README'))
+readme = os.path.normpath(os.path.join(here, '..', '..', 'README.rst'))
 
 
 def test_suite():
