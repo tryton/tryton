@@ -262,6 +262,8 @@
             }).appendTo(jQuery('<div/>', {
                 'class': 'navbar-text hidden-xs',
             }).insertAfter(this.buttons.previous));
+            this.buttons.previous.addClass('hidden-xs');
+            this.buttons.next.addClass('hidden-xs');
             toolbar.find('.btn-toolbar > .btn-group').last()
                 .addClass( 'hidden-xs')
                 .find('.dropdown')
