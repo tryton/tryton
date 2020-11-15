@@ -1201,5 +1201,15 @@ var Sao = {};
             index = index || 0;
             return setValue.call(this, targetMoment, index);
         };
+
+        // XXX: trigger show/hide event without date
+        var notifyEvent = $.fn.datetimepicker.prototype.constructor.Constructor.prototype._notifyEvent;
+        $.fn.datetimepicker.prototype.constructor.Constructor.prototype._notifyEvent = function _notifyEvent(e) {
+            if ((e.type === 'datetimepicker.hide') || (e.type === 'datetimepicker.show')) {
+                this._element.trigger(e);
+            } else {
+                notifyEvent.call(this, e);
+            }
+        };
     }
 }());
