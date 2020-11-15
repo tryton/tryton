@@ -8,7 +8,6 @@ from heapq import heappop, heappush
 from trytond.model import ModelSQL, fields, tree
 from trytond.wizard import Wizard, StateTransition
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 
 
