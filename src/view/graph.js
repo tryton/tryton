@@ -99,7 +99,10 @@
                     if (x && (x.isDate || x.isDateTime)) {
                         x = x.toString();
                     }
-                    data.columns[0][index + 1] = x;
+                    var pos = data.columns[0].indexOf(x);
+                    if (pos < 0) {
+                        pos = data.columns[0].push(x) - 1;
+                    }
                     this._add_id(x, record.id);
 
                     var column;
@@ -117,18 +120,17 @@
                             }
                             var decoder = new Sao.PYSON.Decoder(ctx);
                             if (!decoder.decode(yfield.domain)) {
-                                column[index + 1] = 0;
                                 continue;
                             }
                         }
                         if (yfield.name == '#') {
-                            column[index + 1] = 1;
+                            column[pos] += 1;
                         } else {
                             var value = record.field_get(yfield.name);
                             if (value && value.isTimeDelta) {
                                 value = value.asSeconds();
                             }
-                            column[index + 1] = value || 0;
+                            column[pos] = (column[pos] || 0) + (value || 0);
                         }
                     }
                 }.bind(this);
@@ -143,10 +145,6 @@
             for (i = 0, len = group.length; i < len; i++) {
                 record = group[i];
                 fields2load.forEach(load_field(group[i]));
-
-                for (j = 0, y_len = data.columns.length; j < y_len; j++) {
-                    data.columns[j].push(undefined);
-                }
                 r_prms.push(
                         jQuery.when.apply(jQuery, prms).then(set_data(i)));
             }
