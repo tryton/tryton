@@ -464,6 +464,10 @@ class Activity(ModelSQL, ModelView):
         RecordActivity = pool.get('marketing.automation.record.activity')
         record = activity.record
 
+        # As it is a reference, the record may have been deleted
+        if not record:
+            return
+
         # XXX: use domain
         if self.condition and not record.eval(self.condition):
             return
@@ -658,7 +662,10 @@ class Record(ModelSQL, ModelView):
         cls.write(records, {'blocked': True})
 
     def get_rec_name(self, name):
-        return self.record.rec_name
+        if self.record:
+            return self.record.rec_name
+        else:
+            return '(%s)' % self.id
 
     @classmethod
     def create(cls, vlist):
