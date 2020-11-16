@@ -59,7 +59,7 @@ Create parties::
     >>> customer.save()
     >>> customer_address = customer.addresses.new()
     >>> customer_address.street = 'Anfield Road'
-    >>> customer_address.zip = 'L40TH'
+    >>> customer_address.zip = 'L 40TH'
     >>> customer_address.city = 'Liverpool'
     >>> customer_address.country = britain
     >>> customer_address.save()
