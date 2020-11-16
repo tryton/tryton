@@ -246,7 +246,7 @@ class CreateShippingUPS(Wizard):
                 'AddressLine': [l[:35]
                     for l in (address.street or '').splitlines()[:3]],
                 'City': address.city[:30],
-                'PostalCode': (address.zip or '')[:9],
+                'PostalCode': (address.zip or '').replace(' ', '')[:9],
                 'CountryCode': address.country.code if address.country else '',
                 },
             }
