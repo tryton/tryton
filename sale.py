@@ -82,13 +82,15 @@ class Line(metaclass=PoolMeta):
 
     @fields.depends(
         'base_price', 'discount_rate',
-        methods=['on_change_with_discount_amount', 'on_change_with_discount'])
+        methods=['on_change_with_discount_amount', 'on_change_with_discount',
+            'on_change_with_amount'])
     def on_change_discount_rate(self):
         if self.base_price is not None and self.discount_rate is not None:
             self.unit_price = round_price(
                 self.base_price * (1 - self.discount_rate))
             self.discount_amount = self.on_change_with_discount_amount()
             self.discount = self.on_change_with_discount()
+            self.amount = self.on_change_with_amount()
 
     @classmethod
     def set_discount_rate(cls, lines, name, value):
@@ -102,13 +104,15 @@ class Line(metaclass=PoolMeta):
 
     @fields.depends(
         'base_price', 'discount_amount',
-        methods=['on_change_with_discount_rate', 'on_change_with_discount'])
+        methods=['on_change_with_discount_rate', 'on_change_with_discount',
+            'on_change_with_amount'])
     def on_change_discount_amount(self):
         if self.base_price is not None and self.discount_amount is not None:
             self.unit_price = round_price(
                 self.base_price - self.discount_amount)
             self.discount_rate = self.on_change_with_discount_rate()
             self.discount = self.on_change_with_discount()
+            self.amount = self.on_change_with_amount()
 
     @classmethod
     def set_discount_amount(cls, lines, name, value):
