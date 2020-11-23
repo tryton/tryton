@@ -361,7 +361,8 @@ class InventoryLine(ModelSQL, ModelView):
         'on_change_with_inventory_date',
         searcher='search_inventory_date')
     inventory_state = fields.Function(
-        fields.Selection('get_inventory_states', "Inventory State"),
+        fields.Selection('get_inventory_states', "Inventory State",
+        depends=['inventory']),
         'on_change_with_inventory_state')
 
     @classmethod
