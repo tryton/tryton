@@ -2647,6 +2647,8 @@
     Sao.View.EditableTree.Integer = Sao.class_(Sao.View.Form.Integer, {
         class_: 'editabletree-integer',
         init: function(view, attributes) {
+            attributes = jQuery.extend({}, attributes);
+            delete attributes.symbol;
             Sao.View.EditableTree.Integer._super.init.call(
                 this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
@@ -2659,6 +2661,8 @@
     Sao.View.EditableTree.Float = Sao.class_(Sao.View.Form.Float, {
         class_: 'editabletree-float',
         init: function(view, attributes) {
+            attributes = jQuery.extend({}, attributes);
+            delete attributes.symbol;
             Sao.View.EditableTree.Float._super.init.call(
                 this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
