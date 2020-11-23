@@ -741,11 +741,11 @@ class ModelSQL(ModelStorage):
                     if rule_domain:
                         rule_tables = {None: (table, None)}
                         rule_tables, rule_expression = cls.search_domain(
-                            rule_domain, tables=rule_tables)
+                            rule_domain, active_test=False, tables=rule_tables)
                         if len(rule_tables) > 1:
                             # The expression uses another table
                             rule_tables, rule_expression = cls.search_domain(
-                                rule_domain)
+                                rule_domain, active_test=False)
                             rule_from = convert_from(None, rule_tables)
                             rule_table, _ = rule_tables[None]
                             rule_where = rule_table.id == table.id
