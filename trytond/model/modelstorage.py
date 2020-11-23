@@ -1491,10 +1491,6 @@ class ModelStorage(Model):
                 return (field.loading == 'eager'
                     and fname not in to_remove)
 
-            def overrided(item):
-                fname, field = item
-                return fname in self._fields
-
             ifields = filter(to_load,
                 filter(not_cached,
                     iter(self._fields.items())))
