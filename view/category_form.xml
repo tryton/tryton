@@ -6,9 +6,10 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="parent"/>
     <field name="parent"/>
-    <group colspan="4" col="-1" id="checkboxes">
+    <group colspan="2" col="-1" id="checkboxes">
         <!-- Add here some checkboxes ! -->
     </group>
+    <button name="add_products" colspan="2"/>
     <notebook colspan="4">
         <page string="Children" col="1" id="childs">
             <field name="childs"/>

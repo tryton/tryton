@@ -1,3 +1,5 @@
+* Allow multiple templates to be added/removed on a category
+
 Version 5.8.0 - 2020-11-02
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
