@@ -189,6 +189,15 @@ class ModelViewCircularDepends(ModelView):
     foobar = fields.Char("Char", depends=['foo'])
 
 
+class ModeViewDependsDepends(ModelView):
+    "ModelView depends of depends"
+    __name__ = 'test.modelview.depends_depends'
+
+    foo = fields.Char("Foo", depends=['bar'])
+    bar = fields.Char("Bar", depends=['baz'])
+    baz = fields.Char("Baz")
+
+
 class ModelViewViewAttributes(ModelView):
     'ModelView View Attributes'
     __name__ = 'test.modelview.view_attributes'
@@ -233,6 +242,7 @@ def register(module):
         ModelViewRPC,
         ModelViewEmptyPage,
         ModelViewCircularDepends,
+        ModeViewDependsDepends,
         ModelViewViewAttributes,
         ModelViewViewAttributesDepends,
         module=module, type_='model')

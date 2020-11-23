@@ -16,6 +16,17 @@
             ]]>
         </field>
     </record>
+    <record model="ir.ui.view" id="test_modelview_depends_depends_form">
+        <field name="model">test.modelview.depends_depends</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <![CDATA[
+            <form>
+                <field name="foo"/>
+            </form>
+            ]]>
+        </field>
+    </record>
     <record model="ir.ui.view" id="test_modelview_button_view_form">
         <field name="model">test.modelview.button_depends</field>
         <field name="type">form</field>

@@ -566,6 +566,16 @@ class ModelView(unittest.TestCase):
 
         self.assertEqual(fields, {})
 
+    @with_transaction()
+    def test_depends_depends(self):
+        "Test depends of depends are included"
+        pool = Pool()
+        DependsDepends = pool.get('test.modelview.depends_depends')
+
+        fields = DependsDepends.fields_view_get(view_type='form')['fields']
+
+        self.assertEqual(fields.keys(), {'foo', 'bar', 'baz'})
+
     @with_transaction(context={'_check_access': True})
     def test_button_depends_access(self):
         "Testing buttons are not removed when dependant fields are accesible"
