@@ -2524,7 +2524,10 @@
             Sao.View.EditableTree.Integer._super.init.call(
                 this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
-        }
+        },
+        get width() {
+            return;
+        },
     });
 
     Sao.View.EditableTree.Float = Sao.class_(Sao.View.Form.Float, {
@@ -2533,7 +2536,10 @@
             Sao.View.EditableTree.Float._super.init.call(
                 this, view, attributes);
             Sao.View.EditableTree.editable_mixin(this);
-        }
+        },
+        get width() {
+            return;
+        },
     });
 
     Sao.View.EditableTree.Selection = Sao.class_(Sao.View.Form.Selection, {

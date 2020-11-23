@@ -1833,7 +1833,9 @@ function eval_pyson(value){
             Sao.View.Form.Integer._super.display.call(this);
             var field = this.field;
             var value = '';
-            this.el.css('width', this.width + 'ch');
+            if (this.width !== null){
+                this.el.css('width', this.width + 'ch');
+            }
             if (field) {
                 value = field.get_client(this.record, this.factor);
             }
