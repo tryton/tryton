@@ -1853,7 +1853,9 @@ function eval_pyson(value){
             var field = this.field,
                 record = this.record;
             var value = '';
-            this.el.css('width', this.width + 'ch');
+            if (this.width !== null){
+                this.el.css('width', this.width + 'ch');
+            }
             if (field) {
                 value = field.get_client(record, this.factor);
             }
