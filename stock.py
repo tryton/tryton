@@ -14,7 +14,7 @@ class ShipmentOut(metaclass=PoolMeta):
     __name__ = 'stock.shipment.out'
     carrier = fields.Many2One('carrier', 'Carrier', states={
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
-                    'packed']),
+                    'picked', 'packed']),
             },
         depends=['state'])
     cost_currency = fields.Many2One('currency.currency',
@@ -22,13 +22,13 @@ class ShipmentOut(metaclass=PoolMeta):
             'invisible': ~Eval('carrier'),
             'required': Bool(Eval('carrier')),
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
-                    'packed']),
+                    'picked', 'packed']),
             }, depends=['carrier', 'state'])
     cost = fields.Numeric('Cost',
         digits=price_digits, states={
             'invisible': ~Eval('carrier'),
             'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned',
-                    'packed']),
+                    'picked', 'packed']),
             }, depends=['carrier', 'state'])
     cost_invoice_line = fields.Many2One('account.invoice.line',
             'Cost Invoice Line', readonly=True)
