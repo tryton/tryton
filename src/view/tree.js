@@ -69,6 +69,10 @@
             this.view.widgets[name].push(column);
 
             var prefixes = [], suffixes = [];
+            if ('symbol' in attributes) {
+                column.suffixes.push(
+                    new Sao.View.Tree.Symbol(attributes, 1));
+            }
             if (~['url', 'email', 'callto', 'sip'
                     ].indexOf(attributes.widget)) {
                 column.prefixes.push(
@@ -76,12 +80,6 @@
             }
             if ('icon' in attributes) {
                 column.prefixes.push(new Sao.View.Tree.Affix(attributes));
-            }
-            if ('symbol' in attributes) {
-                column.prefixes.push(
-                    new Sao.View.Tree.Symbol(attributes, 0));
-                column.suffixes.push(
-                    new Sao.View.Tree.Symbol(attributes, 1));
             }
             var affix, affix_attributes;
             var affixes = node.childNodes;
@@ -102,6 +100,10 @@
                     list = column.suffixes;
                 }
                 list.push(new Sao.View.Tree.Affix(affix_attributes));
+            }
+            if ('symbol' in attributes) {
+                column.prefixes.push(
+                    new Sao.View.Tree.Symbol(attributes, 0));
             }
             if (!this.view.attributes.sequence &&
                     !this.view.children_field &&
