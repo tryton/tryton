@@ -316,7 +316,8 @@ class InventoryLine(ModelSQL, ModelView):
         depends=_depends,
         help="The inventory the line belongs to.")
     inventory_state = fields.Function(
-        fields.Selection('get_inventory_states', "Inventory State"),
+        fields.Selection('get_inventory_states', "Inventory State",
+        depends=['inventory']),
         'on_change_with_inventory_state')
 
     @classmethod
