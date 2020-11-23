@@ -33,7 +33,7 @@
             el.parents('.panel').each(function(i, panel) {
                 panel = jQuery(panel);
                 var lengths = panel.css('box-shadow').match(/\d+px/g);
-                if (lengths.length) {
+                if (lengths && lengths.length) {
                     lengths = lengths.map(function(length) {
                         return length.replace('px', '');
                     });
