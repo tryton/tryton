@@ -493,17 +493,21 @@ class ModelView(Model):
                 if hasattr(field, 'field'):
                     fields_def.setdefault(field.field, {'name': field.field})
 
-        for field_name in list(fields_def.keys()):
+        for depend in view_depends:
+            if depend not in fields_to_remove:
+                fields_def.setdefault(depend, {'name': depend})
+
+        field_names = list(fields_def.keys())
+        while field_names:
+            field_name = field_names.pop()
             if field_name in cls._fields:
                 field = cls._fields[field_name]
             else:
                 continue
             for depend in field.depends:
-                fields_def.setdefault(depend, {'name': depend})
-
-        for depend in view_depends:
-            if depend not in fields_to_remove:
-                fields_def.setdefault(depend, {'name': depend})
+                if depend not in fields_def:
+                    fields_def[depend] = {'name': depend}
+                    field_names.append(depend)
 
         arch = etree.tostring(
             tree, encoding='utf-8', pretty_print=False).decode('utf-8')
