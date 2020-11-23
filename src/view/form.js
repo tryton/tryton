@@ -2227,7 +2227,7 @@ function eval_pyson(value){
                 Sao.common.richtext_toolbar().appendTo(
                     jQuery('<div/>', {
                         'class': 'panel-heading',
-                    }).appendTo(this.el));
+                    }).appendTo(widget));
             }
             var input = jQuery('<div/>', {
                 'class': 'richtext mousetrap',
