@@ -32,7 +32,7 @@ class Erase(metaclass=PoolMeta):
 
         commissions = Commission.search([
                 ('agent.party', '=', party.id),
-                ('company', '=', company.id),
+                ('agent.company', '=', company.id),
                 ('invoice_line', '=', None),
                 ])
         if commissions:
