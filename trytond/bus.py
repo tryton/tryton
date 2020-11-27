@@ -4,6 +4,7 @@
 import collections
 import json
 import logging
+import os
 import select
 import threading
 import time
@@ -43,7 +44,7 @@ class _MessageQueue:
 
     def __init__(self, timeout):
         super().__init__()
-        self._lock = threading.Lock()
+        self._lock = collections.defaultdict(threading.Lock)
         self._timeout = timeout
         self._messages = []
 
@@ -73,7 +74,7 @@ class _MessageQueue:
             if first_message and not found:
                 message = first_message
 
-        with self._lock:
+        with self._lock[os.getpid()]:
             del self._messages[:to_delete_index]
 
         return message.channel, message.content
@@ -82,20 +83,21 @@ class _MessageQueue:
 class LongPollingBus:
 
     _channel = 'bus'
-    _queues_lock = threading.Lock()
+    _queues_lock = collections.defaultdict(threading.Lock)
     _queues = collections.defaultdict(
         lambda: {'timeout': None, 'events': collections.defaultdict(list)})
     _messages = {}
 
     @classmethod
     def subscribe(cls, database, channels, last_message=None):
-        with cls._queues_lock:
-            start_listener = database not in cls._queues
-            cls._queues[database]['timeout'] = time.time() + _db_timeout
+        pid = os.getpid()
+        with cls._queues_lock[pid]:
+            start_listener = (pid, database) not in cls._queues
+            cls._queues[pid, database]['timeout'] = time.time() + _db_timeout
             if start_listener:
                 listener = threading.Thread(
                     target=cls._listen, args=(database,), daemon=True)
-                cls._queues[database]['listener'] = listener
+                cls._queues[pid, database]['listener'] = listener
                 listener.start()
 
         messages = cls._messages.get(database)
@@ -106,11 +108,12 @@ class LongPollingBus:
 
         event = threading.Event()
         for channel in channels:
-            if channel in cls._queues[database]['events']:
-                event_channel = cls._queues[database]['events'][channel]
+            if channel in cls._queues[pid, database]['events']:
+                event_channel = cls._queues[pid, database]['events'][channel]
             else:
-                with cls._queues_lock:
-                    event_channel = cls._queues[database]['events'][channel]
+                with cls._queues_lock[pid]:
+                    event_channel = cls._queues[pid, database][
+                        'events'][channel]
             event_channel.append(event)
 
         triggered = event.wait(_long_polling_timeout)
@@ -120,9 +123,9 @@ class LongPollingBus:
             response = cls.create_response(
                 *cls._messages[database].get_next(channels, last_message))
 
-        with cls._queues_lock:
+        with cls._queues_lock[pid]:
             for channel in channels:
-                events = cls._queues[database]['events'][channel]
+                events = cls._queues[pid, database]['events'][channel]
                 for e in events[:]:
                     if e.is_set():
                         events.remove(e)
@@ -147,6 +150,7 @@ class LongPollingBus:
 
         logger.info("listening on channel '%s'", cls._channel)
         conn = db.get_connection()
+        pid = os.getpid()
         try:
             cursor = conn.cursor()
             cursor.execute('LISTEN "%s"' % cls._channel)
@@ -155,7 +159,7 @@ class LongPollingBus:
             cls._messages[database] = messages = _MessageQueue(_cache_timeout)
 
             now = time.time()
-            while cls._queues[database]['timeout'] > now:
+            while cls._queues[pid, database]['timeout'] > now:
                 readable, _, _ = select.select([conn], [], [], _select_timeout)
                 if not readable:
                     continue
@@ -170,10 +174,10 @@ class LongPollingBus:
                     message = payload['message']
                     messages.append(channel, message)
 
-                    with cls._queues_lock:
-                        events = \
-                            cls._queues[database]['events'][channel].copy()
-                        cls._queues[database]['events'][channel].clear()
+                    with cls._queues_lock[pid]:
+                        events = cls._queues[pid, database][
+                            'events'][channel].copy()
+                        cls._queues[pid, database]['events'][channel].clear()
                     for event in events:
                         event.set()
                 now = time.time()
@@ -181,20 +185,20 @@ class LongPollingBus:
             logger.error('bus listener on "%s" crashed', database,
                 exc_info=True)
 
-            with cls._queues_lock:
-                del cls._queues[database]
+            with cls._queues_lock[pid]:
+                del cls._queues[pid, database]
             raise
         finally:
             db.put_connection(conn)
 
-        with cls._queues_lock:
-            if cls._queues[database]['timeout'] <= now:
-                del cls._queues[database]
+        with cls._queues_lock[pid]:
+            if cls._queues[pid, database]['timeout'] <= now:
+                del cls._queues[pid, database]
             else:
                 # A query arrived between the end of the while and here
                 listener = threading.Thread(
                     target=cls._listen, args=(database,), daemon=True)
-                cls._queues[database]['listener'] = listener
+                cls._queues[pid, database]['listener'] = listener
                 listener.start()
 
     @classmethod
