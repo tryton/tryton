@@ -654,9 +654,10 @@ class Record(ModelSQL, ModelView):
     def get_models(self):
         pool = Pool()
         Model = pool.get('ir.model')
+        Scenario = pool.get('marketing.automation.scenario')
 
         if not self.scenario:
-            return [('', '')]
+            return Scenario.get_models()
 
         model, = Model.search([
                 ('model', '=', self.scenario.model),
