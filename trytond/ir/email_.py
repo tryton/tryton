@@ -75,7 +75,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
     recipients_hidden = fields.Char("Hidden Recipients")
     addresses = fields.One2Many('ir.email.address', 'email', "Addresses")
     subject = fields.Char("Subject")
-    body = fields.Char("Body")
+    body = fields.Text("Body")
 
     @classmethod
     def __setup__(cls):
