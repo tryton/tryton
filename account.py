@@ -1393,7 +1393,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         where=account_sql & party_sql & line_query,
                         group_by=[table.id, line.party]))
                 for row in cursor:
-                    id_ = account_party2id[tuple(row[0:2])]
+                    try:
+                        id_ = account_party2id[tuple(row[0:2])]
+                    except KeyError:
+                        # There can be more combinations of account-party in
+                        # the database than from records
+                        continue
                     for i, name in enumerate(names, 2):
                         # SQLite uses float for SUM
                         if not isinstance(row[i], Decimal):
