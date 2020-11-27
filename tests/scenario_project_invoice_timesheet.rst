@@ -16,6 +16,7 @@ Imports::
     >>> from trytond.modules.account_invoice.tests.tools import \
     ...     create_payment_term
     >>> today = datetime.date.today()
+    >>> yesterday = today - datetime.timedelta(days=1)
 
 Activate modules::
 
@@ -133,11 +134,13 @@ Create timesheets::
 
     >>> TimesheetLine = Model.get('timesheet.line')
     >>> line = TimesheetLine()
+    >>> line.date = yesterday
     >>> line.employee = employee
     >>> line.duration = datetime.timedelta(hours=3)
     >>> line.work, = task.timesheet_works
     >>> line.save()
     >>> line = TimesheetLine()
+    >>> line.date = today
     >>> line.employee = employee
     >>> line.duration = datetime.timedelta(hours=2)
     >>> line.work, = project.timesheet_works
@@ -151,8 +154,23 @@ Check project amounts::
     >>> project.invoiced_amount
     Decimal('0.00')
 
-Invoice project::
+Invoice project up to yesterday::
 
+    >>> set_user(project_user)
+    >>> project.project_invoice_timesheet_up_to = yesterday
+    >>> project.save()
+    >>> set_user(project_invoice_user)
+    >>> project.click('invoice')
+    >>> project.amount_to_invoice
+    Decimal('40.00')
+    >>> project.invoiced_amount
+    Decimal('60.00')
+
+Invoice all project::
+
+    >>> set_user(project_user)
+    >>> project.project_invoice_timesheet_up_to = None
+    >>> project.save()
     >>> set_user(project_invoice_user)
     >>> project.click('invoice')
     >>> project.amount_to_invoice

@@ -8,6 +8,10 @@ this repository contains the full copyright notices and license terms. -->
         <label name="project_invoice_method"/>
         <field name="project_invoice_method"/>
     </xpath>
+    <xpath expr="//field[@name='list_price']" position="after">
+        <label name="project_invoice_timesheet_up_to"/>
+        <field name="project_invoice_timesheet_up_to"/>
+    </xpath>
     <xpath expr="/form/notebook/page[@id='general']/field[@name='total_effort']" position="after">
         <label name="amount_to_invoice"/>
         <field name="amount_to_invoice" symbol="currency"/>

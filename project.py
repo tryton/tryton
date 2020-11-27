@@ -207,6 +207,17 @@ class Progress:
 
 class Timesheet:
 
+    project_invoice_timesheet_up_to = fields.Date(
+        "Invoice up to",
+        states={
+            'invisible': Eval('project_invoice_method') != 'timesheet',
+            },
+        depends=['project_invoice_method'],
+        help="Limits which timesheet lines get invoiced to "
+        "only those before the date.")
+    invoice_timesheet_up_to = fields.Function(fields.Date(
+            "Invoice up to"), 'on_change_with_invoice_timesheet_up_to')
+
     @classmethod
     def __setup__(cls):
         super().__setup__()
@@ -220,6 +231,14 @@ class Timesheet:
             ]
         if 'invoice_method' not in cls.product.depends:
             cls.product.depends.append('invoice_method')
+
+    @fields.depends('type', 'project_invoice_timesheet_up_to',
+        'parent', '_parent_parent.invoice_timesheet_up_to')
+    def on_change_with_invoice_timesheet_up_to(self, name=None):
+        if self.type == 'project':
+            return self.project_invoice_timesheet_up_to
+        elif self.parent:
+            return self.parent.invoice_timesheet_up_to
 
     @classmethod
     def _get_quantity_to_invoice_timesheet(cls, works):
@@ -311,10 +330,11 @@ class Timesheet:
         except AttributeError:
             origins = []
         if self.invoice_method == 'timesheet':
+            up_to = self.invoice_timesheet_up_to or datetime.date.max
             origins.extend(
                 l for tw in self.timesheet_works
                 for l in tw.timesheet_lines
-                if not l.invoice_line)
+                if not l.invoice_line and l.date <= up_to)
         return origins
 
 
