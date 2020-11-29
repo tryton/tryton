@@ -866,9 +866,9 @@ A one-to-one relation field.
 
 Instance methods:
 
-.. method:: Many2Many.get_target()
+.. method:: One2One.get_relation()
 
-    Return the target :class:`~trytond.model.Model`.
+    Return the relation :class:`~trytond.model.Model`.
 
 .. method:: One2One.get_target()
 
