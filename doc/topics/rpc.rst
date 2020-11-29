@@ -25,7 +25,7 @@ common.db.logout
 
 It takes no parameters and it invalidate the current session.
 
-.. TODO:: other methods
+.. TODO - other methods
 
 .. _`JSON-RPC`: https://en.wikipedia.org/wiki/JSON-RPC
 .. _`XML-RPC`: https://en.wikipedia.org/wiki/XML-RPC
