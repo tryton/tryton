@@ -27,17 +27,18 @@ The caller may pass a server instance from `smtplib`_.
 
 .. method:: get_smtp_server([uri[, strict]])
 
-Return a SMTP instance from `smtplib`_ using the `uri` or the one defined in
-the `email` section of the :ref:`configuration <topics-configuration>`.
-If strict is `True`, an exception is raised if it is not possible to connect to
-the server.
+Return a SMTP instance from `smtplib`_ using the ``uri`` or the one defined in
+the ``email`` section of the :ref:`configuration <topics-configuration>`.
+If strict is ``True``, an exception is raised if it is not possible to connect
+to the server.
 
 
 .. class:: SMTPDataManager([uri[, strict]])
 
 A :class:`SMTPDataManager` implements a data manager which send queued email at
-commit. An option optional `uri` can be passed to configure the SMTP connection.
-If strict is `True`, the data manager prevents the transaction if it fails to
+commit. An option optional ``uri`` can be passed to configure the SMTP
+connection.
+If strict is ``True``, the data manager prevents the transaction if it fails to
 send the emails.
 
 .. method:: SMTPDataManager.put(from_addr, to_addrs, msg)

@@ -6,7 +6,7 @@ Configuration file for Tryton
 
 The configuration file controls some aspects of the behavior of Tryton.
 The file uses a simple ini-file format. It consists of sections, led by a
-`[section]` header and followed by `name = value` entries:
+``[section]`` header and followed by ``name = value`` entries:
 
 .. highlight:: ini
 
@@ -21,7 +21,7 @@ For more information see ConfigParser_.
 .. _ConfigParser: http://docs.python.org/2/library/configparser.html
 
 The default value of any option can be changed using environment variables
-with names using this syntax: `TRYTOND_<SECTION>__<NAME>`.
+with names using this syntax: ``TRYTOND_<SECTION>__<NAME>``.
 
 Sections
 ========
@@ -43,7 +43,7 @@ listen
 Defines the couple of host (or IP address) and port number separated by a colon
 to listen on.
 
-Default `localhost:8000`
+Default ``localhost:8000``
 
 hostname
 ~~~~~~~~
@@ -54,14 +54,14 @@ context available, for example during a cron job.
 root
 ~~~~
 
-Defines the root path served by `GET` requests.
+Defines the root path served by ``GET`` requests.
 
-Default: Under the `www` directory of user's home running `trytond`.
+Default: Under the ``www`` directory of user's home running ``trytond``.
 
 num_proxies
 ~~~~~~~~~~~
 
-The number of proxy servers in front of `trytond`.
+The number of proxy servers in front of ``trytond``.
 
 Default: 0
 
@@ -91,45 +91,45 @@ The typical form is:
 
     database://username:password@host:port/
 
-Default: The value of the environment variable `TRYTOND_DATABASE_URI` or
-`sqlite://` if not set.
+Default: The value of the environment variable ``TRYTOND_DATABASE_URI`` or
+``sqlite://`` if not set.
 
 The available databases are:
 
 PostgreSQL
 **********
 
-`pyscopg2` supports two type of connections:
+``pyscopg2`` supports two type of connections:
 
-    - TCP/IP connection: `postgresql://user:password@localhost:5432/`
-    - Unix domain connection: `postgresql://username:password@/`
+    - TCP/IP connection: ``postgresql://user:password@localhost:5432/``
+    - Unix domain connection: ``postgresql://username:password@/``
 
 SQLite
 ******
 
-The only possible URI is: `sqlite://`
+The only possible URI is: ``sqlite://``
 
 path
 ~~~~
 
-The directory where Tryton stores files and so the user running `trytond`
+The directory where Tryton stores files and so the user running ``trytond``
 must have write access on this directory.
 
-Default: The `db` folder under the user home directory running `trytond`.
+Default: The ``db`` folder under the user home directory running ``trytond``.
 
 list
 ~~~~
 
 A boolean value to list available databases.
 
-Default: `True`
+Default: ``True``
 
 retry
 ~~~~~
 
 The number of retries when a database operational error occurs during a request.
 
-Default: `5`
+Default: ``5``
 
 language
 ~~~~~~~~
@@ -137,13 +137,13 @@ language
 The main language of the database that will be used for storage in the main
 table for translations.
 
-Default: `en`
+Default: ``en``
 
 default_name
 ~~~~~~~~~~~~
 
 The name of the database to use for operations without a database name.
-Default: `template1` for PostgreSQL, `:memory:` for SQLite.
+Default: ``template1`` for PostgreSQL, ``:memory:`` for SQLite.
 
 request
 -------
@@ -173,23 +173,23 @@ model
 
 The number of different model kept in the cache per transaction.
 
-Default: `200`
+Default: ``200``
 
 record
 ~~~~~~
 
 The number of record loaded kept in the cache of the list.
-It can be changed locally using the `_record_cache_size` key in
+It can be changed locally using the ``_record_cache_size`` key in
 :attr:`Transaction.context`.
 
-Default: `2000`
+Default: ``2000``
 
 field
 ~~~~~
 
-The number of field to load with an `eager` :attr:`Field.loading`.
+The number of field to load with an ``eager`` :attr:`Field.loading`.
 
-Default: `100`
+Default: ``100``
 
 clean_timeout
 ~~~~~~~~~~~~~
@@ -198,7 +198,7 @@ The minimum number of seconds between two cleanings of the cache.
 If the value is 0, the notification between processes will be done using
 channels if the back-end supports them.
 
-Default: `300`
+Default: ``300``
 
 queue
 -----
@@ -209,14 +209,14 @@ worker
 Activate asynchronous processing of the tasks. Otherwise they are performed at
 the end of the requests.
 
-Default: `False`
+Default: ``False``
 
 clean_days
 ~~~~~~~~~~
 
 The number of days after which processed tasks are removed.
 
-Default: `30`
+Default: ``30``
 
 table
 -----
@@ -250,7 +250,7 @@ The path to the certificate.
 email
 -----
 
-.. note:: Email settings can be tested with the `trytond-admin` command
+.. note:: Email settings can be tested with the ``trytond-admin`` command
 
 uri
 ~~~
@@ -259,25 +259,25 @@ The SMTP-URL_ to connect to the SMTP server which is extended to support SSL_
 and STARTTLS_.
 The available protocols are:
 
-    - `smtp`: simple SMTP
-    - `smtp+tls`: SMTP with STARTTLS
-    - `smtps`: SMTP with SSL
+    - ``smtp``: simple SMTP
+    - ``smtp+tls``: SMTP with STARTTLS
+    - ``smtps``: SMTP with SSL
 
 The uri accepts the following additional parameters:
 
-* `local_hostname`: used as FQDN of the local host in the HELO/EHLO commands,
-  if omited it will use the value of `socket.getfqdn()`.
-* `timeout`: A number of seconds used as timeout for blocking operations. A
-  `socket.timeout` will be raised when exceeded. If omited the default timeout
+* ``local_hostname``: used as FQDN of the local host in the HELO/EHLO commands,
+  if omited it will use the value of ``socket.getfqdn()``.
+* ``timeout``: A number of seconds used as timeout for blocking operations. A
+  ``socket.timeout`` will be raised when exceeded. If omited the default timeout
   will be used.
 
 
-Default: `smtp://localhost:25`
+Default: ``smtp://localhost:25``
 
 from
 ~~~~
 
-Defines the default `From` address (using RFC-822_) for emails sent by Tryton.
+Defines the default ``From`` address (using RFC-822_) for emails sent by Tryton.
 
 For example::
 
@@ -292,50 +292,50 @@ authentications
 A comma separated list of the authentication methods to try when attempting to
 verify a user's identity. Each method is tried in turn, following the order of
 the list, until one succeeds. In order to allow `multi-factor authentication`_,
-individual methods can be combined together using a plus (`+`) symbol.
+individual methods can be combined together using a plus (``+``) symbol.
 
 Example::
 
     authentications = password+sms,ldap
 
-By default, Tryton only supports the `password` method.  This method compares
+By default, Tryton only supports the ``password`` method.  This method compares
 the password entered by the user against a stored hash of the user's password.
 Other modules can define additional authentication methods, please refer to
 their documentation for more information.
 
-Default: `password`
+Default: ``password``
 
 max_age
 ~~~~~~~
 
 The time in seconds that a session stay valid.
 
-Default: `2592000` (30 days)
+Default: ``2592000`` (30 days)
 
 timeout
 ~~~~~~~
 
 The time in seconds without activity before the session is no more fresh.
 
-Default: `300` (5 minutes)
+Default: ``300`` (5 minutes)
 
 max_attempt
 ~~~~~~~~~~~
 
 The maximum authentication attempt before the server answers unconditionally
-`Too Many Requests` for any other attempts. The counting is done on all
-attempts over a period of `timeout`.
+``Too Many Requests`` for any other attempts. The counting is done on all
+attempts over a period of ``timeout``.
 
-Default: `5`
+Default: ``5``
 
 max_attempt_ip_network
 ~~~~~~~~~~~~~~~~~~~~~~
 
 The maximum authentication attempt from the same network before the server
-answers unconditionally `Too Many Requests` for any other attempts. The
-counting is done on all attempts over a period of `timeout`.
+answers unconditionally ``Too Many Requests`` for any other attempts. The
+counting is done on all attempts over a period of ``timeout``.
 
-Default: `300`
+Default: ``300``
 
 ip_network_4
 ~~~~~~~~~~~~
@@ -343,7 +343,7 @@ ip_network_4
 The network prefix to apply on IPv4 address for counting the authentication
 attempts.
 
-Default: `32`
+Default: ``32``
 
 ip_network_6
 ~~~~~~~~~~~~
@@ -351,7 +351,7 @@ ip_network_6
 The network prefix to apply on IPv6 address for counting the authentication
 attempts.
 
-Default: `56`
+Default: ``56``
 
 password
 --------
@@ -361,7 +361,7 @@ length
 
 The minimal length required for the user password.
 
-Default: `8`
+Default: ``8``
 
 forbidden
 ~~~~~~~~~
@@ -373,23 +373,23 @@ entropy
 
 The ratio of non repeated characters for the user password.
 
-Default: `0.75`
+Default: ``0.75``
 
 reset_timeout
 ~~~~~~~~~~~~~
 
 The time in seconds until the reset password expires.
 
-Default: `86400` (24h)
+Default: ``86400`` (24h)
 
 passlib
 ~~~~~~~
 
 The path to the `INI file to load as CryptContext
 <https://passlib.readthedocs.io/en/stable/narr/context-tutorial.html#loading-saving-a-cryptcontext>`_.
-If not path is set, Tryton will use the schemes `bcrypt` or `pbkdf2_sha512`.
+If not path is set, Tryton will use the schemes ``bcrypt`` or ``pbkdf2_sha512``.
 
-Default: `None`
+Default: ``None``
 
 attachment
 ----------
@@ -401,14 +401,14 @@ filestore
 
 A boolean value to store attachment in the :ref:`FileStore <ref-filestore>`.
 
-Default: `True`
+Default: ``True``
 
 store_prefix
 ~~~~~~~~~~~~
 
-The prefix to use with the `FileStore`.
+The prefix to use with the ``FileStore``.
 
-Default: `None`
+Default: ``None``
 
 bus
 ---
@@ -418,7 +418,7 @@ allow_subscribe
 
 A boolean value to allow clients to subscribe to bus channels.
 
-Default: `False`
+Default: ``False``
 
 url_host
 ~~~~~~~~
@@ -431,7 +431,7 @@ long_polling_timeout
 The time in seconds to keep the connection to the client opened when using long
 polling for bus messages
 
-Default: `300`
+Default: ``300``
 
 cache_timeout
 ~~~~~~~~~~~~~
@@ -439,14 +439,14 @@ cache_timeout
 The number of seconds a message should be kept by the queue before being
 discarded.
 
-Default: `300`
+Default: ``300``
 
 select_timeout
 ~~~~~~~~~~~~~~
 
 The timeout duration of the select call when listening on a channel.
 
-Default: `5`
+Default: ``5``
 
 html
 ----
@@ -456,14 +456,14 @@ src
 
 The URL pointing to `TinyMCE <https://www.tiny.cloud/>`_ editor.
 
-Default: `https://cloud.tinymce.com/stable/tinymce.min.js`
+Default: ``https://cloud.tinymce.com/stable/tinymce.min.js``
 
 plugins
 ~~~~~~~
 
 The space separated list of TinyMCE plugins to load.
 It can be overridden for specific models and fields using the names:
-`plugins-<model>-<field>` or `plugins-<model>`.
+``plugins-<model>-<field>`` or ``plugins-<model>``.
 
 Default: ``
 
@@ -472,25 +472,25 @@ css
 
 The JSON list of CSS files to load.
 It can be overridden for specific models and fields using the names:
-`css-<model>-<field>` or `css-<model>`.
+``css-<model>-<field>`` or ``css-<model>``.
 
-Default: `[]`
+Default: ``[]``
 
 class
 ~~~~~
 
 The class to add on the body.
 It can be overridden for specific models and fields using the names:
-`class-<model>-<field>` or `class-<model>`.
+``class-<model>-<field>`` or ``class-<model>``.
 
-Default: `''`
+Default: ``''``
 
 wsgi middleware
 ---------------
 
 The section lists the `WSGI middleware`_ class to load.
-Each middleware can be configured with a section named `wsgi <middleware>`
-containing `args` and `kwargs` options.
+Each middleware can be configured with a section named ``wsgi <middleware>``
+containing ``args`` and ``kwargs`` options.
 
 Example::
 

@@ -137,7 +137,7 @@ true, then returns also true when both values of statements named by
 ``statement1`` and ``statement2`` are equal. In this case
 :class:`Greater` works as a *greater-than or equal* operator.
 
-.. note:: `None` value is replaced by `0` for the comparison.
+.. note:: ``None`` value is replaced by ``0`` for the comparison.
 
 .. class:: Less(statement1, statement2[, equal])
 
@@ -150,7 +150,7 @@ then returns also true when both values of the statements named by
 ``statement1`` and ``statement2`` are equal. In this case
 :class:`Less`  works as a *less-than or equal* operator.
 
-.. note:: `None` value is replaced by `0` for the comparison.
+.. note:: ``None`` value is replaced by ``0`` for the comparison.
 
 .. class:: If(condition, then_statement, else_statement)
 
@@ -280,4 +280,4 @@ dictionary, list or string. Returns the number of items in ``value``.
 
 An :class:`Id` object represents the PYSON ``Id()`` statement for filesystem id
 evaluations. When converted into the internal dictionary, it returns the
-database id stored in `ir.model.data`.
+database id stored in ``ir.model.data``.

@@ -17,10 +17,10 @@ The method signature is::
 
     <method name>(cls, records, trigger)
 
-Where `records` is the list of records that triggered the event and `trigger`
-is the `ir.trigger` instance which is triggered.
+Where ``records`` is the list of records that triggered the event and
+``trigger`` is the ``ir.trigger`` instance which is triggered.
 
-Triggers are defined by records of `ir.trigger`. Each record must define a
+Triggers are defined by records of ``ir.trigger``. Each record must define a
 pyson condition which will be evaluated when the event occurs. Only those
 records for which the condition is evaluated to true will be processed by the
 trigger with the exception of modification triggers which will only process the

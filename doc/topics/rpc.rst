@@ -16,7 +16,7 @@ common.db.login
 It takes as parameters: the user name and a dictionary of login parameters.
 It returns in case of success the user ID and the session.
 If the parameters are not valid to authenticate the user, it returns nothing.
-Otherwise if it misses a key in the parameters, it raises a `LoginException`
+Otherwise if it misses a key in the parameters, it raises a ``LoginException``
 exception with the missing key name, type and the message to ask to the
 user.
 
@@ -47,4 +47,4 @@ Session
 
 The authorization field is constructed by the username, the user ID and the
 session combined with a single colon and encoded in Base64.
-The session is retrieved by calling the method `common.db.login`.
+The session is retrieved by calling the method ``common.db.login``.

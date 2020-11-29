@@ -20,10 +20,11 @@ Test
 
 .. function:: activate_module(name)
 
-Activates the module `name` for the tested database.
+Activates the module ``name`` for the tested database.
 
-In case database does not exist and the `DB_CACHE` environment variable is set
-then Tryton will restore a backup found in the directory pointed by `DB_CACHE`.
+In case database does not exist and the ``DB_CACHE`` environment variable is
+set then Tryton will restore a backup found in the directory pointed by
+``DB_CACHE``.
 Otherwise it will proceed to the creation of the database and the activation of
 the module.
 
@@ -37,7 +38,7 @@ A subclass of `unittest.TestCase`_ that tests a Tryton module. Some tests are
 included to ensure that the module works properly.
 
 This class creates a temporary database with the module activated in
-`setUpClass`_ and drops it in the `tearDownClass` method.
+`setUpClass`_ and drops it in the ``tearDownClass`` method.
 
 .. attribute:: ModuleTestCase.module
 
@@ -63,19 +64,19 @@ doctest helpers
 
 A function that prepares the run of the `doctest`_ by creating a database and
 dropping it beforehand if necessary. This function should be used as the
-`setUp` parameter 
+``setUp`` parameter 
 
 .. deprecated::
-    The `doctest_setup` function should not be used anymore to set up
-    `DocFileSuite`. New modules should use :func:`activate_modules` instead.
+    The ``doctest_setup`` function should not be used anymore to set up
+    ``DocFileSuite``. New modules should use :func:`activate_modules` instead.
 
 .. _doctest: https://docs.python.org/library/doctest.html
 
 .. function:: doctest_teardown()
 
 A function that cleans up after the run of the doctest by dropping the
-database. It should be used as `tearDown` parameter when creating a
-`DocFileSuite`.
+database. It should be used as ``tearDown`` parameter when creating a
+``DocFileSuite``.
 
 .. attribute:: doctest_checker
 
@@ -83,7 +84,7 @@ database. It should be used as `tearDown` parameter when creating a
 
 .. function:: suite()
 
-A function returning a subclass of `unittest.TestSuite` that will drop the
+A function returning a subclass of ``unittest.TestSuite`` that will drop the
 database if it does not exist prior to the run of the tests.
 
 .. module:: trytond.tests.tools
@@ -94,9 +95,10 @@ Tests tools
 
 .. function:: activate_modules(modules)
 
-This function is used in proteus doctests to activate a list of `modules` in
+This function is used in proteus doctests to activate a list of ``modules`` in
 the scenario.
 
 .. function:: set_user(user, config)
 
-This function will set the user of the `config` proteus connection to `user`.
+This function will set the user of the ``config`` proteus connection to
+``user``.

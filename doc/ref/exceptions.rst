@@ -23,7 +23,7 @@ Exceptions
 
 .. exception:: LoginExceptions(name, message[, type])
 
-    The exception used to request `name` parameter for the login process.
+    The exception used to request ``name`` parameter for the login process.
 
 .. exception:: ConcurrencyException(message)
 

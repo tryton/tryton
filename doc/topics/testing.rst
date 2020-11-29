@@ -20,7 +20,7 @@ Unit tests
 Tryton provides the :class:`ModuleTestCase` class that bundles a set of tests
 that are useful for every module.
 
-Unit tests in `ModuleTestCase` can be decorated with
+Unit tests in ``ModuleTestCase`` can be decorated with
 :func:`trytond.tests.test_tryton.with_transaction` to run the test in a
 transaction.
 
@@ -45,11 +45,11 @@ To use it in your own module you just have to inherit from
 
 
 Tests from this modules are found by the function
-`trytond.modules.my_module.tests.suite` which must return a
-`unittest.TestSuite` containing all the module's tests. This function is called
-by the Tryton test runner script to gather all the tests.
+``trytond.modules.my_module.tests.suite`` which must return a
+``unittest.TestSuite`` containing all the module's tests. This function is
+called by the Tryton test runner script to gather all the tests.
 
-A typical `suite()` function thus looks like this:
+A typical ``suite()`` function thus looks like this:
 
 .. highlight:: python
 
@@ -71,7 +71,7 @@ A typical `suite()` function thus looks like this:
 Running your module's tests
 ---------------------------
 
-Tryton provides the script `trytond/tests/run-tests.py`, just invoke it like
+Tryton provides the script ``trytond/tests/run-tests.py``, just invoke it like
 that::
 
     run-tests.py -m my_module
@@ -85,18 +85,18 @@ Extending tests
 Python modules extending tryton core can define additional tests that should be
 added to the existing ones.
 
-Those modules must create an entry point `trytond.tests`. Any file in the
-module path specified by this entry point starting with `test_` and ending by
-`.py` will be imported. Each of those file must define a `suite()` function
-that returns a `unittest.TestSuite` that will be included in the trytond test
-suite.  If the module from the entry point defines a `register` function it
+Those modules must create an entry point ``trytond.tests``. Any file in the
+module path specified by this entry point starting with ``test_`` and ending by
+``.py`` will be imported. Each of those file must define a ``suite()`` function
+that returns a ``unittest.TestSuite`` that will be included in the trytond test
+suite.  If the module from the entry point defines a ``register`` function it
 will be called when registering the test-specific models in the
 :class:`trytond.pool.Pool`.
 
 Running trytond tests
 ---------------------
 
-You should use the script `trytond/tests/run-tests.py` by invoking it like
+You should use the script ``trytond/tests/run-tests.py`` by invoking it like
 that::
 
     run-tests.py [-c configuration]

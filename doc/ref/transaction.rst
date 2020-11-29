@@ -58,7 +58,7 @@ commited.
 .. method:: Transaction.start(database_name, user[, readonly[, context[, close[, autocommit]]]])
 
     Start a new transaction and return a `context manager`_. The non-readonly
-    transaction will be committed when exiting the `with` statement without
+    transaction will be committed when exiting the ``with`` statement without
     exception. The other cases will be rollbacked.
 
 .. method:: Transaction.stop([commit])
@@ -71,18 +71,18 @@ commited.
 .. method:: Transaction.set_context(context, \**kwargs)
 
     Update the transaction context and return a `context manager`_. The context
-    will be restored when exiting the `with` statement.
+    will be restored when exiting the ``with`` statement.
 
 .. method:: Transaction.reset_context()
 
     Clear the transaction context and return a `context manager`_. The context
-    will be restored when exiting the `with` statement.
+    will be restored when exiting the ``with`` statement.
 
 .. method:: Transaction.set_user(user[, set_context])
 
     Modify the user of the transaction and return a `context manager`_.
-    `set_context` will put the previous user id in the context to simulate the
-    record rules. The user will be restored when exiting the `with` statement.
+    ``set_context`` will put the previous user id in the context to simulate the
+    record rules. The user will be restored when exiting the ``with`` statement.
 
 .. method:: Transaction.set_current_transaction(transaction)
 

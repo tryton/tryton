@@ -21,14 +21,15 @@ A module is a directory in trytond/modules which contains at least two files:
 --------------------
 
 It is the Python ``__init__.py`` to define a module. It must contains a method
-named `register()` that must register to the pool all the objects of the module.
+named ``register()`` that must register to the pool all the objects of the
+module.
 
 
 ``tryton.cfg`` file
 -------------------
 
 It is a configuration file using the format of `ConfigParser`_ that must
-contain `tryton` section with this following name:
+contain ``tryton`` section with this following name:
 
    * ``version``: The version number of the module.
 

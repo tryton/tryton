@@ -5,7 +5,7 @@ Wizard
 ======
 
 A wizard describes a series of steps defined as :class:`trytond.wizard.State`.
-The wizard stores data in `ir.session.wizard` between states.
+The wizard stores data in ``ir.session.wizard`` between states.
 
 The basics:
 

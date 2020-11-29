@@ -50,7 +50,7 @@ by this pattern::
         domain = [('attributes.color', '=', 'yellow')]
 
 .. warning::
-    Order comparison of `date` and `datetime` types is not supported.
+    Order comparison of ``date`` and ``datetime`` types is not supported.
 
 ``operator``
     Is an operator out of `Domain Operators`_ or a

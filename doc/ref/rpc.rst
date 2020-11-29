@@ -25,16 +25,16 @@ Instance attributes are:
 
 .. attribute:: RPC.check_access
 
-    Set `_check_access` in the context to activate the access right on model
-    and field. Default is `True`.
+    Set ``_check_access`` in the context to activate the access right on model
+    and field. Default is ``True``.
 
 .. attribute:: RPC.unique
 
-    If set, it ensures the instantiated records are unique. Default is `True`.
+    If set, it ensures the instantiated records are unique. Default is ``True``.
 
 .. attribute:: RPC.fresh_session
 
-    If set, it requires a fresh session. Default is `False`.
+    If set, it requires a fresh session. Default is ``False``.
 
 .. attribute:: RPC.cache
 

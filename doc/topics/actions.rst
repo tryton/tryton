@@ -24,15 +24,15 @@ Keywords define where to display the action in the client.
 
 There are five places:
 
-    * Open tree (`tree_open`)
+    * Open tree (``tree_open``)
 
-    * Print form (`form_print`)
+    * Print form (``form_print``)
 
-    * Action form (`form_action`)
+    * Action form (``form_action``)
 
-    * Form relate (`form_relate`)
+    * Form relate (``form_relate``)
 
-    * Open Graph (`graph_open`)
+    * Open Graph (``graph_open``)
 
 Report
 ======

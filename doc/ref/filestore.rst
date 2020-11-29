@@ -8,8 +8,9 @@ FileStore
 .. class:: FileStore()
 
 The class is used to store and retrieve files from the directory defined in the
-configuration `path` of `database` section. It uses a two levels of directory
-composed of the 2 chars of the file hash. It is an append only storage.
+configuration ``path`` of ``database`` section. It uses a two levels of
+directory composed of the 2 chars of the file hash. It is an append only
+storage.
 
 .. method:: get(id[, prefix])
 
@@ -37,6 +38,6 @@ Store the sequence of data and return a list of identifiers.
 
 .. note::
     The class can be overridden by setting a fully qualified name of a
-    alternative class defined in the configuration `class` of the `database`
+    alternative class defined in the configuration ``class`` of the ``database``
     section.
 ..

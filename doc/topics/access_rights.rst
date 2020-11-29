@@ -12,10 +12,10 @@ The access rights are checked if the :attr:`Transaction.context
 <trytond.transaction.Transaction.context>` has the key ``_check_access`` set to
 ``True`` (set by default by :attr:`RPC.check_access
 <trytond.rpc.RPC.check_access>`) and if the
-:attr:`~trytond.transaction.Transaction.user` is not `root`.
+:attr:`~trytond.transaction.Transaction.user` is not ``root``.
 
 .. warning::
-    The record rules are always enforced regardless of the `_check_access`
+    The record rules are always enforced regardless of the ``_check_access``
     value.
 
 Model
@@ -59,7 +59,7 @@ for `Model`_ but are applied to :ref:`fields <ref-models-fields>`.
 Button
 ======
 
-For each button of a model the records of `ir.model.button` define the list of
+For each button of a model the records of ``ir.model.button`` define the list of
 groups that are allowed to call it. The user only needs to belong to one of the
 groups to be granted the permission to use it.
 
@@ -74,7 +74,7 @@ The ``read`` permission to the model is always enforced.
 Button Rule
 -----------
 
-The `ir.model.button` can contain a list of rules which define how many
+The ``ir.model.button`` can contain a list of rules which define how many
 different users must click on the button.  Each rule, for which the condition
 is met, must be passed to actually trigger the action. The counter can be reset
 when another defined button is clicked.
@@ -84,14 +84,14 @@ Record Rule
 
 The record rules are conditions that records must meet for the user to be
 granted permission to use them.
-They are defined by records of `ir.rule.group` which contains:
+They are defined by records of ``ir.rule.group`` which contains:
 
     - a model on which it applies
     - the permissions granted
     - a set of user groups to which the rule applies
     - a global flag to always enforce
     - a default flag to add to all users
-    - a list of `ir.rule` with a :ref:`domain <topics-domain>` to select the
+    - a list of ``ir.rule`` with a :ref:`domain <topics-domain>` to select the
       records to which the rule applies.
 
 A rule group matches a record if the record is validated by at least one of the

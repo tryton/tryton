@@ -86,10 +86,10 @@ Class methods are:
 .. classmethod:: Wizard.execute(session_id, data, state_name)
 
     Execute the wizard for the state.
-    `session_id` is a session id.
-    `data` is a dictionary with the session data to update.
-    `active_id`, `active_ids`, `active_model` and `action_id` must be set in
-    the context according to the records on which the wizard is run.
+    ``session_id`` is a session id.
+    ``data`` is a dictionary with the session data to update.
+    ``active_id``, ``active_ids``, ``active_model`` and ``action_id`` must be
+    set in the context according to the records on which the wizard is run.
 
 =====
 State
@@ -113,9 +113,9 @@ StateView
 
     A :class:`StateView` is a state that will display a form in the client.
     The form is defined by the :class:`~trytond.model.ModelView` with the name
-    `model_name`, the `XML` id in `view` and the `buttons`.
+    ``model_name``, the ``XML`` id in ``view`` and the ``buttons``.
     The default value of the view can be set with a method on wizard having the
-    same name as the state but starting with `default_`.
+    same name as the state but starting with ``default_``.
 
 Instance attributes are:
 
@@ -125,7 +125,7 @@ Instance attributes are:
 
 .. attribute:: StateView.view
 
-    The `XML` id of the form view.
+    The ``XML`` id of the form view.
 
 .. attribute:: StateView.buttons
 
@@ -162,8 +162,9 @@ StateTransition
 
 .. class:: StateTransition()
 
-    A :class:`StateTransition` brings the wizard to the `state` returned by the
-    method having the same name as the state but starting with `transition_`.
+    A :class:`StateTransition` brings the wizard to the ``state`` returned by
+    the method having the same name as the state but starting with
+    ``transition_``.
 
 ===========
 StateAction
@@ -172,20 +173,21 @@ StateAction
 .. class:: StateAction(action_id)
 
     A :class:`StateAction` is a :class:`StateTransition` which let the client
-    launch an `ir.action`. This action definition can be customized with a
-    method on wizard having the same name as the state but starting with `do_`.
+    launch an ``ir.action``. This action definition can be customized with a
+    method on wizard having the same name as the state but starting with
+    ``do_``.
 
 Instance attributes are:
 
 .. attribute:: StateAction.action_id
 
-    The `XML` id of the `ir.action`.
+    The ``XML`` id of the ``ir.action``.
 
 Instance methods are:
 
 .. method:: StateAction.get_action()
 
-    Returns the `ir.action` definition.
+    Returns the ``ir.action`` definition.
 
 ===========
 StateReport
@@ -194,7 +196,7 @@ StateReport
 .. class:: StateReport(report_name)
 
     A :class:`StateReport` is a :class:`StateAction` which find the report
-    action by name instead of `XML` id.
+    action by name instead of ``XML`` id.
 
 ======
 Button

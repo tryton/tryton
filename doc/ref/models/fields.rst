@@ -171,10 +171,10 @@ Instance methods:
 .. method:: Field.sql_type()
 
     Return the namedtuple('SQLType', 'base type') which defines the SQL type to
-    use for creation and casting. Or `None` if the field is not stored in the
+    use for creation and casting. Or ``None`` if the field is not stored in the
     database.
 
-    sql_type is using the `_sql_type` attribute to compute its return value.
+    sql_type is using the ``_sql_type`` attribute to compute its return value.
     The backend is responsible for the computation.
 
     For the list of supported types by Tryton see 
@@ -190,7 +190,7 @@ Instance methods:
 
 .. method:: Field.set_rpc(model)
 
-    Adds to `model` the default RPC instances required by the field.
+    Adds to ``model`` the default RPC instances required by the field.
 
 .. method:: Field.definition(model, language)
 
@@ -234,7 +234,7 @@ Depends
 .. method:: depends([\*fields[, methods]])
 
 A decorator to define the field names on which the decorated method depends.
-The `methods` argument can be used to duplicate the field names from other
+The ``methods`` argument can be used to duplicate the field names from other
 decorated methods. This is useful if the decorated method calls another method.
 
 Field types
@@ -334,7 +334,7 @@ instance.
     the integer part. The second integer defines the total of numbers in the
     decimal part.
     Integers can be replaced by a :class:`~trytond.pyson.PYSON` statement.
-    If digits is None or any values of the tuple is `None`, no validation on
+    If digits is None or any values of the tuple is ``None``, no validation on
     the numbers will be done.
 
 Numeric
@@ -371,7 +371,7 @@ It is stored in `UTC`_ while displayed in the user timezone.
 .. attribute:: DateTime.format
 
     A string format as used by strftime. This format will be used to display
-    the time part of the field. The default value is `%H:%M:%S`.
+    the time part of the field. The default value is ``%H:%M:%S``.
     The value can be replaced by a :class:`~trytond.pyson.PYSON` statement.
 
 Timestamp
@@ -415,7 +415,7 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
 
 .. warning::
     If the context contains a key composed of the model name and field name
-    separated by a dot and its value is the string `size` then the read value
+    separated by a dot and its value is the string ``size`` then the read value
     is the size instead of the content.
 
 :class:`Binary` has three extra optional arguments:
@@ -429,9 +429,9 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
 
 .. attribute:: Binary.file_id
 
-    Name of the field that holds the `FileStore` identifier. Default value is
-    `None` which means the data is stored in the database. The field must be on
-    the same table and accept `char` values.
+    Name of the field that holds the ``FileStore`` identifier. Default value is
+    ``None`` which means the data is stored in the database. The field must be
+    on the same table and accept ``char`` values.
 
 .. warning::
     Switching from database to file-store is supported transparently. But
@@ -440,8 +440,8 @@ A binary field. It will be represented in Python by a ``bytes`` instance.
 
 .. attribute:: Binary.store_prefix
 
-    The prefix to use with the `FileStore`. Default value is `None` which means
-    the database name is used.
+    The prefix to use with the ``FileStore``. Default value is ``None`` which
+    means the database name is used.
 
 Selection
 ---------
@@ -769,7 +769,7 @@ Many2Many
 .. class:: Many2Many(relation_name, origin, target, string[, order[, datetime_field[, size[, search_order[, search_context[, \**options]]]]]])
 
 A many-to-many relation field. It requires to have the opposite origin
-:class:`Many2One` field or a:class:`Reference` field defined on the relation
+:class:`Many2One` field or a :class:`Reference` field defined on the relation
 model and a :class:`Many2One` field pointing to the target.
 
 This field accepts as written value a list of tuples like the :class:`One2Many`.
@@ -795,7 +795,7 @@ This field accepts as written value a list of tuples like the :class:`One2Many`.
     :class:`~trytond.model.ModelView`, like in a
     :class:`~trytond.wizard.Wizard`. For this, :attr:`~Many2Many.relation_name`
     is set to the target model and :attr:`~Many2Many.origin` and
-    :attr:`~Many2Many.target` are set to `None`.
+    :attr:`~Many2Many.target` are set to ``None``.
 ..
 
 :class:`Many2Many` has some extra optional arguments:
@@ -879,7 +879,7 @@ Function
 
 .. class:: Function(field, getter[, setter[, searcher]])
 
-A function field can emulate any other given `field`.
+A function field can emulate any other given ``field``.
 
 :class:`Function` has a required argument:
 
@@ -891,21 +891,21 @@ A function field can emulate any other given `field`.
 
         getter(instances, name)
 
-    where `name` is the name of the field, and it must return a dictionary with
-    a value for each instance.
+    where ``name`` is the name of the field, and it must return a dictionary
+    with a value for each instance.
 
     Or the signature of the classmethod is::
 
         getter(instances, names)
 
-    where `names` is a list of name fields, and it must return a dictionary
+    where ``names`` is a list of name fields, and it must return a dictionary
     containing for each names a dictionary with a value for each instance.
 
     The signature of the instancemethod is::
 
         getter(name)
 
-    where `name` is the name of the field, and it must return the value.
+    where ``name`` is the name of the field, and it must return the value.
 
 :class:`Function` has some extra optional arguments:
 
@@ -917,7 +917,7 @@ A function field can emulate any other given `field`.
 
         setter(instances, name, value)
 
-    where `name` is the name of the field and `value` the value to set.
+    where ``name`` is the name of the field and ``value`` the value to set.
 
 .. warning::
     The modifications made to instances will not be saved automatically.
@@ -930,7 +930,7 @@ A function field can emulate any other given `field`.
 
         searcher(name, clause)
 
-    where `name` is the name of the field and `clause` is a
+    where ``name`` is the name of the field and ``clause`` is a
     :ref:`domain clause <topics-domain>`.
     It must return a list of :ref:`domain <topics-domain>` clauses but the
     ``operand`` can be a SQL query.
@@ -939,21 +939,21 @@ Instance methods:
 
 .. method:: Function.get(ids, model, name[, values])
 
-    Call the :attr:`~Function.getter` classmethod where `model` is the
-    :class:`~trytond.model.Model` instance of the field, `name` is the name of
+    Call the :attr:`~Function.getter` classmethod where ``model`` is the
+    :class:`~trytond.model.Model` instance of the field, ``name`` is the name of
     the field.
 
 .. method:: Function.set(ids, model, name, value)
 
-    Call the :attr:`~Function.setter` classmethod where `model` is the
-    :class:`~trytond.model.Model` instance of the field, `name` is the name of
-    the field, `value` is the value to set.
+    Call the :attr:`~Function.setter` classmethod where ``model`` is the
+    :class:`~trytond.model.Model` instance of the field, ``name`` is the name of
+    the field, ``value`` is the value to set.
 
 .. method:: Function.search(model, name, clause)
 
-    Call the :attr:`~Function.searcher` classmethod where `model` is the
-    :class:`~trytond.model.Model` instance of the field, `name` is the name of
-    the field, `clause` is a clause of :ref:`domain <topics-domain>`.
+    Call the :attr:`~Function.searcher` classmethod where ``model`` is the
+    :class:`~trytond.model.Model` instance of the field, ``name`` is the name of
+    the field, ``clause`` is a clause of :ref:`domain <topics-domain>`.
 
 MultiValue
 ----------
@@ -1001,6 +1001,6 @@ Instance methods:
 
 .. method:: Dict.translated([name[, type_]])
 
-    Returns a descriptor for the translated `values` or `keys` of the field
-    following `type_`. The descriptor must be used on the same class as the
-    field. Default `type_` is `values`.
+    Returns a descriptor for the translated ``values`` or ``keys`` of the field
+    following ``type_``. The descriptor must be used on the same class as the
+    field. Default ``type_`` is ``values``.

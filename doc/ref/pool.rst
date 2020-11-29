@@ -13,7 +13,8 @@ Static methods:
 
 .. staticmethod:: Pool.register(klass, ..., type_, module[, depends])
 
-    Register the classes of type (`model`, `report` or `wizard`) for the module.
+    Register the classes of type (``model``, ``report`` or ``wizard``) for the
+    module.
     If ``depends`` is set, the registration happens only if all the modules are
     activated.
 
