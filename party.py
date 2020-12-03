@@ -122,7 +122,7 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         return [
             'ad_nrt', 'al_nipt', 'ar_cuit', 'be_vat', 'bg_vat', 'ch_vat',
             'cl_rut', 'co_rut', 'cz_dic', 'de_vat', 'do_rnc',
-            'dk_cvr', 'ec_ruc', 'ee_kmkr', 'es_cif', 'es_nie', 'es_nif',
+            'dk_cvr', 'ec_ruc', 'ee_kmkr', 'es_nif',
             'eu_vat', 'fi_alv', 'fr_tva', 'gb_vat', 'gr_vat', 'gt_nit',
             'hu_anum', 'ie_vat', 'is_vsk', 'it_iva', 'jp_cn', 'lt_pvm',
             'lu_tva', 'lv_pvn', 'mc_tva', 'md_idno', 'mt_vat', 'mx_rfc',
