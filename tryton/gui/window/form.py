@@ -553,7 +553,9 @@ class Form(SignalEvent, TabContent):
             if value == 'ok':
                 return self.sig_save(None)
             if value == 'ko':
-                return self.sig_reload(test_modified=False)
+                record_id = self.screen.current_record.id
+                if self.sig_reload(test_modified=False):
+                    return record_id == self.screen.current_record.id
             return False
         return True
 
