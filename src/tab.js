@@ -734,7 +734,13 @@
                             case 'ok':
                                 return this.save();
                             case 'ko':
-                                return this.reload(false);
+                                var record_id = this.screen.current_record.id;
+                                return this.reload(false).then(function() {
+                                    if (record_id !=
+                                        this.screen.current_record.id) {
+                                        return jQuery.Deferred().reject();
+                                    }
+                                }.bind(this));
                             default:
                                 return jQuery.Deferred().reject();
                         }
