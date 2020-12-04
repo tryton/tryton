@@ -9,7 +9,7 @@ from trytond.protocols.wrappers import with_pool, with_transaction
 from trytond.wsgi import app
 
 
-@app.route('/m/<base64:database_name>$unsubscribe')
+@app.route('/m/<base64:database_name>/unsubscribe')
 @with_pool
 @with_transaction(readonly=False)
 def unsubscribe(request, pool):
