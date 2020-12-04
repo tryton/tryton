@@ -640,11 +640,7 @@
                         }).text(action.name))
                         .click(function(evt) {
                             evt.preventDefault();
-                            var prm = jQuery.when();
-                            if (this.screen.modified()) {
-                                prm = this.save();
-                            }
-                            prm.then(function() {
+                            this.modified_save().then(function() {
                                 var exec_action = jQuery.extend({}, action);
                                 var record_id = null;
                                 if (screen.current_record) {
