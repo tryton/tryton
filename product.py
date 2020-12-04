@@ -601,6 +601,7 @@ class OpenProductQuantitiesByWarehouse(Wizard):
 
     def do_open_(self, action):
         domain = [('date', '>=', self.record.date)]
+        action['pyson_context'] = '{}'
         action['pyson_search_value'] = PYSONEncoder().encode(domain)
         action['name'] += ' (' + self.record.rec_name + ')'
         return action, {}
