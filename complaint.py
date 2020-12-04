@@ -156,6 +156,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 ('state', 'in', ['confirmed', 'processing', 'done']),
                 ],
             'sale.line': [
+                ('type', '=', 'line'),
                 If(Eval('customer'),
                     ('sale.party', '=', Eval('customer')),
                     ()),
@@ -171,6 +172,7 @@ class Complaint(Workflow, ModelSQL, ModelView):
                 ('state', 'in', ['posted', 'paid']),
                 ],
             'account.invoice.line': [
+                ('type', '=', 'line'),
                 If(Eval('customer'),
                     ('invoice.party', '=', Eval('customer')),
                     ()),
@@ -465,7 +467,7 @@ class Action(ModelSQL, ModelView):
                     default['quantity'] = lambda o: line2qty.get(o['id'])
                     default['unit_price'] = lambda o: line2price.get(o['id'])
                 else:
-                    sale_lines = sale.lines
+                    sale_lines = [l for l in sale.lines if l.type == 'line']
             elif isinstance(self.complaint.origin, Line):
                 sale_line = self.complaint.origin
                 sale = sale_line.sale
@@ -504,7 +506,8 @@ class Action(ModelSQL, ModelView):
                         for l in self.invoice_lines
                         if l.unit_price is not None}
                 else:
-                    invoice_lines = invoice.lines
+                    invoice_lines = [
+                        l for l in invoice.lines if l.type == 'line']
             elif isinstance(self.complaint.origin, Line):
                 invoice_line = self.complaint.origin
                 invoice = invoice_line.invoice
@@ -605,6 +608,7 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
         'sale.line', "Sale Line",
         ondelete='RESTRICT', required=True,
         domain=[
+            ('type', '=', 'line'),
             ('sale', '=', Eval('complaint_origin_id', -1)),
             ],
         depends=['complaint_origin_id'])
@@ -628,6 +632,7 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
         'account.invoice.line', 'Invoice Line',
         ondelete='RESTRICT', required=True,
         domain=[
+            ('type', '=', 'line'),
             ('invoice', '=', Eval('complaint_origin_id', -1)),
             ],
         depends=['complaint_origin_id'])
