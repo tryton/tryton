@@ -384,7 +384,7 @@ class Wizard(URLMixin, PoolBase):
     @cached_property
     def record(self):
         context = Transaction().context
-        if context.get('active_id'):
+        if context.get('active_id') is not None:
             return self.model(context['active_id'])
 
     @cached_property
