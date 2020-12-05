@@ -56,10 +56,16 @@ class Line(metaclass=PoolMeta):
             self.discount_amount = self.on_change_with_discount_amount()
             self.discount = self.on_change_with_discount()
 
-    @fields.depends('product')
+    @fields.depends('product', 'unit')
     def compute_base_price(self):
+        pool = Pool()
+        Uom = pool.get('product.uom')
         if self.product:
-            return round_price(self.product.list_price)
+            price = self.product.list_price
+            if self.unit:
+                price = Uom.compute_price(
+                    self.product.default_uom, price, self.unit)
+            return round_price(price)
 
     @fields.depends(
         methods=[
