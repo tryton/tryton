@@ -290,7 +290,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
             if (lang.code == Config.get_language()
                     and not lang.translatable):
                 raise TranslatableError(
-                    gettext('ir.msg_language_default_translatable'))
+                    gettext('ir.msg_language_default_translatable',
+                        language=lang.rec_name))
 
     @staticmethod
     def check_xml_record(langs, values):
@@ -337,7 +338,8 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
         for lang in langs:
             if lang.code == Config.get_language():
                 raise DeleteDefaultError(
-                    gettext('ir.msg_language_delete_default'))
+                    gettext('ir.msg_language_delete_default',
+                        language=lang.rec_name))
         # Clear cache
         cls._lang_cache.clear()
         cls._code_cache.clear()

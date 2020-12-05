@@ -256,10 +256,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">Invalid date format "%(format)s" for language "%(language)s".</field>
         </record>
         <record model="ir.message" id="msg_language_default_translatable">
-            <field name="text">The default language must be translatable.</field>
+            <field name="text">The default language "%(language)s" must be translatable.</field>
         </record>
         <record model="ir.message" id="msg_language_delete_default">
-            <field name="text">The default language can not be deleted.</field>
+            <field name="text">The default language "%(language)s" can not be deleted.</field>
         </record>
 
         <record model="ir.message" id="msg_rule_invalid_domain">
