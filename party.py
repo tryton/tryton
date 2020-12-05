@@ -27,7 +27,7 @@ class Erase(metaclass=PoolMeta):
         works = Work.search([
                 ('party', '=', party.id),
                 ('company', '=', company.id),
-                ('state', '!=', 'done'),
+                ('progress', '!=', 1),
                 ])
         if works:
             raise EraseError(
