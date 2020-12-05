@@ -10,11 +10,12 @@ from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.account.tests import create_chart
+from trytond.modules.company.tests import (
+    create_company, set_company, PartyCompanyCheckEraseMixin)
 
 
-class SaleTestCase(ModuleTestCase):
+class SaleTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Sale module'
     module = 'sale'
 
