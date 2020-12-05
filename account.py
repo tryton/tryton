@@ -95,10 +95,12 @@ class BEVATCustomer(ModelSQL, ModelView):
         where = ((invoice.company == context.get('company'))
             & (period.fiscalyear == context.get('fiscalyear')))
         where &= invoice.type == 'out'
-        where &= (company_identifier.code.ilike('BE%')
-            & (company_identifier.type == 'eu_vat'))
-        where &= (party_identifier.code.ilike('BE%')
-            & (party_identifier.type == 'eu_vat'))
+        where &= ((company_identifier.code.ilike('BE%')
+                & (company_identifier.type == 'eu_vat'))
+            | (company_identifier.type == 'be_vat'))
+        where &= ((party_identifier.code.ilike('BE%')
+                & (party_identifier.type == 'eu_vat'))
+            | (party_identifier.type == 'be_vat'))
         where &= tax.group.in_(groups)
         return (invoice_tax
             .join(invoice,
