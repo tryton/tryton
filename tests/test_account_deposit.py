@@ -7,8 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
+from trytond.modules.company.tests import PartyCompanyCheckEraseMixin
 
-class AccountDepositTestCase(ModuleTestCase):
+
+class AccountDepositTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Account Deposit module'
     module = 'account_deposit'
 
