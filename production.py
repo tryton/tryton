@@ -433,7 +433,7 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def on_change_quantity(self):
         self.explode_bom()
 
-    @ModelView.button_change(*BOM_CHANGES)
+    @ModelView.button_change(methods=['explode_bom'])
     def reset_bom(self):
         self.explode_bom()
 
