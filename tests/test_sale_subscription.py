@@ -10,8 +10,10 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
+from trytond.modules.company.tests import PartyCompanyCheckEraseMixin
 
-class SaleSubscriptionTestCase(ModuleTestCase):
+
+class SaleSubscriptionTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Sale Subscription module'
     module = 'sale_subscription'
 
