@@ -2,8 +2,9 @@
 # this repository contains the full copyright notices and license terms.
 
 try:
-    from trytond.modules.party.tests.test_party import suite
+    from trytond.modules.party.tests.test_party import (
+        suite, PartyCheckEraseMixin)
 except ImportError:
-    from .test_party import suite
+    from .test_party import suite, PartyCheckEraseMixin
 
-__all__ = ['suite']
+__all__ = ['suite', 'PartyCheckEraseMixin']

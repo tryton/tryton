@@ -16,7 +16,31 @@ from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 
 
-class PartyTestCase(ModuleTestCase):
+class PartyCheckEraseMixin:
+
+    @with_transaction()
+    def test_check_erase_party(self):
+        "Test check erase of party"
+        pool = Pool()
+        Erase = pool.get('party.erase', type='wizard')
+        Session = pool.get('ir.session.wizard')
+        party = self.setup_check_erase_party()
+
+        session = Session()
+        session.save()
+
+        Erase(session.id).check_erase(party)
+
+    def setup_check_erase_party(self):
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        party = Party(active=False)
+        party.save()
+        return party
+
+
+class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
     'Test Party module'
     module = 'party'
 
