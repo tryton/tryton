@@ -11,7 +11,8 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, PartyCompanyCheckEraseMixin)
 
 
 def create_product(name, list_price, categories=None):
@@ -50,7 +51,7 @@ def create_plan(lines):
     return plan
 
 
-class CommissionTestCase(ModuleTestCase):
+class CommissionTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Commission module'
     module = 'commission'
     extras = ['sale']
