@@ -13,8 +13,9 @@ from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
 from trytond.exceptions import UserError
 
-from trytond.modules.company.tests import create_company, set_company
 from trytond.modules.account.tax import TaxableMixin
+from trytond.modules.company.tests import (
+    create_company, set_company, PartyCompanyCheckEraseMixin)
 from trytond.modules.currency.tests import create_currency
 
 
@@ -167,7 +168,7 @@ def close_fiscalyear(fiscalyear):
     FiscalYear.close([fiscalyear])
 
 
-class AccountTestCase(ModuleTestCase):
+class AccountTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Account module'
     module = 'account'
 
