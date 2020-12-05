@@ -97,6 +97,8 @@ class WorkStatus(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             return cls._get_window_domains(['project'])
         elif action.id == Data.get_id('project', 'act_task_form'):
             return cls._get_window_domains(['task'])
+        else:
+            return []
 
     @classmethod
     def _get_window_domains(cls, types):
