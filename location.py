@@ -16,6 +16,8 @@ from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.tools.multivalue import migrate_property
 
+from trytond.modules.product import price_digits, round_price
+
 from .exceptions import LocationValidationError
 
 
@@ -164,8 +166,9 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         fields.Float('Forecast Quantity',
         help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
-    cost_value = fields.Function(fields.Numeric('Cost Value',
-        help="The value of the stock in the location."),
+    cost_value = fields.Function(fields.Numeric(
+            "Cost Value", digits=price_digits,
+            help="The value of the stock in the location."),
         'get_cost_value')
 
     @classmethod
@@ -471,7 +474,7 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
         # The template may have more than one product
         if cost_price is not None:
             for location in locations:
-                cost_values[location.id] = (
+                cost_values[location.id] = round_price(
                     Decimal(str(location.quantity)) * cost_price)
         return cost_values
 
