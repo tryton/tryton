@@ -5,12 +5,13 @@ The Stock Package Shipping DPD module allows you to generate the DPD label
 using the DPD webservices.
 DPD has many different web services, the module supports:
 
-- `public-ws.dpd.com`
+- `LoginService 2.0 <https://esolutions.dpd.com/dokumente/LoginService_V2_0.pdf>`_
+- `ShipmentService 3.2 <https://esolutions.dpd.com/dokumente/ShipmentService_V3_2.pdf>`_
 
 Carrier Credential
 ******************
 
-This model allows to define the credential used to connect the the DPD API.
+This model allows to define the credential used to connect the DPD API.
 The credentials will be automatically retrieved based on the company of the
 Shipment.
 
