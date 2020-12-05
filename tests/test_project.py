@@ -11,10 +11,11 @@ from trytond.tests.test_tryton import doctest_checker
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.transaction import Transaction
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, PartyCompanyCheckEraseMixin)
 
 
-class ProjectTestCase(ModuleTestCase):
+class ProjectTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Project module'
     module = 'project'
 
