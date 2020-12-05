@@ -1,3 +1,4 @@
+* Add all buttons to default form view
 * Unify PYSON string format
 * Forbid all white spaces except space in Char field
 

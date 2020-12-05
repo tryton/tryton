@@ -334,6 +334,11 @@ class ModelView(Model):
                             xml += "<newline/>"
                     else:
                         xml += '<field name="%s" colspan="4"/>' % (i,)
+                if cls._buttons:
+                    xml += '<group id="buttons" col="-1" colspan="4">'
+                    for button in cls._buttons:
+                        xml += '<button name="%s"/>' % button
+                    xml += '</group>'
                 xml += "</form>"
             elif view_type == 'tree':
                 field = 'id'
