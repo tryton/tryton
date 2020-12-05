@@ -9,7 +9,7 @@ from lxml import etree
 from trytond.model.exceptions import AccessError, AccessButtonError
 from trytond.tests.test_tryton import activate_module, with_transaction
 from trytond.pool import Pool
-from trytond.pyson import PYSONEncoder, Eval
+from trytond.pyson import PYSONEncoder, PYSONDecoder, Eval
 
 
 class ModelView(unittest.TestCase):
@@ -407,6 +407,21 @@ class ModelView(unittest.TestCase):
         action = TestModel.test_update([])
 
         self.assertEqual(action['url'], 'http://www.tryton.org/')
+
+    @with_transaction()
+    def test_button_change(self):
+        "Test button change"
+        pool = Pool()
+        Model = pool.get('test.modelview.button_change')
+
+        decoder = PYSONDecoder()
+        view = Model.fields_view_get()
+        tree = etree.fromstring(view['arch'])
+        button = tree.xpath('//button[@name="test"]')[0]
+
+        self.assertEqual(
+            set(decoder.decode(button.attrib['change'])),
+            {'name', 'extra'})
 
     @with_transaction()
     def test_link(self):

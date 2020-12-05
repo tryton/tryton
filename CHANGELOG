@@ -1,3 +1,4 @@
+* Support other methods for button_change decorator
 * Allow copying Python instances of Model
 * Add all buttons to default form view
 * Unify PYSON string format

@@ -113,6 +113,29 @@ class ModelViewButtonAction(ModelView):
         return {'url': 'http://www.tryton.org/'}
 
 
+class ModelViewButtonChange(ModelView):
+    "ModelView Button Change"
+    __name__ = 'test.modelview.button_change'
+
+    name = fields.Char("Name")
+    extra = fields.Char("Extra")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons = {
+            'test': {}
+            }
+
+    @ModelView.button_change('name', methods=['extra_method'])
+    def test(self):
+        self.extra_method()
+
+    @fields.depends('extra')
+    def extra_method(self):
+        pass
+
+
 class ModelViewLink(ModelView):
     "ModelView Link"
     __name__ = 'test.modelview.link'
@@ -237,6 +260,7 @@ def register(module):
         ModelViewButton,
         ModelViewButtonDepends,
         ModelViewButtonAction,
+        ModelViewButtonChange,
         ModelViewLink,
         ModelViewLinkTarget,
         ModelViewRPC,

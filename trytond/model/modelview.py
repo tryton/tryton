@@ -132,6 +132,10 @@ class ModelView(Model):
             if isinstance(attr, fields.Field):
                 fields_[name] = attr
 
+    @classmethod
+    def __post_setup__(cls):
+        super(ModelView, cls).__post_setup__()
+
         methods = {
             '_done': set(),
             'depends': collections.defaultdict(set),
@@ -192,7 +196,7 @@ class ModelView(Model):
                 # Decorate on_change to always return self
                 setattr(cls, function_name, on_change(function))
 
-        for name, field in fields_.items():
+        for name, field in cls._fields.items():
             for attribute in [
                     'on_change',
                     'on_change_with',
@@ -200,10 +204,6 @@ class ModelView(Model):
                     'selection_change_with',
                     ]:
                 setup_field(name, field, attribute)
-
-    @classmethod
-    def __post_setup__(cls):
-        super(ModelView, cls).__post_setup__()
 
         # Update __rpc__
         for field_name, field in cls._fields.items():
@@ -217,12 +217,25 @@ class ModelView(Model):
                 cls.__rpc__.setdefault(button,
                     RPC(instantiate=0, result=on_change_result))
 
+            meth_names = set()
+            meth_done = set()
             for parent_cls in cls.__mro__:
                 parent_meth = getattr(parent_cls, button, None)
                 if not parent_meth:
                     continue
                 cls.__change_buttons[button] |= getattr(
                     parent_meth, 'change', set())
+                meth_names |= getattr(parent_meth, 'change_methods', set())
+            while meth_names:
+                meth_name = meth_names.pop()
+                method = getattr(cls, meth_name)
+                assert callable(method) or isinstance(method, property), \
+                    "%s.%s not callable or property" % (cls, meth_name)
+                set_methods(meth_name)
+                cls.__change_buttons[button] |= methods['depends'][meth_name]
+                meth_names |= (
+                    methods['depend_methods'][meth_name] - meth_done)
+                meth_done.add(meth_name)
 
     @classmethod
     def fields_view_get(cls, view_id=None, view_type='form', level=None):
@@ -771,10 +784,15 @@ class ModelView(Model):
         return decorator
 
     @staticmethod
-    def button_change(*fields):
+    def button_change(*fields, **kwargs):
+        methods = kwargs.pop('methods', None)
+        assert not kwargs
+
         def decorator(func):
             func = on_change(func)
             func.change = set(fields)
+            if methods:
+                func.change_methods = set(methods)
             return func
         return decorator
 

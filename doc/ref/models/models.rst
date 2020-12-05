@@ -124,11 +124,14 @@ Static methods:
     Same as :meth:`ModelView.button` but return the action id of the XML ``id``
     action or the action value updated by the returned value of the method.
 
-.. staticmethod:: ModelView.button_change([\*fields])
+.. staticmethod:: ModelView.button_change([\*fields[, methods]])
 
     Same as :meth:`ModelView.button` but for button that change values of the
     fields on client side (similar to :ref:`on_change
     <ref-models-fields-on_change>`).
+    The `methods` argument can be used to duplicate the field names from other
+    decorated methods. This is useful if the decorated method calls another
+    method.
 
     .. warning::
         Only on instance methods.

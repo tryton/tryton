@@ -120,6 +120,7 @@ class FieldDependsTestCase(unittest.TestCase):
                 super(Model, self).on_change_name()
 
         Model.__setup__()
+        Model.__post_setup__()
 
         self.assertEqual(Model.name.on_change, {'foo', 'bar'})
 
@@ -140,6 +141,7 @@ class FieldDependsTestCase(unittest.TestCase):
                 pass
 
         Model.__setup__()
+        Model.__post_setup__()
 
         self.assertEqual(Model.name.on_change, {'foo', 'bar'})
 
@@ -164,6 +166,7 @@ class FieldDependsTestCase(unittest.TestCase):
                 pass
 
         Model.__setup__()
+        Model.__post_setup__()
 
         self.assertEqual(Model.name.on_change, {'foo', 'bar'})
 
@@ -213,6 +216,7 @@ class FieldDependsTestCase(unittest.TestCase):
                 pass
 
         Model.__setup__()
+        Model.__post_setup__()
 
         self.assertEqual(Model.bar.on_change, {'foo', 'bar'})
 
