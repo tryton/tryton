@@ -9,6 +9,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 
 from trytond.modules.currency.tests import create_currency, add_currency_rate
+from trytond.modules.party.tests import PartyCheckEraseMixin
 
 
 def create_company(name='Dunder Mifflin', currency=None):
@@ -55,7 +56,14 @@ def set_company(company):
         yield
 
 
-class CompanyTestCase(ModuleTestCase):
+class PartyCompanyCheckEraseMixin(PartyCheckEraseMixin):
+
+    def setup_check_erase_party(self):
+        create_company()
+        return super().setup_check_erase_party()
+
+
+class CompanyTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
     'Test Company module'
     module = 'company'
 
