@@ -10,6 +10,7 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
 from trytond.config import config
 
+from trytond.modules.party.tests import PartyCheckEraseMixin
 from trytond.modules.web_user import user as user_module
 
 VALIDATION_URL = 'http://www.example.com/validation'
@@ -17,7 +18,7 @@ RESET_PASSWORD_URL = 'http://www.example.com/reset_password'
 FROM = 'tryton@example.com'
 
 
-class WebUserTestCase(ModuleTestCase):
+class WebUserTestCase(PartyCheckEraseMixin, ModuleTestCase):
     'Test Web User module'
     module = 'web_user'
 
