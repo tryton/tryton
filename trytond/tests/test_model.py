@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
+from copy import copy
 
 import unittest
 
@@ -187,6 +188,33 @@ class ModelTestCase(unittest.TestCase):
         definition = Model.fields_get(['name'])
 
         self.assertTrue(definition['name']['readonly'])
+
+    @with_transaction()
+    def test_copy(self):
+        "Test copy an instance"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(name='foo')
+
+        record_copied = copy(record)
+
+        self.assertEqual(record.name, record_copied.name)
+        self.assertNotEqual(id(record), id(record_copied))
+
+    @with_transaction()
+    def test_copy_values(self):
+        "Test copied instance has different values"
+        pool = Pool()
+        Model = pool.get('test.model')
+
+        record = Model(name='foo')
+
+        record_copied = copy(record)
+        record_copied.name = 'bar'
+
+        self.assertEqual(record.name, 'foo')
+        self.assertEqual(record_copied.name, 'bar')
 
 
 class ModelTranslationTestCase(unittest.TestCase):

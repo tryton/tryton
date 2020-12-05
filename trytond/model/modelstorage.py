@@ -1439,7 +1439,7 @@ class ModelStorage(Model):
         try:
             return super(ModelStorage, self).__getattr__(name)
         except AttributeError:
-            if self.id is None or self.id < 0 or name.startswith('_'):
+            if name.startswith('_') or self.id is None or self.id < 0:
                 raise
 
         self._local_cache.refresh()

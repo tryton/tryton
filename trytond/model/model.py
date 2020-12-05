@@ -277,7 +277,15 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             self._values = None
             self._init_values = None
 
+    def __copy__(self):
+        copied = self.__class__(self.id)
+        copied._values = copy.copy(self._values)
+        copied._init_values = copy.copy(self._init_values)
+        return copied
+
     def __getattr__(self, name):
+        if name.startswith('__') and name.endswith('__'):
+            raise AttributeError
         try:
             return self._values[name]
         except (KeyError, TypeError):
