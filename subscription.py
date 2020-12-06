@@ -703,6 +703,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             default = default.copy()
         default.setdefault('next_consumption_date', None)
         default.setdefault('consumed', None)
+        default.setdefault('consumed_until', None)
         return super(Line, cls).copy(lines, default=default)
 
 
