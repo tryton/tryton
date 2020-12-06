@@ -68,14 +68,14 @@ def format_percentage(n, size=5):
 
 def identifier_code(identifier):
     if identifier:
-        return identifier.code[2:]
+        return identifier.es_code()
     return ''
 
 
 def country_code(record):
     code = None
     if record.party_tax_identifier:
-        code = record.party_tax_identifier.code[:2]
+        code = record.party_tax_identifier.es_country()
     if code is None or code == 'ES':
         return ''
     return code

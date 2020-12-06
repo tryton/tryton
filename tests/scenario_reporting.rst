@@ -53,8 +53,8 @@ Create parties::
     >>> TaxRule = Model.get('account.tax.rule')
     >>> party = Party(name='Party')
     >>> tax_identifier = party.identifiers.new()
-    >>> tax_identifier.type = 'eu_vat'
-    >>> tax_identifier.code = 'ES00000000T'
+    >>> tax_identifier.type = 'es_nif'
+    >>> tax_identifier.code = '00000000T'
     >>> address, = party.addresses
     >>> address.country = spain
     >>> address.zip = '25001'

@@ -15,6 +15,7 @@ def register():
         account.TaxTemplate,
         account.Tax,
         party.Party,
+        party.Identifier,
         reporting_tax.ESVATList,
         reporting_tax.ESVATListContext,
         reporting_tax.ECOperationList,
