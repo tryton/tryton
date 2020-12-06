@@ -307,10 +307,10 @@ class Asset(Workflow, ModelSQL, ModelView):
         if self.company:
             return self.company.currency.id
 
-    @fields.depends('currency')
+    @fields.depends('company')
     def on_change_with_currency_digits(self, name=None):
-        if self.currency:
-            return self.currency.digits
+        if self.company:
+            return self.company.currency.digits
         return 2
 
     @fields.depends('supplier_invoice_line', 'unit')
