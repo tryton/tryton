@@ -1471,7 +1471,15 @@ class ModelStorage(Model):
         ffields = {
             name: field,
             }
-        if field.loading == 'eager' and not skip_eager:
+        load_eager = field.loading == 'eager' and not skip_eager
+        multiple_getter = None
+        if (field.loading == 'lazy'
+                and isinstance(field, fields.Function)
+                and field.getter_multiple(
+                    getattr(self.__class__, field.getter))):
+            multiple_getter = field.getter
+
+        if load_eager or multiple_getter:
             FieldAccess = Pool().get('ir.model.field.access')
             fread_accesses = {}
             fread_accesses.update(FieldAccess.check(self.__name__,
@@ -1488,8 +1496,11 @@ class ModelStorage(Model):
 
             def to_load(item):
                 fname, field = item
-                return (field.loading == 'eager'
-                    and fname not in to_remove)
+                if fname in to_remove:
+                    return False
+                if multiple_getter:
+                    return getattr(field, 'getter', None) == multiple_getter
+                return field.loading == 'eager'
 
             ifields = filter(to_load,
                 filter(not_cached,

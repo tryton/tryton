@@ -1,3 +1,4 @@
+* Eager load Function field with same multiple getter
 * Support other methods for button_change decorator
 * Allow copying Python instances of Model
 * Add all buttons to default form view

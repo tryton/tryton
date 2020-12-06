@@ -90,8 +90,7 @@ class Function(Field):
         with Transaction().set_context(_check_access=False):
             method = getattr(Model, self.getter)
             instance_method = is_instance_method(Model, self.getter)
-            signature = inspect.signature(method)
-            uses_names = 'names' in signature.parameters
+            multiple = self.getter_multiple(method)
 
             def call(name):
                 records = Model.browse(ids)
@@ -101,11 +100,11 @@ class Function(Field):
                     return dict((r.id, method(r, name)) for r in records)
             if isinstance(name, list):
                 names = name
-                if uses_names:
+                if multiple:
                     return call(names)
                 return dict((name, call(name)) for name in names)
             else:
-                if uses_names:
+                if multiple:
                     name = [name]
                 return call(name)
 
@@ -148,6 +147,11 @@ class Function(Field):
             bool(self.searcher) or hasattr(model, 'domain_' + self.name))
         definition['sortable'] &= hasattr(model, 'order_' + self.name)
         return definition
+
+    def getter_multiple(self, method):
+        "Returns True if getter function accepts multiple fields"
+        signature = inspect.signature(method)
+        return 'names' in signature.parameters
 
 
 class MultiValue(Function):
