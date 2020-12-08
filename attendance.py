@@ -83,7 +83,7 @@ class Line(ModelSQL, ModelView):
         at = self.at
         if pytz and self.company and self.company.timezone:
             timezone = pytz.timezone(self.company.timezone)
-            at = pytz.utc.localice(self.at, is_dst=None).as_timezone(timezone)
+            at = pytz.utc.localize(self.at, is_dst=None).astimezone(timezone)
         return at.date()
 
     def get_rec_name(self, name):
