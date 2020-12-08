@@ -682,7 +682,7 @@ class OpenInvoice(Wizard):
 
     def do_open_(self, action):
         works = self.model.search([
-                ('parent', 'child_of', map(int, self.records)),
+                ('parent', 'child_of', list(map(int, self.records))),
                 ])
         invoice_ids = set()
         for work in works:
