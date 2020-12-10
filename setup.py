@@ -44,6 +44,14 @@ if minor_version % 2:
     download_url = (
         'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
             name[8:], name, version))
+local_version = []
+if os.environ.get('CI_JOB_ID'):
+    local_version.append(os.environ['CI_JOB_ID'])
+else:
+    for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER']:
+        local_version.append(os.environ.get(build, ''))
+if local_version:
+    version += '+' + '.'.join(local_version)
 
 requires = []
 for dep in info.get('depends', []):
