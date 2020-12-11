@@ -45,9 +45,15 @@ if minor_version % 2:
         'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
             name[8:], name, version))
 local_version = []
-for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER', 'CI_JOB_ID']:
-    if os.environ.get(build):
-        local_version.append(os.environ[build])
+if os.environ.get('CI_JOB_ID'):
+    local_version.append(os.environ['CI_JOB_ID'])
+else:
+    for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER']:
+        if os.environ.get(build):
+            local_version.append(os.environ[build])
+        else:
+            local_version = []
+            break
 if local_version:
     version += '+' + '.'.join(local_version)
 
@@ -63,7 +69,9 @@ for dep in ['sale', 'purchase', 'account_invoice',
     tests_require.append(get_require_version('trytond_%s' % dep))
 dependency_links = []
 if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
+    dependency_links.append(
+        'https://trydevpi.tryton.org/?local_version='
+        + '.'.join(local_version))
 
 setup(name=name,
     version=version,
