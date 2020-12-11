@@ -49,7 +49,11 @@ if os.environ.get('CI_JOB_ID'):
     local_version.append(os.environ['CI_JOB_ID'])
 else:
     for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER']:
-        local_version.append(os.environ.get(build, ''))
+        if os.environ.get(build):
+            local_version.append(os.environ[build])
+        else:
+            local_version = []
+            break
 if local_version:
     version += '+' + '.'.join(local_version)
 
