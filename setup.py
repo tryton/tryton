@@ -66,7 +66,9 @@ requires.append(get_require_version('trytond'))
 tests_require = [get_require_version('proteus')]
 dependency_links = []
 if minor_version % 2:
-    dependency_links.append('https://trydevpi.tryton.org/')
+    dependency_links.append(
+        'https://trydevpi.tryton.org/?local_version='
+        + '.'.join(local_version))
 
 setup(name=name,
     version=version,
