@@ -78,9 +78,19 @@ if os.environ.get('CI_JOB_ID'):
     local_version.append(os.environ['CI_JOB_ID'])
 else:
     for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER']:
-        local_version.append(os.environ.get(build, ''))
+        if os.environ.get(build):
+            local_version.append(os.environ[build])
+        else:
+            local_version = []
+            break
 if local_version:
     version += '+' + '.'.join(local_version)
+
+dependency_links = []
+if minor_version % 2:
+    dependency_links.append(
+        'https://trydevpi.tryton.org/?local_version='
+        + '.'.join(local_version))
 
 dist = setup(name=name,
     version=version,
@@ -145,6 +155,7 @@ dist = setup(name=name,
     extras_require={
         'calendar': ['GooCalendar>=0.7'],
         },
+    dependency_links=dependency_links,
     zip_safe=False,
     test_suite='tryton.tests',
     **args
