@@ -12,7 +12,7 @@ pipeline:
         environment:
             - CFLAGS=-O0
             - DB_CACHE=/cache
-            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         commands:
             - echo "[extensions]" >> /root/.hgrc
