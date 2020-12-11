@@ -9,6 +9,9 @@ clone:
 pipeline:
     tox:
         image: ${IMAGE}
+        environment:
+            - CFLAGS=-O0
+            - TOX_TESTENV_PASSENV=CFLAGS CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID
         commands:
             - pip install tox
             - tox -e "${TOXENV}"
