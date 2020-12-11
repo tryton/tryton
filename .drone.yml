@@ -12,7 +12,7 @@ pipeline:
         environment:
             - CFLAGS=-O0
             - DB_CACHE=/cache
-            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE BRAINTREE_MERCHANT_ID BRAINTREE_PUBLIC_KEY BRAINTREE_PRIVATE_KEY
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID BRAINTREE_MERCHANT_ID BRAINTREE_PUBLIC_KEY BRAINTREE_PRIVATE_KEY
             - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
         secrets: [ braintree_merchant_id, braintree_public_key, braintree_private_key ]
         commands:
