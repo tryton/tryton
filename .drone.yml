@@ -23,6 +23,12 @@ pipeline:
             - tox -e "${TOXENV}-${DATABASE}"
         volumes:
             - cache:/root/.cache
+    check_dist:
+        image: ${IMAGE}
+        commands:
+            - pip install twine
+            - python setup.py sdist
+            - twine check dist/*
 
 services:
     postgresql:
