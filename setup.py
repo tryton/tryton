@@ -10,9 +10,12 @@ from setuptools import setup, find_packages
 
 
 def read(fname):
-    return io.open(
+    content = io.open(
         os.path.join(os.path.dirname(__file__), fname),
         'r', encoding='utf-8').read()
+    content = re.sub(
+        r'(?m)^\.\. toctree::\r?\n((^$|^\s.*$)\r?\n)*', '', content)
+    return content
 
 
 def get_require_version(name):
@@ -80,7 +83,7 @@ setup(name=name,
     download_url=download_url,
     project_urls={
         "Bug Tracker": 'https://bugs.tryton.org/',
-        "Documentation": 'https://docs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/projects/modules-currency/',
         "Forum": 'https://www.tryton.org/forum',
         "Source Code": 'https://hg.tryton.org/modules/currency',
         },
