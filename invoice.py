@@ -110,7 +110,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         required=True, states=_states, depends=_depends + ['party'],
         domain=[('party', '=', Eval('party'))])
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
-        states=_states, depends=_depends)
+        states={
+            'readonly': (
+                _states['readonly']
+                | (Eval('lines', [0]) & Eval('currency'))),
+            },
+        depends=_depends)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date'),
@@ -150,11 +155,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     lines = fields.One2Many('account.invoice.line', 'invoice', 'Lines',
         domain=[
             ('company', '=', Eval('company', -1)),
+            ('currency', '=', Eval('currency', -1)),
+            ['OR',
+                ('invoice_type', '=', Eval('type')),
+                ('invoice_type', '=', None),
+                ],
+            ['OR',
+                ('party', '=', Eval('party', -1)),
+                ('party', '=', None),
+                ],
             ],
         states={
-            'readonly': (Eval('state') != 'draft') | ~Eval('company'),
+            'readonly': (
+                (Eval('state') != 'draft')
+                | ~Eval('company')
+                | ~Eval('currency')),
             },
-        depends=['state', 'company'])
+        depends=['state', 'company', 'currency', 'type', 'party'])
     taxes = fields.One2Many('account.invoice.tax', 'invoice', 'Tax Lines',
         states=_states, depends=_depends)
     comment = fields.Text('Comment', states=_states, depends=_depends)
@@ -1633,12 +1650,9 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         depends=['invoice'] + _depends)
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
-    currency = fields.Many2One('currency.currency', 'Currency',
-        states={
-            'required': ~Eval('invoice'),
-            'readonly': _states['readonly'],
-            },
-        depends=['invoice'] + _depends)
+    currency = fields.Many2One(
+        'currency.currency', "Currency", required=True,
+        states=_states, depends=_depends)
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
         'on_change_with_currency_digits')
     company = fields.Many2One('company.company', 'Company', required=True,
@@ -1830,6 +1844,13 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         return Invoice.fields_get(['type'])['type']['selection'] + [(None, '')]
+
+    @fields.depends(
+        'invoice', '_parent_invoice.currency', '_parent_invoice.company')
+    def on_change_invoice(self):
+        if self.invoice:
+            self.currency = self.invoice.currency
+            self.company = self.invoice.company
 
     @staticmethod
     def default_currency():
