@@ -604,8 +604,8 @@
         _get_value: function(entry) {
         },
         set_value: function(from, to) {
-            this._set_value(self.from, from);
-            this._set_value(self.to, to);
+            this._set_value(this.from, from);
+            this._set_value(this.to, to);
         },
         _set_value: function(entry, value) {
         },
