@@ -136,8 +136,10 @@ class Rule(ModelSQL, ModelView):
     @staticmethod
     def _get_context():
         User = Pool().get('res.user')
-        user_id = Transaction().user
-        with Transaction().set_context(_check_access=False, _datetime=None):
+        transaction = Transaction()
+        user_id = transaction.user
+        with transaction.set_context(_check_access=False, _datetime=None), \
+                transaction.set_user(0):
             user = EvalEnvironment(User(user_id), User)
         return {
             'user': user,
