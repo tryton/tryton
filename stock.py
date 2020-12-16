@@ -193,19 +193,26 @@ class CreateDPDShipping(Wizard):
 
         cm = UoM(ModelData.get_id('product', 'uom_centimeter'))
 
-        parcel = {
-            'customerReferenceNumber1': package.code,
-            'weight': int(package.total_weight * 10) * 10
-            }
+        parcel = {}
 
-        length = UoM.compute_qty(
-            package.type.length_uom, package.type.length, cm)
-        width = UoM.compute_qty(
-            package.type.width_uom, package.type.width, cm)
-        height = UoM.compute_qty(
-            package.type.height_uom, package.type.height, cm)
-        if length < 1000 and width < 1000 and height < 1000:
-            parcel['volume'] = '%03i%03i%03i' % (length, width, height)
+        if package.total_weight:
+            # in grams rounded in 10 gram units
+            weight = int(package.total_weight * 10) * 10
+            if weight < 1000000000:
+                parcel['weight'] = weight
+
+        if (package.type.length is not None
+                and package.type.width is not None
+                and package.type.height is not None):
+            length = UoM.compute_qty(
+                package.type.length_uom, package.type.length, cm)
+            width = UoM.compute_qty(
+                package.type.width_uom, package.type.width, cm)
+            height = UoM.compute_qty(
+                package.type.height_uom, package.type.height, cm)
+            if length < 1000 and width < 1000 and height < 1000:
+                parcel['volume'] = int(
+                    '%03i%03i%03i' % (length, width, height))
 
         return parcel
 
