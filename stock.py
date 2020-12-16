@@ -88,6 +88,8 @@ class ShipmentOut(metaclass=PoolMeta):
                 cost = Currency.compute(self.cost_currency, cost,
                     invoice.currency, round=False)
         invoice_line.unit_price = round_price(cost)
+        invoice_line.currency = invoice.currency
+        invoice_line.company = invoice.company
 
         taxes = []
         pattern = self._get_cost_tax_rule_pattern()
