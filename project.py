@@ -543,6 +543,8 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
         invoice_line.unit_price = key['unit_price']
         invoice_line.quantity = quantity
         invoice_line.unit = key['unit']
+        invoice_line.currency = invoice.currency
+        invoice_line.company = invoice.company
 
         taxes = []
         pattern = invoice_line._get_tax_rule_pattern()
