@@ -719,6 +719,8 @@ class Line(ModelSQL, ModelView):
         cls.__rpc__.update({
                 'on_write': RPC(instantiate=0),
                 })
+        # Do not cache default_date nor default_move
+        cls.__rpc__['default_get'].cache = None
         cls._order[0] = ('id', 'DESC')
 
     @classmethod
