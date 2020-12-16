@@ -197,7 +197,8 @@ class Main(Gtk.Application):
             '<tryton>/Form/Email', Gdk.KEY_E,
             Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
         Gtk.AccelMap.add_entry(
-            '<tryton>/Form/Search', Gdk.KEY_F, Gdk.ModifierType.CONTROL_MASK)
+            '<tryton>/Form/Search', Gdk.KEY_F,
+            Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)
 
         Gtk.AccelMap.load(os.path.join(get_config_dir(), 'accel.map'))
 

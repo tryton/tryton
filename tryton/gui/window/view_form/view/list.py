@@ -496,6 +496,7 @@ class ViewTree(View):
         self.sum_box.show()
         self.widget.pack_start(
             self.sum_box, expand=False, fill=False, padding=0)
+        self.treeview.set_search_equal_func(self.search_equal_func)
 
         self.display()
 
@@ -504,6 +505,22 @@ class ViewTree(View):
         idx = [c for c in self.treeview.get_columns()
             if c.name == column.name].index(column)
         return self.widgets[column.name][idx]
+
+    def search_equal_func(self, model, column, key, iter_):
+        key = key.lower()
+        record = model.get_value(iter_, 0)
+        for field_name in self.get_fields(visible_only=True):
+            field = record[field_name]
+            field.state_set(record, states=('invisible',))
+            if not field.get_state_attrs(record).get('invisible', False):
+                for widget in self.widgets[field_name]:
+                    text = widget.get_textual_value(record).lower()
+                    # Simple search by word
+                    while text:
+                        if text.startswith(key):
+                            return False
+                        text = ' '.join(text.split()[1:])
+        return True
 
     def sort_model(self, column):
         up = common.IconFactory.get_pixbuf('tryton-arrow-up')
@@ -615,8 +632,9 @@ class ViewTree(View):
     def editable(self):
         return self._editable and not self.screen.readonly
 
-    def get_fields(self):
-        return [col.name for col in self.treeview.get_columns() if col.name]
+    def get_fields(self, visible_only=False):
+        return [col.name for col in self.treeview.get_columns()
+            if col.name and (not visible_only or col.get_visible())]
 
     def get_buttons(self):
         return [b for b in self.state_widgets
@@ -1024,6 +1042,8 @@ class ViewTree(View):
                 selection = self.treeview.get_selection()
                 path = current_record.get_index_path(model.group)
                 selection.select_path(path)
+            # The search column must be set each time the model is changed
+            self.treeview.set_search_column(0)
         if not current_record:
             selection = self.treeview.get_selection()
             selection.unselect_all()
