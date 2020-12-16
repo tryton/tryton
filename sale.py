@@ -1451,6 +1451,8 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
         invoice_line.unit_price = self.unit_price
         invoice_line.taxes = self.taxes
         invoice_line.invoice_type = 'out'
+        invoice_line.currency = self.currency
+        invoice_line.company = self.company
         if self.product:
             invoice_line.account = self.product.account_revenue_used
             if not invoice_line.account:
