@@ -589,12 +589,13 @@ class Activity(ModelSQL, ModelView):
                     yield END, QName('img'), pos
                 yield kind, data, pos
 
+        context = self.email_context(record)
         title = (TextTemplate(translated.email_title)
-            .generate(record=record.record)
+            .generate(**context)
             .render())
         template = MarkupTemplate(translated.email_template)
         content = (template
-            .generate(record=record.record)
+            .generate(**context)
             .filter(convert_href)
             .render())
 
@@ -616,6 +617,17 @@ class Activity(ModelSQL, ModelView):
         if to_addrs:
             sendmail_transactional(
                 self.email_from, to_addrs, msg, datamanager=smtpd_datamanager)
+
+    def email_context(self, record):
+        return {
+            'record': record.record,
+            'format_date': Report.format_date,
+            'format_datetime': Report.format_datetime,
+            'format_timedelta': Report.format_timedelta,
+            'format_currency': Report.format_currency,
+            'format_number': Report.format_number,
+            'datetime': datetime,
+            }
 
 
 class Record(ModelSQL, ModelView):
