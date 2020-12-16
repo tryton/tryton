@@ -915,6 +915,7 @@ class LineConsumption(ModelSQL, ModelView):
     def _group_invoice_key(cls, consumption):
         return (
             ('company', consumption.line.subscription.company),
+            ('currency', consumption.line.subscription.currency),
             ('unit', consumption.line.unit),
             ('product', consumption.line.service.product),
             ('unit_price', consumption.line.unit_price),
