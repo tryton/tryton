@@ -41,6 +41,7 @@ def get_info():
 
 info = get_info()
 
+master_doc = 'index'
 project = info['name']
 release = version = info['series']
 default_role = 'ref'
