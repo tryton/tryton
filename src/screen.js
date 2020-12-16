@@ -551,17 +551,12 @@
             if (this.last_search_text.trim() !== this.get_text().trim()) {
                 for (var j = 0; j < this.search_form.fields.length; j++) {
                     var fentry = this.search_form.fields[j][1];
-                    switch(fentry.type) {
-                        case 'selection':
-                            fentry.set_value([]);
-                            break;
-                        case 'date':
-                        case 'datetime':
-                        case 'time':
-                            fentry.set_value(null, null);
-                            break;
-                        default:
-                            fentry.val('');
+                    if (fentry instanceof Sao.ScreenContainer.Selection) {
+                        fentry.set_value([]);
+                    } else if (fentry instanceof Sao.ScreenContainer.Between) {
+                        fentry.set_value(null, null);
+                    } else {
+                        fentry.val('');
                     }
                 }
                 this.search_form.fields[0][2].focus();
