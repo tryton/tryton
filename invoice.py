@@ -1,6 +1,5 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.pyson import Eval
 from trytond.transaction import Transaction
 from trytond.pool import PoolMeta
 
@@ -12,13 +11,8 @@ class Invoice(metaclass=PoolMeta):
     def __setup__(cls):
         super(Invoice, cls).__setup__()
         add_remove = [
-            ('invoice_type', '=', Eval('type')),
-            ('party', '=', Eval('party')),
-            ('currency', '=', Eval('currency')),
-            ('company', '=', Eval('company')),
             ('invoice', '=', None),
         ]
-        add_remove_depends = set(['type', 'party', 'currency', 'company'])
 
         if not cls.lines.add_remove:
             cls.lines.add_remove = add_remove
@@ -27,7 +21,6 @@ class Invoice(metaclass=PoolMeta):
                 add_remove,
                 cls.lines.add_remove,
                 ]
-        cls.lines.depends = list(set(cls.lines.depends) | add_remove_depends)
 
 
 class InvoiceLine(metaclass=PoolMeta):
