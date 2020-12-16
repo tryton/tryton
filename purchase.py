@@ -34,8 +34,6 @@ class Purchase(metaclass=PoolMeta):
                 'invoice': None,
                 'invoice_type': invoice.type,
                 'party': invoice.party.id,
-                'currency': invoice.currency.id,
-                'company': invoice.company.id,
                 })
             InvoiceLine.delete(lines_to_delete)
             Invoice.cancel([invoice])
