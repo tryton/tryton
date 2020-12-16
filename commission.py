@@ -504,6 +504,8 @@ class Commission(ModelSQL, ModelView):
         invoice_line.type = 'line'
         invoice_line.product = product
         invoice_line.quantity = 1
+        invoice_line.company = invoice.company
+        invoice_line.currency = invoice.currency
 
         invoice_line.on_change_product()
 
