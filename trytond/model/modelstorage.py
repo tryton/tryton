@@ -1050,8 +1050,8 @@ class ModelStorage(Model):
     def _validate(cls, records, field_names=None):
         pool = Pool()
         # Ensure that records are readable
-        with Transaction().set_context(_check_access=False):
-            records = cls.browse(records)
+        # TODO: remove when rules support _check_access
+        records = cls.browse(records)
 
         ctx_pref = {}
         if Transaction().user:
@@ -1605,7 +1605,8 @@ class ModelStorage(Model):
         with Transaction().set_current_transaction(self._transaction), \
                 self._transaction.set_user(self._user), \
                 self._transaction.reset_context(), \
-                self._transaction.set_context(self._context):
+                self._transaction.set_context(
+                    self._context, _check_access=False):
             if (self.id in self._cache and name in self._cache[self.id]
                     and not require_context_field):
                 # Use values from cache
@@ -1759,7 +1760,7 @@ class ModelStorage(Model):
                 with transaction.set_current_transaction(transaction), \
                         transaction.set_user(user), \
                         transaction.reset_context(), \
-                        transaction.set_context(context):
+                        transaction.set_context(context, _check_access=False):
                     if to_create:
                         news = cls.create([save_values[r] for r in to_create])
                         for record, new in zip(to_create, news):

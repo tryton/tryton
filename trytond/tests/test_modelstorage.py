@@ -651,6 +651,49 @@ class EvalEnvironmentTestCase(unittest.TestCase):
 
         self.assertEqual(env.get('_parent_many2one').get('char'), "Test")
 
+    @with_transaction()
+    def test_model_save_skip_check_access(self):
+        "Test model save skips check access"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        IrModel = pool.get('ir.model')
+        IrModelAccess = pool.get('ir.model.access')
+
+        model, = IrModel.search([('model', '=', Model.__name__)])
+        IrModelAccess.create([{
+                    'model': model.id,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    }])
+        with Transaction().set_context(_check_access=True):
+            record = Model(name="Test")
+            record.save()
+
+    @with_transaction()
+    def test_model_getattr_skip_check_access(self):
+        "Test model getattr skips check access"
+        pool = Pool()
+        Model = pool.get('test.modelstorage')
+        IrModel = pool.get('ir.model')
+        IrModelAccess = pool.get('ir.model.access')
+
+        model, = IrModel.search([('model', '=', Model.__name__)])
+        IrModelAccess.create([{
+                    'model': model.id,
+                    'perm_read': False,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    }])
+        record, = Model.create([{'name': "Test"}])
+
+        with Transaction().set_context(_check_access=True):
+            record = Model(record.id)
+
+            self.assertEqual(record.name, "Test")
+
 
 def suite():
     suite_ = unittest.TestSuite()
