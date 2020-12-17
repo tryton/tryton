@@ -87,6 +87,9 @@ class Product(metaclass=PoolMeta):
         quantity = Transaction().context.get('quantity') or 0
         return cls.get_sale_price(products, quantity=quantity)
 
+    def _get_sale_unit_price(self, quantity=0):
+        return self.list_price_used
+
     @classmethod
     def get_sale_price(cls, products, quantity=0):
         '''
@@ -117,7 +120,8 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product.list_price_used
+            prices[product.id] = product._get_sale_unit_price(
+                quantity=quantity)
             if uom and product.default_uom.category == uom.category:
                 prices[product.id] = Uom.compute_price(
                     product.default_uom, prices[product.id], uom)
