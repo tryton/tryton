@@ -8,39 +8,38 @@ from trytond.pool import Pool, PoolMeta
 class Product(metaclass=PoolMeta):
     __name__ = 'product.product'
 
-    @classmethod
-    def get_sale_price(cls, products, quantity=0):
+    def _get_sale_unit_price(self, quantity=0):
         pool = Pool()
         PriceList = pool.get('product.price_list')
         Party = pool.get('party.party')
         Uom = pool.get('product.uom')
         Tax = pool.get('account.tax')
+        User = pool.get('res.user')
         context = Transaction().context
 
-        prices = super(Product, cls).get_sale_price(products,
-            quantity=quantity)
+        unit_price = super()._get_sale_unit_price(quantity=quantity)
+
         if context.get('price_list'):
-            price_list = PriceList(Transaction().context['price_list'])
+            price_list = PriceList(context['price_list'])
+            assert price_list.company == User(Transaction().user).company
             if context.get('customer'):
                 customer = Party(context['customer'])
             else:
                 customer = None
             context_uom = None
             if context.get('uom'):
-                context_uom = Uom(Transaction().context['uom'])
+                context_uom = Uom(context['uom'])
             taxes = None
             if context.get('taxes'):
                 taxes = Tax.browse(context.get('taxes'))
-            for product in products:
-                uom = context_uom or product.sale_uom
-                if uom.category != product.sale_uom.category:
-                    uom = product.sale_uom
-                price = price_list.compute(
-                     customer, product, prices[product.id], quantity, uom)
-                if price_list.tax_included and taxes:
-                    price = Tax.reverse_compute(price, taxes)
-                prices[product.id] = price
-        return prices
+            uom = context_uom or self.sale_uom
+            if uom.category != self.sale_uom.category:
+                uom = self.sale_uom
+            unit_price = price_list.compute(
+                 customer, self, unit_price, quantity, uom)
+            if price_list.tax_included and taxes:
+                unit_price = Tax.reverse_compute(unit_price, taxes)
+        return unit_price
 
 
 class PriceList(metaclass=PoolMeta):
