@@ -6,7 +6,8 @@ import locale
 from zeep.exceptions import Fault
 
 from trytond.i18n import gettext
-from trytond.model import ModelSQL, ModelView, MatchMixin, fields
+from trytond.model import (
+    ModelSQL, ModelView, MatchMixin, sequence_ordered, fields)
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval
 
@@ -14,7 +15,7 @@ from .configuration import get_client, LOGIN_SERVICE
 from .exceptions import DPDError
 
 
-class CredentialDPD(ModelSQL, ModelView, MatchMixin):
+class CredentialDPD(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     'DPD Credential'
     __name__ = 'carrier.credential.dpd'
 
