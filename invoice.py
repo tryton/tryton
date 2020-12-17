@@ -480,9 +480,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
-        if self.party:
-            if self.party.lang:
-                return self.party.lang.code
+        if self.party and self.party.lang:
+            return self.party.lang.code
         return Config.get_language()
 
     @classmethod
@@ -1895,11 +1894,15 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             return self.invoice.state
         return 'draft'
 
-    @fields.depends('party')
+    @fields.depends('invoice', '_parent_invoice.party', 'party')
     def on_change_with_party_lang(self, name=None):
         Config = Pool().get('ir.configuration')
-        if self.party and self.party.lang:
-            return self.party.lang.code
+        if self.invoice and self.invoice.party:
+            party = self.invoice.party
+        else:
+            party = self.party
+        if party and party.lang:
+            return party.lang.code
         return Config.get_language()
 
     @fields.depends('unit')
@@ -2160,9 +2163,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
     def view_attributes(cls):
         return [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
-                'spell', If(Bool(Eval('_parent_invoice')),
-                    Eval('_parent_invoice', {}).get('party_lang'),
-                    Eval('party_lang')))]
+                'spell', Eval('party_lang'))]
 
     @classmethod
     def delete(cls, lines):
