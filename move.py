@@ -59,7 +59,10 @@ class Move(ModelSQL, ModelView):
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company', 'state'],
         select=True)
     journal = fields.Many2One('account.journal', 'Journal', required=True,
-            states=_MOVE_STATES, depends=_MOVE_DEPENDS)
+        states={
+            'readonly': Eval('number') & Eval('journal'),
+            },
+        depends=['number'])
     date = fields.Date('Effective Date', required=True, select=True,
         states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     post_date = fields.Date('Post Date', readonly=True)
