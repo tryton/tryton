@@ -18,6 +18,18 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem name="Carrier" sequence="2" id="menu_carrier" icon="tryton-carrier"/>
 
+        <menuitem
+            name="Configuration"
+            parent="menu_carrier"
+            id="menu_configuration"
+            sequence="0"
+            icon="tryton-settings"
+            active="0"/>
+        <record model="ir.ui.menu-res.group" id="menu_configuration_group_carrier_admin">
+            <field name="menu" ref="menu_configuration"/>
+            <field name="group" ref="group_carrier_admin"/>
+        </record>
+
         <record model="ir.ui.view" id="carrier_view_form">
             <field name="model">carrier</field>
             <field name="type">form</field>
