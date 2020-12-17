@@ -405,6 +405,28 @@ increases if lower case or decreases if upper case:
 
 The `=` key sets the widget value to the current date and time.
 
+TimeDelta Widgets
+^^^^^^^^^^^^^^^^^
+
+This widget represent a duration using different symbol of time separated by
+space:
+
+   - `Y`: for years (default: 365 days)
+   - `M`: for months (default: 30 days)
+   - `w`: for weeks (default: 7 days)
+   - `d`: for days (default: 24 hours)
+   - `h`: for hours (default: 60 minutes)
+   - `m`: for minutes (default: 60 seconds)
+   - `s`: for seconds (default: 1 seconds)
+
+The hours, minutes and seconds are also represented as `H:M:s`.
+
+For example: ``2w 3d 4:30`` which represents: two weeks, three days and four
+and an half hours.
+
+The value of each symbol may be changed by the context of the widget. For
+example, a day could be configured as 8 hours.
+
 Search Widget
 ^^^^^^^^^^^^^
 
