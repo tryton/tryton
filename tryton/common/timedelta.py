@@ -4,7 +4,7 @@
 import datetime
 import gettext
 import locale
-import operator
+from collections import OrderedDict
 
 __all__ = ['format', 'parse']
 
@@ -22,15 +22,15 @@ DEFAULT_CONVERTER['Y'] = DEFAULT_CONVERTER['d'] * 365
 
 
 def _get_separators():
-    return {
-        'Y': _('Y'),
-        'M': _('M'),
-        'w': _('w'),
-        'd': _('d'),
-        'h': _('h'),
-        'm': _('m'),
-        's': _('s'),
-        }
+    return OrderedDict([
+            ('Y', _('Y')),
+            ('M', _('M')),
+            ('w', _('w')),
+            ('d', _('d')),
+            ('h', _('h')),
+            ('m', _('m')),
+            ('s', _('s')),
+            ])
 
 
 def format(value, converter=None):
@@ -46,13 +46,15 @@ def format(value, converter=None):
     if value < 0:
         sign = '-'
     value = abs(value)
-    converter = sorted(list(converter.items()), key=operator.itemgetter(1),
-        reverse=True)
+    converter = [(k, converter.get(k)) for k in _get_separators()]
     values = []
     for k, v in converter:
-        part = value // v
-        value -= part * v
-        values.append(part)
+        if v:
+            part = value // v
+            value -= part * v
+            values.append(part)
+        else:
+            values.append(0)
 
     for (k, _), v in zip(converter[:-3], values):
         if v:

@@ -29,15 +29,11 @@ class TimeDeltaTestCase(TestCase):
             ]
 
     def _time_only_converter(self):
-        thousand_years = 100 * 365 * 24 * 8 * 8
         converter = {}
         converter['s'] = DEFAULT_CONVERTER['s']
         converter['m'] = DEFAULT_CONVERTER['m']
         converter['h'] = DEFAULT_CONVERTER['h']
-        converter['d'] = thousand_years
-        converter['w'] = thousand_years
-        converter['M'] = thousand_years
-        converter['Y'] = thousand_years
+        converter['d'] = 0
         return converter
 
     def _time_only_converter_values(self):
