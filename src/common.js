@@ -331,20 +331,22 @@
             sign = '-';
         }
         value = Math.abs(value);
-        converter = Object.keys(converter).map(function(key) {
-            return [key, converter[key]];
-        });
-        converter.sort(function(first, second) {
-            return second[1] - first[1];
-        });
+        converter = Object.keys(
+            Sao.common.timedelta._get_separator()).map(function(key) {
+                return [key, converter[key]];
+            });
         var values = [];
         var k, v;
         for (var i = 0; i < converter.length; i++) {
             k = converter[i][0];
             v = converter[i][1];
-            var part = Math.floor(value / v);
-            value -= part * v;
-            values.push(part);
+            if (v) {
+                var part = Math.floor(value / v);
+                value -= part * v;
+                values.push(part);
+            } else {
+                values.push(0);
+            }
         }
         for (i = 0; i < converter.length - 3; i++) {
             k = converter[i][0];

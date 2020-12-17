@@ -1306,6 +1306,7 @@
     converter_time_only.s = Sao.common.timedelta.DEFAULT_CONVERTER.s;
     converter_time_only.m = Sao.common.timedelta.DEFAULT_CONVERTER.m;
     converter_time_only.h = Sao.common.timedelta.DEFAULT_CONVERTER.h;
+    converter_time_only.d = 0;
 
     QUnit.test('timedelta.format time only converter', function() {
         time_only_converter_values.forEach(function(test) {
