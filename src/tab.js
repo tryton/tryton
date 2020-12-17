@@ -1189,31 +1189,33 @@
                 return action.type == 'ir.action.report';
             }
             if (!this.buttons.email.hasClass('disabled')) {
-                var record = this.screen.current_record;
-                if (!record || (record.id < 0)) {
-                    return;
-                }
-                var title = this.title.text();
-                this.screen.model.execute(
-                    'view_toolbar_get', [], this.screen.context)
-                    .then(function(toolbars) {
-                        var prints = toolbars.print.filter(is_report);
-                        var emails = {};
-                        for (var i = 0; i < toolbars.emails.length; i++) {
-                            var email = toolbars.emails[i];
-                            emails[email.name] = email.id;
-                        }
-                        record.rec_name().then(function(rec_name) {
-                            function email(template) {
-                                new Sao.Window.Email(
-                                    title + ': ' + rec_name, record,
-                                    prints, template);
+                this.modified_save().then(function() {
+                    var record = this.screen.current_record;
+                    if (!record || (record.id < 0)) {
+                        return;
+                    }
+                    var title = this.title.text();
+                    this.screen.model.execute(
+                        'view_toolbar_get', [], this.screen.context)
+                        .then(function(toolbars) {
+                            var prints = toolbars.print.filter(is_report);
+                            var emails = {};
+                            for (var i = 0; i < toolbars.emails.length; i++) {
+                                var email = toolbars.emails[i];
+                                emails[email.name] = email.id;
                             }
-                            Sao.common.selection(
-                                Sao.i18n.gettext("Template"), emails, true)
-                                .then(email, email);
+                            record.rec_name().then(function(rec_name) {
+                                function email(template) {
+                                    new Sao.Window.Email(
+                                        title + ': ' + rec_name, record,
+                                        prints, template);
+                                }
+                                Sao.common.selection(
+                                    Sao.i18n.gettext("Template"), emails, true)
+                                    .then(email, email);
+                            });
                         });
-                    });
+                }.bind(this));
             }
         },
         refresh_resources: function(reload) {
