@@ -152,8 +152,8 @@ class CreateDPDShipping(Wizard):
 
     def get_print_options(self, shipment):
         return {
-            'printerLanguage': 'PDF',
-            'paperFormat': 'A6',
+            'printerLanguage': shipment.carrier.dpd_printer_language,
+            'paperFormat': shipment.carrier.dpd_paper_format,
             }
 
     def shipping_party(self, party, address):
@@ -216,7 +216,7 @@ class CreateDPDShipping(Wizard):
             'generalShipmentData': {
                 'identificationNumber': shipment.number,
                 'sendingDepot': credential.depot,
-                'product': 'CL',
+                'product': shipment.carrier.dpd_product,
                 'sender': self.shipping_party(
                     shipment.company.party, shipment.warehouse.address),
                 'recipient': self.shipping_party(

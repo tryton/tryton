@@ -8,6 +8,7 @@ from zeep.exceptions import Fault
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, MatchMixin, fields
 from trytond.pool import PoolMeta
+from trytond.pyson import Eval
 
 from .configuration import get_client, LOGIN_SERVICE
 from .exceptions import DPDError
@@ -54,7 +55,54 @@ class CredentialDPD(ModelSQL, ModelView, MatchMixin):
 class Carrier(metaclass=PoolMeta):
     __name__ = 'carrier'
 
+    dpd_product = fields.Selection([
+            (None, ''),
+            ('CL', "DPD CLASSIC"),
+            ('E830', "DPD 8:30"),
+            ('E10', "DPD 10:00"),
+            ('E12', "DPD 12:00"),
+            ('E18', "DPD 18:00"),
+            ('IE2', "DPD EXPRESS"),
+            ('PL', "DPD PARCEL Letter"),
+            ('PL+', "DPD PARCEL Letter Plus"),
+            ('MAIL', "DPD International Mail"),
+            ], "Product", sort=False, translate=False,
+        states={
+            'required': Eval('shipping_service') == 'dpd',
+            'invisible': Eval('shipping_service') != 'dpd',
+            },
+        depends=['shipping_service'])
+    dpd_printer_language = fields.Selection([
+            (None, ''),
+            ('PDF', "PDF"),
+            ('ZPL', "ZPL"),
+            ], "Printer Language", sort=False, translate=False,
+        states={
+            'required': Eval('shipping_service') == 'dpd',
+            'invisible': Eval('shipping_service') != 'dpd',
+            },
+        depends=['shipping_service'])
+    dpd_paper_format = fields.Selection([
+            (None, ''),
+            ('A4', "A4"),
+            ('A6', "A6"),
+            ('A7', "A7"),
+            ], "Paper Format", sort=False, translate=False,
+        states={
+            'required': Eval('shipping_service') == 'dpd',
+            'invisible': Eval('shipping_service') != 'dpd',
+            },
+        depends=['shipping_service'])
+
     @classmethod
     def __setup__(cls):
         super(Carrier, cls).__setup__()
         cls.shipping_service.selection.append(('dpd', 'DPD'))
+
+    @classmethod
+    def view_attributes(cls):
+        return super().view_attributes() + [
+            ("/form/separator[@id='dpd']", 'states', {
+                    'invisible': Eval('shipping_service') != 'dpd',
+                    }),
+            ]

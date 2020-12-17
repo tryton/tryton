@@ -20,3 +20,12 @@ Shipment.
 - *Password*: The Password used to access the DPD API.
 - *Server*: Are those credentials used for accessing the Testing or the
   Production server.
+
+Carrier
+*******
+
+The Carrier model is extended with the following fields:
+
+- *Product*: The DPD product requested.
+- *Printer Language*: The type of file used for the label sent by DPD
+- *Paper Format*: The format of the label sent by DPD

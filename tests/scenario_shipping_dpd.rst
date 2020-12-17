@@ -175,6 +175,9 @@ Create a DPD Carrier and the related credential::
     >>> carrier.party = dpd
     >>> carrier.carrier_product = carrier_product
     >>> carrier.shipping_service = 'dpd'
+    >>> carrier.dpd_product = 'CL'
+    >>> carrier.dpd_printer_language = 'PDF'
+    >>> carrier.dpd_paper_format = 'A6'
     >>> carrier.save()
 
     >>> catchall_selection = CarrierSelection(carrier=carrier)
