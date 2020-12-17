@@ -31,9 +31,13 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_dpd_credential_form"/>
         </record>
 
-        <menuitem 
-            parent="stock_package_shipping.menu_package_shipping_configuration"
-            action="act_dpd_credential_form" id="menu_dpd_credential_form"/>
+        <menuitem
+            parent="carrier.menu_configuration"
+            action="act_dpd_credential_form"
+            id="menu_dpd_credential_form"/>
+        <record model="ir.ui.menu" id="carrier.menu_configuration">
+            <field name="active" eval="True"/>
+        </record>
 
         <record model="ir.model.access" id="access_carrier_credential">
             <field name="model"
