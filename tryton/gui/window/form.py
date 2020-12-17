@@ -449,6 +449,8 @@ class Form(SignalEvent, TabContent):
             return action['type'] == 'ir.action.report'
 
         if self.buttons['email'].props.sensitive:
+            if not self.modified_save():
+                return
             record = self.screen.current_record
             if not record or record.id < 0:
                 return
