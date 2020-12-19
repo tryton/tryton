@@ -336,7 +336,7 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             ('ch_uid', "Swiss Business Identifier"),
             ('ch_vat', "Swiss VAT Number"),
             ('cl_rut', "Chilean National Tax Number"),
-            ('cn_rit', "Chinese Resident Identity Card Number"),
+            ('cn_ric', "Chinese Resident Identity Card Number"),
             ('co_nit', "Colombian Identity Code"),
             ('co_rut', "Colombian Business Tax Number"),
             ('cr_cpf', "Costa Rica Physical Person ID Number"),
@@ -447,6 +447,7 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
         Party = pool.get('party.party')
         cursor = Transaction().connection.cursor()
         party = Party.__table__()
+        table = cls.__table__()
 
         super().__register__(module_name)
 
@@ -473,6 +474,10 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
             cls.save(identifiers)
             party_h.drop_column('vat_number')
             party_h.drop_column('vat_country')
+
+        # Migration from 5.8: Rename cn_rit into cn_ric
+        cursor.execute(*table.update([table.type], ['cn_ric'],
+                where=(table.type == 'cn_rit')))
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):
