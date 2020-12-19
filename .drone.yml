@@ -32,3 +32,5 @@ matrix:
           TOXENV: py37
         - IMAGE: tryton/tryton-test:3.8
           TOXENV: py38
+        - IMAGE: tryton/tryton-test:3.9
+          TOXENV: py39
