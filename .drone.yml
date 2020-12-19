@@ -60,3 +60,9 @@ matrix:
         - IMAGE: python:3.8
           TOXENV: py38
           DATABASE: postgresql
+        - IMAGE: python:3.9
+          TOXENV: py39
+          DATABASE: sqlite
+        - IMAGE: python:3.9
+          TOXENV: py39
+          DATABASE: postgresql
