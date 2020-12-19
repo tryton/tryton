@@ -1,6 +1,9 @@
+* Add support for Python 3.9
+
 Version 5.8.0 - 2020-11-02
 * Bug fixes (see mercurial logs for details)
 * Remove support for Python 3.5
+
 Version 5.6.0 - 2020-05-04
 * Bug fixes (see mercurial logs for details)
 

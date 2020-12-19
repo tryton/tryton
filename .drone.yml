@@ -45,3 +45,5 @@ matrix:
           TOXENV: py37
         - IMAGE: python:3.8
           TOXENV: py38
+        - IMAGE: python:3.9
+          TOXENV: py39
