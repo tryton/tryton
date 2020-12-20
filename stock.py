@@ -21,17 +21,24 @@ from .configuration import get_client, SHIPMENT_SERVICE
 from .exceptions import DPDError
 
 
-class ShipmentOut(metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
+class ShippingDPDMixin:
 
     def validate_packing_dpd(self):
-        warehouse_address = self.warehouse.address
-        if not warehouse_address:
+        warehouse = self.shipping_warehouse
+        if not warehouse.address:
             raise PackingValidationError(
                 gettext('stock_package_shipping_dpd'
                     '.msg_warehouse_address_required',
                     shipment=self.rec_name,
-                    warehouse=self.warehouse.rec_name))
+                    warehouse=warehouse.rec_name))
+
+
+class ShipmentOut(ShippingDPDMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
+
+
+class ShipmentInReturn(ShippingDPDMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in.return'
 
 
 class CreateShipping(metaclass=PoolMeta):
@@ -218,9 +225,10 @@ class CreateDPDShipping(Wizard):
                 'sendingDepot': credential.depot,
                 'product': shipment.carrier.dpd_product,
                 'sender': self.shipping_party(
-                    shipment.company.party, shipment.warehouse.address),
+                    shipment.company.party,
+                    shipment.shipping_warehouse.address),
                 'recipient': self.shipping_party(
-                    shipment.customer, shipment.delivery_address),
+                    shipment.shipping_to, shipment.shipping_to_address),
                 },
             'parcels': [self.get_parcel(p) for p in packages],
             'productAndServiceData': {
