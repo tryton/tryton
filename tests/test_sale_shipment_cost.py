@@ -22,4 +22,9 @@ def suite():
             tearDown=doctest_teardown, encoding='utf-8',
             checker=doctest_checker,
             optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
+    suite.addTests(doctest.DocFileSuite(
+            'scenario_sale_shipment_cost_modify_price.rst',
+            tearDown=doctest_teardown, encoding='utf-8',
+            checker=doctest_checker,
+            optionflags=doctest.REPORT_ONLY_FIRST_FAILURE))
     return suite

@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelView, Workflow, fields
@@ -206,23 +208,23 @@ class Sale(metaclass=PoolMeta):
         return 0
 
     def set_shipment_cost(self):
-        cost_line = None
         cost = self.compute_shipment_cost()
-        if cost:
-            cost_line = self.get_shipment_cost_line(cost)
-
         removed = []
+        unit_price = None
         lines = list(self.lines or [])
         for line in self.lines:
             if line.type == 'line' and line.shipment_cost:
+                if line.shipment_cost == cost:
+                    unit_price = line.unit_price * Decimal(str(line.quantity))
                 lines.remove(line)
                 removed.append(line)
-        if cost_line:
-            lines.append(cost_line)
+        if cost:
+            lines.append(self.get_shipment_cost_line(
+                    cost, unit_price=unit_price))
         self.lines = lines
         return removed
 
-    def get_shipment_cost_line(self, cost):
+    def get_shipment_cost_line(self, cost, unit_price=None):
         pool = Pool()
         SaleLine = pool.get('sale.line')
 
@@ -245,7 +247,10 @@ class Sale(metaclass=PoolMeta):
             shipment_cost=shipment_cost,
             )
         cost_line.on_change_product()
-        cost_line.unit_price = round_price(cost)
+        if unit_price is not None:
+            cost_line.unit_price = round_price(unit_price)
+        else:
+            cost_line.unit_price = round_price(cost)
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 
