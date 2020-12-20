@@ -107,8 +107,7 @@ class Package(metaclass=PoolMeta):
         return super(Package, cls).copy(packages, default=default)
 
 
-class ShipmentOut(metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
+class ShippingMixin:
 
     shipping_description = fields.Char('Shipping Description',
         states={
@@ -118,7 +117,7 @@ class ShipmentOut(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(ShipmentOut, cls).__setup__()
+        super().__setup__()
         # The shipment reference will be set by the shipping service
         cls.reference.readonly = True
         cls._buttons.update({
@@ -133,6 +132,66 @@ class ShipmentOut(metaclass=PoolMeta):
                         'root_packages'],
                     },
                 })
+
+    @classmethod
+    def search_rec_name(cls, name, clause):
+        domain = super().search_rec_name(name, clause)
+        return ['OR', domain,
+            ('reference',) + tuple(clause[1:]),
+            ]
+
+    @classmethod
+    def validate(cls, shipments):
+        super().validate(shipments)
+        for shipment in shipments:
+            if shipment.carrier and shipment.carrier.shipping_service:
+                method_name = ('validate_packing_%s'
+                    % shipment.carrier.shipping_service)
+                validator = getattr(shipment, method_name)
+                validator()
+
+    @classmethod
+    def check_no_carrier(cls, shipments):
+        pool = Pool()
+        Warning = pool.get('res.user.warning')
+        for shipment in shipments:
+            if not shipment.carrier:
+                name = 'shipment_out_no_carrier_%s' % shipment
+                if Warning.check(name):
+                    raise PackWarning(name,
+                        gettext('stock_package_shipping'
+                            '.msg_shipment_without_carrier',
+                            shipment=shipment.rec_name))
+
+    @classmethod
+    @ModelView.button_action(
+        'stock_package_shipping.act_create_shipping_wizard')
+    def create_shipping(cls, shipments):
+        for shipment in shipments:
+            if shipment.state not in shipment.shipping_allowed:
+                raise AccessError(
+                    gettext('stock_package_shipping.msg_shipment_not_packed',
+                        shipment=shipment.rec_name))
+
+    @property
+    def shipping_allowed(self):
+        raise NotImplementedError
+
+    @property
+    def shipping_warehouse(self):
+        raise NotImplementedError
+
+    @property
+    def shipping_to(self):
+        raise NotImplementedError
+
+    @property
+    def shipping_to_address(self):
+        raise NotImplementedError
+
+
+class ShipmentOut(ShippingMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
 
     @classmethod
     def __register__(cls, module):
@@ -152,49 +211,60 @@ class ShipmentOut(metaclass=PoolMeta):
                     & (model_data.fs_id == 'create_shipping_button')))
 
     @classmethod
-    def search_rec_name(cls, name, clause):
-        domain = super(ShipmentOut, cls).search_rec_name(name, clause)
-        return ['OR', domain,
-            ('reference',) + tuple(clause[1:]),
-            ]
-
-    @classmethod
-    def validate(cls, shipments):
-        super(ShipmentOut, cls).validate(shipments)
-        for shipment in shipments:
-            if shipment.carrier and shipment.carrier.shipping_service:
-                method_name = ('validate_packing_%s'
-                    % shipment.carrier.shipping_service)
-                validator = getattr(shipment, method_name)
-                validator()
-
-    @classmethod
     @Workflow.transition('packed')
     def pack(cls, shipments):
-        pool = Pool()
-        Warning = pool.get('res.user.warning')
-        super(ShipmentOut, cls).pack(shipments)
-        for shipment in shipments:
-            if not shipment.carrier:
-                name = 'shipment_out_no_carrier_%s' % shipment.id
-                if Warning.check(name):
-                    raise PackWarning(name,
-                        gettext('stock_package_shipping'
-                            '.msg_shipment_without_carrier',
-                            shipment=shipment.rec_name))
+        super().pack(shipments)
+        cls.check_no_carrier(shipments)
+
+    @property
+    def shipping_allowed(self):
+        return {'packed', 'done'}
+
+    @property
+    def shipping_warehouse(self):
+        return self.warehouse
+
+    @property
+    def shipping_to(self):
+        return self.customer
+
+    @property
+    def shipping_to_address(self):
+        return self.delivery_address
+
+
+class ShipmentInReturn(ShippingMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in.return'
+
+    carrier = fields.Many2One(
+        'carrier', "Carrier",
+        states={
+            'readonly': ~Eval('state').in_(['draft', 'waiting', 'assigned']),
+            },
+        depends=['state'])
 
     @classmethod
-    @ModelView.button_action(
-        'stock_package_shipping.act_create_shipping_wizard')
-    def create_shipping(cls, shipments):
-        for shipment in shipments:
-            if shipment.state not in {'packed', 'done'}:
-                raise AccessError(
-                    gettext('stock_package_shipping.msg_shipment_not_packed',
-                        shipment=shipment.rec_name))
+    @ModelView.button
+    @Workflow.transition('done')
+    def done(cls, shipments):
+        super().done(shipments)
+        cls.check_no_carrier(shipments)
 
+    @property
+    def shipping_allowed(self):
+        return {'assigned', 'done'}
 
-# TODO Implement ShipmentInReturn
+    @property
+    def shipping_warehouse(self):
+        return self.from_location.warehouse
+
+    @property
+    def shipping_to(self):
+        return self.supplier
+
+    @property
+    def shipping_to_address(self):
+        return self.delivery_address
 
 
 class CreateShipping(Wizard):
