@@ -11,6 +11,7 @@ def register():
     Pool.register(
         stock.PackageType,
         stock.ShipmentOut,
+        stock.ShipmentInReturn,
         carrier.CredentialUPS,
         carrier.Carrier,
         module='stock_package_shipping_ups', type_='model')

@@ -60,19 +60,18 @@ class PackageType(metaclass=PoolMeta):
         return None
 
 
-class ShipmentOut(metaclass=PoolMeta):
-    __name__ = 'stock.shipment.out'
+class ShippingUPSMixin:
 
     def validate_packing_ups(self):
-        warehouse_address = self.warehouse.address
-        if not warehouse_address:
+        warehouse = self.shipping_warehouse
+        if not warehouse.address:
             raise PackingValidationError(
                 gettext('stock_package_shipping_ups'
                     '.msg_warehouse_address_required',
                     shipment=self.rec_name,
-                    warehouse=self.warehouse.rec_name))
-        if warehouse_address.country != self.delivery_address.country:
-            for party in {self.customer, self.company.party}:
+                    warehouse=warehouse.rec_name))
+        if warehouse.address.country != self.delivery_address.country:
+            for party in {self.shipping_to, self.company.party}:
                 for mechanism in party.contact_mechanisms:
                     if mechanism.type in ('phone', 'mobile'):
                         break
@@ -90,6 +89,14 @@ class ShipmentOut(metaclass=PoolMeta):
                         gettext('stock_package_shipping_ups'
                             '.msg_shipping_description_required',
                             shipment=self.rec_name))
+
+
+class ShipmentOut(ShippingUPSMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.out'
+
+
+class ShipmentInReturn(ShippingUPSMixin, metaclass=PoolMeta):
+    __name__ = 'stock.shipment.in.return'
 
 
 class CreateShipping(metaclass=PoolMeta):
@@ -294,9 +301,8 @@ class CreateShippingUPS(Wizard):
             }
 
     def get_request(self, shipment, packages, credential):
-        warehouse_address = shipment.warehouse.address
-        shipper = self.get_shipping_party(shipment.company.party,
-            warehouse_address)
+        shipper = self.get_shipping_party(
+            shipment.company.party, shipment.shipping_warehouse.address)
         shipper['ShipperNumber'] = credential.account_number
 
         packages = [self.get_package(credential.use_metric, p)
@@ -309,8 +315,8 @@ class CreateShippingUPS(Wizard):
                 'Shipment': {
                     'Description': (shipment.shipping_description or '')[:50],
                     'Shipper': shipper,
-                    'ShipTo': self.get_shipping_party(shipment.customer,
-                        shipment.delivery_address),
+                    'ShipTo': self.get_shipping_party(
+                        shipment.shipping_to, shipment.shipping_to_address),
                     'PaymentInformation': self.get_payment_information(
                         shipment, credential),
                     'Service': {
