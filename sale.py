@@ -338,8 +338,30 @@ class ReturnSale(metaclass=PoolMeta):
 class Promotion(metaclass=PoolMeta):
     __name__ = 'sale.promotion'
 
+    amount_shipment_cost_included = fields.Boolean(
+        "Amount with Shipment Cost Included",
+        states={
+            'invisible': ~Eval('amount'),
+            },
+        depends=['amount'])
+
+    @classmethod
+    def default_amount_shipment_cost_included(cls):
+        return False
+
     def get_context_formula(self, sale_line):
         context = super(Promotion, self).get_context_formula(sale_line)
         if sale_line and sale_line.shipment_cost:
             context['names']['unit_price'] = sale_line.shipment_cost
         return context
+
+    def get_sale_amount(self, sale):
+        amount = super().get_sale_amount(sale)
+        if not self.amount_shipment_cost_included:
+            amount -= sum(l.amount for l in sale.lines if l.shipment_cost)
+            if not self.untaxed_amount:
+                amount -= sum(
+                    v['amount']
+                    for l in sale.lines if l.shipment_cost
+                    for v in l._get_taxes().values())
+        return amount

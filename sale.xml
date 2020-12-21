@@ -23,6 +23,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="sale.sale_line_view_tree_sequence"/>
             <field name="name">sale_line_tree_sequence</field>
         </record>
-
+    </data>
+    <data depends="sale_promotion">
+        <record model="ir.ui.view" id="promotion_view_form">
+            <field name="model">sale.promotion</field>
+            <field name="inherit" ref="sale_promotion.promotion_view_form"/>
+            <field name="name">promotion_form</field>
+        </record>
     </data>
 </tryton>
