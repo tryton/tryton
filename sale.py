@@ -116,6 +116,25 @@ class Promotion(
             ('company', '=', Eval('company', -1)),
             ],
         depends=['company'])
+
+    amount = fields.Numeric(
+        "Amount", digits=(16, Eval('currency_digits', 2)),
+        depends=['currency_digits'])
+    currency = fields.Many2One(
+        'currency.currency', "Currency",
+        states={
+            'required': Bool(Eval('amount', 0)),
+            },
+        depends=['amount'])
+    currency_digits = fields.Function(
+        fields.Integer("Currency Digits"), 'on_change_with_currency_digits')
+    untaxed_amount = fields.Boolean(
+        "Untaxed Amount",
+        states={
+            'invisible': ~Eval('amount'),
+            },
+        depends=['amount'])
+
     quantity = fields.Float('Quantity', digits=(16, Eval('unit_digits', 2)),
         depends=['unit_digits'])
     unit = fields.Many2One('product.uom', 'Unit',
@@ -138,11 +157,20 @@ class Promotion(
     def default_company():
         return Transaction().context.get('company')
 
+    @classmethod
+    def default_untaxed_amount(cls):
+        return False
+
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
         return 2
+
+    @fields.depends('currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.currency:
+            return self.currency.digits
 
     @classmethod
     def validate(cls, promotions):
@@ -195,24 +223,43 @@ class Promotion(
 
     def get_pattern(self, sale):
         pool = Pool()
+        Currency = pool.get('currency.currency')
         Uom = pool.get('product.uom')
+        Sale = pool.get('sale.sale')
         pattern = {}
-        if not self.unit:
-            return pattern
-        quantity = 0
-        for line in sale.lines:
-            if self.is_valid_sale_line(line):
-                quantity += Uom.compute_qty(line.unit, line.quantity,
-                    self.unit)
-        pattern['quantity'] = quantity
+        if self.currency:
+            amount = self.get_sale_amount(Sale(sale.id))
+            pattern['amount'] = Currency.compute(
+                sale.currency, amount, self.currency)
+        if self.unit:
+            quantity = 0
+            for line in sale.lines:
+                if self.is_valid_sale_line(line):
+                    quantity += Uom.compute_qty(line.unit, line.quantity,
+                        self.unit)
+            pattern['quantity'] = quantity
         return pattern
 
     def match(self, pattern):
+        def sign(amount):
+            return Decimal(1).copy_sign(amount)
         if 'quantity' in pattern:
             pattern = pattern.copy()
-            if self.quantity > pattern.pop('quantity'):
+            if (self.quantity or 0) > pattern.pop('quantity'):
+                return False
+        if 'amount' in pattern:
+            pattern = pattern.copy()
+            amount = pattern.pop('amount')
+            if (sign(self.amount or 0) * sign(amount) >= 0
+                    and abs(self.amount or 0) > abs(amount)):
                 return False
         return super().match(pattern)
+
+    def get_sale_amount(self, sale):
+        if self.untaxed_amount:
+            return sale.untaxed_amount
+        else:
+            return sale.total_amount
 
     def is_valid_sale_line(self, line):
 
