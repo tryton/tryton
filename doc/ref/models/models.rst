@@ -110,8 +110,12 @@ Class attributes:
 .. attribute:: ModelView._buttons
 
     It contains a dictionary with button name as key and the states dictionary
-    for the button. This states dictionary will be used to generate the views
-    containing the button.
+    for the button.
+    The states possible keys are ``invisible``, ``readonly`` and ``icon`` which
+    have a :class:`~trytond.pyson.PYSON` statement as value and ``depends``
+    which has a list of field names on which the button states depend.
+    The keys will be set as default attributes on the buttons for the views
+    that show them.
 
 Static methods:
 
