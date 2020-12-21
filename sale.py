@@ -484,17 +484,8 @@ class Sale(
     @property
     def taxable_lines(self):
         taxable_lines = []
-        # In case we're called from an on_change we have to use some sensible
-        # defaults
         for line in self.lines:
-            if getattr(line, 'type', None) != 'line':
-                continue
-            taxable_lines.append((
-                    getattr(line, 'taxes', None) or [],
-                    getattr(line, 'unit_price', None) or Decimal(0),
-                    getattr(line, 'quantity', None) or 0,
-                    None,
-                    ))
+            taxable_lines.extend(line.taxable_lines)
         return taxable_lines
 
     @fields.depends(methods=['_get_taxes'])
@@ -1028,7 +1019,7 @@ class SaleRecreatedInvoice(ModelSQL):
             ondelete='RESTRICT', select=True, required=True)
 
 
-class SaleLine(sequence_ordered(), ModelSQL, ModelView):
+class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     'Sale Line'
     __name__ = 'sale.line'
     sale = fields.Many2One('sale.sale', 'Sale', ondelete='CASCADE',
@@ -1221,6 +1212,23 @@ class SaleLine(sequence_ordered(), ModelSQL, ModelView):
                     and move.id not in skip_ids:
                 return True
         return False
+
+    @property
+    def taxable_lines(self):
+        # In case we're called from an on_change
+        # we have to use some sensible defaults
+        if getattr(self, 'type', None) == 'line':
+            return [(
+                    getattr(self, 'taxes', None) or [],
+                    getattr(self, 'unit_price', None) or Decimal(0),
+                    getattr(self, 'quantity', None) or 0,
+                    None,
+                    )]
+        else:
+            return []
+
+    def _get_tax_context(self):
+        return self.sale._get_tax_context()
 
     def _get_tax_rule_pattern(self):
         '''
