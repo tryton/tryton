@@ -526,7 +526,10 @@ class Form(SignalEvent, TabContent):
             if value == 'ko':
                 record_id = self.screen.current_record.id
                 if self.sig_reload(test_modified=False):
-                    return record_id == self.screen.current_record.id
+                    if self.screen.current_record:
+                        return record_id == self.screen.current_record.id
+                    elif record_id < 0:
+                        return True
             return False
         return True
 
