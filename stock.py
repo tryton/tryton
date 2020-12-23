@@ -3,8 +3,10 @@
 import datetime
 from functools import wraps
 
+from sql import Column
+
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, fields
+from trytond.model import Model, ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError, RequiredValidationError
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
@@ -55,6 +57,11 @@ class Lot(ModelSQL, ModelView, StockMixin):
         searcher='search_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
         'get_quantity', searcher='search_quantity')
+    default_uom = fields.Function(
+        fields.Many2One('product.uom', "Default UOM"),
+        'on_change_with_default_uom')
+    default_uom_digits = fields.Function(fields.Integer("Default Unit Digits"),
+        'on_change_with_default_uom_digits')
 
     @classmethod
     def __setup__(cls):
@@ -75,6 +82,16 @@ class Lot(ModelSQL, ModelView, StockMixin):
         location_ids = Transaction().context.get('locations')
         return cls._search_quantity(name, location_ids, domain,
             grouping=('product', 'lot'))
+
+    @fields.depends('product')
+    def on_change_with_default_uom(self, name=None):
+        if self.product:
+            return self.product.default_uom.id
+
+    @fields.depends('product')
+    def on_change_with_default_uom_digits(self, name=None):
+        if self.product:
+            return self.product.default_uom.digits
 
     @classmethod
     @check_no_move
@@ -103,6 +120,62 @@ class LotByLocationContext(ModelView):
         if self.forecast_date is None:
             return datetime.date.max
         return self.forecast_date
+
+
+class LotsByLocations(ModelSQL, ModelView):
+    "Lots by Locations"
+    __name__ = 'stock.lots_by_locations'
+
+    lot = fields.Many2One('stock.lot', "Lot")
+    product = fields.Many2One('product.product', "Product")
+    quantity = fields.Function(
+        fields.Float(
+            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits']),
+        'get_lot', searcher='search_lot')
+    forecast_quantity = fields.Function(
+        fields.Float(
+            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits']),
+        'get_lot', searcher='search_lot')
+    default_uom = fields.Function(
+        fields.Many2One('product.uom', "Default UOM"),
+        'get_lot', searcher='search_lot')
+    default_uom_digits = fields.Function(
+        fields.Integer("Default UOM Digits"), 'get_lot')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('lot', 'ASC'))
+        cls._order.insert(1, ('product', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        lot = Lot.__table__()
+        columns = []
+        for fname, field in cls._fields.items():
+            if not hasattr(field, 'set'):
+                if (isinstance(field, fields.Many2One)
+                        and field.get_target() == Lot):
+                    column = Column(lot, 'id')
+                else:
+                    column = Column(lot, fname)
+                columns.append(column.as_(fname))
+        return lot.select(*columns)
+
+    def get_lot(self, name):
+        value = getattr(self.product, name)
+        if isinstance(value, Model):
+            value = value.id
+        return value
+
+    @classmethod
+    def search_lot(cls, name, clause):
+        nested = clause[0].lstrip(name)
+        return [('lot.' + name + nested,) + tuple(clause[1:])]
 
 
 class LotByWarehouseContext(LotByLocationContext):

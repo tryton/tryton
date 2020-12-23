@@ -10,6 +10,7 @@ def register():
     Pool.register(
         stock.Lot,
         stock.LotByLocationContext,
+        stock.LotsByLocations,
         stock.LotByWarehouseContext,
         stock.Location,
         stock.Move,
