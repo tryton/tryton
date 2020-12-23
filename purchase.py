@@ -356,13 +356,6 @@ class Purchase(
                 where=sql_table.state == 'cancel'))
 
     @classmethod
-    def default_payment_term(cls):
-        PaymentTerm = Pool().get('account.invoice.payment_term')
-        payment_terms = PaymentTerm.search(cls.payment_term.domain)
-        if len(payment_terms) == 1:
-            return payment_terms[0].id
-
-    @classmethod
     def default_warehouse(cls):
         Location = Pool().get('stock.location')
         return Location.get_default_warehouse()
@@ -408,38 +401,46 @@ class Purchase(
 
     @fields.depends('party', 'invoice_party', 'payment_term', 'lines')
     def on_change_party(self):
-        pool = Pool()
-        Currency = pool.get('currency.currency')
         cursor = Transaction().connection.cursor()
         table = self.__table__()
         if not self.invoice_party:
             self.invoice_address = None
-        self.payment_term = self.default_payment_term()
+        self.invoice_method = self.default_invoice_method()
         if not self.lines:
             self.currency = self.default_currency()
             self.currency_digits = self.default_currency_digits()
         if self.party:
             if not self.invoice_party:
                 self.invoice_address = self.party.address_get(type='invoice')
-            if self.party.supplier_payment_term:
-                self.payment_term = self.party.supplier_payment_term
 
             if not self.lines:
                 invoice_party = (
                     self.invoice_party.id if self.invoice_party else None)
-                subquery = table.select(table.currency,
+                subquery = table.select(
+                    table.currency,
+                    table.payment_term,
+                    table.invoice_method,
                     where=(table.party == self.party.id)
                     & (table.invoice_party == invoice_party),
                     order_by=table.id,
                     limit=10)
-                cursor.execute(*subquery.select(subquery.currency,
-                        group_by=subquery.currency,
+                cursor.execute(*subquery.select(
+                        subquery.currency,
+                        subquery.payment_term,
+                        subquery.invoice_method,
+                        group_by=[
+                            subquery.currency,
+                            subquery.payment_term,
+                            subquery.invoice_method,
+                            ],
                         order_by=Count(Literal(1)).desc))
                 row = cursor.fetchone()
                 if row:
-                    currency_id, = row
-                    self.currency = Currency(currency_id)
+                    self.currency, self.payment_term, self.invoice_method = row
                     self.currency_digits = self.currency.digits
+
+            if self.party.supplier_payment_term:
+                self.payment_term = self.party.supplier_payment_term
 
     @fields.depends('party', 'invoice_party')
     def on_change_invoice_party(self):
