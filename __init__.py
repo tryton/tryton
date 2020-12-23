@@ -28,6 +28,8 @@ def register():
         party.ContactMechanism,
         party.Party,
         party.PartyPaymentTerm,
+        account.Configuration,
+        account.ConfigurationDefaultPaymentTerm,
         account.InvoiceSequence,
         # Match pattern migration fallbacks to Fiscalyear values so Period
         # must be registered before Fiscalyear

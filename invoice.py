@@ -410,23 +410,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         if self.company:
             return self.company.party.id
 
-    @classmethod
-    def default_payment_term(cls):
-        PaymentTerm = Pool().get('account.invoice.payment_term')
-        payment_terms = PaymentTerm.search(cls.payment_term.domain)
-        if len(payment_terms) == 1:
-            return payment_terms[0].id
-
-    @fields.depends('party', 'type')
-    def on_change_with_payment_term(self):
-        payment_term = None
-        if self.party:
-            if self.type == 'out':
-                payment_term = self.party.customer_payment_term
-            elif self.type == 'in':
-                payment_term = self.party.supplier_payment_term
-        return payment_term.id if payment_term else None
-
     @fields.depends('party', 'type', 'accounting_date', 'invoice_date')
     def on_change_with_account(self):
         account = None
@@ -459,12 +442,16 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             return ['expense']
 
-    @fields.depends('party')
+    @fields.depends('party', 'type')
     def on_change_party(self):
         self.invoice_address = None
         if self.party:
             self.invoice_address = self.party.address_get(type='invoice')
             self.party_tax_identifier = self.party.tax_identifier
+            if self.type == 'out':
+                self.payment_term = self.party.customer_payment_term
+            elif self.type == 'in':
+                self.payment_term = self.party.supplier_payment_term
 
     @fields.depends('currency')
     def on_change_with_currency_digits(self, name=None):

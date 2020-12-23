@@ -45,6 +45,15 @@ class Party(ModelSQL, ModelView):
             return pool.get('party.party.payment_term')
         return super(Party, cls).multivalue_model(field)
 
+    @classmethod
+    def default_customer_payment_term(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        payment_term = config.get_multivalue(
+            'default_customer_payment_term', **pattern)
+        return payment_term.id if payment_term else None
+
 
 class PartyPaymentTerm(ModelSQL, ValueMixin):
     "Party Payment Term"

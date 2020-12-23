@@ -12,6 +12,31 @@ from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
+from trytond.modules.company.model import CompanyValueMixin
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'account.configuration'
+
+    default_customer_payment_term = fields.MultiValue(
+        fields.Many2One(
+            'account.invoice.payment_term', "Default Customer Payment Term"))
+
+    @classmethod
+    def multivalue_model(cls, field):
+        pool = Pool()
+        if field in 'default_customer_payment_term':
+            return pool.get('account.configuration.default_payment_term')
+        return super().multivalue_model(field)
+
+
+class ConfigurationDefaultPaymentTerm(ModelSQL, CompanyValueMixin):
+    "Account Configuration Default Payment Term"
+    __name__ = 'account.configuration.default_payment_term'
+
+    default_customer_payment_term = fields.Many2One(
+        'account.invoice.payment_term', "Default Customer Payment Term")
+
 
 class FiscalYear(metaclass=PoolMeta):
     __name__ = 'account.fiscalyear'
