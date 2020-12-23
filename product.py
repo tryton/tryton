@@ -23,7 +23,7 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 
-from trytond.modules.product import round_price
+from trytond.modules.product import round_price, price_digits
 
 from .exceptions import ProductCostPriceError
 from .move import StockMixin
@@ -111,14 +111,19 @@ class Template(metaclass=PoolMeta):
 
 class Product(StockMixin, object, metaclass=PoolMeta):
     __name__ = "product.product"
-    quantity = fields.Function(fields.Float('Quantity',
-        help="The amount of stock in the location."),
+    quantity = fields.Function(fields.Float(
+            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits'],
+            help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
-    forecast_quantity = fields.Function(fields.Float('Forecast Quantity',
-        help="The amount of stock expected to be in the location."),
+    forecast_quantity = fields.Function(fields.Float(
+            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits'],
+            help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
-    cost_value = fields.Function(fields.Numeric('Cost Value',
-        help="The value of the stock in the location."),
+    cost_value = fields.Function(fields.Numeric(
+            "Cost Value", digits=price_digits,
+            help="The value of the stock in the location."),
         'get_cost_value')
 
     @classmethod
@@ -149,7 +154,7 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             for product in cls.browse(products):
                 # The product may not have a cost price
                 if product.cost_price is not None:
-                    cost_values[product.id] = (
+                    cost_values[product.id] = round_price(
                         Decimal(str(product.quantity)) * product.cost_price)
         return cost_values
 

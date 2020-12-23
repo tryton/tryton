@@ -67,11 +67,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">products_by_locations_context_form</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_products_by_locations">
-            <field name="name">Products</field>
-            <field name="res_model">product.product</field>
-            <field name="context" eval="{'locations': Eval('active_ids')}"
-                pyson="1"/>
+        <record model="ir.ui.view" id="products_by_locations_view_list">
+            <field name="model">stock.products_by_locations</field>
+            <field name="type">tree</field>
+            <field name="name">products_by_locations_list</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_products_by_locations_relate">
+            <field name="name">Products by Locations</field>
+            <field name="res_model">stock.products_by_locations</field>
+            <field name="context" eval="{'locations': Eval('active_ids')}" pyson="1"/>
             <field name="domain"
                 eval="['OR', ('quantity', '!=', 0.0), ('forecast_quantity', '!=', 0.0)]"
                 pyson="1"/>
@@ -80,27 +85,20 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="context_model">stock.products_by_locations.context</field>
         </record>
-        <record model="ir.action.act_window.view" id="act_product_form_view2">
+        <record model="ir.action.act_window.view" id="act_products_by_locations_relate_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="product_view_tree_qty"/>
-            <field name="act_window" ref="act_products_by_locations"/>
+            <field name="view" ref="products_by_locations_view_list"/>
+            <field name="act_window" ref="act_products_by_locations_relate"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_product_form_view">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="product.product_view_form"/>
-            <field name="act_window" ref="act_products_by_locations"/>
-        </record>
-        <record model="ir.action.keyword"
-                id="act_products_by_locations_keyword1">
+        <record model="ir.action.keyword" id="act_products_by_locations_relate_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.location,-1</field>
-            <field name="action" ref="act_products_by_locations"/>
+            <field name="action" ref="act_products_by_locations_relate"/>
         </record>
-        <record model="ir.action.keyword"
-                id="act_products_by_locations_keyword2">
+        <record model="ir.action.keyword" id="act_products_by_locations_relate_keyword2">
             <field name="keyword">form_relate</field>
             <field name="model">stock.location,-1</field>
-            <field name="action" ref="act_products_by_locations"/>
+            <field name="action" ref="act_products_by_locations_relate"/>
         </record>
 
         <record model="ir.model.access" id="access_location">

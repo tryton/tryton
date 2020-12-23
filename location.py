@@ -4,10 +4,12 @@ import datetime
 import operator
 from decimal import Decimal
 
+from sql import Column
+
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin, fields,
-    sequence_ordered, tree)
+    Model, ModelView, ModelSQL, MatchMixin, ValueMixin, DeactivableMixin,
+    fields, sequence_ordered, tree)
 from trytond import backend
 from trytond.cache import Cache
 from trytond.pyson import Eval, If
@@ -708,6 +710,65 @@ class ProductsByLocationsContext(ModelView):
         if self.forecast_date is None:
             return datetime.date.max
         return self.forecast_date
+
+
+class ProductsByLocations(DeactivableMixin, ModelSQL, ModelView):
+    "Products by Locations"
+    __name__ = 'stock.products_by_locations'
+
+    product = fields.Many2One('product.product', "Product")
+    quantity = fields.Function(
+        fields.Float(
+            "Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits']),
+        'get_product', searcher='search_product')
+    forecast_quantity = fields.Function(
+        fields.Float(
+            "Forecast Quantity", digits=(16, Eval('default_uom_digits', 2)),
+            depends=['default_uom_digits']),
+        'get_product', searcher='search_product')
+    default_uom = fields.Function(
+        fields.Many2One('product.uom', "Default UOM"),
+        'get_product', searcher='search_product')
+    default_uom_digits = fields.Function(
+        fields.Integer("Default UOM Digits"), 'get_product')
+    cost_value = fields.Function(
+        fields.Numeric("Cost Value"), 'get_product')
+    consumable = fields.Function(
+        fields.Boolean("Consumable"), 'get_product',
+        searcher='search_product')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._order.insert(0, ('product', 'ASC'))
+
+    @classmethod
+    def table_query(cls):
+        pool = Pool()
+        Product = pool.get('product.product')
+        product = Product.__table__()
+        columns = []
+        for fname, field in cls._fields.items():
+            if not hasattr(field, 'set'):
+                if (isinstance(field, fields.Many2One)
+                        and field.get_target() == Product):
+                    column = Column(product, 'id')
+                else:
+                    column = Column(product, fname)
+                columns.append(column.as_(fname))
+        return product.select(*columns)
+
+    def get_product(self, name):
+        value = getattr(self.product, name)
+        if isinstance(value, Model):
+            value = value.id
+        return value
+
+    @classmethod
+    def search_product(cls, name, clause):
+        nested = clause[0].lstrip(name)
+        return [('product.' + name + nested,) + tuple(clause[1:])]
 
 
 class LocationLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):

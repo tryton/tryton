@@ -3,13 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="product_view_tree_qty">
-            <field name="model">product.product</field>
-            <field name="type">tree</field>
-            <field name="priority" eval="20"/>
-            <field name="name">product_tree_qty</field>
-        </record>
-
         <record model="ir.action.wizard" id="wizard_recompute_cost_price">
             <field name="name">Recompute Cost Price</field>
             <field name="wiz_name">product.recompute_cost_price</field>

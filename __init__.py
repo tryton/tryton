@@ -25,6 +25,7 @@ def register():
         location.Party,
         location.PartyLocation,
         location.ProductsByLocationsContext,
+        location.ProductsByLocations,
         location.LocationLeadTime,
         move.Move,
         shipment.ShipmentIn,
