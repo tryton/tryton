@@ -511,7 +511,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
             key = trans_context['product_template']
         warehouse_id = trans_context.get('warehouse')
 
-        dates = sorted(l.date for l in lines)
+        dates = sorted({l.date for l in lines})
         quantities = {}
         date_start = None
         for date in dates:
@@ -520,6 +520,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 'stock_date_end': date,
                 'forecast': True,
                 }
+            assert date != date_start
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
                     [warehouse_id],
