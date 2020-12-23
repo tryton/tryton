@@ -574,7 +574,13 @@
                         this.id = this.model.execute(
                             'create', [[values]], context,  false)[0];
                     } catch (e) {
-                        return jQuery.Deferred().reject();
+                        if (e.promise) {
+                            return e.then(function() {
+                                return this.save(force_reload);
+                            }.bind(this));
+                        } else {
+                            return jQuery.Deferred().reject();
+                        }
                     }
                 } else {
                     if (!jQuery.isEmptyObject(values)) {
