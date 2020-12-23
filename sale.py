@@ -360,10 +360,12 @@ class Sale(
 
     @classmethod
     def default_payment_term(cls):
-        PaymentTerm = Pool().get('account.invoice.payment_term')
-        payment_terms = PaymentTerm.search(cls.payment_term.domain)
-        if len(payment_terms) == 1:
-            return payment_terms[0].id
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        config = Configuration(1)
+        payment_term = config.get_multivalue(
+            'default_customer_payment_term')
+        return payment_term.id if payment_term else None
 
     @classmethod
     def default_warehouse(cls):
