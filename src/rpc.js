@@ -20,8 +20,8 @@
         var ajax_success = function(data) {
             if (data === null) {
                 Sao.common.warning.run('',
-                        Sao.i18n.gettext('Unable to reach the server'));
-                dfd.reject();
+                        Sao.i18n.gettext('Unable to reach the server'))
+                    .always(dfd.reject);
             } else if (data.error) {
                 var name, msg, description;
                 if (data.error[0] == 'UserWarning') {
@@ -42,19 +42,22 @@
                                     'always': result == 'always'
                                 }], {}]
                             }, session).done(function() {
-                                Sao.rpc(args, session).then(
-                                    dfd.resolve, dfd.reject);
+                                if (async) {
+                                    Sao.rpc(args, session).then(
+                                        dfd.resolve, dfd.reject);
+                                } else {
+                                    dfd.resolve();
+                                }
                             });
                         }, dfd.reject);
-                    return;
                 } else if (data.error[0] == 'UserError') {
                     msg = data.error[1][0];
                     description = data.error[1][1];
                     Sao.common.warning.run(description, msg)
                         .always(dfd.reject);
-                    return;
                 } else if (data.error[0] == 'ConcurrencyException') {
-                    if (args.method.startsWith('model.') &&
+                    if (async &&
+                        args.method.startsWith('model.') &&
                             (args.method.endsWith('.write') ||
                              args.method.endsWith('.delete'))) {
                         var model = args.method.split('.').slice(1, -1).join('.');
@@ -65,16 +68,14 @@
                                 Sao.rpc(args, session).then(
                                     dfd.resolve, dfd.reject);
                             }, dfd.reject);
-                        return;
                     } else {
                         Sao.common.message.run('Concurrency Exception',
                                 'tryton-warning').always(dfd.reject);
-                        return;
                     }
                 } else {
-                    Sao.common.error.run(data.error[0], data.error[1]);
+                    Sao.common.error.run(data.error[0], data.error[1])
+                        .always(dfd.reject);
                 }
-                dfd.reject();
             } else {
                 dfd.resolve(data.result);
                 result = data.result;
@@ -85,12 +86,15 @@
             if (query.status == 401) {
                 //Try to relog
                 Sao.Session.renew(session).then(function() {
-                    Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
+                    if (async) {
+                        Sao.rpc(args, session).then(dfd.resolve, dfd.reject);
+                    } else {
+                        dfd.resolve();
+                    }
                 }, dfd.reject);
-                return;
             } else {
-                Sao.common.error.run(status_, error);
-                dfd.reject();
+                Sao.common.error.run(status_, error)
+                    .always(dfd.reject);
             }
         };
 
@@ -116,6 +120,8 @@
         });
         if (async) {
             return dfd.promise();
+        } else if (result === undefined) {
+            throw dfd;
         } else {
             return result;
         }
