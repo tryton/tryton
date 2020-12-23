@@ -732,9 +732,13 @@
                             case 'ko':
                                 var record_id = this.screen.current_record.id;
                                 return this.reload(false).then(function() {
-                                    if (record_id !=
-                                        this.screen.current_record.id) {
-                                        return jQuery.Deferred().reject();
+                                    if (this.screen.current_record) {
+                                        if (record_id !=
+                                            this.screen.current_record.id) {
+                                            return jQuery.Deferred().reject();
+                                        }
+                                    } else if (record_id < 0) {
+                                        return jQuery.Deferred().resolve();
                                     }
                                 }.bind(this));
                             default:
