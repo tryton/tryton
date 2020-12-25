@@ -19,6 +19,7 @@ from trytond import backend
 from trytond.pyson import Eval, Bool, If, PYSONEncoder
 from trytond.transaction import Transaction
 from trytond.pool import Pool
+from trytond.tools import firstline
 
 from trytond.ir.attachment import AttachmentCopyMixin
 from trytond.ir.note import NoteCopyMixin
@@ -1095,6 +1096,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('purchase_state') != 'draft',
             },
         depends=['purchase_state'])
+    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('purchase.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -1354,6 +1356,10 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     @fields.depends(methods=['on_change_quantity'])
     def on_change_taxes(self):
         self.on_change_quantity()
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @fields.depends('type', 'quantity', 'unit_price', 'unit', 'purchase',
         '_parent_purchase.currency')
