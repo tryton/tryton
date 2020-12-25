@@ -13,7 +13,7 @@ import sql.operators
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
     strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard)
+    escape_wildcard, firstline)
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
@@ -756,6 +756,18 @@ class DomainInversionTestCase(unittest.TestCase):
                 (('a', 1), ('b', 3)),
                 (('a', 1), ('b', None)),
                 ])
+
+    def test_firstline(self):
+        "Test firstline"
+        for text, result in [
+                ("", ""),
+                ("first line\nsecond line", "first line"),
+                ("\nsecond line", "second line"),
+                ("\n\nthird line", "third line"),
+                (" \nsecond line", "second line"),
+                ]:
+            with self.subTest(text=text, result=result):
+                self.assertEqual(firstline(text), result)
 
 
 def suite():

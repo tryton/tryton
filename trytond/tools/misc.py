@@ -250,3 +250,11 @@ def sql_pairing(x, y):
     return Case(
         (x < y, (y * y) + x),
         else_=(x * x) + x + y)
+
+
+def firstline(text):
+    "Returns first non-empty line"
+    try:
+        return next((x for x in text.splitlines() if x.strip()))
+    except StopIteration:
+        return ''

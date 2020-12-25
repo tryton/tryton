@@ -7,17 +7,11 @@ from trytond.config import config
 from trytond.i18n import lazy_gettext
 from trytond.model import ModelView, ModelSQL, fields
 from trytond.pyson import Eval
+from trytond.tools import firstline
 from trytond.transaction import Transaction
 from .resource import ResourceMixin, resource_copy
 
 __all__ = ['AttachmentCopyMixin']
-
-
-def firstline(description):
-    try:
-        return next((x for x in description.splitlines() if x.strip()))
-    except StopIteration:
-        return ''
 
 
 if config.getboolean('attachment', 'filestore', default=True):

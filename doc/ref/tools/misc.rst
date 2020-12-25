@@ -12,3 +12,7 @@ Resolve a dotted name to a global object.
 .. method:: sql_pairing(x, y)
 
 Return an SQL expression that pairs SQL integers x and y.
+
+.. method:: firstline(text)
+
+Return first non-empty line of a text field.
