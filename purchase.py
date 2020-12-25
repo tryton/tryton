@@ -12,7 +12,7 @@ from trytond.model import Workflow, ModelView, fields, ModelSQL, \
 from trytond.model.exceptions import RequiredValidationError, AccessError
 from trytond.wizard import Wizard
 from trytond.transaction import Transaction
-from trytond.tools import grouped_slice
+from trytond.tools import grouped_slice, firstline
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
@@ -460,6 +460,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         fields.Many2One('product.uom.category', "Product UOM Category"),
         'on_change_with_product_uom_category')
     description = fields.Text("Description", states=_states, depends=_depends)
+    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     quantity = fields.Float(
         'Quantity', digits=(16, Eval('unit_digits', 2)), required=True,
         states=_states, depends=['unit_digits'] + _depends)
@@ -534,6 +535,10 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
         if not self.unit or self.unit.category != category:
             self.unit = self.product.purchase_uom
             self.unit_digits = self.product.purchase_uom.digits
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @fields.depends('quantity', 'unit_price', 'unit', 'requisition',
         '_parent_requisition.currency')
