@@ -3,6 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="product" expand="2"/>
+    <field name="summary" expand="1"/>
     <field name="quantity" symbol="uom"/>
     <field name="warehouse" expand="1"/>
     <field name="party" expand="2"/>

@@ -10,7 +10,7 @@ from trytond.model import ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import If, In, Eval, Bool
-from trytond.tools import sortable_values
+from trytond.tools import sortable_values, firstline
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
@@ -32,6 +32,7 @@ class PurchaseRequest(ModelSQL, ModelView):
         select=True, readonly=True, domain=[('purchasable', '=', True)])
     description = fields.Text('Description', readonly=True,
         states=STATES, depends=DEPENDS)
+    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
         depends=DEPENDS)
     quantity = fields.Float('Quantity', required=True, states=STATES,
@@ -280,6 +281,10 @@ class PurchaseRequest(ModelSQL, ModelView):
         if self.product:
             return self.product.default_uom.digits
         return 2
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @classmethod
     def _get_origin(cls):
