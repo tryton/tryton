@@ -18,7 +18,7 @@ from trytond.wizard import Wizard, StateView, StateTransition, StateAction, \
     Button
 from trytond import backend
 from trytond.pyson import If, Eval, Bool
-from trytond.tools import reduce_ids, grouped_slice
+from trytond.tools import reduce_ids, grouped_slice, firstline
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
@@ -1724,6 +1724,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             depends=['type', 'currency_digits']), 'get_amount')
     description = fields.Text('Description', size=None,
         states=_states, depends=_depends)
+    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('account.invoice.line-account.tax',
         'line', 'tax', 'Taxes',
@@ -1891,6 +1892,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if party and party.lang:
             return party.lang.code
         return Config.get_language()
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @fields.depends('unit')
     def on_change_with_unit_digits(self, name=None):
