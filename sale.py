@@ -14,7 +14,7 @@ from trytond.wizard import Wizard, StateAction, StateView, StateTransition, \
     Button
 from trytond.pyson import If, Eval, Bool, PYSONEncoder
 from trytond.transaction import Transaction
-from trytond.tools import sortable_values
+from trytond.tools import sortable_values, firstline
 from trytond.pool import Pool
 
 from trytond.ir.attachment import AttachmentCopyMixin
@@ -1119,6 +1119,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             'readonly': Eval('sale_state') != 'draft',
             },
         depends=['sale_state'])
+    summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
     note = fields.Text('Note')
     taxes = fields.Many2Many('sale.line-account.tax', 'line', 'tax', 'Taxes',
         order=[('tax.sequence', 'ASC'), ('tax.id', 'ASC')],
@@ -1333,6 +1334,10 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
     @fields.depends(methods=['on_change_quantity'])
     def on_change_taxes(self):
         self.on_change_quantity()
+
+    @fields.depends('description')
+    def on_change_with_summary(self, name=None):
+        return firstline(self.description or '')
 
     @fields.depends('type', 'quantity', 'unit_price', 'unit', 'sale',
         '_parent_sale.currency')
