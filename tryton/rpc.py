@@ -108,7 +108,7 @@ def logout():
     _USER = None
 
 
-def _execute(blocking, *args):
+def execute(*args):
     global CONNECTION, _USER
     if CONNECTION is None:
         raise TrytonServerError('403')
@@ -122,14 +122,6 @@ def _execute(blocking, *args):
         raise TrytonServerUnavailable(*exception.args)
     logging.getLogger(__name__).debug(repr(result))
     return result
-
-
-def execute(*args):
-    return _execute(True, *args)
-
-
-def execute_nonblocking(*args):
-    return _execute(False, *args)
 
 
 def clear_cache(prefix=None):
