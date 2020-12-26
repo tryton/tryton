@@ -126,11 +126,9 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def get_origin(cls):
         Model = Pool().get('ir.model')
+        get_name = Model.get_name
         models = cls._get_origin()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [('', '')] + [(m.model, m.name) for m in models]
+        return [('', '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def get_duration(cls, works, name):
