@@ -155,6 +155,17 @@ Run cron::
     >>> bool(braintree_customer.braintree_customer_id)
     True
 
+Update customer::
+
+   >>> contact = customer.contact_mechanisms.new()
+   >>> contact.type = 'email'
+   >>> contact.value = 'customer@example.com'
+   >>> customer.save()
+
+   >>> cus = gateway.customer.find(braintree_customer.braintree_customer_id)
+   >>> cus.email
+   'customer@example.com'
+
 Make payment with customer::
 
     >>> payment, = payment.duplicate()

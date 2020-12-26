@@ -1033,11 +1033,8 @@ class PaymentBraintreeCustomer(
             gateway = customer.braintree_account.gateway()
             try:
                 if not customer.braintree_customer_id:
-                    result = gateway.customer.create({
-                            'email': customer.party.email,
-                            'phone': customer.party.phone,
-                            'payment_method_nonce': customer.braintree_nonce,
-                            })
+                    result = gateway.customer.create(
+                        customer._customer_parameters())
                 else:
                     result = gateway.payment_method.create({
                             'customer_id': customer.braintree_customer_id,
@@ -1065,6 +1062,33 @@ class PaymentBraintreeCustomer(
             customer.save()
             cls._payment_methods_cache.clear()
             Transaction().commit()
+
+    def _customer_parameters(self):
+        params = {
+            'email': self.party.email,
+            'fax': self.party.fax[:255],
+            'last_name': self.party.name[:255],
+            'phone': self.party.phone[:255],
+            'website': self.party.website[:255],
+            }
+        if self.braintree_nonce:
+            params['payment_method_nonce'] = self.braintree_nonce
+        return params
+
+    @classmethod
+    def braintree_update(cls, customers):
+        for customer in customers:
+            gateway = customer.braintree_account.gateway()
+            try:
+                gateway.customer.update(
+                    customer.braintree_customer_id,
+                    customer._customer_parameters())
+            except TooManyRequestsError as e:
+                logger.warning(str(e))
+            except Exception:
+                logger.error(
+                    "Error when updating customer %d", customer.id,
+                    exc_info=True)
 
     @classmethod
     def braintree_delete(cls, customers=None):
