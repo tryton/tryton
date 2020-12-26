@@ -815,11 +815,9 @@ class Message(Workflow, ModelSQL, ModelView):
     @classmethod
     def get_origin(cls):
         IrModel = Pool().get('ir.model')
+        get_name = IrModel.get_name
         models = cls._get_origin()
-        models = IrModel.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     @ModelView.button
