@@ -136,11 +136,9 @@ class Package(tree(), ModelSQL, ModelView):
     def get_shipment(cls):
         pool = Pool()
         Model = pool.get('ir.model')
+        get_name = Model.get_name
         models = cls._get_shipment()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @fields.depends('shipment')
     def on_change_with_state(self, name=None):
