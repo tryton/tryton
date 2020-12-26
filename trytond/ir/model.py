@@ -58,7 +58,7 @@ class Model(ModelSQL, ModelView):
     global_search_p = fields.Boolean('Global Search')
     fields = fields.One2Many('ir.model.field', 'model', 'Fields',
        required=True)
-    _get_name_cache = Cache('ir.model.get_name')
+    _get_names_cache = Cache('ir.model.get_names')
 
     @classmethod
     def __setup__(cls):
@@ -105,6 +105,7 @@ class Model(ModelSQL, ModelView):
                     [ir_model.name, ir_model.info],
                     [model._get_name(), model.__doc__],
                     where=ir_model.id == model_id))
+        cls._get_names_cache.clear()
         return model_id
 
     @classmethod
@@ -144,10 +145,23 @@ class Model(ModelSQL, ModelView):
             if getattr(model, '_history', False)]
 
     @classmethod
+    def get_name_items(cls):
+        "Return a list of couple mapping models to names"
+        items = cls._get_names_cache.get('items')
+        if items is None:
+            models = cls.search([])
+            items = [(m.model, m.name) for m in models]
+            cls._get_names_cache.set('items', items)
+        return items
+
+    @classmethod
     def get_names(cls):
         "Return a dictionary mapping models to names"
-        models = cls.search([])
-        return {m.model: m.name for m in models}
+        dict_ = cls._get_names_cache.get('dict')
+        if dict_ is None:
+            dict_ = dict(cls.get_name_items())
+            cls._get_names_cache.set('dict', dict_)
+        return dict_
 
     @classmethod
     def global_search(cls, text, limit, menu='ir.ui.menu'):
@@ -189,16 +203,7 @@ class Model(ModelSQL, ModelView):
 
     @classmethod
     def get_name(cls, model):
-        name = cls._get_name_cache.get(model)
-        if name is None:
-            models = cls.search([('model', '=', model)], limit=1)
-            if models:
-                model, = models
-                name = model.name
-                cls._get_name_cache.set(model, name)
-            else:
-                name = model
-        return name
+        return cls.get_names().get(model, model)
 
 
 class ModelField(ModelSQL, ModelView):

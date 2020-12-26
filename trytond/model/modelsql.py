@@ -1224,12 +1224,7 @@ class ModelSQL(ModelStorage):
         if wrong_ids:
             model = cls.__name__
             if Model:
-                models = Model.search([
-                        ('model', '=', cls.__name__),
-                        ], limit=1)
-                if models:
-                    model, = models
-                    model = model.name
+                model = Model.get_name(cls.__name__)
             ids = ', '.join(map(str, ids[:5]))
             if len(wrong_ids) > 5:
                 ids += '...'

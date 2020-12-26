@@ -187,7 +187,7 @@ class ActionKeyword(ModelSQL, ModelView):
     def models_get():
         pool = Pool()
         Model = pool.get('ir.model')
-        return [(None, '')] + [(m.model, m.name) for m in Model.search([])]
+        return [(None, '')] + Model.get_name_items()
 
     @classmethod
     def delete(cls, keywords):

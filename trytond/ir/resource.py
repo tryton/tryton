@@ -25,9 +25,9 @@ class ResourceAccessMixin(ModelStorage):
         pool = Pool()
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
-        models = Model.search([])
-        access = ModelAccess.get_access([m.model for m in models])
-        return [(m.model, m.name) for m in models if access[m.model]['read']]
+        models = Model.get_name_items()
+        access = ModelAccess.get_access([m for m, _ in models])
+        return [(m, n) for m, n in models if access[m]['read']]
 
     @classmethod
     def check_access(cls, ids, mode='read'):
@@ -113,11 +113,7 @@ class ResourceMixin(ResourceAccessMixin, ModelStorage, ModelView):
         resources = []
         if isinstance(self.resource, ResourceCopyMixin):
             models = self.resource.get_resources_to_copy(self.__name__)
-            if models:
-                models = Model.search([
-                        ('model', 'in', models),
-                        ])
-                resources.extend((m.model, m.name) for m in models)
+            resources.extend((m, Model.get_name(m)) for m in models)
         return resources
 
     @fields.depends(methods=['get_copy_to_resources'])
