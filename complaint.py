@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 
 from collections import defaultdict
+from decimal import Decimal
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
@@ -397,6 +398,16 @@ class Action(ModelSQL, ModelView):
         states=_line_states, depends=_line_depends,
         help='Leave empty for the same price.')
 
+    amount = fields.Function(fields.Numeric(
+            "Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'on_change_with_amount')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
+    currency_digits = fields.Function(fields.Integer("Currency Digits"),
+        'on_change_with_currency_digits')
+
     result = fields.Reference('Result', selection='get_result', readonly=True)
 
     complaint_state = fields.Function(
@@ -418,6 +429,63 @@ class Action(ModelSQL, ModelView):
                 and self.complaint.origin_model in {
                     'sale.line', 'account.invoice.line'}):
             return self.complaint.origin.unit.digits
+
+    @fields.depends(
+        'quantity', 'unit_price', 'currency', 'sale_lines', 'invoice_lines',
+        'complaint', '_parent_complaint.origin_model',
+        '_parent_complaint.origin')
+    def on_change_with_amount(self, name=None):
+        if self.complaint:
+            if self.complaint.origin_model in {
+                    'sale.line', 'account.invoice.line'}:
+                if self.quantity is not None:
+                    quantity = self.quantity
+                else:
+                    quantity = self.complaint.origin.quantity
+                if self.unit_price is not None:
+                    unit_price = self.unit_price
+                else:
+                    unit_price = self.complaint.origin.unit_price
+                amount = Decimal(str(quantity)) * unit_price
+                if self.currency:
+                    amount = self.currency.round(amount)
+                return amount
+            elif self.complaint.origin_model == 'sale.sale':
+                if not self.sale_lines:
+                    if self.complaint and self.complaint.origin:
+                        return self.complaint.origin.untaxed_amount
+                else:
+                    return sum(
+                        getattr(l, 'amount', None) or Decimal(0)
+                        for l in self.sale_lines)
+            elif self.complaint.origin_model == 'account.invoice':
+                if not self.invoice_lines:
+                    if self.complaint and self.complaint.origin:
+                        return self.complaint.origin.untaxed_amount
+                else:
+                    return sum(
+                        getattr(l, 'amount', None) or Decimal(0)
+                        for l in self.invoice_lines)
+
+    @fields.depends(
+        'complaint',
+        '_parent_complaint.origin_model', '_parent_complaint.origin')
+    def on_change_with_currency(self, name=None):
+        if (self.complaint
+                and self.complaint.origin_model in {
+                    'sale.sale', 'sale.line',
+                    'account.invoice', 'account.invoice.line'}):
+            return self.complaint.origin.currency.id
+
+    @fields.depends(
+        'complaint',
+        '_parent_complaint.origin_model', '_parent_complaint.origin')
+    def on_change_with_currency_digits(self, name=None):
+        if (self.complaint
+                and self.complaint.origin_model in {
+                    'sale.sale', 'sale.line',
+                    'account.invoice', 'account.invoice.line'}):
+            return self.complaint.origin.currency.digits
 
     @classmethod
     def get_complaint_states(cls):
@@ -459,12 +527,10 @@ class Action(ModelSQL, ModelView):
                 sale = self.complaint.origin
                 if self.sale_lines:
                     sale_lines = [l.line for l in self.sale_lines]
-                    line2qty = {l.line.id: l.quantity
-                        if l.quantity is not None else l.line.quantity
-                        for l in self.sale_lines}
-                    line2price = {l.line.id: l.unit_price
-                        if l.unit_price is not None else l.line.unit_price
-                        for l in self.sale_lines}
+                    line2qty = {
+                        l.line.id: l.get_quantity() for l in self.sale_lines}
+                    line2price = {
+                        l.line.id: l.get_unit_price() for l in self.sale_lines}
                     default['quantity'] = lambda o: line2qty.get(o['id'])
                     default['unit_price'] = lambda o: line2price.get(o['id'])
                 else:
@@ -569,6 +635,16 @@ class _Action_Line:
         "Unit Price", digits=price_digits, states=_states, depends=_depends,
         help='Leave empty for the same price.')
 
+    amount = fields.Function(fields.Numeric(
+            "Amount", digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'on_change_with_amount')
+    currency = fields.Function(fields.Many2One(
+            'currency.currency', "Currency"),
+        'on_change_with_currency')
+    currency_digits = fields.Function(fields.Integer("Currency Digits"),
+        'on_change_with_currency_digits')
+
     complaint_state = fields.Function(
         fields.Selection('get_complaint_states', "Complaint State"),
         'on_change_with_complaint_state')
@@ -581,6 +657,31 @@ class _Action_Line:
 
     def on_change_with_unit_digits(self, name=None):
         raise NotImplementedError
+
+    @fields.depends('currency', methods=['get_quantity', 'get_unit_price'])
+    def on_change_with_amount(self, name=None):
+        quantity = self.get_quantity() or 0
+        unit_price = self.get_unit_price() or Decimal(0)
+        amount = Decimal(str(quantity)) * unit_price
+        if self.currency:
+            amount = self.currency.round(amount)
+        return amount
+
+    def get_quantity(self):
+        raise NotImplementedError
+
+    def get_unit_price(self):
+        raise NotImplementedError
+
+    @fields.depends('action', '_parent_action.currency')
+    def on_change_with_currency(self, name=None):
+        if self.action and self.action.currency:
+            return self.action.currency.id
+
+    @fields.depends('action', '_parent_action.currency')
+    def on_change_with_currency_digits(self, name=None):
+        if self.action and self.action.currency:
+            return self.action.currency.digits
 
     @classmethod
     def get_complaint_states(cls):
@@ -624,6 +725,20 @@ class Action_SaleLine(_Action_Line, ModelView, ModelSQL):
         if self.line:
             return self.line.unit.digits
 
+    @fields.depends('quantity', 'line')
+    def get_quantity(self):
+        if self.quantity is not None:
+            return self.quantity
+        elif self.line:
+            return self.line.quantity
+
+    @fields.depends('unit_price', 'line')
+    def get_unit_price(self):
+        if self.unit_price is not None:
+            return self.unit_price
+        elif self.line:
+            return self.line.unit_price
+
 
 class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
     'Customer Complaint Action - Invoice Line'
@@ -647,3 +762,17 @@ class Action_InvoiceLine(_Action_Line, ModelView, ModelSQL):
     def on_change_with_unit_digits(self, name=None):
         if self.line:
             return self.line.unit.digits
+
+    @fields.depends('quantity', 'line')
+    def get_quantity(self):
+        if self.quantity is not None:
+            return self.quantity
+        elif self.line:
+            return self.line.quantity
+
+    @fields.depends('unit_price', 'line')
+    def get_unit_price(self):
+        if self.unit_price is not None:
+            return self.unit_price
+        elif self.line:
+            return self.line.unit_price

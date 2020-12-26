@@ -106,6 +106,8 @@ Sale 5 products::
     >>> sale_line.quantity = 2
     >>> sale.click('quote')
     >>> sale.click('confirm')
+    >>> sale.untaxed_amount
+    Decimal('50.00')
 
 Post the invoice::
 
@@ -121,6 +123,8 @@ Create a complaint to return the sale::
     >>> complaint.origin = sale
     >>> action = complaint.actions.new()
     >>> action.action = 'sale_return'
+    >>> action.amount
+    Decimal('50.00')
     >>> complaint.save()
     >>> complaint.state
     'draft'
@@ -152,6 +156,8 @@ Create a complaint to return partially the sale::
     >>> sale_line.unit_price = Decimal('5')
     >>> sale_line = action.sale_lines.new()
     >>> sale_line.line = sale.lines[1]
+    >>> action.amount
+    Decimal('25.00')
     >>> complaint.save()
     >>> complaint.state
     'draft'
@@ -179,6 +185,8 @@ Create a complaint to return a sale line::
     >>> action = complaint.actions.new()
     >>> action.action = 'sale_return'
     >>> action.quantity = 1
+    >>> action.amount
+    Decimal('10.00')
     >>> complaint.click('wait')
     >>> complaint.click('approve')
     >>> complaint.state
@@ -197,6 +205,8 @@ Create a complaint to credit the invoice::
     >>> complaint.origin = invoice
     >>> action = complaint.actions.new()
     >>> action.action = 'credit_note'
+    >>> action.amount
+    Decimal('50.00')
     >>> complaint.click('wait')
     >>> complaint.click('approve')
     >>> complaint.state
@@ -225,6 +235,8 @@ Create a complaint to credit partially the invoice::
     >>> invoice_line = action.invoice_lines.new()
     >>> invoice_line.line = invoice.lines[1]
     >>> invoice_line.quantity = 1
+    >>> action.amount
+    Decimal('15.00')
     >>> complaint.click('wait')
     >>> complaint.click('approve')
     >>> complaint.state
@@ -249,6 +261,8 @@ Create a complaint to credit a invoice line::
     >>> action = complaint.actions.new()
     >>> action.action = 'credit_note'
     >>> action.quantity = 1
+    >>> action.amount
+    Decimal('10.00')
     >>> complaint.click('wait')
     >>> complaint.click('approve')
     >>> complaint.state
