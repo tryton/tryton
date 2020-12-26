@@ -32,11 +32,9 @@ class Location(metaclass=PoolMeta):
     def get_assigned_by(cls):
         pool = Pool()
         IrModel = pool.get('ir.model')
+        get_name = IrModel.get_name
         models = cls._get_assigned_by()
-        models = IrModel.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def deactivate_empty(cls, locations=None):
