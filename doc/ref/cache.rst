@@ -51,7 +51,7 @@ Apply cache changes from transaction.
 
 Remove cache changes from transaction.
 
-.. staticmethod:: drop(dbname)
+.. classmethod:: drop(dbname)
 
 Drops all the caches for database ``dbname``
 
