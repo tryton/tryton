@@ -295,10 +295,9 @@ class PurchaseRequest(ModelSQL, ModelView):
     def get_origin(cls):
         pool = Pool()
         IrModel = pool.get('ir.model')
-        models = IrModel.search([
-                ('model', 'in', list(cls._get_origin())),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        get_name = IrModel.get_name
+        models = cls._get_origin()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def view_attributes(cls):
