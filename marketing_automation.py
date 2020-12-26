@@ -111,13 +111,10 @@ class Scenario(Workflow, ModelSQL, ModelView):
     def get_models(cls):
         pool = Pool()
         Model = pool.get('ir.model')
-
-        models = [name for name, klass in pool.iterobject()
-            if issubclass(klass, MarketingAutomationMixin)]
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [(m.model, m.name) for m in models]
+        get_name = Model.get_name
+        models = (name for name, klass in pool.iterobject()
+            if issubclass(klass, MarketingAutomationMixin))
+        return [(m, get_name(m)) for m in models]
 
     @classmethod
     def get_record_count(cls, scenarios, names):
@@ -671,10 +668,8 @@ class Record(ModelSQL, ModelView):
         if not self.scenario:
             return Scenario.get_models()
 
-        model, = Model.search([
-                ('model', '=', self.scenario.model),
-                ])
-        return [(model.model, model.name)]
+        model = self.scenario.model
+        return [(model, Model.get_name(model))]
 
     def eval(self, expression):
         env = {}
