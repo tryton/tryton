@@ -523,12 +523,10 @@ class ShopVSFIdentifier(ModelSQL):
     def get_records(cls):
         pool = Pool()
         Model = pool.get('ir.model')
-        models = [klass.__name__ for _, klass in pool.iterobject()
-            if issubclass(klass, ShopVSFIdentifierMixin)]
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [(m.model, m.name) for m in models]
+        get_name = Model.get_name
+        models = (klass.__name__ for _, klass in pool.iterobject()
+            if issubclass(klass, ShopVSFIdentifierMixin))
+        return [(m, get_name(m)) for m in models]
 
 
 class ShopVSFIdentifierMixin:
