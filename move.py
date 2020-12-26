@@ -490,11 +490,9 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def get_shipment(cls):
         IrModel = Pool().get('ir.model')
+        get_name = IrModel.get_name
         models = cls._get_shipment()
-        models = IrModel.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def _get_origin(cls):
@@ -504,11 +502,9 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def get_origin(cls):
         IrModel = Pool().get('ir.model')
+        get_name = IrModel.get_name
         models = cls._get_origin()
-        models = IrModel.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @property
     def origin_name(self):
