@@ -507,11 +507,9 @@ class Action(ModelSQL, ModelView):
     def get_result(cls):
         pool = Pool()
         Model = pool.get('ir.model')
+        get_name = Model.get_name
         models = cls._get_result()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     def do(self):
         return getattr(self, 'do_%s' % self.action)()
