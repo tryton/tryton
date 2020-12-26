@@ -213,11 +213,9 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def get_origin(cls):
         Model = Pool().get('ir.model')
+        get_name = Model.get_name
         models = cls._get_origin()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [('', '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def validate(cls, moves):
@@ -825,11 +823,9 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def get_origin(cls):
         Model = Pool().get('ir.model')
+        get_name = Model.get_name
         models = cls._get_origin()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [('', '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @classmethod
     def get_move_origin(cls):
