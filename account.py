@@ -430,11 +430,9 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     @classmethod
     def get_origin(cls):
         Model = Pool().get('ir.model')
+        get_name = Model.get_name
         models = cls._get_origin()
-        models = Model.search([
-                ('model', 'in', models),
-                ])
-        return [(None, '')] + [(m.model, m.name) for m in models]
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     def on_change_with_company(self, name=None):
         return None
