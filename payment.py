@@ -1522,9 +1522,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
             try:
                 cu = stripe.Customer.create(
                     api_key=customer.stripe_account.secret_key,
-                    description=customer.rec_name,
-                    email=customer.party.email,
-                    source=customer.stripe_token)
+                    source=customer.stripe_token,
+                    **customer._customer_parameters())
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:
                 logger.warning(str(e))
@@ -1548,6 +1547,36 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 # TODO add card
             customer.save()
             Transaction().commit()
+
+    def _customer_parameters(self):
+        locales = [pl.lang.code for pl in self.party.langs if pl.lang]
+        return {
+            'email': self.party.email,
+            'name': self.party.name,
+            'phone': self.party.phone,
+            'preferred_locales': locales,
+            }
+
+    @classmethod
+    def stripe_update(cls, customers):
+        for customer in customers:
+            try:
+                stripe.Customer.modify(
+                    customer.stripe_customer_id,
+                    api_key=customer.stripe_account.secret_key,
+                    **customer._customer_parameters()
+                    )
+            except (stripe.error.RateLimitError,
+                    stripe.error.APIConnectionError) as e:
+                logger.warning(str(e))
+            except Exception as e:
+                if (isinstance(e, stripe.error.StripeError)
+                        and e.code in RETRY_CODES):
+                    logger.warning(str(e))
+                else:
+                    logger.error(
+                        "Error when updating customer %d", customer.id,
+                        exc_info=True)
 
     @classmethod
     def stripe_delete(cls, customers=None):
@@ -1731,9 +1760,8 @@ class Customer(CheckoutMixin, DeactivableMixin, ModelSQL, ModelView):
                 else:
                     cu = stripe.Customer.create(
                         api_key=customer.stripe_account.secret_key,
-                        description=customer.rec_name,
-                        email=customer.party.email,
-                        payment_method=setup_intent.payment_method)
+                        payment_method=setup_intent.payment_method,
+                        **customer._customer_parameters())
                     customer.stripe_customer_id = cu.id
             except (stripe.error.RateLimitError,
                     stripe.error.APIConnectionError) as e:

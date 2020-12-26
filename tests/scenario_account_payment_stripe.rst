@@ -73,7 +73,9 @@ Create payment journal::
 Create party::
 
     >>> Party = Model.get('party.party')
+    >>> Lang = Model.get('ir.lang')
     >>> customer = Party(name='Customer')
+    >>> customer.lang, = Lang.find([('code', '=', 'en')])
     >>> customer.save()
 
 Create approved payment::
@@ -194,6 +196,19 @@ Run cron::
     >>> stripe_customer.reload()
     >>> bool(stripe_customer.stripe_customer_id)
     True
+
+Update customer::
+
+    >>> contact = customer.contact_mechanisms.new()
+    >>> contact.type = 'email'
+    >>> contact.value = 'customer@example.com'
+    >>> customer.save()
+
+    >>> cus = stripe.Customer.retrieve(stripe_customer.stripe_customer_id)
+    >>> cus.email
+    'customer@example.com'
+    >>> cus.preferred_locales
+    ['en']
 
 Make payment with customer::
 
