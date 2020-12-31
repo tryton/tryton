@@ -46,7 +46,7 @@ class Line(metaclass=PoolMeta):
         cls.product.context['price_list'] = Eval(
             '_parent_sale', {}).get('price_list')
 
-    @fields.depends('sale', '_parent_sale.price_list', '_parent_sale.company')
+    @fields.depends('sale', '_parent_sale.price_list')
     def _get_context_sale_price(self):
         context = super()._get_context_sale_price()
         if self.sale:
