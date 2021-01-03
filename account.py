@@ -67,7 +67,10 @@ class StatementImport(metaclass=PoolMeta):
                     })
         if not isinstance(ofx_account.statement, ofxparse.Statement):
             self.raise_user_error('ofx_not_statement')
-        statement.date = ofx_account.statement.balance_date.date()
+        try:
+            statement.date = ofx_account.statement.balance_date.date()
+        except AttributeError:
+            pass
         total_amount = sum(
             t.amount for t in ofx_account.statement.transactions)
         statement.total_amount = total_amount
