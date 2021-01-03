@@ -206,7 +206,7 @@ class Period(Workflow, ModelSQL, ModelView):
     def get_last_period_date(cls, company):
         key = int(company)
         result = cls._last_period_cache.get(key, -1)
-        if result is -1:
+        if result == -1:
             records = cls.search([
                     ('company', '=', company),
                     ('state', '=', 'closed'),
