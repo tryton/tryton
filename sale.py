@@ -102,6 +102,7 @@ class Sale(metaclass=PoolMeta):
         config = Config(1)
         return config.sale_shipment_cost_method
 
+    @fields.depends('warehouse', 'shipment_address')
     def _get_carrier_selection_pattern(self):
         pattern = {}
         if (self.warehouse
@@ -116,7 +117,7 @@ class Sale(metaclass=PoolMeta):
             pattern['to_country'] = None
         return pattern
 
-    @fields.depends('warehouse', 'shipment_address')
+    @fields.depends(methods=['_get_carrier_selection_pattern'])
     def on_change_with_available_carriers(self, name=None):
         pool = Pool()
         CarrierSelection = pool.get('carrier.selection')
