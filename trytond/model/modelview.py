@@ -316,6 +316,9 @@ class ModelView(Model):
                     # There is perhaps a new module in the directory
                     ModelView._reset_modules_list()
                     raise_p = True
+            if not result['arch']:
+                raise ValueError("Missing view architecture for %s" % ((
+                            cls.__name__, view_id, view_type),))
             parser = etree.XMLParser(remove_comments=True)
             tree = etree.fromstring(result['arch'], parser=parser)
             for view in views:
