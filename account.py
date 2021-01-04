@@ -1826,6 +1826,9 @@ class GeneralLedgerAccountContext(ModelView):
         depends=['from_date'])
     company = fields.Many2One('company.company', 'Company', required=True)
     posted = fields.Boolean('Posted Move', help="Only included posted moves.")
+    journal = fields.Many2One(
+        'account.journal', "Journal",
+        help="Only included moves from the journal.")
 
     @classmethod
     def default_fiscalyear(cls):
@@ -1851,6 +1854,10 @@ class GeneralLedgerAccountContext(ModelView):
     @classmethod
     def default_posted(cls):
         return Transaction().context.get('posted', False)
+
+    @classmethod
+    def default_journal(cls):
+        return Transaction().context.get('journal')
 
     @classmethod
     def default_from_date(cls):

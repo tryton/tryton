@@ -298,7 +298,7 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             Period.close(periods)
 
             with Transaction().set_context(fiscalyear=fiscalyear.id,
-                    date=None, cumulate=True):
+                    date=None, cumulate=True, journal=None):
                 accounts = Account.search([
                         ('company', '=', fiscalyear.company.id),
                         ])

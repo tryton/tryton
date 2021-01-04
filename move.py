@@ -986,6 +986,9 @@ class Line(ModelSQL, ModelView):
         if context.get('posted'):
             where &= move.state == 'posted'
 
+        if context.get('journal'):
+            where &= move.journal == context['journal']
+
         date = context.get('date')
         from_date, to_date = context.get('from_date'), context.get('to_date')
         fiscalyear_id = context.get('fiscalyear')
