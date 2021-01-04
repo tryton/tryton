@@ -1947,6 +1947,8 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     origin = fields.Reference('Origin', selection='get_origin')
     description = fields.Char('Description')
     move_description = fields.Char('Move Description')
+    reconciliation = fields.Many2One(
+        'account.move.reconciliation', "Reconciliation")
     state = fields.Selection([
         ('draft', 'Draft'),
         ('posted', 'Posted'),

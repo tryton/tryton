@@ -9,6 +9,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="description" expand="1"/>
     <field name="move_description" expand="1"/>
     <field name="origin"/>
+    <field name="reconciliation"/>
     <field name="state"/>
     <field name="debit" sum="Debit" symbol="currency"/>
     <field name="credit" sum="Credit" symbol="currency"/>

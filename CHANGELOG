@@ -1,3 +1,4 @@
+* Add reconciliation to general ledger line
 * Make move's journal read-only once numbered
 * Add more term units to aged balance
 
