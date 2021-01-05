@@ -28,7 +28,6 @@ class VSFElasticsearch(Elasticsearch):
 
     @migrate_doc_type
     def index(self, **kwargs):
-        print(kwargs)
         return super().index(**kwargs)
 
     @migrate_doc_type
