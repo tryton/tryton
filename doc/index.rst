@@ -1,8 +1,13 @@
+######################
 Account Product Module
 ######################
 
-The account product module adds accounting on product and category.
+The *Account Product Module* allows products to be associated with accounting
+properties such as taxes and expense or revenue accounts.
+It allows these properties to be easily managed using accounting categories.
 
-.. note::
-    If the analytic account module is activated, it also adds the product and
-    category as criteria for the analytic rule engine.
+.. toctree::
+   :maxdepth: 2
+
+   usage
+   design
