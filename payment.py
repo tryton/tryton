@@ -171,8 +171,7 @@ class Payment(metaclass=PoolMeta):
                     if l.account == payment.line.account] + [payment.line]
                 if not sum(l.debit - l.credit for l in lines):
                     to_reconcile.append(lines)
-        for lines in to_reconcile:
-            Line.reconcile(lines)
+        Line.reconcile(*to_reconcile)
 
     @property
     def clearing_account(self):
