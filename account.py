@@ -282,6 +282,29 @@ class MoveLine(metaclass=PoolMeta):
         return product
 
 
+def _invoices_to_process(reconciliations):
+    pool = Pool()
+    Reconciliation = pool.get('account.move.reconciliation')
+    Invoice = pool.get('account.invoice')
+
+    move_ids = set()
+    others = set()
+    for reconciliation in reconciliations:
+        for line in reconciliation.lines:
+            move_ids.add(line.move.id)
+            others.update(line.reconciliations_delegated)
+
+    invoices = set()
+    for sub_ids in grouped_slice(move_ids):
+        invoices.update(Invoice.search([
+                    ('move', 'in', list(sub_ids)),
+                    ]))
+    if others:
+        invoices.update(_invoices_to_process(Reconciliation.browse(others)))
+
+    return invoices
+
+
 class Reconciliation(metaclass=PoolMeta):
     __name__ = 'account.move.reconciliation'
 
@@ -289,36 +312,16 @@ class Reconciliation(metaclass=PoolMeta):
     def create(cls, vlist):
         Invoice = Pool().get('account.invoice')
         reconciliations = super(Reconciliation, cls).create(vlist)
-
-        def process(reconciliations):
-            move_ids = set()
-            others = set()
-            for reconciliation in reconciliations:
-                for line in reconciliation.lines:
-                    move_ids.add(line.move.id)
-                    others.update(line.reconciliations_delegated)
-            if others:
-                move_ids.update(process(cls.browse(others)))
-            return move_ids
-        move_ids = process(reconciliations)
-        invoices = set()
-        for sub_ids in grouped_slice(move_ids):
-            invoices.update(Invoice.search([
-                        ('move', 'in', list(sub_ids)),
-                        ]))
-        Invoice.process(Invoice.browse(invoices))
+        Invoice.process(list(_invoices_to_process(reconciliations)))
         return reconciliations
 
     @classmethod
     def delete(cls, reconciliations):
         Invoice = Pool().get('account.invoice')
 
-        move_ids = set(l.move.id for r in reconciliations for l in r.lines)
-        invoices = Invoice.search([
-                ('move', 'in', list(move_ids)),
-                ])
+        invoices_to_process = _invoices_to_process(reconciliations)
         super(Reconciliation, cls).delete(reconciliations)
-        Invoice.process(invoices)
+        Invoice.process(list(invoices_to_process))
 
 
 class RenewFiscalYear(metaclass=PoolMeta):

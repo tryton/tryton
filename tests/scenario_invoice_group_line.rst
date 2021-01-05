@@ -124,3 +124,16 @@ Receive remaining line::
     >>> supplier_invoice.reload()
     >>> supplier_invoice.state
     'paid'
+
+Remove the created reconciliation::
+
+    >>> Reconciliation = Model.get('account.move.reconciliation')
+    >>> reconciliation, = Reconciliation.find([('lines', '=', lines[0].id)])
+    >>> Reconciliation.delete([reconciliation])
+
+    >>> invoice.reload()
+    >>> invoice.state
+    'posted'
+    >>> supplier_invoice.reload()
+    >>> supplier_invoice.state
+    'posted'
