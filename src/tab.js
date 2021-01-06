@@ -1464,6 +1464,8 @@
             wizard.tab = this;
             this.create_tabcontent();
             this.title.text(this.name_el.text());
+            this.content.remove();
+            this.content = wizard.form;
             this.el.append(wizard.form);
         },
         create_toolbar: function() {
