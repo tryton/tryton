@@ -98,7 +98,7 @@ class ModelStorage(Model):
     create_uid = fields.Many2One(
         'res.user', lazy_gettext('ir.msg_created_by'), readonly=True)
     create_date = fields.Timestamp(
-        lazy_gettext('ir.msg_created_by'), readonly=True)
+        lazy_gettext('ir.msg_created_at'), readonly=True)
     write_uid = fields.Many2One(
         'res.user', lazy_gettext('ir.msg_edited_by'), readonly=True)
     write_date = fields.Timestamp(
