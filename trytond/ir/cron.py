@@ -99,10 +99,24 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
             + relativedelta(
                 microsecond=0,
                 second=0,
-                minute=self.minute,
-                hour=self.hour,
-                day=self.day,
-                weekday=int(self.weekday.index) if self.weekday else None))
+                minute=(
+                    self.minute
+                    if self.interval_type != 'minutes'
+                    else None),
+                hour=(
+                    self.hour
+                    if self.interval_type not in {'minutes', 'hours'}
+                    else None),
+                day=(
+                    self.day
+                    if self.interval_type not in {
+                        'minutes', 'hours', 'days', 'weeks'}
+                    else None),
+                weekday=(
+                    int(self.weekday.index)
+                    if self.weekday
+                    and self.interval_type not in {'minutes', 'hours', 'days'}
+                    else None)))
 
     @dualmethod
     @ModelView.button
