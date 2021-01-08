@@ -969,8 +969,12 @@ class Move(Workflow, ModelSQL, ModelView):
             except ValueError:
                 pass
             # Try first to pick from source location
-            childs.remove(move.from_location)
-            childs.insert(0, move.from_location)
+            try:
+                childs.remove(move.from_location)
+                childs.insert(0, move.from_location)
+            except ValueError:
+                # from_location may be a view
+                pass
             index = {l.id: i for i, l in enumerate(childs)}
             location_qties = []
             pbl_items = pbl.items()
