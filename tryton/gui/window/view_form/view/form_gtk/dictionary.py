@@ -304,8 +304,10 @@ class DictDateTimeEntry(DictEntry):
         record = self.parent_widget.record
         field = self.parent_widget.field
         if record and field:
-            format_ = field.time_format(record)
-            widget.props.format = format_
+            date_format = field.date_format(record)
+            time_format = field.time_format(record)
+            widget.props.date_format = date_format
+            widget.props.time_format = time_format
         widget.connect('key_press_event', self.parent_widget.send_modified)
         widget.connect('focus-out-event', lambda w, e:
             self.parent_widget._focus_out())
@@ -316,6 +318,15 @@ class DictDateTimeEntry(DictEntry):
 
     def set_value(self, value):
         self.widget.props.value = timezoned_date(value)
+
+    def set_readonly(self, readonly):
+        for child in self.widget.get_children():
+            if isinstance(child, Gtk.Entry):
+                child.set_editable(not readonly)
+                child.set_icon_sensitive(
+                    Gtk.EntryIconPosition.PRIMARY, not readonly)
+            elif isinstance(child, Gtk.ComboBox):
+                child.set_sensitive(not readonly)
 
 
 class DictDateEntry(DictEntry):
@@ -339,6 +350,11 @@ class DictDateEntry(DictEntry):
 
     def set_value(self, value):
         self.widget.props.value = value
+
+    def set_readonly(self, readonly):
+        super().set_readonly(readonly)
+        self.widget.set_icon_sensitive(
+            Gtk.EntryIconPosition.PRIMARY, not readonly)
 
 
 DICT_ENTRIES = {
