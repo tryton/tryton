@@ -45,6 +45,8 @@
     QUnit.test('PYSON Encoder', function() {
         var encoder = new Sao.PYSON.Encoder();
         var none;
+        var decimal = Sao.Decimal(1.1);
+        var pyson_decimal = 1.1;
         var date = Sao.Date(2002, 0, 1);
         var datetime = Sao.DateTime(2002, 0, 1, 12, 30, 0, 0);
         var pyson_date = new Sao.PYSON.Date(2002, 1, 1).pyson();
@@ -61,6 +63,8 @@
         QUnit.strictEqual(encoder.encode(), 'null', "encode()");
         QUnit.strictEqual(encoder.encode(none), 'null', "encode(none)");
         QUnit.strictEqual(encoder.encode(null), 'null', "encode()");
+        QUnit.strictEqual(encoder.encode(decimal),
+            JSON.stringify(pyson_decimal), "encode(decimal)");
         QUnit.strictEqual(encoder.encode(date),
             JSON.stringify(pyson_date), "encode(date)");
         QUnit.strictEqual(encoder.encode(datetime),
