@@ -157,7 +157,7 @@ def _dispatch(request, pool, *args, **kwargs):
                 pool.database_name, user, session, context=context):
             abort(http.client.UNAUTHORIZED)
 
-    log_message = '%s.%s(*%s, **%s) from %s@%s/%s'
+    log_message = '%s.%s(*%s, **%s) from %s@%s%s'
     username = request.authorization.username
     if isinstance(username, bytes):
         username = username.decode('utf-8')
