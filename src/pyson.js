@@ -70,6 +70,8 @@
                             value.seconds(),
                             value.milliseconds() * 1000).pyson();
                     }
+                } else if (value instanceof Sao.Decimal) {
+                    value = value.valueOf();
                 } else if ((value instanceof Object) &&
                     !(value instanceof Sao.PYSON.PYSON)) {
                     value = jQuery.extend({}, value);
