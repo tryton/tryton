@@ -10,6 +10,9 @@ from trytond.transaction import Transaction
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
     numbered_at = fields.Timestamp("Numbered At")
+    history_datetime = fields.Function(
+        fields.Timestamp("History DateTime"),
+        'get_history_datetime')
 
     @classmethod
     def __register__(cls, module_name):
@@ -30,15 +33,25 @@ class Invoice(metaclass=PoolMeta):
     def __setup__(cls):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude.append('numbered_at')
-        cls.party.datetime_field = 'numbered_at'
-        if 'numbered_at' not in cls.party.depends:
-            cls.party.depends.append('numbered_at')
-        cls.invoice_address.datetime_field = 'numbered_at'
-        if 'numbered_at' not in cls.invoice_address.depends:
-            cls.invoice_address.depends.append('numbered_at')
-        cls.payment_term.datetime_field = 'numbered_at'
-        if 'numbered_at' not in cls.payment_term.depends:
-            cls.payment_term.depends.append('numbered_at')
+        cls.party.datetime_field = 'history_datetime'
+        if 'history_datetime' not in cls.party.depends:
+            cls.party.depends.append('history_datetime')
+        cls.invoice_address.datetime_field = 'history_datetime'
+        if 'history_datetime' not in cls.invoice_address.depends:
+            cls.invoice_address.depends.append('history_datetime')
+        cls.payment_term.datetime_field = 'history_datetime'
+        if 'history_datetime' not in cls.payment_term.depends:
+            cls.payment_term.depends.append('history_datetime')
+
+    def get_history_datetime(self, name):
+        values = [
+            self.numbered_at,
+            self.party.create_date,
+            self.invoice_address.create_date,
+            ]
+        if self.payment_term:
+            values.append(self.payment_term.create_date)
+        return max(values)
 
     @classmethod
     def set_number(cls, invoices):
