@@ -2,7 +2,6 @@
 # this repository contains the full copyright notices and license terms.
 from itertools import chain
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Unique
-from trytond.pool import Pool
 from trytond.tools import grouped_slice
 
 
@@ -68,49 +67,3 @@ class Group(DeactivableMixin, ModelSQL, ModelView):
             default['name'] = name
             new_groups.extend(super(Group, cls).copy([group], default=default))
         return new_groups
-
-    @classmethod
-    def create(cls, vlist):
-        res = super(Group, cls).create(vlist)
-        pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-        return res
-
-    @classmethod
-    def write(cls, groups, values, *args):
-        super(Group, cls).write(groups, values, *args)
-        pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()
-
-    @classmethod
-    def delete(cls, groups):
-        super(Group, cls).delete(groups)
-        pool = Pool()
-        # Restart the cache on the domain_get method
-        pool.get('ir.rule')._domain_get_cache.clear()
-        # Restart the cache for get_groups
-        pool.get('res.user')._get_groups_cache.clear()
-        # Restart the cache for get_preferences
-        pool.get('res.user')._get_preferences_cache.clear()
-        # Restart the cache for model access and view
-        pool.get('ir.model.access')._get_access_cache.clear()
-        pool.get('ir.model.field.access')._get_access_cache.clear()
-        ModelView._fields_view_get_cache.clear()

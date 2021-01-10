@@ -853,6 +853,52 @@ class UserGroup(ModelSQL):
     group = fields.Many2One('res.group', 'Group', ondelete='CASCADE',
             select=True, required=True)
 
+    @classmethod
+    def create(cls, vlist):
+        records = super().create(vlist)
+        pool = Pool()
+        # Restart the cache on the domain_get method
+        pool.get('ir.rule')._domain_get_cache.clear()
+        # Restart the cache for get_groups
+        pool.get('res.user')._get_groups_cache.clear()
+        # Restart the cache for get_preferences
+        pool.get('res.user')._get_preferences_cache.clear()
+        # Restart the cache for model access and view
+        pool.get('ir.model.access')._get_access_cache.clear()
+        pool.get('ir.model.field.access')._get_access_cache.clear()
+        ModelView._fields_view_get_cache.clear()
+        return records
+
+    @classmethod
+    def write(cls, groups, values, *args):
+        super().write(groups, values, *args)
+        pool = Pool()
+        # Restart the cache on the domain_get method
+        pool.get('ir.rule')._domain_get_cache.clear()
+        # Restart the cache for get_groups
+        pool.get('res.user')._get_groups_cache.clear()
+        # Restart the cache for get_preferences
+        pool.get('res.user')._get_preferences_cache.clear()
+        # Restart the cache for model access and view
+        pool.get('ir.model.access')._get_access_cache.clear()
+        pool.get('ir.model.field.access')._get_access_cache.clear()
+        ModelView._fields_view_get_cache.clear()
+
+    @classmethod
+    def delete(cls, groups):
+        super().delete(groups)
+        pool = Pool()
+        # Restart the cache on the domain_get method
+        pool.get('ir.rule')._domain_get_cache.clear()
+        # Restart the cache for get_groups
+        pool.get('res.user')._get_groups_cache.clear()
+        # Restart the cache for get_preferences
+        pool.get('res.user')._get_preferences_cache.clear()
+        # Restart the cache for model access and view
+        pool.get('ir.model.access')._get_access_cache.clear()
+        pool.get('ir.model.field.access')._get_access_cache.clear()
+        ModelView._fields_view_get_cache.clear()
+
 
 class Warning_(ModelSQL, ModelView):
     'User Warning'
