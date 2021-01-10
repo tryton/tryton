@@ -1,3 +1,4 @@
+* Support Genshi element directives in HTML editor
 * Add firstline tool
 * Add support for Python 3.9
 * Skip access check on ModelStorage instances

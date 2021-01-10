@@ -112,11 +112,27 @@ TEMPLATE = '''<!DOCTYPE html>
     tinymce.init({
         selector: '#text',
         language: '%(language)s',
-        plugins: 'fullscreen autosave %(plugins)s',
+        plugins: 'fullscreen autosave code %(plugins)s',
         removed_menuitems: 'newdocument',
         toolbar: 'save | undo redo | styleselect | bold italic | ' +
             'alignleft aligncenter alignright alignjustify | ' +
             'bullist numlist outdent indent | link image | close',
+        extended_valid_elements:
+            'py:if[test],' +
+            'py:choose[test],py:when[test],py:otherwise,' +
+            'py:for[each],' +
+            'py:def[function],' +
+            'py:match[path],' +
+            'py:with[vars],' +
+            'py:replace[value]',
+        custom_elements:
+            'py:if,' +
+            'py:choose,py:when,py:otherwise,' +
+            'py:for,' +
+            'py:def,' +
+            'py:match,' +
+            'py:with,' +
+            'py:replace',
         content_css: %(css)s,
         body_class: %(class)s,
         setup: function(editor) {
