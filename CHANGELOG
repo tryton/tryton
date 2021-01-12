@@ -1,3 +1,4 @@
+* Remove foreign key for sequence of Invoice
 * Add summary to invoice line list
 * Add default customer payment term configuration
 
