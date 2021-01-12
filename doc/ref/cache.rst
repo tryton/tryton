@@ -35,6 +35,10 @@ Sets the ``value`` of the ``key`` in the cache.
 
 Clears all the keys in the cache.
 
+.. classmethod:: clear_all()
+
+Clears all cache instances.
+
 .. classmethod:: sync(transaction)
 
 Synchronize cache instances using transaction.

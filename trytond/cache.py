@@ -76,6 +76,11 @@ class BaseCache(object):
         raise NotImplementedError
 
     @classmethod
+    def clear_all(cls):
+        for inst in cls._instances.values():
+            inst.clear()
+
+    @classmethod
     def sync(cls, transaction):
         raise NotImplementedError
 

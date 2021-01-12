@@ -1,3 +1,4 @@
+* Add clear_all method to Cache
 * Support Genshi element directives in HTML editor
 * Add firstline tool
 * Add support for Python 3.9
