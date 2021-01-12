@@ -105,7 +105,7 @@ class Line(metaclass=PoolMeta):
     @property
     def supply_on_sale(self):
         supply_on_sale = super().supply_on_sale
-        return (supply_on_sale
+        return bool(supply_on_sale
             or (self.moves and all(m.from_location.type == 'drop'
                     for m in self.moves)))
 
