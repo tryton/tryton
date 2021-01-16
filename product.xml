@@ -26,6 +26,8 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_product_admin"/>
         </record>
 
+        <menuitem name="Reporting" parent="menu_main_product" id="menu_reporting" sequence="100"/>
+
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
             <field name="type">tree</field>
