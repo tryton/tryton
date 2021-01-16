@@ -92,5 +92,29 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_inventory_date_in_the_future">
             <field name="text">The inventories "%(inventories)s" have dates in the future.</field>
         </record>
+        <record model="ir.message" id="msg_stock_reporting_company">
+            <field name="text">Company</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_number">
+            <field name="text">Number</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_cost">
+            <field name="text">Cost</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_revenue">
+            <field name="text">Revenue</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_profit">
+            <field name="text">Profit</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_margin">
+            <field name="text">Margin</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_margin_trend">
+            <field name="text">Margin Trend</field>
+        </record>
+        <record model="ir.message" id="msg_stock_reporting_currency_digits">
+            <field name="text">Currency Digits</field>
+        </record>
     </data>
 </tryton>

@@ -12,6 +12,7 @@ from . import configuration
 from . import party
 from . import ir
 from . import res
+from . import stock_reporting_margin
 
 from .move import StockMixin
 
@@ -55,6 +56,12 @@ def register():
         configuration.ConfigurationLocation,
         ir.Cron,
         res.User,
+        stock_reporting_margin.Context,
+        stock_reporting_margin.Product,
+        stock_reporting_margin.ProductTimeseries,
+        stock_reporting_margin.Category,
+        stock_reporting_margin.CategoryTimeseries,
+        stock_reporting_margin.CategoryTree,
         module='stock', type_='model')
     Pool.register(
         shipment.Assign,

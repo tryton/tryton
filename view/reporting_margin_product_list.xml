@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tree keyword_open="1">
+    <field name="product" expand="1"/>
+    <field name="quantity" symbol="unit"/>
+    <field name="cost" symbol="currency"/>
+    <field name="revenue" symbol="currency"/>
+    <field name="profit" symbol="currency"/>
+    <field name="margin" factor="100">
+        <suffix string="%" name="margin"/>
+    </field>
+    <field name="margin_trend" expand="1"/>
+</tree>
