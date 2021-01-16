@@ -160,14 +160,25 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             ],
         depends=['type'],
         help="The warehouses that use the location for waste products.")
+
     quantity = fields.Function(
-        fields.Float('Quantity',
-        help="The amount of stock in the location."),
+        fields.Float(
+            "Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
+            depends=['quantity_uom_digits'],
+            help="The amount of stock in the location."),
         'get_quantity', searcher='search_quantity')
     forecast_quantity = fields.Function(
-        fields.Float('Forecast Quantity',
-        help="The amount of stock expected to be in the location."),
+        fields.Float(
+            "Forecast Quantity", digits=(16, Eval('quantity_uom_digits', 2)),
+            depends=['quantity_uom_digits'],
+            help="The amount of stock expected to be in the location."),
         'get_quantity', searcher='search_quantity')
+    quantity_uom = fields.Function(fields.Many2One(
+            'product.uom', "Quantity UOM"),
+        'get_quantity_uom')
+    quantity_uom_digits = fields.Function(fields.Integer(
+            "Quantity UOM Digits"),
+        'get_quantity_uom')
     cost_value = fields.Function(fields.Numeric(
             "Cost Value", digits=price_digits,
             help="The value of the stock in the location."),
@@ -440,6 +451,27 @@ class Location(DeactivableMixin, tree(), ModelSQL, ModelView):
             if operator_(getattr(location, name), operand):
                 ids.append(location.id)
         return [('id', 'in', ids)]
+
+    @classmethod
+    def get_quantity_uom(cls, locations, name):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        context = Transaction().context
+        value = None
+        uom = None
+        if context.get('product') is not None:
+            product = Product(context['product'])
+            uom = product.default_uom
+        elif context.get('product_template') is not None:
+            template = Template(context['product_template'])
+            uom = template.default_uom
+        if uom:
+            if name == 'quantity_uom':
+                value = uom.id
+            elif name == 'quantity_uom_digits':
+                value = uom.digits
+        return {l.id: value for l in locations}
 
     @classmethod
     def get_cost_value(cls, locations, name):
