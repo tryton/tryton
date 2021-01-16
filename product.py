@@ -538,7 +538,6 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 'stock_date_end': date,
                 'forecast': True,
                 }
-            assert date != date_start
             with Transaction().set_context(**context):
                 quantities[date] = Product.products_by_location(
                     [warehouse_id],
