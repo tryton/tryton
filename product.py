@@ -6,8 +6,9 @@ from sql import Literal
 from sql.aggregate import Count
 
 from trytond.i18n import gettext
-from trytond.model import ModelView, ModelSQL, MatchMixin, fields, \
-    sequence_ordered
+from trytond.model import (
+    ModelView, ModelSQL, MatchMixin, DeactivableMixin, sequence_ordered,
+    fields)
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
@@ -27,7 +28,10 @@ class Template(metaclass=PoolMeta):
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
             },
-        depends=['purchasable'])
+        domain=[
+            If(~Eval('active'), ('active', '=', False), ()),
+            ],
+        depends=['purchasable', 'active'])
     purchase_uom = fields.Many2One('product.uom', 'Purchase UOM', states={
             'invisible': ~Eval('purchasable'),
             'required': Eval('purchasable', False),
@@ -118,12 +122,13 @@ class Product(metaclass=PoolMeta):
         'purchase.product_supplier', 'product', "Suppliers",
         domain=[
             ('template', '=', Eval('template')),
+            If(~Eval('active'), ('active', '=', False), ()),
             ],
         states={
             'invisible': (~Eval('purchasable', False)
                 | ~Eval('context', {}).get('company')),
             },
-        depends=['template', 'purchasable'])
+        depends=['template', 'purchasable', 'active'])
     purchase_price_uom = fields.Function(fields.Numeric(
             "Purchase Price", digits=price_digits), 'get_purchase_price_uom')
 
@@ -236,7 +241,8 @@ class Product(metaclass=PoolMeta):
         return new_products
 
 
-class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+class ProductSupplier(
+        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Product Supplier'
     __name__ = 'purchase.product_supplier'
     template = fields.Many2One(
@@ -246,16 +252,18 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
                 ()),
+            If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['product'])
+        depends=['product', 'active'])
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
+            If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['template'])
+        depends=['template', 'active'])
     party = fields.Many2One('party.party', 'Supplier', required=True,
         ondelete='CASCADE', select=True)
     name = fields.Char('Name', size=None, translate=True, select=True)
