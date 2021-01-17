@@ -1,14 +1,16 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
-from trytond.model import (fields, ModelSQL, ModelView, sequence_ordered,
-    MatchMixin)
+from trytond.model import (
+    ModelSQL, ModelView, sequence_ordered, MatchMixin, DeactivableMixin,
+    fields)
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import If, Eval, Bool
 from trytond.tools import lstrip_wildcard
 
 
-class ProductCustomer(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
+class ProductCustomer(
+        sequence_ordered(), DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     'Product Customer'
     __name__ = 'sale.product_customer'
 
@@ -18,17 +20,19 @@ class ProductCustomer(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         domain=[
             If(Bool(Eval('product')),
                 ('products', '=', Eval('product')),
-                ())
+                ()),
+            If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['product'])
+        depends=['product', 'active'])
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
             If(Bool(Eval('template')),
                 ('template', '=', Eval('template')),
                 ()),
+            If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['template'])
+        depends=['template', 'active'])
     party = fields.Many2One('party.party', "Customer", required=True,
         ondelete='CASCADE')
     name = fields.Char("Name", translate=True)
@@ -77,7 +81,10 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('salable', False),
             },
-        depends=['salable'])
+        domain=[
+            If(~Eval('active'), ('active', '=', False), ()),
+            ],
+        depends=['salable', 'active'])
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
@@ -116,11 +123,12 @@ class Product(metaclass=PoolMeta):
         'sale.product_customer', 'product', "Customers",
         domain=[
             ('template', '=', Eval('template')),
+            If(~Eval('active'), ('active', '=', False), ()),
             ],
         states={
             'invisible': ~Eval('salable', False),
             },
-        depends=['template', 'salable'])
+        depends=['template', 'salable', 'active'])
 
     def product_customer_used(self, **pattern):
         for product_customer in self.product_customers:
