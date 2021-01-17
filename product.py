@@ -14,7 +14,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, Model, UnionMixin, DeactivableMixin, sequence_ordered,
     Exclude, fields)
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond import backend
@@ -106,6 +106,10 @@ class Template(
         'template', 'category', "Categories", readonly=True)
     products = fields.One2Many(
         'product.product', 'template', "Variants",
+        domain=[
+            If(~Eval('active'), ('active', '=', False), ()),
+            ],
+        depends=['active'],
         help="The different variants the product comes in.")
 
     @classmethod
@@ -310,6 +314,10 @@ class Product(
         'product.template', "Product Template",
         required=True, ondelete='CASCADE', select=True,
         search_context={'default_products': False},
+        domain=[
+            If(Eval('active'), ('active', '=', True), ()),
+            ],
+        depends=['active'],
         help="The product that defines the common properties "
         "inherited by the variant.")
     code_readonly = fields.Function(fields.Boolean('Code Readonly'),
