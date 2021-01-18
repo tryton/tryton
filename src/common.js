@@ -1915,13 +1915,16 @@
                 if (!value && value !== 0 && value !== new Sao.Decimal(0)) {
                     return '';
                 }
+                var digit = 0;
                 var factor = Number(field.factor || 1);
-                var digit = String(value * factor)
-                    .replace(/0+$/, '').split('.')[1];
-                if (digit) {
-                    digit = digit.length;
-                } else {
-                    digit = 0;
+                var string = String(value * factor);
+                if (string.contains('e')) {
+                    var exp = string.split('e')[1];
+                    string = string.split('e')[0];
+                    digit -= parseInt(exp);
+                }
+                if (string.contains('.')) {
+                    digit += string.replace(/0+$/, '').split('.')[1].length;
                 }
                 return (value * factor).toFixed(digit);
             };
