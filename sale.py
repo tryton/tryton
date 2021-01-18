@@ -4,7 +4,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Bool
 
 from trytond.modules.product import price_digits
 
@@ -267,12 +267,13 @@ class AmendmentLine(ModelSQL, ModelView):
             If(Eval('state') == 'draft',
                 ('salable', '=', True),
                 ()),
-            ('default_uom_category', '=', Eval('product_uom_category')),
+            If(Eval('product_uom_category'),
+                ('default_uom_category', '=', Eval('product_uom_category')),
+                ()),
             ],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
-            'required': Eval('action') == 'line',
             },
         depends=['action', 'state', 'product_uom_category'])
     quantity = fields.Float(
@@ -287,14 +288,16 @@ class AmendmentLine(ModelSQL, ModelView):
     unit = fields.Many2One(
         'product.uom', "Unit", ondelete='RESTRICT',
         domain=[
-            ('category', '=', Eval('product_uom_category')),
+            If(Eval('product_uom_category'),
+                ('category', '=', Eval('product_uom_category')),
+                ()),
             ],
         states={
             'readonly': Eval('state') != 'draft',
             'invisible': Eval('action') != 'line',
-            'required': Eval('action') == 'line',
+            'required': Bool(Eval('product')),
             },
-        depends=['state', 'product_uom_category', 'action'])
+        depends=['state', 'product_uom_category', 'action', 'product'])
     unit_price = fields.Numeric(
         "Unit Price", digits=price_digits,
         states={
@@ -406,7 +409,10 @@ class AmendmentLine(ModelSQL, ModelView):
     @fields.depends('line')
     def on_change_with_product_uom_category(self, name=None):
         if self.line:
-            return self.line.product_uom_category.id
+            if self.line.product_uom_category:
+                return self.line.product_uom_category.id
+            elif self.line.unit:
+                return self.line.unit.category.id
 
     def apply(self, sale):
         assert self.sale == sale
@@ -420,7 +426,8 @@ class AmendmentLine(ModelSQL, ModelView):
 
     def _apply_taxes(self, sale, sale_line):
         for line in sale.lines:
-            line.taxes = line.compute_taxes(sale.party)
+            if line.product:
+                line.taxes = line.compute_taxes(sale.party)
 
     def _apply_payment_term(self, sale, sale_line):
         sale.payment_term = self.payment_term

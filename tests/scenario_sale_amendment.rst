@@ -78,6 +78,9 @@ Sale first product::
     >>> sale_line = sale.lines.new()
     >>> sale_line.product = product1
     >>> sale_line.quantity = 5.0
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.quantity = 1
+    >>> sale_line.unit_price = Decimal('5.0000')
     >>> sale.click('quote')
     >>> sale.click('confirm')
     >>> sale.state
@@ -85,7 +88,7 @@ Sale first product::
     >>> sale.revision
     0
     >>> sale.total_amount
-    Decimal('50.00')
+    Decimal('55.00')
     >>> len(sale.shipments), len(sale.invoices)
     (1, 1)
 
@@ -107,7 +110,7 @@ Add an amendment::
     True
     >>> line = amendment.lines.new()
     >>> line.action = 'line'
-    >>> line.line, = sale.lines
+    >>> line.line = sale.lines[0]
     >>> line.product == product1
     True
     >>> line.product = product2
@@ -117,6 +120,11 @@ Add an amendment::
     >>> line.unit_price
     Decimal('10.0000')
     >>> line.unit_price = Decimal('9.0000')
+    >>> line = amendment.lines.new()
+    >>> line.action = 'line'
+    >>> line.line = sale.lines[1]
+    >>> line.product
+    >>> line.quantity = 2
     >>> amendment.save()
 
 Validate amendment::
@@ -127,15 +135,18 @@ Validate amendment::
     1
     >>> sale.party == customer2
     True
-    >>> line, = sale.lines
+    >>> line = sale.lines[0]
     >>> line.product == product2
     True
     >>> line.quantity
     4.0
     >>> line.unit_price
     Decimal('9.0000')
+    >>> line = sale.lines[1]
+    >>> line.quantity
+    2.0
     >>> sale.total_amount
-    Decimal('36.00')
+    Decimal('46.00')
 
     >>> shipment, = sale.shipments
     >>> move, = shipment.outgoing_moves
@@ -145,10 +156,16 @@ Validate amendment::
     4.0
 
     >>> invoice, = sale.invoices
-    >>> line, = invoice.lines
+    >>> line = invoice.lines[0]
     >>> line.product == product2
     True
     >>> line.quantity
     4.0
     >>> line.unit_price
     Decimal('9.0000')
+    >>> line = invoice.lines[1]
+    >>> line.product
+    >>> line.quantity
+    2.0
+    >>> line.unit_price
+    Decimal('5.0000')
