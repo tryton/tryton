@@ -216,9 +216,11 @@ Create a complaint to credit the invoice::
     >>> credit_note.type
     'out'
     >>> len(credit_note.lines)
-    2
+    4
     >>> sum(l.quantity for l in credit_note.lines)
-    -5.0
+    0.0
+    >>> credit_note.total_amount
+    Decimal('-50.00')
 
 Create a complaint to credit partially the invoice::
 
@@ -246,9 +248,9 @@ Create a complaint to credit partially the invoice::
     >>> credit_note.type
     'out'
     >>> len(credit_note.lines)
-    2
+    4
     >>> sum(l.quantity for l in credit_note.lines)
-    -2.0
+    0.0
     >>> credit_note.total_amount
     Decimal('-15.00')
 
@@ -271,6 +273,7 @@ Create a complaint to credit a invoice line::
     >>> credit_note = action.result
     >>> credit_note.type
     'out'
-    >>> credit_note_line, = credit_note.lines
-    >>> credit_note_line.quantity
-    -1.0
+    >>> len(credit_note.lines)
+    2
+    >>> sum(l.quantity for l in credit_note.lines)
+    0.0

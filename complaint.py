@@ -581,19 +581,27 @@ class Action(ModelSQL, ModelView):
                     line2qty = {invoice_line: self.quantity}
                 if self.unit_price is not None:
                     line2price = {invoice_line: self.unit_price}
-            credit_note = invoice._credit()
-            credit_lines = []
-            for invoice_line in invoice_lines:
-                credit_line = invoice_line._credit()
-                credit_lines.append(credit_line)
-                credit_line.origin = self.complaint
-                if invoice_line in line2qty:
-                    credit_line.quantity = -line2qty[invoice_line]
-                if invoice_line in line2price:
-                    credit_line.unit_price = line2price[invoice_line]
-            credit_note.lines = credit_lines
-            credit_note.taxes = None
-            credit_note.save()
+            with Transaction().set_context(_account_invoice_correction=True):
+                credit_note, = Invoice.copy([invoice], default={
+                        'lines': [],
+                        })
+                # Copy each line one by one to get negative and positive lines
+                # following each other
+                for invoice_line in invoice_lines:
+                    qty = line2qty.get(invoice_line, invoice_line.quantity)
+                    unit_price = invoice_line.unit_price - line2price.get(
+                        invoice_line, invoice_line.unit_price)
+                    Line.copy([invoice_line], default={
+                            'invoice': credit_note.id,
+                            'quantity': -qty,
+                            'origin': str(self.complaint),
+                            })
+                    credit_line, = Line.copy([invoice_line], default={
+                            'invoice': credit_note.id,
+                            'quantity': qty,
+                            'unit_price': unit_price,
+                            'origin': str(self.complaint),
+                            })
             credit_note.update_taxes()
         else:
             return
