@@ -288,6 +288,8 @@ class DomainParserTestCase(TestCase):
                 (0.0, '0'),
                 (False, ''),
                 (None, ''),
+                (1e-12, '0.000000000001'),
+                (1.0579e-10, '0.00000000010579'),
                 ):
             self.assertEqual(
                 format_value(field, value), result,
