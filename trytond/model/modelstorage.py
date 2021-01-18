@@ -347,20 +347,18 @@ class ModelStorage(Model):
                 or isinstance(f, fields.MultiValue))
             and n not in mptt]
         ids = list(map(int, records))
-        datas = cls.read(ids, fields_names=fields_names)
-        datas = dict((d['id'], d) for d in datas)
+        values = {d['id']: d for d in cls.read(ids, fields_names=fields_names)}
         field_defs = cls.fields_get(fields_names=fields_names)
         to_create = []
-        for id in ids:
-            data = convert_data(field_defs, datas[id])
+        for id_ in ids:
+            data = convert_data(field_defs, values[id_])
             to_create.append(data)
         new_records = cls.create(to_create)
-        id2new_record = dict(zip(ids, new_records))
 
         fields_translate = {}
         for field_name, field in field_defs.items():
-            if field_name in cls._fields and \
-                    getattr(cls._fields[field_name], 'translate', False):
+            if (field_name in cls._fields
+                    and getattr(cls._fields[field_name], 'translate', False)):
                 fields_translate[field_name] = field
 
         if fields_translate:
@@ -368,16 +366,19 @@ class ModelStorage(Model):
                 ('translatable', '=', True),
                 ])
             if langs:
+                id2new_records = defaultdict(list)
+                for id_, new_record in zip(ids, new_records):
+                    id2new_records[id_].append(new_record)
                 fields_names = list(fields_translate.keys()) + ['id']
                 for lang in langs:
                     # Prevent fuzzing translations when copying as the terms
                     # should be the same.
                     with Transaction().set_context(language=lang.code,
                             fuzzy_translation=False):
-                        datas = cls.read(ids, fields_names=fields_names)
+                        values = cls.read(ids, fields_names=fields_names)
                         to_write = []
-                        for data in datas:
-                            to_write.append([id2new_record[data['id']]])
+                        for data in values:
+                            to_write.append(id2new_records[data['id']])
                             to_write.append(
                                 convert_data(fields_translate, data))
                         cls.write(*to_write)
