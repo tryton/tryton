@@ -101,6 +101,12 @@ class CopyBinary(ModelSQL):
     file_id = fields.Char("Binary ID")
 
 
+class CopyTranslate(ModelSQL):
+    "Copy Translate"
+    __name__ = 'test.copy.translate'
+    name = fields.Char("Name", translate=True)
+
+
 def register(module):
     Pool.register(
         Copy,
@@ -115,4 +121,5 @@ def register(module):
         CopyMany2ManyReferenceTarget,
         CopyMany2ManyReferenceRelation,
         CopyBinary,
+        CopyTranslate,
         module=module, type_='model')

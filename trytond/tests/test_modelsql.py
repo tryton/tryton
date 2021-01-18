@@ -524,14 +524,13 @@ class ModelSQLTestCase(unittest.TestCase):
                     record.lock()
 
 
-class ModelSQLTranslationTestCase(unittest.TestCase):
-    "Test ModelSQL translation"
+class TranslationTestCase(unittest.TestCase):
     default_language = 'fr'
     other_language = 'en'
 
     @classmethod
     def setUpClass(cls):
-        activate_module('tests')
+        super().setUpClass()
         cls.setup_language()
 
     @classmethod
@@ -580,6 +579,15 @@ class ModelSQLTranslationTestCase(unittest.TestCase):
                 })
 
         Transaction().commit()
+
+
+class ModelSQLTranslationTestCase(TranslationTestCase):
+    "Test ModelSQL translation"
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        activate_module('tests')
 
     @with_transaction()
     def test_create_default_language(self):

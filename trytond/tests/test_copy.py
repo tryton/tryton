@@ -5,7 +5,10 @@ import unittest
 
 from trytond.model import fields
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 from trytond.pool import Pool
+
+from .test_modelsql import TranslationTestCase
 
 
 class CopyTestCase(unittest.TestCase):
@@ -196,5 +199,53 @@ class CopyTestCase(unittest.TestCase):
         self.assertEqual(record_copy.binary_id, record.binary_id)
 
 
+class CopyTranslationTestCase(TranslationTestCase):
+    "Test copy translation"
+
+    @with_transaction()
+    def test_copy(self):
+        "Test copy"
+        pool = Pool()
+        Translate = pool.get('test.copy.translate')
+
+        with Transaction().set_context(language=self.default_language):
+            record, = Translate.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Translate.write([record], {'name': "Bar"})
+
+        record_copy, = Translate.copy([record])
+
+        with Transaction().set_context(language=self.default_language):
+            record_copy = Translate(record_copy.id)
+            self.assertEqual(record_copy.name, "Foo")
+        with Transaction().set_context(language=self.other_language):
+            record_copy = Translate(record_copy.id)
+            self.assertEqual(record_copy.name, "Bar")
+
+    @with_transaction()
+    def test_copy_multiple(self):
+        "Test copy multiple"
+        pool = Pool()
+        Translate = pool.get('test.copy.translate')
+
+        with Transaction().set_context(language=self.default_language):
+            record, = Translate.create([{'name': "Foo"}])
+        with Transaction().set_context(language=self.other_language):
+            Translate.write([record], {'name': "Bar"})
+
+        record_copies = Translate.copy([record, record])
+
+        with Transaction().set_context(language=self.default_language):
+            record_copies = Translate.browse(record_copies)
+            self.assertEqual({r.name for r in record_copies}, {"Foo"})
+        with Transaction().set_context(language=self.other_language):
+            record_copies = Translate.browse(record_copies)
+            self.assertEqual({r.name for r in record_copies}, {"Bar"})
+
+
 def suite():
-    return unittest.TestLoader().loadTestsFromTestCase(CopyTestCase)
+    suite_ = unittest.TestSuite()
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(CopyTestCase))
+    suite_.addTests(unittest.TestLoader().loadTestsFromTestCase(
+            CopyTranslationTestCase))
+    return suite_
