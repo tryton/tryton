@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
+import elasticsearch
 from elasticsearch import Elasticsearch, VERSION as ES_VERSION
 
 from trytond.exceptions import RateLimitException
@@ -197,32 +198,44 @@ class Shop(metaclass=PoolMeta):
                 if template.vsf_identifier:
                     template_products = product.template.get_vsf_products(shop)
                     if not template_products:
+                        try:
+                            es.delete(
+                                index=shop.vsf_elasticsearch_index,
+                                doc_type='product',
+                                id=template.vsf_identifier.id)
+                        except elasticsearch.exceptions.NotFoundError:
+                            pass
+                if product.vsf_identifier:
+                    try:
                         es.delete(
                             index=shop.vsf_elasticsearch_index,
                             doc_type='product',
-                            id=template.vsf_identifier.id)
-                if product.vsf_identifier:
-                    es.delete(
-                        index=shop.vsf_elasticsearch_index,
-                        doc_type='product',
-                        id=product.vsf_identifier.id)
+                            id=product.vsf_identifier.id)
+                    except elasticsearch.exceptions.NotFoundError:
+                        pass
             shop.products_removed = []
 
             for category in shop.categories_removed:
                 if category.vsf_identifier:
-                    es.delete(
-                        index=shop.vsf_elasticsearch_index,
-                        doc_type='category',
-                        id=category.vsf_identifier.id)
+                    try:
+                        es.delete(
+                            index=shop.vsf_elasticsearch_index,
+                            doc_type='category',
+                            id=category.vsf_identifier.id)
+                    except elasticsearch.exceptions.NotFoundError:
+                        pass
             shop.categories_removed = []
 
             if ProductAttribute:
                 for attribute in shop.attributes_removed:
                     if attribute.vsf_identifier:
-                        es.delete(
-                            index=shop.vsf_elasticsearch_index,
-                            doc_type='attribute',
-                            id=attribute.vsf_identifier.id)
+                        try:
+                            es.delete(
+                                index=shop.vsf_elasticsearch_index,
+                                doc_type='attribute',
+                                id=attribute.vsf_identifier.id)
+                        except elasticsearch.exceptions.NotFoundError:
+                            pass
                 shop.attributes_removed = []
 
         cls.save(shops)
