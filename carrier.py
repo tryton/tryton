@@ -78,7 +78,8 @@ class Selection(
         DeactivableMixin, sequence_ordered(), MatchMixin, ModelSQL, ModelView):
     'Carrier Selection'
     __name__ = 'carrier.selection'
-    _get_carriers_cache = Cache('carrier.selection.get_carriers')
+    _get_carriers_cache = Cache(
+        'carrier.selection.get_carriers', context=False)
 
     from_country = fields.Many2One('country.country', 'From Country',
         ondelete='RESTRICT',
