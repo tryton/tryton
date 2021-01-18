@@ -313,15 +313,18 @@ def format_value(field, value, target=None, context=None):
                 and (not isinstance(value, (int, float, Decimal))
                     or isinstance(value, bool))):
             return ''
+        digit = 0
         if isinstance(value, Decimal):
             cast = Decimal
         else:
             cast = float
         factor = cast(field.get('factor', 1))
-        try:
-            digit = len(str(value * factor).rstrip('0').split('.')[1])
-        except IndexError:
-            digit = 0
+        string_ = str(value * factor)
+        if 'e' in string_:
+            string_, exp = string_.split('e')
+            digit -= int(exp)
+        if '.' in string_:
+            digit += len(string_.rstrip('0').split('.')[1])
         return locale.localize(
             '{0:.{1}f}'.format(value * factor or 0, digit), True)
 
