@@ -78,6 +78,9 @@ Purchase first product::
     >>> purchase_line.product = product1
     >>> purchase_line.quantity = 5.0
     >>> purchase_line.unit_price = Decimal('10.0000')
+    >>> purchase_line = purchase.lines.new()
+    >>> purchase_line.quantity = 1
+    >>> purchase_line.unit_price = Decimal('5.0000')
     >>> purchase.click('quote')
     >>> purchase.click('confirm')
     >>> purchase.state
@@ -85,7 +88,7 @@ Purchase first product::
     >>> purchase.revision
     0
     >>> purchase.total_amount
-    Decimal('50.00')
+    Decimal('55.00')
     >>> len(purchase.moves), len(purchase.invoices)
     (1, 1)
 
@@ -107,7 +110,7 @@ Add an amendment::
     True
     >>> line = amendment.lines.new()
     >>> line.action = 'line'
-    >>> line.line, = purchase.lines
+    >>> line.line = purchase.lines[0]
     >>> line.product == product1
     True
     >>> line.product = product2
@@ -117,6 +120,11 @@ Add an amendment::
     >>> line.unit_price
     Decimal('10.0000')
     >>> line.unit_price = Decimal('9.0000')
+    >>> line = amendment.lines.new()
+    >>> line.action = 'line'
+    >>> line.line = purchase.lines[1]
+    >>> line.product
+    >>> line.quantity = 2
     >>> amendment.save()
 
 Validate amendment::
@@ -127,15 +135,18 @@ Validate amendment::
     1
     >>> purchase.party == supplier2
     True
-    >>> line, = purchase.lines
+    >>> line = purchase.lines[0]
     >>> line.product == product2
     True
     >>> line.quantity
     4.0
     >>> line.unit_price
     Decimal('9.0000')
+    >>> line = purchase.lines[1]
+    >>> line.quantity
+    2.0
     >>> purchase.total_amount
-    Decimal('36.00')
+    Decimal('46.00')
 
     >>> move, = purchase.moves
     >>> move.product == product2
@@ -144,10 +155,16 @@ Validate amendment::
     4.0
 
     >>> invoice, = purchase.invoices
-    >>> line, = invoice.lines
+    >>> line = invoice.lines[0]
     >>> line.product == product2
     True
     >>> line.quantity
     4.0
     >>> line.unit_price
     Decimal('9.0000')
+    >>> line = invoice.lines[1]
+    >>> line.product
+    >>> line.quantity
+    2.0
+    >>> line.unit_price
+    Decimal('5.0000')
