@@ -9,6 +9,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Supplier" id="supplier">
             <label name="customer_code"/>
             <field name="customer_code"/>
+            <label name="supplier_lead_time"/>
+            <field name="supplier_lead_time"/>
         </page>
     </xpath>
 </data>

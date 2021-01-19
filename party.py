@@ -16,6 +16,12 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
             " as customer."))
     customer_codes = fields.One2Many(
         'party.party.customer_code', 'party', "Customer Codes")
+    supplier_lead_time = fields.MultiValue(fields.TimeDelta("Lead Time",
+            help="The time from confirming the purchase order to receiving "
+            "the goods from the party when used as a supplier.\n"
+            "Used if no lead time is set on the product supplier."))
+    supplier_lead_times = fields.One2Many(
+        'party.party.supplier_lead_time', 'party', "Lead Times")
 
     @classmethod
     def multivalue_model(cls, field):
@@ -31,6 +37,14 @@ class CustomerCode(ModelSQL, CompanyValueMixin):
     party = fields.Many2One(
         'party.party', "Party", ondelete='CASCADE', select=True)
     customer_code = fields.Char('Customer Code')
+
+
+class SupplierLeadTime(ModelSQL, CompanyValueMixin):
+    "Supplier Lead Time"
+    __name__ = 'party.party.supplier_lead_time'
+    party = fields.Many2One(
+        'party.party', "Party", ondelete='CASCADE', select=True)
+    supplier_lead_time = fields.TimeDelta("Lead Time")
 
 
 class PartyReplace(metaclass=PoolMeta):

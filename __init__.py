@@ -36,6 +36,7 @@ def register():
         stock.Location,
         party.Party,
         party.CustomerCode,
+        party.SupplierLeadTime,
         purchase.ReturnPurchaseStart,
         module='purchase', type_='model')
     Pool.register(

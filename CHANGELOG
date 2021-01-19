@@ -1,3 +1,4 @@
+* Add default lead time to supplier
 * Allow product supplier to be deactivated
 * Add summary to purchase line list
 * Set payment term and invoice method from last party's purchases

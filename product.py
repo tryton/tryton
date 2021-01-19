@@ -276,7 +276,10 @@ class ProductSupplier(
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
                 Eval('context', {}).get('company', -1)),
             ])
-    lead_time = fields.TimeDelta('Lead Time')
+    lead_time = fields.TimeDelta('Lead Time',
+        help="The time from confirming the purchase order to receiving the "
+        "products.\n"
+        "If empty the lead time of the supplier is used.")
     currency = fields.Many2One('currency.currency', 'Currency', required=True,
         ondelete='RESTRICT')
     uom = fields.Function(
@@ -381,6 +384,15 @@ class ProductSupplier(
             if self.template.purchase_uom:
                 return self.template.purchase_uom.id
 
+    @property
+    def lead_time_used(self):
+        # Use getattr because it can be called with an unsaved instance
+        lead_time = getattr(self, 'lead_time', None)
+        party = getattr(self, 'party', None)
+        if lead_time is None and party:
+            lead_time = party.get_multivalue('supplier_lead_time')
+        return lead_time
+
     def compute_supply_date(self, date=None):
         '''
         Compute the supply date for the Product Supplier at the given date
@@ -389,9 +401,9 @@ class ProductSupplier(
 
         if not date:
             date = Date.today()
-        if self.lead_time is None:
+        if self.lead_time_used is None:
             return datetime.date.max
-        return date + self.lead_time
+        return date + self.lead_time_used
 
     def compute_purchase_date(self, date):
         '''
@@ -399,9 +411,9 @@ class ProductSupplier(
         '''
         Date = Pool().get('ir.date')
 
-        if self.lead_time is None:
+        if self.lead_time_used is None:
             return Date.today()
-        return date - self.lead_time
+        return date - self.lead_time_used
 
     @staticmethod
     def get_pattern():
