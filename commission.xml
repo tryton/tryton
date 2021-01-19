@@ -253,7 +253,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window.domain" id="act_commission_form_domain_to_invoice">
             <field name="name">To Invoice</field>
             <field name="sequence" eval="10"/>
-            <field name="domain" eval="[('invoice_line', '=', 'None')]" pyson="1"></field>
+            <field name="domain" eval="[('invoice_line', '=', None)]" pyson="1"></field>
             <field name="count" eval="True"></field>
             <field name="act_window" ref="act_commission_form"/>
         </record>
