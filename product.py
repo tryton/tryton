@@ -2,11 +2,29 @@
 # this repository contains the full copyright notices and license terms.
 import datetime
 
-from trytond.model import ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.pyson import Eval
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
+from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.product import price_digits
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'product.configuration'
+
+    default_lead_time = fields.MultiValue(
+        fields.TimeDelta(
+            "Default Lead Time",
+            help="The time from confirming the sales order to sending the "
+            "products.\n"
+            "Used for products without a lead time."))
+
+
+class DefaultLeadTime(ModelSQL, CompanyValueMixin):
+    "Product Default Lead Time"
+    __name__ = 'product.configuration.default_lead_time'
+    default_lead_time = fields.TimeDelta("Default Lead Time")
 
 
 class Template(metaclass=PoolMeta):
@@ -27,7 +45,10 @@ class Template(metaclass=PoolMeta):
         states={
             'invisible': ~Eval('salable', False),
             },
-        depends=['salable'])
+        depends=['salable'],
+        help="The time from confirming the sales order to sending the "
+        "products.\n"
+        "If empty the default lead time from the configuration is used.")
 
     @classmethod
     def __register__(cls, module_name):
@@ -50,10 +71,6 @@ class Template(metaclass=PoolMeta):
                         [lead_time],
                         where=sql_table.id == id_))
             table.drop_column('delivery_time')
-
-    @staticmethod
-    def default_lead_time():
-        return datetime.timedelta(0)
 
     @fields.depends('default_uom', 'sale_uom', 'salable')
     def on_change_default_uom(self):
@@ -137,6 +154,16 @@ class Product(metaclass=PoolMeta):
                             currency, round=False)
         return prices
 
+    @property
+    def lead_time_used(self):
+        pool = Pool()
+        Configuration = pool.get('product.configuration')
+        if self.lead_time is None:
+            config = Configuration(1)
+            return config.get_multivalue('default_lead_time')
+        else:
+            return self.lead_time
+
     def compute_shipping_date(self, date=None):
         '''
         Compute the shipping date at the given date
@@ -145,9 +172,11 @@ class Product(metaclass=PoolMeta):
 
         if not date:
             date = Date.today()
-        if self.lead_time is None:
+
+        lead_time = self.lead_time_used
+        if lead_time is None:
             return datetime.date.max
-        return date + self.lead_time
+        return date + lead_time
 
 
 class SaleContext(ModelView):

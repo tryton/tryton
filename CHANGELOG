@@ -1,3 +1,4 @@
+* Add default lead time for products
 * Add summary to sale line list
 * Add TaxableMixin to sale line
 

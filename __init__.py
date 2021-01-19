@@ -21,6 +21,8 @@ def register():
         sale.SaleLineTax,
         sale.SaleLineIgnoredMove,
         sale.SaleLineRecreatedMove,
+        product.Configuration,
+        product.DefaultLeadTime,
         product.Template,
         product.Product,
         product.SaleContext,
