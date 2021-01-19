@@ -5,6 +5,7 @@ from functools import wraps
 
 from sql.operators import NotIn
 
+from trytond.cache import Cache
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields, Unique, sequence_ordered
@@ -557,7 +558,8 @@ class ModuleActivateUpgrade(Wizard):
         pool = Pool()
         Module = pool.get('ir.module')
         Lang = pool.get('ir.lang')
-        with Transaction().new_transaction():
+        transaction = Transaction()
+        with transaction.new_transaction():
             modules = Module.search([
                 ('state', 'in', ['to upgrade', 'to remove', 'to activate']),
                 ])
@@ -568,6 +570,7 @@ class ModuleActivateUpgrade(Wizard):
             lang = [x.code for x in langs]
         if update:
             pool.init(update=update, lang=lang)
+            Cache.refresh_pool(transaction)
         return 'done'
 
 

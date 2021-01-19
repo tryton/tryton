@@ -113,12 +113,12 @@ class Pool(object):
         with cls._lock:
             if database_name in cls._instances:
                 del cls._instances[database_name]
-        lock = cls._locks.get(database_name)
-        if not lock:
-            return
-        with lock:
-            if database_name in cls._pool:
-                del cls._pool[database_name]
+            lock = cls._locks.get(database_name)
+            if not lock:
+                return
+            with lock:
+                if database_name in cls._pool:
+                    del cls._pool[database_name]
 
     @classmethod
     def database_list(cls):
@@ -270,6 +270,10 @@ class Pool(object):
                         cls = builtins.type(
                             cls.__name__, (mixin, cls), {'__slots__': ()})
                         self.add(cls, type=type_)
+
+    def refresh(self, modules):
+        if set(self._modules) != modules:
+            self.stop(self.database_name)
 
 
 def isregisteredby(obj, module, type_='model'):

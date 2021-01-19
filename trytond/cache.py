@@ -16,6 +16,7 @@ from sql.functions import CurrentTimestamp, Function
 
 from trytond import backend
 from trytond.config import config
+from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.tools import resolve, grouped_slice
 
@@ -41,6 +42,15 @@ def freeze(o):
         return frozenset((x, freeze(y)) for x, y in o.items())
     else:
         return o
+
+
+def _get_modules(cursor):
+    ir_module = Table('ir_module')
+    cursor.execute(*ir_module.select(
+            ir_module.name,
+            where=ir_module.state.in_(
+                ['activated', 'to upgrade', 'to remove'])))
+    return {m for m, in cursor}
 
 
 class BaseCache(object):
@@ -195,6 +205,7 @@ class MemoryCache(BaseCache):
                 timestamps = {}
                 for timestamp, name in cursor.fetchall():
                     timestamps[name] = timestamp
+                modules = _get_modules(cursor)
         finally:
             database.put_connection(connection)
         for name, timestamp in timestamps.items():
@@ -205,6 +216,7 @@ class MemoryCache(BaseCache):
             inst_timestamp = inst._timestamp.get(dbname)
             if not inst_timestamp or timestamp > inst_timestamp:
                 inst._clear(dbname, timestamp)
+        Pool(dbname).refresh(modules)
         cls._clean_last = datetime.now()
 
     def sync_since(self, value):
@@ -292,6 +304,21 @@ class MemoryCache(BaseCache):
             inst._transaction_lower.pop(dbname, None)
 
     @classmethod
+    def refresh_pool(cls, transaction):
+        database = transaction.database
+        dbname = database.name
+        if not _clear_timeout and database.has_channel():
+            database = backend.Database(dbname)
+            conn = database.get_connection()
+            try:
+                cursor = conn.cursor()
+                cursor.execute(
+                    'NOTIFY "%s", %%s' % cls._channel, ('refresh pool',))
+                conn.commit()
+            finally:
+                database.put_connection(conn)
+
+    @classmethod
     def _listen(cls, dbname):
         database = backend.Database(dbname)
         if not database.has_channel():
@@ -313,7 +340,9 @@ class MemoryCache(BaseCache):
                 conn.poll()
                 while conn.notifies:
                     notification = conn.notifies.pop()
-                    if notification.payload:
+                    if notification.payload == 'refresh pool':
+                        Pool(dbname).refresh(_get_modules(cursor))
+                    elif notification.payload:
                         reset = json.loads(notification.payload)
                         for name in reset:
                             inst = cls._instances[name]
