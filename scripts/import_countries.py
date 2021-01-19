@@ -36,6 +36,14 @@ def _get_language_codes():
         yield l.code
 
 
+def _remove_forbidden_chars(name):
+    from trytond.model.fields import Char
+    for c in Char.forbidden_chars:
+        if c in name:
+            name.replace(c, ' ')
+    return name.strip()
+
+
 def get_countries():
     Country = Model.get('country.country')
     return {c.code: c for c in Country.find([])}
@@ -52,7 +60,7 @@ def update_countries(countries):
             record = countries[code]
         else:
             record = Country(code=code)
-        record.name = country.name
+        record.name = _remove_forbidden_chars(country.name)
         record.code3 = country.alpha_3
         record.code_numeric = country.numeric
         records.append(record)
@@ -76,7 +84,8 @@ def translate_countries(countries):
             records = []
             for country in _progress(pycountry.countries):
                 record = Country(countries[country.alpha_2].id)
-                record.name = gnutranslation.gettext(country.name)
+                record.name = _remove_forbidden_chars(
+                    gnutranslation.gettext(country.name))
                 records.append(record)
             Country.save(records)
 
@@ -98,7 +107,7 @@ def update_subdivisions(countries, subdivisions):
             record = subdivisions[(country_code, code)]
         else:
             record = Subdivision(code=code, country=countries[country_code])
-        record.name = subdivision.name
+        record.name = _remove_forbidden_chars(subdivision.name)
         record.type = subdivision.type.lower()
         records.append(record)
 
@@ -140,7 +149,8 @@ def translate_subdivisions(subdivisions):
             for subdivision in _progress(pycountry.subdivisions):
                 record = Subdivision(subdivisions[
                         (subdivision.country_code, subdivision.code)].id)
-                record.name = gnutranslation.gettext(subdivision.name)
+                record.name = _remove_forbidden_chars(
+                    gnutranslation.gettext(subdivision.name))
                 records.append(record)
             Subdivision.save(records)
 
