@@ -1980,9 +1980,11 @@
                 return (value * factor).toFixed(digit);
             };
             var format_selection = function() {
-                for (var i = 0; i < field.selection.length; i++) {
-                    if (field.selection[i][0] == value) {
-                        return field.selection[i][1];
+                if (field.selection instanceof Array) {
+                    for (var i = 0; i < field.selection.length; i++) {
+                        if (field.selection[i][0] == value) {
+                            return field.selection[i][1];
+                        }
                     }
                 }
                 return value || '';
