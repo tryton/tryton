@@ -66,6 +66,7 @@
             }).append(jQuery('<span/>', {
                 'aria-hidden': true
             }).append('&times;')).click(function() {
+                this.text.text('');
                 this.el.hide();
             }.bind(this))).append(this.text);
             this.el.hide();
@@ -78,6 +79,7 @@
                 this.text.text(message);
                 this.el.show();
             } else {
+                this.text.text('');
                 this.el.hide();
             }
         }
