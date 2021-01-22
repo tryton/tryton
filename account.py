@@ -44,14 +44,22 @@ class Payment(metaclass=PoolMeta):
             pass
         if self.origin and isinstance(self.origin, Sale):
             sale = self.origin
-            self.party = sale.invoice_party or sale.party
-            sale_amount = sale.total_amount
-            self.kind = 'receivable' if sale_amount > 0 else 'payable'
+            party = (
+                getattr(sale, 'invoice_party', None)
+                or getattr(sale, 'party', None))
+            if party:
+                self.party = party
+            sale_amount = getattr(sale, 'total_amount', None)
             payment_amount = sum(
-                (p.amount for p in sale.payments if p.state != 'failed'),
+                (p.amount for p in getattr(sale, 'payments', [])
+                    if p.state != 'failed'),
                 Decimal(0))
-            self.amount = abs(sale_amount) - payment_amount
-            self.currency = self.origin.currency
+            if sale_amount is not None:
+                self.kind = 'receivable' if sale_amount > 0 else 'payable'
+                self.amount = abs(sale_amount) - payment_amount
+            currency = getattr(sale, 'currency', None)
+            if currency is not None:
+                self.currency = currency
 
     @classmethod
     def validate(cls, payments):
