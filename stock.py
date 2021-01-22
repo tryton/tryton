@@ -161,6 +161,15 @@ class Package(tree(), ModelSQL, ModelView):
             values['code'] = Sequence.get_id(config.package_sequence)
         return super(Package, cls).create(vlist)
 
+    @classmethod
+    def copy(cls, packages, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('moves')
+        return super().copy(packages, default=default)
+
 
 class Type(ModelSQL, ModelView):
     'Stock Package Type'
@@ -171,6 +180,15 @@ class Type(ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     package = fields.Many2One('stock.package', 'Package', select=True)
+
+    @classmethod
+    def copy(cls, moves, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('package')
+        return super().copy(moves, default=default)
 
 
 class PackageMixin(object):
