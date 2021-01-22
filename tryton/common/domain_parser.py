@@ -329,7 +329,10 @@ def format_value(field, value, target=None, context=None):
             '{0:.{1}f}'.format(value * factor or 0, digit), True)
 
     def format_selection():
-        selections = dict(field['selection'])
+        if isinstance(field['selection'], (tuple, list)):
+            selections = dict(field['selection'])
+        else:
+            selections = {}
         return selections.get(value, value) or ''
 
     def format_reference():
