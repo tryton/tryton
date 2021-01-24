@@ -484,6 +484,12 @@ class Time(Date):
         else:
             return ''
 
+    def set_editable(self):
+        if not self.editable or not self.editing:
+            return
+        record, field = self.editing
+        self.editable.get_child().set_text(self.get_textual_value(record))
+
 
 class TimeDelta(GenericText):
     align = 1
