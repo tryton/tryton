@@ -132,7 +132,8 @@
                 if (!node_attrs.widget) {
                     node_attrs.widget = field.type;
                 }
-                if ((node.tagName == 'label') && (!node_attrs.string)) {
+                if ((node.tagName == 'label') &&
+                        (node_attrs.string === undefined)) {
                     node_attrs.string = field.string + Sao.i18n.gettext(':');
                 }
                 if ((node.tagName == 'field') && (!node_attrs.help)) {
