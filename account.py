@@ -18,8 +18,8 @@ def sale_payment_confirm(func):
 
         result = func(cls, payments, *args, **kwargs)
 
-        sales = [p.origin for p in payments
-            if isinstance(p.origin, Sale)]
+        sales = {p.origin for p in payments
+            if isinstance(p.origin, Sale)}
         sales = Sale.browse(sales)  # optimize cache
         Sale.payment_confirm(sales)
 
