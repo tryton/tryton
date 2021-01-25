@@ -4,7 +4,7 @@ import gettext
 import webbrowser
 
 import tryton.rpc as rpc
-from tryton.common import RPCProgress, RPCExecute, RPCException
+from tryton.common import RPCExecute, RPCException
 from tryton.common import message, selection, file_write, file_open
 from tryton.config import CONFIG
 from tryton.pyson import PYSONDecoder
@@ -18,24 +18,24 @@ class Action(object):
     def exec_report(name, data, direct_print=False, context=None):
         if context is None:
             context = {}
-        data = data.copy()
-        ctx = rpc.CONTEXT.copy()
-        ctx.update(context)
-        ctx['direct_print'] = direct_print
-        args = ('report', name, 'execute', data.get('ids', []), data, ctx)
-        try:
-            res = RPCProgress('execute', args).run()
-        except RPCException:
-            return False
-        if not res:
-            return False
-        (type, data, print_p, name) = res
-        if not print_p and direct_print:
-            print_p = True
+        else:
+            context = context.copy()
+        context['direct_print'] = direct_print
+        ids = data.get('ids', [])
 
-        fp_name = file_write((name, type), data)
-        file_open(fp_name, type, print_p=print_p)
-        return True
+        def callback(result):
+            try:
+                result = result()
+            except RPCException:
+                return
+            type, data, print_p, name = result
+            if not print_p and direct_print:
+                print_p = True
+            fp_name = file_write((name, type), data)
+            file_open(fp_name, type, print_p=print_p)
+        RPCExecute(
+            'report', name, 'execute', ids, data, context=context,
+            callback=callback)
 
     @staticmethod
     def execute(action, data, context=None, keyword=False):

@@ -1,3 +1,4 @@
+* Execute report asynchronously
 * Add support for Python 3.9
 * Support empty value for timedelta converter
 * Add interactive search on tree view
