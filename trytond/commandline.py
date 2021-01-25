@@ -90,6 +90,11 @@ def get_parser_admin():
         default=[], metavar='CODE', help="Load language translations")
     parser.add_argument("--hostname", dest="hostname", default=None,
         help="Limit database listing to the hostname")
+    parser.add_argument("--validate", dest="validate", nargs='*',
+        metavar='MODEL', help="validate records of models")
+    parser.add_argument("--validate-percentage", dest="validate_percentage",
+        type=float, default=100, metavar="PERCENTAGE",
+        help="percentage of records to validate (default: 100)")
 
     parser.epilog = ('The first time a database is initialized '
         'or when the password is set, the admin password is read '

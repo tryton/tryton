@@ -3,6 +3,7 @@
 import sys
 import os
 import logging
+import random
 from getpass import getpass
 
 from sql import Table, Literal
@@ -119,3 +120,41 @@ def run(options):
             if options.hostname is not None:
                 configuration.hostname = options.hostname or None
             configuration.save()
+        with Transaction().start(db_name, 0, readonly=True):
+            if options.validate is not None:
+                validate(options.validate, options.validate_percentage)
+
+
+def validate(models, percentage=100):
+    from trytond.model import ModelStorage, ModelSingleton
+    from trytond.model.exceptions import ValidationError
+    logger = logging.getLogger('validate')
+    pool = Pool()
+    if not models:
+        models = sorted([n for n, _ in pool.iterobject()])
+    ratio = min(100, percentage) / 100
+    in_max = Transaction().database.IN_MAX
+    for name in models:
+        logger.info("validate: %s", name)
+        Model = pool.get(name)
+        if not issubclass(Model, ModelStorage):
+            continue
+        offset = 0
+        limit = in_max
+        while True:
+            records = Model.search(
+                [], order=[('id', 'ASC')], offset=offset, limit=limit)
+            if not records:
+                break
+            records = Model.browse(
+                random.sample(records, int(len(records) * ratio)))
+            for record in records:
+                try:
+                    Model._validate([record])
+                except ValidationError as exception:
+                    logger.error("%s: KO '%s'", record, exception)
+                else:
+                    logger.info("%s: OK", record)
+            if issubclass(Model, ModelSingleton):
+                break
+            offset += limit
