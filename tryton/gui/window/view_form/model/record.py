@@ -316,7 +316,7 @@ class Record(SignalEvent):
     def pre_validate(self):
         if not self.modified_fields:
             return True
-        values = self._get_on_change_args(self.modified_fields)
+        values = self._get_on_change_args(['id'] + list(self.modified_fields))
         try:
             RPCExecute('model', self.model_name, 'pre_validate', values,
                 context=self.get_context())
