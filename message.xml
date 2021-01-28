@@ -6,5 +6,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_opportunity_delete_cancel">
             <field name="text">To delete opportunity "%(opportunity)s", you must cancel it.</field>
         </record>
+        <record model="ir.message" id="msg_modify_origin_opportunity">
+            <field name="text">You cannot modify the opportunity origin of the sale "%(sale)s".</field>
+        </record>
     </data>
 </tryton>

@@ -2,6 +2,8 @@
 # this repository contains the full copyright notices and license terms.
 from functools import wraps
 
+from trytond.i18n import gettext
+from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
@@ -26,6 +28,21 @@ class Sale(metaclass=PoolMeta):
     @classmethod
     def _get_origin(cls):
         return super(Sale, cls)._get_origin() + ['sale.opportunity']
+
+    @classmethod
+    def write(cls, *args):
+        pool = Pool()
+        Opportunity = pool.get('sale.opportunity')
+        actions = iter(args)
+        for sales, values in zip(actions, actions):
+            if 'origin' in values:
+                for sale in sales:
+                    if isinstance(sale.origin, Opportunity):
+                        raise AccessError(gettext(
+                                'sale_opportunity'
+                                '.msg_modify_origin_opportunity',
+                                sale=sale.rec_name))
+        super().write(*args)
 
     @classmethod
     @process_opportunity
