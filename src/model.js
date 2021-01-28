@@ -1245,7 +1245,8 @@
             if (jQuery.isEmptyObject(this._changed)) {
                 return jQuery.Deferred().resolve(true);
             }
-            var values = this._get_on_change_args(Object.keys(this._changed));
+            var values = this._get_on_change_args(
+                Object.keys(this._changed).concat(['id']));
             return this.model.execute('pre_validate',
                     [values], this.get_context())
                 .then(function() {
