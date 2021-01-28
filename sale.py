@@ -78,7 +78,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
             "- total_amount: The total amount of the sale.\n"
             "- untaxed_amount: The total untaxed amount of the sale.")
 
-    @fields.depends('formula')
+    @fields.depends('formula', 'description')
     def pre_validate(self, **names):
         super(AdvancePaymentTermLine, self).pre_validate()
         names['total_amount'] = names['untaxed_amount'] = 0
@@ -89,7 +89,7 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
             raise FormulaError(
                 gettext('sale_advance_payment.msg_term_line_invalid_formula',
                     formula=self.formula,
-                    term_line=self.rec_name,
+                    term_line=self.description or '',
                     exception=exception)) from exception
 
     def get_compute_amount_context(self, **names):
