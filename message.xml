@@ -66,6 +66,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_invoice_payment_line_unique">
             <field name="text">A payment line can be linked to only one invoice.</field>
         </record>
+        <record model="ir.message" id="msg_invoice_payment_term_date_past">
+            <field name="text">The invoice "%(invoice)s" generates a payment date "%(date)s" in the past.</field>
+        </record>
     </data>
 </tryton>
 

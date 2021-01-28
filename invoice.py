@@ -29,7 +29,7 @@ from trytond.modules.product import price_digits
 
 from .exceptions import (
     InvoiceTaxValidationError, InvoiceNumberError, InvoiceValidationError,
-    InvoiceLineValidationError, PayInvoiceError)
+    InvoiceLineValidationError, PayInvoiceError, InvoicePaymentTermDateWarning)
 
 if config.getboolean('account_invoice', 'filestore', default=False):
     file_id = 'invoice_report_cache_id'
@@ -94,6 +94,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         depends=['state'])
     accounting_date = fields.Date('Accounting Date', states=_states,
         depends=_depends)
+    payment_term_date = fields.Date(
+        "Payment Term Date", states=_states, depends=_depends,
+        help="The date from which the payment term is calculated.\n"
+        "Leave empty to use the invoice date.")
     sequence = fields.Integer("Sequence", readonly=True)
     party = fields.Many2One('party.party', 'Party',
         required=True, states=_states, depends=_depends)
@@ -939,6 +943,10 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         Move = pool.get('account.move')
         Period = pool.get('account.period')
         Date = pool.get('ir.date')
+        Warning = pool.get('res.user.warning')
+        Lang = pool.get('ir.lang')
+
+        today = Date.today()
 
         if self.move:
             return self.move
@@ -956,12 +964,23 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             if line.amount_second_currency:
                 total_currency += line.amount_second_currency
 
-        term_lines = [(Date.today(), total)]
+        term_lines = [(self.payment_term_date or today, total)]
         if self.payment_term:
+            payment_date = self.payment_term_date or self.invoice_date
             term_lines = self.payment_term.compute(
-                total, self.company.currency, self.invoice_date)
+                total, self.company.currency, payment_date)
         remainder_total_currency = total_currency
         for date, amount in term_lines:
+            if date < today:
+                lang = Lang.get()
+                warning_key = 'invoice_payment_term_%d' % self.id
+                if Warning.check(warning_key):
+                    raise InvoicePaymentTermDateWarning(warning_key,
+                        gettext('account_invoice'
+                            '.msg_invoice_payment_term_date_past',
+                            invoice=self.rec_name,
+                            date=lang.strftime(date)))
+
             line = self._get_move_line(date, amount)
             if line.amount_second_currency:
                 remainder_total_currency += line.amount_second_currency

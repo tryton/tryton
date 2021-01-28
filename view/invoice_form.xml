@@ -66,6 +66,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="comment" colspan="4"/>
         </page>
         <page string="Payment" id="payment">
+            <label name="payment_term_date"/>
+            <field name="payment_term_date"/>
+            <newline/>
             <label name="amount_to_pay_today"/>
             <field name="amount_to_pay_today" symbol="currency"/>
             <label name="amount_to_pay"/>
