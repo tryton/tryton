@@ -1,9 +1,11 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql.conditionals import Greatest
 from sql.functions import CurrentTimestamp
 
 from trytond.model import ModelView, Workflow, fields
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
+from trytond.tools import grouped_slice, reduce_ids
 from trytond.transaction import Transaction
 
 
@@ -43,15 +45,31 @@ class Invoice(metaclass=PoolMeta):
         if 'history_datetime' not in cls.payment_term.depends:
             cls.payment_term.depends.append('history_datetime')
 
-    def get_history_datetime(self, name):
-        values = [
-            self.numbered_at,
-            self.party.create_date,
-            self.invoice_address.create_date,
-            ]
-        if self.payment_term:
-            values.append(self.payment_term.create_date)
-        return max(values)
+    @classmethod
+    def get_history_datetime(cls, invoices, name):
+        pool = Pool()
+        Party = pool.get('party.party')
+        Address = pool.get('party.address')
+        PaymentTerm = pool.get('account.invoice.payment_term')
+        table = cls.__table__()
+        party = Party.__table__()
+        address = Address.__table__()
+        payment_term = PaymentTerm.__table__()
+        cursor = Transaction().connection.cursor()
+
+        datetimes = {}
+        for ids in grouped_slice([i.id for i in invoices]):
+            cursor.execute(*table
+                .join(party, condition=table.party == party.id)
+                .join(address, condition=table.invoice_address == address.id)
+                .join(payment_term, 'LEFT',
+                    condition=table.payment_term == payment_term.id)
+                .select(table.id,
+                    Greatest(table.numbered_at, party.create_date,
+                        address.create_date, payment_term.create_date),
+                    where=reduce_ids(table.id, ids)))
+            datetimes.update(cursor)
+        return datetimes
 
     @classmethod
     def set_number(cls, invoices):
