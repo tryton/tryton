@@ -2,7 +2,7 @@
   "name": "tryton-sao",
   "title": "sao",
   "description": "Tryton webclient",
-  "version": "5.0.35",
+  "version": "5.0.36",
   "homepage": "http://www.tryton.org/",
   "author": {
     "name": "Tryton"
