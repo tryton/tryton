@@ -489,8 +489,7 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
     def _send_email_checkout(self, from_=None):
         pool = Pool()
         Language = pool.get('ir.lang')
-        if from_ is None:
-            from_ = config.get('email', 'from')
+        from_cfg = config.get('email', 'from')
         self.stripe_checkout([self])
         emails = self._emails_checkout()
         if not emails:
@@ -499,10 +498,10 @@ class Payment(CheckoutMixin, metaclass=PoolMeta):
         languages = [self.party.lang or Language.get()]
         msg, title = get_email(
             'account.payment.stripe.email_checkout', self, languages)
-        msg['From'] = from_
+        msg['From'] = from_ or from_cfg
         msg['To'] = ','.join(emails)
         msg['Subject'] = Header(title, 'utf-8')
-        sendmail_transactional(from_, emails, msg)
+        sendmail_transactional(from_cfg, emails, msg)
 
     def _emails_checkout(self):
         emails = []
