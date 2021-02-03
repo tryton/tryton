@@ -88,7 +88,7 @@ class ConfigurationSequence(metaclass=PoolMeta):
 class ShipmentDrop(Workflow, ModelSQL, ModelView):
     "Drop Shipment"
     __name__ = 'stock.shipment.drop'
-
+    _rec_name = 'number'
     effective_date = fields.Date(
         "Effective Date",
         states={
@@ -168,7 +168,9 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state') != 'shipped',
             },
         depends=['state', 'customer'])
-    code = fields.Char('Code', select=1, readonly=True)
+    number = fields.Char(
+        "Number", select=True, readonly=True,
+        help="The main identifier for the shipment.")
     state = fields.Selection([
             ('draft', 'Draft'),
             ('waiting', 'Waiting'),
@@ -192,6 +194,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         sale_line = SaleLine.__table__()
         location = Location.__table__()
         cursor = Transaction().connection.cursor()
+
+        table_h = cls.__table_handler__(module_name)
+        # Migration from 5.8: rename code into number
+        if table_h.column_exist('code'):
+            table_h.column_rename('code', 'number')
 
         super(ShipmentDrop, cls).__register__(module_name)
 
@@ -253,6 +260,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentDrop, cls).__setup__()
+        cls._order[0] = ('id', 'DESC')
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'shipped'),
@@ -343,7 +351,7 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.shipment_drop_sequence)
+            values['number'] = Sequence.get_id(config.shipment_drop_sequence)
         shipments = super(ShipmentDrop, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
