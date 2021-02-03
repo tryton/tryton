@@ -79,17 +79,16 @@ def gen_password(length=8):
 
 
 def _send_email(from_, users, email_func):
-    if from_ is None:
-        from_ = config.get('email', 'from')
+    from_cfg = config.get('email', 'from')
     for user in users:
         if not user.email:
             logger.info("Missing address for '%s' to send email", user.login)
             continue
         msg, title = email_func(user)
-        msg['From'] = from_
+        msg['From'] = from_ or from_cfg
         msg['To'] = user.email
         msg['Subject'] = Header(title, 'utf-8')
-        sendmail_transactional(from_, [user.email], msg)
+        sendmail_transactional(from_cfg, [user.email], msg)
 
 
 class PasswordError(UserError):
