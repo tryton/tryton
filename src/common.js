@@ -3518,7 +3518,8 @@
             domain = field.get_domain(record);
         }
         var context = field.get_search_context(record);
-        domain = [['rec_name', 'ilike', '%' + search_text + '%'], domain];
+        var likify = new Sao.common.DomainParser().likify;
+        domain = [['rec_name', 'ilike', likify(search_text)], domain];
 
         var order = field.get_search_order(record);
         var sao_model = new Sao.Model(model);
