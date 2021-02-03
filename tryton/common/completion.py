@@ -7,6 +7,7 @@ from gi.repository import GLib, Gtk
 
 from tryton.config import CONFIG
 from tryton.common import RPCExecute
+from tryton.common.domain_parser import likify
 from tryton.exceptions import TrytonServerError, TrytonError
 
 _ = gettext.gettext
@@ -44,7 +45,7 @@ def update_completion(entry, record, field, model, domain=None):
         if domain is None:
             domain = field.domain_get(record)
         context = field.get_search_context(record)
-        domain = [('rec_name', 'ilike', '%' + search_text + '%'), domain]
+        domain = [('rec_name', 'ilike', likify(search_text)), domain]
         order = field.get_search_order(record)
 
         def callback(results):
