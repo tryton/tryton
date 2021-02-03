@@ -5,6 +5,10 @@ from trytond.pool import Pool
 from . import product
 from . import stock
 
+from .stock import LotSledMixin
+
+__all__ = ['LotSledMixin', 'register']
+
 
 def register():
     Pool.register(
@@ -13,6 +17,7 @@ def register():
         stock.Configuration,
         stock.ConfigurationLotShelfLife,
         stock.Lot,
+        stock.MoveAddLotsStartLot,
         stock.Move,
         stock.Period,
         module='stock_lot_sled', type_='model')

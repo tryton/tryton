@@ -45,8 +45,7 @@ class ConfigurationLotShelfLife(ModelSQL, ValueMixin):
     shelf_life_delay = shelf_life_delay
 
 
-class Lot(metaclass=PoolMeta):
-    __name__ = 'stock.lot'
+class LotSledMixin:
 
     shelf_life_expiration_date = fields.Date('Shelf Life Expiration Date',
         states={
@@ -85,7 +84,7 @@ class Lot(metaclass=PoolMeta):
         pool = Pool()
         Date = pool.get('ir.date')
         try:
-            super(Lot, self).on_change_product()
+            super().on_change_product()
         except AttributeError:
             pass
         if self.product:
@@ -98,6 +97,10 @@ class Lot(metaclass=PoolMeta):
                     and self.product.expiration_time):
                 self.expiration_date = (today
                     + datetime.timedelta(days=self.product.expiration_time))
+
+
+class Lot(LotSledMixin, metaclass=PoolMeta):
+    __name__ = 'stock.lot'
 
     @classmethod
     def write(cls, *args):
@@ -136,6 +139,22 @@ class Lot(metaclass=PoolMeta):
                         '.msg_lot_modify_expiration_date_period_close',
                         lot=move.lot.rec_name,
                         move=move.rec_name))
+
+
+class MoveAddLotsStartLot(LotSledMixin, metaclass=PoolMeta):
+    __name__ = 'stock.move.add.lots.start.lot'
+
+    @fields.depends('shelf_life_expiration_date', 'expiration_date')
+    def _set_lot_values(self, lot):
+        super()._set_lot_values(lot)
+        self.shelf_life_expiration_date = lot.shelf_life_expiration_date
+        self.expiration_date = lot.expiration_date
+
+    def _get_lot_values(self, move):
+        values = super()._get_lot_values(move)
+        values['shelf_life_expiration_date'] = self.shelf_life_expiration_date
+        values['expiration_date'] = self.expiration_date
+        return values
 
 
 class Move(metaclass=PoolMeta):

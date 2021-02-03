@@ -28,5 +28,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" ref="stock_lot.lot_view_tree"/>
             <field name="name">lot_tree</field>
         </record>
+
+        <record model="ir.ui.view" id="move_add_lots_start_lot_view_list">
+            <field name="model">stock.move.add.lots.start.lot</field>
+            <field name="inherit" ref="stock_lot.move_add_lots_start_lot_view_list"/>
+            <field name="name">lot_tree</field>
+        </record>
     </data>
 </tryton>
