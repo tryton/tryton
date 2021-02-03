@@ -98,12 +98,12 @@ def group_operator(tokens):
         yield cur
 
 
-def likify(value):
+def likify(value, escape='\\'):
     "Add % if needed"
     if not value:
         return '%'
-    escaped = value.replace('%%', '__')
-    if '%' in escaped:
+    escaped = value.replace(escape + '%', '').replace(escape + '_', '')
+    if '%' in escaped or '_' in escaped:
         return value
     else:
         return '%' + value + '%'

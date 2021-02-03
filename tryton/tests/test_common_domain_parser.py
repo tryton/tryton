@@ -7,7 +7,8 @@ from unittest import TestCase
 from tryton.common import untimezoned_date
 from tryton.common.domain_parser import (
     group_operator, quote, split_target_value, convert_value, format_value,
-    complete_value, parenthesize, rlist, operatorize, DomainParser, udlex)
+    complete_value, parenthesize, rlist, operatorize, DomainParser, udlex,
+    likify)
 
 
 class DomainParserTestCase(TestCase):
@@ -25,6 +26,19 @@ class DomainParserTestCase(TestCase):
             list(group_operator(iter(['a', '>', '=', 'b']))), ['a', '>=', 'b'])
         self.assertEqual(
             list(group_operator(iter(['a', '>', '=', '=']))), ['a', '>=', '='])
+
+    def test_likify(self):
+        "Test likify"
+        for value, result in [
+                ('', '%'),
+                ('foo', '%foo%'),
+                ('foo%', 'foo%'),
+                ('foo_bar', 'foo_bar'),
+                ('foo\\%', '%foo\\%%'),
+                ('foo\\_bar', '%foo\\_bar%'),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(likify(value), result)
 
     def test_quote(self):
         "Test quote"
