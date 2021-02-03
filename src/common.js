@@ -1804,12 +1804,15 @@
             }.bind(this));
             return result;
         },
-        likify: function(value) {
+        likify: function(value, escape) {
+            escape = escape || '\\';
             if (!value) {
                 return '%';
             }
-            var escaped = value.replace('%%', '__');
-            if (escaped.contains('%')) {
+            var escaped = value
+                .replace(escape + '%', '')
+                .replace(escape + '_', '');
+            if (escaped.contains('%') || escaped.contains('_')) {
                 return value;
             } else {
                 return '%' + value + '%';
