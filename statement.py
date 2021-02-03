@@ -977,6 +977,7 @@ class Line(
             second_currency = None
 
         return MoveLine(
+            origin=self,
             description=self.description,
             debit=amount < zero and -amount or zero,
             credit=amount >= zero and amount or zero,

@@ -71,3 +71,11 @@ class Move(metaclass=PoolMeta):
                         move=move.rec_name,
                         statement=move.origin.rec_name))
         super().post(moves)
+
+
+class MoveLine(metaclass=PoolMeta):
+    __name__ = 'account.move.line'
+
+    @classmethod
+    def _get_origin(cls):
+        return super()._get_origin() + ['account.statement.line']

@@ -16,6 +16,7 @@ def register():
         statement.LineGroup,
         account.Journal,
         account.Move,
+        account.MoveLine,
         statement.Origin,
         statement.OriginInformation,
         statement.ImportStatementStart,
