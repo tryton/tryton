@@ -7,4 +7,7 @@ this repository contains the full copyright notices and license terms. -->
         <field name="lot"/>
         <newline/>
     </xpath>
+    <xpath expr="/form/group[@id='buttons']" position="inside">
+        <button name="add_lots_wizard" icon="tryton-add"/>
+    </xpath>
 </data>

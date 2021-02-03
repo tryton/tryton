@@ -201,6 +201,36 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_tree</field>
         </record>
 
+        <record model="ir.model.button" id="move_add_lots_wizard_button">
+            <field name="name">add_lots_wizard</field>
+            <field name="string">Add Lots</field>
+            <field name="model" search="[('model', '=', 'stock.move')]"/>
+        </record>
+
+        <record model="ir.action.wizard" id="wizard_move_add_lots">
+            <field name="name">Add Lots</field>
+            <field name="wiz_name">stock.move.add.lots</field>
+            <field name="model">stock.move</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_add_lots_start_view_form">
+            <field name="model">stock.move.add.lots.start</field>
+            <field name="type">form</field>
+            <field name="name">stock_move_add_lots_start_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="move_add_lots_start_lot_view_list">
+            <field name="model">stock.move.add.lots.start.lot</field>
+            <field name="type">tree</field>
+            <field name="name">stock_move_add_lots_start_lot_list</field>
+        </record>
+
+        <record model="ir.model.button" id="move_add_lots_start_duplicate_lot_button">
+            <field name="name">duplicate_lot</field>
+            <field name="string">Duplicate Lot</field>
+            <field name="model" search="[('model', '=', 'stock.move.add.lots.start')]"/>
+        </record>
+
         <record model="ir.ui.view" id="period_cache_lot_view_form">
             <field name="model">stock.period.cache.lot</field>
             <field name="type">form</field>

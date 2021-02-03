@@ -5,4 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/tree/field[@name='product']" position="after">
         <field name="lot" expand="1"/>
     </xpath>
+    <xpath expr="/tree" position="inside">
+        <button name="add_lots_wizard"/>
+    </xpath>
 </data>

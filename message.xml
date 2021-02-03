@@ -12,5 +12,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_only_lot">
             <field name="text">You must select a stock lot instead of a product for "%(product)s".</field>
         </record>
+        <record model="ir.message" id="msg_move_add_lot_quantity">
+            <field name="text">The total quantity "%(lot_quantity)s" of the lots must be less than or equal to the quantity "%(move_quantity)s" of the move.</field>
+        </record>
     </data>
 </tryton>

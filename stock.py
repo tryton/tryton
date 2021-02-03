@@ -1,18 +1,21 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+from copy import copy
 from functools import wraps
 
 from sql import Column
 
 from trytond.i18n import gettext
 from trytond.model import Model, ModelView, ModelSQL, fields
-from trytond.model.exceptions import AccessError, RequiredValidationError
-from trytond.pyson import Eval
+from trytond.model.exceptions import (
+    AccessError, RequiredValidationError, ValidationError)
+from trytond.pyson import Eval, Bool, Len
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 from trytond.modules.stock import StockMixin
+from trytond.wizard import Wizard, StateView, StateTransition, Button
 
 
 def check_no_move(func):
@@ -47,12 +50,29 @@ def check_no_move(func):
     return decorator
 
 
-class Lot(ModelSQL, ModelView, StockMixin):
+class LotMixin:
+
+    number = fields.Char(
+        "Number", required=True, select=True,
+        states={
+            'required': ~Eval('has_sequence') | (Eval('id', -1) >= 0),
+            },
+        depends=['has_sequence'])
+    product = fields.Many2One('product.product', 'Product', required=True)
+    has_sequence = fields.Function(
+        fields.Boolean("Has Sequence"), 'on_change_with_has_sequence')
+
+    @fields.depends('product')
+    def on_change_with_has_sequence(self, name=None):
+        if self.product:
+            return bool(self.product.lot_sequence)
+
+
+class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
     "Stock Lot"
     __name__ = 'stock.lot'
     _rec_name = 'number'
-    number = fields.Char('Number', required=True, select=True)
-    product = fields.Many2One('product.product', 'Product', required=True)
+
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity',
         searcher='search_quantity')
     forecast_quantity = fields.Function(fields.Float('Forecast Quantity'),
@@ -92,6 +112,24 @@ class Lot(ModelSQL, ModelView, StockMixin):
     def on_change_with_default_uom_digits(self, name=None):
         if self.product:
             return self.product.default_uom.digits
+
+    @classmethod
+    def create(cls, vlist):
+        vlist = [v.copy() for v in vlist]
+        for values in vlist:
+            if not values.get('number'):
+                values['number'] = cls._new_number(values)
+        return super().create(vlist)
+
+    @classmethod
+    def _new_number(cls, values):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Sequence = pool.get('ir.sequence')
+        if values.get('product'):
+            product = Product(values['product'])
+            if product.lot_sequence:
+                return Sequence.get_id(product.lot_sequence.id)
 
     @classmethod
     @check_no_move
@@ -235,6 +273,22 @@ class Move(metaclass=PoolMeta):
             },
         depends=['state', 'product'])
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'add_lots_wizard': {
+                    'invisible': ~Eval('state').in_(['draft', 'assigned']),
+                    'readonly': Bool(Eval('lot')),
+                    'depends': ['lot', 'state'],
+                    },
+                })
+
+    @classmethod
+    @ModelView.button_action('stock_lot.wizard_move_add_lots')
+    def add_lots_wizard(cls, moves):
+        pass
+
     def check_lot(self):
         "Check if lot is required"
         if (self.state == 'done'
@@ -251,6 +305,201 @@ class Move(metaclass=PoolMeta):
         super(Move, cls).validate(moves)
         for move in moves:
             move.check_lot()
+
+
+class MoveAddLots(Wizard):
+    "Add Lots"
+    __name__ = 'stock.move.add.lots'
+    start = StateView('stock.move.add.lots.start',
+        'stock_lot.move_add_lots_start_view_form', [
+            Button("Cancel", 'end', 'tryton-cancel'),
+            Button("Add", 'add', 'tryton-ok', default=True),
+            ])
+    add = StateTransition()
+
+    def default_start(self, fields):
+        default = {}
+        if 'product' in fields:
+            default['product'] = self.record.product.id
+        if 'quantity' in fields:
+            default['quantity'] = self.record.quantity
+        if 'unit' in fields:
+            default['unit'] = self.record.uom.id
+        return default
+
+    def transition_add(self):
+        pool = Pool()
+        Lang = pool.get('ir.lang')
+        Lot = pool.get('stock.lot')
+        lang = Lang.get()
+        quantity_remaining = self.start.on_change_with_quantity_remaining()
+        if quantity_remaining < 0:
+            digits = self.record.uom.digits
+            move_quantity = self.record.quantity
+            lot_quantity = self.record.quantity - quantity_remaining
+            raise ValidationError(gettext(
+                    'stock_lot.msg_move_add_lot_quantity',
+                    lot_quantity=lang.format('%.*f', (digits, lot_quantity)),
+                    move_quantity=lang.format(
+                        '%.*f', (digits, move_quantity))))
+        lots = []
+        for line in self.start.lots:
+            lot = line.get_lot(self.record)
+            lots.append(lot)
+        Lot.save(lots)
+        if quantity_remaining:
+            self.record.quantity = quantity_remaining
+            self.record.save()
+        for i, (line, lot) in enumerate(zip(self.start.lots, lots)):
+            if not i and not quantity_remaining:
+                self.record.quantity = line.quantity
+                self.record.lot = lot
+                self.record.save()
+            else:
+                with Transaction().set_context(_stock_move_split=True):
+                    self.model.copy([self.record], {
+                            'quantity': line.quantity,
+                            'lot': lot.id,
+                            })
+        return 'end'
+
+
+class MoveAddLotsStart(ModelView):
+    "Add Lots"
+    __name__ = 'stock.move.add.lots.start'
+
+    product = fields.Many2One('product.product', "Product", readonly=True)
+    quantity = fields.Float(
+        "Quantity", digits=(16, Eval('unit_digits', 2)), readonly=True,
+        depends=['unit_digits'])
+    unit = fields.Many2One('product.uom', "Unit", readonly=True)
+    unit_digits = fields.Function(
+        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+    quantity_remaining = fields.Function(
+        fields.Float(
+            "Quantity Remaining", digits=(16, Eval('unit_digits', 2)),
+            depends=['unit_digits']),
+        'on_change_with_quantity_remaining')
+
+    lots = fields.One2Many(
+        'stock.move.add.lots.start.lot', 'parent', "Lots",
+        domain=[
+            ('product', '=', Eval('product', -1)),
+            ],
+        states={
+            'readonly': ~Eval('quantity_remaining', 0),
+            },
+        depends=['product', 'quantity_remaining'])
+
+    duplicate_lot_number = fields.Integer(
+        "Duplicate Lot Number",
+        states={
+            'invisible': Len(Eval('lots')) != 1,
+            },
+        depends=['lots'],
+        help="The number of times the lot must be duplicated.")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update(
+            duplicate_lot={
+                'invisible': Len(Eval('lots')) != 1,
+                'readonly': (~Eval('duplicate_lot_number')
+                    | (Eval('duplicate_lot_number', 0) <= 0)),
+                'depends': ['lots', 'duplicate_lot_number'],
+                },
+            )
+
+    @fields.depends('unit')
+    def on_change_with_unit_digits(self, name=None):
+        if self.unit:
+            return self.unit.digits
+
+    @fields.depends('quantity', 'lots', 'unit')
+    def on_change_with_quantity_remaining(self, name=None):
+        if self.quantity is not None:
+            quantity = self.quantity
+            if self.lots:
+                for lot in self.lots:
+                    quantity -= getattr(lot, 'quantity', 0) or 0
+            if self.unit:
+                quantity = self.unit.round(quantity)
+            return quantity
+
+    @ModelView.button_change(
+        'lots', 'duplicate_lot_number',
+        methods=['on_change_with_quantity_remaining'])
+    def duplicate_lot(self):
+        lots = list(self.lots)
+        template, = self.lots
+        for i in range(self.duplicate_lot_number):
+            lot = copy(template)
+            lot._id = None
+            lots.append(lot)
+        self.lots = lots
+        self.quantity_remaining = self.on_change_with_quantity_remaining()
+
+
+class MoveAddLotsStartLot(ModelView, LotMixin):
+    "Add Lots"
+    __name__ = 'stock.move.add.lots.start.lot'
+
+    parent = fields.Many2One('stock.move.add.lots.start', "Parent")
+    quantity = fields.Float(
+        "Quantity", digits=(16, Eval('unit_digits', 2)), required=True,
+        depends=['unit_digits'])
+    unit_digits = fields.Function(
+        fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
+
+    @fields.depends(
+        'parent', '_parent_parent.quantity_remaining')
+    def on_change_parent(self):
+        if (self.parent
+                and self.parent.quantity_remaining is not None):
+            self.quantity = self.parent.quantity_remaining
+
+    @fields.depends('parent', '_parent_parent.unit_digits')
+    def on_change_with_unit_digits(self, name=None):
+        if self.parent:
+            return self.parent.unit_digits
+
+    @fields.depends('number', 'product', methods=['_set_lot_values'])
+    def on_change_number(self):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        if self.number and self.product:
+            lots = Lot.search([
+                    ('number', '=', self.number),
+                    ('product', '=', self.product.id),
+                    ])
+            if len(lots) == 1:
+                lot, = lots
+                self._set_lot_values(lot)
+
+    def _set_lot_values(self, lot):
+        pass
+
+    def get_lot(self, move):
+        pool = Pool()
+        Lot = pool.get('stock.lot')
+        values = self._get_lot_values(move)
+        lots = Lot.search(
+            [(k, '=', v) for k, v in values.items()],
+            limit=1)
+        if lots:
+            lot, = lots
+        else:
+            lot = Lot()
+            for k, v in values.items():
+                setattr(lot, k, v)
+        return lot
+
+    def _get_lot_values(self, move):
+        return {
+            'number': self.number,
+            'product': move.product,
+            }
 
 
 class ShipmentIn(metaclass=PoolMeta):

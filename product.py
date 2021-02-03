@@ -3,10 +3,31 @@
 from sql import Table
 
 from trytond.config import config
-from trytond.model import fields
+from trytond.model import ModelSQL, ValueMixin, fields
 from trytond.pyson import Eval
-from trytond.pool import PoolMeta
+from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
+
+
+class Configuration(metaclass=PoolMeta):
+    __name__ = 'product.configuration'
+
+    default_lot_sequence = fields.MultiValue(
+        fields.Many2One(
+            'ir.sequence', "Default Lot Sequence",
+            domain=[
+                ('code', '=', 'stock.lot'),
+                ]))
+
+
+class ConfigurationDefaultLotSequence(ModelSQL, ValueMixin):
+    "Product Configuration Default Lot Sequence"
+    __name__ = 'product.configuration.default_lot_sequence'
+    default_lot_sequence = fields.Many2One(
+        'ir.sequence', "Default Lot Sequence",
+        domain=[
+            ('code', '=', 'stock.lot'),
+            ])
 
 
 class Template(metaclass=PoolMeta):
@@ -24,6 +45,16 @@ class Template(metaclass=PoolMeta):
             'invisible': ~Eval('type').in_(['goods', 'assets']),
             },
         depends=['type'])
+    lot_sequence = fields.Many2One(
+        'ir.sequence', "Lot Sequence",
+        domain=[
+            ('code', '=', 'stock.lot'),
+            ],
+        states={
+            'invisible': ~Eval('type').in_(['goods', 'assets']),
+            },
+        depends=['type'],
+        help="The sequence used to automatically number lots.")
 
     @classmethod
     def __register__(cls, module):
@@ -65,6 +96,14 @@ class Template(metaclass=PoolMeta):
             table_h.drop_table('product.template-stock.lot.type',
                 template_lot_type_table_name)
             table_h.drop_table('stock.lot.type', lot_type_table_name)
+
+    @classmethod
+    def default_lot_sequence(cls, **pattern):
+        pool = Pool()
+        Configuration = pool.get('product.configuration')
+        sequence = Configuration(1).get_multivalue(
+            'default_lot_sequence', **pattern)
+        return sequence.id if sequence else None
 
 
 class Product(metaclass=PoolMeta):
