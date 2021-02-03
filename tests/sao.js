@@ -1413,6 +1413,24 @@
         });
     });
 
+    QUnit.test('DomainParser.likify', function() {
+        var parser = new Sao.common.DomainParser();
+
+        [
+            ['', '%'],
+            ['foo', '%foo%'],
+            ['foo%', 'foo%'],
+            ['foo_bar', 'foo_bar'],
+            ['foo\\%', '%foo\\%%'],
+            ['foo\\_bar', '%foo\\_bar%'],
+        ].forEach(function(test) {
+            var value = test[0];
+            var result = test[1];
+            QUnit.ok(Sao.common.compare(parser.likify(value), result),
+                'likify(' + JSON.stringify(value) + ')');
+        });
+    });
+
     QUnit.test('DomainParser.quote', function() {
         var parser = new Sao.common.DomainParser();
 
