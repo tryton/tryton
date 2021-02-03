@@ -39,7 +39,7 @@ class DunningLevel(metaclass=PoolMeta):
             },
         depends=['send_email'])
     email_from = fields.Char(
-        "From",
+        "From", translate=True,
         states={
             'invisible': ~Eval('send_email'),
             },
@@ -114,7 +114,7 @@ class Dunning(metaclass=PoolMeta):
 
         account_config = AccountConfig(1)
 
-        from_ = self.level.email_from or config.get('email', 'from')
+        from_ = config.get('email', 'from')
         to = []
         contact = self.party.contact_mechanism_get(
             'email', usage=self.level.email_contact_mechanism)
@@ -146,6 +146,11 @@ class Dunning(metaclass=PoolMeta):
     def _email(self, from_, to, cc, bcc, languages):
         # TODO order languages to get default as last one for title
         msg, title = get_email(self.level.email_template, self, languages)
+        language = list(languages)[-1]
+        with Transaction().set_context(language=language.code):
+            dunning = self.__class__(self.id)
+            if dunning.level.email_from:
+                from_ = dunning.level.email_from
         msg['From'] = from_
         msg['To'] = ', '.join(to)
         msg['Cc'] = ', '.join(cc)
