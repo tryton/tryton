@@ -57,6 +57,11 @@ class InvoiceLine(metaclass=PoolMeta):
             },
         depends=['type', 'product_uom_category', 'invoice', 'invoice_type'])
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._check_modify_exclude.add('stock_moves')
+
     @property
     def moved_quantity(self):
         'The quantity from linked stock moves in line unit'
@@ -68,6 +73,13 @@ class InvoiceLine(metaclass=PoolMeta):
                 quantity += Uom.compute_qty(
                     stock_move.uom, stock_move.quantity, self.unit)
         return quantity
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        lines = sum(args[0:None:2], [])
+        moves = sum((l.stock_moves for l in lines), ())
+        cls.update_unit_price(moves)
 
     @classmethod
     def copy(cls, lines, default=None):

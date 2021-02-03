@@ -30,6 +30,11 @@ class Move(metaclass=PoolMeta):
         'on_change_with_invoice_types')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._allow_modify_closed_period.add('invoice_lines')
+
+    @classmethod
     def get_invoice_types(cls):
         pool = Pool()
         Invoice = pool.get('account.invoice')
@@ -73,6 +78,12 @@ class Move(metaclass=PoolMeta):
     @Workflow.transition('done')
     def do(cls, moves):
         super().do(moves)
+        cls.update_unit_price(moves)
+
+    @classmethod
+    def write(cls, *args):
+        super().write(*args)
+        moves = sum(args[0:None:2], [])
         cls.update_unit_price(moves)
 
     @classmethod
