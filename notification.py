@@ -29,7 +29,7 @@ class Email(ModelSQL, ModelView):
     __name__ = 'notification.email'
 
     from_ = fields.Char(
-        "From",
+        "From", translate=True,
         help="Leave empty for the value defined in the configuration file.")
     subject = fields.Char(
         "Subject", translate=True,
@@ -176,9 +176,11 @@ class Email(ModelSQL, ModelView):
         # TODO order languages to get default as last one for title
         content, title = get_email(self.content, record, languages)
         language = list(languages)[-1]
-        if self.subject:
-            with Transaction().set_context(language=language.code):
-                notification = self.__class__(self.id)
+        with Transaction().set_context(language=language.code):
+            notification = self.__class__(self.id)
+            if notification.from_:
+                from_ = notification.from_
+            if self.subject:
                 title = (TextTemplate(notification.subject)
                     .generate(record=record)
                     .render())
@@ -222,7 +224,8 @@ class Email(ModelSQL, ModelView):
         Log = pool.get('notification.email.log')
         datamanager = SMTPDataManager()
         Transaction().join(datamanager)
-        from_ = self.from_ or config.get('email', 'from')
+        from_ = (config.get('notification_email', 'from')
+            or config.get('email', 'from'))
         logs = []
         for record in records:
             languagues = set()
