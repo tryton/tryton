@@ -140,7 +140,7 @@ class HTML(Widget, TranslateMixin):
                 self.translate_button(), expand=False, fill=False, padding=0)
 
     def uri(self, language=None):
-        if not self.record or self.record.id < 0:
+        if not self.record or self.record.id < 0 or CONNECTION.url is None:
             uri = ''
         else:
             path = ['ir/html', self.model_name, str(self.record.id),
