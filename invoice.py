@@ -245,7 +245,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def __setup__(cls):
         super(Invoice, cls).__setup__()
         cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
-                'invoice_report_cache', 'invoice_report_format']
+                'invoice_report_cache', 'invoice_report_format', 'lines']
         cls._order = [
             ('number', 'DESC'),
             ('id', 'DESC'),
