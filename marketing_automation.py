@@ -299,7 +299,7 @@ class Activity(ModelSQL, ModelView):
             ], "Action")
 
     # Send E-mail
-    email_from = fields.Char("From",
+    email_from = fields.Char("From", translate=True,
         states={
             'invisible': Eval('action') != 'send_email',
             },
@@ -596,10 +596,10 @@ class Activity(ModelSQL, ModelView):
             .filter(convert_href)
             .render())
 
-        msg = MIMEMultipart('alternative')
-        msg['From'] = (self.email_from
-            or config.get('marketing', 'email_from')
+        from_ = (config.get('marketing', 'email_from')
             or config.get('email', 'from'))
+        msg = MIMEMultipart('alternative')
+        msg['From'] = translated.email_from or from_
         msg['To'] = to
         msg['Subject'] = Header(title, 'utf-8')
         if html2text:
@@ -613,7 +613,7 @@ class Activity(ModelSQL, ModelView):
         to_addrs = [a for _, a in getaddresses([to])]
         if to_addrs:
             sendmail_transactional(
-                self.email_from, to_addrs, msg, datamanager=smtpd_datamanager)
+                from_, to_addrs, msg, datamanager=smtpd_datamanager)
 
     def email_context(self, record):
         return {
