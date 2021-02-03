@@ -308,7 +308,7 @@ class Move(Workflow, ModelSQL, ModelView):
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned
             | set(['planned_date', 'effective_date', 'state']))
-        cls._allow_modify_closed_period = {'cost_price'}
+        cls._allow_modify_closed_period = {'cost_price', 'unit_price'}
 
         t = cls.__table__()
         cls._sql_constraints += [
