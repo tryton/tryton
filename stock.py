@@ -10,8 +10,7 @@ from trytond.pyson import Eval, Bool
 from .exceptions import LotUnitQuantityError
 
 
-class Lot(metaclass=PoolMeta):
-    __name__ = 'stock.lot'
+class LotUnitMixin:
 
     unit = fields.Many2One(
         'product.uom', "Unit",
@@ -21,7 +20,7 @@ class Lot(metaclass=PoolMeta):
         depends=['product_default_uom_category'],
         help="The biggest unit for the lot.")
     unit_quantity = fields.Float(
-        "Quantity", digits=(16, Eval('unit_digits', 2)),
+        "Unit Quantity", digits=(16, Eval('unit_digits', 2)),
         states={
             'required': Bool(Eval('unit')),
             'invisible': ~Eval('unit'),
@@ -36,19 +35,10 @@ class Lot(metaclass=PoolMeta):
     unit_digits = fields.Function(
         fields.Integer("Unit Digits"), 'on_change_with_unit_digits')
 
-    @classmethod
-    def __setup__(cls):
-        super(Lot, cls).__setup__()
-        cls._modify_no_move += [
-            ('unit', 'done', 'stock_lot_unit.msg_change_unit'),
-            ('unit_quantity', 'done',
-                'stock_lot_unit.msg_change_unit_quantity'),
-            ]
-
     @fields.depends('product', methods=['on_change_unit'])
     def on_change_product(self):
         try:
-            super(Lot, self).on_change_product()
+            super().on_change_product()
         except AttributeError:
             pass
         if self.product and self.product.lot_unit:
@@ -70,6 +60,43 @@ class Lot(metaclass=PoolMeta):
     def on_change_with_unit_digits(self, name=None):
         if self.unit:
             return self.unit.digits
+
+
+class Lot(LotUnitMixin, metaclass=PoolMeta):
+    __name__ = 'stock.lot'
+
+    @classmethod
+    def __setup__(cls):
+        super(Lot, cls).__setup__()
+        cls._modify_no_move += [
+            ('unit', 'done', 'stock_lot_unit.msg_change_unit'),
+            ('unit_quantity', 'done',
+                'stock_lot_unit.msg_change_unit_quantity'),
+            ]
+
+
+class MoveAddLotsStartLot(LotUnitMixin, metaclass=PoolMeta):
+    __name__ = 'stock.move.add.lots.start.lot'
+
+    @fields.depends(
+        'unit', 'unit_quantity', 'quantity', 'parent', '_parent_parent.unit')
+    def _set_lot_values(self, lot):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        super()._set_lot_values(lot)
+        self.unit = lot.unit
+        self.unit_quantity = lot.unit_quantity
+        if self.parent.unit:
+            maximum_quantity = Uom.compute_qty(
+                lot.unit, lot.unit_quantity, self.parent.unit, round=False)
+            if self.quantity > maximum_quantity:
+                self.quantity = self.parent.unit.round(maximum_quantity)
+
+    def _get_lot_values(self, move):
+        values = super()._get_lot_values(move)
+        values['unit'] = self.unit
+        values['unit_quantity'] = self.unit_quantity
+        return values
 
 
 class Move(metaclass=PoolMeta):

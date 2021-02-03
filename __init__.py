@@ -5,7 +5,9 @@ from trytond.pool import Pool
 from . import product
 from . import stock
 
-__all__ = ['register']
+from .stock import LotUnitMixin
+
+__all__ = ['LotUnitMixin', 'register']
 
 
 def register():
@@ -13,6 +15,7 @@ def register():
         product.Template,
         product.Product,
         stock.Lot,
+        stock.MoveAddLotsStartLot,
         stock.Move,
         stock.Inventory,
         stock.ShipmentIn,
