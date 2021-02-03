@@ -271,14 +271,13 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
         else:
             record, = records
         if not record.active:
-            from_ = (from_
-                or config.get('marketing', 'email_from')
+            from_cfg = (config.get('marketing', 'email_from')
                 or config.get('email', 'from'))
             msg, title = record.get_email_subscribe()
-            msg['From'] = from_
+            msg['From'] = from_ or from_cfg
             msg['To'] = record.email
             msg['Subject'] = Header(title, 'utf-8')
-            sendmail_transactional(from_, [record.email], msg)
+            sendmail_transactional(from_cfg, [record.email], msg)
 
     def request_unsubscribe(self, email, from_=None):
         pool = Pool()
@@ -297,14 +296,13 @@ class EmailList(DeactivableMixin, ModelSQL, ModelView):
         if records:
             record, = records
             if record.active:
-                from_ = (from_
-                    or config.get('marketing', 'email_from')
+                from_cfg = (config.get('marketing', 'email_from')
                     or config.get('email', 'from'))
                 msg, title = record.get_email_unsubscribe()
-                msg['From'] = from_
+                msg['From'] = from_ or from_cfg
                 msg['To'] = record.email
                 msg['Subject'] = Header(title, 'utf-8')
-                sendmail_transactional(from_, [record.email], msg)
+                sendmail_transactional(from_cfg, [record.email], msg)
 
 
 class Message(Workflow, ModelSQL, ModelView):
@@ -460,13 +458,12 @@ class Message(Workflow, ModelSQL, ModelView):
                     .render())
 
                 name = email.party.rec_name if email.party else ''
-                from_ = (message.from_
-                    or config.get('marketing', 'email_from')
+                from_cfg = (config.get('marketing', 'email_from')
                     or config.get('email', 'from'))
                 to = _formataddr(name, email.email)
 
                 msg = MIMEMultipart('alternative')
-                msg['From'] = from_
+                msg['From'] = message.from_ or from_cfg
                 msg['To'] = to
                 msg['Subject'] = Header(message.title, 'utf-8')
                 if html2text:
@@ -478,7 +475,7 @@ class Message(Workflow, ModelSQL, ModelView):
                 msg.attach(part)
 
                 sendmail_transactional(
-                    from_, getaddresses([to]), msg,
+                    from_cfg, getaddresses([to]), msg,
                     datamanager=smtpd_datamanager)
         if not emails:
             cls.sent(messages)
