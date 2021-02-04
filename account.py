@@ -76,10 +76,13 @@ class InvoiceLine(metaclass=PoolMeta):
 
     @classmethod
     def write(cls, *args):
+        pool = Pool()
+        Move = pool.get('stock.move')
         super().write(*args)
         lines = sum(args[0:None:2], [])
         moves = sum((l.stock_moves for l in lines), ())
-        cls.update_unit_price(moves)
+        if moves:
+            Move.__queue__.update_unit_price(moves)
 
     @classmethod
     def copy(cls, lines, default=None):
