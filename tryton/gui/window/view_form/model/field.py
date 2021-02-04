@@ -763,12 +763,12 @@ class O2MField(Field):
                 for f in v if f not in fields and f != 'id' and '.' not in f)
             if field_names:
                 try:
-                    fields = RPCExecute('model', self.attrs['relation'],
+                    new_fields = RPCExecute('model', self.attrs['relation'],
                         'fields_get', list(field_names), context=context)
                 except RPCException:
                     return
             else:
-                fields = {}
+                new_fields = {}
 
         group = record.value[self.name]
         if value and value.get('delete'):
@@ -787,7 +787,18 @@ class O2MField(Field):
                         force_remove=False)
 
         if value and (value.get('add') or value.get('update', [])):
-            record.value[self.name].add_fields(fields)
+            # First set already added fields to prevent triggering a
+            # second on_change call
+            for vals in value.get('update', []):
+                if 'id' not in vals:
+                    continue
+                record2 = group.get(vals['id'])
+                if record2 is not None:
+                    vals_to_set = {
+                        k: v for k, v in vals.items() if k not in new_fields}
+                    record2.set_on_change(vals_to_set)
+
+            record.value[self.name].add_fields(new_fields)
             for index, vals in value.get('add', []):
                 new_record = None
                 id_ = vals.pop('id', None)
