@@ -20,6 +20,10 @@ class Configuration(metaclass=PoolMeta):
             "products.\n"
             "Used for products without a lead time."))
 
+    @classmethod
+    def default_default_lead_time(cls, **pattern):
+        return datetime.timedelta(0)
+
 
 class DefaultLeadTime(ModelSQL, CompanyValueMixin):
     "Product Default Lead Time"
