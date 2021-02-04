@@ -63,3 +63,7 @@ Example:
             warning_name = 'mywarning,%s' % self
             if Warning.check(warning_name):
                 raise UserWarning(warning_name, "Process cannot be canceled.")
+
+.. note::
+    If there is no user interaction the warnings can be skipped by setting the
+    ``_skip_warnings`` key of the context to ``True``.

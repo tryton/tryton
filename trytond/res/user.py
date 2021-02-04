@@ -909,8 +909,10 @@ class Warning_(ModelSQL, ModelView):
 
     @classmethod
     def check(cls, warning_name):
-        user = Transaction().user
-        if not user:
+        transaction = Transaction()
+        user = transaction.user
+        context = transaction.context
+        if not user or context.get('_skip_warnings'):
             return False
         warnings = cls.search([
             ('user', '=', user),
