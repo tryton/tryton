@@ -2226,7 +2226,7 @@
             if (value.add || value.update) {
                 var context = this.get_context(record);
                 fields = record._values[this.name].model.fields;
-                var field_names = {};
+                var new_field_names = {};
                 var adding_values = [];
                 if (value.add) {
                     for (var i=0; i < value.add.length; i++) {
@@ -2240,25 +2240,25 @@
                                 if (!(f in fields) &&
                                     (f != 'id') &&
                                     (!~f.indexOf('.'))) {
-                                        field_names[f] = true;
+                                        new_field_names[f] = true;
                                     }
                             });
                         });
                     }
                 });
-                if (!jQuery.isEmptyObject(field_names)) {
+                if (!jQuery.isEmptyObject(new_field_names)) {
                     var args = {
                         'method': 'model.' + this.description.relation +
                             '.fields_get',
-                        'params': [Object.keys(field_names), context]
+                        'params': [Object.keys(new_field_names), context]
                     };
                     try {
-                        fields = Sao.rpc(args, record.model.session, false);
+                        new_fields = Sao.rpc(args, record.model.session, false);
                     } catch (e) {
                         return;
                     }
                 } else {
-                    fields = {};
+                    new_fields = {};
                 }
             }
 
@@ -2281,7 +2281,27 @@
             }
 
             if (value.add || value.update) {
-                group.add_fields(fields);
+                // First set already added fields to prevent triggering a
+                // second on_change call
+                if (value.update) {
+                    value.update.forEach(function(vals) {
+                        if (!vals.id) {
+                            return;
+                        }
+                        var record2 = group.get(vals.id);
+                        if (record2) {
+                            var vals_to_set = {};
+                            for (var key in vals) {
+                                if (!(key in new_field_names)) {
+                                    vals_to_set[key] = vals[key];
+                                }
+                            }
+                            record2.set_on_change(vals_to_set);
+                        }
+                    });
+                }
+
+                group.add_fields(new_fields);
                 if (value.add) {
                     value.add.forEach(function(vals) {
                         var new_record;
