@@ -1,3 +1,4 @@
+* Add trigonometric functions to sqlite backend
 * Allow skipping user warnings globally
 * Add validate option to trytond-admin
 * Refresh pool of other processes

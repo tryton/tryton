@@ -375,6 +375,17 @@ class Database(DatabaseInterface):
         self._conn.create_function('trunc', 1, math.trunc)
         self._conn.create_function('trunc', 2, trunc)
 
+        # Trigonomentric functions
+        self._conn.create_function('acos', 1, math.acos)
+        self._conn.create_function('asin', 1, math.asin)
+        self._conn.create_function('atan', 1, math.atan)
+        self._conn.create_function('atan2', 2, math.atan2)
+        self._conn.create_function('cos', 1, math.cos)
+        self._conn.create_function(
+            'cot', 1, lambda x: 1 / math.tan(x) if x else math.inf)
+        self._conn.create_function('sin', 1, math.sin)
+        self._conn.create_function('tan', 1, math.tan)
+
         # Random functions
         self._conn.create_function('random', 0, random.random)
         self._conn.create_function('setseed', 1, random.seed)
