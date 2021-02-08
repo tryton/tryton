@@ -67,7 +67,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_relation_all">
-            <field name="name">Party Relations</field>
+            <field name="name">Relations</field>
             <field name="res_model">party.relation.all</field>
         </record>
 
