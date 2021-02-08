@@ -12,7 +12,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.act_window"
             id="act_production_configuration_form">
-            <field name="name">Production Configuration</field>
+            <field name="name">Configuration</field>
             <field name="res_model">production.configuration</field>
         </record>
         <record model="ir.action.act_window.view"
