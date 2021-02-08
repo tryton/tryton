@@ -38,7 +38,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_dunning_procedure_form">
-            <field name="name">Dunning Procedures</field>
+            <field name="name">Procedures</field>
             <field name="res_model">account.dunning.procedure</field>
         </record>
         <record model="ir.action.act_window.view"
