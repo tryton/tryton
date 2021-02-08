@@ -42,7 +42,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_payment_journal_form">
-            <field name="name">Payment Journals</field>
+            <field name="name">Journals</field>
             <field name="res_model">account.payment.journal</field>
         </record>
         <record model="ir.action.act_window.view" id="act_payment_journal_form_view1">
@@ -105,7 +105,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">payment_group_list</field>
         </record>
         <record model="ir.action.act_window" id="act_payment_group_form">
-            <field name="name">Payment Groups</field>
+            <field name="name">Groups</field>
             <field name="res_model">account.payment.group</field>
         </record>
         <record model="ir.action.act_window.view"
