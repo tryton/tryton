@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_dunning_fee_form">
-            <field name="name">Dunning Fees</field>
+            <field name="name">Fees</field>
             <field name="res_model">account.dunning.fee</field>
         </record>
         <record model="ir.action.act_window.view"
