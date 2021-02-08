@@ -154,7 +154,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_plan_form">
-            <field name="name">Commission Plans</field>
+            <field name="name">Plans</field>
             <field name="res_model">commission.plan</field>
         </record>
         <record model="ir.action.act_window.view"
