@@ -440,7 +440,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Parties associated to Sales</field>
             <field name="wiz_name">sale.open_customer</field>
         </record>
-        <menuitem name="Parties associated to Sales"
+        <menuitem name="Associated to Sales"
             parent="party.menu_party_form"
             action="act_open_customer"
             icon="tryton-list"

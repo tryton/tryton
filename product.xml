@@ -11,7 +11,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_product">
-            <field name="name">Salable Products</field>
+            <field name="name">Products</field>
             <field name="res_model">product.product</field>
             <field name="domain" eval="[('salable', '=', True)]" pyson="1"/>
             <field name="context_model">product.sale.context</field>
