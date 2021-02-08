@@ -17,7 +17,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tax_group_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_tax_group_form">
-            <field name="name">Tax Groups</field>
+            <field name="name">Groups</field>
             <field name="res_model">account.tax.group</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_group_form_view1">
@@ -61,7 +61,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tax_code_template_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_tax_code_template_tree">
-            <field name="name">Tax Codes Templates</field>
+            <field name="name">Tax Codes</field>
             <field name="res_model">account.tax.code.template</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
@@ -104,7 +104,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_tax_code_tree">
-            <field name="name">Tax Codes</field>
+            <field name="name">Codes</field>
             <field name="res_model">account.tax.code</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
@@ -122,7 +122,7 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_tax_code_tree"/>
 
         <record model="ir.action.act_window" id="act_tax_code_list">
-            <field name="name">Tax Codes</field>
+            <field name="name">Codes</field>
             <field name="res_model">account.tax.code</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_code_list_view1">
@@ -271,7 +271,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_tax_template_list">
-            <field name="name">Taxes Templates</field>
+            <field name="name">Taxes</field>
             <field name="res_model">account.tax.template</field>
             <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
         </record>
@@ -445,7 +445,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_tax_rule_template_form">
-            <field name="name">Tax Rule Templates</field>
+            <field name="name">Rules</field>
             <field name="res_model">account.tax.rule.template</field>
         </record>
         <record model="ir.action.act_window.view" id="act_tax_rule_template_form_view1">
