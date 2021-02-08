@@ -14,7 +14,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">line_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_line_form">
-            <field name="name">Timesheet Lines</field>
+            <field name="name">Lines</field>
             <field name="res_model">timesheet.line</field>
         </record>
         <record model="ir.action.act_window.view"
