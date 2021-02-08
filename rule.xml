@@ -16,7 +16,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_rule_form">
-            <field name="name">Analytic Rules</field>
+            <field name="name">Rules</field>
             <field name="res_model">analytic_account.rule</field>
         </record>
         <record model="ir.action.act_window.view" id="act_rule_form_view1">

@@ -3,7 +3,7 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Analytic Account" parent="account.menu_account_configuration"
+        <menuitem name="Analytic" parent="account.menu_account_configuration"
             id="menu_analytic_account_configuration"/>
 
         <record model="ir.ui.view" id="account_view_form">
@@ -32,7 +32,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_account_tree">
-            <field name="name">Analytic Accounts</field>
+            <field name="name">Accounts</field>
             <field name="res_model">analytic_account.account</field>
             <field name="domain"
                 eval="[('parent', '=', None), ('type', '=', 'root')]"
@@ -52,7 +52,7 @@ this repository contains the full copyright notices and license terms. -->
             action="act_account_tree" id="menu_account_tree"/>
 
         <record model="ir.action.act_window" id="act_account_list">
-            <field name="name">Analytic Accounts</field>
+            <field name="name">Accounts</field>
             <field name="res_model">analytic_account.account</field>
         </record>
         <record model="ir.action.act_window.view" id="act_account_list_view1">
