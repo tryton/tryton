@@ -20,7 +20,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_purchase_request_form">
-            <field name="name">Purchase Requests</field>
+            <field name="name">Requests</field>
             <field name="res_model">purchase.request</field>
         </record>
         <record model="ir.action.act_window.view"
