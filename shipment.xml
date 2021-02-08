@@ -65,7 +65,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">shipment_in_return_tree</field>
         </record>
         <record model="ir.action.act_window" id="act_shipment_in_return_form">
-            <field name="name">Supplier Return Shipments</field>
+            <field name="name">Returns</field>
             <field name="res_model">stock.shipment.in.return</field>
             <field name="search_value"></field>
         </record>
@@ -277,7 +277,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_shipment_out_return_form">
-            <field name="name">Customer Return Shipments</field>
+            <field name="name">Returns</field>
             <field name="res_model">stock.shipment.out.return</field>
             <field name="search_value"></field>
         </record>
