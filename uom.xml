@@ -43,7 +43,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_uom_category_form">
-            <field name="name">Categories of Unit of Measure</field>
+            <field name="name">Categories</field>
             <field name="res_model">product.uom.category</field>
         </record>
         <record model="ir.action.act_window.view" id="act_uom_category_form_view1">
@@ -56,7 +56,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="uom_category_view_form"/>
             <field name="act_window" ref="act_uom_category_form"/>
         </record>
-        <menuitem name="Categories" parent="menu_uom_form" sequence="2"
+        <menuitem parent="menu_uom_form" sequence="2"
             id="menu_uom_category_form"
             action="act_uom_category_form"/>
 
