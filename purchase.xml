@@ -23,7 +23,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-purchase.svg</field>
         </record>
 
-        <menuitem name="Purchase" id="menu_purchase" sequence="4" icon="tryton-purchase"/>
+        <menuitem name="Purchases" id="menu_purchase" sequence="4" icon="tryton-purchase"/>
         <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase">
             <field name="menu" ref="menu_purchase"/>
             <field name="group" ref="group_purchase"/>
@@ -420,7 +420,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_product_supplier_form">
-            <field name="name">Product Suppliers</field>
+            <field name="name">Suppliers</field>
             <field name="res_model">purchase.product_supplier</field>
         </record>
         <record model="ir.action.act_window.view"
