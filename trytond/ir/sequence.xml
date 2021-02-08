@@ -83,7 +83,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.action.act_window"
             id="act_sequence_type_form">
-            <field name="name">Sequence Types</field>
+            <field name="name">Types</field>
             <field name="type">ir.action.act_window</field>
             <field name="res_model">ir.sequence.type</field>
         </record>

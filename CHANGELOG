@@ -1,3 +1,4 @@
+* Use menu name for window opened from menu
 * Add trigonometric functions to sqlite backend
 * Allow skipping user warnings globally
 * Add validate option to trytond-admin

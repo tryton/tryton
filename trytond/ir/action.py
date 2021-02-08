@@ -219,7 +219,9 @@ class ActionKeyword(ModelSQL, ModelView):
 
     @classmethod
     def get_keyword(cls, keyword, value):
-        Action = Pool().get('ir.action')
+        pool = Pool()
+        Action = pool.get('ir.action')
+        Menu = pool.get('ir.ui.menu')
         key = (keyword, tuple(value))
         keywords = cls._get_keyword_cache.get(key)
         if keywords is not None:
@@ -252,6 +254,17 @@ class ActionKeyword(ModelSQL, ModelView):
             for value in Action.get_action_values(type_, action_ids):
                 value['keyword'] = keyword
                 keywords.append(value)
+        if keyword == 'tree_open' and model == Menu.__name__:
+            menu = Menu(model_id)
+            if menu.parent:
+                for value in keywords:
+                    if value['type'] == 'ir.action.act_window':
+                        parent = menu.parent
+                        if parent.name == value['name']:
+                            parent = parent.parent
+                        if parent:
+                            value['name'] = (
+                                parent.rec_name + ' / ' + value['name'])
         keywords.sort(key=itemgetter('name'))
         cls._get_keyword_cache.set(key, keywords)
         return keywords
