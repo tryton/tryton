@@ -15,7 +15,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_statement_journal_form">
-            <field name="name">Statement Journals</field>
+            <field name="name">Journals</field>
             <field name="res_model">account.statement.journal</field>
         </record>
         <record model="ir.action.act_window.view" id="act_statement_journal_form_view1">

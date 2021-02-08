@@ -297,7 +297,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_line_group_form">
-            <field name="name">Statement Line Groups</field>
+            <field name="name">Line Groups</field>
             <field name="res_model">account.statement.line.group</field>
         </record>
         <record model="ir.action.act_window.view" id="act_line_group_form_view1">
