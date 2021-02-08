@@ -100,7 +100,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_carrier_selection_form">
-            <field name="name">Carrier Selection</field>
+            <field name="name">Selection</field>
             <field name="res_model">carrier.selection</field>
         </record>
         <record model="ir.action.act_window.view"
