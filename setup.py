@@ -57,7 +57,7 @@ else:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = ['stripe >= 2.32.0', 'werkzeug']
+requires = ['stripe >= 2.32.0', 'werkzeug < 2']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
