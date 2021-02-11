@@ -3034,7 +3034,7 @@ function eval_pyson(value){
             this.screen.pre_validate = attributes.pre_validate == 1;
 
             this.screen.message_callback = this.record_label.bind(this);
-            this.prm = this.screen.switch_view(modes[0]).done(function() {
+            this.prm = this.screen.switch_view().done(function() {
                 this.content.append(this.screen.screen_container.el);
             }.bind(this));
 
