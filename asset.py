@@ -970,7 +970,9 @@ class AssetDepreciationTable(CompanyReport):
             'closing_value',
             }
         for attr_name in grouped_attributes:
-            setattr(Grouper, attr_name, cached_property(adder(attr_name)))
+            descr = cached_property(adder(attr_name))
+            setattr(Grouper, attr_name, descr)
+            descr.__set_name__(Grouper, attr_name)
 
         return Grouper
 
