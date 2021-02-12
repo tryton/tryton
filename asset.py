@@ -1113,7 +1113,7 @@ class PrintDepreciationTable(Wizard):
         assets = Asset.search([
                 ('start_date', '<', self.start.end_date),
                 ('end_date', '>', self.start.start_date),
-                ('state', '=', 'running'),
+                ('state', '!=', 'draft'),
                 ])
         return action, {
             'ids': [a.id for a in assets],
