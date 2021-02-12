@@ -26,11 +26,22 @@
             return false;
         }
         for (var i = 0; i < arr1.length; i++) {
-            if (arr1[i] instanceof Array && arr2[i] instanceof Array) {
-                if (!Sao.common.compare(arr1[i], arr2[i])) {
+            var a = arr1[i], b = arr2[i];
+            if ((a instanceof Array) && (b instanceof Array)) {
+                if (!Sao.common.compare(a, b)) {
                     return false;
                 }
-            } else if (arr1[i] != arr2[i]) {
+            } else if (moment.isMoment(a) && moment.isMoment(b)) {
+                if ((a.isDate != b.isDate) &&
+                    (a.isDateTime != b.isDateTime) &&
+                    (a.valueOf() != b.valueOf())) {
+                    return false;
+                }
+            } else if ((a instanceof Number) || (b instanceof Number)) {
+                if (Number(a) !== Number(b)) {
+                    return false;
+                }
+            } else if (a != b) {
                 return false;
             }
         }
