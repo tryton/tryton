@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+import hashlib
 from decimal import Decimal
 from collections import namedtuple, defaultdict
 from itertools import groupby
@@ -499,9 +500,23 @@ class Statement(Workflow, ModelSQL, ModelView):
         pool = Pool()
         Line = pool.get('account.statement.line')
         Warning = pool.get('res.user.warning')
-
+        paid_cancelled_invoice_lines = []
         for statement in statements:
             getattr(statement, 'validate_%s' % statement.validation)()
+            paid_cancelled_invoice_lines.extend(l for l in statement.lines
+                if l.invoice and l.invoice.state in {'cancelled', 'paid'})
+
+        if paid_cancelled_invoice_lines:
+            warning_key = ('%s.statement_paid_cancelled_invoice_lines' %
+                    hashlib.md5(str(paid_cancelled_invoice_lines).encode(
+                        'utf-8')).hexdigest())
+            if Warning.check(warning_key):
+                raise StatementValidateWarning(warning_key,
+                    gettext('account_statement'
+                        '.msg_statement_invoice_paid_cancelled'))
+            Line.write(paid_cancelled_invoice_lines, {
+                    'invoice': None,
+                    })
 
         cls.create_move(statements)
 
