@@ -325,7 +325,7 @@ class ProductSupplier(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         '''
         Date = Pool().get('ir.date')
 
-        if self.lead_time is None:
+        if self.lead_time is None or date is None:
             return Date.today()
         return date - self.lead_time
 
