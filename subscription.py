@@ -21,7 +21,7 @@ from trytond.wizard import Wizard, StateView, StateAction, StateTransition, \
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
 from trytond.modules.product import price_digits, round_price
-from .exceptions import InvoiceError
+from .exceptions import InvalidRecurrence, InvoiceError
 
 
 class Subscription(Workflow, ModelSQL, ModelView):
@@ -267,7 +267,23 @@ class Subscription(Workflow, ModelSQL, ModelView):
         dt = datetime.datetime.combine(date, datetime.time())
         inc = (start_date == date) and not self.next_invoice_date
         next_date = rruleset.after(dt, inc=inc)
-        return next_date.date()
+        if next_date:
+            return next_date.date()
+
+    @classmethod
+    def validate(cls, subscriptions):
+        super().validate(subscriptions)
+        for subscription in subscriptions:
+            subscription.validate_invoice_recurrence()
+
+    def validate_invoice_recurrence(self):
+        start_date = self.invoice_start_date or self.start_date
+        try:
+            self.invoice_recurrence.rruleset(start_date)[0]
+        except IndexError:
+            raise InvalidRecurrence(gettext(
+                    'sale_subscription.msg_invoice_recurrence_invalid',
+                    subscription=self.rec_name))
 
     @classmethod
     def copy(cls, subscriptions, default=None):
@@ -791,12 +807,29 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
         rruleset = self.consumption_recurrence.rruleset(self.start_date)
         dt = datetime.datetime.combine(date, datetime.time())
         inc = (self.start_date == date) and not self.next_consumption_date
-        next_date = rruleset.after(dt, inc=inc).date()
-        for end_date in [self.end_date, self.subscription.end_date]:
-            if end_date:
-                if next_date > end_date:
-                    return None
-        return next_date
+        next_date = rruleset.after(dt, inc=inc)
+        if next_date:
+            next_date = next_date.date()
+            for end_date in [self.end_date, self.subscription.end_date]:
+                if end_date:
+                    if next_date > end_date:
+                        return None
+            return next_date
+
+    @classmethod
+    def validate(cls, lines):
+        super().validate(lines)
+        for line in lines:
+            line.validate_consumption_recurrence()
+
+    def validate_consumption_recurrence(self):
+        try:
+            self.consumption_recurrence.rruleset(self.start_date)[0]
+        except IndexError:
+            raise InvalidRecurrence(gettext(
+                    'sale_subscription.msg_consumption_recurrence_invalid',
+                    line=self.rec_name,
+                    subscription=self.subscription.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):

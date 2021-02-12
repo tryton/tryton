@@ -5,6 +5,10 @@ from trytond.exceptions import UserError
 from trytond.model.exceptions import ValidationError
 
 
+class InvalidRecurrence(ValidationError):
+    pass
+
+
 class InvoiceError(UserError):
     pass
 
