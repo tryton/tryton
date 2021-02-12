@@ -669,8 +669,8 @@
     </table:table-row>
     <table:table-row>
      <table:table-cell table:style-name="Tableau1.A3" office:value-type="string">
-      <text:p text:style-name="P23"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in quotation_line.description.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
-      <text:p text:style-name="P23"><text:placeholder text:placeholder-type="text">&lt;line&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P23"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;description in quotation_line.description.split(&apos;\n&apos;)&quot;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="P23"><text:placeholder text:placeholder-type="text">&lt;description&gt;</text:placeholder></text:p>
       <text:p text:style-name="P23"><text:placeholder text:placeholder-type="text">&lt;/for&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Tableau1.A3" office:value-type="string">
