@@ -313,6 +313,8 @@ class PurchaseRequest(ModelSQL, ModelView):
         Date = pool.get('ir.date')
         today = Date.today()
         for product_supplier in product.product_suppliers_used(**pattern):
+            if date is None:
+                return product_supplier
             supply_date = product_supplier.compute_supply_date(date=today)
             timedelta = date - supply_date
             if timedelta >= datetime.timedelta(0):
