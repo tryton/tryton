@@ -3,6 +3,7 @@
 import http.client
 import logging
 import os
+import posixpath
 import sys
 import traceback
 
@@ -10,6 +11,11 @@ from werkzeug.wrappers import Response
 from werkzeug.routing import Map, Rule
 from werkzeug.exceptions import abort, HTTPException, InternalServerError
 from werkzeug.contrib.fixers import ProxyFix
+try:
+    from werkzeug.security import safe_join
+except ImportError:
+    safe_join = posixpath.join
+
 from werkzeug.wsgi import SharedDataMiddleware
 
 import wrapt
@@ -131,13 +137,14 @@ class SharedDataMiddlewareIndex(SharedDataMiddleware):
     def get_directory_loader(self, directory):
         def loader(path):
             if path is not None:
-                path = os.path.join(directory, path)
+                path = safe_join(directory, path)
             else:
                 path = directory
-            if os.path.isdir(path):
-                path = os.path.join(path, 'index.html')
-            if os.path.isfile(path):
-                return os.path.basename(path), self._opener(path)
+            if path is not None:
+                if os.path.isdir(path):
+                    path = posixpath.join(path, 'index.html')
+                if os.path.isfile(path):
+                    return os.path.basename(path), self._opener(path)
             return None, None
         return loader
 
