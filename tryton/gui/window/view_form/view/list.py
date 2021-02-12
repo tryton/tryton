@@ -514,7 +514,7 @@ class ViewTree(View):
             field.state_set(record, states=('invisible',))
             if not field.get_state_attrs(record).get('invisible', False):
                 for widget in self.widgets[field_name]:
-                    text = widget.get_textual_value(record).lower()
+                    text = str(widget.get_textual_value(record)).lower()
                     # Simple search by word
                     while text:
                         if text.startswith(key):

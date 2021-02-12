@@ -415,9 +415,6 @@ class Boolean(GenericText):
             self.view.treeview.set_cursor(path)
         return True
 
-    def get_textual_value(self, record):
-        return str(super().get_textual_value(record))
-
 
 class URL(Char):
 
