@@ -411,7 +411,7 @@ class ProductSupplier(
         '''
         Date = Pool().get('ir.date')
 
-        if self.lead_time_used is None:
+        if self.lead_time_used is None or date is None:
             return Date.today()
         return date - self.lead_time_used
 
