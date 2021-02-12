@@ -897,7 +897,8 @@ class AssetDepreciationTable(CompanyReport):
         for attr_name in grouped_attributes:
             descr = cached_property(adder(attr_name))
             setattr(Grouper, attr_name, descr)
-            descr.__set_name__(Grouper, attr_name)
+            if hasattr(descr, '__set_name__'):
+                descr.__set_name__(Grouper, attr_name)
 
         return Grouper
 
