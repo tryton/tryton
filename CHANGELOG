@@ -1,3 +1,5 @@
+* Use safe_join in SharedDataMiddlewareIndex (issue10068)
+
 Version 5.8.3 - 2021-02-01
 * Bug fixes (see mercurial logs for details)
 
