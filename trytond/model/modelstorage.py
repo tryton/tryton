@@ -1624,6 +1624,7 @@ class ModelStorage(Model):
                 read_data = self.read(list(index.keys()), list(ffields.keys()))
                 read_data.sort(key=lambda r: index[r['id']])
             # create browse records for 'remote' models
+            no_local_cache = {'one2one', 'one2many', 'many2many', 'binary'}
             for data in read_data:
                 id_ = data['id']
                 to_delete = set()
@@ -1632,12 +1633,16 @@ class ModelStorage(Model):
                     if field._type in {
                             'many2one', 'one2one', 'one2many', 'many2many',
                             'reference'}:
+                        if (fname != name
+                                and not require_context_field
+                                and field._type not in no_local_cache):
+                            continue
                         fvalue = instantiate(field, data[fname], data)
                     if id_ == self.id and fname == name:
                         value = fvalue
-                    self._local_cache[id_][fname] = fvalue
-                    if (field._type in {
-                                'one2one', 'one2many', 'many2many', 'binary'}
+                    if fname not in self._local_cache[id_]:
+                        self._local_cache[id_][fname] = fvalue
+                    if (field._type in no_local_cache
                             or field.context
                             or getattr(field, 'datetime_field', None)
                             or isinstance(field, fields.Function)):
