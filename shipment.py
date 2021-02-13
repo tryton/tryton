@@ -2519,12 +2519,6 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cls.save(shipments)
 
 
-class Address(metaclass=PoolMeta):
-    __name__ = 'party.address'
-    delivery = fields.Boolean('Delivery',
-        help="Check to send deliveries to the address.")
-
-
 class Assign(Wizard):
     "Assign Shipment"
     __name__ = 'stock.shipment.assign'

@@ -487,17 +487,6 @@ this repository contains the full copyright notices and license terms. -->
                 <field name="code">stock.shipment.in.return</field>
         </record>
 
-        <record model="ir.ui.view" id="address_view_tree">
-            <field name="model">party.address</field>
-            <field name="inherit" ref="party.address_view_tree"/>
-            <field name="name">party_address_tree</field>
-        </record>
-        <record model="ir.ui.view" id="address_view_form">
-            <field name="model">party.address</field>
-            <field name="inherit" ref="party.address_view_form"/>
-            <field name="name">party_address_form</field>
-        </record>
-
         <record model="ir.model.access" id="access_shipment_in">
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="perm_read" eval="False"/>

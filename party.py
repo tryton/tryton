@@ -1,9 +1,31 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
+from trytond.model import fields
 from trytond.pool import PoolMeta, Pool
 
 from trytond.modules.party.exceptions import EraseError
+
+
+class Address(metaclass=PoolMeta):
+    __name__ = 'party.address'
+    delivery = fields.Boolean(
+        'Delivery',
+        help="Check to send deliveries to the address.")
+
+
+class ContactMechanism(metaclass=PoolMeta):
+    __name__ = 'party.contact_mechanism'
+    delivery = fields.Boolean(
+        'Delivery',
+        help="Check to use for delivery.")
+
+    @classmethod
+    def usages(cls, _fields=None):
+        if _fields is None:
+            _fields = []
+        _fields.append('delivery')
+        return super().usages(_fields=_fields)
 
 
 class Replace(metaclass=PoolMeta):
