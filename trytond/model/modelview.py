@@ -376,10 +376,8 @@ class ModelView(Model):
         # Update arch and compute fields from arch
         parser = etree.XMLParser(remove_blank_text=True)
         tree = etree.fromstring(result['arch'], parser)
-        xarch, xfields = cls._view_look_dom_arch(
+        result['arch'], result['fields'] = cls.parse_view(
             tree, result['type'], result['field_childs'], level=level)
-        result['arch'] = xarch
-        result['fields'] = xfields
 
         cls._fields_view_get_cache.set(key, result)
         return result
@@ -427,13 +425,20 @@ class ModelView(Model):
         return []
 
     @classmethod
-    def _view_look_dom_arch(cls, tree, type, field_children=None, level=0):
+    def parse_view(
+            cls, tree, type, field_children=None, level=0, view_depends=None):
+        """
+        Return sanitized XML and the corresponding fields definition
+        """
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
         FieldAccess = pool.get('ir.model.field.access')
 
         encoder = PYSONEncoder()
-        view_depends = []
+        if view_depends is None:
+            view_depends = []
+        else:
+            view_depends = view_depends.copy()
         for xpath, attribute, value, *extra in cls.view_attributes():
             depends = []
             if extra:
@@ -510,8 +515,8 @@ class ModelView(Model):
                 if viewtreewidth.width > 0:
                     fields_width[viewtreewidth.field] = viewtreewidth.width
 
-        fields_def = cls.__view_look_dom(tree_root, type,
-                fields_width=fields_width)
+        fields_def = cls.__parse_fields(
+            tree_root, type, fields_width=fields_width)
 
         if hasattr(cls, 'active'):
             fields_def.setdefault('active', {'name': 'active'})
@@ -552,8 +557,8 @@ class ModelView(Model):
         return arch, fields2
 
     @classmethod
-    def __view_look_dom(cls, element, type, fields_width=None,
-            _fields_attrs=None):
+    def __parse_fields(
+            cls, element, type, fields_width=None, _fields_attrs=None):
         pool = Pool()
         Translation = pool.get('ir.translation')
         ModelData = pool.get('ir.model.data')
@@ -711,8 +716,9 @@ class ModelView(Model):
                     fields_attrs.setdefault(element.get(attr), {})
 
         for field in element:
-            fields_attrs = cls.__view_look_dom(field, type,
-                fields_width=fields_width, _fields_attrs=fields_attrs)
+            fields_attrs = cls.__parse_fields(
+                field, type, fields_width=fields_width,
+                _fields_attrs=fields_attrs)
         return fields_attrs
 
     @staticmethod

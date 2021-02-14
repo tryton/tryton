@@ -174,6 +174,17 @@ Class methods:
     encoded value. If the depends list is set its fields are added to the
     view if the xpath matches at least one element.
 
+
+.. classmethod:: ModelView.parse_view(tree, type[, field_children[, level[, view_depends]]])
+
+    Return the sanitized XML and the corresponding fields definition.
+
+
+.. note::
+
+    This method is public mainly to allow modification the existing XML of the
+    view by code.
+
 ============
 ModelStorage
 ============
