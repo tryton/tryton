@@ -247,7 +247,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
                 'invoice_report_cache', 'invoice_report_format', 'lines']
         cls._order = [
-            ('number', 'DESC'),
+            ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
             ]
         cls.journal.domain = [
