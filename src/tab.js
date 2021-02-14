@@ -984,7 +984,8 @@
             var revision = this.screen.context._datetime;
             var label, title;
             if (revision) {
-                var date_format = Sao.common.date_format();
+                var date_format = Sao.common.date_format(
+                    this.screen.context.date_format);
                 var time_format = '%H:%M:%S.%f';
                 var revision_label = ' @ ' + Sao.common.format_datetime(
                     date_format, time_format, revision);

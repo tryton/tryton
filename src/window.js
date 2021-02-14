@@ -95,11 +95,28 @@
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
             var title_prm = jQuery.when(kwargs.title || '');
-            title_prm.then(function(title) {
+            title_prm = title_prm.then(function(title) {
                 if (!title) {
                     title = Sao.common.MODELNAME.get(this.screen.model_name);
                 }
                 this.title = title;
+                var revision = this.screen.context._datetime;
+                var label;
+                if (revision &&
+                    Sao.common.MODELHISTORY.contains(this.screen.model_name)) {
+                    var date_format = Sao.common.date_format(
+                    this.screen.context.date_format);
+                    var time_format = '%H:%M:%S.%f';
+                    var revision_label = ' @ ' + Sao.common.format_datetime(
+                        date_format, time_format, revision);
+                    label = Sao.common.ellipsize(
+                        this.title, 80 - revision_label.length) +
+                        revision_label;
+                    title = this.title + revision_label;
+                } else {
+                    label = Sao.common.ellipsize(this.title, 80);
+                }
+                return title;
             }.bind(this));
 
             this.prev_view = screen.current_view;
