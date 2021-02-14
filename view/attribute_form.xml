@@ -14,6 +14,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="help" colspan="3" yexpand="0" height="80"/>
     <label name="selection" yalign="0"/>
     <field name="selection" yexpand="0" height="80"/>
+    <label name="help_selection" yalign="0"/>
+    <field name="help_selection" yexpand="0" height="80"/>
     <label name="selection_sorted" yalign="0"/>
     <field name="selection_sorted" yalign="0"/>
 </form>
