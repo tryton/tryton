@@ -719,6 +719,7 @@ class ModelView(Model):
     def button(func):
         @wraps(func)
         def wrapper(cls, records, *args, **kwargs):
+            from .modelstorage import ModelStorage
             pool = Pool()
             ModelAccess = pool.get('ir.model.access')
             Button = pool.get('ir.model.button')
@@ -732,6 +733,11 @@ class ModelView(Model):
 
             if (transaction.user != 0) and check_access:
                 ModelAccess.check(cls.__name__, 'read')
+                if issubclass(cls, ModelStorage):
+                    # Check record rule access
+                    cls.read([r.id for r in records
+                            if r.id is not None and r.id >= 0],
+                        ['id'])
                 groups = set(User.get_groups())
                 button_groups = Button.get_groups(cls.__name__,
                     func.__name__)

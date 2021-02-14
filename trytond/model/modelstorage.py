@@ -25,7 +25,6 @@ from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.cache import LRUDict, LRUDictTransaction, freeze
 from trytond.rpc import RPC
-from .modelview import ModelView
 from .descriptors import dualmethod
 
 __all__ = ['ModelStorage', 'EvalEnvironment']
@@ -121,6 +120,7 @@ class ModelStorage(Model):
 
     @classmethod
     def __setup__(cls):
+        from .modelview import ModelView
         super(ModelStorage, cls).__setup__()
         if issubclass(cls, ModelView):
             cls.__rpc__.update({
