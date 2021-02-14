@@ -21,9 +21,9 @@ class MultiSelection(SelectionMixin, Field):
     _py_type = list
 
     def __init__(self, selection, string='', sort=True, translate=True,
-            help='', required=False, readonly=False, domain=None, states=None,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='eager'):
+            help='', help_selection=None, required=False, readonly=False,
+            domain=None, states=None, select=False, on_change=None,
+            on_change_with=None, depends=None, context=None, loading='eager'):
         """
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is the value
@@ -41,6 +41,7 @@ class MultiSelection(SelectionMixin, Field):
         self.selection_change_with = set()
         self.sort = sort
         self.translate_selection = translate
+        self.help_selection = help_selection
     __init__.__doc__ += Field.__init__.__doc__
 
     def set_rpc(self, model):

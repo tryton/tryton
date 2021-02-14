@@ -24,10 +24,10 @@ class Reference(SelectionMixin, Field):
 
     def __init__(self, string='', selection=None, sort=True,
             selection_change_with=None, translate=True, search_order=None,
-            search_context=None, help='', required=False, readonly=False,
-            domain=None, states=None, select=False, on_change=None,
-            on_change_with=None, depends=None, context=None, loading='lazy',
-            datetime_field=None):
+            search_context=None, help='', help_selection=None, required=False,
+            readonly=False, domain=None, states=None, select=False,
+            on_change=None, on_change_with=None, depends=None, context=None,
+            loading='lazy', datetime_field=None):
         '''
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is an internal name
@@ -57,6 +57,7 @@ class Reference(SelectionMixin, Field):
             self.selection_change_with |= set(selection_change_with)
         self.sort = sort
         self.translate_selection = translate
+        self.help_selection = help_selection
         self.__search_order = None
         self.search_order = search_order
         self.__search_context = None

@@ -167,6 +167,11 @@ List of attributes shared by many form elements:
     * ``symbol``: Only on numerical fields, the name of field which provides
       the symbol to display.
 
+    .. _common-attributes-help_field:
+
+    * ``help_field``: The name of Dict field mapping the Selection value with
+      its help string.
+
 form
 ^^^^
 
@@ -288,6 +293,8 @@ Display a field of the object with the value of the current record.
       be done.
 
     * ``symbol``: see in common-attributes-symbol_.
+
+    * ``help_field``: see in common-attributes-help_field_.
 
 image
 ^^^^^
@@ -608,6 +615,8 @@ field
     * ``factor``: see in common-attributes-factor_.
 
     * ``symbol``: see in common-attributes-symbol_.
+
+    * ``help_field``: see in common-attributes-help_field_.
 
 prefix or suffix
 ^^^^^^^^^^^^^^^^

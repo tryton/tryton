@@ -63,8 +63,22 @@ class DictSchemaMixin(object):
             'invisible': ~Eval('type_').in_(['selection', 'multiselection']),
             }, depends=['type_'],
         help=lazy_gettext('ir.msg_dict_schema_selection_sorted_help'))
+    help_selection = fields.Text(
+        lazy_gettext('ir.msg_dict_schema_help_selection'), translate=True,
+        states={
+            'invisible': ~Eval('type_').in_(['selection', 'multiselection']),
+            },
+        depends=['type_'],
+        help=lazy_gettext('is.msg_dict_schema_help_selection_help'))
     selection_json = fields.Function(fields.Char(
             lazy_gettext('ir.msg_dict_schema_selection_json'),
+            states={
+                'invisible': ~Eval('type_').in_(
+                    ['selection', 'multiselection']),
+                },
+            depends=['type_']), 'get_selection_json')
+    help_selection_json = fields.Function(fields.Char(
+            lazy_gettext('ir.msg_dict_schema_help_selection_json'),
             states={
                 'invisible': ~Eval('type_').in_(
                     ['selection', 'multiselection']),
@@ -119,15 +133,17 @@ class DictSchemaMixin(object):
         for schema in schemas:
             if schema.type_ not in {'selection', 'multiselection'}:
                 continue
-            try:
-                dict(json.loads(schema.get_selection_json()))
-            except Exception:
-                raise SelectionError(
-                    gettext('ir.msg_dict_schema_invalid_selection',
-                        schema=schema.rec_name))
+            for name in ['selection', 'help_selection']:
+                try:
+                    dict(json.loads(schema.get_selection_json(name + '_json')))
+                except Exception:
+                    raise SelectionError(
+                        gettext('ir.msg_dict_schema_invalid_%s' % name,
+                            schema=schema.rec_name))
 
-    def get_selection_json(self, name=None):
-        db_selection = self.selection or ''
+    def get_selection_json(self, name):
+        field = name[:-len('_json')]
+        db_selection = getattr(self, field) or ''
         selection = [[w.strip() for w in v.split(':', 1)]
             for v in db_selection.splitlines() if v]
         return json.dumps(selection, separators=(',', ':'))
@@ -154,6 +170,8 @@ class DictSchemaMixin(object):
                             english_key.selection_json))
                 selection.update(dict(json.loads(record.selection_json)))
                 new_key['selection'] = list(selection.items())
+                new_key['help_selection'] = dict(
+                    json.loads(record.help_selection_json))
                 new_key['sort'] = record.selection_sorted
             elif record.type_ in ('float', 'numeric'):
                 new_key['digits'] = (16, record.digits)

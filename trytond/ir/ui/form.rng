@@ -467,6 +467,14 @@
   </define>
   <define name="attlist.field" combine="interleave">
     <optional>
+      <attribute>
+        <name ns="">help_field</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.field" combine="interleave">
+    <optional>
       <attribute a:defaultValue="0">
         <name ns="">toolbar</name>
         <choice>

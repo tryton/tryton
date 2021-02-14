@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import warnings
+from itertools import chain
 
 from sql.conditionals import Case
 
@@ -40,19 +41,33 @@ class SelectionMixin(Field):
             selection = self.selection.copy()
         else:
             selection = self.selection
+        if self.help_selection:
+            help_selection = {}
+            for key, source in self.help_selection.items():
+                if not isinstance(source, LazyString):
+                    source = Translation.get_source(
+                        name, 'selection', language, source) or source
+                help_selection[key] = str(source)
+        else:
+            help_selection = None
         definition['selection'] = selection
         definition['selection_change_with'] = list(self.selection_change_with)
         definition['sort'] = self.sort
+        definition['help_selection'] = help_selection
         return definition
 
     def definition_translations(self, model, language):
         name = '%s,%s' % (model.__name__, self.name)
         selection = []
+        sources = []
         if not isinstance(self.selection, str) and self.translate_selection:
-            for key, source in self.selection:
-                if not isinstance(source, LazyString):
-                    selection.append(
-                        (name, 'selection', language, source))
+            sources.append(self.selection)
+        if self.help_selection:
+            sources.append(self.help_selection.items())
+        for key, source in chain(*sources):
+            if not isinstance(source, LazyString):
+                selection.append(
+                    (name, 'selection', language, source))
         return super().definition_translations(model, language) + selection
 
 
@@ -66,9 +81,9 @@ class Selection(SelectionMixin, Field):
 
     def __init__(self, selection, string='', sort=True,
             selection_change_with=None, translate=True, help='',
-            required=False, readonly=False, domain=None, states=None,
-            select=False, on_change=None, on_change_with=None, depends=None,
-            context=None, loading='eager'):
+            help_selection=None, required=False, readonly=False, domain=None,
+            states=None, select=False, on_change=None, on_change_with=None,
+            depends=None, context=None, loading='eager'):
         '''
         :param selection: A list or a function name that returns a list.
             The list must be a list of tuples. First member is the value
@@ -91,6 +106,7 @@ class Selection(SelectionMixin, Field):
             self.selection_change_with |= set(selection_change_with)
         self.sort = sort
         self.translate_selection = translate
+        self.help_selection = help_selection
     __init__.__doc__ += Field.__init__.__doc__
 
     def set_rpc(self, model):

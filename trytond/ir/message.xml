@@ -108,8 +108,17 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_dict_schema_selection_sorted_help">
             <field name="text">If the selection must be sorted on label.</field>
         </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection">
+            <field name="text">Help Selection</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection_help">
+            <field name="text">The key followed by the help text separated by a ":", one per line.</field>
+        </record>
         <record model="ir.message" id="msg_dict_schema_selection_json">
             <field name="text">Selection JSON</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_help_selection_json">
+            <field name="text">Help Selection JSON</field>
         </record>
         <record model="ir.message" id="msg_sequence">
             <field name="text">Sequence</field>
@@ -198,6 +207,9 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.message" id="msg_dict_schema_invalid_selection">
             <field name="text">Invalid selection in schema "%(schema)s".</field>
+        </record>
+        <record model="ir.message" id="msg_dict_schema_invalid_help_selection">
+            <field name="text">Invalid help selection in schema "%(schema)s".</field>
         </record>
         <record model="ir.message" id="msg_recursion_error">
             <field name="text">Recursion error: Record "%(rec_name)s" with parent "%(parent_rec_name)s" was configured as ancestor of itself.</field>
