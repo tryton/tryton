@@ -107,11 +107,23 @@ class WinForm(NoModal, InfoBar):
 
         self.win.set_title(self.title)
 
+        revision = self.screen.context.get('_datetime')
+        if revision and self.screen.model_name in common.MODELHISTORY:
+            format_ = self.screen.context.get('date_format', '%x')
+            format_ += ' %H:%M:%S.%f'
+            revision_label = ' @ %s' % revision.strftime(format_)
+            label = common.ellipsize(
+                self.title, 80 - len(revision_label)) + revision_label
+            tooltip = self.title + revision_label
+        else:
+            label = common.ellipsize(self.title, 80)
+            tooltip = self.title
+
         title = Gtk.Label(
-            label=common.ellipsize(self.title, 80),
+            label=label,
             halign=Gtk.Align.START, margin=5,
             ellipsize=Pango.EllipsizeMode.END)
-        tooltips.set_tip(title, self.title)
+        tooltips.set_tip(title, tooltip)
         title.set_size_request(0, -1)  # Allow overflow
         title.show()
 

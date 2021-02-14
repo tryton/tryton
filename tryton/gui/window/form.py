@@ -278,7 +278,7 @@ class Form(SignalEvent, TabContent):
         else:
             label = common.ellipsize(self.name, 80)
             tooltip = self.name
-        self.title.set_markup(label)
+        self.title.set_text(label)
         tooltips.set_tip(self.title, tooltip)
         self.set_buttons_sensitive(revision)
 
