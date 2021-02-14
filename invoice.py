@@ -449,6 +449,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         else:
             return ['expense']
 
+    @classmethod
+    def order_accounting_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.accounting_date, table.invoice_date)]
+
     @fields.depends('party', 'type')
     def on_change_party(self):
         self.invoice_address = None
@@ -1048,7 +1053,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                                     ('invoice_date', '>', date),
                                     ],
                                 ],
-                            ], limit=1)
+                            ], limit=1, order=[('accounting_date', 'DESC')])
                 if after_invoices:
                     after_invoice, = after_invoices
                     raise InvoiceNumberError(
