@@ -2315,6 +2315,10 @@ function eval_pyson(value){
                 // Remove the first tree view as mode is form only
                 view_ids.shift();
             }
+            var model = this.get_model();
+            var breadcrumb = jQuery.extend([], this.view.screen.breadcrumb);
+            breadcrumb.push(
+                this.attributes.string || Sao.common.MODELNAME.get(model));
             return new Sao.Screen(this.get_model(), {
                 'context': context,
                 'domain': domain,
@@ -2323,6 +2327,7 @@ function eval_pyson(value){
                 'views_preload': this.attributes.views,
                 'readonly': this._readonly,
                 exclude_field: this.attributes.relation_field,
+                breadcrumb: breadcrumb,
             });
         },
         set_text: function(value) {
@@ -2502,7 +2507,6 @@ function eval_pyson(value){
                     screen.load([m2o_id]);
                     win = new Sao.Window.Form(screen, callback.bind(this), {
                         save_current: true,
-                        title: this.attributes.string
                     });
                 }.bind(this));
                 return;
@@ -2560,7 +2564,6 @@ function eval_pyson(value){
                 var win = new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true,
                     save_current: true,
-                    title: this.attributes.string,
                     rec_name: rec_name
                 });
             }.bind(this));
@@ -3028,7 +3031,11 @@ function eval_pyson(value){
             this.el.append(this.content);
 
             var modes = (attributes.mode || 'tree,form').split(',');
-            this.screen = new Sao.Screen(attributes.relation, {
+            var model = attributes.relation;
+            var breadcrumb = jQuery.extend([], this.view.screen.breadcrumb);
+            breadcrumb.push(
+                attributes.string || Sao.common.MODELNAME.get(model));
+            this.screen = new Sao.Screen(model, {
                 mode: modes,
                 view_ids: (attributes.view_ids || '').split(','),
                 views_preload: attributes.views || {},
@@ -3036,7 +3043,8 @@ function eval_pyson(value){
                 row_activate: this.activate.bind(this),
                 exclude_field: attributes.relation_field || null,
                 limit: null,
-                pre_validate: attributes.pre_validate
+                pre_validate: attributes.pre_validate,
+                breadcrumb: breadcrumb,
             });
             this.screen.pre_validate = attributes.pre_validate == 1;
 
@@ -3270,7 +3278,6 @@ function eval_pyson(value){
                 var win = new Sao.Window.Form(this.screen, update_sequence, {
                     new_: true,
                     many: field_size,
-                    title: this.attributes.string
                 });
             }
         },
@@ -3378,8 +3385,7 @@ function eval_pyson(value){
             return this.validate().then(function() {
                 var record = this.screen.current_record;
                 if (record) {
-                    var win = new Sao.Window.Form(this.screen, function() {},
-                        {title: this.attributes.string});
+                    var win = new Sao.Window.Form(this.screen, function() {});
                 }
             }.bind(this));
         },
@@ -3497,7 +3503,9 @@ function eval_pyson(value){
                 'class': this.class_ + '-content panel-body'
             });
             this.el.append(this.content);
-
+            var model = attributes.relation;
+            var breadcrumb = jQuery.extend([], this.view.screen.breadcrumb);
+            breadcrumb.push(attributes.string || Sao.common.MODELNAME.get(model));
             this.screen = new Sao.Screen(attributes.relation, {
                 mode: ['tree'],
                 view_ids: (attributes.view_ids || '').split(','),
@@ -3505,7 +3513,8 @@ function eval_pyson(value){
                 order: attributes.order,
                 row_activate: this.activate.bind(this),
                 readonly: true,
-                limit: null
+                limit: null,
+                breadcrumb: breadcrumb,
             });
             this.screen.message_callback = this.record_label.bind(this);
             this.prm = this.screen.switch_view('tree').done(function() {
@@ -3675,8 +3684,7 @@ function eval_pyson(value){
             }.bind(this);
             screen.switch_view().done(function() {
                 screen.load([this.screen.current_record.id]);
-                new Sao.Window.Form(screen, callback,
-                    {title: this.attributes.string});
+                new Sao.Window.Form(screen, callback);
             }.bind(this));
         },
         new_: function() {
@@ -3692,7 +3700,6 @@ function eval_pyson(value){
                 new Sao.Window.Form(screen, callback, {
                     'new_': true,
                     'save_current': true,
-                    title: this.attributes.string,
                     rec_name: this.entry.val()
                 });
             }.bind(this));

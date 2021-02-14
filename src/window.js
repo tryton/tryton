@@ -94,30 +94,43 @@
             this.domain = kwargs.domain || null;
             this.context = kwargs.context || null;
             this.save_current = kwargs.save_current;
-            var title_prm = jQuery.when(kwargs.title || '');
-            title_prm = title_prm.then(function(title) {
-                if (!title) {
-                    title = Sao.common.MODELNAME.get(this.screen.model_name);
-                }
-                this.title = title;
-                var revision = this.screen.context._datetime;
-                var label;
-                if (revision &&
-                    Sao.common.MODELHISTORY.contains(this.screen.model_name)) {
-                    var date_format = Sao.common.date_format(
-                    this.screen.context.date_format);
-                    var time_format = '%H:%M:%S.%f';
-                    var revision_label = ' @ ' + Sao.common.format_datetime(
-                        date_format, time_format, revision);
-                    label = Sao.common.ellipsize(
-                        this.title, 80 - revision_label.length) +
-                        revision_label;
-                    title = this.title + revision_label;
-                } else {
-                    label = Sao.common.ellipsize(this.title, 80);
-                }
-                return title;
-            }.bind(this));
+            var title_prm = jQuery.when(kwargs.title || '').then(
+                function(title) {
+                    if (screen.breadcrumb.length) {
+                        var breadcrumb = jQuery.extend([], screen.breadcrumb);
+                        if (title) {
+                            breadcrumb.push(title);
+                        }
+                        this.title = breadcrumb.slice(-3, -1).map(function(x) {
+                            return Sao.common.ellipsize(x, 30);
+                        }).concat(breadcrumb.slice(-1)).join(' › ');
+                        if (breadcrumb.length > 3) {
+                            this.title = '... › ' + this.title;
+                        }
+                    } else {
+                        if (!title) {
+                            title = Sao.common.MODELNAME.get(this.screen.model_name);
+                        }
+                        this.title = title;
+                    }
+                    var revision = this.screen.context._datetime;
+                    var label;
+                    if (revision &&
+                        Sao.common.MODELHISTORY.contains(this.screen.model_name)) {
+                        var date_format = Sao.common.date_format(
+                            this.screen.context.date_format);
+                        var time_format = '%H:%M:%S.%f';
+                        var revision_label = ' @ ' + Sao.common.format_datetime(
+                            date_format, time_format, revision);
+                        label = Sao.common.ellipsize(
+                            this.title, 80 - revision_label.length) +
+                            revision_label;
+                        title = this.title + revision_label;
+                    } else {
+                        label = Sao.common.ellipsize(this.title, 80);
+                    }
+                    return label;
+                }.bind(this));
 
             this.prev_view = screen.current_view;
             this.screen.screen_container.alternate_view = true;
@@ -713,6 +726,7 @@
                 views_preload: views_preload,
                 row_activate: this.activate.bind(this),
                 readonly: true,
+                breadcrumb: [this.title],
             });
             this.screen.load_next_view().done(function() {
                 this.screen.switch_view().done(function() {
@@ -775,7 +789,6 @@
                 new Sao.Window.Form(screen, callback.bind(this), {
                     new_: true,
                     save_current: true,
-                    title: this.title
                 });
                 return;
             }

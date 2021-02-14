@@ -450,6 +450,13 @@
         class_: 'tab-form',
         init: function(model_name, attributes) {
             Sao.Tab.Form._super.init.call(this, attributes);
+            attributes = jQuery.extend({}, attributes);
+            var name = attributes.name;
+            if (!name) {
+                name = Sao.common.MODELNAME.get(model_name);
+            }
+            this.set_name(name);
+            attributes.breadcrumb = [name];
             var screen = new Sao.Screen(model_name, attributes);
             screen.tab = this;
             this.screen = screen;
@@ -467,11 +474,6 @@
 
             this.view_prm = this.screen.switch_view().done(function() {
                 this.screen.count_tab_domain();
-                var name = attributes.name;
-                if (!name) {
-                    name = Sao.common.MODELNAME.get(model_name);
-                }
-                this.set_name(name);
                 this.content.append(screen.screen_container.el);
                 if (attributes.res_id) {
                     if (!jQuery.isArray(attributes.res_id)) {

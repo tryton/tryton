@@ -870,8 +870,9 @@ var Sao = {};
         },
         add_title: function(title) {
             this.header.append(jQuery('<h4/>', {
-                'class': 'modal-title'
-            }).text(title));
+                'class': 'modal-title',
+                'title': title,
+            }).text(Sao.common.ellipsize(title, 120)));
         }
     });
 

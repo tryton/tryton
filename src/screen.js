@@ -783,6 +783,7 @@
             this.search_count = 0;
             this.screen_container = new Sao.ScreenContainer(
                 attributes.tab_domain);
+            this.breadcrumb = attributes.breadcrumb || [];
 
             this.context_screen = null;
             if (attributes.context_model) {
