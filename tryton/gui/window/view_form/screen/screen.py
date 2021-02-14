@@ -76,6 +76,7 @@ class Screen(SignalEvent):
         self.screen_container.alternate_view = attributes.get(
             'alternate_view', False)
         self.widget = self.screen_container.widget_get()
+        self.breadcrumb = attributes.get('breadcrumb') or []
 
         self.context_screen = None
         if attributes.get('context_model'):

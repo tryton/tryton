@@ -1,3 +1,4 @@
+* Add breadcrumb as title of window form
 * Display revision on dialog
 * Execute report asynchronously
 * Add support for Python 3.9

@@ -838,9 +838,13 @@ class M2O(GenericText):
             return
         target_id = self.id_from_value(field.get(record))
 
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            field.attrs.get('string') or common.MODELNAME.get(model))
         screen = Screen(model, domain=domain, context=context,
             mode=['form'], view_ids=self.attrs.get('view_ids', '').split(','),
-            exclude_field=field.attrs.get('relation_field'))
+            exclude_field=field.attrs.get('relation_field'),
+            breadcrumb=breadcrumb)
 
         def open_callback(result):
             if result:
@@ -853,11 +857,10 @@ class M2O(GenericText):
                 callback()
         if target_id and target_id >= 0:
             screen.load([target_id])
-            WinForm(screen, open_callback, save_current=True,
-                title=field.attrs.get('string'))
+            WinForm(screen, open_callback, save_current=True)
         else:
             WinForm(screen, open_callback, new=True, save_current=True,
-                title=field.attrs.get('string'), rec_name=text)
+                rec_name=text)
 
     def search_remote(self, record, field, text, callback=None):
         model = self.get_model(record, field)
@@ -970,17 +973,20 @@ class O2M(GenericText):
         if not access['read']:
             return
 
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            field.attrs.get('string') or common.MODELNAME.get(relation))
         screen = Screen(relation, mode=['tree', 'form'],
             view_ids=self.attrs.get('view_ids', '').split(','),
-            exclude_field=field.attrs.get('relation_field'))
+            exclude_field=field.attrs.get('relation_field'),
+            breadcrumb=breadcrumb)
         screen.pre_validate = bool(int(self.attrs.get('pre_validate', 0)))
         screen.group = group
 
         def open_callback(result):
             if callback:
                 callback()
-        WinForm(screen, open_callback, view_type='tree', context=context,
-            title=field.attrs.get('string'))
+        WinForm(screen, open_callback, view_type='tree', context=context)
 
 
 class M2M(O2M):
@@ -993,16 +999,20 @@ class M2M(O2M):
         context = field.get_context(record)
         domain = field.domain_get(record)
 
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            field.attrs.get('string') or common.MODELNAME.get(relation))
         screen = Screen(relation, mode=['tree', 'form'],
             view_ids=self.attrs.get('view_ids', '').split(','),
-            exclude_field=field.attrs.get('relation_field'))
+            exclude_field=field.attrs.get('relation_field'),
+            breadcrumb=breadcrumb)
         screen.group = group
 
         def open_callback(result):
             if callback:
                 callback()
         WinForm(screen, open_callback, view_type='tree', domain=domain,
-            context=context, title=field.attrs.get('string'))
+            context=context)
 
 
 class Selection(GenericText, SelectionMixin, PopdownMixin):

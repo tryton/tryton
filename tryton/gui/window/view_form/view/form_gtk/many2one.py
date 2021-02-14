@@ -152,10 +152,15 @@ class Many2One(Widget):
             context = self.field.get_context(self.record)
         # Remove first tree view as mode is form only
         view_ids = self.attrs.get('view_ids', '').split(',')[1:]
-        return Screen(self.get_model(), domain=domain, context=context,
+        model = self.get_model()
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            self.attrs.get('string') or common.MODELNAME.get(model))
+        return Screen(model, domain=domain, context=context,
             mode=['form'], view_ids=view_ids,
             views_preload=self.attrs.get('views', {}), readonly=self._readonly,
-            exclude_field=self.attrs.get('relation_field'))
+            exclude_field=self.attrs.get('relation_field'),
+            breadcrumb=breadcrumb)
 
     def sig_new(self, *args):
         model = self.get_model()
@@ -171,7 +176,7 @@ class Many2One(Widget):
                         screen.current_record.rec_name()))
             self.focus_out = True
         WinForm(screen, callback, new=True, save_current=True,
-            title=self.attrs.get('string'), rec_name=self.wid_text.get_text())
+            rec_name=self.wid_text.get_text())
 
     def sig_edit(self, entry=None, icon_pos=None, *args):
         model = self.get_model()
@@ -204,8 +209,7 @@ class Many2One(Widget):
                         force_change=True)
                 self.focus_out = True
                 self.changed = True
-            WinForm(screen, callback, save_current=True,
-                title=self.attrs.get('string'))
+            WinForm(screen, callback, save_current=True)
             return
         if not self._readonly:
             domain = self.field.domain_get(self.record)

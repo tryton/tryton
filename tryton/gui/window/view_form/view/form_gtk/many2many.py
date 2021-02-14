@@ -182,10 +182,14 @@ class Many2Many(Widget):
         context = self.field.get_context(self.record)
         # Remove the first tree view as mode is form only
         view_ids = self.attrs.get('view_ids', '').split(',')[1:]
-        return Screen(self.attrs['relation'], domain=domain,
+        model = self.attrs['relation']
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            self.attrs.get('string') or common.MODELNAME.get(model))
+        return Screen(model, domain=domain,
             view_ids=view_ids,
             mode=['form'], views_preload=self.attrs.get('views', {}),
-            context=context)
+            context=context, breadcrumb=breadcrumb)
 
     def _sig_edit(self):
         if not self.screen.current_record:
@@ -202,7 +206,7 @@ class Many2Many(Widget):
                 self.screen.current_record.cancel()
                 # Force a display to clear the CellCache
                 self.screen.display()
-        WinForm(screen, callback, title=self.attrs.get('string'))
+        WinForm(screen, callback)
 
     def _sig_new(self):
         screen = self._get_screen_form()
@@ -217,7 +221,7 @@ class Many2Many(Widget):
 
         self.focus_out = False
         WinForm(screen, callback, new=True, save_current=True,
-            title=self.attrs.get('string'), rec_name=self.wid_text.get_text())
+            rec_name=self.wid_text.get_text())
 
     def _readonly_set(self, value):
         self._readonly = value

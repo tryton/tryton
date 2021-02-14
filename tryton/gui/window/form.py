@@ -45,12 +45,12 @@ class Form(SignalEvent, TabContent):
         self.view_ids = attributes.get('view_ids')
         self.dialogs = []
 
-        self.screen = Screen(self.model, **attributes)
-        self.screen.widget.show()
-
         if not name:
             name = common.MODELNAME.get(model)
         self.name = name
+
+        self.screen = Screen(self.model, breadcrumb=[self.name], **attributes)
+        self.screen.widget.show()
 
         self.create_tabcontent()
 

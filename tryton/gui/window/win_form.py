@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from itertools import chain
 import gettext
 
 from gi.repository import Gdk, Gtk, Pango
@@ -30,9 +31,19 @@ class WinForm(NoModal, InfoBar):
         self.domain = domain
         self.context = context
         self.save_current = save_current
-        if not title:
-            title = MODELNAME.get(screen.model_name)
-        self.title = title
+        if screen.breadcrumb:
+            breadcrumb = list(screen.breadcrumb)
+            if title:
+                breadcrumb.append(title)
+            self.title = ' › '.join(chain(
+                    (common.ellipsize(x, 30) for x in breadcrumb[-3:-1]),
+                    breadcrumb[-1:]))
+            if len(breadcrumb) > 3:
+                self.title = '... › ' + self.title
+        else:
+            if not title:
+                title = MODELNAME.get(screen.model_name)
+            self.title = title
         self.prev_view = self.screen.current_view
         self.screen.screen_container.alternate_view = True
         self.screen.switch_view(view_type=view_type)

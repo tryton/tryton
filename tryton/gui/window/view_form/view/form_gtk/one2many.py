@@ -156,14 +156,19 @@ class One2Many(Widget):
         frame.set_shadow_type(Gtk.ShadowType.OUT)
         vbox.pack_start(frame, expand=False, fill=True, padding=0)
 
-        self.screen = Screen(attrs['relation'],
+        model = attrs['relation']
+        breadcrumb = list(self.view.screen.breadcrumb)
+        breadcrumb.append(
+            attrs.get('string') or common.MODELNAME.get(model))
+        self.screen = Screen(model,
             mode=attrs.get('mode', 'tree,form').split(','),
             view_ids=attrs.get('view_ids', '').split(','),
             views_preload=attrs.get('views', {}),
             order=attrs.get('order'),
             row_activate=self._on_activate,
             exclude_field=attrs.get('relation_field', None),
-            limit=None)
+            limit=None,
+            breadcrumb=breadcrumb)
         self.screen.pre_validate = bool(int(attrs.get('pre_validate', 0)))
         self.screen.signal_connect(self, 'record-message', self._sig_label)
 
@@ -353,7 +358,7 @@ class One2Many(Widget):
             field_size = self.record.expr_eval(self.attrs.get('size')) or -1
             field_size -= len(self.field.get_eval(self.record)) + 1
             WinForm(self.screen, lambda a: update_sequence(), new=True,
-                many=field_size, title=self.attrs.get('string'))
+                many=field_size)
 
     def _new_product(self):
         fields = self.attrs['product'].split(',')
@@ -414,8 +419,7 @@ class One2Many(Widget):
             return
         record = self.screen.current_record
         if record:
-            WinForm(self.screen, lambda a: None,
-                title=self.attrs.get('string'))
+            WinForm(self.screen, lambda a: None)
 
     def _sig_next(self, widget):
         if not self._validate():

@@ -134,7 +134,8 @@ class WinSearch(NoModal):
             screen = Screen(self.model_name, domain=self.domain,
                 context=self.context, order=self.order, mode=['form'],
                 view_ids=view_ids, views_preload=self.views_preload,
-                exclude_field=self.exclude_field)
+                exclude_field=self.exclude_field,
+                breadcrumb=[self.title])
 
             def callback(result):
                 if result:
@@ -144,9 +145,7 @@ class WinSearch(NoModal):
                 else:
                     self.callback(None)
             self.destroy()
-            WinForm(
-                screen, callback, new=True, save_current=True,
-                title=self.title)
+            WinForm(screen, callback, new=True, save_current=True)
             return
         if res:
             group = self.screen.group
