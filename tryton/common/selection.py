@@ -26,6 +26,7 @@ class SelectionMixin(object):
                 for k in self.attrs.get('selection_change_with') or [])
         key = freeze_value(value)
         selection = self.attrs.get('selection', [])[:]
+        help_ = self.attrs.get('help_selection', {})
         if (not isinstance(selection, (list, tuple))
                 and key not in self._values2selection):
             try:
@@ -42,6 +43,7 @@ class SelectionMixin(object):
         if self.attrs.get('sort', True):
             selection.sort(key=operator.itemgetter(1))
         self.selection = selection[:]
+        self.help = help_
         self.inactive_selection = []
 
     def update_selection(self, record, field):
@@ -63,10 +65,13 @@ class SelectionMixin(object):
                 self._last_domain = (domain, context)
             if (domain, context) == self._last_domain:
                 return
-
+            fields = ['rec_name']
+            help_field = self.attrs.get('help_field')
+            if help_field:
+                fields.append(help_field)
             try:
                 result = RPCExecute('model', self.attrs['relation'],
-                    'search_read', domain, 0, None, None, ['rec_name'],
+                    'search_read', domain, 0, None, None, fields,
                     context=context)
             except RPCException:
                 result = False
@@ -74,12 +79,18 @@ class SelectionMixin(object):
                 selection = [(x['id'], x['rec_name']) for x in result]
                 if self.nullable_widget:
                     selection.append((None, ''))
+                if help_field:
+                    help_ = {x['id']: x[help_field] for x in result}
+                else:
+                    help_ = {}
                 self._last_domain = (domain, context)
                 self._domain_cache[domain_cache_key] = selection
             else:
                 selection = []
+                help_ = {}
                 self._last_domain = None
             self.selection = selection[:]
+            self.help = help_
             self.inactive_selection = []
 
     def filter_selection(self, domain, record, field):
