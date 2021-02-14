@@ -229,7 +229,7 @@ class Purchase(
     def __setup__(cls):
         super(Purchase, cls).__setup__()
         cls._order = [
-            ('purchase_date', 'DESC'),
+            ('purchase_date', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
             ]
         cls._transitions |= set((
