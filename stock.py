@@ -528,9 +528,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
         pline2requests = defaultdict(list)
         for request in requests:
             pline2requests[request.purchase_line].append(request)
-        sale_lines = SaleLine.search([
-                ('purchase_request', 'in', [r.id for r in requests]),
-                ])
+        sale_lines = []
+        for sub_requests in grouped_slice([r.id for r in requests]):
+            sale_lines += SaleLine.search([
+                    ('purchase_request', 'in', list(sub_requests)),
+                    ])
         request2slines = defaultdict(list)
         for sale_line in sale_lines:
             request2slines[sale_line.purchase_request].append(sale_line)
