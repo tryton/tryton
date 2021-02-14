@@ -532,7 +532,7 @@ class Activity(ModelSQL, ModelView):
             parts = urlsplit(urljoin(
                     URL_BASE, quote('/m/%(database)s/unsubscribe' % {
                             'database': Base64Converter(None).to_url(
-                                Transaction().database.name).decode('utf-8'),
+                                Transaction().database.name),
                             })))
             query = parse_qsl(parts.query)
             query.append(('r', record.uuid))
