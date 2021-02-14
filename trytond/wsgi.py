@@ -53,7 +53,7 @@ class Base64Converter(BaseConverter):
         return base64.urlsafe_b64decode(value).decode('utf-8')
 
     def to_url(self, value):
-        return base64.urlsafe_b64encode(value.encode('utf-8'))
+        return base64.urlsafe_b64encode(value.encode('utf-8')).decode('ascii')
 
 
 class TrytondWSGI(object):
