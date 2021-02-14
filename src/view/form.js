@@ -1945,27 +1945,28 @@ function eval_pyson(value){
         },
         update_selection: function(record, field, callbak) {
             Sao.common.selection_mixin.update_selection.call(this, record,
-                field, function(selection) {
-                    this.set_selection(selection);
+                field, function(selection, help) {
+                    this.set_selection(selection, help);
                     if (callbak) {
-                        callbak();
+                        callbak(help);
                     }
                 }.bind(this));
         },
-        set_selection: function(selection) {
+        set_selection: function(selection, help) {
             var select = this.select;
             select.empty();
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
                     'value': JSON.stringify(e[0]),
-                    'text': e[1]
+                    'text': e[1],
+                    'title': help[e[0]],
                 }));
             });
         },
         display_update_selection: function() {
             var record = this.record;
             var field = this.field;
-            this.update_selection(record, field, function() {
+            this.update_selection(record, field, function(help) {
                 if (!field) {
                     this.select.val('');
                     return;
@@ -1993,6 +1994,11 @@ function eval_pyson(value){
                 }
                 prm.done(function() {
                     this.select.val(JSON.stringify(value));
+                    var title = help[value] || null;
+                    if (this.attributes.help && title) {
+                        title = this.attributes.help + '\n' + title;
+                    }
+                    this.select.attr('title', title);
                 }.bind(this));
             }.bind(this));
         },
@@ -2715,20 +2721,21 @@ function eval_pyson(value){
         },
         update_selection: function(record, field, callback) {
             Sao.common.selection_mixin.update_selection.call(this, record,
-                field, function(selection) {
-                    this.set_selection(selection);
+                field, function(selection, help) {
+                    this.set_selection(selection, help);
                     if (callback) {
                         callback();
                     }
                 }.bind(this));
         },
-        set_selection: function(selection) {
+        set_selection: function(selection, help) {
             var select = this.select;
             select.empty();
             selection.forEach(function(e) {
                 select.append(jQuery('<option/>', {
                     'value': e[0],
-                    'text': e[1]
+                    'text': e[1],
+                    'title': help[e[0]],
                 }));
             });
         },
@@ -3905,6 +3912,21 @@ function eval_pyson(value){
                 this, view, attributes);
             this.select.prop('multiple', true);
         },
+        set_selection: function(selection, help) {
+            Sao.View.Form.MultiSelection._super.set_selection.call(
+                this, selection, help);
+            var widget_help = this.attributes.help;
+            if (widget_help) {
+                this.select.children().each(function() {
+                    var option = jQuery(this);
+                    var help = option.attr('title');
+                    if (help) {
+                        help = widget_help + '\n' + help;
+                        option.attr('title', help);
+                    }
+                });
+            }
+        },
         get modified() {
             if (this.record && this.field) {
                 var group = new Set(this.field.get_eval(this.record));
@@ -4568,8 +4590,9 @@ function eval_pyson(value){
                 select.append(jQuery('<option/>', {
                     'value': JSON.stringify(e[0]),
                     'text': e[1],
+                    'title': this.definition.help_selection[e[0]],
                 }));
-            });
+            }.bind(this));
         },
         set_readonly: function(readonly) {
             this._readonly = readonly;
@@ -4592,6 +4615,11 @@ function eval_pyson(value){
             },
             set_value: function(value) {
                 this.input.val(JSON.stringify(value));
+                var title = this.definition.help_selection[value] || null;
+                if (this.definition.help && title) {
+                    title = this.definition.help + '\n' + title;
+                }
+                this.input.attr('title', title);
             },
         });
 
@@ -4602,6 +4630,17 @@ function eval_pyson(value){
                 Sao.View.Form.Dict.MultiSelection._super
                     .create_widget.call(this);
                 this.input.prop('multiple', true);
+                var widget_help = this.definition.help;
+                if (widget_help) {
+                    this.input.children().each(function() {
+                        var option = jQuery(this);
+                        var help = option.attr('title');
+                        if (help) {
+                            help = widget_help + '\n' + help;
+                            option.attr('title', help);
+                        }
+                    });
+                }
             },
             get_value: function() {
                 var value = this.input.val();

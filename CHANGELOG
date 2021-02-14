@@ -1,3 +1,4 @@
+* Manage help for each selection
 * Display revision on dialog
 * Support empty value for timedelta converter
 * Unify PYSON string format

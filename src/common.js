@@ -625,6 +625,7 @@
     Sao.common.selection_mixin = {};
     Sao.common.selection_mixin.init = function() {
         this.selection = null;
+        this.help = null;
         this.inactive_selection = [];
         this._last_domain = null;
         this._values2selection = {};
@@ -642,6 +643,7 @@
         }
         var key = JSON.stringify(value);
         var selection = this.attributes.selection || [];
+        var help = this.attributes.help_selection || {};
         var prm;
         var prepare_selection = function(selection) {
             selection = jQuery.extend([], selection);
@@ -651,7 +653,8 @@
                 });
             }
             this.selection = jQuery.extend([], selection);
-            if (callback) callback(this.selection);
+            this.help = this.attributes.help_selection || {};
+            if (callback) callback(this.selection, this.help);
         };
         if (!(selection instanceof Array) &&
                 !(key in this._values2selection)) {
@@ -680,7 +683,7 @@
         var _update_selection = function() {
             if (!field) {
                 if (callback) {
-                    callback(this.selection);
+                    callback(this.selection, this.help);
                 }
                 return;
             }
@@ -694,7 +697,7 @@
                             Sao.common.selection_mixin.filter_selection.call(
                                     this, domain, record, field);
                             if (callback) {
-                                callback(this.selection);
+                                callback(this.selection, this.help);
                             }
                         }.bind(this));
             } else {
@@ -709,14 +712,19 @@
                         (JSON.stringify(context) ==
                          JSON.stringify(this._last_domain[1]))) {
                     if (callback) {
-                        callback(this.selection);
+                        callback(this.selection, this.help);
                     }
                     return;
+                }
+                var fields = ['rec_name'];
+                var help_field = this.attributes.help_field;
+                if (help_field) {
+                    fields.push(help_field);
                 }
                 var prm = Sao.rpc({
                     'method': 'model.' + this.attributes.relation +
                         '.search_read',
-                    'params': [domain, 0, null, null, ['rec_name'], context]
+                    'params': [domain, 0, null, null, fields, context]
                 }, record.model.session);
                 prm.done(function(result) {
                     var selection = [];
@@ -726,18 +734,25 @@
                     if (this.nullable_widget) {
                         selection.push([null, '']);
                     }
+                    var help = {};
+                    if (help_field){
+                        result.forEach(function(x) {
+                            help[x.id] = x[help_field];
+                        });
+                    }
                     this._last_domain = [domain, context];
                     this._domain_cache[jdomain] = selection;
                     this.selection = jQuery.extend([], selection);
+                    this.help = help;
                     if (callback) {
-                        callback(this.selection);
+                        callback(this.selection, this.help);
                     }
                 }.bind(this));
                 prm.fail(function() {
                     this._last_domain = null;
                     this.selection = [];
                     if (callback) {
-                        callback(this.selection);
+                        callback(this.selection, this.help);
                     }
                 }.bind(this));
             }
