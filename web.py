@@ -37,7 +37,7 @@ class ShortenedURL(ModelSQL, ModelView):
 
         url_parts = {
             'database': Base64Converter(None).to_url(
-                Transaction().database.name).decode('utf-8'),
+                Transaction().database.name),
             }
         for shortened in shortened_urls:
             url_parts['short_id'] = cls._shorten(shortened.id)
