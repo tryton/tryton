@@ -27,10 +27,9 @@ class InvoiceLine(metaclass=PoolMeta):
     __name__ = 'account.invoice.line'
 
     @classmethod
-    def _view_look_dom_arch(cls, tree, type, field_children=None, level=0):
+    def parse_view(cls, tree, type, *args, **kwargs):
         if type == 'form' and Transaction().context.get('standalone'):
             tree_root = tree.getroottree().getroot()
             if tree_root.get('cursor') == 'product':
                 tree_root.set('cursor', 'party')
-        return super(InvoiceLine, cls)._view_look_dom_arch(tree, type,
-            field_children=field_children, level=level)
+        return super().parse_view(tree, type, *args, **kwargs)
