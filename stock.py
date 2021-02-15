@@ -131,6 +131,9 @@ class Move(metaclass=PoolMeta):
         amount = Decimal('0.0')
         for line in account_move_lines:
             amount += line.debit - line.credit
+
+        if not amount:
+            return
         move_line = self._get_account_stock_move_line(amount)
         if move_line:
             account_move_lines.append(move_line)
