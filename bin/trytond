@@ -40,7 +40,17 @@ with commandline.pidfile(options):
         thread.join()
     hostname, port = split_netloc(config.get('web', 'listen'))
     certificate = config.get('ssl', 'certificate')
+    try:
+        if config.getboolean('ssl', 'certificate'):
+            certificate = None
+    except ValueError:
+        pass
     privatekey = config.get('ssl', 'privatekey')
+    try:
+        if config.getboolean('ssl', 'privatekey'):
+            privatekey = None
+    except ValueError:
+        pass
     if certificate or privatekey:
         from werkzeug.serving import load_ssl_context
         ssl_args = dict(
