@@ -113,9 +113,9 @@
                         column = data.columns[key2columns[key]];
                         if (yfield.domain) {
                             var ctx = jQuery.extend({},
-                                    Sao.session.current_session.context);
+                                    Sao.Session.current_session.context);
                             ctx.context = ctx;
-                            ctx._user = Sao.session.current_session.user_id;
+                            ctx._user = Sao.Session.current_session.user_id;
                             for (var field in group.model.fields) {
                                 ctx[field] = record.field_get(field);
                             }
