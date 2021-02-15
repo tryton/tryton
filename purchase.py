@@ -158,7 +158,7 @@ class AmendmentLine(ModelSQL, ModelView):
     __name__ = 'purchase.amendment.line'
 
     amendment = fields.Many2One(
-        'purchase.amendment', "Amendment", required=True)
+        'purchase.amendment', "Amendment", required=True, ondelete='CASCADE')
     state = fields.Function(fields.Selection(
             'get_states', "State"), 'on_change_with_state')
     action = fields.Selection([
