@@ -27,9 +27,11 @@ class URLAccessor(object):
         context = Transaction().context
         if context:
             request = context.get('_request')
-            if request:
-                return request['is_secure']
-        return bool(config.get('ssl', 'certificate'))
+            if request and request['is_secure']:
+                return True
+        return bool(
+            config.get('ssl', 'certificate')
+            or config.get('ssl', 'privatekey'))
 
     @classmethod
     def host(cls):
