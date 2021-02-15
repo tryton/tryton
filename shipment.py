@@ -916,8 +916,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                 ('company', '=', Eval('company')),
                 ],
             states={
-                'readonly': ((Eval('state').in_(
-                            ['waiting', 'packed', 'done', 'cancelled']))
+                'readonly': (Eval('state').in_(
+                        If(Eval('warehouse_storage')
+                            == Eval('warehouse_output'),
+                            ['done', 'cancelled'],
+                            ['waiting', 'packed', 'done', 'cancelled'],
+                            ))
                     | ~Eval('warehouse') | ~Eval('customer')),
                 },
             depends=['state', 'warehouse', 'customer', 'warehouse_output',

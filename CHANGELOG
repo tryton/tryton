@@ -1,4 +1,5 @@
 * Add delivery usage to contact mechanism
+* Make customer's outgoing moves editable for same storage and output zone
 * Add margin reporting
 * Add products_by_locations Model
 
