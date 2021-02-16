@@ -369,7 +369,6 @@ class Graph(Gtk.DrawingArea):
             self.datas.setdefault(x, {})
             for yfield in self.yfields:
                 key = yfield.get('key', yfield['name'])
-                self.datas[x].setdefault(key, 0.0)
                 if yfield.get('domain'):
                     context = rpc.CONTEXT.copy()
                     context['context'] = context.copy()
@@ -378,6 +377,7 @@ class Graph(Gtk.DrawingArea):
                         context[field] = model[field].get(model)
                     if not PYSONDecoder(context).decode(yfield['domain']):
                         continue
+                self.datas[x].setdefault(key, 0.0)
                 if yfield['name'] == '#':
                     self.datas[x][key] += 1
                 else:
