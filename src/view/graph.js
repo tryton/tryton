@@ -110,6 +110,9 @@
                         yfield = this.yfields[j];
                         key = yfield.key || yfield.name;
                         column = data.columns[key2columns[key]];
+                        if (column[pos] === undefined) {
+                            column[pos] = null;
+                        }
                         if (yfield.domain) {
                             var ctx = jQuery.extend({},
                                     Sao.Session.current_session.context);
@@ -123,6 +126,9 @@
                                 continue;
                             }
                         }
+                        if (!column[pos]) {
+                            column[pos] = 0;
+                        }
                         if (yfield.name == '#') {
                             column[pos] += 1;
                         } else {
@@ -130,7 +136,7 @@
                             if (value && value.isTimeDelta) {
                                 value = value.asSeconds();
                             }
-                            column[pos] = (column[pos] || 0) + (value || 0);
+                            column[pos] += value || 0;
                         }
                     }
                 }.bind(this);
@@ -248,11 +254,20 @@
             var config = Sao.View.Graph.HorizontalBar._super._c3_config
                 .call(this, data);
             config.axis.rotated = true;
+            return config;
         }
     });
 
     Sao.View.Graph.Line = Sao.class_(Sao.View.Graph.Chart, {
-        _chart_type: 'line'
+        _chart_type: 'line',
+        _c3_config: function(data) {
+            var config =  Sao.View.Graph.Line._super._c3_config
+                .call(this, data);
+            config.line = {
+                connectNull: true,
+            };
+            return config;
+        }
     });
 
     Sao.View.Graph.Pie = Sao.class_(Sao.View.Graph.Chart, {
