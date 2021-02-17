@@ -205,7 +205,7 @@ class LotsByLocations(ModelSQL, ModelView):
         return lot.select(*columns)
 
     def get_lot(self, name):
-        value = getattr(self.product, name)
+        value = getattr(self.lot, name)
         if isinstance(value, Model):
             value = value.id
         return value
