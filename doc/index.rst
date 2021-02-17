@@ -1,7 +1,8 @@
+############################
 Account Invoice Stock Module
 ############################
 
-The account invoice stock module adds link between invoice lines and stock
+The *Account Invoice Stock Module* links together invoice lines and stock
 moves.
-The unit price of the stock move is updated with the average price of the
-posted invoice lines that are linked to it.
+This allows a stock move's unit price to be updated from the average price
+of the linked invoice lines.
