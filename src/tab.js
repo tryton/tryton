@@ -311,7 +311,7 @@
         set_name: function(name) {
             this.name = name;
             this.name_el.text(Sao.common.ellipsize(name, 20));
-            this.name_el.parents('li').first().attr('title', name);
+            this.name_el.attr('title', name);
         },
         get_url: function() {
         },
