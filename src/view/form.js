@@ -1235,11 +1235,11 @@ function eval_pyson(value){
                 dialog.modal.find('input,select')
                     .filter(':visible').first().focus();
             });
-        },
-        close: function(dialog) {
-            dialog.modal.on('hidden.bs.modal', function(event) {
+            dialog.modal.on('hide.bs.modal', function(){
                 jQuery(this).remove();
             });
+        },
+        close: function(dialog) {
             dialog.modal.modal('hide');
         },
         read: function(widget, dialog) {
