@@ -311,7 +311,8 @@ class DBListEditor(object):
         elif dbs is None:
             label = _('Could not connect to the server.')
         if label:
-            self.database_label.set_label('<b>%s</b>' % label)
+            self.database_label.set_label(
+                '<b>%s</b>' % GLib.markup_escape_text(label))
             self.database_label.show()
         else:
             self.database_combo.remove_all()
