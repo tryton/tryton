@@ -605,7 +605,7 @@ class FieldTranslate(Field):
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
 
-        return [Coalesce(column, self.sql_column(table))]
+        return [Coalesce(NullIf(column, ''), self.sql_column(table))]
 
     def definition(self, model, language):
         definition = super().definition(model, language)

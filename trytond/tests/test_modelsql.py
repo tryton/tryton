@@ -769,6 +769,31 @@ class ModelSQLTranslationTestCase(unittest.TestCase):
         self.assertEqual(other.name, "Baz")
 
     @with_transaction()
+    def test_order_empty_translation(self):
+        "Test order on empty translation value"
+        pool = Pool()
+        Model = pool.get('test.modelsql.translation')
+        Translation = pool.get('ir.translation')
+
+        with Transaction().set_context(language=self.default_language):
+            records = Model.create(
+                [{'name': "A"}, {'name': "B"}, {'name': "C"}])
+
+        translation, = Translation.search([
+                ('lang', '=', self.default_language),
+                ('name', '=', 'test.modelsql.translation,name'),
+                ('type', '=', 'model'),
+                ('res_id', '=', records[1].id),
+                ])
+        translation.value = ''
+        translation.save()
+
+        with Transaction().set_context(language=self.default_language):
+            self.assertEqual(
+                Model.search([], order=[('name', 'ASC')]),
+                records)
+
+    @with_transaction()
     def test_search_unique_result(self):
         "Test unique result on search"
         pool = Pool()
