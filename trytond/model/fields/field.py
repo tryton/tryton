@@ -3,8 +3,10 @@
 import warnings
 from functools import wraps
 
+import sql
 from sql import (operators, Column, Literal, Select, CombiningQuery, Null,
     Query, Expression, Cast)
+from sql.aggregate import Min
 from sql.conditionals import Coalesce, NullIf
 from sql.operators import Concat
 
@@ -18,6 +20,8 @@ from trytond.cache import LRUDictTransaction
 from ...rpc import RPC
 
 Database = backend.get('Database')
+
+_sql_version = tuple(map(int, sql.__version__.split('.')))
 
 
 def domain_validate(value):
@@ -393,34 +397,40 @@ class FieldTranslate(Field):
     def _get_translation_join(self, Model, name,
             translation, model, table, from_, language):
         if Model.__name__ == 'ir.model':
-            return from_.join(translation, 'LEFT',
-                condition=(translation.name == Concat(Concat(
-                            table.model, ','), name))
-                & (translation.res_id == -1)
-                & (translation.lang == language)
-                & (translation.type == 'model')
-                & (translation.fuzzy == False))
+            name_ = Concat(Concat(table.model, ','), name)
+            type_ = 'model'
+            res_id = -1
         elif Model.__name__ == 'ir.model.field':
+            name_ = Concat(Concat(model.model, ','), table.name)
             if name == 'field_description':
                 type_ = 'field'
             else:
                 type_ = 'help'
-            return from_.join(model, 'LEFT',
-                condition=model.id == table.model).join(
-                    translation, 'LEFT',
-                    condition=(translation.name == Concat(Concat(
-                                model.model, ','), table.name))
-                    & (translation.res_id == -1)
-                    & (translation.lang == language)
-                    & (translation.type == type_)
-                    & (translation.fuzzy == False))
+            res_id = -1
         else:
-            return from_.join(translation, 'LEFT',
-                condition=(translation.res_id == table.id)
-                & (translation.name == '%s,%s' % (Model.__name__, name))
-                & (translation.lang == language)
-                & (translation.type == 'model')
-                & (translation.fuzzy == False))
+            name_ = '%s,%s' % (Model.__name__, name)
+            type_ = 'model'
+            res_id = table.id
+        if backend.name() == 'postgresql' and _sql_version >= (1, 1, 0):
+            query = translation.select(
+                translation.res_id.as_('res_id'),
+                translation.value.as_('value'),
+                distinct=True,
+                distinct_on=[translation.res_id],
+                order_by=[translation.res_id, translation.id.desc])
+        else:
+            query = translation.select(
+                translation.res_id.as_('res_id'),
+                Min(translation.value).as_('value'),
+                group_by=[translation.res_id])
+        query.where = (
+            (translation.lang == language)
+            & (translation.type == type_)
+            & (translation.name == name_)
+            & (translation.fuzzy == Literal(False))
+            )
+        return query, from_.join(query, 'LEFT',
+            condition=(query.res_id == res_id))
 
     def convert_domain(self, domain, tables, Model):
         from trytond.ir.lang import get_parent_language
@@ -438,7 +448,7 @@ class FieldTranslate(Field):
         column = None
         while language:
             translation = Translation.__table__()
-            join = self._get_translation_join(
+            translation, join = self._get_translation_join(
                 Model, name, translation, model, table, join, language)
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
@@ -474,7 +484,7 @@ class FieldTranslate(Field):
             if key not in tables:
                 translation = Translation.__table__()
                 model = IrModel.__table__()
-                join = self._get_translation_join(
+                translation, join = self._get_translation_join(
                     Model, name, translation, model, table, table, language)
                 if join.left == table:
                     tables[key] = {

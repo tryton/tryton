@@ -485,30 +485,32 @@ class Translation(ModelSQL, ModelView):
                     return record.model + ',' + field_name
 
             with Transaction().set_context(_check_access=False):
-                translations = {}
+                name2translations = defaultdict(list)
                 for translation in cls.search([
                             ('lang', '=', lang),
                             ('type', '=', ttype),
                             ('name', 'in', [get_name(r) for r in records]),
                             ]):
-                    translations[translation.name] = translation
+                    name2translations[translation.name].append(translation)
 
                 to_save = []
                 for record, value in zip(records, values):
-                    translation = translations.get(get_name(record))
+                    translations = name2translations.get(get_name(record))
                     if lang == 'en':
                         src = value
                     else:
                         src = getattr(record, field_name)
-                    if not translation:
+                    if not translations:
                         translation = cls()
                         translation.name = name
                         translation.lang = lang
                         translation.type = ttype
-                    translation.src = src
-                    translation.value = value
-                    translation.fuzzy = False
-                    to_save.append(translation)
+                        translations.append(translation)
+                    for translation in translations:
+                        translation.src = src
+                        translation.value = value
+                        translation.fuzzy = False
+                        to_save.append(translation)
                 cls.save(to_save)
             return
 
@@ -516,7 +518,8 @@ class Translation(ModelSQL, ModelView):
         with Transaction().set_context(language=Config.get_language()):
             records = Model.browse(ids)
 
-        translations = {}
+        id2translations = defaultdict(list)
+        other_translations = defaultdict(list)
         with Transaction().set_context(_check_access=False):
             for translation in cls.search([
                         ('lang', '=', lang),
@@ -524,9 +527,8 @@ class Translation(ModelSQL, ModelView):
                         ('name', '=', name),
                         ('res_id', 'in', ids),
                         ]):
-                translations[translation.res_id] = translation
+                id2translations[translation.res_id].append(translation)
 
-            other_translations = {}
             if (lang == Config.get_language()
                     and Transaction().context.get('fuzzy_translation', True)):
                 for translation in cls.search([
@@ -535,33 +537,34 @@ class Translation(ModelSQL, ModelView):
                             ('name', '=', name),
                             ('res_id', 'in', ids),
                             ]):
-                    other_translations.setdefault(translation.res_id, []
-                        ).append(translation)
+                    other_translations[translation.res_id].append(translation)
 
             to_save = []
             for record, value in zip(records, values):
-                translation = translations.get(record.id)
+                translations = id2translations[record.id]
                 if lang == Config.get_language():
                     src = value
                 else:
                     src = getattr(record, field_name)
-                if not translation:
+                if not translations:
                     translation = cls()
                     translation.name = name
                     translation.lang = lang
                     translation.type = ttype
                     translation.res_id = record.id
+                    translations.append(translation)
                 else:
-                    other_langs = other_translations.get(record.id)
+                    other_langs = other_translations[record.id]
                     if other_langs:
                         for other_lang in other_langs:
                             other_lang.src = src
                             other_lang.fuzzy = True
                             to_save.append(other_lang)
-                translation.value = value
-                translation.src = src
-                translation.fuzzy = False
-                to_save.append(translation)
+                for translation in translations:
+                    translation.value = value
+                    translation.src = src
+                    translation.fuzzy = False
+                    to_save.append(translation)
             cls.save(to_save)
 
     @classmethod
