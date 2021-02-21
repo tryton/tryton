@@ -1101,10 +1101,10 @@ class EmailResetPassword(Report):
     __name__ = 'res.user.email_reset_password'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Lang = pool.get('ir.lang')
-        context = super(EmailResetPassword, cls).get_context(records, data)
+        context = super().get_context(records, header, data)
         lang = Lang.get()
         context['host'] = host()
         context['http_host'] = http_host()
