@@ -213,8 +213,8 @@ class EmailSubscribe(Report):
     __name__ = 'marketing.email.subscribe'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super().get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
         context['extract_params'] = _extract_params
         return context
 
@@ -223,8 +223,8 @@ class EmailUnsubscribe(Report):
     __name__ = 'marketing.email.unsubscribe'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super().get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
         context['extract_params'] = _extract_params
         return context
 
