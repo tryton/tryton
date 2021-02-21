@@ -8,6 +8,7 @@ module.exports = function(grunt) {
       'src/rpc.js',
       'src/pyson.js',
       'src/session.js',
+      'src/common.js',
       'src/model.js',
       'src/tab.js',
       'src/screen.js',
@@ -18,7 +19,6 @@ module.exports = function(grunt) {
       'src/view/calendar.js',
       'src/view/list_form.js',
       'src/action.js',
-      'src/common.js',
       'src/window.js',
       'src/wizard.js',
       'src/board.js',
@@ -32,7 +32,6 @@ module.exports = function(grunt) {
       'bower_components/bootstrap',
       'bower_components/bootstrap/less',
       'bower_components/bootstrap-rtl-ondemand/less',
-      'bower_components/tempusdominus-bootstrap-3/src/less/'
   ];
 
   // Project configuration.

@@ -491,6 +491,7 @@
 
                     var input;
                     var entry;
+                    var format, date_format, time_format;
                     switch (field.type) {
                         case 'boolean':
                             entry = input = jQuery('<select/>', {
@@ -509,25 +510,29 @@
                             input = entry.el;
                             break;
                         case 'date':
-                        case 'datetime':
-                        case 'time':
-                            var format;
-                            var date_format = Sao.common.date_format(
+                            format = Sao.common.date_format(
                                 this.screen.context.date_format);
-                            if (field.type == 'date') {
-                                format = date_format;
-                            } else {
-                                var time_format = new Sao.PYSON.Decoder({}).decode(
-                                        field.format);
-                                time_format = Sao.common.moment_format(time_format);
-                                if (field.type == 'time') {
-                                    format = time_format;
-                                } else if (field.type == 'datetime') {
-                                    format = date_format + ' ' + time_format;
-                                }
-                            }
+                            entry = new Sao.ScreenContainer.Dates(
+                                format, prefix + field.name);
+                            input = entry.el;
+                            break;
+                        case 'datetime':
+                            date_format = Sao.common.date_format(
+                                this.screen.context.date_format);
+                            time_format = new Sao.PYSON.Decoder({}).decode(
+                                field.format);
+                            time_format = Sao.common.moment_format(time_format);
+                            format = date_format + ' ' + time_format;
                             entry = new Sao.ScreenContainer.DateTimes(
-                                    format, prefix + field.name);
+                                format, prefix + field.name);
+                            input = entry.el;
+                            break;
+                        case 'time':
+                            time_format = new Sao.PYSON.Decoder({}).decode(
+                                field.format);
+                            format = Sao.common.moment_format(time_format);
+                            entry = new Sao.ScreenContainer.Times(
+                                format, prefix + field.name);
                             input = entry.el;
                             break;
                         case 'integer':
@@ -631,75 +636,109 @@
             this.from.on('dp.change', this._from_changed.bind(this));
         },
         _get_value: function(entry, value) {
-            return entry.find('input').val();
+            return entry.find('input[type=text]').val();
         },
         _set_value: function(entry, value) {
-            entry.data('DateTimePicker').date(value);
+            entry.find('input[type=text]').val(value);
         },
     });
 
-    Sao.ScreenContainer.DateTimes = Sao.class_(
+    Sao.ScreenContainer.Dates = Sao.class_(
         Sao.ScreenContainer.BetweenDates, {
-        build_entry: function(placeholder, el) {
+            _input: 'date',
+            _input_format: '%Y-%m-%d',
+            _format: Sao.common.format_date,
+            _parse: Sao.common.parse_date,
+            build_entry: function(placeholder, el) {
                 var entry = jQuery('<div/>', {
-                    'class': 'input-group input-group-sm',
-                    'data-target-input': 'nearest',
+                    'class': ('input-group input-group-sm ' +
+                        'input-icon input-icon-secondary ' +
+                        'input-' + this._input),
                 }).appendTo(el);
-                entry.uniqueId();
-                jQuery('<span/>', {
-                    'class': 'input-group-btn'
-                }).append(jQuery('<button/>', {
-                    'class': 'btn btn-default',
-                    type: 'button',
-                    'tabindex': -1,
-                    'aria-label': Sao.i18n.gettext("Open the calendar"),
-                    'title': Sao.i18n.gettext("Open the calendar"),
-                    'data-target': '#' + entry.attr('id'),
-                    'data-toggle': 'datetimepicker',
-                }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-date')
-                )).appendTo(entry);
-                jQuery('<input/>', {
-                    'class': ('form-control input-sm datetimepicker-input ' +
-                        'mousetrap'),
-                    type: 'text',
-                    placeholder: placeholder,
-                    'data-target': '#' + entry.attr('id'),
+                var date = jQuery('<input/>', {
+                    'type': 'text',
+                    'class': 'form-control input-sm mousetrap',
                 }).appendTo(entry);
-                entry.datetimepicker({
-                    'locale': Sao.common.moment_format(this.format),
-                    'keyBinds': null,
-                    'useCurrent': false,
+                var input = jQuery('<input/>', {
+                    'type': this._input,
+                    'role': 'button',
+                    'tabindex': -1,
                 });
-                entry.on('datetimepicker.hide', function() {
-                    Sao.common.set_overflow(entry, 'hide');
-                });
-                entry.on('datetimepicker.show', function() {
-                    Sao.common.set_overflow(entry, 'show');
-                });
-
-                var mousetrap = new Mousetrap(el[0]);
+                input.click(function() {
+                    var value = this._parse(this.format, date.val());
+                    value = this._format(this._input_format, value);
+                    input.val(value);
+                }.bind(this));
+                input.change(function() {
+                    var value = input.val();
+                    if (value) {
+                        value = this._parse(this._input_format, value);
+                        value = this._format(this.format, value);
+                        date.val(value);
+                        date.focus();
+                    }
+                }.bind(this));
+                if (input[0].type == this._input) {
+                    var icon = jQuery('<div/>', {
+                        'class': 'icon-input icon-secondary',
+                        'aria-label': Sao.i18n.gettext("Open the calendar"),
+                        'title': Sao.i18n.gettext("Open the calendar"),
+                    }).appendTo(entry);
+                    input.appendTo(icon);
+                    Sao.common.ICONFACTORY.get_icon_img('tryton-date')
+                        .appendTo(icon);
+                }
+                var mousetrap = new Mousetrap(date[0]);
 
                 mousetrap.bind('enter', function(e, combo) {
-                    entry.datetimepicker('date');
+                    var value = this._parse(this.format, date.val());
+                    value = this._format(this.format, value);
+                    date.val(value);
                 });
                 mousetrap.bind('=', function(e, combo) {
                     e.preventDefault();
-                    entry.datetimepicker('date', moment());
+                    date.val(this._format(this.format, moment()));
                 });
 
                 Sao.common.DATE_OPERATORS.forEach(function(operator) {
                     mousetrap.bind(operator[0], function(e, combo) {
                         e.preventDefault();
-                        var date = entry.datetimepicker('date');
-                        date.add(operator[1]);
-                        entry.datetimepicker('date', date);
-                    });
-                });
+                        var value = (this._parse(this.format, date.val()) ||
+                            Sao.DateTime());
+                        value.add(operator[1]);
+                        date.val(this._format(this.format, value));
+                    }.bind(this));
+                }.bind(this));
                 return entry;
         },
     });
 
-    Sao.ScreenContainer.Numbers = Sao.class_(Sao.ScreenContainer.BetweenDates, {
+    Sao.ScreenContainer.DateTimes = Sao.class_(
+        Sao.ScreenContainer.Dates, {
+            _input: 'datetime-local',
+            _input_format: '%Y-%m-%dT%H:%M:%S',
+            _format: Sao.common.format_datetime,
+            _parse: Sao.common.parse_datetime,
+        });
+
+    Sao.ScreenContainer.Times = Sao.class_(
+        Sao.ScreenContainer.Dates, {
+            _input: 'time',
+            _input_format: '%H:%M:%S',
+            _format: Sao.common.format_time,
+            _parse: Sao.common.parse_time,
+            build_entry: function(placeholder, el) {
+                entry = Sao.ScreenContainer.Time._super.call(
+                    this, placeholder, el);
+                if (~navigator.userAgent.indexOf("Firefox")) {
+                    // time input on Firefox does not have a pop-up
+                    entry.find('.icon-input').hide();
+                }
+                return entry;
+            },
+        });
+
+    Sao.ScreenContainer.Numbers = Sao.class_(Sao.ScreenContainer.Between, {
         init: function(id) {
             Sao.ScreenContainer.Numbers._super.init.call(this, id);
             this.from.change(this._from_changed.bind(this));

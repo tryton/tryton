@@ -2,7 +2,6 @@
    this repository contains the full copyright notices and license terms. */
 @import "bootstrap";
 @import "bootstrap-rtl";
-@import "_tempusdominus-bootstrap-3";
 @import "sao-variables";
 html[theme="default"] {
     @import "theme";
@@ -686,6 +685,31 @@ input.column-boolean {
     .center-block();
 }
 
+.form-date, .form-datetime, .form-time,
+.dict-date, .dict-datetime,
+.input-date, .input-datetime-local, .input-time,
+.editabletree-date, .editabletree-datetime, .editabletree-time {
+    .icon-input {
+        overflow-y: hidden;
+    }
+    input[type="date"], input[type="datetime-local"], input[type="time"] {
+        min-width: 0;
+        opacity: 0;
+        position: absolute;
+        width: calc(100% + 2em);
+        left: -2em;
+
+        &::-webkit-calendar-picker-indicator {
+            bottom: 0;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
 .dict-label {
     text-align: right;
     text-align: end;
@@ -731,10 +755,6 @@ input.column-boolean {
     .close {
         float: none;
     }
-}
-
-.bootstrap-datetimepicker-widget.dropdown-menu {
-    z-index: 2000;
 }
 
 @media screen and (max-width: @screen-xs-max) {

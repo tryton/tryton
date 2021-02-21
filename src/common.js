@@ -280,17 +280,15 @@
         return date;
     };
 
-    Sao.common.format_datetime = function(date_format, time_format, date) {
+    Sao.common.format_datetime = function(datetime_format, date) {
         if (!date) {
             return '';
         }
-        return date.format(
-                Sao.common.moment_format(date_format + ' ' + time_format));
+        return date.format(Sao.common.moment_format(datetime_format));
     };
 
-    Sao.common.parse_datetime = function(date_format, time_format, value) {
-        var date = moment(value,
-                Sao.common.moment_format(date_format + ' ' + time_format));
+    Sao.common.parse_datetime = function(datetime_format, value) {
+        var date = moment(value, Sao.common.moment_format(datetime_format));
         if (date.isValid()) {
             date = Sao.DateTime(date.year(), date.month(), date.date(),
                     date.hour(), date.minute(), date.second(),
@@ -1969,9 +1967,8 @@
                 'reference': convert_selection,
                 'datetime': function() {
                     var result = Sao.common.parse_datetime(
-                            Sao.common.date_format(context.date_format),
-                            this.time_format(field),
-                            value);
+                        Sao.common.date_format(context.date_format) + ' ' +
+                        this.time_format(field), value);
                     return result;
                 }.bind(this),
                 'date': function() {
@@ -2093,9 +2090,8 @@
                                 value);
                     }
                     return Sao.common.format_datetime(
-                            Sao.common.date_format(context.date_format),
-                            this.time_format(field),
-                            value);
+                        Sao.common.date_format(context.date_format) + ' ' +
+                        this.time_format(field), value);
                 }.bind(this),
                 'date': function() {
                     return Sao.common.format_date(
