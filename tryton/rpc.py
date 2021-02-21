@@ -11,7 +11,7 @@ except ImportError:
 
 from functools import partial
 
-from tryton import bus
+from tryton import bus, device_cookies
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
 from tryton.fingerprints import Fingerprints
 from tryton.config import get_config_dir
@@ -80,6 +80,7 @@ def login(parameters):
     database = CONFIG['login.db']
     username = CONFIG['login.login']
     language = CONFIG['client.lang']
+    parameters['device_cookie'] = device_cookies.get()
     connection = ServerProxy(hostname, port, database)
     logging.getLogger(__name__).info('common.db.login(%s, %s, %s)'
         % (username, 'x' * 10, language))
@@ -91,6 +92,7 @@ def login(parameters):
         CONNECTION.close()
     CONNECTION = ServerPool(
         hostname, port, database, session=session, cache=not CONFIG['dev'])
+    device_cookies.renew()
     bus.listen(CONNECTION)
 
 
