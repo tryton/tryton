@@ -19,6 +19,8 @@ from trytond.wizard import (Wizard, StateView, StateTransition, StateReport,
 from trytond.tools import grouped_slice
 from trytond.modules.company import CompanyReport
 
+from .exceptions import PrintDepreciationTableError
+
 
 def date2datetime(date):
     return datetime.datetime.combine(date, datetime.time())
@@ -928,8 +930,8 @@ class AssetDepreciationTable(CompanyReport):
     __name__ = 'account.asset.depreciation_table'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super(AssetDepreciationTable, cls).get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
 
         AssetDepreciation = cls.get_asset_depreciation()
         AssetDepreciation.start_date = data['start_date']
@@ -1120,6 +1122,9 @@ class PrintDepreciationTable(Wizard):
                 ('end_date', '>', self.start.start_date),
                 ('state', '!=', 'draft'),
                 ])
+        if not assets:
+            raise PrintDepreciationTableError(
+                gettext('account_asset.msg_no_assets'))
         return action, {
             'ids': [a.id for a in assets],
             'start_date': self.start.start_date,
