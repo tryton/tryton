@@ -2613,7 +2613,7 @@ class InvoiceReport(Report):
         cls.__rpc__['execute'] = RPC(False)
 
     @classmethod
-    def _execute(cls, records, data, action):
+    def _execute(cls, records, header, data, action):
         pool = Pool()
         Invoice = pool.get('account.invoice')
         # Re-instantiate because records are TranslateModel
@@ -2623,7 +2623,7 @@ class InvoiceReport(Report):
                 invoice.invoice_report_format,
                 bytes(invoice.invoice_report_cache))
         else:
-            result = super(InvoiceReport, cls)._execute(records, data, action)
+            result = super()._execute(records, header, data, action)
             # If the invoice is posted or paid and the report not saved in
             # invoice_report_cache there was an error somewhere. So we save it
             # now in invoice_report_cache
@@ -2648,10 +2648,10 @@ class InvoiceReport(Report):
             return super().execute(ids, data)
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Date = pool.get('ir.date')
-        context = super(InvoiceReport, cls).get_context(records, data)
+        context = super().get_context(records, header, data)
         context['invoice'] = context['record']
         context['today'] = Date.today()
         return context
