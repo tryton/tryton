@@ -2108,8 +2108,8 @@ class GeneralJournal(Report):
                 order=[('date', 'ASC'), ('id', 'ASC')])
 
     @classmethod
-    def get_context(cls, records, data):
-        report_context = super(GeneralJournal, cls).get_context(records, data)
+    def get_context(cls, records, header, data):
+        report_context = super().get_context(records, header, data)
 
         Company = Pool().get('company.company')
 

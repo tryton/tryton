@@ -2049,14 +2049,14 @@ class GeneralLedger(Report):
     __name__ = 'account.general_ledger'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Company = pool.get('company.company')
         Fiscalyear = pool.get('account.fiscalyear')
         Period = pool.get('account.period')
         context = Transaction().context
 
-        report_context = super(GeneralLedger, cls).get_context(records, data)
+        report_context = super().get_context(records, header, data)
 
         report_context['company'] = Company(context['company'])
         report_context['fiscalyear'] = Fiscalyear(context['fiscalyear'])
@@ -2077,14 +2077,14 @@ class TrialBalance(Report):
     __name__ = 'account.trial_balance'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Company = pool.get('company.company')
         Fiscalyear = pool.get('account.fiscalyear')
         Period = pool.get('account.period')
         context = Transaction().context
 
-        report_context = super(TrialBalance, cls).get_context(records, data)
+        report_context = super().get_context(records, header, data)
 
         report_context['company'] = Company(context['company'])
         report_context['fiscalyear'] = Fiscalyear(context['fiscalyear'])
@@ -2498,15 +2498,14 @@ class AgedBalanceReport(Report):
     __name__ = 'account.aged_balance'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Company = pool.get('company.company')
         Context = pool.get('account.aged_balance.context')
         AgedBalance = pool.get('account.aged_balance')
         context = Transaction().context
 
-        report_context = super(AgedBalanceReport, cls).get_context(
-            records, data)
+        report_context = super().get_context(records, header, data)
 
         context_fields = Context.fields_get(['type', 'unit'])
 
