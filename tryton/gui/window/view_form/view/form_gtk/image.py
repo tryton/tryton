@@ -37,10 +37,9 @@ class Image(BinaryMixin, Widget):
 
         toolbar = self.toolbar()  # Set button attributes even if not display
         if not attrs.get('readonly'):
-            alignment = Gtk.Alignment(xalign=0.5, yalign=0.5)
-            alignment.add(toolbar)
+            toolbar.set_halign(Gtk.Align.CENTER)
             self.widget.pack_start(
-                alignment, expand=False, fill=False, padding=0)
+                toolbar, expand=False, fill=False, padding=0)
 
         self._readonly = False
 

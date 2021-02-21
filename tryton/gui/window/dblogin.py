@@ -407,11 +407,9 @@ class DBLogin(object):
         tooltips.set_tip(self.button_connect, _('Connect the Tryton server'))
         self.dialog.add_action_widget(self.button_connect, Gtk.ResponseType.OK)
         self.dialog.set_default_response(Gtk.ResponseType.OK)
-        alignment = Gtk.Alignment(yalign=0, yscale=0, xscale=1)
-        grid = Gtk.Grid(column_spacing=3, row_spacing=3)
-        alignment.add(grid)
-        self.dialog.vbox.pack_start(
-            alignment, expand=True, fill=True, padding=0)
+        grid = Gtk.Grid(
+            column_spacing=3, row_spacing=3, valign=Gtk.Align.START)
+        self.dialog.vbox.pack_start(grid, expand=True, fill=True, padding=0)
 
         image = Gtk.Image()
         image.set_from_file(os.path.join(PIXMAPS_DIR, 'tryton.svg'))

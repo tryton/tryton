@@ -603,13 +603,13 @@ class UserWarningDialog(WarningDialog):
 
     def build_dialog(self, *args, **kwargs):
         dialog = super().build_dialog(*args, **kwargs)
-        self.always = Gtk.CheckButton(label=_('Always ignore this warning.'))
-        alignment = Gtk.Alignment(xalign=0, yalign=0.5)
-        alignment.add(self.always)
-        dialog.vbox.pack_start(alignment, expand=True, fill=False, padding=0)
         label = Gtk.Label(
-            label=_('Do you want to proceed?'), halign=Gtk.Align.END)
+            label=_('Do you want to proceed?'),
+            halign=Gtk.Align.FILL, valign=Gtk.Align.END)
         dialog.vbox.pack_start(label, expand=True, fill=True, padding=0)
+        self.always = Gtk.CheckButton(
+            label=_('Always ignore this warning.'), halign=Gtk.Align.START)
+        dialog.vbox.pack_start(self.always, expand=True, fill=False, padding=0)
         return dialog
 
     def process_response(self, response):
