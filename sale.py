@@ -1751,10 +1751,10 @@ class SaleReport(CompanyReport):
             return super(SaleReport, cls).execute(ids, data)
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Date = pool.get('ir.date')
-        context = super(SaleReport, cls).get_context(records, data)
+        context = super().get_context(records, header, data)
         context['today'] = Date.today()
         return context
 
