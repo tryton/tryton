@@ -1,11 +1,20 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import datetime
+import logging
 
 from decimal import Decimal, ROUND_HALF_EVEN, localcontext
 
+from dateutil.relativedelta import relativedelta
+
 from sql import Window
 from sql.functions import NthValue
+
+try:
+    from forex_python.converter import CurrencyRates, RatesNotAvailableError
+    get_rates = CurrencyRates(force_decimal=True).get_rates
+except ImportError:
+    CurrencyRates = get_rates = None
 
 from trytond.i18n import gettext
 from trytond.model import (
@@ -13,9 +22,11 @@ from trytond.model import (
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.rpc import RPC
-from trytond.pyson import Eval
+from trytond.pyson import Eval, If
 
 from .exceptions import RateError
+
+logger = logging.getLogger(__name__)
 
 
 class Currency(SymbolMixin, DeactivableMixin, ModelSQL, ModelView):
@@ -269,3 +280,169 @@ class CurrencyRate(ModelSQL, ModelView):
 
     def get_rec_name(self, name):
         return str(self.date)
+
+
+class CronFetchError(Exception):
+    pass
+
+
+class Cron(ModelSQL, ModelView):
+    "Currency Cron"
+    __name__ = 'currency.cron'
+
+    source = fields.Selection(
+        [], "Source", required=True,
+        help="The external source for rates.")
+    frequency = fields.Selection([
+            ('daily', "Daily"),
+            ('weekly', "Weekly"),
+            ('monthly', "Monthly"),
+            ], "Frequency", required=True,
+        help="How frequently rates must be updated.")
+    weekday = fields.Many2One(
+        'ir.calendar.day', "Day of Week",
+        states={
+            'required': Eval('frequency') == 'weekly',
+            'invisible': Eval('frequency') != 'weekly',
+            },
+        depends=['frequency'])
+    day = fields.Integer(
+        "Day of Month",
+        domain=[If(Eval('frequency') == 'monthly',
+                [('day', '>=', 1), ('day', '<=', 31)],
+                [('day', '=', None)]),
+            ],
+        states={
+            'required': Eval('frequency') == 'monthly',
+            'invisible': Eval('frequency') != 'monthly',
+            },
+        depends=['frequency'])
+    currency = fields.Many2One(
+        'currency.currency', "Currency", required=True,
+        help="The base currency to fetch rate.")
+    currencies = fields.Many2Many(
+        'currency.cron-currency.currency', 'cron', 'currency', "Currencies",
+        help="The currencies to update the rate.")
+    last_update = fields.Date("Last Update", required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls._buttons.update({
+                'run': {},
+                })
+        if CurrencyRates:
+            cls.source.selection.append(('ecb', "European Central Bank"))
+
+    @classmethod
+    def default_frequency(cls):
+        return 'monthly'
+
+    @classmethod
+    def default_day(cls):
+        return 1
+
+    @classmethod
+    def default_last_update(cls):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+    @classmethod
+    @ModelView.button
+    def run(cls, crons):
+        cls.update(crons)
+
+    @classmethod
+    def update(cls, crons=None):
+        pool = Pool()
+        Rate = pool.get('currency.currency.rate')
+        if crons is None:
+            crons = cls.search([])
+        rates = []
+        for cron in crons:
+            rates.extend(cron._update())
+        Rate.save(rates)
+        cls.save(crons)
+
+    def _update(self):
+        limit = self.limit_update()
+        date = self.next_update()
+        while date <= limit:
+            try:
+                yield from self._rates(date)
+            except CronFetchError:
+                logger.warning("Could not fetch rates temporary")
+                break
+            except Exception:
+                logger.error("Fail to fetch rates", exc_info=True)
+                break
+            self.last_update = date
+            date = self.next_update()
+
+    def next_update(self):
+        return self.last_update + self.delta()
+
+    def limit_update(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        return Date.today()
+
+    def delta(self):
+        if self.frequency == 'daily':
+            delta = relativedelta(days=1)
+        elif self.frequency == 'weekly':
+            delta = relativedelta(weeks=1, weekday=int(self.weekday.index))
+        elif self.frequency == 'monthly':
+            delta = relativedelta(months=1, day=self.day)
+        else:
+            delta = relativedelta()
+        return delta
+
+    def _rates(self, date, rounding=None):
+        pool = Pool()
+        Rate = pool.get('currency.currency.rate')
+        values = getattr(self, 'fetch_%s' % self.source)(date)
+
+        exp = Decimal(Decimal(1) / 10 ** Rate.rate.digits[1])
+        rates = Rate.search([
+                ('date', '=', date),
+                ])
+        code2rates = {r.currency.code: r for r in rates}
+
+        def get_rate(currency):
+            if currency.code in code2rates:
+                rate = code2rates[currency.code]
+            else:
+                rate = Rate(date=date, currency=currency)
+            return rate
+
+        rate = get_rate(self.currency)
+        rate.rate = Decimal(1).quantize(exp, rounding=rounding)
+        yield rate
+
+        for currency in self.currencies:
+            if currency.code not in values:
+                continue
+            value = values[currency.code]
+            rate = get_rate(currency)
+            rate.rate = value.quantize(exp, rounding=rounding)
+            yield rate
+
+    def fetch_ecb(self, date):
+        try:
+            return get_rates(self.currency.code, date)
+        except RatesNotAvailableError as e:
+            raise CronFetchError() from e
+
+
+class Cron_Currency(ModelSQL):
+    "Currency Cron - Currency"
+    __name__ = 'currency.cron-currency.currency'
+
+    cron = fields.Many2One(
+        'currency.cron', "Cron",
+        required=True, select=True, ondelete='CASCADE')
+    currency = fields.Many2One(
+        'currency.currency', "Currency",
+        required=True, ondelete='CASCADE')

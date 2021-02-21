@@ -98,5 +98,61 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.ui.view" id="cron_view_list">
+            <field name="model">currency.cron</field>
+            <field name="type">tree</field>
+            <field name="name">cron_list</field>
+        </record>
+
+        <record model="ir.ui.view" id="cron_view_form">
+            <field name="model">currency.cron</field>
+            <field name="type">form</field>
+            <field name="name">cron_form</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_cron_form">
+            <field name="name">Scheduled Rate Updates</field>
+            <field name="res_model">currency.cron</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cron_form_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="cron_view_list"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_cron_form_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="cron_view_form"/>
+            <field name="act_window" ref="act_cron_form"/>
+        </record>
+
+        <menuitem parent="menu_currency" action="act_cron_form" sequence="20" id="menu_cron_form"/>
+
+        <record model="ir.model.access" id="access_cron">
+            <field name="model" search="[('model', '=', 'currency.cron')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_cron_currency_admin">
+            <field name="model" search="[('model', '=', 'currency.cron')]"/>
+            <field name="group" ref="group_currency_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.model.button" id="cron_run_button">
+            <field name="name">run</field>
+            <field name="string">Run</field>
+            <field name="model" search="[('model', '=', 'currency.cron')]"/>
+        </record>
+
+        <record model="ir.cron" id="cron_cron">
+            <field name="method">currency.cron|update</field>
+            <field name="interval_number" eval="1"/>
+            <field name="interval_type">days</field>
+        </record>
     </data>
 </tryton>

@@ -60,7 +60,7 @@ else:
 if local_version:
     version += '+' + '.'.join(local_version)
 
-requires = ['python-sql >= 0.9']
+requires = ['python-sql >= 0.9', 'python-dateutil']
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         requires.append(get_require_version('trytond_%s' % dep))
@@ -144,6 +144,7 @@ setup(name=name,
     extras_require={
         'data': [
             'pycountry', 'forex-python', get_require_version('proteus')],
+        'ecb_rate': ['forex-python'],
         },
     dependency_links=dependency_links,
     zip_safe=False,

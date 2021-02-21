@@ -37,3 +37,23 @@ currencies.
 As exchange rates vary over time they are stored along with the date from
 when they apply.
 All exchange rates are relative with respect to each other.
+
+.. _model-currency.cron:
+
+Scheduled Rate Updates
+======================
+
+The `Exchange Rates <model-currency.rate>` can be automatically updated using a
+`Scheduled Task <trytond:model-ir.cron>`.
+When the scheduled task is run it uses the external source to fill in the
+missing rates since the last update.
+The frequency determines which dates get rates.
+
+.. seealso::
+
+   Scheduled Rate Updates can be found by opening the main menu item:
+
+      |Currency --> Scheduled Rate Updates|__
+
+      .. |Currency --> Scheduled Rate Updates| replace:: :menuselection:`Currency --> Scheduled Rate Updates`
+      __ https://demo.tryton.org/model/currency.cron
