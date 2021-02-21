@@ -52,8 +52,8 @@ class Letter(CompanyReport, metaclass=PoolMeta):
             return super(Letter, cls).execute(ids, data)
 
     @classmethod
-    def get_context(cls, records, data):
-        report_context = super(Letter, cls).get_context(records, data)
+    def get_context(cls, records, header, data):
+        report_context = super().get_context(records, header, data)
 
         pool = Pool()
         Date = pool.get('ir.date')
