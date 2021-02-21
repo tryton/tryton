@@ -141,7 +141,11 @@ class CompanyConfig(Wizard):
 class CompanyReport(Report):
 
     @classmethod
-    def get_context(cls, records, data):
-        report_context = super(CompanyReport, cls).get_context(records, data)
-        report_context['company'] = report_context['user'].company
-        return report_context
+    def header_key(cls, record):
+        return super().header_key(record) + (('company', record.company),)
+
+    @classmethod
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
+        context['company'] = header['company']
+        return context
