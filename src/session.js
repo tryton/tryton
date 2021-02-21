@@ -29,7 +29,14 @@
         do_login: function(parameters) {
             var dfd = jQuery.Deferred();
             var login = this.login;
+            var device_cookies = JSON.parse(
+                localStorage.getItem('sao_device_cookies'));
+            var device_cookie = null;
+            if (device_cookies) {
+                device_cookie = device_cookies[this.database][this.login];
+            }
             var func = function(parameters) {
+                parameters.device_cookie = device_cookie;
                 return {
                     'method': 'common.db.login',
                     'params': [login, parameters, Sao.i18n.getlang()]
@@ -40,6 +47,7 @@
                 this.user_id = result[0];
                 this.session = result[1];
                 this.store();
+                this.renew_device_cookie();
                 dfd.resolve();
             }.bind(this), function() {
                 this.user_id = null;
@@ -135,6 +143,33 @@
         unstore: function() {
             localStorage.removeItem('sao_session_' + this.database);
         },
+        renew_device_cookie: function() {
+            var device_cookie;
+            var device_cookies = JSON.parse(
+                localStorage.getItem('sao_device_cookies'));
+            if (!device_cookies || !(this.database in device_cookies)) {
+                device_cookie = null;
+            } else {
+                device_cookie = device_cookies[this.database][this.login];
+            }
+            var renew_prm = Sao.rpc({
+                method: 'model.res.user.device.renew',
+                params: [device_cookie, {}],
+            }, this);
+            renew_prm.done(function(result) {
+                device_cookies = JSON.parse(
+                    localStorage.getItem('sao_device_cookies'));
+                if (!device_cookies) {
+                    device_cookies = {};
+                }
+                if (!(this.database in device_cookies)) {
+                    device_cookies[this.database] = {};
+                }
+                device_cookies[this.database][this.login] = result;
+                localStorage.setItem(
+                    'sao_device_cookies', JSON.stringify(device_cookies));
+            }.bind(this));
+        }
     });
 
     Sao.Session.login_dialog = function() {
