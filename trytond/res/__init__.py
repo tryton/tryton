@@ -15,6 +15,7 @@ def register():
         group.Group,
         user.User,
         user.LoginAttempt,
+        user.UserDevice,
         user.UserAction,
         user.UserGroup,
         user.Warning_,

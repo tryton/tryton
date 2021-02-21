@@ -368,10 +368,12 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     def write(cls, users, values, *args):
         pool = Pool()
         Session = pool.get('ir.session')
+        UserDevice = pool.get('res.user.device')
 
         actions = iter((users, values) + args)
         all_users = []
         session_to_clear = []
+        users_to_clear = []
         args = []
         for users, values in zip(actions, actions):
             all_users += users
@@ -379,10 +381,12 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
             if 'password' in values:
                 session_to_clear += users
+                users_to_clear += [u.login for u in users]
 
         super(User, cls).write(*args)
 
         Session.clear(session_to_clear)
+        UserDevice.clear(users_to_clear)
 
         # Clean cursor cache as it could be filled by domain_get
         for cache in Transaction().cache.values():
@@ -618,15 +622,20 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         '''
         Return user id if password matches
         '''
-        LoginAttempt = Pool().get('res.user.login.attempt')
+        pool = Pool()
+        LoginAttempt = pool.get('res.user.login.attempt')
+        UserDevice = pool.get('res.user.device')
+
         count_ip = LoginAttempt.count_ip()
         if count_ip > config.getint(
                 'session', 'max_attempt_ip_network', default=300):
             # Do not add attempt as the goal is to prevent flooding
             raise RateLimitException()
-        count = LoginAttempt.count(login)
+        device_cookie = UserDevice.get_valid_cookie(
+            login, parameters.get('device_cookie'))
+        count = LoginAttempt.count(login, device_cookie)
         if count > config.getint('session', 'max_attempt', default=5):
-            LoginAttempt.add(login)
+            LoginAttempt.add(login, device_cookie)
             raise RateLimitException()
         Transaction().atexit(time.sleep, random.randint(0, 2 ** count - 1))
         for methods in config.get(
@@ -642,9 +651,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                 if len(user_ids) != 1 or not all(user_ids):
                     break
             if len(user_ids) == 1 and all(user_ids):
-                LoginAttempt.remove(login)
+                LoginAttempt.remove(login, device_cookie)
                 return user_ids.pop()
-        LoginAttempt.add(login)
+        LoginAttempt.add(login, device_cookie)
 
     @classmethod
     def _login_password(cls, login, parameters):
@@ -740,6 +749,7 @@ class LoginAttempt(ModelSQL):
     """
     __name__ = 'res.user.login.attempt'
     login = fields.Char('Login', size=512)
+    device_cookie = fields.Char("Device Cookie")
     ip_address = fields.Char("IP Address")
     ip_network = fields.Char("IP Network")
 
@@ -771,7 +781,7 @@ class LoginAttempt(ModelSQL):
 
     @classmethod
     @_login_size
-    def add(cls, login):
+    def add(cls, login, device_cookie=None):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.delete(where=table.create_date < cls.delay()))
@@ -779,24 +789,28 @@ class LoginAttempt(ModelSQL):
         ip_address, ip_network = cls.ipaddress()
         cls.create([{
                     'login': login,
+                    'device_cookie': device_cookie,
                     'ip_address': str(ip_address),
                     'ip_network': str(ip_network),
                     }])
 
     @classmethod
     @_login_size
-    def remove(cls, login):
+    def remove(cls, login, cookie):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
-        cursor.execute(*table.delete(where=table.login == login))
+        cursor.execute(*table.delete(
+                where=(table.login == login) & (table.device_cookie == cookie)
+                ))
 
     @classmethod
     @_login_size
-    def count(cls, login):
+    def count(cls, login, device_cookie):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.select(Count(Literal('*')),
                 where=(table.login == login)
+                & (table.device_cookie == device_cookie)
                 & (table.create_date >= cls.delay())))
         return cursor.fetchone()[0]
 
@@ -811,6 +825,62 @@ class LoginAttempt(ModelSQL):
         return cursor.fetchone()[0]
 
     del _login_size
+
+
+class UserDevice(ModelSQL):
+    "User Device"
+    __name__ = 'res.user.device'
+
+    login = fields.Char("Login", required=True)
+    cookie = fields.Char("Cookie", readonly=True, required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__rpc__.update({
+                'renew': RPC(readonly=False),
+                })
+
+    @classmethod
+    def get_valid_cookie(cls, login, cookie):
+        try:
+            device, = cls.search([
+                    ('login', '=', login),
+                    ('cookie', '=', cookie),
+                    ], limit=1)
+        except ValueError:
+            return None
+
+        return device.cookie
+
+    @classmethod
+    def renew(cls, current_cookie):
+        pool = Pool()
+        User = pool.get('res.user')
+
+        user = User(Transaction().user)
+        new_cookie = uuid.uuid4().hex
+        current_devices = cls.search([
+                    ('login', '=', user.login),
+                    ('cookie', '=', current_cookie),
+                    ])
+        if current_devices:
+            cls.write(current_devices, {
+                    'cookie': new_cookie
+                    })
+        else:
+            cls.create([{
+                        'login': user.login,
+                        'cookie': new_cookie,
+                        }])
+        return new_cookie
+
+    @classmethod
+    def clear(cls, logins):
+        for sub_logins in grouped_slice(logins):
+            cls.delete(cls.search([
+                        ('login', 'in', list(sub_logins)),
+                        ]))
 
 
 class UserAction(ModelSQL):

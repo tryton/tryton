@@ -244,6 +244,51 @@ class UserTestCase(unittest.TestCase):
                 with set_authentications(methods):
                     self.assertEqual(User.get_login('user', {}), result)
 
+    @with_transaction()
+    def test_bad_authentication_logging(self):
+        "Test the logging of log in attempts"
+        pool = Pool()
+        LoginAttempt = pool.get('res.user.login.attempt')
+
+        self.create_user('user', '12345')
+        self.check_user('user', '12345')
+        self.assertEqual(LoginAttempt.count('user', None), 1)
+
+    @with_transaction()
+    def test_bad_authentication_valid_cookie(self):
+        "Test the logging of log in attempts with a valid cookie"
+        pool = Pool()
+        User = pool.get('res.user')
+        UserDevice = pool.get('res.user.device')
+        LoginAttempt = pool.get('res.user.login.attempt')
+
+        user = self.create_user('user', '12345')
+        with Transaction().set_user(user.id):
+            cookie = UserDevice.renew(None)
+
+        User.get_login('user', {'password': '', 'device_cookie': cookie})
+        self.assertEqual(LoginAttempt.count('user', None), 0)
+        self.assertEqual(LoginAttempt.count('user', cookie), 1)
+
+    @with_transaction()
+    def test_bad_authentication_invalid_cookie(self):
+        "Test the logging of log in attempts without a valid cookie"
+        pool = Pool()
+        User = pool.get('res.user')
+        UserDevice = pool.get('res.user.device')
+        LoginAttempt = pool.get('res.user.login.attempt')
+
+        user = self.create_user('user', '12345')
+        with Transaction().set_user(user.id):
+            cookie = UserDevice.renew(None)
+
+        User.get_login('user', {
+                'password': '',
+                'device_cookie': cookie + 'wrong',
+                })
+        self.assertEqual(LoginAttempt.count('user', None), 1)
+        self.assertEqual(LoginAttempt.count('user', cookie), 0)
+
 
 def suite():
     return unittest.TestLoader().loadTestsFromTestCase(UserTestCase)
