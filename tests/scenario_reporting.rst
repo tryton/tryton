@@ -170,8 +170,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/111.txt') as f:
     ...     content == f.read()
     True
-    >>> name
-    'AEAT Model 111'
+    >>> name.startswith('AEAT Model 111')
+    True
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '115'
@@ -184,8 +184,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/115.txt') as f:
     ...     content == f.read()
     True
-    >>> name
-    'AEAT Model 115'
+    >>> name.startswith('AEAT Model 115')
+    True
 
     >>> aeat = Wizard('account.reporting.aeat')
     >>> aeat.form.report = '303'
@@ -197,8 +197,8 @@ Generate aeat reports::
     >>> with file_open('account_es/tests/303.txt') as f:
     ...     content == f.read()
     True
-    >>> name
-    'AEAT Model 303'
+    >>> name.startswith('AEAT Model 303')
+    True
 
     >>> VatList = Model.get('account.reporting.vat_list_es')
     >>> context = {

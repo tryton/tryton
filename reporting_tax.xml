@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_aeat_111">
             <field name="name">AEAT Model 111</field>
+            <field name="model">account.period</field>
             <field name="report_name">account.reporting.aeat111</field>
             <field name="report">account_es/aeat111.txt</field>
             <field name="template_extension">txt</field>
@@ -18,6 +19,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_aeat_115">
             <field name="name">AEAT Model 115</field>
+            <field name="model">account.period</field>
             <field name="report_name">account.reporting.aeat115</field>
             <field name="report">account_es/aeat115.txt</field>
             <field name="template_extension">txt</field>
@@ -30,6 +32,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_aeat_303">
             <field name="name">AEAT Model 303</field>
+            <field name="model">account.period</field>
             <field name="report_name">account.reporting.aeat303</field>
             <field name="report">account_es/aeat303.txt</field>
             <field name="template_extension">txt</field>
@@ -107,6 +110,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_aeat_347">
             <field name="name">AEAT Model 347</field>
+            <field name="model">account.reporting.vat_list_es</field>
             <field name="report_name">account.reporting.aeat347</field>
             <field name="report">account_es/aeat347.txt</field>
             <field name="template_extension">txt</field>
@@ -154,6 +158,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_aeat_349">
             <field name="name">AEAT Model 349</field>
+            <field name="model">account.reporting.es_ec_operation_list</field>
             <field name="report_name">account.reporting.aeat349</field>
             <field name="report">account_es/aeat349.txt</field>
             <field name="template_extension">txt</field>

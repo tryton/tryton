@@ -89,13 +89,10 @@ def strip_accents(s):
 class AEATReport(Report):
 
     @classmethod
-    def get_context(cls, records, data):
-        pool = Pool()
-        Period = pool.get('account.period')
-        context = super().get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
 
-        periods = sorted(
-            Period.browse(data['periods']), key=attrgetter('start_date'))
+        periods = sorted(records, key=attrgetter('start_date'))
 
         context['year'] = str(periods[0].start_date.year)
         context['company'] = periods[0].fiscalyear.company
@@ -112,7 +109,7 @@ class AEATReport(Report):
         context['format_integer'] = format_integer
         context['format_percentage'] = format_percentage
 
-        with Transaction().set_context(periods=data['periods']):
+        with Transaction().set_context(periods=data['ids']):
             context['amounts'] = cls.compute_amounts()
 
         return context
@@ -160,14 +157,14 @@ class AEATPartyReport(AEATReport):
         return Case((is_invoice, invoice.party), else_=Null), tables
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Move = pool.get('account.move')
         Line = pool.get('account.move.line')
         TaxLine = pool.get('account.tax.line')
         Tax = pool.get('account.tax')
 
-        context = super().get_context(records, data)
+        context = super().get_context(records, header, data)
         cursor = Transaction().connection.cursor()
 
         move = Move.__table__()
@@ -192,7 +189,7 @@ class AEATPartyReport(AEATReport):
             for line in tax_code.lines:
                 domain.append(line._line_domain)
 
-            with Transaction().set_context(periods=data['periods']):
+            with Transaction().set_context(periods=data['ids']):
                 tax_line_domain = [Tax._amount_domain(), domain]
             _, where = Move.search_domain([
                     ('lines', 'where', [
@@ -216,8 +213,8 @@ class AEAT111(AEATPartyReport):
     _aeat_report = '111'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super().get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
         amounts = context['amounts']
         for code in ['28', '30']:
             assert code not in amounts, (
@@ -234,8 +231,8 @@ class AEAT115(AEATPartyReport):
     _aeat_report = '115'
 
     @classmethod
-    def get_context(cls, records, data):
-        context = super().get_context(records, data)
+    def get_context(cls, records, header, data):
+        context = super().get_context(records, header, data)
         amounts = context['amounts']
         assert '05' not in amounts, (
             "computed code 05 already defined")
@@ -254,16 +251,15 @@ class AEAT303(AEATReport):
         return amounts
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
-        Period = pool.get('account.period')
         Account = pool.get('account.account')
         TaxCodeLine = pool.get('account.tax.code.line')
         transaction = Transaction()
-        context = super().get_context(records, data)
+        context = super().get_context(records, header, data)
         amounts = context['amounts']
 
-        periods = Period.browse(data['periods'])
+        periods = records
         start_date = periods[0].start_date
         end_date = periods[-1].end_date
 
@@ -357,7 +353,7 @@ class PrintAEAT(Wizard):
         return 'model_%s' % self.start.report
 
     def open_report(self, action):
-        return action, {'periods': [p.id for p in self.start.periods]}
+        return action, {'ids': [p.id for p in self.start.periods]}
 
     do_model_111 = open_report
     do_model_115 = open_report
@@ -527,12 +523,12 @@ class AEAT347(Report):
     __name__ = 'account.reporting.aeat347'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Company = pool.get('company.company')
         t_context = Transaction().context
 
-        context = super().get_context(records, data)
+        context = super().get_context(records, header, data)
 
         context['year'] = str(t_context['date'].year)
         context['company'] = Company(t_context['company'])
@@ -658,12 +654,12 @@ class AEAT349(Report):
     __name__ = 'account.reporting.aeat349'
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         Company = pool.get('company.company')
         t_context = Transaction().context
 
-        context = super().get_context(records, data)
+        context = super().get_context(records, header, data)
 
         context['company'] = Company(t_context['company'])
         context['records_amount'] = sum(
