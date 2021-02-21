@@ -796,16 +796,17 @@ class LoginAttempt(ModelSQL):
 
     @classmethod
     @_login_size
-    def remove(cls, login, cookie):
+    def remove(cls, login, device_cookie=None):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.delete(
-                where=(table.login == login) & (table.device_cookie == cookie)
+                where=(table.login == login)
+                & (table.device_cookie == device_cookie)
                 ))
 
     @classmethod
     @_login_size
-    def count(cls, login, device_cookie):
+    def count(cls, login, device_cookie=None):
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
         cursor.execute(*table.select(Count(Literal('*')),
