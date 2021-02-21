@@ -1,3 +1,4 @@
+* Add header grouping on report
 * Protect trusted devices against brute force attack
 * Make ModelView.parse_view public
 * Add help for each value to selection and multiselection

@@ -5,6 +5,7 @@ import dateutil.tz
 import os
 import inspect
 import logging
+import math
 import subprocess
 import tempfile
 import time
@@ -14,6 +15,7 @@ import operator
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from io import BytesIO
+from itertools import groupby
 
 try:
     import html2text
@@ -121,6 +123,10 @@ class Report(URLMixin, PoolBase):
             raise UserError('Calling report %s is not allowed!' % cls.__name__)
 
     @classmethod
+    def header_key(cls, record):
+        return ()
+
+    @classmethod
     def execute(cls, ids, data):
         '''
         Execute the report on record ids.
@@ -146,38 +152,58 @@ class Report(URLMixin, PoolBase):
         else:
             action_report = ActionReport(action_id)
 
+        def report_name(records):
+            name = '-'.join(r.rec_name for r in records[:5])
+            if len(records) > 5:
+                name += '__' + str(len(records[5:]))
+            return name
+
         records = []
         model = action_report.model or data.get('model')
         if model:
             records = cls._get_records(ids, model, data)
-        if action_report.single and len(records) > 1:
+
+        if action_report.single:
+            groups = [[r] for r in records]
+            headers = [dict(cls.header_key(r)) for r in records]
+        else:
+            groups = []
+            headers = []
+            for key, group in groupby(records, key=cls.header_key):
+                groups.append(list(group))
+                headers.append(dict(key))
+
+        n = len(groups)
+        if n > 1:
+            padding = math.ceil(math.log10(n))
             content = BytesIO()
             with zipfile.ZipFile(content, 'w') as content_zip:
-                for record in records:
+                for i, (header, group_records) in enumerate(
+                        zip(headers, groups), 1):
                     oext, rcontent = cls._execute(
-                        [record], data, action_report)
-                    filename = slugify('%s-%s' % (record.id, record.rec_name))
+                        group_records, header, data, action_report)
+                    filename = report_name(group_records)
+                    number = str(i).zfill(padding)
+                    filename = slugify('%s-%s' % (number, filename))
                     rfilename = '%s.%s' % (filename, oext)
                     content_zip.writestr(rfilename, rcontent)
             content = content.getvalue()
             oext = 'zip'
         else:
-            oext, content = cls._execute(records, data, action_report)
+            oext, content = cls._execute(
+                groups[0], headers[0], data, action_report)
         if not isinstance(content, str):
             content = bytearray(content) if bytes == str else bytes(content)
-
-        suffix = '-'.join(r.rec_name for r in records[:5])
-        if len(records) > 5:
-            suffix += '__' + str(len(records[5:]))
-        report_name = '-'.join(filter(None, [action_report.name, suffix]))
-        return (oext, content, action_report.direct_print, report_name)
+        filename = '-'.join(
+            filter(None, [action_report.name, report_name(records)]))
+        return (oext, content, action_report.direct_print, filename)
 
     @classmethod
-    def _execute(cls, records, data, action):
+    def _execute(cls, records, header, data, action):
         # Ensure to restore original context
         # set_lang may modify it
         with Transaction().set_context(Transaction().context):
-            report_context = cls.get_context(records, data)
+            report_context = cls.get_context(records, header, data)
             return cls.convert(action, cls.render(action, report_context))
 
     @classmethod
@@ -223,12 +249,13 @@ class Report(URLMixin, PoolBase):
         return [TranslateModel(id) for id in ids]
 
     @classmethod
-    def get_context(cls, records, data):
+    def get_context(cls, records, header, data):
         pool = Pool()
         User = pool.get('res.user')
         Lang = pool.get('ir.lang')
 
         report_context = {}
+        report_context['header'] = header
         report_context['data'] = data
         report_context['context'] = Transaction().context
         report_context['user'] = User(Transaction().user)

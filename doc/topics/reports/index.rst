@@ -228,11 +228,11 @@ employee object.
         __name__ = 'account.invoice'
 
         @classmethod
-        def get_context(cls, records, data):
+        def get_context(cls, records, header, data):
             pool = Pool()
             Employee = pool.get('company.employee')
 
-            context = super(InvoiceReport, cls).get_context(records, data)
+            context = super().get_context(records, header, data)
             employee_id = Transaction().context.get('employee')
             employee = Employee(employee_id) if employee_id else None
             context['employee'] = employee
