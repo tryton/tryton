@@ -856,11 +856,15 @@ class ModelSQL(ModelStorage):
                         date_result = date_results[fname]
                         row[fname] = date_result[row['id']]
             else:
-                getter_results = field.get(ids, cls, field_list, values=result)
-                for fname in field_list:
-                    getter_result = getter_results[fname]
-                    for row in result:
-                        row[fname] = getter_result[row['id']]
+                for sub_results in grouped_slice(result, cache_size()):
+                    sub_results = list(sub_results)
+                    sub_ids = [r['id'] for r in sub_results]
+                    getter_results = field.get(
+                        sub_ids, cls, field_list, values=sub_results)
+                    for fname in field_list:
+                        getter_result = getter_results[fname]
+                        for row in sub_results:
+                            row[fname] = getter_result[row['id']]
 
         def read_related(field, Target, rows, fields):
             name = field.name

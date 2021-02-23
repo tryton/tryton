@@ -2,6 +2,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of this
 # repository contains the full copyright notices and license terms.
 
+import random
 import unittest
 import time
 from unittest.mock import patch, call
@@ -45,6 +46,22 @@ class ModelSQLTestCase(unittest.TestCase):
         values = Model.read([record.id], ['name'])
 
         self.assertEqual(values, [{'id': record.id, 'name': "Record"}])
+
+    @with_transaction()
+    def test_read_function_field_bigger_than_cache(self):
+        "Test reading a Function field on a list bigger then the cache size"
+        pool = Pool()
+        Model = pool.get('test.modelsql.read')
+
+        records = Model.create([{'name': str(i)} for i in range(10)])
+        records_created = {m.id: m.name for m in records}
+        record_ids = [r.id for r in records]
+        random.shuffle(record_ids)
+
+        with Transaction().set_context(_record_cache_size=2):
+            records_read = {r['id']: r['rec_name']
+                for r in Model.read(record_ids, ['rec_name'])}
+            self.assertEqual(records_read, records_created)
 
     @with_transaction()
     def test_read_related_2one(self):
