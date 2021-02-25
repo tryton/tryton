@@ -52,3 +52,8 @@ button triggers a wizard that is overridden in shipping service specific
 modules. The starting state of the wizard is a ``StateTransition``. Its linked
 method is overridden in shipping service modules in order to communicate with
 the service.
+
+.. toctree::
+   :maxdepth: 2
+
+   configuration

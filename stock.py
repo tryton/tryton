@@ -1,6 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 
+from trytond.config import config
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, fields
 from trytond.model.exceptions import AccessError
@@ -10,6 +11,13 @@ from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateTransition
 
 from .exceptions import PackWarning
+
+if config.getboolean('stock_package_shipping', 'filestore', default=False):
+    file_id = 'shipping_label_id'
+    store_prefix = config.get(
+        'stock_package_shipping', 'store_prefix', default=None)
+else:
+    file_id = store_prefix = None
 
 
 class PackageType(metaclass=PoolMeta):
@@ -87,7 +95,10 @@ class Package(metaclass=PoolMeta):
         states={
             'readonly': Eval('_parent_shipment', {}).get('carrier', False),
             })
-    shipping_label = fields.Binary('Shipping Label', readonly=True)
+    shipping_label = fields.Binary(
+        "Shipping Label", readonly=True,
+        file_id=file_id, store_prefix=store_prefix)
+    shipping_label_id = fields.Char("Shipping Label ID", readonly=True)
 
     @classmethod
     def search_rec_name(cls, name, clause):
