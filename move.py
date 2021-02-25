@@ -677,11 +677,9 @@ class Line(ModelSQL, ModelView):
         'account.move.reconciliation', 'delegate_to',
         "Reconciliations Delegated", readonly=True)
     tax_lines = fields.One2Many('account.tax.line', 'move_line', 'Tax Lines')
-    move_state = fields.Function(fields.Selection([
-        ('draft', 'Draft'),
-        ('posted', 'Posted'),
-        ], 'Move State'), 'on_change_with_move_state',
-        searcher='search_move_field')
+    move_state = fields.Function(
+        fields.Selection('get_move_states', "Move State"),
+        'on_change_with_move_state', searcher='search_move_field')
     currency = fields.Function(fields.Many2One(
             'currency.currency', "Currency"), 'on_change_with_currency')
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
@@ -909,6 +907,12 @@ class Line(ModelSQL, ModelView):
         if name.startswith('move_'):
             name = name[5:]
         return [('move.' + name + nested,) + tuple(clause[1:])]
+
+    @classmethod
+    def get_move_states(cls):
+        pool = Pool()
+        Move = pool.get('account.move')
+        return Move.fields_get(['state'])['state']['selection']
 
     @fields.depends('move', '_parent_move.state')
     def on_change_with_move_state(self, name=None):
