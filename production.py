@@ -6,6 +6,7 @@ from decimal import Decimal
 from itertools import chain
 
 from sql import Null
+from sql.conditionals import Coalesce
 
 from trytond.model import ModelView, ModelSQL, Workflow, fields, dualmethod
 from trytond.pyson import Eval, Bool, If
@@ -166,6 +167,10 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Production, cls).__setup__()
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
         cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
@@ -273,6 +278,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*table.update(
                 [table.state], ['cancelled'],
                 where=table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(
+                table.effective_start_date, table.effective_date,
+                table.planned_start_date, table.planned_date)]
 
     @staticmethod
     def default_state():
