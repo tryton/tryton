@@ -70,12 +70,13 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
 
     user = fields.Function(fields.Char("User"), 'get_user')
     at = fields.Function(fields.DateTime("At"), 'get_at')
-    recipients = fields.Char("Recipients")
-    recipients_secondary = fields.Char("Secondary Recipients")
-    recipients_hidden = fields.Char("Hidden Recipients")
-    addresses = fields.One2Many('ir.email.address', 'email', "Addresses")
-    subject = fields.Char("Subject")
-    body = fields.Text("Body")
+    recipients = fields.Char("Recipients", readonly=True)
+    recipients_secondary = fields.Char("Secondary Recipients", readonly=True)
+    recipients_hidden = fields.Char("Hidden Recipients", readonly=True)
+    addresses = fields.One2Many(
+        'ir.email.address', 'email', "Addresses", readonly=True)
+    subject = fields.Char("Subject", readonly=True)
+    body = fields.Text("Body", readonly=True)
 
     @classmethod
     def __setup__(cls):

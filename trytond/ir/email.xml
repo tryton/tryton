@@ -39,7 +39,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_email_form_relate">
-            <field name="name">E-mails</field>
+            <field name="name">E-mail Archives</field>
             <field name="res_model">ir.email</field>
             <field
                 name="domain"
