@@ -4,6 +4,7 @@ from collections import defaultdict
 from decimal import Decimal
 
 from sql import Column
+from sql.conditionals import Coalesce
 from sql.operators import Concat
 from sql.aggregate import Count
 
@@ -260,7 +261,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentDrop, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'DESC'),
+            ]
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'shipped'),
@@ -296,6 +300,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     'depends': ['state'],
                     },
                 })
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
