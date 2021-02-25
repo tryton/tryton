@@ -6,6 +6,7 @@ from collections import defaultdict
 from functools import partial
 
 from sql import Null
+from sql.conditionals import Coalesce
 
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields, dualmethod
@@ -194,7 +195,9 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentIn, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('id', 'DESC'),
+            ]
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -241,6 +244,11 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_planned_date():
@@ -595,7 +603,10 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInReturn, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -659,6 +670,11 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -971,7 +987,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOut, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
         cls._transitions |= set((
                 ('draft', 'waiting'),
                 ('waiting', 'assigned'),
@@ -1060,6 +1079,11 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -1581,7 +1605,10 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentOutReturn, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
         cls._transitions |= set((
                 ('draft', 'received'),
                 ('received', 'done'),
@@ -1629,6 +1656,11 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(table.effective_date, table.planned_date)]
 
     @staticmethod
     def default_state():
@@ -2043,7 +2075,10 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ShipmentInternal, cls).__setup__()
-        cls._order[0] = ('id', 'DESC')
+        cls._order = [
+            ('effective_date', 'ASC NULLS LAST'),
+            ('id', 'ASC'),
+            ]
         cls._transitions |= set((
                 ('request', 'draft'),
                 ('draft', 'waiting'),
@@ -2134,6 +2169,13 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def order_effective_date(cls, tables):
+        table, _ = tables[None]
+        return [Coalesce(
+                table.effective_start_date, table.effective_date,
+                table.planned_start_date, table.planned_date)]
 
     @staticmethod
     def default_state():
