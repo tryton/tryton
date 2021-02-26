@@ -2643,8 +2643,8 @@ class ShipmentReport(CompanyReport):
         raise NotImplementedError
 
     @classmethod
-    def get_context(cls, shipments, data):
-        report_context = super().get_context(shipments, data)
+    def get_context(cls, shipments, header, data):
+        report_context = super().get_context(shipments, header, data)
 
         compare_context = cls.get_compare_context(shipments, data)
         sorted_moves = {}
