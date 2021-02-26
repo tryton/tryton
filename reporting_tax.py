@@ -573,7 +573,9 @@ class ECOperationList(ECSalesList):
         context = Transaction().context
         company = Company.__table__()
         invoice = Invoice.__table__()
+        cancel_invoice = Invoice.__table__()
         move = Move.__table__()
+        cancel_move = Move.__table__()
         line = Line.__table__()
         tax_line = TaxLine.__table__()
         period = Period.__table__()
@@ -590,6 +592,12 @@ class ECOperationList(ECSalesList):
             & (tax.es_ec_purchases_list_code != ''))
         where &= tax_line.type == 'base'
         where &= invoice.type == 'in'
+        where &= ~Exists(cancel_invoice
+            .join(cancel_move,
+                condition=cancel_invoice.cancel_move == cancel_move.id)
+            .select(cancel_invoice.id, distinct=True,
+                 where=((cancel_invoice.id == invoice.id)
+                     & (~cancel_move.origin.like('account.invoice,%')))))
         purchases = (tax_line
             .join(tax, condition=tax_line.tax == tax.id)
             .join(line, condition=tax_line.move_line == line.id)
