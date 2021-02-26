@@ -2337,7 +2337,7 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     _depends = ['invoice_state']
 
     invoice = fields.Many2One('account.invoice', 'Invoice', ondelete='CASCADE',
-            select=True,
+        select=True, required=True,
         states={
             'readonly': _states['readonly'] & Bool(Eval('invoice')),
             },
