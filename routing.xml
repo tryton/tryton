@@ -29,8 +29,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="routing_view_form"/>
             <field name="act_window" ref="act_routing_list"/>
         </record>
-        <menuitem parent="production.menu_configuration" sequence="20"
-            action="act_routing_list" id="menu_routing_list"/>
+        <menuitem
+            parent="production.menu_configuration"
+            action="act_routing_list"
+            sequence="20"
+            id="menu_routing_list"/>
 
         <record model="ir.model.access" id="access_routing">
             <field name="model" search="[('model', '=', 'production.routing')]"/>
@@ -74,8 +77,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="operation_view_form"/>
             <field name="act_window" ref="act_operation_list"/>
         </record>
-        <menuitem parent="menu_routing_list" sequence="20"
-            action="act_operation_list" id="menu_operation_list"/>
+        <menuitem
+            parent="menu_routing_list"
+            action="act_operation_list"
+            sequence="10"
+            id="menu_operation_list"/>
 
         <record model="ir.model.access" id="access_operation">
             <field name="model" search="[('model', '=', 'production.routing.operation')]"/>
