@@ -65,7 +65,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="sale.menu_sale"
             action="act_sale_amendment_form"
-            sequence="20"
+            sequence="40"
             id="menu_sale_amendment"/>
 
         <record model="ir.model.access" id="access_sale_amendment">
