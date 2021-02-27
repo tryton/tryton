@@ -63,8 +63,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_forecast_form"/>
         </record>
-        <menuitem parent="stock.menu_stock" sequence="50"
-            action="act_forecast_form" id="menu_forecast_form"/>
+        <menuitem
+            parent="stock.menu_stock"
+            action="act_forecast_form"
+            sequence="50"
+            id="menu_forecast_form"/>
 
         <record model="ir.ui.view" id="forecast_line_view_form">
             <field name="model">stock.forecast.line</field>
