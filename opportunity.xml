@@ -117,8 +117,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_opportunity_form"/>
         </record>
-        <menuitem parent="sale.menu_sale" action="act_opportunity_form"
-            id="menu_opportunity_form" sequence="5"/>
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_opportunity_form"
+            sequence="5"
+            id="menu_opportunity_form"/>
         <record model="ir.ui.menu-res.group"
                 id="menu_sale_opportunity_group_opportunity">
             <field name="menu" ref="sale.menu_sale"/>
@@ -324,7 +327,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_opportunity_employee"/>
         </record>
 
-        <menuitem parent="sale.menu_reporting" action="act_opportunity_employee_form"
+        <menuitem
+            parent="sale.menu_reporting"
+            action="act_opportunity_employee_form"
+            sequence="50"
             id="menu_opportunity_employee_open"/>
 
         <record model="ir.ui.view" id="opportunity_monthly_view_tree">
@@ -368,7 +374,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_monthly_form"/>
         </record>
 
-        <menuitem parent="sale.menu_reporting" action="act_opportunity_monthly_form"
+        <menuitem
+            parent="sale.menu_reporting"
+            action="act_opportunity_monthly_form"
+            sequence="50"
             id="menu_opportunity_monthly_form"/>
 
         <record model="ir.rule.group" id="rule_group_opportunity_monthly">
@@ -400,8 +409,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_opportunity_employee_monthly_form"/>
         </record>
 
-        <menuitem parent="sale.menu_reporting"
+        <menuitem
+            parent="sale.menu_reporting"
             action="act_opportunity_employee_monthly_form"
+            sequence="50"
             id="menu_opportunity_employee_monthly_form"/>
 
         <record model="ir.rule.group" id="rule_group_opportunity_employee_monthly">
