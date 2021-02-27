@@ -28,7 +28,11 @@
             <field name="act_window" ref="act_shortened_url"/>
         </record>
 
-        <menuitem parent="ir.menu_administration" action="act_shortened_url" id="menu_shortened_url_form"/>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_shortened_url"
+            sequence="50"
+            id="menu_shortened_url_form"/>
 
         <record model="ir.model.access" id="access_shortened_url">
             <field name="model" search="[('model', '=', 'web.shortened_url')]"/>
