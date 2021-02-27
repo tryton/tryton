@@ -32,9 +32,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="price_list_view_form"/>
             <field name="act_window" ref="act_price_list_form"/>
         </record>
-        <menuitem parent="product.menu_main_product"
-            sequence="20" id="menu_price_list"
-            action="act_price_list_form"/>
+        <menuitem
+            parent="product.menu_main_product"
+            action="act_price_list_form"
+            sequence="30"
+            id="menu_price_list"/>
 
         <record model="ir.model.access" id="access_price_list">
             <field name="model" search="[('model', '=', 'product.price_list')]"/>
