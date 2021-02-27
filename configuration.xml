@@ -18,9 +18,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="stock_configuration_view_form"/>
             <field name="act_window" ref="act_stock_configuration_form"/>
         </record>
-        <menuitem parent="menu_configuration"
+        <menuitem
+            parent="menu_configuration"
             action="act_stock_configuration_form"
-            id="menu_stock_configuration" icon="tryton-list"/>
+            sequence="10"
+            id="menu_stock_configuration"
+            icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_configuration">
             <field name="model" search="[('model', '=', 'stock.configuration')]"/>

@@ -51,8 +51,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_shipment_in_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="20"
-            action="act_shipment_in_form" id="menu_shipment_in_form"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_shipment_in_form"
+            sequence="10"
+            id="menu_shipment_in_form"/>
 
         <record model="ir.ui.view" id="shipment_in_return_view_form">
             <field name="model">stock.shipment.in.return</field>
@@ -112,8 +115,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_shipment_in_return_form"/>
         </record>
-        <menuitem parent="menu_shipment_in_form" sequence="10"
+        <menuitem
+            parent="menu_shipment_in_form"
             action="act_shipment_in_return_form"
+            sequence="10"
             id="menu_shipment_in_return_form"/>
 
         <record model="ir.ui.view" id="shipment_out_view_form">
@@ -185,8 +190,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_shipment_out_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="30"
-            action="act_shipment_out_form" id="menu_shipment_out_form"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_shipment_out_form"
+            sequence="10"
+            id="menu_shipment_out_form"/>
 
         <record model="ir.ui.view" id="shipment_internal_view_form">
             <field name="model">stock.shipment.internal</field>
@@ -261,9 +269,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_shipment_internal_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="35"
-                  action="act_shipment_internal_form"
-                  id="menu_shipment_internal_form"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_shipment_internal_form"
+            sequence="10"
+            id="menu_shipment_internal_form"/>
 
         <record model="ir.ui.view" id="shipment_out_return_view_form">
             <field name="model">stock.shipment.out.return</field>
@@ -316,8 +326,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_shipment_out_return_form"/>
         </record>
-        <menuitem parent="menu_shipment_out_form" sequence="10"
+        <menuitem
+            parent="menu_shipment_out_form"
             action="act_shipment_out_return_form"
+            sequence="10"
             id="menu_shipment_out_return_form"/>
 
         <record model="ir.action.report" id="report_shipment_out_delivery_note">

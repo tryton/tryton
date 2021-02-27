@@ -46,8 +46,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_inventory_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="50"
-            action="act_inventory_form" id="menu_inventory_form"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_inventory_form"
+            sequence="20"
+            id="menu_inventory_form"/>
 
         <record model="ir.ui.view" id="inventory_line_view_form">
             <field name="model">stock.inventory.line</field>

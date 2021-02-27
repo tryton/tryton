@@ -41,22 +41,35 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-shipment-out.svg</field>
         </record>
 
-        <menuitem name="Inventory &amp; Stock" sequence="3" id="menu_stock" icon="tryton-stock"/>
+        <menuitem
+            name="Inventory &amp; Stock"
+            sequence="60"
+            id="menu_stock"
+            icon="tryton-stock"/>
         <record model="ir.ui.menu-res.group"
             id="menu_stock_group_stock">
             <field name="menu" ref="menu_stock"/>
             <field name="group" ref="group_stock"/>
         </record>
 
-        <menuitem name="Configuration" parent="menu_stock" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_stock"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_stock_admin">
             <field name="menu" ref="menu_configuration"/>
             <field name="group" ref="group_stock_admin"/>
         </record>
 
-        <menuitem name="Reporting" parent="menu_stock"
-            id="menu_reporting" sequence="100" active="0"/>
+        <menuitem
+            name="Reporting"
+            parent="menu_stock"
+            sequence="100"
+            id="menu_reporting"
+            active="0"/>
 
     </data>
 </tryton>

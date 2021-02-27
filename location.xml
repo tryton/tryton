@@ -37,8 +37,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_tree"/>
         </record>
-        <menuitem parent="menu_stock" sequence="10"
-            action="act_location_tree" id="menu_location_tree"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_location_tree"
+            sequence="20"
+            id="menu_location_tree"/>
 
         <record model="ir.action.act_window" id="act_location_form">
             <field name="name">Locations</field>
@@ -54,10 +57,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="location_view_form"/>
             <field name="act_window" ref="act_location_form"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="10"
-            action="act_location_form" id="menu_location_form"/>
-        <menuitem parent="menu_location_tree" sequence="10"
-            action="act_location_form" id="menu_location_form2"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_location_form"
+            sequence="20"
+            id="menu_location_form"/>
+        <menuitem
+            parent="menu_location_tree"
+            action="act_location_form"
+            sequence="10"
+            id="menu_location_form2"/>
 
         <record model="ir.ui.view"
                 id="products_by_locations_context_view_form">
@@ -153,8 +162,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_location_lead_time_form"/>
         </record>
 
-        <menuitem parent="menu_location_form"
+        <menuitem
+            parent="menu_configuration"
             action="act_location_lead_time_form"
+            sequence="50"
             id="menu_location_lead_time_form"/>
 
         <record model="ir.model.access" id="access_location_lead_time">

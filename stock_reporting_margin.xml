@@ -3,7 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem parent="product.menu_reporting" name="Margins" id="menu_reporting_margin" icon="tryton-graph"/>
+        <menuitem
+            name="Margins"
+            parent="product.menu_reporting"
+            sequence="50"
+            id="menu_reporting_margin"
+            icon="tryton-graph"/>
         <record model="ir.ui.menu-res.group" id="menu_reporting_margin_group_product_admin">
             <field name="menu" ref="menu_reporting_margin"/>
             <field name="group" ref="product.group_product_admin"/>

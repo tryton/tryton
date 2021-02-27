@@ -28,8 +28,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="period_view_form"/>
             <field name="act_window" ref="act_period_list"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="20"
-            action="act_period_list" id="menu_period_list"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_period_list"
+            sequence="30"
+            id="menu_period_list"/>
 
         <record model="ir.model.access" id="access_period">
             <field name="model" search="[('model', '=', 'stock.period')]"/>

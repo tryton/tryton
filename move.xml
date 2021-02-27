@@ -83,8 +83,11 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
             <field name="act_window" ref="act_move_form"/>
         </record>
-        <menuitem parent="menu_stock" sequence="40"
-            action="act_move_form" id="menu_move_form"/>
+        <menuitem
+            parent="menu_stock"
+            action="act_move_form"
+            sequence="50"
+            id="menu_move_form"/>
         <record model="ir.ui.menu-res.group"
             id="menu_move_form_group_stock">
             <field name="menu" ref="menu_move_form"/>
