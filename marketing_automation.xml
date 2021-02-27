@@ -56,7 +56,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_scenario_form"/>
         </record>
 
-        <menuitem parent="marketing.menu_marketing" action="act_scenario_form" id="menu_scenario_form"/>
+        <menuitem
+            parent="marketing.menu_marketing"
+            action="act_scenario_form"
+            sequence="10"
+            id="menu_scenario_form"/>
 
         <record model="ir.model.access" id="access_scenario">
             <field name="model" search="[('model', '=', 'marketing.automation.scenario')]"/>
