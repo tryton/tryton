@@ -5,13 +5,15 @@ from collections import OrderedDict
 from sql import Literal
 from sql.conditionals import Coalesce
 
-from trytond.model import (fields, ModelView, ModelSQL, MatchMixin,
+from trytond.i18n import gettext
+from trytond.model import (fields, ModelView, ModelSQL, Workflow, MatchMixin,
     sequence_ordered)
 from trytond.pyson import Eval, If, Bool
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
 
+from trytond.modules.account.exceptions import ClosePeriodError
 from trytond.modules.company.model import CompanyValueMixin
 
 
@@ -135,6 +137,27 @@ class Period(metaclass=PoolMeta):
             table.drop_column('out_credit_note_sequence')
             table.drop_column('in_invoice_sequence')
             table.drop_column('in_credit_note_sequence')
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('close')
+    def close(cls, periods):
+        pool = Pool()
+        Invoice = pool.get('account.invoice')
+        company_ids = list({p.company.id for p in periods})
+        invoices = Invoice.search([
+                ('company', 'in', company_ids),
+                ('state', '=', 'posted'),
+                ('move', '=', None),
+                ])
+        if invoices:
+            names = ', '.join(i.rec_name for i in invoices[:5])
+            if len(invoices) > 5:
+                names += '...'
+            raise ClosePeriodError(
+                gettext('account_invoice.msg_close_period_non_posted_invoices',
+                    invoices=names))
+        super().close()
 
 
 class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):

@@ -244,8 +244,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     @classmethod
     def __setup__(cls):
         super(Invoice, cls).__setup__()
-        cls._check_modify_exclude = ['state', 'payment_lines', 'cancel_move',
-                'invoice_report_cache', 'invoice_report_format', 'lines']
+        cls._check_modify_exclude = {
+            'state', 'payment_lines', 'move', 'cancel_move',
+            'invoice_report_cache', 'invoice_report_format', 'lines'}
         cls._order = [
             ('number', 'DESC NULLS FIRST'),
             ('id', 'DESC'),
@@ -265,6 +266,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                 ('draft', 'validated'),
                 ('validated', 'posted'),
                 ('draft', 'posted'),
+                ('posted', 'posted'),
                 ('posted', 'paid'),
                 ('validated', 'draft'),
                 ('paid', 'posted'),
@@ -302,8 +304,9 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                             ('invoice_date', '!=', None),
                             ('type', '!=', 'in'),
                         ],
-                    'invisible': ~Eval('state').in_(['draft', 'validated']),
-                    'depends': ['state'],
+                    'invisible': (~Eval('state').in_(['draft', 'validated'])
+                        | ((Eval('state') == 'posted') & Bool(Eval('move')))),
+                    'depends': ['state', 'move'],
                     },
                 'pay': {
                     'invisible': Eval('state') != 'posted',
@@ -1200,7 +1203,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         actions = iter(args)
         all_invoices = []
         for invoices, values in zip(actions, actions):
-            if set(values) - set(cls._check_modify_exclude):
+            if set(values) - cls._check_modify_exclude:
                 cls.check_modify(invoices)
             all_invoices += invoices
         update_tax = [i for i in all_invoices if i.state == 'draft']
@@ -1464,10 +1467,29 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         cls.save(invoices_in)
 
     @classmethod
+    @Workflow.transition('posted')
+    def post_batch(cls, invoices):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        cls.set_number(invoices)
+        for invoice in invoices:
+            if not invoice.payment_term_date:
+                invoice.payment_term_date = today
+        cls.save(invoices)
+        with Transaction().set_context(_skip_warnings=True):
+            cls.__queue__._post(invoices)
+
+    @classmethod
     @ModelView.button
     @Workflow.transition('posted')
     def post(cls, invoices):
-        Move = Pool().get('account.move')
+        cls._post(invoices)
+
+    @classmethod
+    def _post(cls, invoices):
+        pool = Pool()
+        Move = pool.get('account.move')
 
         cls.set_number(invoices)
         moves = []
@@ -1528,7 +1550,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         delete_moves = []
         to_save = []
         for invoice in invoices:
-            if invoice.move:
+            if invoice.move or invoice.number:
                 if invoice.move.state == 'draft':
                     delete_moves.append(invoice.move)
                 elif not invoice.cancel_move:

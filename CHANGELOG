@@ -1,3 +1,4 @@
+* Add method to post invoices by batch
 * Add payment term date in invoice
 * Raise warning on invoice with maturity dates on the past
 * Remove foreign key for sequence of Invoice
