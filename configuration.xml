@@ -18,10 +18,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="party_configuration_view_form"/>
             <field name="act_window" ref="act_party_configuration_form"/>
         </record>
-        <menuitem parent="menu_configuration"
+        <menuitem
+            parent="menu_configuration"
             action="act_party_configuration_form"
+            sequence="10"
             id="menu_party_configuration"
-            sequence="0" icon="tryton-list"/>
+            icon="tryton-list"/>
         <record model="ir.ui.menu-res.group"
             id="menu_party_configuration_group_party_admin">
             <field name="menu" ref="menu_party_configuration"/>

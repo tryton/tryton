@@ -16,10 +16,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-party</field>
             <field name="path">icons/tryton-party.svg</field>
         </record>
-        <menuitem name="Party" sequence="0" id="menu_party"
+        <menuitem
+            name="Party"
+            sequence="10"
+            id="menu_party"
             icon="tryton-party"/>
 
-        <menuitem name="Configuration" parent="menu_party" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_party"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_party_group_party_admin">
             <field name="menu" ref="menu_configuration"/>
@@ -50,8 +58,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="party_view_form"/>
             <field name="act_window" ref="act_party_form"/>
         </record>
-        <menuitem parent="menu_party" sequence="1"
-            action="act_party_form" id="menu_party_form"/>
+        <menuitem
+            parent="menu_party"
+            action="act_party_form"
+            sequence="10"
+            id="menu_party_form"/>
 
         <record model="ir.action.act_window" id="act_party_by_category">
             <field name="name">Parties by Category</field>

@@ -40,8 +40,10 @@ this repository contains the full copyright notices and license terms. -->
           <field name="view" ref="contact_mechanism_view_form"/>
           <field name="act_window" ref="act_contact_mechanism_form"/>
         </record>
-        <menuitem parent="menu_party"
-              sequence="3" action="act_contact_mechanism_form"
-              id="menu_contact_mechanism_form"/>
+        <menuitem
+            parent="menu_party"
+            sequence="20"
+            action="act_contact_mechanism_form"
+            id="menu_contact_mechanism_form"/>
     </data>
 </tryton>

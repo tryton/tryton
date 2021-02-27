@@ -36,8 +36,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_category_tree"/>
         </record>
 
-        <menuitem parent="menu_party"
-            action="act_category_tree" id="menu_category_tree"/>
+        <menuitem
+            parent="menu_party"
+            action="act_category_tree"
+            sequence="50"
+            id="menu_category_tree"/>
 
         <record model="ir.action.act_window" id="act_category_list">
             <field name="name">Categories</field>
@@ -53,7 +56,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="category_view_form"/>
             <field name="act_window" ref="act_category_list"/>
         </record>
-        <menuitem parent="menu_category_tree" action="act_category_list"
+        <menuitem
+            parent="menu_category_tree"
+            sequence="10"
+            action="act_category_list"
             id="menu_category_list"/>
 
         <record model="ir.model.access" id="access_party_category">

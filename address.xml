@@ -36,9 +36,11 @@ this repository contains the full copyright notices and license terms. -->
           <field name="view" ref="address_view_form"/>
           <field name="act_window" ref="act_address_form"/>
         </record>
-        <menuitem name="Addresses" parent="menu_party"
-              sequence="2" action="act_address_form"
-              id="menu_address_form"/>
+        <menuitem
+            parent="menu_party"
+            action="act_address_form"
+            sequence="20"
+            id="menu_address_form"/>
 
         <record model="ir.ui.view" id="address_format_view_list">
             <field name="model">party.address.format</field>
@@ -66,8 +68,11 @@ this repository contains the full copyright notices and license terms. -->
           <field name="view" ref="address_format_view_form"/>
           <field name="act_window" ref="act_address_format_form"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="10"
-            action="act_address_format_form" id="menu_address_format_form"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_address_format_form"
+            sequence="50"
+            id="menu_address_format_form"/>
 
         <record model="ir.model.access" id="access_address_format">
             <field name="model" search="[('model', '=', 'party.address.format')]"/>
@@ -111,8 +116,11 @@ this repository contains the full copyright notices and license terms. -->
           <field name="view" ref="address_subdivision_type_view_form"/>
           <field name="act_window" ref="act_address_subdivision_type_form"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="20"
-            action="act_address_subdivision_type_form" id="menu_address_subdivision_type_form"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_address_subdivision_type_form"
+            sequence="50"
+            id="menu_address_subdivision_type_form"/>
 
         <record model="ir.model.access" id="access_address_subdivision_type">
             <field name="model" search="[('model', '=', 'party.address.subdivision_type')]"/>
