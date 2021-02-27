@@ -29,13 +29,11 @@ class Invoice(metaclass=PoolMeta):
         return super()._journal_types(invoice_type) + ['commission']
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('posted')
-    def post(cls, invoices):
+    def _post(cls, invoices):
         # Create commission only the first time the invoice is posted
         to_commission = [i for i in invoices
             if i.state not in ['posted', 'paid']]
-        super(Invoice, cls).post(invoices)
+        super()._post(invoices)
         cls.create_commissions(to_commission)
 
     @classmethod
