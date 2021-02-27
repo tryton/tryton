@@ -90,11 +90,19 @@ class Sale(metaclass=PoolMeta):
         fields.Many2Many('carrier', None, None, 'Available Carriers'),
         'on_change_with_available_carriers')
     shipment_cost_method = fields.Selection([
+        (None, "None"),
         ('order', 'On Order'),
         ('shipment', 'On Shipment'),
-        ], 'Shipment Cost Method', required=True, states={
+        ], 'Shipment Cost Method', states={
             'readonly': Eval('state') != 'draft',
             }, depends=['state'])
+
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+        table_h = cls.__table_handler__(module)
+        # Migration from 5.8: remove required on shipment_cost_method
+        table_h.not_null_action('shipment_cost_method', 'remove')
 
     @staticmethod
     def default_shipment_cost_method():
@@ -209,7 +217,9 @@ class Sale(metaclass=PoolMeta):
         return 0
 
     def set_shipment_cost(self):
-        cost = self.compute_shipment_cost()
+        cost = None
+        if self.shipment_cost_method:
+            cost = self.compute_shipment_cost()
         removed = []
         unit_price = None
         lines = list(self.lines or [])
@@ -256,7 +266,9 @@ class Sale(metaclass=PoolMeta):
         return cost_line
 
     def create_shipment(self, shipment_type):
-        Shipment = Pool().get('stock.shipment.out')
+        pool = Pool()
+        Shipment = pool.get('stock.shipment.out')
+        Currency = pool.get('currency.currency')
 
         shipments = super(Sale, self).create_shipment(shipment_type)
         if shipment_type == 'out' and shipments and self.carrier:
@@ -264,11 +276,15 @@ class Sale(metaclass=PoolMeta):
                 shipment.carrier = self.carrier
                 with Transaction().set_context(
                         shipment.get_carrier_context()):
-                    cost, currency_id = self.carrier.get_sale_price()
-                cost = round_price(cost)
-                shipment.carrier = self.carrier
-                shipment.cost = cost
-                shipment.cost_currency = currency_id
+                    cost, currency_id = self.carrier.get_purchase_price()
+                shipment.cost = round_price(Currency.compute(
+                        Currency(currency_id), cost, shipment.company.currency,
+                        round=False))
+                with Transaction().set_context(
+                        shipment.get_carrier_context()):
+                    cost_sale, currency_id = self.carrier.get_sale_price()
+                shipment.cost_sale = round_price(cost_sale)
+                shipment.cost_sale_currency = currency_id
         Shipment.save(shipments)
         return shipments
 

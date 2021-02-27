@@ -6,9 +6,11 @@ this repository contains the full copyright notices and license terms. -->
         <label name="carrier"/>
         <field name="carrier"/>
         <label name="cost"/>
-        <group col="2" id="cost">
-            <field name="cost"/>
-            <field name="cost_currency"/>
-        </group>
+        <field name="cost"/>
+
+        <label name="cost_sale"/>
+        <field name="cost_sale"/>
+        <label name="cost_sale_currency"/>
+        <field name="cost_sale_currency"/>
     </xpath>
 </data>

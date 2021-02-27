@@ -84,6 +84,8 @@ Create product::
     >>> carrier_template.account_category = account_category
     >>> carrier_template.save()
     >>> carrier_product, = carrier_template.products
+    >>> carrier_product.cost_price = Decimal('2')
+    >>> carrier_product.save()
 
 Create carrier::
 
@@ -140,14 +142,16 @@ Send products::
     >>> shipment.carrier == carrier
     True
     >>> shipment.cost
+    Decimal('2.0000')
+    >>> shipment.cost_sale
     Decimal('3.0000')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_sale_currency == company.currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
-    >>> shipment.cost
+    >>> shipment.cost_sale
     Decimal('3.0000')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_sale_currency == company.currency
     True
     >>> shipment.state
     'waiting'
@@ -267,3 +271,48 @@ Check customer invoice::
     >>> invoice, = sale.invoices
     >>> len(invoice.lines)
     2
+
+Sale products with no cost::
+
+    >>> sale = Sale()
+    >>> sale.party = customer
+    >>> sale.carrier = carrier
+    >>> sale.payment_term = payment_term
+    >>> sale.invoice_method = 'shipment'
+    >>> sale.shipment_cost_method = None
+    >>> sale_line = sale.lines.new()
+    >>> sale_line.product = product
+    >>> sale_line.quantity = 1.0
+    >>> sale.click('quote')
+    >>> len(sale.lines)
+    1
+    >>> sale.click('confirm')
+    >>> sale.click('process')
+    >>> sale.state
+    'processing'
+
+Check no customer invoice::
+
+    >>> len(sale.invoices)
+    0
+
+Send products::
+
+    >>> shipment, = sale.shipments
+    >>> shipment.cost
+    Decimal('2.0000')
+    >>> shipment.cost_sale
+    Decimal('3.0000')
+    >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> shipment.state
+    'done'
+
+Check customer invoice::
+
+    >>> sale.reload()
+    >>> invoice, = sale.invoices
+    >>> len(invoice.lines)
+    1
