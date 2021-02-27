@@ -145,5 +145,5 @@ Operation appears in report with amount zero::
 
     >>> with config.set_context(context):
     ...     record, = ECOperationList.find([])
-    >>> record.amount
-    Decimal('0.0')
+    >>> record.amount == Decimal('0.0')
+    True
