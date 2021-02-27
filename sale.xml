@@ -55,8 +55,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_product_customer_form"/>
         </record>
 
-        <menuitem parent="product.menu_main_product" sequence="30"
-            id="menu_product_customer" action="act_product_customer_form"/>
+        <menuitem
+            parent="product.menu_template"
+            action="act_product_customer_form"
+            sequence="20"
+            id="menu_product_customer"/>
 
         <record model="ir.model.access" id="access_product_customer">
             <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
