@@ -92,8 +92,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="package_type_view_form"/>
             <field name="act_window" ref="act_package_type_form"/>
         </record>
-        <menuitem parent="stock.menu_configuration" sequence="30"
-            action="act_package_type_form" id="menu_package_form"/>
+        <menuitem
+            parent="stock.menu_configuration"
+            action="act_package_type_form"
+            sequence="50"
+            id="menu_package_form"/>
 
         <record model="ir.model.access" id="access_package_type">
             <field name="model"
