@@ -37,6 +37,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="account_invoice.menu_invoice_out_form"
             action="act_invoice_chorus_form"
+            sequence="50"
             id="menu_invoice_chorus_form"/>
 
         <record model="ir.model.access" id="access_invoice_chorus">
