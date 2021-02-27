@@ -3,6 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <menuitem
+            name="Subscription"
+            parent="product.menu_configuration"
+            sequence="50"
+            id="menu_configuration"/>
+
         <record model="ir.sequence.type" id="sequence_type_subscription">
             <field name="name">Subscription</field>
             <field name="code">sale.subscription</field>

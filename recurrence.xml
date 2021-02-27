@@ -31,8 +31,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="recurrence_rule_set_view_form"/>
             <field name="act_window" ref="act_recurrence_rule_set_form"/>
         </record>
-        <menuitem parent="product.menu_configuration"
+        <menuitem
+            parent="menu_configuration"
             action="act_recurrence_rule_set_form"
+            sequence="10"
             id="menu_recurrence_rule_set_form"/>
 
         <record model="ir.model.access" id="access_recurrence_rule_set">

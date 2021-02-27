@@ -29,8 +29,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="service_view_form"/>
             <field name="act_window" ref="act_service_form"/>
         </record>
-        <menuitem parent="product.menu_main_product" sequence="20"
-            action="act_service_form" id="menu_service_form"/>
+        <menuitem
+            parent="product.menu_main_product"
+            action="act_service_form"
+            sequence="20"
+            id="menu_service_form"/>
 
         <record model="ir.model.access" id="access_service">
             <field name="model"

@@ -67,8 +67,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_subscription_form"/>
         </record>
-        <menuitem parent="sale.menu_sale" action="act_subscription_form"
-            id="menu_subscription_form" sequence="20"/>
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_subscription_form"
+            sequence="20"
+            id="menu_subscription_form"/>
         <record model="ir.ui.menu-res.group"
             id="menu_subscription_form_group_sale">
             <field name="menu" ref="menu_subscription_form"/>
@@ -295,8 +298,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="sale.group_sale"/>
         </record>
 
-        <menuitem parent="menu_subscription_form" sequence="10"
+        <menuitem
+            parent="sale.menu_sale"
             action="act_line_consumption_create"
+            sequence="90"
             id="menu_line_consumption_create"/>
 
         <record model="ir.ui.view"
@@ -322,8 +327,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="sale.group_sale"/>
         </record>
 
-        <menuitem parent="menu_subscription_form" sequence="20"
+        <menuitem
+            parent="sale.menu_sale"
             action="act_create_invoice"
+            sequence="90"
             id="menu_create_invoice"/>
 
         <record model="ir.ui.view" id="create_invoice_start_view_form">
