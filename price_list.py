@@ -53,12 +53,17 @@ class PriceList(DeactivableMixin, ModelSQL, ModelView):
             pattern=None):
         if product:
             cost_price = product.get_multivalue('cost_price') or Decimal('0')
+            list_price = product.list_price_used
+            if list_price is None:
+                list_price = unit_price
         else:
             cost_price = Decimal('0')
+            list_price = unit_price
         return {
             'names': {
                 'unit_price': unit_price,
                 'cost_price': cost_price,
+                'list_price': list_price,
                 },
             }
 
@@ -115,7 +120,8 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price\n'
-            '- cost_price: the cost price of the product'))
+            '- cost_price: the cost price of the product\n'
+            '- list_price: the list price of the product'))
 
     @staticmethod
     def default_formula():
