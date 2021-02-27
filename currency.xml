@@ -15,7 +15,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-currency</field>
             <field name="path">icons/tryton-currency.svg</field>
         </record>
-        <menuitem name="Currency" id="menu_currency" sequence="3"
+        <menuitem
+            name="Currency"
+            sequence="50"
+            id="menu_currency"
             icon="tryton-currency"/>
         <record model="ir.ui.menu-res.group" id="menu_currency_group_currency_admin">
             <field name="menu" ref="menu_currency"/>
@@ -46,7 +49,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="currency_view_form"/>
             <field name="act_window" ref="act_currency_form"/>
         </record>
-        <menuitem parent="menu_currency" action="act_currency_form"
+        <menuitem
+            parent="menu_currency"
+            action="act_currency_form"
+            sequence="10"
             id="menu_currency_form"/>
         <record model="ir.model.access" id="access_currency">
             <field name="model" search="[('model', '=', 'currency.currency')]"/>
