@@ -32,8 +32,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_relation_type"/>
         </record>
 
-        <menuitem parent="party.menu_configuration" action="act_relation_type"
-            id="menu_relation_type" sequence="20"/>
+        <menuitem
+            parent="party.menu_configuration"
+            sequence="20"
+            action="act_relation_type"
+            id="menu_relation_type"/>
 
         <record model="ir.model.access" id="access_relation_type">
             <field name="model"
@@ -83,9 +86,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_relation_all"/>
         </record>
 
-        <menuitem parent="party.menu_party" action="act_relation_all"
-            id="menu_relation_all" sequence="20"/>
-
+        <menuitem
+            parent="party.menu_party"
+            sequence="20"
+            action="act_relation_all"
+            id="menu_relation_all"/>
 
         <record model="ir.ui.view" id="party_view_form">
             <field name="model">party.party</field>
