@@ -4,8 +4,11 @@
 <tryton>
     <data>
 
-        <menuitem name="Assets" parent="account.menu_account"
-            id="menu_asset" sequence="48"/>
+        <menuitem
+            name="Assets"
+            parent="account.menu_account"
+            sequence="50"
+            id="menu_asset"/>
 
         <record model="ir.action.wizard" id="wizard_update">
             <field name="name">Update Asset</field>
@@ -67,8 +70,11 @@
             <field name="domain"></field>
             <field name="act_window" ref="act_asset_form"/>
         </record>
-        <menuitem parent="menu_asset" sequence="10"
-            action="act_asset_form" id="menu_asset_form"/>
+        <menuitem
+            parent="menu_asset"
+            action="act_asset_form"
+            sequence="10"
+            id="menu_asset_form"/>
 
         <record model="ir.sequence.type" id="sequence_type_asset">
             <field name="name">Asset</field>
@@ -214,8 +220,11 @@
             <field name="name">Create Assets Moves</field>
             <field name="wiz_name">account.asset.create_moves</field>
         </record>
-        <menuitem name="Create Assets Moves" parent="menu_asset" sequence="10"
-            action="wizard_create_moves" id="menu_create_moves"/>
+        <menuitem
+            parent="menu_asset"
+            sequence="20"
+            action="wizard_create_moves"
+            id="menu_create_moves"/>
 
         <record model="ir.action.report" id="report_depreciation_table">
             <field name="name">Depreciation Table</field>
@@ -233,10 +242,12 @@
             <field name="name">Print Depreciation Table</field>
             <field name="wiz_name">account.asset.print_depreciation_table</field>
         </record>
-        <menuitem name="Print Depreciation Table" icon="tryton-print"
+        <menuitem
             parent="account.menu_reporting"
             action="wizard_print_depreciation_table"
-            id="menu_create_depreciation_table"/>
+            sequence="50"
+            id="menu_create_depreciation_table"
+            icon="tryton-print"/>
     </data>
     <data noupdate="1">
         <record model="account.journal" id="journal_asset">
