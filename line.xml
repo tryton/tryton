@@ -92,8 +92,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account.move_line_view_form"/>
             <field name="act_window" ref="act_move_line_form_completion"/>
         </record>
-        <menuitem parent="account.menu_processing"
-            action="act_move_line_form_completion" id="menu_completion"/>
+        <menuitem
+            parent="account.menu_processing"
+            action="act_move_line_form_completion"
+            sequence="10"
+            id="menu_completion"/>
 
         <record model="ir.model.button" id="line_apply_analytic_rules_button">
             <field name="name">apply_analytic_rules</field>

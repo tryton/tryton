@@ -3,7 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Analytic" parent="account.menu_account_configuration"
+        <menuitem
+            name="Analytic"
+            parent="account.menu_account_configuration"
+            sequence="50"
             id="menu_analytic_account_configuration"/>
 
         <record model="ir.ui.view" id="account_view_form">
@@ -48,8 +51,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_form"/>
             <field name="act_window" ref="act_account_tree"/>
         </record>
-        <menuitem parent="menu_analytic_account_configuration"
-            action="act_account_tree" id="menu_account_tree"/>
+        <menuitem
+            parent="menu_analytic_account_configuration"
+            action="act_account_tree"
+            sequence="10"
+            id="menu_account_tree"/>
 
         <record model="ir.action.act_window" id="act_account_list">
             <field name="name">Accounts</field>
@@ -65,9 +71,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_form"/>
             <field name="act_window" ref="act_account_list"/>
         </record>
-        <menuitem parent="menu_account_tree"
-            action="act_account_list" id="menu_account_list"
-            sequence="10"/>
+        <menuitem
+            parent="menu_account_tree"
+            action="act_account_list"
+            sequence="10"
+            id="menu_account_list"/>
 
         <record model="ir.ui.view" id="account_view_tree2">
             <field name="model">analytic_account.account</field>
@@ -95,8 +103,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Open Chart of Analytic Accounts</field>
             <field name="wiz_name">analytic_account.open_chart</field>
         </record>
-        <menuitem parent="account.menu_charts" action="act_open_chart"
-            icon="tryton-tree" id="menu_open_chart"/>
+        <menuitem
+            parent="account.menu_charts"
+            action="act_open_chart"
+            sequence="30"
+            id="menu_open_chart"
+            icon="tryton-tree"/>
 
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'analytic_account.account')]"/>

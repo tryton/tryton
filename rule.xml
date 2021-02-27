@@ -29,8 +29,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="rule_view_form"/>
             <field name="act_window" ref="act_rule_form"/>
         </record>
-        <menuitem parent="menu_analytic_account_configuration"
-            action="act_rule_form" id="menu_rule_form"/>
+        <menuitem
+            parent="menu_analytic_account_configuration"
+            action="act_rule_form"
+            sequence="50"
+            id="menu_rule_form"/>
 
         <record model="ir.rule.group" id="rule_group_rule">
             <field name="name">User in company</field>
