@@ -20,8 +20,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_dashboard"/>
         </record>
 
-        <menuitem id="menu_dashboard" action="act_dashboard"
-            sequence="9" icon="tryton-board"/>
+        <menuitem
+            action="act_dashboard"
+            sequence="900"
+            id="menu_dashboard"
+            icon="tryton-board"/>
 
     </data>
 </tryton>
