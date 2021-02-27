@@ -16,13 +16,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-carrier.svg</field>
         </record>
 
-        <menuitem name="Carrier" sequence="2" id="menu_carrier" icon="tryton-carrier"/>
+        <menuitem
+            name="Carrier"
+            sequence="50"
+            id="menu_carrier"
+            icon="tryton-carrier"/>
 
         <menuitem
             name="Configuration"
             parent="menu_carrier"
-            id="menu_configuration"
             sequence="0"
+            id="menu_configuration"
             icon="tryton-settings"
             active="0"/>
         <record model="ir.ui.menu-res.group" id="menu_configuration_group_carrier_admin">
@@ -62,7 +66,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="carrier_view_form"/>
             <field name="act_window" ref="act_carrier_form"/>
         </record>
-        <menuitem parent="menu_carrier" action="act_carrier_form"
+        <menuitem
+            parent="menu_carrier"
+            action="act_carrier_form"
+            sequence="10"
             id="menu_carrier_form"/>
 
         <record model="ir.model.access" id="access_carrier">
@@ -115,7 +122,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="carrier_selection_view_form"/>
             <field name="act_window" ref="act_carrier_selection_form"/>
         </record>
-        <menuitem parent="menu_carrier" action="act_carrier_selection_form"
+        <menuitem
+            parent="menu_carrier"
+            action="act_carrier_selection_form"
+            sequence="20"
             id="menu_carrier_selection"/>
 
         <record model="ir.model.access" id="access_carrier_selection">
