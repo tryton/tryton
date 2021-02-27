@@ -32,8 +32,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_dunning_fee_form"/>
         </record>
 
-        <menuitem parent="account_dunning.menu_dunning_configuration"
-            sequence="5" action="act_dunning_fee_form"
+        <menuitem
+            parent="account_dunning.menu_dunning_configuration"
+            action="act_dunning_fee_form"
+            sequence="20"
             id="menu_dunning_fee_form"/>
 
         <record model="ir.model.access" id="access_dunning_fee">
