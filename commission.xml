@@ -26,8 +26,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-commission.svg</field>
         </record>
 
-        <menuitem name="Commission" sequence="5" id="menu_commission"/>
-        <menuitem name="Configuration" parent="menu_commission" id="menu_configuration" sequence="10" icon="tryton-settings"/>
+        <menuitem
+            name="Commission"
+            sequence="100"
+            id="menu_commission"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_commission"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_commission_admin">
             <field name="menu" ref="menu_configuration"/>
@@ -62,7 +70,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="agent_view_form"/>
             <field name="act_window" ref="act_agent_form"/>
         </record>
-        <menuitem parent="menu_commission" action="act_agent_form" sequence="20"
+        <menuitem
+            parent="menu_commission"
+            action="act_agent_form"
+            sequence="20"
             id="menu_agent_form"/>
 
         <record model="ir.model.access" id="access_agent">
@@ -169,7 +180,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="plan_view_form"/>
             <field name="act_window" ref="act_plan_form"/>
         </record>
-        <menuitem parent="menu_configuration" action="act_plan_form" sequence="10"
+        <menuitem
+            parent="menu_configuration"
+            action="act_plan_form"
+            sequence="10"
             id="menu_plan_form"/>
 
         <record model="ir.model.access" id="access_plan">
@@ -263,8 +277,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_commission_form"/>
         </record>
-        <menuitem parent="menu_commission" action="act_commission_form"
-            sequence="30" id="menu_commission_form"/>
+        <menuitem
+            parent="menu_commission"
+            action="act_commission_form"
+            sequence="10"
+            id="menu_commission_form"/>
 
         <record model="ir.action.act_window" id="act_commission_form2">
             <field name="name">Commissions</field>
@@ -317,8 +334,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">commission_create_invoice_ask_form</field>
         </record>
 
-        <menuitem parent="menu_commission" sequence="40"
+        <menuitem
+            parent="menu_commission"
             action="act_commission_create_invoice"
+            sequence="90"
             id="menu_commission_create_invoice"/>
         <record model="ir.ui.menu-res.group"
             id="menu_commission_create_invoice_group_commission">
