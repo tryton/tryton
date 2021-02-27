@@ -79,8 +79,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_mandate_form"/>
         </record>
 
-        <menuitem parent="bank.menu_banking" sequence="30"
-            action="act_mandate_form" id="menu_mandate_form"/>
+        <menuitem
+            parent="bank.menu_banking"
+            action="act_mandate_form"
+            sequence="30"
+            id="menu_mandate_form"/>
 
         <record model="ir.rule.group" id="rule_group_mandate">
             <field name="name">User in company</field>
@@ -221,8 +224,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_message_form"/>
         </record>
 
-        <menuitem parent="account_payment.menu_payments" sequence="40"
-            action="act_message_form" id="menu_message_form"/>
+        <menuitem
+            parent="account_payment.menu_payments"
+            action="act_message_form"
+            sequence="50"
+            id="menu_message_form"/>
 
         <record model="ir.rule.group" id="rule_group_message">
             <field name="name">User in company</field>
