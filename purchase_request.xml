@@ -67,8 +67,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_purchase_request"/>
         </record>
 
-        <menuitem parent="purchase.menu_purchase" sequence="20"
+        <menuitem
+            parent="purchase.menu_purchase"
             action="act_purchase_request_form"
+            sequence="50"
             id="menu_purchase_request_form"/>
         <record model="ir.ui.menu-res.group"
             id="menu_purchase_request_group_purchase_request">
