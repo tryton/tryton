@@ -27,8 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="uom_view_form"/>
             <field name="act_window" ref="act_uom_form"/>
         </record>
-        <menuitem name="Units of Measure" parent="menu_main_product"
-            sequence="3" id="menu_uom_form" action="act_uom_form"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_uom_form"
+            sequence="50"
+            id="menu_uom_form"/>
 
         <record model="ir.ui.view" id="uom_category_view_tree">
             <field name="model">product.uom.category</field>
@@ -56,9 +59,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="uom_category_view_form"/>
             <field name="act_window" ref="act_uom_category_form"/>
         </record>
-        <menuitem parent="menu_uom_form" sequence="2"
-            id="menu_uom_category_form"
-            action="act_uom_category_form"/>
+        <menuitem
+            parent="menu_uom_form"
+            action="act_uom_category_form"
+            sequence="20"
+            id="menu_uom_category_form"/>
 
         <record model="product.uom.category" id="uom_cat_unit">
             <field name="name">Units</field>

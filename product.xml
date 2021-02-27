@@ -16,17 +16,29 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-product</field>
             <field name="path">icons/tryton-product.svg</field>
         </record>
-        <menuitem name="Product" id="menu_main_product" sequence="1"
+        <menuitem
+            name="Product"
+            sequence="30"
+            id="menu_main_product"
             icon="tryton-product"/>
 
-        <menuitem name="Configuration" parent="menu_main_product" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_main_product"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_product_group_product_admin">
             <field name="menu" ref="menu_configuration"/>
             <field name="group" ref="group_product_admin"/>
         </record>
 
-        <menuitem name="Reporting" parent="menu_main_product" id="menu_reporting" sequence="100"/>
+        <menuitem
+            name="Reporting"
+            parent="menu_main_product"
+            sequence="100"
+            id="menu_reporting"/>
 
         <record model="ir.ui.view" id="template_view_tree">
             <field name="model">product.template</field>
@@ -55,8 +67,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_template_form"/>
         </record>
 
-        <menuitem parent="menu_main_product" sequence="1" id="menu_template"
-            action="act_template_form"/>
+        <menuitem
+            parent="menu_main_product"
+            action="act_template_form"
+            sequence="10"
+            id="menu_template"/>
 
         <record model="ir.action.act_window" id="act_template_by_category">
             <field name="name">Product by Category</field>
@@ -128,8 +143,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_product_form"/>
         </record>
 
-        <menuitem parent="menu_template" sequence="1" id="menu_product"
-            action="act_product_form" icon="tryton-list"/>
+        <menuitem
+            parent="menu_template"
+            action="act_product_form"
+            sequence="10"
+            id="menu_product"
+            icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_product">
             <field name="model" search="[('model', '=', 'product.product')]"/>

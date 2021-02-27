@@ -20,9 +20,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="product_configuration_view_form"/>
             <field name="act_window" ref="act_product_configuration_form"/>
         </record>
-        <menuitem parent="menu_configuration"
+        <menuitem
+            parent="menu_configuration"
             action="act_product_configuration_form"
-            id="menu_product_configuration" sequence="0" icon="tryton-list"/>
+            sequence="10"
+            id="menu_product_configuration"
+            icon="tryton-list"/>
         <record model="ir.ui.menu-res.group"
             id="menu_product_configuration_group_product_admin">
             <field name="menu" ref="menu_product_configuration"/>
