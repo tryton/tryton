@@ -4,17 +4,14 @@
 from collections import defaultdict
 
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelView, Workflow
 
 
 class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('posted')
-    def post(cls, invoices):
-        super(Invoice, cls).post(invoices)
+    def _post(cls, invoices):
+        super()._post(invoices)
         cls.post_commission_waiting_moves(invoices)
 
     @classmethod
