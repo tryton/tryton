@@ -44,9 +44,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_invoice.invoice_line_view_form"/>
             <field name="act_window" ref="act_invoice_line_out_form"/>
         </record>
-        <menuitem parent="account_invoice.menu_invoice_out_form"
+        <menuitem
+            parent="account_invoice.menu_invoice_out_form"
             action="act_invoice_line_out_form"
-            id="menu_invoice_line_out_form" sequence="5"/>
+            sequence="50"
+            id="menu_invoice_line_out_form"/>
 
         <record model="ir.action.act_window" id="act_invoice_line_in_form">
             <field name="name">Lines</field>
@@ -68,8 +70,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_invoice.invoice_line_view_form"/>
             <field name="act_window" ref="act_invoice_line_in_form"/>
         </record>
-        <menuitem parent="account_invoice.menu_invoice_in_form"
+        <menuitem
+            parent="account_invoice.menu_invoice_in_form"
             action="act_invoice_line_in_form"
-            id="menu_invoice_line_in_form" sequence="5"/>
+            sequence="50"
+            id="menu_invoice_line_in_form"/>
     </data>
 </tryton>
