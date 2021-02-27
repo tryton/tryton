@@ -3,7 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Configuration" parent="menu_sale" id="menu_configuration" sequence="0" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_sale"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_sale_admin">
             <field name="menu" ref="menu_configuration"/>
@@ -25,9 +30,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="sale_configuration_view_form"/>
             <field name="act_window" ref="act_sale_configuration_form"/>
         </record>
-        <menuitem parent="menu_configuration"
+        <menuitem
+            parent="menu_configuration"
             action="act_sale_configuration_form"
-            id="menu_sale_configuration" icon="tryton-list"/>
+            sequence="10"
+            id="menu_sale_configuration"
+            icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_sale_configuration">
             <field name="model" search="[('model', '=', 'sale.configuration')]"/>

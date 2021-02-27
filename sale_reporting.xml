@@ -3,11 +3,18 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Reporting" parent="menu_sale"
-            id="menu_reporting" sequence="100"/>
+        <menuitem
+            name="Reporting"
+            parent="menu_sale"
+            sequence="100"
+            id="menu_reporting"/>
 
-        <menuitem parent="menu_reporting" name="Sales"
-            id="menu_reporting_sale" icon="tryton-graph"/>
+        <menuitem
+            name="Sales"
+            parent="menu_reporting"
+            sequence="10"
+            id="menu_reporting_sale"
+            icon="tryton-graph"/>
 
         <record model="ir.ui.view" id="reporting_context_view_form">
             <field name="model">sale.reporting.context</field>
