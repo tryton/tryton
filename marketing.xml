@@ -73,7 +73,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="email_list_view_form"/>
             <field name="act_window" ref="act_email_list_form"/>
         </record>
-        <menuitem parent="marketing.menu_marketing" action="act_email_list_form" id="menu_email_list_form"/>
+        <menuitem
+            parent="marketing.menu_marketing"
+            action="act_email_list_form"
+            sequence="10"
+            id="menu_email_list_form"/>
 
         <record model="ir.model.access" id="access_email_list">
             <field name="model" search="[('model', '=', 'marketing.email.list')]"/>
