@@ -167,12 +167,12 @@ class Invoice(metaclass=PoolMeta):
             Line.reconcile(lines)
 
     @classmethod
-    def post(cls, invoices):
+    def _post(cls, invoices):
         pool = Pool()
         Payment = pool.get('account.payment')
         Move = pool.get('account.move')
 
-        super(Invoice, cls).post(invoices)
+        super()._post(invoices)
 
         payments = []
         for invoice in invoices:
