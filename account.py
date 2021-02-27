@@ -157,7 +157,7 @@ class Period(metaclass=PoolMeta):
             raise ClosePeriodError(
                 gettext('account_invoice.msg_close_period_non_posted_invoices',
                     invoices=names))
-        super().close()
+        super().close(periods)
 
 
 class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
