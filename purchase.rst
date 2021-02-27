@@ -17,6 +17,9 @@ Purchase
     `Invoice Line Standalone </projects/modules-purchase-invoice-line-standalone/en/latest>`_
         Generates invoice lines.
 
+    `Price List </projects/modules-purchase-price-list/en/latest>`_
+        Applies price list.
+
     `Request </projects/modules-purchase-request/en/latest>`_
         Collects the purchase requests.
 
