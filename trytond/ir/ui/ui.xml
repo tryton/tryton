@@ -36,7 +36,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">ui/icons/tryton-tree.svg</field>
         </record>
 
-        <menuitem name="Administration" id="menu_administration" icon="tryton-settings" sequence="9999"/>
-        <menuitem name="User Interface" parent="menu_administration" id="menu_ui"/>
+        <menuitem
+            name="Administration"
+            sequence="9999"
+            id="menu_administration"
+            icon="tryton-settings"/>
+        <menuitem
+            name="User Interface"
+            parent="menu_administration"
+            sequence="50"
+            id="menu_ui"/>
     </data>
 </tryton>

@@ -3,6 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Users" id="menu_res" parent="ir.menu_administration"/>
+        <menuitem
+            name="Users"
+            parent="ir.menu_administration"
+            sequence="10"
+            id="menu_res"/>
     </data>
 </tryton>

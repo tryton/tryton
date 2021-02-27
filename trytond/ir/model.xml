@@ -3,7 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Models" id="menu_models" parent="menu_administration"/>
+        <menuitem
+            name="Models"
+            id="menu_models"
+            sequence="50"
+            parent="menu_administration"/>
         <record model="ir.ui.view" id="model_view_form">
             <field name="model">ir.model</field>
             <field name="type">form</field>
@@ -30,8 +34,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="model_view_form"/>
             <field name="act_window" ref="act_model_form"/>
         </record>
-        <menuitem parent="ir.menu_models"
-            action="act_model_form" id="menu_model_form"/>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_model_form"
+            sequence="10"
+            id="menu_model_form"/>
         <record model="ir.ui.view" id="model_fields_view_form">
             <field name="model">ir.model.field</field>
             <field name="type">form</field>
@@ -58,8 +65,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="model_fields_view_form"/>
             <field name="act_window" ref="act_model_fields_form"/>
         </record>
-        <menuitem parent="ir.menu_models"
-            action="act_model_fields_form" id="model_model_fields_form"/>
+        <menuitem
+            parent="menu_model_form"
+            action="act_model_fields_form"
+            sequence="20"
+            id="model_model_fields_form"/>
         <record model="ir.ui.view" id="model_access_view_tree">
             <field name="model">ir.model.access</field>
             <field name="type">tree</field>
@@ -86,8 +96,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="model_access_view_form"/>
             <field name="act_window" ref="act_model_access_form"/>
         </record>
-        <menuitem parent="ir.menu_models"
-            action="act_model_access_form" id="menu_model_access_form"/>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_model_access_form"
+            sequence="30"
+            id="menu_model_access_form"/>
 
         <record model="ir.action.act_window" id="act_model_access_form_relate_model">
             <field name="name">Access</field>
@@ -131,8 +144,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="model_field_access_view_form"/>
             <field name="act_window" ref="act_model_field_access_form"/>
         </record>
-        <menuitem parent="menu_model_access_form"
-            action="act_model_field_access_form" id="menu_model_field_access_form"/>
+        <menuitem
+            parent="menu_model_access_form"
+            action="act_model_field_access_form"
+            sequence="10"
+            id="menu_model_field_access_form"/>
 
         <record model="ir.action.act_window" id="act_model_field_access_form_relate_field">
             <field name="name">Access</field>
@@ -210,8 +226,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="model_button_view_form"/>
             <field name="act_window" ref="act_model_button_form"/>
         </record>
-        <menuitem parent="menu_model_access_form"
-            action="act_model_button_form" id="menu_model_button_form"/>
+        <menuitem
+            parent="menu_model_access_form"
+            action="act_model_button_form"
+            sequence="20"
+            id="menu_model_button_form"/>
 
         <record model="ir.ui.view" id="model_button_rule_view_list">
             <field name="model">ir.model.button.rule</field>
@@ -295,7 +314,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_model_data_form"/>
         </record>
-        <menuitem parent="menu_model_form" action="act_model_data_form"
+        <menuitem
+            parent="menu_model_form"
+            action="act_model_data_form"
+            sequence="50"
             id="menu_model_data_form"/>
         <record model="ir.model.button" id="model_data_sync_button">
             <field name="name">sync</field>

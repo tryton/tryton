@@ -27,7 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="20"/>
             <field name="act_window" ref="act_message_form"/>
         </record>
-        <menuitem name="Messages" parent="menu_localization" action="act_message_form" id="menu_message_form" sequence="10"/>
+        <menuitem
+            parent="menu_localization"
+            action="act_message_form"
+            sequence="20"
+            id="menu_message_form"/>
     </data>
     <data grouped="1">
         <record model="ir.message" id="msg_ID">

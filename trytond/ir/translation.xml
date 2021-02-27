@@ -44,8 +44,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="translation_view_form"/>
             <field name="act_window" ref="act_translation_form"/>
         </record>
-        <menuitem name="Translations" parent="menu_localization"
-            action="act_translation_form" id="menu_translation_form"/>
+        <menuitem
+            parent="menu_localization"
+            action="act_translation_form"
+            sequence="20"
+            id="menu_translation_form"/>
 
         <record model="ir.action.wizard" id="wizard_translation_report">
             <field name="name">Translations</field>
@@ -90,11 +93,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">ir.ui.view,-1</field>
             <field name="action" ref="act_translation_set"/>
         </record>
-        <menuitem name="Set Translations"
+        <menuitem
             parent="menu_localization"
             action="act_translation_set"
-            id="menu_translation_set"
-            sequence="20"/>
+            sequence="90"
+            id="menu_translation_set"/>
 
         <record model="ir.ui.view" id="translation_clean_start_view_form">
             <field name="model">ir.translation.clean.start</field>
@@ -112,11 +115,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Clean Translations</field>
             <field name="wiz_name">ir.translation.clean</field>
         </record>
-        <menuitem name="Clean Translations"
+        <menuitem
             parent="menu_localization"
             action="act_translation_clean"
-            id="menu_translation_clean"
-            sequence="30"/>
+            sequence="91"
+            id="menu_translation_clean"/>
 
         <record model="ir.ui.view" id="translation_update_start_view_form">
             <field name="model">ir.translation.update.start</field>
@@ -140,11 +143,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">ir.ui.view,-1</field>
             <field name="action" ref="act_translation_update"/>
         </record>
-        <menuitem name="Synchronize Translations"
+        <menuitem
             parent="menu_localization"
             action="act_translation_update"
-            id="menu_translation_update"
-            sequence="40"/>
+            sequence="92"
+            id="menu_translation_update"/>
 
         <record model="ir.ui.view" id="translation_export_start_view_form">
             <field name="model">ir.translation.export.start</field>
@@ -162,10 +165,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Export Translations</field>
             <field name="wiz_name">ir.translation.export</field>
         </record>
-        <menuitem name="Export Translations"
+        <menuitem
             parent="menu_localization"
             action="act_translation_export"
-            id="menu_translation_export"
-            sequence="50"/>
+            sequence="93"
+            id="menu_translation_export"/>
     </data>
 </tryton>

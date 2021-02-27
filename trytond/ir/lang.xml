@@ -3,7 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Localization" parent="menu_administration"
+        <menuitem
+            name="Localization"
+            parent="menu_administration"
+            sequence="30"
             id="menu_localization"/>
          <record model="ir.lang" id="lang_bg">
             <field name="code">bg</field>
@@ -493,8 +496,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="lang_view_form"/>
             <field name="act_window" ref="act_lang_form"/>
         </record>
-        <menuitem name="Languages" parent="ir.menu_localization"
-            action="act_lang_form" id="menu_lang_form"/>
+        <menuitem
+            parent="ir.menu_localization"
+            action="act_lang_form"
+            sequence="10"
+            id="menu_lang_form"/>
 
         <record model="ir.model.button" id="lang_load_translations_button">
             <field name="name">load_translations</field>

@@ -29,8 +29,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="rule_group_view_form"/>
             <field name="act_window" ref="act_rule_group_form"/>
         </record>
-        <menuitem parent="ir.menu_models"
-            action="act_rule_group_form" id="menu_rule_group_form"/>
+        <menuitem
+            parent="ir.menu_models"
+            action="act_rule_group_form"
+            sequence="30"
+            id="menu_rule_group_form"/>
         <record model="ir.ui.view" id="rule_view_form">
             <field name="model">ir.rule</field>
             <field name="type">form</field>

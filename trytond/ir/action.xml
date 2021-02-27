@@ -3,7 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Actions" id="menu_action" parent="menu_ui"/>
+        <menuitem
+            name="Actions"
+            parent="menu_ui"
+            sequence="50"
+            id="menu_action"/>
         <record model="ir.ui.view" id="action_view_form">
             <field name="model">ir.action</field>
             <field name="type">form</field>
@@ -31,8 +35,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="action_view_form"/>
             <field name="act_window" ref="act_action_form"/>
         </record>
-        <menuitem parent="menu_action"
-            action="act_action_form" id="menu_act_action"/>
+        <menuitem
+            parent="menu_action"
+            action="act_action_form"
+            sequence="10"
+            id="menu_act_action"/>
 
         <record model="ir.ui.view" id="action_keyword_view_list">
             <field name="model">ir.action.keyword</field>
@@ -73,8 +80,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="action_report_view_form"/>
             <field name="act_window" ref="act_action_report_form"/>
         </record>
-        <menuitem parent="menu_action"
-            action="act_action_report_form" id="menu_action_report_form"/>
+        <menuitem
+            parent="menu_action"
+            action="act_action_report_form"
+            sequence="20"
+            id="menu_action_report_form"/>
 
         <record model="ir.ui.view" id="action_act_window_view_form">
             <field name="model">ir.action.act_window</field>
@@ -101,8 +111,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="action_act_window_view_form"/>
             <field name="act_window" ref="act_action_act_window_form"/>
         </record>
-        <menuitem parent="menu_action"
-            action="act_action_act_window_form" id="menu_action_act_window"/>
+        <menuitem
+            parent="menu_action"
+            action="act_action_act_window_form"
+            sequence="20"
+            id="menu_action_act_window"/>
 
         <record model="ir.ui.view" id="act_window_view_view_form">
             <field name="model">ir.action.act_window.view</field>
@@ -171,8 +184,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="action_wizard_view_form"/>
             <field name="act_window" ref="act_action_wizard_form"/>
         </record>
-        <menuitem parent="menu_action"
-            action="act_action_wizard_form" id="menu_action_wizard"/>
+        <menuitem
+            parent="menu_action"
+            action="act_action_wizard_form"
+            id="menu_action_wizard"/>
 
         <record model="ir.ui.view" id="action_url_view_form">
             <field name="model">ir.action.url</field>
@@ -201,7 +216,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="action_url_view_form"/>
             <field name="act_window" ref="act_action_url_form"/>
         </record>
-        <menuitem parent="menu_action"
-            action="act_action_url_form" id="menu_action_url"/>
+        <menuitem
+            parent="menu_action"
+            action="act_action_url_form"
+            sequence="20"
+            id="menu_action_url"/>
     </data>
 </tryton>

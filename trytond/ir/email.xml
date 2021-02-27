@@ -28,7 +28,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="email_view_form"/>
             <field name="act_window" ref="act_email_form"/>
         </record>
-        <menuitem parent="menu_models" action="act_email_form" id="menu_email_form"/>
+        <menuitem
+            parent="menu_models"
+            action="act_email_form"
+            sequence="50"
+            id="menu_email_form"/>
 
         <record model="ir.model.access" id="access_email">
             <field name="model" search="[('model', '=', 'ir.email')]"/>
@@ -86,6 +90,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="email_template_view_form"/>
             <field name="act_window" ref="act_email_template_form"/>
         </record>
-        <menuitem parent="menu_action" action="act_email_template_form" id="menu_email_template_form"/>
+        <menuitem
+            parent="menu_action"
+            action="act_email_template_form"
+            sequence="50"
+            id="menu_email_template_form"/>
     </data>
 </tryton>

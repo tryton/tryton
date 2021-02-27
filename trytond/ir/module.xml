@@ -3,7 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Modules" parent="menu_administration" id="menu_modules"/>
+        <menuitem
+            name="Modules"
+            parent="menu_administration"
+            sequence="20"
+            id="menu_modules"/>
         <record model="ir.ui.view" id="module_view_form">
             <field name="model">ir.module</field>
             <field name="type">form</field>
@@ -32,8 +36,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="module_view_form"/>
             <field name="act_window" ref="act_module_form"/>
         </record>
-        <menuitem parent="menu_modules"
-            action="act_module_form" id="menu_module_form"/>
+        <menuitem
+            parent="menu_modules"
+            action="act_module_form"
+            sequence="10"
+            id="menu_module_form"/>
 
         <record model="ir.model.button" id="module_activate_button">
             <field name="name">activate</field>
@@ -93,8 +100,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="config_wizard_item_view_tree"/>
             <field name="act_window" ref="act_config_wizard_item_form"/>
         </record>
-        <menuitem parent="menu_modules"
+        <menuitem
+            parent="menu_modules"
             action="act_config_wizard_item_form"
+            sequence="50"
             id="menu_config_wizard_item_form"/>
 
         <record model="ir.action.wizard" id="act_module_config_wizard">
@@ -149,9 +158,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">module_activate_upgrade_done_form</field>
         </record>
 
-        <menuitem name="Perform Pending Activation/Upgrade"
+        <menuitem
             parent="menu_modules"
             action="act_module_activate_upgrade"
+            sequence="90"
             id="menu_module_activate_upgrade"/>
 
         <record model="ir.action.wizard" id="act_module_config">

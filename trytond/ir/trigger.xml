@@ -27,8 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="trigger_view_form"/>
             <field name="act_window" ref="act_trigger_form"/>
         </record>
-        <menuitem parent="menu_models"
-            action="act_trigger_form" id="menu_trigger_form"/>
+        <menuitem
+            parent="menu_models"
+            action="act_trigger_form"
+            sequence="50"
+            id="menu_trigger_form"/>
 
     </data>
 </tryton>

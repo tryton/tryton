@@ -54,8 +54,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_menu_list"/>
         </record>
 
-        <menuitem parent="menu_ui"
-            action="act_menu_list" id="menu_menu_list"/>
+        <menuitem
+            parent="menu_ui"
+            action="act_menu_list"
+            sequence="10"
+            id="menu_menu_list"/>
 
         <record model="ir.ui.view" id="menu_favorite_view_list">
             <field name="model">ir.ui.menu.favorite</field>

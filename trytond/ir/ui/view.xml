@@ -36,8 +36,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_view_form"/>
             <field name="act_window" ref="act_view_form"/>
         </record>
-        <menuitem parent="menu_ui"
-            action="act_view_form" id="menu_view"/>
+        <menuitem
+            parent="menu_ui"
+            action="act_view_form"
+            sequence="10"
+            id="menu_view"/>
         <record model="ir.model.button" id="view_show_button">
             <field name="name">show</field>
             <field name="string">Show</field>
@@ -71,8 +74,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_tree_width_view_form"/>
             <field name="act_window" ref="act_view_tree_width_form"/>
         </record>
-        <menuitem parent="menu_ui"
-            action="act_view_tree_width_form" id="menu_view_tree_width"/>
+        <menuitem
+            parent="menu_ui"
+            action="act_view_tree_width_form"
+            sequence="50"
+            id="menu_view_tree_width"/>
 
         <record model="ir.ui.view" id="view_tree_state_form">
             <field name="model">ir.ui.view_tree_state</field> 
@@ -101,7 +107,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_tree_state_form"/>
             <field name="act_window" ref="act_view_tree_state"/>
         </record>
-        <menuitem parent="menu_ui" action="act_view_tree_state"
+        <menuitem
+            parent="menu_ui"
+            action="act_view_tree_state"
+            sequence="50"
             id="menu_view_tree_state"/>
 
         <record model="ir.ui.view" id="view_search_form">
@@ -131,7 +140,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="view_search_form"/>
             <field name="act_window" ref="act_view_search"/>
         </record>
-        <menuitem parent="menu_ui" action="act_view_search"
+        <menuitem
+            parent="menu_ui"
+            action="act_view_search"
+            sequence="50"
             id="menu_view_search"/>
     </data>
 </tryton>
