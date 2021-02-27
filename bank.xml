@@ -16,7 +16,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-bank.svg</field>
         </record>
 
-        <menuitem name="Banking" sequence="3" id="menu_banking" icon="tryton-bank"/>
+        <menuitem
+            name="Banking"
+            sequence="50"
+            id="menu_banking"
+            icon="tryton-bank"/>
 
         <record model="ir.ui.view" id="bank_view_form">
             <field name="model">bank</field>
@@ -44,8 +48,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_bank_form"/>
         </record>
 
-        <menuitem parent="menu_banking" action="act_bank_form"
-            sequence="10" id="menu_bank_form"/>
+        <menuitem
+            parent="menu_banking"
+            action="act_bank_form"
+            sequence="10"
+            id="menu_bank_form"/>
 
         <record model="ir.model.access" id="access_bank">
             <field name="model" search="[('model', '=', 'bank')]"/>
@@ -91,8 +98,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_bank_account_form"/>
         </record>
 
-        <menuitem parent="menu_banking" action="act_bank_account_form"
-            sequence="20" id="menu_bank_account_form"/>
+        <menuitem
+            parent="menu_banking"
+            action="act_bank_account_form"
+            sequence="20"
+            id="menu_bank_account_form"/>
 
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'bank.account')]"/>
