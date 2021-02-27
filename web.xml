@@ -33,8 +33,8 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="sale.menu_configuration"
             action="act_shop"
-            id="menu_shop"
-            sequence="20"/>
+            sequence="20"
+            id="menu_shop"/>
 
         <record model="ir.model.access" id="access_shop">
             <field name="model"
