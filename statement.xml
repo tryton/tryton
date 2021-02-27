@@ -11,10 +11,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_statement"/>
         </record>
 
-        <menuitem name="Statements" parent="account.menu_account"
-            id="menu_statements" sequence="45"/>
-        <menuitem name="Statements" parent="account.menu_account_configuration"
-            id="menu_statement_configuration" sequence="70"/>
+        <menuitem
+            name="Statements"
+            parent="account.menu_account"
+            sequence="30"
+            id="menu_statements"/>
+        <menuitem
+            name="Statements"
+            parent="account.menu_account_configuration"
+            sequence="50"
+            id="menu_statement_configuration"/>
         <record model="ir.ui.view" id="statement_view_form">
             <field name="model">account.statement</field>
             <field name="type">form</field>
@@ -70,8 +76,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_statement_form"/>
         </record>
-        <menuitem parent="menu_statements" sequence="10"
-            action="act_statement_form" id="menu_statement_form"/>
+        <menuitem
+            parent="menu_statements"
+            action="act_statement_form"
+            sequence="10"
+            id="menu_statement_form"/>
 
         <record model="ir.rule.group" id="rule_group_statement">
             <field name="name">User in company</field>
@@ -310,8 +319,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="line_group_view_form"/>
             <field name="act_window" ref="act_line_group_form"/>
         </record>
-        <menuitem parent="menu_statement_form" sequence="10"
-            action="act_line_group_form" id="menu_line_group_form"/>
+        <menuitem
+            parent="menu_statement_form"
+            action="act_line_group_form"
+            sequence="10"
+            id="menu_line_group_form"/>
 
         <record model="ir.rule.group" id="rule_group_line_group">
             <field name="name">User in statement's company</field>
@@ -465,8 +477,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Import Statement</field>
             <field name="wiz_name">account.statement.import</field>
         </record>
-        <menuitem parent="menu_statements" sequence="20"
-            action="wizard_statement_import" id="menu_statement_import"/>
+        <menuitem
+            parent="menu_statements"
+            action="wizard_statement_import"
+            sequence="90"
+            id="menu_statement_import"/>
 
         <record model="ir.action-res.group"
             id="statement_import-group_account_admin">

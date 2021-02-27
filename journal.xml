@@ -28,8 +28,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="statement_journal_view_form"/>
             <field name="act_window" ref="act_statement_journal_form"/>
         </record>
-        <menuitem parent="menu_statement_configuration" sequence="1"
-            action="act_statement_journal_form" id="menu_statement_journal_form"/>
+        <menuitem
+            parent="menu_statement_configuration"
+            action="act_statement_journal_form"
+            sequence="10"
+            id="menu_statement_journal_form"/>
 
         <record model="ir.model.access" id="access_statement_journal">
             <field name="model" search="[('model', '=', 'account.statement.journal')]"/>
