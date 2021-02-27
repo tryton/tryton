@@ -18,7 +18,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem
             name="Attendance"
-            sequence="6"
+            sequence="100"
             icon="tryton-attendance"
             id="menu_main_attendance"/>
 
@@ -26,7 +26,8 @@ this repository contains the full copyright notices and license terms. -->
             name="Configuration"
             parent="menu_main_attendance"
             sequence="0"
-            id="menu_configuration"/>
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group" id="menu_configuration_group_employee_admin">
             <field name="menu" ref="menu_configuration"/>
             <field name="group" ref="group_attendance_admin"/>
@@ -216,7 +217,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
 
         <record model="ir.action.act_window" id="act_sheet">
-            <field name="name">Sheet</field>
+            <field name="name">Sheets</field>
             <field name="res_model">attendance.sheet</field>
         </record>
         <record model="ir.action.act_window.view" id="act_sheet_view1">
