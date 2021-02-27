@@ -13,8 +13,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="stock.group_stock"/>
         </record>
 
-        <menuitem parent="stock.menu_inventory_form" action="wizard_create_inventory"
-            id="menu_create_inventory" sequence="10"/>
+        <menuitem
+            parent="stock.menu_stock"
+            action="wizard_create_inventory"
+            sequence="90"
+            id="menu_create_inventory"/>
         <record model="ir.ui.menu-res.group"
             id="menu_create_inventory_group_stock">
             <field name="menu" ref="menu_create_inventory"/>
