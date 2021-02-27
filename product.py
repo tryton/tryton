@@ -147,6 +147,9 @@ class Product(metaclass=PoolMeta):
         pattern['product'] = None
         yield from self.template.product_suppliers_used(**pattern)
 
+    def _get_purchase_unit_price(self, quantity=0):
+        return self.get_multivalue('cost_price')
+
     @classmethod
     def get_purchase_price(cls, products, quantity=0):
         '''
@@ -181,7 +184,8 @@ class Product(metaclass=PoolMeta):
         user = User(Transaction().user)
 
         for product in products:
-            prices[product.id] = product.get_multivalue('cost_price')
+            prices[product.id] = product._get_purchase_unit_price(
+                quantity=quantity)
             default_uom = product.default_uom
             default_currency = (user.company.currency if user.company
                 else None)
