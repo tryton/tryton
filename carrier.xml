@@ -40,6 +40,7 @@ this repository contains the full copyright notices and license terms. -->
         <menuitem
             parent="carrier.menu_configuration"
             action="act_ups_credential_form"
+            sequence="20"
             id="menu_ups_credential_form"/>
         <record model="ir.ui.menu" id="carrier.menu_configuration">
             <field name="active" eval="True"/>
