@@ -16,7 +16,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-marketing.svg</field>
         </record>
 
-        <menuitem name="Marketing" id="menu_marketing" sequence="6" icon="tryton-marketing"/>
+        <menuitem
+            name="Marketing"
+            id="menu_marketing"
+            sequence="100"
+            icon="tryton-marketing"/>
         <record model="ir.ui.menu-res.group" id="menu_marketing_group_marketing">
             <field name="menu" ref="menu_marketing"/>
             <field name="group" ref="group_marketing"/>
