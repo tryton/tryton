@@ -32,8 +32,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="ec_sales_list_view_list"/>
             <field name="act_window" ref="act_ec_sales_list_form"/>
         </record>
-        <menuitem parent="account.menu_reporting"
-            action="act_ec_sales_list_form" id="menu_ec_sales_list"/>
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_ec_sales_list_form"
+            sequence="50"
+            id="menu_ec_sales_list"/>
 
         <record model="ir.model.access" id="access_ec_sales_list">
             <field name="model" search="[('model', '=', 'account.ec_sales_list')]"/>
