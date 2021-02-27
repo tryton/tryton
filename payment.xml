@@ -88,7 +88,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <menuitem
             parent="account_payment.menu_payments"
-            sequence="40"
+            sequence="50"
             action="act_refund_form"
             id="menu_refund_form"/>
 
@@ -190,8 +190,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_form"/>
             <field name="act_window" ref="act_account_form"/>
         </record>
-        <menuitem parent="account_payment.menu_payment_configuration" sequence="20"
-            action="act_account_form" id="menu_account_form"/>
+        <menuitem
+            parent="account_payment.menu_payment_configuration"
+            action="act_account_form"
+            sequence="20"
+            id="menu_account_form"/>
 
         <record model="ir.model.access" id="access_account">
             <field name="model"
@@ -276,8 +279,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="customer_view_form"/>
             <field name="act_window" ref="act_customer_form"/>
         </record>
-        <menuitem parent="account_payment.menu_payments" sequence="40"
-            action="act_customer_form" id="menu_customer_form"/>
+        <menuitem
+            parent="account_payment.menu_payments"
+            action="act_customer_form"
+            sequence="50"
+            id="menu_customer_form"/>
 
         <record model="ir.model.access" id="access_customer">
             <field name="model"
