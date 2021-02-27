@@ -4,13 +4,15 @@ import datetime
 import functools
 from decimal import Decimal
 from collections import defaultdict
+from copy import deepcopy
 
 from simpleeval import simple_eval
 
 from sql import Literal, Select, Window, With
 from sql.aggregate import Max, Sum
-from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce, Case
+from sql.functions import CurrentTimestamp
+from sql.operators import Concat
 
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, fields
@@ -27,6 +29,7 @@ from trytond.modules.product import round_price, price_digits
 
 from .exceptions import ProductCostPriceError
 from .move import StockMixin
+from .shipment import ShipmentAssignMixin
 
 
 def check_no_move(func):
@@ -421,6 +424,50 @@ class ProductByLocationContext(ModelView):
         return self.forecast_date
 
 
+class OpenProductQuantitiesByWarehouse(Wizard):
+    "Open Product Quantities By Warehouse"
+    __name__ = 'stock.product_quantities_warehouse.open'
+    start_state = 'open_'
+    open_ = StateAction('stock.act_product_quantities_warehouse')
+
+    def do_open_(self, action):
+        encoder = PYSONEncoder()
+        action['pyson_context'] = encoder.encode(self.get_context())
+        action['pyson_search_value'] = encoder.encode(self.get_search_value())
+        action['pyson_domain'] = encoder.encode(self.get_domain())
+        action['name'] += '(' + self.record.rec_name + ')'
+        return action, {}
+
+    def get_context(self):
+        context = {}
+        if issubclass(self.model, ShipmentAssignMixin):
+            context['product_template'] = None
+            context['product'] = [
+                m.product.id for m in self.record.assign_moves]
+            warehouse = getattr(self.record, 'warehouse', None)
+            if self.model == 'stock.shipment.internal':
+                warehouse = self.record.from_location.warehouse
+            if warehouse:
+                context['warehouse'] = warehouse.id
+        return context
+
+    def get_search_value(self):
+        pool = Pool()
+        Date = pool.get('ir.date')
+        today = Date.today()
+        value = [('date', '>=', today)]
+        if (hasattr(self.record, 'planned_date')
+                and self.record.planned_date >= today):
+            value.append(('date', '<=', self.record.planned_date))
+        return value
+
+    def get_domain(self):
+        if issubclass(self.model, ShipmentAssignMixin):
+            return [('product', 'in', [
+                        str(m.product) for m in self.record.assign_moves])]
+        return []
+
+
 class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
     'Product Quantities By Warehouse'
     __name__ = 'stock.product_quantities_warehouse'
@@ -438,6 +485,10 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 result[v['id']] = date
             return result
 
+    product = fields.Reference("Product", [
+            ('product.product', "Variant"),
+            ('product.template', "Product"),
+            ])
     date = _Date('Date')
     quantity = fields.Function(fields.Float('Quantity'), 'get_quantity')
     company = fields.Many2One('company.company', "Company")
@@ -461,12 +512,23 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
         today = Date.today()
 
         if context.get('product_template') is not None:
+            product_template = context['product_template']
+            if isinstance(product_template, int):
+                product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = (
-                product.template == context['product_template'])
+            product_clause = product.template.in_(product_template)
+            product_column = Concat('product.template,', product.template)
+            products = ['product.template,%s' % i for i in product_template]
         else:
-            product_clause = move.product == context.get('product', -1)
+            product = context.get('product', -1)
+            if product is None:
+                product = -1
+            if isinstance(product, int):
+                product = [product]
+            product_clause = move.product.in_(product)
+            product_column = Concat('product.product,', move.product)
+            products = ['product.product,%s' % i for i in product]
 
         if 'warehouse' in context:
             warehouse = Location(context.get('warehouse'))
@@ -480,12 +542,13 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     ('parent', 'child_of', [location_id]),
                     ], query=True, order=[]))
         date_column = Coalesce(move.effective_date, move.planned_date)
-        return (from_.select(
-                Max(move.id).as_('id'),
+        query = (from_.select(
+                (Max(move.id) + len(products)).as_('id'),
                 Literal(0).as_('create_uid'),
                 CurrentTimestamp().as_('create_date'),
                 Literal(None).as_('write_uid'),
                 Literal(None).as_('write_date'),
+                product_column.as_('product'),
                 date_column.as_('date'),
                 move.company.as_('company'),
                 where=product_clause
@@ -500,42 +563,94 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                             warehouse.select(warehouse.id))))
                 & ((date_column < today) & (move.state == 'done')
                     | (date_column >= today)),
-                group_by=(date_column, move.product, move.company),
-                with_=warehouse)
-            | Select([
-                    Literal(0).as_('id'),
+                group_by=(date_column, product_column, move.company),
+                with_=warehouse))
+        for i, product in enumerate(products):
+            query |= Select([
+                    Literal(i).as_('id'),
                     Literal(0).as_('create_uid'),
                     CurrentTimestamp().as_('create_date'),
                     Literal(None).as_('write_uid'),
                     Literal(None).as_('write_date'),
+                    Literal(product).as_('product'),
                     Literal(today).as_('date'),
                     Literal(context.get('company', -1)).as_('company'),
-                    ]))
+                    ])
+        return query
+
+    @classmethod
+    def parse_view(cls, tree, type, *args, **kwargs):
+        pool = Pool()
+        Product = pool.get('product.product')
+        Template = pool.get('product.template')
+        context = Transaction().context
+        if kwargs.get('view_depends') is None:
+            view_depends = []
+        else:
+            view_depends = kwargs['view_depends'].copy()
+        kwargs['view_depends'] = view_depends
+        if type == 'graph':
+            encoder = PYSONEncoder()
+            if context.get('product_template') is not None:
+                product_template = context['product_template']
+                if isinstance(product_template, int):
+                    product_template = [product_template]
+                records = Template.browse(product_template)
+            elif context.get('product'):
+                product = context['product']
+                if product is None:
+                    product = -1
+                if isinstance(product, int):
+                    product = [product]
+                records = Product.browse(product)
+            else:
+                records = []
+            if len(records) > 1:
+                quantity_node, = tree.xpath('//y/field[@name="quantity"]')
+                parent = quantity_node.getparent()
+                parent.remove(quantity_node)
+                for record in records:
+                    node = deepcopy(quantity_node)
+                    node.set('key', str(record.id))
+                    node.set('string', record.rec_name)
+                    node.set('domain', encoder.encode(
+                            Eval('product') == str(record)))
+                    node.set('fill', '0')
+                    parent.append(node)
+                graph, = tree.xpath('/graph')
+                graph.set('legend', '1')
+            view_depends.append('product')
+        return super().parse_view(tree, type, *args, **kwargs)
 
     @classmethod
     def get_quantity(cls, lines, name):
         Product = Pool().get('product.product')
         trans_context = Transaction().context
 
-        def valid_context(name):
-            return (trans_context.get(name) is not None
-                and isinstance(trans_context[name], int))
-
-        if not any(map(valid_context, ['product', 'product_template'])):
-            return {l.id: None for l in lines}
-
-        if trans_context.get('product') is not None:
-            grouping = ('product',)
-            grouping_filter = ([trans_context['product']],)
-            key = trans_context['product']
-        else:
+        if trans_context.get('product_template') is not None:
             grouping = ('product.template',)
-            grouping_filter = ([trans_context.get('product_template')],)
-            key = trans_context['product_template']
+            product_template = trans_context['product_template']
+            if isinstance(product_template, int):
+                product_template = [product_template]
+            grouping_filter = (product_template,)
+        else:
+            grouping = ('product',)
+            product = trans_context.get('product', -1)
+            if product is None:
+                product = -1
+            if isinstance(product, int):
+                product = [product]
+            grouping_filter = (product,)
         warehouse_id = trans_context.get('warehouse')
 
-        dates = sorted({l.date for l in lines})
+        def cast_date(date):
+            if isinstance(date, str):
+                date = datetime.date(*map(int, date.split('-', 2)))
+            return date
+
+        dates = sorted({cast_date(l.date) for l in lines})
         quantities = {}
+        keys = set()
         date_start = None
         for date in dates:
             context = {
@@ -548,32 +663,25 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                     [warehouse_id],
                     grouping=grouping,
                     grouping_filter=grouping_filter,
-                    with_childs=True).get((warehouse_id, key), 0)
+                    with_childs=True)
+                keys.update(quantities[date])
             try:
                 date_start = date + datetime.timedelta(1)
             except OverflowError:
                 pass
-        cumulate = 0
+        cumulate = defaultdict(lambda: 0)
         for date in dates:
-            cumulate += quantities[date]
-            quantities[date] = cumulate
+            for key in keys:
+                cumulate[key] += quantities[date][key]
+                quantities[date][key] = cumulate[key]
 
-        return dict((l.id, quantities[l.date]) for l in lines)
+        return {
+            l.id: quantities[cast_date(l.date)].get(
+                (warehouse_id, int(l.product)), 0)
+            for l in lines}
 
-    @classmethod
-    def get_rec_name(cls, records, name):
-        pool = Pool()
-        Product = pool.get('product.product')
-        Template = pool.get('product.template')
-        context = Transaction().context
-
-        if context.get('product_template'):
-            name = Template(context['product_template']).rec_name
-        elif context.get('product'):
-            name = Product(context['product']).rec_name
-        else:
-            name = ''
-        return dict.fromkeys(map(int, records), name)
+    def get_rec_name(self, name):
+        return self.product.rec_name if self.product else ''
 
 
 class ProductQuantitiesByWarehouseContext(ModelView):
@@ -598,16 +706,19 @@ class ProductQuantitiesByWarehouseContext(ModelView):
         return Transaction().context.get('stock_skip_warehouse')
 
 
-class OpenProductQuantitiesByWarehouse(Wizard):
-    "Open Product Quantities By Warehouse"
-    __name__ = 'stock.product_quantities_warehouse.open'
+class OpenProductQuantitiesByWarehouseMove(Wizard):
+    "Open Product Quantities By Warehouse Moves"
+    __name__ = 'stock.product_quantities_warehouse.move.open'
     start_state = 'open_'
     open_ = StateAction('stock.act_product_quantities_warehouse_move')
 
     def do_open_(self, action):
-        domain = [('date', '>=', self.record.date)]
+        encoder = PYSONEncoder()
         action['pyson_context'] = '{}'
-        action['pyson_search_value'] = PYSONEncoder().encode(domain)
+        action['pyson_search_value'] = encoder.encode(
+            [('date', '>=', self.record.date)])
+        action['pyson_domain'] = encoder.encode(
+            [('product', '=', str(self.record.product))])
         action['name'] += ' (' + self.record.rec_name + ')'
         return action, {}
 
@@ -616,6 +727,10 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
     "Product Quantities By Warehouse Moves"
     __name__ = 'stock.product_quantities_warehouse.move'
 
+    product = fields.Reference("Product", [
+            ('product.product', "Variant"),
+            ('product.template', "Product"),
+            ])
     date = fields.Date("Date")
     move = fields.Many2One('stock.move', "Move")
     origin = fields.Reference("Origin", selection='get_origin')
@@ -646,11 +761,21 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         today = Date.today()
 
         if context.get('product_template') is not None:
+            product_template = context['product_template']
+            if isinstance(product_template, int):
+                product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = product.template == context['product_template']
+            product_clause = product.template.in_(product_template)
+            product_column = Concat('product.template,', product.template)
         else:
-            product_clause = move.product == context.get('product', -1)
+            product = context.get('product', -1)
+            if product is None:
+                product = -1
+            if isinstance(product, int):
+                product = [product]
+            product_clause = move.product.in_(product)
+            product_column = Concat('product.product,', move.product)
 
         if 'warehouse' in context:
             warehouse = Location(context.get('warehouse'))
@@ -671,7 +796,8 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         if database.has_window_functions():
             cumulative_quantity_delta = Sum(
                 quantity,
-                window=Window([date_column], order_by=[move.id.asc]))
+                window=Window(
+                    [product_column, date_column], order_by=[move.id.asc]))
         else:
             cumulative_quantity_delta = Literal(0)
         return (from_.select(
@@ -680,6 +806,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 CurrentTimestamp().as_('create_date'),
                 Literal(None).as_('write_uid'),
                 Literal(None).as_('write_date'),
+                product_column.as_('product'),
                 date_column.as_('date'),
                 move.id.as_('move'),
                 move.origin.as_('origin'),
@@ -714,21 +841,20 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         database = transaction.database
         trans_context = transaction.context
 
-        def valid_context(name):
-            return (trans_context.get(name) is not None
-                and isinstance(trans_context[name], int))
-
-        if not any(map(valid_context, ['product', 'product_template'])):
-            return {r.id: None for r in records}
-
-        if trans_context.get('product') is not None:
-            grouping = ('product',)
-            grouping_filter = ([trans_context['product']],)
-            key = trans_context['product']
-        else:
+        if trans_context.get('product_template') is not None:
             grouping = ('product.template',)
-            grouping_filter = ([trans_context.get('product_template')],)
-            key = trans_context['product_template']
+            product_template = trans_context['product_template']
+            if isinstance(product_template, int):
+                product_template = [product_template]
+            grouping_filter = (product_template,)
+        else:
+            grouping = ('product',)
+            product = trans_context.get('product', -1)
+            if product is None:
+                product = -1
+            if isinstance(product, int):
+                product = [product]
+            grouping_filter = (product,)
         warehouse_id = trans_context.get('warehouse')
 
         def cast_date(date):
@@ -738,6 +864,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
 
         dates = sorted({cast_date(r.date) for r in records})
         quantities = {}
+        keys = set()
         date_start = None
         for date in dates:
             try:
@@ -753,30 +880,37 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                     [warehouse_id],
                     grouping=grouping,
                     grouping_filter=grouping_filter,
-                    with_childs=True).get((warehouse_id, key), 0)
+                    with_childs=True)
+                keys.update(quantities[date])
             date_start = date
-        cumulate = 0
+        cumulate = defaultdict(lambda: 0)
         for date in dates:
-            cumulate += quantities[date]
-            quantities[date] = cumulate
+            for key in keys:
+                cumulate[key] += quantities[date][key]
+                quantities[date][key] = cumulate[key]
 
         result = {}
         if database.has_window_functions():
             if 'cumulative_quantity_start' in names:
                 result['cumulative_quantity_start'] = {
                     r.id: (
-                        quantities[cast_date(r.date)]
+                        quantities[cast_date(r.date)].get(
+                            (warehouse_id, int(r.product)), 0)
                         + r.cumulative_quantity_delta
                         - r.quantity)
                     for r in records}
             if 'cumulative_quantity_end' in names:
                 result['cumulative_quantity_end'] = {
                     r.id: (
-                        quantities[cast_date(r.date)]
+                        quantities[cast_date(r.date)].get(
+                            (warehouse_id, int(r.product)), 0)
                         + r.cumulative_quantity_delta)
                     for r in records}
         else:
-            values = {r.id: quantities[cast_date(r.date)] for r in records}
+            values = {
+                r.id: quantities[cast_date(r.date)].get(
+                    (warehouse_id, int(r.product)), 0)
+                for r in records}
             for name in names:
                 result[name] = values
         return result

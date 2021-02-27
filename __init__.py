@@ -67,6 +67,7 @@ def register():
     Pool.register(
         shipment.Assign,
         product.OpenProductQuantitiesByWarehouse,
+        product.OpenProductQuantitiesByWarehouseMove,
         product.RecomputeCostPrice,
         product.ModifyCostPrice,
         inventory.Count,

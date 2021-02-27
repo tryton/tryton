@@ -214,6 +214,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">product_by_location_context_form</field>
         </record>
 
+        <record model="ir.action.wizard" id="wizard_open_product_quantities_by_warehouse">
+            <field name="name">Products Quantities By Warehouse</field>
+            <field name="wiz_name">stock.product_quantities_warehouse.open</field>
+        </record>
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword_shipment_in_return">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.in.return,-1</field>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword_shipment_out">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.out,-1</field>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+        </record>
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword_shipment_internal">
+            <field name="keyword">form_relate</field>
+            <field name="model">stock.shipment.internal,-1</field>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+        </record>
+
         <record model="ir.ui.view" id="product_quantities_warehouse_view_graph">
             <field name="model">stock.product_quantities_warehouse</field>
             <field name="type">graph</field>
@@ -231,7 +251,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Product Quantities By Warehouse</field>
             <field name="res_model">stock.product_quantities_warehouse</field>
             <field name="context" pyson="1"
-                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"/>
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_ids')}, {'product': Eval('active_ids')})"/>
             <field name="search_value" eval="[('date', '>=', Date())]"
                 pyson="1"/>
             <field name="context_model">stock.product_quantities_warehouse.context</field>
@@ -303,14 +323,14 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock"/>
         </record>
 
-        <record model="ir.action.wizard" id="wizard_open_product_quantities_by_warehouse">
+        <record model="ir.action.wizard" id="wizard_open_product_quantities_by_warehouse_move">
             <field name="name">Stock Moves</field>
-            <field name="wiz_name">stock.product_quantities_warehouse.open</field>
+            <field name="wiz_name">stock.product_quantities_warehouse.move.open</field>
         </record>
-        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_keyword1">
+        <record model="ir.action.keyword" id="wizard_open_product_quantities_by_warehouse_move_keyword1">
             <field name="keyword">tree_open</field>
             <field name="model">stock.product_quantities_warehouse,-1</field>
-            <field name="action" ref="wizard_open_product_quantities_by_warehouse"/>
+            <field name="action" ref="wizard_open_product_quantities_by_warehouse_move"/>
         </record>
 
         <record model="ir.ui.view" id="product_quantities_warehouse_move_view_list">
@@ -324,7 +344,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="res_model">stock.product_quantities_warehouse.move</field>
             <field
                 name="context"
-                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_id')}, {'product': Eval('active_id')})"
+                eval="If(Eval('active_model') == 'product.template', {'product_template': Eval('active_ids')}, {'product': Eval('active_ids')})"
                 pyson="1"/>
             <field name="search_value" eval="[('date', '>=', Date())]" pyson="1"/>
             <field name="context_model">stock.product_quantities_warehouse.context</field>

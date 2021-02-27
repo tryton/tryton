@@ -1,3 +1,5 @@
+* Add relate from assigned shipment to products quantities by warehouse
+* Show quantities by warehouse for many products
 * Default to ordering shipments by date
 * Add delivery usage to contact mechanism
 * Make customer's outgoing moves editable for same storage and output zone
