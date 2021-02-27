@@ -15,13 +15,26 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">tryton-project</field>
             <field name="path">icons/tryton-project.svg</field>
         </record>
-        <menuitem name="Project" sequence="7" id="menu_project"
+        <menuitem
+            name="Project"
+            sequence="100"
+            id="menu_project"
             icon="tryton-project"/>
-        <menuitem name="Configuration" parent="menu_project" id="menu_configuration" sequence="10" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_project"
+            sequence="0"
+            id="menu_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_configuration_group_project_admin">
             <field name="menu" ref="menu_configuration"/>
             <field name="group" ref="group_project_admin"/>
         </record>
+        <menuitem
+            name="Reporting"
+            parent="menu_project"
+            sequence="100"
+            id="menu_reporting"/>
     </data>
 </tryton>

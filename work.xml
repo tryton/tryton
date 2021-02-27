@@ -27,8 +27,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_status_view_form"/>
             <field name="act_window" ref="act_work_status"/>
         </record>
-        <menuitem parent="menu_configuration" sequence="20"
-            action="act_work_status" id="menu_work_status"/>
+        <menuitem
+            parent="menu_configuration"
+            sequence="20"
+            action="act_work_status"
+            id="menu_work_status"/>
 
         <record model="ir.model.access" id="access_work_status">
             <field name="model" search="[('model', '=', 'project.work.status')]"/>
@@ -102,7 +105,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_tree"/>
         </record>
-        <menuitem parent="menu_configuration" action="act_work_tree"
+        <menuitem
+            parent="menu_configuration"
+            action="act_work_tree"
+            sequence="10"
             id="menu_work_tree"/>
 
         <record model="ir.action.act_window" id="act_work_list">
@@ -121,8 +127,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_list"/>
         </record>
-        <menuitem parent="menu_work_tree"
-            action="act_work_list" id="menu_work_list"/>
+        <menuitem
+            parent="menu_work_tree"
+            action="act_work_list"
+            sequence="10"
+            id="menu_work_list"/>
 
         <record model="ir.action.act_window" id="act_project_tree">
             <field name="name">Projects</field>
@@ -141,8 +150,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_project_tree"/>
         </record>
-        <menuitem parent="menu_project" action="act_project_tree"
-            id="menu_project_tree" sequence="20"/>
+        <menuitem
+            parent="menu_reporting"
+            action="act_project_tree"
+            sequence="10"
+            id="menu_project_tree"/>
 
         <record model="ir.action.act_window" id="act_project_form">
             <field name="name">Projects</field>
@@ -162,7 +174,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_project_form"/>
         </record>
-        <menuitem parent="menu_project_tree" action="act_project_form"
+        <menuitem
+            parent="menu_project"
+            action="act_project_form"
+            sequence="10"
             id="menu_project_form"/>
 
         <record model="ir.action.act_window" id="act_task_form">
@@ -183,7 +198,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_task_form"/>
         </record>
-        <menuitem parent="menu_project_tree" action="act_task_form"
+        <menuitem
+            parent="menu_project"
+            action="act_task_form"
+            sequence="20"
             id="menu_task_form"/>
 
         <record model="ir.action.act_window" id="act_open_child_work">
