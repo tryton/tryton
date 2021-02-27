@@ -3,8 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Invoices" parent="account.menu_account"
-            id="menu_invoices" sequence="20"/>
+        <menuitem
+            name="Invoices"
+            parent="account.menu_account"
+            sequence="20"
+            id="menu_invoices"/>
 
         <record model="ir.action.wizard" id="wizard_pay">
             <field name="name">Pay Invoice</field>
@@ -82,8 +85,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_invoice_out_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_out_form"
-            id="menu_invoice_out_form" sequence="1"/>
+        <menuitem
+            parent="menu_invoices"
+            action="act_invoice_out_form"
+            sequence="10"
+            id="menu_invoice_out_form"/>
 
         <record model="ir.action.act_window" id="act_invoice_in_form">
             <field name="name">Supplier Invoices</field>
@@ -129,8 +135,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_invoice_in_form"/>
         </record>
-        <menuitem parent="menu_invoices" action="act_invoice_in_form"
-            id="menu_invoice_in_form" sequence="3"/>
+        <menuitem
+            parent="menu_invoices"
+            action="act_invoice_in_form"
+            sequence="10"
+            id="menu_invoice_in_form"/>
 
         <record model="ir.model.access" id="access_invoice">
             <field name="model" search="[('model', '=', 'account.invoice')]"/>
@@ -340,8 +349,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_method_view_form"/>
             <field name="act_window" ref="act_payment_method_form"/>
         </record>
-        <menuitem parent="account.menu_journal_configuration"
+        <menuitem
+            parent="account.menu_journal_configuration"
             action="act_payment_method_form"
+            sequence="50"
             id="menu_payment_method_form"/>
 
         <record model="ir.model.access" id="access_payment_method">
