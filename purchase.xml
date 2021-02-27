@@ -23,7 +23,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-purchase.svg</field>
         </record>
 
-        <menuitem name="Purchases" id="menu_purchase" sequence="4" icon="tryton-purchase"/>
+        <menuitem
+            name="Purchases"
+            sequence="70"
+            id="menu_purchase"
+            icon="tryton-purchase"/>
         <record model="ir.ui.menu-res.group" id="menu_purchase_group_purchase">
             <field name="menu" ref="menu_purchase"/>
             <field name="group" ref="group_purchase"/>
@@ -169,8 +173,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_purchase_form"/>
         </record>
-        <menuitem parent="menu_purchase" action="act_purchase_form"
-            id="menu_purchase_form" sequence="10"/>
+        <menuitem
+            parent="menu_purchase"
+            action="act_purchase_form"
+            sequence="10"
+            id="menu_purchase_form"/>
         <record model="ir.ui.menu-res.group" id="menu_purchase_form_group_purchase">
             <field name="menu" ref="menu_purchase_form"/>
             <field name="group" ref="group_purchase"/>
@@ -202,8 +209,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_purchase_invoice_relate"/>
         </record>
 
-        <menuitem name="Reporting" parent="menu_purchase"
-            id="menu_reporting" sequence="100" active="0"/>
+        <menuitem
+            name="Reporting"
+            parent="menu_purchase"
+            sequence="100"
+            id="menu_reporting"
+            active="0"/>
 
         <record model="ir.model.access" id="access_purchase">
             <field name="model" search="[('model', '=', 'purchase.purchase')]"/>
@@ -436,8 +447,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_product_supplier_form"/>
         </record>
 
-        <menuitem parent="product.menu_main_product" sequence="20"
-            id="menu_product_supplier" action="act_product_supplier_form"/>
+        <menuitem
+            parent="product.menu_template"
+            sequence="20"
+            action="act_product_supplier_form"
+            id="menu_product_supplier"/>
 
         <record model="ir.rule.group" id="rule_group_product_supplier">
             <field name="name">User in company</field>
@@ -545,9 +559,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Parties associated to Purchases</field>
             <field name="wiz_name">purchase.open_supplier</field>
         </record>
-        <menuitem name="Parties associated to Purchases"
+        <menuitem
+            name="Associated to Purchases"
             parent="party.menu_party_form"
             action="act_open_supplier"
+            sequence="50"
             icon="tryton-list"
             id="menu_supplier"/>
 
