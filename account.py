@@ -106,12 +106,10 @@ class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('posted')
-    def post(cls, invoices):
+    def _post(cls, invoices):
         pool = Pool()
         InvoiceChorus = pool.get('account.invoice.chorus')
-        super(Invoice, cls).post(invoices)
+        super()._post(invoices)
         invoices_chorus = []
         for invoice in invoices:
             if invoice.type == 'out' and invoice.party.chorus:
