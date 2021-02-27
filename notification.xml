@@ -32,7 +32,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_email_form"/>
         </record>
 
-        <menuitem parent="ir.menu_models" action="act_email_form"
+        <menuitem
+            parent="ir.menu_models"
+            action="act_email_form"
+            sequence="50"
             id="menu_email_form"/>
 
         <record model="ir.model.access" id="access_email">
