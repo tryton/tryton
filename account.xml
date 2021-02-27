@@ -74,8 +74,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_landed_cost_form"/>
         </record>
 
-        <menuitem parent="account_invoice.menu_invoices" id="menu_landed_cost"
-            sequence="50" action="act_landed_cost_form"/>
+        <menuitem
+            parent="account_invoice.menu_invoices"
+            action="act_landed_cost_form"
+            sequence="30"
+            id="menu_landed_cost"/>
 
         <record model="ir.action.act_window" id="act_landed_cost_form_shipment">
             <field name="name">Landed Costs</field>
