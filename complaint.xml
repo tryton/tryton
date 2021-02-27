@@ -3,8 +3,11 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Customer Complaint" parent="sale.menu_configuration"
-            sequence="20" id="menu_configuration"/>
+        <menuitem
+            name="Customer Complaint"
+            parent="sale.menu_configuration"
+            sequence="20"
+            id="menu_configuration"/>
 
         <record model="ir.ui.view" id="type_view_form">
             <field name="model">sale.complaint.type</field>
@@ -31,7 +34,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="type_view_form"/>
             <field name="act_window" ref="act_type_form"/>
         </record>
-        <menuitem parent="menu_configuration" action="act_type_form"
+        <menuitem
+            parent="menu_configuration"
+            action="act_type_form"
+            sequence="10"
             id="menu_type"/>
 
         <record model="ir.model.access" id="access_type">
@@ -112,8 +118,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain"></field>
             <field name="act_window" ref="act_complaint_form"/>
         </record>
-        <menuitem parent="sale.menu_sale" action="act_complaint_form"
-            id="menu_complaint" sequence="30"/>
+        <menuitem
+            parent="sale.menu_sale"
+            action="act_complaint_form"
+            sequence="20"
+            id="menu_complaint"/>
 
         <record model="ir.action.act_window" id="act_complaint_relate_party">
             <field name="name">Customer Complaints</field>
