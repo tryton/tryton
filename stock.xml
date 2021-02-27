@@ -13,8 +13,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="stock.group_stock_admin"/>
         </record>
 
-        <menuitem parent="menu_order_point_form" sequence="10"
-            action="act_stock_supply" id="menu_stock_supply"/>
+        <menuitem
+            parent="stock.menu_stock"
+            action="act_stock_supply"
+            sequence="90"
+            id="menu_stock_supply"/>
         <record model="ir.ui.menu-res.group"
             id="menu_stock_supply_group_stock_admin">
             <field name="menu" ref="menu_stock_supply"/>

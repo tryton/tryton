@@ -48,8 +48,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="sequence" eval="9999"/>
             <field name="act_window" ref="act_order_point_form"/>
         </record>
-        <menuitem parent="stock.menu_stock" sequence="60"
-            action="act_order_point_form" id="menu_order_point_form"/>
+        <menuitem
+            parent="stock.menu_stock"
+            sequence="50"
+            action="act_order_point_form"
+            id="menu_order_point_form"/>
 
         <record model="ir.model.access" id="access_order_point">
             <field name="model" search="[('model', '=', 'stock.order_point')]"/>
