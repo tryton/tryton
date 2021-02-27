@@ -11,9 +11,15 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_dunning"/>
         </record>
 
-        <menuitem name="Dunnings" parent="account.menu_account_configuration"
-            sequence="70" id="menu_dunning_configuration"/>
-        <menuitem name="Dunnings" parent="account.menu_account" sequence="40"
+        <menuitem
+            name="Dunnings"
+            parent="account.menu_account_configuration"
+            sequence="50"
+            id="menu_dunning_configuration"/>
+        <menuitem
+            name="Dunnings"
+            parent="account.menu_account"
+            sequence="30"
             id="menu_dunnings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_dunnings_group_account_admin">
@@ -53,8 +59,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="dunning_procedure_view_form"/>
             <field name="act_window" ref="act_dunning_procedure_form"/>
         </record>
-        <menuitem parent="menu_dunning_configuration" sequence="10"
+        <menuitem
+            parent="menu_dunning_configuration"
             action="act_dunning_procedure_form"
+            sequence="10"
             id="menu_dunning_procedure_form"/>
 
         <record model="ir.model.access"
@@ -183,8 +191,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_dunning_form"/>
         </record>
 
-        <menuitem parent="menu_dunnings" sequence="20"
+        <menuitem
+            parent="menu_dunnings"
             action="act_dunning_form"
+            sequence="10"
             id="menu_dunning_form"/>
 
         <record model="ir.action.act_window" id="act_dunning_party">
@@ -263,8 +273,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Create Dunnings</field>
             <field name="wiz_name">account.dunning.create</field>
         </record>
-        <menuitem parent="menu_dunnings" sequence="10"
-            action="wizard_dunning_create" id="menu_dunning_create"/>
+        <menuitem
+            parent="menu_dunnings"
+            sequence="90"
+            action="wizard_dunning_create"
+            id="menu_dunning_create"/>
 
         <record model="ir.ui.view" id="dunning_process_start_view_form">
             <field name="model">account.dunning.process.start</field>
