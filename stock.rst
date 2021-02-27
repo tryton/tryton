@@ -53,6 +53,9 @@ Stock
     `Secondary Unit </projects/modules-stock-secondary-unit/en/latest>`_
         Adds a secondary unit of measure.
 
+    `Shipment Cost </projects/modules-stock-shipment-cost/en/latest>`_
+        Adds shipment costs to outgoing moves.
+
     `Shipment Measurements </projects/modules-stock-shipment-measurements/en/latest>`_
         Adds measurements to shipments.
 
