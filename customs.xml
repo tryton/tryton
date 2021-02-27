@@ -12,8 +12,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_customs_admin"/>
         </record>
 
-        <menuitem name="Customs" parent="product.menu_main_product"
-            sequence="30" id="menu_customs"/>
+        <menuitem
+            name="Customs"
+            parent="product.menu_main_product"
+            sequence="30"
+            id="menu_customs"/>
 
         <record model="ir.ui.view" id="tariff_code_view_form">
             <field name="model">customs.tariff.code</field>
@@ -41,8 +44,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="tariff_code_view_form"/>
             <field name="act_window" ref="act_tariff_code_form"/>
         </record>
-        <menuitem parent="menu_customs" action="act_tariff_code_form"
-            sequence="10" id="menu_tariff_code_form"/>
+        <menuitem
+            parent="menu_customs"
+            action="act_tariff_code_form"
+            sequence="10"
+            id="menu_tariff_code_form"/>
 
         <record model="ir.ui.view" id="duty_rate_view_form">
             <field name="model">customs.duty.rate</field>
@@ -87,7 +93,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="domain" eval="[('type', '=', 'export')]" pyson="1"/>
             <field name="act_window" ref="act_duty_rate_form"/>
         </record>
-        <menuitem parent="menu_customs" action="act_duty_rate_form"
-            sequence="20" id="menu_duty_rate_form"/>
+        <menuitem
+            parent="menu_customs"
+            action="act_duty_rate_form"
+            sequence="20"
+            id="menu_duty_rate_form"/>
     </data>
 </tryton>
