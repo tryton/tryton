@@ -37,8 +37,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="taxon_view_form"/>
             <field name="act_window" ref="act_taxon_tree"/>
         </record>
-        <menuitem parent="product_classification.menu_classification"
-            id="menu_taxon_tree" action="act_taxon_tree" icon="tryton-tree"/>
+        <menuitem
+            parent="product_classification.menu_classification"
+            action="act_taxon_tree"
+            sequence="20"
+            id="menu_taxon_tree"
+            icon="tryton-tree"/>
 
         <record model="ir.action.act_window" id="act_taxon_form">
             <field name="name">Taxons</field>
@@ -54,8 +58,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="taxon_view_form"/>
             <field name="act_window" ref="act_taxon_form"/>
         </record>
-        <menuitem parent="menu_taxon_tree"
-            id="menu_taxon" action="act_taxon_form" icon="tryton-list"/>
+        <menuitem
+            parent="menu_taxon_tree"
+            action="act_taxon_form"
+            sequence="10"
+            id="menu_taxon"
+            icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_taxon">
             <field name="model" search="[('model', '=', 'product.taxon')]"/>
@@ -98,8 +106,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="cultivar_view_form"/>
             <field name="act_window" ref="act_cultivar_form"/>
         </record>
-        <menuitem parent="product_classification.menu_classification"
-            id="menu_cultivar" action="act_cultivar_form" icon="tryton-list"/>
+        <menuitem
+            parent="product_classification.menu_classification"
+            action="act_cultivar_form"
+            sequence="20"
+            id="menu_cultivar"
+            icon="tryton-list"/>
 
         <record model="ir.model.access" id="access_cultivar">
             <field name="model" search="[('model', '=', 'product.cultivar')]"/>
@@ -142,8 +154,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="cultivar_group_view_form"/>
             <field name="act_window" ref="act_cultivar_group_form"/>
         </record>
-        <menuitem parent="menu_cultivar" id="menu_cultivar_group"
-            action="act_cultivar_group_form"/>
+        <menuitem
+            parent="menu_cultivar"
+            action="act_cultivar_group_form"
+            sequence="10"
+            id="menu_cultivar_group"/>
 
         <record model="ir.model.access" id="access_cultivar_group">
             <field name="model" search="[('model', '=', 'product.cultivar.group')]"/>
