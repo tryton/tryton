@@ -58,8 +58,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_move_line_form"/>
         </record>
 
-        <menuitem parent="menu_payments" action="act_move_line_form"
-            sequence="10" id="menu_move_line_form"/>
+        <menuitem
+            parent="menu_payments"
+            action="act_move_line_form"
+            sequence="10"
+            id="menu_move_line_form"/>
 
         <record model="ir.model.access" id="access_move_line_payment">
             <field name="model" search="[('model', '=', 'account.move.line')]"/>

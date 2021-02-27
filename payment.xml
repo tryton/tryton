@@ -25,10 +25,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_payment_approval"/>
         </record>
 
-        <menuitem name="Payments" parent="account.menu_account" sequence="30"
+        <menuitem
+            name="Payments"
+            parent="account.menu_account"
+            sequence="20"
             id="menu_payments"/>
-        <menuitem name="Payments" parent="account.menu_account_configuration"
-            sequence="60" id="menu_payment_configuration"/>
+        <menuitem
+            name="Payments"
+            parent="account.menu_account_configuration"
+            sequence="50"
+            id="menu_payment_configuration"/>
 
         <record model="ir.ui.view" id="payment_journal_view_form">
             <field name="model">account.payment.journal</field>
@@ -55,8 +61,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_journal_view_form"/>
             <field name="act_window" ref="act_payment_journal_form"/>
         </record>
-        <menuitem parent="menu_payment_configuration" sequence="10"
-            action="act_payment_journal_form" id="menu_payment_journal_form"/>
+        <menuitem
+            parent="menu_payment_configuration"
+            action="act_payment_journal_form"
+            sequence="10"
+            id="menu_payment_journal_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment_journal">
             <field name="name">User in company</field>
@@ -120,8 +129,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="payment_group_view_form"/>
             <field name="act_window" ref="act_payment_group_form"/>
         </record>
-        <menuitem parent="menu_payments" action="act_payment_group_form"
-            sequence="30" id="menu_payment_group_form"/>
+        <menuitem
+            parent="menu_payments"
+            action="act_payment_group_form"
+            sequence="30"
+            id="menu_payment_group_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment_group">
             <field name="name">User in company</field>
@@ -248,8 +260,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_payment_form"/>
         </record>
 
-        <menuitem parent="menu_payments" action="act_payment_form"
-            sequence="20" id="menu_payment_form"/>
+        <menuitem
+            parent="menu_payments"
+            action="act_payment_form"
+            sequence="20"
+            id="menu_payment_form"/>
 
         <record model="ir.rule.group" id="rule_group_payment">
             <field name="name">User in company</field>
