@@ -32,7 +32,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="country_view_form"/>
             <field name="act_window" ref="act_country_form"/>
         </record>
-        <menuitem parent="ir.menu_administration" action="act_country_form" icon="tryton-country" id="menu_country_form"/>
+        <menuitem
+            parent="ir.menu_administration"
+            action="act_country_form"
+            sequence="30"
+            id="menu_country_form"
+            icon="tryton-country"/>
         <record model="ir.ui.menu-res.group"
             id="menu_country_form_group_admin">
             <field name="menu" ref="menu_country_form"/>
