@@ -65,8 +65,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window"
                 ref="sale_advance_payment.act_advance_payment_term_form"/>
         </record>
-        <menuitem parent="sale.menu_configuration"
+        <menuitem
+            parent="sale.menu_configuration"
             action="act_advance_payment_term_form"
+            sequence="50"
             id="menu_advance_payment_term"/>
 
         <record model="ir.ui.view" id="advance_payment_term_line_form">
