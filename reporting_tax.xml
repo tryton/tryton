@@ -57,8 +57,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="account.group_account"/>
         </record>
 
-        <menuitem parent="account.menu_reporting"
+        <menuitem
+            parent="account.menu_reporting"
             action="wizard_print_aeat_report"
+            sequence="50"
             id="menu_print_aeat"
             icon="tryton-print"/>
         <record model="ir.ui.menu-res.group" id="menu_print_aeat_group_account">
@@ -83,8 +85,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="vat_list_view_list"/>
             <field name="act_window" ref="act_vat_list_form"/>
         </record>
-        <menuitem parent="account.menu_reporting"
-            action="act_vat_list_form" id="menu_vat_list"/>
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_vat_list_form"
+            sequence="50"
+            id="menu_vat_list"/>
 
         <record model="ir.ui.view" id="vat_list_context_view_form">
             <field name="model">account.reporting.vat_list_es.context</field>
@@ -147,8 +152,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="es_ec_operation_list_view_list"/>
             <field name="act_window" ref="act_es_ec_operation_list_form"/>
         </record>
-        <menuitem parent="account.menu_reporting"
-            action="act_es_ec_operation_list_form" id="menu_es_ec_operation_list"/>
+        <menuitem
+            parent="account.menu_reporting"
+            sequence="50"
+            action="act_es_ec_operation_list_form"
+            id="menu_es_ec_operation_list"/>
 
         <record model="ir.ui.view" id="es_ec_operation_list_context_view_form">
             <field name="model">account.reporting.es_ec_operation_list.context</field>
