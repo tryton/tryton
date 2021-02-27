@@ -517,7 +517,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = product.template.in_(product_template)
+            product_clause = product.template.in_(product_template or [-1])
             product_column = Concat('product.template,', product.template)
             products = ['product.template,%s' % i for i in product_template]
         else:
@@ -526,7 +526,7 @@ class ProductQuantitiesByWarehouse(ModelSQL, ModelView):
                 product = -1
             if isinstance(product, int):
                 product = [product]
-            product_clause = move.product.in_(product)
+            product_clause = move.product.in_(product or [-1])
             product_column = Concat('product.product,', move.product)
             products = ['product.product,%s' % i for i in product]
 
@@ -766,7 +766,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 product_template = [product_template]
             product = Product.__table__()
             from_ = move.join(product, condition=move.product == product.id)
-            product_clause = product.template.in_(product_template)
+            product_clause = product.template.in_(product_template or [-1])
             product_column = Concat('product.template,', product.template)
         else:
             product = context.get('product', -1)
@@ -774,7 +774,7 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
                 product = -1
             if isinstance(product, int):
                 product = [product]
-            product_clause = move.product.in_(product)
+            product_clause = move.product.in_(product or [-1])
             product_column = Concat('product.product,', move.product)
 
         if 'warehouse' in context:
