@@ -3,7 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Journals" parent="menu_account_configuration"
+        <menuitem
+            name="Journals"
+            parent="menu_account_configuration"
+            sequence="50"
             id="menu_journal_configuration"/>
 
         <record model="ir.ui.view" id="journal_view_form">
@@ -37,8 +40,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="journal_view_form"/>
             <field name="act_window" ref="act_journal_form"/>
         </record>
-        <menuitem parent="menu_journal_configuration"
-            action="act_journal_form" id="menu_journal_form"/>
+        <menuitem
+            parent="menu_journal_configuration"
+            action="act_journal_form"
+            sequence="10"
+            id="menu_journal_form"/>
 
         <record model="ir.ui.view" id="journal_cash_context_view_form">
             <field name="model">account.journal.open_cash.context</field>
@@ -58,8 +64,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="journal_view_list_cash"/>
             <field name="act_window" ref="act_journal_open_cash"/>
         </record>
-        <menuitem parent="menu_reporting" action="act_journal_open_cash"
-            id="menu_journal_open_cash" name="Journals Cash"/>
+        <menuitem
+            parent="menu_reporting"
+            action="act_journal_open_cash"
+            sequence="50"
+            id="menu_journal_open_cash"/>
 
         <record model="ir.model.access" id="access_journal">
             <field name="model" search="[('model', '=', 'account.journal')]"/>
@@ -124,7 +133,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="journal_period_view_tree"/>
             <field name="act_window" ref="act_journal_period_tree"/>
         </record>
-        <menuitem parent="menu_reporting" action="act_journal_period_tree"
+        <menuitem
+            parent="menu_reporting"
+            action="act_journal_period_tree"
+            sequence="50"
             id="menu_journal_period_tree"/>
 
         <record model="ir.action.act_window" id="act_journal_period_tree2">
@@ -139,7 +151,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="journal_period_view_tree"/>
             <field name="act_window" ref="act_journal_period_tree2"/>
         </record>
-        <menuitem parent="menu_entries" action="act_journal_period_tree2"
+        <menuitem
+            parent="menu_entries"
+            action="act_journal_period_tree2"
+            sequence="20"
             id="menu_journal_period_tree2"/>
 
         <record model="ir.action.act_window" id="act_journal_period_form_close">
@@ -154,8 +169,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_journal_period_form_close"/>
         </record>
 
-        <menuitem parent="menu_processing" sequence="20"
-            action="act_journal_period_form_close" id="menu_close_journal_period"/>
+        <menuitem
+            parent="menu_processing"
+            action="act_journal_period_form_close"
+            sequence="20"
+            id="menu_close_journal_period"/>
 
         <record model="ir.model.access" id="access_journal_period">
             <field name="model" search="[('model', '=', 'account.journal.period')]"/>

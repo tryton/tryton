@@ -3,7 +3,10 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <menuitem name="Fiscal Years" parent="menu_account_configuration"
+        <menuitem
+            name="Fiscal Years"
+            parent="menu_account_configuration"
+            sequence="30"
             id="menu_fiscalyear_configuration"/>
         <record model="ir.ui.view" id="fiscalyear_view_form">
             <field name="model">account.fiscalyear</field>
@@ -35,8 +38,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="fiscalyear_view_form"/>
             <field name="act_window" ref="act_fiscalyear_form"/>
         </record>
-        <menuitem parent="menu_fiscalyear_configuration"
-            action="act_fiscalyear_form" id="menu_fiscalyear_form"/>
+        <menuitem
+            parent="menu_fiscalyear_configuration"
+            action="act_fiscalyear_form"
+            sequence="10"
+            id="menu_fiscalyear_form"/>
 
         <record model="ir.model.access" id="access_fiscalyear">
             <field name="model" search="[('model', '=', 'account.fiscalyear')]"/>
@@ -104,8 +110,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_fiscalyear_form_close"/>
         </record>
 
-        <menuitem parent="menu_processing" sequence="40"
-            action="act_fiscalyear_form_close" id="menu_close_fiscalyear"/>
+        <menuitem
+            parent="menu_processing"
+            action="act_fiscalyear_form_close"
+            sequence="50"
+            id="menu_close_fiscalyear"/>
 
         <record model="ir.ui.view" id="fiscalyear_create_periods_start_view_form">
             <field name="model">account.fiscalyear.create_periods.start</field>
@@ -131,8 +140,10 @@ this repository contains the full copyright notices and license terms. -->
             <field
                 name="wiz_name">account.fiscalyear.balance_non_deferral</field>
         </record>
-        <menuitem parent="menu_processing" sequence="10"
+        <menuitem
+            parent="menu_processing"
             action="act_balance_non_deferral"
+            sequence="40"
             id="menu_balance_non_deferral"/>
 
         <record model="ir.ui.view" id="fiscalyear_renew_start_view_form">
@@ -150,7 +161,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_renew_fiscalyear"/>
             <field name="group" ref="group_account_admin"/>
         </record>
-        <menuitem parent="menu_fiscalyear_configuration" sequence="20"
-            action="act_renew_fiscalyear" id="menu_renew_fiscalyear"/>
+        <menuitem
+            parent="menu_fiscalyear_configuration"
+            action="act_renew_fiscalyear"
+            sequence="90"
+            id="menu_renew_fiscalyear"/>
     </data>
 </tryton>

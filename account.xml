@@ -35,7 +35,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="path">icons/tryton-account-block.svg</field>
         </record>
 
-        <menuitem name="Financial" id="menu_account" sequence="2" icon="tryton-account"/>
+        <menuitem
+            name="Financial"
+            id="menu_account"
+            sequence="60"
+            icon="tryton-account"/>
         <record model="ir.ui.menu-res.group" id="menu_account_group_account">
             <field name="menu" ref="menu_account"/>
             <field name="group" ref="group_account"/>
@@ -45,25 +49,48 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_account_admin"/>
         </record>
 
-        <menuitem name="Configuration" parent="menu_account" id="menu_account_configuration" sequence="10" icon="tryton-settings"/>
+        <menuitem
+            name="Configuration"
+            parent="menu_account"
+            sequence="0"
+            id="menu_account_configuration"
+            icon="tryton-settings"/>
         <record model="ir.ui.menu-res.group"
             id="menu_account_configuration_group_account_admin">
             <field name="menu" ref="menu_account_configuration"/>
             <field name="group" ref="group_account_admin"/>
         </record>
 
-        <menuitem name="Templates" parent="menu_account_configuration"
-            id="menu_templates" sequence="5"/>
-        <menuitem name="General Account" parent="menu_account_configuration"
+        <menuitem
+            name="Templates"
+            parent="menu_account_configuration"
+            sequence="10"
+            id="menu_templates"/>
+        <menuitem
+            name="General Account"
+            parent="menu_account_configuration"
+            sequence="20"
             id="menu_general_account_configuration"/>
-        <menuitem name="Entries" parent="menu_account"
-            id="menu_entries" sequence="30"/>
-        <menuitem name="Charts" parent="menu_account"
-            id="menu_charts" sequence="40"/>
-        <menuitem name="Processing" parent="menu_account"
-            id="menu_processing" sequence="50"/>
-        <menuitem name="Reporting" parent="menu_account"
-            id="menu_reporting" sequence="60"/>
+        <menuitem
+            name="Entries"
+            parent="menu_account"
+            sequence="30"
+            id="menu_entries"/>
+        <menuitem
+            name="Charts"
+            parent="menu_account"
+            sequence="40"
+            id="menu_charts"/>
+        <menuitem
+            name="Processing"
+            parent="menu_account"
+            sequence="50"
+            id="menu_processing"/>
+        <menuitem
+            name="Reporting"
+            parent="menu_account"
+            sequence="100"
+            id="menu_reporting"/>
 
         <record model="ir.ui.view" id="account_type_template_view_form">
             <field name="model">account.account.type.template</field>
@@ -100,11 +127,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_type_template_view_form"/>
             <field name="act_window" ref="act_account_type_template_tree"/>
         </record>
-        <menuitem parent="menu_templates"
+        <menuitem
+            parent="menu_templates"
             action="act_account_type_template_tree"
-            id="menu_account_type_template_tree"
-            sequence="10"/>
-
+            sequence="10"
+            id="menu_account_type_template_tree"/>
 
         <record model="ir.ui.view" id="account_type_view_form">
             <field name="model">account.account.type</field>
@@ -140,8 +167,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_type_view_form"/>
             <field name="act_window" ref="act_account_type_tree"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
-            action="act_account_type_tree" id="menu_account_type_tree"/>
+        <menuitem
+            parent="menu_general_account_configuration"
+            action="act_account_type_tree"
+            sequence="10"
+            id="menu_account_type_tree"/>
 
         <record model="ir.action.act_window" id="act_account_type_list">
             <field name="name">Account Types</field>
@@ -157,9 +187,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_type_view_form"/>
             <field name="act_window" ref="act_account_type_list"/>
         </record>
-        <menuitem parent="menu_account_type_tree"
-            action="act_account_type_list" id="menu_account_type_list"
-            sequence="10"/>
+        <menuitem
+            parent="menu_account_type_tree"
+            action="act_account_type_list"
+            sequence="10"
+            id="menu_account_type_list"/>
 
         <record model="ir.model.access" id="access_account_type">
             <field name="model" search="[('model', '=', 'account.account.type')]"/>
@@ -223,9 +255,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_template_view_form"/>
             <field name="act_window" ref="act_account_template_tree"/>
         </record>
-        <menuitem parent="menu_templates"
-            action="act_account_template_tree" id="menu_account_template_tree"
-            sequence="20"/>
+        <menuitem
+            parent="menu_templates"
+            action="act_account_template_tree"
+            sequence="20"
+            id="menu_account_template_tree"/>
         <record model="ir.model.access" id="access_account_template">
             <field name="model" search="[('model', '=', 'account.account.template')]"/>
             <field name="perm_read" eval="True"/>
@@ -267,9 +301,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Create Chart of Accounts from Template</field>
             <field name="wiz_name">account.create_chart</field>
         </record>
-        <menuitem parent="menu_templates"
-            action="wizard_create_chart" id="menu_create_chart"
-            sequence="90"/>
+        <menuitem
+            parent="menu_templates"
+            action="wizard_create_chart"
+            sequence="90"
+            id="menu_create_chart"/>
         <record model="ir.module.config_wizard.item"
             id="config_wizard_item_chart_account">
             <field name="action" ref="wizard_create_chart"/>
@@ -291,9 +327,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Update Chart of Accounts from Template</field>
             <field name="wiz_name">account.update_chart</field>
         </record>
-        <menuitem parent="menu_templates"
-            action="wizard_update_chart" id="menu_update_chart"
-            sequence="100"/>
+        <menuitem
+            parent="menu_templates"
+            action="wizard_update_chart"
+            sequence="90"
+            id="menu_update_chart"/>
 
         <record model="ir.ui.view" id="account_view_form">
             <field name="model">account.account</field>
@@ -329,8 +367,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_form"/>
             <field name="act_window" ref="act_account_tree"/>
         </record>
-        <menuitem parent="menu_general_account_configuration"
-            action="act_account_tree" id="menu_account_tree"/>
+        <menuitem
+            parent="menu_general_account_configuration"
+            action="act_account_tree"
+            sequence="20"
+            id="menu_account_tree"/>
 
         <record model="ir.action.act_window" id="act_account_list">
             <field name="name">Accounts</field>
@@ -346,9 +387,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="account_view_form"/>
             <field name="act_window" ref="act_account_list"/>
         </record>
-        <menuitem parent="menu_account_tree"
-            action="act_account_list" id="menu_account_list"
-            sequence="10"/>
+        <menuitem
+            parent="menu_account_tree"
+            action="act_account_list"
+            sequence="10"
+            id="menu_account_list"/>
 
         <record model="ir.ui.view" id="account_view_list_balance_sheet">
             <field name="model">account.account</field>
@@ -408,8 +451,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Open Chart of Accounts</field>
             <field name="wiz_name">account.open_chart</field>
         </record>
-        <menuitem parent="menu_charts" action="act_open_chart"
-            icon="tryton-tree" id="menu_open_chart"/>
+        <menuitem
+            parent="menu_charts"
+            action="act_open_chart"
+            sequence="10"
+            id="menu_open_chart"
+            icon="tryton-tree"/>
 
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'account.account')]"/>
@@ -486,8 +533,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="general_ledger_account_view_list"/>
             <field name="act_window" ref="act_general_ledger_account_form"/>
         </record>
-        <menuitem parent="menu_reporting" action="act_general_ledger_account_form"
-            id="menu_general_ledger" name="General Ledger" sequence="10"/>
+        <menuitem
+            name="General Ledger"
+            parent="menu_reporting"
+            action="act_general_ledger_account_form"
+            sequence="10"
+            id="menu_general_ledger"/>
 
         <record model="ir.action.act_window" id="act_account_general_ledger">
             <field name="name">Accounts</field>
@@ -693,7 +744,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_account_balance_sheet_tree"/>
         </record>
 
-        <menuitem parent="menu_reporting" action="act_account_balance_sheet_tree"
+        <menuitem
+            parent="menu_reporting"
+            action="act_account_balance_sheet_tree"
+            sequence="20"
             id="menu_open_balance_sheet"/>
 
         <record model="ir.ui.view" id="balance_sheet_context_view_form">
@@ -731,7 +785,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_account_income_statement_tree"/>
         </record>
 
-        <menuitem parent="menu_reporting" action="act_account_income_statement_tree"
+        <menuitem
+            parent="menu_reporting"
+            action="act_account_income_statement_tree"
+            sequence="20"
             id="menu_open_income_statement"/>
 
         <record model="ir.ui.view" id="income_statement_context_view_form">
@@ -756,7 +813,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_aged_balance_list"/>
         </record>
 
-        <menuitem parent="menu_reporting" action="act_aged_balance_list"
+        <menuitem
+            parent="menu_reporting"
+            action="act_aged_balance_list"
+            sequence="50"
             id="menu_aged_balance"/>
 
         <record model="ir.model.access" id="access_aged_balance">

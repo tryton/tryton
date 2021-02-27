@@ -36,9 +36,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="period_view_form"/>
             <field name="act_window" ref="act_period_form"/>
         </record>
-        <menuitem parent="menu_fiscalyear_form"
-            action="act_period_form" id="menu_period_form"
-            sequence="20"/>
+        <menuitem
+            parent="menu_fiscalyear_configuration"
+            action="act_period_form"
+            sequence="20"
+            id="menu_period_form"/>
 
         <record model="ir.model.access" id="access_period">
             <field name="model" search="[('model', '=', 'account.period')]"/>
@@ -95,8 +97,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_period_form_close"/>
         </record>
 
-        <menuitem parent="menu_processing" sequence="30"
-            action="act_period_form_close" id="menu_close_period"/>
+        <menuitem
+            parent="menu_processing"
+            action="act_period_form_close"
+            sequence="30"
+            id="menu_close_period"/>
 
         <record model="ir.rule.group" id="rule_group_period">
             <field name="name">User in company</field>

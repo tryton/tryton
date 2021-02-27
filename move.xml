@@ -33,7 +33,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="move_view_form"/>
             <field name="act_window" ref="act_move_form"/>
         </record>
-        <menuitem parent="menu_entries" action="act_move_form"
+        <menuitem
+            parent="menu_entries"
+            action="act_move_form"
+            sequence="50"
             id="menu_move_form"/>
 
         <record model="ir.model.access" id="access_move">
@@ -272,8 +275,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.journal.period,-1</field>
             <field name="action" ref="act_open_journal"/>
         </record>
-        <menuitem parent="menu_entries" action="act_open_journal"
-            icon="tryton-list" id="menu_open_journal"/>
+        <menuitem
+            parent="menu_entries"
+            action="act_open_journal"
+            sequence="20"
+            id="menu_open_journal"
+            icon="tryton-list"/>
         <record model="ir.model.access" id="access_move_line">
             <field name="model" search="[('model', '=', 'account.move.line')]"/>
             <field name="perm_read" eval="False"/>
@@ -323,7 +330,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="wiz_name">account.reconcile</field>
             <field name="window" eval="True"/>
         </record>
-        <menuitem parent="menu_processing" action="act_reconcile"
+        <menuitem
+            parent="menu_processing"
+            action="act_reconcile"
+            sequence="20"
             id="menu_reconcile"/>
 
         <record model="ir.ui.view" id="reconcile_show_view_form">
@@ -372,8 +382,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="reconcile_writeoff_view_form"/>
             <field name="act_window" ref="act_reconcile_writeoff_form"/>
         </record>
-        <menuitem parent="menu_journal_configuration"
+        <menuitem
+            parent="menu_journal_configuration"
             action="act_reconcile_writeoff_form"
+            sequence="20"
             id="menu_reconcile_writeoff_form"/>
 
         <record model="ir.model.access" id="access_reconcile_writeoff">
@@ -418,8 +430,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Print General Journal</field>
             <field name="wiz_name">account.move.print_general_journal</field>
         </record>
-        <menuitem parent="menu_reporting" action="wizard_print_general_journal"
-            id="menu_print_general_journal" icon="tryton-print"/>
+        <menuitem
+            parent="menu_reporting"
+            action="wizard_print_general_journal"
+            sequence="50"
+            id="menu_print_general_journal"
+            icon="tryton-print"/>
 
         <record model="ir.action.report" id="report_general_journal">
             <field name="name">General Journal</field>
