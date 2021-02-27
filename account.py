@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, Workflow, fields
+from trytond.model import ModelSQL, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, If
 from trytond.transaction import Transaction
@@ -10,12 +10,10 @@ class Invoice(metaclass=PoolMeta):
     __name__ = 'account.invoice'
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('posted')
-    def post(cls, invoices):
+    def _post(cls, invoices):
         pool = Pool()
         Move = pool.get('stock.move')
-        super().post(invoices)
+        super()._post(invoices)
         moves = sum((l.stock_moves for i in invoices for l in i.lines), ())
         if moves:
             Move.__queue__.update_unit_price(moves)
