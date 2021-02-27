@@ -42,8 +42,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_form"/>
             <field name="act_window" ref="act_work_list"/>
         </record>
-        <menuitem parent="menu_configuration"
-            action="act_work_list" id="menu_work_list"/>
+        <menuitem
+            parent="menu_configuration"
+            action="act_work_list"
+            sequence="10"
+            id="menu_work_list"/>
 
         <record model="ir.action.act_window" id="act_work_report">
             <field name="name">Works</field>
@@ -62,8 +65,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="view" ref="work_view_graph"/>
             <field name="act_window" ref="act_work_report"/>
         </record>
-        <menuitem parent="menu_reporting" action="act_work_report"
-            id="menu_work_report" sequence="10"/>
+        <menuitem
+            parent="menu_reporting"
+            action="act_work_report"
+            sequence="10"
+            id="menu_work_report"/>
 
         <record model="ir.model.access" id="access_work">
             <field name="model" search="[('model', '=', 'timesheet.work')]"/>
