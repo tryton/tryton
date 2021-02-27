@@ -7,7 +7,10 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">Generate FEC</field>
             <field name="wiz_name">account.fr.fec</field>
         </record>
-        <menuitem parent="account.menu_reporting" action="act_fec"
+        <menuitem
+            parent="account.menu_reporting"
+            action="act_fec"
+            sequence="50"
             id="menu_fec"/>
 
         <record model="ir.ui.view" id="fec_start_view_form">
