@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
-from trytond.model import ModelView, Workflow, fields
+from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 from trytond.pyson import Eval
 
@@ -23,10 +23,8 @@ class Invoice(metaclass=PoolMeta):
                 })
 
     @classmethod
-    @ModelView.button
-    @Workflow.transition('posted')
-    def post(cls, invoices):
-        super(Invoice, cls).post(invoices)
+    def _post(cls, invoices):
+        super()._post(invoices)
         cls.check_deposit(invoices)
 
     @classmethod
