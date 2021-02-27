@@ -30,8 +30,11 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_user_form"/>
         </record>
 
-        <menuitem parent="res.menu_res" action="act_user_form"
-            id="menu_user_form" sequence="30"/>
+        <menuitem
+            parent="res.menu_res"
+            action="act_user_form"
+            sequence="50"
+            id="menu_user_form"/>
 
         <record model="ir.model.access" id="access_user">
             <field name="model" search="[('model', '=', 'web.user')]"/>
