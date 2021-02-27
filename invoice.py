@@ -75,8 +75,8 @@ class Invoice(metaclass=PoolMeta):
 
     @classmethod
     @process_sale
-    def post(cls, invoices):
-        super(Invoice, cls).post(invoices)
+    def _post(cls, invoices):
+        super()._post(invoices)
 
     @classmethod
     @process_sale
