@@ -121,7 +121,7 @@
                             this.screen.context.date_format);
                         var time_format = '%H:%M:%S.%f';
                         var revision_label = ' @ ' + Sao.common.format_datetime(
-                            date_format, time_format, revision);
+                            date_format + ' ' + time_format, revision);
                         label = Sao.common.ellipsize(
                             this.title, 80 - revision_label.length) +
                             revision_label;
@@ -929,7 +929,7 @@
                 this.select.append(jQuery('<option/>', {
                     value: revision.valueOf(),
                     text: Sao.common.format_datetime(
-                        date_format, time_format, revision) + ' ' + name,
+                        date_format + ' ' + time_format, revision) + ' ' + name,
                 }));
             }.bind(this));
             this.el.modal('show');

@@ -928,8 +928,7 @@
                     value = (value || {})[name] || '/';
                     if (value && value.isDateTime) {
                         value = Sao.common.format_datetime(
-                            Sao.common.date_format(),
-                            '%H:%M:%S',
+                            Sao.common.date_format() + ' %H:%M:%S',
                             value);
                     }
                     message += label + ' ' + value + '\n';
@@ -990,7 +989,7 @@
                     this.screen.context.date_format);
                 var time_format = '%H:%M:%S.%f';
                 var revision_label = ' @ ' + Sao.common.format_datetime(
-                    date_format, time_format, revision);
+                    date_format + ' ' + time_format, revision);
                 label = Sao.common.ellipsize(
                     this.name, 80 - revision_label.length) + revision_label;
                 title = this.name + revision_label;

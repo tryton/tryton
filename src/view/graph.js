@@ -191,8 +191,8 @@
                 if (type == 'datetime') {
                     c3_config.data.xFormat = '%Y-%m-%d %H:%M:%S';
                     format_func = function(dt) {
-                        return Sao.common.format_datetime(date_format,
-                                time_format, moment(dt));
+                        return Sao.common.format_datetime(
+                            date_format + ' ' + time_format, moment(dt));
                     };
                 } else {
                     c3_config.data.xFormat = '%Y-%m-%d';
