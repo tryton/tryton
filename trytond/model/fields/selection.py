@@ -154,8 +154,7 @@ class TranslatedSelection(object):
         if isinstance(value, (list, tuple)):
             values = []
             for item in value:
-                if item in selection:
-                    values.append(selection[item])
+                values.append(selection.get(item, item))
             return values
         else:
-            return selection.get(value)
+            return selection.get(value, value)
