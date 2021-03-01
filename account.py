@@ -1341,7 +1341,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
                         where=account_sql & party_sql & line_query,
                         group_by=[table_a.id, line.party]))
                 for account_id, party_id, balance in cursor:
-                    id_ = account_party2id[(account_id, party_id)]
+                    try:
+                        id_ = account_party2id[(account_id, party_id)]
+                    except KeyError:
+                        # There can be more combinations of account-party in
+                        # the database than from records
+                        continue
                     balances[id_] = balance
 
         for record in records:
