@@ -77,12 +77,15 @@ class MultiSelection(Widget, SelectionMixin):
             # it will be set back in the super call
             selection.set_select_function(lambda *a: True)
             self.update_selection(self.record, self.field)
-            self.model.clear()
+            new_model = self.selection != [list(row) for row in self.model]
+            if new_model:
+                self.model.clear()
             if not self.field:
                 return
             value2path = {}
             for idx, (value, name) in enumerate(self.selection):
-                self.model.append((value, name))
+                if new_model:
+                    self.model.append((value, name))
                 value2path[value] = idx
             selection.unselect_all()
             values = self.field.get_eval(self.record)
