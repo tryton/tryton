@@ -284,12 +284,12 @@ class CreateShippingUPS(Wizard):
                 'UnitOfMeasurement': {
                     'Code': 'CM' if use_metric else 'IN',
                     },
-                'Length': '%i' % round(UoM.compute_qty(package.type.length_uom,
-                        package.type.length, cm if use_metric else inch)),
-                'Width': '%i' % round(UoM.compute_qty(package.type.width_uom,
-                        package.type.width, cm if use_metric else inch)),
-                'Height': '%i' % round(UoM.compute_qty(package.type.height_uom,
-                        package.type.height, cm if use_metric else inch)),
+                'Length': '%i' % round(UoM.compute_qty(package.length_uom,
+                        package.length, cm if use_metric else inch)),
+                'Width': '%i' % round(UoM.compute_qty(package.width_uom,
+                        package.width, cm if use_metric else inch)),
+                'Height': '%i' % round(UoM.compute_qty(package.height_uom,
+                        package.height, cm if use_metric else inch)),
                 },
             'PackageWeight': {
                 'UnitOfMeasurement': {
