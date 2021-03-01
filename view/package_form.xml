@@ -2,7 +2,21 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='children']" position="after">
+    <xpath expr="//field[@name='children']" position="after">
+        <separator string="Dimensions" id="dimensions" colspan="4"/>
+        <label name="length"/>
+        <field name="length"/>
+        <label name="length_uom"/>
+        <field name="length_uom"/>
+        <label name="height"/>
+        <field name="height"/>
+        <label name="height_uom"/>
+        <field name="height_uom"/>
+        <label name="width"/>
+        <field name="width"/>
+        <label name="width_uom"/>
+        <field name="width_uom"/>
+        <separator string="Shipping" id="shipping" colspan="4"/>
         <label name="shipping_reference"/>
         <field name="shipping_reference"/>
         <label name="shipping_label"/>

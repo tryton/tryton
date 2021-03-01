@@ -1,3 +1,4 @@
+* Allow updating dimensions on package
 * Add configuration option to store label in filestore
 * Manage supplier shipment returns
 

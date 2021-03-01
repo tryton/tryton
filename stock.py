@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Column
 
 from trytond.config import config
 from trytond.i18n import gettext
@@ -20,8 +21,8 @@ else:
     file_id = store_prefix = None
 
 
-class PackageType(metaclass=PoolMeta):
-    __name__ = 'stock.package.type'
+class DimensionsMixin(object):
+    __slots__ = ()
 
     length = fields.Float('Length', digits=(16, Eval('length_digits', 2)),
         depends=['length_digits'])
@@ -88,7 +89,11 @@ class PackageType(metaclass=PoolMeta):
         return 2
 
 
-class Package(metaclass=PoolMeta):
+class PackageType(DimensionsMixin, metaclass=PoolMeta):
+    __name__ = 'stock.package.type'
+
+
+class Package(DimensionsMixin, metaclass=PoolMeta):
     __name__ = 'stock.package'
 
     shipping_reference = fields.Char('Shipping Reference',
@@ -101,11 +106,51 @@ class Package(metaclass=PoolMeta):
     shipping_label_id = fields.Char("Shipping Label ID", readonly=True)
 
     @classmethod
+    def __register__(cls, module_name):
+        pool = Pool()
+        PackageType = pool.get('stock.package.type')
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        package_type = PackageType.__table__()
+        table_h = cls.__table_handler__(module_name)
+        dimension_columns = [
+            'length', 'length_uom',
+            'height', 'height_uom',
+            'width', 'width_uom']
+        dimension_exists = any(
+            table_h.column_exist(c) for c in dimension_columns)
+
+        super().__register__(module_name)
+
+        # Migration from 5.8: Update dimensions on package from package_type
+        if not dimension_exists:
+            columns = []
+            values = []
+            for c in dimension_columns:
+                columns.append(Column(table, c))
+                values.append(package_type.select(
+                        Column(package_type, c),
+                        where=package_type.id == table.type))
+            cursor.execute(*table.update(
+                    columns=columns,
+                    values=values))
+
+    @classmethod
     def search_rec_name(cls, name, clause):
         domain = super(Package, cls).search_rec_name(name, clause)
         return ['OR', domain,
             ('shipping_reference',) + tuple(clause[1:]),
             ]
+
+    @fields.depends('type')
+    def on_change_type(self):
+        if self.type:
+            self.length = self.type.length
+            self.length_uom = self.type.length_uom
+            self.height = self.type.height
+            self.height_uom = self.type.height_uom
+            self.width = self.type.width
+            self.width_uom = self.type.width_uom
 
     @classmethod
     def copy(cls, packages, default=None):
