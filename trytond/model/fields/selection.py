@@ -147,7 +147,9 @@ class TranslatedSelection(object):
         # None and '' are equivalent
         if value is None or value == '':
             if value not in selection:
-                value = {None: '', '': None}[value]
+                switch_value = {None: '', '': None}[value]
+                if switch_value in selection:
+                    value = switch_value
         # Use Model __name__ for Reference field
         elif isinstance(value, Model):
             value = value.__name__
