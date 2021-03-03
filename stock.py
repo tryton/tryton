@@ -146,7 +146,7 @@ class ShipmentOut(metaclass=PoolMeta):
         return invoice_line
 
     def _get_shipment_cost(self):
-        cost = super()._get_shipment_cost(self)
+        cost = super()._get_shipment_cost()
         if all(not m.sale.shipment_cost_method for m in self.outgoing_moves):
             cost += self.cost
         return cost
