@@ -70,7 +70,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="text">The invoice "%(invoice)s" generates a payment date "%(date)s" in the past.</field>
         </record>
         <record model="ir.message" id="msg_close_period_non_posted_invoices">
-            <field name="text">To close the periods you must post the invoices "%(moves)s".</field>
+            <field name="text">To close the periods you must post the invoices "%(invoices)s".</field>
         </record>
     </data>
 </tryton>
