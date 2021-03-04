@@ -1045,7 +1045,6 @@
                 'text': Sao.i18n.gettext('Fields Selected')
             })))).appendTo(row_fields);
 
-            // TODO: Make them draggable to re-order
             this.fields_selected = jQuery('<ul/>', {
                 'class': 'list-unstyled column-fields panel-body',
             }).css('cursor', 'pointer')
@@ -1234,13 +1233,20 @@
                 .append(this.el_csv_skip)
                 .appendTo(this.expander_csv);
             this.expander_csv.append(' ');
+            Sortable.create(this.fields_selected.get(0), {
+                handle: '.draggable-handle',
+                ghostClass: 'dragged-row'
+            });
         },
         sig_sel_add: function(el_field) {
             el_field = jQuery(el_field);
             var field = el_field.attr('field');
             var node = jQuery('<li/>', {
                 'field': field,
-            }).text(el_field.attr('name')).click(function(e) {
+                'class': 'draggable-handle',
+            }).text(el_field.attr('name')).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-drag')
+            ).click(function(e) {
                 if (e.ctrlKey) {
                     node.toggleClass('bg-primary');
                 } else {
@@ -1588,6 +1594,10 @@
             this.expander_csv.append(' ');
 
             this.set_url();
+            Sortable.create(this.fields_selected.get(0), {
+                handle: '.draggable-handle',
+                ghostClass: 'dragged-row'
+            });
         },
         get context() {
             return this.screen.context;
@@ -1853,6 +1863,7 @@
             }
             var node = jQuery('<li/>', {
                 'path': name,
+                'class': 'draggable-handle',
             }).text(long_string).click(function(e) {
                 if(e.ctrlKey) {
                     node.toggleClass('bg-primary');
@@ -1860,7 +1871,9 @@
                     jQuery(e.target).addClass('bg-primary')
                         .siblings().removeClass('bg-primary');
                 }
-            }).appendTo(this.fields_selected);
+            }).prepend(
+                Sao.common.ICONFACTORY.get_icon_img('tryton-drag')
+            ).appendTo(this.fields_selected);
         },
         response: function(response_id) {
             if(response_id == 'RESPONSE_OK') {

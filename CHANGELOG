@@ -1,3 +1,4 @@
+* Add drag and drop on CSV export and import
 * Remove tempusdominus dependency
 * Handle device cookie
 * Add breadcrumb as title of window form
