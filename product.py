@@ -227,7 +227,11 @@ class CategoryAccount(ModelSQL, CompanyValueMixin):
     "Category Account"
     __name__ = 'product.category.account'
     category = fields.Many2One(
-        'product.category', "Category", ondelete='CASCADE', select=True)
+        'product.category', "Category", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     account_expense = fields.Many2One(
         'account.account', "Account Expense",
         domain=[
