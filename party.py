@@ -2,6 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.pool import PoolMeta, Pool
+from trytond.pyson import Eval
 from trytond.tools.multivalue import migrate_property
 from trytond.transaction import Transaction
 
@@ -38,6 +39,13 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
 class PartyLang(CompanyValueMixin, metaclass=PoolMeta):
     __name__ = 'party.party.lang'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.party.context['company'] = Eval('company', -1)
+        if 'company' not in cls.party.depends:
+            cls.party.depends.append('company')
 
     @classmethod
     def __register__(cls, module_name):

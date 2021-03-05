@@ -6,10 +6,12 @@ from contextlib import contextmanager
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pool import Pool, isregisteredby
 
 from trytond.modules.currency.tests import create_currency, add_currency_rate
 from trytond.modules.party.tests import PartyCheckEraseMixin
+
+from ..model import CompanyMultiValueMixin
 
 
 def create_company(name='Dunder Mifflin', currency=None):
@@ -63,7 +65,42 @@ class PartyCompanyCheckEraseMixin(PartyCheckEraseMixin):
         return super().setup_check_erase_party()
 
 
-class CompanyTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
+class CompanyMultiValueTestMixin:
+
+    @with_transaction()
+    def test_company_multivalue_context(self):
+        "Test context of company multivalue target"
+        pool = Pool()
+        Company = pool.get('company.company')
+        for mname, model in pool.iterobject():
+            if (not isregisteredby(model, self.module)
+                    or issubclass(model, Company)):
+                continue
+            company = None
+            for fname, field in model._fields.items():
+                if (field._type == 'many2one'
+                        and issubclass(field.get_target(), Company)):
+                    company = fname
+                    break
+            else:
+                continue
+            for fname, field in model._fields.items():
+                if not hasattr(field, 'get_target'):
+                    continue
+                Target = field.get_target()
+                if not issubclass(Target, CompanyMultiValueMixin):
+                    continue
+                if company in model._fields:
+                    self.assertIn(
+                        'company', list(field.context.keys()),
+                        msg="Missing '%s' value as company "
+                        'in "%s"."%s" context' % (
+                            company, mname, fname))
+
+
+class CompanyTestCase(
+        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
+        ModuleTestCase):
     'Test Company module'
     module = 'company'
 

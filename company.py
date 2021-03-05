@@ -55,6 +55,10 @@ class Employee(ModelSQL, ModelView):
     'Employee'
     __name__ = 'company.employee'
     party = fields.Many2One('party.party', 'Party', required=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'],
         help="The party which represents the employee.")
     company = fields.Many2One('company.company', 'Company', required=True,
         help="The company to which the employee belongs.")
