@@ -7,8 +7,10 @@ import unittest
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
+from trytond.modules.company.tests import CompanyMultiValueTestMixin
 
-class AccountFrChorusTestCase(ModuleTestCase):
+
+class AccountFrChorusTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test Account Fr Chorus module'
     module = 'account_fr_chorus'
     extras = ['edocument_uncefact']
