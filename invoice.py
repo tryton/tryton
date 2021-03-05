@@ -56,7 +56,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
             ],
         depends=_depends)
     company_party = fields.Function(
-        fields.Many2One('party.party', "Company Party"),
+        fields.Many2One(
+            'party.party', "Company Party",
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
         'on_change_with_company_party')
     tax_identifier = fields.Many2One(
         'party.identifier', "Tax Identifier",
@@ -99,8 +104,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         help="The date from which the payment term is calculated.\n"
         "Leave empty to use the invoice date.")
     sequence = fields.Integer("Sequence", readonly=True)
-    party = fields.Many2One('party.party', 'Party',
-        required=True, states=_states, depends=_depends)
+    party = fields.Many2One(
+        'party.party', 'Party', required=True, states=_states,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=_depends + ['company'])
     party_tax_identifier = fields.Many2One(
         'party.identifier', "Party Tax Identifier",
         states=_states,
@@ -124,8 +133,12 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         'on_change_with_currency_digits')
     currency_date = fields.Function(fields.Date('Currency Date'),
         'on_change_with_currency_date')
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-        states=_states, depends=_depends)
+    journal = fields.Many2One(
+        'account.journal', 'Journal', required=True, states=_states,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=_depends + ['company'])
     move = fields.Many2One('account.move', 'Move', readonly=True,
         domain=[
             ('company', '=', Eval('company', -1)),
@@ -1683,7 +1696,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
             'required': ~Eval('invoice'),
             'readonly': _states['readonly'],
             },
-        depends=['invoice'] + _depends)
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['invoice', 'company'] + _depends)
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     currency = fields.Many2One(
@@ -2597,8 +2613,13 @@ class PaymentMethod(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'account.invoice.payment.method'
     company = fields.Many2One('company.company', "Company", required=True)
     name = fields.Char("Name", required=True, translate=True)
-    journal = fields.Many2One('account.journal', "Journal", required=True,
-        domain=[('type', '=', 'cash')])
+    journal = fields.Many2One(
+        'account.journal', "Journal", required=True,
+        domain=[('type', '=', 'cash')],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     credit_account = fields.Many2One('account.account', "Credit Account",
         required=True,
         domain=[
