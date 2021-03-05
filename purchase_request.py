@@ -28,13 +28,22 @@ class PurchaseRequest(ModelSQL, ModelView):
     'Purchase Request'
     __name__ = 'purchase.request'
 
-    product = fields.Many2One('product.product', 'Product',
-        select=True, readonly=True, domain=[('purchasable', '=', True)])
+    product = fields.Many2One(
+        'product.product', "Product", select=True, readonly=True,
+        domain=[('purchasable', '=', True)],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     description = fields.Text('Description', readonly=True,
         states=STATES, depends=DEPENDS)
     summary = fields.Function(fields.Char('Summary'), 'on_change_with_summary')
-    party = fields.Many2One('party.party', 'Party', select=True, states=STATES,
-        depends=DEPENDS)
+    party = fields.Many2One(
+        'party.party', "Party", select=True, states=STATES,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=DEPENDS + ['company'])
     quantity = fields.Float('Quantity', required=True, states=STATES,
         digits=(16, Eval('uom_digits', 2)), depends=DEPENDS + ['uom_digits'])
     uom = fields.Many2One('product.uom', 'UOM', select=True,
