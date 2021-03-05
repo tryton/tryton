@@ -27,7 +27,11 @@ class PartyPurchasePriceList(ModelSQL, CompanyValueMixin):
     __name__ = 'party.party.purchase_price_list'
 
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     purchase_price_list = fields.Many2One(
         'product.price_list', "Purchase Price List",
         domain=[
