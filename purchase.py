@@ -22,7 +22,11 @@ class Request(metaclass=PoolMeta):
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
         states={
             'invisible': ~Eval('customer'),
-            })
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         domain=[('party', '=', Eval('customer'))],
         states={
@@ -82,7 +86,11 @@ class Purchase(metaclass=PoolMeta):
     customer = fields.Many2One('party.party', 'Customer', readonly=True,
         states={
             'invisible': ~Eval('customer'),
-            })
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         domain=[('party', '=', Eval('customer'))],
         states={

@@ -119,7 +119,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     | Eval('supplier_moves', [0]))
                 & Eval('supplier')),
             },
-        depends=['state', 'supplier'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'supplier', 'company'])
     contact_address = fields.Many2One('party.address', 'Contact Address',
         states={
             'readonly': Eval('state') != 'draft',
@@ -132,7 +135,10 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
                     | Eval('customer_moves', [0]))
                 & Eval('customer')),
             },
-        depends=['state'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'])
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         required=True,
         states={
@@ -589,8 +595,13 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
 
-    customer_drop = fields.Function(fields.Many2One('party.party',
-            'Drop Customer'), 'get_customer_drop',
+    customer_drop = fields.Function(fields.Many2One(
+            'party.party', "Drop Customer",
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
+        'get_customer_drop',
         searcher='search_customer_drop')
 
     @classmethod

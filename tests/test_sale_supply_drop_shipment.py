@@ -7,11 +7,13 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
-from trytond.modules.company.tests import PartyCompanyCheckEraseMixin
+from trytond.modules.company.tests import (
+    PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin)
 
 
 class SaleSupplyDropShipmentTestCase(
-        PartyCompanyCheckEraseMixin, ModuleTestCase):
+        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
+        ModuleTestCase):
     'Test SaleSupplyDropShipment module'
     module = 'sale_supply_drop_shipment'
 
