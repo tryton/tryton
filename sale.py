@@ -144,11 +144,19 @@ class Promotion(
         depends=['quantity'])
     unit_digits = fields.Function(fields.Integer('Unit Digits'),
         'on_change_with_unit_digits')
-    products = fields.Many2Many('sale.promotion-product.product',
-        'promotion', 'product', 'Products')
+    products = fields.Many2Many(
+        'sale.promotion-product.product', 'promotion', 'product', "Products",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     categories = fields.Many2Many(
         'sale.promotion-product.category', 'promotion', 'category',
-        "Categories")
+        "Categories",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     formula = fields.Char('Formula', required=True,
         help=('Python expression that will be evaluated with:\n'
             '- unit_price: the original unit_price'))
