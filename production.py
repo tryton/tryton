@@ -81,7 +81,11 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             ],
         states={
             'readonly': ~Eval('state').in_(['request', 'draft']),
-            })
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     bom = fields.Many2One('production.bom', 'BOM',
         domain=[
             ('output_products', '=', Eval('product', 0)),
