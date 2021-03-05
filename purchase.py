@@ -98,10 +98,15 @@ class Quotation(Workflow, ModelSQL, ModelView):
             ])
     warehouse = fields.Many2One('stock.location', 'Warehouse',
         domain=[('type', '=', 'warehouse')])
-    supplier = fields.Many2One('party.party', 'Supplier', required=True,
+    supplier = fields.Many2One(
+        'party.party', "Supplier", required=True,
         states={
             'readonly': Eval('lines', [0]) & Eval('supplier'),
-            },)
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     supplier_address = fields.Many2One('party.address', 'Supplier Address',
         domain=[
             ('party', '=', Eval('supplier')),
