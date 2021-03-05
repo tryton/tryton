@@ -3,6 +3,7 @@
 from trytond.i18n import gettext
 from trytond.model import fields, ModelSQL
 from trytond.pool import PoolMeta, Pool
+from trytond.pyson import Eval
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
 
@@ -35,7 +36,11 @@ class CustomerCode(ModelSQL, CompanyValueMixin):
     "Party Customer Code"
     __name__ = 'party.party.customer_code'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     customer_code = fields.Char('Customer Code')
 
 
@@ -43,7 +48,11 @@ class SupplierLeadTime(ModelSQL, CompanyValueMixin):
     "Supplier Lead Time"
     __name__ = 'party.party.supplier_lead_time'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     supplier_lead_time = fields.TimeDelta("Lead Time")
 
 

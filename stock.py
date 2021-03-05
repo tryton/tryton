@@ -153,7 +153,12 @@ class Move(metaclass=PoolMeta):
     purchase = fields.Function(
         fields.Many2One('purchase.purchase', 'Purchase'),
         'get_purchase', searcher='search_purchase')
-    supplier = fields.Function(fields.Many2One('party.party', 'Supplier'),
+    supplier = fields.Function(fields.Many2One(
+            'party.party', 'Supplier',
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
         'get_supplier', searcher='search_supplier')
     purchase_exception_state = fields.Function(fields.Selection([
         ('', ''),

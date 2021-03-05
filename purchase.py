@@ -104,24 +104,33 @@ class Purchase(
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('party'))),
             },
-        select=True, depends=['state'])
+        context={
+            'company': Eval('company', -1),
+            },
+        select=True, depends=['state', 'company'])
     party_lang = fields.Function(fields.Char('Party Language'),
         'on_change_with_party_lang')
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
+        context={
+            'company': Eval('company', -1),
+            },
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['party'])
+        depends=['party', 'company'])
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('lines', [0])),
             },
+        context={
+            'company': Eval('company', -1),
+            },
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['state', 'party'])
+        depends=['state', 'party', 'company'])
     invoice_address = fields.Many2One('party.address', 'Invoice Address',
         domain=[
             ('party', '=', If(Bool(Eval('invoice_party')),

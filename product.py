@@ -258,7 +258,10 @@ class ProductSupplier(
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['product', 'active'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['product', 'active', 'company'])
     product = fields.Many2One(
         'product.product', "Variant", select=True,
         domain=[
@@ -267,9 +270,17 @@ class ProductSupplier(
                 ()),
             If(Eval('active'), ('active', '=', True), ()),
             ],
-        depends=['template', 'active'])
-    party = fields.Many2One('party.party', 'Supplier', required=True,
-        ondelete='CASCADE', select=True)
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['template', 'active', 'company'])
+    party = fields.Many2One(
+        'party.party', 'Supplier', required=True, ondelete='CASCADE',
+        select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     name = fields.Char('Name', size=None, translate=True, select=True)
     code = fields.Char('Code', size=None, select=True)
     prices = fields.One2Many('purchase.product_supplier.price',
