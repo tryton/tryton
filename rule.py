@@ -26,10 +26,18 @@ class Rule(sequence_ordered(), MatchMixin, AnalyticMixin, ModelSQL, ModelView):
         states={
             'invisible': ~Eval('party_visible'),
             },
-        depends=['party_visible'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['party_visible', 'company'])
     party_visible = fields.Function(fields.Boolean("Party Visible"),
         'on_change_with_party_visible')
-    journal = fields.Many2One('account.journal', "Journal")
+    journal = fields.Many2One(
+        'account.journal', "Journal",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     @classmethod
     def default_company(cls):

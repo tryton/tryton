@@ -10,12 +10,13 @@ from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyMultiValueTestMixin)
 from trytond.modules.account.tests import create_chart, get_fiscalyear
 from trytond.modules.currency.tests import create_currency
 
 
-class AnalyticAccountTestCase(ModuleTestCase):
+class AnalyticAccountTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test AnalyticAccount module'
     module = 'analytic_account'
 
