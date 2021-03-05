@@ -275,7 +275,12 @@ class Context(ModelView):
 
 class CustomerMixin(object):
     __slots__ = ()
-    customer = fields.Many2One('party.party', "Customer")
+    customer = fields.Many2One(
+        'party.party', "Customer",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     @classmethod
     def _columns(cls, tables, withs):
@@ -318,7 +323,12 @@ class CustomerTimeseries(CustomerMixin, AbstractTimeseries, ModelView):
 
 class ProductMixin(object):
     __slots__ = ()
-    product = fields.Many2One('product.product', "Product")
+    product = fields.Many2One(
+        'product.product', "Product",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     @classmethod
     def _columns(cls, tables, withs):
@@ -368,7 +378,12 @@ class ProductTimeseries(ProductMixin, AbstractTimeseries, ModelView):
 
 class CategoryMixin(object):
     __slots__ = ()
-    category = fields.Many2One('product.category', "Category")
+    category = fields.Many2One(
+        'product.category', "Category",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     @classmethod
     def _joins(cls):

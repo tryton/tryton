@@ -12,10 +12,13 @@ from trytond.pool import Pool
 
 from trytond.modules.account.tests import create_chart
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin)
+    create_company, set_company, PartyCompanyCheckEraseMixin,
+    CompanyMultiValueTestMixin)
 
 
-class SaleTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
+class SaleTestCase(
+        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
+        ModuleTestCase):
     'Test Sale module'
     module = 'sale'
 

@@ -192,7 +192,12 @@ class SaleContext(ModelView):
         domain=[('type', '=', 'warehouse')])
     company = fields.Many2One('company.company', "Company")
     currency = fields.Many2One('currency.currency', "Currency")
-    customer = fields.Many2One('party.party', "Customer")
+    customer = fields.Many2One(
+        'party.party', "Customer",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     sale_date = fields.Date("Sale Date")
     quantity = fields.Float("Quantity")
 
