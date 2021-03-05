@@ -17,10 +17,13 @@ from trytond.exceptions import UserWarning, UserError
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin)
+    create_company, set_company, PartyCompanyCheckEraseMixin,
+    CompanyMultiValueTestMixin)
 
 
-class StockTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
+class StockTestCase(
+        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
+        ModuleTestCase):
     'Test Stock module'
     module = 'stock'
     longMessage = True

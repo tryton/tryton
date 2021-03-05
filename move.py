@@ -179,7 +179,10 @@ class Move(Workflow, ModelSQL, ModelView):
                 ('default_uom_category', '=', Eval('product_uom_category')),
                 ())
             ],
-        depends=DEPENDS + ['product_uom_category'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=DEPENDS + ['product_uom_category', 'company'],
         help="The product that the move is associated with.")
     product_uom_category = fields.Function(
         fields.Many2One('product.uom.category', 'Product Uom Category'),

@@ -1061,7 +1061,10 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
                 ('products', '=', Eval('product')),
                 ()),
             ],
-        depends=['product'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['product', 'company'])
     product = fields.Many2One(
         'product.product', "Variant",
         ondelete='CASCADE', select=True,
@@ -1070,7 +1073,10 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
                 ('template', '=', Eval('template')),
                 ()),
             ],
-        depends=['template'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['template', 'company'])
     company = fields.Many2One(
         'company.company', "Company", ondelete='CASCADE', required=True)
 

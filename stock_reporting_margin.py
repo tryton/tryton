@@ -337,7 +337,12 @@ class Context(ModelView):
 class ProductMixin:
     __slots__ = ()
 
-    product = fields.Many2One('product.product', "Product")
+    product = fields.Many2One(
+        'product.product', "Product",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     internal_quantity = fields.Float("Internal Quantity")
     quantity = fields.Function(fields.Float(
             "Quantity", digits=(16, Eval('unit_digits', 2)),

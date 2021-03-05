@@ -101,7 +101,10 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
                     | Eval('incoming_moves', [0]))
                 & Eval('supplier')),
             }, required=True,
-        depends=['state', 'supplier'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'supplier', 'company'],
         help="The party that supplied the stock.")
     supplier_location = fields.Function(fields.Many2One('stock.location',
             'Supplier Location'),
@@ -544,7 +547,10 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
                     | Eval('moves', [0]))
                     & Eval('supplier', 0)),
             }, required=True,
-        depends=['state', 'supplier'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'supplier', 'company'],
         help="The party that supplied the stock.")
     delivery_address = fields.Many2One('party.address', 'Delivery Address',
         states={
@@ -897,7 +903,10 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             'readonly': ((Eval('state') != 'draft')
                 | Eval('outgoing_moves', [0])),
             },
-        depends=['state'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'],
         help="The party that purchased the stock.")
     customer_location = fields.Function(fields.Many2One('stock.location',
             'Customer Location'), 'on_change_with_customer_location')
@@ -1518,7 +1527,10 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
             'readonly': ((Eval('state') != 'draft')
                 | Eval('incoming_moves', [0])),
             },
-        depends=['state'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'],
         help="The party that purchased the stock.")
     customer_location = fields.Function(fields.Many2One('stock.location',
             'Customer Location'), 'on_change_with_customer_location')
