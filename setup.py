@@ -63,7 +63,12 @@ for dep in info.get('depends', []):
         requires.append(get_require_version('trytond_%s' % dep))
 requires.append(get_require_version('trytond'))
 
-tests_require = []
+tests_require = [
+    get_require_version('trytond_company'),
+    get_require_version('trytond_commission'),
+    get_require_version('trytond_party'),
+    get_require_version('trytond_web_user'),
+    ]
 dependency_links = []
 if minor_version % 2:
     dependency_links.append(
