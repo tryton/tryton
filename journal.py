@@ -13,13 +13,23 @@ class Journal(ModelSQL, ModelView):
     'Statement Journal'
     __name__ = 'account.statement.journal'
     name = fields.Char('Name', required=True)
-    journal = fields.Many2One('account.journal', 'Journal', required=True,
-        domain=[('type', '=', 'statement')])
+    journal = fields.Many2One(
+        'account.journal', 'Journal', required=True,
+        domain=[('type', '=', 'statement')],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     currency = fields.Many2One('currency.currency', 'Currency', required=True)
     company = fields.Many2One('company.company', 'Company', required=True,
             select=True)
     company_party = fields.Function(
-        fields.Many2One('party.party', "Company Party"),
+        fields.Many2One(
+            'party.party', "Company Party",
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
         'on_change_with_company_party')
     validation = fields.Selection([
             ('balance', 'Balance'),

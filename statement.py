@@ -696,7 +696,11 @@ def origin_mixin(_states, _depends):
         currency_digits = fields.Function(fields.Integer(
                 "Currency Digits"), 'on_change_with_currency_digits')
         party = fields.Many2One(
-            'party.party', "Party", states=_states, depends=_depends)
+            'party.party', "Party", states=_states,
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=_depends + ['company'])
         account = fields.Many2One(
             'account.account', "Account",
             domain=[
