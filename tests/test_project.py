@@ -12,10 +12,13 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.transaction import Transaction
 
 from trytond.modules.company.tests import (
-    create_company, set_company, PartyCompanyCheckEraseMixin)
+    create_company, set_company, PartyCompanyCheckEraseMixin,
+    CompanyMultiValueTestMixin)
 
 
-class ProjectTestCase(PartyCompanyCheckEraseMixin, ModuleTestCase):
+class ProjectTestCase(
+        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
+        ModuleTestCase):
     'Test Project module'
     module = 'project'
 

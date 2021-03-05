@@ -132,7 +132,11 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     party = fields.Many2One('party.party', 'Party',
         states={
             'invisible': Eval('type') != 'project',
-            }, depends=['type'])
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['type', 'company'])
     party_address = fields.Many2One('party.address', 'Contact Address',
         domain=[('party', '=', Eval('party'))],
         states={
