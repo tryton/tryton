@@ -5,6 +5,7 @@ from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelSQL, fields
 from trytond.modules.company.model import CompanyValueMixin
 from trytond.modules.party.exceptions import EraseError
+from trytond.pyson import Eval
 
 payment_direct_debit = fields.Boolean(
     "Direct Debit", help="Check if supplier does direct debit.")
@@ -26,7 +27,11 @@ class PartyPaymentDirectDebit(ModelSQL, CompanyValueMixin):
     "Party Payment Direct Debit"
     __name__ = 'party.party.payment_direct_debit'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     payment_direct_debit = payment_direct_debit
 
 

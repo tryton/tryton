@@ -254,8 +254,12 @@ class Payment(Workflow, ModelSQL, ModelView):
         'on_change_with_currency_digits')
     kind = fields.Selection(KINDS, 'Kind', required=True,
         states=_STATES, depends=_DEPENDS)
-    party = fields.Many2One('party.party', 'Party', required=True,
-        states=_STATES, depends=_DEPENDS)
+    party = fields.Many2One(
+        'party.party', "Party", required=True, states=_STATES,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=_DEPENDS + ['company'])
     date = fields.Date('Date', required=True, states=_STATES, depends=_DEPENDS)
     amount = fields.Numeric('Amount', required=True,
         digits=(16, Eval('currency_digits', 2)), states=_STATES,
