@@ -134,7 +134,11 @@ class PartyCreditLimitAmount(ModelSQL, CompanyValueMixin):
     "Party Credit Limit Amount"
     __name__ = 'party.party.credit_limit_amount'
     party = fields.Many2One(
-        'party.party', "Party", ondelete='CASCADE', select=True)
+        'party.party', "Party", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     credit_limit_amount = fields.Numeric(
         "Credit Limit Amount", digits=(16, Eval('credit_limit_digits', 2)),
         depends=['credit_limit_digits'])
