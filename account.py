@@ -279,6 +279,10 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
         help="A Python expression evaluated with 'amount' and 'pending'.")
     party = fields.Many2One(
         'party.party', "Party",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'],
         help="Leave empty to use the group named 'party' "
         "from the regular expressions.")
     account = fields.Many2One(

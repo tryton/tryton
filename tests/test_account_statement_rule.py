@@ -9,8 +9,10 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
+from trytond.modules.company.tests import CompanyMultiValueTestMixin
 
-class AccountStatementRuleTestCase(ModuleTestCase):
+
+class AccountStatementRuleTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test Account Statement Rule module'
     module = 'account_statement_rule'
 
