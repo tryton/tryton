@@ -7,8 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
+from trytond.modules.company.tests import CompanyMultiValueTestMixin
 
-class SaleComplaintTestCase(ModuleTestCase):
+
+class SaleComplaintTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test Sale Complaint module'
     module = 'sale_complaint'
 

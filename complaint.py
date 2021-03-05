@@ -38,8 +38,12 @@ class Complaint(Workflow, ModelSQL, ModelView):
     number = fields.Char('Number', readonly=True, select=True)
     reference = fields.Char('Reference', select=True)
     date = fields.Date('Date', states=_states, depends=_depends)
-    customer = fields.Many2One('party.party', 'Customer', required=True,
-        states=_states, depends=_depends)
+    customer = fields.Many2One(
+        'party.party', "Customer", required=True, states=_states,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=_depends + ['company'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('customer'))],
         states=_states, depends=_depends + ['customer'])
