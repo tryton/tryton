@@ -590,7 +590,11 @@ class ProductListPrice(ModelSQL, CompanyValueMixin):
     "Product List Price"
     __name__ = 'product.list_price'
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE', select=True)
+        'product.template', "Template", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     list_price = fields.Numeric("List Price", digits=price_digits)
 
     @classmethod
@@ -616,7 +620,11 @@ class ProductCostPriceMethod(ModelSQL, CompanyValueMixin):
     "Product Cost Price Method"
     __name__ = 'product.cost_price_method'
     template = fields.Many2One(
-        'product.template', "Template", ondelete='CASCADE', select=True)
+        'product.template', "Template", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     cost_price_method = fields.Selection(
         'get_cost_price_methods', "Cost Price Method")
 
@@ -672,7 +680,11 @@ class ProductCostPrice(ModelSQL, CompanyValueMixin):
     "Product Cost Price"
     __name__ = 'product.cost_price'
     product = fields.Many2One(
-        'product.product', "Product", ondelete='CASCADE', select=True)
+        'product.product', "Product", ondelete='CASCADE', select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     cost_price = fields.Numeric(
         "Cost Price", digits=price_digits)
 
