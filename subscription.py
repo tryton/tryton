@@ -60,22 +60,32 @@ class Subscription(Workflow, ModelSQL, ModelView):
             'readonly': ((Eval('state') != 'draft')
                 | (Eval('lines', [0]) & Eval('party'))),
             },
-        depends=['state'],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'],
         help="The party who subscribes.")
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
+        context={
+            'company': Eval('company', -1),
+            },
         search_context={
             'related_party': Eval('party'),
-            })
+            },
+        depends=['company', 'party'])
     invoice_party = fields.Many2One('party.party', "Invoice Party",
         states={
             'readonly': ((Eval('state') != 'draft')
                 | Eval('lines', [0])),
             },
+        context={
+            'company': Eval('company', -1),
+            },
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['state', 'party'])
+        depends=['state', 'company', 'party'])
     invoice_address = fields.Many2One(
         'party.address', "Invoice Address",
         domain=[
