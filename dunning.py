@@ -107,7 +107,12 @@ class Dunning(ModelSQL, ModelView):
             ], 'State', readonly=True)
     active = fields.Function(fields.Boolean('Active'), 'get_active',
         searcher='search_active')
-    party = fields.Function(fields.Many2One('party.party', 'Party'),
+    party = fields.Function(fields.Many2One(
+            'party.party', 'Party',
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
         'get_line_field', searcher='search_line_field')
     amount = fields.Function(fields.Numeric('Amount',
             digits=(16, Eval('currency_digits', 2)),
