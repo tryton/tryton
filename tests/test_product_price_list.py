@@ -6,10 +6,11 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyMultiValueTestMixin)
 
 
-class ProductPriceListTestCase(ModuleTestCase):
+class ProductPriceListTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test ProductPriceList module'
     module = 'product_price_list'
 
