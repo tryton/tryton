@@ -20,7 +20,11 @@ class Work(metaclass=PoolMeta):
     product = fields.Many2One('product.product', 'Product',
         domain=[
             ('type', '=', 'service'),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     list_price = fields.Numeric('List Price', digits=price_digits)
     revenue = fields.Function(fields.Numeric('Revenue',
             digits=(16, Eval('currency_digits', 2)),
