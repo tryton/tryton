@@ -106,7 +106,11 @@ class ConfigurationTaxRounding(ModelSQL, CompanyValueMixin):
     'Account Configuration Tax Rounding'
     __name__ = 'account.configuration.tax_rounding'
     configuration = fields.Many2One('account.configuration', 'Configuration',
-        required=True, ondelete='CASCADE')
+        required=True, ondelete='CASCADE',
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     tax_rounding = fields.Selection(tax_roundings, 'Method', required=True)
 
     @classmethod

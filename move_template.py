@@ -22,7 +22,12 @@ class MoveTemplate(DeactivableMixin, ModelSQL, ModelView):
     keywords = fields.One2Many('account.move.template.keyword', 'move',
         'Keywords')
     company = fields.Many2One('company.company', 'Company', required=True)
-    journal = fields.Many2One('account.journal', 'Journal', required=True)
+    journal = fields.Many2One(
+        'account.journal', 'Journal', required=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     date = fields.Char('Date', help='Leave empty for today.')
     description = fields.Char('Description',
         help="Keyword values substitutions are identified "

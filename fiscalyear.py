@@ -352,7 +352,11 @@ class BalanceNonDeferralStart(ModelView):
     journal = fields.Many2One('account.journal', 'Journal', required=True,
         domain=[
             ('type', '=', 'situation'),
-            ])
+            ],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('fiscalyear', '=', Eval('fiscalyear')),

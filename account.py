@@ -1244,7 +1244,12 @@ class AccountParty(ActivePeriodMixin, ModelSQL):
     "Account Party"
     __name__ = 'account.account.party'
     account = fields.Many2One('account.account', "Account")
-    party = fields.Many2One('party.party', "Party")
+    party = fields.Many2One(
+        'party.party', "Party",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     name = fields.Char("Name")
     code = fields.Char("Code")
     company = fields.Many2One('company.company', "Company")
@@ -1833,6 +1838,10 @@ class GeneralLedgerAccountContext(ModelView):
     posted = fields.Boolean('Posted Move', help="Only included posted moves.")
     journal = fields.Many2One(
         'account.journal', "Journal",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'],
         help="Only included moves from the journal.")
 
     @classmethod
@@ -1886,7 +1895,12 @@ class GeneralLedgerAccountParty(_GeneralLedgerAccount):
     "General Ledger Account Party"
     __name__ = 'account.general_ledger.account.party'
 
-    party = fields.Many2One('party.party', "Party")
+    party = fields.Many2One(
+        'party.party', "Party",
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
 
     @classmethod
     def __setup__(cls):
@@ -1944,7 +1958,10 @@ class GeneralLedgerLine(ModelSQL, ModelView):
         states={
             'invisible': ~Eval('party_required', False),
             },
-        depends=['party_required'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['party_required', 'company'])
     party_required = fields.Boolean('Party Required')
     company = fields.Many2One('company.company', 'Company')
     debit = fields.Numeric('Debit',
@@ -2361,7 +2378,12 @@ class AgedBalance(ModelSQL, ModelView):
     'Aged Balance'
     __name__ = 'account.aged_balance'
 
-    party = fields.Many2One('party.party', 'Party')
+    party = fields.Many2One(
+        'party.party', 'Party',
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     company = fields.Many2One('company.company', 'Company')
     term0 = fields.Numeric('Now',
         digits=(16, Eval('currency_digits', 2)),

@@ -62,7 +62,10 @@ class Move(ModelSQL, ModelView):
         states={
             'readonly': Eval('number') & Eval('journal'),
             },
-        depends=['number'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['number', 'company'])
     date = fields.Date('Effective Date', required=True, select=True,
         states=_MOVE_STATES, depends=_MOVE_DEPENDS)
     post_date = fields.Date('Post Date', readonly=True)
@@ -1317,7 +1320,11 @@ class WriteOff(DeactivableMixin, ModelSQL, ModelView):
     company = fields.Many2One('company.company', "Company", required=True)
     name = fields.Char("Name", required=True, translate=True)
     journal = fields.Many2One('account.journal', "Journal", required=True,
-        domain=[('type', '=', 'write-off')])
+        domain=[('type', '=', 'write-off')],
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     credit_account = fields.Many2One('account.account', "Credit Account",
         required=True,
         domain=[
@@ -1759,9 +1766,18 @@ class ReconcileShow(ModelView):
     accounts = fields.Many2Many('account.account', None, None, 'Account',
         readonly=True)
     account = fields.Many2One('account.account', 'Account', readonly=True)
-    parties = fields.Many2Many('party.party', None, None, 'Parties',
-        readonly=True)
-    party = fields.Many2One('party.party', 'Party', readonly=True)
+    parties = fields.Many2Many(
+        'party.party', None, None, 'Parties', readonly=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
+    party = fields.Many2One(
+        'party.party', 'Party', readonly=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     lines = fields.Many2Many('account.move.line', None, None, 'Lines',
         domain=[
             ('account', '=', Eval('account')),
