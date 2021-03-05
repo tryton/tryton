@@ -7,12 +7,13 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 from trytond.exceptions import UserWarning
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyMultiValueTestMixin)
 from trytond.modules.account.tests import create_chart, get_fiscalyear
 from trytond.modules.account_invoice.tests import set_invoice_sequences
 
 
-class SaleCreditLimitTestCase(ModuleTestCase):
+class SaleCreditLimitTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test SaleCreditLimit module'
     module = 'sale_credit_limit'
 
