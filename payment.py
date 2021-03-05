@@ -62,8 +62,13 @@ INITIATOR_IDS = [
 
 class Journal(metaclass=PoolMeta):
     __name__ = 'account.payment.journal'
-    company_party = fields.Function(fields.Many2One('party.party',
-            'Company Party'), 'on_change_with_company_party')
+    company_party = fields.Function(fields.Many2One(
+            'party.party', "Company Party",
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=['company']),
+        'on_change_with_company_party')
     sepa_bank_account_number = fields.Many2One('bank.account.number',
         'Bank Account Number', states={
             'required': Eval('process_method') == 'sepa',
@@ -409,7 +414,10 @@ class Mandate(Workflow, ModelSQL, ModelView):
             'readonly': Eval('state').in_(
                 ['requested', 'validated', 'cancelled']),
             },
-        depends=['state'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'])
     account_number = fields.Many2One('bank.account.number', 'Account Number',
         ondelete='RESTRICT',
         states={

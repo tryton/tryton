@@ -15,7 +15,8 @@ from trytond.modules.account_payment_sepa.payment import CAMT054
 from trytond.pool import Pool
 
 from trytond.modules.currency.tests import create_currency
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyMultiValueTestMixin)
 from trytond.modules.account.tests import create_chart
 
 
@@ -147,7 +148,7 @@ def validate_file(flavor, kind, xsd=None):
         schema.assertValid(sepa_xml)
 
 
-class AccountPaymentSepaTestCase(ModuleTestCase):
+class AccountPaymentSepaTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
     'Test Account Payment SEPA module'
     module = 'account_payment_sepa'
 
