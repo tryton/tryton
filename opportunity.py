@@ -41,17 +41,25 @@ class SaleOpportunity(
 
     number = fields.Char('Number', readonly=True, required=True, select=True)
     reference = fields.Char('Reference', select=True)
-    party = fields.Many2One('party.party', 'Party', select=True,
+    party = fields.Many2One(
+        'party.party', "Party", select=True,
         states={
             'readonly': Eval('state').in_(['converted', 'lost', 'cancelled']),
             'required': ~Eval('state').in_(['lead', 'lost', 'cancelled']),
-            }, depends=['state'])
+            },
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['state', 'company'])
     contact = fields.Many2One(
         'party.contact_mechanism', "Contact",
+        context={
+            'company': Eval('company', -1),
+            },
         search_context={
             'related_party': Eval('party'),
             },
-        depends=['party'])
+        depends=['party', 'company'])
     address = fields.Many2One('party.address', 'Address',
         domain=[('party', '=', Eval('party'))],
         select=True, depends=['party', 'state'],
