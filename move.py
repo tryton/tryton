@@ -474,10 +474,12 @@ class Move(Workflow, ModelSQL, ModelView):
         return ((from_type != 'storage' and to_type == 'storage')
             or (from_type == 'storage' and to_type != 'storage'))
 
-    @fields.depends('from_location')
+    @fields.depends('from_location', 'quantity')
     def on_change_with_assignation_required(self, name=None):
         if self.from_location:
-            return self.from_location.type in {'storage', 'view'}
+            return (
+                self.quantity
+                and self.from_location.type in {'storage', 'view'})
 
     @staticmethod
     def _get_shipment():

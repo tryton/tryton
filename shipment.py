@@ -1249,6 +1249,9 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def pick(cls, shipments):
         pool = Pool()
         Move = pool.get('stock.move')
+        Move.delete([
+                m for s in shipments for m in s.inventory_moves
+                if m.state == 'staging'])
         Move.do([m for s in shipments for m in s.inventory_moves])
         cls._sync_inventory_to_outgoing(shipments, quantity=True)
 
@@ -1350,6 +1353,9 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Move = pool.get('stock.move')
         Date = pool.get('ir.date')
 
+        Move.delete([
+                m for s in shipments for m in s.outgoing_moves
+                if m.state == 'staging'])
         Move.do([m for s in shipments for m in s.outgoing_moves])
         cls.write([s for s in shipments if not s.effective_date], {
                 'effective_date': Date.today(),
