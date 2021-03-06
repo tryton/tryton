@@ -14,6 +14,7 @@ from trytond.model import (ModelView, ModelSQL, DeactivableMixin, fields,
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.pyson import Eval, If, PYSONEncoder, PYSONDecoder
 from trytond.transaction import Transaction
+from trytond.tools import lstrip_wildcard
 from trytond.pool import Pool
 
 from .exceptions import AccountValidationError
@@ -268,11 +269,17 @@ class Account(
 
     @classmethod
     def search_rec_name(cls, name, clause):
-        accounts = cls.search([('code',) + tuple(clause[1:])], limit=1)
-        if accounts:
-            return [('code',) + tuple(clause[1:])]
+        if clause[1].startswith('!') or clause[1].startswith('not '):
+            bool_op = 'AND'
         else:
-            return [(cls._rec_name,) + tuple(clause[1:])]
+            bool_op = 'OR'
+        code_value = clause[2]
+        if clause[1].endswith('like'):
+            code_value = lstrip_wildcard(clause[2])
+        return [bool_op,
+            ('code', clause[1], code_value) + tuple(clause[3:]),
+            (cls._rec_name,) + tuple(clause[1:]),
+            ]
 
     def distribute(self, amount):
         "Return a list of (account, amount) distribution"
