@@ -392,3 +392,4 @@ class Wizard(URLMixin, PoolBase):
         context = Transaction().context
         if context.get('active_ids'):
             return self.model.browse(context['active_ids'])
+        return []
