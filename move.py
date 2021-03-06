@@ -626,18 +626,6 @@ class Move(Workflow, ModelSQL, ModelView):
             today = today_cache[move.company]
             if move.effective_date and move.effective_date > today:
                 return move
-        future_moves = sorted(filter(in_future, moves))
-        if future_moves:
-            names = ', '.join(m.rec_name for m in future_moves[:5])
-            if len(future_moves) > 5:
-                names += '...'
-            warning_name = (
-                    '%s.effective_date_future' % hashlib.md5(
-                        str(future_moves).encode('utf-8')).hexdigest())
-            if Warning.check(warning_name):
-                raise MoveFutureWarning(warning_name,
-                    gettext('stock.msg_move_effective_date_in_the_future',
-                        moves=names))
 
         def set_cost_values(cost_values):
             Value = Product.multivalue_model('cost_price')
@@ -688,6 +676,19 @@ class Move(Workflow, ModelSQL, ModelView):
                     cls.save(to_save)
                 if cost_values:
                     set_cost_values(cost_values)
+
+        future_moves = sorted(filter(in_future, moves))
+        if future_moves:
+            names = ', '.join(m.rec_name for m in future_moves[:5])
+            if len(future_moves) > 5:
+                names += '...'
+            warning_name = (
+                    '%s.effective_date_future' % hashlib.md5(
+                        str(future_moves).encode('utf-8')).hexdigest())
+            if Warning.check(warning_name):
+                raise MoveFutureWarning(warning_name,
+                    gettext('stock.msg_move_effective_date_in_the_future',
+                        moves=names))
 
     @property
     def _cost_price_pattern(self):
