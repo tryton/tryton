@@ -531,8 +531,11 @@ def AccountMixin(template=False):
                 bool_op = 'AND'
             else:
                 bool_op = 'OR'
+            code_value = clause[2]
+            if clause[1].endswith('like'):
+                code_value = lstrip_wildcard(clause[2])
             return [bool_op,
-                ('code',) + tuple(clause[1:]),
+                ('code', clause[1], code_value) + tuple(clause[3:]),
                 (cls._rec_name,) + tuple(clause[1:]),
                 ]
 
@@ -1053,20 +1056,6 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                     or field in {'reconcile', 'deferral',
                         'party_required', 'general_ledger_balance'}):
                 setattr(self, field, getattr(self.parent, field))
-
-    @classmethod
-    def search_rec_name(cls, name, clause):
-        if clause[1].startswith('!') or clause[1].startswith('not '):
-            bool_op = 'AND'
-        else:
-            bool_op = 'OR'
-        code_value = clause[2]
-        if clause[1].endswith('like'):
-            code_value = lstrip_wildcard(clause[2])
-        return [bool_op,
-            ('code', clause[1], code_value) + tuple(clause[3:]),
-            (cls._rec_name,) + tuple(clause[1:]),
-            ]
 
     @classmethod
     def check_second_currency(cls, accounts):
