@@ -247,6 +247,23 @@ class ModuleTestCase(unittest.TestCase):
                     field._type, mname))
 
     @with_transaction()
+    def test_model__access__(self):
+        "Test existing model __access__"
+        pool = Pool()
+        for mname, Model in pool.iterobject():
+            if not isregisteredby(Model, self.module):
+                continue
+            for field_name in Model.__access__:
+                self.assertIn(field_name, Model._fields.keys(),
+                    msg="Wrong __access__ '%s' for %s" % (field_name, mname))
+                field = Model._fields[field_name]
+                Target = field.get_target()
+                self.assertTrue(
+                    Target,
+                    msg='Missing target for __access__ "%s" of %s' % (
+                        field_name, mname))
+
+    @with_transaction()
     def test_view(self):
         'Test validity of all views of the module'
         pool = Pool()
@@ -529,10 +546,22 @@ class ModuleTestCase(unittest.TestCase):
         'Test missing default model access'
         pool = Pool()
         Access = pool.get('ir.model.access')
-        no_groups = {a.model.name for a in Access.search([
+        no_groups = {a.model.model for a in Access.search([
                     ('group', '=', None),
                     ])}
-        with_groups = {a.model.name for a in Access.search([
+
+        def has_access(Model, models):
+            if Model.__name__ in models:
+                return True
+            for field_name in Model.__access__:
+                Target = Model._fields[field_name].get_target()
+                if has_access(Target, models):
+                    return True
+        for mname, Model in pool.iterobject():
+            if has_access(Model, no_groups):
+                no_groups.add(mname)
+
+        with_groups = {a.model.model for a in Access.search([
                     ('group', '!=', None),
                     ])}
 

@@ -17,6 +17,11 @@ Class attributes are:
     It contains the a unique name to reference the model throughout the
     platform.
 
+.. attribute:: Model.__access__
+
+   A set that contains the names of relation field for which the access rights
+   are also checked for this model.
+
 .. attribute:: Model.__rpc__
 
     It contains a dictionary with method name as key and an instance of

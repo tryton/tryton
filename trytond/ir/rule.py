@@ -167,6 +167,25 @@ class Rule(ModelSQL, ModelView):
 
         assert mode in cls.modes
 
+        model_names = []
+        model2field = defaultdict(list)
+
+        def update_model_names(Model, path=None):
+            if Model.__name__ in model_names:
+                return
+            model_names.append(Model.__name__)
+            if path:
+                model2field[Model.__name__].append(path)
+            for field_name in Model.__access__:
+                field = getattr(Model, field_name)
+                Target = field.get_target()
+                if path:
+                    target_path = path + '.' + field_name
+                else:
+                    target_path = field_name
+                update_model_names(Target, target_path)
+        update_model_names(pool.get(model_name))
+
         cursor = transaction.connection.cursor()
         user_id = transaction.user
         # root user above constraint
@@ -179,7 +198,7 @@ class Rule(ModelSQL, ModelView):
                 ).join(model,
                 condition=rule_group.model == model.id
                 ).select(rule_table.id,
-                where=(model.model == model_name)
+                where=(model.model.in_(model_names))
                 & (getattr(rule_group, 'perm_%s' % mode) == Literal(True))
                 & (rule_group.id.in_(
                         rule_group_group.join(
@@ -198,7 +217,7 @@ class Rule(ModelSQL, ModelView):
         cursor.execute(*rule_group.join(model,
                 condition=rule_group.model == model.id
                 ).select(rule_group.id,
-                where=(model.model == model_name)
+                where=(model.model.in_(model_names))
                 & ~rule_group.id.in_(rule_table.select(rule_table.rule_group))
                 & rule_group.id.in_(rule_group_group.join(user_group,
                         condition=rule_group_group.group == user_group.group
@@ -215,6 +234,12 @@ class Rule(ModelSQL, ModelView):
                 assert rule.domain, ('Rule domain empty,'
                     'check if migration was done')
                 dom = decoder.decode(rule.domain)
+                target_model = rule.rule_group.model.model
+                if target_model in model2field:
+                    target_dom = ['OR']
+                    for field in model2field[target_model]:
+                        target_dom.append((field, 'where', dom))
+                    dom = target_dom
                 if rule.rule_group.global_p:
                     clause_global[rule.rule_group].append(dom)
                 else:

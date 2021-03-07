@@ -14,6 +14,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="field_description" colspan="3"/>
     <label name="help" yfill="1"/>
     <field name="help" colspan="3"/>
+    <label name="access"/>
+    <field name="access"/>
     <label name="module"/>
     <field name="module"/>
 </form>

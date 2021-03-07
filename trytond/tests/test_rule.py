@@ -623,6 +623,63 @@ class ModelRuleTestCase(unittest.TestCase):
         value, = TestRule.read([non_deletable.id], ['_delete'])
         self.assertEqual(value['_delete'], False)
 
+    @with_transaction()
+    def test_model_with_rule(self):
+        "Test model with rule"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleModel = pool.get('test.rule.model')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': True,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        rule, = TestRule.create([{'field': 'bar'}])
+        test, = TestRuleModel.create([{'rule': rule.id, 'name': 'foo'}])
+
+        TestRuleModel.read([test.id], ['name'])
+
+    @with_transaction()
+    def test_model_with_rule_fail(self):
+        "Test model with rule fail"
+        pool = Pool()
+        TestRule = pool.get('test.rule')
+        TestRuleModel = pool.get('test.rule.model')
+        RuleGroup = pool.get('ir.rule.group')
+        Model = pool.get('ir.model')
+
+        model, = Model.search([('model', '=', 'test.rule')])
+        rule_group, = RuleGroup.create([{
+                    'name': "Field different from foo",
+                    'model': model.id,
+                    'global_p': True,
+                    'perm_read': True,
+                    'perm_create': False,
+                    'perm_write': False,
+                    'perm_delete': False,
+                    'rules': [('create', [{
+                                    'domain': json.dumps(
+                                        [('field', '!=', 'foo')]),
+                                    }])],
+                    }])
+        rule, = TestRule.create([{'field': 'foo'}])
+        test, = TestRuleModel.create([{'rule': rule.id, 'name': 'foo'}])
+
+        with self.assertRaisesRegex(AccessError, "Field different from foo"):
+            TestRuleModel.read([test.id], ['name'])
+
 
 def suite():
     suite_ = unittest.TestSuite()

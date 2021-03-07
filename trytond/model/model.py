@@ -45,6 +45,7 @@ class Model(URLMixin, PoolBase, metaclass=ModelMeta):
             'fields_get': RPC(cache=dict(days=1)),
             'pre_validate': RPC(instantiate=0),
             }
+        cls.__access__ = set()
 
         # Copy fields and update depends
         for attr in dir(cls):

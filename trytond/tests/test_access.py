@@ -18,11 +18,13 @@ class _ModelAccessTestCase(unittest.TestCase):
     def setUpClass(cls):
         activate_module('tests')
 
+    model_name = model_access_name = 'test.access'
+
     @property
     def model(self):
         pool = Pool()
         Model = pool.get('ir.model')
-        model, = Model.search([('model', '=', 'test.access')])
+        model, = Model.search([('model', '=', self.model_access_name)])
         return model
 
     @property
@@ -42,7 +44,7 @@ class _ModelAccessTestCase(unittest.TestCase):
     def test_access_empty(self):
         "Test access without model access"
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
 
         self._assert(record)
@@ -52,7 +54,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test access without group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -67,7 +69,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test no access without group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -82,7 +84,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test one access with groups"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -102,7 +104,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test one access without group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -122,7 +124,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test all access with groups"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -142,7 +144,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test no access with groups"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -162,7 +164,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test one access with group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -177,7 +179,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         "Test no access with group"
         pool = Pool()
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         ModelAccess.create([{
                     'model': self.model.id,
@@ -193,7 +195,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         pool = Pool()
         Group = pool.get('res.group')
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         ModelAccess.create([{
@@ -215,7 +217,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         pool = Pool()
         Group = pool.get('res.group')
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         ModelAccess.create([{
@@ -237,7 +239,7 @@ class _ModelAccessTestCase(unittest.TestCase):
         pool = Pool()
         Group = pool.get('res.group')
         ModelAccess = pool.get('ir.model.access')
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
         group, = Group.create([{'name': 'Test'}])
         ModelAccess.create([{
@@ -259,13 +261,13 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
 
     def _assert(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         TestAccess.read([record.id], ['field1'])
         TestAccess.search([])
 
     def _assert_raises(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         with self.assertRaises(AccessError):
             TestAccess.read([record.id], ['field1'])
         with self.assertRaises(AccessError):
@@ -275,7 +277,7 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
     def test_access_relate_empty(self):
         "Test access on search relate without model access"
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         record, = TestAccess.create([{}])
 
         TestAccess.read([record.id], ['relate.value'])
@@ -286,7 +288,7 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
     def test_access_relate(self):
         "Test access on search relate"
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
         record, = TestAccess.create([{}])
@@ -307,7 +309,7 @@ class ModelAccessReadTestCase(_ModelAccessTestCase):
     def test_no_access_relate(self):
         "Test no access on search relate"
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         Model = pool.get('ir.model')
         ModelAccess = pool.get('ir.model.access')
         record, = TestAccess.create([{}])
@@ -333,12 +335,12 @@ class ModelAccessWriteTestCase(_ModelAccessTestCase):
 
     def _assert(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         TestAccess.write([record], {})
 
     def _assert_raises(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         with self.assertRaises(AccessError):
             TestAccess.write([record], {})
 
@@ -348,12 +350,12 @@ class ModelAccessCreateTestCase(_ModelAccessTestCase):
 
     def _assert(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         TestAccess.create([{}])
 
     def _assert_raises(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         with self.assertRaises(AccessError):
             TestAccess.create([{}])
 
@@ -363,14 +365,33 @@ class ModelAccessDeleteTestCase(_ModelAccessTestCase):
 
     def _assert(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         TestAccess.delete([record])
 
     def _assert_raises(self, record):
         pool = Pool()
-        TestAccess = pool.get('test.access')
+        TestAccess = pool.get(self.model_name)
         with self.assertRaises(AccessError):
             TestAccess.delete([record])
+
+
+class ModelAccessModelTestCase(_ModelAccessTestCase):
+    model_name = 'test.access.model'
+    _perm = 'perm_read'
+
+    def _assert(self, record):
+        pool = Pool()
+        TestAccess = pool.get(self.model_name)
+        TestAccess.read([record.id], ['field1'])
+        TestAccess.search([])
+
+    def _assert_raises(self, record):
+        pool = Pool()
+        TestAccess = pool.get(self.model_name)
+        with self.assertRaises(AccessError):
+            TestAccess.read([record.id], ['field1'])
+        with self.assertRaises(AccessError):
+            TestAccess.search([])
 
 
 class _ModelFieldAccessTestCase(unittest.TestCase):
@@ -926,6 +947,8 @@ def suite():
         ).loadTestsFromTestCase(ModelAccessCreateTestCase))
     suite_.addTests(unittest.TestLoader(
         ).loadTestsFromTestCase(ModelAccessDeleteTestCase))
+    suite_.addTests(unittest.TestLoader(
+        ).loadTestsFromTestCase(ModelAccessModelTestCase))
     suite_.addTests(unittest.TestLoader(
         ).loadTestsFromTestCase(ModelFieldAccessReadTestCase))
     suite_.addTests(unittest.TestLoader(

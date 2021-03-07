@@ -17,8 +17,23 @@ class TestRuleRelation(ModelSQL):
     field = fields.Char("Field")
 
 
+class TestRuleModel(ModelSQL):
+    "Test Rule from Model"
+    __name__ = 'test.rule.model'
+    __access__ = 'test.rule'
+
+    name = fields.Char("Name")
+    rule = fields.Many2One('test.rule', "Rule")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('rule')
+
+
 def register(module):
     Pool.register(
         TestRule,
         TestRuleRelation,
+        TestRuleModel,
         module=module, type_='model')

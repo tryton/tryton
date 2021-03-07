@@ -20,7 +20,8 @@ CREATE TABLE ir_model_field (
     field_description VARCHAR,
     ttype VARCHAR,
     help TEXT,
-    module VARCHAR
+    module VARCHAR,
+    "access" BOOLEAN
 );
 
 

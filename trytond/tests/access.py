@@ -23,8 +23,20 @@ class TestAccessRelate(ModelSQL):
     value = fields.Integer("Value")
 
 
+class TestAccessModel(TestAccess):
+    "Test Access from Model"
+    __name__ = 'test.access.model'
+    access = fields.Many2One('test.access', "Access")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('access')
+
+
 def register(module):
     Pool.register(
         TestAccess,
         TestAccessRelate,
+        TestAccessModel,
         module=module, type_='model')

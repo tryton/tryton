@@ -29,6 +29,7 @@ CREATE TABLE ir_model_field (
     ttype VARCHAR,
     help TEXT,
     module VARCHAR,
+    "access" BOOL,
     PRIMARY KEY(id),
     FOREIGN KEY (model) REFERENCES ir_model(id) ON DELETE CASCADE
 );

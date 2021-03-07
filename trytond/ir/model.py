@@ -243,6 +243,15 @@ class ModelField(ModelSQL, ModelView):
         depends=['module'])
     module = fields.Char('Module',
        help="Module in which this field is defined.")
+    access = fields.Boolean(
+        "Access",
+        states={
+            'invisible': ~Eval('relation'),
+            },
+        depends=['relation'],
+        help="If checked, the access right on the model of the field "
+        "is also tested against the relation of the field.")
+
     _get_name_cache = Cache('ir.model.field.get_name')
 
     @classmethod
@@ -273,6 +282,7 @@ class ModelField(ModelSQL, ModelView):
                 ir_model_field.relation.as_('relation'),
                 ir_model_field.module.as_('module'),
                 ir_model_field.help.as_('help'),
+                ir_model_field.access.as_('access'),
                 where=ir_model.model == model.__name__))
         model_fields = {f['name']: f for f in cursor_dict(cursor)}
 
@@ -283,27 +293,32 @@ class ModelField(ModelSQL, ModelView):
                 relation = field.relation_name
             else:
                 relation = None
+            access = field_name in model.__access__
 
             if field_name not in model_fields:
                 cursor.execute(*ir_model_field.insert(
                         [ir_model_field.model, ir_model_field.name,
                             ir_model_field.field_description,
                             ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help, ir_model_field.module],
+                            ir_model_field.help, ir_model_field.module,
+                            ir_model_field.access],
                         [[
                                 model_id, field_name,
                                 field.string,
                                 field._type, relation,
-                                field.help, module_name]]))
+                                field.help, module_name,
+                                access]]))
             elif (model_fields[field_name]['field_description'] != field.string
                     or model_fields[field_name]['ttype'] != field._type
                     or model_fields[field_name]['relation'] != relation
-                    or model_fields[field_name]['help'] != field.help):
+                    or model_fields[field_name]['help'] != field.help
+                    or model_fields[field_name]['access'] != access):
                 cursor.execute(*ir_model_field.update(
                         [ir_model_field.field_description,
                             ir_model_field.ttype, ir_model_field.relation,
-                            ir_model_field.help],
-                        [field.string, field._type, relation, field.help],
+                            ir_model_field.help, ir_model_field.access],
+                        [field.string, field._type, relation, field.help,
+                            access],
                         where=(ir_model_field.id
                             == model_fields[field_name]['id'])))
 
@@ -520,6 +535,18 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         else:
             return access
 
+        def fill_models(Model, models):
+            if Model.__name__ in models:
+                return
+            models.append(Model.__name__)
+            for field_name in Model.__access__:
+                field = getattr(Model, field_name)
+                fill_models(field.get_target(), models)
+        model2models = defaultdict(list)
+        for model in models:
+            fill_models(pool.get(model), model2models[model])
+
+        all_models = list(set(sum(model2models.values(), [])))
         default = {'read': True, 'write': True, 'create': True, 'delete': True}
         access = dict((m, default) for m in models)
         cursor.execute(*model_access.join(ir_model, 'LEFT',
@@ -542,16 +569,24 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 Max(Case(
                         (model_access.perm_delete == Literal(True), 1),
                         else_=0)),
-                where=ir_model.model.in_(models)
+                where=ir_model.model.in_(all_models)
                 & (model_access.active == Literal(True))
                 & ((
                         (user_group.user == user)
                         & (group.active == Literal(True)))
                     | (model_access.group == Null)),
                 group_by=ir_model.model))
-        access.update(dict(
-                (m, {'read': r, 'write': w, 'create': c, 'delete': d})
-                for m, r, w, c, d in cursor.fetchall()))
+        raw_access = {
+            m: {'read': r, 'write': w, 'create': c, 'delete': d}
+            for m, r, w, c, d in cursor.fetchall()}
+
+        for model in models:
+            access[model] = {
+                perm: max(
+                    (raw_access[m][perm] for m in model2models[model]
+                        if m in raw_access),
+                    default=True)
+                for perm in ['read', 'write', 'create', 'delete']}
         for model, maccess in access.items():
             cls._get_access_cache.set((user, model), maccess)
         return access
