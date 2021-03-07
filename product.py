@@ -362,6 +362,7 @@ class Product(
         cls._no_template_field.update(['products'])
 
         super(Product, cls).__setup__()
+        cls.__access__.add('template')
         cls._order.insert(0, ('rec_name', 'ASC'))
 
         t = cls.__table__()
@@ -773,6 +774,11 @@ class ProductIdentifier(sequence_ordered(), ModelSQL, ModelView):
             ], "Type")
     type_string = type.translated('type')
     code = fields.Char("Code", required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('product')
 
     @fields.depends('type', 'code')
     def on_change_with_code(self):

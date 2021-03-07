@@ -150,22 +150,6 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_product"
             icon="tryton-list"/>
 
-        <record model="ir.model.access" id="access_product">
-            <field name="model" search="[('model', '=', 'product.product')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_product_admin">
-            <field name="model" search="[('model', '=', 'product.product')]"/>
-            <field name="group" ref="group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.model.access" id="access_product_template">
             <field name="model" search="[('model', '=', 'product.template')]"/>
             <field name="perm_read" eval="True"/>
@@ -223,22 +207,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="priority" eval="20"/>
             <field name="name">identifier_list_sequence</field>
-        </record>
-
-        <record model="ir.model.access" id="access_product_identifier">
-            <field name="model" search="[('model', '=', 'product.identifier')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_product_identifier_admin">
-            <field name="model" search="[('model', '=', 'product.identifier')]"/>
-            <field name="group" ref="group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.sequence.type" id="sequence_type_product">
