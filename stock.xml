@@ -3,14 +3,16 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_stock_admin">
-            <field name="name">Stock Administration</field>
-        </record>
         <record model="res.group" id="group_stock">
             <field name="name">Stock</field>
         </record>
+        <record model="res.group" id="group_stock_admin">
+            <field name="name">Stock Administration</field>
+            <field name="parent" ref="group_stock"/>
+        </record>
         <record model="res.group" id="group_stock_force_assignment">
             <field name="name">Stock Force Assignment</field>
+            <field name="parent" ref="group_stock"/>
         </record>
         <record model="res.user-res.group"
             id="user_admin_group_stock_admin">
