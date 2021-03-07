@@ -88,22 +88,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">currency_rate_graph</field>
         </record>
 
-        <record model="ir.model.access" id="access_currency_rate">
-            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_currency_rate_currency_admin">
-            <field name="model" search="[('model', '=', 'currency.currency.rate')]"/>
-            <field name="group" ref="group_currency_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="cron_view_list">
             <field name="model">currency.cron</field>
             <field name="type">tree</field>

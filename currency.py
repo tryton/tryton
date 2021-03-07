@@ -260,6 +260,7 @@ class CurrencyRate(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('currency')
         t = cls.__table__()
         cls._sql_constraints = [
             ('date_currency_uniq', Unique(t, t.date, t.currency),
