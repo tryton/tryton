@@ -304,6 +304,11 @@ class AmendmentLine(ModelSQL, ModelView):
         fields.Many2One('product.uom.category', "Product UoM Category"),
         'on_change_with_product_uom_category')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('amendment')
+
     @fields.depends(
         'amendment',
         '_parent_amendment.purchase',
