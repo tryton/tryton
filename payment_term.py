@@ -121,6 +121,11 @@ class PaymentTermLine(sequence_ordered(), ModelSQL, ModelView):
         'account.invoice.payment_term.line.delta', 'line', 'Deltas')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('payment')
+
+    @classmethod
     def __register__(cls, module_name):
         sql_table = cls.__table__()
         super(PaymentTermLine, cls).__register__(module_name)
@@ -244,6 +249,11 @@ class PaymentTermLineRelativeDelta(sequence_ordered(), ModelSQL, ModelView):
     months = fields.Integer('Number of Months', required=True)
     weeks = fields.Integer('Number of Weeks', required=True)
     days = fields.Integer('Number of Days', required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('line')
 
     @classmethod
     def __register__(cls, module_name):

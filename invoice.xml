@@ -297,22 +297,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">invoice_tax_tree_sequence</field>
         </record>
 
-        <record model="ir.model.access" id="access_invoice_tax">
-            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_invoice_tax_account">
-            <field name="model" search="[('model', '=', 'account.invoice.tax')]"/>
-            <field name="group" ref="account.group_account"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="pay_start_view_form">
             <field name="model">account.invoice.pay.start</field>
             <field name="type">form</field>

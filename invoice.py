@@ -2419,6 +2419,11 @@ class InvoiceTax(sequence_ordered(), ModelSQL, ModelView):
     del _states, _depends
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('invoice')
+
+    @classmethod
     def __register__(cls, module_name):
         super(InvoiceTax, cls).__register__(module_name)
 
