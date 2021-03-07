@@ -1,3 +1,6 @@
+* Add paths and model context to action data
+* Add indentation in CSV export of tree
+* Manage which records to use for actions
 * Handle device cookie
 * Add breadcrumb as title of window form
 * Display revision on dialog

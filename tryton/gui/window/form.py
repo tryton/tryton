@@ -7,6 +7,7 @@ import gettext
 import locale
 import os
 import tempfile
+from itertools import zip_longest
 
 from gi.repository import Gdk, GLib, Gtk
 
@@ -339,7 +340,14 @@ class Form(SignalEvent, TabContent):
     def do_export(self, widget, export):
         if not self.modified_save():
             return
-        ids = [r.id for r in self.screen.selected_records]
+        if (self.screen.current_view
+                and self.screen.current_view.view_type == 'tree'
+                and self.screen.current_view.children_field):
+            ids = [r.id for r in self.screen.listed_records]
+            paths = self.screen.listed_paths
+        else:
+            ids = [r.id for r in self.screen.selected_records]
+            paths = self.screen.selected_paths
         fields = [f['name'] for f in export['export_fields.']]
         data = RPCExecute(
             'model', self.model, 'export_data', ids, fields,
@@ -352,8 +360,10 @@ class Form(SignalEvent, TabContent):
         with open(fname, 'w') as fp:
             writer = csv.writer(fp, delimiter=delimiter)
             writer.writerow(fields)
-            for row in data:
-                writer.writerow(WinExport.format_row(row))
+            for row, path in zip_longest(data, paths or []):
+                indent = len(path) - 1 if path else 0
+                if row:
+                    writer.writerow(WinExport.format_row(row, indent=indent))
         os.close(fileno)
         common.file_open(fname, 'csv')
 
@@ -575,11 +585,20 @@ class Form(SignalEvent, TabContent):
         action = action.copy()
         record_id = (self.screen.current_record.id
             if self.screen.current_record else None)
-        record_ids = [r.id for r in self.screen.selected_records]
+        if action.get('records') == 'listed':
+            record_ids = [r.id for r in self.screen.listed_records]
+            record_paths = self.screen.listed_paths
+        else:
+            record_ids = [r.id for r in self.screen.selected_records]
+            record_paths = self.screen.selected_paths
         data = {
             'model': self.screen.model_name,
+            'model_context': (
+                self.screen.context_screen.model_name
+                if self.screen.context_screen else None),
             'id': record_id,
             'ids': record_ids,
+            'paths': record_paths,
         }
         Action.execute(action, data, context=self.screen.local_context)
 
@@ -741,11 +760,15 @@ class Form(SignalEvent, TabContent):
             menuitem = Gtk.MenuItem(label=set_underline(name))
             menuitem.set_use_underline(True)
             menuitem.connect('activate', lambda m, func: func({
-                        'model': self.model,
-                        'ids': [r.id
-                            for r in self.screen.selected_records],
+                        'model': self.screen.model_name,
+                        'model_context': (
+                            self.screen.context_screen.model_name
+                            if self.screen.context_screen else None),
                         'id': (self.screen.current_record.id
                             if self.screen.current_record else None),
+                        'ids': [r.id
+                            for r in self.screen.selected_records],
+                        'paths': self.screen.selected_paths,
                         }), func)
             menuitem._update_action = True
             menu.add(menuitem)

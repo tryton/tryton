@@ -1182,6 +1182,50 @@ class ViewTree(View):
             id_paths.append(id_path)
         return id_paths
 
+    @property
+    def listed_records(self):
+        model = self.treeview.get_model()
+        if not self.children_field:
+            return list(model.group)
+
+        def get_listed_records(start):
+            records = []
+            if start:
+                iter_ = model.get_iter(Gtk.TreePath(start))
+            else:
+                iter_ = None
+            for idx in range(model.iter_n_children(iter_)):
+                path = start + (idx,)
+                iter_ = model.get_iter(path)
+                record = model.get_value(iter_, 0)
+                records.append(record)
+                if self.treeview.row_expanded(Gtk.TreePath(path)):
+                    records += get_listed_records(path)
+            return records
+        return get_listed_records(())
+
+    def get_listed_paths(self):
+        model = self.treeview.get_model()
+        if not self.children_field:
+            return [[r.id] for r in model.group]
+
+        def get_listed_paths(start=None, start_path=None):
+            paths = []
+            if start:
+                iter_ = model.get_iter(Gtk.TreePath(start))
+            else:
+                iter_ = None
+            for idx in range(model.iter_n_children(iter_)):
+                path = start + (idx,)
+                iter_ = model.get_iter(path)
+                record = model.get_value(iter_, 0)
+                id_path = start_path + [record.id]
+                paths.append(id_path)
+                if self.treeview.row_expanded(Gtk.TreePath(path)):
+                    paths += get_listed_paths(path, id_path)
+            return paths
+        return get_listed_paths((), [])
+
     def select_nodes(self, nodes):
         selection = self.treeview.get_selection()
         if not nodes:

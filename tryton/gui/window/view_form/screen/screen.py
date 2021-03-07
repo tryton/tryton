@@ -1124,6 +1124,25 @@ class Screen(SignalEvent):
     def selected_records(self):
         return self.current_view.selected_records if self.current_view else []
 
+    @property
+    def selected_paths(self):
+        if self.current_view and self.current_view.view_type == 'tree':
+            return self.current_view.get_selected_paths()
+
+    @property
+    def listed_records(self):
+        if self.current_view and self.current_view.view_type == 'tree':
+            return self.current_view.listed_records
+        elif self.current_record:
+            return [self.current_record]
+        else:
+            return []
+
+    @property
+    def listed_paths(self):
+        if self.current_view and self.current_view.view_type == 'tree':
+            return self.current_view.get_listed_paths()
+
     def clear(self):
         self.current_record = None
         self.group.clear()

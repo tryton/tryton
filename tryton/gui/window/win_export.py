@@ -8,6 +8,7 @@ import gettext
 import json
 import locale
 import urllib.parse
+from itertools import zip_longest
 from numbers import Number
 
 from gi.repository import Gdk, GObject, Gtk
@@ -41,6 +42,13 @@ class WinExport(WinCSV):
     @property
     def context(self):
         return self.screen.context
+
+    @property
+    def screen_is_tree(self):
+        return bool(
+            self.screen.current_view
+            and self.screen.current_view.view_type == 'tree'
+            and self.screen.current_view.children_field)
 
     def add_buttons(self, box):
         button_save_export = Gtk.Button(
@@ -116,7 +124,10 @@ class WinExport(WinCSV):
             self.selected_records, expand=True, fill=True, padding=3)
         self.selected_records.append_text(_("Listed Records"))
         self.selected_records.append_text(_("Selected Records"))
-        self.selected_records.set_active(1)
+        if not self.screen_is_tree:
+            self.selected_records.set_active(1)
+        else:
+            self.selected_records.set_active(0)
 
         self.ignore_search_limit = Gtk.CheckButton(
             label=_("Ignore search limit"))
@@ -125,7 +136,8 @@ class WinExport(WinCSV):
 
         self.selected_records.connect(
             'changed',
-            lambda w: self.ignore_search_limit.set_visible(not w.get_active()))
+            lambda w: self.ignore_search_limit.set_visible(
+                not w.get_active() and not self.screen_is_tree))
 
     def add_csv_header_param(self, box):
         self.add_field_names = Gtk.CheckButton(label=_("Add field names"))
@@ -320,6 +332,17 @@ class WinExport(WinCSV):
 
             if self.selected_records.get_active():
                 ids = [r.id for r in self.screen.selected_records]
+                paths = self.screen.selected_paths
+                try:
+                    data = RPCExecute(
+                        'model', self.model, 'export_data',
+                        ids, fields,
+                        context=self.context)
+                except RPCException:
+                    data = []
+            elif self.screen_is_tree:
+                ids = [r.id for r in self.screen.listed_records]
+                paths = self.screen.listed_paths
                 try:
                     data = RPCExecute(
                         'model', self.model, 'export_data',
@@ -328,6 +351,7 @@ class WinExport(WinCSV):
                 except RPCException:
                     data = []
             else:
+                paths = None
                 domain = self.screen.search_domain(
                     self.screen.screen_container.get_text())
                 if self.ignore_search_limit.get_active():
@@ -346,16 +370,16 @@ class WinExport(WinCSV):
                 fname = common.file_selection(_('Save As...'),
                         action=Gtk.FileChooserAction.SAVE)
                 if fname:
-                    self.export_csv(fname, fields2, data)
+                    self.export_csv(fname, fields2, data, paths)
             else:
                 fileno, fname = tempfile.mkstemp(
                     '.csv', common.slugify(self.name) + '_')
-                self.export_csv(fname, fields2, data, popup=False)
+                self.export_csv(fname, fields2, data, paths, popup=False)
                 os.close(fileno)
                 common.file_open(fname, 'csv')
         self.destroy()
 
-    def export_csv(self, fname, fields, data, popup=True):
+    def export_csv(self, fname, fields, data, paths, popup=True):
         encoding = self.csv_enc.get_active_text() or 'UTF-8'
         locale_format = self.csv_locale.get_active()
 
@@ -366,8 +390,11 @@ class WinExport(WinCSV):
                 delimiter=self.get_delimiter())
             if self.add_field_names.get_active():
                 writer.writerow(fields)
-            for row in data:
-                writer.writerow(self.format_row(row, locale_format))
+            for row, path in zip_longest(data, paths or []):
+                indent = len(path) - 1 if path else 0
+                if row:
+                    writer.writerow(self.format_row(
+                            row, indent=indent, locale_format=locale_format))
             if popup:
                 if len(data) == 1:
                     common.message(_('%d record saved.') % len(data))
@@ -380,9 +407,9 @@ class WinExport(WinCSV):
             return False
 
     @classmethod
-    def format_row(cls, line, locale_format=True):
+    def format_row(cls, line, indent=0, locale_format=True):
         row = []
-        for val in line:
+        for i, val in enumerate(line):
             if locale_format:
                 if isinstance(val, Number):
                     val = locale.str(val)
@@ -397,6 +424,8 @@ class WinExport(WinCSV):
                 val = val.total_seconds()
             elif isinstance(val, bool):
                 val = int(val)
+            if i == 0 and indent and isinstance(val, str):
+                val = '  ' * indent + val
             row.append(val)
         return row
 
