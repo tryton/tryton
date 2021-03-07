@@ -27,6 +27,11 @@ class RoutingStep(sequence_ordered(), ModelSQL, ModelView):
     routing = fields.Many2One('production.routing', 'Routing', required=True,
         ondelete='CASCADE')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('routing')
+
     def get_rec_name(self, name):
         return self.operation.rec_name
 
