@@ -222,6 +222,7 @@ class ExtraLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('extra')
         cls._order.insert(1, ('extra', 'ASC'))
 
     @fields.depends('product')

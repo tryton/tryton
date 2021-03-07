@@ -102,33 +102,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">extra_line_list_sequence</field>
             <field name="priority" eval="20"/>
         </record>
-
-        <record model="ir.rule.group" id="rule_group_extra_line">
-            <field name="name">User in extra's company</field>
-            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_extra_line1">
-            <field name="domain"
-                eval="[('extra.company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_extra_line"/>
-        </record>
-
-        <record model="ir.model.access" id="access_extra_line">
-            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_extra_line_sale_admin">
-            <field name="model" search="[('model', '=', 'sale.extra.line')]"/>
-            <field name="group" ref="sale.group_sale_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
     </data>
 </tryton>
