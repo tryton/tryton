@@ -255,6 +255,31 @@ class _ModelAccessTestCase(unittest.TestCase):
 
         self._assert(record)
 
+    @with_transaction(context=_context)
+    def test_access_inherited_from_parent(self):
+        "Test access inherited from parent"
+        pool = Pool()
+        Group = pool.get('res.group')
+        ModelAccess = pool.get('ir.model.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        Group.write([self.group], {
+                'parent': group.id,
+                })
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+        ModelAccess.create([{
+                    'model': self.model.id,
+                    'group': group.id,
+                    self._perm: True,
+                    }])
+
+        self._assert(record)
+
 
 class ModelAccessReadTestCase(_ModelAccessTestCase):
     _perm = 'perm_read'
@@ -659,6 +684,32 @@ class _ModelFieldAccessTestCase(unittest.TestCase):
                     'field': self.field1.id,
                     'group': group.id,
                     self._perm: False,
+                    }])
+
+        self._assert1(record)
+        self._assert2(record)
+
+    @with_transaction(context=_context)
+    def test_access_inherited_from_parent(self):
+        "Test no access with other group"
+        pool = Pool()
+        Group = pool.get('res.group')
+        FieldAccess = pool.get('ir.model.field.access')
+        TestAccess = pool.get('test.access')
+        record, = TestAccess.create([{}])
+        group, = Group.create([{'name': 'Test'}])
+        Group.write([self.group], {
+                'parent': group.id,
+                })
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': self.group.id,
+                    self._perm: False,
+                    }])
+        FieldAccess.create([{
+                    'field': self.field1.id,
+                    'group': group.id,
+                    self._perm: True,
                     }])
 
         self._assert1(record)

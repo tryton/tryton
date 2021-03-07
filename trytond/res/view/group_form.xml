@@ -6,6 +6,9 @@ this repository contains the full copyright notices and license terms. -->
     <field name="name"/>
     <label name="active"/>
     <field name="active"/>
+
+    <label name="parent"/>
+    <field name="parent"/>
     <notebook>
         <page string="Members" col="2" id="members">
             <field name="users" colspan="2"/>

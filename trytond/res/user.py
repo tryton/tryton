@@ -24,7 +24,7 @@ from itertools import groupby
 from operator import attrgetter
 from ast import literal_eval
 
-from sql import Literal
+from sql import Literal, Null
 from sql.functions import CurrentTimestamp
 from sql.conditionals import Coalesce, Case
 from sql.aggregate import Count
@@ -587,15 +587,22 @@ class User(DeactivableMixin, ModelSQL, ModelView):
         return res
 
     @classmethod
-    def get_groups(cls):
+    def get_groups(cls, name=None):
         '''
-        Return a list of group ids for the user
+        Return a list of all group ids for the user
         '''
         user = Transaction().user
         groups = cls._get_groups_cache.get(user)
         if groups is not None:
             return groups
-        groups = cls.read([Transaction().user], ['groups'])[0]['groups']
+        pool = Pool()
+        UserGroup = pool.get('res.user-res.group')
+        cursor = Transaction().connection.cursor()
+        user_group = UserGroup.user_group_all_table()
+        cursor.execute(*user_group.select(
+                user_group.group,
+                where=user_group.user == user))
+        groups = [g for g, in cursor]
         cls._get_groups_cache.set(user, groups)
         return groups
 
@@ -968,6 +975,22 @@ class UserGroup(ModelSQL):
         pool.get('ir.model.access')._get_access_cache.clear()
         pool.get('ir.model.field.access')._get_access_cache.clear()
         ModelView._fields_view_get_cache.clear()
+
+    @classmethod
+    def user_group_all_table(cls):
+        pool = Pool()
+        Group = pool.get('res.group')
+        user_group = cls.__table__()
+        group_parents = Group.group_parent_all_cte()
+
+        return (user_group
+            .join(group_parents,
+                condition=user_group.group == group_parents.id)
+            .select(
+                user_group.user.as_('user'),
+                group_parents.parent.as_('group'),
+                where=group_parents.parent != Null,
+                with_=group_parents))
 
 
 class Warning_(ModelSQL, ModelView):

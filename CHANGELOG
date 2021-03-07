@@ -1,3 +1,4 @@
+* Add parent to group to inherit accesses
 * Add __access__ to Model
 * Add route wrapper to allow null origin
 * Add header grouping on report

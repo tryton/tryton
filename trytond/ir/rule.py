@@ -143,6 +143,7 @@ class Rule(ModelSQL, ModelView):
             user = EvalEnvironment(User(user_id), User)
         return {
             'user': user,
+            'groups': User.get_groups()
             }
 
     @staticmethod
@@ -161,7 +162,7 @@ class Rule(ModelSQL, ModelView):
         rule_table = cls.__table__()
         rule_group = RuleGroup.__table__()
         rule_group_group = RuleGroup_Group.__table__()
-        user_group = User_Group.__table__()
+        user_group = User_Group.user_group_all_table()
         model = Model.__table__()
         transaction = Transaction()
 

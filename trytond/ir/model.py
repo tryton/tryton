@@ -523,7 +523,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
         user = Transaction().user
         model_access = cls.__table__()
         ir_model = Model.__table__()
-        user_group = UserGroup.__table__()
+        user_group = UserGroup.user_group_all_table()
         group = Group.__table__()
 
         access = {}
@@ -729,7 +729,7 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
         field_access = cls.__table__()
         ir_model = Model.__table__()
         model_field = ModelField.__table__()
-        user_group = UserGroup.__table__()
+        user_group = UserGroup.user_group_all_table()
         group = Group.__table__()
 
         accesses = {}
