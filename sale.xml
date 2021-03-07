@@ -20,22 +20,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">coupon_list</field>
         </record>
 
-        <record model="ir.model.access" id="access_coupon">
-            <field name="model" search="[('model', '=', 'sale.promotion.coupon')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_coupon_sale_admin">
-            <field name="model" search="[('model', '=', 'sale.promotion.coupon')]"/>
-            <field name="group" ref="sale.group_sale_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="coupon_number_view_form">
             <field name="model">sale.promotion.coupon.number</field>
             <field name="type">form</field>
@@ -45,22 +29,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.promotion.coupon.number</field>
             <field name="type">tree</field>
             <field name="name">coupon_number_list</field>
-        </record>
-
-        <record model="ir.model.access" id="access_coupon_number">
-            <field name="model" search="[('model', '=', 'sale.promotion.coupon.number')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_coupon_number_sale_admin">
-            <field name="model" search="[('model', '=', 'sale.promotion.coupon.number')]"/>
-            <field name="group" ref="sale.group_sale_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="sale_view_form">

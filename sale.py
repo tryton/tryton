@@ -51,6 +51,11 @@ class PromotionCoupon(ModelSQL, ModelView):
     promotion = fields.Many2One('sale.promotion', "Promotion", required=True)
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('promotion')
+
+    @classmethod
     def default_number_of_use(cls):
         return 0
 
@@ -71,6 +76,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(PromotionCouponNumber, cls).__setup__()
+        cls.__access__.add('coupon')
         cls.active = fields.Function(
             fields.Boolean("Active"), 'get_active', searcher='search_active')
 
