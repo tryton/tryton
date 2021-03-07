@@ -3,22 +3,20 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_commission_admin">
-            <field name="name">Commission Administration</field>
-        </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_commission_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_commission_admin"/>
-        </record>
-
         <record model="res.group" id="group_commission">
             <field name="name">Commission</field>
         </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_commission">
+        <record model="res.group" id="group_commission_admin">
+            <field name="name">Commission Administration</field>
+            <field name="parent" ref="group_commission"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_commission">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_commission"/>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_commission_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_commission_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="commission_icon">
