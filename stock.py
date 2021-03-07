@@ -3,6 +3,8 @@
 
 import locale
 from io import BytesIO
+from itertools import zip_longest
+
 from lxml import etree
 from zeep.exceptions import Fault
 from PyPDF2 import PdfFileReader, PdfFileWriter
@@ -128,7 +130,7 @@ class CreateDPDShipping(Wizard):
 
         shipment.reference = response.mpsId
         parcels = response.parcelInformation
-        for package, label, parcel in zip(packages, labels, parcels):
+        for package, label, parcel in zip_longest(packages, labels, parcels):
             package.shipping_label = fields.Binary.cast(label.getvalue())
             package.shipping_reference = parcel.parcelLabelNumber
         Package.save(shipment.root_packages)
