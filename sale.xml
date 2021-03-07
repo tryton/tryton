@@ -60,22 +60,6 @@ this repository contains the full copyright notices and license terms. -->
             action="act_product_customer_form"
             sequence="20"
             id="menu_product_customer"/>
-
-        <record model="ir.model.access" id="access_product_customer">
-            <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_product_customer_admin">
-            <field name="model" search="[('model', '=', 'sale.product_customer')]"/>
-            <field name="group" ref="product.group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
     </data>
 
     <data depends="sale_amendment">

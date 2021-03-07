@@ -38,6 +38,11 @@ class ProductCustomer(
     name = fields.Char("Name", translate=True)
     code = fields.Char("Code")
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.update(['template', 'product'])
+
     @fields.depends(
         'product', '_parent_product.template')
     def on_change_product(self):
