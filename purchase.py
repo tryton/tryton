@@ -1984,7 +1984,7 @@ class ReturnPurchase(Wizard):
                 if line.type == 'line':
                     line.quantity *= -1
             return_purchase.lines = return_purchase.lines  # Force saving
-        Purchase.save(return_purchases)
+        self.model.save(return_purchases)
 
         data = {'res_id': [s.id for s in return_purchases]}
         if len(return_purchases) == 1:
