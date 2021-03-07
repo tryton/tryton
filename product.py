@@ -301,6 +301,11 @@ class ProductSupplier(
         fields.Many2One('product.uom', "UOM"), 'on_change_with_uom')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.update(['product', 'template'])
+
+    @classmethod
     def __register__(cls, module_name):
         transaction = Transaction()
         cursor = transaction.connection.cursor()
@@ -459,6 +464,11 @@ class ProductSupplierPrice(
     currency = fields.Function(
         fields.Many2One('currency.currency', 'Currency'),
         'on_change_with_currency')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('product_supplier')
 
     @classmethod
     def __register__(cls, module_name):

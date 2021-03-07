@@ -387,30 +387,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">purchase_line_tree_sequence</field>
         </record>
 
-        <record model="ir.model.access" id="access_purchase_line">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_purchase_line_purchase">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
-            <field name="group" ref="group_purchase"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.model.access" id="access_purchase_line_account">
-            <field name="model" search="[('model', '=', 'purchase.line')]"/>
-            <field name="group" ref="account.group_account"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
         <record model="ir.ui.view" id="product_supplier_view_form">
             <field name="model">purchase.product_supplier</field>
             <field name="type">form</field>
@@ -465,22 +441,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_product_supplier"/>
         </record>
 
-        <record model="ir.model.access" id="access_product_supplier">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_product_supplier_admin">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier')]"/>
-            <field name="group" ref="product.group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="product_supplier_price_view_form">
             <field name="model">purchase.product_supplier.price</field>
             <field name="type">form</field>
@@ -510,22 +470,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="keyword">form_relate</field>
             <field name="model">purchase.product_supplier,-1</field>
             <field name="action" ref="act_product_supplier_price_form"/>
-        </record>
-
-        <record model="ir.model.access" id="access_product_supplier_price">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier.price')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_product_supplier_price_admin">
-            <field name="model" search="[('model', '=', 'purchase.product_supplier.price')]"/>
-            <field name="group" ref="product.group_product_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="template_view_form">
