@@ -179,6 +179,11 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_key_type')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('rule')
+
+    @classmethod
     def get_key_types(cls):
         pool = Pool()
         OriginInformation = pool.get('account.statement.origin.information')
@@ -301,6 +306,11 @@ class StatementRuleLine(sequence_ordered(), ModelSQL, ModelView):
     company = fields.Function(
         fields.Many2One('company.company', "Company"),
         'on_change_with_company')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('rule')
 
     @fields.depends('rule', '_parent_rule.company')
     def on_change_with_company(self, name=None):

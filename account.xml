@@ -90,30 +90,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">rule_information_list</field>
         </record>
 
-        <record model="ir.model.access" id="access_rule_information">
-            <field name="model" search="[('model', '=', 'account.statement.rule.information')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_rule_information_account_admin">
-            <field name="model" search="[('model', '=', 'account.statement.rule.information')]"/>
-            <field name="group" ref="account.group_account_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.model.access" id="access_rule_information_statement">
-            <field name="model" search="[('model', '=', 'account.statement.rule.information')]"/>
-            <field name="group" ref="account_statement.group_statement"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
         <record model="ir.ui.view" id="rule_line_view_form">
             <field name="model">account.statement.rule.line</field>
             <field name="type">form</field>
@@ -124,30 +100,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">account.statement.rule.line</field>
             <field name="type">tree</field>
             <field name="name">rule_line_list</field>
-        </record>
-
-        <record model="ir.model.access" id="access_rule_line">
-            <field name="model" search="[('model', '=', 'account.statement.rule.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_rule_line_account_admin">
-            <field name="model" search="[('model', '=', 'account.statement.rule.line')]"/>
-            <field name="group" ref="account.group_account_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.model.access" id="access_rule_line_statement">
-            <field name="model" search="[('model', '=', 'account.statement.rule.line')]"/>
-            <field name="group" ref="account_statement.group_statement"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
         </record>
     </data>
 </tryton>
