@@ -243,30 +243,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">opportunity_line_tree</field>
         </record>
 
-        <record model="ir.model.access" id="access_opportunity_line">
-            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_opportunity_line_sale">
-            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_opportunity_line_opportunity">
-            <field name="model" search="[('model', '=', 'sale.opportunity.line')]"/>
-            <field name="group" ref="group_opportunity"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="opportunity_employee_view_tree">
             <field name="model">sale.opportunity_employee</field>
             <field name="type">tree</field>

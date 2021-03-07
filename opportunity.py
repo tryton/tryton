@@ -500,6 +500,11 @@ class SaleOpportunityLine(sequence_ordered(), ModelSQL, ModelView):
     del _states, _depends
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('opportunity')
+
+    @classmethod
     def get_opportunity_states(cls):
         pool = Pool()
         Opportunity = pool.get('sale.opportunity')
