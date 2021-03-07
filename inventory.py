@@ -368,6 +368,7 @@ class InventoryLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(InventoryLine, cls).__setup__()
+        cls.__access__.add('inventory')
         t = cls.__table__()
         cls._sql_constraints += [
             ('check_line_qty_pos', Check(t, t.quantity >= 0),
