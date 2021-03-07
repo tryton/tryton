@@ -220,22 +220,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">plan_line_list_sequence</field>
         </record>
 
-        <record model="ir.model.access" id="access_plan_line">
-            <field name="model" search="[('model', '=', 'commission.plan.line')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_plan_line_commission_admin">
-            <field name="model" search="[('model', '=', 'commission.plan.line')]"/>
-            <field name="group" ref="group_commission_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="commission_view_form">
             <field name="model">commission</field>
             <field name="type">form</field>

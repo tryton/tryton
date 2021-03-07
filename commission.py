@@ -270,6 +270,11 @@ class PlanLines(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
         "It is evaluated with:\n"
         "- amount: the original amount")
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('plan')
+
     @staticmethod
     def default_formula():
         return 'amount'
