@@ -54,6 +54,11 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
     __name__ = 'ir.action'
     name = fields.Char('Name', required=True, translate=True)
     type = fields.Char('Type', required=True, readonly=True)
+    records = fields.Selection([
+            ('selected', "Selected"),
+            ('listed', "Listed"),
+            ], "Records",
+        help="The records on which the action runs.")
     usage = fields.Char('Usage')
     keywords = fields.One2Many('ir.action.keyword', 'action',
             'Keywords')
@@ -65,6 +70,10 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         cls.__rpc__.update({
                 'get_action_value': RPC(instantiate=0, cache=dict(days=1)),
                 })
+
+    @classmethod
+    def default_records(cls):
+        return 'selected'
 
     @staticmethod
     def default_usage():
@@ -103,7 +112,7 @@ class Action(DeactivableMixin, ModelSQL, ModelView):
         Action = Pool().get(type_)
         if columns is None:
             columns = []
-        columns += ['id', 'name', 'type', 'icon.rec_name']
+        columns += ['id', 'name', 'type', 'records', 'icon.rec_name']
         if type_ == 'ir.action.report':
             columns += ['report_name', 'direct_print']
         elif type_ == 'ir.action.act_window':

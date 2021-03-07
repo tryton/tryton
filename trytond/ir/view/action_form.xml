@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="active" xexpand="0" width="100"/>
     <notebook colspan="4">
         <page string="General" id="general">
+            <label name="records"/>
+            <field name="records"/>
             <label name="usage"/>
             <field name="usage"/>
             <label name="icon"/>
