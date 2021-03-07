@@ -1980,6 +1980,7 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(GeneralLedgerLine, cls).__setup__()
+        cls.__access__.add('account')
         cls._order.insert(0, ('date', 'ASC'))
 
     @classmethod

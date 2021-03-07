@@ -299,6 +299,11 @@ class TaxCodeLineTemplate(ModelSQL, ModelView):
             ('credit', "Credit"),
             ], "Type", required=True)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('code')
+
     def _get_tax_code_line_value(self, line=None):
         value = {}
         for name in ['operator', 'amount', 'type']:
@@ -370,6 +375,11 @@ class TaxCodeLine(ModelSQL, ModelView):
         depends=['template'])
 
     del _states
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('code')
 
     @classmethod
     def default_operator(cls):
@@ -1212,6 +1222,11 @@ class TaxLine(ModelSQL, ModelView):
         'on_change_with_company')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('move_line')
+
+    @classmethod
     def __register__(cls, module_name):
         pool = Pool()
         Tax = pool.get('account.tax')
@@ -1498,6 +1513,7 @@ class TaxRuleLineTemplate(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(TaxRuleLineTemplate, cls).__setup__()
+        cls.__access__.add('rule')
         cls._order.insert(1, ('rule', 'ASC'))
 
     def _get_tax_rule_line_value(self, rule_line=None):
@@ -1627,6 +1643,7 @@ class TaxRuleLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     @classmethod
     def __setup__(cls):
         super(TaxRuleLine, cls).__setup__()
+        cls.__access__.add('rule')
         cls._order.insert(1, ('rule', 'ASC'))
 
     @classmethod

@@ -79,6 +79,11 @@ class MoveTemplateKeyword(sequence_ordered(), ModelSQL, ModelView):
             'required': Eval('type_') == 'numeric',
             }, depends=['type_'])
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('move')
+
     @staticmethod
     def default_required():
         return False
@@ -178,6 +183,11 @@ class MoveLineTemplate(ModelSQL, ModelView):
         "by braces ('{' and '}').")
     taxes = fields.One2Many('account.tax.line.template', 'line', 'Taxes')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('move')
+
     @fields.depends('account')
     def on_change_with_party_required(self, name=None):
         if self.account:
@@ -225,6 +235,11 @@ class TaxLineTemplate(ModelSQL, ModelView):
             ('company', '=', Eval('_parent_line', {}
                     ).get('_parent_move', {}).get('company', -1)),
             ])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('line')
 
     @classmethod
     def __register__(cls, module_name):

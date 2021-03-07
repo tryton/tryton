@@ -679,22 +679,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <!-- TODO relate from account -->
 
-        <record model="ir.model.access" id="access_general_ledger_line">
-            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_general_ledger_line_account">
-            <field name="model" search="[('model', '=', 'account.general_ledger.line')]"/>
-            <field name="group" ref="group_account"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-
         <record model="ir.rule.group" id="rule_group_general_ledger_line">
             <field name="name">User in company</field>
             <field name="model"

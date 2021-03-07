@@ -703,6 +703,7 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        cls.__access__.add('move')
         cls._check_modify_exclude = {
             'maturity_date', 'reconciliation', 'tax_lines'}
         cls._reconciliation_modify_disallow = {
