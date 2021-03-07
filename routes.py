@@ -7,8 +7,8 @@ from werkzeug.wrappers import Response
 
 from trytond.transaction import Transaction
 from trytond.wsgi import app
-from trytond.protocols.wrappers import with_pool, with_transaction, \
-        user_application
+from trytond.protocols.wrappers import (
+    with_pool, with_transaction, user_application, allow_null_origin)
 
 timesheet_application = user_application('timesheet')
 
@@ -76,6 +76,7 @@ def timesheet_lines(request, pool, employee, date):
 @app.route('/<database_name>/timesheet/line/<int:line>',
     methods=['PUT', 'DELETE'])
 @app.route('/<database_name>/timesheet/line', methods=['POST'])
+@allow_null_origin
 @with_pool
 @with_transaction()
 @timesheet_application
