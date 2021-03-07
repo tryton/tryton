@@ -68,6 +68,7 @@ class BOMInput(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(BOMInput, cls).__setup__()
+        cls.__access__.add('bom')
         t = cls.__table__()
         cls._sql_constraints = [
             ('product_bom_uniq', Unique(t, t.product, t.bom),

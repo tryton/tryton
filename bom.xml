@@ -67,22 +67,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">bom_input_form</field>
         </record>
 
-        <record model="ir.model.access" id="access_bom_input">
-            <field name="model" search="[('model', '=', 'production.bom.input')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_bom_input_admin">
-            <field name="model" search="[('model', '=', 'production.bom.input')]"/>
-            <field name="group" ref="group_production_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="bom_output_view_list">
             <field name="model">production.bom.output</field>
             <field name="type">tree</field>
@@ -92,22 +76,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">production.bom.output</field>
             <field name="type">form</field>
             <field name="name">bom_output_form</field>
-        </record>
-
-        <record model="ir.model.access" id="access_bom_output">
-            <field name="model" search="[('model', '=', 'production.bom.output')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_bom_output_admin">
-            <field name="model" search="[('model', '=', 'production.bom.output')]"/>
-            <field name="group" ref="group_production_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.ui.view" id="bom_tree_view_tree">
