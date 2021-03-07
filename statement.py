@@ -716,6 +716,11 @@ def origin_mixin(_states, _depends):
             "Description", states=_states, depends=_depends)
 
         @classmethod
+        def __setup__(cls):
+            super().__setup__()
+            cls.__access__.add('statement')
+
+        @classmethod
         def get_statement_states(cls):
             pool = Pool()
             Statement = pool.get('account.statement')
@@ -1032,6 +1037,7 @@ class LineGroup(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(LineGroup, cls).__setup__()
+        cls.__access__.add('statement')
         cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod
