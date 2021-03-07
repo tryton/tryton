@@ -35,6 +35,9 @@ creation of such route.
     - ``set_max_request_size(size)``: change the default limit of the request to
       the size in bytes.
 
+    - ``allow_null_origin``: allow requests which have their ``Origin`` set to
+      ``null``.
+
     - ``with_pool``: which takes the first parameter as database name and
       replace it by the corresponding instance of the :ref:`Pool <ref-pool>`.
 

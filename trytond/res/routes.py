@@ -8,13 +8,15 @@ from werkzeug.exceptions import abort
 
 from trytond.config import config
 from trytond.wsgi import app
-from trytond.protocols.wrappers import with_pool, with_transaction
+from trytond.protocols.wrappers import (
+    with_pool, with_transaction, allow_null_origin)
 from trytond.transaction import Transaction
 
 logger = logging.getLogger(__name__)
 
 
 @app.route('/<database_name>/user/application/', methods=['POST', 'DELETE'])
+@allow_null_origin
 @with_pool
 @with_transaction(readonly=False)
 def user_application(request, pool):

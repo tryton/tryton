@@ -120,6 +120,11 @@ def set_max_request_size(size):
     return decorator
 
 
+def allow_null_origin(func):
+    func.allow_null_origin = True
+    return func
+
+
 def with_pool(func):
     @wraps(func)
     def wrapper(request, database_name, *args, **kwargs):

@@ -167,10 +167,15 @@ class TrytondWSGI(object):
         origin = request.headers.get('Origin')
         origin_host = urllib.parse.urlparse(origin).netloc if origin else ''
         host = request.headers.get('Host')
-        if origin and origin_host != host:
+        if origin and origin != 'null' and origin_host != host:
             cors = filter(
                 None, config.get('web', 'cors', default='').splitlines())
             if origin not in cors:
+                abort(HTTPStatus.FORBIDDEN)
+        if origin == 'null':
+            adapter = self.url_map.bind_to_environ(request.environ)
+            endpoint = adapter.match()[0]
+            if not getattr(endpoint, 'allow_null_origin', False):
                 abort(HTTPStatus.FORBIDDEN)
 
         data = self.dispatch_request(request)
