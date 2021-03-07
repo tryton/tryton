@@ -78,6 +78,11 @@ class AdvancePaymentTermLine(ModelView, ModelSQL, CompanyMultiValueMixin):
             "- total_amount: The total amount of the sale.\n"
             "- untaxed_amount: The total untaxed amount of the sale.")
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('advance_payment_term')
+
     @fields.depends('formula', 'description')
     def pre_validate(self, **names):
         super(AdvancePaymentTermLine, self).pre_validate()
