@@ -3,15 +3,6 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_production_admin">
-            <field name="name">Production Administration</field>
-        </record>
-        <record model="res.user-res.group"
-            id="user_admin_group_production_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_production_admin"/>
-        </record>
-
         <record model="res.group" id="group_production">
             <field name="name">Production</field>
         </record>
@@ -19,6 +10,16 @@ this repository contains the full copyright notices and license terms. -->
             id="user_admin_group_production">
             <field name="user" ref="res.user_admin"/>
             <field name="group" ref="group_production"/>
+        </record>
+
+        <record model="res.group" id="group_production_admin">
+            <field name="name">Production Administration</field>
+            <field name="parent" ref="group_production"/>
+        </record>
+        <record model="res.user-res.group"
+            id="user_admin_group_production_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_production_admin"/>
         </record>
 
         <record model="ir.ui.icon" id="production_icon">
