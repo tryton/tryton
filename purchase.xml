@@ -3,11 +3,12 @@
 this repository contains the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="res.group" id="group_purchase_admin">
-            <field name="name">Purchase Administrator</field>
-        </record>
         <record model="res.group" id="group_purchase">
             <field name="name">Purchase</field>
+        </record>
+        <record model="res.group" id="group_purchase_admin">
+            <field name="name">Purchase Administrator</field>
+            <field name="parent" ref="group_purchase"/>
         </record>
         <record model="res.user-res.group" id="user_admin_group_purchase">
             <field name="user" ref="res.user_admin"/>
