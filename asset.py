@@ -735,6 +735,7 @@ class AssetLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(AssetLine, cls).__setup__()
+        cls.__access__.add('asset')
         cls._order.insert(0, ('date', 'ASC'))
 
     @fields.depends('asset', '_parent_asset.currency')
