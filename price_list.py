@@ -123,6 +123,11 @@ class PriceListLine(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
             '- cost_price: the cost price of the product\n'
             '- list_price: the list price of the product'))
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('price_list')
+
     @staticmethod
     def default_formula():
         return 'unit_price'
