@@ -310,6 +310,7 @@ class ForecastLine(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(ForecastLine, cls).__setup__()
+        cls.__access__.add('forecast')
         t = cls.__table__()
         cls._sql_constraints += [
             ('forecast_product_uniq', Unique(t, t.forecast, t.product),
