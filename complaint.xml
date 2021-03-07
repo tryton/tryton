@@ -278,34 +278,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">action_list</field>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_action">
-            <field name="name">User in complaint's company</field>
-            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_action1">
-            <field name="domain"
-                eval="[('complaint.company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_action"/>
-        </record>
-
-        <record model="ir.model.access" id="access_action">
-            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_action_sale">
-            <field name="model" search="[('model', '=', 'sale.complaint.action')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="action_sale_line_view_form">
             <field name="model">sale.complaint.action-sale.line</field>
             <field name="type">form</field>
@@ -317,35 +289,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">action_line_list</field>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_action_sale_line">
-            <field name="name">User in complaint's company</field>
-            <field name="model" search="[('model', '=', 'sale.complaint.action-sale.line')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_action_sale_line1">
-            <field
-                name="domain"
-                eval="[('action.complaint.company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_action_sale_line"/>
-        </record>
-
-        <record model="ir.model.access" id="access_action_sale_line">
-            <field name="model" search="[('model', '=', 'sale.complaint.action-sale.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_action_sale_line_sale">
-            <field name="model" search="[('model', '=', 'sale.complaint.action-sale.line')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="action_invoice_line_view_form">
             <field name="model">sale.complaint.action-account.invoice.line</field>
             <field name="type">form</field>
@@ -355,35 +298,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.complaint.action-account.invoice.line</field>
             <field name="type">tree</field>
             <field name="name">action_line_list</field>
-        </record>
-
-        <record model="ir.rule.group" id="rule_group_action_invoice_line">
-            <field name="name">User in complaint's company</field>
-            <field name="model" search="[('model', '=', 'sale.complaint.action-account.invoice.line')]"/>
-            <field name="global_p" eval="True"/>
-        </record>
-        <record model="ir.rule" id="rule_action_invoice_line1">
-            <field
-                name="domain"
-                eval="[('action.complaint.company', '=', Eval('user', {}).get('company', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_action_invoice_line"/>
-        </record>
-
-        <record model="ir.model.access" id="access_action_invoice_line">
-            <field name="model" search="[('model', '=', 'sale.complaint.action-account.invoice.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_action_invoice_line_sale">
-            <field name="model" search="[('model', '=', 'sale.complaint.action-account.invoice.line')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
     </data>
 </tryton>

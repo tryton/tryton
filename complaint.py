@@ -418,6 +418,11 @@ class Action(ModelSQL, ModelView):
         fields.Selection('get_complaint_states', "Complaint State"),
         'on_change_with_complaint_state')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('complaint')
+
     @fields.depends('complaint',
         '_parent_complaint.origin_model', '_parent_complaint.origin')
     def on_change_with_unit(self, name=None):
@@ -661,6 +666,11 @@ class _Action_Line:
     complaint_origin_id = fields.Function(
         fields.Integer("Complaint Origin ID"),
         'on_change_with_complaint_origin_id')
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('action')
 
     def on_change_with_unit(self, name=None):
         raise NotImplementedError
