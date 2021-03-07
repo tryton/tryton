@@ -216,6 +216,8 @@ class Symbol(Cell):
         self.symbol = attrs.get('symbol')
         self.position = position
         self.renderer = Gtk.CellRendererText()
+        self.renderer.set_property('yalign', 0)
+        self.renderer.set_property('xalign', 0 if position else 1)
         self.view = view
 
     @realized
