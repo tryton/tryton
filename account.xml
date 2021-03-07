@@ -223,6 +223,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rule_group" ref="rule_group_account_type"/>
         </record>
 
+        <record model="ir.action.report" id="report_account_type_statement">
+            <field name="name">Statement</field>
+            <field name="records">listed</field>
+            <field name="model">account.account.type</field>
+            <field name="report_name">account.account.type.statement</field>
+            <field name="report">account/type_statement.fodt</field>
+        </record>
+        <record model="ir.action.keyword" id="report_account_type_statement_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.account.type,-1</field>
+            <field name="action" ref="report_account_type_statement"/>
+        </record>
+
         <record model="ir.ui.view" id="account_template_view_form">
             <field name="model">account.account.template</field>
             <field name="type">form</field>
@@ -495,6 +508,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_general_ledger">
             <field name="name">General Ledger</field>
+            <field name="records">listed</field>
             <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.general_ledger</field>
             <field name="report">account/general_ledger.fodt</field>
@@ -507,6 +521,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.action.report" id="report_trial_balance">
             <field name="name">Trial Balance</field>
+            <field name="records">listed</field>
             <field name="model">account.general_ledger.account</field>
             <field name="report_name">account.trial_balance</field>
             <field name="report">account/trial_balance.fodt</field>

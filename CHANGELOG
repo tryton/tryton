@@ -1,3 +1,4 @@
+* Add report for income statement and balance sheet
 * Allow filtering general ledger by journal
 * Add journal context to Move.query_get
 * Add reconciliation to general ledger line

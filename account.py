@@ -3,6 +3,7 @@
 from decimal import Decimal
 import datetime
 import operator
+from itertools import zip_longest
 from functools import wraps
 
 from dateutil.relativedelta import relativedelta
@@ -422,6 +423,31 @@ class OpenType(Wizard):
 
     do_account = open_action
     do_ledger_account = open_action
+
+
+class AccountTypeStatement(Report):
+    __name__ = 'account.account.type.statement'
+
+    @classmethod
+    def get_context(cls, records, header, data):
+        pool = Pool()
+        Company = pool.get('company.company')
+        context = Transaction().context
+
+        report_context = super().get_context(records, header, data)
+        report_context['company'] = Company(context['company'])
+
+        if data.get('model_context') is not None:
+            Context = pool.get(data['model_context'])
+            values = {}
+            for field in Context._fields:
+                if field in context:
+                    values[field] = context[field]
+            report_context['ctx'] = Context(**values)
+
+        report_context['types'] = zip_longest(
+            records, data.get('paths') or [], fillvalue=[])
+        return report_context
 
 
 def AccountMixin(template=False):

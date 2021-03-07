@@ -91,6 +91,17 @@ accounts balance is in credit, or debit, respectively.
    Accounts Types can be created from
    `Account Type Templates <model-account.account.type.template>`.
 
+Reports
+-------
+
+.. _report-account.account.type.statement:
+
+Statement
+^^^^^^^^^
+
+The *Statement* report is used to get a printed copy of the open parts
+of the balance sheet and income statements.
+
 .. _model-account.account.party:
 
 Account Party

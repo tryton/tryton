@@ -111,6 +111,7 @@ def register():
         fiscalyear.RenewFiscalYear,
         module='account', type_='wizard')
     Pool.register(
+        account.AccountTypeStatement,
         account.GeneralLedger,
         account.TrialBalance,
         account.AgedBalanceReport,

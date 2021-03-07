@@ -180,6 +180,10 @@ Print some reports::
     ...     })
     >>> _ = trial_balance.execute(gl_accounts)
 
+    >>> Type = Model.get('account.account.type')
+    >>> statement = Report('account.account.type.statement')
+    >>> _ = statement.execute(Type.find([]))
+
     >>> AgedBalance = Model.get('account.aged_balance')
     >>> context = {
     ...     'company': company.id,
