@@ -312,6 +312,11 @@ class QuotationLine(ModelSQL, ModelView):
             'get_quotation_state', 'Quotation State'),
         'on_change_with_quotation_state', searcher='search_quotation_state')
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('quotation')
+
     @staticmethod
     def order_quotation_state(tables):
         pool = Pool()
