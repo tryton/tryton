@@ -8,6 +8,7 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="res.group" id="group_account_admin">
             <field name="name">Account Administration</field>
+            <field name="parent" ref="group_account"/>
         </record>
         <record model="res.user-res.group" id="user_admin_group_account">
             <field name="user" ref="res.user_admin"/>
