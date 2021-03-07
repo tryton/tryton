@@ -616,6 +616,7 @@ class PaymentBraintreeRefund(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('payment')
         cls._transitions |= set((
                 ('draft', 'approved'),
                 ('approved', 'processing'),
