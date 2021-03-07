@@ -493,6 +493,7 @@ class PurchaseRequisitionLine(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('requisition')
         unit_categories = cls._unit_categories()
         cls.unit.domain = [
             If(Bool(Eval('product_uom_category')),

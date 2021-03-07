@@ -277,50 +277,6 @@ this repository contains the full copyright notices and license terms.
             <field name="group" ref="purchase.group_purchase"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_requisition_line_default">
-            <field name="name">Own requisition line</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
-            <field name="global_p" eval="False"/>
-            <field name="default_p" eval="True"/>
-            <field name="perm_read" eval="False"/>
-        </record>
-         <record model="ir.rule" id="rule_requisition_line_default">
-            <field name="domain"
-                eval="[('requisition.employee', 'in', Eval('user', {}).get('employees', None))]"
-                pyson="1"/>
-            <field name="rule_group" ref="rule_group_requisition_line_default"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_line_default_group_purchase_requisition">
-            <field name="rule_group"
-                ref="rule_group_requisition_line_default"/>
-            <field name="group" ref="group_purchase_requisition"/>
-        </record>
-
-        <!-- Give access to user who could trigger requisition work-flow -->
-        <record model="ir.rule.group" id="rule_group_requisition_line">
-            <field name="name">Any requisition line</field>
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
-            <field name="global_p" eval="False"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_line_group_purchase_requisition_approval">
-            <field name="rule_group" ref="rule_group_requisition_line"/>
-            <field name="group" ref="group_purchase_requisition_approval"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_line_group_purchase_request">
-            <field name="rule_group" ref="rule_group_requisition_line"/>
-            <field name="group" ref="purchase_request.group_purchase_request"/>
-        </record>
-        <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_line_group_purchase">
-            <field name="rule_group" ref="rule_group_requisition_line"/>
-            <field name="group" ref="purchase.group_purchase"/>
-        </record>
-
         <record model="ir.model.access" id="access_requisition">
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
@@ -350,40 +306,6 @@ this repository contains the full copyright notices and license terms.
              id="access_requisition_purchase_request">
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
-            <field name="group"
-                ref="purchase_request.group_purchase_request"/>
-            <field name="perm_read" eval="True"/>
-        </record>
-
-        <record model="ir.model.access" id="access_requisition_line">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access"
-            id="access_requisition_line_purchase_requisition">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
-            <field name="group" ref="group_purchase_requisition"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-        <record model="ir.model.access"
-            id="access_requisition_line_purchase_requisition_approval">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
-            <field name="group" ref="group_purchase_requisition_approval"/>
-            <field name="perm_read" eval="True"/>
-        </record>
-        <record model="ir.model.access"
-            id="access_requisition_line_purchase_request">
-            <field name="model"
-                search="[('model', '=', 'purchase.requisition.line')]"/>
             <field name="group"
                 ref="purchase_request.group_purchase_request"/>
             <field name="perm_read" eval="True"/>
