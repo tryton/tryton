@@ -621,10 +621,14 @@
                                     });
                                 var id = screen.current_record ?
                                     screen.current_record.id : null;
+                                var model_context = screen.context_screen ?
+                                    screen.context_screen.model_name : null;
                                 func({
                                     'model': screen.model.name,
-                                    'ids': ids,
+                                    'model_context': model_context,
                                     'id': id,
+                                    'ids': ids,
+                                    'paths': screen.selected_paths(),
                                 });
                             })
                             .appendTo(menu);
@@ -648,14 +652,25 @@
                                 if (screen.current_record) {
                                     record_id = screen.current_record.id;
                                 }
-                                var record_ids = screen.current_view
-                                .selected_records.map(function(record) {
+                                var records, paths;
+                                if (action.records == 'listed') {
+                                    records = screen.listed_records;
+                                    paths = screen.listed_paths;
+                                } else {
+                                    records = screen.selected_records;
+                                    paths = screen.selected_paths;
+                                }
+                                var record_ids = records.map(function(record) {
                                     return record.id;
                                 });
+                                var model_context = screen.context_screen ?
+                                    screen.context_screen.model_name : null;
                                 var data = {
-                                    model: screen.model_name,
-                                    id: record_id,
-                                    ids: record_ids
+                                    'model': screen.model_name,
+                                    'model_context': model_context,
+                                    'id': record_id,
+                                    'ids': record_ids,
+                                    'paths': paths,
                                 };
                                 Sao.Action.execute(exec_action, data,
                                     jQuery.extend({}, screen.local_context));
@@ -1343,10 +1358,20 @@
         },
         do_export: function(export_) {
             this.modified_save().then(function() {
-                var ids = this.screen.current_view.selected_records
-                    .map(function(r) {
+                var ids, paths;
+                if (this.screen.current_view &&
+                    (this.screen.current_view.view_type == 'tree') &&
+                    this.screen.current_view.children_field) {
+                    ids = this.screen.listed_records.map(function(r) {
                         return r.id;
                     });
+                    paths = this.screen.listed_paths;
+                } else {
+                    ids = this.screen.selected_records.map(function(r) {
+                        return r.id;
+                    });
+                    paths = this.screen.selected_paths;
+                }
                 var fields = export_['export_fields.'].map(function(field) {
                     return field.name;
                 });
@@ -1357,8 +1382,10 @@
                             'fields': fields,
                             'data': data,
                         };
-                        unparse_obj.data = data.map(function(row) {
-                            return Sao.Window.Export.format_row(row);
+                        unparse_obj.data = data.map(function(row, i) {
+                            var indent = (
+                                paths && paths[i] ? paths[i].length -1 : 0);
+                            return Sao.Window.Export.format_row(row, indent);
                         });
                         var delimiter = ',';
                         if (navigator.platform &&

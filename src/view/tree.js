@@ -914,6 +914,62 @@
             }
             return records;
         },
+        get listed_records() {
+            if (!this.children_field) {
+                return this.group.slice();
+            }
+
+            var get_listed_records = function(start) {
+                var records = [];
+                var row = this.find_row(start);
+                var children_rows = row ? row.rows : this.rows;
+                for (var idx = 0, len = this.n_children(row);
+                    idx < len; idx++) {
+                    var path = start.concat([idx]);
+                    row = children_rows[idx];
+                    if (row) {
+                        var record = row.record;
+                        records.push(record);
+                        if (row.is_expanded()) {
+                            records = records.concat(get_listed_records(path));
+                        }
+                    }
+                }
+                return records;
+            }.bind(this);
+            return get_listed_records([]).concat(this.group.slice(this.rows.length));
+        },
+        get_listed_paths: function() {
+            if (!this.children_field) {
+                return this.group.map(function(record) {
+                    return [record.id];
+                });
+            }
+
+            var get_listed_paths = function(start, start_path) {
+                var paths = [];
+                var row = this.find_row(start);
+                var children_rows = row ? row.rows : this.rows;
+                for (var idx = 0, len = this.n_children(row);
+                    idx < len; idx++) {
+                    var path = start.concat([idx]);
+                    row = children_rows[idx];
+                    if (row) {
+                        var record = row.record;
+                        var id_path = start_path.concat([record.id]);
+                        paths.push(id_path);
+                        if (row.is_expanded()) {
+                            paths = paths.concat(get_listed_paths(path, id_path));
+                        }
+                    }
+                }
+                return paths;
+            }.bind(this);
+            return get_listed_paths([], []).concat(
+                this.group.slice(this.rows.length).map(function(record) {
+                    return [record.id];
+                }));
+        },
         select_records: function(from, to) {
             if (!from && to) {
                 from = this.rows[0].record;

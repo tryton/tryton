@@ -1536,9 +1536,11 @@
                 'id': 'input-records',
             }).append(jQuery('<option/>', {
                 'val': true,
+                'selected': this.screen_is_tree ? false : true,
             }).text(Sao.i18n.gettext("Selected Records")))
                 .append(jQuery('<option/>', {
                     'val': false,
+                    'selected': this.screen_is_tree ? true : false,
                 }).text(Sao.i18n.gettext("Listed Records")));
 
             this.ignore_search_limit = jQuery('<input/>', {
@@ -1547,7 +1549,8 @@
 
             this.selected_records.change(function() {
                 this.ignore_search_limit.parents('.form-group').first().toggle(
-                    !JSON.parse(this.selected_records.val()));
+                    !JSON.parse(this.selected_records.val()) &&
+                    !this.screen_is_tree);
             }.bind(this));
 
             jQuery('<div/>', {
@@ -1601,6 +1604,12 @@
         },
         get context() {
             return this.screen.context;
+        },
+        get screen_is_tree() {
+            return Boolean(
+                this.screen.current_view &&
+                (this.screen.current_view.view_type == 'tree') &&
+                this.screen.current_view.children_field);
         },
         view_populate: function(parent_node, parent_view) {
             var names = Object.keys(parent_node).sort(function(a, b) {
@@ -1884,11 +1893,23 @@
                     fields2.push(field.innerText);
                 });
 
-                var prm;
+                var prm, ids, paths;
                 if (JSON.parse(this.selected_records.val())) {
-                    var ids = this.screen.current_view.selected_records.map(function(r) {
+                    ids = this.screen.selected_records.map(function(r) {
                         return r.id;
                     });
+                    paths = this.screen.selected_paths;
+                    prm = Sao.rpc({
+                        'method': (
+                            'model.' + this.screen.model_name +
+                            '.export_data'),
+                        'params': [ids, fields, this.context]
+                    }, this.session);
+                } else if (this.screen_is_tree) {
+                    ids = this.screen.listed_records.map(function(r) {
+                        return r.id;
+                    });
+                    paths = this.screen.listed_paths;
                     prm = Sao.rpc({
                         'method': (
                             'model.' + this.screen.model_name +
@@ -1916,7 +1937,7 @@
                     }, this.session);
                 }
                 prm.then(function(data) {
-                    this.export_csv(fields2, data).then(function() {
+                    this.export_csv(fields2, data, paths).then(function() {
                         this.destroy();
                     }.bind(this));
                 }.bind(this));
@@ -1924,11 +1945,13 @@
                 this.destroy();
             }
         },
-        export_csv: function(fields, data) {
+        export_csv: function(fields, data, paths) {
             var locale_format = this.el_csv_locale.prop('checked');
             var unparse_obj = {};
-            unparse_obj.data = data.map(function(row) {
-                return Sao.Window.Export.format_row(row, locale_format);
+            unparse_obj.data = data.map(function(row, i) {
+                var indent = paths && paths[i] ? paths[i].length -1 : 0;
+                return Sao.Window.Export.format_row(
+                    row, indent, locale_format);
             });
             if (this.el_add_field_names.is(':checked')) {
                 unparse_obj.fields = fields;
@@ -2001,12 +2024,15 @@
         },
     });
 
-    Sao.Window.Export.format_row = function(line, locale_format) {
+    Sao.Window.Export.format_row = function(line, indent, locale_format) {
+        if (indent === undefined) {
+            indent = 0;
+        }
         if (locale_format === undefined) {
             locale_format = true;
         }
         var row = [];
-        line.forEach(function(val) {
+        line.forEach(function(val, i) {
             if (locale_format) {
                 if (val.isDateTime) {
                     val = val.format(
@@ -2025,6 +2051,9 @@
                 val = val.asSeconds();
             } else if (typeof(val) == 'boolean') {
                 val += 0;
+            }
+            if ((i === 0) && indent && (typeof(val) == 'string')) {
+                val = '  '.repeat(indent) + val;
             }
             row.push(val);
         });

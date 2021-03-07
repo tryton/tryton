@@ -1403,6 +1403,25 @@
             }
             return [];
         },
+        get selected_paths() {
+            if (this.current_view && this.current_view.view_type == 'tree') {
+                return this.current_view.get_selected_paths();
+            }
+        },
+        get listed_records() {
+            if (this.current_view && this.current_view.view_type == 'tree') {
+                return this.current_view.listed_records;
+            } else if (this.current_record) {
+                return [this.current_record];
+            } else {
+                return [];
+            }
+        },
+        get listed_paths() {
+            if (this.current_view && this.current_view.view_type == 'tree') {
+                return this.current_view.get_listed_paths();
+            }
+        },
         clear: function() {
             this.current_record = null;
             this.group.clear();
