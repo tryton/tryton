@@ -90,17 +90,7 @@ class ScrolledWindow(StateMixin, Gtk.ScrolledWindow):
 
 
 class Notebook(StateMixin, Gtk.Notebook):
-
-    def state_set(self, record):
-        super(Notebook, self).state_set(record)
-        if record:
-            state_changes = record.expr_eval(self.attrs.get('states', {}))
-        else:
-            state_changes = {}
-        if state_changes.get('readonly', self.attrs.get('readonly')):
-            for widgets in self.widgets.values():
-                for widget in widgets:
-                    widget._readonly_set(True)
+    pass
 
 
 class Expander(StateMixin, Gtk.Expander):
