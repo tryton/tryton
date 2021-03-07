@@ -177,7 +177,12 @@ class Type(ModelSQL, ModelView):
 
 class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
-    package = fields.Many2One('stock.package', 'Package', select=True)
+    package = fields.Many2One(
+        'stock.package', "Package", select=True,
+        states={
+            'readonly': Eval('state') == 'cancelled',
+            },
+        depends=['state'])
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -187,6 +192,13 @@ class Move(metaclass=PoolMeta):
             default = default.copy()
         default.setdefault('package')
         return super().copy(moves, default=default)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(cls, moves):
+        cls.write([m for m in moves if m.package], {'package': None})
+        super().cancel(moves)
 
 
 class PackageMixin(object):
