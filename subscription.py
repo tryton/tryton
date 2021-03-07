@@ -577,6 +577,11 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             'consumed_until', 'subscription_state', 'consumed_until'])
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('subscription')
+
+    @classmethod
     def __register__(cls, module):
         pool = Pool()
         Subscription = pool.get('sale.subscription')
@@ -872,6 +877,7 @@ class LineConsumption(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(LineConsumption, cls).__setup__()
+        cls.__access__.add('line')
         cls._order.insert(0, ('date', 'DESC'))
 
     @fields.depends('line')

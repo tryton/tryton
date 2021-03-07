@@ -100,6 +100,11 @@ class RecurrenceRule(ModelSQL, ModelView):
     exclusive = fields.Boolean("Exclusive")
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('set_')
+
+    @classmethod
     def __register__(cls, module_name):
         pool = Pool()
         Day = pool.get('ir.calendar.day')

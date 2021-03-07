@@ -172,24 +172,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">subscription_line_list_sequence</field>
         </record>
 
-        <record model="ir.model.access" id="access_subscription_line">
-            <field name="model"
-                search="[('model', '=', 'sale.subscription.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_subscription_line_sale">
-            <field name="model"
-                search="[('model', '=', 'sale.subscription.line')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="subscription_line_consumption_view_form">
             <field name="model">sale.subscription.line.consumption</field>
             <field name="type">form</field>
@@ -266,26 +248,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">sale.subscription.line,-1</field>
             <field name="action"
                 ref="act_subscription_line_consumption_subscription_line_relate"/>
-        </record>
-
-        <record model="ir.model.access"
-            id="access_subscription_line_consumption">
-            <field name="model"
-                search="[('model', '=', 'sale.subscription.line.consumption')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access"
-            id="access_subscription_line_consumption_sale">
-            <field name="model"
-                search="[('model', '=', 'sale.subscription.line.consumption')]"/>
-            <field name="group" ref="sale.group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
         </record>
 
         <record model="ir.action.wizard" id="act_line_consumption_create">
