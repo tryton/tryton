@@ -135,21 +135,5 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">bank_account_number_list_sequence</field>
         </record>
-
-        <record model="ir.model.access" id="access_account_number">
-            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_account_number_bank_admin">
-            <field name="model" search="[('model', '=', 'bank.account.number')]"/>
-            <field name="group" ref="group_bank_admin"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
     </data>
 </tryton>

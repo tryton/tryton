@@ -91,6 +91,7 @@ class AccountNumber(sequence_ordered(), ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super().__setup__()
+        cls.__access__.add('account')
         cls._order.insert(0, ('account', 'ASC'))
 
     @classmethod
