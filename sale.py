@@ -1173,6 +1173,11 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
         'on_change_with_company')
 
     @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('sale')
+
+    @classmethod
     def __register__(cls, module_name):
         super(SaleLine, cls).__register__(module_name)
         table = cls.__table_handler__(module_name)

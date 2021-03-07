@@ -411,22 +411,6 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">sale_line_tree_sequence</field>
         </record>
 
-        <record model="ir.model.access" id="access_sale_line">
-            <field name="model" search="[('model', '=', 'sale.line')]"/>
-            <field name="perm_read" eval="False"/>
-            <field name="perm_write" eval="False"/>
-            <field name="perm_create" eval="False"/>
-            <field name="perm_delete" eval="False"/>
-        </record>
-        <record model="ir.model.access" id="access_sale_line_sale">
-            <field name="model" search="[('model', '=', 'sale.line')]"/>
-            <field name="group" ref="group_sale"/>
-            <field name="perm_read" eval="True"/>
-            <field name="perm_write" eval="True"/>
-            <field name="perm_create" eval="True"/>
-            <field name="perm_delete" eval="True"/>
-        </record>
-
         <record model="ir.ui.view" id="template_view_form">
             <field name="model">product.template</field>
             <field name="inherit" ref="product.template_view_form"/>
