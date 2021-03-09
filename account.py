@@ -8,7 +8,7 @@ import requests
 
 from trytond.i18n import gettext
 from trytond.config import config
-from trytond.model import ModelSQL, ModelView, Workflow, Unique, fields
+from trytond.model import ModelSQL, ModelView, Unique, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import PoolMeta, Pool
 from trytond.pyson import Eval, Bool, If
