@@ -30,23 +30,9 @@ class Configuration(metaclass=PoolMeta):
             return pool.get('sale.configuration.sale_method')
         return super(Configuration, cls).multivalue_model(field)
 
-    @classmethod
-    def get_sale_invoice_grouping_methods(cls):
-        pool = Pool()
-        Party = pool.get('party.party')
-        field_name = 'sale_invoice_grouping_method'
-        return Party.fields_get([field_name])[field_name]['selection']
-
 
 class ConfigurationSaleMethod(metaclass=PoolMeta):
     __name__ = 'sale.configuration.sale_method'
 
     sale_invoice_grouping_method = sale_invoice_grouping_method
     get_sale_invoice_grouping_methods = get_sale_invoice_grouping_methods
-
-    @classmethod
-    def get_sale_invoice_grouping_methods(cls):
-        pool = Pool()
-        Party = pool.get('party.party')
-        field_name = 'sale_invoice_grouping_method'
-        return Party.fields_get([field_name])[field_name]['selection']
