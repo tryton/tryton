@@ -288,6 +288,15 @@ class Payment(Workflow, ModelSQL, ModelView):
         return [(None, '')] + [(m.model, m.name) for m in models]
 
     @classmethod
+    def copy(cls, payments, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('group', None)
+        return super().copy(payments, default=default)
+
+    @classmethod
     def delete(cls, payments):
         for payment in payments:
             if payment.state != 'draft':
