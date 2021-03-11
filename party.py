@@ -172,12 +172,11 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     @classmethod
     def _new_code(cls, **pattern):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Configuration = pool.get('party.configuration')
         config = Configuration(1)
         sequence = config.get_multivalue('party_sequence', **pattern)
         if sequence:
-            return Sequence.get_id(sequence.id)
+            return sequence.get()
 
     @classmethod
     def create(cls, vlist):

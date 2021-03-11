@@ -5,10 +5,11 @@ from trytond.model import ModelView, ModelSQL, ModelSingleton, fields
 from trytond.model import MultiValueMixin, ValueMixin
 from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
+from trytond.pyson import Id
 
 party_sequence = fields.Many2One('ir.sequence', 'Party Sequence',
     domain=[
-        ('code', '=', 'party.party'),
+        ('sequence_type', '=', Id('party', 'sequence_type_party')),
         ],
     help="Used to generate the party code.")
 party_lang = fields.Many2One("ir.lang", 'Party Language',

@@ -92,7 +92,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_party">
             <field name="name">Party</field>
-            <field name="code">party.party</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_party_group_admin">
@@ -107,7 +106,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_party">
             <field name="name">Party</field>
-            <field name="code">party.party</field>
+            <field name="sequence_type" ref="sequence_type_party"/>
         </record>
 
         <record model="ir.ui.view" id="identifier_form">
