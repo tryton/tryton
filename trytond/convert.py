@@ -455,11 +455,8 @@ class TrytondXmlHandler(sax.handler.ContentHandler):
 
         try:
             self.sax_parser.parse(source)
-        except Exception:
-            logger.error(
-                "Error while parsing xml file:\n" + self.current_state(),
-                exc_info=True)
-            raise
+        except Exception as e:
+            raise Exception("Error " + self.current_state()) from e
         return self.to_delete
 
     def startElement(self, name, attributes):

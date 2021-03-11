@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 import os
-import logging
 import json
 
 from lxml import etree
@@ -16,8 +15,6 @@ from trytond.wizard import Wizard, StateView, Button
 from trytond.pool import Pool
 from trytond.cache import Cache
 from trytond.rpc import RPC
-
-logger = logging.getLogger(__name__)
 
 
 class XMLError(ValidationError):
@@ -137,8 +134,6 @@ class View(ModelSQL, ModelView):
                 if not validator.validate(tree):
                     error_log = '\n'.join(map(str,
                             validator.error_log.filter_from_errors()))
-                    logger.error('Invalid XML view %s:\n%s\n%s',
-                        view.rec_name, error_log, xml)
                     raise XMLError(
                         gettext('ir.msg_view_invalid_xml', name=view.rec_name),
                         error_log)
@@ -160,9 +155,6 @@ class View(ModelSQL, ModelView):
                         error_log = '%s: <%s %s="%s"/>' % (
                             e, element.get('id') or element.get('name'), attr,
                             element.get(attr))
-                        logger.error(
-                            'Invalid XML view %s:\n%s\n%s',
-                            view.rec_name, error_log, xml)
                         raise XMLError(
                             gettext(
                                 'ir.msg_view_invalid_xml', name=view.rec_name),
