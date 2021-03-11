@@ -2142,7 +2142,7 @@
             }).appendTo(panel));
 
             var print_frame = jQuery('<div/>', {
-                'class': 'col-md-6',
+                'class': 'col-md-4',
             }).appendTo(body);
             jQuery('<label/>', {
                 'text': Sao.i18n.gettext("Reports"),
@@ -2161,11 +2161,42 @@
                 this.print_actions[print.id] = print_check;
             }
 
-            this.files = jQuery('<div/>', {
-                'class': 'col-md-6',
+            var attachment_frame = jQuery('<div/>', {
+                'class': 'col-md-4',
             }).appendTo(body);
             jQuery('<label/>', {
                 'text': Sao.i18n.gettext("Attachments"),
+            }).appendTo(attachment_frame);
+            this.attachments = jQuery('<select/>', {
+                'class': 'form-control input-sm',
+                'name': 'attachments',
+                'multiple': true,
+            }).appendTo(attachment_frame);
+            Sao.rpc({
+                'method': 'model.ir.attachment.search_read',
+                'params': [
+                    [
+                        ['resource', '=', record.model.name + ',' + record.id],
+                        ['OR',
+                            ['data', '!=', null],
+                            ['file_id', '!=', null],
+                        ],
+                    ],
+                    0, null, null, ['rec_name'], record.get_context()],
+            }, record.model.session).then(function(attachments) {
+                attachments.forEach(function(attachment) {
+                    this.attachments.append(jQuery('<option/>', {
+                        'value': JSON.stringify(attachment.id),
+                        'text': attachment.rec_name,
+                    }));
+                }.bind(this));
+            }.bind(this));
+
+            this.files = jQuery('<div/>', {
+                'class': 'col-md-4',
+            }).appendTo(body);
+            jQuery('<label/>', {
+                'text': Sao.i18n.gettext("Files"),
             }).appendTo(this.files);
             this._add_file_button();
 
@@ -2203,7 +2234,7 @@
             }).appendTo(row);
             var button = jQuery('<a/>', {
                 'class': 'close',
-                'title': Sao.i18n.gettext("Remove attachment"),
+                'title': Sao.i18n.gettext("Remove File"),
             }).append(jQuery('<span/>', {
                 'aria-hidden': true,
                 'text': 'x',
@@ -2238,6 +2269,13 @@
             return jQuery.when.apply(jQuery, prms).then(function() {
                 return files;
             });
+        },
+        get_attachments: function() {
+            var attachments = this.attachments.val();
+            if (attachments) {
+                return attachments.map(function(e) { return JSON.parse(e); });
+            }
+            return [];
         },
         _fill_with: function(template) {
             var prm;
@@ -2280,15 +2318,18 @@
                         reports.push(id);
                     }
                 }
+                var attachments = this.get_attachments();
                 var record = this.record;
-                this.get_files().then(function(attachments) {
+                this.get_files().then(function(files) {
                     return Sao.rpc({
                         'method': 'model.ir.email.send',
                         'params': [
                             to, cc, bcc, subject, body,
-                            attachments,
+                            files,
                             [record.model.name, record.id],
-                            reports, {}],
+                            reports,
+                            attachments,
+                            {}],
                     }, record.model.session);
                 }).then(function() {
                     this.destroy();
