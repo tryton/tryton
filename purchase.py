@@ -6,7 +6,7 @@ from itertools import chain
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
-from trytond.pyson import Eval, Bool, If
+from trytond.pyson import Eval, Bool, If, Id
 from trytond.model import Workflow, ModelView, fields, ModelSQL, \
         sequence_ordered
 from trytond.model.exceptions import RequiredValidationError, AccessError
@@ -26,7 +26,9 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'purchase.requisition'),
+                ('sequence_type', '=',
+                    Id('purchase_requisition',
+                        'sequence_type_purchase_requisition')),
                 ]))
 
     @classmethod
@@ -48,7 +50,9 @@ class ConfigurationSequence(metaclass=PoolMeta):
         'ir.sequence', "Purchase Requisition Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'purchase.requisition'),
+            ('sequence_type', '=',
+                Id('purchase_requisition',
+                    'sequence_type_purchase_requisition')),
             ],
         depends=['company'])
 
@@ -319,15 +323,14 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
         vlist = [v.copy() for v in vlist]
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.purchase_requisition_sequence.id)
+                values['number'] = (
+                    config.purchase_requisition_sequence.get())
         return super(PurchaseRequisition, cls).create(vlist)
 
     @classmethod
