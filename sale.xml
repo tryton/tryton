@@ -362,7 +362,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_sale">
             <field name="name">Sale</field>
-            <field name="code">sale.sale</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_sale_group_admin">
@@ -377,7 +376,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_sale">
             <field name="name">Sale</field>
-            <field name="code">sale.sale</field>
+            <field name="sequence_type" ref="sequence_type_sale"/>
         </record>
 
         <record model="ir.action.report" id="report_sale">

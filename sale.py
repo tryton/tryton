@@ -761,14 +761,13 @@ class Sale(
         Fill the number field with the sale sequence
         '''
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
 
         config = Config(1)
         for sale in sales:
             if sale.number:
                 continue
-            sale.number = Sequence.get_id(config.sale_sequence.id)
+            sale.number = config.sale_sequence.get()
         cls.save(sales)
 
     @classmethod
