@@ -165,7 +165,7 @@ class RecurrenceRule(ModelSQL, ModelView):
             try:
                 cls = WEEKDAYS[weekday[:2]]
             except KeyError:
-                ValueError('Invalid weekday')
+                raise ValueError('Invalid weekday')
             if not weekday[2:]:
                 byweekday.append(cls)
             else:
