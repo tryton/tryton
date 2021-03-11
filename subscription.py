@@ -838,13 +838,14 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             line.validate_consumption_recurrence()
 
     def validate_consumption_recurrence(self):
-        try:
-            self.consumption_recurrence.rruleset(self.start_date)[0]
-        except IndexError:
-            raise InvalidRecurrence(gettext(
-                    'sale_subscription.msg_consumption_recurrence_invalid',
-                    line=self.rec_name,
-                    subscription=self.subscription.rec_name))
+        if self.consumption_recurrence:
+            try:
+                self.consumption_recurrence.rruleset(self.start_date)[0]
+            except IndexError:
+                raise InvalidRecurrence(gettext(
+                        'sale_subscription.msg_consumption_recurrence_invalid',
+                        line=self.rec_name,
+                        subscription=self.subscription.rec_name))
 
     @classmethod
     def copy(cls, lines, default=None):
