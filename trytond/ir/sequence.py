@@ -131,8 +131,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                         sequence_type.id,
                         where=sequence_type.code == table.code)))
             table_h.drop_column('code')
-            sequence_type_h = SequenceType.__table_handler__(module)
-            sequence_type_h.drop_column('code')
 
     @staticmethod
     def default_type():
