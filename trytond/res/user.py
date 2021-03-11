@@ -145,7 +145,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
     sessions = fields.Function(fields.Integer('Sessions'),
             'get_sessions')
     _get_preferences_cache = Cache('res_user.get_preferences')
-    _get_groups_cache = Cache('res_user.get_groups')
+    _get_groups_cache = Cache('res_user.get_groups', context=False)
     _get_login_cache = Cache('res_user._get_login', context=False)
 
     @classmethod
