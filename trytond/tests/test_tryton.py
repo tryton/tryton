@@ -612,7 +612,14 @@ class ModuleTestCase(unittest.TestCase):
             for state_name, state in wizard_instance.states.items():
                 if isinstance(state, StateView):
                     # Don't test defaults as they may depend on context
-                    state.get_view(wizard_instance, state_name)
+                    view = state.get_view(wizard_instance, state_name)
+                    self.assertEqual(
+                        view.get('type'), 'form',
+                        msg='Wrong view type for "%(state)s" '
+                        'on wizard "%(wizard)s"' % {
+                            'state': state_name,
+                            'wizard': wizard_name,
+                            })
                     for button in state.get_buttons(
                             wizard_instance, state_name):
                         if button['state'] == wizard.end_state:

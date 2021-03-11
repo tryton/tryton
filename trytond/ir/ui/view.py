@@ -221,7 +221,8 @@ class ShowView(Wizard):
             View = pool.get('ir.ui.view')
             view_id = Transaction().context.get('active_id')
             if not view_id:
-                return {}
+                # Set type to please ModuleTestCase.test_wizards
+                return {'type': 'form'}
             view = View(view_id)
             Model = pool.get(view.model)
             return Model.fields_view_get(view_id=view.id)
