@@ -12,7 +12,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import Workflow, ModelView, ModelSQL, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If
+from trytond.pyson import Eval, If, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.transaction import Transaction
 from trytond.tools import grouped_slice, cursor_dict
@@ -30,7 +30,9 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.drop'),
+                ('sequence_type', '=',
+                    Id('sale_supply_drop_shipment',
+                        'sequence_type_shipment_drop')),
                 ]))
 
     @classmethod
@@ -360,13 +362,12 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
-            values['number'] = Sequence.get_id(config.shipment_drop_sequence)
+            values['number'] = config.shipment_drop_sequence.get()
         shipments = super(ShipmentDrop, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments

@@ -16,7 +16,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_shipment_drop">
             <field name="name">Drop Shipment</field>
-            <field name="code">stock.shipment.drop</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_shipment_drop_group_admin">
@@ -31,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_shipment_drop">
             <field name="name">Drop Shipment</field>
-            <field name="code">stock.shipment.drop</field>
+            <field name="sequence_type" ref="sequence_type_shipment_drop"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_drop_view_form">
