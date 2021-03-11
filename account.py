@@ -6,7 +6,7 @@ from operator import itemgetter
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, MatchMixin, fields
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.tools.multivalue import migrate_property
@@ -30,7 +30,9 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'account.landed_cost'),
+                ('sequence_type', '=',
+                    Id('account_stock_landed_cost',
+                        'sequence_type_landed_cost')),
                 ]))
 
     @classmethod
@@ -46,7 +48,8 @@ class ConfigurationLandedCostSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "Landed Cost Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'account.landed_cost'),
+            ('sequence_type', '=',
+                Id('account_stock_landed_cost', 'sequence_type_landed_cost')),
             ],
         depends=['company'])
 
@@ -399,15 +402,13 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('account.configuration')
 
         vlist = [v.copy() for v in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.landed_cost_sequence.id)
+                values['number'] = config.landed_cost_sequence.get()
         return super(LandedCost, cls).create(vlist)
 
 

@@ -5,7 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <record model="ir.sequence.type" id="sequence_type_landed_cost">
             <field name="name">Landed Cost</field>
-            <field name="code">account.landed_cost</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_landed_code_group_admin">
@@ -20,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_landed_cost">
             <field name="name">Landed Cost</field>
-            <field name="code">account.landed_cost</field>
+            <field name="sequence_type" ref="sequence_type_landed_cost"/>
         </record>
 
         <record model="ir.ui.view" id="configuration_view_form">
