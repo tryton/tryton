@@ -2,7 +2,7 @@
 # this repository contains the full copyright notices and license terms.
 from trytond import backend
 from trytond.model import fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.pool import PoolMeta, Pool
 
 
@@ -14,7 +14,8 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in', [Eval('context', {}).get('company', -1),
                         None]),
-                ('code', '=', 'sale.opportunity'),
+                ('sequence_type', '=',
+                    Id('sale_opportunity', 'sequence_type_sale_opportunity')),
                 ]))
 
     @classmethod
@@ -36,7 +37,8 @@ class ConfigurationSequence(metaclass=PoolMeta):
         'ir.sequence', "Opportunity Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'sale.opportunity'),
+            ('sequence_type', '=',
+                Id('sale_opportunity', 'sequence_type_sale_opportunity')),
             ],
         depends=['company'])
 

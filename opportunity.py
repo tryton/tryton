@@ -264,15 +264,13 @@ class SaleOpportunity(
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
 
         config = Config(1)
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if vals.get('number') is None:
-                vals['number'] = Sequence.get_id(
-                    config.sale_opportunity_sequence.id)
+                vals['number'] = config.sale_opportunity_sequence.get()
         return super(SaleOpportunity, cls).create(vlist)
 
     @classmethod

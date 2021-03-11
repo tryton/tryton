@@ -30,7 +30,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_sale_opportunity">
             <field name="name">Sale Opportunity</field>
-            <field name="code">sale.opportunity</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_sale_opportunity_group_admin">
@@ -45,7 +44,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_sale_opportunity">
             <field name="name">Sale Opportunity</field>
-            <field name="code">sale.opportunity</field>
+            <field name="sequence_type" ref="sequence_type_sale_opportunity"/>
         </record>
 
         <record model="ir.action.act_window" id="act_opportunity_form">
