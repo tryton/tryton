@@ -10,7 +10,7 @@ from trytond.model import Workflow, ModelView, fields, ModelSQL
 from trytond.modules.company import CompanyReport
 from trytond.modules.product import price_digits
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Bool, If
+from trytond.pyson import Eval, Bool, If, Id
 from trytond.transaction import Transaction
 from trytond.wizard import Wizard, StateView, StateTransition, Button
 
@@ -36,7 +36,9 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'purchase.request.quotation'),
+                ('sequence_type', '=',
+                    Id('purchase_request_quotation',
+                    'sequence_type_purchase_request_quotation')),
                 ]))
 
     @classmethod
@@ -55,14 +57,16 @@ class Configuration(metaclass=PoolMeta):
 class ConfigurationSequence(metaclass=PoolMeta):
     __name__ = 'purchase.configuration.sequence'
     purchase_request_quotation_sequence = fields.Many2One(
-            'ir.sequence', 'Purchase Request Quotation Sequence',
-            required=True,
-            domain=[
-                ('company', 'in',
-                    [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'purchase.request.quotation'),
-                ],
-            depends=['company'])
+        'ir.sequence', 'Purchase Request Quotation Sequence',
+        required=True,
+        domain=[
+            ('company', 'in',
+                [Eval('context', {}).get('company', -1), None]),
+            ('sequence_type', '=',
+                Id('purchase_request_quotation',
+                    'sequence_type_purchase_request_quotation')),
+            ],
+        depends=['company'])
 
     @classmethod
     def default_purchase_request_quotation_sequence(cls):
@@ -181,7 +185,6 @@ class Quotation(Workflow, ModelSQL, ModelView):
     @classmethod
     def set_number(cls, quotations):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
@@ -189,8 +192,8 @@ class Quotation(Workflow, ModelSQL, ModelView):
             if quotation.number:
                 quotation.revision += 1
             else:
-                quotation.number = Sequence.get_id(
-                    config.purchase_request_quotation_sequence.id)
+                quotation.number = (
+                    config.purchase_request_quotation_sequence.get())
         cls.save(quotations)
 
     @fields.depends('supplier')

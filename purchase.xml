@@ -222,7 +222,6 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence.type"
             id="sequence_type_purchase_request_quotation">
             <field name="name">Purchase Request Quotation</field>
-            <field name="code">purchase.request.quotation</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_purchase_request_quotation_group_admin">
@@ -239,7 +238,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.sequence"
             id="sequence_purchase_request_quotation">
             <field name="name">Purchase Request Quotation</field>
-            <field name="code">purchase.request.quotation</field>
+            <field name="sequence_type" ref="sequence_type_purchase_request_quotation"/>
         </record>
     </data>
 </tryton>
