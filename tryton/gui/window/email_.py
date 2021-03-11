@@ -4,7 +4,7 @@ import gettext
 import logging
 import os
 
-from gi.repository import Gtk, GLib
+from gi.repository import Gtk, GLib, GObject
 try:
     from gi.repository import GtkSpell
 except ImportError:
@@ -13,6 +13,7 @@ except ImportError:
 from tryton.common import IconFactory, Tooltips, RPCExecute, RPCException
 from tryton.common.richtext import (
     register_format, add_toolbar, get_content, set_content)
+from tryton.common.treeviewcontrol import TreeViewControl
 from tryton.common.underline import set_underline
 from tryton.common.widget_style import widget_class
 from tryton.config import TRYTON_ICON, CONFIG
@@ -167,12 +168,13 @@ class Email(NoModal):
                     'Could not set spell checker for "%s"', language)
                 checker.detach()
 
-        attachments = Gtk.HBox()
-        grid.attach(attachments, 0, 5, 2, 1)
+        attachments_box = Gtk.HBox()
+        grid.attach(attachments_box, 0, 5, 2, 1)
 
         print_frame = Gtk.Frame(shadow_type=Gtk.ShadowType.NONE)
         print_frame.set_label(_("Reports"))
-        attachments.pack_start(print_frame, expand=True, fill=True, padding=0)
+        attachments_box.pack_start(
+            print_frame, expand=True, fill=True, padding=0)
         print_box = Gtk.VBox()
         print_frame.add(print_box)
         print_flowbox = Gtk.FlowBox(selection_mode=Gtk.SelectionMode.NONE)
@@ -185,9 +187,48 @@ class Email(NoModal):
             self.print_actions[print_['id']] = print_check
             print_flowbox.add(print_check)
 
+        attachment_frame = Gtk.Frame(shadow_type=Gtk.ShadowType.NONE)
+        attachment_frame.set_label(_("Attachments"))
+        attachments_box.pack_start(
+            attachment_frame, expand=True, fill=True, padding=0)
+        try:
+            attachments = RPCExecute('model', 'ir.attachment',
+                'search_read', [
+                    ('resource', '=', '%s,%s' % (
+                            record.model_name, record.id)),
+                    ['OR',
+                        ('data', '!=', None),
+                        ('file_id', '!=', None),
+                        ],
+                    ], 0, None, None, ['rec_name'],
+                context=record.get_context())
+        except RPCException:
+            logger.error(
+                'Could not fetch attachment for "%s"', record)
+            attachments = []
+        scrolledwindow = Gtk.ScrolledWindow()
+        if len(attachments) > 2:
+            scrolledwindow.set_size_request(-1, 100)
+        attachment_frame.add(scrolledwindow)
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        self.attachments = TreeViewControl()
+        self.attachments.set_headers_visible(False)
+        scrolledwindow.add(self.attachments)
+        self.attachments.get_selection().set_mode(Gtk.SelectionMode.MULTIPLE)
+        self.attachments.append_column(
+            Gtk.TreeViewColumn(
+                "Name", Gtk.CellRendererText(), text=0))
+        model = Gtk.ListStore(GObject.TYPE_STRING, GObject.TYPE_INT)
+        for attachment in attachments:
+            model.append((attachment['rec_name'], attachment['id']))
+        self.attachments.set_model(model)
+        self.attachments.set_search_column(0)
+
         file_frame = Gtk.Frame(shadow_type=Gtk.ShadowType.NONE)
-        file_frame.set_label(_("Attachments"))
-        attachments.pack_start(file_frame, expand=True, fill=True, padding=0)
+        file_frame.set_label(_("Files"))
+        attachments_box.pack_start(
+            file_frame, expand=True, fill=True, padding=0)
         self.files = Gtk.VBox(spacing=6)
         file_frame.add(self.files)
         self._add_file_button()
@@ -212,12 +253,12 @@ class Email(NoModal):
         tooltips = Tooltips()
         box = Gtk.HBox(spacing=3)
         self.files.pack_start(box, expand=False, fill=True, padding=0)
-        file_ = Gtk.FileChooserButton(title=_("Select Attachment"))
+        file_ = Gtk.FileChooserButton(title=_("Select File"))
         box.pack_start(file_, expand=True, fill=True, padding=0)
         button = Gtk.Button()
         button.set_image(IconFactory.get_image(
                 'tryton-remove', Gtk.IconSize.BUTTON))
-        tooltips.set_tip(button, _("Remove attachment"))
+        tooltips.set_tip(button, _("Remove File"))
         button.set_sensitive(False)
         box.pack_start(button, expand=False, fill=True, padding=0)
 
@@ -243,6 +284,10 @@ class Email(NoModal):
                 data = fp.read()
             name = os.path.basename(filename)
             yield (name, data)
+
+    def get_attachments(self):
+        model, paths = self.attachments.get_selection().get_selected_rows()
+        return [model[path][1] for path in paths]
 
     def _fill_with(self, template=None):
         try:
@@ -290,17 +335,19 @@ class Email(NoModal):
             bcc = self.bcc.get_text()
             subject = self.subject.get_text()
             body = get_content(self.body)
-            attachments = list(self.get_files())
+            files = list(self.get_files())
             reports = [
                 id_ for id_, check in self.print_actions.items()
                 if check.get_active()]
+            attachments = self.get_attachments()
             try:
                 RPCExecute(
                     'model', 'ir.email', 'send',
                     to, cc, bcc, subject, body,
-                    attachments,
+                    files,
                     [self.record.model_name, self.record.id],
-                    reports)
+                    reports,
+                    attachments)
             except RPCException:
                 return
         self.destroy()
