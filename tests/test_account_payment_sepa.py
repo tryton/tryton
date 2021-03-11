@@ -188,6 +188,7 @@ class AccountPaymentSepaTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
         pool = Pool()
         Configuration = pool.get('account.configuration')
         Sequence = pool.get('ir.sequence')
+        SequenceType = pool.get('ir.sequence.type')
         Party = pool.get('party.party')
         Mandate = pool.get('account.payment.sepa.mandate')
 
@@ -200,8 +201,10 @@ class AccountPaymentSepaTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
             mandate.save()
             self.assertFalse(mandate.identification)
 
-            sequence = Sequence(name='Test',
-                code='account.payment.sepa.mandate')
+            sequence_type, = SequenceType.search([
+                    ('name', '=', "SEPA Mandate"),
+                    ], limit=1)
+            sequence = Sequence(name="Test", sequence_type=sequence_type)
             sequence.save()
             config = Configuration(1)
             config.sepa_mandate_sequence = sequence

@@ -152,7 +152,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_mandate">
             <field name="name">SEPA Mandate</field>
-            <field name="code">account.payment.sepa.mandate</field>
         </record>
 
         <record model="ir.sequence.type-res.group"

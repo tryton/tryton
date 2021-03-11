@@ -3,7 +3,7 @@
 from trytond import backend
 from trytond.pool import PoolMeta
 from trytond.model import ModelSQL, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
 
@@ -13,7 +13,8 @@ class Configuration(metaclass=PoolMeta):
     sepa_mandate_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "SEPA Mandate Sequence",
             domain=[
-                ('code', '=', 'account.payment.sepa.mandate'),
+                ('sequence_type', '=', Id(
+                        'account_payment_sepa', 'sequence_type_mandate')),
                 ('company', 'in', [Eval('context', {}).get('company', -1),
                         None]),
                 ]))
@@ -25,7 +26,8 @@ class ConfigurationSepaMandateSequence(ModelSQL, CompanyValueMixin):
     sepa_mandate_sequence = fields.Many2One(
         'ir.sequence', "SEPA Mandate Sequence",
         domain=[
-            ('code', '=', 'account.payment.sepa.mandate'),
+            ('sequence_type', '=', Id(
+                    'account_payment_sepa', 'sequence_type_mandate')),
             ('company', 'in', [Eval('company', -1), None]),
             ],
         depends=['company'])

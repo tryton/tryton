@@ -585,7 +585,6 @@ class Mandate(Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Configuration = pool.get('account.configuration')
 
         config = Configuration(1)
@@ -593,8 +592,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
         for values in vlist:
             if (config.sepa_mandate_sequence
                     and not values.get('identification')):
-                values['identification'] = Sequence.get_id(
-                    config.sepa_mandate_sequence.id)
+                values['identification'] = config.sepa_mandate_sequence.get()
             # Prevent raising false unique constraint
             if values.get('identification') == '':
                 values['identification'] = None
