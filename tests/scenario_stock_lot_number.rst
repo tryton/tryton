@@ -15,7 +15,10 @@ Activate modules::
 Create lot sequence::
 
     >>> Sequence = Model.get('ir.sequence')
-    >>> sequence = Sequence(name="Lot", code='stock.lot')
+    >>> SequenceType = Model.get('ir.sequence.type')
+    >>> sequence_type, = SequenceType.find(
+    ...     [('name', '=', "Stock Lot")], limit=1)
+    >>> sequence = Sequence(name="Lot", sequence_type=sequence_type)
     >>> sequence.save()
 
 Set default sequence::

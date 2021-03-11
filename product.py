@@ -4,7 +4,7 @@ from sql import Table
 
 from trytond.config import config
 from trytond.model import ModelSQL, ValueMixin, fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.pool import PoolMeta, Pool
 from trytond.transaction import Transaction
 
@@ -16,7 +16,8 @@ class Configuration(metaclass=PoolMeta):
         fields.Many2One(
             'ir.sequence', "Default Lot Sequence",
             domain=[
-                ('code', '=', 'stock.lot'),
+                ('sequence_type', '=',
+                    Id('stock_lot', 'sequence_type_stock_lot')),
                 ]))
 
 
@@ -26,7 +27,8 @@ class ConfigurationDefaultLotSequence(ModelSQL, ValueMixin):
     default_lot_sequence = fields.Many2One(
         'ir.sequence', "Default Lot Sequence",
         domain=[
-            ('code', '=', 'stock.lot'),
+            ('sequence_type', '=',
+                Id('stock_lot', 'sequence_type_stock_lot')),
             ])
 
 
@@ -48,7 +50,7 @@ class Template(metaclass=PoolMeta):
     lot_sequence = fields.Many2One(
         'ir.sequence', "Lot Sequence",
         domain=[
-            ('code', '=', 'stock.lot'),
+            ('sequence_type', '=', Id('stock_lot', 'sequence_type_stock_lot')),
             ],
         states={
             'invisible': ~Eval('type').in_(['goods', 'assets']),

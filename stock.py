@@ -125,11 +125,10 @@ class Lot(ModelSQL, ModelView, LotMixin, StockMixin):
     def _new_number(cls, values):
         pool = Pool()
         Product = pool.get('product.product')
-        Sequence = pool.get('ir.sequence')
         if values.get('product'):
             product = Product(values['product'])
             if product.lot_sequence:
-                return Sequence.get_id(product.lot_sequence.id)
+                return product.lot_sequence.get()
 
     @classmethod
     @check_no_move

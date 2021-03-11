@@ -5,7 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <record model="ir.sequence.type" id="sequence_type_stock_lot">
             <field name="name">Stock Lot</field>
-            <field name="code">stock.lot</field>
         </record>
         <record model="ir.sequence.type-res.group" id="sequence_type_stock_lot_group_admin">
             <field name="sequence_type" ref="sequence_type_stock_lot"/>
