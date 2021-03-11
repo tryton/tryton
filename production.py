@@ -623,15 +623,13 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        Sequence = Pool().get('ir.sequence')
         Config = Pool().get('production.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.production_sequence.id)
+                values['number'] = config.production_sequence.get()
         productions = super(Production, cls).create(vlist)
         for production in productions:
             production._set_move_planned_date()

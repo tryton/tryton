@@ -163,7 +163,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_production">
             <field name="name">Production</field>
-            <field name="code">production</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_production_group_admin">
@@ -178,7 +177,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_production">
             <field name="name">Production</field>
-            <field name="code">production</field>
+            <field name="sequence_type" ref="sequence_type_production"/>
         </record>
 
         <record model="ir.model.access" id="access_production">
