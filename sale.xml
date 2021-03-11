@@ -16,7 +16,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_complaint">
             <field name="name">Customer Complaint</field>
-            <field name="code">sale.complaint</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_sale_group_admin">
@@ -31,7 +30,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_complaint">
             <field name="name">Customer Complaint</field>
-            <field name="code">sale.complaint</field>
+            <field name="sequence_type" ref="sequence_type_complaint"/>
         </record>
 
         <record model="ir.ui.view" id="sale_view_form">

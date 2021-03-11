@@ -4,7 +4,7 @@
 from trytond import backend
 from trytond.pool import PoolMeta, Pool
 from trytond.model import fields
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 
 
 class Configuration(metaclass=PoolMeta):
@@ -13,7 +13,8 @@ class Configuration(metaclass=PoolMeta):
     complaint_sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Complaint Sequence",
             domain=[
-                ('code', '=', 'sale.complaint'),
+                ('sequence_type', '=',
+                    Id('sale_complaint', 'sequence_type_complaint')),
                 ('company', 'in', [
                         Eval('context', {}).get('company', -1), None]),
                 ]))
@@ -36,7 +37,8 @@ class ConfigurationSequence(metaclass=PoolMeta):
     complaint_sequence = fields.Many2One(
         'ir.sequence', "Complaint Sequence",
         domain=[
-            ('code', '=', 'sale.complaint'),
+            ('sequence_type', '=',
+                Id('sale_complaint', 'sequence_type_complaint')),
             ('company', 'in', [Eval('company', -1), None]),
             ],
         depends=['company'])
