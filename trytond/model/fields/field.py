@@ -462,13 +462,24 @@ class Field(object):
                     changes.append('id')
 
                 for name in changes:
-                    field = model._fields.get(name)
+                    target = model
+                    if '.' in name:
+                        prefix, _ = name.rsplit('.', 1)
+                        prefix += '.'
+                    else:
+                        prefix = ''
+                    while name.startswith('_parent_'):
+                        field, name = name.split('.', 1)
+                        target = target._fields[field[8:]].get_target()
+                    field = target._fields[name]
                     if field and field.context:
                         eval_fields = get_eval_fields(field.context)
                         for context_field_name in eval_fields:
+                            prefix_ctx_field_name = (
+                                prefix + context_field_name)
                             if (context_field_name in field.depends
-                                    and context_field_name not in changes):
-                                changes.append(context_field_name)
+                                    and prefix_ctx_field_name not in changes):
+                                changes.append(prefix_ctx_field_name)
 
         name = '%s,%s' % (model.__name__, self.name)
         for attr, ttype in [('string', 'field'), ('help', 'help')]:
