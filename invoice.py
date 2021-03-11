@@ -1084,7 +1084,6 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
     def get_next_number(self, pattern=None):
         "Return invoice number and sequence id used"
         pool = Pool()
-        Sequence = pool.get('ir.sequence.strict')
         Period = pool.get('account.period')
 
         if pattern is None:
@@ -1114,7 +1113,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     invoice=self.rec_name,
                     fiscalyear=fiscalyear.rec_name))
         with Transaction().set_context(date=accounting_date):
-            return Sequence.get_id(sequence.id), sequence.id
+            return sequence.get(), sequence.id
 
     @property
     def _sequence_field(self):

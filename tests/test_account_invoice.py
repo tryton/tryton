@@ -20,9 +20,13 @@ from ..exceptions import PaymentTermValidationError
 def set_invoice_sequences(fiscalyear):
     pool = Pool()
     Sequence = pool.get('ir.sequence.strict')
+    SequenceType = pool.get('ir.sequence.type')
     InvoiceSequence = pool.get('account.fiscalyear.invoice_sequence')
 
-    sequence = Sequence(name=fiscalyear.name, code='account.invoice')
+    sequence_type, = SequenceType.search([
+            ('name', '=', "Invoice"),
+            ], limit=1)
+    sequence = Sequence(name=fiscalyear.name, sequence_type=sequence_type)
     sequence.company = fiscalyear.company
     sequence.save()
     fiscalyear.invoice_sequences = []

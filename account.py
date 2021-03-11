@@ -8,7 +8,7 @@ from sql.conditionals import Coalesce
 from trytond.i18n import gettext
 from trytond.model import (fields, ModelView, ModelSQL, Workflow, MatchMixin,
     sequence_ordered)
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Eval, If, Bool, Id
 from trytond.pool import Pool, PoolMeta
 from trytond.tools import grouped_slice
 from trytond.transaction import Transaction
@@ -179,41 +179,33 @@ class InvoiceSequence(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     in_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Invoice Sequence', required=True,
         domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
+            ('sequence_type', '=',
+                Id('account_invoice', 'sequence_type_account_invoice')),
+            ('company', '=', Eval('company')),
             ],
         depends=['company'])
     in_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Supplier Credit Note Sequence', required=True,
         domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
+            ('sequence_type', '=',
+                Id('account_invoice', 'sequence_type_account_invoice')),
+            ('company', '=', Eval('company')),
             ],
         depends=['company'])
     out_invoice_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Invoice Sequence', required=True,
         domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
+            ('sequence_type', '=',
+                Id('account_invoice', 'sequence_type_account_invoice')),
+            ('company', '=', Eval('company')),
             ],
         depends=['company'])
     out_credit_note_sequence = fields.Many2One('ir.sequence.strict',
         'Customer Credit Note Sequence', required=True,
         domain=[
-            ('code', '=', 'account.invoice'),
-            ['OR',
-                ('company', '=', Eval('company')),
-                ('company', '=', None),
-                ],
+            ('sequence_type', '=',
+                Id('account_invoice', 'sequence_type_account_invoice')),
+            ('company', '=', Eval('company')),
             ],
         depends=['company'])
 

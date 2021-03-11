@@ -8,8 +8,14 @@ __all__ = ['set_fiscalyear_invoice_sequences']
 def set_fiscalyear_invoice_sequences(fiscalyear, config=None):
     "Set invoice sequences to fiscalyear"
     SequenceStrict = Model.get('ir.sequence.strict', config=config)
+    SequenceType = Model.get('ir.sequence.type', config=config)
 
-    invoice_seq = SequenceStrict(name=fiscalyear.name, code='account.invoice',
+    sequence_type, = SequenceType.find([
+            ('name', '=', "Invoice"),
+            ], limit=1)
+    invoice_seq = SequenceStrict(
+        name=fiscalyear.name,
+        sequence_type=sequence_type,
         company=fiscalyear.company)
     invoice_seq.save()
     seq, = fiscalyear.invoice_sequences

@@ -230,7 +230,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_account_invoice">
             <field name="name">Invoice</field>
-            <field name="code">account.invoice</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_account_invoice_group_admin">
