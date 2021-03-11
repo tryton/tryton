@@ -380,14 +380,13 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(config.shipment_in_sequence)
+                values['number'] = config.shipment_in_sequence.get()
         shipments = super(ShipmentIn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -728,15 +727,14 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.shipment_in_return_sequence.id)
+                values['number'] = (
+                    config.shipment_in_return_sequence.get())
         shipments = super(ShipmentInReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1406,15 +1404,14 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.shipment_out_sequence.id)
+                values['number'] = (
+                    config.shipment_out_sequence.get())
         shipments = super(ShipmentOut, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1798,15 +1795,14 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                        config.shipment_out_return_sequence.id)
+                values['number'] = (
+                    config.shipment_out_return_sequence.get())
         shipments = super(ShipmentOutReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -2259,15 +2255,14 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                        config.shipment_internal_sequence.id)
+                values['number'] = (
+                    config.shipment_internal_sequence.get())
         shipments = super().create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments

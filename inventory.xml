@@ -158,7 +158,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_inventory">
             <field name="name">Inventory</field>
-            <field name="code">stock.inventory</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_inventory_group_admin">
@@ -173,7 +172,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_inventory">
             <field name="name">Inventory</field>
-            <field name="code">stock.inventory</field>
+            <field name="sequence_type" ref="sequence_type_inventory"/>
         </record>
 
     </data>

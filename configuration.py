@@ -4,7 +4,7 @@ from trytond import backend
 from trytond.model import (ModelView, ModelSQL, ModelSingleton, ValueMixin,
     fields)
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
@@ -51,7 +51,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.in'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_shipment_in')),
                 ],
             help="Used to generate the number given to supplier shipments."))
     shipment_in_return_sequence = fields.MultiValue(fields.Many2One(
@@ -59,7 +60,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.in.return'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_shipment_in_return')),
                 ],
             help="Used to generate the number given to supplier return "
             "shipments."))
@@ -68,7 +70,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.out'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_shipment_out')),
                 ],
             help="Used to generate the number given to customer "
             "shipments."))
@@ -77,7 +80,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.out.return'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_shipment_out_return')),
                 ],
             help="Used to generate the number given to customer return "
             "shipments."))
@@ -86,7 +90,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.shipment.internal'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_shipment_internal')),
                 ],
             help="Used to generate the number given to internal "
             "shipments."))
@@ -95,7 +100,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'stock.inventory'),
+                ('sequence_type', '=',
+                    Id('stock', 'sequence_type_inventory')),
                 ],
             help="Used to generate the number given to inventories."))
     shipment_internal_transit = fields.MultiValue(shipment_internal_transit)
@@ -129,42 +135,48 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "Supplier Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.in'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_shipment_in')),
             ],
         depends=['company'])
     shipment_in_return_sequence = fields.Many2One(
         'ir.sequence', "Supplier Return Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.in.return'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_shipment_in_return')),
             ],
         depends=['company'])
     shipment_out_sequence = fields.Many2One(
         'ir.sequence', "Customer Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.out'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_shipment_out')),
             ],
         depends=['company'])
     shipment_out_return_sequence = fields.Many2One(
         'ir.sequence', "Customer Return Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.out.return'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_shipment_out_return')),
             ],
         depends=['company'])
     shipment_internal_sequence = fields.Many2One(
         'ir.sequence', "Internal Shipment Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.shipment.internal'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_shipment_internal')),
             ],
         depends=['company'])
     inventory_sequence = fields.Many2One(
         'ir.sequence', "Inventory Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.inventory'),
+            ('sequence_type', '=',
+                Id('stock', 'sequence_type_inventory')),
             ],
         depends=['company'])
 

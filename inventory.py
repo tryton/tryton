@@ -204,14 +204,13 @@ class Inventory(Workflow, ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Configuration = pool.get('stock.configuration')
         config = Configuration(1)
         vlist = [x.copy() for x in vlist]
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.inventory_sequence.id)
+                values['number'] = (
+                    config.inventory_sequence.get())
         inventories = super(Inventory, cls).create(vlist)
         cls.complete_lines(inventories, fill=False)
         return inventories
