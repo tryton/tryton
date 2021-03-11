@@ -259,15 +259,13 @@ class Subscription(Workflow, ModelSQL, ModelView):
     @classmethod
     def set_number(cls, subscriptions):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('sale.configuration')
 
         config = Config(1)
         for subscription in subscriptions:
             if subscription.number:
                 continue
-            subscription.number = Sequence.get_id(
-                config.subscription_sequence.id)
+            subscription.number = config.subscription_sequence.get()
         cls.save(subscriptions)
 
     def compute_next_invoice_date(self):
