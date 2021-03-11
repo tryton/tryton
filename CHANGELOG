@@ -1,3 +1,5 @@
+* Use instance method to get next sequence value
+* Store the sequence type directly on sequence
 * Allow sending email with record's attachments
 * Add which records to use for actions
 * Add parent to group to inherit accesses

@@ -31,20 +31,18 @@ class IrTestCase(ModuleTestCase):
         except KeyError:
             groups = []
 
-        sequence_type = SequenceType(name='Test', code='test', groups=groups)
+        sequence_type = SequenceType(name='Test', groups=groups)
         sequence_type.save()
-        sequence = Sequence(name='Test Sequence', code='test')
+        sequence = Sequence(name='Test Sequence', sequence_type=sequence_type)
         sequence.save()
-        self.assertEqual(Sequence.get_id(sequence.id), '1')
+        self.assertEqual(sequence.get(), '1')
         today = Date.today()
         sequence.prefix = '${year}'
         sequence.save()
-        self.assertEqual(Sequence.get_id(sequence.id),
-            '%s2' % str(today.year))
+        self.assertEqual(sequence.get(), '%s2' % str(today.year))
         next_year = today + relativedelta(years=1)
         with Transaction().set_context(date=next_year):
-            self.assertEqual(Sequence.get_id(sequence.id),
-                '%s3' % str(next_year.year))
+            self.assertEqual(sequence.get(), '%s3' % str(next_year.year))
 
     @with_transaction()
     def test_global_search(self):

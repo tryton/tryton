@@ -24,49 +24,59 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_incremental(self):
         'Test incremental'
+        pool = Pool()
         Sequence = self.get_model()
+        SequenceType = pool.get('ir.sequence.type')
 
+        sequence_type, = SequenceType.search([
+                ('name', '=', "Test"),
+                ], limit=1)
         sequence, = Sequence.create([{
                     'name': 'Test incremental',
-                    'code': 'test',
+                    'sequence_type': sequence_type.id,
                     'prefix': '',
                     'suffix': '',
                     'type': 'incremental',
                     }])
         self.assertEqual(sequence.number_next, 1)
-        self.assertEqual(Sequence.get_id(sequence), '1')
+        self.assertEqual(sequence.get(), '1')
 
         Sequence.write([sequence], {
                 'number_increment': 10,
                 })
         self.assertEqual(sequence.number_next, 2)
-        self.assertEqual(Sequence.get_id(sequence), '2')
-        self.assertEqual(Sequence.get_id(sequence), '12')
+        self.assertEqual(sequence.get(), '2')
+        self.assertEqual(sequence.get(), '12')
 
         Sequence.write([sequence], {
                 'padding': 3,
                 })
         self.assertEqual(sequence.number_next, 22)
-        self.assertEqual(Sequence.get_id(sequence), '022')
+        self.assertEqual(sequence.get(), '022')
 
     @with_transaction()
     def test_decimal_timestamp(self):
         'Test Decimal Timestamp'
+        pool = Pool()
         Sequence = self.get_model()
+        SequenceType = pool.get('ir.sequence.type')
 
+        sequence_type, = SequenceType.search([
+                ('name', '=', "Test"),
+                ], limit=1)
         sequence, = Sequence.create([{
                     'name': 'Test decimal timestamp',
-                    'code': 'test',
+                    'sequence_type': sequence_type.id,
                     'prefix': '',
                     'suffix': '',
                     'type': 'decimal timestamp',
                     }])
-        timestamp = Sequence.get_id(sequence)
+        timestamp = sequence.get()
         self.assertEqual(timestamp, str(sequence.last_timestamp))
 
         self.assertEqual(sequence.number_next, None)
 
-        self.assertNotEqual(Sequence.get_id(sequence), timestamp)
+        self.assertNotEqual(sequence.get(), timestamp)
 
         next_timestamp = Sequence._timestamp(sequence)
         self.assertRaises(LastTimestampError, Sequence.write, [sequence], {
@@ -76,22 +86,27 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_hexadecimal_timestamp(self):
         'Test Hexadecimal Timestamp'
+        pool = Pool()
         Sequence = self.get_model()
+        SequenceType = pool.get('ir.sequence.type')
 
+        sequence_type, = SequenceType.search([
+                ('name', '=', "Test"),
+                ], limit=1)
         sequence, = Sequence.create([{
                     'name': 'Test hexadecimal timestamp',
-                    'code': 'test',
+                    'sequence_type': sequence_type.id,
                     'prefix': '',
                     'suffix': '',
                     'type': 'hexadecimal timestamp',
                     }])
-        timestamp = Sequence.get_id(sequence)
+        timestamp = sequence.get()
         self.assertEqual(timestamp,
             hex(int(sequence.last_timestamp))[2:].upper())
 
         self.assertEqual(sequence.number_next, None)
 
-        self.assertNotEqual(Sequence.get_id(sequence), timestamp)
+        self.assertNotEqual(sequence.get(), timestamp)
 
         next_timestamp = Sequence._timestamp(sequence)
         self.assertRaises(LastTimestampError, Sequence.write, [sequence], {
@@ -101,16 +116,21 @@ class SequenceTestCase(unittest.TestCase):
     @with_transaction()
     def test_prefix_suffix(self):
         'Test prefix/suffix'
+        pool = Pool()
         Sequence = self.get_model()
+        SequenceType = pool.get('ir.sequence.type')
 
+        sequence_type, = SequenceType.search([
+                ('name', '=', "Test"),
+                ], limit=1)
         sequence, = Sequence.create([{
                     'name': 'Test incremental',
-                    'code': 'test',
+                    'sequence_type': sequence_type.id,
                     'prefix': 'prefix/',
                     'suffix': '/suffix',
                     'type': 'incremental',
                     }])
-        self.assertEqual(Sequence.get_id(sequence),
+        self.assertEqual(sequence.get(),
             'prefix/1/suffix')
 
         Sequence.write([sequence], {
@@ -118,8 +138,7 @@ class SequenceTestCase(unittest.TestCase):
                 'suffix': '/${day}.${month}.${year}',
                 })
         with Transaction().set_context(date=datetime.date(2010, 8, 15)):
-            self.assertEqual(Sequence.get_id(sequence),
-                '2010-08-15/2/15.08.2010')
+            self.assertEqual(sequence.get(), '2010-08-15/2/15.08.2010')
 
 
 class SequenceStrictTestCase(SequenceTestCase):

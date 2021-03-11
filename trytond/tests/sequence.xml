@@ -6,7 +6,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_test">
             <field name="name">Test</field>
-            <field name="code">test</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_test_group_admin">

@@ -264,6 +264,9 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_sequence_last_timestamp_future">
             <field name="text">The "Last Timestamp" cannot be in the future for sequence "%s".</field>
         </record>
+        <record model="ir.message" id="msg_sequence_change_sequence_type">
+            <field name="text">You cannot change the sequence type of a sequence instead create a new sequence.</field>
+        </record>
 
         <record model="ir.message" id="msg_language_invalid_grouping">
             <field name="text">Invalid grouping "%(grouping)s" for language "%(language)s".</field>

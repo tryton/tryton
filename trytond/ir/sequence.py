@@ -9,7 +9,7 @@ from trytond import backend
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields, Check
-from trytond.model.exceptions import ValidationError
+from trytond.model.exceptions import ValidationError, AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, And
 from trytond.transaction import Transaction
@@ -34,7 +34,15 @@ class SequenceType(ModelSQL, ModelView):
     __name__ = 'ir.sequence.type'
 
     name = fields.Char('Sequence Name', required=True, translate=True)
-    code = fields.Char('Sequence Code', required=True)
+
+    @classmethod
+    def __register__(cls, module):
+        super().__register__(module)
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 5.8: remove code
+        # We keep the column until ir.sequence has been migrated
+        table_h.not_null_action('code', action='remove')
 
 
 class Sequence(DeactivableMixin, ModelSQL, ModelView):
@@ -43,10 +51,13 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
 
     _strict = False
     name = fields.Char('Sequence Name', required=True, translate=True)
-    code = fields.Selection('code_get', 'Sequence Code', required=True,
+    sequence_type = fields.Many2One(
+        'ir.sequence.type', "Sequence Type",
+        required=True, ondelete='RESTRICT',
         states={
-            'readonly': Eval('context', {}).contains('code'),
-            })
+            'readonly': Eval('id', -1) >= 0,
+            },
+        depends=['id'])
     prefix = fields.Char('Prefix')
     suffix = fields.Char('Suffix')
     type = fields.Selection([
@@ -100,6 +111,29 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 'Timestamp rounding should be greater than 0'),
             ]
 
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        SequenceType = pool.get('ir.sequence.type')
+        cursor = Transaction().connection.cursor()
+        table = cls.__table__()
+        sequence_type = SequenceType.__table__()
+
+        super().__register__(module)
+
+        table_h = cls.__table_handler__(module)
+
+        # Migration from 5.8: replace code by sequence_type
+        if table_h.column_exist('code'):
+            cursor.execute(*table.update(
+                    [table.sequence_type],
+                    sequence_type.select(
+                        sequence_type.id,
+                        where=sequence_type.code == table.code)))
+            table_h.drop_column('code')
+            sequence_type_h = SequenceType.__table_handler__(module)
+            sequence_type_h.drop_column('code')
+
     @staticmethod
     def default_type():
         return 'incremental'
@@ -127,10 +161,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
     @staticmethod
     def default_last_timestamp():
         return 0
-
-    @staticmethod
-    def default_code():
-        return Transaction().context.get('code')
 
     def get_number_next(self, name):
         if self.type != 'incremental':
@@ -171,10 +201,17 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
         return sequences
 
     @classmethod
-    def write(cls, sequences, values, *args):
-        super(Sequence, cls).write(sequences, values, *args)
+    def write(cls, *args):
+        transaction = Transaction()
+        if (transaction.user != 0
+                and transaction.context.get('_check_access')):
+            for values in args[1::2]:
+                if 'sequence_type' in values:
+                    raise AccessError(gettext(
+                            'ir.msg_sequence_change_sequence_type'))
+        super().write(*args)
         if sql_sequence and not cls._strict:
-            actions = iter((sequences, values) + args)
+            actions = iter(args)
             for sequences, values in zip(actions, actions):
                 for sequence in sequences:
                     sequence.update_sql_sequence(values.get('number_next'))
@@ -185,13 +222,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
             for sequence in sequences:
                 sequence.delete_sql_sequence()
         return super(Sequence, cls).delete(sequences)
-
-    @classmethod
-    def code_get(cls):
-        pool = Pool()
-        SequenceType = pool.get('ir.sequence.type')
-        sequence_types = SequenceType.search([])
-        return [(x.code, x.name) for x in sequence_types]
 
     @classmethod
     def validate(cls, sequences):
@@ -323,21 +353,16 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                 return hex(timestamp)[2:].upper()
         return ''
 
-    @classmethod
-    def get_id(cls, domain, _lock=False):
+    def get(self, _lock=False):
         '''
-        Return sequence value for the domain
+        Return the next sequence value
         '''
-        if isinstance(domain, cls):
-            domain = domain.id
-        if isinstance(domain, int):
-            domain = [('id', '=', domain)]
-
+        cls = self.__class__
         # bypass rules on sequences
         with Transaction().set_context(user=False, _check_access=False):
             with Transaction().set_user(0):
                 try:
-                    sequence, = cls.search(domain, limit=1)
+                    sequence = cls(self.id)
                 except TypeError:
                     raise MissingError(gettext('ir.msg_sequence_missing'))
                 if _lock:
@@ -360,10 +385,6 @@ class Sequence(DeactivableMixin, ModelSQL, ModelView):
                     cls._process(sequence.suffix, date=date),
                     )
 
-    @classmethod
-    def get(cls, code):
-        return cls.get_id([('code', '=', code)])
-
 
 class SequenceStrict(Sequence):
     "Sequence Strict"
@@ -371,6 +392,5 @@ class SequenceStrict(Sequence):
     _table = None  # Needed to reset Sequence._table
     _strict = True
 
-    @classmethod
-    def get_id(cls, clause):
-        return super(SequenceStrict, cls).get_id(clause, _lock=True)
+    def get(self, _lock=True):
+        return super().get(_lock=True)

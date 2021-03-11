@@ -224,44 +224,6 @@ class SequenceTypeGroup(ModelSQL):
         Rule._domain_get_cache.clear()
 
 
-class Sequence(metaclass=PoolMeta):
-    __name__ = 'ir.sequence'
-    groups = fields.Function(fields.Many2Many('res.group', None, None,
-        'User Groups'), 'get_groups', searcher='search_groups')
-
-    @classmethod
-    def get_groups(cls, sequences, name):
-        SequenceType = Pool().get('ir.sequence.type')
-        code2seq = {}
-        for sequence in sequences:
-            code2seq.setdefault(sequence.code, []).append(sequence.id)
-
-        sequence_types = SequenceType.search([
-                ('code', 'in', list(code2seq.keys())),
-                ])
-
-        groups = {}
-        for sequence_type in sequence_types:
-            seq_ids = code2seq[sequence_type.code]
-            for seq_id in seq_ids:
-                groups.setdefault(seq_id, []).append(sequence_type.id)
-
-        return groups
-
-    @staticmethod
-    def search_groups(name, clause):
-        SequenceType = Pool().get('ir.sequence.type')
-        seq_types = SequenceType.search([clause], order=[])
-        codes = set(st.code for st in seq_types)
-        return [('code', 'in', list(codes))]
-
-
-class SequenceStrict(Sequence):
-    # This empty class declaration is needed to inherit the groups
-    # field
-    __name__ = 'ir.sequence.strict'
-
-
 class ModuleConfigWizardItem(metaclass=PoolMeta):
     __name__ = 'ir.module.config_wizard.item'
 

@@ -36,8 +36,6 @@ def register():
         ir.Lang,
         ir.SequenceType,
         ir.SequenceTypeGroup,
-        ir.Sequence,
-        ir.SequenceStrict,
         ir.ModuleConfigWizardItem,
         ir.Export,
         ir.Export_Group,
