@@ -9,7 +9,7 @@ from trytond.i18n import gettext
 from trytond.model import (
     ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, Bool
+from trytond.pyson import Eval, Bool, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.tools import reduce_ids, grouped_slice, lstrip_wildcard
@@ -40,7 +40,8 @@ class Journal(
     sequence = fields.MultiValue(fields.Many2One(
             'ir.sequence', "Sequence",
             domain=[
-                ('code', '=', 'account.journal'),
+                ('sequence_type', '=',
+                    Id('account', 'sequence_type_account_journal')),
                 ('company', 'in', [
                         Eval('context', {}).get('company', -1), None]),
                 ],
@@ -162,7 +163,8 @@ class JournalSequence(ModelSQL, CompanyValueMixin):
     sequence = fields.Many2One(
         'ir.sequence', "Sequence",
         domain=[
-            ('code', '=', 'account.journal'),
+            ('sequence_type', '=',
+                Id('account', 'sequence_type_account_journal')),
             ('company', 'in', [Eval('company', -1), None]),
             ],
         depends=['company'])

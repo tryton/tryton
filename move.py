@@ -273,7 +273,6 @@ class Move(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Journal = pool.get('account.journal')
 
         vlist = [x.copy() for x in vlist]
@@ -284,7 +283,7 @@ class Move(ModelSQL, ModelView):
                 if journal_id:
                     journal = Journal(journal_id)
                     if journal.sequence:
-                        vals['number'] = Sequence.get_id(journal.sequence.id)
+                        vals['number'] = journal.sequence.get()
 
         moves = super(Move, cls).create(vlist)
         cls.validate_move(moves)
@@ -413,7 +412,6 @@ class Move(ModelSQL, ModelView):
     @ModelView.button
     def post(cls, moves):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Date = pool.get('ir.date')
         Line = pool.get('account.move.line')
 
@@ -435,8 +433,7 @@ class Move(ModelSQL, ModelView):
             move.state = 'posted'
             if not move.post_number:
                 move.post_date = Date.today()
-                move.post_number = Sequence.get_id(
-                    move.period.post_move_sequence_used.id)
+                move.post_number = move.period.post_move_sequence_used.get()
 
             def keyfunc(l):
                 return l.party, l.account
@@ -490,12 +487,14 @@ class Reconciliation(ModelSQL, ModelView):
 
     @classmethod
     def create(cls, vlist):
-        Sequence = Pool().get('ir.sequence')
+        pool = Pool()
+        Configuration = pool.get('account.configuration')
+        configuration = Configuration(1)
 
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             if 'name' not in vals:
-                vals['name'] = Sequence.get('account.move.reconciliation')
+                vals['name'] = configuration.reconciliation_sequence.get()
 
         return super(Reconciliation, cls).create(vlist)
 

@@ -69,7 +69,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_move">
             <field name="name">Account Move</field>
-            <field name="code">account.move</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_account_move_group_admin">
@@ -131,7 +130,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_move_reconciliation">
             <field name="name">Account Move Reconciliation</field>
-            <field name="code">account.move.reconciliation</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_account_move_reconciliation_group_admin">
@@ -146,7 +144,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_account_move_reconciliation">
             <field name="name">Default Account Move Reconciliation</field>
-            <field name="code">account.move.reconciliation</field>
+            <field name="sequence_type" ref="sequence_type_account_move_reconciliation"/>
         </record>
 
         <record model="ir.ui.view" id="move_line_view_form">

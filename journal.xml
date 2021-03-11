@@ -87,7 +87,6 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <record model="ir.sequence.type" id="sequence_type_account_journal">
             <field name="name">Account Journal</field>
-            <field name="code">account.journal</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_account_journal_group_admin">
@@ -102,7 +101,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_account_journal">
             <field name="name">Default Account Journal</field>
-            <field name="code">account.journal</field>
+            <field name="sequence_type" ref="sequence_type_account_journal"/>
         </record>
 
         <record model="ir.ui.view" id="journal_period_view_form">

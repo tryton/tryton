@@ -86,6 +86,7 @@ def create_chart(company, tax=False, chart='account.account_template_root_en'):
 def get_fiscalyear(company, today=None, start_date=None, end_date=None):
     pool = Pool()
     Sequence = pool.get('ir.sequence')
+    SequenceType = pool.get('ir.sequence.type')
     FiscalYear = pool.get('account.fiscalyear')
 
     if not today:
@@ -95,9 +96,12 @@ def get_fiscalyear(company, today=None, start_date=None, end_date=None):
     if not end_date:
         end_date = today.replace(month=12, day=31)
 
+    sequence_type, = SequenceType.search([
+            ('name', '=', "Account Move"),
+            ], limit=1)
     sequence, = Sequence.create([{
                 'name': '%s' % today.year,
-                'code': 'account.move',
+                'sequence_type': sequence_type.id,
                 'company': company.id,
                 }])
     fiscalyear = FiscalYear(name='%s' % today.year, company=company)
@@ -121,8 +125,8 @@ def close_fiscalyear(fiscalyear):
 
     # Balance non-deferral
     journal_sequence, = Sequence.search([
-            ('code', '=', 'account.journal'),
-            ])
+            ('sequence_type.name', '=', "Account Journal"),
+            ], limit=1)
     journal_closing, = Journal.create([{
                 'name': 'Closing',
                 'code': 'CLO',

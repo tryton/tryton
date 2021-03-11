@@ -4,7 +4,7 @@
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 from trytond.const import OPERATORS
@@ -37,7 +37,8 @@ class Period(Workflow, ModelSQL, ModelView):
             ], 'State', readonly=True, required=True)
     post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
         domain=[
-            ('code', '=', 'account.move'),
+            ('sequence_type', '=',
+                Id('account', 'sequence_type_account_move')),
             ['OR',
                 ('company', '=', None),
                 ('company', '=', Eval('company', -1)),

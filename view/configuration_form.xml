@@ -14,4 +14,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="default_supplier_tax_rule"/>
     <label name="tax_rounding"/>
     <field name="tax_rounding"/>
+    <separator id="move" string="Move" colspan="4"/>
+    <label name="reconciliation_sequence"/>
+    <field name="reconciliation_sequence"/>
 </form>

@@ -7,7 +7,7 @@ from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, Workflow, fields
 from trytond.model.exceptions import AccessError
 from trytond.pool import Pool
-from trytond.pyson import Eval, If, PYSONEncoder
+from trytond.pyson import Eval, If, PYSONEncoder, Id
 from trytond.rpc import RPC
 from trytond.transaction import Transaction
 from trytond.wizard import (
@@ -43,17 +43,14 @@ class FiscalYear(Workflow, ModelSQL, ModelView):
             ('close', 'Close'),
             ('locked', 'Locked'),
             ], 'State', readonly=True, required=True)
-    post_move_sequence = fields.Many2One('ir.sequence', 'Post Move Sequence',
-            required=True, domain=[('code', '=', 'account.move'),
-                ['OR',
-                    ('company', '=', Eval('company')),
-                    ('company', '=', None)
-                ]],
-            context={
-                'code': 'account.move',
-                'company': Eval('company'),
-            },
-            depends=['company'])
+    post_move_sequence = fields.Many2One(
+        'ir.sequence', "Post Move Sequence", required=True,
+        domain=[
+            ('sequence_type', '=',
+                Id('account', 'sequence_type_account_move')),
+            ('company', '=', Eval('company')),
+            ],
+        depends=['company'])
     company = fields.Many2One('company.company', 'Company', required=True,
         domain=[
             ('id', If(Eval('context', {}).contains('company'), '=', '!='),
