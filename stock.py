@@ -4,7 +4,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.report import Report
 
 from .exceptions import PackageError
@@ -16,7 +16,8 @@ class Configuration(metaclass=PoolMeta):
             'ir.sequence', "Package Sequence", required=True,
             domain=[
                 ('company', 'in', [Eval('context', {}).get('company'), None]),
-                ('code', '=', 'stock.package'),
+                ('sequence_type', '=',
+                    Id('stock_package', 'sequence_type_package')),
                 ]))
 
     @classmethod
@@ -38,7 +39,8 @@ class ConfigurationSequence(metaclass=PoolMeta):
         'ir.sequence', "Package Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'stock.package'),
+            ('sequence_type', '=',
+                Id('stock_package', 'sequence_type_package')),
             ],
         depends=['company'])
 
@@ -150,13 +152,12 @@ class Package(tree(), ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('stock.configuration')
 
         vlist = [v.copy() for v in vlist]
         config = Config(1)
         for values in vlist:
-            values['code'] = Sequence.get_id(config.package_sequence)
+            values['code'] = config.package_sequence.get()
         return super(Package, cls).create(vlist)
 
     @classmethod

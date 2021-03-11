@@ -5,7 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <data>
         <record model="ir.sequence.type" id="sequence_type_package">
             <field name="name">Stock Package</field>
-            <field name="code">stock.package</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_package_group_admin">
@@ -20,7 +19,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_package">
             <field name="name">Stock Package</field>
-            <field name="code">stock.package</field>
+            <field name="sequence_type" ref="sequence_type_package"/>
         </record>
 
         <record model="ir.ui.view" id="stock_configuration_view_form">
