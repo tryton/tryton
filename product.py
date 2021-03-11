@@ -227,12 +227,11 @@ class Template(
     @classmethod
     def _new_code(cls):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Configuration = pool.get('product.configuration')
         config = Configuration(1)
         sequence = config.template_sequence
         if sequence:
-            return Sequence.get_id(sequence.id)
+            return sequence.get()
 
     @classmethod
     def create(cls, vlist):
@@ -538,12 +537,11 @@ class Product(
     @classmethod
     def _new_suffix_code(cls):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Configuration = pool.get('product.configuration')
         config = Configuration(1)
         sequence = config.product_sequence
         if sequence:
-            return Sequence.get_id(sequence.id)
+            return sequence.get()
 
     @classmethod
     def create(cls, vlist):

@@ -5,6 +5,7 @@ from trytond.model import (ModelView, ModelSQL, ModelSingleton,
     MultiValueMixin, ValueMixin, fields)
 from trytond.pool import Pool
 from trytond.tools.multivalue import migrate_property
+from trytond.pyson import Id
 
 default_cost_price_method = fields.Selection(
     'get_cost_price_methods', "Default Cost Method",
@@ -28,12 +29,12 @@ class Configuration(ModelSingleton, ModelSQL, ModelView, MultiValueMixin):
     get_cost_price_methods = get_cost_price_methods
     product_sequence = fields.Many2One('ir.sequence', "Variant Sequence",
         domain=[
-            ('code', '=', 'product.product'),
+            ('sequence_type', '=', Id('product', 'sequence_type_product')),
             ],
         help="Used to generate the last part of the product code.")
     template_sequence = fields.Many2One('ir.sequence', "Product Sequence",
         domain=[
-            ('code', '=', 'product.template'),
+            ('sequence_type', '=', Id('product', 'sequence_type_template')),
             ],
         help="Used to generate the first part of the product code.")
 
