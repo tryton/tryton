@@ -727,14 +727,13 @@ class Purchase(
         Fill the number field with the purchase sequence
         '''
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('purchase.configuration')
 
         config = Config(1)
         for purchase in purchases:
             if purchase.number:
                 continue
-            purchase.number = Sequence.get_id(config.purchase_sequence.id)
+            purchase.number = config.purchase_sequence.get()
         cls.save(purchases)
 
     @classmethod

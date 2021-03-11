@@ -338,7 +338,6 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence.type" id="sequence_type_purchase">
             <field name="name">Purchase</field>
-            <field name="code">purchase.purchase</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_purchase_group_admin">
@@ -353,7 +352,7 @@ this repository contains the full copyright notices and license terms. -->
 
         <record model="ir.sequence" id="sequence_purchase">
             <field name="name">Purchase</field>
-            <field name="code">purchase.purchase</field>
+            <field name="sequence_type" ref="sequence_type_purchase"/>
         </record>
 
         <record model="ir.action.report" id="report_purchase">

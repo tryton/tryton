@@ -4,7 +4,7 @@ from trytond import backend
 from trytond.model import (ModelView, ModelSQL, ModelSingleton, ValueMixin,
     fields)
 from trytond.pool import Pool
-from trytond.pyson import Eval
+from trytond.pyson import Eval, Id
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import (
     CompanyMultiValueMixin, CompanyValueMixin)
@@ -31,7 +31,8 @@ class Configuration(
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'purchase.purchase'),
+                ('sequence_type', '=',
+                    Id('purchase', 'sequence_type_purchase')),
                 ]))
     purchase_invoice_method = fields.MultiValue(purchase_invoice_method)
     get_purchase_invoice_method = get_purchase_methods('invoice_method')
@@ -67,7 +68,8 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "Purchase Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'purchase.purchase'),
+            ('sequence_type', '=',
+                Id('purchase', 'sequence_type_purchase')),
             ],
         depends=['company'])
 
