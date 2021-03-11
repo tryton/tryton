@@ -417,6 +417,8 @@
       <zeroOrMore>
         <choice>
           <ref name="field"/>
+          <ref name="prefix"/>
+          <ref name="suffix"/>
           <ref name="button"/>
           <ref name="tree"/>
         </choice>

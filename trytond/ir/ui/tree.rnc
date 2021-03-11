@@ -88,6 +88,8 @@ data = element data { attlist.data, xpath* }
 attlist.data &= empty
 xpath = element xpath { attlist.xpath,
     (field
+    | prefix
+    | suffix
     | button
     | tree
     )*
