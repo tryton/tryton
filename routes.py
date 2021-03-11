@@ -69,7 +69,8 @@ def timesheet_lines(request, pool, employee, date):
         lines = Line.search([
                 ('employee', '=', employee.id),
                 ('date', '=', date),
-                ])
+                ],
+            order=[('id', 'ASC')])
     return [l.to_json() for l in lines]
 
 

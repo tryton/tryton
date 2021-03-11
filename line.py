@@ -60,12 +60,15 @@ class Line(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Line, cls).__setup__()
+        cls._order = [
+            ('date', 'DESC'),
+            ('id', 'DESC'),
+            ]
         t = cls.__table__()
         cls._sql_constraints = [
             ('uuid_unique', Unique(t, t.uuid),
                 'timesheet.msg_line_uuid_unique'),
             ]
-        cls._order.insert(0, ('date', 'DESC'))
 
     @classmethod
     def __register__(cls, module_name):
