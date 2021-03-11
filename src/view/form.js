@@ -261,20 +261,34 @@ function eval_pyson(value){
         display: function() {
             var record = this.record;
             var field;
+            var depends;
             var name;
             var promesses = [];
             if (record) {
                 // Force to set fields in record
                 // Get first the lazy one from the view to reduce number of requests
-                var fields = [];
+                var field_names = new Set();
                 for (name in this.widgets) {
-                    field = record.model.fields[name];
+                    depends = (
+                        record.model.fields[name].description.depends || []);
+                    field_names.add(name);
+                    for (var i = 0; i < depends.length; i++) {
+                        var depend = depends[i];
+                        if (!depend.startsWith('_parent') &&
+                            depend in record.model.fields) {
+                            field_names.add(depend);
+                        }
+                    }
+                }
+                var fields = [];
+                field_names.forEach(function(fname) {
+                    field = record.model.fields[fname];
                     fields.push([
-                        name,
+                        fname,
                         field.description.loading || 'eager' == 'eager',
                         field.views.size,
                     ]);
-                }
+                });
                 fields.sort(function(a, b) {
                     if (!a[1] && b[1]) {
                         return -1;
