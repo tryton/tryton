@@ -1,3 +1,4 @@
+* Allow sending email with record's attachments
 * Add which records to use for actions
 * Add parent to group to inherit accesses
 * Add __access__ to Model

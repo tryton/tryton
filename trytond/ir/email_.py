@@ -96,7 +96,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
 
     @classmethod
     def send(cls, to='', cc='', bcc='', subject='', body='',
-            attachments=None, record=None, reports=None):
+            files=None, record=None, reports=None, attachments=None):
         pool = Pool()
         User = pool.get('res.user')
         ActionReport = pool.get('ir.action.report')
@@ -127,13 +127,13 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
             content.attach(part)
         part = MIMEText(body_html, 'html', _charset='utf-8')
         content.attach(part)
-        if reports or attachments:
+        if files or reports or attachments:
             msg = MIMEMultipart('mixed')
             msg.attach(content)
-            if attachments is None:
-                attachments = []
+            if files is None:
+                files = []
             else:
-                attachments = list(attachments)
+                files = list(files)
 
             for report_id in (reports or []):
                 report = ActionReport(report_id)
@@ -145,9 +145,11 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
                 name = '%s.%s' % (title, ext)
                 if isinstance(content, str):
                     content = content.encode('utf-8')
-                attachments.append((name, content))
-
-            for name, data in attachments:
+                files.append((name, content))
+            if attachments:
+                files += [
+                    (a.name, a.data) for a in Attachment.browse(attachments)]
+            for name, data in files:
                 mimetype, _ = mimetypes.guess_type(name)
                 if mimetype:
                     attachment = MIMENonMultipart(*mimetype.split('/'))
@@ -190,7 +192,7 @@ class Email(ResourceAccessMixin, ModelSQL, ModelView):
         email.save()
         with Transaction().set_context(_check_access=False):
             attachments_ = []
-            for name, data in attachments:
+            for name, data in files:
                 attachments_.append(
                     Attachment(resource=email, name=name, data=data))
             Attachment.save(attachments_)

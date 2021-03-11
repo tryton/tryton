@@ -154,7 +154,7 @@ class IrTestCase(ModuleTestCase):
                 bcc='me@example.com',
                 subject="Email subject",
                 body='<p>Hello</p>',
-                attachments=[('file.txt', b'data')],
+                files=[('file.txt', b'data')],
                 record=('res.user', 1),
                 reports=[report.id])
 
