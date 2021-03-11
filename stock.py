@@ -168,10 +168,9 @@ class Move(metaclass=PoolMeta):
         with Transaction().set_context(
                 supplier=self.from_location.consignment_party.id):
             pattern = ProductSupplier.get_pattern()
-        for product_supplier in self.product.product_suppliers:
-            if product_supplier.match(pattern):
-                currency = product_supplier.currency
-                break
+        for product_supplier in self.product.product_suppliers_used(**pattern):
+            currency = product_supplier.currency
+            break
         else:
             currency = self.company.currency
 
