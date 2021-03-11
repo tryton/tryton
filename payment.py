@@ -111,16 +111,13 @@ class Group(ModelSQL, ModelView):
     @classmethod
     def create(cls, vlist):
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('account.configuration')
 
         vlist = [v.copy() for v in vlist]
         config = Config(1)
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = Sequence.get_id(
-                    config.payment_group_sequence.id)
-
+                values['number'] = config.payment_group_sequence.get()
         return super(Group, cls).create(vlist)
 
     @classmethod

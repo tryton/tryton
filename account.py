@@ -12,7 +12,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.pool import Pool, PoolMeta
 from trytond.model import ModelSQL, ModelView, fields
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Eval, If, Bool, Id
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
 from trytond.transaction import Transaction
@@ -384,7 +384,9 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in',
                     [Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'account.payment.group'),
+                ('sequence_type', '=',
+                    Id('account_payment',
+                        'sequence_type_account_payment_group')),
                 ]))
 
     @classmethod
@@ -400,7 +402,8 @@ class ConfigurationPaymentGroupSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "Payment Group Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'account.payment.group'),
+            ('sequence_type', '=',
+                Id('account_payment', 'sequence_type_account_payment_group')),
             ],
         depends=['company'])
 
