@@ -78,7 +78,6 @@
 
         <record model="ir.sequence.type" id="sequence_type_asset">
             <field name="name">Asset</field>
-            <field name="code">account.asset</field>
         </record>
         <record model="ir.sequence.type-res.group"
             id="sequence_type_asset_group_admin">
@@ -93,7 +92,7 @@
 
         <record model="ir.sequence" id="sequence_asset">
             <field name="name">Asset</field>
-            <field name="code">account.asset</field>
+            <field name="sequence_type" ref="sequence_type_asset"/>
         </record>
 
         <record model="ir.rule.group" id="rule_group_asset">

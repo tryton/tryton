@@ -4,7 +4,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, fields
 from trytond.model.exceptions import AccessError
-from trytond.pyson import Eval, If, Bool
+from trytond.pyson import Eval, If, Bool, Id
 from trytond.pool import PoolMeta, Pool
 from trytond.tools.multivalue import migrate_property
 from trytond.modules.company.model import CompanyValueMixin
@@ -50,7 +50,8 @@ class Configuration(metaclass=PoolMeta):
             domain=[
                 ('company', 'in', [
                         Eval('context', {}).get('company', -1), None]),
-                ('code', '=', 'account.asset'),
+                ('sequence_type', '=',
+                    Id('account_asset', 'sequence_type_asset')),
                 ]))
     asset_bymonthday = fields.MultiValue(asset_bymonthday)
     asset_bymonth = fields.MultiValue(asset_bymonth)
@@ -91,7 +92,8 @@ class ConfigurationAssetSequence(ModelSQL, CompanyValueMixin):
         'ir.sequence', "Asset Reference Sequence", required=True,
         domain=[
             ('company', 'in', [Eval('company', -1), None]),
-            ('code', '=', 'account.asset'),
+            ('sequence_type', '=',
+                Id('account_asset', 'sequence_type_asset')),
             ],
         depends=['company'])
 

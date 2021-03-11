@@ -638,14 +638,13 @@ class Asset(Workflow, ModelSQL, ModelView):
         Fill the number field with asset sequence.
         '''
         pool = Pool()
-        Sequence = pool.get('ir.sequence')
         Config = pool.get('account.configuration')
 
         config = Config(1)
         for asset in assets:
             if asset.number:
                 continue
-            asset.number = Sequence.get_id(config.asset_sequence.id)
+            asset.number = config.asset_sequence.get()
         cls.save(assets)
 
     @classmethod
