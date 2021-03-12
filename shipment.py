@@ -15,7 +15,7 @@ from trytond.modules.company import CompanyReport
 from trytond.wizard import Wizard, StateTransition, StateView, Button
 from trytond.pyson import Eval, If, Id, Bool
 from trytond.transaction import Transaction
-from trytond.pool import Pool, PoolMeta
+from trytond.pool import Pool
 
 from trytond.modules.company.model import employee_field, set_employee
 
