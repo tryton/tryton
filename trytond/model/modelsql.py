@@ -563,6 +563,7 @@ class ModelSQL(ModelStorage):
         table = cls.__table__()
         modified_fields = set()
         defaults_cache = {}  # Store already computed default values
+        missing_defaults = {}  # Store missing default values by schema
         new_ids = []
         vlist = [v.copy() for v in vlist]
         for values in vlist:
@@ -574,26 +575,29 @@ class ModelSQL(ModelStorage):
             modified_fields |= set(values.keys())
 
             # Get default values
-            default = []
-            for fname, field in cls._fields.items():
-                if fname in values:
-                    continue
-                if fname in [
-                        'create_uid', 'create_date',
-                        'write_uid', 'write_date', 'id']:
-                    continue
-                if isinstance(field, fields.Function) and not field.setter:
-                    continue
-                if fname in defaults_cache:
-                    values[fname] = defaults_cache[fname]
-                else:
-                    default.append(fname)
+            values_schema = tuple(sorted(values))
+            if values_schema not in missing_defaults:
+                default = []
+                missing_defaults[values_schema] = default_values = {}
+                for fname, field in cls._fields.items():
+                    if fname in values:
+                        continue
+                    if fname in [
+                            'create_uid', 'create_date',
+                            'write_uid', 'write_date', 'id']:
+                        continue
+                    if isinstance(field, fields.Function) and not field.setter:
+                        continue
+                    if fname in defaults_cache:
+                        default_values[fname] = defaults_cache[fname]
+                    else:
+                        default.append(fname)
 
-            if default:
-                defaults = cls.default_get(default, with_rec_name=False)
-                defaults = cls._clean_defaults(defaults)
-                values.update(defaults)
-                defaults_cache.update(defaults)
+                if default:
+                    defaults = cls.default_get(default, with_rec_name=False)
+                    default_values.update(cls._clean_defaults(defaults))
+                    defaults_cache.update(default_values)
+            values.update(missing_defaults[values_schema])
 
             insert_columns = [table.create_uid, table.create_date]
             insert_values = [transaction.user, CurrentTimestamp()]
