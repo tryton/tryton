@@ -11,6 +11,7 @@ def register():
     Pool.register(
         carrier.CredentialDPD,
         carrier.Carrier,
+        stock.Package,
         stock.ShipmentOut,
         stock.ShipmentInReturn,
         module='stock_package_shipping_dpd', type_='model')

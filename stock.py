@@ -22,6 +22,44 @@ from trytond.modules.stock_package_shipping.exceptions import (
 from .configuration import get_client, SHIPMENT_SERVICE
 from .exceptions import DPDError
 
+TRACKING_URL = 'https://tracking.dpd.de/status/%(code)s/parcel/%(reference)s'
+
+
+class Package(metaclass=PoolMeta):
+    __name__ = 'stock.package'
+
+    def get_shipping_tracking_url(self, name):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        ShipmentInReturn = pool.get('stock.shipment.in.return')
+        url = super().get_shipping_tracking_url(name)
+        if (self.shipping_reference
+                and self.shipment
+                and self.shipment.id >= 0
+                and self.shipment.carrier
+                and self.shipment.carrier.shipping_service == 'dpd'):
+            party = address = None
+            if isinstance(self.shipment, ShipmentOut):
+                party = self.shipment.customer
+                address = self.shipment.delivery_address
+            elif isinstance(self.shipment, ShipmentInReturn):
+                party = self.shipment.supplier
+                address = self.shipment.delivery_address
+            if party and party.lang:
+                lang_code = party.lang.code
+            else:
+                lang_code = Transaction().language
+            if address and address.country:
+                code = '_'.join(
+                    (lang_code.split('_')[0], address.country.code))
+            else:
+                code = lang_code
+            url = TRACKING_URL % {
+                'code': code,
+                'reference': self.shipping_reference,
+                }
+        return url
+
 
 class ShippingDPDMixin:
 

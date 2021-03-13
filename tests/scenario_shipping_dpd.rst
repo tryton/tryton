@@ -222,3 +222,7 @@ Create the packs and ship the shipment::
     True
     >>> pack.shipping_reference is not None
     True
+    >>> pack.shipping_tracking_url.startswith('https://tracking.dpd.de/status/')
+    True
+    >>> pack.shipping_tracking_url.endswith(pack.shipping_reference)
+    True
