@@ -48,7 +48,9 @@ class ShipmentOut(metaclass=PoolMeta):
         """
         return ()
 
-    @fields.depends('carrier', 'inventory_moves',
+    @fields.depends(
+        'state', 'carrier', 'inventory_moves', 'outgoing_moves',
+        'warehouse_storage', 'warehouse_output',
         methods=['_group_parcel_key'])
     def _get_carrier_context(self):
         context = super(ShipmentOut, self)._get_carrier_context()
@@ -59,7 +61,11 @@ class ShipmentOut(metaclass=PoolMeta):
         weights = []
         context['weights'] = weights
 
-        lines = self.inventory_moves or []
+        if (self.state in {'draft', 'waiting', 'assigned'}
+                and self.warehouse_storage != self.warehouse_output):
+            lines = self.inventory_moves or []
+        else:
+            lines = self.outgoing_moves or []
         keyfunc = partial(self._group_parcel_key, lines)
         lines = sorted(lines, key=sortable_values(keyfunc))
 
