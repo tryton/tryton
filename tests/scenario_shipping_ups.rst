@@ -224,6 +224,10 @@ Create the packs and ship the shipment::
     True
     >>> pack.shipping_reference is not None
     True
+    >>> pack.shipping_tracking_url.startswith('https://www.ups.com/track?')
+    True
+    >>> pack.shipping_reference in pack.shipping_tracking_url
+    True
 
 Because there is only one box, the pack shipping number is also the shipment
 identification number::

@@ -5,6 +5,7 @@ import re
 import base64
 import requests
 import ssl
+import urllib.parse
 from itertools import zip_longest
 
 from trytond.config import config
@@ -23,6 +24,7 @@ SERVER_URLS = {
     'testing': 'https://wwwcie.ups.com/json/Ship',
     'production': 'https://onlinetools.ups.com/json/Ship',
     }
+TRACKING_URL = 'https://www.ups.com/track'
 
 
 class PackageType(metaclass=PoolMeta):
@@ -58,6 +60,39 @@ class PackageType(metaclass=PoolMeta):
     @classmethod
     def default_ups_code(cls):
         return None
+
+
+class Package(metaclass=PoolMeta):
+    __name__ = 'stock.package'
+
+    def get_shipping_tracking_url(self, name):
+        pool = Pool()
+        ShipmentOut = pool.get('stock.shipment.out')
+        ShipmentInReturn = pool.get('stock.shipment.in.return')
+        url = super().get_shipping_tracking_url(name)
+        if (self.shipping_reference
+                and self.shipment
+                and self.shipment.id >= 0
+                and self.shipment.carrier
+                and self.shipment.carrier.shipping_service == 'ups'):
+            party = address = None
+            if isinstance(self.shipment, ShipmentOut):
+                party = self.shipment.customer
+                address = self.shipment.delivery_address
+            elif isinstance(self.shipment, ShipmentInReturn):
+                party = self.shipment.supplier
+                address = self.shipment.delivery_address
+            parts = urllib.parse.urlsplit(TRACKING_URL)
+            query = urllib.parse.parse_qsl(parts.query)
+            if party and party.lang and address and address.country:
+                loc = '_'.join(
+                    (party.lang.code.split('_')[0], address.country.code))
+                query.append(('loc', loc))
+            query.append(('tracknum', self.shipping_reference))
+            parts = list(parts)
+            parts[3] = urllib.parse.urlencode(query)
+            url = urllib.parse.urlunsplit(parts)
+        return url
 
 
 class ShippingUPSMixin:

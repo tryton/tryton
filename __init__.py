@@ -10,6 +10,7 @@ from . import stock
 def register():
     Pool.register(
         stock.PackageType,
+        stock.Package,
         stock.ShipmentOut,
         stock.ShipmentInReturn,
         carrier.CredentialUPS,
