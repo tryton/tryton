@@ -147,7 +147,9 @@ Prepare to balance non-deferral accounts::
     >>> Period = Model.get('account.period')
     >>> AccountType = Model.get('account.account.type')
     >>> Account = Model.get('account.account')
-    >>> journal_sequence, = Sequence.find([('code', '=', 'account.journal')])
+    >>> journal_sequence, = Sequence.find([
+    ...         ('name', '=', "Default Account Journal"),
+    ...         ])
     >>> journal_closing = Journal()
     >>> journal_closing.code = 'CLO'
     >>> journal_closing.type = 'situation'
