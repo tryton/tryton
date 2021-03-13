@@ -82,9 +82,9 @@ Receive a single product line::
     >>> move.quantity = 50
     >>> move.unit_price = Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost
-    Decimal('3')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_used
+    Decimal('3.0000')
+    >>> shipment.cost_currency_used == company.currency
     True
     >>> shipment.click('receive')
     >>> shipment.state
@@ -106,8 +106,8 @@ Receive many product lines::
     ...     move.quantity = quantity
     ...     move.unit_price = Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost
-    Decimal('3')
+    >>> shipment.cost_used
+    Decimal('3.0000')
     >>> shipment.click('receive')
     >>> shipment.state
     'received'
@@ -132,8 +132,8 @@ Receive a two lines with no cost::
     >>> move.quantity = 25
     >>> move.unit_price = Decimal('0.0')
     >>> shipment.carrier = carrier
-    >>> shipment.cost
-    Decimal('3')
+    >>> shipment.cost_used
+    Decimal('3.0000')
     >>> shipment.click('receive')
     >>> shipment.state
     'received'

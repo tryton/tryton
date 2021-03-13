@@ -17,59 +17,96 @@ class ShipmentIn(metaclass=PoolMeta):
             'readonly': Eval('state') != 'draft',
             },
         depends=['state'])
-    cost_currency = fields.Many2One('currency.currency', 'Cost Currency',
+
+    cost_currency_used = fields.Function(fields.Many2One(
+            'currency.currency', "Cost Currency",
+            states={
+                'invisible': Eval('cost_edit', False),
+                },
+            depends=['cost_edit']),
+        'on_change_with_cost_currency_used')
+    cost_currency = fields.Many2One(
+        'currency.currency', "Cost Currency",
         states={
             'required': Bool(Eval('cost')),
-            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
-            }, depends=['cost', 'state'])
-    cost_currency_digits = fields.Function(fields.Integer(
-            'Cost Currency Digits'),
-        'on_change_with_cost_currency_digits')
-    cost = fields.Numeric('Cost', digits=(16, Eval('cost_currency_digits', 2)),
+            'invisible': ~Eval('cost_edit', False),
+            'readonly': ~Eval('state').in_(['draft']),
+            },
+        depends=['cost', 'cost_edit', 'state'])
+    cost_used = fields.Function(fields.Numeric(
+            "Cost", digits=price_digits,
+            states={
+                'invisible': Eval('cost_edit', False),
+                },
+            depends=['cost_edit']),
+        'on_change_with_cost_used')
+    cost = fields.Numeric(
+        "Cost", digits=price_digits,
         states={
-            'readonly': ~Eval('state').in_(['draft', 'assigned', 'packed']),
-            }, depends=['carrier', 'state', 'cost_currency_digits'])
+            'invisible': ~Eval('cost_edit', False),
+            'readonly': ~Eval('state').in_(['draft']),
+            },
+        depends=['cost_edit', 'state'])
 
-    @fields.depends('cost_currency')
-    def on_change_with_cost_currency_digits(self, name=None):
-        if self.cost_currency:
-            return self.cost_currency.digits
-        return 2
+    cost_edit = fields.Boolean(
+        "Edit Cost",
+        states={
+            'readonly': ~Eval('state').in_(['draft']),
+            },
+        depends=['state'],
+        help="Check to edit the cost.")
 
     def _get_carrier_context(self):
         return {}
 
-    @fields.depends(methods=['on_change_incoming_moves'])
-    def on_change_carrier(self):
-        self.on_change_incoming_moves()
-
     @fields.depends('carrier', methods=['_get_carrier_context'])
-    def on_change_incoming_moves(self):
-        try:
-            super(ShipmentIn, self).on_change_incoming_moves()
-        except AttributeError:
-            pass
-        if not self.carrier:
-            return
-        with Transaction().set_context(self._get_carrier_context()):
-            cost, currency_id = self.carrier.get_purchase_price()
-        self.cost = cost
-        self.cost_currency = currency_id
-        if self.cost_currency:
-            self.cost_currency_digits = self.cost_currency.digits
+    def _compute_costs(self):
+        costs = {
+            'cost': None,
+            'cost_currency': None,
+            }
+        if self.carrier:
+            with Transaction().set_context(self._get_carrier_context()):
+                cost, currency_id = self.carrier.get_purchase_price()
+            costs['cost'] = round_price(cost)
+            costs['cost_currency'] = currency_id
+        return costs
+
+    @fields.depends(
+        'state', 'cost_currency', 'cost_edit', methods=['_compute_costs'])
+    def on_change_with_cost_currency_used(self, name=None):
+        if (not self.cost_edit
+                and self.state not in {'cancelled', 'received', 'done'}):
+            return self._compute_costs()['cost_currency']
+        elif self.cost_currency:
+            return self.cost_currency.id
+
+    @fields.depends('state', 'cost', 'cost_edit', methods=['_compute_costs'])
+    def on_change_with_cost_used(self, name=None):
+        if (not self.cost_edit
+                and self.state not in {'cancelled', 'received', 'done'}):
+            return self._compute_costs()['cost']
         else:
-            self.cost_currency_digits = 2
+            return self.cost
+
+    @fields.depends(
+        'cost_edit', 'cost_used', 'cost_currency_used')
+    def on_change_cost_edit(self):
+        if self.cost_edit:
+            self.cost = self.cost_used
+            self.cost_currency = self.cost_currency_used
 
     def allocate_cost_by_value(self):
         pool = Pool()
         Currency = pool.get('currency.currency')
         Move = pool.get('stock.move')
 
-        if not self.cost:
+        if not self.cost_used:
             return
 
-        cost = Currency.compute(self.cost_currency, self.cost,
-            self.company.currency, round=False)
+        cost = Currency.compute(
+            self.cost_currency_used, self.cost_used, self.company.currency,
+            round=False)
         moves = [m for m in self.incoming_moves
             if m.state not in ('done', 'cancelled')]
 
@@ -126,6 +163,8 @@ class ShipmentIn(metaclass=PoolMeta):
     def receive(cls, shipments):
         Carrier = Pool().get('carrier')
         for shipment in shipments:
+            shipment.cost = shipment.cost_used
+            shipment.cost_currency = shipment.cost_currency_used
             if shipment.carrier:
                 allocation_method = \
                     shipment.carrier.carrier_cost_allocation_method
@@ -134,6 +173,16 @@ class ShipmentIn(metaclass=PoolMeta):
                     Carrier.default_carrier_cost_allocation_method()
             getattr(shipment, 'allocate_cost_by_%s' % allocation_method)()
         super(ShipmentIn, cls).receive(shipments)
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('cancelled')
+    def cancel(cls, shipments):
+        for shipment in shipments:
+            shipment.cost = None
+            shipment.cost_currency = None
+        cls.save(shipments)
+        super().cancel(shipments)
 
 
 class Move(metaclass=PoolMeta):

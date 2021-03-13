@@ -149,9 +149,9 @@ Receive 4 products::
     >>> move.quantity = 4.0
     >>> shipment.incoming_moves.append(move)
     >>> shipment.carrier = carrier
-    >>> shipment.cost
-    Decimal('3')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_used
+    Decimal('3.0000')
+    >>> shipment.cost_currency_used == company.currency
     True
     >>> shipment.click('receive')
     >>> shipment.state
