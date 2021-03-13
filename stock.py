@@ -104,6 +104,16 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
         "Shipping Label", readonly=True,
         file_id=file_id, store_prefix=store_prefix)
     shipping_label_id = fields.Char("Shipping Label ID", readonly=True)
+    shipping_tracking_url = fields.Function(
+        fields.Char(
+            "Shipping Tracking URL",
+            states={
+                'invisible': ~Eval('shipping_tracking_url'),
+                }),
+        'get_shipping_tracking_url')
+
+    def get_shipping_tracking_url(self, name):
+        return
 
     @classmethod
     def __register__(cls, module_name):

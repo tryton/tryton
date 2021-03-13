@@ -18,7 +18,10 @@ this repository contains the full copyright notices and license terms. -->
         <field name="width_uom"/>
         <separator string="Shipping" id="shipping" colspan="4"/>
         <label name="shipping_reference"/>
-        <field name="shipping_reference"/>
+        <group col="-1" id="shipping_reference">
+            <field name="shipping_reference"/>
+            <field name="shipping_tracking_url" widget="url"/>
+        </group>
         <label name="shipping_label"/>
         <field name="shipping_label"/>
     </xpath>

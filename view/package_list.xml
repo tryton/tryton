@@ -4,5 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/tree/field[@name='type']" position="after">
         <field name="shipping_reference" expand="1"/>
+        <field name="shipping_tracking_url" widget="url"/>
     </xpath>
 </data>
