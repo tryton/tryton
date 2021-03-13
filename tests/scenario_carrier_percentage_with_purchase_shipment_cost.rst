@@ -120,9 +120,9 @@ Receive a single product line::
     >>> move.quantity = 50
     >>> move.unit_price = Decimal('8')
     >>> shipment.carrier = carrier
-    >>> shipment.cost
-    Decimal('60.00')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_used
+    Decimal('60.0000')
+    >>> shipment.cost_currency_used == company.currency
     True
     >>> shipment.click('receive')
     >>> shipment.state
@@ -169,15 +169,19 @@ Send products::
     >>> shipment, = sale.shipments
     >>> shipment.carrier == carrier
     True
-    >>> shipment.cost
+    >>> shipment.cost_used
     Decimal('15.0000')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_sale_used
+    Decimal('15.0000')
+    >>> shipment.cost_sale_currency_used == company.currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
-    >>> shipment.cost
+    >>> shipment.cost_used
     Decimal('12.0000')
-    >>> shipment.cost_currency == company.currency
+    >>> shipment.cost_sale_used
+    Decimal('12.0000')
+    >>> shipment.cost_sale_currency_used == company.currency
     True
     >>> shipment.state
     'waiting'
