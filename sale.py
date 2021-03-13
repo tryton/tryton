@@ -268,23 +268,11 @@ class Sale(metaclass=PoolMeta):
     def create_shipment(self, shipment_type):
         pool = Pool()
         Shipment = pool.get('stock.shipment.out')
-        Currency = pool.get('currency.currency')
 
         shipments = super(Sale, self).create_shipment(shipment_type)
         if shipment_type == 'out' and shipments and self.carrier:
             for shipment in shipments:
                 shipment.carrier = self.carrier
-                with Transaction().set_context(
-                        shipment.get_carrier_context()):
-                    cost, currency_id = self.carrier.get_purchase_price()
-                shipment.cost = round_price(Currency.compute(
-                        Currency(currency_id), cost, shipment.company.currency,
-                        round=False))
-                with Transaction().set_context(
-                        shipment.get_carrier_context()):
-                    cost_sale, currency_id = self.carrier.get_sale_price()
-                shipment.cost_sale = round_price(cost_sale)
-                shipment.cost_sale_currency = currency_id
         Shipment.save(shipments)
         return shipments
 

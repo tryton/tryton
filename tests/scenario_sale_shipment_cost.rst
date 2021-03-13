@@ -141,17 +141,17 @@ Send products::
     >>> shipment, = sale.shipments
     >>> shipment.carrier == carrier
     True
-    >>> shipment.cost
+    >>> shipment.cost_used
     Decimal('2.0000')
-    >>> shipment.cost_sale
+    >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> shipment.cost_sale_currency == company.currency
+    >>> shipment.cost_sale_currency_used == company.currency
     True
     >>> move, = shipment.inventory_moves
     >>> move.quantity = 4
-    >>> shipment.cost_sale
+    >>> shipment.cost_sale_used
     Decimal('3.0000')
-    >>> shipment.cost_sale_currency == company.currency
+    >>> shipment.cost_sale_currency_used == company.currency
     True
     >>> shipment.state
     'waiting'
@@ -299,9 +299,9 @@ Check no customer invoice::
 Send products::
 
     >>> shipment, = sale.shipments
-    >>> shipment.cost
+    >>> shipment.cost_used
     Decimal('2.0000')
-    >>> shipment.cost_sale
+    >>> shipment.cost_sale_used
     Decimal('3.0000')
     >>> shipment.click('assign_force')
     >>> shipment.click('pick')
