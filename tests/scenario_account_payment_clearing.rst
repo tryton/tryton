@@ -231,9 +231,11 @@ Create statement::
     >>> StatementJournal = Model.get('account.statement.journal')
     >>> Statement = Model.get('account.statement')
     >>> Sequence = Model.get('ir.sequence')
+    >>> SequenceType = Model.get('ir.sequence.type')
 
+    >>> sequence_type, = SequenceType.find([('name', '=', "Account Journal")])
     >>> sequence = Sequence(name='Satement',
-    ...     code='account.journal',
+    ...     sequence_type=sequence_type,
     ...     company=company,
     ... )
     >>> sequence.save()
