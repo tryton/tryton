@@ -161,7 +161,7 @@ Balance non-deferral::
 
     >>> journal_closing = Journal(name="Closing", code="CLO", type='situation')
     >>> journal_closing.sequence, = Sequence.find([
-    ...         ('code', '=', 'account.journal'),
+    ...         ('name', '=', "Default Account Journal"),
     ...         ])
     >>> journal_closing.save()
 
