@@ -1,5 +1,7 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from decimal import Decimal
+
 from trytond.i18n import gettext
 from trytond.pool import PoolMeta, Pool
 from trytond.model import ModelView, fields
@@ -32,7 +34,7 @@ class Invoice(metaclass=PoolMeta):
     def recall_deposit(cls, invoices):
         pass
 
-    def call_deposit(self, account, description):
+    def call_deposit(self, account, description, maximum=None):
         pool = Pool()
         InvoiceLine = pool.get('account.invoice.line')
         Currency = pool.get('currency.currency')
@@ -40,14 +42,17 @@ class Invoice(metaclass=PoolMeta):
         balance = self.party.get_deposit_balance(account)
         balance = Currency.compute(
             account.company.currency, balance, self.currency)
+        if maximum is None:
+            maximum = self.total_amount
+        total_amount = min(maximum, self.total_amount, key=abs)
 
-        amount = 0
+        amount = Decimal(0)
         if self.type.startswith('in'):
-            if balance > 0 and self.total_amount > 0:
-                amount = -min(balance, self.total_amount)
+            if balance > 0 and total_amount > 0:
+                amount = -min(balance, total_amount)
         else:
-            if balance < 0 and self.total_amount > 0:
-                amount = -min(-balance, self.total_amount)
+            if balance < 0 and total_amount > 0:
+                amount = -min(-balance, total_amount)
         to_delete = []
         for line in self.lines:
             if line.account == account:
@@ -61,8 +66,11 @@ class Invoice(metaclass=PoolMeta):
             except ValueError:
                 pass
             line.save()
+        else:
+            amount = Decimal(0)
         if to_delete:
             InvoiceLine.delete(to_delete)
+        return amount
 
     def _get_deposit_recall_invoice_line(self, amount, account, description):
         pool = Pool()
