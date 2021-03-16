@@ -1,3 +1,4 @@
+* Print general journal from moves
 * Add reconciliation sequence to configuration
 * Add report for income statement and balance sheet
 * Allow filtering general ledger by journal

@@ -2063,81 +2063,14 @@ class GroupLinesStart(ModelView):
     description = fields.Char("Description")
 
 
-class PrintGeneralJournalStart(ModelView):
-    'Print General Journal'
-    __name__ = 'account.move.print_general_journal.start'
-    from_date = fields.Date('From Date', required=True)
-    to_date = fields.Date('To Date', required=True)
-    company = fields.Many2One('company.company', 'Company', required=True)
-    posted = fields.Boolean('Posted Move', help="Only include posted moves.")
-
-    @staticmethod
-    def default_from_date():
-        Date = Pool().get('ir.date')
-        return datetime.date(Date.today().year, 1, 1)
-
-    @staticmethod
-    def default_to_date():
-        Date = Pool().get('ir.date')
-        return Date.today()
-
-    @staticmethod
-    def default_company():
-        return Transaction().context.get('company')
-
-    @staticmethod
-    def default_posted():
-        return False
-
-
-class PrintGeneralJournal(Wizard):
-    'Print General Journal'
-    __name__ = 'account.move.print_general_journal'
-    start = StateView('account.move.print_general_journal.start',
-        'account.print_general_journal_start_view_form', [
-            Button('Cancel', 'end', 'tryton-cancel'),
-            Button('Print', 'print_', 'tryton-print', default=True),
-            ])
-    print_ = StateReport('account.move.general_journal')
-
-    def do_print_(self, action):
-        data = {
-            'company': self.start.company.id,
-            'from_date': self.start.from_date,
-            'to_date': self.start.to_date,
-            'posted': self.start.posted,
-            }
-        return action, data
-
-
 class GeneralJournal(Report):
     __name__ = 'account.move.general_journal'
 
     @classmethod
-    def _get_records(cls, ids, model, data):
-        Move = Pool().get('account.move')
-
-        clause = [
-            ('date', '>=', data['from_date']),
-            ('date', '<=', data['to_date']),
-            ('period.fiscalyear.company', '=', data['company']),
-            ]
-        if data['posted']:
-            clause.append(('state', '=', 'posted'))
-        return Move.search(clause,
-                order=[('date', 'ASC'), ('id', 'ASC')])
-
-    @classmethod
     def get_context(cls, records, header, data):
+        pool = Pool()
+        Company = pool.get('company.company')
+        context = Transaction().context
         report_context = super().get_context(records, header, data)
-
-        Company = Pool().get('company.company')
-
-        company = Company(data['company'])
-
-        report_context['company'] = company
-        report_context['digits'] = company.currency.digits
-        report_context['from_date'] = data['from_date']
-        report_context['to_date'] = data['to_date']
-
+        report_context['company'] = Company(context['company'])
         return report_context

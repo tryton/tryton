@@ -403,29 +403,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">move_line_group_start_form</field>
         </record>
 
-        <record model="ir.ui.view" id="print_general_journal_start_view_form">
-            <field name="model">account.move.print_general_journal.start</field>
-            <field name="type">form</field>
-            <field name="name">print_general_journal_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="wizard_print_general_journal">
-            <field name="name">Print General Journal</field>
-            <field name="wiz_name">account.move.print_general_journal</field>
-        </record>
-        <menuitem
-            parent="menu_reporting"
-            action="wizard_print_general_journal"
-            sequence="50"
-            id="menu_print_general_journal"
-            icon="tryton-print"/>
-
         <record model="ir.action.report" id="report_general_journal">
             <field name="name">General Journal</field>
             <field name="model">account.move</field>
             <field name="report_name">account.move.general_journal</field>
             <field name="report">account/general_journal.fodt</field>
         </record>
+        <record model="ir.action.keyword" id="report_general_journal_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.move,-1</field>
+            <field name="action" ref="report_general_journal"/>
+        </record>
+
         <record model="ir.action.act_window" id="act_move_form_grouping">
             <field name="name">Grouped Account Move</field>
             <field name="res_model">account.move</field>

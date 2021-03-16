@@ -22,25 +22,6 @@ This limits where the journal can be used.
       .. |Financial --> Configuration --> Journals --> Journals| replace:: :menuselection:`Financial --> Configuration --> Journals --> Journals`
       __ https://demo.tryton.org/model/account.journal
 
-Reports
--------
-
-.. _report-account.move.general_journal:
-
-General Journal
-^^^^^^^^^^^^^^^
-
-In Tryton the general journal lists all of the
-`Account Moves <model-account.move>` that happened between the selected start
-and end dates.
-It also includes details such as the accounts, debits and credits involved.
-
-.. seealso::
-
-   The general journal can be printed by using the main menu item:
-
-      :menuselection:`Financial --> Reporting --> Print General Journal`
-
 Wizards
 -------
 

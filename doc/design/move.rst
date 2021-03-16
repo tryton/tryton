@@ -31,6 +31,18 @@ Only account moves whose line's debits and credits are balanced can be posted.
       .. |Financial --> Entries --> Account Moves| replace:: :menuselection:`Financial --> Entries --> Account Moves`
       __ https://demo.tryton.org/model/account.move
 
+Reports
+-------
+
+.. _report-account.move.general_journal:
+
+General Journal
+^^^^^^^^^^^^^^^
+
+In Tryton the general journal lists all of the selected `Account Moves
+<model-account.move>`.
+It also includes details such as the accounts, debits and credits involved.
+
 Wizards
 -------
 

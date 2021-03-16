@@ -200,8 +200,8 @@ Print some reports::
     >>> aged_balance = Report('account.aged_balance', context=context)
     >>> _ = aged_balance.execute(aged_balances)
 
-    >>> print_general_journal = Wizard('account.move.print_general_journal')
-    >>> print_general_journal.execute('print_')
+    >>> general_journal = Report('account.move.general_journal')
+    >>> _ = general_journal.execute(Move.find([]))
 
     >>> with config.set_context(
     ...         start_date=period.start_date,
