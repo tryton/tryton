@@ -3,6 +3,7 @@
 import os
 import xml.dom.minidom
 from difflib import SequenceMatcher
+from collections import defaultdict
 from hashlib import md5
 from io import BytesIO
 from lxml import etree
