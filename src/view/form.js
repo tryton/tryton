@@ -3696,7 +3696,7 @@ function eval_pyson(value){
             this.update_buttons(Boolean(size));
         },
         key_press: function(evt) {
-            var editable = !this.wid_text.prop('readonly');
+            var editable = !this.text.prop('readonly');
             if (evt.which == Sao.common.F3_KEYCODE && editable) {
                 this.new_();
                 evt.preventDefault();
@@ -3714,8 +3714,8 @@ function eval_pyson(value){
         set_readonly: function(readonly) {
             this.but_select.prop('disabled', readonly);
             this.but_clear.prop('disabled', readonly);
-            if (this.wid_text) {
-                this.wid_text.prop('readonly', readonly);
+            if (this.text) {
+                this.text.prop('readonly', readonly);
             }
         }
     });
