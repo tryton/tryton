@@ -3991,6 +3991,9 @@ function eval_pyson(value){
             }
             value.done(function(data) {
                 var url, blob;
+                if (record !== this.record) {
+                    return;
+                }
                 if (!data) {
                     url = null;
                 } else {
