@@ -2621,7 +2621,9 @@
                 var context = record.get_context();
                 prm = record.model.execute('read', [[record.id], [this.name]],
                     context).then(function(data) {
-                        return data[0][this.name];
+                        data = data[0][this.name];
+                        this.set(record, data);
+                        return data;
                     }.bind(this));
             }
             return prm;
