@@ -518,6 +518,15 @@ class Action(ModelSQL, ModelView):
         models = cls._get_result()
         return [(None, '')] + [(m, get_name(m)) for m in models]
 
+    @classmethod
+    def copy(cls, actions, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('result', None)
+        return super().copy(actions, default=default)
+
     def do(self):
         return getattr(self, 'do_%s' % self.action)()
 
