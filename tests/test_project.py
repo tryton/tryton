@@ -120,8 +120,8 @@ class ProjectTestCase(
         with set_company(company):
             project_user = User()
             project_user.login = 'project'
+            project_user.companies = [company]
             project_user.company = company
-            project_user.main_company = company
             project_group = Group(ModelData.get_id(
                     'project', 'group_project_admin'))
             project_user.groups = [project_group]
