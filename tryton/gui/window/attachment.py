@@ -50,8 +50,7 @@ class Attachment(WinForm):
         if not parse.scheme:
             description_field.set_client(new_record, uri)
         else:
-            uri = unquote(uri)
-            file_name = os.path.basename(parse.path)
+            file_name = os.path.basename(unquote(parse.path))
             name_field.set_client(new_record, file_name)
             if parse.scheme == 'file':
                 data_field.set_client(new_record, urlopen(uri).read())
