@@ -36,7 +36,6 @@ Create sale opportunity user::
     >>> sale_opportunity_user = User()
     >>> sale_opportunity_user.name = 'Sale Opportunity'
     >>> sale_opportunity_user.login = 'sale_opportunity'
-    >>> sale_opportunity_user.main_company = company
     >>> sale_opportunity_group, = Group.find(
     ...     [('name', '=', 'Sale Opportunity')])
     >>> sale_opportunity_user.groups.append(sale_opportunity_group)
@@ -57,7 +56,6 @@ Create sale user::
     >>> sale_user = User()
     >>> sale_user.name = 'Sale'
     >>> sale_user.login = 'sale'
-    >>> sale_user.main_company = company
     >>> sale_group, = Group.find([('name', '=', 'Sales')])
     >>> sale_user.groups.append(sale_group)
     >>> sale_user.save()
