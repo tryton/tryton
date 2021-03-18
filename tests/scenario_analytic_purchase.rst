@@ -34,7 +34,6 @@ Create purchase user::
     >>> purchase_user = User()
     >>> purchase_user.name = 'Purchase'
     >>> purchase_user.login = 'purchase'
-    >>> purchase_user.main_company = company
     >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
     >>> purchase_user.groups.append(purchase_group)
     >>> purchase_user.save()
