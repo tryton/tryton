@@ -34,7 +34,6 @@ Create sale user::
     >>> sale_user = User()
     >>> sale_user.name = 'Sale'
     >>> sale_user.login = 'sale'
-    >>> sale_user.main_company = company
     >>> sale_group, = Group.find([('name', '=', 'Sales')])
     >>> sale_user.groups.append(sale_group)
     >>> sale_user.save()
