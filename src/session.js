@@ -32,7 +32,7 @@
             var device_cookies = JSON.parse(
                 localStorage.getItem('sao_device_cookies'));
             var device_cookie = null;
-            if (device_cookies) {
+            if (device_cookies && device_cookies[this.database]) {
                 device_cookie = device_cookies[this.database][this.login];
             }
             var func = function(parameters) {
