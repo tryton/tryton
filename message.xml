@@ -39,5 +39,8 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_address_subdivision_country_code_unique">
             <field name="text">The country code on subdivision type must be unique.</field>
         </record>
+        <record model="ir.message" id="msg_identifier_type_remove">
+            <field name="text">To remove the identifier type "%(type)s" from the configuration, you must change it on "%(identifier)s".</field>
+        </record>
     </data>
 </tryton>

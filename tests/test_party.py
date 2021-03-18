@@ -15,6 +15,8 @@ from trytond.pool import Pool
 from trytond.exceptions import UserError
 from trytond.transaction import Transaction
 
+from ..party import IDENTIFIER_TYPES
+
 
 class PartyCheckEraseMixin:
 
@@ -443,10 +445,9 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
         "Ensure tax identifier types are in identifier types"
         pool = Pool()
         Party = pool.get('party.party')
-        Identifier = pool.get('party.identifier')
         self.assertFalse(
             set(Party.tax_identifier_types())
-            - set(dict(Identifier.type.selection).keys()))
+            - set(dict(IDENTIFIER_TYPES).keys()))
 
 
 def suite():

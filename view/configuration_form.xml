@@ -6,4 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party_sequence"/>
     <label name="party_lang"/>
     <field name="party_lang" widget="selection"/>
+
+    <label name="identifier_types"/>
+    <field name="identifier_types"/>
 </form>
