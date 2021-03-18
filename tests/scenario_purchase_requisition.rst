@@ -39,7 +39,6 @@ Create purchase requisition user::
     >>> requisition_user = User()
     >>> requisition_user.name = 'Requisition'
     >>> requisition_user.login = 'requisition'
-    >>> requisition_user.main_company = company
     >>> requisition_group, = Group.find([
     ...         ('name', '=', 'Purchase Requisition')])
     >>> requisition_user.groups.append(requisition_group)
@@ -74,7 +73,6 @@ Create purchase user::
     >>> purchase_user = User()
     >>> purchase_user.name = 'Purchase'
     >>> purchase_user.login = 'purchase'
-    >>> purchase_user.main_company = company
     >>> purchase_group, = Group.find([('name', '=', 'Purchase')])
     >>> purchase_user.groups.append(purchase_group)
     >>> purchase_request_group, = Group.find(
