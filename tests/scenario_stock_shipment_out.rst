@@ -51,7 +51,6 @@ Create stock user::
     >>> stock_user = User()
     >>> stock_user.name = "Stock"
     >>> stock_user.login = 'stock'
-    >>> stock_user.main_company = company
     >>> stock_user.groups.extend(Group.find([
     ...             ('name', '=', 'Stock'),
     ...             ]))
