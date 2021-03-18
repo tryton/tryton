@@ -43,8 +43,6 @@ Example
       <xpath
           expr="/form/notebook/page/separator[@name=&quot;signature&quot;]"
           position="before">
-          <label name="main_company"/>
-          <field name="main_company"/>
           <label name="company"/>
           <field name="company"/>
           <label name="employee"/>
