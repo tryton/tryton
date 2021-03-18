@@ -307,7 +307,7 @@ class User(DeactivableMixin, ModelSQL, ModelView):
                 'email_valid': True,
                 'email_token': None,
                 })
-        return bool(users)
+        return users
 
     @classmethod
     @ModelView.button
