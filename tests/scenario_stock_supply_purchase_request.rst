@@ -45,7 +45,6 @@ Create stock admin user::
     >>> stock_admin_user = User()
     >>> stock_admin_user.name = 'Stock Admin'
     >>> stock_admin_user.login = 'stock_admin'
-    >>> stock_admin_user.main_company = company
     >>> stock_admin_group, = Group.find([('name', '=', 'Stock Administration')])
     >>> stock_admin_user.groups.append(stock_admin_group)
     >>> stock_admin_user.save()
@@ -55,7 +54,6 @@ Create stock user::
     >>> stock_user = User()
     >>> stock_user.name = 'Stock'
     >>> stock_user.login = 'stock'
-    >>> stock_user.main_company = company
     >>> stock_group, = Group.find([('name', '=', 'Stock')])
     >>> stock_user.groups.append(stock_group)
     >>> stock_user.save()
@@ -65,7 +63,6 @@ Create product user::
     >>> product_admin_user = User()
     >>> product_admin_user.name = 'Product'
     >>> product_admin_user.login = 'product'
-    >>> product_admin_user.main_company = company
     >>> product_admin_group, = Group.find([
     ...         ('name', '=', 'Product Administration')
     ...         ])
@@ -77,7 +74,6 @@ Create purchase user::
     >>> purchase_user = User()
     >>> purchase_user.name = 'Purchase'
     >>> purchase_user.login = 'purchase'
-    >>> purchase_user.main_company = company
     >>> purchase_groups = Group.find(['OR',
     ...     ('name', '=', "Purchase"),
     ...     ('name', '=', "Purchase Request"),
