@@ -176,12 +176,12 @@ class CreateDPDShipping(Wizard):
 
     def shipping_party(self, party, address):
         shipping_party = {
-            'name1': address.party_full_name[:50],
+            'name1': address.party_full_name[:35],
             'name2': '',
             'street': ' '.join((address.street or '').splitlines())[:35],
             'country': address.country.code if address.country else '',
             'zipCode': address.zip[:9],
-            'city': address.city[:50],
+            'city': address.city[:35],
             }
         if party.full_name != address.party_full_name:
             shipping_party['name2'] = party.full_name[:35]
