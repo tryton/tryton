@@ -78,7 +78,6 @@ Create invoice::
     >>> Invoice = Model.get('account.invoice')
     >>> invoice = Invoice()
     >>> invoice.party = party
-    >>> invoice.invoice_date = period.start_date
     >>> invoice.payment_term = payment_term
     >>> line = invoice.lines.new()
     >>> line.quantity = 1
