@@ -34,7 +34,6 @@ Create project user::
     >>> project_user = User()
     >>> project_user.name = 'Project'
     >>> project_user.login = 'project'
-    >>> project_user.main_company = company
     >>> project_group, = Group.find([('name', '=', 'Project Administration')])
     >>> timesheet_group, = Group.find([('name', '=', 'Timesheet Administration')])
     >>> project_user.groups.extend([project_group, timesheet_group])
@@ -45,7 +44,6 @@ Create project invoice user::
     >>> project_invoice_user = User()
     >>> project_invoice_user.name = 'Project Invoice'
     >>> project_invoice_user.login = 'project_invoice'
-    >>> project_invoice_user.main_company = company
     >>> project_invoice_group, = Group.find([('name', '=', 'Project Invoice')])
     >>> project_group, = Group.find([('name', '=', 'Project Administration')])
     >>> project_invoice_user.groups.extend(
