@@ -4,12 +4,11 @@ this repository contains the full copyright notices and license terms. -->
 <data>
     <xpath expr="/form/notebook/page/separator[@name='signature']"
         position="before">
-        <label name="main_company"/>
-        <field name="main_company" widget="selection"/>
         <label name="company"/>
         <field name="company" widget="selection"/>
         <label name="employee"/>
         <field name="employee" widget="selection"/>
-        <field name="employees" colspan="4"/>
+        <field name="companies" colspan="2"/>
+        <field name="employees" colspan="2"/>
     </xpath>
 </data>

@@ -44,41 +44,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="inherit" eval="None"/>
             <field name="name">company_form</field>
         </record>
-        <record model="ir.ui.view" id="company_view_tree">
-            <field name="model">company.company</field>
-            <field name="type">tree</field>
-            <field name="field_childs">childs</field>
-            <field name="name">company_tree</field>
-        </record>
         <record model="ir.ui.view" id="company_view_list">
             <field name="model">company.company</field>
             <field name="type">tree</field>
             <field name="priority" eval="10"/>
             <field name="name">company_list</field>
         </record>
-        <record model="ir.action.act_window" id="act_company_tree">
-            <field name="name">Companies</field>
-            <field name="res_model">company.company</field>
-            <field name="domain" eval="[('parent', '=', None)]" pyson="1"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_tree_view1">
-            <field name="sequence" eval="10"/>
-            <field name="view" ref="company_view_tree"/>
-            <field name="act_window" ref="act_company_tree"/>
-        </record>
-        <record model="ir.action.act_window.view"
-            id="act_company_tree_view2">
-            <field name="sequence" eval="20"/>
-            <field name="view" ref="company_view_form"/>
-            <field name="act_window" ref="act_company_tree"/>
-        </record>
-
-        <menuitem
-            parent="menu_company"
-            action="act_company_tree"
-            sequence="10"
-            id="menu_company_tree"/>
 
         <record model="ir.action.act_window" id="act_company_list">
             <field name="name">Companies</field>
@@ -97,7 +68,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_company_list"/>
         </record>
         <menuitem
-            parent="menu_company_tree"
+            parent="menu_company"
             action="act_company_list"
             sequence="10"
             id="menu_company_list"/>

@@ -1,6 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
-from trytond.model import ModelView, ModelSQL, fields, tree
+from trytond.model import ModelView, ModelSQL, fields
 from trytond.wizard import Wizard, StateView, Button, StateTransition
 from trytond.report import Report
 from trytond.pyson import Eval, If
@@ -17,15 +17,11 @@ TIMEZONES += [(None, '')]
 Transaction.cache_keys.update({'company', 'employee'})
 
 
-class Company(tree(), ModelSQL, ModelView):
+class Company(ModelSQL, ModelView):
     'Company'
     __name__ = 'company.company'
     party = fields.Many2One('party.party', 'Party', required=True,
             ondelete='CASCADE')
-    parent = fields.Many2One('company.company', 'Parent',
-        help="Add the company below the parent.")
-    childs = fields.One2Many('company.company', 'parent', 'Children',
-        help="Add children below the company.")
     header = fields.Text(
         'Header', help="The text to display on report headers.")
     footer = fields.Text(
@@ -130,10 +126,10 @@ class CompanyConfig(Wizard):
 
         self.company.save()
         users = User.search([
-                ('main_company', '=', None),
+                ('companies', '=', None),
                 ])
         User.write(users, {
-                'main_company': self.company.id,
+                'companies': [('add', [self.company.id])],
                 'company': self.company.id,
                 })
         return 'end'

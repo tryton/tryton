@@ -16,6 +16,7 @@ def register():
         company.Company,
         company.Employee,
         company.CompanyConfigStart,
+        res.UserCompany,
         res.UserEmployee,
         res.User,
         ir.Sequence,

@@ -51,7 +51,7 @@ def set_company(company):
     pool = Pool()
     User = pool.get('res.user')
     User.write([User(Transaction().user)], {
-            'main_company': company.id,
+            'companies': [('add', [company.id])],
             'company': company.id,
                 })
     with Transaction().set_context(User.get_preferences(context_only=True)):
@@ -111,23 +111,6 @@ class CompanyTestCase(
         self.assertTrue(company)
 
     @with_transaction()
-    def test_company_recursion(self):
-        'Test company recursion'
-        pool = Pool()
-        Company = pool.get('company.company')
-
-        company1 = create_company()
-        company2 = create_company('Michael Scott Paper Company')
-        company2.parent = company1
-        company2.save()
-        self.assertTrue(company2)
-
-        self.assertRaises(Exception, Company.write,
-            [company1], {
-                'parent': company2.id,
-                })
-
-    @with_transaction()
     def test_employe(self):
         'Create employee'
         pool = Pool()
@@ -154,19 +137,18 @@ class CompanyTestCase(
         company1 = create_company()
         company2 = create_company('Michael Scott Paper Company',
             currency=company1.currency)
-        company2.parent = company1
         company2.save()
         company3 = create_company()
 
         user1, user2 = User.create([{
                     'name': 'Jim Halper',
                     'login': 'jim',
-                    'main_company': company1.id,
+                    'companies': [('add', [company1.id, company2.id])],
                     'company': company1.id,
                     }, {
                     'name': 'Pam Beesly',
                     'login': 'pam',
-                    'main_company': company2.id,
+                    'companies': [('add', [company2.id])],
                     'company': company2.id,
                     }])
         self.assertTrue(user1)
@@ -200,7 +182,7 @@ class CompanyTestCase(
         company = create_company()
         root = User(0)
         root.company = None
-        root.main_company = None
+        root.companies = None
         root.save()
 
         with transaction.set_user(0):
@@ -224,14 +206,14 @@ class CompanyTestCase(
         user1, user2 = User.create([{
                     'name': "Jim Halper",
                     'login': "jim",
-                    'main_company': company.id,
+                    'companies': [('add', [company.id])],
                     'company': company.id,
                     'employees': [('add', [employee1.id, employee2.id])],
                     'employee': employee1.id,
                     }, {
                     'name': "Pam Beesly",
                     'login': "pam",
-                    'main_company': company.id,
+                    'companies': [('add', [company.id])],
                     'company': company.id,
                     'employees': [('add', [employee2.id])],
                     'employee': employee2.id,

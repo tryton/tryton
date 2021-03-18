@@ -1,3 +1,4 @@
+* Remove tree structure from company
 * Add test on context of company multivalue target fields
 * Use report header for CompanyReport
 
