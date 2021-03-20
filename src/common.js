@@ -2232,7 +2232,11 @@
                 ((context_field === null) ||
                     (context_field === undefined) ||
                     (value === null) ||
-                    (value === undefined))) {
+                    (value === undefined)) &&
+                !(~['in', 'not in'].indexOf(operand) &&
+                    ((context_field === null) ||
+                        (context_field === undefined)) &&
+                    ((value instanceof Array) && ~value.indexOf(null)))) {
                 return;
             }
             if ((context_field && context_field._isAMomentObject) && !value) {
