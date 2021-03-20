@@ -1078,14 +1078,29 @@ function eval_pyson(value){
                 var field = record.model.fields[name];
                 name = field.get(record);
             }
-            Sao.common.ICONFACTORY.get_icon_url(name)
-                .done(function(url) {
-                    if (url) {
-                        this.img.attr('src', url);
-                    } else {
-                        this.img.removeAttr('src');
+            if (this.attributes.type == 'url') {
+                if (name) {
+                    if (this.attributes.url_size) {
+                        var url = new URL(name, window.location);
+                        url.searchParams.set(
+                            this.attributes.url_size,
+                            attributes.size || 48);
+                        name = url.href;
                     }
-                }.bind(this));
+                    this.img.attr('src', name);
+                } else {
+                    this.img.removeAttr('src');
+                }
+            } else {
+                Sao.common.ICONFACTORY.get_icon_url(name)
+                    .done(function(url) {
+                        if (url) {
+                            this.img.attr('src', url);
+                        } else {
+                            this.img.removeAttr('src');
+                        }
+                    }.bind(this));
+            }
         }
     });
 

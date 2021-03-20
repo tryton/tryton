@@ -2032,20 +2032,34 @@
                     else {
                         value = this.icon;
                     }
-                    Sao.common.ICONFACTORY.get_icon_url(value)
-                        .done(function(url) {
-                            var img_tag;
-                            if (cell.children('img').length) {
-                                img_tag = cell.children('img');
-                            } else {
-                                img_tag = cell;
+                    var img_tag;
+                    if (cell.children('img').length) {
+                        img_tag = cell.children('img');
+                    } else {
+                        img_tag = cell;
+                    }
+                    if (this.attributes.icon_type == 'url') {
+                        if (value) {
+                            if (this.attributes.url_size) {
+                                var url = new URL(value, window.location);
+                                url.searchParams.set(
+                                    this.attributes.url_size, 20);
+                                value = url.href;
                             }
-                            if (url) {
-                                img_tag.attr('src', url);
-                            } else {
-                                img_tag.removeAttr('src');
-                            }
-                        }.bind(this));
+                            img_tag.attr('src', value);
+                        } else {
+                            img_tag.removeAttr('src');
+                        }
+                    } else {
+                        Sao.common.ICONFACTORY.get_icon_url(value)
+                            .done(function(url) {
+                                if (url) {
+                                    img_tag.attr('src', url);
+                                } else {
+                                    img_tag.removeAttr('src');
+                                }
+                            }.bind(this));
+                    }
                 } else {
                     value = this.attributes.string || '';
                     if (!value) {
