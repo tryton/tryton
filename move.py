@@ -1,7 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
 from decimal import Decimal
-import datetime
 import hashlib
 from itertools import groupby, combinations, chain, islice
 from operator import itemgetter
@@ -15,8 +14,8 @@ from sql.conditionals import Coalesce, Case
 from trytond.i18n import gettext
 from trytond.model import ModelView, ModelSQL, fields, Check, DeactivableMixin
 from trytond.model.exceptions import AccessError
-from trytond.wizard import Wizard, StateTransition, StateView, StateAction, \
-    StateReport, Button
+from trytond.wizard import (
+    Wizard, StateTransition, StateView, StateAction, Button)
 from trytond.report import Report
 from trytond import backend
 from trytond.pyson import Eval, Bool, If, PYSONEncoder
