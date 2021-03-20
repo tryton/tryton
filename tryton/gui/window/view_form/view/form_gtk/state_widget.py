@@ -66,8 +66,13 @@ class Image(StateMixin, Gtk.Image):
         if name in record.group.fields:
             field = record.group.fields[name]
             name = field.get(record)
-        self.set_from_pixbuf(common.IconFactory.get_pixbuf(
-                name, int(self.attrs.get('size', 48))))
+        size = int(self.attrs.get('size', 48))
+        if self.attrs.get('type') == 'url':
+            pixbuf = common.IconFactory.get_pixbuf_url(
+                name, size=size, size_param=self.attrs.get('url_size'))
+        else:
+            pixbuf = common.IconFactory.get_pixbuf(name, size)
+        self.set_from_pixbuf(pixbuf)
 
 
 class Frame(StateMixin, Gtk.Frame):

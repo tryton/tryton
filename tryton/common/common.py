@@ -17,7 +17,7 @@ try:
     from http import HTTPStatus
 except ImportError:
     from http import client as HTTPStatus
-from functools import wraps
+from functools import wraps, lru_cache
 from tryton.config import CONFIG
 from tryton.config import TRYTON_ICON, PIXMAPS_DIR
 import sys
@@ -168,6 +168,36 @@ class IconFactory:
             pixbuf = cls.get_pixbuf(iconname, size, color, badge)
             image.set_from_pixbuf(pixbuf)
         return image
+
+    @classmethod
+    def _convert_url(cls, value, size=16, size_param=None):
+        if not value:
+            return
+        parts = urllib.parse.urlsplit(value)
+        parts = list(parts)
+        if not parts[0]:
+            parts[0] = 'https' if rpc.CONNECTION.ssl else 'http'
+        if not parts[1]:
+            hostname = get_hostname(CONFIG['login.host'])
+            port = get_port(CONFIG['login.host'])
+            parts[1] = '%s:%s' % (hostname, port)
+        if size_param:
+            query = urllib.parse.parse_qsl(parts[4])
+            query.append((size_param, size))
+            parts[4] = urllib.parse.urlencode(query)
+        return urllib.parse.urlunsplit(parts)
+
+    @classmethod
+    @lru_cache(maxsize=CONFIG['image.cache_size'])
+    def get_pixbuf_url(cls, url, size=16, size_param=None):
+        if not url:
+            return
+        url = cls._convert_url(url, size, size_param=size_param)
+        try:
+            with urllib.request.urlopen(url) as response:
+                return data2pixbuf(response.read(), size, size)
+        except urllib.error.URLError:
+            logger.info("Can not fetch %s", url, exc_info=True)
 
 
 IconFactory.load_local_icons()

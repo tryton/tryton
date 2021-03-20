@@ -185,7 +185,12 @@ class Affix(Cell):
                 value = record[self.icon].get_client(record) or ''
             else:
                 value = self.icon
-            pixbuf = common.IconFactory.get_pixbuf(value, Gtk.IconSize.BUTTON)
+            if self.attrs.get('icon_type') == 'url':
+                pixbuf = common.IconFactory.get_pixbuf_url(
+                    value, size_param=self.attrs.get('url_size'))
+            else:
+                pixbuf = common.IconFactory.get_pixbuf(
+                    value, Gtk.IconSize.BUTTON)
             cell.set_property('pixbuf', pixbuf)
         else:
             text = self.attrs.get('string', '')
