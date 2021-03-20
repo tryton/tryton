@@ -71,6 +71,8 @@ suffix = element suffix { attlist.affix, empty }
 attlist.affix &= attribute string { text }?
 attlist.affix &= ( attribute name { text } | attribute id { text } )
 attlist.affix &= attribute icon { text }?
+attlist.affix &= [a:defaultValue = "icon"] attribute icon_type { "icon" | "url" }?
+attlist.affix &= attribute url_size { text }?
 button = element button { attlist.button, empty }
 attlist.button &= attribute help { text }?
 attlist.button &= attribute string { text }?

@@ -111,6 +111,8 @@ attlist.field &=
 attlist.field &= attribute symbol { text }?
 image = element image { attlist.image, empty }
 attlist.image &= attribute name { text }
+attlist.image &= [a:defaultValue = "icon"] attribute type { "icon" | "url" }
+attlist.affix &= attribute url_size { text }?
 attlist.image &= [ a:defaultValue = "1" ] attribute colspan { text }?
 attlist.image &=
   [ a:defaultValue = "0" ] attribute yexpand { "0" | "1" }?

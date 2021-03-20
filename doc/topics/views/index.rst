@@ -296,13 +296,21 @@ Display a field of the object with the value of the current record.
 
     * ``help_field``: see in common-attributes-help_field_.
 
+.. _form-image:
+
 image
 ^^^^^
 
 Display an image.
 
-    * ``name``: the image name or the field name which contains the image name.
-      The image name must be the name of a record of ``ir.ui.icon``.
+    * ``type``: the type of image source. Available values are ``icon`` or
+      ``url``. The default value is ``icon``.
+
+    * ``name``: The image name or the field name which contains the image name.
+      For the ``icon`` type it must be the name of a record of ``ir.ui.icon``.
+      For the ``url`` type it must be the URL. It can be relative to the server.
+
+    * ``url_size``: the name of the size parameter to add to the URL.
 
     * ``yexpand``: see in common-attributes-yexpand_.
 
@@ -628,8 +636,14 @@ diplayed in the same column.
 
     * ``name``: The name of the field whose value will be displayed.
 
-    * ``icon``: The name of the field that contains the name of the icon to
-      display or the name of the icon.
+    * ``icon``: The image name or the field name which contains the image name.
+      For the ``icon`` type it must be the name of a record of ``ir.ui.icon``.
+      For the ``url`` type it must be the URL. It can be relative to the server.
+
+    * ``icon_type``: the type of icon source. Available values are ``icon`` or
+      ``url``. The default value is ``icon``.
+
+    * ``url_size``: the name of the size parameter to add to the URL.
 
 button
 ^^^^^^

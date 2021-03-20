@@ -314,6 +314,25 @@
       </attribute>
     </optional>
   </define>
+  <define name="attlist.affix" combine="interleave">
+    <optional>
+      <attribute a:defaultValue="icon">
+        <name ns="">icon_type</name>
+        <choice>
+          <value>icon</value>
+          <value>url</value>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="attlist.affix" combine="interleave">
+    <optional>
+      <attribute>
+        <name ns="">url_size</name>
+        <text/>
+      </attribute>
+    </optional>
+  </define>
   <define name="button">
     <element>
       <name ns="">button</name>
