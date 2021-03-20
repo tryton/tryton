@@ -540,6 +540,11 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertTrue(eval_domain(domain, {'x': [3]}))
         self.assertTrue(eval_domain(domain, {'x': [3, 4]}))
         self.assertFalse(eval_domain(domain, {'x': [1, 2]}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', 'in', [1, None]]]
+        self.assertTrue(eval_domain(domain, {'x': None}))
+        self.assertFalse(eval_domain(domain, {'x': 2}))
 
         domain = [['x', 'not in', [3, 5]]]
         self.assertFalse(eval_domain(domain, {'x': 3}))
@@ -547,6 +552,11 @@ class DomainInversionTestCase(unittest.TestCase):
         self.assertFalse(eval_domain(domain, {'x': [3]}))
         self.assertFalse(eval_domain(domain, {'x': [3, 4]}))
         self.assertTrue(eval_domain(domain, {'x': [1, 2]}))
+        self.assertFalse(eval_domain(domain, {'x': None}))
+
+        domain = [['x', 'not in', [1, None]]]
+        self.assertFalse(eval_domain(domain, {'x': None}))
+        self.assertTrue(eval_domain(domain, {'x': 2}))
 
         domain = [['x', 'like', 'abc']]
         self.assertTrue(eval_domain(domain, {'x': 'abc'}))

@@ -96,7 +96,10 @@ def eval_leaf(part, context, boolop=operator.and_):
         return bool(context.get(field.split('.')[0]))
     context_field = context.get(field)
     if (operand not in {'=', '!='}
-            and (context_field is None or value is None)):
+            and (context_field is None or value is None)
+            and not (operand in {'in', 'not in'}
+                and context_field is None
+                and (isinstance(value, (list, tuple)) and None in value))):
         return
     if isinstance(context_field, datetime.date) and not value:
         if isinstance(context_field, datetime.datetime):
