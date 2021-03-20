@@ -506,13 +506,15 @@
     </attribute>
   </define>
   <define name="attlist.image" combine="interleave">
-    <attribute a:defaultValue="icon">
-      <name ns="">type</name>
-      <choice>
-        <value>icon</value>
-        <value>url</value>
-      </choice>
-    </attribute>
+    <optional>
+      <attribute a:defaultValue="icon">
+        <name ns="">type</name>
+        <choice>
+          <value>icon</value>
+          <value>url</value>
+        </choice>
+      </attribute>
+    </optional>
   </define>
   <define name="attlist.affix" combine="interleave">
     <optional>
