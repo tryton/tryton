@@ -1,0 +1,56 @@
+clone:
+    hg:
+        image: plugins/hg
+        environment:
+            - HG_SHARE_POOL=/root/.cache/hg
+        volumes:
+            - cache:/root/.cache
+
+pipeline:
+    tox:
+        image: ${IMAGE}
+        environment:
+            - CFLAGS=-O0
+            - DB_CACHE=/cache
+            - TOX_TESTENV_PASSENV=CFLAGS DB_CACHE CI_BUILD_NUMBER CI_JOB_NUMBER CI_JOB_ID
+            - POSTGRESQL_URI=postgresql://postgres@postgresql:5432/
+        commands:
+            - echo "[extensions]" >> /root/.hgrc
+            - echo "hgext.share =" >> /root/.hgrc
+            - echo "[share]" >> /root/.hgrc
+            - echo "pool = /root/.cache/hg" >> /root/.hgrc
+            - pip install tox
+            - tox -e "${TOXENV}-${DATABASE}"
+        volumes:
+            - cache:/root/.cache
+
+services:
+    postgresql:
+        image: postgres
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+        command: "-c fsync=off -c synchronous_commit=off -c full_page_writes=off"
+        when:
+            matrix:
+                DATABASE: postgresql
+
+matrix:
+    include:
+        - IMAGE: python:3.6
+          TOXENV: py36
+          DATABASE: sqlite
+        - IMAGE: python:3.6
+          TOXENV: py36
+          DATABASE: postgresql
+        - IMAGE: python:3.7
+          TOXENV: py37
+          DATABASE: sqlite
+        - IMAGE: python:3.7
+          TOXENV: py37
+          DATABASE: postgresql
+        - IMAGE: python:3.8
+          TOXENV: py38
+          DATABASE: sqlite
+        - IMAGE: python:3.8
+          TOXENV: py38
+          DATABASE: postgresql
