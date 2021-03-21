@@ -50,6 +50,9 @@ Stock
     `Product Location </projects/modules-stock-product-location/en/latest>`_
         Defines preferred locations for products.
 
+    `Quantity Issue </projects/modules-stock-quantity-issue/en/latest>`_
+        Reports quantity issues.
+
     `Secondary Unit </projects/modules-stock-secondary-unit/en/latest>`_
         Adds a secondary unit of measure.
 
