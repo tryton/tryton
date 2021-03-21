@@ -230,7 +230,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
     @classmethod
     def __register__(cls, module_name):
         TimesheetWork = Pool().get('timesheet.work')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table_project_work = cls.__table_handler__(module_name)
         project = cls.__table__()
         timesheet = TimesheetWork.__table__()
@@ -249,9 +251,9 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         if table_project_work.column_exist('effort'):
             cursor.execute(*project.select(project.id, project.effort,
                     where=project.effort != Null))
-            for id_, effort in cursor.fetchall():
+            for id_, effort in cursor:
                 duration = datetime.timedelta(hours=effort)
-                cursor.execute(*project.update(
+                update.execute(*project.update(
                         [project.effort_duration],
                         [duration],
                         where=project.id == id_))
@@ -267,8 +269,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
                     condition=timesheet.parent == second_project.work
                     ).select(project.id, second_project.id)
             cursor.execute(*query)
-            for id_, parent in cursor.fetchall():
-                cursor.execute(*project.update(
+            for id_, parent in cursor:
+                update.execute(*project.update(
                         [project.parent],
                         [parent],
                         where=project.id == id_))
@@ -277,8 +279,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             cursor.execute(*project.join(timesheet,
                     condition=project.work == timesheet.id
                     ).select(project.id, timesheet.company))
-            for id_, company in cursor.fetchall():
-                cursor.execute(*project.update(
+            for id_, company in cursor:
+                update.execute(*project.update(
                         [project.company],
                         [company],
                         where=project.id == id_))
@@ -287,8 +289,8 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             cursor.execute(*project.join(timesheet,
                     condition=project.work == timesheet.id
                     ).select(project.id, timesheet.name))
-            for id_, name in cursor.fetchall():
-                cursor.execute(*project.update(
+            for id_, name in cursor:
+                update.execute(*project.update(
                         [project.name],
                         [name],
                         where=project.id == id_))
@@ -296,7 +298,6 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
         # Migration from 4.0: remove work
         if work_exist:
             table_project_work.drop_constraint('work_uniq')
-            update = Transaction().connection.cursor()
             cursor.execute(*project.select(project.id, project.work,
                     where=project.work != Null))
             for project_id, work_id in cursor:
@@ -463,7 +464,7 @@ class Work(sequence_ordered(), tree(separator='\\'), ModelSQL, ModelView):
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.select(table.id, table.parent,
                     where=where))
-            parents.update(cursor.fetchall())
+            parents.update(cursor)
 
         if 'total_progress' in names and 'total_effort' not in names:
             names = list(names)
