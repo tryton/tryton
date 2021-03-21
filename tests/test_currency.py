@@ -277,7 +277,7 @@ class CurrencyTestCase(ModuleTestCase):
 
         query = Currency.currency_rate_sql()
         cursor.execute(*query)
-        data = set(cursor.fetchall())
+        data = set(cursor)
         result = {
             (cu1.id, Decimal(1), date(2017, 1, 1), date(2017, 2, 1)),
             (cu1.id, Decimal(2), date(2017, 2, 1), date(2017, 3, 1)),
