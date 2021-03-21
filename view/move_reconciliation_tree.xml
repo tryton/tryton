@@ -4,5 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="name"/>
     <field name="date"/>
+    <field name="company"/>
     <field name="delegate_to"/>
 </tree>

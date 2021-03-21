@@ -4,9 +4,13 @@ this repository contains the full copyright notices and license terms. -->
 <form>
     <label name="name"/>
     <field name="name"/>
+    <label name="company"/>
+    <field name="company"/>
+
     <label name="date"/>
     <field name="date"/>
     <label name="delegate_to"/>
     <field name="delegate_to"/>
+
     <field name="lines" colspan="4"/>
 </form>

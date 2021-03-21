@@ -449,12 +449,21 @@ class Reconciliation(ModelSQL, ModelView):
     'Account Move Reconciliation Lines'
     __name__ = 'account.move.reconciliation'
     name = fields.Char('Name', size=None, required=True)
-    lines = fields.One2Many('account.move.line', 'reconciliation',
-            'Lines')
+    company = fields.Many2One('company.company', "Company", required=True)
+    lines = fields.One2Many(
+        'account.move.line', 'reconciliation', 'Lines',
+        domain=[
+            ('move.company', '=', Eval('company', -1)),
+            ],
+        depends=['company'])
     date = fields.Date('Date', required=True, select=True,
         help='Highest date of the reconciled lines.')
     delegate_to = fields.Many2One(
         'account.move.line', "Delegate To", ondelete="RESTRICT", select=True,
+        domain=[
+            ('move.company', '=', Eval('company', -1)),
+            ],
+        depends=['company'],
         help="The line to which the reconciliation status is delegated.")
 
     @classmethod
@@ -467,8 +476,10 @@ class Reconciliation(ModelSQL, ModelView):
         Line = pool.get('account.move.line')
         move = Move.__table__()
         line = Line.__table__()
+        line_h = Line.__table_handler__(module_name)
 
         date_exist = table.column_exist('date')
+        company_exist = table.column_exist('company')
 
         super(Reconciliation, cls).__register__(module_name)
 
@@ -483,6 +494,20 @@ class Reconciliation(ModelSQL, ModelView):
                         ).select(Max(move.date),
                         where=line.reconciliation == sql_table.id,
                         group_by=line.reconciliation)))
+
+        # Migration from 5.8: add company field
+        if not company_exist and line_h.column_exist('reconciliation'):
+            value = (line
+                .join(move, condition=line.move == move.id)
+                .select(
+                    move.company,
+                    where=line.reconciliation == sql_table.id,
+                    group_by=move.company))
+            cursor.execute(*sql_table.update([sql_table.company], [value]))
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @classmethod
     def create(cls, vlist):
@@ -559,11 +584,10 @@ class Reconciliation(ModelSQL, ModelView):
                             line=line.rec_name,
                             party1=line.party.rec_name,
                             party2=party.rec_name))
-            if (account
-                    and not account.company.currency.is_zero(debit - credit)):
+            if not reconciliation.company.currency.is_zero(debit - credit):
                 lang = Lang.get()
-                debit = lang.currency(debit, account.company.currency)
-                credit = lang.currency(credit, account.company.currency)
+                debit = lang.currency(debit, reconciliation.company.currency)
+                credit = lang.currency(credit, reconciliation.company.currency)
                 raise ReconciliationError(
                     gettext('account.msg_reconciliation_unbalanced',
                         debit=debit,
@@ -1261,6 +1285,7 @@ class Line(ModelSQL, ModelView):
                             or Decimal('0.0')),
                         ], limit=1)
             reconciliations.append({
+                    'company': reconcile_account.company,
                     'lines': [('add', [x.id for x in lines])],
                     'date': max(l.date for l in lines),
                     'delegate_to': delegate_to,
@@ -1287,6 +1312,7 @@ class Line(ModelSQL, ModelView):
             journal = writeoff.journal
 
         move = Move()
+        move.company = reconcile_account.company
         move.journal = journal
         move.period = period_id
         move.date = date
