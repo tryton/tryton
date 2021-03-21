@@ -134,7 +134,9 @@ class SaleOpportunity(
     def __register__(cls, module_name):
         pool = Pool()
         Sale = pool.get('sale.sale')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         sql_table = cls.__table__()
         sale = Sale.__table__()
 
@@ -154,8 +156,8 @@ class SaleOpportunity(
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.sale,
                     where=sql_table.sale != Null))
-            for id_, sale_id in cursor.fetchall():
-                cursor.execute(*sale.update(
+            for id_, sale_id in cursor:
+                update.execute(*sale.update(
                         columns=[sale.origin],
                         values=['%s,%s' % (cls.__name__, id_)],
                         where=sale.id == sale_id))
