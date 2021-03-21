@@ -121,7 +121,7 @@ class Agent(ModelSQL, ModelView):
                 where=where,
                 group_by=commission.agent)
             cursor.execute(*query)
-            amounts.update(dict(cursor.fetchall()))
+            amounts.update(dict(cursor))
         for agent_id, amount in amounts.items():
             if amount:
                 # SQLite uses float for SUM
