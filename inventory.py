@@ -377,7 +377,9 @@ class InventoryLine(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         pool = Pool()
         Move = pool.get('stock.move')
         sql_table = cls.__table__()
@@ -391,8 +393,8 @@ class InventoryLine(ModelSQL, ModelView):
         if table.column_exist('move'):
             cursor.execute(*sql_table.select(sql_table.id, sql_table.move,
                     where=sql_table.move != Null))
-            for line_id, move_id in cursor.fetchall():
-                cursor.execute(*move_table.update(
+            for line_id, move_id in cursor:
+                update.execute(*move_table.update(
                         columns=[move_table.origin],
                         values=['%s,%s' % (cls.__name__, line_id)],
                         where=move_table.id == move_id))

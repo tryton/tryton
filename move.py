@@ -1502,7 +1502,6 @@ class Move(Workflow, ModelSQL, ModelView):
 
         cursor = Transaction().connection.cursor()
         cursor.execute(*query)
-        raw_lines = cursor.fetchall()
 
         if 'product' in grouping:
             id_name = 'product'
@@ -1519,7 +1518,7 @@ class Move(Workflow, ModelSQL, ModelView):
         # them directly.
         if len(location_ids) == 1:
             location, = location_ids
-        for line in raw_lines:
+        for line in cursor:
             if len(location_ids) > 1:
                 location = line[0]
             key = tuple(line[1:-1])

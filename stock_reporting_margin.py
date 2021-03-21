@@ -574,12 +574,12 @@ class CategoryTree(ModelSQL, ModelView):
             sub_ids = list(sub_ids)
             where = reduce_ids(table.id, sub_ids)
             cursor.execute(*table.select(table.id, table.parent, where=where))
-            parents.update(cursor.fetchall())
+            parents.update(cursor)
 
             where = reduce_ids(reporting_category.id, sub_ids)
             cursor.execute(
                 *reporting_category.select(reporting_category.id, where=where))
-            reporting_categories.extend(r for r, in cursor.fetchall())
+            reporting_categories.extend(r for r, in cursor)
 
         result = {}
         reporting_categories = ReportingCategory.browse(reporting_categories)
