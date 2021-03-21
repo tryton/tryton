@@ -60,7 +60,7 @@ class Party(metaclass=PoolMeta):
                     & (account.company == user.company.id)
                     & line_clause,
                     group_by=line.party))
-            for party_id, value in cursor.fetchall():
+            for party_id, value in cursor:
                 # SQLite uses float for SUM
                 if not isinstance(value, Decimal):
                     value = currency.round(Decimal(str(value)))
