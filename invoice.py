@@ -598,7 +598,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     Coalesce(Sum(tax.amount), 0).as_(type_name),
                     where=red_sql,
                     group_by=tax.invoice))
-            for invoice_id, sum_ in cursor.fetchall():
+            for invoice_id, sum_ in cursor:
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
                     sum_ = Decimal(str(sum_))
@@ -639,7 +639,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         0).cast(type_name),
                     where=(invoice.account == line.account) & red_sql,
                     group_by=invoice.id))
-            for invoice_id, sum_ in cursor.fetchall():
+            for invoice_id, sum_ in cursor:
                 # SQLite uses float for SUM
                 if not isinstance(sum_, Decimal):
                     sum_ = Decimal(str(sum_))
@@ -704,7 +704,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                         invoice.id, line.id,
                         where=red_sql,
                         order_by=(invoice.id, line.maturity_date.nulls_last)))
-            for invoice_id, line_id in cursor.fetchall():
+            for invoice_id, line_id in cursor:
                 lines[invoice_id].append(line_id)
         return lines
 
@@ -1871,8 +1871,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         Invoice = pool.get('account.invoice')
         invoice = Invoice.__table__()
         sql_table = cls.__table__()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         super(InvoiceLine, cls).__register__(module_name)
-        cursor = Transaction().connection.cursor()
         table = cls.__table_handler__(module_name)
 
         # Migration from 3.4: company is required
@@ -1880,8 +1882,8 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
                 condition=sql_table.invoice == invoice.id
                 ).select(sql_table.id, invoice.company,
                 where=sql_table.company == Null))
-        for line_id, company_id in cursor.fetchall():
-            cursor.execute(*sql_table.update([sql_table.company], [company_id],
+        for line_id, company_id in cursor:
+            update.execute(*sql_table.update([sql_table.company], [company_id],
                     where=sql_table.id == line_id))
 
         # Migration from 4.6: drop required on description
