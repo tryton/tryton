@@ -477,7 +477,7 @@ class Identifier(sequence_ordered(), ModelSQL, ModelView):
                     party.id, party.vat_number, party.vat_country,
                     where=(party.vat_number != Null)
                     | (party.vat_country != Null)))
-            for party_id, number, country in cursor.fetchall():
+            for party_id, number, country in cursor:
                 code = (country or '') + (number or '')
                 if not code:
                     continue
