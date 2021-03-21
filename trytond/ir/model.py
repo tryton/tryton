@@ -420,7 +420,7 @@ class ModelField(ModelSQL, ModelView):
             model = Model.__table__()
             cursor.execute(*model.select(model.id, model.model,
                     where=model.id.in_(model_ids)))
-            id2model = dict(cursor.fetchall())
+            id2model = dict(cursor)
 
             trans_args = []
             for rec in res:
@@ -578,7 +578,7 @@ class ModelAccess(DeactivableMixin, ModelSQL, ModelView):
                 group_by=ir_model.model))
         raw_access = {
             m: {'read': r, 'write': w, 'create': c, 'delete': d}
-            for m, r, w, c, d in cursor.fetchall()}
+            for m, r, w, c, d in cursor}
 
         for model in models:
             access[model] = {
@@ -774,7 +774,7 @@ class ModelFieldAccess(DeactivableMixin, ModelSQL, ModelView):
                         & (group.active == Literal(True)))
                     | (field_access.group == Null)),
                 group_by=[ir_model.model, model_field.name]))
-        for m, f, r, w, c, d in cursor.fetchall():
+        for m, f, r, w, c, d in cursor:
             accesses[m][f] = {'read': r, 'write': w, 'create': c, 'delete': d}
         for model, maccesses in accesses.items():
             cls._get_access_cache.set((user, model), maccesses)
@@ -1257,7 +1257,7 @@ class ModelData(ModelSQL, ModelView):
             cursor = Transaction().connection.cursor()
 
             cursor.execute(*table.select(table.model, group_by=[table.model]))
-            models = [m[0] for m in cursor.fetchall()]
+            models = [m for m, in cursor]
             cls._has_model_cache.set(None, models)
         return model in models
 

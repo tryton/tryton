@@ -89,7 +89,7 @@ def migrate_property(
     vcolumns = [Column(table, f) for f in fields]
     values = []
     length = len(value_names)
-    for row in cursor.fetchall():
+    for row in cursor:
         value = [c(v) for v, c in zip(row, casts)]
         if parent:
             value.append(

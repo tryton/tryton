@@ -60,7 +60,7 @@ class Note(ResourceMixin, ModelSQL, ModelView):
                     Case((read.user != Null, False), else_=True),
                     where=where)
             cursor.execute(*query)
-            unread.update(cursor.fetchall())
+            unread.update(cursor)
         return unread
 
     @classmethod

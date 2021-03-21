@@ -356,7 +356,7 @@ class Database(DatabaseInterface):
             try:
                 cursor.execute(
                     'SELECT hostname FROM ir_configuration')
-                hostnames = {h for h, in cursor.fetchall() if h}
+                hostnames = {h for h, in cursor if h}
                 if hostnames and hostname not in hostnames:
                     return False
             except ProgrammingError:

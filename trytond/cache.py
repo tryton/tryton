@@ -205,7 +205,7 @@ class MemoryCache(BaseCache):
                 cursor.execute(*table.select(
                         _cast(table.timestamp), table.name))
                 timestamps = {}
-                for timestamp, name in cursor.fetchall():
+                for timestamp, name in cursor:
                     timestamps[name] = timestamp
                 modules = _get_modules(cursor)
         finally:

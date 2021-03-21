@@ -139,7 +139,7 @@ class TableHandler(TableHandlerInterface):
                 'FROM information_schema.columns '
                 'WHERE table_name = %s AND table_schema = %s',
                 (self.table_name, self.table_schema))
-            for column, typname, nullable, size, default in cursor.fetchall():
+            for column, typname, nullable, size, default in cursor:
                 self._columns[column] = {
                     'typname': typname,
                     'notnull': True if nullable == 'NO' else False,
@@ -153,7 +153,7 @@ class TableHandler(TableHandlerInterface):
                 'FROM information_schema.table_constraints '
                 'WHERE table_name = %s AND table_schema = %s',
                 (self.table_name, self.table_schema))
-            self._constraints = [c for c, in cursor.fetchall()]
+            self._constraints = [c for c, in cursor]
 
             # add nonstandard exclude constraint
             cursor.execute('SELECT c.conname '
@@ -167,7 +167,7 @@ class TableHandler(TableHandlerInterface):
                     "AND r.relkind IN ('r', 'p') "
                     'AND r.relname = %s AND nr.nspname = %s',
                     (self.table_name, self.table_schema))
-            self._constraints.extend((c for c, in cursor.fetchall()))
+            self._constraints.extend((c for c, in cursor))
 
             cursor.execute('SELECT k.column_name, r.delete_rule '
                 'FROM information_schema.key_column_usage AS k '
@@ -176,7 +176,7 @@ class TableHandler(TableHandlerInterface):
                 'AND r.constraint_name = k.constraint_name '
                 'WHERE k.table_name = %s AND k.table_schema = %s',
                 (self.table_name, self.table_schema))
-            self._fk_deltypes = dict(cursor.fetchall())
+            self._fk_deltypes = dict(cursor)
 
         if indexes:
             # Fetch indexes defined for the table
@@ -187,7 +187,7 @@ class TableHandler(TableHandlerInterface):
                     "JOIN pg_class cl2 on (cl2.oid = ind.indexrelid) "
                 "WHERE cl.relname = %s AND n.nspname = %s",
                 (self.table_name, self.table_schema))
-            self._indexes = [l[0] for l in cursor.fetchall()]
+            self._indexes = [l[0] for l in cursor]
 
     @property
     def _field2module(self):

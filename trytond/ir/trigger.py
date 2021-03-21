@@ -85,7 +85,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.minimum_delay,
                     where=sql_table.minimum_delay != Null))
-            for id_, delay in cursor.fetchall():
+            for id_, delay in cursor:
                 delay = datetime.timedelta(hours=delay)
                 cursor.execute(*sql_table.update(
                         [sql_table.minimum_time_delay],
@@ -218,7 +218,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         trigger_log.record_id, Count(Literal(1)),
                         where=red_sql & (trigger_log.trigger == self.id),
                         group_by=trigger_log.record_id))
-                number = dict(cursor.fetchall())
+                number = dict(cursor)
                 for record_id in sub_ids:
                     if record_id not in number:
                         new_ids.append(record_id)
@@ -256,7 +256,7 @@ class Trigger(DeactivableMixin, ModelSQL, ModelView):
                         trigger_log.record_id, Max(trigger_log.create_date),
                         where=(red_sql & (trigger_log.trigger == self.id)),
                         group_by=trigger_log.record_id))
-                delay = dict(cursor.fetchall())
+                delay = dict(cursor)
                 for record_id in sub_ids:
                     if record_id not in delay:
                         new_ids.append(record_id)

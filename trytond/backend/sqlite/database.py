@@ -526,7 +526,7 @@ class Database(DatabaseInterface):
                             configuration.hostname))
                 except Exception:
                     return False
-                hostnames = {h for h, in cursor.fetchall() if h}
+                hostnames = {h for h, in cursor if h}
                 if hostnames and hostname not in hostnames:
                     return False
         return True

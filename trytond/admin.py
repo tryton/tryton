@@ -44,7 +44,7 @@ def run(options):
                 lang = Table('ir_lang')
                 cursor.execute(*lang.select(lang.code,
                         where=lang.translatable == Literal(True)))
-                lang = set([x[0] for x in cursor.fetchall()])
+                lang = set([x[0] for x in cursor])
             lang.add(main_lang)
         else:
             lang = set()

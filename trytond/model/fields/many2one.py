@@ -125,7 +125,7 @@ class Many2One(Field):
         right = getattr(Target, self.right).sql_column(table)
         cursor.execute(*table.select(left, right, where=red_sql))
         where = Or()
-        for l, r in cursor.fetchall():
+        for l, r in cursor:
             if operator.endswith('child_of'):
                 where.append((left >= l) & (right <= r))
             else:

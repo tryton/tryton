@@ -54,8 +54,7 @@ class TableHandler(TableHandlerInterface):
             temp_sql = sql.replace(table_name, '_temp_%s' % table_name)
             cursor.execute(temp_sql)
             cursor.execute('PRAGMA table_info("' + table_name + '")')
-            columns = ['"%s"' % column for _, column, _, _, _, _
-                    in cursor.fetchall()]
+            columns = ['"%s"' % column for _, column, _, _, _, _ in cursor]
             cursor.execute(('INSERT INTO "_temp_%s" '
                     '(' + ','.join(columns) + ') '
                     'SELECT ' + ','.join(columns)
@@ -131,7 +130,7 @@ class TableHandler(TableHandlerInterface):
         if columns:
             cursor.execute('PRAGMA table_info("' + self.table_name + '")')
             self._columns = {}
-            for _, column, type_, notnull, hasdef, _ in cursor.fetchall():
+            for _, column, type_, notnull, hasdef, _ in cursor:
                 column = re.sub(r'^\"|\"$', '', column)
                 match = re.match(r'(\w+)(\((.*?)\))?', type_)
                 if match:
@@ -153,7 +152,7 @@ class TableHandler(TableHandlerInterface):
                 cursor.execute('PRAGMA index_list("' + self.table_name + '")')
             except IndexError:  # There is sometimes IndexError
                 cursor.execute('PRAGMA index_list("' + self.table_name + '")')
-            self._indexes = [l[1] for l in cursor.fetchall()]
+            self._indexes = [l[1] for l in cursor]
 
     @property
     def _field2module(self):

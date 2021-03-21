@@ -1082,7 +1082,7 @@ class ModelSQL(ModelStorage):
             for sub_ids in grouped_slice(ids):
                 where = reduce_ids(field.sql_column(table), sub_ids)
                 cursor.execute(*table.select(table.id, where=where))
-                tree_ids[fname] += [x[0] for x in cursor.fetchall()]
+                tree_ids[fname] += [x[0] for x in cursor]
 
         has_translation = any(
             getattr(f, 'translate', False) and not hasattr(f, 'set')
@@ -1119,7 +1119,7 @@ class ModelSQL(ModelStorage):
                     Column(foreign_table, field_name), sub_ids)
                 cursor.execute(*foreign_table.select(foreign_table.id,
                         where=foreign_red_sql))
-                records = Model.browse([x[0] for x in cursor.fetchall()])
+                records = Model.browse([x[0] for x in cursor])
             else:
                 with transaction.set_context(active_test=False):
                     records = Model.search([(field_name, 'in', sub_ids)])
@@ -1375,7 +1375,7 @@ class ModelSQL(ModelStorage):
                         & (history.create_date == Null)
                         & (history.write_date
                             <= transaction.context['_datetime'])))
-                for deleted_id, delete_date in cursor.fetchall():
+                for deleted_id, delete_date in cursor:
                     history_date, _ = ids_history[deleted_id]
                     if isinstance(history_date, str):
                         strptime = datetime.datetime.strptime
@@ -1506,9 +1506,7 @@ class ModelSQL(ModelStorage):
 
         cursor.execute(*table.select(table.id,
                 where=Column(table, parent) == parent_id))
-        childs = cursor.fetchall()
-
-        for child_id, in childs:
+        for child_id, in cursor:
             right = cls._rebuild_tree(parent, child_id, right)
 
         field = cls._fields[parent]
@@ -1607,7 +1605,7 @@ class ModelSQL(ModelStorage):
                     cursor.execute(*table.select(*columns, where=where))
 
                     where = Literal(False)
-                    for row in cursor.fetchall():
+                    for row in cursor:
                         clause = table.id != row[0]
                         for column, operator, value in zip(
                                 sql.columns, sql.operators, row[1:]):

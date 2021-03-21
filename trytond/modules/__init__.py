@@ -210,7 +210,7 @@ def load_module_graph(graph, pool, update=None, lang=None):
         for sub_modules in tools.grouped_slice(modules):
             cursor.execute(*ir_module.select(ir_module.name, ir_module.state,
                     where=ir_module.name.in_(list(sub_modules))))
-            module2state.update(cursor.fetchall())
+            module2state.update(cursor)
         modules = set(modules)
 
         for node in graph:
@@ -391,7 +391,7 @@ def load_modules(
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=ir_module.state.in_(('activated', 'to upgrade',
                                 'to remove'))))
-            module_list = [name for (name,) in cursor.fetchall()]
+            module_list = [name for (name,) in cursor]
             graph = None
             while graph is None:
                 module_list += update
@@ -410,23 +410,22 @@ def load_modules(
             if update:
                 cursor.execute(*ir_module.select(ir_module.name,
                         where=(ir_module.state == 'to remove')))
-                fetchall = cursor.fetchall()
-                if fetchall:
-                    for (mod_name,) in fetchall:
-                        # TODO check if ressource not updated by the user
-                        cursor.execute(*ir_model_data.select(
+                for mod_name, in cursor:
+                    res = False
+                    # TODO check if ressource not updated by the user
+                    with transaction.connection.cursor() as cursor_delete:
+                        cursor_delete.execute(*ir_model_data.select(
                                 ir_model_data.model, ir_model_data.db_id,
                                 where=(ir_model_data.module == mod_name),
                                 order_by=ir_model_data.id.desc))
-                        for rmod, rid in cursor.fetchall():
+                        for rmod, rid in cursor_delete:
                             Model = pool.get(rmod)
                             Model.delete([Model(rid)])
-                        Transaction().connection.commit()
-                    cursor.execute(*ir_module.update([ir_module.state],
-                            ['not activated'],
-                            where=(ir_module.state == 'to remove')))
-                    Transaction().connection.commit()
-                    res = False
+                    transaction.connection.commit()
+                cursor.execute(*ir_module.update([ir_module.state],
+                        ['not activated'],
+                        where=(ir_module.state == 'to remove')))
+                transaction.connection.commit()
 
                 Module = pool.get('ir.module')
                 Module.update_list()

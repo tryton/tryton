@@ -589,7 +589,7 @@ def get_parent_language(code):
         cursor = Transaction().connection.cursor()
         lang = Table('ir_lang')
         cursor.execute(*lang.select(lang.code, lang.parent))
-        _parents.update(cursor.fetchall())
+        _parents.update(cursor)
     if _parents.get(code):
         return _parents[code]
     for sep in ['@', '_']:
