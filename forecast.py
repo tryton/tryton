@@ -419,7 +419,7 @@ class ForecastLine(ModelSQL, ModelView):
                             <= forecast.to_date)
                         & (line_move.id == Null),
                         group_by=move.product))
-                for product_id, quantity in cursor.fetchall():
+                for product_id, quantity in cursor:
                     line = product2line[product_id]
                     result[line.id] = Uom.compute_qty(line.product.default_uom,
                         quantity, line.uom)
