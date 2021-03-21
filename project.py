@@ -119,7 +119,7 @@ class Progress:
                     ).select(table.id, Sum(progress.progress),
                     where=where,
                     group_by=table.id))
-            invoiced_progress.update(dict(cursor.fetchall()))
+            invoiced_progress.update(dict(cursor))
 
             for work in sub_works:
                 delta = (
@@ -169,7 +169,7 @@ class Progress:
                     Sum(progress.progress * invoice_line.unit_price),
                     where=where,
                     group_by=table.id))
-            for work_id, amount in cursor.fetchall():
+            for work_id, amount in cursor:
                 if not isinstance(amount, Decimal):
                     amount = Decimal(str(amount))
                 work = ids2work[work_id]
@@ -181,7 +181,7 @@ class Progress:
                     condition=table.company == company.id
                     ).select(table.id, company.currency,
                     where=where))
-            work2currency.update(cursor.fetchall())
+            work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
@@ -254,7 +254,7 @@ class Timesheet:
             cursor.execute(*line.select(line.work, Sum(line.duration),
                     where=red_sql & (line.invoice_line == Null),
                     group_by=line.work))
-            for twork_id, duration in cursor.fetchall():
+            for twork_id, duration in cursor:
                 if duration:
                     # SQLite uses float for SUM
                     if not isinstance(duration, datetime.timedelta):
@@ -304,13 +304,13 @@ class Timesheet:
                     Sum(timesheet_line.duration * invoice_line.unit_price),
                     where=where,
                     group_by=table.id))
-            amounts.update(cursor.fetchall())
+            amounts.update(cursor)
 
             cursor.execute(*table.join(company,
                     condition=table.company == company.id
                     ).select(table.id, company.currency,
                     where=where))
-            work2currency.update(cursor.fetchall())
+            work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
