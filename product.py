@@ -56,7 +56,9 @@ class Template(metaclass=PoolMeta):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
@@ -66,11 +68,11 @@ class Template(metaclass=PoolMeta):
         if table.column_exist('delivery_time'):
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.delivery_time))
-            for id_, delivery_time in cursor.fetchall():
+            for id_, delivery_time in cursor:
                 if delivery_time is None:
                     continue
                 lead_time = datetime.timedelta(days=delivery_time)
-                cursor.execute(*sql_table.update(
+                update.execute(*sql_table.update(
                         [sql_table.lead_time],
                         [lead_time],
                         where=sql_table.id == id_))

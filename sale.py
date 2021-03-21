@@ -1790,7 +1790,7 @@ class OpenCustomer(Wizard):
         sale = Sale.__table__()
 
         cursor.execute(*sale.select(sale.party, group_by=sale.party))
-        customer_ids = [line[0] for line in cursor.fetchall()]
+        customer_ids = [line[0] for line in cursor]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', customer_ids)])
         wizard = Wizard(ModelData.get_id('sale', 'act_open_customer'))
