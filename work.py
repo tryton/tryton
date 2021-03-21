@@ -81,7 +81,7 @@ class Work(metaclass=PoolMeta):
                     ).select(table.id, Sum(line.cost_price * line.duration),
                     where=red_sql,
                     group_by=[table.id]))
-            for work_id, cost in cursor.fetchall():
+            for work_id, cost in cursor:
                 # SQLite stores timedelta as float
                 if not isinstance(cost, float):
                     cost = cost.total_seconds()
@@ -130,13 +130,13 @@ class Work(metaclass=PoolMeta):
                     condition=invoice_line.invoice == invoice.id
                     ).select(invoice_line.id, table.id,
                     where=where & ~invoice.state.in_(['draft', 'cancelled'])))
-            iline2work.update(cursor.fetchall())
+            iline2work.update(cursor)
 
             cursor.execute(*table.join(company,
                     condition=table.company == company.id
                     ).select(table.id, company.currency,
                     where=where))
-            work2currency.update(cursor.fetchall())
+            work2currency.update(cursor)
 
         currencies = Currency.browse(set(work2currency.values()))
         id2currency = {c.id: c for c in currencies}
