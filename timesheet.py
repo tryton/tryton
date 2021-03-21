@@ -20,7 +20,9 @@ class Line(metaclass=PoolMeta):
         pool = Pool()
         Employee = pool.get('company.employee')
 
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table__()
         table_h = cls.__table_handler__(module_name)
 
@@ -34,10 +36,10 @@ class Line(metaclass=PoolMeta):
                     where=(table.cost_price == 0)
                     & (table.employee != Null)
                     & (table.date != Null)))
-            for line_id, employee_id, date in cursor.fetchall():
+            for line_id, employee_id, date in cursor:
                 employee = Employee(employee_id)
                 cost_price = employee.compute_cost_price(date=date)
-                cursor.execute(*table.update(
+                update.execute(*table.update(
                         [table.cost_price],
                         [cost_price],
                         where=table.id == line_id))
