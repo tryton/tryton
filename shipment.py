@@ -1988,6 +1988,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
             help="Where the stock is located while it is in transit between "
             "the warehouses."),
         'on_change_with_transit_location')
+    warehouse = fields.Function(
+        fields.Many2One(
+            'stock.location', "Warehouse",
+            help="Where the stock is sent from."),
+        'on_change_with_warehouse')
     moves = fields.One2Many('stock.move', 'shipment', 'Moves',
         states={
             'readonly': (Eval('state').in_(['cancelled', 'assigned', 'done'])
@@ -2205,6 +2210,11 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
         Config = pool.get('stock.configuration')
         if self.planned_date != self.planned_start_date:
             return Config(1).get_multivalue('shipment_internal_transit').id
+
+    @fields.depends('from_location')
+    def on_change_with_warehouse(self, name=None):
+        if self.from_location and self.from_location.warehouse:
+            return self.from_location.warehouse.id
 
     @fields.depends('planned_date', 'from_location', 'to_location')
     def on_change_with_planned_start_date(self, pattern=None):
