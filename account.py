@@ -192,7 +192,7 @@ class Account(
                 & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
         account_sum = defaultdict(Decimal)
-        for account_id, value in cursor.fetchall():
+        for account_id, value in cursor:
             account_sum.setdefault(account_id, Decimal('0.0'))
             # SQLite uses float for SUM
             if not isinstance(value, Decimal):
@@ -246,7 +246,7 @@ class Account(
                 & (table.active == Literal(True)) & line_query,
                 group_by=table.id))
 
-        for row in cursor.fetchall():
+        for row in cursor:
             account_id = row[0]
             for i, name in enumerate(names, 1):
                 value = row[i]
@@ -393,7 +393,9 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
     def __register__(cls, module_name):
         pool = Pool()
         Account = pool.get('analytic_account.account')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
 
         # Migration from 3.4: use origin as the key for One2Many
         migration_3_4 = False
@@ -413,8 +415,8 @@ class AnalyticAccountEntry(ModelView, ModelSQL):
             cursor.execute(*account.select(account.id, account.root,
                     where=account.type != 'root'))
             entry = cls.__table__()
-            for account_id, root_id in cursor.fetchall():
-                cursor.execute(*entry.update(
+            for account_id, root_id in cursor:
+                update.execute(*entry.update(
                         columns=[entry.root],
                         values=[root_id],
                         where=entry.account == account_id))
@@ -478,7 +480,9 @@ class AnalyticMixin(object):
     def __register__(cls, module_name):
         pool = Pool()
         AccountEntry = pool.get('analytic.account.entry')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
 
         super(AnalyticMixin, cls).__register__(module_name)
 
@@ -489,8 +493,8 @@ class AnalyticMixin(object):
             table = cls.__table__()
             cursor.execute(*table.select(table.id, table.analytic_accounts,
                     where=table.analytic_accounts != Null))
-            for line_id, selection_id in cursor.fetchall():
-                cursor.execute(*entry.update(
+            for line_id, selection_id in cursor:
+                update.execute(*entry.update(
                         columns=[entry.origin],
                         values=['%s,%s' % (cls.__name__, line_id)],
                         where=entry.selection == selection_id))
