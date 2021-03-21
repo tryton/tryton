@@ -225,7 +225,7 @@ class Scenario(Workflow, ModelSQL, ModelView):
                         where=record.scenario == scenario.id)))
 
             records = []
-            for id_, in cursor.fetchall():
+            for id_, in cursor:
                 records.append(
                     Record(scenario=scenario, record=Model(id_)))
 
