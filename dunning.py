@@ -37,7 +37,9 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
 
@@ -47,9 +49,9 @@ class Level(sequence_ordered(), ModelSQL, ModelView):
         if table.column_exist('days'):
             cursor.execute(*sql_table.select(sql_table.id, sql_table.days,
                     where=sql_table.days != Null))
-            for id_, days in cursor.fetchall():
+            for id_, days in cursor:
                 overdue = datetime.timedelta(days)
-                cursor.execute(*sql_table.update(
+                update.execute(*sql_table.update(
                         [sql_table.overdue],
                         [overdue],
                         where=sql_table.id == id_))
