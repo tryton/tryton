@@ -107,7 +107,9 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
     def __register__(cls, module_name):
         pool = Pool()
         PriceList = pool.get('product.price_list')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         sql_table = cls.__table__()
         price_list = PriceList.__table__()
 
@@ -121,10 +123,10 @@ class Extra(DeactivableMixin, ModelSQL, ModelView, MatchMixin):
             ).select(sql_table.id, price_list.company,
                 where=sql_table.company == Null)
         cursor.execute(*query)
-        for extra_id, company_id in cursor.fetchall():
+        for extra_id, company_id in cursor:
             query = sql_table.update([sql_table.company], [company_id],
                 where=sql_table.id == extra_id)
-            cursor.execute(*query)
+            update.execute(*query)
 
     @staticmethod
     def default_company():
