@@ -323,7 +323,7 @@ class ProductSupplier(
         if table.column_exist('delivery_time'):
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.delivery_time))
-            for id_, delivery_time in cursor.fetchall():
+            for id_, delivery_time in cursor:
                 if delivery_time is None:
                     continue
                 lead_time = datetime.timedelta(days=delivery_time)

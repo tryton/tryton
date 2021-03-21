@@ -1802,7 +1802,7 @@ class OpenSupplier(Wizard):
 
         cursor.execute(*purchase.select(purchase.party,
                 group_by=purchase.party))
-        supplier_ids = [line[0] for line in cursor.fetchall()]
+        supplier_ids = [line[0] for line in cursor]
         action['pyson_domain'] = PYSONEncoder().encode(
             [('id', 'in', supplier_ids)])
         wizard = Wizard(ModelData.get_id('purchase', 'act_open_supplier'))
