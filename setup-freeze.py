@@ -88,7 +88,6 @@ for ns in required_gi_namespaces:
 
 if sys.platform == 'win32':
     required_libs.update([
-        'libcroco-0.6-3.dll',
         'libepoxy-0.dll',
         ])
     lib_path = os.getenv('PATH', os.defpath).split(os.pathsep)
