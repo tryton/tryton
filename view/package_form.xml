@@ -8,6 +8,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="parent"/>
     <field name="parent"/>
+    <label name="company"/>
+    <field name="company"/>
     <label name="shipment"/>
     <field name="shipment"/>
     <field name="moves" colspan="4" widget="many2many"/>

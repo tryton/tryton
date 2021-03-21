@@ -1,11 +1,15 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from sql import Cast, Literal
+from sql.functions import Substring, Position
+
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Id
 from trytond.report import Report
+from trytond.transaction import Transaction
 
 from .exceptions import PackageError
 
@@ -78,6 +82,7 @@ class Package(tree(), ModelSQL, ModelView):
     __name__ = 'stock.package'
     _rec_name = 'code'
     code = fields.Char('Code', select=True, readonly=True, required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
     type = fields.Many2One(
         'stock.package.type', "Type", required=True,
         states={
@@ -89,9 +94,13 @@ class Package(tree(), ModelSQL, ModelView):
         states={
             'readonly': Eval('state') == 'closed',
             },
-        depends=['state'])
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
+        depends=['state', 'company'])
     moves = fields.One2Many('stock.move', 'package', 'Moves',
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('shipment', '=', Eval('shipment')),
             ('to_location.type', 'in', ['customer', 'supplier']),
             ('state', '!=', 'cancelled'),
@@ -102,29 +111,61 @@ class Package(tree(), ModelSQL, ModelView):
         states={
             'readonly': Eval('state') == 'closed',
             },
-        depends=['shipment', 'state'])
+        depends=['company', 'shipment', 'state'])
     parent = fields.Many2One(
         'stock.package', "Parent", select=True, ondelete='CASCADE',
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('shipment', '=', Eval('shipment')),
             ],
         states={
             'readonly': Eval('state') == 'closed',
             },
-        depends=['shipment', 'state'])
+        depends=['company', 'shipment', 'state'])
     children = fields.One2Many(
         'stock.package', 'parent', 'Children',
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('shipment', '=', Eval('shipment')),
             ],
         states={
             'readonly': Eval('state') == 'closed',
             },
-        depends=['shipment', 'state'])
+        depends=['company', 'shipment', 'state'])
     state = fields.Function(fields.Selection([
                 ('open', "Open"),
                 ('closed', "Closed"),
                 ], "State"), 'on_change_with_state')
+
+    @classmethod
+    def __register__(cls, module):
+        pool = Pool()
+        table_h = cls.__table_handler__(module)
+        table = cls.__table__()
+        company_exist = table_h.column_exist('company')
+        cursor = Transaction().connection.cursor()
+
+        super().__register__(module)
+
+        # Migration from 5.8: add company
+        if not company_exist:
+            shipment_id = Cast(Substring(
+                    table.shipment,
+                    Position(',', table.shipment) + Literal(1)),
+                cls.id.sql_type().base)
+            for name in cls._get_shipment():
+                Shipment = pool.get(name)
+                shipment = Shipment.__table__()
+                value = (shipment
+                    .select(shipment.company,
+                        where=shipment.id == shipment_id))
+                cursor.execute(*table.update(
+                        [table.company], [value],
+                        where=table.shipment.like(name + ',%')))
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @staticmethod
     def _get_shipment():
@@ -180,10 +221,13 @@ class Move(metaclass=PoolMeta):
     __name__ = 'stock.move'
     package = fields.Many2One(
         'stock.package', "Package", select=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'readonly': Eval('state') == 'cancelled',
             },
-        depends=['state'])
+        depends=['company', 'state'])
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -205,15 +249,24 @@ class Move(metaclass=PoolMeta):
 class PackageMixin(object):
     __slots__ = ()
     packages = fields.One2Many('stock.package', 'shipment', 'Packages',
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ],
         states={
             'readonly': Eval('state') != 'picked',
-            })
+            },
+        depends=['company'])
     root_packages = fields.Function(fields.One2Many('stock.package',
             'shipment', 'Packages',
-            domain=[('parent', '=', None)],
+            domain=[
+                ('company', '=', Eval('company', -1)),
+                ('parent', '=', None),
+                ],
             states={
                 'readonly': Eval('state') != 'picked',
-                }), 'get_root_packages', setter='set_root_packages')
+                },
+            depends=['company']),
+        'get_root_packages', setter='set_root_packages')
 
     def get_root_packages(self, name):
         return [p.id for p in self.packages if not p.parent]

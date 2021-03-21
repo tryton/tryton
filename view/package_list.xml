@@ -5,5 +5,6 @@ this repository contains the full copyright notices and license terms. -->
     <field name="shipment" expand="1"/>
     <field name="rec_name" expand="1"/>
     <field name="type"/>
+    <field name="company"/>
     <field name="state"/>
 </tree>
