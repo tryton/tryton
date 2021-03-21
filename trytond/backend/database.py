@@ -181,6 +181,31 @@ class DatabaseInterface(object):
         "Return the expression to use for unaccentuated columns"
         return value
 
+    def has_similarity(self):
+        "Return if database supports similarity"
+        return False
+
+    def similarity(self, column, value):
+        raise NotImplementedError
+
+    def has_search_full_text(self):
+        "Return if database supports full text search"
+        return False
+
+    def format_full_text(self, *documents, language=None):
+        return '\n'.join(documents)
+
+    def format_full_text_query(self, query, language=None):
+        raise NotImplementedError
+
+    def search_full_text(self, document, query):
+        "Return the clause expression for searching document against query"
+        raise NotImplementedError
+
+    def rank_full_text(self, document, query, normalize=None):
+        "Return the expression that ranks query on document"
+        raise NotImplementedError
+
     @classmethod
     def has_sequence(cls):
         "Return if database supports sequence querying and assignation"

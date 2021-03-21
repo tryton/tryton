@@ -544,18 +544,14 @@ class FieldTranslate(Field):
         return query, from_.join(query, 'LEFT',
             condition=(query.res_id == res_id))
 
-    def convert_domain(self, domain, tables, Model):
+    def _get_translation_column(self, Model, name):
         from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
-        if not self.translate:
-            return super(FieldTranslate, self).convert_domain(
-                domain, tables, Model)
 
         table = join = Model.__table__()
         model = IrModel.__table__()
-        name, operator, value = domain
         language = Transaction().language
         column = None
         while language:
@@ -564,7 +560,16 @@ class FieldTranslate(Field):
                 Model, name, translation, model, table, join, language)
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
-        column = Coalesce(NullIf(column, ''), self.sql_column(table))
+        return table, join, column
+
+    def convert_domain(self, domain, tables, Model):
+        if not self.translate:
+            return super(FieldTranslate, self).convert_domain(
+                domain, tables, Model)
+        table, _ = tables[None]
+        name, operator, value = domain
+        model, join, column = self._get_translation_column(Model, name)
+        column = Coalesce(NullIf(column, ''), self.sql_column(model))
         column = self._domain_column(operator, column)
         Operator = SQL_OPERATORS[operator]
         assert name == self.name
@@ -574,20 +579,14 @@ class FieldTranslate(Field):
         elif isinstance(where, operators.NotIn) and not where.right:
             where = Literal(True)
         where = self._domain_add_null(column, operator, value, where)
-        return tables[None][0].id.in_(join.select(table.id, where=where))
+        return table.id.in_(join.select(model.id, where=where))
 
-    def convert_order(self, name, tables, Model):
+    def _get_translation_order(self, tables, Model, name):
         from trytond.ir.lang import get_parent_language
         pool = Pool()
         Translation = pool.get('ir.translation')
         IrModel = pool.get('ir.model')
-        if not self.translate:
-            return super(FieldTranslate, self).convert_order(name, tables,
-                Model)
-        assert name == self.name
-
         table, _ = tables[None]
-
         join = table
         language = Transaction().language
         column = None
@@ -616,7 +615,14 @@ class FieldTranslate(Field):
                     translation, _ = tables[key]['translation'][None]
             column = Coalesce(NullIf(column, ''), translation.value)
             language = get_parent_language(language)
+        return column
 
+    def convert_order(self, name, tables, Model):
+        if not self.translate:
+            return super().convert_order(name, tables, Model)
+        assert name == self.name
+        table, _ = tables[None]
+        column = self._get_translation_order(tables, Model, name)
         return [Coalesce(NullIf(column, ''), self.sql_column(table))]
 
     def definition(self, model, language):

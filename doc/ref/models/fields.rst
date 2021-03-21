@@ -268,7 +268,15 @@ Char
 
 A single line string field.
 
-:class:`Char` has two extra optional arguments:
+Search by similarity is used for the ``ilike`` operator and
+:meth:`~trytond.tools.is_full_text` value if the backend supports it.
+The similarity threshold is defined for the context key ``<model name>.<field
+name>.search_similarity`` (default value is ``0.3``).
+
+The field is ordered using the similarity with the context value from the key
+``<model name>.<field name>.order`` if it is set.
+
+:class:`Char` has some extra optional arguments:
 
 .. attribute:: Char.size
 
@@ -301,6 +309,26 @@ A single line string field.
 
     The database backend must supports unaccented search.
 
+.. attribute:: Char.search_full_text
+
+   If this attribute is set to True, ``ilike`` searches with an
+   :meth:`~trytond.tools.is_full_text` value use the full text search of the
+   backend.
+   The default value is False.
+
+   The context can be used to force the full text search behaviour.
+   This is done using the key ``<model name>.<field name>.search_full_text``.
+   If True, the full text search is used no matter what the value.
+   If False, no full text search is peformed.
+
+   The full text ranking value is added to the similarity if the
+   ``search_full_text`` is True.
+
+.. note::
+
+   The database backend must support full text search otherwise ``ilike`` is
+   always used.
+
 Text
 ----
 
@@ -308,7 +336,7 @@ Text
 
 A multi line string field.
 
-:class:`Text` has two extra optional arguments:
+:class:`Text` has four extra optional arguments:
 
 .. attribute:: Text.size
 
@@ -317,6 +345,25 @@ A multi line string field.
 .. attribute:: Text.translate
 
     Same as :attr:`Char.translate`
+
+.. attribute:: Text.search_unaccented
+
+   Same as :attr:`Char.search_unaccented`
+
+.. attribute:: Text.search_full_text
+
+   Same as :attr:`Char.search_full_text`
+   The default value is True.
+
+FullText
+--------
+
+.. class:: FullText(\**options)
+
+An internal field to store a list of parsed strings ordered by weights.
+The field is ordered using the full text ranking with the context value from
+the key `<model name>.<field name>.order`` if it is set.
+
 
 Float
 -----

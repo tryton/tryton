@@ -73,6 +73,9 @@ class Lang(DeactivableMixin, ModelSQL, ModelView):
     p_sep_by_space = fields.Boolean('Positive Separate by Space')
     n_sep_by_space = fields.Boolean('Negative Separate by Space')
 
+    pg_text_search = fields.Char(
+        "PostgreSQL Text Search Configuration", readonly=True)
+
     _lang_cache = Cache('ir.lang')
     _code_cache = Cache('ir.lang.code', context=False)
 

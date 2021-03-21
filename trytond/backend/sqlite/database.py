@@ -321,6 +321,7 @@ class Database(DatabaseInterface):
         'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP'),
         'BIGINT': SQLType('INTEGER', 'INTEGER'),
         'BOOL': SQLType('BOOLEAN', 'BOOLEAN'),
+        'FULLTEXT': SQLType('TEXT', 'TEXT'),
         }
 
     def __new__(cls, name=_default_name):

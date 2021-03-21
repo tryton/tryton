@@ -221,6 +221,20 @@ def escape_wildcard(string, wildcards='%_', escape='\\'):
     return string
 
 
+def unescape_wildcard(string, wildcards='%_', escape='\\'):
+    for wildcard in wildcards + escape:
+        string = string.replace(escape + wildcard, wildcard)
+    return string
+
+
+def is_full_text(value, escape='\\'):
+    escaped = value.strip('%')
+    escaped = escaped.replace(escape + '%', '').replace(escape + '_', '')
+    if '%' in escaped or '_' in escaped:
+        return False
+    return value.startswith('%') == value.endswith('%')
+
+
 _slugify_strip_re = re.compile(r'[^\w\s-]')
 _slugify_hyphenate_re = re.compile(r'[-\s]+')
 

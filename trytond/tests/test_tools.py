@@ -13,7 +13,7 @@ import sql.operators
 from trytond.tools import (
     reduce_ids, reduce_domain, decimal_, is_instance_method, file_open,
     strip_wildcard, lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard, firstline)
+    escape_wildcard, unescape_wildcard, is_full_text, firstline)
 from trytond.tools.string_ import StringPartitioned, LazyString
 from trytond.tools.domain_inversion import (
     domain_inversion, parse, simplify, merge, concat, unique_value,
@@ -200,6 +200,24 @@ class ToolsTestCase(unittest.TestCase):
         self.assertEqual(
             escape_wildcard('foo%bar_baz\\'),
             'foo\\%bar\\_baz\\\\')
+
+    def test_unescape_wildcard(self):
+        "Test unescape_wildcard"
+        self.assertEqual(
+            unescape_wildcard('foo\\%bar\\_baz\\\\'),
+            'foo%bar_baz\\')
+
+    def test_is_full_text(self):
+        "Test is_full_text"
+        for value, result in [
+                ('foo', True),
+                ('%foo bar%', True),
+                ('foo%', False),
+                ('foo_bar', False),
+                ('foo\\_bar', True),
+                ]:
+            with self.subTest(value=value):
+                self.assertEqual(is_full_text(value), result)
 
     def test_slugify(self):
         "Test slugify"

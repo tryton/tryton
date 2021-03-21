@@ -842,6 +842,42 @@ def create_db(name=DB_NAME, lang='en'):
             Module.update_list()
 
 
+class ExtensionTestCase(unittest.TestCase):
+    extension = None
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls._activate_extension()
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+        cls._deactivate_extension()
+
+    @classmethod
+    @with_transaction()
+    def _activate_extension(cls):
+        connection = Transaction().connection
+        cursor = connection.cursor()
+        cursor.execute('CREATE EXTENSION "%s"' % cls.extension)
+        connection.commit()
+        cls._clear_cache()
+
+    @classmethod
+    @with_transaction()
+    def _deactivate_extension(cls):
+        connection = Transaction().connection
+        cursor = connection.cursor()
+        cursor.execute('DROP EXTENSION "%s"' % cls.extension)
+        connection.commit()
+        cls._clear_cache()
+
+    @classmethod
+    def _clear_cache(cls):
+        backend.Database._has_proc.clear()
+
+
 def drop_db(name=DB_NAME):
     if db_exist(name):
         database = backend.Database(name)

@@ -7,7 +7,7 @@ from .field import (
 from .boolean import Boolean
 from .integer import Integer, BigInteger
 from .char import Char
-from .text import Text
+from .text import Text, FullText
 from .float import Float
 from .numeric import Numeric
 from .date import Date, Timestamp, DateTime, Time, TimeDelta
@@ -25,6 +25,7 @@ from .multiselection import MultiSelection
 __all__ = [
     depends, with_inactive_records, SQL_OPERATORS, on_change_result,
     get_eval_fields, states_validate, domain_validate, context_validate, Field,
-    Boolean, Integer, BigInteger, Char, Text, Float, Numeric, Date, Timestamp,
-    DateTime, Time, TimeDelta, Binary, Selection, Reference, Many2One,
-    One2Many, Many2Many, Function, MultiValue, One2One, Dict, MultiSelection]
+    Boolean, Integer, BigInteger, Char, Text, FullText, Float, Numeric, Date,
+    Timestamp, DateTime, Time, TimeDelta, Binary, Selection, Reference,
+    Many2One, One2Many, Many2Many, Function, MultiValue, One2One, Dict,
+    MultiSelection]

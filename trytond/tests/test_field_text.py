@@ -3,10 +3,12 @@
 # this repository contains the full copyright notices and license terms.
 import unittest
 
+from trytond import backend
 from trytond.model.exceptions import (
     RequiredValidationError, SizeValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.transaction import Transaction
 
 
 class CommonTestCaseMixin:
@@ -244,24 +246,72 @@ class CommonTestCaseMixin:
         text, = Text.create([{
                     'text': "Bar",
                     }])
-
-        texts_bar = Text.search([
-                ('text', 'ilike', "bar"),
-                ])
-        texts_b = Text.search([
-                ('text', 'ilike', "b%"),
-                ])
-        texts_foo = Text.search([
-                ('text', 'ilike', "foo"),
-                ])
-        texts_f = Text.search([
-                ('text', 'ilike', "f%"),
-                ])
+        with Transaction().set_context({
+                    '%s.text.search_full_text' % Text.__name__: False,
+                }):
+            texts_bar = Text.search([
+                    ('text', 'ilike', "bar"),
+                    ])
+            texts_b = Text.search([
+                    ('text', 'ilike', "b%"),
+                    ])
+            texts_foo = Text.search([
+                    ('text', 'ilike', "foo"),
+                    ])
+            texts_f = Text.search([
+                    ('text', 'ilike', "f%"),
+                    ])
 
         self.assertListEqual(texts_bar, [text])
         self.assertListEqual(texts_b, [text])
         self.assertListEqual(texts_foo, [])
         self.assertListEqual(texts_f, [])
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not have full text search")
+    @with_transaction()
+    def test_search_full_text(self):
+        "Test search full text"
+        Text = self.Text()
+        fat_cat, = Text.create([{
+                    'text': "a fat cat sat on a mat and ate a fat rat",
+                    }])
+        sad_cat, = Text.create([{
+                    'text': "a sad cat sat",
+                    }])
+
+        for value, result in [
+                ("Fat rat", [fat_cat]),
+                ('"sad cat" or "fat rat"', [fat_cat, sad_cat]),
+                ]:
+            with self.subTest(value=value):
+                self.assertListEqual(Text.search([
+                            ('text', 'ilike', value),
+                            ]), result)
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not have full text search")
+    @with_transaction()
+    def test_search_full_text_order(self):
+        "Test order search full text"
+        Text = self.Text()
+        sad_cat, = Text.create([{
+                    'text': "a sad cat sat",
+                    }])
+        dog, = Text.create([{
+                    'text': "a dog",
+                    }])
+        fat_cat, = Text.create([{
+                    'text': "a fat cat sat on a mat and ate a fat rat",
+                    }])
+
+        with Transaction().set_context({
+                    '%s.text.order' % Text.__name__: (
+                        '"sad cat" or "fat rat"'),
+                    }):
+            self.assertListEqual(
+                Text.search([], order=[('text', 'DESC')]),
+                [fat_cat, sad_cat, dog])
 
     @with_transaction()
     def test_search_not_like(self):
@@ -297,18 +347,21 @@ class CommonTestCaseMixin:
                     'text': "Bar",
                     }])
 
-        texts_bar = Text.search([
-                ('text', 'not ilike', "bar"),
-                ])
-        texts_b = Text.search([
-                ('text', 'not ilike', "b%"),
-                ])
-        texts_foo = Text.search([
-                ('text', 'not ilike', "foo"),
-                ])
-        texts_f = Text.search([
-                ('text', 'not ilike', "f%"),
-                ])
+        with Transaction().set_context({
+                    '%s.text.search_full_text' % Text.__name__: False,
+                    }):
+            texts_bar = Text.search([
+                    ('text', 'not ilike', "bar"),
+                    ])
+            texts_b = Text.search([
+                    ('text', 'not ilike', "b%"),
+                    ])
+            texts_foo = Text.search([
+                    ('text', 'not ilike', "foo"),
+                    ])
+            texts_f = Text.search([
+                    ('text', 'not ilike', "f%"),
+                    ])
 
         self.assertListEqual(texts_bar, [])
         self.assertListEqual(texts_b, [])
@@ -458,9 +511,148 @@ class FieldTextTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
         return Pool().get('test.text_translate')
 
 
+class FieldFullTextTestCase(unittest.TestCase):
+    "Test Field FullText"
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+
+    @with_transaction()
+    def test_create(self):
+        "Test create full text"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        record, = Model.create([{
+                    'full_text': "a fat cat sat on a mat and ate a fat rat",
+                    }])
+
+        self.assertTrue(record.full_text)
+
+    @with_transaction()
+    def test_create_list(self):
+        "Test create full text with a list"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        record, = Model.create([{
+                    'full_text': [
+                        "The Fat Cats",
+                        "a fat cat sat on a mat and ate a fat rat",
+                        ],
+                    }])
+
+        self.assertTrue(record.full_text)
+
+    @with_transaction()
+    def test_search(self):
+        "Test search full text"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        fat_cat, sad_cat = Model.create([{
+                    'full_text': "a fat cat sat on a mat and ate a fat rat",
+                    }, {
+                    'full_text': "a sad cat sat",
+                    }])
+
+        for clause, result, neg_result in [
+                ('fat', [fat_cat], [sad_cat]),
+                ('cat', [fat_cat, sad_cat], []),
+                ]:
+            with self.subTest(clause=clause):
+                self.assertListEqual(Model.search([
+                            ('full_text', 'ilike', clause),
+                            ]), result)
+                self.assertListEqual(Model.search([
+                            ('full_text', 'not ilike', clause),
+                            ]), neg_result)
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not have full text search")
+    @with_transaction()
+    def test_search_full_text(self):
+        "Test search full text"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        fat_cat, sad_cat = Model.create([{
+                    'full_text': "a fat cat sat on a mat and ate a fat rat",
+                    }, {
+                    'full_text': "a sad cat sat",
+                    }])
+
+        for clause, result in [
+                ("Fat rat", [fat_cat]),
+                ('"sad cat" or "fat rat"', [fat_cat, sad_cat]),
+                ]:
+            with self.subTest(clause=clause):
+                self.assertListEqual(Model.search([
+                            ('full_text', 'ilike', clause),
+                            ]), result)
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not have full text search")
+    @with_transaction()
+    def test_search_full_text_filter(self):
+        "Test search full text"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        fat_cat, sad_cat = Model.create([{
+                    'full_text': "a fat cat sat on a mat and ate a fat rat",
+                    }, {
+                    'full_text': "a sad cat sat",
+                    }])
+
+        for clause, result in [
+                ("Fat rat", [fat_cat]),
+                ('"sad cat" or "fat rat"', [fat_cat, sad_cat]),
+                ]:
+            with self.subTest(clause=clause):
+                with Transaction().set_context({
+                            '%s.full_text.order' % Model.__name__: clause,
+                            }):
+                    self.assertListEqual(Model.search([
+                                ('full_text', '>', 0.01),
+                                ]), result)
+
+    @unittest.skipIf(backend.name == 'sqlite',
+        "SQLite does not have full text search")
+    @with_transaction()
+    def test_search_full_text_order(self):
+        "Test order full text"
+        pool = Pool()
+        Model = pool.get('test.text_full')
+
+        sad_cat, fat_cat, dog = Model.create([{
+                    'full_text': [
+                        None,
+                        "a fat cat sat on a mat and ate a fat rat",
+                        ],
+                    }, {
+                    'full_text': [
+                        "The Fat Cats",
+                        "a fat cat sat on a mat and ate a fat rat",
+                        ]
+                    }, {
+                    'full_text': "a dog",
+                    }])
+
+        with Transaction().set_context({
+                    '%s.full_text.order' % Model.__name__: (
+                        '"sad cat" or "fat rat"'),
+                    }):
+            self.assertListEqual(
+                Model.search([], order=[('full_text', 'DESC')]),
+                [fat_cat, sad_cat, dog])
+
+
 def suite():
     suite_ = unittest.TestSuite()
     loader = unittest.TestLoader()
     suite_.addTests(loader.loadTestsFromTestCase(FieldTextTestCase))
     suite_.addTests(loader.loadTestsFromTestCase(FieldTextTranslatedTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldFullTextTestCase))
     return suite_

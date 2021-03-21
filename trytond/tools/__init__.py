@@ -9,14 +9,15 @@ from .misc import (
     file_open, get_smtp_server, reduce_ids, reduce_domain,
     grouped_slice, is_instance_method, resolve, strip_wildcard,
     lstrip_wildcard, rstrip_wildcard, slugify, sortable_values,
-    escape_wildcard, sql_pairing, firstline)
+    escape_wildcard, unescape_wildcard, is_full_text, sql_pairing, firstline)
 from .decimal_ import decistmt
 
 __all__ = ['file_open', 'get_smtp_server', 'reduce_ids',
     'reduce_domain', 'grouped_slice', 'is_instance_method', 'resolve',
     'strip_wildcard', 'lstrip_wildcard', 'rstrip_wildcard', 'slugify',
     'decistmt', 'ClassProperty', 'cursor_dict', 'cached_property',
-    'sortable_values', 'escape_wildcard', 'sql_pairing', 'firstline']
+    'sortable_values', 'escape_wildcard', 'unescape_wildcard', 'is_full_text',
+    'sql_pairing', 'firstline']
 
 
 class ClassProperty(property):

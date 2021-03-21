@@ -8,6 +8,7 @@ import urllib.parse
 import json
 from datetime import datetime
 from decimal import Decimal
+from itertools import chain, repeat
 from threading import RLock
 
 try:
@@ -31,9 +32,10 @@ from psycopg2 import OperationalError as DatabaseOperationalError
 from psycopg2 import ProgrammingError
 from psycopg2.extras import register_default_json, register_default_jsonb
 
-from sql import Flavor, Cast, For
+from sql import Flavor, Cast, For, Table
+from sql.conditionals import Coalesce
 from sql.functions import Function
-from sql.operators import BinaryOperator
+from sql.operators import BinaryOperator, Concat
 
 from trytond.backend.database import DatabaseInterface, SQLType
 from trytond.config import config, parse_uri
@@ -78,6 +80,55 @@ class ForSkipLocked(For):
 class Unaccent(Function):
     __slots__ = ()
     _function = 'unaccent'
+
+
+class Similarity(Function):
+    __slots__ = ()
+    _function = 'similarity'
+
+
+class Match(BinaryOperator):
+    __slots__ = ()
+    _operator = '@@'
+
+
+class ToTsvector(Function):
+    __slots__ = ()
+    _function = 'to_tsvector'
+
+
+class Setweight(Function):
+    __slots__ = ()
+    _function = 'setweight'
+
+
+class TsQuery(Function):
+    __slots__ = ()
+
+
+class ToTsQuery(TsQuery):
+    __slots__ = ()
+    _function = 'to_tsquery'
+
+
+class PlainToTsQuery(TsQuery):
+    __slots__ = ()
+    _function = 'plainto_tsquery'
+
+
+class PhraseToTsQuery(TsQuery):
+    __slots__ = ()
+    _function = 'phraseto_tsquery'
+
+
+class WebsearchToTsQuery(TsQuery):
+    __slots__ = ()
+    _function = 'websearch_to_tsquery'
+
+
+class TsRank(Function):
+    __slots__ = ()
+    _function = 'ts_rank'
 
 
 class AdvisoryLock(Function):
@@ -141,7 +192,8 @@ class Database(DatabaseInterface):
     _current_user = None
     _has_returning = None
     _has_select_for_skip_locked = None
-    _has_unaccent = {}
+    _has_proc = defaultdict(dict)
+    _search_full_text_languages = defaultdict(dict)
     flavor = Flavor(ilike=True)
 
     TYPES_MAPPING = {
@@ -151,6 +203,7 @@ class Database(DatabaseInterface):
         'BLOB': SQLType('BYTEA', 'BYTEA'),
         'DATETIME': SQLType('TIMESTAMP', 'TIMESTAMP(0)'),
         'TIMESTAMP': SQLType('TIMESTAMP', 'TIMESTAMP(6)'),
+        'FULLTEXT': SQLType('TSVECTOR', 'TSVECTOR'),
         }
 
     def __new__(cls, name=_default_name):
@@ -468,21 +521,117 @@ class Database(DatabaseInterface):
     def has_sequence(cls):
         return True
 
-    def has_unaccent(self):
-        if self.name in self._has_unaccent:
-            return self._has_unaccent[self.name]
+    def has_proc(self, name):
+        if name in self._has_proc[self.name]:
+            return self._has_proc[self.name][name]
         connection = self.get_connection()
-        unaccent = False
+        result = False
         try:
             cursor = connection.cursor()
             cursor.execute(
                 "SELECT 1 FROM pg_proc WHERE proname=%s",
-                (Unaccent._function,))
-            unaccent = bool(cursor.rowcount)
+                (name,))
+            result = bool(cursor.rowcount)
         finally:
             self.put_connection(connection)
-        self._has_unaccent[self.name] = unaccent
-        return unaccent
+        self._has_proc[self.name][name] = result
+        return result
+
+    def has_unaccent(self):
+        return self.has_proc(Unaccent._function)
+
+    def has_similarity(self):
+        return self.has_proc(Similarity._function)
+
+    def similarity(self, column, value):
+        return Similarity(column, value)
+
+    def has_search_full_text(self):
+        return True
+
+    def _search_full_text_language(self, language):
+        languages = self._search_full_text_languages[self.name]
+        if language not in languages:
+            lang = Table('ir_lang')
+            connection = self.get_connection()
+            try:
+                cursor = connection.cursor()
+                cursor.execute(*lang.select(
+                        Coalesce(lang.pg_text_search, 'simple'),
+                        where=lang.code == language,
+                        limit=1))
+                config_name, = cursor.fetchone()
+            finally:
+                self.put_connection(connection)
+            languages[language] = config_name
+        else:
+            config_name = languages[language]
+        return config_name
+
+    def format_full_text(self, *documents, language=None):
+        size = max(len(documents) // 4, 1)
+        if len(documents) > 1:
+            weights = chain(
+                ['A'] * size, ['B'] * size, ['C'] * size, repeat('D'))
+        else:
+            weights = [None]
+        expression = None
+        if language:
+            config_name = self._search_full_text_language(language)
+        else:
+            config_name = None
+        for document, weight in zip(documents, weights):
+            if not document:
+                continue
+            if config_name:
+                ts_vector = ToTsvector(config_name, document)
+            else:
+                ts_vector = ToTsvector('simple', document)
+            if weight:
+                ts_vector = Setweight(ts_vector, weight)
+            if expression is None:
+                expression = ts_vector
+            else:
+                expression = Concat(expression, ts_vector)
+        return expression
+
+    def format_full_text_query(self, query, language=None):
+        connection = self.get_connection()
+        try:
+            version = self.get_version(connection)
+        finally:
+            self.put_connection(connection)
+        if version >= (11, 0):
+            ToTsQuery = WebsearchToTsQuery
+        else:
+            ToTsQuery = PlainToTsQuery
+        if language:
+            config_name = self._search_full_text_language(language)
+            if not isinstance(query, TsQuery):
+                query = ToTsQuery(config_name, query)
+        else:
+            if not isinstance(query, TsQuery):
+                query = ToTsQuery(query)
+        return query
+
+    def search_full_text(self, document, query):
+        return Match(document, query)
+
+    def rank_full_text(self, document, query, normalize=None):
+        # TODO: weights and cover density
+        norm_int = 0
+        if normalize:
+            values = {
+                'document log': 1,
+                'document': 2,
+                'mean': 4,
+                'word': 8,
+                'word log': 16,
+                'rank': 32,
+                }
+            for norm in normalize:
+                norm_int |= values.get(norm, 0)
+        return TsRank(document, query, norm_int)
 
     def sql_type(self, type_):
         if type_ in self.TYPES_MAPPING:

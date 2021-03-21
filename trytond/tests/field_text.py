@@ -44,6 +44,12 @@ class TextTranslate(ModelSQL):
             required=False, translate=True)
 
 
+class FullText(ModelSQL):
+    "FullText"
+    __name__ = 'test.text_full'
+    full_text = fields.FullText("Full Text")
+
+
 def register(module):
     Pool.register(
         Text,
@@ -51,4 +57,5 @@ def register(module):
         TextRequired,
         TextSize,
         TextTranslate,
+        FullText,
         module=module, type_='model')

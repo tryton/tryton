@@ -2,7 +2,10 @@
 # this repository contains the full copyright notices and license terms.
 import warnings
 
+from sql.operators import Not
+
 from trytond.rpc import RPC
+from trytond.tools import unescape_wildcard, is_full_text
 from trytond.transaction import Transaction
 from .field import Field, FieldTranslate, size_validate
 
@@ -14,6 +17,8 @@ class Char(FieldTranslate):
     _type = 'char'
     _py_type = str
     forbidden_chars = '\t\n\r\x0b\x0c'
+    search_unaccented = True
+    search_full_text = False
 
     def __init__(self, string='', size=None, help='', required=False,
             readonly=False, domain=None, states=None, translate=False,
@@ -37,7 +42,6 @@ class Char(FieldTranslate):
         self.translate = translate
         self.__size = None
         self.size = size
-        self.search_unaccented = True
     __init__.__doc__ += Field.__init__.__doc__
 
     def _get_size(self):
@@ -74,6 +78,103 @@ class Char(FieldTranslate):
             database = Transaction().database
             value = database.unaccent(value)
         return value
+
+    def convert_domain(self, domain, tables, Model):
+        transaction = Transaction()
+        context = transaction.context
+        database = transaction.database
+        expression = super().convert_domain(domain, tables, Model)
+        name, operator, value = domain
+        if operator.endswith('ilike'):
+            table, _ = tables[None]
+            if self.translate:
+                language = transaction.language
+                model, join, column = self._get_translation_column(
+                    Model, name)
+            else:
+                language = None
+                column = self.sql_column(table)
+            column = self._domain_column(operator, column)
+
+            if database.has_similarity() and is_full_text(value):
+                threshold = context.get(
+                    '%s.%s.search_similarity' % (Model.__name__, name),
+                    context.get('search_similarity', 0.3))
+                sim_value = unescape_wildcard(value)
+                sim_value = self._domain_value(operator, sim_value)
+                expression = (
+                    database.similarity(column, sim_value) >= threshold)
+                if operator.startswith('not'):
+                    expression = Not(expression)
+
+            key = '%s.%s.search_full_text' % (Model.__name__, name)
+            if ((self.search_full_text or context.get(key))
+                    and context.get(key, True)
+                    and database.has_search_full_text()):
+                if context.get(key) or is_full_text(value):
+                    fts_column = database.format_full_text(
+                        column, language=language)
+                    fts_value = value
+                    if key not in context:
+                        fts_value = unescape_wildcard(fts_value)
+                    fts_value = self._domain_value(operator, fts_value)
+                    fts_value = database.format_full_text_query(
+                        fts_value, language=language)
+                    fts = database.search_full_text(fts_column, fts_value)
+                    if operator.startswith('not'):
+                        fts = Not(fts)
+                    if self.translate:
+                        fts = table.id.in_(
+                            join.select(model.id, where=fts))
+                    if database.has_similarity() and is_full_text(value):
+                        if operator.startswith('not'):
+                            expression |= fts
+                        else:
+                            expression &= fts
+                    else:
+                        expression = fts
+        return expression
+
+    def convert_order(self, name, tables, Model):
+        method = getattr(Model, 'order_%s' % name, None)
+        if method:
+            return method(tables)
+        transaction = Transaction()
+        context = transaction.context
+        database = transaction.database
+        key = '%s.%s.order' % (Model.__name__, name)
+        value = context.get(key)
+        order = super().convert_order(name, tables, Model)
+        if value:
+            expression = None
+            table, _ = tables[None]
+            if self.translate:
+                language = transaction.language
+                column = self._get_translation_order(tables, Model, name)
+            else:
+                language = None
+                column = self.sql_column(table)
+            column = self._domain_column('ilike', column)
+            if database.has_similarity():
+                sim_value = unescape_wildcard(value)
+                sim_value = self._domain_value('ilike', sim_value)
+                expression = database.similarity(column, sim_value)
+            key = '%s.%s.search_full_text' % (Model.__name__, name)
+            if ((self.search_full_text or context.get(key))
+                    and database.has_search_full_text()):
+                column = database.format_full_text(column, language=language)
+                value = self._domain_value('ilike', value)
+                value = database.format_full_text_query(
+                    value, language=language)
+                rank = database.rank_full_text(
+                    column, value, normalize=['rank'])
+                if expression:
+                    expression += rank
+                else:
+                    expression = rank
+            if expression:
+                order = [expression]
+        return order
 
     def definition(self, model, language):
         definition = super().definition(model, language)

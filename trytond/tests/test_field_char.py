@@ -10,6 +10,7 @@ from trytond.model.exceptions import (
     RequiredValidationError, ForbiddenCharValidationError)
 from trytond.pool import Pool
 from trytond.tests.test_tryton import activate_module, with_transaction
+from trytond.tests.test_tryton import ExtensionTestCase
 from trytond.transaction import Transaction
 
 
@@ -494,44 +495,11 @@ class FieldCharTranslatedTestCase(unittest.TestCase, CommonTestCaseMixin):
             self.assertEqual(char.char, "bar")
 
 
-class UnaccentedTestCase(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls._activate_extension()
-
-    @classmethod
-    def tearDownClass(cls):
-        super().tearDownClass()
-        cls._deactivate_extension()
-
-    @classmethod
-    @with_transaction()
-    def _activate_extension(cls):
-        connection = Transaction().connection
-        cursor = connection.cursor()
-        cursor.execute('CREATE EXTENSION "unaccent"')
-        connection.commit()
-        cls._clear_unaccent_cache()
-
-    @classmethod
-    @with_transaction()
-    def _deactivate_extension(cls):
-        connection = Transaction().connection
-        cursor = connection.cursor()
-        cursor.execute('DROP EXTENSION "unaccent"')
-        connection.commit()
-        cls._clear_unaccent_cache()
-
-    @classmethod
-    def _clear_unaccent_cache(cls):
-        backend.Database._has_unaccent.clear()
-
-
 @unittest.skipUnless(backend.name == 'postgresql',
     "unaccent works only on postgresql")
-class FieldCharUnaccentedTestCase(UnaccentedTestCase):
+class FieldCharUnaccentedTestCase(ExtensionTestCase):
     "Test Field Char with unaccented searches"
+    extension = 'unaccent'
 
     @classmethod
     def setUpClass(cls):
@@ -607,10 +575,55 @@ class FieldCharUnaccentedTestCase(UnaccentedTestCase):
             self.assertListEqual(chars_ecole, [char])
 
 
+@unittest.skipUnless(backend.name == 'postgresql',
+    "similarity works only on postgresql")
+class FieldCharSimilarityTestCase(ExtensionTestCase):
+    "Test Field Char with similarity searches"
+    extension = 'pg_trgm'
+
+    @classmethod
+    def setUpClass(cls):
+        activate_module('tests')
+        super().setUpClass()
+
+    @with_transaction()
+    def test_search(self):
+        "Test search"
+        pool = Pool()
+        Model = pool.get('test.char')
+        record1, record2 = Model.create([{
+                    'char': "word",
+                    }, {
+                    'char': "Foo",
+                    }])
+
+        self.assertListEqual(Model.search([
+                    ('char', 'ilike', 'two words'),
+                    ]), [record1])
+
+    @with_transaction()
+    def test_order(self):
+        "Test order"
+        pool = Pool()
+        Model = pool.get('test.char')
+        record1, record2 = Model.create([{
+                    'char': "word",
+                    }, {
+                    'char': "Foo",
+                    }])
+        with Transaction().set_context({
+                    '%s.char.order' % Model.__name__: 'foo bar',
+                    }):
+            self.assertListEqual(Model.search([
+                        ], order=[('char', 'DESC')]),
+                [record2, record1])
+
+
 def suite():
     suite_ = unittest.TestSuite()
     loader = unittest.TestLoader()
     suite_.addTests(loader.loadTestsFromTestCase(FieldCharTestCase))
     suite_.addTests(loader.loadTestsFromTestCase(FieldCharTranslatedTestCase))
     suite_.addTests(loader.loadTestsFromTestCase(FieldCharUnaccentedTestCase))
+    suite_.addTests(loader.loadTestsFromTestCase(FieldCharSimilarityTestCase))
     return suite_
