@@ -656,7 +656,7 @@ class Mandate(Workflow, ModelSQL, ModelView):
             cursor.execute(*payment.select(payment.sepa_mandate, Literal(True),
                     where=red_sql,
                     group_by=payment.sepa_mandate))
-            has_payments.update(cursor.fetchall())
+            has_payments.update(cursor)
 
         return {'has_payments': has_payments}
 
@@ -768,7 +768,9 @@ class Message(Workflow, ModelSQL, ModelView):
     def __register__(cls, module_name):
         pool = Pool()
         Group = pool.get('account.payment.group')
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table__()
 
         super(Message, cls).__register__(module_name)
@@ -780,8 +782,8 @@ class Message(Workflow, ModelSQL, ModelView):
                 group = Group.__table__()
                 cursor.execute(*group.select(
                         group.id, group.sepa_message, group.company))
-                for group_id, message, company_id in cursor.fetchall():
-                    cursor.execute(*table.insert(
+                for group_id, message, company_id in cursor:
+                    update.execute(*table.insert(
                             [table.message, table.type, table.company,
                                 table.origin, table.state],
                             [[
