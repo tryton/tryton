@@ -23,6 +23,9 @@ Product
     `Cost History </projects/modules-product-cost-history/en/latest>`_
         Historize the cost.
 
+    `Cost Warehouse </projects/modules-product-cost-warehouse/en/latest>`_
+        Calculate cost prices per warehouse.
+
     `Measurements </projects/modules-product-measurements/en/latest>`_
         Adds measurements to products.
 
