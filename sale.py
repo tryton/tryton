@@ -131,7 +131,7 @@ class PromotionCouponNumber(DeactivableMixin, ModelSQL, ModelView):
         for sub_numbers in grouped_slice(numbers):
             query.where = reduce_ids(table.id, map(int, sub_numbers))
             cursor.execute(*query)
-            result.update(dict(cursor.fetchall()))
+            result.update(dict(cursor))
         return result
 
     @classmethod
