@@ -59,7 +59,7 @@ class ShortenedURL(ModelSQL, ModelView):
                     access.url, Count(access.id),
                     where=reduce_ids(access.url, sub_ids),
                     group_by=[access.url]))
-            counts.update(cursor.fetchall())
+            counts.update(cursor)
         return counts
 
     @classmethod
