@@ -8,6 +8,10 @@ class AssignError(UserError):
     pass
 
 
+class MoveValidationError(ValidationError):
+    pass
+
+
 class LocationValidationError(ValidationError):
     pass
 

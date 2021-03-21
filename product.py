@@ -285,13 +285,16 @@ class Product(StockMixin, object, metaclass=PoolMeta):
             ('state', '=', 'done'),
             ]
 
+    @classmethod
+    def _domain_storage_quantity(cls):
+        "Returns the domain for locations to use in cost computation"
+        return [('type', '=', 'storage')]
+
     def _get_storage_quantity(self, date=None):
         pool = Pool()
         Location = pool.get('stock.location')
 
-        locations = Location.search([
-            ('type', '=', 'storage'),
-            ])
+        locations = Location.search(self._domain_storage_quantity())
         if not date:
             date = datetime.date.today()
         location_ids = [l.id for l in locations]
