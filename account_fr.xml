@@ -536,6 +536,7 @@
             <field name="sequence" eval="90"/>
             <field name="parent" ref="charges_exploitation"/>
             <field name="statement">income</field>
+            <field name="expense" eval="True"/>
         </record>
         <record model="account.account.type.template" id="charges_quotes-parts_resultat_operations_commun">
             <field name="name">Quotes-parts de résultat sur opérations faites en commun</field>
