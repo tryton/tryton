@@ -108,8 +108,9 @@ class Move(metaclass=PoolMeta):
                 with Transaction().set_context(date=self.effective_date):
                     amount += Currency.compute(
                         line.invoice.currency, line.amount, self.currency)
-                quantity += UoM.compute_qty(
-                    line.unit, line.quantity, self.uom)
+                if line.invoice.type == 'out' or not line.correction:
+                    quantity += UoM.compute_qty(
+                        line.unit, line.quantity, self.uom)
         if not quantity:
             unit_price = self.unit_price
         else:

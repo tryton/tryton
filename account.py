@@ -54,11 +54,23 @@ class InvoiceLine(metaclass=PoolMeta):
                 | ~Eval('product')),
             },
         depends=['type', 'product_uom_category', 'invoice', 'invoice_type'])
+    correction = fields.Boolean(
+        "Correction",
+        states={
+            'invisible': ((Eval('_parent_invoice', {}).get('type') == 'out')
+                | (Eval('invoice_type') == 'out')),
+            },
+        depends=['invoice_type'],
+        help="Check to correct price of already posted invoice.")
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls._check_modify_exclude.add('stock_moves')
+
+    @classmethod
+    def default_correction(cls):
+        return False
 
     @property
     def moved_quantity(self):
@@ -88,6 +100,7 @@ class InvoiceLine(metaclass=PoolMeta):
             default = {}
         else:
             default = default.copy()
+        default.setdefault('correction', False)
         if not Transaction().context.get('_account_invoice_correction'):
             default.setdefault('stock_moves', None)
         return super(InvoiceLine, cls).copy(lines, default=default)
