@@ -45,7 +45,7 @@ class Move(metaclass=PoolMeta):
                     )
                 ).select(sql_table.id, statement_line.statement,
                 order_by=(sql_table.id, statement_line.statement)))
-        for statement_id, values in groupby(cursor.fetchall(), itemgetter(1)):
+        for statement_id, values in groupby(cursor, itemgetter(1)):
             ids = [x[0] for x in values]
             for sub_ids in grouped_slice(ids):
                 red_sql = reduce_ids(sql_table.id, sub_ids)
