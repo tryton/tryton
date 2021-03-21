@@ -138,7 +138,7 @@ class Journal(
                     where=where & red_sql,
                     group_by=move.journal)
             cursor.execute(*query)
-            for journal_id, debit, credit in cursor.fetchall():
+            for journal_id, debit, credit in cursor:
                 # SQLite uses float for SUM
                 if not isinstance(debit, Decimal):
                     debit = Decimal(str(debit))

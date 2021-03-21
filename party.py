@@ -176,7 +176,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
                             & party_where
                             & today_where),
                         group_by=line.party))
-                for party, value in cursor.fetchall():
+                for party, value in cursor:
                     # SQLite uses float for SUM
                     if not isinstance(value, Decimal):
                         value = Decimal(str(value))

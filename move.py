@@ -327,13 +327,13 @@ class Move(ModelSQL, ModelView):
                     Sum(line.debit - line.credit),
                     where=red_sql,
                     group_by=line.move))
-            amounts.update(dict(cursor.fetchall()))
+            amounts.update(dict(cursor))
 
             cursor.execute(*line.select(line.move, line.id,
                     where=red_sql & (line.state == 'draft'),
                     order_by=line.move))
             move2draft_lines.update(dict((k, [j[1] for j in g])
-                    for k, g in groupby(cursor.fetchall(), itemgetter(0))))
+                    for k, g in groupby(cursor, itemgetter(0))))
 
         valid_moves = []
         draft_moves = []
@@ -1615,7 +1615,7 @@ class Reconcile(Wizard):
                             Sum(balance) > 0),
                         else_=False)
                     )))
-        return [a for a, in cursor.fetchall()]
+        return [a for a, in cursor]
 
     def get_parties(self, account, _balanced=False, party=None):
         'Return a list party to reconcile for the account'
@@ -1648,7 +1648,7 @@ class Reconcile(Wizard):
                 where=where,
                 group_by=line.party,
                 having=having))
-        return [p for p, in cursor.fetchall()]
+        return [p for p, in cursor]
 
     def transition_next_(self):
 

@@ -932,8 +932,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                     Sum(Coalesce(line.debit, 0) - Coalesce(line.credit, 0)),
                     where=red_sql & line_query,
                     group_by=table_a.id))
-            result = cursor.fetchall()
-            balances.update(dict(result))
+            balances.update(dict(cursor))
 
         for account in accounts:
             # SQLite uses float for SUM
@@ -981,7 +980,7 @@ class Account(AccountMixin(), ActivePeriodMixin, tree(), ModelSQL, ModelView):
                     ).select(*columns,
                     where=red_sql & line_query,
                     group_by=table.id))
-            for row in cursor.fetchall():
+            for row in cursor:
                 account_id = row[0]
                 for i, name in enumerate(names, 1):
                     # SQLite uses float for SUM
