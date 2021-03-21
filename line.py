@@ -72,7 +72,9 @@ class Line(ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
+        transaction = Transaction()
+        cursor = transaction.connection.cursor()
+        update = transaction.connection.cursor()
         table = cls.__table_handler__(module_name)
         sql_table = cls.__table__()
         pool = Pool()
@@ -86,7 +88,7 @@ class Line(ModelSQL, ModelView):
         # Migration from 3.4: new company field
         if created_company:
             # Don't use FROM because SQLite nor MySQL support it.
-            cursor.execute(*sql_table.update(
+            update.execute(*sql_table.update(
                     [sql_table.company], [work.select(work.company,
                             where=work.id == sql_table.work)]))
         # Migration from 3.4: change hours into timedelta duration
@@ -94,9 +96,9 @@ class Line(ModelSQL, ModelView):
             table.drop_constraint('check_move_hours_pos')
             cursor.execute(*sql_table.select(
                     sql_table.id, sql_table.hours))
-            for id_, hours in cursor.fetchall():
+            for id_, hours in cursor:
                 duration = datetime.timedelta(hours=hours)
-                cursor.execute(*sql_table.update(
+                update.execute(*sql_table.update(
                         [sql_table.duration],
                         [duration],
                         where=sql_table.id == id_))

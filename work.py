@@ -158,7 +158,7 @@ class Work(DeactivableMixin, ModelSQL, ModelView):
             cursor.execute(*query_table.select(table_w.id, Sum(line.duration),
                     where=red_sql & where,
                     group_by=table_w.id))
-            for work_id, duration in cursor.fetchall():
+            for work_id, duration in cursor:
                 # SQLite uses float for SUM
                 if duration and not isinstance(duration, datetime.timedelta):
                     duration = datetime.timedelta(seconds=duration)
