@@ -16,9 +16,7 @@ class Invoice(metaclass=PoolMeta):
         super(Invoice, cls).__setup__()
         cls._buttons.update({
                 'correct': {
-                    'invisible': (
-                        (Eval('state') != 'posted')
-                        | (Eval('type') != 'out')),
+                    'invisible': Eval('state') != 'posted',
                     'depends': ['state', 'type'],
                     },
                 })
