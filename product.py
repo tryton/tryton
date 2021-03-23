@@ -293,6 +293,14 @@ class TemplateFunction(fields.Function):
                 name, tables['template'], Template)
         return order
 
+    def definition(self, model, language):
+        pool = Pool()
+        Template = pool.get('product.template')
+        definition = super().definition(model, language)
+        definition['searchable'] = self._field.definition(
+            Template, language)['searchable']
+        return definition
+
 
 class Product(
         DeactivableMixin, ModelSQL, ModelView, CompanyMultiValueMixin):
