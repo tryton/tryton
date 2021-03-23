@@ -170,7 +170,10 @@ class PopdownMixin(object):
             deviation = int(
                 math.sqrt(sum((x - average) ** 2 for x in pop)
                     / len(pop)))
-            width = max(next((x for x in pop if x < (deviation * 4)), 10), 10)
+            width = max(next(
+                    (x for x in pop if abs(x - average) < (deviation * 2)),
+                    10),
+                10)
         else:
             width = 10
         child.set_width_chars(width)
