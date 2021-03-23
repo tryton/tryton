@@ -1366,10 +1366,6 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
     def on_change_unit(self):
         self.on_change_quantity()
 
-    @fields.depends(methods=['on_change_quantity'])
-    def on_change_taxes(self):
-        self.on_change_quantity()
-
     @fields.depends('description')
     def on_change_with_summary(self, name=None):
         return firstline(self.description or '')
