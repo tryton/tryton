@@ -224,7 +224,7 @@ class Sale(metaclass=PoolMeta):
         unit_price = None
         lines = list(self.lines or [])
         for line in self.lines:
-            if line.type == 'line' and line.shipment_cost:
+            if line.type == 'line' and line.shipment_cost is not None:
                 if line.shipment_cost == cost:
                     unit_price = line.unit_price * Decimal(str(line.quantity))
                 lines.remove(line)
@@ -264,6 +264,14 @@ class Sale(metaclass=PoolMeta):
             cost_line.unit_price = round_price(cost)
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
+
+    @property
+    def shipment_cost_amount(self):
+        cost = Decimal(0)
+        for line in self.lines:
+            if line.type == 'line' and line.shipment_cost is not None:
+                cost += line.amount
+        return cost
 
     def create_shipment(self, shipment_type):
         pool = Pool()

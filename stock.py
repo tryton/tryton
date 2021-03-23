@@ -209,9 +209,36 @@ class ShipmentOut(metaclass=PoolMeta):
         return invoice_line
 
     def _get_shipment_cost(self):
+        pool = Pool()
+        Currency = pool.get('currency.currency')
         cost = super()._get_shipment_cost()
-        if all(not m.sale.shipment_cost_method for m in self.outgoing_moves):
-            cost += self.cost_used
+        methods = {
+            m.sale.shipment_cost_method for m in self.outgoing_moves if m.sale}
+        if methods == {None}:
+            cost += self.cost_used or 0
+        if 'shipment' in methods:
+            if self.cost_sale:
+                cost_sale = Currency.compute(
+                    self.cost_sale_currency, self.cost_sale,
+                    self.company.currency, round=False)
+            else:
+                cost_sale = 0
+            delta = cost_sale - (self.cost_used or 0)
+            if delta < 0:
+                cost -= delta
+        if 'order' in methods and self.cost_used:
+            sales = {
+                m.sale for m in self.outgoing_moves
+                if m.sale and m.sale.shipment_cost_method == 'order'}
+            for sale in sales:
+                shipment_cost = sum(
+                    (s.cost_used or 0) for s in sale.shipments
+                    if s.state == 'done' and s != self)
+                cost_sale = sale.shipment_cost_amount
+                if cost_sale < shipment_cost:
+                    cost += self.cost_used or 0
+                elif cost_sale < shipment_cost + (self.cost_used or 0):
+                    cost += shipment_cost + self.cost_used - cost_sale
         return cost
 
     @classmethod
