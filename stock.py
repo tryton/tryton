@@ -254,6 +254,7 @@ class QuantityIssue(
                 for product_quantity in product_quantities:
                     if product_quantity.quantity < 0:
                         moves = Move.search([
+                                ('product', '=', product.id),
                                 ('planned_date', '=', product_quantity.date),
                                 ('from_location', 'child_of',
                                     [warehouse.id], 'parent'),
