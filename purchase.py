@@ -276,7 +276,7 @@ class Purchase(
                             ()),
                         ],
                     'invisible': Eval('state') != 'draft',
-                    'readonly': ~Eval('lines', []),
+                    'readonly': ~Eval('lines', Eval('untaxed_amount', 0)),
                     'depends': ['state'],
                     },
                 'confirm': {
