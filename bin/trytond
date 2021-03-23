@@ -31,6 +31,7 @@ from trytond.pool import Pool
 from trytond.modules import get_module_list, get_module_info
 
 with commandline.pidfile(options):
+    Pool.start()
     threads = []
     for name in options.database_names:
         thread = threading.Thread(target=Pool(name).init)
