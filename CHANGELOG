@@ -1,3 +1,4 @@
+* Add unsold shipment cost to the outgoing moves
 * Simplify manual alteration of shipment cost
 * Use purchase carrier price as cost for shipment
 * Allow shipment costs to not be sold
