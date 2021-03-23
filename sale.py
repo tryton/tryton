@@ -26,7 +26,7 @@ class SaleLine(metaclass=PoolMeta):
                 minimal_quantity = abs(self.quantity * (1 - tolerance))
                 minimal_quantity = self.unit.round(minimal_quantity)
                 quantity = self.unit.round(quantity)
-                return quantity <= minimal_quantity
+                return quantity <= minimal_quantity < abs(self.quantity)
         return False
 
     @property
