@@ -86,7 +86,8 @@ class ContactMechanism(
     @classmethod
     def __setup__(cls):
         super(ContactMechanism, cls).__setup__()
-        cls._order.insert(0, ('party', 'ASC'))
+        cls._order.insert(0, ('party.distance', 'ASC NULLS LAST'))
+        cls._order.insert(1, ('party', 'ASC'))
 
     @staticmethod
     def default_type():

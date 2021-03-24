@@ -449,6 +449,27 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
             set(Party.tax_identifier_types())
             - set(dict(IDENTIFIER_TYPES).keys()))
 
+    @with_transaction()
+    def test_party_distance(self):
+        "Test party distance"
+        pool = Pool()
+        Party = pool.get('party.party')
+
+        A, B, = Party.create([{
+                    'name': 'A',
+                    }, {
+                    'name': 'B',
+                    }])
+
+        parties = Party.search([])
+        self.assertEqual([p.distance for p in parties], [None] * 2)
+
+        with Transaction().set_context(related_party=A.id):
+            parties = Party.search([])
+            self.assertEqual(
+                [(p.name, p.distance) for p in parties],
+                [('A', 0), ('B', None)])
+
 
 def suite():
     suite = trytond.tests.test_tryton.suite()

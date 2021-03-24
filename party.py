@@ -3,6 +3,7 @@
 from stdnum import get_cc_module
 import stdnum.exceptions
 from sql import Null, Column, Literal
+from sql.aggregate import Min
 from sql.functions import CharLength, Substring, Position
 
 from trytond.i18n import gettext
@@ -63,6 +64,7 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
     fax = fields.Function(fields.Char('Fax'), 'get_mechanism')
     email = fields.Function(fields.Char('E-Mail'), 'get_mechanism')
     website = fields.Function(fields.Char('Website'), 'get_mechanism')
+    distance = fields.Function(fields.Integer('Distance'), 'get_distance')
 
     @classmethod
     def __setup__(cls):
@@ -71,7 +73,8 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
         cls._sql_constraints = [
             ('code_uniq', Unique(t, t.code), 'party.msg_party_code_unique')
             ]
-        cls._order.insert(0, ('name', 'ASC'))
+        cls._order.insert(0, ('distance', 'ASC NULLS LAST'))
+        cls._order.insert(1, ('name', 'ASC'))
         cls.active.states.update({
                 'readonly': Bool(Eval('replaced_by')),
                 })
@@ -168,6 +171,55 @@ class Party(DeactivableMixin, ModelSQL, ModelView, MultiValueMixin):
             if mechanism.type == name:
                 return mechanism.value
         return ''
+
+    @classmethod
+    def _distance_query(cls, usages=None, party=None, depth=None):
+        context = Transaction().context
+        if party is None:
+            party = context.get('related_party')
+
+        if not party:
+            return
+
+        table = cls.__table__()
+        return table.select(
+            table.id.as_('to'),
+            Literal(0).as_('distance'),
+            where=(table.id == party))
+
+    @classmethod
+    def get_distance(cls, parties, name):
+        distances = {p.id: None for p in parties}
+        query = cls._distance_query()
+        if query:
+            cursor = Transaction().connection.cursor()
+            cursor.execute(*query.select(
+                    query.to.as_('to'),
+                    Min(query.distance).as_('distance'),
+                    group_by=[query.to]))
+            distances.update(cursor)
+        return distances
+
+    @classmethod
+    def order_distance(cls, tables):
+        party, _ = tables[None]
+        key = 'distance'
+        if key not in tables:
+            query = cls._distance_query()
+            if not query:
+                return []
+            query = query.select(
+                    query.to.as_('to'),
+                    Min(query.distance).as_('distance'),
+                    group_by=[query.to])
+            join = party.join(query, type_='LEFT',
+                condition=query.to == party.id)
+            tables[key] = {
+                None: (join.right, join.condition),
+                }
+        else:
+            query, _ = tables[key][None]
+        return [query.distance]
 
     @classmethod
     def _new_code(cls, **pattern):
