@@ -206,8 +206,7 @@ class Period(metaclass=PoolMeta):
 
     def check_asset_line_running(self):
         """
-        Check if it exist some asset lines without account move for the curent
-        period.
+        Check if it exists any asset line without account move for the period.
         """
         pool = Pool()
         Asset = pool.get('account.asset')
