@@ -93,7 +93,7 @@ class User(metaclass=PoolMeta):
     @classmethod
     def default_companies(cls):
         company = Transaction().context.get('company')
-        return [company] if company else None
+        return [company] if company else []
 
     @classmethod
     def default_company(cls):
