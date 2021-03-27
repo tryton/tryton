@@ -37,6 +37,7 @@ class DBListEditor(object):
             set_underline(_("Close")), Gtk.ResponseType.CLOSE)
         self.dialog.set_position(Gtk.WindowPosition.CENTER_ON_PARENT)
         self.dialog.set_icon(TRYTON_ICON)
+        common.setup_window(self.dialog)
 
         tooltips = common.Tooltips()
 
@@ -393,6 +394,7 @@ class DBLogin(object):
         self.dialog.set_icon(TRYTON_ICON)
         self.dialog.set_position(Gtk.WindowPosition.CENTER_ALWAYS)
         self.dialog.set_resizable(False)
+        common.setup_window(self.dialog)
 
         tooltips = common.Tooltips()
         button_cancel = Gtk.Button(label=_('_Cancel'), use_underline=True)

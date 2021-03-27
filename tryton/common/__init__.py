@@ -9,7 +9,7 @@ from .common import (
     RPCProgress, RPCExecute, RPCContextReload, Tooltips, COLOR_SCHEMES,
     filter_domain, timezoned_date, untimezoned_date, humanize, get_hostname,
     get_port, resize_pixbuf, data2pixbuf, apply_label_attributes, ellipsize,
-    get_align, date_format, idle_add, check_version, TRYTON_ICON)
+    get_align, date_format, idle_add, check_version, TRYTON_ICON, setup_window)
 from .domain_inversion import (
     domain_inversion, eval_domain, localize_domain, merge, inverse_leaf,
     filter_leaf, prepare_reference_domain, extract_reference_models, concat,
@@ -29,4 +29,5 @@ __all__ = [
     get_align, date_format, idle_add, domain_inversion, eval_domain,
     localize_domain, merge, inverse_leaf, filter_leaf,
     prepare_reference_domain, extract_reference_models, concat, simplify,
-    unique_value, EvalEnvironment, timedelta, check_version, TRYTON_ICON]
+    unique_value, EvalEnvironment, timedelta, check_version, TRYTON_ICON,
+    setup_window]

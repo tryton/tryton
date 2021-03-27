@@ -128,6 +128,7 @@ class Main(Gtk.Application):
         self.window.set_icon(TRYTON_ICON)
         self.window.connect("destroy", self.on_quit)
         self.window.connect("delete_event", self.on_quit)
+        common.setup_window(self.window)
 
         self.header = Gtk.HeaderBar.new()
         self.header.set_show_close_button(True)
@@ -275,6 +276,10 @@ class Main(Gtk.Application):
             pass
         rpc.logout()
         self.quit()
+
+    def add_window(self, window):
+        super().add_window(window)
+        common.setup_window(window)
 
     def _get_primary_menu(self):
         menu = Gio.Menu.new()

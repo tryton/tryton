@@ -590,6 +590,7 @@ class UniqueDialog(object):
             parent = get_toplevel_window()
         dialog = self.build_dialog(parent, *args, **kwargs)
         dialog.set_icon(TRYTON_ICON)
+        setup_window(dialog)
         self.running = True
         dialog.show_all()
         response = dialog.run()
@@ -1303,3 +1304,8 @@ def idle_add(func):
     def wrapper(*args, **kwargs):
         GLib.idle_add(func, *args, **kwargs)
     return wrapper
+
+
+def setup_window(window):
+    if sys.platform == 'darwin':
+        window.set_mnemonic_modifier(Gdk.ModifierType.CONTROL_MASK)
