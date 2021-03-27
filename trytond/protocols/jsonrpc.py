@@ -135,11 +135,17 @@ class JSONRequest(Request):
 
     @cached_property
     def rpc_method(self):
-        return self.parsed_data['method']
+        try:
+            return self.parsed_data['method']
+        except Exception:
+            pass
 
     @cached_property
     def rpc_params(self):
-        return self.parsed_data['params']
+        try:
+            return self.parsed_data['params']
+        except Exception:
+            pass
 
 
 class JSONProtocol:

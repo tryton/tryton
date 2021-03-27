@@ -111,6 +111,7 @@ setup(name=name,
         'bin/trytond-console',
         'bin/trytond-cron',
         'bin/trytond-worker',
+        'bin/trytond-stat',
         ],
     classifiers=[
         'Development Status :: 5 - Production/Stable',

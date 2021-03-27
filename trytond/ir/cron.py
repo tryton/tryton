@@ -11,6 +11,7 @@ from trytond.model import (
     ModelView, ModelSQL, DeactivableMixin, fields, dualmethod)
 from trytond.pool import Pool
 from trytond.pyson import Eval
+from trytond.status import processing
 from trytond.transaction import Transaction
 from trytond.worker import run_task
 
@@ -140,21 +141,23 @@ class Cron(DeactivableMixin, ModelSQL, ModelView):
                     ])
 
             for cron in crons:
-                logger.info("Run cron %s", cron.id)
+                name = '<Cron %s@%s %s>' % (cron.id, db_name, cron.method)
+                logger.info("%s started", name)
                 for count in range(retry, -1, -1):
                     if count != retry:
                         time.sleep(0.02 * (retry - count))
                     try:
-                        cron.run_once()
-                        cron.next_call = cron.compute_next_call(now)
-                        cron.save()
-                        transaction.commit()
+                        with processing(name):
+                            cron.run_once()
+                            cron.next_call = cron.compute_next_call(now)
+                            cron.save()
+                            transaction.commit()
                     except Exception as e:
                         transaction.rollback()
                         if (isinstance(e, backend.DatabaseOperationalError)
                                 and count):
                             continue
-                        logger.error('Running cron %s', cron.id, exc_info=True)
+                        logger.error('%s failed', name, exc_info=True)
                     break
         while transaction.tasks:
             task_id = transaction.tasks.pop()

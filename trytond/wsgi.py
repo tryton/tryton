@@ -40,6 +40,7 @@ from trytond.config import config
 from trytond.protocols.wrappers import Request
 from trytond.protocols.jsonrpc import JSONProtocol
 from trytond.protocols.xmlrpc import XMLProtocol
+from trytond.status import processing
 from trytond.tools import resolve
 
 __all__ = ['TrytondWSGI', 'app']
@@ -163,6 +164,7 @@ class TrytondWSGI(object):
                 break
         else:
             request = Request(environ)
+        logger.info('%s', request)
 
         origin = request.headers.get('Origin')
         origin_host = urllib.parse.urlparse(origin).netloc if origin else ''
@@ -178,11 +180,12 @@ class TrytondWSGI(object):
             if not getattr(endpoint, 'allow_null_origin', False):
                 abort(HTTPStatus.FORBIDDEN)
 
-        data = self.dispatch_request(request)
-        if not isinstance(data, (Response, HTTPException)):
-            response = self.make_response(request, data)
-        else:
-            response = data
+        with processing(request):
+            data = self.dispatch_request(request)
+            if not isinstance(data, (Response, HTTPException)):
+                response = self.make_response(request, data)
+            else:
+                response = data
 
         if origin and isinstance(response, Response):
             response.headers['Access-Control-Allow-Origin'] = origin

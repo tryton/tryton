@@ -13,6 +13,7 @@ from sql import Flavor
 from trytond import backend
 from trytond.config import config
 from trytond.pool import Pool
+from trytond.status import processing
 from trytond.transaction import Transaction
 
 __all__ = ['work']
@@ -98,7 +99,8 @@ def run_task(pool, task_id):
     if not isinstance(pool, Pool):
         pool = Pool(pool)
     Queue = pool.get('ir.queue')
-    logger.info('task "%d" started', task_id)
+    name = '<Task %s@%s>' % (task_id, pool.database_name)
+    logger.info('%s started', name)
     retry = config.getint('database', 'retry')
     try:
         for count in range(retry, -1, -1):
@@ -111,16 +113,17 @@ def run_task(pool, task_id):
                     except ValueError:
                         # the task was rollbacked, nothing to do
                         break
-                    task.run()
+                    with processing(name):
+                        task.run()
                     break
                 except backend.DatabaseOperationalError:
                     if count:
                         transaction.rollback()
                         continue
                     raise
-        logger.info('task "%d" done', task_id)
+        logger.info('%s done', name)
     except backend.DatabaseOperationalError:
-        logger.info('task "%d" failed, retrying', task_id, exc_info=True)
+        logger.info('%s failed, retrying', name, exc_info=True)
         if not config.getboolean('queue', 'worker', default=False):
             time.sleep(0.02 * retry)
         try:
@@ -132,6 +135,6 @@ def run_task(pool, task_id):
                 Queue.push(task.name, task.data, scheduled_at=scheduled_at)
         except Exception:
             logger.critical(
-                'rescheduling task "%d" failed', task_id, exc_info=True)
+                'rescheduling %s failed', name, exc_info=True)
     except Exception:
-        logger.critical('task "%d" failed', task_id, exc_info=True)
+        logger.critical('%s failed', name, exc_info=True)

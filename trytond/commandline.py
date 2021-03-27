@@ -117,6 +117,12 @@ def get_parser_console():
     return parser
 
 
+def get_parser_stat():
+    parser = get_base_parser()
+    parser.epilog = "To exit press 'q', to inverse sort order press 'r'."
+    return parser
+
+
 def config_log(options):
     if options.logconf:
         logging.config.fileConfig(options.logconf)

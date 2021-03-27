@@ -30,6 +30,24 @@ class Request(_Request):
 
     view_args = None
 
+    def __repr__(self):
+        args = []
+        try:
+            if self.url is None or isinstance(self.url, str):
+                url = self.url
+            else:
+                url = self.url.decode(self.url_charset)
+            auth = self.authorization
+            args.append("%s@%s" % (
+                    auth.get('userid', auth.username), self.remote_addr))
+            args.append("'%s'" % url)
+            args.append("[%s]" % self.method)
+            args.append("%s" % (self.rpc_method or ''))
+        except Exception:
+            args.append("(invalid WSGI environ)")
+        return "<%s %s>" % (
+            self.__class__.__name__, " ".join(filter(None, args)))
+
     @property
     def decoded_data(self):
         if self.content_encoding == 'gzip':
@@ -60,6 +78,8 @@ class Request(_Request):
 
     @cached_property
     def user_id(self):
+        if not self.view_args:
+            return None
         database_name = self.view_args.get('database_name')
         if not database_name:
             return None

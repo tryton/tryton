@@ -1,0 +1,84 @@
+#!/usr/bin/env python3
+# This file is part of Tryton.  The COPYRIGHT file at the top level of
+# this repository contains the full copyright notices and license terms.
+import curses
+import datetime as dt
+import sys
+import os
+
+DIR = os.path.abspath(os.path.normpath(os.path.join(__file__,
+    '..', '..', 'trytond')))
+if os.path.isdir(DIR):
+    sys.path.insert(0, os.path.dirname(DIR))
+
+import trytond.commandline as commandline
+from trytond.config import config
+
+parser = commandline.get_parser_stat()
+options = parser.parse_args()
+config.update_etc(options.configfile)
+
+import trytond.status as status
+
+
+def main(stdscr):
+    global reverse
+    stdscr.nodelay(1)
+    reverse = True
+    processes = {}
+    status_pad = curses.newpad(1, 1)
+
+    def refresh_status():
+        now = dt.datetime.now()
+        height, width = stdscr.getmaxyx()
+
+        def expired(process):
+            return process['expire'] > now
+
+        def format(since, pid, request):
+            since = str(dt.timedelta(seconds=int(since)))
+            return f"{pid:>5} {since:>18} {request}"
+        status_pad.clear()
+        status = [format(*i) for i in sorted(
+                ((msg['since'], p['id'], msg['request'])
+                    for p in filter(expired, processes.values())
+                    for msg in p['status']),
+                reverse=reverse)]
+        prow = max(len(status), height - 2)
+        pcol = width - 2
+        status_pad.resize(prow + 2, pcol)
+        for i, line in enumerate(status, 1):
+            status_pad.addnstr(i, 1, line.ljust(pcol), pcol - 2)
+        status_pad.border(0)
+        status_pad.addnstr(
+            0, 0, ' {pid:>5} {since:>18} {request}'.format(
+                pid="pid",
+                since="TIME" + ('↑' if reverse else '↓'),
+                request="request"
+                ).upper().ljust(pcol),
+            pcol, curses.A_REVERSE)
+        status_pad.refresh(0, 0, 0, 0, height - 1, width)
+
+    def refresh():
+        global reverse
+        refresh_status()
+        stdscr.refresh()
+
+        key = stdscr.getch()
+        if key == ord('q'):
+            sys.exit()
+        elif key == ord('r'):
+            reverse = not reverse
+            refresh()
+
+    def update(data=None):
+        if data:
+            pid = data['id']
+            data['expire'] = dt.datetime.now() + dt.timedelta(seconds=10)
+            processes[pid] = data
+        refresh()
+    refresh()
+    status.listen(config.get('database', 'path'), update)
+
+
+curses.wrapper(main)

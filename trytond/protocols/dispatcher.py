@@ -163,7 +163,7 @@ def _dispatch(request, pool, *args, **kwargs):
         username = username.decode('utf-8')
     log_args = (
         obj, method, args, kwargs, username, request.remote_addr, request.path)
-    logger.info(log_message, *log_args)
+    logger.debug(log_message, *log_args)
 
     retry = config.getint('database', 'retry')
     for count in range(retry, -1, -1):
