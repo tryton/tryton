@@ -948,6 +948,7 @@
           <ref name="separator"/>
           <ref name="newline"/>
           <ref name="button"/>
+          <ref name="link"/>
           <ref name="notebook"/>
           <ref name="group"/>
           <ref name="hpaned"/>

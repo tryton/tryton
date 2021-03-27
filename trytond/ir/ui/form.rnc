@@ -181,6 +181,7 @@ page =
      | separator
      | newline
      | button
+     | link
      | notebook
      | group
      | hpaned
