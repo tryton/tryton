@@ -242,6 +242,7 @@ class Symbol(Cell):
         else:
             cell.set_property('text', '')
             cell.set_property('visible', False)
+        self._set_visual(cell, record)
 
 
 class GenericText(Cell):
