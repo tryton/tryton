@@ -11,6 +11,11 @@ try:
     gi.require_version('GtkSpell', '3.0')
 except ValueError:
     pass
+try:
+    gi.require_version('EvinceDocument', '3.0')
+    gi.require_version('EvinceView', '3.0')
+except ValueError:
+    pass
 
 try:
     # Import earlier otherwise there is a segmentation fault on MSYS2

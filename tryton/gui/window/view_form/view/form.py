@@ -13,6 +13,7 @@ from tryton.common.underline import set_underline
 from tryton.common.button import Button
 from tryton.config import CONFIG
 from .form_gtk.calendar_ import Date, Time, DateTime
+from .form_gtk.document import Document
 from .form_gtk.float import Float
 from .form_gtk.integer import Integer
 from .form_gtk.selection import Selection
@@ -167,6 +168,7 @@ class FormXMLViewParser(XMLViewParser):
         'date': Date,
         'datetime': DateTime,
         'dict': DictWidget,
+        'document': Document,
         'email': Email,
         'float': Float,
         'html': HTML,

@@ -29,6 +29,8 @@ include_files = [
         os.path.join('lib', 'gtk-3.0')),
     (os.path.join(sys.prefix, 'lib', 'gdk-pixbuf-2.0'),
         os.path.join('lib', 'gdk-pixbuf-2.0')),
+    (os.path.join(sys.prefix, 'lib', 'evince'),
+        os.path.join('lib', 'evince')),
     (os.path.join(sys.prefix, 'share', 'locale'),
         os.path.join('share', 'locale')),
     (os.path.join(sys.prefix, 'share', 'icons', 'Adwaita'),
@@ -41,6 +43,8 @@ include_files = [
 
 required_gi_namespaces = [
     'Atk-1.0',
+    'EvinceDocument-3.0',
+    'EvinceView-3.0',
     'GLib-2.0',
     'GModule-2.0',
     'GObject-2.0',
