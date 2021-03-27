@@ -1,3 +1,4 @@
+* Support document widget
 * Support icon of type URL
 * Allow sending email with existing attachments
 * Add paths and model context to action data

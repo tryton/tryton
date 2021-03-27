@@ -2715,24 +2715,41 @@
         }
     });
 
+    Sao.common.mimetypes = {
+        'csv': 'text/csv',
+        'doc': 'application/msword',
+        'docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'gif': 'image/gif',
+        'html': 'text/html',
+        'jpeg': 'image/jpeg',
+        'jpg': 'image/jpeg',
+        'mpeg': 'video/mpeg',
+        'mpg': 'video/mpeg',
+        'ods': 'application/vnd.oasis.opendocument.spreadsheet',
+        'odt': 'application/vnd.oasis.opendocument.text',
+        'ogg': 'audio/ogg',
+        'pdf': 'application/pdf',
+        'png': 'image/png',
+        'svg': 'image/svg+xml',
+        'text': 'text/plain',
+        'tif': 'image/tif',
+        'tiff': 'image/tif',
+        'txt': 'text/plain',
+        'webp': 'image/webp',
+        'xls': 'application/vnd.ms-excel',
+        'xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'xml': 'application/xml',
+        'xpm': 'image/x-xpixmap',
+    };
+
     Sao.common.guess_mimetype = function(filename) {
-        if (/.*odt$/.test(filename)) {
-            return 'application/vnd.oasis.opendocument.text';
-        } else if (/.*ods$/.test(filename)) {
-            return 'application/vnd.oasis.opendocument.spreadsheet';
-        } else if (/.*pdf$/.test(filename)) {
-            return 'application/pdf';
-        } else if (/.*docx$/.test(filename)) {
-            return 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-        } else if (/.*doc/.test(filename)) {
-            return 'application/msword';
-        } else if (/.*xlsx$/.test(filename)) {
-            return 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-        } else if (/.*xls/.test(filename)) {
-            return 'application/vnd.ms-excel';
-        } else {
-            return 'application/octet-binary';
+        for (var ext in Sao.common.mimetypes) {
+            var re = new RegExp('.*\.' + ext + '$', 'i');
+            if (re.test(filename)) {
+                return Sao.common.mimetypes[ext];
+            }
         }
+        return 'application/octet-binary';
     };
 
     Sao.common.LOCAL_ICONS = [

@@ -4080,6 +4080,67 @@ function eval_pyson(value){
         }
     });
 
+    Sao.View.Form.Document = Sao.class_(Sao.View.Form.BinaryMixin, {
+        class_: 'form-document',
+        expand: true,
+        init: function(view, attributes) {
+            Sao.View.Form.Document._super.init.call(this, view, attributes);
+
+            this._blob_url = null;
+            this.el = jQuery('<div/>', {
+                'class': this.class_,
+            });
+
+            this.object = jQuery('<object/>', {
+                'class': 'center-block',
+            }).appendTo(this.el);
+            if (attributes.height) {
+                this.object.css('height', parseInt(attributes.height, 10));
+            } else {
+                this.object.css('height', '50vh');
+            }
+            if (attributes.width) {
+                this.object.css('width', parseInt(attributes.width, 10));
+            }
+        },
+        display: function() {
+            Sao.View.Form.Document._super.display.call(this);
+            var data, filename;
+            var record = this.record;
+            if (record) {
+                data = record.model.fields[this.field_name].get_data(record);
+            } else {
+                data = jQuery.when(null);
+            }
+            var filename_field = this.filename_field;
+            if (filename_field) {
+                filename = filename_field.get_client(record);
+            }
+            data.done(function(data) {
+                var url, blob;
+                if (record !== this.record) {
+                    return;
+                }
+                if (!data) {
+                    url = null;
+                } else {
+                    var mimetype = Sao.common.guess_mimetype(filename);
+                    if (mimetype == 'application/octet-binary') {
+                        mimetype = null;
+                    }
+                    blob = new Blob([data], {
+                        'type': mimetype,
+                    });
+                    url = window.URL.createObjectURL(blob);
+                }
+                this.object.attr('data', url);
+                this.object.get(0).onload = function() {
+                    window.URL.revokeObjectURL(url);
+                };
+            }.bind(this));
+        },
+    });
+
     Sao.View.Form.URL = Sao.class_(Sao.View.Form.Char, {
         class_: 'form-url',
         init: function(view, attributes) {
@@ -4924,6 +4985,7 @@ function eval_pyson(value){
         'date': Sao.View.Form.Date,
         'datetime': Sao.View.Form.DateTime,
         'dict': Sao.View.Form.Dict,
+        'document': Sao.View.Form.Document,
         'email': Sao.View.Form.Email,
         'float': Sao.View.Form.Float,
         'html': Sao.View.Form.HTML,
