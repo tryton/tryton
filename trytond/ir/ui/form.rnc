@@ -46,6 +46,7 @@ attlist.field &=
     | "date"
     | "datetime"
     | "dict"
+    | "document"
     | "email"
     | "float"
     | "html"

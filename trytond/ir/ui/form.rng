@@ -190,6 +190,7 @@
           <value>date</value>
           <value>datetime</value>
           <value>dict</value>
+          <value>document</value>
           <value>email</value>
           <value>float</value>
           <value>html</value>
