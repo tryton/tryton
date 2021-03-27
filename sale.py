@@ -106,6 +106,7 @@ class Line(metaclass=PoolMeta):
     def supply_on_sale(self):
         "Returns True if the sale line has to be supply by purchase request"
         if (self.type != 'line'
+                or self.sale.shipment_method == 'manual'
                 or not self.product
                 or self.quantity <= 0
                 or any(m.state not in ['staging', 'cancelled']
