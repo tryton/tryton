@@ -163,6 +163,9 @@ class InvoiceLine(metaclass=PoolMeta):
             commission.origin = self
             if plan.commission_method == 'posting':
                 commission.date = today
+            elif (plan.commission_method == 'payment'
+                    and self.invoice.state == 'paid'):
+                commission.date = today
             commission.agent = agent
             commission.product = plan.commission_product
             commission.amount = amount
