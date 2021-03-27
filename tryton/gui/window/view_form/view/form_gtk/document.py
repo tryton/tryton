@@ -47,7 +47,10 @@ class Document(BinaryMixin, Widget):
 
     def display(self):
         super().display()
-        data = self.field.get_data(self.record)
+        if self.field and self.record:
+            data = self.field.get_data(self.record)
+        else:
+            data = None
 
         if not data:
             self.image.hide()
