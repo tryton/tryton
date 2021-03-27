@@ -195,6 +195,11 @@ class Purchase(
     invoices_recreated = fields.Many2Many(
             'purchase.purchase-recreated-account.invoice',
             'purchase', 'invoice', 'Recreated Invoices', readonly=True)
+    origin = fields.Reference('Origin', selection='get_origin', select=True,
+        states={
+            'readonly': Eval('state') != 'draft',
+            },
+        depends=['state'])
     delivery_date = fields.Date(
         "Delivery Date",
         states={
@@ -628,6 +633,18 @@ class Purchase(
             self.write([self], {
                     'shipment_state': state,
                     })
+
+    @classmethod
+    def _get_origin(cls):
+        "Return list of Model names for origin Reference"
+        return ['purchase.purchase']
+
+    @classmethod
+    def get_origin(cls):
+        Model = Pool().get('ir.model')
+        get_name = Model.get_name
+        models = cls._get_origin()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
 
     @property
     def report_address(self):
@@ -2000,6 +2017,7 @@ class ReturnPurchase(Wizard):
         purchases = self.records
         return_purchases = self.model.copy(purchases)
         for return_purchase, purchase in zip(return_purchases, purchases):
+            return_purchase.origin = purchase
             for line in return_purchase.lines:
                 if line.type == 'line':
                     line.quantity *= -1

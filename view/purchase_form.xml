@@ -49,7 +49,8 @@ this repository contains the full copyright notices and license terms. -->
         <page string="Other Info" id="info">
             <label name="company"/>
             <field name="company"/>
-            <newline/>
+            <label name="origin"/>
+            <field name="origin"/>
             <label name="invoice_method"/>
             <field name="invoice_method"/>
             <label name="delivery_date"/>

@@ -93,5 +93,7 @@ Return purchase using the wizard::
     >>> returned_purchase, = Purchase.find([
     ...     ('state', '=', 'draft'),
     ...     ])
-     >>> sorted([x.quantity or 0 for x in returned_purchase.lines])
-     [-1.0, 0]
+    >>> returned_purchase.origin == purchase_to_return
+    True
+    >>> sorted([x.quantity or 0 for x in returned_purchase.lines])
+    [-1.0, 0]
