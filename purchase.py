@@ -16,7 +16,7 @@ from trytond.tools import grouped_slice, firstline
 
 from trytond.modules.company.model import (
     employee_field, set_employee, reset_employee)
-from trytond.modules.product import price_digits
+from trytond.modules.product import price_digits, round_price
 
 
 class Configuration(metaclass=PoolMeta):
@@ -683,6 +683,25 @@ class CreatePurchase(Wizard):
             if request.origin.unit_price:
                 key += (('unit_price', request.origin.unit_price),)
         return key
+
+    @classmethod
+    def compute_purchase_line(cls, key, requests, purchase):
+        pool = Pool()
+        RequisitionLine = pool.get('purchase.requisition.line')
+        Uom = pool.get('product.uom')
+
+        line = super().compute_purchase_line(key, requests, purchase)
+
+        key_values = dict(key)
+        if (key_values.get('unit_price') is not None
+                and any(
+                    isinstance(r.origin, RequisitionLine) for r in requests)):
+            line.unit_price = round_price(
+                Uom.compute_price(
+                    key_values.get('unit', line.unit),
+                    key_values['unit_price'],
+                    line.unit))
+        return line
 
 
 class Purchase(metaclass=PoolMeta):

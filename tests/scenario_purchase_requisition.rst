@@ -253,6 +253,9 @@ Handle request exception::
 Confirm the purchase order::
 
     >>> purchase, = Purchase.find([('state', '=', 'draft')])
+    >>> purchase_line, = purchase.lines
+    >>> purchase_line.unit_price
+    Decimal('10.0000')
     >>> purchase.click('quote')
     >>> requisition.reload()
     >>> requisition.state
