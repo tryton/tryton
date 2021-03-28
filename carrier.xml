@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data depends="carrier">
+        <record model="ir.ui.view" id="carrier_view_form">
+            <field name="model">carrier</field>
+            <field name="inherit" ref="carrier.carrier_view_form"/>
+            <field name="name">carrier_form</field>
+        </record>
+    </data>
+</tryton>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="//page[@id='info']/label[@name='invoice_method']" position="before">
+        <label name="incoterm"/>
+        <field name="incoterm" widget="selection" help_field="name"/>
+        <label name="incoterm_location"/>
+        <field name="incoterm_location"/>
+        <newline/>
+    </xpath>
+</data>
