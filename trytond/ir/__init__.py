@@ -9,6 +9,7 @@ from . import action
 from . import model
 from . import attachment
 from . import note
+from . import avatar
 from . import cron
 from . import lang
 from . import export
@@ -70,6 +71,8 @@ def register():
         attachment.Attachment,
         note.Note,
         note.NoteRead,
+        avatar.Avatar,
+        avatar.AvatarCache,
         cron.Cron,
         lang.Lang,
         lang.LangConfigStart,

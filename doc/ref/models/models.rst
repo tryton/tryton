@@ -914,3 +914,38 @@ adapted to search across the tree.
 
     Helper method that checks if there is no recursion in the tree defined by
     :meth:`tree`.
+
+============
+avatar_mixin
+============
+
+.. method:: avatar_mixin([size[, default]])
+
+Returns a mixin_ :class:`AvatarMixin`. ``size`` defines the size of the avatar
+image and its default value is ``64``. ``default`` indicates the name of the
+field to use for generating a default avatar, if it's not set then no default
+avatar is generated.
+
+.. class:: AvatarMixin
+
+.. attribute::  AvatarMixin.avatars
+
+   The :class:`trytond.model.fields.One2Many` field used to store the
+   ``ir.avatar`` records.
+
+.. attribute:: AvatarMixin.avatar
+
+   The :class:`trytond.model.fields.Binary` field that contains the avatar.
+
+.. attribute:: AvatarMixin.avatar_url
+
+   The :class:`trytond.model.fields.Char` field that containts the URL for the
+   avatar.
+
+.. attribute:: AvatarMixin.has_avatar
+
+   Indicates whether the record has an avatar.
+
+.. classmethod:: AvatarMixin.generate_avatar(records, field)
+
+   Generate a default avatar for each record using the field.

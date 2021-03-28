@@ -76,6 +76,7 @@ if platform.python_implementation() == 'PyPy':
     pg_require = ['psycopg2cffi >= 2.5.4']
 else:
     pg_require = ['psycopg2 >= 2.5.4']
+tests_require = ['pillow']
 
 setup(name=name,
     version=version,
@@ -95,7 +96,7 @@ setup(name=name,
     packages=find_packages(exclude=['*.modules.*', 'modules.*', 'modules',
             '*.proteus.*', 'proteus.*', 'proteus']),
     package_data={
-        'trytond': ['ir/ui/icons/*.svg', '*.rnc', '*.rng'],
+        'trytond': ['ir/ui/icons/*.svg', '*.rnc', '*.rng', 'ir/fonts/*.ttf'],
         'trytond.backend.postgresql': ['init.sql'],
         'trytond.backend.sqlite': ['init.sql'],
         'trytond.ir': ['tryton.cfg', '*.xml', 'view/*.xml', 'locale/*.po'],
@@ -172,11 +173,13 @@ setup(name=name,
         'html2text': ['html2text'],
         'weasyprint': ['weasyprint'],
         'coroutine': ['gevent>=1.1'],
+        'image': ['pillow'],
         },
     dependency_links=dependency_links,
     zip_safe=False,
     test_suite='trytond.tests',
     test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     cmdclass={
         'update_rng': rnc2rng,
         },

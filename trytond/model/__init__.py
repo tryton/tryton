@@ -15,9 +15,11 @@ from .descriptors import dualmethod
 from .order import sequence_ordered
 from .active import DeactivableMixin
 from .tree import tree
+from .avatar import avatar_mixin
 
 __all__ = ['Model', 'ModelView', 'ModelStorage', 'ModelSingleton', 'ModelSQL',
     'Check', 'Unique', 'Exclude',
     'Workflow', 'DictSchemaMixin', 'MatchMixin', 'UnionMixin', 'dualmethod',
     'MultiValueMixin', 'ValueMixin', 'SymbolMixin',
-    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree']
+    'EvalEnvironment', 'sequence_ordered', 'DeactivableMixin', 'tree',
+    'avatar_mixin']

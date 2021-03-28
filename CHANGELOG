@@ -1,3 +1,4 @@
+* Add support for avatars
 * Add status command
 * Add document widget on form view
 * Add full text and similarity search and FullText field

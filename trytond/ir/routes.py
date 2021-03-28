@@ -24,6 +24,8 @@ from trytond.transaction import Transaction
 
 SOURCE = config.get(
     'html', 'src', default='https://cloud.tinymce.com/stable/tinymce.min.js')
+AVATAR_TIMEOUT = config.getint(
+    'web', 'avatar_timeout', default=7 * 24 * 60 * 60)
 
 
 def get_token(record):
@@ -278,3 +280,26 @@ def data(request, pool, model):
             'Content-Disposition', 'attachment', filename=filename)
         response.headers.add('Content-Length', len(data))
         return response
+
+
+@app.route('/avatar/<base64:database_name>/<uuid>', methods={'GET'})
+@with_pool
+@with_transaction()
+def avatar(request, pool, uuid):
+    Avatar = pool.get('ir.avatar')
+
+    try:
+        avatar, = Avatar.search([
+                ('uuid', '=', uuid),
+                ])
+    except ValueError:
+        abort(HTTPStatus.NOT_FOUND)
+    try:
+        size = int(request.args.get('s', 64))
+    except ValueError:
+        abort(HTTPStatus.BAD_REQUEST)
+    response = Response(avatar.get(size), mimetype='image/jpeg')
+    response.headers['Cache-Control'] = (
+        'max-age=%s, public' % AVATAR_TIMEOUT)
+    response.add_etag()
+    return response

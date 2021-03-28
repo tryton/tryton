@@ -78,6 +78,23 @@ cors
 The list (one per line) of origins allowed for `Cross-Origin Resource sharing
 <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_.
 
+avatar_base
+~~~~~~~~~~~
+
+The base URL without a path for avatar URL.
+
+Default: ``''``
+
+.. note:: It can be used to setup a CDN.
+
+
+avatar_timeout
+~~~~~~~~~~~~~~
+
+The time in seconds that the avatar can be stored in cache.
+
+Default: 7 days
+
 database
 --------
 
@@ -138,6 +155,21 @@ The main language of the database that will be used for storage in the main
 table for translations.
 
 Default: ``en``
+
+avatar_filestore
+~~~~~~~~~~~~~~~~
+
+This configuration value indicates whether the avatars should be stored in the
+:py:mod:`trytond.filestore` (``True``) or the database (``False``).
+
+Default: ``False``
+
+avatar_prefix
+~~~~~~~~~~~~~
+
+The prefix to use with the :ref:`FileStore <ref-filestore>` to store avatars.
+
+Default: ``None``
 
 default_name
 ~~~~~~~~~~~~

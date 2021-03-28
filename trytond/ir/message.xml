@@ -351,5 +351,20 @@ this repository contains the full copyright notices and license terms. -->
         <record model="ir.message" id="msg_email_template_invalid_field_pyson_type">
             <field name="text">The PYSON %(field)s in e-mail template "%(template)s" must generate a list.</field>
         </record>
+        <record model="ir.message" id="msg_avatar_resource_unique">
+            <field name="text">Only one avatar is allowed per resource.</field>
+        </record>
+        <record model="ir.message" id="msg_avatar_size_unique">
+            <field name="text">The size of an avatar must be unique.</field>
+        </record>
+        <record model="ir.message" id="msg_avatar">
+            <field name="text">Avatar</field>
+        </record>
+        <record model="ir.message" id="msg_avatars">
+            <field name="text">Avatars</field>
+        </record>
+        <record model="ir.message" id="msg_avatar_url">
+            <field name="text">Avatar URL</field>
+        </record>
     </data>
 </tryton>

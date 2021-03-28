@@ -43,7 +43,8 @@ from trytond.exceptions import LoginException, RateLimitException
 from trytond.exceptions import UserError
 from trytond.i18n import gettext
 from trytond.model import (
-    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique)
+    ModelView, ModelSQL, Workflow, DeactivableMixin, fields, Unique,
+    avatar_mixin)
 from trytond.pool import Pool
 from trytond.pyson import PYSONEncoder, Eval, Bool
 from trytond.report import Report, get_email
@@ -99,7 +100,7 @@ class DeleteError(UserError):
     pass
 
 
-class User(DeactivableMixin, ModelSQL, ModelView):
+class User(avatar_mixin(100, 'login'), DeactivableMixin, ModelSQL, ModelView):
     "User"
     __name__ = "res.user"
     name = fields.Char('Name', select=True)
@@ -141,6 +142,8 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             'get_language_direction')
     email = fields.Char('Email')
     status_bar = fields.Function(fields.Char('Status Bar'), 'get_status_bar')
+    avatar_badge_url = fields.Function(
+        fields.Char("Avatar Badge URL"), 'get_avatar_badge_url')
     warnings = fields.One2Many('res.user.warning', 'user', 'Warnings')
     sessions = fields.Function(fields.Integer('Sessions'),
             'get_sessions')
@@ -176,6 +179,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
             'pyson_menu',
             'actions',
             'status_bar',
+            'avatar',
+            'avatar_url',
+            'avatar_badge_url',
             'warnings',
             'applications',
         ]
@@ -241,6 +247,9 @@ class User(DeactivableMixin, ModelSQL, ModelView):
 
     def get_status_bar(self, name):
         return self.name
+
+    def get_avatar_badge_url(self, name):
+        pass
 
     def get_password(self, name):
         return 'x' * 10
