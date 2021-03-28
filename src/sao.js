@@ -679,6 +679,14 @@ var Sao = {};
     };
 
     Sao.user_menu = function(preferences) {
+        var avatar_url = preferences.avatar_url || '';
+        if (avatar_url) {
+            avatar_url += '?s=30';
+        }
+        var avatar_badge_url = preferences.avatar_badge_url || '';
+        if (avatar_badge_url){
+            avatar_badge_url += '?s=15';
+        }
         jQuery('#user-preferences').empty();
         jQuery('#user-favorites').empty();
         jQuery('#user-preferences').append(jQuery('<a/>', {
@@ -687,7 +695,14 @@ var Sao = {};
         }).click(function(evt) {
             evt.preventDefault();
             Sao.preferences();
-        }).text(preferences.status_bar));
+        }).text(preferences.status_bar)
+            .prepend(jQuery('<img/>', {
+                'src': avatar_badge_url,
+                'class': 'img-circle img-badge',
+            })).prepend(jQuery('<img/>', {
+                'src': avatar_url,
+                'class': 'img-circle',
+            })));
         var title = Sao.i18n.gettext("Logout");
         jQuery('#user-logout > a')
             .attr('title', title)

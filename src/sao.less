@@ -154,10 +154,25 @@ html[theme="default"] {
 }
 
 #user-preferences > a {
-    max-width: 20em;
+    max-width: 30em;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    > img {
+        margin: -5px 5px;
+        width: 30px;
+
+        &[src=''] {
+            width: 0;
+        }
+
+        &.img-badge {
+            margin-left: -15px;
+            margin-bottom: -25px;
+            width: 15px;
+        }
+    }
 }
 
 .list-group-item-variant(selected; @state-selected-bg; @state-selected-text);
