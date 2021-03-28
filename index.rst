@@ -100,6 +100,9 @@ Referential
     `Google Maps </projects/modules-google-maps/en/latest>`_
         Links address to Google map.
 
+    `Incoterm </projects/modules-incoterm/en/latest>`_
+        Defines incoterms.
+
     :ref:`Party <index-party>`
         Identify parties.
 
