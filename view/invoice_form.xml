@@ -86,6 +86,7 @@ this repository contains the full copyright notices and license terms. -->
         <button name="validate_invoice" icon="tryton-forward"/>
         <button name="post" icon="tryton-ok"/>
         <button name="pay" icon="tryton-forward"/>
+        <button name="process" icon="tryton-refresh"/>
     </group>
     <field name="party_lang" invisible="1" colspan="6"/>
 </form>

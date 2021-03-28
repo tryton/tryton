@@ -325,6 +325,11 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
                     'invisible': Eval('state') != 'posted',
                     'depends': ['state'],
                     },
+                'process': {
+                    'invisible': ~Eval('state').in_(
+                        ['posted', 'paid']),
+                    'depends': ['state'],
+                    },
                 })
         cls.__rpc__.update({
                 'post': RPC(
@@ -1531,6 +1536,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         pass
 
     @classmethod
+    @ModelView.button
     def process(cls, invoices):
         paid = []
         posted = []
