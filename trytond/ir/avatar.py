@@ -95,7 +95,9 @@ class Avatar(ImageMixin, ResourceMixin, ModelSQL):
         if PIL:
             with Transaction().new_transaction():
                 cache = self._store_cache(size, self._resize(size))
-                cache.save()
+                # Save cache only if record is already committed
+                if self.__class__.search([('id', '=', self.id)]):
+                    cache.save()
                 return cache.image
         else:
             return self.image
