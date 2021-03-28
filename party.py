@@ -874,7 +874,8 @@ class Erase(Wizard):
         pool = Pool()
         Attachment = pool.get('ir.attachment')
         Note = pool.get('ir.note')
-        return [Attachment, Note]
+        Avatar = pool.get('ir.avatar')
+        return [Attachment, Note, Avatar]
 
 
 class EraseAsk(ModelView):

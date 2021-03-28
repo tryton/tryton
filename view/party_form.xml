@@ -2,17 +2,19 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <form col="6">
-    <label name="name"/>
-    <field name="name" xexpand="1"/>
-    <label name="code"/>
-    <field name="code"/>
-    <group col="-1" colspan="2" id="checkboxes">
-        <label name="active"/>
-        <field name="active" xexpand="0" width="25"/>
-        <!-- Add here some checkboxes ! -->
+    <group col="6" colspan="5" id="header" yalign="0">
+        <label name="name"/>
+        <field name="name" xexpand="1"/>
+        <label name="code"/>
+        <field name="code"/>
+        <group col="-1" colspan="2" id="checkboxes">
+            <label name="active"/>
+            <field name="active" xexpand="0" width="25"/>
+                <!-- Add here some checkboxes ! -->
+        </group>
+        <label name="replaced_by"/>
+        <field name="replaced_by"/>
     </group>
-    <label name="replaced_by"/>
-    <field name="replaced_by"/>
     <notebook colspan="6">
         <page string="General" id="general">
             <field name="addresses" mode="form,tree" colspan="4"
