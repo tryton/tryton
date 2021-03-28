@@ -55,7 +55,9 @@ def avatar_mixin(size=64, default=None):
 
         @classmethod
         def generate_avatar(cls, records, field='rec_name'):
-            from trytond.ir.avatar import generate
+            from trytond.ir.avatar import generate, PIL
+            if not PIL:
+                return
             records = [r for r in records if not r.has_avatar]
             if not records:
                 return
