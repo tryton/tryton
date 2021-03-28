@@ -70,12 +70,15 @@ tests_require = [
     get_require_version('proteus'),
     get_require_version('trytond_account'),
     get_require_version('trytond_account_invoice'),
+    get_require_version('trytond_account_invoice_stock'),
     get_require_version('trytond_carrier'),
     get_require_version('trytond_purchase'),
-    get_require_version('trytond_purchase_shipment_cost'),
+    get_require_version('trytond_purchase_request_quotation'),
     get_require_version('trytond_sale'),
     get_require_version('trytond_sale_shipment_cost'),
+    get_require_version('trytond_sale_opportunity'),
     get_require_version('trytond_sale_invoice_grouping'),
+    get_require_version('trytond_stock'),
     ]
 dependency_links = []
 if minor_version % 2:
