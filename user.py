@@ -26,7 +26,8 @@ from sql.operators import Equal
 from trytond.config import config
 from trytond.exceptions import RateLimitException
 from trytond.model import (
-    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Exclude)
+    ModelView, ModelSQL, DeactivableMixin, fields, Unique, Exclude,
+    avatar_mixin)
 from trytond.pool import Pool
 from trytond.pyson import Eval
 from trytond.report import Report, get_email
@@ -63,7 +64,7 @@ def _extract_params(url):
     return urllib.parse.parse_qsl(urllib.parse.urlsplit(url).query)
 
 
-class User(DeactivableMixin, ModelSQL, ModelView):
+class User(avatar_mixin(100), DeactivableMixin, ModelSQL, ModelView):
     'Web User'
     __name__ = 'web.user'
     _rec_name = 'email'
