@@ -18,10 +18,14 @@ class Sale(metaclass=PoolMeta):
         """
         return ()
 
+    def _parcel_weight(self, parcel):
+        if self.carrier:
+            return parcel_weight(parcel, self.carrier.weight_uom, 'unit')
+
     def _get_carrier_context(self):
         context = super(Sale, self)._get_carrier_context()
 
-        if self.carrier.carrier_cost_method != 'weight':
+        if not self.carrier or self.carrier.carrier_cost_method != 'weight':
             return context
         context = context.copy()
         weights = []
@@ -32,6 +36,5 @@ class Sale(metaclass=PoolMeta):
         lines = sorted(lines, key=sortable_values(keyfunc))
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weights.append(parcel_weight(
-                    parcel, self.carrier.weight_uom, 'unit'))
+            weights.append(self._parcel_weight(parcel))
         return context

@@ -19,8 +19,13 @@ class ShipmentIn(metaclass=PoolMeta):
         """
         return ()
 
+    @fields.depends('carrier')
+    def _parcel_weight(self, parcel):
+        if self.carrier:
+            return parcel_weight(parcel, self.carrier.weight_uom)
+
     @fields.depends('carrier', 'incoming_moves',
-        methods=['_group_parcel_key'])
+        methods=['_group_parcel_key', '_parcel_weight'])
     def _get_carrier_context(self):
         context = super(ShipmentIn, self)._get_carrier_context()
         if not self.carrier:
@@ -35,7 +40,7 @@ class ShipmentIn(metaclass=PoolMeta):
         lines = sorted(lines, key=sortable_values(keyfunc))
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weights.append(parcel_weight(parcel, self.carrier.weight_uom))
+            weights.append(self._parcel_weight(parcel))
         return context
 
 
@@ -48,10 +53,15 @@ class ShipmentOut(metaclass=PoolMeta):
         """
         return ()
 
+    @fields.depends('carrier')
+    def _parcel_weight(self, parcel):
+        if self.carrier:
+            return parcel_weight(parcel, self.carrier.weight_uom)
+
     @fields.depends(
         'state', 'carrier', 'inventory_moves', 'outgoing_moves',
         'warehouse_storage', 'warehouse_output',
-        methods=['_group_parcel_key'])
+        methods=['_group_parcel_key', '_parcel_weight'])
     def _get_carrier_context(self):
         context = super(ShipmentOut, self)._get_carrier_context()
         if not self.carrier:
@@ -70,5 +80,5 @@ class ShipmentOut(metaclass=PoolMeta):
         lines = sorted(lines, key=sortable_values(keyfunc))
 
         for key, parcel in groupby(lines, key=keyfunc):
-            weights.append(parcel_weight(parcel, self.carrier.weight_uom))
+            weights.append(self._parcel_weight(parcel))
         return context
