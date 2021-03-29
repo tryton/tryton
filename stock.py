@@ -223,6 +223,23 @@ class ShipmentOut(MeasurementsMixin, object, metaclass=PoolMeta):
             (move.to_location == location.id)
             & (location.type == 'customer'))
 
+    @fields.depends('carrier')
+    def _parcel_weight(self, parcel):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        Uom = pool.get('product.uom')
+        kg = Uom(ModelData.get_id('product', 'uom_kilogram'))
+        weight = super()._parcel_weight(parcel)
+        if self.carrier:
+            carrier_uom = self.carrier.weight_uom
+            packages = {p for l in parcel for p in l.package_path}
+            for package in packages:
+                if package.additional_weight:
+                    weight += Uom.compute_qty(
+                        kg, package.additional_weight, carrier_uom,
+                        round=False)
+        return weight
+
 
 class ShipmentOutReturn(MeasurementsMixin, object, metaclass=PoolMeta):
     __name__ = 'stock.shipment.out.return'

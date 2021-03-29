@@ -2,8 +2,9 @@
 <!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
 this repository contains the full copyright notices and license terms. -->
 <data>
-    <xpath expr="/form/field[@name='children']" position="after">
+    <xpath expr="//page[@id='measurements']" position="inside">
         <label name="additional_weight"/>
         <field name="additional_weight"/>
+        <newline/>
     </xpath>
 </data>
