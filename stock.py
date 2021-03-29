@@ -7,7 +7,7 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.model import ModelSQL, ModelView, Workflow, fields, tree
 from trytond.pool import Pool, PoolMeta
-from trytond.pyson import Eval, Id
+from trytond.pyson import Eval, Bool, Id
 from trytond.report import Report
 from trytond.transaction import Transaction
 
@@ -77,7 +77,32 @@ class ConfigurationSequence(metaclass=PoolMeta):
             return None
 
 
-class Package(tree(), ModelSQL, ModelView):
+class WeightMixin:
+    __slots__ = ()
+
+    packaging_weight = fields.Float(
+        "Packaging Weight", digits=(16, Eval('packaging_weight_digits', 2)),
+        depends=['packaging_weight_digits'],
+        help="The weight of the package when empty.")
+    packaging_weight_uom = fields.Many2One(
+        'product.uom', "Packaging Weight Uom",
+        domain=[('category', '=', Id('product', 'uom_cat_weight'))],
+        states={
+            'required': Bool(Eval('packaging_weight')),
+            },
+        depends=['packaging_weight'])
+    packaging_weight_digits = fields.Function(
+        fields.Integer("Packaging Weight Digits"),
+        'on_change_with_packaging_weight_digits')
+
+    @fields.depends('packaging_weight_uom')
+    def on_change_with_packaging_weight_digits(self, name=None):
+        return (
+            self.packaging_weight_uom.digits if self.packaging_weight_uom
+            else None)
+
+
+class Package(tree(), WeightMixin, ModelSQL, ModelView):
     'Stock Package'
     __name__ = 'stock.package'
     _rec_name = 'code'
@@ -190,6 +215,12 @@ class Package(tree(), ModelSQL, ModelView):
             return 'closed'
         return 'open'
 
+    @fields.depends('type')
+    def on_change_type(self):
+        if self.type:
+            self.packaging_weight = self.type.packaging_weight
+            self.packaging_weight_uom = self.type.packaging_weight_uom
+
     @classmethod
     def create(cls, vlist):
         pool = Pool()
@@ -211,7 +242,7 @@ class Package(tree(), ModelSQL, ModelView):
         return super().copy(packages, default=default)
 
 
-class Type(ModelSQL, ModelView):
+class Type(WeightMixin, ModelSQL, ModelView):
     'Stock Package Type'
     __name__ = 'stock.package.type'
     name = fields.Char('Name', required=True)
@@ -228,6 +259,16 @@ class Move(metaclass=PoolMeta):
             'readonly': Eval('state') == 'cancelled',
             },
         depends=['company', 'state'])
+
+    @property
+    def package_path(self):
+        path = []
+        package = self.package
+        while package:
+            path.append(package)
+            package = package.parent
+        path.reverse()
+        return path
 
     @classmethod
     def copy(cls, moves, default=None):
@@ -315,6 +356,28 @@ class ShipmentOut(PackageMixin, object, metaclass=PoolMeta):
     @property
     def packages_moves(self):
         return (m for m in self.outgoing_moves if m.state != 'cancelled')
+
+    def _group_parcel_key(self, lines, line):
+        try:
+            root_package = line.package_path[0]
+        except IndexError:
+            root_package = None
+        return super()._group_parcel_key(lines, line) + (root_package,)
+
+    @fields.depends('carrier')
+    def _parcel_weight(self, parcel):
+        pool = Pool()
+        Uom = pool.get('product.uom')
+        weight = super()._parcel_weight(parcel)
+        if self.carrier:
+            carrier_uom = self.carrier.weight_uom
+            packages = {p for l in parcel for p in l.package_path}
+            for package in packages:
+                if package.packaging_weight:
+                    weight += Uom.compute_qty(
+                        package.packaging_weight_uom, package.packaging_weight,
+                        carrier_uom, round=False)
+        return weight
 
 
 class ShipmentInReturn(PackageMixin, object, metaclass=PoolMeta):
