@@ -154,6 +154,7 @@ class Package(DimensionsMixin, metaclass=PoolMeta):
 
     @fields.depends('type')
     def on_change_type(self):
+        super().on_change_type()
         if self.type:
             self.length = self.type.length
             self.length_uom = self.type.length_uom
