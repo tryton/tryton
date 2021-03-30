@@ -523,10 +523,11 @@ class Statement(Workflow, ModelSQL, ModelView):
         cls.write(statements, {
                 'state': 'validated',
                 })
-        common_lines = Line.search([
+        common_lines = [l for l in Line.search([
                 ('statement.state', '=', 'draft'),
-                ('invoice.state', '=', 'paid'),
+                ('invoice.state', 'in', ['posted', 'paid']),
                 ])
+            if l.invoice.reconciled]
         if common_lines:
             warning_key = '_'.join(str(l.id) for l in common_lines)
             if Warning.check(warning_key):
