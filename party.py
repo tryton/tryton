@@ -15,9 +15,9 @@ class Party(metaclass=PoolMeta):
         if not self.es_province_code:
             for address in self.addresses:
                 country = getattr(address, 'country', None)
-                zip_ = getattr(address, 'zip', None)
-                if country and zip_ and country.code == 'ES':
-                    self.es_province_code = zip_[:2]
+                postal_code = getattr(address, 'postal_code', None)
+                if country and postal_code and country.code == 'ES':
+                    self.es_province_code = postal_code[:2]
                     break
 
 

@@ -57,7 +57,7 @@ Create parties::
     >>> tax_identifier.code = '00000000T'
     >>> address, = party.addresses
     >>> address.country = spain
-    >>> address.zip = '25001'
+    >>> address.postal_code = '25001'
     >>> party.es_province_code
     '25'
     >>> party.save()
