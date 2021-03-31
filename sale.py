@@ -19,13 +19,13 @@ class Sale(metaclass=PoolMeta):
             address = self.warehouse.address
             if address.subdivision:
                 pattern['from_subdivision'] = address.subdivision.id
-            if address.zip:
-                pattern['from_zip'] = address.zip
+            if address.postal_code:
+                pattern['from_postal_code'] = address.postal_code
         pattern['to_subdivision'] = None
         if self.shipment_address:
             address = self.shipment_address
             if address.subdivision:
                 pattern['to_subdivision'] = address.subdivision.id
-            if address.zip:
-                pattern['to_zip'] = address.zip
+            if address.postal_code:
+                pattern['to_postal_code'] = address.postal_code
         return pattern

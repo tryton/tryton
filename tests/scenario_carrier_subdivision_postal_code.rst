@@ -1,6 +1,6 @@
-================================
-Carrier Subdivision ZIP Scenario
-================================
+========================================
+Carrier Subdivision Postal Code Scenario
+========================================
 
 Imports::
 
@@ -24,11 +24,11 @@ Create customers::
     >>> Party = Model.get('party.party')
     >>> customer = Party(name='Customer')
     >>> address, = customer.addresses
-    >>> address.zip = '08080'
+    >>> address.postal_code = '08080'
     >>> customer.save()
     >>> other_customer = Party(name='Other Customer')
     >>> address, = other_customer.addresses
-    >>> address.zip = '25175'
+    >>> address.postal_code = '25175'
     >>> other_customer.save()
 
 Create product::
@@ -71,12 +71,12 @@ Create carriers::
     >>> local_carrier.carrier_product = carrier_product
     >>> local_carrier.save()
 
-Create zip selection for each carrier::
+Create postal code selection for each carrier::
 
     >>> CarrierSelection = Model.get('carrier.selection')
     >>> csc = CarrierSelection()
     >>> csc.carrier = local_carrier
-    >>> csc.to_zip = '25'
+    >>> csc.to_postal_code = '25'
     >>> csc.sequence = 10
     >>> csc.save()
     >>> csc = CarrierSelection()
