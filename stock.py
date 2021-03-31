@@ -209,7 +209,7 @@ class CreateDPDShipping(Wizard):
             'name2': '',
             'street': ' '.join((address.street or '').splitlines())[:35],
             'country': address.country.code if address.country else '',
-            'zipCode': address.zip[:9],
+            'zipCode': address.postal_code[:9],
             'city': address.city[:35],
             }
         if party.full_name != address.party_full_name:
