@@ -973,7 +973,6 @@ class Account(ModelSQL, ModelView):
             },
         depends=['webhook_identifier'],
         help="The Stripe's signing secret of the webhook.")
-    zip_code = fields.Boolean("Zip Code", help="Verification on checkout")
     last_event = fields.Char("Last Event", readonly=True)
 
     @classmethod
@@ -986,10 +985,6 @@ class Account(ModelSQL, ModelView):
                 })
         if Pool().test:
             cls.__rpc__['webhook'] = RPC(readonly=False, instantiate=0)
-
-    @classmethod
-    def default_zip_code(cls):
-        return True
 
     @fields.depends('webhook_identifier')
     def on_change_with_webhook_endpoint(self, name=None):

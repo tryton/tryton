@@ -1,3 +1,4 @@
+* Remove unused zip code
 * Update Stripe Customer
 * Add preferred locales to Customer
 
