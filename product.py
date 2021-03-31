@@ -190,6 +190,19 @@ class Category(CompanyMultiValueMixin, metaclass=PoolMeta):
             return self.parent.accounting
         return self.accounting
 
+    @fields.depends(
+        'accounting',
+        'account_parent', 'account_expense', 'account_revenue',
+        'taxes_parent', 'customer_taxes', 'supplier_taxes')
+    def on_change_accounting(self):
+        if not self.accounting:
+            self.account_parent = None
+            self.account_expense = None
+            self.account_revenue = None
+            self.taxes_parent = None
+            self.customer_taxes = None
+            self.supplier_taxes = None
+
     @fields.depends('account_expense')
     def on_change_account_expense(self):
         if self.account_expense:
