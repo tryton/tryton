@@ -701,7 +701,7 @@
       <text:p text:style-name="P9"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].zip if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
+      <text:p text:style-name="Table_20_Contents"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].postal_code if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" office:value-type="string">
       <text:p text:style-name="P7"><text:placeholder text:placeholder-type="text">&lt;mandate.party.addresses[0].city if mandate.party.addresses else &apos;&apos;&gt;</text:placeholder></text:p>
@@ -831,7 +831,7 @@
       <text:p text:style-name="P9"/>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B5" office:value-type="string">
-      <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].zip if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder><text:soft-page-break/></text:p>
+      <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].postal_code if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder><text:soft-page-break/></text:p>
      </table:table-cell>
      <table:table-cell table:style-name="Table1.B1" office:value-type="string">
       <text:p text:style-name="P8"><text:placeholder text:placeholder-type="text">&lt;mandate.company.party.addresses[0].city if mandate.company.party.addresses else &apos;&apos;&gt;</text:placeholder><text:soft-page-break/></text:p>

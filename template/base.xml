@@ -50,7 +50,7 @@ this repository contains the full copyright notices and license terms. -->
         <!-- SubDept -->
         <StrtNm py:if="address.street">${address.street[:70]}</StrtNm>
         <!-- BldgNb -->
-        <PstCd py:if="address.zip">${address.zip[:16]}</PstCd>
+        <PstCd py:if="address.postal_code">${address.postal_code[:16]}</PstCd>
         <TwnNm py:if="address.city">${address.city[:35]}</TwnNm>
         <CtrySubDvsn py:if="address.subdivision">${address.subdivision.rec_name[:35]}</CtrySubDvsn>
         <Ctry py:if="address.country">${address.country.code}</Ctry>
