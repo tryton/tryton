@@ -22,7 +22,7 @@ class GoogleMapsTestCase(ModuleTestCase):
         address = Address()
         address.party = party
         address.street = "300 Cliff Street"
-        address.zip = "18503"
+        address.postal_code = "18503"
         address.city = "Scranton"
         address.save()
 
@@ -34,7 +34,7 @@ class GoogleMapsTestCase(ModuleTestCase):
         address = Address()
         address.party = party
         address.street = "Dépôt Street"
-        address.zip = "18503"
+        address.postal_code = "18503"
         address.city = "Scranton"
         address.save()
 
