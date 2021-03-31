@@ -215,14 +215,14 @@ class PartyTestCase(PartyCheckEraseMixin, ModuleTestCase):
         address1, address2 = Address.create([{
                     'party': party.id,
                     'sequence': 1,
-                    'zip': None,
+                    'postal_code': None,
                     }, {
                     'party': party.id,
                     'sequence': 2,
-                    'zip': '1000',
+                    'postal_code': '1000',
                     }])
 
-        address = party.address_get(type='zip')
+        address = party.address_get(type='postal_code')
 
         self.assertEqual(address, address2)
 

@@ -147,7 +147,7 @@ this repository contains the full copyright notices and license terms. -->
 ${name}
 ${street}
 ${subdivision}
-${ZIP}, ${city}
+${POSTAL_CODE}, ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -158,7 +158,7 @@ ${attn}
 ${name}
 ${street}
 ${subdivision}
-${CITY} ${SUBDIVISION} ${ZIP}
+${CITY} ${SUBDIVISION} ${POSTAL_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -168,7 +168,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -178,7 +178,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${city}-${zip}
+${city}-${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -187,7 +187,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${zip}, ${city}
+${postal_code}, ${city}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -198,7 +198,7 @@ ${COUNTRY}</field>
 ${party_name}
 ${name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -208,7 +208,7 @@ ${COUNTRY}</field>
 ${street}
 ${name}
 ${city} - ${subdivision_code}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -217,7 +217,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
-${zip} ${city}
+${postal_code} ${city}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -229,7 +229,7 @@ ${COUNTRY}</field>
 ${party_name}
 ${name}
 ${street}
-${city} (${subdivision}) ${zip}
+${city} (${subdivision}) ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -239,7 +239,7 @@ ${COUNTRY}</field>
 ${PARTY_NAME}
 ${NAME}
 ${STREET}
-${CITY} ${SUBDIVISION_CODE} ${ZIP}
+${CITY} ${SUBDIVISION_CODE} ${POSTAL_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -248,7 +248,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
-${zip}
+${postal_code}
 ${city}
 ${COUNTRY}</field>
         </record>
@@ -256,14 +256,14 @@ ${COUNTRY}</field>
         <record model="party.address.format" id="address_format_cn_zh_CN">
             <field name="country_code">CN</field>
             <field name="language_code">zh</field>
-            <field name="format_">${COUNTRY} ${ZIP}
+            <field name="format_">${COUNTRY} ${POSTAL_CODE}
 ${subdivision}${city}${street}${name}
 ${party_name}</field>
         </record>
 
         <record model="party.address.format" id="address_format_cn">
             <field name="country_code">CN</field>
-            <field name="format_">${COUNTRY} ${ZIP}
+            <field name="format_">${COUNTRY} ${POSTAL_CODE}
 ${subdivision}, ${city}, ${street}, ${name}
 ${party_name}</field>
         </record>
@@ -272,7 +272,7 @@ ${party_name}</field>
             <field name="country_code">HR</field>
             <field name="format_">${party_name}
 ${street}
-${COUNTRY_CODE}-${ZIP} ${city}
+${COUNTRY_CODE}-${POSTAL_CODE} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -281,7 +281,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
-${COUNTRY_CODE}-${ZIP} ${city}
+${COUNTRY_CODE}-${POSTAL_CODE} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -289,7 +289,7 @@ ${COUNTRY}</field>
             <field name="country_code">DK</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -297,7 +297,7 @@ ${COUNTRY}</field>
             <field name="country_code">EE</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -306,7 +306,7 @@ ${COUNTRY}</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -316,7 +316,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${ZIP} ${CITY}
+${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
         </record>
 
@@ -326,7 +326,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -334,7 +334,7 @@ ${COUNTRY}</field>
             <field name="country_code">GR</field>
             <field name="format_">${party_name}
 ${street}
-${COUNTRY_CODE}-${ZIP} ${CITY}
+${COUNTRY_CODE}-${POSTAL_CODE} ${CITY}
 ${COUNTRY}</field>
         </record>
 
@@ -352,7 +352,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${city}
 ${street}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -361,7 +361,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -370,7 +370,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${CITY} ${zip}
+${CITY} ${postal_code}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -380,7 +380,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${name}
 ${street}
-${city} ${zip}
+${city} ${postal_code}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -397,7 +397,7 @@ ${name}
 ${city}
 ${street}
 ${subdivision}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -407,7 +407,7 @@ ${COUNTRY}</field>
 ${street}
 ${name}
 ${subdivision}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -415,7 +415,7 @@ ${COUNTRY}</field>
             <field name="country_code">IE</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${zip}
+${city} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -423,7 +423,7 @@ ${COUNTRY}</field>
             <field name="country_code">IL</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${zip}
+${city} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -433,7 +433,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${zip} ${city} ${SUBDIVISION_CODE}
+${postal_code} ${city} ${SUBDIVISION_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -446,7 +446,7 @@ ${COUNTRY}</field>
             <field name="country_code">JP</field>
             <field name="language_code">jp</field>
             <field name="format_">${COUNTRY}
-${zip}
+${postal_code}
 ${subdivision}${city}${street}
 ${party_name}</field>
         </record>
@@ -455,7 +455,7 @@ ${party_name}</field>
             <field name="country_code">JP</field>
             <field name="format_">${party_name}
 ${street}
-${city}, ${SUBDIVISION} ${zip}
+${city}, ${SUBDIVISION} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -465,14 +465,14 @@ ${COUNTRY}</field>
             <field name="format_">${COUNTRY}
 ${street}
 ${party_name}
-${zip}</field>
+${postal_code}</field>
         </record>
 
         <record model="party.address.format" id="address_format_kr">
             <field name="country_code">KR</field>
             <field name="format_">${party_name}
 ${street}
-${city}, ${subdivision} ${zip}
+${city}, ${subdivision} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -482,7 +482,7 @@ ${COUNTRY}</field>
 ${street}
 ${city}
 ${subdivision}
-${COUNTRY_CODE}-${ZIP}
+${COUNTRY_CODE}-${POSTAL_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -509,7 +509,7 @@ ${COUNTRY}</field>
 ${party_name}
 ${name}
 ${street}
-${zip} ${CITY}
+${postal_code} ${CITY}
 ${SUBDIVISION}
 ${COUNTRY}</field>
         </record>
@@ -520,7 +520,7 @@ ${COUNTRY}</field>
 ${party_name}
 ${street}
 ${name}
-${zip}, ${city}, ${subdivision}
+${postal_code}, ${city}, ${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -530,7 +530,7 @@ ${COUNTRY}</field>
 ${attn}
 ${name}
 ${street}
-${zip} ${CITY}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
         </record>
 
@@ -538,7 +538,7 @@ ${COUNTRY}</field>
             <field name="country_code">NZ</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${zip}
+${city} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -546,7 +546,7 @@ ${COUNTRY}</field>
             <field name="country_code">NO</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${CITY}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
         </record>
 
@@ -563,7 +563,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${city}
-${zip}
+${postal_code}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -582,7 +582,7 @@ ${COUNTRY}</field>
             <field name="country_code">PH</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${CITY}
+${postal_code} ${CITY}
 ${COUNTRY}</field>
         </record>
 
@@ -590,7 +590,7 @@ ${COUNTRY}</field>
             <field name="country_code">PL</field>
             <field name="format_">${attn} ${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -598,7 +598,7 @@ ${COUNTRY}</field>
             <field name="country_code">PT</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -615,7 +615,7 @@ ${COUNTRY}</field>
             <field name="format_">${attn} ${party_name}
 ${street}
 ${city}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -626,14 +626,14 @@ ${street}
 ${city}
 ${subdivision}
 ${COUNTRY}
-${zip}</field>
+${postal_code}</field>
         </record>
 
         <record model="party.address.format" id="address_format_sa">
             <field name="country_code">SA</field>
             <field name="format_">${party_name}
 ${street}
-${city} ${zip}
+${city} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -641,7 +641,7 @@ ${COUNTRY}</field>
             <field name="country_code">RS</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -650,7 +650,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${name}
-${CITY} ${ZIP}
+${CITY} ${POSTAL_CODE}
 ${COUNTRY}</field>
         </record>
 
@@ -659,7 +659,7 @@ ${COUNTRY}</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -668,7 +668,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${attn}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -676,7 +676,7 @@ ${COUNTRY}</field>
             <field name="country_code">ES</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${subdivision}
 ${COUNTRY}</field>
         </record>
@@ -691,7 +691,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${CITY}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -699,7 +699,7 @@ ${COUNTRY}</field>
             <field name="country_code">SE</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -707,7 +707,7 @@ ${COUNTRY}</field>
             <field name="country_code">CH</field>
             <field name="format_">${party_name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${COUNTRY}</field>
         </record>
 
@@ -715,7 +715,7 @@ ${COUNTRY}</field>
             <field name="country_code">TW</field>
             <field name="language_code">zh</field>
             <field name="format_">${COUNTRY}
-${zip}
+${postal_code}
 ${street}
 ${party_name}</field>
         </record>
@@ -724,7 +724,7 @@ ${party_name}</field>
             <field name="country_code">TW</field>
             <field name="format_">${party_name}
 ${street}
-${city}, ${subdivision} ${zip}
+${city}, ${subdivision} ${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -735,7 +735,7 @@ ${street}
 ${name}
 ${subdivision}
 ${COUNTRY}
-${zip}</field>
+${postal_code}</field>
         </record>
 
         <record model="party.address.format" id="address_format_tr">
@@ -744,7 +744,7 @@ ${zip}</field>
 ${attn}
 ${street}
 ${name}
-${zip} ${city} ${subdivision}
+${postal_code} ${city} ${subdivision}
 ${COUNTRY}</field>
         </record>
 
@@ -754,7 +754,7 @@ ${COUNTRY}</field>
 ${street}
 ${city}
 ${subdivision}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -763,7 +763,7 @@ ${COUNTRY}</field>
             <field name="format_">${party_name}
 ${street}
 ${CITY}
-${zip}
+${postal_code}
 ${COUNTRY}</field>
         </record>
 
@@ -772,7 +772,7 @@ ${COUNTRY}</field>
             <field name="format_">${attn}
 ${party_name}
 ${street}
-${city}, ${subdivision_code} ${zip}
+${city}, ${subdivision_code} ${postal_code}
 ${COUNTRY}</field>
         </record>
 

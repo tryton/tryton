@@ -5,7 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="party" expand="2"/>
     <field name="party_name"/>
     <field name="name"/>
-    <field name="zip"/>
+    <field name="postal_code"/>
     <field name="city"/>
     <field name="country"/>
     <field name="subdivision" expand="1"/>

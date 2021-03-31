@@ -34,7 +34,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         help="If filled, replace the name of the party for address formatting")
     name = fields.Char("Building Name")
     street = fields.Text("Street")
-    zip = fields.Char("Zip")
+    postal_code = fields.Char("Postal Code")
     city = fields.Char("City")
     country = fields.Many2One('country.country', "Country")
     subdivision_types = fields.Function(
@@ -59,7 +59,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
         super(Address, cls).__setup__()
         cls._order.insert(0, ('party', 'ASC'))
         cls.__rpc__.update(
-            autocomplete_zip=RPC(instantiate=0, cache=dict(days=1)),
+            autocomplete_postal_code=RPC(instantiate=0, cache=dict(days=1)),
             autocomplete_city=RPC(instantiate=0, cache=dict(days=1)),
             )
 
@@ -67,6 +67,10 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
     def __register__(cls, module_name):
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
+        table = cls.__table_handler__(module_name)
+
+        # Migration from 5.8: rename zip to postal code
+        table.column_rename('zip', 'postal_code')
 
         super(Address, cls).__register__(module_name)
 
@@ -99,25 +103,25 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
 
     def _autocomplete_search(self, domain, name):
         pool = Pool()
-        Zip = pool.get('country.zip')
+        PostalCode = pool.get('country.postal_code')
         if domain:
-            records = Zip.search(domain, limit=self._autocomplete_limit)
+            records = PostalCode.search(domain, limit=self._autocomplete_limit)
             if len(records) < self._autocomplete_limit:
                 return sorted({getattr(z, name) for z in records})
         return []
 
     @fields.depends('city', methods=['_autocomplete_domain'])
-    def autocomplete_zip(self):
+    def autocomplete_postal_code(self):
         domain = self._autocomplete_domain()
         if self.city:
             domain.append(('city', 'ilike', '%%%s%%' % self.city))
-        return self._autocomplete_search(domain, 'zip')
+        return self._autocomplete_search(domain, 'postal_code')
 
-    @fields.depends('zip', methods=['_autocomplete_domain'])
+    @fields.depends('postal_code', methods=['_autocomplete_domain'])
     def autocomplete_city(self):
         domain = self._autocomplete_domain()
-        if self.zip:
-            domain.append(('zip', 'ilike', '%s%%' % self.zip))
+        if self.postal_code:
+            domain.append(('postal_code', 'ilike', '%s%%' % self.postal_code))
         return self._autocomplete_search(domain, 'city')
 
     def get_full_address(self, name):
@@ -140,7 +144,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             'attn': '',
             'name': getattr(self, 'name', None) or '',
             'street': getattr(self, 'street', None) or '',
-            'zip': getattr(self, 'zip', None) or '',
+            'postal_code': getattr(self, 'postal_code', None) or '',
             'city': getattr(self, 'city', None) or '',
             'subdivision': (self.subdivision.name
                 if getattr(self, 'subdivision', None) else ''),
@@ -150,6 +154,8 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             'country_code': (self.country.code or ''
                 if getattr(self, 'country', None) else ''),
             }
+        # Keep zip for backward compatibility
+        substitutions['zip'] = substitutions['postal_code']
         if context.get('address_from_country') == getattr(self, 'country', ''):
             substitutions['country'] = ''
         if context.get('address_with_party', False):
@@ -185,7 +191,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
                     party,
                     self.name,
                     street,
-                    self.zip,
+                    self.postal_code,
                     self.city,
                     country]))
 
@@ -199,7 +205,7 @@ class Address(DeactivableMixin, sequence_ordered(), ModelSQL, ModelView):
             ('party',) + tuple(clause[1:]),
             ('name',) + tuple(clause[1:]),
             ('street',) + tuple(clause[1:]),
-            ('zip',) + tuple(clause[1:]),
+            ('postal_code',) + tuple(clause[1:]),
             ('city',) + tuple(clause[1:]),
             ('country',) + tuple(clause[1:]),
             ]
@@ -246,7 +252,7 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         "- ${name}\n"
         "- ${attn}\n"
         "- ${street}\n"
-        "- ${zip}\n"
+        "- ${postal_code}\n"
         "- ${city}\n"
         "- ${subdivision}\n"
         "- ${subdivision_code}\n"
@@ -300,7 +306,7 @@ class AddressFormat(DeactivableMixin, MatchMixin, ModelSQL, ModelView):
         return """${party_name}
 ${name}
 ${street}
-${zip} ${city}
+${postal_code} ${city}
 ${subdivision}
 ${COUNTRY}"""
 
