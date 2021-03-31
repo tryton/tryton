@@ -51,6 +51,16 @@ class Category(metaclass=PoolMeta):
     def account_asset_used(self):
         pass
 
+    @fields.depends(
+        'accounting',
+        'account_depreciation',
+        'account_asset')
+    def on_change_accounting(self):
+        super().on_change_accounting()
+        if not self.accounting:
+            self.account_depreciation = None
+            self.account_asset = None
+
 
 class CategoryAccount(metaclass=PoolMeta):
     __name__ = 'product.category.account'
