@@ -41,7 +41,7 @@ class Address(metaclass=PoolMeta):
             'street': self.street.splitlines(),
             'city': self.city,
             'country_id': self.country.code if self.country else None,
-            'postcode': self.zip,
+            'postcode': self.postal_code,
             }
         if self.subdivision:
             address['region'] = {
@@ -77,7 +77,7 @@ class Address(metaclass=PoolMeta):
                 raise BadRequest(gettext(
                         'web_shop_vue_storefront.msg_unknown_country_code',
                         code=data['country_id']))
-        self.zip = data['postcode']
+        self.postal_code = data['postcode']
 
         if data.get('region') and data['region']['region']:
             domain = [
