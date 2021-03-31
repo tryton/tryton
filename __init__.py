@@ -10,5 +10,5 @@ def register():
     Pool.register(
         country.Country,
         country.Subdivision,
-        country.Zip,
+        country.PostalCode,
         module='country', type_='model')

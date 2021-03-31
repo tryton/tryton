@@ -28,9 +28,9 @@ except ImportError:
 
 def clean(code):
     sys.stderr.write('Cleaning')
-    Zip = Model.get('country.zip')
-    Zip._proxy.delete(
-        [z.id for z in Zip.find([('country.code', '=', code)])], {})
+    PostalCode = Model.get('country.postal_code')
+    PostalCode._proxy.delete(
+        [c.id for c in PostalCode.find([('country.code', '=', code)])], {})
     print('.', file=sys.stderr)
 
 
@@ -46,7 +46,7 @@ def fetch(code):
 
 
 def import_(data):
-    Zip = Model.get('country.zip')
+    PostalCode = Model.get('country.postal_code')
     Country = Model.get('country.country')
     Subdivision = Model.get('country.subdivision')
     print('Importing', file=sys.stderr)
@@ -77,17 +77,17 @@ def import_(data):
     else:
         pbar = iter
     f = StringIO(data.decode('utf-8'))
-    zips = []
+    codes = []
     for row in pbar(list(csv.DictReader(
                     f, fieldnames=_fieldnames, delimiter='\t'))):
         country = get_country(row['country'])
         for code in ['code1', 'code2', 'code3']:
             subdivision = get_subdivision(row['country'], row[code])
             if code == 'code1' or subdivision:
-                zips.append(
-                    Zip(country=country, subdivision=subdivision,
-                        zip=row['postal'], city=row['place']))
-    Zip.save(zips)
+                codes.append(
+                    PostalCode(country=country, subdivision=subdivision,
+                        postal_code=row['postal'], city=row['place']))
+    PostalCode.save(codes)
 
 
 _fieldnames = ['country', 'postal', 'place', 'name1', 'code1',

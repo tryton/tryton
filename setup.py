@@ -151,7 +151,7 @@ setup(name=name,
     country = trytond.modules.country
     [console_scripts]
     trytond_import_countries = trytond.modules.country.scripts.import_countries:run [data]
-    trytond_import_zip = trytond.modules.country.scripts.import_zip:run [GeoNames]
+    trytond_import_postal_code = trytond.modules.country.scripts.import_postal_codes:run [GeoNames]
     """,  # noqa: E501
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',

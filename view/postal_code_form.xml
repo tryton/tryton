@@ -6,8 +6,8 @@ this repository contains the full copyright notices and license terms. -->
     <field name="country"/>
     <label name="subdivision"/>
     <field name="subdivision"/>
-    <label name="zip"/>
-    <field name="zip"/>
+    <label name="postal_code"/>
+    <field name="postal_code"/>
     <label name="city"/>
     <field name="city"/>
 </form>

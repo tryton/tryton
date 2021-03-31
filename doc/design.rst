@@ -38,14 +38,14 @@ counties down to municipalities, cities and boroughs.
 The ISO 3166-2 standard defines codes and names for country subdivisions.
 These are automatically loaded and updated along with the countries.
 
-.. _model-country.zip:
+.. _model-country.postal_code:
 
-Zip
-===
+Postal Code
+===========
 
-The *Zip* concept is used to store postal codes, and their relationship to
-`Countries <model-country.country>`, `Subdivisions <model-country.subdivision>`
-and cities.
+The *Postal Code* concept is used to store postal codes, and their relationship
+to `Countries <model-country.country>`, `Subdivisions
+<model-country.subdivision>` and cities.
 Depending on the country they relate to these codes are known locally as
 either postcodes, post codes, :abbr:`PIN (Postal Index Number)` or
 :abbr:`ZIP (Zone Improvement Plan)` codes.

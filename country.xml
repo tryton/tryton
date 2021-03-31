@@ -55,38 +55,37 @@ this repository contains the full copyright notices and license terms. -->
             <field name="name">subdivision_tree</field>
         </record>
 
-        <record model="ir.ui.view" id="zip_view_form">
-            <field name="model">country.zip</field>
+        <record model="ir.ui.view" id="postal_code_view_form">
+            <field name="model">country.postal_code</field>
             <field name="type">form</field>
-            <field name="name">zip_form</field>
+            <field name="name">postal_code_form</field>
         </record>
-        <record model="ir.ui.view" id="zip_view_list">
-            <field name="model">country.zip</field>
+        <record model="ir.ui.view" id="postal_code_view_list">
+            <field name="model">country.postal_code</field>
             <field name="type">tree</field>
-            <field name="name">zip_list</field>
+            <field name="name">postal_code_list</field>
         </record>
 
-        <record model="ir.action.act_window" id="act_zip_form">
-            <field name="name">Zip</field>
-            <field name="res_model">country.zip</field>
+        <record model="ir.action.act_window" id="act_postal_code_form">
+            <field name="name">Postal Codes</field>
+            <field name="res_model">country.postal_code</field>
             <field name="domain"
                 eval="[('country', 'in', Eval('active_ids'))]" pyson="1"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_zip_form_view1">
+        <record model="ir.action.act_window.view" id="act_postal_code_form_view1">
             <field name="sequence" eval="10"/>
-            <field name="view" ref="zip_view_list"/>
-            <field name="act_window" ref="act_zip_form"/>
+            <field name="view" ref="postal_code_view_list"/>
+            <field name="act_window" ref="act_postal_code_form"/>
         </record>
-        <record model="ir.action.act_window.view" id="act_zip_form_view2">
+        <record model="ir.action.act_window.view" id="act_postal_code_form_view2">
             <field name="sequence" eval="20"/>
-            <field name="view" ref="zip_view_form"/>
-            <field name="act_window" ref="act_zip_form"/>
+            <field name="view" ref="postal_code_view_form"/>
+            <field name="act_window" ref="act_postal_code_form"/>
         </record>
-        <record model="ir.action.keyword"
-                id="act_zip_form_keyword1">
+        <record model="ir.action.keyword" id="act_postal_code_form_keyword1">
             <field name="keyword">form_relate</field>
             <field name="model">country.country,-1</field>
-            <field name="action" ref="act_zip_form"/>
+            <field name="action" ref="act_postal_code_form"/>
         </record>
     </data>
 </tryton>

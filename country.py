@@ -1,5 +1,6 @@
 # This file is part of Tryton.  The COPYRIGHT file at the top level of
 # this repository contains the full copyright notices and license terms.
+from trytond import backend
 from trytond.model import ModelView, ModelSQL, DeactivableMixin, fields
 from trytond.pool import Pool
 from trytond.pyson import Eval
@@ -250,31 +251,41 @@ class Subdivision(DeactivableMixin, ModelSQL, ModelView):
         super(Subdivision, cls).write(*args)
 
 
-class Zip(ModelSQL, ModelView):
-    "Zip"
-    __name__ = 'country.zip'
+class PostalCode(ModelSQL, ModelView):
+    "Postal Code"
+    __name__ = 'country.postal_code'
     country = fields.Many2One('country.country', 'Country', required=True,
         select=True, ondelete='CASCADE',
-        help="The country where the zip is.")
+        help="The country that contains the postal code.")
     subdivision = fields.Many2One('country.subdivision', 'Subdivision',
         select=True, ondelete='CASCADE',
         domain=[('country', '=', Eval('country', -1))],
         depends=['country'],
-        help="The subdivision where the zip is.")
-    zip = fields.Char('Zip')
-    city = fields.Char('City', help="The name of the city for the zip.")
+        help="The subdivision where the postal code is.")
+    postal_code = fields.Char('Postal Code')
+    city = fields.Char(
+        "City", help="The city associated with the postal code.")
 
     @classmethod
     def __setup__(cls):
-        super(Zip, cls).__setup__()
+        super().__setup__()
         cls._order.insert(0, ('country', 'ASC'))
-        cls._order.insert(0, ('zip', 'ASC'))
+        cls._order.insert(0, ('postal_code', 'ASC'))
+
+    @classmethod
+    def __register__(cls, module):
+        # Migration from 5.8: rename zip to postal_code
+        backend.TableHandler.table_rename('country_zip', cls._table)
+        table_h = cls.__table_handler__(module)
+        table_h.column_rename('zip', 'postal_code')
+
+        super().__register__(module)
 
     def get_rec_name(self, name):
-        if self.city and self.zip:
-            return '%s (%s)' % (self.city, self.zip)
+        if self.city and self.postal_code:
+            return '%s (%s)' % (self.city, self.postal_code)
         else:
-            return (self.zip or self.city or str(self.id))
+            return (self.postal_code or self.city or str(self.id))
 
     @classmethod
     def search_rec_name(cls, name, clause):
@@ -283,6 +294,6 @@ class Zip(ModelSQL, ModelView):
         else:
             bool_op = 'OR'
         return [bool_op,
-            ('zip',) + tuple(clause[1:]),
+            ('postal_code',) + tuple(clause[1:]),
             ('city',) + tuple(clause[1:]),
             ]

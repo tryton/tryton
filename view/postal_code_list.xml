@@ -4,6 +4,6 @@ this repository contains the full copyright notices and license terms. -->
 <tree>
     <field name="country" expand="1"/>
     <field name="subdivision" expand="1"/>
-    <field name="zip" expand="1"/>
+    <field name="postal_code" expand="1"/>
     <field name="city" expand="1"/>
 </tree>

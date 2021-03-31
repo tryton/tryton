@@ -28,12 +28,13 @@ You run it with:
 Loading and updating postal codes
 =================================
 
-You can use the :command:`trytond_import_zip` script to load and update the
-`Postal Codes <model-country.zip>` in Tryton from the `GeoNames Database`_.
+You can use the :command:`trytond_import_postal_codes` script to load and update
+the `Postal Codes <model-country.postal_code>` in Tryton from the `GeoNames
+Database`_.
 It is run with:
 
 .. code-block:: bash
 
-   trytond_import_zip -c trytond.conf -d <database> <two_letter_country_code>
+   trytond_import_postal_codes -c trytond.conf -d <database> <two_letter_country_code>
 
 .. _GeoNames Database: https://www.geonames.org/
