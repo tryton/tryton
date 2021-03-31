@@ -11,9 +11,8 @@ except ImportError:
 
 from functools import partial
 
-from tryton import bus, device_cookie
+from tryton import bus, device_cookie, fingerprints
 from tryton.jsonrpc import ServerProxy, ServerPool, Fault
-from tryton.fingerprints import Fingerprints
 from tryton.config import get_config_dir
 from tryton.exceptions import TrytonServerError, TrytonServerUnavailable
 from tryton.config import CONFIG
@@ -27,11 +26,10 @@ _KEYWORD_CACHE = {}
 _CA_CERTS = os.path.join(get_config_dir(), 'ca_certs')
 if not os.path.isfile(_CA_CERTS):
     _CA_CERTS = None
-_FINGERPRINTS = Fingerprints()
 
-ServerProxy = partial(ServerProxy, fingerprints=_FINGERPRINTS,
+ServerProxy = partial(ServerProxy, fingerprints=fingerprints,
     ca_certs=_CA_CERTS)
-ServerPool = partial(ServerPool, fingerprints=_FINGERPRINTS,
+ServerPool = partial(ServerPool, fingerprints=fingerprints,
     ca_certs=_CA_CERTS)
 
 
