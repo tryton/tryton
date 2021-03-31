@@ -36,6 +36,12 @@ class Category(metaclass=PoolMeta):
     def account_cogs_used(self):
         pass
 
+    @fields.depends('accounting', 'account_cogs')
+    def on_change_accounting(self):
+        super().on_change_accounting()
+        if not self.accounting:
+            self.account_cogs = None
+
 
 class CategoryAccount(metaclass=PoolMeta):
     __name__ = 'product.category.account'
