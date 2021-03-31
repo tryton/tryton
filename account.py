@@ -3,6 +3,7 @@
 from decimal import Decimal
 import datetime
 import operator
+from collections import defaultdict
 from itertools import zip_longest
 from functools import wraps
 
@@ -1977,6 +1978,10 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             },
         depends=['party_required', 'company'])
     party_required = fields.Boolean('Party Required')
+    account_party = fields.Function(
+        fields.Many2One(
+            'account.general_ledger.account.party', "Account Party"),
+        'get_account_party')
     company = fields.Many2One('company.company', 'Company')
     debit = fields.Numeric('Debit',
         digits=(16, Eval('currency_digits', 2)),
@@ -1984,9 +1989,14 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     credit = fields.Numeric('Credit',
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
-    balance = fields.Numeric('Balance',
+    internal_balance = fields.Numeric("Internal Balance",
         digits=(16, Eval('currency_digits', 2)),
         depends=['currency_digits'])
+    balance = fields.Function(
+        fields.Numeric("Balance",
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_balance')
     origin = fields.Reference('Origin', selection='get_origin')
     description = fields.Char('Description')
     move_description = fields.Char('Move Description')
@@ -2026,16 +2036,17 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             if hasattr(field, 'set'):
                 continue
             field_line = getattr(Line, fname, None)
-            if fname == 'balance':
+            if fname == 'internal_balance':
                 if database.has_window_functions():
                     w_columns = [line.account]
                     if context.get('party_cumulate', False):
                         w_columns.append(line.party)
                     column = Sum(line.debit - line.credit,
                         window=Window(w_columns,
-                            order_by=[move.date.asc, line.id])).as_('balance')
+                            order_by=[move.date.asc, line.id])).as_(
+                                'internal_balance')
                 else:
-                    column = (line.debit - line.credit).as_('balance')
+                    column = (line.debit - line.credit).as_('internal_balance')
             elif fname == 'move_description':
                 column = Column(move, 'description').as_(fname)
             elif fname == 'party_required':
@@ -2069,6 +2080,54 @@ class GeneralLedgerLine(ModelSQL, ModelView):
     def get_origin(cls):
         Line = Pool().get('account.move.line')
         return Line.get_origin()
+
+    def get_balance(self, name):
+        transaction = Transaction()
+        context = transaction.context
+        database = transaction.database
+        balance = self.internal_balance
+        if database.has_window_functions():
+            if context.get('party_cumulate', False) and self.account_party:
+                balance += self.account_party.start_balance
+            else:
+                balance += self.account.start_balance
+        return balance
+
+    @classmethod
+    def get_account_party(cls, records, name):
+        pool = Pool()
+        AccountParty = pool.get('account.general_ledger.account.party')
+        account_party = AccountParty.__table__()
+        cursor = Transaction().connection.cursor()
+
+        account_parties = {}
+        account_party2ids = defaultdict(list)
+        account_ids, party_ids = set(), set()
+        for r in records:
+            account_parties[r.id] = None
+            account_party2ids[r.account.id, r.party.id].append(r.id)
+            account_ids.add(r.account.id)
+            party_ids.add(r.party.id)
+
+        query = account_party.select(
+            account_party.account, account_party.party, account_party.id)
+        for sub_account_ids in grouped_slice(account_ids):
+            account_where = reduce_ids(account_party.account, sub_account_ids)
+            for sub_party_ids in grouped_slice(party_ids):
+                query.where = (account_where
+                    & reduce_ids(account_party.party, sub_party_ids))
+                cursor.execute(*query)
+                for account, party, id_ in cursor:
+                    key = (account, party)
+                    try:
+                        account_party_ids = account_party2ids[key]
+                    except KeyError:
+                        # There can be more combinations of account-party in
+                        # the database than from records
+                        continue
+                    for record_id in account_party_ids:
+                        account_parties[record_id] = id_
+        return account_parties
 
 
 class GeneralLedgerLineContext(GeneralLedgerAccountContext):
