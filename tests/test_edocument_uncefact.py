@@ -34,7 +34,7 @@ def get_invoice():
     address = Mock(spec=Address,
         street="St sample, 15",
         city="Scranton",
-        zip="1000",
+        postal_code="1000",
         subdivision=None,
         country=Mock(spec=Country,
             code='US'),

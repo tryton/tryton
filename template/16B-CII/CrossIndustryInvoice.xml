@@ -24,7 +24,7 @@ this repository contains the full copyright notices and license terms. -->
         </ram:SpecifiedTaxRegistration>
     </py:def>
     <py:def function="TradeAddress(address)">
-        <ram:PostcodeCode py:if="address.zip">${address.zip}</ram:PostcodeCode>
+        <ram:PostcodeCode py:if="address.postal_code">${address.postal_code}</ram:PostcodeCode>
         <ram:BuildingName py:if="address.name">${address.name}</ram:BuildingName>
         <py:with vars="lines = address.street.splitlines()">
             <ram:LineOne py:if="len(lines) > 0">${lines[0]}</ram:LineOne>
