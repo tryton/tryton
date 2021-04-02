@@ -2067,9 +2067,6 @@ class GeneralLedgerLine(ModelSQL, ModelView):
             ).join(account, condition=line.account == account.id
                 ).select(*columns, where=line_query)
 
-    def get_party_required(self, name):
-        return self.account.party_required
-
     def get_currency(self, name):
         return self.company.currency.id
 
