@@ -104,11 +104,18 @@ class Sale(metaclass=PoolMeta):
         # Migration from 5.8: remove required on shipment_cost_method
         table_h.not_null_action('shipment_cost_method', 'remove')
 
-    @staticmethod
-    def default_shipment_cost_method():
+    @classmethod
+    def default_shipment_cost_method(cls, **pattern):
         Config = Pool().get('sale.configuration')
         config = Config(1)
-        return config.sale_shipment_cost_method
+        return config.get_multivalue(
+            'sale_shipment_cost_method', **pattern)
+
+    @fields.depends('company')
+    def on_change_company(self):
+        super().on_change_company()
+        self.shipment_cost_method = self.default_shipment_cost_method(
+            company=self.company.id if self.company else None)
 
     @fields.depends('warehouse', 'shipment_address')
     def _get_carrier_selection_pattern(self):
