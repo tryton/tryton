@@ -627,9 +627,12 @@ class Production(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = config.production_sequence.get()
+                values['number'] = config.get_multivalue(
+                    'production_sequence',
+                    company=values.get('company', default_company)).get()
         productions = super(Production, cls).create(vlist)
         for production in productions:
             production._set_move_planned_date()
