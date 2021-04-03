@@ -539,6 +539,11 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
+    def on_change_company(self):
+        self.identification_readonly = self.default_identification_readonly(
+            company=self.company.id if self.company else None)
+
     @staticmethod
     def default_type():
         return 'recurrent'
@@ -555,12 +560,12 @@ class Mandate(Workflow, ModelSQL, ModelView):
     def default_state():
         return 'draft'
 
-    @staticmethod
-    def default_identification_readonly():
+    @classmethod
+    def default_identification_readonly(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
-        return bool(config.sepa_mandate_sequence)
+        return bool(config.get_multivalue('sepa_mandate_sequence', **pattern))
 
     def get_identification_readonly(self, name):
         return bool(self.identification)
@@ -591,10 +596,13 @@ class Mandate(Workflow, ModelSQL, ModelView):
 
         config = Configuration(1)
         vlist = [v.copy() for v in vlist]
+        default_company = cls.default_company()
         for values in vlist:
             if (config.sepa_mandate_sequence
                     and not values.get('identification')):
-                values['identification'] = config.sepa_mandate_sequence.get()
+                values['identification'] = config.get_multivalue(
+                    'sepa_mandate_sequence',
+                    company=values.get('company', default_company)).get()
             # Prevent raising false unique constraint
             if values.get('identification') == '':
                 values['identification'] = None
