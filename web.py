@@ -163,7 +163,8 @@ class Shop(DeactivableMixin, ModelSQL, ModelView):
         pool = Pool()
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
-        return config.default_customer_tax_rule
+        return config.get_multivalue(
+            'default_customer_tax_rule', company=self.company.id)
 
     def get_context(self):
         pool = Pool()
