@@ -84,13 +84,28 @@ class Invoice(metaclass=PoolMeta):
             },
         depends=['state'])
 
+    @fields.depends('company', 'type')
+    def on_change_company(self):
+        pool = Pool()
+        Config = pool.get('account.configuration')
+        config = Config(1)
+        try:
+            super().on_change_company()
+        except AttributeError:
+            pass
+        if self.type == 'out':
+            self.cash_rounding = config.get_multivalue(
+                'cash_rounding',
+                company=self.company.id if self.company else None)
+
     @classmethod
-    def default_cash_rounding(cls):
+    def default_cash_rounding(cls, **pattern):
         pool = Pool()
         Config = pool.get('account.configuration')
         config = Config(1)
         if cls.default_type() == 'out':
-            return config.cash_rounding
+            return config.get_multivalue(
+                'cash_rounding', **pattern)
 
     @fields.depends(methods=['_on_change_lines_taxes'])
     def on_change_cash_rounding(self):

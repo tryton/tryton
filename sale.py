@@ -15,10 +15,8 @@ class Sale(metaclass=PoolMeta):
         Config = pool.get('account.configuration')
         config = Config(1)
         super().on_change_lines()
-        pattern = {}
-        if self.company:
-            pattern['company'] = self.company.id
-        cash_rounding = config.get_multivalue('cash_rounding', **pattern)
+        cash_rounding = config.get_multivalue(
+            'cash_rounding', company=self.company.id if self.company else None)
         if cash_rounding:
             self.total_amount = self._cash_round_total_amount(
                 self.total_amount)
