@@ -554,7 +554,7 @@ class Work(Effort, Progress, Timesheet, metaclass=PoolMeta):
                         product=product.rec_name))
         else:
             invoice_line.account = account_config.get_multivalue(
-                'default_category_account_revenue')
+                'default_category_account_revenue', company=invoice.company.id)
             if not invoice_line.account:
                 raise InvoicingError(
                     gettext('project_invoice.msg_missing_account_revenue',
