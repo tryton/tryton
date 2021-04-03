@@ -122,7 +122,8 @@ class Dunning(metaclass=PoolMeta):
             name = str(Header(contact.name or self.party.rec_name))
             to.append(formataddr((name, contact.email)))
         elif account_config.dunning_email_fallback:
-            user = account_config.dunning_email_fallback
+            user = account_config.get_multivalue(
+                'dunning_email_fallback', company=self.company.id)
             to.append(formataddr((self.party.rec_name, user.email)))
         cc = []
         bcc = []
