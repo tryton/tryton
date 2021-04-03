@@ -45,10 +45,7 @@ class BOMInput(ModelSQL, ModelView):
 
     bom = fields.Many2One('production.bom', 'BOM', required=True,
         select=1, ondelete='CASCADE')
-    product = fields.Many2One('product.product', 'Product',
-        required=True, domain=[
-            ('type', '!=', 'service'),
-        ])
+    product = fields.Many2One('product.product', 'Product', required=True)
     uom_category = fields.Function(fields.Many2One(
         'product.uom.category', 'Uom Category'), 'on_change_with_uom_category')
     uom = fields.Many2One('product.uom', 'Uom', required=True,
@@ -68,12 +65,17 @@ class BOMInput(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(BOMInput, cls).__setup__()
+        cls.product.domain = [('type', 'in', cls.get_product_types())]
         cls.__access__.add('bom')
         t = cls.__table__()
         cls._sql_constraints = [
             ('product_bom_uniq', Unique(t, t.product, t.bom),
                 'production.msg_product_bom_unique'),
             ]
+
+    @classmethod
+    def get_product_types(cls):
+        return ['goods', 'assets']
 
     @fields.depends('product', 'uom')
     def on_change_product(self):

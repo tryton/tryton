@@ -10,11 +10,19 @@ from trytond.pool import PoolMeta
 
 class Template(metaclass=PoolMeta):
     __name__ = 'product.template'
-    producible = fields.Boolean(
-        "Producible", states={
-            'invisible': Eval('type') == 'service',
-            },
-        depends=['type'])
+    producible = fields.Boolean("Producible")
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.producible.states = {
+            'invisible': ~Eval('type').in_(cls.get_producible_types()),
+            }
+        cls.producible.depends = ['type']
+
+    @classmethod
+    def get_producible_types(cls):
+        return ['goods', 'assets']
 
     @classmethod
     def view_attributes(cls):
@@ -102,7 +110,7 @@ class ProductionLeadTime(sequence_ordered(), ModelSQL, ModelView, MatchMixin):
     product = fields.Many2One('product.product', 'Product',
         ondelete='CASCADE', select=True, required=True,
         domain=[
-            ('type', '!=', 'service'),
+            ('producible', '=', True),
             ])
     bom = fields.Many2One('production.bom', 'BOM', ondelete='CASCADE',
         domain=[
