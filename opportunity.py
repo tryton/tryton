@@ -270,9 +270,12 @@ class SaleOpportunity(
 
         config = Config(1)
         vlist = [x.copy() for x in vlist]
+        default_company = cls.default_company()
         for vals in vlist:
             if vals.get('number') is None:
-                vals['number'] = config.sale_opportunity_sequence.get()
+                vals['number'] = config.get_multivalue(
+                    'sale_opportunity_sequence',
+                    company=vals.get('company', default_company)).get()
         return super(SaleOpportunity, cls).create(vlist)
 
     @classmethod
