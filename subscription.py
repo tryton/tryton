@@ -265,7 +265,9 @@ class Subscription(Workflow, ModelSQL, ModelView):
         for subscription in subscriptions:
             if subscription.number:
                 continue
-            subscription.number = config.subscription_sequence.get()
+            subscription.number = config.get_multivalue(
+                'subscription_sequence',
+                company=subscription.company.id).get()
         cls.save(subscriptions)
 
     def compute_next_invoice_date(self):
