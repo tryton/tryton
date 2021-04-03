@@ -260,9 +260,12 @@ class Complaint(Workflow, ModelSQL, ModelView):
 
         config = Configuration(1)
         vlist = [v.copy() for v in vlist]
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = config.complaint_sequence.get()
+                values['number'] = config.get_multivalue(
+                    'complaint_sequence',
+                    company=values.get('company', default_company)).get()
         return super(Complaint, cls).create(vlist)
 
     @classmethod
