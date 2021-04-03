@@ -379,6 +379,11 @@ class Purchase(
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
+    def on_change_company(self):
+        self.invoice_method = self.default_invoice_method(
+            company=self.company.id if self.company else None)
+
     @staticmethod
     def default_state():
         return 'draft'
@@ -400,11 +405,12 @@ class Purchase(
             return company.currency.digits
         return 2
 
-    @staticmethod
-    def default_invoice_method():
+    @classmethod
+    def default_invoice_method(cls, **pattern):
         Configuration = Pool().get('purchase.configuration')
         configuration = Configuration(1)
-        return configuration.purchase_invoice_method
+        return configuration.get_multivalue(
+            'purchase_invoice_method', **pattern)
 
     @staticmethod
     def default_invoice_state():
@@ -479,11 +485,13 @@ class Purchase(
                 return self.party.lang.code
         return Config.get_language()
 
-    @fields.depends('party')
+    @fields.depends('party', 'company')
     def _get_tax_context(self):
         context = {}
         if self.party and self.party.lang:
             context['language'] = self.party.lang.code
+        if self.company:
+            context['company'] = self.company.id
         return context
 
     @fields.depends('lines', 'currency', methods=['get_tax_amount'])
@@ -750,7 +758,8 @@ class Purchase(
         for purchase in purchases:
             if purchase.number:
                 continue
-            purchase.number = config.purchase_sequence.get()
+            purchase.number = config.get_multivalue(
+                'purchase_sequence', company=purchase.company.id).get()
         cls.save(purchases)
 
     @classmethod
@@ -1529,7 +1538,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
                         product=self.product.rec_name))
         else:
             invoice_line.account = account_config.get_multivalue(
-                'default_category_account_expense')
+                'default_category_account_expense', company=self.company.id)
             if not invoice_line.account:
                 raise AccountError(
                     gettext('purchase'

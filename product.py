@@ -410,7 +410,9 @@ class ProductSupplier(
         lead_time = getattr(self, 'lead_time', None)
         party = getattr(self, 'party', None)
         if lead_time is None and party:
-            lead_time = party.get_multivalue('supplier_lead_time')
+            company = getattr(self, 'company', None)
+            lead_time = party.get_multivalue(
+                'supplier_lead_time', company=company.id if company else None)
         return lead_time
 
     def compute_supply_date(self, date=None):

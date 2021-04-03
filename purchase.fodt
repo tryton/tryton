@@ -601,7 +601,7 @@
    <text:section text:style-name="Sect1" text:name="Section1">
     <text:p text:style-name="P20"><text:soft-page-break/>Description: <text:placeholder text:placeholder-type="text">&lt;purchase.description or &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P21">Reference: <text:placeholder text:placeholder-type="text">&lt;purchase.reference or &apos;&apos;&gt;</text:placeholder></text:p>
-    <text:p text:style-name="P18">Customer Code: <text:placeholder text:placeholder-type="text">&lt;purchase.party.get_multivalue(&apos;customer_code&apos;, company=purchase.company) or &apos;&apos;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P18">Customer Code: <text:placeholder text:placeholder-type="text">&lt;purchase.party.get_multivalue(&apos;customer_code&apos;, company=purchase.company.id) or &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="Text_20_body">Date: <text:placeholder text:placeholder-type="text">&lt;format_date(purchase.purchase_date or today, purchase.party.lang)&gt;</text:placeholder></text:p>
     <text:p text:style-name="P29">Delivery Address:</text:p>
     <text:p text:style-name="P28"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in purchase.delivery_full_address.splitlines()&quot;&gt;</text:placeholder></text:p>
