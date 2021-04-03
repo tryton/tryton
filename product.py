@@ -63,17 +63,24 @@ class SaleContext(metaclass=PoolMeta):
     price_list = fields.Many2One('product.price_list', "Price List")
 
     @classmethod
-    def default_price_list(cls):
+    def default_price_list(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
         config = Configuration(1)
-        if config.sale_price_list:
-            return config.sale_price_list.id
+        price_list = config.get_multivalue('sale_price_list', **pattern)
+        if price_list:
+            return price_list.id
 
-    @fields.depends('customer')
+    @fields.depends(methods=['on_change_customer'])
+    def on_change_company(self):
+        try:
+            super().on_change_company()
+        except AttributeError:
+            pass
+        self.on_change_customer()
+
+    @fields.depends('customer', 'company')
     def on_change_customer(self):
-        pool = Pool()
-        Configuration = pool.get('sale.configuration')
         try:
             super().on_change_customer()
         except AttributeError:
@@ -81,5 +88,5 @@ class SaleContext(metaclass=PoolMeta):
         if self.customer and self.customer.sale_price_list:
             self.price_list = self.customer.sale_price_list
         else:
-            config = Configuration(1)
-            self.price_list = config.sale_price_list
+            self.price_list = self.default_price_list(
+                company=self.company.id if self.company else None)

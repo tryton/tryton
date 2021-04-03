@@ -26,6 +26,7 @@ class Sale(metaclass=PoolMeta):
         if 'party' not in cls.lines.depends:
             cls.lines.depends.append('party')
 
+    @fields.depends('company')
     def on_change_party(self):
         pool = Pool()
         Configuration = pool.get('sale.configuration')
@@ -34,7 +35,9 @@ class Sale(metaclass=PoolMeta):
             self.price_list = self.party.sale_price_list
         else:
             config = Configuration(1)
-            self.price_list = config.sale_price_list
+            self.price_list = config.get_multivalue(
+                'sale_price_list',
+                company=self.company.id if self.company else None)
 
 
 class Line(metaclass=PoolMeta):
