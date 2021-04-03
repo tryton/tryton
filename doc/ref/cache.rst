@@ -22,6 +22,18 @@ starts and resets on :class:`Transaction` commit or rollback.
     after being set in or retrieved from the cache.
 ..
 
+.. attribute:: hit
+
+Count the number of times the cache returned a cached value.
+
+.. attribute:: miss
+
+Count the number of times the cache did not contain the key.
+
+.. classmethod:: stats()
+
+Yield statistics for each instance.
+
 .. method:: get(key[, default])
 
 Retrieve the value of the key in the cache. If a ``default`` is specified it

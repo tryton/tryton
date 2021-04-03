@@ -60,6 +60,7 @@ class BaseCache(object):
         self._name = name
         self.size_limit = size_limit
         self.context = context
+        self.hit = self.miss = 0
         if isinstance(duration, dt.timedelta):
             self.duration = duration
         elif isinstance(duration, (int, float)):
@@ -70,6 +71,15 @@ class BaseCache(object):
             self.duration = None
         assert self._name not in self._instances
         self._instances[self._name] = self
+
+    @classmethod
+    def stats(cls):
+        for name, inst in cls._instances.items():
+            yield {
+                'name': name,
+                'hit': inst.hit,
+                'miss': inst.miss,
+                }
 
     def _key(self, key):
         if self.context:
@@ -152,10 +162,13 @@ class MemoryCache(BaseCache):
         try:
             (expire, result) = cache.pop(key)
             if expire and expire < dt.datetime.now():
+                self.miss += 1
                 return default
             cache[key] = (expire, result)
+            self.hit += 1
             return result
         except (KeyError, TypeError):
+            self.miss += 1
             return default
 
     def set(self, key, value):

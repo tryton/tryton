@@ -27,6 +27,7 @@ def processing(request):
 
 
 def log():
+    from trytond.cache import Cache
     msg = []
     now = time.perf_counter()
     for process in sorted(status.copy().values(), key=lambda p: p.start_time):
@@ -37,6 +38,7 @@ def log():
     return {
         'id': os.getpid(),
         'status': msg,
+        'caches': list(Cache.stats()),
         }
 
 
