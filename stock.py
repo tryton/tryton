@@ -139,8 +139,10 @@ class Move(metaclass=PoolMeta):
             account_move_lines.append(move_line)
 
         account_configuration = AccountConfiguration(1)
+        journal = account_configuration.get_multivalue(
+            'stock_journal', company=self.company.id)
         return AccountMove(
-            journal=account_configuration.stock_journal,
+            journal=journal,
             period=period_id,
             date=date,
             origin=self,
