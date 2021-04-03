@@ -1583,7 +1583,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
             return
         if not self.product:
             return
-        if self.product.type == 'service':
+        if self.product.type not in Move.get_product_types():
             return
 
         if (shipment_type == 'out') != (self.quantity >= 0):
