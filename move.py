@@ -516,9 +516,12 @@ class Reconciliation(ModelSQL, ModelView):
         configuration = Configuration(1)
 
         vlist = [x.copy() for x in vlist]
+        default_company = cls.default_company()
         for vals in vlist:
             if 'name' not in vals:
-                vals['name'] = configuration.reconciliation_sequence.get()
+                vals['name'] = configuration.get_multivalue(
+                    'reconciliation_sequence',
+                    company=vals.get('company', default_company)).get()
 
         return super(Reconciliation, cls).create(vlist)
 

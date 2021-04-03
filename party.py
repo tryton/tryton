@@ -240,8 +240,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         Configuration = pool.get('account.configuration')
         account = self.account_payable
         if not account:
-            config = Configuration(1)
-            account = config.get_multivalue('default_account_payable')
+            with Transaction().set_context(self._context):
+                config = Configuration(1)
+                account = config.get_multivalue('default_account_payable')
         # Allow empty values on on_change
         if not account and not Transaction().readonly:
             raise AccountMissing(
@@ -256,8 +257,9 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
         Configuration = pool.get('account.configuration')
         account = self.account_receivable
         if not account:
-            config = Configuration(1)
-            account = config.get_multivalue('default_account_receivable')
+            with Transaction().set_context(self._context):
+                config = Configuration(1)
+                account = config.get_multivalue('default_account_receivable')
         # Allow empty values on on_change
         if not account and not Transaction().readonly:
             raise AccountMissing(
