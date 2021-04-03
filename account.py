@@ -211,6 +211,7 @@ class Period(metaclass=PoolMeta):
         Asset = pool.get('account.asset')
         assets = Asset.search([
             ('state', '=', 'running'),
+            ('company', '=', self.company.id),
             ('lines', 'where', [
                 ('date', '>=', self.start_date),
                 ('date', '<=', self.end_date),
