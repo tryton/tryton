@@ -1173,6 +1173,16 @@ var Sao = {};
         }
     });
 
+    // Fix Chrome bug: https://bugs.chromium.org/p/chromium/issues/detail?id=890248
+    jQuery(document).on('keydown', 'textarea', function(event) {
+        if (event.key === 'PageUp' || event.key === 'PageDown') {
+            var cursorPosition = (
+                event.key === 'PageUp' ? 0 : event.target.textLength);
+            event.preventDefault();
+            event.target.setSelectionRange(cursorPosition, cursorPosition);
+        }
+    });
+
     function setModalsAndBackdropsOrder() {
         var modalZIndex = 1040;
         jQuery('.modal.in').each(function(index) {
