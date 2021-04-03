@@ -228,8 +228,11 @@ class Package(tree(), WeightMixin, ModelSQL, ModelView):
 
         vlist = [v.copy() for v in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
-            values['code'] = config.package_sequence.get()
+            values['code'] = config.get_multivalue(
+                'package_sequence',
+                company=values.get('company', default_company)).get()
         return super(Package, cls).create(vlist)
 
     @classmethod
