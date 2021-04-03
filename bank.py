@@ -52,11 +52,14 @@ class Account(DeactivableMixin, ModelSQL, ModelView):
         'Owners')
     currency = fields.Many2One('currency.currency', 'Currency')
     numbers = fields.One2Many('bank.account.number', 'account', 'Numbers',
-        required=True,
         help="Add the numbers which identify the bank account.")
 
     def get_rec_name(self, name):
-        name = '%s @ %s' % (self.numbers[0].number, self.bank.rec_name)
+        if self.numbers:
+            number = self.numbers[0].number
+        else:
+            number = '(%s)' % self.id
+        name = '%s @ %s' % (number, self.bank.rec_name)
         if self.currency:
             name += ' [%s]' % self.currency.code
         return name
