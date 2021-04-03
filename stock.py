@@ -366,8 +366,11 @@ class ShipmentDrop(Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
-            values['number'] = config.shipment_drop_sequence.get()
+            values['number'] = config.get_multivalue(
+                'shipment_drop_sequence',
+                company=values.get('company', default_company)).get()
         shipments = super(ShipmentDrop, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
