@@ -384,9 +384,12 @@ class ShipmentIn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = config.shipment_in_sequence.get()
+                values['number'] = config.get_multivalue(
+                    'shipment_in_sequence',
+                    company=values.get('company', default_company)).get()
         shipments = super(ShipmentIn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -731,10 +734,12 @@ class ShipmentInReturn(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.shipment_in_return_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'shipment_in_return_sequence',
+                    company=values.get('company', default_company)).get()
         shipments = super(ShipmentInReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1408,10 +1413,12 @@ class ShipmentOut(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.shipment_out_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'shipment_out_sequence',
+                    company=values.get('company', default_company)).get()
         shipments = super(ShipmentOut, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -1799,10 +1806,12 @@ class ShipmentOutReturn(ShipmentMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.shipment_out_return_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'shipment_out_return_sequence',
+                    company=values.get('company', default_company)).get()
         shipments = super(ShipmentOutReturn, cls).create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments
@@ -2204,12 +2213,14 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
-    @fields.depends('planned_date', 'planned_start_date')
+    @fields.depends('planned_date', 'planned_start_date', 'company')
     def on_change_with_transit_location(self, name=None):
         pool = Pool()
         Config = pool.get('stock.configuration')
         if self.planned_date != self.planned_start_date:
-            return Config(1).get_multivalue('shipment_internal_transit').id
+            return Config(1).get_multivalue(
+                'shipment_internal_transit',
+                company=self.company.id if self.company else None).id
 
     @fields.depends('from_location')
     def on_change_with_warehouse(self, name=None):
@@ -2269,10 +2280,12 @@ class ShipmentInternal(ShipmentAssignMixin, Workflow, ModelSQL, ModelView):
 
         vlist = [x.copy() for x in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.shipment_internal_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'shipment_internal_sequence',
+                    company=values.get('company', default_company)).get()
         shipments = super().create(vlist)
         cls._set_move_planned_date(shipments)
         return shipments

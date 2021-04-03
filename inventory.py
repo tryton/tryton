@@ -207,10 +207,12 @@ class Inventory(Workflow, ModelSQL, ModelView):
         Configuration = pool.get('stock.configuration')
         config = Configuration(1)
         vlist = [x.copy() for x in vlist]
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.inventory_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'inventory_sequence',
+                    company=values.get('company', default_company)).get()
         inventories = super(Inventory, cls).create(vlist)
         cls.complete_lines(inventories, fill=False)
         return inventories
