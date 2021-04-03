@@ -647,7 +647,7 @@
    <text:section text:style-name="Sect1" text:name="Section1">
     <text:p text:style-name="P24"><text:soft-page-break/><text:span text:style-name="T6">Revision:</text:span><text:span text:style-name="T6"><text:placeholder text:placeholder-type="text">&lt;quotation.revision or &apos;&apos;&gt;</text:placeholder></text:span></text:p>
     <text:p text:style-name="P23"><text:span text:style-name="T6">Reference: </text:span><text:span text:style-name="T6"><text:placeholder text:placeholder-type="text">&lt;quotation.reference or &apos;&apos;&gt;</text:placeholder></text:span></text:p>
-    <text:p text:style-name="P50">Customer Code: <text:placeholder text:placeholder-type="text">&lt;quotation.supplier.get_multivalue(&apos;customer_code&apos;, company=quotation.company) or &apos;&apos;&gt;</text:placeholder></text:p>
+    <text:p text:style-name="P50">Customer Code: <text:placeholder text:placeholder-type="text">&lt;quotation.supplier.get_multivalue(&apos;customer_code&apos;, company=quotation.company.id) or &apos;&apos;&gt;</text:placeholder></text:p>
     <text:p text:style-name="P38"><text:span text:style-name="T6">Date: </text:span><text:span text:style-name="T6"><text:placeholder text:placeholder-type="text">&lt;format_date(today, quotation.supplier.lang)&gt;</text:placeholder></text:span></text:p>
     <text:p text:style-name="P60">Delivery Address:</text:p>
     <text:p text:style-name="P56"><text:placeholder text:placeholder-type="text">&lt;for each=&quot;line in quotation.delivery_full_address.splitlines()&quot;&gt;</text:placeholder></text:p>

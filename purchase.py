@@ -192,8 +192,9 @@ class Quotation(Workflow, ModelSQL, ModelView):
             if quotation.number:
                 quotation.revision += 1
             else:
-                quotation.number = (
-                    config.purchase_request_quotation_sequence.get())
+                quotation.number = config.get_multivalue(
+                    'purchase_request_quotation_sequence',
+                    company=quotation.company.id).get()
         cls.save(quotations)
 
     @fields.depends('supplier')
