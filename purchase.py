@@ -327,10 +327,12 @@ class PurchaseRequisition(Workflow, ModelSQL, ModelView):
 
         config = Config(1)
         vlist = [v.copy() for v in vlist]
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = (
-                    config.purchase_requisition_sequence.get())
+                values['number'] = config.get_multivalue(
+                    'purchase_requisition_sequence',
+                    company=values.get('company', default_company)).get()
         return super(PurchaseRequisition, cls).create(vlist)
 
     @classmethod
