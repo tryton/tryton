@@ -15,10 +15,11 @@ class Product(metaclass=PoolMeta):
 class ProductSupplier(metaclass=PoolMeta):
     __name__ = 'purchase.product_supplier'
 
-    def get_supply_period(self, **pattern):
+    def get_supply_period(self):
         'Return the supply period for the purchase request'
         pool = Pool()
         Configuration = pool.get('purchase.configuration')
         config = Configuration(1)
-        supply_period = config.get_multivalue('supply_period', **pattern)
+        supply_period = config.get_multivalue(
+            'supply_period', company=self.company.id)
         return supply_period or datetime.timedelta(1)
