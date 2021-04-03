@@ -165,8 +165,9 @@ class Product(metaclass=PoolMeta):
         pool = Pool()
         Configuration = pool.get('product.configuration')
         if self.lead_time is None:
-            config = Configuration(1)
-            return config.get_multivalue('default_lead_time')
+            with Transaction().set_context(self._context):
+                config = Configuration(1)
+                return config.get_multivalue('default_lead_time')
         else:
             return self.lead_time
 

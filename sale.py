@@ -371,12 +371,12 @@ class Sale(
                 where=sql_table.state == 'cancel'))
 
     @classmethod
-    def default_payment_term(cls):
+    def default_payment_term(cls, **pattern):
         pool = Pool()
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
         payment_term = config.get_multivalue(
-            'default_customer_payment_term')
+            'default_customer_payment_term', **pattern)
         return payment_term.id if payment_term else None
 
     @classmethod
@@ -387,6 +387,15 @@ class Sale(
     @staticmethod
     def default_company():
         return Transaction().context.get('company')
+
+    @fields.depends('company')
+    def on_change_company(self):
+        self.payment_term = self.default_payment_term(
+            company=self.company.id if self.company else None)
+        self.invoice_method = self.default_invoice_method(
+            company=self.company.id if self.company else None)
+        self.shipment_method = self.default_shipment_method(
+            company=self.company.id if self.company else None)
 
     @staticmethod
     def default_state():
@@ -407,21 +416,21 @@ class Sale(
             return Company(company).currency.digits
         return 2
 
-    @staticmethod
-    def default_invoice_method():
+    @classmethod
+    def default_invoice_method(cls, **pattern):
         Config = Pool().get('sale.configuration')
         config = Config(1)
-        return config.sale_invoice_method
+        return config.get_multivalue('sale_invoice_method', **pattern)
 
     @staticmethod
     def default_invoice_state():
         return 'none'
 
-    @staticmethod
-    def default_shipment_method():
+    @classmethod
+    def default_shipment_method(cls, **pattern):
         Config = Pool().get('sale.configuration')
         config = Config(1)
-        return config.sale_shipment_method
+        return config.get_multivalue('sale_shipment_method', **pattern)
 
     @staticmethod
     def default_shipment_state():
@@ -464,12 +473,14 @@ class Sale(
             return self.currency.digits
         return 2
 
-    @fields.depends('party')
+    @fields.depends('party', 'company')
     def _get_tax_context(self):
-        res = {}
+        context = {}
         if self.party and self.party.lang:
-            res['language'] = self.party.lang.code
-        return res
+            context['language'] = self.party.lang.code
+        if self.company:
+            context['company'] = self.company.id
+        return context
 
     @fields.depends('party')
     def on_change_with_party_lang(self, name=None):
@@ -767,7 +778,8 @@ class Sale(
         for sale in sales:
             if sale.number:
                 continue
-            sale.number = config.sale_sequence.get()
+            sale.number = config.get_multivalue(
+                'sale_sequence', company=sale.company.id).get()
         cls.save(sales)
 
     @classmethod
@@ -1491,7 +1503,7 @@ class SaleLine(TaxableMixin, sequence_ordered(), ModelSQL, ModelView):
                         product=self.product.rec_name))
         else:
             invoice_line.account = account_config.get_multivalue(
-                'default_category_account_revenue')
+                'default_category_account_revenue', company=self.company.id)
             if not invoice_line.account:
                 raise AccountError(
                     gettext('sale.msg_sale_missing_account_revenue',
