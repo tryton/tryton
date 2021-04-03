@@ -406,9 +406,12 @@ class LandedCost(Workflow, ModelSQL, ModelView, MatchMixin):
 
         vlist = [v.copy() for v in vlist]
         config = Config(1)
+        default_company = cls.default_company()
         for values in vlist:
             if values.get('number') is None:
-                values['number'] = config.landed_cost_sequence.get()
+                values['number'] = config.get_multivalue(
+                    'landed_cost_sequence',
+                    company=values.get('company', default_company)).get()
         return super(LandedCost, cls).create(vlist)
 
 
