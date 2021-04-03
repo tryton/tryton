@@ -287,6 +287,11 @@ class Asset(Workflow, ModelSQL, ModelView):
     def default_company():
         return Transaction().context.get('company')
 
+    @fields.depends('company')
+    def on_change_company(self):
+        self.frequency = self.default_frequency(
+            company=self.company.id if self.company else None)
+
     @staticmethod
     def default_account_journal():
         Journal = Pool().get('account.journal')
@@ -405,11 +410,14 @@ class Asset(Workflow, ModelSQL, ModelView):
             return [self.end_date]
         if self.frequency == 'monthly':
             rule = rrule.rrule(rrule.MONTHLY, dtstart=self.start_date,
-                bymonthday=int(config.asset_bymonthday))
+                bymonthday=int(config.get_multivalue(
+                        'asset_bymonthday', company=self.company.id)))
         elif self.frequency == 'yearly':
             rule = rrule.rrule(rrule.YEARLY, dtstart=self.start_date,
-                bymonth=int(config.asset_bymonth),
-                bymonthday=int(config.asset_bymonthday))
+                bymonth=int(config.get_multivalue(
+                            'asset_bymonth', company=self.company.id)),
+                bymonthday=int(config.get_multivalue(
+                            'asset_bymonthday', company=self.company.id)))
         dates = [d.date()
             for d in rule.between(date2datetime(start_date),
                 date2datetime(self.end_date))]
@@ -644,7 +652,8 @@ class Asset(Workflow, ModelSQL, ModelView):
         for asset in assets:
             if asset.number:
                 continue
-            asset.number = config.asset_sequence.get()
+            asset.number = config.get_multivalue(
+                'asset_sequence', company=asset.company.id).get()
         cls.save(assets)
 
     @classmethod
