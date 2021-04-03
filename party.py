@@ -20,7 +20,8 @@ class Party(metaclass=PoolMeta):
         pool = Pool()
         Configuration = pool.get('account.configuration')
         config = Configuration(1)
-        dunning_procedure = config.default_dunning_procedure
+        dunning_procedure = config.get_multivalue(
+            'default_dunning_procedure', **pattern)
         return dunning_procedure.id if dunning_procedure else None
 
 
