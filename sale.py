@@ -14,7 +14,8 @@ class Line(metaclass=PoolMeta):
         Configuration = pool.get('sale.configuration')
         if quantity:
             config = Configuration(1)
-            tolerance = config.sale_under_shipment_tolerance
+            tolerance = config.get_multivalue(
+                'sale_under_shipment_tolerance', company=self.company.id)
             if tolerance is not None:
                 minimal_quantity = abs(self.quantity * (1 - tolerance))
                 minimal_quantity = self.unit.round(minimal_quantity)
@@ -54,7 +55,8 @@ class Line(metaclass=PoolMeta):
         else:
             shipment_type = 'in'
         shipped_quantity = self._get_shipped_quantity(shipment_type)
-        tolerance = config.sale_over_shipment_tolerance
+        tolerance = config.get_multivalue(
+            'sale_over_shipment_tolerance', company=self.company.id)
         if tolerance is not None:
             maximal_quantity = abs(self.quantity * tolerance)
             if shipped_quantity > maximal_quantity:
