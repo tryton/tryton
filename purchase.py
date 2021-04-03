@@ -1619,7 +1619,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
             return
         if not self.product:
             return
-        if self.product.type == 'service':
+        if self.product.type not in Move.get_product_types():
             return
 
         if (self.quantity >= 0) != (move_type == 'in'):
