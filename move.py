@@ -173,7 +173,6 @@ class Move(Workflow, ModelSQL, ModelView):
     product = fields.Many2One("product.product", "Product", required=True,
         select=True, states=STATES,
         domain=[
-            ('type', '!=', 'service'),
             If(Bool(Eval('product_uom_category'))
                 & ~Eval('state').in_(['done', 'cancelled']),
                 ('default_uom_category', '=', Eval('product_uom_category')),
@@ -307,6 +306,10 @@ class Move(Workflow, ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Move, cls).__setup__()
+        cls.product.domain = [
+            cls.product.domain,
+            ('type', 'in', cls.get_product_types()),
+            ]
         cls._deny_modify_assigned = set(['product', 'uom', 'quantity',
             'from_location', 'to_location', 'company', 'currency'])
         cls._deny_modify_done_cancel = (cls._deny_modify_assigned
@@ -380,6 +383,10 @@ class Move(Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'cancel'))
+
+    @classmethod
+    def get_product_types(cls):
+        return ['goods', 'assets']
 
     @staticmethod
     def default_planned_date():
