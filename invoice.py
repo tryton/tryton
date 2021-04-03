@@ -883,6 +883,8 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
         context = {}
         if self.party and self.party.lang:
             context['language'] = self.party.lang.code
+        if self.company:
+            context['company'] = self.company.id
         return context
 
     def _compute_taxes(self):
@@ -2037,7 +2039,10 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
         if self.invoice:
             return self.invoice._get_tax_context()
         else:
-            return {}
+            context = {}
+            if self.company:
+                context['company'] = self.company.id
+            return context
 
     def get_invoice_taxes(self, name):
         if not self.invoice:
