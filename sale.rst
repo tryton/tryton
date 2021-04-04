@@ -26,6 +26,9 @@ Sale
     `Extra </projects/modules-sale-extra/en/latest>`_
         Add extra lines.
 
+    `Gift Card </projects/modules-sale-gift-card/en/latest>`_
+        Sales gift cards.
+
     `History </projects/modules-sale-history/en/latest>`_
         Manages revisions.
 
