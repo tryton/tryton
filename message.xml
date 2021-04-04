@@ -71,7 +71,7 @@ because the type does not support moves and location has existing moves.</field>
         <record model="ir.message" id="msg_move_modify_done">
             <field name="text">You cannot modify stock move "%(move)s" because it is done.</field>
         </record>
-        <record model="ir.message" id="msg_move_modify_cancel">
+        <record model="ir.message" id="msg_move_modify_cancelled">
             <field name="text">You cannot modify stock move "%(move)s" because it is cancelled.</field>
         </record>
         <record model="ir.message" id="msg_move_no_origin">
