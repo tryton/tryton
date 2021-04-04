@@ -4,6 +4,14 @@
 from trytond.model.exceptions import ValidationError
 
 
+class TemplateValidationError(ValidationError):
+    pass
+
+
+class ProductValidationError(TemplateValidationError):
+    pass
+
+
 class UOMValidationError(ValidationError):
     pass
 
