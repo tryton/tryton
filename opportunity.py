@@ -275,6 +275,7 @@ class SaleOpportunity(
             default = default.copy()
         default.setdefault('number', None)
         default.setdefault('sales', None)
+        default.setdefault('converted_by')
         return super(SaleOpportunity, cls).copy(opportunities, default=default)
 
     def get_currency(self, name):
