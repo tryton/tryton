@@ -237,46 +237,49 @@ class PayLine(Wizard):
         Warning = pool.get('res.user.warning')
 
         reverse = {'receivable': 'payable', 'payable': 'receivable'}
-        types = {
-            kind: {
-                'parties': set(),
-                'lines': list(),
-                }
-            for kind in reverse.keys()}
+        companies = {}
         lines = self.records
         for line in lines:
+            types = companies.setdefault(line.move.company, {
+                    kind: {
+                        'parties': set(),
+                        'lines': list(),
+                        }
+                    for kind in reverse.keys()})
             for kind in types:
                 if getattr(line.account.type, kind):
                     types[kind]['parties'].add(line.party)
                     types[kind]['lines'].append(line)
 
-        for kind in types:
-            parties = types[kind]['parties']
-            others = Line.search([
-                    ('account.type.' + reverse[kind], '=', True),
-                    ('party', 'in', [p.id for p in parties]),
-                    ('reconciliation', '=', None),
-                    ('payment_amount', '!=', 0),
-                    ('move_state', '=', 'posted'),
-                    ])
-            for party in parties:
-                party_lines = [l for l in others if l.party == party]
-                if not party_lines:
-                    continue
-                lines = [l for l in types[kind]['lines']
-                    if l.party == party]
-                warning_name = '%s:%s:%s' % (
-                    reverse[kind], party,
-                    hashlib.md5(str(lines).encode('utf-8')).hexdigest())
-                if Warning.check(warning_name):
-                    names = ', '.join(l.rec_name for l in lines[:5])
-                    if len(lines) > 5:
-                        names += '...'
-                    raise GroupWarning(warning_name,
-                        gettext('account_payment.msg_pay_line_group',
-                            names=names,
-                            party=party.rec_name,
-                            line=party_lines[0].rec_name))
+        for company, types in companies.items():
+            for kind in types:
+                parties = types[kind]['parties']
+                others = Line.search([
+                        ('move.company', '=', company.id),
+                        ('account.type.' + reverse[kind], '=', True),
+                        ('party', 'in', [p.id for p in parties]),
+                        ('reconciliation', '=', None),
+                        ('payment_amount', '!=', 0),
+                        ('move_state', '=', 'posted'),
+                        ])
+                for party in parties:
+                    party_lines = [l for l in others if l.party == party]
+                    if not party_lines:
+                        continue
+                    lines = [l for l in types[kind]['lines']
+                        if l.party == party]
+                    warning_name = '%s:%s:%s' % (
+                        reverse[kind], party,
+                        hashlib.md5(str(lines).encode('utf-8')).hexdigest())
+                    if Warning.check(warning_name):
+                        names = ', '.join(l.rec_name for l in lines[:5])
+                        if len(lines) > 5:
+                            names += '...'
+                        raise GroupWarning(warning_name,
+                            gettext('account_payment.msg_pay_line_group',
+                                names=names,
+                                party=party.rec_name,
+                                line=party_lines[0].rec_name))
         return {}
 
     def _get_journals(self):
