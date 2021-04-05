@@ -3,6 +3,7 @@
 from trytond.i18n import gettext
 from trytond.pool import Pool
 from trytond.model import ModelView
+from trytond.transaction import Transaction
 from trytond.wizard import (Wizard, StateView, StateAction, StateTransition,
     Button)
 
@@ -41,26 +42,27 @@ class Supply(Wizard):
         Date = pool.get('ir.date')
         Warning = pool.get('res.user.warning')
         today = Date.today()
-        if Move.search([
-                    ('from_location.type', '=', 'supplier'),
-                    ('to_location.type', '=', 'storage'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[]):
-            name = '%s.supplier@%s' % (self.__name__, today)
-            if Warning.check(name):
-                raise SupplyWarning(name,
-                    gettext('stock_supply.msg_late_supplier_moves'))
-        if Move.search([
-                    ('from_location.type', '=', 'storage'),
-                    ('to_location.type', '=', 'customer'),
-                    ('state', '=', 'draft'),
-                    ('planned_date', '<', today),
-                    ], order=[]):
-            name = '%s..customer@%s' % (self.__name__, today)
-            if Warning.check(name):
-                raise SupplyWarning(name,
-                    gettext('stock_supply.msg_late_customer_moves'))
+        with Transaction().set_context(_check_access=True):
+            if Move.search([
+                        ('from_location.type', '=', 'supplier'),
+                        ('to_location.type', '=', 'storage'),
+                        ('state', '=', 'draft'),
+                        ('planned_date', '<', today),
+                        ], order=[]):
+                name = '%s.supplier@%s' % (self.__name__, today)
+                if Warning.check(name):
+                    raise SupplyWarning(name,
+                        gettext('stock_supply.msg_late_supplier_moves'))
+            if Move.search([
+                        ('from_location.type', '=', 'storage'),
+                        ('to_location.type', '=', 'customer'),
+                        ('state', '=', 'draft'),
+                        ('planned_date', '<', today),
+                        ], order=[]):
+                name = '%s..customer@%s' % (self.__name__, today)
+                if Warning.check(name):
+                    raise SupplyWarning(name,
+                        gettext('stock_supply.msg_late_customer_moves'))
 
         first = True
         created = False
@@ -71,9 +73,10 @@ class Supply(Wizard):
             first = False
 
         # Remove transit split of request
-        shipments = ShipmentInternal.search([
-                ('state', '=', 'request'),
-                ])
+        with Transaction().set_context(_check_access=True):
+            shipments = ShipmentInternal.search([
+                    ('state', '=', 'request'),
+                    ])
         Move.delete([m for s in shipments for m in s.moves
                 if m.from_location == s.transit_location])
         for shipment in shipments:
