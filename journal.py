@@ -48,6 +48,7 @@ class Journal(ModelSQL, ModelView):
             ('type', '!=', None),
             ('closed', '!=', True),
             ('company', '=', Eval('company')),
+            ('party_required', '=', False),
             ],
         depends=['company'])
 
