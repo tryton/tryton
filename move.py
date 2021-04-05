@@ -1449,7 +1449,7 @@ class OpenJournal(Wizard):
         else:
             journal_period, = journal_periods
 
-        action['name'] += ' - %s' % journal_period.rec_name
+        action['name'] += ' (%s)' % journal_period.rec_name
         action['pyson_domain'] = PYSONEncoder().encode([
             ('journal', '=', journal.id),
             ('period', '=', period.id),

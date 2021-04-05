@@ -1749,6 +1749,8 @@ class OpenTaxCode(Wizard):
             domain = ['OR'] + [l._line_domain for l in self.record.lines]
         else:
             domain = ('id', '=', None)
+        if self.record:
+            action['name'] += ' (%s)' % self.record.rec_name
         action['pyson_domain'] = PYSONEncoder().encode([
                 Tax._amount_domain(),
                 domain,
