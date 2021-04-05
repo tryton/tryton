@@ -333,6 +333,15 @@ class PurchaseRequest(ModelSQL, ModelView):
         super(PurchaseRequest, cls).delete(requests)
 
     @classmethod
+    def copy(cls, requests, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('purchased_by')
+        return super().copy(requests, default=default)
+
+    @classmethod
     def find_best_product_supplier(cls, product, date, **pattern):
         "Return the best product supplier to request product at date"
         pool = Pool()
