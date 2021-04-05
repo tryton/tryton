@@ -301,6 +301,16 @@ class QuantityIssue(
             issue.priority = None
         return issue_product
 
+    @classmethod
+    def copy(cls, issues, default=None):
+        if default is None:
+            default = {}
+        else:
+            default = default.copy()
+        default.setdefault('processed_by')
+        default.setdefault('solved_by')
+        return super().copy(issues, default=default)
+
 
 class QuantityIssueProduction(metaclass=PoolMeta):
     __name__ = 'stock.quantity.issue'
