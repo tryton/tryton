@@ -737,6 +737,9 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
     date = fields.Date("Date")
     move = fields.Many2One('stock.move', "Move")
     origin = fields.Reference("Origin", selection='get_origin')
+    document = fields.Function(
+        fields.Reference("Document", selection='get_documents'),
+        'get_document')
     quantity = fields.Float("Quantity")
     cumulative_quantity_start = fields.Function(
         fields.Float("Cumulative Quantity Start"), 'get_cumulative_quantity')
@@ -835,6 +838,24 @@ class ProductQuantitiesByWarehouseMove(ModelSQL, ModelView):
         pool = Pool()
         Move = pool.get('stock.move')
         return Move.get_origin()
+
+    @classmethod
+    def _get_document_models(cls):
+        pool = Pool()
+        Move = pool.get('stock.move')
+        return [m for m, _ in Move.get_shipment() if m]
+
+    @classmethod
+    def get_documents(cls):
+        pool = Pool()
+        Model = pool.get('ir.model')
+        get_name = Model.get_name
+        models = cls._get_document_models()
+        return [(None, '')] + [(m, get_name(m)) for m in models]
+
+    def get_document(self, name):
+        if self.move and self.move.shipment:
+            return str(self.move.shipment)
 
     @classmethod
     def get_cumulative_quantity(cls, records, names):

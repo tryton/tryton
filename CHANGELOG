@@ -1,3 +1,4 @@
+* Add document source on move of product quantities by warehouse
 * Add relate from assigned shipment to products quantities by warehouse
 * Show quantities by warehouse for many products
 * Default to ordering shipments by date

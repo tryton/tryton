@@ -6,6 +6,7 @@ this repository contains the full copyright notices and license terms. -->
     <field name="date"/>
     <field name="move"/>
     <field name="origin" expand="1"/>
+    <field name="document" expand="1"/>
     <field name="cumulative_quantity_start" expand="2"/>
     <field name="quantity" expand="2"/>
     <field name="cumulative_quantity_end" expand="2"/>
