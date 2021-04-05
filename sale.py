@@ -223,7 +223,6 @@ class Sale(metaclass=PoolMeta):
             with Transaction().set_context(date=date):
                 return Currency.compute(
                     Currency(currency_id), cost, self.currency, round=False)
-        return 0
 
     def set_shipment_cost(self):
         cost = None
@@ -238,7 +237,7 @@ class Sale(metaclass=PoolMeta):
                     unit_price = line.unit_price * Decimal(str(line.quantity))
                 lines.remove(line)
                 removed.append(line)
-        if cost:
+        if cost is not None:
             lines.append(self.get_shipment_cost_line(
                     cost, unit_price=unit_price))
         self.lines = lines
@@ -271,6 +270,8 @@ class Sale(metaclass=PoolMeta):
             cost_line.unit_price = round_price(unit_price)
         else:
             cost_line.unit_price = round_price(cost)
+        if not cost_line.unit_price:
+            cost_line.quantity = 0
         cost_line.amount = cost_line.on_change_with_amount()
         return cost_line
 

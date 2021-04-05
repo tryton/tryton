@@ -1,3 +1,4 @@
+* Allow to add a sale shipment line with cost 0
 * Add unsold shipment cost to the outgoing moves
 * Simplify manual alteration of shipment cost
 * Use purchase carrier price as cost for shipment
