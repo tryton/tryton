@@ -145,7 +145,7 @@ class Template(
 
     def get_rec_name(self, name):
         if self.code:
-            return '[' + self.code + ']' + self.name
+            return '[' + self.code + '] ' + self.name
         else:
             return self.name
 
