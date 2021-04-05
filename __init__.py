@@ -27,6 +27,7 @@ def register():
         product.ProductionLeadTime,
         stock.Location,
         stock.Move,
+        stock.ProductQuantitiesByWarehouseMove,
         ir.Cron,
         module='production', type_='model')
     Pool.register(

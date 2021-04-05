@@ -80,3 +80,19 @@ class Move(metaclass=PoolMeta):
         if cost_price_update:
             cls.write(
                 cost_price_update, {'production_cost_price_updated': True})
+
+
+class ProductQuantitiesByWarehouseMove(metaclass=PoolMeta):
+    __name__ = 'stock.product_quantities_warehouse.move'
+
+    @classmethod
+    def _get_document_models(cls):
+        return super()._get_document_models() + ['production']
+
+    def get_document(self, name):
+        document = super().get_document(name)
+        if self.move.production_input:
+            document = str(self.move.production_input)
+        if self.move.production_output:
+            document = str(self.move.production_output)
+        return document
