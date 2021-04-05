@@ -700,6 +700,8 @@ class Purchase(
         default.setdefault('moves', None)
         default.setdefault('shipment_state', 'none')
         default.setdefault('purchase_date', None)
+        default.setdefault('quoted_by')
+        default.setdefault('confirmed_by')
         return super(Purchase, cls).copy(purchases, default=default)
 
     def check_for_quotation(self):
