@@ -788,9 +788,11 @@ class CreateMoves(Wizard):
 
     def transition_create_moves(self):
         Asset = Pool().get('account.asset')
-        assets = Asset.search([
-                ('state', '=', 'running'),
-                ])
+        with Transaction().set_context(_check_access=True):
+            assets = Asset.search([
+                    ('state', '=', 'running'),
+                    ])
+        assets = Asset.browse(assets)
         Asset.create_moves(assets, self.start.date)
         return 'end'
 
@@ -1126,11 +1128,12 @@ class PrintDepreciationTable(Wizard):
     def do_print_(self, action):
         pool = Pool()
         Asset = pool.get('account.asset')
-        assets = Asset.search([
-                ('start_date', '<', self.start.end_date),
-                ('end_date', '>', self.start.start_date),
-                ('state', '!=', 'draft'),
-                ])
+        with Transaction().set_context(_check_access=True):
+            assets = Asset.search([
+                    ('start_date', '<', self.start.end_date),
+                    ('end_date', '>', self.start.start_date),
+                    ('state', '!=', 'draft'),
+                    ])
         if not assets:
             raise PrintDepreciationTableError(
                 gettext('account_asset.msg_no_assets'))
