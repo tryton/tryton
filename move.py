@@ -1476,6 +1476,8 @@ class OpenAccount(Wizard):
         if not Transaction().context.get('fiscalyear'):
             fiscalyears = FiscalYear.search([
                     ('state', '=', 'open'),
+                    ('company', '=',
+                        self.record.company.id if self.record else None),
                     ])
         else:
             fiscalyears = [FiscalYear(Transaction().context['fiscalyear'])]

@@ -2825,9 +2825,10 @@ class UpdateChart(Wizard):
         Account = pool.get('account.account')
 
         defaults = {}
-        charts = Account.search([
-                ('parent', '=', None),
-                ], limit=2)
+        with Transaction().set_context(_check_access=True):
+            charts = Account.search([
+                    ('parent', '=', None),
+                    ], limit=2)
         if len(charts) == 1:
             defaults['account'] = charts[0].id
         return defaults
