@@ -236,10 +236,13 @@ class Dunning(ModelSQL, ModelView):
             date = Date.today()
 
         set_level = defaultdict(list)
-        for dunning in cls.search([
+        with Transaction().set_context(_check_access=True):
+            dunnings = cls.search([
                     ('state', '=', 'waiting'),
                     ('blocked', '=', False),
-                    ]):
+                    ])
+        dunnings = cls.browse(dunnings)
+        for dunning in dunnings:
             procedure = dunning.procedure
             levels = procedure.levels
             levels = levels[levels.index(dunning.level) + 1:]
@@ -267,7 +270,9 @@ class Dunning(ModelSQL, ModelView):
         if to_write:
             cls.write(*to_write)
 
-        lines = MoveLine.search(cls._overdue_line_domain(date))
+        with Transaction().set_context(_check_access=True):
+            lines = MoveLine.search(cls._overdue_line_domain(date))
+        lines = MoveLine.browse(lines)
         dunnings = (cls._get_dunning(line, date) for line in lines)
         cls.save([d for d in dunnings if d])
 
