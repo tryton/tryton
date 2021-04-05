@@ -542,8 +542,10 @@ class CreateInvoice(Wizard):
     def do_create_(self, action):
         pool = Pool()
         Commission = pool.get('commission')
-        commissions = Commission.search(self.get_domain(),
-            order=[('agent', 'DESC'), ('date', 'DESC')])
+        with Transaction().set_context(_check_access=True):
+            commissions = Commission.search(self.get_domain(),
+                order=[('agent', 'DESC'), ('date', 'DESC')])
+        commissions = Commission.browse(commissions)
         Commission.invoice(commissions)
         invoice_ids = list({c.invoice_line.invoice.id for c in commissions})
         encoder = PYSONEncoder()
