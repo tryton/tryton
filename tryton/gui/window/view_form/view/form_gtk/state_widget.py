@@ -35,8 +35,8 @@ class Label(StateMixin, Gtk.Label):
             field = record.group.fields[self.attrs['name']]
         else:
             field = None
-        if not self.attrs.get('string', True) and field:
-            if record:
+        if not self.attrs.get('string', True):
+            if field and record:
                 text = field.get_client(record) or ''
             else:
                 text = ''

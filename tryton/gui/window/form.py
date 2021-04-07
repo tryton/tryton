@@ -67,6 +67,8 @@ class Form(SignalEvent, TabContent):
             self, 'resources',
             lambda screen, resources: self.update_resources(resources))
 
+        self.attachment_screen = None
+
         if res_id not in (None, False):
             if isinstance(res_id, int):
                 res_id = [res_id]
@@ -86,6 +88,20 @@ class Form(SignalEvent, TabContent):
                 context=self.screen.context)
         except RPCException:
             return {}
+
+    def create_tabcontent(self):
+        super().create_tabcontent()
+
+        self.attachment_preview = Gtk.Viewport()
+        self.attachment_preview.set_shadow_type(Gtk.ShadowType.NONE)
+        self.attachment_preview.show()
+        scrolledwindow = Gtk.ScrolledWindow()
+        scrolledwindow.set_shadow_type(Gtk.ShadowType.NONE)
+        scrolledwindow.set_policy(
+            Gtk.PolicyType.AUTOMATIC, Gtk.PolicyType.AUTOMATIC)
+        scrolledwindow.add(self.attachment_preview)
+        scrolledwindow.set_size_request(300, -1)
+        self.main.pack2(scrolledwindow, resize=False, shrink=True)
 
     def widget_get(self):
         return self.screen.widget
@@ -124,6 +140,19 @@ class Form(SignalEvent, TabContent):
                 for filename in filenames:
                     attachment.add_file(filename)
 
+        def preview(widget):
+            children = self.attachment_preview.get_children()
+            for child in children:
+                self.attachment_preview.remove(child)
+            if widget.get_active():
+                self.attachment_preview.add(
+                    self._attachment_preview_widget())
+                self.attachment_preview.get_parent().show()
+                self.refresh_attachment_preview()
+            else:
+                self.attachment_screen = None
+                self.attachment_preview.get_parent().hide()
+
         def activate(widget, callback):
             callback()
 
@@ -142,12 +171,79 @@ class Form(SignalEvent, TabContent):
         add_item = Gtk.MenuItem(label=_("Add..."))
         add_item.connect('activate', add_file)
         menu.add(add_item)
+        preview_item = Gtk.CheckMenuItem(label=_("Preview"))
+        preview_item.set_active(bool(
+                self.attachment_preview.get_children()))
+        preview_item.connect('toggled', preview)
+        menu.add(preview_item)
         manage_item = Gtk.MenuItem(label=_("Manage..."))
         manage_item.connect('activate', window)
         menu.add(manage_item)
         menu.show_all()
         menu.connect('deactivate', self._popup_menu_hide, button)
         self.action_popup(button)
+
+    def _attachment_preview_widget(self):
+        vbox = Gtk.VBox(homogeneous=False, spacing=2)
+        vbox.set_margin_start(4)
+        hbox = Gtk.HBox(homogeneous=False, spacing=0)
+        hbox.set_halign(Gtk.Align.CENTER)
+        vbox.pack_start(hbox, expand=False, fill=True, padding=0)
+        hbox.set_border_width(2)
+        tooltips = common.Tooltips()
+
+        but_prev = Gtk.Button()
+        tooltips.set_tip(but_prev, _("Previous"))
+        but_prev.add(common.IconFactory.get_image(
+                'tryton-back', Gtk.IconSize.SMALL_TOOLBAR))
+        but_prev.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(but_prev, expand=False, fill=False, padding=0)
+
+        label = Gtk.Label(label='(0,0)')
+        hbox.pack_start(label, expand=False, fill=False, padding=0)
+
+        but_next = Gtk.Button()
+        tooltips.set_tip(but_next, _("Next"))
+        but_next.add(common.IconFactory.get_image(
+                'tryton-forward', Gtk.IconSize.SMALL_TOOLBAR))
+        but_next.set_relief(Gtk.ReliefStyle.NONE)
+        hbox.pack_start(but_next, expand=False, fill=False, padding=0)
+
+        vbox.show_all()
+        self.attachment_screen = screen = Screen(
+            'ir.attachment', readonly=True, mode=['form'],
+            context={
+                'preview': True,
+                })
+        screen.widget.show()
+
+        but_prev.connect('clicked', lambda *a: screen.display_prev())
+        but_next.connect('clicked', lambda *a: screen.display_next())
+
+        def update_label(screen, data):
+            position, length = data[:2]
+            label.set_text('(%s/%s)' % (position or '_', length))
+            but_prev.set_sensitive(position and position > 1)
+            but_next.set_sensitive(position and position < length)
+
+        screen.signal_connect(self, 'record-message', update_label)
+        vbox.pack_start(screen.widget, expand=True, fill=True, padding=0)
+        return vbox
+
+    def refresh_attachment_preview(self, force=False):
+        if not self.attachment_screen:
+            return
+        record = self.screen.current_record
+        if not record:
+            return
+        resource = '%s,%s' % (record.model_name, record.id)
+        domain = [
+            ('resource', '=', resource),
+            ('type', '=', 'data'),
+            ]
+        if self.attachment_screen.domain != domain or force:
+            self.attachment_screen.domain = domain
+            self.attachment_screen.search_filter()
 
     def sig_note(self, widget=None):
         record = self.screen.current_record
@@ -160,6 +256,8 @@ class Form(SignalEvent, TabContent):
         record = self.screen.current_record
         self.update_resources(
             record.get_resources(reload=reload) if record else None)
+        if reload:
+            self.refresh_attachment_preview(True)
 
     def update_resources(self, resources):
         if not resources:
@@ -544,6 +642,7 @@ class Form(SignalEvent, TabContent):
         self.status_label.set_text(msg)
         self.message_info()
         self.activate_save()
+        self.refresh_attachment_preview()
 
     def _record_modified(self, screen, signal_data):
         # As it is called via idle_add, the form could have been destroyed in
