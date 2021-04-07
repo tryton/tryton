@@ -119,9 +119,12 @@
             var toolbar = this.create_toolbar().appendTo(this.el);
             this.title = toolbar.find('.title');
 
-            this.content = jQuery('<div/>', {
-                'class': 'panel-body',
+            this.main = jQuery('<div/>', {
+                'class': 'panel-body row',
             }).appendTo(this.el);
+            this.content = jQuery('<div/>', {
+                'class': 'col-xs-12',
+            }).appendTo(this.main);
 
             if (this.info_bar) {
                 this.el.append(this.info_bar.el);
@@ -463,6 +466,8 @@
             this.info_bar = new Sao.Window.InfoBar();
             this.create_tabcontent();
 
+            this.attachment_screen = null;
+
             screen.message_callback = this.record_message.bind(this);
             screen.switch_callback = function() {
                 if (this === Sao.Tab.tabs.get_current()) {
@@ -708,6 +713,12 @@
                 .on('dragover', false)
                 .on('drop', this.attach_drop.bind(this));
             return toolbar;
+        },
+        create_tabcontent: function() {
+            Sao.Tab.Form._super.create_tabcontent.call(this);
+            this.attachment_preview = jQuery('<div/>', {
+                'class': 'col-xs-12 attachment-preview',
+            }).prependTo(this.main);
         },
         compare: function(attributes) {
             if (!attributes) {
@@ -1053,6 +1064,20 @@
                     this.refresh_resources(true);
                 }.bind(this));
             }.bind(this);
+            var preview = function() {
+                if (this.attachment_preview.children().length) {
+                    this.attachment_preview.empty();
+                    this.attachment_screen = null;
+                    this.attachment_preview.removeClass('col-md-4 col-md-push-8');
+                    this.content.removeClass('col-md-8 col-md-pull-4');
+                } else {
+                    this.attachment_preview.append(
+                        this._attachment_preview_el());
+                    this.refresh_attachment_preview();
+                    this.attachment_preview.addClass('col-md-4 col-md-push-8');
+                    this.content.addClass('col-md-8 col-md-pull-4');
+                }
+            }.bind(this);
             var dropdown = this.buttons.attach.parents('.dropdown');
             if (!evt) {
                 window.setTimeout(function() {
@@ -1108,6 +1133,17 @@
                         'href': '#',
                         'tabindex': -1,
                     }).text(Sao.i18n.gettext('Add...'))));
+                    menu.append(jQuery('<li/>', {
+                        'role': 'presentation',
+                    }).append(jQuery('<a/>', {
+                        'role': 'menuitem',
+                        'href': '#',
+                        'tabindex': -1,
+                    }).text(Sao.i18n.gettext("Preview"))
+                        .click(function(evt) {
+                            evt.preventDefault();
+                            preview();
+                        })));
                     menu.append(jQuery('<li/>', {
                         'role': 'presentation',
                     }).append(jQuery('<a/>', {
@@ -1196,6 +1232,87 @@
                 evt.dataTransfer.clearData();
             }
         },
+        _attachment_preview_el: function() {
+            var el = jQuery('<div/>', {
+                'class': 'text-center',
+            });
+            var buttons = jQuery('<div/>', {
+                'class': 'btn-group',
+            }).appendTo(el);
+
+            var but_prev = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'tabindex': -1,
+                'aria-label': Sao.i18n.gettext("Previous"),
+                'title': Sao.i18n.gettext("Previous"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-back')
+            ).appendTo(buttons);
+
+            var label = jQuery('<span/>', {
+                'class': 'badge',
+            }).text('(0/0)').appendTo(jQuery('<span/>', {
+                'class': 'btn btn-sm btn-link',
+            }).appendTo(buttons));
+
+            var but_next = jQuery('<button/>', {
+                'class': 'btn btn-default btn-sm',
+                'type': 'button',
+                'tabindex': -1,
+                'aria-label': Sao.i18n.gettext("Next"),
+                'title': Sao.i18n.gettext("Next"),
+            }).append(Sao.common.ICONFACTORY.get_icon_img('tryton-forward')
+            ).appendTo(buttons);
+
+            var screen = new Sao.Screen('ir.attachment', {
+                'readonly': true,
+                'mode': ['form'],
+                'context': {
+                    'preview': true,
+                },
+            });
+            this.attachment_screen = screen;
+
+            but_prev.click(function() {
+                screen.display_previous();
+            });
+            but_next.click(function() {
+                screen.display_next();
+            });
+
+            screen.message_callback = function(data) {
+                var position = data[0];
+                var length = data[1];
+                var text = (position || '_') + '/' + length;
+                label.text(text).attr('title', text);
+                but_prev.prop('disabled', !position || position <= 1);
+                but_next.prop('disabled', !position || position >= length);
+            };
+
+            screen.switch_view().done(function() {
+                el.append(screen.screen_container.el);
+            });
+            return el;
+        },
+        refresh_attachment_preview: function(force) {
+            if (!this.attachment_screen) {
+                return;
+            }
+            var record = this.screen.current_record;
+            if (!record) {
+                return;
+            }
+            var resource = record.model.name + ',' + record.id;
+            var domain = [
+                ['resource', '=', resource],
+                ['type', '=', 'data'],
+            ];
+            if (!Sao.common.compare(this.attachment_screen.domain, domain) ||
+                force) {
+                this.attachment_screen.domain = domain;
+                this.attachment_screen.search_filter();
+            }
+        },
         note: function() {
             var record = this.screen.current_record;
             if (!record || (record.id < 0)) {
@@ -1246,6 +1363,9 @@
                     this.update_resources.bind(this));
             } else {
                 this.update_resources();
+            }
+            if (reload) {
+                this.refresh_attachment_preview(true);
             }
         },
         update_resources: function(resources) {
@@ -1333,6 +1453,7 @@
             }
             this.info_bar.message();
             // TODO activate_save
+            this.refresh_attachment_preview();
         },
         action: function() {
             window.setTimeout(function() {

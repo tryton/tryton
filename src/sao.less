@@ -336,6 +336,15 @@ img.icon {
     overflow-y: auto;
 }
 
+@media screen and (max-width: @screen-sm-max) {
+    .attachment-preview:not(:empty) {
+        border-color: @panel-default-border;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        margin-bottom: 5px;
+    }
+}
+
 .list-form {
     overflow-y: auto;
     -moz-user-select: none;
@@ -654,6 +663,13 @@ img.icon {
             object-fit: scale-down;
             object-position: center top;
             width: 100%;
+            height: 75vh;
+            @media screen and (max-width: @screen-sm-max) {
+                height: 50vh;
+            }
+            @media screen and (max-width: @screen-xs-max) {
+                height: 25vh;
+            }
         }
     }
     label {

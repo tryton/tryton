@@ -1133,11 +1133,11 @@
             }
 
             if (!jQuery.isEmptyObject(domain)) {
-                if (!jQuery.isEmptyObject(this.attributes.domain)) {
-                    domain = ['AND', domain, this.attributes.domain];
+                if (!jQuery.isEmptyObject(this.domain)) {
+                    domain = ['AND', domain, this.domain];
                 }
             } else {
-                domain = this.attributes.domain || [];
+                domain = this.domain;
             }
             if (this.screen_container.but_active.hasClass('active')) {
                 if (!jQuery.isEmptyObject(domain)) {

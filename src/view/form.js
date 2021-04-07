@@ -709,9 +709,9 @@ function eval_pyson(value){
                 field = record.model.fields[this.attributes.name];
             }
             if (!((this.attributes.string === undefined) ||
-                this.attributes.string) && field) {
+                this.attributes.string)) {
                 var text = '';
-                if (record) {
+                if (field && record) {
                     text = field.get_client(record) || '';
                 }
                 this.label_el.text(text);
@@ -4096,8 +4096,6 @@ function eval_pyson(value){
             }).appendTo(this.el);
             if (attributes.height) {
                 this.object.css('height', parseInt(attributes.height, 10));
-            } else {
-                this.object.css('height', '50vh');
             }
             if (attributes.width) {
                 this.object.css('width', parseInt(attributes.width, 10));
