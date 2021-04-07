@@ -48,15 +48,23 @@ class EmailTemplate(metaclass=PoolMeta):
 
     @classmethod
     def email_models(cls):
-        return super().email_models() + ['party.party']
+        return super().email_models() + [
+            'party.party', 'party.contact_mechanism']
 
     @classmethod
     def _get_address(cls, record):
         pool = Pool()
         Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
         address = super()._get_address(record)
+        usage = Transaction().context.get('usage')
+        if isinstance(record, ContactMechanism):
+            if record.type == 'email':
+                if not usage or getattr(record, usage):
+                    address = (record.name or record.party.name, record.email)
+            else:
+                record = record.party
         if isinstance(record, Party):
-            usage = Transaction().context.get('usage')
             contact = record.contact_mechanism_get('email', usage=usage)
             if contact and contact.email:
                 address = (contact.name or record.name, contact.email)
@@ -66,7 +74,10 @@ class EmailTemplate(metaclass=PoolMeta):
     def _get_language(cls, record):
         pool = Pool()
         Party = pool.get('party.party')
+        ContactMechanism = pool.get('party.contact_mechanism')
         language = super()._get_language(record)
         if isinstance(record, Party) and record.lang:
             language = record.lang
+        if isinstance(record, ContactMechanism) and record.party.lang:
+            language = record.party.lang
         return language

@@ -1,3 +1,4 @@
+* Add contact_mechanism as email recipient
 * Rename zip into postal code
 * Add simple distance between parties
 * Configure available identifiers
