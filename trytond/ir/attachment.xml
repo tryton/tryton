@@ -8,6 +8,12 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">form</field>
             <field name="name">attachment_form</field>
         </record>
+        <record model="ir.ui.view" id="attachment_view_form_preview">
+            <field name="model">ir.attachment</field>
+            <field name="type">form</field>
+            <field name="priority" eval="50"/>
+            <field name="name">attachment_form_preview</field>
+        </record>
         <record model="ir.ui.view" id="attachment_view_tree">
             <field name="model">ir.attachment</field>
             <field name="type">tree</field>
