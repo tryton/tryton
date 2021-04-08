@@ -963,7 +963,7 @@ class CostPriceRevision(ModelSQL, ModifyCostPriceStart):
             raise ProductCostPriceError(
                 gettext('stock.msg_invalid_cost_price',
                     cost_price=self.cost_price,
-                    product=self.product.rec_name,
+                    product=(self.product or self.template).rec_name,
                     exception=exception)) from exception
 
     def get_cost_price(self, cost_price, **context):
