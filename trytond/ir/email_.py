@@ -23,6 +23,7 @@ from trytond.model import ModelSQL, ModelView, fields, EvalEnvironment
 from trytond.model.exceptions import ValidationError, AccessError
 from trytond.pool import Pool
 from trytond.pyson import Eval, Bool, PYSONDecoder
+from trytond.report import Report
 from trytond.rpc import RPC
 from trytond.sendmail import sendmail_transactional, SMTPDataManager
 from trytond.tools import escape_wildcard
@@ -433,14 +434,14 @@ class EmailTemplate(ModelSQL, ModelView):
         if self.subject:
             try:
                 values['subject'] = (TextTemplate(self.subject)
-                    .generate(record=record)
+                    .generate(**self.get_context(record))
                     .render())
             except AccessError:
                 pass
         if self.body:
             try:
                 values['body'] = (TextTemplate(self.body)
-                    .generate(record=record)
+                    .generate(**self.get_context(record))
                     .render())
             except AccessError:
                 pass
@@ -448,9 +449,26 @@ class EmailTemplate(ModelSQL, ModelView):
             values['reports'] = [r.id for r in self.reports]
         return values
 
-    def eval(self, record, pyson):
+    def get_context(self, record):
+        pool = Pool()
+        User = pool.get('res.user')
+        return {
+            'context': Transaction().context,
+            'user': User(Transaction().user),
+            'record': record,
+            'format_date': Report.format_date,
+            'format_datetime': Report.format_datetime,
+            'format_timedelta': Report.format_timedelta,
+            'format_currency': Report.format_currency,
+            'format_number': Report.format_number,
+            }
+
+    def eval(self, record, pyson, _env=None):
         'Evaluate the pyson with the record'
-        env = {}
+        if _env is None:
+            env = {}
+        else:
+            env = _env.copy()
         env['context'] = Transaction().context
         env['self'] = EvalEnvironment(record, record.__class__)
         return PYSONDecoder(env).decode(pyson)
