@@ -178,6 +178,21 @@ Check customer invoice::
     >>> invoice.untaxed_amount
     Decimal('83.00')
 
+Send missing products::
+
+    >>> sale.reload()
+    >>> shipment, = [s for s in sale.shipments if s.state == 'waiting']
+    >>> shipment.click('assign_force')
+    >>> shipment.click('pick')
+    >>> shipment.click('pack')
+    >>> shipment.click('done')
+    >>> sale.reload()
+    >>> len(sale.invoices)
+    2
+    >>> new_invoice, = [i for i in sale.invoices if i != invoice]
+    >>> new_invoice.untaxed_amount
+    Decimal('23.00')
+
 Sale products with cost on order::
 
     >>> sale = Sale()
