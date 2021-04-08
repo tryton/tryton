@@ -302,7 +302,10 @@ class Sale(metaclass=PoolMeta):
         invoice = super(Sale, self).create_invoice()
         if invoice and self.shipment_cost_method == 'shipment':
             invoice_lines = []
-            for shipment in self.shipments:
+            # Copy shipments to avoid losing changes as the cache is cleared
+            # after invoice line save because shipment is a Function field
+            shipments = list(self.shipments)
+            for shipment in shipments:
                 if (shipment.state == 'done'
                         and shipment.carrier
                         and shipment.cost
@@ -314,7 +317,7 @@ class Sale(metaclass=PoolMeta):
                     invoice_lines.append(invoice_line)
                     shipment.cost_invoice_line = invoice_line
             InvoiceLine.save(invoice_lines)
-            Shipment.save(self.shipments)
+            Shipment.save(shipments)
             invoice.update_taxes()
         return invoice
 
