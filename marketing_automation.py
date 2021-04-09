@@ -362,7 +362,7 @@ class Activity(ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('//group[@id="email"]', 'states', {
                     'invisible': Eval('action') != 'send_email',
                     }),
