@@ -341,7 +341,7 @@ class Type(
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/tree/field[@name="amount_cmp"]', 'tree_invisible',
                 ~Eval('comparison', False)),
             ]
@@ -2242,7 +2242,7 @@ class BalanceSheetComparisionContext(BalanceSheetContext):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/form/separator[@id="comparison"]', 'states', {
                     'invisible': ~Eval('comparison', False),
                     }),
@@ -2360,7 +2360,7 @@ class IncomeStatementContext(ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/form/separator[@id="comparison"]', 'states', {
                     'invisible': ~Eval('comparison', False),
                     }),

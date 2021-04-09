@@ -270,7 +270,7 @@ class Party(CompanyMultiValueMixin, metaclass=PoolMeta):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/tree/field[@name="receivable_today"]',
                 'visual', If(Eval('receivable_today', 0) > 0, 'danger', '')),
             ('/tree/field[@name="payable_today"]',
