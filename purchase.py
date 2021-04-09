@@ -696,7 +696,7 @@ class Purchase(
 
     @classmethod
     def view_attributes(cls):
-        attributes = [
+        attributes = super().view_attributes() + [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ('/tree/field[@name="invoice_state"]', 'visual',
@@ -1731,7 +1731,7 @@ class Line(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
                 'spell', Eval('_parent_purchase', {}).get('party_lang')),
             ('//label[@id="delivery_date"]', 'states', {
