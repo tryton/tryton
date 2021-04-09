@@ -67,6 +67,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4750"/>
             <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_ex_servicios">
             <field name="name">IVA Exento (servicios)</field>
@@ -77,6 +78,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4750"/>
             <field name="credit_note_account" ref="pgc_4750"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_re_52">
             <field name="name">Recargo equivalencia 5.2%</field>
@@ -88,6 +90,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
             <field name="es_reported_with" ref="iva_rep_21"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_re_14">
             <field name="name">Recargo Equivalencia 1.4%</field>
@@ -99,6 +102,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
             <field name="es_reported_with" ref="iva_rep_10"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_re_05">
             <field name="name">Recargo Equivalencia 0.5%</field>
@@ -110,6 +114,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="invoice_account" ref="pgc_477"/>
             <field name="credit_note_account" ref="pgc_477"/>
             <field name="es_reported_with" ref="iva_rep_4"/>
+            <field name="es_vat_list_code">B</field>
         </record>
         <record model="account.tax.template" id="iva_rep_exportaciones">
             <field name="name">IVA Exportaciones (bienes)</field>
@@ -221,6 +226,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4700"/>
             <field name="credit_note_account" ref="pgc_4700"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record model="account.tax.template" id="iva_sop_ex_servicios">
             <field name="name">IVA Exento (servicios)</field>
@@ -231,6 +237,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4700"/>
             <field name="credit_note_account" ref="pgc_4700"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record model="account.tax.template" id="iva_sop_21_inv">
             <field name="name">IVA 21% (bienes de inversión)</field>
@@ -274,6 +281,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="invoice_account" ref="pgc_4700"/>
             <field name="credit_note_account" ref="pgc_4700"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record model="account.tax.template" id="iva_sop_importacion">
             <field name="name">IVA Importaciones (bienes)</field>
@@ -423,6 +431,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_472"/>
             <field name="update_unit_price" eval="True"/>
             <field name="sequence" eval="10"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record model="account.tax.template" id="iva_reagp_105">
             <field name="name">IVA 10.5% Regimen especial ganadería y pesca</field>
@@ -435,6 +444,7 @@ this repository contains the full copyright notices and license terms. -->
             <field name="credit_note_account" ref="pgc_472"/>
             <field name="update_unit_price" eval="True"/>
             <field name="sequence" eval="10"/>
+            <field name="es_vat_list_code">A</field>
         </record>
         <record model="account.tax.template" id="iva_sop_intracomunitario_1">
             <field name="name">IVA Intracomunitario. Bienes (1)</field>

@@ -452,6 +452,9 @@ class ESVATList(ModelSQL, ModelView):
             & (tax.es_vat_list_code != Null)
             & (Extract('year', invoice.invoice_date)
                 == context.get('date', Date.today()).year)
+            # Exclude base amount for es_reported_with taxes because it is
+            # already included in the base of main tax
+            & ((tax.es_reported_with == Null) | (tax_line.type == 'tax'))
             & ~Exists(cancel_invoice.select(
                     cancel_invoice.cancel_move, distinct=True,
                     where=(cancel_invoice.cancel_move == invoice.move)))
