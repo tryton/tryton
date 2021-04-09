@@ -640,6 +640,23 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_general_ledger_account_party_open"/>
         </record>
 
+        <record model="ir.action.act_window" id="act_general_ledger_account_party_form_party">
+            <field name="name">Accounts</field>
+            <field name="res_model">account.general_ledger.account.party</field>
+            <field name="context_model">account.general_ledger.account.context</field>
+            <field name="domain" eval="[('party', 'in', Eval('active_ids'))]" pyson="1"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_general_ledger_account_party_form_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="general_ledger_account_party_view_list"/>
+            <field name="act_window" ref="act_general_ledger_account_party_form_party"/>
+        </record>
+        <record model="ir.action.keyword" id="act_general_ledger_account_party_form_party_relate_keyword1">
+            <field name="keyword">form_relate</field>
+            <field name="model">party.party,-1</field>
+            <field name="action" ref="act_general_ledger_account_party_form_party"/>
+        </record>
+
         <record model="ir.model.access" id="access_general_ledger_account_party">
             <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
             <field name="perm_read" eval="False"/>
