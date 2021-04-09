@@ -600,7 +600,7 @@ class Move(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/tree', 'visual', If(Eval('state') == 'cancelled', 'muted', '')),
             ]
 
