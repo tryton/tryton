@@ -202,7 +202,7 @@ class StatementRuleInformation(sequence_ordered(), ModelSQL, ModelView):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('//group[@id="%s"]' % type_, 'states', {
                     'invisible': Eval('key_type') != type_,
                     }) for type_ in ['integer', 'float', 'number']]
