@@ -1189,7 +1189,7 @@ class Invoice(Workflow, ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/form//field[@name="comment"]', 'spell', Eval('party_lang')),
             ('/tree', 'visual',
                 If((
@@ -2229,7 +2229,7 @@ class InvoiceLine(sequence_ordered(), ModelSQL, ModelView, TaxableMixin):
 
     @classmethod
     def view_attributes(cls):
-        return [
+        return super().view_attributes() + [
             ('/form//field[@name="note"]|/form//field[@name="description"]',
                 'spell', Eval('party_lang'))]
 
