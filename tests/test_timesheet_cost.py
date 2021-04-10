@@ -9,10 +9,10 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import (
-    create_company, set_company, create_employee, CompanyMultiValueTestMixin)
+    create_company, set_company, create_employee, CompanyTestMixin)
 
 
-class TimesheetCostTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class TimesheetCostTestCase(CompanyTestMixin, ModuleTestCase):
     'Test TimesheetCost module'
     module = 'timesheet_cost'
 
