@@ -894,16 +894,13 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
             logger.error(
                 "webhook dispute: No payment '%s'", dispute.transaction.id)
         for payment in payments:
-            # TODO remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                payment.braintree_dispute_reason = dispute.reason
-                payment.braintree_dispute_status = dispute.status
-                payment.save()
-                gateway = payment.braintree_account.gateway()
-                transaction = gateway.transaction.find(
-                    payment.braintree_transaction_id)
-                payment.braintree_update(transaction)
+            payment.braintree_dispute_reason = dispute.reason
+            payment.braintree_dispute_status = dispute.status
+            payment.save()
+            gateway = payment.braintree_account.gateway()
+            transaction = gateway.transaction.find(
+                payment.braintree_transaction_id)
+            payment.braintree_update(transaction)
         return bool(payments)
 
     def webhook_transaction(self, transaction):
@@ -917,10 +914,7 @@ class PaymentBraintreeAccount(ModelSQL, ModelView):
             logger.error(
                 "webhook transaction: No payment '%s'", transaction.id)
         for payment in payments:
-            # TODO remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                payment.braintree_update(transaction)
+            payment.braintree_update(transaction)
         return bool(payments)
 
 
