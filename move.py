@@ -77,9 +77,6 @@ class Move(ModelSQL, ModelView):
         ('posted', 'Posted'),
         ], 'State', required=True, readonly=True, select=True)
     lines = fields.One2Many('account.move.line', 'move', 'Lines',
-        domain=[
-            ('account.company', '=', Eval('company', -1)),
-            ],
         states=_MOVE_STATES, depends=_MOVE_DEPENDS + ['company'],
         context={
             'journal': Eval('journal'),
@@ -616,6 +613,7 @@ class Line(ModelSQL, ModelView):
         + _depends)
     account = fields.Many2One('account.account', 'Account', required=True,
         domain=[
+            ('company', '=', Eval('company', -1)),
             ('type', '!=', None),
             ('closed', '!=', True),
             ['OR',
@@ -627,7 +625,10 @@ class Line(ModelSQL, ModelView):
                 ('end_date', '>=', Eval('date', None)),
                 ],
             ],
-        select=True, states=_states, depends=_depends + ['date'])
+        context={
+            'company': Eval('company', -1),
+            },
+        select=True, states=_states, depends=_depends + ['date', 'company'])
     move = fields.Many2One('account.move', 'Move', select=True, required=True,
         ondelete='CASCADE',
         states={
@@ -636,14 +637,23 @@ class Line(ModelSQL, ModelView):
                 & Bool(Eval('move'))),
             },
         depends=['state'] + _depends)
-    journal = fields.Function(fields.Many2One('account.journal', 'Journal',
-            states=_states, depends=_depends),
-            'get_move_field', setter='set_move_field',
-            searcher='search_move_field')
+    journal = fields.Function(fields.Many2One(
+            'account.journal', 'Journal',
+            states=_states,
+            context={
+                'company': Eval('company', -1),
+                },
+            depends=_depends + ['company']),
+        'get_move_field', setter='set_move_field',
+        searcher='search_move_field')
     period = fields.Function(fields.Many2One('account.period', 'Period',
             states=_states, depends=_depends),
             'get_move_field', setter='set_move_field',
             searcher='search_move_field')
+    company = fields.Function(fields.Many2One(
+            'company.company', "Company", states=_states, depends=_depends),
+        'get_move_field', setter='set_move_field',
+        searcher='search_move_field')
     date = fields.Function(fields.Date('Effective Date', required=True,
             states=_states, depends=_depends),
             'on_change_with_date', setter='set_move_field',
@@ -689,7 +699,10 @@ class Line(ModelSQL, ModelView):
             'invisible': ~Eval('party_required', False),
             'readonly': _states['readonly'],
             },
-        depends=['party_required'] + _depends, ondelete='RESTRICT')
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['party_required', 'company'] + _depends, ondelete='RESTRICT')
     party_required = fields.Function(fields.Boolean('Party Required'),
         'on_change_with_party_required')
     maturity_date = fields.Date('Maturity Date',
@@ -790,6 +803,7 @@ class Line(ModelSQL, ModelView):
         context = transaction.context
         if context.get('journal') and context.get('period'):
             lines = cls.search([
+                    ('company', '=', context.get('company')),
                     ('move.journal', '=', context['journal']),
                     ('move.period', '=', context['period']),
                     ('create_uid', '=', transaction.user),
@@ -799,13 +813,21 @@ class Line(ModelSQL, ModelView):
                 line, = lines
                 return line.move.id
 
-    @fields.depends('move', 'debit', 'credit', '_parent_move.lines')
+    @fields.depends(
+        'move', 'debit', 'credit',
+        '_parent_move.lines', '_parent_move.company')
     def on_change_move(self):
-        if self.move and not self.debit and not self.credit:
-            total = sum(l.debit - l.credit
-                for l in getattr(self.move, 'lines', []))
-            self.debit = -total if total < 0 else Decimal(0)
-            self.credit = total if total > 0 else Decimal(0)
+        if self.move:
+            if not self.debit and not self.credit:
+                total = sum(l.debit - l.credit
+                    for l in getattr(self.move, 'lines', []))
+                self.debit = -total if total < 0 else Decimal(0)
+                self.credit = total if total > 0 else Decimal(0)
+            self.company = self.move.company
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
 
     @staticmethod
     def default_state():
@@ -965,6 +987,7 @@ class Line(ModelSQL, ModelView):
         return staticmethod(order_field)
     order_journal = _order_move_field('journal')
     order_period = _order_move_field('period')
+    order_company = _order_move_field('company')
     order_date = _order_move_field('date')
     order_move_origin = _order_move_field('origin')
     order_move_state = _order_move_field('state')
@@ -1187,6 +1210,8 @@ class Line(ModelSQL, ModelView):
                     move = Move()
                     move.period = vals.get('period',
                         Transaction().context.get('period'))
+                    if move.period:
+                        move.company = move.period.company
                     move.journal = journal_id
                     move.date = vals.get('date')
                     move.save()
@@ -1387,8 +1412,6 @@ class OpenJournalAsk(ModelView):
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
             ('state', '!=', 'close'),
-            ('fiscalyear.company.id', '=',
-                Eval('context', {}).get('company', 0)),
             ])
 
     @staticmethod
@@ -1453,10 +1476,12 @@ class OpenJournal(Wizard):
         action['pyson_domain'] = PYSONEncoder().encode([
             ('journal', '=', journal.id),
             ('period', '=', period.id),
+            ('company', '=', period.company.id),
             ])
         action['pyson_context'] = PYSONEncoder().encode({
             'journal': journal.id,
             'period': period.id,
+            'company': period.company.id,
             })
         return action, {}
 
