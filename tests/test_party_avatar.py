@@ -6,8 +6,10 @@ import unittest
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
+from trytond.modules.company.tests import CompanyTestMixin
 
-class PartyAvatarTestCase(ModuleTestCase):
+
+class PartyAvatarTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Party Avatar module'
     module = 'party_avatar'
     extras = ['company']
