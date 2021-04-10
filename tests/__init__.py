@@ -4,12 +4,12 @@
 try:
     from trytond.modules.company.tests.test_company import (
         suite, create_company, set_company, create_employee,
-        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin)
+        PartyCompanyCheckEraseMixin, CompanyTestMixin)
 except ImportError:
     from .test_company import (
         suite, create_company, set_company, create_employee,
-        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin)
+        PartyCompanyCheckEraseMixin, CompanyTestMixin)
 
 __all__ = [
     'suite', 'create_company', 'set_company', 'create_employee',
-    'PartyCompanyCheckEraseMixin', 'CompanyMultiValueTestMixin']
+    'PartyCompanyCheckEraseMixin', 'CompanyTestMixin']

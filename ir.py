@@ -56,14 +56,19 @@ class Rule(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.domain.help += '\n- "employee" from the current user'
+        cls.domain.help += '\n- "companies" from the current user'
 
     @classmethod
     def _get_cache_key(cls):
         key = super(Rule, cls)._get_cache_key()
         # XXX Use company from context instead of browse to prevent infinite
         # loop, but the cache is cleared when User is written.
-        return key + (Transaction().context.get('company'),
-            Transaction().context.get('employee'))
+        context = Transaction().context
+        return key + (
+            context.get('company'),
+            context.get('employee'),
+            context.get('company_filter'),
+            )
 
     @classmethod
     def _get_context(cls):
@@ -79,6 +84,15 @@ class Rule(metaclass=PoolMeta):
                     _check_access=False, _datetime=None):
                 context['employee'] = EvalEnvironment(
                     Employee(user.employee.id), Employee)
+        if user.company_filter == 'one':
+            context['companies'] = [user.company.id] if user.company else []
+            context['employees'] = [user.employee.id] if user.employee else []
+        elif user.company_filter == 'all':
+            context['companies'] = [c.id for c in user.companies]
+            context['employees'] = [e.id for e in user.employees]
+        else:
+            context['companies'] = []
+            context['employees'] = []
         return context
 
 

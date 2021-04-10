@@ -55,12 +55,18 @@ class User(metaclass=PoolMeta):
             ],
         depends=['company', 'employees'],
         help="Select the employee to make the user behave as such.")
+    company_filter = fields.Selection([
+            ('one', "Current"),
+            ('all', "All"),
+            ], "Company Filter",
+        help="Define records of which companies are shown.")
 
     @classmethod
     def __setup__(cls):
         super(User, cls).__setup__()
         cls._context_fields.insert(0, 'company')
         cls._context_fields.insert(0, 'employee')
+        cls._context_fields.insert(0, 'company_filter')
 
     @classmethod
     def __register__(cls, module):
@@ -98,6 +104,10 @@ class User(metaclass=PoolMeta):
     @classmethod
     def default_company(cls):
         return Transaction().context.get('company')
+
+    @classmethod
+    def default_company_filter(cls):
+        return 'one'
 
     def get_status_bar(self, name):
         def same_company(record):

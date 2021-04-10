@@ -5,7 +5,11 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/notebook/page/separator[@name='signature']"
         position="before">
         <label name="company"/>
-        <field name="company" widget="selection"/>
+        <group id="company" col="-1">
+            <field name="company" widget="selection"/>
+            <label name="company_filter"/>
+            <field name="company_filter"/>
+        </group>
         <label name="employee"/>
         <field name="employee" widget="selection"/>
     </xpath>
