@@ -10,8 +10,10 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
+from trytond.modules.company.tests import CompanyTestMixin
 
-class ProductCostWarehouseTestCase(ModuleTestCase):
+
+class ProductCostWarehouseTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Cost Warehouse module'
     module = 'product_cost_warehouse'
     extras = ['product_cost_history']
