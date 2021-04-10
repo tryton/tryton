@@ -7,11 +7,12 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 from trytond.modules.account.tests import create_chart
 
 
-class StockSupplyDayTestCase(ModuleTestCase):
+class StockSupplyDayTestCase(CompanyTestMixin, ModuleTestCase):
     'Test StockSupplyDay module'
     module = 'stock_supply_day'
 
