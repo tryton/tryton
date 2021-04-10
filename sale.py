@@ -69,7 +69,10 @@ class GiftCard(ModelSQL, ModelView):
         domain=[
             ('gift_card', '=', True),
             ],
-        states=_states, depends=_depends)
+        context={
+            'company': Eval('company', -1),
+            },
+        states=_states, depends=_depends + ['company'])
     value = fields.Numeric(
         "Value", digits=(16, Eval('currency_digits', 2)), required=True,
         states=_states, depends=_depends + ['currency_digits'])

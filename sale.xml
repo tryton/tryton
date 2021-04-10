@@ -93,6 +93,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_gift_card_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'sale.gift_card')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_gift_card_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_gift_card_companies"/>
+        </record>
+
         <record model="ir.action.report" id="report_gift_card_email">
             <field name="name">Gift Card</field>
             <field name="model">sale.gift_card</field>
