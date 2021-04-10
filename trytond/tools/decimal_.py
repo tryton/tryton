@@ -7,7 +7,7 @@ from io import BytesIO
 
 
 def decistmt(s):
-    """Substitute Decimals for floats in a string of statements.
+    """Substitute Decimals for floats or integers in a string of statements.
 
     >>> from decimal import Decimal
     >>> s = 'print(+21.3e-5*-.1234/81.7)'
@@ -27,11 +27,15 @@ def decistmt(s):
 
     >>> exec(decistmt(s))
     -3.217160342717258261933904529E-7
+    >>> decistmt('0')
+    "Decimal ('0')"
+    >>> decistmt('1.23')
+    "Decimal ('1.23')"
     """
     result = []
     g = tokenize(BytesIO(s.encode('utf-8')).readline)  # tokenize the string
     for toknum, tokval, _, _, _ in g:
-        if toknum == NUMBER and '.' in tokval:  # replace NUMBER tokens
+        if toknum == NUMBER:  # replace NUMBER tokens
             result.extend([
                 (NAME, 'Decimal'),
                 (OP, '('),
