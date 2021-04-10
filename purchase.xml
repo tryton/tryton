@@ -131,18 +131,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="purchase_request.group_purchase_request"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_request_quotation">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_request_quotation_companies">
+            <field name="name">User in companies</field>
             <field name="model"
                 search="[('model', '=', 'purchase.request.quotation')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_request_quotation">
+        <record model="ir.rule" id="rule_request_quotation_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_request_quotation"/>
+            <field name="rule_group" ref="rule_group_request_quotation_companies"/>
         </record>
+
         <record model="ir.model.access" id="access_request_quotation">
             <field name="model"
                 search="[('model', '=', 'purchase.request.quotation')]"/>
