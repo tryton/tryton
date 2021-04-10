@@ -8,10 +8,11 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 
 
-class StockLotSLEDTestCase(ModuleTestCase):
+class StockLotSLEDTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Stock Lot SLED module'
     module = 'stock_lot_sled'
     longMessage = True
