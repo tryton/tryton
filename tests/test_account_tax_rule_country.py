@@ -6,11 +6,12 @@ from trytond.pool import Pool
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 from trytond.modules.account.tests import create_chart
 
 
-class AccountTaxRuleCountryTestCase(ModuleTestCase):
+class AccountTaxRuleCountryTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Account Tax Rule Country module'
     module = 'account_tax_rule_country'
     extras = ['account_invoice', 'sale', 'purchase', 'stock']
