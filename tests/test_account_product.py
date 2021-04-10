@@ -9,11 +9,11 @@ from trytond.pool import Pool
 from trytond.exceptions import UserError
 
 from trytond.modules.company.tests import (
-    create_company, set_company, CompanyMultiValueTestMixin)
+    create_company, set_company, CompanyTestMixin)
 from trytond.modules.account.tests import create_chart
 
 
-class AccountProductTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class AccountProductTestCase(CompanyTestMixin, ModuleTestCase):
     'Test AccountProduct module'
     module = 'account_product'
     extras = ['analytic_account']

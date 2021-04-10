@@ -288,6 +288,11 @@ class CategoryCustomerTax(ModelSQL):
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
 
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('tax')
+
 
 class CategorySupplierTax(ModelSQL):
     'Category - Supplier Tax'
@@ -297,6 +302,11 @@ class CategorySupplierTax(ModelSQL):
             ondelete='CASCADE', select=True, required=True)
     tax = fields.Many2One('account.tax', 'Tax', ondelete='RESTRICT',
             required=True)
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('tax')
 
 
 class Template(CompanyMultiValueMixin, metaclass=PoolMeta):
