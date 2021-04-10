@@ -27,7 +27,10 @@ class OrderPoint(ModelSQL, ModelView):
             ('purchasable', 'in', If(Equal(Eval('type'), 'purchase'),
                     [True], [True, False])),
             ],
-        depends=['type'])
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['type', 'company'])
     warehouse_location = fields.Many2One('stock.location',
         'Warehouse Location', select=True,
         domain=[('type', '=', 'warehouse')],
