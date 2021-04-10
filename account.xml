@@ -210,17 +210,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_account_type">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_account_type_companies">
+            <field name="name">User in companies</field>
             <field name="model"
                 search="[('model', '=', 'account.account.type')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_account_type1">
+        <record model="ir.rule" id="rule_account_type_companies">
             <field name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_account_type"/>
+            <field name="rule_group" ref="rule_group_account_type_companies"/>
         </record>
 
         <record model="ir.action.report" id="report_account_type_statement">
@@ -488,16 +488,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_account">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_account_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.account')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_account1">
+        <record model="ir.rule" id="rule_account_companies">
             <field name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_account"/>
+            <field name="rule_group" ref="rule_group_account_companies"/>
         </record>
 
         <record model="ir.ui.view" id="open_chart_start_view_form">
@@ -591,17 +591,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_general_ledger_account">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_general_ledger_account_companies">
+            <field name="name">User in companies</field>
             <field name="model"
                 search="[('model', '=', 'account.general_ledger.account')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_general_ledger_account1">
+        <record model="ir.rule" id="rule_general_ledger_account_companies">
             <field name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_general_ledger_account"/>
+            <field name="rule_group" ref="rule_group_general_ledger_account_companies"/>
         </record>
 
         <record model="ir.ui.view" id="general_ledger_account_party_view_list">
@@ -673,17 +673,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_general_ledger_account_party">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_general_ledger_account_party_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.general_ledger.account.party')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_general_ledger_account_party1">
+        <record model="ir.rule" id="rule_general_ledger_account_party_companies">
             <field
                 name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_general_ledger_account_party"/>
+            <field name="rule_group" ref="rule_group_general_ledger_account_party_companies"/>
         </record>
 
         <record model="ir.ui.view" id="general_ledger_line_view_list">
@@ -712,17 +712,17 @@ this repository contains the full copyright notices and license terms. -->
         </record>
         <!-- TODO relate from account -->
 
-        <record model="ir.rule.group" id="rule_group_general_ledger_line">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_general_ledger_line_companies">
+            <field name="name">User in companies</field>
             <field name="model"
                 search="[('model', '=', 'account.general_ledger.line')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_general_ledger_line1">
+        <record model="ir.rule" id="rule_general_ledger_line_companies">
             <field name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_general_ledger_line"/>
+            <field name="rule_group" ref="rule_group_general_ledger_line_companies"/>
         </record>
 
         <record model="ir.ui.view" id="general_ledger_account_context_view_form">
@@ -852,16 +852,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="False"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_aged_balance">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_aged_balance_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.aged_balance')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_aged_balance1">
+        <record model="ir.rule" id="rule_aged_balance_companies">
             <field name="domain"
-                eval="[('company', 'in', Eval('user', {}).get('companies', []))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_aged_balance"/>
+            <field name="rule_group" ref="rule_group_aged_balance_companies"/>
         </record>
 
         <record model="ir.ui.view" id="aged_balance_context_view_form">
