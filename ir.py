@@ -21,4 +21,4 @@ class Configuration(metaclass=PoolMeta):
             raise ValueError(
                 "The price_decimal %s in [product] configuration section "
                 "is different from the value %s in 'ir.configuration'." % (
-                    self.product_price_decimal, price_decimal))
+                    price_decimal, self.product_price_decimal))
