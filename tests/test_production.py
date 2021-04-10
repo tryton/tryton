@@ -10,10 +10,10 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class ProductionTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class ProductionTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Production module'
     module = 'production'
 
