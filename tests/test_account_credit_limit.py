@@ -9,11 +9,11 @@ from trytond.pool import Pool
 from trytond.exceptions import UserError, UserWarning
 
 from trytond.modules.company.tests import (
-    create_company, set_company, CompanyMultiValueTestMixin)
+    create_company, set_company, CompanyTestMixin)
 from trytond.modules.account.tests import create_chart, get_fiscalyear
 
 
-class AccountCreditLimitTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class AccountCreditLimitTestCase(CompanyTestMixin, ModuleTestCase):
     'Test AccountCreditLimit module'
     module = 'account_credit_limit'
     extras = ['account_dunning']
