@@ -28,6 +28,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_line_form"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_line_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'analytic_account.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_line_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_line_companies"/>
+        </record>
+
         <record model="ir.model.access" id="access_line">
             <field name="model" search="[('model', '=', 'analytic_account.line')]"/>
             <field name="perm_read" eval="False"/>

@@ -110,6 +110,19 @@ this repository contains the full copyright notices and license terms. -->
             id="menu_open_chart"
             icon="tryton-tree"/>
 
+        <record model="ir.rule.group" id="rule_group_account_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'analytic_account.account')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_account_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_account_companies"/>
+        </record>
+
         <record model="ir.model.access" id="access_account">
             <field name="model" search="[('model', '=', 'analytic_account.account')]"/>
             <field name="perm_read" eval="True"/>
@@ -171,6 +184,19 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model">analytic.account.entry</field>
             <field name="type">tree</field>
             <field name="name">analytic_account_entry_tree</field>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_entry_companies">
+            <field name="name">User in companies</field>
+            <field name="model"
+                search="[('model', '=', 'analytic.account.entry')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_entry_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_entry_companies"/>
         </record>
     </data>
 </tryton>
