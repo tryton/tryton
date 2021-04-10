@@ -77,10 +77,7 @@ class Dunning(ModelSQL, ModelView):
     __name__ = 'account.dunning'
     company = fields.Many2One('company.company', 'Company', required=True,
         help="Make the dunning belong to the company.",
-        select=True, domain=[
-            ('id', If(Eval('context', {}).contains('company'), '=', '!='),
-                Eval('context', {}).get('company', -1)),
-            ],
+        select=True,
         states=_STATES, depends=_DEPENDS)
     line = fields.Many2One('account.move.line', 'Line', required=True,
         help="The receivable line to dun for.",

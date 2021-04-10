@@ -225,16 +225,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_dunning"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_dunning">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_dunning_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'account.dunning')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_dunning1">
+        <record model="ir.rule" id="rule_dunning_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_dunning"/>
+            <field name="rule_group" ref="rule_group_dunning_companies"/>
         </record>
 
         <record model="ir.model.access" id="access_dunning">
