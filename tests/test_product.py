@@ -10,10 +10,10 @@ from trytond.tests.test_tryton import doctest_checker
 from trytond.transaction import Transaction
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class ProductTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class ProductTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product module'
     module = 'product'
 
