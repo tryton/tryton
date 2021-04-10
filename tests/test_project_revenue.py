@@ -7,10 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class ProjectRevenueTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class ProjectRevenueTestCase(CompanyTestMixin, ModuleTestCase):
     'Test ProjectRevenue module'
     module = 'project_revenue'
     extras = ['purchase']
