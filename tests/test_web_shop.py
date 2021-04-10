@@ -7,10 +7,10 @@ import unittest
 from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class WebShopTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class WebShopTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Web Shop module'
     module = 'web_shop'
     extras = ['product_attribute']
