@@ -9,10 +9,11 @@ from trytond.pool import Pool
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 
 
-class ProductPriceListDatesTestCase(ModuleTestCase):
+class ProductPriceListDatesTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Price List Dates module'
     module = 'product_price_list_dates'
     extras = ['sale_price_list']
