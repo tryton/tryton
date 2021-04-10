@@ -8,12 +8,11 @@ from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
 from trytond.modules.company.tests import (
-    PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin)
+    PartyCompanyCheckEraseMixin, CompanyTestMixin)
 
 
 class AccountPaymentTestCase(
-        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
-        ModuleTestCase):
+        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test Account Payment module'
     module = 'account_payment'
     extras = ['account_invoice']
