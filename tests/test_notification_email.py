@@ -10,14 +10,14 @@ from trytond.pool import Pool
 from trytond.config import config
 from trytond.transaction import Transaction
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 from trytond.modules.notification_email import notification \
     as notification_module
 
 FROM = 'tryton@example.com'
 
 
-class NotificationEmailTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class NotificationEmailTestCase(CompanyTestMixin, ModuleTestCase):
     "Test Notification Email module"
     module = 'notification_email'
     extras = ['company', 'commission', 'party', 'web_user']
