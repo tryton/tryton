@@ -844,11 +844,9 @@ class Sale(
         '''
         The key to group moves by shipments
 
-        move is a tuple of line id and a move
+        move is a tuple of line and a move
         '''
-        SaleLine = Pool().get('sale.line')
-        line_id, move = move
-        line = SaleLine(line_id)
+        line, move = move
 
         if any(m.planned_date is None for m in moves):
             planned_date = None
@@ -870,6 +868,14 @@ class Sale(
         values.update(dict(key))
         return Shipment(**values)
 
+    def _get_shipment_moves(self, shipment_type):
+        moves = {}
+        for line in self.lines:
+            move = line.get_move(shipment_type)
+            if move:
+                moves[line] = move
+        return moves
+
     def create_shipment(self, shipment_type):
         '''
         Create and return shipments of type shipment_type
@@ -879,11 +885,7 @@ class Sale(
         if self.shipment_method == 'manual':
             return
 
-        moves = {}
-        for line in self.lines:
-            move = line.get_move(shipment_type)
-            if move:
-                moves[line.id] = move
+        moves = self._get_shipment_moves(shipment_type)
         if not moves:
             return
         if shipment_type == 'out':
