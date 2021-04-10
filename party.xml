@@ -29,5 +29,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="type">tree</field>
             <field name="name">party_incoterm_list</field>
         </record>
+
+        <record model="ir.rule.group" id="rule_group_party_incoterm_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'party.incoterm')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_party_incoterm_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_party_incoterm_companies"/>
+        </record>
     </data>
 </tryton>

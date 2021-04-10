@@ -89,7 +89,12 @@ class Incoterm(sequence_ordered(), ModelView, ModelSQL):
     "Party Incoterm"
     __name__ = 'party.incoterm'
 
-    party = fields.Many2One('party.party', "Party", required=True, select=True)
+    party = fields.Many2One(
+        'party.party', "Party", required=True, select=True,
+        context={
+            'company': Eval('company', -1),
+            },
+        depends=['company'])
     company = fields.Many2One('company.company', "Company")
     type = fields.Selection([
             ('purchase', "Purchase"),
@@ -107,6 +112,11 @@ class Incoterm(sequence_ordered(), ModelView, ModelSQL):
             ('id', None),
             ],
         depends=['party'])
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.__access__.add('party')
 
     @classmethod
     def default_company(cls):
