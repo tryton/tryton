@@ -7,9 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class ProductKitTestCase(ModuleTestCase):
+class ProductKitTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Kit module'
     module = 'product_kit'
     extras = ['sale', 'purchase']
