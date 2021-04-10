@@ -470,16 +470,16 @@ this repository contains the full copyright notices and license terms. -->
                 pyson="1"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_sale">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_sale_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'sale.sale')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_sale1">
+        <record model="ir.rule" id="rule_sale_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_sale"/>
+            <field name="rule_group" ref="rule_group_sale_companies"/>
         </record>
 
         <record model="ir.model.access" id="access_invoice_sale">
