@@ -984,7 +984,8 @@ class Account(ModelSQL, ModelView):
                     },
                 })
         if Pool().test:
-            cls.__rpc__['webhook'] = RPC(readonly=False, instantiate=0)
+            cls.__rpc__['webhook'] = RPC(
+                readonly=False, instantiate=0, check_access=False)
 
     @fields.depends('webhook_identifier')
     def on_change_with_webhook_endpoint(self, name=None):
@@ -1088,20 +1089,17 @@ class Account(ModelSQL, ModelView):
             if not payments:
                 logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                if payment.state == 'succeeded':
-                    Payment.proceed([payment])
-                payment.stripe_captured = charge['captured']
-                payment.stripe_amount = (
-                    charge['amount'] - charge['amount_refunded'])
-                payment.save()
-                if payment.amount:
-                    if charge['status'] == 'succeeded' and charge['captured']:
-                        Payment.succeed([payment])
-                else:
-                    Payment.fail([payment])
+            if payment.state == 'succeeded':
+                Payment.proceed([payment])
+            payment.stripe_captured = charge['captured']
+            payment.stripe_amount = (
+                charge['amount'] - charge['amount_refunded'])
+            payment.save()
+            if payment.amount:
+                if charge['status'] == 'succeeded' and charge['captured']:
+                    Payment.succeed([payment])
+            else:
+                Payment.fail([payment])
         return bool(payments)
 
     def webhook_charge_captured(self, payload):
@@ -1127,17 +1125,14 @@ class Account(ModelSQL, ModelView):
         if not refunds:
             logger.error("charge.refund.updated: No refund '%s'", rf['id'])
         for refund in refunds:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=refund.payment.company.id):
-                refund = Refund(refund.id)
-                if rf.status == 'pending':
-                    Refund.processing([refund])
-                elif rf.status == 'succeeded':
-                    Refund.succeed([refund])
-                elif rf.status in {'failed', 'canceled'}:
-                    refund.stripe_error_code = rf['failure_reason']
-                    Refund.fail([refund])
-                refund.save()
+            if rf.status == 'pending':
+                Refund.processing([refund])
+            elif rf.status == 'succeeded':
+                Refund.succeed([refund])
+            elif rf.status in {'failed', 'canceled'}:
+                refund.stripe_error_code = rf['failure_reason']
+                Refund.fail([refund])
+            refund.save()
         return bool(refunds)
 
     def webhook_charge_failed(self, payload, _event='charge.failed'):
@@ -1163,15 +1158,12 @@ class Account(ModelSQL, ModelView):
             if not payments:
                 logger.error("%s: No payment '%s'", _event, charge['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                payment.stripe_error_message = charge['failure_message']
-                payment.stripe_error_code = charge['failure_code']
-                payment.stripe_error_param = None
-                payment.save()
-                if charge['status'] == 'failed':
-                    Payment.fail([payment])
+            payment.stripe_error_message = charge['failure_message']
+            payment.stripe_error_code = charge['failure_code']
+            payment.stripe_error_param = None
+            payment.save()
+            if charge['status'] == 'failed':
+                Payment.fail([payment])
         return bool(payments)
 
     def webhook_charge_dispute_created(self, payload):
@@ -1194,12 +1186,9 @@ class Account(ModelSQL, ModelView):
             logger.error(
                 "charge.dispute.created: No payment '%s'", source['charge'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                payment.stripe_dispute_reason = source['reason']
-                payment.stripe_dispute_status = source['status']
-                payment.save()
+            payment.stripe_dispute_reason = source['reason']
+            payment.stripe_dispute_status = source['status']
+            payment.save()
         return bool(payments)
 
     def webhook_charge_dispute_closed(self, payload):
@@ -1222,18 +1211,15 @@ class Account(ModelSQL, ModelView):
             logger.error(
                 "charge.dispute.closed: No payment '%s'", source['charge'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                payment.stripe_dispute_reason = source['reason']
-                payment.stripe_dispute_status = source['status']
-                payment.save()
-                if source['status'] == 'lost':
-                    Payment.fail([payment])
-                    if payment.stripe_amount > source['amount']:
-                        payment.stripe_amount -= source['amount']
-                        payment.save()
-                        Payment.succeed([payment])
+            payment.stripe_dispute_reason = source['reason']
+            payment.stripe_dispute_status = source['status']
+            payment.save()
+            if source['status'] == 'lost':
+                Payment.fail([payment])
+                if payment.stripe_amount > source['amount']:
+                    payment.stripe_amount -= source['amount']
+                    payment.save()
+                    Payment.succeed([payment])
         return bool(payments)
 
     def webhook_source_chargeable(self, payload):
@@ -1257,9 +1243,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_token', '=', source['id']),
                 ])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                Payment.fail([payment])
+            Payment.fail([payment])
         return True
 
     def webhook_source_canceled(self, payload):
@@ -1271,9 +1255,7 @@ class Account(ModelSQL, ModelView):
                 ('stripe_token', '=', source['id']),
                 ])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                Payment.fail([payment])
+            Payment.fail([payment])
         return True
 
     def webhook_payment_intent_succeeded(self, payload):
@@ -1289,19 +1271,16 @@ class Account(ModelSQL, ModelView):
                 "payment_intent.succeeded: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                if payment.state == 'succeeded':
-                    Payment.proceed([payment])
-                payment.stripe_captured = bool(
-                    payment_intent['amount_received'])
-                payment.stripe_amount = payment_intent['amount_received']
-                payment.save()
-                if payment.amount:
-                    Payment.succeed([payment])
-                else:
-                    Payment.fail([payment])
+            if payment.state == 'succeeded':
+                Payment.proceed([payment])
+            payment.stripe_captured = bool(
+                payment_intent['amount_received'])
+            payment.stripe_amount = payment_intent['amount_received']
+            payment.save()
+            if payment.amount:
+                Payment.succeed([payment])
+            else:
+                Payment.fail([payment])
         return bool(payments)
 
     def webhook_payment_intent_amount_capturable_updated(self, payload):
@@ -1317,16 +1296,14 @@ class Account(ModelSQL, ModelView):
                 "payment_intent.amount_capturable_updated: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                if payment.state == 'succeeded':
-                    Payment.proceed([payment])
-                payment.stripe_capturable = bool(
-                    payment_intent['amount_capturable'])
-                if payment.stripe_amount > payment_intent['amount_capturable']:
-                    payment.stripe_amount = payment_intent['amount_capturable']
-                payment.save()
+            payment = Payment(payment.id)
+            if payment.state == 'succeeded':
+                Payment.proceed([payment])
+            payment.stripe_capturable = bool(
+                payment_intent['amount_capturable'])
+            if payment.stripe_amount > payment_intent['amount_capturable']:
+                payment.stripe_amount = payment_intent['amount_capturable']
+            payment.save()
         return bool(payments)
 
     def webhook_payment_intent_payment_failed(self, payload):
@@ -1342,20 +1319,17 @@ class Account(ModelSQL, ModelView):
                 "payment_intent.payment_failed: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                error = payment_intent['last_payment_error']
-                if error:
-                    payment.stripe_error_message = error['message']
-                    payment.stripe_error_code = error['code']
-                    payment.stripe_error_param = None
-                    payment.save()
-                if payment_intent['status'] in [
-                        'requires_payment_method', 'requires_source']:
-                    payment._send_email_checkout()
-                else:
-                    Payment.fail([payment])
+            error = payment_intent['last_payment_error']
+            if error:
+                payment.stripe_error_message = error['message']
+                payment.stripe_error_code = error['code']
+                payment.stripe_error_param = None
+                payment.save()
+            if payment_intent['status'] in [
+                    'requires_payment_method', 'requires_source']:
+                payment._send_email_checkout()
+            else:
+                Payment.fail([payment])
         return bool(payments)
 
     def webhook_payment_intent_canceled(self, payload):
@@ -1371,10 +1345,8 @@ class Account(ModelSQL, ModelView):
                 "payment_intent.canceled: No payment '%s'",
                 payment_intent['id'])
         for payment in payments:
-            # TODO: remove when https://bugs.tryton.org/issue4080
-            with Transaction().set_context(company=payment.company.id):
-                payment = Payment(payment.id)
-                Payment.fail([payment])
+            payment = Payment(payment.id)
+            Payment.fail([payment])
         return bool(payments)
 
     @classmethod
