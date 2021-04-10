@@ -11,7 +11,7 @@ from trytond.tests.test_tryton import doctest_checker
 from trytond.pool import Pool
 
 from trytond.modules.company.tests import (
-    PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin)
+    PartyCompanyCheckEraseMixin, CompanyTestMixin)
 from trytond.modules.currency.tests import create_currency
 
 from ..exceptions import PaymentTermValidationError
@@ -41,8 +41,7 @@ def set_invoice_sequences(fiscalyear):
 
 
 class AccountInvoiceTestCase(
-        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
-        ModuleTestCase):
+        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test AccountInvoice module'
     module = 'account_invoice'
 
