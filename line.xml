@@ -60,6 +60,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_line_form_work"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_line_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'timesheet.line')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_line_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_line_companies"/>
+        </record>
+
         <record model="ir.rule.group" id="rule_group_line">
             <field name="name">Own timesheet line</field>
             <field name="model" search="[('model', '=', 'timesheet.line')]"/>
@@ -67,9 +79,9 @@ this repository contains the full copyright notices and license terms. -->
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
         </record>
-        <record model="ir.rule" id="rule_line1">
+        <record model="ir.rule" id="rule_line">
             <field name="domain"
-                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                eval="[('employee', 'in', Eval('employees', []))]"
                 pyson="1"/>
             <field name="rule_group" ref="rule_group_line"/>
         </record>
@@ -134,18 +146,19 @@ this repository contains the full copyright notices and license terms. -->
             sequence="50"
             id="menu_hours_employee"/>
 
-        <record model="ir.rule.group" id="rule_group_hours_employee">
+        <record model="ir.rule.group" id="rule_group_hours_employees">
             <field name="name">Own employee hours</field>
             <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>
             <field name="global_p" eval="False"/>
             <field name="default_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_hours_employee1">
+        <record model="ir.rule" id="rule_hours_employees">
             <field name="domain"
-                eval="[('employee', '=', Eval('user', {}).get('employee', None))]"
+                eval="[('employee', 'in', Eval('employees', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_hours_employee"/>
+            <field name="rule_group" ref="rule_group_hours_employees"/>
         </record>
+
         <record model="ir.rule.group" id="rule_group_hours_employee_admin">
             <field name="name">Any employee hours</field>
             <field name="model" search="[('model', '=', 'timesheet.hours_employee')]"/>

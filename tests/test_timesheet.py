@@ -4,10 +4,10 @@ import unittest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class TimesheetTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class TimesheetTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Timesheet module'
     module = 'timesheet'
 
