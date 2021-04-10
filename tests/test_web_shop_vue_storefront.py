@@ -15,7 +15,8 @@ from trytond.tests.test_tryton import doctest_teardown, doctest_checker
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
 from trytond.transaction import Transaction
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 from ..exceptions import LoginException
 
 CUSTOMER = {
@@ -43,7 +44,7 @@ ADDRESS_COMPANY['company'] = 'Saber'
 ADDRESS_COMPANY['vat_id'] = 'BE0500923836'
 
 
-class WebVueStorefrontTestCase(ModuleTestCase):
+class WebVueStorefrontTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Web Shop Vue Storefront module'
     module = 'web_shop_vue_storefront'
     extras = [
