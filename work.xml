@@ -94,17 +94,17 @@ this repository contains the full copyright notices and license terms. -->
             <field name="perm_delete" eval="True"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_work_center">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_work_center_companies">
+            <field name="name">User in companies</field>
             <field name="model"
                 search="[('model', '=', 'production.work.center')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_work_center">
+        <record model="ir.rule" id="rule_work_center_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_work_center"/>
+            <field name="rule_group" ref="rule_group_work_center_companies"/>
         </record>
 
         <record model="ir.ui.view" id="work_center_category_view_list">
@@ -263,16 +263,16 @@ this repository contains the full copyright notices and license terms. -->
             <field name="model" search="[('model', '=', 'production.work')]"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_work">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_work_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'production.work')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_work">
+        <record model="ir.rule" id="rule_work_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_work"/>
+            <field name="rule_group" ref="rule_group_work_companies"/>
         </record>
 
         <record model="ir.ui.view" id="work_cycle_view_list">
@@ -324,16 +324,16 @@ this repository contains the full copyright notices and license terms. -->
                 search="[('model', '=', 'production.work.cycle')]"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_work_cycle">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_work_cycle_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'production.work.cycle')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_work_cycle">
+        <record model="ir.rule" id="rule_work_cycle_companies">
             <field name="domain"
-                eval="[('work.company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('work.company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_work_cycle"/>
+            <field name="rule_group" ref="rule_group_work_cycle_companies"/>
         </record>
 
     </data>
