@@ -4,10 +4,10 @@ import unittest
 import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class ProjectPlanTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class ProjectPlanTestCase(CompanyTestMixin, ModuleTestCase):
     'Test ProjectPlan module'
     module = 'project_plan'
 
