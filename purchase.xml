@@ -232,7 +232,20 @@ this repository contains the full copyright notices and license terms.
             <field name="group" ref="group_purchase_requisition_approval"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_requisition_default">
+        <record model="ir.rule.group" id="rule_group_requisition_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'purchase.requisition')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_requisition_companies">
+            <field
+                name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_requisition_companies"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_requisition_employees">
             <field name="name">Own requisition</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
@@ -240,39 +253,38 @@ this repository contains the full copyright notices and license terms.
             <field name="default_p" eval="True"/>
             <field name="perm_read" eval="False"/>
         </record>
-         <record model="ir.rule" id="rule_requisition_default">
+         <record model="ir.rule" id="rule_requisition_employees">
             <field name="domain"
-                eval="[('employee', 'in', Eval('user', {}).get('employees', None))]"
+                eval="[('employee', 'in', Eval('employees', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_requisition_default"/>
+            <field name="rule_group" ref="rule_group_requisition_employees"/>
         </record>
         <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_default_group_purchase_requisition">
-            <field name="rule_group"
-                ref="rule_group_requisition_default"/>
+            id="rule_group_requisition_employees_group_purchase_requisition">
+            <field name="rule_group" ref="rule_group_requisition_employees"/>
             <field name="group" ref="group_purchase_requisition"/>
         </record>
 
         <!-- Give access to user who could trigger requisition work-flow -->
-        <record model="ir.rule.group" id="rule_group_requisition">
+        <record model="ir.rule.group" id="rule_group_requisition_admin">
             <field name="name">Any requisition</field>
             <field name="model"
                 search="[('model', '=', 'purchase.requisition')]"/>
             <field name="global_p" eval="False"/>
         </record>
         <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_group_purchase_requisition_approval">
-            <field name="rule_group" ref="rule_group_requisition"/>
+            id="rule_group_requisition_admin_group_purchase_requisition_approval">
+            <field name="rule_group" ref="rule_group_requisition_admin"/>
             <field name="group" ref="group_purchase_requisition_approval"/>
         </record>
         <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_group_purchase_request">
-            <field name="rule_group" ref="rule_group_requisition"/>
+            id="rule_group_requisition_admin_group_purchase_request">
+            <field name="rule_group" ref="rule_group_requisition_admin"/>
             <field name="group" ref="purchase_request.group_purchase_request"/>
         </record>
         <record model="ir.rule.group-res.group"
-            id="rule_group_requisition_group_purchase">
-            <field name="rule_group" ref="rule_group_requisition"/>
+            id="rule_group_requisition_admin_group_purchase">
+            <field name="rule_group" ref="rule_group_requisition_admin"/>
             <field name="group" ref="purchase.group_purchase"/>
         </record>
 

@@ -9,10 +9,10 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class PurchaseRequisitionTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class PurchaseRequisitionTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Purchase Requisition module'
     module = 'purchase_requisition'
 
