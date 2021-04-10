@@ -10,10 +10,10 @@ from trytond.tests.test_tryton import suite as test_suite
 from trytond.tests.test_tryton import doctest_teardown
 from trytond.tests.test_tryton import doctest_checker
 
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class PurchasePriceListTestCase(CompanyMultiValueTestMixin, ModuleTestCase):
+class PurchasePriceListTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Purchase Price List module'
     module = 'purchase_price_list'
 
