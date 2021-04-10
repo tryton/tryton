@@ -34,6 +34,18 @@ this repository contains the full copyright notices and license terms. -->
             sequence="30"
             id="menu_period_list"/>
 
+        <record model="ir.rule.group" id="rule_group_period_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.period')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_period_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_period_companies"/>
+        </record>
+
         <record model="ir.model.access" id="access_period">
             <field name="model" search="[('model', '=', 'stock.period')]"/>
             <field name="perm_read" eval="False"/>

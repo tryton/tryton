@@ -992,60 +992,64 @@ this repository contains the full copyright notices and license terms. -->
             <field name="group" ref="group_stock"/>
         </record>
 
-        <record model="ir.rule.group" id="rule_group_shipment_in">
-            <field name="name">User in company</field>
+        <record model="ir.rule.group" id="rule_group_shipment_in_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'stock.shipment.in')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_shipment_in">
+        <record model="ir.rule" id="rule_shipment_in_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_shipment_in"/>
+            <field name="rule_group" ref="rule_group_shipment_in_companies"/>
         </record>
-        <record model="ir.rule.group" id="rule_group_shipment_in_return">
-            <field name="name">User in company</field>
+
+        <record model="ir.rule.group" id="rule_group_shipment_in_return_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'stock.shipment.in.return')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_shipment_in_return">
+        <record model="ir.rule" id="rule_shipment_in_return_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_shipment_in_return"/>
+            <field name="rule_group" ref="rule_group_shipment_in_return_companies"/>
         </record>
-        <record model="ir.rule.group" id="rule_group_shipment_out">
-            <field name="name">User in company</field>
+
+        <record model="ir.rule.group" id="rule_group_shipment_out_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'stock.shipment.out')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_shipment_out">
+        <record model="ir.rule" id="rule_shipment_out_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_shipment_out"/>
+            <field name="rule_group" ref="rule_group_shipment_out_companies"/>
         </record>
-        <record model="ir.rule.group" id="rule_group_shipment_out_return">
-            <field name="name">User in company</field>
+
+        <record model="ir.rule.group" id="rule_group_shipment_out_return_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'stock.shipment.out.return')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_shipment_out_return">
+        <record model="ir.rule" id="rule_shipment_out_return_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_shipment_out_return"/>
+            <field name="rule_group" ref="rule_group_shipment_out_return_companies"/>
         </record>
-        <record model="ir.rule.group" id="rule_group_shipment_internal">
-            <field name="name">User in company</field>
+
+        <record model="ir.rule.group" id="rule_group_shipment_internal_companies">
+            <field name="name">User in companies</field>
             <field name="model" search="[('model', '=', 'stock.shipment.internal')]"/>
             <field name="global_p" eval="True"/>
         </record>
-        <record model="ir.rule" id="rule_shipment_internal">
+        <record model="ir.rule" id="rule_shipment_internal_companies">
             <field name="domain"
-                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                eval="[('company', 'in', Eval('companies', []))]"
                 pyson="1"/>
-            <field name="rule_group" ref="rule_group_shipment_internal"/>
+            <field name="rule_group" ref="rule_group_shipment_internal_companies"/>
         </record>
 
         <record model="ir.ui.view" id="shipment_assign_partial_view_form">

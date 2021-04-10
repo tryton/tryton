@@ -84,6 +84,18 @@ this repository contains the full copyright notices and license terms. -->
             <field name="action" ref="act_inventory_line_relate"/>
         </record>
 
+        <record model="ir.rule.group" id="rule_group_inventory_companies">
+            <field name="name">User in companies</field>
+            <field name="model" search="[('model', '=', 'stock.inventory')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_inventory_companies">
+            <field name="domain"
+                eval="[('company', 'in', Eval('companies', []))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_inventory_companies"/>
+        </record>
+
         <record model="ir.model.access" id="access_inventory">
             <field name="model" search="[('model', '=', 'stock.inventory')]"/>
             <field name="perm_read" eval="False"/>
