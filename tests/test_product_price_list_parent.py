@@ -8,10 +8,11 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 
 
-class ProductPriceListParentTestCase(ModuleTestCase):
+class ProductPriceListParentTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Product Price List Parent module'
     module = 'product_price_list_parent'
 
