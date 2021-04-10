@@ -7,10 +7,10 @@ from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 from trytond.tests.test_tryton import suite as test_suite
 from trytond.pool import Pool
 from trytond.modules.company.tests import (
-    create_company, set_company, create_employee)
+    create_company, set_company, create_employee, CompanyTestMixin)
 
 
-class ProductionWorkTimesheetTestCase(ModuleTestCase):
+class ProductionWorkTimesheetTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Production Work Timesheet module'
     module = 'production_work_timesheet'
 
