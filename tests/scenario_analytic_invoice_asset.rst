@@ -129,3 +129,12 @@ Create Moves for 1 month::
     Decimal('100.00')
     >>> analytic_account.credit
     Decimal('0.00')
+
+Close the asset::
+
+    >>> asset.click('close')
+    >>> analytic_account.reload()
+    >>> analytic_account.debit
+    Decimal('1000.00')
+    >>> analytic_account.credit
+    Decimal('0.00')

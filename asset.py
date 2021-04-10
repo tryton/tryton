@@ -38,20 +38,21 @@ class Asset(AnalyticMixin, metaclass=PoolMeta):
 
     def get_move(self, line):
         move = super(Asset, self).get_move(line)
-        self.set_analytic_lines(move)
+        self.set_analytic_lines(move, self.product.account_expense_used)
         return move
 
     def get_closing_move(self, account):
         move = super(Asset, self).get_closing_move(account)
-        self.set_analytic_lines(move)
+        self.set_analytic_lines(
+            move, account or self.product.account_revenue_used)
         return move
 
-    def set_analytic_lines(self, move):
-        "Fill analytic lines on lines with expense account"
+    def set_analytic_lines(self, move, account):
+        "Fill analytic lines on lines with given account"
         if self.analytic_accounts:
             with Transaction().set_context(date=move.date):
                 for line in move.lines:
-                    if line.account != self.product.account_expense_used:
+                    if line.account != account:
                         continue
                     analytic_lines = []
                     for entry in self.analytic_accounts:
