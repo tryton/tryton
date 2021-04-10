@@ -13,12 +13,11 @@ from trytond.transaction import Transaction
 
 from trytond.modules.company.tests import (
     create_company, set_company, PartyCompanyCheckEraseMixin,
-    CompanyMultiValueTestMixin)
+    CompanyTestMixin)
 
 
 class ProjectTestCase(
-        PartyCompanyCheckEraseMixin, CompanyMultiValueTestMixin,
-        ModuleTestCase):
+        PartyCompanyCheckEraseMixin, CompanyTestMixin, ModuleTestCase):
     'Test Project module'
     module = 'project'
 
