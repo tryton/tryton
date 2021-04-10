@@ -6,11 +6,10 @@ import trytond.tests.test_tryton
 from trytond.tests.test_tryton import ModuleTestCase, with_transaction
 
 from trytond.modules.account_payment_sepa.tests import validate_file
-from trytond.modules.company.tests import CompanyMultiValueTestMixin
+from trytond.modules.company.tests import CompanyTestMixin
 
 
-class AccountPaymentSepaCFONBTestCase(
-        CompanyMultiValueTestMixin, ModuleTestCase):
+class AccountPaymentSepaCFONBTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Account Payment SEPA CFONB module'
     module = 'account_payment_sepa_cfonb'
 
