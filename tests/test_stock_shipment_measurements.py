@@ -9,10 +9,11 @@ from trytond.tests.test_tryton import (ModuleTestCase, activate_module,
     with_transaction)
 from trytond.tests.test_tryton import suite as test_suite
 
-from trytond.modules.company.tests import create_company, set_company
+from trytond.modules.company.tests import (
+    create_company, set_company, CompanyTestMixin)
 
 
-class StockShipmentMeasurementsTestCase(ModuleTestCase):
+class StockShipmentMeasurementsTestCase(CompanyTestMixin, ModuleTestCase):
     'Test Stock Shipment Measurements module'
     module = 'stock_shipment_measurements'
     extras = ['stock_package']
